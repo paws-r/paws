@@ -71,6 +71,6 @@ to this contact.}
 \description{
 Initiates a flow to start a new task.
 
-See \url{https://paws-r.github.io/docs/connect/start_task_contact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_start_task_contact/} for full documentation.
 }
 \keyword{internal}

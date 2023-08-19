@@ -14,6 +14,6 @@ networkfirewall_tag_resource(ResourceArn, Tags)
 \description{
 Adds the specified tags to the specified resource. Tags are key:value pairs that you can use to categorize and manage your resources, for purposes like billing. For example, you might set the tag key to "customer" and the value to the customer name or ID. You can specify one or more tags to add to each Amazon Web Services resource, up to 50 tags for a resource.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_tag_resource/} for full documentation.
 }
 \keyword{internal}

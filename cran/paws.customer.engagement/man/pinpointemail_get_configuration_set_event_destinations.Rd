@@ -13,6 +13,6 @@ pinpointemail_get_configuration_set_event_destinations(ConfigurationSetName)
 \description{
 Retrieve a list of event destinations that are associated with a configuration set.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/get_configuration_set_event_destinations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_get_configuration_set_event_destinations/} for full documentation.
 }
 \keyword{internal}

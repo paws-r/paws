@@ -36,6 +36,6 @@ continues from the end of the items returned by the previous request.}
 \description{
 Returns a list of instance types with the specified instance attributes. You can use the response to preview the instance types without launching instances. Note that the response does not consider capacity.
 
-See \url{https://paws-r.github.io/docs/ec2/get_instance_types_from_instance_requirements.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_instance_types_from_instance_requirements/} for full documentation.
 }
 \keyword{internal}

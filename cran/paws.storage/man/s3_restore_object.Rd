@@ -31,7 +31,7 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{Key}{[required] Object key for which the action was initiated.}
@@ -60,6 +60,6 @@ different account, the request fails with the HTTP status code
 \description{
 Restores an archived copy of an object back into Amazon S3
 
-See \url{https://paws-r.github.io/docs/s3/restore_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_restore_object/} for full documentation.
 }
 \keyword{internal}

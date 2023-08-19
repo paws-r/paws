@@ -27,6 +27,6 @@ does not contain any tokens.}
 \description{
 Lists the mailbox permissions associated with a user, group, or resource mailbox.
 
-See \url{https://paws-r.github.io/docs/workmail/list_mailbox_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_list_mailbox_permissions/} for full documentation.
 }
 \keyword{internal}

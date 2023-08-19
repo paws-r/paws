@@ -12,6 +12,6 @@ cloudwatchevidently_get_segment(segment)
 \description{
 Returns information about the specified segment. Specify the segment you want to view by specifying its ARN.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/get_segment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_segment/} for full documentation.
 }
 \keyword{internal}

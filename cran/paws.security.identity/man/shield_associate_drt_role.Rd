@@ -20,6 +20,6 @@ Policies.}
 \description{
 Authorizes the Shield Response Team (SRT) using the specified role, to access your Amazon Web Services account to assist with DDoS attack mitigation during potential attacks. This enables the SRT to inspect your WAF configuration and create or update WAF rules and web ACLs.
 
-See \url{https://paws-r.github.io/docs/shield/associate_drt_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_associate_drt_role/} for full documentation.
 }
 \keyword{internal}

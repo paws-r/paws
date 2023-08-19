@@ -28,6 +28,6 @@ true by default.}
 \description{
 The \code{\link[=mturk_associate_qualification_with_worker]{associate_qualification_with_worker}} operation gives a Worker a Qualification. \code{\link[=mturk_associate_qualification_with_worker]{associate_qualification_with_worker}} does not require that the Worker submit a Qualification request. It gives the Qualification directly to the Worker.
 
-See \url{https://paws-r.github.io/docs/mturk/associate_qualification_with_worker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_associate_qualification_with_worker/} for full documentation.
 }
 \keyword{internal}

@@ -9,6 +9,6 @@ autoscaling_describe_termination_policy_types()
 \description{
 Describes the termination policies supported by Amazon EC2 Auto Scaling.
 
-See \url{https://paws-r.github.io/docs/autoscaling/describe_termination_policy_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_describe_termination_policy_types/} for full documentation.
 }
 \keyword{internal}

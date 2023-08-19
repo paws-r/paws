@@ -23,6 +23,6 @@ cloudwatchevents_update_archive(
 \description{
 Updates the specified archive.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevents/update_archive.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevents_update_archive/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ simpledb_delete_domain(DomainName)
 \description{
 The \code{\link[=simpledb_delete_domain]{delete_domain}} operation deletes a domain. Any items (and their attributes) in the domain are deleted as well. The \code{\link[=simpledb_delete_domain]{delete_domain}} operation might take 10 or more seconds to complete.
 
-See \url{https://paws-r.github.io/docs/simpledb/delete_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/simpledb_delete_domain/} for full documentation.
 }
 \keyword{internal}

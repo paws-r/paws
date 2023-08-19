@@ -20,6 +20,6 @@ memorydb_update_subnet_group(
 \description{
 Updates a subnet group. For more information, see \href{https://docs.aws.amazon.com/memorydb/latest/devguide/}{Updating a subnet group}
 
-See \url{https://paws-r.github.io/docs/memorydb/update_subnet_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_update_subnet_group/} for full documentation.
 }
 \keyword{internal}

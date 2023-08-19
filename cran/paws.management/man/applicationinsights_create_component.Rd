@@ -21,6 +21,6 @@ applicationinsights_create_component(
 \description{
 Creates a custom component by grouping similar standalone instances to monitor.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/create_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_create_component/} for full documentation.
 }
 \keyword{internal}

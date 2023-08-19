@@ -17,6 +17,6 @@ Services account are returned.}
 \description{
 Returns information about the last resize operation for the specified cluster. If no resize operation has ever been initiated for the specified cluster, a \verb{HTTP 404} error is returned. If a resize operation was initiated and completed, the status of the resize remains as \code{SUCCEEDED} until the next resize.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_resize.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_resize/} for full documentation.
 }
 \keyword{internal}

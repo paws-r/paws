@@ -53,6 +53,6 @@ in the \emph{Proton User Guide}.}
 \description{
 Create a new major or minor version of a service template. A major version of a service template is a version that \emph{isn't} backward compatible. A minor version of a service template is a version that's backward compatible within its major version.
 
-See \url{https://paws-r.github.io/docs/proton/create_service_template_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_create_service_template_version/} for full documentation.
 }
 \keyword{internal}

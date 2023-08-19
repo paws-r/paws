@@ -15,6 +15,6 @@ operation returns this identifier in its response.}
 \description{
 Gets the properties associated with a document classifier.
 
-See \url{https://paws-r.github.io/docs/comprehend/describe_document_classifier.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_describe_document_classifier/} for full documentation.
 }
 \keyword{internal}

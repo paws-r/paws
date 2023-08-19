@@ -24,6 +24,6 @@ response.}
 \description{
 Lists all findings-generating solutions (products) that you are subscribed to receive findings from in Security Hub.
 
-See \url{https://paws-r.github.io/docs/securityhub/list_enabled_products_for_import.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_list_enabled_products_for_import/} for full documentation.
 }
 \keyword{internal}

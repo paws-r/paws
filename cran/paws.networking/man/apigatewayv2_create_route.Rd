@@ -56,6 +56,6 @@ for WebSocket APIs.}
 \description{
 Creates a Route for an API.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/create_route.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_create_route/} for full documentation.
 }
 \keyword{internal}

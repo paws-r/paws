@@ -145,6 +145,6 @@ destination Region. By default, secrets aren't overwritten.}
 \description{
 Creates a new secret. A \emph{secret} can be a password, a set of credentials such as a user name and password, an OAuth token, or other secret information that you store in an encrypted form in Secrets Manager. The secret also includes the connection information to access a database or other service, which Secrets Manager doesn't encrypt. A secret in Secrets Manager consists of both the protected secret data and the important information needed to manage the secret.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/create_secret.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_create_secret/} for full documentation.
 }
 \keyword{internal}

@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Delete Object from the incremental base Backup.
 #'
-#' See [https://paws-r.github.io/docs/backupstorage/delete_object.html](https://paws-r.github.io/docs/backupstorage/delete_object.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/backupstorage_delete_object/](https://www.paws-r-sdk.com/docs/backupstorage_delete_object/) for full documentation.
 #'
 #' @param BackupJobId &#91;required&#93; Backup job Id for the in-progress backup.
 #' @param ObjectName &#91;required&#93; The name of the Object.
@@ -38,7 +38,7 @@ backupstorage_delete_object <- function(BackupJobId, ObjectName) {
 #' @description
 #' Gets the specified object's chunk.
 #'
-#' See [https://paws-r.github.io/docs/backupstorage/get_chunk.html](https://paws-r.github.io/docs/backupstorage/get_chunk.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/backupstorage_get_chunk/](https://www.paws-r-sdk.com/docs/backupstorage_get_chunk/) for full documentation.
 #'
 #' @param StorageJobId &#91;required&#93; Storage job id
 #' @param ChunkToken &#91;required&#93; Chunk token
@@ -68,7 +68,7 @@ backupstorage_get_chunk <- function(StorageJobId, ChunkToken) {
 #' @description
 #' Get metadata associated with an Object.
 #'
-#' See [https://paws-r.github.io/docs/backupstorage/get_object_metadata.html](https://paws-r.github.io/docs/backupstorage/get_object_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/backupstorage_get_object_metadata/](https://www.paws-r-sdk.com/docs/backupstorage_get_object_metadata/) for full documentation.
 #'
 #' @param StorageJobId &#91;required&#93; Backup job id for the in-progress backup.
 #' @param ObjectToken &#91;required&#93; Object token.
@@ -98,7 +98,7 @@ backupstorage_get_object_metadata <- function(StorageJobId, ObjectToken) {
 #' @description
 #' List chunks in a given Object
 #'
-#' See [https://paws-r.github.io/docs/backupstorage/list_chunks.html](https://paws-r.github.io/docs/backupstorage/list_chunks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/backupstorage_list_chunks/](https://www.paws-r-sdk.com/docs/backupstorage_list_chunks/) for full documentation.
 #'
 #' @param StorageJobId &#91;required&#93; Storage job id
 #' @param ObjectToken &#91;required&#93; Object token
@@ -113,7 +113,7 @@ backupstorage_list_chunks <- function(StorageJobId, ObjectToken, MaxResults = NU
     name = "ListChunks",
     http_method = "GET",
     http_path = "/restore-jobs/{jobId}/chunks/{objectToken}/list",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backupstorage$list_chunks_input(StorageJobId = StorageJobId, ObjectToken = ObjectToken, MaxResults = MaxResults, NextToken = NextToken)
   output <- .backupstorage$list_chunks_output()
@@ -130,7 +130,7 @@ backupstorage_list_chunks <- function(StorageJobId, ObjectToken, MaxResults = NU
 #' @description
 #' List all Objects in a given Backup.
 #'
-#' See [https://paws-r.github.io/docs/backupstorage/list_objects.html](https://paws-r.github.io/docs/backupstorage/list_objects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/backupstorage_list_objects/](https://www.paws-r-sdk.com/docs/backupstorage_list_objects/) for full documentation.
 #'
 #' @param StorageJobId &#91;required&#93; Storage job id
 #' @param StartingObjectName Optional, specifies the starting Object name to list from. Ignored if
@@ -150,7 +150,7 @@ backupstorage_list_objects <- function(StorageJobId, StartingObjectName = NULL, 
     name = "ListObjects",
     http_method = "GET",
     http_path = "/restore-jobs/{jobId}/objects/list",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .backupstorage$list_objects_input(StorageJobId = StorageJobId, StartingObjectName = StartingObjectName, StartingObjectPrefix = StartingObjectPrefix, MaxResults = MaxResults, NextToken = NextToken, CreatedBefore = CreatedBefore, CreatedAfter = CreatedAfter)
   output <- .backupstorage$list_objects_output()
@@ -167,7 +167,7 @@ backupstorage_list_objects <- function(StorageJobId, StartingObjectName = NULL, 
 #' @description
 #' Complete upload
 #'
-#' See [https://paws-r.github.io/docs/backupstorage/notify_object_complete.html](https://paws-r.github.io/docs/backupstorage/notify_object_complete.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/backupstorage_notify_object_complete/](https://www.paws-r-sdk.com/docs/backupstorage_notify_object_complete/) for full documentation.
 #'
 #' @param BackupJobId &#91;required&#93; Backup job Id for the in-progress backup
 #' @param UploadId &#91;required&#93; Upload Id for the in-progress upload
@@ -205,7 +205,7 @@ backupstorage_notify_object_complete <- function(BackupJobId, UploadId, ObjectCh
 #' @description
 #' Upload chunk.
 #'
-#' See [https://paws-r.github.io/docs/backupstorage/put_chunk.html](https://paws-r.github.io/docs/backupstorage/put_chunk.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/backupstorage_put_chunk/](https://www.paws-r-sdk.com/docs/backupstorage_put_chunk/) for full documentation.
 #'
 #' @param BackupJobId &#91;required&#93; Backup job Id for the in-progress backup.
 #' @param UploadId &#91;required&#93; Upload Id for the in-progress upload.
@@ -241,7 +241,7 @@ backupstorage_put_chunk <- function(BackupJobId, UploadId, ChunkIndex, Data, Len
 #' @description
 #' Upload object that can store object metadata String and data blob in single API call using inline chunk field.
 #'
-#' See [https://paws-r.github.io/docs/backupstorage/put_object.html](https://paws-r.github.io/docs/backupstorage/put_object.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/backupstorage_put_object/](https://www.paws-r-sdk.com/docs/backupstorage_put_object/) for full documentation.
 #'
 #' @param BackupJobId &#91;required&#93; Backup job Id for the in-progress backup.
 #' @param ObjectName &#91;required&#93; The name of the Object to be uploaded.
@@ -280,7 +280,7 @@ backupstorage_put_object <- function(BackupJobId, ObjectName, MetadataString = N
 #' @description
 #' Start upload containing one or many chunks.
 #'
-#' See [https://paws-r.github.io/docs/backupstorage/start_object.html](https://paws-r.github.io/docs/backupstorage/start_object.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/backupstorage_start_object/](https://www.paws-r-sdk.com/docs/backupstorage_start_object/) for full documentation.
 #'
 #' @param BackupJobId &#91;required&#93; Backup job Id for the in-progress backup
 #' @param ObjectName &#91;required&#93; Name for the object.

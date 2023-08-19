@@ -26,6 +26,6 @@ Pass null if this is the first call.}
 \description{
 Describes the updates of a directory for a particular update type.
 
-See \url{https://paws-r.github.io/docs/directoryservice/describe_update_directory.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_describe_update_directory/} for full documentation.
 }
 \keyword{internal}

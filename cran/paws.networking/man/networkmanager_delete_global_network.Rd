@@ -12,6 +12,6 @@ networkmanager_delete_global_network(GlobalNetworkId)
 \description{
 Deletes an existing global network. You must first delete all global network objects (devices, links, and sites), deregister all transit gateways, and delete any core networks.
 
-See \url{https://paws-r.github.io/docs/networkmanager/delete_global_network.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_delete_global_network/} for full documentation.
 }
 \keyword{internal}

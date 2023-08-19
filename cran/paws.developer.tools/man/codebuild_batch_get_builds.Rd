@@ -12,6 +12,6 @@ codebuild_batch_get_builds(ids)
 \description{
 Gets information about one or more builds.
 
-See \url{https://paws-r.github.io/docs/codebuild/batch_get_builds.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_batch_get_builds/} for full documentation.
 }
 \keyword{internal}

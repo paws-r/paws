@@ -25,6 +25,6 @@ false, you must specify the name of at least one parameter to reset.}
 \description{
 Modifies the parameters of a parameter group to the engine or system default value. You can reset specific parameters by submitting a list of parameter names. To reset the entire parameter group, specify the AllParameters and ParameterGroupName parameters.
 
-See \url{https://paws-r.github.io/docs/memorydb/reset_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_reset_parameter_group/} for full documentation.
 }
 \keyword{internal}

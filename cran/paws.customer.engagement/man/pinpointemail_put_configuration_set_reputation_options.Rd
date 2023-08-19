@@ -21,6 +21,6 @@ disabled for the configuration set.}
 \description{
 Enable or disable collection of reputation metrics for emails that you send using a particular configuration set in a specific AWS Region.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/put_configuration_set_reputation_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_put_configuration_set_reputation_options/} for full documentation.
 }
 \keyword{internal}

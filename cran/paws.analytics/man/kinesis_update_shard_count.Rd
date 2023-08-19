@@ -35,6 +35,6 @@ value to less than 10000 shards.
 \description{
 Updates the shard count of the specified stream to the specified number of shards. This API is only supported for the data streams with the provisioned capacity mode.
 
-See \url{https://paws-r.github.io/docs/kinesis/update_shard_count.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_update_shard_count/} for full documentation.
 }
 \keyword{internal}

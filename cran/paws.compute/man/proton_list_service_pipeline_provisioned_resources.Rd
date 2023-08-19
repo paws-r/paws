@@ -19,6 +19,6 @@ resources that was previously requested.}
 \description{
 List provisioned resources for a service and pipeline with details.
 
-See \url{https://paws-r.github.io/docs/proton/list_service_pipeline_provisioned_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_list_service_pipeline_provisioned_resources/} for full documentation.
 }
 \keyword{internal}

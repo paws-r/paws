@@ -16,6 +16,6 @@ to one user session.}
 \description{
 This operation assigns feature variation to user sessions. For each user session, you pass in an \code{entityID} that represents the user. Evidently then checks the evaluation rules and assigns the variation.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/batch_evaluate_feature.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_batch_evaluate_feature/} for full documentation.
 }
 \keyword{internal}

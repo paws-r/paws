@@ -28,6 +28,6 @@ one parameter to reset.}
 \description{
 Modifies the parameters of a cache parameter group to the engine or system default value. You can reset specific parameters by submitting a list of parameter names. To reset the entire cache parameter group, specify the \code{ResetAllParameters} and \code{CacheParameterGroupName} parameters.
 
-See \url{https://paws-r.github.io/docs/elasticache/reset_cache_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_reset_cache_parameter_group/} for full documentation.
 }
 \keyword{internal}

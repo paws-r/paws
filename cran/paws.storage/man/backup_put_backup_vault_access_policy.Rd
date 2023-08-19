@@ -18,6 +18,6 @@ consist of lowercase letters, numbers, and hyphens.}
 \description{
 Sets a resource-based policy that is used to manage access permissions on the target backup vault. Requires a backup vault name and an access policy document in JSON format.
 
-See \url{https://paws-r.github.io/docs/backup/put_backup_vault_access_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_put_backup_vault_access_policy/} for full documentation.
 }
 \keyword{internal}

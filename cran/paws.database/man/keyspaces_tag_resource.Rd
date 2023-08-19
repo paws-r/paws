@@ -15,6 +15,6 @@ to add tags.}
 \description{
 Associates a set of tags with a Amazon Keyspaces resource. You can then activate these user-defined tags so that they appear on the Cost Management Console for cost allocation tracking. For more information, see \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/tagging-keyspaces.html}{Adding tags and labels to Amazon Keyspaces resources} in the \emph{Amazon Keyspaces Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/keyspaces/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/keyspaces_tag_resource/} for full documentation.
 }
 \keyword{internal}

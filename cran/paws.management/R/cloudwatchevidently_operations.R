@@ -8,7 +8,7 @@ NULL
 #' @description
 #' This operation assigns feature variation to user sessions. For each user session, you pass in an `entityID` that represents the user. Evidently then checks the evaluation rules and assigns the variation.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/batch_evaluate_feature.html](https://paws-r.github.io/docs/cloudwatchevidently/batch_evaluate_feature.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_batch_evaluate_feature/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_batch_evaluate_feature/) for full documentation.
 #'
 #' @param project &#91;required&#93; The name or ARN of the project that contains the feature being
 #' evaluated.
@@ -40,7 +40,7 @@ cloudwatchevidently_batch_evaluate_feature <- function(project, requests) {
 #' @description
 #' Creates an Evidently *experiment*. Before you create an experiment, you must create the feature to use for the experiment.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/create_experiment.html](https://paws-r.github.io/docs/cloudwatchevidently/create_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_create_experiment/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_create_experiment/) for full documentation.
 #'
 #' @param description An optional description of the experiment.
 #' @param metricGoals &#91;required&#93; An array of structures that defines the metrics used for the experiment,
@@ -108,7 +108,7 @@ cloudwatchevidently_create_experiment <- function(description = NULL, metricGoal
 #' @description
 #' Creates an Evidently *feature* that you want to launch or test. You can define up to five variations of a feature, and use these variations in your launches and experiments. A feature must be created in a project. For information about creating a project, see [`create_project`][cloudwatchevidently_create_project].
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/create_feature.html](https://paws-r.github.io/docs/cloudwatchevidently/create_feature.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_create_feature/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_create_feature/) for full documentation.
 #'
 #' @param defaultVariation The name of the variation to use as the default variation. The default
 #' variation is served to users who are not allocated to any ongoing
@@ -173,7 +173,7 @@ cloudwatchevidently_create_feature <- function(defaultVariation = NULL, descript
 #' @description
 #' Creates a *launch* of a given feature. Before you create a launch, you must create the feature to use for the launch.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/create_launch.html](https://paws-r.github.io/docs/cloudwatchevidently/create_launch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_create_launch/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_create_launch/) for full documentation.
 #'
 #' @param description An optional description for the launch.
 #' @param groups &#91;required&#93; An array of structures that contains the feature and variations that are
@@ -229,7 +229,7 @@ cloudwatchevidently_create_launch <- function(description = NULL, groups, metric
 #' @description
 #' Creates a project, which is the logical object in Evidently that can contain features, launches, and experiments. Use projects to group similar features together.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/create_project.html](https://paws-r.github.io/docs/cloudwatchevidently/create_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_create_project/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_create_project/) for full documentation.
 #'
 #' @param appConfigResource Use this parameter if the project will use *client-side evaluation
 #' powered by AppConfig*. Client-side evaluation allows your application to
@@ -290,7 +290,7 @@ cloudwatchevidently_create_project <- function(appConfigResource = NULL, dataDel
 #' @description
 #' Use this operation to define a *segment* of your audience. A segment is a portion of your audience that share one or more characteristics. Examples could be Chrome browser users, users in Europe, or Firefox browser users in Europe who also fit other criteria that your application collects, such as age.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/create_segment.html](https://paws-r.github.io/docs/cloudwatchevidently/create_segment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_create_segment/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_create_segment/) for full documentation.
 #'
 #' @param description An optional description for this segment.
 #' @param name &#91;required&#93; A name for the segment.
@@ -336,7 +336,7 @@ cloudwatchevidently_create_segment <- function(description = NULL, name, pattern
 #' @description
 #' Deletes an Evidently experiment. The feature used for the experiment is not deleted.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/delete_experiment.html](https://paws-r.github.io/docs/cloudwatchevidently/delete_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_delete_experiment/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_delete_experiment/) for full documentation.
 #'
 #' @param experiment &#91;required&#93; The name of the experiment to delete.
 #' @param project &#91;required&#93; The name or ARN of the project that contains the experiment to delete.
@@ -366,7 +366,7 @@ cloudwatchevidently_delete_experiment <- function(experiment, project) {
 #' @description
 #' Deletes an Evidently feature.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/delete_feature.html](https://paws-r.github.io/docs/cloudwatchevidently/delete_feature.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_delete_feature/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_delete_feature/) for full documentation.
 #'
 #' @param feature &#91;required&#93; The name of the feature to delete.
 #' @param project &#91;required&#93; The name or ARN of the project that contains the feature to delete.
@@ -396,7 +396,7 @@ cloudwatchevidently_delete_feature <- function(feature, project) {
 #' @description
 #' Deletes an Evidently launch. The feature used for the launch is not deleted.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/delete_launch.html](https://paws-r.github.io/docs/cloudwatchevidently/delete_launch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_delete_launch/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_delete_launch/) for full documentation.
 #'
 #' @param launch &#91;required&#93; The name of the launch to delete.
 #' @param project &#91;required&#93; The name or ARN of the project that contains the launch to delete.
@@ -426,7 +426,7 @@ cloudwatchevidently_delete_launch <- function(launch, project) {
 #' @description
 #' Deletes an Evidently project. Before you can delete a project, you must delete all the features that the project contains. To delete a feature, use [`delete_feature`][cloudwatchevidently_delete_feature].
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/delete_project.html](https://paws-r.github.io/docs/cloudwatchevidently/delete_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_delete_project/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_delete_project/) for full documentation.
 #'
 #' @param project &#91;required&#93; The name or ARN of the project to delete.
 #'
@@ -455,7 +455,7 @@ cloudwatchevidently_delete_project <- function(project) {
 #' @description
 #' Deletes a segment. You can't delete a segment that is being used in a launch or experiment, even if that launch or experiment is not currently running.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/delete_segment.html](https://paws-r.github.io/docs/cloudwatchevidently/delete_segment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_delete_segment/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_delete_segment/) for full documentation.
 #'
 #' @param segment &#91;required&#93; Specifies the segment to delete.
 #'
@@ -484,7 +484,7 @@ cloudwatchevidently_delete_segment <- function(segment) {
 #' @description
 #' This operation assigns a feature variation to one given user session. You pass in an `entityID` that represents the user. Evidently then checks the evaluation rules and assigns the variation.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/evaluate_feature.html](https://paws-r.github.io/docs/cloudwatchevidently/evaluate_feature.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_evaluate_feature/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_evaluate_feature/) for full documentation.
 #'
 #' @param entityId &#91;required&#93; An internal ID that represents a unique user of the application. This
 #' `entityID` is checked against any override rules assigned for this
@@ -525,7 +525,7 @@ cloudwatchevidently_evaluate_feature <- function(entityId, evaluationContext = N
 #' @description
 #' Returns the details about one experiment. You must already know the experiment name. To retrieve a list of experiments in your account, use [`list_experiments`][cloudwatchevidently_list_experiments].
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/get_experiment.html](https://paws-r.github.io/docs/cloudwatchevidently/get_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_experiment/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_experiment/) for full documentation.
 #'
 #' @param experiment &#91;required&#93; The name of the experiment that you want to see the details of.
 #' @param project &#91;required&#93; The name or ARN of the project that contains the experiment.
@@ -555,7 +555,7 @@ cloudwatchevidently_get_experiment <- function(experiment, project) {
 #' @description
 #' Retrieves the results of a running or completed experiment. No results are available until there have been 100 events for each variation and at least 10 minutes have passed since the start of the experiment. To increase the statistical power, Evidently performs an additional offline p-value analysis at the end of the experiment. Offline p-value analysis can detect statistical significance in some cases where the anytime p-values used during the experiment do not find statistical significance.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/get_experiment_results.html](https://paws-r.github.io/docs/cloudwatchevidently/get_experiment_results.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_experiment_results/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_experiment_results/) for full documentation.
 #'
 #' @param baseStat The statistic used to calculate experiment results. Currently the only
 #' valid value is `mean`, which uses the mean of the collected values as
@@ -620,7 +620,7 @@ cloudwatchevidently_get_experiment_results <- function(baseStat = NULL, endTime 
 #' @description
 #' Returns the details about one feature. You must already know the feature name. To retrieve a list of features in your account, use [`list_features`][cloudwatchevidently_list_features].
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/get_feature.html](https://paws-r.github.io/docs/cloudwatchevidently/get_feature.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_feature/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_feature/) for full documentation.
 #'
 #' @param feature &#91;required&#93; The name of the feature that you want to retrieve information for.
 #' @param project &#91;required&#93; The name or ARN of the project that contains the feature.
@@ -650,7 +650,7 @@ cloudwatchevidently_get_feature <- function(feature, project) {
 #' @description
 #' Returns the details about one launch. You must already know the launch name. To retrieve a list of launches in your account, use [`list_launches`][cloudwatchevidently_list_launches].
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/get_launch.html](https://paws-r.github.io/docs/cloudwatchevidently/get_launch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_launch/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_launch/) for full documentation.
 #'
 #' @param launch &#91;required&#93; The name of the launch that you want to see the details of.
 #' @param project &#91;required&#93; The name or ARN of the project that contains the launch.
@@ -680,7 +680,7 @@ cloudwatchevidently_get_launch <- function(launch, project) {
 #' @description
 #' Returns the details about one launch. You must already know the project name. To retrieve a list of projects in your account, use [`list_projects`][cloudwatchevidently_list_projects].
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/get_project.html](https://paws-r.github.io/docs/cloudwatchevidently/get_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_project/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_project/) for full documentation.
 #'
 #' @param project &#91;required&#93; The name or ARN of the project that you want to see the details of.
 #'
@@ -709,7 +709,7 @@ cloudwatchevidently_get_project <- function(project) {
 #' @description
 #' Returns information about the specified segment. Specify the segment you want to view by specifying its ARN.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/get_segment.html](https://paws-r.github.io/docs/cloudwatchevidently/get_segment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_segment/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_get_segment/) for full documentation.
 #'
 #' @param segment &#91;required&#93; The ARN of the segment to return information for.
 #'
@@ -739,7 +739,7 @@ cloudwatchevidently_get_segment <- function(segment) {
 #' @description
 #' Returns configuration details about all the experiments in the specified project.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/list_experiments.html](https://paws-r.github.io/docs/cloudwatchevidently/list_experiments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_experiments/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_experiments/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to include in the response.
 #' @param nextToken The token to use when requesting the next set of results. You received
@@ -757,7 +757,7 @@ cloudwatchevidently_list_experiments <- function(maxResults = NULL, nextToken = 
     name = "ListExperiments",
     http_method = "GET",
     http_path = "/projects/{project}/experiments",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "experiments")
   )
   input <- .cloudwatchevidently$list_experiments_input(maxResults = maxResults, nextToken = nextToken, project = project, status = status)
   output <- .cloudwatchevidently$list_experiments_output()
@@ -775,7 +775,7 @@ cloudwatchevidently_list_experiments <- function(maxResults = NULL, nextToken = 
 #' @description
 #' Returns configuration details about all the features in the specified project.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/list_features.html](https://paws-r.github.io/docs/cloudwatchevidently/list_features.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_features/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_features/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to include in the response.
 #' @param nextToken The token to use when requesting the next set of results. You received
@@ -791,7 +791,7 @@ cloudwatchevidently_list_features <- function(maxResults = NULL, nextToken = NUL
     name = "ListFeatures",
     http_method = "GET",
     http_path = "/projects/{project}/features",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "features")
   )
   input <- .cloudwatchevidently$list_features_input(maxResults = maxResults, nextToken = nextToken, project = project)
   output <- .cloudwatchevidently$list_features_output()
@@ -809,7 +809,7 @@ cloudwatchevidently_list_features <- function(maxResults = NULL, nextToken = NUL
 #' @description
 #' Returns configuration details about all the launches in the specified project.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/list_launches.html](https://paws-r.github.io/docs/cloudwatchevidently/list_launches.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_launches/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_launches/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to include in the response.
 #' @param nextToken The token to use when requesting the next set of results. You received
@@ -827,7 +827,7 @@ cloudwatchevidently_list_launches <- function(maxResults = NULL, nextToken = NUL
     name = "ListLaunches",
     http_method = "GET",
     http_path = "/projects/{project}/launches",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "launches")
   )
   input <- .cloudwatchevidently$list_launches_input(maxResults = maxResults, nextToken = nextToken, project = project, status = status)
   output <- .cloudwatchevidently$list_launches_output()
@@ -845,7 +845,7 @@ cloudwatchevidently_list_launches <- function(maxResults = NULL, nextToken = NUL
 #' @description
 #' Returns configuration details about all the projects in the current Region in your account.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/list_projects.html](https://paws-r.github.io/docs/cloudwatchevidently/list_projects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_projects/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_projects/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to include in the response.
 #' @param nextToken The token to use when requesting the next set of results. You received
@@ -860,7 +860,7 @@ cloudwatchevidently_list_projects <- function(maxResults = NULL, nextToken = NUL
     name = "ListProjects",
     http_method = "GET",
     http_path = "/projects",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "projects")
   )
   input <- .cloudwatchevidently$list_projects_input(maxResults = maxResults, nextToken = nextToken)
   output <- .cloudwatchevidently$list_projects_output()
@@ -878,7 +878,7 @@ cloudwatchevidently_list_projects <- function(maxResults = NULL, nextToken = NUL
 #' @description
 #' Use this operation to find which experiments or launches are using a specified segment.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/list_segment_references.html](https://paws-r.github.io/docs/cloudwatchevidently/list_segment_references.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_segment_references/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_segment_references/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to include in the response. If you omit
 #' this, the default of 50 is used.
@@ -898,7 +898,7 @@ cloudwatchevidently_list_segment_references <- function(maxResults = NULL, nextT
     name = "ListSegmentReferences",
     http_method = "GET",
     http_path = "/segments/{segment}/references",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "referencedBy")
   )
   input <- .cloudwatchevidently$list_segment_references_input(maxResults = maxResults, nextToken = nextToken, segment = segment, type = type)
   output <- .cloudwatchevidently$list_segment_references_output()
@@ -916,7 +916,7 @@ cloudwatchevidently_list_segment_references <- function(maxResults = NULL, nextT
 #' @description
 #' Returns a list of audience segments that you have created in your account in this Region.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/list_segments.html](https://paws-r.github.io/docs/cloudwatchevidently/list_segments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_segments/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_segments/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to include in the response. If you omit
 #' this, the default of 50 is used.
@@ -932,7 +932,7 @@ cloudwatchevidently_list_segments <- function(maxResults = NULL, nextToken = NUL
     name = "ListSegments",
     http_method = "GET",
     http_path = "/segments",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "segments")
   )
   input <- .cloudwatchevidently$list_segments_input(maxResults = maxResults, nextToken = nextToken)
   output <- .cloudwatchevidently$list_segments_output()
@@ -949,7 +949,7 @@ cloudwatchevidently_list_segments <- function(maxResults = NULL, nextToken = NUL
 #' @description
 #' Displays the tags associated with an Evidently resource.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/list_tags_for_resource.html](https://paws-r.github.io/docs/cloudwatchevidently/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource that you want to see the tags of.
 #'
@@ -978,7 +978,7 @@ cloudwatchevidently_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Sends performance events to Evidently. These events can be used to evaluate a launch or an experiment.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/put_project_events.html](https://paws-r.github.io/docs/cloudwatchevidently/put_project_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_put_project_events/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_put_project_events/) for full documentation.
 #'
 #' @param events &#91;required&#93; An array of event structures that contain the performance data that is
 #' being sent to Evidently.
@@ -1009,7 +1009,7 @@ cloudwatchevidently_put_project_events <- function(events, project) {
 #' @description
 #' Starts an existing experiment. To create an experiment, use [`create_experiment`][cloudwatchevidently_create_experiment].
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/start_experiment.html](https://paws-r.github.io/docs/cloudwatchevidently/start_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_start_experiment/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_start_experiment/) for full documentation.
 #'
 #' @param analysisCompleteTime &#91;required&#93; The date and time to end the experiment. This must be no more than 30
 #' days after the experiment starts.
@@ -1041,7 +1041,7 @@ cloudwatchevidently_start_experiment <- function(analysisCompleteTime, experimen
 #' @description
 #' Starts an existing launch. To create a launch, use [`create_launch`][cloudwatchevidently_create_launch].
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/start_launch.html](https://paws-r.github.io/docs/cloudwatchevidently/start_launch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_start_launch/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_start_launch/) for full documentation.
 #'
 #' @param launch &#91;required&#93; The name of the launch to start.
 #' @param project &#91;required&#93; The name or ARN of the project that contains the launch to start.
@@ -1071,7 +1071,7 @@ cloudwatchevidently_start_launch <- function(launch, project) {
 #' @description
 #' Stops an experiment that is currently running. If you stop an experiment, you can't resume it or restart it.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/stop_experiment.html](https://paws-r.github.io/docs/cloudwatchevidently/stop_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_stop_experiment/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_stop_experiment/) for full documentation.
 #'
 #' @param desiredState Specify whether the experiment is to be considered `COMPLETED` or
 #' `CANCELLED` after it stops.
@@ -1104,7 +1104,7 @@ cloudwatchevidently_stop_experiment <- function(desiredState = NULL, experiment,
 #' @description
 #' Stops a launch that is currently running. After you stop a launch, you will not be able to resume it or restart it. Also, it will not be evaluated as a rule for traffic allocation, and the traffic that was allocated to the launch will instead be available to the feature's experiment, if there is one. Otherwise, all traffic will be served the default variation after the launch is stopped.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/stop_launch.html](https://paws-r.github.io/docs/cloudwatchevidently/stop_launch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_stop_launch/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_stop_launch/) for full documentation.
 #'
 #' @param desiredState Specify whether to consider the launch as `COMPLETED` or `CANCELLED`
 #' after it stops.
@@ -1139,7 +1139,7 @@ cloudwatchevidently_stop_launch <- function(desiredState = NULL, launch, project
 #' @description
 #' Assigns one or more tags (key-value pairs) to the specified CloudWatch Evidently resource. Projects, features, launches, and experiments can be tagged.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/tag_resource.html](https://paws-r.github.io/docs/cloudwatchevidently/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_tag_resource/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the CloudWatch Evidently resource that you're adding tags to.
 #' @param tags &#91;required&#93; The list of key-value pairs to associate with the resource.
@@ -1170,7 +1170,7 @@ cloudwatchevidently_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Use this operation to test a rules pattern that you plan to use to create an audience segment. For more information about segments, see [`create_segment`][cloudwatchevidently_create_segment].
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/test_segment_pattern.html](https://paws-r.github.io/docs/cloudwatchevidently/test_segment_pattern.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_test_segment_pattern/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_test_segment_pattern/) for full documentation.
 #'
 #' @param pattern &#91;required&#93; The pattern to test.
 #' @param payload &#91;required&#93; A sample `evaluationContext` JSON block to test against the specified
@@ -1201,7 +1201,7 @@ cloudwatchevidently_test_segment_pattern <- function(pattern, payload) {
 #' @description
 #' Removes one or more tags from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/untag_resource.html](https://paws-r.github.io/docs/cloudwatchevidently/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_untag_resource/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the CloudWatch Evidently resource that you're removing tags
 #' from.
@@ -1232,7 +1232,7 @@ cloudwatchevidently_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates an Evidently experiment.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/update_experiment.html](https://paws-r.github.io/docs/cloudwatchevidently/update_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_update_experiment/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_update_experiment/) for full documentation.
 #'
 #' @param description An optional description of the experiment.
 #' @param experiment &#91;required&#93; The name of the experiment to update.
@@ -1290,7 +1290,7 @@ cloudwatchevidently_update_experiment <- function(description = NULL, experiment
 #' @description
 #' Updates an existing feature.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/update_feature.html](https://paws-r.github.io/docs/cloudwatchevidently/update_feature.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_update_feature/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_update_feature/) for full documentation.
 #'
 #' @param addOrUpdateVariations To update variation configurations for this feature, or add new ones,
 #' specify this structure. In this array, include any variations that you
@@ -1345,7 +1345,7 @@ cloudwatchevidently_update_feature <- function(addOrUpdateVariations = NULL, def
 #' @description
 #' Updates a launch of a given feature.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/update_launch.html](https://paws-r.github.io/docs/cloudwatchevidently/update_launch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_update_launch/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_update_launch/) for full documentation.
 #'
 #' @param description An optional description for the launch.
 #' @param groups An array of structures that contains the feature and variations that are
@@ -1388,7 +1388,7 @@ cloudwatchevidently_update_launch <- function(description = NULL, groups = NULL,
 #' @description
 #' Updates the description of an existing project.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/update_project.html](https://paws-r.github.io/docs/cloudwatchevidently/update_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_update_project/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_update_project/) for full documentation.
 #'
 #' @param appConfigResource Use this parameter if the project will use client-side evaluation
 #' powered by AppConfig. Client-side evaluation allows your application to
@@ -1427,7 +1427,7 @@ cloudwatchevidently_update_project <- function(appConfigResource = NULL, descrip
 #' @description
 #' Updates the data storage options for this project. If you store evaluation events, you an keep them and analyze them on your own. If you choose not to store evaluation events, Evidently deletes them after using them to produce metrics and other experiment results that you can view.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatchevidently/update_project_data_delivery.html](https://paws-r.github.io/docs/cloudwatchevidently/update_project_data_delivery.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchevidently_update_project_data_delivery/](https://www.paws-r-sdk.com/docs/cloudwatchevidently_update_project_data_delivery/) for full documentation.
 #'
 #' @param cloudWatchLogs A structure containing the CloudWatch Logs log group where you want to
 #' store evaluation events.

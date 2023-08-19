@@ -34,6 +34,6 @@ their corresponding language codes, see \href{https://docs.aws.amazon.com/transc
 \description{
 Searches for vocabularies within a specific Amazon Connect instance using \code{State}, \code{NameStartsWith}, and \code{LanguageCode}.
 
-See \url{https://paws-r.github.io/docs/connect/search_vocabularies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_search_vocabularies/} for full documentation.
 }
 \keyword{internal}

@@ -9,6 +9,6 @@ backup_get_supported_resource_types()
 \description{
 Returns the Amazon Web Services resource types supported by Backup.
 
-See \url{https://paws-r.github.io/docs/backup/get_supported_resource_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_get_supported_resource_types/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ kendra_start_data_source_sync_job(Id, IndexId)
 \description{
 Starts a synchronization job for a data source connector. If a synchronization job is already in progress, Amazon Kendra returns a \code{ResourceInUseException} exception.
 
-See \url{https://paws-r.github.io/docs/kendra/start_data_source_sync_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_start_data_source_sync_job/} for full documentation.
 }
 \keyword{internal}

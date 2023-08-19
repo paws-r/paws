@@ -12,6 +12,6 @@ drs_start_replication(sourceServerID)
 \description{
 Starts replication for a stopped Source Server. This action would make the Source Server protected again and restart billing for it.
 
-See \url{https://paws-r.github.io/docs/drs/start_replication.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_start_replication/} for full documentation.
 }
 \keyword{internal}

@@ -35,6 +35,6 @@ batch of objects.}
 \description{
 Retrieves a list of the API keys that you've defined for the specified scope.
 
-See \url{https://paws-r.github.io/docs/wafv2/list_api_keys.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_list_api_keys/} for full documentation.
 }
 \keyword{internal}

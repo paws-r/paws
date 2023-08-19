@@ -39,6 +39,6 @@ during data plane operations.}
 \description{
 Creates a new Facet in a schema. Facet creation is allowed only in development or applied schemas.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/create_facet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_create_facet/} for full documentation.
 }
 \keyword{internal}

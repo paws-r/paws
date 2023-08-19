@@ -17,7 +17,7 @@ frauddetector_create_variable(
 \arguments{
 \item{name}{[required] The name of the variable.}
 
-\item{dataType}{[required] The data type.}
+\item{dataType}{[required] The data type of the variable.}
 
 \item{dataSource}{[required] The source of the data.}
 
@@ -35,6 +35,6 @@ Valid Values:
 \description{
 Creates a variable.
 
-See \url{https://paws-r.github.io/docs/frauddetector/create_variable.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_create_variable/} for full documentation.
 }
 \keyword{internal}

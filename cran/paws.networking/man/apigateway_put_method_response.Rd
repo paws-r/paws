@@ -43,6 +43,6 @@ as the key and a Model name as the value.}
 \description{
 Adds a MethodResponse to an existing Method resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/put_method_response.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_put_method_response/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ cloudwatchlogs_delete_metric_filter(logGroupName, filterName)
 \description{
 Deletes the specified metric filter.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/delete_metric_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_metric_filter/} for full documentation.
 }
 \keyword{internal}

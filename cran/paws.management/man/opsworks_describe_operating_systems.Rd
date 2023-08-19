@@ -10,6 +10,6 @@ opsworks_describe_operating_systems()
 \description{
 Describes the operating systems that are supported by AWS OpsWorks Stacks.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_operating_systems.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_operating_systems/} for full documentation.
 }
 \keyword{internal}

@@ -30,11 +30,13 @@ permissions to add data to your output Amazon S3 bucket.}
 
 \item{jobOutput}{[required] The path to the Amazon S3 bucket where the job's output is stored.}
 
-\item{tags}{A list of tags to apply to the dataset export job.}
+\item{tags}{A list of
+\href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{tags}
+to apply to the dataset export job.}
 }
 \description{
 Creates a job that exports data from your dataset to an Amazon S3 bucket. To allow Amazon Personalize to export the training data, you must specify an service-linked IAM role that gives Amazon Personalize \code{PutObject} permissions for your Amazon S3 bucket. For information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/export-data.html}{Exporting a dataset} in the Amazon Personalize developer guide.
 
-See \url{https://paws-r.github.io/docs/personalize/create_dataset_export_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_create_dataset_export_job/} for full documentation.
 }
 \keyword{internal}

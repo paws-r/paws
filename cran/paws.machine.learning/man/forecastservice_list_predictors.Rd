@@ -42,6 +42,6 @@ specify:
 \description{
 Returns a list of predictors created using the \code{\link[=forecastservice_create_auto_predictor]{create_auto_predictor}} or \code{\link[=forecastservice_create_predictor]{create_predictor}} operations. For each predictor, this operation returns a summary of its properties, including its Amazon Resource Name (ARN).
 
-See \url{https://paws-r.github.io/docs/forecastservice/list_predictors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_list_predictors/} for full documentation.
 }
 \keyword{internal}

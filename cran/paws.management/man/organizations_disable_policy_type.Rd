@@ -27,6 +27,6 @@ one of the following values:
 \description{
 Disables an organizational policy type in a root. A policy of a certain type can be attached to entities in a root only if that type is enabled in the root. After you perform this operation, you no longer can attach policies of the specified type to that root or to any organizational unit (OU) or account in that root. You can undo this by using the \code{\link[=organizations_enable_policy_type]{enable_policy_type}} operation.
 
-See \url{https://paws-r.github.io/docs/organizations/disable_policy_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_disable_policy_type/} for full documentation.
 }
 \keyword{internal}

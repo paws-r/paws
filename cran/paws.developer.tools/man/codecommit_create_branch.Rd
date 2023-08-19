@@ -16,6 +16,6 @@ codecommit_create_branch(repositoryName, branchName, commitId)
 \description{
 Creates a branch in a repository and points the branch to a commit.
 
-See \url{https://paws-r.github.io/docs/codecommit/create_branch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_create_branch/} for full documentation.
 }
 \keyword{internal}

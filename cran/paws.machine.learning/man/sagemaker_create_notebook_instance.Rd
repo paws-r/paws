@@ -103,6 +103,6 @@ root access for users.}
 \description{
 Creates an SageMaker notebook instance. A notebook instance is a machine learning (ML) compute instance running on a Jupyter notebook.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_notebook_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_notebook_instance/} for full documentation.
 }
 \keyword{internal}

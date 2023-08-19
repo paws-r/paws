@@ -12,6 +12,6 @@ rds_delete_event_subscription(SubscriptionName)
 \description{
 Deletes an RDS event notification subscription.
 
-See \url{https://paws-r.github.io/docs/rds/delete_event_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_delete_event_subscription/} for full documentation.
 }
 \keyword{internal}

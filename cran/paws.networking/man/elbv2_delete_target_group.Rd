@@ -12,6 +12,6 @@ elbv2_delete_target_group(TargetGroupArn)
 \description{
 Deletes the specified target group.
 
-See \url{https://paws-r.github.io/docs/elbv2/delete_target_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_delete_target_group/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ autoscaling_delete_scheduled_action(AutoScalingGroupName, ScheduledActionName)
 \description{
 Deletes the specified scheduled action.
 
-See \url{https://paws-r.github.io/docs/autoscaling/delete_scheduled_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_delete_scheduled_action/} for full documentation.
 }
 \keyword{internal}

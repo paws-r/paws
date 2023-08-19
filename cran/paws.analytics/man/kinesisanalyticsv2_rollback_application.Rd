@@ -19,6 +19,6 @@ version ID using
 \description{
 Reverts the application to the previous running version. You can roll back an application if you suspect it is stuck in a transient status.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/rollback_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_rollback_application/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ or disabled.}
 \description{
 Enables or disables integration with a service that can be integrated with DevOps Guru. The one service that can be integrated with DevOps Guru is Amazon Web Services Systems Manager, which can be used to create an OpsItem for each generated insight.
 
-See \url{https://paws-r.github.io/docs/devopsguru/update_service_integration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_update_service_integration/} for full documentation.
 }
 \keyword{internal}

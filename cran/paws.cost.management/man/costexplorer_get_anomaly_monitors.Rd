@@ -22,6 +22,6 @@ results than the maximum page size.}
 \description{
 Retrieves the cost anomaly monitor definitions for your account. You can filter using a list of cost anomaly monitor Amazon Resource Names (ARNs).
 
-See \url{https://paws-r.github.io/docs/costexplorer/get_anomaly_monitors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_anomaly_monitors/} for full documentation.
 }
 \keyword{internal}

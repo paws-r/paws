@@ -15,6 +15,6 @@ sampling rule.}
 \description{
 Removes tags from an Amazon Web Services X-Ray group or sampling rule. You cannot edit or delete system tags (those with an \verb{aws:} prefix).
 
-See \url{https://paws-r.github.io/docs/xray/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_untag_resource/} for full documentation.
 }
 \keyword{internal}

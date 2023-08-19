@@ -15,6 +15,6 @@ workspaces_migrate_workspace(SourceWorkspaceId, BundleId)
 \description{
 Migrates a WorkSpace from one operating system or bundle type to another, while retaining the data on the user volume.
 
-See \url{https://paws-r.github.io/docs/workspaces/migrate_workspace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_migrate_workspace/} for full documentation.
 }
 \keyword{internal}

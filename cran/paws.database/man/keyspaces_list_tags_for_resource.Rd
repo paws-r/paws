@@ -25,6 +25,6 @@ value as an argument of a subsequent API invocation.}
 \description{
 Returns a list of all tags associated with the specified Amazon Keyspaces resource.
 
-See \url{https://paws-r.github.io/docs/keyspaces/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/keyspaces_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

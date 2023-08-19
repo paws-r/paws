@@ -13,6 +13,6 @@ lightsail_get_relational_database_snapshot(relationalDatabaseSnapshotName)
 \description{
 Returns information about a specific database snapshot in Amazon Lightsail.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_relational_database_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_snapshot/} for full documentation.
 }
 \keyword{internal}

@@ -80,6 +80,6 @@ finding.}
 \description{
 Used by Security Hub customers to update information about their investigation into a finding. Requested by administrator accounts or member accounts. Administrator accounts can update findings for their account and their member accounts. Member accounts can update findings for their account.
 
-See \url{https://paws-r.github.io/docs/securityhub/batch_update_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_batch_update_findings/} for full documentation.
 }
 \keyword{internal}

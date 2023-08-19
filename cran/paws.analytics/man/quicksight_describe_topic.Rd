@@ -15,6 +15,6 @@ Amazon Web Services Region for each Amazon Web Services account.}
 \description{
 Describes a topic.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_topic.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_topic/} for full documentation.
 }
 \keyword{internal}

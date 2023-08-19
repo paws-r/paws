@@ -19,6 +19,6 @@ information will be published to.}
 \description{
 Creates a configuration set event destination.
 
-See \url{https://paws-r.github.io/docs/ses/create_configuration_set_event_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_create_configuration_set_event_destination/} for full documentation.
 }
 \keyword{internal}

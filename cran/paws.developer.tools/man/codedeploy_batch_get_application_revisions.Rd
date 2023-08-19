@@ -17,6 +17,6 @@ maximum number of \code{RevisionLocation} objects you can specify is 25.}
 \description{
 Gets information about one or more application revisions. The maximum number of application revisions that can be returned is 25.
 
-See \url{https://paws-r.github.io/docs/codedeploy/batch_get_application_revisions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_batch_get_application_revisions/} for full documentation.
 }
 \keyword{internal}

@@ -62,6 +62,6 @@ owner, or environment. For more information, see \href{https://docs.aws.amazon.c
 \description{
 Create a machine learning algorithm that you can use in SageMaker and list in the Amazon Web Services Marketplace.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_algorithm.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_algorithm/} for full documentation.
 }
 \keyword{internal}

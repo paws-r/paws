@@ -16,6 +16,6 @@ frauddetector_get_model_version(modelId, modelType, modelVersionNumber)
 \description{
 Gets the details of the specified model version.
 
-See \url{https://paws-r.github.io/docs/frauddetector/get_model_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_get_model_version/} for full documentation.
 }
 \keyword{internal}

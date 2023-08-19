@@ -12,6 +12,6 @@ workspacesweb_get_browser_settings(browserSettingsArn)
 \description{
 Gets browser settings.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/get_browser_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_get_browser_settings/} for full documentation.
 }
 \keyword{internal}

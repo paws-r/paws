@@ -18,6 +18,6 @@ element.}
 \description{
 Creates, changes, or deletes a resource record set, which contains authoritative DNS information for a specified domain name or subdomain name. For example, you can use \code{\link[=route53_change_resource_record_sets]{change_resource_record_sets}} to create a resource record set that routes traffic for test.example.com to a web server that has an IP address of 192.0.2.44.
 
-See \url{https://paws-r.github.io/docs/route53/change_resource_record_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_change_resource_record_sets/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ list.}
 \description{
 Returns a list of your report plans. For detailed information about a single report plan, use \code{\link[=backup_describe_report_plan]{describe_report_plan}}.
 
-See \url{https://paws-r.github.io/docs/backup/list_report_plans.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_list_report_plans/} for full documentation.
 }
 \keyword{internal}

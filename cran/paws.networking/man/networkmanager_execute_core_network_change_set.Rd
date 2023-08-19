@@ -14,6 +14,6 @@ networkmanager_execute_core_network_change_set(CoreNetworkId, PolicyVersionId)
 \description{
 Executes a change set on your core network. Deploys changes globally based on the policy submitted..
 
-See \url{https://paws-r.github.io/docs/networkmanager/execute_core_network_change_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_execute_core_network_change_set/} for full documentation.
 }
 \keyword{internal}

@@ -30,6 +30,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Stores an AMI as a single object in an Amazon S3 bucket.
 
-See \url{https://paws-r.github.io/docs/ec2/create_store_image_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_store_image_task/} for full documentation.
 }
 \keyword{internal}

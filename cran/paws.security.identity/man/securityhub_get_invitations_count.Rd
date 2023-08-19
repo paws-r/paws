@@ -11,6 +11,6 @@ securityhub_get_invitations_count()
 \description{
 Returns the count of all Security Hub membership invitations that were sent to the current member account, not including the currently accepted invitation.
 
-See \url{https://paws-r.github.io/docs/securityhub/get_invitations_count.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_get_invitations_count/} for full documentation.
 }
 \keyword{internal}

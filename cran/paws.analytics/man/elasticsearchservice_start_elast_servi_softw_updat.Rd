@@ -13,6 +13,6 @@ software.}
 \description{
 Schedules a service software update for an Amazon ES domain.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/start_elasticsearch_service_software_update.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_start_elasticsearch_service_software_update/} for full documentation.
 }
 \keyword{internal}

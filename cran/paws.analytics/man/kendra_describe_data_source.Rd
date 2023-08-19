@@ -14,6 +14,6 @@ kendra_describe_data_source(Id, IndexId)
 \description{
 Gets information about an Amazon Kendra data source connector.
 
-See \url{https://paws-r.github.io/docs/kendra/describe_data_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_describe_data_source/} for full documentation.
 }
 \keyword{internal}

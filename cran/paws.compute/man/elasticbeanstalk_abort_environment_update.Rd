@@ -20,6 +20,6 @@ that you want to cancel.}
 \description{
 Cancels in-progress environment configuration update or application version deployment.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/abort_environment_update.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_abort_environment_update/} for full documentation.
 }
 \keyword{internal}

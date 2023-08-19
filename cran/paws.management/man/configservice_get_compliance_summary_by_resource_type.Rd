@@ -19,6 +19,6 @@ an Amazon Web Services account by specifying \verb{AWS::::Account}.}
 \description{
 Returns the number of resources that are compliant and the number that are noncompliant. You can specify one or more resource types to get these numbers for each resource type. The maximum number returned is 100.
 
-See \url{https://paws-r.github.io/docs/configservice/get_compliance_summary_by_resource_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_get_compliance_summary_by_resource_type/} for full documentation.
 }
 \keyword{internal}

@@ -2,9 +2,8 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_auto_ml_job_v2}
 \alias{sagemaker_create_auto_ml_job_v2}
-\title{Creates an Amazon SageMaker AutoML job that uses non-tabular data such
-as images or text for Computer Vision or Natural Language Processing
-problems}
+\title{Creates an Autopilot job also referred to as Autopilot experiment or
+AutoML job V2}
 \usage{
 sagemaker_create_auto_ml_job_v2(
   AutoMLJobName,
@@ -24,14 +23,16 @@ sagemaker_create_auto_ml_job_v2(
 is case insensitive.}
 
 \item{AutoMLJobInputDataConfig}{[required] An array of channel objects describing the input data and their
-location. Each channel is a named input source. Similar to
+location. Each channel is a named input source. Similar to the
 \href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJob.html#sagemaker-CreateAutoMLJob-request-InputDataConfig}{InputDataConfig}
-supported by \code{\link[=sagemaker_create_auto_ml_job]{create_auto_ml_job}}. The
-supported formats depend on the problem type:
+attribute in the \code{\link[=sagemaker_create_auto_ml_job]{create_auto_ml_job}}
+input parameters. The supported formats depend on the problem type:
 \itemize{
-\item ImageClassification: S3Prefix, \code{ManifestFile},
-\code{AugmentedManifestFile}
-\item TextClassification: S3Prefix
+\item For tabular problem types: \code{S3Prefix}, \code{ManifestFile}.
+\item For image classification: \code{S3Prefix}, \code{ManifestFile},
+\code{AugmentedManifestFile}.
+\item For text classification: \code{S3Prefix}.
+\item For time-series forecasting: \code{S3Prefix}.
 }}
 
 \item{OutputDataConfig}{[required] Provides information about encryption and the Amazon S3 output path
@@ -50,9 +51,15 @@ Tag keys must be unique per resource.}
 \item{SecurityConfig}{The security configuration for traffic encryption or Amazon VPC
 settings.}
 
-\item{AutoMLJobObjective}{Specifies a metric to minimize or maximize as the objective of a job.
-For \code{\link[=sagemaker_create_auto_ml_job_v2]{create_auto_ml_job_v2}}, only
-\code{Accuracy} is supported.}
+\item{AutoMLJobObjective}{Specifies a metric to minimize or maximize as the objective of a job. If
+not specified, the default objective metric depends on the problem type.
+For the list of default values per problem type, see
+\href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html}{AutoMLJobObjective}.
+
+For tabular problem types, you must either provide both the
+\code{AutoMLJobObjective} and indicate the type of supervised learning
+problem in \code{AutoMLProblemTypeConfig} (\code{TabularJobConfig.ProblemType}),
+or none at all.}
 
 \item{ModelDeployConfig}{Specifies how to generate the endpoint name for an automatic one-click
 Autopilot model deployment.}
@@ -60,17 +67,18 @@ Autopilot model deployment.}
 \item{DataSplitConfig}{This structure specifies how to split the data into train and validation
 datasets.
 
-If you are using the V1 API (for example
-\code{\link[=sagemaker_create_auto_ml_job]{create_auto_ml_job}}) or the V2 API for
-Natural Language Processing problems (for example
-\code{\link[=sagemaker_create_auto_ml_job_v2]{create_auto_ml_job_v2}} with a
-\code{TextClassificationJobConfig} problem type), the validation and training
-datasets must contain the same headers. Also, for V1 API jobs, the
-validation dataset must be less than 2 GB in size.}
+The validation and training datasets must contain the same headers. For
+jobs created by calling
+\code{\link[=sagemaker_create_auto_ml_job]{create_auto_ml_job}}, the validation
+dataset must be less than 2 GB in size.
+
+This attribute must not be set for the time-series forecasting problem
+type, as Autopilot automatically splits the input dataset into training
+and validation sets.}
 }
 \description{
-Creates an Amazon SageMaker AutoML job that uses non-tabular data such as images or text for Computer Vision or Natural Language Processing problems.
+Creates an Autopilot job also referred to as Autopilot experiment or AutoML job V2.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_auto_ml_job_v2.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_auto_ml_job_v2/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ service software update on.}
 \description{
 Cancels a scheduled service software update for an Amazon OpenSearch Service domain. You can only perform this operation before the \code{AutomatedUpdateDate} and when the domain's \code{UpdateStatus} is \code{PENDING_UPDATE}. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html}{Service software updates in Amazon OpenSearch Service}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/cancel_service_software_update.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_cancel_service_software_update/} for full documentation.
 }
 \keyword{internal}

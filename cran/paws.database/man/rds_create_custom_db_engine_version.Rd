@@ -92,6 +92,6 @@ in the \emph{Amazon RDS User Guide}.}
 \description{
 Creates a custom DB engine version (CEV).
 
-See \url{https://paws-r.github.io/docs/rds/create_custom_db_engine_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_create_custom_db_engine_version/} for full documentation.
 }
 \keyword{internal}

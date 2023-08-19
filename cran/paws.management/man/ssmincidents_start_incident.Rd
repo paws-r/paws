@@ -50,6 +50,6 @@ provided by the response plan.}
 \description{
 Used to start an incident from CloudWatch alarms, EventBridge events, or manually.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/start_incident.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_start_incident/} for full documentation.
 }
 \keyword{internal}

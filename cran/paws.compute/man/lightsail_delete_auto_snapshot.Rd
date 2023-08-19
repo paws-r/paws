@@ -17,6 +17,6 @@ snapshots for a resource.}
 \description{
 Deletes an automatic snapshot of an instance or disk. For more information, see the Amazon Lightsail Developer Guide.
 
-See \url{https://paws-r.github.io/docs/lightsail/delete_auto_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_delete_auto_snapshot/} for full documentation.
 }
 \keyword{internal}

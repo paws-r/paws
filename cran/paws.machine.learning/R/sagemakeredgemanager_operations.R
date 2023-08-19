@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Use to get the active deployments from a device.
 #'
-#' See [https://paws-r.github.io/docs/sagemakeredgemanager/get_deployments.html](https://paws-r.github.io/docs/sagemakeredgemanager/get_deployments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemakeredgemanager_get_deployments/](https://www.paws-r-sdk.com/docs/sagemakeredgemanager_get_deployments/) for full documentation.
 #'
 #' @param DeviceName &#91;required&#93; The unique name of the device you want to get the configuration of
 #' active deployments from.
@@ -39,7 +39,7 @@ sagemakeredgemanager_get_deployments <- function(DeviceName, DeviceFleetName) {
 #' @description
 #' Use to check if a device is registered with SageMaker Edge Manager.
 #'
-#' See [https://paws-r.github.io/docs/sagemakeredgemanager/get_device_registration.html](https://paws-r.github.io/docs/sagemakeredgemanager/get_device_registration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemakeredgemanager_get_device_registration/](https://www.paws-r-sdk.com/docs/sagemakeredgemanager_get_device_registration/) for full documentation.
 #'
 #' @param DeviceName &#91;required&#93; The unique name of the device you want to get the registration status
 #' from.
@@ -71,7 +71,7 @@ sagemakeredgemanager_get_device_registration <- function(DeviceName, DeviceFleet
 #' @description
 #' Use to get the current status of devices registered on SageMaker Edge Manager.
 #'
-#' See [https://paws-r.github.io/docs/sagemakeredgemanager/send_heartbeat.html](https://paws-r.github.io/docs/sagemakeredgemanager/send_heartbeat.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemakeredgemanager_send_heartbeat/](https://www.paws-r-sdk.com/docs/sagemakeredgemanager_send_heartbeat/) for full documentation.
 #'
 #' @param AgentMetrics For internal use. Returns a list of SageMaker Edge Manager agent
 #' operating metrics.

@@ -24,6 +24,6 @@ in the \emph{Amazon Web Services General Reference}.}
 \description{
 Assigns one or more tags (key-value pairs) to the specified CloudWatch resource. Currently, the only CloudWatch resources that can be tagged are alarms and Contributor Insights rules.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_tag_resource/} for full documentation.
 }
 \keyword{internal}

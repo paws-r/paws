@@ -32,6 +32,6 @@ in the \emph{AWS Auto Scaling API Reference}.}
 \description{
 Updates the specified scaling plan.
 
-See \url{https://paws-r.github.io/docs/autoscalingplans/update_scaling_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscalingplans_update_scaling_plan/} for full documentation.
 }
 \keyword{internal}

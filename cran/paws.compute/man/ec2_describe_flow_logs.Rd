@@ -53,6 +53,6 @@ the end of the items returned by the previous request.}
 \description{
 Describes one or more flow logs.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_flow_logs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_flow_logs/} for full documentation.
 }
 \keyword{internal}

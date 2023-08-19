@@ -27,6 +27,6 @@ licensemanager_list_received_grants_for_organization(
 \description{
 Lists the grants received for all accounts in the organization.
 
-See \url{https://paws-r.github.io/docs/licensemanager/list_received_grants_for_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_list_received_grants_for_organization/} for full documentation.
 }
 \keyword{internal}

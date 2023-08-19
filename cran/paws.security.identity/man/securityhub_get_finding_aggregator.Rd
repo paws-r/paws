@@ -14,6 +14,6 @@ ARN, use
 \description{
 Returns the current finding aggregation configuration.
 
-See \url{https://paws-r.github.io/docs/securityhub/get_finding_aggregator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_get_finding_aggregator/} for full documentation.
 }
 \keyword{internal}

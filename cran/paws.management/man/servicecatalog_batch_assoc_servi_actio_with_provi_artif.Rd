@@ -22,6 +22,6 @@ ID, and the Provisioning Artifact ID.}
 \description{
 Associates multiple self-service actions with provisioning artifacts.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/batch_associate_service_action_with_provisioning_artifact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_batch_associate_service_action_with_provisioning_artifact/} for full documentation.
 }
 \keyword{internal}

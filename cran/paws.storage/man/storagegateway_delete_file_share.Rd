@@ -20,6 +20,6 @@ Valid Values: \code{true} | \code{false}}
 \description{
 Deletes a file share from an S3 File Gateway. This operation is only supported for S3 File Gateways.
 
-See \url{https://paws-r.github.io/docs/storagegateway/delete_file_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_delete_file_share/} for full documentation.
 }
 \keyword{internal}

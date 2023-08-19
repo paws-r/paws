@@ -14,6 +14,6 @@ that contains the tags that you want a list of.}
 \description{
 Returns a list of tags in an Amazon Rekognition collection, stream processor, or Custom Labels model.
 
-See \url{https://paws-r.github.io/docs/rekognition/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

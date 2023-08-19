@@ -35,6 +35,6 @@ results.}
 \description{
 Returns the resource CIDRs that are monitored as part of a resource discovery. A discovered resource is a resource CIDR monitored under a resource discovery. The following resources can be discovered: VPCs, Public IPv4 pools, VPC subnets, and Elastic IP addresses.
 
-See \url{https://paws-r.github.io/docs/ec2/get_ipam_discovered_resource_cidrs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_ipam_discovered_resource_cidrs/} for full documentation.
 }
 \keyword{internal}

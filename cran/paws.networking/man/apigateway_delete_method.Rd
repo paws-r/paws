@@ -16,6 +16,6 @@ apigateway_delete_method(restApiId, resourceId, httpMethod)
 \description{
 Deletes an existing Method resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_method.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_method/} for full documentation.
 }
 \keyword{internal}

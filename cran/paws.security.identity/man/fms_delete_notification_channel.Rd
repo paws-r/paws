@@ -11,6 +11,6 @@ fms_delete_notification_channel()
 \description{
 Deletes an Firewall Manager association with the IAM role and the Amazon Simple Notification Service (SNS) topic that is used to record Firewall Manager SNS logs.
 
-See \url{https://paws-r.github.io/docs/fms/delete_notification_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_delete_notification_channel/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ of devices you want to view.}
 \description{
 Lists the sign-in devices that Amazon Cognito has registered to the current user.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_devices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_devices/} for full documentation.
 }
 \keyword{internal}

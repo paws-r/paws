@@ -42,6 +42,6 @@ following format: mi-ID_number. For example, mi-1a2b3c4d5e6f.}
 \description{
 Removes tag keys from the specified resource.
 
-See \url{https://paws-r.github.io/docs/ssm/remove_tags_from_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_remove_tags_from_resource/} for full documentation.
 }
 \keyword{internal}

@@ -55,6 +55,6 @@ indicates the start of the list for this
 \description{
 Provides summaries of all notebook executions. You can filter the list based on multiple criteria such as status, time range, and editor id. Returns a maximum of 50 notebook executions and a marker to track the paging of a longer notebook execution list across multiple \code{\link[=emr_list_notebook_executions]{list_notebook_executions}} calls.
 
-See \url{https://paws-r.github.io/docs/emr/list_notebook_executions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_list_notebook_executions/} for full documentation.
 }
 \keyword{internal}

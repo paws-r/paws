@@ -45,6 +45,6 @@ the value specified by MaxRecords.}
 \description{
 Returns information about reserved nodes for this account, or about a specified reserved node.
 
-See \url{https://paws-r.github.io/docs/memorydb/describe_reserved_nodes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_describe_reserved_nodes/} for full documentation.
 }
 \keyword{internal}

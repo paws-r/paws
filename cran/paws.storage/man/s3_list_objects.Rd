@@ -12,7 +12,8 @@ s3_list_objects(
   MaxKeys = NULL,
   Prefix = NULL,
   RequestPayer = NULL,
-  ExpectedBucketOwner = NULL
+  ExpectedBucketOwner = NULL,
+  OptionalObjectAttributes = NULL
 )
 }
 \arguments{
@@ -32,10 +33,10 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
-\item{Delimiter}{A delimiter is a character you use to group keys.}
+\item{Delimiter}{A delimiter is a character that you use to group keys.}
 
 \item{EncodingType}{}
 
@@ -43,9 +44,9 @@ in the \emph{Amazon S3 User Guide}.}
 starts listing after this specified key. Marker can be any key in the
 bucket.}
 
-\item{MaxKeys}{Sets the maximum number of keys returned in the response. By default the
-action returns up to 1,000 key names. The response might contain fewer
-keys but will never contain more.}
+\item{MaxKeys}{Sets the maximum number of keys returned in the response. By default,
+the action returns up to 1,000 key names. The response might contain
+fewer keys but will never contain more.}
 
 \item{Prefix}{Limits the response to keys that begin with the specified prefix.}
 
@@ -56,10 +57,13 @@ their requests.}
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
+
+\item{OptionalObjectAttributes}{Specifies the optional fields that you want returned in the response.
+Fields that you do not specify are not returned.}
 }
 \description{
 Returns some or all (up to 1,000) of the objects in a bucket. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A 200 OK response can contain valid or invalid XML. Be sure to design your application to parse the contents of the response and handle it appropriately.
 
-See \url{https://paws-r.github.io/docs/s3/list_objects.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_list_objects/} for full documentation.
 }
 \keyword{internal}

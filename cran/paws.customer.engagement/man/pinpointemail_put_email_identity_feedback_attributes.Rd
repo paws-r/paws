@@ -31,6 +31,6 @@ disabled).}
 \description{
 Used to enable or disable feedback forwarding for an identity. This setting determines what happens when an identity is used to send an email that results in a bounce or complaint event.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/put_email_identity_feedback_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_put_email_identity_feedback_attributes/} for full documentation.
 }
 \keyword{internal}

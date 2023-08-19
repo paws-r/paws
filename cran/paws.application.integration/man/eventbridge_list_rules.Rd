@@ -25,6 +25,6 @@ results.}
 \description{
 Lists your Amazon EventBridge rules. You can either list all the rules or you can provide a prefix to match to the rule names.
 
-See \url{https://paws-r.github.io/docs/eventbridge/list_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_list_rules/} for full documentation.
 }
 \keyword{internal}

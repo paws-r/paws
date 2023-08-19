@@ -14,6 +14,6 @@ cognitoidentityprovider_describe_identity_provider(UserPoolId, ProviderName)
 \description{
 Gets information about a specific IdP.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/describe_identity_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_identity_provider/} for full documentation.
 }
 \keyword{internal}

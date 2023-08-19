@@ -20,6 +20,6 @@ the cache policy's \code{ETag} value, which you can get using
 \description{
 Deletes a cache policy.
 
-See \url{https://paws-r.github.io/docs/cloudfront/delete_cache_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_delete_cache_policy/} for full documentation.
 }
 \keyword{internal}

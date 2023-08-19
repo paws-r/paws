@@ -12,6 +12,6 @@ route53recoveryreadiness_delete_recovery_group(RecoveryGroupName)
 \description{
 Deletes a recovery group.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/delete_recovery_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_delete_recovery_group/} for full documentation.
 }
 \keyword{internal}

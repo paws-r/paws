@@ -21,6 +21,6 @@ When using Java, you must include \code{auth-crt} on the class path.}
 \description{
 Sends custom events to Amazon EventBridge so that they can be matched to rules.
 
-See \url{https://paws-r.github.io/docs/eventbridge/put_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_put_events/} for full documentation.
 }
 \keyword{internal}

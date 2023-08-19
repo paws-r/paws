@@ -17,8 +17,10 @@ sagemaker_list_app_image_configs(
 )
 }
 \arguments{
-\item{MaxResults}{The maximum number of AppImageConfigs to return in the response. The
-default value is 10.}
+\item{MaxResults}{The total number of items to return in the response. If the total number
+of items available is more than the value specified, a \code{NextToken} is
+provided in the response. To resume pagination, provide the \code{NextToken}
+value in the as part of a subsequent call. The default value is 10.}
 
 \item{NextToken}{If the previous call to \code{\link[=sagemaker_list_images]{list_images}} didn't
 return the full set of AppImageConfigs, the call returns a token for
@@ -46,6 +48,6 @@ specified time.}
 \description{
 Lists the AppImageConfigs in your account and their properties. The list can be filtered by creation time or modified time, and whether the AppImageConfig name contains a specified string.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_app_image_configs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_app_image_configs/} for full documentation.
 }
 \keyword{internal}

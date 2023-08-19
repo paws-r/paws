@@ -20,6 +20,6 @@ in the \emph{IAM Identity Center OIDC API Reference Guide}.}
 \description{
 Returns the STS short-term credentials for a given role name that is assigned to the user.
 
-See \url{https://paws-r.github.io/docs/sso/get_role_credentials.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sso_get_role_credentials/} for full documentation.
 }
 \keyword{internal}

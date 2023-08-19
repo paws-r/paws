@@ -50,6 +50,6 @@ marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Returns information about provisioned Amazon DocumentDB instances. This API supports pagination.
 
-See \url{https://paws-r.github.io/docs/docdb/describe_db_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_describe_db_instances/} for full documentation.
 }
 \keyword{internal}

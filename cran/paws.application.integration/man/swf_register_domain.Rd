@@ -43,6 +43,6 @@ symbols: \verb{_ . : / = + - @}.}
 \description{
 Registers a new domain.
 
-See \url{https://paws-r.github.io/docs/swf/register_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_register_domain/} for full documentation.
 }
 \keyword{internal}

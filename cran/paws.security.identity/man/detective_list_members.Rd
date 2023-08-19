@@ -21,6 +21,6 @@ return, which is currently 200.}
 \description{
 Retrieves the list of member accounts for a behavior graph.
 
-See \url{https://paws-r.github.io/docs/detective/list_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_list_members/} for full documentation.
 }
 \keyword{internal}

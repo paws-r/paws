@@ -15,6 +15,6 @@ cloudwatchlogs_test_metric_filter(filterPattern, logEventMessages)
 \description{
 Tests the filter pattern of a metric filter against a sample of log event messages. You can use this operation to validate the correctness of a metric filter pattern.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/test_metric_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_test_metric_filter/} for full documentation.
 }
 \keyword{internal}

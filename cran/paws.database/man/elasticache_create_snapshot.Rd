@@ -30,6 +30,6 @@ A tag key must be accompanied by a tag value, although null is accepted.}
 \description{
 Creates a copy of an entire cluster or replication group at a specific moment in time.
 
-See \url{https://paws-r.github.io/docs/elasticache/create_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_create_snapshot/} for full documentation.
 }
 \keyword{internal}

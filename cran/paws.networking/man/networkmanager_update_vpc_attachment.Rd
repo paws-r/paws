@@ -23,6 +23,6 @@ networkmanager_update_vpc_attachment(
 \description{
 Updates a VPC attachment.
 
-See \url{https://paws-r.github.io/docs/networkmanager/update_vpc_attachment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_update_vpc_attachment/} for full documentation.
 }
 \keyword{internal}

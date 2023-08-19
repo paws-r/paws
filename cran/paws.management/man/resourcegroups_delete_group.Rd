@@ -14,6 +14,6 @@ resourcegroups_delete_group(GroupName = NULL, Group = NULL)
 \description{
 Deletes the specified resource group. Deleting a resource group does not delete any resources that are members of the group; it only deletes the group structure.
 
-See \url{https://paws-r.github.io/docs/resourcegroups/delete_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroups_delete_group/} for full documentation.
 }
 \keyword{internal}

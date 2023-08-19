@@ -25,6 +25,6 @@ different account, the request fails with the HTTP status code
 \description{
 Returns the Region the bucket resides in. You set the bucket's Region using the \code{LocationConstraint} request parameter in a \code{\link[=s3_create_bucket]{create_bucket}} request. For more information, see \code{\link[=s3_create_bucket]{create_bucket}}.
 
-See \url{https://paws-r.github.io/docs/s3/get_bucket_location.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_location/} for full documentation.
 }
 \keyword{internal}

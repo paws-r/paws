@@ -41,6 +41,6 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \description{
 Provision a CIDR to an IPAM pool. You can use this action to provision new CIDRs to a top-level pool or to transfer a CIDR from a top-level pool to a pool within it.
 
-See \url{https://paws-r.github.io/docs/ec2/provision_ipam_pool_cidr.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_provision_ipam_pool_cidr/} for full documentation.
 }
 \keyword{internal}

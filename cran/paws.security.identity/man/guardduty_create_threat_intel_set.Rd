@@ -36,6 +36,6 @@ uploaded ThreatIntelSet.}
 \description{
 Creates a new ThreatIntelSet. ThreatIntelSets consist of known malicious IP addresses. GuardDuty generates findings based on ThreatIntelSets. Only users of the administrator account can use this operation.
 
-See \url{https://paws-r.github.io/docs/guardduty/create_threat_intel_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_create_threat_intel_set/} for full documentation.
 }
 \keyword{internal}

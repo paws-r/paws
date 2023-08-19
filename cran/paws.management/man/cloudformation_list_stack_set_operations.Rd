@@ -48,6 +48,6 @@ in the \emph{CloudFormation User Guide}.
 \description{
 Returns summary information about operations performed on a stack set.
 
-See \url{https://paws-r.github.io/docs/cloudformation/list_stack_set_operations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_list_stack_set_operations/} for full documentation.
 }
 \keyword{internal}

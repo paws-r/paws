@@ -38,6 +38,6 @@ receive all of the results.}
 \description{
 Retrieves the resource policies for the specified resources that you own and have shared.
 
-See \url{https://paws-r.github.io/docs/ram/get_resource_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_get_resource_policies/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ apigateway_get_rest_api(restApiId)
 \description{
 Lists the RestApi resource in the collection.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_rest_api.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_rest_api/} for full documentation.
 }
 \keyword{internal}

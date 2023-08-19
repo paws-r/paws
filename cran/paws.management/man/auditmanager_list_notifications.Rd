@@ -15,6 +15,6 @@ call.}
 \description{
 Returns a list of all Audit Manager notifications.
 
-See \url{https://paws-r.github.io/docs/auditmanager/list_notifications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_list_notifications/} for full documentation.
 }
 \keyword{internal}

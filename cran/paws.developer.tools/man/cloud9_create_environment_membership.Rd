@@ -23,6 +23,6 @@ this environment member. Available values include:
 \description{
 Adds an environment member to an Cloud9 development environment.
 
-See \url{https://paws-r.github.io/docs/cloud9/create_environment_membership.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloud9_create_environment_membership/} for full documentation.
 }
 \keyword{internal}

@@ -32,6 +32,6 @@ populates this field. For more information about idempotency, see
 \description{
 Provides a pre-signed Amazon S3 URL in response for uploading the file directly to S3.
 
-See \url{https://paws-r.github.io/docs/connectparticipant/start_attachment_upload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectparticipant_start_attachment_upload/} for full documentation.
 }
 \keyword{internal}

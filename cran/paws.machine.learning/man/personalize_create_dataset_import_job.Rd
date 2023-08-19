@@ -25,7 +25,9 @@ personalize_create_dataset_import_job(
 \item{roleArn}{[required] The ARN of the IAM role that has permissions to read from the Amazon S3
 data source.}
 
-\item{tags}{A list of tags to apply to the dataset import job.}
+\item{tags}{A list of
+\href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{tags}
+to apply to the dataset import job.}
 
 \item{importMode}{Specify how to add the new records to an existing dataset. The default
 import mode is \code{FULL}. If you haven't imported bulk records into the
@@ -44,6 +46,6 @@ for this import job to Amazon S3}
 \description{
 Creates a job that imports training data from your data source (an Amazon S3 bucket) to an Amazon Personalize dataset. To allow Amazon Personalize to import the training data, you must specify an IAM service role that has permission to read from the data source, as Amazon Personalize makes a copy of your data and processes it internally. For information on granting access to your Amazon S3 bucket, see \href{https://docs.aws.amazon.com/personalize/latest/dg/granting-personalize-s3-access.html}{Giving Amazon Personalize Access to Amazon S3 Resources}.
 
-See \url{https://paws-r.github.io/docs/personalize/create_dataset_import_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_create_dataset_import_job/} for full documentation.
 }
 \keyword{internal}

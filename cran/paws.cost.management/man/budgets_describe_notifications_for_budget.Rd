@@ -26,6 +26,6 @@ next set of results that you want to retrieve.}
 \description{
 Lists the notifications that are associated with a budget.
 
-See \url{https://paws-r.github.io/docs/budgets/describe_notifications_for_budget.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_describe_notifications_for_budget/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ voiceid_describe_speaker(DomainId, SpeakerId)
 \description{
 Describes the specified speaker.
 
-See \url{https://paws-r.github.io/docs/voiceid/describe_speaker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_describe_speaker/} for full documentation.
 }
 \keyword{internal}

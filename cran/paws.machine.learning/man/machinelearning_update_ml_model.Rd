@@ -26,6 +26,6 @@ than the \code{ScoreThreshold} receive a negative response from the
 \description{
 Updates the \code{MLModelName} and the \code{ScoreThreshold} of an \code{MLModel}.
 
-See \url{https://paws-r.github.io/docs/machinelearning/update_ml_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_update_ml_model/} for full documentation.
 }
 \keyword{internal}

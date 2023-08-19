@@ -19,6 +19,6 @@ policy.}
 \description{
 Removes an existing policy from a bot or bot alias. If the resource doesn't have a policy attached, Amazon Lex returns an exception.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/delete_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_delete_resource_policy/} for full documentation.
 }
 \keyword{internal}

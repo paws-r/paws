@@ -13,6 +13,6 @@ connection.}
 \description{
 Returns a description of this MSK VPC connection.
 
-See \url{https://paws-r.github.io/docs/kafka/describe_vpc_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_describe_vpc_connection/} for full documentation.
 }
 \keyword{internal}

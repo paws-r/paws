@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Cancels a job run. A job run is a unit of work, such as a Spark jar, PySpark script, or SparkSQL query, that you submit to Amazon EMR on EKS.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/cancel_job_run.html](https://paws-r.github.io/docs/emrcontainers/cancel_job_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_cancel_job_run/](https://www.paws-r-sdk.com/docs/emrcontainers_cancel_job_run/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the job run to cancel.
 #' @param virtualClusterId &#91;required&#93; The ID of the virtual cluster for which the job run will be canceled.
@@ -38,7 +38,7 @@ emrcontainers_cancel_job_run <- function(id, virtualClusterId) {
 #' @description
 #' Creates a job template. Job template stores values of StartJobRun API request in a template and can be used to start a job run. Job template allows two use cases: avoid repeating recurring StartJobRun API request values, enforcing certain values in StartJobRun API request.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/create_job_template.html](https://paws-r.github.io/docs/emrcontainers/create_job_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_create_job_template/](https://www.paws-r-sdk.com/docs/emrcontainers_create_job_template/) for full documentation.
 #'
 #' @param name &#91;required&#93; The specified name of the job template.
 #' @param clientToken &#91;required&#93; The client token of the job template.
@@ -71,7 +71,7 @@ emrcontainers_create_job_template <- function(name, clientToken, jobTemplateData
 #' @description
 #' Creates a managed endpoint. A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR Studio can communicate with your virtual cluster.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/create_managed_endpoint.html](https://paws-r.github.io/docs/emrcontainers/create_managed_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_create_managed_endpoint/](https://www.paws-r-sdk.com/docs/emrcontainers_create_managed_endpoint/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the managed endpoint.
 #' @param virtualClusterId &#91;required&#93; The ID of the virtual cluster for which a managed endpoint is created.
@@ -110,7 +110,7 @@ emrcontainers_create_managed_endpoint <- function(name, virtualClusterId, type, 
 #' @description
 #' Creates a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/create_virtual_cluster.html](https://paws-r.github.io/docs/emrcontainers/create_virtual_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_create_virtual_cluster/](https://www.paws-r-sdk.com/docs/emrcontainers_create_virtual_cluster/) for full documentation.
 #'
 #' @param name &#91;required&#93; The specified name of the virtual cluster.
 #' @param containerProvider &#91;required&#93; The container provider of the virtual cluster.
@@ -142,7 +142,7 @@ emrcontainers_create_virtual_cluster <- function(name, containerProvider, client
 #' @description
 #' Deletes a job template. Job template stores values of StartJobRun API request in a template and can be used to start a job run. Job template allows two use cases: avoid repeating recurring StartJobRun API request values, enforcing certain values in StartJobRun API request.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/delete_job_template.html](https://paws-r.github.io/docs/emrcontainers/delete_job_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_delete_job_template/](https://www.paws-r-sdk.com/docs/emrcontainers_delete_job_template/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the job template that will be deleted.
 #'
@@ -171,7 +171,7 @@ emrcontainers_delete_job_template <- function(id) {
 #' @description
 #' Deletes a managed endpoint. A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR Studio can communicate with your virtual cluster.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/delete_managed_endpoint.html](https://paws-r.github.io/docs/emrcontainers/delete_managed_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_delete_managed_endpoint/](https://www.paws-r-sdk.com/docs/emrcontainers_delete_managed_endpoint/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the managed endpoint.
 #' @param virtualClusterId &#91;required&#93; The ID of the endpoint's virtual cluster.
@@ -201,7 +201,7 @@ emrcontainers_delete_managed_endpoint <- function(id, virtualClusterId) {
 #' @description
 #' Deletes a virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/delete_virtual_cluster.html](https://paws-r.github.io/docs/emrcontainers/delete_virtual_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_delete_virtual_cluster/](https://www.paws-r-sdk.com/docs/emrcontainers_delete_virtual_cluster/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the virtual cluster that will be deleted.
 #'
@@ -230,7 +230,7 @@ emrcontainers_delete_virtual_cluster <- function(id) {
 #' @description
 #' Displays detailed information about a job run. A job run is a unit of work, such as a Spark jar, PySpark script, or SparkSQL query, that you submit to Amazon EMR on EKS.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/describe_job_run.html](https://paws-r.github.io/docs/emrcontainers/describe_job_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_describe_job_run/](https://www.paws-r-sdk.com/docs/emrcontainers_describe_job_run/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the job run request.
 #' @param virtualClusterId &#91;required&#93; The ID of the virtual cluster for which the job run is submitted.
@@ -260,7 +260,7 @@ emrcontainers_describe_job_run <- function(id, virtualClusterId) {
 #' @description
 #' Displays detailed information about a specified job template. Job template stores values of StartJobRun API request in a template and can be used to start a job run. Job template allows two use cases: avoid repeating recurring StartJobRun API request values, enforcing certain values in StartJobRun API request.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/describe_job_template.html](https://paws-r.github.io/docs/emrcontainers/describe_job_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_describe_job_template/](https://www.paws-r-sdk.com/docs/emrcontainers_describe_job_template/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the job template that will be described.
 #'
@@ -289,7 +289,7 @@ emrcontainers_describe_job_template <- function(id) {
 #' @description
 #' Displays detailed information about a managed endpoint. A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR Studio can communicate with your virtual cluster.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/describe_managed_endpoint.html](https://paws-r.github.io/docs/emrcontainers/describe_managed_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_describe_managed_endpoint/](https://www.paws-r-sdk.com/docs/emrcontainers_describe_managed_endpoint/) for full documentation.
 #'
 #' @param id &#91;required&#93; This output displays ID of the managed endpoint.
 #' @param virtualClusterId &#91;required&#93; The ID of the endpoint's virtual cluster.
@@ -319,7 +319,7 @@ emrcontainers_describe_managed_endpoint <- function(id, virtualClusterId) {
 #' @description
 #' Displays detailed information about a specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/describe_virtual_cluster.html](https://paws-r.github.io/docs/emrcontainers/describe_virtual_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_describe_virtual_cluster/](https://www.paws-r-sdk.com/docs/emrcontainers_describe_virtual_cluster/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the virtual cluster that will be described.
 #'
@@ -348,7 +348,7 @@ emrcontainers_describe_virtual_cluster <- function(id) {
 #' @description
 #' Generate a session token to connect to a managed endpoint.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/get_managed_endpoint_session_credentials.html](https://paws-r.github.io/docs/emrcontainers/get_managed_endpoint_session_credentials.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_get_managed_endpoint_session_credentials/](https://www.paws-r-sdk.com/docs/emrcontainers_get_managed_endpoint_session_credentials/) for full documentation.
 #'
 #' @param endpointIdentifier &#91;required&#93; The ARN of the managed endpoint for which the request is submitted.
 #' @param virtualClusterIdentifier &#91;required&#93; The ARN of the Virtual Cluster which the Managed Endpoint belongs to.
@@ -386,7 +386,7 @@ emrcontainers_get_managed_endpoint_session_credentials <- function(endpointIdent
 #' @description
 #' Lists job runs based on a set of parameters. A job run is a unit of work, such as a Spark jar, PySpark script, or SparkSQL query, that you submit to Amazon EMR on EKS.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/list_job_runs.html](https://paws-r.github.io/docs/emrcontainers/list_job_runs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_list_job_runs/](https://www.paws-r-sdk.com/docs/emrcontainers_list_job_runs/) for full documentation.
 #'
 #' @param virtualClusterId &#91;required&#93; The ID of the virtual cluster for which to list the job run.
 #' @param createdBefore The date and time before which the job runs were submitted.
@@ -404,7 +404,7 @@ emrcontainers_list_job_runs <- function(virtualClusterId, createdBefore = NULL, 
     name = "ListJobRuns",
     http_method = "GET",
     http_path = "/virtualclusters/{virtualClusterId}/jobruns",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobRuns")
   )
   input <- .emrcontainers$list_job_runs_input(virtualClusterId = virtualClusterId, createdBefore = createdBefore, createdAfter = createdAfter, name = name, states = states, maxResults = maxResults, nextToken = nextToken)
   output <- .emrcontainers$list_job_runs_output()
@@ -421,7 +421,7 @@ emrcontainers_list_job_runs <- function(virtualClusterId, createdBefore = NULL, 
 #' @description
 #' Lists job templates based on a set of parameters. Job template stores values of StartJobRun API request in a template and can be used to start a job run. Job template allows two use cases: avoid repeating recurring StartJobRun API request values, enforcing certain values in StartJobRun API request.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/list_job_templates.html](https://paws-r.github.io/docs/emrcontainers/list_job_templates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_list_job_templates/](https://www.paws-r-sdk.com/docs/emrcontainers_list_job_templates/) for full documentation.
 #'
 #' @param createdAfter The date and time after which the job templates were created.
 #' @param createdBefore The date and time before which the job templates were created.
@@ -436,7 +436,7 @@ emrcontainers_list_job_templates <- function(createdAfter = NULL, createdBefore 
     name = "ListJobTemplates",
     http_method = "GET",
     http_path = "/jobtemplates",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templates")
   )
   input <- .emrcontainers$list_job_templates_input(createdAfter = createdAfter, createdBefore = createdBefore, maxResults = maxResults, nextToken = nextToken)
   output <- .emrcontainers$list_job_templates_output()
@@ -453,7 +453,7 @@ emrcontainers_list_job_templates <- function(createdAfter = NULL, createdBefore 
 #' @description
 #' Lists managed endpoints based on a set of parameters. A managed endpoint is a gateway that connects Amazon EMR Studio to Amazon EMR on EKS so that Amazon EMR Studio can communicate with your virtual cluster.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/list_managed_endpoints.html](https://paws-r.github.io/docs/emrcontainers/list_managed_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_list_managed_endpoints/](https://www.paws-r-sdk.com/docs/emrcontainers_list_managed_endpoints/) for full documentation.
 #'
 #' @param virtualClusterId &#91;required&#93; The ID of the virtual cluster.
 #' @param createdBefore The date and time before which the endpoints are created.
@@ -471,7 +471,7 @@ emrcontainers_list_managed_endpoints <- function(virtualClusterId, createdBefore
     name = "ListManagedEndpoints",
     http_method = "GET",
     http_path = "/virtualclusters/{virtualClusterId}/endpoints",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "endpoints")
   )
   input <- .emrcontainers$list_managed_endpoints_input(virtualClusterId = virtualClusterId, createdBefore = createdBefore, createdAfter = createdAfter, types = types, states = states, maxResults = maxResults, nextToken = nextToken)
   output <- .emrcontainers$list_managed_endpoints_output()
@@ -488,7 +488,7 @@ emrcontainers_list_managed_endpoints <- function(virtualClusterId, createdBefore
 #' @description
 #' Lists the tags assigned to the resources.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/list_tags_for_resource.html](https://paws-r.github.io/docs/emrcontainers/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/emrcontainers_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of tagged resources.
 #'
@@ -517,7 +517,7 @@ emrcontainers_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Lists information about the specified virtual cluster. Virtual cluster is a managed entity on Amazon EMR on EKS. You can create, describe, list and delete virtual clusters. They do not consume any additional resource in your system. A single virtual cluster maps to a single Kubernetes namespace. Given this relationship, you can model virtual clusters the same way you model Kubernetes namespaces to meet your requirements.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/list_virtual_clusters.html](https://paws-r.github.io/docs/emrcontainers/list_virtual_clusters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_list_virtual_clusters/](https://www.paws-r-sdk.com/docs/emrcontainers_list_virtual_clusters/) for full documentation.
 #'
 #' @param containerProviderId The container provider ID of the virtual cluster.
 #' @param containerProviderType The container provider type of the virtual cluster. Amazon EKS is the
@@ -536,7 +536,7 @@ emrcontainers_list_virtual_clusters <- function(containerProviderId = NULL, cont
     name = "ListVirtualClusters",
     http_method = "GET",
     http_path = "/virtualclusters",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "virtualClusters")
   )
   input <- .emrcontainers$list_virtual_clusters_input(containerProviderId = containerProviderId, containerProviderType = containerProviderType, createdAfter = createdAfter, createdBefore = createdBefore, states = states, maxResults = maxResults, nextToken = nextToken)
   output <- .emrcontainers$list_virtual_clusters_output()
@@ -553,7 +553,7 @@ emrcontainers_list_virtual_clusters <- function(containerProviderId = NULL, cont
 #' @description
 #' Starts a job run. A job run is a unit of work, such as a Spark jar, PySpark script, or SparkSQL query, that you submit to Amazon EMR on EKS.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/start_job_run.html](https://paws-r.github.io/docs/emrcontainers/start_job_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_start_job_run/](https://www.paws-r-sdk.com/docs/emrcontainers_start_job_run/) for full documentation.
 #'
 #' @param name The name of the job run.
 #' @param virtualClusterId &#91;required&#93; The virtual cluster ID for which the job run request is submitted.
@@ -592,7 +592,7 @@ emrcontainers_start_job_run <- function(name = NULL, virtualClusterId, clientTok
 #' @description
 #' Assigns tags to resources. A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key and an optional value, both of which you define. Tags enable you to categorize your Amazon Web Services resources by attributes such as purpose, owner, or environment. When you have many resources of the same type, you can quickly identify a specific resource based on the tags you've assigned to it. For example, you can define a set of tags for your Amazon EMR on EKS clusters to help you track each cluster's owner and stack level. We recommend that you devise a consistent set of tag keys for each resource type. You can then search and filter the resources based on the tags that you add.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/tag_resource.html](https://paws-r.github.io/docs/emrcontainers/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_tag_resource/](https://www.paws-r-sdk.com/docs/emrcontainers_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of resources.
 #' @param tags &#91;required&#93; The tags assigned to resources.
@@ -622,7 +622,7 @@ emrcontainers_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes tags from resources.
 #'
-#' See [https://paws-r.github.io/docs/emrcontainers/untag_resource.html](https://paws-r.github.io/docs/emrcontainers/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrcontainers_untag_resource/](https://www.paws-r-sdk.com/docs/emrcontainers_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of resources.
 #' @param tagKeys &#91;required&#93; The tag keys of the resources.

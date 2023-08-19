@@ -30,6 +30,6 @@ in the \emph{Direct Connect User Guide}.}
 \description{
 Creates an association between a Direct Connect gateway and a virtual private gateway. The virtual private gateway must be attached to a VPC and must not be associated with another Direct Connect gateway.
 
-See \url{https://paws-r.github.io/docs/directconnect/create_direct_connect_gateway_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_create_direct_connect_gateway_association/} for full documentation.
 }
 \keyword{internal}

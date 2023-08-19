@@ -22,6 +22,6 @@ perform the duties of their role.}
 \description{
 Creates or updates an Firewall Manager administrator account. The account must be a member of the organization that was onboarded to Firewall Manager by \code{\link[=fms_associate_admin_account]{associate_admin_account}}. Only the organization's management account can create an Firewall Manager administrator account. When you create an Firewall Manager administrator account, the service checks to see if the account is already a delegated administrator within Organizations. If the account isn't a delegated administrator, Firewall Manager calls Organizations to delegate the account within Organizations. For more information about administrator accounts within Organizations, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html}{Managing the Amazon Web Services Accounts in Your Organization}.
 
-See \url{https://paws-r.github.io/docs/fms/put_admin_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_put_admin_account/} for full documentation.
 }
 \keyword{internal}

@@ -97,7 +97,7 @@ minutes before this limit is reached, they are prompted to save any open
 documents before being disconnected. After this time elapses, the
 instance is terminated and replaced by a new instance.
 
-Specify a value between 600 and 360000.}
+Specify a value between 600 and 432000.}
 
 \item{DisconnectTimeoutInSeconds}{The amount of time that a streaming session remains active after users
 disconnect. If users try to reconnect to the streaming session after a
@@ -177,6 +177,6 @@ applies to Elastic fleets.}
 \description{
 Updates the specified fleet.
 
-See \url{https://paws-r.github.io/docs/appstream/update_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_update_fleet/} for full documentation.
 }
 \keyword{internal}

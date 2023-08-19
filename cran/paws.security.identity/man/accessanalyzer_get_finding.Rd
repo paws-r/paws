@@ -15,6 +15,6 @@ that generated the finding.}
 \description{
 Retrieves information about the specified finding.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/get_finding.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_get_finding/} for full documentation.
 }
 \keyword{internal}

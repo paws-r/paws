@@ -26,6 +26,6 @@ Services \code{Inactive} means that the certificate cannot be used.}
 \description{
 Changes the status of the specified user signing certificate from active to disabled, or vice versa. This operation can be used to disable an IAM user's signing certificate as part of a certificate rotation work flow.
 
-See \url{https://paws-r.github.io/docs/iam/update_signing_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_update_signing_certificate/} for full documentation.
 }
 \keyword{internal}

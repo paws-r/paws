@@ -7,7 +7,8 @@
 applicationinsights_list_log_pattern_sets(
   ResourceGroupName,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  AccountId = NULL
 )
 }
 \arguments{
@@ -18,10 +19,12 @@ the remaining results, make another call with the returned \code{NextToken}
 value.}
 
 \item{NextToken}{The token to request the next page of results.}
+
+\item{AccountId}{The AWS account ID for the resource group owner.}
 }
 \description{
 Lists the log pattern sets in the specific application.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/list_log_pattern_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_list_log_pattern_sets/} for full documentation.
 }
 \keyword{internal}

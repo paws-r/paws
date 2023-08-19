@@ -5,24 +5,24 @@
 \title{Lists all AMP workspaces, including workspaces being created or deleted}
 \usage{
 prometheusservice_list_workspaces(
+  nextToken = NULL,
   alias = NULL,
-  maxResults = NULL,
-  nextToken = NULL
+  maxResults = NULL
 )
 }
 \arguments{
+\item{nextToken}{Pagination token to request the next page in a paginated list. This
+token is obtained from the output of the previous ListWorkspaces
+request.}
+
 \item{alias}{Optional filter for workspace alias. Only the workspaces with aliases
 that begin with this value will be returned.}
 
 \item{maxResults}{Maximum results to return in response (default=100, maximum=1000).}
-
-\item{nextToken}{Pagination token to request the next page in a paginated list. This
-token is obtained from the output of the previous ListWorkspaces
-request.}
 }
 \description{
 Lists all AMP workspaces, including workspaces being created or deleted.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/list_workspaces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_list_workspaces/} for full documentation.
 }
 \keyword{internal}

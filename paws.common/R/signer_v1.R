@@ -78,6 +78,12 @@ SigningContextQuery <- struct(
   anonymous = FALSE
 )
 
+# Generates a presigned request for s3.
+# https://docs.aws.amazon.com/AmazonS3/latest/userguide/RESTAuthentication.html#RESTAuthenticationQueryStringAuth
+v1_sign_request_handler <- function(request) {
+  return(sign_v1_auth_query(request))
+}
+
 sign_v1_auth_query <- function(request) {
   region <- request$client_info$signing_region
   if (region == "") {
@@ -152,7 +158,7 @@ build_context_query <- function(ctx, disable_header_hoisting, auth_path, ...) {
   ctx$canonical_headers <- canonical_standard_headers(ctx, unsigned_headers)
   ctx$canonical_headers <- canonical_custom_headers(ctx, unsigned_headers)
   ctx$canonical_string <- canonical_string(ctx, auth_path)
-  log_debug('StringToSign:\n%s', ctx$canonical_string)
+  log_debug("StringToSign:\n%s", ctx$canonical_string)
 
   ctx$signature <- sign_string_query(ctx)
   ctx$request$url$raw_query <- inject_signature_query(ctx)
@@ -160,14 +166,14 @@ build_context_query <- function(ctx, disable_header_hoisting, auth_path, ...) {
   return(ctx)
 }
 
-set_date <- function(ctx){
+set_date <- function(ctx) {
   return(as.character(as.integer(ctx$time + ctx$expire_time)))
 }
 
 # Developed from:
 # https://github.com/boto/botocore/blob/master/botocore/auth.py#L778-L802
-canonical_standard_headers <- function(ctx, headers){
-  interesting_headers <- c('content-md5', 'content-type', 'date')
+canonical_standard_headers <- function(ctx, headers) {
+  interesting_headers <- c("content-md5", "content-type", "date")
   hoi <- vector("list", length(interesting_headers))
   names(hoi) <- interesting_headers
 
@@ -233,7 +239,7 @@ canonical_string <- function(ctx, auth_path) {
   return(canonical_string)
 }
 
-sign_string_query <- function(ctx){
+sign_string_query <- function(ctx) {
   new_hmac <- make_hmac(
     enc2utf8(ctx$cred_values$secret_access_key), ctx$canonical_string, "sha1"
   )
@@ -242,7 +248,7 @@ sign_string_query <- function(ctx){
 
 # Developed from:
 # https://github.com/boto/botocore/blob/master/botocore/auth.py#L875-L905
-inject_signature_query <- function(ctx){
+inject_signature_query <- function(ctx) {
   query_list <- list(
     AWSAccessKeyId = ctx$cred_values$access_key_id,
     Signature = ctx$signature
@@ -252,15 +258,14 @@ inject_signature_query <- function(ctx){
 
   header_names <- names(headers)
   found <- vapply(tolower(header_names), function(nn) {
-      grepl('x-amz-', nn) || nn %in% c('content-md5', 'content-type')
-    }, FUN.VALUE = logical(1)
-  )
+    grepl("x-amz-", nn) || nn %in% c("content-md5", "content-type")
+  }, FUN.VALUE = logical(1))
 
   for (header_name in header_names[found]) {
     query_list[tolower(header_name)] <- ctx$request$header[[header_name]]
   }
 
-  query_list <- if(!ctx$anonymous) query_list else list()
+  query_list <- if (!ctx$anonymous) query_list else list()
   query <- ctx$request$url$raw_query
   new_query <- Filter(nzchar, c(query, build_query_string(query_list)))
   return(paste(new_query, collapse = "&"))

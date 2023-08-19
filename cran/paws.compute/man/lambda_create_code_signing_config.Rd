@@ -21,6 +21,6 @@ checks fail.}
 \description{
 Creates a code signing configuration. A \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-codesigning.html}{code signing configuration} defines a list of allowed signing profiles and defines the code-signing validation policy (action to be taken if deployment validation checks fail).
 
-See \url{https://paws-r.github.io/docs/lambda/create_code_signing_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_create_code_signing_config/} for full documentation.
 }
 \keyword{internal}

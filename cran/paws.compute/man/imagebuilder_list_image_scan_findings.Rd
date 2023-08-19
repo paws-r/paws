@@ -31,6 +31,6 @@ a previously truncated response.}
 \description{
 Returns a list of image scan findings for your account.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/list_image_scan_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_image_scan_findings/} for full documentation.
 }
 \keyword{internal}

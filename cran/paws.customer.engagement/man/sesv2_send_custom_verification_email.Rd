@@ -23,6 +23,6 @@ the verification email.}
 \description{
 Adds an email address to the list of identities for your Amazon SES account in the current Amazon Web Services Region and attempts to verify it. As a result of executing this operation, a customized verification email is sent to the specified address.
 
-See \url{https://paws-r.github.io/docs/sesv2/send_custom_verification_email.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_send_custom_verification_email/} for full documentation.
 }
 \keyword{internal}

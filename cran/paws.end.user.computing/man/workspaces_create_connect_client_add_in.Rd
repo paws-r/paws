@@ -16,6 +16,6 @@ workspaces_create_connect_client_add_in(ResourceId, Name, URL)
 \description{
 Creates a client-add-in for Amazon Connect within a directory. You can create only one Amazon Connect client add-in within a directory.
 
-See \url{https://paws-r.github.io/docs/workspaces/create_connect_client_add_in.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_create_connect_client_add_in/} for full documentation.
 }
 \keyword{internal}

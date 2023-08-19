@@ -35,6 +35,6 @@ per response. Use \code{nextToken} to iterate pages in the list of returned
 \description{
 Returns a list of ARNs for the reports that belong to a \code{ReportGroup}.
 
-See \url{https://paws-r.github.io/docs/codebuild/list_reports_for_report_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_list_reports_for_report_group/} for full documentation.
 }
 \keyword{internal}

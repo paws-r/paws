@@ -19,6 +19,6 @@ to use Transport Layer Security (TLS).}
 \description{
 Adds or updates the delivery options for a configuration set.
 
-See \url{https://paws-r.github.io/docs/ses/put_configuration_set_delivery_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_put_configuration_set_delivery_options/} for full documentation.
 }
 \keyword{internal}

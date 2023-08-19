@@ -14,6 +14,6 @@ cloudwatchevidently_delete_experiment(experiment, project)
 \description{
 Deletes an Evidently experiment. The feature used for the experiment is not deleted.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/delete_experiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_delete_experiment/} for full documentation.
 }
 \keyword{internal}

@@ -53,6 +53,6 @@ problems.
 \description{
 Submits feedback about the status of an instance. The instance must be in the \code{running} state. If your experience with the instance differs from the instance status returned by \code{\link[=ec2_describe_instance_status]{describe_instance_status}}, use \code{\link[=ec2_report_instance_status]{report_instance_status}} to report your experience with the instance. Amazon EC2 collects this information to improve the accuracy of status checks.
 
-See \url{https://paws-r.github.io/docs/ec2/report_instance_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_report_instance_status/} for full documentation.
 }
 \keyword{internal}

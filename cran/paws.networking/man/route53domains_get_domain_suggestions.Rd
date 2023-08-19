@@ -43,6 +43,6 @@ determine whether the domain is available, you can call
 \description{
 The GetDomainSuggestions operation returns a list of suggested domain names.
 
-See \url{https://paws-r.github.io/docs/route53domains/get_domain_suggestions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_get_domain_suggestions/} for full documentation.
 }
 \keyword{internal}

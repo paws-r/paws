@@ -13,6 +13,6 @@ Amazon Web Services account.}
 \description{
 Gets information about an application.
 
-See \url{https://paws-r.github.io/docs/codedeploy/get_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_get_application/} for full documentation.
 }
 \keyword{internal}

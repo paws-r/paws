@@ -53,6 +53,6 @@ past June 1, 2020 1:15:02 PM UTC.}
 \description{
 List the available reports for a given profiling group and time range.
 
-See \url{https://paws-r.github.io/docs/codeguruprofiler/list_findings_reports.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeguruprofiler_list_findings_reports/} for full documentation.
 }
 \keyword{internal}

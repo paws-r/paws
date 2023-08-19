@@ -118,6 +118,6 @@ Neo to store the compiled artifacts.}
 \description{
 Creates a model package that you can use to create SageMaker models or list on Amazon Web Services Marketplace, or a versioned model that is part of a model group. Buyers can subscribe to model packages listed on Amazon Web Services Marketplace to create models in SageMaker.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_model_package.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_model_package/} for full documentation.
 }
 \keyword{internal}

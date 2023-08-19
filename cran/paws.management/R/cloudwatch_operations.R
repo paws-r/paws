@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Deletes the specified alarms. You can delete up to 100 alarms in one operation. However, this total can include no more than one composite alarm. For example, you could delete 99 metric alarms and one composite alarms with one operation, but you can't delete two composite alarms with one operation.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/delete_alarms.html](https://paws-r.github.io/docs/cloudwatch/delete_alarms.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_delete_alarms/](https://www.paws-r-sdk.com/docs/cloudwatch_delete_alarms/) for full documentation.
 #'
 #' @param AlarmNames &#91;required&#93; The alarms to be deleted. Do not enclose the alarm names in quote marks.
 #'
@@ -37,7 +37,7 @@ cloudwatch_delete_alarms <- function(AlarmNames) {
 #' @description
 #' Deletes the specified anomaly detection model from your account. For more information about how to delete an anomaly detection model, see [Deleting an anomaly detection model](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Anomaly_Detection_Alarm.html#Delete_Anomaly_Detection_Model) in the *CloudWatch User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/delete_anomaly_detector.html](https://paws-r.github.io/docs/cloudwatch/delete_anomaly_detector.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_delete_anomaly_detector/](https://www.paws-r-sdk.com/docs/cloudwatch_delete_anomaly_detector/) for full documentation.
 #'
 #' @param Namespace The namespace associated with the anomaly detection model to delete.
 #' @param MetricName The metric name associated with the anomaly detection model to delete.
@@ -106,7 +106,7 @@ cloudwatch_delete_anomaly_detector <- function(Namespace = NULL, MetricName = NU
 #' @description
 #' Deletes all dashboards that you specify. You can specify up to 100 dashboards to delete. If there is an error during this call, no dashboards are deleted.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/delete_dashboards.html](https://paws-r.github.io/docs/cloudwatch/delete_dashboards.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_delete_dashboards/](https://www.paws-r-sdk.com/docs/cloudwatch_delete_dashboards/) for full documentation.
 #'
 #' @param DashboardNames &#91;required&#93; The dashboards to be deleted. This parameter is required.
 #'
@@ -135,7 +135,7 @@ cloudwatch_delete_dashboards <- function(DashboardNames) {
 #' @description
 #' Permanently deletes the specified Contributor Insights rules.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/delete_insight_rules.html](https://paws-r.github.io/docs/cloudwatch/delete_insight_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_delete_insight_rules/](https://www.paws-r-sdk.com/docs/cloudwatch_delete_insight_rules/) for full documentation.
 #'
 #' @param RuleNames &#91;required&#93; An array of the rule names to delete. If you need to find out the names
 #' of your rules, use
@@ -166,7 +166,7 @@ cloudwatch_delete_insight_rules <- function(RuleNames) {
 #' @description
 #' Permanently deletes the metric stream that you specify.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/delete_metric_stream.html](https://paws-r.github.io/docs/cloudwatch/delete_metric_stream.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_delete_metric_stream/](https://www.paws-r-sdk.com/docs/cloudwatch_delete_metric_stream/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the metric stream to delete.
 #'
@@ -195,7 +195,7 @@ cloudwatch_delete_metric_stream <- function(Name) {
 #' @description
 #' Retrieves the history for the specified alarm. You can filter the results by date range or item type. If an alarm name is not specified, the histories for either all metric alarms or all composite alarms are returned.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/describe_alarm_history.html](https://paws-r.github.io/docs/cloudwatch/describe_alarm_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_describe_alarm_history/](https://www.paws-r-sdk.com/docs/cloudwatch_describe_alarm_history/) for full documentation.
 #'
 #' @param AlarmName The name of the alarm.
 #' @param AlarmTypes Use this parameter to specify whether you want the operation to return
@@ -220,7 +220,7 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NUL
     name = "DescribeAlarmHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AlarmHistoryItems")
   )
   input <- .cloudwatch$describe_alarm_history_input(AlarmName = AlarmName, AlarmTypes = AlarmTypes, HistoryItemType = HistoryItemType, StartDate = StartDate, EndDate = EndDate, MaxRecords = MaxRecords, NextToken = NextToken, ScanBy = ScanBy)
   output <- .cloudwatch$describe_alarm_history_output()
@@ -237,7 +237,7 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NUL
 #' @description
 #' Retrieves the specified alarms. You can filter the results by specifying a prefix for the alarm name, the alarm state, or a prefix for any action.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/describe_alarms.html](https://paws-r.github.io/docs/cloudwatch/describe_alarms.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_describe_alarms/](https://www.paws-r-sdk.com/docs/cloudwatch_describe_alarms/) for full documentation.
 #'
 #' @param AlarmNames The names of the alarms to retrieve information about.
 #' @param AlarmNamePrefix An alarm name prefix. If you specify this parameter, you receive
@@ -298,7 +298,7 @@ cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL
     name = "DescribeAlarms",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = list("MetricAlarms", "CompositeAlarms"))
   )
   input <- .cloudwatch$describe_alarms_input(AlarmNames = AlarmNames, AlarmNamePrefix = AlarmNamePrefix, AlarmTypes = AlarmTypes, ChildrenOfAlarmName = ChildrenOfAlarmName, ParentsOfAlarmName = ParentsOfAlarmName, StateValue = StateValue, ActionPrefix = ActionPrefix, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .cloudwatch$describe_alarms_output()
@@ -315,7 +315,7 @@ cloudwatch_describe_alarms <- function(AlarmNames = NULL, AlarmNamePrefix = NULL
 #' @description
 #' Retrieves the alarms for the specified metric. To filter the results, specify a statistic, period, or unit.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/describe_alarms_for_metric.html](https://paws-r.github.io/docs/cloudwatch/describe_alarms_for_metric.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_describe_alarms_for_metric/](https://www.paws-r-sdk.com/docs/cloudwatch_describe_alarms_for_metric/) for full documentation.
 #'
 #' @param MetricName &#91;required&#93; The name of the metric.
 #' @param Namespace &#91;required&#93; The namespace of the metric.
@@ -337,7 +337,7 @@ cloudwatch_describe_alarms_for_metric <- function(MetricName, Namespace, Statist
     name = "DescribeAlarmsForMetric",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "MetricAlarms")
   )
   input <- .cloudwatch$describe_alarms_for_metric_input(MetricName = MetricName, Namespace = Namespace, Statistic = Statistic, ExtendedStatistic = ExtendedStatistic, Dimensions = Dimensions, Period = Period, Unit = Unit)
   output <- .cloudwatch$describe_alarms_for_metric_output()
@@ -354,7 +354,7 @@ cloudwatch_describe_alarms_for_metric <- function(MetricName, Namespace, Statist
 #' @description
 #' Lists the anomaly detection models that you have created in your account. For single metric anomaly detectors, you can list all of the models in your account or filter the results to only the models that are related to a certain namespace, metric name, or metric dimension. For metric math anomaly detectors, you can list them by adding `METRIC_MATH` to the `AnomalyDetectorTypes` array. This will return all metric math anomaly detectors in your account.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/describe_anomaly_detectors.html](https://paws-r.github.io/docs/cloudwatch/describe_anomaly_detectors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_describe_anomaly_detectors/](https://www.paws-r-sdk.com/docs/cloudwatch_describe_anomaly_detectors/) for full documentation.
 #'
 #' @param NextToken Use the token returned by the previous operation to request the next
 #' page of results.
@@ -384,7 +384,7 @@ cloudwatch_describe_anomaly_detectors <- function(NextToken = NULL, MaxResults =
     name = "DescribeAnomalyDetectors",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AnomalyDetectors")
   )
   input <- .cloudwatch$describe_anomaly_detectors_input(NextToken = NextToken, MaxResults = MaxResults, Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, AnomalyDetectorTypes = AnomalyDetectorTypes)
   output <- .cloudwatch$describe_anomaly_detectors_output()
@@ -401,7 +401,7 @@ cloudwatch_describe_anomaly_detectors <- function(NextToken = NULL, MaxResults =
 #' @description
 #' Returns a list of all the Contributor Insights rules in your account.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/describe_insight_rules.html](https://paws-r.github.io/docs/cloudwatch/describe_insight_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_describe_insight_rules/](https://www.paws-r-sdk.com/docs/cloudwatch_describe_insight_rules/) for full documentation.
 #'
 #' @param NextToken Include this value, if it was returned by the previous operation, to get
 #' the next set of rules.
@@ -416,7 +416,7 @@ cloudwatch_describe_insight_rules <- function(NextToken = NULL, MaxResults = NUL
     name = "DescribeInsightRules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudwatch$describe_insight_rules_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudwatch$describe_insight_rules_output()
@@ -433,7 +433,7 @@ cloudwatch_describe_insight_rules <- function(NextToken = NULL, MaxResults = NUL
 #' @description
 #' Disables the actions for the specified alarms. When an alarm's actions are disabled, the alarm actions do not execute when the alarm state changes.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/disable_alarm_actions.html](https://paws-r.github.io/docs/cloudwatch/disable_alarm_actions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_disable_alarm_actions/](https://www.paws-r-sdk.com/docs/cloudwatch_disable_alarm_actions/) for full documentation.
 #'
 #' @param AlarmNames &#91;required&#93; The names of the alarms.
 #'
@@ -462,7 +462,7 @@ cloudwatch_disable_alarm_actions <- function(AlarmNames) {
 #' @description
 #' Disables the specified Contributor Insights rules. When rules are disabled, they do not analyze log groups and do not incur costs.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/disable_insight_rules.html](https://paws-r.github.io/docs/cloudwatch/disable_insight_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_disable_insight_rules/](https://www.paws-r-sdk.com/docs/cloudwatch_disable_insight_rules/) for full documentation.
 #'
 #' @param RuleNames &#91;required&#93; An array of the rule names to disable. If you need to find out the names
 #' of your rules, use
@@ -493,7 +493,7 @@ cloudwatch_disable_insight_rules <- function(RuleNames) {
 #' @description
 #' Enables the actions for the specified alarms.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/enable_alarm_actions.html](https://paws-r.github.io/docs/cloudwatch/enable_alarm_actions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_enable_alarm_actions/](https://www.paws-r-sdk.com/docs/cloudwatch_enable_alarm_actions/) for full documentation.
 #'
 #' @param AlarmNames &#91;required&#93; The names of the alarms.
 #'
@@ -522,7 +522,7 @@ cloudwatch_enable_alarm_actions <- function(AlarmNames) {
 #' @description
 #' Enables the specified Contributor Insights rules. When rules are enabled, they immediately begin analyzing log data.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/enable_insight_rules.html](https://paws-r.github.io/docs/cloudwatch/enable_insight_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_enable_insight_rules/](https://www.paws-r-sdk.com/docs/cloudwatch_enable_insight_rules/) for full documentation.
 #'
 #' @param RuleNames &#91;required&#93; An array of the rule names to enable. If you need to find out the names
 #' of your rules, use
@@ -553,7 +553,7 @@ cloudwatch_enable_insight_rules <- function(RuleNames) {
 #' @description
 #' Displays the details of the dashboard that you specify.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/get_dashboard.html](https://paws-r.github.io/docs/cloudwatch/get_dashboard.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_get_dashboard/](https://www.paws-r-sdk.com/docs/cloudwatch_get_dashboard/) for full documentation.
 #'
 #' @param DashboardName &#91;required&#93; The name of the dashboard to be described.
 #'
@@ -583,7 +583,7 @@ cloudwatch_get_dashboard <- function(DashboardName) {
 #' @description
 #' This operation returns the time series data collected by a Contributor Insights rule. The data includes the identity and number of contributors to the log group.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/get_insight_rule_report.html](https://paws-r.github.io/docs/cloudwatch/get_insight_rule_report.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_get_insight_rule_report/](https://www.paws-r-sdk.com/docs/cloudwatch_get_insight_rule_report/) for full documentation.
 #'
 #' @param RuleName &#91;required&#93; The name of the rule that you want to see data from.
 #' @param StartTime &#91;required&#93; The start time of the data to use in the report. When used in a raw HTTP
@@ -653,7 +653,7 @@ cloudwatch_get_insight_rule_report <- function(RuleName, StartTime, EndTime, Per
 #' @description
 #' You can use the [`get_metric_data`][cloudwatch_get_metric_data] API to retrieve CloudWatch metric values. The operation can also include a CloudWatch Metrics Insights query, and one or more metric math functions.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/get_metric_data.html](https://paws-r.github.io/docs/cloudwatch/get_metric_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_get_metric_data/](https://www.paws-r-sdk.com/docs/cloudwatch_get_metric_data/) for full documentation.
 #'
 #' @param MetricDataQueries &#91;required&#93; The metric queries to be returned. A single
 #' [`get_metric_data`][cloudwatch_get_metric_data] call can include as many
@@ -723,7 +723,7 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
     name = "GetMetricData",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxDatapoints", output_token = "NextToken", result_key = list("MetricDataResults", "Messages"))
   )
   input <- .cloudwatch$get_metric_data_input(MetricDataQueries = MetricDataQueries, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, ScanBy = ScanBy, MaxDatapoints = MaxDatapoints, LabelOptions = LabelOptions)
   output <- .cloudwatch$get_metric_data_output()
@@ -740,7 +740,7 @@ cloudwatch_get_metric_data <- function(MetricDataQueries, StartTime, EndTime, Ne
 #' @description
 #' Gets statistics for the specified metric.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/get_metric_statistics.html](https://paws-r.github.io/docs/cloudwatch/get_metric_statistics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_get_metric_statistics/](https://www.paws-r-sdk.com/docs/cloudwatch_get_metric_statistics/) for full documentation.
 #'
 #' @param Namespace &#91;required&#93; The namespace of the metric, with or without spaces.
 #' @param MetricName &#91;required&#93; The name of the metric, with or without spaces.
@@ -851,7 +851,7 @@ cloudwatch_get_metric_statistics <- function(Namespace, MetricName, Dimensions =
 #' @description
 #' Returns information about the metric stream that you specify.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/get_metric_stream.html](https://paws-r.github.io/docs/cloudwatch/get_metric_stream.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_get_metric_stream/](https://www.paws-r-sdk.com/docs/cloudwatch_get_metric_stream/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the metric stream to retrieve information about.
 #'
@@ -881,7 +881,7 @@ cloudwatch_get_metric_stream <- function(Name) {
 #' @description
 #' You can use the [`get_metric_widget_image`][cloudwatch_get_metric_widget_image] API to retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a bitmap image. You can then embed this image into your services and products, such as wiki pages, reports, and documents. You could also retrieve images regularly, such as every minute, and create your own custom live dashboard.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/get_metric_widget_image.html](https://paws-r.github.io/docs/cloudwatch/get_metric_widget_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_get_metric_widget_image/](https://www.paws-r-sdk.com/docs/cloudwatch_get_metric_widget_image/) for full documentation.
 #'
 #' @param MetricWidget &#91;required&#93; A JSON string that defines the bitmap graph to be retrieved. The string
 #' includes the metrics to include in the graph, statistics, annotations,
@@ -953,7 +953,7 @@ cloudwatch_get_metric_widget_image <- function(MetricWidget, OutputFormat = NULL
 #' @description
 #' Returns a list of the dashboards for your account. If you include `DashboardNamePrefix`, only those dashboards with names starting with the prefix are listed. Otherwise, all dashboards in your account are listed.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/list_dashboards.html](https://paws-r.github.io/docs/cloudwatch/list_dashboards.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_list_dashboards/](https://www.paws-r-sdk.com/docs/cloudwatch_list_dashboards/) for full documentation.
 #'
 #' @param DashboardNamePrefix If you specify this parameter, only the dashboards with names starting
 #' with the specified string are listed. The maximum length is 255, and
@@ -969,7 +969,7 @@ cloudwatch_list_dashboards <- function(DashboardNamePrefix = NULL, NextToken = N
     name = "ListDashboards",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "DashboardEntries")
   )
   input <- .cloudwatch$list_dashboards_input(DashboardNamePrefix = DashboardNamePrefix, NextToken = NextToken)
   output <- .cloudwatch$list_dashboards_output()
@@ -987,7 +987,7 @@ cloudwatch_list_dashboards <- function(DashboardNamePrefix = NULL, NextToken = N
 #' @description
 #' Returns a list that contains the number of managed Contributor Insights rules in your account.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/list_managed_insight_rules.html](https://paws-r.github.io/docs/cloudwatch/list_managed_insight_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_list_managed_insight_rules/](https://www.paws-r-sdk.com/docs/cloudwatch_list_managed_insight_rules/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of an Amazon Web Services resource that has managed Contributor
 #' Insights rules.
@@ -1004,7 +1004,7 @@ cloudwatch_list_managed_insight_rules <- function(ResourceARN, NextToken = NULL,
     name = "ListManagedInsightRules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudwatch$list_managed_insight_rules_input(ResourceARN = ResourceARN, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudwatch$list_managed_insight_rules_output()
@@ -1021,7 +1021,7 @@ cloudwatch_list_managed_insight_rules <- function(ResourceARN, NextToken = NULL,
 #' @description
 #' Returns a list of metric streams in this account.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/list_metric_streams.html](https://paws-r.github.io/docs/cloudwatch/list_metric_streams.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_list_metric_streams/](https://www.paws-r-sdk.com/docs/cloudwatch_list_metric_streams/) for full documentation.
 #'
 #' @param NextToken Include this value, if it was returned by the previous call, to get the
 #' next set of metric streams.
@@ -1035,7 +1035,7 @@ cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) 
     name = "ListMetricStreams",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudwatch$list_metric_streams_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudwatch$list_metric_streams_output()
@@ -1052,7 +1052,7 @@ cloudwatch_list_metric_streams <- function(NextToken = NULL, MaxResults = NULL) 
 #' @description
 #' List the specified metrics. You can use the returned metrics with [`get_metric_data`][cloudwatch_get_metric_data] or [`get_metric_statistics`][cloudwatch_get_metric_statistics] to get statistical data.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/list_metrics.html](https://paws-r.github.io/docs/cloudwatch/list_metrics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_list_metrics/](https://www.paws-r-sdk.com/docs/cloudwatch_list_metrics/) for full documentation.
 #'
 #' @param Namespace The metric namespace to filter against. Only the namespace that matches
 #' exactly will be returned.
@@ -1087,7 +1087,7 @@ cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensi
     name = "ListMetrics",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = list( "Metrics", "OwningAccounts"))
   )
   input <- .cloudwatch$list_metrics_input(Namespace = Namespace, MetricName = MetricName, Dimensions = Dimensions, NextToken = NextToken, RecentlyActive = RecentlyActive, IncludeLinkedAccounts = IncludeLinkedAccounts, OwningAccount = OwningAccount)
   output <- .cloudwatch$list_metrics_output()
@@ -1104,7 +1104,7 @@ cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensi
 #' @description
 #' Displays the tags associated with a CloudWatch resource. Currently, alarms and Contributor Insights rules support tagging.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/list_tags_for_resource.html](https://paws-r.github.io/docs/cloudwatch/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/cloudwatch_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch resource that you want to view tags for.
 #' 
@@ -1144,7 +1144,7 @@ cloudwatch_list_tags_for_resource <- function(ResourceARN) {
 #' @description
 #' Creates an anomaly detection model for a CloudWatch metric. You can use the model to display a band of expected normal values when the metric is graphed.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/put_anomaly_detector.html](https://paws-r.github.io/docs/cloudwatch/put_anomaly_detector.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_put_anomaly_detector/](https://www.paws-r-sdk.com/docs/cloudwatch_put_anomaly_detector/) for full documentation.
 #'
 #' @param Namespace The namespace of the metric to create the anomaly detection model for.
 #' @param MetricName The name of the metric to create the anomaly detection model for.
@@ -1217,7 +1217,7 @@ cloudwatch_put_anomaly_detector <- function(Namespace = NULL, MetricName = NULL,
 #' @description
 #' Creates or updates a *composite alarm*. When you create a composite alarm, you specify a rule expression for the alarm that takes into account the alarm states of other alarms that you have created. The composite alarm goes into ALARM state only if all conditions of the rule are met.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/put_composite_alarm.html](https://paws-r.github.io/docs/cloudwatch/put_composite_alarm.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_put_composite_alarm/](https://www.paws-r-sdk.com/docs/cloudwatch_put_composite_alarm/) for full documentation.
 #'
 #' @param ActionsEnabled Indicates whether actions should be executed during any changes to the
 #' alarm state of the composite alarm. The default is `TRUE`.
@@ -1343,7 +1343,7 @@ cloudwatch_put_composite_alarm <- function(ActionsEnabled = NULL, AlarmActions =
 #' @description
 #' Creates a dashboard if it does not already exist, or updates an existing dashboard. If you update a dashboard, the entire contents are replaced with what you specify here.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/put_dashboard.html](https://paws-r.github.io/docs/cloudwatch/put_dashboard.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_put_dashboard/](https://www.paws-r-sdk.com/docs/cloudwatch_put_dashboard/) for full documentation.
 #'
 #' @param DashboardName &#91;required&#93; The name of the dashboard. If a dashboard with this name already exists,
 #' this call modifies that dashboard, replacing its current contents.
@@ -1382,7 +1382,7 @@ cloudwatch_put_dashboard <- function(DashboardName, DashboardBody) {
 #' @description
 #' Creates a Contributor Insights rule. Rules evaluate log events in a CloudWatch Logs log group, enabling you to find contributor data for the log events in that log group. For more information, see [Using Contributor Insights to Analyze High-Cardinality Data](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html).
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/put_insight_rule.html](https://paws-r.github.io/docs/cloudwatch/put_insight_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_put_insight_rule/](https://www.paws-r-sdk.com/docs/cloudwatch_put_insight_rule/) for full documentation.
 #'
 #' @param RuleName &#91;required&#93; A unique name for the rule.
 #' @param RuleState The state of the rule. Valid values are ENABLED and DISABLED.
@@ -1431,7 +1431,7 @@ cloudwatch_put_insight_rule <- function(RuleName, RuleState = NULL, RuleDefiniti
 #' @description
 #' Creates a managed Contributor Insights rule for a specified Amazon Web Services resource. When you enable a managed rule, you create a Contributor Insights rule that collects data from Amazon Web Services services. You cannot edit these rules with [`put_insight_rule`][cloudwatch_put_insight_rule]. The rules can be enabled, disabled, and deleted using [`enable_insight_rules`][cloudwatch_enable_insight_rules], [`disable_insight_rules`][cloudwatch_disable_insight_rules], and [`delete_insight_rules`][cloudwatch_delete_insight_rules]. If a previously created managed rule is currently disabled, a subsequent call to this API will re-enable it. Use [`list_managed_insight_rules`][cloudwatch_list_managed_insight_rules] to describe all available rules.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/put_managed_insight_rules.html](https://paws-r.github.io/docs/cloudwatch/put_managed_insight_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_put_managed_insight_rules/](https://www.paws-r-sdk.com/docs/cloudwatch_put_managed_insight_rules/) for full documentation.
 #'
 #' @param ManagedRules &#91;required&#93; A list of `ManagedRules` to enable.
 #'
@@ -1462,7 +1462,7 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' @description
 #' Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, or Metrics Insights query. For more information about using a Metrics Insights query for an alarm, see [Create alarms on Metrics Insights queries](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Metrics_Insights_Alarm.html).
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/put_metric_alarm.html](https://paws-r.github.io/docs/cloudwatch/put_metric_alarm.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_put_metric_alarm/](https://www.paws-r-sdk.com/docs/cloudwatch_put_metric_alarm/) for full documentation.
 #'
 #' @param AlarmName &#91;required&#93; The name for the alarm. This name must be unique within the Region.
 #' 
@@ -1746,7 +1746,7 @@ cloudwatch_put_metric_alarm <- function(AlarmName, AlarmDescription = NULL, Acti
 #' @description
 #' Publishes metric data points to Amazon CloudWatch. CloudWatch associates the data points with the specified metric. If the specified metric does not exist, CloudWatch creates the metric. When CloudWatch creates a metric, it can take up to fifteen minutes for the metric to appear in calls to [`list_metrics`][cloudwatch_list_metrics].
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/put_metric_data.html](https://paws-r.github.io/docs/cloudwatch/put_metric_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_put_metric_data/](https://www.paws-r-sdk.com/docs/cloudwatch_put_metric_data/) for full documentation.
 #'
 #' @param Namespace &#91;required&#93; The namespace for the metric data. You can use ASCII characters for the
 #' namespace, except for control characters which are not supported.
@@ -1781,7 +1781,7 @@ cloudwatch_put_metric_data <- function(Namespace, MetricData) {
 #' @description
 #' Creates or updates a metric stream. Metric streams can automatically stream CloudWatch metrics to Amazon Web Services destinations, including Amazon S3, and to many third-party solutions.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/put_metric_stream.html](https://paws-r.github.io/docs/cloudwatch/put_metric_stream.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_put_metric_stream/](https://www.paws-r-sdk.com/docs/cloudwatch_put_metric_stream/) for full documentation.
 #'
 #' @param Name &#91;required&#93; If you are creating a new metric stream, this is the name for the new
 #' stream. The name must be different than the names of other metric
@@ -1871,7 +1871,7 @@ cloudwatch_put_metric_stream <- function(Name, IncludeFilters = NULL, ExcludeFil
 #' @description
 #' Temporarily sets the state of an alarm for testing purposes. When the updated state differs from the previous value, the action configured for the appropriate state is invoked. For example, if your alarm is configured to send an Amazon SNS message when an alarm is triggered, temporarily changing the alarm state to `ALARM` sends an SNS message.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/set_alarm_state.html](https://paws-r.github.io/docs/cloudwatch/set_alarm_state.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_set_alarm_state/](https://www.paws-r-sdk.com/docs/cloudwatch_set_alarm_state/) for full documentation.
 #'
 #' @param AlarmName &#91;required&#93; The name of the alarm.
 #' @param StateValue &#91;required&#93; The value of the state.
@@ -1909,7 +1909,7 @@ cloudwatch_set_alarm_state <- function(AlarmName, StateValue, StateReason, State
 #' @description
 #' Starts the streaming of metrics for one or more of your metric streams.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/start_metric_streams.html](https://paws-r.github.io/docs/cloudwatch/start_metric_streams.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_start_metric_streams/](https://www.paws-r-sdk.com/docs/cloudwatch_start_metric_streams/) for full documentation.
 #'
 #' @param Names &#91;required&#93; The array of the names of metric streams to start streaming.
 #' 
@@ -1942,7 +1942,7 @@ cloudwatch_start_metric_streams <- function(Names) {
 #' @description
 #' Stops the streaming of metrics for one or more of your metric streams.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/stop_metric_streams.html](https://paws-r.github.io/docs/cloudwatch/stop_metric_streams.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_stop_metric_streams/](https://www.paws-r-sdk.com/docs/cloudwatch_stop_metric_streams/) for full documentation.
 #'
 #' @param Names &#91;required&#93; The array of the names of metric streams to stop streaming.
 #' 
@@ -1976,7 +1976,7 @@ cloudwatch_stop_metric_streams <- function(Names) {
 #' @description
 #' Assigns one or more tags (key-value pairs) to the specified CloudWatch resource. Currently, the only CloudWatch resources that can be tagged are alarms and Contributor Insights rules.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/tag_resource.html](https://paws-r.github.io/docs/cloudwatch/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_tag_resource/](https://www.paws-r-sdk.com/docs/cloudwatch_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch resource that you're adding tags to.
 #' 
@@ -2017,7 +2017,7 @@ cloudwatch_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Removes one or more tags from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/cloudwatch/untag_resource.html](https://paws-r.github.io/docs/cloudwatch/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudwatch_untag_resource/](https://www.paws-r-sdk.com/docs/cloudwatch_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the CloudWatch resource that you're removing tags from.
 #' 

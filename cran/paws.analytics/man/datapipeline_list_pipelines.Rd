@@ -16,6 +16,6 @@ value from the previous call to retrieve the next set of results.}
 \description{
 Lists the pipeline identifiers for all active pipelines that you have permission to access.
 
-See \url{https://paws-r.github.io/docs/datapipeline/list_pipelines.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/datapipeline_list_pipelines/} for full documentation.
 }
 \keyword{internal}

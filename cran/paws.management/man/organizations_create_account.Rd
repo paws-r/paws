@@ -87,6 +87,6 @@ account is not created.}
 \description{
 Creates an Amazon Web Services account that is automatically a member of the organization whose credentials made the request. This is an asynchronous request that Amazon Web Services performs in the background. Because \code{\link[=organizations_create_account]{create_account}} operates asynchronously, it can return a successful completion message even though account initialization might still be in progress. You might need to wait a few minutes before you can successfully access the account. To check the status of the request, do one of the following:
 
-See \url{https://paws-r.github.io/docs/organizations/create_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_create_account/} for full documentation.
 }
 \keyword{internal}

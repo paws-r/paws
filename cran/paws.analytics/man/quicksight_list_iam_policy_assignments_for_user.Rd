@@ -29,6 +29,6 @@ results.}
 \description{
 Lists all of the IAM policy assignments, including the Amazon Resource Names (ARNs), for the IAM policies assigned to the specified user and group, or groups that the user belongs to.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_iam_policy_assignments_for_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_iam_policy_assignments_for_user/} for full documentation.
 }
 \keyword{internal}

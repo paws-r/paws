@@ -12,6 +12,6 @@ ssm_get_default_patch_baseline(OperatingSystem = NULL)
 \description{
 Retrieves the default patch baseline. Amazon Web Services Systems Manager supports creating multiple default patch baselines. For example, you can create a default patch baseline for each operating system.
 
-See \url{https://paws-r.github.io/docs/ssm/get_default_patch_baseline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_default_patch_baseline/} for full documentation.
 }
 \keyword{internal}

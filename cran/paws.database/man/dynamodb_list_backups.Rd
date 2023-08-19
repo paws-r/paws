@@ -44,6 +44,6 @@ other backup types are specified.)
 \description{
 List backups associated with an Amazon Web Services account. To list backups for a given table, specify \code{TableName}. \code{\link[=dynamodb_list_backups]{list_backups}} returns a paginated list of results with at most 1 MB worth of items in a page. You can also specify a maximum number of entries to be returned in a page.
 
-See \url{https://paws-r.github.io/docs/dynamodb/list_backups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_list_backups/} for full documentation.
 }
 \keyword{internal}

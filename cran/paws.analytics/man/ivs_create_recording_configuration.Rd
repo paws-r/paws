@@ -9,6 +9,7 @@ ivs_create_recording_configuration(
   destinationConfiguration,
   name = NULL,
   recordingReconnectWindowSeconds = NULL,
+  renditionConfiguration = NULL,
   tags = NULL,
   thumbnailConfiguration = NULL
 )
@@ -23,6 +24,8 @@ recorded video will be stored.}
 interval, the multiple streams will be considered a single broadcast and
 merged together. Default: 0.}
 
+\item{renditionConfiguration}{Object that describes which renditions should be recorded for a stream.}
+
 \item{tags}{Array of 1-50 maps, each of the form \code{string:string (key:value)}. See
 \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services Resources}
 for more information, including restrictions that apply to tags and "Tag
@@ -36,6 +39,6 @@ thumbnails are generated for the live session.}
 \description{
 Creates a new recording configuration, used to enable recording to Amazon S3.
 
-See \url{https://paws-r.github.io/docs/ivs/create_recording_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivs_create_recording_configuration/} for full documentation.
 }
 \keyword{internal}

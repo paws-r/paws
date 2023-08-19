@@ -27,6 +27,6 @@ attributes in the group and describes an application and its components.}
 \description{
 Updates an existing attribute group with new details.
 
-See \url{https://paws-r.github.io/docs/appregistry/update_attribute_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_update_attribute_group/} for full documentation.
 }
 \keyword{internal}

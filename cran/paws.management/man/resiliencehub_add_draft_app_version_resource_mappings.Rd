@@ -22,6 +22,6 @@ type \code{CFN_STACK} if the application is backed by a CloudFormation stack.}
 \description{
 Adds the resource mapping for the draft application version. You can also update an existing resource mapping to a new physical resource.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/add_draft_app_version_resource_mappings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_add_draft_app_version_resource_mappings/} for full documentation.
 }
 \keyword{internal}

@@ -36,7 +36,7 @@ You cannot specify this parameter if the association type is
 \item{principal}{Specifies the ID of the principal whose resource shares you want to
 retrieve. This can be an Amazon Web Services account ID, an organization
 ID, an organizational unit ID, or the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Name (ARN)}
-of an individual IAM user or role.
+of an individual IAM role or user.
 
 You cannot specify this parameter if the association type is \code{RESOURCE}.}
 
@@ -63,6 +63,6 @@ receive all of the results.}
 \description{
 Retrieves the lists of resources and principals that associated for resource shares that you own.
 
-See \url{https://paws-r.github.io/docs/ram/get_resource_share_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_get_resource_share_associations/} for full documentation.
 }
 \keyword{internal}

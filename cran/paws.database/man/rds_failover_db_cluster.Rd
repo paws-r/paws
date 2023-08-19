@@ -25,6 +25,6 @@ This setting isn't supported for RDS for MySQL Multi-AZ DB clusters.}
 \description{
 Forces a failover for a DB cluster.
 
-See \url{https://paws-r.github.io/docs/rds/failover_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_failover_db_cluster/} for full documentation.
 }
 \keyword{internal}

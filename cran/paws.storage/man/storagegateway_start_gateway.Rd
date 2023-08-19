@@ -12,6 +12,6 @@ storagegateway_start_gateway(GatewayARN)
 \description{
 Starts a gateway that you previously shut down (see \code{\link[=storagegateway_shutdown_gateway]{shutdown_gateway}}). After the gateway starts, you can then make other API calls, your applications can read from or write to the gateway's storage volumes and you will be able to take snapshot backups.
 
-See \url{https://paws-r.github.io/docs/storagegateway/start_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_start_gateway/} for full documentation.
 }
 \keyword{internal}

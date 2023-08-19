@@ -17,6 +17,6 @@ batch, provide this token in your next request.}
 \description{
 Returns a list of Apache Kafka versions.
 
-See \url{https://paws-r.github.io/docs/kafka/list_kafka_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_list_kafka_versions/} for full documentation.
 }
 \keyword{internal}

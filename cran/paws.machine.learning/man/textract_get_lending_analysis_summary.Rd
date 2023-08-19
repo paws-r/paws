@@ -15,6 +15,6 @@ is returned from StartLendingAnalysis. A \code{JobId} value is only valid for
 \description{
 Gets summarized results for the \code{\link[=textract_start_lending_analysis]{start_lending_analysis}} operation, which analyzes text in a lending document. The returned summary consists of information about documents grouped together by a common document type. Information like detected signatures, page numbers, and split documents is returned with respect to the type of grouped document.
 
-See \url{https://paws-r.github.io/docs/textract/get_lending_analysis_summary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/textract_get_lending_analysis_summary/} for full documentation.
 }
 \keyword{internal}

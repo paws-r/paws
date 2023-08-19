@@ -14,6 +14,6 @@ of gateway volumes.}
 \description{
 Describes the snapshot schedule for the specified gateway volume. The snapshot schedule information includes intervals at which snapshots are automatically initiated on the volume. This operation is only supported in the cached volume and stored volume types.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_snapshot_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_snapshot_schedule/} for full documentation.
 }
 \keyword{internal}

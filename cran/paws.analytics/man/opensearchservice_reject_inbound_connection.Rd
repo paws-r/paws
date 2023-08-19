@@ -13,6 +13,6 @@ opensearchservice_reject_inbound_connection(ConnectionId)
 \description{
 Allows the remote Amazon OpenSearch Service domain owner to reject an inbound cross-cluster connection request.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/reject_inbound_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_reject_inbound_connection/} for full documentation.
 }
 \keyword{internal}

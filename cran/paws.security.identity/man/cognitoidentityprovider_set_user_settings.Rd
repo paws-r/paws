@@ -16,6 +16,6 @@ SMS for delivery.}
 \description{
 \emph{This action is no longer supported.} You can use it to configure only SMS MFA. You can't use it to configure time-based one-time password (TOTP) software token MFA. To configure either type of MFA, use \code{\link[=cognitoidentityprovider_set_user_mfa_preference]{set_user_mfa_preference}} instead.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/set_user_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_user_settings/} for full documentation.
 }
 \keyword{internal}

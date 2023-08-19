@@ -68,6 +68,6 @@ permission.}
 \description{
 Creates a customer managed permission for a specified resource type that you can attach to resource shares. It is created in the Amazon Web Services Region in which you call the operation.
 
-See \url{https://paws-r.github.io/docs/ram/create_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_create_permission/} for full documentation.
 }
 \keyword{internal}

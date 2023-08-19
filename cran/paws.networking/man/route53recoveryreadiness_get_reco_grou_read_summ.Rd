@@ -21,6 +21,6 @@ route53recoveryreadiness_get_recovery_group_readiness_summary(
 \description{
 Displays a summary of information about a recovery group's readiness status. Includes the readiness checks for resources in the recovery group and the readiness status of each one.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/get_recovery_group_readiness_summary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_recovery_group_readiness_summary/} for full documentation.
 }
 \keyword{internal}

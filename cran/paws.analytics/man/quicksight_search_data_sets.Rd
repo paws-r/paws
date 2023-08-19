@@ -24,6 +24,6 @@ quicksight_search_data_sets(
 \description{
 Use the \code{\link[=quicksight_search_data_sets]{search_data_sets}} operation to search for datasets that belong to an account.
 
-See \url{https://paws-r.github.io/docs/quicksight/search_data_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_search_data_sets/} for full documentation.
 }
 \keyword{internal}

@@ -56,6 +56,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Modifies the specified Traffic Mirror rule.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_traffic_mirror_filter_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_traffic_mirror_filter_rule/} for full documentation.
 }
 \keyword{internal}

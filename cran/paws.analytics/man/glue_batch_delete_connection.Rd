@@ -15,6 +15,6 @@ provided, the Amazon Web Services account ID is used by default.}
 \description{
 Deletes a list of connection definitions from the Data Catalog.
 
-See \url{https://paws-r.github.io/docs/glue/batch_delete_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_batch_delete_connection/} for full documentation.
 }
 \keyword{internal}

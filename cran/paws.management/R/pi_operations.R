@@ -9,7 +9,7 @@ NULL
 #' @description
 #' For a specific time period, retrieve the top `N` dimension keys for a metric.
 #'
-#' See [https://paws-r.github.io/docs/pi/describe_dimension_keys.html](https://paws-r.github.io/docs/pi/describe_dimension_keys.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pi_describe_dimension_keys/](https://www.paws-r-sdk.com/docs/pi_describe_dimension_keys/) for full documentation.
 #'
 #' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights will
 #' return metrics. Valid values are as follows:
@@ -101,7 +101,7 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
     name = "DescribeDimensionKeys",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$describe_dimension_keys_input(ServiceType = ServiceType, Identifier = Identifier, StartTime = StartTime, EndTime = EndTime, Metric = Metric, PeriodInSeconds = PeriodInSeconds, GroupBy = GroupBy, AdditionalMetrics = AdditionalMetrics, PartitionBy = PartitionBy, Filter = Filter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .pi$describe_dimension_keys_output()
@@ -119,7 +119,7 @@ pi_describe_dimension_keys <- function(ServiceType, Identifier, StartTime, EndTi
 #' @description
 #' Get the attributes of the specified dimension group for a DB instance or data source. For example, if you specify a SQL ID, [`get_dimension_key_details`][pi_get_dimension_key_details] retrieves the full text of the dimension `db.sql.statement` associated with this ID. This operation is useful because [`get_resource_metrics`][pi_get_resource_metrics] and [`describe_dimension_keys`][pi_describe_dimension_keys] don't support retrieval of large SQL statement text.
 #'
-#' See [https://paws-r.github.io/docs/pi/get_dimension_key_details.html](https://paws-r.github.io/docs/pi/get_dimension_key_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pi_get_dimension_key_details/](https://www.paws-r-sdk.com/docs/pi_get_dimension_key_details/) for full documentation.
 #'
 #' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights returns
 #' data. The only valid value is `RDS`.
@@ -178,7 +178,7 @@ pi_get_dimension_key_details <- function(ServiceType, Identifier, Group, GroupId
 #' @description
 #' Retrieve the metadata for different features. For example, the metadata might indicate that a feature is turned on or off on a specific DB instance.
 #'
-#' See [https://paws-r.github.io/docs/pi/get_resource_metadata.html](https://paws-r.github.io/docs/pi/get_resource_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pi_get_resource_metadata/](https://www.paws-r-sdk.com/docs/pi_get_resource_metadata/) for full documentation.
 #'
 #' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights returns
 #' metrics.
@@ -214,7 +214,7 @@ pi_get_resource_metadata <- function(ServiceType, Identifier) {
 #' @description
 #' Retrieve Performance Insights metrics for a set of data sources over a time period. You can provide specific dimension groups and dimensions, and provide aggregation and filtering criteria for each group.
 #'
-#' See [https://paws-r.github.io/docs/pi/get_resource_metrics.html](https://paws-r.github.io/docs/pi/get_resource_metrics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pi_get_resource_metrics/](https://www.paws-r-sdk.com/docs/pi_get_resource_metrics/) for full documentation.
 #'
 #' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights returns
 #' metrics. Valid values are as follows:
@@ -280,7 +280,7 @@ pi_get_resource_metrics <- function(ServiceType, Identifier, MetricQueries, Star
     name = "GetResourceMetrics",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$get_resource_metrics_input(ServiceType = ServiceType, Identifier = Identifier, MetricQueries = MetricQueries, StartTime = StartTime, EndTime = EndTime, PeriodInSeconds = PeriodInSeconds, MaxResults = MaxResults, NextToken = NextToken, PeriodAlignment = PeriodAlignment)
   output <- .pi$get_resource_metrics_output()
@@ -298,7 +298,7 @@ pi_get_resource_metrics <- function(ServiceType, Identifier, MetricQueries, Star
 #' @description
 #' Retrieve the dimensions that can be queried for each specified metric type on a specified DB instance.
 #'
-#' See [https://paws-r.github.io/docs/pi/list_available_resource_dimensions.html](https://paws-r.github.io/docs/pi/list_available_resource_dimensions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pi_list_available_resource_dimensions/](https://www.paws-r-sdk.com/docs/pi_list_available_resource_dimensions/) for full documentation.
 #'
 #' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights returns
 #' metrics.
@@ -324,7 +324,7 @@ pi_list_available_resource_dimensions <- function(ServiceType, Identifier, Metri
     name = "ListAvailableResourceDimensions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$list_available_resource_dimensions_input(ServiceType = ServiceType, Identifier = Identifier, Metrics = Metrics, MaxResults = MaxResults, NextToken = NextToken)
   output <- .pi$list_available_resource_dimensions_output()
@@ -342,7 +342,7 @@ pi_list_available_resource_dimensions <- function(ServiceType, Identifier, Metri
 #' @description
 #' Retrieve metrics of the specified types that can be queried for a specified DB instance.
 #'
-#' See [https://paws-r.github.io/docs/pi/list_available_resource_metrics.html](https://paws-r.github.io/docs/pi/list_available_resource_metrics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/pi_list_available_resource_metrics/](https://www.paws-r-sdk.com/docs/pi_list_available_resource_metrics/) for full documentation.
 #'
 #' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights returns
 #' metrics.
@@ -378,7 +378,7 @@ pi_list_available_resource_metrics <- function(ServiceType, Identifier, MetricTy
     name = "ListAvailableResourceMetrics",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .pi$list_available_resource_metrics_input(ServiceType = ServiceType, Identifier = Identifier, MetricTypes = MetricTypes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .pi$list_available_resource_metrics_output()

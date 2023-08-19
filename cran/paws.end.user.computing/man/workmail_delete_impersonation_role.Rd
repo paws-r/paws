@@ -14,6 +14,6 @@ workmail_delete_impersonation_role(OrganizationId, ImpersonationRoleId)
 \description{
 Deletes an impersonation role for the given WorkMail organization.
 
-See \url{https://paws-r.github.io/docs/workmail/delete_impersonation_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_delete_impersonation_role/} for full documentation.
 }
 \keyword{internal}

@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Adds a notification channel to DevOps Guru. A notification channel is used to notify you about important DevOps Guru events, such as when an insight is generated.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/add_notification_channel.html](https://paws-r.github.io/docs/devopsguru/add_notification_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_add_notification_channel/](https://www.paws-r-sdk.com/docs/devopsguru_add_notification_channel/) for full documentation.
 #'
 #' @param Config &#91;required&#93; A `NotificationChannelConfig` object that specifies what type of
 #' notification channel to add. The one supported notification channel is
@@ -40,7 +40,7 @@ devopsguru_add_notification_channel <- function(Config) {
 #' @description
 #' Deletes the insight along with the associated anomalies, events and recommendations.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/delete_insight.html](https://paws-r.github.io/docs/devopsguru/delete_insight.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_delete_insight/](https://www.paws-r-sdk.com/docs/devopsguru_delete_insight/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the insight.
 #'
@@ -71,7 +71,7 @@ devopsguru_delete_insight <- function(Id) {
 #' @description
 #' Returns the number of open reactive insights, the number of open proactive insights, and the number of metrics analyzed in your Amazon Web Services account. Use these numbers to gauge the health of operations in your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/describe_account_health.html](https://paws-r.github.io/docs/devopsguru/describe_account_health.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_describe_account_health/](https://www.paws-r-sdk.com/docs/devopsguru_describe_account_health/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -101,7 +101,7 @@ devopsguru_describe_account_health <- function() {
 #' @description
 #' For the time range passed in, returns the number of open reactive insight that were created, the number of open proactive insights that were created, and the Mean Time to Recover (MTTR) for all closed reactive insights.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/describe_account_overview.html](https://paws-r.github.io/docs/devopsguru/describe_account_overview.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_describe_account_overview/](https://www.paws-r-sdk.com/docs/devopsguru_describe_account_overview/) for full documentation.
 #'
 #' @param FromTime &#91;required&#93; The start of the time range passed in. The start time granularity is at
 #' the day level. The floor of the start time is used. Returned information
@@ -136,7 +136,7 @@ devopsguru_describe_account_overview <- function(FromTime, ToTime = NULL) {
 #' @description
 #' Returns details about an anomaly that you specify using its ID.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/describe_anomaly.html](https://paws-r.github.io/docs/devopsguru/describe_anomaly.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_describe_anomaly/](https://www.paws-r-sdk.com/docs/devopsguru_describe_anomaly/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the anomaly.
 #' @param AccountId The ID of the member account.
@@ -167,7 +167,7 @@ devopsguru_describe_anomaly <- function(Id, AccountId = NULL) {
 #' @description
 #' Returns the integration status of services that are integrated with DevOps Guru as Consumer via EventBridge. The one service that can be integrated with DevOps Guru is Amazon CodeGuru Profiler, which can produce proactive recommendations which can be stored and viewed in DevOps Guru.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/describe_event_sources_config.html](https://paws-r.github.io/docs/devopsguru/describe_event_sources_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_describe_event_sources_config/](https://www.paws-r-sdk.com/docs/devopsguru_describe_event_sources_config/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -195,7 +195,7 @@ devopsguru_describe_event_sources_config <- function() {
 #' @description
 #' Returns the most recent feedback submitted in the current Amazon Web Services account and Region.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/describe_feedback.html](https://paws-r.github.io/docs/devopsguru/describe_feedback.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_describe_feedback/](https://www.paws-r-sdk.com/docs/devopsguru_describe_feedback/) for full documentation.
 #'
 #' @param InsightId The ID of the insight for which the feedback was provided.
 #'
@@ -224,7 +224,7 @@ devopsguru_describe_feedback <- function(InsightId = NULL) {
 #' @description
 #' Returns details about an insight that you specify using its ID.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/describe_insight.html](https://paws-r.github.io/docs/devopsguru/describe_insight.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_describe_insight/](https://www.paws-r-sdk.com/docs/devopsguru_describe_insight/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the insight.
 #' @param AccountId The ID of the member account in the organization.
@@ -255,7 +255,7 @@ devopsguru_describe_insight <- function(Id, AccountId = NULL) {
 #' @description
 #' Returns active insights, predictive insights, and resource hours analyzed in last hour.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/describe_organization_health.html](https://paws-r.github.io/docs/devopsguru/describe_organization_health.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_describe_organization_health/](https://www.paws-r-sdk.com/docs/devopsguru_describe_organization_health/) for full documentation.
 #'
 #' @param AccountIds The ID of the Amazon Web Services account.
 #' @param OrganizationalUnitIds The ID of the organizational unit.
@@ -286,7 +286,7 @@ devopsguru_describe_organization_health <- function(AccountIds = NULL, Organizat
 #' @description
 #' Returns an overview of your organization's history based on the specified time range. The overview includes the total reactive and proactive insights.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/describe_organization_overview.html](https://paws-r.github.io/docs/devopsguru/describe_organization_overview.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_describe_organization_overview/](https://www.paws-r-sdk.com/docs/devopsguru_describe_organization_overview/) for full documentation.
 #'
 #' @param FromTime &#91;required&#93; The start of the time range passed in. The start time granularity is at
 #' the day level. The floor of the start time is used. Returned information
@@ -323,7 +323,7 @@ devopsguru_describe_organization_overview <- function(FromTime, ToTime = NULL, A
 #' @description
 #' Provides an overview of your system's health. If additional member accounts are part of your organization, you can filter those accounts using the `AccountIds` field.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/describe_organization_resource_collection_health.html](https://paws-r.github.io/docs/devopsguru/describe_organization_resource_collection_health.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_describe_organization_resource_collection_health/](https://www.paws-r-sdk.com/docs/devopsguru_describe_organization_resource_collection_health/) for full documentation.
 #'
 #' @param OrganizationResourceCollectionType &#91;required&#93; An Amazon Web Services resource collection type. This type specifies how
 #' analyzed Amazon Web Services resources are defined. The two types of
@@ -349,7 +349,7 @@ devopsguru_describe_organization_resource_collection_health <- function(Organiza
     name = "DescribeOrganizationResourceCollectionHealth",
     http_method = "POST",
     http_path = "/organization/health/resource-collection",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = list( "CloudFormation", "Account", "Service", "Tags"))
   )
   input <- .devopsguru$describe_organization_resource_collection_health_input(OrganizationResourceCollectionType = OrganizationResourceCollectionType, AccountIds = AccountIds, OrganizationalUnitIds = OrganizationalUnitIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .devopsguru$describe_organization_resource_collection_health_output()
@@ -368,7 +368,7 @@ devopsguru_describe_organization_resource_collection_health <- function(Organiza
 #' @description
 #' Returns the number of open proactive insights, open reactive insights, and the Mean Time to Recover (MTTR) for all closed insights in resource collections in your account. You specify the type of Amazon Web Services resources collection. The two types of Amazon Web Services resource collections supported are Amazon Web Services CloudFormation stacks and Amazon Web Services resources that contain the same Amazon Web Services tag. DevOps Guru can be configured to analyze the Amazon Web Services resources that are defined in the stacks or that are tagged using the same tag *key*. You can specify up to 500 Amazon Web Services CloudFormation stacks.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/describe_resource_collection_health.html](https://paws-r.github.io/docs/devopsguru/describe_resource_collection_health.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_describe_resource_collection_health/](https://www.paws-r-sdk.com/docs/devopsguru_describe_resource_collection_health/) for full documentation.
 #'
 #' @param ResourceCollectionType &#91;required&#93; An Amazon Web Services resource collection type. This type specifies how
 #' analyzed Amazon Web Services resources are defined. The two types of
@@ -389,7 +389,7 @@ devopsguru_describe_resource_collection_health <- function(ResourceCollectionTyp
     name = "DescribeResourceCollectionHealth",
     http_method = "GET",
     http_path = "/accounts/health/resource-collection/{ResourceCollectionType}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = list( "CloudFormation", "Service", "Tags"))
   )
   input <- .devopsguru$describe_resource_collection_health_input(ResourceCollectionType = ResourceCollectionType, NextToken = NextToken)
   output <- .devopsguru$describe_resource_collection_health_output()
@@ -407,7 +407,7 @@ devopsguru_describe_resource_collection_health <- function(ResourceCollectionTyp
 #' @description
 #' Returns the integration status of services that are integrated with DevOps Guru. The one service that can be integrated with DevOps Guru is Amazon Web Services Systems Manager, which can be used to create an OpsItem for each generated insight.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/describe_service_integration.html](https://paws-r.github.io/docs/devopsguru/describe_service_integration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_describe_service_integration/](https://www.paws-r-sdk.com/docs/devopsguru_describe_service_integration/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -435,7 +435,7 @@ devopsguru_describe_service_integration <- function() {
 #' @description
 #' Returns an estimate of the monthly cost for DevOps Guru to analyze your Amazon Web Services resources. For more information, see [Estimate your Amazon DevOps Guru costs](https://docs.aws.amazon.com/devops-guru/latest/userguide/cost-estimate.html) and [Amazon DevOps Guru pricing](https://aws.amazon.com/devops-guru/pricing/).
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/get_cost_estimation.html](https://paws-r.github.io/docs/devopsguru/get_cost_estimation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_get_cost_estimation/](https://www.paws-r-sdk.com/docs/devopsguru_get_cost_estimation/) for full documentation.
 #'
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
@@ -448,7 +448,7 @@ devopsguru_get_cost_estimation <- function(NextToken = NULL) {
     name = "GetCostEstimation",
     http_method = "GET",
     http_path = "/cost-estimation",
-    paginator = list()
+    paginator = list(input_token = "NextToken", non_aggregate_keys = list("Status", "TotalCost", "TimeRange", "ResourceCollection"), output_token = "NextToken", result_key = list("Costs"))
   )
   input <- .devopsguru$get_cost_estimation_input(NextToken = NextToken)
   output <- .devopsguru$get_cost_estimation_output()
@@ -466,7 +466,7 @@ devopsguru_get_cost_estimation <- function(NextToken = NULL) {
 #' @description
 #' Returns lists Amazon Web Services resources that are of the specified resource collection type. The two types of Amazon Web Services resource collections supported are Amazon Web Services CloudFormation stacks and Amazon Web Services resources that contain the same Amazon Web Services tag. DevOps Guru can be configured to analyze the Amazon Web Services resources that are defined in the stacks or that are tagged using the same tag *key*. You can specify up to 500 Amazon Web Services CloudFormation stacks.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/get_resource_collection.html](https://paws-r.github.io/docs/devopsguru/get_resource_collection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_get_resource_collection/](https://www.paws-r-sdk.com/docs/devopsguru_get_resource_collection/) for full documentation.
 #'
 #' @param ResourceCollectionType &#91;required&#93; The type of Amazon Web Services resource collections to return. The one
 #' valid value is `CLOUD_FORMATION` for Amazon Web Services CloudFormation
@@ -482,7 +482,7 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
     name = "GetResourceCollection",
     http_method = "GET",
     http_path = "/resource-collections/{ResourceCollectionType}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", non_aggregate_keys = list("ResourceCollection"), output_token = "NextToken", result_key = list("ResourceCollection.CloudFormation.StackNames", "ResourceCollection.Tags"))
   )
   input <- .devopsguru$get_resource_collection_input(ResourceCollectionType = ResourceCollectionType, NextToken = NextToken)
   output <- .devopsguru$get_resource_collection_output()
@@ -500,7 +500,7 @@ devopsguru_get_resource_collection <- function(ResourceCollectionType, NextToken
 #' @description
 #' Returns a list of the anomalies that belong to an insight that you specify using its ID.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/list_anomalies_for_insight.html](https://paws-r.github.io/docs/devopsguru/list_anomalies_for_insight.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_list_anomalies_for_insight/](https://www.paws-r-sdk.com/docs/devopsguru_list_anomalies_for_insight/) for full documentation.
 #'
 #' @param InsightId &#91;required&#93; The ID of the insight. The returned anomalies belong to this insight.
 #' @param StartTimeRange A time range used to specify when the requested anomalies started. All
@@ -521,7 +521,7 @@ devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NU
     name = "ListAnomaliesForInsight",
     http_method = "POST",
     http_path = "/anomalies/insight/{InsightId}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ReactiveAnomalies", "ProactiveAnomalies"))
   )
   input <- .devopsguru$list_anomalies_for_insight_input(InsightId = InsightId, StartTimeRange = StartTimeRange, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId, Filters = Filters)
   output <- .devopsguru$list_anomalies_for_insight_output()
@@ -538,7 +538,7 @@ devopsguru_list_anomalies_for_insight <- function(InsightId, StartTimeRange = NU
 #' @description
 #' Returns the list of log groups that contain log anomalies.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/list_anomalous_log_groups.html](https://paws-r.github.io/docs/devopsguru/list_anomalous_log_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_list_anomalous_log_groups/](https://www.paws-r-sdk.com/docs/devopsguru_list_anomalous_log_groups/) for full documentation.
 #'
 #' @param InsightId &#91;required&#93; The ID of the insight containing the log groups.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
@@ -555,7 +555,7 @@ devopsguru_list_anomalous_log_groups <- function(InsightId, MaxResults = NULL, N
     name = "ListAnomalousLogGroups",
     http_method = "POST",
     http_path = "/list-log-anomalies",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("InsightId", "AnomalousLogGroups"))
   )
   input <- .devopsguru$list_anomalous_log_groups_input(InsightId = InsightId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .devopsguru$list_anomalous_log_groups_output()
@@ -573,7 +573,7 @@ devopsguru_list_anomalous_log_groups <- function(InsightId, MaxResults = NULL, N
 #' @description
 #' Returns a list of the events emitted by the resources that are evaluated by DevOps Guru. You can use filters to specify which events are returned.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/list_events.html](https://paws-r.github.io/docs/devopsguru/list_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_list_events/](https://www.paws-r-sdk.com/docs/devopsguru_list_events/) for full documentation.
 #'
 #' @param Filters &#91;required&#93; A `ListEventsFilters` object used to specify which events to return.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
@@ -591,7 +591,7 @@ devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL,
     name = "ListEvents",
     http_method = "POST",
     http_path = "/events",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Events")
   )
   input <- .devopsguru$list_events_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .devopsguru$list_events_output()
@@ -608,7 +608,7 @@ devopsguru_list_events <- function(Filters, MaxResults = NULL, NextToken = NULL,
 #' @description
 #' Returns a list of insights in your Amazon Web Services account. You can specify which insights are returned by their start time and status (`ONGOING`, `CLOSED`, or `ANY`).
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/list_insights.html](https://paws-r.github.io/docs/devopsguru/list_insights.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_list_insights/](https://www.paws-r-sdk.com/docs/devopsguru_list_insights/) for full documentation.
 #'
 #' @param StatusFilter &#91;required&#93; A filter used to filter the returned insights by their status. You can
 #' specify one status filter.
@@ -626,7 +626,7 @@ devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken 
     name = "ListInsights",
     http_method = "POST",
     http_path = "/insights",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights"))
   )
   input <- .devopsguru$list_insights_input(StatusFilter = StatusFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .devopsguru$list_insights_output()
@@ -644,7 +644,7 @@ devopsguru_list_insights <- function(StatusFilter, MaxResults = NULL, NextToken 
 #' @description
 #' Returns the list of all log groups that are being monitored and tagged by DevOps Guru.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/list_monitored_resources.html](https://paws-r.github.io/docs/devopsguru/list_monitored_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_list_monitored_resources/](https://www.paws-r-sdk.com/docs/devopsguru_list_monitored_resources/) for full documentation.
 #'
 #' @param Filters Filters to determine which monitored resources you want to retrieve. You
 #' can filter by resource type or resource permission status.
@@ -662,7 +662,7 @@ devopsguru_list_monitored_resources <- function(Filters = NULL, MaxResults = NUL
     name = "ListMonitoredResources",
     http_method = "POST",
     http_path = "/monitoredResources",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("MonitoredResourceIdentifiers"))
   )
   input <- .devopsguru$list_monitored_resources_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .devopsguru$list_monitored_resources_output()
@@ -679,7 +679,7 @@ devopsguru_list_monitored_resources <- function(Filters = NULL, MaxResults = NUL
 #' @description
 #' Returns a list of notification channels configured for DevOps Guru. Each notification channel is used to notify you when DevOps Guru generates an insight that contains information about how to improve your operations. The one supported notification channel is Amazon Simple Notification Service (Amazon SNS).
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/list_notification_channels.html](https://paws-r.github.io/docs/devopsguru/list_notification_channels.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_list_notification_channels/](https://www.paws-r-sdk.com/docs/devopsguru_list_notification_channels/) for full documentation.
 #'
 #' @param NextToken The pagination token to use to retrieve the next page of results for
 #' this operation. If this value is null, it retrieves the first page.
@@ -692,7 +692,7 @@ devopsguru_list_notification_channels <- function(NextToken = NULL) {
     name = "ListNotificationChannels",
     http_method = "POST",
     http_path = "/channels",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Channels")
   )
   input <- .devopsguru$list_notification_channels_input(NextToken = NextToken)
   output <- .devopsguru$list_notification_channels_output()
@@ -709,7 +709,7 @@ devopsguru_list_notification_channels <- function(NextToken = NULL) {
 #' @description
 #' Returns a list of insights associated with the account or OU Id.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/list_organization_insights.html](https://paws-r.github.io/docs/devopsguru/list_organization_insights.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_list_organization_insights/](https://www.paws-r-sdk.com/docs/devopsguru_list_organization_insights/) for full documentation.
 #'
 #' @param StatusFilter &#91;required&#93; 
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
@@ -728,7 +728,7 @@ devopsguru_list_organization_insights <- function(StatusFilter, MaxResults = NUL
     name = "ListOrganizationInsights",
     http_method = "POST",
     http_path = "/organization/insights",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights"))
   )
   input <- .devopsguru$list_organization_insights_input(StatusFilter = StatusFilter, MaxResults = MaxResults, AccountIds = AccountIds, OrganizationalUnitIds = OrganizationalUnitIds, NextToken = NextToken)
   output <- .devopsguru$list_organization_insights_output()
@@ -745,7 +745,7 @@ devopsguru_list_organization_insights <- function(StatusFilter, MaxResults = NUL
 #' @description
 #' Returns a list of a specified insight's recommendations. Each recommendation includes a list of related metrics and a list of related events.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/list_recommendations.html](https://paws-r.github.io/docs/devopsguru/list_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_list_recommendations/](https://www.paws-r-sdk.com/docs/devopsguru_list_recommendations/) for full documentation.
 #'
 #' @param InsightId &#91;required&#93; The ID of the requested insight.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
@@ -761,7 +761,7 @@ devopsguru_list_recommendations <- function(InsightId, NextToken = NULL, Locale 
     name = "ListRecommendations",
     http_method = "POST",
     http_path = "/recommendations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Recommendations")
   )
   input <- .devopsguru$list_recommendations_input(InsightId = InsightId, NextToken = NextToken, Locale = Locale, AccountId = AccountId)
   output <- .devopsguru$list_recommendations_output()
@@ -778,7 +778,7 @@ devopsguru_list_recommendations <- function(InsightId, NextToken = NULL, Locale 
 #' @description
 #' Collects customer feedback about the specified insight.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/put_feedback.html](https://paws-r.github.io/docs/devopsguru/put_feedback.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_put_feedback/](https://www.paws-r-sdk.com/docs/devopsguru_put_feedback/) for full documentation.
 #'
 #' @param InsightFeedback The feedback from customers is about the recommendations in this
 #' insight.
@@ -808,7 +808,7 @@ devopsguru_put_feedback <- function(InsightFeedback = NULL) {
 #' @description
 #' Removes a notification channel from DevOps Guru. A notification channel is used to notify you when DevOps Guru generates an insight that contains information about how to improve your operations.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/remove_notification_channel.html](https://paws-r.github.io/docs/devopsguru/remove_notification_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_remove_notification_channel/](https://www.paws-r-sdk.com/docs/devopsguru_remove_notification_channel/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the notification channel to be removed.
 #'
@@ -837,7 +837,7 @@ devopsguru_remove_notification_channel <- function(Id) {
 #' @description
 #' Returns a list of insights in your Amazon Web Services account. You can specify which insights are returned by their start time, one or more statuses (`ONGOING` or `CLOSED`), one or more severities (`LOW`, `MEDIUM`, and `HIGH`), and type (`REACTIVE` or `PROACTIVE`).
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/search_insights.html](https://paws-r.github.io/docs/devopsguru/search_insights.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_search_insights/](https://www.paws-r-sdk.com/docs/devopsguru_search_insights/) for full documentation.
 #'
 #' @param StartTimeRange &#91;required&#93; The start of the time range passed in. Returned insights occurred after
 #' this time.
@@ -858,7 +858,7 @@ devopsguru_search_insights <- function(StartTimeRange, Filters = NULL, MaxResult
     name = "SearchInsights",
     http_method = "POST",
     http_path = "/insights/search",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights"))
   )
   input <- .devopsguru$search_insights_input(StartTimeRange = StartTimeRange, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, Type = Type)
   output <- .devopsguru$search_insights_output()
@@ -875,7 +875,7 @@ devopsguru_search_insights <- function(StartTimeRange, Filters = NULL, MaxResult
 #' @description
 #' Returns a list of insights in your organization. You can specify which insights are returned by their start time, one or more statuses (`ONGOING`, `CLOSED`, and `CLOSED`), one or more severities (`LOW`, `MEDIUM`, and `HIGH`), and type (`REACTIVE` or `PROACTIVE`).
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/search_organization_insights.html](https://paws-r.github.io/docs/devopsguru/search_organization_insights.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_search_organization_insights/](https://www.paws-r-sdk.com/docs/devopsguru_search_organization_insights/) for full documentation.
 #'
 #' @param AccountIds &#91;required&#93; The ID of the Amazon Web Services account.
 #' @param StartTimeRange &#91;required&#93; 
@@ -896,7 +896,7 @@ devopsguru_search_organization_insights <- function(AccountIds, StartTimeRange, 
     name = "SearchOrganizationInsights",
     http_method = "POST",
     http_path = "/organization/insights/search",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = list("ProactiveInsights", "ReactiveInsights"))
   )
   input <- .devopsguru$search_organization_insights_input(AccountIds = AccountIds, StartTimeRange = StartTimeRange, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken, Type = Type)
   output <- .devopsguru$search_organization_insights_output()
@@ -914,7 +914,7 @@ devopsguru_search_organization_insights <- function(AccountIds, StartTimeRange, 
 #' @description
 #' Starts the creation of an estimate of the monthly cost to analyze your Amazon Web Services resources.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/start_cost_estimation.html](https://paws-r.github.io/docs/devopsguru/start_cost_estimation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_start_cost_estimation/](https://www.paws-r-sdk.com/docs/devopsguru_start_cost_estimation/) for full documentation.
 #'
 #' @param ResourceCollection &#91;required&#93; The collection of Amazon Web Services resources used to create a monthly
 #' DevOps Guru cost estimate.
@@ -946,7 +946,7 @@ devopsguru_start_cost_estimation <- function(ResourceCollection, ClientToken = N
 #' @description
 #' Enables or disables integration with a service that can be integrated with DevOps Guru. The one service that can be integrated with DevOps Guru is Amazon CodeGuru Profiler, which can produce proactive recommendations which can be stored and viewed in DevOps Guru.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/update_event_sources_config.html](https://paws-r.github.io/docs/devopsguru/update_event_sources_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_update_event_sources_config/](https://www.paws-r-sdk.com/docs/devopsguru_update_event_sources_config/) for full documentation.
 #'
 #' @param EventSources Configuration information about the integration of DevOps Guru as the
 #' Consumer via EventBridge with another AWS Service.
@@ -976,7 +976,7 @@ devopsguru_update_event_sources_config <- function(EventSources = NULL) {
 #' @description
 #' Updates the collection of resources that DevOps Guru analyzes. The two types of Amazon Web Services resource collections supported are Amazon Web Services CloudFormation stacks and Amazon Web Services resources that contain the same Amazon Web Services tag. DevOps Guru can be configured to analyze the Amazon Web Services resources that are defined in the stacks or that are tagged using the same tag *key*. You can specify up to 500 Amazon Web Services CloudFormation stacks. This method also creates the IAM role required for you to use DevOps Guru.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/update_resource_collection.html](https://paws-r.github.io/docs/devopsguru/update_resource_collection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_update_resource_collection/](https://www.paws-r-sdk.com/docs/devopsguru_update_resource_collection/) for full documentation.
 #'
 #' @param Action &#91;required&#93; Specifies if the resource collection in the request is added or deleted
 #' to the resource collection.
@@ -1008,7 +1008,7 @@ devopsguru_update_resource_collection <- function(Action, ResourceCollection) {
 #' @description
 #' Enables or disables integration with a service that can be integrated with DevOps Guru. The one service that can be integrated with DevOps Guru is Amazon Web Services Systems Manager, which can be used to create an OpsItem for each generated insight.
 #'
-#' See [https://paws-r.github.io/docs/devopsguru/update_service_integration.html](https://paws-r.github.io/docs/devopsguru/update_service_integration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/devopsguru_update_service_integration/](https://www.paws-r-sdk.com/docs/devopsguru_update_service_integration/) for full documentation.
 #'
 #' @param ServiceIntegration &#91;required&#93; An `IntegratedServiceConfig` object used to specify the integrated
 #' service you want to update, and whether you want to update it to enabled

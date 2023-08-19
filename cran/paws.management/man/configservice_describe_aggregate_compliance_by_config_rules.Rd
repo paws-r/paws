@@ -26,6 +26,6 @@ the next page of results in a paginated response.}
 \description{
 Returns a list of compliant and noncompliant rules with the number of resources for compliant and noncompliant rules. Does not display rules that do not have compliance results.
 
-See \url{https://paws-r.github.io/docs/configservice/describe_aggregate_compliance_by_config_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_describe_aggregate_compliance_by_config_rules/} for full documentation.
 }
 \keyword{internal}

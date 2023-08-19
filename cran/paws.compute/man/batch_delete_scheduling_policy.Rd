@@ -12,6 +12,6 @@ batch_delete_scheduling_policy(arn)
 \description{
 Deletes the specified scheduling policy.
 
-See \url{https://paws-r.github.io/docs/batch/delete_scheduling_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_delete_scheduling_policy/} for full documentation.
 }
 \keyword{internal}

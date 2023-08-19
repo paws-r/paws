@@ -19,6 +19,6 @@ experiences.}
 \description{
 Lists one or more Amazon Kendra experiences. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see \href{https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html}{Building a search experience with no code}.
 
-See \url{https://paws-r.github.io/docs/kendra/list_experiences.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_list_experiences/} for full documentation.
 }
 \keyword{internal}

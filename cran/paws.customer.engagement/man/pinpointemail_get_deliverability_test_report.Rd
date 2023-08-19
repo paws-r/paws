@@ -12,6 +12,6 @@ pinpointemail_get_deliverability_test_report(ReportId)
 \description{
 Retrieve the results of a predictive inbox placement test.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/get_deliverability_test_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_get_deliverability_test_report/} for full documentation.
 }
 \keyword{internal}

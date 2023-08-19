@@ -19,6 +19,6 @@ description.}
 \description{
 Updates the specified application to have the specified properties.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/update_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_application/} for full documentation.
 }
 \keyword{internal}

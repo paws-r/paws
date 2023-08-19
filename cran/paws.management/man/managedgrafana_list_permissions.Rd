@@ -35,6 +35,6 @@ required.}
 \description{
 Lists the users and groups who have the Grafana \code{Admin} and \code{Editor} roles in this workspace. If you use this operation without specifying \code{userId} or \code{groupId}, the operation returns the roles of all users and groups. If you specify a \code{userId} or a \code{groupId}, only the roles for that user or group are returned. If you do this, you can specify only one \code{userId} or one \code{groupId}.
 
-See \url{https://paws-r.github.io/docs/managedgrafana/list_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/managedgrafana_list_permissions/} for full documentation.
 }
 \keyword{internal}

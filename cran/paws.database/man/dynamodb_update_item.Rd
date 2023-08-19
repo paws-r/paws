@@ -17,7 +17,8 @@ dynamodb_update_item(
   UpdateExpression = NULL,
   ConditionExpression = NULL,
   ExpressionAttributeNames = NULL,
-  ExpressionAttributeValues = NULL
+  ExpressionAttributeValues = NULL,
+  ReturnValuesOnConditionCheckFailure = NULL
 )
 }
 \arguments{
@@ -229,10 +230,18 @@ You could then use these values in an expression, such as this:
 
 For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
+
+\item{ReturnValuesOnConditionCheckFailure}{An optional parameter that returns the item attributes for an
+\code{\link[=dynamodb_update_item]{update_item}} operation that failed a condition
+check.
+
+There is no additional cost associated with requesting a return value
+aside from the small network and processing overhead of receiving a
+larger response. No read capacity units are consumed.}
 }
 \description{
 Edits an existing item's attributes, or adds a new item to the table if it does not already exist. You can put, delete, or add attribute values. You can also perform a conditional update on an existing item (insert a new attribute name-value pair if it doesn't exist, or replace an existing name-value pair if it has certain expected attribute values).
 
-See \url{https://paws-r.github.io/docs/dynamodb/update_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_update_item/} for full documentation.
 }
 \keyword{internal}

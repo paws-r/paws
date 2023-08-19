@@ -17,6 +17,6 @@ tag keys and tags.}
 \description{
 The \code{\link[=managedgrafana_tag_resource]{tag_resource}} operation associates tags with an Amazon Managed Grafana resource. Currently, the only resource that can be tagged is workspaces.
 
-See \url{https://paws-r.github.io/docs/managedgrafana/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/managedgrafana_tag_resource/} for full documentation.
 }
 \keyword{internal}

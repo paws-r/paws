@@ -12,6 +12,6 @@ ses_verify_email_address(EmailAddress)
 \description{
 Deprecated. Use the \code{\link[=ses_verify_email_identity]{verify_email_identity}} operation to verify a new email address.
 
-See \url{https://paws-r.github.io/docs/ses/verify_email_address.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_verify_email_address/} for full documentation.
 }
 \keyword{internal}

@@ -52,6 +52,6 @@ metrics, snapshots, logs, and images.}
 \description{
 Creates a \emph{trial component}, which is a stage of a machine learning \emph{trial}. A trial is composed of one or more trial components. A trial component can be used in multiple trials.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_trial_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_trial_component/} for full documentation.
 }
 \keyword{internal}

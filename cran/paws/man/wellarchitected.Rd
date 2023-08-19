@@ -4,22 +4,47 @@
 \alias{wellarchitected}
 \title{AWS Well-Architected Tool}
 \usage{
-wellarchitected(config = list())
+wellarchitected(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -53,8 +78,20 @@ Tool, see the \href{https://docs.aws.amazon.com/wellarchitected/latest/userguide
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -63,16 +100,22 @@ Tool, see the \href{https://docs.aws.amazon.com/wellarchitected/latest/userguide
 
 \tabular{ll}{
 \link[paws.developer.tools:wellarchitected_associate_lenses]{associate_lenses} \tab Associate a lens to a workload\cr
+\link[paws.developer.tools:wellarchitected_associate_profiles]{associate_profiles} \tab Associate a profile with a workload\cr
 \link[paws.developer.tools:wellarchitected_create_lens_share]{create_lens_share} \tab Create a lens share\cr
 \link[paws.developer.tools:wellarchitected_create_lens_version]{create_lens_version} \tab Create a new lens version\cr
 \link[paws.developer.tools:wellarchitected_create_milestone]{create_milestone} \tab Create a milestone for an existing workload\cr
+\link[paws.developer.tools:wellarchitected_create_profile]{create_profile} \tab Create a profile\cr
+\link[paws.developer.tools:wellarchitected_create_profile_share]{create_profile_share} \tab Create a profile share\cr
 \link[paws.developer.tools:wellarchitected_create_workload]{create_workload} \tab Create a new workload\cr
 \link[paws.developer.tools:wellarchitected_create_workload_share]{create_workload_share} \tab Create a workload share\cr
 \link[paws.developer.tools:wellarchitected_delete_lens]{delete_lens} \tab Delete an existing lens\cr
 \link[paws.developer.tools:wellarchitected_delete_lens_share]{delete_lens_share} \tab Delete a lens share\cr
+\link[paws.developer.tools:wellarchitected_delete_profile]{delete_profile} \tab Delete a profile\cr
+\link[paws.developer.tools:wellarchitected_delete_profile_share]{delete_profile_share} \tab Delete a profile share\cr
 \link[paws.developer.tools:wellarchitected_delete_workload]{delete_workload} \tab Delete an existing workload\cr
 \link[paws.developer.tools:wellarchitected_delete_workload_share]{delete_workload_share} \tab Delete a workload share\cr
 \link[paws.developer.tools:wellarchitected_disassociate_lenses]{disassociate_lenses} \tab Disassociate a lens from a workload\cr
+\link[paws.developer.tools:wellarchitected_disassociate_profiles]{disassociate_profiles} \tab Disassociate a profile from a workload\cr
 \link[paws.developer.tools:wellarchitected_export_lens]{export_lens} \tab Export an existing lens\cr
 \link[paws.developer.tools:wellarchitected_get_answer]{get_answer} \tab Get the answer to a specific question in a workload review\cr
 \link[paws.developer.tools:wellarchitected_get_consolidated_report]{get_consolidated_report} \tab Get a consolidated report of your workloads\cr
@@ -81,6 +124,8 @@ Tool, see the \href{https://docs.aws.amazon.com/wellarchitected/latest/userguide
 \link[paws.developer.tools:wellarchitected_get_lens_review_report]{get_lens_review_report} \tab Get lens review report\cr
 \link[paws.developer.tools:wellarchitected_get_lens_version_difference]{get_lens_version_difference} \tab Get lens version differences\cr
 \link[paws.developer.tools:wellarchitected_get_milestone]{get_milestone} \tab Get a milestone for an existing workload\cr
+\link[paws.developer.tools:wellarchitected_get_profile]{get_profile} \tab Get profile information\cr
+\link[paws.developer.tools:wellarchitected_get_profile_template]{get_profile_template} \tab Get profile template\cr
 \link[paws.developer.tools:wellarchitected_get_workload]{get_workload} \tab Get an existing workload\cr
 \link[paws.developer.tools:wellarchitected_import_lens]{import_lens} \tab Import a new custom lens or update an existing custom lens\cr
 \link[paws.developer.tools:wellarchitected_list_answers]{list_answers} \tab List of answers for a particular workload and lens\cr
@@ -92,6 +137,9 @@ Tool, see the \href{https://docs.aws.amazon.com/wellarchitected/latest/userguide
 \link[paws.developer.tools:wellarchitected_list_lens_shares]{list_lens_shares} \tab List the lens shares associated with the lens\cr
 \link[paws.developer.tools:wellarchitected_list_milestones]{list_milestones} \tab List all milestones for an existing workload\cr
 \link[paws.developer.tools:wellarchitected_list_notifications]{list_notifications} \tab List lens notifications\cr
+\link[paws.developer.tools:wellarchitected_list_profile_notifications]{list_profile_notifications} \tab List profile notifications\cr
+\link[paws.developer.tools:wellarchitected_list_profiles]{list_profiles} \tab List profiles\cr
+\link[paws.developer.tools:wellarchitected_list_profile_shares]{list_profile_shares} \tab List profile shares\cr
 \link[paws.developer.tools:wellarchitected_list_share_invitations]{list_share_invitations} \tab List the workload invitations\cr
 \link[paws.developer.tools:wellarchitected_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for a resource\cr
 \link[paws.developer.tools:wellarchitected_list_workloads]{list_workloads} \tab Paginated list of workloads\cr
@@ -101,10 +149,12 @@ Tool, see the \href{https://docs.aws.amazon.com/wellarchitected/latest/userguide
 \link[paws.developer.tools:wellarchitected_update_answer]{update_answer} \tab Update the answer to a specific question in a workload review\cr
 \link[paws.developer.tools:wellarchitected_update_global_settings]{update_global_settings} \tab Updates whether the Amazon Web Services account is opted into organization sharing and discovery integration features\cr
 \link[paws.developer.tools:wellarchitected_update_lens_review]{update_lens_review} \tab Update lens review for a particular workload\cr
+\link[paws.developer.tools:wellarchitected_update_profile]{update_profile} \tab Update a profile\cr
 \link[paws.developer.tools:wellarchitected_update_share_invitation]{update_share_invitation} \tab Update a workload or custom lens share invitation\cr
 \link[paws.developer.tools:wellarchitected_update_workload]{update_workload} \tab Update an existing workload\cr
 \link[paws.developer.tools:wellarchitected_update_workload_share]{update_workload_share} \tab Update a workload share\cr
-\link[paws.developer.tools:wellarchitected_upgrade_lens_review]{upgrade_lens_review} \tab Upgrade lens review for a particular workload
+\link[paws.developer.tools:wellarchitected_upgrade_lens_review]{upgrade_lens_review} \tab Upgrade lens review for a particular workload\cr
+\link[paws.developer.tools:wellarchitected_upgrade_profile_version]{upgrade_profile_version} \tab Upgrade a profile
 }
 }
 

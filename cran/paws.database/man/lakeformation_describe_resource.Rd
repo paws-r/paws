@@ -13,6 +13,6 @@ lakeformation_describe_resource(ResourceArn)
 \description{
 Retrieves the current data access role for the given resource registered in Lake Formation.
 
-See \url{https://paws-r.github.io/docs/lakeformation/describe_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_describe_resource/} for full documentation.
 }
 \keyword{internal}

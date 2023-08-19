@@ -28,6 +28,6 @@ in Amazon S3.}
 \description{
 Generates a CloudFormation template that streamlines and automates the integration of VPC flow logs with Amazon Athena. This make it easier for you to query and gain insights from VPC flow logs data. Based on the information that you provide, we configure resources in the template to do the following:
 
-See \url{https://paws-r.github.io/docs/ec2/get_flow_logs_integration_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_flow_logs_integration_template/} for full documentation.
 }
 \keyword{internal}

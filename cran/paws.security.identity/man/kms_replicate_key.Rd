@@ -52,8 +52,8 @@ Region. If the Region is not enabled by default, the Amazon Web Services
 account must be enabled in the Region. For information about Amazon Web
 Services partitions, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{Amazon Web Services General Reference}. For information about
-enabling and disabling Regions, see \href{https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-enable}{Enabling a Region}
-and \href{https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-disable}{Disabling a Region}
+enabling and disabling Regions, see \href{https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html#rande-manage-enable}{Enabling a Region}
+and \href{https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html#rande-manage-disable}{Disabling a Region}
 in the \emph{Amazon Web Services General Reference}.}
 
 \item{Policy}{The key policy to attach to the KMS key. This parameter is optional. If
@@ -155,6 +155,6 @@ key. For details, see \href{https://docs.aws.amazon.com/kms/latest/developerguid
 \description{
 Replicates a multi-Region key into the specified Region. This operation creates a multi-Region replica key based on a multi-Region primary key in a different Region of the same Amazon Web Services partition. You can create multiple replicas of a primary key, but each must be in a different Region. To create a multi-Region primary key, use the \code{\link[=kms_create_key]{create_key}} operation.
 
-See \url{https://paws-r.github.io/docs/kms/replicate_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_replicate_key/} for full documentation.
 }
 \keyword{internal}

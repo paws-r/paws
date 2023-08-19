@@ -25,6 +25,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Updates details about a contact evaluation in the specified Amazon Connect instance. A contact evaluation must be in draft state. Answers included in the request are merged with existing answers for the given evaluation. An answer or note can be deleted by passing an empty object (\code{{}}) to the question identifier.
 
-See \url{https://paws-r.github.io/docs/connect/update_contact_evaluation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_contact_evaluation/} for full documentation.
 }
 \keyword{internal}

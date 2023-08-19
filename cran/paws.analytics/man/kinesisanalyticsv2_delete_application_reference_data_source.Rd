@@ -30,6 +30,6 @@ operation to get the reference ID.}
 \description{
 Deletes a reference data source configuration from the specified SQL-based Kinesis Data Analytics application's configuration.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_reference_data_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_reference_data_source/} for full documentation.
 }
 \keyword{internal}

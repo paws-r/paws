@@ -33,6 +33,6 @@ next set of results.}
 \description{
 Query inventory information. This includes managed node status, such as \code{Stopped} or \code{Terminated}.
 
-See \url{https://paws-r.github.io/docs/ssm/get_inventory.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_inventory/} for full documentation.
 }
 \keyword{internal}

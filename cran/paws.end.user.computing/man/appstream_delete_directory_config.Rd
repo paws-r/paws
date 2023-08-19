@@ -12,6 +12,6 @@ appstream_delete_directory_config(DirectoryName)
 \description{
 Deletes the specified Directory Config object from AppStream 2.0. This object includes the information required to join streaming instances to an Active Directory domain.
 
-See \url{https://paws-r.github.io/docs/appstream/delete_directory_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_delete_directory_config/} for full documentation.
 }
 \keyword{internal}

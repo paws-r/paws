@@ -27,6 +27,6 @@ canceled, specify \code{no-terminate-instances}.}
 \description{
 Cancels the specified Spot Fleet requests.
 
-See \url{https://paws-r.github.io/docs/ec2/cancel_spot_fleet_requests.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_cancel_spot_fleet_requests/} for full documentation.
 }
 \keyword{internal}

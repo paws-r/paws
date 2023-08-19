@@ -25,6 +25,6 @@ to delete.}
 \description{
 Removes an asset, such as a dashboard, analysis, or dataset, from a folder.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_folder_membership.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_folder_membership/} for full documentation.
 }
 \keyword{internal}

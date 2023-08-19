@@ -13,6 +13,6 @@ server-side encryption (SSE).}
 \description{
 Disables server-side encryption (SSE) for the delivery stream.
 
-See \url{https://paws-r.github.io/docs/firehose/stop_delivery_stream_encryption.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/firehose_stop_delivery_stream_encryption/} for full documentation.
 }
 \keyword{internal}

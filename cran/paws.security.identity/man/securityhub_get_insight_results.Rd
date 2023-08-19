@@ -13,6 +13,6 @@ securityhub_get_insight_results(InsightArn)
 \description{
 Lists the results of the Security Hub insight specified by the insight ARN.
 
-See \url{https://paws-r.github.io/docs/securityhub/get_insight_results.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_get_insight_results/} for full documentation.
 }
 \keyword{internal}

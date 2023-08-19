@@ -30,6 +30,6 @@ populates this field. For more information about idempotency, see
 \description{
 Creates a session. A session is a contextual container used for generating recommendations. Amazon Connect creates a new Wisdom session for each contact on which Wisdom is enabled.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/create_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_create_session/} for full documentation.
 }
 \keyword{internal}

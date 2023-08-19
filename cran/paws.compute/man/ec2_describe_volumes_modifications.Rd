@@ -51,6 +51,6 @@ paginated request. For more information, see
 \description{
 Describes the most recent volume modification request for the specified EBS volumes.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_volumes_modifications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_volumes_modifications/} for full documentation.
 }
 \keyword{internal}

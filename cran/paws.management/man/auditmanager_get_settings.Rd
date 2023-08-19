@@ -2,7 +2,7 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_get_settings}
 \alias{auditmanager_get_settings}
-\title{Returns the settings for the specified Amazon Web Services account}
+\title{Gets the settings for a specified Amazon Web Services account}
 \usage{
 auditmanager_get_settings(attribute)
 }
@@ -10,8 +10,8 @@ auditmanager_get_settings(attribute)
 \item{attribute}{[required] The list of setting attribute enum values.}
 }
 \description{
-Returns the settings for the specified Amazon Web Services account.
+Gets the settings for a specified Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_settings/} for full documentation.
 }
 \keyword{internal}

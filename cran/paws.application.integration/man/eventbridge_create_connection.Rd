@@ -26,6 +26,6 @@ authorization parameters to use to authorize with the endpoint.}
 \description{
 Creates a connection. A connection defines the authorization type and credentials to use for authorization with an API destination HTTP endpoint.
 
-See \url{https://paws-r.github.io/docs/eventbridge/create_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_create_connection/} for full documentation.
 }
 \keyword{internal}

@@ -76,6 +76,6 @@ Service. You can specify only one destination.}
 \description{
 Creates a Kinesis Data Firehose delivery stream.
 
-See \url{https://paws-r.github.io/docs/firehose/create_delivery_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/firehose_create_delivery_stream/} for full documentation.
 }
 \keyword{internal}

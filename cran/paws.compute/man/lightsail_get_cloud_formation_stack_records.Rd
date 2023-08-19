@@ -18,6 +18,6 @@ request.}
 \description{
 Returns the CloudFormation stack record created as a result of the \verb{create cloud formation stack} operation.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_cloud_formation_stack_records.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_cloud_formation_stack_records/} for full documentation.
 }
 \keyword{internal}

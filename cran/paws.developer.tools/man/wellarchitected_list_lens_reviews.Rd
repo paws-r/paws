@@ -23,6 +23,6 @@ wellarchitected_list_lens_reviews(
 \description{
 List lens reviews for a particular workload.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/list_lens_reviews.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_list_lens_reviews/} for full documentation.
 }
 \keyword{internal}

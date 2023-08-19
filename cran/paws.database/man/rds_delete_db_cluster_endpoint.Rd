@@ -14,6 +14,6 @@ stored as a lowercase string.}
 \description{
 Deletes a custom endpoint and removes it from an Amazon Aurora DB cluster.
 
-See \url{https://paws-r.github.io/docs/rds/delete_db_cluster_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_delete_db_cluster_endpoint/} for full documentation.
 }
 \keyword{internal}

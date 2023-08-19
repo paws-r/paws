@@ -24,6 +24,6 @@ retrieve the next set of lending results.}
 \description{
 Gets the results for an Amazon Textract asynchronous operation that analyzes text in a lending document.
 
-See \url{https://paws-r.github.io/docs/textract/get_lending_analysis.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/textract_get_lending_analysis/} for full documentation.
 }
 \keyword{internal}

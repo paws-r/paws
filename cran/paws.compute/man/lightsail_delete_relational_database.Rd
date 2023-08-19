@@ -38,6 +38,6 @@ Constraints:
 \description{
 Deletes a database in Amazon Lightsail.
 
-See \url{https://paws-r.github.io/docs/lightsail/delete_relational_database.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_delete_relational_database/} for full documentation.
 }
 \keyword{internal}

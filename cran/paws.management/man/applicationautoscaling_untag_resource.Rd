@@ -21,6 +21,6 @@ To get the ARN for a scalable target, use
 \description{
 Deletes tags from an Application Auto Scaling scalable target. To delete a tag, specify the tag key and the Application Auto Scaling scalable target.
 
-See \url{https://paws-r.github.io/docs/applicationautoscaling/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationautoscaling_untag_resource/} for full documentation.
 }
 \keyword{internal}

@@ -10,6 +10,6 @@ elasticbeanstalk_create_storage_location()
 \description{
 Creates a bucket in Amazon S3 to store application versions, logs, and other files used by Elastic Beanstalk environments. The Elastic Beanstalk console and EB CLI call this API the first time you create an environment in a region. If the storage location already exists, \code{\link[=elasticbeanstalk_create_storage_location]{create_storage_location}} still returns the bucket name but does not create a new bucket.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/create_storage_location.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_storage_location/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ a registered instance to a built-in layer.}
 \description{
 Assign a registered instance to a layer.
 
-See \url{https://paws-r.github.io/docs/opsworks/assign_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_assign_instance/} for full documentation.
 }
 \keyword{internal}

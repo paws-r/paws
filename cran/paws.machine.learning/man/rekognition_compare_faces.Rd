@@ -48,6 +48,6 @@ associated with version 3 of the face model or higher.}
 \description{
 Compares a face in the \emph{source} input image with each of the 100 largest faces detected in the \emph{target} input image.
 
-See \url{https://paws-r.github.io/docs/rekognition/compare_faces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_compare_faces/} for full documentation.
 }
 \keyword{internal}

@@ -10,4 +10,3 @@ customizations$dynamodb <- function(handlers) {
   handlers$build <- handlers_add_back(handlers$build, disable_compression)
   handlers
 }
-

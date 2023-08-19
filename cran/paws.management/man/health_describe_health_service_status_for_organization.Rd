@@ -10,6 +10,6 @@ health_describe_health_service_status_for_organization()
 \description{
 This operation provides status information on enabling or disabling Health to work with your organization. To call this operation, you must use the organization's management account.
 
-See \url{https://paws-r.github.io/docs/health/describe_health_service_status_for_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/health_describe_health_service_status_for_organization/} for full documentation.
 }
 \keyword{internal}

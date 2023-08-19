@@ -32,6 +32,6 @@ updated in the administrator account.}
 \description{
 Updates configuration options for Security Hub.
 
-See \url{https://paws-r.github.io/docs/securityhub/update_security_hub_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_update_security_hub_configuration/} for full documentation.
 }
 \keyword{internal}

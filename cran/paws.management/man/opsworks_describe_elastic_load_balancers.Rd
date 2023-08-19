@@ -16,6 +16,6 @@ instances for the specified layers.}
 \description{
 Describes a stack's Elastic Load Balancing instances.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_elastic_load_balancers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_elastic_load_balancers/} for full documentation.
 }
 \keyword{internal}

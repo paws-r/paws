@@ -30,7 +30,7 @@ has been received across all queues but not deleted.
 \item \code{AWSTraceHeader} – Returns the X-Ray trace header string.
 \item \code{SenderId}
 \itemize{
-\item For an IAM user, returns the IAM user ID, for example
+\item For a user, returns the user ID, for example
 \code{ABCDEFGHI1JKLMNOPQ23R}.
 \item For an IAM role, returns the IAM role ID, for example
 \code{ABCDE1F2GH3I4JK5LMNOP:i-a123b456}.
@@ -40,7 +40,7 @@ has been received across all queues but not deleted.
 milliseconds).
 \item \code{SqsManagedSseEnabled} – Enables server-side queue encryption using
 SQS owned encryption keys. Only one server-side encryption option is
-supported per queue (e.g.
+supported per queue (for example,
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html}{SSE-KMS}
 or
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html}{SSE-SQS}).
@@ -158,6 +158,6 @@ Parameter]: R:Using\%20the\%0AReceiveRequestAttemptId\%20Request\%0AParameter}
 \description{
 Retrieves one or more messages (up to 10), from the specified queue. Using the \code{WaitTimeSeconds} parameter enables long-poll support. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-short-and-long-polling.html#sqs-long-polling}{Amazon SQS Long Polling} in the \emph{Amazon SQS Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/sqs/receive_message.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sqs_receive_message/} for full documentation.
 }
 \keyword{internal}

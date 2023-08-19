@@ -22,6 +22,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 This API is in preview release for Amazon Connect and is subject to change.
 
-See \url{https://paws-r.github.io/docs/connect/update_queue_hours_of_operation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_queue_hours_of_operation/} for full documentation.
 }
 \keyword{internal}

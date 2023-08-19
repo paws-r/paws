@@ -15,6 +15,6 @@ paginated response.}
 \description{
 Provides a list of your parallel data resources in Amazon Translate.
 
-See \url{https://paws-r.github.io/docs/translate/list_parallel_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/translate_list_parallel_data/} for full documentation.
 }
 \keyword{internal}

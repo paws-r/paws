@@ -12,6 +12,6 @@ inspector2_get_findings_report_status(reportId = NULL)
 \description{
 Gets the status of a findings report.
 
-See \url{https://paws-r.github.io/docs/inspector2/get_findings_report_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_get_findings_report_status/} for full documentation.
 }
 \keyword{internal}

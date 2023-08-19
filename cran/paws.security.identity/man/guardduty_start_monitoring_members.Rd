@@ -16,6 +16,6 @@ monitoring.}
 \description{
 Turns on GuardDuty monitoring of the specified member accounts. Use this operation to restart monitoring of accounts that you stopped monitoring with the \code{\link[=guardduty_stop_monitoring_members]{stop_monitoring_members}} operation.
 
-See \url{https://paws-r.github.io/docs/guardduty/start_monitoring_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_start_monitoring_members/} for full documentation.
 }
 \keyword{internal}

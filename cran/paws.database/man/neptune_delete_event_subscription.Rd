@@ -12,6 +12,6 @@ neptune_delete_event_subscription(SubscriptionName)
 \description{
 Deletes an event notification subscription.
 
-See \url{https://paws-r.github.io/docs/neptune/delete_event_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_delete_event_subscription/} for full documentation.
 }
 \keyword{internal}

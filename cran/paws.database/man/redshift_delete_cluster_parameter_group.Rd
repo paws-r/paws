@@ -18,6 +18,6 @@ Constraints:
 \description{
 Deletes a specified Amazon Redshift parameter group.
 
-See \url{https://paws-r.github.io/docs/redshift/delete_cluster_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_delete_cluster_parameter_group/} for full documentation.
 }
 \keyword{internal}

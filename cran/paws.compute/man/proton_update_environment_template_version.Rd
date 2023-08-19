@@ -28,6 +28,6 @@ proton_update_environment_template_version(
 \description{
 Update a major or minor version of an environment template.
 
-See \url{https://paws-r.github.io/docs/proton/update_environment_template_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_update_environment_template_version/} for full documentation.
 }
 \keyword{internal}

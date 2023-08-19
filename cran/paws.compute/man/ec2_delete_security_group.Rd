@@ -7,12 +7,11 @@
 ec2_delete_security_group(GroupId = NULL, GroupName = NULL, DryRun = NULL)
 }
 \arguments{
-\item{GroupId}{The ID of the security group. Required for a nondefault VPC.}
+\item{GroupId}{The ID of the security group.}
 
-\item{GroupName}{[EC2-Classic, default VPC] The name of the security group. You can
-specify either the security group name or the security group ID. For
-security groups in a nondefault VPC, you must specify the security group
-ID.}
+\item{GroupName}{[Default VPC] The name of the security group. You can specify either
+the security group name or the security group ID. For security groups in
+a nondefault VPC, you must specify the security group ID.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -22,6 +21,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes a security group.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_security_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_security_group/} for full documentation.
 }
 \keyword{internal}

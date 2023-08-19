@@ -39,6 +39,6 @@ or the \code{marker} parameter, but not both.}
 \description{
 Returns an array of \code{ClusterDbRevision} objects.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_cluster_db_revisions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_cluster_db_revisions/} for full documentation.
 }
 \keyword{internal}

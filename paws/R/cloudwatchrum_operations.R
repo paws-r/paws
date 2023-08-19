@@ -317,7 +317,7 @@ cloudwatchrum_batch_get_rum_metric_definitions <- function(AppMonitorName, Desti
     name = "BatchGetRumMetricDefinitions",
     http_method = "GET",
     http_path = "/rummetrics/{AppMonitorName}/metrics",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MetricDefinitions")
   )
   input <- .cloudwatchrum$batch_get_rum_metric_definitions_input(AppMonitorName = AppMonitorName, Destination = Destination, DestinationArn = DestinationArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchrum$batch_get_rum_metric_definitions_output()
@@ -703,7 +703,7 @@ cloudwatchrum_get_app_monitor_data <- function(Filters = NULL, MaxResults = NULL
     name = "GetAppMonitorData",
     http_method = "POST",
     http_path = "/appmonitor/{Name}/data",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Events")
   )
   input <- .cloudwatchrum$get_app_monitor_data_input(Filters = Filters, MaxResults = MaxResults, Name = Name, NextToken = NextToken, TimeRange = TimeRange)
   output <- .cloudwatchrum$get_app_monitor_data_output()
@@ -763,7 +763,7 @@ cloudwatchrum_list_app_monitors <- function(MaxResults = NULL, NextToken = NULL)
     name = "ListAppMonitors",
     http_method = "POST",
     http_path = "/appmonitors",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AppMonitorSummaries")
   )
   input <- .cloudwatchrum$list_app_monitors_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchrum$list_app_monitors_output()
@@ -833,7 +833,7 @@ cloudwatchrum_list_rum_metrics_destinations <- function(AppMonitorName, MaxResul
     name = "ListRumMetricsDestinations",
     http_method = "GET",
     http_path = "/rummetrics/{AppMonitorName}/metricsdestination",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Destinations")
   )
   input <- .cloudwatchrum$list_rum_metrics_destinations_input(AppMonitorName = AppMonitorName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudwatchrum$list_rum_metrics_destinations_output()

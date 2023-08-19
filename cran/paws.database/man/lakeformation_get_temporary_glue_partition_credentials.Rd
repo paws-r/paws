@@ -11,7 +11,7 @@ lakeformation_get_temporary_glue_partition_credentials(
   Permissions = NULL,
   DurationSeconds = NULL,
   AuditContext = NULL,
-  SupportedPermissionTypes
+  SupportedPermissionTypes = NULL
 )
 }
 \arguments{
@@ -28,12 +28,12 @@ temporary credentials.}
 \item{AuditContext}{A structure representing context to access a resource (column names,
 query ID, etc).}
 
-\item{SupportedPermissionTypes}{[required] A list of supported permission types for the partition. Valid values are
+\item{SupportedPermissionTypes}{A list of supported permission types for the partition. Valid values are
 \code{COLUMN_PERMISSION} and \code{CELL_FILTER_PERMISSION}.}
 }
 \description{
 This API is identical to \code{GetTemporaryTableCredentials} except that this is used when the target Data Catalog resource is of type Partition. Lake Formation restricts the permission of the vended credentials with the same scope down policy which restricts access to a single Amazon S3 prefix.
 
-See \url{https://paws-r.github.io/docs/lakeformation/get_temporary_glue_partition_credentials.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_get_temporary_glue_partition_credentials/} for full documentation.
 }
 \keyword{internal}

@@ -4,17 +4,17 @@
 \alias{prometheusservice_delete_workspace}
 \title{Deletes an AMP workspace}
 \usage{
-prometheusservice_delete_workspace(clientToken = NULL, workspaceId)
+prometheusservice_delete_workspace(workspaceId, clientToken = NULL)
 }
 \arguments{
+\item{workspaceId}{[required] The ID of the workspace to delete.}
+
 \item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
 idempotency of the request.}
-
-\item{workspaceId}{[required] The ID of the workspace to delete.}
 }
 \description{
 Deletes an AMP workspace.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/delete_workspace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_delete_workspace/} for full documentation.
 }
 \keyword{internal}

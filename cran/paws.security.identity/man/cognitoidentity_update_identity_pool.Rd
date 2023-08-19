@@ -47,6 +47,6 @@ criteria.}
 \description{
 Updates an identity pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/update_identity_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_update_identity_pool/} for full documentation.
 }
 \keyword{internal}

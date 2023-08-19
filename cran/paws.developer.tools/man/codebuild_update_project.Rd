@@ -132,6 +132,6 @@ To remove this limit, set this value to -1.}
 \description{
 Changes the settings of a build project.
 
-See \url{https://paws-r.github.io/docs/codebuild/update_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_update_project/} for full documentation.
 }
 \keyword{internal}

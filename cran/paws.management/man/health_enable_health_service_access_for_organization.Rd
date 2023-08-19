@@ -9,6 +9,6 @@ health_enable_health_service_access_for_organization()
 \description{
 Enables Health to work with Organizations. You can use the organizational view feature to aggregate events from all Amazon Web Services accounts in your organization in a centralized location.
 
-See \url{https://paws-r.github.io/docs/health/enable_health_service_access_for_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/health_enable_health_service_access_for_organization/} for full documentation.
 }
 \keyword{internal}

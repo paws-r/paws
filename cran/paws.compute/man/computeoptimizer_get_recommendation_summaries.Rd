@@ -31,6 +31,6 @@ returned \code{nextToken} value.}
 \description{
 Returns the optimization findings for an account.
 
-See \url{https://paws-r.github.io/docs/computeoptimizer/get_recommendation_summaries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_get_recommendation_summaries/} for full documentation.
 }
 \keyword{internal}

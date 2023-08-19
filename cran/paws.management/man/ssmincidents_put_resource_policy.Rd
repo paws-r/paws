@@ -15,6 +15,6 @@ policy to.}
 \description{
 Adds a resource policy to the specified response plan. The resource policy is used to share the response plan using Resource Access Manager (RAM). For more information about cross-account sharing, see \href{https://docs.aws.amazon.com/incident-manager/latest/userguide/incident-manager-cross-account-cross-region.html}{Cross-Region and cross-account incident management}.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/put_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_put_resource_policy/} for full documentation.
 }
 \keyword{internal}

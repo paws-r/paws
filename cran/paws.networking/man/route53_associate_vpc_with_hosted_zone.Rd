@@ -21,6 +21,6 @@ associate with a private hosted zone.}
 \description{
 Associates an Amazon VPC with a private hosted zone.
 
-See \url{https://paws-r.github.io/docs/route53/associate_vpc_with_hosted_zone.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_associate_vpc_with_hosted_zone/} for full documentation.
 }
 \keyword{internal}

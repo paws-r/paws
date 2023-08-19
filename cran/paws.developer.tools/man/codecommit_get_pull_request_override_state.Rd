@@ -20,6 +20,6 @@ retrieve the most recent revision ID, use
 \description{
 Returns information about whether approval rules have been set aside (overridden) for a pull request, and if so, the Amazon Resource Name (ARN) of the user or identity that overrode the rules and their requirements for the pull request.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_pull_request_override_state.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_pull_request_override_state/} for full documentation.
 }
 \keyword{internal}

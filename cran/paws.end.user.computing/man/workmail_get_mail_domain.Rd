@@ -15,6 +15,6 @@ workmail_get_mail_domain(OrganizationId, DomainName)
 \description{
 Gets details for a mail domain, including domain records required to configure your domain with recommended security.
 
-See \url{https://paws-r.github.io/docs/workmail/get_mail_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_get_mail_domain/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ Pass null if this is the first call.}
 \description{
 Returns the shared directories in your account.
 
-See \url{https://paws-r.github.io/docs/directoryservice/describe_shared_directories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_describe_shared_directories/} for full documentation.
 }
 \keyword{internal}

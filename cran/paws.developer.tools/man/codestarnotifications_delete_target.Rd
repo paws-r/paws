@@ -18,6 +18,6 @@ Amazon Web Services account are deleted.}
 \description{
 Deletes a specified target for notifications.
 
-See \url{https://paws-r.github.io/docs/codestarnotifications/delete_target.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarnotifications_delete_target/} for full documentation.
 }
 \keyword{internal}

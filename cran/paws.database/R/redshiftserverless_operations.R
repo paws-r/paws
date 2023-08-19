@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Converts a recovery point to a snapshot. For more information about recovery points and snapshots, see [Working with snapshots and recovery points](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html).
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/convert_recovery_point_to_snapshot.html](https://paws-r.github.io/docs/redshiftserverless/convert_recovery_point_to_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_convert_recovery_point_to_snapshot/](https://www.paws-r-sdk.com/docs/redshiftserverless_convert_recovery_point_to_snapshot/) for full documentation.
 #'
 #' @param recoveryPointId &#91;required&#93; The unique identifier of the recovery point.
 #' @param retentionPeriod How long to retain the snapshot.
@@ -42,7 +42,7 @@ redshiftserverless_convert_recovery_point_to_snapshot <- function(recoveryPointI
 #' @description
 #' Creates an Amazon Redshift Serverless managed VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/create_endpoint_access.html](https://paws-r.github.io/docs/redshiftserverless/create_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_create_endpoint_access/](https://www.paws-r-sdk.com/docs/redshiftserverless_create_endpoint_access/) for full documentation.
 #'
 #' @param endpointName &#91;required&#93; The name of the VPC endpoint. An endpoint name must contain 1-30
 #' characters. Valid characters are A-Z, a-z, 0-9, and hyphen(-). The first
@@ -80,7 +80,7 @@ redshiftserverless_create_endpoint_access <- function(endpointName, subnetIds, v
 #' @description
 #' Creates a namespace in Amazon Redshift Serverless.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/create_namespace.html](https://paws-r.github.io/docs/redshiftserverless/create_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_create_namespace/](https://www.paws-r-sdk.com/docs/redshiftserverless_create_namespace/) for full documentation.
 #'
 #' @param adminUserPassword The password of the administrator for the first database created in the
 #' namespace.
@@ -122,7 +122,7 @@ redshiftserverless_create_namespace <- function(adminUserPassword = NULL, adminU
 #' @description
 #' Creates a snapshot of all databases in a namespace. For more information about snapshots, see [Working with snapshots and recovery points](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-snapshots-recovery.html).
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/create_snapshot.html](https://paws-r.github.io/docs/redshiftserverless/create_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_create_snapshot/](https://www.paws-r-sdk.com/docs/redshiftserverless_create_snapshot/) for full documentation.
 #'
 #' @param namespaceName &#91;required&#93; The namespace to create a snapshot for.
 #' @param retentionPeriod How long to retain the created snapshot.
@@ -157,7 +157,7 @@ redshiftserverless_create_snapshot <- function(namespaceName, retentionPeriod = 
 #' @description
 #' Creates a usage limit for a specified Amazon Redshift Serverless usage type. The usage limit is identified by the returned usage limit identifier.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/create_usage_limit.html](https://paws-r.github.io/docs/redshiftserverless/create_usage_limit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_create_usage_limit/](https://www.paws-r-sdk.com/docs/redshiftserverless_create_usage_limit/) for full documentation.
 #'
 #' @param amount &#91;required&#93; The limit amount. If time-based, this amount is in Redshift Processing
 #' Units (RPU) consumed per hour. If data-based, this amount is in
@@ -197,7 +197,7 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @description
 #' Creates an workgroup in Amazon Redshift Serverless.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/create_workgroup.html](https://paws-r.github.io/docs/redshiftserverless/create_workgroup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_create_workgroup/](https://www.paws-r-sdk.com/docs/redshiftserverless_create_workgroup/) for full documentation.
 #'
 #' @param baseCapacity The base data warehouse capacity of the workgroup in Redshift Processing
 #' Units (RPUs).
@@ -247,7 +247,7 @@ redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParam
 #' @description
 #' Deletes an Amazon Redshift Serverless managed VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/delete_endpoint_access.html](https://paws-r.github.io/docs/redshiftserverless/delete_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_delete_endpoint_access/](https://www.paws-r-sdk.com/docs/redshiftserverless_delete_endpoint_access/) for full documentation.
 #'
 #' @param endpointName &#91;required&#93; The name of the VPC endpoint to delete.
 #'
@@ -276,7 +276,7 @@ redshiftserverless_delete_endpoint_access <- function(endpointName) {
 #' @description
 #' Deletes a namespace from Amazon Redshift Serverless. Before you delete the namespace, you can create a final snapshot that has all of the data within the namespace.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/delete_namespace.html](https://paws-r.github.io/docs/redshiftserverless/delete_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_delete_namespace/](https://www.paws-r-sdk.com/docs/redshiftserverless_delete_namespace/) for full documentation.
 #'
 #' @param finalSnapshotName The name of the snapshot to be created before the namespace is deleted.
 #' @param finalSnapshotRetentionPeriod How long to retain the final snapshot.
@@ -307,7 +307,7 @@ redshiftserverless_delete_namespace <- function(finalSnapshotName = NULL, finalS
 #' @description
 #' Deletes the specified resource policy.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/delete_resource_policy.html](https://paws-r.github.io/docs/redshiftserverless/delete_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_delete_resource_policy/](https://www.paws-r-sdk.com/docs/redshiftserverless_delete_resource_policy/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the policy to delete.
 #'
@@ -336,7 +336,7 @@ redshiftserverless_delete_resource_policy <- function(resourceArn) {
 #' @description
 #' Deletes a snapshot from Amazon Redshift Serverless.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/delete_snapshot.html](https://paws-r.github.io/docs/redshiftserverless/delete_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_delete_snapshot/](https://www.paws-r-sdk.com/docs/redshiftserverless_delete_snapshot/) for full documentation.
 #'
 #' @param snapshotName &#91;required&#93; The name of the snapshot to be deleted.
 #'
@@ -365,7 +365,7 @@ redshiftserverless_delete_snapshot <- function(snapshotName) {
 #' @description
 #' Deletes a usage limit from Amazon Redshift Serverless.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/delete_usage_limit.html](https://paws-r.github.io/docs/redshiftserverless/delete_usage_limit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_delete_usage_limit/](https://www.paws-r-sdk.com/docs/redshiftserverless_delete_usage_limit/) for full documentation.
 #'
 #' @param usageLimitId &#91;required&#93; The unique identifier of the usage limit to delete.
 #'
@@ -394,7 +394,7 @@ redshiftserverless_delete_usage_limit <- function(usageLimitId) {
 #' @description
 #' Deletes a workgroup.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/delete_workgroup.html](https://paws-r.github.io/docs/redshiftserverless/delete_workgroup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_delete_workgroup/](https://www.paws-r-sdk.com/docs/redshiftserverless_delete_workgroup/) for full documentation.
 #'
 #' @param workgroupName &#91;required&#93; The name of the workgroup to be deleted.
 #'
@@ -424,7 +424,7 @@ redshiftserverless_delete_workgroup <- function(workgroupName) {
 #' @description
 #' Returns a database user name and temporary password with temporary authorization to log in to Amazon Redshift Serverless.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/get_credentials.html](https://paws-r.github.io/docs/redshiftserverless/get_credentials.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_get_credentials/](https://www.paws-r-sdk.com/docs/redshiftserverless_get_credentials/) for full documentation.
 #'
 #' @param dbName The name of the database to get temporary authorization to log on to.
 #' 
@@ -472,7 +472,7 @@ redshiftserverless_get_credentials <- function(dbName = NULL, durationSeconds = 
 #' @description
 #' Returns information, such as the name, about a VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/get_endpoint_access.html](https://paws-r.github.io/docs/redshiftserverless/get_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_get_endpoint_access/](https://www.paws-r-sdk.com/docs/redshiftserverless_get_endpoint_access/) for full documentation.
 #'
 #' @param endpointName &#91;required&#93; The name of the VPC endpoint to return information for.
 #'
@@ -501,7 +501,7 @@ redshiftserverless_get_endpoint_access <- function(endpointName) {
 #' @description
 #' Returns information about a namespace in Amazon Redshift Serverless.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/get_namespace.html](https://paws-r.github.io/docs/redshiftserverless/get_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_get_namespace/](https://www.paws-r-sdk.com/docs/redshiftserverless_get_namespace/) for full documentation.
 #'
 #' @param namespaceName &#91;required&#93; The name of the namespace to retrieve information for.
 #'
@@ -530,7 +530,7 @@ redshiftserverless_get_namespace <- function(namespaceName) {
 #' @description
 #' Returns information about a recovery point.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/get_recovery_point.html](https://paws-r.github.io/docs/redshiftserverless/get_recovery_point.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_get_recovery_point/](https://www.paws-r-sdk.com/docs/redshiftserverless_get_recovery_point/) for full documentation.
 #'
 #' @param recoveryPointId &#91;required&#93; The unique identifier of the recovery point to return information for.
 #'
@@ -559,7 +559,7 @@ redshiftserverless_get_recovery_point <- function(recoveryPointId) {
 #' @description
 #' Returns a resource policy.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/get_resource_policy.html](https://paws-r.github.io/docs/redshiftserverless/get_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_get_resource_policy/](https://www.paws-r-sdk.com/docs/redshiftserverless_get_resource_policy/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return.
 #'
@@ -588,7 +588,7 @@ redshiftserverless_get_resource_policy <- function(resourceArn) {
 #' @description
 #' Returns information about a specific snapshot.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/get_snapshot.html](https://paws-r.github.io/docs/redshiftserverless/get_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_get_snapshot/](https://www.paws-r-sdk.com/docs/redshiftserverless_get_snapshot/) for full documentation.
 #'
 #' @param ownerAccount The owner Amazon Web Services account of a snapshot shared with another
 #' user.
@@ -620,7 +620,7 @@ redshiftserverless_get_snapshot <- function(ownerAccount = NULL, snapshotArn = N
 #' @description
 #' Returns information about a `TableRestoreStatus` object.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/get_table_restore_status.html](https://paws-r.github.io/docs/redshiftserverless/get_table_restore_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_get_table_restore_status/](https://www.paws-r-sdk.com/docs/redshiftserverless_get_table_restore_status/) for full documentation.
 #'
 #' @param tableRestoreRequestId &#91;required&#93; The ID of the
 #' [`restore_table_from_snapshot`][redshiftserverless_restore_table_from_snapshot]
@@ -651,7 +651,7 @@ redshiftserverless_get_table_restore_status <- function(tableRestoreRequestId) {
 #' @description
 #' Returns information about a usage limit.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/get_usage_limit.html](https://paws-r.github.io/docs/redshiftserverless/get_usage_limit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_get_usage_limit/](https://www.paws-r-sdk.com/docs/redshiftserverless_get_usage_limit/) for full documentation.
 #'
 #' @param usageLimitId &#91;required&#93; The unique identifier of the usage limit to return information for.
 #'
@@ -680,7 +680,7 @@ redshiftserverless_get_usage_limit <- function(usageLimitId) {
 #' @description
 #' Returns information about a specific workgroup.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/get_workgroup.html](https://paws-r.github.io/docs/redshiftserverless/get_workgroup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_get_workgroup/](https://www.paws-r-sdk.com/docs/redshiftserverless_get_workgroup/) for full documentation.
 #'
 #' @param workgroupName &#91;required&#93; The name of the workgroup to return information for.
 #'
@@ -709,7 +709,7 @@ redshiftserverless_get_workgroup <- function(workgroupName) {
 #' @description
 #' Returns an array of `EndpointAccess` objects and relevant information.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/list_endpoint_access.html](https://paws-r.github.io/docs/redshiftserverless/list_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_list_endpoint_access/](https://www.paws-r-sdk.com/docs/redshiftserverless_list_endpoint_access/) for full documentation.
 #'
 #' @param maxResults An optional parameter that specifies the maximum number of results to
 #' return. You can use `nextToken` to display the next page of results.
@@ -731,7 +731,7 @@ redshiftserverless_list_endpoint_access <- function(maxResults = NULL, nextToken
     name = "ListEndpointAccess",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "endpoints")
   )
   input <- .redshiftserverless$list_endpoint_access_input(maxResults = maxResults, nextToken = nextToken, vpcId = vpcId, workgroupName = workgroupName)
   output <- .redshiftserverless$list_endpoint_access_output()
@@ -748,7 +748,7 @@ redshiftserverless_list_endpoint_access <- function(maxResults = NULL, nextToken
 #' @description
 #' Returns information about a list of specified namespaces.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/list_namespaces.html](https://paws-r.github.io/docs/redshiftserverless/list_namespaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_list_namespaces/](https://www.paws-r-sdk.com/docs/redshiftserverless_list_namespaces/) for full documentation.
 #'
 #' @param maxResults An optional parameter that specifies the maximum number of results to
 #' return. You can use `nextToken` to display the next page of results.
@@ -766,7 +766,7 @@ redshiftserverless_list_namespaces <- function(maxResults = NULL, nextToken = NU
     name = "ListNamespaces",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "namespaces")
   )
   input <- .redshiftserverless$list_namespaces_input(maxResults = maxResults, nextToken = nextToken)
   output <- .redshiftserverless$list_namespaces_output()
@@ -783,7 +783,7 @@ redshiftserverless_list_namespaces <- function(maxResults = NULL, nextToken = NU
 #' @description
 #' Returns an array of recovery points.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/list_recovery_points.html](https://paws-r.github.io/docs/redshiftserverless/list_recovery_points.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_list_recovery_points/](https://www.paws-r-sdk.com/docs/redshiftserverless_list_recovery_points/) for full documentation.
 #'
 #' @param endTime The time when creation of the recovery point finished.
 #' @param maxResults An optional parameter that specifies the maximum number of results to
@@ -807,7 +807,7 @@ redshiftserverless_list_recovery_points <- function(endTime = NULL, maxResults =
     name = "ListRecoveryPoints",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recoveryPoints")
   )
   input <- .redshiftserverless$list_recovery_points_input(endTime = endTime, maxResults = maxResults, namespaceArn = namespaceArn, namespaceName = namespaceName, nextToken = nextToken, startTime = startTime)
   output <- .redshiftserverless$list_recovery_points_output()
@@ -824,7 +824,7 @@ redshiftserverless_list_recovery_points <- function(endTime = NULL, maxResults =
 #' @description
 #' Returns a list of snapshots.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/list_snapshots.html](https://paws-r.github.io/docs/redshiftserverless/list_snapshots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_list_snapshots/](https://www.paws-r-sdk.com/docs/redshiftserverless_list_snapshots/) for full documentation.
 #'
 #' @param endTime The timestamp showing when the snapshot creation finished.
 #' @param maxResults An optional parameter that specifies the maximum number of results to
@@ -846,7 +846,7 @@ redshiftserverless_list_snapshots <- function(endTime = NULL, maxResults = NULL,
     name = "ListSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "snapshots")
   )
   input <- .redshiftserverless$list_snapshots_input(endTime = endTime, maxResults = maxResults, namespaceArn = namespaceArn, namespaceName = namespaceName, nextToken = nextToken, ownerAccount = ownerAccount, startTime = startTime)
   output <- .redshiftserverless$list_snapshots_output()
@@ -863,7 +863,7 @@ redshiftserverless_list_snapshots <- function(endTime = NULL, maxResults = NULL,
 #' @description
 #' Returns information about an array of `TableRestoreStatus` objects.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/list_table_restore_status.html](https://paws-r.github.io/docs/redshiftserverless/list_table_restore_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_list_table_restore_status/](https://www.paws-r-sdk.com/docs/redshiftserverless_list_table_restore_status/) for full documentation.
 #'
 #' @param maxResults An optional parameter that specifies the maximum number of results to
 #' return. You can use nextToken to display the next page of results.
@@ -888,7 +888,7 @@ redshiftserverless_list_table_restore_status <- function(maxResults = NULL, name
     name = "ListTableRestoreStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tableRestoreStatuses")
   )
   input <- .redshiftserverless$list_table_restore_status_input(maxResults = maxResults, namespaceName = namespaceName, nextToken = nextToken, workgroupName = workgroupName)
   output <- .redshiftserverless$list_table_restore_status_output()
@@ -905,7 +905,7 @@ redshiftserverless_list_table_restore_status <- function(maxResults = NULL, name
 #' @description
 #' Lists the tags assigned to a resource.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/list_tags_for_resource.html](https://paws-r.github.io/docs/redshiftserverless/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/redshiftserverless_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to list tags for.
 #'
@@ -934,7 +934,7 @@ redshiftserverless_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Lists all usage limits within Amazon Redshift Serverless.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/list_usage_limits.html](https://paws-r.github.io/docs/redshiftserverless/list_usage_limits.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_list_usage_limits/](https://www.paws-r-sdk.com/docs/redshiftserverless_list_usage_limits/) for full documentation.
 #'
 #' @param maxResults An optional parameter that specifies the maximum number of results to
 #' return. You can use `nextToken` to get the next page of results. The
@@ -956,7 +956,7 @@ redshiftserverless_list_usage_limits <- function(maxResults = NULL, nextToken = 
     name = "ListUsageLimits",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "usageLimits")
   )
   input <- .redshiftserverless$list_usage_limits_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn, usageType = usageType)
   output <- .redshiftserverless$list_usage_limits_output()
@@ -973,7 +973,7 @@ redshiftserverless_list_usage_limits <- function(maxResults = NULL, nextToken = 
 #' @description
 #' Returns information about a list of specified workgroups.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/list_workgroups.html](https://paws-r.github.io/docs/redshiftserverless/list_workgroups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_list_workgroups/](https://www.paws-r-sdk.com/docs/redshiftserverless_list_workgroups/) for full documentation.
 #'
 #' @param maxResults An optional parameter that specifies the maximum number of results to
 #' return. You can use `nextToken` to display the next page of results.
@@ -989,7 +989,7 @@ redshiftserverless_list_workgroups <- function(maxResults = NULL, nextToken = NU
     name = "ListWorkgroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workgroups")
   )
   input <- .redshiftserverless$list_workgroups_input(maxResults = maxResults, nextToken = nextToken)
   output <- .redshiftserverless$list_workgroups_output()
@@ -1006,7 +1006,7 @@ redshiftserverless_list_workgroups <- function(maxResults = NULL, nextToken = NU
 #' @description
 #' Creates or updates a resource policy. Currently, you can use policies to share snapshots across Amazon Web Services accounts.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/put_resource_policy.html](https://paws-r.github.io/docs/redshiftserverless/put_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_put_resource_policy/](https://www.paws-r-sdk.com/docs/redshiftserverless_put_resource_policy/) for full documentation.
 #'
 #' @param policy &#91;required&#93; The policy to create or update. For example, the following policy grants
 #' a user authorization to restore a snapshot.
@@ -1040,7 +1040,7 @@ redshiftserverless_put_resource_policy <- function(policy, resourceArn) {
 #' @description
 #' Restore the data from a recovery point.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/restore_from_recovery_point.html](https://paws-r.github.io/docs/redshiftserverless/restore_from_recovery_point.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_restore_from_recovery_point/](https://www.paws-r-sdk.com/docs/redshiftserverless_restore_from_recovery_point/) for full documentation.
 #'
 #' @param namespaceName &#91;required&#93; The name of the namespace to restore data into.
 #' @param recoveryPointId &#91;required&#93; The unique identifier of the recovery point to restore from.
@@ -1071,7 +1071,7 @@ redshiftserverless_restore_from_recovery_point <- function(namespaceName, recove
 #' @description
 #' Restores a namespace from a snapshot.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/restore_from_snapshot.html](https://paws-r.github.io/docs/redshiftserverless/restore_from_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_restore_from_snapshot/](https://www.paws-r-sdk.com/docs/redshiftserverless_restore_from_snapshot/) for full documentation.
 #'
 #' @param namespaceName &#91;required&#93; The name of the namespace to restore the snapshot to.
 #' @param ownerAccount The Amazon Web Services account that owns the snapshot.
@@ -1111,7 +1111,7 @@ redshiftserverless_restore_from_snapshot <- function(namespaceName, ownerAccount
 #' @description
 #' Restores a table from a snapshot to your Amazon Redshift Serverless instance. You can't use this operation to restore tables with [interleaved sort keys](https://docs.aws.amazon.com/redshift/latest/dg/t_Sorting_data.html#t_Sorting_data-interleaved).
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/restore_table_from_snapshot.html](https://paws-r.github.io/docs/redshiftserverless/restore_table_from_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_restore_table_from_snapshot/](https://www.paws-r-sdk.com/docs/redshiftserverless_restore_table_from_snapshot/) for full documentation.
 #'
 #' @param activateCaseSensitiveIdentifier Indicates whether name identifiers for database, schema, and table are
 #' case sensitive. If true, the names are case sensitive. If false, the
@@ -1151,7 +1151,7 @@ redshiftserverless_restore_table_from_snapshot <- function(activateCaseSensitive
 #' @description
 #' Assigns one or more tags to a resource.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/tag_resource.html](https://paws-r.github.io/docs/redshiftserverless/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_tag_resource/](https://www.paws-r-sdk.com/docs/redshiftserverless_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to tag.
 #' @param tags &#91;required&#93; The map of the key-value pairs used to tag the resource.
@@ -1181,7 +1181,7 @@ redshiftserverless_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes a tag or set of tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/untag_resource.html](https://paws-r.github.io/docs/redshiftserverless/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_untag_resource/](https://www.paws-r-sdk.com/docs/redshiftserverless_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to remove tags from.
 #' @param tagKeys &#91;required&#93; The tag or set of tags to remove from the resource.
@@ -1211,7 +1211,7 @@ redshiftserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates an Amazon Redshift Serverless managed endpoint.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/update_endpoint_access.html](https://paws-r.github.io/docs/redshiftserverless/update_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_update_endpoint_access/](https://www.paws-r-sdk.com/docs/redshiftserverless_update_endpoint_access/) for full documentation.
 #'
 #' @param endpointName &#91;required&#93; The name of the VPC endpoint to update.
 #' @param vpcSecurityGroupIds The list of VPC security groups associated with the endpoint after the
@@ -1242,7 +1242,7 @@ redshiftserverless_update_endpoint_access <- function(endpointName, vpcSecurityG
 #' @description
 #' Updates a namespace with the specified settings. Unless required, you can't update multiple parameters in one request. For example, you must specify both `adminUsername` and `adminUserPassword` to update either field, but you can't update both `kmsKeyId` and `logExports` in a single request.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/update_namespace.html](https://paws-r.github.io/docs/redshiftserverless/update_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_update_namespace/](https://www.paws-r-sdk.com/docs/redshiftserverless_update_namespace/) for full documentation.
 #'
 #' @param adminUserPassword The password of the administrator for the first database created in the
 #' namespace. This parameter must be updated together with `adminUsername`.
@@ -1285,7 +1285,7 @@ redshiftserverless_update_namespace <- function(adminUserPassword = NULL, adminU
 #' @description
 #' Updates a snapshot.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/update_snapshot.html](https://paws-r.github.io/docs/redshiftserverless/update_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_update_snapshot/](https://www.paws-r-sdk.com/docs/redshiftserverless_update_snapshot/) for full documentation.
 #'
 #' @param retentionPeriod The new retention period of the snapshot.
 #' @param snapshotName &#91;required&#93; The name of the snapshot.
@@ -1315,7 +1315,7 @@ redshiftserverless_update_snapshot <- function(retentionPeriod = NULL, snapshotN
 #' @description
 #' Update a usage limit in Amazon Redshift Serverless. You can't update the usage type or period of a usage limit.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/update_usage_limit.html](https://paws-r.github.io/docs/redshiftserverless/update_usage_limit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_update_usage_limit/](https://www.paws-r-sdk.com/docs/redshiftserverless_update_usage_limit/) for full documentation.
 #'
 #' @param amount The new limit amount. If time-based, this amount is in Redshift
 #' Processing Units (RPU) consumed per hour. If data-based, this amount is
@@ -1350,7 +1350,7 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' @description
 #' Updates a workgroup with the specified configuration settings. You can't update multiple parameters in one request. For example, you can update `baseCapacity` or `port` in a single request, but you can't update both in the same request.
 #'
-#' See [https://paws-r.github.io/docs/redshiftserverless/update_workgroup.html](https://paws-r.github.io/docs/redshiftserverless/update_workgroup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_update_workgroup/](https://www.paws-r-sdk.com/docs/redshiftserverless_update_workgroup/) for full documentation.
 #'
 #' @param baseCapacity The new base data warehouse capacity in Redshift Processing Units
 #' (RPUs).

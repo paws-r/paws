@@ -33,6 +33,6 @@ for Amazon Web Services use
 \description{
 An API operation for adding one or more tags (key-value pairs) to a resource.
 
-See \url{https://paws-r.github.io/docs/costexplorer/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_tag_resource/} for full documentation.
 }
 \keyword{internal}

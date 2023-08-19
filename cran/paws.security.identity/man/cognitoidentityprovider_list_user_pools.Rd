@@ -17,6 +17,6 @@ listing the user pools.}
 \description{
 Lists the user pools associated with an Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/list_user_pools.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_user_pools/} for full documentation.
 }
 \keyword{internal}

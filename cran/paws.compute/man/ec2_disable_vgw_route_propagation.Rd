@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a VPC.
 
-See \url{https://paws-r.github.io/docs/ec2/disable_vgw_route_propagation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_disable_vgw_route_propagation/} for full documentation.
 }
 \keyword{internal}

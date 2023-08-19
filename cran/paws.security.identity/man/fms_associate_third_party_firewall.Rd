@@ -13,6 +13,6 @@ fms_associate_third_party_firewall(ThirdPartyFirewall)
 \description{
 Sets the Firewall Manager policy administrator as a tenant administrator of a third-party firewall service. A tenant is an instance of the third-party firewall service that's associated with your Amazon Web Services customer account.
 
-See \url{https://paws-r.github.io/docs/fms/associate_third_party_firewall.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_associate_third_party_firewall/} for full documentation.
 }
 \keyword{internal}

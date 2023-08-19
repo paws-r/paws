@@ -128,6 +128,6 @@ concurrency for a SageMaker Serverless endpoint.
 \description{
 Deletes the specified scaling policy for an Application Auto Scaling scalable target.
 
-See \url{https://paws-r.github.io/docs/applicationautoscaling/delete_scaling_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationautoscaling_delete_scaling_policy/} for full documentation.
 }
 \keyword{internal}

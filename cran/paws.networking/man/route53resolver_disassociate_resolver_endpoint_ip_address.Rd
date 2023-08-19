@@ -18,6 +18,6 @@ address from.}
 \description{
 Removes IP addresses from an inbound or an outbound Resolver endpoint. If you want to remove more than one IP address, submit one \code{\link[=route53resolver_disassociate_resolver_endpoint_ip_address]{disassociate_resolver_endpoint_ip_address}} request for each IP address.
 
-See \url{https://paws-r.github.io/docs/route53resolver/disassociate_resolver_endpoint_ip_address.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_disassociate_resolver_endpoint_ip_address/} for full documentation.
 }
 \keyword{internal}

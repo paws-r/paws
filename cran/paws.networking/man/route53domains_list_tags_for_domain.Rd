@@ -13,6 +13,6 @@ route53domains_list_tags_for_domain(DomainName)
 \description{
 This operation returns all of the tags that are associated with the specified domain.
 
-See \url{https://paws-r.github.io/docs/route53domains/list_tags_for_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_list_tags_for_domain/} for full documentation.
 }
 \keyword{internal}

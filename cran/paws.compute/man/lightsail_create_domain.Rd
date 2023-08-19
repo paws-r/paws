@@ -17,6 +17,6 @@ resource after it's created.}
 \description{
 Creates a domain resource for the specified domain (e.g., example.com).
 
-See \url{https://paws-r.github.io/docs/lightsail/create_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_create_domain/} for full documentation.
 }
 \keyword{internal}

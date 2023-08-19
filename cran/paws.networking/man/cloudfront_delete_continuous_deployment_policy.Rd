@@ -16,6 +16,6 @@ that you are deleting.}
 \description{
 Deletes a continuous deployment policy.
 
-See \url{https://paws-r.github.io/docs/cloudfront/delete_continuous_deployment_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_delete_continuous_deployment_policy/} for full documentation.
 }
 \keyword{internal}

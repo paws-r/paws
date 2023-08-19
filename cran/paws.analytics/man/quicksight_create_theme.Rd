@@ -45,6 +45,6 @@ to add to the resource.}
 \description{
 Creates a theme.
 
-See \url{https://paws-r.github.io/docs/quicksight/create_theme.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_create_theme/} for full documentation.
 }
 \keyword{internal}

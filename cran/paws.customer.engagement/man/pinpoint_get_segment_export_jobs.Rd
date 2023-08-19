@@ -28,6 +28,6 @@ paginated response.}
 \description{
 Retrieves information about the status and settings of the export jobs for a segment.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_segment_export_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_segment_export_jobs/} for full documentation.
 }
 \keyword{internal}

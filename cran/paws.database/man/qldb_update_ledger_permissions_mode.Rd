@@ -38,6 +38,6 @@ the security of your ledger data.}
 \description{
 Updates the permissions mode of a ledger.
 
-See \url{https://paws-r.github.io/docs/qldb/update_ledger_permissions_mode.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_update_ledger_permissions_mode/} for full documentation.
 }
 \keyword{internal}

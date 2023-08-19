@@ -16,6 +16,6 @@ paginated response.}
 \description{
 Retrieves a subset of information about all the custom data identifiers for an account.
 
-See \url{https://paws-r.github.io/docs/macie2/list_custom_data_identifiers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_list_custom_data_identifiers/} for full documentation.
 }
 \keyword{internal}

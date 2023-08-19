@@ -21,6 +21,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified attribute of the specified instance. You can specify only one attribute at a time. Valid attribute values are: \code{instanceType} | \code{kernel} | \code{ramdisk} | \code{userData} | \code{disableApiTermination} | \code{instanceInitiatedShutdownBehavior} | \code{rootDeviceName} | \code{blockDeviceMapping} | \code{productCodes} | \code{sourceDestCheck} | \code{groupSet} | \code{ebsOptimized} | \code{sriovNetSupport}
 
-See \url{https://paws-r.github.io/docs/ec2/describe_instance_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_instance_attribute/} for full documentation.
 }
 \keyword{internal}

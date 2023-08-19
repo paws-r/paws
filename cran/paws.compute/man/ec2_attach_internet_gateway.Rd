@@ -18,8 +18,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcId}{[required] The ID of the VPC.}
 }
 \description{
-Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet and the VPC. For more information about your VPC and internet gateway, see the \href{https://docs.aws.amazon.com/vpc/latest/userguide/}{Amazon Virtual Private Cloud User Guide}.
+Attaches an internet gateway or a virtual private gateway to a VPC, enabling connectivity between the internet and the VPC. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/VPC_Internet_Gateway.html}{Internet gateways} in the \emph{Amazon VPC User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/attach_internet_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_attach_internet_gateway/} for full documentation.
 }
 \keyword{internal}

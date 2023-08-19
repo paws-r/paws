@@ -12,6 +12,6 @@ ivs_delete_channel(arn)
 \description{
 Deletes the specified channel and its associated stream keys.
 
-See \url{https://paws-r.github.io/docs/ivs/delete_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivs_delete_channel/} for full documentation.
 }
 \keyword{internal}

@@ -35,6 +35,6 @@ isn't provided, the default value is 20.}
 \description{
 Provides the list of entities of a given type.
 
-See \url{https://paws-r.github.io/docs/marketplacecatalog/list_entities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/marketplacecatalog_list_entities/} for full documentation.
 }
 \keyword{internal}

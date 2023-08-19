@@ -16,6 +16,6 @@ glue_list_blueprints(NextToken = NULL, MaxResults = NULL, Tags = NULL)
 \description{
 Lists all the blueprint names in an account.
 
-See \url{https://paws-r.github.io/docs/glue/list_blueprints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_list_blueprints/} for full documentation.
 }
 \keyword{internal}

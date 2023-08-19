@@ -19,6 +19,6 @@ contains your Amazon QuickSight account.}
 \description{
 Deletes the Amazon QuickSight user that is associated with the identity of the IAM user or role that's making the call. The IAM user isn't deleted as a result of this call.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_user/} for full documentation.
 }
 \keyword{internal}

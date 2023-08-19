@@ -17,6 +17,6 @@ setting the Multi-AZ option to \code{false}.}
 \description{
 Configures the availability options for a domain. Enabling the Multi-AZ option expands an Amazon CloudSearch domain to an additional Availability Zone in the same Region to increase fault tolerance in the event of a service disruption. Changes to the Multi-AZ option can take about half an hour to become active. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html" target="_blank">}}Configuring Availability Options\if{html}{\out{</a>}} in the \emph{Amazon CloudSearch Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudsearch/update_availability_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudsearch_update_availability_options/} for full documentation.
 }
 \keyword{internal}

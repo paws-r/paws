@@ -19,6 +19,6 @@ within up to 6 days in future.}
 \description{
 Updates the scheduled time of a task contact that is already scheduled.
 
-See \url{https://paws-r.github.io/docs/connect/update_contact_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_contact_schedule/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ glue_delete_classifier(Name)
 \description{
 Removes a classifier from the Data Catalog.
 
-See \url{https://paws-r.github.io/docs/glue/delete_classifier.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_delete_classifier/} for full documentation.
 }
 \keyword{internal}

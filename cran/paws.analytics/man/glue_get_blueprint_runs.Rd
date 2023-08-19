@@ -16,6 +16,6 @@ glue_get_blueprint_runs(BlueprintName, NextToken = NULL, MaxResults = NULL)
 \description{
 Retrieves the details of blueprint runs for a specified blueprint.
 
-See \url{https://paws-r.github.io/docs/glue/get_blueprint_runs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_blueprint_runs/} for full documentation.
 }
 \keyword{internal}

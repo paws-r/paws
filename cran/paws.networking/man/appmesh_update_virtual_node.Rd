@@ -32,6 +32,6 @@ existing data.}
 \description{
 Updates an existing virtual node in a specified service mesh.
 
-See \url{https://paws-r.github.io/docs/appmesh/update_virtual_node.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appmesh_update_virtual_node/} for full documentation.
 }
 \keyword{internal}

@@ -107,6 +107,6 @@ in the \emph{Amazon SWF Developer Guide}.}
 \description{
 Registers a new \emph{workflow type} and its configuration settings in the specified domain.
 
-See \url{https://paws-r.github.io/docs/swf/register_workflow_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_register_workflow_type/} for full documentation.
 }
 \keyword{internal}

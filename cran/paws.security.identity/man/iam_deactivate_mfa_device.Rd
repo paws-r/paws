@@ -24,6 +24,6 @@ spaces. You can also include any of the following characters: =,.@:/-}
 \description{
 Deactivates the specified MFA device and removes it from association with the user name for which it was originally enabled.
 
-See \url{https://paws-r.github.io/docs/iam/deactivate_mfa_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_deactivate_mfa_device/} for full documentation.
 }
 \keyword{internal}

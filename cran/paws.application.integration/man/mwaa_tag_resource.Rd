@@ -18,6 +18,6 @@ example, \code{"Environment": "Staging"}. For more information, see \href{https:
 \description{
 Associates key-value tag pairs to your Amazon Managed Workflows for Apache Airflow (MWAA) environment.
 
-See \url{https://paws-r.github.io/docs/mwaa/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mwaa_tag_resource/} for full documentation.
 }
 \keyword{internal}

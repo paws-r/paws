@@ -20,6 +20,6 @@ elasticbeanstalk_apply_environment_managed_action(
 \description{
 Applies a scheduled managed action immediately. A managed action can be applied only if its status is \code{Scheduled}. Get the status and action ID of a managed action with \code{\link[=elasticbeanstalk_describe_environment_managed_actions]{describe_environment_managed_actions}}.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/apply_environment_managed_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_apply_environment_managed_action/} for full documentation.
 }
 \keyword{internal}

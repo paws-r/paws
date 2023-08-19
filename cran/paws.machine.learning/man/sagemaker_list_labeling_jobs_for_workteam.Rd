@@ -43,6 +43,6 @@ contains the specified string.}
 \description{
 Gets a list of labeling jobs assigned to a specified work team.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_labeling_jobs_for_workteam.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_labeling_jobs_for_workteam/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ efs_delete_access_point(AccessPointId)
 \description{
 Deletes the specified access point. After deletion is complete, new clients can no longer connect to the access points. Clients connected to the access point at the time of deletion will continue to function until they terminate their connection.
 
-See \url{https://paws-r.github.io/docs/efs/delete_access_point.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_delete_access_point/} for full documentation.
 }
 \keyword{internal}

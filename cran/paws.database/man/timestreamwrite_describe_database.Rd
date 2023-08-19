@@ -14,6 +14,6 @@ timestreamwrite_describe_database(DatabaseName)
 \description{
 Returns information about the database, including the database name, time that the database was created, and the total number of tables found within the database. \href{https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html}{Service quotas apply}. See \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-db.html}{code sample} for details.
 
-See \url{https://paws-r.github.io/docs/timestreamwrite/describe_database.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamwrite_describe_database/} for full documentation.
 }
 \keyword{internal}

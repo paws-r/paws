@@ -18,6 +18,6 @@ page.}
 \description{
 Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated with a particular domain.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/list_vpc_endpoints_for_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_list_vpc_endpoints_for_domain/} for full documentation.
 }
 \keyword{internal}

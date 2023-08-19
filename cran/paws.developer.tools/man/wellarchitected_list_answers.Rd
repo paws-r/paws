@@ -10,7 +10,8 @@ wellarchitected_list_answers(
   PillarId = NULL,
   MilestoneNumber = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  QuestionPriority = NULL
 )
 }
 \arguments{
@@ -25,10 +26,12 @@ wellarchitected_list_answers(
 \item{NextToken}{}
 
 \item{MaxResults}{The maximum number of results to return for this request.}
+
+\item{QuestionPriority}{The priority of the question.}
 }
 \description{
 List of answers for a particular workload and lens.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/list_answers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_list_answers/} for full documentation.
 }
 \keyword{internal}

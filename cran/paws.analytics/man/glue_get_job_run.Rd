@@ -16,6 +16,6 @@ glue_get_job_run(JobName, RunId, PredecessorsIncluded = NULL)
 \description{
 Retrieves the metadata for a given job run.
 
-See \url{https://paws-r.github.io/docs/glue/get_job_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_job_run/} for full documentation.
 }
 \keyword{internal}

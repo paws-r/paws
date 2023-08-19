@@ -18,7 +18,7 @@ redshift_authorize_snapshot_access(
 \item{SnapshotArn}{The Amazon Resource Name (ARN) of the snapshot to authorize access to.}
 
 \item{SnapshotClusterIdentifier}{The identifier of the cluster the snapshot was created from. This
-parameter is required if your IAM user or role has a policy containing a
+parameter is required if your IAM user has a policy containing a
 snapshot resource element that specifies anything other than * for the
 cluster name.}
 
@@ -31,6 +31,6 @@ amazon-redshift-support.}
 \description{
 Authorizes the specified Amazon Web Services account to restore the specified snapshot.
 
-See \url{https://paws-r.github.io/docs/redshift/authorize_snapshot_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_authorize_snapshot_access/} for full documentation.
 }
 \keyword{internal}

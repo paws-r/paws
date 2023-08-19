@@ -73,6 +73,6 @@ created but not active.}
 \description{
 Creates an RDS event notification subscription. This operation requires a topic Amazon Resource Name (ARN) created by either the RDS console, the SNS console, or the SNS API. To obtain an ARN with SNS, you must create a topic in Amazon SNS and subscribe to the topic. The ARN is displayed in the SNS console.
 
-See \url{https://paws-r.github.io/docs/rds/create_event_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_create_event_subscription/} for full documentation.
 }
 \keyword{internal}

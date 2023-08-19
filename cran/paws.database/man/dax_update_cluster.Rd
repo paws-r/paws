@@ -39,6 +39,6 @@ default VPC security group to each node.}
 \description{
 Modifies the settings for a DAX cluster. You can use this action to change one or more cluster configuration parameters by specifying the parameters and the new values.
 
-See \url{https://paws-r.github.io/docs/dax/update_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_update_cluster/} for full documentation.
 }
 \keyword{internal}

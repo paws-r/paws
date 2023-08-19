@@ -17,6 +17,6 @@ Portuguese ("pt").}
 \description{
 Inspects text for syntax and the part of speech of words in the document. For more information, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/how-syntax.html}{Syntax} in the Comprehend Developer Guide.
 
-See \url{https://paws-r.github.io/docs/comprehend/detect_syntax.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_detect_syntax/} for full documentation.
 }
 \keyword{internal}

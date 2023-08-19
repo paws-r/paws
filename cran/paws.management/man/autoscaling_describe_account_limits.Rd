@@ -10,6 +10,6 @@ autoscaling_describe_account_limits()
 \description{
 Describes the current Amazon EC2 Auto Scaling resource quotas for your account.
 
-See \url{https://paws-r.github.io/docs/autoscaling/describe_account_limits.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_describe_account_limits/} for full documentation.
 }
 \keyword{internal}

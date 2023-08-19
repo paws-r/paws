@@ -36,6 +36,6 @@ operations, which returns results in the next page.}
 \description{
 Returns an array of recovery points.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/list_recovery_points.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_list_recovery_points/} for full documentation.
 }
 \keyword{internal}

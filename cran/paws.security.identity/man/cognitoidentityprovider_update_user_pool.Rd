@@ -125,6 +125,6 @@ SMS is preferred through email.}
 \description{
 Updates the specified user pool with the specified attributes. You can get a list of the current user pool settings using \code{\link[=cognitoidentityprovider_describe_user_pool]{describe_user_pool}}. If you don't provide a value for an attribute, it will be set to the default value.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/update_user_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_user_pool/} for full documentation.
 }
 \keyword{internal}

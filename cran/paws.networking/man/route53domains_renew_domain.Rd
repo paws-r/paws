@@ -26,6 +26,6 @@ value must match the current expiration date for the domain.}
 \description{
 This operation renews a domain for the specified number of years. The cost of renewing your domain is billed to your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/route53domains/renew_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_renew_domain/} for full documentation.
 }
 \keyword{internal}

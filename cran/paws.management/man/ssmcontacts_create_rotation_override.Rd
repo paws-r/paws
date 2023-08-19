@@ -32,6 +32,6 @@ specified details.}
 \description{
 Creates an override for a rotation in an on-call schedule.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/create_rotation_override.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_create_rotation_override/} for full documentation.
 }
 \keyword{internal}

@@ -25,6 +25,6 @@ the response.}
 \description{
 Returns a list of your queues that have the \code{RedrivePolicy} queue attribute configured with a dead-letter queue.
 
-See \url{https://paws-r.github.io/docs/sqs/list_dead_letter_source_queues.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sqs_list_dead_letter_source_queues/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ apigateway_get_stage(restApiId, stageName)
 \description{
 Gets information about a Stage resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_stage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_stage/} for full documentation.
 }
 \keyword{internal}

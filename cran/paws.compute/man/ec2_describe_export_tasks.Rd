@@ -15,6 +15,6 @@ ec2_describe_export_tasks(ExportTaskIds = NULL, Filters = NULL)
 \description{
 Describes the specified export instance tasks or all of your export instance tasks.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_export_tasks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_export_tasks/} for full documentation.
 }
 \keyword{internal}

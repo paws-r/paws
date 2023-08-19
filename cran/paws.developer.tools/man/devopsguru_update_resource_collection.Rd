@@ -15,6 +15,6 @@ to the resource collection.}
 \description{
 Updates the collection of resources that DevOps Guru analyzes. The two types of Amazon Web Services resource collections supported are Amazon Web Services CloudFormation stacks and Amazon Web Services resources that contain the same Amazon Web Services tag. DevOps Guru can be configured to analyze the Amazon Web Services resources that are defined in the stacks or that are tagged using the same tag \emph{key}. You can specify up to 500 Amazon Web Services CloudFormation stacks. This method also creates the IAM role required for you to use DevOps Guru.
 
-See \url{https://paws-r.github.io/docs/devopsguru/update_resource_collection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_update_resource_collection/} for full documentation.
 }
 \keyword{internal}

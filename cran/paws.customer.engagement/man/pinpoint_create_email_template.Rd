@@ -18,6 +18,6 @@ characters can be alphanumeric characters, underscores (_), or hyphens
 \description{
 Creates a message template for messages that are sent through the email channel.
 
-See \url{https://paws-r.github.io/docs/pinpoint/create_email_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_create_email_template/} for full documentation.
 }
 \keyword{internal}

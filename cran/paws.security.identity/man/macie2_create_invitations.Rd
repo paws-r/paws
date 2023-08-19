@@ -26,6 +26,6 @@ invitation. The text can contain as many as 80 alphanumeric characters.}
 \description{
 Sends an Amazon Macie membership invitation to one or more accounts.
 
-See \url{https://paws-r.github.io/docs/macie2/create_invitations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_create_invitations/} for full documentation.
 }
 \keyword{internal}

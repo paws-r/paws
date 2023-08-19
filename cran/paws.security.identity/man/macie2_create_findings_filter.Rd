@@ -57,6 +57,6 @@ tag key and an associated tag value. The maximum length of a tag key is
 \description{
 Creates and defines the criteria and other settings for a findings filter.
 
-See \url{https://paws-r.github.io/docs/macie2/create_findings_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_create_findings_filter/} for full documentation.
 }
 \keyword{internal}

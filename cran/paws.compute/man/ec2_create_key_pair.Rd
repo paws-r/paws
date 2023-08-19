@@ -37,6 +37,6 @@ Default: \code{pem}}
 \description{
 Creates an ED25519 or 2048-bit RSA key pair with the specified name and in the specified PEM or PPK format. Amazon EC2 stores the public key and displays the private key for you to save to a file. The private key is returned as an unencrypted PEM encoded PKCS#1 private key or an unencrypted PPK formatted private key for use with PuTTY. If a key with the specified name already exists, Amazon EC2 returns an error.
 
-See \url{https://paws-r.github.io/docs/ec2/create_key_pair.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_key_pair/} for full documentation.
 }
 \keyword{internal}

@@ -32,6 +32,6 @@ populates this field. For more information about idempotency, see
 \description{
 Creates an Amazon Connect Wisdom assistant.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/create_assistant.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_create_assistant/} for full documentation.
 }
 \keyword{internal}

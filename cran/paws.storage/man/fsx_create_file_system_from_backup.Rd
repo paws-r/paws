@@ -96,6 +96,6 @@ any other value, Amazon FSx responds with a 400 Bad Request.}
 \description{
 Creates a new Amazon FSx for Lustre, Amazon FSx for Windows File Server, or Amazon FSx for OpenZFS file system from an existing Amazon FSx backup.
 
-See \url{https://paws-r.github.io/docs/fsx/create_file_system_from_backup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_create_file_system_from_backup/} for full documentation.
 }
 \keyword{internal}

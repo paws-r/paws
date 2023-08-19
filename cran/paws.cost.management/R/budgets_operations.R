@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a budget and, if included, notifications and subscribers.
 #'
-#' See [https://paws-r.github.io/docs/budgets/create_budget.html](https://paws-r.github.io/docs/budgets/create_budget.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_create_budget/](https://www.paws-r-sdk.com/docs/budgets_create_budget/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget.
 #' @param Budget &#91;required&#93; The budget object that you want to create.
@@ -43,7 +43,7 @@ budgets_create_budget <- function(AccountId, Budget, NotificationsWithSubscriber
 #' @description
 #' Creates a budget action.
 #'
-#' See [https://paws-r.github.io/docs/budgets/create_budget_action.html](https://paws-r.github.io/docs/budgets/create_budget_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_create_budget_action/](https://www.paws-r-sdk.com/docs/budgets_create_budget_action/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
@@ -83,7 +83,7 @@ budgets_create_budget_action <- function(AccountId, BudgetName, NotificationType
 #' @description
 #' Creates a notification. You must create the budget before you create the associated notification.
 #'
-#' See [https://paws-r.github.io/docs/budgets/create_notification.html](https://paws-r.github.io/docs/budgets/create_notification.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_create_notification/](https://www.paws-r-sdk.com/docs/budgets_create_notification/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget that you want to
 #' create a notification for.
@@ -119,7 +119,7 @@ budgets_create_notification <- function(AccountId, BudgetName, Notification, Sub
 #' @description
 #' Creates a subscriber. You must create the associated budget and notification before you create the subscriber.
 #'
-#' See [https://paws-r.github.io/docs/budgets/create_subscriber.html](https://paws-r.github.io/docs/budgets/create_subscriber.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_create_subscriber/](https://www.paws-r-sdk.com/docs/budgets_create_subscriber/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget that you want to
 #' create a subscriber for.
@@ -153,7 +153,7 @@ budgets_create_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #' @description
 #' Deletes a budget. You can delete your budget at any time.
 #'
-#' See [https://paws-r.github.io/docs/budgets/delete_budget.html](https://paws-r.github.io/docs/budgets/delete_budget.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_delete_budget/](https://www.paws-r-sdk.com/docs/budgets_delete_budget/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget that you want to
 #' delete.
@@ -184,7 +184,7 @@ budgets_delete_budget <- function(AccountId, BudgetName) {
 #' @description
 #' Deletes a budget action.
 #'
-#' See [https://paws-r.github.io/docs/budgets/delete_budget_action.html](https://paws-r.github.io/docs/budgets/delete_budget_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_delete_budget_action/](https://www.paws-r-sdk.com/docs/budgets_delete_budget_action/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
@@ -215,7 +215,7 @@ budgets_delete_budget_action <- function(AccountId, BudgetName, ActionId) {
 #' @description
 #' Deletes a notification.
 #'
-#' See [https://paws-r.github.io/docs/budgets/delete_notification.html](https://paws-r.github.io/docs/budgets/delete_notification.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_delete_notification/](https://www.paws-r-sdk.com/docs/budgets_delete_notification/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget whose notification
 #' you want to delete.
@@ -247,7 +247,7 @@ budgets_delete_notification <- function(AccountId, BudgetName, Notification) {
 #' @description
 #' Deletes a subscriber.
 #'
-#' See [https://paws-r.github.io/docs/budgets/delete_subscriber.html](https://paws-r.github.io/docs/budgets/delete_subscriber.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_delete_subscriber/](https://www.paws-r-sdk.com/docs/budgets_delete_subscriber/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget whose subscriber you
 #' want to delete.
@@ -280,7 +280,7 @@ budgets_delete_subscriber <- function(AccountId, BudgetName, Notification, Subsc
 #' @description
 #' Describes a budget.
 #'
-#' See [https://paws-r.github.io/docs/budgets/describe_budget.html](https://paws-r.github.io/docs/budgets/describe_budget.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_describe_budget/](https://www.paws-r-sdk.com/docs/budgets_describe_budget/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget that you want a
 #' description of.
@@ -311,7 +311,7 @@ budgets_describe_budget <- function(AccountId, BudgetName) {
 #' @description
 #' Describes a budget action detail.
 #'
-#' See [https://paws-r.github.io/docs/budgets/describe_budget_action.html](https://paws-r.github.io/docs/budgets/describe_budget_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_describe_budget_action/](https://www.paws-r-sdk.com/docs/budgets_describe_budget_action/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
@@ -342,7 +342,7 @@ budgets_describe_budget_action <- function(AccountId, BudgetName, ActionId) {
 #' @description
 #' Describes a budget action history detail.
 #'
-#' See [https://paws-r.github.io/docs/budgets/describe_budget_action_histories.html](https://paws-r.github.io/docs/budgets/describe_budget_action_histories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_describe_budget_action_histories/](https://www.paws-r-sdk.com/docs/budgets_describe_budget_action_histories/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
@@ -359,7 +359,7 @@ budgets_describe_budget_action_histories <- function(AccountId, BudgetName, Acti
     name = "DescribeBudgetActionHistories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ActionHistories")
   )
   input <- .budgets$describe_budget_action_histories_input(AccountId = AccountId, BudgetName = BudgetName, ActionId = ActionId, TimePeriod = TimePeriod, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_action_histories_output()
@@ -376,7 +376,7 @@ budgets_describe_budget_action_histories <- function(AccountId, BudgetName, Acti
 #' @description
 #' Describes all of the budget actions for an account.
 #'
-#' See [https://paws-r.github.io/docs/budgets/describe_budget_actions_for_account.html](https://paws-r.github.io/docs/budgets/describe_budget_actions_for_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_describe_budget_actions_for_account/](https://www.paws-r-sdk.com/docs/budgets_describe_budget_actions_for_account/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param MaxResults 
@@ -390,7 +390,7 @@ budgets_describe_budget_actions_for_account <- function(AccountId, MaxResults = 
     name = "DescribeBudgetActionsForAccount",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Actions")
   )
   input <- .budgets$describe_budget_actions_for_account_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_actions_for_account_output()
@@ -407,7 +407,7 @@ budgets_describe_budget_actions_for_account <- function(AccountId, MaxResults = 
 #' @description
 #' Describes all of the budget actions for a budget.
 #'
-#' See [https://paws-r.github.io/docs/budgets/describe_budget_actions_for_budget.html](https://paws-r.github.io/docs/budgets/describe_budget_actions_for_budget.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_describe_budget_actions_for_budget/](https://www.paws-r-sdk.com/docs/budgets_describe_budget_actions_for_budget/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
@@ -422,7 +422,7 @@ budgets_describe_budget_actions_for_budget <- function(AccountId, BudgetName, Ma
     name = "DescribeBudgetActionsForBudget",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Actions")
   )
   input <- .budgets$describe_budget_actions_for_budget_input(AccountId = AccountId, BudgetName = BudgetName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_actions_for_budget_output()
@@ -440,7 +440,7 @@ budgets_describe_budget_actions_for_budget <- function(AccountId, BudgetName, Ma
 #' @description
 #' Lists the budget names and notifications that are associated with an account.
 #'
-#' See [https://paws-r.github.io/docs/budgets/describe_budget_notifications_for_account.html](https://paws-r.github.io/docs/budgets/describe_budget_notifications_for_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_describe_budget_notifications_for_account/](https://www.paws-r-sdk.com/docs/budgets_describe_budget_notifications_for_account/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param MaxResults An integer that shows how many budget name entries a paginated response
@@ -455,7 +455,7 @@ budgets_describe_budget_notifications_for_account <- function(AccountId, MaxResu
     name = "DescribeBudgetNotificationsForAccount",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BudgetNotificationsForAccount")
   )
   input <- .budgets$describe_budget_notifications_for_account_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_notifications_for_account_output()
@@ -472,7 +472,7 @@ budgets_describe_budget_notifications_for_account <- function(AccountId, MaxResu
 #' @description
 #' Describes the history for `DAILY`, `MONTHLY`, and `QUARTERLY` budgets. Budget history isn't available for `ANNUAL` budgets.
 #'
-#' See [https://paws-r.github.io/docs/budgets/describe_budget_performance_history.html](https://paws-r.github.io/docs/budgets/describe_budget_performance_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_describe_budget_performance_history/](https://www.paws-r-sdk.com/docs/budgets_describe_budget_performance_history/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
@@ -489,7 +489,7 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
     name = "DescribeBudgetPerformanceHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BudgetPerformanceHistory")
   )
   input <- .budgets$describe_budget_performance_history_input(AccountId = AccountId, BudgetName = BudgetName, TimePeriod = TimePeriod, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budget_performance_history_output()
@@ -506,7 +506,7 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #' @description
 #' Lists the budgets that are associated with an account.
 #'
-#' See [https://paws-r.github.io/docs/budgets/describe_budgets.html](https://paws-r.github.io/docs/budgets/describe_budgets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_describe_budgets/](https://www.paws-r-sdk.com/docs/budgets_describe_budgets/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budgets that you want
 #' descriptions of.
@@ -523,7 +523,7 @@ budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = N
     name = "DescribeBudgets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Budgets")
   )
   input <- .budgets$describe_budgets_input(AccountId = AccountId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_budgets_output()
@@ -540,7 +540,7 @@ budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = N
 #' @description
 #' Lists the notifications that are associated with a budget.
 #'
-#' See [https://paws-r.github.io/docs/budgets/describe_notifications_for_budget.html](https://paws-r.github.io/docs/budgets/describe_notifications_for_budget.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_describe_notifications_for_budget/](https://www.paws-r-sdk.com/docs/budgets_describe_notifications_for_budget/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget whose notifications
 #' you want descriptions of.
@@ -558,7 +558,7 @@ budgets_describe_notifications_for_budget <- function(AccountId, BudgetName, Max
     name = "DescribeNotificationsForBudget",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Notifications")
   )
   input <- .budgets$describe_notifications_for_budget_input(AccountId = AccountId, BudgetName = BudgetName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_notifications_for_budget_output()
@@ -575,7 +575,7 @@ budgets_describe_notifications_for_budget <- function(AccountId, BudgetName, Max
 #' @description
 #' Lists the subscribers that are associated with a notification.
 #'
-#' See [https://paws-r.github.io/docs/budgets/describe_subscribers_for_notification.html](https://paws-r.github.io/docs/budgets/describe_subscribers_for_notification.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_describe_subscribers_for_notification/](https://www.paws-r-sdk.com/docs/budgets_describe_subscribers_for_notification/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget whose subscribers you
 #' want descriptions of.
@@ -594,7 +594,7 @@ budgets_describe_subscribers_for_notification <- function(AccountId, BudgetName,
     name = "DescribeSubscribersForNotification",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Subscribers")
   )
   input <- .budgets$describe_subscribers_for_notification_input(AccountId = AccountId, BudgetName = BudgetName, Notification = Notification, MaxResults = MaxResults, NextToken = NextToken)
   output <- .budgets$describe_subscribers_for_notification_output()
@@ -611,7 +611,7 @@ budgets_describe_subscribers_for_notification <- function(AccountId, BudgetName,
 #' @description
 #' Executes a budget action.
 #'
-#' See [https://paws-r.github.io/docs/budgets/execute_budget_action.html](https://paws-r.github.io/docs/budgets/execute_budget_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_execute_budget_action/](https://www.paws-r-sdk.com/docs/budgets_execute_budget_action/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
@@ -643,7 +643,7 @@ budgets_execute_budget_action <- function(AccountId, BudgetName, ActionId, Execu
 #' @description
 #' Updates a budget. You can change every part of a budget except for the `budgetName` and the `calculatedSpend`. When you modify a budget, the `calculatedSpend` drops to zero until Amazon Web Services has new usage data to use for forecasting.
 #'
-#' See [https://paws-r.github.io/docs/budgets/update_budget.html](https://paws-r.github.io/docs/budgets/update_budget.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_update_budget/](https://www.paws-r-sdk.com/docs/budgets_update_budget/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget that you want to
 #' update.
@@ -674,7 +674,7 @@ budgets_update_budget <- function(AccountId, NewBudget) {
 #' @description
 #' Updates a budget action.
 #'
-#' See [https://paws-r.github.io/docs/budgets/update_budget_action.html](https://paws-r.github.io/docs/budgets/update_budget_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_update_budget_action/](https://www.paws-r-sdk.com/docs/budgets_update_budget_action/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; 
 #' @param BudgetName &#91;required&#93; 
@@ -712,7 +712,7 @@ budgets_update_budget_action <- function(AccountId, BudgetName, ActionId, Notifi
 #' @description
 #' Updates a notification.
 #'
-#' See [https://paws-r.github.io/docs/budgets/update_notification.html](https://paws-r.github.io/docs/budgets/update_notification.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_update_notification/](https://www.paws-r-sdk.com/docs/budgets_update_notification/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget whose notification
 #' you want to update.
@@ -745,7 +745,7 @@ budgets_update_notification <- function(AccountId, BudgetName, OldNotification, 
 #' @description
 #' Updates a subscriber.
 #'
-#' See [https://paws-r.github.io/docs/budgets/update_subscriber.html](https://paws-r.github.io/docs/budgets/update_subscriber.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/budgets_update_subscriber/](https://www.paws-r-sdk.com/docs/budgets_update_subscriber/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The `accountId` that is associated with the budget whose subscriber you
 #' want to update.

@@ -14,6 +14,6 @@ cognitoidentityprovider_delete_user_pool_client(UserPoolId, ClientId)
 \description{
 Allows the developer to delete the user pool client.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/delete_user_pool_client.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user_pool_client/} for full documentation.
 }
 \keyword{internal}

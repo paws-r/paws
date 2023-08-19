@@ -15,6 +15,6 @@ operation. If this value is null, it retrieves the first page.}
 \description{
 Retrieves a list of fleets for the current account and Region.
 
-See \url{https://paws-r.github.io/docs/worklink/list_fleets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_list_fleets/} for full documentation.
 }
 \keyword{internal}

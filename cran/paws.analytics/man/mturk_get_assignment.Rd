@@ -13,6 +13,6 @@ mturk_get_assignment(AssignmentId)
 \description{
 The \code{\link[=mturk_get_assignment]{get_assignment}} operation retrieves the details of the specified Assignment.
 
-See \url{https://paws-r.github.io/docs/mturk/get_assignment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_get_assignment/} for full documentation.
 }
 \keyword{internal}

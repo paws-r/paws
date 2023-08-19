@@ -22,6 +22,6 @@ deregister the target from the maintenance window.}
 \description{
 Removes a target from a maintenance window.
 
-See \url{https://paws-r.github.io/docs/ssm/deregister_target_from_maintenance_window.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_deregister_target_from_maintenance_window/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ athena_update_named_query(NamedQueryId, Name, Description = NULL, QueryString)
 \description{
 Updates a NamedQuery object. The database or workgroup cannot be updated.
 
-See \url{https://paws-r.github.io/docs/athena/update_named_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_update_named_query/} for full documentation.
 }
 \keyword{internal}

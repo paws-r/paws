@@ -21,6 +21,6 @@ retrieve the next page of results.}
 \description{
 List the functions that use the specified code signing configuration. You can use this method prior to deleting a code signing configuration, to verify that no functions are using it.
 
-See \url{https://paws-r.github.io/docs/lambda/list_functions_by_code_signing_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_list_functions_by_code_signing_config/} for full documentation.
 }
 \keyword{internal}

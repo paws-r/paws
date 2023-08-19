@@ -19,6 +19,6 @@ specify a checksum, Amazon Lex publishes the \verb{$LATEST} version.}
 \description{
 Creates a new version of the bot based on the \verb{$LATEST} version. If the \verb{$LATEST} version of this resource hasn't changed since you created the last version, Amazon Lex doesn't create a new version. It returns the last created version.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/create_bot_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_create_bot_version/} for full documentation.
 }
 \keyword{internal}

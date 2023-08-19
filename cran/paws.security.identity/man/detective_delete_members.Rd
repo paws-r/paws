@@ -16,6 +16,6 @@ member accounts at a time.}
 \description{
 Removes the specified member accounts from the behavior graph. The removed accounts no longer contribute data to the behavior graph. This operation can only be called by the administrator account for the behavior graph.
 
-See \url{https://paws-r.github.io/docs/detective/delete_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_delete_members/} for full documentation.
 }
 \keyword{internal}

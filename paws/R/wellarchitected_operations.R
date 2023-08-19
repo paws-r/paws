@@ -59,6 +59,52 @@ wellarchitected_associate_lenses <- function(WorkloadId, LensAliases) {
 }
 .wellarchitected$operations$associate_lenses <- wellarchitected_associate_lenses
 
+#' Associate a profile with a workload
+#'
+#' @description
+#' Associate a profile with a workload.
+#'
+#' @usage
+#' wellarchitected_associate_profiles(WorkloadId, ProfileArns)
+#'
+#' @param WorkloadId &#91;required&#93; 
+#' @param ProfileArns &#91;required&#93; The list of profile ARNs to associate with the workload.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_profiles(
+#'   WorkloadId = "string",
+#'   ProfileArns = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_associate_profiles
+#'
+#' @aliases wellarchitected_associate_profiles
+wellarchitected_associate_profiles <- function(WorkloadId, ProfileArns) {
+  op <- new_operation(
+    name = "AssociateProfiles",
+    http_method = "PATCH",
+    http_path = "/workloads/{WorkloadId}/associateProfiles",
+    paginator = list()
+  )
+  input <- .wellarchitected$associate_profiles_input(WorkloadId = WorkloadId, ProfileArns = ProfileArns)
+  output <- .wellarchitected$associate_profiles_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$associate_profiles <- wellarchitected_associate_profiles
+
 #' Create a lens share
 #'
 #' @description
@@ -251,6 +297,125 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 }
 .wellarchitected$operations$create_milestone <- wellarchitected_create_milestone
 
+#' Create a profile
+#'
+#' @description
+#' Create a profile.
+#'
+#' @usage
+#' wellarchitected_create_profile(ProfileName, ProfileDescription,
+#'   ProfileQuestions, ClientRequestToken, Tags)
+#'
+#' @param ProfileName &#91;required&#93; Name of the profile.
+#' @param ProfileDescription &#91;required&#93; The profile description.
+#' @param ProfileQuestions &#91;required&#93; The profile questions.
+#' @param ClientRequestToken &#91;required&#93; 
+#' @param Tags The tags assigned to the profile.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProfileArn = "string",
+#'   ProfileVersion = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_profile(
+#'   ProfileName = "string",
+#'   ProfileDescription = "string",
+#'   ProfileQuestions = list(
+#'     list(
+#'       QuestionId = "string",
+#'       SelectedChoiceIds = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   ClientRequestToken = "string",
+#'   Tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_create_profile
+#'
+#' @aliases wellarchitected_create_profile
+wellarchitected_create_profile <- function(ProfileName, ProfileDescription, ProfileQuestions, ClientRequestToken, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateProfile",
+    http_method = "POST",
+    http_path = "/profiles",
+    paginator = list()
+  )
+  input <- .wellarchitected$create_profile_input(ProfileName = ProfileName, ProfileDescription = ProfileDescription, ProfileQuestions = ProfileQuestions, ClientRequestToken = ClientRequestToken, Tags = Tags)
+  output <- .wellarchitected$create_profile_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$create_profile <- wellarchitected_create_profile
+
+#' Create a profile share
+#'
+#' @description
+#' Create a profile share.
+#'
+#' @usage
+#' wellarchitected_create_profile_share(ProfileArn, SharedWith,
+#'   ClientRequestToken)
+#'
+#' @param ProfileArn &#91;required&#93; The profile ARN.
+#' @param SharedWith &#91;required&#93; 
+#' @param ClientRequestToken &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ShareId = "string",
+#'   ProfileArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_profile_share(
+#'   ProfileArn = "string",
+#'   SharedWith = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_create_profile_share
+#'
+#' @aliases wellarchitected_create_profile_share
+wellarchitected_create_profile_share <- function(ProfileArn, SharedWith, ClientRequestToken) {
+  op <- new_operation(
+    name = "CreateProfileShare",
+    http_method = "POST",
+    http_path = "/profiles/{ProfileArn}/shares",
+    paginator = list()
+  )
+  input <- .wellarchitected$create_profile_share_input(ProfileArn = ProfileArn, SharedWith = SharedWith, ClientRequestToken = ClientRequestToken)
+  output <- .wellarchitected$create_profile_share_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$create_profile_share <- wellarchitected_create_profile_share
+
 #' Create a new workload
 #'
 #' @description
@@ -275,7 +440,7 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 #' wellarchitected_create_workload(WorkloadName, Description, Environment,
 #'   AccountIds, AwsRegions, NonAwsRegions, PillarPriorities,
 #'   ArchitecturalDesign, ReviewOwner, IndustryType, Industry, Lenses, Notes,
-#'   ClientRequestToken, Tags, DiscoveryConfig, Applications)
+#'   ClientRequestToken, Tags, DiscoveryConfig, Applications, ProfileArns)
 #'
 #' @param WorkloadName &#91;required&#93; 
 #' @param Description &#91;required&#93; 
@@ -295,6 +460,7 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 #' @param DiscoveryConfig Well-Architected discovery configuration settings associated to the
 #' workload.
 #' @param Applications List of AppRegistry application ARNs associated to the workload.
+#' @param ProfileArns The list of profile ARNs associated with the workload.
 #'
 #' @return
 #' A list with the following syntax:
@@ -343,6 +509,9 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 #'   ),
 #'   Applications = list(
 #'     "string"
+#'   ),
+#'   ProfileArns = list(
+#'     "string"
 #'   )
 #' )
 #' ```
@@ -352,14 +521,14 @@ wellarchitected_create_milestone <- function(WorkloadId, MilestoneName, ClientRe
 #' @rdname wellarchitected_create_workload
 #'
 #' @aliases wellarchitected_create_workload
-wellarchitected_create_workload <- function(WorkloadName, Description, Environment, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IndustryType = NULL, Industry = NULL, Lenses, Notes = NULL, ClientRequestToken, Tags = NULL, DiscoveryConfig = NULL, Applications = NULL) {
+wellarchitected_create_workload <- function(WorkloadName, Description, Environment, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IndustryType = NULL, Industry = NULL, Lenses, Notes = NULL, ClientRequestToken, Tags = NULL, DiscoveryConfig = NULL, Applications = NULL, ProfileArns = NULL) {
   op <- new_operation(
     name = "CreateWorkload",
     http_method = "POST",
     http_path = "/workloads",
     paginator = list()
   )
-  input <- .wellarchitected$create_workload_input(WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IndustryType = IndustryType, Industry = Industry, Lenses = Lenses, Notes = Notes, ClientRequestToken = ClientRequestToken, Tags = Tags, DiscoveryConfig = DiscoveryConfig, Applications = Applications)
+  input <- .wellarchitected$create_workload_input(WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IndustryType = IndustryType, Industry = Industry, Lenses = Lenses, Notes = Notes, ClientRequestToken = ClientRequestToken, Tags = Tags, DiscoveryConfig = DiscoveryConfig, Applications = Applications, ProfileArns = ProfileArns)
   output <- .wellarchitected$create_workload_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -556,6 +725,106 @@ wellarchitected_delete_lens_share <- function(ShareId, LensAlias, ClientRequestT
 }
 .wellarchitected$operations$delete_lens_share <- wellarchitected_delete_lens_share
 
+#' Delete a profile
+#'
+#' @description
+#' Delete a profile.
+#' 
+#' **Disclaimer**
+#' 
+#' By sharing your profile with other Amazon Web Services accounts, you
+#' acknowledge that Amazon Web Services will make your profile available to
+#' those other accounts. Those other accounts may continue to access and
+#' use your shared profile even if you delete the profile from your own
+#' Amazon Web Services account or terminate your Amazon Web Services
+#' account.
+#'
+#' @usage
+#' wellarchitected_delete_profile(ProfileArn, ClientRequestToken)
+#'
+#' @param ProfileArn &#91;required&#93; The profile ARN.
+#' @param ClientRequestToken &#91;required&#93; 
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_profile(
+#'   ProfileArn = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_delete_profile
+#'
+#' @aliases wellarchitected_delete_profile
+wellarchitected_delete_profile <- function(ProfileArn, ClientRequestToken) {
+  op <- new_operation(
+    name = "DeleteProfile",
+    http_method = "DELETE",
+    http_path = "/profiles/{ProfileArn}",
+    paginator = list()
+  )
+  input <- .wellarchitected$delete_profile_input(ProfileArn = ProfileArn, ClientRequestToken = ClientRequestToken)
+  output <- .wellarchitected$delete_profile_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$delete_profile <- wellarchitected_delete_profile
+
+#' Delete a profile share
+#'
+#' @description
+#' Delete a profile share.
+#'
+#' @usage
+#' wellarchitected_delete_profile_share(ShareId, ProfileArn,
+#'   ClientRequestToken)
+#'
+#' @param ShareId &#91;required&#93; 
+#' @param ProfileArn &#91;required&#93; The profile ARN.
+#' @param ClientRequestToken &#91;required&#93; 
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_profile_share(
+#'   ShareId = "string",
+#'   ProfileArn = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_delete_profile_share
+#'
+#' @aliases wellarchitected_delete_profile_share
+wellarchitected_delete_profile_share <- function(ShareId, ProfileArn, ClientRequestToken) {
+  op <- new_operation(
+    name = "DeleteProfileShare",
+    http_method = "DELETE",
+    http_path = "/profiles/{ProfileArn}/shares/{ShareId}",
+    paginator = list()
+  )
+  input <- .wellarchitected$delete_profile_share_input(ShareId = ShareId, ProfileArn = ProfileArn, ClientRequestToken = ClientRequestToken)
+  output <- .wellarchitected$delete_profile_share_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$delete_profile_share <- wellarchitected_delete_profile_share
+
 #' Delete an existing workload
 #'
 #' @description
@@ -698,6 +967,52 @@ wellarchitected_disassociate_lenses <- function(WorkloadId, LensAliases) {
   return(response)
 }
 .wellarchitected$operations$disassociate_lenses <- wellarchitected_disassociate_lenses
+
+#' Disassociate a profile from a workload
+#'
+#' @description
+#' Disassociate a profile from a workload.
+#'
+#' @usage
+#' wellarchitected_disassociate_profiles(WorkloadId, ProfileArns)
+#'
+#' @param WorkloadId &#91;required&#93; 
+#' @param ProfileArns &#91;required&#93; The list of profile ARNs to disassociate from the workload.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_profiles(
+#'   WorkloadId = "string",
+#'   ProfileArns = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_disassociate_profiles
+#'
+#' @aliases wellarchitected_disassociate_profiles
+wellarchitected_disassociate_profiles <- function(WorkloadId, ProfileArns) {
+  op <- new_operation(
+    name = "DisassociateProfiles",
+    http_method = "PATCH",
+    http_path = "/workloads/{WorkloadId}/disassociateProfiles",
+    paginator = list()
+  )
+  input <- .wellarchitected$disassociate_profiles_input(WorkloadId = WorkloadId, ProfileArns = ProfileArns)
+  output <- .wellarchitected$disassociate_profiles_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$disassociate_profiles <- wellarchitected_disassociate_profiles
 
 #' Export an existing lens
 #'
@@ -964,7 +1279,7 @@ wellarchitected_get_consolidated_report <- function(Format, IncludeSharedResourc
     name = "GetConsolidatedReport",
     http_method = "GET",
     http_path = "/consolidatedReport",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$get_consolidated_report_input(Format = Format, IncludeSharedResources = IncludeSharedResources, NextToken = NextToken, MaxResults = MaxResults)
   output <- .wellarchitected$get_consolidated_report_output()
@@ -1066,6 +1381,9 @@ wellarchitected_get_lens <- function(LensAlias, LensVersion = NULL) {
 #'         Notes = "string",
 #'         RiskCounts = list(
 #'           123
+#'         ),
+#'         PrioritizedRiskCounts = list(
+#'           123
 #'         )
 #'       )
 #'     ),
@@ -1076,7 +1394,16 @@ wellarchitected_get_lens <- function(LensAlias, LensVersion = NULL) {
 #'     RiskCounts = list(
 #'       123
 #'     ),
-#'     NextToken = "string"
+#'     NextToken = "string",
+#'     Profiles = list(
+#'       list(
+#'         ProfileArn = "string",
+#'         ProfileVersion = "string"
+#'       )
+#'     ),
+#'     PrioritizedRiskCounts = list(
+#'       123
+#'     )
 #'   )
 #' )
 #' ```
@@ -1314,6 +1641,15 @@ wellarchitected_get_lens_version_difference <- function(LensAlias, BaseLensVersi
 #'       ),
 #'       Applications = list(
 #'         "string"
+#'       ),
+#'       Profiles = list(
+#'         list(
+#'           ProfileArn = "string",
+#'           ProfileVersion = "string"
+#'         )
+#'       ),
+#'       PrioritizedRiskCounts = list(
+#'         123
 #'       )
 #'     )
 #'   )
@@ -1349,6 +1685,157 @@ wellarchitected_get_milestone <- function(WorkloadId, MilestoneNumber) {
   return(response)
 }
 .wellarchitected$operations$get_milestone <- wellarchitected_get_milestone
+
+#' Get profile information
+#'
+#' @description
+#' Get profile information.
+#'
+#' @usage
+#' wellarchitected_get_profile(ProfileArn, ProfileVersion)
+#'
+#' @param ProfileArn &#91;required&#93; The profile ARN.
+#' @param ProfileVersion The profile version.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Profile = list(
+#'     ProfileArn = "string",
+#'     ProfileVersion = "string",
+#'     ProfileName = "string",
+#'     ProfileDescription = "string",
+#'     ProfileQuestions = list(
+#'       list(
+#'         QuestionId = "string",
+#'         QuestionTitle = "string",
+#'         QuestionDescription = "string",
+#'         QuestionChoices = list(
+#'           list(
+#'             ChoiceId = "string",
+#'             ChoiceTitle = "string",
+#'             ChoiceDescription = "string"
+#'           )
+#'         ),
+#'         SelectedChoiceIds = list(
+#'           "string"
+#'         ),
+#'         MinSelectedChoices = 123,
+#'         MaxSelectedChoices = 123
+#'       )
+#'     ),
+#'     Owner = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ShareInvitationId = "string",
+#'     Tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_profile(
+#'   ProfileArn = "string",
+#'   ProfileVersion = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_get_profile
+#'
+#' @aliases wellarchitected_get_profile
+wellarchitected_get_profile <- function(ProfileArn, ProfileVersion = NULL) {
+  op <- new_operation(
+    name = "GetProfile",
+    http_method = "GET",
+    http_path = "/profiles/{ProfileArn}",
+    paginator = list()
+  )
+  input <- .wellarchitected$get_profile_input(ProfileArn = ProfileArn, ProfileVersion = ProfileVersion)
+  output <- .wellarchitected$get_profile_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$get_profile <- wellarchitected_get_profile
+
+#' Get profile template
+#'
+#' @description
+#' Get profile template.
+#'
+#' @usage
+#' wellarchitected_get_profile_template()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProfileTemplate = list(
+#'     TemplateName = "string",
+#'     TemplateQuestions = list(
+#'       list(
+#'         QuestionId = "string",
+#'         QuestionTitle = "string",
+#'         QuestionDescription = "string",
+#'         QuestionChoices = list(
+#'           list(
+#'             ChoiceId = "string",
+#'             ChoiceTitle = "string",
+#'             ChoiceDescription = "string"
+#'           )
+#'         ),
+#'         MinSelectedChoices = 123,
+#'         MaxSelectedChoices = 123
+#'       )
+#'     ),
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_profile_template()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_get_profile_template
+#'
+#' @aliases wellarchitected_get_profile_template
+wellarchitected_get_profile_template <- function() {
+  op <- new_operation(
+    name = "GetProfileTemplate",
+    http_method = "GET",
+    http_path = "/profileTemplate",
+    paginator = list()
+  )
+  input <- .wellarchitected$get_profile_template_input()
+  output <- .wellarchitected$get_profile_template_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$get_profile_template <- wellarchitected_get_profile_template
 
 #' Get an existing workload
 #'
@@ -1414,6 +1901,15 @@ wellarchitected_get_milestone <- function(WorkloadId, MilestoneNumber) {
 #'     ),
 #'     Applications = list(
 #'       "string"
+#'     ),
+#'     Profiles = list(
+#'       list(
+#'         ProfileArn = "string",
+#'         ProfileVersion = "string"
+#'       )
+#'     ),
+#'     PrioritizedRiskCounts = list(
+#'       123
 #'     )
 #'   )
 #' )
@@ -1536,7 +2032,7 @@ wellarchitected_import_lens <- function(LensAlias = NULL, JSONString, ClientRequ
 #'
 #' @usage
 #' wellarchitected_list_answers(WorkloadId, LensAlias, PillarId,
-#'   MilestoneNumber, NextToken, MaxResults)
+#'   MilestoneNumber, NextToken, MaxResults, QuestionPriority)
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param LensAlias &#91;required&#93; 
@@ -1544,6 +2040,7 @@ wellarchitected_import_lens <- function(LensAlias = NULL, JSONString, ClientRequ
 #' @param MilestoneNumber 
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
+#' @param QuestionPriority The priority of the question.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1596,7 +2093,8 @@ wellarchitected_import_lens <- function(LensAlias = NULL, JSONString, ClientRequ
 #'       ),
 #'       IsApplicable = TRUE|FALSE,
 #'       Risk = "UNANSWERED"|"HIGH"|"MEDIUM"|"NONE"|"NOT_APPLICABLE",
-#'       Reason = "OUT_OF_SCOPE"|"BUSINESS_PRIORITIES"|"ARCHITECTURE_CONSTRAINTS"|"OTHER"|"NONE"
+#'       Reason = "OUT_OF_SCOPE"|"BUSINESS_PRIORITIES"|"ARCHITECTURE_CONSTRAINTS"|"OTHER"|"NONE",
+#'       QuestionType = "PRIORITIZED"|"NON_PRIORITIZED"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -1611,7 +2109,8 @@ wellarchitected_import_lens <- function(LensAlias = NULL, JSONString, ClientRequ
 #'   PillarId = "string",
 #'   MilestoneNumber = 123,
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   QuestionPriority = "PRIORITIZED"|"NONE"
 #' )
 #' ```
 #'
@@ -1620,14 +2119,14 @@ wellarchitected_import_lens <- function(LensAlias = NULL, JSONString, ClientRequ
 #' @rdname wellarchitected_list_answers
 #'
 #' @aliases wellarchitected_list_answers
-wellarchitected_list_answers <- function(WorkloadId, LensAlias, PillarId = NULL, MilestoneNumber = NULL, NextToken = NULL, MaxResults = NULL) {
+wellarchitected_list_answers <- function(WorkloadId, LensAlias, PillarId = NULL, MilestoneNumber = NULL, NextToken = NULL, MaxResults = NULL, QuestionPriority = NULL) {
   op <- new_operation(
     name = "ListAnswers",
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/lensReviews/{LensAlias}/answers",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .wellarchitected$list_answers_input(WorkloadId = WorkloadId, LensAlias = LensAlias, PillarId = PillarId, MilestoneNumber = MilestoneNumber, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .wellarchitected$list_answers_input(WorkloadId = WorkloadId, LensAlias = LensAlias, PillarId = PillarId, MilestoneNumber = MilestoneNumber, NextToken = NextToken, MaxResults = MaxResults, QuestionPriority = QuestionPriority)
   output <- .wellarchitected$list_answers_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -1705,7 +2204,7 @@ wellarchitected_list_check_details <- function(WorkloadId, NextToken = NULL, Max
     name = "ListCheckDetails",
     http_method = "POST",
     http_path = "/workloads/{WorkloadId}/checks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_check_details_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults, LensArn = LensArn, PillarId = PillarId, QuestionId = QuestionId, ChoiceId = ChoiceId)
   output <- .wellarchitected$list_check_details_output()
@@ -1786,7 +2285,7 @@ wellarchitected_list_check_summaries <- function(WorkloadId, NextToken = NULL, M
     name = "ListCheckSummaries",
     http_method = "POST",
     http_path = "/workloads/{WorkloadId}/checkSummaries",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_check_summaries_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults, LensArn = LensArn, PillarId = PillarId, QuestionId = QuestionId, ChoiceId = ChoiceId)
   output <- .wellarchitected$list_check_summaries_output()
@@ -1805,7 +2304,7 @@ wellarchitected_list_check_summaries <- function(WorkloadId, NextToken = NULL, M
 #'
 #' @usage
 #' wellarchitected_list_lens_review_improvements(WorkloadId, LensAlias,
-#'   PillarId, MilestoneNumber, NextToken, MaxResults)
+#'   PillarId, MilestoneNumber, NextToken, MaxResults, QuestionPriority)
 #'
 #' @param WorkloadId &#91;required&#93; 
 #' @param LensAlias &#91;required&#93; 
@@ -1813,6 +2312,7 @@ wellarchitected_list_check_summaries <- function(WorkloadId, NextToken = NULL, M
 #' @param MilestoneNumber 
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
+#' @param QuestionPriority The priority of the question.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1850,7 +2350,8 @@ wellarchitected_list_check_summaries <- function(WorkloadId, NextToken = NULL, M
 #'   PillarId = "string",
 #'   MilestoneNumber = 123,
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   QuestionPriority = "PRIORITIZED"|"NONE"
 #' )
 #' ```
 #'
@@ -1859,14 +2360,14 @@ wellarchitected_list_check_summaries <- function(WorkloadId, NextToken = NULL, M
 #' @rdname wellarchitected_list_lens_review_improvements
 #'
 #' @aliases wellarchitected_list_lens_review_improvements
-wellarchitected_list_lens_review_improvements <- function(WorkloadId, LensAlias, PillarId = NULL, MilestoneNumber = NULL, NextToken = NULL, MaxResults = NULL) {
+wellarchitected_list_lens_review_improvements <- function(WorkloadId, LensAlias, PillarId = NULL, MilestoneNumber = NULL, NextToken = NULL, MaxResults = NULL, QuestionPriority = NULL) {
   op <- new_operation(
     name = "ListLensReviewImprovements",
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/lensReviews/{LensAlias}/improvements",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .wellarchitected$list_lens_review_improvements_input(WorkloadId = WorkloadId, LensAlias = LensAlias, PillarId = PillarId, MilestoneNumber = MilestoneNumber, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .wellarchitected$list_lens_review_improvements_input(WorkloadId = WorkloadId, LensAlias = LensAlias, PillarId = PillarId, MilestoneNumber = MilestoneNumber, NextToken = NextToken, MaxResults = MaxResults, QuestionPriority = QuestionPriority)
   output <- .wellarchitected$list_lens_review_improvements_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -1908,6 +2409,15 @@ wellarchitected_list_lens_review_improvements <- function(WorkloadId, LensAlias,
 #'       ),
 #'       RiskCounts = list(
 #'         123
+#'       ),
+#'       Profiles = list(
+#'         list(
+#'           ProfileArn = "string",
+#'           ProfileVersion = "string"
+#'         )
+#'       ),
+#'       PrioritizedRiskCounts = list(
+#'         123
 #'       )
 #'     )
 #'   ),
@@ -1935,7 +2445,7 @@ wellarchitected_list_lens_reviews <- function(WorkloadId, MilestoneNumber = NULL
     name = "ListLensReviews",
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/lensReviews",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_lens_reviews_input(WorkloadId = WorkloadId, MilestoneNumber = MilestoneNumber, NextToken = NextToken, MaxResults = MaxResults)
   output <- .wellarchitected$list_lens_reviews_output()
@@ -2000,7 +2510,7 @@ wellarchitected_list_lens_shares <- function(LensAlias, SharedWithPrefix = NULL,
     name = "ListLensShares",
     http_method = "GET",
     http_path = "/lenses/{LensAlias}/shares",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_lens_shares_input(LensAlias = LensAlias, SharedWithPrefix = SharedWithPrefix, NextToken = NextToken, MaxResults = MaxResults, Status = Status)
   output <- .wellarchitected$list_lens_shares_output()
@@ -2074,7 +2584,7 @@ wellarchitected_list_lenses <- function(NextToken = NULL, MaxResults = NULL, Len
     name = "ListLenses",
     http_method = "GET",
     http_path = "/lenses",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_lenses_input(NextToken = NextToken, MaxResults = MaxResults, LensType = LensType, LensStatus = LensStatus, LensName = LensName)
   output <- .wellarchitected$list_lenses_output()
@@ -2124,7 +2634,16 @@ wellarchitected_list_lenses <- function(NextToken = NULL, MaxResults = NULL, Len
 #'         RiskCounts = list(
 #'           123
 #'         ),
-#'         ImprovementStatus = "NOT_APPLICABLE"|"NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"RISK_ACKNOWLEDGED"
+#'         ImprovementStatus = "NOT_APPLICABLE"|"NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"RISK_ACKNOWLEDGED",
+#'         Profiles = list(
+#'           list(
+#'             ProfileArn = "string",
+#'             ProfileVersion = "string"
+#'           )
+#'         ),
+#'         PrioritizedRiskCounts = list(
+#'           123
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -2151,7 +2670,7 @@ wellarchitected_list_milestones <- function(WorkloadId, NextToken = NULL, MaxRes
     name = "ListMilestones",
     http_method = "POST",
     http_path = "/workloads/{WorkloadId}/milestonesSummaries",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_milestones_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .wellarchitected$list_milestones_output()
@@ -2215,7 +2734,7 @@ wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NU
     name = "ListNotifications",
     http_method = "POST",
     http_path = "/notifications",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_notifications_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .wellarchitected$list_notifications_output()
@@ -2227,6 +2746,203 @@ wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NU
 }
 .wellarchitected$operations$list_notifications <- wellarchitected_list_notifications
 
+#' List profile notifications
+#'
+#' @description
+#' List profile notifications.
+#'
+#' @usage
+#' wellarchitected_list_profile_notifications(WorkloadId, NextToken,
+#'   MaxResults)
+#'
+#' @param WorkloadId 
+#' @param NextToken 
+#' @param MaxResults 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NotificationSummaries = list(
+#'     list(
+#'       CurrentProfileVersion = "string",
+#'       LatestProfileVersion = "string",
+#'       Type = "PROFILE_ANSWERS_UPDATED"|"PROFILE_DELETED",
+#'       ProfileArn = "string",
+#'       ProfileName = "string",
+#'       WorkloadId = "string",
+#'       WorkloadName = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_profile_notifications(
+#'   WorkloadId = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_profile_notifications
+#'
+#' @aliases wellarchitected_list_profile_notifications
+wellarchitected_list_profile_notifications <- function(WorkloadId = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListProfileNotifications",
+    http_method = "GET",
+    http_path = "/profileNotifications/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .wellarchitected$list_profile_notifications_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .wellarchitected$list_profile_notifications_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_profile_notifications <- wellarchitected_list_profile_notifications
+
+#' List profile shares
+#'
+#' @description
+#' List profile shares.
+#'
+#' @usage
+#' wellarchitected_list_profile_shares(ProfileArn, SharedWithPrefix,
+#'   NextToken, MaxResults, Status)
+#'
+#' @param ProfileArn &#91;required&#93; The profile ARN.
+#' @param SharedWithPrefix The Amazon Web Services account ID, IAM role, organization ID, or
+#' organizational unit (OU) ID with which the profile is shared.
+#' @param NextToken 
+#' @param MaxResults The maximum number of results to return for this request.
+#' @param Status 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProfileShareSummaries = list(
+#'     list(
+#'       ShareId = "string",
+#'       SharedWith = "string",
+#'       Status = "ACCEPTED"|"REJECTED"|"PENDING"|"REVOKED"|"EXPIRED"|"ASSOCIATING"|"ASSOCIATED"|"FAILED",
+#'       StatusMessage = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_profile_shares(
+#'   ProfileArn = "string",
+#'   SharedWithPrefix = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Status = "ACCEPTED"|"REJECTED"|"PENDING"|"REVOKED"|"EXPIRED"|"ASSOCIATING"|"ASSOCIATED"|"FAILED"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_profile_shares
+#'
+#' @aliases wellarchitected_list_profile_shares
+wellarchitected_list_profile_shares <- function(ProfileArn, SharedWithPrefix = NULL, NextToken = NULL, MaxResults = NULL, Status = NULL) {
+  op <- new_operation(
+    name = "ListProfileShares",
+    http_method = "GET",
+    http_path = "/profiles/{ProfileArn}/shares",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .wellarchitected$list_profile_shares_input(ProfileArn = ProfileArn, SharedWithPrefix = SharedWithPrefix, NextToken = NextToken, MaxResults = MaxResults, Status = Status)
+  output <- .wellarchitected$list_profile_shares_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_profile_shares <- wellarchitected_list_profile_shares
+
+#' List profiles
+#'
+#' @description
+#' List profiles.
+#'
+#' @usage
+#' wellarchitected_list_profiles(ProfileNamePrefix, ProfileOwnerType,
+#'   NextToken, MaxResults)
+#'
+#' @param ProfileNamePrefix Prefix for profile name.
+#' @param ProfileOwnerType Profile owner type.
+#' @param NextToken 
+#' @param MaxResults 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ProfileSummaries = list(
+#'     list(
+#'       ProfileArn = "string",
+#'       ProfileVersion = "string",
+#'       ProfileName = "string",
+#'       ProfileDescription = "string",
+#'       Owner = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_profiles(
+#'   ProfileNamePrefix = "string",
+#'   ProfileOwnerType = "SELF"|"SHARED",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_profiles
+#'
+#' @aliases wellarchitected_list_profiles
+wellarchitected_list_profiles <- function(ProfileNamePrefix = NULL, ProfileOwnerType = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListProfiles",
+    http_method = "GET",
+    http_path = "/profileSummaries",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .wellarchitected$list_profiles_input(ProfileNamePrefix = ProfileNamePrefix, ProfileOwnerType = ProfileOwnerType, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .wellarchitected$list_profiles_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_profiles <- wellarchitected_list_profiles
+
 #' List the workload invitations
 #'
 #' @description
@@ -2234,7 +2950,8 @@ wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NU
 #'
 #' @usage
 #' wellarchitected_list_share_invitations(WorkloadNamePrefix,
-#'   LensNamePrefix, ShareResourceType, NextToken, MaxResults)
+#'   LensNamePrefix, ShareResourceType, NextToken, MaxResults,
+#'   ProfileNamePrefix)
 #'
 #' @param WorkloadNamePrefix 
 #' @param LensNamePrefix An optional string added to the beginning of each lens name returned in
@@ -2242,6 +2959,7 @@ wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NU
 #' @param ShareResourceType The type of share invitations to be returned.
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
+#' @param ProfileNamePrefix Profile name prefix.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2253,11 +2971,13 @@ wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NU
 #'       SharedBy = "string",
 #'       SharedWith = "string",
 #'       PermissionType = "READONLY"|"CONTRIBUTOR",
-#'       ShareResourceType = "WORKLOAD"|"LENS",
+#'       ShareResourceType = "WORKLOAD"|"LENS"|"PROFILE",
 #'       WorkloadName = "string",
 #'       WorkloadId = "string",
 #'       LensName = "string",
-#'       LensArn = "string"
+#'       LensArn = "string",
+#'       ProfileName = "string",
+#'       ProfileArn = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2269,9 +2989,10 @@ wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NU
 #' svc$list_share_invitations(
 #'   WorkloadNamePrefix = "string",
 #'   LensNamePrefix = "string",
-#'   ShareResourceType = "WORKLOAD"|"LENS",
+#'   ShareResourceType = "WORKLOAD"|"LENS"|"PROFILE",
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   ProfileNamePrefix = "string"
 #' )
 #' ```
 #'
@@ -2280,14 +3001,14 @@ wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NU
 #' @rdname wellarchitected_list_share_invitations
 #'
 #' @aliases wellarchitected_list_share_invitations
-wellarchitected_list_share_invitations <- function(WorkloadNamePrefix = NULL, LensNamePrefix = NULL, ShareResourceType = NULL, NextToken = NULL, MaxResults = NULL) {
+wellarchitected_list_share_invitations <- function(WorkloadNamePrefix = NULL, LensNamePrefix = NULL, ShareResourceType = NULL, NextToken = NULL, MaxResults = NULL, ProfileNamePrefix = NULL) {
   op <- new_operation(
     name = "ListShareInvitations",
     http_method = "GET",
     http_path = "/shareInvitations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .wellarchitected$list_share_invitations_input(WorkloadNamePrefix = WorkloadNamePrefix, LensNamePrefix = LensNamePrefix, ShareResourceType = ShareResourceType, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .wellarchitected$list_share_invitations_input(WorkloadNamePrefix = WorkloadNamePrefix, LensNamePrefix = LensNamePrefix, ShareResourceType = ShareResourceType, NextToken = NextToken, MaxResults = MaxResults, ProfileNamePrefix = ProfileNamePrefix)
   output <- .wellarchitected$list_share_invitations_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -2302,8 +3023,8 @@ wellarchitected_list_share_invitations <- function(WorkloadNamePrefix = NULL, Le
 #' @description
 #' List the tags for a resource.
 #' 
-#' The WorkloadArn parameter can be either a workload ARN or a custom lens
-#' ARN.
+#' The WorkloadArn parameter can be a workload ARN, a custom lens ARN, or a
+#' profile ARN.
 #'
 #' @usage
 #' wellarchitected_list_tags_for_resource(WorkloadArn)
@@ -2404,7 +3125,7 @@ wellarchitected_list_workload_shares <- function(WorkloadId, SharedWithPrefix = 
     name = "ListWorkloadShares",
     http_method = "GET",
     http_path = "/workloads/{WorkloadId}/shares",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_workload_shares_input(WorkloadId = WorkloadId, SharedWithPrefix = SharedWithPrefix, NextToken = NextToken, MaxResults = MaxResults, Status = Status)
   output <- .wellarchitected$list_workload_shares_output()
@@ -2448,7 +3169,16 @@ wellarchitected_list_workload_shares <- function(WorkloadId, SharedWithPrefix = 
 #'       RiskCounts = list(
 #'         123
 #'       ),
-#'       ImprovementStatus = "NOT_APPLICABLE"|"NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"RISK_ACKNOWLEDGED"
+#'       ImprovementStatus = "NOT_APPLICABLE"|"NOT_STARTED"|"IN_PROGRESS"|"COMPLETE"|"RISK_ACKNOWLEDGED",
+#'       Profiles = list(
+#'         list(
+#'           ProfileArn = "string",
+#'           ProfileVersion = "string"
+#'         )
+#'       ),
+#'       PrioritizedRiskCounts = list(
+#'         123
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2474,7 +3204,7 @@ wellarchitected_list_workloads <- function(WorkloadNamePrefix = NULL, NextToken 
     name = "ListWorkloads",
     http_method = "POST",
     http_path = "/workloadsSummaries",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .wellarchitected$list_workloads_input(WorkloadNamePrefix = WorkloadNamePrefix, NextToken = NextToken, MaxResults = MaxResults)
   output <- .wellarchitected$list_workloads_output()
@@ -2491,8 +3221,8 @@ wellarchitected_list_workloads <- function(WorkloadNamePrefix = NULL, NextToken 
 #' @description
 #' Adds one or more tags to the specified resource.
 #' 
-#' The WorkloadArn parameter can be either a workload ARN or a custom lens
-#' ARN.
+#' The WorkloadArn parameter can be a workload ARN, a custom lens ARN, or a
+#' profile ARN.
 #'
 #' @usage
 #' wellarchitected_tag_resource(WorkloadArn, Tags)
@@ -2540,8 +3270,8 @@ wellarchitected_tag_resource <- function(WorkloadArn, Tags) {
 #' @description
 #' Deletes specified tags from a resource.
 #' 
-#' The WorkloadArn parameter can be either a workload ARN or a custom lens
-#' ARN.
+#' The WorkloadArn parameter can be a workload ARN, a custom lens ARN, or a
+#' profile ARN.
 #' 
 #' To specify multiple tags, use separate **tagKeys** parameters, for
 #' example:
@@ -2792,6 +3522,9 @@ wellarchitected_update_global_settings <- function(OrganizationSharingStatus = N
 #'         Notes = "string",
 #'         RiskCounts = list(
 #'           123
+#'         ),
+#'         PrioritizedRiskCounts = list(
+#'           123
 #'         )
 #'       )
 #'     ),
@@ -2802,7 +3535,16 @@ wellarchitected_update_global_settings <- function(OrganizationSharingStatus = N
 #'     RiskCounts = list(
 #'       123
 #'     ),
-#'     NextToken = "string"
+#'     NextToken = "string",
+#'     Profiles = list(
+#'       list(
+#'         ProfileArn = "string",
+#'         ProfileVersion = "string"
+#'       )
+#'     ),
+#'     PrioritizedRiskCounts = list(
+#'       123
+#'     )
 #'   )
 #' )
 #' ```
@@ -2841,6 +3583,100 @@ wellarchitected_update_lens_review <- function(WorkloadId, LensAlias, LensNotes 
 }
 .wellarchitected$operations$update_lens_review <- wellarchitected_update_lens_review
 
+#' Update a profile
+#'
+#' @description
+#' Update a profile.
+#'
+#' @usage
+#' wellarchitected_update_profile(ProfileArn, ProfileDescription,
+#'   ProfileQuestions)
+#'
+#' @param ProfileArn &#91;required&#93; The profile ARN.
+#' @param ProfileDescription The profile description.
+#' @param ProfileQuestions Profile questions.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Profile = list(
+#'     ProfileArn = "string",
+#'     ProfileVersion = "string",
+#'     ProfileName = "string",
+#'     ProfileDescription = "string",
+#'     ProfileQuestions = list(
+#'       list(
+#'         QuestionId = "string",
+#'         QuestionTitle = "string",
+#'         QuestionDescription = "string",
+#'         QuestionChoices = list(
+#'           list(
+#'             ChoiceId = "string",
+#'             ChoiceTitle = "string",
+#'             ChoiceDescription = "string"
+#'           )
+#'         ),
+#'         SelectedChoiceIds = list(
+#'           "string"
+#'         ),
+#'         MinSelectedChoices = 123,
+#'         MaxSelectedChoices = 123
+#'       )
+#'     ),
+#'     Owner = "string",
+#'     CreatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     UpdatedAt = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ShareInvitationId = "string",
+#'     Tags = list(
+#'       "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_profile(
+#'   ProfileArn = "string",
+#'   ProfileDescription = "string",
+#'   ProfileQuestions = list(
+#'     list(
+#'       QuestionId = "string",
+#'       SelectedChoiceIds = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_update_profile
+#'
+#' @aliases wellarchitected_update_profile
+wellarchitected_update_profile <- function(ProfileArn, ProfileDescription = NULL, ProfileQuestions = NULL) {
+  op <- new_operation(
+    name = "UpdateProfile",
+    http_method = "PATCH",
+    http_path = "/profiles/{ProfileArn}",
+    paginator = list()
+  )
+  input <- .wellarchitected$update_profile_input(ProfileArn = ProfileArn, ProfileDescription = ProfileDescription, ProfileQuestions = ProfileQuestions)
+  output <- .wellarchitected$update_profile_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$update_profile <- wellarchitected_update_profile
+
 #' Update a workload or custom lens share invitation
 #'
 #' @description
@@ -2862,10 +3698,11 @@ wellarchitected_update_lens_review <- function(WorkloadId, LensAlias, LensNotes 
 #' list(
 #'   ShareInvitation = list(
 #'     ShareInvitationId = "string",
-#'     ShareResourceType = "WORKLOAD"|"LENS",
+#'     ShareResourceType = "WORKLOAD"|"LENS"|"PROFILE",
 #'     WorkloadId = "string",
 #'     LensAlias = "string",
-#'     LensArn = "string"
+#'     LensArn = "string",
+#'     ProfileArn = "string"
 #'   )
 #' )
 #' ```
@@ -2990,6 +3827,15 @@ wellarchitected_update_share_invitation <- function(ShareInvitationId, ShareInvi
 #'     ),
 #'     Applications = list(
 #'       "string"
+#'     ),
+#'     Profiles = list(
+#'       list(
+#'         ProfileArn = "string",
+#'         ProfileVersion = "string"
+#'       )
+#'     ),
+#'     PrioritizedRiskCounts = list(
+#'       123
 #'     )
 #'   )
 #' )
@@ -3164,3 +4010,52 @@ wellarchitected_upgrade_lens_review <- function(WorkloadId, LensAlias, Milestone
   return(response)
 }
 .wellarchitected$operations$upgrade_lens_review <- wellarchitected_upgrade_lens_review
+
+#' Upgrade a profile
+#'
+#' @description
+#' Upgrade a profile.
+#'
+#' @usage
+#' wellarchitected_upgrade_profile_version(WorkloadId, ProfileArn,
+#'   MilestoneName, ClientRequestToken)
+#'
+#' @param WorkloadId &#91;required&#93; 
+#' @param ProfileArn &#91;required&#93; The profile ARN.
+#' @param MilestoneName 
+#' @param ClientRequestToken 
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$upgrade_profile_version(
+#'   WorkloadId = "string",
+#'   ProfileArn = "string",
+#'   MilestoneName = "string",
+#'   ClientRequestToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_upgrade_profile_version
+#'
+#' @aliases wellarchitected_upgrade_profile_version
+wellarchitected_upgrade_profile_version <- function(WorkloadId, ProfileArn, MilestoneName = NULL, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "UpgradeProfileVersion",
+    http_method = "PUT",
+    http_path = "/workloads/{WorkloadId}/profiles/{ProfileArn}/upgrade",
+    paginator = list()
+  )
+  input <- .wellarchitected$upgrade_profile_version_input(WorkloadId = WorkloadId, ProfileArn = ProfileArn, MilestoneName = MilestoneName, ClientRequestToken = ClientRequestToken)
+  output <- .wellarchitected$upgrade_profile_version_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$upgrade_profile_version <- wellarchitected_upgrade_profile_version

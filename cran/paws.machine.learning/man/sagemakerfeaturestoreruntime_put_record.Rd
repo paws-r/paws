@@ -2,16 +2,19 @@
 % Please edit documentation in R/sagemakerfeaturestoreruntime_operations.R
 \name{sagemakerfeaturestoreruntime_put_record}
 \alias{sagemakerfeaturestoreruntime_put_record}
-\title{Used for data ingestion into the FeatureStore}
+\title{The PutRecord API is used to ingest a list of Records into your feature
+group}
 \usage{
 sagemakerfeaturestoreruntime_put_record(
   FeatureGroupName,
   Record,
-  TargetStores = NULL
+  TargetStores = NULL,
+  TtlDuration = NULL
 )
 }
 \arguments{
-\item{FeatureGroupName}{[required] The name of the feature group that you want to insert the record into.}
+\item{FeatureGroupName}{[required] The name or Amazon Resource Name (ARN) of the feature group that you
+want to insert the record into.}
 
 \item{Record}{[required] List of FeatureValues to be inserted. This will be a full over-write. If
 you only want to update few of the feature values, do the following:
@@ -27,10 +30,16 @@ update feature values.
 \item{TargetStores}{A list of stores to which you're adding the record. By default, Feature
 Store adds the record to all of the stores that you're using for the
 \code{FeatureGroup}.}
+
+\item{TtlDuration}{Time to live duration, where the record is hard deleted after the
+expiration time is reached; \code{ExpiresAt} = \code{EventTime} + \code{TtlDuration}.
+For information on HardDelete, see the
+\code{\link[=sagemakerfeaturestoreruntime_delete_record]{delete_record}} API in the
+Amazon SageMaker API Reference guide.}
 }
 \description{
-Used for data ingestion into the \code{FeatureStore}. The \code{\link[=sagemakerfeaturestoreruntime_put_record]{put_record}} API writes to both the \code{OnlineStore} and \code{OfflineStore}. If the record is the latest record for the \code{recordIdentifier}, the record is written to both the \code{OnlineStore} and \code{OfflineStore}. If the record is a historic record, it is written only to the \code{OfflineStore}.
+The \code{\link[=sagemakerfeaturestoreruntime_put_record]{put_record}} API is used to ingest a list of \code{Records} into your feature group.
 
-See \url{https://paws-r.github.io/docs/sagemakerfeaturestoreruntime/put_record.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemakerfeaturestoreruntime_put_record/} for full documentation.
 }
 \keyword{internal}

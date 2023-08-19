@@ -1329,7 +1329,7 @@ machinelearning_describe_batch_predictions <- function(FilterVariable = NULL, EQ
     name = "DescribeBatchPredictions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results")
   )
   input <- .machinelearning$describe_batch_predictions_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
   output <- .machinelearning$describe_batch_predictions_output()
@@ -1491,7 +1491,7 @@ machinelearning_describe_data_sources <- function(FilterVariable = NULL, EQ = NU
     name = "DescribeDataSources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results")
   )
   input <- .machinelearning$describe_data_sources_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
   output <- .machinelearning$describe_data_sources_output()
@@ -1644,7 +1644,7 @@ machinelearning_describe_evaluations <- function(FilterVariable = NULL, EQ = NUL
     name = "DescribeEvaluations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results")
   )
   input <- .machinelearning$describe_evaluations_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
   output <- .machinelearning$describe_evaluations_output()
@@ -1810,7 +1810,7 @@ machinelearning_describe_ml_models <- function(FilterVariable = NULL, EQ = NULL,
     name = "DescribeMLModels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Results")
   )
   input <- .machinelearning$describe_ml_models_input(FilterVariable = FilterVariable, EQ = EQ, GT = GT, LT = LT, GE = GE, LE = LE, NE = NE, Prefix = Prefix, SortOrder = SortOrder, NextToken = NextToken, Limit = Limit)
   output <- .machinelearning$describe_ml_models_output()

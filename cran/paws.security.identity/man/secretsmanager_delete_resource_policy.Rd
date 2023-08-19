@@ -16,6 +16,6 @@ partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/usergui
 \description{
 Deletes the resource-based permission policy attached to the secret. To attach a policy to a secret, use \code{\link[=secretsmanager_put_resource_policy]{put_resource_policy}}.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/delete_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_delete_resource_policy/} for full documentation.
 }
 \keyword{internal}

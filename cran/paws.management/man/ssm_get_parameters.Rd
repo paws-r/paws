@@ -20,6 +20,6 @@ parameter types.}
 \description{
 Get information about one or more parameters by specifying multiple parameter names.
 
-See \url{https://paws-r.github.io/docs/ssm/get_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_parameters/} for full documentation.
 }
 \keyword{internal}

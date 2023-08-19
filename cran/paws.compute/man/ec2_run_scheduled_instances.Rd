@@ -33,6 +33,6 @@ Zone, network, and platform of the schedule that you purchased.}
 \description{
 Launches the specified Scheduled Instances.
 
-See \url{https://paws-r.github.io/docs/ec2/run_scheduled_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_run_scheduled_instances/} for full documentation.
 }
 \keyword{internal}

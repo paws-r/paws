@@ -14,6 +14,6 @@ health_describe_entity_aggregates(eventArns = NULL)
 \description{
 Returns the number of entities that are affected by each of the specified events.
 
-See \url{https://paws-r.github.io/docs/health/describe_entity_aggregates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/health_describe_entity_aggregates/} for full documentation.
 }
 \keyword{internal}

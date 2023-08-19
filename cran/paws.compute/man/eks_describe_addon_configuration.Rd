@@ -19,6 +19,6 @@ returned by
 \description{
 Returns configuration options.
 
-See \url{https://paws-r.github.io/docs/eks/describe_addon_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_describe_addon_configuration/} for full documentation.
 }
 \keyword{internal}

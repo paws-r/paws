@@ -25,6 +25,6 @@ does not contain any tokens.}
 \description{
 Creates a paginated call to list the aliases associated with a given entity.
 
-See \url{https://paws-r.github.io/docs/workmail/list_aliases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_list_aliases/} for full documentation.
 }
 \keyword{internal}

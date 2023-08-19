@@ -22,6 +22,6 @@ servicecatalog_describe_copy_product_status(
 \description{
 Gets the status of the specified copy product operation.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/describe_copy_product_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_describe_copy_product_status/} for full documentation.
 }
 \keyword{internal}

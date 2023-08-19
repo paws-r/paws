@@ -54,6 +54,6 @@ from a prior call.)}
 \description{
 Describes your VPC endpoints.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_vpc_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_vpc_endpoints/} for full documentation.
 }
 \keyword{internal}

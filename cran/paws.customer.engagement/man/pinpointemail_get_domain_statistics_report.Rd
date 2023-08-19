@@ -20,6 +20,6 @@ less than or equal to 30 days after the \code{StartDate}.}
 \description{
 Retrieve inbox placement and engagement rates for the domains that you use to send email.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/get_domain_statistics_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_get_domain_statistics_report/} for full documentation.
 }
 \keyword{internal}

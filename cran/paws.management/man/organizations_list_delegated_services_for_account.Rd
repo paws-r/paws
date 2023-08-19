@@ -35,6 +35,6 @@ results.}
 \description{
 List the Amazon Web Services services for which the specified account is a delegated administrator.
 
-See \url{https://paws-r.github.io/docs/organizations/list_delegated_services_for_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_list_delegated_services_for_account/} for full documentation.
 }
 \keyword{internal}

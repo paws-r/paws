@@ -14,6 +14,6 @@ want to restore.}
 \description{
 Restores a deleted event data store specified by \code{EventDataStore}, which accepts an event data store ARN. You can only restore a deleted event data store within the seven-day wait period after deletion. Restoring an event data store can take several minutes, depending on the size of the event data store.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/restore_event_data_store.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_restore_event_data_store/} for full documentation.
 }
 \keyword{internal}

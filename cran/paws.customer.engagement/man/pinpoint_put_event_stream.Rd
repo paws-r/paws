@@ -16,6 +16,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Creates a new event stream for an application or updates the settings of an existing event stream for an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/put_event_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_put_event_stream/} for full documentation.
 }
 \keyword{internal}

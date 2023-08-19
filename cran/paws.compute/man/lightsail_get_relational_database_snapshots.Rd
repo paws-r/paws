@@ -19,6 +19,6 @@ request.}
 \description{
 Returns information about all of your database snapshots in Amazon Lightsail.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_relational_database_snapshots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_snapshots/} for full documentation.
 }
 \keyword{internal}

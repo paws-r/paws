@@ -25,6 +25,6 @@ the configured model schema for the method (\code{true}) or not (\code{false}).}
 \description{
 Creates a RequestValidator of a given RestApi.
 
-See \url{https://paws-r.github.io/docs/apigateway/create_request_validator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_create_request_validator/} for full documentation.
 }
 \keyword{internal}

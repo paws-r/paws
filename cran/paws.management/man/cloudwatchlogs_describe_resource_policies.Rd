@@ -15,6 +15,6 @@ this API.}
 \description{
 Lists the resource policies in this account.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/describe_resource_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_resource_policies/} for full documentation.
 }
 \keyword{internal}

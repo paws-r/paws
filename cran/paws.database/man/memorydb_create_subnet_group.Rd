@@ -24,6 +24,6 @@ A tag key must be accompanied by a tag value, although null is accepted.}
 \description{
 Creates a subnet group. A subnet group is a collection of subnets (typically private) that you can designate for your clusters running in an Amazon Virtual Private Cloud (VPC) environment. When you create a cluster in an Amazon VPC, you must specify a subnet group. MemoryDB uses that subnet group to choose a subnet and IP addresses within that subnet to associate with your nodes. For more information, see \href{https://docs.aws.amazon.com/memorydb/latest/devguide/subnetgroups.html}{Subnets and subnet groups}.
 
-See \url{https://paws-r.github.io/docs/memorydb/create_subnet_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_create_subnet_group/} for full documentation.
 }
 \keyword{internal}

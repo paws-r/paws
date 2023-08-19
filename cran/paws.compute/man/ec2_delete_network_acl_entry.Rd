@@ -22,6 +22,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified ingress or egress entry (rule) from the specified network ACL.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_network_acl_entry.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_network_acl_entry/} for full documentation.
 }
 \keyword{internal}

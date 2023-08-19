@@ -16,6 +16,6 @@ apigateway_create_resource(restApiId, parentId, pathPart)
 \description{
 Creates a Resource resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/create_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_create_resource/} for full documentation.
 }
 \keyword{internal}

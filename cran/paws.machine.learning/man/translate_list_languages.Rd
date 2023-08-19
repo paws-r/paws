@@ -23,6 +23,6 @@ languages.}
 \description{
 Provides a list of languages (RFC-5646 codes and names) that Amazon Translate supports.
 
-See \url{https://paws-r.github.io/docs/translate/list_languages.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/translate_list_languages/} for full documentation.
 }
 \keyword{internal}

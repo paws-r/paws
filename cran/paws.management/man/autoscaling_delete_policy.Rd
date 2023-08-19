@@ -14,6 +14,6 @@ autoscaling_delete_policy(AutoScalingGroupName = NULL, PolicyName)
 \description{
 Deletes the specified scaling policy.
 
-See \url{https://paws-r.github.io/docs/autoscaling/delete_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_delete_policy/} for full documentation.
 }
 \keyword{internal}

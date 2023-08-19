@@ -16,6 +16,6 @@ cloudtrail_list_import_failures(ImportId, MaxResults = NULL, NextToken = NULL)
 \description{
 Returns a list of failures for the specified import.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/list_import_failures.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_list_import_failures/} for full documentation.
 }
 \keyword{internal}

@@ -49,6 +49,6 @@ request.}
 \description{
 List the export jobs for the Amazon SageMaker Model Card.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_model_card_export_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_model_card_export_jobs/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ quicksight_describe_ingestion(AwsAccountId, DataSetId, IngestionId)
 \description{
 Describes a SPICE ingestion.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_ingestion.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_ingestion/} for full documentation.
 }
 \keyword{internal}

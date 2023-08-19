@@ -31,6 +31,6 @@ Valid values: \code{application/vnd.docker.distribution.manifest.v1+json} |
 \description{
 Gets detailed information for an image. Images are specified with either an \code{imageTag} or \code{imageDigest}.
 
-See \url{https://paws-r.github.io/docs/ecr/batch_get_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_batch_get_image/} for full documentation.
 }
 \keyword{internal}

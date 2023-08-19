@@ -12,6 +12,6 @@ opsworks_delete_user_profile(IamUserArn)
 \description{
 Deletes a user profile.
 
-See \url{https://paws-r.github.io/docs/opsworks/delete_user_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_delete_user_profile/} for full documentation.
 }
 \keyword{internal}

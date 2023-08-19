@@ -13,6 +13,6 @@ fms_disassociate_third_party_firewall(ThirdPartyFirewall)
 \description{
 Disassociates a Firewall Manager policy administrator from a third-party firewall tenant. When you call \code{\link[=fms_disassociate_third_party_firewall]{disassociate_third_party_firewall}}, the third-party firewall vendor deletes all of the firewalls that are associated with the account.
 
-See \url{https://paws-r.github.io/docs/fms/disassociate_third_party_firewall.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_disassociate_third_party_firewall/} for full documentation.
 }
 \keyword{internal}

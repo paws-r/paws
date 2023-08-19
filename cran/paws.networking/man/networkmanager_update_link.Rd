@@ -35,6 +35,6 @@ Constraints: Maximum length of 128 characters.}
 \description{
 Updates the details for an existing link. To remove information for any of the parameters, specify an empty string.
 
-See \url{https://paws-r.github.io/docs/networkmanager/update_link.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_update_link/} for full documentation.
 }
 \keyword{internal}

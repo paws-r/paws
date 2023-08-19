@@ -73,6 +73,6 @@ in the \emph{Amazon Elastic Compute Cloud User Guide}.}
 \description{
 You can modify several parameters of an existing EBS volume, including volume size, volume type, and IOPS capacity. If your EBS volume is attached to a current-generation EC2 instance type, you might be able to apply these changes without stopping the instance or detaching the volume from it. For more information about modifying EBS volumes, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ebs-modify-volume.html}{Amazon EBS Elastic Volumes} (Linux instances) or \href{https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ebs-modify-volume.html}{Amazon EBS Elastic Volumes} (Windows instances).
 
-See \url{https://paws-r.github.io/docs/ec2/modify_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_volume/} for full documentation.
 }
 \keyword{internal}

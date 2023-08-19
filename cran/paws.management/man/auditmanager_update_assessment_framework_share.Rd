@@ -17,6 +17,6 @@ request.}
 \description{
 Updates a share request for a custom framework in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/update_assessment_framework_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_update_assessment_framework_share/} for full documentation.
 }
 \keyword{internal}

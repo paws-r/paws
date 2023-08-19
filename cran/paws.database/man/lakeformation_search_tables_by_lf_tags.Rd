@@ -28,6 +28,6 @@ resources.}
 \description{
 This operation allows a search on \code{TABLE} resources by \code{LFTag}s. This will be used by admins who want to grant user permissions on certain LF-tags. Before making a grant, the admin can use \code{\link[=lakeformation_search_tables_by_lf_tags]{search_tables_by_lf_tags}} to find all resources where the given \code{LFTag}s are valid to verify whether the returned resources can be shared.
 
-See \url{https://paws-r.github.io/docs/lakeformation/search_tables_by_lf_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_search_tables_by_lf_tags/} for full documentation.
 }
 \keyword{internal}

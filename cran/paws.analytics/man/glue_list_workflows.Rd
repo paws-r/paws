@@ -14,6 +14,6 @@ glue_list_workflows(NextToken = NULL, MaxResults = NULL)
 \description{
 Lists names of workflows created in the account.
 
-See \url{https://paws-r.github.io/docs/glue/list_workflows.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_list_workflows/} for full documentation.
 }
 \keyword{internal}

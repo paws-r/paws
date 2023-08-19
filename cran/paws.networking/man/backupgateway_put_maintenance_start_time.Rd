@@ -29,6 +29,6 @@ maintenance start time.}
 \description{
 Set the maintenance start time for a gateway.
 
-See \url{https://paws-r.github.io/docs/backupgateway/put_maintenance_start_time.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_put_maintenance_start_time/} for full documentation.
 }
 \keyword{internal}

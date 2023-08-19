@@ -20,6 +20,6 @@ For more information about ARN format, see \href{https://docs.aws.amazon.com/Ama
 \description{
 Displays the tags associated with a CloudWatch Logs resource. Currently, log groups and destinations support tagging.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

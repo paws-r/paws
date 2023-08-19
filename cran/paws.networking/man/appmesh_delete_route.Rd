@@ -21,6 +21,6 @@ the mesh with your account. For more information about mesh sharing, see
 \description{
 Deletes an existing route.
 
-See \url{https://paws-r.github.io/docs/appmesh/delete_route.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appmesh_delete_route/} for full documentation.
 }
 \keyword{internal}

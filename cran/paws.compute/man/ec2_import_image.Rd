@@ -61,11 +61,7 @@ must also be set.
 The KMS key identifier may be provided in any of the following formats:
 \itemize{
 \item Key ID
-\item Key alias. The alias ARN contains the \code{arn:aws:kms} namespace,
-followed by the Region of the key, the Amazon Web Services account
-ID of the key owner, the \code{alias} namespace, and then the key alias.
-For example,
-arn:aws:kms:\emph{us-east-1}:\emph{012345678910}:alias/\emph{ExampleAlias}.
+\item Key alias
 \item ARN using key ID. The ID ARN contains the \code{arn:aws:kms} namespace,
 followed by the Region of the key, the Amazon Web Services account
 ID of the key owner, the \code{key} namespace, and then the key ID. For
@@ -103,7 +99,9 @@ information, see
 \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmimport-image-import.html#prerequisites-image}{Prerequisites}
 in the VM Import/Export User Guide.}
 
-\item{Platform}{The operating system of the virtual machine.
+\item{Platform}{The operating system of the virtual machine. If you import a VM that is
+compatible with Unified Extensible Firmware Interface (UEFI) using an
+EBS snapshot, you must specify a value for the platform.
 
 Valid values: \code{Windows} | \code{Linux}}
 
@@ -121,6 +119,6 @@ in the \emph{VM Import/Export User Guide}.}
 \description{
 To import your virtual machines (VMs) with a console-based experience, you can use the \emph{Import virtual machine images to Amazon Web Services} template in the Migration Hub Orchestrator console. For more information, see the \href{https://docs.aws.amazon.com/migrationhub-orchestrator/latest/userguide/import-vm-images.html}{\emph{Migration Hub Orchestrator User Guide}} .
 
-See \url{https://paws-r.github.io/docs/ec2/import_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_import_image/} for full documentation.
 }
 \keyword{internal}

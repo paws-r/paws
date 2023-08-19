@@ -14,6 +14,6 @@ a supported third party.}
 \description{
 Configures a connection between the webhook that was created and the external tool with events to be detected.
 
-See \url{https://paws-r.github.io/docs/codepipeline/register_webhook_with_third_party.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_register_webhook_with_third_party/} for full documentation.
 }
 \keyword{internal}

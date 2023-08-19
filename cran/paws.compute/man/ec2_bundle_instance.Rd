@@ -28,6 +28,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Bundles an Amazon instance store-backed Windows instance.
 
-See \url{https://paws-r.github.io/docs/ec2/bundle_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_bundle_instance/} for full documentation.
 }
 \keyword{internal}

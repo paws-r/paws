@@ -15,6 +15,6 @@ apigateway_get_model_template(restApiId, modelName)
 \description{
 Generates a sample mapping template that can be used to transform a payload into the structure of a model.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_model_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_model_template/} for full documentation.
 }
 \keyword{internal}

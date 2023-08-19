@@ -23,6 +23,6 @@ pointed to by the next token.}
 \description{
 Returns a list of key-value pairs assigned to a target recovery point, backup plan, or backup vault.
 
-See \url{https://paws-r.github.io/docs/backup/list_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_list_tags/} for full documentation.
 }
 \keyword{internal}

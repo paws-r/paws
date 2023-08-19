@@ -13,6 +13,6 @@ workmail_list_mobile_device_access_rules(OrganizationId)
 \description{
 Lists the mobile device access rules for the specified WorkMail organization.
 
-See \url{https://paws-r.github.io/docs/workmail/list_mobile_device_access_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_list_mobile_device_access_rules/} for full documentation.
 }
 \keyword{internal}

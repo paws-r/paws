@@ -21,6 +21,6 @@ locationservice_update_route_calculator(
 \description{
 Updates the specified properties for a given route calculator resource.
 
-See \url{https://paws-r.github.io/docs/locationservice/update_route_calculator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_update_route_calculator/} for full documentation.
 }
 \keyword{internal}

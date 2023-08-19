@@ -2546,7 +2546,7 @@ nimblestudio_list_eula_acceptances <- function(eulaIds = NULL, nextToken = NULL,
     name = "ListEulaAcceptances",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/eula-acceptances",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "eulaAcceptances")
   )
   input <- .nimblestudio$list_eula_acceptances_input(eulaIds = eulaIds, nextToken = nextToken, studioId = studioId)
   output <- .nimblestudio$list_eula_acceptances_output()
@@ -2611,7 +2611,7 @@ nimblestudio_list_eulas <- function(eulaIds = NULL, nextToken = NULL) {
     name = "ListEulas",
     http_method = "GET",
     http_path = "/2020-08-01/eulas",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "eulas")
   )
   input <- .nimblestudio$list_eulas_input(eulaIds = eulaIds, nextToken = nextToken)
   output <- .nimblestudio$list_eulas_output()
@@ -2675,7 +2675,7 @@ nimblestudio_list_launch_profile_members <- function(launchProfileId, maxResults
     name = "ListLaunchProfileMembers",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/launch-profiles/{launchProfileId}/membership",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members")
   )
   input <- .nimblestudio$list_launch_profile_members_input(launchProfileId = launchProfileId, maxResults = maxResults, nextToken = nextToken, studioId = studioId)
   output <- .nimblestudio$list_launch_profile_members_output()
@@ -2804,7 +2804,7 @@ nimblestudio_list_launch_profiles <- function(maxResults = NULL, nextToken = NUL
     name = "ListLaunchProfiles",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/launch-profiles",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "launchProfiles")
   )
   input <- .nimblestudio$list_launch_profiles_input(maxResults = maxResults, nextToken = nextToken, principalId = principalId, states = states, studioId = studioId)
   output <- .nimblestudio$list_launch_profiles_output()
@@ -2883,7 +2883,7 @@ nimblestudio_list_streaming_images <- function(nextToken = NULL, owner = NULL, s
     name = "ListStreamingImages",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/streaming-images",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "streamingImages")
   )
   input <- .nimblestudio$list_streaming_images_input(nextToken = nextToken, owner = owner, studioId = studioId)
   output <- .nimblestudio$list_streaming_images_output()
@@ -2954,7 +2954,7 @@ nimblestudio_list_streaming_session_backups <- function(nextToken = NULL, ownedB
     name = "ListStreamingSessionBackups",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/streaming-session-backups",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "streamingSessionBackups")
   )
   input <- .nimblestudio$list_streaming_session_backups_input(nextToken = nextToken, ownedBy = ownedBy, studioId = studioId)
   output <- .nimblestudio$list_streaming_session_backups_output()
@@ -3060,7 +3060,7 @@ nimblestudio_list_streaming_sessions <- function(createdBy = NULL, nextToken = N
     name = "ListStreamingSessions",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/streaming-sessions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "sessions")
   )
   input <- .nimblestudio$list_streaming_sessions_input(createdBy = createdBy, nextToken = nextToken, ownedBy = ownedBy, sessionIds = sessionIds, studioId = studioId)
   output <- .nimblestudio$list_streaming_sessions_output()
@@ -3192,7 +3192,7 @@ nimblestudio_list_studio_components <- function(maxResults = NULL, nextToken = N
     name = "ListStudioComponents",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/studio-components",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "studioComponents")
   )
   input <- .nimblestudio$list_studio_components_input(maxResults = maxResults, nextToken = nextToken, states = states, studioId = studioId, types = types)
   output <- .nimblestudio$list_studio_components_output()
@@ -3255,7 +3255,7 @@ nimblestudio_list_studio_members <- function(maxResults = NULL, nextToken = NULL
     name = "ListStudioMembers",
     http_method = "GET",
     http_path = "/2020-08-01/studios/{studioId}/membership",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "members")
   )
   input <- .nimblestudio$list_studio_members_input(maxResults = maxResults, nextToken = nextToken, studioId = studioId)
   output <- .nimblestudio$list_studio_members_output()
@@ -3334,7 +3334,7 @@ nimblestudio_list_studios <- function(nextToken = NULL) {
     name = "ListStudios",
     http_method = "GET",
     http_path = "/2020-08-01/studios",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "studios")
   )
   input <- .nimblestudio$list_studios_input(nextToken = nextToken)
   output <- .nimblestudio$list_studios_output()

@@ -13,6 +13,6 @@ Web Services account ID.}
 \description{
 Retrieves the status of a migration operation.
 
-See \url{https://paws-r.github.io/docs/glue/get_catalog_import_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_catalog_import_status/} for full documentation.
 }
 \keyword{internal}

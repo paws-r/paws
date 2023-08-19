@@ -15,6 +15,6 @@ account IDs will disassociate from.}
 \description{
 Removes the specified list of account IDs from the given billing group.
 
-See \url{https://paws-r.github.io/docs/billingconductor/disassociate_accounts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_disassociate_accounts/} for full documentation.
 }
 \keyword{internal}

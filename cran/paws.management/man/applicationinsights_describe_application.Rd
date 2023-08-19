@@ -4,14 +4,16 @@
 \alias{applicationinsights_describe_application}
 \title{Describes the application}
 \usage{
-applicationinsights_describe_application(ResourceGroupName)
+applicationinsights_describe_application(ResourceGroupName, AccountId = NULL)
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
+
+\item{AccountId}{The AWS account ID for the resource group owner.}
 }
 \description{
 Describes the application.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/describe_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_describe_application/} for full documentation.
 }
 \keyword{internal}

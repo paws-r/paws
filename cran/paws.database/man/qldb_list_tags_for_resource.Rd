@@ -14,6 +14,6 @@ qldb_list_tags_for_resource(ResourceArn)
 \description{
 Returns all tags for a specified Amazon QLDB resource.
 
-See \url{https://paws-r.github.io/docs/qldb/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

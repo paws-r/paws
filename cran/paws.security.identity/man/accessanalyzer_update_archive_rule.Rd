@@ -24,6 +24,6 @@ filter are updated.}
 \description{
 Updates the criteria and values for the specified archive rule.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/update_archive_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_update_archive_rule/} for full documentation.
 }
 \keyword{internal}

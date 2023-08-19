@@ -22,6 +22,6 @@ in the \emph{Amazon Web Services General Reference Guide}.}
 \description{
 Creates a model group. A model group contains a group of model versions.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_model_package_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_model_package_group/} for full documentation.
 }
 \keyword{internal}

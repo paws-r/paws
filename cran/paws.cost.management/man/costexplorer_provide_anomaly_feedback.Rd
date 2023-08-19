@@ -15,6 +15,6 @@ considered it an anomaly.}
 \description{
 Modifies the feedback property of a given cost anomaly.
 
-See \url{https://paws-r.github.io/docs/costexplorer/provide_anomaly_feedback.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_provide_anomaly_feedback/} for full documentation.
 }
 \keyword{internal}

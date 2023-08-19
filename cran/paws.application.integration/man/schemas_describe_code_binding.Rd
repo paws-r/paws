@@ -23,6 +23,6 @@ schemas_describe_code_binding(
 \description{
 Describe the code binding URI.
 
-See \url{https://paws-r.github.io/docs/schemas/describe_code_binding.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_describe_code_binding/} for full documentation.
 }
 \keyword{internal}

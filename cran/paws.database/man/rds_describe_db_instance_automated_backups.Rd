@@ -63,6 +63,6 @@ This setting doesn't apply to RDS Custom.}
 \description{
 Displays backups for both current and deleted instances. For example, use this operation to find details about automated backups for previously deleted instances. Current instances with retention periods greater than zero (0) are returned for both the \code{\link[=rds_describe_db_instance_automated_backups]{describe_db_instance_automated_backups}} and \code{\link[=rds_describe_db_instances]{describe_db_instances}} operations.
 
-See \url{https://paws-r.github.io/docs/rds/describe_db_instance_automated_backups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_db_instance_automated_backups/} for full documentation.
 }
 \keyword{internal}

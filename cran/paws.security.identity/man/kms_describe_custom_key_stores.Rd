@@ -39,6 +39,6 @@ truncated response you just received.}
 \description{
 Gets information about \href{https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html}{custom key stores} in the account and Region.
 
-See \url{https://paws-r.github.io/docs/kms/describe_custom_key_stores.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_describe_custom_key_stores/} for full documentation.
 }
 \keyword{internal}

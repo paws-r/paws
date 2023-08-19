@@ -30,6 +30,6 @@ marker value from the previous call to retrieve the next set of results.}
 \description{
 Gets the object definitions for a set of objects associated with the pipeline. Object definitions are composed of a set of fields that define the properties of the object.
 
-See \url{https://paws-r.github.io/docs/datapipeline/describe_objects.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/datapipeline_describe_objects/} for full documentation.
 }
 \keyword{internal}

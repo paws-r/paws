@@ -12,6 +12,6 @@ cloudwatchlogs_delete_resource_policy(policyName = NULL)
 \description{
 Deletes a resource policy from this account. This revokes the access of the identities in that policy to put log events to this account.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/delete_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_resource_policy/} for full documentation.
 }
 \keyword{internal}

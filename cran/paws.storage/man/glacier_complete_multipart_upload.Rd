@@ -37,6 +37,6 @@ error and the request fails.}
 \description{
 You call this operation to inform Amazon S3 Glacier (Glacier) that all the archive parts have been uploaded and that Glacier can now assemble the archive from the uploaded parts. After assembling and saving the archive to the vault, Glacier returns the URI path of the newly created archive resource. Using the URI path, you can then access the archive. After you upload an archive, you should save the archive ID returned to retrieve the archive at a later point. You can also get the vault inventory to obtain a list of archive IDs in a vault. For more information, see \code{\link[=glacier_initiate_job]{initiate_job}}.
 
-See \url{https://paws-r.github.io/docs/glacier/complete_multipart_upload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_complete_multipart_upload/} for full documentation.
 }
 \keyword{internal}

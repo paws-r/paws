@@ -63,6 +63,6 @@ are SUM and MAXIMUM.}
 \description{
 This operation returns the time series data collected by a Contributor Insights rule. The data includes the identity and number of contributors to the log group.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/get_insight_rule_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_get_insight_rule_report/} for full documentation.
 }
 \keyword{internal}

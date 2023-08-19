@@ -19,6 +19,6 @@ member account.}
 \description{
 Accepts the invitation to be monitored by a GuardDuty administrator account.
 
-See \url{https://paws-r.github.io/docs/guardduty/accept_invitation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_accept_invitation/} for full documentation.
 }
 \keyword{internal}

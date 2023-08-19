@@ -25,6 +25,6 @@ opsworkscm_describe_backups(
 \description{
 Describes backups. The results are ordered by time, with newest backups first. If you do not specify a BackupId or ServerName, the command returns all backups.
 
-See \url{https://paws-r.github.io/docs/opsworkscm/describe_backups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworkscm_describe_backups/} for full documentation.
 }
 \keyword{internal}

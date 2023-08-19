@@ -38,6 +38,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a VPN connection between an existing virtual private gateway or transit gateway and a customer gateway. The supported connection type is \code{ipsec.1}.
 
-See \url{https://paws-r.github.io/docs/ec2/create_vpn_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_vpn_connection/} for full documentation.
 }
 \keyword{internal}

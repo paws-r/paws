@@ -50,6 +50,6 @@ role-based sessions.}
 \description{
 Generates a session URL and authorization code that you can use to embed the Amazon Amazon QuickSight console in your web server code. Use \code{\link[=quicksight_get_session_embed_url]{get_session_embed_url}} where you want to provide an authoring portal that allows users to create data sources, datasets, analyses, and dashboards. The users who access an embedded Amazon QuickSight console need belong to the author or admin security cohort. If you want to restrict permissions to some of these features, add a custom permissions profile to the user with the \code{\link[=quicksight_update_user]{update_user}} API operation. Use \code{\link[=quicksight_register_user]{register_user}} API operation to add a new user with a custom permission profile attached. For more information, see the following sections in the \emph{Amazon QuickSight User Guide}:
 
-See \url{https://paws-r.github.io/docs/quicksight/get_session_embed_url.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_get_session_embed_url/} for full documentation.
 }
 \keyword{internal}

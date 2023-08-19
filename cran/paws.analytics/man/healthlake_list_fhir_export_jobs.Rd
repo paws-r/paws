@@ -16,7 +16,7 @@ healthlake_list_fhir_export_jobs(
 }
 \arguments{
 \item{DatastoreId}{[required] This parameter limits the response to the export job with the specified
-Data Store ID.}
+data store ID.}
 
 \item{NextToken}{A pagination token used to identify the next page of results to return
 for a ListFHIRExportJobs query.}
@@ -39,6 +39,6 @@ user specified date.}
 \description{
 Lists all FHIR export jobs associated with an account and their statuses.
 
-See \url{https://paws-r.github.io/docs/healthlake/list_fhir_export_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/healthlake_list_fhir_export_jobs/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ apigatewayv2_get_vpc_link(VpcLinkId)
 \description{
 Gets a VPC link.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/get_vpc_link.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_get_vpc_link/} for full documentation.
 }
 \keyword{internal}

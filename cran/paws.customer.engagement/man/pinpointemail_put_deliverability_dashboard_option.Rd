@@ -20,6 +20,6 @@ email and enabled the Deliverability dashboard for.}
 \description{
 Enable or disable the Deliverability dashboard for your Amazon Pinpoint account. When you enable the Deliverability dashboard, you gain access to reputation, deliverability, and other metrics for the domains that you use to send email using Amazon Pinpoint. You also gain the ability to perform predictive inbox placement tests.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/put_deliverability_dashboard_option.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_put_deliverability_dashboard_option/} for full documentation.
 }
 \keyword{internal}

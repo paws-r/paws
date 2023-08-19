@@ -87,10 +87,22 @@ get_config <- function() {
 #' @export
 set_config <- function(svc, cfgs = list()) {
   shape <- tag_annotate(Config())
+
+  # update optional config parameters
+  cfgs <- update_optional_config_parameter(cfgs, cfgs$credentials$profile)
   config <- populate(cfgs, shape)
   config$credentials <- as.environment(config$credentials)
   svc$.internal <- list(config = config)
   return(svc)
+}
+
+update_optional_config_parameter <- function(cfgs, profile) {
+  for (cfg_param in names(.optional_config_parameter)) {
+    if (is.null(cfgs[[cfg_param]])) {
+      cfgs[[cfg_param]] <- .optional_config_parameter[[cfg_param]](profile)
+    }
+  }
+  return(cfgs)
 }
 
 #-------------------------------------------------------------------------------
@@ -152,10 +164,11 @@ get_env <- function(variable) {
 
 # Get the name of the IAM role from the instance metadata.
 get_iam_role <- function() {
+  iam_role_response <- get_instance_metadata("iam/security-credentials")
 
-  iam_role_response <-  get_instance_metadata("iam/security-credentials")
-
-  if (is.null(iam_role_response)) return(NULL)
+  if (is.null(iam_role_response)) {
+    return(NULL)
+  }
 
   iam_role_name <- raw_to_utf8(iam_role_response$body)
 
@@ -165,22 +178,22 @@ get_iam_role <- function() {
 # Gets the instance metadata by making an http request to an instance metadata services
 # Please see security recommendations by AWS: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html
 get_instance_metadata <- function(query_path = "") {
-  token_ttl <- '21600' # same approach as in boto3: https://github.com/boto/botocore/blob/master/botocore/utils.py#L376
+  token_ttl <- "21600" # same approach as in boto3: https://github.com/boto/botocore/blob/master/botocore/utils.py#L376
   # Do not get metadata when the disabled setting is on.
   if (trimws(tolower(get_env("AWS_EC2_METADATA_DISABLED"))) %in% c("true", "1")) {
     return(NULL)
   }
   # Get token timeout for IMDSv2 tokens
-  token <-  "" # Token to be used in case of more secure IMDSv2 authentication
-  #try IMDSv2  (more information): https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html
-  metadata_token_url <-  file.path(
+  token <- "" # Token to be used in case of more secure IMDSv2 authentication
+  # try IMDSv2  (more information): https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html
+  metadata_token_url <- file.path(
     "http://169.254.169.254/latest/api/token"
   )
   metadata_token_request <- new_http_request(
     "PUT",
     metadata_token_url,
     timeout = 1,
-    header=c("X-aws-ec2-metadata-token-ttl-seconds"= token_ttl)
+    header = c("X-aws-ec2-metadata-token-ttl-seconds" = token_ttl)
   )
 
   metadata_token_response <- tryCatch(
@@ -192,7 +205,7 @@ get_instance_metadata <- function(query_path = "") {
     }
   )
   if (!is.null(metadata_token_response) && metadata_token_response$status_code == 200) {
-    if (length(metadata_token_response[["body"]])>0) {
+    if (length(metadata_token_response[["body"]]) > 0) {
       token <- rawToChar(metadata_token_response[["body"]])
     }
   }
@@ -200,12 +213,12 @@ get_instance_metadata <- function(query_path = "") {
     "http://169.254.169.254/latest/meta-data",
     query_path
   )
-  if (token!="") {
+  if (token != "") {
     metadata_request <- new_http_request(
       "GET",
       metadata_url,
       timeout = 1,
-      header = c("X-aws-ec2-metadata-token"= token)
+      header = c("X-aws-ec2-metadata-token" = token)
     )
   } else {
     metadata_request <- new_http_request("GET", metadata_url, timeout = 1)
@@ -331,4 +344,89 @@ get_web_identity_token_file <- function(web_identity_token_file = "") {
   if (web_identity_token_file == "") stop("No WebIdentityToken file available")
 
   return(web_identity_token_file)
+}
+
+# Check if sts_regional_endpoint is present in config file
+check_config_file_sts_regional_endpoint <- function(profile = "") {
+  config_path <- get_config_file_path()
+  if (is.null(config_path)) {
+    return(NULL)
+  }
+
+  profile <- get_profile_name(profile)
+  if (profile != "default") profile <- paste("profile", profile)
+
+  config_values <- read_ini(config_path)
+
+  if (is.null(config_values[[profile]])) {
+    return(NULL)
+  }
+
+  sts_regional_endpoint <- config_values[[profile]]$sts_regional_endpoint
+
+  return(sts_regional_endpoint)
+}
+
+# Get the AWS STS Regional Endpoint property from envvar or
+# config file. Envvar takes precedence as per general AWS strategy
+get_sts_regional_endpoint <- function(profile = "") {
+  sts_regional_endpoint <- get_env("AWS_STS_REGIONAL_ENDPOINTS")
+  if (sts_regional_endpoint != "") {
+    return(sts_regional_endpoint)
+  }
+
+  sts_regional_endpoint <- check_config_file_sts_regional_endpoint(profile)
+
+  return(sts_regional_endpoint %||% "")
+}
+
+.optional_config_parameter <- list(
+  "sts_regional_endpoint" = get_sts_regional_endpoint
+)
+
+# Ensures config is built correctly from service parameters
+build_config <- function(cfg) {
+  add_list <- function(x) if (length(x) == 0) NULL else x
+
+  creds <- list()
+  credentials <- list()
+  config <- list()
+
+  cred_names <- names(Creds())
+  credentails_names <- names(Credentials())
+  cred_names <- cred_names[cred_names != "provider_name"]
+  credentails_names <- credentails_names[credentails_names != "provider"]
+
+  for (cfg_name in names(cfg)) {
+    if (cfg_name == "credentials") {
+      for (credentails_name in credentails_names) {
+        if (credentails_name == "creds") {
+          for (cred_name in cred_names) {
+            creds[[cred_name]] <- cfg[[cfg_name]][[credentails_name]][[cred_name]]
+          }
+          credentials[[credentails_name]] <- add_list(creds)
+        } else {
+          credentials[[credentails_name]] <- cfg[[cfg_name]][[credentails_name]]
+        }
+      }
+      config[[cfg_name]] <- add_list(credentials)
+    } else {
+      config[[cfg_name]] <- cfg[[cfg_name]]
+    }
+  }
+  return(config)
+}
+
+#' @title Merges config lists for paws services
+#' @description Allows config list to be flatten from shorthand.
+#' @param orig_cfg Original config list
+#' @param param_cfg Config list developed from service parameters
+#' @keywords internal
+#' @export
+merge_config <- function(orig_cfg, param_cfg) {
+  if (identical(param_cfg$credentials, credentials())) {
+    param_cfg$credentials <- list()
+  }
+  built_cfg <- build_config(param_cfg)
+  return(modifyList(orig_cfg, built_cfg))
 }

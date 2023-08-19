@@ -16,6 +16,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the longer ID format settings for all resource types in a specific Region. This request is useful for performing a quick audit to determine whether a specific Region is fully opted in for longer IDs (17-character IDs).
 
-See \url{https://paws-r.github.io/docs/ec2/describe_aggregate_id_format.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_aggregate_id_format/} for full documentation.
 }
 \keyword{internal}

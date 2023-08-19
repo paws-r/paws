@@ -29,6 +29,6 @@ workmail_get_access_control_effect(
 \description{
 Gets the effects of an organization's access control rules as they apply to a specified IPv4 address, access protocol action, and user ID or impersonation role ID. You must provide either the user ID or impersonation role ID. Impersonation role ID can only be used with Action EWS.
 
-See \url{https://paws-r.github.io/docs/workmail/get_access_control_effect.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_get_access_control_effect/} for full documentation.
 }
 \keyword{internal}

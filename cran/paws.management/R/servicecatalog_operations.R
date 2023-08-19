@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Accepts an offer to share the specified portfolio.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/accept_portfolio_share.html](https://paws-r.github.io/docs/servicecatalog/accept_portfolio_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_accept_portfolio_share/](https://www.paws-r-sdk.com/docs/servicecatalog_accept_portfolio_share/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -55,7 +55,7 @@ servicecatalog_accept_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @description
 #' Associates the specified budget with the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/associate_budget_with_resource.html](https://paws-r.github.io/docs/servicecatalog/associate_budget_with_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_associate_budget_with_resource/](https://www.paws-r-sdk.com/docs/servicecatalog_associate_budget_with_resource/) for full documentation.
 #'
 #' @param BudgetName &#91;required&#93; The name of the budget you want to associate.
 #' @param ResourceId &#91;required&#93; The resource identifier. Either a portfolio-id or a product-id.
@@ -85,7 +85,7 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #' @description
 #' Associates the specified principal ARN with the specified portfolio.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/associate_principal_with_portfolio.html](https://paws-r.github.io/docs/servicecatalog/associate_principal_with_portfolio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_associate_principal_with_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_associate_principal_with_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -93,15 +93,63 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
-#' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). This field allows an
-#' ARN with no `accountID` if `PrincipalType` is `IAM_PATTERN`.
+#' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). If the `PrincipalType`
+#' is `IAM`, the supported value is a fully defined [IAM Amazon Resource
+#' Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns).
+#' If the `PrincipalType` is `IAM_PATTERN`, the supported value is an `IAM`
+#' ARN *without an AccountID* in the following format:
 #' 
-#' You can associate multiple `IAM` patterns even if the account has no
-#' principal with that name. This is useful in Principal Name Sharing if
-#' you want to share a principal without creating it in the account that
-#' owns the portfolio.
+#' *arn:partition:iam:::resource-type/resource-id*
+#' 
+#' The ARN resource-id can be either:
+#' 
+#' -   A fully formed resource-id. For example,
+#'     *arn:aws:iam:::role/resource-name* or
+#'     *arn:aws:iam:::role/resource-path/resource-name*
+#' 
+#' -   A wildcard ARN. The wildcard ARN accepts `IAM_PATTERN` values with a
+#'     "*" or "?" in the resource-id segment of the ARN. For example
+#'     *arn:partition:service:::resource-type/resource-path/resource-name*.
+#'     The new symbols are exclusive to the **resource-path** and
+#'     **resource-name** and cannot replace the **resource-type** or other
+#'     ARN values.
+#' 
+#'     The ARN path and principal name allow unlimited wildcard characters.
+#' 
+#' Examples of an **acceptable** wildcard ARN:
+#' 
+#' -   arn:aws:iam:::role/ResourceName_*
+#' 
+#' -   arn:aws:iam:::role/*/ResourceName_?
+#' 
+#' Examples of an **unacceptable** wildcard ARN:
+#' 
+#' -   arn:aws:iam:::*/ResourceName
+#' 
+#' You can associate multiple `IAM_PATTERN`s even if the account has no
+#' principal with that name.
+#' 
+#' The "?" wildcard character matches zero or one of any character. This is
+#' similar to ".?" in regular regex context. The "*" wildcard character
+#' matches any number of any characters. This is similar to ".*" in
+#' regular regex context.
+#' 
+#' In the IAM Principal ARN format
+#' (*arn:partition:iam:::resource-type/resource-path/resource-name*), valid
+#' resource-type values include **user/**, **group/**, or **role/**. The
+#' "?" and "*" characters are allowed only after the resource-type in the
+#' resource-id segment. You can use special characters anywhere within the
+#' resource-id.
+#' 
+#' The "*" character also matches the "/" character, allowing paths to be
+#' formed *within* the resource-id. For example,
+#' *arn:aws:iam:::role/*/ResourceName_?* matches both
+#' *arn:aws:iam:::role/pathA/pathB/ResourceName_1* and
+#' *arn:aws:iam:::role/pathA/ResourceName_1*.
 #' @param PrincipalType &#91;required&#93; The principal type. The supported value is `IAM` if you use a fully
-#' defined ARN, or `IAM_PATTERN` if you use an ARN with no `accountID`.
+#' defined Amazon Resource Name (ARN), or `IAM_PATTERN` if you use an ARN
+#' with no `accountID`, with or without wildcard characters.
 #'
 #' @keywords internal
 #'
@@ -128,7 +176,7 @@ servicecatalog_associate_principal_with_portfolio <- function(AcceptLanguage = N
 #' @description
 #' Associates the specified product with the specified portfolio.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/associate_product_with_portfolio.html](https://paws-r.github.io/docs/servicecatalog/associate_product_with_portfolio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_associate_product_with_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_associate_product_with_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -164,7 +212,7 @@ servicecatalog_associate_product_with_portfolio <- function(AcceptLanguage = NUL
 #' @description
 #' Associates a self-service action with a provisioning artifact.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/associate_service_action_with_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/associate_service_action_with_provisioning_artifact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_associate_service_action_with_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_associate_service_action_with_provisioning_artifact/) for full documentation.
 #'
 #' @param ProductId &#91;required&#93; The product identifier. For example, `prod-abcdzk7xy33qa`.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact. For example,
@@ -202,7 +250,7 @@ servicecatalog_associate_service_action_with_provisioning_artifact <- function(P
 #' @description
 #' Associate the specified TagOption with the specified portfolio or product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/associate_tag_option_with_resource.html](https://paws-r.github.io/docs/servicecatalog/associate_tag_option_with_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_associate_tag_option_with_resource/](https://www.paws-r-sdk.com/docs/servicecatalog_associate_tag_option_with_resource/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The resource identifier.
 #' @param TagOptionId &#91;required&#93; The TagOption identifier.
@@ -232,7 +280,7 @@ servicecatalog_associate_tag_option_with_resource <- function(ResourceId, TagOpt
 #' @description
 #' Associates multiple self-service actions with provisioning artifacts.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/batch_associate_service_action_with_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/batch_associate_service_action_with_provisioning_artifact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_batch_associate_service_action_with_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_batch_associate_service_action_with_provisioning_artifact/) for full documentation.
 #'
 #' @param ServiceActionAssociations &#91;required&#93; One or more associations, each consisting of the Action ID, the Product
 #' ID, and the Provisioning Artifact ID.
@@ -268,7 +316,7 @@ servicecatalog_batch_associate_service_action_with_provisioning_artifact <- func
 #' @description
 #' Disassociates a batch of self-service actions from the specified provisioning artifact.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/batch_disassociate_service_action_from_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/batch_disassociate_service_action_from_provisioning_artifact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_batch_disassociate_service_action_from_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_batch_disassociate_service_action_from_provisioning_artifact/) for full documentation.
 #'
 #' @param ServiceActionAssociations &#91;required&#93; One or more associations, each consisting of the Action ID, the Product
 #' ID, and the Provisioning Artifact ID.
@@ -304,7 +352,7 @@ servicecatalog_batch_disassociate_service_action_from_provisioning_artifact <- f
 #' @description
 #' Copies the specified source product to the specified target product or a new product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/copy_product.html](https://paws-r.github.io/docs/servicecatalog/copy_product.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_copy_product/](https://www.paws-r-sdk.com/docs/servicecatalog_copy_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -350,7 +398,7 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' @description
 #' Creates a constraint.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/create_constraint.html](https://paws-r.github.io/docs/servicecatalog/create_constraint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_create_constraint/](https://www.paws-r-sdk.com/docs/servicecatalog_create_constraint/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -464,7 +512,7 @@ servicecatalog_create_constraint <- function(AcceptLanguage = NULL, PortfolioId,
 #' @description
 #' Creates a portfolio.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/create_portfolio.html](https://paws-r.github.io/docs/servicecatalog/create_portfolio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_create_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_create_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -505,7 +553,7 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
 #' @description
 #' Shares the specified portfolio with the specified account or organization node. Shares to an organization node can only be created by the management account of an organization or by a delegated administrator. You can share portfolios to an organization, an organizational unit, or a specific account.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/create_portfolio_share.html](https://paws-r.github.io/docs/servicecatalog/create_portfolio_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_create_portfolio_share/](https://www.paws-r-sdk.com/docs/servicecatalog_create_portfolio_share/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -556,7 +604,7 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @description
 #' Creates a product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/create_product.html](https://paws-r.github.io/docs/servicecatalog/create_product.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_create_product/](https://www.paws-r-sdk.com/docs/servicecatalog_create_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -612,7 +660,7 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #' @description
 #' Creates a plan.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/create_provisioned_product_plan.html](https://paws-r.github.io/docs/servicecatalog/create_provisioned_product_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_create_provisioned_product_plan/](https://www.paws-r-sdk.com/docs/servicecatalog_create_provisioned_product_plan/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -669,7 +717,7 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
 #' @description
 #' Creates a provisioning artifact (also known as a version) for the specified product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/create_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/create_provisioning_artifact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_create_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_create_provisioning_artifact/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -707,7 +755,7 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @description
 #' Creates a self-service action.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/create_service_action.html](https://paws-r.github.io/docs/servicecatalog/create_service_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_create_service_action/](https://www.paws-r-sdk.com/docs/servicecatalog_create_service_action/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The self-service action name.
 #' @param DefinitionType &#91;required&#93; The service action definition type. For example, `SSM_AUTOMATION`.
@@ -776,7 +824,7 @@ servicecatalog_create_service_action <- function(Name, DefinitionType, Definitio
 #' @description
 #' Creates a TagOption.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/create_tag_option.html](https://paws-r.github.io/docs/servicecatalog/create_tag_option.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_create_tag_option/](https://www.paws-r-sdk.com/docs/servicecatalog_create_tag_option/) for full documentation.
 #'
 #' @param Key &#91;required&#93; The TagOption key.
 #' @param Value &#91;required&#93; The TagOption value.
@@ -806,7 +854,7 @@ servicecatalog_create_tag_option <- function(Key, Value) {
 #' @description
 #' Deletes the specified constraint.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/delete_constraint.html](https://paws-r.github.io/docs/servicecatalog/delete_constraint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_delete_constraint/](https://www.paws-r-sdk.com/docs/servicecatalog_delete_constraint/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -840,7 +888,7 @@ servicecatalog_delete_constraint <- function(AcceptLanguage = NULL, Id) {
 #' @description
 #' Deletes the specified portfolio.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/delete_portfolio.html](https://paws-r.github.io/docs/servicecatalog/delete_portfolio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_delete_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_delete_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -875,7 +923,7 @@ servicecatalog_delete_portfolio <- function(AcceptLanguage = NULL, Id) {
 #' @description
 #' Stops sharing the specified portfolio with the specified account or organization node. Shares to an organization node can only be deleted by the management account of an organization or by a delegated administrator.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/delete_portfolio_share.html](https://paws-r.github.io/docs/servicecatalog/delete_portfolio_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_delete_portfolio_share/](https://www.paws-r-sdk.com/docs/servicecatalog_delete_portfolio_share/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -911,7 +959,7 @@ servicecatalog_delete_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @description
 #' Deletes the specified product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/delete_product.html](https://paws-r.github.io/docs/servicecatalog/delete_product.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_delete_product/](https://www.paws-r-sdk.com/docs/servicecatalog_delete_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -945,7 +993,7 @@ servicecatalog_delete_product <- function(AcceptLanguage = NULL, Id) {
 #' @description
 #' Deletes the specified plan.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/delete_provisioned_product_plan.html](https://paws-r.github.io/docs/servicecatalog/delete_provisioned_product_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_delete_provisioned_product_plan/](https://www.paws-r-sdk.com/docs/servicecatalog_delete_provisioned_product_plan/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -982,7 +1030,7 @@ servicecatalog_delete_provisioned_product_plan <- function(AcceptLanguage = NULL
 #' @description
 #' Deletes the specified provisioning artifact (also known as a version) for the specified product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/delete_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/delete_provisioning_artifact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_delete_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_delete_provisioning_artifact/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1017,7 +1065,7 @@ servicecatalog_delete_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @description
 #' Deletes a self-service action.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/delete_service_action.html](https://paws-r.github.io/docs/servicecatalog/delete_service_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_delete_service_action/](https://www.paws-r-sdk.com/docs/servicecatalog_delete_service_action/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param AcceptLanguage The language code.
@@ -1051,7 +1099,7 @@ servicecatalog_delete_service_action <- function(Id, AcceptLanguage = NULL) {
 #' @description
 #' Deletes the specified TagOption.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/delete_tag_option.html](https://paws-r.github.io/docs/servicecatalog/delete_tag_option.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_delete_tag_option/](https://www.paws-r-sdk.com/docs/servicecatalog_delete_tag_option/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The TagOption identifier.
 #'
@@ -1080,7 +1128,7 @@ servicecatalog_delete_tag_option <- function(Id) {
 #' @description
 #' Gets information about the specified constraint.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/describe_constraint.html](https://paws-r.github.io/docs/servicecatalog/describe_constraint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_constraint/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_constraint/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1114,7 +1162,7 @@ servicecatalog_describe_constraint <- function(AcceptLanguage = NULL, Id) {
 #' @description
 #' Gets the status of the specified copy product operation.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/describe_copy_product_status.html](https://paws-r.github.io/docs/servicecatalog/describe_copy_product_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_copy_product_status/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_copy_product_status/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1149,7 +1197,7 @@ servicecatalog_describe_copy_product_status <- function(AcceptLanguage = NULL, C
 #' @description
 #' Gets information about the specified portfolio.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/describe_portfolio.html](https://paws-r.github.io/docs/servicecatalog/describe_portfolio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1183,7 +1231,7 @@ servicecatalog_describe_portfolio <- function(AcceptLanguage = NULL, Id) {
 #' @description
 #' Gets the status of the specified portfolio share operation. This API can only be called by the management account in the organization or by a delegated admin.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/describe_portfolio_share_status.html](https://paws-r.github.io/docs/servicecatalog/describe_portfolio_share_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_portfolio_share_status/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_portfolio_share_status/) for full documentation.
 #'
 #' @param PortfolioShareToken &#91;required&#93; The token for the portfolio share operation. This token is returned
 #' either by CreatePortfolioShare or by DeletePortfolioShare.
@@ -1214,7 +1262,7 @@ servicecatalog_describe_portfolio_share_status <- function(PortfolioShareToken) 
 #' @description
 #' Returns a summary of each of the portfolio shares that were created for the specified portfolio.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/describe_portfolio_shares.html](https://paws-r.github.io/docs/servicecatalog/describe_portfolio_shares.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_portfolio_shares/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_portfolio_shares/) for full documentation.
 #'
 #' @param PortfolioId &#91;required&#93; The unique identifier of the portfolio for which shares will be
 #' retrieved.
@@ -1243,7 +1291,7 @@ servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToke
     name = "DescribePortfolioShares",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$describe_portfolio_shares_input(PortfolioId = PortfolioId, Type = Type, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$describe_portfolio_shares_output()
@@ -1260,7 +1308,7 @@ servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToke
 #' @description
 #' Gets information about the specified product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/describe_product.html](https://paws-r.github.io/docs/servicecatalog/describe_product.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_product/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1295,7 +1343,7 @@ servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id = NULL, Na
 #' @description
 #' Gets information about the specified product. This operation is run with administrator access.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/describe_product_as_admin.html](https://paws-r.github.io/docs/servicecatalog/describe_product_as_admin.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_product_as_admin/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_product_as_admin/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1338,7 +1386,7 @@ servicecatalog_describe_product_as_admin <- function(AcceptLanguage = NULL, Id =
 #' @description
 #' Gets information about the specified product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/describe_product_view.html](https://paws-r.github.io/docs/servicecatalog/describe_product_view.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_product_view/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_product_view/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1372,7 +1420,7 @@ servicecatalog_describe_product_view <- function(AcceptLanguage = NULL, Id) {
 #' @description
 #' Gets information about the specified provisioned product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/describe_provisioned_product.html](https://paws-r.github.io/docs/servicecatalog/describe_provisioned_product.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioned_product/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioned_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1415,7 +1463,7 @@ servicecatalog_describe_provisioned_product <- function(AcceptLanguage = NULL, I
 #' @description
 #' Gets information about the resource changes for the specified plan.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/describe_provisioned_product_plan.html](https://paws-r.github.io/docs/servicecatalog/describe_provisioned_product_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioned_product_plan/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioned_product_plan/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1453,7 +1501,7 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #' @description
 #' Gets information about the specified provisioning artifact (also known as a version) for the specified product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/describe_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/describe_provisioning_artifact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioning_artifact/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1465,18 +1513,20 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #' @param ProvisioningArtifactName The provisioning artifact name.
 #' @param ProductName The product name.
 #' @param Verbose Indicates whether a verbose level of detail is enabled.
+#' @param IncludeProvisioningArtifactParameters Indicates if the API call response does or does not include additional
+#' details about the provisioning parameters.
 #'
 #' @keywords internal
 #'
 #' @rdname servicecatalog_describe_provisioning_artifact
-servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL, ProvisioningArtifactId = NULL, ProductId = NULL, ProvisioningArtifactName = NULL, ProductName = NULL, Verbose = NULL) {
+servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL, ProvisioningArtifactId = NULL, ProductId = NULL, ProvisioningArtifactName = NULL, ProductName = NULL, Verbose = NULL, IncludeProvisioningArtifactParameters = NULL) {
   op <- new_operation(
     name = "DescribeProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$describe_provisioning_artifact_input(AcceptLanguage = AcceptLanguage, ProvisioningArtifactId = ProvisioningArtifactId, ProductId = ProductId, ProvisioningArtifactName = ProvisioningArtifactName, ProductName = ProductName, Verbose = Verbose)
+  input <- .servicecatalog$describe_provisioning_artifact_input(AcceptLanguage = AcceptLanguage, ProvisioningArtifactId = ProvisioningArtifactId, ProductId = ProductId, ProvisioningArtifactName = ProvisioningArtifactName, ProductName = ProductName, Verbose = Verbose, IncludeProvisioningArtifactParameters = IncludeProvisioningArtifactParameters)
   output <- .servicecatalog$describe_provisioning_artifact_output()
   config <- get_config()
   svc <- .servicecatalog$service(config)
@@ -1492,7 +1542,7 @@ servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL,
 #' @description
 #' Gets information about the configuration required to provision the specified product using the specified provisioning artifact.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/describe_provisioning_parameters.html](https://paws-r.github.io/docs/servicecatalog/describe_provisioning_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioning_parameters/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioning_parameters/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1538,7 +1588,7 @@ servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NUL
 #' @description
 #' Gets information about the specified request operation.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/describe_record.html](https://paws-r.github.io/docs/servicecatalog/describe_record.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_record/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_record/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1576,7 +1626,7 @@ servicecatalog_describe_record <- function(AcceptLanguage = NULL, Id, PageToken 
 #' @description
 #' Describes a self-service action.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/describe_service_action.html](https://paws-r.github.io/docs/servicecatalog/describe_service_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_service_action/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_service_action/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The self-service action identifier.
 #' @param AcceptLanguage The language code.
@@ -1612,7 +1662,7 @@ servicecatalog_describe_service_action <- function(Id, AcceptLanguage = NULL) {
 #' @description
 #' Finds the default parameters for a specific self-service action on a specific provisioned product and returns a map of the results to the user.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/describe_service_action_execution_parameters.html](https://paws-r.github.io/docs/servicecatalog/describe_service_action_execution_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_service_action_execution_parameters/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_service_action_execution_parameters/) for full documentation.
 #'
 #' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier.
@@ -1647,7 +1697,7 @@ servicecatalog_describe_service_action_execution_parameters <- function(Provisio
 #' @description
 #' Gets information about the specified TagOption.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/describe_tag_option.html](https://paws-r.github.io/docs/servicecatalog/describe_tag_option.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_tag_option/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_tag_option/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The TagOption identifier.
 #'
@@ -1676,7 +1726,7 @@ servicecatalog_describe_tag_option <- function(Id) {
 #' @description
 #' Disable portfolio sharing through the Organizations service. This command will not delete your current shares, but prevents you from creating new shares throughout your organization. Current shares are not kept in sync with your organization structure if the structure changes after calling this API. Only the management account in the organization can call this API.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/disable_aws_organizations_access.html](https://paws-r.github.io/docs/servicecatalog/disable_aws_organizations_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_disable_aws_organizations_access/](https://www.paws-r-sdk.com/docs/servicecatalog_disable_aws_organizations_access/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1703,7 +1753,7 @@ servicecatalog_disable_aws_organizations_access <- function() {
 #' @description
 #' Disassociates the specified budget from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/disassociate_budget_from_resource.html](https://paws-r.github.io/docs/servicecatalog/disassociate_budget_from_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_budget_from_resource/](https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_budget_from_resource/) for full documentation.
 #'
 #' @param BudgetName &#91;required&#93; The name of the budget you want to disassociate.
 #' @param ResourceId &#91;required&#93; The resource identifier you want to disassociate from. Either a
@@ -1735,7 +1785,7 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
 #' @description
 #' Disassociates a previously associated principal ARN from a specified portfolio.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/disassociate_principal_from_portfolio.html](https://paws-r.github.io/docs/servicecatalog/disassociate_principal_from_portfolio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_principal_from_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_principal_from_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1744,9 +1794,11 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). This field allows an
-#' ARN with no `accountID` if `PrincipalType` is `IAM_PATTERN`.
+#' ARN with no `accountID` with or without wildcard characters if
+#' `PrincipalType` is `IAM_PATTERN`.
 #' @param PrincipalType The supported value is `IAM` if you use a fully defined ARN, or
-#' `IAM_PATTERN` if you use no `accountID`.
+#' `IAM_PATTERN` if you specify an `IAM` ARN with no AccountId, with or
+#' without wildcard characters.
 #'
 #' @keywords internal
 #'
@@ -1773,7 +1825,7 @@ servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage 
 #' @description
 #' Disassociates the specified product from the specified portfolio.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/disassociate_product_from_portfolio.html](https://paws-r.github.io/docs/servicecatalog/disassociate_product_from_portfolio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_product_from_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_product_from_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1809,7 +1861,7 @@ servicecatalog_disassociate_product_from_portfolio <- function(AcceptLanguage = 
 #' @description
 #' Disassociates the specified self-service action association from the specified provisioning artifact.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/disassociate_service_action_from_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/disassociate_service_action_from_provisioning_artifact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_service_action_from_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_service_action_from_provisioning_artifact/) for full documentation.
 #'
 #' @param ProductId &#91;required&#93; The product identifier. For example, `prod-abcdzk7xy33qa`.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact. For example,
@@ -1846,7 +1898,7 @@ servicecatalog_disassociate_service_action_from_provisioning_artifact <- functio
 #' @description
 #' Disassociates the specified TagOption from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/disassociate_tag_option_from_resource.html](https://paws-r.github.io/docs/servicecatalog/disassociate_tag_option_from_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_tag_option_from_resource/](https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_tag_option_from_resource/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The resource identifier.
 #' @param TagOptionId &#91;required&#93; The TagOption identifier.
@@ -1876,7 +1928,7 @@ servicecatalog_disassociate_tag_option_from_resource <- function(ResourceId, Tag
 #' @description
 #' Enable portfolio sharing feature through Organizations. This API will allow Service Catalog to receive updates on your organization in order to sync your shares with the current structure. This API can only be called by the management account in the organization.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/enable_aws_organizations_access.html](https://paws-r.github.io/docs/servicecatalog/enable_aws_organizations_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_enable_aws_organizations_access/](https://www.paws-r-sdk.com/docs/servicecatalog_enable_aws_organizations_access/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1904,7 +1956,7 @@ servicecatalog_enable_aws_organizations_access <- function() {
 #' @description
 #' Provisions or modifies a product based on the resource changes for the specified plan.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/execute_provisioned_product_plan.html](https://paws-r.github.io/docs/servicecatalog/execute_provisioned_product_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_execute_provisioned_product_plan/](https://www.paws-r-sdk.com/docs/servicecatalog_execute_provisioned_product_plan/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -1941,7 +1993,7 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #' @description
 #' Executes a self-service action against a provisioned product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/execute_provisioned_product_service_action.html](https://paws-r.github.io/docs/servicecatalog/execute_provisioned_product_service_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_execute_provisioned_product_service_action/](https://www.paws-r-sdk.com/docs/servicecatalog_execute_provisioned_product_service_action/) for full documentation.
 #'
 #' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
@@ -1983,7 +2035,7 @@ servicecatalog_execute_provisioned_product_service_action <- function(Provisione
 #' @description
 #' Get the Access Status for Organizations portfolio share feature. This API can only be called by the management account in the organization or by a delegated admin.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/get_aws_organizations_access_status.html](https://paws-r.github.io/docs/servicecatalog/get_aws_organizations_access_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_get_aws_organizations_access_status/](https://www.paws-r-sdk.com/docs/servicecatalog_get_aws_organizations_access_status/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -2012,7 +2064,7 @@ servicecatalog_get_aws_organizations_access_status <- function() {
 #' @description
 #' This API takes either a `ProvisonedProductId` or a `ProvisionedProductName`, along with a list of one or more output keys, and responds with the key/value pairs of those outputs.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/get_provisioned_product_outputs.html](https://paws-r.github.io/docs/servicecatalog/get_provisioned_product_outputs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_get_provisioned_product_outputs/](https://www.paws-r-sdk.com/docs/servicecatalog_get_provisioned_product_outputs/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2037,7 +2089,7 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
     name = "GetProvisionedProductOutputs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$get_provisioned_product_outputs_input(AcceptLanguage = AcceptLanguage, ProvisionedProductId = ProvisionedProductId, ProvisionedProductName = ProvisionedProductName, OutputKeys = OutputKeys, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$get_provisioned_product_outputs_output()
@@ -2056,7 +2108,7 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
 #' @description
 #' Requests the import of a resource as an Service Catalog provisioned product that is associated to an Service Catalog product and provisioning artifact. Once imported, all supported governance actions are supported on the provisioned product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/import_as_provisioned_product.html](https://paws-r.github.io/docs/servicecatalog/import_as_provisioned_product.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_import_as_provisioned_product/](https://www.paws-r-sdk.com/docs/servicecatalog_import_as_provisioned_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2100,7 +2152,7 @@ servicecatalog_import_as_provisioned_product <- function(AcceptLanguage = NULL, 
 #' @description
 #' Lists all imported portfolios for which account-to-account shares were accepted by this account. By specifying the `PortfolioShareType`, you can list portfolios for which organizational shares were accepted by this account.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_accepted_portfolio_shares.html](https://paws-r.github.io/docs/servicecatalog/list_accepted_portfolio_shares.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_accepted_portfolio_shares/](https://www.paws-r-sdk.com/docs/servicecatalog_list_accepted_portfolio_shares/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2130,7 +2182,7 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
     name = "ListAcceptedPortfolioShares",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_accepted_portfolio_shares_input(AcceptLanguage = AcceptLanguage, PageToken = PageToken, PageSize = PageSize, PortfolioShareType = PortfolioShareType)
   output <- .servicecatalog$list_accepted_portfolio_shares_output()
@@ -2147,7 +2199,7 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
 #' @description
 #' Lists all the budgets associated to the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_budgets_for_resource.html](https://paws-r.github.io/docs/servicecatalog/list_budgets_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_budgets_for_resource/](https://www.paws-r-sdk.com/docs/servicecatalog_list_budgets_for_resource/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2167,7 +2219,7 @@ servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, Reso
     name = "ListBudgetsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_budgets_for_resource_input(AcceptLanguage = AcceptLanguage, ResourceId = ResourceId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_budgets_for_resource_output()
@@ -2184,7 +2236,7 @@ servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, Reso
 #' @description
 #' Lists the constraints for the specified portfolio and product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_constraints_for_portfolio.html](https://paws-r.github.io/docs/servicecatalog/list_constraints_for_portfolio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_constraints_for_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_list_constraints_for_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2205,7 +2257,7 @@ servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL,
     name = "ListConstraintsForPortfolio",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_constraints_for_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, ProductId = ProductId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_constraints_for_portfolio_output()
@@ -2222,7 +2274,7 @@ servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL,
 #' @description
 #' Lists the paths to the specified product. A path describes how the user gets access to a specified product and is necessary when provisioning a product. A path also determines the constraints that are put on a product. A path is dependent on a specific product, porfolio, and principal.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_launch_paths.html](https://paws-r.github.io/docs/servicecatalog/list_launch_paths.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_launch_paths/](https://www.paws-r-sdk.com/docs/servicecatalog_list_launch_paths/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2242,7 +2294,7 @@ servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, P
     name = "ListLaunchPaths",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_launch_paths_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_launch_paths_output()
@@ -2259,7 +2311,7 @@ servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, P
 #' @description
 #' Lists the organization nodes that have access to the specified portfolio. This API can only be called by the management account in the organization or by a delegated admin.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_organization_portfolio_access.html](https://paws-r.github.io/docs/servicecatalog/list_organization_portfolio_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_organization_portfolio_access/](https://www.paws-r-sdk.com/docs/servicecatalog_list_organization_portfolio_access/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2288,7 +2340,7 @@ servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = N
     name = "ListOrganizationPortfolioAccess",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_organization_portfolio_access_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, OrganizationNodeType = OrganizationNodeType, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_organization_portfolio_access_output()
@@ -2305,7 +2357,7 @@ servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = N
 #' @description
 #' Lists the account IDs that have access to the specified portfolio.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_portfolio_access.html](https://paws-r.github.io/docs/servicecatalog/list_portfolio_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_portfolio_access/](https://www.paws-r-sdk.com/docs/servicecatalog_list_portfolio_access/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2328,7 +2380,7 @@ servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, Portfoli
     name = "ListPortfolioAccess",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_portfolio_access_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, OrganizationParentId = OrganizationParentId, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_portfolio_access_output()
@@ -2345,7 +2397,7 @@ servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, Portfoli
 #' @description
 #' Lists all portfolios in the catalog.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_portfolios.html](https://paws-r.github.io/docs/servicecatalog/list_portfolios.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_portfolios/](https://www.paws-r-sdk.com/docs/servicecatalog_list_portfolios/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2364,7 +2416,7 @@ servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NU
     name = "ListPortfolios",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_portfolios_input(AcceptLanguage = AcceptLanguage, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_portfolios_output()
@@ -2381,7 +2433,7 @@ servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NU
 #' @description
 #' Lists all portfolios that the specified product is associated with.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_portfolios_for_product.html](https://paws-r.github.io/docs/servicecatalog/list_portfolios_for_product.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_portfolios_for_product/](https://www.paws-r-sdk.com/docs/servicecatalog_list_portfolios_for_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2401,7 +2453,7 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
     name = "ListPortfoliosForProduct",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_portfolios_for_product_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_portfolios_for_product_output()
@@ -2419,7 +2471,7 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
 #' @description
 #' Lists all `PrincipalARN`s and corresponding `PrincipalType`s associated with the specified portfolio.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_principals_for_portfolio.html](https://paws-r.github.io/docs/servicecatalog/list_principals_for_portfolio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_principals_for_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_list_principals_for_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2439,7 +2491,7 @@ servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, 
     name = "ListPrincipalsForPortfolio",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_principals_for_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_principals_for_portfolio_output()
@@ -2457,7 +2509,7 @@ servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, 
 #' @description
 #' Lists the plans for the specified provisioned product or all plans to which the user has access.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_provisioned_product_plans.html](https://paws-r.github.io/docs/servicecatalog/list_provisioned_product_plans.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_provisioned_product_plans/](https://www.paws-r-sdk.com/docs/servicecatalog_list_provisioned_product_plans/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2496,7 +2548,7 @@ servicecatalog_list_provisioned_product_plans <- function(AcceptLanguage = NULL,
 #' @description
 #' Lists all provisioning artifacts (also known as versions) for the specified product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_provisioning_artifacts.html](https://paws-r.github.io/docs/servicecatalog/list_provisioning_artifacts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_provisioning_artifacts/](https://www.paws-r-sdk.com/docs/servicecatalog_list_provisioning_artifacts/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2531,7 +2583,7 @@ servicecatalog_list_provisioning_artifacts <- function(AcceptLanguage = NULL, Pr
 #' @description
 #' Lists all provisioning artifacts (also known as versions) for the specified self-service action.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_provisioning_artifacts_for_service_action.html](https://paws-r.github.io/docs/servicecatalog/list_provisioning_artifacts_for_service_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_provisioning_artifacts_for_service_action/](https://www.paws-r-sdk.com/docs/servicecatalog_list_provisioning_artifacts_for_service_action/) for full documentation.
 #'
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param PageSize The maximum number of items to return with this call.
@@ -2551,7 +2603,7 @@ servicecatalog_list_provisioning_artifacts_for_service_action <- function(Servic
     name = "ListProvisioningArtifactsForServiceAction",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_provisioning_artifacts_for_service_action_input(ServiceActionId = ServiceActionId, PageSize = PageSize, PageToken = PageToken, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$list_provisioning_artifacts_for_service_action_output()
@@ -2568,7 +2620,7 @@ servicecatalog_list_provisioning_artifacts_for_service_action <- function(Servic
 #' @description
 #' Lists the specified requests or all performed requests.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_record_history.html](https://paws-r.github.io/docs/servicecatalog/list_record_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_record_history/](https://www.paws-r-sdk.com/docs/servicecatalog_list_record_history/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2606,7 +2658,7 @@ servicecatalog_list_record_history <- function(AcceptLanguage = NULL, AccessLeve
 #' @description
 #' Lists the resources associated with the specified TagOption.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_resources_for_tag_option.html](https://paws-r.github.io/docs/servicecatalog/list_resources_for_tag_option.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_resources_for_tag_option/](https://www.paws-r-sdk.com/docs/servicecatalog_list_resources_for_tag_option/) for full documentation.
 #'
 #' @param TagOptionId &#91;required&#93; The TagOption identifier.
 #' @param ResourceType The resource type.
@@ -2626,7 +2678,7 @@ servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceTy
     name = "ListResourcesForTagOption",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "PageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_resources_for_tag_option_input(TagOptionId = TagOptionId, ResourceType = ResourceType, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_resources_for_tag_option_output()
@@ -2643,7 +2695,7 @@ servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceTy
 #' @description
 #' Lists all self-service actions.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_service_actions.html](https://paws-r.github.io/docs/servicecatalog/list_service_actions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_service_actions/](https://www.paws-r-sdk.com/docs/servicecatalog_list_service_actions/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2662,7 +2714,7 @@ servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize 
     name = "ListServiceActions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_service_actions_input(AcceptLanguage = AcceptLanguage, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_service_actions_output()
@@ -2680,7 +2732,7 @@ servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize 
 #' @description
 #' Returns a paginated list of self-service actions associated with the specified Product ID and Provisioning Artifact ID.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_service_actions_for_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/list_service_actions_for_provisioning_artifact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_service_actions_for_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_list_service_actions_for_provisioning_artifact/) for full documentation.
 #'
 #' @param ProductId &#91;required&#93; The product identifier. For example, `prod-abcdzk7xy33qa`.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact. For example,
@@ -2702,7 +2754,7 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
     name = "ListServiceActionsForProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_service_actions_for_provisioning_artifact_input(ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, PageSize = PageSize, PageToken = PageToken, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$list_service_actions_for_provisioning_artifact_output()
@@ -2720,7 +2772,7 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
 #' @description
 #' Returns summary information about stack instances that are associated with the specified `CFN_STACKSET` type provisioned product. You can filter for stack instances that are associated with a specific Amazon Web Services account name or Region.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_stack_instances_for_provisioned_product.html](https://paws-r.github.io/docs/servicecatalog/list_stack_instances_for_provisioned_product.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_stack_instances_for_provisioned_product/](https://www.paws-r-sdk.com/docs/servicecatalog_list_stack_instances_for_provisioned_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2757,7 +2809,7 @@ servicecatalog_list_stack_instances_for_provisioned_product <- function(AcceptLa
 #' @description
 #' Lists the specified TagOptions or all TagOptions.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/list_tag_options.html](https://paws-r.github.io/docs/servicecatalog/list_tag_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_tag_options/](https://www.paws-r-sdk.com/docs/servicecatalog_list_tag_options/) for full documentation.
 #'
 #' @param Filters The search filters. If no search filters are specified, the output
 #' includes all TagOptions.
@@ -2773,7 +2825,7 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
     name = "ListTagOptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "PageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_tag_options_input(Filters = Filters, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_tag_options_output()
@@ -2790,7 +2842,7 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
 #' @description
 #' Notifies the result of the provisioning engine execution.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/notify_provision_product_engine_workflow_result.html](https://paws-r.github.io/docs/servicecatalog/notify_provision_product_engine_workflow_result.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_notify_provision_product_engine_workflow_result/](https://www.paws-r-sdk.com/docs/servicecatalog_notify_provision_product_engine_workflow_result/) for full documentation.
 #'
 #' @param WorkflowToken &#91;required&#93; The encrypted contents of the provisioning engine execution payload that
 #' Service Catalog sends after the Terraform product provisioning workflow
@@ -2828,7 +2880,7 @@ servicecatalog_notify_provision_product_engine_workflow_result <- function(Workf
 #' @description
 #' Notifies the result of the terminate engine execution.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/notify_terminate_provisioned_product_engine_workflow_result.html](https://paws-r.github.io/docs/servicecatalog/notify_terminate_provisioned_product_engine_workflow_result.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_notify_terminate_provisioned_product_engine_workflow_result/](https://www.paws-r-sdk.com/docs/servicecatalog_notify_terminate_provisioned_product_engine_workflow_result/) for full documentation.
 #'
 #' @param WorkflowToken &#91;required&#93; The encrypted contents of the terminate engine execution payload that
 #' Service Catalog sends after the Terraform product terminate workflow
@@ -2863,7 +2915,7 @@ servicecatalog_notify_terminate_provisioned_product_engine_workflow_result <- fu
 #' @description
 #' Notifies the result of the update engine execution.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/notify_update_provisioned_product_engine_workflow_result.html](https://paws-r.github.io/docs/servicecatalog/notify_update_provisioned_product_engine_workflow_result.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_notify_update_provisioned_product_engine_workflow_result/](https://www.paws-r-sdk.com/docs/servicecatalog_notify_update_provisioned_product_engine_workflow_result/) for full documentation.
 #'
 #' @param WorkflowToken &#91;required&#93; The encrypted contents of the update engine execution payload that
 #' Service Catalog sends after the Terraform product update workflow
@@ -2899,7 +2951,7 @@ servicecatalog_notify_update_provisioned_product_engine_workflow_result <- funct
 #' @description
 #' Provisions the specified product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/provision_product.html](https://paws-r.github.io/docs/servicecatalog/provision_product.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_provision_product/](https://www.paws-r-sdk.com/docs/servicecatalog_provision_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2955,7 +3007,7 @@ servicecatalog_provision_product <- function(AcceptLanguage = NULL, ProductId = 
 #' @description
 #' Rejects an offer to share the specified portfolio.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/reject_portfolio_share.html](https://paws-r.github.io/docs/servicecatalog/reject_portfolio_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_reject_portfolio_share/](https://www.paws-r-sdk.com/docs/servicecatalog_reject_portfolio_share/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3002,7 +3054,7 @@ servicecatalog_reject_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @description
 #' Lists the provisioned products that are available (not terminated).
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/scan_provisioned_products.html](https://paws-r.github.io/docs/servicecatalog/scan_provisioned_products.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_scan_provisioned_products/](https://www.paws-r-sdk.com/docs/servicecatalog_scan_provisioned_products/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3039,7 +3091,7 @@ servicecatalog_scan_provisioned_products <- function(AcceptLanguage = NULL, Acce
 #' @description
 #' Gets information about the products to which the caller has access.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/search_products.html](https://paws-r.github.io/docs/servicecatalog/search_products.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_search_products/](https://www.paws-r-sdk.com/docs/servicecatalog_search_products/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3062,7 +3114,7 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
     name = "SearchProducts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$search_products_input(AcceptLanguage = AcceptLanguage, Filters = Filters, PageSize = PageSize, SortBy = SortBy, SortOrder = SortOrder, PageToken = PageToken)
   output <- .servicecatalog$search_products_output()
@@ -3080,7 +3132,7 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
 #' @description
 #' Gets information about the products for the specified portfolio or all products.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/search_products_as_admin.html](https://paws-r.github.io/docs/servicecatalog/search_products_as_admin.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_search_products_as_admin/](https://www.paws-r-sdk.com/docs/servicecatalog_search_products_as_admin/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3105,7 +3157,7 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
     name = "SearchProductsAsAdmin",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$search_products_as_admin_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder, PageToken = PageToken, PageSize = PageSize, ProductSource = ProductSource)
   output <- .servicecatalog$search_products_as_admin_output()
@@ -3123,7 +3175,7 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
 #' @description
 #' Gets information about the provisioned products that meet the specified criteria.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/search_provisioned_products.html](https://paws-r.github.io/docs/servicecatalog/search_provisioned_products.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_search_provisioned_products/](https://www.paws-r-sdk.com/docs/servicecatalog_search_provisioned_products/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3156,7 +3208,7 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
     name = "SearchProvisionedProducts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$search_provisioned_products_input(AcceptLanguage = AcceptLanguage, AccessLevelFilter = AccessLevelFilter, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$search_provisioned_products_output()
@@ -3173,7 +3225,7 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
 #' @description
 #' Terminates the specified provisioned product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/terminate_provisioned_product.html](https://paws-r.github.io/docs/servicecatalog/terminate_provisioned_product.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_terminate_provisioned_product/](https://www.paws-r-sdk.com/docs/servicecatalog_terminate_provisioned_product/) for full documentation.
 #'
 #' @param ProvisionedProductName The name of the provisioned product. You cannot specify both
 #' `ProvisionedProductName` and `ProvisionedProductId`.
@@ -3222,7 +3274,7 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' @description
 #' Updates the specified constraint.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/update_constraint.html](https://paws-r.github.io/docs/servicecatalog/update_constraint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_update_constraint/](https://www.paws-r-sdk.com/docs/servicecatalog_update_constraint/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3321,7 +3373,7 @@ servicecatalog_update_constraint <- function(AcceptLanguage = NULL, Id, Descript
 #' @description
 #' Updates the specified portfolio.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/update_portfolio.html](https://paws-r.github.io/docs/servicecatalog/update_portfolio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_update_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_update_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3360,7 +3412,7 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #' @description
 #' Updates the specified portfolio share. You can use this API to enable or disable `TagOptions` sharing or Principal sharing for an existing portfolio share.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/update_portfolio_share.html](https://paws-r.github.io/docs/servicecatalog/update_portfolio_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_update_portfolio_share/](https://www.paws-r-sdk.com/docs/servicecatalog_update_portfolio_share/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3404,7 +3456,7 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @description
 #' Updates the specified product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/update_product.html](https://paws-r.github.io/docs/servicecatalog/update_product.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_update_product/](https://www.paws-r-sdk.com/docs/servicecatalog_update_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3456,7 +3508,7 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #' @description
 #' Requests updates to the configuration of the specified provisioned product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/update_provisioned_product.html](https://paws-r.github.io/docs/servicecatalog/update_provisioned_product.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_update_provisioned_product/](https://www.paws-r-sdk.com/docs/servicecatalog_update_provisioned_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3511,7 +3563,7 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #' @description
 #' Requests updates to the properties of the specified provisioned product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/update_provisioned_product_properties.html](https://paws-r.github.io/docs/servicecatalog/update_provisioned_product_properties.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_update_provisioned_product_properties/](https://www.paws-r-sdk.com/docs/servicecatalog_update_provisioned_product_properties/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3583,7 +3635,7 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
 #' @description
 #' Updates the specified provisioning artifact (also known as a version) for the specified product.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/update_provisioning_artifact.html](https://paws-r.github.io/docs/servicecatalog/update_provisioning_artifact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_update_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_update_provisioning_artifact/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -3634,7 +3686,7 @@ servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @description
 #' Updates a self-service action.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/update_service_action.html](https://paws-r.github.io/docs/servicecatalog/update_service_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_update_service_action/](https://www.paws-r-sdk.com/docs/servicecatalog_update_service_action/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The self-service action identifier.
 #' @param Name The self-service action name.
@@ -3671,7 +3723,7 @@ servicecatalog_update_service_action <- function(Id, Name = NULL, Definition = N
 #' @description
 #' Updates the specified TagOption.
 #'
-#' See [https://paws-r.github.io/docs/servicecatalog/update_tag_option.html](https://paws-r.github.io/docs/servicecatalog/update_tag_option.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicecatalog_update_tag_option/](https://www.paws-r-sdk.com/docs/servicecatalog_update_tag_option/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The TagOption identifier.
 #' @param Value The updated value.

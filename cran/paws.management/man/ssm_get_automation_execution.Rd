@@ -14,6 +14,6 @@ execution of an Automation runbook is initiated.}
 \description{
 Get detailed information about a particular Automation execution.
 
-See \url{https://paws-r.github.io/docs/ssm/get_automation_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_automation_execution/} for full documentation.
 }
 \keyword{internal}

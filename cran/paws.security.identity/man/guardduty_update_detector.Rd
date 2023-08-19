@@ -31,6 +31,6 @@ presently supported. For more information, see \href{https://docs.aws.amazon.com
 \description{
 Updates the Amazon GuardDuty detector specified by the detectorId.
 
-See \url{https://paws-r.github.io/docs/guardduty/update_detector.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_update_detector/} for full documentation.
 }
 \keyword{internal}

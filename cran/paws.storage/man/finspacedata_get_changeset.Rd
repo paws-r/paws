@@ -15,6 +15,6 @@ created.}
 \description{
 Get information about a Changeset.
 
-See \url{https://paws-r.github.io/docs/finspacedata/get_changeset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_get_changeset/} for full documentation.
 }
 \keyword{internal}

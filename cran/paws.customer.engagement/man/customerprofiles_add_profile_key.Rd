@@ -25,6 +25,6 @@ _shopifyCustomerId, _shopifyOrderId.}
 \description{
 Associates a new key value with a specific profile, such as a Contact Record ContactId.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/add_profile_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_add_profile_key/} for full documentation.
 }
 \keyword{internal}

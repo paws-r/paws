@@ -30,6 +30,6 @@ the next page of results in a paginated response.}
 \description{
 Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions. A resource identifier includes the resource type, ID, (if available) the custom resource name, source account, and source region. You can narrow the results to include only resources that have specific resource IDs, or a resource name, or source account ID, or source region.
 
-See \url{https://paws-r.github.io/docs/configservice/list_aggregate_discovered_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_list_aggregate_discovered_resources/} for full documentation.
 }
 \keyword{internal}

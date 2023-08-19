@@ -46,6 +46,6 @@ For more information about cron expressions, see
 \description{
 Modifies the specified event window.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_instance_event_window.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_instance_event_window/} for full documentation.
 }
 \keyword{internal}

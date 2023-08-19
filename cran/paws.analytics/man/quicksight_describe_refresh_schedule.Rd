@@ -16,6 +16,6 @@ quicksight_describe_refresh_schedule(AwsAccountId, DataSetId, ScheduleId)
 \description{
 Provides a summary of a refresh schedule.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_refresh_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_refresh_schedule/} for full documentation.
 }
 \keyword{internal}

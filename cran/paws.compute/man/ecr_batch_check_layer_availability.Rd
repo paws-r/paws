@@ -23,6 +23,6 @@ check.}
 \description{
 Checks the availability of one or more image layers in a repository.
 
-See \url{https://paws-r.github.io/docs/ecr/batch_check_layer_availability.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_batch_check_layer_availability/} for full documentation.
 }
 \keyword{internal}

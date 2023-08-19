@@ -17,6 +17,6 @@ from this call.}
 \description{
 Lists the names and codes for the services integrated with Service Quotas.
 
-See \url{https://paws-r.github.io/docs/servicequotas/list_services.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicequotas_list_services/} for full documentation.
 }
 \keyword{internal}

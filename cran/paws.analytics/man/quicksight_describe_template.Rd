@@ -30,6 +30,6 @@ apply to templates.}
 \description{
 Describes a template's metadata.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_template/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ The default is maximum. If you specify 0, Config uses the default.}
 \description{
 Returns the details of one or more configuration aggregators. If the configuration aggregator is not specified, this action returns the details for all the configuration aggregators associated with the account.
 
-See \url{https://paws-r.github.io/docs/configservice/describe_configuration_aggregators.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_describe_configuration_aggregators/} for full documentation.
 }
 \keyword{internal}

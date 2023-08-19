@@ -18,6 +18,6 @@ the user resides.}
 \description{
 Resets the password for any user in your Managed Microsoft AD or Simple AD directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/reset_user_password.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_reset_user_password/} for full documentation.
 }
 \keyword{internal}

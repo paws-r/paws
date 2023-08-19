@@ -13,7 +13,7 @@ ec2_describe_vpcs(
 )
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{cidr} - The primary IPv4 CIDR block of the VPC. The CIDR block you
 specify must exactly match the VPC's CIDR block for information to
@@ -49,7 +49,7 @@ regardless of the tag value.
 \item \code{vpc-id} - The ID of the VPC.
 }}
 
-\item{VpcIds}{One or more VPC IDs.
+\item{VpcIds}{The IDs of the VPCs.
 
 Default: Describes all your VPCs.}
 
@@ -69,6 +69,6 @@ output. For more information, see
 \description{
 Describes one or more of your VPCs.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_vpcs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_vpcs/} for full documentation.
 }
 \keyword{internal}

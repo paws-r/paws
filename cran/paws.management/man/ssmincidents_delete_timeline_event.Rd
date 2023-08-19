@@ -17,6 +17,6 @@ timeline event.}
 \description{
 Deletes a timeline event from an incident.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/delete_timeline_event.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_delete_timeline_event/} for full documentation.
 }
 \keyword{internal}

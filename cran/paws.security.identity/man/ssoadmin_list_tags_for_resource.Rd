@@ -19,6 +19,6 @@ the output of previous API calls to make subsequent calls.}
 \description{
 Lists the tags that are attached to a specified resource.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

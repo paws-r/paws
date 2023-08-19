@@ -27,6 +27,6 @@ container instance but can't update the container instance state.}
 \description{
 Modifies the status of an Amazon ECS container instance.
 
-See \url{https://paws-r.github.io/docs/ecs/update_container_instances_state.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_update_container_instances_state/} for full documentation.
 }
 \keyword{internal}

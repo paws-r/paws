@@ -12,6 +12,6 @@ cognitoidentity_delete_identities(IdentityIdsToDelete)
 \description{
 Deletes identities from an identity pool. You can specify a list of 1-60 identities that you want to delete.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/delete_identities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_delete_identities/} for full documentation.
 }
 \keyword{internal}

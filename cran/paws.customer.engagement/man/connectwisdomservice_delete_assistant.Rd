@@ -13,6 +13,6 @@ URLs cannot contain the ARN.}
 \description{
 Deletes an assistant.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/delete_assistant.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_delete_assistant/} for full documentation.
 }
 \keyword{internal}

@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Creates an application, optionally including an AWS SAM file to create the first application version in the same call.
 #'
-#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/create_application.html](https://paws-r.github.io/docs/serverlessapplicationrepository/create_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_create_application/](https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_create_application/) for full documentation.
 #'
 #' @param Author &#91;required&#93; The name of the author publishing the app.
 #' 
@@ -107,7 +107,7 @@ serverlessapplicationrepository_create_application <- function(Author, Descripti
 #' @description
 #' Creates an application version.
 #'
-#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/create_application_version.html](https://paws-r.github.io/docs/serverlessapplicationrepository/create_application_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_create_application_version/](https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_create_application_version/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param SemanticVersion &#91;required&#93; The semantic version of the new version.
@@ -145,7 +145,7 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' @description
 #' Creates an AWS CloudFormation change set for the given application.
 #'
-#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/create_cloud_formation_change_set.html](https://paws-r.github.io/docs/serverlessapplicationrepository/create_cloud_formation_change_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_create_cloud_formation_change_set/](https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_create_cloud_formation_change_set/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param Capabilities A list of values that you must specify before you can deploy certain
@@ -175,9 +175,9 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' [AWS::IAM:Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html),
 #' [AWS::ApplicationAutoScaling::ScalingPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html),
 #' [AWS::S3::BucketPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html),
-#' [AWS::SQS::QueuePolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html),
+#' [AWS::SQS::QueuePolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/),
 #' and
-#' [AWS::SNS:TopicPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html).
+#' [AWS::SNS:TopicPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topicpolicy.html).
 #' 
 #' Applications that contain one or more nested applications require you to
 #' specify CAPABILITY_AUTO_EXPAND.
@@ -187,40 +187,32 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' application before deploying. If you don't specify this parameter for an
 #' application that requires capabilities, the call will fail.
 #' @param ChangeSetName This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation <span
-#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
+#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
 #' API.
 #' @param ClientToken This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation <span
-#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
+#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
 #' API.
 #' @param Description This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation <span
-#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
+#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
 #' API.
 #' @param NotificationArns This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation <span
-#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
+#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
 #' API.
 #' @param ParameterOverrides A list of parameter values for the parameters of the application.
 #' @param ResourceTypes This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation <span
-#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
+#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
 #' API.
 #' @param RollbackConfiguration This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation <span
-#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
+#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
 #' API.
 #' @param SemanticVersion The semantic version of the application:
 #' 
 #' <https://semver.org/>
 #' @param StackName &#91;required&#93; This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation <span
-#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
+#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
 #' API.
 #' @param Tags This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation <span
-#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
+#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
 #' API.
 #' @param TemplateId The UUID returned by CreateCloudFormationTemplate.
 #' 
@@ -252,7 +244,7 @@ serverlessapplicationrepository_create_cloud_formation_change_set <- function(Ap
 #' @description
 #' Creates an AWS CloudFormation template.
 #'
-#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/create_cloud_formation_template.html](https://paws-r.github.io/docs/serverlessapplicationrepository/create_cloud_formation_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_create_cloud_formation_template/](https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_create_cloud_formation_template/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param SemanticVersion The semantic version of the application:
@@ -284,7 +276,7 @@ serverlessapplicationrepository_create_cloud_formation_template <- function(Appl
 #' @description
 #' Deletes the specified application.
 #'
-#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/delete_application.html](https://paws-r.github.io/docs/serverlessapplicationrepository/delete_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_delete_application/](https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_delete_application/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #'
@@ -313,7 +305,7 @@ serverlessapplicationrepository_delete_application <- function(ApplicationId) {
 #' @description
 #' Gets the specified application.
 #'
-#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/get_application.html](https://paws-r.github.io/docs/serverlessapplicationrepository/get_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_get_application/](https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_get_application/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param SemanticVersion The semantic version of the application to get.
@@ -343,7 +335,7 @@ serverlessapplicationrepository_get_application <- function(ApplicationId, Seman
 #' @description
 #' Retrieves the policy for the application.
 #'
-#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/get_application_policy.html](https://paws-r.github.io/docs/serverlessapplicationrepository/get_application_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_get_application_policy/](https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_get_application_policy/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #'
@@ -372,7 +364,7 @@ serverlessapplicationrepository_get_application_policy <- function(ApplicationId
 #' @description
 #' Gets the specified AWS CloudFormation template.
 #'
-#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/get_cloud_formation_template.html](https://paws-r.github.io/docs/serverlessapplicationrepository/get_cloud_formation_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_get_cloud_formation_template/](https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_get_cloud_formation_template/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param TemplateId &#91;required&#93; The UUID returned by CreateCloudFormationTemplate.
@@ -405,7 +397,7 @@ serverlessapplicationrepository_get_cloud_formation_template <- function(Applica
 #' @description
 #' Retrieves the list of applications nested in the containing application.
 #'
-#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/list_application_dependencies.html](https://paws-r.github.io/docs/serverlessapplicationrepository/list_application_dependencies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_list_application_dependencies/](https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_list_application_dependencies/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param MaxItems The total number of items to return.
@@ -420,7 +412,7 @@ serverlessapplicationrepository_list_application_dependencies <- function(Applic
     name = "ListApplicationDependencies",
     http_method = "GET",
     http_path = "/applications/{applicationId}/dependencies",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems")
   )
   input <- .serverlessapplicationrepository$list_application_dependencies_input(ApplicationId = ApplicationId, MaxItems = MaxItems, NextToken = NextToken, SemanticVersion = SemanticVersion)
   output <- .serverlessapplicationrepository$list_application_dependencies_output()
@@ -437,7 +429,7 @@ serverlessapplicationrepository_list_application_dependencies <- function(Applic
 #' @description
 #' Lists versions for the specified application.
 #'
-#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/list_application_versions.html](https://paws-r.github.io/docs/serverlessapplicationrepository/list_application_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_list_application_versions/](https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_list_application_versions/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param MaxItems The total number of items to return.
@@ -451,7 +443,7 @@ serverlessapplicationrepository_list_application_versions <- function(Applicatio
     name = "ListApplicationVersions",
     http_method = "GET",
     http_path = "/applications/{applicationId}/versions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems")
   )
   input <- .serverlessapplicationrepository$list_application_versions_input(ApplicationId = ApplicationId, MaxItems = MaxItems, NextToken = NextToken)
   output <- .serverlessapplicationrepository$list_application_versions_output()
@@ -468,7 +460,7 @@ serverlessapplicationrepository_list_application_versions <- function(Applicatio
 #' @description
 #' Lists applications owned by the requester.
 #'
-#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/list_applications.html](https://paws-r.github.io/docs/serverlessapplicationrepository/list_applications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_list_applications/](https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_list_applications/) for full documentation.
 #'
 #' @param MaxItems The total number of items to return.
 #' @param NextToken A token to specify where to start paginating.
@@ -481,7 +473,7 @@ serverlessapplicationrepository_list_applications <- function(MaxItems = NULL, N
     name = "ListApplications",
     http_method = "GET",
     http_path = "/applications",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems")
   )
   input <- .serverlessapplicationrepository$list_applications_input(MaxItems = MaxItems, NextToken = NextToken)
   output <- .serverlessapplicationrepository$list_applications_output()
@@ -498,7 +490,7 @@ serverlessapplicationrepository_list_applications <- function(MaxItems = NULL, N
 #' @description
 #' Sets the permission policy for an application. For the list of actions supported for this operation, see [Application Permissions](https://docs.aws.amazon.com/serverlessrepo/latest/devguide/security_iam_resource-based-policy-examples.html#application-permissions) .
 #'
-#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/put_application_policy.html](https://paws-r.github.io/docs/serverlessapplicationrepository/put_application_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_put_application_policy/](https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_put_application_policy/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param Statements &#91;required&#93; An array of policy statements applied to the application.
@@ -528,7 +520,7 @@ serverlessapplicationrepository_put_application_policy <- function(ApplicationId
 #' @description
 #' Unshares an application from an AWS Organization.
 #'
-#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/unshare_application.html](https://paws-r.github.io/docs/serverlessapplicationrepository/unshare_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_unshare_application/](https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_unshare_application/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param OrganizationId &#91;required&#93; The AWS Organization ID to unshare the application from.
@@ -558,7 +550,7 @@ serverlessapplicationrepository_unshare_application <- function(ApplicationId, O
 #' @description
 #' Updates the specified application.
 #'
-#' See [https://paws-r.github.io/docs/serverlessapplicationrepository/update_application.html](https://paws-r.github.io/docs/serverlessapplicationrepository/update_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_update_application/](https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_update_application/) for full documentation.
 #'
 #' @param ApplicationId &#91;required&#93; The Amazon Resource Name (ARN) of the application.
 #' @param Author The name of the author publishing the app.

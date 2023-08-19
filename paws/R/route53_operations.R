@@ -351,11 +351,12 @@ route53_change_cidr_collection <- function(Id, CollectionVersion = NULL, Changes
 #' When you submit a
 #' [`change_resource_record_sets`][route53_change_resource_record_sets]
 #' request, Route 53 propagates your changes to all of the Route 53
-#' authoritative DNS servers. While your changes are propagating,
-#' [`get_change`][route53_get_change] returns a status of `PENDING`. When
-#' propagation is complete, [`get_change`][route53_get_change] returns a
-#' status of `INSYNC`. Changes generally propagate to all Route 53 name
-#' servers within 60 seconds. For more information, see
+#' authoritative DNS servers managing the hosted zone. While your changes
+#' are propagating, [`get_change`][route53_get_change] returns a status of
+#' `PENDING`. When propagation is complete,
+#' [`get_change`][route53_get_change] returns a status of `INSYNC`. Changes
+#' generally propagate to all Route 53 name servers managing the hosted
+#' zone within 60 seconds. For more information, see
 #' [`get_change`][route53_get_change].
 #' 
 #' **Limits on ChangeResourceRecordSets Requests**
@@ -1374,6 +1375,11 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' set when you created it. For more information about reusable delegation
 #' sets, see
 #' [`create_reusable_delegation_set`][route53_create_reusable_delegation_set].
+#' 
+#' If you are using a reusable delegation set to create a public hosted
+#' zone for a subdomain, make sure that the parent hosted zone doesn't use
+#' one or more of the same name servers. If you have overlapping
+#' nameservers, the operation will cause a `ConflictingDomainsExist` error.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1977,6 +1983,17 @@ route53_create_traffic_policy <- function(Name, Document, Comment = NULL) {
 #' using the resource record sets that
 #' [`create_traffic_policy_instance`][route53_create_traffic_policy_instance]
 #' created.
+#' 
+#' After you submit an
+#' [`create_traffic_policy_instance`][route53_create_traffic_policy_instance]
+#' request, there's a brief delay while Amazon Route 53 creates the
+#' resource record sets that are specified in the traffic policy
+#' definition. Use
+#' [`get_traffic_policy_instance`][route53_get_traffic_policy_instance]
+#' with the `id` of new traffic policy instance to confirm that the
+#' [`create_traffic_policy_instance`][route53_create_traffic_policy_instance]
+#' request completed successfully. For more information, see the `State`
+#' response element.
 #'
 #' @usage
 #' route53_create_traffic_policy_instance(HostedZoneId, Name, TTL,
@@ -3103,11 +3120,11 @@ route53_get_account_limit <- function(Type) {
 #' of the following values:
 #' 
 #' -   `PENDING` indicates that the changes in this request have not
-#'     propagated to all Amazon Route 53 DNS servers. This is the initial
-#'     status of all change batch requests.
+#'     propagated to all Amazon Route 53 DNS servers managing the hosted
+#'     zone. This is the initial status of all change batch requests.
 #' 
 #' -   `INSYNC` indicates that the changes have propagated to all Route 53
-#'     DNS servers.
+#'     DNS servers managing the hosted zone.
 #'
 #' @usage
 #' route53_get_change(Id)
@@ -4109,13 +4126,13 @@ route53_get_traffic_policy <- function(Id, Version) {
 #' @description
 #' Gets information about a specified traffic policy instance.
 #' 
-#' After you submit a
+#' Use [`get_traffic_policy_instance`][route53_get_traffic_policy_instance]
+#' with the `id` of new traffic policy instance to confirm that the
 #' [`create_traffic_policy_instance`][route53_create_traffic_policy_instance]
 #' or an
 #' [`update_traffic_policy_instance`][route53_update_traffic_policy_instance]
-#' request, there's a brief delay while Amazon Route 53 creates the
-#' resource record sets that are specified in the traffic policy
-#' definition. For more information, see the `State` response element.
+#' request completed successfully. For more information, see the `State`
+#' response element.
 #' 
 #' In the Route 53 console, traffic policy instances are known as policy
 #' records.
@@ -4267,7 +4284,7 @@ route53_list_cidr_blocks <- function(CollectionId, LocationName = NULL, NextToke
     name = "ListCidrBlocks",
     http_method = "GET",
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}/cidrblocks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrBlocks")
   )
   input <- .route53$list_cidr_blocks_input(CollectionId = CollectionId, LocationName = LocationName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_blocks_output()
@@ -4330,7 +4347,7 @@ route53_list_cidr_collections <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListCidrCollections",
     http_method = "GET",
     http_path = "/2013-04-01/cidrcollection",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrCollections")
   )
   input <- .route53$list_cidr_collections_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_collections_output()
@@ -4393,7 +4410,7 @@ route53_list_cidr_locations <- function(CollectionId, NextToken = NULL, MaxResul
     name = "ListCidrLocations",
     http_method = "GET",
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrLocations")
   )
   input <- .route53$list_cidr_locations_input(CollectionId = CollectionId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_locations_output()
@@ -4616,7 +4633,7 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
     name = "ListHealthChecks",
     http_method = "GET",
     http_path = "/2013-04-01/healthcheck",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HealthChecks")
   )
   input <- .route53$list_health_checks_input(Marker = Marker, MaxItems = MaxItems)
   output <- .route53$list_health_checks_output()
@@ -4708,7 +4725,7 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
     name = "ListHostedZones",
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HostedZones")
   )
   input <- .route53$list_hosted_zones_input(Marker = Marker, MaxItems = MaxItems, DelegationSetId = DelegationSetId)
   output <- .route53$list_hosted_zones_output()
@@ -5063,7 +5080,7 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
     name = "ListQueryLoggingConfigs",
     http_method = "GET",
     http_path = "/2013-04-01/queryloggingconfig",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "QueryLoggingConfigs")
   )
   input <- .route53$list_query_logging_configs_input(HostedZoneId = HostedZoneId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_query_logging_configs_output()
@@ -5268,7 +5285,7 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
     name = "ListResourceRecordSets",
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone/{Id}/rrset",
-    paginator = list()
+    paginator = list(input_token = list("StartRecordName", "StartRecordType", "StartRecordIdentifier"), limit_key = "MaxItems", more_results = "IsTruncated", output_token = c("NextRecordName", "NextRecordType", "NextRecordIdentifier" ), result_key = "ResourceRecordSets")
   )
   input <- .route53$list_resource_record_sets_input(HostedZoneId = HostedZoneId, StartRecordName = StartRecordName, StartRecordType = StartRecordType, StartRecordIdentifier = StartRecordIdentifier, MaxItems = MaxItems)
   output <- .route53$list_resource_record_sets_output()
@@ -6116,6 +6133,11 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
 #' subnet mask.
 #' 
 #' This call only supports querying public hosted zones.
+#' 
+#' The `TestDnsAnswer ` returns information similar to what you would
+#' expect from the answer section of the `dig` command. Therefore, if you
+#' query for the name servers of a subdomain that point to the parent name
+#' servers, those will not be returned.
 #'
 #' @usage
 #' route53_test_dns_answer(HostedZoneId, RecordName, RecordType,
@@ -6720,10 +6742,21 @@ route53_update_traffic_policy_comment <- function(Id, Version, Comment) {
 }
 .route53$operations$update_traffic_policy_comment <- route53_update_traffic_policy_comment
 
-#' Updates the resource record sets in a specified hosted zone that were
-#' created based on the settings in a specified traffic policy version
+#' After you submit a UpdateTrafficPolicyInstance request, there's a brief
+#' delay while Route 53 creates the resource record sets that are specified
+#' in the traffic policy definition
 #'
 #' @description
+#' After you submit a
+#' [`update_traffic_policy_instance`][route53_update_traffic_policy_instance]
+#' request, there's a brief delay while Route 53 creates the resource
+#' record sets that are specified in the traffic policy definition. Use
+#' [`get_traffic_policy_instance`][route53_get_traffic_policy_instance]
+#' with the `id` of updated traffic policy instance confirm that the
+#' [`update_traffic_policy_instance`][route53_update_traffic_policy_instance]
+#' request completed successfully. For more information, see the `State`
+#' response element.
+#' 
 #' Updates the resource record sets in a specified hosted zone that were
 #' created based on the settings in a specified traffic policy version.
 #' 

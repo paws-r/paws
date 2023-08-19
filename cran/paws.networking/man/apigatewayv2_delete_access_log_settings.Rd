@@ -15,6 +15,6 @@ hyphens, and underscores. Maximum length is 128 characters.}
 \description{
 Deletes the AccessLogSettings for a Stage. To disable access logging for a Stage, delete its AccessLogSettings.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/delete_access_log_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_delete_access_log_settings/} for full documentation.
 }
 \keyword{internal}

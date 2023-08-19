@@ -91,6 +91,6 @@ of acceptable values is \code{1} through \code{100}. The default value is \code{
 \description{
 Returns a list of \code{MLModel} that match the search criteria in the request.
 
-See \url{https://paws-r.github.io/docs/machinelearning/describe_ml_models.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_describe_ml_models/} for full documentation.
 }
 \keyword{internal}

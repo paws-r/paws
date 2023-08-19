@@ -32,6 +32,6 @@ connection properties.}
 \description{
 Retrieves a list of connection definitions from the Data Catalog.
 
-See \url{https://paws-r.github.io/docs/glue/get_connections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_connections/} for full documentation.
 }
 \keyword{internal}

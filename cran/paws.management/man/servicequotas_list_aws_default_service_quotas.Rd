@@ -22,6 +22,6 @@ from this call.}
 \description{
 Lists the default values for the quotas for the specified AWS service. A default value does not reflect any quota increases.
 
-See \url{https://paws-r.github.io/docs/servicequotas/list_aws_default_service_quotas.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicequotas_list_aws_default_service_quotas/} for full documentation.
 }
 \keyword{internal}

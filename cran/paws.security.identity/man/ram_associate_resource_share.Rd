@@ -9,7 +9,8 @@ ram_associate_resource_share(
   resourceShareArn,
   resourceArns = NULL,
   principals = NULL,
-  clientToken = NULL
+  clientToken = NULL,
+  sources = NULL
 )
 }
 \arguments{
@@ -57,10 +58,13 @@ random one for you.
 If you retry the operation with the same \code{ClientToken}, but with
 different parameters, the retry fails with an
 \code{IdempotentParameterMismatch} error.}
+
+\item{sources}{Specifies from which source accounts the service principal has access to
+the resources in this resource share.}
 }
 \description{
 Adds the specified list of principals and list of resources to a resource share. Principals that already have access to this resource share immediately receive access to the added resources. Newly added principals immediately receive access to the resources shared in this resource share.
 
-See \url{https://paws-r.github.io/docs/ram/associate_resource_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_associate_resource_share/} for full documentation.
 }
 \keyword{internal}

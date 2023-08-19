@@ -19,6 +19,6 @@ Constraint: Maximum of 1000 flow log IDs.}
 \description{
 Deletes one or more flow logs.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_flow_logs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_flow_logs/} for full documentation.
 }
 \keyword{internal}

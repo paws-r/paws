@@ -39,6 +39,6 @@ token that is returned, until no more next tokens are returned.}
 \description{
 Gets a list of build identifiers for the specified build project, with each build identifier representing a single build.
 
-See \url{https://paws-r.github.io/docs/codebuild/list_builds_for_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_list_builds_for_project/} for full documentation.
 }
 \keyword{internal}

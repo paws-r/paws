@@ -13,6 +13,6 @@ route53resolver_get_resolver_config(ResourceId)
 \description{
 Retrieves the behavior configuration of Route 53 Resolver behavior for a single VPC from Amazon Virtual Private Cloud.
 
-See \url{https://paws-r.github.io/docs/route53resolver/get_resolver_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_config/} for full documentation.
 }
 \keyword{internal}

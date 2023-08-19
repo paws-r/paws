@@ -9,6 +9,6 @@ detective_disable_organization_admin_account()
 \description{
 Removes the Detective administrator account in the current Region. Deletes the organization behavior graph.
 
-See \url{https://paws-r.github.io/docs/detective/disable_organization_admin_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_disable_organization_admin_account/} for full documentation.
 }
 \keyword{internal}

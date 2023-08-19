@@ -12,6 +12,6 @@ apigatewaymanagementapi_get_connection(ConnectionId)
 \description{
 Get information about the connection with the provided id.
 
-See \url{https://paws-r.github.io/docs/apigatewaymanagementapi/get_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewaymanagementapi_get_connection/} for full documentation.
 }
 \keyword{internal}

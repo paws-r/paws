@@ -39,6 +39,6 @@ in the \emph{Amazon RDS User Guide} or by using the
 \description{
 Modifies an existing RDS event notification subscription. You can't modify the source identifiers using this call. To change source identifiers for a subscription, use the \code{\link[=rds_add_source_identifier_to_subscription]{add_source_identifier_to_subscription}} and \code{\link[=rds_remove_source_identifier_from_subscription]{remove_source_identifier_from_subscription}} calls.
 
-See \url{https://paws-r.github.io/docs/rds/modify_event_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_modify_event_subscription/} for full documentation.
 }
 \keyword{internal}

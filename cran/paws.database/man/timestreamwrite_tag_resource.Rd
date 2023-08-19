@@ -15,6 +15,6 @@ value is an Amazon Resource Name (ARN).}
 \description{
 Associates a set of tags with a Timestream resource. You can then activate these user-defined tags so that they appear on the Billing and Cost Management console for cost allocation tracking.
 
-See \url{https://paws-r.github.io/docs/timestreamwrite/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamwrite_tag_resource/} for full documentation.
 }
 \keyword{internal}

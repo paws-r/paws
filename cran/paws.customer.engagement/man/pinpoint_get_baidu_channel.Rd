@@ -14,6 +14,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Retrieves information about the status and settings of the Baidu channel for an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_baidu_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_baidu_channel/} for full documentation.
 }
 \keyword{internal}

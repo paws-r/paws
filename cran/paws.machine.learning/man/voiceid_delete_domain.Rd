@@ -12,6 +12,6 @@ voiceid_delete_domain(DomainId)
 \description{
 Deletes the specified domain from Voice ID.
 
-See \url{https://paws-r.github.io/docs/voiceid/delete_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_delete_domain/} for full documentation.
 }
 \keyword{internal}

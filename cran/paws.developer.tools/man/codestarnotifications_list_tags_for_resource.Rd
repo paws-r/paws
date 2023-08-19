@@ -12,6 +12,6 @@ codestarnotifications_list_tags_for_resource(Arn)
 \description{
 Returns a list of the tags associated with a notification rule.
 
-See \url{https://paws-r.github.io/docs/codestarnotifications/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarnotifications_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

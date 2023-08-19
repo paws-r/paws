@@ -63,6 +63,6 @@ this parameter, or the account IDs parameter, is omitted.}
 \description{
 Exports optimization recommendations for Lambda functions.
 
-See \url{https://paws-r.github.io/docs/computeoptimizer/export_lambda_function_recommendations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_export_lambda_function_recommendations/} for full documentation.
 }
 \keyword{internal}

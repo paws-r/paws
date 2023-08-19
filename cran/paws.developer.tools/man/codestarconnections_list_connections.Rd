@@ -29,6 +29,6 @@ can be used to return the next set of connections in the list.}
 \description{
 Lists the connections associated with your account.
 
-See \url{https://paws-r.github.io/docs/codestarconnections/list_connections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarconnections_list_connections/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ eventbridge_deauthorize_connection(Name)
 \description{
 Removes all authorization parameters from the connection. This lets you remove the secret from the connection so you can reuse it without having to create a new connection.
 
-See \url{https://paws-r.github.io/docs/eventbridge/deauthorize_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_deauthorize_connection/} for full documentation.
 }
 \keyword{internal}

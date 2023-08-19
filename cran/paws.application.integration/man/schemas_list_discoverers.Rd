@@ -27,6 +27,6 @@ the specified prefix.}
 \description{
 List the discoverers.
 
-See \url{https://paws-r.github.io/docs/schemas/list_discoverers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_list_discoverers/} for full documentation.
 }
 \keyword{internal}

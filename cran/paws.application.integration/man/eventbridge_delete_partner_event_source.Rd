@@ -15,6 +15,6 @@ that the event source was created for.}
 \description{
 This operation is used by SaaS partners to delete a partner event source. This operation is not used by Amazon Web Services customers.
 
-See \url{https://paws-r.github.io/docs/eventbridge/delete_partner_event_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_delete_partner_event_source/} for full documentation.
 }
 \keyword{internal}

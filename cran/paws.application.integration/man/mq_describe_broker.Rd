@@ -12,6 +12,6 @@ mq_describe_broker(BrokerId)
 \description{
 Returns information about the specified broker.
 
-See \url{https://paws-r.github.io/docs/mq/describe_broker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_describe_broker/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ cloudwatchevents_describe_connection(Name)
 \description{
 Retrieves details about a connection.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevents/describe_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevents_describe_connection/} for full documentation.
 }
 \keyword{internal}

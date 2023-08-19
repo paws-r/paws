@@ -23,6 +23,6 @@ frauddetector_update_model_version_status(
 \description{
 Updates the status of a model version.
 
-See \url{https://paws-r.github.io/docs/frauddetector/update_model_version_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_update_model_version_status/} for full documentation.
 }
 \keyword{internal}

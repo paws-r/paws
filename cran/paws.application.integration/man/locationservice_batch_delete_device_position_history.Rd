@@ -19,6 +19,6 @@ from.}
 \description{
 Deletes the position history of one or more devices from a tracker resource.
 
-See \url{https://paws-r.github.io/docs/locationservice/batch_delete_device_position_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_batch_delete_device_position_history/} for full documentation.
 }
 \keyword{internal}

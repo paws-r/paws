@@ -9,6 +9,6 @@ ses_list_verified_email_addresses()
 \description{
 Deprecated. Use the \code{\link[=ses_list_identities]{list_identities}} operation to list the email addresses and domains associated with your account.
 
-See \url{https://paws-r.github.io/docs/ses/list_verified_email_addresses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_list_verified_email_addresses/} for full documentation.
 }
 \keyword{internal}

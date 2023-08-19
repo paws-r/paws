@@ -16,6 +16,6 @@ version.}
 \description{
 Set the default version of a document.
 
-See \url{https://paws-r.github.io/docs/ssm/update_document_default_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_update_document_default_version/} for full documentation.
 }
 \keyword{internal}

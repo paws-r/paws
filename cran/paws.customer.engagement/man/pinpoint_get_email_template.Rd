@@ -38,6 +38,6 @@ of the template.
 \description{
 Retrieves the content and settings of a message template for messages that are sent through the email channel.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_email_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_email_template/} for full documentation.
 }
 \keyword{internal}

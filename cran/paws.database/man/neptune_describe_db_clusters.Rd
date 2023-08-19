@@ -54,6 +54,6 @@ marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Returns information about provisioned DB clusters, and supports pagination.
 
-See \url{https://paws-r.github.io/docs/neptune/describe_db_clusters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_describe_db_clusters/} for full documentation.
 }
 \keyword{internal}

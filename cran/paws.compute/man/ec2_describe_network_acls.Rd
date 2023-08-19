@@ -13,7 +13,7 @@ ec2_describe_network_acls(
 )
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{association.association-id} - The ID of an association ID for the
 ACL.
@@ -58,7 +58,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{NetworkAclIds}{One or more network ACL IDs.
+\item{NetworkAclIds}{The IDs of the network ACLs.
 
 Default: Describes all your network ACLs.}
 
@@ -73,6 +73,6 @@ output. For more information, see
 \description{
 Describes one or more of your network ACLs.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_network_acls.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_network_acls/} for full documentation.
 }
 \keyword{internal}

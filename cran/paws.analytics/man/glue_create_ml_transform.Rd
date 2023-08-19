@@ -122,6 +122,6 @@ Amazon S3 using KMS.}
 \description{
 Creates an Glue machine learning transform. This operation creates the transform and all the necessary parameters to train it.
 
-See \url{https://paws-r.github.io/docs/glue/create_ml_transform.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_create_ml_transform/} for full documentation.
 }
 \keyword{internal}

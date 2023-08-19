@@ -17,6 +17,6 @@ of the analysis.}
 \description{
 Provides a detailed description of the definition of an analysis.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_analysis_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_analysis_definition/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ locationservice_update_place_index(
 \description{
 Updates the specified properties of a given place index resource.
 
-See \url{https://paws-r.github.io/docs/locationservice/update_place_index.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_update_place_index/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ assigned to the resource.}
 \description{
 Assigns one or more tags (key-value pairs) to the specified Amazon QuickSight resource.
 
-See \url{https://paws-r.github.io/docs/quicksight/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_tag_resource/} for full documentation.
 }
 \keyword{internal}

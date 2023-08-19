@@ -37,6 +37,6 @@ in the \emph{CloudFormation User Guide}.
 \description{
 Stops an in-progress operation on a stack set and its associated stack instances. StackSets will cancel all the unstarted stack instance deployments and wait for those are in-progress to complete.
 
-See \url{https://paws-r.github.io/docs/cloudformation/stop_stack_set_operation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_stop_stack_set_operation/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ following.
 \description{
 \code{ServiceSetting} is an account-level setting for an Amazon Web Services service. This setting defines how a user interacts with or uses a service or a feature of a service. For example, if an Amazon Web Services service charges money to the account based on feature or service usage, then the Amazon Web Services service team might create a default setting of \code{false}. This means the user can't use this feature unless they change the setting to \code{true} and intentionally opt in for a paid feature.
 
-See \url{https://paws-r.github.io/docs/ssm/get_service_setting.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_service_setting/} for full documentation.
 }
 \keyword{internal}

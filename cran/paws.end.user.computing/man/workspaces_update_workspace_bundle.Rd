@@ -14,6 +14,6 @@ workspaces_update_workspace_bundle(BundleId = NULL, ImageId = NULL)
 \description{
 Updates a WorkSpace bundle with a new image. For more information about updating WorkSpace bundles, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/update-custom-bundle.html}{Update a Custom WorkSpaces Bundle}.
 
-See \url{https://paws-r.github.io/docs/workspaces/update_workspace_bundle.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_update_workspace_bundle/} for full documentation.
 }
 \keyword{internal}

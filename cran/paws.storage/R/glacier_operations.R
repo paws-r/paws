@@ -8,7 +8,7 @@ NULL
 #' @description
 #' This operation aborts a multipart upload identified by the upload ID.
 #'
-#' See [https://paws-r.github.io/docs/glacier/abort_multipart_upload.html](https://paws-r.github.io/docs/glacier/abort_multipart_upload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_abort_multipart_upload/](https://www.paws-r-sdk.com/docs/glacier_abort_multipart_upload/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -44,7 +44,7 @@ glacier_abort_multipart_upload <- function(accountId, vaultName, uploadId) {
 #' @description
 #' This operation aborts the vault locking process if the vault lock is not in the `Locked` state. If the vault lock is in the `Locked` state when this operation is requested, the operation returns an `AccessDeniedException` error. Aborting the vault locking process removes the vault lock policy from the specified vault.
 #'
-#' See [https://paws-r.github.io/docs/glacier/abort_vault_lock.html](https://paws-r.github.io/docs/glacier/abort_vault_lock.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_abort_vault_lock/](https://www.paws-r-sdk.com/docs/glacier_abort_vault_lock/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID. This value must match the
 #' AWS account ID associated with the credentials used to sign the request.
@@ -79,7 +79,7 @@ glacier_abort_vault_lock <- function(accountId, vaultName) {
 #' @description
 #' This operation adds the specified tags to a vault. Each tag is composed of a key and a value. Each vault can have up to 10 tags. If your request would cause the tag limit for the vault to be exceeded, the operation throws the `LimitExceededException` error. If a tag already exists on the vault under a specified key, the existing key value will be overwritten. For more information about tags, see [Tagging Amazon S3 Glacier Resources](https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html).
 #'
-#' See [https://paws-r.github.io/docs/glacier/add_tags_to_vault.html](https://paws-r.github.io/docs/glacier/add_tags_to_vault.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_add_tags_to_vault/](https://www.paws-r-sdk.com/docs/glacier_add_tags_to_vault/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -117,7 +117,7 @@ glacier_add_tags_to_vault <- function(accountId, vaultName, Tags = NULL) {
 #' @description
 #' You call this operation to inform Amazon S3 Glacier (Glacier) that all the archive parts have been uploaded and that Glacier can now assemble the archive from the uploaded parts. After assembling and saving the archive to the vault, Glacier returns the URI path of the newly created archive resource. Using the URI path, you can then access the archive. After you upload an archive, you should save the archive ID returned to retrieve the archive at a later point. You can also get the vault inventory to obtain a list of archive IDs in a vault. For more information, see [`initiate_job`][glacier_initiate_job].
 #'
-#' See [https://paws-r.github.io/docs/glacier/complete_multipart_upload.html](https://paws-r.github.io/docs/glacier/complete_multipart_upload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_complete_multipart_upload/](https://www.paws-r-sdk.com/docs/glacier_complete_multipart_upload/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -161,7 +161,7 @@ glacier_complete_multipart_upload <- function(accountId, vaultName, uploadId, ar
 #' @description
 #' This operation completes the vault locking process by transitioning the vault lock from the `InProgress` state to the `Locked` state, which causes the vault lock policy to become unchangeable. A vault lock is put into the `InProgress` state by calling [`initiate_vault_lock`][glacier_initiate_vault_lock]. You can obtain the state of the vault lock by calling [`get_vault_lock`][glacier_get_vault_lock]. For more information about the vault locking process, [Amazon Glacier Vault Lock](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html).
 #'
-#' See [https://paws-r.github.io/docs/glacier/complete_vault_lock.html](https://paws-r.github.io/docs/glacier/complete_vault_lock.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_complete_vault_lock/](https://www.paws-r-sdk.com/docs/glacier_complete_vault_lock/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID. This value must match the
 #' AWS account ID associated with the credentials used to sign the request.
@@ -198,7 +198,7 @@ glacier_complete_vault_lock <- function(accountId, vaultName, lockId) {
 #' @description
 #' This operation creates a new vault with the specified name. The name of the vault must be unique within a region for an AWS account. You can create up to 1,000 vaults per account. If you need to create more vaults, contact Amazon S3 Glacier.
 #'
-#' See [https://paws-r.github.io/docs/glacier/create_vault.html](https://paws-r.github.io/docs/glacier/create_vault.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_create_vault/](https://www.paws-r-sdk.com/docs/glacier_create_vault/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID. This value must match the
 #' AWS account ID associated with the credentials used to sign the request.
@@ -233,7 +233,7 @@ glacier_create_vault <- function(accountId, vaultName) {
 #' @description
 #' This operation deletes an archive from a vault. Subsequent requests to initiate a retrieval of this archive will fail. Archive retrievals that are in progress for this archive ID may or may not succeed according to the following scenarios:
 #'
-#' See [https://paws-r.github.io/docs/glacier/delete_archive.html](https://paws-r.github.io/docs/glacier/delete_archive.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_delete_archive/](https://www.paws-r-sdk.com/docs/glacier_delete_archive/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -268,7 +268,7 @@ glacier_delete_archive <- function(accountId, vaultName, archiveId) {
 #' @description
 #' This operation deletes a vault. Amazon S3 Glacier will delete a vault only if there are no archives in the vault as of the last inventory and there have been no writes to the vault since the last inventory. If either of these conditions is not satisfied, the vault deletion fails (that is, the vault is not removed) and Amazon S3 Glacier returns an error. You can use [`describe_vault`][glacier_describe_vault] to return the number of archives in a vault, and you can use [Initiate a Job (POST jobs)](https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html) to initiate a new inventory retrieval for a vault. The inventory contains the archive IDs you use to delete archives using [Delete Archive (DELETE archive)](https://docs.aws.amazon.com/amazonglacier/latest/dev/api-archive-delete.html).
 #'
-#' See [https://paws-r.github.io/docs/glacier/delete_vault.html](https://paws-r.github.io/docs/glacier/delete_vault.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_delete_vault/](https://www.paws-r-sdk.com/docs/glacier_delete_vault/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -303,7 +303,7 @@ glacier_delete_vault <- function(accountId, vaultName) {
 #' @description
 #' This operation deletes the access policy associated with the specified vault. The operation is eventually consistent; that is, it might take some time for Amazon S3 Glacier to completely remove the access policy, and you might still see the effect of the policy for a short time after you send the delete request.
 #'
-#' See [https://paws-r.github.io/docs/glacier/delete_vault_access_policy.html](https://paws-r.github.io/docs/glacier/delete_vault_access_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_delete_vault_access_policy/](https://www.paws-r-sdk.com/docs/glacier_delete_vault_access_policy/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -337,7 +337,7 @@ glacier_delete_vault_access_policy <- function(accountId, vaultName) {
 #' @description
 #' This operation deletes the notification configuration set for a vault. The operation is eventually consistent; that is, it might take some time for Amazon S3 Glacier to completely disable the notifications and you might still receive some notifications for a short time after you send the delete request.
 #'
-#' See [https://paws-r.github.io/docs/glacier/delete_vault_notifications.html](https://paws-r.github.io/docs/glacier/delete_vault_notifications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_delete_vault_notifications/](https://www.paws-r-sdk.com/docs/glacier_delete_vault_notifications/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -374,7 +374,7 @@ glacier_delete_vault_notifications <- function(accountId, vaultName) {
 #' @description
 #' This operation returns information about a job you previously initiated, including the job initiation date, the user who initiated the job, the job status code/message and the Amazon SNS topic to notify after Amazon S3 Glacier (Glacier) completes the job. For more information about initiating a job, see [`initiate_job`][glacier_initiate_job].
 #'
-#' See [https://paws-r.github.io/docs/glacier/describe_job.html](https://paws-r.github.io/docs/glacier/describe_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_describe_job/](https://www.paws-r-sdk.com/docs/glacier_describe_job/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -412,7 +412,7 @@ glacier_describe_job <- function(accountId, vaultName, jobId) {
 #' @description
 #' This operation returns information about a vault, including the vault's Amazon Resource Name (ARN), the date the vault was created, the number of archives it contains, and the total size of all the archives in the vault. The number of archives and their total size are as of the last inventory generation. This means that if you add or remove an archive from a vault, and then immediately use Describe Vault, the change in contents will not be immediately reflected. If you want to retrieve the latest inventory of the vault, use [`initiate_job`][glacier_initiate_job]. Amazon S3 Glacier generates vault inventories approximately daily. For more information, see [Downloading a Vault Inventory in Amazon S3 Glacier](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-inventory.html).
 #'
-#' See [https://paws-r.github.io/docs/glacier/describe_vault.html](https://paws-r.github.io/docs/glacier/describe_vault.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_describe_vault/](https://www.paws-r-sdk.com/docs/glacier_describe_vault/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -447,7 +447,7 @@ glacier_describe_vault <- function(accountId, vaultName) {
 #' @description
 #' This operation returns the current data retrieval policy for the account and region specified in the GET request. For more information about data retrieval policies, see [Amazon Glacier Data Retrieval Policies](https://docs.aws.amazon.com/amazonglacier/latest/dev/data-retrieval-policy.html).
 #'
-#' See [https://paws-r.github.io/docs/glacier/get_data_retrieval_policy.html](https://paws-r.github.io/docs/glacier/get_data_retrieval_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_get_data_retrieval_policy/](https://www.paws-r-sdk.com/docs/glacier_get_data_retrieval_policy/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID. This value must match the
 #' AWS account ID associated with the credentials used to sign the request.
@@ -482,7 +482,7 @@ glacier_get_data_retrieval_policy <- function(accountId) {
 #' @description
 #' This operation downloads the output of the job you initiated using [`initiate_job`][glacier_initiate_job]. Depending on the job type you specified when you initiated the job, the output will be either the content of an archive or a vault inventory.
 #'
-#' See [https://paws-r.github.io/docs/glacier/get_job_output.html](https://paws-r.github.io/docs/glacier/get_job_output.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_get_job_output/](https://www.paws-r-sdk.com/docs/glacier_get_job_output/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -550,7 +550,7 @@ glacier_get_job_output <- function(accountId, vaultName, jobId, range = NULL) {
 #' @description
 #' This operation retrieves the `access-policy` subresource set on the vault; for more information on setting this subresource, see [Set Vault Access Policy (PUT access-policy)](https://docs.aws.amazon.com/amazonglacier/latest/dev/api-SetVaultAccessPolicy.html). If there is no access policy set on the vault, the operation returns a `404 Not found` error. For more information about vault access policies, see [Amazon Glacier Access Control with Vault Access Policies](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html).
 #'
-#' See [https://paws-r.github.io/docs/glacier/get_vault_access_policy.html](https://paws-r.github.io/docs/glacier/get_vault_access_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_get_vault_access_policy/](https://www.paws-r-sdk.com/docs/glacier_get_vault_access_policy/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -585,7 +585,7 @@ glacier_get_vault_access_policy <- function(accountId, vaultName) {
 #' @description
 #' This operation retrieves the following attributes from the `lock-policy` subresource set on the specified vault:
 #'
-#' See [https://paws-r.github.io/docs/glacier/get_vault_lock.html](https://paws-r.github.io/docs/glacier/get_vault_lock.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_get_vault_lock/](https://www.paws-r-sdk.com/docs/glacier_get_vault_lock/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -620,7 +620,7 @@ glacier_get_vault_lock <- function(accountId, vaultName) {
 #' @description
 #' This operation retrieves the `notification-configuration` subresource of the specified vault.
 #'
-#' See [https://paws-r.github.io/docs/glacier/get_vault_notifications.html](https://paws-r.github.io/docs/glacier/get_vault_notifications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_get_vault_notifications/](https://www.paws-r-sdk.com/docs/glacier_get_vault_notifications/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -655,7 +655,7 @@ glacier_get_vault_notifications <- function(accountId, vaultName) {
 #' @description
 #' This operation initiates a job of the specified type, which can be a select, an archival retrieval, or a vault retrieval. For more information about using this operation, see the documentation for the underlying REST API [Initiate a Job](https://docs.aws.amazon.com/amazonglacier/latest/dev/api-initiate-job-post.html).
 #'
-#' See [https://paws-r.github.io/docs/glacier/initiate_job.html](https://paws-r.github.io/docs/glacier/initiate_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_initiate_job/](https://www.paws-r-sdk.com/docs/glacier_initiate_job/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -690,7 +690,7 @@ glacier_initiate_job <- function(accountId, vaultName, jobParameters = NULL) {
 #' @description
 #' This operation initiates a multipart upload. Amazon S3 Glacier creates a multipart upload resource and returns its ID in the response. The multipart upload ID is used in subsequent requests to upload parts of an archive (see [`upload_multipart_part`][glacier_upload_multipart_part]).
 #'
-#' See [https://paws-r.github.io/docs/glacier/initiate_multipart_upload.html](https://paws-r.github.io/docs/glacier/initiate_multipart_upload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_initiate_multipart_upload/](https://www.paws-r-sdk.com/docs/glacier_initiate_multipart_upload/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -733,7 +733,7 @@ glacier_initiate_multipart_upload <- function(accountId, vaultName, archiveDescr
 #' @description
 #' This operation initiates the vault locking process by doing the following:
 #'
-#' See [https://paws-r.github.io/docs/glacier/initiate_vault_lock.html](https://paws-r.github.io/docs/glacier/initiate_vault_lock.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_initiate_vault_lock/](https://www.paws-r-sdk.com/docs/glacier_initiate_vault_lock/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID. This value must match the
 #' AWS account ID associated with the credentials used to sign the request.
@@ -771,7 +771,7 @@ glacier_initiate_vault_lock <- function(accountId, vaultName, policy = NULL) {
 #' @description
 #' This operation lists jobs for a vault, including jobs that are in-progress and jobs that have recently finished. The List Job operation returns a list of these jobs sorted by job initiation time.
 #'
-#' See [https://paws-r.github.io/docs/glacier/list_jobs.html](https://paws-r.github.io/docs/glacier/list_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_list_jobs/](https://www.paws-r-sdk.com/docs/glacier_list_jobs/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -799,7 +799,7 @@ glacier_list_jobs <- function(accountId, vaultName, limit = NULL, marker = NULL,
     name = "ListJobs",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/jobs",
-    paginator = list()
+    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "JobList")
   )
   input <- .glacier$list_jobs_input(accountId = accountId, vaultName = vaultName, limit = limit, marker = marker, statuscode = statuscode, completed = completed)
   output <- .glacier$list_jobs_output()
@@ -817,7 +817,7 @@ glacier_list_jobs <- function(accountId, vaultName, limit = NULL, marker = NULL,
 #' @description
 #' This operation lists in-progress multipart uploads for the specified vault. An in-progress multipart upload is a multipart upload that has been initiated by an [`initiate_multipart_upload`][glacier_initiate_multipart_upload] request, but has not yet been completed or aborted. The list returned in the List Multipart Upload response has no guaranteed order.
 #'
-#' See [https://paws-r.github.io/docs/glacier/list_multipart_uploads.html](https://paws-r.github.io/docs/glacier/list_multipart_uploads.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_list_multipart_uploads/](https://www.paws-r-sdk.com/docs/glacier_list_multipart_uploads/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -842,7 +842,7 @@ glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, 
     name = "ListMultipartUploadsRequest",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads",
-    paginator = list()
+    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "UploadsList")
   )
   input <- .glacier$list_multipart_uploads_input(accountId = accountId, vaultName = vaultName, marker = marker, limit = limit)
   output <- .glacier$list_multipart_uploads_output()
@@ -860,7 +860,7 @@ glacier_list_multipart_uploads <- function(accountId, vaultName, marker = NULL, 
 #' @description
 #' This operation lists the parts of an archive that have been uploaded in a specific multipart upload. You can make this request at any time during an in-progress multipart upload before you complete the upload (see [`complete_multipart_upload`][glacier_complete_multipart_upload]. List Parts returns an error for completed uploads. The list returned in the List Parts response is sorted by part range.
 #'
-#' See [https://paws-r.github.io/docs/glacier/list_parts.html](https://paws-r.github.io/docs/glacier/list_parts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_list_parts/](https://www.paws-r-sdk.com/docs/glacier_list_parts/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -886,7 +886,7 @@ glacier_list_parts <- function(accountId, vaultName, uploadId, marker = NULL, li
     name = "ListPartsRequest",
     http_method = "GET",
     http_path = "/{accountId}/vaults/{vaultName}/multipart-uploads/{uploadId}",
-    paginator = list()
+    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "Parts")
   )
   input <- .glacier$list_parts_input(accountId = accountId, vaultName = vaultName, uploadId = uploadId, marker = marker, limit = limit)
   output <- .glacier$list_parts_output()
@@ -904,7 +904,7 @@ glacier_list_parts <- function(accountId, vaultName, uploadId, marker = NULL, li
 #' @description
 #' This operation lists the provisioned capacity units for the specified AWS account.
 #'
-#' See [https://paws-r.github.io/docs/glacier/list_provisioned_capacity.html](https://paws-r.github.io/docs/glacier/list_provisioned_capacity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_list_provisioned_capacity/](https://www.paws-r-sdk.com/docs/glacier_list_provisioned_capacity/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The AWS account ID of the account that owns the vault. You can either
 #' specify an AWS account ID or optionally a single '-' (hyphen), in which
@@ -937,7 +937,7 @@ glacier_list_provisioned_capacity <- function(accountId) {
 #' @description
 #' This operation lists all the tags attached to a vault. The operation returns an empty map if there are no tags. For more information about tags, see [Tagging Amazon S3 Glacier Resources](https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html).
 #'
-#' See [https://paws-r.github.io/docs/glacier/list_tags_for_vault.html](https://paws-r.github.io/docs/glacier/list_tags_for_vault.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_list_tags_for_vault/](https://www.paws-r-sdk.com/docs/glacier_list_tags_for_vault/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -971,7 +971,7 @@ glacier_list_tags_for_vault <- function(accountId, vaultName) {
 #' @description
 #' This operation lists all vaults owned by the calling user's account. The list returned in the response is ASCII-sorted by vault name.
 #'
-#' See [https://paws-r.github.io/docs/glacier/list_vaults.html](https://paws-r.github.io/docs/glacier/list_vaults.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_list_vaults/](https://www.paws-r-sdk.com/docs/glacier_list_vaults/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID. This value must match the
 #' AWS account ID associated with the credentials used to sign the request.
@@ -993,7 +993,7 @@ glacier_list_vaults <- function(accountId, marker = NULL, limit = NULL) {
     name = "ListVaults",
     http_method = "GET",
     http_path = "/{accountId}/vaults",
-    paginator = list()
+    paginator = list(input_token = "marker", limit_key = "limit", output_token = "Marker", result_key = "VaultList")
   )
   input <- .glacier$list_vaults_input(accountId = accountId, marker = marker, limit = limit)
   output <- .glacier$list_vaults_output()
@@ -1010,7 +1010,7 @@ glacier_list_vaults <- function(accountId, marker = NULL, limit = NULL) {
 #' @description
 #' This operation purchases a provisioned capacity unit for an AWS account.
 #'
-#' See [https://paws-r.github.io/docs/glacier/purchase_provisioned_capacity.html](https://paws-r.github.io/docs/glacier/purchase_provisioned_capacity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_purchase_provisioned_capacity/](https://www.paws-r-sdk.com/docs/glacier_purchase_provisioned_capacity/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The AWS account ID of the account that owns the vault. You can either
 #' specify an AWS account ID or optionally a single '-' (hyphen), in which
@@ -1044,7 +1044,7 @@ glacier_purchase_provisioned_capacity <- function(accountId) {
 #' @description
 #' This operation removes one or more tags from the set of tags attached to a vault. For more information about tags, see [Tagging Amazon S3 Glacier Resources](https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html). This operation is idempotent. The operation will be successful, even if there are no tags attached to the vault.
 #'
-#' See [https://paws-r.github.io/docs/glacier/remove_tags_from_vault.html](https://paws-r.github.io/docs/glacier/remove_tags_from_vault.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_remove_tags_from_vault/](https://www.paws-r-sdk.com/docs/glacier_remove_tags_from_vault/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -1080,7 +1080,7 @@ glacier_remove_tags_from_vault <- function(accountId, vaultName, TagKeys = NULL)
 #' @description
 #' This operation sets and then enacts a data retrieval policy in the region specified in the PUT request. You can set one policy per region for an AWS account. The policy is enacted within a few minutes of a successful PUT operation.
 #'
-#' See [https://paws-r.github.io/docs/glacier/set_data_retrieval_policy.html](https://paws-r.github.io/docs/glacier/set_data_retrieval_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_set_data_retrieval_policy/](https://www.paws-r-sdk.com/docs/glacier_set_data_retrieval_policy/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID. This value must match the
 #' AWS account ID associated with the credentials used to sign the request.
@@ -1116,7 +1116,7 @@ glacier_set_data_retrieval_policy <- function(accountId, Policy = NULL) {
 #' @description
 #' This operation configures an access policy for a vault and will overwrite an existing policy. To configure a vault access policy, send a PUT request to the `access-policy` subresource of the vault. An access policy is specific to a vault and is also called a vault subresource. You can set one access policy per vault and the policy can be up to 20 KB in size. For more information about vault access policies, see [Amazon Glacier Access Control with Vault Access Policies](https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-access-policy.html).
 #'
-#' See [https://paws-r.github.io/docs/glacier/set_vault_access_policy.html](https://paws-r.github.io/docs/glacier/set_vault_access_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_set_vault_access_policy/](https://www.paws-r-sdk.com/docs/glacier_set_vault_access_policy/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -1152,7 +1152,7 @@ glacier_set_vault_access_policy <- function(accountId, vaultName, policy = NULL)
 #' @description
 #' This operation configures notifications that will be sent when specific events happen to a vault. By default, you don't get any notifications.
 #'
-#' See [https://paws-r.github.io/docs/glacier/set_vault_notifications.html](https://paws-r.github.io/docs/glacier/set_vault_notifications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_set_vault_notifications/](https://www.paws-r-sdk.com/docs/glacier_set_vault_notifications/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single
@@ -1187,7 +1187,7 @@ glacier_set_vault_notifications <- function(accountId, vaultName, vaultNotificat
 #' @description
 #' This operation adds an archive to a vault. This is a synchronous operation, and for a successful upload, your data is durably persisted. Amazon S3 Glacier returns the archive ID in the `x-amz-archive-id` header of the response.
 #'
-#' See [https://paws-r.github.io/docs/glacier/upload_archive.html](https://paws-r.github.io/docs/glacier/upload_archive.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_upload_archive/](https://www.paws-r-sdk.com/docs/glacier_upload_archive/) for full documentation.
 #'
 #' @param vaultName &#91;required&#93; The name of the vault.
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
@@ -1224,7 +1224,7 @@ glacier_upload_archive <- function(vaultName, accountId, archiveDescription = NU
 #' @description
 #' This operation uploads a part of an archive. You can upload archive parts in any order. You can also upload them in parallel. You can upload up to 10,000 parts for a multipart upload.
 #'
-#' See [https://paws-r.github.io/docs/glacier/upload_multipart_part.html](https://paws-r.github.io/docs/glacier/upload_multipart_part.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/glacier_upload_multipart_part/](https://www.paws-r-sdk.com/docs/glacier_upload_multipart_part/) for full documentation.
 #'
 #' @param accountId &#91;required&#93; The `AccountId` value is the AWS account ID of the account that owns the
 #' vault. You can either specify an AWS account ID or optionally a single

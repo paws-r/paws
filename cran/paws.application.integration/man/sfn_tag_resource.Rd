@@ -18,6 +18,6 @@ symbols: \verb{_ . : / = + - @}.}
 \description{
 Add a tag to a Step Functions resource.
 
-See \url{https://paws-r.github.io/docs/sfn/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_tag_resource/} for full documentation.
 }
 \keyword{internal}

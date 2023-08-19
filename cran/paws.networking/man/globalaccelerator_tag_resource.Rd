@@ -16,6 +16,6 @@ you define.}
 \description{
 Add tags to an accelerator resource.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_tag_resource/} for full documentation.
 }
 \keyword{internal}

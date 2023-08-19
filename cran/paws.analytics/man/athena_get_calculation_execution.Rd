@@ -12,6 +12,6 @@ athena_get_calculation_execution(CalculationExecutionId)
 \description{
 Describes a previously submitted calculation execution.
 
-See \url{https://paws-r.github.io/docs/athena/get_calculation_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_get_calculation_execution/} for full documentation.
 }
 \keyword{internal}

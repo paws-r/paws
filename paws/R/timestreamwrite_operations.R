@@ -10,9 +10,9 @@ NULL
 #' data from a CSV source in an S3 location and writes to a Timestream
 #' table. A mapping from source to target is defined in a batch load task.
 #' Errors and events are written to a report at an S3 location. For the
-#' report, if the KMS key is not specified, the batch load task will be
-#' encrypted with a Timestream managed KMS key located in your account. For
-#' more information, see [Amazon Web Services managed
+#' report, if the KMS key is not specified, the report will be encrypted
+#' with an S3 managed key when `SSE_S3` is the option. Otherwise an error
+#' is thrown. For more information, see [Amazon Web Services managed
 #' keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk).
 #' [Service quotas
 #' apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html).
@@ -230,7 +230,7 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 #'
 #' @usage
 #' timestreamwrite_create_table(DatabaseName, TableName,
-#'   RetentionProperties, Tags, MagneticStoreWriteProperties)
+#'   RetentionProperties, Tags, MagneticStoreWriteProperties, Schema)
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
 #' @param TableName &#91;required&#93; The name of the Timestream table.
@@ -239,6 +239,7 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 #' @param Tags A list of key-value pairs to label the table.
 #' @param MagneticStoreWriteProperties Contains properties to set on the table when enabling magnetic store
 #' writes.
+#' @param Schema The schema of the table.
 #'
 #' @return
 #' A list with the following syntax:
@@ -267,6 +268,15 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 #'           ObjectKeyPrefix = "string",
 #'           EncryptionOption = "SSE_S3"|"SSE_KMS",
 #'           KmsKeyId = "string"
+#'         )
+#'       )
+#'     ),
+#'     Schema = list(
+#'       CompositePartitionKey = list(
+#'         list(
+#'           Type = "DIMENSION"|"MEASURE",
+#'           Name = "string",
+#'           EnforcementInRecord = "REQUIRED"|"OPTIONAL"
 #'         )
 #'       )
 #'     )
@@ -299,6 +309,15 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 #'         KmsKeyId = "string"
 #'       )
 #'     )
+#'   ),
+#'   Schema = list(
+#'     CompositePartitionKey = list(
+#'       list(
+#'         Type = "DIMENSION"|"MEASURE",
+#'         Name = "string",
+#'         EnforcementInRecord = "REQUIRED"|"OPTIONAL"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -308,14 +327,14 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 #' @rdname timestreamwrite_create_table
 #'
 #' @aliases timestreamwrite_create_table
-timestreamwrite_create_table <- function(DatabaseName, TableName, RetentionProperties = NULL, Tags = NULL, MagneticStoreWriteProperties = NULL) {
+timestreamwrite_create_table <- function(DatabaseName, TableName, RetentionProperties = NULL, Tags = NULL, MagneticStoreWriteProperties = NULL, Schema = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .timestreamwrite$create_table_input(DatabaseName = DatabaseName, TableName = TableName, RetentionProperties = RetentionProperties, Tags = Tags, MagneticStoreWriteProperties = MagneticStoreWriteProperties)
+  input <- .timestreamwrite$create_table_input(DatabaseName = DatabaseName, TableName = TableName, RetentionProperties = RetentionProperties, Tags = Tags, MagneticStoreWriteProperties = MagneticStoreWriteProperties, Schema = Schema)
   output <- .timestreamwrite$create_table_output()
   config <- get_config()
   svc <- .timestreamwrite$service(config)
@@ -756,6 +775,15 @@ timestreamwrite_describe_endpoints <- function() {
 #'           KmsKeyId = "string"
 #'         )
 #'       )
+#'     ),
+#'     Schema = list(
+#'       CompositePartitionKey = list(
+#'         list(
+#'           Type = "DIMENSION"|"MEASURE",
+#'           Name = "string",
+#'           EnforcementInRecord = "REQUIRED"|"OPTIONAL"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -855,7 +883,7 @@ timestreamwrite_list_batch_load_tasks <- function(NextToken = NULL, MaxResults =
     name = "ListBatchLoadTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .timestreamwrite$list_batch_load_tasks_input(NextToken = NextToken, MaxResults = MaxResults, TaskStatus = TaskStatus)
   output <- .timestreamwrite$list_batch_load_tasks_output()
@@ -926,7 +954,7 @@ timestreamwrite_list_databases <- function(NextToken = NULL, MaxResults = NULL) 
     name = "ListDatabases",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .timestreamwrite$list_databases_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .timestreamwrite$list_databases_output()
@@ -988,6 +1016,15 @@ timestreamwrite_list_databases <- function(NextToken = NULL, MaxResults = NULL) 
 #'             KmsKeyId = "string"
 #'           )
 #'         )
+#'       ),
+#'       Schema = list(
+#'         CompositePartitionKey = list(
+#'           list(
+#'             Type = "DIMENSION"|"MEASURE",
+#'             Name = "string",
+#'             EnforcementInRecord = "REQUIRED"|"OPTIONAL"
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -1014,7 +1051,7 @@ timestreamwrite_list_tables <- function(DatabaseName = NULL, NextToken = NULL, M
     name = "ListTables",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .timestreamwrite$list_tables_input(DatabaseName = DatabaseName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .timestreamwrite$list_tables_output()
@@ -1322,13 +1359,14 @@ timestreamwrite_update_database <- function(DatabaseName, KmsKeyId) {
 #'
 #' @usage
 #' timestreamwrite_update_table(DatabaseName, TableName,
-#'   RetentionProperties, MagneticStoreWriteProperties)
+#'   RetentionProperties, MagneticStoreWriteProperties, Schema)
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
 #' @param TableName &#91;required&#93; The name of the Timestream table.
 #' @param RetentionProperties The retention duration of the memory store and the magnetic store.
 #' @param MagneticStoreWriteProperties Contains properties to set on the table when enabling magnetic store
 #' writes.
+#' @param Schema The schema of the table.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1359,6 +1397,15 @@ timestreamwrite_update_database <- function(DatabaseName, KmsKeyId) {
 #'           KmsKeyId = "string"
 #'         )
 #'       )
+#'     ),
+#'     Schema = list(
+#'       CompositePartitionKey = list(
+#'         list(
+#'           Type = "DIMENSION"|"MEASURE",
+#'           Name = "string",
+#'           EnforcementInRecord = "REQUIRED"|"OPTIONAL"
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -1383,6 +1430,15 @@ timestreamwrite_update_database <- function(DatabaseName, KmsKeyId) {
 #'         KmsKeyId = "string"
 #'       )
 #'     )
+#'   ),
+#'   Schema = list(
+#'     CompositePartitionKey = list(
+#'       list(
+#'         Type = "DIMENSION"|"MEASURE",
+#'         Name = "string",
+#'         EnforcementInRecord = "REQUIRED"|"OPTIONAL"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1392,14 +1448,14 @@ timestreamwrite_update_database <- function(DatabaseName, KmsKeyId) {
 #' @rdname timestreamwrite_update_table
 #'
 #' @aliases timestreamwrite_update_table
-timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionProperties = NULL, MagneticStoreWriteProperties = NULL) {
+timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionProperties = NULL, MagneticStoreWriteProperties = NULL, Schema = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .timestreamwrite$update_table_input(DatabaseName = DatabaseName, TableName = TableName, RetentionProperties = RetentionProperties, MagneticStoreWriteProperties = MagneticStoreWriteProperties)
+  input <- .timestreamwrite$update_table_input(DatabaseName = DatabaseName, TableName = TableName, RetentionProperties = RetentionProperties, MagneticStoreWriteProperties = MagneticStoreWriteProperties, Schema = Schema)
   output <- .timestreamwrite$update_table_output()
   config <- get_config()
   svc <- .timestreamwrite$service(config)

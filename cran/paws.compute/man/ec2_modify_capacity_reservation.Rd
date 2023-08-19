@@ -59,6 +59,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Modifies a Capacity Reservation's capacity and the conditions under which it is to be released. You cannot change a Capacity Reservation's instance type, EBS optimization, instance store settings, platform, Availability Zone, or instance eligibility. If you need to modify any of these attributes, we recommend that you cancel the Capacity Reservation, and then create a new one with the required attributes.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_capacity_reservation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_capacity_reservation/} for full documentation.
 }
 \keyword{internal}

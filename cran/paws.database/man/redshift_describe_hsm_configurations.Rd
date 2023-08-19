@@ -55,6 +55,6 @@ associated with them.}
 \description{
 Returns information about the specified Amazon Redshift HSM configuration. If no configuration ID is specified, returns information about all the HSM configurations owned by your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_hsm_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_hsm_configurations/} for full documentation.
 }
 \keyword{internal}

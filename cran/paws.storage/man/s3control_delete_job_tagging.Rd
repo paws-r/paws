@@ -15,6 +15,6 @@ Operations job.}
 \description{
 Removes the entire tag set from the specified S3 Batch Operations job. To use the \code{\link[=s3control_delete_job_tagging]{delete_job_tagging}} operation, you must have permission to perform the \code{s3:DeleteJobTagging} action. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-managing-jobs.html#batch-ops-job-tags}{Controlling access and labeling jobs using tags} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3control/delete_job_tagging.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_delete_job_tagging/} for full documentation.
 }
 \keyword{internal}

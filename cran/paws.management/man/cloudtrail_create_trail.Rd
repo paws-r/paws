@@ -34,7 +34,7 @@ underscores (_), or dashes (-)
 }}
 
 \item{S3BucketName}{[required] Specifies the name of the Amazon S3 bucket designated for publishing log
-files. See \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html}{Amazon S3 Bucket Naming Requirements}.}
+files. See \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucketnamingrules.html}{Amazon S3 Bucket Naming Requirements}.}
 
 \item{S3KeyPrefix}{Specifies the Amazon S3 key prefix that comes after the name of the
 bucket you have designated for log file delivery. For more information,
@@ -47,10 +47,10 @@ log file delivery. The maximum length is 256 characters.}
 \item{IncludeGlobalServiceEvents}{Specifies whether the trail is publishing events from global services
 such as IAM to the log files.}
 
-\item{IsMultiRegionTrail}{Specifies whether the trail is created in the current region or in all
-regions. The default is false, which creates a trail only in the region
+\item{IsMultiRegionTrail}{Specifies whether the trail is created in the current Region or in all
+Regions. The default is false, which creates a trail only in the Region
 where you are signed in. As a best practice, consider creating trails
-that log events in all regions.}
+that log events in all Regions.}
 
 \item{EnableLogFileValidation}{Specifies whether log file integrity validation is enabled. The default
 is false.
@@ -103,6 +103,6 @@ organization in Organizations.}
 \description{
 Creates a trail that specifies the settings for delivery of log data to an Amazon S3 bucket.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/create_trail.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_create_trail/} for full documentation.
 }
 \keyword{internal}

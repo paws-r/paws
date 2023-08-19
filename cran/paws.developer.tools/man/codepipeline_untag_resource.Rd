@@ -14,6 +14,6 @@ codepipeline_untag_resource(resourceArn, tagKeys)
 \description{
 Removes tags from an Amazon Web Services resource.
 
-See \url{https://paws-r.github.io/docs/codepipeline/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_untag_resource/} for full documentation.
 }
 \keyword{internal}

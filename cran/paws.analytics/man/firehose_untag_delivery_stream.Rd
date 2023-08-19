@@ -15,6 +15,6 @@ stream.}
 \description{
 Removes tags from the specified delivery stream. Removed tags are deleted, and you can't recover them after this operation successfully completes.
 
-See \url{https://paws-r.github.io/docs/firehose/untag_delivery_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/firehose_untag_delivery_stream/} for full documentation.
 }
 \keyword{internal}

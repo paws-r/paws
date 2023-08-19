@@ -9,12 +9,11 @@ ICD-10-CM knowledge base from the Centers for Disease Control}
 comprehendmedical_infer_icd10cm(Text)
 }
 \arguments{
-\item{Text}{[required] The input text used for analysis. The input for InferICD10CM is a string
-from 1 to 10000 characters.}
+\item{Text}{[required] The input text used for analysis.}
 }
 \description{
 InferICD10CM detects medical conditions as entities listed in a patient record and links those entities to normalized concept identifiers in the ICD-10-CM knowledge base from the Centers for Disease Control. Amazon Comprehend Medical only detects medical entities in English language texts.
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/infer_icd10cm.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_infer_icd10cm/} for full documentation.
 }
 \keyword{internal}

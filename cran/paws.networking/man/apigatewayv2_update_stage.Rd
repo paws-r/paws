@@ -47,6 +47,6 @@ have alphanumeric and underscore characters, and the values must match
 \description{
 Updates a Stage.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/update_stage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_update_stage/} for full documentation.
 }
 \keyword{internal}

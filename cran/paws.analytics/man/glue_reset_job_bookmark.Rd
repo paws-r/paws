@@ -14,6 +14,6 @@ glue_reset_job_bookmark(JobName, RunId = NULL)
 \description{
 Resets a bookmark entry.
 
-See \url{https://paws-r.github.io/docs/glue/reset_job_bookmark.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_reset_job_bookmark/} for full documentation.
 }
 \keyword{internal}

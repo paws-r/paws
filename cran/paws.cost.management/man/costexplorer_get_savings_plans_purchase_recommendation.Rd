@@ -54,6 +54,6 @@ not supported.}
 \description{
 Retrieves the Savings Plans recommendations for your account. First use \code{\link[=costexplorer_start_savings_plans_purchase_recommendation_generation]{start_savings_plans_purchase_recommendation_generation}} to generate a new set of recommendations, and then use \code{\link[=costexplorer_get_savings_plans_purchase_recommendation]{get_savings_plans_purchase_recommendation}} to retrieve them.
 
-See \url{https://paws-r.github.io/docs/costexplorer/get_savings_plans_purchase_recommendation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_savings_plans_purchase_recommendation/} for full documentation.
 }
 \keyword{internal}

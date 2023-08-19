@@ -23,6 +23,6 @@ results.}
 \description{
 Lists all asset bundle import jobs that have taken place in the last 14 days. Jobs created more than 14 days ago are deleted forever and are not returned. If you are using the same job ID for multiple jobs, \code{\link[=quicksight_list_asset_bundle_import_jobs]{list_asset_bundle_import_jobs}} only returns the most recent job that uses the repeated job ID.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_asset_bundle_import_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_asset_bundle_import_jobs/} for full documentation.
 }
 \keyword{internal}

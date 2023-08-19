@@ -55,6 +55,6 @@ to the end recipient.}
 \description{
 Creates a new text message and sends it to a recipient's phone number.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/send_text_message.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_text_message/} for full documentation.
 }
 \keyword{internal}

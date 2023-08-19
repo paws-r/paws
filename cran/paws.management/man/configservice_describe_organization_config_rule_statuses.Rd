@@ -25,6 +25,6 @@ the next page of results in a paginated response.}
 \description{
 Provides organization Config rule deployment status for an organization.
 
-See \url{https://paws-r.github.io/docs/configservice/describe_organization_config_rule_statuses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_describe_organization_config_rule_statuses/} for full documentation.
 }
 \keyword{internal}

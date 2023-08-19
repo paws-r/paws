@@ -12,6 +12,6 @@ athena_get_notebook_metadata(NotebookId)
 \description{
 Retrieves notebook metadata for the specified notebook ID.
 
-See \url{https://paws-r.github.io/docs/athena/get_notebook_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_get_notebook_metadata/} for full documentation.
 }
 \keyword{internal}

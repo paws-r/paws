@@ -142,6 +142,6 @@ The status for tasks that are not completed is \code{TIMED_OUT}.
 \description{
 Adds a new task to a maintenance window.
 
-See \url{https://paws-r.github.io/docs/ssm/register_task_with_maintenance_window.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_register_task_with_maintenance_window/} for full documentation.
 }
 \keyword{internal}

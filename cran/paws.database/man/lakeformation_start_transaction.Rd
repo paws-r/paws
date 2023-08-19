@@ -14,6 +14,6 @@ Read-only transactions do not need to be committed.}
 \description{
 Starts a new transaction and returns its transaction ID. Transaction IDs are opaque objects that you can use to identify a transaction.
 
-See \url{https://paws-r.github.io/docs/lakeformation/start_transaction.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_start_transaction/} for full documentation.
 }
 \keyword{internal}

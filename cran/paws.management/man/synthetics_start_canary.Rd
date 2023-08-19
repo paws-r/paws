@@ -13,6 +13,6 @@ synthetics_start_canary(Name)
 \description{
 Use this operation to run a canary that has already been created. The frequency of the canary runs is determined by the value of the canary's \code{Schedule}. To see a canary's schedule, use \code{\link[=synthetics_get_canary]{get_canary}}.
 
-See \url{https://paws-r.github.io/docs/synthetics/start_canary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_start_canary/} for full documentation.
 }
 \keyword{internal}

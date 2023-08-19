@@ -42,6 +42,7 @@ following resources:
 \item Agents
 \item Channels
 \item User hierarchy groups
+\item Feature
 }
 
 At least one filter must be passed from queues, routing profiles,
@@ -56,13 +57,18 @@ Note the following limits:
 single request. Valid filter keys: \code{QUEUE} | \code{ROUTING_PROFILE} |
 \code{AGENT} | \code{CHANNEL} | \code{AGENT_HIERARCHY_LEVEL_ONE} |
 \code{AGENT_HIERARCHY_LEVEL_TWO} | \code{AGENT_HIERARCHY_LEVEL_THREE} |
-\code{AGENT_HIERARCHY_LEVEL_FOUR} | \code{AGENT_HIERARCHY_LEVEL_FIVE}
+\code{AGENT_HIERARCHY_LEVEL_FOUR} | \code{AGENT_HIERARCHY_LEVEL_FIVE} |
+\code{FEATURE}
 \item \strong{Filter values}: A maximum of 100 filter values are supported in a
-single request. For example, a
-\code{\link[=connect_get_metric_data_v2]{get_metric_data_v2}} request can
-filter by 50 queues, 35 agents, and 15 routing profiles for a total
-of 100 filter values. \code{VOICE}, \code{CHAT}, and \code{TASK} are valid
-\code{filterValue} for the \code{CHANNEL} filter key.
+single request. VOICE, CHAT, and TASK are valid \code{filterValue} for
+the CHANNEL filter key. They do not count towards limitation of 100
+filter values. For example, a GetMetricDataV2 request can filter by
+50 queues, 35 agents, and 15 routing profiles for a total of 100
+filter values, along with 3 channel filters.
+
+\code{contact_lens_conversational_analytics} is a valid filterValue for
+the \code{FEATURE} filter key. It is available only to contacts analyzed
+by Contact Lens conversational analytics.
 }}
 
 \item{Groupings}{The grouping applied to the metrics that are returned. For example, when
@@ -140,6 +146,19 @@ Agent Hierarchy
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy, Feature
+
+Feature is a valid filter but not a valid grouping.
+
+\strong{AVG_AGENT_CONNECTING_TIME}
+
+Unit: Seconds
+
+Valid metric filter key: \code{INITIATION_METHOD}. For now, this metric only
+supports the following as \code{INITIATION_METHOD}: \code{INBOUND} | \code{OUTBOUND} |
+\code{CALLBACK} | \code{API}
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
 Agent Hierarchy
 
 \strong{AVG_AGENT_CONNECTING_TIME}
@@ -153,19 +172,58 @@ supports the following as \code{INITIATION_METHOD}: \code{INBOUND} | \code{OUTBO
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
 Agent Hierarchy
 
-\strong{AVG_HANDLE_TIME}
+\strong{AVG_CONTACT_DURATION}
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy, Feature
+
+Feature is a valid filter but not a valid grouping.
+
+\strong{AVG_CONVERSATION_DURATION}
 
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
 Agent Hierarchy
+
+\strong{AVG_GREETING_TIME_AGENT}
+
+This metric is available only for contacts analyzed by Contact Lens
+conversational analytics.
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{AVG_HANDLE_TIME}
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy, Feature
+
+Feature is a valid filter but not a valid grouping.
 
 \strong{AVG_HOLD_TIME}
 
 Unit: Seconds
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, Feature
+
+Feature is a valid filter but not a valid grouping.
+
+\strong{AVG_HOLDS}
+
+Unit: Count
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy, Feature
+
+Feature is a valid filter but not a valid grouping.
 
 \strong{AVG_INTERACTION_AND_HOLD_TIME}
 
@@ -178,13 +236,77 @@ Agent Hierarchy
 
 Unit: Seconds
 
-Valid groupings and filters: Queue, Channel, Routing Profile
+Valid groupings and filters: Queue, Channel, Routing Profile, Feature
+
+Feature is a valid filter but not a valid grouping.
+
+\strong{AVG_INTERRUPTIONS_AGENT}
+
+This metric is available only for contacts analyzed by Contact Lens
+conversational analytics.
+
+Unit: Count
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{AVG_INTERRUPTION_TIME_AGENT}
+
+This metric is available only for contacts analyzed by Contact Lens
+conversational analytics.
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{AVG_NON_TALK_TIME}
+
+This metric is available only for contacts analyzed by Contact Lens
+conversational analytics.
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
 
 \strong{AVG_QUEUE_ANSWER_TIME}
 
 Unit: Seconds
 
-Valid groupings and filters: Queue, Channel, Routing Profile
+Valid groupings and filters: Queue, Channel, Routing Profile, Feature
+
+Feature is a valid filter but not a valid grouping.
+
+\strong{AVG_TALK_TIME}
+
+This metric is available only for contacts analyzed by Contact Lens
+conversational analytics.
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{AVG_TALK_TIME_AGENT}
+
+This metric is available only for contacts analyzed by Contact Lens
+conversational analytics.
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{AVG_TALK_TIME_CUSTOMER}
+
+This metric is available only for contacts analyzed by Contact Lens
+conversational analytics.
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
 
 \strong{CONTACTS_ABANDONED}
 
@@ -199,7 +321,9 @@ Unit: Count
 
 Valid metric filter key: \code{INITIATION_METHOD}
 
-Valid groupings and filters: Queue, Channel, Routing Profile
+Valid groupings and filters: Queue, Channel, Routing Profile, Feature
+
+Feature is a valid filter but not a valid grouping.
 
 \strong{CONTACTS_HANDLED}
 
@@ -208,7 +332,9 @@ Unit: Count
 Valid metric filter key: \code{INITIATION_METHOD}, \code{DISCONNECT_REASON}
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, Feature
+
+Feature is a valid filter but not a valid grouping.
 
 \strong{CONTACTS_HOLD_ABANDONS}
 
@@ -229,7 +355,9 @@ Agent Hierarchy
 Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+Agent Hierarchy, Feature
+
+Feature is a valid filter but not a valid grouping.
 
 \strong{CONTACTS_TRANSFERRED_OUT_BY_AGENT}
 
@@ -307,6 +435,6 @@ results.}
 \description{
 Gets metric data from the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/get_metric_data_v2.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_get_metric_data_v2/} for full documentation.
 }
 \keyword{internal}

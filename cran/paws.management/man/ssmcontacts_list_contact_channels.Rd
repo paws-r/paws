@@ -20,6 +20,6 @@ ssmcontacts_list_contact_channels(
 \description{
 Lists all contact channels for the specified contact.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/list_contact_channels.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_list_contact_channels/} for full documentation.
 }
 \keyword{internal}

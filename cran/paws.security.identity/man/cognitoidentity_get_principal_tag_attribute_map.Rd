@@ -19,6 +19,6 @@ attribute mappings for.}
 \description{
 Use \code{\link[=cognitoidentity_get_principal_tag_attribute_map]{get_principal_tag_attribute_map}} to list all mappings between \code{PrincipalTags} and user attributes.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/get_principal_tag_attribute_map.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_get_principal_tag_attribute_map/} for full documentation.
 }
 \keyword{internal}

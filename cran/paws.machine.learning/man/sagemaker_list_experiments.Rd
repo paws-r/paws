@@ -33,6 +33,6 @@ value is 10.}
 \description{
 Lists all the experiments in your account. The list can be filtered to show only experiments that were created in a specific time range. The list can be sorted by experiment name or creation time.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_experiments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_experiments/} for full documentation.
 }
 \keyword{internal}

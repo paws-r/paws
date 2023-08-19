@@ -41,6 +41,6 @@ policy to.}
 \description{
 Updates an existing IAM policy assignment. This operation updates only the optional parameter or parameters that are specified in the request. This overwrites all of the users included in \code{Identities}.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_iam_policy_assignment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_iam_policy_assignment/} for full documentation.
 }
 \keyword{internal}

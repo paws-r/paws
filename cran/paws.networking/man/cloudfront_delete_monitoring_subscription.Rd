@@ -13,6 +13,6 @@ cloudfront_delete_monitoring_subscription(DistributionId)
 \description{
 Disables additional CloudWatch metrics for the specified CloudFront distribution.
 
-See \url{https://paws-r.github.io/docs/cloudfront/delete_monitoring_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_delete_monitoring_subscription/} for full documentation.
 }
 \keyword{internal}

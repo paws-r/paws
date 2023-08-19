@@ -13,6 +13,6 @@ shield_disassociate_drt_log_bucket(LogBucket)
 \description{
 Removes the Shield Response Team's (SRT) access to the specified Amazon S3 bucket containing the logs that you shared previously.
 
-See \url{https://paws-r.github.io/docs/shield/disassociate_drt_log_bucket.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_disassociate_drt_log_bucket/} for full documentation.
 }
 \keyword{internal}

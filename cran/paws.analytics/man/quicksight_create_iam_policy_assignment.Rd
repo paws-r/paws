@@ -42,6 +42,6 @@ policy to.}
 \description{
 Creates an assignment with one specified IAM policy, identified by its Amazon Resource Name (ARN). This policy assignment is attached to the specified groups or users of Amazon QuickSight. Assignment names are unique per Amazon Web Services account. To avoid overwriting rules in other namespaces, use assignment names that are unique.
 
-See \url{https://paws-r.github.io/docs/quicksight/create_iam_policy_assignment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_create_iam_policy_assignment/} for full documentation.
 }
 \keyword{internal}

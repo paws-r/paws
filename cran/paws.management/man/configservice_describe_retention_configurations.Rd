@@ -23,6 +23,6 @@ the next page of results in a paginated response.}
 \description{
 Returns the details of one or more retention configurations. If the retention configuration name is not specified, this action returns the details for all the retention configurations for that account.
 
-See \url{https://paws-r.github.io/docs/configservice/describe_retention_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_describe_retention_configurations/} for full documentation.
 }
 \keyword{internal}

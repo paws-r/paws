@@ -20,6 +20,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Returns a list of insights in your Amazon Web Services account. You can specify which insights are returned by their start time and status (\code{ONGOING}, \code{CLOSED}, or \code{ANY}).
 
-See \url{https://paws-r.github.io/docs/devopsguru/list_insights.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_list_insights/} for full documentation.
 }
 \keyword{internal}

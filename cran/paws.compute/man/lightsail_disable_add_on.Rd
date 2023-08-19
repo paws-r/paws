@@ -14,6 +14,6 @@ lightsail_disable_add_on(addOnType, resourceName)
 \description{
 Disables an add-on for an Amazon Lightsail resource. For more information, see the Amazon Lightsail Developer Guide.
 
-See \url{https://paws-r.github.io/docs/lightsail/disable_add_on.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_disable_add_on/} for full documentation.
 }
 \keyword{internal}

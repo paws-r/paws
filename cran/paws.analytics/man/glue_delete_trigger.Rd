@@ -12,6 +12,6 @@ glue_delete_trigger(Name)
 \description{
 Deletes a specified trigger. If the trigger is not found, no exception is thrown.
 
-See \url{https://paws-r.github.io/docs/glue/delete_trigger.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_delete_trigger/} for full documentation.
 }
 \keyword{internal}

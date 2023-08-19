@@ -25,6 +25,6 @@ For more information about using tags to control access, see
 \description{
 Creates a log group with the specified name. You can create up to 20,000 log groups per account.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/create_log_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_log_group/} for full documentation.
 }
 \keyword{internal}

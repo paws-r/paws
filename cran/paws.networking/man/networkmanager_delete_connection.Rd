@@ -14,6 +14,6 @@ networkmanager_delete_connection(GlobalNetworkId, ConnectionId)
 \description{
 Deletes the specified connection in your global network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/delete_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_delete_connection/} for full documentation.
 }
 \keyword{internal}

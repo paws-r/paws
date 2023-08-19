@@ -12,6 +12,6 @@ route53recoverycontrolconfig_describe_cluster(ClusterArn)
 \description{
 Display the details about a cluster. The response includes the cluster name, endpoints, status, and Amazon Resource Name (ARN).
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/describe_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_describe_cluster/} for full documentation.
 }
 \keyword{internal}

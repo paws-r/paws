@@ -17,6 +17,6 @@ networkmanager_disassociate_transit_gateway_connect_peer(
 \description{
 Disassociates a transit gateway Connect peer from a device and link.
 
-See \url{https://paws-r.github.io/docs/networkmanager/disassociate_transit_gateway_connect_peer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_disassociate_transit_gateway_connect_peer/} for full documentation.
 }
 \keyword{internal}

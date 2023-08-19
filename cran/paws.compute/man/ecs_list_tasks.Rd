@@ -79,6 +79,6 @@ results.}
 \description{
 Returns a list of tasks. You can filter the results by cluster, task definition family, container instance, launch type, what IAM principal started the task, or by the desired status of the task.
 
-See \url{https://paws-r.github.io/docs/ecs/list_tasks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_list_tasks/} for full documentation.
 }
 \keyword{internal}

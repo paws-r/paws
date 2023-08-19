@@ -35,6 +35,6 @@ regardless of the tag value.
 \description{
 Describes the specified IPv4 address pools.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_public_ipv_4_pools.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_public_ipv_4_pools/} for full documentation.
 }
 \keyword{internal}

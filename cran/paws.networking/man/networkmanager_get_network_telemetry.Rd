@@ -63,6 +63,6 @@ The following are the supported resource types for Amazon VPC:
 \description{
 Gets the network telemetry of the specified global network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_network_telemetry.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_network_telemetry/} for full documentation.
 }
 \keyword{internal}

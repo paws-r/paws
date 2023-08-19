@@ -21,6 +21,6 @@ insight produces a list of resource identifiers.}
 \description{
 Creates a custom insight in Security Hub. An insight is a consolidation of findings that relate to a security issue that requires attention or remediation.
 
-See \url{https://paws-r.github.io/docs/securityhub/create_insight.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_create_insight/} for full documentation.
 }
 \keyword{internal}

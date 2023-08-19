@@ -34,6 +34,6 @@ SDK, an idempotency token is created for you.}
 \description{
 Creates a pull request in the specified repository.
 
-See \url{https://paws-r.github.io/docs/codecommit/create_pull_request.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_create_pull_request/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ macie2_describe_classification_job(jobId)
 \description{
 Retrieves the status and settings for a classification job.
 
-See \url{https://paws-r.github.io/docs/macie2/describe_classification_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_describe_classification_job/} for full documentation.
 }
 \keyword{internal}

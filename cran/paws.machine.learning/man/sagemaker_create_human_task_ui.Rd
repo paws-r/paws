@@ -19,6 +19,6 @@ of a key and a value, both of which you define.}
 \description{
 Defines the settings you will use for the human review workflow user interface. Reviewers will see a three-panel interface with an instruction area, the item to review, and an input area.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_human_task_ui.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_human_task_ui/} for full documentation.
 }
 \keyword{internal}

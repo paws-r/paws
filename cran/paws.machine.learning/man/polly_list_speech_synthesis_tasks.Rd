@@ -22,6 +22,6 @@ of speech synthesis tasks.}
 \description{
 Returns a list of SpeechSynthesisTask objects ordered by their creation date. This operation can filter the tasks by their status, for example, allowing users to list only tasks that are completed.
 
-See \url{https://paws-r.github.io/docs/polly/list_speech_synthesis_tasks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/polly_list_speech_synthesis_tasks/} for full documentation.
 }
 \keyword{internal}

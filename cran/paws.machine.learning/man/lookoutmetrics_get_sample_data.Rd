@@ -12,6 +12,6 @@ lookoutmetrics_get_sample_data(S3SourceConfig = NULL)
 \description{
 Returns a selection of sample records from an Amazon S3 datasource.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/get_sample_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_get_sample_data/} for full documentation.
 }
 \keyword{internal}

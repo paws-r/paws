@@ -32,6 +32,6 @@ passed, only \code{TemplateBody} is used.}
 \description{
 Returns the estimated monthly cost of a template. The return value is an Amazon Web Services Simple Monthly Calculator URL with a query string that describes the resources required to run the template.
 
-See \url{https://paws-r.github.io/docs/cloudformation/estimate_template_cost.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_estimate_template_cost/} for full documentation.
 }
 \keyword{internal}

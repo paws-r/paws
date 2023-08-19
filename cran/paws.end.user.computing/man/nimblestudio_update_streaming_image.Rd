@@ -29,6 +29,6 @@ it for the request to ensure idempotency.}
 \description{
 Update streaming image.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/update_streaming_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_update_streaming_image/} for full documentation.
 }
 \keyword{internal}

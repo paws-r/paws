@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Deletes the specified human loop for a flow definition.
 #'
-#' See [https://paws-r.github.io/docs/augmentedairuntime/delete_human_loop.html](https://paws-r.github.io/docs/augmentedairuntime/delete_human_loop.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/augmentedairuntime_delete_human_loop/](https://www.paws-r-sdk.com/docs/augmentedairuntime_delete_human_loop/) for full documentation.
 #'
 #' @param HumanLoopName &#91;required&#93; The name of the human loop that you want to delete.
 #'
@@ -37,7 +37,7 @@ augmentedairuntime_delete_human_loop <- function(HumanLoopName) {
 #' @description
 #' Returns information about the specified human loop. If the human loop was deleted, this operation will return a `ResourceNotFoundException` error.
 #'
-#' See [https://paws-r.github.io/docs/augmentedairuntime/describe_human_loop.html](https://paws-r.github.io/docs/augmentedairuntime/describe_human_loop.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/augmentedairuntime_describe_human_loop/](https://www.paws-r-sdk.com/docs/augmentedairuntime_describe_human_loop/) for full documentation.
 #'
 #' @param HumanLoopName &#91;required&#93; The name of the human loop that you want information about.
 #'
@@ -66,7 +66,7 @@ augmentedairuntime_describe_human_loop <- function(HumanLoopName) {
 #' @description
 #' Returns information about human loops, given the specified parameters. If a human loop was deleted, it will not be included.
 #'
-#' See [https://paws-r.github.io/docs/augmentedairuntime/list_human_loops.html](https://paws-r.github.io/docs/augmentedairuntime/list_human_loops.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/augmentedairuntime_list_human_loops/](https://www.paws-r-sdk.com/docs/augmentedairuntime_list_human_loops/) for full documentation.
 #'
 #' @param CreationTimeAfter (Optional) The timestamp of the date when you want the human loops to
 #' begin in ISO 8601 format. For example, `2020-02-24`.
@@ -89,7 +89,7 @@ augmentedairuntime_list_human_loops <- function(CreationTimeAfter = NULL, Creati
     name = "ListHumanLoops",
     http_method = "GET",
     http_path = "/human-loops",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HumanLoopSummaries")
   )
   input <- .augmentedairuntime$list_human_loops_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, FlowDefinitionArn = FlowDefinitionArn, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .augmentedairuntime$list_human_loops_output()
@@ -107,7 +107,7 @@ augmentedairuntime_list_human_loops <- function(CreationTimeAfter = NULL, Creati
 #' @description
 #' Starts a human loop, provided that at least one activation condition is met.
 #'
-#' See [https://paws-r.github.io/docs/augmentedairuntime/start_human_loop.html](https://paws-r.github.io/docs/augmentedairuntime/start_human_loop.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/augmentedairuntime_start_human_loop/](https://www.paws-r-sdk.com/docs/augmentedairuntime_start_human_loop/) for full documentation.
 #'
 #' @param HumanLoopName &#91;required&#93; The name of the human loop.
 #' @param FlowDefinitionArn &#91;required&#93; The Amazon Resource Name (ARN) of the flow definition associated with
@@ -142,7 +142,7 @@ augmentedairuntime_start_human_loop <- function(HumanLoopName, FlowDefinitionArn
 #' @description
 #' Stops the specified human loop.
 #'
-#' See [https://paws-r.github.io/docs/augmentedairuntime/stop_human_loop.html](https://paws-r.github.io/docs/augmentedairuntime/stop_human_loop.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/augmentedairuntime_stop_human_loop/](https://www.paws-r-sdk.com/docs/augmentedairuntime_stop_human_loop/) for full documentation.
 #'
 #' @param HumanLoopName &#91;required&#93; The name of the human loop that you want to stop.
 #'

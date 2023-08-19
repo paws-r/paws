@@ -22,6 +22,6 @@ groups.}
 \description{
 Lists specific permissions of users and groups with access to your Amazon Kendra experience.
 
-See \url{https://paws-r.github.io/docs/kendra/list_entity_personas.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_list_entity_personas/} for full documentation.
 }
 \keyword{internal}

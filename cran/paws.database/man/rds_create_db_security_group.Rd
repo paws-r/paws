@@ -31,6 +31,6 @@ Example: \code{mysecuritygroup}}
 \description{
 Creates a new DB security group. DB security groups control access to a DB instance.
 
-See \url{https://paws-r.github.io/docs/rds/create_db_security_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_create_db_security_group/} for full documentation.
 }
 \keyword{internal}

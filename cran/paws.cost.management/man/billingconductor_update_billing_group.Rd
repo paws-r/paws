@@ -9,7 +9,8 @@ billingconductor_update_billing_group(
   Name = NULL,
   Status = NULL,
   ComputationPreference = NULL,
-  Description = NULL
+  Description = NULL,
+  AccountGrouping = NULL
 )
 }
 \arguments{
@@ -25,10 +26,13 @@ used.}
 Services charges for a billing group.}
 
 \item{Description}{A description of the billing group.}
+
+\item{AccountGrouping}{Specifies if the billing group has automatic account association
+(\code{AutoAssociate}) enabled.}
 }
 \description{
 This updates an existing billing group.
 
-See \url{https://paws-r.github.io/docs/billingconductor/update_billing_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_update_billing_group/} for full documentation.
 }
 \keyword{internal}

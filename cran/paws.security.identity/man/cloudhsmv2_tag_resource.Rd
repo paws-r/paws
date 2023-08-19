@@ -17,6 +17,6 @@ find the cluster ID, use
 \description{
 Adds or overwrites one or more tags for the specified AWS CloudHSM cluster.
 
-See \url{https://paws-r.github.io/docs/cloudhsmv2/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_tag_resource/} for full documentation.
 }
 \keyword{internal}

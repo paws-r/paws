@@ -30,6 +30,6 @@ fully-qualified domain name (FQDN).}
 \description{
 Connect to a hypervisor by importing its configuration.
 
-See \url{https://paws-r.github.io/docs/backupgateway/import_hypervisor_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_import_hypervisor_configuration/} for full documentation.
 }
 \keyword{internal}

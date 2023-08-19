@@ -14,6 +14,6 @@ frauddetector_get_event(eventId, eventTypeName)
 \description{
 Retrieves details of events stored with Amazon Fraud Detector. This action does not retrieve prediction results.
 
-See \url{https://paws-r.github.io/docs/frauddetector/get_event.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_get_event/} for full documentation.
 }
 \keyword{internal}

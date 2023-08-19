@@ -12,6 +12,6 @@ glue_delete_blueprint(Name)
 \description{
 Deletes an existing blueprint.
 
-See \url{https://paws-r.github.io/docs/glue/delete_blueprint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_delete_blueprint/} for full documentation.
 }
 \keyword{internal}

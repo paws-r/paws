@@ -31,6 +31,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Disables Infrastructure Performance metric subscriptions.
 
-See \url{https://paws-r.github.io/docs/ec2/disable_aws_network_performance_metric_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_disable_aws_network_performance_metric_subscription/} for full documentation.
 }
 \keyword{internal}

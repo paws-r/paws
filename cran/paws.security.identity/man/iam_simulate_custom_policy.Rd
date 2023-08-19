@@ -201,6 +201,6 @@ indicate where the next call should start.}
 \description{
 Simulate how a set of IAM policies and optionally a resource-based policy works with a list of API operations and Amazon Web Services resources to determine the policies' effective permissions. The policies are provided as strings.
 
-See \url{https://paws-r.github.io/docs/iam/simulate_custom_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_simulate_custom_policy/} for full documentation.
 }
 \keyword{internal}

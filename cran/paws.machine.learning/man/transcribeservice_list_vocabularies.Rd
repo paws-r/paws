@@ -35,6 +35,6 @@ The search is not case sensitive.}
 \description{
 Provides a list of custom vocabularies that match the specified criteria. If no criteria are specified, all custom vocabularies are returned.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/list_vocabularies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_list_vocabularies/} for full documentation.
 }
 \keyword{internal}

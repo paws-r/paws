@@ -17,6 +17,6 @@ applied.}
 \description{
 Removes an automatic scaling policy from a specified instance group within an Amazon EMR cluster.
 
-See \url{https://paws-r.github.io/docs/emr/remove_auto_scaling_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_remove_auto_scaling_policy/} for full documentation.
 }
 \keyword{internal}

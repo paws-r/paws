@@ -23,6 +23,6 @@ retrieved.}
 \description{
 Returns the resource policy that is set on a repository.
 
-See \url{https://paws-r.github.io/docs/codeartifact/get_repository_permissions_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_get_repository_permissions_policy/} for full documentation.
 }
 \keyword{internal}

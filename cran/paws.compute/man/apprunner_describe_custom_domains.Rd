@@ -31,6 +31,6 @@ results in a single response.}
 \description{
 Return a description of custom domain names that are associated with an App Runner service.
 
-See \url{https://paws-r.github.io/docs/apprunner/describe_custom_domains.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_describe_custom_domains/} for full documentation.
 }
 \keyword{internal}

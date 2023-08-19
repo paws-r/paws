@@ -13,6 +13,6 @@ opsworks_unassign_instance(InstanceId)
 \description{
 Unassigns a registered instance from all layers that are using the instance. The instance remains in the stack as an unassigned instance, and can be assigned to another layer as needed. You cannot use this action with instances that were created with AWS OpsWorks Stacks.
 
-See \url{https://paws-r.github.io/docs/opsworks/unassign_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_unassign_instance/} for full documentation.
 }
 \keyword{internal}

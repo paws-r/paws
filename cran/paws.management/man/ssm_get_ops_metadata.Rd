@@ -20,6 +20,6 @@ results.}
 \description{
 View operational metadata related to an application in Application Manager.
 
-See \url{https://paws-r.github.io/docs/ssm/get_ops_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_ops_metadata/} for full documentation.
 }
 \keyword{internal}

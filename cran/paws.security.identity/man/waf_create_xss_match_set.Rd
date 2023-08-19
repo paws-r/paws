@@ -16,6 +16,6 @@ You can't change \code{Name} after you create the \code{XssMatchSet}.}
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-See \url{https://paws-r.github.io/docs/waf/create_xss_match_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/waf_create_xss_match_set/} for full documentation.
 }
 \keyword{internal}

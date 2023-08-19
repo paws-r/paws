@@ -12,7 +12,8 @@ kms_re_encrypt(
   DestinationEncryptionContext = NULL,
   SourceEncryptionAlgorithm = NULL,
   DestinationEncryptionAlgorithm = NULL,
-  GrantTokens = NULL
+  GrantTokens = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -134,10 +135,15 @@ a new grant that has not yet achieved \emph{eventual consistency}. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
 and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token}{Using a grant token}
 in the \emph{Key Management Service Developer Guide}.}
+
+\item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
+
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html}{Testing your KMS API calls}
+in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Decrypts ciphertext and then reencrypts it entirely within KMS. You can use this operation to change the KMS key under which data is encrypted, such as when you \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html#rotate-keys-manually}{manually rotate} a KMS key or change the KMS key that protects a ciphertext. You can also use it to reencrypt ciphertext under the same KMS key, such as to change the \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#encrypt_context}{encryption context} of a ciphertext.
 
-See \url{https://paws-r.github.io/docs/kms/re_encrypt.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_re_encrypt/} for full documentation.
 }
 \keyword{internal}

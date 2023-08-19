@@ -37,6 +37,6 @@ in the \code{Marker} parameter and retrying the request.}
 \description{
 Returns a list of datashares when the account identifier being called is a producer account identifier.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_data_shares_for_producer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_data_shares_for_producer/} for full documentation.
 }
 \keyword{internal}

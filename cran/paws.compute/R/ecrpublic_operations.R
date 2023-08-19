@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Checks the availability of one or more image layers that are within a repository in a public registry. When an image is pushed to a repository, each image layer is checked to verify if it has been uploaded before. If it has been uploaded, then the image layer is skipped.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/batch_check_layer_availability.html](https://paws-r.github.io/docs/ecrpublic/batch_check_layer_availability.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_batch_check_layer_availability/](https://www.paws-r-sdk.com/docs/ecrpublic_batch_check_layer_availability/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID, or registry alias, associated with
 #' the public registry that contains the image layers to check. If you do
@@ -44,7 +44,7 @@ ecrpublic_batch_check_layer_availability <- function(registryId = NULL, reposito
 #' @description
 #' Deletes a list of specified images that are within a repository in a public registry. Images are specified with either an `imageTag` or `imageDigest`.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/batch_delete_image.html](https://paws-r.github.io/docs/ecrpublic/batch_delete_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_batch_delete_image/](https://www.paws-r-sdk.com/docs/ecrpublic_batch_delete_image/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID, or registry alias, that's associated
 #' with the registry that contains the image to delete. If you do not
@@ -80,7 +80,7 @@ ecrpublic_batch_delete_image <- function(registryId = NULL, repositoryName, imag
 #' @description
 #' Informs Amazon ECR that the image layer upload is complete for a specified public registry, repository name, and upload ID. You can optionally provide a `sha256` digest of the image layer for data validation purposes.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/complete_layer_upload.html](https://paws-r.github.io/docs/ecrpublic/complete_layer_upload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_complete_layer_upload/](https://www.paws-r-sdk.com/docs/ecrpublic_complete_layer_upload/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID, or registry alias, associated with
 #' the registry where layers are uploaded. If you do not specify a
@@ -117,7 +117,7 @@ ecrpublic_complete_layer_upload <- function(registryId = NULL, repositoryName, u
 #' @description
 #' Creates a repository in a public registry. For more information, see [Amazon ECR repositories](https://docs.aws.amazon.com/AmazonECR/latest/userguide/Repositories.html) in the *Amazon Elastic Container Registry User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/create_repository.html](https://paws-r.github.io/docs/ecrpublic/create_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_create_repository/](https://www.paws-r-sdk.com/docs/ecrpublic_create_repository/) for full documentation.
 #'
 #' @param repositoryName &#91;required&#93; The name to use for the repository. This appears publicly in the Amazon
 #' ECR Public Gallery. The repository name can be specified on its own (for
@@ -156,7 +156,7 @@ ecrpublic_create_repository <- function(repositoryName, catalogData = NULL, tags
 #' @description
 #' Deletes a repository in a public registry. If the repository contains images, you must either manually delete all images in the repository or use the `force` option. This option deletes all images on your behalf before deleting the repository.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/delete_repository.html](https://paws-r.github.io/docs/ecrpublic/delete_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_delete_repository/](https://www.paws-r-sdk.com/docs/ecrpublic_delete_repository/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID that's associated with the public
 #' registry that contains the repository to delete. If you do not specify a
@@ -192,7 +192,7 @@ ecrpublic_delete_repository <- function(registryId = NULL, repositoryName, force
 #' @description
 #' Deletes the repository policy that's associated with the specified repository.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/delete_repository_policy.html](https://paws-r.github.io/docs/ecrpublic/delete_repository_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_delete_repository_policy/](https://www.paws-r-sdk.com/docs/ecrpublic_delete_repository_policy/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID that's associated with the public
 #' registry that contains the repository policy to delete. If you do not
@@ -225,7 +225,7 @@ ecrpublic_delete_repository_policy <- function(registryId = NULL, repositoryName
 #' @description
 #' Returns the image tag details for a repository in a public registry.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/describe_image_tags.html](https://paws-r.github.io/docs/ecrpublic/describe_image_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_describe_image_tags/](https://www.paws-r-sdk.com/docs/ecrpublic_describe_image_tags/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID that's associated with the public
 #' registry that contains the repository where images are described. If you
@@ -260,7 +260,7 @@ ecrpublic_describe_image_tags <- function(registryId = NULL, repositoryName, nex
     name = "DescribeImageTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "imageTagDetails")
   )
   input <- .ecrpublic$describe_image_tags_input(registryId = registryId, repositoryName = repositoryName, nextToken = nextToken, maxResults = maxResults)
   output <- .ecrpublic$describe_image_tags_output()
@@ -278,7 +278,7 @@ ecrpublic_describe_image_tags <- function(registryId = NULL, repositoryName, nex
 #' @description
 #' Returns metadata that's related to the images in a repository in a public registry.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/describe_images.html](https://paws-r.github.io/docs/ecrpublic/describe_images.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_describe_images/](https://www.paws-r-sdk.com/docs/ecrpublic_describe_images/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID that's associated with the public
 #' registry that contains the repository where images are described. If you
@@ -313,7 +313,7 @@ ecrpublic_describe_images <- function(registryId = NULL, repositoryName, imageId
     name = "DescribeImages",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "imageDetails")
   )
   input <- .ecrpublic$describe_images_input(registryId = registryId, repositoryName = repositoryName, imageIds = imageIds, nextToken = nextToken, maxResults = maxResults)
   output <- .ecrpublic$describe_images_output()
@@ -330,7 +330,7 @@ ecrpublic_describe_images <- function(registryId = NULL, repositoryName, imageId
 #' @description
 #' Returns details for a public registry.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/describe_registries.html](https://paws-r.github.io/docs/ecrpublic/describe_registries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_describe_registries/](https://www.paws-r-sdk.com/docs/ecrpublic_describe_registries/) for full documentation.
 #'
 #' @param nextToken The `nextToken` value that's returned from a previous paginated
 #' [`describe_registries`][ecrpublic_describe_registries] request where
@@ -362,7 +362,7 @@ ecrpublic_describe_registries <- function(nextToken = NULL, maxResults = NULL) {
     name = "DescribeRegistries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "registries")
   )
   input <- .ecrpublic$describe_registries_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ecrpublic$describe_registries_output()
@@ -379,7 +379,7 @@ ecrpublic_describe_registries <- function(nextToken = NULL, maxResults = NULL) {
 #' @description
 #' Describes repositories that are in a public registry.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/describe_repositories.html](https://paws-r.github.io/docs/ecrpublic/describe_repositories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_describe_repositories/](https://www.paws-r-sdk.com/docs/ecrpublic_describe_repositories/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID that's associated with the registry
 #' that contains the repositories to be described. If you do not specify a
@@ -419,7 +419,7 @@ ecrpublic_describe_repositories <- function(registryId = NULL, repositoryNames =
     name = "DescribeRepositories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "repositories")
   )
   input <- .ecrpublic$describe_repositories_input(registryId = registryId, repositoryNames = repositoryNames, nextToken = nextToken, maxResults = maxResults)
   output <- .ecrpublic$describe_repositories_output()
@@ -436,7 +436,7 @@ ecrpublic_describe_repositories <- function(registryId = NULL, repositoryNames =
 #' @description
 #' Retrieves an authorization token. An authorization token represents your IAM authentication credentials. You can use it to access any Amazon ECR registry that your IAM principal has access to. The authorization token is valid for 12 hours. This API requires the `ecr-public:GetAuthorizationToken` and `sts:GetServiceBearerToken` permissions.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/get_authorization_token.html](https://paws-r.github.io/docs/ecrpublic/get_authorization_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_get_authorization_token/](https://www.paws-r-sdk.com/docs/ecrpublic_get_authorization_token/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -463,7 +463,7 @@ ecrpublic_get_authorization_token <- function() {
 #' @description
 #' Retrieves catalog metadata for a public registry.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/get_registry_catalog_data.html](https://paws-r.github.io/docs/ecrpublic/get_registry_catalog_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_get_registry_catalog_data/](https://www.paws-r-sdk.com/docs/ecrpublic_get_registry_catalog_data/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -490,7 +490,7 @@ ecrpublic_get_registry_catalog_data <- function() {
 #' @description
 #' Retrieve catalog metadata for a repository in a public registry. This metadata is displayed publicly in the Amazon ECR Public Gallery.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/get_repository_catalog_data.html](https://paws-r.github.io/docs/ecrpublic/get_repository_catalog_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_get_repository_catalog_data/](https://www.paws-r-sdk.com/docs/ecrpublic_get_repository_catalog_data/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID that's associated with the registry
 #' that contains the repositories to be described. If you do not specify a
@@ -522,7 +522,7 @@ ecrpublic_get_repository_catalog_data <- function(registryId = NULL, repositoryN
 #' @description
 #' Retrieves the repository policy for the specified repository.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/get_repository_policy.html](https://paws-r.github.io/docs/ecrpublic/get_repository_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_get_repository_policy/](https://www.paws-r-sdk.com/docs/ecrpublic_get_repository_policy/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID that's associated with the public
 #' registry that contains the repository. If you do not specify a registry,
@@ -554,7 +554,7 @@ ecrpublic_get_repository_policy <- function(registryId = NULL, repositoryName) {
 #' @description
 #' Notifies Amazon ECR that you intend to upload an image layer.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/initiate_layer_upload.html](https://paws-r.github.io/docs/ecrpublic/initiate_layer_upload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_initiate_layer_upload/](https://www.paws-r-sdk.com/docs/ecrpublic_initiate_layer_upload/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID, or registry alias, that's associated
 #' with the registry to which you intend to upload layers. If you do not
@@ -586,7 +586,7 @@ ecrpublic_initiate_layer_upload <- function(registryId = NULL, repositoryName) {
 #' @description
 #' List the tags for an Amazon ECR Public resource.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/list_tags_for_resource.html](https://paws-r.github.io/docs/ecrpublic/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/ecrpublic_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource to list the
 #' tags for. Currently, the supported resource is an Amazon ECR Public
@@ -618,7 +618,7 @@ ecrpublic_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Creates or updates the image manifest and tags that are associated with an image.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/put_image.html](https://paws-r.github.io/docs/ecrpublic/put_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_put_image/](https://www.paws-r-sdk.com/docs/ecrpublic_put_image/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID, or registry alias, that's associated
 #' with the public registry that contains the repository where the image is
@@ -659,7 +659,7 @@ ecrpublic_put_image <- function(registryId = NULL, repositoryName, imageManifest
 #' @description
 #' Create or update the catalog data for a public registry.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/put_registry_catalog_data.html](https://paws-r.github.io/docs/ecrpublic/put_registry_catalog_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_put_registry_catalog_data/](https://www.paws-r-sdk.com/docs/ecrpublic_put_registry_catalog_data/) for full documentation.
 #'
 #' @param displayName The display name for a public registry. The display name is shown as the
 #' repository author in the Amazon ECR Public Gallery.
@@ -693,7 +693,7 @@ ecrpublic_put_registry_catalog_data <- function(displayName = NULL) {
 #' @description
 #' Creates or updates the catalog data for a repository in a public registry.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/put_repository_catalog_data.html](https://paws-r.github.io/docs/ecrpublic/put_repository_catalog_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_put_repository_catalog_data/](https://www.paws-r-sdk.com/docs/ecrpublic_put_repository_catalog_data/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID that's associated with the public
 #' registry the repository is in. If you do not specify a registry, the
@@ -728,7 +728,7 @@ ecrpublic_put_repository_catalog_data <- function(registryId = NULL, repositoryN
 #' @description
 #' Applies a repository policy to the specified public repository to control access permissions. For more information, see [Amazon ECR Repository Policies](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html) in the *Amazon Elastic Container Registry User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/set_repository_policy.html](https://paws-r.github.io/docs/ecrpublic/set_repository_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_set_repository_policy/](https://www.paws-r-sdk.com/docs/ecrpublic_set_repository_policy/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID that's associated with the registry
 #' that contains the repository. If you do not specify a registry, the
@@ -769,7 +769,7 @@ ecrpublic_set_repository_policy <- function(registryId = NULL, repositoryName, p
 #' @description
 #' Associates the specified tags to a resource with the specified `resourceArn`. If existing tags on a resource aren't specified in the request parameters, they aren't changed. When a resource is deleted, the tags associated with that resource are also deleted.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/tag_resource.html](https://paws-r.github.io/docs/ecrpublic/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_tag_resource/](https://www.paws-r-sdk.com/docs/ecrpublic_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to add tags to.
 #' Currently, the supported resource is an Amazon ECR Public repository.
@@ -802,7 +802,7 @@ ecrpublic_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Deletes specified tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/untag_resource.html](https://paws-r.github.io/docs/ecrpublic/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_untag_resource/](https://www.paws-r-sdk.com/docs/ecrpublic_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to delete tags from.
 #' Currently, the supported resource is an Amazon ECR Public repository.
@@ -833,7 +833,7 @@ ecrpublic_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Uploads an image layer part to Amazon ECR.
 #'
-#' See [https://paws-r.github.io/docs/ecrpublic/upload_layer_part.html](https://paws-r.github.io/docs/ecrpublic/upload_layer_part.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecrpublic_upload_layer_part/](https://www.paws-r-sdk.com/docs/ecrpublic_upload_layer_part/) for full documentation.
 #'
 #' @param registryId The Amazon Web Services account ID, or registry alias, that's associated
 #' with the registry that you're uploading layer parts to. If you do not

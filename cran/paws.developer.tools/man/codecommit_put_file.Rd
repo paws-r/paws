@@ -55,6 +55,6 @@ useful.}
 \description{
 Adds or updates a file in a branch in an AWS CodeCommit repository, and generates a commit for the addition in the specified branch.
 
-See \url{https://paws-r.github.io/docs/codecommit/put_file.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_put_file/} for full documentation.
 }
 \keyword{internal}

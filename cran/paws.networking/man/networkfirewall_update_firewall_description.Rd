@@ -45,6 +45,6 @@ Firewall removes the description for the firewall.}
 \description{
 Modifies the description for the specified firewall. Use the description to help you identify the firewall when you're working with it.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/update_firewall_description.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_description/} for full documentation.
 }
 \keyword{internal}

@@ -43,6 +43,6 @@ For example, to list all jobs that export a forecast named
 \description{
 Returns a list of forecast export jobs created using the \code{\link[=forecastservice_create_forecast_export_job]{create_forecast_export_job}} operation. For each forecast export job, this operation returns a summary of its properties, including its Amazon Resource Name (ARN). To retrieve the complete set of properties, use the ARN with the \code{\link[=forecastservice_describe_forecast_export_job]{describe_forecast_export_job}} operation. You can filter the list using an array of Filter objects.
 
-See \url{https://paws-r.github.io/docs/forecastservice/list_forecast_export_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_list_forecast_export_jobs/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ to authorize the request.}
 \description{
 Retrieves the sprite sheet corresponding to a map resource. The sprite sheet is a PNG image paired with a JSON document describing the offsets of individual icons that will be displayed on a rendered map.
 
-See \url{https://paws-r.github.io/docs/locationservice/get_map_sprites.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_get_map_sprites/} for full documentation.
 }
 \keyword{internal}

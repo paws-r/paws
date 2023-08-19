@@ -52,6 +52,6 @@ from a prior call.)}
 \description{
 Describes available services to which you can create a VPC endpoint.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_vpc_endpoint_services.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_vpc_endpoint_services/} for full documentation.
 }
 \keyword{internal}

@@ -86,6 +86,6 @@ IDs by calling the \code{\link[=polly_describe_voices]{describe_voices}} operati
 \description{
 Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes. SSML input must be valid, well-formed SSML. Some alphabets might not be available with all the voices (for example, Cyrillic might not be read at all by English voices) unless phoneme mapping is used. For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/how-text-to-speech-works.html}{How it Works}.
 
-See \url{https://paws-r.github.io/docs/polly/synthesize_speech.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/polly_synthesize_speech/} for full documentation.
 }
 \keyword{internal}

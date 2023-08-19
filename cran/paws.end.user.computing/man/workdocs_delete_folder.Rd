@@ -15,6 +15,6 @@ Services administrator credentials to access the API.}
 \description{
 Permanently deletes the specified folder and its contents.
 
-See \url{https://paws-r.github.io/docs/workdocs/delete_folder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_delete_folder/} for full documentation.
 }
 \keyword{internal}

@@ -42,6 +42,6 @@ for an evaluation run.}
 \description{
 Once you have a ruleset definition (either recommended or your own), you call this operation to evaluate the ruleset against a data source (Glue table). The evaluation computes results which you can retrieve with the \code{\link[=glue_get_data_quality_result]{get_data_quality_result}} API.
 
-See \url{https://paws-r.github.io/docs/glue/start_data_quality_ruleset_evaluation_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_start_data_quality_ruleset_evaluation_run/} for full documentation.
 }
 \keyword{internal}

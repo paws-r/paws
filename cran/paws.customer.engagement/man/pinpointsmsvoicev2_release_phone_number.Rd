@@ -15,6 +15,6 @@ get the values for PhoneNumberId and PhoneNumberArn.}
 \description{
 Releases an existing origination phone number in your account. Once released, a phone number is no longer available for sending messages.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/release_phone_number.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_release_phone_number/} for full documentation.
 }
 \keyword{internal}

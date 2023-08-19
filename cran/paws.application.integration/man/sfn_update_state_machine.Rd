@@ -10,7 +10,9 @@ sfn_update_state_machine(
   definition = NULL,
   roleArn = NULL,
   loggingConfiguration = NULL,
-  tracingConfiguration = NULL
+  tracingConfiguration = NULL,
+  publish = NULL,
+  versionDescription = NULL
 )
 }
 \arguments{
@@ -20,14 +22,22 @@ sfn_update_state_machine(
 
 \item{roleArn}{The Amazon Resource Name (ARN) of the IAM role of the state machine.}
 
-\item{loggingConfiguration}{The \code{LoggingConfiguration} data type is used to set CloudWatch Logs
-options.}
+\item{loggingConfiguration}{Use the \code{LoggingConfiguration} data type to set CloudWatch Logs options.}
 
 \item{tracingConfiguration}{Selects whether X-Ray tracing is enabled.}
+
+\item{publish}{Specifies whether the state machine version is published. The default is
+\code{false}. To publish a version after updating the state machine, set
+\code{publish} to \code{true}.}
+
+\item{versionDescription}{An optional description of the state machine version to publish.
+
+You can only specify the \code{versionDescription} parameter if you've set
+\code{publish} to \code{true}.}
 }
 \description{
 Updates an existing state machine by modifying its \code{definition}, \code{roleArn}, or \code{loggingConfiguration}. Running executions will continue to use the previous \code{definition} and \code{roleArn}. You must include at least one of \code{definition} or \code{roleArn} or you will receive a \code{MissingRequiredParameter} error.
 
-See \url{https://paws-r.github.io/docs/sfn/update_state_machine.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_update_state_machine/} for full documentation.
 }
 \keyword{internal}

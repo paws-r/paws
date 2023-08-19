@@ -22,6 +22,6 @@ needs to be performed. This will not actually perform the Upgrade.}
 \description{
 Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible Elasticsearch version.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/upgrade_elasticsearch_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_upgrade_elasticsearch_domain/} for full documentation.
 }
 \keyword{internal}

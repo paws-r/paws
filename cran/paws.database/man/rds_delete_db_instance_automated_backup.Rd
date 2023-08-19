@@ -23,6 +23,6 @@ This setting doesn't apply to RDS Custom.}
 \description{
 Deletes automated backups using the \code{DbiResourceId} value of the source DB instance or the Amazon Resource Name (ARN) of the automated backups.
 
-See \url{https://paws-r.github.io/docs/rds/delete_db_instance_automated_backup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_delete_db_instance_automated_backup/} for full documentation.
 }
 \keyword{internal}

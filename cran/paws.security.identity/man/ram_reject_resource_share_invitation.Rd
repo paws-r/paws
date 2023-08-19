@@ -31,6 +31,6 @@ different parameters, the retry fails with an
 \description{
 Rejects an invitation to a resource share from another Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/ram/reject_resource_share_invitation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_reject_resource_share_invitation/} for full documentation.
 }
 \keyword{internal}

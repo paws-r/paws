@@ -21,6 +21,6 @@ lowercase letters or digits.}
 \description{
 Retrieves information about an organizational unit (OU).
 
-See \url{https://paws-r.github.io/docs/organizations/describe_organizational_unit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_describe_organizational_unit/} for full documentation.
 }
 \keyword{internal}

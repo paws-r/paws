@@ -146,6 +146,6 @@ details in the response, see \href{https://docs.aws.amazon.com/autoscaling/appli
 \description{
 Provides descriptive information about the scaling activities in the specified namespace from the previous six weeks.
 
-See \url{https://paws-r.github.io/docs/applicationautoscaling/describe_scaling_activities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationautoscaling_describe_scaling_activities/} for full documentation.
 }
 \keyword{internal}

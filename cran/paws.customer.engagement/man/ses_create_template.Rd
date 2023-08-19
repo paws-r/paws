@@ -13,6 +13,6 @@ a text-only part.}
 \description{
 Creates an email template. Email templates enable you to send personalized email to one or more destinations in a single API operation. For more information, see the \href{https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html}{Amazon SES Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/ses/create_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_create_template/} for full documentation.
 }
 \keyword{internal}

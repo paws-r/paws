@@ -19,6 +19,6 @@ characters.}
 \description{
 Adds tags to an Amazon EMR resource, such as a cluster or an Amazon EMR Studio. Tags make it easier to associate resources in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html}{Tag Clusters}.
 
-See \url{https://paws-r.github.io/docs/emr/add_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_add_tags/} for full documentation.
 }
 \keyword{internal}

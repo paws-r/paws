@@ -14,6 +14,6 @@ update cost allocation tags status for this request.}
 \description{
 Updates status for cost allocation tags in bulk, with maximum batch size of 20. If the tag status that's updated is the same as the existing tag status, the request doesn't fail. Instead, it doesn't have any effect on the tag status (for example, activating the active tag).
 
-See \url{https://paws-r.github.io/docs/costexplorer/update_cost_allocation_tags_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_update_cost_allocation_tags_status/} for full documentation.
 }
 \keyword{internal}

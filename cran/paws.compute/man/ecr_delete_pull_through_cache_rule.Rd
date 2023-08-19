@@ -17,6 +17,6 @@ the default registry is assumed.}
 \description{
 Deletes a pull through cache rule.
 
-See \url{https://paws-r.github.io/docs/ecr/delete_pull_through_cache_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_delete_pull_through_cache_rule/} for full documentation.
 }
 \keyword{internal}

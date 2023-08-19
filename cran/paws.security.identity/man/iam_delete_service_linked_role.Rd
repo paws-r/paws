@@ -13,6 +13,6 @@ iam_delete_service_linked_role(RoleName)
 \description{
 Submits a service-linked role deletion request and returns a \code{DeletionTaskId}, which you can use to check the status of the deletion. Before you call this operation, confirm that the role has no active sessions and that any resources used by the role in the linked service are deleted. If you call this operation more than once for the same service-linked role and an earlier deletion task is not complete, then the \code{DeletionTaskId} of the earlier request is returned.
 
-See \url{https://paws-r.github.io/docs/iam/delete_service_linked_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_delete_service_linked_role/} for full documentation.
 }
 \keyword{internal}

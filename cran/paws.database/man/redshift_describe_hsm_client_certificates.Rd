@@ -54,6 +54,6 @@ associated with them.}
 \description{
 Returns information about the specified HSM client certificate. If no certificate ID is specified, returns information about all the HSM certificates owned by your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_hsm_client_certificates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_hsm_client_certificates/} for full documentation.
 }
 \keyword{internal}

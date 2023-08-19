@@ -40,6 +40,6 @@ previous page call.}
 \description{
 Lists, in descending order, the executors that joined a session. Newer executors are listed first; older executors are listed later. The result can be optionally filtered by state.
 
-See \url{https://paws-r.github.io/docs/athena/list_executors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_list_executors/} for full documentation.
 }
 \keyword{internal}

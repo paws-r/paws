@@ -35,6 +35,6 @@ behalf. For information about how to set permissions, see the \href{https://docs
 \description{
 Generates predictions for a group of observations. The observations to process exist in one or more data files referenced by a \code{DataSource}. This operation creates a new \code{BatchPrediction}, and uses an \code{MLModel} and the data files referenced by the \code{DataSource} as information sources.
 
-See \url{https://paws-r.github.io/docs/machinelearning/create_batch_prediction.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_create_batch_prediction/} for full documentation.
 }
 \keyword{internal}

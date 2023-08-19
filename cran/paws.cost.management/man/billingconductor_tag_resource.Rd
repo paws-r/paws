@@ -15,6 +15,6 @@ billingconductor_tag_resource(ResourceArn, Tags)
 \description{
 Associates the specified tags to a resource with the specified \code{resourceArn}. If existing tags on a resource are not specified in the request parameters, they are not changed.
 
-See \url{https://paws-r.github.io/docs/billingconductor/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_tag_resource/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ for MultiAZ.}
 \description{
 You might need to reboot your DB instance, usually for maintenance reasons. For example, if you make certain modifications, or if you change the DB parameter group associated with the DB instance, you must reboot the instance for the changes to take effect.
 
-See \url{https://paws-r.github.io/docs/neptune/reboot_db_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_reboot_db_instance/} for full documentation.
 }
 \keyword{internal}

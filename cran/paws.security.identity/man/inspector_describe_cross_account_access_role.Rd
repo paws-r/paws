@@ -10,6 +10,6 @@ inspector_describe_cross_account_access_role()
 \description{
 Describes the IAM role that enables Amazon Inspector to access your AWS account.
 
-See \url{https://paws-r.github.io/docs/inspector/describe_cross_account_access_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_describe_cross_account_access_role/} for full documentation.
 }
 \keyword{internal}

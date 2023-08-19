@@ -23,6 +23,6 @@ panorama_provision_device(
 \description{
 Creates a device and returns a configuration archive. The configuration archive is a ZIP file that contains a provisioning certificate that is valid for 5 minutes. Name the configuration archive \code{certificates-omni_device-name.zip} and transfer it to the device within 5 minutes. Use the included USB storage device and connect it to the USB 3.0 port next to the HDMI output.
 
-See \url{https://paws-r.github.io/docs/panorama/provision_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_provision_device/} for full documentation.
 }
 \keyword{internal}

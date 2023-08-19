@@ -34,6 +34,6 @@ already be connected to the VPC.}
 \description{
 Creates a resource that represents the infrastructure where a third-party provider is installed. The host is used when you create connections to an installed third-party provider type, such as GitHub Enterprise Server. You create one host for all connections to that provider.
 
-See \url{https://paws-r.github.io/docs/codestarconnections/create_host.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarconnections_create_host/} for full documentation.
 }
 \keyword{internal}

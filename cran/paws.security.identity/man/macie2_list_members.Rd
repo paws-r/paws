@@ -22,6 +22,6 @@ accounts, set this value to false.}
 \description{
 Retrieves information about the accounts that are associated with an Amazon Macie administrator account.
 
-See \url{https://paws-r.github.io/docs/macie2/list_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_list_members/} for full documentation.
 }
 \keyword{internal}

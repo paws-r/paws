@@ -19,6 +19,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a route table for the specified VPC. After you create a route table, you can add routes and associate the table with a subnet.
 
-See \url{https://paws-r.github.io/docs/ec2/create_route_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_route_table/} for full documentation.
 }
 \keyword{internal}

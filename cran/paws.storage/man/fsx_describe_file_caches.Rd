@@ -21,6 +21,6 @@ fsx_describe_file_caches(
 \description{
 Returns the description of a specific Amazon File Cache resource, if a \code{FileCacheIds} value is provided for that cache. Otherwise, it returns descriptions of all caches owned by your Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
 
-See \url{https://paws-r.github.io/docs/fsx/describe_file_caches.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_describe_file_caches/} for full documentation.
 }
 \keyword{internal}

@@ -88,6 +88,6 @@ into Amazon Kendra, see \href{https://docs.aws.amazon.com/kendra/latest/dg/custo
 \description{
 Creates a data source connector that you want to use with an Amazon Kendra index.
 
-See \url{https://paws-r.github.io/docs/kendra/create_data_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_create_data_source/} for full documentation.
 }
 \keyword{internal}

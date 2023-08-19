@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Rejects a VPC peering connection request. The VPC peering connection must be in the \code{pending-acceptance} state. Use the \code{\link[=ec2_describe_vpc_peering_connections]{describe_vpc_peering_connections}} request to view your outstanding VPC peering connection requests. To delete an active VPC peering connection, or to delete a VPC peering connection request that you initiated, use \code{\link[=ec2_delete_vpc_peering_connection]{delete_vpc_peering_connection}}.
 
-See \url{https://paws-r.github.io/docs/ec2/reject_vpc_peering_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_reject_vpc_peering_connection/} for full documentation.
 }
 \keyword{internal}

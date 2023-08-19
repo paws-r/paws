@@ -12,6 +12,6 @@ opensearchservice_list_tags(ARN)
 \description{
 Returns all resource tags for an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/managedomains-awsresourcetagging.html}{Tagging Amazon OpenSearch Service domains}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/list_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_list_tags/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ operations.}
 \description{
 Deletes stored utterances.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/delete_utterances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_delete_utterances/} for full documentation.
 }
 \keyword{internal}

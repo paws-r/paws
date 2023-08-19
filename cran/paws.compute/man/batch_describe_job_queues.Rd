@@ -39,6 +39,6 @@ the next items in a list and not for other programmatic purposes.}
 \description{
 Describes one or more of your job queues.
 
-See \url{https://paws-r.github.io/docs/batch/describe_job_queues.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_describe_job_queues/} for full documentation.
 }
 \keyword{internal}

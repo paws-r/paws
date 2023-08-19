@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_search_queues}
 \alias{connect_search_queues}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Searches queues in an Amazon Connect instance, with optional filtering}
 \usage{
 connect_search_queues(
   InstanceId,
@@ -32,8 +31,8 @@ minimum of 2 characters and a maximum of 25 characters. Any queries with
 character lengths outside of this range will throw invalid results.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Searches queues in an Amazon Connect instance, with optional filtering.
 
-See \url{https://paws-r.github.io/docs/connect/search_queues.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_search_queues/} for full documentation.
 }
 \keyword{internal}

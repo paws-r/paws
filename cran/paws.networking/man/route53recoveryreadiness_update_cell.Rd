@@ -16,6 +16,6 @@ the previous list.}
 \description{
 Updates a cell to replace the list of nested cells with a new list of nested cells.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/update_cell.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_update_cell/} for full documentation.
 }
 \keyword{internal}

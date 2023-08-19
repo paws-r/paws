@@ -13,6 +13,6 @@ qldb_describe_ledger(Name)
 \description{
 Returns information about a ledger, including its state, permissions mode, encryption at rest settings, and when it was created.
 
-See \url{https://paws-r.github.io/docs/qldb/describe_ledger.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_describe_ledger/} for full documentation.
 }
 \keyword{internal}

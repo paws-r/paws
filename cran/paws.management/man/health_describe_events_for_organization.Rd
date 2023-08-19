@@ -30,6 +30,6 @@ default and the only supported value at this time.}
 \description{
 Returns information about events across your organization in Organizations. You can use the\code{filters} parameter to specify the events that you want to return. Events are returned in a summary form and don't include the affected accounts, detailed description, any additional metadata that depends on the event type, or any affected resources. To retrieve that information, use the following operations:
 
-See \url{https://paws-r.github.io/docs/health/describe_events_for_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/health_describe_events_for_organization/} for full documentation.
 }
 \keyword{internal}

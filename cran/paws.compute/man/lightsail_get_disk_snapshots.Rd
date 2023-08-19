@@ -18,6 +18,6 @@ you can specify as the page token in a subsequent request.}
 \description{
 Returns information about all block storage disk snapshots in your AWS account and region.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_disk_snapshots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_disk_snapshots/} for full documentation.
 }
 \keyword{internal}

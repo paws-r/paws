@@ -35,6 +35,6 @@ ValidationException error occurs. The default value is 100.}
 \description{
 Lists and describes the versions of a model in an Amazon Rekognition Custom Labels project. You can specify up to 10 model versions in \code{ProjectVersionArns}. If you don't specify a value, descriptions for all model versions in the project are returned.
 
-See \url{https://paws-r.github.io/docs/rekognition/describe_project_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_describe_project_versions/} for full documentation.
 }
 \keyword{internal}

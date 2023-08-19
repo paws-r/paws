@@ -12,6 +12,6 @@ route53recoveryreadiness_delete_cell(CellName)
 \description{
 Delete a cell. When successful, the response code is 204, with no response body.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/delete_cell.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_delete_cell/} for full documentation.
 }
 \keyword{internal}

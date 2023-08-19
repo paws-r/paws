@@ -36,6 +36,6 @@ can't be more than 30 days old.}
 \description{
 Retrieves the summaries of all insights in the specified group matching the provided filter values.
 
-See \url{https://paws-r.github.io/docs/xray/get_insight_summaries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_get_insight_summaries/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ connect_get_contact_attributes(InstanceId, InitialContactId)
 \description{
 Retrieves the contact attributes for the specified contact.
 
-See \url{https://paws-r.github.io/docs/connect/get_contact_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_get_contact_attributes/} for full documentation.
 }
 \keyword{internal}

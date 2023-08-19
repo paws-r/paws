@@ -12,6 +12,6 @@ ssmcontacts_describe_page(PageId)
 \description{
 Lists details of the engagement to a contact channel.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/describe_page.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_describe_page/} for full documentation.
 }
 \keyword{internal}

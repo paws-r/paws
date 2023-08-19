@@ -12,6 +12,6 @@ workspacesweb_delete_identity_provider(identityProviderArn)
 \description{
 Deletes the identity provider.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/delete_identity_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_delete_identity_provider/} for full documentation.
 }
 \keyword{internal}

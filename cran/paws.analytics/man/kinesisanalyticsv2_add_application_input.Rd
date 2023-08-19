@@ -25,6 +25,6 @@ operation to find the current application version.}
 \description{
 Adds a streaming source to your SQL-based Kinesis Data Analytics application.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_input.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_input/} for full documentation.
 }
 \keyword{internal}

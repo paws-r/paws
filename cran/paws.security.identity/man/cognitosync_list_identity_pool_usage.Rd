@@ -14,6 +14,6 @@ cognitosync_list_identity_pool_usage(NextToken = NULL, MaxResults = NULL)
 \description{
 Gets a list of identity pools registered with Cognito.
 
-See \url{https://paws-r.github.io/docs/cognitosync/list_identity_pool_usage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitosync_list_identity_pool_usage/} for full documentation.
 }
 \keyword{internal}

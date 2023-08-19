@@ -59,6 +59,6 @@ You can't specify this parameter if you specify the NextToken parameter.}
 \description{
 Lists the consumers registered to receive data from a stream using enhanced fan-out, and provides information about each consumer.
 
-See \url{https://paws-r.github.io/docs/kinesis/list_stream_consumers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_list_stream_consumers/} for full documentation.
 }
 \keyword{internal}

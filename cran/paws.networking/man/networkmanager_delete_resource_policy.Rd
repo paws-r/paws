@@ -12,6 +12,6 @@ networkmanager_delete_resource_policy(ResourceArn)
 \description{
 Deletes a resource policy for the specified resource. This revokes the access of the principals specified in the resource policy.
 
-See \url{https://paws-r.github.io/docs/networkmanager/delete_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_delete_resource_policy/} for full documentation.
 }
 \keyword{internal}

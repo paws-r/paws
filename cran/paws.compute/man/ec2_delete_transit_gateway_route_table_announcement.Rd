@@ -21,6 +21,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Advertises to the transit gateway that a transit gateway route table is deleted.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_transit_gateway_route_table_announcement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_transit_gateway_route_table_announcement/} for full documentation.
 }
 \keyword{internal}

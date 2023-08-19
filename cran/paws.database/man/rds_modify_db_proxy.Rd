@@ -49,6 +49,6 @@ access secrets in Amazon Web Services Secrets Manager.}
 \description{
 Changes the settings for an existing DB proxy.
 
-See \url{https://paws-r.github.io/docs/rds/modify_db_proxy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_modify_db_proxy/} for full documentation.
 }
 \keyword{internal}

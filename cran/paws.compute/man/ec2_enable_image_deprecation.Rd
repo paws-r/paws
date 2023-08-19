@@ -25,6 +25,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Enables deprecation of the specified AMI at the specified date and time.
 
-See \url{https://paws-r.github.io/docs/ec2/enable_image_deprecation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_enable_image_deprecation/} for full documentation.
 }
 \keyword{internal}

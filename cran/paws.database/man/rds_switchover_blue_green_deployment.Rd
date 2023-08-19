@@ -10,15 +10,16 @@ rds_switchover_blue_green_deployment(
 )
 }
 \arguments{
-\item{BlueGreenDeploymentIdentifier}{[required] The blue/green deployment identifier.
+\item{BlueGreenDeploymentIdentifier}{[required] The unique identifier of the blue/green deployment.
 
 Constraints:
 \itemize{
 \item Must match an existing blue/green deployment identifier.
 }}
 
-\item{SwitchoverTimeout}{The amount of time, in seconds, for the switchover to complete. The
-default is 300.
+\item{SwitchoverTimeout}{The amount of time, in seconds, for the switchover to complete.
+
+Default: 300
 
 If the switchover takes longer than the specified duration, then any
 changes are rolled back, and no changes are made to the environments.}
@@ -26,6 +27,6 @@ changes are rolled back, and no changes are made to the environments.}
 \description{
 Switches over a blue/green deployment.
 
-See \url{https://paws-r.github.io/docs/rds/switchover_blue_green_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_switchover_blue_green_deployment/} for full documentation.
 }
 \keyword{internal}

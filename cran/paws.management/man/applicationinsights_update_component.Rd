@@ -24,6 +24,6 @@ applicationinsights_update_component(
 \description{
 Updates the custom component name and/or the list of resources that make up the component.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/update_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_update_component/} for full documentation.
 }
 \keyword{internal}

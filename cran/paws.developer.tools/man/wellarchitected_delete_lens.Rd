@@ -16,6 +16,6 @@ wellarchitected_delete_lens(LensAlias, ClientRequestToken, LensStatus)
 \description{
 Delete an existing lens.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/delete_lens.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_delete_lens/} for full documentation.
 }
 \keyword{internal}

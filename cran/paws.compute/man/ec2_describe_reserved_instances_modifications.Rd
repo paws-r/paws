@@ -43,6 +43,6 @@ updated.
 \description{
 Describes the modifications made to your Reserved Instances. If no parameter is specified, information about all your Reserved Instances modification requests is returned. If a modification ID is specified, only information about the specific modification is returned.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_reserved_instances_modifications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_reserved_instances_modifications/} for full documentation.
 }
 \keyword{internal}

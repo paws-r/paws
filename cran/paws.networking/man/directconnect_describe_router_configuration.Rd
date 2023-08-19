@@ -18,6 +18,6 @@ version. For example, \verb{CiscoSystemsInc-2900SeriesRouters-IOS124}.}
 \description{
 Details about the router.
 
-See \url{https://paws-r.github.io/docs/directconnect/describe_router_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_describe_router_configuration/} for full documentation.
 }
 \keyword{internal}

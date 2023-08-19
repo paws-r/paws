@@ -58,6 +58,6 @@ under \verb{https://sapp.amazon.com}.}
 \description{
 Generates an embed URL that you can use to embed an Amazon QuickSight dashboard or visual in your website, without having to register any reader users. Before you use this action, make sure that you have configured the dashboards and permissions.
 
-See \url{https://paws-r.github.io/docs/quicksight/generate_embed_url_for_anonymous_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_generate_embed_url_for_anonymous_user/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ workspaces_associate_connection_alias(AliasId, ResourceId)
 \description{
 Associates the specified connection alias with the specified directory to enable cross-Region redirection. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
 
-See \url{https://paws-r.github.io/docs/workspaces/associate_connection_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_associate_connection_alias/} for full documentation.
 }
 \keyword{internal}

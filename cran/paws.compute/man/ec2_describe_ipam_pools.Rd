@@ -30,6 +30,6 @@ filtering, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-
 \description{
 Get information about your IPAM pools.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_ipam_pools.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_ipam_pools/} for full documentation.
 }
 \keyword{internal}

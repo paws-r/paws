@@ -302,6 +302,6 @@ in the \emph{Amazon DynamoDB Developer Guide}.}
 \description{
 You must provide the name of the partition key attribute and a single value for that attribute. \code{\link[=dynamodb_query]{query}} returns all items with that partition key value. Optionally, you can provide a sort key attribute and use a comparison operator to refine the search results.
 
-See \url{https://paws-r.github.io/docs/dynamodb/query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_query/} for full documentation.
 }
 \keyword{internal}

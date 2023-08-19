@@ -17,6 +17,6 @@ Lambda Access Point.}
 \description{
 Creates an Object Lambda Access Point. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/transforming-objects.html}{Transforming objects with Object Lambda Access Points} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3control/create_access_point_for_object_lambda.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_create_access_point_for_object_lambda/} for full documentation.
 }
 \keyword{internal}

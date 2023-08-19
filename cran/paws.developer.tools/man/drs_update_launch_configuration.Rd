@@ -37,6 +37,6 @@ Server.}
 \description{
 Updates a LaunchConfiguration by Source Server ID.
 
-See \url{https://paws-r.github.io/docs/drs/update_launch_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_update_launch_configuration/} for full documentation.
 }
 \keyword{internal}

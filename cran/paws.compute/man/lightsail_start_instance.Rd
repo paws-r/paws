@@ -12,6 +12,6 @@ lightsail_start_instance(instanceName)
 \description{
 Starts a specific Amazon Lightsail instance from a stopped state. To restart an instance, use the \verb{reboot instance} operation.
 
-See \url{https://paws-r.github.io/docs/lightsail/start_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_start_instance/} for full documentation.
 }
 \keyword{internal}

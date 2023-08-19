@@ -30,6 +30,6 @@ want in the response. The default value is 10. The maximum value is 500.}
 \description{
 Lists the ARNs of the assessment targets within this AWS account. For more information about assessment targets, see \href{https://docs.aws.amazon.com/inspector/v1/userguide/inspector_applications.html}{Amazon Inspector Assessment Targets}.
 
-See \url{https://paws-r.github.io/docs/inspector/list_assessment_targets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_list_assessment_targets/} for full documentation.
 }
 \keyword{internal}

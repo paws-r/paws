@@ -28,6 +28,6 @@ results, use null.}
 \description{
 Lists the resources associated with the specified TagOption.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/list_resources_for_tag_option.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_list_resources_for_tag_option/} for full documentation.
 }
 \keyword{internal}

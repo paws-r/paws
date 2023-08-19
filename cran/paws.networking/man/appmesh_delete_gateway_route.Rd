@@ -26,6 +26,6 @@ the mesh with your account. For more information about mesh sharing, see
 \description{
 Deletes an existing gateway route.
 
-See \url{https://paws-r.github.io/docs/appmesh/delete_gateway_route.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appmesh_delete_gateway_route/} for full documentation.
 }
 \keyword{internal}

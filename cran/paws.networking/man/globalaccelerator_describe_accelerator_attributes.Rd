@@ -13,6 +13,6 @@ that you want to describe.}
 \description{
 Describe the attributes of an accelerator.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/describe_accelerator_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_describe_accelerator_attributes/} for full documentation.
 }
 \keyword{internal}

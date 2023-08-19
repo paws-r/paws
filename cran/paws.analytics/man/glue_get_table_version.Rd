@@ -27,6 +27,6 @@ string representation of an integer. Each version is incremented by 1.}
 \description{
 Retrieves a specified version of a table.
 
-See \url{https://paws-r.github.io/docs/glue/get_table_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_table_version/} for full documentation.
 }
 \keyword{internal}

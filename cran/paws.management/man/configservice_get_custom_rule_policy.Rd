@@ -13,6 +13,6 @@ configservice_get_custom_rule_policy(ConfigRuleName = NULL)
 \description{
 Returns the policy definition containing the logic for your Config Custom Policy rule.
 
-See \url{https://paws-r.github.io/docs/configservice/get_custom_rule_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_get_custom_rule_policy/} for full documentation.
 }
 \keyword{internal}

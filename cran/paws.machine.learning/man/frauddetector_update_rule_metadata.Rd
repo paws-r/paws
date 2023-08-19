@@ -14,6 +14,6 @@ frauddetector_update_rule_metadata(rule, description)
 \description{
 Updates a rule's metadata. The description attribute can be updated.
 
-See \url{https://paws-r.github.io/docs/frauddetector/update_rule_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_update_rule_metadata/} for full documentation.
 }
 \keyword{internal}

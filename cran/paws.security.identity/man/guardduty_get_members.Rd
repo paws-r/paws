@@ -17,6 +17,6 @@ describe.}
 \description{
 Retrieves GuardDuty member accounts (of the current GuardDuty administrator account) specified by the account IDs.
 
-See \url{https://paws-r.github.io/docs/guardduty/get_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_get_members/} for full documentation.
 }
 \keyword{internal}

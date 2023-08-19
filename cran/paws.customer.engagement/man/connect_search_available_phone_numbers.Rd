@@ -34,6 +34,6 @@ results.}
 \description{
 Searches for available phone numbers that you can claim to your Amazon Connect instance or traffic distribution group. If the provided \code{TargetArn} is a traffic distribution group, you can call this API in both Amazon Web Services Regions associated with the traffic distribution group.
 
-See \url{https://paws-r.github.io/docs/connect/search_available_phone_numbers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_search_available_phone_numbers/} for full documentation.
 }
 \keyword{internal}

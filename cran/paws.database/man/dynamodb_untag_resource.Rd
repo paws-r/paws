@@ -16,6 +16,6 @@ of this list will be removed from the DynamoDB resource.}
 \description{
 Removes the association of tags from an Amazon DynamoDB resource. You can call \code{\link[=dynamodb_untag_resource]{untag_resource}} up to five times per second, per account.
 
-See \url{https://paws-r.github.io/docs/dynamodb/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_untag_resource/} for full documentation.
 }
 \keyword{internal}

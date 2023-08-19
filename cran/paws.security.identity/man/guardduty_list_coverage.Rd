@@ -30,6 +30,6 @@ previous request to continue listing results after the first page.}
 \description{
 Lists coverage details for your GuardDuty account. If you're a GuardDuty administrator, you can retrieve all resources associated with the active member accounts in your organization.
 
-See \url{https://paws-r.github.io/docs/guardduty/list_coverage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_list_coverage/} for full documentation.
 }
 \keyword{internal}

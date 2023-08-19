@@ -12,6 +12,6 @@ drs_get_replication_configuration(sourceServerID)
 \description{
 Gets a ReplicationConfiguration, filtered by Source Server ID.
 
-See \url{https://paws-r.github.io/docs/drs/get_replication_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_get_replication_configuration/} for full documentation.
 }
 \keyword{internal}

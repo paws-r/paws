@@ -17,6 +17,6 @@ to. You have to specify an IP pool that already exists.}
 \description{
 Move a dedicated IP address to an existing dedicated IP pool.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/put_dedicated_ip_in_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_put_dedicated_ip_in_pool/} for full documentation.
 }
 \keyword{internal}

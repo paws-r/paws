@@ -21,6 +21,6 @@ paginated response.}
 \description{
 Retrieves information about the status, configuration, and other settings for all the journeys that are associated with an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/list_journeys.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_list_journeys/} for full documentation.
 }
 \keyword{internal}

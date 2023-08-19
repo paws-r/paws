@@ -2,7 +2,9 @@
 % Please edit documentation in R/sqs_operations.R
 \name{sqs_send_message_batch}
 \alias{sqs_send_message_batch}
-\title{Delivers up to ten messages to the specified queue}
+\title{You can use SendMessageBatch to send up to 10 messages to the specified
+queue by assigning either identical or different values to each message
+(or by not assigning values at all)}
 \usage{
 sqs_send_message_batch(QueueUrl, Entries)
 }
@@ -14,8 +16,8 @@ Queue URLs and names are case-sensitive.}
 \item{Entries}{[required] A list of \code{SendMessageBatchRequestEntry} items.}
 }
 \description{
-Delivers up to ten messages to the specified queue. This is a batch version of \code{ SendMessage.} For a FIFO queue, multiple messages within a single batch are enqueued in the order they are sent.
+You can use \code{\link[=sqs_send_message_batch]{send_message_batch}} to send up to 10 messages to the specified queue by assigning either identical or different values to each message (or by not assigning values at all). This is a batch version of \code{ SendMessage.} For a FIFO queue, multiple messages within a single batch are enqueued in the order they are sent.
 
-See \url{https://paws-r.github.io/docs/sqs/send_message_batch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sqs_send_message_batch/} for full documentation.
 }
 \keyword{internal}

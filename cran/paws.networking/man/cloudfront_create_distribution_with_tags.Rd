@@ -10,8 +10,8 @@ cloudfront_create_distribution_with_tags(DistributionConfigWithTags)
 \item{DistributionConfigWithTags}{[required] The distribution's configuration information.}
 }
 \description{
-Create a new distribution with tags.
+Create a new distribution with tags. This API operation requires the following IAM permissions:
 
-See \url{https://paws-r.github.io/docs/cloudfront/create_distribution_with_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_create_distribution_with_tags/} for full documentation.
 }
 \keyword{internal}

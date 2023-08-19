@@ -12,6 +12,6 @@ cloudwatchrum_get_app_monitor(Name)
 \description{
 Retrieves the complete configuration information for one app monitor.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/get_app_monitor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_get_app_monitor/} for full documentation.
 }
 \keyword{internal}

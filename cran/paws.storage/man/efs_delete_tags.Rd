@@ -14,6 +14,6 @@ efs_delete_tags(FileSystemId, TagKeys)
 \description{
 DEPRECATED - \code{\link[=efs_delete_tags]{delete_tags}} is deprecated and not maintained. To remove tags from EFS resources, use the API action.
 
-See \url{https://paws-r.github.io/docs/efs/delete_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_delete_tags/} for full documentation.
 }
 \keyword{internal}

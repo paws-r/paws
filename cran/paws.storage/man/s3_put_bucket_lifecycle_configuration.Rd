@@ -35,6 +35,6 @@ different account, the request fails with the HTTP status code
 \description{
 Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle configuration. Keep in mind that this will overwrite an existing lifecycle configuration, so if you want to retain any configuration details, they must be included in the new lifecycle configuration. For information about lifecycle configuration, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html}{Managing your storage lifecycle}.
 
-See \url{https://paws-r.github.io/docs/s3/put_bucket_lifecycle_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_lifecycle_configuration/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ length, and tag values can be up to 256 characters in length.}
 \description{
 Creates an HTTP namespace. Service instances registered using an HTTP namespace can be discovered using a \code{\link[=servicediscovery_discover_instances]{discover_instances}} request but can't be discovered using DNS.
 
-See \url{https://paws-r.github.io/docs/servicediscovery/create_http_namespace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicediscovery_create_http_namespace/} for full documentation.
 }
 \keyword{internal}

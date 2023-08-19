@@ -12,6 +12,6 @@ iamrolesanywhere_get_crl(crlId)
 \description{
 Gets a certificate revocation list (CRL).
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/get_crl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_get_crl/} for full documentation.
 }
 \keyword{internal}

@@ -49,6 +49,6 @@ Manager supports JSON and YAML documents. JSON is the default format.}
 \description{
 Updates one or more values for an SSM document.
 
-See \url{https://paws-r.github.io/docs/ssm/update_document.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_update_document/} for full documentation.
 }
 \keyword{internal}

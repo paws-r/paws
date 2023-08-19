@@ -29,6 +29,6 @@ is 10.}
 \description{
 Gets a list of built-in slot types that meet the specified criteria.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_slot_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_builtin_slot_types/} for full documentation.
 }
 \keyword{internal}

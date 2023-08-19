@@ -28,6 +28,6 @@ that match one or more sets of key-value pairs that you specify.}
 \description{
 Lists the user-based subscription products available from an identity provider.
 
-See \url{https://paws-r.github.io/docs/licensemanagerusersubscriptions/list_product_subscriptions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_list_product_subscriptions/} for full documentation.
 }
 \keyword{internal}

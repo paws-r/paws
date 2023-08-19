@@ -25,6 +25,6 @@ token, you will receive a \verb{HTTP 400 InvalidNextTokenException} error.}
 \description{
 Lists the namespaces for the specified Amazon Web Services account. This operation doesn't list deleted namespaces.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_namespaces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_namespaces/} for full documentation.
 }
 \keyword{internal}

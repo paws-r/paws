@@ -21,6 +21,6 @@ results.}
 \description{
 Amazon Web Services Systems Manager calls this API operation when displaying all Application Manager OpsMetadata objects or blobs.
 
-See \url{https://paws-r.github.io/docs/ssm/list_ops_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_list_ops_metadata/} for full documentation.
 }
 \keyword{internal}

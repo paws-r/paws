@@ -12,6 +12,6 @@ gluedatabrew_start_job_run(Name)
 \description{
 Runs a DataBrew job.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/start_job_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_start_job_run/} for full documentation.
 }
 \keyword{internal}

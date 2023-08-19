@@ -16,6 +16,6 @@ the response includes only results beyond the token.}
 \description{
 List all of the tags for a DAX cluster. You can call \code{\link[=dax_list_tags]{list_tags}} up to 10 times per second, per account.
 
-See \url{https://paws-r.github.io/docs/dax/list_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_list_tags/} for full documentation.
 }
 \keyword{internal}

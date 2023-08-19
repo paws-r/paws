@@ -27,6 +27,6 @@ paginated response.}
 \description{
 Retrieves information about all the activities for a campaign.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_campaign_activities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_campaign_activities/} for full documentation.
 }
 \keyword{internal}

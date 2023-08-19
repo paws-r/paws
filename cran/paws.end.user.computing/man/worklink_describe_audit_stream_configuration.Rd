@@ -13,6 +13,6 @@ worklink_describe_audit_stream_configuration(FleetArn)
 \description{
 Describes the configuration for delivering audit streams to the customer account.
 
-See \url{https://paws-r.github.io/docs/worklink/describe_audit_stream_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_describe_audit_stream_configuration/} for full documentation.
 }
 \keyword{internal}

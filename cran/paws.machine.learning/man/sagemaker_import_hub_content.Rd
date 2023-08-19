@@ -46,6 +46,6 @@ content such as type, associated containers, scripts, and more.}
 \description{
 Import hub content.
 
-See \url{https://paws-r.github.io/docs/sagemaker/import_hub_content.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_import_hub_content/} for full documentation.
 }
 \keyword{internal}

@@ -39,6 +39,6 @@ created.}
 \description{
 Creates a new instance profile. For information about instance profiles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2.html}{Using roles for applications on Amazon EC2} in the \emph{IAM User Guide}, and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/iam-roles-for-amazon-ec2.html#ec2-instance-profile}{Instance profiles} in the \emph{Amazon EC2 User Guide}.
 
-See \url{https://paws-r.github.io/docs/iam/create_instance_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_create_instance_profile/} for full documentation.
 }
 \keyword{internal}

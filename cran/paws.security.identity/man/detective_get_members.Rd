@@ -21,6 +21,6 @@ graph.}
 \description{
 Returns the membership details for specified member accounts for a behavior graph.
 
-See \url{https://paws-r.github.io/docs/detective/get_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_get_members/} for full documentation.
 }
 \keyword{internal}

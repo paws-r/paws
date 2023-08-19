@@ -143,6 +143,6 @@ parameter.}
 \description{
 Creates or updates an alarm, and associates it with the specified metric.
 
-See \url{https://paws-r.github.io/docs/lightsail/put_alarm.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_put_alarm/} for full documentation.
 }
 \keyword{internal}

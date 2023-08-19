@@ -25,6 +25,6 @@ hours, and cannot be shared with other accounts.}
 \description{
 Provides a list of the schema versions and related information.
 
-See \url{https://paws-r.github.io/docs/schemas/list_schema_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_list_schema_versions/} for full documentation.
 }
 \keyword{internal}

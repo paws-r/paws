@@ -43,6 +43,6 @@ deployed Stage.}
 \description{
 Simulate the execution of an Authorizer in your RestApi with headers, parameters, and an incoming request body.
 
-See \url{https://paws-r.github.io/docs/apigateway/test_invoke_authorizer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_test_invoke_authorizer/} for full documentation.
 }
 \keyword{internal}

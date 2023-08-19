@@ -17,6 +17,6 @@ in the \emph{Amazon EC2 API Reference}.}
 \description{
 CancelImageCreation cancels the creation of Image. This operation can only be used on images in a non-terminal state.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/cancel_image_creation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_cancel_image_creation/} for full documentation.
 }
 \keyword{internal}

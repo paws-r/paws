@@ -34,6 +34,6 @@ that's not the environment owner.}
 \description{
 Changes the settings of an existing Cloud9 development environment.
 
-See \url{https://paws-r.github.io/docs/cloud9/update_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloud9_update_environment/} for full documentation.
 }
 \keyword{internal}

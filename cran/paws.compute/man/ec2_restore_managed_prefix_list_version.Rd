@@ -27,6 +27,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Restores the entries from a previous version of a managed prefix list to a new version of the prefix list.
 
-See \url{https://paws-r.github.io/docs/ec2/restore_managed_prefix_list_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_restore_managed_prefix_list_version/} for full documentation.
 }
 \keyword{internal}

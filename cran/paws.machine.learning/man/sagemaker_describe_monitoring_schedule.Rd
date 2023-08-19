@@ -12,6 +12,6 @@ sagemaker_describe_monitoring_schedule(MonitoringScheduleName)
 \description{
 Describes the schedule for a monitoring job.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_monitoring_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_monitoring_schedule/} for full documentation.
 }
 \keyword{internal}

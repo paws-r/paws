@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes attributes of your Amazon Web Services account. The following are the supported account attributes:
 
-See \url{https://paws-r.github.io/docs/ec2/describe_account_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_account_attributes/} for full documentation.
 }
 \keyword{internal}

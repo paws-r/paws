@@ -27,6 +27,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a Connect attachment from a specified transit gateway attachment. A Connect attachment is a GRE-based tunnel attachment that you can use to establish a connection between a transit gateway and an appliance.
 
-See \url{https://paws-r.github.io/docs/ec2/create_transit_gateway_connect.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_transit_gateway_connect/} for full documentation.
 }
 \keyword{internal}

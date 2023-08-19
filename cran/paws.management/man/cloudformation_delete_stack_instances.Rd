@@ -74,6 +74,6 @@ in the \emph{CloudFormation User Guide}.
 \description{
 Deletes stack instances for the specified accounts, in the specified Amazon Web Services Regions.
 
-See \url{https://paws-r.github.io/docs/cloudformation/delete_stack_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_delete_stack_instances/} for full documentation.
 }
 \keyword{internal}

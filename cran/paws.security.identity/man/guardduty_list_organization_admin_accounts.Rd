@@ -17,6 +17,6 @@ the previous request to continue listing results after the first page.}
 \description{
 Lists the accounts configured as GuardDuty delegated administrators.
 
-See \url{https://paws-r.github.io/docs/guardduty/list_organization_admin_accounts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_list_organization_admin_accounts/} for full documentation.
 }
 \keyword{internal}

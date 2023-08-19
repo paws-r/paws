@@ -18,6 +18,6 @@ the domain. It does not include dashes or spaces.}
 \description{
 Returns a \code{RepositoryDescription} object that contains detailed information about the requested repository.
 
-See \url{https://paws-r.github.io/docs/codeartifact/describe_repository.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_describe_repository/} for full documentation.
 }
 \keyword{internal}

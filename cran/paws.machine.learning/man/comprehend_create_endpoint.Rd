@@ -46,6 +46,6 @@ will be attached.}
 \description{
 Creates a model-specific endpoint for synchronous inference for a previously trained custom model For information about endpoints, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html}{Managing endpoints}.
 
-See \url{https://paws-r.github.io/docs/comprehend/create_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_create_endpoint/} for full documentation.
 }
 \keyword{internal}

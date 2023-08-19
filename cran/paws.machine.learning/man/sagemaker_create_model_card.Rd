@@ -38,6 +38,6 @@ made to the model card, but it can still be exported.
 \description{
 Creates an Amazon SageMaker Model Card.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_model_card.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_model_card/} for full documentation.
 }
 \keyword{internal}

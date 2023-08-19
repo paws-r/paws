@@ -18,6 +18,6 @@ get a list of bundle IDs that you can specify.}
 \description{
 Updates the bundle, or storage plan, of an existing Amazon Lightsail bucket.
 
-See \url{https://paws-r.github.io/docs/lightsail/update_bucket_bundle.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_update_bucket_bundle/} for full documentation.
 }
 \keyword{internal}

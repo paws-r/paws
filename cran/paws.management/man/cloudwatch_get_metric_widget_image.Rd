@@ -56,6 +56,6 @@ image.}
 \description{
 You can use the \code{\link[=cloudwatch_get_metric_widget_image]{get_metric_widget_image}} API to retrieve a snapshot graph of one or more Amazon CloudWatch metrics as a bitmap image. You can then embed this image into your services and products, such as wiki pages, reports, and documents. You could also retrieve images regularly, such as every minute, and create your own custom live dashboard.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/get_metric_widget_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_get_metric_widget_image/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ launches with the status that you specify here.}
 \description{
 Returns configuration details about all the launches in the specified project.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/list_launches.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_launches/} for full documentation.
 }
 \keyword{internal}

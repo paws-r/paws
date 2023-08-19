@@ -2144,7 +2144,7 @@ docdb_describe_certificates <- function(CertificateIdentifier = NULL, Filters = 
     name = "DescribeCertificates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Certificates")
   )
   input <- .docdb$describe_certificates_input(CertificateIdentifier = CertificateIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_certificates_output()
@@ -2229,7 +2229,7 @@ docdb_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroupNa
     name = "DescribeDBClusterParameterGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterParameterGroups")
   )
   input <- .docdb$describe_db_cluster_parameter_groups_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_cluster_parameter_groups_output()
@@ -2324,7 +2324,7 @@ docdb_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, So
     name = "DescribeDBClusterParameters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters")
   )
   input <- .docdb$describe_db_cluster_parameters_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Source = Source, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_cluster_parameters_output()
@@ -2545,7 +2545,7 @@ docdb_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBCl
     name = "DescribeDBClusterSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterSnapshots")
   )
   input <- .docdb$describe_db_cluster_snapshots_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, SnapshotType = SnapshotType, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, IncludeShared = IncludeShared, IncludePublic = IncludePublic)
   output <- .docdb$describe_db_cluster_snapshots_output()
@@ -2697,7 +2697,7 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
     name = "DescribeDBClusters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusters")
   )
   input <- .docdb$describe_db_clusters_input(DBClusterIdentifier = DBClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_clusters_output()
@@ -2813,7 +2813,7 @@ docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NUL
     name = "DescribeDBEngineVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBEngineVersions")
   )
   input <- .docdb$describe_db_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, DefaultOnly = DefaultOnly, ListSupportedCharacterSets = ListSupportedCharacterSets, ListSupportedTimezones = ListSupportedTimezones)
   output <- .docdb$describe_db_engine_versions_output()
@@ -2991,7 +2991,7 @@ docdb_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters = N
     name = "DescribeDBInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBInstances")
   )
   input <- .docdb$describe_db_instances_input(DBInstanceIdentifier = DBInstanceIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_instances_output()
@@ -3081,7 +3081,7 @@ docdb_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters = 
     name = "DescribeDBSubnetGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBSubnetGroups")
   )
   input <- .docdb$describe_db_subnet_groups_input(DBSubnetGroupName = DBSubnetGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_db_subnet_groups_output()
@@ -3333,7 +3333,7 @@ docdb_describe_event_subscriptions <- function(SubscriptionName = NULL, Filters 
     name = "DescribeEventSubscriptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "EventSubscriptionsList")
   )
   input <- .docdb$describe_event_subscriptions_input(SubscriptionName = SubscriptionName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_event_subscriptions_output()
@@ -3468,7 +3468,7 @@ docdb_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, St
     name = "DescribeEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events")
   )
   input <- .docdb$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, EventCategories = EventCategories, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_events_output()
@@ -3566,7 +3566,7 @@ docdb_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Filte
     name = "DescribeGlobalClusters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalClusters")
   )
   input <- .docdb$describe_global_clusters_input(GlobalClusterIdentifier = GlobalClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_global_clusters_output()
@@ -3662,7 +3662,7 @@ docdb_describe_orderable_db_instance_options <- function(Engine, EngineVersion =
     name = "DescribeOrderableDBInstanceOptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "OrderableDBInstanceOptions")
   )
   input <- .docdb$describe_orderable_db_instance_options_input(Engine = Engine, EngineVersion = EngineVersion, DBInstanceClass = DBInstanceClass, LicenseModel = LicenseModel, Vpc = Vpc, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .docdb$describe_orderable_db_instance_options_output()
@@ -3766,7 +3766,7 @@ docdb_describe_pending_maintenance_actions <- function(ResourceIdentifier = NULL
     name = "DescribePendingMaintenanceActions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "PendingMaintenanceActions")
   )
   input <- .docdb$describe_pending_maintenance_actions_input(ResourceIdentifier = ResourceIdentifier, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .docdb$describe_pending_maintenance_actions_output()
@@ -3957,7 +3957,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "TagList")
   )
   input <- .docdb$list_tags_for_resource_input(ResourceName = ResourceName, Filters = Filters)
   output <- .docdb$list_tags_for_resource_output()
@@ -3981,7 +3981,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'   ApplyImmediately, BackupRetentionPeriod, DBClusterParameterGroupName,
 #'   VpcSecurityGroupIds, Port, MasterUserPassword, PreferredBackupWindow,
 #'   PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration,
-#'   EngineVersion, DeletionProtection)
+#'   EngineVersion, AllowMajorVersionUpgrade, DeletionProtection)
 #'
 #' @param DBClusterIdentifier &#91;required&#93; The cluster identifier for the cluster that is being modified. This
 #' parameter is not case sensitive.
@@ -4070,7 +4070,18 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' `EnableLogTypes` and `DisableLogTypes` arrays determine which logs are
 #' exported (or not exported) to CloudWatch Logs.
 #' @param EngineVersion The version number of the database engine to which you want to upgrade.
-#' Modifying engine version is not supported on Amazon DocumentDB.
+#' Changing this parameter results in an outage. The change is applied
+#' during the next maintenance window unless `ApplyImmediately` is enabled.
+#' 
+#' To list all of the available engine versions for Amazon DocumentDB use
+#' the following command:
+#' 
+#' `aws docdb describe-db-engine-versions --engine docdb --query "DBEngineVersions[].EngineVersion"`
+#' @param AllowMajorVersionUpgrade A value that indicates whether major version upgrades are allowed.
+#' 
+#' Constraints: You must allow major version upgrades when specifying a
+#' value for the `EngineVersion` parameter that is a different major
+#' version than the DB cluster's current version.
 #' @param DeletionProtection Specifies whether this cluster can be deleted. If `DeletionProtection`
 #' is enabled, the cluster cannot be deleted unless it is modified and
 #' `DeletionProtection` is disabled. `DeletionProtection` protects clusters
@@ -4170,6 +4181,7 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #'     )
 #'   ),
 #'   EngineVersion = "string",
+#'   AllowMajorVersionUpgrade = TRUE|FALSE,
 #'   DeletionProtection = TRUE|FALSE
 #' )
 #' ```
@@ -4179,14 +4191,14 @@ docdb_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' @rdname docdb_modify_db_cluster
 #'
 #' @aliases docdb_modify_db_cluster
-docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, DeletionProtection = NULL) {
+docdb_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, DeletionProtection = NULL) {
   op <- new_operation(
     name = "ModifyDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, DeletionProtection = DeletionProtection)
+  input <- .docdb$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DeletionProtection = DeletionProtection)
   output <- .docdb$modify_db_cluster_output()
   config <- get_config()
   svc <- .docdb$service(config)

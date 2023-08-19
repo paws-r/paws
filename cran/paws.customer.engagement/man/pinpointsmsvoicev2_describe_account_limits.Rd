@@ -16,6 +16,6 @@ need to supply a value for this field in the initial request.}
 \description{
 Describes the current Amazon Pinpoint SMS Voice V2 resource quotas for your account. The description for a quota includes the quota name, current usage toward that quota, and the quota's maximum value.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_account_limits.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_account_limits/} for full documentation.
 }
 \keyword{internal}

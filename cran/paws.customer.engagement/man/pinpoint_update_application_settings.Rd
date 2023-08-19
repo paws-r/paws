@@ -18,6 +18,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Updates the settings for an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/update_application_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_update_application_settings/} for full documentation.
 }
 \keyword{internal}

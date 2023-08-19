@@ -32,6 +32,6 @@ The only Valid value for \code{ParticipantRole} is \code{CUSTOM_BOT}.
 \description{
 Adds a new participant into an on-going chat contact. For more information, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/chat-customize-flow.html}{Customize chat flow experiences by integrating custom participants}.
 
-See \url{https://paws-r.github.io/docs/connect/create_participant.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_create_participant/} for full documentation.
 }
 \keyword{internal}

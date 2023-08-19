@@ -35,6 +35,6 @@ an Amazon Web Services account.}
 \description{
 Updates the primary contact information of an Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/account/put_contact_information.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/account_put_contact_information/} for full documentation.
 }
 \keyword{internal}

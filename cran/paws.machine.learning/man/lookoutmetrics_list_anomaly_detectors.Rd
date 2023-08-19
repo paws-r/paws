@@ -16,6 +16,6 @@ token in the next request. Tokens expire after 24 hours.}
 \description{
 Lists the detectors in the current AWS Region.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/list_anomaly_detectors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_list_anomaly_detectors/} for full documentation.
 }
 \keyword{internal}

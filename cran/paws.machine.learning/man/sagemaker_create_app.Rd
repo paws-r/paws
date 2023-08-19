@@ -44,6 +44,6 @@ must be set.}
 \description{
 Creates a running app for the specified UserProfile. This operation is automatically invoked by Amazon SageMaker Studio upon access to the associated Domain, and when new kernel configurations are selected by the user. A user may have multiple Apps active simultaneously.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_app.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_app/} for full documentation.
 }
 \keyword{internal}

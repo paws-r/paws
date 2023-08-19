@@ -27,6 +27,6 @@ Set to \code{NONE} for default encryption.}
 \description{
 Updates the encryption configuration for X-Ray data.
 
-See \url{https://paws-r.github.io/docs/xray/put_encryption_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_put_encryption_config/} for full documentation.
 }
 \keyword{internal}

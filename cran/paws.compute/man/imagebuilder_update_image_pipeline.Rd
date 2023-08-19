@@ -55,6 +55,6 @@ Enabled by default.}
 \description{
 Updates an image pipeline. Image pipelines enable you to automate the creation and distribution of images.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/update_image_pipeline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_update_image_pipeline/} for full documentation.
 }
 \keyword{internal}

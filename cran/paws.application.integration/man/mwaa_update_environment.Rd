@@ -33,9 +33,16 @@ mwaa_update_environment(
 options you want to attach to your environment. For more information,
 see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html}{Apache Airflow configuration options}.}
 
-\item{AirflowVersion}{The Apache Airflow version for your environment. If no value is
-specified, defaults to the latest version. Valid values: \verb{1.10.12},
-\verb{2.0.2}, \verb{2.2.2}, and \verb{2.4.3}.}
+\item{AirflowVersion}{The Apache Airflow version for your environment. To upgrade your
+environment, specify a newer version of Apache Airflow supported by
+Amazon MWAA.
+
+Before you upgrade an environment, make sure your requirements, DAGs,
+plugins, and other resources used in your workflows are compatible with
+the new Apache Airflow version. For more information about updating your
+resources, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/upgrading-environment.html}{Upgrading an Amazon MWAA environment}.
+
+Valid values: \verb{1.10.12}, \verb{2.0.2}, \verb{2.2.2}, \verb{2.4.3}, and \verb{2.5.1}.}
 
 \item{DagS3Path}{The relative path to the DAGs folder on your Amazon S3 bucket. For
 example, \code{dags}. For more information, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html}{Adding or updating DAGs}.}
@@ -124,6 +131,6 @@ specify a start time in 30 minute increments only.}
 \description{
 Updates an Amazon Managed Workflows for Apache Airflow (MWAA) environment.
 
-See \url{https://paws-r.github.io/docs/mwaa/update_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mwaa_update_environment/} for full documentation.
 }
 \keyword{internal}

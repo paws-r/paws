@@ -40,6 +40,6 @@ time key, the results are sorted numerically by the date and time.}
 \description{
 Retrieves the service last accessed data report for Organizations that was previously generated using the \code{\link[=iam_generate_organizations_access_report]{generate_organizations_access_report}} operation. This operation retrieves the status of your report job and the report contents.
 
-See \url{https://paws-r.github.io/docs/iam/get_organizations_access_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_organizations_access_report/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ recyclebin_get_rule(Identifier)
 \description{
 Gets information about a Recycle Bin retention rule.
 
-See \url{https://paws-r.github.io/docs/recyclebin/get_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/recyclebin_get_rule/} for full documentation.
 }
 \keyword{internal}

@@ -17,42 +17,36 @@ ec2_associate_address(
 )
 }
 \arguments{
-\item{AllocationId}{[EC2-VPC] The allocation ID. This is required for EC2-VPC.}
+\item{AllocationId}{The allocation ID. This is required.}
 
 \item{InstanceId}{The ID of the instance. The instance must have exactly one attached
-network interface. For EC2-VPC, you can specify either the instance ID
-or the network interface ID, but not both. For EC2-Classic, you must
-specify an instance ID and the instance must be in the running state.}
+network interface. You can specify either the instance ID or the network
+interface ID, but not both.}
 
-\item{PublicIp}{[EC2-Classic] The Elastic IP address to associate with the instance.
-This is required for EC2-Classic.}
+\item{PublicIp}{Deprecated.}
 
-\item{AllowReassociation}{[EC2-VPC] For a VPC in an EC2-Classic account, specify true to allow
-an Elastic IP address that is already associated with an instance or
-network interface to be reassociated with the specified instance or
-network interface. Otherwise, the operation fails. In a VPC in an
-EC2-VPC-only account, reassociation is automatic, therefore you can
-specify false to ensure the operation fails if the Elastic IP address is
-already associated with another resource.}
+\item{AllowReassociation}{Reassociation is automatic, but you can specify false to ensure the
+operation fails if the Elastic IP address is already associated with
+another resource.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{NetworkInterfaceId}{[EC2-VPC] The ID of the network interface. If the instance has more
-than one network interface, you must specify a network interface ID.
+\item{NetworkInterfaceId}{The ID of the network interface. If the instance has more than one
+network interface, you must specify a network interface ID.
 
-For EC2-VPC, you can specify either the instance ID or the network
-interface ID, but not both.}
+You can specify either the instance ID or the network interface ID, but
+not both.}
 
-\item{PrivateIpAddress}{[EC2-VPC] The primary or secondary private IP address to associate
-with the Elastic IP address. If no private IP address is specified, the
-Elastic IP address is associated with the primary private IP address.}
+\item{PrivateIpAddress}{The primary or secondary private IP address to associate with the
+Elastic IP address. If no private IP address is specified, the Elastic
+IP address is associated with the primary private IP address.}
 }
 \description{
 Associates an Elastic IP address, or carrier IP address (for instances that are in subnets in Wavelength Zones) with an instance or a network interface. Before you can use an Elastic IP address, you must allocate it to your account.
 
-See \url{https://paws-r.github.io/docs/ec2/associate_address.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_associate_address/} for full documentation.
 }
 \keyword{internal}

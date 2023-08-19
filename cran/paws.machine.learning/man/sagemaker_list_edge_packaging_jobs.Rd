@@ -45,6 +45,6 @@ need tokening.}
 \description{
 Returns a list of edge packaging jobs.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_edge_packaging_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_edge_packaging_jobs/} for full documentation.
 }
 \keyword{internal}

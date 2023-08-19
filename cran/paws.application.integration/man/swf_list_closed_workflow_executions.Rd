@@ -81,6 +81,6 @@ of the executions.}
 \description{
 Returns a list of closed workflow executions in the specified domain that meet the filtering criteria. The results may be split into multiple pages. To retrieve subsequent pages, make the call again using the nextPageToken returned by the initial call.
 
-See \url{https://paws-r.github.io/docs/swf/list_closed_workflow_executions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_list_closed_workflow_executions/} for full documentation.
 }
 \keyword{internal}

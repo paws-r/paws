@@ -2,7 +2,7 @@
 % Please edit documentation in R/costexplorer_operations.R
 \name{costexplorer_update_anomaly_subscription}
 \alias{costexplorer_update_anomaly_subscription}
-\title{Updates an existing cost anomaly monitor subscription}
+\title{Updates an existing cost anomaly subscription}
 \usage{
 costexplorer_update_anomaly_subscription(
   SubscriptionArn,
@@ -23,7 +23,9 @@ The update to the threshold value for receiving notifications.
 
 This field has been deprecated. To update a threshold, use
 ThresholdExpression. Continued use of Threshold will be treated as
-shorthand syntax for a ThresholdExpression.}
+shorthand syntax for a ThresholdExpression.
+
+You can specify either Threshold or ThresholdExpression, but not both.}
 
 \item{Frequency}{The update to the frequency value that subscribers receive
 notifications.}
@@ -39,9 +41,14 @@ notifications.}
 object used to specify the anomalies that you want to generate alerts
 for. This supports dimensions and nested expressions. The supported
 dimensions are \code{ANOMALY_TOTAL_IMPACT_ABSOLUTE} and
-\code{ANOMALY_TOTAL_IMPACT_PERCENTAGE}. The supported nested expression types
-are \code{AND} and \code{OR}. The match option \code{GREATER_THAN_OR_EQUAL} is
-required. Values must be numbers between 0 and 10,000,000,000.
+\code{ANOMALY_TOTAL_IMPACT_PERCENTAGE}, corresponding to an anomaly’s
+TotalImpact and TotalImpactPercentage, respectively (see
+\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_Impact.html}{Impact}
+for more details). The supported nested expression types are \code{AND} and
+\code{OR}. The match option \code{GREATER_THAN_OR_EQUAL} is required. Values must
+be numbers between 0 and 10,000,000,000 in string format.
+
+You can specify either Threshold or ThresholdExpression, but not both.
 
 The following are examples of valid ThresholdExpressions:
 \itemize{
@@ -56,8 +63,8 @@ The following are examples of valid ThresholdExpressions:
 }}
 }
 \description{
-Updates an existing cost anomaly monitor subscription.
+Updates an existing cost anomaly subscription. Specify the fields that you want to update. Omitted fields are unchanged.
 
-See \url{https://paws-r.github.io/docs/costexplorer/update_anomaly_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_update_anomaly_subscription/} for full documentation.
 }
 \keyword{internal}

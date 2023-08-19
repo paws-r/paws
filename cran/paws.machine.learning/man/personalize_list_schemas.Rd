@@ -16,6 +16,6 @@ schemas (if they exist).}
 \description{
 Returns the list of schemas associated with the account. The response provides the properties for each schema, including the Amazon Resource Name (ARN). For more information on schemas, see \code{\link[=personalize_create_schema]{create_schema}}.
 
-See \url{https://paws-r.github.io/docs/personalize/list_schemas.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_list_schemas/} for full documentation.
 }
 \keyword{internal}

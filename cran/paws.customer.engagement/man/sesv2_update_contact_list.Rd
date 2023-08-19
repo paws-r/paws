@@ -17,6 +17,6 @@ have multiple topics.}
 \description{
 Updates contact list metadata. This operation does a complete replacement.
 
-See \url{https://paws-r.github.io/docs/sesv2/update_contact_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_update_contact_list/} for full documentation.
 }
 \keyword{internal}

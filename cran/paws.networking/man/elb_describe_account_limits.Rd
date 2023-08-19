@@ -16,6 +16,6 @@ previous call.)}
 \description{
 Describes the current Elastic Load Balancing resource limits for your AWS account.
 
-See \url{https://paws-r.github.io/docs/elb/describe_account_limits.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_describe_account_limits/} for full documentation.
 }
 \keyword{internal}

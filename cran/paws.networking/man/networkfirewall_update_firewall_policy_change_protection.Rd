@@ -49,6 +49,6 @@ to \code{TRUE}.}
 \description{
 Modifies the flag, \code{ChangeProtection}, which indicates whether it is possible to change the firewall. If the flag is set to \code{TRUE}, the firewall is protected from changes. This setting helps protect against accidentally changing a firewall that's in use.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/update_firewall_policy_change_protection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_policy_change_protection/} for full documentation.
 }
 \keyword{internal}

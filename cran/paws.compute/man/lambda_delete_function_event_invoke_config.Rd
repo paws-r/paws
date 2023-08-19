@@ -28,6 +28,6 @@ function name, it is limited to 64 characters in length.}
 \description{
 Deletes the configuration for asynchronous invocation for a function, version, or alias.
 
-See \url{https://paws-r.github.io/docs/lambda/delete_function_event_invoke_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_delete_function_event_invoke_config/} for full documentation.
 }
 \keyword{internal}

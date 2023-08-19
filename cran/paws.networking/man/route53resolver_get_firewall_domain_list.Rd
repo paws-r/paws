@@ -12,6 +12,6 @@ route53resolver_get_firewall_domain_list(FirewallDomainListId)
 \description{
 Retrieves the specified firewall domain list.
 
-See \url{https://paws-r.github.io/docs/route53resolver/get_firewall_domain_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_get_firewall_domain_list/} for full documentation.
 }
 \keyword{internal}

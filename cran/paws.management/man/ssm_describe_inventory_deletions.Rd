@@ -25,6 +25,6 @@ next set of results.}
 \description{
 Describes a specific delete inventory operation.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_inventory_deletions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_inventory_deletions/} for full documentation.
 }
 \keyword{internal}

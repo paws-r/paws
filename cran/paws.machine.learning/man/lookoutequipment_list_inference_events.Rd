@@ -30,6 +30,6 @@ greater than less than the end time given}
 \description{
 Lists all inference events that have been found for the specified inference scheduler.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/list_inference_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_list_inference_events/} for full documentation.
 }
 \keyword{internal}

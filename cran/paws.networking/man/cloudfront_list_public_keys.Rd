@@ -18,6 +18,6 @@ also the ID of the last public key on that page).}
 \description{
 List all public keys that have been added to CloudFront for this account.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_public_keys.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_public_keys/} for full documentation.
 }
 \keyword{internal}

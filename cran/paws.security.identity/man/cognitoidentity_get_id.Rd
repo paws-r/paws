@@ -27,6 +27,6 @@ example, \verb{cognito-idp.us-east-1.amazonaws.com/us-east-1_123456789}.
 \description{
 Generates (or retrieves) a Cognito ID. Supplying multiple logins will create an implicit linked account.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/get_id.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_get_id/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ in the Amazon Web Services General Reference.}
 \description{
 Retrieves the specified inline \code{DataProtectionPolicy} document that is stored in the specified Amazon SNS topic.
 
-See \url{https://paws-r.github.io/docs/sns/get_data_protection_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_get_data_protection_policy/} for full documentation.
 }
 \keyword{internal}

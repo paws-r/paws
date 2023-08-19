@@ -116,6 +116,6 @@ in the \emph{Amazon EC2 User Guide}.}
 \description{
 Creates a new Capacity Reservation with the specified attributes.
 
-See \url{https://paws-r.github.io/docs/ec2/create_capacity_reservation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_capacity_reservation/} for full documentation.
 }
 \keyword{internal}

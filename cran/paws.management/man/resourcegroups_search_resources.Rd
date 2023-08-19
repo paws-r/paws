@@ -36,6 +36,6 @@ output should continue from.}
 \description{
 Returns a list of Amazon Web Services resource identifiers that matches the specified query. The query uses the same format as a resource query in a \code{\link[=resourcegroups_create_group]{create_group}} or \code{\link[=resourcegroups_update_group_query]{update_group_query}} operation.
 
-See \url{https://paws-r.github.io/docs/resourcegroups/search_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroups_search_resources/} for full documentation.
 }
 \keyword{internal}

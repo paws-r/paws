@@ -14,6 +14,6 @@ SES account in the current AWS Region.}
 \description{
 Enables or disables email sending across your entire Amazon SES account in the current AWS Region. You can use this operation in conjunction with Amazon CloudWatch alarms to temporarily pause email sending across your Amazon SES account in a given AWS Region when reputation metrics (such as your bounce or complaint rates) reach certain thresholds.
 
-See \url{https://paws-r.github.io/docs/ses/update_account_sending_enabled.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_update_account_sending_enabled/} for full documentation.
 }
 \keyword{internal}

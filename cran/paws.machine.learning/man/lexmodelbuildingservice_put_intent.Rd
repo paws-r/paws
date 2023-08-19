@@ -151,6 +151,6 @@ intent activates when the intent is fulfilled.}
 \description{
 Creates an intent or replaces an existing intent.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/put_intent.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_put_intent/} for full documentation.
 }
 \keyword{internal}

@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Accepts the specified grant.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/accept_grant.html](https://paws-r.github.io/docs/licensemanager/accept_grant.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_accept_grant/](https://www.paws-r-sdk.com/docs/licensemanager_accept_grant/) for full documentation.
 #'
 #' @param GrantArn &#91;required&#93; Amazon Resource Name (ARN) of the grant.
 #'
@@ -37,7 +37,7 @@ licensemanager_accept_grant <- function(GrantArn) {
 #' @description
 #' Checks in the specified license. Check in a license when it is no longer in use.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/check_in_license.html](https://paws-r.github.io/docs/licensemanager/check_in_license.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_check_in_license/](https://www.paws-r-sdk.com/docs/licensemanager_check_in_license/) for full documentation.
 #'
 #' @param LicenseConsumptionToken &#91;required&#93; License consumption token.
 #' @param Beneficiary License beneficiary.
@@ -67,7 +67,7 @@ licensemanager_check_in_license <- function(LicenseConsumptionToken, Beneficiary
 #' @description
 #' Checks out the specified license for offline use.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/checkout_borrow_license.html](https://paws-r.github.io/docs/licensemanager/checkout_borrow_license.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_checkout_borrow_license/](https://www.paws-r-sdk.com/docs/licensemanager_checkout_borrow_license/) for full documentation.
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license. The license must use the
 #' borrow consumption configuration.
@@ -106,7 +106,7 @@ licensemanager_checkout_borrow_license <- function(LicenseArn, Entitlements, Dig
 #' @description
 #' Checks out the specified license.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/checkout_license.html](https://paws-r.github.io/docs/licensemanager/checkout_license.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_checkout_license/](https://www.paws-r-sdk.com/docs/licensemanager_checkout_license/) for full documentation.
 #'
 #' @param ProductSKU &#91;required&#93; Product SKU.
 #' @param CheckoutType &#91;required&#93; Checkout type.
@@ -142,7 +142,7 @@ licensemanager_checkout_license <- function(ProductSKU, CheckoutType, KeyFingerp
 #' @description
 #' Creates a grant for the specified license. A grant shares the use of license entitlements with a specific Amazon Web Services account, an organization, or an organizational unit (OU). For more information, see [Granted licenses in License Manager](https://docs.aws.amazon.com/license-manager/latest/userguide/granted-licenses.html) in the *License Manager User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/create_grant.html](https://paws-r.github.io/docs/licensemanager/create_grant.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_create_grant/](https://www.paws-r-sdk.com/docs/licensemanager_create_grant/) for full documentation.
 #'
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
@@ -188,7 +188,7 @@ licensemanager_create_grant <- function(ClientToken, GrantName, LicenseArn, Prin
 #' @description
 #' Creates a new version of the specified grant. For more information, see [Granted licenses in License Manager](https://docs.aws.amazon.com/license-manager/latest/userguide/granted-licenses.html) in the *License Manager User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/create_grant_version.html](https://paws-r.github.io/docs/licensemanager/create_grant_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_create_grant_version/](https://www.paws-r-sdk.com/docs/licensemanager_create_grant_version/) for full documentation.
 #'
 #' @param ClientToken &#91;required&#93; Unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request.
@@ -225,7 +225,7 @@ licensemanager_create_grant_version <- function(ClientToken, GrantArn, GrantName
 #' @description
 #' Creates a license.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/create_license.html](https://paws-r.github.io/docs/licensemanager/create_license.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_create_license/](https://www.paws-r-sdk.com/docs/licensemanager_create_license/) for full documentation.
 #'
 #' @param LicenseName &#91;required&#93; License name.
 #' @param ProductName &#91;required&#93; Product name.
@@ -268,7 +268,7 @@ licensemanager_create_license <- function(LicenseName, ProductName, ProductSKU, 
 #' @description
 #' Creates a license configuration.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/create_license_configuration.html](https://paws-r.github.io/docs/licensemanager/create_license_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_create_license_configuration/](https://www.paws-r-sdk.com/docs/licensemanager_create_license_configuration/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the license configuration.
 #' @param Description Description of the license configuration.
@@ -326,7 +326,7 @@ licensemanager_create_license_configuration <- function(Name, Description = NULL
 #' @description
 #' Creates a new license conversion task.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/create_license_conversion_task_for_resource.html](https://paws-r.github.io/docs/licensemanager/create_license_conversion_task_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_create_license_conversion_task_for_resource/](https://www.paws-r-sdk.com/docs/licensemanager_create_license_conversion_task_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the resource you are converting the
 #' license type for.
@@ -366,7 +366,7 @@ licensemanager_create_license_conversion_task_for_resource <- function(ResourceA
 #' @description
 #' Creates a report generator.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/create_license_manager_report_generator.html](https://paws-r.github.io/docs/licensemanager/create_license_manager_report_generator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_create_license_manager_report_generator/](https://www.paws-r-sdk.com/docs/licensemanager_create_license_manager_report_generator/) for full documentation.
 #'
 #' @param ReportGeneratorName &#91;required&#93; Name of the report generator.
 #' @param Type &#91;required&#93; Type of reports to generate. The following report types an be generated:
@@ -409,7 +409,7 @@ licensemanager_create_license_manager_report_generator <- function(ReportGenerat
 #' @description
 #' Creates a new version of the specified license.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/create_license_version.html](https://paws-r.github.io/docs/licensemanager/create_license_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_create_license_version/](https://www.paws-r-sdk.com/docs/licensemanager_create_license_version/) for full documentation.
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license.
 #' @param LicenseName &#91;required&#93; License name.
@@ -453,7 +453,7 @@ licensemanager_create_license_version <- function(LicenseArn, LicenseName, Produ
 #' @description
 #' Creates a long-lived token.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/create_token.html](https://paws-r.github.io/docs/licensemanager/create_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_create_token/](https://www.paws-r-sdk.com/docs/licensemanager_create_token/) for full documentation.
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license. The ARN is mapped to the aud
 #' claim of the JWT token.
@@ -490,7 +490,7 @@ licensemanager_create_token <- function(LicenseArn, RoleArns = NULL, ExpirationI
 #' @description
 #' Deletes the specified grant.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/delete_grant.html](https://paws-r.github.io/docs/licensemanager/delete_grant.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_delete_grant/](https://www.paws-r-sdk.com/docs/licensemanager_delete_grant/) for full documentation.
 #'
 #' @param GrantArn &#91;required&#93; Amazon Resource Name (ARN) of the grant.
 #' @param StatusReason The Status reason for the delete request.
@@ -521,7 +521,7 @@ licensemanager_delete_grant <- function(GrantArn, StatusReason = NULL, Version) 
 #' @description
 #' Deletes the specified license.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/delete_license.html](https://paws-r.github.io/docs/licensemanager/delete_license.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_delete_license/](https://www.paws-r-sdk.com/docs/licensemanager_delete_license/) for full documentation.
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license.
 #' @param SourceVersion &#91;required&#93; Current version of the license.
@@ -551,7 +551,7 @@ licensemanager_delete_license <- function(LicenseArn, SourceVersion) {
 #' @description
 #' Deletes the specified license configuration.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/delete_license_configuration.html](https://paws-r.github.io/docs/licensemanager/delete_license_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_delete_license_configuration/](https://www.paws-r-sdk.com/docs/licensemanager_delete_license_configuration/) for full documentation.
 #'
 #' @param LicenseConfigurationArn &#91;required&#93; ID of the license configuration.
 #'
@@ -580,7 +580,7 @@ licensemanager_delete_license_configuration <- function(LicenseConfigurationArn)
 #' @description
 #' Deletes the specified report generator.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/delete_license_manager_report_generator.html](https://paws-r.github.io/docs/licensemanager/delete_license_manager_report_generator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_delete_license_manager_report_generator/](https://www.paws-r-sdk.com/docs/licensemanager_delete_license_manager_report_generator/) for full documentation.
 #'
 #' @param LicenseManagerReportGeneratorArn &#91;required&#93; Amazon Resource Name (ARN) of the report generator to be deleted.
 #'
@@ -609,7 +609,7 @@ licensemanager_delete_license_manager_report_generator <- function(LicenseManage
 #' @description
 #' Deletes the specified token. Must be called in the license home Region.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/delete_token.html](https://paws-r.github.io/docs/licensemanager/delete_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_delete_token/](https://www.paws-r-sdk.com/docs/licensemanager_delete_token/) for full documentation.
 #'
 #' @param TokenId &#91;required&#93; Token ID.
 #'
@@ -638,7 +638,7 @@ licensemanager_delete_token <- function(TokenId) {
 #' @description
 #' Extends the expiration date for license consumption.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/extend_license_consumption.html](https://paws-r.github.io/docs/licensemanager/extend_license_consumption.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_extend_license_consumption/](https://www.paws-r-sdk.com/docs/licensemanager_extend_license_consumption/) for full documentation.
 #'
 #' @param LicenseConsumptionToken &#91;required&#93; License consumption token.
 #' @param DryRun Checks whether you have the required permissions for the action, without
@@ -670,7 +670,7 @@ licensemanager_extend_license_consumption <- function(LicenseConsumptionToken, D
 #' @description
 #' Gets a temporary access token to use with AssumeRoleWithWebIdentity. Access tokens are valid for one hour.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/get_access_token.html](https://paws-r.github.io/docs/licensemanager/get_access_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_get_access_token/](https://www.paws-r-sdk.com/docs/licensemanager_get_access_token/) for full documentation.
 #'
 #' @param Token &#91;required&#93; Refresh token, encoded as a JWT token.
 #' @param TokenProperties Token properties to validate against those present in the JWT token.
@@ -700,7 +700,7 @@ licensemanager_get_access_token <- function(Token, TokenProperties = NULL) {
 #' @description
 #' Gets detailed information about the specified grant.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/get_grant.html](https://paws-r.github.io/docs/licensemanager/get_grant.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_get_grant/](https://www.paws-r-sdk.com/docs/licensemanager_get_grant/) for full documentation.
 #'
 #' @param GrantArn &#91;required&#93; Amazon Resource Name (ARN) of the grant.
 #' @param Version Grant version.
@@ -730,7 +730,7 @@ licensemanager_get_grant <- function(GrantArn, Version = NULL) {
 #' @description
 #' Gets detailed information about the specified license.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/get_license.html](https://paws-r.github.io/docs/licensemanager/get_license.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_get_license/](https://www.paws-r-sdk.com/docs/licensemanager_get_license/) for full documentation.
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license.
 #' @param Version License version.
@@ -760,7 +760,7 @@ licensemanager_get_license <- function(LicenseArn, Version = NULL) {
 #' @description
 #' Gets detailed information about the specified license configuration.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/get_license_configuration.html](https://paws-r.github.io/docs/licensemanager/get_license_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_get_license_configuration/](https://www.paws-r-sdk.com/docs/licensemanager_get_license_configuration/) for full documentation.
 #'
 #' @param LicenseConfigurationArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
 #'
@@ -789,7 +789,7 @@ licensemanager_get_license_configuration <- function(LicenseConfigurationArn) {
 #' @description
 #' Gets information about the specified license type conversion task.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/get_license_conversion_task.html](https://paws-r.github.io/docs/licensemanager/get_license_conversion_task.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_get_license_conversion_task/](https://www.paws-r-sdk.com/docs/licensemanager_get_license_conversion_task/) for full documentation.
 #'
 #' @param LicenseConversionTaskId &#91;required&#93; ID of the license type conversion task to retrieve information on.
 #'
@@ -818,7 +818,7 @@ licensemanager_get_license_conversion_task <- function(LicenseConversionTaskId) 
 #' @description
 #' Gets information about the specified report generator.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/get_license_manager_report_generator.html](https://paws-r.github.io/docs/licensemanager/get_license_manager_report_generator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_get_license_manager_report_generator/](https://www.paws-r-sdk.com/docs/licensemanager_get_license_manager_report_generator/) for full documentation.
 #'
 #' @param LicenseManagerReportGeneratorArn &#91;required&#93; Amazon Resource Name (ARN) of the report generator.
 #'
@@ -847,7 +847,7 @@ licensemanager_get_license_manager_report_generator <- function(LicenseManagerRe
 #' @description
 #' Gets detailed information about the usage of the specified license.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/get_license_usage.html](https://paws-r.github.io/docs/licensemanager/get_license_usage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_get_license_usage/](https://www.paws-r-sdk.com/docs/licensemanager_get_license_usage/) for full documentation.
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license.
 #'
@@ -876,7 +876,7 @@ licensemanager_get_license_usage <- function(LicenseArn) {
 #' @description
 #' Gets the License Manager settings for the current Region.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/get_service_settings.html](https://paws-r.github.io/docs/licensemanager/get_service_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_get_service_settings/](https://www.paws-r-sdk.com/docs/licensemanager_get_service_settings/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -903,7 +903,7 @@ licensemanager_get_service_settings <- function() {
 #' @description
 #' Lists the resource associations for the specified license configuration.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_associations_for_license_configuration.html](https://paws-r.github.io/docs/licensemanager/list_associations_for_license_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_associations_for_license_configuration/](https://www.paws-r-sdk.com/docs/licensemanager_list_associations_for_license_configuration/) for full documentation.
 #'
 #' @param LicenseConfigurationArn &#91;required&#93; Amazon Resource Name (ARN) of a license configuration.
 #' @param MaxResults Maximum number of results to return in a single call.
@@ -934,7 +934,7 @@ licensemanager_list_associations_for_license_configuration <- function(LicenseCo
 #' @description
 #' Lists the grants distributed for the specified license.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_distributed_grants.html](https://paws-r.github.io/docs/licensemanager/list_distributed_grants.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_distributed_grants/](https://www.paws-r-sdk.com/docs/licensemanager_list_distributed_grants/) for full documentation.
 #'
 #' @param GrantArns Amazon Resource Names (ARNs) of the grants.
 #' @param Filters Filters to scope the results. The following filters are supported:
@@ -976,7 +976,7 @@ licensemanager_list_distributed_grants <- function(GrantArns = NULL, Filters = N
 #' @description
 #' Lists the license configuration operations that failed.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_failures_for_license_configuration_operations.html](https://paws-r.github.io/docs/licensemanager/list_failures_for_license_configuration_operations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_failures_for_license_configuration_operations/](https://www.paws-r-sdk.com/docs/licensemanager_list_failures_for_license_configuration_operations/) for full documentation.
 #'
 #' @param LicenseConfigurationArn &#91;required&#93; Amazon Resource Name of the license configuration.
 #' @param MaxResults Maximum number of results to return in a single call.
@@ -1007,7 +1007,7 @@ licensemanager_list_failures_for_license_configuration_operations <- function(Li
 #' @description
 #' Lists the license configurations for your account.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_license_configurations.html](https://paws-r.github.io/docs/licensemanager/list_license_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_license_configurations/](https://www.paws-r-sdk.com/docs/licensemanager_list_license_configurations/) for full documentation.
 #'
 #' @param LicenseConfigurationArns Amazon Resource Names (ARN) of the license configurations.
 #' @param MaxResults Maximum number of results to return in a single call.
@@ -1052,7 +1052,7 @@ licensemanager_list_license_configurations <- function(LicenseConfigurationArns 
 #' @description
 #' Lists the license type conversion tasks for your account.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_license_conversion_tasks.html](https://paws-r.github.io/docs/licensemanager/list_license_conversion_tasks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_license_conversion_tasks/](https://www.paws-r-sdk.com/docs/licensemanager_list_license_conversion_tasks/) for full documentation.
 #'
 #' @param NextToken Token for the next set of results.
 #' @param MaxResults Maximum number of results to return in a single call.
@@ -1084,7 +1084,7 @@ licensemanager_list_license_conversion_tasks <- function(NextToken = NULL, MaxRe
 #' @description
 #' Lists the report generators for your account.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_license_manager_report_generators.html](https://paws-r.github.io/docs/licensemanager/list_license_manager_report_generators.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_license_manager_report_generators/](https://www.paws-r-sdk.com/docs/licensemanager_list_license_manager_report_generators/) for full documentation.
 #'
 #' @param Filters Filters to scope the results. The following filters are supported:
 #' 
@@ -1117,7 +1117,7 @@ licensemanager_list_license_manager_report_generators <- function(Filters = NULL
 #' @description
 #' Describes the license configurations for the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_license_specifications_for_resource.html](https://paws-r.github.io/docs/licensemanager/list_license_specifications_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_license_specifications_for_resource/](https://www.paws-r-sdk.com/docs/licensemanager_list_license_specifications_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of a resource that has an associated license
 #' configuration.
@@ -1149,7 +1149,7 @@ licensemanager_list_license_specifications_for_resource <- function(ResourceArn,
 #' @description
 #' Lists all versions of the specified license.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_license_versions.html](https://paws-r.github.io/docs/licensemanager/list_license_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_license_versions/](https://www.paws-r-sdk.com/docs/licensemanager_list_license_versions/) for full documentation.
 #'
 #' @param LicenseArn &#91;required&#93; Amazon Resource Name (ARN) of the license.
 #' @param NextToken Token for the next set of results.
@@ -1180,7 +1180,7 @@ licensemanager_list_license_versions <- function(LicenseArn, NextToken = NULL, M
 #' @description
 #' Lists the licenses for your account.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_licenses.html](https://paws-r.github.io/docs/licensemanager/list_licenses.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_licenses/](https://www.paws-r-sdk.com/docs/licensemanager_list_licenses/) for full documentation.
 #'
 #' @param LicenseArns Amazon Resource Names (ARNs) of the licenses.
 #' @param Filters Filters to scope the results. The following filters are supported:
@@ -1220,7 +1220,7 @@ licensemanager_list_licenses <- function(LicenseArns = NULL, Filters = NULL, Nex
 #' @description
 #' Lists grants that are received. Received grants are grants created while specifying the recipient as this Amazon Web Services account, your organization, or an organizational unit (OU) to which this member account belongs.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_received_grants.html](https://paws-r.github.io/docs/licensemanager/list_received_grants.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_received_grants/](https://www.paws-r-sdk.com/docs/licensemanager_list_received_grants/) for full documentation.
 #'
 #' @param GrantArns Amazon Resource Names (ARNs) of the grants.
 #' @param Filters Filters to scope the results. The following filters are supported:
@@ -1262,7 +1262,7 @@ licensemanager_list_received_grants <- function(GrantArns = NULL, Filters = NULL
 #' @description
 #' Lists the grants received for all accounts in the organization.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_received_grants_for_organization.html](https://paws-r.github.io/docs/licensemanager/list_received_grants_for_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_received_grants_for_organization/](https://www.paws-r-sdk.com/docs/licensemanager_list_received_grants_for_organization/) for full documentation.
 #'
 #' @param LicenseArn &#91;required&#93; The Amazon Resource Name (ARN) of the received license.
 #' @param Filters Filters to scope the results. The following filters are supported:
@@ -1298,7 +1298,7 @@ licensemanager_list_received_grants_for_organization <- function(LicenseArn, Fil
 #' @description
 #' Lists received licenses.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_received_licenses.html](https://paws-r.github.io/docs/licensemanager/list_received_licenses.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_received_licenses/](https://www.paws-r-sdk.com/docs/licensemanager_list_received_licenses/) for full documentation.
 #'
 #' @param LicenseArns Amazon Resource Names (ARNs) of the licenses.
 #' @param Filters Filters to scope the results. The following filters are supported:
@@ -1340,7 +1340,7 @@ licensemanager_list_received_licenses <- function(LicenseArns = NULL, Filters = 
 #' @description
 #' Lists the licenses received for all accounts in the organization.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_received_licenses_for_organization.html](https://paws-r.github.io/docs/licensemanager/list_received_licenses_for_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_received_licenses_for_organization/](https://www.paws-r-sdk.com/docs/licensemanager_list_received_licenses_for_organization/) for full documentation.
 #'
 #' @param Filters Filters to scope the results. The following filters are supported:
 #' 
@@ -1375,7 +1375,7 @@ licensemanager_list_received_licenses_for_organization <- function(Filters = NUL
 #' @description
 #' Lists resources managed using Systems Manager inventory.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_resource_inventory.html](https://paws-r.github.io/docs/licensemanager/list_resource_inventory.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_resource_inventory/](https://www.paws-r-sdk.com/docs/licensemanager_list_resource_inventory/) for full documentation.
 #'
 #' @param MaxResults Maximum number of results to return in a single call.
 #' @param NextToken Token for the next set of results.
@@ -1428,7 +1428,7 @@ licensemanager_list_resource_inventory <- function(MaxResults = NULL, NextToken 
 #' @description
 #' Lists the tags for the specified license configuration.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_tags_for_resource.html](https://paws-r.github.io/docs/licensemanager/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/licensemanager_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
 #'
@@ -1457,7 +1457,7 @@ licensemanager_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Lists your tokens.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_tokens.html](https://paws-r.github.io/docs/licensemanager/list_tokens.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_tokens/](https://www.paws-r-sdk.com/docs/licensemanager_list_tokens/) for full documentation.
 #'
 #' @param TokenIds Token IDs.
 #' @param Filters Filters to scope the results. The following filter is supported:
@@ -1492,7 +1492,7 @@ licensemanager_list_tokens <- function(TokenIds = NULL, Filters = NULL, NextToke
 #' @description
 #' Lists all license usage records for a license configuration, displaying license consumption details by resource at a selected point in time. Use this action to audit the current license consumption for any license inventory and configuration.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/list_usage_for_license_configuration.html](https://paws-r.github.io/docs/licensemanager/list_usage_for_license_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_list_usage_for_license_configuration/](https://www.paws-r-sdk.com/docs/licensemanager_list_usage_for_license_configuration/) for full documentation.
 #'
 #' @param LicenseConfigurationArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
 #' @param MaxResults Maximum number of results to return in a single call.
@@ -1535,7 +1535,7 @@ licensemanager_list_usage_for_license_configuration <- function(LicenseConfigura
 #' @description
 #' Rejects the specified grant.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/reject_grant.html](https://paws-r.github.io/docs/licensemanager/reject_grant.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_reject_grant/](https://www.paws-r-sdk.com/docs/licensemanager_reject_grant/) for full documentation.
 #'
 #' @param GrantArn &#91;required&#93; Amazon Resource Name (ARN) of the grant.
 #'
@@ -1564,7 +1564,7 @@ licensemanager_reject_grant <- function(GrantArn) {
 #' @description
 #' Adds the specified tags to the specified license configuration.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/tag_resource.html](https://paws-r.github.io/docs/licensemanager/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_tag_resource/](https://www.paws-r-sdk.com/docs/licensemanager_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
 #' @param Tags &#91;required&#93; One or more tags.
@@ -1594,7 +1594,7 @@ licensemanager_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes the specified tags from the specified license configuration.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/untag_resource.html](https://paws-r.github.io/docs/licensemanager/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_untag_resource/](https://www.paws-r-sdk.com/docs/licensemanager_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
 #' @param TagKeys &#91;required&#93; Keys identifying the tags to remove.
@@ -1624,7 +1624,7 @@ licensemanager_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Modifies the attributes of an existing license configuration.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/update_license_configuration.html](https://paws-r.github.io/docs/licensemanager/update_license_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_update_license_configuration/](https://www.paws-r-sdk.com/docs/licensemanager_update_license_configuration/) for full documentation.
 #'
 #' @param LicenseConfigurationArn &#91;required&#93; Amazon Resource Name (ARN) of the license configuration.
 #' @param LicenseConfigurationStatus New status of the license configuration.
@@ -1662,7 +1662,7 @@ licensemanager_update_license_configuration <- function(LicenseConfigurationArn,
 #' @description
 #' Updates a report generator.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/update_license_manager_report_generator.html](https://paws-r.github.io/docs/licensemanager/update_license_manager_report_generator.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_update_license_manager_report_generator/](https://www.paws-r-sdk.com/docs/licensemanager_update_license_manager_report_generator/) for full documentation.
 #'
 #' @param LicenseManagerReportGeneratorArn &#91;required&#93; Amazon Resource Name (ARN) of the report generator to update.
 #' @param ReportGeneratorName &#91;required&#93; Name of the report generator.
@@ -1705,7 +1705,7 @@ licensemanager_update_license_manager_report_generator <- function(LicenseManage
 #' @description
 #' Adds or removes the specified license configurations for the specified Amazon Web Services resource.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/update_license_specifications_for_resource.html](https://paws-r.github.io/docs/licensemanager/update_license_specifications_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_update_license_specifications_for_resource/](https://www.paws-r-sdk.com/docs/licensemanager_update_license_specifications_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the Amazon Web Services resource.
 #' @param AddLicenseSpecifications ARNs of the license configurations to add.
@@ -1736,7 +1736,7 @@ licensemanager_update_license_specifications_for_resource <- function(ResourceAr
 #' @description
 #' Updates License Manager settings for the current Region.
 #'
-#' See [https://paws-r.github.io/docs/licensemanager/update_service_settings.html](https://paws-r.github.io/docs/licensemanager/update_service_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/licensemanager_update_service_settings/](https://www.paws-r-sdk.com/docs/licensemanager_update_service_settings/) for full documentation.
 #'
 #' @param S3BucketArn Amazon Resource Name (ARN) of the Amazon S3 bucket where the License
 #' Manager information is stored.

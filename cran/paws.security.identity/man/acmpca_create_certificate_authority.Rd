@@ -61,18 +61,15 @@ handling CA keys.
 
 Default: FIPS_140_2_LEVEL_3_OR_HIGHER
 
-\emph{Note:} \code{FIPS_140_2_LEVEL_3_OR_HIGHER} is not supported in the following
-Regions:
-\itemize{
-\item ap-northeast-3
-\item ap-southeast-3
-}
-
-When creating a CA in these Regions, you must provide
+Some Amazon Web Services Regions do not support the default. When
+creating a CA in these Regions, you must provide
 \code{FIPS_140_2_LEVEL_2_OR_HIGHER} as the argument for
 \code{KeyStorageSecurityStandard}. Failure to do this results in an
 \code{InvalidArgsException} with the message, "A certificate authority cannot
-be created in this region with the specified security standard."}
+be created in this region with the specified security standard."
+
+For information about security standard support in various Regions, see
+\href{https://docs.aws.amazon.com/privateca/latest/userguide/data-protection.html#private-keys}{Storage and security compliance of Amazon Web Services Private CA private keys}.}
 
 \item{Tags}{Key-value pairs that will be attached to the new private CA. You can
 associate up to 50 tags with a private CA. For information using tags
@@ -88,6 +85,6 @@ The default value is GENERAL_PURPOSE.}
 \description{
 Creates a root or subordinate private certificate authority (CA). You must specify the CA configuration, an optional configuration for Online Certificate Status Protocol (OCSP) and/or a certificate revocation list (CRL), the CA type, and an optional idempotency token to avoid accidental creation of multiple CAs. The CA configuration specifies the name of the algorithm and key size to be used to create the CA private key, the type of signing algorithm that the CA uses, and X.500 subject information. The OCSP configuration can optionally specify a custom URL for the OCSP responder. The CRL configuration specifies the CRL expiration period in days (the validity period of the CRL), the Amazon S3 bucket that will contain the CRL, and a CNAME alias for the S3 bucket that is included in certificates issued by the CA. If successful, this action returns the Amazon Resource Name (ARN) of the CA.
 
-See \url{https://paws-r.github.io/docs/acmpca/create_certificate_authority.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_create_certificate_authority/} for full documentation.
 }
 \keyword{internal}

@@ -17,7 +17,14 @@ sfn_list_executions(
 listed.
 
 You can specify either a \code{mapRunArn} or a \code{stateMachineArn}, but not
-both.}
+both.
+
+You can also return a list of executions associated with a specific
+\href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-alias.html}{alias}
+or
+\href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-state-machine-version.html}{version},
+by specifying an alias ARN or a version ARN in the \code{stateMachineArn}
+parameter.}
 
 \item{statusFilter}{If specified, only list the executions whose current execution status
 matches the given filter.}
@@ -48,6 +55,6 @@ both.}
 \description{
 Lists all executions of a state machine or a Map Run. You can list all executions related to a state machine by specifying a state machine Amazon Resource Name (ARN), or those related to a Map Run by specifying a Map Run ARN.
 
-See \url{https://paws-r.github.io/docs/sfn/list_executions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_list_executions/} for full documentation.
 }
 \keyword{internal}

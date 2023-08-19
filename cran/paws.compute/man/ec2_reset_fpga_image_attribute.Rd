@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Resets the specified attribute of the specified Amazon FPGA Image (AFI) to its default value. You can only reset the load permission attribute.
 
-See \url{https://paws-r.github.io/docs/ec2/reset_fpga_image_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_reset_fpga_image_attribute/} for full documentation.
 }
 \keyword{internal}

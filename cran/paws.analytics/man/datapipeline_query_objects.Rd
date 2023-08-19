@@ -36,6 +36,6 @@ call. The default value is 100.}
 \description{
 Queries the specified pipeline for the names of objects that match the specified set of conditions.
 
-See \url{https://paws-r.github.io/docs/datapipeline/query_objects.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/datapipeline_query_objects/} for full documentation.
 }
 \keyword{internal}

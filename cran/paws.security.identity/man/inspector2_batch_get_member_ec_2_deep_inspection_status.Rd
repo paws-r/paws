@@ -17,6 +17,6 @@ Amazon Inspector deep inspection activation status for.
 \description{
 Retrieves Amazon Inspector deep inspection activation status of multiple member accounts within your organization. You must be the delegated administrator of an organization in Amazon Inspector to use this API.
 
-See \url{https://paws-r.github.io/docs/inspector2/batch_get_member_ec_2_deep_inspection_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_batch_get_member_ec_2_deep_inspection_status/} for full documentation.
 }
 \keyword{internal}

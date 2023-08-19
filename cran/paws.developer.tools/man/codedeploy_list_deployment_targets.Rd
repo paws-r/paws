@@ -29,6 +29,6 @@ can be used to return the next set of deployment targets in the list.}
 \description{
 Returns an array of target IDs that are associated a deployment.
 
-See \url{https://paws-r.github.io/docs/codedeploy/list_deployment_targets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_list_deployment_targets/} for full documentation.
 }
 \keyword{internal}

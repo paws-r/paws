@@ -13,6 +13,6 @@ names are case sensitive.}
 \description{
 Deletes a Call Analytics category. To use this operation, specify the name of the category you want to delete using \code{CategoryName}. Category names are case sensitive.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/delete_call_analytics_category.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_delete_call_analytics_category/} for full documentation.
 }
 \keyword{internal}

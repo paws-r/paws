@@ -31,6 +31,6 @@ number of tags for a resource, then the entire request fails.}
 \description{
 Adds one or more tags to the specified resource.
 
-See \url{https://paws-r.github.io/docs/organizations/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_tag_resource/} for full documentation.
 }
 \keyword{internal}

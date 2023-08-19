@@ -98,6 +98,559 @@ finspace_create_environment <- function(name, description = NULL, kmsKeyId = NUL
 }
 .finspace$operations$create_environment <- finspace_create_environment
 
+#' Creates a changeset for a kdb database
+#'
+#' @description
+#' Creates a changeset for a kdb database. A changeset allows you to add
+#' and delete existing files by using an ordered list of change requests.
+#'
+#' @usage
+#' finspace_create_kx_changeset(environmentId, databaseName,
+#'   changeRequests, clientToken)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier of the kdb environment.
+#' @param databaseName &#91;required&#93; The name of the kdb database.
+#' @param changeRequests &#91;required&#93; A list of change request objects that are run in order. A change request
+#' object consists of changeType , s3Path, and a dbPath. A changeType can
+#' has the following values:
+#' 
+#' -   PUT – Adds or updates files in a database.
+#' 
+#' -   DELETE – Deletes files in a database.
+#' 
+#' All the change requests require a mandatory *dbPath* attribute that
+#' defines the path within the database directory. The *s3Path* attribute
+#' defines the s3 source file path and is required for a PUT change type.
+#' 
+#' Here is an example of how you can use the change request object:
+#' 
+#' `[ { "changeType": "PUT", "s3Path":"s3://bucket/db/2020.01.02/", "dbPath":"/2020.01.02/"}, { "changeType": "PUT", "s3Path":"s3://bucket/db/sym", "dbPath":"/"}, { "changeType": "DELETE", "dbPath": "/2020.01.01/"} ]`
+#' 
+#' In this example, the first request with *PUT* change type allows you to
+#' add files in the given s3Path under the *2020.01.02* partition of the
+#' database. The second request with *PUT* change type allows you to add a
+#' single sym file at database root location. The last request with
+#' *DELETE* change type allows you to delete the files under the
+#' *2020.01.01* partition of the database.
+#' @param clientToken &#91;required&#93; A token that ensures idempotency. This token expires in 10 minutes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   changesetId = "string",
+#'   databaseName = "string",
+#'   environmentId = "string",
+#'   changeRequests = list(
+#'     list(
+#'       changeType = "PUT"|"DELETE",
+#'       s3Path = "string",
+#'       dbPath = "string"
+#'     )
+#'   ),
+#'   createdTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   status = "PENDING"|"PROCESSING"|"FAILED"|"COMPLETED",
+#'   errorInfo = list(
+#'     errorMessage = "string",
+#'     errorType = "The inputs to this request are invalid."|"Service limits have been exceeded."|"Missing required permission to perform this request."|"One or more inputs to this request were not found."|"The system temporarily lacks sufficient resources to process the request."|"An internal error has occurred."|"Cancelled"|"A user recoverable error has occurred"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_kx_changeset(
+#'   environmentId = "string",
+#'   databaseName = "string",
+#'   changeRequests = list(
+#'     list(
+#'       changeType = "PUT"|"DELETE",
+#'       s3Path = "string",
+#'       dbPath = "string"
+#'     )
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_create_kx_changeset
+#'
+#' @aliases finspace_create_kx_changeset
+finspace_create_kx_changeset <- function(environmentId, databaseName, changeRequests, clientToken) {
+  op <- new_operation(
+    name = "CreateKxChangeset",
+    http_method = "POST",
+    http_path = "/kx/environments/{environmentId}/databases/{databaseName}/changesets",
+    paginator = list()
+  )
+  input <- .finspace$create_kx_changeset_input(environmentId = environmentId, databaseName = databaseName, changeRequests = changeRequests, clientToken = clientToken)
+  output <- .finspace$create_kx_changeset_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$create_kx_changeset <- finspace_create_kx_changeset
+
+#' Creates a new kdb cluster
+#'
+#' @description
+#' Creates a new kdb cluster.
+#'
+#' @usage
+#' finspace_create_kx_cluster(clientToken, environmentId, clusterName,
+#'   clusterType, databases, cacheStorageConfigurations,
+#'   autoScalingConfiguration, clusterDescription, capacityConfiguration,
+#'   releaseLabel, vpcConfiguration, initializationScript,
+#'   commandLineArguments, code, executionRole, savedownStorageConfiguration,
+#'   azMode, availabilityZoneId, tags)
+#'
+#' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param clusterName &#91;required&#93; A unique name for the cluster that you want to create.
+#' @param clusterType &#91;required&#93; Specifies the type of KDB database that is being created. The following
+#' types are available:
+#' 
+#' -   HDB – A Historical Database. The data is only accessible with
+#'     read-only permissions from one of the FinSpace managed kdb databases
+#'     mounted to the cluster.
+#' 
+#' -   RDB – A Realtime Database. This type of database captures all the
+#'     data from a ticker plant and stores it in memory until the end of
+#'     day, after which it writes all of its data to a disk and reloads the
+#'     HDB. This cluster type requires local storage for temporary storage
+#'     of data during the savedown process. If you specify this field in
+#'     your request, you must provide the `savedownStorageConfiguration`
+#'     parameter.
+#' 
+#' -   GATEWAY – A gateway cluster allows you to access data across
+#'     processes in kdb systems. It allows you to create your own routing
+#'     logic using the initialization scripts and custom code. This type of
+#'     cluster does not require a writable local storage.
+#' @param databases A list of databases that will be available for querying.
+#' @param cacheStorageConfigurations The configurations for a read only cache storage associated with a
+#' cluster. This cache will be stored as an FSx Lustre that reads from the
+#' S3 store.
+#' @param autoScalingConfiguration The configuration based on which FinSpace will scale in or scale out
+#' nodes in your cluster.
+#' @param clusterDescription A description of the cluster.
+#' @param capacityConfiguration &#91;required&#93; A structure for the metadata of a cluster. It includes information about
+#' like the CPUs needed, memory of instances, number of instances, and the
+#' port used while establishing a connection.
+#' @param releaseLabel &#91;required&#93; The version of FinSpace managed kdb to run.
+#' @param vpcConfiguration Configuration details about the network where the Privatelink endpoint
+#' of the cluster resides.
+#' @param initializationScript Specifies a Q program that will be run at launch of a cluster. It is a
+#' relative path within *.zip* file that contains the custom code, which
+#' will be loaded on the cluster. It must include the file name itself. For
+#' example, `somedir/init.q`.
+#' @param commandLineArguments Defines the key-value pairs to make them available inside the cluster.
+#' @param code The details of the custom code that you want to use inside a cluster
+#' when analyzing a data. It consists of the S3 source bucket, location, S3
+#' object version, and the relative path from where the custom code is
+#' loaded into the cluster.
+#' @param executionRole An IAM role that defines a set of permissions associated with a cluster.
+#' These permissions are assumed when a cluster attempts to access another
+#' cluster.
+#' @param savedownStorageConfiguration The size and type of the temporary storage that is used to hold data
+#' during the savedown process. This parameter is required when you choose
+#' `clusterType` as RDB. All the data written to this storage space is lost
+#' when the cluster node is restarted.
+#' @param azMode &#91;required&#93; The number of availability zones you want to assign per cluster. This
+#' can be one of the following
+#' 
+#' -   `SINGLE` – Assigns one availability zone per cluster.
+#' 
+#' -   `MULTI` – Assigns all the availability zones per cluster.
+#' @param availabilityZoneId The availability zone identifiers for the requested regions.
+#' @param tags A list of key-value pairs to label the cluster. You can add up to 50
+#' tags to a cluster.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   environmentId = "string",
+#'   status = "PENDING"|"CREATING"|"CREATE_FAILED"|"RUNNING"|"UPDATING"|"DELETING"|"DELETED"|"DELETE_FAILED",
+#'   statusReason = "string",
+#'   clusterName = "string",
+#'   clusterType = "HDB"|"RDB"|"GATEWAY",
+#'   databases = list(
+#'     list(
+#'       databaseName = "string",
+#'       cacheConfigurations = list(
+#'         list(
+#'           cacheType = "string",
+#'           dbPaths = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       changesetId = "string"
+#'     )
+#'   ),
+#'   cacheStorageConfigurations = list(
+#'     list(
+#'       type = "string",
+#'       size = 123
+#'     )
+#'   ),
+#'   autoScalingConfiguration = list(
+#'     minNodeCount = 123,
+#'     maxNodeCount = 123,
+#'     autoScalingMetric = "CPU_UTILIZATION_PERCENTAGE",
+#'     metricTarget = 123.0,
+#'     scaleInCooldownSeconds = 123.0,
+#'     scaleOutCooldownSeconds = 123.0
+#'   ),
+#'   clusterDescription = "string",
+#'   capacityConfiguration = list(
+#'     nodeType = "string",
+#'     nodeCount = 123
+#'   ),
+#'   releaseLabel = "string",
+#'   vpcConfiguration = list(
+#'     vpcId = "string",
+#'     securityGroupIds = list(
+#'       "string"
+#'     ),
+#'     subnetIds = list(
+#'       "string"
+#'     ),
+#'     ipAddressType = "IP_V4"
+#'   ),
+#'   initializationScript = "string",
+#'   commandLineArguments = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   code = list(
+#'     s3Bucket = "string",
+#'     s3Key = "string",
+#'     s3ObjectVersion = "string"
+#'   ),
+#'   executionRole = "string",
+#'   lastModifiedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   savedownStorageConfiguration = list(
+#'     type = "SDS01",
+#'     size = 123
+#'   ),
+#'   azMode = "SINGLE"|"MULTI",
+#'   availabilityZoneId = "string",
+#'   createdTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_kx_cluster(
+#'   clientToken = "string",
+#'   environmentId = "string",
+#'   clusterName = "string",
+#'   clusterType = "HDB"|"RDB"|"GATEWAY",
+#'   databases = list(
+#'     list(
+#'       databaseName = "string",
+#'       cacheConfigurations = list(
+#'         list(
+#'           cacheType = "string",
+#'           dbPaths = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       changesetId = "string"
+#'     )
+#'   ),
+#'   cacheStorageConfigurations = list(
+#'     list(
+#'       type = "string",
+#'       size = 123
+#'     )
+#'   ),
+#'   autoScalingConfiguration = list(
+#'     minNodeCount = 123,
+#'     maxNodeCount = 123,
+#'     autoScalingMetric = "CPU_UTILIZATION_PERCENTAGE",
+#'     metricTarget = 123.0,
+#'     scaleInCooldownSeconds = 123.0,
+#'     scaleOutCooldownSeconds = 123.0
+#'   ),
+#'   clusterDescription = "string",
+#'   capacityConfiguration = list(
+#'     nodeType = "string",
+#'     nodeCount = 123
+#'   ),
+#'   releaseLabel = "string",
+#'   vpcConfiguration = list(
+#'     vpcId = "string",
+#'     securityGroupIds = list(
+#'       "string"
+#'     ),
+#'     subnetIds = list(
+#'       "string"
+#'     ),
+#'     ipAddressType = "IP_V4"
+#'   ),
+#'   initializationScript = "string",
+#'   commandLineArguments = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   code = list(
+#'     s3Bucket = "string",
+#'     s3Key = "string",
+#'     s3ObjectVersion = "string"
+#'   ),
+#'   executionRole = "string",
+#'   savedownStorageConfiguration = list(
+#'     type = "SDS01",
+#'     size = 123
+#'   ),
+#'   azMode = "SINGLE"|"MULTI",
+#'   availabilityZoneId = "string",
+#'   tags = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_create_kx_cluster
+#'
+#' @aliases finspace_create_kx_cluster
+finspace_create_kx_cluster <- function(clientToken = NULL, environmentId, clusterName, clusterType, databases = NULL, cacheStorageConfigurations = NULL, autoScalingConfiguration = NULL, clusterDescription = NULL, capacityConfiguration, releaseLabel, vpcConfiguration = NULL, initializationScript = NULL, commandLineArguments = NULL, code = NULL, executionRole = NULL, savedownStorageConfiguration = NULL, azMode, availabilityZoneId = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateKxCluster",
+    http_method = "POST",
+    http_path = "/kx/environments/{environmentId}/clusters",
+    paginator = list()
+  )
+  input <- .finspace$create_kx_cluster_input(clientToken = clientToken, environmentId = environmentId, clusterName = clusterName, clusterType = clusterType, databases = databases, cacheStorageConfigurations = cacheStorageConfigurations, autoScalingConfiguration = autoScalingConfiguration, clusterDescription = clusterDescription, capacityConfiguration = capacityConfiguration, releaseLabel = releaseLabel, vpcConfiguration = vpcConfiguration, initializationScript = initializationScript, commandLineArguments = commandLineArguments, code = code, executionRole = executionRole, savedownStorageConfiguration = savedownStorageConfiguration, azMode = azMode, availabilityZoneId = availabilityZoneId, tags = tags)
+  output <- .finspace$create_kx_cluster_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$create_kx_cluster <- finspace_create_kx_cluster
+
+#' Creates a new kdb database in the environment
+#'
+#' @description
+#' Creates a new kdb database in the environment.
+#'
+#' @usage
+#' finspace_create_kx_database(environmentId, databaseName, description,
+#'   tags, clientToken)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param databaseName &#91;required&#93; The name of the kdb database.
+#' @param description A description of the database.
+#' @param tags A list of key-value pairs to label the kdb database. You can add up to
+#' 50 tags to your kdb database
+#' @param clientToken &#91;required&#93; A token that ensures idempotency. This token expires in 10 minutes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   databaseName = "string",
+#'   databaseArn = "string",
+#'   environmentId = "string",
+#'   description = "string",
+#'   createdTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_kx_database(
+#'   environmentId = "string",
+#'   databaseName = "string",
+#'   description = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_create_kx_database
+#'
+#' @aliases finspace_create_kx_database
+finspace_create_kx_database <- function(environmentId, databaseName, description = NULL, tags = NULL, clientToken) {
+  op <- new_operation(
+    name = "CreateKxDatabase",
+    http_method = "POST",
+    http_path = "/kx/environments/{environmentId}/databases",
+    paginator = list()
+  )
+  input <- .finspace$create_kx_database_input(environmentId = environmentId, databaseName = databaseName, description = description, tags = tags, clientToken = clientToken)
+  output <- .finspace$create_kx_database_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$create_kx_database <- finspace_create_kx_database
+
+#' Creates a managed kdb environment for the account
+#'
+#' @description
+#' Creates a managed kdb environment for the account.
+#'
+#' @usage
+#' finspace_create_kx_environment(name, description, kmsKeyId, tags,
+#'   clientToken)
+#'
+#' @param name &#91;required&#93; The name of the kdb environment that you want to create.
+#' @param description A description for the kdb environment.
+#' @param kmsKeyId &#91;required&#93; The KMS key ID to encrypt your data in the FinSpace environment.
+#' @param tags A list of key-value pairs to label the kdb environment. You can add up
+#' to 50 tags to your kdb environment.
+#' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   status = "CREATE_REQUESTED"|"CREATING"|"CREATED"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"FAILED_CREATION"|"RETRY_DELETION"|"FAILED_DELETION"|"UPDATE_NETWORK_REQUESTED"|"UPDATING_NETWORK"|"FAILED_UPDATING_NETWORK"|"SUSPENDED",
+#'   environmentId = "string",
+#'   description = "string",
+#'   environmentArn = "string",
+#'   kmsKeyId = "string",
+#'   creationTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_kx_environment(
+#'   name = "string",
+#'   description = "string",
+#'   kmsKeyId = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_create_kx_environment
+#'
+#' @aliases finspace_create_kx_environment
+finspace_create_kx_environment <- function(name, description = NULL, kmsKeyId, tags = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "CreateKxEnvironment",
+    http_method = "POST",
+    http_path = "/kx/environments",
+    paginator = list()
+  )
+  input <- .finspace$create_kx_environment_input(name = name, description = description, kmsKeyId = kmsKeyId, tags = tags, clientToken = clientToken)
+  output <- .finspace$create_kx_environment_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$create_kx_environment <- finspace_create_kx_environment
+
+#' Creates a user in FinSpace kdb environment with an associated IAM role
+#'
+#' @description
+#' Creates a user in FinSpace kdb environment with an associated IAM role.
+#'
+#' @usage
+#' finspace_create_kx_user(environmentId, userName, iamRole, tags,
+#'   clientToken)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment where you want to create a
+#' user.
+#' @param userName &#91;required&#93; A unique identifier for the user.
+#' @param iamRole &#91;required&#93; The IAM role ARN that will be associated with the user.
+#' @param tags A list of key-value pairs to label the user. You can add up to 50 tags
+#' to a user.
+#' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   userName = "string",
+#'   userArn = "string",
+#'   environmentId = "string",
+#'   iamRole = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_kx_user(
+#'   environmentId = "string",
+#'   userName = "string",
+#'   iamRole = "string",
+#'   tags = list(
+#'     "string"
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_create_kx_user
+#'
+#' @aliases finspace_create_kx_user
+finspace_create_kx_user <- function(environmentId, userName, iamRole, tags = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "CreateKxUser",
+    http_method = "POST",
+    http_path = "/kx/environments/{environmentId}/users",
+    paginator = list()
+  )
+  input <- .finspace$create_kx_user_input(environmentId = environmentId, userName = userName, iamRole = iamRole, tags = tags, clientToken = clientToken)
+  output <- .finspace$create_kx_user_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$create_kx_user <- finspace_create_kx_user
+
 #' Delete an FinSpace environment
 #'
 #' @description
@@ -140,6 +693,188 @@ finspace_delete_environment <- function(environmentId) {
 }
 .finspace$operations$delete_environment <- finspace_delete_environment
 
+#' Deletes a kdb cluster
+#'
+#' @description
+#' Deletes a kdb cluster.
+#'
+#' @usage
+#' finspace_delete_kx_cluster(environmentId, clusterName, clientToken)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param clusterName &#91;required&#93; The name of the cluster that you want to delete.
+#' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_kx_cluster(
+#'   environmentId = "string",
+#'   clusterName = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_delete_kx_cluster
+#'
+#' @aliases finspace_delete_kx_cluster
+finspace_delete_kx_cluster <- function(environmentId, clusterName, clientToken = NULL) {
+  op <- new_operation(
+    name = "DeleteKxCluster",
+    http_method = "DELETE",
+    http_path = "/kx/environments/{environmentId}/clusters/{clusterName}",
+    paginator = list()
+  )
+  input <- .finspace$delete_kx_cluster_input(environmentId = environmentId, clusterName = clusterName, clientToken = clientToken)
+  output <- .finspace$delete_kx_cluster_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$delete_kx_cluster <- finspace_delete_kx_cluster
+
+#' Deletes the specified database and all of its associated data
+#'
+#' @description
+#' Deletes the specified database and all of its associated data. This
+#' action is irreversible. You must copy any data out of the database
+#' before deleting it if the data is to be retained.
+#'
+#' @usage
+#' finspace_delete_kx_database(environmentId, databaseName, clientToken)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param databaseName &#91;required&#93; The name of the kdb database that you want to delete.
+#' @param clientToken &#91;required&#93; A token that ensures idempotency. This token expires in 10 minutes.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_kx_database(
+#'   environmentId = "string",
+#'   databaseName = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_delete_kx_database
+#'
+#' @aliases finspace_delete_kx_database
+finspace_delete_kx_database <- function(environmentId, databaseName, clientToken) {
+  op <- new_operation(
+    name = "DeleteKxDatabase",
+    http_method = "DELETE",
+    http_path = "/kx/environments/{environmentId}/databases/{databaseName}",
+    paginator = list()
+  )
+  input <- .finspace$delete_kx_database_input(environmentId = environmentId, databaseName = databaseName, clientToken = clientToken)
+  output <- .finspace$delete_kx_database_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$delete_kx_database <- finspace_delete_kx_database
+
+#' Deletes the kdb environment
+#'
+#' @description
+#' Deletes the kdb environment. This action is irreversible. Deleting a kdb
+#' environment will remove all the associated data and any services running
+#' in it.
+#'
+#' @usage
+#' finspace_delete_kx_environment(environmentId)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_kx_environment(
+#'   environmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_delete_kx_environment
+#'
+#' @aliases finspace_delete_kx_environment
+finspace_delete_kx_environment <- function(environmentId) {
+  op <- new_operation(
+    name = "DeleteKxEnvironment",
+    http_method = "DELETE",
+    http_path = "/kx/environments/{environmentId}",
+    paginator = list()
+  )
+  input <- .finspace$delete_kx_environment_input(environmentId = environmentId)
+  output <- .finspace$delete_kx_environment_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$delete_kx_environment <- finspace_delete_kx_environment
+
+#' Deletes a user in the specified kdb environment
+#'
+#' @description
+#' Deletes a user in the specified kdb environment.
+#'
+#' @usage
+#' finspace_delete_kx_user(userName, environmentId)
+#'
+#' @param userName &#91;required&#93; A unique identifier for the user that you want to delete.
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_kx_user(
+#'   userName = "string",
+#'   environmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_delete_kx_user
+#'
+#' @aliases finspace_delete_kx_user
+finspace_delete_kx_user <- function(userName, environmentId) {
+  op <- new_operation(
+    name = "DeleteKxUser",
+    http_method = "DELETE",
+    http_path = "/kx/environments/{environmentId}/users/{userName}",
+    paginator = list()
+  )
+  input <- .finspace$delete_kx_user_input(userName = userName, environmentId = environmentId)
+  output <- .finspace$delete_kx_user_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$delete_kx_user <- finspace_delete_kx_user
+
 #' Returns the FinSpace environment object
 #'
 #' @description
@@ -158,7 +893,7 @@ finspace_delete_environment <- function(environmentId) {
 #'     name = "string",
 #'     environmentId = "string",
 #'     awsAccountId = "string",
-#'     status = "CREATE_REQUESTED"|"CREATING"|"CREATED"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"FAILED_CREATION"|"RETRY_DELETION"|"FAILED_DELETION"|"SUSPENDED",
+#'     status = "CREATE_REQUESTED"|"CREATING"|"CREATED"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"FAILED_CREATION"|"RETRY_DELETION"|"FAILED_DELETION"|"UPDATE_NETWORK_REQUESTED"|"UPDATING_NETWORK"|"FAILED_UPDATING_NETWORK"|"SUSPENDED",
 #'     environmentUrl = "string",
 #'     description = "string",
 #'     environmentArn = "string",
@@ -209,6 +944,449 @@ finspace_get_environment <- function(environmentId) {
 }
 .finspace$operations$get_environment <- finspace_get_environment
 
+#' Returns information about a kdb changeset
+#'
+#' @description
+#' Returns information about a kdb changeset.
+#'
+#' @usage
+#' finspace_get_kx_changeset(environmentId, databaseName, changesetId)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param databaseName &#91;required&#93; The name of the kdb database.
+#' @param changesetId &#91;required&#93; A unique identifier of the changeset for which you want to retrieve
+#' data.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   changesetId = "string",
+#'   databaseName = "string",
+#'   environmentId = "string",
+#'   changeRequests = list(
+#'     list(
+#'       changeType = "PUT"|"DELETE",
+#'       s3Path = "string",
+#'       dbPath = "string"
+#'     )
+#'   ),
+#'   createdTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   activeFromTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   status = "PENDING"|"PROCESSING"|"FAILED"|"COMPLETED",
+#'   errorInfo = list(
+#'     errorMessage = "string",
+#'     errorType = "The inputs to this request are invalid."|"Service limits have been exceeded."|"Missing required permission to perform this request."|"One or more inputs to this request were not found."|"The system temporarily lacks sufficient resources to process the request."|"An internal error has occurred."|"Cancelled"|"A user recoverable error has occurred"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_kx_changeset(
+#'   environmentId = "string",
+#'   databaseName = "string",
+#'   changesetId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_get_kx_changeset
+#'
+#' @aliases finspace_get_kx_changeset
+finspace_get_kx_changeset <- function(environmentId, databaseName, changesetId) {
+  op <- new_operation(
+    name = "GetKxChangeset",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}/databases/{databaseName}/changesets/{changesetId}",
+    paginator = list()
+  )
+  input <- .finspace$get_kx_changeset_input(environmentId = environmentId, databaseName = databaseName, changesetId = changesetId)
+  output <- .finspace$get_kx_changeset_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$get_kx_changeset <- finspace_get_kx_changeset
+
+#' Retrieves information about a kdb cluster
+#'
+#' @description
+#' Retrieves information about a kdb cluster.
+#'
+#' @usage
+#' finspace_get_kx_cluster(environmentId, clusterName)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param clusterName &#91;required&#93; The name of the cluster that you want to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   status = "PENDING"|"CREATING"|"CREATE_FAILED"|"RUNNING"|"UPDATING"|"DELETING"|"DELETED"|"DELETE_FAILED",
+#'   statusReason = "string",
+#'   clusterName = "string",
+#'   clusterType = "HDB"|"RDB"|"GATEWAY",
+#'   databases = list(
+#'     list(
+#'       databaseName = "string",
+#'       cacheConfigurations = list(
+#'         list(
+#'           cacheType = "string",
+#'           dbPaths = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       changesetId = "string"
+#'     )
+#'   ),
+#'   cacheStorageConfigurations = list(
+#'     list(
+#'       type = "string",
+#'       size = 123
+#'     )
+#'   ),
+#'   autoScalingConfiguration = list(
+#'     minNodeCount = 123,
+#'     maxNodeCount = 123,
+#'     autoScalingMetric = "CPU_UTILIZATION_PERCENTAGE",
+#'     metricTarget = 123.0,
+#'     scaleInCooldownSeconds = 123.0,
+#'     scaleOutCooldownSeconds = 123.0
+#'   ),
+#'   clusterDescription = "string",
+#'   capacityConfiguration = list(
+#'     nodeType = "string",
+#'     nodeCount = 123
+#'   ),
+#'   releaseLabel = "string",
+#'   vpcConfiguration = list(
+#'     vpcId = "string",
+#'     securityGroupIds = list(
+#'       "string"
+#'     ),
+#'     subnetIds = list(
+#'       "string"
+#'     ),
+#'     ipAddressType = "IP_V4"
+#'   ),
+#'   initializationScript = "string",
+#'   commandLineArguments = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   code = list(
+#'     s3Bucket = "string",
+#'     s3Key = "string",
+#'     s3ObjectVersion = "string"
+#'   ),
+#'   executionRole = "string",
+#'   lastModifiedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   savedownStorageConfiguration = list(
+#'     type = "SDS01",
+#'     size = 123
+#'   ),
+#'   azMode = "SINGLE"|"MULTI",
+#'   availabilityZoneId = "string",
+#'   createdTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_kx_cluster(
+#'   environmentId = "string",
+#'   clusterName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_get_kx_cluster
+#'
+#' @aliases finspace_get_kx_cluster
+finspace_get_kx_cluster <- function(environmentId, clusterName) {
+  op <- new_operation(
+    name = "GetKxCluster",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}/clusters/{clusterName}",
+    paginator = list()
+  )
+  input <- .finspace$get_kx_cluster_input(environmentId = environmentId, clusterName = clusterName)
+  output <- .finspace$get_kx_cluster_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$get_kx_cluster <- finspace_get_kx_cluster
+
+#' Retrieves a connection string for a user to connect to a kdb cluster
+#'
+#' @description
+#' Retrieves a connection string for a user to connect to a kdb cluster.
+#' You must call this API using the same role that you have defined while
+#' creating a user.
+#'
+#' @usage
+#' finspace_get_kx_connection_string(userArn, environmentId, clusterName)
+#'
+#' @param userArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the user. For more
+#' information about ARNs and how to use ARNs in policies, see [IAM
+#' Identifiers](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html)
+#' in the *IAM User Guide*.
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param clusterName &#91;required&#93; A name of the kdb cluster.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   signedConnectionString = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_kx_connection_string(
+#'   userArn = "string",
+#'   environmentId = "string",
+#'   clusterName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_get_kx_connection_string
+#'
+#' @aliases finspace_get_kx_connection_string
+finspace_get_kx_connection_string <- function(userArn, environmentId, clusterName) {
+  op <- new_operation(
+    name = "GetKxConnectionString",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}/connectionString",
+    paginator = list()
+  )
+  input <- .finspace$get_kx_connection_string_input(userArn = userArn, environmentId = environmentId, clusterName = clusterName)
+  output <- .finspace$get_kx_connection_string_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$get_kx_connection_string <- finspace_get_kx_connection_string
+
+#' Returns database information for the specified environment ID
+#'
+#' @description
+#' Returns database information for the specified environment ID.
+#'
+#' @usage
+#' finspace_get_kx_database(environmentId, databaseName)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param databaseName &#91;required&#93; The name of the kdb database.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   databaseName = "string",
+#'   databaseArn = "string",
+#'   environmentId = "string",
+#'   description = "string",
+#'   createdTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastModifiedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   lastCompletedChangesetId = "string",
+#'   numBytes = 123,
+#'   numChangesets = 123,
+#'   numFiles = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_kx_database(
+#'   environmentId = "string",
+#'   databaseName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_get_kx_database
+#'
+#' @aliases finspace_get_kx_database
+finspace_get_kx_database <- function(environmentId, databaseName) {
+  op <- new_operation(
+    name = "GetKxDatabase",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}/databases/{databaseName}",
+    paginator = list()
+  )
+  input <- .finspace$get_kx_database_input(environmentId = environmentId, databaseName = databaseName)
+  output <- .finspace$get_kx_database_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$get_kx_database <- finspace_get_kx_database
+
+#' Retrieves all the information for the specified kdb environment
+#'
+#' @description
+#' Retrieves all the information for the specified kdb environment.
+#'
+#' @usage
+#' finspace_get_kx_environment(environmentId)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   environmentId = "string",
+#'   awsAccountId = "string",
+#'   status = "CREATE_REQUESTED"|"CREATING"|"CREATED"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"FAILED_CREATION"|"RETRY_DELETION"|"FAILED_DELETION"|"UPDATE_NETWORK_REQUESTED"|"UPDATING_NETWORK"|"FAILED_UPDATING_NETWORK"|"SUSPENDED",
+#'   tgwStatus = "NONE"|"UPDATE_REQUESTED"|"UPDATING"|"FAILED_UPDATE"|"SUCCESSFULLY_UPDATED",
+#'   dnsStatus = "NONE"|"UPDATE_REQUESTED"|"UPDATING"|"FAILED_UPDATE"|"SUCCESSFULLY_UPDATED",
+#'   errorMessage = "string",
+#'   description = "string",
+#'   environmentArn = "string",
+#'   kmsKeyId = "string",
+#'   dedicatedServiceAccountId = "string",
+#'   transitGatewayConfiguration = list(
+#'     transitGatewayID = "string",
+#'     routableCIDRSpace = "string"
+#'   ),
+#'   customDNSConfiguration = list(
+#'     list(
+#'       customDNSServerName = "string",
+#'       customDNSServerIP = "string"
+#'     )
+#'   ),
+#'   creationTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updateTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   availabilityZoneIds = list(
+#'     "string"
+#'   ),
+#'   certificateAuthorityArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_kx_environment(
+#'   environmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_get_kx_environment
+#'
+#' @aliases finspace_get_kx_environment
+finspace_get_kx_environment <- function(environmentId) {
+  op <- new_operation(
+    name = "GetKxEnvironment",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}",
+    paginator = list()
+  )
+  input <- .finspace$get_kx_environment_input(environmentId = environmentId)
+  output <- .finspace$get_kx_environment_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$get_kx_environment <- finspace_get_kx_environment
+
+#' Retrieves information about the specified kdb user
+#'
+#' @description
+#' Retrieves information about the specified kdb user.
+#'
+#' @usage
+#' finspace_get_kx_user(userName, environmentId)
+#'
+#' @param userName &#91;required&#93; A unique identifier for the user.
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   userName = "string",
+#'   userArn = "string",
+#'   environmentId = "string",
+#'   iamRole = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_kx_user(
+#'   userName = "string",
+#'   environmentId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_get_kx_user
+#'
+#' @aliases finspace_get_kx_user
+finspace_get_kx_user <- function(userName, environmentId) {
+  op <- new_operation(
+    name = "GetKxUser",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}/users/{userName}",
+    paginator = list()
+  )
+  input <- .finspace$get_kx_user_input(userName = userName, environmentId = environmentId)
+  output <- .finspace$get_kx_user_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$get_kx_user <- finspace_get_kx_user
+
 #' A list of all of your FinSpace environments
 #'
 #' @description
@@ -219,8 +1397,8 @@ finspace_get_environment <- function(environmentId) {
 #'
 #' @param nextToken A token generated by FinSpace that specifies where to continue
 #' pagination if a previous request was truncated. To get the next set of
-#' pages, pass in the nextToken value from the response object of the
-#' previous page call.
+#' pages, pass in the `nextToken`nextToken value from the response object
+#' of the previous page call.
 #' @param maxResults The maximum number of results to return in this request.
 #'
 #' @return
@@ -232,7 +1410,7 @@ finspace_get_environment <- function(environmentId) {
 #'       name = "string",
 #'       environmentId = "string",
 #'       awsAccountId = "string",
-#'       status = "CREATE_REQUESTED"|"CREATING"|"CREATED"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"FAILED_CREATION"|"RETRY_DELETION"|"FAILED_DELETION"|"SUSPENDED",
+#'       status = "CREATE_REQUESTED"|"CREATING"|"CREATED"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"FAILED_CREATION"|"RETRY_DELETION"|"FAILED_DELETION"|"UPDATE_NETWORK_REQUESTED"|"UPDATING_NETWORK"|"FAILED_UPDATING_NETWORK"|"SUSPENDED",
 #'       environmentUrl = "string",
 #'       description = "string",
 #'       environmentArn = "string",
@@ -285,6 +1463,440 @@ finspace_list_environments <- function(nextToken = NULL, maxResults = NULL) {
   return(response)
 }
 .finspace$operations$list_environments <- finspace_list_environments
+
+#' Returns a list of all the changesets for a database
+#'
+#' @description
+#' Returns a list of all the changesets for a database.
+#'
+#' @usage
+#' finspace_list_kx_changesets(environmentId, databaseName, nextToken,
+#'   maxResults)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param databaseName &#91;required&#93; The name of the kdb database.
+#' @param nextToken A token that indicates where a results page should begin.
+#' @param maxResults The maximum number of results to return in this request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   kxChangesets = list(
+#'     list(
+#'       changesetId = "string",
+#'       createdTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       activeFromTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastModifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       status = "PENDING"|"PROCESSING"|"FAILED"|"COMPLETED"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_kx_changesets(
+#'   environmentId = "string",
+#'   databaseName = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_list_kx_changesets
+#'
+#' @aliases finspace_list_kx_changesets
+finspace_list_kx_changesets <- function(environmentId, databaseName, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListKxChangesets",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}/databases/{databaseName}/changesets",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .finspace$list_kx_changesets_input(environmentId = environmentId, databaseName = databaseName, nextToken = nextToken, maxResults = maxResults)
+  output <- .finspace$list_kx_changesets_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$list_kx_changesets <- finspace_list_kx_changesets
+
+#' Lists all the nodes in a kdb cluster
+#'
+#' @description
+#' Lists all the nodes in a kdb cluster.
+#'
+#' @usage
+#' finspace_list_kx_cluster_nodes(environmentId, clusterName, nextToken,
+#'   maxResults)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param clusterName &#91;required&#93; A unique name for the cluster.
+#' @param nextToken A token that indicates where a results page should begin.
+#' @param maxResults The maximum number of results to return in this request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nodes = list(
+#'     list(
+#'       nodeId = "string",
+#'       availabilityZoneId = "string",
+#'       launchTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_kx_cluster_nodes(
+#'   environmentId = "string",
+#'   clusterName = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_list_kx_cluster_nodes
+#'
+#' @aliases finspace_list_kx_cluster_nodes
+finspace_list_kx_cluster_nodes <- function(environmentId, clusterName, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListKxClusterNodes",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}/clusters/{clusterName}/nodes",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .finspace$list_kx_cluster_nodes_input(environmentId = environmentId, clusterName = clusterName, nextToken = nextToken, maxResults = maxResults)
+  output <- .finspace$list_kx_cluster_nodes_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$list_kx_cluster_nodes <- finspace_list_kx_cluster_nodes
+
+#' Returns a list of clusters
+#'
+#' @description
+#' Returns a list of clusters.
+#'
+#' @usage
+#' finspace_list_kx_clusters(environmentId, clusterType, maxResults,
+#'   nextToken)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param clusterType Specifies the type of KDB database that is being created. The following
+#' types are available:
+#' 
+#' -   HDB – A Historical Database. The data is only accessible with
+#'     read-only permissions from one of the FinSpace managed kdb databases
+#'     mounted to the cluster.
+#' 
+#' -   RDB – A Realtime Database. This type of database captures all the
+#'     data from a ticker plant and stores it in memory until the end of
+#'     day, after which it writes all of its data to a disk and reloads the
+#'     HDB. This cluster type requires local storage for temporary storage
+#'     of data during the savedown process. If you specify this field in
+#'     your request, you must provide the `savedownStorageConfiguration`
+#'     parameter.
+#' 
+#' -   GATEWAY – A gateway cluster allows you to access data across
+#'     processes in kdb systems. It allows you to create your own routing
+#'     logic using the initialization scripts and custom code. This type of
+#'     cluster does not require a writable local storage.
+#' @param maxResults The maximum number of results to return in this request.
+#' @param nextToken A token that indicates where a results page should begin.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   kxClusterSummaries = list(
+#'     list(
+#'       status = "PENDING"|"CREATING"|"CREATE_FAILED"|"RUNNING"|"UPDATING"|"DELETING"|"DELETED"|"DELETE_FAILED",
+#'       statusReason = "string",
+#'       clusterName = "string",
+#'       clusterType = "HDB"|"RDB"|"GATEWAY",
+#'       clusterDescription = "string",
+#'       releaseLabel = "string",
+#'       initializationScript = "string",
+#'       executionRole = "string",
+#'       azMode = "SINGLE"|"MULTI",
+#'       availabilityZoneId = "string",
+#'       lastModifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       createdTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_kx_clusters(
+#'   environmentId = "string",
+#'   clusterType = "HDB"|"RDB"|"GATEWAY",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_list_kx_clusters
+#'
+#' @aliases finspace_list_kx_clusters
+finspace_list_kx_clusters <- function(environmentId, clusterType = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListKxClusters",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}/clusters",
+    paginator = list()
+  )
+  input <- .finspace$list_kx_clusters_input(environmentId = environmentId, clusterType = clusterType, maxResults = maxResults, nextToken = nextToken)
+  output <- .finspace$list_kx_clusters_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$list_kx_clusters <- finspace_list_kx_clusters
+
+#' Returns a list of all the databases in the kdb environment
+#'
+#' @description
+#' Returns a list of all the databases in the kdb environment.
+#'
+#' @usage
+#' finspace_list_kx_databases(environmentId, nextToken, maxResults)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param nextToken A token that indicates where a results page should begin.
+#' @param maxResults The maximum number of results to return in this request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   kxDatabases = list(
+#'     list(
+#'       databaseName = "string",
+#'       createdTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       lastModifiedTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_kx_databases(
+#'   environmentId = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_list_kx_databases
+#'
+#' @aliases finspace_list_kx_databases
+finspace_list_kx_databases <- function(environmentId, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListKxDatabases",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}/databases",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .finspace$list_kx_databases_input(environmentId = environmentId, nextToken = nextToken, maxResults = maxResults)
+  output <- .finspace$list_kx_databases_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$list_kx_databases <- finspace_list_kx_databases
+
+#' Returns a list of kdb environments created in an account
+#'
+#' @description
+#' Returns a list of kdb environments created in an account.
+#'
+#' @usage
+#' finspace_list_kx_environments(nextToken, maxResults)
+#'
+#' @param nextToken A token that indicates where a results page should begin.
+#' @param maxResults The maximum number of results to return in this request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   environments = list(
+#'     list(
+#'       name = "string",
+#'       environmentId = "string",
+#'       awsAccountId = "string",
+#'       status = "CREATE_REQUESTED"|"CREATING"|"CREATED"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"FAILED_CREATION"|"RETRY_DELETION"|"FAILED_DELETION"|"UPDATE_NETWORK_REQUESTED"|"UPDATING_NETWORK"|"FAILED_UPDATING_NETWORK"|"SUSPENDED",
+#'       tgwStatus = "NONE"|"UPDATE_REQUESTED"|"UPDATING"|"FAILED_UPDATE"|"SUCCESSFULLY_UPDATED",
+#'       dnsStatus = "NONE"|"UPDATE_REQUESTED"|"UPDATING"|"FAILED_UPDATE"|"SUCCESSFULLY_UPDATED",
+#'       errorMessage = "string",
+#'       description = "string",
+#'       environmentArn = "string",
+#'       kmsKeyId = "string",
+#'       dedicatedServiceAccountId = "string",
+#'       transitGatewayConfiguration = list(
+#'         transitGatewayID = "string",
+#'         routableCIDRSpace = "string"
+#'       ),
+#'       customDNSConfiguration = list(
+#'         list(
+#'           customDNSServerName = "string",
+#'           customDNSServerIP = "string"
+#'         )
+#'       ),
+#'       creationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updateTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       availabilityZoneIds = list(
+#'         "string"
+#'       ),
+#'       certificateAuthorityArn = "string"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_kx_environments(
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_list_kx_environments
+#'
+#' @aliases finspace_list_kx_environments
+finspace_list_kx_environments <- function(nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListKxEnvironments",
+    http_method = "GET",
+    http_path = "/kx/environments",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "environments")
+  )
+  input <- .finspace$list_kx_environments_input(nextToken = nextToken, maxResults = maxResults)
+  output <- .finspace$list_kx_environments_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$list_kx_environments <- finspace_list_kx_environments
+
+#' Lists all the users in a kdb environment
+#'
+#' @description
+#' Lists all the users in a kdb environment.
+#'
+#' @usage
+#' finspace_list_kx_users(environmentId, nextToken, maxResults)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param nextToken A token that indicates where a results page should begin.
+#' @param maxResults The maximum number of results to return in this request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   users = list(
+#'     list(
+#'       userArn = "string",
+#'       userName = "string",
+#'       iamRole = "string",
+#'       createTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       updateTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_kx_users(
+#'   environmentId = "string",
+#'   nextToken = "string",
+#'   maxResults = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_list_kx_users
+#'
+#' @aliases finspace_list_kx_users
+finspace_list_kx_users <- function(environmentId, nextToken = NULL, maxResults = NULL) {
+  op <- new_operation(
+    name = "ListKxUsers",
+    http_method = "GET",
+    http_path = "/kx/environments/{environmentId}/users",
+    paginator = list()
+  )
+  input <- .finspace$list_kx_users_input(environmentId = environmentId, nextToken = nextToken, maxResults = maxResults)
+  output <- .finspace$list_kx_users_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$list_kx_users <- finspace_list_kx_users
 
 #' A list of all tags for a resource
 #'
@@ -457,7 +2069,7 @@ finspace_untag_resource <- function(resourceArn, tagKeys) {
 #'     name = "string",
 #'     environmentId = "string",
 #'     awsAccountId = "string",
-#'     status = "CREATE_REQUESTED"|"CREATING"|"CREATED"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"FAILED_CREATION"|"RETRY_DELETION"|"FAILED_DELETION"|"SUSPENDED",
+#'     status = "CREATE_REQUESTED"|"CREATING"|"CREATED"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"FAILED_CREATION"|"RETRY_DELETION"|"FAILED_DELETION"|"UPDATE_NETWORK_REQUESTED"|"UPDATING_NETWORK"|"FAILED_UPDATING_NETWORK"|"SUSPENDED",
 #'     environmentUrl = "string",
 #'     description = "string",
 #'     environmentArn = "string",
@@ -520,3 +2132,372 @@ finspace_update_environment <- function(environmentId, name = NULL, description 
   return(response)
 }
 .finspace$operations$update_environment <- finspace_update_environment
+
+#' Updates the databases mounted on a kdb cluster, which includes the
+#' changesetId and all the dbPaths to be cached
+#'
+#' @description
+#' Updates the databases mounted on a kdb cluster, which includes the
+#' `changesetId` and all the dbPaths to be cached. This API does not allow
+#' you to change a database name or add a database if you created a cluster
+#' without one.
+#' 
+#' Using this API you can point a cluster to a different changeset and
+#' modify a list of partitions being cached.
+#'
+#' @usage
+#' finspace_update_kx_cluster_databases(environmentId, clusterName,
+#'   clientToken, databases)
+#'
+#' @param environmentId &#91;required&#93; The unique identifier of a kdb environment.
+#' @param clusterName &#91;required&#93; A unique name for the cluster that you want to modify.
+#' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
+#' @param databases &#91;required&#93; The structure of databases mounted on the cluster.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_kx_cluster_databases(
+#'   environmentId = "string",
+#'   clusterName = "string",
+#'   clientToken = "string",
+#'   databases = list(
+#'     list(
+#'       databaseName = "string",
+#'       cacheConfigurations = list(
+#'         list(
+#'           cacheType = "string",
+#'           dbPaths = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       changesetId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_update_kx_cluster_databases
+#'
+#' @aliases finspace_update_kx_cluster_databases
+finspace_update_kx_cluster_databases <- function(environmentId, clusterName, clientToken = NULL, databases) {
+  op <- new_operation(
+    name = "UpdateKxClusterDatabases",
+    http_method = "PUT",
+    http_path = "/kx/environments/{environmentId}/clusters/{clusterName}/configuration/databases",
+    paginator = list()
+  )
+  input <- .finspace$update_kx_cluster_databases_input(environmentId = environmentId, clusterName = clusterName, clientToken = clientToken, databases = databases)
+  output <- .finspace$update_kx_cluster_databases_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$update_kx_cluster_databases <- finspace_update_kx_cluster_databases
+
+#' Updates information for the given kdb database
+#'
+#' @description
+#' Updates information for the given kdb database.
+#'
+#' @usage
+#' finspace_update_kx_database(environmentId, databaseName, description,
+#'   clientToken)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param databaseName &#91;required&#93; The name of the kdb database.
+#' @param description A description of the database.
+#' @param clientToken &#91;required&#93; A token that ensures idempotency. This token expires in 10 minutes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   databaseName = "string",
+#'   environmentId = "string",
+#'   description = "string",
+#'   lastModifiedTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_kx_database(
+#'   environmentId = "string",
+#'   databaseName = "string",
+#'   description = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_update_kx_database
+#'
+#' @aliases finspace_update_kx_database
+finspace_update_kx_database <- function(environmentId, databaseName, description = NULL, clientToken) {
+  op <- new_operation(
+    name = "UpdateKxDatabase",
+    http_method = "PUT",
+    http_path = "/kx/environments/{environmentId}/databases/{databaseName}",
+    paginator = list()
+  )
+  input <- .finspace$update_kx_database_input(environmentId = environmentId, databaseName = databaseName, description = description, clientToken = clientToken)
+  output <- .finspace$update_kx_database_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$update_kx_database <- finspace_update_kx_database
+
+#' Updates information for the given kdb environment
+#'
+#' @description
+#' Updates information for the given kdb environment.
+#'
+#' @usage
+#' finspace_update_kx_environment(environmentId, name, description,
+#'   clientToken)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param name The name of the kdb environment.
+#' @param description A description of the kdb environment.
+#' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   environmentId = "string",
+#'   awsAccountId = "string",
+#'   status = "CREATE_REQUESTED"|"CREATING"|"CREATED"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"FAILED_CREATION"|"RETRY_DELETION"|"FAILED_DELETION"|"UPDATE_NETWORK_REQUESTED"|"UPDATING_NETWORK"|"FAILED_UPDATING_NETWORK"|"SUSPENDED",
+#'   tgwStatus = "NONE"|"UPDATE_REQUESTED"|"UPDATING"|"FAILED_UPDATE"|"SUCCESSFULLY_UPDATED",
+#'   dnsStatus = "NONE"|"UPDATE_REQUESTED"|"UPDATING"|"FAILED_UPDATE"|"SUCCESSFULLY_UPDATED",
+#'   errorMessage = "string",
+#'   description = "string",
+#'   environmentArn = "string",
+#'   kmsKeyId = "string",
+#'   dedicatedServiceAccountId = "string",
+#'   transitGatewayConfiguration = list(
+#'     transitGatewayID = "string",
+#'     routableCIDRSpace = "string"
+#'   ),
+#'   customDNSConfiguration = list(
+#'     list(
+#'       customDNSServerName = "string",
+#'       customDNSServerIP = "string"
+#'     )
+#'   ),
+#'   creationTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updateTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   availabilityZoneIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_kx_environment(
+#'   environmentId = "string",
+#'   name = "string",
+#'   description = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_update_kx_environment
+#'
+#' @aliases finspace_update_kx_environment
+finspace_update_kx_environment <- function(environmentId, name = NULL, description = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateKxEnvironment",
+    http_method = "PUT",
+    http_path = "/kx/environments/{environmentId}",
+    paginator = list()
+  )
+  input <- .finspace$update_kx_environment_input(environmentId = environmentId, name = name, description = description, clientToken = clientToken)
+  output <- .finspace$update_kx_environment_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$update_kx_environment <- finspace_update_kx_environment
+
+#' Updates environment network to connect to your internal network by using
+#' a transit gateway
+#'
+#' @description
+#' Updates environment network to connect to your internal network by using
+#' a transit gateway. This API supports request to create a transit gateway
+#' attachment from FinSpace VPC to your transit gateway ID and create a
+#' custom Route-53 outbound resolvers.
+#' 
+#' Once you send a request to update a network, you cannot change it again.
+#' Network update might require termination of any clusters that are
+#' running in the existing network.
+#'
+#' @usage
+#' finspace_update_kx_environment_network(environmentId,
+#'   transitGatewayConfiguration, customDNSConfiguration, clientToken)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param transitGatewayConfiguration Specifies the transit gateway and network configuration to connect the
+#' kdb environment to an internal network.
+#' @param customDNSConfiguration A list of DNS server name and server IP. This is used to set up Route-53
+#' outbound resolvers.
+#' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   name = "string",
+#'   environmentId = "string",
+#'   awsAccountId = "string",
+#'   status = "CREATE_REQUESTED"|"CREATING"|"CREATED"|"DELETE_REQUESTED"|"DELETING"|"DELETED"|"FAILED_CREATION"|"RETRY_DELETION"|"FAILED_DELETION"|"UPDATE_NETWORK_REQUESTED"|"UPDATING_NETWORK"|"FAILED_UPDATING_NETWORK"|"SUSPENDED",
+#'   tgwStatus = "NONE"|"UPDATE_REQUESTED"|"UPDATING"|"FAILED_UPDATE"|"SUCCESSFULLY_UPDATED",
+#'   dnsStatus = "NONE"|"UPDATE_REQUESTED"|"UPDATING"|"FAILED_UPDATE"|"SUCCESSFULLY_UPDATED",
+#'   errorMessage = "string",
+#'   description = "string",
+#'   environmentArn = "string",
+#'   kmsKeyId = "string",
+#'   dedicatedServiceAccountId = "string",
+#'   transitGatewayConfiguration = list(
+#'     transitGatewayID = "string",
+#'     routableCIDRSpace = "string"
+#'   ),
+#'   customDNSConfiguration = list(
+#'     list(
+#'       customDNSServerName = "string",
+#'       customDNSServerIP = "string"
+#'     )
+#'   ),
+#'   creationTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   updateTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   availabilityZoneIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_kx_environment_network(
+#'   environmentId = "string",
+#'   transitGatewayConfiguration = list(
+#'     transitGatewayID = "string",
+#'     routableCIDRSpace = "string"
+#'   ),
+#'   customDNSConfiguration = list(
+#'     list(
+#'       customDNSServerName = "string",
+#'       customDNSServerIP = "string"
+#'     )
+#'   ),
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_update_kx_environment_network
+#'
+#' @aliases finspace_update_kx_environment_network
+finspace_update_kx_environment_network <- function(environmentId, transitGatewayConfiguration = NULL, customDNSConfiguration = NULL, clientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateKxEnvironmentNetwork",
+    http_method = "PUT",
+    http_path = "/kx/environments/{environmentId}/network",
+    paginator = list()
+  )
+  input <- .finspace$update_kx_environment_network_input(environmentId = environmentId, transitGatewayConfiguration = transitGatewayConfiguration, customDNSConfiguration = customDNSConfiguration, clientToken = clientToken)
+  output <- .finspace$update_kx_environment_network_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$update_kx_environment_network <- finspace_update_kx_environment_network
+
+#' Updates the user details
+#'
+#' @description
+#' Updates the user details. You can only update the IAM role associated
+#' with a user.
+#'
+#' @usage
+#' finspace_update_kx_user(environmentId, userName, iamRole, clientToken)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier for the kdb environment.
+#' @param userName &#91;required&#93; A unique identifier for the user.
+#' @param iamRole &#91;required&#93; The IAM role ARN that is associated with the user.
+#' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   userName = "string",
+#'   userArn = "string",
+#'   environmentId = "string",
+#'   iamRole = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_kx_user(
+#'   environmentId = "string",
+#'   userName = "string",
+#'   iamRole = "string",
+#'   clientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_update_kx_user
+#'
+#' @aliases finspace_update_kx_user
+finspace_update_kx_user <- function(environmentId, userName, iamRole, clientToken = NULL) {
+  op <- new_operation(
+    name = "UpdateKxUser",
+    http_method = "PUT",
+    http_path = "/kx/environments/{environmentId}/users/{userName}",
+    paginator = list()
+  )
+  input <- .finspace$update_kx_user_input(environmentId = environmentId, userName = userName, iamRole = iamRole, clientToken = clientToken)
+  output <- .finspace$update_kx_user_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$update_kx_user <- finspace_update_kx_user

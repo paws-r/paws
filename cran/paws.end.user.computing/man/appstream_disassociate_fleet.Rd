@@ -14,6 +14,6 @@ appstream_disassociate_fleet(FleetName, StackName)
 \description{
 Disassociates the specified fleet from the specified stack.
 
-See \url{https://paws-r.github.io/docs/appstream/disassociate_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_disassociate_fleet/} for full documentation.
 }
 \keyword{internal}

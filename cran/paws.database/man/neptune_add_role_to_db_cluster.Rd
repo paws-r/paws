@@ -25,6 +25,6 @@ to be associated with. For the list of supported feature names, see
 \description{
 Associates an Identity and Access Management (IAM) role with an Neptune DB cluster.
 
-See \url{https://paws-r.github.io/docs/neptune/add_role_to_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_add_role_to_db_cluster/} for full documentation.
 }
 \keyword{internal}

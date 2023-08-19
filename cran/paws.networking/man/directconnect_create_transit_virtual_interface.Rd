@@ -17,6 +17,6 @@ directconnect_create_transit_virtual_interface(
 \description{
 Creates a transit virtual interface. A transit virtual interface should be used to access one or more transit gateways associated with Direct Connect gateways. A transit virtual interface enables the connection of multiple VPCs attached to a transit gateway to a Direct Connect gateway.
 
-See \url{https://paws-r.github.io/docs/directconnect/create_transit_virtual_interface.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_create_transit_virtual_interface/} for full documentation.
 }
 \keyword{internal}

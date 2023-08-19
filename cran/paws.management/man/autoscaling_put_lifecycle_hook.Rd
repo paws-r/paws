@@ -70,6 +70,6 @@ Valid values: \code{CONTINUE} | \code{ABANDON}}
 \description{
 Creates or updates a lifecycle hook for the specified Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/put_lifecycle_hook.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_put_lifecycle_hook/} for full documentation.
 }
 \keyword{internal}

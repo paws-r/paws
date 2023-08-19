@@ -23,6 +23,6 @@ apigateway_get_integration_response(
 \description{
 Represents a get integration response.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_integration_response.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_integration_response/} for full documentation.
 }
 \keyword{internal}

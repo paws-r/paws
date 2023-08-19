@@ -39,6 +39,6 @@ different account, the request fails with the HTTP status code
 \description{
 Retrieves an object's retention settings. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html}{Locking Objects}.
 
-See \url{https://paws-r.github.io/docs/s3/get_object_retention.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_object_retention/} for full documentation.
 }
 \keyword{internal}

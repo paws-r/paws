@@ -12,6 +12,6 @@ panorama_describe_node_from_template_job(JobId)
 \description{
 Returns information about a job to create a camera stream node.
 
-See \url{https://paws-r.github.io/docs/panorama/describe_node_from_template_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_describe_node_from_template_job/} for full documentation.
 }
 \keyword{internal}

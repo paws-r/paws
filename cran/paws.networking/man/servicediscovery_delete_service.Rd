@@ -12,6 +12,6 @@ servicediscovery_delete_service(Id)
 \description{
 Deletes a specified service. If the service still contains one or more registered instances, the request fails.
 
-See \url{https://paws-r.github.io/docs/servicediscovery/delete_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicediscovery_delete_service/} for full documentation.
 }
 \keyword{internal}

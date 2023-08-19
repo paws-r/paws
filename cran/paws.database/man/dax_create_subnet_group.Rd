@@ -16,6 +16,6 @@ dax_create_subnet_group(SubnetGroupName, Description = NULL, SubnetIds)
 \description{
 Creates a new subnet group.
 
-See \url{https://paws-r.github.io/docs/dax/create_subnet_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_create_subnet_group/} for full documentation.
 }
 \keyword{internal}

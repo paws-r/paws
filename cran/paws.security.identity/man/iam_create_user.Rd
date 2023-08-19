@@ -51,6 +51,6 @@ created.}
 \description{
 Creates a new IAM user for your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/iam/create_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_create_user/} for full documentation.
 }
 \keyword{internal}

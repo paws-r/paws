@@ -32,6 +32,6 @@ ARN used to encrypt the associated metadata.}
 \description{
 Use this to provide your transcript data, and to start the bot recommendation process.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/start_bot_recommendation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_start_bot_recommendation/} for full documentation.
 }
 \keyword{internal}

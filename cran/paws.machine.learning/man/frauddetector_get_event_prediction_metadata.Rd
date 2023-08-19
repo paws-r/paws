@@ -35,6 +35,6 @@ accurate prediction timestamp value.}
 \description{
 Gets details of the past fraud predictions for the specified event ID, event type, detector ID, and detector version ID that was generated in the specified time period.
 
-See \url{https://paws-r.github.io/docs/frauddetector/get_event_prediction_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_get_event_prediction_metadata/} for full documentation.
 }
 \keyword{internal}

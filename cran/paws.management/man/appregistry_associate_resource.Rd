@@ -17,6 +17,6 @@ associated.}
 \description{
 Associates a resource with an application. The resource can be specified by its ARN or name. The application can be specified by ARN, ID, or name.
 
-See \url{https://paws-r.github.io/docs/appregistry/associate_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_associate_resource/} for full documentation.
 }
 \keyword{internal}

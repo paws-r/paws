@@ -13,7 +13,7 @@ ec2_associate_nat_gateway_address(
 )
 }
 \arguments{
-\item{NatGatewayId}{[required] The NAT gateway ID.}
+\item{NatGatewayId}{[required] The ID of the NAT gateway.}
 
 \item{AllocationIds}{[required] The allocation IDs of EIPs that you want to associate with your NAT
 gateway.}
@@ -26,8 +26,8 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Associates Elastic IP addresses (EIPs) and private IPv4 addresses with a public NAT gateway. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with}{Work with NAT gateways} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Associates Elastic IP addresses (EIPs) and private IPv4 addresses with a public NAT gateway. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with}{Work with NAT gateways} in the \emph{Amazon VPC User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/associate_nat_gateway_address.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_associate_nat_gateway_address/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ finspacedata_list_datasets(nextToken = NULL, maxResults = NULL)
 \description{
 Lists all of the active Datasets that a user has access to.
 
-See \url{https://paws-r.github.io/docs/finspacedata/list_datasets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_list_datasets/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ rdsdataservice_commit_transaction(resourceArn, secretArn, transactionId)
 \description{
 Ends a SQL transaction started with the \code{\link[=rdsdataservice_begin_transaction]{begin_transaction}} operation and commits the changes.
 
-See \url{https://paws-r.github.io/docs/rdsdataservice/commit_transaction.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rdsdataservice_commit_transaction/} for full documentation.
 }
 \keyword{internal}

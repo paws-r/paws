@@ -13,6 +13,6 @@ guardduty_get_master_account(DetectorId)
 \description{
 Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account.
 
-See \url{https://paws-r.github.io/docs/guardduty/get_master_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_get_master_account/} for full documentation.
 }
 \keyword{internal}

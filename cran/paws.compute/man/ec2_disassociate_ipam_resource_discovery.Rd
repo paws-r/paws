@@ -20,6 +20,6 @@ you have the required permissions, the error response is
 \description{
 Disassociates a resource discovery from an Amazon VPC IPAM. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
 
-See \url{https://paws-r.github.io/docs/ec2/disassociate_ipam_resource_discovery.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_disassociate_ipam_resource_discovery/} for full documentation.
 }
 \keyword{internal}

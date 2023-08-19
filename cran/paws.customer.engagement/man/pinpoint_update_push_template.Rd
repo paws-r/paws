@@ -55,6 +55,6 @@ of the template.
 \description{
 Updates an existing message template for messages that are sent through a push notification channel.
 
-See \url{https://paws-r.github.io/docs/pinpoint/update_push_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_update_push_template/} for full documentation.
 }
 \keyword{internal}

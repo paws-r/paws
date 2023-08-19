@@ -10,7 +10,9 @@ svc <- Client(
   )
 )
 svc$handlers$build <- HandlerList(jsonrpc_build)
-options(idempotency_rand_fn = function() {0})
+options(idempotency_rand_fn = function() {
+  0
+})
 
 op_input1 <- function(Name) {
   args <- list(Name = Name)
@@ -103,7 +105,8 @@ op_input5 <- function(RecursiveStruct) {
   args <- list(RecursiveStruct = RecursiveStruct)
   interface <- Structure(
     RecursiveStruct = Structure(
-      NoRecurse = Scalar(type = "string"))
+      NoRecurse = Scalar(type = "string")
+    )
   )
   return(populate(args, interface))
 }
@@ -124,7 +127,8 @@ op_input6 <- function(RecursiveStruct) {
   interface <- Structure(
     RecursiveStruct = Structure(
       RecursiveStruct = Structure(
-        NoRecurse = Scalar(type = "string"))
+        NoRecurse = Scalar(type = "string")
+      )
     )
   )
   return(populate(args, interface))
@@ -227,8 +231,8 @@ test_that("build nested structure", {
       RecursiveList = list(
         list(NoRecurse = "foo"),
         list(RecursiveStruct = list(
-          NoRecurse = "bar")
-        )
+          NoRecurse = "bar"
+        ))
       )
     )
   )

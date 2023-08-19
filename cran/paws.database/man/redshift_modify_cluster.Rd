@@ -90,8 +90,8 @@ element exists in the \code{PendingModifiedValues} element of the operation
 response.
 
 Operations never return the password, so this operation provides a way
-to regain access to the admin user for a cluster if the password is
-lost.
+to regain access to the admin user account for a cluster if the password
+is lost.
 
 Default: Uses existing setting.
 
@@ -241,6 +241,6 @@ target Availability Zone.}
 \description{
 Modifies the settings for a cluster.
 
-See \url{https://paws-r.github.io/docs/redshift/modify_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_modify_cluster/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ workspaces_delete_workspace_bundle(BundleId = NULL)
 \description{
 Deletes the specified WorkSpace bundle. For more information about deleting WorkSpace bundles, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/delete_bundle.html}{Delete a Custom WorkSpaces Bundle or Image}.
 
-See \url{https://paws-r.github.io/docs/workspaces/delete_workspace_bundle.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_delete_workspace_bundle/} for full documentation.
 }
 \keyword{internal}

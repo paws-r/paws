@@ -35,6 +35,6 @@ by the Review Policies.}
 \description{
 The \code{\link[=mturk_list_review_policy_results_for_hit]{list_review_policy_results_for_hit}} operation retrieves the computed results and the actions taken in the course of executing your Review Policies for a given HIT. For information about how to specify Review Policies when you call CreateHIT, see Review Policies. The ListReviewPolicyResultsForHIT operation can return results for both Assignment-level and HIT-level review results.
 
-See \url{https://paws-r.github.io/docs/mturk/list_review_policy_results_for_hit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_list_review_policy_results_for_hit/} for full documentation.
 }
 \keyword{internal}

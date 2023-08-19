@@ -35,6 +35,6 @@ specific requirements are allowed to create a 1Gbps, 2Gbps, 5Gbps or
 \description{
 Creates a hosted connection on the specified interconnect or a link aggregation group (LAG) of interconnects.
 
-See \url{https://paws-r.github.io/docs/directconnect/allocate_hosted_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_allocate_hosted_connection/} for full documentation.
 }
 \keyword{internal}

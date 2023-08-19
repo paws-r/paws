@@ -17,6 +17,6 @@ route53recoveryreadiness_update_readiness_check(
 \description{
 Updates a readiness check.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/update_readiness_check.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_update_readiness_check/} for full documentation.
 }
 \keyword{internal}

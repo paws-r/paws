@@ -12,6 +12,6 @@ comprehend_describe_endpoint(EndpointArn)
 \description{
 Gets the properties associated with a specific endpoint. Use this operation to get the status of an endpoint. For information about endpoints, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html}{Managing endpoints}.
 
-See \url{https://paws-r.github.io/docs/comprehend/describe_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_describe_endpoint/} for full documentation.
 }
 \keyword{internal}

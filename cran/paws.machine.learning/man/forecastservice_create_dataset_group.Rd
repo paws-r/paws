@@ -58,6 +58,6 @@ do not count against your tags per resource limit.
 \description{
 Creates a dataset group, which holds a collection of related datasets. You can add datasets to the dataset group when you create the dataset group, or later by using the \code{\link[=forecastservice_update_dataset_group]{update_dataset_group}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/create_dataset_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_create_dataset_group/} for full documentation.
 }
 \keyword{internal}

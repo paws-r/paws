@@ -41,6 +41,6 @@ action is active. If false, the scheduled action is disabled.}
 \description{
 Modifies a scheduled action.
 
-See \url{https://paws-r.github.io/docs/redshift/modify_scheduled_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_modify_scheduled_action/} for full documentation.
 }
 \keyword{internal}

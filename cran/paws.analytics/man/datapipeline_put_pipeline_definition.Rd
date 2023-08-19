@@ -24,6 +24,6 @@ existing pipeline definition.}
 \description{
 Adds tasks, schedules, and preconditions to the specified pipeline. You can use \code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}} to populate a new pipeline.
 
-See \url{https://paws-r.github.io/docs/datapipeline/put_pipeline_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/datapipeline_put_pipeline_definition/} for full documentation.
 }
 \keyword{internal}

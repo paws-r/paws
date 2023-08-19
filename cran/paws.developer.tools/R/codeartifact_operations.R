@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Adds an existing external connection to a repository. One external connection is allowed per repository.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/associate_external_connection.html](https://paws-r.github.io/docs/codeartifact/associate_external_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_associate_external_connection/](https://www.paws-r-sdk.com/docs/codeartifact_associate_external_connection/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository.
 #' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
@@ -59,7 +59,7 @@ codeartifact_associate_external_connection <- function(domain, domainOwner = NUL
 #' @description
 #' Copies package versions from one repository to another repository in the same domain.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/copy_package_versions.html](https://paws-r.github.io/docs/codeartifact/copy_package_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_copy_package_versions/](https://www.paws-r-sdk.com/docs/codeartifact_copy_package_versions/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the source and destination
 #' repositories.
@@ -129,7 +129,7 @@ codeartifact_copy_package_versions <- function(domain, domainOwner = NULL, sourc
 #' @description
 #' Creates a domain. CodeArtifact *domains* make it easier to manage multiple repositories across an organization. You can use a domain to apply permissions across many repositories owned by different Amazon Web Services accounts. An asset is stored only once in a domain, even if it's in multiple repositories.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/create_domain.html](https://paws-r.github.io/docs/codeartifact/create_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_create_domain/](https://www.paws-r-sdk.com/docs/codeartifact_create_domain/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain to create. All domain names in an Amazon Web
 #' Services Region that are in the same Amazon Web Services account must be
@@ -180,7 +180,7 @@ codeartifact_create_domain <- function(domain, encryptionKey = NULL, tags = NULL
 #' @description
 #' Creates a repository.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/create_repository.html](https://paws-r.github.io/docs/codeartifact/create_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_create_repository/](https://www.paws-r-sdk.com/docs/codeartifact_create_repository/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the created repository.
 #' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
@@ -219,7 +219,7 @@ codeartifact_create_repository <- function(domain, domainOwner = NULL, repositor
 #' @description
 #' Deletes a domain. You cannot delete a domain that contains repositories. If you want to delete a domain with repositories, first delete its repositories.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/delete_domain.html](https://paws-r.github.io/docs/codeartifact/delete_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_delete_domain/](https://www.paws-r-sdk.com/docs/codeartifact_delete_domain/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain to delete.
 #' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
@@ -250,7 +250,7 @@ codeartifact_delete_domain <- function(domain, domainOwner = NULL) {
 #' @description
 #' Deletes the resource policy set on a domain.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/delete_domain_permissions_policy.html](https://paws-r.github.io/docs/codeartifact/delete_domain_permissions_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_delete_domain_permissions_policy/](https://www.paws-r-sdk.com/docs/codeartifact_delete_domain_permissions_policy/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain associated with the resource policy to be
 #' deleted.
@@ -285,7 +285,7 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #' @description
 #' Deletes a package and all associated package versions. A deleted package cannot be restored. To delete one or more package versions, use the [`delete_package_versions`][codeartifact_delete_package_versions] API.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/delete_package.html](https://paws-r.github.io/docs/codeartifact/delete_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_delete_package/](https://www.paws-r-sdk.com/docs/codeartifact_delete_package/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the package to delete.
 #' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
@@ -331,7 +331,7 @@ codeartifact_delete_package <- function(domain, domainOwner = NULL, repository, 
 #' @description
 #' Deletes one or more versions of a package. A deleted package version cannot be restored in your repository. If you want to remove a package version from your repository and be able to restore it later, set its status to `Archived`. Archived packages cannot be downloaded from a repository and don't show up with list package APIs (for example, [`list_package_versions`][codeartifact_list_package_versions]), but you can restore them using [`update_package_versions_status`][codeartifact_update_package_versions_status].
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/delete_package_versions.html](https://paws-r.github.io/docs/codeartifact/delete_package_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_delete_package_versions/](https://www.paws-r-sdk.com/docs/codeartifact_delete_package_versions/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the package to delete.
 #' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
@@ -380,7 +380,7 @@ codeartifact_delete_package_versions <- function(domain, domainOwner = NULL, rep
 #' @description
 #' Deletes a repository.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/delete_repository.html](https://paws-r.github.io/docs/codeartifact/delete_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_delete_repository/](https://www.paws-r-sdk.com/docs/codeartifact_delete_repository/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository to delete.
 #' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
@@ -412,7 +412,7 @@ codeartifact_delete_repository <- function(domain, domainOwner = NULL, repositor
 #' @description
 #' Deletes the resource policy that is set on a repository. After a resource policy is deleted, the permissions allowed and denied by the deleted policy are removed. The effect of deleting a resource policy might not be immediate.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/delete_repository_permissions_policy.html](https://paws-r.github.io/docs/codeartifact/delete_repository_permissions_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_delete_repository_permissions_policy/](https://www.paws-r-sdk.com/docs/codeartifact_delete_repository_permissions_policy/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository associated with the
 #' resource policy to be deleted.
@@ -451,7 +451,7 @@ codeartifact_delete_repository_permissions_policy <- function(domain, domainOwne
 #' @description
 #' Returns a [DomainDescription](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DomainDescription.html) object that contains information about the requested domain.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/describe_domain.html](https://paws-r.github.io/docs/codeartifact/describe_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_describe_domain/](https://www.paws-r-sdk.com/docs/codeartifact_describe_domain/) for full documentation.
 #'
 #' @param domain &#91;required&#93; A string that specifies the name of the requested domain.
 #' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
@@ -483,7 +483,7 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #' @description
 #' Returns a [PackageDescription](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDescription.html) object that contains information about the requested package.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/describe_package.html](https://paws-r.github.io/docs/codeartifact/describe_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_describe_package/](https://www.paws-r-sdk.com/docs/codeartifact_describe_package/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
 #' package.
@@ -531,7 +531,7 @@ codeartifact_describe_package <- function(domain, domainOwner = NULL, repository
 #' @description
 #' Returns a [PackageVersionDescription](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html) object that contains information about the requested package version.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/describe_package_version.html](https://paws-r.github.io/docs/codeartifact/describe_package_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_describe_package_version/](https://www.paws-r-sdk.com/docs/codeartifact_describe_package_version/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
 #' package version.
@@ -580,7 +580,7 @@ codeartifact_describe_package_version <- function(domain, domainOwner = NULL, re
 #' @description
 #' Returns a `RepositoryDescription` object that contains detailed information about the requested repository.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/describe_repository.html](https://paws-r.github.io/docs/codeartifact/describe_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_describe_repository/](https://www.paws-r-sdk.com/docs/codeartifact_describe_repository/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository to describe.
 #' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
@@ -612,7 +612,7 @@ codeartifact_describe_repository <- function(domain, domainOwner = NULL, reposit
 #' @description
 #' Removes an existing external connection from a repository.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/disassociate_external_connection.html](https://paws-r.github.io/docs/codeartifact/disassociate_external_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_disassociate_external_connection/](https://www.paws-r-sdk.com/docs/codeartifact_disassociate_external_connection/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository from which to remove
 #' the external repository.
@@ -648,7 +648,7 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #' @description
 #' Deletes the assets in package versions and sets the package versions' status to `Disposed`. A disposed package version cannot be restored in your repository because its assets are deleted.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/dispose_package_versions.html](https://paws-r.github.io/docs/codeartifact/dispose_package_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_dispose_package_versions/](https://www.paws-r-sdk.com/docs/codeartifact_dispose_package_versions/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository you want to dispose.
 #' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
@@ -701,7 +701,7 @@ codeartifact_dispose_package_versions <- function(domain, domainOwner = NULL, re
 #' @description
 #' Generates a temporary authorization token for accessing repositories in the domain. This API requires the `codeartifact:GetAuthorizationToken` and `sts:GetServiceBearerToken` permissions. For more information about authorization tokens, see [CodeArtifact authentication and tokens](https://docs.aws.amazon.com/codeartifact/latest/ug/tokens-authentication.html).
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/get_authorization_token.html](https://paws-r.github.io/docs/codeartifact/get_authorization_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_get_authorization_token/](https://www.paws-r-sdk.com/docs/codeartifact_get_authorization_token/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that is in scope for the generated authorization
 #' token.
@@ -738,7 +738,7 @@ codeartifact_get_authorization_token <- function(domain, domainOwner = NULL, dur
 #' @description
 #' Returns the resource policy attached to the specified domain.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/get_domain_permissions_policy.html](https://paws-r.github.io/docs/codeartifact/get_domain_permissions_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_get_domain_permissions_policy/](https://www.paws-r-sdk.com/docs/codeartifact_get_domain_permissions_policy/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain to which the resource policy is attached.
 #' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
@@ -769,7 +769,7 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' @description
 #' Returns an asset (or file) that is in a package. For example, for a Maven package version, use [`get_package_version_asset`][codeartifact_get_package_version_asset] to download a `JAR` file, a `POM` file, or any other assets in the package version.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/get_package_version_asset.html](https://paws-r.github.io/docs/codeartifact/get_package_version_asset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_get_package_version_asset/](https://www.paws-r-sdk.com/docs/codeartifact_get_package_version_asset/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
 #' package version with the requested asset.
@@ -823,7 +823,7 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #' @description
 #' Gets the readme file or descriptive text for a package version.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/get_package_version_readme.html](https://paws-r.github.io/docs/codeartifact/get_package_version_readme.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_get_package_version_readme/](https://www.paws-r-sdk.com/docs/codeartifact_get_package_version_readme/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
 #' package version with the requested readme file.
@@ -869,7 +869,7 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #' @description
 #' Returns the endpoint of a repository for a specific package format. A repository has one endpoint for each package format:
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/get_repository_endpoint.html](https://paws-r.github.io/docs/codeartifact/get_repository_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_get_repository_endpoint/](https://www.paws-r-sdk.com/docs/codeartifact_get_repository_endpoint/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository.
 #' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
@@ -904,7 +904,7 @@ codeartifact_get_repository_endpoint <- function(domain, domainOwner = NULL, rep
 #' @description
 #' Returns the resource policy that is set on a repository.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/get_repository_permissions_policy.html](https://paws-r.github.io/docs/codeartifact/get_repository_permissions_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_get_repository_permissions_policy/](https://www.paws-r-sdk.com/docs/codeartifact_get_repository_permissions_policy/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain containing the repository whose associated
 #' resource policy is to be retrieved.
@@ -939,7 +939,7 @@ codeartifact_get_repository_permissions_policy <- function(domain, domainOwner =
 #' @description
 #' Returns a list of [DomainSummary](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html) objects for all domains owned by the Amazon Web Services account that makes this call. Each returned `DomainSummary` object contains information about a domain.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/list_domains.html](https://paws-r.github.io/docs/codeartifact/list_domains.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_list_domains/](https://www.paws-r-sdk.com/docs/codeartifact_list_domains/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to return per page.
 #' @param nextToken The token for the next set of results. Use the value returned in the
@@ -954,7 +954,7 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListDomains",
     http_method = "POST",
     http_path = "/v1/domains",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "domains")
   )
   input <- .codeartifact$list_domains_input(maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_domains_output()
@@ -971,7 +971,7 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
 #' @description
 #' Returns a list of [AssetSummary](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_AssetSummary.html) objects for assets in a package version.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/list_package_version_assets.html](https://paws-r.github.io/docs/codeartifact/list_package_version_assets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_list_package_version_assets/](https://www.paws-r-sdk.com/docs/codeartifact_list_package_version_assets/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository associated with the
 #' package version assets.
@@ -1010,7 +1010,7 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
     name = "ListPackageVersionAssets",
     http_method = "POST",
     http_path = "/v1/package/version/assets",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "assets")
   )
   input <- .codeartifact$list_package_version_assets_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, packageVersion = packageVersion, maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_package_version_assets_output()
@@ -1027,7 +1027,7 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #' @description
 #' Returns the direct dependencies for a package version. The dependencies are returned as [PackageDependency](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDependency.html) objects. CodeArtifact extracts the dependencies for a package version from the metadata file for the package format (for example, the `package.json` file for npm packages and the `pom.xml` file for Maven). Any package version dependencies that are not listed in the configuration file are not returned.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/list_package_version_dependencies.html](https://paws-r.github.io/docs/codeartifact/list_package_version_dependencies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_list_package_version_dependencies/](https://www.paws-r-sdk.com/docs/codeartifact_list_package_version_dependencies/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
 #' requested package version dependencies.
@@ -1080,7 +1080,7 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #' @description
 #' Returns a list of [PackageVersionSummary](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionSummary.html) objects for package versions in a repository that match the request parameters. Package versions of all statuses will be returned by default when calling `list-package-versions` with no `--status` parameter.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/list_package_versions.html](https://paws-r.github.io/docs/codeartifact/list_package_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_list_package_versions/](https://www.paws-r-sdk.com/docs/codeartifact_list_package_versions/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
 #' requested package versions.
@@ -1118,7 +1118,7 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
     name = "ListPackageVersions",
     http_method = "POST",
     http_path = "/v1/package/versions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "versions")
   )
   input <- .codeartifact$list_package_versions_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, package = package, status = status, sortBy = sortBy, maxResults = maxResults, nextToken = nextToken, originType = originType)
   output <- .codeartifact$list_package_versions_output()
@@ -1136,7 +1136,7 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #' @description
 #' Returns a list of [PackageSummary](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageSummary.html) objects for packages in a repository that match the request parameters.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/list_packages.html](https://paws-r.github.io/docs/codeartifact/list_packages.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_list_packages/](https://www.paws-r-sdk.com/docs/codeartifact_list_packages/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
 #' requested packages.
@@ -1183,7 +1183,7 @@ codeartifact_list_packages <- function(domain, domainOwner = NULL, repository, f
     name = "ListPackages",
     http_method = "POST",
     http_path = "/v1/packages",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "packages")
   )
   input <- .codeartifact$list_packages_input(domain = domain, domainOwner = domainOwner, repository = repository, format = format, namespace = namespace, packagePrefix = packagePrefix, maxResults = maxResults, nextToken = nextToken, publish = publish, upstream = upstream)
   output <- .codeartifact$list_packages_output()
@@ -1200,7 +1200,7 @@ codeartifact_list_packages <- function(domain, domainOwner = NULL, repository, f
 #' @description
 #' Returns a list of [RepositorySummary](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_RepositorySummary.html) objects. Each `RepositorySummary` contains information about a repository in the specified Amazon Web Services account and that matches the input parameters.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/list_repositories.html](https://paws-r.github.io/docs/codeartifact/list_repositories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_list_repositories/](https://www.paws-r-sdk.com/docs/codeartifact_list_repositories/) for full documentation.
 #'
 #' @param repositoryPrefix A prefix used to filter returned repositories. Only repositories with
 #' names that start with `repositoryPrefix` are returned.
@@ -1217,7 +1217,7 @@ codeartifact_list_repositories <- function(repositoryPrefix = NULL, maxResults =
     name = "ListRepositories",
     http_method = "POST",
     http_path = "/v1/repositories",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "repositories")
   )
   input <- .codeartifact$list_repositories_input(repositoryPrefix = repositoryPrefix, maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_repositories_output()
@@ -1234,7 +1234,7 @@ codeartifact_list_repositories <- function(repositoryPrefix = NULL, maxResults =
 #' @description
 #' Returns a list of [RepositorySummary](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_RepositorySummary.html) objects. Each `RepositorySummary` contains information about a repository in the specified domain and that matches the input parameters.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/list_repositories_in_domain.html](https://paws-r.github.io/docs/codeartifact/list_repositories_in_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_list_repositories_in_domain/](https://www.paws-r-sdk.com/docs/codeartifact_list_repositories_in_domain/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the returned list of repositories.
 #' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
@@ -1256,7 +1256,7 @@ codeartifact_list_repositories_in_domain <- function(domain, domainOwner = NULL,
     name = "ListRepositoriesInDomain",
     http_method = "POST",
     http_path = "/v1/domain/repositories",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "repositories")
   )
   input <- .codeartifact$list_repositories_in_domain_input(domain = domain, domainOwner = domainOwner, administratorAccount = administratorAccount, repositoryPrefix = repositoryPrefix, maxResults = maxResults, nextToken = nextToken)
   output <- .codeartifact$list_repositories_in_domain_output()
@@ -1274,7 +1274,7 @@ codeartifact_list_repositories_in_domain <- function(domain, domainOwner = NULL,
 #' @description
 #' Gets information about Amazon Web Services tags for a specified Amazon Resource Name (ARN) in CodeArtifact.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/list_tags_for_resource.html](https://paws-r.github.io/docs/codeartifact/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/codeartifact_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to get tags for.
 #'
@@ -1303,7 +1303,7 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Creates a new package version containing one or more assets (or files).
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/publish_package_version.html](https://paws-r.github.io/docs/codeartifact/publish_package_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_publish_package_version/](https://www.paws-r-sdk.com/docs/codeartifact_publish_package_version/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
 #' package version to publish.
@@ -1313,6 +1313,8 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
 #' to.
 #' @param format &#91;required&#93; A format that specifies the type of the package version with the
 #' requested asset file.
+#' 
+#' The only supported value is `generic`.
 #' @param namespace The namespace of the package version to publish.
 #' @param package &#91;required&#93; The name of the package version to publish.
 #' @param packageVersion &#91;required&#93; The package version to publish (for example, `3.5.2`).
@@ -1362,7 +1364,7 @@ codeartifact_publish_package_version <- function(domain, domainOwner = NULL, rep
 #' @description
 #' Sets a resource policy on a domain that specifies permissions to access it.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/put_domain_permissions_policy.html](https://paws-r.github.io/docs/codeartifact/put_domain_permissions_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_put_domain_permissions_policy/](https://www.paws-r-sdk.com/docs/codeartifact_put_domain_permissions_policy/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain on which to set the resource policy.
 #' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns
@@ -1398,7 +1400,7 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
 #' @description
 #' Sets the package origin configuration for a package.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/put_package_origin_configuration.html](https://paws-r.github.io/docs/codeartifact/put_package_origin_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_put_package_origin_configuration/](https://www.paws-r-sdk.com/docs/codeartifact_put_package_origin_configuration/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
 #' package.
@@ -1455,7 +1457,7 @@ codeartifact_put_package_origin_configuration <- function(domain, domainOwner = 
 #' @description
 #' Sets the resource policy on a repository that specifies permissions to access it.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/put_repository_permissions_policy.html](https://paws-r.github.io/docs/codeartifact/put_repository_permissions_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_put_repository_permissions_policy/](https://www.paws-r-sdk.com/docs/codeartifact_put_repository_permissions_policy/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain containing the repository to set the resource
 #' policy on.
@@ -1494,7 +1496,7 @@ codeartifact_put_repository_permissions_policy <- function(domain, domainOwner =
 #' @description
 #' Adds or updates tags for a resource in CodeArtifact.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/tag_resource.html](https://paws-r.github.io/docs/codeartifact/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_tag_resource/](https://www.paws-r-sdk.com/docs/codeartifact_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to add or
 #' update tags for.
@@ -1525,7 +1527,7 @@ codeartifact_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes tags from a resource in CodeArtifact.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/untag_resource.html](https://paws-r.github.io/docs/codeartifact/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_untag_resource/](https://www.paws-r-sdk.com/docs/codeartifact_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to remove
 #' tags from.
@@ -1556,7 +1558,7 @@ codeartifact_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates the status of one or more versions of a package. Using [`update_package_versions_status`][codeartifact_update_package_versions_status], you can update the status of package versions to `Archived`, `Published`, or `Unlisted`. To set the status of a package version to `Disposed`, use [`dispose_package_versions`][codeartifact_dispose_package_versions].
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/update_package_versions_status.html](https://paws-r.github.io/docs/codeartifact/update_package_versions_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_update_package_versions_status/](https://www.paws-r-sdk.com/docs/codeartifact_update_package_versions_status/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain that contains the repository that contains the
 #' package versions with a status to be updated.
@@ -1616,7 +1618,7 @@ codeartifact_update_package_versions_status <- function(domain, domainOwner = NU
 #' @description
 #' Update the properties of a repository.
 #'
-#' See [https://paws-r.github.io/docs/codeartifact/update_repository.html](https://paws-r.github.io/docs/codeartifact/update_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/codeartifact_update_repository/](https://www.paws-r-sdk.com/docs/codeartifact_update_repository/) for full documentation.
 #'
 #' @param domain &#91;required&#93; The name of the domain associated with the repository to update.
 #' @param domainOwner The 12-digit account number of the Amazon Web Services account that owns

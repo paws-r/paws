@@ -20,6 +20,6 @@ call, then you should use that value as input here.}
 \description{
 Returns all journal export jobs for all ledgers that are associated with the current Amazon Web Services account and Region.
 
-See \url{https://paws-r.github.io/docs/qldb/list_journal_s3_exports.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_list_journal_s3_exports/} for full documentation.
 }
 \keyword{internal}

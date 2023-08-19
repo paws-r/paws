@@ -32,6 +32,6 @@ For more information, see \href{https://docs.aws.amazon.com/Route53/latest/Devel
 \description{
 This operation checks the availability of one domain name. Note that if the availability status of a domain is pending, you must submit another request to determine the availability of the domain name.
 
-See \url{https://paws-r.github.io/docs/route53domains/check_domain_availability.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_check_domain_availability/} for full documentation.
 }
 \keyword{internal}

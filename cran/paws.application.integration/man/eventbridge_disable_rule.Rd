@@ -15,6 +15,6 @@ this, the default event bus is used.}
 \description{
 Disables the specified rule. A disabled rule won't match any events, and won't self-trigger if it has a schedule expression.
 
-See \url{https://paws-r.github.io/docs/eventbridge/disable_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_disable_rule/} for full documentation.
 }
 \keyword{internal}

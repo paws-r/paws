@@ -28,6 +28,6 @@ for details.}
 \description{
 Used by deciders to tell the service that the DecisionTask identified by the \code{taskToken} has successfully completed. The \code{decisions} argument specifies the list of decisions made while processing the task.
 
-See \url{https://paws-r.github.io/docs/swf/respond_decision_task_completed.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_respond_decision_task_completed/} for full documentation.
 }
 \keyword{internal}

@@ -106,6 +106,6 @@ Default: RSA_2048}
 \description{
 Requests an ACM certificate for use with other Amazon Web Services services. To request an ACM certificate, you must specify a fully qualified domain name (FQDN) in the \code{DomainName} parameter. You can also specify additional FQDNs in the \code{SubjectAlternativeNames} parameter.
 
-See \url{https://paws-r.github.io/docs/acm/request_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acm_request_certificate/} for full documentation.
 }
 \keyword{internal}

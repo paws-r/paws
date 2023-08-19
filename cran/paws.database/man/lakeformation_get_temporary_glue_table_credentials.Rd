@@ -10,7 +10,7 @@ lakeformation_get_temporary_glue_table_credentials(
   Permissions = NULL,
   DurationSeconds = NULL,
   AuditContext = NULL,
-  SupportedPermissionTypes
+  SupportedPermissionTypes = NULL
 )
 }
 \arguments{
@@ -26,12 +26,12 @@ temporary credentials.}
 \item{AuditContext}{A structure representing context to access a resource (column names,
 query ID, etc).}
 
-\item{SupportedPermissionTypes}{[required] A list of supported permission types for the table. Valid values are
+\item{SupportedPermissionTypes}{A list of supported permission types for the table. Valid values are
 \code{COLUMN_PERMISSION} and \code{CELL_FILTER_PERMISSION}.}
 }
 \description{
 Allows a caller in a secure environment to assume a role with permission to access Amazon S3. In order to vend such credentials, Lake Formation assumes the role associated with a registered location, for example an Amazon S3 bucket, with a scope down policy which restricts the access to a single prefix.
 
-See \url{https://paws-r.github.io/docs/lakeformation/get_temporary_glue_table_credentials.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_get_temporary_glue_table_credentials/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ elb_create_load_balancer_listeners(LoadBalancerName, Listeners)
 \description{
 Creates one or more listeners for the specified load balancer. If a listener with the specified port does not already exist, it is created; otherwise, the properties of the new listener must match the properties of the existing listener.
 
-See \url{https://paws-r.github.io/docs/elb/create_load_balancer_listeners.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_create_load_balancer_listeners/} for full documentation.
 }
 \keyword{internal}

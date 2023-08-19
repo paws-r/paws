@@ -26,6 +26,6 @@ from this call.}
 \description{
 Lists the quota increase requests in the specified quota request template.
 
-See \url{https://paws-r.github.io/docs/servicequotas/list_service_quota_increase_requests_in_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicequotas_list_service_quota_increase_requests_in_template/} for full documentation.
 }
 \keyword{internal}

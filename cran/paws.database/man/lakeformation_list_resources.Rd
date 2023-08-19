@@ -22,6 +22,6 @@ resources.}
 \description{
 Lists the resources registered to be managed by the Data Catalog.
 
-See \url{https://paws-r.github.io/docs/lakeformation/list_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_list_resources/} for full documentation.
 }
 \keyword{internal}

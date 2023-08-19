@@ -9,6 +9,6 @@ sagemaker_enable_sagemaker_servicecatalog_portfolio()
 \description{
 Enables using Service Catalog in SageMaker. Service Catalog is used to create SageMaker projects.
 
-See \url{https://paws-r.github.io/docs/sagemaker/enable_sagemaker_servicecatalog_portfolio.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_enable_sagemaker_servicecatalog_portfolio/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ account ID or a keyword, such as ADX.}
 \description{
 From a datashare producer account, removes authorization from the specified datashare.
 
-See \url{https://paws-r.github.io/docs/redshift/deauthorize_data_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_deauthorize_data_share/} for full documentation.
 }
 \keyword{internal}

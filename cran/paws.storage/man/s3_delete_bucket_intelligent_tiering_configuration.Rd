@@ -16,6 +16,6 @@ or retrieve.}
 \description{
 Deletes the S3 Intelligent-Tiering configuration from the specified bucket.
 
-See \url{https://paws-r.github.io/docs/s3/delete_bucket_intelligent_tiering_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_delete_bucket_intelligent_tiering_configuration/} for full documentation.
 }
 \keyword{internal}

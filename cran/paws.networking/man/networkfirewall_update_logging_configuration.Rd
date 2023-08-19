@@ -26,6 +26,6 @@ omit this setting, Network Firewall disables logging for the firewall.}
 \description{
 Sets the logging configuration for the specified firewall.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/update_logging_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_update_logging_configuration/} for full documentation.
 }
 \keyword{internal}

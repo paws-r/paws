@@ -26,6 +26,6 @@ listing.}
 \description{
 Gets a list of distribution IDs for distributions that have a cache behavior that references the specified key group.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_distributions_by_key_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_distributions_by_key_group/} for full documentation.
 }
 \keyword{internal}

@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Validates the specified pipeline and starts processing pipeline tasks. If the pipeline does not pass validation, activation fails.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/activate_pipeline.html](https://paws-r.github.io/docs/datapipeline/activate_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_activate_pipeline/](https://www.paws-r-sdk.com/docs/datapipeline_activate_pipeline/) for full documentation.
 #'
 #' @param pipelineId &#91;required&#93; The ID of the pipeline.
 #' @param parameterValues A list of parameter values to pass to the pipeline at activation.
@@ -40,7 +40,7 @@ datapipeline_activate_pipeline <- function(pipelineId, parameterValues = NULL, s
 #' @description
 #' Adds or modifies tags for the specified pipeline.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/add_tags.html](https://paws-r.github.io/docs/datapipeline/add_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_add_tags/](https://www.paws-r-sdk.com/docs/datapipeline_add_tags/) for full documentation.
 #'
 #' @param pipelineId &#91;required&#93; The ID of the pipeline.
 #' @param tags &#91;required&#93; The tags to add, as key/value pairs.
@@ -70,7 +70,7 @@ datapipeline_add_tags <- function(pipelineId, tags) {
 #' @description
 #' Creates a new, empty pipeline. Use [`put_pipeline_definition`][datapipeline_put_pipeline_definition] to populate the pipeline.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/create_pipeline.html](https://paws-r.github.io/docs/datapipeline/create_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_create_pipeline/](https://www.paws-r-sdk.com/docs/datapipeline_create_pipeline/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name for the pipeline. You can use the same name for multiple
 #' pipelines associated with your AWS account, because AWS Data Pipeline
@@ -122,7 +122,7 @@ datapipeline_create_pipeline <- function(name, uniqueId, description = NULL, tag
 #' @description
 #' Deactivates the specified running pipeline. The pipeline is set to the `DEACTIVATING` state until the deactivation process completes.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/deactivate_pipeline.html](https://paws-r.github.io/docs/datapipeline/deactivate_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_deactivate_pipeline/](https://www.paws-r-sdk.com/docs/datapipeline_deactivate_pipeline/) for full documentation.
 #'
 #' @param pipelineId &#91;required&#93; The ID of the pipeline.
 #' @param cancelActive Indicates whether to cancel any running objects. The default is true,
@@ -154,7 +154,7 @@ datapipeline_deactivate_pipeline <- function(pipelineId, cancelActive = NULL) {
 #' @description
 #' Deletes a pipeline, its pipeline definition, and its run history. AWS Data Pipeline attempts to cancel instances associated with the pipeline that are currently being processed by task runners.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/delete_pipeline.html](https://paws-r.github.io/docs/datapipeline/delete_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_delete_pipeline/](https://www.paws-r-sdk.com/docs/datapipeline_delete_pipeline/) for full documentation.
 #'
 #' @param pipelineId &#91;required&#93; The ID of the pipeline.
 #'
@@ -184,7 +184,7 @@ datapipeline_delete_pipeline <- function(pipelineId) {
 #' @description
 #' Gets the object definitions for a set of objects associated with the pipeline. Object definitions are composed of a set of fields that define the properties of the object.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/describe_objects.html](https://paws-r.github.io/docs/datapipeline/describe_objects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_describe_objects/](https://www.paws-r-sdk.com/docs/datapipeline_describe_objects/) for full documentation.
 #'
 #' @param pipelineId &#91;required&#93; The ID of the pipeline that contains the object definitions.
 #' @param objectIds &#91;required&#93; The IDs of the pipeline objects that contain the definitions to be
@@ -205,7 +205,7 @@ datapipeline_describe_objects <- function(pipelineId, objectIds, evaluateExpress
     name = "DescribeObjects",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "marker", more_results = "hasMoreResults", output_token = "marker", result_key = "pipelineObjects")
   )
   input <- .datapipeline$describe_objects_input(pipelineId = pipelineId, objectIds = objectIds, evaluateExpressions = evaluateExpressions, marker = marker)
   output <- .datapipeline$describe_objects_output()
@@ -222,7 +222,7 @@ datapipeline_describe_objects <- function(pipelineId, objectIds, evaluateExpress
 #' @description
 #' Retrieves metadata about one or more pipelines. The information retrieved includes the name of the pipeline, the pipeline identifier, its current state, and the user account that owns the pipeline. Using account credentials, you can retrieve metadata about pipelines that you or your IAM users have created. If you are using an IAM user account, you can retrieve metadata about only those pipelines for which you have read permissions.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/describe_pipelines.html](https://paws-r.github.io/docs/datapipeline/describe_pipelines.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_describe_pipelines/](https://www.paws-r-sdk.com/docs/datapipeline_describe_pipelines/) for full documentation.
 #'
 #' @param pipelineIds &#91;required&#93; The IDs of the pipelines to describe. You can pass as many as 25
 #' identifiers in a single call. To obtain pipeline IDs, call
@@ -236,7 +236,7 @@ datapipeline_describe_pipelines <- function(pipelineIds) {
     name = "DescribePipelines",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "pipelineDescriptionList")
   )
   input <- .datapipeline$describe_pipelines_input(pipelineIds = pipelineIds)
   output <- .datapipeline$describe_pipelines_output()
@@ -254,7 +254,7 @@ datapipeline_describe_pipelines <- function(pipelineIds) {
 #' @description
 #' Task runners call [`evaluate_expression`][datapipeline_evaluate_expression] to evaluate a string in the context of the specified object. For example, a task runner can evaluate SQL queries stored in Amazon S3.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/evaluate_expression.html](https://paws-r.github.io/docs/datapipeline/evaluate_expression.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_evaluate_expression/](https://www.paws-r-sdk.com/docs/datapipeline_evaluate_expression/) for full documentation.
 #'
 #' @param pipelineId &#91;required&#93; The ID of the pipeline.
 #' @param objectId &#91;required&#93; The ID of the object.
@@ -285,7 +285,7 @@ datapipeline_evaluate_expression <- function(pipelineId, objectId, expression) {
 #' @description
 #' Gets the definition of the specified pipeline. You can call [`get_pipeline_definition`][datapipeline_get_pipeline_definition] to retrieve the pipeline definition that you provided using [`put_pipeline_definition`][datapipeline_put_pipeline_definition].
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/get_pipeline_definition.html](https://paws-r.github.io/docs/datapipeline/get_pipeline_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_get_pipeline_definition/](https://www.paws-r-sdk.com/docs/datapipeline_get_pipeline_definition/) for full documentation.
 #'
 #' @param pipelineId &#91;required&#93; The ID of the pipeline.
 #' @param version The version of the pipeline definition to retrieve. Set this parameter
@@ -318,7 +318,7 @@ datapipeline_get_pipeline_definition <- function(pipelineId, version = NULL) {
 #' @description
 #' Lists the pipeline identifiers for all active pipelines that you have permission to access.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/list_pipelines.html](https://paws-r.github.io/docs/datapipeline/list_pipelines.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_list_pipelines/](https://www.paws-r-sdk.com/docs/datapipeline_list_pipelines/) for full documentation.
 #'
 #' @param marker The starting point for the results to be returned. For the first call,
 #' this value should be empty. As long as there are more results, continue
@@ -333,7 +333,7 @@ datapipeline_list_pipelines <- function(marker = NULL) {
     name = "ListPipelines",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "marker", more_results = "hasMoreResults", output_token = "marker", result_key = "pipelineIdList")
   )
   input <- .datapipeline$list_pipelines_input(marker = marker)
   output <- .datapipeline$list_pipelines_output()
@@ -351,7 +351,7 @@ datapipeline_list_pipelines <- function(marker = NULL) {
 #' @description
 #' Task runners call [`poll_for_task`][datapipeline_poll_for_task] to receive a task to perform from AWS Data Pipeline. The task runner specifies which tasks it can perform by setting a value for the `workerGroup` parameter. The task returned can come from any of the pipelines that match the `workerGroup` value passed in by the task runner and that was launched using the IAM user credentials specified by the task runner.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/poll_for_task.html](https://paws-r.github.io/docs/datapipeline/poll_for_task.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_poll_for_task/](https://www.paws-r-sdk.com/docs/datapipeline_poll_for_task/) for full documentation.
 #'
 #' @param workerGroup &#91;required&#93; The type of task the task runner is configured to accept and process.
 #' The worker group is set as a field on objects in the pipeline when they
@@ -395,7 +395,7 @@ datapipeline_poll_for_task <- function(workerGroup, hostname = NULL, instanceIde
 #' @description
 #' Adds tasks, schedules, and preconditions to the specified pipeline. You can use [`put_pipeline_definition`][datapipeline_put_pipeline_definition] to populate a new pipeline.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/put_pipeline_definition.html](https://paws-r.github.io/docs/datapipeline/put_pipeline_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_put_pipeline_definition/](https://www.paws-r-sdk.com/docs/datapipeline_put_pipeline_definition/) for full documentation.
 #'
 #' @param pipelineId &#91;required&#93; The ID of the pipeline.
 #' @param pipelineObjects &#91;required&#93; The objects that define the pipeline. These objects overwrite the
@@ -429,7 +429,7 @@ datapipeline_put_pipeline_definition <- function(pipelineId, pipelineObjects, pa
 #' @description
 #' Queries the specified pipeline for the names of objects that match the specified set of conditions.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/query_objects.html](https://paws-r.github.io/docs/datapipeline/query_objects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_query_objects/](https://www.paws-r-sdk.com/docs/datapipeline_query_objects/) for full documentation.
 #'
 #' @param pipelineId &#91;required&#93; The ID of the pipeline.
 #' @param query The query that defines the objects to be returned. The `Query` object
@@ -454,7 +454,7 @@ datapipeline_query_objects <- function(pipelineId, query = NULL, sphere, marker 
     name = "QueryObjects",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "marker", limit_key = "limit", more_results = "hasMoreResults", output_token = "marker", result_key = "ids")
   )
   input <- .datapipeline$query_objects_input(pipelineId = pipelineId, query = query, sphere = sphere, marker = marker, limit = limit)
   output <- .datapipeline$query_objects_output()
@@ -471,7 +471,7 @@ datapipeline_query_objects <- function(pipelineId, query = NULL, sphere, marker 
 #' @description
 #' Removes existing tags from the specified pipeline.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/remove_tags.html](https://paws-r.github.io/docs/datapipeline/remove_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_remove_tags/](https://www.paws-r-sdk.com/docs/datapipeline_remove_tags/) for full documentation.
 #'
 #' @param pipelineId &#91;required&#93; The ID of the pipeline.
 #' @param tagKeys &#91;required&#93; The keys of the tags to remove.
@@ -502,7 +502,7 @@ datapipeline_remove_tags <- function(pipelineId, tagKeys) {
 #' @description
 #' Task runners call [`report_task_progress`][datapipeline_report_task_progress] when assigned a task to acknowledge that it has the task. If the web service does not receive this acknowledgement within 2 minutes, it assigns the task in a subsequent [`poll_for_task`][datapipeline_poll_for_task] call. After this initial acknowledgement, the task runner only needs to report progress every 15 minutes to maintain its ownership of the task. You can change this reporting time from 15 minutes by specifying a `reportProgressTimeout` field in your pipeline.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/report_task_progress.html](https://paws-r.github.io/docs/datapipeline/report_task_progress.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_report_task_progress/](https://www.paws-r-sdk.com/docs/datapipeline_report_task_progress/) for full documentation.
 #'
 #' @param taskId &#91;required&#93; The ID of the task assigned to the task runner. This value is provided
 #' in the response for [`poll_for_task`][datapipeline_poll_for_task].
@@ -535,7 +535,7 @@ datapipeline_report_task_progress <- function(taskId, fields = NULL) {
 #' @description
 #' Task runners call [`report_task_runner_heartbeat`][datapipeline_report_task_runner_heartbeat] every 15 minutes to indicate that they are operational. If the AWS Data Pipeline Task Runner is launched on a resource managed by AWS Data Pipeline, the web service can use this call to detect when the task runner application has failed and restart a new instance.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/report_task_runner_heartbeat.html](https://paws-r.github.io/docs/datapipeline/report_task_runner_heartbeat.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_report_task_runner_heartbeat/](https://www.paws-r-sdk.com/docs/datapipeline_report_task_runner_heartbeat/) for full documentation.
 #'
 #' @param taskrunnerId &#91;required&#93; The ID of the task runner. This value should be unique across your AWS
 #' account. In the case of AWS Data Pipeline Task Runner launched on a
@@ -576,7 +576,7 @@ datapipeline_report_task_runner_heartbeat <- function(taskrunnerId, workerGroup 
 #' @description
 #' Requests that the status of the specified physical or logical pipeline objects be updated in the specified pipeline. This update might not occur immediately, but is eventually consistent. The status that can be set depends on the type of object (for example, DataNode or Activity). You cannot perform this operation on `FINISHED` pipelines and attempting to do so returns `InvalidRequestException`.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/set_status.html](https://paws-r.github.io/docs/datapipeline/set_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_set_status/](https://www.paws-r-sdk.com/docs/datapipeline_set_status/) for full documentation.
 #'
 #' @param pipelineId &#91;required&#93; The ID of the pipeline that contains the objects.
 #' @param objectIds &#91;required&#93; The IDs of the objects. The corresponding objects can be either physical
@@ -611,7 +611,7 @@ datapipeline_set_status <- function(pipelineId, objectIds, status) {
 #' @description
 #' Task runners call [`set_task_status`][datapipeline_set_task_status] to notify AWS Data Pipeline that a task is completed and provide information about the final status. A task runner makes this call regardless of whether the task was sucessful. A task runner does not need to call [`set_task_status`][datapipeline_set_task_status] for tasks that are canceled by the web service during a call to [`report_task_progress`][datapipeline_report_task_progress].
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/set_task_status.html](https://paws-r.github.io/docs/datapipeline/set_task_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_set_task_status/](https://www.paws-r-sdk.com/docs/datapipeline_set_task_status/) for full documentation.
 #'
 #' @param taskId &#91;required&#93; The ID of the task assigned to the task runner. This value is provided
 #' in the response for [`poll_for_task`][datapipeline_poll_for_task].
@@ -656,7 +656,7 @@ datapipeline_set_task_status <- function(taskId, taskStatus, errorId = NULL, err
 #' @description
 #' Validates the specified pipeline definition to ensure that it is well formed and can be run without error.
 #'
-#' See [https://paws-r.github.io/docs/datapipeline/validate_pipeline_definition.html](https://paws-r.github.io/docs/datapipeline/validate_pipeline_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/datapipeline_validate_pipeline_definition/](https://www.paws-r-sdk.com/docs/datapipeline_validate_pipeline_definition/) for full documentation.
 #'
 #' @param pipelineId &#91;required&#93; The ID of the pipeline.
 #' @param pipelineObjects &#91;required&#93; The objects that define the pipeline changes to validate against the

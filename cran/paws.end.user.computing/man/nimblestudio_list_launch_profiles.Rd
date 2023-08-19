@@ -27,6 +27,6 @@ results.}
 \description{
 List all the launch profiles a studio.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/list_launch_profiles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_list_launch_profiles/} for full documentation.
 }
 \keyword{internal}

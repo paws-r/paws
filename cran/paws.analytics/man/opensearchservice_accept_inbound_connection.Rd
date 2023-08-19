@@ -13,6 +13,6 @@ opensearchservice_accept_inbound_connection(ConnectionId)
 \description{
 Allows the destination Amazon OpenSearch Service domain owner to accept an inbound cross-cluster search connection request. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html}{Cross-cluster search for Amazon OpenSearch Service}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/accept_inbound_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_accept_inbound_connection/} for full documentation.
 }
 \keyword{internal}

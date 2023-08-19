@@ -12,6 +12,6 @@ codebuild_batch_get_report_groups(reportGroupArns)
 \description{
 Returns an array of report groups.
 
-See \url{https://paws-r.github.io/docs/codebuild/batch_get_report_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_batch_get_report_groups/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ in the \emph{Amazon Web Services General Reference Guide}.}
 \description{
 Returns status information for each of your Config managed rules. The status includes information such as the last time Config invoked the rule, the last time Config failed to invoke the rule, and the related error for the last failure.
 
-See \url{https://paws-r.github.io/docs/configservice/describe_config_rule_evaluation_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_describe_config_rule_evaluation_status/} for full documentation.
 }
 \keyword{internal}

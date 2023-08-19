@@ -34,6 +34,6 @@ in the \emph{AWS General Reference} guide.}
 \description{
 Updates an application.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/update_app.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_update_app/} for full documentation.
 }
 \keyword{internal}

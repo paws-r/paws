@@ -25,6 +25,6 @@ Services administrator credentials to access the API.}
 \description{
 Removes the permission for the specified principal from the specified resource.
 
-See \url{https://paws-r.github.io/docs/workdocs/remove_resource_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_remove_resource_permission/} for full documentation.
 }
 \keyword{internal}

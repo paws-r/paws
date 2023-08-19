@@ -14,6 +14,6 @@ licensemanager_delete_license_manager_report_generator(
 \description{
 Deletes the specified report generator.
 
-See \url{https://paws-r.github.io/docs/licensemanager/delete_license_manager_report_generator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_delete_license_manager_report_generator/} for full documentation.
 }
 \keyword{internal}

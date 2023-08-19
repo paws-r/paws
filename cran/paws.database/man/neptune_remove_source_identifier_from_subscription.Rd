@@ -21,6 +21,6 @@ group.}
 \description{
 Removes a source identifier from an existing event notification subscription.
 
-See \url{https://paws-r.github.io/docs/neptune/remove_source_identifier_from_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_remove_source_identifier_from_subscription/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ currently 200.}
 \description{
 Returns the list of behavior graphs that the calling account is an administrator account of. This operation can only be called by an administrator account.
 
-See \url{https://paws-r.github.io/docs/detective/list_graphs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_list_graphs/} for full documentation.
 }
 \keyword{internal}

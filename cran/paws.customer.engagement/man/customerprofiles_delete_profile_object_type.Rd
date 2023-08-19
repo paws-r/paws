@@ -15,6 +15,6 @@ customerprofiles_delete_profile_object_type(DomainName, ObjectTypeName)
 \description{
 Removes a ProfileObjectType from a specific domain as well as removes all the ProfileObjects of that type. It also disables integrations from this specific ProfileObjectType. In addition, it scrubs all of the fields of the standard profile that were populated from this ProfileObjectType.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/delete_profile_object_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_delete_profile_object_type/} for full documentation.
 }
 \keyword{internal}

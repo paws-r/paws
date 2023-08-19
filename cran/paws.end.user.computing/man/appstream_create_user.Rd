@@ -38,6 +38,6 @@ welcome email.}
 \description{
 Creates a new user in the user pool.
 
-See \url{https://paws-r.github.io/docs/appstream/create_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_create_user/} for full documentation.
 }
 \keyword{internal}

@@ -299,6 +299,6 @@ to null.
 \description{
 Updates an existing health check. Note that some values can't be updated.
 
-See \url{https://paws-r.github.io/docs/route53/update_health_check.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_update_health_check/} for full documentation.
 }
 \keyword{internal}

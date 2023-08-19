@@ -15,6 +15,6 @@ guardduty_create_sample_findings(DetectorId, FindingTypes = NULL)
 \description{
 Generates sample findings of types specified by the list of finding types. If 'NULL' is specified for \code{findingTypes}, the API generates sample findings of all supported finding types.
 
-See \url{https://paws-r.github.io/docs/guardduty/create_sample_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_create_sample_findings/} for full documentation.
 }
 \keyword{internal}

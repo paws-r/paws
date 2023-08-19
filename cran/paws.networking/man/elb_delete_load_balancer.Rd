@@ -12,6 +12,6 @@ elb_delete_load_balancer(LoadBalancerName)
 \description{
 Deletes the specified load balancer.
 
-See \url{https://paws-r.github.io/docs/elb/delete_load_balancer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_delete_load_balancer/} for full documentation.
 }
 \keyword{internal}

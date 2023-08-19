@@ -29,6 +29,6 @@ you have the required permissions, the error response is
 \description{
 Associates an IPAM resource discovery with an Amazon VPC IPAM. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
 
-See \url{https://paws-r.github.io/docs/ec2/associate_ipam_resource_discovery.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_associate_ipam_resource_discovery/} for full documentation.
 }
 \keyword{internal}

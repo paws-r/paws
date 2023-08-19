@@ -15,6 +15,6 @@ get.}
 \description{
 Gets a real-time log configuration.
 
-See \url{https://paws-r.github.io/docs/cloudfront/get_realtime_log_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_get_realtime_log_config/} for full documentation.
 }
 \keyword{internal}

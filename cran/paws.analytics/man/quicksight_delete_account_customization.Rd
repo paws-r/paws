@@ -19,6 +19,6 @@ from.}
 \description{
 Deletes all Amazon QuickSight customizations in this Amazon Web Services Region for the specified Amazon Web Services account and Amazon QuickSight namespace.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_account_customization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_account_customization/} for full documentation.
 }
 \keyword{internal}

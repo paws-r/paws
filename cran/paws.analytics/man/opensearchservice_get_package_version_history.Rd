@@ -28,6 +28,6 @@ operations, which returns results in the next page.}
 \description{
 Returns a list of Amazon OpenSearch Service package versions, along with their creation time, commit message, and plugin properties (if the package is a zip plugin package). For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/get_package_version_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_get_package_version_history/} for full documentation.
 }
 \keyword{internal}

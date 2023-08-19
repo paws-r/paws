@@ -22,6 +22,6 @@ request.}
 \description{
 Create a new cluster. A cluster is a set of redundant Regional endpoints against which you can run API calls to update or get the state of one or more routing controls. Each cluster has a name, status, Amazon Resource Name (ARN), and an array of the five cluster endpoints (one for each supported Amazon Web Services Region) that you can use with API calls to the cluster data plane.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/create_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_create_cluster/} for full documentation.
 }
 \keyword{internal}

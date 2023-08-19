@@ -17,6 +17,6 @@ Amazon Web Services Region for each Amazon Web Services account.}
 \description{
 Deletes a topic refresh schedule.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_topic_refresh_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_topic_refresh_schedule/} for full documentation.
 }
 \keyword{internal}

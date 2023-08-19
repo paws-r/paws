@@ -18,6 +18,6 @@ resource after it's created.}
 \description{
 Creates a custom SSH key pair that you can use with an Amazon Lightsail instance.
 
-See \url{https://paws-r.github.io/docs/lightsail/create_key_pair.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_create_key_pair/} for full documentation.
 }
 \keyword{internal}

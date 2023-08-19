@@ -15,6 +15,6 @@ this, the default event bus is used.}
 \description{
 Enables the specified rule. If the rule does not exist, the operation fails.
 
-See \url{https://paws-r.github.io/docs/eventbridge/enable_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_enable_rule/} for full documentation.
 }
 \keyword{internal}

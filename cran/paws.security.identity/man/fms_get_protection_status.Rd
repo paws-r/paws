@@ -46,6 +46,6 @@ you can use to get another batch of objects.}
 \description{
 If you created a Shield Advanced policy, returns policy-level attack summary information in the event of a potential DDoS attack. Other policy types are currently unsupported.
 
-See \url{https://paws-r.github.io/docs/fms/get_protection_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_get_protection_status/} for full documentation.
 }
 \keyword{internal}

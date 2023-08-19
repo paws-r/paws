@@ -19,6 +19,6 @@ To return utterances that were not recognized, use \code{Missed}.}
 \description{
 Use the \code{\link[=lexmodelbuildingservice_get_utterances_view]{get_utterances_view}} operation to get information about the utterances that your users have made to your bot. You can use this list to tune the utterances that your bot responds to.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_utterances_view.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_utterances_view/} for full documentation.
 }
 \keyword{internal}

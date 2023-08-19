@@ -4,14 +4,16 @@
 \alias{applicationinsights_describe_observation}
 \title{Describes an anomaly or error with the application}
 \usage{
-applicationinsights_describe_observation(ObservationId)
+applicationinsights_describe_observation(ObservationId, AccountId = NULL)
 }
 \arguments{
 \item{ObservationId}{[required] The ID of the observation.}
+
+\item{AccountId}{The AWS account ID for the resource group owner.}
 }
 \description{
 Describes an anomaly or error with the application.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/describe_observation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_describe_observation/} for full documentation.
 }
 \keyword{internal}

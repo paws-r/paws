@@ -12,6 +12,6 @@ schemas_get_resource_policy(RegistryName = NULL)
 \description{
 Retrieves the resource-based policy attached to a given registry.
 
-See \url{https://paws-r.github.io/docs/schemas/get_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_get_resource_policy/} for full documentation.
 }
 \keyword{internal}

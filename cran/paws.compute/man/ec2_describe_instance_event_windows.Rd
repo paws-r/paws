@@ -57,6 +57,6 @@ parameter and the event window IDs parameter in the same call.}
 \description{
 Describes the specified event windows or all event windows.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_instance_event_windows.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_instance_event_windows/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ networkmanager_update_core_network(CoreNetworkId, Description = NULL)
 \description{
 Updates the description of a core network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/update_core_network.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_update_core_network/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ mail from it.}
 \description{
 Creates a new IP address filter.
 
-See \url{https://paws-r.github.io/docs/ses/create_receipt_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_create_receipt_filter/} for full documentation.
 }
 \keyword{internal}

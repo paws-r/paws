@@ -22,7 +22,8 @@ ec2_create_volume(
 )
 }
 \arguments{
-\item{AvailabilityZone}{[required] The Availability Zone in which to create the volume.}
+\item{AvailabilityZone}{[required] The ID of the Availability Zone in which to create the volume. For
+example, \verb{us-east-1a}.}
 
 \item{Encrypted}{Indicates whether the volume should be encrypted. The effect of setting
 the encryption state to \code{true} depends on the volume origin (new or from
@@ -132,6 +133,6 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \description{
 Creates an EBS volume that can be attached to an instance in the same Availability Zone.
 
-See \url{https://paws-r.github.io/docs/ec2/create_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_volume/} for full documentation.
 }
 \keyword{internal}

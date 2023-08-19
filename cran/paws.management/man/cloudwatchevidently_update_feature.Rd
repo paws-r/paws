@@ -54,6 +54,6 @@ ongoing launch or experiment.}
 \description{
 Updates an existing feature.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/update_feature.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_update_feature/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ for the filter value.}
 \description{
 Creates a public IPv4 address pool. A public IPv4 pool is an EC2 IP address pool required for the public IPv4 CIDRs that you own and bring to Amazon Web Services to manage with IPAM. IPv6 addresses you bring to Amazon Web Services, however, use IPAM pools only. To monitor the status of pool creation, use \code{\link[=ec2_describe_public_ipv_4_pools]{describe_public_ipv_4_pools}}.
 
-See \url{https://paws-r.github.io/docs/ec2/create_public_ipv_4_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_public_ipv_4_pool/} for full documentation.
 }
 \keyword{internal}

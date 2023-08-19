@@ -17,6 +17,6 @@ kinesis_put_records(Records, StreamName = NULL, StreamARN = NULL)
 \description{
 Writes multiple data records into a Kinesis data stream in a single call (also referred to as a \code{\link[=kinesis_put_records]{put_records}} request). Use this operation to send data into the stream for data ingestion and processing.
 
-See \url{https://paws-r.github.io/docs/kinesis/put_records.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_put_records/} for full documentation.
 }
 \keyword{internal}

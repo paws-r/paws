@@ -16,6 +16,6 @@ request the next page of results in a paginated response.}
 \description{
 Lists the stored queries for a single Amazon Web Services account and a single Amazon Web Services Region. The default is 100.
 
-See \url{https://paws-r.github.io/docs/configservice/list_stored_queries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_list_stored_queries/} for full documentation.
 }
 \keyword{internal}

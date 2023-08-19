@@ -25,6 +25,6 @@ operation to retrieve the next set of results.}
 \description{
 Lists all the event buses in your account, including the default event bus, custom event buses, and partner event buses.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevents/list_event_buses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevents_list_event_buses/} for full documentation.
 }
 \keyword{internal}

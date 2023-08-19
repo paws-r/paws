@@ -12,6 +12,6 @@ opensearchservice_delete_domain(DomainName)
 \description{
 Deletes an Amazon OpenSearch Service domain and all of its data. You can't recover a domain after you delete it.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/delete_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_delete_domain/} for full documentation.
 }
 \keyword{internal}

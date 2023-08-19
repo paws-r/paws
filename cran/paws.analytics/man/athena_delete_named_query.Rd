@@ -13,6 +13,6 @@ athena_delete_named_query(NamedQueryId)
 \description{
 Deletes the named query if you have access to the workgroup in which the query was saved.
 
-See \url{https://paws-r.github.io/docs/athena/delete_named_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_delete_named_query/} for full documentation.
 }
 \keyword{internal}

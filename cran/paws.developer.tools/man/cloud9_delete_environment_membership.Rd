@@ -15,6 +15,6 @@ the environment.}
 \description{
 Deletes an environment member from a development environment.
 
-See \url{https://paws-r.github.io/docs/cloud9/delete_environment_membership.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloud9_delete_environment_membership/} for full documentation.
 }
 \keyword{internal}

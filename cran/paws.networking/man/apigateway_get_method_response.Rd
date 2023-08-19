@@ -18,6 +18,6 @@ apigateway_get_method_response(restApiId, resourceId, httpMethod, statusCode)
 \description{
 Describes a MethodResponse resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_method_response.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_method_response/} for full documentation.
 }
 \keyword{internal}

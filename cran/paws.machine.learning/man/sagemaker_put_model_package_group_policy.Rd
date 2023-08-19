@@ -14,6 +14,6 @@ sagemaker_put_model_package_group_policy(ModelPackageGroupName, ResourcePolicy)
 \description{
 Adds a resouce policy to control access to a model group. For information about resoure policies, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html}{Identity-based policies and resource-based policies} in the \emph{Amazon Web Services Identity and Access Management User Guide.}.
 
-See \url{https://paws-r.github.io/docs/sagemaker/put_model_package_group_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_put_model_package_group_policy/} for full documentation.
 }
 \keyword{internal}

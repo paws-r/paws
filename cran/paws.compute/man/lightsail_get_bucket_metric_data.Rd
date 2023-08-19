@@ -83,6 +83,6 @@ units with each available metric, see the \code{metricName} parameter.}
 \description{
 Returns the data points of a specific metric for an Amazon Lightsail bucket.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_bucket_metric_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_bucket_metric_data/} for full documentation.
 }
 \keyword{internal}

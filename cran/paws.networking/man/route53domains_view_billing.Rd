@@ -39,6 +39,6 @@ Default: 20}
 \description{
 Returns all the domain-related billing records for the current Amazon Web Services account for a specified period
 
-See \url{https://paws-r.github.io/docs/route53domains/view_billing.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_view_billing/} for full documentation.
 }
 \keyword{internal}

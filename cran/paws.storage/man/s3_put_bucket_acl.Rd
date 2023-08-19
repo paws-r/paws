@@ -67,6 +67,6 @@ different account, the request fails with the HTTP status code
 \description{
 Sets the permissions on an existing bucket using access control lists (ACL). For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html}{Using ACLs}. To set the ACL of a bucket, you must have \code{WRITE_ACP} permission.
 
-See \url{https://paws-r.github.io/docs/s3/put_bucket_acl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_acl/} for full documentation.
 }
 \keyword{internal}

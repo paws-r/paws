@@ -25,6 +25,6 @@ index.}
 \description{
 Deletes a specified partition index from an existing table.
 
-See \url{https://paws-r.github.io/docs/glue/delete_partition_index.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_delete_partition_index/} for full documentation.
 }
 \keyword{internal}

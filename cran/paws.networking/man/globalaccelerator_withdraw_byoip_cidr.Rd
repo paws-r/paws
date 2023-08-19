@@ -13,6 +13,6 @@ globalaccelerator_withdraw_byoip_cidr(Cidr)
 \description{
 Stops advertising an address range that is provisioned as an address pool. You can perform this operation at most once every 10 seconds, even if you specify different address ranges each time.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/withdraw_byoip_cidr.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_withdraw_byoip_cidr/} for full documentation.
 }
 \keyword{internal}

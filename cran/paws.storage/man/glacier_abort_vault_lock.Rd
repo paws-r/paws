@@ -20,6 +20,6 @@ your account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation aborts the vault locking process if the vault lock is not in the \code{Locked} state. If the vault lock is in the \code{Locked} state when this operation is requested, the operation returns an \code{AccessDeniedException} error. Aborting the vault locking process removes the vault lock policy from the specified vault.
 
-See \url{https://paws-r.github.io/docs/glacier/abort_vault_lock.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_abort_vault_lock/} for full documentation.
 }
 \keyword{internal}

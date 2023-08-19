@@ -31,6 +31,6 @@ advance.}
 \description{
 Retrieves the forecast data for a predictive scaling policy.
 
-See \url{https://paws-r.github.io/docs/autoscaling/get_predictive_scaling_forecast.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_get_predictive_scaling_forecast/} for full documentation.
 }
 \keyword{internal}

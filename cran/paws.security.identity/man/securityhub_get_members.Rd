@@ -14,6 +14,6 @@ the details for.}
 \description{
 Returns the details for the Security Hub member accounts for the specified account IDs.
 
-See \url{https://paws-r.github.io/docs/securityhub/get_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_get_members/} for full documentation.
 }
 \keyword{internal}

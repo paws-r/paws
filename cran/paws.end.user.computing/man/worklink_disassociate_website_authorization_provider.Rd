@@ -17,6 +17,6 @@ worklink_disassociate_website_authorization_provider(
 \description{
 Disassociates a website authorization provider from a specified fleet. After the disassociation, users can't load any associated websites that require this authorization provider.
 
-See \url{https://paws-r.github.io/docs/worklink/disassociate_website_authorization_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_disassociate_website_authorization_provider/} for full documentation.
 }
 \keyword{internal}

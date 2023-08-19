@@ -2,7 +2,7 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_get_evidence}
 \alias{auditmanager_get_evidence}
-\title{Returns evidence from Audit Manager}
+\title{Gets information about a specified evidence item}
 \usage{
 auditmanager_get_evidence(
   assessmentId,
@@ -21,8 +21,8 @@ auditmanager_get_evidence(
 \item{evidenceId}{[required] The unique identifier for the evidence.}
 }
 \description{
-Returns evidence from Audit Manager.
+Gets information about a specified evidence item.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_evidence.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_evidence/} for full documentation.
 }
 \keyword{internal}

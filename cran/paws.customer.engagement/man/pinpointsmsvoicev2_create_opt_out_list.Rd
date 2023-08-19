@@ -23,6 +23,6 @@ randomly generated token is used for the request to ensure idempotency.}
 \description{
 Creates a new opt-out list.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/create_opt_out_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_create_opt_out_list/} for full documentation.
 }
 \keyword{internal}

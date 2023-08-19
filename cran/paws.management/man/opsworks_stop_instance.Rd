@@ -20,6 +20,6 @@ new one.}
 \description{
 Stops a specified instance. When you stop a standard instance, the data disappears and must be reinstalled when you restart the instance. You can stop an Amazon EBS-backed instance without losing data. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinginstances-starting.html}{Starting, Stopping, and Rebooting Instances}.
 
-See \url{https://paws-r.github.io/docs/opsworks/stop_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_stop_instance/} for full documentation.
 }
 \keyword{internal}

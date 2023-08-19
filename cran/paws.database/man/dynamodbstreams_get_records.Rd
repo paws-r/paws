@@ -17,6 +17,6 @@ is 1000.}
 \description{
 Retrieves the stream records from a given shard.
 
-See \url{https://paws-r.github.io/docs/dynamodbstreams/get_records.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodbstreams_get_records/} for full documentation.
 }
 \keyword{internal}

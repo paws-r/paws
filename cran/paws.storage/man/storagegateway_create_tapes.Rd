@@ -71,6 +71,6 @@ the maximum length for a tag's value is 256.}
 \description{
 Creates one or more virtual tapes. You write data to the virtual tapes and then archive the tapes. This operation is only supported in the tape gateway type.
 
-See \url{https://paws-r.github.io/docs/storagegateway/create_tapes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_create_tapes/} for full documentation.
 }
 \keyword{internal}

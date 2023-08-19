@@ -112,6 +112,6 @@ the 2011-11-01 API version, you only have access to the
 \description{
 Describes Reserved Instance offerings that are available for purchase. With Reserved Instances, you purchase the right to launch instances for a period of time. During that time period, you do not receive insufficient capacity errors, and you pay a lower usage rate than the rate charged for On-Demand instances for the actual time used.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_reserved_instances_offerings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_reserved_instances_offerings/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ publishing, which you can get using
 \description{
 Publishes a CloudFront function by copying the function code from the \code{DEVELOPMENT} stage to \code{LIVE}. This automatically updates all cache behaviors that are using this function to use the newly published copy in the \code{LIVE} stage.
 
-See \url{https://paws-r.github.io/docs/cloudfront/publish_function.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_publish_function/} for full documentation.
 }
 \keyword{internal}

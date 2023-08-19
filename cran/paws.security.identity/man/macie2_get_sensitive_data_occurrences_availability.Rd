@@ -13,6 +13,6 @@ macie2_get_sensitive_data_occurrences_availability(findingId)
 \description{
 Checks whether occurrences of sensitive data can be retrieved for a finding.
 
-See \url{https://paws-r.github.io/docs/macie2/get_sensitive_data_occurrences_availability.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_sensitive_data_occurrences_availability/} for full documentation.
 }
 \keyword{internal}

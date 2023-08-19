@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Associates the specified connection alias with the specified directory to enable cross-Region redirection. For more information, see [Cross-Region Redirection for Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/associate_connection_alias.html](https://paws-r.github.io/docs/workspaces/associate_connection_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_associate_connection_alias/](https://www.paws-r-sdk.com/docs/workspaces_associate_connection_alias/) for full documentation.
 #'
 #' @param AliasId &#91;required&#93; The identifier of the connection alias.
 #' @param ResourceId &#91;required&#93; The identifier of the directory to associate the connection alias with.
@@ -40,7 +40,7 @@ workspaces_associate_connection_alias <- function(AliasId, ResourceId) {
 #' @description
 #' Associates the specified IP access control group with the specified directory.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/associate_ip_groups.html](https://paws-r.github.io/docs/workspaces/associate_ip_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_associate_ip_groups/](https://www.paws-r-sdk.com/docs/workspaces_associate_ip_groups/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param GroupIds &#91;required&#93; The identifiers of one or more IP access control groups.
@@ -70,7 +70,7 @@ workspaces_associate_ip_groups <- function(DirectoryId, GroupIds) {
 #' @description
 #' Adds one or more rules to the specified IP access control group.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/authorize_ip_rules.html](https://paws-r.github.io/docs/workspaces/authorize_ip_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_authorize_ip_rules/](https://www.paws-r-sdk.com/docs/workspaces_authorize_ip_rules/) for full documentation.
 #'
 #' @param GroupId &#91;required&#93; The identifier of the group.
 #' @param UserRules &#91;required&#93; The rules to add to the group.
@@ -101,7 +101,7 @@ workspaces_authorize_ip_rules <- function(GroupId, UserRules) {
 #' @description
 #' Copies the specified image from the specified Region to the current Region. For more information about copying images, see [Copy a Custom WorkSpaces Image](https://docs.aws.amazon.com/workspaces/latest/adminguide/copy-custom-image.html).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/copy_workspace_image.html](https://paws-r.github.io/docs/workspaces/copy_workspace_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_copy_workspace_image/](https://www.paws-r-sdk.com/docs/workspaces_copy_workspace_image/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the image.
 #' @param Description A description of the image.
@@ -134,7 +134,7 @@ workspaces_copy_workspace_image <- function(Name, Description = NULL, SourceImag
 #' @description
 #' Creates a client-add-in for Amazon Connect within a directory. You can create only one Amazon Connect client add-in within a directory.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/create_connect_client_add_in.html](https://paws-r.github.io/docs/workspaces/create_connect_client_add_in.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_create_connect_client_add_in/](https://www.paws-r-sdk.com/docs/workspaces_create_connect_client_add_in/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The directory identifier for which to configure the client add-in.
 #' @param Name &#91;required&#93; The name of the client add-in.
@@ -166,7 +166,7 @@ workspaces_create_connect_client_add_in <- function(ResourceId, Name, URL) {
 #' @description
 #' Creates the specified connection alias for use with cross-Region redirection. For more information, see [Cross-Region Redirection for Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/create_connection_alias.html](https://paws-r.github.io/docs/workspaces/create_connection_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_create_connection_alias/](https://www.paws-r-sdk.com/docs/workspaces_create_connection_alias/) for full documentation.
 #'
 #' @param ConnectionString &#91;required&#93; A connection string in the form of a fully qualified domain name (FQDN),
 #' such as `www.example.com`.
@@ -203,7 +203,7 @@ workspaces_create_connection_alias <- function(ConnectionString, Tags = NULL) {
 #' @description
 #' Creates an IP access control group.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/create_ip_group.html](https://paws-r.github.io/docs/workspaces/create_ip_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_create_ip_group/](https://www.paws-r-sdk.com/docs/workspaces_create_ip_group/) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; The name of the group.
 #' @param GroupDesc The description of the group.
@@ -235,7 +235,7 @@ workspaces_create_ip_group <- function(GroupName, GroupDesc = NULL, UserRules = 
 #' @description
 #' Creates a standby WorkSpace in a secondary Region.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/create_standby_workspaces.html](https://paws-r.github.io/docs/workspaces/create_standby_workspaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_create_standby_workspaces/](https://www.paws-r-sdk.com/docs/workspaces_create_standby_workspaces/) for full documentation.
 #'
 #' @param PrimaryRegion &#91;required&#93; The Region of the primary WorkSpace.
 #' @param StandbyWorkspaces &#91;required&#93; Information about the standby WorkSpace to be created.
@@ -265,7 +265,7 @@ workspaces_create_standby_workspaces <- function(PrimaryRegion, StandbyWorkspace
 #' @description
 #' Creates the specified tags for the specified WorkSpaces resource.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/create_tags.html](https://paws-r.github.io/docs/workspaces/create_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_create_tags/](https://www.paws-r-sdk.com/docs/workspaces_create_tags/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The identifier of the WorkSpaces resource. The supported resource types
 #' are WorkSpaces, registered directories, images, custom bundles, IP
@@ -298,7 +298,7 @@ workspaces_create_tags <- function(ResourceId, Tags) {
 #' @description
 #' Creates a new updated WorkSpace image based on the specified source image. The new updated WorkSpace image has the latest drivers and other updates required by the Amazon WorkSpaces components.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/create_updated_workspace_image.html](https://paws-r.github.io/docs/workspaces/create_updated_workspace_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_create_updated_workspace_image/](https://www.paws-r-sdk.com/docs/workspaces_create_updated_workspace_image/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the new updated WorkSpace image.
 #' @param Description &#91;required&#93; A description of whether updates for the WorkSpace image are available.
@@ -334,7 +334,7 @@ workspaces_create_updated_workspace_image <- function(Name, Description, SourceI
 #' @description
 #' Creates the specified WorkSpace bundle. For more information about creating WorkSpace bundles, see [Create a Custom WorkSpaces Image and Bundle](https://docs.aws.amazon.com/workspaces/latest/adminguide/create-custom-bundle.html).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/create_workspace_bundle.html](https://paws-r.github.io/docs/workspaces/create_workspace_bundle.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_create_workspace_bundle/](https://www.paws-r-sdk.com/docs/workspaces_create_workspace_bundle/) for full documentation.
 #'
 #' @param BundleName &#91;required&#93; The name of the bundle.
 #' @param BundleDescription &#91;required&#93; The description of the bundle.
@@ -373,7 +373,7 @@ workspaces_create_workspace_bundle <- function(BundleName, BundleDescription, Im
 #' @description
 #' Creates a new WorkSpace image from an existing WorkSpace.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/create_workspace_image.html](https://paws-r.github.io/docs/workspaces/create_workspace_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_create_workspace_image/](https://www.paws-r-sdk.com/docs/workspaces_create_workspace_image/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the new WorkSpace image.
 #' @param Description &#91;required&#93; The description of the new WorkSpace image.
@@ -407,7 +407,7 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #' @description
 #' Creates one or more WorkSpaces.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/create_workspaces.html](https://paws-r.github.io/docs/workspaces/create_workspaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_create_workspaces/](https://www.paws-r-sdk.com/docs/workspaces_create_workspaces/) for full documentation.
 #'
 #' @param Workspaces &#91;required&#93; The WorkSpaces to create. You can specify up to 25 WorkSpaces.
 #'
@@ -436,7 +436,7 @@ workspaces_create_workspaces <- function(Workspaces) {
 #' @description
 #' Deletes customized client branding. Client branding allows you to customize your WorkSpace's client login portal. You can tailor your login portal company logo, the support email address, support link, link to reset password, and a custom message for users trying to sign in.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/delete_client_branding.html](https://paws-r.github.io/docs/workspaces/delete_client_branding.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_delete_client_branding/](https://www.paws-r-sdk.com/docs/workspaces_delete_client_branding/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The directory identifier of the WorkSpace for which you want to delete
 #' client branding.
@@ -468,7 +468,7 @@ workspaces_delete_client_branding <- function(ResourceId, Platforms) {
 #' @description
 #' Deletes a client-add-in for Amazon Connect that is configured within a directory.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/delete_connect_client_add_in.html](https://paws-r.github.io/docs/workspaces/delete_connect_client_add_in.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_delete_connect_client_add_in/](https://www.paws-r-sdk.com/docs/workspaces_delete_connect_client_add_in/) for full documentation.
 #'
 #' @param AddInId &#91;required&#93; The identifier of the client add-in to delete.
 #' @param ResourceId &#91;required&#93; The directory identifier for which the client add-in is configured.
@@ -498,7 +498,7 @@ workspaces_delete_connect_client_add_in <- function(AddInId, ResourceId) {
 #' @description
 #' Deletes the specified connection alias. For more information, see [Cross-Region Redirection for Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/delete_connection_alias.html](https://paws-r.github.io/docs/workspaces/delete_connection_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_delete_connection_alias/](https://www.paws-r-sdk.com/docs/workspaces_delete_connection_alias/) for full documentation.
 #'
 #' @param AliasId &#91;required&#93; The identifier of the connection alias to delete.
 #'
@@ -527,7 +527,7 @@ workspaces_delete_connection_alias <- function(AliasId) {
 #' @description
 #' Deletes the specified IP access control group.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/delete_ip_group.html](https://paws-r.github.io/docs/workspaces/delete_ip_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_delete_ip_group/](https://www.paws-r-sdk.com/docs/workspaces_delete_ip_group/) for full documentation.
 #'
 #' @param GroupId &#91;required&#93; The identifier of the IP access control group.
 #'
@@ -556,7 +556,7 @@ workspaces_delete_ip_group <- function(GroupId) {
 #' @description
 #' Deletes the specified tags from the specified WorkSpaces resource.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/delete_tags.html](https://paws-r.github.io/docs/workspaces/delete_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_delete_tags/](https://www.paws-r-sdk.com/docs/workspaces_delete_tags/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The identifier of the WorkSpaces resource. The supported resource types
 #' are WorkSpaces, registered directories, images, custom bundles, IP
@@ -588,7 +588,7 @@ workspaces_delete_tags <- function(ResourceId, TagKeys) {
 #' @description
 #' Deletes the specified WorkSpace bundle. For more information about deleting WorkSpace bundles, see [Delete a Custom WorkSpaces Bundle or Image](https://docs.aws.amazon.com/workspaces/latest/adminguide/delete_bundle.html).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/delete_workspace_bundle.html](https://paws-r.github.io/docs/workspaces/delete_workspace_bundle.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_delete_workspace_bundle/](https://www.paws-r-sdk.com/docs/workspaces_delete_workspace_bundle/) for full documentation.
 #'
 #' @param BundleId The identifier of the bundle.
 #'
@@ -617,7 +617,7 @@ workspaces_delete_workspace_bundle <- function(BundleId = NULL) {
 #' @description
 #' Deletes the specified image from your account. To delete an image, you must first delete any bundles that are associated with the image and unshare the image if it is shared with other accounts.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/delete_workspace_image.html](https://paws-r.github.io/docs/workspaces/delete_workspace_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_delete_workspace_image/](https://www.paws-r-sdk.com/docs/workspaces_delete_workspace_image/) for full documentation.
 #'
 #' @param ImageId &#91;required&#93; The identifier of the image.
 #'
@@ -646,7 +646,7 @@ workspaces_delete_workspace_image <- function(ImageId) {
 #' @description
 #' Deregisters the specified directory. This operation is asynchronous and returns before the WorkSpace directory is deregistered. If any WorkSpaces are registered to this directory, you must remove them before you can deregister the directory.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/deregister_workspace_directory.html](https://paws-r.github.io/docs/workspaces/deregister_workspace_directory.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_deregister_workspace_directory/](https://www.paws-r-sdk.com/docs/workspaces_deregister_workspace_directory/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory. If any WorkSpaces are registered to
 #' this directory, you must remove them before you deregister the
@@ -678,7 +678,7 @@ workspaces_deregister_workspace_directory <- function(DirectoryId) {
 #' @description
 #' Retrieves a list that describes the configuration of Bring Your Own License (BYOL) for the specified account.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/describe_account.html](https://paws-r.github.io/docs/workspaces/describe_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_account/](https://www.paws-r-sdk.com/docs/workspaces_describe_account/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -706,7 +706,7 @@ workspaces_describe_account <- function() {
 #' @description
 #' Retrieves a list that describes modifications to the configuration of Bring Your Own License (BYOL) for the specified account.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/describe_account_modifications.html](https://paws-r.github.io/docs/workspaces/describe_account_modifications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_account_modifications/](https://www.paws-r-sdk.com/docs/workspaces_describe_account_modifications/) for full documentation.
 #'
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
 #' provide this token to receive the next set of results.
@@ -736,7 +736,7 @@ workspaces_describe_account_modifications <- function(NextToken = NULL) {
 #' @description
 #' Describes the specified client branding. Client branding allows you to customize the log in page of various device types for your users. You can add your company logo, the support email address, support link, link to reset password, and a custom message for users trying to sign in.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/describe_client_branding.html](https://paws-r.github.io/docs/workspaces/describe_client_branding.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_client_branding/](https://www.paws-r-sdk.com/docs/workspaces_describe_client_branding/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The directory identifier of the WorkSpace for which you want to view
 #' client branding information.
@@ -767,7 +767,7 @@ workspaces_describe_client_branding <- function(ResourceId) {
 #' @description
 #' Retrieves a list that describes one or more specified Amazon WorkSpaces clients.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/describe_client_properties.html](https://paws-r.github.io/docs/workspaces/describe_client_properties.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_client_properties/](https://www.paws-r-sdk.com/docs/workspaces_describe_client_properties/) for full documentation.
 #'
 #' @param ResourceIds &#91;required&#93; The resource identifier, in the form of directory IDs.
 #'
@@ -796,7 +796,7 @@ workspaces_describe_client_properties <- function(ResourceIds) {
 #' @description
 #' Retrieves a list of Amazon Connect client add-ins that have been created.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/describe_connect_client_add_ins.html](https://paws-r.github.io/docs/workspaces/describe_connect_client_add_ins.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_connect_client_add_ins/](https://www.paws-r-sdk.com/docs/workspaces_describe_connect_client_add_ins/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The directory identifier for which the client add-in is configured.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
@@ -830,7 +830,7 @@ workspaces_describe_connect_client_add_ins <- function(ResourceId, NextToken = N
 #' @description
 #' Describes the permissions that the owner of a connection alias has granted to another Amazon Web Services account for the specified connection alias. For more information, see [Cross-Region Redirection for Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/describe_connection_alias_permissions.html](https://paws-r.github.io/docs/workspaces/describe_connection_alias_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_connection_alias_permissions/](https://www.paws-r-sdk.com/docs/workspaces_describe_connection_alias_permissions/) for full documentation.
 #'
 #' @param AliasId &#91;required&#93; The identifier of the connection alias.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
@@ -863,7 +863,7 @@ workspaces_describe_connection_alias_permissions <- function(AliasId, NextToken 
 #' @description
 #' Retrieves a list that describes the connection aliases used for cross-Region redirection. For more information, see [Cross-Region Redirection for Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/describe_connection_aliases.html](https://paws-r.github.io/docs/workspaces/describe_connection_aliases.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_connection_aliases/](https://www.paws-r-sdk.com/docs/workspaces_describe_connection_aliases/) for full documentation.
 #'
 #' @param AliasIds The identifiers of the connection aliases to describe.
 #' @param ResourceId The identifier of the directory associated with the connection alias.
@@ -896,7 +896,7 @@ workspaces_describe_connection_aliases <- function(AliasIds = NULL, ResourceId =
 #' @description
 #' Describes one or more of your IP access control groups.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/describe_ip_groups.html](https://paws-r.github.io/docs/workspaces/describe_ip_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_ip_groups/](https://www.paws-r-sdk.com/docs/workspaces_describe_ip_groups/) for full documentation.
 #'
 #' @param GroupIds The identifiers of one or more IP access control groups.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
@@ -928,7 +928,7 @@ workspaces_describe_ip_groups <- function(GroupIds = NULL, NextToken = NULL, Max
 #' @description
 #' Describes the specified tags for the specified WorkSpaces resource.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/describe_tags.html](https://paws-r.github.io/docs/workspaces/describe_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_tags/](https://www.paws-r-sdk.com/docs/workspaces_describe_tags/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The identifier of the WorkSpaces resource. The supported resource types
 #' are WorkSpaces, registered directories, images, custom bundles, IP
@@ -959,7 +959,7 @@ workspaces_describe_tags <- function(ResourceId) {
 #' @description
 #' Retrieves a list that describes the available WorkSpace bundles.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/describe_workspace_bundles.html](https://paws-r.github.io/docs/workspaces/describe_workspace_bundles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_bundles/](https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_bundles/) for full documentation.
 #'
 #' @param BundleIds The identifiers of the bundles. You cannot combine this parameter with
 #' any other filter.
@@ -980,7 +980,7 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
     name = "DescribeWorkspaceBundles",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Bundles")
   )
   input <- .workspaces$describe_workspace_bundles_input(BundleIds = BundleIds, Owner = Owner, NextToken = NextToken)
   output <- .workspaces$describe_workspace_bundles_output()
@@ -998,7 +998,7 @@ workspaces_describe_workspace_bundles <- function(BundleIds = NULL, Owner = NULL
 #' @description
 #' Describes the available directories that are registered with Amazon WorkSpaces.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/describe_workspace_directories.html](https://paws-r.github.io/docs/workspaces/describe_workspace_directories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_directories/](https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_directories/) for full documentation.
 #'
 #' @param DirectoryIds The identifiers of the directories. If the value is null, all
 #' directories are retrieved.
@@ -1014,7 +1014,7 @@ workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Limit
     name = "DescribeWorkspaceDirectories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Directories")
   )
   input <- .workspaces$describe_workspace_directories_input(DirectoryIds = DirectoryIds, Limit = Limit, NextToken = NextToken)
   output <- .workspaces$describe_workspace_directories_output()
@@ -1032,7 +1032,7 @@ workspaces_describe_workspace_directories <- function(DirectoryIds = NULL, Limit
 #' @description
 #' Describes the permissions that the owner of an image has granted to other Amazon Web Services accounts for an image.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/describe_workspace_image_permissions.html](https://paws-r.github.io/docs/workspaces/describe_workspace_image_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_image_permissions/](https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_image_permissions/) for full documentation.
 #'
 #' @param ImageId &#91;required&#93; The identifier of the image.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
@@ -1065,7 +1065,7 @@ workspaces_describe_workspace_image_permissions <- function(ImageId, NextToken =
 #' @description
 #' Retrieves a list that describes one or more specified images, if the image identifiers are provided. Otherwise, all images in the account are described.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/describe_workspace_images.html](https://paws-r.github.io/docs/workspaces/describe_workspace_images.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_images/](https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_images/) for full documentation.
 #'
 #' @param ImageIds The identifier of the image.
 #' @param ImageType The type (owned or shared) of the image.
@@ -1098,7 +1098,7 @@ workspaces_describe_workspace_images <- function(ImageIds = NULL, ImageType = NU
 #' @description
 #' Describes the snapshots for the specified WorkSpace.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/describe_workspace_snapshots.html](https://paws-r.github.io/docs/workspaces/describe_workspace_snapshots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_snapshots/](https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_snapshots/) for full documentation.
 #'
 #' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
 #'
@@ -1127,7 +1127,7 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #' @description
 #' Describes the specified WorkSpaces.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/describe_workspaces.html](https://paws-r.github.io/docs/workspaces/describe_workspaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_workspaces/](https://www.paws-r-sdk.com/docs/workspaces_describe_workspaces/) for full documentation.
 #'
 #' @param WorkspaceIds The identifiers of the WorkSpaces. You cannot combine this parameter
 #' with any other filter.
@@ -1157,7 +1157,7 @@ workspaces_describe_workspaces <- function(WorkspaceIds = NULL, DirectoryId = NU
     name = "DescribeWorkspaces",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Workspaces")
   )
   input <- .workspaces$describe_workspaces_input(WorkspaceIds = WorkspaceIds, DirectoryId = DirectoryId, UserName = UserName, BundleId = BundleId, Limit = Limit, NextToken = NextToken)
   output <- .workspaces$describe_workspaces_output()
@@ -1174,7 +1174,7 @@ workspaces_describe_workspaces <- function(WorkspaceIds = NULL, DirectoryId = NU
 #' @description
 #' Describes the connection status of the specified WorkSpaces.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/describe_workspaces_connection_status.html](https://paws-r.github.io/docs/workspaces/describe_workspaces_connection_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_workspaces_connection_status/](https://www.paws-r-sdk.com/docs/workspaces_describe_workspaces_connection_status/) for full documentation.
 #'
 #' @param WorkspaceIds The identifiers of the WorkSpaces. You can specify up to 25 WorkSpaces.
 #' @param NextToken If you received a `NextToken` from a previous call that was paginated,
@@ -1205,7 +1205,7 @@ workspaces_describe_workspaces_connection_status <- function(WorkspaceIds = NULL
 #' @description
 #' Disassociates a connection alias from a directory. Disassociating a connection alias disables cross-Region redirection between two directories in different Regions. For more information, see [Cross-Region Redirection for Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/disassociate_connection_alias.html](https://paws-r.github.io/docs/workspaces/disassociate_connection_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_disassociate_connection_alias/](https://www.paws-r-sdk.com/docs/workspaces_disassociate_connection_alias/) for full documentation.
 #'
 #' @param AliasId &#91;required&#93; The identifier of the connection alias to disassociate.
 #'
@@ -1235,7 +1235,7 @@ workspaces_disassociate_connection_alias <- function(AliasId) {
 #' @description
 #' Disassociates the specified IP access control group from the specified directory.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/disassociate_ip_groups.html](https://paws-r.github.io/docs/workspaces/disassociate_ip_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_disassociate_ip_groups/](https://www.paws-r-sdk.com/docs/workspaces_disassociate_ip_groups/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param GroupIds &#91;required&#93; The identifiers of one or more IP access control groups.
@@ -1265,7 +1265,7 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
 #' @description
 #' Imports client branding. Client branding allows you to customize your WorkSpace's client login portal. You can tailor your login portal company logo, the support email address, support link, link to reset password, and a custom message for users trying to sign in.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/import_client_branding.html](https://paws-r.github.io/docs/workspaces/import_client_branding.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_import_client_branding/](https://www.paws-r-sdk.com/docs/workspaces_import_client_branding/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The directory identifier of the WorkSpace for which you want to import
 #' client branding.
@@ -1302,7 +1302,7 @@ workspaces_import_client_branding <- function(ResourceId, DeviceTypeWindows = NU
 #' @description
 #' Imports the specified Windows 10 or 11 Bring Your Own License (BYOL) image into Amazon WorkSpaces. The image must be an already licensed Amazon EC2 image that is in your Amazon Web Services account, and you must own the image. For more information about creating BYOL images, see [Bring Your Own Windows Desktop Licenses](https://docs.aws.amazon.com/workspaces/latest/adminguide/byol-windows-images.html).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/import_workspace_image.html](https://paws-r.github.io/docs/workspaces/import_workspace_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_import_workspace_image/](https://www.paws-r-sdk.com/docs/workspaces_import_workspace_image/) for full documentation.
 #'
 #' @param Ec2ImageId &#91;required&#93; The identifier of the EC2 image.
 #' @param IngestionProcess &#91;required&#93; The ingestion process to be used when importing the image, depending on
@@ -1361,7 +1361,7 @@ workspaces_import_workspace_image <- function(Ec2ImageId, IngestionProcess, Imag
 #' @description
 #' Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable Bring Your Own License (BYOL).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/list_available_management_cidr_ranges.html](https://paws-r.github.io/docs/workspaces/list_available_management_cidr_ranges.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_list_available_management_cidr_ranges/](https://www.paws-r-sdk.com/docs/workspaces_list_available_management_cidr_ranges/) for full documentation.
 #'
 #' @param ManagementCidrRangeConstraint &#91;required&#93; The IP address range to search. Specify an IP address range that is
 #' compatible with your network and in CIDR notation (that is, specify the
@@ -1396,7 +1396,7 @@ workspaces_list_available_management_cidr_ranges <- function(ManagementCidrRange
 #' @description
 #' Migrates a WorkSpace from one operating system or bundle type to another, while retaining the data on the user volume.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/migrate_workspace.html](https://paws-r.github.io/docs/workspaces/migrate_workspace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_migrate_workspace/](https://www.paws-r-sdk.com/docs/workspaces_migrate_workspace/) for full documentation.
 #'
 #' @param SourceWorkspaceId &#91;required&#93; The identifier of the WorkSpace to migrate from.
 #' @param BundleId &#91;required&#93; The identifier of the target bundle type to migrate the WorkSpace to.
@@ -1427,7 +1427,7 @@ workspaces_migrate_workspace <- function(SourceWorkspaceId, BundleId) {
 #' @description
 #' Modifies the configuration of Bring Your Own License (BYOL) for the specified account.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/modify_account.html](https://paws-r.github.io/docs/workspaces/modify_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_modify_account/](https://www.paws-r-sdk.com/docs/workspaces_modify_account/) for full documentation.
 #'
 #' @param DedicatedTenancySupport The status of BYOL.
 #' @param DedicatedTenancyManagementCidrRange The IP address range, specified as an IPv4 CIDR block, for the
@@ -1464,7 +1464,7 @@ workspaces_modify_account <- function(DedicatedTenancySupport = NULL, DedicatedT
 #' @description
 #' Modifies the properties of the certificate-based authentication you want to use with your WorkSpaces.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/modify_certificate_based_auth_properties.html](https://paws-r.github.io/docs/workspaces/modify_certificate_based_auth_properties.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_modify_certificate_based_auth_properties/](https://www.paws-r-sdk.com/docs/workspaces_modify_certificate_based_auth_properties/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The resource identifiers, in the form of directory IDs.
 #' @param CertificateBasedAuthProperties The properties of the certificate-based authentication.
@@ -1496,7 +1496,7 @@ workspaces_modify_certificate_based_auth_properties <- function(ResourceId, Cert
 #' @description
 #' Modifies the properties of the specified Amazon WorkSpaces clients.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/modify_client_properties.html](https://paws-r.github.io/docs/workspaces/modify_client_properties.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_modify_client_properties/](https://www.paws-r-sdk.com/docs/workspaces_modify_client_properties/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The resource identifiers, in the form of directory IDs.
 #' @param ClientProperties &#91;required&#93; Information about the Amazon WorkSpaces client.
@@ -1526,7 +1526,7 @@ workspaces_modify_client_properties <- function(ResourceId, ClientProperties) {
 #' @description
 #' Modifies multiple properties related to SAML 2.0 authentication, including the enablement status, user access URL, and relay state parameter name that are used for configuring federation with an SAML 2.0 identity provider.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/modify_saml_properties.html](https://paws-r.github.io/docs/workspaces/modify_saml_properties.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_modify_saml_properties/](https://www.paws-r-sdk.com/docs/workspaces_modify_saml_properties/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The directory identifier for which you want to configure SAML
 #' properties.
@@ -1566,7 +1566,7 @@ workspaces_modify_saml_properties <- function(ResourceId, SamlProperties = NULL,
 #' @description
 #' Modifies the self-service WorkSpace management capabilities for your users. For more information, see [Enable Self-Service WorkSpace Management Capabilities for Your Users](https://docs.aws.amazon.com/workspaces/latest/adminguide/enable-user-self-service-workspace-management.html).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/modify_selfservice_permissions.html](https://paws-r.github.io/docs/workspaces/modify_selfservice_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_modify_selfservice_permissions/](https://www.paws-r-sdk.com/docs/workspaces_modify_selfservice_permissions/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The identifier of the directory.
 #' @param SelfservicePermissions &#91;required&#93; The permissions to enable or disable self-service capabilities.
@@ -1597,7 +1597,7 @@ workspaces_modify_selfservice_permissions <- function(ResourceId, SelfservicePer
 #' @description
 #' Specifies which devices and operating systems users can use to access their WorkSpaces. For more information, see [Control Device Access](https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/modify_workspace_access_properties.html](https://paws-r.github.io/docs/workspaces/modify_workspace_access_properties.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_modify_workspace_access_properties/](https://www.paws-r-sdk.com/docs/workspaces_modify_workspace_access_properties/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The identifier of the directory.
 #' @param WorkspaceAccessProperties &#91;required&#93; The device types and operating systems to enable or disable for access.
@@ -1627,7 +1627,7 @@ workspaces_modify_workspace_access_properties <- function(ResourceId, WorkspaceA
 #' @description
 #' Modify the default properties used to create WorkSpaces.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/modify_workspace_creation_properties.html](https://paws-r.github.io/docs/workspaces/modify_workspace_creation_properties.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_modify_workspace_creation_properties/](https://www.paws-r-sdk.com/docs/workspaces_modify_workspace_creation_properties/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The identifier of the directory.
 #' @param WorkspaceCreationProperties &#91;required&#93; The default properties for creating WorkSpaces.
@@ -1657,7 +1657,7 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #' @description
 #' Modifies the specified WorkSpace properties. For important information about how to modify the size of the root and user volumes, see [Modify a WorkSpace](https://docs.aws.amazon.com/workspaces/latest/adminguide/modify-workspaces.html).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/modify_workspace_properties.html](https://paws-r.github.io/docs/workspaces/modify_workspace_properties.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_modify_workspace_properties/](https://www.paws-r-sdk.com/docs/workspaces_modify_workspace_properties/) for full documentation.
 #'
 #' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
 #' @param WorkspaceProperties &#91;required&#93; The properties of the WorkSpace.
@@ -1687,7 +1687,7 @@ workspaces_modify_workspace_properties <- function(WorkspaceId, WorkspacePropert
 #' @description
 #' Sets the state of the specified WorkSpace.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/modify_workspace_state.html](https://paws-r.github.io/docs/workspaces/modify_workspace_state.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_modify_workspace_state/](https://www.paws-r-sdk.com/docs/workspaces_modify_workspace_state/) for full documentation.
 #'
 #' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
 #' @param WorkspaceState &#91;required&#93; The WorkSpace state.
@@ -1717,7 +1717,7 @@ workspaces_modify_workspace_state <- function(WorkspaceId, WorkspaceState) {
 #' @description
 #' Reboots the specified WorkSpaces.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/reboot_workspaces.html](https://paws-r.github.io/docs/workspaces/reboot_workspaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_reboot_workspaces/](https://www.paws-r-sdk.com/docs/workspaces_reboot_workspaces/) for full documentation.
 #'
 #' @param RebootWorkspaceRequests &#91;required&#93; The WorkSpaces to reboot. You can specify up to 25 WorkSpaces.
 #'
@@ -1746,7 +1746,7 @@ workspaces_reboot_workspaces <- function(RebootWorkspaceRequests) {
 #' @description
 #' Rebuilds the specified WorkSpace.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/rebuild_workspaces.html](https://paws-r.github.io/docs/workspaces/rebuild_workspaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_rebuild_workspaces/](https://www.paws-r-sdk.com/docs/workspaces_rebuild_workspaces/) for full documentation.
 #'
 #' @param RebuildWorkspaceRequests &#91;required&#93; The WorkSpace to rebuild. You can specify a single WorkSpace.
 #'
@@ -1775,7 +1775,7 @@ workspaces_rebuild_workspaces <- function(RebuildWorkspaceRequests) {
 #' @description
 #' Registers the specified directory. This operation is asynchronous and returns before the WorkSpace directory is registered. If this is the first time you are registering a directory, you will need to create the workspaces_DefaultRole role before you can register a directory. For more information, see [Creating the workspaces_DefaultRole Role](https://docs.aws.amazon.com/workspaces/latest/adminguide/workspaces-access-control.html#create-default-role).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/register_workspace_directory.html](https://paws-r.github.io/docs/workspaces/register_workspace_directory.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_register_workspace_directory/](https://www.paws-r-sdk.com/docs/workspaces_register_workspace_directory/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory. You cannot register a directory if it
 #' does not have a status of Active. If the directory does not have a
@@ -1827,7 +1827,7 @@ workspaces_register_workspace_directory <- function(DirectoryId, SubnetIds = NUL
 #' @description
 #' Restores the specified WorkSpace to its last known healthy state.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/restore_workspace.html](https://paws-r.github.io/docs/workspaces/restore_workspace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_restore_workspace/](https://www.paws-r-sdk.com/docs/workspaces_restore_workspace/) for full documentation.
 #'
 #' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
 #'
@@ -1856,7 +1856,7 @@ workspaces_restore_workspace <- function(WorkspaceId) {
 #' @description
 #' Removes one or more rules from the specified IP access control group.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/revoke_ip_rules.html](https://paws-r.github.io/docs/workspaces/revoke_ip_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_revoke_ip_rules/](https://www.paws-r-sdk.com/docs/workspaces_revoke_ip_rules/) for full documentation.
 #'
 #' @param GroupId &#91;required&#93; The identifier of the group.
 #' @param UserRules &#91;required&#93; The rules to remove from the group.
@@ -1886,7 +1886,7 @@ workspaces_revoke_ip_rules <- function(GroupId, UserRules) {
 #' @description
 #' Starts the specified WorkSpaces.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/start_workspaces.html](https://paws-r.github.io/docs/workspaces/start_workspaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_start_workspaces/](https://www.paws-r-sdk.com/docs/workspaces_start_workspaces/) for full documentation.
 #'
 #' @param StartWorkspaceRequests &#91;required&#93; The WorkSpaces to start. You can specify up to 25 WorkSpaces.
 #'
@@ -1915,7 +1915,7 @@ workspaces_start_workspaces <- function(StartWorkspaceRequests) {
 #' @description
 #' Stops the specified WorkSpaces.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/stop_workspaces.html](https://paws-r.github.io/docs/workspaces/stop_workspaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_stop_workspaces/](https://www.paws-r-sdk.com/docs/workspaces_stop_workspaces/) for full documentation.
 #'
 #' @param StopWorkspaceRequests &#91;required&#93; The WorkSpaces to stop. You can specify up to 25 WorkSpaces.
 #'
@@ -1944,7 +1944,7 @@ workspaces_stop_workspaces <- function(StopWorkspaceRequests) {
 #' @description
 #' Terminates the specified WorkSpaces.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/terminate_workspaces.html](https://paws-r.github.io/docs/workspaces/terminate_workspaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_terminate_workspaces/](https://www.paws-r-sdk.com/docs/workspaces_terminate_workspaces/) for full documentation.
 #'
 #' @param TerminateWorkspaceRequests &#91;required&#93; The WorkSpaces to terminate. You can specify up to 25 WorkSpaces.
 #'
@@ -1973,7 +1973,7 @@ workspaces_terminate_workspaces <- function(TerminateWorkspaceRequests) {
 #' @description
 #' Updates a Amazon Connect client add-in. Use this action to update the name and endpoint URL of a Amazon Connect client add-in.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/update_connect_client_add_in.html](https://paws-r.github.io/docs/workspaces/update_connect_client_add_in.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_update_connect_client_add_in/](https://www.paws-r-sdk.com/docs/workspaces_update_connect_client_add_in/) for full documentation.
 #'
 #' @param AddInId &#91;required&#93; The identifier of the client add-in to update.
 #' @param ResourceId &#91;required&#93; The directory identifier for which the client add-in is configured.
@@ -2007,7 +2007,7 @@ workspaces_update_connect_client_add_in <- function(AddInId, ResourceId, Name = 
 #' @description
 #' Shares or unshares a connection alias with one account by specifying whether that account has permission to associate the connection alias with a directory. If the association permission is granted, the connection alias is shared with that account. If the association permission is revoked, the connection alias is unshared with the account. For more information, see [Cross-Region Redirection for Amazon WorkSpaces](https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/update_connection_alias_permission.html](https://paws-r.github.io/docs/workspaces/update_connection_alias_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_update_connection_alias_permission/](https://www.paws-r-sdk.com/docs/workspaces_update_connection_alias_permission/) for full documentation.
 #'
 #' @param AliasId &#91;required&#93; The identifier of the connection alias that you want to update
 #' permissions for.
@@ -2040,7 +2040,7 @@ workspaces_update_connection_alias_permission <- function(AliasId, ConnectionAli
 #' @description
 #' Replaces the current rules of the specified IP access control group with the specified rules.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/update_rules_of_ip_group.html](https://paws-r.github.io/docs/workspaces/update_rules_of_ip_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_update_rules_of_ip_group/](https://www.paws-r-sdk.com/docs/workspaces_update_rules_of_ip_group/) for full documentation.
 #'
 #' @param GroupId &#91;required&#93; The identifier of the group.
 #' @param UserRules &#91;required&#93; One or more rules.
@@ -2070,7 +2070,7 @@ workspaces_update_rules_of_ip_group <- function(GroupId, UserRules) {
 #' @description
 #' Updates a WorkSpace bundle with a new image. For more information about updating WorkSpace bundles, see [Update a Custom WorkSpaces Bundle](https://docs.aws.amazon.com/workspaces/latest/adminguide/update-custom-bundle.html).
 #'
-#' See [https://paws-r.github.io/docs/workspaces/update_workspace_bundle.html](https://paws-r.github.io/docs/workspaces/update_workspace_bundle.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_update_workspace_bundle/](https://www.paws-r-sdk.com/docs/workspaces_update_workspace_bundle/) for full documentation.
 #'
 #' @param BundleId The identifier of the bundle.
 #' @param ImageId The identifier of the image.
@@ -2102,7 +2102,7 @@ workspaces_update_workspace_bundle <- function(BundleId = NULL, ImageId = NULL) 
 #' @description
 #' Shares or unshares an image with one account in the same Amazon Web Services Region by specifying whether that account has permission to copy the image. If the copy image permission is granted, the image is shared with that account. If the copy image permission is revoked, the image is unshared with the account.
 #'
-#' See [https://paws-r.github.io/docs/workspaces/update_workspace_image_permission.html](https://paws-r.github.io/docs/workspaces/update_workspace_image_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspaces_update_workspace_image_permission/](https://www.paws-r-sdk.com/docs/workspaces_update_workspace_image_permission/) for full documentation.
 #'
 #' @param ImageId &#91;required&#93; The identifier of the image.
 #' @param AllowCopyImage &#91;required&#93; The permission to copy the image. This permission can be revoked only

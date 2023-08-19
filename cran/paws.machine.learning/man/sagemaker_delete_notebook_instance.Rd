@@ -12,6 +12,6 @@ sagemaker_delete_notebook_instance(NotebookInstanceName)
 \description{
 Deletes an SageMaker notebook instance. Before you can delete a notebook instance, you must call the \code{\link[=sagemaker_stop_notebook_instance]{stop_notebook_instance}} API.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_notebook_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_notebook_instance/} for full documentation.
 }
 \keyword{internal}

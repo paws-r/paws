@@ -26,6 +26,6 @@ returned.}
 \description{
 Lists all your Direct Connect gateways or only the specified Direct Connect gateway. Deleted Direct Connect gateways are not returned.
 
-See \url{https://paws-r.github.io/docs/directconnect/describe_direct_connect_gateways.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_describe_direct_connect_gateways/} for full documentation.
 }
 \keyword{internal}

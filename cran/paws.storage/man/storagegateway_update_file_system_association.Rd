@@ -29,6 +29,6 @@ belong to the Amazon FSx delegated admin user group.}
 \description{
 Updates a file system association. This operation is only supported in the FSx File Gateways.
 
-See \url{https://paws-r.github.io/docs/storagegateway/update_file_system_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_update_file_system_association/} for full documentation.
 }
 \keyword{internal}

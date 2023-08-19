@@ -41,6 +41,6 @@ receive all of the results.}
 \description{
 Retrieves the current status of the asynchronous tasks performed by RAM when you perform the ReplacePermissionAssociationsWork operation.
 
-See \url{https://paws-r.github.io/docs/ram/list_replace_permission_associations_work.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_list_replace_permission_associations_work/} for full documentation.
 }
 \keyword{internal}

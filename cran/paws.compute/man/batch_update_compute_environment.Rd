@@ -86,6 +86,6 @@ in the \emph{Batch User Guide}.}
 \description{
 Updates an Batch compute environment.
 
-See \url{https://paws-r.github.io/docs/batch/update_compute_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_update_compute_environment/} for full documentation.
 }
 \keyword{internal}

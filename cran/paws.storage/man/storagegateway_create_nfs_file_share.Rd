@@ -172,6 +172,6 @@ that points to a VPC access point.}
 \description{
 Creates a Network File System (NFS) file share on an existing S3 File Gateway. In Storage Gateway, a file share is a file system mount point backed by Amazon S3 cloud storage. Storage Gateway exposes file shares using an NFS interface. This operation is only supported for S3 File Gateways.
 
-See \url{https://paws-r.github.io/docs/storagegateway/create_nfs_file_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_create_nfs_file_share/} for full documentation.
 }
 \keyword{internal}

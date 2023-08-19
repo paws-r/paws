@@ -29,6 +29,6 @@ The value must be URL encoded.}
 \description{
 This action puts tags on an Amazon S3 on Outposts bucket. To put tags on an S3 bucket, see \code{\link[=s3control_put_bucket_tagging]{put_bucket_tagging}} in the \emph{Amazon S3 API Reference}.
 
-See \url{https://paws-r.github.io/docs/s3control/put_bucket_tagging.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_put_bucket_tagging/} for full documentation.
 }
 \keyword{internal}

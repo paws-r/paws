@@ -13,8 +13,8 @@ sagemaker_update_feature_metadata(
 )
 }
 \arguments{
-\item{FeatureGroupName}{[required] The name of the feature group containing the feature that you're
-updating.}
+\item{FeatureGroupName}{[required] The name or Amazon Resource Name (ARN) of the feature group containing
+the feature that you're updating.}
 
 \item{FeatureName}{[required] The name of the feature that you're updating.}
 
@@ -29,6 +29,6 @@ describe your feature.}
 \description{
 Updates the description and parameters of the feature group.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_feature_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_feature_metadata/} for full documentation.
 }
 \keyword{internal}

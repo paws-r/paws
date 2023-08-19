@@ -14,6 +14,6 @@ response.}
 \description{
 Gets the properties associated with an InferRxNorm job. Use this operation to get the status of an inference job.
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/describe_rx_norm_inference_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_describe_rx_norm_inference_job/} for full documentation.
 }
 \keyword{internal}

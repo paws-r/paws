@@ -24,6 +24,6 @@ formatted runtime role ARN.}
 \description{
 AddJobFlowSteps adds new steps to a running cluster. A maximum of 256 steps are allowed in each job flow.
 
-See \url{https://paws-r.github.io/docs/emr/add_job_flow_steps.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_add_job_flow_steps/} for full documentation.
 }
 \keyword{internal}

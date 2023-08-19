@@ -14,6 +14,6 @@ eks_describe_nodegroup(clusterName, nodegroupName)
 \description{
 Returns descriptive information about an Amazon EKS node group.
 
-See \url{https://paws-r.github.io/docs/eks/describe_nodegroup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_describe_nodegroup/} for full documentation.
 }
 \keyword{internal}

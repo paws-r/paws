@@ -21,6 +21,6 @@ version. If you don't specify a checksum, Amazon Lex publishes the
 \description{
 Creates a new version of a slot type based on the \verb{$LATEST} version of the specified slot type. If the \verb{$LATEST} version of this resource has not changed since the last version that you created, Amazon Lex doesn't create a new version. It returns the last version that you created.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/create_slot_type_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_create_slot_type_version/} for full documentation.
 }
 \keyword{internal}

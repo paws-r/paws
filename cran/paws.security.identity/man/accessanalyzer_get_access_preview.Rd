@@ -15,6 +15,6 @@ used to generate the access preview.}
 \description{
 Retrieves information about an access preview for the specified analyzer.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/get_access_preview.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_get_access_preview/} for full documentation.
 }
 \keyword{internal}

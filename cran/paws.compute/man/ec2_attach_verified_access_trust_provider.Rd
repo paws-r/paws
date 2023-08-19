@@ -28,6 +28,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Attaches the specified Amazon Web Services Verified Access trust provider to the specified Amazon Web Services Verified Access instance.
 
-See \url{https://paws-r.github.io/docs/ec2/attach_verified_access_trust_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_attach_verified_access_trust_provider/} for full documentation.
 }
 \keyword{internal}

@@ -28,6 +28,6 @@ apply to templates.}
 \description{
 Updates the template alias of a template.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_template_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_template_alias/} for full documentation.
 }
 \keyword{internal}

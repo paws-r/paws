@@ -44,6 +44,6 @@ provide the name or ID, but not both.}
 \description{
 Gets information about the configuration required to provision the specified product using the specified provisioning artifact.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/describe_provisioning_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioning_parameters/} for full documentation.
 }
 \keyword{internal}

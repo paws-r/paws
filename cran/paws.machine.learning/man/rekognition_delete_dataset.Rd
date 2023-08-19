@@ -13,6 +13,6 @@ delete.}
 \description{
 Deletes an existing Amazon Rekognition Custom Labels dataset. Deleting a dataset might take while. Use \code{\link[=rekognition_describe_dataset]{describe_dataset}} to check the current status. The dataset is still deleting if the value of \code{Status} is \code{DELETE_IN_PROGRESS}. If you try to access the dataset after it is deleted, you get a \code{ResourceNotFoundException} exception.
 
-See \url{https://paws-r.github.io/docs/rekognition/delete_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_delete_dataset/} for full documentation.
 }
 \keyword{internal}

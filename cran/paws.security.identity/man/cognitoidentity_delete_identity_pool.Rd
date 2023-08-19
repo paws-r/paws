@@ -12,6 +12,6 @@ cognitoidentity_delete_identity_pool(IdentityPoolId)
 \description{
 Deletes an identity pool. Once a pool is deleted, users will not be able to authenticate with the pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/delete_identity_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_delete_identity_pool/} for full documentation.
 }
 \keyword{internal}

@@ -3017,7 +3017,7 @@ neptune_describe_db_cluster_endpoints <- function(DBClusterIdentifier = NULL, DB
     name = "DescribeDBClusterEndpoints",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterEndpoints")
   )
   input <- .neptune$describe_db_cluster_endpoints_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterEndpointIdentifier = DBClusterEndpointIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_cluster_endpoints_output()
@@ -3104,7 +3104,7 @@ neptune_describe_db_cluster_parameter_groups <- function(DBClusterParameterGroup
     name = "DescribeDBClusterParameterGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterParameterGroups")
   )
   input <- .neptune$describe_db_cluster_parameter_groups_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_cluster_parameter_groups_output()
@@ -3200,7 +3200,7 @@ neptune_describe_db_cluster_parameters <- function(DBClusterParameterGroupName, 
     name = "DescribeDBClusterParameters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters")
   )
   input <- .neptune$describe_db_cluster_parameters_input(DBClusterParameterGroupName = DBClusterParameterGroupName, Source = Source, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_cluster_parameters_output()
@@ -3441,7 +3441,7 @@ neptune_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DB
     name = "DescribeDBClusterSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterSnapshots")
   )
   input <- .neptune$describe_db_cluster_snapshots_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, SnapshotType = SnapshotType, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, IncludeShared = IncludeShared, IncludePublic = IncludePublic)
   output <- .neptune$describe_db_cluster_snapshots_output()
@@ -3638,7 +3638,7 @@ neptune_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = N
     name = "DescribeDBClusters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusters")
   )
   input <- .neptune$describe_db_clusters_input(DBClusterIdentifier = DBClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_clusters_output()
@@ -3772,7 +3772,7 @@ neptune_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = N
     name = "DescribeDBEngineVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBEngineVersions")
   )
   input <- .neptune$describe_db_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, DefaultOnly = DefaultOnly, ListSupportedCharacterSets = ListSupportedCharacterSets, ListSupportedTimezones = ListSupportedTimezones)
   output <- .neptune$describe_db_engine_versions_output()
@@ -4009,7 +4009,7 @@ neptune_describe_db_instances <- function(DBInstanceIdentifier = NULL, Filters =
     name = "DescribeDBInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBInstances")
   )
   input <- .neptune$describe_db_instances_input(DBInstanceIdentifier = DBInstanceIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_instances_output()
@@ -4095,7 +4095,7 @@ neptune_describe_db_parameter_groups <- function(DBParameterGroupName = NULL, Fi
     name = "DescribeDBParameterGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBParameterGroups")
   )
   input <- .neptune$describe_db_parameter_groups_input(DBParameterGroupName = DBParameterGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_parameter_groups_output()
@@ -4190,7 +4190,7 @@ neptune_describe_db_parameters <- function(DBParameterGroupName, Source = NULL, 
     name = "DescribeDBParameters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters")
   )
   input <- .neptune$describe_db_parameters_input(DBParameterGroupName = DBParameterGroupName, Source = Source, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_parameters_output()
@@ -4284,7 +4284,7 @@ neptune_describe_db_subnet_groups <- function(DBSubnetGroupName = NULL, Filters 
     name = "DescribeDBSubnetGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBSubnetGroups")
   )
   input <- .neptune$describe_db_subnet_groups_input(DBSubnetGroupName = DBSubnetGroupName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_db_subnet_groups_output()
@@ -4465,7 +4465,7 @@ neptune_describe_engine_default_parameters <- function(DBParameterGroupFamily, F
     name = "DescribeEngineDefaultParameters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "EngineDefaults.Marker", result_key = "EngineDefaults.Parameters")
   )
   input <- .neptune$describe_engine_default_parameters_input(DBParameterGroupFamily = DBParameterGroupFamily, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_engine_default_parameters_output()
@@ -4627,7 +4627,7 @@ neptune_describe_event_subscriptions <- function(SubscriptionName = NULL, Filter
     name = "DescribeEventSubscriptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "EventSubscriptionsList")
   )
   input <- .neptune$describe_event_subscriptions_input(SubscriptionName = SubscriptionName, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_event_subscriptions_output()
@@ -4763,7 +4763,7 @@ neptune_describe_events <- function(SourceIdentifier = NULL, SourceType = NULL, 
     name = "DescribeEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events")
   )
   input <- .neptune$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, EventCategories = EventCategories, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_events_output()
@@ -4851,7 +4851,7 @@ neptune_describe_global_clusters <- function(GlobalClusterIdentifier = NULL, Max
     name = "DescribeGlobalClusters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalClusters")
   )
   input <- .neptune$describe_global_clusters_input(GlobalClusterIdentifier = GlobalClusterIdentifier, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_global_clusters_output()
@@ -4964,7 +4964,7 @@ neptune_describe_orderable_db_instance_options <- function(Engine, EngineVersion
     name = "DescribeOrderableDBInstanceOptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "OrderableDBInstanceOptions")
   )
   input <- .neptune$describe_orderable_db_instance_options_input(Engine = Engine, EngineVersion = EngineVersion, DBInstanceClass = DBInstanceClass, LicenseModel = LicenseModel, Vpc = Vpc, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .neptune$describe_orderable_db_instance_options_output()
@@ -5071,7 +5071,7 @@ neptune_describe_pending_maintenance_actions <- function(ResourceIdentifier = NU
     name = "DescribePendingMaintenanceActions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "PendingMaintenanceActions")
   )
   input <- .neptune$describe_pending_maintenance_actions_input(ResourceIdentifier = ResourceIdentifier, Filters = Filters, Marker = Marker, MaxRecords = MaxRecords)
   output <- .neptune$describe_pending_maintenance_actions_output()
@@ -5469,7 +5469,7 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "TagList")
   )
   input <- .neptune$list_tags_for_resource_input(ResourceName = ResourceName, Filters = Filters)
   output <- .neptune$list_tags_for_resource_output()

@@ -27,6 +27,6 @@ list.}
 \description{
 Lists geofence collections currently associated to the given tracker resource.
 
-See \url{https://paws-r.github.io/docs/locationservice/list_tracker_consumers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_list_tracker_consumers/} for full documentation.
 }
 \keyword{internal}

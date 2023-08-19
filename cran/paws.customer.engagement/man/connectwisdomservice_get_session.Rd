@@ -16,6 +16,6 @@ cannot contain the ARN.}
 \description{
 Retrieves information for a specified session.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/get_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_get_session/} for full documentation.
 }
 \keyword{internal}

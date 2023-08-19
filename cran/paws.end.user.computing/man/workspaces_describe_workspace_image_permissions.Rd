@@ -22,6 +22,6 @@ provide this token to receive the next set of results.}
 \description{
 Describes the permissions that the owner of an image has granted to other Amazon Web Services accounts for an image.
 
-See \url{https://paws-r.github.io/docs/workspaces/describe_workspace_image_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_image_permissions/} for full documentation.
 }
 \keyword{internal}

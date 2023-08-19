@@ -34,6 +34,6 @@ associations, use a hyphen ("-") as the \code{nameContains} parameter.}
 \description{
 Returns a list of all of the channels associated with the specified bot.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_bot_channel_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_bot_channel_associations/} for full documentation.
 }
 \keyword{internal}

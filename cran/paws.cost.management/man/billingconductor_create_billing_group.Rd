@@ -23,7 +23,7 @@ currently supported, but will be implemented in a future update.}
 \item{Name}{[required] The billing group name. The names must be unique.}
 
 \item{AccountGrouping}{[required] The set of accounts that will be under the billing group. The set of
-accounts resemble the linked accounts in a consolidated family.}
+accounts resemble the linked accounts in a consolidated billing family.}
 
 \item{ComputationPreference}{[required] The preferences and settings that will be used to compute the Amazon Web
 Services charges for a billing group.}
@@ -38,6 +38,6 @@ billing group. This feature isn't available during the beta.}
 \description{
 Creates a billing group that resembles a consolidated billing family that Amazon Web Services charges, based off of the predefined pricing plan computation.
 
-See \url{https://paws-r.github.io/docs/billingconductor/create_billing_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_create_billing_group/} for full documentation.
 }
 \keyword{internal}

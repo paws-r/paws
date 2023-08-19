@@ -55,6 +55,6 @@ following format:
 \description{
 Deletes a specified stack. Once the call completes successfully, stack deletion starts. Deleted stacks don't show up in the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} operation if the deletion has been completed successfully.
 
-See \url{https://paws-r.github.io/docs/cloudformation/delete_stack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_delete_stack/} for full documentation.
 }
 \keyword{internal}

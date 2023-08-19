@@ -52,6 +52,6 @@ retrieve or modify.}
 \description{
 Modifies the specified alternate contact attached to an Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/account/put_alternate_contact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/account_put_alternate_contact/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ networkmanager_disassociate_connect_peer(GlobalNetworkId, ConnectPeerId)
 \description{
 Disassociates a core network Connect peer from a device and a link.
 
-See \url{https://paws-r.github.io/docs/networkmanager/disassociate_connect_peer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_disassociate_connect_peer/} for full documentation.
 }
 \keyword{internal}

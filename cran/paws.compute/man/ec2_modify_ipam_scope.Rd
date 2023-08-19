@@ -19,6 +19,6 @@ you have the required permissions, the error response is
 \description{
 Modify an IPAM scope.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_ipam_scope.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_ipam_scope/} for full documentation.
 }
 \keyword{internal}

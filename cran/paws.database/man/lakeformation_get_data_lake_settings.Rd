@@ -16,6 +16,6 @@ your Lake Formation environment.}
 \description{
 Retrieves the list of the data lake administrators of a Lake Formation-managed data lake.
 
-See \url{https://paws-r.github.io/docs/lakeformation/get_data_lake_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_get_data_lake_settings/} for full documentation.
 }
 \keyword{internal}

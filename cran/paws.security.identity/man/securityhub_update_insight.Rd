@@ -23,6 +23,6 @@ securityhub_update_insight(
 \description{
 Updates the Security Hub insight identified by the specified insight ARN.
 
-See \url{https://paws-r.github.io/docs/securityhub/update_insight.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_update_insight/} for full documentation.
 }
 \keyword{internal}

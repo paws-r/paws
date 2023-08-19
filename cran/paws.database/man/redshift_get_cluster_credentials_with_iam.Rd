@@ -7,8 +7,9 @@ authorization to log in to an Amazon Redshift database}
 \usage{
 redshift_get_cluster_credentials_with_iam(
   DbName = NULL,
-  ClusterIdentifier,
-  DurationSeconds = NULL
+  ClusterIdentifier = NULL,
+  DurationSeconds = NULL,
+  CustomDomainName = NULL
 )
 }
 \arguments{
@@ -17,16 +18,18 @@ the database name is specified, the IAM policy must allow access to the
 resource \code{dbname} for the specified database name. If the database name
 is not specified, access to all databases is allowed.}
 
-\item{ClusterIdentifier}{[required] The unique identifier of the cluster that contains the database for
+\item{ClusterIdentifier}{The unique identifier of the cluster that contains the database for
 which you are requesting credentials.}
 
 \item{DurationSeconds}{The number of seconds until the returned temporary password expires.
 
 Range: 900-3600. Default: 900.}
+
+\item{CustomDomainName}{The custom domain name for the IAM message cluster credentials.}
 }
 \description{
 Returns a database user name and temporary password with temporary authorization to log in to an Amazon Redshift database. The database user is mapped 1:1 to the source Identity and Access Management (IAM) identity. For more information about IAM identities, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id.html}{IAM Identities (users, user groups, and roles)} in the Amazon Web Services Identity and Access Management User Guide.
 
-See \url{https://paws-r.github.io/docs/redshift/get_cluster_credentials_with_iam.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_get_cluster_credentials_with_iam/} for full documentation.
 }
 \keyword{internal}

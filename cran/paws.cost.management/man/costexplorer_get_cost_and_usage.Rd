@@ -76,6 +76,6 @@ results than the maximum page size.}
 \description{
 Retrieves cost and usage metrics for your account. You can specify which cost and usage-related metric that you want the request to return. For example, you can specify \code{BlendedCosts} or \code{UsageQuantity}. You can also filter and group your data by various dimensions, such as \code{SERVICE} or \code{AZ}, in a specific time range. For a complete list of valid dimensions, see the \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} operation. Management account in an organization in Organizations have access to all member accounts.
 
-See \url{https://paws-r.github.io/docs/costexplorer/get_cost_and_usage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_cost_and_usage/} for full documentation.
 }
 \keyword{internal}

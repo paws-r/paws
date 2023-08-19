@@ -12,6 +12,6 @@ sesv2_delete_email_identity(EmailIdentity)
 \description{
 Deletes an email identity. An identity can be either an email address or a domain name.
 
-See \url{https://paws-r.github.io/docs/sesv2/delete_email_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_delete_email_identity/} for full documentation.
 }
 \keyword{internal}

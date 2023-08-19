@@ -18,6 +18,6 @@ request.}
 \description{
 Returns a list of available database blueprints in Amazon Lightsail. A blueprint describes the major engine version of a database.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_relational_database_blueprints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_blueprints/} for full documentation.
 }
 \keyword{internal}

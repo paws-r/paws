@@ -37,6 +37,6 @@ this metric.}
 \description{
 Modifies one existing metric definition for CloudWatch RUM extended metrics. For more information about extended metrics, see \href{https://docs.aws.amazon.com/cloudwatchrum/latest/APIReference/}{BatchCreateRumMetricsDefinitions}.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/update_rum_metric_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_update_rum_metric_definition/} for full documentation.
 }
 \keyword{internal}

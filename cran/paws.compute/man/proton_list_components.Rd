@@ -32,6 +32,6 @@ components attached to service instances of the service.}
 \description{
 List components with summary data. You can filter the result list by environment, service, or a single service instance.
 
-See \url{https://paws-r.github.io/docs/proton/list_components.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_list_components/} for full documentation.
 }
 \keyword{internal}

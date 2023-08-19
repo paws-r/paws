@@ -20,6 +20,6 @@ disassociated from. For information about supported feature names, see
 \description{
 Disassociates an Amazon Web Services Identity and Access Management (IAM) role from a DB instance.
 
-See \url{https://paws-r.github.io/docs/rds/remove_role_from_db_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_remove_role_from_db_instance/} for full documentation.
 }
 \keyword{internal}

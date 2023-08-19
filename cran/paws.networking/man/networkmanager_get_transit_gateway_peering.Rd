@@ -12,6 +12,6 @@ networkmanager_get_transit_gateway_peering(PeeringId)
 \description{
 Returns information about a transit gateway peer.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_transit_gateway_peering.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_transit_gateway_peering/} for full documentation.
 }
 \keyword{internal}

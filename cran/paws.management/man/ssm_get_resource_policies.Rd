@@ -20,6 +20,6 @@ next set of results.}
 \description{
 Returns an array of the \code{Policy} object.
 
-See \url{https://paws-r.github.io/docs/ssm/get_resource_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_resource_policies/} for full documentation.
 }
 \keyword{internal}

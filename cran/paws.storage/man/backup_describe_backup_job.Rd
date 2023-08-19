@@ -12,6 +12,6 @@ backup_describe_backup_job(BackupJobId)
 \description{
 Returns backup job details for the specified \code{BackupJobId}.
 
-See \url{https://paws-r.github.io/docs/backup/describe_backup_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_describe_backup_job/} for full documentation.
 }
 \keyword{internal}

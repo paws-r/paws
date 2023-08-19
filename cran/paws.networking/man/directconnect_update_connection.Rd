@@ -25,6 +25,6 @@ The valid values are \code{no_encrypt}, \code{should_encrypt}, and \code{must_en
 \description{
 Updates the Direct Connect dedicated connection configuration.
 
-See \url{https://paws-r.github.io/docs/directconnect/update_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_update_connection/} for full documentation.
 }
 \keyword{internal}

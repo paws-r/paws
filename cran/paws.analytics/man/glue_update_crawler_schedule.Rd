@@ -17,6 +17,6 @@ For example, to run something every day at 12:15 UTC, you would specify:
 \description{
 Updates the schedule of a crawler using a \code{cron} expression.
 
-See \url{https://paws-r.github.io/docs/glue/update_crawler_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_update_crawler_schedule/} for full documentation.
 }
 \keyword{internal}

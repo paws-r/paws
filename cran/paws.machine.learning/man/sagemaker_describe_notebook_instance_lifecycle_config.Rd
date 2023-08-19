@@ -14,6 +14,6 @@ sagemaker_describe_notebook_instance_lifecycle_config(
 \description{
 Returns a description of a notebook instance lifecycle configuration.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_notebook_instance_lifecycle_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_notebook_instance_lifecycle_config/} for full documentation.
 }
 \keyword{internal}

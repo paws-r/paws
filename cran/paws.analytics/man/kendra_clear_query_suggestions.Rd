@@ -12,6 +12,6 @@ kendra_clear_query_suggestions(IndexId)
 \description{
 Clears existing query suggestions from an index.
 
-See \url{https://paws-r.github.io/docs/kendra/clear_query_suggestions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_clear_query_suggestions/} for full documentation.
 }
 \keyword{internal}

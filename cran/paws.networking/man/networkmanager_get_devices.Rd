@@ -26,6 +26,6 @@ networkmanager_get_devices(
 \description{
 Gets information about one or more of your devices in a global network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_devices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_devices/} for full documentation.
 }
 \keyword{internal}

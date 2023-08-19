@@ -17,6 +17,6 @@ ReportTaskProgressInput object.}
 \description{
 Task runners call \code{\link[=datapipeline_report_task_progress]{report_task_progress}} when assigned a task to acknowledge that it has the task. If the web service does not receive this acknowledgement within 2 minutes, it assigns the task in a subsequent \code{\link[=datapipeline_poll_for_task]{poll_for_task}} call. After this initial acknowledgement, the task runner only needs to report progress every 15 minutes to maintain its ownership of the task. You can change this reporting time from 15 minutes by specifying a \code{reportProgressTimeout} field in your pipeline.
 
-See \url{https://paws-r.github.io/docs/datapipeline/report_task_progress.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/datapipeline_report_task_progress/} for full documentation.
 }
 \keyword{internal}

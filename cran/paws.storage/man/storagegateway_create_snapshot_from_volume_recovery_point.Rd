@@ -31,6 +31,6 @@ the maximum length for a tag's value is 256.}
 \description{
 Initiates a snapshot of a gateway from a volume recovery point. This operation is only supported in the cached volume gateway type.
 
-See \url{https://paws-r.github.io/docs/storagegateway/create_snapshot_from_volume_recovery_point.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_create_snapshot_from_volume_recovery_point/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ specify the latest version of the template by providing the keyword
 \description{
 Deletes the item that the specified template alias points to. If you provide a specific alias, you delete the version of the template that the alias points to.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_template_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_template_alias/} for full documentation.
 }
 \keyword{internal}

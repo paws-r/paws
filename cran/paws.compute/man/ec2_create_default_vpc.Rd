@@ -14,8 +14,8 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Creates a default VPC with a size \verb{/16} IPv4 CIDR block and a default subnet in each Availability Zone. For more information about the components of a default VPC, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html}{Default VPC and default subnets} in the \emph{Amazon Virtual Private Cloud User Guide}. You cannot specify the components of the default VPC yourself.
+Creates a default VPC with a size \verb{/16} IPv4 CIDR block and a default subnet in each Availability Zone. For more information about the components of a default VPC, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html}{Default VPCs} in the \emph{Amazon VPC User Guide}. You cannot specify the components of the default VPC yourself.
 
-See \url{https://paws-r.github.io/docs/ec2/create_default_vpc.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_default_vpc/} for full documentation.
 }
 \keyword{internal}

@@ -39,6 +39,6 @@ sharing on the portfolio share will not be modified.}
 \description{
 Updates the specified portfolio share. You can use this API to enable or disable \code{TagOptions} sharing or Principal sharing for an existing portfolio share.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/update_portfolio_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_update_portfolio_share/} for full documentation.
 }
 \keyword{internal}

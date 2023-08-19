@@ -15,6 +15,6 @@ pinpoint_tag_resource(ResourceArn, TagsModel)
 \description{
 Adds one or more tags (keys and values) to an application, campaign, message template, or segment.
 
-See \url{https://paws-r.github.io/docs/pinpoint/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_tag_resource/} for full documentation.
 }
 \keyword{internal}

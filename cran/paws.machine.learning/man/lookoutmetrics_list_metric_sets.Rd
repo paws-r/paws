@@ -22,6 +22,6 @@ token in the next request. Tokens expire after 24 hours.}
 \description{
 Lists the datasets in the current AWS Region.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/list_metric_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_list_metric_sets/} for full documentation.
 }
 \keyword{internal}

@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Attaches the specified customer managed policy to the specified PermissionSet.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/attach_customer_managed_policy_reference_to_permission_set.html](https://paws-r.github.io/docs/ssoadmin/attach_customer_managed_policy_reference_to_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_attach_customer_managed_policy_reference_to_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_attach_customer_managed_policy_reference_to_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed.
@@ -43,7 +43,7 @@ ssoadmin_attach_customer_managed_policy_reference_to_permission_set <- function(
 #' @description
 #' Attaches an AWS managed policy ARN to a permission set.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/attach_managed_policy_to_permission_set.html](https://paws-r.github.io/docs/ssoadmin/attach_managed_policy_to_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_attach_managed_policy_to_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_attach_managed_policy_to_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -78,7 +78,7 @@ ssoadmin_attach_managed_policy_to_permission_set <- function(InstanceArn, Permis
 #' @description
 #' Assigns access to a principal for a specified AWS account using a specified permission set.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/create_account_assignment.html](https://paws-r.github.io/docs/ssoadmin/create_account_assignment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_create_account_assignment/](https://www.paws-r-sdk.com/docs/ssoadmin_create_account_assignment/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -121,7 +121,7 @@ ssoadmin_create_account_assignment <- function(InstanceArn, TargetId, TargetType
 #' @description
 #' Enables the attributes-based access control (ABAC) feature for the specified IAM Identity Center instance. You can also specify new attributes to add to your ABAC configuration during the enabling process. For more information about ABAC, see Attribute-Based Access Control in the *IAM Identity Center User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/create_instance_access_control_attribute_configuration.html](https://paws-r.github.io/docs/ssoadmin/create_instance_access_control_attribute_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_create_instance_access_control_attribute_configuration/](https://www.paws-r-sdk.com/docs/ssoadmin_create_instance_access_control_attribute_configuration/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed.
@@ -158,7 +158,7 @@ ssoadmin_create_instance_access_control_attribute_configuration <- function(Inst
 #' @description
 #' Creates a permission set within a specified IAM Identity Center instance.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/create_permission_set.html](https://paws-r.github.io/docs/ssoadmin/create_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_create_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_create_permission_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the PermissionSet.
 #' @param Description The description of the PermissionSet.
@@ -197,7 +197,7 @@ ssoadmin_create_permission_set <- function(Name, Description = NULL, InstanceArn
 #' @description
 #' Deletes a principal's access from a specified AWS account using a specified permission set.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/delete_account_assignment.html](https://paws-r.github.io/docs/ssoadmin/delete_account_assignment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_delete_account_assignment/](https://www.paws-r-sdk.com/docs/ssoadmin_delete_account_assignment/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -238,7 +238,7 @@ ssoadmin_delete_account_assignment <- function(InstanceArn, TargetId, TargetType
 #' @description
 #' Deletes the inline policy from a specified permission set.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/delete_inline_policy_from_permission_set.html](https://paws-r.github.io/docs/ssoadmin/delete_inline_policy_from_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_delete_inline_policy_from_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_delete_inline_policy_from_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -272,7 +272,7 @@ ssoadmin_delete_inline_policy_from_permission_set <- function(InstanceArn, Permi
 #' @description
 #' Disables the attributes-based access control (ABAC) feature for the specified IAM Identity Center instance and deletes all of the attribute mappings that have been configured. Once deleted, any attributes that are received from an identity source and any custom attributes you have previously configured will not be passed. For more information about ABAC, see Attribute-Based Access Control in the *IAM Identity Center User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/delete_instance_access_control_attribute_configuration.html](https://paws-r.github.io/docs/ssoadmin/delete_instance_access_control_attribute_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_delete_instance_access_control_attribute_configuration/](https://www.paws-r-sdk.com/docs/ssoadmin_delete_instance_access_control_attribute_configuration/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed.
@@ -302,7 +302,7 @@ ssoadmin_delete_instance_access_control_attribute_configuration <- function(Inst
 #' @description
 #' Deletes the specified permission set.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/delete_permission_set.html](https://paws-r.github.io/docs/ssoadmin/delete_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_delete_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_delete_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -334,7 +334,7 @@ ssoadmin_delete_permission_set <- function(InstanceArn, PermissionSetArn) {
 #' @description
 #' Deletes the permissions boundary from a specified PermissionSet.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/delete_permissions_boundary_from_permission_set.html](https://paws-r.github.io/docs/ssoadmin/delete_permissions_boundary_from_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_delete_permissions_boundary_from_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_delete_permissions_boundary_from_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed.
@@ -365,7 +365,7 @@ ssoadmin_delete_permissions_boundary_from_permission_set <- function(InstanceArn
 #' @description
 #' Describes the status of the assignment creation request.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/describe_account_assignment_creation_status.html](https://paws-r.github.io/docs/ssoadmin/describe_account_assignment_creation_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_describe_account_assignment_creation_status/](https://www.paws-r-sdk.com/docs/ssoadmin_describe_account_assignment_creation_status/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -397,7 +397,7 @@ ssoadmin_describe_account_assignment_creation_status <- function(InstanceArn, Ac
 #' @description
 #' Describes the status of the assignment deletion request.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/describe_account_assignment_deletion_status.html](https://paws-r.github.io/docs/ssoadmin/describe_account_assignment_deletion_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_describe_account_assignment_deletion_status/](https://www.paws-r-sdk.com/docs/ssoadmin_describe_account_assignment_deletion_status/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -431,7 +431,7 @@ ssoadmin_describe_account_assignment_deletion_status <- function(InstanceArn, Ac
 #' @description
 #' Returns the list of IAM Identity Center identity store attributes that have been configured to work with attributes-based access control (ABAC) for the specified IAM Identity Center instance. This will not return attributes configured and sent by an external identity provider. For more information about ABAC, see Attribute-Based Access Control in the *IAM Identity Center User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/describe_instance_access_control_attribute_configuration.html](https://paws-r.github.io/docs/ssoadmin/describe_instance_access_control_attribute_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_describe_instance_access_control_attribute_configuration/](https://www.paws-r-sdk.com/docs/ssoadmin_describe_instance_access_control_attribute_configuration/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed.
@@ -461,7 +461,7 @@ ssoadmin_describe_instance_access_control_attribute_configuration <- function(In
 #' @description
 #' Gets the details of the permission set.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/describe_permission_set.html](https://paws-r.github.io/docs/ssoadmin/describe_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_describe_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_describe_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -493,7 +493,7 @@ ssoadmin_describe_permission_set <- function(InstanceArn, PermissionSetArn) {
 #' @description
 #' Describes the status for the given permission set provisioning request.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/describe_permission_set_provisioning_status.html](https://paws-r.github.io/docs/ssoadmin/describe_permission_set_provisioning_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_describe_permission_set_provisioning_status/](https://www.paws-r-sdk.com/docs/ssoadmin_describe_permission_set_provisioning_status/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -528,7 +528,7 @@ ssoadmin_describe_permission_set_provisioning_status <- function(InstanceArn, Pr
 #' @description
 #' Detaches the specified customer managed policy from the specified PermissionSet.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/detach_customer_managed_policy_reference_from_permission_set.html](https://paws-r.github.io/docs/ssoadmin/detach_customer_managed_policy_reference_from_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_detach_customer_managed_policy_reference_from_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_detach_customer_managed_policy_reference_from_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed.
@@ -563,7 +563,7 @@ ssoadmin_detach_customer_managed_policy_reference_from_permission_set <- functio
 #' @description
 #' Detaches the attached AWS managed policy ARN from the specified permission set.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/detach_managed_policy_from_permission_set.html](https://paws-r.github.io/docs/ssoadmin/detach_managed_policy_from_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_detach_managed_policy_from_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_detach_managed_policy_from_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -596,7 +596,7 @@ ssoadmin_detach_managed_policy_from_permission_set <- function(InstanceArn, Perm
 #' @description
 #' Obtains the inline policy assigned to the permission set.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/get_inline_policy_for_permission_set.html](https://paws-r.github.io/docs/ssoadmin/get_inline_policy_for_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_get_inline_policy_for_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_get_inline_policy_for_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -628,7 +628,7 @@ ssoadmin_get_inline_policy_for_permission_set <- function(InstanceArn, Permissio
 #' @description
 #' Obtains the permissions boundary for a specified PermissionSet.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/get_permissions_boundary_for_permission_set.html](https://paws-r.github.io/docs/ssoadmin/get_permissions_boundary_for_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_get_permissions_boundary_for_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_get_permissions_boundary_for_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed.
@@ -660,7 +660,7 @@ ssoadmin_get_permissions_boundary_for_permission_set <- function(InstanceArn, Pe
 #' @description
 #' Lists the status of the AWS account assignment creation requests for a specified IAM Identity Center instance.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/list_account_assignment_creation_status.html](https://paws-r.github.io/docs/ssoadmin/list_account_assignment_creation_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_account_assignment_creation_status/](https://www.paws-r-sdk.com/docs/ssoadmin_list_account_assignment_creation_status/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -678,7 +678,7 @@ ssoadmin_list_account_assignment_creation_status <- function(InstanceArn, MaxRes
     name = "ListAccountAssignmentCreationStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountAssignmentsCreationStatus")
   )
   input <- .ssoadmin$list_account_assignment_creation_status_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, Filter = Filter)
   output <- .ssoadmin$list_account_assignment_creation_status_output()
@@ -696,7 +696,7 @@ ssoadmin_list_account_assignment_creation_status <- function(InstanceArn, MaxRes
 #' @description
 #' Lists the status of the AWS account assignment deletion requests for a specified IAM Identity Center instance.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/list_account_assignment_deletion_status.html](https://paws-r.github.io/docs/ssoadmin/list_account_assignment_deletion_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_account_assignment_deletion_status/](https://www.paws-r-sdk.com/docs/ssoadmin_list_account_assignment_deletion_status/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -714,7 +714,7 @@ ssoadmin_list_account_assignment_deletion_status <- function(InstanceArn, MaxRes
     name = "ListAccountAssignmentDeletionStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountAssignmentsDeletionStatus")
   )
   input <- .ssoadmin$list_account_assignment_deletion_status_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, Filter = Filter)
   output <- .ssoadmin$list_account_assignment_deletion_status_output()
@@ -732,7 +732,7 @@ ssoadmin_list_account_assignment_deletion_status <- function(InstanceArn, MaxRes
 #' @description
 #' Lists the assignee of the specified AWS account with the specified permission set.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/list_account_assignments.html](https://paws-r.github.io/docs/ssoadmin/list_account_assignments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_account_assignments/](https://www.paws-r-sdk.com/docs/ssoadmin_list_account_assignments/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -751,7 +751,7 @@ ssoadmin_list_account_assignments <- function(InstanceArn, AccountId, Permission
     name = "ListAccountAssignments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountAssignments")
   )
   input <- .ssoadmin$list_account_assignments_input(InstanceArn = InstanceArn, AccountId = AccountId, PermissionSetArn = PermissionSetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_account_assignments_output()
@@ -769,7 +769,7 @@ ssoadmin_list_account_assignments <- function(InstanceArn, AccountId, Permission
 #' @description
 #' Lists all the AWS accounts where the specified permission set is provisioned.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/list_accounts_for_provisioned_permission_set.html](https://paws-r.github.io/docs/ssoadmin/list_accounts_for_provisioned_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_accounts_for_provisioned_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_list_accounts_for_provisioned_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -789,7 +789,7 @@ ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, P
     name = "ListAccountsForProvisionedPermissionSet",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AccountIds")
   )
   input <- .ssoadmin$list_accounts_for_provisioned_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, ProvisioningStatus = ProvisioningStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_accounts_for_provisioned_permission_set_output()
@@ -807,7 +807,7 @@ ssoadmin_list_accounts_for_provisioned_permission_set <- function(InstanceArn, P
 #' @description
 #' Lists all customer managed policies attached to a specified PermissionSet.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/list_customer_managed_policy_references_in_permission_set.html](https://paws-r.github.io/docs/ssoadmin/list_customer_managed_policy_references_in_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_customer_managed_policy_references_in_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_list_customer_managed_policy_references_in_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed.
@@ -824,7 +824,7 @@ ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(I
     name = "ListCustomerManagedPolicyReferencesInPermissionSet",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CustomerManagedPolicyReferences")
   )
   input <- .ssoadmin$list_customer_managed_policy_references_in_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_customer_managed_policy_references_in_permission_set_output()
@@ -841,7 +841,7 @@ ssoadmin_list_customer_managed_policy_references_in_permission_set <- function(I
 #' @description
 #' Lists the IAM Identity Center instances that the caller has access to.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/list_instances.html](https://paws-r.github.io/docs/ssoadmin/list_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_instances/](https://www.paws-r-sdk.com/docs/ssoadmin_list_instances/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to display for the instance.
 #' @param NextToken The pagination token for the list API. Initially the value is null. Use
@@ -855,7 +855,7 @@ ssoadmin_list_instances <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Instances")
   )
   input <- .ssoadmin$list_instances_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_instances_output()
@@ -873,7 +873,7 @@ ssoadmin_list_instances <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Lists the AWS managed policy that is attached to a specified permission set.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/list_managed_policies_in_permission_set.html](https://paws-r.github.io/docs/ssoadmin/list_managed_policies_in_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_managed_policies_in_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_list_managed_policies_in_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -891,7 +891,7 @@ ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, Permis
     name = "ListManagedPoliciesInPermissionSet",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AttachedManagedPolicies")
   )
   input <- .ssoadmin$list_managed_policies_in_permission_set_input(InstanceArn = InstanceArn, PermissionSetArn = PermissionSetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_managed_policies_in_permission_set_output()
@@ -909,7 +909,7 @@ ssoadmin_list_managed_policies_in_permission_set <- function(InstanceArn, Permis
 #' @description
 #' Lists the status of the permission set provisioning requests for a specified IAM Identity Center instance.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/list_permission_set_provisioning_status.html](https://paws-r.github.io/docs/ssoadmin/list_permission_set_provisioning_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_permission_set_provisioning_status/](https://www.paws-r-sdk.com/docs/ssoadmin_list_permission_set_provisioning_status/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -927,7 +927,7 @@ ssoadmin_list_permission_set_provisioning_status <- function(InstanceArn, MaxRes
     name = "ListPermissionSetProvisioningStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PermissionSetsProvisioningStatus")
   )
   input <- .ssoadmin$list_permission_set_provisioning_status_input(InstanceArn = InstanceArn, MaxResults = MaxResults, NextToken = NextToken, Filter = Filter)
   output <- .ssoadmin$list_permission_set_provisioning_status_output()
@@ -944,7 +944,7 @@ ssoadmin_list_permission_set_provisioning_status <- function(InstanceArn, MaxRes
 #' @description
 #' Lists the PermissionSets in an IAM Identity Center instance.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/list_permission_sets.html](https://paws-r.github.io/docs/ssoadmin/list_permission_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_permission_sets/](https://www.paws-r-sdk.com/docs/ssoadmin_list_permission_sets/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -961,7 +961,7 @@ ssoadmin_list_permission_sets <- function(InstanceArn, NextToken = NULL, MaxResu
     name = "ListPermissionSets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PermissionSets")
   )
   input <- .ssoadmin$list_permission_sets_input(InstanceArn = InstanceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssoadmin$list_permission_sets_output()
@@ -979,7 +979,7 @@ ssoadmin_list_permission_sets <- function(InstanceArn, NextToken = NULL, MaxResu
 #' @description
 #' Lists all the permission sets that are provisioned to a specified AWS account.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/list_permission_sets_provisioned_to_account.html](https://paws-r.github.io/docs/ssoadmin/list_permission_sets_provisioned_to_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_permission_sets_provisioned_to_account/](https://www.paws-r-sdk.com/docs/ssoadmin_list_permission_sets_provisioned_to_account/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -998,7 +998,7 @@ ssoadmin_list_permission_sets_provisioned_to_account <- function(InstanceArn, Ac
     name = "ListPermissionSetsProvisionedToAccount",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PermissionSets")
   )
   input <- .ssoadmin$list_permission_sets_provisioned_to_account_input(InstanceArn = InstanceArn, AccountId = AccountId, ProvisioningStatus = ProvisioningStatus, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssoadmin$list_permission_sets_provisioned_to_account_output()
@@ -1015,7 +1015,7 @@ ssoadmin_list_permission_sets_provisioned_to_account <- function(InstanceArn, Ac
 #' @description
 #' Lists the tags that are attached to a specified resource.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/list_tags_for_resource.html](https://paws-r.github.io/docs/ssoadmin/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/ssoadmin_list_tags_for_resource/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -1032,7 +1032,7 @@ ssoadmin_list_tags_for_resource <- function(InstanceArn, ResourceArn, NextToken 
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Tags")
   )
   input <- .ssoadmin$list_tags_for_resource_input(InstanceArn = InstanceArn, ResourceArn = ResourceArn, NextToken = NextToken)
   output <- .ssoadmin$list_tags_for_resource_output()
@@ -1050,7 +1050,7 @@ ssoadmin_list_tags_for_resource <- function(InstanceArn, ResourceArn, NextToken 
 #' @description
 #' The process by which a specified permission set is provisioned to the specified target.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/provision_permission_set.html](https://paws-r.github.io/docs/ssoadmin/provision_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_provision_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_provision_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -1085,7 +1085,7 @@ ssoadmin_provision_permission_set <- function(InstanceArn, PermissionSetArn, Tar
 #' @description
 #' Attaches an inline policy to a permission set.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/put_inline_policy_to_permission_set.html](https://paws-r.github.io/docs/ssoadmin/put_inline_policy_to_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_put_inline_policy_to_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_put_inline_policy_to_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -1119,7 +1119,7 @@ ssoadmin_put_inline_policy_to_permission_set <- function(InstanceArn, Permission
 #' @description
 #' Attaches an AWS managed or customer managed policy to the specified PermissionSet as a permissions boundary.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/put_permissions_boundary_to_permission_set.html](https://paws-r.github.io/docs/ssoadmin/put_permissions_boundary_to_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_put_permissions_boundary_to_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_put_permissions_boundary_to_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed.
@@ -1151,7 +1151,7 @@ ssoadmin_put_permissions_boundary_to_permission_set <- function(InstanceArn, Per
 #' @description
 #' Associates a set of tags with a specified resource.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/tag_resource.html](https://paws-r.github.io/docs/ssoadmin/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_tag_resource/](https://www.paws-r-sdk.com/docs/ssoadmin_tag_resource/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -1184,7 +1184,7 @@ ssoadmin_tag_resource <- function(InstanceArn, ResourceArn, Tags) {
 #' @description
 #' Disassociates a set of tags from a specified resource.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/untag_resource.html](https://paws-r.github.io/docs/ssoadmin/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_untag_resource/](https://www.paws-r-sdk.com/docs/ssoadmin_untag_resource/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource
@@ -1219,7 +1219,7 @@ ssoadmin_untag_resource <- function(InstanceArn, ResourceArn, TagKeys) {
 #' @description
 #' Updates the IAM Identity Center identity store attributes that you can use with the IAM Identity Center instance for attributes-based access control (ABAC). When using an external identity provider as an identity source, you can pass attributes through the SAML assertion as an alternative to configuring attributes from the IAM Identity Center identity store. If a SAML assertion passes any of these attributes, IAM Identity Center replaces the attribute value with the value from the IAM Identity Center identity store. For more information about ABAC, see Attribute-Based Access Control in the *IAM Identity Center User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/update_instance_access_control_attribute_configuration.html](https://paws-r.github.io/docs/ssoadmin/update_instance_access_control_attribute_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_update_instance_access_control_attribute_configuration/](https://www.paws-r-sdk.com/docs/ssoadmin_update_instance_access_control_attribute_configuration/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed.
@@ -1250,7 +1250,7 @@ ssoadmin_update_instance_access_control_attribute_configuration <- function(Inst
 #' @description
 #' Updates an existing permission set.
 #'
-#' See [https://paws-r.github.io/docs/ssoadmin/update_permission_set.html](https://paws-r.github.io/docs/ssoadmin/update_permission_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssoadmin_update_permission_set/](https://www.paws-r-sdk.com/docs/ssoadmin_update_permission_set/) for full documentation.
 #'
 #' @param InstanceArn &#91;required&#93; The ARN of the IAM Identity Center instance under which the operation
 #' will be executed. For more information about ARNs, see Amazon Resource

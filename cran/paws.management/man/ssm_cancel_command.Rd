@@ -16,6 +16,6 @@ it was requested.}
 \description{
 Attempts to cancel the command specified by the Command ID. There is no guarantee that the command will be terminated and the underlying process stopped.
 
-See \url{https://paws-r.github.io/docs/ssm/cancel_command.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_cancel_command/} for full documentation.
 }
 \keyword{internal}

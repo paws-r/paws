@@ -2,8 +2,9 @@
 % Please edit documentation in R/route53_operations.R
 \name{route53_update_traffic_policy_instance}
 \alias{route53_update_traffic_policy_instance}
-\title{Updates the resource record sets in a specified hosted zone that were
-created based on the settings in a specified traffic policy version}
+\title{After you submit a UpdateTrafficPolicyInstance request, there's a brief
+delay while Route 53 creates the resource record sets that are specified
+in the traffic policy definition}
 \usage{
 route53_update_traffic_policy_instance(
   Id,
@@ -26,8 +27,8 @@ to update resource record sets for the specified traffic policy
 instance.}
 }
 \description{
-Updates the resource record sets in a specified hosted zone that were created based on the settings in a specified traffic policy version.
+After you submit a \code{\link[=route53_update_traffic_policy_instance]{update_traffic_policy_instance}} request, there's a brief delay while Route 53 creates the resource record sets that are specified in the traffic policy definition. Use \code{\link[=route53_get_traffic_policy_instance]{get_traffic_policy_instance}} with the \code{id} of updated traffic policy instance confirm that the \code{\link[=route53_update_traffic_policy_instance]{update_traffic_policy_instance}} request completed successfully. For more information, see the \code{State} response element.
 
-See \url{https://paws-r.github.io/docs/route53/update_traffic_policy_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_update_traffic_policy_instance/} for full documentation.
 }
 \keyword{internal}

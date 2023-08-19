@@ -13,6 +13,6 @@ ssm_cancel_maintenance_window_execution(WindowExecutionId)
 \description{
 Stops a maintenance window execution that is already in progress and cancels any tasks in the window that haven't already starting running. Tasks already in progress will continue to completion.
 
-See \url{https://paws-r.github.io/docs/ssm/cancel_maintenance_window_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_cancel_maintenance_window_execution/} for full documentation.
 }
 \keyword{internal}

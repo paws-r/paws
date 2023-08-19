@@ -14,6 +14,6 @@ opsworks_describe_agent_versions(StackId = NULL, ConfigurationManager = NULL)
 \description{
 Describes the available AWS OpsWorks Stacks agent versions. You must specify a stack ID or a configuration manager. \code{\link[=opsworks_describe_agent_versions]{describe_agent_versions}} returns a list of available agent versions for the specified stack or configuration manager.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_agent_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_agent_versions/} for full documentation.
 }
 \keyword{internal}

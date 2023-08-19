@@ -13,6 +13,6 @@ connect_describe_phone_number(PhoneNumberId)
 \description{
 Gets details and status of a phone number that’s claimed to your Amazon Connect instance or traffic distribution group.
 
-See \url{https://paws-r.github.io/docs/connect/describe_phone_number.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_describe_phone_number/} for full documentation.
 }
 \keyword{internal}

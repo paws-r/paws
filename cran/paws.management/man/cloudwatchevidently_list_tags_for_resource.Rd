@@ -12,6 +12,6 @@ cloudwatchevidently_list_tags_for_resource(resourceArn)
 \description{
 Displays the tags associated with an Evidently resource.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

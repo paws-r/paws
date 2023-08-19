@@ -14,6 +14,6 @@ wellarchitected_export_lens(LensAlias, LensVersion = NULL)
 \description{
 Export an existing lens.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/export_lens.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_export_lens/} for full documentation.
 }
 \keyword{internal}

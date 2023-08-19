@@ -12,6 +12,6 @@ mq_reboot_broker(BrokerId)
 \description{
 Reboots a broker. Note: This API is asynchronous.
 
-See \url{https://paws-r.github.io/docs/mq/reboot_broker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_reboot_broker/} for full documentation.
 }
 \keyword{internal}

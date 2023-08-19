@@ -46,6 +46,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the associations between virtual interface groups and local gateway route tables.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_local_gateway_route_table_virtual_interface_group_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_local_gateway_route_table_virtual_interface_group_associations/} for full documentation.
 }
 \keyword{internal}

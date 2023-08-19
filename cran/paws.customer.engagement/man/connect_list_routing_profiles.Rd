@@ -21,6 +21,6 @@ size is 100.}
 \description{
 Provides summary information about the routing profiles for the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/list_routing_profiles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_list_routing_profiles/} for full documentation.
 }
 \keyword{internal}

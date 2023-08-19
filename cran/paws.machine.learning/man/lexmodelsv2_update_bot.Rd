@@ -47,6 +47,6 @@ action.}
 \description{
 Updates the configuration of an existing bot.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/update_bot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_update_bot/} for full documentation.
 }
 \keyword{internal}

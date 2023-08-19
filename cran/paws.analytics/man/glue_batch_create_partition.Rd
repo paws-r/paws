@@ -26,6 +26,6 @@ created.}
 \description{
 Creates one or more partitions in a batch operation.
 
-See \url{https://paws-r.github.io/docs/glue/batch_create_partition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_batch_create_partition/} for full documentation.
 }
 \keyword{internal}

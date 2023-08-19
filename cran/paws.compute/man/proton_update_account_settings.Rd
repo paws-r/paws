@@ -41,6 +41,6 @@ To remove a previously configured ARN, specify an empty string.}
 \description{
 Update Proton settings that are used for multiple services in the Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/proton/update_account_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_update_account_settings/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ cloudfront_tag_resource(Resource, Tags)
 \description{
 Add tags to a CloudFront resource.
 
-See \url{https://paws-r.github.io/docs/cloudfront/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_tag_resource/} for full documentation.
 }
 \keyword{internal}

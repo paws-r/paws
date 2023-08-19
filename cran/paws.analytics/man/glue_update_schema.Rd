@@ -32,6 +32,6 @@ One of \code{SchemaArn} or \code{SchemaName} has to be provided.
 \description{
 Updates the description, compatibility setting, or version checkpoint for a schema set.
 
-See \url{https://paws-r.github.io/docs/glue/update_schema.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_update_schema/} for full documentation.
 }
 \keyword{internal}

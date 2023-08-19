@@ -36,6 +36,6 @@ that have been used recently to create this service-level template.}
 \description{
 Retrieves the policy that was generated using \code{\link[=accessanalyzer_start_policy_generation]{start_policy_generation}}.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/get_generated_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_get_generated_policy/} for full documentation.
 }
 \keyword{internal}

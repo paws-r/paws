@@ -9,6 +9,6 @@ appstream_delete_usage_report_subscription()
 \description{
 Disables usage report generation.
 
-See \url{https://paws-r.github.io/docs/appstream/delete_usage_report_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_delete_usage_report_subscription/} for full documentation.
 }
 \keyword{internal}

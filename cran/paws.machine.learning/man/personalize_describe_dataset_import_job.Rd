@@ -13,6 +13,6 @@ personalize_describe_dataset_import_job(datasetImportJobArn)
 \description{
 Describes the dataset import job created by \code{\link[=personalize_create_dataset_import_job]{create_dataset_import_job}}, including the import job status.
 
-See \url{https://paws-r.github.io/docs/personalize/describe_dataset_import_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_describe_dataset_import_job/} for full documentation.
 }
 \keyword{internal}

@@ -90,6 +90,6 @@ to \code{0}. You can use \code{NONE} to specify unlimited duration.}
 \description{
 Registers a new \emph{activity type} along with its configuration settings in the specified domain.
 
-See \url{https://paws-r.github.io/docs/swf/register_activity_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_register_activity_type/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ group.}
 \description{
 Associates a canary with a group. Using groups can help you with managing and automating your canaries, and you can also view aggregated run results and statistics for all canaries in a group.
 
-See \url{https://paws-r.github.io/docs/synthetics/associate_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_associate_resource/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ consists of the detailed metadata and data file information.}
 \description{
 Creates a new report using the description that you provide.
 
-See \url{https://paws-r.github.io/docs/costandusagereportservice/put_report_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costandusagereportservice_put_report_definition/} for full documentation.
 }
 \keyword{internal}

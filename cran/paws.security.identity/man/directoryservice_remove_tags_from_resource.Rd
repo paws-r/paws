@@ -14,6 +14,6 @@ directoryservice_remove_tags_from_resource(ResourceId, TagKeys)
 \description{
 Removes tags from a directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/remove_tags_from_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_remove_tags_from_resource/} for full documentation.
 }
 \keyword{internal}

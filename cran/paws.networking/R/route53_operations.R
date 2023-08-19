@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Activates a key-signing key (KSK) so that it can be used for signing by DNSSEC. This operation changes the KSK status to `ACTIVE`.
 #'
-#' See [https://paws-r.github.io/docs/route53/activate_key_signing_key.html](https://paws-r.github.io/docs/route53/activate_key_signing_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_activate_key_signing_key/](https://www.paws-r-sdk.com/docs/route53_activate_key_signing_key/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
 #' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK). `Name` can include
@@ -41,7 +41,7 @@ route53_activate_key_signing_key <- function(HostedZoneId, Name) {
 #' @description
 #' Associates an Amazon VPC with a private hosted zone.
 #'
-#' See [https://paws-r.github.io/docs/route53/associate_vpc_with_hosted_zone.html](https://paws-r.github.io/docs/route53/associate_vpc_with_hosted_zone.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_associate_vpc_with_hosted_zone/](https://www.paws-r-sdk.com/docs/route53_associate_vpc_with_hosted_zone/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the private hosted zone that you want to associate an Amazon
 #' VPC with.
@@ -77,7 +77,7 @@ route53_associate_vpc_with_hosted_zone <- function(HostedZoneId, VPC, Comment = 
 #' @description
 #' Creates, changes, or deletes CIDR blocks within a collection. Contains authoritative IP information mapping blocks to one or multiple locations.
 #'
-#' See [https://paws-r.github.io/docs/route53/change_cidr_collection.html](https://paws-r.github.io/docs/route53/change_cidr_collection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_change_cidr_collection/](https://www.paws-r-sdk.com/docs/route53_change_cidr_collection/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The UUID of the CIDR collection to update.
 #' @param CollectionVersion A sequential counter that Amazon Route 53 sets to 1 when you create a
@@ -124,7 +124,7 @@ route53_change_cidr_collection <- function(Id, CollectionVersion = NULL, Changes
 #' @description
 #' Creates, changes, or deletes a resource record set, which contains authoritative DNS information for a specified domain name or subdomain name. For example, you can use [`change_resource_record_sets`][route53_change_resource_record_sets] to create a resource record set that routes traffic for test.example.com to a web server that has an IP address of 192.0.2.44.
 #'
-#' See [https://paws-r.github.io/docs/route53/change_resource_record_sets.html](https://paws-r.github.io/docs/route53/change_resource_record_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_change_resource_record_sets/](https://www.paws-r-sdk.com/docs/route53_change_resource_record_sets/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that contains the resource record sets that
 #' you want to change.
@@ -156,7 +156,7 @@ route53_change_resource_record_sets <- function(HostedZoneId, ChangeBatch) {
 #' @description
 #' Adds, edits, or deletes tags for a health check or a hosted zone.
 #'
-#' See [https://paws-r.github.io/docs/route53/change_tags_for_resource.html](https://paws-r.github.io/docs/route53/change_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_change_tags_for_resource/](https://www.paws-r-sdk.com/docs/route53_change_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; The type of the resource.
 #' 
@@ -199,7 +199,7 @@ route53_change_tags_for_resource <- function(ResourceType, ResourceId, AddTags =
 #' @description
 #' Creates a CIDR collection in the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/route53/create_cidr_collection.html](https://paws-r.github.io/docs/route53/create_cidr_collection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_create_cidr_collection/](https://www.paws-r-sdk.com/docs/route53_create_cidr_collection/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A unique identifier for the account that can be used to reference the
 #' collection from other API calls.
@@ -232,7 +232,7 @@ route53_create_cidr_collection <- function(Name, CallerReference) {
 #' @description
 #' Creates a new health check.
 #'
-#' See [https://paws-r.github.io/docs/route53/create_health_check.html](https://paws-r.github.io/docs/route53/create_health_check.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_create_health_check/](https://www.paws-r-sdk.com/docs/route53_create_health_check/) for full documentation.
 #'
 #' @param CallerReference &#91;required&#93; A unique string that identifies the request and that allows you to retry
 #' a failed [`create_health_check`][route53_create_health_check] request
@@ -284,7 +284,7 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' @description
 #' Creates a new public or private hosted zone. You create records in a public hosted zone to define how you want to route traffic on the internet for a domain, such as example.com, and its subdomains (apex.example.com, acme.example.com). You create records in a private hosted zone to define how you want to route traffic for a domain and its subdomains within one or more Amazon Virtual Private Clouds (Amazon VPCs).
 #'
-#' See [https://paws-r.github.io/docs/route53/create_hosted_zone.html](https://paws-r.github.io/docs/route53/create_hosted_zone.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_create_hosted_zone/](https://www.paws-r-sdk.com/docs/route53_create_hosted_zone/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the domain. Specify a fully qualified domain name, for
 #' example, *www.example.com*. The trailing dot is optional; Amazon
@@ -328,6 +328,11 @@ route53_create_health_check <- function(CallerReference, HealthCheckConfig) {
 #' set when you created it. For more information about reusable delegation
 #' sets, see
 #' [`create_reusable_delegation_set`][route53_create_reusable_delegation_set].
+#' 
+#' If you are using a reusable delegation set to create a public hosted
+#' zone for a subdomain, make sure that the parent hosted zone doesn't use
+#' one or more of the same name servers. If you have overlapping
+#' nameservers, the operation will cause a `ConflictingDomainsExist` error.
 #'
 #' @keywords internal
 #'
@@ -354,7 +359,7 @@ route53_create_hosted_zone <- function(Name, VPC = NULL, CallerReference, Hosted
 #' @description
 #' Creates a new key-signing key (KSK) associated with a hosted zone. You can only have two KSKs per hosted zone.
 #'
-#' See [https://paws-r.github.io/docs/route53/create_key_signing_key.html](https://paws-r.github.io/docs/route53/create_key_signing_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_create_key_signing_key/](https://www.paws-r-sdk.com/docs/route53_create_key_signing_key/) for full documentation.
 #'
 #' @param CallerReference &#91;required&#93; A unique string that identifies the request.
 #' @param HostedZoneId &#91;required&#93; The unique string (ID) used to identify a hosted zone.
@@ -427,7 +432,7 @@ route53_create_key_signing_key <- function(CallerReference, HostedZoneId, KeyMan
 #' @description
 #' Creates a configuration for DNS query logging. After you create a query logging configuration, Amazon Route 53 begins to publish log data to an Amazon CloudWatch Logs log group.
 #'
-#' See [https://paws-r.github.io/docs/route53/create_query_logging_config.html](https://paws-r.github.io/docs/route53/create_query_logging_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_create_query_logging_config/](https://www.paws-r-sdk.com/docs/route53_create_query_logging_config/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that you want to log queries for. You can log
 #' queries only for public hosted zones.
@@ -470,7 +475,7 @@ route53_create_query_logging_config <- function(HostedZoneId, CloudWatchLogsLogG
 #' @description
 #' Creates a delegation set (a group of four name servers) that can be reused by multiple hosted zones that were created by the same Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/route53/create_reusable_delegation_set.html](https://paws-r.github.io/docs/route53/create_reusable_delegation_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_create_reusable_delegation_set/](https://www.paws-r-sdk.com/docs/route53_create_reusable_delegation_set/) for full documentation.
 #'
 #' @param CallerReference &#91;required&#93; A unique string that identifies the request, and that allows you to
 #' retry failed
@@ -509,7 +514,7 @@ route53_create_reusable_delegation_set <- function(CallerReference, HostedZoneId
 #' @description
 #' Creates a traffic policy, which you use to create multiple DNS resource record sets for one domain name (such as example.com) or one subdomain name (such as www.example.com).
 #'
-#' See [https://paws-r.github.io/docs/route53/create_traffic_policy.html](https://paws-r.github.io/docs/route53/create_traffic_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_create_traffic_policy/](https://www.paws-r-sdk.com/docs/route53_create_traffic_policy/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the traffic policy.
 #' @param Document &#91;required&#93; The definition of this traffic policy in JSON format. For more
@@ -544,7 +549,7 @@ route53_create_traffic_policy <- function(Name, Document, Comment = NULL) {
 #' @description
 #' Creates resource record sets in a specified hosted zone based on the settings in a specified traffic policy version. In addition, [`create_traffic_policy_instance`][route53_create_traffic_policy_instance] associates the resource record sets with a specified domain name (such as example.com) or subdomain name (such as www.example.com). Amazon Route 53 responds to DNS queries for the domain or subdomain name by using the resource record sets that [`create_traffic_policy_instance`][route53_create_traffic_policy_instance] created.
 #'
-#' See [https://paws-r.github.io/docs/route53/create_traffic_policy_instance.html](https://paws-r.github.io/docs/route53/create_traffic_policy_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_create_traffic_policy_instance/](https://www.paws-r-sdk.com/docs/route53_create_traffic_policy_instance/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that you want Amazon Route 53 to create
 #' resource record sets in by using the configuration in a traffic policy.
@@ -584,7 +589,7 @@ route53_create_traffic_policy_instance <- function(HostedZoneId, Name, TTL, Traf
 #' @description
 #' Creates a new version of an existing traffic policy. When you create a new version of a traffic policy, you specify the ID of the traffic policy that you want to update and a JSON-formatted document that describes the new version. You use traffic policies to create multiple DNS resource record sets for one domain name (such as example.com) or one subdomain name (such as www.example.com). You can create a maximum of 1000 versions of a traffic policy. If you reach the limit and need to create another version, you'll need to start a new traffic policy.
 #'
-#' See [https://paws-r.github.io/docs/route53/create_traffic_policy_version.html](https://paws-r.github.io/docs/route53/create_traffic_policy_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_create_traffic_policy_version/](https://www.paws-r-sdk.com/docs/route53_create_traffic_policy_version/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the traffic policy for which you want to create a new version.
 #' @param Document &#91;required&#93; The definition of this version of the traffic policy, in JSON format.
@@ -623,7 +628,7 @@ route53_create_traffic_policy_version <- function(Id, Document, Comment = NULL) 
 #' @description
 #' Authorizes the Amazon Web Services account that created a specified VPC to submit an [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone] request to associate the VPC with a specified hosted zone that was created by a different account. To submit a [`create_vpc_association_authorization`][route53_create_vpc_association_authorization] request, you must use the account that created the hosted zone. After you authorize the association, use the account that created the VPC to submit an [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone] request.
 #'
-#' See [https://paws-r.github.io/docs/route53/create_vpc_association_authorization.html](https://paws-r.github.io/docs/route53/create_vpc_association_authorization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_create_vpc_association_authorization/](https://www.paws-r-sdk.com/docs/route53_create_vpc_association_authorization/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the private hosted zone that you want to authorize associating
 #' a VPC with.
@@ -656,7 +661,7 @@ route53_create_vpc_association_authorization <- function(HostedZoneId, VPC) {
 #' @description
 #' Deactivates a key-signing key (KSK) so that it will not be used for signing by DNSSEC. This operation changes the KSK status to `INACTIVE`.
 #'
-#' See [https://paws-r.github.io/docs/route53/deactivate_key_signing_key.html](https://paws-r.github.io/docs/route53/deactivate_key_signing_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_deactivate_key_signing_key/](https://www.paws-r-sdk.com/docs/route53_deactivate_key_signing_key/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
 #' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK).
@@ -686,7 +691,7 @@ route53_deactivate_key_signing_key <- function(HostedZoneId, Name) {
 #' @description
 #' Deletes a CIDR collection in the current Amazon Web Services account. The collection must be empty before it can be deleted.
 #'
-#' See [https://paws-r.github.io/docs/route53/delete_cidr_collection.html](https://paws-r.github.io/docs/route53/delete_cidr_collection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_delete_cidr_collection/](https://www.paws-r-sdk.com/docs/route53_delete_cidr_collection/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The UUID of the collection to delete.
 #'
@@ -715,7 +720,7 @@ route53_delete_cidr_collection <- function(Id) {
 #' @description
 #' Deletes a health check.
 #'
-#' See [https://paws-r.github.io/docs/route53/delete_health_check.html](https://paws-r.github.io/docs/route53/delete_health_check.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_delete_health_check/](https://www.paws-r-sdk.com/docs/route53_delete_health_check/) for full documentation.
 #'
 #' @param HealthCheckId &#91;required&#93; The ID of the health check that you want to delete.
 #'
@@ -744,7 +749,7 @@ route53_delete_health_check <- function(HealthCheckId) {
 #' @description
 #' Deletes a hosted zone.
 #'
-#' See [https://paws-r.github.io/docs/route53/delete_hosted_zone.html](https://paws-r.github.io/docs/route53/delete_hosted_zone.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_delete_hosted_zone/](https://www.paws-r-sdk.com/docs/route53_delete_hosted_zone/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the hosted zone you want to delete.
 #'
@@ -773,7 +778,7 @@ route53_delete_hosted_zone <- function(Id) {
 #' @description
 #' Deletes a key-signing key (KSK). Before you can delete a KSK, you must deactivate it. The KSK must be deactivated before you can delete it regardless of whether the hosted zone is enabled for DNSSEC signing.
 #'
-#' See [https://paws-r.github.io/docs/route53/delete_key_signing_key.html](https://paws-r.github.io/docs/route53/delete_key_signing_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_delete_key_signing_key/](https://www.paws-r-sdk.com/docs/route53_delete_key_signing_key/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
 #' @param Name &#91;required&#93; A string used to identify a key-signing key (KSK).
@@ -803,7 +808,7 @@ route53_delete_key_signing_key <- function(HostedZoneId, Name) {
 #' @description
 #' Deletes a configuration for DNS query logging. If you delete a configuration, Amazon Route 53 stops sending query logs to CloudWatch Logs. Route 53 doesn't delete any logs that are already in CloudWatch Logs.
 #'
-#' See [https://paws-r.github.io/docs/route53/delete_query_logging_config.html](https://paws-r.github.io/docs/route53/delete_query_logging_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_delete_query_logging_config/](https://www.paws-r-sdk.com/docs/route53_delete_query_logging_config/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the configuration that you want to delete.
 #'
@@ -832,7 +837,7 @@ route53_delete_query_logging_config <- function(Id) {
 #' @description
 #' Deletes a reusable delegation set.
 #'
-#' See [https://paws-r.github.io/docs/route53/delete_reusable_delegation_set.html](https://paws-r.github.io/docs/route53/delete_reusable_delegation_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_delete_reusable_delegation_set/](https://www.paws-r-sdk.com/docs/route53_delete_reusable_delegation_set/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the reusable delegation set that you want to delete.
 #'
@@ -861,7 +866,7 @@ route53_delete_reusable_delegation_set <- function(Id) {
 #' @description
 #' Deletes a traffic policy.
 #'
-#' See [https://paws-r.github.io/docs/route53/delete_traffic_policy.html](https://paws-r.github.io/docs/route53/delete_traffic_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_delete_traffic_policy/](https://www.paws-r-sdk.com/docs/route53_delete_traffic_policy/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the traffic policy that you want to delete.
 #' @param Version &#91;required&#93; The version number of the traffic policy that you want to delete.
@@ -892,7 +897,7 @@ route53_delete_traffic_policy <- function(Id, Version) {
 #' @description
 #' Deletes a traffic policy instance and all of the resource record sets that Amazon Route 53 created when you created the instance.
 #'
-#' See [https://paws-r.github.io/docs/route53/delete_traffic_policy_instance.html](https://paws-r.github.io/docs/route53/delete_traffic_policy_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_delete_traffic_policy_instance/](https://www.paws-r-sdk.com/docs/route53_delete_traffic_policy_instance/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the traffic policy instance that you want to delete.
 #' 
@@ -927,7 +932,7 @@ route53_delete_traffic_policy_instance <- function(Id) {
 #' @description
 #' Removes authorization to submit an [`associate_vpc_with_hosted_zone`][route53_associate_vpc_with_hosted_zone] request to associate a specified VPC with a hosted zone that was created by a different account. You must use the account that created the hosted zone to submit a [`delete_vpc_association_authorization`][route53_delete_vpc_association_authorization] request.
 #'
-#' See [https://paws-r.github.io/docs/route53/delete_vpc_association_authorization.html](https://paws-r.github.io/docs/route53/delete_vpc_association_authorization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_delete_vpc_association_authorization/](https://www.paws-r-sdk.com/docs/route53_delete_vpc_association_authorization/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; When removing authorization to associate a VPC that was created by one
 #' Amazon Web Services account with a hosted zone that was created with a
@@ -962,7 +967,7 @@ route53_delete_vpc_association_authorization <- function(HostedZoneId, VPC) {
 #' @description
 #' Disables DNSSEC signing in a specific hosted zone. This action does not deactivate any key-signing keys (KSKs) that are active in the hosted zone.
 #'
-#' See [https://paws-r.github.io/docs/route53/disable_hosted_zone_dnssec.html](https://paws-r.github.io/docs/route53/disable_hosted_zone_dnssec.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_disable_hosted_zone_dnssec/](https://www.paws-r-sdk.com/docs/route53_disable_hosted_zone_dnssec/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
 #'
@@ -992,7 +997,7 @@ route53_disable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' @description
 #' Disassociates an Amazon Virtual Private Cloud (Amazon VPC) from an Amazon Route 53 private hosted zone. Note the following:
 #'
-#' See [https://paws-r.github.io/docs/route53/disassociate_vpc_from_hosted_zone.html](https://paws-r.github.io/docs/route53/disassociate_vpc_from_hosted_zone.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_disassociate_vpc_from_hosted_zone/](https://www.paws-r-sdk.com/docs/route53_disassociate_vpc_from_hosted_zone/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the private hosted zone that you want to disassociate a VPC
 #' from.
@@ -1025,7 +1030,7 @@ route53_disassociate_vpc_from_hosted_zone <- function(HostedZoneId, VPC, Comment
 #' @description
 #' Enables DNSSEC signing in a specific hosted zone.
 #'
-#' See [https://paws-r.github.io/docs/route53/enable_hosted_zone_dnssec.html](https://paws-r.github.io/docs/route53/enable_hosted_zone_dnssec.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_enable_hosted_zone_dnssec/](https://www.paws-r-sdk.com/docs/route53_enable_hosted_zone_dnssec/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
 #'
@@ -1055,7 +1060,7 @@ route53_enable_hosted_zone_dnssec <- function(HostedZoneId) {
 #' @description
 #' Gets the specified limit for the current account, for example, the maximum number of health checks that you can create using the account.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_account_limit.html](https://paws-r.github.io/docs/route53/get_account_limit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_account_limit/](https://www.paws-r-sdk.com/docs/route53_get_account_limit/) for full documentation.
 #'
 #' @param Type &#91;required&#93; The limit that you want to get. Valid values include the following:
 #' 
@@ -1102,7 +1107,7 @@ route53_get_account_limit <- function(Type) {
 #' @description
 #' Returns the current status of a change batch request. The status is one of the following values:
 #'
-#' See [https://paws-r.github.io/docs/route53/get_change.html](https://paws-r.github.io/docs/route53/get_change.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_change/](https://www.paws-r-sdk.com/docs/route53_get_change/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the change batch request. The value that you specify here is
 #' the value that
@@ -1135,7 +1140,7 @@ route53_get_change <- function(Id) {
 #' @description
 #' Route 53 does not perform authorization for this API because it retrieves information that is already available to the public.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_checker_ip_ranges.html](https://paws-r.github.io/docs/route53/get_checker_ip_ranges.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_checker_ip_ranges/](https://www.paws-r-sdk.com/docs/route53_get_checker_ip_ranges/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1163,7 +1168,7 @@ route53_get_checker_ip_ranges <- function() {
 #' @description
 #' Returns information about DNSSEC for a specific hosted zone, including the key-signing keys (KSKs) in the hosted zone.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_dnssec.html](https://paws-r.github.io/docs/route53/get_dnssec.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_dnssec/](https://www.paws-r-sdk.com/docs/route53_get_dnssec/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; A unique string used to identify a hosted zone.
 #'
@@ -1193,7 +1198,7 @@ route53_get_dnssec <- function(HostedZoneId) {
 #' @description
 #' Gets information about whether a specified geographic location is supported for Amazon Route 53 geolocation resource record sets.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_geo_location.html](https://paws-r.github.io/docs/route53/get_geo_location.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_geo_location/](https://www.paws-r-sdk.com/docs/route53_get_geo_location/) for full documentation.
 #'
 #' @param ContinentCode For geolocation resource record sets, a two-letter abbreviation that
 #' identifies a continent. Amazon Route 53 supports the following continent
@@ -1246,7 +1251,7 @@ route53_get_geo_location <- function(ContinentCode = NULL, CountryCode = NULL, S
 #' @description
 #' Gets information about a specified health check.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_health_check.html](https://paws-r.github.io/docs/route53/get_health_check.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_health_check/](https://www.paws-r-sdk.com/docs/route53_get_health_check/) for full documentation.
 #'
 #' @param HealthCheckId &#91;required&#93; The identifier that Amazon Route 53 assigned to the health check when
 #' you created it. When you add or update a resource record set, you use
@@ -1279,7 +1284,7 @@ route53_get_health_check <- function(HealthCheckId) {
 #' @description
 #' Retrieves the number of health checks that are associated with the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_health_check_count.html](https://paws-r.github.io/docs/route53/get_health_check_count.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_health_check_count/](https://www.paws-r-sdk.com/docs/route53_get_health_check_count/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1306,7 +1311,7 @@ route53_get_health_check_count <- function() {
 #' @description
 #' Gets the reason that a specified health check failed most recently.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_health_check_last_failure_reason.html](https://paws-r.github.io/docs/route53/get_health_check_last_failure_reason.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_health_check_last_failure_reason/](https://www.paws-r-sdk.com/docs/route53_get_health_check_last_failure_reason/) for full documentation.
 #'
 #' @param HealthCheckId &#91;required&#93; The ID for the health check for which you want the last failure reason.
 #' When you created the health check,
@@ -1344,7 +1349,7 @@ route53_get_health_check_last_failure_reason <- function(HealthCheckId) {
 #' @description
 #' Gets status of a specified health check.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_health_check_status.html](https://paws-r.github.io/docs/route53/get_health_check_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_health_check_status/](https://www.paws-r-sdk.com/docs/route53_get_health_check_status/) for full documentation.
 #'
 #' @param HealthCheckId &#91;required&#93; The ID for the health check that you want the current status for. When
 #' you created the health check,
@@ -1382,7 +1387,7 @@ route53_get_health_check_status <- function(HealthCheckId) {
 #' @description
 #' Gets information about a specified hosted zone including the four name servers assigned to the hosted zone.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_hosted_zone.html](https://paws-r.github.io/docs/route53/get_hosted_zone.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_hosted_zone/](https://www.paws-r-sdk.com/docs/route53_get_hosted_zone/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the hosted zone that you want to get information about.
 #'
@@ -1412,7 +1417,7 @@ route53_get_hosted_zone <- function(Id) {
 #' @description
 #' Retrieves the number of hosted zones that are associated with the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_hosted_zone_count.html](https://paws-r.github.io/docs/route53/get_hosted_zone_count.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_hosted_zone_count/](https://www.paws-r-sdk.com/docs/route53_get_hosted_zone_count/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1440,7 +1445,7 @@ route53_get_hosted_zone_count <- function() {
 #' @description
 #' Gets the specified limit for a specified hosted zone, for example, the maximum number of records that you can create in the hosted zone.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_hosted_zone_limit.html](https://paws-r.github.io/docs/route53/get_hosted_zone_limit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_hosted_zone_limit/](https://www.paws-r-sdk.com/docs/route53_get_hosted_zone_limit/) for full documentation.
 #'
 #' @param Type &#91;required&#93; The limit that you want to get. Valid values include the following:
 #' 
@@ -1476,7 +1481,7 @@ route53_get_hosted_zone_limit <- function(Type, HostedZoneId) {
 #' @description
 #' Gets information about a specified configuration for DNS query logging.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_query_logging_config.html](https://paws-r.github.io/docs/route53/get_query_logging_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_query_logging_config/](https://www.paws-r-sdk.com/docs/route53_get_query_logging_config/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the configuration for DNS query logging that you want to get
 #' information about.
@@ -1507,7 +1512,7 @@ route53_get_query_logging_config <- function(Id) {
 #' @description
 #' Retrieves information about a specified reusable delegation set, including the four name servers that are assigned to the delegation set.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_reusable_delegation_set.html](https://paws-r.github.io/docs/route53/get_reusable_delegation_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_reusable_delegation_set/](https://www.paws-r-sdk.com/docs/route53_get_reusable_delegation_set/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the reusable delegation set that you want to get a list of
 #' name servers for.
@@ -1538,7 +1543,7 @@ route53_get_reusable_delegation_set <- function(Id) {
 #' @description
 #' Gets the maximum number of hosted zones that you can associate with the specified reusable delegation set.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_reusable_delegation_set_limit.html](https://paws-r.github.io/docs/route53/get_reusable_delegation_set_limit.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_reusable_delegation_set_limit/](https://www.paws-r-sdk.com/docs/route53_get_reusable_delegation_set_limit/) for full documentation.
 #'
 #' @param Type &#91;required&#93; Specify `MAX_ZONES_BY_REUSABLE_DELEGATION_SET` to get the maximum number
 #' of hosted zones that you can associate with the specified reusable
@@ -1570,7 +1575,7 @@ route53_get_reusable_delegation_set_limit <- function(Type, DelegationSetId) {
 #' @description
 #' Gets information about a specific traffic policy version.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_traffic_policy.html](https://paws-r.github.io/docs/route53/get_traffic_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_traffic_policy/](https://www.paws-r-sdk.com/docs/route53_get_traffic_policy/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the traffic policy that you want to get information about.
 #' @param Version &#91;required&#93; The version number of the traffic policy that you want to get
@@ -1601,7 +1606,7 @@ route53_get_traffic_policy <- function(Id, Version) {
 #' @description
 #' Gets information about a specified traffic policy instance.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_traffic_policy_instance.html](https://paws-r.github.io/docs/route53/get_traffic_policy_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_traffic_policy_instance/](https://www.paws-r-sdk.com/docs/route53_get_traffic_policy_instance/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the traffic policy instance that you want to get information
 #' about.
@@ -1632,7 +1637,7 @@ route53_get_traffic_policy_instance <- function(Id) {
 #' @description
 #' Gets the number of traffic policy instances that are associated with the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/route53/get_traffic_policy_instance_count.html](https://paws-r.github.io/docs/route53/get_traffic_policy_instance_count.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_get_traffic_policy_instance_count/](https://www.paws-r-sdk.com/docs/route53_get_traffic_policy_instance_count/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1659,7 +1664,7 @@ route53_get_traffic_policy_instance_count <- function() {
 #' @description
 #' Returns a paginated list of location objects and their CIDR blocks.
 #'
-#' See [https://paws-r.github.io/docs/route53/list_cidr_blocks.html](https://paws-r.github.io/docs/route53/list_cidr_blocks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_cidr_blocks/](https://www.paws-r-sdk.com/docs/route53_list_cidr_blocks/) for full documentation.
 #'
 #' @param CollectionId &#91;required&#93; The UUID of the CIDR collection.
 #' @param LocationName The name of the CIDR collection location.
@@ -1675,7 +1680,7 @@ route53_list_cidr_blocks <- function(CollectionId, LocationName = NULL, NextToke
     name = "ListCidrBlocks",
     http_method = "GET",
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}/cidrblocks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrBlocks")
   )
   input <- .route53$list_cidr_blocks_input(CollectionId = CollectionId, LocationName = LocationName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_blocks_output()
@@ -1693,7 +1698,7 @@ route53_list_cidr_blocks <- function(CollectionId, LocationName = NULL, NextToke
 #' @description
 #' Returns a paginated list of CIDR collections in the Amazon Web Services account (metadata only).
 #'
-#' See [https://paws-r.github.io/docs/route53/list_cidr_collections.html](https://paws-r.github.io/docs/route53/list_cidr_collections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_cidr_collections/](https://www.paws-r-sdk.com/docs/route53_list_cidr_collections/) for full documentation.
 #'
 #' @param NextToken An opaque pagination token to indicate where the service is to begin
 #' enumerating results.
@@ -1710,7 +1715,7 @@ route53_list_cidr_collections <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListCidrCollections",
     http_method = "GET",
     http_path = "/2013-04-01/cidrcollection",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrCollections")
   )
   input <- .route53$list_cidr_collections_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_collections_output()
@@ -1728,7 +1733,7 @@ route53_list_cidr_collections <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Returns a paginated list of CIDR locations for the given collection (metadata only, does not include CIDR blocks).
 #'
-#' See [https://paws-r.github.io/docs/route53/list_cidr_locations.html](https://paws-r.github.io/docs/route53/list_cidr_locations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_cidr_locations/](https://www.paws-r-sdk.com/docs/route53_list_cidr_locations/) for full documentation.
 #'
 #' @param CollectionId &#91;required&#93; The CIDR collection ID.
 #' @param NextToken An opaque pagination token to indicate where the service is to begin
@@ -1747,7 +1752,7 @@ route53_list_cidr_locations <- function(CollectionId, NextToken = NULL, MaxResul
     name = "ListCidrLocations",
     http_method = "GET",
     http_path = "/2013-04-01/cidrcollection/{CidrCollectionId}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CidrLocations")
   )
   input <- .route53$list_cidr_locations_input(CollectionId = CollectionId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_cidr_locations_output()
@@ -1764,7 +1769,7 @@ route53_list_cidr_locations <- function(CollectionId, NextToken = NULL, MaxResul
 #' @description
 #' Retrieves a list of supported geographic locations.
 #'
-#' See [https://paws-r.github.io/docs/route53/list_geo_locations.html](https://paws-r.github.io/docs/route53/list_geo_locations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_geo_locations/](https://www.paws-r-sdk.com/docs/route53_list_geo_locations/) for full documentation.
 #'
 #' @param StartContinentCode The code for the continent with which you want to start listing
 #' locations that Amazon Route 53 supports for geolocation. If Route 53 has
@@ -1820,7 +1825,7 @@ route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCo
 #' @description
 #' Retrieve a list of the health checks that are associated with the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/route53/list_health_checks.html](https://paws-r.github.io/docs/route53/list_health_checks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_health_checks/](https://www.paws-r-sdk.com/docs/route53_list_health_checks/) for full documentation.
 #'
 #' @param Marker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more health checks. To get another group, submit another
@@ -1846,7 +1851,7 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
     name = "ListHealthChecks",
     http_method = "GET",
     http_path = "/2013-04-01/healthcheck",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HealthChecks")
   )
   input <- .route53$list_health_checks_input(Marker = Marker, MaxItems = MaxItems)
   output <- .route53$list_health_checks_output()
@@ -1864,7 +1869,7 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
 #' @description
 #' Retrieves a list of the public and private hosted zones that are associated with the current Amazon Web Services account. The response includes a `HostedZones` child element for each hosted zone.
 #'
-#' See [https://paws-r.github.io/docs/route53/list_hosted_zones.html](https://paws-r.github.io/docs/route53/list_hosted_zones.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_hosted_zones/](https://www.paws-r-sdk.com/docs/route53_list_hosted_zones/) for full documentation.
 #'
 #' @param Marker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more hosted zones. To get more hosted zones, submit another
@@ -1893,7 +1898,7 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
     name = "ListHostedZones",
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HostedZones")
   )
   input <- .route53$list_hosted_zones_input(Marker = Marker, MaxItems = MaxItems, DelegationSetId = DelegationSetId)
   output <- .route53$list_hosted_zones_output()
@@ -1910,7 +1915,7 @@ route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, Delegation
 #' @description
 #' Retrieves a list of your hosted zones in lexicographic order. The response includes a `HostedZones` child element for each hosted zone created by the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/route53/list_hosted_zones_by_name.html](https://paws-r.github.io/docs/route53/list_hosted_zones_by_name.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_hosted_zones_by_name/](https://www.paws-r-sdk.com/docs/route53_list_hosted_zones_by_name/) for full documentation.
 #'
 #' @param DNSName (Optional) For your first request to
 #' [`list_hosted_zones_by_name`][route53_list_hosted_zones_by_name],
@@ -1966,7 +1971,7 @@ route53_list_hosted_zones_by_name <- function(DNSName = NULL, HostedZoneId = NUL
 #' @description
 #' Lists all the private hosted zones that a specified VPC is associated with, regardless of which Amazon Web Services account or Amazon Web Services service owns the hosted zones. The `HostedZoneOwner` structure in the response contains one of the following values:
 #'
-#' See [https://paws-r.github.io/docs/route53/list_hosted_zones_by_vpc.html](https://paws-r.github.io/docs/route53/list_hosted_zones_by_vpc.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_hosted_zones_by_vpc/](https://www.paws-r-sdk.com/docs/route53_list_hosted_zones_by_vpc/) for full documentation.
 #'
 #' @param VPCId &#91;required&#93; The ID of the Amazon VPC that you want to list hosted zones for.
 #' @param VPCRegion &#91;required&#93; For the Amazon VPC that you specified for `VPCId`, the Amazon Web
@@ -2014,7 +2019,7 @@ route53_list_hosted_zones_by_vpc <- function(VPCId, VPCRegion, MaxItems = NULL, 
 #' @description
 #' Lists the configurations for DNS query logging that are associated with the current Amazon Web Services account or the configuration that is associated with a specified hosted zone.
 #'
-#' See [https://paws-r.github.io/docs/route53/list_query_logging_configs.html](https://paws-r.github.io/docs/route53/list_query_logging_configs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_query_logging_configs/](https://www.paws-r-sdk.com/docs/route53_list_query_logging_configs/) for full documentation.
 #'
 #' @param HostedZoneId (Optional) If you want to list the query logging configuration that is
 #' associated with a hosted zone, specify the ID in `HostedZoneId`.
@@ -2052,7 +2057,7 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
     name = "ListQueryLoggingConfigs",
     http_method = "GET",
     http_path = "/2013-04-01/queryloggingconfig",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "QueryLoggingConfigs")
   )
   input <- .route53$list_query_logging_configs_input(HostedZoneId = HostedZoneId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53$list_query_logging_configs_output()
@@ -2069,7 +2074,7 @@ route53_list_query_logging_configs <- function(HostedZoneId = NULL, NextToken = 
 #' @description
 #' Lists the resource record sets in a specified hosted zone.
 #'
-#' See [https://paws-r.github.io/docs/route53/list_resource_record_sets.html](https://paws-r.github.io/docs/route53/list_resource_record_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_resource_record_sets/](https://www.paws-r-sdk.com/docs/route53_list_resource_record_sets/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that contains the resource record sets that
 #' you want to list.
@@ -2125,7 +2130,7 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
     name = "ListResourceRecordSets",
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone/{Id}/rrset",
-    paginator = list()
+    paginator = list(input_token = list("StartRecordName", "StartRecordType", "StartRecordIdentifier"), limit_key = "MaxItems", more_results = "IsTruncated", output_token = c("NextRecordName", "NextRecordType", "NextRecordIdentifier" ), result_key = "ResourceRecordSets")
   )
   input <- .route53$list_resource_record_sets_input(HostedZoneId = HostedZoneId, StartRecordName = StartRecordName, StartRecordType = StartRecordType, StartRecordIdentifier = StartRecordIdentifier, MaxItems = MaxItems)
   output <- .route53$list_resource_record_sets_output()
@@ -2143,7 +2148,7 @@ route53_list_resource_record_sets <- function(HostedZoneId, StartRecordName = NU
 #' @description
 #' Retrieves a list of the reusable delegation sets that are associated with the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/route53/list_reusable_delegation_sets.html](https://paws-r.github.io/docs/route53/list_reusable_delegation_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_reusable_delegation_sets/](https://www.paws-r-sdk.com/docs/route53_list_reusable_delegation_sets/) for full documentation.
 #'
 #' @param Marker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more reusable delegation sets. To get another group, submit another
@@ -2185,7 +2190,7 @@ route53_list_reusable_delegation_sets <- function(Marker = NULL, MaxItems = NULL
 #' @description
 #' Lists tags for one health check or hosted zone.
 #'
-#' See [https://paws-r.github.io/docs/route53/list_tags_for_resource.html](https://paws-r.github.io/docs/route53/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/route53_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; The type of the resource.
 #' 
@@ -2219,7 +2224,7 @@ route53_list_tags_for_resource <- function(ResourceType, ResourceId) {
 #' @description
 #' Lists tags for up to 10 health checks or hosted zones.
 #'
-#' See [https://paws-r.github.io/docs/route53/list_tags_for_resources.html](https://paws-r.github.io/docs/route53/list_tags_for_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_tags_for_resources/](https://www.paws-r-sdk.com/docs/route53_list_tags_for_resources/) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; The type of the resources.
 #' 
@@ -2255,7 +2260,7 @@ route53_list_tags_for_resources <- function(ResourceType, ResourceIds) {
 #' @description
 #' Gets information about the latest version for every traffic policy that is associated with the current Amazon Web Services account. Policies are listed in the order that they were created in.
 #'
-#' See [https://paws-r.github.io/docs/route53/list_traffic_policies.html](https://paws-r.github.io/docs/route53/list_traffic_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_traffic_policies/](https://www.paws-r-sdk.com/docs/route53_list_traffic_policies/) for full documentation.
 #'
 #' @param TrafficPolicyIdMarker (Conditional) For your first request to
 #' [`list_traffic_policies`][route53_list_traffic_policies], don't include
@@ -2301,7 +2306,7 @@ route53_list_traffic_policies <- function(TrafficPolicyIdMarker = NULL, MaxItems
 #' @description
 #' Gets information about the traffic policy instances that you created by using the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/route53/list_traffic_policy_instances.html](https://paws-r.github.io/docs/route53/list_traffic_policy_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_traffic_policy_instances/](https://www.paws-r-sdk.com/docs/route53_list_traffic_policy_instances/) for full documentation.
 #'
 #' @param HostedZoneIdMarker If the value of `IsTruncated` in the previous response was `true`, you
 #' have more traffic policy instances. To get more traffic policy
@@ -2371,7 +2376,7 @@ route53_list_traffic_policy_instances <- function(HostedZoneIdMarker = NULL, Tra
 #' @description
 #' Gets information about the traffic policy instances that you created in a specified hosted zone.
 #'
-#' See [https://paws-r.github.io/docs/route53/list_traffic_policy_instances_by_hosted_zone.html](https://paws-r.github.io/docs/route53/list_traffic_policy_instances_by_hosted_zone.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_traffic_policy_instances_by_hosted_zone/](https://www.paws-r-sdk.com/docs/route53_list_traffic_policy_instances_by_hosted_zone/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that you want to list traffic policy instances
 #' for.
@@ -2431,7 +2436,7 @@ route53_list_traffic_policy_instances_by_hosted_zone <- function(HostedZoneId, T
 #' @description
 #' Gets information about the traffic policy instances that you created by using a specify traffic policy version.
 #'
-#' See [https://paws-r.github.io/docs/route53/list_traffic_policy_instances_by_policy.html](https://paws-r.github.io/docs/route53/list_traffic_policy_instances_by_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_traffic_policy_instances_by_policy/](https://www.paws-r-sdk.com/docs/route53_list_traffic_policy_instances_by_policy/) for full documentation.
 #'
 #' @param TrafficPolicyId &#91;required&#93; The ID of the traffic policy for which you want to list traffic policy
 #' instances.
@@ -2511,7 +2516,7 @@ route53_list_traffic_policy_instances_by_policy <- function(TrafficPolicyId, Tra
 #' @description
 #' Gets information about all of the versions for a specified traffic policy.
 #'
-#' See [https://paws-r.github.io/docs/route53/list_traffic_policy_versions.html](https://paws-r.github.io/docs/route53/list_traffic_policy_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_traffic_policy_versions/](https://www.paws-r-sdk.com/docs/route53_list_traffic_policy_versions/) for full documentation.
 #'
 #' @param Id &#91;required&#93; Specify the value of `Id` of the traffic policy for which you want to
 #' list all versions.
@@ -2560,7 +2565,7 @@ route53_list_traffic_policy_versions <- function(Id, TrafficPolicyVersionMarker 
 #' @description
 #' Gets a list of the VPCs that were created by other accounts and that can be associated with a specified hosted zone because you've submitted one or more [`create_vpc_association_authorization`][route53_create_vpc_association_authorization] requests.
 #'
-#' See [https://paws-r.github.io/docs/route53/list_vpc_association_authorizations.html](https://paws-r.github.io/docs/route53/list_vpc_association_authorizations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_list_vpc_association_authorizations/](https://www.paws-r-sdk.com/docs/route53_list_vpc_association_authorizations/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone for which you want a list of VPCs that can be
 #' associated with the hosted zone.
@@ -2600,7 +2605,7 @@ route53_list_vpc_association_authorizations <- function(HostedZoneId, NextToken 
 #' @description
 #' Gets the value that Amazon Route 53 returns in response to a DNS request for a specified record name and type. You can optionally specify the IP address of a DNS resolver, an EDNS0 client subnet IP address, and a subnet mask.
 #'
-#' See [https://paws-r.github.io/docs/route53/test_dns_answer.html](https://paws-r.github.io/docs/route53/test_dns_answer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_test_dns_answer/](https://www.paws-r-sdk.com/docs/route53_test_dns_answer/) for full documentation.
 #'
 #' @param HostedZoneId &#91;required&#93; The ID of the hosted zone that you want Amazon Route 53 to simulate a
 #' query for.
@@ -2654,7 +2659,7 @@ route53_test_dns_answer <- function(HostedZoneId, RecordName, RecordType, Resolv
 #' @description
 #' Updates an existing health check. Note that some values can't be updated.
 #'
-#' See [https://paws-r.github.io/docs/route53/update_health_check.html](https://paws-r.github.io/docs/route53/update_health_check.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_update_health_check/](https://www.paws-r-sdk.com/docs/route53_update_health_check/) for full documentation.
 #'
 #' @param HealthCheckId &#91;required&#93; The ID for the health check for which you want detailed information.
 #' When you created the health check,
@@ -2950,7 +2955,7 @@ route53_update_health_check <- function(HealthCheckId, HealthCheckVersion = NULL
 #' @description
 #' Updates the comment for a specified hosted zone.
 #'
-#' See [https://paws-r.github.io/docs/route53/update_hosted_zone_comment.html](https://paws-r.github.io/docs/route53/update_hosted_zone_comment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_update_hosted_zone_comment/](https://www.paws-r-sdk.com/docs/route53_update_hosted_zone_comment/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID for the hosted zone that you want to update the comment for.
 #' @param Comment The new comment for the hosted zone. If you don't specify a value for
@@ -2982,7 +2987,7 @@ route53_update_hosted_zone_comment <- function(Id, Comment = NULL) {
 #' @description
 #' Updates the comment for a specified traffic policy version.
 #'
-#' See [https://paws-r.github.io/docs/route53/update_traffic_policy_comment.html](https://paws-r.github.io/docs/route53/update_traffic_policy_comment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_update_traffic_policy_comment/](https://www.paws-r-sdk.com/docs/route53_update_traffic_policy_comment/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The value of `Id` for the traffic policy that you want to update the
 #' comment for.
@@ -3010,13 +3015,14 @@ route53_update_traffic_policy_comment <- function(Id, Version, Comment) {
 }
 .route53$operations$update_traffic_policy_comment <- route53_update_traffic_policy_comment
 
-#' Updates the resource record sets in a specified hosted zone that were
-#' created based on the settings in a specified traffic policy version
+#' After you submit a UpdateTrafficPolicyInstance request, there's a brief
+#' delay while Route 53 creates the resource record sets that are specified
+#' in the traffic policy definition
 #'
 #' @description
-#' Updates the resource record sets in a specified hosted zone that were created based on the settings in a specified traffic policy version.
+#' After you submit a [`update_traffic_policy_instance`][route53_update_traffic_policy_instance] request, there's a brief delay while Route 53 creates the resource record sets that are specified in the traffic policy definition. Use [`get_traffic_policy_instance`][route53_get_traffic_policy_instance] with the `id` of updated traffic policy instance confirm that the [`update_traffic_policy_instance`][route53_update_traffic_policy_instance] request completed successfully. For more information, see the `State` response element.
 #'
-#' See [https://paws-r.github.io/docs/route53/update_traffic_policy_instance.html](https://paws-r.github.io/docs/route53/update_traffic_policy_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53_update_traffic_policy_instance/](https://www.paws-r-sdk.com/docs/route53_update_traffic_policy_instance/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the traffic policy instance that you want to update.
 #' @param TTL &#91;required&#93; The TTL that you want Amazon Route 53 to assign to all of the updated

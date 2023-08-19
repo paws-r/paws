@@ -16,6 +16,6 @@ applications lists, and protocols lists.}
 \description{
 Adds one or more tags to an Amazon Web Services resource.
 
-See \url{https://paws-r.github.io/docs/fms/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_tag_resource/} for full documentation.
 }
 \keyword{internal}

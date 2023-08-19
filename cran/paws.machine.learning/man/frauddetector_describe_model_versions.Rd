@@ -27,6 +27,6 @@ frauddetector_describe_model_versions(
 \description{
 Gets all of the model versions for the specified model type or for the specified model type and model ID. You can also get details for a single, specified model version.
 
-See \url{https://paws-r.github.io/docs/frauddetector/describe_model_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_describe_model_versions/} for full documentation.
 }
 \keyword{internal}

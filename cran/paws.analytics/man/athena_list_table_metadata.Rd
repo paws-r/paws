@@ -31,6 +31,6 @@ page call.}
 \description{
 Lists the metadata for the tables in the specified data catalog database.
 
-See \url{https://paws-r.github.io/docs/athena/list_table_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_list_table_metadata/} for full documentation.
 }
 \keyword{internal}

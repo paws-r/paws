@@ -20,6 +20,6 @@ servicecatalog_describe_product(AcceptLanguage = NULL, Id = NULL, Name = NULL)
 \description{
 Gets information about the specified product.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/describe_product.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_describe_product/} for full documentation.
 }
 \keyword{internal}

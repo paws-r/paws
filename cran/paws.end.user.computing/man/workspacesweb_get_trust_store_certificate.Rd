@@ -14,6 +14,6 @@ workspacesweb_get_trust_store_certificate(thumbprint, trustStoreArn)
 \description{
 Gets the trust store certificate.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/get_trust_store_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_get_trust_store_certificate/} for full documentation.
 }
 \keyword{internal}

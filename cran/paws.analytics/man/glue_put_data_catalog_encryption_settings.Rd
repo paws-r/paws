@@ -18,6 +18,6 @@ none is provided, the Amazon Web Services account ID is used by default.}
 \description{
 Sets the security configuration for a specified catalog. After the configuration has been set, the specified encryption is applied to every catalog write thereafter.
 
-See \url{https://paws-r.github.io/docs/glue/put_data_catalog_encryption_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_put_data_catalog_encryption_settings/} for full documentation.
 }
 \keyword{internal}

@@ -30,6 +30,6 @@ is the first call.}
 \description{
 Obtains information about the trust relationships for this account.
 
-See \url{https://paws-r.github.io/docs/directoryservice/describe_trusts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_describe_trusts/} for full documentation.
 }
 \keyword{internal}

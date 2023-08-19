@@ -30,6 +30,6 @@ The ARN must be in one of the following formats:
 \description{
 Disassociates the specified regional application resource from any existing web ACL association. A resource can have at most one web ACL association. A regional application can be an Application Load Balancer (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an Amazon Cognito user pool, an App Runner service, or an Amazon Web Services Verified Access instance.
 
-See \url{https://paws-r.github.io/docs/wafv2/disassociate_web_acl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_disassociate_web_acl/} for full documentation.
 }
 \keyword{internal}

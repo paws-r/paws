@@ -22,6 +22,6 @@ gateway.}
 \description{
 Updates the specified attributes of the Direct Connect gateway association.
 
-See \url{https://paws-r.github.io/docs/directconnect/update_direct_connect_gateway_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_update_direct_connect_gateway_association/} for full documentation.
 }
 \keyword{internal}

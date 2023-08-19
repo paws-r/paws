@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a new Call Analytics category.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/create_call_analytics_category.html](https://paws-r.github.io/docs/transcribeservice/create_call_analytics_category.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_create_call_analytics_category/](https://www.paws-r-sdk.com/docs/transcribeservice_create_call_analytics_category/) for full documentation.
 #'
 #' @param CategoryName &#91;required&#93; A unique name, chosen by you, for your Call Analytics category. It's
 #' helpful to use a detailed naming system that will make sense to you in
@@ -61,7 +61,7 @@ transcribeservice_create_call_analytics_category <- function(CategoryName, Rules
 #' @description
 #' Creates a new custom language model.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/create_language_model.html](https://paws-r.github.io/docs/transcribeservice/create_language_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_create_language_model/](https://www.paws-r-sdk.com/docs/transcribeservice_create_language_model/) for full documentation.
 #'
 #' @param LanguageCode &#91;required&#93; The language code that represents the language of your model. Each
 #' custom language model must contain terms in only one language, and the
@@ -134,7 +134,7 @@ transcribeservice_create_language_model <- function(LanguageCode, BaseModelName,
 #' @description
 #' Creates a new custom medical vocabulary.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/create_medical_vocabulary.html](https://paws-r.github.io/docs/transcribeservice/create_medical_vocabulary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_create_medical_vocabulary/](https://www.paws-r-sdk.com/docs/transcribeservice_create_medical_vocabulary/) for full documentation.
 #'
 #' @param VocabularyName &#91;required&#93; A unique name, chosen by you, for your new custom medical vocabulary.
 #' 
@@ -182,7 +182,7 @@ transcribeservice_create_medical_vocabulary <- function(VocabularyName, Language
 #' @description
 #' Creates a new custom vocabulary.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/create_vocabulary.html](https://paws-r.github.io/docs/transcribeservice/create_vocabulary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_create_vocabulary/](https://www.paws-r-sdk.com/docs/transcribeservice_create_vocabulary/) for full documentation.
 #'
 #' @param VocabularyName &#91;required&#93; A unique name, chosen by you, for your new custom vocabulary.
 #' 
@@ -270,7 +270,7 @@ transcribeservice_create_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' @description
 #' Creates a new custom vocabulary filter.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/create_vocabulary_filter.html](https://paws-r.github.io/docs/transcribeservice/create_vocabulary_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_create_vocabulary_filter/](https://www.paws-r-sdk.com/docs/transcribeservice_create_vocabulary_filter/) for full documentation.
 #'
 #' @param VocabularyFilterName &#91;required&#93; A unique name, chosen by you, for your new custom vocabulary filter.
 #' 
@@ -360,7 +360,7 @@ transcribeservice_create_vocabulary_filter <- function(VocabularyFilterName, Lan
 #' @description
 #' Deletes a Call Analytics category. To use this operation, specify the name of the category you want to delete using `CategoryName`. Category names are case sensitive.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/delete_call_analytics_category.html](https://paws-r.github.io/docs/transcribeservice/delete_call_analytics_category.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_delete_call_analytics_category/](https://www.paws-r-sdk.com/docs/transcribeservice_delete_call_analytics_category/) for full documentation.
 #'
 #' @param CategoryName &#91;required&#93; The name of the Call Analytics category you want to delete. Category
 #' names are case sensitive.
@@ -390,7 +390,7 @@ transcribeservice_delete_call_analytics_category <- function(CategoryName) {
 #' @description
 #' Deletes a Call Analytics job. To use this operation, specify the name of the job you want to delete using `CallAnalyticsJobName`. Job names are case sensitive.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/delete_call_analytics_job.html](https://paws-r.github.io/docs/transcribeservice/delete_call_analytics_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_delete_call_analytics_job/](https://www.paws-r-sdk.com/docs/transcribeservice_delete_call_analytics_job/) for full documentation.
 #'
 #' @param CallAnalyticsJobName &#91;required&#93; The name of the Call Analytics job you want to delete. Job names are
 #' case sensitive.
@@ -420,7 +420,7 @@ transcribeservice_delete_call_analytics_job <- function(CallAnalyticsJobName) {
 #' @description
 #' Deletes a custom language model. To use this operation, specify the name of the language model you want to delete using `ModelName`. custom language model names are case sensitive.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/delete_language_model.html](https://paws-r.github.io/docs/transcribeservice/delete_language_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_delete_language_model/](https://www.paws-r-sdk.com/docs/transcribeservice_delete_language_model/) for full documentation.
 #'
 #' @param ModelName &#91;required&#93; The name of the custom language model you want to delete. Model names
 #' are case sensitive.
@@ -450,7 +450,7 @@ transcribeservice_delete_language_model <- function(ModelName) {
 #' @description
 #' Deletes a medical transcription job. To use this operation, specify the name of the job you want to delete using `MedicalTranscriptionJobName`. Job names are case sensitive.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/delete_medical_transcription_job.html](https://paws-r.github.io/docs/transcribeservice/delete_medical_transcription_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_delete_medical_transcription_job/](https://www.paws-r-sdk.com/docs/transcribeservice_delete_medical_transcription_job/) for full documentation.
 #'
 #' @param MedicalTranscriptionJobName &#91;required&#93; The name of the medical transcription job you want to delete. Job names
 #' are case sensitive.
@@ -480,7 +480,7 @@ transcribeservice_delete_medical_transcription_job <- function(MedicalTranscript
 #' @description
 #' Deletes a custom medical vocabulary. To use this operation, specify the name of the custom vocabulary you want to delete using `VocabularyName`. Custom vocabulary names are case sensitive.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/delete_medical_vocabulary.html](https://paws-r.github.io/docs/transcribeservice/delete_medical_vocabulary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_delete_medical_vocabulary/](https://www.paws-r-sdk.com/docs/transcribeservice_delete_medical_vocabulary/) for full documentation.
 #'
 #' @param VocabularyName &#91;required&#93; The name of the custom medical vocabulary you want to delete. Custom
 #' medical vocabulary names are case sensitive.
@@ -510,7 +510,7 @@ transcribeservice_delete_medical_vocabulary <- function(VocabularyName) {
 #' @description
 #' Deletes a transcription job. To use this operation, specify the name of the job you want to delete using `TranscriptionJobName`. Job names are case sensitive.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/delete_transcription_job.html](https://paws-r.github.io/docs/transcribeservice/delete_transcription_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_delete_transcription_job/](https://www.paws-r-sdk.com/docs/transcribeservice_delete_transcription_job/) for full documentation.
 #'
 #' @param TranscriptionJobName &#91;required&#93; The name of the transcription job you want to delete. Job names are case
 #' sensitive.
@@ -540,7 +540,7 @@ transcribeservice_delete_transcription_job <- function(TranscriptionJobName) {
 #' @description
 #' Deletes a custom vocabulary. To use this operation, specify the name of the custom vocabulary you want to delete using `VocabularyName`. Custom vocabulary names are case sensitive.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/delete_vocabulary.html](https://paws-r.github.io/docs/transcribeservice/delete_vocabulary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_delete_vocabulary/](https://www.paws-r-sdk.com/docs/transcribeservice_delete_vocabulary/) for full documentation.
 #'
 #' @param VocabularyName &#91;required&#93; The name of the custom vocabulary you want to delete. Custom vocabulary
 #' names are case sensitive.
@@ -570,7 +570,7 @@ transcribeservice_delete_vocabulary <- function(VocabularyName) {
 #' @description
 #' Deletes a custom vocabulary filter. To use this operation, specify the name of the custom vocabulary filter you want to delete using `VocabularyFilterName`. Custom vocabulary filter names are case sensitive.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/delete_vocabulary_filter.html](https://paws-r.github.io/docs/transcribeservice/delete_vocabulary_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_delete_vocabulary_filter/](https://www.paws-r-sdk.com/docs/transcribeservice_delete_vocabulary_filter/) for full documentation.
 #'
 #' @param VocabularyFilterName &#91;required&#93; The name of the custom vocabulary filter you want to delete. Custom
 #' vocabulary filter names are case sensitive.
@@ -600,7 +600,7 @@ transcribeservice_delete_vocabulary_filter <- function(VocabularyFilterName) {
 #' @description
 #' Provides information about the specified custom language model.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/describe_language_model.html](https://paws-r.github.io/docs/transcribeservice/describe_language_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_describe_language_model/](https://www.paws-r-sdk.com/docs/transcribeservice_describe_language_model/) for full documentation.
 #'
 #' @param ModelName &#91;required&#93; The name of the custom language model you want information about. Model
 #' names are case sensitive.
@@ -630,7 +630,7 @@ transcribeservice_describe_language_model <- function(ModelName) {
 #' @description
 #' Provides information about the specified Call Analytics category.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/get_call_analytics_category.html](https://paws-r.github.io/docs/transcribeservice/get_call_analytics_category.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_get_call_analytics_category/](https://www.paws-r-sdk.com/docs/transcribeservice_get_call_analytics_category/) for full documentation.
 #'
 #' @param CategoryName &#91;required&#93; The name of the Call Analytics category you want information about.
 #' Category names are case sensitive.
@@ -660,7 +660,7 @@ transcribeservice_get_call_analytics_category <- function(CategoryName) {
 #' @description
 #' Provides information about the specified Call Analytics job.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/get_call_analytics_job.html](https://paws-r.github.io/docs/transcribeservice/get_call_analytics_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_get_call_analytics_job/](https://www.paws-r-sdk.com/docs/transcribeservice_get_call_analytics_job/) for full documentation.
 #'
 #' @param CallAnalyticsJobName &#91;required&#93; The name of the Call Analytics job you want information about. Job names
 #' are case sensitive.
@@ -690,7 +690,7 @@ transcribeservice_get_call_analytics_job <- function(CallAnalyticsJobName) {
 #' @description
 #' Provides information about the specified medical transcription job.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/get_medical_transcription_job.html](https://paws-r.github.io/docs/transcribeservice/get_medical_transcription_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_get_medical_transcription_job/](https://www.paws-r-sdk.com/docs/transcribeservice_get_medical_transcription_job/) for full documentation.
 #'
 #' @param MedicalTranscriptionJobName &#91;required&#93; The name of the medical transcription job you want information about.
 #' Job names are case sensitive.
@@ -720,7 +720,7 @@ transcribeservice_get_medical_transcription_job <- function(MedicalTranscription
 #' @description
 #' Provides information about the specified custom medical vocabulary.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/get_medical_vocabulary.html](https://paws-r.github.io/docs/transcribeservice/get_medical_vocabulary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_get_medical_vocabulary/](https://www.paws-r-sdk.com/docs/transcribeservice_get_medical_vocabulary/) for full documentation.
 #'
 #' @param VocabularyName &#91;required&#93; The name of the custom medical vocabulary you want information about.
 #' Custom medical vocabulary names are case sensitive.
@@ -750,7 +750,7 @@ transcribeservice_get_medical_vocabulary <- function(VocabularyName) {
 #' @description
 #' Provides information about the specified transcription job.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/get_transcription_job.html](https://paws-r.github.io/docs/transcribeservice/get_transcription_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_get_transcription_job/](https://www.paws-r-sdk.com/docs/transcribeservice_get_transcription_job/) for full documentation.
 #'
 #' @param TranscriptionJobName &#91;required&#93; The name of the transcription job you want information about. Job names
 #' are case sensitive.
@@ -780,7 +780,7 @@ transcribeservice_get_transcription_job <- function(TranscriptionJobName) {
 #' @description
 #' Provides information about the specified custom vocabulary.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/get_vocabulary.html](https://paws-r.github.io/docs/transcribeservice/get_vocabulary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_get_vocabulary/](https://www.paws-r-sdk.com/docs/transcribeservice_get_vocabulary/) for full documentation.
 #'
 #' @param VocabularyName &#91;required&#93; The name of the custom vocabulary you want information about. Custom
 #' vocabulary names are case sensitive.
@@ -810,7 +810,7 @@ transcribeservice_get_vocabulary <- function(VocabularyName) {
 #' @description
 #' Provides information about the specified custom vocabulary filter.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/get_vocabulary_filter.html](https://paws-r.github.io/docs/transcribeservice/get_vocabulary_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_get_vocabulary_filter/](https://www.paws-r-sdk.com/docs/transcribeservice_get_vocabulary_filter/) for full documentation.
 #'
 #' @param VocabularyFilterName &#91;required&#93; The name of the custom vocabulary filter you want information about.
 #' Custom vocabulary filter names are case sensitive.
@@ -841,7 +841,7 @@ transcribeservice_get_vocabulary_filter <- function(VocabularyFilterName) {
 #' @description
 #' Provides a list of Call Analytics categories, including all rules that make up each category.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/list_call_analytics_categories.html](https://paws-r.github.io/docs/transcribeservice/list_call_analytics_categories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_list_call_analytics_categories/](https://www.paws-r-sdk.com/docs/transcribeservice_list_call_analytics_categories/) for full documentation.
 #'
 #' @param NextToken If your
 #' [`list_call_analytics_categories`][transcribeservice_list_call_analytics_categories]
@@ -863,7 +863,7 @@ transcribeservice_list_call_analytics_categories <- function(NextToken = NULL, M
     name = "ListCallAnalyticsCategories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_call_analytics_categories_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_call_analytics_categories_output()
@@ -880,7 +880,7 @@ transcribeservice_list_call_analytics_categories <- function(NextToken = NULL, M
 #' @description
 #' Provides a list of Call Analytics jobs that match the specified criteria. If no criteria are specified, all Call Analytics jobs are returned.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/list_call_analytics_jobs.html](https://paws-r.github.io/docs/transcribeservice/list_call_analytics_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_list_call_analytics_jobs/](https://www.paws-r-sdk.com/docs/transcribeservice_list_call_analytics_jobs/) for full documentation.
 #'
 #' @param Status Returns only Call Analytics jobs with the specified status. Jobs are
 #' ordered by creation date, with the newest job first. If you don't
@@ -907,7 +907,7 @@ transcribeservice_list_call_analytics_jobs <- function(Status = NULL, JobNameCon
     name = "ListCallAnalyticsJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_call_analytics_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_call_analytics_jobs_output()
@@ -925,7 +925,7 @@ transcribeservice_list_call_analytics_jobs <- function(Status = NULL, JobNameCon
 #' @description
 #' Provides a list of custom language models that match the specified criteria. If no criteria are specified, all custom language models are returned.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/list_language_models.html](https://paws-r.github.io/docs/transcribeservice/list_language_models.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_list_language_models/](https://www.paws-r-sdk.com/docs/transcribeservice_list_language_models/) for full documentation.
 #'
 #' @param StatusEquals Returns only custom language models with the specified status. Language
 #' models are ordered by creation date, with the newest model first. If you
@@ -951,7 +951,7 @@ transcribeservice_list_language_models <- function(StatusEquals = NULL, NameCont
     name = "ListLanguageModels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_language_models_input(StatusEquals = StatusEquals, NameContains = NameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_language_models_output()
@@ -969,7 +969,7 @@ transcribeservice_list_language_models <- function(StatusEquals = NULL, NameCont
 #' @description
 #' Provides a list of medical transcription jobs that match the specified criteria. If no criteria are specified, all medical transcription jobs are returned.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/list_medical_transcription_jobs.html](https://paws-r.github.io/docs/transcribeservice/list_medical_transcription_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_list_medical_transcription_jobs/](https://www.paws-r-sdk.com/docs/transcribeservice_list_medical_transcription_jobs/) for full documentation.
 #'
 #' @param Status Returns only medical transcription jobs with the specified status. Jobs
 #' are ordered by creation date, with the newest job first. If you don't
@@ -996,7 +996,7 @@ transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, Job
     name = "ListMedicalTranscriptionJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_medical_transcription_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_medical_transcription_jobs_output()
@@ -1014,7 +1014,7 @@ transcribeservice_list_medical_transcription_jobs <- function(Status = NULL, Job
 #' @description
 #' Provides a list of custom medical vocabularies that match the specified criteria. If no criteria are specified, all custom medical vocabularies are returned.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/list_medical_vocabularies.html](https://paws-r.github.io/docs/transcribeservice/list_medical_vocabularies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_list_medical_vocabularies/](https://www.paws-r-sdk.com/docs/transcribeservice_list_medical_vocabularies/) for full documentation.
 #'
 #' @param NextToken If your
 #' [`list_medical_vocabularies`][transcribeservice_list_medical_vocabularies]
@@ -1042,7 +1042,7 @@ transcribeservice_list_medical_vocabularies <- function(NextToken = NULL, MaxRes
     name = "ListMedicalVocabularies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_medical_vocabularies_input(NextToken = NextToken, MaxResults = MaxResults, StateEquals = StateEquals, NameContains = NameContains)
   output <- .transcribeservice$list_medical_vocabularies_output()
@@ -1060,7 +1060,7 @@ transcribeservice_list_medical_vocabularies <- function(NextToken = NULL, MaxRes
 #' @description
 #' Lists all tags associated with the specified transcription job, vocabulary, model, or resource.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/list_tags_for_resource.html](https://paws-r.github.io/docs/transcribeservice/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/transcribeservice_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Returns a list of all tags associated with the specified Amazon Resource
 #' Name (ARN). ARNs have the format
@@ -1098,7 +1098,7 @@ transcribeservice_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Provides a list of transcription jobs that match the specified criteria. If no criteria are specified, all transcription jobs are returned.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/list_transcription_jobs.html](https://paws-r.github.io/docs/transcribeservice/list_transcription_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_list_transcription_jobs/](https://www.paws-r-sdk.com/docs/transcribeservice_list_transcription_jobs/) for full documentation.
 #'
 #' @param Status Returns only transcription jobs with the specified status. Jobs are
 #' ordered by creation date, with the newest job first. If you don't
@@ -1125,7 +1125,7 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
     name = "ListTranscriptionJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_transcription_jobs_input(Status = Status, JobNameContains = JobNameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .transcribeservice$list_transcription_jobs_output()
@@ -1142,7 +1142,7 @@ transcribeservice_list_transcription_jobs <- function(Status = NULL, JobNameCont
 #' @description
 #' Provides a list of custom vocabularies that match the specified criteria. If no criteria are specified, all custom vocabularies are returned.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/list_vocabularies.html](https://paws-r.github.io/docs/transcribeservice/list_vocabularies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_list_vocabularies/](https://www.paws-r-sdk.com/docs/transcribeservice_list_vocabularies/) for full documentation.
 #'
 #' @param NextToken If your [`list_vocabularies`][transcribeservice_list_vocabularies]
 #' request returns more results than can be displayed, `NextToken` is
@@ -1169,7 +1169,7 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
     name = "ListVocabularies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_vocabularies_input(NextToken = NextToken, MaxResults = MaxResults, StateEquals = StateEquals, NameContains = NameContains)
   output <- .transcribeservice$list_vocabularies_output()
@@ -1187,7 +1187,7 @@ transcribeservice_list_vocabularies <- function(NextToken = NULL, MaxResults = N
 #' @description
 #' Provides a list of custom vocabulary filters that match the specified criteria. If no criteria are specified, all custom vocabularies are returned.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/list_vocabulary_filters.html](https://paws-r.github.io/docs/transcribeservice/list_vocabulary_filters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_list_vocabulary_filters/](https://www.paws-r-sdk.com/docs/transcribeservice_list_vocabulary_filters/) for full documentation.
 #'
 #' @param NextToken If your
 #' [`list_vocabulary_filters`][transcribeservice_list_vocabulary_filters]
@@ -1211,7 +1211,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
     name = "ListVocabularyFilters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .transcribeservice$list_vocabulary_filters_input(NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains)
   output <- .transcribeservice$list_vocabulary_filters_output()
@@ -1229,7 +1229,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #' @description
 #' Transcribes the audio from a customer service call and applies any additional Request Parameters you choose to include in your request.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/start_call_analytics_job.html](https://paws-r.github.io/docs/transcribeservice/start_call_analytics_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_start_call_analytics_job/](https://www.paws-r-sdk.com/docs/transcribeservice_start_call_analytics_job/) for full documentation.
 #'
 #' @param CallAnalyticsJobName &#91;required&#93; A unique name, chosen by you, for your Call Analytics job.
 #' 
@@ -1341,7 +1341,7 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #' @description
 #' Transcribes the audio from a medical dictation or conversation and applies any additional Request Parameters you choose to include in your request.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/start_medical_transcription_job.html](https://paws-r.github.io/docs/transcribeservice/start_medical_transcription_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_start_medical_transcription_job/](https://www.paws-r-sdk.com/docs/transcribeservice_start_medical_transcription_job/) for full documentation.
 #'
 #' @param MedicalTranscriptionJobName &#91;required&#93; A unique name, chosen by you, for your medical transcription job. The
 #' name that you specify is also used as the default name of your
@@ -1507,7 +1507,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' @description
 #' Transcribes the audio from a media file and applies any additional Request Parameters you choose to include in your request.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/start_transcription_job.html](https://paws-r.github.io/docs/transcribeservice/start_transcription_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_start_transcription_job/](https://www.paws-r-sdk.com/docs/transcribeservice_start_transcription_job/) for full documentation.
 #'
 #' @param TranscriptionJobName &#91;required&#93; A unique name, chosen by you, for your transcription job. The name that
 #' you specify is also used as the default name of your transcription
@@ -1762,18 +1762,25 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #' with your request but **do not** want to use automatic language
 #' identification, use instead the `` parameter with the `VocabularyName`
 #' or `VocabularyFilterName` (or both) sub-parameter.
+#' @param ToxicityDetection Enables toxic speech detection in your transcript. If you include
+#' `ToxicityDetection` in your request, you must also include
+#' `ToxicityCategories`.
+#' 
+#' For information on the types of toxic speech Amazon Transcribe can
+#' detect, see [Detecting toxic
+#' speech](https://docs.aws.amazon.com/transcribe/latest/dg/).
 #'
 #' @keywords internal
 #'
 #' @rdname transcribeservice_start_transcription_job
-transcribeservice_start_transcription_job <- function(TranscriptionJobName, LanguageCode = NULL, MediaSampleRateHertz = NULL, MediaFormat = NULL, Media, OutputBucketName = NULL, OutputKey = NULL, OutputEncryptionKMSKeyId = NULL, KMSEncryptionContext = NULL, Settings = NULL, ModelSettings = NULL, JobExecutionSettings = NULL, ContentRedaction = NULL, IdentifyLanguage = NULL, IdentifyMultipleLanguages = NULL, LanguageOptions = NULL, Subtitles = NULL, Tags = NULL, LanguageIdSettings = NULL) {
+transcribeservice_start_transcription_job <- function(TranscriptionJobName, LanguageCode = NULL, MediaSampleRateHertz = NULL, MediaFormat = NULL, Media, OutputBucketName = NULL, OutputKey = NULL, OutputEncryptionKMSKeyId = NULL, KMSEncryptionContext = NULL, Settings = NULL, ModelSettings = NULL, JobExecutionSettings = NULL, ContentRedaction = NULL, IdentifyLanguage = NULL, IdentifyMultipleLanguages = NULL, LanguageOptions = NULL, Subtitles = NULL, Tags = NULL, LanguageIdSettings = NULL, ToxicityDetection = NULL) {
   op <- new_operation(
     name = "StartTranscriptionJob",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .transcribeservice$start_transcription_job_input(TranscriptionJobName = TranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputKey = OutputKey, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, KMSEncryptionContext = KMSEncryptionContext, Settings = Settings, ModelSettings = ModelSettings, JobExecutionSettings = JobExecutionSettings, ContentRedaction = ContentRedaction, IdentifyLanguage = IdentifyLanguage, IdentifyMultipleLanguages = IdentifyMultipleLanguages, LanguageOptions = LanguageOptions, Subtitles = Subtitles, Tags = Tags, LanguageIdSettings = LanguageIdSettings)
+  input <- .transcribeservice$start_transcription_job_input(TranscriptionJobName = TranscriptionJobName, LanguageCode = LanguageCode, MediaSampleRateHertz = MediaSampleRateHertz, MediaFormat = MediaFormat, Media = Media, OutputBucketName = OutputBucketName, OutputKey = OutputKey, OutputEncryptionKMSKeyId = OutputEncryptionKMSKeyId, KMSEncryptionContext = KMSEncryptionContext, Settings = Settings, ModelSettings = ModelSettings, JobExecutionSettings = JobExecutionSettings, ContentRedaction = ContentRedaction, IdentifyLanguage = IdentifyLanguage, IdentifyMultipleLanguages = IdentifyMultipleLanguages, LanguageOptions = LanguageOptions, Subtitles = Subtitles, Tags = Tags, LanguageIdSettings = LanguageIdSettings, ToxicityDetection = ToxicityDetection)
   output <- .transcribeservice$start_transcription_job_output()
   config <- get_config()
   svc <- .transcribeservice$service(config)
@@ -1789,7 +1796,7 @@ transcribeservice_start_transcription_job <- function(TranscriptionJobName, Lang
 #' @description
 #' Adds one or more custom tags, each in the form of a key:value pair, to the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/tag_resource.html](https://paws-r.github.io/docs/transcribeservice/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_tag_resource/](https://www.paws-r-sdk.com/docs/transcribeservice_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource you want to tag. ARNs
 #' have the format
@@ -1832,7 +1839,7 @@ transcribeservice_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes the specified tags from the specified Amazon Transcribe resource.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/untag_resource.html](https://paws-r.github.io/docs/transcribeservice/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_untag_resource/](https://www.paws-r-sdk.com/docs/transcribeservice_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon Transcribe resource you
 #' want to remove tags from. ARNs have the format
@@ -1872,7 +1879,7 @@ transcribeservice_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates the specified Call Analytics category with new rules. Note that the [`update_call_analytics_category`][transcribeservice_update_call_analytics_category] operation overwrites all existing rules contained in the specified category. You cannot append additional rules onto an existing category.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/update_call_analytics_category.html](https://paws-r.github.io/docs/transcribeservice/update_call_analytics_category.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_update_call_analytics_category/](https://www.paws-r-sdk.com/docs/transcribeservice_update_call_analytics_category/) for full documentation.
 #'
 #' @param CategoryName &#91;required&#93; The name of the Call Analytics category you want to update. Category
 #' names are case sensitive.
@@ -1910,7 +1917,7 @@ transcribeservice_update_call_analytics_category <- function(CategoryName, Rules
 #' @description
 #' Updates an existing custom medical vocabulary with new values. This operation overwrites all existing information with your new values; you cannot append new terms onto an existing custom vocabulary.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/update_medical_vocabulary.html](https://paws-r.github.io/docs/transcribeservice/update_medical_vocabulary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_update_medical_vocabulary/](https://www.paws-r-sdk.com/docs/transcribeservice_update_medical_vocabulary/) for full documentation.
 #'
 #' @param VocabularyName &#91;required&#93; The name of the custom medical vocabulary you want to update. Custom
 #' medical vocabulary names are case sensitive.
@@ -1948,7 +1955,7 @@ transcribeservice_update_medical_vocabulary <- function(VocabularyName, Language
 #' @description
 #' Updates an existing custom vocabulary with new values. This operation overwrites all existing information with your new values; you cannot append new terms onto an existing custom vocabulary.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/update_vocabulary.html](https://paws-r.github.io/docs/transcribeservice/update_vocabulary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_update_vocabulary/](https://www.paws-r-sdk.com/docs/transcribeservice_update_vocabulary/) for full documentation.
 #'
 #' @param VocabularyName &#91;required&#93; The name of the custom vocabulary you want to update. Custom vocabulary
 #' names are case sensitive.
@@ -2027,7 +2034,7 @@ transcribeservice_update_vocabulary <- function(VocabularyName, LanguageCode, Ph
 #' @description
 #' Updates an existing custom vocabulary filter with a new list of words. The new list you provide overwrites all previous entries; you cannot append new terms onto an existing custom vocabulary filter.
 #'
-#' See [https://paws-r.github.io/docs/transcribeservice/update_vocabulary_filter.html](https://paws-r.github.io/docs/transcribeservice/update_vocabulary_filter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/transcribeservice_update_vocabulary_filter/](https://www.paws-r-sdk.com/docs/transcribeservice_update_vocabulary_filter/) for full documentation.
 #'
 #' @param VocabularyFilterName &#91;required&#93; The name of the custom vocabulary filter you want to update. Custom
 #' vocabulary filter names are case sensitive.

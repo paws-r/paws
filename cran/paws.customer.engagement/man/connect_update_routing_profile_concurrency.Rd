@@ -22,6 +22,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Updates the channels that agents can handle in the Contact Control Panel (CCP) for a routing profile.
 
-See \url{https://paws-r.github.io/docs/connect/update_routing_profile_concurrency.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_routing_profile_concurrency/} for full documentation.
 }
 \keyword{internal}

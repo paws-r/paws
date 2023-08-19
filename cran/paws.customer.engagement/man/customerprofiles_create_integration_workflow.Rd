@@ -31,6 +31,6 @@ execution.}
 \description{
 Creates an integration workflow. An integration workflow is an async process which ingests historic data and sets up an integration for ongoing updates. The supported Amazon AppFlow sources are Salesforce, ServiceNow, and Marketo.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/create_integration_workflow.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_create_integration_workflow/} for full documentation.
 }
 \keyword{internal}

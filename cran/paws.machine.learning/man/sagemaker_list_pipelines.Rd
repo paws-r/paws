@@ -37,6 +37,6 @@ use the token in the next request.}
 \description{
 Gets a list of pipelines.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_pipelines.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_pipelines/} for full documentation.
 }
 \keyword{internal}

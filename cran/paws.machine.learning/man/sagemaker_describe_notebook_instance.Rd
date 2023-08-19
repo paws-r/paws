@@ -12,6 +12,6 @@ sagemaker_describe_notebook_instance(NotebookInstanceName)
 \description{
 Returns information about a notebook instance.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_notebook_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_notebook_instance/} for full documentation.
 }
 \keyword{internal}

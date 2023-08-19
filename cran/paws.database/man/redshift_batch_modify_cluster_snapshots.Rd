@@ -29,6 +29,6 @@ retention period has passed.}
 \description{
 Modifies the settings for a set of cluster snapshots.
 
-See \url{https://paws-r.github.io/docs/redshift/batch_modify_cluster_snapshots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_batch_modify_cluster_snapshots/} for full documentation.
 }
 \keyword{internal}

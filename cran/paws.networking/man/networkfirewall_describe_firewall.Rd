@@ -19,6 +19,6 @@ You must specify the ARN or the name, and you can specify both.}
 \description{
 Returns the data objects for the specified firewall.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/describe_firewall.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_describe_firewall/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ athena_create_presigned_notebook_url(SessionId)
 \description{
 Gets an authentication token and the URL at which the notebook can be accessed. During programmatic access, \code{\link[=athena_create_presigned_notebook_url]{create_presigned_notebook_url}} must be called every 10 minutes to refresh the authentication token. For information about granting programmatic access, see \href{https://docs.aws.amazon.com/athena/latest/ug/setting-up.html#setting-up-grant-programmatic-access}{Grant programmatic access}.
 
-See \url{https://paws-r.github.io/docs/athena/create_presigned_notebook_url.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_create_presigned_notebook_url/} for full documentation.
 }
 \keyword{internal}

@@ -43,6 +43,6 @@ The results are sorted by the percentage of lines that are covered.}
 \description{
 Retrieves one or more code coverage reports.
 
-See \url{https://paws-r.github.io/docs/codebuild/describe_code_coverages.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_describe_code_coverages/} for full documentation.
 }
 \keyword{internal}

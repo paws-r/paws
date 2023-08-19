@@ -12,6 +12,6 @@ cloudtrail_delete_channel(Channel)
 \description{
 Deletes a channel.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/delete_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_delete_channel/} for full documentation.
 }
 \keyword{internal}

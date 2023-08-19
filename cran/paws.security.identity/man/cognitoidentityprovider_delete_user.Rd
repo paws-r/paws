@@ -13,6 +13,6 @@ profile you want to delete.}
 \description{
 Allows a user to delete himself or herself.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/delete_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user/} for full documentation.
 }
 \keyword{internal}

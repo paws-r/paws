@@ -45,6 +45,6 @@ of the filter criteria that you provide.}
 \description{
 Retrieves Protection objects for the account. You can retrieve all protections or you can provide filtering criteria and retrieve just the subset of protections that match the criteria.
 
-See \url{https://paws-r.github.io/docs/shield/list_protections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_list_protections/} for full documentation.
 }
 \keyword{internal}

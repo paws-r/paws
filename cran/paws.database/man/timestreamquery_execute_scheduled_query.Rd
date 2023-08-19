@@ -21,6 +21,6 @@ timestamp.}
 \description{
 You can use this API to run a scheduled query manually.
 
-See \url{https://paws-r.github.io/docs/timestreamquery/execute_scheduled_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamquery_execute_scheduled_query/} for full documentation.
 }
 \keyword{internal}

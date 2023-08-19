@@ -18,6 +18,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Removes your Amazon Web Services account from the launch permissions for the specified AMI. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/cancel-sharing-an-AMI.html}{Cancel having an AMI shared with your Amazon Web Services account} in the \emph{Amazon EC2 User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/cancel_image_launch_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_cancel_image_launch_permission/} for full documentation.
 }
 \keyword{internal}

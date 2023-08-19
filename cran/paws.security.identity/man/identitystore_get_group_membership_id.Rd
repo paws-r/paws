@@ -18,6 +18,6 @@ user is a member of the group.}
 \description{
 Retrieves the \code{MembershipId} in an identity store.
 
-See \url{https://paws-r.github.io/docs/identitystore/get_group_membership_id.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/identitystore_get_group_membership_id/} for full documentation.
 }
 \keyword{internal}

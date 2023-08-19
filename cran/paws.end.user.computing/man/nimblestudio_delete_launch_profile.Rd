@@ -24,6 +24,6 @@ session.}
 \description{
 Permanently delete a launch profile.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/delete_launch_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_delete_launch_profile/} for full documentation.
 }
 \keyword{internal}

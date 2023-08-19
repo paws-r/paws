@@ -24,6 +24,6 @@ your account ID, do not include any hyphens ('-') in the ID.}
 \description{
 This operation completes the vault locking process by transitioning the vault lock from the \code{InProgress} state to the \code{Locked} state, which causes the vault lock policy to become unchangeable. A vault lock is put into the \code{InProgress} state by calling \code{\link[=glacier_initiate_vault_lock]{initiate_vault_lock}}. You can obtain the state of the vault lock by calling \code{\link[=glacier_get_vault_lock]{get_vault_lock}}. For more information about the vault locking process, \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/vault-lock.html}{Amazon Glacier Vault Lock}.
 
-See \url{https://paws-r.github.io/docs/glacier/complete_vault_lock.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_complete_vault_lock/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ account.}
 \description{
 Delete the \code{FeatureGroup} and any data that was written to the \code{OnlineStore} of the \code{FeatureGroup}. Data cannot be accessed from the \code{OnlineStore} immediately after \code{\link[=sagemaker_delete_feature_group]{delete_feature_group}} is called.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_feature_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_feature_group/} for full documentation.
 }
 \keyword{internal}

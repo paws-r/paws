@@ -14,6 +14,6 @@ opsworks_untag_resource(ResourceArn, TagKeys)
 \description{
 Removes tags from a specified stack or layer.
 
-See \url{https://paws-r.github.io/docs/opsworks/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_untag_resource/} for full documentation.
 }
 \keyword{internal}

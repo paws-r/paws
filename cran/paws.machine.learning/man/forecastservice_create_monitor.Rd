@@ -18,6 +18,6 @@ to apply to the monitor resource.}
 \description{
 Creates a predictor monitor resource for an existing auto predictor. Predictor monitoring allows you to see how your predictor's performance changes over time. For more information, see \href{https://docs.aws.amazon.com/forecast/latest/dg/predictor-monitoring.html}{Predictor Monitoring}.
 
-See \url{https://paws-r.github.io/docs/forecastservice/create_monitor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_create_monitor/} for full documentation.
 }
 \keyword{internal}

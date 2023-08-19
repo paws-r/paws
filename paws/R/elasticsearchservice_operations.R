@@ -1383,7 +1383,7 @@ elasticsearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResul
     name = "DescribeDomainAutoTunes",
     http_method = "GET",
     http_path = "/2015-01-01/es/domain/{DomainName}/autoTunes",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_domain_auto_tunes_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_domain_auto_tunes_output()
@@ -2327,7 +2327,7 @@ elasticsearchservice_describe_inbound_cross_cluster_search_connections <- functi
     name = "DescribeInboundCrossClusterSearchConnections",
     http_method = "POST",
     http_path = "/2015-01-01/es/ccs/inboundConnection/search",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_inbound_cross_cluster_search_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_inbound_cross_cluster_search_connections_output()
@@ -2417,7 +2417,7 @@ elasticsearchservice_describe_outbound_cross_cluster_search_connections <- funct
     name = "DescribeOutboundCrossClusterSearchConnections",
     http_method = "POST",
     http_path = "/2015-01-01/es/ccs/outboundConnection/search",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_outbound_cross_cluster_search_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_outbound_cross_cluster_search_connections_output()
@@ -2499,7 +2499,7 @@ elasticsearchservice_describe_packages <- function(Filters = NULL, MaxResults = 
     name = "DescribePackages",
     http_method = "POST",
     http_path = "/2015-01-01/packages/describe",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_packages_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_packages_output()
@@ -2572,7 +2572,7 @@ elasticsearchservice_describe_reserved_elasticsearch_instance_offerings <- funct
     name = "DescribeReservedElasticsearchInstanceOfferings",
     http_method = "GET",
     http_path = "/2015-01-01/es/reservedInstanceOfferings",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_reserved_elasticsearch_instance_offerings_input(ReservedElasticsearchInstanceOfferingId = ReservedElasticsearchInstanceOfferingId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_reserved_elasticsearch_instance_offerings_output()
@@ -2654,7 +2654,7 @@ elasticsearchservice_describe_reserved_elasticsearch_instances <- function(Reser
     name = "DescribeReservedElasticsearchInstances",
     http_method = "GET",
     http_path = "/2015-01-01/es/reservedInstances",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_reserved_elasticsearch_instances_input(ReservedElasticsearchInstanceId = ReservedElasticsearchInstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_reserved_elasticsearch_instances_output()
@@ -2918,7 +2918,7 @@ elasticsearchservice_get_package_version_history <- function(PackageID, MaxResul
     name = "GetPackageVersionHistory",
     http_method = "GET",
     http_path = "/2015-01-01/packages/{PackageID}/history",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$get_package_version_history_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$get_package_version_history_output()
@@ -2991,7 +2991,7 @@ elasticsearchservice_get_upgrade_history <- function(DomainName, MaxResults = NU
     name = "GetUpgradeHistory",
     http_method = "GET",
     http_path = "/2015-01-01/es/upgradeDomain/{DomainName}/history",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$get_upgrade_history_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$get_upgrade_history_output()
@@ -3169,7 +3169,7 @@ elasticsearchservice_list_domains_for_package <- function(PackageID, MaxResults 
     name = "ListDomainsForPackage",
     http_method = "GET",
     http_path = "/2015-01-01/packages/{PackageID}/domains",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$list_domains_for_package_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$list_domains_for_package_output()
@@ -3233,7 +3233,7 @@ elasticsearchservice_list_elasticsearch_instance_types <- function(Elasticsearch
     name = "ListElasticsearchInstanceTypes",
     http_method = "GET",
     http_path = "/2015-01-01/es/instanceTypes/{ElasticsearchVersion}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$list_elasticsearch_instance_types_input(ElasticsearchVersion = ElasticsearchVersion, DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$list_elasticsearch_instance_types_output()
@@ -3286,7 +3286,7 @@ elasticsearchservice_list_elasticsearch_versions <- function(MaxResults = NULL, 
     name = "ListElasticsearchVersions",
     http_method = "GET",
     http_path = "/2015-01-01/es/versions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$list_elasticsearch_versions_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$list_elasticsearch_versions_output()
@@ -3358,7 +3358,7 @@ elasticsearchservice_list_packages_for_domain <- function(DomainName, MaxResults
     name = "ListPackagesForDomain",
     http_method = "GET",
     http_path = "/2015-01-01/domain/{DomainName}/packages",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$list_packages_for_domain_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$list_packages_for_domain_output()

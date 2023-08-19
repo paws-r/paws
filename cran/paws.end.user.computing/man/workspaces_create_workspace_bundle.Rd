@@ -36,6 +36,6 @@ create an IAM policy that grants your IAM user permissions to use
 \description{
 Creates the specified WorkSpace bundle. For more information about creating WorkSpace bundles, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/create-custom-bundle.html}{Create a Custom WorkSpaces Image and Bundle}.
 
-See \url{https://paws-r.github.io/docs/workspaces/create_workspace_bundle.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_create_workspace_bundle/} for full documentation.
 }
 \keyword{internal}

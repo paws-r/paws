@@ -41,6 +41,6 @@ Virginia) as follows:
 \description{
 Creates a RegexPatternSet, which you reference in a RegexPatternSetReferenceStatement, to have WAF inspect a web request component for the specified patterns.
 
-See \url{https://paws-r.github.io/docs/wafv2/create_regex_pattern_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_create_regex_pattern_set/} for full documentation.
 }
 \keyword{internal}

@@ -38,6 +38,6 @@ parameter.}
 \description{
 Describes an endpoint authorization.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_endpoint_authorization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_endpoint_authorization/} for full documentation.
 }
 \keyword{internal}

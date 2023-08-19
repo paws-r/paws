@@ -12,6 +12,6 @@ opensearchservice_delete_vpc_endpoint(VpcEndpointId)
 \description{
 Deletes an Amazon OpenSearch Service-managed interface VPC endpoint.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/delete_vpc_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_delete_vpc_endpoint/} for full documentation.
 }
 \keyword{internal}

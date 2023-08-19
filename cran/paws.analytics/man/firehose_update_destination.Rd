@@ -51,6 +51,6 @@ Amazon OpenSearch Service.}
 \description{
 Updates the specified destination of the specified delivery stream.
 
-See \url{https://paws-r.github.io/docs/firehose/update_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/firehose_update_destination/} for full documentation.
 }
 \keyword{internal}

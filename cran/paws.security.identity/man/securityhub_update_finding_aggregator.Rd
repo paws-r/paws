@@ -49,6 +49,6 @@ aggregation Region.}
 \description{
 Updates the finding aggregation configuration. Used to update the Region linking mode and the list of included or excluded Regions. You cannot use \code{\link[=securityhub_update_finding_aggregator]{update_finding_aggregator}} to change the aggregation Region.
 
-See \url{https://paws-r.github.io/docs/securityhub/update_finding_aggregator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_update_finding_aggregator/} for full documentation.
 }
 \keyword{internal}

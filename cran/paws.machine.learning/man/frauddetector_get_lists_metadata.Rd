@@ -21,6 +21,6 @@ frauddetector_get_lists_metadata(
 \description{
 Gets the metadata of either all the lists under the account or the specified list.
 
-See \url{https://paws-r.github.io/docs/frauddetector/get_lists_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_get_lists_metadata/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ frauddetector_delete_external_model(modelEndpoint)
 \description{
 Removes a SageMaker model from Amazon Fraud Detector.
 
-See \url{https://paws-r.github.io/docs/frauddetector/delete_external_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_delete_external_model/} for full documentation.
 }
 \keyword{internal}

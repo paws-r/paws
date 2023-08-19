@@ -13,6 +13,6 @@ names are case sensitive.}
 \description{
 Provides information about the specified custom language model.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/describe_language_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_describe_language_model/} for full documentation.
 }
 \keyword{internal}

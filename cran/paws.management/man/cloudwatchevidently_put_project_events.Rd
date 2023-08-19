@@ -15,6 +15,6 @@ being sent to Evidently.}
 \description{
 Sends performance events to Evidently. These events can be used to evaluate a launch or an experiment.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/put_project_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_put_project_events/} for full documentation.
 }
 \keyword{internal}

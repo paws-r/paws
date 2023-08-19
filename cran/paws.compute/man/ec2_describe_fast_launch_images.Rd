@@ -41,6 +41,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describe details for Windows AMIs that are configured for faster launching.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_fast_launch_images.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_fast_launch_images/} for full documentation.
 }
 \keyword{internal}

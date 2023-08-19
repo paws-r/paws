@@ -12,6 +12,6 @@ redshift_delete_snapshot_copy_grant(SnapshotCopyGrantName)
 \description{
 Deletes the specified snapshot copy grant.
 
-See \url{https://paws-r.github.io/docs/redshift/delete_snapshot_copy_grant.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_delete_snapshot_copy_grant/} for full documentation.
 }
 \keyword{internal}

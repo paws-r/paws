@@ -12,6 +12,6 @@ cloud9_describe_environments(environmentIds)
 \description{
 Gets information about Cloud9 development environments.
 
-See \url{https://paws-r.github.io/docs/cloud9/describe_environments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloud9_describe_environments/} for full documentation.
 }
 \keyword{internal}

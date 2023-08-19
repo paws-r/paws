@@ -30,6 +30,6 @@ If no context words are passed only a regular expression is checked.}
 \description{
 Creates a custom pattern that is used to detect sensitive data across the columns and rows of your structured data.
 
-See \url{https://paws-r.github.io/docs/glue/create_custom_entity_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_create_custom_entity_type/} for full documentation.
 }
 \keyword{internal}

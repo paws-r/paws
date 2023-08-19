@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes a pool of customer-owned IP (CoIP) addresses.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_coip_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_coip_pool/} for full documentation.
 }
 \keyword{internal}

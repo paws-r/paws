@@ -12,6 +12,6 @@ appstream_batch_disassociate_user_stack(UserStackAssociations)
 \description{
 Disassociates the specified users from the specified stacks.
 
-See \url{https://paws-r.github.io/docs/appstream/batch_disassociate_user_stack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_batch_disassociate_user_stack/} for full documentation.
 }
 \keyword{internal}

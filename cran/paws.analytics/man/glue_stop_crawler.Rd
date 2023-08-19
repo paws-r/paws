@@ -12,6 +12,6 @@ glue_stop_crawler(Name)
 \description{
 If the specified crawler is running, stops the crawl.
 
-See \url{https://paws-r.github.io/docs/glue/stop_crawler.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_stop_crawler/} for full documentation.
 }
 \keyword{internal}

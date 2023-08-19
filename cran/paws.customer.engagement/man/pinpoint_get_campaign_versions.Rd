@@ -28,6 +28,6 @@ paginated response.}
 \description{
 Retrieves information about the status, configuration, and other settings for all versions of a campaign.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_campaign_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_campaign_versions/} for full documentation.
 }
 \keyword{internal}

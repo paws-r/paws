@@ -10,6 +10,6 @@ lexmodelsv2_create_upload_url()
 \description{
 Gets a pre-signed S3 write URL that you use to upload the zip archive when importing a bot or a bot locale.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/create_upload_url.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_create_upload_url/} for full documentation.
 }
 \keyword{internal}

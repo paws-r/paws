@@ -27,6 +27,6 @@ of the LAG.}
 \description{
 Updates the attributes of the specified link aggregation group (LAG).
 
-See \url{https://paws-r.github.io/docs/directconnect/update_lag.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_update_lag/} for full documentation.
 }
 \keyword{internal}

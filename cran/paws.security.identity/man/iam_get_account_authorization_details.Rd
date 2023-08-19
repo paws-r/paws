@@ -39,6 +39,6 @@ indicate where the next call should start.}
 \description{
 Retrieves information about all IAM users, groups, roles, and policies in your Amazon Web Services account, including their relationships to one another. Use this operation to obtain a snapshot of the configuration of IAM permissions (users, groups, roles, and policies) in your account.
 
-See \url{https://paws-r.github.io/docs/iam/get_account_authorization_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_account_authorization_details/} for full documentation.
 }
 \keyword{internal}

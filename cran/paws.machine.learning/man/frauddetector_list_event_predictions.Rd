@@ -34,6 +34,6 @@ unchanged. Each pagination token expires after 24 hours.}
 \description{
 Gets a list of past predictions. The list can be filtered by detector ID, detector version ID, event ID, event type, or by specifying a time period. If filter is not specified, the most recent prediction is returned.
 
-See \url{https://paws-r.github.io/docs/frauddetector/list_event_predictions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_list_event_predictions/} for full documentation.
 }
 \keyword{internal}

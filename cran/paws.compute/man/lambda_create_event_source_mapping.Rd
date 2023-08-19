@@ -103,12 +103,12 @@ Related setting: For streams and Amazon SQS event sources, when you set
 from each shard concurrently.}
 
 \item{StartingPosition}{The position in a stream from which to start reading. Required for
-Amazon Kinesis, Amazon DynamoDB, and Amazon MSK Streams sources.
-\code{AT_TIMESTAMP} is supported only for Amazon Kinesis streams and Amazon
-DocumentDB.}
+Amazon Kinesis and Amazon DynamoDB Stream event sources. \code{AT_TIMESTAMP}
+is supported only for Amazon Kinesis streams, Amazon DocumentDB, Amazon
+MSK, and self-managed Apache Kafka.}
 
 \item{StartingPositionTimestamp}{With \code{StartingPosition} set to \code{AT_TIMESTAMP}, the time from which to
-start reading.}
+start reading. \code{StartingPositionTimestamp} cannot be in the future.}
 
 \item{DestinationConfig}{(Kinesis and DynamoDB Streams only) A standard Amazon SQS queue or
 standard Amazon SNS topic destination for discarded records.}
@@ -153,6 +153,6 @@ more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/with-sq
 \description{
 Creates a mapping between an event source and an Lambda function. Lambda reads items from the event source and invokes the function.
 
-See \url{https://paws-r.github.io/docs/lambda/create_event_source_mapping.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_create_event_source_mapping/} for full documentation.
 }
 \keyword{internal}

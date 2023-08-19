@@ -14,6 +14,6 @@ ssmcontacts_untag_resource(ResourceARN, TagKeys)
 \description{
 Removes tags from the specified resource.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_untag_resource/} for full documentation.
 }
 \keyword{internal}

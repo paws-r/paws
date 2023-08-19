@@ -15,6 +15,6 @@ job.}
 \description{
 Describes the specified fraudster registration job.
 
-See \url{https://paws-r.github.io/docs/voiceid/describe_fraudster_registration_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_describe_fraudster_registration_job/} for full documentation.
 }
 \keyword{internal}

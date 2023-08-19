@@ -14,6 +14,6 @@ auditmanager_update_assessment_status(assessmentId, status)
 \description{
 Updates the status of an assessment in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/update_assessment_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_update_assessment_status/} for full documentation.
 }
 \keyword{internal}

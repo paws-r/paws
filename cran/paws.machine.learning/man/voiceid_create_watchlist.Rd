@@ -26,6 +26,6 @@ populates this field. For more information about idempotency, see
 \description{
 Creates a watchlist that fraudsters can be a part of.
 
-See \url{https://paws-r.github.io/docs/voiceid/create_watchlist.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_create_watchlist/} for full documentation.
 }
 \keyword{internal}

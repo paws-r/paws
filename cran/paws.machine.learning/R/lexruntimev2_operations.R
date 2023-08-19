@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Removes session information for a specified bot, alias, and user ID.
 #'
-#' See [https://paws-r.github.io/docs/lexruntimev2/delete_session.html](https://paws-r.github.io/docs/lexruntimev2/delete_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexruntimev2_delete_session/](https://www.paws-r-sdk.com/docs/lexruntimev2_delete_session/) for full documentation.
 #'
 #' @param botId &#91;required&#93; The identifier of the bot that contains the session data.
 #' @param botAliasId &#91;required&#93; The alias identifier in use for the bot that contains the session data.
@@ -40,7 +40,7 @@ lexruntimev2_delete_session <- function(botId, botAliasId, localeId, sessionId) 
 #' @description
 #' Returns session information for a specified bot, alias, and user.
 #'
-#' See [https://paws-r.github.io/docs/lexruntimev2/get_session.html](https://paws-r.github.io/docs/lexruntimev2/get_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexruntimev2_get_session/](https://www.paws-r-sdk.com/docs/lexruntimev2_get_session/) for full documentation.
 #'
 #' @param botId &#91;required&#93; The identifier of the bot that contains the session data.
 #' @param botAliasId &#91;required&#93; The alias identifier in use for the bot that contains the session data.
@@ -73,7 +73,7 @@ lexruntimev2_get_session <- function(botId, botAliasId, localeId, sessionId) {
 #' @description
 #' Creates a new session or modifies an existing session with an Amazon Lex V2 bot. Use this operation to enable your application to set the state of the bot.
 #'
-#' See [https://paws-r.github.io/docs/lexruntimev2/put_session.html](https://paws-r.github.io/docs/lexruntimev2/put_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexruntimev2_put_session/](https://www.paws-r-sdk.com/docs/lexruntimev2_put_session/) for full documentation.
 #'
 #' @param botId &#91;required&#93; The identifier of the bot that receives the session data.
 #' @param botAliasId &#91;required&#93; The alias identifier of the bot that receives the session data.
@@ -121,7 +121,7 @@ lexruntimev2_put_session <- function(botId, botAliasId, localeId, sessionId, mes
 #' @description
 #' Sends user input to Amazon Lex V2. Client applications use this API to send requests to Amazon Lex V2 at runtime. Amazon Lex V2 then interprets the user input using the machine learning model that it build for the bot.
 #'
-#' See [https://paws-r.github.io/docs/lexruntimev2/recognize_text.html](https://paws-r.github.io/docs/lexruntimev2/recognize_text.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexruntimev2_recognize_text/](https://www.paws-r-sdk.com/docs/lexruntimev2_recognize_text/) for full documentation.
 #'
 #' @param botId &#91;required&#93; The identifier of the bot that processes the request.
 #' @param botAliasId &#91;required&#93; The alias identifier in use for the bot that processes the request.
@@ -160,7 +160,7 @@ lexruntimev2_recognize_text <- function(botId, botAliasId, localeId, sessionId, 
 #' @description
 #' Sends user input to Amazon Lex V2. You can send text or speech. Clients use this API to send text and audio requests to Amazon Lex V2 at runtime. Amazon Lex V2 interprets the user input using the machine learning model built for the bot.
 #'
-#' See [https://paws-r.github.io/docs/lexruntimev2/recognize_utterance.html](https://paws-r.github.io/docs/lexruntimev2/recognize_utterance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lexruntimev2_recognize_utterance/](https://www.paws-r-sdk.com/docs/lexruntimev2_recognize_utterance/) for full documentation.
 #'
 #' @param botId &#91;required&#93; The identifier of the bot that should receive the request.
 #' @param botAliasId &#91;required&#93; The alias identifier in use for the bot that should receive the request.

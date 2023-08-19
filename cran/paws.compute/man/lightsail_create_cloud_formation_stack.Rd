@@ -16,6 +16,6 @@ instance entry in this array.}
 \description{
 Creates an AWS CloudFormation stack, which creates a new Amazon EC2 instance from an exported Amazon Lightsail snapshot. This operation results in a CloudFormation stack record that can be used to track the AWS CloudFormation stack created. Use the \verb{get cloud formation stack records} operation to get a list of the CloudFormation stacks created.
 
-See \url{https://paws-r.github.io/docs/lightsail/create_cloud_formation_stack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_create_cloud_formation_stack/} for full documentation.
 }
 \keyword{internal}

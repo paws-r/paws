@@ -5,14 +5,14 @@
 \title{Cancels an instance refresh that is in progress and rolls back any
 changes that it made}
 \usage{
-autoscaling_rollback_instance_refresh(AutoScalingGroupName = NULL)
+autoscaling_rollback_instance_refresh(AutoScalingGroupName)
 }
 \arguments{
-\item{AutoScalingGroupName}{The name of the Auto Scaling group.}
+\item{AutoScalingGroupName}{[required] The name of the Auto Scaling group.}
 }
 \description{
 Cancels an instance refresh that is in progress and rolls back any changes that it made. Amazon EC2 Auto Scaling replaces any instances that were replaced during the instance refresh. This restores your Auto Scaling group to the configuration that it was using before the start of the instance refresh.
 
-See \url{https://paws-r.github.io/docs/autoscaling/rollback_instance_refresh.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_rollback_instance_refresh/} for full documentation.
 }
 \keyword{internal}

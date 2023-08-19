@@ -84,6 +84,6 @@ resource after it's created.}
 \description{
 Creates a new database from an existing database snapshot in Amazon Lightsail.
 
-See \url{https://paws-r.github.io/docs/lightsail/create_relational_database_from_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_create_relational_database_from_snapshot/} for full documentation.
 }
 \keyword{internal}

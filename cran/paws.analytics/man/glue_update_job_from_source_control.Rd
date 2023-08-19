@@ -40,6 +40,6 @@ in Amazon Web Services Secrets Manager, or a personal access token.}
 \description{
 Synchronizes a job from the source control repository. This operation takes the job artifacts that are located in the remote repository and updates the Glue internal stores with these artifacts.
 
-See \url{https://paws-r.github.io/docs/glue/update_job_from_source_control.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_update_job_from_source_control/} for full documentation.
 }
 \keyword{internal}

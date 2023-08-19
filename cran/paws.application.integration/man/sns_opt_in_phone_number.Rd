@@ -13,6 +13,6 @@ sns_opt_in_phone_number(phoneNumber)
 \description{
 Use this request to opt in a phone number that is opted out, which enables you to resume sending SMS messages to the number.
 
-See \url{https://paws-r.github.io/docs/sns/opt_in_phone_number.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_opt_in_phone_number/} for full documentation.
 }
 \keyword{internal}

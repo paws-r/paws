@@ -20,6 +20,6 @@ across all versions of a document, and can't be changed.}
 \description{
 Describes the specified Amazon Web Services Systems Manager document (SSM document).
 
-See \url{https://paws-r.github.io/docs/ssm/describe_document.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_document/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ rekognition_update_dataset_entries(DatasetArn, Changes)
 \description{
 Adds or updates one or more entries (images) in a dataset. An entry is a JSON Line which contains the information for a single image, including the image location, assigned labels, and object location bounding boxes. For more information, see Image-Level labels in manifest files and Object localization in manifest files in the \emph{Amazon Rekognition Custom Labels Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/rekognition/update_dataset_entries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_update_dataset_entries/} for full documentation.
 }
 \keyword{internal}

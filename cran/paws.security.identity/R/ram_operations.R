@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Accepts an invitation to a resource share from another Amazon Web Services account. After you accept the invitation, the resources included in the resource share are available to interact with in the relevant Amazon Web Services Management Consoles and tools.
 #'
-#' See [https://paws-r.github.io/docs/ram/accept_resource_share_invitation.html](https://paws-r.github.io/docs/ram/accept_resource_share_invitation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_accept_resource_share_invitation/](https://www.paws-r-sdk.com/docs/ram_accept_resource_share_invitation/) for full documentation.
 #'
 #' @param resourceShareInvitationArn &#91;required&#93; The [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -55,7 +55,7 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #' @description
 #' Adds the specified list of principals and list of resources to a resource share. Principals that already have access to this resource share immediately receive access to the added resources. Newly added principals immediately receive access to the resources shared in this resource share.
 #'
-#' See [https://paws-r.github.io/docs/ram/associate_resource_share.html](https://paws-r.github.io/docs/ram/associate_resource_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_associate_resource_share/](https://www.paws-r-sdk.com/docs/ram_associate_resource_share/) for full documentation.
 #'
 #' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -106,18 +106,20 @@ ram_accept_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #' If you retry the operation with the same `ClientToken`, but with
 #' different parameters, the retry fails with an
 #' `IdempotentParameterMismatch` error.
+#' @param sources Specifies from which source accounts the service principal has access to
+#' the resources in this resource share.
 #'
 #' @keywords internal
 #'
 #' @rdname ram_associate_resource_share
-ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, principals = NULL, clientToken = NULL) {
+ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, principals = NULL, clientToken = NULL, sources = NULL) {
   op <- new_operation(
     name = "AssociateResourceShare",
     http_method = "POST",
     http_path = "/associateresourceshare",
     paginator = list()
   )
-  input <- .ram$associate_resource_share_input(resourceShareArn = resourceShareArn, resourceArns = resourceArns, principals = principals, clientToken = clientToken)
+  input <- .ram$associate_resource_share_input(resourceShareArn = resourceShareArn, resourceArns = resourceArns, principals = principals, clientToken = clientToken, sources = sources)
   output <- .ram$associate_resource_share_output()
   config <- get_config()
   svc <- .ram$service(config)
@@ -133,7 +135,7 @@ ram_associate_resource_share <- function(resourceShareArn, resourceArns = NULL, 
 #' @description
 #' Adds or replaces the RAM permission for a resource type included in a resource share. You can have exactly one permission associated with each resource type in the resource share. You can add a new RAM permission only if there are currently no resources of that resource type currently in the resource share.
 #'
-#' See [https://paws-r.github.io/docs/ram/associate_resource_share_permission.html](https://paws-r.github.io/docs/ram/associate_resource_share_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_associate_resource_share_permission/](https://www.paws-r-sdk.com/docs/ram_associate_resource_share_permission/) for full documentation.
 #'
 #' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -205,7 +207,7 @@ ram_associate_resource_share_permission <- function(resourceShareArn, permission
 #' @description
 #' Creates a customer managed permission for a specified resource type that you can attach to resource shares. It is created in the Amazon Web Services Region in which you call the operation.
 #'
-#' See [https://paws-r.github.io/docs/ram/create_permission.html](https://paws-r.github.io/docs/ram/create_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_create_permission/](https://www.paws-r-sdk.com/docs/ram_create_permission/) for full documentation.
 #'
 #' @param name &#91;required&#93; Specifies the name of the customer managed permission. The name must be
 #' unique within the Amazon Web Services Region.
@@ -284,7 +286,7 @@ ram_create_permission <- function(name, resourceType, policyTemplate, clientToke
 #' @description
 #' Creates a new version of the specified customer managed permission. The new version is automatically set as the default version of the customer managed permission. New resource shares automatically use the default permission. Existing resource shares continue to use their original permission versions, but you can use [`replace_permission_associations`][ram_replace_permission_associations] to update them.
 #'
-#' See [https://paws-r.github.io/docs/ram/create_permission_version.html](https://paws-r.github.io/docs/ram/create_permission_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_create_permission_version/](https://www.paws-r-sdk.com/docs/ram_create_permission_version/) for full documentation.
 #'
 #' @param permissionArn &#91;required&#93; Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -355,7 +357,7 @@ ram_create_permission_version <- function(permissionArn, policyTemplate, clientT
 #' @description
 #' Creates a resource share. You can provide a list of the [Amazon Resource Names (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html) for the resources that you want to share, a list of principals you want to share the resources with, and the permissions to grant those principals.
 #'
-#' See [https://paws-r.github.io/docs/ram/create_resource_share.html](https://paws-r.github.io/docs/ram/create_resource_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_create_resource_share/](https://www.paws-r-sdk.com/docs/ram_create_resource_share/) for full documentation.
 #'
 #' @param name &#91;required&#93; Specifies the name of the resource share.
 #' @param resourceArns Specifies a list of one or more ARNs of the resources to associate with
@@ -414,18 +416,20 @@ ram_create_permission_version <- function(permissionArn, policyTemplate, clientT
 #' default version of the permission for each resource type. You can
 #' associate only one permission with each resource type included in the
 #' resource share.
+#' @param sources Specifies from which source accounts the service principal has access to
+#' the resources in this resource share.
 #'
 #' @keywords internal
 #'
 #' @rdname ram_create_resource_share
-ram_create_resource_share <- function(name, resourceArns = NULL, principals = NULL, tags = NULL, allowExternalPrincipals = NULL, clientToken = NULL, permissionArns = NULL) {
+ram_create_resource_share <- function(name, resourceArns = NULL, principals = NULL, tags = NULL, allowExternalPrincipals = NULL, clientToken = NULL, permissionArns = NULL, sources = NULL) {
   op <- new_operation(
     name = "CreateResourceShare",
     http_method = "POST",
     http_path = "/createresourceshare",
     paginator = list()
   )
-  input <- .ram$create_resource_share_input(name = name, resourceArns = resourceArns, principals = principals, tags = tags, allowExternalPrincipals = allowExternalPrincipals, clientToken = clientToken, permissionArns = permissionArns)
+  input <- .ram$create_resource_share_input(name = name, resourceArns = resourceArns, principals = principals, tags = tags, allowExternalPrincipals = allowExternalPrincipals, clientToken = clientToken, permissionArns = permissionArns, sources = sources)
   output <- .ram$create_resource_share_output()
   config <- get_config()
   svc <- .ram$service(config)
@@ -441,7 +445,7 @@ ram_create_resource_share <- function(name, resourceArns = NULL, principals = NU
 #' @description
 #' Deletes the specified customer managed permission in the Amazon Web Services Region in which you call this operation. You can delete a customer managed permission only if it isn't attached to any resource share. The operation deletes all versions associated with the customer managed permission.
 #'
-#' See [https://paws-r.github.io/docs/ram/delete_permission.html](https://paws-r.github.io/docs/ram/delete_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_delete_permission/](https://www.paws-r-sdk.com/docs/ram_delete_permission/) for full documentation.
 #'
 #' @param permissionArn &#91;required&#93; Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -486,7 +490,7 @@ ram_delete_permission <- function(permissionArn, clientToken = NULL) {
 #' @description
 #' Deletes one version of a customer managed permission. The version you specify must not be attached to any resource share and must not be the default version for the permission.
 #'
-#' See [https://paws-r.github.io/docs/ram/delete_permission_version.html](https://paws-r.github.io/docs/ram/delete_permission_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_delete_permission_version/](https://www.paws-r-sdk.com/docs/ram_delete_permission_version/) for full documentation.
 #'
 #' @param permissionArn &#91;required&#93; Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -546,7 +550,7 @@ ram_delete_permission_version <- function(permissionArn, permissionVersion, clie
 #' @description
 #' Deletes the specified resource share.
 #'
-#' See [https://paws-r.github.io/docs/ram/delete_resource_share.html](https://paws-r.github.io/docs/ram/delete_resource_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_delete_resource_share/](https://www.paws-r-sdk.com/docs/ram_delete_resource_share/) for full documentation.
 #'
 #' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -592,7 +596,7 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
 #' @description
 #' Removes the specified principals or resources from participating in the specified resource share.
 #'
-#' See [https://paws-r.github.io/docs/ram/disassociate_resource_share.html](https://paws-r.github.io/docs/ram/disassociate_resource_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_disassociate_resource_share/](https://www.paws-r-sdk.com/docs/ram_disassociate_resource_share/) for full documentation.
 #'
 #' @param resourceShareArn &#91;required&#93; Specifies [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -641,18 +645,20 @@ ram_delete_resource_share <- function(resourceShareArn, clientToken = NULL) {
 #' If you retry the operation with the same `ClientToken`, but with
 #' different parameters, the retry fails with an
 #' `IdempotentParameterMismatch` error.
+#' @param sources Specifies from which source accounts the service principal no longer has
+#' access to the resources in this resource share.
 #'
 #' @keywords internal
 #'
 #' @rdname ram_disassociate_resource_share
-ram_disassociate_resource_share <- function(resourceShareArn, resourceArns = NULL, principals = NULL, clientToken = NULL) {
+ram_disassociate_resource_share <- function(resourceShareArn, resourceArns = NULL, principals = NULL, clientToken = NULL, sources = NULL) {
   op <- new_operation(
     name = "DisassociateResourceShare",
     http_method = "POST",
     http_path = "/disassociateresourceshare",
     paginator = list()
   )
-  input <- .ram$disassociate_resource_share_input(resourceShareArn = resourceShareArn, resourceArns = resourceArns, principals = principals, clientToken = clientToken)
+  input <- .ram$disassociate_resource_share_input(resourceShareArn = resourceShareArn, resourceArns = resourceArns, principals = principals, clientToken = clientToken, sources = sources)
   output <- .ram$disassociate_resource_share_output()
   config <- get_config()
   svc <- .ram$service(config)
@@ -667,7 +673,7 @@ ram_disassociate_resource_share <- function(resourceShareArn, resourceArns = NUL
 #' @description
 #' Removes a managed permission from a resource share. Permission changes take effect immediately. You can remove a managed permission from a resource share only if there are currently no resources of the relevant resource type currently attached to the resource share.
 #'
-#' See [https://paws-r.github.io/docs/ram/disassociate_resource_share_permission.html](https://paws-r.github.io/docs/ram/disassociate_resource_share_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_disassociate_resource_share_permission/](https://www.paws-r-sdk.com/docs/ram_disassociate_resource_share_permission/) for full documentation.
 #'
 #' @param resourceShareArn &#91;required&#93; The [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -717,7 +723,7 @@ ram_disassociate_resource_share_permission <- function(resourceShareArn, permiss
 #' @description
 #' Enables resource sharing within your organization in Organizations. This operation creates a service-linked role called `AWSServiceRoleForResourceAccessManager` that has the IAM managed policy named AWSResourceAccessManagerServiceRolePolicy attached. This role permits RAM to retrieve information about the organization and its structure. This lets you share resources with all of the accounts in the calling account's organization by specifying the organization ID, or all of the accounts in an organizational unit (OU) by specifying the OU ID. Until you enable sharing within the organization, you can specify only individual Amazon Web Services accounts, or for supported resource types, IAM roles and users.
 #'
-#' See [https://paws-r.github.io/docs/ram/enable_sharing_with_aws_organization.html](https://paws-r.github.io/docs/ram/enable_sharing_with_aws_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_enable_sharing_with_aws_organization/](https://www.paws-r-sdk.com/docs/ram_enable_sharing_with_aws_organization/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -744,7 +750,7 @@ ram_enable_sharing_with_aws_organization <- function() {
 #' @description
 #' Retrieves the contents of a managed permission in JSON format.
 #'
-#' See [https://paws-r.github.io/docs/ram/get_permission.html](https://paws-r.github.io/docs/ram/get_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_get_permission/](https://www.paws-r-sdk.com/docs/ram_get_permission/) for full documentation.
 #'
 #' @param permissionArn &#91;required&#93; Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -786,7 +792,7 @@ ram_get_permission <- function(permissionArn, permissionVersion = NULL) {
 #' @description
 #' Retrieves the resource policies for the specified resources that you own and have shared.
 #'
-#' See [https://paws-r.github.io/docs/ram/get_resource_policies.html](https://paws-r.github.io/docs/ram/get_resource_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_get_resource_policies/](https://www.paws-r-sdk.com/docs/ram_get_resource_policies/) for full documentation.
 #'
 #' @param resourceArns &#91;required&#93; Specifies the [Amazon Resource Names
 #' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -816,7 +822,7 @@ ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken 
     name = "GetResourcePolicies",
     http_method = "POST",
     http_path = "/getresourcepolicies",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$get_resource_policies_input(resourceArns = resourceArns, principal = principal, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$get_resource_policies_output()
@@ -834,7 +840,7 @@ ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken 
 #' @description
 #' Retrieves the lists of resources and principals that associated for resource shares that you own.
 #'
-#' See [https://paws-r.github.io/docs/ram/get_resource_share_associations.html](https://paws-r.github.io/docs/ram/get_resource_share_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_get_resource_share_associations/](https://www.paws-r-sdk.com/docs/ram_get_resource_share_associations/) for full documentation.
 #'
 #' @param associationType &#91;required&#93; Specifies whether you want to retrieve the associations that involve a
 #' specified resource or principal.
@@ -856,7 +862,7 @@ ram_get_resource_policies <- function(resourceArns, principal = NULL, nextToken 
 #' retrieve. This can be an Amazon Web Services account ID, an organization
 #' ID, an organizational unit ID, or the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
-#' of an individual IAM user or role.
+#' of an individual IAM role or user.
 #' 
 #' You cannot specify this parameter if the association type is `RESOURCE`.
 #' @param associationStatus Specifies that you want to retrieve only associations that have this
@@ -885,7 +891,7 @@ ram_get_resource_share_associations <- function(associationType, resourceShareAr
     name = "GetResourceShareAssociations",
     http_method = "POST",
     http_path = "/getresourceshareassociations",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$get_resource_share_associations_input(associationType = associationType, resourceShareArns = resourceShareArns, resourceArn = resourceArn, principal = principal, associationStatus = associationStatus, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$get_resource_share_associations_output()
@@ -903,7 +909,7 @@ ram_get_resource_share_associations <- function(associationType, resourceShareAr
 #' @description
 #' Retrieves details about invitations that you have received for resource shares.
 #'
-#' See [https://paws-r.github.io/docs/ram/get_resource_share_invitations.html](https://paws-r.github.io/docs/ram/get_resource_share_invitations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_get_resource_share_invitations/](https://www.paws-r-sdk.com/docs/ram_get_resource_share_invitations/) for full documentation.
 #'
 #' @param resourceShareInvitationArns Specifies the [Amazon Resource Names
 #' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -935,7 +941,7 @@ ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NUL
     name = "GetResourceShareInvitations",
     http_method = "POST",
     http_path = "/getresourceshareinvitations",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$get_resource_share_invitations_input(resourceShareInvitationArns = resourceShareInvitationArns, resourceShareArns = resourceShareArns, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$get_resource_share_invitations_output()
@@ -953,7 +959,7 @@ ram_get_resource_share_invitations <- function(resourceShareInvitationArns = NUL
 #' @description
 #' Retrieves details about the resource shares that you own or that are shared with you.
 #'
-#' See [https://paws-r.github.io/docs/ram/get_resource_shares.html](https://paws-r.github.io/docs/ram/get_resource_shares.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_get_resource_shares/](https://www.paws-r-sdk.com/docs/ram_get_resource_shares/) for full documentation.
 #'
 #' @param resourceShareArns Specifies the [Amazon Resource Names
 #' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -1001,7 +1007,7 @@ ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatu
     name = "GetResourceShares",
     http_method = "POST",
     http_path = "/getresourceshares",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$get_resource_shares_input(resourceShareArns = resourceShareArns, resourceShareStatus = resourceShareStatus, resourceOwner = resourceOwner, name = name, tagFilters = tagFilters, nextToken = nextToken, maxResults = maxResults, permissionArn = permissionArn, permissionVersion = permissionVersion)
   output <- .ram$get_resource_shares_output()
@@ -1019,7 +1025,7 @@ ram_get_resource_shares <- function(resourceShareArns = NULL, resourceShareStatu
 #' @description
 #' Lists the resources in a resource share that is shared with you but for which the invitation is still `PENDING`. That means that you haven't accepted or rejected the invitation and the invitation hasn't expired.
 #'
-#' See [https://paws-r.github.io/docs/ram/list_pending_invitation_resources.html](https://paws-r.github.io/docs/ram/list_pending_invitation_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_list_pending_invitation_resources/](https://www.paws-r-sdk.com/docs/ram_list_pending_invitation_resources/) for full documentation.
 #'
 #' @param resourceShareInvitationArn &#91;required&#93; Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -1063,7 +1069,7 @@ ram_list_pending_invitation_resources <- function(resourceShareInvitationArn, ne
     name = "ListPendingInvitationResources",
     http_method = "POST",
     http_path = "/listpendinginvitationresources",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_pending_invitation_resources_input(resourceShareInvitationArn = resourceShareInvitationArn, nextToken = nextToken, maxResults = maxResults, resourceRegionScope = resourceRegionScope)
   output <- .ram$list_pending_invitation_resources_output()
@@ -1081,7 +1087,7 @@ ram_list_pending_invitation_resources <- function(resourceShareInvitationArn, ne
 #' @description
 #' Lists information about the managed permission and its associations to any resource shares that use this managed permission. This lets you see which resource shares use which versions of the specified managed permission.
 #'
-#' See [https://paws-r.github.io/docs/ram/list_permission_associations.html](https://paws-r.github.io/docs/ram/list_permission_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_list_permission_associations/](https://www.paws-r-sdk.com/docs/ram_list_permission_associations/) for full documentation.
 #'
 #' @param permissionArn Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -1127,7 +1133,7 @@ ram_list_permission_associations <- function(permissionArn = NULL, permissionVer
     name = "ListPermissionAssociations",
     http_method = "POST",
     http_path = "/listpermissionassociations",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_permission_associations_input(permissionArn = permissionArn, permissionVersion = permissionVersion, associationStatus = associationStatus, resourceType = resourceType, featureSet = featureSet, defaultVersion = defaultVersion, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_permission_associations_output()
@@ -1144,7 +1150,7 @@ ram_list_permission_associations <- function(permissionArn = NULL, permissionVer
 #' @description
 #' Lists the available versions of the specified RAM permission.
 #'
-#' See [https://paws-r.github.io/docs/ram/list_permission_versions.html](https://paws-r.github.io/docs/ram/list_permission_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_list_permission_versions/](https://www.paws-r-sdk.com/docs/ram_list_permission_versions/) for full documentation.
 #'
 #' @param permissionArn &#91;required&#93; Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -1176,7 +1182,7 @@ ram_list_permission_versions <- function(permissionArn, nextToken = NULL, maxRes
     name = "ListPermissionVersions",
     http_method = "POST",
     http_path = "/listpermissionversions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_permission_versions_input(permissionArn = permissionArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_permission_versions_output()
@@ -1194,7 +1200,7 @@ ram_list_permission_versions <- function(permissionArn, nextToken = NULL, maxRes
 #' @description
 #' Retrieves a list of available RAM permissions that you can use for the supported resource types.
 #'
-#' See [https://paws-r.github.io/docs/ram/list_permissions.html](https://paws-r.github.io/docs/ram/list_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_list_permissions/](https://www.paws-r-sdk.com/docs/ram_list_permissions/) for full documentation.
 #'
 #' @param resourceType Specifies that you want to list only those permissions that apply to the
 #' specified resource type. This parameter is not case sensitive.
@@ -1237,7 +1243,7 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
     name = "ListPermissions",
     http_method = "POST",
     http_path = "/listpermissions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_permissions_input(resourceType = resourceType, nextToken = nextToken, maxResults = maxResults, permissionType = permissionType)
   output <- .ram$list_permissions_output()
@@ -1255,7 +1261,7 @@ ram_list_permissions <- function(resourceType = NULL, nextToken = NULL, maxResul
 #' @description
 #' Lists the principals that you are sharing resources with or that are sharing resources with you.
 #'
-#' See [https://paws-r.github.io/docs/ram/list_principals.html](https://paws-r.github.io/docs/ram/list_principals.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_list_principals/](https://www.paws-r-sdk.com/docs/ram_list_principals/) for full documentation.
 #'
 #' @param resourceOwner &#91;required&#93; Specifies that you want to list information for only resource shares
 #' that match the following:
@@ -1325,7 +1331,7 @@ ram_list_principals <- function(resourceOwner, resourceArn = NULL, principals = 
     name = "ListPrincipals",
     http_method = "POST",
     http_path = "/listprincipals",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_principals_input(resourceOwner = resourceOwner, resourceArn = resourceArn, principals = principals, resourceType = resourceType, resourceShareArns = resourceShareArns, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_principals_output()
@@ -1343,7 +1349,7 @@ ram_list_principals <- function(resourceOwner, resourceArn = NULL, principals = 
 #' @description
 #' Retrieves the current status of the asynchronous tasks performed by RAM when you perform the ReplacePermissionAssociationsWork operation.
 #'
-#' See [https://paws-r.github.io/docs/ram/list_replace_permission_associations_work.html](https://paws-r.github.io/docs/ram/list_replace_permission_associations_work.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_list_replace_permission_associations_work/](https://www.paws-r-sdk.com/docs/ram_list_replace_permission_associations_work/) for full documentation.
 #'
 #' @param workIds A list of IDs. These values come from the `id`field of the
 #' `replacePermissionAssociationsWork`structure returned by the
@@ -1375,7 +1381,7 @@ ram_list_replace_permission_associations_work <- function(workIds = NULL, status
     name = "ListReplacePermissionAssociationsWork",
     http_method = "POST",
     http_path = "/listreplacepermissionassociationswork",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_replace_permission_associations_work_input(workIds = workIds, status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_replace_permission_associations_work_output()
@@ -1392,7 +1398,7 @@ ram_list_replace_permission_associations_work <- function(workIds = NULL, status
 #' @description
 #' Lists the RAM permissions that are associated with a resource share.
 #'
-#' See [https://paws-r.github.io/docs/ram/list_resource_share_permissions.html](https://paws-r.github.io/docs/ram/list_resource_share_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_list_resource_share_permissions/](https://www.paws-r-sdk.com/docs/ram_list_resource_share_permissions/) for full documentation.
 #'
 #' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -1422,7 +1428,7 @@ ram_list_resource_share_permissions <- function(resourceShareArn, nextToken = NU
     name = "ListResourceSharePermissions",
     http_method = "POST",
     http_path = "/listresourcesharepermissions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_resource_share_permissions_input(resourceShareArn = resourceShareArn, nextToken = nextToken, maxResults = maxResults)
   output <- .ram$list_resource_share_permissions_output()
@@ -1439,7 +1445,7 @@ ram_list_resource_share_permissions <- function(resourceShareArn, nextToken = NU
 #' @description
 #' Lists the resource types that can be shared by RAM.
 #'
-#' See [https://paws-r.github.io/docs/ram/list_resource_types.html](https://paws-r.github.io/docs/ram/list_resource_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_list_resource_types/](https://www.paws-r-sdk.com/docs/ram_list_resource_types/) for full documentation.
 #'
 #' @param nextToken Specifies that you want to receive the next page of results. Valid only
 #' if you received a `NextToken` response in the previous request. If you
@@ -1478,7 +1484,7 @@ ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL, resourc
     name = "ListResourceTypes",
     http_method = "POST",
     http_path = "/listresourcetypes",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_resource_types_input(nextToken = nextToken, maxResults = maxResults, resourceRegionScope = resourceRegionScope)
   output <- .ram$list_resource_types_output()
@@ -1496,7 +1502,7 @@ ram_list_resource_types <- function(nextToken = NULL, maxResults = NULL, resourc
 #' @description
 #' Lists the resources that you added to a resource share or the resources that are shared with you.
 #'
-#' See [https://paws-r.github.io/docs/ram/list_resources.html](https://paws-r.github.io/docs/ram/list_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_list_resources/](https://www.paws-r-sdk.com/docs/ram_list_resources/) for full documentation.
 #'
 #' @param resourceOwner &#91;required&#93; Specifies that you want to list only the resource shares that match the
 #' following:
@@ -1555,7 +1561,7 @@ ram_list_resources <- function(resourceOwner, principal = NULL, resourceType = N
     name = "ListResources",
     http_method = "POST",
     http_path = "/listresources",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ram$list_resources_input(resourceOwner = resourceOwner, principal = principal, resourceType = resourceType, resourceArns = resourceArns, resourceShareArns = resourceShareArns, nextToken = nextToken, maxResults = maxResults, resourceRegionScope = resourceRegionScope)
   output <- .ram$list_resources_output()
@@ -1575,7 +1581,7 @@ ram_list_resources <- function(resourceOwner, principal = NULL, resourceType = N
 #' @description
 #' When you attach a resource-based policy to a resource, RAM automatically creates a resource share of `featureSet`=`CREATED_FROM_POLICY` with a managed permission that has the same IAM permissions as the original resource-based policy. However, this type of managed permission is visible to only the resource share owner, and the associated resource share can't be modified by using RAM.
 #'
-#' See [https://paws-r.github.io/docs/ram/promote_permission_created_from_policy.html](https://paws-r.github.io/docs/ram/promote_permission_created_from_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_promote_permission_created_from_policy/](https://www.paws-r-sdk.com/docs/ram_promote_permission_created_from_policy/) for full documentation.
 #'
 #' @param permissionArn &#91;required&#93; Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -1629,7 +1635,7 @@ ram_promote_permission_created_from_policy <- function(permissionArn, name, clie
 #' @description
 #' When you attach a resource-based policy to a resource, RAM automatically creates a resource share of `featureSet`=`CREATED_FROM_POLICY` with a managed permission that has the same IAM permissions as the original resource-based policy. However, this type of managed permission is visible to only the resource share owner, and the associated resource share can't be modified by using RAM.
 #'
-#' See [https://paws-r.github.io/docs/ram/promote_resource_share_created_from_policy.html](https://paws-r.github.io/docs/ram/promote_resource_share_created_from_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_promote_resource_share_created_from_policy/](https://www.paws-r-sdk.com/docs/ram_promote_resource_share_created_from_policy/) for full documentation.
 #'
 #' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -1661,7 +1667,7 @@ ram_promote_resource_share_created_from_policy <- function(resourceShareArn) {
 #' @description
 #' Rejects an invitation to a resource share from another Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/ram/reject_resource_share_invitation.html](https://paws-r.github.io/docs/ram/reject_resource_share_invitation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_reject_resource_share_invitation/](https://www.paws-r-sdk.com/docs/ram_reject_resource_share_invitation/) for full documentation.
 #'
 #' @param resourceShareInvitationArn &#91;required&#93; Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -1707,7 +1713,7 @@ ram_reject_resource_share_invitation <- function(resourceShareInvitationArn, cli
 #' @description
 #' Updates all resource shares that use a managed permission to a different managed permission. This operation always applies the default version of the target managed permission. You can optionally specify that the update applies to only resource shares that currently use a specified version. This enables you to update to the latest version, without changing the which managed permission is used.
 #'
-#' See [https://paws-r.github.io/docs/ram/replace_permission_associations.html](https://paws-r.github.io/docs/ram/replace_permission_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_replace_permission_associations/](https://www.paws-r-sdk.com/docs/ram_replace_permission_associations/) for full documentation.
 #'
 #' @param fromPermissionArn &#91;required&#93; Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -1762,7 +1768,7 @@ ram_replace_permission_associations <- function(fromPermissionArn, fromPermissio
 #' @description
 #' Designates the specified version number as the default version for the specified customer managed permission. New resource shares automatically use this new default permission. Existing resource shares continue to use their original permission version, but you can use [`replace_permission_associations`][ram_replace_permission_associations] to update them.
 #'
-#' See [https://paws-r.github.io/docs/ram/set_default_permission_version.html](https://paws-r.github.io/docs/ram/set_default_permission_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_set_default_permission_version/](https://www.paws-r-sdk.com/docs/ram_set_default_permission_version/) for full documentation.
 #'
 #' @param permissionArn &#91;required&#93; Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -1812,7 +1818,7 @@ ram_set_default_permission_version <- function(permissionArn, permissionVersion,
 #' @description
 #' Adds the specified tag keys and values to a resource share or managed permission. If you choose a resource share, the tags are attached to only the resource share, not to the resources that are in the resource share.
 #'
-#' See [https://paws-r.github.io/docs/ram/tag_resource.html](https://paws-r.github.io/docs/ram/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_tag_resource/](https://www.paws-r-sdk.com/docs/ram_tag_resource/) for full documentation.
 #'
 #' @param resourceShareArn Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -1852,7 +1858,7 @@ ram_tag_resource <- function(resourceShareArn = NULL, tags, resourceArn = NULL) 
 #' @description
 #' Removes the specified tag key and value pairs from the specified resource share or managed permission.
 #'
-#' See [https://paws-r.github.io/docs/ram/untag_resource.html](https://paws-r.github.io/docs/ram/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_untag_resource/](https://www.paws-r-sdk.com/docs/ram_untag_resource/) for full documentation.
 #'
 #' @param resourceShareArn Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
@@ -1891,7 +1897,7 @@ ram_untag_resource <- function(resourceShareArn = NULL, tagKeys, resourceArn = N
 #' @description
 #' Modifies some of the properties of the specified resource share.
 #'
-#' See [https://paws-r.github.io/docs/ram/update_resource_share.html](https://paws-r.github.io/docs/ram/update_resource_share.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ram_update_resource_share/](https://www.paws-r-sdk.com/docs/ram_update_resource_share/) for full documentation.
 #'
 #' @param resourceShareArn &#91;required&#93; Specifies the [Amazon Resource Name
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)

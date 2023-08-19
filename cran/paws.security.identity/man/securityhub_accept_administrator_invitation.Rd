@@ -17,6 +17,6 @@ administrator account.}
 \description{
 Accepts the invitation to be a member account and be monitored by the Security Hub administrator account that the invitation was sent from.
 
-See \url{https://paws-r.github.io/docs/securityhub/accept_administrator_invitation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_accept_administrator_invitation/} for full documentation.
 }
 \keyword{internal}

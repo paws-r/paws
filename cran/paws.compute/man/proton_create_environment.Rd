@@ -91,6 +91,6 @@ in the \emph{Proton User Guide}.}
 \description{
 Deploy a new environment. An Proton environment is created from an environment template that defines infrastructure and resources that can be shared across services.
 
-See \url{https://paws-r.github.io/docs/proton/create_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_create_environment/} for full documentation.
 }
 \keyword{internal}

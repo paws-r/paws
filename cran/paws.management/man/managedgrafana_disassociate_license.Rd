@@ -14,6 +14,6 @@ managedgrafana_disassociate_license(licenseType, workspaceId)
 \description{
 Removes the Grafana Enterprise license from a workspace.
 
-See \url{https://paws-r.github.io/docs/managedgrafana/disassociate_license.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/managedgrafana_disassociate_license/} for full documentation.
 }
 \keyword{internal}

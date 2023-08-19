@@ -12,6 +12,6 @@ mturk_delete_hit(HITId)
 \description{
 The \code{\link[=mturk_delete_hit]{delete_hit}} operation is used to delete HIT that is no longer needed. Only the Requester who created the HIT can delete it.
 
-See \url{https://paws-r.github.io/docs/mturk/delete_hit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_delete_hit/} for full documentation.
 }
 \keyword{internal}

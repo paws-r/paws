@@ -12,6 +12,6 @@ iamrolesanywhere_delete_crl(crlId)
 \description{
 Deletes a certificate revocation list (CRL).
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/delete_crl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_delete_crl/} for full documentation.
 }
 \keyword{internal}

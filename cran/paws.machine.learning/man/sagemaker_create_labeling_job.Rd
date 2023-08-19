@@ -154,6 +154,6 @@ in the \emph{Amazon Web Services Billing and Cost Management User Guide}.}
 \description{
 Creates a job that uses workers to label the data objects in your input dataset. You can use the labeled data to train machine learning models.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_labeling_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_labeling_job/} for full documentation.
 }
 \keyword{internal}

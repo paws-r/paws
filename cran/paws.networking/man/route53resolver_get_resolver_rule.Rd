@@ -14,6 +14,6 @@ route53resolver_get_resolver_rule(ResolverRuleId)
 \description{
 Gets information about a specified Resolver rule, such as the domain name that the rule forwards DNS queries for and the ID of the outbound Resolver endpoint that the rule is associated with.
 
-See \url{https://paws-r.github.io/docs/route53resolver/get_resolver_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_rule/} for full documentation.
 }
 \keyword{internal}

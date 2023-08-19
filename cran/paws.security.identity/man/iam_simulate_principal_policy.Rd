@@ -208,6 +208,6 @@ indicate where the next call should start.}
 \description{
 Simulate how a set of IAM policies attached to an IAM entity works with a list of API operations and Amazon Web Services resources to determine the policies' effective permissions. The entity can be an IAM user, group, or role. If you specify a user, then the simulation also includes all of the policies that are attached to groups that the user belongs to. You can simulate resources that don't exist in your account.
 
-See \url{https://paws-r.github.io/docs/iam/simulate_principal_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_simulate_principal_policy/} for full documentation.
 }
 \keyword{internal}

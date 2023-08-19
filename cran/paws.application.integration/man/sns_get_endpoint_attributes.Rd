@@ -14,6 +14,6 @@ sns_get_endpoint_attributes(EndpointArn)
 \description{
 Retrieves the endpoint attributes for a device on one of the supported push notification services, such as GCM (Firebase Cloud Messaging) and APNS. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.
 
-See \url{https://paws-r.github.io/docs/sns/get_endpoint_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_get_endpoint_attributes/} for full documentation.
 }
 \keyword{internal}

@@ -53,6 +53,6 @@ be made to or from the model container.}
 \description{
 Creates a model in SageMaker. In the request, you name the model and describe a primary container. For the primary container, you specify the Docker image that contains inference code, artifacts (from prior training), and a custom environment map that the inference code uses when you deploy the model for predictions.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_model/} for full documentation.
 }
 \keyword{internal}

@@ -46,6 +46,6 @@ data source for the inference scheduler.}
 \description{
 Updates an inference scheduler.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/update_inference_scheduler.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_update_inference_scheduler/} for full documentation.
 }
 \keyword{internal}

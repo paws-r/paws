@@ -15,6 +15,6 @@ URLs cannot contain the ARN.}
 \description{
 Get a URL to upload content to a knowledge base. To upload content, first make a PUT request to the returned URL with your file, making sure to include the required headers. Then use \code{\link[=connectwisdomservice_create_content]{create_content}} to finalize the content creation process or \code{\link[=connectwisdomservice_update_content]{update_content}} to modify an existing resource. You can only upload content to a knowledge base of type CUSTOM.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/start_content_upload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_start_content_upload/} for full documentation.
 }
 \keyword{internal}

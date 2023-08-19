@@ -30,6 +30,6 @@ used for \href{https://docs.aws.amazon.com/ses/latest/dg/send-email-authenticati
 \description{
 Used to configure or change the DKIM authentication settings for an email domain identity. You can use this operation to do any of the following:
 
-See \url{https://paws-r.github.io/docs/sesv2/put_email_identity_dkim_signing_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_put_email_identity_dkim_signing_attributes/} for full documentation.
 }
 \keyword{internal}

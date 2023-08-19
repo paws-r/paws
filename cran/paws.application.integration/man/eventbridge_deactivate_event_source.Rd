@@ -13,6 +13,6 @@ eventbridge_deactivate_event_source(Name)
 \description{
 You can use this operation to temporarily stop receiving events from the specified partner event source. The matching event bus is not deleted.
 
-See \url{https://paws-r.github.io/docs/eventbridge/deactivate_event_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_deactivate_event_source/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ parameter.}
 \description{
 A history of user activity and any risks detected as part of Amazon Cognito advanced security.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_list_user_auth_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_list_user_auth_events/} for full documentation.
 }
 \keyword{internal}

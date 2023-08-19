@@ -39,6 +39,6 @@ Default: 20}
 \description{
 This operation returns all the domain names registered with Amazon Route 53 for the current Amazon Web Services account if no filtering conditions are used.
 
-See \url{https://paws-r.github.io/docs/route53domains/list_domains.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_list_domains/} for full documentation.
 }
 \keyword{internal}

@@ -40,6 +40,6 @@ in the \emph{Amazon S3 User Guide}.}
 \description{
 Creates a batch prediction job.
 
-See \url{https://paws-r.github.io/docs/frauddetector/create_batch_prediction_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_create_batch_prediction_job/} for full documentation.
 }
 \keyword{internal}

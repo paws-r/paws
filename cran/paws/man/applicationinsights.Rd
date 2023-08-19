@@ -4,22 +4,47 @@
 \alias{applicationinsights}
 \title{Amazon CloudWatch Application Insights}
 \usage{
-applicationinsights(config = list())
+applicationinsights(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -61,8 +86,20 @@ occurring. It bases this analysis on impactful metrics and log errors.
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -70,6 +107,7 @@ occurring. It bases this analysis on impactful metrics and log errors.
 \section{Operations}{
 
 \tabular{ll}{
+\link[paws.management:applicationinsights_add_workload]{add_workload} \tab Adds a workload to a component\cr
 \link[paws.management:applicationinsights_create_application]{create_application} \tab Adds an application that is created from a resource group\cr
 \link[paws.management:applicationinsights_create_component]{create_component} \tab Creates a custom component by grouping similar standalone instances to monitor\cr
 \link[paws.management:applicationinsights_create_log_pattern]{create_log_pattern} \tab Adds an log pattern to a LogPatternSet\cr
@@ -84,6 +122,7 @@ occurring. It bases this analysis on impactful metrics and log errors.
 \link[paws.management:applicationinsights_describe_observation]{describe_observation} \tab Describes an anomaly or error with the application\cr
 \link[paws.management:applicationinsights_describe_problem]{describe_problem} \tab Describes an application problem\cr
 \link[paws.management:applicationinsights_describe_problem_observations]{describe_problem_observations} \tab Describes the anomalies or errors associated with the problem\cr
+\link[paws.management:applicationinsights_describe_workload]{describe_workload} \tab Describes a workload and its configuration\cr
 \link[paws.management:applicationinsights_list_applications]{list_applications} \tab Lists the IDs of the applications that you are monitoring\cr
 \link[paws.management:applicationinsights_list_components]{list_components} \tab Lists the auto-grouped, standalone, and custom components of the application\cr
 \link[paws.management:applicationinsights_list_configuration_history]{list_configuration_history} \tab Lists the INFO, WARN, and ERROR events for periodic configuration updates performed by Application Insights\cr
@@ -91,19 +130,23 @@ occurring. It bases this analysis on impactful metrics and log errors.
 \link[paws.management:applicationinsights_list_log_pattern_sets]{list_log_pattern_sets} \tab Lists the log pattern sets in the specific application\cr
 \link[paws.management:applicationinsights_list_problems]{list_problems} \tab Lists the problems with your application\cr
 \link[paws.management:applicationinsights_list_tags_for_resource]{list_tags_for_resource} \tab Retrieve a list of the tags (keys and values) that are associated with a specified application\cr
+\link[paws.management:applicationinsights_list_workloads]{list_workloads} \tab Lists the workloads that are configured on a given component\cr
+\link[paws.management:applicationinsights_remove_workload]{remove_workload} \tab Remove workload from a component\cr
 \link[paws.management:applicationinsights_tag_resource]{tag_resource} \tab Add one or more tags (keys and values) to a specified application\cr
 \link[paws.management:applicationinsights_untag_resource]{untag_resource} \tab Remove one or more tags (keys and values) from a specified application\cr
 \link[paws.management:applicationinsights_update_application]{update_application} \tab Updates the application\cr
 \link[paws.management:applicationinsights_update_component]{update_component} \tab Updates the custom component name and/or the list of resources that make up the component\cr
 \link[paws.management:applicationinsights_update_component_configuration]{update_component_configuration} \tab Updates the monitoring configurations for the component\cr
-\link[paws.management:applicationinsights_update_log_pattern]{update_log_pattern} \tab Adds a log pattern to a LogPatternSet
+\link[paws.management:applicationinsights_update_log_pattern]{update_log_pattern} \tab Adds a log pattern to a LogPatternSet\cr
+\link[paws.management:applicationinsights_update_problem]{update_problem} \tab Updates the visibility of the problem or specifies the problem as RESOLVED\cr
+\link[paws.management:applicationinsights_update_workload]{update_workload} \tab Adds a workload to a component
 }
 }
 
 \examples{
 \dontrun{
 svc <- applicationinsights()
-svc$create_application(
+svc$add_workload(
   Foo = 123
 )
 }

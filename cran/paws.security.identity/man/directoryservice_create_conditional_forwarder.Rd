@@ -24,6 +24,6 @@ RemoteDomainName.}
 \description{
 Creates a conditional forwarder associated with your Amazon Web Services directory. Conditional forwarders are required in order to set up a trust relationship with another domain. The conditional forwarder points to the trusted domain.
 
-See \url{https://paws-r.github.io/docs/directoryservice/create_conditional_forwarder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_create_conditional_forwarder/} for full documentation.
 }
 \keyword{internal}

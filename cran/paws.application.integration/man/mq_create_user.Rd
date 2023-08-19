@@ -9,7 +9,8 @@ mq_create_user(
   ConsoleAccess = NULL,
   Groups = NULL,
   Password,
-  Username
+  Username,
+  ReplicationUser = NULL
 )
 }
 \arguments{
@@ -29,10 +30,12 @@ contain commas, colons, or equal signs (,:=).}
 \item{Username}{[required] The username of the ActiveMQ user. This value can contain only
 alphanumeric characters, dashes, periods, underscores, and tildes (- .
 _ ~). This value must be 2-100 characters long.}
+
+\item{ReplicationUser}{Defines if this user is intended for CRDR replication purposes.}
 }
 \description{
 Creates an ActiveMQ user.
 
-See \url{https://paws-r.github.io/docs/mq/create_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_create_user/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ sagemaker_delete_algorithm(AlgorithmName)
 \description{
 Removes the specified algorithm from your account.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_algorithm.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_algorithm/} for full documentation.
 }
 \keyword{internal}

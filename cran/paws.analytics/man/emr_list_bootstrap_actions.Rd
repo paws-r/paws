@@ -15,6 +15,6 @@ emr_list_bootstrap_actions(ClusterId, Marker = NULL)
 \description{
 Provides information about the bootstrap actions associated with a cluster.
 
-See \url{https://paws-r.github.io/docs/emr/list_bootstrap_actions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_list_bootstrap_actions/} for full documentation.
 }
 \keyword{internal}

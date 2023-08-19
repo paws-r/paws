@@ -130,6 +130,6 @@ support IMDSv2.}
 \description{
 Registers an AMI. When you're creating an AMI, this is the final step you must complete before you can launch an instance from the AMI. For more information about creating AMIs, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AMIs.html#creating-an-ami}{Create your own AMI} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/register_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_register_image/} for full documentation.
 }
 \keyword{internal}

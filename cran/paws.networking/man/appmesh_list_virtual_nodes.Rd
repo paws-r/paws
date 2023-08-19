@@ -40,6 +40,6 @@ the \code{nextToken} value.}
 \description{
 Returns a list of existing virtual nodes.
 
-See \url{https://paws-r.github.io/docs/appmesh/list_virtual_nodes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appmesh_list_virtual_nodes/} for full documentation.
 }
 \keyword{internal}

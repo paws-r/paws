@@ -12,6 +12,6 @@ athena_stop_query_execution(QueryExecutionId)
 \description{
 Stops a query execution. Requires you to have access to the workgroup in which the query ran.
 
-See \url{https://paws-r.github.io/docs/athena/stop_query_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_stop_query_execution/} for full documentation.
 }
 \keyword{internal}

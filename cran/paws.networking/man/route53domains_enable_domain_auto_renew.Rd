@@ -13,6 +13,6 @@ route53domains_enable_domain_auto_renew(DomainName)
 \description{
 This operation configures Amazon Route 53 to automatically renew the specified domain before the domain registration expires. The cost of renewing your domain registration is billed to your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/route53domains/enable_domain_auto_renew.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_enable_domain_auto_renew/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ billingconductor_delete_custom_line_item(Arn, BillingPeriodRange = NULL)
 \description{
 Deletes the custom line item identified by the given ARN in the current, or previous billing period.
 
-See \url{https://paws-r.github.io/docs/billingconductor/delete_custom_line_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_delete_custom_line_item/} for full documentation.
 }
 \keyword{internal}

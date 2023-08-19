@@ -15,6 +15,6 @@ The ARN must be a full VPC connector ARN.}
 \description{
 Return a description of an App Runner VPC connector resource.
 
-See \url{https://paws-r.github.io/docs/apprunner/describe_vpc_connector.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_describe_vpc_connector/} for full documentation.
 }
 \keyword{internal}

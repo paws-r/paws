@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Cancels one or more Spot Instance requests.
 
-See \url{https://paws-r.github.io/docs/ec2/cancel_spot_instance_requests.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_cancel_spot_instance_requests/} for full documentation.
 }
 \keyword{internal}

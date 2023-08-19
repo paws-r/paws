@@ -62,6 +62,6 @@ resources.}
 \description{
 Creates an Network Firewall Firewall and accompanying FirewallStatus for a VPC.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/create_firewall.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_create_firewall/} for full documentation.
 }
 \keyword{internal}

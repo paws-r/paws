@@ -17,6 +17,6 @@ remove from being monitored and classified by Amazon Macie Classic.}
 \description{
 (Discontinued) Removes specified S3 resources from being monitored by Amazon Macie Classic. If \code{memberAccountId} isn't specified, the action removes specified S3 resources from Macie Classic for the current Macie Classic administrator account. If \code{memberAccountId} is specified, the action removes specified S3 resources from Macie Classic for the specified member account.
 
-See \url{https://paws-r.github.io/docs/macie/disassociate_s3_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie_disassociate_s3_resources/} for full documentation.
 }
 \keyword{internal}

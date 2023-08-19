@@ -32,6 +32,6 @@ languages for Trusted Advisor:
 \description{
 Returns the results of the Trusted Advisor check that has the specified check ID. You can get the check IDs by calling the \code{\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks}} operation.
 
-See \url{https://paws-r.github.io/docs/support/describe_trusted_advisor_check_result.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/support_describe_trusted_advisor_check_result/} for full documentation.
 }
 \keyword{internal}

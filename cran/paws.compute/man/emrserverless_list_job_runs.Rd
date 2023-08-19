@@ -30,6 +30,6 @@ multiple states, the resulting list will be grouped by the state.}
 \description{
 Lists job runs based on a set of parameters.
 
-See \url{https://paws-r.github.io/docs/emrserverless/list_job_runs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrserverless_list_job_runs/} for full documentation.
 }
 \keyword{internal}

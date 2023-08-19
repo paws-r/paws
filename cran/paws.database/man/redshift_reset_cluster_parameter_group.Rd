@@ -29,6 +29,6 @@ request.}
 \description{
 Sets one or more parameters of the specified parameter group to their default values and sets the source values of the parameters to "engine-default". To reset the entire parameter group specify the \emph{ResetAllParameters} parameter. For parameter changes to take effect you must reboot any associated clusters.
 
-See \url{https://paws-r.github.io/docs/redshift/reset_cluster_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_reset_cluster_parameter_group/} for full documentation.
 }
 \keyword{internal}

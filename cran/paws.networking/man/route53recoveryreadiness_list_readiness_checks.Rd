@@ -17,6 +17,6 @@ route53recoveryreadiness_list_readiness_checks(
 \description{
 Lists the readiness checks for an account.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/list_readiness_checks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_readiness_checks/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ different account, the request fails with the HTTP status code
 \description{
 Deletes the S3 bucket. All objects (including all object versions and delete markers) in the bucket must be deleted before the bucket itself can be deleted.
 
-See \url{https://paws-r.github.io/docs/s3/delete_bucket.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_delete_bucket/} for full documentation.
 }
 \keyword{internal}

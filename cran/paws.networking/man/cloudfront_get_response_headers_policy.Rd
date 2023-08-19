@@ -21,6 +21,6 @@ identifier using
 \description{
 Gets a response headers policy, including metadata (the policy's identifier and the date and time when the policy was last modified).
 
-See \url{https://paws-r.github.io/docs/cloudfront/get_response_headers_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_get_response_headers_policy/} for full documentation.
 }
 \keyword{internal}

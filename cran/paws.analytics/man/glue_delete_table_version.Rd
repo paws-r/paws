@@ -22,6 +22,6 @@ representation of an integer. Each version is incremented by 1.}
 \description{
 Deletes a specified version of a table.
 
-See \url{https://paws-r.github.io/docs/glue/delete_table_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_delete_table_version/} for full documentation.
 }
 \keyword{internal}

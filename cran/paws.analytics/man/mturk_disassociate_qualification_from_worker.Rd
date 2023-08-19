@@ -22,6 +22,6 @@ who had the Qualification sees this message.}
 \description{
 The \code{\link[=mturk_disassociate_qualification_from_worker]{disassociate_qualification_from_worker}} revokes a previously granted Qualification from a user.
 
-See \url{https://paws-r.github.io/docs/mturk/disassociate_qualification_from_worker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_disassociate_qualification_from_worker/} for full documentation.
 }
 \keyword{internal}

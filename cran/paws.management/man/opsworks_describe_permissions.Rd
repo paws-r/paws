@@ -15,6 +15,6 @@ information about IAM ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/Use
 \description{
 Describes the permissions for a specified stack.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_permissions/} for full documentation.
 }
 \keyword{internal}

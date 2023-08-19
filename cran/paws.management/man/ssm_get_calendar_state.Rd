@@ -20,6 +20,6 @@ used.}
 \description{
 Gets the state of a Amazon Web Services Systems Manager change calendar at the current time or a specified time. If you specify a time, \code{\link[=ssm_get_calendar_state]{get_calendar_state}} returns the state of the calendar at that specific time, and returns the next time that the change calendar state will transition. If you don't specify a time, \code{\link[=ssm_get_calendar_state]{get_calendar_state}} uses the current time. Change Calendar entries have two possible states: \code{OPEN} or \code{CLOSED}.
 
-See \url{https://paws-r.github.io/docs/ssm/get_calendar_state.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_calendar_state/} for full documentation.
 }
 \keyword{internal}

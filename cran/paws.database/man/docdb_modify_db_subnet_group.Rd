@@ -26,6 +26,6 @@ Example: \code{mySubnetgroup}}
 \description{
 Modifies an existing subnet group. subnet groups must contain at least one subnet in at least two Availability Zones in the Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/docdb/modify_db_subnet_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_modify_db_subnet_group/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ collection.}
 \description{
 Creates a collection in an AWS Region. You can add faces to the collection using the \code{\link[=rekognition_index_faces]{index_faces}} operation.
 
-See \url{https://paws-r.github.io/docs/rekognition/create_collection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_create_collection/} for full documentation.
 }
 \keyword{internal}

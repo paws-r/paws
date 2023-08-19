@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_attach_classic_link_vpc}
 \alias{ec2_attach_classic_link_vpc}
-\title{We are retiring EC2-Classic}
+\title{This action is deprecated}
 \usage{
 ec2_attach_classic_link_vpc(DryRun = NULL, Groups, InstanceId, VpcId)
 }
@@ -12,17 +12,16 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{Groups}{[required] The ID of one or more of the VPC's security groups. You cannot specify
-security groups from a different VPC.}
+\item{Groups}{[required] The IDs of the security groups. You cannot specify security groups from
+a different VPC.}
 
-\item{InstanceId}{[required] The ID of an EC2-Classic instance to link to the ClassicLink-enabled
-VPC.}
+\item{InstanceId}{[required] The ID of the EC2-Classic instance.}
 
-\item{VpcId}{[required] The ID of a ClassicLink-enabled VPC.}
+\item{VpcId}{[required] The ID of the ClassicLink-enabled VPC.}
 }
 \description{
-We are retiring EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html}{Migrate from EC2-Classic to a VPC} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+This action is deprecated.
 
-See \url{https://paws-r.github.io/docs/ec2/attach_classic_link_vpc.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_attach_classic_link_vpc/} for full documentation.
 }
 \keyword{internal}

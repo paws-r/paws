@@ -35,6 +35,6 @@ only supported aggregation method is \code{LINEAR}.}
 \description{
 Seals and completes the snapshot after all of the required blocks of data have been written to it. Completing the snapshot changes the status to \code{completed}. You cannot write new blocks to a snapshot after it has been completed.
 
-See \url{https://paws-r.github.io/docs/ebs/complete_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ebs_complete_snapshot/} for full documentation.
 }
 \keyword{internal}

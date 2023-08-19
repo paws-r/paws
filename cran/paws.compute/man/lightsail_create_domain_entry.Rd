@@ -19,6 +19,6 @@ entry request.}
 \description{
 Creates one of the following domain name system (DNS) records in a domain DNS zone: Address (A), canonical name (CNAME), mail exchanger (MX), name server (NS), start of authority (SOA), service locator (SRV), or text (TXT).
 
-See \url{https://paws-r.github.io/docs/lightsail/create_domain_entry.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_create_domain_entry/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ send email using Amazon Pinpoint or Amazon SES.}
 \description{
 Retrieve a list of the blacklists that your dedicated IP addresses appear on.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/get_blacklist_reports.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_get_blacklist_reports/} for full documentation.
 }
 \keyword{internal}

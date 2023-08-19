@@ -17,6 +17,6 @@ directconnect_create_private_virtual_interface(
 \description{
 Creates a private virtual interface. A virtual interface is the VLAN that transports Direct Connect traffic. A private virtual interface can be connected to either a Direct Connect gateway or a Virtual Private Gateway (VGW). Connecting the private virtual interface to a Direct Connect gateway enables the possibility for connecting to multiple VPCs, including VPCs in different Amazon Web Services Regions. Connecting the private virtual interface to a VGW only provides access to a single VPC within the same Region.
 
-See \url{https://paws-r.github.io/docs/directconnect/create_private_virtual_interface.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_create_private_virtual_interface/} for full documentation.
 }
 \keyword{internal}

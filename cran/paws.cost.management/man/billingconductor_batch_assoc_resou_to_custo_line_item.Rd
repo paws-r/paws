@@ -20,6 +20,6 @@ billingconductor_batch_associate_resources_to_custom_line_item(
 \description{
 Associates a batch of resources to a percentage custom line item.
 
-See \url{https://paws-r.github.io/docs/billingconductor/batch_associate_resources_to_custom_line_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_batch_associate_resources_to_custom_line_item/} for full documentation.
 }
 \keyword{internal}

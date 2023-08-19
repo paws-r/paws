@@ -4,11 +4,14 @@
 \alias{locationservice_get_place}
 \title{Finds a place by its unique ID}
 \usage{
-locationservice_get_place(IndexName, Language = NULL, PlaceId)
+locationservice_get_place(IndexName, Key = NULL, Language = NULL, PlaceId)
 }
 \arguments{
 \item{IndexName}{[required] The name of the place index resource that you want to use for the
 search.}
+
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+to authorize the request.}
 
 \item{Language}{The preferred language used to return results. The value must be a valid
 BCP 47 language tag, for example, \code{en} for English.
@@ -33,6 +36,6 @@ in a language that the provider does support.}
 \description{
 Finds a place by its unique ID. A \code{PlaceId} is returned by other search operations.
 
-See \url{https://paws-r.github.io/docs/locationservice/get_place.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_get_place/} for full documentation.
 }
 \keyword{internal}

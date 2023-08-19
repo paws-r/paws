@@ -34,6 +34,6 @@ indicates where to continue the listing.}
 \description{
 Returns the list of voices that are available for use when requesting speech synthesis. Each voice speaks a specified language, is either male or female, and is identified by an ID, which is the ASCII version of the voice name.
 
-See \url{https://paws-r.github.io/docs/polly/describe_voices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/polly_describe_voices/} for full documentation.
 }
 \keyword{internal}

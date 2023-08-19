@@ -16,6 +16,6 @@ access control groups, and connection aliases.}
 \description{
 Creates the specified tags for the specified WorkSpaces resource.
 
-See \url{https://paws-r.github.io/docs/workspaces/create_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_create_tags/} for full documentation.
 }
 \keyword{internal}

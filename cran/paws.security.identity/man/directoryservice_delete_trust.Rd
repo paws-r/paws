@@ -18,6 +18,6 @@ directoryservice_delete_trust(
 \description{
 Deletes an existing trust relationship between your Managed Microsoft AD directory and an external domain.
 
-See \url{https://paws-r.github.io/docs/directoryservice/delete_trust.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_delete_trust/} for full documentation.
 }
 \keyword{internal}

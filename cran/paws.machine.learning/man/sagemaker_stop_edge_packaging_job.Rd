@@ -12,6 +12,6 @@ sagemaker_stop_edge_packaging_job(EdgePackagingJobName)
 \description{
 Request to stop an edge packaging job.
 
-See \url{https://paws-r.github.io/docs/sagemaker/stop_edge_packaging_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_stop_edge_packaging_job/} for full documentation.
 }
 \keyword{internal}

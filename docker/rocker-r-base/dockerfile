@@ -1,0 +1,11 @@
+FROM rocker/r-base
+
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev
+
+RUN Rscript -e "install.packages('paws', repos = c(pawsr = 'https://paws-r-builds.s3.amazonaws.com/packages/latest/', CRAN = 'https://cloud.r-project.org'))"
+
+CMD ["R"]

@@ -24,6 +24,6 @@ fsx_describe_volumes(
 \description{
 Describes one or more Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volumes.
 
-See \url{https://paws-r.github.io/docs/fsx/describe_volumes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_describe_volumes/} for full documentation.
 }
 \keyword{internal}

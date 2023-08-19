@@ -47,6 +47,6 @@ additional features, such as the following:
 \description{
 Starts an instance refresh. During an instance refresh, Amazon EC2 Auto Scaling performs a rolling update of instances in an Auto Scaling group. Instances are terminated first and then replaced, which temporarily reduces the capacity available within your Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/start_instance_refresh.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_start_instance_refresh/} for full documentation.
 }
 \keyword{internal}

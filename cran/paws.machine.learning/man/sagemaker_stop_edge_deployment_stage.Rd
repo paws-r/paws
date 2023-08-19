@@ -14,6 +14,6 @@ sagemaker_stop_edge_deployment_stage(EdgeDeploymentPlanName, StageName)
 \description{
 Stops a stage in an edge deployment plan.
 
-See \url{https://paws-r.github.io/docs/sagemaker/stop_edge_deployment_stage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_stop_edge_deployment_stage/} for full documentation.
 }
 \keyword{internal}

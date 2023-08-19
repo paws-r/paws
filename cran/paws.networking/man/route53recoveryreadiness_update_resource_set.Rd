@@ -31,6 +31,6 @@ AWS::Route53RecoveryReadiness::DNSTargetResource}
 \description{
 Updates a resource set.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/update_resource_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_update_resource_set/} for full documentation.
 }
 \keyword{internal}

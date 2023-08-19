@@ -33,6 +33,6 @@ next page of results.}
 \description{
 Get a list of bot recommendations that meet the specified criteria.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/list_bot_recommendations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_list_bot_recommendations/} for full documentation.
 }
 \keyword{internal}

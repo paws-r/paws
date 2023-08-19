@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates an *association* between the source and the destination. A source can be associated with multiple destinations, and a destination can be associated with multiple sources. An association is a lineage tracking entity. For more information, see [Amazon SageMaker ML Lineage Tracking](https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html).
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/add_association.html](https://paws-r.github.io/docs/sagemaker/add_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_add_association/](https://www.paws-r-sdk.com/docs/sagemaker_add_association/) for full documentation.
 #'
 #' @param SourceArn &#91;required&#93; The ARN of the source.
 #' @param DestinationArn &#91;required&#93; The Amazon Resource Name (ARN) of the destination.
@@ -54,7 +54,7 @@ sagemaker_add_association <- function(SourceArn, DestinationArn, AssociationType
 #' @description
 #' Adds or overwrites one or more tags for the specified SageMaker resource. You can add tags to notebook instances, training jobs, hyperparameter tuning jobs, batch transform jobs, models, labeling jobs, work teams, endpoint configurations, and endpoints.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/add_tags.html](https://paws-r.github.io/docs/sagemaker/add_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_add_tags/](https://www.paws-r-sdk.com/docs/sagemaker_add_tags/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to tag.
 #' @param Tags &#91;required&#93; An array of key-value pairs. You can use tags to categorize your Amazon
@@ -88,7 +88,7 @@ sagemaker_add_tags <- function(ResourceArn, Tags) {
 #' @description
 #' Associates a trial component with a trial. A trial component can be associated with multiple trials. To disassociate a trial component from a trial, call the [`disassociate_trial_component`][sagemaker_disassociate_trial_component] API.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/associate_trial_component.html](https://paws-r.github.io/docs/sagemaker/associate_trial_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_associate_trial_component/](https://www.paws-r-sdk.com/docs/sagemaker_associate_trial_component/) for full documentation.
 #'
 #' @param TrialComponentName &#91;required&#93; The name of the component to associated with the trial.
 #' @param TrialName &#91;required&#93; The name of the trial to associate with.
@@ -118,7 +118,7 @@ sagemaker_associate_trial_component <- function(TrialComponentName, TrialName) {
 #' @description
 #' This action batch describes a list of versioned model packages
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/batch_describe_model_package.html](https://paws-r.github.io/docs/sagemaker/batch_describe_model_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_batch_describe_model_package/](https://www.paws-r-sdk.com/docs/sagemaker_batch_describe_model_package/) for full documentation.
 #'
 #' @param ModelPackageArnList &#91;required&#93; The list of Amazon Resource Name (ARN) of the model package groups.
 #'
@@ -147,7 +147,7 @@ sagemaker_batch_describe_model_package <- function(ModelPackageArnList) {
 #' @description
 #' Creates an *action*. An action is a lineage tracking entity that represents an action or activity. For example, a model deployment or an HPO job. Generally, an action involves at least one input or output artifact. For more information, see [Amazon SageMaker ML Lineage Tracking](https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html).
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_action.html](https://paws-r.github.io/docs/sagemaker/create_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_action/](https://www.paws-r-sdk.com/docs/sagemaker_create_action/) for full documentation.
 #'
 #' @param ActionName &#91;required&#93; The name of the action. Must be unique to your account in an Amazon Web
 #' Services Region.
@@ -185,7 +185,7 @@ sagemaker_create_action <- function(ActionName, Source, ActionType, Description 
 #' @description
 #' Create a machine learning algorithm that you can use in SageMaker and list in the Amazon Web Services Marketplace.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_algorithm.html](https://paws-r.github.io/docs/sagemaker/create_algorithm.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_algorithm/](https://www.paws-r-sdk.com/docs/sagemaker_create_algorithm/) for full documentation.
 #'
 #' @param AlgorithmName &#91;required&#93; The name of the algorithm.
 #' @param AlgorithmDescription A description of the algorithm.
@@ -257,7 +257,7 @@ sagemaker_create_algorithm <- function(AlgorithmName, AlgorithmDescription = NUL
 #' @description
 #' Creates a running app for the specified UserProfile. This operation is automatically invoked by Amazon SageMaker Studio upon access to the associated Domain, and when new kernel configurations are selected by the user. A user may have multiple Apps active simultaneously.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_app.html](https://paws-r.github.io/docs/sagemaker/create_app.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_app/](https://www.paws-r-sdk.com/docs/sagemaker_create_app/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
 #' @param UserProfileName The user profile name. If this value is not set, then `SpaceName` must
@@ -305,7 +305,7 @@ sagemaker_create_app <- function(DomainId, UserProfileName = NULL, AppType, AppN
 #' @description
 #' Creates a configuration for running a SageMaker image as a KernelGateway app. The configuration specifies the Amazon Elastic File System (EFS) storage volume on the image, and a list of the kernels in the image.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_app_image_config.html](https://paws-r.github.io/docs/sagemaker/create_app_image_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_app_image_config/](https://www.paws-r-sdk.com/docs/sagemaker_create_app_image_config/) for full documentation.
 #'
 #' @param AppImageConfigName &#91;required&#93; The name of the AppImageConfig. Must be unique to your account.
 #' @param Tags A list of tags to apply to the AppImageConfig.
@@ -339,7 +339,7 @@ sagemaker_create_app_image_config <- function(AppImageConfigName, Tags = NULL, K
 #' @description
 #' Creates an *artifact*. An artifact is a lineage tracking entity that represents a URI addressable object or data. Some examples are the S3 URI of a dataset and the ECR registry path of an image. For more information, see [Amazon SageMaker ML Lineage Tracking](https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html).
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_artifact.html](https://paws-r.github.io/docs/sagemaker/create_artifact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_artifact/](https://www.paws-r-sdk.com/docs/sagemaker_create_artifact/) for full documentation.
 #'
 #' @param ArtifactName The name of the artifact. Must be unique to your account in an Amazon
 #' Web Services Region.
@@ -369,12 +369,13 @@ sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType,
 }
 .sagemaker$operations$create_artifact <- sagemaker_create_artifact
 
-#' Creates an Autopilot job
+#' Creates an Autopilot job also referred to as Autopilot experiment or
+#' AutoML job
 #'
 #' @description
-#' Creates an Autopilot job.
+#' Creates an Autopilot job also referred to as Autopilot experiment or AutoML job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_auto_ml_job.html](https://paws-r.github.io/docs/sagemaker/create_auto_ml_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_auto_ml_job/](https://www.paws-r-sdk.com/docs/sagemaker_create_auto_ml_job/) for full documentation.
 #'
 #' @param AutoMLJobName &#91;required&#93; Identifies an Autopilot job. The name must be unique to your account and
 #' is case insensitive.
@@ -391,12 +392,11 @@ sagemaker_create_artifact <- function(ArtifactName = NULL, Source, ArtifactType,
 #' candidates. For more information, see [Amazon SageMaker Autopilot
 #' problem
 #' types](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-datasets-problem-types.html#autopilot-problem-types).
-#' @param AutoMLJobObjective Defines the objective metric used to measure the predictive quality of
-#' an AutoML job. You provide an
-#' [AutoMLJobObjective$MetricName](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html)
-#' and Autopilot infers whether to minimize or maximize it. For
-#' [`create_auto_ml_job_v2`][sagemaker_create_auto_ml_job_v2], only
-#' `Accuracy` is supported.
+#' @param AutoMLJobObjective Specifies a metric to minimize or maximize as the objective of a job. If
+#' not specified, the default objective metric depends on the problem type.
+#' See
+#' [AutoMLJobObjective](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html)
+#' for the default values.
 #' @param AutoMLJobConfig A collection of settings used to configure an AutoML job.
 #' @param RoleArn &#91;required&#93; The ARN of the role that is used to access the data.
 #' @param GenerateCandidateDefinitionsOnly Generates possible candidates without training the models. A candidate
@@ -430,27 +430,30 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
 }
 .sagemaker$operations$create_auto_ml_job <- sagemaker_create_auto_ml_job
 
-#' Creates an Amazon SageMaker AutoML job that uses non-tabular data such
-#' as images or text for Computer Vision or Natural Language Processing
-#' problems
+#' Creates an Autopilot job also referred to as Autopilot experiment or
+#' AutoML job V2
 #'
 #' @description
-#' Creates an Amazon SageMaker AutoML job that uses non-tabular data such as images or text for Computer Vision or Natural Language Processing problems.
+#' Creates an Autopilot job also referred to as Autopilot experiment or AutoML job V2.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_auto_ml_job_v2.html](https://paws-r.github.io/docs/sagemaker/create_auto_ml_job_v2.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_auto_ml_job_v2/](https://www.paws-r-sdk.com/docs/sagemaker_create_auto_ml_job_v2/) for full documentation.
 #'
 #' @param AutoMLJobName &#91;required&#93; Identifies an Autopilot job. The name must be unique to your account and
 #' is case insensitive.
 #' @param AutoMLJobInputDataConfig &#91;required&#93; An array of channel objects describing the input data and their
-#' location. Each channel is a named input source. Similar to
+#' location. Each channel is a named input source. Similar to the
 #' [InputDataConfig](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateAutoMLJob.html#sagemaker-CreateAutoMLJob-request-InputDataConfig)
-#' supported by [`create_auto_ml_job`][sagemaker_create_auto_ml_job]. The
-#' supported formats depend on the problem type:
+#' attribute in the [`create_auto_ml_job`][sagemaker_create_auto_ml_job]
+#' input parameters. The supported formats depend on the problem type:
 #' 
-#' -   ImageClassification: S3Prefix, `ManifestFile`,
-#'     `AugmentedManifestFile`
+#' -   For tabular problem types: `S3Prefix`, `ManifestFile`.
 #' 
-#' -   TextClassification: S3Prefix
+#' -   For image classification: `S3Prefix`, `ManifestFile`,
+#'     `AugmentedManifestFile`.
+#' 
+#' -   For text classification: `S3Prefix`.
+#' 
+#' -   For time-series forecasting: `S3Prefix`.
 #' @param OutputDataConfig &#91;required&#93; Provides information about encryption and the Amazon S3 output path
 #' needed to store artifacts from an AutoML job.
 #' @param AutoMLProblemTypeConfig &#91;required&#93; Defines the configuration settings of one of the supported problem
@@ -463,21 +466,28 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
 #' Tag keys must be unique per resource.
 #' @param SecurityConfig The security configuration for traffic encryption or Amazon VPC
 #' settings.
-#' @param AutoMLJobObjective Specifies a metric to minimize or maximize as the objective of a job.
-#' For [`create_auto_ml_job_v2`][sagemaker_create_auto_ml_job_v2], only
-#' `Accuracy` is supported.
+#' @param AutoMLJobObjective Specifies a metric to minimize or maximize as the objective of a job. If
+#' not specified, the default objective metric depends on the problem type.
+#' For the list of default values per problem type, see
+#' [AutoMLJobObjective](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html).
+#' 
+#' For tabular problem types, you must either provide both the
+#' `AutoMLJobObjective` and indicate the type of supervised learning
+#' problem in `AutoMLProblemTypeConfig` (`TabularJobConfig.ProblemType`),
+#' or none at all.
 #' @param ModelDeployConfig Specifies how to generate the endpoint name for an automatic one-click
 #' Autopilot model deployment.
 #' @param DataSplitConfig This structure specifies how to split the data into train and validation
 #' datasets.
 #' 
-#' If you are using the V1 API (for example
-#' [`create_auto_ml_job`][sagemaker_create_auto_ml_job]) or the V2 API for
-#' Natural Language Processing problems (for example
-#' [`create_auto_ml_job_v2`][sagemaker_create_auto_ml_job_v2] with a
-#' `TextClassificationJobConfig` problem type), the validation and training
-#' datasets must contain the same headers. Also, for V1 API jobs, the
-#' validation dataset must be less than 2 GB in size.
+#' The validation and training datasets must contain the same headers. For
+#' jobs created by calling
+#' [`create_auto_ml_job`][sagemaker_create_auto_ml_job], the validation
+#' dataset must be less than 2 GB in size.
+#' 
+#' This attribute must not be set for the time-series forecasting problem
+#' type, as Autopilot automatically splits the input dataset into training
+#' and validation sets.
 #'
 #' @keywords internal
 #'
@@ -504,7 +514,7 @@ sagemaker_create_auto_ml_job_v2 <- function(AutoMLJobName, AutoMLJobInputDataCon
 #' @description
 #' Creates a Git repository as a resource in your SageMaker account. You can associate the repository with notebook instances so that you can use Git source control for the notebooks you create. The Git repository is a resource in your SageMaker account, so it can be associated with more than one notebook instance, and it persists independently from the lifecycle of any notebook instances it is associated with.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_code_repository.html](https://paws-r.github.io/docs/sagemaker/create_code_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_code_repository/](https://www.paws-r-sdk.com/docs/sagemaker_create_code_repository/) for full documentation.
 #'
 #' @param CodeRepositoryName &#91;required&#93; The name of the Git repository. The name must have 1 to 63 characters.
 #' Valid characters are a-z, A-Z, 0-9, and - (hyphen).
@@ -542,7 +552,7 @@ sagemaker_create_code_repository <- function(CodeRepositoryName, GitConfig, Tags
 #' @description
 #' Starts a model compilation job. After the model has been compiled, Amazon SageMaker saves the resulting model artifacts to an Amazon Simple Storage Service (Amazon S3) bucket that you specify.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_compilation_job.html](https://paws-r.github.io/docs/sagemaker/create_compilation_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_compilation_job/](https://www.paws-r-sdk.com/docs/sagemaker_create_compilation_job/) for full documentation.
 #'
 #' @param CompilationJobName &#91;required&#93; A name for the model compilation job. The name must be unique within the
 #' Amazon Web Services Region and within your Amazon Web Services account.
@@ -614,7 +624,7 @@ sagemaker_create_compilation_job <- function(CompilationJobName, RoleArn, ModelP
 #' @description
 #' Creates a *context*. A context is a lineage tracking entity that represents a logical grouping of other tracking or experiment entities. Some examples are an endpoint and a model package. For more information, see [Amazon SageMaker ML Lineage Tracking](https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html).
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_context.html](https://paws-r.github.io/docs/sagemaker/create_context.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_context/](https://www.paws-r-sdk.com/docs/sagemaker_create_context/) for full documentation.
 #'
 #' @param ContextName &#91;required&#93; The name of the context. Must be unique to your account in an Amazon Web
 #' Services Region.
@@ -649,7 +659,7 @@ sagemaker_create_context <- function(ContextName, Source, ContextType, Descripti
 #' @description
 #' Creates a definition for a job that monitors data quality and drift. For information about model monitor, see [Amazon SageMaker Model Monitor](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html).
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_data_quality_job_definition.html](https://paws-r.github.io/docs/sagemaker/create_data_quality_job_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_data_quality_job_definition/](https://www.paws-r-sdk.com/docs/sagemaker_create_data_quality_job_definition/) for full documentation.
 #'
 #' @param JobDefinitionName &#91;required&#93; The name for the monitoring job definition.
 #' @param DataQualityBaselineConfig Configures the constraints and baselines for the monitoring job.
@@ -692,7 +702,7 @@ sagemaker_create_data_quality_job_definition <- function(JobDefinitionName, Data
 #' @description
 #' Creates a device fleet.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_device_fleet.html](https://paws-r.github.io/docs/sagemaker/create_device_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_device_fleet/](https://www.paws-r-sdk.com/docs/sagemaker_create_device_fleet/) for full documentation.
 #'
 #' @param DeviceFleetName &#91;required&#93; The name of the fleet that the device belongs to.
 #' @param RoleArn The Amazon Resource Name (ARN) that has access to Amazon Web Services
@@ -732,7 +742,7 @@ sagemaker_create_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #' @description
 #' Creates a `Domain` used by Amazon SageMaker Studio. A domain consists of an associated Amazon Elastic File System (EFS) volume, a list of authorized users, and a variety of security, application, policy, and Amazon Virtual Private Cloud (VPC) configurations. Users within a domain can share notebook files and other artifacts with each other.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_domain.html](https://paws-r.github.io/docs/sagemaker/create_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_domain/](https://www.paws-r-sdk.com/docs/sagemaker_create_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; A name for the domain.
 #' @param AuthMode &#91;required&#93; The mode of authentication that members use to access the domain.
@@ -799,7 +809,7 @@ sagemaker_create_domain <- function(DomainName, AuthMode, DefaultUserSettings, S
 #' @description
 #' Creates an edge deployment plan, consisting of multiple stages. Each stage may have a different deployment configuration and devices.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_edge_deployment_plan.html](https://paws-r.github.io/docs/sagemaker/create_edge_deployment_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_edge_deployment_plan/](https://www.paws-r-sdk.com/docs/sagemaker_create_edge_deployment_plan/) for full documentation.
 #'
 #' @param EdgeDeploymentPlanName &#91;required&#93; The name of the edge deployment plan.
 #' @param ModelConfigs &#91;required&#93; List of models associated with the edge deployment plan.
@@ -833,7 +843,7 @@ sagemaker_create_edge_deployment_plan <- function(EdgeDeploymentPlanName, ModelC
 #' @description
 #' Creates a new stage in an existing edge deployment plan.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_edge_deployment_stage.html](https://paws-r.github.io/docs/sagemaker/create_edge_deployment_stage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_edge_deployment_stage/](https://www.paws-r-sdk.com/docs/sagemaker_create_edge_deployment_stage/) for full documentation.
 #'
 #' @param EdgeDeploymentPlanName &#91;required&#93; The name of the edge deployment plan.
 #' @param Stages &#91;required&#93; List of stages to be added to the edge deployment plan.
@@ -863,7 +873,7 @@ sagemaker_create_edge_deployment_stage <- function(EdgeDeploymentPlanName, Stage
 #' @description
 #' Starts a SageMaker Edge Manager model packaging job. Edge Manager will use the model artifacts from the Amazon Simple Storage Service bucket that you specify. After the model has been packaged, Amazon SageMaker saves the resulting artifacts to an S3 bucket that you specify.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_edge_packaging_job.html](https://paws-r.github.io/docs/sagemaker/create_edge_packaging_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_edge_packaging_job/](https://www.paws-r-sdk.com/docs/sagemaker_create_edge_packaging_job/) for full documentation.
 #'
 #' @param EdgePackagingJobName &#91;required&#93; The name of the edge packaging job.
 #' @param CompilationJobName &#91;required&#93; The name of the SageMaker Neo compilation job that will be used to
@@ -904,7 +914,7 @@ sagemaker_create_edge_packaging_job <- function(EdgePackagingJobName, Compilatio
 #' @description
 #' Creates an endpoint using the endpoint configuration specified in the request. SageMaker uses the endpoint to provision resources and deploy models. You create the endpoint configuration with the [`create_endpoint_config`][sagemaker_create_endpoint_config] API.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_endpoint.html](https://paws-r.github.io/docs/sagemaker/create_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_endpoint/](https://www.paws-r-sdk.com/docs/sagemaker_create_endpoint/) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint.The name must be unique within an Amazon Web
 #' Services Region in your Amazon Web Services account. The name is
@@ -946,7 +956,7 @@ sagemaker_create_endpoint <- function(EndpointName, EndpointConfigName, Deployme
 #' @description
 #' Creates an endpoint configuration that SageMaker hosting services uses to deploy models. In the configuration, you identify one or more models, created using the [`create_model`][sagemaker_create_model] API, to deploy and the resources that you want SageMaker to provision. Then you call the [`create_endpoint`][sagemaker_create_endpoint] API.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_endpoint_config.html](https://paws-r.github.io/docs/sagemaker/create_endpoint_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_endpoint_config/](https://www.paws-r-sdk.com/docs/sagemaker_create_endpoint_config/) for full documentation.
 #'
 #' @param EndpointConfigName &#91;required&#93; The name of the endpoint configuration. You specify this name in a
 #' [`create_endpoint`][sagemaker_create_endpoint] request.
@@ -1035,7 +1045,7 @@ sagemaker_create_endpoint_config <- function(EndpointConfigName, ProductionVaria
 #' @description
 #' Creates a SageMaker *experiment*. An experiment is a collection of *trials* that are observed, compared and evaluated as a group. A trial is a set of steps, called *trial components*, that produce a machine learning model.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_experiment.html](https://paws-r.github.io/docs/sagemaker/create_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_experiment/](https://www.paws-r-sdk.com/docs/sagemaker_create_experiment/) for full documentation.
 #'
 #' @param ExperimentName &#91;required&#93; The name of the experiment. The name must be unique in your Amazon Web
 #' Services account and is not case-sensitive.
@@ -1071,7 +1081,7 @@ sagemaker_create_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 #' @description
 #' Create a new `FeatureGroup`. A `FeatureGroup` is a group of `Features` defined in the `FeatureStore` to describe a `Record`.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_feature_group.html](https://paws-r.github.io/docs/sagemaker/create_feature_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_feature_group/](https://www.paws-r-sdk.com/docs/sagemaker_create_feature_group/) for full documentation.
 #'
 #' @param FeatureGroupName &#91;required&#93; The name of the `FeatureGroup`. The name must be unique within an Amazon
 #' Web Services Region in an Amazon Web Services account. The name:
@@ -1182,7 +1192,7 @@ sagemaker_create_feature_group <- function(FeatureGroupName, RecordIdentifierFea
 #' @description
 #' Creates a flow definition.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_flow_definition.html](https://paws-r.github.io/docs/sagemaker/create_flow_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_flow_definition/](https://www.paws-r-sdk.com/docs/sagemaker_create_flow_definition/) for full documentation.
 #'
 #' @param FlowDefinitionName &#91;required&#93; The name of your flow definition.
 #' @param HumanLoopRequestSource Container for configuring the source of human task requests. Use to
@@ -1226,7 +1236,7 @@ sagemaker_create_flow_definition <- function(FlowDefinitionName, HumanLoopReques
 #' @description
 #' Create a hub.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_hub.html](https://paws-r.github.io/docs/sagemaker/create_hub.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_hub/](https://www.paws-r-sdk.com/docs/sagemaker_create_hub/) for full documentation.
 #'
 #' @param HubName &#91;required&#93; The name of the hub to create.
 #' @param HubDescription &#91;required&#93; A description of the hub.
@@ -1261,7 +1271,7 @@ sagemaker_create_hub <- function(HubName, HubDescription, HubDisplayName = NULL,
 #' @description
 #' Defines the settings you will use for the human review workflow user interface. Reviewers will see a three-panel interface with an instruction area, the item to review, and an input area.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_human_task_ui.html](https://paws-r.github.io/docs/sagemaker/create_human_task_ui.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_human_task_ui/](https://www.paws-r-sdk.com/docs/sagemaker_create_human_task_ui/) for full documentation.
 #'
 #' @param HumanTaskUiName &#91;required&#93; The name of the user interface you are creating.
 #' @param UiTemplate &#91;required&#93; 
@@ -1294,7 +1304,7 @@ sagemaker_create_human_task_ui <- function(HumanTaskUiName, UiTemplate, Tags = N
 #' @description
 #' Starts a hyperparameter tuning job. A hyperparameter tuning job finds the best version of a model by running many training jobs on your dataset using the algorithm you choose and values for hyperparameters within ranges that you specify. It then chooses the hyperparameter values that result in a model that performs the best, as measured by an objective metric that you choose.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_hyper_parameter_tuning_job.html](https://paws-r.github.io/docs/sagemaker/create_hyper_parameter_tuning_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_hyper_parameter_tuning_job/](https://www.paws-r-sdk.com/docs/sagemaker_create_hyper_parameter_tuning_job/) for full documentation.
 #'
 #' @param HyperParameterTuningJobName &#91;required&#93; The name of the tuning job. This name is the prefix for the names of all
 #' training jobs that this tuning job launches. The name must be unique
@@ -1393,7 +1403,7 @@ sagemaker_create_hyper_parameter_tuning_job <- function(HyperParameterTuningJobN
 #' @description
 #' Creates a custom SageMaker image. A SageMaker image is a set of image versions. Each image version represents a container image stored in Amazon Elastic Container Registry (ECR). For more information, see [Bring your own SageMaker image](https://docs.aws.amazon.com/sagemaker/latest/dg/studio-byoi.html).
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_image.html](https://paws-r.github.io/docs/sagemaker/create_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_image/](https://www.paws-r-sdk.com/docs/sagemaker_create_image/) for full documentation.
 #'
 #' @param Description The description of the image.
 #' @param DisplayName The display name of the image. If not provided, `ImageName` is
@@ -1428,7 +1438,7 @@ sagemaker_create_image <- function(Description = NULL, DisplayName = NULL, Image
 #' @description
 #' Creates a version of the SageMaker image specified by `ImageName`. The version represents the Amazon Elastic Container Registry (ECR) container image specified by `BaseImage`.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_image_version.html](https://paws-r.github.io/docs/sagemaker/create_image_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_image_version/](https://www.paws-r-sdk.com/docs/sagemaker_create_image_version/) for full documentation.
 #'
 #' @param BaseImage &#91;required&#93; The registry path of the container image to use as the starting point
 #' for this version. The path is an Amazon Elastic Container Registry (ECR)
@@ -1499,7 +1509,7 @@ sagemaker_create_image_version <- function(BaseImage, ClientToken, ImageName, Al
 #' @description
 #' Creates an inference experiment using the configurations specified in the request.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_inference_experiment.html](https://paws-r.github.io/docs/sagemaker/create_inference_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_inference_experiment/](https://www.paws-r-sdk.com/docs/sagemaker_create_inference_experiment/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name for the inference experiment.
 #' @param Type &#91;required&#93; The type of the inference experiment that you want to run. The following
@@ -1601,7 +1611,7 @@ sagemaker_create_inference_experiment <- function(Name, Type, Schedule = NULL, D
 #' @description
 #' Starts a recommendation job. You can create either an instance recommendation or load test job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_inference_recommendations_job.html](https://paws-r.github.io/docs/sagemaker/create_inference_recommendations_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_inference_recommendations_job/](https://www.paws-r-sdk.com/docs/sagemaker_create_inference_recommendations_job/) for full documentation.
 #'
 #' @param JobName &#91;required&#93; A name for the recommendation job. The name must be unique within the
 #' Amazon Web Services Region and within your Amazon Web Services account.
@@ -1655,7 +1665,7 @@ sagemaker_create_inference_recommendations_job <- function(JobName, JobType, Rol
 #' @description
 #' Creates a job that uses workers to label the data objects in your input dataset. You can use the labeled data to train machine learning models.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_labeling_job.html](https://paws-r.github.io/docs/sagemaker/create_labeling_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_labeling_job/](https://www.paws-r-sdk.com/docs/sagemaker_create_labeling_job/) for full documentation.
 #'
 #' @param LabelingJobName &#91;required&#93; The name of the labeling job. This name is used to identify the job in a
 #' list of labeling jobs. Labeling job names must be unique within an
@@ -1820,7 +1830,7 @@ sagemaker_create_labeling_job <- function(LabelingJobName, LabelAttributeName, I
 #' @description
 #' Creates a model in SageMaker. In the request, you name the model and describe a primary container. For the primary container, you specify the Docker image that contains inference code, artifacts (from prior training), and a custom environment map that the inference code uses when you deploy the model for predictions.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_model.html](https://paws-r.github.io/docs/sagemaker/create_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_model/](https://www.paws-r-sdk.com/docs/sagemaker_create_model/) for full documentation.
 #'
 #' @param ModelName &#91;required&#93; The name of the new model.
 #' @param PrimaryContainer The location of the primary docker image containing inference code,
@@ -1880,7 +1890,7 @@ sagemaker_create_model <- function(ModelName, PrimaryContainer = NULL, Container
 #' @description
 #' Creates the definition for a model bias job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_model_bias_job_definition.html](https://paws-r.github.io/docs/sagemaker/create_model_bias_job_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_model_bias_job_definition/](https://www.paws-r-sdk.com/docs/sagemaker_create_model_bias_job_definition/) for full documentation.
 #'
 #' @param JobDefinitionName &#91;required&#93; The name of the bias job definition. The name must be unique within an
 #' Amazon Web Services Region in the Amazon Web Services account.
@@ -1923,7 +1933,7 @@ sagemaker_create_model_bias_job_definition <- function(JobDefinitionName, ModelB
 #' @description
 #' Creates an Amazon SageMaker Model Card.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_model_card.html](https://paws-r.github.io/docs/sagemaker/create_model_card.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_model_card/](https://www.paws-r-sdk.com/docs/sagemaker_create_model_card/) for full documentation.
 #'
 #' @param ModelCardName &#91;required&#93; The unique name of the model card.
 #' @param SecurityConfig An optional Key Management Service key to encrypt, decrypt, and
@@ -1971,7 +1981,7 @@ sagemaker_create_model_card <- function(ModelCardName, SecurityConfig = NULL, Co
 #' @description
 #' Creates an Amazon SageMaker Model Card export job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_model_card_export_job.html](https://paws-r.github.io/docs/sagemaker/create_model_card_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_model_card_export_job/](https://www.paws-r-sdk.com/docs/sagemaker_create_model_card_export_job/) for full documentation.
 #'
 #' @param ModelCardName &#91;required&#93; The name of the model card to export.
 #' @param ModelCardVersion The version of the model card to export. If a version is not provided,
@@ -2005,7 +2015,7 @@ sagemaker_create_model_card_export_job <- function(ModelCardName, ModelCardVersi
 #' @description
 #' Creates the definition for a model explainability job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_model_explainability_job_definition.html](https://paws-r.github.io/docs/sagemaker/create_model_explainability_job_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_model_explainability_job_definition/](https://www.paws-r-sdk.com/docs/sagemaker_create_model_explainability_job_definition/) for full documentation.
 #'
 #' @param JobDefinitionName &#91;required&#93; The name of the model explainability job definition. The name must be
 #' unique within an Amazon Web Services Region in the Amazon Web Services
@@ -2052,7 +2062,7 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #' @description
 #' Creates a model package that you can use to create SageMaker models or list on Amazon Web Services Marketplace, or a versioned model that is part of a model group. Buyers can subscribe to model packages listed on Amazon Web Services Marketplace to create models in SageMaker.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_model_package.html](https://paws-r.github.io/docs/sagemaker/create_model_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_model_package/](https://www.paws-r-sdk.com/docs/sagemaker_create_model_package/) for full documentation.
 #'
 #' @param ModelPackageName The name of the model package. The name must have 1 to 63 characters.
 #' Valid characters are a-z, A-Z, 0-9, and - (hyphen).
@@ -2152,7 +2162,7 @@ sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackage
 #' @description
 #' Creates a model group. A model group contains a group of model versions.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_model_package_group.html](https://paws-r.github.io/docs/sagemaker/create_model_package_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_model_package_group/](https://www.paws-r-sdk.com/docs/sagemaker_create_model_package_group/) for full documentation.
 #'
 #' @param ModelPackageGroupName &#91;required&#93; The name of the model group.
 #' @param ModelPackageGroupDescription A description for the model group.
@@ -2186,7 +2196,7 @@ sagemaker_create_model_package_group <- function(ModelPackageGroupName, ModelPac
 #' @description
 #' Creates a definition for a job that monitors model quality and drift. For information about model monitor, see [Amazon SageMaker Model Monitor](https://docs.aws.amazon.com/sagemaker/latest/dg/model-monitor.html).
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_model_quality_job_definition.html](https://paws-r.github.io/docs/sagemaker/create_model_quality_job_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_model_quality_job_definition/](https://www.paws-r-sdk.com/docs/sagemaker_create_model_quality_job_definition/) for full documentation.
 #'
 #' @param JobDefinitionName &#91;required&#93; The name of the monitoring job definition.
 #' @param ModelQualityBaselineConfig Specifies the constraints and baselines for the monitoring job.
@@ -2230,7 +2240,7 @@ sagemaker_create_model_quality_job_definition <- function(JobDefinitionName, Mod
 #' @description
 #' Creates a schedule that regularly starts Amazon SageMaker Processing Jobs to monitor the data captured for an Amazon SageMaker Endpoint.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_monitoring_schedule.html](https://paws-r.github.io/docs/sagemaker/create_monitoring_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_monitoring_schedule/](https://www.paws-r-sdk.com/docs/sagemaker_create_monitoring_schedule/) for full documentation.
 #'
 #' @param MonitoringScheduleName &#91;required&#93; The name of the monitoring schedule. The name must be unique within an
 #' Amazon Web Services Region within an Amazon Web Services account.
@@ -2265,7 +2275,7 @@ sagemaker_create_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' @description
 #' Creates an SageMaker notebook instance. A notebook instance is a machine learning (ML) compute instance running on a Jupyter notebook.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_notebook_instance.html](https://paws-r.github.io/docs/sagemaker/create_notebook_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_notebook_instance/](https://www.paws-r-sdk.com/docs/sagemaker_create_notebook_instance/) for full documentation.
 #'
 #' @param NotebookInstanceName &#91;required&#93; The name of the new notebook instance.
 #' @param InstanceType &#91;required&#93; The type of ML compute instance to launch for the notebook instance.
@@ -2369,7 +2379,7 @@ sagemaker_create_notebook_instance <- function(NotebookInstanceName, InstanceTyp
 #' @description
 #' Creates a lifecycle configuration that you can associate with a notebook instance. A *lifecycle configuration* is a collection of shell scripts that run when you create or start a notebook instance.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_notebook_instance_lifecycle_config.html](https://paws-r.github.io/docs/sagemaker/create_notebook_instance_lifecycle_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_notebook_instance_lifecycle_config/](https://www.paws-r-sdk.com/docs/sagemaker_create_notebook_instance_lifecycle_config/) for full documentation.
 #'
 #' @param NotebookInstanceLifecycleConfigName &#91;required&#93; The name of the lifecycle configuration.
 #' @param OnCreate A shell script that runs only once, when you create a notebook instance.
@@ -2403,11 +2413,13 @@ sagemaker_create_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' @description
 #' Creates a pipeline using a JSON pipeline definition.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_pipeline.html](https://paws-r.github.io/docs/sagemaker/create_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_pipeline/](https://www.paws-r-sdk.com/docs/sagemaker_create_pipeline/) for full documentation.
 #'
 #' @param PipelineName &#91;required&#93; The name of the pipeline.
 #' @param PipelineDisplayName The display name of the pipeline.
-#' @param PipelineDefinition The JSON pipeline definition of the pipeline.
+#' @param PipelineDefinition The [JSON pipeline
+#' definition](https://aws-sagemaker-mlops.github.io/sagemaker-model-building-pipeline-definition-JSON-schema/)
+#' of the pipeline.
 #' @param PipelineDefinitionS3Location The location of the pipeline definition stored in Amazon S3. If
 #' specified, SageMaker will retrieve the pipeline definition from this
 #' location.
@@ -2446,7 +2458,7 @@ sagemaker_create_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
 #' @description
 #' Creates a URL for a specified UserProfile in a Domain. When accessed in a web browser, the user will be automatically signed in to Amazon SageMaker Studio, and granted access to all of the Apps and files associated with the Domain's Amazon Elastic File System (EFS) volume. This operation can only be called when the authentication mode equals IAM.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_presigned_domain_url.html](https://paws-r.github.io/docs/sagemaker/create_presigned_domain_url.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_presigned_domain_url/](https://www.paws-r-sdk.com/docs/sagemaker_create_presigned_domain_url/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
 #' @param UserProfileName &#91;required&#93; The name of the UserProfile to sign-in as.
@@ -2482,7 +2494,7 @@ sagemaker_create_presigned_domain_url <- function(DomainId, UserProfileName, Ses
 #' @description
 #' Returns a URL that you can use to connect to the Jupyter server from a notebook instance. In the SageMaker console, when you choose `Open` next to a notebook instance, SageMaker opens a new tab showing the Jupyter server home page from the notebook instance. The console uses this API to get the URL and show the page.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_presigned_notebook_instance_url.html](https://paws-r.github.io/docs/sagemaker/create_presigned_notebook_instance_url.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_presigned_notebook_instance_url/](https://www.paws-r-sdk.com/docs/sagemaker_create_presigned_notebook_instance_url/) for full documentation.
 #'
 #' @param NotebookInstanceName &#91;required&#93; The name of the notebook instance.
 #' @param SessionExpirationDurationInSeconds The duration of the session, in seconds. The default is 12 hours.
@@ -2512,7 +2524,7 @@ sagemaker_create_presigned_notebook_instance_url <- function(NotebookInstanceNam
 #' @description
 #' Creates a processing job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_processing_job.html](https://paws-r.github.io/docs/sagemaker/create_processing_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_processing_job/](https://www.paws-r-sdk.com/docs/sagemaker_create_processing_job/) for full documentation.
 #'
 #' @param ProcessingInputs An array of inputs configuring the data to download into the processing
 #' container.
@@ -2565,7 +2577,7 @@ sagemaker_create_processing_job <- function(ProcessingInputs = NULL, ProcessingO
 #' @description
 #' Creates a machine learning (ML) project that can contain one or more templates that set up an ML pipeline from training to deploying an approved model.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_project.html](https://paws-r.github.io/docs/sagemaker/create_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_project/](https://www.paws-r-sdk.com/docs/sagemaker_create_project/) for full documentation.
 #'
 #' @param ProjectName &#91;required&#93; The name of the project.
 #' @param ProjectDescription A description for the project.
@@ -2606,7 +2618,7 @@ sagemaker_create_project <- function(ProjectName, ProjectDescription = NULL, Ser
 #' @description
 #' Creates a space used for real time collaboration in a Domain.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_space.html](https://paws-r.github.io/docs/sagemaker/create_space.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_space/](https://www.paws-r-sdk.com/docs/sagemaker_create_space/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The ID of the associated Domain.
 #' @param SpaceName &#91;required&#93; The name of the space.
@@ -2640,7 +2652,7 @@ sagemaker_create_space <- function(DomainId, SpaceName, Tags = NULL, SpaceSettin
 #' @description
 #' Creates a new Studio Lifecycle Configuration.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_studio_lifecycle_config.html](https://paws-r.github.io/docs/sagemaker/create_studio_lifecycle_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_studio_lifecycle_config/](https://www.paws-r-sdk.com/docs/sagemaker_create_studio_lifecycle_config/) for full documentation.
 #'
 #' @param StudioLifecycleConfigName &#91;required&#93; The name of the Studio Lifecycle Configuration to create.
 #' @param StudioLifecycleConfigContent &#91;required&#93; The content of your Studio Lifecycle Configuration script. This content
@@ -2675,7 +2687,7 @@ sagemaker_create_studio_lifecycle_config <- function(StudioLifecycleConfigName, 
 #' @description
 #' Starts a model training job. After training completes, SageMaker saves the resulting model artifacts to an Amazon S3 location that you specify.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_training_job.html](https://paws-r.github.io/docs/sagemaker/create_training_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_training_job/](https://www.paws-r-sdk.com/docs/sagemaker_create_training_job/) for full documentation.
 #'
 #' @param TrainingJobName &#91;required&#93; The name of the training job. The name must be unique within an Amazon
 #' Web Services Region in an Amazon Web Services account.
@@ -2827,7 +2839,7 @@ sagemaker_create_training_job <- function(TrainingJobName, HyperParameters = NUL
 #' @description
 #' Starts a transform job. A transform job uses a trained model to get inferences on a dataset and saves these results to an Amazon S3 location that you specify.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_transform_job.html](https://paws-r.github.io/docs/sagemaker/create_transform_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_transform_job/](https://www.paws-r-sdk.com/docs/sagemaker_create_transform_job/) for full documentation.
 #'
 #' @param TransformJobName &#91;required&#93; The name of the transform job. The name must be unique within an Amazon
 #' Web Services Region in an Amazon Web Services account.
@@ -2923,7 +2935,7 @@ sagemaker_create_transform_job <- function(TransformJobName, ModelName, MaxConcu
 #' @description
 #' Creates an SageMaker *trial*. A trial is a set of steps called *trial components* that produce a machine learning model. A trial is part of a single SageMaker *experiment*.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_trial.html](https://paws-r.github.io/docs/sagemaker/create_trial.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_trial/](https://www.paws-r-sdk.com/docs/sagemaker_create_trial/) for full documentation.
 #'
 #' @param TrialName &#91;required&#93; The name of the trial. The name must be unique in your Amazon Web
 #' Services account and is not case-sensitive.
@@ -2959,7 +2971,7 @@ sagemaker_create_trial <- function(TrialName, DisplayName = NULL, ExperimentName
 #' @description
 #' Creates a *trial component*, which is a stage of a machine learning *trial*. A trial is composed of one or more trial components. A trial component can be used in multiple trials.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_trial_component.html](https://paws-r.github.io/docs/sagemaker/create_trial_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_trial_component/](https://www.paws-r-sdk.com/docs/sagemaker_create_trial_component/) for full documentation.
 #'
 #' @param TrialComponentName &#91;required&#93; The name of the component. The name must be unique in your Amazon Web
 #' Services account and is not case-sensitive.
@@ -3009,7 +3021,7 @@ sagemaker_create_trial_component <- function(TrialComponentName, DisplayName = N
 #' @description
 #' Creates a user profile. A user profile represents a single user within a domain, and is the main way to reference a "person" for the purposes of sharing, reporting, and other user-oriented features. This entity is created when a user onboards to Amazon SageMaker Studio. If an administrator invites a person by email or imports them from IAM Identity Center, a user profile is automatically created. A user profile is the primary holder of settings for an individual user and has a reference to the user's private Amazon Elastic File System (EFS) home directory.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_user_profile.html](https://paws-r.github.io/docs/sagemaker/create_user_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_user_profile/](https://www.paws-r-sdk.com/docs/sagemaker_create_user_profile/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The ID of the associated Domain.
 #' @param UserProfileName &#91;required&#93; A name for the UserProfile. This value is not case sensitive.
@@ -3054,7 +3066,7 @@ sagemaker_create_user_profile <- function(DomainId, UserProfileName, SingleSignO
 #' @description
 #' Use this operation to create a workforce. This operation will return an error if a workforce already exists in the Amazon Web Services Region that you specify. You can only create one workforce in each Amazon Web Services Region per Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_workforce.html](https://paws-r.github.io/docs/sagemaker/create_workforce.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_workforce/](https://www.paws-r-sdk.com/docs/sagemaker_create_workforce/) for full documentation.
 #'
 #' @param CognitoConfig Use this parameter to configure an Amazon Cognito private workforce. A
 #' single Cognito workforce is created using and corresponds to a single
@@ -3098,7 +3110,7 @@ sagemaker_create_workforce <- function(CognitoConfig = NULL, OidcConfig = NULL, 
 #' @description
 #' Creates a new work team for labeling your data. A work team is defined by one or more Amazon Cognito user pools. You must first create the user pools before you can create a work team.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/create_workteam.html](https://paws-r.github.io/docs/sagemaker/create_workteam.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_create_workteam/](https://www.paws-r-sdk.com/docs/sagemaker_create_workteam/) for full documentation.
 #'
 #' @param WorkteamName &#91;required&#93; The name of the work team. Use this name to identify the work team.
 #' @param WorkforceName The name of the workforce.
@@ -3159,7 +3171,7 @@ sagemaker_create_workteam <- function(WorkteamName, WorkforceName = NULL, Member
 #' @description
 #' Deletes an action.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_action.html](https://paws-r.github.io/docs/sagemaker/delete_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_action/](https://www.paws-r-sdk.com/docs/sagemaker_delete_action/) for full documentation.
 #'
 #' @param ActionName &#91;required&#93; The name of the action to delete.
 #'
@@ -3188,7 +3200,7 @@ sagemaker_delete_action <- function(ActionName) {
 #' @description
 #' Removes the specified algorithm from your account.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_algorithm.html](https://paws-r.github.io/docs/sagemaker/delete_algorithm.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_algorithm/](https://www.paws-r-sdk.com/docs/sagemaker_delete_algorithm/) for full documentation.
 #'
 #' @param AlgorithmName &#91;required&#93; The name of the algorithm to delete.
 #'
@@ -3217,7 +3229,7 @@ sagemaker_delete_algorithm <- function(AlgorithmName) {
 #' @description
 #' Used to stop and delete an app.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_app.html](https://paws-r.github.io/docs/sagemaker/delete_app.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_app/](https://www.paws-r-sdk.com/docs/sagemaker_delete_app/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
 #' @param UserProfileName The user profile name. If this value is not set, then `SpaceName` must
@@ -3252,7 +3264,7 @@ sagemaker_delete_app <- function(DomainId, UserProfileName = NULL, AppType, AppN
 #' @description
 #' Deletes an AppImageConfig.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_app_image_config.html](https://paws-r.github.io/docs/sagemaker/delete_app_image_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_app_image_config/](https://www.paws-r-sdk.com/docs/sagemaker_delete_app_image_config/) for full documentation.
 #'
 #' @param AppImageConfigName &#91;required&#93; The name of the AppImageConfig to delete.
 #'
@@ -3281,7 +3293,7 @@ sagemaker_delete_app_image_config <- function(AppImageConfigName) {
 #' @description
 #' Deletes an artifact. Either `ArtifactArn` or `Source` must be specified.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_artifact.html](https://paws-r.github.io/docs/sagemaker/delete_artifact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_artifact/](https://www.paws-r-sdk.com/docs/sagemaker_delete_artifact/) for full documentation.
 #'
 #' @param ArtifactArn The Amazon Resource Name (ARN) of the artifact to delete.
 #' @param Source The URI of the source.
@@ -3311,7 +3323,7 @@ sagemaker_delete_artifact <- function(ArtifactArn = NULL, Source = NULL) {
 #' @description
 #' Deletes an association.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_association.html](https://paws-r.github.io/docs/sagemaker/delete_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_association/](https://www.paws-r-sdk.com/docs/sagemaker_delete_association/) for full documentation.
 #'
 #' @param SourceArn &#91;required&#93; The ARN of the source.
 #' @param DestinationArn &#91;required&#93; The Amazon Resource Name (ARN) of the destination.
@@ -3341,7 +3353,7 @@ sagemaker_delete_association <- function(SourceArn, DestinationArn) {
 #' @description
 #' Deletes the specified Git repository from your account.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_code_repository.html](https://paws-r.github.io/docs/sagemaker/delete_code_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_code_repository/](https://www.paws-r-sdk.com/docs/sagemaker_delete_code_repository/) for full documentation.
 #'
 #' @param CodeRepositoryName &#91;required&#93; The name of the Git repository to delete.
 #'
@@ -3370,7 +3382,7 @@ sagemaker_delete_code_repository <- function(CodeRepositoryName) {
 #' @description
 #' Deletes an context.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_context.html](https://paws-r.github.io/docs/sagemaker/delete_context.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_context/](https://www.paws-r-sdk.com/docs/sagemaker_delete_context/) for full documentation.
 #'
 #' @param ContextName &#91;required&#93; The name of the context to delete.
 #'
@@ -3399,7 +3411,7 @@ sagemaker_delete_context <- function(ContextName) {
 #' @description
 #' Deletes a data quality monitoring job definition.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_data_quality_job_definition.html](https://paws-r.github.io/docs/sagemaker/delete_data_quality_job_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_data_quality_job_definition/](https://www.paws-r-sdk.com/docs/sagemaker_delete_data_quality_job_definition/) for full documentation.
 #'
 #' @param JobDefinitionName &#91;required&#93; The name of the data quality monitoring job definition to delete.
 #'
@@ -3428,7 +3440,7 @@ sagemaker_delete_data_quality_job_definition <- function(JobDefinitionName) {
 #' @description
 #' Deletes a fleet.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_device_fleet.html](https://paws-r.github.io/docs/sagemaker/delete_device_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_device_fleet/](https://www.paws-r-sdk.com/docs/sagemaker_delete_device_fleet/) for full documentation.
 #'
 #' @param DeviceFleetName &#91;required&#93; The name of the fleet to delete.
 #'
@@ -3457,7 +3469,7 @@ sagemaker_delete_device_fleet <- function(DeviceFleetName) {
 #' @description
 #' Used to delete a domain. If you onboarded with IAM mode, you will need to delete your domain to onboard again using IAM Identity Center. Use with caution. All of the members of the domain will lose access to their EFS volume, including data, notebooks, and other artifacts.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_domain.html](https://paws-r.github.io/docs/sagemaker/delete_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_domain/](https://www.paws-r-sdk.com/docs/sagemaker_delete_domain/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
 #' @param RetentionPolicy The retention policy for this domain, which specifies whether resources
@@ -3490,7 +3502,7 @@ sagemaker_delete_domain <- function(DomainId, RetentionPolicy = NULL) {
 #' @description
 #' Deletes an edge deployment plan if (and only if) all the stages in the plan are inactive or there are no stages in the plan.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_edge_deployment_plan.html](https://paws-r.github.io/docs/sagemaker/delete_edge_deployment_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_edge_deployment_plan/](https://www.paws-r-sdk.com/docs/sagemaker_delete_edge_deployment_plan/) for full documentation.
 #'
 #' @param EdgeDeploymentPlanName &#91;required&#93; The name of the edge deployment plan to delete.
 #'
@@ -3520,7 +3532,7 @@ sagemaker_delete_edge_deployment_plan <- function(EdgeDeploymentPlanName) {
 #' @description
 #' Delete a stage in an edge deployment plan if (and only if) the stage is inactive.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_edge_deployment_stage.html](https://paws-r.github.io/docs/sagemaker/delete_edge_deployment_stage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_edge_deployment_stage/](https://www.paws-r-sdk.com/docs/sagemaker_delete_edge_deployment_stage/) for full documentation.
 #'
 #' @param EdgeDeploymentPlanName &#91;required&#93; The name of the edge deployment plan from which the stage will be
 #' deleted.
@@ -3551,7 +3563,7 @@ sagemaker_delete_edge_deployment_stage <- function(EdgeDeploymentPlanName, Stage
 #' @description
 #' Deletes an endpoint. SageMaker frees up all of the resources that were deployed when the endpoint was created.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_endpoint.html](https://paws-r.github.io/docs/sagemaker/delete_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_endpoint/](https://www.paws-r-sdk.com/docs/sagemaker_delete_endpoint/) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint that you want to delete.
 #'
@@ -3580,7 +3592,7 @@ sagemaker_delete_endpoint <- function(EndpointName) {
 #' @description
 #' Deletes an endpoint configuration. The [`delete_endpoint_config`][sagemaker_delete_endpoint_config] API deletes only the specified configuration. It does not delete endpoints created using the configuration.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_endpoint_config.html](https://paws-r.github.io/docs/sagemaker/delete_endpoint_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_endpoint_config/](https://www.paws-r-sdk.com/docs/sagemaker_delete_endpoint_config/) for full documentation.
 #'
 #' @param EndpointConfigName &#91;required&#93; The name of the endpoint configuration that you want to delete.
 #'
@@ -3609,7 +3621,7 @@ sagemaker_delete_endpoint_config <- function(EndpointConfigName) {
 #' @description
 #' Deletes an SageMaker experiment. All trials associated with the experiment must be deleted first. Use the [`list_trials`][sagemaker_list_trials] API to get a list of the trials associated with the experiment.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_experiment.html](https://paws-r.github.io/docs/sagemaker/delete_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_experiment/](https://www.paws-r-sdk.com/docs/sagemaker_delete_experiment/) for full documentation.
 #'
 #' @param ExperimentName &#91;required&#93; The name of the experiment to delete.
 #'
@@ -3639,7 +3651,7 @@ sagemaker_delete_experiment <- function(ExperimentName) {
 #' @description
 #' Delete the `FeatureGroup` and any data that was written to the `OnlineStore` of the `FeatureGroup`. Data cannot be accessed from the `OnlineStore` immediately after [`delete_feature_group`][sagemaker_delete_feature_group] is called.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_feature_group.html](https://paws-r.github.io/docs/sagemaker/delete_feature_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_feature_group/](https://www.paws-r-sdk.com/docs/sagemaker_delete_feature_group/) for full documentation.
 #'
 #' @param FeatureGroupName &#91;required&#93; The name of the `FeatureGroup` you want to delete. The name must be
 #' unique within an Amazon Web Services Region in an Amazon Web Services
@@ -3670,7 +3682,7 @@ sagemaker_delete_feature_group <- function(FeatureGroupName) {
 #' @description
 #' Deletes the specified flow definition.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_flow_definition.html](https://paws-r.github.io/docs/sagemaker/delete_flow_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_flow_definition/](https://www.paws-r-sdk.com/docs/sagemaker_delete_flow_definition/) for full documentation.
 #'
 #' @param FlowDefinitionName &#91;required&#93; The name of the flow definition you are deleting.
 #'
@@ -3699,7 +3711,7 @@ sagemaker_delete_flow_definition <- function(FlowDefinitionName) {
 #' @description
 #' Delete a hub.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_hub.html](https://paws-r.github.io/docs/sagemaker/delete_hub.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_hub/](https://www.paws-r-sdk.com/docs/sagemaker_delete_hub/) for full documentation.
 #'
 #' @param HubName &#91;required&#93; The name of the hub to delete.
 #'
@@ -3728,7 +3740,7 @@ sagemaker_delete_hub <- function(HubName) {
 #' @description
 #' Delete the contents of a hub.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_hub_content.html](https://paws-r.github.io/docs/sagemaker/delete_hub_content.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_hub_content/](https://www.paws-r-sdk.com/docs/sagemaker_delete_hub_content/) for full documentation.
 #'
 #' @param HubName &#91;required&#93; The name of the hub that you want to delete content in.
 #' @param HubContentType &#91;required&#93; The type of content that you want to delete from a hub.
@@ -3761,7 +3773,7 @@ sagemaker_delete_hub_content <- function(HubName, HubContentType, HubContentName
 #' @description
 #' Use this operation to delete a human task user interface (worker task template).
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_human_task_ui.html](https://paws-r.github.io/docs/sagemaker/delete_human_task_ui.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_human_task_ui/](https://www.paws-r-sdk.com/docs/sagemaker_delete_human_task_ui/) for full documentation.
 #'
 #' @param HumanTaskUiName &#91;required&#93; The name of the human task user interface (work task template) you want
 #' to delete.
@@ -3791,7 +3803,7 @@ sagemaker_delete_human_task_ui <- function(HumanTaskUiName) {
 #' @description
 #' Deletes a SageMaker image and all versions of the image. The container images aren't deleted.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_image.html](https://paws-r.github.io/docs/sagemaker/delete_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_image/](https://www.paws-r-sdk.com/docs/sagemaker_delete_image/) for full documentation.
 #'
 #' @param ImageName &#91;required&#93; The name of the image to delete.
 #'
@@ -3820,7 +3832,7 @@ sagemaker_delete_image <- function(ImageName) {
 #' @description
 #' Deletes a version of a SageMaker image. The container image the version represents isn't deleted.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_image_version.html](https://paws-r.github.io/docs/sagemaker/delete_image_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_image_version/](https://www.paws-r-sdk.com/docs/sagemaker_delete_image_version/) for full documentation.
 #'
 #' @param ImageName &#91;required&#93; The name of the image to delete.
 #' @param Version The version to delete.
@@ -3851,7 +3863,7 @@ sagemaker_delete_image_version <- function(ImageName, Version = NULL, Alias = NU
 #' @description
 #' Deletes an inference experiment.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_inference_experiment.html](https://paws-r.github.io/docs/sagemaker/delete_inference_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_inference_experiment/](https://www.paws-r-sdk.com/docs/sagemaker_delete_inference_experiment/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the inference experiment you want to delete.
 #'
@@ -3880,7 +3892,7 @@ sagemaker_delete_inference_experiment <- function(Name) {
 #' @description
 #' Deletes a model. The [`delete_model`][sagemaker_delete_model] API deletes only the model entry that was created in SageMaker when you called the [`create_model`][sagemaker_create_model] API. It does not delete model artifacts, inference code, or the IAM role that you specified when creating the model.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_model.html](https://paws-r.github.io/docs/sagemaker/delete_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_model/](https://www.paws-r-sdk.com/docs/sagemaker_delete_model/) for full documentation.
 #'
 #' @param ModelName &#91;required&#93; The name of the model to delete.
 #'
@@ -3909,7 +3921,7 @@ sagemaker_delete_model <- function(ModelName) {
 #' @description
 #' Deletes an Amazon SageMaker model bias job definition.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_model_bias_job_definition.html](https://paws-r.github.io/docs/sagemaker/delete_model_bias_job_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_model_bias_job_definition/](https://www.paws-r-sdk.com/docs/sagemaker_delete_model_bias_job_definition/) for full documentation.
 #'
 #' @param JobDefinitionName &#91;required&#93; The name of the model bias job definition to delete.
 #'
@@ -3938,7 +3950,7 @@ sagemaker_delete_model_bias_job_definition <- function(JobDefinitionName) {
 #' @description
 #' Deletes an Amazon SageMaker Model Card.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_model_card.html](https://paws-r.github.io/docs/sagemaker/delete_model_card.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_model_card/](https://www.paws-r-sdk.com/docs/sagemaker_delete_model_card/) for full documentation.
 #'
 #' @param ModelCardName &#91;required&#93; The name of the model card to delete.
 #'
@@ -3967,7 +3979,7 @@ sagemaker_delete_model_card <- function(ModelCardName) {
 #' @description
 #' Deletes an Amazon SageMaker model explainability job definition.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_model_explainability_job_definition.html](https://paws-r.github.io/docs/sagemaker/delete_model_explainability_job_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_model_explainability_job_definition/](https://www.paws-r-sdk.com/docs/sagemaker_delete_model_explainability_job_definition/) for full documentation.
 #'
 #' @param JobDefinitionName &#91;required&#93; The name of the model explainability job definition to delete.
 #'
@@ -3996,7 +4008,7 @@ sagemaker_delete_model_explainability_job_definition <- function(JobDefinitionNa
 #' @description
 #' Deletes a model package.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_model_package.html](https://paws-r.github.io/docs/sagemaker/delete_model_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_model_package/](https://www.paws-r-sdk.com/docs/sagemaker_delete_model_package/) for full documentation.
 #'
 #' @param ModelPackageName &#91;required&#93; The name or Amazon Resource Name (ARN) of the model package to delete.
 #' 
@@ -4028,7 +4040,7 @@ sagemaker_delete_model_package <- function(ModelPackageName) {
 #' @description
 #' Deletes the specified model group.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_model_package_group.html](https://paws-r.github.io/docs/sagemaker/delete_model_package_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_model_package_group/](https://www.paws-r-sdk.com/docs/sagemaker_delete_model_package_group/) for full documentation.
 #'
 #' @param ModelPackageGroupName &#91;required&#93; The name of the model group to delete.
 #'
@@ -4057,7 +4069,7 @@ sagemaker_delete_model_package_group <- function(ModelPackageGroupName) {
 #' @description
 #' Deletes a model group resource policy.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_model_package_group_policy.html](https://paws-r.github.io/docs/sagemaker/delete_model_package_group_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_model_package_group_policy/](https://www.paws-r-sdk.com/docs/sagemaker_delete_model_package_group_policy/) for full documentation.
 #'
 #' @param ModelPackageGroupName &#91;required&#93; The name of the model group for which to delete the policy.
 #'
@@ -4086,7 +4098,7 @@ sagemaker_delete_model_package_group_policy <- function(ModelPackageGroupName) {
 #' @description
 #' Deletes the secified model quality monitoring job definition.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_model_quality_job_definition.html](https://paws-r.github.io/docs/sagemaker/delete_model_quality_job_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_model_quality_job_definition/](https://www.paws-r-sdk.com/docs/sagemaker_delete_model_quality_job_definition/) for full documentation.
 #'
 #' @param JobDefinitionName &#91;required&#93; The name of the model quality monitoring job definition to delete.
 #'
@@ -4115,7 +4127,7 @@ sagemaker_delete_model_quality_job_definition <- function(JobDefinitionName) {
 #' @description
 #' Deletes a monitoring schedule. Also stops the schedule had not already been stopped. This does not delete the job execution history of the monitoring schedule.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_monitoring_schedule.html](https://paws-r.github.io/docs/sagemaker/delete_monitoring_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_monitoring_schedule/](https://www.paws-r-sdk.com/docs/sagemaker_delete_monitoring_schedule/) for full documentation.
 #'
 #' @param MonitoringScheduleName &#91;required&#93; The name of the monitoring schedule to delete.
 #'
@@ -4144,7 +4156,7 @@ sagemaker_delete_monitoring_schedule <- function(MonitoringScheduleName) {
 #' @description
 #' Deletes an SageMaker notebook instance. Before you can delete a notebook instance, you must call the [`stop_notebook_instance`][sagemaker_stop_notebook_instance] API.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_notebook_instance.html](https://paws-r.github.io/docs/sagemaker/delete_notebook_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_notebook_instance/](https://www.paws-r-sdk.com/docs/sagemaker_delete_notebook_instance/) for full documentation.
 #'
 #' @param NotebookInstanceName &#91;required&#93; The name of the SageMaker notebook instance to delete.
 #'
@@ -4173,7 +4185,7 @@ sagemaker_delete_notebook_instance <- function(NotebookInstanceName) {
 #' @description
 #' Deletes a notebook instance lifecycle configuration.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_notebook_instance_lifecycle_config.html](https://paws-r.github.io/docs/sagemaker/delete_notebook_instance_lifecycle_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_notebook_instance_lifecycle_config/](https://www.paws-r-sdk.com/docs/sagemaker_delete_notebook_instance_lifecycle_config/) for full documentation.
 #'
 #' @param NotebookInstanceLifecycleConfigName &#91;required&#93; The name of the lifecycle configuration to delete.
 #'
@@ -4202,7 +4214,7 @@ sagemaker_delete_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' @description
 #' Deletes a pipeline if there are no running instances of the pipeline. To delete a pipeline, you must stop all running instances of the pipeline using the [`stop_pipeline_execution`][sagemaker_stop_pipeline_execution] API. When you delete a pipeline, all instances of the pipeline are deleted.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_pipeline.html](https://paws-r.github.io/docs/sagemaker/delete_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_pipeline/](https://www.paws-r-sdk.com/docs/sagemaker_delete_pipeline/) for full documentation.
 #'
 #' @param PipelineName &#91;required&#93; The name of the pipeline to delete.
 #' @param ClientRequestToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
@@ -4234,7 +4246,7 @@ sagemaker_delete_pipeline <- function(PipelineName, ClientRequestToken) {
 #' @description
 #' Delete the specified project.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_project.html](https://paws-r.github.io/docs/sagemaker/delete_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_project/](https://www.paws-r-sdk.com/docs/sagemaker_delete_project/) for full documentation.
 #'
 #' @param ProjectName &#91;required&#93; The name of the project to delete.
 #'
@@ -4263,7 +4275,7 @@ sagemaker_delete_project <- function(ProjectName) {
 #' @description
 #' Used to delete a space.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_space.html](https://paws-r.github.io/docs/sagemaker/delete_space.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_space/](https://www.paws-r-sdk.com/docs/sagemaker_delete_space/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The ID of the associated Domain.
 #' @param SpaceName &#91;required&#93; The name of the space.
@@ -4293,7 +4305,7 @@ sagemaker_delete_space <- function(DomainId, SpaceName) {
 #' @description
 #' Deletes the Studio Lifecycle Configuration. In order to delete the Lifecycle Configuration, there must be no running apps using the Lifecycle Configuration. You must also remove the Lifecycle Configuration from UserSettings in all Domains and UserProfiles.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_studio_lifecycle_config.html](https://paws-r.github.io/docs/sagemaker/delete_studio_lifecycle_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_studio_lifecycle_config/](https://www.paws-r-sdk.com/docs/sagemaker_delete_studio_lifecycle_config/) for full documentation.
 #'
 #' @param StudioLifecycleConfigName &#91;required&#93; The name of the Studio Lifecycle Configuration to delete.
 #'
@@ -4322,7 +4334,7 @@ sagemaker_delete_studio_lifecycle_config <- function(StudioLifecycleConfigName) 
 #' @description
 #' Deletes the specified tags from an SageMaker resource.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_tags.html](https://paws-r.github.io/docs/sagemaker/delete_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_tags/](https://www.paws-r-sdk.com/docs/sagemaker_delete_tags/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose tags you want to
 #' delete.
@@ -4353,7 +4365,7 @@ sagemaker_delete_tags <- function(ResourceArn, TagKeys) {
 #' @description
 #' Deletes the specified trial. All trial components that make up the trial must be deleted first. Use the [`describe_trial_component`][sagemaker_describe_trial_component] API to get the list of trial components.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_trial.html](https://paws-r.github.io/docs/sagemaker/delete_trial.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_trial/](https://www.paws-r-sdk.com/docs/sagemaker_delete_trial/) for full documentation.
 #'
 #' @param TrialName &#91;required&#93; The name of the trial to delete.
 #'
@@ -4382,7 +4394,7 @@ sagemaker_delete_trial <- function(TrialName) {
 #' @description
 #' Deletes the specified trial component. A trial component must be disassociated from all trials before the trial component can be deleted. To disassociate a trial component from a trial, call the [`disassociate_trial_component`][sagemaker_disassociate_trial_component] API.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_trial_component.html](https://paws-r.github.io/docs/sagemaker/delete_trial_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_trial_component/](https://www.paws-r-sdk.com/docs/sagemaker_delete_trial_component/) for full documentation.
 #'
 #' @param TrialComponentName &#91;required&#93; The name of the component to delete.
 #'
@@ -4411,7 +4423,7 @@ sagemaker_delete_trial_component <- function(TrialComponentName) {
 #' @description
 #' Deletes a user profile. When a user profile is deleted, the user loses access to their EFS volume, including data, notebooks, and other artifacts.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_user_profile.html](https://paws-r.github.io/docs/sagemaker/delete_user_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_user_profile/](https://www.paws-r-sdk.com/docs/sagemaker_delete_user_profile/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
 #' @param UserProfileName &#91;required&#93; The user profile name.
@@ -4441,7 +4453,7 @@ sagemaker_delete_user_profile <- function(DomainId, UserProfileName) {
 #' @description
 #' Use this operation to delete a workforce.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_workforce.html](https://paws-r.github.io/docs/sagemaker/delete_workforce.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_workforce/](https://www.paws-r-sdk.com/docs/sagemaker_delete_workforce/) for full documentation.
 #'
 #' @param WorkforceName &#91;required&#93; The name of the workforce.
 #'
@@ -4470,7 +4482,7 @@ sagemaker_delete_workforce <- function(WorkforceName) {
 #' @description
 #' Deletes an existing work team. This operation can't be undone.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/delete_workteam.html](https://paws-r.github.io/docs/sagemaker/delete_workteam.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_delete_workteam/](https://www.paws-r-sdk.com/docs/sagemaker_delete_workteam/) for full documentation.
 #'
 #' @param WorkteamName &#91;required&#93; The name of the work team to delete.
 #'
@@ -4499,7 +4511,7 @@ sagemaker_delete_workteam <- function(WorkteamName) {
 #' @description
 #' Deregisters the specified devices. After you deregister a device, you will need to re-register the devices.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/deregister_devices.html](https://paws-r.github.io/docs/sagemaker/deregister_devices.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_deregister_devices/](https://www.paws-r-sdk.com/docs/sagemaker_deregister_devices/) for full documentation.
 #'
 #' @param DeviceFleetName &#91;required&#93; The name of the fleet the devices belong to.
 #' @param DeviceNames &#91;required&#93; The unique IDs of the devices.
@@ -4529,7 +4541,7 @@ sagemaker_deregister_devices <- function(DeviceFleetName, DeviceNames) {
 #' @description
 #' Describes an action.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_action.html](https://paws-r.github.io/docs/sagemaker/describe_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_action/](https://www.paws-r-sdk.com/docs/sagemaker_describe_action/) for full documentation.
 #'
 #' @param ActionName &#91;required&#93; The name of the action to describe.
 #'
@@ -4558,7 +4570,7 @@ sagemaker_describe_action <- function(ActionName) {
 #' @description
 #' Returns a description of the specified algorithm that is in your account.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_algorithm.html](https://paws-r.github.io/docs/sagemaker/describe_algorithm.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_algorithm/](https://www.paws-r-sdk.com/docs/sagemaker_describe_algorithm/) for full documentation.
 #'
 #' @param AlgorithmName &#91;required&#93; The name of the algorithm to describe.
 #'
@@ -4587,7 +4599,7 @@ sagemaker_describe_algorithm <- function(AlgorithmName) {
 #' @description
 #' Describes the app.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_app.html](https://paws-r.github.io/docs/sagemaker/describe_app.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_app/](https://www.paws-r-sdk.com/docs/sagemaker_describe_app/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
 #' @param UserProfileName The user profile name. If this value is not set, then `SpaceName` must
@@ -4621,7 +4633,7 @@ sagemaker_describe_app <- function(DomainId, UserProfileName = NULL, AppType, Ap
 #' @description
 #' Describes an AppImageConfig.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_app_image_config.html](https://paws-r.github.io/docs/sagemaker/describe_app_image_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_app_image_config/](https://www.paws-r-sdk.com/docs/sagemaker_describe_app_image_config/) for full documentation.
 #'
 #' @param AppImageConfigName &#91;required&#93; The name of the AppImageConfig to describe.
 #'
@@ -4650,7 +4662,7 @@ sagemaker_describe_app_image_config <- function(AppImageConfigName) {
 #' @description
 #' Describes an artifact.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_artifact.html](https://paws-r.github.io/docs/sagemaker/describe_artifact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_artifact/](https://www.paws-r-sdk.com/docs/sagemaker_describe_artifact/) for full documentation.
 #'
 #' @param ArtifactArn &#91;required&#93; The Amazon Resource Name (ARN) of the artifact to describe.
 #'
@@ -4674,12 +4686,13 @@ sagemaker_describe_artifact <- function(ArtifactArn) {
 }
 .sagemaker$operations$describe_artifact <- sagemaker_describe_artifact
 
-#' Returns information about an Amazon SageMaker AutoML job
+#' Returns information about an AutoML job created by calling
+#' CreateAutoMLJob
 #'
 #' @description
-#' Returns information about an Amazon SageMaker AutoML job.
+#' Returns information about an AutoML job created by calling [`create_auto_ml_job`][sagemaker_create_auto_ml_job].
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_auto_ml_job.html](https://paws-r.github.io/docs/sagemaker/describe_auto_ml_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_auto_ml_job/](https://www.paws-r-sdk.com/docs/sagemaker_describe_auto_ml_job/) for full documentation.
 #'
 #' @param AutoMLJobName &#91;required&#93; Requests information about an AutoML job using its unique name.
 #'
@@ -4703,14 +4716,15 @@ sagemaker_describe_auto_ml_job <- function(AutoMLJobName) {
 }
 .sagemaker$operations$describe_auto_ml_job <- sagemaker_describe_auto_ml_job
 
-#' Returns information about an Amazon SageMaker AutoML V2 job
+#' Returns information about an AutoML job created by calling
+#' CreateAutoMLJobV2 or CreateAutoMLJob
 #'
 #' @description
-#' Returns information about an Amazon SageMaker AutoML V2 job.
+#' Returns information about an AutoML job created by calling [`create_auto_ml_job_v2`][sagemaker_create_auto_ml_job_v2] or [`create_auto_ml_job`][sagemaker_create_auto_ml_job].
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_auto_ml_job_v2.html](https://paws-r.github.io/docs/sagemaker/describe_auto_ml_job_v2.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_auto_ml_job_v2/](https://www.paws-r-sdk.com/docs/sagemaker_describe_auto_ml_job_v2/) for full documentation.
 #'
-#' @param AutoMLJobName &#91;required&#93; Requests information about an AutoML V2 job using its unique name.
+#' @param AutoMLJobName &#91;required&#93; Requests information about an AutoML job V2 using its unique name.
 #'
 #' @keywords internal
 #'
@@ -4737,7 +4751,7 @@ sagemaker_describe_auto_ml_job_v2 <- function(AutoMLJobName) {
 #' @description
 #' Gets details about the specified Git repository.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_code_repository.html](https://paws-r.github.io/docs/sagemaker/describe_code_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_code_repository/](https://www.paws-r-sdk.com/docs/sagemaker_describe_code_repository/) for full documentation.
 #'
 #' @param CodeRepositoryName &#91;required&#93; The name of the Git repository to describe.
 #'
@@ -4766,7 +4780,7 @@ sagemaker_describe_code_repository <- function(CodeRepositoryName) {
 #' @description
 #' Returns information about a model compilation job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_compilation_job.html](https://paws-r.github.io/docs/sagemaker/describe_compilation_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_compilation_job/](https://www.paws-r-sdk.com/docs/sagemaker_describe_compilation_job/) for full documentation.
 #'
 #' @param CompilationJobName &#91;required&#93; The name of the model compilation job that you want information about.
 #'
@@ -4795,7 +4809,7 @@ sagemaker_describe_compilation_job <- function(CompilationJobName) {
 #' @description
 #' Describes a context.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_context.html](https://paws-r.github.io/docs/sagemaker/describe_context.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_context/](https://www.paws-r-sdk.com/docs/sagemaker_describe_context/) for full documentation.
 #'
 #' @param ContextName &#91;required&#93; The name of the context to describe.
 #'
@@ -4824,7 +4838,7 @@ sagemaker_describe_context <- function(ContextName) {
 #' @description
 #' Gets the details of a data quality monitoring job definition.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_data_quality_job_definition.html](https://paws-r.github.io/docs/sagemaker/describe_data_quality_job_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_data_quality_job_definition/](https://www.paws-r-sdk.com/docs/sagemaker_describe_data_quality_job_definition/) for full documentation.
 #'
 #' @param JobDefinitionName &#91;required&#93; The name of the data quality monitoring job definition to describe.
 #'
@@ -4853,7 +4867,7 @@ sagemaker_describe_data_quality_job_definition <- function(JobDefinitionName) {
 #' @description
 #' Describes the device.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_device.html](https://paws-r.github.io/docs/sagemaker/describe_device.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_device/](https://www.paws-r-sdk.com/docs/sagemaker_describe_device/) for full documentation.
 #'
 #' @param NextToken Next token of device description.
 #' @param DeviceName &#91;required&#93; The unique ID of the device.
@@ -4884,7 +4898,7 @@ sagemaker_describe_device <- function(NextToken = NULL, DeviceName, DeviceFleetN
 #' @description
 #' A description of the fleet the device belongs to.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_device_fleet.html](https://paws-r.github.io/docs/sagemaker/describe_device_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_device_fleet/](https://www.paws-r-sdk.com/docs/sagemaker_describe_device_fleet/) for full documentation.
 #'
 #' @param DeviceFleetName &#91;required&#93; The name of the fleet.
 #'
@@ -4913,7 +4927,7 @@ sagemaker_describe_device_fleet <- function(DeviceFleetName) {
 #' @description
 #' The description of the domain.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_domain.html](https://paws-r.github.io/docs/sagemaker/describe_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_domain/](https://www.paws-r-sdk.com/docs/sagemaker_describe_domain/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
 #'
@@ -4942,7 +4956,7 @@ sagemaker_describe_domain <- function(DomainId) {
 #' @description
 #' Describes an edge deployment plan with deployment status per stage.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_edge_deployment_plan.html](https://paws-r.github.io/docs/sagemaker/describe_edge_deployment_plan.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_edge_deployment_plan/](https://www.paws-r-sdk.com/docs/sagemaker_describe_edge_deployment_plan/) for full documentation.
 #'
 #' @param EdgeDeploymentPlanName &#91;required&#93; The name of the deployment plan to describe.
 #' @param NextToken If the edge deployment plan has enough stages to require tokening, then
@@ -4974,7 +4988,7 @@ sagemaker_describe_edge_deployment_plan <- function(EdgeDeploymentPlanName, Next
 #' @description
 #' A description of edge packaging jobs.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_edge_packaging_job.html](https://paws-r.github.io/docs/sagemaker/describe_edge_packaging_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_edge_packaging_job/](https://www.paws-r-sdk.com/docs/sagemaker_describe_edge_packaging_job/) for full documentation.
 #'
 #' @param EdgePackagingJobName &#91;required&#93; The name of the edge packaging job.
 #'
@@ -5003,7 +5017,7 @@ sagemaker_describe_edge_packaging_job <- function(EdgePackagingJobName) {
 #' @description
 #' Returns the description of an endpoint.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_endpoint.html](https://paws-r.github.io/docs/sagemaker/describe_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_endpoint/](https://www.paws-r-sdk.com/docs/sagemaker_describe_endpoint/) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint.
 #'
@@ -5033,7 +5047,7 @@ sagemaker_describe_endpoint <- function(EndpointName) {
 #' @description
 #' Returns the description of an endpoint configuration created using the [`create_endpoint_config`][sagemaker_create_endpoint_config] API.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_endpoint_config.html](https://paws-r.github.io/docs/sagemaker/describe_endpoint_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_endpoint_config/](https://www.paws-r-sdk.com/docs/sagemaker_describe_endpoint_config/) for full documentation.
 #'
 #' @param EndpointConfigName &#91;required&#93; The name of the endpoint configuration.
 #'
@@ -5062,7 +5076,7 @@ sagemaker_describe_endpoint_config <- function(EndpointConfigName) {
 #' @description
 #' Provides a list of an experiment's properties.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_experiment.html](https://paws-r.github.io/docs/sagemaker/describe_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_experiment/](https://www.paws-r-sdk.com/docs/sagemaker_describe_experiment/) for full documentation.
 #'
 #' @param ExperimentName &#91;required&#93; The name of the experiment to describe.
 #'
@@ -5091,9 +5105,10 @@ sagemaker_describe_experiment <- function(ExperimentName) {
 #' @description
 #' Use this operation to describe a `FeatureGroup`. The response includes information on the creation time, `FeatureGroup` name, the unique identifier for each `FeatureGroup`, and more.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_feature_group.html](https://paws-r.github.io/docs/sagemaker/describe_feature_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_feature_group/](https://www.paws-r-sdk.com/docs/sagemaker_describe_feature_group/) for full documentation.
 #'
-#' @param FeatureGroupName &#91;required&#93; The name of the `FeatureGroup` you want described.
+#' @param FeatureGroupName &#91;required&#93; The name or Amazon Resource Name (ARN) of the `FeatureGroup` you want
+#' described.
 #' @param NextToken A token to resume pagination of the list of `Features`
 #' (`FeatureDefinitions`). 2,500 `Features` are returned by default.
 #'
@@ -5122,9 +5137,10 @@ sagemaker_describe_feature_group <- function(FeatureGroupName, NextToken = NULL)
 #' @description
 #' Shows the metadata for a feature within a feature group.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_feature_metadata.html](https://paws-r.github.io/docs/sagemaker/describe_feature_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_feature_metadata/](https://www.paws-r-sdk.com/docs/sagemaker_describe_feature_metadata/) for full documentation.
 #'
-#' @param FeatureGroupName &#91;required&#93; The name of the feature group containing the feature.
+#' @param FeatureGroupName &#91;required&#93; The name or Amazon Resource Name (ARN) of the feature group containing
+#' the feature.
 #' @param FeatureName &#91;required&#93; The name of the feature.
 #'
 #' @keywords internal
@@ -5152,7 +5168,7 @@ sagemaker_describe_feature_metadata <- function(FeatureGroupName, FeatureName) {
 #' @description
 #' Returns information about the specified flow definition.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_flow_definition.html](https://paws-r.github.io/docs/sagemaker/describe_flow_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_flow_definition/](https://www.paws-r-sdk.com/docs/sagemaker_describe_flow_definition/) for full documentation.
 #'
 #' @param FlowDefinitionName &#91;required&#93; The name of the flow definition.
 #'
@@ -5181,7 +5197,7 @@ sagemaker_describe_flow_definition <- function(FlowDefinitionName) {
 #' @description
 #' Describe a hub.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_hub.html](https://paws-r.github.io/docs/sagemaker/describe_hub.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_hub/](https://www.paws-r-sdk.com/docs/sagemaker_describe_hub/) for full documentation.
 #'
 #' @param HubName &#91;required&#93; The name of the hub to describe.
 #'
@@ -5210,7 +5226,7 @@ sagemaker_describe_hub <- function(HubName) {
 #' @description
 #' Describe the content of a hub.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_hub_content.html](https://paws-r.github.io/docs/sagemaker/describe_hub_content.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_hub_content/](https://www.paws-r-sdk.com/docs/sagemaker_describe_hub_content/) for full documentation.
 #'
 #' @param HubName &#91;required&#93; The name of the hub that contains the content to describe.
 #' @param HubContentType &#91;required&#93; The type of content in the hub.
@@ -5243,7 +5259,7 @@ sagemaker_describe_hub_content <- function(HubName, HubContentType, HubContentNa
 #' @description
 #' Returns information about the requested human task user interface (worker task template).
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_human_task_ui.html](https://paws-r.github.io/docs/sagemaker/describe_human_task_ui.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_human_task_ui/](https://www.paws-r-sdk.com/docs/sagemaker_describe_human_task_ui/) for full documentation.
 #'
 #' @param HumanTaskUiName &#91;required&#93; The name of the human task user interface (worker task template) you
 #' want information about.
@@ -5274,7 +5290,7 @@ sagemaker_describe_human_task_ui <- function(HumanTaskUiName) {
 #' @description
 #' Returns a description of a hyperparameter tuning job, depending on the fields selected. These fields can include the name, Amazon Resource Name (ARN), job status of your tuning job and more.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_hyper_parameter_tuning_job.html](https://paws-r.github.io/docs/sagemaker/describe_hyper_parameter_tuning_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_hyper_parameter_tuning_job/](https://www.paws-r-sdk.com/docs/sagemaker_describe_hyper_parameter_tuning_job/) for full documentation.
 #'
 #' @param HyperParameterTuningJobName &#91;required&#93; The name of the tuning job.
 #'
@@ -5303,7 +5319,7 @@ sagemaker_describe_hyper_parameter_tuning_job <- function(HyperParameterTuningJo
 #' @description
 #' Describes a SageMaker image.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_image.html](https://paws-r.github.io/docs/sagemaker/describe_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_image/](https://www.paws-r-sdk.com/docs/sagemaker_describe_image/) for full documentation.
 #'
 #' @param ImageName &#91;required&#93; The name of the image to describe.
 #'
@@ -5332,7 +5348,7 @@ sagemaker_describe_image <- function(ImageName) {
 #' @description
 #' Describes a version of a SageMaker image.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_image_version.html](https://paws-r.github.io/docs/sagemaker/describe_image_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_image_version/](https://www.paws-r-sdk.com/docs/sagemaker_describe_image_version/) for full documentation.
 #'
 #' @param ImageName &#91;required&#93; The name of the image.
 #' @param Version The version of the image. If not specified, the latest version is
@@ -5364,7 +5380,7 @@ sagemaker_describe_image_version <- function(ImageName, Version = NULL, Alias = 
 #' @description
 #' Returns details about an inference experiment.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_inference_experiment.html](https://paws-r.github.io/docs/sagemaker/describe_inference_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_inference_experiment/](https://www.paws-r-sdk.com/docs/sagemaker_describe_inference_experiment/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the inference experiment to describe.
 #'
@@ -5393,7 +5409,7 @@ sagemaker_describe_inference_experiment <- function(Name) {
 #' @description
 #' Provides the results of the Inference Recommender job. One or more recommendation jobs are returned.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_inference_recommendations_job.html](https://paws-r.github.io/docs/sagemaker/describe_inference_recommendations_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_inference_recommendations_job/](https://www.paws-r-sdk.com/docs/sagemaker_describe_inference_recommendations_job/) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job. The name must be unique within an Amazon Web
 #' Services Region in the Amazon Web Services account.
@@ -5423,7 +5439,7 @@ sagemaker_describe_inference_recommendations_job <- function(JobName) {
 #' @description
 #' Gets information about a labeling job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_labeling_job.html](https://paws-r.github.io/docs/sagemaker/describe_labeling_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_labeling_job/](https://www.paws-r-sdk.com/docs/sagemaker_describe_labeling_job/) for full documentation.
 #'
 #' @param LabelingJobName &#91;required&#93; The name of the labeling job to return information for.
 #'
@@ -5452,7 +5468,7 @@ sagemaker_describe_labeling_job <- function(LabelingJobName) {
 #' @description
 #' Provides a list of properties for the requested lineage group. For more information, see [Cross-Account Lineage Tracking](https://docs.aws.amazon.com/sagemaker/latest/dg/xaccount-lineage-tracking.html) in the *Amazon SageMaker Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_lineage_group.html](https://paws-r.github.io/docs/sagemaker/describe_lineage_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_lineage_group/](https://www.paws-r-sdk.com/docs/sagemaker_describe_lineage_group/) for full documentation.
 #'
 #' @param LineageGroupName &#91;required&#93; The name of the lineage group.
 #'
@@ -5481,7 +5497,7 @@ sagemaker_describe_lineage_group <- function(LineageGroupName) {
 #' @description
 #' Describes a model that you created using the [`create_model`][sagemaker_create_model] API.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_model.html](https://paws-r.github.io/docs/sagemaker/describe_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_model/](https://www.paws-r-sdk.com/docs/sagemaker_describe_model/) for full documentation.
 #'
 #' @param ModelName &#91;required&#93; The name of the model.
 #'
@@ -5510,7 +5526,7 @@ sagemaker_describe_model <- function(ModelName) {
 #' @description
 #' Returns a description of a model bias job definition.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_model_bias_job_definition.html](https://paws-r.github.io/docs/sagemaker/describe_model_bias_job_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_model_bias_job_definition/](https://www.paws-r-sdk.com/docs/sagemaker_describe_model_bias_job_definition/) for full documentation.
 #'
 #' @param JobDefinitionName &#91;required&#93; The name of the model bias job definition. The name must be unique
 #' within an Amazon Web Services Region in the Amazon Web Services account.
@@ -5541,7 +5557,7 @@ sagemaker_describe_model_bias_job_definition <- function(JobDefinitionName) {
 #' @description
 #' Describes the content, creation time, and security configuration of an Amazon SageMaker Model Card.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_model_card.html](https://paws-r.github.io/docs/sagemaker/describe_model_card.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_model_card/](https://www.paws-r-sdk.com/docs/sagemaker_describe_model_card/) for full documentation.
 #'
 #' @param ModelCardName &#91;required&#93; The name of the model card to describe.
 #' @param ModelCardVersion The version of the model card to describe. If a version is not provided,
@@ -5572,7 +5588,7 @@ sagemaker_describe_model_card <- function(ModelCardName, ModelCardVersion = NULL
 #' @description
 #' Describes an Amazon SageMaker Model Card export job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_model_card_export_job.html](https://paws-r.github.io/docs/sagemaker/describe_model_card_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_model_card_export_job/](https://www.paws-r-sdk.com/docs/sagemaker_describe_model_card_export_job/) for full documentation.
 #'
 #' @param ModelCardExportJobArn &#91;required&#93; The Amazon Resource Name (ARN) of the model card export job to describe.
 #'
@@ -5601,7 +5617,7 @@ sagemaker_describe_model_card_export_job <- function(ModelCardExportJobArn) {
 #' @description
 #' Returns a description of a model explainability job definition.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_model_explainability_job_definition.html](https://paws-r.github.io/docs/sagemaker/describe_model_explainability_job_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_model_explainability_job_definition/](https://www.paws-r-sdk.com/docs/sagemaker_describe_model_explainability_job_definition/) for full documentation.
 #'
 #' @param JobDefinitionName &#91;required&#93; The name of the model explainability job definition. The name must be
 #' unique within an Amazon Web Services Region in the Amazon Web Services
@@ -5633,7 +5649,7 @@ sagemaker_describe_model_explainability_job_definition <- function(JobDefinition
 #' @description
 #' Returns a description of the specified model package, which is used to create SageMaker models or list them on Amazon Web Services Marketplace.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_model_package.html](https://paws-r.github.io/docs/sagemaker/describe_model_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_model_package/](https://www.paws-r-sdk.com/docs/sagemaker_describe_model_package/) for full documentation.
 #'
 #' @param ModelPackageName &#91;required&#93; The name or Amazon Resource Name (ARN) of the model package to describe.
 #' 
@@ -5665,7 +5681,7 @@ sagemaker_describe_model_package <- function(ModelPackageName) {
 #' @description
 #' Gets a description for the specified model group.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_model_package_group.html](https://paws-r.github.io/docs/sagemaker/describe_model_package_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_model_package_group/](https://www.paws-r-sdk.com/docs/sagemaker_describe_model_package_group/) for full documentation.
 #'
 #' @param ModelPackageGroupName &#91;required&#93; The name of gthe model group to describe.
 #'
@@ -5694,7 +5710,7 @@ sagemaker_describe_model_package_group <- function(ModelPackageGroupName) {
 #' @description
 #' Returns a description of a model quality job definition.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_model_quality_job_definition.html](https://paws-r.github.io/docs/sagemaker/describe_model_quality_job_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_model_quality_job_definition/](https://www.paws-r-sdk.com/docs/sagemaker_describe_model_quality_job_definition/) for full documentation.
 #'
 #' @param JobDefinitionName &#91;required&#93; The name of the model quality job. The name must be unique within an
 #' Amazon Web Services Region in the Amazon Web Services account.
@@ -5724,7 +5740,7 @@ sagemaker_describe_model_quality_job_definition <- function(JobDefinitionName) {
 #' @description
 #' Describes the schedule for a monitoring job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_monitoring_schedule.html](https://paws-r.github.io/docs/sagemaker/describe_monitoring_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_monitoring_schedule/](https://www.paws-r-sdk.com/docs/sagemaker_describe_monitoring_schedule/) for full documentation.
 #'
 #' @param MonitoringScheduleName &#91;required&#93; Name of a previously created monitoring schedule.
 #'
@@ -5753,7 +5769,7 @@ sagemaker_describe_monitoring_schedule <- function(MonitoringScheduleName) {
 #' @description
 #' Returns information about a notebook instance.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_notebook_instance.html](https://paws-r.github.io/docs/sagemaker/describe_notebook_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_notebook_instance/](https://www.paws-r-sdk.com/docs/sagemaker_describe_notebook_instance/) for full documentation.
 #'
 #' @param NotebookInstanceName &#91;required&#93; The name of the notebook instance that you want information about.
 #'
@@ -5782,7 +5798,7 @@ sagemaker_describe_notebook_instance <- function(NotebookInstanceName) {
 #' @description
 #' Returns a description of a notebook instance lifecycle configuration.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_notebook_instance_lifecycle_config.html](https://paws-r.github.io/docs/sagemaker/describe_notebook_instance_lifecycle_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_notebook_instance_lifecycle_config/](https://www.paws-r-sdk.com/docs/sagemaker_describe_notebook_instance_lifecycle_config/) for full documentation.
 #'
 #' @param NotebookInstanceLifecycleConfigName &#91;required&#93; The name of the lifecycle configuration to describe.
 #'
@@ -5811,9 +5827,9 @@ sagemaker_describe_notebook_instance_lifecycle_config <- function(NotebookInstan
 #' @description
 #' Describes the details of a pipeline.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_pipeline.html](https://paws-r.github.io/docs/sagemaker/describe_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_pipeline/](https://www.paws-r-sdk.com/docs/sagemaker_describe_pipeline/) for full documentation.
 #'
-#' @param PipelineName &#91;required&#93; The name of the pipeline to describe.
+#' @param PipelineName &#91;required&#93; The name or Amazon Resource Name (ARN) of the pipeline to describe.
 #'
 #' @keywords internal
 #'
@@ -5840,7 +5856,7 @@ sagemaker_describe_pipeline <- function(PipelineName) {
 #' @description
 #' Describes the details of an execution's pipeline definition.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_pipeline_definition_for_execution.html](https://paws-r.github.io/docs/sagemaker/describe_pipeline_definition_for_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_pipeline_definition_for_execution/](https://www.paws-r-sdk.com/docs/sagemaker_describe_pipeline_definition_for_execution/) for full documentation.
 #'
 #' @param PipelineExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the pipeline execution.
 #'
@@ -5869,7 +5885,7 @@ sagemaker_describe_pipeline_definition_for_execution <- function(PipelineExecuti
 #' @description
 #' Describes the details of a pipeline execution.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_pipeline_execution.html](https://paws-r.github.io/docs/sagemaker/describe_pipeline_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_pipeline_execution/](https://www.paws-r-sdk.com/docs/sagemaker_describe_pipeline_execution/) for full documentation.
 #'
 #' @param PipelineExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the pipeline execution.
 #'
@@ -5898,7 +5914,7 @@ sagemaker_describe_pipeline_execution <- function(PipelineExecutionArn) {
 #' @description
 #' Returns a description of a processing job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_processing_job.html](https://paws-r.github.io/docs/sagemaker/describe_processing_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_processing_job/](https://www.paws-r-sdk.com/docs/sagemaker_describe_processing_job/) for full documentation.
 #'
 #' @param ProcessingJobName &#91;required&#93; The name of the processing job. The name must be unique within an Amazon
 #' Web Services Region in the Amazon Web Services account.
@@ -5928,7 +5944,7 @@ sagemaker_describe_processing_job <- function(ProcessingJobName) {
 #' @description
 #' Describes the details of a project.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_project.html](https://paws-r.github.io/docs/sagemaker/describe_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_project/](https://www.paws-r-sdk.com/docs/sagemaker_describe_project/) for full documentation.
 #'
 #' @param ProjectName &#91;required&#93; The name of the project to describe.
 #'
@@ -5957,7 +5973,7 @@ sagemaker_describe_project <- function(ProjectName) {
 #' @description
 #' Describes the space.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_space.html](https://paws-r.github.io/docs/sagemaker/describe_space.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_space/](https://www.paws-r-sdk.com/docs/sagemaker_describe_space/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The ID of the associated Domain.
 #' @param SpaceName &#91;required&#93; The name of the space.
@@ -5987,7 +6003,7 @@ sagemaker_describe_space <- function(DomainId, SpaceName) {
 #' @description
 #' Describes the Studio Lifecycle Configuration.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_studio_lifecycle_config.html](https://paws-r.github.io/docs/sagemaker/describe_studio_lifecycle_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_studio_lifecycle_config/](https://www.paws-r-sdk.com/docs/sagemaker_describe_studio_lifecycle_config/) for full documentation.
 #'
 #' @param StudioLifecycleConfigName &#91;required&#93; The name of the Studio Lifecycle Configuration to describe.
 #'
@@ -6016,7 +6032,7 @@ sagemaker_describe_studio_lifecycle_config <- function(StudioLifecycleConfigName
 #' @description
 #' Gets information about a work team provided by a vendor. It returns details about the subscription with a vendor in the Amazon Web Services Marketplace.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_subscribed_workteam.html](https://paws-r.github.io/docs/sagemaker/describe_subscribed_workteam.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_subscribed_workteam/](https://www.paws-r-sdk.com/docs/sagemaker_describe_subscribed_workteam/) for full documentation.
 #'
 #' @param WorkteamArn &#91;required&#93; The Amazon Resource Name (ARN) of the subscribed work team to describe.
 #'
@@ -6045,7 +6061,7 @@ sagemaker_describe_subscribed_workteam <- function(WorkteamArn) {
 #' @description
 #' Returns information about a training job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_training_job.html](https://paws-r.github.io/docs/sagemaker/describe_training_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_training_job/](https://www.paws-r-sdk.com/docs/sagemaker_describe_training_job/) for full documentation.
 #'
 #' @param TrainingJobName &#91;required&#93; The name of the training job.
 #'
@@ -6074,7 +6090,7 @@ sagemaker_describe_training_job <- function(TrainingJobName) {
 #' @description
 #' Returns information about a transform job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_transform_job.html](https://paws-r.github.io/docs/sagemaker/describe_transform_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_transform_job/](https://www.paws-r-sdk.com/docs/sagemaker_describe_transform_job/) for full documentation.
 #'
 #' @param TransformJobName &#91;required&#93; The name of the transform job that you want to view details of.
 #'
@@ -6103,7 +6119,7 @@ sagemaker_describe_transform_job <- function(TransformJobName) {
 #' @description
 #' Provides a list of a trial's properties.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_trial.html](https://paws-r.github.io/docs/sagemaker/describe_trial.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_trial/](https://www.paws-r-sdk.com/docs/sagemaker_describe_trial/) for full documentation.
 #'
 #' @param TrialName &#91;required&#93; The name of the trial to describe.
 #'
@@ -6132,7 +6148,7 @@ sagemaker_describe_trial <- function(TrialName) {
 #' @description
 #' Provides a list of a trials component's properties.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_trial_component.html](https://paws-r.github.io/docs/sagemaker/describe_trial_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_trial_component/](https://www.paws-r-sdk.com/docs/sagemaker_describe_trial_component/) for full documentation.
 #'
 #' @param TrialComponentName &#91;required&#93; The name of the trial component to describe.
 #'
@@ -6161,7 +6177,7 @@ sagemaker_describe_trial_component <- function(TrialComponentName) {
 #' @description
 #' Describes a user profile. For more information, see [`create_user_profile`][sagemaker_create_user_profile].
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_user_profile.html](https://paws-r.github.io/docs/sagemaker/describe_user_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_user_profile/](https://www.paws-r-sdk.com/docs/sagemaker_describe_user_profile/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
 #' @param UserProfileName &#91;required&#93; The user profile name. This value is not case sensitive.
@@ -6193,7 +6209,7 @@ sagemaker_describe_user_profile <- function(DomainId, UserProfileName) {
 #' @description
 #' Lists private workforce information, including workforce name, Amazon Resource Name (ARN), and, if applicable, allowed IP address ranges ([CIDRs](https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html)). Allowable IP address ranges are the IP addresses that workers can use to access tasks.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_workforce.html](https://paws-r.github.io/docs/sagemaker/describe_workforce.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_workforce/](https://www.paws-r-sdk.com/docs/sagemaker_describe_workforce/) for full documentation.
 #'
 #' @param WorkforceName &#91;required&#93; The name of the private workforce whose access you want to restrict.
 #' `WorkforceName` is automatically set to `default` when a workforce is
@@ -6224,7 +6240,7 @@ sagemaker_describe_workforce <- function(WorkforceName) {
 #' @description
 #' Gets information about a specific work team. You can see information such as the create date, the last updated date, membership information, and the work team's Amazon Resource Name (ARN).
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/describe_workteam.html](https://paws-r.github.io/docs/sagemaker/describe_workteam.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_workteam/](https://www.paws-r-sdk.com/docs/sagemaker_describe_workteam/) for full documentation.
 #'
 #' @param WorkteamName &#91;required&#93; The name of the work team to return a description of.
 #'
@@ -6253,7 +6269,7 @@ sagemaker_describe_workteam <- function(WorkteamName) {
 #' @description
 #' Disables using Service Catalog in SageMaker. Service Catalog is used to create SageMaker projects.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/disable_sagemaker_servicecatalog_portfolio.html](https://paws-r.github.io/docs/sagemaker/disable_sagemaker_servicecatalog_portfolio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_disable_sagemaker_servicecatalog_portfolio/](https://www.paws-r-sdk.com/docs/sagemaker_disable_sagemaker_servicecatalog_portfolio/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -6280,7 +6296,7 @@ sagemaker_disable_sagemaker_servicecatalog_portfolio <- function() {
 #' @description
 #' Disassociates a trial component from a trial. This doesn't effect other trials the component is associated with. Before you can delete a component, you must disassociate the component from all trials it is associated with. To associate a trial component with a trial, call the [`associate_trial_component`][sagemaker_associate_trial_component] API.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/disassociate_trial_component.html](https://paws-r.github.io/docs/sagemaker/disassociate_trial_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_disassociate_trial_component/](https://www.paws-r-sdk.com/docs/sagemaker_disassociate_trial_component/) for full documentation.
 #'
 #' @param TrialComponentName &#91;required&#93; The name of the component to disassociate from the trial.
 #' @param TrialName &#91;required&#93; The name of the trial to disassociate from.
@@ -6310,7 +6326,7 @@ sagemaker_disassociate_trial_component <- function(TrialComponentName, TrialName
 #' @description
 #' Enables using Service Catalog in SageMaker. Service Catalog is used to create SageMaker projects.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/enable_sagemaker_servicecatalog_portfolio.html](https://paws-r.github.io/docs/sagemaker/enable_sagemaker_servicecatalog_portfolio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_enable_sagemaker_servicecatalog_portfolio/](https://www.paws-r-sdk.com/docs/sagemaker_enable_sagemaker_servicecatalog_portfolio/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -6337,7 +6353,7 @@ sagemaker_enable_sagemaker_servicecatalog_portfolio <- function() {
 #' @description
 #' Describes a fleet.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/get_device_fleet_report.html](https://paws-r.github.io/docs/sagemaker/get_device_fleet_report.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_get_device_fleet_report/](https://www.paws-r-sdk.com/docs/sagemaker_get_device_fleet_report/) for full documentation.
 #'
 #' @param DeviceFleetName &#91;required&#93; The name of the fleet.
 #'
@@ -6366,7 +6382,7 @@ sagemaker_get_device_fleet_report <- function(DeviceFleetName) {
 #' @description
 #' The resource policy for the lineage group.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/get_lineage_group_policy.html](https://paws-r.github.io/docs/sagemaker/get_lineage_group_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_get_lineage_group_policy/](https://www.paws-r-sdk.com/docs/sagemaker_get_lineage_group_policy/) for full documentation.
 #'
 #' @param LineageGroupName &#91;required&#93; The name or Amazon Resource Name (ARN) of the lineage group.
 #'
@@ -6395,7 +6411,7 @@ sagemaker_get_lineage_group_policy <- function(LineageGroupName) {
 #' @description
 #' Gets a resource policy that manages access for a model group. For information about resource policies, see [Identity-based policies and resource-based policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html) in the *Amazon Web Services Identity and Access Management User Guide.*.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/get_model_package_group_policy.html](https://paws-r.github.io/docs/sagemaker/get_model_package_group_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_get_model_package_group_policy/](https://www.paws-r-sdk.com/docs/sagemaker_get_model_package_group_policy/) for full documentation.
 #'
 #' @param ModelPackageGroupName &#91;required&#93; The name of the model group for which to get the resource policy.
 #'
@@ -6424,7 +6440,7 @@ sagemaker_get_model_package_group_policy <- function(ModelPackageGroupName) {
 #' @description
 #' Gets the status of Service Catalog in SageMaker. Service Catalog is used to create SageMaker projects.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/get_sagemaker_servicecatalog_portfolio_status.html](https://paws-r.github.io/docs/sagemaker/get_sagemaker_servicecatalog_portfolio_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_get_sagemaker_servicecatalog_portfolio_status/](https://www.paws-r-sdk.com/docs/sagemaker_get_sagemaker_servicecatalog_portfolio_status/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -6452,7 +6468,7 @@ sagemaker_get_sagemaker_servicecatalog_portfolio_status <- function() {
 #' @description
 #' An auto-complete API for the search functionality in the SageMaker console. It returns suggestions of possible matches for the property name to use in [`search`][sagemaker_search] queries. Provides suggestions for `HyperParameters`, `Tags`, and `Metrics`.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/get_search_suggestions.html](https://paws-r.github.io/docs/sagemaker/get_search_suggestions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_get_search_suggestions/](https://www.paws-r-sdk.com/docs/sagemaker_get_search_suggestions/) for full documentation.
 #'
 #' @param Resource &#91;required&#93; The name of the SageMaker resource to search for.
 #' @param SuggestionQuery Limits the property names that are included in the response.
@@ -6482,7 +6498,7 @@ sagemaker_get_search_suggestions <- function(Resource, SuggestionQuery = NULL) {
 #' @description
 #' Import hub content.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/import_hub_content.html](https://paws-r.github.io/docs/sagemaker/import_hub_content.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_import_hub_content/](https://www.paws-r-sdk.com/docs/sagemaker_import_hub_content/) for full documentation.
 #'
 #' @param HubContentName &#91;required&#93; The name of the hub content to import.
 #' @param HubContentVersion The version of the hub content to import.
@@ -6523,7 +6539,7 @@ sagemaker_import_hub_content <- function(HubContentName, HubContentVersion = NUL
 #' @description
 #' Lists the actions in your account and their properties.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_actions.html](https://paws-r.github.io/docs/sagemaker/list_actions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_actions/](https://www.paws-r-sdk.com/docs/sagemaker_list_actions/) for full documentation.
 #'
 #' @param SourceUri A filter that returns only actions with the specified source URI.
 #' @param ActionType A filter that returns only actions of the specified type.
@@ -6547,7 +6563,7 @@ sagemaker_list_actions <- function(SourceUri = NULL, ActionType = NULL, CreatedA
     name = "ListActions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ActionSummaries")
   )
   input <- .sagemaker$list_actions_input(SourceUri = SourceUri, ActionType = ActionType, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_actions_output()
@@ -6564,7 +6580,7 @@ sagemaker_list_actions <- function(SourceUri = NULL, ActionType = NULL, CreatedA
 #' @description
 #' Lists the machine learning algorithms that have been created.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_algorithms.html](https://paws-r.github.io/docs/sagemaker/list_algorithms.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_algorithms/](https://www.paws-r-sdk.com/docs/sagemaker_list_algorithms/) for full documentation.
 #'
 #' @param CreationTimeAfter A filter that returns only algorithms created after the specified time
 #' (timestamp).
@@ -6589,7 +6605,7 @@ sagemaker_list_algorithms <- function(CreationTimeAfter = NULL, CreationTimeBefo
     name = "ListAlgorithms",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AlgorithmSummaryList")
   )
   input <- .sagemaker$list_algorithms_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_algorithms_output()
@@ -6606,7 +6622,7 @@ sagemaker_list_algorithms <- function(CreationTimeAfter = NULL, CreationTimeBefo
 #' @description
 #' Lists the aliases of a specified image or image version.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_aliases.html](https://paws-r.github.io/docs/sagemaker/list_aliases.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_aliases/](https://www.paws-r-sdk.com/docs/sagemaker_list_aliases/) for full documentation.
 #'
 #' @param ImageName &#91;required&#93; The name of the image.
 #' @param Alias The alias of the image version.
@@ -6625,7 +6641,7 @@ sagemaker_list_aliases <- function(ImageName, Alias = NULL, Version = NULL, MaxR
     name = "ListAliases",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SageMakerImageVersionAliases")
   )
   input <- .sagemaker$list_aliases_input(ImageName = ImageName, Alias = Alias, Version = Version, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_aliases_output()
@@ -6642,10 +6658,12 @@ sagemaker_list_aliases <- function(ImageName, Alias = NULL, Version = NULL, MaxR
 #' @description
 #' Lists the AppImageConfigs in your account and their properties. The list can be filtered by creation time or modified time, and whether the AppImageConfig name contains a specified string.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_app_image_configs.html](https://paws-r.github.io/docs/sagemaker/list_app_image_configs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_app_image_configs/](https://www.paws-r-sdk.com/docs/sagemaker_list_app_image_configs/) for full documentation.
 #'
-#' @param MaxResults The maximum number of AppImageConfigs to return in the response. The
-#' default value is 10.
+#' @param MaxResults The total number of items to return in the response. If the total number
+#' of items available is more than the value specified, a `NextToken` is
+#' provided in the response. To resume pagination, provide the `NextToken`
+#' value in the as part of a subsequent call. The default value is 10.
 #' @param NextToken If the previous call to [`list_images`][sagemaker_list_images] didn't
 #' return the full set of AppImageConfigs, the call returns a token for
 #' getting the next set of AppImageConfigs.
@@ -6670,7 +6688,7 @@ sagemaker_list_app_image_configs <- function(MaxResults = NULL, NextToken = NULL
     name = "ListAppImageConfigs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AppImageConfigs")
   )
   input <- .sagemaker$list_app_image_configs_input(MaxResults = MaxResults, NextToken = NextToken, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, ModifiedTimeBefore = ModifiedTimeBefore, ModifiedTimeAfter = ModifiedTimeAfter, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_app_image_configs_output()
@@ -6687,11 +6705,14 @@ sagemaker_list_app_image_configs <- function(MaxResults = NULL, NextToken = NULL
 #' @description
 #' Lists apps.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_apps.html](https://paws-r.github.io/docs/sagemaker/list_apps.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_apps/](https://www.paws-r-sdk.com/docs/sagemaker_list_apps/) for full documentation.
 #'
 #' @param NextToken If the previous response was truncated, you will receive this token. Use
 #' it in your next request to receive the next set of results.
-#' @param MaxResults Returns a list up to a specified limit.
+#' @param MaxResults The total number of items to return in the response. If the total number
+#' of items available is more than the value specified, a `NextToken` is
+#' provided in the response. To resume pagination, provide the `NextToken`
+#' value in the as part of a subsequent call. The default value is 10.
 #' @param SortOrder The sort order for the results. The default is Ascending.
 #' @param SortBy The parameter by which to sort the results. The default is CreationTime.
 #' @param DomainIdEquals A parameter to search for the domain ID.
@@ -6708,7 +6729,7 @@ sagemaker_list_apps <- function(NextToken = NULL, MaxResults = NULL, SortOrder =
     name = "ListApps",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Apps")
   )
   input <- .sagemaker$list_apps_input(NextToken = NextToken, MaxResults = MaxResults, SortOrder = SortOrder, SortBy = SortBy, DomainIdEquals = DomainIdEquals, UserProfileNameEquals = UserProfileNameEquals, SpaceNameEquals = SpaceNameEquals)
   output <- .sagemaker$list_apps_output()
@@ -6725,7 +6746,7 @@ sagemaker_list_apps <- function(NextToken = NULL, MaxResults = NULL, SortOrder =
 #' @description
 #' Lists the artifacts in your account and their properties.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_artifacts.html](https://paws-r.github.io/docs/sagemaker/list_artifacts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_artifacts/](https://www.paws-r-sdk.com/docs/sagemaker_list_artifacts/) for full documentation.
 #'
 #' @param SourceUri A filter that returns only artifacts with the specified source URI.
 #' @param ArtifactType A filter that returns only artifacts of the specified type.
@@ -6749,7 +6770,7 @@ sagemaker_list_artifacts <- function(SourceUri = NULL, ArtifactType = NULL, Crea
     name = "ListArtifacts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ArtifactSummaries")
   )
   input <- .sagemaker$list_artifacts_input(SourceUri = SourceUri, ArtifactType = ArtifactType, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_artifacts_output()
@@ -6766,7 +6787,7 @@ sagemaker_list_artifacts <- function(SourceUri = NULL, ArtifactType = NULL, Crea
 #' @description
 #' Lists the associations in your account and their properties.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_associations.html](https://paws-r.github.io/docs/sagemaker/list_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_associations/](https://www.paws-r-sdk.com/docs/sagemaker_list_associations/) for full documentation.
 #'
 #' @param SourceArn A filter that returns only associations with the specified source ARN.
 #' @param DestinationArn A filter that returns only associations with the specified destination
@@ -6796,7 +6817,7 @@ sagemaker_list_associations <- function(SourceArn = NULL, DestinationArn = NULL,
     name = "ListAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AssociationSummaries")
   )
   input <- .sagemaker$list_associations_input(SourceArn = SourceArn, DestinationArn = DestinationArn, SourceType = SourceType, DestinationType = DestinationType, AssociationType = AssociationType, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_associations_output()
@@ -6813,7 +6834,7 @@ sagemaker_list_associations <- function(SourceArn = NULL, DestinationArn = NULL,
 #' @description
 #' Request a list of jobs.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_auto_ml_jobs.html](https://paws-r.github.io/docs/sagemaker/list_auto_ml_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_auto_ml_jobs/](https://www.paws-r-sdk.com/docs/sagemaker_list_auto_ml_jobs/) for full documentation.
 #'
 #' @param CreationTimeAfter Request a list of jobs, using a filter for time.
 #' @param CreationTimeBefore Request a list of jobs, using a filter for time.
@@ -6835,7 +6856,7 @@ sagemaker_list_auto_ml_jobs <- function(CreationTimeAfter = NULL, CreationTimeBe
     name = "ListAutoMLJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AutoMLJobSummaries")
   )
   input <- .sagemaker$list_auto_ml_jobs_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortOrder = SortOrder, SortBy = SortBy, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_auto_ml_jobs_output()
@@ -6852,7 +6873,7 @@ sagemaker_list_auto_ml_jobs <- function(CreationTimeAfter = NULL, CreationTimeBe
 #' @description
 #' List the candidates created for the job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_candidates_for_auto_ml_job.html](https://paws-r.github.io/docs/sagemaker/list_candidates_for_auto_ml_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_candidates_for_auto_ml_job/](https://www.paws-r-sdk.com/docs/sagemaker_list_candidates_for_auto_ml_job/) for full documentation.
 #'
 #' @param AutoMLJobName &#91;required&#93; List the candidates created for the job by providing the job's name.
 #' @param StatusEquals List the candidates for the job and filter by status.
@@ -6871,7 +6892,7 @@ sagemaker_list_candidates_for_auto_ml_job <- function(AutoMLJobName, StatusEqual
     name = "ListCandidatesForAutoMLJob",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Candidates")
   )
   input <- .sagemaker$list_candidates_for_auto_ml_job_input(AutoMLJobName = AutoMLJobName, StatusEquals = StatusEquals, CandidateNameEquals = CandidateNameEquals, SortOrder = SortOrder, SortBy = SortBy, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_candidates_for_auto_ml_job_output()
@@ -6888,7 +6909,7 @@ sagemaker_list_candidates_for_auto_ml_job <- function(AutoMLJobName, StatusEqual
 #' @description
 #' Gets a list of the Git repositories in your account.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_code_repositories.html](https://paws-r.github.io/docs/sagemaker/list_code_repositories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_code_repositories/](https://www.paws-r-sdk.com/docs/sagemaker_list_code_repositories/) for full documentation.
 #'
 #' @param CreationTimeAfter A filter that returns only Git repositories that were created after the
 #' specified time.
@@ -6915,7 +6936,7 @@ sagemaker_list_code_repositories <- function(CreationTimeAfter = NULL, CreationT
     name = "ListCodeRepositories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CodeRepositorySummaryList")
   )
   input <- .sagemaker$list_code_repositories_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_code_repositories_output()
@@ -6932,7 +6953,7 @@ sagemaker_list_code_repositories <- function(CreationTimeAfter = NULL, CreationT
 #' @description
 #' Lists model compilation jobs that satisfy various filters.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_compilation_jobs.html](https://paws-r.github.io/docs/sagemaker/list_compilation_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_compilation_jobs/](https://www.paws-r-sdk.com/docs/sagemaker_list_compilation_jobs/) for full documentation.
 #'
 #' @param NextToken If the result of the previous
 #' [`list_compilation_jobs`][sagemaker_list_compilation_jobs] request was
@@ -6962,7 +6983,7 @@ sagemaker_list_compilation_jobs <- function(NextToken = NULL, MaxResults = NULL,
     name = "ListCompilationJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CompilationJobSummaries")
   )
   input <- .sagemaker$list_compilation_jobs_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_compilation_jobs_output()
@@ -6979,7 +7000,7 @@ sagemaker_list_compilation_jobs <- function(NextToken = NULL, MaxResults = NULL,
 #' @description
 #' Lists the contexts in your account and their properties.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_contexts.html](https://paws-r.github.io/docs/sagemaker/list_contexts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_contexts/](https://www.paws-r-sdk.com/docs/sagemaker_list_contexts/) for full documentation.
 #'
 #' @param SourceUri A filter that returns only contexts with the specified source URI.
 #' @param ContextType A filter that returns only contexts of the specified type.
@@ -7003,7 +7024,7 @@ sagemaker_list_contexts <- function(SourceUri = NULL, ContextType = NULL, Create
     name = "ListContexts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ContextSummaries")
   )
   input <- .sagemaker$list_contexts_input(SourceUri = SourceUri, ContextType = ContextType, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_contexts_output()
@@ -7020,7 +7041,7 @@ sagemaker_list_contexts <- function(SourceUri = NULL, ContextType = NULL, Create
 #' @description
 #' Lists the data quality job definitions in your account.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_data_quality_job_definitions.html](https://paws-r.github.io/docs/sagemaker/list_data_quality_job_definitions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_data_quality_job_definitions/](https://www.paws-r-sdk.com/docs/sagemaker_list_data_quality_job_definitions/) for full documentation.
 #'
 #' @param EndpointName A filter that lists the data quality job definitions associated with the
 #' specified endpoint.
@@ -7048,7 +7069,7 @@ sagemaker_list_data_quality_job_definitions <- function(EndpointName = NULL, Sor
     name = "ListDataQualityJobDefinitions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobDefinitionSummaries")
   )
   input <- .sagemaker$list_data_quality_job_definitions_input(EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
   output <- .sagemaker$list_data_quality_job_definitions_output()
@@ -7065,7 +7086,7 @@ sagemaker_list_data_quality_job_definitions <- function(EndpointName = NULL, Sor
 #' @description
 #' Returns a list of devices in the fleet.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_device_fleets.html](https://paws-r.github.io/docs/sagemaker/list_device_fleets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_device_fleets/](https://www.paws-r-sdk.com/docs/sagemaker_list_device_fleets/) for full documentation.
 #'
 #' @param NextToken The response from the last list when returning a list large enough to
 #' need tokening.
@@ -7087,7 +7108,7 @@ sagemaker_list_device_fleets <- function(NextToken = NULL, MaxResults = NULL, Cr
     name = "ListDeviceFleets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DeviceFleetSummaries")
   )
   input <- .sagemaker$list_device_fleets_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_device_fleets_output()
@@ -7104,7 +7125,7 @@ sagemaker_list_device_fleets <- function(NextToken = NULL, MaxResults = NULL, Cr
 #' @description
 #' A list of devices.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_devices.html](https://paws-r.github.io/docs/sagemaker/list_devices.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_devices/](https://www.paws-r-sdk.com/docs/sagemaker_list_devices/) for full documentation.
 #'
 #' @param NextToken The response from the last list when returning a list large enough to
 #' need tokening.
@@ -7122,7 +7143,7 @@ sagemaker_list_devices <- function(NextToken = NULL, MaxResults = NULL, LatestHe
     name = "ListDevices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DeviceSummaries")
   )
   input <- .sagemaker$list_devices_input(NextToken = NextToken, MaxResults = MaxResults, LatestHeartbeatAfter = LatestHeartbeatAfter, ModelName = ModelName, DeviceFleetName = DeviceFleetName)
   output <- .sagemaker$list_devices_output()
@@ -7139,11 +7160,14 @@ sagemaker_list_devices <- function(NextToken = NULL, MaxResults = NULL, LatestHe
 #' @description
 #' Lists the domains.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_domains.html](https://paws-r.github.io/docs/sagemaker/list_domains.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_domains/](https://www.paws-r-sdk.com/docs/sagemaker_list_domains/) for full documentation.
 #'
 #' @param NextToken If the previous response was truncated, you will receive this token. Use
 #' it in your next request to receive the next set of results.
-#' @param MaxResults Returns a list up to a specified limit.
+#' @param MaxResults The total number of items to return in the response. If the total number
+#' of items available is more than the value specified, a `NextToken` is
+#' provided in the response. To resume pagination, provide the `NextToken`
+#' value in the as part of a subsequent call. The default value is 10.
 #'
 #' @keywords internal
 #'
@@ -7153,7 +7177,7 @@ sagemaker_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListDomains",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Domains")
   )
   input <- .sagemaker$list_domains_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_domains_output()
@@ -7170,7 +7194,7 @@ sagemaker_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Lists all edge deployment plans.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_edge_deployment_plans.html](https://paws-r.github.io/docs/sagemaker/list_edge_deployment_plans.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_edge_deployment_plans/](https://www.paws-r-sdk.com/docs/sagemaker_list_edge_deployment_plans/) for full documentation.
 #'
 #' @param NextToken The response from the last list when returning a list large enough to
 #' need tokening.
@@ -7194,7 +7218,7 @@ sagemaker_list_edge_deployment_plans <- function(NextToken = NULL, MaxResults = 
     name = "ListEdgeDeploymentPlans",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EdgeDeploymentPlanSummaries")
   )
   input <- .sagemaker$list_edge_deployment_plans_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, DeviceFleetNameContains = DeviceFleetNameContains, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_edge_deployment_plans_output()
@@ -7211,7 +7235,7 @@ sagemaker_list_edge_deployment_plans <- function(NextToken = NULL, MaxResults = 
 #' @description
 #' Returns a list of edge packaging jobs.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_edge_packaging_jobs.html](https://paws-r.github.io/docs/sagemaker/list_edge_packaging_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_edge_packaging_jobs/](https://www.paws-r-sdk.com/docs/sagemaker_list_edge_packaging_jobs/) for full documentation.
 #'
 #' @param NextToken The response from the last list when returning a list large enough to
 #' need tokening.
@@ -7234,7 +7258,7 @@ sagemaker_list_edge_packaging_jobs <- function(NextToken = NULL, MaxResults = NU
     name = "ListEdgePackagingJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EdgePackagingJobSummaries")
   )
   input <- .sagemaker$list_edge_packaging_jobs_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, ModelNameContains = ModelNameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_edge_packaging_jobs_output()
@@ -7251,7 +7275,7 @@ sagemaker_list_edge_packaging_jobs <- function(NextToken = NULL, MaxResults = NU
 #' @description
 #' Lists endpoint configurations.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_endpoint_configs.html](https://paws-r.github.io/docs/sagemaker/list_endpoint_configs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_endpoint_configs/](https://www.paws-r-sdk.com/docs/sagemaker_list_endpoint_configs/) for full documentation.
 #'
 #' @param SortBy The field to sort results by. The default is `CreationTime`.
 #' @param SortOrder The sort order for results. The default is `Descending`.
@@ -7274,7 +7298,7 @@ sagemaker_list_endpoint_configs <- function(SortBy = NULL, SortOrder = NULL, Nex
     name = "ListEndpointConfigs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EndpointConfigs")
   )
   input <- .sagemaker$list_endpoint_configs_input(SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
   output <- .sagemaker$list_endpoint_configs_output()
@@ -7291,7 +7315,7 @@ sagemaker_list_endpoint_configs <- function(SortBy = NULL, SortOrder = NULL, Nex
 #' @description
 #' Lists endpoints.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_endpoints.html](https://paws-r.github.io/docs/sagemaker/list_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_endpoints/](https://www.paws-r-sdk.com/docs/sagemaker_list_endpoints/) for full documentation.
 #'
 #' @param SortBy Sorts the list of results. The default is `CreationTime`.
 #' @param SortOrder The sort order for results. The default is `Descending`.
@@ -7320,7 +7344,7 @@ sagemaker_list_endpoints <- function(SortBy = NULL, SortOrder = NULL, NextToken 
     name = "ListEndpoints",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Endpoints")
   )
   input <- .sagemaker$list_endpoints_input(SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, StatusEquals = StatusEquals)
   output <- .sagemaker$list_endpoints_output()
@@ -7337,7 +7361,7 @@ sagemaker_list_endpoints <- function(SortBy = NULL, SortOrder = NULL, NextToken 
 #' @description
 #' Lists all the experiments in your account. The list can be filtered to show only experiments that were created in a specific time range. The list can be sorted by experiment name or creation time.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_experiments.html](https://paws-r.github.io/docs/sagemaker/list_experiments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_experiments/](https://www.paws-r-sdk.com/docs/sagemaker_list_experiments/) for full documentation.
 #'
 #' @param CreatedAfter A filter that returns only experiments created after the specified time.
 #' @param CreatedBefore A filter that returns only experiments created before the specified
@@ -7358,7 +7382,7 @@ sagemaker_list_experiments <- function(CreatedAfter = NULL, CreatedBefore = NULL
     name = "ListExperiments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ExperimentSummaries")
   )
   input <- .sagemaker$list_experiments_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_experiments_output()
@@ -7375,7 +7399,7 @@ sagemaker_list_experiments <- function(CreatedAfter = NULL, CreatedBefore = NULL
 #' @description
 #' List `FeatureGroup`s based on given filter and order.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_feature_groups.html](https://paws-r.github.io/docs/sagemaker/list_feature_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_feature_groups/](https://www.paws-r-sdk.com/docs/sagemaker_list_feature_groups/) for full documentation.
 #'
 #' @param NameContains A string that partially matches one or more `FeatureGroup`s names.
 #' Filters `FeatureGroup`s by name.
@@ -7400,7 +7424,7 @@ sagemaker_list_feature_groups <- function(NameContains = NULL, FeatureGroupStatu
     name = "ListFeatureGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FeatureGroupSummaries")
   )
   input <- .sagemaker$list_feature_groups_input(NameContains = NameContains, FeatureGroupStatusEquals = FeatureGroupStatusEquals, OfflineStoreStatusEquals = OfflineStoreStatusEquals, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, SortOrder = SortOrder, SortBy = SortBy, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_feature_groups_output()
@@ -7417,7 +7441,7 @@ sagemaker_list_feature_groups <- function(NameContains = NULL, FeatureGroupStatu
 #' @description
 #' Returns information about the flow definitions in your account.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_flow_definitions.html](https://paws-r.github.io/docs/sagemaker/list_flow_definitions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_flow_definitions/](https://www.paws-r-sdk.com/docs/sagemaker_list_flow_definitions/) for full documentation.
 #'
 #' @param CreationTimeAfter A filter that returns only flow definitions with a creation time greater
 #' than or equal to the specified timestamp.
@@ -7439,7 +7463,7 @@ sagemaker_list_flow_definitions <- function(CreationTimeAfter = NULL, CreationTi
     name = "ListFlowDefinitions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FlowDefinitionSummaries")
   )
   input <- .sagemaker$list_flow_definitions_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_flow_definitions_output()
@@ -7456,7 +7480,7 @@ sagemaker_list_flow_definitions <- function(CreationTimeAfter = NULL, CreationTi
 #' @description
 #' List hub content versions.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_hub_content_versions.html](https://paws-r.github.io/docs/sagemaker/list_hub_content_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_hub_content_versions/](https://www.paws-r-sdk.com/docs/sagemaker_list_hub_content_versions/) for full documentation.
 #'
 #' @param HubName &#91;required&#93; The name of the hub to list the content versions of.
 #' @param HubContentType &#91;required&#93; The type of hub content to list versions of.
@@ -7500,7 +7524,7 @@ sagemaker_list_hub_content_versions <- function(HubName, HubContentType, HubCont
 #' @description
 #' List the contents of a hub.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_hub_contents.html](https://paws-r.github.io/docs/sagemaker/list_hub_contents.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_hub_contents/](https://www.paws-r-sdk.com/docs/sagemaker_list_hub_contents/) for full documentation.
 #'
 #' @param HubName &#91;required&#93; The name of the hub to list the contents of.
 #' @param HubContentType &#91;required&#93; The type of hub content to list.
@@ -7541,7 +7565,7 @@ sagemaker_list_hub_contents <- function(HubName, HubContentType, NameContains = 
 #' @description
 #' List all existing hubs.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_hubs.html](https://paws-r.github.io/docs/sagemaker/list_hubs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_hubs/](https://www.paws-r-sdk.com/docs/sagemaker_list_hubs/) for full documentation.
 #'
 #' @param NameContains Only list hubs with names that contain the specified string.
 #' @param CreationTimeBefore Only list hubs that were created before the time specified.
@@ -7580,7 +7604,7 @@ sagemaker_list_hubs <- function(NameContains = NULL, CreationTimeBefore = NULL, 
 #' @description
 #' Returns information about the human task user interfaces in your account.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_human_task_uis.html](https://paws-r.github.io/docs/sagemaker/list_human_task_uis.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_human_task_uis/](https://www.paws-r-sdk.com/docs/sagemaker_list_human_task_uis/) for full documentation.
 #'
 #' @param CreationTimeAfter A filter that returns only human task user interfaces with a creation
 #' time greater than or equal to the specified timestamp.
@@ -7602,7 +7626,7 @@ sagemaker_list_human_task_uis <- function(CreationTimeAfter = NULL, CreationTime
     name = "ListHumanTaskUis",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HumanTaskUiSummaries")
   )
   input <- .sagemaker$list_human_task_uis_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_human_task_uis_output()
@@ -7620,7 +7644,7 @@ sagemaker_list_human_task_uis <- function(CreationTimeAfter = NULL, CreationTime
 #' @description
 #' Gets a list of [HyperParameterTuningJobSummary](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_HyperParameterTuningJobSummary.html) objects that describe the hyperparameter tuning jobs launched in your account.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_hyper_parameter_tuning_jobs.html](https://paws-r.github.io/docs/sagemaker/list_hyper_parameter_tuning_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_hyper_parameter_tuning_jobs/](https://www.paws-r-sdk.com/docs/sagemaker_list_hyper_parameter_tuning_jobs/) for full documentation.
 #'
 #' @param NextToken If the result of the previous
 #' [`list_hyper_parameter_tuning_jobs`][sagemaker_list_hyper_parameter_tuning_jobs]
@@ -7649,7 +7673,7 @@ sagemaker_list_hyper_parameter_tuning_jobs <- function(NextToken = NULL, MaxResu
     name = "ListHyperParameterTuningJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "HyperParameterTuningJobSummaries")
   )
   input <- .sagemaker$list_hyper_parameter_tuning_jobs_input(NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy, SortOrder = SortOrder, NameContains = NameContains, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, StatusEquals = StatusEquals)
   output <- .sagemaker$list_hyper_parameter_tuning_jobs_output()
@@ -7666,7 +7690,7 @@ sagemaker_list_hyper_parameter_tuning_jobs <- function(NextToken = NULL, MaxResu
 #' @description
 #' Lists the versions of a specified image and their properties. The list can be filtered by creation time or modified time.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_image_versions.html](https://paws-r.github.io/docs/sagemaker/list_image_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_image_versions/](https://www.paws-r-sdk.com/docs/sagemaker_list_image_versions/) for full documentation.
 #'
 #' @param CreationTimeAfter A filter that returns only versions created on or after the specified
 #' time.
@@ -7694,7 +7718,7 @@ sagemaker_list_image_versions <- function(CreationTimeAfter = NULL, CreationTime
     name = "ListImageVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ImageVersions")
   )
   input <- .sagemaker$list_image_versions_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, ImageName = ImageName, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_image_versions_output()
@@ -7711,7 +7735,7 @@ sagemaker_list_image_versions <- function(CreationTimeAfter = NULL, CreationTime
 #' @description
 #' Lists the images in your account and their properties. The list can be filtered by creation time or modified time, and whether the image name contains a specified string.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_images.html](https://paws-r.github.io/docs/sagemaker/list_images.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_images/](https://www.paws-r-sdk.com/docs/sagemaker_list_images/) for full documentation.
 #'
 #' @param CreationTimeAfter A filter that returns only images created on or after the specified
 #' time.
@@ -7739,7 +7763,7 @@ sagemaker_list_images <- function(CreationTimeAfter = NULL, CreationTimeBefore =
     name = "ListImages",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Images")
   )
   input <- .sagemaker$list_images_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_images_output()
@@ -7756,7 +7780,7 @@ sagemaker_list_images <- function(CreationTimeAfter = NULL, CreationTimeBefore =
 #' @description
 #' Returns the list of all inference experiments.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_inference_experiments.html](https://paws-r.github.io/docs/sagemaker/list_inference_experiments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_inference_experiments/](https://www.paws-r-sdk.com/docs/sagemaker_list_inference_experiments/) for full documentation.
 #'
 #' @param NameContains Selects inference experiments whose names contain this name.
 #' @param Type Selects inference experiments of this type. For the possible types of
@@ -7785,7 +7809,7 @@ sagemaker_list_inference_experiments <- function(NameContains = NULL, Type = NUL
     name = "ListInferenceExperiments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InferenceExperiments")
   )
   input <- .sagemaker$list_inference_experiments_input(NameContains = NameContains, Type = Type, StatusEquals = StatusEquals, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_inference_experiments_output()
@@ -7802,7 +7826,7 @@ sagemaker_list_inference_experiments <- function(NameContains = NULL, Type = NUL
 #' @description
 #' Returns a list of the subtasks for an Inference Recommender job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_inference_recommendations_job_steps.html](https://paws-r.github.io/docs/sagemaker/list_inference_recommendations_job_steps.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_inference_recommendations_job_steps/](https://www.paws-r-sdk.com/docs/sagemaker_list_inference_recommendations_job_steps/) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name for the Inference Recommender job.
 #' @param Status A filter to return benchmarks of a specified status. If this field is
@@ -7824,7 +7848,7 @@ sagemaker_list_inference_recommendations_job_steps <- function(JobName, Status =
     name = "ListInferenceRecommendationsJobSteps",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Steps")
   )
   input <- .sagemaker$list_inference_recommendations_job_steps_input(JobName = JobName, Status = Status, StepType = StepType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_inference_recommendations_job_steps_output()
@@ -7841,7 +7865,7 @@ sagemaker_list_inference_recommendations_job_steps <- function(JobName, Status =
 #' @description
 #' Lists recommendation jobs that satisfy various filters.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_inference_recommendations_jobs.html](https://paws-r.github.io/docs/sagemaker/list_inference_recommendations_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_inference_recommendations_jobs/](https://www.paws-r-sdk.com/docs/sagemaker_list_inference_recommendations_jobs/) for full documentation.
 #'
 #' @param CreationTimeAfter A filter that returns only jobs created after the specified time
 #' (timestamp).
@@ -7873,7 +7897,7 @@ sagemaker_list_inference_recommendations_jobs <- function(CreationTimeAfter = NU
     name = "ListInferenceRecommendationsJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "InferenceRecommendationsJobs")
   )
   input <- .sagemaker$list_inference_recommendations_jobs_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, ModelNameEquals = ModelNameEquals, ModelPackageVersionArnEquals = ModelPackageVersionArnEquals)
   output <- .sagemaker$list_inference_recommendations_jobs_output()
@@ -7890,7 +7914,7 @@ sagemaker_list_inference_recommendations_jobs <- function(CreationTimeAfter = NU
 #' @description
 #' Gets a list of labeling jobs.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_labeling_jobs.html](https://paws-r.github.io/docs/sagemaker/list_labeling_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_labeling_jobs/](https://www.paws-r-sdk.com/docs/sagemaker_list_labeling_jobs/) for full documentation.
 #'
 #' @param CreationTimeAfter A filter that returns only labeling jobs created after the specified
 #' time (timestamp).
@@ -7920,7 +7944,7 @@ sagemaker_list_labeling_jobs <- function(CreationTimeAfter = NULL, CreationTimeB
     name = "ListLabelingJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LabelingJobSummaryList")
   )
   input <- .sagemaker$list_labeling_jobs_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, MaxResults = MaxResults, NextToken = NextToken, NameContains = NameContains, SortBy = SortBy, SortOrder = SortOrder, StatusEquals = StatusEquals)
   output <- .sagemaker$list_labeling_jobs_output()
@@ -7937,7 +7961,7 @@ sagemaker_list_labeling_jobs <- function(CreationTimeAfter = NULL, CreationTimeB
 #' @description
 #' Gets a list of labeling jobs assigned to a specified work team.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_labeling_jobs_for_workteam.html](https://paws-r.github.io/docs/sagemaker/list_labeling_jobs_for_workteam.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_labeling_jobs_for_workteam/](https://www.paws-r-sdk.com/docs/sagemaker_list_labeling_jobs_for_workteam/) for full documentation.
 #'
 #' @param WorkteamArn &#91;required&#93; The Amazon Resource Name (ARN) of the work team for which you want to
 #' see labeling jobs for.
@@ -7964,7 +7988,7 @@ sagemaker_list_labeling_jobs_for_workteam <- function(WorkteamArn, MaxResults = 
     name = "ListLabelingJobsForWorkteam",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LabelingJobSummaryList")
   )
   input <- .sagemaker$list_labeling_jobs_for_workteam_input(WorkteamArn = WorkteamArn, MaxResults = MaxResults, NextToken = NextToken, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, JobReferenceCodeContains = JobReferenceCodeContains, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_labeling_jobs_for_workteam_output()
@@ -7981,7 +8005,7 @@ sagemaker_list_labeling_jobs_for_workteam <- function(WorkteamArn, MaxResults = 
 #' @description
 #' A list of lineage groups shared with your Amazon Web Services account. For more information, see [Cross-Account Lineage Tracking](https://docs.aws.amazon.com/sagemaker/latest/dg/xaccount-lineage-tracking.html) in the *Amazon SageMaker Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_lineage_groups.html](https://paws-r.github.io/docs/sagemaker/list_lineage_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_lineage_groups/](https://www.paws-r-sdk.com/docs/sagemaker_list_lineage_groups/) for full documentation.
 #'
 #' @param CreatedAfter A timestamp to filter against lineage groups created after a certain
 #' point in time.
@@ -8003,7 +8027,7 @@ sagemaker_list_lineage_groups <- function(CreatedAfter = NULL, CreatedBefore = N
     name = "ListLineageGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LineageGroupSummaries")
   )
   input <- .sagemaker$list_lineage_groups_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_lineage_groups_output()
@@ -8020,7 +8044,7 @@ sagemaker_list_lineage_groups <- function(CreatedAfter = NULL, CreatedBefore = N
 #' @description
 #' Lists model bias jobs definitions that satisfy various filters.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_model_bias_job_definitions.html](https://paws-r.github.io/docs/sagemaker/list_model_bias_job_definitions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_model_bias_job_definitions/](https://www.paws-r-sdk.com/docs/sagemaker_list_model_bias_job_definitions/) for full documentation.
 #'
 #' @param EndpointName Name of the endpoint to monitor for model bias.
 #' @param SortBy Whether to sort results by the `Name` or `CreationTime` field. The
@@ -8045,7 +8069,7 @@ sagemaker_list_model_bias_job_definitions <- function(EndpointName = NULL, SortB
     name = "ListModelBiasJobDefinitions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobDefinitionSummaries")
   )
   input <- .sagemaker$list_model_bias_job_definitions_input(EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
   output <- .sagemaker$list_model_bias_job_definitions_output()
@@ -8062,7 +8086,7 @@ sagemaker_list_model_bias_job_definitions <- function(EndpointName = NULL, SortB
 #' @description
 #' List the export jobs for the Amazon SageMaker Model Card.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_model_card_export_jobs.html](https://paws-r.github.io/docs/sagemaker/list_model_card_export_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_model_card_export_jobs/](https://www.paws-r-sdk.com/docs/sagemaker_list_model_card_export_jobs/) for full documentation.
 #'
 #' @param ModelCardName &#91;required&#93; List export jobs for the model card with the specified name.
 #' @param ModelCardVersion List export jobs for the model card with the specified version.
@@ -8091,7 +8115,7 @@ sagemaker_list_model_card_export_jobs <- function(ModelCardName, ModelCardVersio
     name = "ListModelCardExportJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelCardExportJobSummaries")
   )
   input <- .sagemaker$list_model_card_export_jobs_input(ModelCardName = ModelCardName, ModelCardVersion = ModelCardVersion, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, ModelCardExportJobNameContains = ModelCardExportJobNameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_model_card_export_jobs_output()
@@ -8108,7 +8132,7 @@ sagemaker_list_model_card_export_jobs <- function(ModelCardName, ModelCardVersio
 #' @description
 #' List existing versions of an Amazon SageMaker Model Card.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_model_card_versions.html](https://paws-r.github.io/docs/sagemaker/list_model_card_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_model_card_versions/](https://www.paws-r-sdk.com/docs/sagemaker_list_model_card_versions/) for full documentation.
 #'
 #' @param CreationTimeAfter Only list model card versions that were created after the time
 #' specified.
@@ -8132,7 +8156,7 @@ sagemaker_list_model_card_versions <- function(CreationTimeAfter = NULL, Creatio
     name = "ListModelCardVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelCardVersionSummaryList")
   )
   input <- .sagemaker$list_model_card_versions_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, ModelCardName = ModelCardName, ModelCardStatus = ModelCardStatus, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_model_card_versions_output()
@@ -8149,7 +8173,7 @@ sagemaker_list_model_card_versions <- function(CreationTimeAfter = NULL, Creatio
 #' @description
 #' List existing model cards.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_model_cards.html](https://paws-r.github.io/docs/sagemaker/list_model_cards.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_model_cards/](https://www.paws-r-sdk.com/docs/sagemaker_list_model_cards/) for full documentation.
 #'
 #' @param CreationTimeAfter Only list model cards that were created after the time specified.
 #' @param CreationTimeBefore Only list model cards that were created before the time specified.
@@ -8172,7 +8196,7 @@ sagemaker_list_model_cards <- function(CreationTimeAfter = NULL, CreationTimeBef
     name = "ListModelCards",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelCardSummaries")
   )
   input <- .sagemaker$list_model_cards_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, ModelCardStatus = ModelCardStatus, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_model_cards_output()
@@ -8189,7 +8213,7 @@ sagemaker_list_model_cards <- function(CreationTimeAfter = NULL, CreationTimeBef
 #' @description
 #' Lists model explainability job definitions that satisfy various filters.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_model_explainability_job_definitions.html](https://paws-r.github.io/docs/sagemaker/list_model_explainability_job_definitions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_model_explainability_job_definitions/](https://www.paws-r-sdk.com/docs/sagemaker_list_model_explainability_job_definitions/) for full documentation.
 #'
 #' @param EndpointName Name of the endpoint to monitor for model explainability.
 #' @param SortBy Whether to sort results by the `Name` or `CreationTime` field. The
@@ -8215,7 +8239,7 @@ sagemaker_list_model_explainability_job_definitions <- function(EndpointName = N
     name = "ListModelExplainabilityJobDefinitions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobDefinitionSummaries")
   )
   input <- .sagemaker$list_model_explainability_job_definitions_input(EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
   output <- .sagemaker$list_model_explainability_job_definitions_output()
@@ -8233,7 +8257,7 @@ sagemaker_list_model_explainability_job_definitions <- function(EndpointName = N
 #' @description
 #' Lists the domain, framework, task, and model name of standard machine learning models found in common model zoos.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_model_metadata.html](https://paws-r.github.io/docs/sagemaker/list_model_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_model_metadata/](https://www.paws-r-sdk.com/docs/sagemaker_list_model_metadata/) for full documentation.
 #'
 #' @param SearchExpression One or more filters that searches for the specified resource or
 #' resources in a search. All resource objects that satisfy the
@@ -8253,7 +8277,7 @@ sagemaker_list_model_metadata <- function(SearchExpression = NULL, NextToken = N
     name = "ListModelMetadata",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelMetadataSummaries")
   )
   input <- .sagemaker$list_model_metadata_input(SearchExpression = SearchExpression, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_model_metadata_output()
@@ -8270,7 +8294,7 @@ sagemaker_list_model_metadata <- function(SearchExpression = NULL, NextToken = N
 #' @description
 #' Gets a list of the model groups in your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_model_package_groups.html](https://paws-r.github.io/docs/sagemaker/list_model_package_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_model_package_groups/](https://www.paws-r-sdk.com/docs/sagemaker_list_model_package_groups/) for full documentation.
 #'
 #' @param CreationTimeAfter A filter that returns only model groups created after the specified
 #' time.
@@ -8294,7 +8318,7 @@ sagemaker_list_model_package_groups <- function(CreationTimeAfter = NULL, Creati
     name = "ListModelPackageGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelPackageGroupSummaryList")
   )
   input <- .sagemaker$list_model_package_groups_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_model_package_groups_output()
@@ -8311,7 +8335,7 @@ sagemaker_list_model_package_groups <- function(CreationTimeAfter = NULL, Creati
 #' @description
 #' Lists the model packages that have been created.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_model_packages.html](https://paws-r.github.io/docs/sagemaker/list_model_packages.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_model_packages/](https://www.paws-r-sdk.com/docs/sagemaker_list_model_packages/) for full documentation.
 #'
 #' @param CreationTimeAfter A filter that returns only model packages created after the specified
 #' time (timestamp).
@@ -8349,7 +8373,7 @@ sagemaker_list_model_packages <- function(CreationTimeAfter = NULL, CreationTime
     name = "ListModelPackages",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ModelPackageSummaryList")
   )
   input <- .sagemaker$list_model_packages_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, ModelApprovalStatus = ModelApprovalStatus, ModelPackageGroupName = ModelPackageGroupName, ModelPackageType = ModelPackageType, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_model_packages_output()
@@ -8366,7 +8390,7 @@ sagemaker_list_model_packages <- function(CreationTimeAfter = NULL, CreationTime
 #' @description
 #' Gets a list of model quality monitoring job definitions in your account.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_model_quality_job_definitions.html](https://paws-r.github.io/docs/sagemaker/list_model_quality_job_definitions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_model_quality_job_definitions/](https://www.paws-r-sdk.com/docs/sagemaker_list_model_quality_job_definitions/) for full documentation.
 #'
 #' @param EndpointName A filter that returns only model quality monitoring job definitions that
 #' are associated with the specified endpoint.
@@ -8395,7 +8419,7 @@ sagemaker_list_model_quality_job_definitions <- function(EndpointName = NULL, So
     name = "ListModelQualityJobDefinitions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "JobDefinitionSummaries")
   )
   input <- .sagemaker$list_model_quality_job_definitions_input(EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
   output <- .sagemaker$list_model_quality_job_definitions_output()
@@ -8412,7 +8436,7 @@ sagemaker_list_model_quality_job_definitions <- function(EndpointName = NULL, So
 #' @description
 #' Lists models created with the [`create_model`][sagemaker_create_model] API.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_models.html](https://paws-r.github.io/docs/sagemaker/list_models.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_models/](https://www.paws-r-sdk.com/docs/sagemaker_list_models/) for full documentation.
 #'
 #' @param SortBy Sorts the list of results. The default is `CreationTime`.
 #' @param SortOrder The sort order for results. The default is `Descending`.
@@ -8435,7 +8459,7 @@ sagemaker_list_models <- function(SortBy = NULL, SortOrder = NULL, NextToken = N
     name = "ListModels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Models")
   )
   input <- .sagemaker$list_models_input(SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter)
   output <- .sagemaker$list_models_output()
@@ -8452,7 +8476,7 @@ sagemaker_list_models <- function(SortBy = NULL, SortOrder = NULL, NextToken = N
 #' @description
 #' Gets a list of past alerts in a model monitoring schedule.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_monitoring_alert_history.html](https://paws-r.github.io/docs/sagemaker/list_monitoring_alert_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_monitoring_alert_history/](https://www.paws-r-sdk.com/docs/sagemaker_list_monitoring_alert_history/) for full documentation.
 #'
 #' @param MonitoringScheduleName The name of a monitoring schedule.
 #' @param MonitoringAlertName The name of a monitoring alert.
@@ -8479,7 +8503,7 @@ sagemaker_list_monitoring_alert_history <- function(MonitoringScheduleName = NUL
     name = "ListMonitoringAlertHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MonitoringAlertHistory")
   )
   input <- .sagemaker$list_monitoring_alert_history_input(MonitoringScheduleName = MonitoringScheduleName, MonitoringAlertName = MonitoringAlertName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, StatusEquals = StatusEquals)
   output <- .sagemaker$list_monitoring_alert_history_output()
@@ -8496,7 +8520,7 @@ sagemaker_list_monitoring_alert_history <- function(MonitoringScheduleName = NUL
 #' @description
 #' Gets the alerts for a single monitoring schedule.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_monitoring_alerts.html](https://paws-r.github.io/docs/sagemaker/list_monitoring_alerts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_monitoring_alerts/](https://www.paws-r-sdk.com/docs/sagemaker_list_monitoring_alerts/) for full documentation.
 #'
 #' @param MonitoringScheduleName &#91;required&#93; The name of a monitoring schedule.
 #' @param NextToken If the result of the previous
@@ -8513,7 +8537,7 @@ sagemaker_list_monitoring_alerts <- function(MonitoringScheduleName, NextToken =
     name = "ListMonitoringAlerts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MonitoringAlertSummaries")
   )
   input <- .sagemaker$list_monitoring_alerts_input(MonitoringScheduleName = MonitoringScheduleName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_monitoring_alerts_output()
@@ -8530,7 +8554,7 @@ sagemaker_list_monitoring_alerts <- function(MonitoringScheduleName, NextToken =
 #' @description
 #' Returns list of all monitoring job executions.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_monitoring_executions.html](https://paws-r.github.io/docs/sagemaker/list_monitoring_executions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_monitoring_executions/](https://www.paws-r-sdk.com/docs/sagemaker_list_monitoring_executions/) for full documentation.
 #'
 #' @param MonitoringScheduleName Name of a specific schedule to fetch jobs for.
 #' @param EndpointName Name of a specific endpoint to fetch jobs for.
@@ -8562,7 +8586,7 @@ sagemaker_list_monitoring_executions <- function(MonitoringScheduleName = NULL, 
     name = "ListMonitoringExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MonitoringExecutionSummaries")
   )
   input <- .sagemaker$list_monitoring_executions_input(MonitoringScheduleName = MonitoringScheduleName, EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, ScheduledTimeBefore = ScheduledTimeBefore, ScheduledTimeAfter = ScheduledTimeAfter, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, StatusEquals = StatusEquals, MonitoringJobDefinitionName = MonitoringJobDefinitionName, MonitoringTypeEquals = MonitoringTypeEquals)
   output <- .sagemaker$list_monitoring_executions_output()
@@ -8579,7 +8603,7 @@ sagemaker_list_monitoring_executions <- function(MonitoringScheduleName = NULL, 
 #' @description
 #' Returns list of all monitoring schedules.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_monitoring_schedules.html](https://paws-r.github.io/docs/sagemaker/list_monitoring_schedules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_monitoring_schedules/](https://www.paws-r-sdk.com/docs/sagemaker_list_monitoring_schedules/) for full documentation.
 #'
 #' @param EndpointName Name of a specific endpoint to fetch schedules for.
 #' @param SortBy Whether to sort results by `Status`, `CreationTime`, `ScheduledTime`
@@ -8614,7 +8638,7 @@ sagemaker_list_monitoring_schedules <- function(EndpointName = NULL, SortBy = NU
     name = "ListMonitoringSchedules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "MonitoringScheduleSummaries")
   )
   input <- .sagemaker$list_monitoring_schedules_input(EndpointName = EndpointName, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, StatusEquals = StatusEquals, MonitoringJobDefinitionName = MonitoringJobDefinitionName, MonitoringTypeEquals = MonitoringTypeEquals)
   output <- .sagemaker$list_monitoring_schedules_output()
@@ -8632,7 +8656,7 @@ sagemaker_list_monitoring_schedules <- function(EndpointName = NULL, SortBy = NU
 #' @description
 #' Lists notebook instance lifestyle configurations created with the [`create_notebook_instance_lifecycle_config`][sagemaker_create_notebook_instance_lifecycle_config] API.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_notebook_instance_lifecycle_configs.html](https://paws-r.github.io/docs/sagemaker/list_notebook_instance_lifecycle_configs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_notebook_instance_lifecycle_configs/](https://www.paws-r-sdk.com/docs/sagemaker_list_notebook_instance_lifecycle_configs/) for full documentation.
 #'
 #' @param NextToken If the result of a
 #' [`list_notebook_instance_lifecycle_configs`][sagemaker_list_notebook_instance_lifecycle_configs]
@@ -8661,7 +8685,7 @@ sagemaker_list_notebook_instance_lifecycle_configs <- function(NextToken = NULL,
     name = "ListNotebookInstanceLifecycleConfigs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NotebookInstanceLifecycleConfigs")
   )
   input <- .sagemaker$list_notebook_instance_lifecycle_configs_input(NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy, SortOrder = SortOrder, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter)
   output <- .sagemaker$list_notebook_instance_lifecycle_configs_output()
@@ -8679,7 +8703,7 @@ sagemaker_list_notebook_instance_lifecycle_configs <- function(NextToken = NULL,
 #' @description
 #' Returns a list of the SageMaker notebook instances in the requester's account in an Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_notebook_instances.html](https://paws-r.github.io/docs/sagemaker/list_notebook_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_notebook_instances/](https://www.paws-r-sdk.com/docs/sagemaker_list_notebook_instances/) for full documentation.
 #'
 #' @param NextToken If the previous call to the
 #' [`list_notebook_instances`][sagemaker_list_notebook_instances] is
@@ -8724,7 +8748,7 @@ sagemaker_list_notebook_instances <- function(NextToken = NULL, MaxResults = NUL
     name = "ListNotebookInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NotebookInstances")
   )
   input <- .sagemaker$list_notebook_instances_input(NextToken = NextToken, MaxResults = MaxResults, SortBy = SortBy, SortOrder = SortOrder, NameContains = NameContains, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, StatusEquals = StatusEquals, NotebookInstanceLifecycleConfigNameContains = NotebookInstanceLifecycleConfigNameContains, DefaultCodeRepositoryContains = DefaultCodeRepositoryContains, AdditionalCodeRepositoryEquals = AdditionalCodeRepositoryEquals)
   output <- .sagemaker$list_notebook_instances_output()
@@ -8741,7 +8765,7 @@ sagemaker_list_notebook_instances <- function(NextToken = NULL, MaxResults = NUL
 #' @description
 #' Gets a list of `PipeLineExecutionStep` objects.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_pipeline_execution_steps.html](https://paws-r.github.io/docs/sagemaker/list_pipeline_execution_steps.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_pipeline_execution_steps/](https://www.paws-r-sdk.com/docs/sagemaker_list_pipeline_execution_steps/) for full documentation.
 #'
 #' @param PipelineExecutionArn The Amazon Resource Name (ARN) of the pipeline execution.
 #' @param NextToken If the result of the previous
@@ -8761,7 +8785,7 @@ sagemaker_list_pipeline_execution_steps <- function(PipelineExecutionArn = NULL,
     name = "ListPipelineExecutionSteps",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineExecutionSteps")
   )
   input <- .sagemaker$list_pipeline_execution_steps_input(PipelineExecutionArn = PipelineExecutionArn, NextToken = NextToken, MaxResults = MaxResults, SortOrder = SortOrder)
   output <- .sagemaker$list_pipeline_execution_steps_output()
@@ -8778,9 +8802,9 @@ sagemaker_list_pipeline_execution_steps <- function(PipelineExecutionArn = NULL,
 #' @description
 #' Gets a list of the pipeline executions.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_pipeline_executions.html](https://paws-r.github.io/docs/sagemaker/list_pipeline_executions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_pipeline_executions/](https://www.paws-r-sdk.com/docs/sagemaker_list_pipeline_executions/) for full documentation.
 #'
-#' @param PipelineName &#91;required&#93; The name of the pipeline.
+#' @param PipelineName &#91;required&#93; The name or Amazon Resource Name (ARN) of the pipeline.
 #' @param CreatedAfter A filter that returns the pipeline executions that were created after a
 #' specified time.
 #' @param CreatedBefore A filter that returns the pipeline executions that were created before a
@@ -8801,7 +8825,7 @@ sagemaker_list_pipeline_executions <- function(PipelineName, CreatedAfter = NULL
     name = "ListPipelineExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineExecutionSummaries")
   )
   input <- .sagemaker$list_pipeline_executions_input(PipelineName = PipelineName, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_pipeline_executions_output()
@@ -8818,7 +8842,7 @@ sagemaker_list_pipeline_executions <- function(PipelineName, CreatedAfter = NULL
 #' @description
 #' Gets a list of parameters for a pipeline execution.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_pipeline_parameters_for_execution.html](https://paws-r.github.io/docs/sagemaker/list_pipeline_parameters_for_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_pipeline_parameters_for_execution/](https://www.paws-r-sdk.com/docs/sagemaker_list_pipeline_parameters_for_execution/) for full documentation.
 #'
 #' @param PipelineExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the pipeline execution.
 #' @param NextToken If the result of the previous
@@ -8835,7 +8859,7 @@ sagemaker_list_pipeline_parameters_for_execution <- function(PipelineExecutionAr
     name = "ListPipelineParametersForExecution",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineParameters")
   )
   input <- .sagemaker$list_pipeline_parameters_for_execution_input(PipelineExecutionArn = PipelineExecutionArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_pipeline_parameters_for_execution_output()
@@ -8852,7 +8876,7 @@ sagemaker_list_pipeline_parameters_for_execution <- function(PipelineExecutionAr
 #' @description
 #' Gets a list of pipelines.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_pipelines.html](https://paws-r.github.io/docs/sagemaker/list_pipelines.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_pipelines/](https://www.paws-r-sdk.com/docs/sagemaker_list_pipelines/) for full documentation.
 #'
 #' @param PipelineNamePrefix The prefix of the pipeline name.
 #' @param CreatedAfter A filter that returns the pipelines that were created after a specified
@@ -8875,7 +8899,7 @@ sagemaker_list_pipelines <- function(PipelineNamePrefix = NULL, CreatedAfter = N
     name = "ListPipelines",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "PipelineSummaries")
   )
   input <- .sagemaker$list_pipelines_input(PipelineNamePrefix = PipelineNamePrefix, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_pipelines_output()
@@ -8892,7 +8916,7 @@ sagemaker_list_pipelines <- function(PipelineNamePrefix = NULL, CreatedAfter = N
 #' @description
 #' Lists processing jobs that satisfy various filters.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_processing_jobs.html](https://paws-r.github.io/docs/sagemaker/list_processing_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_processing_jobs/](https://www.paws-r-sdk.com/docs/sagemaker_list_processing_jobs/) for full documentation.
 #'
 #' @param CreationTimeAfter A filter that returns only processing jobs created after the specified
 #' time.
@@ -8921,7 +8945,7 @@ sagemaker_list_processing_jobs <- function(CreationTimeAfter = NULL, CreationTim
     name = "ListProcessingJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ProcessingJobSummaries")
   )
   input <- .sagemaker$list_processing_jobs_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_processing_jobs_output()
@@ -8938,7 +8962,7 @@ sagemaker_list_processing_jobs <- function(CreationTimeAfter = NULL, CreationTim
 #' @description
 #' Gets a list of the projects in an Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_projects.html](https://paws-r.github.io/docs/sagemaker/list_projects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_projects/](https://www.paws-r-sdk.com/docs/sagemaker_list_projects/) for full documentation.
 #'
 #' @param CreationTimeAfter A filter that returns the projects that were created after a specified
 #' time.
@@ -8961,7 +8985,7 @@ sagemaker_list_projects <- function(CreationTimeAfter = NULL, CreationTimeBefore
     name = "ListProjects",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .sagemaker$list_projects_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, MaxResults = MaxResults, NameContains = NameContains, NextToken = NextToken, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_projects_output()
@@ -8973,16 +8997,59 @@ sagemaker_list_projects <- function(CreationTimeAfter = NULL, CreationTimeBefore
 }
 .sagemaker$operations$list_projects <- sagemaker_list_projects
 
+#' Lists Amazon SageMaker Catalogs based on given filters and orders
+#'
+#' @description
+#' Lists Amazon SageMaker Catalogs based on given filters and orders. The maximum number of `ResourceCatalog`s viewable is 1000.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_resource_catalogs/](https://www.paws-r-sdk.com/docs/sagemaker_list_resource_catalogs/) for full documentation.
+#'
+#' @param NameContains A string that partially matches one or more `ResourceCatalog`s names.
+#' Filters `ResourceCatalog` by name.
+#' @param CreationTimeAfter Use this parameter to search for `ResourceCatalog`s created after a
+#' specific date and time.
+#' @param CreationTimeBefore Use this parameter to search for `ResourceCatalog`s created before a
+#' specific date and time.
+#' @param SortOrder The order in which the resource catalogs are listed.
+#' @param SortBy The value on which the resource catalog list is sorted.
+#' @param MaxResults The maximum number of results returned by
+#' [`list_resource_catalogs`][sagemaker_list_resource_catalogs].
+#' @param NextToken A token to resume pagination of
+#' [`list_resource_catalogs`][sagemaker_list_resource_catalogs] results.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_list_resource_catalogs
+sagemaker_list_resource_catalogs <- function(NameContains = NULL, CreationTimeAfter = NULL, CreationTimeBefore = NULL, SortOrder = NULL, SortBy = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListResourceCatalogs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceCatalogs")
+  )
+  input <- .sagemaker$list_resource_catalogs_input(NameContains = NameContains, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, SortOrder = SortOrder, SortBy = SortBy, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .sagemaker$list_resource_catalogs_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$list_resource_catalogs <- sagemaker_list_resource_catalogs
+
 #' Lists spaces
 #'
 #' @description
 #' Lists spaces.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_spaces.html](https://paws-r.github.io/docs/sagemaker/list_spaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_spaces/](https://www.paws-r-sdk.com/docs/sagemaker_list_spaces/) for full documentation.
 #'
 #' @param NextToken If the previous response was truncated, you will receive this token. Use
 #' it in your next request to receive the next set of results.
-#' @param MaxResults Returns a list up to a specified limit.
+#' @param MaxResults The total number of items to return in the response. If the total number
+#' of items available is more than the value specified, a `NextToken` is
+#' provided in the response. To resume pagination, provide the `NextToken`
+#' value in the as part of a subsequent call. The default value is 10.
 #' @param SortOrder The sort order for the results. The default is `Ascending`.
 #' @param SortBy The parameter by which to sort the results. The default is
 #' `CreationTime`.
@@ -8997,7 +9064,7 @@ sagemaker_list_spaces <- function(NextToken = NULL, MaxResults = NULL, SortOrder
     name = "ListSpaces",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Spaces")
   )
   input <- .sagemaker$list_spaces_input(NextToken = NextToken, MaxResults = MaxResults, SortOrder = SortOrder, SortBy = SortBy, DomainIdEquals = DomainIdEquals, SpaceNameContains = SpaceNameContains)
   output <- .sagemaker$list_spaces_output()
@@ -9015,7 +9082,7 @@ sagemaker_list_spaces <- function(NextToken = NULL, MaxResults = NULL, SortOrder
 #' @description
 #' Lists devices allocated to the stage, containing detailed device information and deployment status.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_stage_devices.html](https://paws-r.github.io/docs/sagemaker/list_stage_devices.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_stage_devices/](https://www.paws-r-sdk.com/docs/sagemaker_list_stage_devices/) for full documentation.
 #'
 #' @param NextToken The response from the last list when returning a list large enough to
 #' neeed tokening.
@@ -9032,7 +9099,7 @@ sagemaker_list_stage_devices <- function(NextToken = NULL, MaxResults = NULL, Ed
     name = "ListStageDevices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "DeviceDeploymentSummaries")
   )
   input <- .sagemaker$list_stage_devices_input(NextToken = NextToken, MaxResults = MaxResults, EdgeDeploymentPlanName = EdgeDeploymentPlanName, ExcludeDevicesDeployedInOtherStage = ExcludeDevicesDeployedInOtherStage, StageName = StageName)
   output <- .sagemaker$list_stage_devices_output()
@@ -9050,10 +9117,12 @@ sagemaker_list_stage_devices <- function(NextToken = NULL, MaxResults = NULL, Ed
 #' @description
 #' Lists the Studio Lifecycle Configurations in your Amazon Web Services Account.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_studio_lifecycle_configs.html](https://paws-r.github.io/docs/sagemaker/list_studio_lifecycle_configs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_studio_lifecycle_configs/](https://www.paws-r-sdk.com/docs/sagemaker_list_studio_lifecycle_configs/) for full documentation.
 #'
-#' @param MaxResults The maximum number of Studio Lifecycle Configurations to return in the
-#' response. The default value is 10.
+#' @param MaxResults The total number of items to return in the response. If the total number
+#' of items available is more than the value specified, a `NextToken` is
+#' provided in the response. To resume pagination, provide the `NextToken`
+#' value in the as part of a subsequent call. The default value is 10.
 #' @param NextToken If the previous call to ListStudioLifecycleConfigs didn't return the
 #' full set of Lifecycle Configurations, the call returns a token for
 #' getting the next set of Lifecycle Configurations.
@@ -9080,7 +9149,7 @@ sagemaker_list_studio_lifecycle_configs <- function(MaxResults = NULL, NextToken
     name = "ListStudioLifecycleConfigs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "StudioLifecycleConfigs")
   )
   input <- .sagemaker$list_studio_lifecycle_configs_input(MaxResults = MaxResults, NextToken = NextToken, NameContains = NameContains, AppTypeEquals = AppTypeEquals, CreationTimeBefore = CreationTimeBefore, CreationTimeAfter = CreationTimeAfter, ModifiedTimeBefore = ModifiedTimeBefore, ModifiedTimeAfter = ModifiedTimeAfter, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_studio_lifecycle_configs_output()
@@ -9098,7 +9167,7 @@ sagemaker_list_studio_lifecycle_configs <- function(MaxResults = NULL, NextToken
 #' @description
 #' Gets a list of the work teams that you are subscribed to in the Amazon Web Services Marketplace. The list may be empty if no work team satisfies the filter specified in the `NameContains` parameter.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_subscribed_workteams.html](https://paws-r.github.io/docs/sagemaker/list_subscribed_workteams.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_subscribed_workteams/](https://www.paws-r-sdk.com/docs/sagemaker_list_subscribed_workteams/) for full documentation.
 #'
 #' @param NameContains A string in the work team name. This filter returns only work teams
 #' whose name contains the specified string.
@@ -9116,7 +9185,7 @@ sagemaker_list_subscribed_workteams <- function(NameContains = NULL, NextToken =
     name = "ListSubscribedWorkteams",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "SubscribedWorkteams")
   )
   input <- .sagemaker$list_subscribed_workteams_input(NameContains = NameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_subscribed_workteams_output()
@@ -9133,7 +9202,7 @@ sagemaker_list_subscribed_workteams <- function(NameContains = NULL, NextToken =
 #' @description
 #' Returns the tags for the specified SageMaker resource.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_tags.html](https://paws-r.github.io/docs/sagemaker/list_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_tags/](https://www.paws-r-sdk.com/docs/sagemaker_list_tags/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource whose tags you want to
 #' retrieve.
@@ -9150,7 +9219,7 @@ sagemaker_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL
     name = "ListTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags")
   )
   input <- .sagemaker$list_tags_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_tags_output()
@@ -9167,7 +9236,7 @@ sagemaker_list_tags <- function(ResourceArn, NextToken = NULL, MaxResults = NULL
 #' @description
 #' Lists training jobs.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_training_jobs.html](https://paws-r.github.io/docs/sagemaker/list_training_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_training_jobs/](https://www.paws-r-sdk.com/docs/sagemaker_list_training_jobs/) for full documentation.
 #'
 #' @param NextToken If the result of the previous
 #' [`list_training_jobs`][sagemaker_list_training_jobs] request was
@@ -9198,7 +9267,7 @@ sagemaker_list_training_jobs <- function(NextToken = NULL, MaxResults = NULL, Cr
     name = "ListTrainingJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrainingJobSummaries")
   )
   input <- .sagemaker$list_training_jobs_input(NextToken = NextToken, MaxResults = MaxResults, CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, WarmPoolStatusEquals = WarmPoolStatusEquals)
   output <- .sagemaker$list_training_jobs_output()
@@ -9216,7 +9285,7 @@ sagemaker_list_training_jobs <- function(NextToken = NULL, MaxResults = NULL, Cr
 #' @description
 #' Gets a list of [TrainingJobSummary](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_TrainingJobSummary.html) objects that describe the training jobs that a hyperparameter tuning job launched.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_training_jobs_for_hyper_parameter_tuning_job.html](https://paws-r.github.io/docs/sagemaker/list_training_jobs_for_hyper_parameter_tuning_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_training_jobs_for_hyper_parameter_tuning_job/](https://www.paws-r-sdk.com/docs/sagemaker_list_training_jobs_for_hyper_parameter_tuning_job/) for full documentation.
 #'
 #' @param HyperParameterTuningJobName &#91;required&#93; The name of the tuning job whose training jobs you want to list.
 #' @param NextToken If the result of the previous
@@ -9239,7 +9308,7 @@ sagemaker_list_training_jobs_for_hyper_parameter_tuning_job <- function(HyperPar
     name = "ListTrainingJobsForHyperParameterTuningJob",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrainingJobSummaries")
   )
   input <- .sagemaker$list_training_jobs_for_hyper_parameter_tuning_job_input(HyperParameterTuningJobName = HyperParameterTuningJobName, NextToken = NextToken, MaxResults = MaxResults, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder)
   output <- .sagemaker$list_training_jobs_for_hyper_parameter_tuning_job_output()
@@ -9256,7 +9325,7 @@ sagemaker_list_training_jobs_for_hyper_parameter_tuning_job <- function(HyperPar
 #' @description
 #' Lists transform jobs.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_transform_jobs.html](https://paws-r.github.io/docs/sagemaker/list_transform_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_transform_jobs/](https://www.paws-r-sdk.com/docs/sagemaker_list_transform_jobs/) for full documentation.
 #'
 #' @param CreationTimeAfter A filter that returns only transform jobs created after the specified
 #' time.
@@ -9286,7 +9355,7 @@ sagemaker_list_transform_jobs <- function(CreationTimeAfter = NULL, CreationTime
     name = "ListTransformJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TransformJobSummaries")
   )
   input <- .sagemaker$list_transform_jobs_input(CreationTimeAfter = CreationTimeAfter, CreationTimeBefore = CreationTimeBefore, LastModifiedTimeAfter = LastModifiedTimeAfter, LastModifiedTimeBefore = LastModifiedTimeBefore, NameContains = NameContains, StatusEquals = StatusEquals, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_transform_jobs_output()
@@ -9303,7 +9372,7 @@ sagemaker_list_transform_jobs <- function(CreationTimeAfter = NULL, CreationTime
 #' @description
 #' Lists the trial components in your account. You can sort the list by trial component name or creation time. You can filter the list to show only components that were created in a specific time range. You can also filter on one of the following:
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_trial_components.html](https://paws-r.github.io/docs/sagemaker/list_trial_components.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_trial_components/](https://www.paws-r-sdk.com/docs/sagemaker_list_trial_components/) for full documentation.
 #'
 #' @param ExperimentName A filter that returns only components that are part of the specified
 #' experiment. If you specify `ExperimentName`, you can't filter by
@@ -9333,7 +9402,7 @@ sagemaker_list_trial_components <- function(ExperimentName = NULL, TrialName = N
     name = "ListTrialComponents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrialComponentSummaries")
   )
   input <- .sagemaker$list_trial_components_input(ExperimentName = ExperimentName, TrialName = TrialName, SourceArn = SourceArn, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_trial_components_output()
@@ -9350,7 +9419,7 @@ sagemaker_list_trial_components <- function(ExperimentName = NULL, TrialName = N
 #' @description
 #' Lists the trials in your account. Specify an experiment name to limit the list to the trials that are part of that experiment. Specify a trial component name to limit the list to the trials that associated with that trial component. The list can be filtered to show only trials that were created in a specific time range. The list can be sorted by trial name or creation time.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_trials.html](https://paws-r.github.io/docs/sagemaker/list_trials.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_trials/](https://www.paws-r-sdk.com/docs/sagemaker_list_trials/) for full documentation.
 #'
 #' @param ExperimentName A filter that returns only trials that are part of the specified
 #' experiment.
@@ -9374,7 +9443,7 @@ sagemaker_list_trials <- function(ExperimentName = NULL, TrialComponentName = NU
     name = "ListTrials",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TrialSummaries")
   )
   input <- .sagemaker$list_trials_input(ExperimentName = ExperimentName, TrialComponentName = TrialComponentName, CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, SortBy = SortBy, SortOrder = SortOrder, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$list_trials_output()
@@ -9391,11 +9460,14 @@ sagemaker_list_trials <- function(ExperimentName = NULL, TrialComponentName = NU
 #' @description
 #' Lists user profiles.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_user_profiles.html](https://paws-r.github.io/docs/sagemaker/list_user_profiles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_user_profiles/](https://www.paws-r-sdk.com/docs/sagemaker_list_user_profiles/) for full documentation.
 #'
 #' @param NextToken If the previous response was truncated, you will receive this token. Use
 #' it in your next request to receive the next set of results.
-#' @param MaxResults Returns a list up to a specified limit.
+#' @param MaxResults The total number of items to return in the response. If the total number
+#' of items available is more than the value specified, a `NextToken` is
+#' provided in the response. To resume pagination, provide the `NextToken`
+#' value in the as part of a subsequent call. The default value is 10.
 #' @param SortOrder The sort order for the results. The default is Ascending.
 #' @param SortBy The parameter by which to sort the results. The default is CreationTime.
 #' @param DomainIdEquals A parameter by which to filter the results.
@@ -9409,7 +9481,7 @@ sagemaker_list_user_profiles <- function(NextToken = NULL, MaxResults = NULL, So
     name = "ListUserProfiles",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "UserProfiles")
   )
   input <- .sagemaker$list_user_profiles_input(NextToken = NextToken, MaxResults = MaxResults, SortOrder = SortOrder, SortBy = SortBy, DomainIdEquals = DomainIdEquals, UserProfileNameContains = UserProfileNameContains)
   output <- .sagemaker$list_user_profiles_output()
@@ -9427,7 +9499,7 @@ sagemaker_list_user_profiles <- function(NextToken = NULL, MaxResults = NULL, So
 #' @description
 #' Use this operation to list all private and vendor workforces in an Amazon Web Services Region. Note that you can only have one private workforce per Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_workforces.html](https://paws-r.github.io/docs/sagemaker/list_workforces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_workforces/](https://www.paws-r-sdk.com/docs/sagemaker_list_workforces/) for full documentation.
 #'
 #' @param SortBy Sort workforces using the workforce name or creation date.
 #' @param SortOrder Sort workforces in ascending or descending order.
@@ -9444,7 +9516,7 @@ sagemaker_list_workforces <- function(SortBy = NULL, SortOrder = NULL, NameConta
     name = "ListWorkforces",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Workforces")
   )
   input <- .sagemaker$list_workforces_input(SortBy = SortBy, SortOrder = SortOrder, NameContains = NameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_workforces_output()
@@ -9461,7 +9533,7 @@ sagemaker_list_workforces <- function(SortBy = NULL, SortOrder = NULL, NameConta
 #' @description
 #' Gets a list of private work teams that you have defined in a region. The list may be empty if no work team satisfies the filter specified in the `NameContains` parameter.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/list_workteams.html](https://paws-r.github.io/docs/sagemaker/list_workteams.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_list_workteams/](https://www.paws-r-sdk.com/docs/sagemaker_list_workteams/) for full documentation.
 #'
 #' @param SortBy The field to sort results by. The default is `CreationTime`.
 #' @param SortOrder The sort order for results. The default is `Ascending`.
@@ -9481,7 +9553,7 @@ sagemaker_list_workteams <- function(SortBy = NULL, SortOrder = NULL, NameContai
     name = "ListWorkteams",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Workteams")
   )
   input <- .sagemaker$list_workteams_input(SortBy = SortBy, SortOrder = SortOrder, NameContains = NameContains, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sagemaker$list_workteams_output()
@@ -9498,7 +9570,7 @@ sagemaker_list_workteams <- function(SortBy = NULL, SortOrder = NULL, NameContai
 #' @description
 #' Adds a resouce policy to control access to a model group. For information about resoure policies, see [Identity-based policies and resource-based policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_identity-vs-resource.html) in the *Amazon Web Services Identity and Access Management User Guide.*.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/put_model_package_group_policy.html](https://paws-r.github.io/docs/sagemaker/put_model_package_group_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_put_model_package_group_policy/](https://www.paws-r-sdk.com/docs/sagemaker_put_model_package_group_policy/) for full documentation.
 #'
 #' @param ModelPackageGroupName &#91;required&#93; The name of the model group to add a resource policy to.
 #' @param ResourcePolicy &#91;required&#93; The resource policy for the model group.
@@ -9529,7 +9601,7 @@ sagemaker_put_model_package_group_policy <- function(ModelPackageGroupName, Reso
 #' @description
 #' Use this action to inspect your lineage and discover relationships between entities. For more information, see [Querying Lineage Entities](https://docs.aws.amazon.com/sagemaker/latest/dg/querying-lineage-entities.html) in the *Amazon SageMaker Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/query_lineage.html](https://paws-r.github.io/docs/sagemaker/query_lineage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_query_lineage/](https://www.paws-r-sdk.com/docs/sagemaker_query_lineage/) for full documentation.
 #'
 #' @param StartArns A list of resource Amazon Resource Name (ARN) that represent the
 #' starting point for your lineage query.
@@ -9570,7 +9642,7 @@ sagemaker_query_lineage <- function(StartArns = NULL, Direction = NULL, IncludeE
     name = "QueryLineage",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .sagemaker$query_lineage_input(StartArns = StartArns, Direction = Direction, IncludeEdges = IncludeEdges, Filters = Filters, MaxDepth = MaxDepth, MaxResults = MaxResults, NextToken = NextToken)
   output <- .sagemaker$query_lineage_output()
@@ -9587,7 +9659,7 @@ sagemaker_query_lineage <- function(StartArns = NULL, Direction = NULL, IncludeE
 #' @description
 #' Register devices.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/register_devices.html](https://paws-r.github.io/docs/sagemaker/register_devices.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_register_devices/](https://www.paws-r-sdk.com/docs/sagemaker_register_devices/) for full documentation.
 #'
 #' @param DeviceFleetName &#91;required&#93; The name of the fleet.
 #' @param Devices &#91;required&#93; A list of devices to register with SageMaker Edge Manager.
@@ -9618,7 +9690,7 @@ sagemaker_register_devices <- function(DeviceFleetName, Devices, Tags = NULL) {
 #' @description
 #' Renders the UI template so that you can preview the worker's experience.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/render_ui_template.html](https://paws-r.github.io/docs/sagemaker/render_ui_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_render_ui_template/](https://www.paws-r-sdk.com/docs/sagemaker_render_ui_template/) for full documentation.
 #'
 #' @param UiTemplate A `Template` object containing the worker UI template to render.
 #' @param Task &#91;required&#93; A `RenderableTask` object containing a representative task to render.
@@ -9655,7 +9727,7 @@ sagemaker_render_ui_template <- function(UiTemplate = NULL, Task, RoleArn, Human
 #' @description
 #' Retry the execution of the pipeline.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/retry_pipeline_execution.html](https://paws-r.github.io/docs/sagemaker/retry_pipeline_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_retry_pipeline_execution/](https://www.paws-r-sdk.com/docs/sagemaker_retry_pipeline_execution/) for full documentation.
 #'
 #' @param PipelineExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the pipeline execution.
 #' @param ClientRequestToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
@@ -9689,7 +9761,7 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #' @description
 #' Finds SageMaker resources that match a search query. Matching resources are returned as a list of `SearchRecord` objects in the response. You can sort the search results by any resource property in a ascending or descending order.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/search.html](https://paws-r.github.io/docs/sagemaker/search.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_search/](https://www.paws-r-sdk.com/docs/sagemaker_search/) for full documentation.
 #'
 #' @param Resource &#91;required&#93; The name of the SageMaker resource to search for.
 #' @param SearchExpression A Boolean conditional statement. Resources must satisfy this condition
@@ -9706,18 +9778,27 @@ sagemaker_retry_pipeline_execution <- function(PipelineExecutionArn, ClientReque
 #' can be passed to the next `SearchRequest` to continue retrieving
 #' results.
 #' @param MaxResults The maximum number of results to return.
+#' @param CrossAccountFilterOption A cross account filter option. When the value is `"CrossAccount"` the
+#' search results will only include resources made discoverable to you from
+#' other accounts. When the value is `"SameAccount"` or `null` the search
+#' results will only include resources from your account. Default is
+#' `null`. For more information on searching for resources made
+#' discoverable to your account, see [Search discoverable
+#' resources](https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-cross-account-discoverability-use.html)
+#' in the SageMaker Developer Guide. The maximum number of
+#' `ResourceCatalog`s viewable is 1000.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_search
-sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL) {
+sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, SortOrder = NULL, NextToken = NULL, MaxResults = NULL, CrossAccountFilterOption = NULL) {
   op <- new_operation(
     name = "Search",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Results")
   )
-  input <- .sagemaker$search_input(Resource = Resource, SearchExpression = SearchExpression, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .sagemaker$search_input(Resource = Resource, SearchExpression = SearchExpression, SortBy = SortBy, SortOrder = SortOrder, NextToken = NextToken, MaxResults = MaxResults, CrossAccountFilterOption = CrossAccountFilterOption)
   output <- .sagemaker$search_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -9733,7 +9814,7 @@ sagemaker_search <- function(Resource, SearchExpression = NULL, SortBy = NULL, S
 #' @description
 #' Notifies the pipeline that the execution of a callback step failed, along with a message describing why. When a callback step is run, the pipeline generates a callback token and includes the token in a message sent to Amazon Simple Queue Service (Amazon SQS).
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/send_pipeline_execution_step_failure.html](https://paws-r.github.io/docs/sagemaker/send_pipeline_execution_step_failure.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_send_pipeline_execution_step_failure/](https://www.paws-r-sdk.com/docs/sagemaker_send_pipeline_execution_step_failure/) for full documentation.
 #'
 #' @param CallbackToken &#91;required&#93; The pipeline generated token from the Amazon SQS queue.
 #' @param FailureReason A message describing why the step failed.
@@ -9767,7 +9848,7 @@ sagemaker_send_pipeline_execution_step_failure <- function(CallbackToken, Failur
 #' @description
 #' Notifies the pipeline that the execution of a callback step succeeded and provides a list of the step's output parameters. When a callback step is run, the pipeline generates a callback token and includes the token in a message sent to Amazon Simple Queue Service (Amazon SQS).
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/send_pipeline_execution_step_success.html](https://paws-r.github.io/docs/sagemaker/send_pipeline_execution_step_success.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_send_pipeline_execution_step_success/](https://www.paws-r-sdk.com/docs/sagemaker_send_pipeline_execution_step_success/) for full documentation.
 #'
 #' @param CallbackToken &#91;required&#93; The pipeline generated token from the Amazon SQS queue.
 #' @param OutputParameters A list of the output parameters of the callback step.
@@ -9800,7 +9881,7 @@ sagemaker_send_pipeline_execution_step_success <- function(CallbackToken, Output
 #' @description
 #' Starts a stage in an edge deployment plan.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/start_edge_deployment_stage.html](https://paws-r.github.io/docs/sagemaker/start_edge_deployment_stage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_start_edge_deployment_stage/](https://www.paws-r-sdk.com/docs/sagemaker_start_edge_deployment_stage/) for full documentation.
 #'
 #' @param EdgeDeploymentPlanName &#91;required&#93; The name of the edge deployment plan to start.
 #' @param StageName &#91;required&#93; The name of the stage to start.
@@ -9830,7 +9911,7 @@ sagemaker_start_edge_deployment_stage <- function(EdgeDeploymentPlanName, StageN
 #' @description
 #' Starts an inference experiment.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/start_inference_experiment.html](https://paws-r.github.io/docs/sagemaker/start_inference_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_start_inference_experiment/](https://www.paws-r-sdk.com/docs/sagemaker_start_inference_experiment/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the inference experiment to start.
 #'
@@ -9859,7 +9940,7 @@ sagemaker_start_inference_experiment <- function(Name) {
 #' @description
 #' Starts a previously stopped monitoring schedule.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/start_monitoring_schedule.html](https://paws-r.github.io/docs/sagemaker/start_monitoring_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_start_monitoring_schedule/](https://www.paws-r-sdk.com/docs/sagemaker_start_monitoring_schedule/) for full documentation.
 #'
 #' @param MonitoringScheduleName &#91;required&#93; The name of the schedule to start.
 #'
@@ -9889,7 +9970,7 @@ sagemaker_start_monitoring_schedule <- function(MonitoringScheduleName) {
 #' @description
 #' Launches an ML compute instance with the latest version of the libraries and attaches your ML storage volume. After configuring the notebook instance, SageMaker sets the notebook instance status to `InService`. A notebook instance's status must be `InService` before you can connect to your Jupyter notebook.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/start_notebook_instance.html](https://paws-r.github.io/docs/sagemaker/start_notebook_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_start_notebook_instance/](https://www.paws-r-sdk.com/docs/sagemaker_start_notebook_instance/) for full documentation.
 #'
 #' @param NotebookInstanceName &#91;required&#93; The name of the notebook instance to start.
 #'
@@ -9918,9 +9999,9 @@ sagemaker_start_notebook_instance <- function(NotebookInstanceName) {
 #' @description
 #' Starts a pipeline execution.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/start_pipeline_execution.html](https://paws-r.github.io/docs/sagemaker/start_pipeline_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_start_pipeline_execution/](https://www.paws-r-sdk.com/docs/sagemaker_start_pipeline_execution/) for full documentation.
 #'
-#' @param PipelineName &#91;required&#93; The name of the pipeline.
+#' @param PipelineName &#91;required&#93; The name or Amazon Resource Name (ARN) of the pipeline.
 #' @param PipelineExecutionDisplayName The display name of the pipeline execution.
 #' @param PipelineParameters Contains a list of pipeline parameters. This list can be empty.
 #' @param PipelineExecutionDescription The description of the pipeline execution.
@@ -9929,18 +10010,19 @@ sagemaker_start_notebook_instance <- function(NotebookInstanceName) {
 #' than once.
 #' @param ParallelismConfiguration This configuration, if specified, overrides the parallelism
 #' configuration of the parent pipeline for this specific run.
+#' @param SelectiveExecutionConfig The selective execution configuration applied to the pipeline run.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_start_pipeline_execution
-sagemaker_start_pipeline_execution <- function(PipelineName, PipelineExecutionDisplayName = NULL, PipelineParameters = NULL, PipelineExecutionDescription = NULL, ClientRequestToken, ParallelismConfiguration = NULL) {
+sagemaker_start_pipeline_execution <- function(PipelineName, PipelineExecutionDisplayName = NULL, PipelineParameters = NULL, PipelineExecutionDescription = NULL, ClientRequestToken, ParallelismConfiguration = NULL, SelectiveExecutionConfig = NULL) {
   op <- new_operation(
     name = "StartPipelineExecution",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$start_pipeline_execution_input(PipelineName = PipelineName, PipelineExecutionDisplayName = PipelineExecutionDisplayName, PipelineParameters = PipelineParameters, PipelineExecutionDescription = PipelineExecutionDescription, ClientRequestToken = ClientRequestToken, ParallelismConfiguration = ParallelismConfiguration)
+  input <- .sagemaker$start_pipeline_execution_input(PipelineName = PipelineName, PipelineExecutionDisplayName = PipelineExecutionDisplayName, PipelineParameters = PipelineParameters, PipelineExecutionDescription = PipelineExecutionDescription, ClientRequestToken = ClientRequestToken, ParallelismConfiguration = ParallelismConfiguration, SelectiveExecutionConfig = SelectiveExecutionConfig)
   output <- .sagemaker$start_pipeline_execution_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -9955,7 +10037,7 @@ sagemaker_start_pipeline_execution <- function(PipelineName, PipelineExecutionDi
 #' @description
 #' A method for forcing a running job to shut down.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/stop_auto_ml_job.html](https://paws-r.github.io/docs/sagemaker/stop_auto_ml_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_auto_ml_job/](https://www.paws-r-sdk.com/docs/sagemaker_stop_auto_ml_job/) for full documentation.
 #'
 #' @param AutoMLJobName &#91;required&#93; The name of the object you are requesting.
 #'
@@ -9984,7 +10066,7 @@ sagemaker_stop_auto_ml_job <- function(AutoMLJobName) {
 #' @description
 #' Stops a model compilation job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/stop_compilation_job.html](https://paws-r.github.io/docs/sagemaker/stop_compilation_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_compilation_job/](https://www.paws-r-sdk.com/docs/sagemaker_stop_compilation_job/) for full documentation.
 #'
 #' @param CompilationJobName &#91;required&#93; The name of the model compilation job to stop.
 #'
@@ -10013,7 +10095,7 @@ sagemaker_stop_compilation_job <- function(CompilationJobName) {
 #' @description
 #' Stops a stage in an edge deployment plan.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/stop_edge_deployment_stage.html](https://paws-r.github.io/docs/sagemaker/stop_edge_deployment_stage.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_edge_deployment_stage/](https://www.paws-r-sdk.com/docs/sagemaker_stop_edge_deployment_stage/) for full documentation.
 #'
 #' @param EdgeDeploymentPlanName &#91;required&#93; The name of the edge deployment plan to stop.
 #' @param StageName &#91;required&#93; The name of the stage to stop.
@@ -10043,7 +10125,7 @@ sagemaker_stop_edge_deployment_stage <- function(EdgeDeploymentPlanName, StageNa
 #' @description
 #' Request to stop an edge packaging job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/stop_edge_packaging_job.html](https://paws-r.github.io/docs/sagemaker/stop_edge_packaging_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_edge_packaging_job/](https://www.paws-r-sdk.com/docs/sagemaker_stop_edge_packaging_job/) for full documentation.
 #'
 #' @param EdgePackagingJobName &#91;required&#93; The name of the edge packaging job.
 #'
@@ -10073,7 +10155,7 @@ sagemaker_stop_edge_packaging_job <- function(EdgePackagingJobName) {
 #' @description
 #' Stops a running hyperparameter tuning job and all running training jobs that the tuning job launched.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/stop_hyper_parameter_tuning_job.html](https://paws-r.github.io/docs/sagemaker/stop_hyper_parameter_tuning_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_hyper_parameter_tuning_job/](https://www.paws-r-sdk.com/docs/sagemaker_stop_hyper_parameter_tuning_job/) for full documentation.
 #'
 #' @param HyperParameterTuningJobName &#91;required&#93; The name of the tuning job to stop.
 #'
@@ -10102,7 +10184,7 @@ sagemaker_stop_hyper_parameter_tuning_job <- function(HyperParameterTuningJobNam
 #' @description
 #' Stops an inference experiment.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/stop_inference_experiment.html](https://paws-r.github.io/docs/sagemaker/stop_inference_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_inference_experiment/](https://www.paws-r-sdk.com/docs/sagemaker_stop_inference_experiment/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the inference experiment to stop.
 #' @param ModelVariantActions &#91;required&#93; Array of key-value pairs, with names of variants mapped to actions. The
@@ -10150,7 +10232,7 @@ sagemaker_stop_inference_experiment <- function(Name, ModelVariantActions, Desir
 #' @description
 #' Stops an Inference Recommender job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/stop_inference_recommendations_job.html](https://paws-r.github.io/docs/sagemaker/stop_inference_recommendations_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_inference_recommendations_job/](https://www.paws-r-sdk.com/docs/sagemaker_stop_inference_recommendations_job/) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The name of the job you want to stop.
 #'
@@ -10179,7 +10261,7 @@ sagemaker_stop_inference_recommendations_job <- function(JobName) {
 #' @description
 #' Stops a running labeling job. A job that is stopped cannot be restarted. Any results obtained before the job is stopped are placed in the Amazon S3 output bucket.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/stop_labeling_job.html](https://paws-r.github.io/docs/sagemaker/stop_labeling_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_labeling_job/](https://www.paws-r-sdk.com/docs/sagemaker_stop_labeling_job/) for full documentation.
 #'
 #' @param LabelingJobName &#91;required&#93; The name of the labeling job to stop.
 #'
@@ -10208,7 +10290,7 @@ sagemaker_stop_labeling_job <- function(LabelingJobName) {
 #' @description
 #' Stops a previously started monitoring schedule.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/stop_monitoring_schedule.html](https://paws-r.github.io/docs/sagemaker/stop_monitoring_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_monitoring_schedule/](https://www.paws-r-sdk.com/docs/sagemaker_stop_monitoring_schedule/) for full documentation.
 #'
 #' @param MonitoringScheduleName &#91;required&#93; The name of the schedule to stop.
 #'
@@ -10237,7 +10319,7 @@ sagemaker_stop_monitoring_schedule <- function(MonitoringScheduleName) {
 #' @description
 #' Terminates the ML compute instance. Before terminating the instance, SageMaker disconnects the ML storage volume from it. SageMaker preserves the ML storage volume. SageMaker stops charging you for the ML compute instance when you call [`stop_notebook_instance`][sagemaker_stop_notebook_instance].
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/stop_notebook_instance.html](https://paws-r.github.io/docs/sagemaker/stop_notebook_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_notebook_instance/](https://www.paws-r-sdk.com/docs/sagemaker_stop_notebook_instance/) for full documentation.
 #'
 #' @param NotebookInstanceName &#91;required&#93; The name of the notebook instance to terminate.
 #'
@@ -10266,7 +10348,7 @@ sagemaker_stop_notebook_instance <- function(NotebookInstanceName) {
 #' @description
 #' Stops a pipeline execution.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/stop_pipeline_execution.html](https://paws-r.github.io/docs/sagemaker/stop_pipeline_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_pipeline_execution/](https://www.paws-r-sdk.com/docs/sagemaker_stop_pipeline_execution/) for full documentation.
 #'
 #' @param PipelineExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the pipeline execution.
 #' @param ClientRequestToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
@@ -10298,7 +10380,7 @@ sagemaker_stop_pipeline_execution <- function(PipelineExecutionArn, ClientReques
 #' @description
 #' Stops a processing job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/stop_processing_job.html](https://paws-r.github.io/docs/sagemaker/stop_processing_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_processing_job/](https://www.paws-r-sdk.com/docs/sagemaker_stop_processing_job/) for full documentation.
 #'
 #' @param ProcessingJobName &#91;required&#93; The name of the processing job to stop.
 #'
@@ -10327,7 +10409,7 @@ sagemaker_stop_processing_job <- function(ProcessingJobName) {
 #' @description
 #' Stops a training job. To stop a job, SageMaker sends the algorithm the `SIGTERM` signal, which delays job termination for 120 seconds. Algorithms might use this 120-second window to save the model artifacts, so the results of the training is not lost.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/stop_training_job.html](https://paws-r.github.io/docs/sagemaker/stop_training_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_training_job/](https://www.paws-r-sdk.com/docs/sagemaker_stop_training_job/) for full documentation.
 #'
 #' @param TrainingJobName &#91;required&#93; The name of the training job to stop.
 #'
@@ -10356,7 +10438,7 @@ sagemaker_stop_training_job <- function(TrainingJobName) {
 #' @description
 #' Stops a batch transform job.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/stop_transform_job.html](https://paws-r.github.io/docs/sagemaker/stop_transform_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_stop_transform_job/](https://www.paws-r-sdk.com/docs/sagemaker_stop_transform_job/) for full documentation.
 #'
 #' @param TransformJobName &#91;required&#93; The name of the batch transform job to stop.
 #'
@@ -10385,7 +10467,7 @@ sagemaker_stop_transform_job <- function(TransformJobName) {
 #' @description
 #' Updates an action.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_action.html](https://paws-r.github.io/docs/sagemaker/update_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_action/](https://www.paws-r-sdk.com/docs/sagemaker_update_action/) for full documentation.
 #'
 #' @param ActionName &#91;required&#93; The name of the action to update.
 #' @param Description The new description for the action.
@@ -10418,7 +10500,7 @@ sagemaker_update_action <- function(ActionName, Description = NULL, Status = NUL
 #' @description
 #' Updates the properties of an AppImageConfig.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_app_image_config.html](https://paws-r.github.io/docs/sagemaker/update_app_image_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_app_image_config/](https://www.paws-r-sdk.com/docs/sagemaker_update_app_image_config/) for full documentation.
 #'
 #' @param AppImageConfigName &#91;required&#93; The name of the AppImageConfig to update.
 #' @param KernelGatewayImageConfig The new KernelGateway app to run on the image.
@@ -10448,7 +10530,7 @@ sagemaker_update_app_image_config <- function(AppImageConfigName, KernelGatewayI
 #' @description
 #' Updates an artifact.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_artifact.html](https://paws-r.github.io/docs/sagemaker/update_artifact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_artifact/](https://www.paws-r-sdk.com/docs/sagemaker_update_artifact/) for full documentation.
 #'
 #' @param ArtifactArn &#91;required&#93; The Amazon Resource Name (ARN) of the artifact to update.
 #' @param ArtifactName The new name for the artifact.
@@ -10480,7 +10562,7 @@ sagemaker_update_artifact <- function(ArtifactArn, ArtifactName = NULL, Properti
 #' @description
 #' Updates the specified Git repository with the specified values.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_code_repository.html](https://paws-r.github.io/docs/sagemaker/update_code_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_code_repository/](https://www.paws-r-sdk.com/docs/sagemaker_update_code_repository/) for full documentation.
 #'
 #' @param CodeRepositoryName &#91;required&#93; The name of the Git repository to update.
 #' @param GitConfig The configuration of the git repository, including the URL and the
@@ -10516,7 +10598,7 @@ sagemaker_update_code_repository <- function(CodeRepositoryName, GitConfig = NUL
 #' @description
 #' Updates a context.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_context.html](https://paws-r.github.io/docs/sagemaker/update_context.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_context/](https://www.paws-r-sdk.com/docs/sagemaker_update_context/) for full documentation.
 #'
 #' @param ContextName &#91;required&#93; The name of the context to update.
 #' @param Description The new description for the context.
@@ -10548,7 +10630,7 @@ sagemaker_update_context <- function(ContextName, Description = NULL, Properties
 #' @description
 #' Updates a fleet of devices.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_device_fleet.html](https://paws-r.github.io/docs/sagemaker/update_device_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_device_fleet/](https://www.paws-r-sdk.com/docs/sagemaker_update_device_fleet/) for full documentation.
 #'
 #' @param DeviceFleetName &#91;required&#93; The name of the fleet.
 #' @param RoleArn The Amazon Resource Name (ARN) of the device.
@@ -10586,7 +10668,7 @@ sagemaker_update_device_fleet <- function(DeviceFleetName, RoleArn = NULL, Descr
 #' @description
 #' Updates one or more devices in a fleet.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_devices.html](https://paws-r.github.io/docs/sagemaker/update_devices.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_devices/](https://www.paws-r-sdk.com/docs/sagemaker_update_devices/) for full documentation.
 #'
 #' @param DeviceFleetName &#91;required&#93; The name of the fleet the devices belong to.
 #' @param Devices &#91;required&#93; List of devices to register with Edge Manager agent.
@@ -10616,7 +10698,7 @@ sagemaker_update_devices <- function(DeviceFleetName, Devices) {
 #' @description
 #' Updates the default settings for new user profiles in the domain.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_domain.html](https://paws-r.github.io/docs/sagemaker/update_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_domain/](https://www.paws-r-sdk.com/docs/sagemaker_update_domain/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The ID of the domain to be updated.
 #' @param DefaultUserSettings A collection of settings.
@@ -10657,7 +10739,7 @@ sagemaker_update_domain <- function(DomainId, DefaultUserSettings = NULL, Domain
 #' @description
 #' Deploys the new `EndpointConfig` specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous `EndpointConfig` (there is no availability loss).
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_endpoint.html](https://paws-r.github.io/docs/sagemaker/update_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_endpoint/](https://www.paws-r-sdk.com/docs/sagemaker_update_endpoint/) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; The name of the endpoint whose configuration you want to update.
 #' @param EndpointConfigName &#91;required&#93; The name of the new endpoint configuration.
@@ -10708,7 +10790,7 @@ sagemaker_update_endpoint <- function(EndpointName, EndpointConfigName, RetainAl
 #' @description
 #' Updates variant weight of one or more variants associated with an existing endpoint, or capacity of one variant associated with an existing endpoint. When it receives the request, SageMaker sets the endpoint status to `Updating`. After updating the endpoint, it sets the status to `InService`. To check the status of an endpoint, use the [`describe_endpoint`][sagemaker_describe_endpoint] API.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_endpoint_weights_and_capacities.html](https://paws-r.github.io/docs/sagemaker/update_endpoint_weights_and_capacities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_endpoint_weights_and_capacities/](https://www.paws-r-sdk.com/docs/sagemaker_update_endpoint_weights_and_capacities/) for full documentation.
 #'
 #' @param EndpointName &#91;required&#93; The name of an existing SageMaker endpoint.
 #' @param DesiredWeightsAndCapacities &#91;required&#93; An object that provides new capacity and weight values for a variant.
@@ -10738,7 +10820,7 @@ sagemaker_update_endpoint_weights_and_capacities <- function(EndpointName, Desir
 #' @description
 #' Adds, updates, or removes the description of an experiment. Updates the display name of an experiment.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_experiment.html](https://paws-r.github.io/docs/sagemaker/update_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_experiment/](https://www.paws-r-sdk.com/docs/sagemaker_update_experiment/) for full documentation.
 #'
 #' @param ExperimentName &#91;required&#93; The name of the experiment to update.
 #' @param DisplayName The name of the experiment as displayed. The name doesn't need to be
@@ -10765,30 +10847,33 @@ sagemaker_update_experiment <- function(ExperimentName, DisplayName = NULL, Desc
 }
 .sagemaker$operations$update_experiment <- sagemaker_update_experiment
 
-#' Updates the feature group
+#' Updates the feature group by either adding features or updating the
+#' online store configuration
 #'
 #' @description
-#' Updates the feature group.
+#' Updates the feature group by either adding features or updating the online store configuration. Use one of the following request parameters at a time while using the [`update_feature_group`][sagemaker_update_feature_group] API.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_feature_group.html](https://paws-r.github.io/docs/sagemaker/update_feature_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_feature_group/](https://www.paws-r-sdk.com/docs/sagemaker_update_feature_group/) for full documentation.
 #'
-#' @param FeatureGroupName &#91;required&#93; The name of the feature group that you're updating.
+#' @param FeatureGroupName &#91;required&#93; The name or Amazon Resource Name (ARN) of the feature group that you're
+#' updating.
 #' @param FeatureAdditions Updates the feature group. Updating a feature group is an asynchronous
 #' operation. When you get an HTTP 200 response, you've made a valid
 #' request. It takes some time after you've made a valid request for
 #' Feature Store to update the feature group.
+#' @param OnlineStoreConfig Updates the feature group online store configuration.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_update_feature_group
-sagemaker_update_feature_group <- function(FeatureGroupName, FeatureAdditions = NULL) {
+sagemaker_update_feature_group <- function(FeatureGroupName, FeatureAdditions = NULL, OnlineStoreConfig = NULL) {
   op <- new_operation(
     name = "UpdateFeatureGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$update_feature_group_input(FeatureGroupName = FeatureGroupName, FeatureAdditions = FeatureAdditions)
+  input <- .sagemaker$update_feature_group_input(FeatureGroupName = FeatureGroupName, FeatureAdditions = FeatureAdditions, OnlineStoreConfig = OnlineStoreConfig)
   output <- .sagemaker$update_feature_group_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -10803,10 +10888,10 @@ sagemaker_update_feature_group <- function(FeatureGroupName, FeatureAdditions = 
 #' @description
 #' Updates the description and parameters of the feature group.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_feature_metadata.html](https://paws-r.github.io/docs/sagemaker/update_feature_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_feature_metadata/](https://www.paws-r-sdk.com/docs/sagemaker_update_feature_metadata/) for full documentation.
 #'
-#' @param FeatureGroupName &#91;required&#93; The name of the feature group containing the feature that you're
-#' updating.
+#' @param FeatureGroupName &#91;required&#93; The name or Amazon Resource Name (ARN) of the feature group containing
+#' the feature that you're updating.
 #' @param FeatureName &#91;required&#93; The name of the feature that you're updating.
 #' @param Description A description that you can write to better describe the feature.
 #' @param ParameterAdditions A list of key-value pairs that you can add to better describe the
@@ -10839,7 +10924,7 @@ sagemaker_update_feature_metadata <- function(FeatureGroupName, FeatureName, Des
 #' @description
 #' Update a hub.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_hub.html](https://paws-r.github.io/docs/sagemaker/update_hub.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_hub/](https://www.paws-r-sdk.com/docs/sagemaker_update_hub/) for full documentation.
 #'
 #' @param HubName &#91;required&#93; The name of the hub to update.
 #' @param HubDescription A description of the updated hub.
@@ -10871,7 +10956,7 @@ sagemaker_update_hub <- function(HubName, HubDescription = NULL, HubDisplayName 
 #' @description
 #' Updates the properties of a SageMaker image. To change the image's tags, use the [`add_tags`][sagemaker_add_tags] and [`delete_tags`][sagemaker_delete_tags] APIs.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_image.html](https://paws-r.github.io/docs/sagemaker/update_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_image/](https://www.paws-r-sdk.com/docs/sagemaker_update_image/) for full documentation.
 #'
 #' @param DeleteProperties A list of properties to delete. Only the `Description` and `DisplayName`
 #' properties can be deleted.
@@ -10906,7 +10991,7 @@ sagemaker_update_image <- function(DeleteProperties = NULL, Description = NULL, 
 #' @description
 #' Updates the properties of a SageMaker image version.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_image_version.html](https://paws-r.github.io/docs/sagemaker/update_image_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_image_version/](https://www.paws-r-sdk.com/docs/sagemaker_update_image_version/) for full documentation.
 #'
 #' @param ImageName &#91;required&#93; The name of the image.
 #' @param Alias The alias of the image version.
@@ -10971,7 +11056,7 @@ sagemaker_update_image_version <- function(ImageName, Alias = NULL, Version = NU
 #' @description
 #' Updates an inference experiment that you created. The status of the inference experiment has to be either `Created`, `Running`. For more information on the status of an inference experiment, see [`describe_inference_experiment`][sagemaker_describe_inference_experiment].
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_inference_experiment.html](https://paws-r.github.io/docs/sagemaker/update_inference_experiment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_inference_experiment/](https://www.paws-r-sdk.com/docs/sagemaker_update_inference_experiment/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the inference experiment to be updated.
 #' @param Schedule The duration for which the inference experiment will run. If the status
@@ -11014,7 +11099,7 @@ sagemaker_update_inference_experiment <- function(Name, Schedule = NULL, Descrip
 #' @description
 #' Update an Amazon SageMaker Model Card.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_model_card.html](https://paws-r.github.io/docs/sagemaker/update_model_card.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_model_card/](https://www.paws-r-sdk.com/docs/sagemaker_update_model_card/) for full documentation.
 #'
 #' @param ModelCardName &#91;required&#93; The name of the model card to update.
 #' @param Content The updated model card content. Content must be in [model card JSON
@@ -11061,7 +11146,7 @@ sagemaker_update_model_card <- function(ModelCardName, Content = NULL, ModelCard
 #' @description
 #' Updates a versioned model.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_model_package.html](https://paws-r.github.io/docs/sagemaker/update_model_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_model_package/](https://www.paws-r-sdk.com/docs/sagemaker_update_model_package/) for full documentation.
 #'
 #' @param ModelPackageArn &#91;required&#93; The Amazon Resource Name (ARN) of the model package.
 #' @param ModelApprovalStatus The approval status of the model.
@@ -11101,7 +11186,7 @@ sagemaker_update_model_package <- function(ModelPackageArn, ModelApprovalStatus 
 #' @description
 #' Update the parameters of a model monitor alert.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_monitoring_alert.html](https://paws-r.github.io/docs/sagemaker/update_monitoring_alert.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_monitoring_alert/](https://www.paws-r-sdk.com/docs/sagemaker_update_monitoring_alert/) for full documentation.
 #'
 #' @param MonitoringScheduleName &#91;required&#93; The name of a monitoring schedule.
 #' @param MonitoringAlertName &#91;required&#93; The name of a monitoring alert.
@@ -11135,7 +11220,7 @@ sagemaker_update_monitoring_alert <- function(MonitoringScheduleName, Monitoring
 #' @description
 #' Updates a previously created schedule.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_monitoring_schedule.html](https://paws-r.github.io/docs/sagemaker/update_monitoring_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_monitoring_schedule/](https://www.paws-r-sdk.com/docs/sagemaker_update_monitoring_schedule/) for full documentation.
 #'
 #' @param MonitoringScheduleName &#91;required&#93; The name of the monitoring schedule. The name must be unique within an
 #' Amazon Web Services Region within an Amazon Web Services account.
@@ -11167,7 +11252,7 @@ sagemaker_update_monitoring_schedule <- function(MonitoringScheduleName, Monitor
 #' @description
 #' Updates a notebook instance. NotebookInstance updates include upgrading or downgrading the ML compute instance used for your notebook instance to accommodate changes in your workload requirements.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_notebook_instance.html](https://paws-r.github.io/docs/sagemaker/update_notebook_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_notebook_instance/](https://www.paws-r-sdk.com/docs/sagemaker_update_notebook_instance/) for full documentation.
 #'
 #' @param NotebookInstanceName &#91;required&#93; The name of the notebook instance to update.
 #' @param InstanceType The Amazon ML compute instance type.
@@ -11262,7 +11347,7 @@ sagemaker_update_notebook_instance <- function(NotebookInstanceName, InstanceTyp
 #' @description
 #' Updates a notebook instance lifecycle configuration created with the [`create_notebook_instance_lifecycle_config`][sagemaker_create_notebook_instance_lifecycle_config] API.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_notebook_instance_lifecycle_config.html](https://paws-r.github.io/docs/sagemaker/update_notebook_instance_lifecycle_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_notebook_instance_lifecycle_config/](https://www.paws-r-sdk.com/docs/sagemaker_update_notebook_instance_lifecycle_config/) for full documentation.
 #'
 #' @param NotebookInstanceLifecycleConfigName &#91;required&#93; The name of the lifecycle configuration.
 #' @param OnCreate The shell script that runs only once, when you create a notebook
@@ -11296,7 +11381,7 @@ sagemaker_update_notebook_instance_lifecycle_config <- function(NotebookInstance
 #' @description
 #' Updates a pipeline.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_pipeline.html](https://paws-r.github.io/docs/sagemaker/update_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_pipeline/](https://www.paws-r-sdk.com/docs/sagemaker_update_pipeline/) for full documentation.
 #'
 #' @param PipelineName &#91;required&#93; The name of the pipeline to update.
 #' @param PipelineDisplayName The display name of the pipeline.
@@ -11333,7 +11418,7 @@ sagemaker_update_pipeline <- function(PipelineName, PipelineDisplayName = NULL, 
 #' @description
 #' Updates a pipeline execution.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_pipeline_execution.html](https://paws-r.github.io/docs/sagemaker/update_pipeline_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_pipeline_execution/](https://www.paws-r-sdk.com/docs/sagemaker_update_pipeline_execution/) for full documentation.
 #'
 #' @param PipelineExecutionArn &#91;required&#93; The Amazon Resource Name (ARN) of the pipeline execution.
 #' @param PipelineExecutionDescription The description of the pipeline execution.
@@ -11367,7 +11452,7 @@ sagemaker_update_pipeline_execution <- function(PipelineExecutionArn, PipelineEx
 #' @description
 #' Updates a machine learning (ML) project that is created from a template that sets up an ML pipeline from training to deploying an approved model.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_project.html](https://paws-r.github.io/docs/sagemaker/update_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_project/](https://www.paws-r-sdk.com/docs/sagemaker_update_project/) for full documentation.
 #'
 #' @param ProjectName &#91;required&#93; The name of the project.
 #' @param ProjectDescription The description for the project.
@@ -11412,7 +11497,7 @@ sagemaker_update_project <- function(ProjectName, ProjectDescription = NULL, Ser
 #' @description
 #' Updates the settings of a space.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_space.html](https://paws-r.github.io/docs/sagemaker/update_space.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_space/](https://www.paws-r-sdk.com/docs/sagemaker_update_space/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The ID of the associated Domain.
 #' @param SpaceName &#91;required&#93; The name of the space.
@@ -11444,7 +11529,7 @@ sagemaker_update_space <- function(DomainId, SpaceName, SpaceSettings = NULL) {
 #' @description
 #' Update a model training job to request a new Debugger profiling configuration or to change warm pool retention length.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_training_job.html](https://paws-r.github.io/docs/sagemaker/update_training_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_training_job/](https://www.paws-r-sdk.com/docs/sagemaker_update_training_job/) for full documentation.
 #'
 #' @param TrainingJobName &#91;required&#93; The name of a training job to update the Debugger profiling
 #' configuration.
@@ -11479,7 +11564,7 @@ sagemaker_update_training_job <- function(TrainingJobName, ProfilerConfig = NULL
 #' @description
 #' Updates the display name of a trial.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_trial.html](https://paws-r.github.io/docs/sagemaker/update_trial.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_trial/](https://www.paws-r-sdk.com/docs/sagemaker_update_trial/) for full documentation.
 #'
 #' @param TrialName &#91;required&#93; The name of the trial to update.
 #' @param DisplayName The name of the trial as displayed. The name doesn't need to be unique.
@@ -11510,7 +11595,7 @@ sagemaker_update_trial <- function(TrialName, DisplayName = NULL) {
 #' @description
 #' Updates one or more properties of a trial component.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_trial_component.html](https://paws-r.github.io/docs/sagemaker/update_trial_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_trial_component/](https://www.paws-r-sdk.com/docs/sagemaker_update_trial_component/) for full documentation.
 #'
 #' @param TrialComponentName &#91;required&#93; The name of the component to update.
 #' @param DisplayName The name of the component as displayed. The name doesn't need to be
@@ -11560,7 +11645,7 @@ sagemaker_update_trial_component <- function(TrialComponentName, DisplayName = N
 #' @description
 #' Updates a user profile.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_user_profile.html](https://paws-r.github.io/docs/sagemaker/update_user_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_user_profile/](https://www.paws-r-sdk.com/docs/sagemaker_update_user_profile/) for full documentation.
 #'
 #' @param DomainId &#91;required&#93; The domain ID.
 #' @param UserProfileName &#91;required&#93; The user profile name.
@@ -11591,7 +11676,7 @@ sagemaker_update_user_profile <- function(DomainId, UserProfileName, UserSetting
 #' @description
 #' Use this operation to update your workforce. You can use this operation to require that workers use specific IP addresses to work on tasks and to update your OpenID Connect (OIDC) Identity Provider (IdP) workforce configuration.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_workforce.html](https://paws-r.github.io/docs/sagemaker/update_workforce.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_workforce/](https://www.paws-r-sdk.com/docs/sagemaker_update_workforce/) for full documentation.
 #'
 #' @param WorkforceName &#91;required&#93; The name of the private workforce that you want to update. You can find
 #' your workforce name by using the
@@ -11630,7 +11715,7 @@ sagemaker_update_workforce <- function(WorkforceName, SourceIpConfig = NULL, Oid
 #' @description
 #' Updates an existing work team with new member definitions or description.
 #'
-#' See [https://paws-r.github.io/docs/sagemaker/update_workteam.html](https://paws-r.github.io/docs/sagemaker/update_workteam.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_update_workteam/](https://www.paws-r-sdk.com/docs/sagemaker_update_workteam/) for full documentation.
 #'
 #' @param WorkteamName &#91;required&#93; The name of the work team to update.
 #' @param MemberDefinitions A list of `MemberDefinition` objects that contains objects that identify

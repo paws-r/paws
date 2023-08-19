@@ -14,6 +14,6 @@ efs_modify_mount_target_security_groups(MountTargetId, SecurityGroups = NULL)
 \description{
 Modifies the set of security groups in effect for a mount target.
 
-See \url{https://paws-r.github.io/docs/efs/modify_mount_target_security_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_modify_mount_target_security_groups/} for full documentation.
 }
 \keyword{internal}

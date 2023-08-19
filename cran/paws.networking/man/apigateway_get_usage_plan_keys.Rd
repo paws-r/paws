@@ -27,6 +27,6 @@ keys.}
 \description{
 Gets all the usage plan keys representing the API keys added to a specified usage plan.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_usage_plan_keys.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_usage_plan_keys/} for full documentation.
 }
 \keyword{internal}

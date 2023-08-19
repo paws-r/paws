@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Retrieves a forecast for a single item, filtered by the supplied criteria.
 #'
-#' See [https://paws-r.github.io/docs/forecastqueryservice/query_forecast.html](https://paws-r.github.io/docs/forecastqueryservice/query_forecast.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastqueryservice_query_forecast/](https://www.paws-r-sdk.com/docs/forecastqueryservice_query_forecast/) for full documentation.
 #'
 #' @param ForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the forecast to query.
 #' @param StartDate The start date for the forecast. Specify the date using this format:
@@ -56,7 +56,7 @@ forecastqueryservice_query_forecast <- function(ForecastArn, StartDate = NULL, E
 #' @description
 #' Retrieves a what-if forecast.
 #'
-#' See [https://paws-r.github.io/docs/forecastqueryservice/query_what_if_forecast.html](https://paws-r.github.io/docs/forecastqueryservice/query_what_if_forecast.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/forecastqueryservice_query_what_if_forecast/](https://www.paws-r-sdk.com/docs/forecastqueryservice_query_what_if_forecast/) for full documentation.
 #'
 #' @param WhatIfForecastArn &#91;required&#93; The Amazon Resource Name (ARN) of the what-if forecast to query.
 #' @param StartDate The start date for the what-if forecast. Specify the date using this

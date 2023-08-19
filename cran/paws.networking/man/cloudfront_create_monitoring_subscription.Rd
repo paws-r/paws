@@ -20,6 +20,6 @@ distribution.}
 \description{
 Enables additional CloudWatch metrics for the specified CloudFront distribution. The additional metrics incur an additional cost.
 
-See \url{https://paws-r.github.io/docs/cloudfront/create_monitoring_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_create_monitoring_subscription/} for full documentation.
 }
 \keyword{internal}

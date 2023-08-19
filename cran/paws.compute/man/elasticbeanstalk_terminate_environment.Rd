@@ -46,6 +46,6 @@ same group is dependent on it.}
 \description{
 Terminates the specified environment.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/terminate_environment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_terminate_environment/} for full documentation.
 }
 \keyword{internal}

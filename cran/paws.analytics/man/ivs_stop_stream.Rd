@@ -12,6 +12,6 @@ ivs_stop_stream(channelArn)
 \description{
 Disconnects the incoming RTMPS stream for the specified channel. Can be used in conjunction with \code{\link[=ivs_delete_stream_key]{delete_stream_key}} to prevent further streaming to a channel.
 
-See \url{https://paws-r.github.io/docs/ivs/stop_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivs_stop_stream/} for full documentation.
 }
 \keyword{internal}

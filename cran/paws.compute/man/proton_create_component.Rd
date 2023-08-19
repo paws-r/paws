@@ -61,6 +61,6 @@ template language.}
 \description{
 Create an Proton component. A component is an infrastructure extension for a service instance.
 
-See \url{https://paws-r.github.io/docs/proton/create_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_create_component/} for full documentation.
 }
 \keyword{internal}

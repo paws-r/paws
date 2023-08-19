@@ -18,6 +18,6 @@ list.}
 \description{
 Returns a list of all frameworks for an Amazon Web Services account and Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/backup/list_frameworks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_list_frameworks/} for full documentation.
 }
 \keyword{internal}

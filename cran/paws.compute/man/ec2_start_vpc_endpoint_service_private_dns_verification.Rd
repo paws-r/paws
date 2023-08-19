@@ -21,6 +21,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Initiates the verification process to prove that the service provider owns the private DNS name domain for the endpoint service.
 
-See \url{https://paws-r.github.io/docs/ec2/start_vpc_endpoint_service_private_dns_verification.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_start_vpc_endpoint_service_private_dns_verification/} for full documentation.
 }
 \keyword{internal}

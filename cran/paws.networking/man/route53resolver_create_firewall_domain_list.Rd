@@ -24,6 +24,6 @@ domain list.}
 \description{
 Creates an empty firewall domain list for use in DNS Firewall rules. You can populate the domains for the new list with a file, using \code{\link[=route53resolver_import_firewall_domains]{import_firewall_domains}}, or with domain strings, using \code{\link[=route53resolver_update_firewall_domains]{update_firewall_domains}}.
 
-See \url{https://paws-r.github.io/docs/route53resolver/create_firewall_domain_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_create_firewall_domain_list/} for full documentation.
 }
 \keyword{internal}

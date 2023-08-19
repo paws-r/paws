@@ -93,9 +93,12 @@ execution.}
 \item{KMSKeyArn}{The ARN of the Key Management Service (KMS) customer managed key that's
 used to encrypt your function's \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-envvars.html#configuration-envvars-encryption}{environment variables}.
 When \href{https://docs.aws.amazon.com/lambda/latest/dg/snapstart-security.html}{Lambda SnapStart}
-is activated, this key is also used to encrypt your function's snapshot.
-If you don't provide a customer managed key, Lambda uses a default
-service key.}
+is activated, Lambda also uses this key is to encrypt your function's
+snapshot. If you deploy your function using a container image, Lambda
+also uses this key to encrypt your function when it's deployed. Note
+that this is not the same key that's used to protect your container
+image in the Amazon Elastic Container Registry (Amazon ECR). If you
+don't provide a customer managed key, Lambda uses a default service key.}
 
 \item{TracingConfig}{Set \code{Mode} to \code{Active} to sample and trace a subset of incoming requests
 with
@@ -111,7 +114,7 @@ its ARN, including the version.}
 
 \item{FileSystemConfigs}{Connection settings for an Amazon EFS file system.}
 
-\item{ImageConfig}{Container image \href{https://docs.aws.amazon.com/lambda/latest/dg/#configuration-images-settings}{configuration values}
+\item{ImageConfig}{Container image \href{https://docs.aws.amazon.com/lambda/latest/dg/images-create.html#configuration-images-settings}{configuration values}
 that override the values in the container image Dockerfile.}
 
 \item{CodeSigningConfigArn}{To enable code signing for this function, specify the ARN of a
@@ -133,6 +136,6 @@ setting.}
 \description{
 Creates a Lambda function. To create a function, you need a \href{https://docs.aws.amazon.com/lambda/latest/dg/gettingstarted-package.html}{deployment package} and an \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-permissions.html#lambda-intro-execution-role}{execution role}. The deployment package is a .zip file archive or container image that contains your function code. The execution role grants the function permission to use Amazon Web Services, such as Amazon CloudWatch Logs for log streaming and X-Ray for request tracing.
 
-See \url{https://paws-r.github.io/docs/lambda/create_function.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_create_function/} for full documentation.
 }
 \keyword{internal}

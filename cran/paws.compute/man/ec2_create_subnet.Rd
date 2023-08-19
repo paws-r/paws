@@ -27,8 +27,7 @@ zone for each subnet.
 
 To create a subnet in a Local Zone, set this value to the Local Zone ID,
 for example \verb{us-west-2-lax-1a}. For information about the Regions that
-support Local Zones, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions}{Available Regions}
-in the \emph{Amazon Elastic Compute Cloud User Guide}.
+support Local Zones, see \href{https://aws.amazon.com/about-aws/global-infrastructure/localzones/locations/}{Local Zones locations}.
 
 To create a subnet in an Outpost, set this value to the Availability
 Zone for the Outpost and specify the Outpost ARN.}
@@ -62,6 +61,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a subnet in the specified VPC. For an IPv4 only subnet, specify an IPv4 CIDR block. If the VPC has an IPv6 CIDR block, you can create an IPv6 only subnet or a dual stack subnet instead. For an IPv6 only subnet, specify an IPv6 CIDR block. For a dual stack subnet, specify both an IPv4 CIDR block and an IPv6 CIDR block.
 
-See \url{https://paws-r.github.io/docs/ec2/create_subnet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_subnet/} for full documentation.
 }
 \keyword{internal}

@@ -34,6 +34,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a virtual private gateway. A virtual private gateway is the endpoint on the VPC side of your VPN connection. You can create a virtual private gateway before creating the VPC itself.
 
-See \url{https://paws-r.github.io/docs/ec2/create_vpn_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_vpn_gateway/} for full documentation.
 }
 \keyword{internal}

@@ -97,6 +97,6 @@ from a previous call.)}
 \description{
 Lists all patches eligible to be included in a patch baseline.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_available_patches.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_available_patches/} for full documentation.
 }
 \keyword{internal}

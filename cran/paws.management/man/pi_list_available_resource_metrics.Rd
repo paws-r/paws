@@ -45,6 +45,6 @@ token.}
 \description{
 Retrieve metrics of the specified types that can be queried for a specified DB instance.
 
-See \url{https://paws-r.github.io/docs/pi/list_available_resource_metrics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pi_list_available_resource_metrics/} for full documentation.
 }
 \keyword{internal}

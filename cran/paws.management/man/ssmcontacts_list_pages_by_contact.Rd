@@ -22,6 +22,6 @@ of results.}
 \description{
 Lists the engagements to a contact's contact channels.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/list_pages_by_contact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_list_pages_by_contact/} for full documentation.
 }
 \keyword{internal}

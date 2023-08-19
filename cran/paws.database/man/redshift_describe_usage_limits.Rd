@@ -58,6 +58,6 @@ associated with them.}
 \description{
 Shows usage limits on a cluster. Results are filtered based on the combination of input usage limit identifier, cluster identifier, and feature type parameters:
 
-See \url{https://paws-r.github.io/docs/redshift/describe_usage_limits.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_usage_limits/} for full documentation.
 }
 \keyword{internal}

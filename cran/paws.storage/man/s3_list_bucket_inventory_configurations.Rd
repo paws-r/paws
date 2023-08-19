@@ -15,7 +15,7 @@ s3_list_bucket_inventory_configurations(
 retrieve.}
 
 \item{ContinuationToken}{The marker used to continue an inventory configuration listing that has
-been truncated. Use the NextContinuationToken from a previously
+been truncated. Use the \code{NextContinuationToken} from a previously
 truncated list response to continue the listing. The continuation token
 is an opaque value that Amazon S3 understands.}
 
@@ -26,6 +26,6 @@ different account, the request fails with the HTTP status code
 \description{
 Returns a list of inventory configurations for the bucket. You can have up to 1,000 analytics configurations per bucket.
 
-See \url{https://paws-r.github.io/docs/s3/list_bucket_inventory_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_list_bucket_inventory_configurations/} for full documentation.
 }
 \keyword{internal}

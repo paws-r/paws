@@ -63,6 +63,6 @@ Security Hub returns up to 100 results of finding history.}
 \description{
 Returns history for a Security Hub finding in the last 90 days. The history includes changes made to any fields in the Amazon Web Services Security Finding Format (ASFF).
 
-See \url{https://paws-r.github.io/docs/securityhub/get_finding_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_get_finding_history/} for full documentation.
 }
 \keyword{internal}

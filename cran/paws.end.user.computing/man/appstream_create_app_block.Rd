@@ -9,8 +9,10 @@ appstream_create_app_block(
   Description = NULL,
   DisplayName = NULL,
   SourceS3Location,
-  SetupScriptDetails,
-  Tags = NULL
+  SetupScriptDetails = NULL,
+  Tags = NULL,
+  PostSetupScriptDetails = NULL,
+  PackagingType = NULL
 )
 }
 \arguments{
@@ -22,13 +24,19 @@ appstream_create_app_block(
 
 \item{SourceS3Location}{[required] The source S3 location of the app block.}
 
-\item{SetupScriptDetails}{[required] The setup script details of the app block.}
+\item{SetupScriptDetails}{The setup script details of the app block. This must be provided for the
+\code{CUSTOM} PackagingType.}
 
 \item{Tags}{The tags assigned to the app block.}
+
+\item{PostSetupScriptDetails}{The post setup script details of the app block. This can only be
+provided for the \code{APPSTREAM2} PackagingType.}
+
+\item{PackagingType}{The packaging type of the app block.}
 }
 \description{
 Creates an app block.
 
-See \url{https://paws-r.github.io/docs/appstream/create_app_block.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_create_app_block/} for full documentation.
 }
 \keyword{internal}

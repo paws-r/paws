@@ -14,6 +14,6 @@ codedeploy_get_deployment_instance(deploymentId, instanceId)
 \description{
 Gets information about an instance as part of a deployment.
 
-See \url{https://paws-r.github.io/docs/codedeploy/get_deployment_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_get_deployment_instance/} for full documentation.
 }
 \keyword{internal}

@@ -2,16 +2,16 @@
 % Please edit documentation in R/healthlake_operations.R
 \name{healthlake_delete_fhir_datastore}
 \alias{healthlake_delete_fhir_datastore}
-\title{Deletes a Data Store}
+\title{Deletes a data store}
 \usage{
-healthlake_delete_fhir_datastore(DatastoreId = NULL)
+healthlake_delete_fhir_datastore(DatastoreId)
 }
 \arguments{
-\item{DatastoreId}{The AWS-generated ID for the Data Store to be deleted.}
+\item{DatastoreId}{[required] The AWS-generated ID for the data store to be deleted.}
 }
 \description{
-Deletes a Data Store.
+Deletes a data store.
 
-See \url{https://paws-r.github.io/docs/healthlake/delete_fhir_datastore.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/healthlake_delete_fhir_datastore/} for full documentation.
 }
 \keyword{internal}

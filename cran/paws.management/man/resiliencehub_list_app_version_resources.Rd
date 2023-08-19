@@ -32,6 +32,6 @@ in the response so that the remaining results can be retrieved.}
 \description{
 Lists all the resources in an Resilience Hub application.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/list_app_version_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_list_app_version_resources/} for full documentation.
 }
 \keyword{internal}

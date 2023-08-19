@@ -12,6 +12,6 @@ connectcampaignservice_start_campaign(id)
 \description{
 Starts a campaign for the specified Amazon Connect account.
 
-See \url{https://paws-r.github.io/docs/connectcampaignservice/start_campaign.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectcampaignservice_start_campaign/} for full documentation.
 }
 \keyword{internal}

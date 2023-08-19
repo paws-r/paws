@@ -98,6 +98,6 @@ in the \emph{Key Management Service Developer Guide}.}
 \description{
 Creates a new ledger in your Amazon Web Services account in the current Region.
 
-See \url{https://paws-r.github.io/docs/qldb/create_ledger.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_create_ledger/} for full documentation.
 }
 \keyword{internal}

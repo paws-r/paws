@@ -12,6 +12,6 @@ emr_stop_notebook_execution(NotebookExecutionId)
 \description{
 Stops a notebook execution.
 
-See \url{https://paws-r.github.io/docs/emr/stop_notebook_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_stop_notebook_execution/} for full documentation.
 }
 \keyword{internal}

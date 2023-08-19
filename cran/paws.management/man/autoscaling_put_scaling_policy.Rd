@@ -64,7 +64,7 @@ largest instance weight.}
 \item{ScalingAdjustment}{The amount by which to scale, based on the specified adjustment type. A
 positive value adds to the current capacity while a negative number
 removes from the current capacity. For exact capacity, you must specify
-a positive value.
+a non-negative value.
 
 Required if the policy type is \code{SimpleScaling}. (Not used with any other
 policy type.)}
@@ -146,6 +146,6 @@ Required if the policy type is \code{PredictiveScaling}.}
 \description{
 Creates or updates a scaling policy for an Auto Scaling group. Scaling policies are used to scale an Auto Scaling group based on configurable metrics. If no policies are defined, the dynamic scaling and predictive scaling features are not used.
 
-See \url{https://paws-r.github.io/docs/autoscaling/put_scaling_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_put_scaling_policy/} for full documentation.
 }
 \keyword{internal}

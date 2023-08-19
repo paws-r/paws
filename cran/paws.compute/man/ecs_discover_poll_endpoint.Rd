@@ -18,6 +18,6 @@ the container instance belongs to.}
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 
-See \url{https://paws-r.github.io/docs/ecs/discover_poll_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_discover_poll_endpoint/} for full documentation.
 }
 \keyword{internal}

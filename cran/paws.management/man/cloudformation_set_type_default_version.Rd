@@ -32,6 +32,6 @@ extension version when it is registered.}
 \description{
 Specify the default version of an extension. The default version of an extension will be used in CloudFormation operations.
 
-See \url{https://paws-r.github.io/docs/cloudformation/set_type_default_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_set_type_default_version/} for full documentation.
 }
 \keyword{internal}

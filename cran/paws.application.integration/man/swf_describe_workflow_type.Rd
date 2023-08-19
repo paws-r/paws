@@ -14,6 +14,6 @@ swf_describe_workflow_type(domain, workflowType)
 \description{
 Returns information about the specified \emph{workflow type}. This includes configuration settings specified when the type was registered and other information such as creation date, current status, etc.
 
-See \url{https://paws-r.github.io/docs/swf/describe_workflow_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_describe_workflow_type/} for full documentation.
 }
 \keyword{internal}

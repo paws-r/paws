@@ -30,6 +30,6 @@ the next page of results in a paginated response.}
 \description{
 Returns the resource counts across accounts and regions that are present in your Config aggregator. You can request the resource counts by providing filters and GroupByKey.
 
-See \url{https://paws-r.github.io/docs/configservice/get_aggregate_discovered_resource_counts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_get_aggregate_discovered_resource_counts/} for full documentation.
 }
 \keyword{internal}

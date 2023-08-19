@@ -21,6 +21,6 @@ that you can associate with the specified private hosted zone.
 \description{
 Gets the specified limit for a specified hosted zone, for example, the maximum number of records that you can create in the hosted zone.
 
-See \url{https://paws-r.github.io/docs/route53/get_hosted_zone_limit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_get_hosted_zone_limit/} for full documentation.
 }
 \keyword{internal}

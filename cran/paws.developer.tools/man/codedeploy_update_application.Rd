@@ -17,6 +17,6 @@ codedeploy_update_application(
 \description{
 Changes the name of an application.
 
-See \url{https://paws-r.github.io/docs/codedeploy/update_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_update_application/} for full documentation.
 }
 \keyword{internal}

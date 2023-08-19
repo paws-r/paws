@@ -15,6 +15,6 @@ results.}
 \description{
 Lists all of the DataBrew projects that are defined.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/list_projects.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_list_projects/} for full documentation.
 }
 \keyword{internal}

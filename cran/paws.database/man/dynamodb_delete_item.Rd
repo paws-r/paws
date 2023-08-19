@@ -14,7 +14,8 @@ dynamodb_delete_item(
   ReturnItemCollectionMetrics = NULL,
   ConditionExpression = NULL,
   ExpressionAttributeNames = NULL,
-  ExpressionAttributeValues = NULL
+  ExpressionAttributeValues = NULL,
+  ReturnValuesOnConditionCheckFailure = NULL
 )
 }
 \arguments{
@@ -135,10 +136,18 @@ You could then use these values in an expression, such as this:
 
 For more information on expression attribute values, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.ConditionExpressions.html}{Condition Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
+
+\item{ReturnValuesOnConditionCheckFailure}{An optional parameter that returns the item attributes for a
+\code{\link[=dynamodb_delete_item]{delete_item}} operation that failed a condition
+check.
+
+There is no additional cost associated with requesting a return value
+aside from the small network and processing overhead of receiving a
+larger response. No read capacity units are consumed.}
 }
 \description{
 Deletes a single item in a table by primary key. You can perform a conditional delete operation that deletes the item if it exists, or if it has an expected attribute value.
 
-See \url{https://paws-r.github.io/docs/dynamodb/delete_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_delete_item/} for full documentation.
 }
 \keyword{internal}

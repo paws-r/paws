@@ -23,6 +23,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Attaches an EBS volume to a running or stopped instance and exposes it to the instance with the specified device name.
 
-See \url{https://paws-r.github.io/docs/ec2/attach_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_attach_volume/} for full documentation.
 }
 \keyword{internal}

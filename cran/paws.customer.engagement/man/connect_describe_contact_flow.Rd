@@ -14,6 +14,6 @@ connect_describe_contact_flow(InstanceId, ContactFlowId)
 \description{
 Describes the specified flow.
 
-See \url{https://paws-r.github.io/docs/connect/describe_contact_flow.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_describe_contact_flow/} for full documentation.
 }
 \keyword{internal}

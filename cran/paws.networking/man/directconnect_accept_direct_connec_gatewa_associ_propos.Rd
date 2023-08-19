@@ -29,6 +29,6 @@ in the \emph{Direct Connect User Guide}.}
 \description{
 Accepts a proposal request to attach a virtual private gateway or transit gateway to a Direct Connect gateway.
 
-See \url{https://paws-r.github.io/docs/directconnect/accept_direct_connect_gateway_association_proposal.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_accept_direct_connect_gateway_association_proposal/} for full documentation.
 }
 \keyword{internal}

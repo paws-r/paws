@@ -23,6 +23,6 @@ The value you specify has to be at least 1, and can be no more than 10.}
 \description{
 Lists the email templates present in your Amazon SES account in the current Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/sesv2/list_email_templates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_list_email_templates/} for full documentation.
 }
 \keyword{internal}

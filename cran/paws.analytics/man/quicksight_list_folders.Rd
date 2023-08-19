@@ -17,6 +17,6 @@ results.}
 \description{
 Lists all folders in an account.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_folders.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_folders/} for full documentation.
 }
 \keyword{internal}

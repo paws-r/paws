@@ -20,6 +20,6 @@ characters. The maximum length of a tag value is 256 characters.}
 \description{
 Adds or updates one or more tags (keys and values) that are associated with an Amazon Macie resource.
 
-See \url{https://paws-r.github.io/docs/macie2/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_tag_resource/} for full documentation.
 }
 \keyword{internal}

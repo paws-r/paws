@@ -25,7 +25,7 @@ spaces. You can also include any of the following characters: _+=,.@-}
 You must provide policies in JSON format in IAM. However, for
 CloudFormation templates formatted in YAML, you can provide the policy
 in JSON or YAML format. CloudFormation always converts a YAML policy to
-JSON format before submitting it to = IAM.
+JSON format before submitting it to IAM.
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} used to
 validate this parameter is a string of characters consisting of the
@@ -42,6 +42,6 @@ carriage return (\verb{U+000D})
 \description{
 Adds or updates an inline policy document that is embedded in the specified IAM group.
 
-See \url{https://paws-r.github.io/docs/iam/put_group_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_put_group_policy/} for full documentation.
 }
 \keyword{internal}

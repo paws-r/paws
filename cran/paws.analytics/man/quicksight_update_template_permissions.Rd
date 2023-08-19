@@ -23,6 +23,6 @@ quicksight_update_template_permissions(
 \description{
 Updates the resource permissions for a template.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_template_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_template_permissions/} for full documentation.
 }
 \keyword{internal}

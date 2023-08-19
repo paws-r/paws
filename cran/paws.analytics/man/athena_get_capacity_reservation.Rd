@@ -13,6 +13,6 @@ athena_get_capacity_reservation(Name)
 \description{
 Returns information about the capacity reservation with the specified name.
 
-See \url{https://paws-r.github.io/docs/athena/get_capacity_reservation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_get_capacity_reservation/} for full documentation.
 }
 \keyword{internal}

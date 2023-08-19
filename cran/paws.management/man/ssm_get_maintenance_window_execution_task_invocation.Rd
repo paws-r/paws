@@ -21,6 +21,6 @@ be retrieved.}
 \description{
 Retrieves information about a specific task running on a specific target.
 
-See \url{https://paws-r.github.io/docs/ssm/get_maintenance_window_execution_task_invocation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_maintenance_window_execution_task_invocation/} for full documentation.
 }
 \keyword{internal}

@@ -1,0 +1,20 @@
+Package: pkg1
+Title: dummy
+Version: 0.1.0
+Authors@R: c(
+    person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
+    person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
+    person("Dyfan", "Jones", , "dyfan.r.jones@gmail.com", role = "cre"),
+    person("Amazon.com, Inc.", role = "cph")
+  )
+Description: Dummy package
+License: Apache License (>= 2.0)
+Imports:
+    paws.cat1 (>= 0.1.0),
+    paws.cat2 (>= 0.1.0),
+    fake
+Suggests:
+    testthat
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
+RoxygenNote: 7.2.3

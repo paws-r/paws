@@ -19,6 +19,6 @@ set of tags, use it in the subsequent request.}
 \description{
 Returns the tags for the specified SageMaker resource.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_tags/} for full documentation.
 }
 \keyword{internal}

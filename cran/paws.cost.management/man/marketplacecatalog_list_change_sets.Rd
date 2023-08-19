@@ -30,6 +30,6 @@ of results.}
 \description{
 Returns the list of change sets owned by the account being used to make the call. You can filter this list by providing any combination of \code{entityId}, \code{ChangeSetName}, and status. If you provide more than one filter, the API operation applies a logical AND between the filters.
 
-See \url{https://paws-r.github.io/docs/marketplacecatalog/list_change_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/marketplacecatalog_list_change_sets/} for full documentation.
 }
 \keyword{internal}

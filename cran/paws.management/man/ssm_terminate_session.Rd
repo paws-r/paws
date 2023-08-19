@@ -13,6 +13,6 @@ ssm_terminate_session(SessionId)
 \description{
 Permanently ends a session and closes the data connection between the Session Manager client and SSM Agent on the managed node. A terminated session can't be resumed.
 
-See \url{https://paws-r.github.io/docs/ssm/terminate_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_terminate_session/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ devopsguru_remove_notification_channel(Id)
 \description{
 Removes a notification channel from DevOps Guru. A notification channel is used to notify you when DevOps Guru generates an insight that contains information about how to improve your operations.
 
-See \url{https://paws-r.github.io/docs/devopsguru/remove_notification_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_remove_notification_channel/} for full documentation.
 }
 \keyword{internal}

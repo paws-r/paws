@@ -30,6 +30,6 @@ returned for each repeated request.}
 \description{
 Creates a provisioning artifact (also known as a version) for the specified product.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/create_provisioning_artifact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_create_provisioning_artifact/} for full documentation.
 }
 \keyword{internal}

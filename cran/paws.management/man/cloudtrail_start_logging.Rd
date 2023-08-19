@@ -15,8 +15,8 @@ format of a trail ARN.
 \code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
 }
 \description{
-Starts the recording of Amazon Web Services API calls and log file delivery for a trail. For a trail that is enabled in all regions, this operation must be called from the region in which the trail was created. This operation cannot be called on the shadow trails (replicated trails in other regions) of a trail that is enabled in all regions.
+Starts the recording of Amazon Web Services API calls and log file delivery for a trail. For a trail that is enabled in all Regions, this operation must be called from the Region in which the trail was created. This operation cannot be called on the shadow trails (replicated trails in other Regions) of a trail that is enabled in all Regions.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/start_logging.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_start_logging/} for full documentation.
 }
 \keyword{internal}

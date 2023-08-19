@@ -163,6 +163,6 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 \description{
 Creates a launch configuration.
 
-See \url{https://paws-r.github.io/docs/autoscaling/create_launch_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_create_launch_configuration/} for full documentation.
 }
 \keyword{internal}

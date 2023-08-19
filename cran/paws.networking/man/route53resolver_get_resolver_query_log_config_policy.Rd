@@ -13,6 +13,6 @@ query logging policy for.}
 \description{
 Gets information about a query logging policy. A query logging policy specifies the Resolver query logging operations and resources that you want to allow another Amazon Web Services account to be able to use.
 
-See \url{https://paws-r.github.io/docs/route53resolver/get_resolver_query_log_config_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_query_log_config_policy/} for full documentation.
 }
 \keyword{internal}

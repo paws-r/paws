@@ -69,6 +69,6 @@ that pipeline builds use to launch EC2 build and test instances.}
 \description{
 Creates a new infrastructure configuration. An infrastructure configuration defines the environment in which your image will be built and tested.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/create_infrastructure_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_create_infrastructure_configuration/} for full documentation.
 }
 \keyword{internal}

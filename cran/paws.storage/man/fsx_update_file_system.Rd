@@ -57,7 +57,7 @@ For Windows file systems, the storage capacity target value must be at
 least 10 percent greater than the current storage capacity value. To
 increase storage capacity, the file system must have at least 16 MBps of
 throughput capacity. For more information, see \href{https://docs.aws.amazon.com/fsx/latest/WindowsGuide/managing-storage-capacity.html}{Managing storage capacity}
-in the \emph{Amazon FSx for Windows File Server User Guide}.
+in the \emph{Amazon FSxfor Windows File Server User Guide}.
 
 For ONTAP file systems, the storage capacity target value must be at
 least 10 percent greater than the current storage capacity value. For
@@ -71,11 +71,11 @@ system.}
 
 \item{OntapConfiguration}{}
 
-\item{OpenZFSConfiguration}{The configuration updates for an Amazon FSx for OpenZFS file system.}
+\item{OpenZFSConfiguration}{The configuration updates for an FSx for OpenZFS file system.}
 }
 \description{
 Use this operation to update the configuration of an existing Amazon FSx file system. You can update multiple properties in a single request.
 
-See \url{https://paws-r.github.io/docs/fsx/update_file_system.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_update_file_system/} for full documentation.
 }
 \keyword{internal}

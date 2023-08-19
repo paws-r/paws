@@ -92,6 +92,6 @@ do not count against your tags per resource limit.
 \description{
 Creates an Amazon Forecast dataset. The information about the dataset that you provide helps Forecast understand how to consume the data for model training. This includes the following:
 
-See \url{https://paws-r.github.io/docs/forecastservice/create_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_create_dataset/} for full documentation.
 }
 \keyword{internal}

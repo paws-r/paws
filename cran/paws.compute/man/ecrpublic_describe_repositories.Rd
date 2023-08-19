@@ -48,6 +48,6 @@ repositories with \code{repositoryNames}, you can't use this option.}
 \description{
 Describes repositories that are in a public registry.
 
-See \url{https://paws-r.github.io/docs/ecrpublic/describe_repositories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecrpublic_describe_repositories/} for full documentation.
 }
 \keyword{internal}

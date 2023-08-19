@@ -36,6 +36,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified bundle tasks or all of your bundle tasks.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_bundle_tasks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_bundle_tasks/} for full documentation.
 }
 \keyword{internal}

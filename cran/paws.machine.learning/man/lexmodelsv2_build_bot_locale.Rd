@@ -21,6 +21,6 @@ more information, see \href{https://docs.aws.amazon.com/lexv2/latest/dg/how-lang
 \description{
 Builds a bot, its intents, and its slot types into a specific locale. A bot can be built into multiple locales. At runtime the locale is used to choose a specific build of the bot.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/build_bot_locale.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_build_bot_locale/} for full documentation.
 }
 \keyword{internal}

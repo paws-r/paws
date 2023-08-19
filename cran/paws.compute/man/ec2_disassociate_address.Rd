@@ -8,9 +8,9 @@ interface it's associated with}
 ec2_disassociate_address(AssociationId = NULL, PublicIp = NULL, DryRun = NULL)
 }
 \arguments{
-\item{AssociationId}{[EC2-VPC] The association ID. Required for EC2-VPC.}
+\item{AssociationId}{The association ID. This parameter is required.}
 
-\item{PublicIp}{[EC2-Classic] The Elastic IP address. Required for EC2-Classic.}
+\item{PublicIp}{Deprecated.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have
@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Disassociates an Elastic IP address from the instance or network interface it's associated with.
 
-See \url{https://paws-r.github.io/docs/ec2/disassociate_address.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_disassociate_address/} for full documentation.
 }
 \keyword{internal}

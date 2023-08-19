@@ -16,6 +16,6 @@ page of results.}
 \description{
 Returns a list of the Amazon CloudWatch RUM app monitors in the account.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/list_app_monitors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_list_app_monitors/} for full documentation.
 }
 \keyword{internal}

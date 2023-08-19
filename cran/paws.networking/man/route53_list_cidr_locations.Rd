@@ -22,6 +22,6 @@ response.}
 \description{
 Returns a paginated list of CIDR locations for the given collection (metadata only, does not include CIDR blocks).
 
-See \url{https://paws-r.github.io/docs/route53/list_cidr_locations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_cidr_locations/} for full documentation.
 }
 \keyword{internal}

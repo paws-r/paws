@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Accepts a proposal request to attach a virtual private gateway or transit gateway to a Direct Connect gateway.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/accept_direct_connect_gateway_association_proposal.html](https://paws-r.github.io/docs/directconnect/accept_direct_connect_gateway_association_proposal.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_accept_direct_connect_gateway_association_proposal/](https://www.paws-r-sdk.com/docs/directconnect_accept_direct_connect_gateway_association_proposal/) for full documentation.
 #'
 #' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
 #' @param proposalId &#91;required&#93; The ID of the request proposal.
@@ -47,7 +47,7 @@ directconnect_accept_direct_connect_gateway_association_proposal <- function(dir
 #' @description
 #' Deprecated. Use [`allocate_hosted_connection`][directconnect_allocate_hosted_connection] instead.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/allocate_connection_on_interconnect.html](https://paws-r.github.io/docs/directconnect/allocate_connection_on_interconnect.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_allocate_connection_on_interconnect/](https://www.paws-r-sdk.com/docs/directconnect_allocate_connection_on_interconnect/) for full documentation.
 #'
 #' @param bandwidth &#91;required&#93; The bandwidth of the connection. The possible values are 50Mbps,
 #' 100Mbps, 200Mbps, 300Mbps, 400Mbps, 500Mbps, 1Gbps, 2Gbps, 5Gbps, and
@@ -86,7 +86,7 @@ directconnect_allocate_connection_on_interconnect <- function(bandwidth, connect
 #' @description
 #' Creates a hosted connection on the specified interconnect or a link aggregation group (LAG) of interconnects.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/allocate_hosted_connection.html](https://paws-r.github.io/docs/directconnect/allocate_hosted_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_allocate_hosted_connection/](https://www.paws-r-sdk.com/docs/directconnect_allocate_hosted_connection/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the interconnect or LAG.
 #' @param ownerAccount &#91;required&#93; The ID of the Amazon Web Services account ID of the customer for the
@@ -126,7 +126,7 @@ directconnect_allocate_hosted_connection <- function(connectionId, ownerAccount,
 #' @description
 #' Provisions a private virtual interface to be owned by the specified Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/allocate_private_virtual_interface.html](https://paws-r.github.io/docs/directconnect/allocate_private_virtual_interface.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_allocate_private_virtual_interface/](https://www.paws-r-sdk.com/docs/directconnect_allocate_private_virtual_interface/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the connection on which the private virtual interface is
 #' provisioned.
@@ -160,7 +160,7 @@ directconnect_allocate_private_virtual_interface <- function(connectionId, owner
 #' @description
 #' Provisions a public virtual interface to be owned by the specified Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/allocate_public_virtual_interface.html](https://paws-r.github.io/docs/directconnect/allocate_public_virtual_interface.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_allocate_public_virtual_interface/](https://www.paws-r-sdk.com/docs/directconnect_allocate_public_virtual_interface/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the connection on which the public virtual interface is
 #' provisioned.
@@ -194,7 +194,7 @@ directconnect_allocate_public_virtual_interface <- function(connectionId, ownerA
 #' @description
 #' Provisions a transit virtual interface to be owned by the specified Amazon Web Services account. Use this type of interface to connect a transit gateway to your Direct Connect gateway.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/allocate_transit_virtual_interface.html](https://paws-r.github.io/docs/directconnect/allocate_transit_virtual_interface.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_allocate_transit_virtual_interface/](https://www.paws-r-sdk.com/docs/directconnect_allocate_transit_virtual_interface/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the connection on which the transit virtual interface is
 #' provisioned.
@@ -227,7 +227,7 @@ directconnect_allocate_transit_virtual_interface <- function(connectionId, owner
 #' @description
 #' Associates an existing connection with a link aggregation group (LAG). The connection is interrupted and re-established as a member of the LAG (connectivity to Amazon Web Services is interrupted). The connection must be hosted on the same Direct Connect endpoint as the LAG, and its bandwidth must match the bandwidth for the LAG. You can re-associate a connection that's currently associated with a different LAG; however, if removing the connection would cause the original LAG to fall below its setting for minimum number of operational connections, the request fails.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/associate_connection_with_lag.html](https://paws-r.github.io/docs/directconnect/associate_connection_with_lag.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_associate_connection_with_lag/](https://www.paws-r-sdk.com/docs/directconnect_associate_connection_with_lag/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the connection.
 #' @param lagId &#91;required&#93; The ID of the LAG with which to associate the connection.
@@ -258,7 +258,7 @@ directconnect_associate_connection_with_lag <- function(connectionId, lagId) {
 #' @description
 #' Associates a hosted connection and its virtual interfaces with a link aggregation group (LAG) or interconnect. If the target interconnect or LAG has an existing hosted connection with a conflicting VLAN number or IP address, the operation fails. This action temporarily interrupts the hosted connection's connectivity to Amazon Web Services as it is being migrated.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/associate_hosted_connection.html](https://paws-r.github.io/docs/directconnect/associate_hosted_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_associate_hosted_connection/](https://www.paws-r-sdk.com/docs/directconnect_associate_hosted_connection/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the hosted connection.
 #' @param parentConnectionId &#91;required&#93; The ID of the interconnect or the LAG.
@@ -290,7 +290,7 @@ directconnect_associate_hosted_connection <- function(connectionId, parentConnec
 #' @description
 #' Associates a MAC Security (MACsec) Connection Key Name (CKN)/ Connectivity Association Key (CAK) pair with an Direct Connect dedicated connection.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/associate_mac_sec_key.html](https://paws-r.github.io/docs/directconnect/associate_mac_sec_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_associate_mac_sec_key/](https://www.paws-r-sdk.com/docs/directconnect_associate_mac_sec_key/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the dedicated connection (dxcon-xxxx), or the ID of the LAG
 #' (dxlag-xxxx).
@@ -352,7 +352,7 @@ directconnect_associate_mac_sec_key <- function(connectionId, secretARN = NULL, 
 #' @description
 #' Associates a virtual interface with a specified link aggregation group (LAG) or connection. Connectivity to Amazon Web Services is temporarily interrupted as the virtual interface is being migrated. If the target connection or LAG has an associated virtual interface with a conflicting VLAN number or a conflicting IP address, the operation fails.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/associate_virtual_interface.html](https://paws-r.github.io/docs/directconnect/associate_virtual_interface.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_associate_virtual_interface/](https://www.paws-r-sdk.com/docs/directconnect_associate_virtual_interface/) for full documentation.
 #'
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface.
 #' @param connectionId &#91;required&#93; The ID of the LAG or connection.
@@ -383,7 +383,7 @@ directconnect_associate_virtual_interface <- function(virtualInterfaceId, connec
 #' @description
 #' Confirms the creation of the specified hosted connection on an interconnect.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/confirm_connection.html](https://paws-r.github.io/docs/directconnect/confirm_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_confirm_connection/](https://www.paws-r-sdk.com/docs/directconnect_confirm_connection/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the hosted connection.
 #'
@@ -413,7 +413,7 @@ directconnect_confirm_connection <- function(connectionId) {
 #' @description
 #' The confirmation of the terms of agreement when creating the connection/link aggregation group (LAG).
 #'
-#' See [https://paws-r.github.io/docs/directconnect/confirm_customer_agreement.html](https://paws-r.github.io/docs/directconnect/confirm_customer_agreement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_confirm_customer_agreement/](https://www.paws-r-sdk.com/docs/directconnect_confirm_customer_agreement/) for full documentation.
 #'
 #' @param agreementName The name of the customer agreement.
 #'
@@ -443,7 +443,7 @@ directconnect_confirm_customer_agreement <- function(agreementName = NULL) {
 #' @description
 #' Accepts ownership of a private virtual interface created by another Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/confirm_private_virtual_interface.html](https://paws-r.github.io/docs/directconnect/confirm_private_virtual_interface.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_confirm_private_virtual_interface/](https://www.paws-r-sdk.com/docs/directconnect_confirm_private_virtual_interface/) for full documentation.
 #'
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface.
 #' @param virtualGatewayId The ID of the virtual private gateway.
@@ -475,7 +475,7 @@ directconnect_confirm_private_virtual_interface <- function(virtualInterfaceId, 
 #' @description
 #' Accepts ownership of a public virtual interface created by another Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/confirm_public_virtual_interface.html](https://paws-r.github.io/docs/directconnect/confirm_public_virtual_interface.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_confirm_public_virtual_interface/](https://www.paws-r-sdk.com/docs/directconnect_confirm_public_virtual_interface/) for full documentation.
 #'
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface.
 #'
@@ -505,7 +505,7 @@ directconnect_confirm_public_virtual_interface <- function(virtualInterfaceId) {
 #' @description
 #' Accepts ownership of a transit virtual interface created by another Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/confirm_transit_virtual_interface.html](https://paws-r.github.io/docs/directconnect/confirm_transit_virtual_interface.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_confirm_transit_virtual_interface/](https://www.paws-r-sdk.com/docs/directconnect_confirm_transit_virtual_interface/) for full documentation.
 #'
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface.
 #' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
@@ -535,7 +535,7 @@ directconnect_confirm_transit_virtual_interface <- function(virtualInterfaceId, 
 #' @description
 #' Creates a BGP peer on the specified virtual interface.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/create_bgp_peer.html](https://paws-r.github.io/docs/directconnect/create_bgp_peer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_create_bgp_peer/](https://www.paws-r-sdk.com/docs/directconnect_create_bgp_peer/) for full documentation.
 #'
 #' @param virtualInterfaceId The ID of the virtual interface.
 #' @param newBGPPeer Information about the BGP peer.
@@ -566,7 +566,7 @@ directconnect_create_bgp_peer <- function(virtualInterfaceId = NULL, newBGPPeer 
 #' @description
 #' Creates a connection between a customer network and a specific Direct Connect location.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/create_connection.html](https://paws-r.github.io/docs/directconnect/create_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_create_connection/](https://www.paws-r-sdk.com/docs/directconnect_create_connection/) for full documentation.
 #'
 #' @param location &#91;required&#93; The location of the connection.
 #' @param bandwidth &#91;required&#93; The bandwidth of the connection.
@@ -610,7 +610,7 @@ directconnect_create_connection <- function(location, bandwidth, connectionName,
 #' @description
 #' Creates a Direct Connect gateway, which is an intermediate object that enables you to connect a set of virtual interfaces and virtual private gateways. A Direct Connect gateway is global and visible in any Amazon Web Services Region after it is created. The virtual interfaces and virtual private gateways that are connected through a Direct Connect gateway can be in different Amazon Web Services Regions. This enables you to connect to a VPC in any Region, regardless of the Region in which the virtual interfaces are located, and pass traffic between them.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/create_direct_connect_gateway.html](https://paws-r.github.io/docs/directconnect/create_direct_connect_gateway.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_create_direct_connect_gateway/](https://www.paws-r-sdk.com/docs/directconnect_create_direct_connect_gateway/) for full documentation.
 #'
 #' @param directConnectGatewayName &#91;required&#93; The name of the Direct Connect gateway.
 #' @param amazonSideAsn The autonomous system number (ASN) for Border Gateway Protocol (BGP) to
@@ -644,7 +644,7 @@ directconnect_create_direct_connect_gateway <- function(directConnectGatewayName
 #' @description
 #' Creates an association between a Direct Connect gateway and a virtual private gateway. The virtual private gateway must be attached to a VPC and must not be associated with another Direct Connect gateway.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/create_direct_connect_gateway_association.html](https://paws-r.github.io/docs/directconnect/create_direct_connect_gateway_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_create_direct_connect_gateway_association/](https://www.paws-r-sdk.com/docs/directconnect_create_direct_connect_gateway_association/) for full documentation.
 #'
 #' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
 #' @param gatewayId The ID of the virtual private gateway or transit gateway.
@@ -684,7 +684,7 @@ directconnect_create_direct_connect_gateway_association <- function(directConnec
 #' @description
 #' Creates a proposal to associate the specified virtual private gateway or transit gateway with the specified Direct Connect gateway.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/create_direct_connect_gateway_association_proposal.html](https://paws-r.github.io/docs/directconnect/create_direct_connect_gateway_association_proposal.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_create_direct_connect_gateway_association_proposal/](https://www.paws-r-sdk.com/docs/directconnect_create_direct_connect_gateway_association_proposal/) for full documentation.
 #'
 #' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
 #' @param directConnectGatewayOwnerAccount &#91;required&#93; The ID of the Amazon Web Services account that owns the Direct Connect
@@ -720,7 +720,7 @@ directconnect_create_direct_connect_gateway_association_proposal <- function(dir
 #' @description
 #' Creates an interconnect between an Direct Connect Partner's network and a specific Direct Connect location.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/create_interconnect.html](https://paws-r.github.io/docs/directconnect/create_interconnect.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_create_interconnect/](https://www.paws-r-sdk.com/docs/directconnect_create_interconnect/) for full documentation.
 #'
 #' @param interconnectName &#91;required&#93; The name of the interconnect.
 #' @param bandwidth &#91;required&#93; The port bandwidth, in Gbps. The possible values are 1 and 10.
@@ -756,7 +756,7 @@ directconnect_create_interconnect <- function(interconnectName, bandwidth, locat
 #' @description
 #' Creates a link aggregation group (LAG) with the specified number of bundled physical dedicated connections between the customer network and a specific Direct Connect location. A LAG is a logical interface that uses the Link Aggregation Control Protocol (LACP) to aggregate multiple interfaces, enabling you to treat them as a single interface.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/create_lag.html](https://paws-r.github.io/docs/directconnect/create_lag.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_create_lag/](https://www.paws-r-sdk.com/docs/directconnect_create_lag/) for full documentation.
 #'
 #' @param numberOfConnections &#91;required&#93; The number of physical dedicated connections initially provisioned and
 #' bundled by the LAG. You can have a maximum of four connections when the
@@ -802,7 +802,7 @@ directconnect_create_lag <- function(numberOfConnections, location, connectionsB
 #' @description
 #' Creates a private virtual interface. A virtual interface is the VLAN that transports Direct Connect traffic. A private virtual interface can be connected to either a Direct Connect gateway or a Virtual Private Gateway (VGW). Connecting the private virtual interface to a Direct Connect gateway enables the possibility for connecting to multiple VPCs, including VPCs in different Amazon Web Services Regions. Connecting the private virtual interface to a VGW only provides access to a single VPC within the same Region.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/create_private_virtual_interface.html](https://paws-r.github.io/docs/directconnect/create_private_virtual_interface.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_create_private_virtual_interface/](https://www.paws-r-sdk.com/docs/directconnect_create_private_virtual_interface/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the connection.
 #' @param newPrivateVirtualInterface &#91;required&#93; Information about the private virtual interface.
@@ -832,7 +832,7 @@ directconnect_create_private_virtual_interface <- function(connectionId, newPriv
 #' @description
 #' Creates a public virtual interface. A virtual interface is the VLAN that transports Direct Connect traffic. A public virtual interface supports sending traffic to public services of Amazon Web Services such as Amazon S3.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/create_public_virtual_interface.html](https://paws-r.github.io/docs/directconnect/create_public_virtual_interface.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_create_public_virtual_interface/](https://www.paws-r-sdk.com/docs/directconnect_create_public_virtual_interface/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the connection.
 #' @param newPublicVirtualInterface &#91;required&#93; Information about the public virtual interface.
@@ -862,7 +862,7 @@ directconnect_create_public_virtual_interface <- function(connectionId, newPubli
 #' @description
 #' Creates a transit virtual interface. A transit virtual interface should be used to access one or more transit gateways associated with Direct Connect gateways. A transit virtual interface enables the connection of multiple VPCs attached to a transit gateway to a Direct Connect gateway.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/create_transit_virtual_interface.html](https://paws-r.github.io/docs/directconnect/create_transit_virtual_interface.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_create_transit_virtual_interface/](https://www.paws-r-sdk.com/docs/directconnect_create_transit_virtual_interface/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the connection.
 #' @param newTransitVirtualInterface &#91;required&#93; Information about the transit virtual interface.
@@ -893,7 +893,7 @@ directconnect_create_transit_virtual_interface <- function(connectionId, newTran
 #' @description
 #' Deletes the specified BGP peer on the specified virtual interface with the specified customer address and ASN.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/delete_bgp_peer.html](https://paws-r.github.io/docs/directconnect/delete_bgp_peer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_delete_bgp_peer/](https://www.paws-r-sdk.com/docs/directconnect_delete_bgp_peer/) for full documentation.
 #'
 #' @param virtualInterfaceId The ID of the virtual interface.
 #' @param asn The autonomous system (AS) number for Border Gateway Protocol (BGP)
@@ -926,7 +926,7 @@ directconnect_delete_bgp_peer <- function(virtualInterfaceId = NULL, asn = NULL,
 #' @description
 #' Deletes the specified connection.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/delete_connection.html](https://paws-r.github.io/docs/directconnect/delete_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_delete_connection/](https://www.paws-r-sdk.com/docs/directconnect_delete_connection/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the connection.
 #'
@@ -955,7 +955,7 @@ directconnect_delete_connection <- function(connectionId) {
 #' @description
 #' Deletes the specified Direct Connect gateway. You must first delete all virtual interfaces that are attached to the Direct Connect gateway and disassociate all virtual private gateways associated with the Direct Connect gateway.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/delete_direct_connect_gateway.html](https://paws-r.github.io/docs/directconnect/delete_direct_connect_gateway.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_delete_direct_connect_gateway/](https://www.paws-r-sdk.com/docs/directconnect_delete_direct_connect_gateway/) for full documentation.
 #'
 #' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway.
 #'
@@ -985,7 +985,7 @@ directconnect_delete_direct_connect_gateway <- function(directConnectGatewayId) 
 #' @description
 #' Deletes the association between the specified Direct Connect gateway and virtual private gateway.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/delete_direct_connect_gateway_association.html](https://paws-r.github.io/docs/directconnect/delete_direct_connect_gateway_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_delete_direct_connect_gateway_association/](https://www.paws-r-sdk.com/docs/directconnect_delete_direct_connect_gateway_association/) for full documentation.
 #'
 #' @param associationId The ID of the Direct Connect gateway association.
 #' @param directConnectGatewayId The ID of the Direct Connect gateway.
@@ -1017,7 +1017,7 @@ directconnect_delete_direct_connect_gateway_association <- function(associationI
 #' @description
 #' Deletes the association proposal request between the specified Direct Connect gateway and virtual private gateway or transit gateway.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/delete_direct_connect_gateway_association_proposal.html](https://paws-r.github.io/docs/directconnect/delete_direct_connect_gateway_association_proposal.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_delete_direct_connect_gateway_association_proposal/](https://www.paws-r-sdk.com/docs/directconnect_delete_direct_connect_gateway_association_proposal/) for full documentation.
 #'
 #' @param proposalId &#91;required&#93; The ID of the proposal.
 #'
@@ -1046,7 +1046,7 @@ directconnect_delete_direct_connect_gateway_association_proposal <- function(pro
 #' @description
 #' Deletes the specified interconnect.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/delete_interconnect.html](https://paws-r.github.io/docs/directconnect/delete_interconnect.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_delete_interconnect/](https://www.paws-r-sdk.com/docs/directconnect_delete_interconnect/) for full documentation.
 #'
 #' @param interconnectId &#91;required&#93; The ID of the interconnect.
 #'
@@ -1075,7 +1075,7 @@ directconnect_delete_interconnect <- function(interconnectId) {
 #' @description
 #' Deletes the specified link aggregation group (LAG). You cannot delete a LAG if it has active virtual interfaces or hosted connections.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/delete_lag.html](https://paws-r.github.io/docs/directconnect/delete_lag.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_delete_lag/](https://www.paws-r-sdk.com/docs/directconnect_delete_lag/) for full documentation.
 #'
 #' @param lagId &#91;required&#93; The ID of the LAG.
 #'
@@ -1104,7 +1104,7 @@ directconnect_delete_lag <- function(lagId) {
 #' @description
 #' Deletes a virtual interface.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/delete_virtual_interface.html](https://paws-r.github.io/docs/directconnect/delete_virtual_interface.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_delete_virtual_interface/](https://www.paws-r-sdk.com/docs/directconnect_delete_virtual_interface/) for full documentation.
 #'
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface.
 #'
@@ -1133,7 +1133,7 @@ directconnect_delete_virtual_interface <- function(virtualInterfaceId) {
 #' @description
 #' Deprecated. Use [`describe_loa`][directconnect_describe_loa] instead.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_connection_loa.html](https://paws-r.github.io/docs/directconnect/describe_connection_loa.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_connection_loa/](https://www.paws-r-sdk.com/docs/directconnect_describe_connection_loa/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the connection.
 #' @param providerName The name of the APN partner or service provider who establishes
@@ -1168,7 +1168,7 @@ directconnect_describe_connection_loa <- function(connectionId, providerName = N
 #' @description
 #' Displays the specified connection or all connections in this Region.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_connections.html](https://paws-r.github.io/docs/directconnect/describe_connections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_connections/](https://www.paws-r-sdk.com/docs/directconnect_describe_connections/) for full documentation.
 #'
 #' @param connectionId The ID of the connection.
 #'
@@ -1180,7 +1180,7 @@ directconnect_describe_connections <- function(connectionId = NULL) {
     name = "DescribeConnections",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "connections")
   )
   input <- .directconnect$describe_connections_input(connectionId = connectionId)
   output <- .directconnect$describe_connections_output()
@@ -1197,7 +1197,7 @@ directconnect_describe_connections <- function(connectionId = NULL) {
 #' @description
 #' Deprecated. Use [`describe_hosted_connections`][directconnect_describe_hosted_connections] instead.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_connections_on_interconnect.html](https://paws-r.github.io/docs/directconnect/describe_connections_on_interconnect.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_connections_on_interconnect/](https://www.paws-r-sdk.com/docs/directconnect_describe_connections_on_interconnect/) for full documentation.
 #'
 #' @param interconnectId &#91;required&#93; The ID of the interconnect.
 #'
@@ -1209,7 +1209,7 @@ directconnect_describe_connections_on_interconnect <- function(interconnectId) {
     name = "DescribeConnectionsOnInterconnect",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "connections")
   )
   input <- .directconnect$describe_connections_on_interconnect_input(interconnectId = interconnectId)
   output <- .directconnect$describe_connections_on_interconnect_output()
@@ -1228,7 +1228,7 @@ directconnect_describe_connections_on_interconnect <- function(interconnectId) {
 #' @description
 #' Get and view a list of customer agreements, along with their signed status and whether the customer is an NNIPartner, NNIPartnerV2, or a nonPartner.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_customer_metadata.html](https://paws-r.github.io/docs/directconnect/describe_customer_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_customer_metadata/](https://www.paws-r-sdk.com/docs/directconnect_describe_customer_metadata/) for full documentation.
 #'
 
 #'
@@ -1258,7 +1258,7 @@ directconnect_describe_customer_metadata <- function() {
 #' @description
 #' Describes one or more association proposals for connection between a virtual private gateway or transit gateway and a Direct Connect gateway.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_direct_connect_gateway_association_proposals.html](https://paws-r.github.io/docs/directconnect/describe_direct_connect_gateway_association_proposals.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_direct_connect_gateway_association_proposals/](https://www.paws-r-sdk.com/docs/directconnect_describe_direct_connect_gateway_association_proposals/) for full documentation.
 #'
 #' @param directConnectGatewayId The ID of the Direct Connect gateway.
 #' @param proposalId The ID of the proposal.
@@ -1297,7 +1297,7 @@ directconnect_describe_direct_connect_gateway_association_proposals <- function(
 #' @description
 #' Lists the associations between your Direct Connect gateways and virtual private gateways and transit gateways. You must specify one of the following:
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_direct_connect_gateway_associations.html](https://paws-r.github.io/docs/directconnect/describe_direct_connect_gateway_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_direct_connect_gateway_associations/](https://www.paws-r-sdk.com/docs/directconnect_describe_direct_connect_gateway_associations/) for full documentation.
 #'
 #' @param associationId The ID of the Direct Connect gateway association.
 #' @param associatedGatewayId The ID of the associated gateway.
@@ -1337,7 +1337,7 @@ directconnect_describe_direct_connect_gateway_associations <- function(associati
 #' @description
 #' Lists the attachments between your Direct Connect gateways and virtual interfaces. You must specify a Direct Connect gateway, a virtual interface, or both. If you specify a Direct Connect gateway, the response contains all virtual interfaces attached to the Direct Connect gateway. If you specify a virtual interface, the response contains all Direct Connect gateways attached to the virtual interface. If you specify both, the response contains the attachment between the Direct Connect gateway and the virtual interface.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_direct_connect_gateway_attachments.html](https://paws-r.github.io/docs/directconnect/describe_direct_connect_gateway_attachments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_direct_connect_gateway_attachments/](https://www.paws-r-sdk.com/docs/directconnect_describe_direct_connect_gateway_attachments/) for full documentation.
 #'
 #' @param directConnectGatewayId The ID of the Direct Connect gateway.
 #' @param virtualInterfaceId The ID of the virtual interface.
@@ -1375,7 +1375,7 @@ directconnect_describe_direct_connect_gateway_attachments <- function(directConn
 #' @description
 #' Lists all your Direct Connect gateways or only the specified Direct Connect gateway. Deleted Direct Connect gateways are not returned.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_direct_connect_gateways.html](https://paws-r.github.io/docs/directconnect/describe_direct_connect_gateways.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_direct_connect_gateways/](https://www.paws-r-sdk.com/docs/directconnect_describe_direct_connect_gateways/) for full documentation.
 #'
 #' @param directConnectGatewayId The ID of the Direct Connect gateway.
 #' @param maxResults The maximum number of results to return with a single call. To retrieve
@@ -1412,7 +1412,7 @@ directconnect_describe_direct_connect_gateways <- function(directConnectGatewayI
 #' @description
 #' Lists the hosted connections that have been provisioned on the specified interconnect or link aggregation group (LAG).
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_hosted_connections.html](https://paws-r.github.io/docs/directconnect/describe_hosted_connections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_hosted_connections/](https://www.paws-r-sdk.com/docs/directconnect_describe_hosted_connections/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the interconnect or LAG.
 #'
@@ -1441,7 +1441,7 @@ directconnect_describe_hosted_connections <- function(connectionId) {
 #' @description
 #' Deprecated. Use [`describe_loa`][directconnect_describe_loa] instead.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_interconnect_loa.html](https://paws-r.github.io/docs/directconnect/describe_interconnect_loa.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_interconnect_loa/](https://www.paws-r-sdk.com/docs/directconnect_describe_interconnect_loa/) for full documentation.
 #'
 #' @param interconnectId &#91;required&#93; The ID of the interconnect.
 #' @param providerName The name of the service provider who establishes connectivity on your
@@ -1476,7 +1476,7 @@ directconnect_describe_interconnect_loa <- function(interconnectId, providerName
 #' @description
 #' Lists the interconnects owned by the Amazon Web Services account or only the specified interconnect.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_interconnects.html](https://paws-r.github.io/docs/directconnect/describe_interconnects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_interconnects/](https://www.paws-r-sdk.com/docs/directconnect_describe_interconnects/) for full documentation.
 #'
 #' @param interconnectId The ID of the interconnect.
 #'
@@ -1488,7 +1488,7 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
     name = "DescribeInterconnects",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "interconnects")
   )
   input <- .directconnect$describe_interconnects_input(interconnectId = interconnectId)
   output <- .directconnect$describe_interconnects_output()
@@ -1505,7 +1505,7 @@ directconnect_describe_interconnects <- function(interconnectId = NULL) {
 #' @description
 #' Describes all your link aggregation groups (LAG) or the specified LAG.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_lags.html](https://paws-r.github.io/docs/directconnect/describe_lags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_lags/](https://www.paws-r-sdk.com/docs/directconnect_describe_lags/) for full documentation.
 #'
 #' @param lagId The ID of the LAG.
 #'
@@ -1535,7 +1535,7 @@ directconnect_describe_lags <- function(lagId = NULL) {
 #' @description
 #' Gets the LOA-CFA for a connection, interconnect, or link aggregation group (LAG).
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_loa.html](https://paws-r.github.io/docs/directconnect/describe_loa.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_loa/](https://www.paws-r-sdk.com/docs/directconnect_describe_loa/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of a connection, LAG, or interconnect.
 #' @param providerName The name of the service provider who establishes connectivity on your
@@ -1570,7 +1570,7 @@ directconnect_describe_loa <- function(connectionId, providerName = NULL, loaCon
 #' @description
 #' Lists the Direct Connect locations in the current Amazon Web Services Region. These are the locations that can be selected when calling [`create_connection`][directconnect_create_connection] or [`create_interconnect`][directconnect_create_interconnect].
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_locations.html](https://paws-r.github.io/docs/directconnect/describe_locations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_locations/](https://www.paws-r-sdk.com/docs/directconnect_describe_locations/) for full documentation.
 #'
 
 #'
@@ -1582,7 +1582,7 @@ directconnect_describe_locations <- function() {
     name = "DescribeLocations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "locations")
   )
   input <- .directconnect$describe_locations_input()
   output <- .directconnect$describe_locations_output()
@@ -1599,7 +1599,7 @@ directconnect_describe_locations <- function() {
 #' @description
 #' Details about the router.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_router_configuration.html](https://paws-r.github.io/docs/directconnect/describe_router_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_router_configuration/](https://www.paws-r-sdk.com/docs/directconnect_describe_router_configuration/) for full documentation.
 #'
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface.
 #' @param routerTypeIdentifier Identifies the router by a combination of vendor, platform, and software
@@ -1631,7 +1631,7 @@ directconnect_describe_router_configuration <- function(virtualInterfaceId, rout
 #' @description
 #' Describes the tags associated with the specified Direct Connect resources.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_tags.html](https://paws-r.github.io/docs/directconnect/describe_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_tags/](https://www.paws-r-sdk.com/docs/directconnect_describe_tags/) for full documentation.
 #'
 #' @param resourceArns &#91;required&#93; The Amazon Resource Names (ARNs) of the resources.
 #'
@@ -1661,7 +1661,7 @@ directconnect_describe_tags <- function(resourceArns) {
 #' @description
 #' Lists the virtual private gateways owned by the Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_virtual_gateways.html](https://paws-r.github.io/docs/directconnect/describe_virtual_gateways.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_virtual_gateways/](https://www.paws-r-sdk.com/docs/directconnect_describe_virtual_gateways/) for full documentation.
 #'
 
 #'
@@ -1673,7 +1673,7 @@ directconnect_describe_virtual_gateways <- function() {
     name = "DescribeVirtualGateways",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "virtualGateways")
   )
   input <- .directconnect$describe_virtual_gateways_input()
   output <- .directconnect$describe_virtual_gateways_output()
@@ -1690,7 +1690,7 @@ directconnect_describe_virtual_gateways <- function() {
 #' @description
 #' Displays all virtual interfaces for an Amazon Web Services account. Virtual interfaces deleted fewer than 15 minutes before you make the request are also returned. If you specify a connection ID, only the virtual interfaces associated with the connection are returned. If you specify a virtual interface ID, then only a single virtual interface is returned.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/describe_virtual_interfaces.html](https://paws-r.github.io/docs/directconnect/describe_virtual_interfaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_describe_virtual_interfaces/](https://www.paws-r-sdk.com/docs/directconnect_describe_virtual_interfaces/) for full documentation.
 #'
 #' @param connectionId The ID of the connection.
 #' @param virtualInterfaceId The ID of the virtual interface.
@@ -1703,7 +1703,7 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
     name = "DescribeVirtualInterfaces",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "virtualInterfaces")
   )
   input <- .directconnect$describe_virtual_interfaces_input(connectionId = connectionId, virtualInterfaceId = virtualInterfaceId)
   output <- .directconnect$describe_virtual_interfaces_output()
@@ -1720,7 +1720,7 @@ directconnect_describe_virtual_interfaces <- function(connectionId = NULL, virtu
 #' @description
 #' Disassociates a connection from a link aggregation group (LAG). The connection is interrupted and re-established as a standalone connection (the connection is not deleted; to delete the connection, use the [`delete_connection`][directconnect_delete_connection] request). If the LAG has associated virtual interfaces or hosted connections, they remain associated with the LAG. A disassociated connection owned by an Direct Connect Partner is automatically converted to an interconnect.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/disassociate_connection_from_lag.html](https://paws-r.github.io/docs/directconnect/disassociate_connection_from_lag.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_disassociate_connection_from_lag/](https://www.paws-r-sdk.com/docs/directconnect_disassociate_connection_from_lag/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the connection.
 #' @param lagId &#91;required&#93; The ID of the LAG.
@@ -1751,7 +1751,7 @@ directconnect_disassociate_connection_from_lag <- function(connectionId, lagId) 
 #' @description
 #' Removes the association between a MAC Security (MACsec) security key and an Direct Connect dedicated connection.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/disassociate_mac_sec_key.html](https://paws-r.github.io/docs/directconnect/disassociate_mac_sec_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_disassociate_mac_sec_key/](https://www.paws-r-sdk.com/docs/directconnect_disassociate_mac_sec_key/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the dedicated connection (dxcon-xxxx), or the ID of the LAG
 #' (dxlag-xxxx).
@@ -1789,7 +1789,7 @@ directconnect_disassociate_mac_sec_key <- function(connectionId, secretARN) {
 #' @description
 #' Lists the virtual interface failover test history.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/list_virtual_interface_test_history.html](https://paws-r.github.io/docs/directconnect/list_virtual_interface_test_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_list_virtual_interface_test_history/](https://www.paws-r-sdk.com/docs/directconnect_list_virtual_interface_test_history/) for full documentation.
 #'
 #' @param testId The ID of the virtual interface failover test.
 #' @param virtualInterfaceId The ID of the virtual interface that was tested.
@@ -1831,7 +1831,7 @@ directconnect_list_virtual_interface_test_history <- function(testId = NULL, vir
 #' @description
 #' Starts the virtual interface failover test that verifies your configuration meets your resiliency requirements by placing the BGP peering session in the DOWN state. You can then send traffic to verify that there are no outages.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/start_bgp_failover_test.html](https://paws-r.github.io/docs/directconnect/start_bgp_failover_test.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_start_bgp_failover_test/](https://www.paws-r-sdk.com/docs/directconnect_start_bgp_failover_test/) for full documentation.
 #'
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface you want to test.
 #' @param bgpPeers The BGP peers to place in the DOWN state.
@@ -1866,7 +1866,7 @@ directconnect_start_bgp_failover_test <- function(virtualInterfaceId, bgpPeers =
 #' @description
 #' Stops the virtual interface failover test.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/stop_bgp_failover_test.html](https://paws-r.github.io/docs/directconnect/stop_bgp_failover_test.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_stop_bgp_failover_test/](https://www.paws-r-sdk.com/docs/directconnect_stop_bgp_failover_test/) for full documentation.
 #'
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual interface you no longer want to test.
 #'
@@ -1895,7 +1895,7 @@ directconnect_stop_bgp_failover_test <- function(virtualInterfaceId) {
 #' @description
 #' Adds the specified tags to the specified Direct Connect resource. Each resource can have a maximum of 50 tags.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/tag_resource.html](https://paws-r.github.io/docs/directconnect/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_tag_resource/](https://www.paws-r-sdk.com/docs/directconnect_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tags &#91;required&#93; The tags to add.
@@ -1925,7 +1925,7 @@ directconnect_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes one or more tags from the specified Direct Connect resource.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/untag_resource.html](https://paws-r.github.io/docs/directconnect/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_untag_resource/](https://www.paws-r-sdk.com/docs/directconnect_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param tagKeys &#91;required&#93; The tag keys of the tags to remove.
@@ -1955,7 +1955,7 @@ directconnect_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates the Direct Connect dedicated connection configuration.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/update_connection.html](https://paws-r.github.io/docs/directconnect/update_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_update_connection/](https://www.paws-r-sdk.com/docs/directconnect_update_connection/) for full documentation.
 #'
 #' @param connectionId &#91;required&#93; The ID of the dedicated connection.
 #' 
@@ -1991,7 +1991,7 @@ directconnect_update_connection <- function(connectionId, connectionName = NULL,
 #' @description
 #' Updates the name of a current Direct Connect gateway.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/update_direct_connect_gateway.html](https://paws-r.github.io/docs/directconnect/update_direct_connect_gateway.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_update_direct_connect_gateway/](https://www.paws-r-sdk.com/docs/directconnect_update_direct_connect_gateway/) for full documentation.
 #'
 #' @param directConnectGatewayId &#91;required&#93; The ID of the Direct Connect gateway to update.
 #' @param newDirectConnectGatewayName &#91;required&#93; The new name for the Direct Connect gateway.
@@ -2022,7 +2022,7 @@ directconnect_update_direct_connect_gateway <- function(directConnectGatewayId, 
 #' @description
 #' Updates the specified attributes of the Direct Connect gateway association.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/update_direct_connect_gateway_association.html](https://paws-r.github.io/docs/directconnect/update_direct_connect_gateway_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_update_direct_connect_gateway_association/](https://www.paws-r-sdk.com/docs/directconnect_update_direct_connect_gateway_association/) for full documentation.
 #'
 #' @param associationId The ID of the Direct Connect gateway association.
 #' @param addAllowedPrefixesToDirectConnectGateway The Amazon VPC prefixes to advertise to the Direct Connect gateway.
@@ -2054,7 +2054,7 @@ directconnect_update_direct_connect_gateway_association <- function(associationI
 #' @description
 #' Updates the attributes of the specified link aggregation group (LAG).
 #'
-#' See [https://paws-r.github.io/docs/directconnect/update_lag.html](https://paws-r.github.io/docs/directconnect/update_lag.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_update_lag/](https://www.paws-r-sdk.com/docs/directconnect_update_lag/) for full documentation.
 #'
 #' @param lagId &#91;required&#93; The ID of the LAG.
 #' @param lagName The name of the LAG.
@@ -2091,7 +2091,7 @@ directconnect_update_lag <- function(lagId, lagName = NULL, minimumLinks = NULL,
 #' @description
 #' Updates the specified attributes of the specified virtual private interface.
 #'
-#' See [https://paws-r.github.io/docs/directconnect/update_virtual_interface_attributes.html](https://paws-r.github.io/docs/directconnect/update_virtual_interface_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directconnect_update_virtual_interface_attributes/](https://www.paws-r-sdk.com/docs/directconnect_update_virtual_interface_attributes/) for full documentation.
 #'
 #' @param virtualInterfaceId &#91;required&#93; The ID of the virtual private interface.
 #' @param mtu The maximum transmission unit (MTU), in bytes. The supported values are

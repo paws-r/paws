@@ -14,6 +14,6 @@ delete.}
 \description{
 Use the \code{\link[=quicksight_delete_account_subscription]{delete_account_subscription}} operation to delete an Amazon QuickSight account. This operation will result in an error message if you have configured your account termination protection settings to \code{True}. To change this setting and delete your account, call the \code{\link[=quicksight_update_account_settings]{update_account_settings}} API and set the value of the \code{TerminationProtectionEnabled} parameter to \code{False}, then make another call to the \code{\link[=quicksight_delete_account_subscription]{delete_account_subscription}} API.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_account_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_account_subscription/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ directconnect_describe_interconnects(interconnectId = NULL)
 \description{
 Lists the interconnects owned by the Amazon Web Services account or only the specified interconnect.
 
-See \url{https://paws-r.github.io/docs/directconnect/describe_interconnects.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_describe_interconnects/} for full documentation.
 }
 \keyword{internal}

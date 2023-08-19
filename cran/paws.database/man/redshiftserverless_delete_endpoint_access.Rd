@@ -12,6 +12,6 @@ redshiftserverless_delete_endpoint_access(endpointName)
 \description{
 Deletes an Amazon Redshift Serverless managed VPC endpoint.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/delete_endpoint_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_delete_endpoint_access/} for full documentation.
 }
 \keyword{internal}

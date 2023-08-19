@@ -24,6 +24,6 @@ update.}
 \description{
 Updates permissions of a folder.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_folder_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_folder_permissions/} for full documentation.
 }
 \keyword{internal}

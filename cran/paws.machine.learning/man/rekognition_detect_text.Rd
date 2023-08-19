@@ -22,6 +22,6 @@ meet to be included in your response.}
 \description{
 Detects text in the input image and converts it into machine-readable text.
 
-See \url{https://paws-r.github.io/docs/rekognition/detect_text.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_detect_text/} for full documentation.
 }
 \keyword{internal}

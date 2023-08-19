@@ -13,6 +13,6 @@ directconnect_confirm_public_virtual_interface(virtualInterfaceId)
 \description{
 Accepts ownership of a public virtual interface created by another Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/directconnect/confirm_public_virtual_interface.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_confirm_public_virtual_interface/} for full documentation.
 }
 \keyword{internal}

@@ -38,7 +38,9 @@ This value becomes the \code{VersionId} of the new version.}
 
 \item{KmsKeyId}{The ARN, key ID, or alias of the KMS key that Secrets Manager uses to
 encrypt new secret versions as well as any existing versions with the
-staging labels \code{AWSCURRENT}, \code{AWSPENDING}, or \code{AWSPREVIOUS}. For more
+staging labels \code{AWSCURRENT}, \code{AWSPENDING}, or \code{AWSPREVIOUS}. If you
+don't have \code{kms:Encrypt} permission to the new key, Secrets Manager does
+not re-ecrypt existing secret versions with the new key. For more
 information about versions and staging labels, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/getting-started.html#term_version}{Concepts: Version}.
 
 A key alias is always prefixed by \verb{alias/}, for example
@@ -77,6 +79,6 @@ Either \code{SecretBinary} or \code{SecretString} must have a value, but not bot
 \description{
 Modifies the details of a secret, including metadata and the secret value. To change the secret value, you can also use \code{\link[=secretsmanager_put_secret_value]{put_secret_value}}.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/update_secret.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_update_secret/} for full documentation.
 }
 \keyword{internal}

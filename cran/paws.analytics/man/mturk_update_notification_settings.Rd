@@ -25,6 +25,6 @@ UpdateNotificationSettings to succeed.}
 \description{
 The \code{\link[=mturk_update_notification_settings]{update_notification_settings}} operation creates, updates, disables or re-enables notifications for a HIT type. If you call the UpdateNotificationSettings operation for a HIT type that already has a notification specification, the operation replaces the old specification with a new one. You can call the UpdateNotificationSettings operation to enable or disable notifications for the HIT type, without having to modify the notification specification itself by providing updates to the Active status without specifying a new notification specification. To change the Active status of a HIT type's notifications, the HIT type must already have a notification specification, or one must be provided in the same call to \code{\link[=mturk_update_notification_settings]{update_notification_settings}}.
 
-See \url{https://paws-r.github.io/docs/mturk/update_notification_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_update_notification_settings/} for full documentation.
 }
 \keyword{internal}

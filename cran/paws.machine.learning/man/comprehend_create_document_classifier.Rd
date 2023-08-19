@@ -100,6 +100,6 @@ policy and double quotes to enclose the JSON names and values:
 \description{
 Creates a new document classifier that you can use to categorize documents. To create a classifier, you provide a set of training documents that are labeled with the categories that you want to use. For more information, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/training-classifier-model.html}{Training classifier models} in the Comprehend Developer Guide.
 
-See \url{https://paws-r.github.io/docs/comprehend/create_document_classifier.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_create_document_classifier/} for full documentation.
 }
 \keyword{internal}

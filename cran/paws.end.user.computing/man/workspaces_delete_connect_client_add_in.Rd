@@ -15,6 +15,6 @@ workspaces_delete_connect_client_add_in(AddInId, ResourceId)
 \description{
 Deletes a client-add-in for Amazon Connect that is configured within a directory.
 
-See \url{https://paws-r.github.io/docs/workspaces/delete_connect_client_add_in.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_delete_connect_client_add_in/} for full documentation.
 }
 \keyword{internal}

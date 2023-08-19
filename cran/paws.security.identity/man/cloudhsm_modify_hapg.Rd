@@ -17,6 +17,6 @@ high-availability partition group.}
 \description{
 This is documentation for \strong{AWS CloudHSM Classic}. For more information, see \href{https://aws.amazon.com/cloudhsm/faqs/}{AWS CloudHSM Classic FAQs}, the AWS CloudHSM Classic User Guide, and the \href{https://docs.aws.amazon.com/cloudhsm/classic/APIReference/}{AWS CloudHSM Classic API Reference}.
 
-See \url{https://paws-r.github.io/docs/cloudhsm/modify_hapg.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudhsm_modify_hapg/} for full documentation.
 }
 \keyword{internal}

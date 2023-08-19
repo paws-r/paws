@@ -44,6 +44,6 @@ omit this, the default event bus is used.}
 \description{
 Creates or updates the specified rule. Rules are enabled by default, or based on value of the state. You can disable a rule using \code{\link[=eventbridge_disable_rule]{disable_rule}}.
 
-See \url{https://paws-r.github.io/docs/eventbridge/put_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_put_rule/} for full documentation.
 }
 \keyword{internal}

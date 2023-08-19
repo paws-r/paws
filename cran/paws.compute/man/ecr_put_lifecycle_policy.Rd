@@ -22,6 +22,6 @@ registry is assumed.}
 \description{
 Creates or updates the lifecycle policy for the specified repository. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/LifecyclePolicies.html}{Lifecycle policy template}.
 
-See \url{https://paws-r.github.io/docs/ecr/put_lifecycle_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_put_lifecycle_policy/} for full documentation.
 }
 \keyword{internal}

@@ -25,6 +25,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified route from the specified transit gateway route table.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_transit_gateway_route.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_transit_gateway_route/} for full documentation.
 }
 \keyword{internal}

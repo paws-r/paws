@@ -15,6 +15,6 @@ codecommit_update_pull_request_title(pullRequestId, title)
 \description{
 Replaces the title of a pull request.
 
-See \url{https://paws-r.github.io/docs/codecommit/update_pull_request_title.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_update_pull_request_title/} for full documentation.
 }
 \keyword{internal}

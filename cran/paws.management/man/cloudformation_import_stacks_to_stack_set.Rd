@@ -30,7 +30,11 @@ Specify either \code{StackIds} or \code{StackIdsUrl}.}
 \item{OrganizationalUnitIds}{The list of OU ID's to which the stacks being imported has to be mapped
 as deployment target.}
 
-\item{OperationPreferences}{}
+\item{OperationPreferences}{The user-specified preferences for how CloudFormation performs a stack
+set operation.
+
+For more information about maximum concurrent accounts and failure
+tolerance, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options}{Stack set operation options}.}
 
 \item{OperationId}{A unique, user defined, identifier for the stack set operation.}
 
@@ -44,6 +48,6 @@ self-managed permissions.
 \description{
 Import existing stacks into a new stack sets. Use the stack import operation to import up to 10 stacks into a new stack set in the same account as the source stack or in a different administrator account and Region, by specifying the stack ID of the stack you intend to import.
 
-See \url{https://paws-r.github.io/docs/cloudformation/import_stacks_to_stack_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_import_stacks_to_stack_set/} for full documentation.
 }
 \keyword{internal}

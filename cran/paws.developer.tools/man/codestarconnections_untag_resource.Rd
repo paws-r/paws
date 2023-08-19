@@ -14,6 +14,6 @@ codestarconnections_untag_resource(ResourceArn, TagKeys)
 \description{
 Removes tags from an AWS resource.
 
-See \url{https://paws-r.github.io/docs/codestarconnections/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarconnections_untag_resource/} for full documentation.
 }
 \keyword{internal}

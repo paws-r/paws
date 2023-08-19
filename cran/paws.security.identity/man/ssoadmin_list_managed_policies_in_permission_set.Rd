@@ -27,6 +27,6 @@ the output of previous API calls to make subsequent calls.}
 \description{
 Lists the AWS managed policy that is attached to a specified permission set.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/list_managed_policies_in_permission_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_list_managed_policies_in_permission_set/} for full documentation.
 }
 \keyword{internal}

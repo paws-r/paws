@@ -17,6 +17,6 @@ input parameter.}
 \description{
 Disassociates a resource from a list of tags. The resource is identified by the \code{ResourceArn} input parameter. The tags are identified by the list of keys in the \code{TagKeys} input parameter.
 
-See \url{https://paws-r.github.io/docs/codedeploy/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_untag_resource/} for full documentation.
 }
 \keyword{internal}

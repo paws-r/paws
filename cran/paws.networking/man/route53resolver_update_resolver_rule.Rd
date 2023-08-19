@@ -14,6 +14,6 @@ route53resolver_update_resolver_rule(ResolverRuleId, Config)
 \description{
 Updates settings for a specified Resolver rule. \code{ResolverRuleId} is required, and all other parameters are optional. If you don't specify a parameter, it retains its current value.
 
-See \url{https://paws-r.github.io/docs/route53resolver/update_resolver_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_update_resolver_rule/} for full documentation.
 }
 \keyword{internal}

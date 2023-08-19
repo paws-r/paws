@@ -15,6 +15,6 @@ apigateway_delete_gateway_response(restApiId, responseType)
 \description{
 Clears any customization of a GatewayResponse of a specified response type on the given RestApi and resets it with the default settings.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_gateway_response.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_gateway_response/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ lock set to \code{compliance} can't be deleted.}
 \description{
 Deletes the specified virtual tape. This operation is only supported in the tape gateway type.
 
-See \url{https://paws-r.github.io/docs/storagegateway/delete_tape.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_delete_tape/} for full documentation.
 }
 \keyword{internal}

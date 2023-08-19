@@ -28,6 +28,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the current Infrastructure Performance metric subscriptions.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_aws_network_performance_metric_subscriptions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_aws_network_performance_metric_subscriptions/} for full documentation.
 }
 \keyword{internal}

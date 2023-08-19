@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Associates a FirewallPolicy to a Firewall.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/associate_firewall_policy.html](https://paws-r.github.io/docs/networkfirewall/associate_firewall_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_associate_firewall_policy/](https://www.paws-r-sdk.com/docs/networkfirewall_associate_firewall_policy/) for full documentation.
 #'
 #' @param UpdateToken An optional token that you can use for optimistic locking. Network
 #' Firewall returns a token to your requests that access the firewall. The
@@ -61,7 +61,7 @@ networkfirewall_associate_firewall_policy <- function(UpdateToken = NULL, Firewa
 #' @description
 #' Associates the specified subnets in the Amazon VPC to the firewall. You can specify one subnet for each of the Availability Zones that the VPC spans.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/associate_subnets.html](https://paws-r.github.io/docs/networkfirewall/associate_subnets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_associate_subnets/](https://www.paws-r-sdk.com/docs/networkfirewall_associate_subnets/) for full documentation.
 #'
 #' @param UpdateToken An optional token that you can use for optimistic locking. Network
 #' Firewall returns a token to your requests that access the firewall. The
@@ -115,7 +115,7 @@ networkfirewall_associate_subnets <- function(UpdateToken = NULL, FirewallArn = 
 #' @description
 #' Creates an Network Firewall Firewall and accompanying FirewallStatus for a VPC.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/create_firewall.html](https://paws-r.github.io/docs/networkfirewall/create_firewall.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_create_firewall/](https://www.paws-r-sdk.com/docs/networkfirewall_create_firewall/) for full documentation.
 #'
 #' @param FirewallName &#91;required&#93; The descriptive name of the firewall. You can't change the name of a
 #' firewall after you create it.
@@ -174,7 +174,7 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
 #' @description
 #' Creates the firewall policy for the firewall according to the specifications.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/create_firewall_policy.html](https://paws-r.github.io/docs/networkfirewall/create_firewall_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_create_firewall_policy/](https://www.paws-r-sdk.com/docs/networkfirewall_create_firewall_policy/) for full documentation.
 #'
 #' @param FirewallPolicyName &#91;required&#93; The descriptive name of the firewall policy. You can't change the name
 #' of a firewall policy after you create it.
@@ -223,7 +223,7 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #' @description
 #' Creates the specified stateless or stateful rule group, which includes the rules for network traffic inspection, a capacity setting, and tags.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/create_rule_group.html](https://paws-r.github.io/docs/networkfirewall/create_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_create_rule_group/](https://www.paws-r-sdk.com/docs/networkfirewall_create_rule_group/) for full documentation.
 #'
 #' @param RuleGroupName &#91;required&#93; The descriptive name of the rule group. You can't change the name of a
 #' rule group after you create it.
@@ -335,7 +335,7 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #' @description
 #' Creates an Network Firewall TLS inspection configuration. A TLS inspection configuration contains the Certificate Manager certificate references that Network Firewall uses to decrypt and re-encrypt inbound traffic.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/create_tls_inspection_configuration.html](https://paws-r.github.io/docs/networkfirewall/create_tls_inspection_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_create_tls_inspection_configuration/](https://www.paws-r-sdk.com/docs/networkfirewall_create_tls_inspection_configuration/) for full documentation.
 #'
 #' @param TLSInspectionConfigurationName &#91;required&#93; The descriptive name of the TLS inspection configuration. You can't
 #' change the name of a TLS inspection configuration after you create it.
@@ -387,7 +387,7 @@ networkfirewall_create_tls_inspection_configuration <- function(TLSInspectionCon
 #' @description
 #' Deletes the specified Firewall and its FirewallStatus. This operation requires the firewall's `DeleteProtection` flag to be `FALSE`. You can't revert this operation.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/delete_firewall.html](https://paws-r.github.io/docs/networkfirewall/delete_firewall.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_delete_firewall/](https://www.paws-r-sdk.com/docs/networkfirewall_delete_firewall/) for full documentation.
 #'
 #' @param FirewallName The descriptive name of the firewall. You can't change the name of a
 #' firewall after you create it.
@@ -422,7 +422,7 @@ networkfirewall_delete_firewall <- function(FirewallName = NULL, FirewallArn = N
 #' @description
 #' Deletes the specified FirewallPolicy.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/delete_firewall_policy.html](https://paws-r.github.io/docs/networkfirewall/delete_firewall_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_delete_firewall_policy/](https://www.paws-r-sdk.com/docs/networkfirewall_delete_firewall_policy/) for full documentation.
 #'
 #' @param FirewallPolicyName The descriptive name of the firewall policy. You can't change the name
 #' of a firewall policy after you create it.
@@ -458,7 +458,7 @@ networkfirewall_delete_firewall_policy <- function(FirewallPolicyName = NULL, Fi
 #' @description
 #' Deletes a resource policy that you created in a [`put_resource_policy`][networkfirewall_put_resource_policy] request.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/delete_resource_policy.html](https://paws-r.github.io/docs/networkfirewall/delete_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_delete_resource_policy/](https://www.paws-r-sdk.com/docs/networkfirewall_delete_resource_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule group or firewall policy
 #' whose resource policy you want to delete.
@@ -488,7 +488,7 @@ networkfirewall_delete_resource_policy <- function(ResourceArn) {
 #' @description
 #' Deletes the specified RuleGroup.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/delete_rule_group.html](https://paws-r.github.io/docs/networkfirewall/delete_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_delete_rule_group/](https://www.paws-r-sdk.com/docs/networkfirewall_delete_rule_group/) for full documentation.
 #'
 #' @param RuleGroupName The descriptive name of the rule group. You can't change the name of a
 #' rule group after you create it.
@@ -529,7 +529,7 @@ networkfirewall_delete_rule_group <- function(RuleGroupName = NULL, RuleGroupArn
 #' @description
 #' Deletes the specified TLSInspectionConfiguration.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/delete_tls_inspection_configuration.html](https://paws-r.github.io/docs/networkfirewall/delete_tls_inspection_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_delete_tls_inspection_configuration/](https://www.paws-r-sdk.com/docs/networkfirewall_delete_tls_inspection_configuration/) for full documentation.
 #'
 #' @param TLSInspectionConfigurationArn The Amazon Resource Name (ARN) of the TLS inspection configuration.
 #' 
@@ -564,7 +564,7 @@ networkfirewall_delete_tls_inspection_configuration <- function(TLSInspectionCon
 #' @description
 #' Returns the data objects for the specified firewall.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/describe_firewall.html](https://paws-r.github.io/docs/networkfirewall/describe_firewall.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_describe_firewall/](https://www.paws-r-sdk.com/docs/networkfirewall_describe_firewall/) for full documentation.
 #'
 #' @param FirewallName The descriptive name of the firewall. You can't change the name of a
 #' firewall after you create it.
@@ -599,7 +599,7 @@ networkfirewall_describe_firewall <- function(FirewallName = NULL, FirewallArn =
 #' @description
 #' Returns the data objects for the specified firewall policy.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/describe_firewall_policy.html](https://paws-r.github.io/docs/networkfirewall/describe_firewall_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_describe_firewall_policy/](https://www.paws-r-sdk.com/docs/networkfirewall_describe_firewall_policy/) for full documentation.
 #'
 #' @param FirewallPolicyName The descriptive name of the firewall policy. You can't change the name
 #' of a firewall policy after you create it.
@@ -634,7 +634,7 @@ networkfirewall_describe_firewall_policy <- function(FirewallPolicyName = NULL, 
 #' @description
 #' Returns the logging configuration for the specified firewall.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/describe_logging_configuration.html](https://paws-r.github.io/docs/networkfirewall/describe_logging_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_describe_logging_configuration/](https://www.paws-r-sdk.com/docs/networkfirewall_describe_logging_configuration/) for full documentation.
 #'
 #' @param FirewallArn The Amazon Resource Name (ARN) of the firewall.
 #' 
@@ -670,7 +670,7 @@ networkfirewall_describe_logging_configuration <- function(FirewallArn = NULL, F
 #' @description
 #' Retrieves a resource policy that you created in a [`put_resource_policy`][networkfirewall_put_resource_policy] request.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/describe_resource_policy.html](https://paws-r.github.io/docs/networkfirewall/describe_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_describe_resource_policy/](https://www.paws-r-sdk.com/docs/networkfirewall_describe_resource_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the rule group or firewall policy
 #' whose resource policy you want to retrieve.
@@ -700,7 +700,7 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
 #' @description
 #' Returns the data objects for the specified rule group.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/describe_rule_group.html](https://paws-r.github.io/docs/networkfirewall/describe_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_describe_rule_group/](https://www.paws-r-sdk.com/docs/networkfirewall_describe_rule_group/) for full documentation.
 #'
 #' @param RuleGroupName The descriptive name of the rule group. You can't change the name of a
 #' rule group after you create it.
@@ -742,7 +742,7 @@ networkfirewall_describe_rule_group <- function(RuleGroupName = NULL, RuleGroupA
 #' @description
 #' High-level information about a rule group, returned by operations like create and describe. You can use the information provided in the metadata to retrieve and manage a rule group. You can retrieve all objects for a rule group by calling [`describe_rule_group`][networkfirewall_describe_rule_group].
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/describe_rule_group_metadata.html](https://paws-r.github.io/docs/networkfirewall/describe_rule_group_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_describe_rule_group_metadata/](https://www.paws-r-sdk.com/docs/networkfirewall_describe_rule_group_metadata/) for full documentation.
 #'
 #' @param RuleGroupName The descriptive name of the rule group. You can't change the name of a
 #' rule group after you create it.
@@ -784,7 +784,7 @@ networkfirewall_describe_rule_group_metadata <- function(RuleGroupName = NULL, R
 #' @description
 #' Returns the data objects for the specified TLS inspection configuration.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/describe_tls_inspection_configuration.html](https://paws-r.github.io/docs/networkfirewall/describe_tls_inspection_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_describe_tls_inspection_configuration/](https://www.paws-r-sdk.com/docs/networkfirewall_describe_tls_inspection_configuration/) for full documentation.
 #'
 #' @param TLSInspectionConfigurationArn The Amazon Resource Name (ARN) of the TLS inspection configuration.
 #' 
@@ -819,7 +819,7 @@ networkfirewall_describe_tls_inspection_configuration <- function(TLSInspectionC
 #' @description
 #' Removes the specified subnet associations from the firewall. This removes the firewall endpoints from the subnets and removes any network filtering protections that the endpoints were providing.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/disassociate_subnets.html](https://paws-r.github.io/docs/networkfirewall/disassociate_subnets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_disassociate_subnets/](https://www.paws-r-sdk.com/docs/networkfirewall_disassociate_subnets/) for full documentation.
 #'
 #' @param UpdateToken An optional token that you can use for optimistic locking. Network
 #' Firewall returns a token to your requests that access the firewall. The
@@ -872,7 +872,7 @@ networkfirewall_disassociate_subnets <- function(UpdateToken = NULL, FirewallArn
 #' @description
 #' Retrieves the metadata for the firewall policies that you have defined. Depending on your setting for max results and the number of firewall policies, a single call might not return the full list.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/list_firewall_policies.html](https://paws-r.github.io/docs/networkfirewall/list_firewall_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_list_firewall_policies/](https://www.paws-r-sdk.com/docs/networkfirewall_list_firewall_policies/) for full documentation.
 #'
 #' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
 #' number of objects that are still available for retrieval exceeds the
@@ -892,7 +892,7 @@ networkfirewall_list_firewall_policies <- function(NextToken = NULL, MaxResults 
     name = "ListFirewallPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FirewallPolicies")
   )
   input <- .networkfirewall$list_firewall_policies_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .networkfirewall$list_firewall_policies_output()
@@ -909,7 +909,7 @@ networkfirewall_list_firewall_policies <- function(NextToken = NULL, MaxResults 
 #' @description
 #' Retrieves the metadata for the firewalls that you have defined. If you provide VPC identifiers in your request, this returns only the firewalls for those VPCs.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/list_firewalls.html](https://paws-r.github.io/docs/networkfirewall/list_firewalls.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_list_firewalls/](https://www.paws-r-sdk.com/docs/networkfirewall_list_firewalls/) for full documentation.
 #'
 #' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
 #' number of objects that are still available for retrieval exceeds the
@@ -932,7 +932,7 @@ networkfirewall_list_firewalls <- function(NextToken = NULL, VpcIds = NULL, MaxR
     name = "ListFirewalls",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Firewalls")
   )
   input <- .networkfirewall$list_firewalls_input(NextToken = NextToken, VpcIds = VpcIds, MaxResults = MaxResults)
   output <- .networkfirewall$list_firewalls_output()
@@ -949,7 +949,7 @@ networkfirewall_list_firewalls <- function(NextToken = NULL, VpcIds = NULL, MaxR
 #' @description
 #' Retrieves the metadata for the rule groups that you have defined. Depending on your setting for max results and the number of rule groups, a single call might not return the full list.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/list_rule_groups.html](https://paws-r.github.io/docs/networkfirewall/list_rule_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_list_rule_groups/](https://www.paws-r-sdk.com/docs/networkfirewall_list_rule_groups/) for full documentation.
 #'
 #' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
 #' number of objects that are still available for retrieval exceeds the
@@ -977,7 +977,7 @@ networkfirewall_list_rule_groups <- function(NextToken = NULL, MaxResults = NULL
     name = "ListRuleGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RuleGroups")
   )
   input <- .networkfirewall$list_rule_groups_input(NextToken = NextToken, MaxResults = MaxResults, Scope = Scope, ManagedType = ManagedType, Type = Type)
   output <- .networkfirewall$list_rule_groups_output()
@@ -995,7 +995,7 @@ networkfirewall_list_rule_groups <- function(NextToken = NULL, MaxResults = NULL
 #' @description
 #' Retrieves the metadata for the TLS inspection configurations that you have defined. Depending on your setting for max results and the number of TLS inspection configurations, a single call might not return the full list.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/list_tls_inspection_configurations.html](https://paws-r.github.io/docs/networkfirewall/list_tls_inspection_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_list_tls_inspection_configurations/](https://www.paws-r-sdk.com/docs/networkfirewall_list_tls_inspection_configurations/) for full documentation.
 #'
 #' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
 #' number of objects that are still available for retrieval exceeds the
@@ -1015,7 +1015,7 @@ networkfirewall_list_tls_inspection_configurations <- function(NextToken = NULL,
     name = "ListTLSInspectionConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TLSInspectionConfigurations")
   )
   input <- .networkfirewall$list_tls_inspection_configurations_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .networkfirewall$list_tls_inspection_configurations_output()
@@ -1032,7 +1032,7 @@ networkfirewall_list_tls_inspection_configurations <- function(NextToken = NULL,
 #' @description
 #' Retrieves the tags associated with the specified resource. Tags are key:value pairs that you can use to categorize and manage your resources, for purposes like billing. For example, you might set the tag key to "customer" and the value to the customer name or ID. You can specify one or more tags to add to each Amazon Web Services resource, up to 50 tags for a resource.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/list_tags_for_resource.html](https://paws-r.github.io/docs/networkfirewall/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/networkfirewall_list_tags_for_resource/) for full documentation.
 #'
 #' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
 #' number of objects that are still available for retrieval exceeds the
@@ -1053,7 +1053,7 @@ networkfirewall_list_tags_for_resource <- function(NextToken = NULL, MaxResults 
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Tags")
   )
   input <- .networkfirewall$list_tags_for_resource_input(NextToken = NextToken, MaxResults = MaxResults, ResourceArn = ResourceArn)
   output <- .networkfirewall$list_tags_for_resource_output()
@@ -1070,7 +1070,7 @@ networkfirewall_list_tags_for_resource <- function(NextToken = NULL, MaxResults 
 #' @description
 #' Creates or updates an IAM policy for your rule group or firewall policy. Use this to share rule groups and firewall policies between accounts. This operation works in conjunction with the Amazon Web Services Resource Access Manager (RAM) service to manage resource sharing for Network Firewall.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/put_resource_policy.html](https://paws-r.github.io/docs/networkfirewall/put_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_put_resource_policy/](https://www.paws-r-sdk.com/docs/networkfirewall_put_resource_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the account that you want to share
 #' rule groups and firewall policies with.
@@ -1123,7 +1123,7 @@ networkfirewall_put_resource_policy <- function(ResourceArn, Policy) {
 #' @description
 #' Adds the specified tags to the specified resource. Tags are key:value pairs that you can use to categorize and manage your resources, for purposes like billing. For example, you might set the tag key to "customer" and the value to the customer name or ID. You can specify one or more tags to add to each Amazon Web Services resource, up to 50 tags for a resource.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/tag_resource.html](https://paws-r.github.io/docs/networkfirewall/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_tag_resource/](https://www.paws-r-sdk.com/docs/networkfirewall_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param Tags &#91;required&#93; 
@@ -1153,7 +1153,7 @@ networkfirewall_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes the tags with the specified keys from the specified resource. Tags are key:value pairs that you can use to categorize and manage your resources, for purposes like billing. For example, you might set the tag key to "customer" and the value to the customer name or ID. You can specify one or more tags to add to each Amazon Web Services resource, up to 50 tags for a resource.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/untag_resource.html](https://paws-r.github.io/docs/networkfirewall/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_untag_resource/](https://www.paws-r-sdk.com/docs/networkfirewall_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; 
@@ -1184,7 +1184,7 @@ networkfirewall_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Modifies the flag, `DeleteProtection`, which indicates whether it is possible to delete the firewall. If the flag is set to `TRUE`, the firewall is protected against deletion. This setting helps protect against accidentally deleting a firewall that's in use.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/update_firewall_delete_protection.html](https://paws-r.github.io/docs/networkfirewall/update_firewall_delete_protection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_delete_protection/](https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_delete_protection/) for full documentation.
 #'
 #' @param UpdateToken An optional token that you can use for optimistic locking. Network
 #' Firewall returns a token to your requests that access the firewall. The
@@ -1241,7 +1241,7 @@ networkfirewall_update_firewall_delete_protection <- function(UpdateToken = NULL
 #' @description
 #' Modifies the description for the specified firewall. Use the description to help you identify the firewall when you're working with it.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/update_firewall_description.html](https://paws-r.github.io/docs/networkfirewall/update_firewall_description.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_description/](https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_description/) for full documentation.
 #'
 #' @param UpdateToken An optional token that you can use for optimistic locking. Network
 #' Firewall returns a token to your requests that access the firewall. The
@@ -1296,7 +1296,7 @@ networkfirewall_update_firewall_description <- function(UpdateToken = NULL, Fire
 #' @description
 #' A complex type that contains settings for encryption of your firewall resources.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/update_firewall_encryption_configuration.html](https://paws-r.github.io/docs/networkfirewall/update_firewall_encryption_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_encryption_configuration/](https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_encryption_configuration/) for full documentation.
 #'
 #' @param UpdateToken An optional token that you can use for optimistic locking. Network
 #' Firewall returns a token to your requests that access the firewall. The
@@ -1345,7 +1345,7 @@ networkfirewall_update_firewall_encryption_configuration <- function(UpdateToken
 #' @description
 #' Updates the properties of the specified firewall policy.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/update_firewall_policy.html](https://paws-r.github.io/docs/networkfirewall/update_firewall_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_policy/](https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_policy/) for full documentation.
 #'
 #' @param UpdateToken &#91;required&#93; A token used for optimistic locking. Network Firewall returns a token to
 #' your requests that access the firewall policy. The token marks the state
@@ -1409,7 +1409,7 @@ networkfirewall_update_firewall_policy <- function(UpdateToken, FirewallPolicyAr
 #' @description
 #' Modifies the flag, `ChangeProtection`, which indicates whether it is possible to change the firewall. If the flag is set to `TRUE`, the firewall is protected from changes. This setting helps protect against accidentally changing a firewall that's in use.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/update_firewall_policy_change_protection.html](https://paws-r.github.io/docs/networkfirewall/update_firewall_policy_change_protection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_policy_change_protection/](https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_policy_change_protection/) for full documentation.
 #'
 #' @param UpdateToken An optional token that you can use for optimistic locking. Network
 #' Firewall returns a token to your requests that access the firewall. The
@@ -1466,7 +1466,7 @@ networkfirewall_update_firewall_policy_change_protection <- function(UpdateToken
 #' @description
 #' Sets the logging configuration for the specified firewall.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/update_logging_configuration.html](https://paws-r.github.io/docs/networkfirewall/update_logging_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_logging_configuration/](https://www.paws-r-sdk.com/docs/networkfirewall_update_logging_configuration/) for full documentation.
 #'
 #' @param FirewallArn The Amazon Resource Name (ARN) of the firewall.
 #' 
@@ -1503,7 +1503,7 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #' @description
 #' Updates the rule settings for the specified rule group. You use a rule group by reference in one or more firewall policies. When you modify a rule group, you modify all firewall policies that use the rule group.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/update_rule_group.html](https://paws-r.github.io/docs/networkfirewall/update_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_rule_group/](https://www.paws-r-sdk.com/docs/networkfirewall_update_rule_group/) for full documentation.
 #'
 #' @param UpdateToken &#91;required&#93; A token used for optimistic locking. Network Firewall returns a token to
 #' your requests that access the rule group. The token marks the state of
@@ -1589,7 +1589,7 @@ networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, 
 #' @description
 #' Update subnet change protection
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/update_subnet_change_protection.html](https://paws-r.github.io/docs/networkfirewall/update_subnet_change_protection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_subnet_change_protection/](https://www.paws-r-sdk.com/docs/networkfirewall_update_subnet_change_protection/) for full documentation.
 #'
 #' @param UpdateToken An optional token that you can use for optimistic locking. Network
 #' Firewall returns a token to your requests that access the firewall. The
@@ -1647,7 +1647,7 @@ networkfirewall_update_subnet_change_protection <- function(UpdateToken = NULL, 
 #' @description
 #' Updates the TLS inspection configuration settings for the specified TLS inspection configuration. You use a TLS inspection configuration by reference in one or more firewall policies. When you modify a TLS inspection configuration, you modify all firewall policies that use the TLS inspection configuration.
 #'
-#' See [https://paws-r.github.io/docs/networkfirewall/update_tls_inspection_configuration.html](https://paws-r.github.io/docs/networkfirewall/update_tls_inspection_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_tls_inspection_configuration/](https://www.paws-r-sdk.com/docs/networkfirewall_update_tls_inspection_configuration/) for full documentation.
 #'
 #' @param TLSInspectionConfigurationArn The Amazon Resource Name (ARN) of the TLS inspection configuration.
 #' @param TLSInspectionConfigurationName The descriptive name of the TLS inspection configuration. You can't

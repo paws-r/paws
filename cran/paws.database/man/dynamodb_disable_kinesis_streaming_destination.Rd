@@ -14,6 +14,6 @@ dynamodb_disable_kinesis_streaming_destination(TableName, StreamArn)
 \description{
 Stops replication from the DynamoDB table to the Kinesis data stream. This is done without deleting either of the resources.
 
-See \url{https://paws-r.github.io/docs/dynamodb/disable_kinesis_streaming_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_disable_kinesis_streaming_destination/} for full documentation.
 }
 \keyword{internal}

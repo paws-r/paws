@@ -12,6 +12,6 @@ frauddetector_delete_label(name)
 \description{
 Deletes a label.
 
-See \url{https://paws-r.github.io/docs/frauddetector/delete_label.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_delete_label/} for full documentation.
 }
 \keyword{internal}

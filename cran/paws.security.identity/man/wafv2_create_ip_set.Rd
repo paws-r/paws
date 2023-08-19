@@ -74,6 +74,6 @@ Example JSON \code{Addresses} specifications:
 \description{
 Creates an IPSet, which you use to identify web requests that originate from specific IP addresses or ranges of IP addresses. For example, if you're receiving a lot of requests from a ranges of IP addresses, you can configure WAF to block them using an IPSet that lists those IP addresses.
 
-See \url{https://paws-r.github.io/docs/wafv2/create_ip_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_create_ip_set/} for full documentation.
 }
 \keyword{internal}

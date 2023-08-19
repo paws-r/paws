@@ -22,6 +22,6 @@ structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_pol
 \description{
 Attaches a resource-based policy to a private CA.
 
-See \url{https://paws-r.github.io/docs/acmpca/put_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_put_policy/} for full documentation.
 }
 \keyword{internal}

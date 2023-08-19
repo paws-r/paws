@@ -14,6 +14,6 @@ sagemaker_describe_user_profile(DomainId, UserProfileName)
 \description{
 Describes a user profile. For more information, see \code{\link[=sagemaker_create_user_profile]{create_user_profile}}.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_user_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_user_profile/} for full documentation.
 }
 \keyword{internal}

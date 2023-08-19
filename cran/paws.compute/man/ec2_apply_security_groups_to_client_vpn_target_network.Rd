@@ -29,6 +29,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Applies a security group to the association between the target network and the Client VPN endpoint. This action replaces the existing security groups with the specified security groups.
 
-See \url{https://paws-r.github.io/docs/ec2/apply_security_groups_to_client_vpn_target_network.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_apply_security_groups_to_client_vpn_target_network/} for full documentation.
 }
 \keyword{internal}

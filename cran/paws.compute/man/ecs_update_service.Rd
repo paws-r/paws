@@ -199,6 +199,6 @@ in the \emph{Amazon Elastic Container Service Developer Guide}.}
 \description{
 Modifies the parameters of a service.
 
-See \url{https://paws-r.github.io/docs/ecs/update_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_update_service/} for full documentation.
 }
 \keyword{internal}

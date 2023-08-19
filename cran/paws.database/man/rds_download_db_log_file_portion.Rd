@@ -52,6 +52,6 @@ AdditionalDataPending response element returns false.
 \description{
 Downloads all or a portion of the specified log file, up to 1 MB in size.
 
-See \url{https://paws-r.github.io/docs/rds/download_db_log_file_portion.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_download_db_log_file_portion/} for full documentation.
 }
 \keyword{internal}

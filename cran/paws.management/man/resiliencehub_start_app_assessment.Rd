@@ -33,6 +33,6 @@ an Amazon Web Services resource. Each tag consists of a key/value pair.}
 \description{
 Creates a new application assessment for an application.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/start_app_assessment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_start_app_assessment/} for full documentation.
 }
 \keyword{internal}

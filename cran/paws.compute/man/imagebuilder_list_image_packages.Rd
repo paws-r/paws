@@ -24,6 +24,6 @@ a previously truncated response.}
 \description{
 List the Packages that are associated with an Image Build Version, as determined by Amazon Web Services Systems Manager Inventory at build time.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/list_image_packages.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_image_packages/} for full documentation.
 }
 \keyword{internal}

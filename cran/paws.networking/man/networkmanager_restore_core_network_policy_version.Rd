@@ -18,6 +18,6 @@ networkmanager_restore_core_network_policy_version(
 \description{
 Restores a previous policy version as a new, immutable version of a core network policy. A subsequent change set is created showing the differences between the LIVE policy and restored policy.
 
-See \url{https://paws-r.github.io/docs/networkmanager/restore_core_network_policy_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_restore_core_network_policy_version/} for full documentation.
 }
 \keyword{internal}

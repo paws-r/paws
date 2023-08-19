@@ -20,6 +20,6 @@ wellarchitected_list_workloads(
 \description{
 Paginated list of workloads.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/list_workloads.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_list_workloads/} for full documentation.
 }
 \keyword{internal}

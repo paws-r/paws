@@ -32,6 +32,8 @@ has a \code{ResourceID} of either \code{aws/ssm/MyGroup/appmanager} or
 \verb{/aws/ssm/MyGroup/appmanager}.
 
 For the \code{Document} and \code{Parameter} values, use the name of the resource.
+If you're tagging a shared document, you must use the full ARN of the
+document.
 
 \code{ManagedInstance}: \verb{mi-012345abcde}
 
@@ -47,6 +49,6 @@ Don't enter personally identifiable information in this field.}
 \description{
 Adds or overwrites one or more tags for the specified resource. \emph{Tags} are metadata that you can assign to your automations, documents, managed nodes, maintenance windows, Parameter Store parameters, and patch baselines. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment. Each tag consists of a key and an optional value, both of which you define. For example, you could define a set of tags for your account's managed nodes that helps you track each node's owner and stack level. For example:
 
-See \url{https://paws-r.github.io/docs/ssm/add_tags_to_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_add_tags_to_resource/} for full documentation.
 }
 \keyword{internal}

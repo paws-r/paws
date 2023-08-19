@@ -53,6 +53,6 @@ For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/us
 \description{
 Creates a \emph{launch} of a given feature. Before you create a launch, you must create the feature to use for the launch.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/create_launch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_create_launch/} for full documentation.
 }
 \keyword{internal}

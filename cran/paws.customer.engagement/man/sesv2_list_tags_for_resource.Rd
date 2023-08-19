@@ -14,6 +14,6 @@ tag information for.}
 \description{
 Retrieve a list of the tags (keys and values) that are associated with a specified resource. A \emph{tag} is a label that you optionally define and associate with a resource. Each tag consists of a required \emph{tag key} and an optional associated \emph{tag value}. A tag key is a general label that acts as a category for more specific tag values. A tag value acts as a descriptor within a tag key.
 
-See \url{https://paws-r.github.io/docs/sesv2/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

@@ -9,6 +9,6 @@ codebuild_list_curated_environment_images()
 \description{
 Gets information about Docker images that are managed by CodeBuild.
 
-See \url{https://paws-r.github.io/docs/codebuild/list_curated_environment_images.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_list_curated_environment_images/} for full documentation.
 }
 \keyword{internal}

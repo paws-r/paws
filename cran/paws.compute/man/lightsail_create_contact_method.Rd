@@ -43,6 +43,6 @@ would be specified as +1XXX5550100. For more information, see
 \description{
 Creates an email or SMS text message contact method.
 
-See \url{https://paws-r.github.io/docs/lightsail/create_contact_method.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_create_contact_method/} for full documentation.
 }
 \keyword{internal}

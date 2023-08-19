@@ -16,6 +16,6 @@ returns a description of every layer in the specified stack.}
 \description{
 Requests a description of one or more layers in a specified stack.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_layers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_layers/} for full documentation.
 }
 \keyword{internal}

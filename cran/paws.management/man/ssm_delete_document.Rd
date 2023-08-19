@@ -30,6 +30,6 @@ Management (IAM) policy.}
 \description{
 Deletes the Amazon Web Services Systems Manager document (SSM document) and all managed node associations to the document.
 
-See \url{https://paws-r.github.io/docs/ssm/delete_document.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_delete_document/} for full documentation.
 }
 \keyword{internal}

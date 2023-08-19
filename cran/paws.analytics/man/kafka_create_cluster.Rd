@@ -50,6 +50,6 @@ PER_TOPIC_PER_PARTITION.}
 \description{
 Creates a new MSK cluster.
 
-See \url{https://paws-r.github.io/docs/kafka/create_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_create_cluster/} for full documentation.
 }
 \keyword{internal}

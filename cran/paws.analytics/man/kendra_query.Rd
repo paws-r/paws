@@ -2,7 +2,7 @@
 % Please edit documentation in R/kendra_operations.R
 \name{kendra_query}
 \alias{kendra_query}
-\title{Searches an active index}
+\title{Searches an index given an input query}
 \usage{
 kendra_query(
   IndexId,
@@ -21,44 +21,39 @@ kendra_query(
 )
 }
 \arguments{
-\item{IndexId}{[required] The identifier of the index to search. The identifier is returned in the
-response from the \code{\link[=kendra_create_index]{create_index}} API.}
+\item{IndexId}{[required] The identifier of the index for the search.}
 
 \item{QueryText}{The input query text for the search. Amazon Kendra truncates queries at
 30 token words, which excludes punctuation and stop words. Truncation
 still applies if you use Boolean or more advanced, complex queries.}
 
-\item{AttributeFilter}{Enables filtered searches based on document attributes. You can only
+\item{AttributeFilter}{Filters search results by document fields/attributes. You can only
 provide one attribute filter; however, the \code{AndAllFilters}, \code{NotFilter},
 and \code{OrAllFilters} parameters contain a list of other filters.
 
-The \code{AttributeFilter} parameter enables you to create a set of filtering
+The \code{AttributeFilter} parameter means you can create a set of filtering
 rules that a document must satisfy to be included in the query results.}
 
-\item{Facets}{An array of documents attributes. Amazon Kendra returns a count for each
-attribute key specified. This helps your users narrow their search.}
+\item{Facets}{An array of documents fields/attributes for faceted search. Amazon
+Kendra returns a count for each field key specified. This helps your
+users narrow their search.}
 
-\item{RequestedDocumentAttributes}{An array of document attributes to include in the response. You can
-limit the response to include certain document attributes. By default
+\item{RequestedDocumentAttributes}{An array of document fields/attributes to include in the response. You
+can limit the response to include certain document fields. By default,
 all document attributes are included in the response.}
 
-\item{QueryResultTypeFilter}{Sets the type of query. Only results for the specified query type are
-returned.}
+\item{QueryResultTypeFilter}{Sets the type of query result or response. Only results for the
+specified type are returned.}
 
-\item{DocumentRelevanceOverrideConfigurations}{Overrides relevance tuning configurations of fields or attributes set at
+\item{DocumentRelevanceOverrideConfigurations}{Overrides relevance tuning configurations of fields/attributes set at
 the index level.
 
 If you use this API to override the relevance tuning configured at the
 index level, but there is no relevance tuning configured at the index
 level, then Amazon Kendra does not apply any relevance tuning.
 
-If there is relevance tuning configured at the index level, but you do
-not use this API to override any relevance tuning in the index, then
-Amazon Kendra uses the relevance tuning that is configured at the index
-level.
-
 If there is relevance tuning configured for fields at the index level,
-but you use this API to override only some of these fields, then for the
+and you use this API to override only some of these fields, then for the
 fields you did not override, the importance is set to 1.}
 
 \item{PageNumber}{Query results are returned in pages the size of the \code{PageSize}
@@ -87,8 +82,8 @@ information, such as the user's email address, as the \code{VisitorId}.}
 \item{SpellCorrectionConfiguration}{Enables suggested spell corrections for queries.}
 }
 \description{
-Searches an active index. Use this API to search your documents using query. The \code{\link[=kendra_query]{query}} API enables to do faceted search and to filter results based on document attributes.
+Searches an index given an input query.
 
-See \url{https://paws-r.github.io/docs/kendra/query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_query/} for full documentation.
 }
 \keyword{internal}

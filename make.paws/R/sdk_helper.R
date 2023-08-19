@@ -16,7 +16,7 @@
 paws_check_local <- function(in_dir = "../cran",
                              path,
                              pkg_list = list(),
-                             keep_notes = FALSE){
+                             keep_notes = FALSE) {
   check_sub_cat <- paws_check_local_sub_cat(
     in_dir = in_dir,
     pkg_list = pkg_list,
@@ -42,7 +42,7 @@ paws_check_local <- function(in_dir = "../cran",
 paws_check_local_cat <- function(in_dir = "../cran",
                                  path,
                                  pkg_list = list(),
-                                 keep_notes = FALSE){
+                                 keep_notes = FALSE) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_cat_pkgs(pkgs)
   checks <- check_pkgs(pkgs, keep_notes)
@@ -57,7 +57,7 @@ paws_check_local_cat <- function(in_dir = "../cran",
 paws_check_local_sub_cat <- function(in_dir = "../cran",
                                      path,
                                      pkg_list = list(),
-                                     keep_notes = FALSE){
+                                     keep_notes = FALSE) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_sub_cat_pkgs(pkgs)
   checks <- check_pkgs(pkgs, keep_notes)
@@ -73,7 +73,7 @@ paws_check_local_sub_cat <- function(in_dir = "../cran",
 #' @param path Path to output paws sdk check results.
 #' @param pkg_list list of packages urls to check, check all packages by default
 #' @export
-paws_check_url <- function(in_dir = "../cran", path, pkg_list = list()){
+paws_check_url <- function(in_dir = "../cran", path, pkg_list = list()) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   results <- setNames(
     lapply(pkgs, urlchecker::url_check),
@@ -97,7 +97,7 @@ paws_check_url <- function(in_dir = "../cran", path, pkg_list = list()){
 paws_check_rhub <- function(in_dir = "../cran",
                             pkg_list = list(),
                             email = NULL,
-                            interactive = TRUE){
+                            interactive = TRUE) {
   paws_check_rhub_sub_cat(in_dir, pkg_list, email, interactive)
   paws_check_rhub_cat(in_dir, pkg_list, email, interactive)
   pkg <- file.path(in_dir, "paws")
@@ -109,10 +109,10 @@ paws_check_rhub <- function(in_dir = "../cran",
 paws_check_rhub_cat <- function(in_dir = "../cran",
                                 pkg_list = list(),
                                 email = NULL,
-                                interactive = TRUE){
+                                interactive = TRUE) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_cat_pkgs(pkgs)
-  for (pkg in pkgs){
+  for (pkg in pkgs) {
     devtools::check_rhub(pkg, email = email, interactive = interactive)
   }
 }
@@ -122,11 +122,11 @@ paws_check_rhub_cat <- function(in_dir = "../cran",
 paws_check_rhub_sub_cat <- function(in_dir = "../cran",
                                     pkg_list = list(),
                                     email = NULL,
-                                    interactive = TRUE){
+                                    interactive = TRUE) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_sub_cat_pkgs(pkgs)
   if (length(pkgs) > 0) {
-    for (pkg in pkgs){
+    for (pkg in pkgs) {
       devtools::check_rhub(pkg, email = email, interactive = interactive)
     }
   } else {
@@ -138,7 +138,7 @@ paws_check_rhub_sub_cat <- function(in_dir = "../cran",
 #' @export
 paws_check_win_devel <- function(in_dir = "../cran",
                                  pkg_list = list(),
-                                 email = NULL){
+                                 email = NULL) {
   paws_check_win_devel_sub_cat(in_dir, pkg_list, email)
   paws_check_win_devel_cat(in_dir, pkg_list, email)
   pkg <- file.path(in_dir, "paws")
@@ -149,10 +149,10 @@ paws_check_win_devel <- function(in_dir = "../cran",
 #' @export
 paws_check_win_devel_cat <- function(in_dir = "../cran",
                                      pkg_list = list(),
-                                     email = NULL){
+                                     email = NULL) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_cat_pkgs(pkgs)
-  for (pkg in pkgs){
+  for (pkg in pkgs) {
     devtools::check_win_devel(pkg, email = email)
   }
 }
@@ -161,11 +161,11 @@ paws_check_win_devel_cat <- function(in_dir = "../cran",
 #' @export
 paws_check_win_devel_sub_cat <- function(in_dir = "../cran",
                                          pkg_list = list(),
-                                         email = NULL){
+                                         email = NULL) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_sub_cat_pkgs(pkgs)
   if (length(pkgs) > 0) {
-    for (pkg in pkgs){
+    for (pkg in pkgs) {
       devtools::check_win_devel(pkg, email = email)
     }
   } else {
@@ -201,25 +201,24 @@ paws_check_pkg_size <- function(in_dir = "../cran",
   setDT(dir_info)
 
   dir_info[, c("status", "percentage") := list(
-      fcase(
-        get("size") > threshold, "ERROR",
-        get("size") > threshold *.75, "WARNING",
-        get("size") <= threshold *.75, "OK"
-      ),
-      paste(round(as.numeric(get("size")/ threshold) * 100, 2), "%")
-    )
-  ]
+    fcase(
+      get("size") > threshold, "ERROR",
+      get("size") > threshold * .75, "WARNING",
+      get("size") <= threshold * .75, "OK"
+    ),
+    paste(round(as.numeric(get("size") / threshold) * 100, 2), "%")
+  )]
 
   return(dir_info[order(-get("size"))])
 }
 
 #' @title Method to uninstall paws sdk
 #' @export
-paws_uninstall <- function(){
+paws_uninstall <- function() {
   pkg <- as.data.table(installed.packages())
   pkg <- pkg[
     grepl("^paws.", get("Package")) &
-    !(get("Package") %in% "paws.common") # don't remove paws.common
+      !(get("Package") %in% "paws.common") # don't remove paws.common
   ]$Package
   remove.packages(pkg)
   remove.packages("paws")
@@ -229,7 +228,7 @@ paws_uninstall <- function(){
 #' @param in_dir Directory containing paws sdk packages.
 #' @param force Force installation, even if the state has not changed since the previous install.
 #' @export
-paws_install <- function(in_dir = "../cran", force = FALSE){
+paws_install <- function(in_dir = "../cran", force = FALSE) {
   pkgs <- list_paws_pkgs(in_dir)
   pkgs_sub_cat <- list_sub_cat_pkgs(pkgs)
   pkgs_cat <- list_cat_pkgs(pkgs)
@@ -244,7 +243,7 @@ paws_install <- function(in_dir = "../cran", force = FALSE){
 #' @param pkg_list list of packages to release, release all packages by default
 #' @name paws_release
 #' @export
-paws_release <- function(in_dir = "../cran", pkg_list = list()){
+paws_release <- function(in_dir = "../cran", pkg_list = list()) {
   paws_release_sub_cat(in_dir, pkg_list)
   paws_release_cat(in_dir, pkg_list)
   pkg <- file.path(in_dir, "paws")
@@ -253,21 +252,21 @@ paws_release <- function(in_dir = "../cran", pkg_list = list()){
 
 #' @rdname paws_release
 #' @export
-paws_release_cat <- function(in_dir = "../cran", pkg_list = list()){
+paws_release_cat <- function(in_dir = "../cran", pkg_list = list()) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_cat_pkgs(pkgs)
-  for (pkg in pkgs){
+  for (pkg in pkgs) {
     devtools::submit_cran(pkg)
   }
 }
 
 #' @rdname paws_release
 #' @export
-paws_release_sub_cat <- function(in_dir = "../cran", pkg_list = list()){
+paws_release_sub_cat <- function(in_dir = "../cran", pkg_list = list()) {
   pkgs <- list_paws_pkgs(in_dir, pkg_list)
   pkgs <- list_sub_cat_pkgs(pkgs)
   if (length(pkgs) > 0) {
-    for (pkg in pkgs){
+    for (pkg in pkgs) {
       devtools::submit_cran(pkg)
     }
   } else {
@@ -301,13 +300,13 @@ paws_build_cran_comments <- function(in_dir = "../cran",
                                      cache_path = NULL,
                                      refresh = FALSE) {
   log_info <- utils::getFromNamespace("log_info", "paws.common")
-  all_cats <-  basename(list_paws_pkgs(in_dir))
+  all_cats <- basename(list_paws_pkgs(in_dir))
   log_info(
     "Running local checks for: ['%s']",
     paste(all_cats, collapse = "', '")
   )
   dir_info <- paws_check_pkg_size(in_dir, pkg_list = all_cats)
-  if(is.null(cache_path)){
+  if (is.null(cache_path)) {
     results_local <- paws_check_local(
       in_dir = in_dir,
       pkg_list = all_cats,
@@ -325,59 +324,60 @@ paws_build_cran_comments <- function(in_dir = "../cran",
   dir_info[
     result_dt,
     `:=`(
-      "errors"=get("errors"),
-      "warnings"=get("warnings"),
-      "notes"=get("notes")
+      "errors" = get("errors"),
+      "warnings" = get("warnings"),
+      "notes" = get("notes")
     ),
     on = "package"
   ]
 
-  dir_info[,
+  dir_info[
+    ,
     "cran_comment" := fcase(
-     is.na(get("errors")) & is.na(get("warnings")) & is.na(get("notes")),
-     "There were no ERRORs, WARNINGs, or Notes."
-     ,
-     is.na(get("errors")) & is.na(get("warnings")) & !is.na(get("notes")),
-     sprintf(
-       "There were no ERRORs, or WARNINGs.\nNotes:\n%s", get("notes")
-     ),
-     is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
-     sprintf(
-       "There were no ERRORs.\nWarnings:%s\nNotes:\n%s",
-       get("warnings"), get("notes")
-     ),
-     is.na(get("errors")) & !is.na(get("warnings")) & is.na(get("notes")),
-     sprintf(
-       "There were no ERRORs or Notes.\nWarnings:%s", warnings
-     ),
-     !is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
-     sprintf(
-       "Errors:\n%s\nWarnings:\n%s\nNotes:\n%s",
-       get("errors"), get("warnings"), get("notes")
-     ),
-     !is.na(get("errors")) & is.na(get("warnings")) & is.na(get("notes")),
-     sprintf(
-       "There was no WARNINGS or Notes.\nErrors:\n%s", get("errors")
-     ),
-     !is.na(get("errors")) & !is.na(get("warnings")) & is.na(get("notes")),
-     sprintf(
-       "There was no WARNINGS.\nErrors:\n%s\nNotes:\n%s",
-       get("errors"), get("notes")
-     ),
-     !is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
-     sprintf(
-       "There was no NOTES.\nErrors:\n%s\nNotes:\n%s",
-       get("errors"), get("warnings")
-     )
+      is.na(get("errors")) & is.na(get("warnings")) & is.na(get("notes")),
+      "There were no ERRORs, WARNINGs, or Notes.",
+      is.na(get("errors")) & is.na(get("warnings")) & !is.na(get("notes")),
+      sprintf(
+        "There were no ERRORs, or WARNINGs.\nNotes:\n%s", get("notes")
+      ),
+      is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
+      sprintf(
+        "There were no ERRORs.\nWarnings:%s\nNotes:\n%s",
+        get("warnings"), get("notes")
+      ),
+      is.na(get("errors")) & !is.na(get("warnings")) & is.na(get("notes")),
+      sprintf(
+        "There were no ERRORs or Notes.\nWarnings:%s", warnings
+      ),
+      !is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
+      sprintf(
+        "Errors:\n%s\nWarnings:\n%s\nNotes:\n%s",
+        get("errors"), get("warnings"), get("notes")
+      ),
+      !is.na(get("errors")) & is.na(get("warnings")) & is.na(get("notes")),
+      sprintf(
+        "There was no WARNINGS or Notes.\nErrors:\n%s", get("errors")
+      ),
+      !is.na(get("errors")) & !is.na(get("warnings")) & is.na(get("notes")),
+      sprintf(
+        "There was no WARNINGS.\nErrors:\n%s\nNotes:\n%s",
+        get("errors"), get("notes")
+      ),
+      !is.na(get("errors")) & !is.na(get("warnings")) & !is.na(get("notes")),
+      sprintf(
+        "There was no NOTES.\nErrors:\n%s\nNotes:\n%s",
+        get("errors"), get("warnings")
+      )
     )
   ]
 
-  dir_info[,
-     "downstream_info" := fifelse(
-       grepl("paws[.].*$", get("package")),
-       "All downstream dependencies ('paws') pass R CMD check.",
-       "All downstream dependencies pass R CMD check."
-     )
+  dir_info[
+    ,
+    "downstream_info" := fifelse(
+      grepl("paws[.].*$", get("package")),
+      "All downstream dependencies ('paws') pass R CMD check.",
+      "All downstream dependencies pass R CMD check."
+    )
   ]
   cran_comments <- sprintf(
     cran_comment_template,
@@ -400,8 +400,7 @@ paws_build_cran_comments <- function(in_dir = "../cran",
 # This function un-escapes any special characters after build.
 paws_unescape_latex_post_build <- function(
     root = "..",
-    special_characters = c("#", "$", "_")
-  ) {
+    special_characters = c("#", "$", "_")) {
   log_info <- utils::getFromNamespace("log_info", "paws.common")
 
   paws_r <- fs::dir_ls(file.path(root, "paws", "R"))
@@ -435,11 +434,94 @@ paws_unescape_latex_post_build <- function(
   }
 }
 
+paws_fix_html_span <- function(root = "..") {
+  log_info <- utils::getFromNamespace("log_info", "paws.common")
+
+  paws_r <- fs::dir_ls(file.path(root, "paws", "R"))
+  cran_pkg <- fs::dir_ls(file.path(root, "cran"))
+  cran_r <- lapply(
+    cran_pkg, \(x) fs::dir_ls(file.path(x, "R"))
+  )
+  cran_rd <- lapply(
+    cran_pkg, \(x) fs::dir_ls(file.path(x, "man"))
+  )
+
+  remove_html_span_r(paws_r)
+  log_info(
+    "Removed escaped latex scripts from paws directory."
+  )
+
+  for (pkg in cran_pkg) {
+    remove_html_span_r(cran_r[[pkg]])
+    remove_html_span_rd(cran_rd[[pkg]])
+    log_info("Removed escaped latex: %s", pkg)
+  }
+}
+
+find_str <- function(line, pattern) {
+  m <- regexpr(pattern, line)
+  regmatches(line, m)
+}
+
+remove_html_span_r <- function(files) {
+  for (file in files) {
+    result <- readLines(file)
+    start_idx <- grep("<span", result, perl = T)
+    end_idx <- grep("</span>", result, perl = T)
+    if (length(start_idx) == 0) next
+    idx_ranges <- lapply(1:length(start_idx), \(x) start_idx[x]:end_idx[x])
+    for (idx_range in idx_ranges) {
+      line <- paste(result[idx_range], collapse = "\n")
+      line <- gsub("<span.*href=\"|href=\"", "\\\\href{", line)
+      line <- gsub("<span", "", line)
+
+      line <- gsub("\">", "}{", line)
+      line <- gsub("</span>", "}", line)
+      href_link <- find_str(line, "\\{.*\\}")
+      tidy_link <- gsub("\n#'[ ]+", " ", href_link)
+      line <- gsub(href_link, tidy_link, line, fixed = T)
+      split_line <- strsplit(line, "\n")[[1]]
+      padding <- rep("NA", length(result[idx_range]) - length(split_line))
+      result[idx_range] <- c(split_line, padding)
+    }
+    writeLines(Filter(function(x) x != "NA", result), file)
+  }
+}
+
+remove_html_span_rd <- function(files) {
+  for (file in files) {
+    result <- readLines(file)
+    start_idx <- grep("<span", result, perl = T)
+    end_idx <- grep("</span>", result, perl = T)
+    if (length(start_idx) == 0) next
+    idx_ranges <- lapply(1:length(start_idx), \(x) start_idx[x]:end_idx[x])
+    for (idx_range in idx_ranges) {
+      line <- paste(result[idx_range], collapse = "\n")
+      line <- gsub("\\\\if\\{html\\}\\{\\\\out\\{", "", line)
+      line <- gsub("}}", "}", line)
+      line <- gsub(">}", ">", line)
+
+      line <- gsub("<span.*href=\"|href=\"", "\\\\href{", line)
+      line <- gsub("<span", "", line)
+
+      line <- gsub("\">", "}{", line)
+      line <- gsub("</span>", "}", line)
+      href_link <- find_str(line, "\\{.*\\}")
+      tidy_link <- gsub("\n", "", href_link)
+      line <- gsub(href_link, tidy_link, line, fixed = T)
+      split_line <- strsplit(line, "\n")[[1]]
+      padding <- rep("NA", length(result[idx_range]) - length(split_line))
+      result[idx_range] <- c(split_line, padding)
+    }
+    writeLines(Filter(function(x) x != "NA", result), file)
+  }
+}
+
 #' @title Update paws version
 #' @param dir Directory containing paws sdk packages.
 #' @param version Version to set paws sdk.
 #' @export
-paws_update_version <- function(dir= "../cran", version) {
+paws_update_version <- function(dir = "../cran", version) {
   packages <- fs::dir_ls(dir)
   descriptions <- fs::path(packages, "DESCRIPTION")
 
@@ -452,7 +534,8 @@ paws_update_version <- function(dir= "../cran", version) {
 
     # remove paws.common
     found[found] <- !grepl(
-      "paws\\.common.*[0-9]+\\.[0-9]+\\.[0-9]+", lines[found], perl = T
+      "paws\\.common.*[0-9]+\\.[0-9]+\\.[0-9]+", lines[found],
+      perl = T
     )
     lines[found] <- gsub("[0-9]+\\.[0-9]+\\.[0-9]+", version, lines[found])
     writeLines(lines, desc)
@@ -460,7 +543,7 @@ paws_update_version <- function(dir= "../cran", version) {
 }
 
 ##### helper functions #####
-check_pkgs <- function(pkgs, keep_notes = FALSE){
+check_pkgs <- function(pkgs, keep_notes = FALSE) {
   temp_file <- tempfile()
   on.exit(unlink(temp_file))
 
@@ -479,7 +562,7 @@ check_pkgs <- function(pkgs, keep_notes = FALSE){
     errors <- checks[[pkg]]$errors
     warnings <- checks[[pkg]]$warnings
     notes <- checks[[pkg]]$notes
-    errors <- if (length(errors)==0) NULL else errors
+    errors <- if (length(errors) == 0) NULL else errors
     warnings <- if (length(warnings) == 0) NULL else warnings
     notes <- if (length(notes) == 0) NULL else notes
     results[[pkg]] <- list(errors = errors, warnings = warnings)
@@ -500,26 +583,36 @@ check_pkgs <- function(pkgs, keep_notes = FALSE){
 }
 
 # list paws packages
-list_paws_pkgs <- function(in_dir = "../cran", pkg_list = list()){
-  pkgs <- list.dirs(in_dir, recursive = FALSE)
-  pkgs <- pkgs[grepl("paws", pkgs)]
-  if(any(nzchar(pkg_list))) pkgs <- pkgs[basename(pkgs) %in% pkg_list]
+list_paws_pkgs <- function(in_dir = "../cran", pkg_list = list()) {
+  all_pkgs <- list.files(in_dir)
+
+  # list active files
+  lines <- readLines(file.path(in_dir, "paws", "DESCRIPTION"))
+  pkgs <- lines[grepl("paws\\.[a-z\\.]", lines, perl = T)]
+  pkgs <- trimws(gsub("\\([^)]*\\).*", "", pkgs))
+
+  # pick up any sub categories
+  active_pkgs <- all_pkgs[unlist(lapply(pkgs, grep, x = all_pkgs))]
+  pkgs <- file.path(in_dir, c("paws", active_pkgs))
+
+  # filter on pkg list
+  if (any(nzchar(pkg_list))) pkgs <- pkgs[basename(pkgs) %in% pkg_list]
   return(pkgs)
 }
 
-list_cat_pkgs <- function(pkgs){
+list_cat_pkgs <- function(pkgs) {
   pkgs <- pkgs[grepl("paws[.].*$", pkgs)]
   pkgs <- pkgs[!grepl(".p[0-9]+$", pkgs)]
   return(pkgs[!grepl("paws.common", pkgs)])
 }
 
-list_sub_cat_pkgs <- function(pkgs){
+list_sub_cat_pkgs <- function(pkgs) {
   return(pkgs[grepl(".p[0-9]+$", pkgs)])
 }
 
 # install packages
-install_local_pkg_list <- function(pkgs, force){
-  for (pkg in pkgs){
+install_local_pkg_list <- function(pkgs, force) {
+  for (pkg in pkgs) {
     devtools::install_local(pkg, force = force)
   }
 }

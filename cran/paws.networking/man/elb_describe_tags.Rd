@@ -12,6 +12,6 @@ elb_describe_tags(LoadBalancerNames)
 \description{
 Describes the tags associated with the specified load balancers.
 
-See \url{https://paws-r.github.io/docs/elb/describe_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_describe_tags/} for full documentation.
 }
 \keyword{internal}

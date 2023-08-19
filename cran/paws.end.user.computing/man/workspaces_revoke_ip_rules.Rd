@@ -14,6 +14,6 @@ workspaces_revoke_ip_rules(GroupId, UserRules)
 \description{
 Removes one or more rules from the specified IP access control group.
 
-See \url{https://paws-r.github.io/docs/workspaces/revoke_ip_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_revoke_ip_rules/} for full documentation.
 }
 \keyword{internal}

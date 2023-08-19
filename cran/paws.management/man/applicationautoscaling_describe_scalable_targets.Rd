@@ -139,6 +139,6 @@ parameter is not used, the operation returns up to 50 results and a
 \description{
 Gets information about the scalable targets in the specified namespace.
 
-See \url{https://paws-r.github.io/docs/applicationautoscaling/describe_scalable_targets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationautoscaling_describe_scalable_targets/} for full documentation.
 }
 \keyword{internal}

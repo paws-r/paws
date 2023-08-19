@@ -12,6 +12,6 @@ panorama_delete_device(DeviceId)
 \description{
 Deletes a device.
 
-See \url{https://paws-r.github.io/docs/panorama/delete_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_delete_device/} for full documentation.
 }
 \keyword{internal}

@@ -7,21 +7,29 @@
 sagemakerfeaturestoreruntime_get_record(
   FeatureGroupName,
   RecordIdentifierValueAsString,
-  FeatureNames = NULL
+  FeatureNames = NULL,
+  ExpirationTimeResponse = NULL
 )
 }
 \arguments{
-\item{FeatureGroupName}{[required] The name of the feature group from which you want to retrieve a record.}
+\item{FeatureGroupName}{[required] The name or Amazon Resource Name (ARN) of the feature group from which
+you want to retrieve a record.}
 
 \item{RecordIdentifierValueAsString}{[required] The value that corresponds to \code{RecordIdentifier} type and uniquely
 identifies the record in the \code{FeatureGroup}.}
 
 \item{FeatureNames}{List of names of Features to be retrieved. If not specified, the latest
 value for all the Features are returned.}
+
+\item{ExpirationTimeResponse}{Parameter to request \code{ExpiresAt} in response. If \code{Enabled},
+\code{\link[=sagemakerfeaturestoreruntime_get_record]{get_record}} will return the
+value of \code{ExpiresAt}, if it is not null. If \code{Disabled} and null,
+\code{\link[=sagemakerfeaturestoreruntime_get_record]{get_record}} will return
+null.}
 }
 \description{
 Use for \code{OnlineStore} serving from a \code{FeatureStore}. Only the latest records stored in the \code{OnlineStore} can be retrieved. If no Record with \code{RecordIdentifierValue} is found, then an empty result is returned.
 
-See \url{https://paws-r.github.io/docs/sagemakerfeaturestoreruntime/get_record.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemakerfeaturestoreruntime_get_record/} for full documentation.
 }
 \keyword{internal}

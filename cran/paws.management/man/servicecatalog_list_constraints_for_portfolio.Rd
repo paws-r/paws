@@ -31,6 +31,6 @@ results, use null.}
 \description{
 Lists the constraints for the specified portfolio and product.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/list_constraints_for_portfolio.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_list_constraints_for_portfolio/} for full documentation.
 }
 \keyword{internal}

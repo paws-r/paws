@@ -13,6 +13,6 @@ about.}
 \description{
 Gets information about a specified traffic policy instance.
 
-See \url{https://paws-r.github.io/docs/route53/get_traffic_policy_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_get_traffic_policy_instance/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ call.}
 \description{
 Returns a list of assessment reports created in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/list_assessment_reports.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_list_assessment_reports/} for full documentation.
 }
 \keyword{internal}

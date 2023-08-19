@@ -30,6 +30,6 @@ configuration for a workforce made using your own IdP.}
 \description{
 Use this operation to update your workforce. You can use this operation to require that workers use specific IP addresses to work on tasks and to update your OpenID Connect (OIDC) Identity Provider (IdP) workforce configuration.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_workforce.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_workforce/} for full documentation.
 }
 \keyword{internal}

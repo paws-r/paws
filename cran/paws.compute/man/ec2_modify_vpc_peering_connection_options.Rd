@@ -2,7 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_modify_vpc_peering_connection_options}
 \alias{ec2_modify_vpc_peering_connection_options}
-\title{We are retiring EC2-Classic}
+\title{Modifies the VPC peering connection options on one side of a VPC peering
+connection}
 \usage{
 ec2_modify_vpc_peering_connection_options(
   AccepterPeeringConnectionOptions = NULL,
@@ -24,8 +25,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{VpcPeeringConnectionId}{[required] The ID of the VPC peering connection.}
 }
 \description{
-We are retiring EC2-Classic. We recommend that you migrate from EC2-Classic to a VPC. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html}{Migrate from EC2-Classic to a VPC} in the \emph{Amazon Elastic Compute Cloud User Guide}.
+Modifies the VPC peering connection options on one side of a VPC peering connection.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_vpc_peering_connection_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_vpc_peering_connection_options/} for full documentation.
 }
 \keyword{internal}

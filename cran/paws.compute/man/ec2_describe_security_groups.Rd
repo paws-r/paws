@@ -78,10 +78,8 @@ nondefault VPC.
 
 Default: Describes all of your security groups.}
 
-\item{GroupNames}{[EC2-Classic and default VPC only] The names of the security groups.
-You can specify either the security group name or the security group ID.
-For security groups in a nondefault VPC, use the \code{group-name} filter to
-describe security groups by name.
+\item{GroupNames}{[Default VPC] The names of the security groups. You can specify either
+the security group name or the security group ID.
 
 Default: Describes all of your security groups.}
 
@@ -102,6 +100,6 @@ specified, then all items are returned. For more information, see
 \description{
 Describes the specified security groups or all of your security groups.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_security_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_security_groups/} for full documentation.
 }
 \keyword{internal}

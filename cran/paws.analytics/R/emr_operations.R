@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Adds an instance fleet to a running cluster.
 #'
-#' See [https://paws-r.github.io/docs/emr/add_instance_fleet.html](https://paws-r.github.io/docs/emr/add_instance_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_add_instance_fleet/](https://www.paws-r-sdk.com/docs/emr_add_instance_fleet/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The unique identifier of the cluster.
 #' @param InstanceFleet &#91;required&#93; Specifies the configuration of the instance fleet.
@@ -38,7 +38,7 @@ emr_add_instance_fleet <- function(ClusterId, InstanceFleet) {
 #' @description
 #' Adds one or more instance groups to a running cluster.
 #'
-#' See [https://paws-r.github.io/docs/emr/add_instance_groups.html](https://paws-r.github.io/docs/emr/add_instance_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_add_instance_groups/](https://www.paws-r-sdk.com/docs/emr_add_instance_groups/) for full documentation.
 #'
 #' @param InstanceGroups &#91;required&#93; Instance groups to add.
 #' @param JobFlowId &#91;required&#93; Job flow in which to add the instance groups.
@@ -68,7 +68,7 @@ emr_add_instance_groups <- function(InstanceGroups, JobFlowId) {
 #' @description
 #' AddJobFlowSteps adds new steps to a running cluster. A maximum of 256 steps are allowed in each job flow.
 #'
-#' See [https://paws-r.github.io/docs/emr/add_job_flow_steps.html](https://paws-r.github.io/docs/emr/add_job_flow_steps.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_add_job_flow_steps/](https://www.paws-r-sdk.com/docs/emr_add_job_flow_steps/) for full documentation.
 #'
 #' @param JobFlowId &#91;required&#93; A string that uniquely identifies the job flow. This identifier is
 #' returned by [`run_job_flow`][emr_run_job_flow] and can also be obtained
@@ -108,7 +108,7 @@ emr_add_job_flow_steps <- function(JobFlowId, Steps, ExecutionRoleArn = NULL) {
 #' @description
 #' Adds tags to an Amazon EMR resource, such as a cluster or an Amazon EMR Studio. Tags make it easier to associate resources in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see [Tag Clusters](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 #'
-#' See [https://paws-r.github.io/docs/emr/add_tags.html](https://paws-r.github.io/docs/emr/add_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_add_tags/](https://www.paws-r-sdk.com/docs/emr_add_tags/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The Amazon EMR resource identifier to which tags will be added. For
 #' example, a cluster identifier or an Amazon EMR Studio ID.
@@ -142,7 +142,7 @@ emr_add_tags <- function(ResourceId, Tags) {
 #' @description
 #' Cancels a pending step or steps in a running cluster. Available only in Amazon EMR versions 4.8.0 and later, excluding version 5.0.0. A maximum of 256 steps are allowed in each CancelSteps request. CancelSteps is idempotent but asynchronous; it does not guarantee that a step will be canceled, even if the request is successfully submitted. When you use Amazon EMR releases 5.28.0 and later, you can cancel steps that are in a `PENDING` or `RUNNING` state. In earlier versions of Amazon EMR, you can only cancel steps that are in a `PENDING` state.
 #'
-#' See [https://paws-r.github.io/docs/emr/cancel_steps.html](https://paws-r.github.io/docs/emr/cancel_steps.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_cancel_steps/](https://www.paws-r-sdk.com/docs/emr_cancel_steps/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The `ClusterID` for the specified steps that will be canceled. Use
 #' [`run_job_flow`][emr_run_job_flow] and
@@ -178,7 +178,7 @@ emr_cancel_steps <- function(ClusterId, StepIds, StepCancellationOption = NULL) 
 #' @description
 #' Creates a security configuration, which is stored in the service and can be specified when a cluster is created.
 #'
-#' See [https://paws-r.github.io/docs/emr/create_security_configuration.html](https://paws-r.github.io/docs/emr/create_security_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_create_security_configuration/](https://www.paws-r-sdk.com/docs/emr_create_security_configuration/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the security configuration.
 #' @param SecurityConfiguration &#91;required&#93; The security configuration details in JSON format. For JSON parameters
@@ -211,7 +211,7 @@ emr_create_security_configuration <- function(Name, SecurityConfiguration) {
 #' @description
 #' Creates a new Amazon EMR Studio.
 #'
-#' See [https://paws-r.github.io/docs/emr/create_studio.html](https://paws-r.github.io/docs/emr/create_studio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_create_studio/](https://www.paws-r-sdk.com/docs/emr_create_studio/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A descriptive name for the Amazon EMR Studio.
 #' @param Description A detailed description of the Amazon EMR Studio.
@@ -281,7 +281,7 @@ emr_create_studio <- function(Name, Description = NULL, AuthMode, VpcId, SubnetI
 #' @description
 #' Maps a user or group to the Amazon EMR Studio specified by `StudioId`, and applies a session policy to refine Studio permissions for that user or group. Use [`create_studio_session_mapping`][emr_create_studio_session_mapping] to assign users to a Studio when you use IAM Identity Center authentication. For instructions on how to assign users to a Studio when you use IAM authentication, see [Assign a user or group to your EMR Studio](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-studio-manage-users.html#emr-studio-assign-users-groups).
 #'
-#' See [https://paws-r.github.io/docs/emr/create_studio_session_mapping.html](https://paws-r.github.io/docs/emr/create_studio_session_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_create_studio_session_mapping/](https://www.paws-r-sdk.com/docs/emr_create_studio_session_mapping/) for full documentation.
 #'
 #' @param StudioId &#91;required&#93; The ID of the Amazon EMR Studio to which the user or group will be
 #' mapped.
@@ -331,7 +331,7 @@ emr_create_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
 #' @description
 #' Deletes a security configuration.
 #'
-#' See [https://paws-r.github.io/docs/emr/delete_security_configuration.html](https://paws-r.github.io/docs/emr/delete_security_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_delete_security_configuration/](https://www.paws-r-sdk.com/docs/emr_delete_security_configuration/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the security configuration.
 #'
@@ -360,7 +360,7 @@ emr_delete_security_configuration <- function(Name) {
 #' @description
 #' Removes an Amazon EMR Studio from the Studio metadata store.
 #'
-#' See [https://paws-r.github.io/docs/emr/delete_studio.html](https://paws-r.github.io/docs/emr/delete_studio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_delete_studio/](https://www.paws-r-sdk.com/docs/emr_delete_studio/) for full documentation.
 #'
 #' @param StudioId &#91;required&#93; The ID of the Amazon EMR Studio.
 #'
@@ -389,7 +389,7 @@ emr_delete_studio <- function(StudioId) {
 #' @description
 #' Removes a user or group from an Amazon EMR Studio.
 #'
-#' See [https://paws-r.github.io/docs/emr/delete_studio_session_mapping.html](https://paws-r.github.io/docs/emr/delete_studio_session_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_delete_studio_session_mapping/](https://www.paws-r-sdk.com/docs/emr_delete_studio_session_mapping/) for full documentation.
 #'
 #' @param StudioId &#91;required&#93; The ID of the Amazon EMR Studio.
 #' @param IdentityId The globally unique identifier (GUID) of the user or group to remove
@@ -435,7 +435,7 @@ emr_delete_studio_session_mapping <- function(StudioId, IdentityId = NULL, Ident
 #' @description
 #' Provides cluster-level details including status, hardware and software configuration, VPC settings, and so on.
 #'
-#' See [https://paws-r.github.io/docs/emr/describe_cluster.html](https://paws-r.github.io/docs/emr/describe_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_describe_cluster/](https://www.paws-r-sdk.com/docs/emr_describe_cluster/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The identifier of the cluster to describe.
 #'
@@ -464,7 +464,7 @@ emr_describe_cluster <- function(ClusterId) {
 #' @description
 #' This API is no longer supported and will eventually be removed. We recommend you use [`list_clusters`][emr_list_clusters], [`describe_cluster`][emr_describe_cluster], [`list_steps`][emr_list_steps], [`list_instance_groups`][emr_list_instance_groups] and [`list_bootstrap_actions`][emr_list_bootstrap_actions] instead.
 #'
-#' See [https://paws-r.github.io/docs/emr/describe_job_flows.html](https://paws-r.github.io/docs/emr/describe_job_flows.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_describe_job_flows/](https://www.paws-r-sdk.com/docs/emr_describe_job_flows/) for full documentation.
 #'
 #' @param CreatedAfter Return only job flows created after this date and time.
 #' @param CreatedBefore Return only job flows created before this date and time.
@@ -479,7 +479,7 @@ emr_describe_job_flows <- function(CreatedAfter = NULL, CreatedBefore = NULL, Jo
     name = "DescribeJobFlows",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "JobFlows")
   )
   input <- .emr$describe_job_flows_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, JobFlowIds = JobFlowIds, JobFlowStates = JobFlowStates)
   output <- .emr$describe_job_flows_output()
@@ -496,7 +496,7 @@ emr_describe_job_flows <- function(CreatedAfter = NULL, CreatedBefore = NULL, Jo
 #' @description
 #' Provides details of a notebook execution.
 #'
-#' See [https://paws-r.github.io/docs/emr/describe_notebook_execution.html](https://paws-r.github.io/docs/emr/describe_notebook_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_describe_notebook_execution/](https://www.paws-r-sdk.com/docs/emr_describe_notebook_execution/) for full documentation.
 #'
 #' @param NotebookExecutionId &#91;required&#93; The unique identifier of the notebook execution.
 #'
@@ -527,7 +527,7 @@ emr_describe_notebook_execution <- function(NotebookExecutionId) {
 #' @description
 #' Provides Amazon EMR release label details, such as the releases available the Region where the API request is run, and the available applications for a specific Amazon EMR release label. Can also list Amazon EMR releases that support a specified version of Spark.
 #'
-#' See [https://paws-r.github.io/docs/emr/describe_release_label.html](https://paws-r.github.io/docs/emr/describe_release_label.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_describe_release_label/](https://www.paws-r-sdk.com/docs/emr_describe_release_label/) for full documentation.
 #'
 #' @param ReleaseLabel The target release label to be described.
 #' @param NextToken The pagination token. Reserved for future use. Currently set to null.
@@ -559,7 +559,7 @@ emr_describe_release_label <- function(ReleaseLabel = NULL, NextToken = NULL, Ma
 #' @description
 #' Provides the details of a security configuration by returning the configuration JSON.
 #'
-#' See [https://paws-r.github.io/docs/emr/describe_security_configuration.html](https://paws-r.github.io/docs/emr/describe_security_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_describe_security_configuration/](https://www.paws-r-sdk.com/docs/emr_describe_security_configuration/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the security configuration.
 #'
@@ -588,7 +588,7 @@ emr_describe_security_configuration <- function(Name) {
 #' @description
 #' Provides more detail about the cluster step.
 #'
-#' See [https://paws-r.github.io/docs/emr/describe_step.html](https://paws-r.github.io/docs/emr/describe_step.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_describe_step/](https://www.paws-r-sdk.com/docs/emr_describe_step/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The identifier of the cluster with steps to describe.
 #' @param StepId &#91;required&#93; The identifier of the step to describe.
@@ -619,7 +619,7 @@ emr_describe_step <- function(ClusterId, StepId) {
 #' @description
 #' Returns details for the specified Amazon EMR Studio including ID, Name, VPC, Studio access URL, and so on.
 #'
-#' See [https://paws-r.github.io/docs/emr/describe_studio.html](https://paws-r.github.io/docs/emr/describe_studio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_describe_studio/](https://www.paws-r-sdk.com/docs/emr_describe_studio/) for full documentation.
 #'
 #' @param StudioId &#91;required&#93; The Amazon EMR Studio ID.
 #'
@@ -648,7 +648,7 @@ emr_describe_studio <- function(StudioId) {
 #' @description
 #' Returns the auto-termination policy for an Amazon EMR cluster.
 #'
-#' See [https://paws-r.github.io/docs/emr/get_auto_termination_policy.html](https://paws-r.github.io/docs/emr/get_auto_termination_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_get_auto_termination_policy/](https://www.paws-r-sdk.com/docs/emr_get_auto_termination_policy/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; Specifies the ID of the Amazon EMR cluster for which the
 #' auto-termination policy will be fetched.
@@ -679,7 +679,7 @@ emr_get_auto_termination_policy <- function(ClusterId) {
 #' @description
 #' Returns the Amazon EMR block public access configuration for your Amazon Web Services account in the current Region. For more information see [Configure Block Public Access for Amazon EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/) in the *Amazon EMR Management Guide*.
 #'
-#' See [https://paws-r.github.io/docs/emr/get_block_public_access_configuration.html](https://paws-r.github.io/docs/emr/get_block_public_access_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_get_block_public_access_configuration/](https://www.paws-r-sdk.com/docs/emr_get_block_public_access_configuration/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -708,7 +708,7 @@ emr_get_block_public_access_configuration <- function() {
 #' @description
 #' Provides temporary, HTTP basic credentials that are associated with a given runtime IAM role and used by a cluster with fine-grained access control activated. You can use these credentials to connect to cluster endpoints that support username and password authentication.
 #'
-#' See [https://paws-r.github.io/docs/emr/get_cluster_session_credentials.html](https://paws-r.github.io/docs/emr/get_cluster_session_credentials.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_get_cluster_session_credentials/](https://www.paws-r-sdk.com/docs/emr_get_cluster_session_credentials/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The unique identifier of the cluster.
 #' @param ExecutionRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the runtime role for interactive
@@ -742,7 +742,7 @@ emr_get_cluster_session_credentials <- function(ClusterId, ExecutionRoleArn) {
 #' @description
 #' Fetches the attached managed scaling policy for an Amazon EMR cluster.
 #'
-#' See [https://paws-r.github.io/docs/emr/get_managed_scaling_policy.html](https://paws-r.github.io/docs/emr/get_managed_scaling_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_get_managed_scaling_policy/](https://www.paws-r-sdk.com/docs/emr_get_managed_scaling_policy/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; Specifies the ID of the cluster for which the managed scaling policy
 #' will be fetched.
@@ -773,7 +773,7 @@ emr_get_managed_scaling_policy <- function(ClusterId) {
 #' @description
 #' Fetches mapping details for the specified Amazon EMR Studio and identity (user or group).
 #'
-#' See [https://paws-r.github.io/docs/emr/get_studio_session_mapping.html](https://paws-r.github.io/docs/emr/get_studio_session_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_get_studio_session_mapping/](https://www.paws-r-sdk.com/docs/emr_get_studio_session_mapping/) for full documentation.
 #'
 #' @param StudioId &#91;required&#93; The ID of the Amazon EMR Studio.
 #' @param IdentityId The globally unique identifier (GUID) of the user or group. For more
@@ -817,7 +817,7 @@ emr_get_studio_session_mapping <- function(StudioId, IdentityId = NULL, Identity
 #' @description
 #' Provides information about the bootstrap actions associated with a cluster.
 #'
-#' See [https://paws-r.github.io/docs/emr/list_bootstrap_actions.html](https://paws-r.github.io/docs/emr/list_bootstrap_actions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_list_bootstrap_actions/](https://www.paws-r-sdk.com/docs/emr_list_bootstrap_actions/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The cluster identifier for the bootstrap actions to list.
 #' @param Marker The pagination token that indicates the next set of results to retrieve.
@@ -830,7 +830,7 @@ emr_list_bootstrap_actions <- function(ClusterId, Marker = NULL) {
     name = "ListBootstrapActions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "BootstrapActions")
   )
   input <- .emr$list_bootstrap_actions_input(ClusterId = ClusterId, Marker = Marker)
   output <- .emr$list_bootstrap_actions_output()
@@ -848,7 +848,7 @@ emr_list_bootstrap_actions <- function(ClusterId, Marker = NULL) {
 #' @description
 #' Provides the status of all clusters visible to this Amazon Web Services account. Allows you to filter the list of clusters based on certain criteria; for example, filtering by cluster creation date and time or by status. This call returns a maximum of 50 clusters in unsorted order per call, but returns a marker to track the paging of the cluster list across multiple ListClusters calls.
 #'
-#' See [https://paws-r.github.io/docs/emr/list_clusters.html](https://paws-r.github.io/docs/emr/list_clusters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_list_clusters/](https://www.paws-r-sdk.com/docs/emr_list_clusters/) for full documentation.
 #'
 #' @param CreatedAfter The creation date and time beginning value filter for listing clusters.
 #' @param CreatedBefore The creation date and time end value filter for listing clusters.
@@ -865,7 +865,7 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
     name = "ListClusters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Clusters")
   )
   input <- .emr$list_clusters_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, ClusterStates = ClusterStates, Marker = Marker)
   output <- .emr$list_clusters_output()
@@ -882,7 +882,7 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
 #' @description
 #' Lists all available details about the instance fleets in a cluster.
 #'
-#' See [https://paws-r.github.io/docs/emr/list_instance_fleets.html](https://paws-r.github.io/docs/emr/list_instance_fleets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_list_instance_fleets/](https://www.paws-r-sdk.com/docs/emr_list_instance_fleets/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The unique identifier of the cluster.
 #' @param Marker The pagination token that indicates the next set of results to retrieve.
@@ -895,7 +895,7 @@ emr_list_instance_fleets <- function(ClusterId, Marker = NULL) {
     name = "ListInstanceFleets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "InstanceFleets")
   )
   input <- .emr$list_instance_fleets_input(ClusterId = ClusterId, Marker = Marker)
   output <- .emr$list_instance_fleets_output()
@@ -912,7 +912,7 @@ emr_list_instance_fleets <- function(ClusterId, Marker = NULL) {
 #' @description
 #' Provides all available details about the instance groups in a cluster.
 #'
-#' See [https://paws-r.github.io/docs/emr/list_instance_groups.html](https://paws-r.github.io/docs/emr/list_instance_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_list_instance_groups/](https://www.paws-r-sdk.com/docs/emr_list_instance_groups/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The identifier of the cluster for which to list the instance groups.
 #' @param Marker The pagination token that indicates the next set of results to retrieve.
@@ -925,7 +925,7 @@ emr_list_instance_groups <- function(ClusterId, Marker = NULL) {
     name = "ListInstanceGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "InstanceGroups")
   )
   input <- .emr$list_instance_groups_input(ClusterId = ClusterId, Marker = Marker)
   output <- .emr$list_instance_groups_output()
@@ -943,7 +943,7 @@ emr_list_instance_groups <- function(ClusterId, Marker = NULL) {
 #' @description
 #' Provides information for all active Amazon EC2 instances and Amazon EC2 instances terminated in the last 30 days, up to a maximum of 2,000. Amazon EC2 instances in any of the following states are considered active: AWAITING_FULFILLMENT, PROVISIONING, BOOTSTRAPPING, RUNNING.
 #'
-#' See [https://paws-r.github.io/docs/emr/list_instances.html](https://paws-r.github.io/docs/emr/list_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_list_instances/](https://www.paws-r-sdk.com/docs/emr_list_instances/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The identifier of the cluster for which to list the instances.
 #' @param InstanceGroupId The identifier of the instance group for which to list the instances.
@@ -962,7 +962,7 @@ emr_list_instances <- function(ClusterId, InstanceGroupId = NULL, InstanceGroupT
     name = "ListInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Instances")
   )
   input <- .emr$list_instances_input(ClusterId = ClusterId, InstanceGroupId = InstanceGroupId, InstanceGroupTypes = InstanceGroupTypes, InstanceFleetId = InstanceFleetId, InstanceFleetType = InstanceFleetType, InstanceStates = InstanceStates, Marker = Marker)
   output <- .emr$list_instances_output()
@@ -979,7 +979,7 @@ emr_list_instances <- function(ClusterId, InstanceGroupId = NULL, InstanceGroupT
 #' @description
 #' Provides summaries of all notebook executions. You can filter the list based on multiple criteria such as status, time range, and editor id. Returns a maximum of 50 notebook executions and a marker to track the paging of a longer notebook execution list across multiple [`list_notebook_executions`][emr_list_notebook_executions] calls.
 #'
-#' See [https://paws-r.github.io/docs/emr/list_notebook_executions.html](https://paws-r.github.io/docs/emr/list_notebook_executions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_list_notebook_executions/](https://www.paws-r-sdk.com/docs/emr_list_notebook_executions/) for full documentation.
 #'
 #' @param EditorId The unique ID of the editor associated with the notebook execution.
 #' @param Status The status filter for listing notebook executions.
@@ -1030,7 +1030,7 @@ emr_list_notebook_executions <- function(EditorId = NULL, Status = NULL, From = 
     name = "ListNotebookExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "NotebookExecutions")
   )
   input <- .emr$list_notebook_executions_input(EditorId = EditorId, Status = Status, From = From, To = To, Marker = Marker, ExecutionEngineId = ExecutionEngineId)
   output <- .emr$list_notebook_executions_output()
@@ -1048,7 +1048,7 @@ emr_list_notebook_executions <- function(EditorId = NULL, Status = NULL, From = 
 #' @description
 #' Retrieves release labels of Amazon EMR services in the Region where the API is called.
 #'
-#' See [https://paws-r.github.io/docs/emr/list_release_labels.html](https://paws-r.github.io/docs/emr/list_release_labels.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_list_release_labels/](https://www.paws-r-sdk.com/docs/emr_list_release_labels/) for full documentation.
 #'
 #' @param Filters Filters the results of the request. `Prefix` specifies the prefix of
 #' release labels to return. `Application` specifies the application
@@ -1072,7 +1072,7 @@ emr_list_release_labels <- function(Filters = NULL, NextToken = NULL, MaxResults
     name = "ListReleaseLabels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .emr$list_release_labels_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .emr$list_release_labels_output()
@@ -1090,7 +1090,7 @@ emr_list_release_labels <- function(Filters = NULL, NextToken = NULL, MaxResults
 #' @description
 #' Lists all the security configurations visible to this account, providing their creation dates and times, and their names. This call returns a maximum of 50 clusters per call, but returns a marker to track the paging of the cluster list across multiple ListSecurityConfigurations calls.
 #'
-#' See [https://paws-r.github.io/docs/emr/list_security_configurations.html](https://paws-r.github.io/docs/emr/list_security_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_list_security_configurations/](https://www.paws-r-sdk.com/docs/emr_list_security_configurations/) for full documentation.
 #'
 #' @param Marker The pagination token that indicates the set of results to retrieve.
 #'
@@ -1102,7 +1102,7 @@ emr_list_security_configurations <- function(Marker = NULL) {
     name = "ListSecurityConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "SecurityConfigurations")
   )
   input <- .emr$list_security_configurations_input(Marker = Marker)
   output <- .emr$list_security_configurations_output()
@@ -1120,7 +1120,7 @@ emr_list_security_configurations <- function(Marker = NULL) {
 #' @description
 #' Provides a list of steps for the cluster in reverse order unless you specify `stepIds` with the request or filter by `StepStates`. You can specify a maximum of 10 `stepIDs`. The CLI automatically paginates results to return a list greater than 50 steps. To return more than 50 steps using the CLI, specify a `Marker`, which is a pagination token that indicates the next set of steps to retrieve.
 #'
-#' See [https://paws-r.github.io/docs/emr/list_steps.html](https://paws-r.github.io/docs/emr/list_steps.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_list_steps/](https://www.paws-r-sdk.com/docs/emr_list_steps/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The identifier of the cluster for which to list the steps.
 #' @param StepStates The filter to limit the step list based on certain states.
@@ -1141,7 +1141,7 @@ emr_list_steps <- function(ClusterId, StepStates = NULL, StepIds = NULL, Marker 
     name = "ListSteps",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Steps")
   )
   input <- .emr$list_steps_input(ClusterId = ClusterId, StepStates = StepStates, StepIds = StepIds, Marker = Marker)
   output <- .emr$list_steps_output()
@@ -1159,7 +1159,7 @@ emr_list_steps <- function(ClusterId, StepStates = NULL, StepIds = NULL, Marker 
 #' @description
 #' Returns a list of all user or group session mappings for the Amazon EMR Studio specified by `StudioId`.
 #'
-#' See [https://paws-r.github.io/docs/emr/list_studio_session_mappings.html](https://paws-r.github.io/docs/emr/list_studio_session_mappings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_list_studio_session_mappings/](https://www.paws-r-sdk.com/docs/emr_list_studio_session_mappings/) for full documentation.
 #'
 #' @param StudioId The ID of the Amazon EMR Studio.
 #' @param IdentityType Specifies whether to return session mappings for users or groups. If not
@@ -1175,7 +1175,7 @@ emr_list_studio_session_mappings <- function(StudioId = NULL, IdentityType = NUL
     name = "ListStudioSessionMappings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "SessionMappings")
   )
   input <- .emr$list_studio_session_mappings_input(StudioId = StudioId, IdentityType = IdentityType, Marker = Marker)
   output <- .emr$list_studio_session_mappings_output()
@@ -1193,7 +1193,7 @@ emr_list_studio_session_mappings <- function(StudioId = NULL, IdentityType = NUL
 #' @description
 #' Returns a list of all Amazon EMR Studios associated with the Amazon Web Services account. The list includes details such as ID, Studio Access URL, and creation time for each Studio.
 #'
-#' See [https://paws-r.github.io/docs/emr/list_studios.html](https://paws-r.github.io/docs/emr/list_studios.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_list_studios/](https://www.paws-r-sdk.com/docs/emr_list_studios/) for full documentation.
 #'
 #' @param Marker The pagination token that indicates the set of results to retrieve.
 #'
@@ -1205,7 +1205,7 @@ emr_list_studios <- function(Marker = NULL) {
     name = "ListStudios",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Studios")
   )
   input <- .emr$list_studios_input(Marker = Marker)
   output <- .emr$list_studios_output()
@@ -1217,13 +1217,49 @@ emr_list_studios <- function(Marker = NULL) {
 }
 .emr$operations$list_studios <- emr_list_studios
 
+#' A list of the instance types that Amazon EMR supports
+#'
+#' @description
+#' A list of the instance types that Amazon EMR supports. You can filter the list by Amazon Web Services Region and Amazon EMR release.
+#'
+#' See [https://www.paws-r-sdk.com/docs/emr_list_supported_instance_types/](https://www.paws-r-sdk.com/docs/emr_list_supported_instance_types/) for full documentation.
+#'
+#' @param ReleaseLabel &#91;required&#93; The Amazon EMR release label determines the [versions of open-source
+#' application
+#' packages](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-app-versions-6.x.html)
+#' that Amazon EMR has installed on the cluster. Release labels are in the
+#' format `emr-x.x.x`, where x.x.x is an Amazon EMR release number such as
+#' `emr-6.10.0`. For more information about Amazon EMR releases and their
+#' included application versions and features, see the *\href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-components.html}{Amazon EMR Release Guide}* .
+#' @param Marker The pagination token that marks the next set of results to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname emr_list_supported_instance_types
+emr_list_supported_instance_types <- function(ReleaseLabel, Marker = NULL) {
+  op <- new_operation(
+    name = "ListSupportedInstanceTypes",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "Marker", output_token = "Marker")
+  )
+  input <- .emr$list_supported_instance_types_input(ReleaseLabel = ReleaseLabel, Marker = Marker)
+  output <- .emr$list_supported_instance_types_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$list_supported_instance_types <- emr_list_supported_instance_types
+
 #' Modifies the number of steps that can be executed concurrently for the
 #' cluster specified using ClusterID
 #'
 #' @description
 #' Modifies the number of steps that can be executed concurrently for the cluster specified using ClusterID.
 #'
-#' See [https://paws-r.github.io/docs/emr/modify_cluster.html](https://paws-r.github.io/docs/emr/modify_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_modify_cluster/](https://www.paws-r-sdk.com/docs/emr_modify_cluster/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The unique identifier of the cluster.
 #' @param StepConcurrencyLevel The number of steps that can be executed concurrently. You can specify a
@@ -1259,7 +1295,7 @@ emr_modify_cluster <- function(ClusterId, StepConcurrencyLevel = NULL) {
 #' @description
 #' Modifies the target On-Demand and target Spot capacities for the instance fleet with the specified InstanceFleetID within the cluster specified using ClusterID. The call either succeeds or fails atomically.
 #'
-#' See [https://paws-r.github.io/docs/emr/modify_instance_fleet.html](https://paws-r.github.io/docs/emr/modify_instance_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_modify_instance_fleet/](https://www.paws-r-sdk.com/docs/emr_modify_instance_fleet/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The unique identifier of the cluster.
 #' @param InstanceFleet &#91;required&#93; The configuration parameters of the instance fleet.
@@ -1290,7 +1326,7 @@ emr_modify_instance_fleet <- function(ClusterId, InstanceFleet) {
 #' @description
 #' ModifyInstanceGroups modifies the number of nodes and configuration settings of an instance group. The input parameters include the new target instance count for the group and the instance group ID. The call will either succeed or fail atomically.
 #'
-#' See [https://paws-r.github.io/docs/emr/modify_instance_groups.html](https://paws-r.github.io/docs/emr/modify_instance_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_modify_instance_groups/](https://www.paws-r-sdk.com/docs/emr_modify_instance_groups/) for full documentation.
 #'
 #' @param ClusterId The ID of the cluster to which the instance group belongs.
 #' @param InstanceGroups Instance groups to change.
@@ -1321,7 +1357,7 @@ emr_modify_instance_groups <- function(ClusterId = NULL, InstanceGroups = NULL) 
 #' @description
 #' Creates or updates an automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates Amazon EC2 instances in response to the value of a CloudWatch metric.
 #'
-#' See [https://paws-r.github.io/docs/emr/put_auto_scaling_policy.html](https://paws-r.github.io/docs/emr/put_auto_scaling_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_put_auto_scaling_policy/](https://www.paws-r-sdk.com/docs/emr_put_auto_scaling_policy/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; Specifies the ID of a cluster. The instance group to which the automatic
 #' scaling policy is applied is within this cluster.
@@ -1354,7 +1390,7 @@ emr_put_auto_scaling_policy <- function(ClusterId, InstanceGroupId, AutoScalingP
 #' @description
 #' Auto-termination is supported in Amazon EMR releases 5.30.0 and 6.1.0 and later. For more information, see [Using an auto-termination policy](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-auto-termination-policy.html).
 #'
-#' See [https://paws-r.github.io/docs/emr/put_auto_termination_policy.html](https://paws-r.github.io/docs/emr/put_auto_termination_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_put_auto_termination_policy/](https://www.paws-r-sdk.com/docs/emr_put_auto_termination_policy/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; Specifies the ID of the Amazon EMR cluster to which the auto-termination
 #' policy will be attached.
@@ -1386,7 +1422,7 @@ emr_put_auto_termination_policy <- function(ClusterId, AutoTerminationPolicy = N
 #' @description
 #' Creates or updates an Amazon EMR block public access configuration for your Amazon Web Services account in the current Region. For more information see [Configure Block Public Access for Amazon EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/) in the *Amazon EMR Management Guide*.
 #'
-#' See [https://paws-r.github.io/docs/emr/put_block_public_access_configuration.html](https://paws-r.github.io/docs/emr/put_block_public_access_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_put_block_public_access_configuration/](https://www.paws-r-sdk.com/docs/emr_put_block_public_access_configuration/) for full documentation.
 #'
 #' @param BlockPublicAccessConfiguration &#91;required&#93; A configuration for Amazon EMR block public access. The configuration
 #' applies to all clusters created in your account for the current Region.
@@ -1431,7 +1467,7 @@ emr_put_block_public_access_configuration <- function(BlockPublicAccessConfigura
 #' @description
 #' Creates or updates a managed scaling policy for an Amazon EMR cluster. The managed scaling policy defines the limits for resources, such as Amazon EC2 instances that can be added or terminated from a cluster. The policy only applies to the core and task nodes. The master node cannot be scaled after initial configuration.
 #'
-#' See [https://paws-r.github.io/docs/emr/put_managed_scaling_policy.html](https://paws-r.github.io/docs/emr/put_managed_scaling_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_put_managed_scaling_policy/](https://www.paws-r-sdk.com/docs/emr_put_managed_scaling_policy/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; Specifies the ID of an Amazon EMR cluster where the managed scaling
 #' policy is attached.
@@ -1463,7 +1499,7 @@ emr_put_managed_scaling_policy <- function(ClusterId, ManagedScalingPolicy) {
 #' @description
 #' Removes an automatic scaling policy from a specified instance group within an Amazon EMR cluster.
 #'
-#' See [https://paws-r.github.io/docs/emr/remove_auto_scaling_policy.html](https://paws-r.github.io/docs/emr/remove_auto_scaling_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_remove_auto_scaling_policy/](https://www.paws-r-sdk.com/docs/emr_remove_auto_scaling_policy/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; Specifies the ID of a cluster. The instance group to which the automatic
 #' scaling policy is applied is within this cluster.
@@ -1495,7 +1531,7 @@ emr_remove_auto_scaling_policy <- function(ClusterId, InstanceGroupId) {
 #' @description
 #' Removes an auto-termination policy from an Amazon EMR cluster.
 #'
-#' See [https://paws-r.github.io/docs/emr/remove_auto_termination_policy.html](https://paws-r.github.io/docs/emr/remove_auto_termination_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_remove_auto_termination_policy/](https://www.paws-r-sdk.com/docs/emr_remove_auto_termination_policy/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; Specifies the ID of the Amazon EMR cluster from which the
 #' auto-termination policy will be removed.
@@ -1525,7 +1561,7 @@ emr_remove_auto_termination_policy <- function(ClusterId) {
 #' @description
 #' Removes a managed scaling policy from a specified Amazon EMR cluster.
 #'
-#' See [https://paws-r.github.io/docs/emr/remove_managed_scaling_policy.html](https://paws-r.github.io/docs/emr/remove_managed_scaling_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_remove_managed_scaling_policy/](https://www.paws-r-sdk.com/docs/emr_remove_managed_scaling_policy/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; Specifies the ID of the cluster from which the managed scaling policy
 #' will be removed.
@@ -1556,7 +1592,7 @@ emr_remove_managed_scaling_policy <- function(ClusterId) {
 #' @description
 #' Removes tags from an Amazon EMR resource, such as a cluster or Amazon EMR Studio. Tags make it easier to associate resources in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see [Tag Clusters](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html).
 #'
-#' See [https://paws-r.github.io/docs/emr/remove_tags.html](https://paws-r.github.io/docs/emr/remove_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_remove_tags/](https://www.paws-r-sdk.com/docs/emr_remove_tags/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The Amazon EMR resource identifier from which tags will be removed. For
 #' example, a cluster identifier or an Amazon EMR Studio ID.
@@ -1587,7 +1623,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' @description
 #' RunJobFlow creates and starts running a new cluster (job flow). The cluster runs the steps specified. After the steps complete, the cluster stops and the HDFS partition is lost. To prevent loss of data, configure the last step of the job flow to store results in Amazon S3. If the JobFlowInstancesConfig `KeepJobFlowAliveWhenNoSteps` parameter is set to `TRUE`, the cluster transitions to the WAITING state rather than shutting down after the steps have completed.
 #'
-#' See [https://paws-r.github.io/docs/emr/run_job_flow.html](https://paws-r.github.io/docs/emr/run_job_flow.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_run_job_flow/](https://www.paws-r-sdk.com/docs/emr_run_job_flow/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the job flow.
 #' @param LogUri The location in Amazon S3 to write the log files of the job flow. If a
@@ -1771,7 +1807,7 @@ emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, 
 #' @description
 #' SetTerminationProtection locks a cluster (job flow) so the Amazon EC2 instances in the cluster cannot be terminated by user intervention, an API call, or in the event of a job-flow error. The cluster still terminates upon successful completion of the job flow. Calling [`set_termination_protection`][emr_set_termination_protection] on a cluster is similar to calling the Amazon EC2 `DisableAPITermination` API on all Amazon EC2 instances in a cluster.
 #'
-#' See [https://paws-r.github.io/docs/emr/set_termination_protection.html](https://paws-r.github.io/docs/emr/set_termination_protection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_set_termination_protection/](https://www.paws-r-sdk.com/docs/emr_set_termination_protection/) for full documentation.
 #'
 #' @param JobFlowIds &#91;required&#93; A list of strings that uniquely identify the clusters to protect. This
 #' identifier is returned by [`run_job_flow`][emr_run_job_flow] and can
@@ -1805,7 +1841,7 @@ emr_set_termination_protection <- function(JobFlowIds, TerminationProtected) {
 #' @description
 #' The SetVisibleToAllUsers parameter is no longer supported. Your cluster may be visible to all users in your account. To restrict cluster access using an IAM policy, see [Identity and Access Management for Amazon EMR](https://docs.aws.amazon.com/emr/latest/ManagementGuide/).
 #'
-#' See [https://paws-r.github.io/docs/emr/set_visible_to_all_users.html](https://paws-r.github.io/docs/emr/set_visible_to_all_users.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_set_visible_to_all_users/](https://www.paws-r-sdk.com/docs/emr_set_visible_to_all_users/) for full documentation.
 #'
 #' @param JobFlowIds &#91;required&#93; The unique identifier of the job flow (cluster).
 #' @param VisibleToAllUsers &#91;required&#93; A value of `true` indicates that an IAM principal in the Amazon Web
@@ -1840,7 +1876,7 @@ emr_set_visible_to_all_users <- function(JobFlowIds, VisibleToAllUsers) {
 #' @description
 #' Starts a notebook execution.
 #'
-#' See [https://paws-r.github.io/docs/emr/start_notebook_execution.html](https://paws-r.github.io/docs/emr/start_notebook_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_start_notebook_execution/](https://www.paws-r-sdk.com/docs/emr_start_notebook_execution/) for full documentation.
 #'
 #' @param EditorId The unique identifier of the Amazon EMR Notebook to use for notebook
 #' execution.
@@ -1895,7 +1931,7 @@ emr_start_notebook_execution <- function(EditorId = NULL, RelativePath = NULL, N
 #' @description
 #' Stops a notebook execution.
 #'
-#' See [https://paws-r.github.io/docs/emr/stop_notebook_execution.html](https://paws-r.github.io/docs/emr/stop_notebook_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_stop_notebook_execution/](https://www.paws-r-sdk.com/docs/emr_stop_notebook_execution/) for full documentation.
 #'
 #' @param NotebookExecutionId &#91;required&#93; The unique identifier of the notebook execution.
 #'
@@ -1924,7 +1960,7 @@ emr_stop_notebook_execution <- function(NotebookExecutionId) {
 #' @description
 #' TerminateJobFlows shuts a list of clusters (job flows) down. When a job flow is shut down, any step not yet completed is canceled and the Amazon EC2 instances on which the cluster is running are stopped. Any log files not already saved are uploaded to Amazon S3 if a LogUri was specified when the cluster was created.
 #'
-#' See [https://paws-r.github.io/docs/emr/terminate_job_flows.html](https://paws-r.github.io/docs/emr/terminate_job_flows.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_terminate_job_flows/](https://www.paws-r-sdk.com/docs/emr_terminate_job_flows/) for full documentation.
 #'
 #' @param JobFlowIds &#91;required&#93; A list of job flows to be shut down.
 #'
@@ -1954,7 +1990,7 @@ emr_terminate_job_flows <- function(JobFlowIds) {
 #' @description
 #' Updates an Amazon EMR Studio configuration, including attributes such as name, description, and subnets.
 #'
-#' See [https://paws-r.github.io/docs/emr/update_studio.html](https://paws-r.github.io/docs/emr/update_studio.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_update_studio/](https://www.paws-r-sdk.com/docs/emr_update_studio/) for full documentation.
 #'
 #' @param StudioId &#91;required&#93; The ID of the Amazon EMR Studio to update.
 #' @param Name A descriptive name for the Amazon EMR Studio.
@@ -1993,7 +2029,7 @@ emr_update_studio <- function(StudioId, Name = NULL, Description = NULL, SubnetI
 #' @description
 #' Updates the session policy attached to the user or group for the specified Amazon EMR Studio.
 #'
-#' See [https://paws-r.github.io/docs/emr/update_studio_session_mapping.html](https://paws-r.github.io/docs/emr/update_studio_session_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emr_update_studio_session_mapping/](https://www.paws-r-sdk.com/docs/emr_update_studio_session_mapping/) for full documentation.
 #'
 #' @param StudioId &#91;required&#93; The ID of the Amazon EMR Studio.
 #' @param IdentityId The globally unique identifier (GUID) of the user or group. For more

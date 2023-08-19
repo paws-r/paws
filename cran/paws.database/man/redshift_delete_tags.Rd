@@ -15,6 +15,6 @@ tags. For example, \code{arn:aws:redshift:us-east-2:123456789:cluster:t1}.}
 \description{
 Deletes tags from a resource. You must provide the ARN of the resource from which you want to delete the tag or tags.
 
-See \url{https://paws-r.github.io/docs/redshift/delete_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_delete_tags/} for full documentation.
 }
 \keyword{internal}

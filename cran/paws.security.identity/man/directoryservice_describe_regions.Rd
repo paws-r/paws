@@ -23,6 +23,6 @@ this is the first call.}
 \description{
 Provides information about the Regions that are configured for multi-Region replication.
 
-See \url{https://paws-r.github.io/docs/directoryservice/describe_regions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_describe_regions/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ sagemaker_describe_pipeline_execution(PipelineExecutionArn)
 \description{
 Describes the details of a pipeline execution.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_pipeline_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_pipeline_execution/} for full documentation.
 }
 \keyword{internal}

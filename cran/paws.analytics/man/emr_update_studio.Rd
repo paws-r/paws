@@ -32,6 +32,6 @@ Amazon EMR Studio.}
 \description{
 Updates an Amazon EMR Studio configuration, including attributes such as name, description, and subnets.
 
-See \url{https://paws-r.github.io/docs/emr/update_studio.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_update_studio/} for full documentation.
 }
 \keyword{internal}

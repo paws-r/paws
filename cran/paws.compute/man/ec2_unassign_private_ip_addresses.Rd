@@ -23,6 +23,6 @@ than one IP address.}
 \description{
 Unassigns one or more secondary private IP addresses, or IPv4 Prefix Delegation prefixes from a network interface.
 
-See \url{https://paws-r.github.io/docs/ec2/unassign_private_ip_addresses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_unassign_private_ip_addresses/} for full documentation.
 }
 \keyword{internal}

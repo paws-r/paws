@@ -30,6 +30,6 @@ the next page of results in a paginated response.}
 \description{
 Returns the evaluation results for the specified Config rule. The results indicate which Amazon Web Services resources were evaluated by the rule, when each resource was last evaluated, and whether each resource complies with the rule.
 
-See \url{https://paws-r.github.io/docs/configservice/get_compliance_details_by_config_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_get_compliance_details_by_config_rule/} for full documentation.
 }
 \keyword{internal}

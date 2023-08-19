@@ -12,6 +12,6 @@ drs_delete_recovery_instance(recoveryInstanceID)
 \description{
 Deletes a single Recovery Instance by ID. This deletes the Recovery Instance resource from Elastic Disaster Recovery. The Recovery Instance must be disconnected first in order to delete it.
 
-See \url{https://paws-r.github.io/docs/drs/delete_recovery_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_delete_recovery_instance/} for full documentation.
 }
 \keyword{internal}

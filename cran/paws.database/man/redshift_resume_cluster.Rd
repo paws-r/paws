@@ -12,6 +12,6 @@ redshift_resume_cluster(ClusterIdentifier)
 \description{
 Resumes a paused cluster.
 
-See \url{https://paws-r.github.io/docs/redshift/resume_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_resume_cluster/} for full documentation.
 }
 \keyword{internal}

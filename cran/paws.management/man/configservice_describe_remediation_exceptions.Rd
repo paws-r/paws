@@ -27,6 +27,6 @@ request the next page of results in a paginated response.}
 \description{
 Returns the details of one or more remediation exceptions. A detailed view of a remediation exception for a set of resources that includes an explanation of an exception and the time when the exception will be deleted. When you specify the limit and the next token, you receive a paginated response.
 
-See \url{https://paws-r.github.io/docs/configservice/describe_remediation_exceptions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_describe_remediation_exceptions/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ information.}
 \description{
 Returns information about a specified approval rule template.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_approval_rule_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_approval_rule_template/} for full documentation.
 }
 \keyword{internal}

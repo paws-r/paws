@@ -20,6 +20,6 @@ returned in the response.}
 \description{
 Gets a list of the continuous deployment policies in your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_continuous_deployment_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_continuous_deployment_policies/} for full documentation.
 }
 \keyword{internal}

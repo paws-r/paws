@@ -33,6 +33,6 @@ in your next request to receive the next set of results.}
 \description{
 List the candidates created for the job.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_candidates_for_auto_ml_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_candidates_for_auto_ml_job/} for full documentation.
 }
 \keyword{internal}

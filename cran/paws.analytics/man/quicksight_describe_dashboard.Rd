@@ -25,6 +25,6 @@ the latest published dashboard version is described.}
 \description{
 Provides a summary for a dashboard.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_dashboard.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_dashboard/} for full documentation.
 }
 \keyword{internal}

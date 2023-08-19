@@ -9,6 +9,6 @@ servicecatalog_disable_aws_organizations_access()
 \description{
 Disable portfolio sharing through the Organizations service. This command will not delete your current shares, but prevents you from creating new shares throughout your organization. Current shares are not kept in sync with your organization structure if the structure changes after calling this API. Only the management account in the organization can call this API.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/disable_aws_organizations_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_disable_aws_organizations_access/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ cognitoidentityprovider_get_ui_customization(UserPoolId, ClientId = NULL)
 \description{
 Gets the user interface (UI) Customization information for a particular app client's app UI, if any such information exists for the client. If nothing is set for the particular client, but there is an existing pool level customization (the app \code{clientId} is \code{ALL}), then that information is returned. If nothing is present, then an empty shape is returned.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/get_ui_customization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_ui_customization/} for full documentation.
 }
 \keyword{internal}

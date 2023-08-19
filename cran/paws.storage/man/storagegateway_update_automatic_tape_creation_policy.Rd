@@ -19,6 +19,6 @@ new tapes.}
 \description{
 Updates the automatic tape creation policy of a gateway. Use this to update the policy with a new set of automatic tape creation rules. This is only supported for tape gateways.
 
-See \url{https://paws-r.github.io/docs/storagegateway/update_automatic_tape_creation_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_update_automatic_tape_creation_policy/} for full documentation.
 }
 \keyword{internal}

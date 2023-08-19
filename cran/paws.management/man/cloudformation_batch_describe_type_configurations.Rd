@@ -3,7 +3,7 @@
 \name{cloudformation_batch_describe_type_configurations}
 \alias{cloudformation_batch_describe_type_configurations}
 \title{Returns configuration data for the specified CloudFormation extensions,
-from the CloudFormation registry for the account and region}
+from the CloudFormation registry for the account and Region}
 \usage{
 cloudformation_batch_describe_type_configurations(TypeConfigurationIdentifiers)
 }
@@ -11,8 +11,8 @@ cloudformation_batch_describe_type_configurations(TypeConfigurationIdentifiers)
 \item{TypeConfigurationIdentifiers}{[required] The list of identifiers for the desired extension configurations.}
 }
 \description{
-Returns configuration data for the specified CloudFormation extensions, from the CloudFormation registry for the account and region.
+Returns configuration data for the specified CloudFormation extensions, from the CloudFormation registry for the account and Region.
 
-See \url{https://paws-r.github.io/docs/cloudformation/batch_describe_type_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_batch_describe_type_configurations/} for full documentation.
 }
 \keyword{internal}

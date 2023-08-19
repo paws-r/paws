@@ -18,6 +18,6 @@ resource policy for.}
 \description{
 Creates or updates a resource policy. Currently, you can use policies to share snapshots across Amazon Web Services accounts.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/put_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_put_resource_policy/} for full documentation.
 }
 \keyword{internal}

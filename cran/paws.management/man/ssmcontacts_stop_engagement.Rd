@@ -15,6 +15,6 @@ ssmcontacts_stop_engagement(EngagementId, Reason = NULL)
 \description{
 Stops an engagement before it finishes the final stage of the escalation plan or engagement plan. Further contacts aren't engaged.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/stop_engagement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_stop_engagement/} for full documentation.
 }
 \keyword{internal}

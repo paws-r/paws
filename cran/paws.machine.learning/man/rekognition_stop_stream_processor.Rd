@@ -14,6 +14,6 @@ rekognition_stop_stream_processor(Name)
 \description{
 Stops a running stream processor that was created by \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}.
 
-See \url{https://paws-r.github.io/docs/rekognition/stop_stream_processor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_stop_stream_processor/} for full documentation.
 }
 \keyword{internal}

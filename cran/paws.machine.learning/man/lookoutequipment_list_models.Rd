@@ -28,6 +28,6 @@ ML models.}
 \description{
 Generates a list of all models in the account, including model name and ARN, dataset, and status.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/list_models.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_list_models/} for full documentation.
 }
 \keyword{internal}

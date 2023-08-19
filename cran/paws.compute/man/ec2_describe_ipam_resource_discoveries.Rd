@@ -31,6 +31,6 @@ results.}
 \description{
 Describes IPAM resource discoveries. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_ipam_resource_discoveries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_ipam_resource_discoveries/} for full documentation.
 }
 \keyword{internal}

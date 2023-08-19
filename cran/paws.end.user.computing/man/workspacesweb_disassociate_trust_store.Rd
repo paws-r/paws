@@ -12,6 +12,6 @@ workspacesweb_disassociate_trust_store(portalArn)
 \description{
 Disassociates a trust store from a web portal.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/disassociate_trust_store.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_disassociate_trust_store/} for full documentation.
 }
 \keyword{internal}

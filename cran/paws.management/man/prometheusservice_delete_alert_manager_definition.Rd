@@ -5,19 +5,19 @@
 \title{Deletes an alert manager definition}
 \usage{
 prometheusservice_delete_alert_manager_definition(
-  clientToken = NULL,
-  workspaceId
+  workspaceId,
+  clientToken = NULL
 )
 }
 \arguments{
+\item{workspaceId}{[required] The ID of the workspace in which to delete the alert manager definition.}
+
 \item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
 idempotency of the request.}
-
-\item{workspaceId}{[required] The ID of the workspace in which to delete the alert manager definition.}
 }
 \description{
 Deletes an alert manager definition.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/delete_alert_manager_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_delete_alert_manager_definition/} for full documentation.
 }
 \keyword{internal}

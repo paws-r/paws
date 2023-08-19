@@ -15,6 +15,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Retrieves the in-app messages targeted for the provided endpoint ID.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_in_app_messages.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_in_app_messages/} for full documentation.
 }
 \keyword{internal}

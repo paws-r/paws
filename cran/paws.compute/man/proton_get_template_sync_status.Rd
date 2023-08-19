@@ -16,6 +16,6 @@ proton_get_template_sync_status(templateName, templateType, templateVersion)
 \description{
 Get the status of a template sync.
 
-See \url{https://paws-r.github.io/docs/proton/get_template_sync_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_get_template_sync_status/} for full documentation.
 }
 \keyword{internal}

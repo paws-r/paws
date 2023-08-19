@@ -16,7 +16,8 @@ sts_assume_role(
   ExternalId = NULL,
   SerialNumber = NULL,
   TokenCode = NULL,
-  SourceIdentity = NULL
+  SourceIdentity = NULL,
+  ProvidedContexts = NULL
 )
 }
 \arguments{
@@ -223,10 +224,12 @@ consisting of upper- and lower-case alphanumeric characters with no
 spaces. You can also include underscores or any of the following
 characters: =,.@-. You cannot use a value that begins with the text
 \verb{aws:}. This prefix is reserved for Amazon Web Services internal use.}
+
+\item{ProvidedContexts}{Reserved for future use.}
 }
 \description{
 Returns a set of temporary security credentials that you can use to access Amazon Web Services resources. These temporary credentials consist of an access key ID, a secret access key, and a security token. Typically, you use \code{\link[=sts_assume_role]{assume_role}} within your account or for cross-account access. For a comparison of \code{\link[=sts_assume_role]{assume_role}} with other API operations that produce temporary credentials, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html}{Requesting Temporary Security Credentials} and \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_request.html#stsapi_comparison}{Comparing the Amazon Web Services STS API operations} in the \emph{IAM User Guide}.
 
-See \url{https://paws-r.github.io/docs/sts/assume_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sts_assume_role/} for full documentation.
 }
 \keyword{internal}

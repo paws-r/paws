@@ -55,6 +55,6 @@ For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide
 \description{
 Updates an existing custom vocabulary filter with a new list of words. The new list you provide overwrites all previous entries; you cannot append new terms onto an existing custom vocabulary filter.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/update_vocabulary_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_update_vocabulary_filter/} for full documentation.
 }
 \keyword{internal}

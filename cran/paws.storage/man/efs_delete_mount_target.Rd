@@ -12,6 +12,6 @@ efs_delete_mount_target(MountTargetId)
 \description{
 Deletes the specified mount target.
 
-See \url{https://paws-r.github.io/docs/efs/delete_mount_target.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_delete_mount_target/} for full documentation.
 }
 \keyword{internal}

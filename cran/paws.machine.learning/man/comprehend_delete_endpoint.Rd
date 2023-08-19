@@ -12,6 +12,6 @@ comprehend_delete_endpoint(EndpointArn)
 \description{
 Deletes a model-specific endpoint for a previously-trained custom model. All endpoints must be deleted in order for the model to be deleted. For information about endpoints, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html}{Managing endpoints}.
 
-See \url{https://paws-r.github.io/docs/comprehend/delete_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_delete_endpoint/} for full documentation.
 }
 \keyword{internal}

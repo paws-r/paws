@@ -14,6 +14,6 @@ cognitoidentityprovider_admin_disable_user(UserPoolId, Username)
 \description{
 Deactivates a user and revokes all access tokens for the user. A deactivated user can't sign in, but still appears in the responses to \code{\link[=cognitoidentityprovider_get_user]{get_user}} and \code{\link[=cognitoidentityprovider_list_users]{list_users}} API requests.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_disable_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_disable_user/} for full documentation.
 }
 \keyword{internal}

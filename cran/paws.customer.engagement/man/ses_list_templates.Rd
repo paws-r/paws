@@ -20,6 +20,6 @@ return up to 10 results.}
 \description{
 Lists the email templates present in your Amazon SES account in the current AWS Region.
 
-See \url{https://paws-r.github.io/docs/ses/list_templates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_list_templates/} for full documentation.
 }
 \keyword{internal}

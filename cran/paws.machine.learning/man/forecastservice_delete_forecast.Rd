@@ -12,6 +12,6 @@ forecastservice_delete_forecast(ForecastArn)
 \description{
 Deletes a forecast created using the \code{\link[=forecastservice_create_forecast]{create_forecast}} operation. You can delete only forecasts that have a status of \code{ACTIVE} or \code{CREATE_FAILED}. To get the status, use the \code{\link[=forecastservice_describe_forecast]{describe_forecast}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/delete_forecast.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_delete_forecast/} for full documentation.
 }
 \keyword{internal}

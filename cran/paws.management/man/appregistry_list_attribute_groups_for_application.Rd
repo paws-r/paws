@@ -23,6 +23,6 @@ optional.}
 \description{
 Lists the details of all attribute groups associated with a specific application. The results display in pages.
 
-See \url{https://paws-r.github.io/docs/appregistry/list_attribute_groups_for_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_list_attribute_groups_for_application/} for full documentation.
 }
 \keyword{internal}

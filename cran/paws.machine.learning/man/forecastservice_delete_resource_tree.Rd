@@ -13,6 +13,6 @@ child resources of the parent resource will also be deleted.}
 \description{
 Deletes an entire resource tree. This operation will delete the parent resource and its child resources.
 
-See \url{https://paws-r.github.io/docs/forecastservice/delete_resource_tree.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_delete_resource_tree/} for full documentation.
 }
 \keyword{internal}

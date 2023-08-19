@@ -12,6 +12,6 @@ lookoutmetrics_delete_alert(AlertArn)
 \description{
 Deletes an alert.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/delete_alert.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_delete_alert/} for full documentation.
 }
 \keyword{internal}

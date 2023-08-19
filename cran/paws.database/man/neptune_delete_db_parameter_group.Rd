@@ -19,6 +19,6 @@ Constraints:
 \description{
 Deletes a specified DBParameterGroup. The DBParameterGroup to be deleted can't be associated with any DB instances.
 
-See \url{https://paws-r.github.io/docs/neptune/delete_db_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_delete_db_parameter_group/} for full documentation.
 }
 \keyword{internal}

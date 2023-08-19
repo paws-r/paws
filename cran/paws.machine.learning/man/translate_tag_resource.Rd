@@ -17,6 +17,6 @@ a specific resource.}
 \description{
 Associates a specific tag with a resource. A tag is a key-value pair that adds as a metadata to a resource. For more information, see \href{https://docs.aws.amazon.com/translate/latest/dg/tagging.html}{Tagging your resources}.
 
-See \url{https://paws-r.github.io/docs/translate/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/translate_tag_resource/} for full documentation.
 }
 \keyword{internal}

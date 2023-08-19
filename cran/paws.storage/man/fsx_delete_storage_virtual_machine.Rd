@@ -17,6 +17,6 @@ fsx_delete_storage_virtual_machine(
 \description{
 Deletes an existing Amazon FSx for ONTAP storage virtual machine (SVM). Prior to deleting an SVM, you must delete all non-root volumes in the SVM, otherwise the operation will fail.
 
-See \url{https://paws-r.github.io/docs/fsx/delete_storage_virtual_machine.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_delete_storage_virtual_machine/} for full documentation.
 }
 \keyword{internal}

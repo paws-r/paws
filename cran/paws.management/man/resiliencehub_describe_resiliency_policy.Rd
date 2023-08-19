@@ -17,6 +17,6 @@ in the \emph{AWS General Reference} guide.}
 \description{
 Describes a specified resiliency policy for an Resilience Hub application. The returned policy object includes creation time, data location constraints, the Amazon Resource Name (ARN) for the policy, tags, tier, and more.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/describe_resiliency_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_describe_resiliency_policy/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ drs_describe_source_servers(
 \description{
 Lists all Source Servers or multiple Source Servers filtered by ID.
 
-See \url{https://paws-r.github.io/docs/drs/describe_source_servers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_describe_source_servers/} for full documentation.
 }
 \keyword{internal}

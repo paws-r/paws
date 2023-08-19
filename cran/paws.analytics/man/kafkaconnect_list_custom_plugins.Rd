@@ -16,6 +16,6 @@ continue listing from where the previous operation left off.}
 \description{
 Returns a list of all of the custom plugins in this account and Region.
 
-See \url{https://paws-r.github.io/docs/kafkaconnect/list_custom_plugins.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafkaconnect_list_custom_plugins/} for full documentation.
 }
 \keyword{internal}

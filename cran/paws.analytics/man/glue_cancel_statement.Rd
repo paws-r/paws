@@ -16,6 +16,6 @@ glue_cancel_statement(SessionId, Id, RequestOrigin = NULL)
 \description{
 Cancels the statement.
 
-See \url{https://paws-r.github.io/docs/glue/cancel_statement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_cancel_statement/} for full documentation.
 }
 \keyword{internal}

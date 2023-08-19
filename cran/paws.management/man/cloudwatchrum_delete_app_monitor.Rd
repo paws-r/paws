@@ -12,6 +12,6 @@ cloudwatchrum_delete_app_monitor(Name)
 \description{
 Deletes an existing app monitor. This immediately stops the collection of data.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/delete_app_monitor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_delete_app_monitor/} for full documentation.
 }
 \keyword{internal}

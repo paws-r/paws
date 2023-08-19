@@ -18,6 +18,6 @@ that is associated with the first interaction with the contact center.}
 \description{
 Ends message streaming on a specified contact. To restart message streaming on that contact, call the \code{\link[=connect_start_contact_streaming]{start_contact_streaming}} API.
 
-See \url{https://paws-r.github.io/docs/connect/stop_contact_streaming.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_stop_contact_streaming/} for full documentation.
 }
 \keyword{internal}

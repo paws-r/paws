@@ -12,6 +12,6 @@ clouddirectory_get_schema_as_json(SchemaArn)
 \description{
 Retrieves a JSON representation of the schema. See \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/schemas_jsonformat.html#schemas_json}{JSON Schema Format} for more information.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/get_schema_as_json.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_get_schema_as_json/} for full documentation.
 }
 \keyword{internal}

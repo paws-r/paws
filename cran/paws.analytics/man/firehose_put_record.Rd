@@ -15,6 +15,6 @@ firehose_put_record(DeliveryStreamName, Record)
 \description{
 Writes a single data record into an Amazon Kinesis Data Firehose delivery stream. To write multiple data records into a delivery stream, use \code{\link[=firehose_put_record_batch]{put_record_batch}}. Applications using these operations are referred to as producers.
 
-See \url{https://paws-r.github.io/docs/firehose/put_record.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/firehose_put_record/} for full documentation.
 }
 \keyword{internal}

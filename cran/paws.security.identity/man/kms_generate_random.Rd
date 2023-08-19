@@ -47,6 +47,6 @@ in the \emph{Key Management Service Developer Guide}.}
 \description{
 Returns a random byte string that is cryptographically secure.
 
-See \url{https://paws-r.github.io/docs/kms/generate_random.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_generate_random/} for full documentation.
 }
 \keyword{internal}

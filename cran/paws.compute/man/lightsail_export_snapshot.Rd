@@ -13,6 +13,6 @@ lightsail_export_snapshot(sourceSnapshotName)
 \description{
 Exports an Amazon Lightsail instance or block storage disk snapshot to Amazon Elastic Compute Cloud (Amazon EC2). This operation results in an export snapshot record that can be used with the \verb{create cloud formation stack} operation to create new Amazon EC2 instances.
 
-See \url{https://paws-r.github.io/docs/lightsail/export_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_export_snapshot/} for full documentation.
 }
 \keyword{internal}

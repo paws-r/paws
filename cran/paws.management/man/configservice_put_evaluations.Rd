@@ -28,6 +28,6 @@ null.}
 \description{
 Used by an Lambda function to deliver evaluation results to Config. This action is required in every Lambda function that is invoked by an Config rule.
 
-See \url{https://paws-r.github.io/docs/configservice/put_evaluations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_put_evaluations/} for full documentation.
 }
 \keyword{internal}

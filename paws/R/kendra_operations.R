@@ -1877,6 +1877,8 @@ kendra_create_experience <- function(Name, IndexId, RoleArn = NULL, Configuratio
 #' format, a CSV format that includes customs attributes in a header, and a
 #' JSON format that includes custom attributes.
 #' 
+#' The default format is CSV.
+#' 
 #' The format must match the format of the file stored in the S3 bucket
 #' identified in the `S3Path` parameter.
 #' 
@@ -4927,7 +4929,7 @@ kendra_get_snapshots <- function(IndexId, Interval, MetricType, NextToken = NULL
     name = "GetSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$get_snapshots_input(IndexId = IndexId, Interval = Interval, MetricType = MetricType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$get_snapshots_output()
@@ -4990,7 +4992,7 @@ kendra_list_access_control_configurations <- function(IndexId, NextToken = NULL,
     name = "ListAccessControlConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_access_control_configurations_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_access_control_configurations_output()
@@ -5083,7 +5085,7 @@ kendra_list_data_source_sync_jobs <- function(Id, IndexId, NextToken = NULL, Max
     name = "ListDataSourceSyncJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_data_source_sync_jobs_input(Id = Id, IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults, StartTimeFilter = StartTimeFilter, StatusFilter = StatusFilter)
   output <- .kendra$list_data_source_sync_jobs_output()
@@ -5153,7 +5155,7 @@ kendra_list_data_sources <- function(IndexId, NextToken = NULL, MaxResults = NUL
     name = "ListDataSources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_data_sources_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_data_sources_output()
@@ -5223,7 +5225,7 @@ kendra_list_entity_personas <- function(Id, IndexId, NextToken = NULL, MaxResult
     name = "ListEntityPersonas",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_entity_personas_input(Id = Id, IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_entity_personas_output()
@@ -5296,7 +5298,7 @@ kendra_list_experience_entities <- function(Id, IndexId, NextToken = NULL) {
     name = "ListExperienceEntities",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken")
   )
   input <- .kendra$list_experience_entities_input(Id = Id, IndexId = IndexId, NextToken = NextToken)
   output <- .kendra$list_experience_entities_output()
@@ -5370,7 +5372,7 @@ kendra_list_experiences <- function(IndexId, NextToken = NULL, MaxResults = NULL
     name = "ListExperiences",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_experiences_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_experiences_output()
@@ -5439,7 +5441,7 @@ kendra_list_faqs <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
     name = "ListFaqs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_faqs_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_faqs_output()
@@ -5579,7 +5581,7 @@ kendra_list_groups_older_than_ordering_id <- function(IndexId, DataSourceId = NU
     name = "ListGroupsOlderThanOrderingId",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_groups_older_than_ordering_id_input(IndexId = IndexId, DataSourceId = DataSourceId, OrderingId = OrderingId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_groups_older_than_ordering_id_output()
@@ -5644,7 +5646,7 @@ kendra_list_indices <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListIndices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_indices_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_indices_output()
@@ -5726,7 +5728,7 @@ kendra_list_query_suggestions_block_lists <- function(IndexId, NextToken = NULL,
     name = "ListQuerySuggestionsBlockLists",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_query_suggestions_block_lists_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_query_suggestions_block_lists_output()
@@ -5847,7 +5849,7 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
     name = "ListThesauri",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_thesauri_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_thesauri_output()
@@ -5981,30 +5983,33 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
 }
 .kendra$operations$put_principal_mapping <- kendra_put_principal_mapping
 
-#' Searches an active index
+#' Searches an index given an input query
 #'
 #' @description
-#' Searches an active index. Use this API to search your documents using
-#' query. The [`query`][kendra_query] API enables to do faceted search and
-#' to filter results based on document attributes.
+#' Searches an index given an input query.
 #' 
-#' It also enables you to provide user context that Amazon Kendra uses to
-#' enforce document access control in the search results.
+#' You can configure boosting or relevance tuning at the query level to
+#' override boosting at the index level, filter based on document
+#' fields/attributes and faceted search, and filter based on the user or
+#' their group access to documents. You can also include certain fields in
+#' the response that might provide useful additional information.
 #' 
-#' Amazon Kendra searches your index for text content and question and
-#' answer (FAQ) content. By default the response contains three types of
-#' results.
+#' A query response contains three types of results.
 #' 
-#' -   Relevant passages
+#' -   Relevant suggested answers. The answers can be either a text excerpt
+#'     or table excerpt. The answer can be highlighted in the excerpt.
 #' 
-#' -   Matching FAQs
+#' -   Matching FAQs or questions-answer from your FAQ file.
 #' 
-#' -   Relevant documents
+#' -   Relevant documents. This result type includes an excerpt of the
+#'     document with the document title. The searched terms can be
+#'     highlighted in the excerpt.
 #' 
 #' You can specify that the query return only one type of result using the
-#' `QueryResultTypeFilter` parameter.
-#' 
-#' Each query returns the 100 most relevant results.
+#' `QueryResultTypeFilter` parameter. Each query returns the 100 most
+#' relevant results. If you filter result type to only question-answers, a
+#' maximum of four results are returned. If you filter result type to only
+#' answers, a maximum of three results are returned.
 #'
 #' @usage
 #' kendra_query(IndexId, QueryText, AttributeFilter, Facets,
@@ -6013,38 +6018,33 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
 #'   SortingConfiguration, UserContext, VisitorId,
 #'   SpellCorrectionConfiguration)
 #'
-#' @param IndexId &#91;required&#93; The identifier of the index to search. The identifier is returned in the
-#' response from the [`create_index`][kendra_create_index] API.
+#' @param IndexId &#91;required&#93; The identifier of the index for the search.
 #' @param QueryText The input query text for the search. Amazon Kendra truncates queries at
 #' 30 token words, which excludes punctuation and stop words. Truncation
 #' still applies if you use Boolean or more advanced, complex queries.
-#' @param AttributeFilter Enables filtered searches based on document attributes. You can only
+#' @param AttributeFilter Filters search results by document fields/attributes. You can only
 #' provide one attribute filter; however, the `AndAllFilters`, `NotFilter`,
 #' and `OrAllFilters` parameters contain a list of other filters.
 #' 
-#' The `AttributeFilter` parameter enables you to create a set of filtering
+#' The `AttributeFilter` parameter means you can create a set of filtering
 #' rules that a document must satisfy to be included in the query results.
-#' @param Facets An array of documents attributes. Amazon Kendra returns a count for each
-#' attribute key specified. This helps your users narrow their search.
-#' @param RequestedDocumentAttributes An array of document attributes to include in the response. You can
-#' limit the response to include certain document attributes. By default
+#' @param Facets An array of documents fields/attributes for faceted search. Amazon
+#' Kendra returns a count for each field key specified. This helps your
+#' users narrow their search.
+#' @param RequestedDocumentAttributes An array of document fields/attributes to include in the response. You
+#' can limit the response to include certain document fields. By default,
 #' all document attributes are included in the response.
-#' @param QueryResultTypeFilter Sets the type of query. Only results for the specified query type are
-#' returned.
-#' @param DocumentRelevanceOverrideConfigurations Overrides relevance tuning configurations of fields or attributes set at
+#' @param QueryResultTypeFilter Sets the type of query result or response. Only results for the
+#' specified type are returned.
+#' @param DocumentRelevanceOverrideConfigurations Overrides relevance tuning configurations of fields/attributes set at
 #' the index level.
 #' 
 #' If you use this API to override the relevance tuning configured at the
 #' index level, but there is no relevance tuning configured at the index
 #' level, then Amazon Kendra does not apply any relevance tuning.
 #' 
-#' If there is relevance tuning configured at the index level, but you do
-#' not use this API to override any relevance tuning in the index, then
-#' Amazon Kendra uses the relevance tuning that is configured at the index
-#' level.
-#' 
 #' If there is relevance tuning configured for fields at the index level,
-#' but you use this API to override only some of these fields, then for the
+#' and you use this API to override only some of these fields, then for the
 #' fields you did not override, the importance is set to 1.
 #' @param PageNumber Query results are returned in pages the size of the `PageSize`
 #' parameter. By default, Amazon Kendra returns the first page of results.
@@ -6442,6 +6442,266 @@ kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Face
   return(response)
 }
 .kendra$operations$query <- kendra_query
+
+#' Retrieves relevant passages or text excerpts given an input query
+#'
+#' @description
+#' Retrieves relevant passages or text excerpts given an input query.
+#' 
+#' This API is similar to the [`query`][kendra_query] API. However, by
+#' default, the [`query`][kendra_query] API only returns excerpt passages
+#' of up to 100 token words. With the [`retrieve`][kendra_retrieve] API,
+#' you can retrieve longer passages of up to 200 token words and up to 100
+#' semantically relevant passages. This doesn't include question-answer or
+#' FAQ type responses from your index. The passages are text excerpts that
+#' can be semantically extracted from multiple documents and multiple parts
+#' of the same document. If in extreme cases your documents produce no
+#' relevant passages using the [`retrieve`][kendra_retrieve] API, you can
+#' alternatively use the [`query`][kendra_query] API.
+#' 
+#' You can also do the following:
+#' 
+#' -   Override boosting at the index level
+#' 
+#' -   Filter based on document fields or attributes
+#' 
+#' -   Filter based on the user or their group access to documents
+#' 
+#' You can also include certain fields in the response that might provide
+#' useful additional information.
+#'
+#' @usage
+#' kendra_retrieve(IndexId, QueryText, AttributeFilter,
+#'   RequestedDocumentAttributes, DocumentRelevanceOverrideConfigurations,
+#'   PageNumber, PageSize, UserContext)
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index to retrieve relevant passages for the
+#' search.
+#' @param QueryText &#91;required&#93; The input query text to retrieve relevant passages for the search.
+#' Amazon Kendra truncates queries at 30 token words, which excludes
+#' punctuation and stop words. Truncation still applies if you use Boolean
+#' or more advanced, complex queries.
+#' @param AttributeFilter Filters search results by document fields/attributes. You can only
+#' provide one attribute filter; however, the `AndAllFilters`, `NotFilter`,
+#' and `OrAllFilters` parameters contain a list of other filters.
+#' 
+#' The `AttributeFilter` parameter means you can create a set of filtering
+#' rules that a document must satisfy to be included in the query results.
+#' @param RequestedDocumentAttributes A list of document fields/attributes to include in the response. You can
+#' limit the response to include certain document fields. By default, all
+#' document fields are included in the response.
+#' @param DocumentRelevanceOverrideConfigurations Overrides relevance tuning configurations of fields/attributes set at
+#' the index level.
+#' 
+#' If you use this API to override the relevance tuning configured at the
+#' index level, but there is no relevance tuning configured at the index
+#' level, then Amazon Kendra does not apply any relevance tuning.
+#' 
+#' If there is relevance tuning configured for fields at the index level,
+#' and you use this API to override only some of these fields, then for the
+#' fields you did not override, the importance is set to 1.
+#' @param PageNumber Retrieved relevant passages are returned in pages the size of the
+#' `PageSize` parameter. By default, Amazon Kendra returns the first page
+#' of results. Use this parameter to get result pages after the first one.
+#' @param PageSize Sets the number of retrieved relevant passages that are returned in each
+#' page of results. The default page size is 10. The maximum number of
+#' results returned is 100. If you ask for more than 100 results, only 100
+#' are returned.
+#' @param UserContext The user context token or user and group information.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   QueryId = "string",
+#'   ResultItems = list(
+#'     list(
+#'       Id = "string",
+#'       DocumentId = "string",
+#'       DocumentTitle = "string",
+#'       Content = "string",
+#'       DocumentURI = "string",
+#'       DocumentAttributes = list(
+#'         list(
+#'           Key = "string",
+#'           Value = list(
+#'             StringValue = "string",
+#'             StringListValue = list(
+#'               "string"
+#'             ),
+#'             LongValue = 123,
+#'             DateValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$retrieve(
+#'   IndexId = "string",
+#'   QueryText = "string",
+#'   AttributeFilter = list(
+#'     AndAllFilters = list(
+#'       list()
+#'     ),
+#'     OrAllFilters = list(
+#'       list()
+#'     ),
+#'     NotFilter = list(),
+#'     EqualsTo = list(
+#'       Key = "string",
+#'       Value = list(
+#'         StringValue = "string",
+#'         StringListValue = list(
+#'           "string"
+#'         ),
+#'         LongValue = 123,
+#'         DateValue = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ContainsAll = list(
+#'       Key = "string",
+#'       Value = list(
+#'         StringValue = "string",
+#'         StringListValue = list(
+#'           "string"
+#'         ),
+#'         LongValue = 123,
+#'         DateValue = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     ContainsAny = list(
+#'       Key = "string",
+#'       Value = list(
+#'         StringValue = "string",
+#'         StringListValue = list(
+#'           "string"
+#'         ),
+#'         LongValue = 123,
+#'         DateValue = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     GreaterThan = list(
+#'       Key = "string",
+#'       Value = list(
+#'         StringValue = "string",
+#'         StringListValue = list(
+#'           "string"
+#'         ),
+#'         LongValue = 123,
+#'         DateValue = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     GreaterThanOrEquals = list(
+#'       Key = "string",
+#'       Value = list(
+#'         StringValue = "string",
+#'         StringListValue = list(
+#'           "string"
+#'         ),
+#'         LongValue = 123,
+#'         DateValue = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     LessThan = list(
+#'       Key = "string",
+#'       Value = list(
+#'         StringValue = "string",
+#'         StringListValue = list(
+#'           "string"
+#'         ),
+#'         LongValue = 123,
+#'         DateValue = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     ),
+#'     LessThanOrEquals = list(
+#'       Key = "string",
+#'       Value = list(
+#'         StringValue = "string",
+#'         StringListValue = list(
+#'           "string"
+#'         ),
+#'         LongValue = 123,
+#'         DateValue = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   RequestedDocumentAttributes = list(
+#'     "string"
+#'   ),
+#'   DocumentRelevanceOverrideConfigurations = list(
+#'     list(
+#'       Name = "string",
+#'       Relevance = list(
+#'         Freshness = TRUE|FALSE,
+#'         Importance = 123,
+#'         Duration = "string",
+#'         RankOrder = "ASCENDING"|"DESCENDING",
+#'         ValueImportanceMap = list(
+#'           123
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   PageNumber = 123,
+#'   PageSize = 123,
+#'   UserContext = list(
+#'     Token = "string",
+#'     UserId = "string",
+#'     Groups = list(
+#'       "string"
+#'     ),
+#'     DataSourceGroups = list(
+#'       list(
+#'         GroupId = "string",
+#'         DataSourceId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_retrieve
+#'
+#' @aliases kendra_retrieve
+kendra_retrieve <- function(IndexId, QueryText, AttributeFilter = NULL, RequestedDocumentAttributes = NULL, DocumentRelevanceOverrideConfigurations = NULL, PageNumber = NULL, PageSize = NULL, UserContext = NULL) {
+  op <- new_operation(
+    name = "Retrieve",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$retrieve_input(IndexId = IndexId, QueryText = QueryText, AttributeFilter = AttributeFilter, RequestedDocumentAttributes = RequestedDocumentAttributes, DocumentRelevanceOverrideConfigurations = DocumentRelevanceOverrideConfigurations, PageNumber = PageNumber, PageSize = PageSize, UserContext = UserContext)
+  output <- .kendra$retrieve_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$retrieve <- kendra_retrieve
 
 #' Starts a synchronization job for a data source connector
 #'

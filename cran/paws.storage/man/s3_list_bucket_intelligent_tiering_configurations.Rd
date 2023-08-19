@@ -19,6 +19,6 @@ request should begin.}
 \description{
 Lists the S3 Intelligent-Tiering configuration from the specified bucket.
 
-See \url{https://paws-r.github.io/docs/s3/list_bucket_intelligent_tiering_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_list_bucket_intelligent_tiering_configurations/} for full documentation.
 }
 \keyword{internal}

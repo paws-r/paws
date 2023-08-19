@@ -26,6 +26,6 @@ be an HTTPS endpoint where the resource server is located, such as
 \description{
 Creates a new OAuth2.0 resource server and defines custom scopes within it.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/create_resource_server.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_resource_server/} for full documentation.
 }
 \keyword{internal}

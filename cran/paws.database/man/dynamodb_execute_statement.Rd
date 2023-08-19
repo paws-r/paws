@@ -11,7 +11,8 @@ dynamodb_execute_statement(
   ConsistentRead = NULL,
   NextToken = NULL,
   ReturnConsumedCapacity = NULL,
-  Limit = NULL
+  Limit = NULL,
+  ReturnValuesOnConditionCheckFailure = NULL
 )
 }
 \arguments{
@@ -37,10 +38,18 @@ where you left off. Also, if the processed dataset size exceeds 1 MB
 before DynamoDB reaches this limit, it stops the operation and returns
 the matching values up to the limit, and a key in \code{LastEvaluatedKey} to
 apply in a subsequent operation to continue the operation.}
+
+\item{ReturnValuesOnConditionCheckFailure}{An optional parameter that returns the item attributes for an
+\code{\link[=dynamodb_execute_statement]{execute_statement}} operation that failed
+a condition check.
+
+There is no additional cost associated with requesting a return value
+aside from the small network and processing overhead of receiving a
+larger response. No read capacity units are consumed.}
 }
 \description{
 This operation allows you to perform reads and singleton writes on data stored in DynamoDB, using PartiQL.
 
-See \url{https://paws-r.github.io/docs/dynamodb/execute_statement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_execute_statement/} for full documentation.
 }
 \keyword{internal}

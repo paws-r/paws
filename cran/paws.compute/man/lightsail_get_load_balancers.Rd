@@ -17,6 +17,6 @@ you can specify as the page token in a subsequent request.}
 \description{
 Returns information about all load balancers in an account.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_load_balancers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_load_balancers/} for full documentation.
 }
 \keyword{internal}

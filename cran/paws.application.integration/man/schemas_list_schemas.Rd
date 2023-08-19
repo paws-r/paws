@@ -26,6 +26,6 @@ with the specified prefix.}
 \description{
 List the schemas.
 
-See \url{https://paws-r.github.io/docs/schemas/list_schemas.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_list_schemas/} for full documentation.
 }
 \keyword{internal}

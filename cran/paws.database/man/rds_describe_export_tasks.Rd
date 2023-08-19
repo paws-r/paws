@@ -62,6 +62,6 @@ Constraints: Minimum 20, maximum 100.}
 \description{
 Returns information about a snapshot or cluster export to Amazon S3. This API operation supports pagination.
 
-See \url{https://paws-r.github.io/docs/rds/describe_export_tasks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_export_tasks/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ policy for.}
 \description{
 Gets information about the Resolver rule policy for a specified rule. A Resolver rule policy includes the rule that you want to share with another account, the account that you want to share the rule with, and the Resolver operations that you want to allow the account to use.
 
-See \url{https://paws-r.github.io/docs/route53resolver/get_resolver_rule_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_get_resolver_rule_policy/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ workmail_put_retention_policy(
 \description{
 Puts a retention policy to the specified organization.
 
-See \url{https://paws-r.github.io/docs/workmail/put_retention_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_put_retention_policy/} for full documentation.
 }
 \keyword{internal}

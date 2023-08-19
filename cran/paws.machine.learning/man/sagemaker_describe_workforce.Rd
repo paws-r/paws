@@ -16,6 +16,6 @@ created and cannot be modified.}
 \description{
 Lists private workforce information, including workforce name, Amazon Resource Name (ARN), and, if applicable, allowed IP address ranges (\href{https://docs.aws.amazon.com/vpc/latest/userguide/how-it-works.html}{CIDRs}). Allowable IP address ranges are the IP addresses that workers can use to access tasks.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_workforce.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_workforce/} for full documentation.
 }
 \keyword{internal}

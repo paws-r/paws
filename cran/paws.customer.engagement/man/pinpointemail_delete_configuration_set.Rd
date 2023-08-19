@@ -12,6 +12,6 @@ pinpointemail_delete_configuration_set(ConfigurationSetName)
 \description{
 Delete an existing configuration set.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/delete_configuration_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_delete_configuration_set/} for full documentation.
 }
 \keyword{internal}

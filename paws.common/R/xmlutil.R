@@ -160,23 +160,6 @@ xml_build_scalar <- function(params) {
 #-------------------------------------------------------------------------------
 
 # Unmarshal `data` provided as a list into the shape in `interface`.
-# xml_unmarshal <- function(data, interface, result_name = NULL) {
-#   if (is.null(data)) return(interface)
-#
-#   # help to parse xml:
-#   # https://github.com/paws-r/paws/issues/501
-#   if (!is.null(result_name) && result_name %in% names(data)) {
-#     return(xml_parse(data, interface))
-#   }
-#
-#   root <- data[[1]]
-#   if (!is.null(result_name) && result_name %in% names(root)) {
-#     root <- root[[result_name]]
-#   }
-#   result <- xml_parse(root, interface)
-#   return(result)
-# }
-
 xml_unmarshal <- function(raw_data, interface = NULL, result_name = NULL) {
   if (is_empty(raw_data)) {
     return(interface)

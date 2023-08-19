@@ -36,6 +36,6 @@ different availability zones.}
 \description{
 Updates network settings.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/update_network_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_update_network_settings/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ list of environment provisioned resources that was previously requested.}
 \description{
 List the provisioned resources for your environment.
 
-See \url{https://paws-r.github.io/docs/proton/list_environment_provisioned_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_list_environment_provisioned_resources/} for full documentation.
 }
 \keyword{internal}

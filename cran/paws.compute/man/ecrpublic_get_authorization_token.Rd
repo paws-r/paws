@@ -9,6 +9,6 @@ ecrpublic_get_authorization_token()
 \description{
 Retrieves an authorization token. An authorization token represents your IAM authentication credentials. You can use it to access any Amazon ECR registry that your IAM principal has access to. The authorization token is valid for 12 hours. This API requires the \code{ecr-public:GetAuthorizationToken} and \code{sts:GetServiceBearerToken} permissions.
 
-See \url{https://paws-r.github.io/docs/ecrpublic/get_authorization_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecrpublic_get_authorization_token/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ ssmincidents_list_response_plans(maxResults = NULL, nextToken = NULL)
 \description{
 Lists all response plans in your account.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/list_response_plans.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_list_response_plans/} for full documentation.
 }
 \keyword{internal}

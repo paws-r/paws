@@ -1,3 +1,19 @@
+# paws.common 0.5.9
+* add expiration parameter to creds
+* add signature_version to config
+* add the ability to paginate paws methods (#30)
+* overwrite file destination when writing to disk. This mimics python's boto3 sdk behaviour.
+
+# paws.common 0.5.8
+* fix mismatch apparent method as.list.struct (#634)
+* split timeout and connecttimeout in http call (#610). Thanks to @stuart-storypark for identifying issue, and @joakibo for extra insight and testing.
+* add STS regional endpoint support (#631). Thanks to @daniepi for identifying issue, and @joakibo for implementing solution.
+* fix windows root path by adding HOMEDRIVE environmental variable (#640). Thanks to @karen5780 for identifying issue and proposing solution.
+* enhancements to service construction, export helper functions for parameter auto-complete (#421). Thanks to @hadley for suggestion and recommendation.
+
+# paws.common 0.5.7
+* skip network unit test on cran (#632)
+
 # paws.common 0.5.6
 * add logging to credentials (#599 thanks to @jonocarroll for contribution)
 * display log output while code is still running (jupyter notebook issue)

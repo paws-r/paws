@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Specifies a domain to be associated to Amazon WorkLink.
 #'
-#' See [https://paws-r.github.io/docs/worklink/associate_domain.html](https://paws-r.github.io/docs/worklink/associate_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_associate_domain/](https://www.paws-r-sdk.com/docs/worklink_associate_domain/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
 #' @param DomainName &#91;required&#93; The fully qualified domain name (FQDN).
@@ -41,7 +41,7 @@ worklink_associate_domain <- function(FleetArn, DomainName, DisplayName = NULL, 
 #' @description
 #' Associates a website authorization provider with a specified fleet. This is used to authorize users against associated websites in the company network.
 #'
-#' See [https://paws-r.github.io/docs/worklink/associate_website_authorization_provider.html](https://paws-r.github.io/docs/worklink/associate_website_authorization_provider.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_associate_website_authorization_provider/](https://www.paws-r-sdk.com/docs/worklink_associate_website_authorization_provider/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param AuthorizationProviderType &#91;required&#93; The authorization provider type.
@@ -75,7 +75,7 @@ worklink_associate_website_authorization_provider <- function(FleetArn, Authoriz
 #' @description
 #' Imports the root certificate of a certificate authority (CA) used to obtain TLS certificates used by associated websites within the company network.
 #'
-#' See [https://paws-r.github.io/docs/worklink/associate_website_certificate_authority.html](https://paws-r.github.io/docs/worklink/associate_website_certificate_authority.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_associate_website_certificate_authority/](https://www.paws-r-sdk.com/docs/worklink_associate_website_certificate_authority/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param Certificate &#91;required&#93; The root certificate of the CA.
@@ -106,7 +106,7 @@ worklink_associate_website_certificate_authority <- function(FleetArn, Certifica
 #' @description
 #' Creates a fleet. A fleet consists of resources and the configuration that delivers associated websites to authorized users who download and set up the Amazon WorkLink app.
 #'
-#' See [https://paws-r.github.io/docs/worklink/create_fleet.html](https://paws-r.github.io/docs/worklink/create_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_create_fleet/](https://www.paws-r-sdk.com/docs/worklink_create_fleet/) for full documentation.
 #'
 #' @param FleetName &#91;required&#93; A unique name for the fleet.
 #' @param DisplayName The fleet name to display.
@@ -140,7 +140,7 @@ worklink_create_fleet <- function(FleetName, DisplayName = NULL, OptimizeForEndU
 #' @description
 #' Deletes a fleet. Prevents users from accessing previously associated websites.
 #'
-#' See [https://paws-r.github.io/docs/worklink/delete_fleet.html](https://paws-r.github.io/docs/worklink/delete_fleet.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_delete_fleet/](https://www.paws-r-sdk.com/docs/worklink_delete_fleet/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #'
@@ -170,7 +170,7 @@ worklink_delete_fleet <- function(FleetArn) {
 #' @description
 #' Describes the configuration for delivering audit streams to the customer account.
 #'
-#' See [https://paws-r.github.io/docs/worklink/describe_audit_stream_configuration.html](https://paws-r.github.io/docs/worklink/describe_audit_stream_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_describe_audit_stream_configuration/](https://www.paws-r-sdk.com/docs/worklink_describe_audit_stream_configuration/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #'
@@ -200,7 +200,7 @@ worklink_describe_audit_stream_configuration <- function(FleetArn) {
 #' @description
 #' Describes the networking configuration to access the internal websites associated with the specified fleet.
 #'
-#' See [https://paws-r.github.io/docs/worklink/describe_company_network_configuration.html](https://paws-r.github.io/docs/worklink/describe_company_network_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_describe_company_network_configuration/](https://www.paws-r-sdk.com/docs/worklink_describe_company_network_configuration/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #'
@@ -229,7 +229,7 @@ worklink_describe_company_network_configuration <- function(FleetArn) {
 #' @description
 #' Provides information about a user's device.
 #'
-#' See [https://paws-r.github.io/docs/worklink/describe_device.html](https://paws-r.github.io/docs/worklink/describe_device.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_describe_device/](https://www.paws-r-sdk.com/docs/worklink_describe_device/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param DeviceId &#91;required&#93; A unique identifier for a registered user's device.
@@ -259,7 +259,7 @@ worklink_describe_device <- function(FleetArn, DeviceId) {
 #' @description
 #' Describes the device policy configuration for the specified fleet.
 #'
-#' See [https://paws-r.github.io/docs/worklink/describe_device_policy_configuration.html](https://paws-r.github.io/docs/worklink/describe_device_policy_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_describe_device_policy_configuration/](https://www.paws-r-sdk.com/docs/worklink_describe_device_policy_configuration/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #'
@@ -288,7 +288,7 @@ worklink_describe_device_policy_configuration <- function(FleetArn) {
 #' @description
 #' Provides information about the domain.
 #'
-#' See [https://paws-r.github.io/docs/worklink/describe_domain.html](https://paws-r.github.io/docs/worklink/describe_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_describe_domain/](https://www.paws-r-sdk.com/docs/worklink_describe_domain/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param DomainName &#91;required&#93; The name of the domain.
@@ -319,7 +319,7 @@ worklink_describe_domain <- function(FleetArn, DomainName) {
 #' @description
 #' Provides basic information for the specified fleet, excluding identity provider, networking, and device configuration details.
 #'
-#' See [https://paws-r.github.io/docs/worklink/describe_fleet_metadata.html](https://paws-r.github.io/docs/worklink/describe_fleet_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_describe_fleet_metadata/](https://www.paws-r-sdk.com/docs/worklink_describe_fleet_metadata/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
 #'
@@ -348,7 +348,7 @@ worklink_describe_fleet_metadata <- function(FleetArn) {
 #' @description
 #' Describes the identity provider configuration of the specified fleet.
 #'
-#' See [https://paws-r.github.io/docs/worklink/describe_identity_provider_configuration.html](https://paws-r.github.io/docs/worklink/describe_identity_provider_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_describe_identity_provider_configuration/](https://www.paws-r-sdk.com/docs/worklink_describe_identity_provider_configuration/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #'
@@ -377,7 +377,7 @@ worklink_describe_identity_provider_configuration <- function(FleetArn) {
 #' @description
 #' Provides information about the certificate authority.
 #'
-#' See [https://paws-r.github.io/docs/worklink/describe_website_certificate_authority.html](https://paws-r.github.io/docs/worklink/describe_website_certificate_authority.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_describe_website_certificate_authority/](https://www.paws-r-sdk.com/docs/worklink_describe_website_certificate_authority/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param WebsiteCaId &#91;required&#93; A unique identifier for the certificate authority.
@@ -407,7 +407,7 @@ worklink_describe_website_certificate_authority <- function(FleetArn, WebsiteCaI
 #' @description
 #' Disassociates a domain from Amazon WorkLink. End users lose the ability to access the domain with Amazon WorkLink.
 #'
-#' See [https://paws-r.github.io/docs/worklink/disassociate_domain.html](https://paws-r.github.io/docs/worklink/disassociate_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_disassociate_domain/](https://www.paws-r-sdk.com/docs/worklink_disassociate_domain/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param DomainName &#91;required&#93; The name of the domain.
@@ -437,7 +437,7 @@ worklink_disassociate_domain <- function(FleetArn, DomainName) {
 #' @description
 #' Disassociates a website authorization provider from a specified fleet. After the disassociation, users can't load any associated websites that require this authorization provider.
 #'
-#' See [https://paws-r.github.io/docs/worklink/disassociate_website_authorization_provider.html](https://paws-r.github.io/docs/worklink/disassociate_website_authorization_provider.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_disassociate_website_authorization_provider/](https://www.paws-r-sdk.com/docs/worklink_disassociate_website_authorization_provider/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param AuthorizationProviderId &#91;required&#93; A unique identifier for the authorization provider.
@@ -467,7 +467,7 @@ worklink_disassociate_website_authorization_provider <- function(FleetArn, Autho
 #' @description
 #' Removes a certificate authority (CA).
 #'
-#' See [https://paws-r.github.io/docs/worklink/disassociate_website_certificate_authority.html](https://paws-r.github.io/docs/worklink/disassociate_website_certificate_authority.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_disassociate_website_certificate_authority/](https://www.paws-r-sdk.com/docs/worklink_disassociate_website_certificate_authority/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param WebsiteCaId &#91;required&#93; A unique identifier for the CA.
@@ -497,7 +497,7 @@ worklink_disassociate_website_certificate_authority <- function(FleetArn, Websit
 #' @description
 #' Retrieves a list of devices registered with the specified fleet.
 #'
-#' See [https://paws-r.github.io/docs/worklink/list_devices.html](https://paws-r.github.io/docs/worklink/list_devices.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_list_devices/](https://www.paws-r-sdk.com/docs/worklink_list_devices/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param NextToken The pagination token used to retrieve the next page of results for this
@@ -512,7 +512,7 @@ worklink_list_devices <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
     name = "ListDevices",
     http_method = "POST",
     http_path = "/listDevices",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .worklink$list_devices_input(FleetArn = FleetArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .worklink$list_devices_output()
@@ -529,7 +529,7 @@ worklink_list_devices <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
 #' @description
 #' Retrieves a list of domains associated to a specified fleet.
 #'
-#' See [https://paws-r.github.io/docs/worklink/list_domains.html](https://paws-r.github.io/docs/worklink/list_domains.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_list_domains/](https://www.paws-r-sdk.com/docs/worklink_list_domains/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param NextToken The pagination token used to retrieve the next page of results for this
@@ -544,7 +544,7 @@ worklink_list_domains <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
     name = "ListDomains",
     http_method = "POST",
     http_path = "/listDomains",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .worklink$list_domains_input(FleetArn = FleetArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .worklink$list_domains_output()
@@ -561,7 +561,7 @@ worklink_list_domains <- function(FleetArn, NextToken = NULL, MaxResults = NULL)
 #' @description
 #' Retrieves a list of fleets for the current account and Region.
 #'
-#' See [https://paws-r.github.io/docs/worklink/list_fleets.html](https://paws-r.github.io/docs/worklink/list_fleets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_list_fleets/](https://www.paws-r-sdk.com/docs/worklink_list_fleets/) for full documentation.
 #'
 #' @param NextToken The pagination token used to retrieve the next page of results for this
 #' operation. If this value is null, it retrieves the first page.
@@ -575,7 +575,7 @@ worklink_list_fleets <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListFleets",
     http_method = "POST",
     http_path = "/listFleets",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .worklink$list_fleets_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .worklink$list_fleets_output()
@@ -592,7 +592,7 @@ worklink_list_fleets <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Retrieves a list of tags for the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/worklink/list_tags_for_resource.html](https://paws-r.github.io/docs/worklink/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/worklink_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
 #'
@@ -622,7 +622,7 @@ worklink_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Retrieves a list of website authorization providers associated with a specified fleet.
 #'
-#' See [https://paws-r.github.io/docs/worklink/list_website_authorization_providers.html](https://paws-r.github.io/docs/worklink/list_website_authorization_providers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_list_website_authorization_providers/](https://www.paws-r-sdk.com/docs/worklink_list_website_authorization_providers/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param NextToken The pagination token to use to retrieve the next page of results for
@@ -637,7 +637,7 @@ worklink_list_website_authorization_providers <- function(FleetArn, NextToken = 
     name = "ListWebsiteAuthorizationProviders",
     http_method = "POST",
     http_path = "/listWebsiteAuthorizationProviders",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .worklink$list_website_authorization_providers_input(FleetArn = FleetArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .worklink$list_website_authorization_providers_output()
@@ -655,7 +655,7 @@ worklink_list_website_authorization_providers <- function(FleetArn, NextToken = 
 #' @description
 #' Retrieves a list of certificate authorities added for the current account and Region.
 #'
-#' See [https://paws-r.github.io/docs/worklink/list_website_certificate_authorities.html](https://paws-r.github.io/docs/worklink/list_website_certificate_authorities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_list_website_certificate_authorities/](https://www.paws-r-sdk.com/docs/worklink_list_website_certificate_authorities/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param MaxResults The maximum number of results to be included in the next page.
@@ -670,7 +670,7 @@ worklink_list_website_certificate_authorities <- function(FleetArn, MaxResults =
     name = "ListWebsiteCertificateAuthorities",
     http_method = "POST",
     http_path = "/listWebsiteCertificateAuthorities",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .worklink$list_website_certificate_authorities_input(FleetArn = FleetArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .worklink$list_website_certificate_authorities_output()
@@ -687,7 +687,7 @@ worklink_list_website_certificate_authorities <- function(FleetArn, MaxResults =
 #' @description
 #' Moves a domain to ACTIVE status if it was in the INACTIVE status.
 #'
-#' See [https://paws-r.github.io/docs/worklink/restore_domain_access.html](https://paws-r.github.io/docs/worklink/restore_domain_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_restore_domain_access/](https://www.paws-r-sdk.com/docs/worklink_restore_domain_access/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param DomainName &#91;required&#93; The name of the domain.
@@ -717,7 +717,7 @@ worklink_restore_domain_access <- function(FleetArn, DomainName) {
 #' @description
 #' Moves a domain to INACTIVE status if it was in the ACTIVE status.
 #'
-#' See [https://paws-r.github.io/docs/worklink/revoke_domain_access.html](https://paws-r.github.io/docs/worklink/revoke_domain_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_revoke_domain_access/](https://www.paws-r-sdk.com/docs/worklink_revoke_domain_access/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param DomainName &#91;required&#93; The name of the domain.
@@ -747,7 +747,7 @@ worklink_revoke_domain_access <- function(FleetArn, DomainName) {
 #' @description
 #' Signs the user out from all of their devices. The user can sign in again if they have valid credentials.
 #'
-#' See [https://paws-r.github.io/docs/worklink/sign_out_user.html](https://paws-r.github.io/docs/worklink/sign_out_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_sign_out_user/](https://www.paws-r-sdk.com/docs/worklink_sign_out_user/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param Username &#91;required&#93; The name of the user.
@@ -778,7 +778,7 @@ worklink_sign_out_user <- function(FleetArn, Username) {
 #' @description
 #' Adds or overwrites one or more tags for the specified resource, such as a fleet. Each tag consists of a key and an optional value. If a resource already has a tag with the same key, this operation updates its value.
 #'
-#' See [https://paws-r.github.io/docs/worklink/tag_resource.html](https://paws-r.github.io/docs/worklink/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_tag_resource/](https://www.paws-r-sdk.com/docs/worklink_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
 #' @param Tags &#91;required&#93; The tags to add to the resource. A tag is a key-value pair.
@@ -808,7 +808,7 @@ worklink_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes one or more tags from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/worklink/untag_resource.html](https://paws-r.github.io/docs/worklink/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_untag_resource/](https://www.paws-r-sdk.com/docs/worklink_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the fleet.
 #' @param TagKeys &#91;required&#93; The list of tag keys to remove from the resource.
@@ -838,7 +838,7 @@ worklink_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates the audit stream configuration for the fleet.
 #'
-#' See [https://paws-r.github.io/docs/worklink/update_audit_stream_configuration.html](https://paws-r.github.io/docs/worklink/update_audit_stream_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_update_audit_stream_configuration/](https://www.paws-r-sdk.com/docs/worklink_update_audit_stream_configuration/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param AuditStreamArn The ARN of the Amazon Kinesis data stream that receives the audit
@@ -869,7 +869,7 @@ worklink_update_audit_stream_configuration <- function(FleetArn, AuditStreamArn 
 #' @description
 #' Updates the company network configuration for the fleet.
 #'
-#' See [https://paws-r.github.io/docs/worklink/update_company_network_configuration.html](https://paws-r.github.io/docs/worklink/update_company_network_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_update_company_network_configuration/](https://www.paws-r-sdk.com/docs/worklink_update_company_network_configuration/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param VpcId &#91;required&#93; The VPC with connectivity to associated websites.
@@ -902,7 +902,7 @@ worklink_update_company_network_configuration <- function(FleetArn, VpcId, Subne
 #' @description
 #' Updates the device policy configuration for the fleet.
 #'
-#' See [https://paws-r.github.io/docs/worklink/update_device_policy_configuration.html](https://paws-r.github.io/docs/worklink/update_device_policy_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_update_device_policy_configuration/](https://www.paws-r-sdk.com/docs/worklink_update_device_policy_configuration/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param DeviceCaCertificate The certificate chain, including intermediate certificates and the root
@@ -933,7 +933,7 @@ worklink_update_device_policy_configuration <- function(FleetArn, DeviceCaCertif
 #' @description
 #' Updates domain metadata, such as DisplayName.
 #'
-#' See [https://paws-r.github.io/docs/worklink/update_domain_metadata.html](https://paws-r.github.io/docs/worklink/update_domain_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_update_domain_metadata/](https://www.paws-r-sdk.com/docs/worklink_update_domain_metadata/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param DomainName &#91;required&#93; The name of the domain.
@@ -964,7 +964,7 @@ worklink_update_domain_metadata <- function(FleetArn, DomainName, DisplayName = 
 #' @description
 #' Updates fleet metadata, such as DisplayName.
 #'
-#' See [https://paws-r.github.io/docs/worklink/update_fleet_metadata.html](https://paws-r.github.io/docs/worklink/update_fleet_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_update_fleet_metadata/](https://www.paws-r-sdk.com/docs/worklink_update_fleet_metadata/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param DisplayName The fleet name to display. The existing DisplayName is unset if null is
@@ -998,7 +998,7 @@ worklink_update_fleet_metadata <- function(FleetArn, DisplayName = NULL, Optimiz
 #' @description
 #' Updates the identity provider configuration for the fleet.
 #'
-#' See [https://paws-r.github.io/docs/worklink/update_identity_provider_configuration.html](https://paws-r.github.io/docs/worklink/update_identity_provider_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/worklink_update_identity_provider_configuration/](https://www.paws-r-sdk.com/docs/worklink_update_identity_provider_configuration/) for full documentation.
 #'
 #' @param FleetArn &#91;required&#93; The ARN of the fleet.
 #' @param IdentityProviderType &#91;required&#93; The type of identity provider.

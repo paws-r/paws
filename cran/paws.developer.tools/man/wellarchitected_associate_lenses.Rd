@@ -14,6 +14,6 @@ wellarchitected_associate_lenses(WorkloadId, LensAliases)
 \description{
 Associate a lens to a workload.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/associate_lenses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_associate_lenses/} for full documentation.
 }
 \keyword{internal}

@@ -130,6 +130,6 @@ be disabled.}
 \description{
 The \code{\link[=keyspaces_create_table]{create_table}} operation adds a new table to the specified keyspace. Within a keyspace, table names must be unique.
 
-See \url{https://paws-r.github.io/docs/keyspaces/create_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/keyspaces_create_table/} for full documentation.
 }
 \keyword{internal}

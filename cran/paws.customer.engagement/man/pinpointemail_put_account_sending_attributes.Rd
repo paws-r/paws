@@ -16,6 +16,6 @@ operation to resume your account's ability to send email.}
 \description{
 Enable or disable the ability of your account to send email.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/put_account_sending_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_put_account_sending_attributes/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ call.}
 \description{
 Lists custom tape pools. You specify custom tape pools to list by specifying one or more custom tape pool Amazon Resource Names (ARNs). If you don't specify a custom tape pool ARN, the operation lists all custom tape pools.
 
-See \url{https://paws-r.github.io/docs/storagegateway/list_tape_pools.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_list_tape_pools/} for full documentation.
 }
 \keyword{internal}

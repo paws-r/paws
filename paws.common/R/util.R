@@ -17,7 +17,9 @@
 #'
 #' @export
 is_empty <- function(x) {
-  if (is.null(x) || length(x) == 0) return(TRUE)
+  if (is.null(x) || length(x) == 0) {
+    return(TRUE)
+  }
   UseMethod("is_empty")
 }
 
@@ -60,7 +62,9 @@ is_empty.default <- function(x) {
 #'
 #' @export
 is_empty_xml <- function(x) {
-  if (is.null(x) || is_empty_logical(x) || is_empty_character(x)) return(TRUE)
+  if (is.null(x) || is_empty_logical(x) || is_empty_character(x)) {
+    return(TRUE)
+  }
   UseMethod("is_empty_xml")
 }
 
@@ -76,7 +80,9 @@ is_empty_xml.raw <- is_empty.raw
 is_empty_xml.list <- function(x) {
   # keep empty lists when parsed from parameters
   # issue: https://github.com/paws-r/paws/issues/537
-  if(length(x) == 0) return (FALSE)
+  if (length(x) == 0) {
+    return(FALSE)
+  }
   return(all(sapply(x, is_empty_xml)))
 }
 
@@ -109,7 +115,7 @@ call_with_args <- function(f, data) {
 }
 
 # helper function to make it easy to replace NULLs with default value
-`%||%` <- function(x,y) if(is.null(x)) y else x
+`%||%` <- function(x, y) if (is.null(x)) y else x
 
 sort_list <- function(x) {
   if (length(x) == 0) {
@@ -125,7 +131,7 @@ str_match <- function(str, pattern) {
 
 # Get parameter names from http_path template:
 get_template_params <- function(str) {
-  out <- str_match(str, '\\{(.*?)}')
+  out <- str_match(str, "\\{(.*?)}")
   return(out[grep("\\{.*\\}", out, invert = T, perl = T)])
 }
 
@@ -137,7 +143,7 @@ sprintf_template <- function(template) {
   auth_temp <- temp_split[grepl("\\{.*\\}", temp_split)]
 
   # set template to sprintf format
-  m <- gregexpr('\\{(.*?)}', auth_temp, perl = T)
+  m <- gregexpr("\\{(.*?)}", auth_temp, perl = T)
   regmatches(auth_temp, m) <- "%s"
   return(auth_temp)
 }
@@ -148,7 +154,7 @@ sprintf_template <- function(template) {
 # render params into http_path template
 # for example:
 # /{Bucket}/{Key+} -> /demo_bucket/path/to/file
-render_template <- function(request){
+render_template <- function(request) {
   template <- request$operation$http_path
   template_params <- get_template_params(template)
   encoded_params <- vector("list", length(template_params))
@@ -156,7 +162,8 @@ render_template <- function(request){
   for (p in template_params) {
     if (grepl("\\+", p, perl = TRUE)) {
       encoded_params[[p]] <- paws_url_encoder(
-        request$params[[gsub("\\+", "", p, perl = TRUE)]], safe = "/~"
+        request$params[[gsub("\\+", "", p, perl = TRUE)]],
+        safe = "/~"
       )
     } else {
       encoded_params[[p]] <- paws_url_encoder(
@@ -172,8 +179,8 @@ LABEL_RE <- "[a-z0-9][a-z0-9\\-]*[a-z0-9]"
 
 # Developed from:
 # https://github.com/boto/botocore/blob/cc3f1c22f55ba50ca792eb73e7a6f721abdcc5ee/botocore/utils.py#L1275-L1295
-check_dns_name <- function(bucket_name){
-  if (grepl("\\.", bucket_name, perl=TRUE)) {
+check_dns_name <- function(bucket_name) {
+  if (grepl("\\.", bucket_name, perl = TRUE)) {
     return(FALSE)
   }
   n <- nchar(bucket_name)
@@ -207,4 +214,8 @@ get_auth <- function(request) {
     }
   }
   return(auth_path)
+}
+
+stopf <- function(fmt, ...) {
+  stop(sprintf(fmt, ...), call. = FALSE)
 }

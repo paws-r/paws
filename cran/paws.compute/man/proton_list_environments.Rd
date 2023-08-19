@@ -22,6 +22,6 @@ requested.}
 \description{
 List environments with detail data summaries.
 
-See \url{https://paws-r.github.io/docs/proton/list_environments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_list_environments/} for full documentation.
 }
 \keyword{internal}

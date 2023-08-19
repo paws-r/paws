@@ -37,6 +37,6 @@ equal to the specified time (timestamp).}
 \description{
 Lists models created with the \code{\link[=sagemaker_create_model]{create_model}} API.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_models.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_models/} for full documentation.
 }
 \keyword{internal}

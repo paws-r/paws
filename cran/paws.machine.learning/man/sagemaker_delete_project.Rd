@@ -12,6 +12,6 @@ sagemaker_delete_project(ProjectName)
 \description{
 Delete the specified project.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_project/} for full documentation.
 }
 \keyword{internal}

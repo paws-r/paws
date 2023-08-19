@@ -12,6 +12,6 @@ licensemanager_delete_license_configuration(LicenseConfigurationArn)
 \description{
 Deletes the specified license configuration.
 
-See \url{https://paws-r.github.io/docs/licensemanager/delete_license_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_delete_license_configuration/} for full documentation.
 }
 \keyword{internal}

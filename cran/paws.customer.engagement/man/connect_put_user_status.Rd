@@ -17,6 +17,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Changes the current status of a user or agent in Amazon Connect. If the agent is currently handling a contact, this sets the agent's next status.
 
-See \url{https://paws-r.github.io/docs/connect/put_user_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_put_user_status/} for full documentation.
 }
 \keyword{internal}

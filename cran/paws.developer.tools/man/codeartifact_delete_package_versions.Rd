@@ -46,6 +46,6 @@ namespace.
 \description{
 Deletes one or more versions of a package. A deleted package version cannot be restored in your repository. If you want to remove a package version from your repository and be able to restore it later, set its status to \code{Archived}. Archived packages cannot be downloaded from a repository and don't show up with list package APIs (for example, \code{\link[=codeartifact_list_package_versions]{list_package_versions}}), but you can restore them using \code{\link[=codeartifact_update_package_versions_status]{update_package_versions_status}}.
 
-See \url{https://paws-r.github.io/docs/codeartifact/delete_package_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_delete_package_versions/} for full documentation.
 }
 \keyword{internal}

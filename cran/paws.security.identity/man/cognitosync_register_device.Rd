@@ -20,6 +20,6 @@ Cognito. Here, the ID of the pool that the identity belongs to.}
 \description{
 Registers a device to receive push sync notifications.
 
-See \url{https://paws-r.github.io/docs/cognitosync/register_device.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitosync_register_device/} for full documentation.
 }
 \keyword{internal}

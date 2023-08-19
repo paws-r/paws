@@ -23,6 +23,6 @@ field is omitted, tags aren't included in the response.}
 \description{
 Describes the specified services running in your cluster.
 
-See \url{https://paws-r.github.io/docs/ecs/describe_services.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_describe_services/} for full documentation.
 }
 \keyword{internal}

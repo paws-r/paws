@@ -13,6 +13,6 @@ directconnect_confirm_customer_agreement(agreementName = NULL)
 \description{
 The confirmation of the terms of agreement when creating the connection/link aggregation group (LAG).
 
-See \url{https://paws-r.github.io/docs/directconnect/confirm_customer_agreement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_confirm_customer_agreement/} for full documentation.
 }
 \keyword{internal}

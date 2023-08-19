@@ -13,6 +13,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Retrieves a token for federation.
 
-See \url{https://paws-r.github.io/docs/connect/get_federation_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_get_federation_token/} for full documentation.
 }
 \keyword{internal}

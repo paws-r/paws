@@ -33,6 +33,6 @@ the prior request in your next request.}
 \description{
 Retrieves the domains that you have defined for the specified firewall domain list.
 
-See \url{https://paws-r.github.io/docs/route53resolver/list_firewall_domains.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_domains/} for full documentation.
 }
 \keyword{internal}

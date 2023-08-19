@@ -31,6 +31,6 @@ Note: You cannot apply tags when reimporting a certificate.}
 \description{
 Imports a certificate into Certificate Manager (ACM) to use with services that are integrated with ACM. Note that \href{https://docs.aws.amazon.com/acm/latest/userguide/acm-services.html}{integrated services} allow only certificate types and keys they support to be associated with their resources. Further, their support differs depending on whether the certificate is imported into IAM or into ACM. For more information, see the documentation for each service. For more information about importing certificates into ACM, see \href{https://docs.aws.amazon.com/acm/latest/userguide/import-certificate.html}{Importing Certificates} in the \emph{Certificate Manager User Guide}.
 
-See \url{https://paws-r.github.io/docs/acm/import_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acm_import_certificate/} for full documentation.
 }
 \keyword{internal}

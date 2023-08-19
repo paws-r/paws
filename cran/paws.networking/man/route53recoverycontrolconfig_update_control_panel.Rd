@@ -17,6 +17,6 @@ route53recoverycontrolconfig_update_control_panel(
 \description{
 Updates a control panel. The only update you can make to a control panel is to change the name of the control panel.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/update_control_panel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_update_control_panel/} for full documentation.
 }
 \keyword{internal}

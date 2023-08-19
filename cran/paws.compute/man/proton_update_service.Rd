@@ -21,6 +21,6 @@ in the \emph{Proton User Guide}.}
 \description{
 Edit a service description or use a spec to add and delete service instances.
 
-See \url{https://paws-r.github.io/docs/proton/update_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_update_service/} for full documentation.
 }
 \keyword{internal}

@@ -2,8 +2,8 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_search_security_profiles}
 \alias{connect_search_security_profiles}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Searches security profiles in an Amazon Connect instance, with optional
+filtering}
 \usage{
 connect_search_security_profiles(
   InstanceId,
@@ -34,8 +34,8 @@ The currently supported value for \code{FieldName}: \code{name}}
 \item{SearchFilter}{Filters to be applied to search results.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Searches security profiles in an Amazon Connect instance, with optional filtering.
 
-See \url{https://paws-r.github.io/docs/connect/search_security_profiles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_search_security_profiles/} for full documentation.
 }
 \keyword{internal}

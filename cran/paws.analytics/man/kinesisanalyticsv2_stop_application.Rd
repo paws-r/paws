@@ -28,6 +28,6 @@ The application must be in the \code{STARTING}, \code{UPDATING}, \code{STOPPING}
 \description{
 Stops the application from processing data. You can stop an application only if it is in the running status, unless you set the \code{Force} parameter to \code{true}.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/stop_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_stop_application/} for full documentation.
 }
 \keyword{internal}

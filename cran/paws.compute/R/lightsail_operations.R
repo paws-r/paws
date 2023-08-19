@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Allocates a static IP address.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/allocate_static_ip.html](https://paws-r.github.io/docs/lightsail/allocate_static_ip.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_allocate_static_ip/](https://www.paws-r-sdk.com/docs/lightsail_allocate_static_ip/) for full documentation.
 #'
 #' @param staticIpName &#91;required&#93; The name of the static IP address.
 #'
@@ -38,7 +38,7 @@ lightsail_allocate_static_ip <- function(staticIpName) {
 #' @description
 #' Attaches an SSL/TLS certificate to your Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/attach_certificate_to_distribution.html](https://paws-r.github.io/docs/lightsail/attach_certificate_to_distribution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_attach_certificate_to_distribution/](https://www.paws-r-sdk.com/docs/lightsail_attach_certificate_to_distribution/) for full documentation.
 #'
 #' @param distributionName &#91;required&#93; The name of the distribution that the certificate will be attached to.
 #' 
@@ -84,7 +84,7 @@ lightsail_attach_certificate_to_distribution <- function(distributionName, certi
 #' @description
 #' Attaches a block storage disk to a running or stopped Lightsail instance and exposes it to the instance with the specified disk name.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/attach_disk.html](https://paws-r.github.io/docs/lightsail/attach_disk.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_attach_disk/](https://www.paws-r-sdk.com/docs/lightsail_attach_disk/) for full documentation.
 #'
 #' @param diskName &#91;required&#93; The unique Lightsail disk name (e.g., `my-disk`).
 #' @param instanceName &#91;required&#93; The name of the Lightsail instance where you want to utilize the storage
@@ -120,7 +120,7 @@ lightsail_attach_disk <- function(diskName, instanceName, diskPath, autoMounting
 #' @description
 #' Attaches one or more Lightsail instances to a load balancer.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/attach_instances_to_load_balancer.html](https://paws-r.github.io/docs/lightsail/attach_instances_to_load_balancer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_attach_instances_to_load_balancer/](https://www.paws-r-sdk.com/docs/lightsail_attach_instances_to_load_balancer/) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param instanceNames &#91;required&#93; An array of strings representing the instance name(s) you want to attach
@@ -159,7 +159,7 @@ lightsail_attach_instances_to_load_balancer <- function(loadBalancerName, instan
 #' @description
 #' Attaches a Transport Layer Security (TLS) certificate to your load balancer. TLS is just an updated, more secure version of Secure Socket Layer (SSL).
 #'
-#' See [https://paws-r.github.io/docs/lightsail/attach_load_balancer_tls_certificate.html](https://paws-r.github.io/docs/lightsail/attach_load_balancer_tls_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_attach_load_balancer_tls_certificate/](https://www.paws-r-sdk.com/docs/lightsail_attach_load_balancer_tls_certificate/) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the load balancer to which you want to associate the SSL/TLS
 #' certificate.
@@ -190,7 +190,7 @@ lightsail_attach_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' @description
 #' Attaches a static IP address to a specific Amazon Lightsail instance.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/attach_static_ip.html](https://paws-r.github.io/docs/lightsail/attach_static_ip.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_attach_static_ip/](https://www.paws-r-sdk.com/docs/lightsail_attach_static_ip/) for full documentation.
 #'
 #' @param staticIpName &#91;required&#93; The name of the static IP.
 #' @param instanceName &#91;required&#93; The instance name to which you want to attach the static IP address.
@@ -220,7 +220,7 @@ lightsail_attach_static_ip <- function(staticIpName, instanceName) {
 #' @description
 #' Closes ports for a specific Amazon Lightsail instance.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/close_instance_public_ports.html](https://paws-r.github.io/docs/lightsail/close_instance_public_ports.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_close_instance_public_ports/](https://www.paws-r-sdk.com/docs/lightsail_close_instance_public_ports/) for full documentation.
 #'
 #' @param portInfo &#91;required&#93; An object to describe the ports to close for the specified instance.
 #' @param instanceName &#91;required&#93; The name of the instance for which to close ports.
@@ -252,7 +252,7 @@ lightsail_close_instance_public_ports <- function(portInfo, instanceName) {
 #' @description
 #' Copies a manual snapshot of an instance or disk as another manual snapshot, or copies an automatic snapshot of an instance or disk as a manual snapshot. This operation can also be used to copy a manual or automatic snapshot of an instance or a disk from one Amazon Web Services Region to another in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/copy_snapshot.html](https://paws-r.github.io/docs/lightsail/copy_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_copy_snapshot/](https://www.paws-r-sdk.com/docs/lightsail_copy_snapshot/) for full documentation.
 #'
 #' @param sourceSnapshotName The name of the source manual snapshot to copy.
 #' 
@@ -325,7 +325,7 @@ lightsail_copy_snapshot <- function(sourceSnapshotName = NULL, sourceResourceNam
 #' @description
 #' Creates an Amazon Lightsail bucket.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_bucket.html](https://paws-r.github.io/docs/lightsail/create_bucket.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_bucket/](https://www.paws-r-sdk.com/docs/lightsail_create_bucket/) for full documentation.
 #'
 #' @param bucketName &#91;required&#93; The name for the bucket.
 #' 
@@ -377,7 +377,7 @@ lightsail_create_bucket <- function(bucketName, bundleId, tags = NULL, enableObj
 #' @description
 #' Creates a new access key for the specified Amazon Lightsail bucket. Access keys consist of an access key ID and corresponding secret access key.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_bucket_access_key.html](https://paws-r.github.io/docs/lightsail/create_bucket_access_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_bucket_access_key/](https://www.paws-r-sdk.com/docs/lightsail_create_bucket_access_key/) for full documentation.
 #'
 #' @param bucketName &#91;required&#93; The name of the bucket that the new access key will belong to, and grant
 #' access to.
@@ -408,7 +408,7 @@ lightsail_create_bucket_access_key <- function(bucketName) {
 #' @description
 #' Creates an SSL/TLS certificate for an Amazon Lightsail content delivery network (CDN) distribution and a container service.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_certificate.html](https://paws-r.github.io/docs/lightsail/create_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_certificate/](https://www.paws-r-sdk.com/docs/lightsail_create_certificate/) for full documentation.
 #'
 #' @param certificateName &#91;required&#93; The name for the certificate.
 #' @param domainName &#91;required&#93; The domain name (e.g., `example.com`) for the certificate.
@@ -452,7 +452,7 @@ lightsail_create_certificate <- function(certificateName, domainName, subjectAlt
 #' @description
 #' Creates an AWS CloudFormation stack, which creates a new Amazon EC2 instance from an exported Amazon Lightsail snapshot. This operation results in a CloudFormation stack record that can be used to track the AWS CloudFormation stack created. Use the `get cloud formation stack records` operation to get a list of the CloudFormation stacks created.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_cloud_formation_stack.html](https://paws-r.github.io/docs/lightsail/create_cloud_formation_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_cloud_formation_stack/](https://www.paws-r-sdk.com/docs/lightsail_create_cloud_formation_stack/) for full documentation.
 #'
 #' @param instances &#91;required&#93; An array of parameters that will be used to create the new Amazon EC2
 #' instance. You can only pass one instance entry at a time in this array.
@@ -484,7 +484,7 @@ lightsail_create_cloud_formation_stack <- function(instances) {
 #' @description
 #' Creates an email or SMS text message contact method.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_contact_method.html](https://paws-r.github.io/docs/lightsail/create_contact_method.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_contact_method/](https://www.paws-r-sdk.com/docs/lightsail_create_contact_method/) for full documentation.
 #'
 #' @param protocol &#91;required&#93; The protocol of the contact method, such as `Email` or `SMS` (text
 #' messaging).
@@ -548,7 +548,7 @@ lightsail_create_contact_method <- function(protocol, contactEndpoint) {
 #' @description
 #' Creates an Amazon Lightsail container service.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_container_service.html](https://paws-r.github.io/docs/lightsail/create_container_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_container_service/](https://www.paws-r-sdk.com/docs/lightsail_create_container_service/) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name for the container service.
 #' 
@@ -660,7 +660,7 @@ lightsail_create_container_service <- function(serviceName, power, scale, tags =
 #' @description
 #' Creates a deployment for your Amazon Lightsail container service.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_container_service_deployment.html](https://paws-r.github.io/docs/lightsail/create_container_service_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_container_service_deployment/](https://www.paws-r-sdk.com/docs/lightsail_create_container_service_deployment/) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service for which to create the deployment.
 #' @param containers An object that describes the settings of the containers that will be
@@ -694,7 +694,7 @@ lightsail_create_container_service_deployment <- function(serviceName, container
 #' @description
 #' Creates a temporary set of log in credentials that you can use to log in to the Docker process on your local machine. After you're logged in, you can use the native Docker commands to push your local container images to the container image registry of your Amazon Lightsail account so that you can use them with your Lightsail container service. The log in credentials expire 12 hours after they are created, at which point you will need to create a new set of log in credentials.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_container_service_registry_login.html](https://paws-r.github.io/docs/lightsail/create_container_service_registry_login.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_container_service_registry_login/](https://www.paws-r-sdk.com/docs/lightsail_create_container_service_registry_login/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -722,7 +722,7 @@ lightsail_create_container_service_registry_login <- function() {
 #' @description
 #' Creates a block storage disk that can be attached to an Amazon Lightsail instance in the same Availability Zone (e.g., `us-east-2a`).
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_disk.html](https://paws-r.github.io/docs/lightsail/create_disk.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_disk/](https://www.paws-r-sdk.com/docs/lightsail_create_disk/) for full documentation.
 #'
 #' @param diskName &#91;required&#93; The unique Lightsail disk name (e.g., `my-disk`).
 #' @param availabilityZone &#91;required&#93; The Availability Zone where you want to create the disk (e.g.,
@@ -765,7 +765,7 @@ lightsail_create_disk <- function(diskName, availabilityZone, sizeInGb, tags = N
 #' @description
 #' Creates a block storage disk from a manual or automatic snapshot of a disk. The resulting disk can be attached to an Amazon Lightsail instance in the same Availability Zone (e.g., `us-east-2a`).
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_disk_from_snapshot.html](https://paws-r.github.io/docs/lightsail/create_disk_from_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_disk_from_snapshot/](https://www.paws-r-sdk.com/docs/lightsail_create_disk_from_snapshot/) for full documentation.
 #'
 #' @param diskName &#91;required&#93; The unique Lightsail disk name (e.g., `my-disk`).
 #' @param diskSnapshotName The name of the disk snapshot (e.g., `my-snapshot`) from which to create
@@ -855,7 +855,7 @@ lightsail_create_disk_from_snapshot <- function(diskName, diskSnapshotName = NUL
 #' @description
 #' Creates a snapshot of a block storage disk. You can use snapshots for backups, to make copies of disks, and to save data before shutting down a Lightsail instance.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_disk_snapshot.html](https://paws-r.github.io/docs/lightsail/create_disk_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_disk_snapshot/](https://www.paws-r-sdk.com/docs/lightsail_create_disk_snapshot/) for full documentation.
 #'
 #' @param diskName The unique name of the source disk (e.g., `Disk-Virginia-1`).
 #' 
@@ -901,7 +901,7 @@ lightsail_create_disk_snapshot <- function(diskName = NULL, diskSnapshotName, in
 #' @description
 #' Creates an Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_distribution.html](https://paws-r.github.io/docs/lightsail/create_distribution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_distribution/](https://www.paws-r-sdk.com/docs/lightsail_create_distribution/) for full documentation.
 #'
 #' @param distributionName &#91;required&#93; The name for the distribution.
 #' @param origin &#91;required&#93; An object that describes the origin resource for the distribution, such
@@ -958,7 +958,7 @@ lightsail_create_distribution <- function(distributionName, origin, defaultCache
 #' @description
 #' Creates a domain resource for the specified domain (e.g., example.com).
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_domain.html](https://paws-r.github.io/docs/lightsail/create_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_domain/](https://www.paws-r-sdk.com/docs/lightsail_create_domain/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name to manage (e.g., `example.com`).
 #' @param tags The tag keys and optional values to add to the resource during create.
@@ -994,7 +994,7 @@ lightsail_create_domain <- function(domainName, tags = NULL) {
 #' @description
 #' Creates one of the following domain name system (DNS) records in a domain DNS zone: Address (A), canonical name (CNAME), mail exchanger (MX), name server (NS), start of authority (SOA), service locator (SRV), or text (TXT).
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_domain_entry.html](https://paws-r.github.io/docs/lightsail/create_domain_entry.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_domain_entry/](https://www.paws-r-sdk.com/docs/lightsail_create_domain_entry/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name (e.g., `example.com`) for which you want to create the
 #' domain entry.
@@ -1027,7 +1027,7 @@ lightsail_create_domain_entry <- function(domainName, domainEntry) {
 #' @description
 #' Creates two URLs that are used to access a virtual computer’s graphical user interface (GUI) session. The primary URL initiates a web-based NICE DCV session to the virtual computer's application. The secondary URL initiates a web-based NICE DCV session to the virtual computer's operating session.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_gui_session_access_details.html](https://paws-r.github.io/docs/lightsail/create_gui_session_access_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_gui_session_access_details/](https://www.paws-r-sdk.com/docs/lightsail_create_gui_session_access_details/) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The resource name.
 #'
@@ -1056,7 +1056,7 @@ lightsail_create_gui_session_access_details <- function(resourceName) {
 #' @description
 #' Creates a snapshot of a specific virtual private server, or *instance*. You can use a snapshot to create a new instance that is based on that snapshot.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_instance_snapshot.html](https://paws-r.github.io/docs/lightsail/create_instance_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_instance_snapshot/](https://www.paws-r-sdk.com/docs/lightsail_create_instance_snapshot/) for full documentation.
 #'
 #' @param instanceSnapshotName &#91;required&#93; The name for your new snapshot.
 #' @param instanceName &#91;required&#93; The Lightsail instance on which to base your snapshot.
@@ -1090,7 +1090,7 @@ lightsail_create_instance_snapshot <- function(instanceSnapshotName, instanceNam
 #' @description
 #' Creates one or more Amazon Lightsail instances.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_instances.html](https://paws-r.github.io/docs/lightsail/create_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_instances/](https://www.paws-r-sdk.com/docs/lightsail_create_instances/) for full documentation.
 #'
 #' @param instanceNames &#91;required&#93; The names to use for your new Lightsail instances. Separate multiple
 #' values using quotation marks and commas, for example:
@@ -1163,7 +1163,7 @@ lightsail_create_instances <- function(instanceNames, availabilityZone, customIm
 #' @description
 #' Creates one or more new instances from a manual or automatic snapshot of an instance.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_instances_from_snapshot.html](https://paws-r.github.io/docs/lightsail/create_instances_from_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_instances_from_snapshot/](https://www.paws-r-sdk.com/docs/lightsail_create_instances_from_snapshot/) for full documentation.
 #'
 #' @param instanceNames &#91;required&#93; The names for your new instances.
 #' @param attachedDiskMapping An object containing information about one or more disk mappings.
@@ -1271,7 +1271,7 @@ lightsail_create_instances_from_snapshot <- function(instanceNames, attachedDisk
 #' @description
 #' Creates a custom SSH key pair that you can use with an Amazon Lightsail instance.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_key_pair.html](https://paws-r.github.io/docs/lightsail/create_key_pair.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_key_pair/](https://www.paws-r-sdk.com/docs/lightsail_create_key_pair/) for full documentation.
 #'
 #' @param keyPairName &#91;required&#93; The name for your new key pair.
 #' @param tags The tag keys and optional values to add to the resource during create.
@@ -1304,7 +1304,7 @@ lightsail_create_key_pair <- function(keyPairName, tags = NULL) {
 #' @description
 #' Creates a Lightsail load balancer. To learn more about deciding whether to load balance your application, see Configure your Lightsail instances for load balancing. You can create up to 5 load balancers per AWS Region in your account.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_load_balancer.html](https://paws-r.github.io/docs/lightsail/create_load_balancer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_load_balancer/](https://www.paws-r-sdk.com/docs/lightsail_create_load_balancer/) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of your load balancer.
 #' @param instancePort &#91;required&#93; The instance port where you're creating your load balancer.
@@ -1372,7 +1372,7 @@ lightsail_create_load_balancer <- function(loadBalancerName, instancePort, healt
 #' @description
 #' Creates an SSL/TLS certificate for an Amazon Lightsail load balancer.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_load_balancer_tls_certificate.html](https://paws-r.github.io/docs/lightsail/create_load_balancer_tls_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_load_balancer_tls_certificate/](https://www.paws-r-sdk.com/docs/lightsail_create_load_balancer_tls_certificate/) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The load balancer name where you want to create the SSL/TLS certificate.
 #' @param certificateName &#91;required&#93; The SSL/TLS certificate name.
@@ -1418,7 +1418,7 @@ lightsail_create_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' @description
 #' Creates a new database in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_relational_database.html](https://paws-r.github.io/docs/lightsail/create_relational_database.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_relational_database/](https://www.paws-r-sdk.com/docs/lightsail_create_relational_database/) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name to use for your new Lightsail database resource.
 #' 
@@ -1618,7 +1618,7 @@ lightsail_create_relational_database <- function(relationalDatabaseName, availab
 #' @description
 #' Creates a new database from an existing database snapshot in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_relational_database_from_snapshot.html](https://paws-r.github.io/docs/lightsail/create_relational_database_from_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_relational_database_from_snapshot/](https://www.paws-r-sdk.com/docs/lightsail_create_relational_database_from_snapshot/) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name to use for your new Lightsail database resource.
 #' 
@@ -1702,7 +1702,7 @@ lightsail_create_relational_database_from_snapshot <- function(relationalDatabas
 #' @description
 #' Creates a snapshot of your database in Amazon Lightsail. You can use snapshots for backups, to make copies of a database, and to save data before deleting a database.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/create_relational_database_snapshot.html](https://paws-r.github.io/docs/lightsail/create_relational_database_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_create_relational_database_snapshot/](https://www.paws-r-sdk.com/docs/lightsail_create_relational_database_snapshot/) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of the database on which to base your new snapshot.
 #' @param relationalDatabaseSnapshotName &#91;required&#93; The name for your new database snapshot.
@@ -1742,7 +1742,7 @@ lightsail_create_relational_database_snapshot <- function(relationalDatabaseName
 #' @description
 #' Deletes an alarm.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_alarm.html](https://paws-r.github.io/docs/lightsail/delete_alarm.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_alarm/](https://www.paws-r-sdk.com/docs/lightsail_delete_alarm/) for full documentation.
 #'
 #' @param alarmName &#91;required&#93; The name of the alarm to delete.
 #'
@@ -1771,7 +1771,7 @@ lightsail_delete_alarm <- function(alarmName) {
 #' @description
 #' Deletes an automatic snapshot of an instance or disk. For more information, see the Amazon Lightsail Developer Guide.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_auto_snapshot.html](https://paws-r.github.io/docs/lightsail/delete_auto_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_auto_snapshot/](https://www.paws-r-sdk.com/docs/lightsail_delete_auto_snapshot/) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The name of the source instance or disk from which to delete the
 #' automatic snapshot.
@@ -1804,7 +1804,7 @@ lightsail_delete_auto_snapshot <- function(resourceName, date) {
 #' @description
 #' Deletes a Amazon Lightsail bucket.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_bucket.html](https://paws-r.github.io/docs/lightsail/delete_bucket.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_bucket/](https://www.paws-r-sdk.com/docs/lightsail_delete_bucket/) for full documentation.
 #'
 #' @param bucketName &#91;required&#93; The name of the bucket to delete.
 #' 
@@ -1854,7 +1854,7 @@ lightsail_delete_bucket <- function(bucketName, forceDelete = NULL) {
 #' @description
 #' Deletes an access key for the specified Amazon Lightsail bucket.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_bucket_access_key.html](https://paws-r.github.io/docs/lightsail/delete_bucket_access_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_bucket_access_key/](https://www.paws-r-sdk.com/docs/lightsail_delete_bucket_access_key/) for full documentation.
 #'
 #' @param bucketName &#91;required&#93; The name of the bucket that the access key belongs to.
 #' @param accessKeyId &#91;required&#93; The ID of the access key to delete.
@@ -1888,7 +1888,7 @@ lightsail_delete_bucket_access_key <- function(bucketName, accessKeyId) {
 #' @description
 #' Deletes an SSL/TLS certificate for your Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_certificate.html](https://paws-r.github.io/docs/lightsail/delete_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_certificate/](https://www.paws-r-sdk.com/docs/lightsail_delete_certificate/) for full documentation.
 #'
 #' @param certificateName &#91;required&#93; The name of the certificate to delete.
 #' 
@@ -1920,7 +1920,7 @@ lightsail_delete_certificate <- function(certificateName) {
 #' @description
 #' Deletes a contact method.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_contact_method.html](https://paws-r.github.io/docs/lightsail/delete_contact_method.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_contact_method/](https://www.paws-r-sdk.com/docs/lightsail_delete_contact_method/) for full documentation.
 #'
 #' @param protocol &#91;required&#93; The protocol that will be deleted, such as `Email` or `SMS` (text
 #' messaging).
@@ -1956,7 +1956,7 @@ lightsail_delete_contact_method <- function(protocol) {
 #' @description
 #' Deletes a container image that is registered to your Amazon Lightsail container service.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_container_image.html](https://paws-r.github.io/docs/lightsail/delete_container_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_container_image/](https://www.paws-r-sdk.com/docs/lightsail_delete_container_image/) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service for which to delete a registered
 #' container image.
@@ -1997,7 +1997,7 @@ lightsail_delete_container_image <- function(serviceName, image) {
 #' @description
 #' Deletes your Amazon Lightsail container service.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_container_service.html](https://paws-r.github.io/docs/lightsail/delete_container_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_container_service/](https://www.paws-r-sdk.com/docs/lightsail_delete_container_service/) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service to delete.
 #'
@@ -2026,7 +2026,7 @@ lightsail_delete_container_service <- function(serviceName) {
 #' @description
 #' Deletes the specified block storage disk. The disk must be in the `available` state (not attached to a Lightsail instance).
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_disk.html](https://paws-r.github.io/docs/lightsail/delete_disk.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_disk/](https://www.paws-r-sdk.com/docs/lightsail_delete_disk/) for full documentation.
 #'
 #' @param diskName &#91;required&#93; The unique name of the disk you want to delete (e.g., `my-disk`).
 #' @param forceDeleteAddOns A Boolean value to indicate whether to delete all add-ons for the disk.
@@ -2056,7 +2056,7 @@ lightsail_delete_disk <- function(diskName, forceDeleteAddOns = NULL) {
 #' @description
 #' Deletes the specified disk snapshot.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_disk_snapshot.html](https://paws-r.github.io/docs/lightsail/delete_disk_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_disk_snapshot/](https://www.paws-r-sdk.com/docs/lightsail_delete_disk_snapshot/) for full documentation.
 #'
 #' @param diskSnapshotName &#91;required&#93; The name of the disk snapshot you want to delete (e.g.,
 #' `my-disk-snapshot`).
@@ -2087,7 +2087,7 @@ lightsail_delete_disk_snapshot <- function(diskSnapshotName) {
 #' @description
 #' Deletes your Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_distribution.html](https://paws-r.github.io/docs/lightsail/delete_distribution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_distribution/](https://www.paws-r-sdk.com/docs/lightsail_delete_distribution/) for full documentation.
 #'
 #' @param distributionName The name of the distribution to delete.
 #' 
@@ -2119,7 +2119,7 @@ lightsail_delete_distribution <- function(distributionName = NULL) {
 #' @description
 #' Deletes the specified domain recordset and all of its domain records.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_domain.html](https://paws-r.github.io/docs/lightsail/delete_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_domain/](https://www.paws-r-sdk.com/docs/lightsail_delete_domain/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The specific domain name to delete.
 #'
@@ -2148,7 +2148,7 @@ lightsail_delete_domain <- function(domainName) {
 #' @description
 #' Deletes a specific domain entry.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_domain_entry.html](https://paws-r.github.io/docs/lightsail/delete_domain_entry.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_domain_entry/](https://www.paws-r-sdk.com/docs/lightsail_delete_domain_entry/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The name of the domain entry to delete.
 #' @param domainEntry &#91;required&#93; An array of key-value pairs containing information about your domain
@@ -2179,7 +2179,7 @@ lightsail_delete_domain_entry <- function(domainName, domainEntry) {
 #' @description
 #' Deletes an Amazon Lightsail instance.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_instance.html](https://paws-r.github.io/docs/lightsail/delete_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_instance/](https://www.paws-r-sdk.com/docs/lightsail_delete_instance/) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance to delete.
 #' @param forceDeleteAddOns A Boolean value to indicate whether to delete all add-ons for the
@@ -2210,7 +2210,7 @@ lightsail_delete_instance <- function(instanceName, forceDeleteAddOns = NULL) {
 #' @description
 #' Deletes a specific snapshot of a virtual private server (or *instance*).
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_instance_snapshot.html](https://paws-r.github.io/docs/lightsail/delete_instance_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_instance_snapshot/](https://www.paws-r-sdk.com/docs/lightsail_delete_instance_snapshot/) for full documentation.
 #'
 #' @param instanceSnapshotName &#91;required&#93; The name of the snapshot to delete.
 #'
@@ -2240,7 +2240,7 @@ lightsail_delete_instance_snapshot <- function(instanceSnapshotName) {
 #' @description
 #' Deletes the specified key pair by removing the public key from Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_key_pair.html](https://paws-r.github.io/docs/lightsail/delete_key_pair.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_key_pair/](https://www.paws-r-sdk.com/docs/lightsail_delete_key_pair/) for full documentation.
 #'
 #' @param keyPairName &#91;required&#93; The name of the key pair to delete.
 #' @param expectedFingerprint The RSA fingerprint of the Lightsail default key pair to delete.
@@ -2274,7 +2274,7 @@ lightsail_delete_key_pair <- function(keyPairName, expectedFingerprint = NULL) {
 #' @description
 #' Deletes the known host key or certificate used by the Amazon Lightsail browser-based SSH or RDP clients to authenticate an instance. This operation enables the Lightsail browser-based SSH or RDP clients to connect to the instance after a host key mismatch.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_known_host_keys.html](https://paws-r.github.io/docs/lightsail/delete_known_host_keys.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_known_host_keys/](https://www.paws-r-sdk.com/docs/lightsail_delete_known_host_keys/) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance for which you want to reset the host key or
 #' certificate.
@@ -2305,7 +2305,7 @@ lightsail_delete_known_host_keys <- function(instanceName) {
 #' @description
 #' Deletes a Lightsail load balancer and all its associated SSL/TLS certificates. Once the load balancer is deleted, you will need to create a new load balancer, create a new certificate, and verify domain ownership again.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_load_balancer.html](https://paws-r.github.io/docs/lightsail/delete_load_balancer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_load_balancer/](https://www.paws-r-sdk.com/docs/lightsail_delete_load_balancer/) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the load balancer you want to delete.
 #'
@@ -2334,7 +2334,7 @@ lightsail_delete_load_balancer <- function(loadBalancerName) {
 #' @description
 #' Deletes an SSL/TLS certificate associated with a Lightsail load balancer.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_load_balancer_tls_certificate.html](https://paws-r.github.io/docs/lightsail/delete_load_balancer_tls_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_load_balancer_tls_certificate/](https://www.paws-r-sdk.com/docs/lightsail_delete_load_balancer_tls_certificate/) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The load balancer name.
 #' @param certificateName &#91;required&#93; The SSL/TLS certificate name.
@@ -2370,7 +2370,7 @@ lightsail_delete_load_balancer_tls_certificate <- function(loadBalancerName, cer
 #' @description
 #' Deletes a database in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_relational_database.html](https://paws-r.github.io/docs/lightsail/delete_relational_database.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_relational_database/](https://www.paws-r-sdk.com/docs/lightsail_delete_relational_database/) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of the database that you are deleting.
 #' @param skipFinalSnapshot Determines whether a final database snapshot is created before your
@@ -2419,7 +2419,7 @@ lightsail_delete_relational_database <- function(relationalDatabaseName, skipFin
 #' @description
 #' Deletes a database snapshot in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/delete_relational_database_snapshot.html](https://paws-r.github.io/docs/lightsail/delete_relational_database_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_delete_relational_database_snapshot/](https://www.paws-r-sdk.com/docs/lightsail_delete_relational_database_snapshot/) for full documentation.
 #'
 #' @param relationalDatabaseSnapshotName &#91;required&#93; The name of the database snapshot that you are deleting.
 #'
@@ -2449,7 +2449,7 @@ lightsail_delete_relational_database_snapshot <- function(relationalDatabaseSnap
 #' @description
 #' Detaches an SSL/TLS certificate from your Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/detach_certificate_from_distribution.html](https://paws-r.github.io/docs/lightsail/detach_certificate_from_distribution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_detach_certificate_from_distribution/](https://www.paws-r-sdk.com/docs/lightsail_detach_certificate_from_distribution/) for full documentation.
 #'
 #' @param distributionName &#91;required&#93; The name of the distribution from which to detach the certificate.
 #' 
@@ -2481,7 +2481,7 @@ lightsail_detach_certificate_from_distribution <- function(distributionName) {
 #' @description
 #' Detaches a stopped block storage disk from a Lightsail instance. Make sure to unmount any file systems on the device within your operating system before stopping the instance and detaching the disk.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/detach_disk.html](https://paws-r.github.io/docs/lightsail/detach_disk.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_detach_disk/](https://www.paws-r-sdk.com/docs/lightsail_detach_disk/) for full documentation.
 #'
 #' @param diskName &#91;required&#93; The unique name of the disk you want to detach from your instance (e.g.,
 #' `my-disk`).
@@ -2511,7 +2511,7 @@ lightsail_detach_disk <- function(diskName) {
 #' @description
 #' Detaches the specified instances from a Lightsail load balancer.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/detach_instances_from_load_balancer.html](https://paws-r.github.io/docs/lightsail/detach_instances_from_load_balancer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_detach_instances_from_load_balancer/](https://www.paws-r-sdk.com/docs/lightsail_detach_instances_from_load_balancer/) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the Lightsail load balancer.
 #' @param instanceNames &#91;required&#93; An array of strings containing the names of the instances you want to
@@ -2543,7 +2543,7 @@ lightsail_detach_instances_from_load_balancer <- function(loadBalancerName, inst
 #' @description
 #' Detaches a static IP from the Amazon Lightsail instance to which it is attached.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/detach_static_ip.html](https://paws-r.github.io/docs/lightsail/detach_static_ip.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_detach_static_ip/](https://www.paws-r-sdk.com/docs/lightsail_detach_static_ip/) for full documentation.
 #'
 #' @param staticIpName &#91;required&#93; The name of the static IP to detach from the instance.
 #'
@@ -2572,7 +2572,7 @@ lightsail_detach_static_ip <- function(staticIpName) {
 #' @description
 #' Disables an add-on for an Amazon Lightsail resource. For more information, see the Amazon Lightsail Developer Guide.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/disable_add_on.html](https://paws-r.github.io/docs/lightsail/disable_add_on.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_disable_add_on/](https://www.paws-r-sdk.com/docs/lightsail_disable_add_on/) for full documentation.
 #'
 #' @param addOnType &#91;required&#93; The add-on type to disable.
 #' @param resourceName &#91;required&#93; The name of the source resource for which to disable the add-on.
@@ -2602,7 +2602,7 @@ lightsail_disable_add_on <- function(addOnType, resourceName) {
 #' @description
 #' Downloads the regional Amazon Lightsail default key pair.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/download_default_key_pair.html](https://paws-r.github.io/docs/lightsail/download_default_key_pair.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_download_default_key_pair/](https://www.paws-r-sdk.com/docs/lightsail_download_default_key_pair/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -2629,7 +2629,7 @@ lightsail_download_default_key_pair <- function() {
 #' @description
 #' Enables or modifies an add-on for an Amazon Lightsail resource. For more information, see the Amazon Lightsail Developer Guide.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/enable_add_on.html](https://paws-r.github.io/docs/lightsail/enable_add_on.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_enable_add_on/](https://www.paws-r-sdk.com/docs/lightsail_enable_add_on/) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The name of the source resource for which to enable or modify the
 #' add-on.
@@ -2661,7 +2661,7 @@ lightsail_enable_add_on <- function(resourceName, addOnRequest) {
 #' @description
 #' Exports an Amazon Lightsail instance or block storage disk snapshot to Amazon Elastic Compute Cloud (Amazon EC2). This operation results in an export snapshot record that can be used with the `create cloud formation stack` operation to create new Amazon EC2 instances.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/export_snapshot.html](https://paws-r.github.io/docs/lightsail/export_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_export_snapshot/](https://www.paws-r-sdk.com/docs/lightsail_export_snapshot/) for full documentation.
 #'
 #' @param sourceSnapshotName &#91;required&#93; The name of the instance or disk snapshot to be exported to Amazon EC2.
 #'
@@ -2690,7 +2690,7 @@ lightsail_export_snapshot <- function(sourceSnapshotName) {
 #' @description
 #' Returns the names of all active (not deleted) resources.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_active_names.html](https://paws-r.github.io/docs/lightsail/get_active_names.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_active_names/](https://www.paws-r-sdk.com/docs/lightsail_get_active_names/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -2724,7 +2724,7 @@ lightsail_get_active_names <- function(pageToken = NULL) {
 #' @description
 #' Returns information about the configured alarms. Specify an alarm name in your request to return information about a specific alarm, or specify a monitored resource name to return information about all alarms for a specific resource.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_alarms.html](https://paws-r.github.io/docs/lightsail/get_alarms.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_alarms/](https://www.paws-r-sdk.com/docs/lightsail_get_alarms/) for full documentation.
 #'
 #' @param alarmName The name of the alarm.
 #' 
@@ -2765,7 +2765,7 @@ lightsail_get_alarms <- function(alarmName = NULL, pageToken = NULL, monitoredRe
 #' @description
 #' Returns the available automatic snapshots for an instance or disk. For more information, see the Amazon Lightsail Developer Guide.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_auto_snapshots.html](https://paws-r.github.io/docs/lightsail/get_auto_snapshots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_auto_snapshots/](https://www.paws-r-sdk.com/docs/lightsail_get_auto_snapshots/) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The name of the source instance or disk from which to get automatic
 #' snapshot information.
@@ -2795,7 +2795,7 @@ lightsail_get_auto_snapshots <- function(resourceName) {
 #' @description
 #' Returns the list of available instance images, or *blueprints*. You can use a blueprint to create a new instance already running a specific operating system, as well as a preinstalled app or development stack. The software each instance is running depends on the blueprint image you choose.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_blueprints.html](https://paws-r.github.io/docs/lightsail/get_blueprints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_blueprints/](https://www.paws-r-sdk.com/docs/lightsail_get_blueprints/) for full documentation.
 #'
 #' @param includeInactive A Boolean value that indicates whether to include inactive (unavailable)
 #' blueprints in the response of your request.
@@ -2836,7 +2836,7 @@ lightsail_get_blueprints <- function(includeInactive = NULL, pageToken = NULL, a
 #' @description
 #' Returns the existing access key IDs for the specified Amazon Lightsail bucket.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_bucket_access_keys.html](https://paws-r.github.io/docs/lightsail/get_bucket_access_keys.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_bucket_access_keys/](https://www.paws-r-sdk.com/docs/lightsail_get_bucket_access_keys/) for full documentation.
 #'
 #' @param bucketName &#91;required&#93; The name of the bucket for which to return access keys.
 #'
@@ -2865,7 +2865,7 @@ lightsail_get_bucket_access_keys <- function(bucketName) {
 #' @description
 #' Returns the bundles that you can apply to a Amazon Lightsail bucket.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_bucket_bundles.html](https://paws-r.github.io/docs/lightsail/get_bucket_bundles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_bucket_bundles/](https://www.paws-r-sdk.com/docs/lightsail_get_bucket_bundles/) for full documentation.
 #'
 #' @param includeInactive A Boolean value that indicates whether to include inactive (unavailable)
 #' bundles in the response of your request.
@@ -2896,7 +2896,7 @@ lightsail_get_bucket_bundles <- function(includeInactive = NULL) {
 #' @description
 #' Returns the data points of a specific metric for an Amazon Lightsail bucket.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_bucket_metric_data.html](https://paws-r.github.io/docs/lightsail/get_bucket_metric_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_bucket_metric_data/](https://www.paws-r-sdk.com/docs/lightsail_get_bucket_metric_data/) for full documentation.
 #'
 #' @param bucketName &#91;required&#93; The name of the bucket for which to get metric data.
 #' @param metricName &#91;required&#93; The metric for which you want to return information.
@@ -2984,7 +2984,7 @@ lightsail_get_bucket_metric_data <- function(bucketName, metricName, startTime, 
 #' @description
 #' Returns information about one or more Amazon Lightsail buckets. The information returned includes the synchronization status of the Amazon Simple Storage Service (Amazon S3) account-level block public access feature for your Lightsail buckets.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_buckets.html](https://paws-r.github.io/docs/lightsail/get_buckets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_buckets/](https://www.paws-r-sdk.com/docs/lightsail_get_buckets/) for full documentation.
 #'
 #' @param bucketName The name of the bucket for which to return information.
 #' 
@@ -3027,7 +3027,7 @@ lightsail_get_buckets <- function(bucketName = NULL, pageToken = NULL, includeCo
 #' @description
 #' Returns the bundles that you can apply to an Amazon Lightsail instance when you create it.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_bundles.html](https://paws-r.github.io/docs/lightsail/get_bundles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_bundles/](https://www.paws-r-sdk.com/docs/lightsail_get_bundles/) for full documentation.
 #'
 #' @param includeInactive A Boolean value that indicates whether to include inactive (unavailable)
 #' bundles in the response of your request.
@@ -3067,7 +3067,7 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL, appC
 #' @description
 #' Returns information about one or more Amazon Lightsail SSL/TLS certificates.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_certificates.html](https://paws-r.github.io/docs/lightsail/get_certificates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_certificates/](https://www.paws-r-sdk.com/docs/lightsail_get_certificates/) for full documentation.
 #'
 #' @param certificateStatuses The status of the certificates for which to return information.
 #' 
@@ -3086,18 +3086,24 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL, appC
 #' 
 #' When omitted, the response includes all of your certificates in the
 #' Amazon Web Services Region where the request is made.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial
+#' [`get_certificates`][lightsail_get_certificates] request. If your
+#' results are paginated, the response will return a next page token that
+#' you can specify as the page token in a subsequent request.
 #'
 #' @keywords internal
 #'
 #' @rdname lightsail_get_certificates
-lightsail_get_certificates <- function(certificateStatuses = NULL, includeCertificateDetails = NULL, certificateName = NULL) {
+lightsail_get_certificates <- function(certificateStatuses = NULL, includeCertificateDetails = NULL, certificateName = NULL, pageToken = NULL) {
   op <- new_operation(
     name = "GetCertificates",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lightsail$get_certificates_input(certificateStatuses = certificateStatuses, includeCertificateDetails = includeCertificateDetails, certificateName = certificateName)
+  input <- .lightsail$get_certificates_input(certificateStatuses = certificateStatuses, includeCertificateDetails = includeCertificateDetails, certificateName = certificateName, pageToken = pageToken)
   output <- .lightsail$get_certificates_output()
   config <- get_config()
   svc <- .lightsail$service(config)
@@ -3113,7 +3119,7 @@ lightsail_get_certificates <- function(certificateStatuses = NULL, includeCertif
 #' @description
 #' Returns the CloudFormation stack record created as a result of the `create cloud formation stack` operation.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_cloud_formation_stack_records.html](https://paws-r.github.io/docs/lightsail/get_cloud_formation_stack_records.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_cloud_formation_stack_records/](https://www.paws-r-sdk.com/docs/lightsail_get_cloud_formation_stack_records/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -3147,7 +3153,7 @@ lightsail_get_cloud_formation_stack_records <- function(pageToken = NULL) {
 #' @description
 #' Returns information about the configured contact methods. Specify a protocol in your request to return information about a specific contact method.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_contact_methods.html](https://paws-r.github.io/docs/lightsail/get_contact_methods.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_contact_methods/](https://www.paws-r-sdk.com/docs/lightsail_get_contact_methods/) for full documentation.
 #'
 #' @param protocols The protocols used to send notifications, such as `Email`, or `SMS`
 #' (text messaging).
@@ -3181,7 +3187,7 @@ lightsail_get_contact_methods <- function(protocols = NULL) {
 #' @description
 #' Returns information about Amazon Lightsail containers, such as the current version of the Lightsail Control (lightsailctl) plugin.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_container_api_metadata.html](https://paws-r.github.io/docs/lightsail/get_container_api_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_container_api_metadata/](https://www.paws-r-sdk.com/docs/lightsail_get_container_api_metadata/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -3209,7 +3215,7 @@ lightsail_get_container_api_metadata <- function() {
 #' @description
 #' Returns the container images that are registered to your Amazon Lightsail container service.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_container_images.html](https://paws-r.github.io/docs/lightsail/get_container_images.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_container_images/](https://www.paws-r-sdk.com/docs/lightsail_get_container_images/) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service for which to return registered
 #' container images.
@@ -3240,7 +3246,7 @@ lightsail_get_container_images <- function(serviceName) {
 #' @description
 #' Returns the log events of a container of your Amazon Lightsail container service.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_container_log.html](https://paws-r.github.io/docs/lightsail/get_container_log.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_container_log/](https://www.paws-r-sdk.com/docs/lightsail_get_container_log/) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service for which to get a container log.
 #' @param containerName &#91;required&#93; The name of the container that is either running or previously ran on
@@ -3321,7 +3327,7 @@ lightsail_get_container_log <- function(serviceName, containerName, startTime = 
 #' @description
 #' Returns the deployments for your Amazon Lightsail container service
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_container_service_deployments.html](https://paws-r.github.io/docs/lightsail/get_container_service_deployments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_container_service_deployments/](https://www.paws-r-sdk.com/docs/lightsail_get_container_service_deployments/) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service for which to return deployments.
 #'
@@ -3351,7 +3357,7 @@ lightsail_get_container_service_deployments <- function(serviceName) {
 #' @description
 #' Returns the data points of a specific metric of your Amazon Lightsail container service.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_container_service_metric_data.html](https://paws-r.github.io/docs/lightsail/get_container_service_metric_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_container_service_metric_data/](https://www.paws-r-sdk.com/docs/lightsail_get_container_service_metric_data/) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service for which to get metric data.
 #' @param metricName &#91;required&#93; The metric for which you want to return information.
@@ -3435,7 +3441,7 @@ lightsail_get_container_service_metric_data <- function(serviceName, metricName,
 #' @description
 #' Returns the list of powers that can be specified for your Amazon Lightsail container services.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_container_service_powers.html](https://paws-r.github.io/docs/lightsail/get_container_service_powers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_container_service_powers/](https://www.paws-r-sdk.com/docs/lightsail_get_container_service_powers/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -3463,7 +3469,7 @@ lightsail_get_container_service_powers <- function() {
 #' @description
 #' Returns information about one or more of your Amazon Lightsail container services.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_container_services.html](https://paws-r.github.io/docs/lightsail/get_container_services.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_container_services/](https://www.paws-r-sdk.com/docs/lightsail_get_container_services/) for full documentation.
 #'
 #' @param serviceName The name of the container service for which to return information.
 #' 
@@ -3495,7 +3501,7 @@ lightsail_get_container_services <- function(serviceName = NULL) {
 #' @description
 #' Retrieves information about the cost estimate for a specified resource. A cost estimate will not generate for a resource that has been deleted.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_cost_estimate.html](https://paws-r.github.io/docs/lightsail/get_cost_estimate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_cost_estimate/](https://www.paws-r-sdk.com/docs/lightsail_get_cost_estimate/) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The resource name.
 #' @param startTime &#91;required&#93; The cost estimate start time.
@@ -3506,7 +3512,7 @@ lightsail_get_container_services <- function(serviceName = NULL) {
 #' 
 #' -   Specified in the Unix time format.
 #' 
-#'     For example, if you wish to use a start time of October 1, 2018, at
+#'     For example, if you want to use a start time of October 1, 2018, at
 #'     8 PM UTC, specify `1538424000` as the start time.
 #' 
 #' You can convert a human-friendly time to Unix time format using a
@@ -3519,7 +3525,7 @@ lightsail_get_container_services <- function(serviceName = NULL) {
 #' 
 #' -   Specified in the Unix time format.
 #' 
-#'     For example, if you wish to use an end time of October 1, 2018, at 9
+#'     For example, if you want to use an end time of October 1, 2018, at 9
 #'     PM UTC, specify `1538427600` as the end time.
 #' 
 #' You can convert a human-friendly time to Unix time format using a
@@ -3550,7 +3556,7 @@ lightsail_get_cost_estimate <- function(resourceName, startTime, endTime) {
 #' @description
 #' Returns information about a specific block storage disk.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_disk.html](https://paws-r.github.io/docs/lightsail/get_disk.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_disk/](https://www.paws-r-sdk.com/docs/lightsail_get_disk/) for full documentation.
 #'
 #' @param diskName &#91;required&#93; The name of the disk (e.g., `my-disk`).
 #'
@@ -3579,7 +3585,7 @@ lightsail_get_disk <- function(diskName) {
 #' @description
 #' Returns information about a specific block storage disk snapshot.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_disk_snapshot.html](https://paws-r.github.io/docs/lightsail/get_disk_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_disk_snapshot/](https://www.paws-r-sdk.com/docs/lightsail_get_disk_snapshot/) for full documentation.
 #'
 #' @param diskSnapshotName &#91;required&#93; The name of the disk snapshot (e.g., `my-disk-snapshot`).
 #'
@@ -3609,7 +3615,7 @@ lightsail_get_disk_snapshot <- function(diskSnapshotName) {
 #' @description
 #' Returns information about all block storage disk snapshots in your AWS account and region.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_disk_snapshots.html](https://paws-r.github.io/docs/lightsail/get_disk_snapshots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_disk_snapshots/](https://www.paws-r-sdk.com/docs/lightsail_get_disk_snapshots/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -3644,7 +3650,7 @@ lightsail_get_disk_snapshots <- function(pageToken = NULL) {
 #' @description
 #' Returns information about all block storage disks in your AWS account and region.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_disks.html](https://paws-r.github.io/docs/lightsail/get_disks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_disks/](https://www.paws-r-sdk.com/docs/lightsail_get_disks/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -3679,7 +3685,7 @@ lightsail_get_disks <- function(pageToken = NULL) {
 #' @description
 #' Returns the bundles that can be applied to your Amazon Lightsail content delivery network (CDN) distributions.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_distribution_bundles.html](https://paws-r.github.io/docs/lightsail/get_distribution_bundles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_distribution_bundles/](https://www.paws-r-sdk.com/docs/lightsail_get_distribution_bundles/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -3707,7 +3713,7 @@ lightsail_get_distribution_bundles <- function() {
 #' @description
 #' Returns the timestamp and status of the last cache reset of a specific Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_distribution_latest_cache_reset.html](https://paws-r.github.io/docs/lightsail/get_distribution_latest_cache_reset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_distribution_latest_cache_reset/](https://www.paws-r-sdk.com/docs/lightsail_get_distribution_latest_cache_reset/) for full documentation.
 #'
 #' @param distributionName The name of the distribution for which to return the timestamp of the
 #' last cache reset.
@@ -3744,7 +3750,7 @@ lightsail_get_distribution_latest_cache_reset <- function(distributionName = NUL
 #' @description
 #' Returns the data points of a specific metric for an Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_distribution_metric_data.html](https://paws-r.github.io/docs/lightsail/get_distribution_metric_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_distribution_metric_data/](https://www.paws-r-sdk.com/docs/lightsail_get_distribution_metric_data/) for full documentation.
 #'
 #' @param distributionName &#91;required&#93; The name of the distribution for which to get metric data.
 #' 
@@ -3888,7 +3894,7 @@ lightsail_get_distribution_metric_data <- function(distributionName, metricName,
 #' @description
 #' Returns information about one or more of your Amazon Lightsail content delivery network (CDN) distributions.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_distributions.html](https://paws-r.github.io/docs/lightsail/get_distributions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_distributions/](https://www.paws-r-sdk.com/docs/lightsail_get_distributions/) for full documentation.
 #'
 #' @param distributionName The name of the distribution for which to return information.
 #' 
@@ -3926,7 +3932,7 @@ lightsail_get_distributions <- function(distributionName = NULL, pageToken = NUL
 #' @description
 #' Returns information about a specific domain recordset.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_domain.html](https://paws-r.github.io/docs/lightsail/get_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_domain/](https://www.paws-r-sdk.com/docs/lightsail_get_domain/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The domain name for which your want to return information about.
 #'
@@ -3955,7 +3961,7 @@ lightsail_get_domain <- function(domainName) {
 #' @description
 #' Returns a list of all domains in the user's account.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_domains.html](https://paws-r.github.io/docs/lightsail/get_domains.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_domains/](https://www.paws-r-sdk.com/docs/lightsail_get_domains/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -3990,7 +3996,7 @@ lightsail_get_domains <- function(pageToken = NULL) {
 #' @description
 #' Returns all export snapshot records created as a result of the `export snapshot` operation.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_export_snapshot_records.html](https://paws-r.github.io/docs/lightsail/get_export_snapshot_records.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_export_snapshot_records/](https://www.paws-r-sdk.com/docs/lightsail_get_export_snapshot_records/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -4026,7 +4032,7 @@ lightsail_get_export_snapshot_records <- function(pageToken = NULL) {
 #' @description
 #' Returns information about a specific Amazon Lightsail instance, which is a virtual private server.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_instance.html](https://paws-r.github.io/docs/lightsail/get_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_instance/](https://www.paws-r-sdk.com/docs/lightsail_get_instance/) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance.
 #'
@@ -4056,7 +4062,7 @@ lightsail_get_instance <- function(instanceName) {
 #' @description
 #' Returns temporary SSH keys you can use to connect to a specific virtual private server, or *instance*.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_instance_access_details.html](https://paws-r.github.io/docs/lightsail/get_instance_access_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_instance_access_details/](https://www.paws-r-sdk.com/docs/lightsail_get_instance_access_details/) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance to access.
 #' @param protocol The protocol to use to connect to your instance. Defaults to `ssh`.
@@ -4087,7 +4093,7 @@ lightsail_get_instance_access_details <- function(instanceName, protocol = NULL)
 #' @description
 #' Returns the data points for the specified Amazon Lightsail instance metric, given an instance name.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_instance_metric_data.html](https://paws-r.github.io/docs/lightsail/get_instance_metric_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_instance_metric_data/](https://www.paws-r-sdk.com/docs/lightsail_get_instance_metric_data/) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance for which you want to get metrics data.
 #' @param metricName &#91;required&#93; The metric for which you want to return information.
@@ -4261,7 +4267,7 @@ lightsail_get_instance_metric_data <- function(instanceName, metricName, period,
 #' @description
 #' Returns the firewall port states for a specific Amazon Lightsail instance, the IP addresses allowed to connect to the instance through the ports, and the protocol.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_instance_port_states.html](https://paws-r.github.io/docs/lightsail/get_instance_port_states.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_instance_port_states/](https://www.paws-r-sdk.com/docs/lightsail_get_instance_port_states/) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance for which to return firewall port states.
 #'
@@ -4290,7 +4296,7 @@ lightsail_get_instance_port_states <- function(instanceName) {
 #' @description
 #' Returns information about a specific instance snapshot.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_instance_snapshot.html](https://paws-r.github.io/docs/lightsail/get_instance_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_instance_snapshot/](https://www.paws-r-sdk.com/docs/lightsail_get_instance_snapshot/) for full documentation.
 #'
 #' @param instanceSnapshotName &#91;required&#93; The name of the snapshot for which you are requesting information.
 #'
@@ -4319,7 +4325,7 @@ lightsail_get_instance_snapshot <- function(instanceSnapshotName) {
 #' @description
 #' Returns all instance snapshots for the user's account.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_instance_snapshots.html](https://paws-r.github.io/docs/lightsail/get_instance_snapshots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_instance_snapshots/](https://www.paws-r-sdk.com/docs/lightsail_get_instance_snapshots/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -4353,7 +4359,7 @@ lightsail_get_instance_snapshots <- function(pageToken = NULL) {
 #' @description
 #' Returns the state of a specific instance. Works on one instance at a time.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_instance_state.html](https://paws-r.github.io/docs/lightsail/get_instance_state.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_instance_state/](https://www.paws-r-sdk.com/docs/lightsail_get_instance_state/) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance to get state information about.
 #'
@@ -4383,7 +4389,7 @@ lightsail_get_instance_state <- function(instanceName) {
 #' @description
 #' Returns information about all Amazon Lightsail virtual private servers, or *instances*.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_instances.html](https://paws-r.github.io/docs/lightsail/get_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_instances/](https://www.paws-r-sdk.com/docs/lightsail_get_instances/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -4417,7 +4423,7 @@ lightsail_get_instances <- function(pageToken = NULL) {
 #' @description
 #' Returns information about a specific key pair.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_key_pair.html](https://paws-r.github.io/docs/lightsail/get_key_pair.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_key_pair/](https://www.paws-r-sdk.com/docs/lightsail_get_key_pair/) for full documentation.
 #'
 #' @param keyPairName &#91;required&#93; The name of the key pair for which you are requesting information.
 #'
@@ -4446,7 +4452,7 @@ lightsail_get_key_pair <- function(keyPairName) {
 #' @description
 #' Returns information about all key pairs in the user's account.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_key_pairs.html](https://paws-r.github.io/docs/lightsail/get_key_pairs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_key_pairs/](https://www.paws-r-sdk.com/docs/lightsail_get_key_pairs/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -4482,7 +4488,7 @@ lightsail_get_key_pairs <- function(pageToken = NULL, includeDefaultKeyPair = NU
 #' @description
 #' Returns information about the specified Lightsail load balancer.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_load_balancer.html](https://paws-r.github.io/docs/lightsail/get_load_balancer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_load_balancer/](https://www.paws-r-sdk.com/docs/lightsail_get_load_balancer/) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the load balancer.
 #'
@@ -4512,7 +4518,7 @@ lightsail_get_load_balancer <- function(loadBalancerName) {
 #' @description
 #' Returns information about health metrics for your Lightsail load balancer.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_load_balancer_metric_data.html](https://paws-r.github.io/docs/lightsail/get_load_balancer_metric_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_load_balancer_metric_data/](https://www.paws-r-sdk.com/docs/lightsail_get_load_balancer_metric_data/) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param metricName &#91;required&#93; The metric for which you want to return information.
@@ -4687,7 +4693,7 @@ lightsail_get_load_balancer_metric_data <- function(loadBalancerName, metricName
 #' @description
 #' Returns information about the TLS certificates that are associated with the specified Lightsail load balancer.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_load_balancer_tls_certificates.html](https://paws-r.github.io/docs/lightsail/get_load_balancer_tls_certificates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_load_balancer_tls_certificates/](https://www.paws-r-sdk.com/docs/lightsail_get_load_balancer_tls_certificates/) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the load balancer you associated with your SSL/TLS
 #' certificate.
@@ -4718,7 +4724,7 @@ lightsail_get_load_balancer_tls_certificates <- function(loadBalancerName) {
 #' @description
 #' Returns a list of TLS security policies that you can apply to Lightsail load balancers.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_load_balancer_tls_policies.html](https://paws-r.github.io/docs/lightsail/get_load_balancer_tls_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_load_balancer_tls_policies/](https://www.paws-r-sdk.com/docs/lightsail_get_load_balancer_tls_policies/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -4753,7 +4759,7 @@ lightsail_get_load_balancer_tls_policies <- function(pageToken = NULL) {
 #' @description
 #' Returns information about all load balancers in an account.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_load_balancers.html](https://paws-r.github.io/docs/lightsail/get_load_balancers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_load_balancers/](https://www.paws-r-sdk.com/docs/lightsail_get_load_balancers/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -4787,7 +4793,7 @@ lightsail_get_load_balancers <- function(pageToken = NULL) {
 #' @description
 #' Returns information about a specific operation. Operations include events such as when you create an instance, allocate a static IP, attach a static IP, and so on.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_operation.html](https://paws-r.github.io/docs/lightsail/get_operation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_operation/](https://www.paws-r-sdk.com/docs/lightsail_get_operation/) for full documentation.
 #'
 #' @param operationId &#91;required&#93; A GUID used to identify the operation.
 #'
@@ -4816,7 +4822,7 @@ lightsail_get_operation <- function(operationId) {
 #' @description
 #' Returns information about all operations.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_operations.html](https://paws-r.github.io/docs/lightsail/get_operations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_operations/](https://www.paws-r-sdk.com/docs/lightsail_get_operations/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -4850,7 +4856,7 @@ lightsail_get_operations <- function(pageToken = NULL) {
 #' @description
 #' Gets operations for a specific resource (e.g., an instance or a static IP).
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_operations_for_resource.html](https://paws-r.github.io/docs/lightsail/get_operations_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_operations_for_resource/](https://www.paws-r-sdk.com/docs/lightsail_get_operations_for_resource/) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The name of the resource for which you are requesting information.
 #' @param pageToken The token to advance to the next page of results from your request.
@@ -4886,7 +4892,7 @@ lightsail_get_operations_for_resource <- function(resourceName, pageToken = NULL
 #' @description
 #' Returns a list of all valid regions for Amazon Lightsail. Use the `include availability zones` parameter to also return the Availability Zones in a region.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_regions.html](https://paws-r.github.io/docs/lightsail/get_regions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_regions/](https://www.paws-r-sdk.com/docs/lightsail_get_regions/) for full documentation.
 #'
 #' @param includeAvailabilityZones A Boolean value indicating whether to also include Availability Zones in
 #' your get regions request. Availability Zones are indicated with a
@@ -4920,7 +4926,7 @@ lightsail_get_regions <- function(includeAvailabilityZones = NULL, includeRelati
 #' @description
 #' Returns information about a specific database in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_relational_database.html](https://paws-r.github.io/docs/lightsail/get_relational_database.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_relational_database/](https://www.paws-r-sdk.com/docs/lightsail_get_relational_database/) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of the database that you are looking up.
 #'
@@ -4949,7 +4955,7 @@ lightsail_get_relational_database <- function(relationalDatabaseName) {
 #' @description
 #' Returns a list of available database blueprints in Amazon Lightsail. A blueprint describes the major engine version of a database.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_blueprints.html](https://paws-r.github.io/docs/lightsail/get_relational_database_blueprints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_blueprints/](https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_blueprints/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -4984,7 +4990,7 @@ lightsail_get_relational_database_blueprints <- function(pageToken = NULL) {
 #' @description
 #' Returns the list of bundles that are available in Amazon Lightsail. A bundle describes the performance specifications for a database.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_bundles.html](https://paws-r.github.io/docs/lightsail/get_relational_database_bundles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_bundles/](https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_bundles/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -5021,7 +5027,7 @@ lightsail_get_relational_database_bundles <- function(pageToken = NULL, includeI
 #' @description
 #' Returns a list of events for a specific database in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_events.html](https://paws-r.github.io/docs/lightsail/get_relational_database_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_events/](https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_events/) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of the database from which to get events.
 #' @param durationInMinutes The number of minutes in the past from which to retrieve events. For
@@ -5063,7 +5069,7 @@ lightsail_get_relational_database_events <- function(relationalDatabaseName, dur
 #' @description
 #' Returns a list of log events for a database in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_log_events.html](https://paws-r.github.io/docs/lightsail/get_relational_database_log_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_log_events/](https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_log_events/) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database for which to get log events.
 #' @param logStreamName &#91;required&#93; The name of the log stream.
@@ -5131,7 +5137,7 @@ lightsail_get_relational_database_log_events <- function(relationalDatabaseName,
 #' @description
 #' Returns a list of available log streams for a specific database in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_log_streams.html](https://paws-r.github.io/docs/lightsail/get_relational_database_log_streams.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_log_streams/](https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_log_streams/) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database for which to get log streams.
 #'
@@ -5161,7 +5167,7 @@ lightsail_get_relational_database_log_streams <- function(relationalDatabaseName
 #' @description
 #' Returns the current, previous, or pending versions of the master user password for a Lightsail database.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_master_user_password.html](https://paws-r.github.io/docs/lightsail/get_relational_database_master_user_password.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_master_user_password/](https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_master_user_password/) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database for which to get the master user password.
 #' @param passwordVersion The password version to return.
@@ -5200,7 +5206,7 @@ lightsail_get_relational_database_master_user_password <- function(relationalDat
 #' @description
 #' Returns the data points of the specified metric for a database in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_metric_data.html](https://paws-r.github.io/docs/lightsail/get_relational_database_metric_data.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_metric_data/](https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_metric_data/) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database from which to get metric data.
 #' @param metricName &#91;required&#93; The metric for which you want to return information.
@@ -5332,7 +5338,7 @@ lightsail_get_relational_database_metric_data <- function(relationalDatabaseName
 #' @description
 #' Returns all of the runtime parameters offered by the underlying database software, or engine, for a specific database in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_parameters.html](https://paws-r.github.io/docs/lightsail/get_relational_database_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_parameters/](https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_parameters/) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database for which to get parameters.
 #' @param pageToken The token to advance to the next page of results from your request.
@@ -5369,7 +5375,7 @@ lightsail_get_relational_database_parameters <- function(relationalDatabaseName,
 #' @description
 #' Returns information about a specific database snapshot in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_snapshot.html](https://paws-r.github.io/docs/lightsail/get_relational_database_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_snapshot/](https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_snapshot/) for full documentation.
 #'
 #' @param relationalDatabaseSnapshotName &#91;required&#93; The name of the database snapshot for which to get information.
 #'
@@ -5399,7 +5405,7 @@ lightsail_get_relational_database_snapshot <- function(relationalDatabaseSnapsho
 #' @description
 #' Returns information about all of your database snapshots in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_relational_database_snapshots.html](https://paws-r.github.io/docs/lightsail/get_relational_database_snapshots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_snapshots/](https://www.paws-r-sdk.com/docs/lightsail_get_relational_database_snapshots/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -5434,7 +5440,7 @@ lightsail_get_relational_database_snapshots <- function(pageToken = NULL) {
 #' @description
 #' Returns information about all of your databases in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_relational_databases.html](https://paws-r.github.io/docs/lightsail/get_relational_databases.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_relational_databases/](https://www.paws-r-sdk.com/docs/lightsail_get_relational_databases/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -5469,7 +5475,7 @@ lightsail_get_relational_databases <- function(pageToken = NULL) {
 #' @description
 #' Returns information about an Amazon Lightsail static IP.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_static_ip.html](https://paws-r.github.io/docs/lightsail/get_static_ip.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_static_ip/](https://www.paws-r-sdk.com/docs/lightsail_get_static_ip/) for full documentation.
 #'
 #' @param staticIpName &#91;required&#93; The name of the static IP in Lightsail.
 #'
@@ -5498,7 +5504,7 @@ lightsail_get_static_ip <- function(staticIpName) {
 #' @description
 #' Returns information about all static IPs in the user's account.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/get_static_ips.html](https://paws-r.github.io/docs/lightsail/get_static_ips.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_get_static_ips/](https://www.paws-r-sdk.com/docs/lightsail_get_static_ips/) for full documentation.
 #'
 #' @param pageToken The token to advance to the next page of results from your request.
 #' 
@@ -5532,7 +5538,7 @@ lightsail_get_static_ips <- function(pageToken = NULL) {
 #' @description
 #' Imports a public SSH key from a specific key pair.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/import_key_pair.html](https://paws-r.github.io/docs/lightsail/import_key_pair.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_import_key_pair/](https://www.paws-r-sdk.com/docs/lightsail_import_key_pair/) for full documentation.
 #'
 #' @param keyPairName &#91;required&#93; The name of the key pair for which you want to import the public key.
 #' @param publicKeyBase64 &#91;required&#93; A base64-encoded public key of the `ssh-rsa` type.
@@ -5562,7 +5568,7 @@ lightsail_import_key_pair <- function(keyPairName, publicKeyBase64) {
 #' @description
 #' Returns a Boolean value indicating whether your Lightsail VPC is peered.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/is_vpc_peered.html](https://paws-r.github.io/docs/lightsail/is_vpc_peered.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_is_vpc_peered/](https://www.paws-r-sdk.com/docs/lightsail_is_vpc_peered/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -5591,7 +5597,7 @@ lightsail_is_vpc_peered <- function() {
 #' @description
 #' Opens ports for a specific Amazon Lightsail instance, and specifies the IP addresses allowed to connect to the instance through the ports, and the protocol.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/open_instance_public_ports.html](https://paws-r.github.io/docs/lightsail/open_instance_public_ports.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_open_instance_public_ports/](https://www.paws-r-sdk.com/docs/lightsail_open_instance_public_ports/) for full documentation.
 #'
 #' @param portInfo &#91;required&#93; An object to describe the ports to open for the specified instance.
 #' @param instanceName &#91;required&#93; The name of the instance for which to open ports.
@@ -5621,7 +5627,7 @@ lightsail_open_instance_public_ports <- function(portInfo, instanceName) {
 #' @description
 #' Peers the Lightsail VPC with the user's default VPC.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/peer_vpc.html](https://paws-r.github.io/docs/lightsail/peer_vpc.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_peer_vpc/](https://www.paws-r-sdk.com/docs/lightsail_peer_vpc/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -5648,7 +5654,7 @@ lightsail_peer_vpc <- function() {
 #' @description
 #' Creates or updates an alarm, and associates it with the specified metric.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/put_alarm.html](https://paws-r.github.io/docs/lightsail/put_alarm.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_put_alarm/](https://www.paws-r-sdk.com/docs/lightsail_put_alarm/) for full documentation.
 #'
 #' @param alarmName &#91;required&#93; The name for the alarm. Specify the name of an existing alarm to update,
 #' and overwrite the previous configuration of the alarm.
@@ -5792,7 +5798,7 @@ lightsail_put_alarm <- function(alarmName, metricName, monitoredResourceName, co
 #' @description
 #' Opens ports for a specific Amazon Lightsail instance, and specifies the IP addresses allowed to connect to the instance through the ports, and the protocol. This action also closes all currently open ports that are not included in the request. Include all of the ports and the protocols you want to open in your [`put_instance_public_ports`][lightsail_put_instance_public_ports]request. Or use the [`open_instance_public_ports`][lightsail_open_instance_public_ports] action to open ports without closing currently open ports.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/put_instance_public_ports.html](https://paws-r.github.io/docs/lightsail/put_instance_public_ports.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_put_instance_public_ports/](https://www.paws-r-sdk.com/docs/lightsail_put_instance_public_ports/) for full documentation.
 #'
 #' @param portInfos &#91;required&#93; An array of objects to describe the ports to open for the specified
 #' instance.
@@ -5823,7 +5829,7 @@ lightsail_put_instance_public_ports <- function(portInfos, instanceName) {
 #' @description
 #' Restarts a specific instance.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/reboot_instance.html](https://paws-r.github.io/docs/lightsail/reboot_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_reboot_instance/](https://www.paws-r-sdk.com/docs/lightsail_reboot_instance/) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance to reboot.
 #'
@@ -5852,7 +5858,7 @@ lightsail_reboot_instance <- function(instanceName) {
 #' @description
 #' Restarts a specific database in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/reboot_relational_database.html](https://paws-r.github.io/docs/lightsail/reboot_relational_database.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_reboot_relational_database/](https://www.paws-r-sdk.com/docs/lightsail_reboot_relational_database/) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database to reboot.
 #'
@@ -5881,7 +5887,7 @@ lightsail_reboot_relational_database <- function(relationalDatabaseName) {
 #' @description
 #' Registers a container image to your Amazon Lightsail container service.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/register_container_image.html](https://paws-r.github.io/docs/lightsail/register_container_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_register_container_image/](https://www.paws-r-sdk.com/docs/lightsail_register_container_image/) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service for which to register a container
 #' image.
@@ -5936,7 +5942,7 @@ lightsail_register_container_image <- function(serviceName, label, digest) {
 #' @description
 #' Deletes a specific static IP from your account.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/release_static_ip.html](https://paws-r.github.io/docs/lightsail/release_static_ip.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_release_static_ip/](https://www.paws-r-sdk.com/docs/lightsail_release_static_ip/) for full documentation.
 #'
 #' @param staticIpName &#91;required&#93; The name of the static IP to delete.
 #'
@@ -5966,7 +5972,7 @@ lightsail_release_static_ip <- function(staticIpName) {
 #' @description
 #' Deletes currently cached content from your Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/reset_distribution_cache.html](https://paws-r.github.io/docs/lightsail/reset_distribution_cache.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_reset_distribution_cache/](https://www.paws-r-sdk.com/docs/lightsail_reset_distribution_cache/) for full documentation.
 #'
 #' @param distributionName The name of the distribution for which to reset cache.
 #' 
@@ -5999,7 +6005,7 @@ lightsail_reset_distribution_cache <- function(distributionName = NULL) {
 #' @description
 #' Sends a verification request to an email contact method to ensure it's owned by the requester. SMS contact methods don't need to be verified.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/send_contact_method_verification.html](https://paws-r.github.io/docs/lightsail/send_contact_method_verification.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_send_contact_method_verification/](https://www.paws-r-sdk.com/docs/lightsail_send_contact_method_verification/) for full documentation.
 #'
 #' @param protocol &#91;required&#93; The protocol to verify, such as `Email` or `SMS` (text messaging).
 #'
@@ -6028,7 +6034,7 @@ lightsail_send_contact_method_verification <- function(protocol) {
 #' @description
 #' Sets the IP address type for an Amazon Lightsail resource.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/set_ip_address_type.html](https://paws-r.github.io/docs/lightsail/set_ip_address_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_set_ip_address_type/](https://www.paws-r-sdk.com/docs/lightsail_set_ip_address_type/) for full documentation.
 #'
 #' @param resourceType &#91;required&#93; The resource type.
 #' 
@@ -6070,7 +6076,7 @@ lightsail_set_ip_address_type <- function(resourceType, resourceName, ipAddressT
 #' @description
 #' Sets the Amazon Lightsail resources that can access the specified Lightsail bucket.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/set_resource_access_for_bucket.html](https://paws-r.github.io/docs/lightsail/set_resource_access_for_bucket.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_set_resource_access_for_bucket/](https://www.paws-r-sdk.com/docs/lightsail_set_resource_access_for_bucket/) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The name of the Lightsail instance for which to set bucket access. The
 #' instance must be in a running or stopped state.
@@ -6111,7 +6117,7 @@ lightsail_set_resource_access_for_bucket <- function(resourceName, bucketName, a
 #' @description
 #' Initiates a graphical user interface (GUI) session that’s used to access a virtual computer’s operating system and application. The session will be active for 1 hour. Use this action to resume the session after it expires.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/start_gui_session.html](https://paws-r.github.io/docs/lightsail/start_gui_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_start_gui_session/](https://www.paws-r-sdk.com/docs/lightsail_start_gui_session/) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The resource name.
 #'
@@ -6140,7 +6146,7 @@ lightsail_start_gui_session <- function(resourceName) {
 #' @description
 #' Starts a specific Amazon Lightsail instance from a stopped state. To restart an instance, use the `reboot instance` operation.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/start_instance.html](https://paws-r.github.io/docs/lightsail/start_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_start_instance/](https://www.paws-r-sdk.com/docs/lightsail_start_instance/) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance (a virtual private server) to start.
 #'
@@ -6169,7 +6175,7 @@ lightsail_start_instance <- function(instanceName) {
 #' @description
 #' Starts a specific database from a stopped state in Amazon Lightsail. To restart a database, use the `reboot relational database` operation.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/start_relational_database.html](https://paws-r.github.io/docs/lightsail/start_relational_database.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_start_relational_database/](https://www.paws-r-sdk.com/docs/lightsail_start_relational_database/) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database to start.
 #'
@@ -6199,7 +6205,7 @@ lightsail_start_relational_database <- function(relationalDatabaseName) {
 #' @description
 #' Terminates a web-based NICE DCV session that’s used to access a virtual computer’s operating system or application. The session will close and any unsaved data will be lost.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/stop_gui_session.html](https://paws-r.github.io/docs/lightsail/stop_gui_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_stop_gui_session/](https://www.paws-r-sdk.com/docs/lightsail_stop_gui_session/) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The resource name.
 #'
@@ -6228,7 +6234,7 @@ lightsail_stop_gui_session <- function(resourceName) {
 #' @description
 #' Stops a specific Amazon Lightsail instance that is currently running.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/stop_instance.html](https://paws-r.github.io/docs/lightsail/stop_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_stop_instance/](https://www.paws-r-sdk.com/docs/lightsail_stop_instance/) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance (a virtual private server) to stop.
 #' @param force When set to `True`, forces a Lightsail instance that is stuck in a
@@ -6263,7 +6269,7 @@ lightsail_stop_instance <- function(instanceName, force = NULL) {
 #' @description
 #' Stops a specific database that is currently running in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/stop_relational_database.html](https://paws-r.github.io/docs/lightsail/stop_relational_database.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_stop_relational_database/](https://www.paws-r-sdk.com/docs/lightsail_stop_relational_database/) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database to stop.
 #' @param relationalDatabaseSnapshotName The name of your new database snapshot to be created before stopping
@@ -6294,7 +6300,7 @@ lightsail_stop_relational_database <- function(relationalDatabaseName, relationa
 #' @description
 #' Adds one or more tags to the specified Amazon Lightsail resource. Each resource can have a maximum of 50 tags. Each tag consists of a key and an optional value. Tag keys must be unique per resource. For more information about tags, see the Amazon Lightsail Developer Guide.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/tag_resource.html](https://paws-r.github.io/docs/lightsail/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_tag_resource/](https://www.paws-r-sdk.com/docs/lightsail_tag_resource/) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The name of the resource to which you are adding tags.
 #' @param resourceArn The Amazon Resource Name (ARN) of the resource to which you want to add
@@ -6326,7 +6332,7 @@ lightsail_tag_resource <- function(resourceName, resourceArn = NULL, tags) {
 #' @description
 #' Tests an alarm by displaying a banner on the Amazon Lightsail console. If a notification trigger is configured for the specified alarm, the test also sends a notification to the notification protocol (`Email` and/or `SMS`) configured for the alarm.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/test_alarm.html](https://paws-r.github.io/docs/lightsail/test_alarm.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_test_alarm/](https://www.paws-r-sdk.com/docs/lightsail_test_alarm/) for full documentation.
 #'
 #' @param alarmName &#91;required&#93; The name of the alarm to test.
 #' @param state &#91;required&#93; The alarm state to test.
@@ -6366,7 +6372,7 @@ lightsail_test_alarm <- function(alarmName, state) {
 #' @description
 #' Unpeers the Lightsail VPC from the user's default VPC.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/unpeer_vpc.html](https://paws-r.github.io/docs/lightsail/unpeer_vpc.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_unpeer_vpc/](https://www.paws-r-sdk.com/docs/lightsail_unpeer_vpc/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -6394,7 +6400,7 @@ lightsail_unpeer_vpc <- function() {
 #' @description
 #' Deletes the specified set of tag keys and their values from the specified Amazon Lightsail resource.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/untag_resource.html](https://paws-r.github.io/docs/lightsail/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_untag_resource/](https://www.paws-r-sdk.com/docs/lightsail_untag_resource/) for full documentation.
 #'
 #' @param resourceName &#91;required&#93; The name of the resource from which you are removing a tag.
 #' @param resourceArn The Amazon Resource Name (ARN) of the resource from which you want to
@@ -6426,7 +6432,7 @@ lightsail_untag_resource <- function(resourceName, resourceArn = NULL, tagKeys) 
 #' @description
 #' Updates an existing Amazon Lightsail bucket.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/update_bucket.html](https://paws-r.github.io/docs/lightsail/update_bucket.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_update_bucket/](https://www.paws-r-sdk.com/docs/lightsail_update_bucket/) for full documentation.
 #'
 #' @param bucketName &#91;required&#93; The name of the bucket to update.
 #' @param accessRules An object that sets the public accessibility of objects in the specified
@@ -6473,7 +6479,7 @@ lightsail_update_bucket <- function(bucketName, accessRules = NULL, versioning =
 #' @description
 #' Updates the bundle, or storage plan, of an existing Amazon Lightsail bucket.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/update_bucket_bundle.html](https://paws-r.github.io/docs/lightsail/update_bucket_bundle.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_update_bucket_bundle/](https://www.paws-r-sdk.com/docs/lightsail_update_bucket_bundle/) for full documentation.
 #'
 #' @param bucketName &#91;required&#93; The name of the bucket for which to update the bundle.
 #' @param bundleId &#91;required&#93; The ID of the new bundle to apply to the bucket.
@@ -6507,7 +6513,7 @@ lightsail_update_bucket_bundle <- function(bucketName, bundleId) {
 #' @description
 #' Updates the configuration of your Amazon Lightsail container service, such as its power, scale, and public domain names.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/update_container_service.html](https://paws-r.github.io/docs/lightsail/update_container_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_update_container_service/](https://www.paws-r-sdk.com/docs/lightsail_update_container_service/) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the container service to update.
 #' @param power The power for the container service.
@@ -6582,7 +6588,7 @@ lightsail_update_container_service <- function(serviceName, power = NULL, scale 
 #' @description
 #' Updates an existing Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/update_distribution.html](https://paws-r.github.io/docs/lightsail/update_distribution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_update_distribution/](https://www.paws-r-sdk.com/docs/lightsail_update_distribution/) for full documentation.
 #'
 #' @param distributionName &#91;required&#93; The name of the distribution to update.
 #' 
@@ -6630,7 +6636,7 @@ lightsail_update_distribution <- function(distributionName, origin = NULL, defau
 #' @description
 #' Updates the bundle of your Amazon Lightsail content delivery network (CDN) distribution.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/update_distribution_bundle.html](https://paws-r.github.io/docs/lightsail/update_distribution_bundle.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_update_distribution_bundle/](https://www.paws-r-sdk.com/docs/lightsail_update_distribution_bundle/) for full documentation.
 #'
 #' @param distributionName The name of the distribution for which to update the bundle.
 #' 
@@ -6666,7 +6672,7 @@ lightsail_update_distribution_bundle <- function(distributionName = NULL, bundle
 #' @description
 #' Updates a domain recordset after it is created.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/update_domain_entry.html](https://paws-r.github.io/docs/lightsail/update_domain_entry.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_update_domain_entry/](https://www.paws-r-sdk.com/docs/lightsail_update_domain_entry/) for full documentation.
 #'
 #' @param domainName &#91;required&#93; The name of the domain recordset to update.
 #' @param domainEntry &#91;required&#93; An array of key-value pairs containing information about the domain
@@ -6698,7 +6704,7 @@ lightsail_update_domain_entry <- function(domainName, domainEntry) {
 #' @description
 #' Modifies the Amazon Lightsail instance metadata parameters on a running or stopped instance. When you modify the parameters on a running instance, the [`get_instance`][lightsail_get_instance] or [`get_instances`][lightsail_get_instances] API operation initially responds with a state of `pending`. After the parameter modifications are successfully applied, the state changes to `applied` in subsequent [`get_instance`][lightsail_get_instance] or [`get_instances`][lightsail_get_instances] API calls. For more information, see Use IMDSv2 with an Amazon Lightsail instance in the *Amazon Lightsail Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/update_instance_metadata_options.html](https://paws-r.github.io/docs/lightsail/update_instance_metadata_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_update_instance_metadata_options/](https://www.paws-r-sdk.com/docs/lightsail_update_instance_metadata_options/) for full documentation.
 #'
 #' @param instanceName &#91;required&#93; The name of the instance for which to update metadata parameters.
 #' @param httpTokens The state of token usage for your instance metadata requests. If the
@@ -6754,7 +6760,7 @@ lightsail_update_instance_metadata_options <- function(instanceName, httpTokens 
 #' @description
 #' Updates the specified attribute for a load balancer. You can only update one attribute at a time.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/update_load_balancer_attribute.html](https://paws-r.github.io/docs/lightsail/update_load_balancer_attribute.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_update_load_balancer_attribute/](https://www.paws-r-sdk.com/docs/lightsail_update_load_balancer_attribute/) for full documentation.
 #'
 #' @param loadBalancerName &#91;required&#93; The name of the load balancer that you want to modify (e.g.,
 #' `my-load-balancer`.
@@ -6817,7 +6823,7 @@ lightsail_update_load_balancer_attribute <- function(loadBalancerName, attribute
 #' @description
 #' Allows the update of one or more attributes of a database in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/update_relational_database.html](https://paws-r.github.io/docs/lightsail/update_relational_database.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_update_relational_database/](https://www.paws-r-sdk.com/docs/lightsail_update_relational_database/) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your Lightsail database resource to update.
 #' @param masterUserPassword The password for the master user. The password can include any printable
@@ -6917,7 +6923,7 @@ lightsail_update_relational_database <- function(relationalDatabaseName, masterU
 #' @description
 #' Allows the update of one or more parameters of a database in Amazon Lightsail.
 #'
-#' See [https://paws-r.github.io/docs/lightsail/update_relational_database_parameters.html](https://paws-r.github.io/docs/lightsail/update_relational_database_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/lightsail_update_relational_database_parameters/](https://www.paws-r-sdk.com/docs/lightsail_update_relational_database_parameters/) for full documentation.
 #'
 #' @param relationalDatabaseName &#91;required&#93; The name of your database for which to update parameters.
 #' @param parameters &#91;required&#93; The database parameters to update.

@@ -14,6 +14,6 @@ name servers for.}
 \description{
 Retrieves information about a specified reusable delegation set, including the four name servers that are assigned to the delegation set.
 
-See \url{https://paws-r.github.io/docs/route53/get_reusable_delegation_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_get_reusable_delegation_set/} for full documentation.
 }
 \keyword{internal}

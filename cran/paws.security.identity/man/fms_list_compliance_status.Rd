@@ -27,6 +27,6 @@ to get another batch of \code{PolicyComplianceStatus} objects.}
 \description{
 Returns an array of \code{PolicyComplianceStatus} objects. Use \code{PolicyComplianceStatus} to get a summary of which member accounts are protected by the specified policy.
 
-See \url{https://paws-r.github.io/docs/fms/list_compliance_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_list_compliance_status/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ are case sensitive.}
 \description{
 Deletes a medical transcription job. To use this operation, specify the name of the job you want to delete using \code{MedicalTranscriptionJobName}. Job names are case sensitive.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/delete_medical_transcription_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_delete_medical_transcription_job/} for full documentation.
 }
 \keyword{internal}

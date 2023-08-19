@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Assigns a Grafana Enterprise license to a workspace. Upgrading to Grafana Enterprise incurs additional fees. For more information, see [Upgrade a workspace to Grafana Enterprise](https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-Grafana-Enterprise.html).
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/associate_license.html](https://paws-r.github.io/docs/managedgrafana/associate_license.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_associate_license/](https://www.paws-r-sdk.com/docs/managedgrafana_associate_license/) for full documentation.
 #'
 #' @param licenseType &#91;required&#93; The type of license to associate with the workspace.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to associate the license with.
@@ -38,7 +38,7 @@ managedgrafana_associate_license <- function(licenseType, workspaceId) {
 #' @description
 #' Creates a *workspace*. In a workspace, you can create Grafana dashboards and visualizations to analyze your metrics, logs, and traces. You don't have to build, package, or deploy any hardware to run the Grafana server.
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/create_workspace.html](https://paws-r.github.io/docs/managedgrafana/create_workspace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_create_workspace/](https://www.paws-r-sdk.com/docs/managedgrafana_create_workspace/) for full documentation.
 #'
 #' @param accountAccessType &#91;required&#93; Specifies whether the workspace can access Amazon Web Services resources
 #' in this Amazon Web Services account only, or whether it can also access
@@ -59,7 +59,8 @@ managedgrafana_associate_license <- function(licenseType, workspaceId) {
 #' workspace](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html).
 #' @param grafanaVersion Specifies the version of Grafana to support in the new workspace.
 #' 
-#' Supported values are `8.4` and `9.4`.
+#' To get a list of supported version, use the
+#' [`list_versions`][managedgrafana_list_versions] operation.
 #' @param networkAccessControl Configuration for network access to your workspace.
 #' 
 #' When this is configured, only listed IP addresses and VPC endpoints will
@@ -96,6 +97,9 @@ managedgrafana_associate_license <- function(licenseType, workspaceId) {
 #' @param tags The list of tags associated with the workspace.
 #' @param vpcConfiguration The configuration settings for an Amazon VPC that contains data sources
 #' for your Grafana workspace to connect to.
+#' 
+#' Connecting to a private VPC is not yet available in the Asia Pacific
+#' (Seoul) Region (ap-northeast-2).
 #' @param workspaceDataSources This parameter is for internal use only, and should not be used.
 #' @param workspaceDescription A description for the workspace. This is used only to help you identify
 #' this workspace.
@@ -140,7 +144,7 @@ managedgrafana_create_workspace <- function(accountAccessType, authenticationPro
 #' @description
 #' Creates a Grafana API key for the workspace. This key can be used to authenticate requests sent to the workspace's HTTP API. See <https://docs.aws.amazon.com/grafana/latest/userguide/Using-Grafana-APIs.html> for available APIs and example requests.
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/create_workspace_api_key.html](https://paws-r.github.io/docs/managedgrafana/create_workspace_api_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_create_workspace_api_key/](https://www.paws-r-sdk.com/docs/managedgrafana_create_workspace_api_key/) for full documentation.
 #'
 #' @param keyName &#91;required&#93; Specifies the name of the key. Keynames must be unique to the workspace.
 #' @param keyRole &#91;required&#93; Specifies the permission level of the key.
@@ -175,7 +179,7 @@ managedgrafana_create_workspace_api_key <- function(keyName, keyRole, secondsToL
 #' @description
 #' Deletes an Amazon Managed Grafana workspace.
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/delete_workspace.html](https://paws-r.github.io/docs/managedgrafana/delete_workspace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_delete_workspace/](https://www.paws-r-sdk.com/docs/managedgrafana_delete_workspace/) for full documentation.
 #'
 #' @param workspaceId &#91;required&#93; The ID of the workspace to delete.
 #'
@@ -204,7 +208,7 @@ managedgrafana_delete_workspace <- function(workspaceId) {
 #' @description
 #' Deletes a Grafana API key for the workspace.
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/delete_workspace_api_key.html](https://paws-r.github.io/docs/managedgrafana/delete_workspace_api_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_delete_workspace_api_key/](https://www.paws-r-sdk.com/docs/managedgrafana_delete_workspace_api_key/) for full documentation.
 #'
 #' @param keyName &#91;required&#93; The name of the API key to delete.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to delete.
@@ -234,7 +238,7 @@ managedgrafana_delete_workspace_api_key <- function(keyName, workspaceId) {
 #' @description
 #' Displays information about one Amazon Managed Grafana workspace.
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/describe_workspace.html](https://paws-r.github.io/docs/managedgrafana/describe_workspace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_describe_workspace/](https://www.paws-r-sdk.com/docs/managedgrafana_describe_workspace/) for full documentation.
 #'
 #' @param workspaceId &#91;required&#93; The ID of the workspace to display information about.
 #'
@@ -264,7 +268,7 @@ managedgrafana_describe_workspace <- function(workspaceId) {
 #' @description
 #' Displays information about the authentication methods used in one Amazon Managed Grafana workspace.
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/describe_workspace_authentication.html](https://paws-r.github.io/docs/managedgrafana/describe_workspace_authentication.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_describe_workspace_authentication/](https://www.paws-r-sdk.com/docs/managedgrafana_describe_workspace_authentication/) for full documentation.
 #'
 #' @param workspaceId &#91;required&#93; The ID of the workspace to return authentication information about.
 #'
@@ -293,7 +297,7 @@ managedgrafana_describe_workspace_authentication <- function(workspaceId) {
 #' @description
 #' Gets the current configuration string for the given workspace.
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/describe_workspace_configuration.html](https://paws-r.github.io/docs/managedgrafana/describe_workspace_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_describe_workspace_configuration/](https://www.paws-r-sdk.com/docs/managedgrafana_describe_workspace_configuration/) for full documentation.
 #'
 #' @param workspaceId &#91;required&#93; The ID of the workspace to get configuration information for.
 #'
@@ -322,7 +326,7 @@ managedgrafana_describe_workspace_configuration <- function(workspaceId) {
 #' @description
 #' Removes the Grafana Enterprise license from a workspace.
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/disassociate_license.html](https://paws-r.github.io/docs/managedgrafana/disassociate_license.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_disassociate_license/](https://www.paws-r-sdk.com/docs/managedgrafana_disassociate_license/) for full documentation.
 #'
 #' @param licenseType &#91;required&#93; The type of license to remove from the workspace.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to remove the Grafana Enterprise license from.
@@ -353,7 +357,7 @@ managedgrafana_disassociate_license <- function(licenseType, workspaceId) {
 #' @description
 #' Lists the users and groups who have the Grafana `Admin` and `Editor` roles in this workspace. If you use this operation without specifying `userId` or `groupId`, the operation returns the roles of all users and groups. If you specify a `userId` or a `groupId`, only the roles for that user or group are returned. If you do this, you can specify only one `userId` or one `groupId`.
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/list_permissions.html](https://paws-r.github.io/docs/managedgrafana/list_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_list_permissions/](https://www.paws-r-sdk.com/docs/managedgrafana_list_permissions/) for full documentation.
 #'
 #' @param groupId (Optional) Limits the results to only the group that matches this ID.
 #' @param maxResults The maximum number of results to include in the response.
@@ -375,7 +379,7 @@ managedgrafana_list_permissions <- function(groupId = NULL, maxResults = NULL, n
     name = "ListPermissions",
     http_method = "GET",
     http_path = "/workspaces/{workspaceId}/permissions",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "permissions")
   )
   input <- .managedgrafana$list_permissions_input(groupId = groupId, maxResults = maxResults, nextToken = nextToken, userId = userId, userType = userType, workspaceId = workspaceId)
   output <- .managedgrafana$list_permissions_output()
@@ -394,7 +398,7 @@ managedgrafana_list_permissions <- function(groupId = NULL, maxResults = NULL, n
 #' @description
 #' The [`list_tags_for_resource`][managedgrafana_list_tags_for_resource] operation returns the tags that are associated with the Amazon Managed Service for Grafana resource specified by the `resourceArn`. Currently, the only resource that can be tagged is a workspace.
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/list_tags_for_resource.html](https://paws-r.github.io/docs/managedgrafana/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/managedgrafana_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource the list of tags are associated with.
 #'
@@ -418,13 +422,48 @@ managedgrafana_list_tags_for_resource <- function(resourceArn) {
 }
 .managedgrafana$operations$list_tags_for_resource <- managedgrafana_list_tags_for_resource
 
+#' Lists available versions of Grafana
+#'
+#' @description
+#' Lists available versions of Grafana. These are available when calling [`create_workspace`][managedgrafana_create_workspace]. Optionally, include a workspace to list the versions to which it can be upgraded.
+#'
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_list_versions/](https://www.paws-r-sdk.com/docs/managedgrafana_list_versions/) for full documentation.
+#'
+#' @param maxResults The maximum number of results to include in the response.
+#' @param nextToken The token to use when requesting the next set of results. You receive
+#' this token from a previous
+#' [`list_versions`][managedgrafana_list_versions] operation.
+#' @param workspaceId The ID of the workspace to list the available upgrade versions. If not
+#' included, lists all versions of Grafana that are supported for
+#' [`create_workspace`][managedgrafana_create_workspace].
+#'
+#' @keywords internal
+#'
+#' @rdname managedgrafana_list_versions
+managedgrafana_list_versions <- function(maxResults = NULL, nextToken = NULL, workspaceId = NULL) {
+  op <- new_operation(
+    name = "ListVersions",
+    http_method = "GET",
+    http_path = "/versions",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "grafanaVersions")
+  )
+  input <- .managedgrafana$list_versions_input(maxResults = maxResults, nextToken = nextToken, workspaceId = workspaceId)
+  output <- .managedgrafana$list_versions_output()
+  config <- get_config()
+  svc <- .managedgrafana$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.managedgrafana$operations$list_versions <- managedgrafana_list_versions
+
 #' Returns a list of Amazon Managed Grafana workspaces in the account, with
 #' some information about each workspace
 #'
 #' @description
 #' Returns a list of Amazon Managed Grafana workspaces in the account, with some information about each workspace. For more complete information about one workspace, use [`describe_workspace`][managedgrafana_describe_workspace].
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/list_workspaces.html](https://paws-r.github.io/docs/managedgrafana/list_workspaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_list_workspaces/](https://www.paws-r-sdk.com/docs/managedgrafana_list_workspaces/) for full documentation.
 #'
 #' @param maxResults The maximum number of workspaces to include in the results.
 #' @param nextToken The token for the next set of workspaces to return. (You receive this
@@ -439,7 +478,7 @@ managedgrafana_list_workspaces <- function(maxResults = NULL, nextToken = NULL) 
     name = "ListWorkspaces",
     http_method = "GET",
     http_path = "/workspaces",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "workspaces")
   )
   input <- .managedgrafana$list_workspaces_input(maxResults = maxResults, nextToken = nextToken)
   output <- .managedgrafana$list_workspaces_output()
@@ -457,7 +496,7 @@ managedgrafana_list_workspaces <- function(maxResults = NULL, nextToken = NULL) 
 #' @description
 #' The [`tag_resource`][managedgrafana_tag_resource] operation associates tags with an Amazon Managed Grafana resource. Currently, the only resource that can be tagged is workspaces.
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/tag_resource.html](https://paws-r.github.io/docs/managedgrafana/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_tag_resource/](https://www.paws-r-sdk.com/docs/managedgrafana_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource the tag is associated with.
 #' @param tags &#91;required&#93; The list of tag keys and values to associate with the resource. You can
@@ -490,7 +529,7 @@ managedgrafana_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' The [`untag_resource`][managedgrafana_untag_resource] operation removes the association of the tag with the Amazon Managed Grafana resource.
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/untag_resource.html](https://paws-r.github.io/docs/managedgrafana/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_untag_resource/](https://www.paws-r-sdk.com/docs/managedgrafana_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource the tag association is removed from.
 #' @param tagKeys &#91;required&#93; The key values of the tag to be removed from the resource.
@@ -521,7 +560,7 @@ managedgrafana_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates which users in a workspace have the Grafana `Admin` or `Editor` roles.
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/update_permissions.html](https://paws-r.github.io/docs/managedgrafana/update_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_update_permissions/](https://www.paws-r-sdk.com/docs/managedgrafana_update_permissions/) for full documentation.
 #'
 #' @param updateInstructionBatch &#91;required&#93; An array of structures that contain the permission updates to make.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to update.
@@ -551,7 +590,7 @@ managedgrafana_update_permissions <- function(updateInstructionBatch, workspaceI
 #' @description
 #' Modifies an existing Amazon Managed Grafana workspace. If you use this operation and omit any optional parameters, the existing values of those parameters are not changed.
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/update_workspace.html](https://paws-r.github.io/docs/managedgrafana/update_workspace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_update_workspace/](https://www.paws-r-sdk.com/docs/managedgrafana_update_workspace/) for full documentation.
 #'
 #' @param accountAccessType Specifies whether the workspace can access Amazon Web Services resources
 #' in this Amazon Web Services account only, or whether it can also access
@@ -656,7 +695,7 @@ managedgrafana_update_workspace <- function(accountAccessType = NULL, networkAcc
 #' @description
 #' Use this operation to define the identity provider (IdP) that this workspace authenticates users from, using SAML. You can also map SAML assertion attributes to workspace user information and define which groups in the assertion attribute are to have the `Admin` and `Editor` roles in the workspace.
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/update_workspace_authentication.html](https://paws-r.github.io/docs/managedgrafana/update_workspace_authentication.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_update_workspace_authentication/](https://www.paws-r-sdk.com/docs/managedgrafana_update_workspace_authentication/) for full documentation.
 #'
 #' @param authenticationProviders &#91;required&#93; Specifies whether this workspace uses SAML 2.0, IAM Identity Center
 #' (successor to Single Sign-On), or both to authenticate users for using
@@ -694,25 +733,33 @@ managedgrafana_update_workspace_authentication <- function(authenticationProvide
 #' @description
 #' Updates the configuration string for the given workspace
 #'
-#' See [https://paws-r.github.io/docs/managedgrafana/update_workspace_configuration.html](https://paws-r.github.io/docs/managedgrafana/update_workspace_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/managedgrafana_update_workspace_configuration/](https://www.paws-r-sdk.com/docs/managedgrafana_update_workspace_configuration/) for full documentation.
 #'
 #' @param configuration &#91;required&#93; The new configuration string for the workspace. For more information
 #' about the format and configuration options available, see [Working in
 #' your Grafana
 #' workspace](https://docs.aws.amazon.com/grafana/latest/userguide/AMG-configure-workspace.html).
+#' @param grafanaVersion Specifies the version of Grafana to support in the new workspace.
+#' 
+#' Can only be used to upgrade (for example, from 8.4 to 9.4), not
+#' downgrade (for example, from 9.4 to 8.4).
+#' 
+#' To know what versions are available to upgrade to for a specific
+#' workspace, see the [`list_versions`][managedgrafana_list_versions]
+#' operation.
 #' @param workspaceId &#91;required&#93; The ID of the workspace to update.
 #'
 #' @keywords internal
 #'
 #' @rdname managedgrafana_update_workspace_configuration
-managedgrafana_update_workspace_configuration <- function(configuration, workspaceId) {
+managedgrafana_update_workspace_configuration <- function(configuration, grafanaVersion = NULL, workspaceId) {
   op <- new_operation(
     name = "UpdateWorkspaceConfiguration",
     http_method = "PUT",
     http_path = "/workspaces/{workspaceId}/configuration",
     paginator = list()
   )
-  input <- .managedgrafana$update_workspace_configuration_input(configuration = configuration, workspaceId = workspaceId)
+  input <- .managedgrafana$update_workspace_configuration_input(configuration = configuration, grafanaVersion = grafanaVersion, workspaceId = workspaceId)
   output <- .managedgrafana$update_workspace_configuration_output()
   config <- get_config()
   svc <- .managedgrafana$service(config)

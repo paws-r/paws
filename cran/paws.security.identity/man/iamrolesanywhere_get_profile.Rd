@@ -12,6 +12,6 @@ iamrolesanywhere_get_profile(profileId)
 \description{
 Gets a profile.
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/get_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_get_profile/} for full documentation.
 }
 \keyword{internal}

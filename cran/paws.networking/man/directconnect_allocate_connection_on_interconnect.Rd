@@ -31,6 +31,6 @@ connection will be provisioned.}
 \description{
 Deprecated. Use \code{\link[=directconnect_allocate_hosted_connection]{allocate_hosted_connection}} instead.
 
-See \url{https://paws-r.github.io/docs/directconnect/allocate_connection_on_interconnect.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_allocate_connection_on_interconnect/} for full documentation.
 }
 \keyword{internal}

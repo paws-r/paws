@@ -28,6 +28,6 @@ from a previous call.)}
 \description{
 Retrieves information about the maintenance window targets or tasks that a managed node is associated with.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_maintenance_windows_for_target.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_windows_for_target/} for full documentation.
 }
 \keyword{internal}

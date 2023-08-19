@@ -13,6 +13,6 @@ codestarconnections_get_host(HostArn)
 \description{
 Returns the host ARN and details such as status, provider type, endpoint, and, if applicable, the VPC configuration.
 
-See \url{https://paws-r.github.io/docs/codestarconnections/get_host.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestarconnections_get_host/} for full documentation.
 }
 \keyword{internal}

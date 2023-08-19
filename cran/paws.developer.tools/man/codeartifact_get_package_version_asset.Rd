@@ -53,6 +53,6 @@ asset.}
 \description{
 Returns an asset (or file) that is in a package. For example, for a Maven package version, use \code{\link[=codeartifact_get_package_version_asset]{get_package_version_asset}} to download a \code{JAR} file, a \code{POM} file, or any other assets in the package version.
 
-See \url{https://paws-r.github.io/docs/codeartifact/get_package_version_asset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_get_package_version_asset/} for full documentation.
 }
 \keyword{internal}

@@ -36,6 +36,6 @@ configurations.}
 \description{
 Updates the monitoring configurations for the component. The configuration input parameter is an escaped JSON of the configuration and should match the schema of what is returned by \code{\link[=applicationinsights_describe_component_configuration_recommendation]{describe_component_configuration_recommendation}}.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/update_component_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_update_component_configuration/} for full documentation.
 }
 \keyword{internal}

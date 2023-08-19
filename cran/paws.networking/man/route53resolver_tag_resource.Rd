@@ -24,6 +24,6 @@ tags to. To get the ARN for a resource, use the applicable \code{Get} or
 \description{
 Adds one or more tags to a specified resource.
 
-See \url{https://paws-r.github.io/docs/route53resolver/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_tag_resource/} for full documentation.
 }
 \keyword{internal}

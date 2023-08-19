@@ -16,6 +16,6 @@ array.}
 \description{
 Retrieves the details of one or more findings.
 
-See \url{https://paws-r.github.io/docs/macie2/get_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_findings/} for full documentation.
 }
 \keyword{internal}

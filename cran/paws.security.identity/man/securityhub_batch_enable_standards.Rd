@@ -12,6 +12,6 @@ securityhub_batch_enable_standards(StandardsSubscriptionRequests)
 \description{
 Enables the standards specified by the provided \code{StandardsArn}. To obtain the ARN for a standard, use the \code{\link[=securityhub_describe_standards]{describe_standards}} operation.
 
-See \url{https://paws-r.github.io/docs/securityhub/batch_enable_standards.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_batch_enable_standards/} for full documentation.
 }
 \keyword{internal}

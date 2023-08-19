@@ -18,6 +18,6 @@ update operation is successful, it generates a new cluster version.}
 \description{
 Updates the cluster's connectivity configuration.
 
-See \url{https://paws-r.github.io/docs/kafka/update_connectivity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_update_connectivity/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ workspacesweb_delete_user_access_logging_settings(userAccessLoggingSettingsArn)
 \description{
 Deletes user access logging settings.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/delete_user_access_logging_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_delete_user_access_logging_settings/} for full documentation.
 }
 \keyword{internal}

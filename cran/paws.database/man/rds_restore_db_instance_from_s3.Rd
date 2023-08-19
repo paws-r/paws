@@ -427,6 +427,6 @@ Amazon Web Services Region.}
 \description{
 Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files. You can create a backup of your on-premises database, store it on Amazon Simple Storage Service (Amazon S3), and then restore the backup file onto a new Amazon RDS DB instance running MySQL. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html}{Importing Data into an Amazon RDS MySQL DB Instance} in the \emph{Amazon RDS User Guide.}
 
-See \url{https://paws-r.github.io/docs/rds/restore_db_instance_from_s3.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_restore_db_instance_from_s3/} for full documentation.
 }
 \keyword{internal}

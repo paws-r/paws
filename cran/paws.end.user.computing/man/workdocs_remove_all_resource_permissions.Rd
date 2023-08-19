@@ -18,6 +18,6 @@ Services administrator credentials to access the API.}
 \description{
 Removes all the permissions from the specified resource.
 
-See \url{https://paws-r.github.io/docs/workdocs/remove_all_resource_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_remove_all_resource_permissions/} for full documentation.
 }
 \keyword{internal}

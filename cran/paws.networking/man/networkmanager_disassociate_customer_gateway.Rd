@@ -17,6 +17,6 @@ networkmanager_disassociate_customer_gateway(
 \description{
 Disassociates a customer gateway from a device and a link.
 
-See \url{https://paws-r.github.io/docs/networkmanager/disassociate_customer_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_disassociate_customer_gateway/} for full documentation.
 }
 \keyword{internal}

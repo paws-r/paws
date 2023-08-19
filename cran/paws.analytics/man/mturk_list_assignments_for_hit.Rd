@@ -24,6 +24,6 @@ mturk_list_assignments_for_hit(
 \description{
 The \code{\link[=mturk_list_assignments_for_hit]{list_assignments_for_hit}} operation retrieves completed assignments for a HIT. You can use this operation to retrieve the results for a HIT.
 
-See \url{https://paws-r.github.io/docs/mturk/list_assignments_for_hit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_list_assignments_for_hit/} for full documentation.
 }
 \keyword{internal}

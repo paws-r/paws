@@ -23,6 +23,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Updates timeouts for when human chat participants are to be considered idle, and when agents are automatically disconnected from a chat due to idleness. You can set four timers:
 
-See \url{https://paws-r.github.io/docs/connect/update_participant_role_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_update_participant_role_config/} for full documentation.
 }
 \keyword{internal}

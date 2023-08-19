@@ -14,6 +14,6 @@ disabled as a GuardDuty delegated administrator.}
 \description{
 Disables an Amazon Web Services account within the Organization as the GuardDuty delegated administrator.
 
-See \url{https://paws-r.github.io/docs/guardduty/disable_organization_admin_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_disable_organization_admin_account/} for full documentation.
 }
 \keyword{internal}

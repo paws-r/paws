@@ -14,6 +14,6 @@ workmail_delete_access_control_rule(OrganizationId, Name)
 \description{
 Deletes an access control rule for the specified WorkMail organization.
 
-See \url{https://paws-r.github.io/docs/workmail/delete_access_control_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_delete_access_control_rule/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ serverlessapplicationrepository_create_cloud_formation_template(
 \description{
 Creates an AWS CloudFormation template.
 
-See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/create_cloud_formation_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_create_cloud_formation_template/} for full documentation.
 }
 \keyword{internal}

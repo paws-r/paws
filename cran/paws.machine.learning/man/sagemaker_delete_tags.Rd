@@ -15,6 +15,6 @@ delete.}
 \description{
 Deletes the specified tags from an SageMaker resource.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_tags/} for full documentation.
 }
 \keyword{internal}

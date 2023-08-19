@@ -17,6 +17,6 @@ kafka_put_cluster_policy(ClusterArn, CurrentVersion = NULL, Policy)
 \description{
 Creates or updates the MSK cluster policy specified by the cluster Amazon Resource Name (ARN) in the request.
 
-See \url{https://paws-r.github.io/docs/kafka/put_cluster_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_put_cluster_policy/} for full documentation.
 }
 \keyword{internal}

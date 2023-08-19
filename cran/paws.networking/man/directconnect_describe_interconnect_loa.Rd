@@ -23,6 +23,6 @@ value is application/pdf.}
 \description{
 Deprecated. Use \code{\link[=directconnect_describe_loa]{describe_loa}} instead.
 
-See \url{https://paws-r.github.io/docs/directconnect/describe_interconnect_loa.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_describe_interconnect_loa/} for full documentation.
 }
 \keyword{internal}

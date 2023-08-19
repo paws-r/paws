@@ -17,6 +17,6 @@ that you can specify as the page token in a subsequent request.}
 \description{
 Returns all instance snapshots for the user's account.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_instance_snapshots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_instance_snapshots/} for full documentation.
 }
 \keyword{internal}

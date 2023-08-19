@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Detaches an internet gateway from a VPC, disabling connectivity between the internet and the VPC. The VPC must not contain any running instances with Elastic IP addresses or public IPv4 addresses.
 
-See \url{https://paws-r.github.io/docs/ec2/detach_internet_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_detach_internet_gateway/} for full documentation.
 }
 \keyword{internal}

@@ -42,6 +42,6 @@ The default behavior is \code{FIRST_MATCHED}.}
 \description{
 Updates a detector version. The detector version attributes that you can update include models, external model endpoints, rules, rule execution mode, and description. You can only update a \code{DRAFT} detector version.
 
-See \url{https://paws-r.github.io/docs/frauddetector/update_detector_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_update_detector_version/} for full documentation.
 }
 \keyword{internal}

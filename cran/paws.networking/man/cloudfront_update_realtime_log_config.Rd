@@ -33,6 +33,6 @@ in the real-time log data. You must provide an integer between 1 and
 \description{
 Updates a real-time log configuration.
 
-See \url{https://paws-r.github.io/docs/cloudfront/update_realtime_log_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_update_realtime_log_config/} for full documentation.
 }
 \keyword{internal}

@@ -12,7 +12,8 @@ s3_list_multipart_uploads(
   MaxUploads = NULL,
   Prefix = NULL,
   UploadIdMarker = NULL,
-  ExpectedBucketOwner = NULL
+  ExpectedBucketOwner = NULL,
+  RequestPayer = NULL
 )
 }
 \arguments{
@@ -32,7 +33,7 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{Delimiter}{Character you use to group keys.
@@ -46,7 +47,7 @@ not returned elsewhere in the response.}
 
 \item{EncodingType}{}
 
-\item{KeyMarker}{Together with upload-id-marker, this parameter specifies the multipart
+\item{KeyMarker}{Together with \code{upload-id-marker}, this parameter specifies the multipart
 upload after which listing should begin.
 
 If \code{upload-id-marker} is not specified, only the keys lexicographically
@@ -63,8 +64,8 @@ returned in a response.}
 
 \item{Prefix}{Lists in-progress uploads only for those keys that begin with the
 specified prefix. You can use prefixes to separate a bucket into
-different grouping of keys. (You can think of using prefix to make
-groups in the same way you'd use a folder in a file system.)}
+different grouping of keys. (You can think of using \code{prefix} to make
+groups in the same way that you'd use a folder in a file system.)}
 
 \item{UploadIdMarker}{Together with key-marker, specifies the multipart upload after which
 listing should begin. If key-marker is not specified, the
@@ -76,10 +77,12 @@ they have an upload ID lexicographically greater than the specified
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
+
+\item{RequestPayer}{}
 }
 \description{
 This action lists in-progress multipart uploads. An in-progress multipart upload is a multipart upload that has been initiated using the Initiate Multipart Upload request, but has not yet been completed or aborted.
 
-See \url{https://paws-r.github.io/docs/s3/list_multipart_uploads.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_list_multipart_uploads/} for full documentation.
 }
 \keyword{internal}

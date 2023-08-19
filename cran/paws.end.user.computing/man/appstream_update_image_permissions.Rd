@@ -17,6 +17,6 @@ update image permissions.}
 \description{
 Adds or updates permissions for the specified private image.
 
-See \url{https://paws-r.github.io/docs/appstream/update_image_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_update_image_permissions/} for full documentation.
 }
 \keyword{internal}

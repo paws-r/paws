@@ -6,9 +6,9 @@ NULL
 #' Adds a permission to a queue for a specific principal
 #'
 #' @description
-#' Adds a permission to a queue for a specific [principal](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P). This allows sharing access to the queue.
+#' Adds a permission to a queue for a specific [principal](https://docs.aws.amazon.com/glossary/latest/reference/glos-chap.html#P). This allows sharing access to the queue.
 #'
-#' See [https://paws-r.github.io/docs/sqs/add_permission.html](https://paws-r.github.io/docs/sqs/add_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_add_permission/](https://www.paws-r-sdk.com/docs/sqs_add_permission/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue to which permissions are added.
 #' 
@@ -17,7 +17,7 @@ NULL
 #' `AliceSendMessage`). Maximum 80 characters. Allowed characters include
 #' alphanumeric characters, hyphens (`-`), and underscores (`_`).
 #' @param AWSAccountIds &#91;required&#93; The Amazon Web Services account numbers of the
-#' [principals](https://docs.aws.amazon.com/general/latest/gr/glos-chap.html#P)
+#' [principals](https://docs.aws.amazon.com/glossary/latest/reference/glos-chap.html#P)
 #' who are to receive permission. For information about locating the Amazon
 #' Web Services account identification, see [Your Amazon Web Services
 #' Identifiers](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests-xml.html#sqs-api-request-authentication)
@@ -59,18 +59,47 @@ sqs_add_permission <- function(QueueUrl, Label, AWSAccountIds, Actions) {
 }
 .sqs$operations$add_permission <- sqs_add_permission
 
+#' Cancels a specified message movement task
+#'
+#' @description
+#' Cancels a specified message movement task. A message movement can only be cancelled when the current status is RUNNING. Cancelling a message movement task does not revert the messages that have already been moved. It can only stop the messages that have not been moved yet.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sqs_cancel_message_move_task/](https://www.paws-r-sdk.com/docs/sqs_cancel_message_move_task/) for full documentation.
+#'
+#' @param TaskHandle &#91;required&#93; An identifier associated with a message movement task.
+#'
+#' @keywords internal
+#'
+#' @rdname sqs_cancel_message_move_task
+sqs_cancel_message_move_task <- function(TaskHandle) {
+  op <- new_operation(
+    name = "CancelMessageMoveTask",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sqs$cancel_message_move_task_input(TaskHandle = TaskHandle)
+  output <- .sqs$cancel_message_move_task_output()
+  config <- get_config()
+  svc <- .sqs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sqs$operations$cancel_message_move_task <- sqs_cancel_message_move_task
+
 #' Changes the visibility timeout of a specified message in a queue to a
 #' new value
 #'
 #' @description
 #' Changes the visibility timeout of a specified message in a queue to a new value. The default visibility timeout for a message is 30 seconds. The minimum is 0 seconds. The maximum is 12 hours. For more information, see [Visibility Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html) in the *Amazon SQS Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/sqs/change_message_visibility.html](https://paws-r.github.io/docs/sqs/change_message_visibility.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_change_message_visibility/](https://www.paws-r-sdk.com/docs/sqs_change_message_visibility/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue whose message's visibility is changed.
 #' 
 #' Queue URLs and names are case-sensitive.
-#' @param ReceiptHandle &#91;required&#93; The receipt handle associated with the message whose visibility timeout
+#' @param ReceiptHandle &#91;required&#93; The receipt handle associated with the message, whose visibility timeout
 #' is changed. This parameter is returned by the
 #' [`receive_message`][sqs_receive_message] action.
 #' @param VisibilityTimeout &#91;required&#93; The new value for the message's visibility timeout (in seconds). Values
@@ -101,12 +130,12 @@ sqs_change_message_visibility <- function(QueueUrl, ReceiptHandle, VisibilityTim
 #' @description
 #' Changes the visibility timeout of multiple messages. This is a batch version of ` ChangeMessageVisibility.` The result of the action on each message is reported individually in the response. You can send up to 10 [`change_message_visibility`][sqs_change_message_visibility] requests with each [`change_message_visibility_batch`][sqs_change_message_visibility_batch] action.
 #'
-#' See [https://paws-r.github.io/docs/sqs/change_message_visibility_batch.html](https://paws-r.github.io/docs/sqs/change_message_visibility_batch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_change_message_visibility_batch/](https://www.paws-r-sdk.com/docs/sqs_change_message_visibility_batch/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue whose messages' visibility is changed.
 #' 
 #' Queue URLs and names are case-sensitive.
-#' @param Entries &#91;required&#93; A list of receipt handles of the messages for which the visibility
+#' @param Entries &#91;required&#93; Lists the receipt handles of the messages for which the visibility
 #' timeout must be changed.
 #'
 #' @keywords internal
@@ -134,7 +163,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' @description
 #' Creates a new standard or FIFO queue. You can pass one or more attributes in the request. Keep the following in mind:
 #'
-#' See [https://paws-r.github.io/docs/sqs/create_queue.html](https://paws-r.github.io/docs/sqs/create_queue.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_create_queue/](https://www.paws-r-sdk.com/docs/sqs_create_queue/) for full documentation.
 #'
 #' @param QueueName &#91;required&#93; The name of the new queue. The following limits apply to this name:
 #' 
@@ -164,39 +193,24 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' -   `MessageRetentionPeriod` – The length of time, in seconds, for which
 #'     Amazon SQS retains a message. Valid values: An integer from 60
 #'     seconds (1 minute) to 1,209,600 seconds (14 days). Default: 345,600
-#'     (4 days).
+#'     (4 days). When you change a queue's attributes, the change can take
+#'     up to 60 seconds for most of the attributes to propagate throughout
+#'     the Amazon SQS system. Changes made to the `MessageRetentionPeriod`
+#'     attribute can take up to 15 minutes and will impact existing
+#'     messages in the queue potentially causing them to be expired and
+#'     deleted if the `MessageRetentionPeriod` is reduced below the age of
+#'     existing messages.
 #' 
 #' -   `Policy` – The queue's policy. A valid Amazon Web Services policy.
 #'     For more information about policy structure, see [Overview of Amazon
 #'     Web Services IAM
 #'     Policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html)
-#'     in the *Amazon IAM User Guide*.
+#'     in the *IAM User Guide*.
 #' 
 #' -   `ReceiveMessageWaitTimeSeconds` – The length of time, in seconds,
 #'     for which a [`receive_message`][sqs_receive_message] action waits
 #'     for a message to arrive. Valid values: An integer from 0 to 20
 #'     (seconds). Default: 0.
-#' 
-#' -   `RedrivePolicy` – The string that includes the parameters for the
-#'     dead-letter queue functionality of the source queue as a JSON
-#'     object. For more information about the redrive policy and
-#'     dead-letter queues, see [Using Amazon SQS Dead-Letter
-#'     Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
-#'     in the *Amazon SQS Developer Guide*.
-#' 
-#'     -   `deadLetterTargetArn` – The Amazon Resource Name (ARN) of the
-#'         dead-letter queue to which Amazon SQS moves messages after the
-#'         value of `maxReceiveCount` is exceeded.
-#' 
-#'     -   `maxReceiveCount` – The number of times a message is delivered
-#'         to the source queue before being moved to the dead-letter queue.
-#'         When the `ReceiveCount` for a message exceeds the
-#'         `maxReceiveCount` for a queue, Amazon SQS moves the message to
-#'         the dead-letter-queue.
-#' 
-#'     The dead-letter queue of a FIFO queue must also be a FIFO queue.
-#'     Similarly, the dead-letter queue of a standard queue must also be a
-#'     standard queue.
 #' 
 #' -   `VisibilityTimeout` – The visibility timeout for the queue, in
 #'     seconds. Valid values: An integer from 0 to 43,200 (12 hours).
@@ -204,6 +218,54 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #'     [Visibility
 #'     Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
 #'     in the *Amazon SQS Developer Guide*.
+#' 
+#' The following attributes apply only to [dead-letter
+#' queues:](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+#' 
+#' -   `RedrivePolicy` – The string that includes the parameters for the
+#'     dead-letter queue functionality of the source queue as a JSON
+#'     object. The parameters are as follows:
+#' 
+#'     -   `deadLetterTargetArn` – The Amazon Resource Name (ARN) of the
+#'         dead-letter queue to which Amazon SQS moves messages after the
+#'         value of `maxReceiveCount` is exceeded.
+#' 
+#'     -   `maxReceiveCount` – The number of times a message is delivered
+#'         to the source queue before being moved to the dead-letter queue.
+#'         Default: 10. When the `ReceiveCount` for a message exceeds the
+#'         `maxReceiveCount` for a queue, Amazon SQS moves the message to
+#'         the dead-letter-queue.
+#' 
+#' -   `RedriveAllowPolicy` – The string that includes the parameters for
+#'     the permissions for the dead-letter queue redrive permission and
+#'     which source queues can specify dead-letter queues as a JSON object.
+#'     The parameters are as follows:
+#' 
+#'     -   `redrivePermission` – The permission type that defines which
+#'         source queues can specify the current queue as the dead-letter
+#'         queue. Valid values are:
+#' 
+#'         -   `allowAll` – (Default) Any source queues in this Amazon Web
+#'             Services account in the same Region can specify this queue
+#'             as the dead-letter queue.
+#' 
+#'         -   `denyAll` – No source queues can specify this queue as the
+#'             dead-letter queue.
+#' 
+#'         -   `byQueue` – Only queues specified by the `sourceQueueArns`
+#'             parameter can specify this queue as the dead-letter queue.
+#' 
+#'     -   `sourceQueueArns` – The Amazon Resource Names (ARN)s of the
+#'         source queues that can specify this queue as the dead-letter
+#'         queue and redrive messages. You can specify this parameter only
+#'         when the `redrivePermission` parameter is set to `byQueue`. You
+#'         can specify up to 10 source queue ARNs. To allow more than 10
+#'         source queues to specify dead-letter queues, set the
+#'         `redrivePermission` parameter to `allowAll`.
+#' 
+#' The dead-letter queue of a FIFO queue must also be a FIFO queue.
+#' Similarly, the dead-letter queue of a standard queue must also be a
+#' standard queue.
 #' 
 #' The following attributes apply only to
 #' [server-side-encryption](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
@@ -227,11 +289,11 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #'     provides better security but results in more calls to KMS which
 #'     might incur charges after Free Tier. For more information, see [How
 #'     Does the Data Key Reuse Period
-#'     Work?](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work).
+#'     Work?](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work)
 #' 
 #' -   `SqsManagedSseEnabled` – Enables server-side queue encryption using
 #'     SQS owned encryption keys. Only one server-side encryption option is
-#'     supported per queue (e.g.
+#'     supported per queue (for example,
 #'     [SSE-KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html)
 #'     or
 #'     [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
@@ -335,8 +397,8 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #' `sqs:CreateQueue` and `sqs:TagQueue` permissions.
 #' 
 #' Cross-account permissions don't apply to this action. For more
-#' information, see [Grant cross-account permissions to a role and a user
-#' name](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name)
+#' information, see [Grant cross-account permissions to a role and a
+#' username](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name)
 #' in the *Amazon SQS Developer Guide*.
 #'
 #' @keywords internal
@@ -364,7 +426,7 @@ sqs_create_queue <- function(QueueName, Attributes = NULL, tags = NULL) {
 #' @description
 #' Deletes the specified message from the specified queue. To select the message to delete, use the `ReceiptHandle` of the message (*not* the `MessageId` which you receive when you send the message). Amazon SQS can delete a message from a queue even if a visibility timeout setting causes the message to be locked by another consumer. Amazon SQS automatically deletes messages left in a queue longer than the retention period configured for the queue.
 #'
-#' See [https://paws-r.github.io/docs/sqs/delete_message.html](https://paws-r.github.io/docs/sqs/delete_message.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_delete_message/](https://www.paws-r-sdk.com/docs/sqs_delete_message/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue from which messages are deleted.
 #' 
@@ -396,12 +458,12 @@ sqs_delete_message <- function(QueueUrl, ReceiptHandle) {
 #' @description
 #' Deletes up to ten messages from the specified queue. This is a batch version of ` DeleteMessage.` The result of the action on each message is reported individually in the response.
 #'
-#' See [https://paws-r.github.io/docs/sqs/delete_message_batch.html](https://paws-r.github.io/docs/sqs/delete_message_batch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_delete_message_batch/](https://www.paws-r-sdk.com/docs/sqs_delete_message_batch/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue from which messages are deleted.
 #' 
 #' Queue URLs and names are case-sensitive.
-#' @param Entries &#91;required&#93; A list of receipt handles for the messages to be deleted.
+#' @param Entries &#91;required&#93; Lists the receipt handles for the messages to be deleted.
 #'
 #' @keywords internal
 #'
@@ -429,7 +491,7 @@ sqs_delete_message_batch <- function(QueueUrl, Entries) {
 #' @description
 #' Deletes the queue specified by the `QueueUrl`, regardless of the queue's contents.
 #'
-#' See [https://paws-r.github.io/docs/sqs/delete_queue.html](https://paws-r.github.io/docs/sqs/delete_queue.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_delete_queue/](https://www.paws-r-sdk.com/docs/sqs_delete_queue/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue to delete.
 #' 
@@ -460,7 +522,7 @@ sqs_delete_queue <- function(QueueUrl) {
 #' @description
 #' Gets attributes for the specified queue.
 #'
-#' See [https://paws-r.github.io/docs/sqs/get_queue_attributes.html](https://paws-r.github.io/docs/sqs/get_queue_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_get_queue_attributes/](https://www.paws-r-sdk.com/docs/sqs_get_queue_attributes/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue whose attribute information is
 #' retrieved.
@@ -468,7 +530,7 @@ sqs_delete_queue <- function(QueueUrl) {
 #' Queue URLs and names are case-sensitive.
 #' @param AttributeNames A list of attributes for which to retrieve information.
 #' 
-#' The `AttributeName.N` parameter is optional, but if you don't specify
+#' The `AttributeNames` parameter is optional, but if you don't specify
 #' values for this parameter, the request returns empty results.
 #' 
 #' In the future, new attributes might be added. If you write code that
@@ -479,9 +541,9 @@ sqs_delete_queue <- function(QueueUrl) {
 #' 
 #' The `ApproximateNumberOfMessagesDelayed`,
 #' `ApproximateNumberOfMessagesNotVisible`, and
-#' `ApproximateNumberOfMessagesVisible` metrics may not achieve consistency
-#' until at least 1 minute after the producers stop sending messages. This
-#' period is required for the queue metadata to reach eventual consistency.
+#' `ApproximateNumberOfMessages` metrics may not achieve consistency until
+#' at least 1 minute after the producers stop sending messages. This period
+#' is required for the queue metadata to reach eventual consistency.
 #' 
 #' -   `All` – Returns all values.
 #' 
@@ -512,7 +574,14 @@ sqs_delete_queue <- function(QueueUrl) {
 #'     can contain before Amazon SQS rejects it.
 #' 
 #' -   `MessageRetentionPeriod` – Returns the length of time, in seconds,
-#'     for which Amazon SQS retains a message.
+#'     for which Amazon SQS retains a message. When you change a queue's
+#'     attributes, the change can take up to 60 seconds for most of the
+#'     attributes to propagate throughout the Amazon SQS system. Changes
+#'     made to the `MessageRetentionPeriod` attribute can take up to 15
+#'     minutes and will impact existing messages in the queue potentially
+#'     causing them to be expired and deleted if the
+#'     `MessageRetentionPeriod` is reduced below the age of existing
+#'     messages.
 #' 
 #' -   `Policy` – Returns the policy of the queue.
 #' 
@@ -522,12 +591,17 @@ sqs_delete_queue <- function(QueueUrl) {
 #'     seconds, for which the [`receive_message`][sqs_receive_message]
 #'     action waits for a message to arrive.
 #' 
+#' -   `VisibilityTimeout` – Returns the visibility timeout for the queue.
+#'     For more information about the visibility timeout, see [Visibility
+#'     Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+#'     in the *Amazon SQS Developer Guide*.
+#' 
+#' The following attributes apply only to [dead-letter
+#' queues:](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+#' 
 #' -   `RedrivePolicy` – The string that includes the parameters for the
 #'     dead-letter queue functionality of the source queue as a JSON
-#'     object. For more information about the redrive policy and
-#'     dead-letter queues, see [Using Amazon SQS Dead-Letter
-#'     Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
-#'     in the *Amazon SQS Developer Guide*.
+#'     object. The parameters are as follows:
 #' 
 #'     -   `deadLetterTargetArn` – The Amazon Resource Name (ARN) of the
 #'         dead-letter queue to which Amazon SQS moves messages after the
@@ -535,14 +609,40 @@ sqs_delete_queue <- function(QueueUrl) {
 #' 
 #'     -   `maxReceiveCount` – The number of times a message is delivered
 #'         to the source queue before being moved to the dead-letter queue.
-#'         When the `ReceiveCount` for a message exceeds the
+#'         Default: 10. When the `ReceiveCount` for a message exceeds the
 #'         `maxReceiveCount` for a queue, Amazon SQS moves the message to
 #'         the dead-letter-queue.
 #' 
-#' -   `VisibilityTimeout` – Returns the visibility timeout for the queue.
-#'     For more information about the visibility timeout, see [Visibility
-#'     Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
-#'     in the *Amazon SQS Developer Guide*.
+#' -   `RedriveAllowPolicy` – The string that includes the parameters for
+#'     the permissions for the dead-letter queue redrive permission and
+#'     which source queues can specify dead-letter queues as a JSON object.
+#'     The parameters are as follows:
+#' 
+#'     -   `redrivePermission` – The permission type that defines which
+#'         source queues can specify the current queue as the dead-letter
+#'         queue. Valid values are:
+#' 
+#'         -   `allowAll` – (Default) Any source queues in this Amazon Web
+#'             Services account in the same Region can specify this queue
+#'             as the dead-letter queue.
+#' 
+#'         -   `denyAll` – No source queues can specify this queue as the
+#'             dead-letter queue.
+#' 
+#'         -   `byQueue` – Only queues specified by the `sourceQueueArns`
+#'             parameter can specify this queue as the dead-letter queue.
+#' 
+#'     -   `sourceQueueArns` – The Amazon Resource Names (ARN)s of the
+#'         source queues that can specify this queue as the dead-letter
+#'         queue and redrive messages. You can specify this parameter only
+#'         when the `redrivePermission` parameter is set to `byQueue`. You
+#'         can specify up to 10 source queue ARNs. To allow more than 10
+#'         source queues to specify dead-letter queues, set the
+#'         `redrivePermission` parameter to `allowAll`.
+#' 
+#' The dead-letter queue of a FIFO queue must also be a FIFO queue.
+#' Similarly, the dead-letter queue of a standard queue must also be a
+#' standard queue.
 #' 
 #' The following attributes apply only to
 #' [server-side-encryption](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
@@ -560,7 +660,8 @@ sqs_delete_queue <- function(QueueUrl) {
 #' 
 #' -   `SqsManagedSseEnabled` – Returns information about whether the queue
 #'     is using SSE-SQS encryption using SQS owned encryption keys. Only
-#'     one server-side encryption option is supported per queue (e.g.
+#'     one server-side encryption option is supported per queue (for
+#'     example,
 #'     [SSE-KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html)
 #'     or
 #'     [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
@@ -635,7 +736,7 @@ sqs_get_queue_attributes <- function(QueueUrl, AttributeNames = NULL) {
 #' @description
 #' Returns the URL of an existing Amazon SQS queue.
 #'
-#' See [https://paws-r.github.io/docs/sqs/get_queue_url.html](https://paws-r.github.io/docs/sqs/get_queue_url.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_get_queue_url/](https://www.paws-r-sdk.com/docs/sqs_get_queue_url/) for full documentation.
 #'
 #' @param QueueName &#91;required&#93; The name of the queue whose URL must be fetched. Maximum 80 characters.
 #' Valid values: alphanumeric characters, hyphens (`-`), and underscores
@@ -671,7 +772,7 @@ sqs_get_queue_url <- function(QueueName, QueueOwnerAWSAccountId = NULL) {
 #' @description
 #' Returns a list of your queues that have the `RedrivePolicy` queue attribute configured with a dead-letter queue.
 #'
-#' See [https://paws-r.github.io/docs/sqs/list_dead_letter_source_queues.html](https://paws-r.github.io/docs/sqs/list_dead_letter_source_queues.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_list_dead_letter_source_queues/](https://www.paws-r-sdk.com/docs/sqs_list_dead_letter_source_queues/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of a dead-letter queue.
 #' 
@@ -689,7 +790,7 @@ sqs_list_dead_letter_source_queues <- function(QueueUrl, NextToken = NULL, MaxRe
     name = "ListDeadLetterSourceQueues",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "queueUrls")
   )
   input <- .sqs$list_dead_letter_source_queues_input(QueueUrl = QueueUrl, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sqs$list_dead_letter_source_queues_output()
@@ -701,12 +802,45 @@ sqs_list_dead_letter_source_queues <- function(QueueUrl, NextToken = NULL, MaxRe
 }
 .sqs$operations$list_dead_letter_source_queues <- sqs_list_dead_letter_source_queues
 
+#' Gets the most recent message movement tasks (up to 10) under a specific
+#' source queue
+#'
+#' @description
+#' Gets the most recent message movement tasks (up to 10) under a specific source queue.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sqs_list_message_move_tasks/](https://www.paws-r-sdk.com/docs/sqs_list_message_move_tasks/) for full documentation.
+#'
+#' @param SourceArn &#91;required&#93; The ARN of the queue whose message movement tasks are to be listed.
+#' @param MaxResults The maximum number of results to include in the response. The default is
+#' 1, which provides the most recent message movement task. The upper limit
+#' is 10.
+#'
+#' @keywords internal
+#'
+#' @rdname sqs_list_message_move_tasks
+sqs_list_message_move_tasks <- function(SourceArn, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListMessageMoveTasks",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sqs$list_message_move_tasks_input(SourceArn = SourceArn, MaxResults = MaxResults)
+  output <- .sqs$list_message_move_tasks_output()
+  config <- get_config()
+  svc <- .sqs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sqs$operations$list_message_move_tasks <- sqs_list_message_move_tasks
+
 #' List all cost allocation tags added to the specified Amazon SQS queue
 #'
 #' @description
 #' List all cost allocation tags added to the specified Amazon SQS queue. For an overview, see [Tagging Your Amazon SQS Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html) in the *Amazon SQS Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/sqs/list_queue_tags.html](https://paws-r.github.io/docs/sqs/list_queue_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_list_queue_tags/](https://www.paws-r-sdk.com/docs/sqs_list_queue_tags/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the queue.
 #'
@@ -735,7 +869,7 @@ sqs_list_queue_tags <- function(QueueUrl) {
 #' @description
 #' Returns a list of your queues in the current region. The response includes a maximum of 1,000 results. If you specify a value for the optional `QueueNamePrefix` parameter, only queues with a name that begins with the specified value are returned.
 #'
-#' See [https://paws-r.github.io/docs/sqs/list_queues.html](https://paws-r.github.io/docs/sqs/list_queues.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_list_queues/](https://www.paws-r-sdk.com/docs/sqs_list_queues/) for full documentation.
 #'
 #' @param QueueNamePrefix A string to use for filtering the list results. Only those queues whose
 #' name begins with the specified string are returned.
@@ -754,7 +888,7 @@ sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults
     name = "ListQueues",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "QueueUrls")
   )
   input <- .sqs$list_queues_input(QueueNamePrefix = QueueNamePrefix, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sqs$list_queues_output()
@@ -766,12 +900,13 @@ sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults
 }
 .sqs$operations$list_queues <- sqs_list_queues
 
-#' Deletes the messages in a queue specified by the QueueURL parameter
+#' Deletes available messages in a queue (including in-flight messages)
+#' specified by the QueueURL parameter
 #'
 #' @description
-#' Deletes the messages in a queue specified by the `QueueURL` parameter.
+#' Deletes available messages in a queue (including in-flight messages) specified by the `QueueURL` parameter.
 #'
-#' See [https://paws-r.github.io/docs/sqs/purge_queue.html](https://paws-r.github.io/docs/sqs/purge_queue.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_purge_queue/](https://www.paws-r-sdk.com/docs/sqs_purge_queue/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the queue from which the [`purge_queue`][sqs_purge_queue]
 #' action deletes messages.
@@ -803,7 +938,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #' @description
 #' Retrieves one or more messages (up to 10), from the specified queue. Using the `WaitTimeSeconds` parameter enables long-poll support. For more information, see [Amazon SQS Long Polling](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-short-and-long-polling.html#sqs-long-polling) in the *Amazon SQS Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/sqs/receive_message.html](https://paws-r.github.io/docs/sqs/receive_message.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_receive_message/](https://www.paws-r-sdk.com/docs/sqs_receive_message/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue from which messages are received.
 #' 
@@ -824,7 +959,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #' 
 #' -   `SenderId`
 #' 
-#'     -   For an IAM user, returns the IAM user ID, for example
+#'     -   For a user, returns the user ID, for example
 #'         `ABCDEFGHI1JKLMNOPQ23R`.
 #' 
 #'     -   For an IAM role, returns the IAM role ID, for example
@@ -836,7 +971,7 @@ sqs_purge_queue <- function(QueueUrl) {
 #' 
 #' -   `SqsManagedSseEnabled` – Enables server-side queue encryption using
 #'     SQS owned encryption keys. Only one server-side encryption option is
-#'     supported per queue (e.g.
+#'     supported per queue (for example,
 #'     [SSE-KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html)
 #'     or
 #'     [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
@@ -980,7 +1115,7 @@ sqs_receive_message <- function(QueueUrl, AttributeNames = NULL, MessageAttribut
 #' @description
 #' Revokes any permissions in the queue policy that matches the specified `Label` parameter.
 #'
-#' See [https://paws-r.github.io/docs/sqs/remove_permission.html](https://paws-r.github.io/docs/sqs/remove_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_remove_permission/](https://www.paws-r-sdk.com/docs/sqs_remove_permission/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue from which permissions are removed.
 #' 
@@ -1013,13 +1148,13 @@ sqs_remove_permission <- function(QueueUrl, Label) {
 #' @description
 #' Delivers a message to the specified queue.
 #'
-#' See [https://paws-r.github.io/docs/sqs/send_message.html](https://paws-r.github.io/docs/sqs/send_message.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_send_message/](https://www.paws-r-sdk.com/docs/sqs_send_message/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue to which a message is sent.
 #' 
 #' Queue URLs and names are case-sensitive.
 #' @param MessageBody &#91;required&#93; The message to send. The minimum size is one character. The maximum size
-#' is 256 KB.
+#' is 256 KiB.
 #' 
 #' A message can include only XML, JSON, and unformatted text. The
 #' following Unicode characters are allowed:
@@ -1157,12 +1292,14 @@ sqs_send_message <- function(QueueUrl, MessageBody, DelaySeconds = NULL, Message
 }
 .sqs$operations$send_message <- sqs_send_message
 
-#' Delivers up to ten messages to the specified queue
+#' You can use SendMessageBatch to send up to 10 messages to the specified
+#' queue by assigning either identical or different values to each message
+#' (or by not assigning values at all)
 #'
 #' @description
-#' Delivers up to ten messages to the specified queue. This is a batch version of ` SendMessage.` For a FIFO queue, multiple messages within a single batch are enqueued in the order they are sent.
+#' You can use [`send_message_batch`][sqs_send_message_batch] to send up to 10 messages to the specified queue by assigning either identical or different values to each message (or by not assigning values at all). This is a batch version of ` SendMessage.` For a FIFO queue, multiple messages within a single batch are enqueued in the order they are sent.
 #'
-#' See [https://paws-r.github.io/docs/sqs/send_message_batch.html](https://paws-r.github.io/docs/sqs/send_message_batch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_send_message_batch/](https://www.paws-r-sdk.com/docs/sqs_send_message_batch/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue to which batched messages are sent.
 #' 
@@ -1192,9 +1329,9 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' Sets the value of one or more queue attributes
 #'
 #' @description
-#' Sets the value of one or more queue attributes. When you change a queue's attributes, the change can take up to 60 seconds for most of the attributes to propagate throughout the Amazon SQS system. Changes made to the `MessageRetentionPeriod` attribute can take up to 15 minutes.
+#' Sets the value of one or more queue attributes. When you change a queue's attributes, the change can take up to 60 seconds for most of the attributes to propagate throughout the Amazon SQS system. Changes made to the `MessageRetentionPeriod` attribute can take up to 15 minutes and will impact existing messages in the queue potentially causing them to be expired and deleted if the `MessageRetentionPeriod` is reduced below the age of existing messages.
 #'
-#' See [https://paws-r.github.io/docs/sqs/set_queue_attributes.html](https://paws-r.github.io/docs/sqs/set_queue_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_set_queue_attributes/](https://www.paws-r-sdk.com/docs/sqs_set_queue_attributes/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the Amazon SQS queue whose attributes are set.
 #' 
@@ -1217,7 +1354,13 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' -   `MessageRetentionPeriod` – The length of time, in seconds, for which
 #'     Amazon SQS retains a message. Valid values: An integer representing
 #'     seconds, from 60 (1 minute) to 1,209,600 (14 days). Default: 345,600
-#'     (4 days).
+#'     (4 days). When you change a queue's attributes, the change can take
+#'     up to 60 seconds for most of the attributes to propagate throughout
+#'     the Amazon SQS system. Changes made to the `MessageRetentionPeriod`
+#'     attribute can take up to 15 minutes and will impact existing
+#'     messages in the queue potentially causing them to be expired and
+#'     deleted if the `MessageRetentionPeriod` is reduced below the age of
+#'     existing messages.
 #' 
 #' -   `Policy` – The queue's policy. A valid Amazon Web Services policy.
 #'     For more information about policy structure, see [Overview of Amazon
@@ -1230,12 +1373,19 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #'     for a message to arrive. Valid values: An integer from 0 to 20
 #'     (seconds). Default: 0.
 #' 
+#' -   `VisibilityTimeout` – The visibility timeout for the queue, in
+#'     seconds. Valid values: An integer from 0 to 43,200 (12 hours).
+#'     Default: 30. For more information about the visibility timeout, see
+#'     [Visibility
+#'     Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
+#'     in the *Amazon SQS Developer Guide*.
+#' 
+#' The following attributes apply only to [dead-letter
+#' queues:](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
+#' 
 #' -   `RedrivePolicy` – The string that includes the parameters for the
 #'     dead-letter queue functionality of the source queue as a JSON
-#'     object. For more information about the redrive policy and
-#'     dead-letter queues, see [Using Amazon SQS Dead-Letter
-#'     Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
-#'     in the *Amazon SQS Developer Guide*.
+#'     object. The parameters are as follows:
 #' 
 #'     -   `deadLetterTargetArn` – The Amazon Resource Name (ARN) of the
 #'         dead-letter queue to which Amazon SQS moves messages after the
@@ -1243,20 +1393,40 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' 
 #'     -   `maxReceiveCount` – The number of times a message is delivered
 #'         to the source queue before being moved to the dead-letter queue.
-#'         When the `ReceiveCount` for a message exceeds the
+#'         Default: 10. When the `ReceiveCount` for a message exceeds the
 #'         `maxReceiveCount` for a queue, Amazon SQS moves the message to
 #'         the dead-letter-queue.
 #' 
-#'     The dead-letter queue of a FIFO queue must also be a FIFO queue.
-#'     Similarly, the dead-letter queue of a standard queue must also be a
-#'     standard queue.
+#' -   `RedriveAllowPolicy` – The string that includes the parameters for
+#'     the permissions for the dead-letter queue redrive permission and
+#'     which source queues can specify dead-letter queues as a JSON object.
+#'     The parameters are as follows:
 #' 
-#' -   `VisibilityTimeout` – The visibility timeout for the queue, in
-#'     seconds. Valid values: An integer from 0 to 43,200 (12 hours).
-#'     Default: 30. For more information about the visibility timeout, see
-#'     [Visibility
-#'     Timeout](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html)
-#'     in the *Amazon SQS Developer Guide*.
+#'     -   `redrivePermission` – The permission type that defines which
+#'         source queues can specify the current queue as the dead-letter
+#'         queue. Valid values are:
+#' 
+#'         -   `allowAll` – (Default) Any source queues in this Amazon Web
+#'             Services account in the same Region can specify this queue
+#'             as the dead-letter queue.
+#' 
+#'         -   `denyAll` – No source queues can specify this queue as the
+#'             dead-letter queue.
+#' 
+#'         -   `byQueue` – Only queues specified by the `sourceQueueArns`
+#'             parameter can specify this queue as the dead-letter queue.
+#' 
+#'     -   `sourceQueueArns` – The Amazon Resource Names (ARN)s of the
+#'         source queues that can specify this queue as the dead-letter
+#'         queue and redrive messages. You can specify this parameter only
+#'         when the `redrivePermission` parameter is set to `byQueue`. You
+#'         can specify up to 10 source queue ARNs. To allow more than 10
+#'         source queues to specify dead-letter queues, set the
+#'         `redrivePermission` parameter to `allowAll`.
+#' 
+#' The dead-letter queue of a FIFO queue must also be a FIFO queue.
+#' Similarly, the dead-letter queue of a standard queue must also be a
+#' standard queue.
 #' 
 #' The following attributes apply only to
 #' [server-side-encryption](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html):
@@ -1284,7 +1454,7 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #' 
 #' -   `SqsManagedSseEnabled` – Enables server-side queue encryption using
 #'     SQS owned encryption keys. Only one server-side encryption option is
-#'     supported per queue (e.g.
+#'     supported per queue (for example,
 #'     [SSE-KMS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html)
 #'     or
 #'     [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
@@ -1372,12 +1542,56 @@ sqs_set_queue_attributes <- function(QueueUrl, Attributes) {
 }
 .sqs$operations$set_queue_attributes <- sqs_set_queue_attributes
 
+#' Starts an asynchronous task to move messages from a specified source
+#' queue to a specified destination queue
+#'
+#' @description
+#' Starts an asynchronous task to move messages from a specified source queue to a specified destination queue.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sqs_start_message_move_task/](https://www.paws-r-sdk.com/docs/sqs_start_message_move_task/) for full documentation.
+#'
+#' @param SourceArn &#91;required&#93; The ARN of the queue that contains the messages to be moved to another
+#' queue. Currently, only ARNs of dead-letter queues (DLQs) whose sources
+#' are other Amazon SQS queues are accepted. DLQs whose sources are non-SQS
+#' queues, such as Lambda or Amazon SNS topics, are not currently
+#' supported.
+#' @param DestinationArn The ARN of the queue that receives the moved messages. You can use this
+#' field to specify the destination queue where you would like to redrive
+#' messages. If this field is left blank, the messages will be redriven
+#' back to their respective original source queues.
+#' @param MaxNumberOfMessagesPerSecond The number of messages to be moved per second (the message movement
+#' rate). You can use this field to define a fixed message movement rate.
+#' The maximum value for messages per second is 500. If this field is left
+#' blank, the system will optimize the rate based on the queue message
+#' backlog size, which may vary throughout the duration of the message
+#' movement task.
+#'
+#' @keywords internal
+#'
+#' @rdname sqs_start_message_move_task
+sqs_start_message_move_task <- function(SourceArn, DestinationArn = NULL, MaxNumberOfMessagesPerSecond = NULL) {
+  op <- new_operation(
+    name = "StartMessageMoveTask",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sqs$start_message_move_task_input(SourceArn = SourceArn, DestinationArn = DestinationArn, MaxNumberOfMessagesPerSecond = MaxNumberOfMessagesPerSecond)
+  output <- .sqs$start_message_move_task_output()
+  config <- get_config()
+  svc <- .sqs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sqs$operations$start_message_move_task <- sqs_start_message_move_task
+
 #' Add cost allocation tags to the specified Amazon SQS queue
 #'
 #' @description
 #' Add cost allocation tags to the specified Amazon SQS queue. For an overview, see [Tagging Your Amazon SQS Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html) in the *Amazon SQS Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/sqs/tag_queue.html](https://paws-r.github.io/docs/sqs/tag_queue.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_tag_queue/](https://www.paws-r-sdk.com/docs/sqs_tag_queue/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the queue.
 #' @param Tags &#91;required&#93; The list of tags to be added to the specified queue.
@@ -1407,7 +1621,7 @@ sqs_tag_queue <- function(QueueUrl, Tags) {
 #' @description
 #' Remove cost allocation tags from the specified Amazon SQS queue. For an overview, see [Tagging Your Amazon SQS Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html) in the *Amazon SQS Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/sqs/untag_queue.html](https://paws-r.github.io/docs/sqs/untag_queue.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/sqs_untag_queue/](https://www.paws-r-sdk.com/docs/sqs_untag_queue/) for full documentation.
 #'
 #' @param QueueUrl &#91;required&#93; The URL of the queue.
 #' @param TagKeys &#91;required&#93; The list of tags to be removed from the specified queue.

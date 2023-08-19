@@ -18,6 +18,6 @@ more information, see \href{https://docs.aws.amazon.com/databrew/latest/dg/}{Cro
 \description{
 Modifies the definition of an existing DataBrew schedule.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/update_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_update_schedule/} for full documentation.
 }
 \keyword{internal}

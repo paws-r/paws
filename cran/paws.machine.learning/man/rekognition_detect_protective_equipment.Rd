@@ -17,6 +17,6 @@ Amazon S3 bucket.}
 \description{
 Detects Personal Protective Equipment (PPE) worn by people detected in an image. Amazon Rekognition can detect the following types of PPE.
 
-See \url{https://paws-r.github.io/docs/rekognition/detect_protective_equipment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_detect_protective_equipment/} for full documentation.
 }
 \keyword{internal}

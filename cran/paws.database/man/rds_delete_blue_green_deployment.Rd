@@ -10,22 +10,22 @@ rds_delete_blue_green_deployment(
 )
 }
 \arguments{
-\item{BlueGreenDeploymentIdentifier}{[required] The blue/green deployment identifier of the deployment to be deleted.
-This parameter isn't case-sensitive.
+\item{BlueGreenDeploymentIdentifier}{[required] The unique identifier of the blue/green deployment to delete. This
+parameter isn't case-sensitive.
 
 Constraints:
 \itemize{
 \item Must match an existing blue/green deployment identifier.
 }}
 
-\item{DeleteTarget}{A value that indicates whether to delete the resources in the green
-environment. You can't specify this option if the blue/green deployment
+\item{DeleteTarget}{Specifies whether to delete the resources in the green environment. You
+can't specify this option if the blue/green deployment
 \href{https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_BlueGreenDeployment.html}{status}
 is \code{SWITCHOVER_COMPLETED}.}
 }
 \description{
 Deletes a blue/green deployment.
 
-See \url{https://paws-r.github.io/docs/rds/delete_blue_green_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_delete_blue_green_deployment/} for full documentation.
 }
 \keyword{internal}

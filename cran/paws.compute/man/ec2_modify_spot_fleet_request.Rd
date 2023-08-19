@@ -36,6 +36,6 @@ Fleet request, then omit this parameter.}
 \description{
 Modifies the specified Spot Fleet request.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_spot_fleet_request.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_spot_fleet_request/} for full documentation.
 }
 \keyword{internal}

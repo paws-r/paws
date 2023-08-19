@@ -10,6 +10,6 @@ macie2_disable_macie()
 \description{
 Disables Amazon Macie and deletes all settings and resources for a Macie account.
 
-See \url{https://paws-r.github.io/docs/macie2/disable_macie.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_disable_macie/} for full documentation.
 }
 \keyword{internal}

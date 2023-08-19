@@ -15,6 +15,6 @@ request.}
 \description{
 This operation returns the current status of an operation that is not completed.
 
-See \url{https://paws-r.github.io/docs/route53domains/get_operation_detail.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_get_operation_detail/} for full documentation.
 }
 \keyword{internal}

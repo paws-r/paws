@@ -26,6 +26,6 @@ list of instances.}
 \description{
 Retrieves detailed information about the health of instances in your AWS Elastic Beanstalk. This operation requires \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/health-enhanced.html}{enhanced health reporting}.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_instances_health.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_instances_health/} for full documentation.
 }
 \keyword{internal}

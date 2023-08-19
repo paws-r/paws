@@ -39,6 +39,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Starts a task that restores an AMI from an Amazon S3 object that was previously created by using \code{\link[=ec2_create_store_image_task]{create_store_image_task}}.
 
-See \url{https://paws-r.github.io/docs/ec2/create_restore_image_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_restore_image_task/} for full documentation.
 }
 \keyword{internal}

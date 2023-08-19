@@ -21,6 +21,6 @@ status you want to update.}
 \description{
 Updates the device status.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/update_device_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_device_status/} for full documentation.
 }
 \keyword{internal}

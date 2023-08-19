@@ -38,6 +38,6 @@ you are sending for evaluation.}
 \description{
 Stores events in Amazon Fraud Detector without generating fraud predictions for those events. For example, you can use \code{\link[=frauddetector_send_event]{send_event}} to upload a historical dataset, which you can then later use to train a model.
 
-See \url{https://paws-r.github.io/docs/frauddetector/send_event.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_send_event/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ lambda_tag_resource(Resource, Tags)
 \description{
 Adds \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags} to a function.
 
-See \url{https://paws-r.github.io/docs/lambda/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_tag_resource/} for full documentation.
 }
 \keyword{internal}

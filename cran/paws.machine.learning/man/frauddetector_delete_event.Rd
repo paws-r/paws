@@ -12,11 +12,11 @@ frauddetector_delete_event(eventId, eventTypeName, deleteAuditHistory = NULL)
 \item{eventTypeName}{[required] The name of the event type.}
 
 \item{deleteAuditHistory}{Specifies whether or not to delete any predictions associated with the
-event.}
+event. If set to \code{True},}
 }
 \description{
 Deletes the specified event.
 
-See \url{https://paws-r.github.io/docs/frauddetector/delete_event.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_delete_event/} for full documentation.
 }
 \keyword{internal}

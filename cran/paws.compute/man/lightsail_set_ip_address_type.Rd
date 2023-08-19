@@ -26,6 +26,6 @@ and IPv6.}
 \description{
 Sets the IP address type for an Amazon Lightsail resource.
 
-See \url{https://paws-r.github.io/docs/lightsail/set_ip_address_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_set_ip_address_type/} for full documentation.
 }
 \keyword{internal}

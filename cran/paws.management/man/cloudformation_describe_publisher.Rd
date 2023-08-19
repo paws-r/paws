@@ -17,6 +17,6 @@ information about your own publisher account.}
 \description{
 Returns information about a CloudFormation extension publisher.
 
-See \url{https://paws-r.github.io/docs/cloudformation/describe_publisher.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_describe_publisher/} for full documentation.
 }
 \keyword{internal}

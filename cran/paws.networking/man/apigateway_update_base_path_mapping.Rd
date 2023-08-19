@@ -22,6 +22,6 @@ To specify an empty base path, set this parameter to \code{'(none)'}.}
 \description{
 Changes information about the BasePathMapping resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/update_base_path_mapping.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_update_base_path_mapping/} for full documentation.
 }
 \keyword{internal}

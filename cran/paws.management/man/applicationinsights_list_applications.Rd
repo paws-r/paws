@@ -4,7 +4,11 @@
 \alias{applicationinsights_list_applications}
 \title{Lists the IDs of the applications that you are monitoring}
 \usage{
-applicationinsights_list_applications(MaxResults = NULL, NextToken = NULL)
+applicationinsights_list_applications(
+  MaxResults = NULL,
+  NextToken = NULL,
+  AccountId = NULL
+)
 }
 \arguments{
 \item{MaxResults}{The maximum number of results to return in a single call. To retrieve
@@ -12,10 +16,12 @@ the remaining results, make another call with the returned \code{NextToken}
 value.}
 
 \item{NextToken}{The token to request the next page of results.}
+
+\item{AccountId}{The AWS account ID for the resource group owner.}
 }
 \description{
 Lists the IDs of the applications that you are monitoring.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/list_applications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_list_applications/} for full documentation.
 }
 \keyword{internal}

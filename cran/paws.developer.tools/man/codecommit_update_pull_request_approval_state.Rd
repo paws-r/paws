@@ -20,6 +20,6 @@ codecommit_update_pull_request_approval_state(
 \description{
 Updates the state of a user's approval on a pull request. The user is derived from the signed-in account when the request is made.
 
-See \url{https://paws-r.github.io/docs/codecommit/update_pull_request_approval_state.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_update_pull_request_approval_state/} for full documentation.
 }
 \keyword{internal}

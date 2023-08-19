@@ -25,6 +25,6 @@ the next page of results in a paginated response.}
 \description{
 List the tags for Config resource.
 
-See \url{https://paws-r.github.io/docs/configservice/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

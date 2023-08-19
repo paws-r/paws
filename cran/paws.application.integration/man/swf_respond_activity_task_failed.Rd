@@ -22,6 +22,6 @@ with results.}
 \description{
 Used by workers to tell the service that the ActivityTask identified by the \code{taskToken} has failed with \code{reason} (if specified). The \code{reason} and \code{details} appear in the \code{ActivityTaskFailed} event added to the workflow history.
 
-See \url{https://paws-r.github.io/docs/swf/respond_activity_task_failed.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_respond_activity_task_failed/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ pattern.}
 \description{
 Use this operation to test a rules pattern that you plan to use to create an audience segment. For more information about segments, see \code{\link[=cloudwatchevidently_create_segment]{create_segment}}.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/test_segment_pattern.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_test_segment_pattern/} for full documentation.
 }
 \keyword{internal}

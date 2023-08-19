@@ -13,6 +13,6 @@ ssmcontacts_delete_contact_channel(ContactChannelId)
 \description{
 To no longer receive engagements on a contact channel, you can delete the channel from a contact. Deleting the contact channel removes it from the contact's engagement plan. If you delete the only contact channel for a contact, you won't be able to engage that contact during an incident.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/delete_contact_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_delete_contact_channel/} for full documentation.
 }
 \keyword{internal}

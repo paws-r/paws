@@ -53,6 +53,6 @@ to the end recipient.}
 \description{
 Allows you to send a request that sends a text message through Amazon Pinpoint. This operation uses \href{https://aws.amazon.com/polly/}{Amazon Polly} to convert a text script into a voice message.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/send_voice_message.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_send_voice_message/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ policy is applied.}
 \description{
 Creates or updates an automatic scaling policy for a core instance group or task instance group in an Amazon EMR cluster. The automatic scaling policy defines how an instance group dynamically adds and terminates Amazon EC2 instances in response to the value of a CloudWatch metric.
 
-See \url{https://paws-r.github.io/docs/emr/put_auto_scaling_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_put_auto_scaling_policy/} for full documentation.
 }
 \keyword{internal}

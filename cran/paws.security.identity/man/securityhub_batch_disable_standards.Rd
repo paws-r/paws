@@ -13,6 +13,6 @@ securityhub_batch_disable_standards(StandardsSubscriptionArns)
 \description{
 Disables the standards specified by the provided \code{StandardsSubscriptionArns}.
 
-See \url{https://paws-r.github.io/docs/securityhub/batch_disable_standards.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_batch_disable_standards/} for full documentation.
 }
 \keyword{internal}

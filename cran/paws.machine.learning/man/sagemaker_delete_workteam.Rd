@@ -12,6 +12,6 @@ sagemaker_delete_workteam(WorkteamName)
 \description{
 Deletes an existing work team. This operation can't be undone.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_workteam.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_workteam/} for full documentation.
 }
 \keyword{internal}

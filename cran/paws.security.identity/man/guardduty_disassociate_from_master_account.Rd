@@ -13,6 +13,6 @@ guardduty_disassociate_from_master_account(DetectorId)
 \description{
 Disassociates the current GuardDuty member account from its administrator account.
 
-See \url{https://paws-r.github.io/docs/guardduty/disassociate_from_master_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_disassociate_from_master_account/} for full documentation.
 }
 \keyword{internal}

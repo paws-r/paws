@@ -13,6 +13,6 @@ to pause.}
 \description{
 Pause an active App Runner service. App Runner reduces compute capacity for the service to zero and loses state (for example, ephemeral storage is removed).
 
-See \url{https://paws-r.github.io/docs/apprunner/pause_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_pause_service/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ that you're describing.}
 \description{
 Describes the alias for a theme.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_theme_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_theme_alias/} for full documentation.
 }
 \keyword{internal}

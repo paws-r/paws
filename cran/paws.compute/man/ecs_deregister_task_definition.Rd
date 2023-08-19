@@ -14,6 +14,6 @@ Name (ARN) of the task definition to deregister. You must specify a
 \description{
 Deregisters the specified task definition by family and revision. Upon deregistration, the task definition is marked as \code{INACTIVE}. Existing tasks and services that reference an \code{INACTIVE} task definition continue to run without disruption. Existing services that reference an \code{INACTIVE} task definition can still scale up or down by modifying the service's desired count. If you want to delete a task definition revision, you must first deregister the task definition revision.
 
-See \url{https://paws-r.github.io/docs/ecs/deregister_task_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_deregister_task_definition/} for full documentation.
 }
 \keyword{internal}

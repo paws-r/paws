@@ -40,6 +40,6 @@ token in the next request. Tokens expire after 24 hours.}
 \description{
 Retrieves a what-if forecast.
 
-See \url{https://paws-r.github.io/docs/forecastqueryservice/query_what_if_forecast.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastqueryservice_query_what_if_forecast/} for full documentation.
 }
 \keyword{internal}

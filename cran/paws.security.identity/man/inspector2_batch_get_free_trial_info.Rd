@@ -12,6 +12,6 @@ inspector2_batch_get_free_trial_info(accountIds)
 \description{
 Gets free trial status for multiple Amazon Web Services accounts.
 
-See \url{https://paws-r.github.io/docs/inspector2/batch_get_free_trial_info.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_batch_get_free_trial_info/} for full documentation.
 }
 \keyword{internal}

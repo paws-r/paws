@@ -12,6 +12,6 @@ eventbridge_describe_api_destination(Name)
 \description{
 Retrieves details about an API destination.
 
-See \url{https://paws-r.github.io/docs/eventbridge/describe_api_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_describe_api_destination/} for full documentation.
 }
 \keyword{internal}

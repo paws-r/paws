@@ -24,6 +24,6 @@ or OpenSearch_X.Y. Defaults to the latest version of OpenSearch.}
 \description{
 Describes the instance count, storage, and master node limits for a given OpenSearch or Elasticsearch version and instance type.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/describe_instance_type_limits.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_describe_instance_type_limits/} for full documentation.
 }
 \keyword{internal}

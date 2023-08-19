@@ -12,8 +12,8 @@ personalize_update_recommender(recommenderArn, recommenderConfig)
 \item{recommenderConfig}{[required] The configuration details of the recommender.}
 }
 \description{
-Updates the recommender to modify the recommender configuration.
+Updates the recommender to modify the recommender configuration. If you update the recommender to modify the columns used in training, Amazon Personalize automatically starts a full retraining of the models backing your recommender. While the update completes, you can still get recommendations from the recommender. The recommender uses the previous configuration until the update completes. To track the status of this update, use the \code{latestRecommenderUpdate} returned in the \code{\link[=personalize_describe_recommender]{describe_recommender}} operation.
 
-See \url{https://paws-r.github.io/docs/personalize/update_recommender.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_update_recommender/} for full documentation.
 }
 \keyword{internal}

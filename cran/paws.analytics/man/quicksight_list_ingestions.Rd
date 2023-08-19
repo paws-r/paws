@@ -24,6 +24,6 @@ results.}
 \description{
 Lists the history of SPICE ingestions for a dataset.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_ingestions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_ingestions/} for full documentation.
 }
 \keyword{internal}

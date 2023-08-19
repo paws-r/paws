@@ -41,6 +41,6 @@ TECHNICAL_CUE and SHOT.}
 \description{
 Starts asynchronous detection of segment detection in a stored video.
 
-See \url{https://paws-r.github.io/docs/rekognition/start_segment_detection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_start_segment_detection/} for full documentation.
 }
 \keyword{internal}

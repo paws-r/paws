@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Adds or overwrites one or more tags for the specified resource. *Tags* are metadata that you can assign to your automations, documents, managed nodes, maintenance windows, Parameter Store parameters, and patch baselines. Tags enable you to categorize your resources in different ways, for example, by purpose, owner, or environment. Each tag consists of a key and an optional value, both of which you define. For example, you could define a set of tags for your account's managed nodes that helps you track each node's owner and stack level. For example:
 #'
-#' See [https://paws-r.github.io/docs/ssm/add_tags_to_resource.html](https://paws-r.github.io/docs/ssm/add_tags_to_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_add_tags_to_resource/](https://www.paws-r-sdk.com/docs/ssm_add_tags_to_resource/) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; Specifies the type of resource you are tagging.
 #' 
@@ -34,6 +34,8 @@ NULL
 #' `/aws/ssm/MyGroup/appmanager`.
 #' 
 #' For the `Document` and `Parameter` values, use the name of the resource.
+#' If you're tagging a shared document, you must use the full ARN of the
+#' document.
 #' 
 #' `ManagedInstance`: `mi-012345abcde`
 #' 
@@ -70,7 +72,7 @@ ssm_add_tags_to_resource <- function(ResourceType, ResourceId, Tags) {
 #' @description
 #' Associates a related item to a Systems Manager OpsCenter OpsItem. For example, you can associate an Incident Manager incident or analysis with an OpsItem. Incident Manager and OpsCenter are capabilities of Amazon Web Services Systems Manager.
 #'
-#' See [https://paws-r.github.io/docs/ssm/associate_ops_item_related_item.html](https://paws-r.github.io/docs/ssm/associate_ops_item_related_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_associate_ops_item_related_item/](https://www.paws-r-sdk.com/docs/ssm_associate_ops_item_related_item/) for full documentation.
 #'
 #' @param OpsItemId &#91;required&#93; The ID of the OpsItem to which you want to associate a resource as a
 #' related item.
@@ -111,7 +113,7 @@ ssm_associate_ops_item_related_item <- function(OpsItemId, AssociationType, Reso
 #' @description
 #' Attempts to cancel the command specified by the Command ID. There is no guarantee that the command will be terminated and the underlying process stopped.
 #'
-#' See [https://paws-r.github.io/docs/ssm/cancel_command.html](https://paws-r.github.io/docs/ssm/cancel_command.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_cancel_command/](https://www.paws-r-sdk.com/docs/ssm_cancel_command/) for full documentation.
 #'
 #' @param CommandId &#91;required&#93; The ID of the command you want to cancel.
 #' @param InstanceIds (Optional) A list of managed node IDs on which you want to cancel the
@@ -144,7 +146,7 @@ ssm_cancel_command <- function(CommandId, InstanceIds = NULL) {
 #' @description
 #' Stops a maintenance window execution that is already in progress and cancels any tasks in the window that haven't already starting running. Tasks already in progress will continue to completion.
 #'
-#' See [https://paws-r.github.io/docs/ssm/cancel_maintenance_window_execution.html](https://paws-r.github.io/docs/ssm/cancel_maintenance_window_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_cancel_maintenance_window_execution/](https://www.paws-r-sdk.com/docs/ssm_cancel_maintenance_window_execution/) for full documentation.
 #'
 #' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution to stop.
 #'
@@ -175,7 +177,7 @@ ssm_cancel_maintenance_window_execution <- function(WindowExecutionId) {
 #' @description
 #' Generates an activation code and activation ID you can use to register your on-premises servers, edge devices, or virtual machine (VM) with Amazon Web Services Systems Manager. Registering these machines with Systems Manager makes it possible to manage them using Systems Manager capabilities. You use the activation code and ID when installing SSM Agent on machines in your hybrid environment. For more information about requirements for managing on-premises machines using Systems Manager, see [Setting up Amazon Web Services Systems Manager for hybrid environments](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-managedinstances.html) in the *Amazon Web Services Systems Manager User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ssm/create_activation.html](https://paws-r.github.io/docs/ssm/create_activation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_create_activation/](https://www.paws-r-sdk.com/docs/ssm_create_activation/) for full documentation.
 #'
 #' @param Description A user-defined description of the resource that you want to register
 #' with Systems Manager.
@@ -255,7 +257,7 @@ ssm_create_activation <- function(Description = NULL, DefaultInstanceName = NULL
 #' @description
 #' A State Manager association defines the state that you want to maintain on your managed nodes. For example, an association can specify that anti-virus software must be installed and running on your managed nodes, or that certain ports must be closed. For static targets, the association specifies a schedule for when the configuration is reapplied. For dynamic targets, such as an Amazon Web Services resource group or an Amazon Web Services autoscaling group, State Manager, a capability of Amazon Web Services Systems Manager applies the configuration when new managed nodes are added to the group. The association also specifies actions to take when applying the configuration. For example, an association for anti-virus software might run once a day. If the software isn't installed, then State Manager installs it. If the software is installed, but the service isn't running, then the association might instruct State Manager to start the service.
 #'
-#' See [https://paws-r.github.io/docs/ssm/create_association.html](https://paws-r.github.io/docs/ssm/create_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_create_association/](https://www.paws-r-sdk.com/docs/ssm_create_association/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the SSM Command document or Automation runbook that contains
 #' the configuration information for the managed node.
@@ -416,7 +418,7 @@ ssm_create_association <- function(Name, DocumentVersion = NULL, InstanceId = NU
 #' @description
 #' Associates the specified Amazon Web Services Systems Manager document (SSM document) with the specified managed nodes or targets.
 #'
-#' See [https://paws-r.github.io/docs/ssm/create_association_batch.html](https://paws-r.github.io/docs/ssm/create_association_batch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_create_association_batch/](https://www.paws-r-sdk.com/docs/ssm_create_association_batch/) for full documentation.
 #'
 #' @param Entries &#91;required&#93; One or more associations.
 #'
@@ -445,7 +447,7 @@ ssm_create_association_batch <- function(Entries) {
 #' @description
 #' Creates a Amazon Web Services Systems Manager (SSM document). An SSM document defines the actions that Systems Manager performs on your managed nodes. For more information about SSM documents, including information about supported schemas, features, and syntax, see [Amazon Web Services Systems Manager Documents](https://docs.aws.amazon.com/systems-manager/latest/userguide/documents.html) in the *Amazon Web Services Systems Manager User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ssm/create_document.html](https://paws-r.github.io/docs/ssm/create_document.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_create_document/](https://www.paws-r-sdk.com/docs/ssm_create_document/) for full documentation.
 #'
 #' @param Content &#91;required&#93; The content for the new SSM document in JSON or YAML format. The content
 #' of the document must not exceed 64KB. This quota also includes the
@@ -543,7 +545,7 @@ ssm_create_document <- function(Content, Requires = NULL, Attachments = NULL, Na
 #' @description
 #' Creates a new maintenance window.
 #'
-#' See [https://paws-r.github.io/docs/ssm/create_maintenance_window.html](https://paws-r.github.io/docs/ssm/create_maintenance_window.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_create_maintenance_window/](https://www.paws-r-sdk.com/docs/ssm_create_maintenance_window/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the maintenance window.
 #' @param Description An optional description for the maintenance window. We recommend
@@ -623,9 +625,9 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' Creates a new OpsItem
 #'
 #' @description
-#' Creates a new OpsItem. You must have permission in Identity and Access Management (IAM) to create a new OpsItem. For more information, see [Getting started with OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/) in the *Amazon Web Services Systems Manager User Guide*.
+#' Creates a new OpsItem. You must have permission in Identity and Access Management (IAM) to create a new OpsItem. For more information, see [Set up OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html) in the *Amazon Web Services Systems Manager User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ssm/create_ops_item.html](https://paws-r.github.io/docs/ssm/create_ops_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_create_ops_item/](https://www.paws-r-sdk.com/docs/ssm_create_ops_item/) for full documentation.
 #'
 #' @param Description &#91;required&#93; Information about the OpsItem.
 #' @param OpsItemType The type of OpsItem to create. Systems Manager supports the following
@@ -667,7 +669,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' OperationalData to associate an Automation runbook with the OpsItem. To
 #' view Amazon Web Services CLI example commands that use these keys, see
 #' [Creating OpsItems
-#' manually](https://docs.aws.amazon.com/systems-manager/latest/userguide/#OpsCenter-manually-create-OpsItems)
+#' manually](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-manually-create-OpsItems.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param Notifications The Amazon Resource Name (ARN) of an SNS topic where notifications are
 #' sent when this OpsItem is edited or changed.
@@ -683,11 +685,7 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' and `amzn`.
 #' @param Title &#91;required&#93; A short heading that describes the nature of the OpsItem and the
 #' impacted resource.
-#' @param Tags Optional metadata that you assign to a resource. You can restrict access
-#' to OpsItems by using an inline IAM policy that specifies tags. For more
-#' information, see [Getting started with
-#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/#OpsCenter-getting-started-user-permissions)
-#' in the *Amazon Web Services Systems Manager User Guide*.
+#' @param Tags Optional metadata that you assign to a resource.
 #' 
 #' Tags use a key-value pair. For example:
 #' 
@@ -709,9 +707,8 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #' Currently supported only for the OpsItem type `/aws/changerequest`.
 #' @param AccountId The target Amazon Web Services account where you want to create an
 #' OpsItem. To make this call, your account must be configured to work with
-#' OpsItems across accounts. For more information, see [Setting up
-#' OpsCenter to work with OpsItems across
-#' accounts](https://docs.aws.amazon.com/systems-manager/latest/userguide/)
+#' OpsItems across accounts. For more information, see [Set up
+#' OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #'
 #' @keywords internal
@@ -741,7 +738,7 @@ ssm_create_ops_item <- function(Description, OpsItemType = NULL, OperationalData
 #' @description
 #' If you create a new application in Application Manager, Amazon Web Services Systems Manager calls this API operation to specify information about the new application, including the application type.
 #'
-#' See [https://paws-r.github.io/docs/ssm/create_ops_metadata.html](https://paws-r.github.io/docs/ssm/create_ops_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_create_ops_metadata/](https://www.paws-r-sdk.com/docs/ssm_create_ops_metadata/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; A resource ID for a new Application Manager application.
 #' @param Metadata Metadata for a new Application Manager application.
@@ -781,7 +778,7 @@ ssm_create_ops_metadata <- function(ResourceId, Metadata = NULL, Tags = NULL) {
 #' @description
 #' Creates a patch baseline.
 #'
-#' See [https://paws-r.github.io/docs/ssm/create_patch_baseline.html](https://paws-r.github.io/docs/ssm/create_patch_baseline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_create_patch_baseline/](https://www.paws-r-sdk.com/docs/ssm_create_patch_baseline/) for full documentation.
 #'
 #' @param OperatingSystem Defines the operating system the patch baseline applies to. The default
 #' value is `WINDOWS`.
@@ -867,7 +864,7 @@ ssm_create_patch_baseline <- function(OperatingSystem = NULL, Name, GlobalFilter
 #' @description
 #' A resource data sync helps you view data from multiple sources in a single location. Amazon Web Services Systems Manager offers two types of resource data sync: `SyncToDestination` and `SyncFromSource`.
 #'
-#' See [https://paws-r.github.io/docs/ssm/create_resource_data_sync.html](https://paws-r.github.io/docs/ssm/create_resource_data_sync.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_create_resource_data_sync/](https://www.paws-r-sdk.com/docs/ssm_create_resource_data_sync/) for full documentation.
 #'
 #' @param SyncName &#91;required&#93; A name for the configuration.
 #' @param S3Destination Amazon S3 configuration details for the sync. This parameter is required
@@ -908,7 +905,7 @@ ssm_create_resource_data_sync <- function(SyncName, S3Destination = NULL, SyncTy
 #' @description
 #' Deletes an activation. You aren't required to delete an activation. If you delete an activation, you can no longer use it to register additional managed nodes. Deleting an activation doesn't de-register managed nodes. You must manually de-register managed nodes.
 #'
-#' See [https://paws-r.github.io/docs/ssm/delete_activation.html](https://paws-r.github.io/docs/ssm/delete_activation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_delete_activation/](https://www.paws-r-sdk.com/docs/ssm_delete_activation/) for full documentation.
 #'
 #' @param ActivationId &#91;required&#93; The ID of the activation that you want to delete.
 #'
@@ -938,7 +935,7 @@ ssm_delete_activation <- function(ActivationId) {
 #' @description
 #' Disassociates the specified Amazon Web Services Systems Manager document (SSM document) from the specified managed node. If you created the association by using the `Targets` parameter, then you must delete the association by using the association ID.
 #'
-#' See [https://paws-r.github.io/docs/ssm/delete_association.html](https://paws-r.github.io/docs/ssm/delete_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_delete_association/](https://www.paws-r-sdk.com/docs/ssm_delete_association/) for full documentation.
 #'
 #' @param Name The name of the SSM document.
 #' @param InstanceId The managed node ID.
@@ -979,7 +976,7 @@ ssm_delete_association <- function(Name = NULL, InstanceId = NULL, AssociationId
 #' @description
 #' Deletes the Amazon Web Services Systems Manager document (SSM document) and all managed node associations to the document.
 #'
-#' See [https://paws-r.github.io/docs/ssm/delete_document.html](https://paws-r.github.io/docs/ssm/delete_document.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_delete_document/](https://www.paws-r-sdk.com/docs/ssm_delete_document/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the document.
 #' @param DocumentVersion The version of the document that you want to delete. If not provided,
@@ -1018,7 +1015,7 @@ ssm_delete_document <- function(Name, DocumentVersion = NULL, VersionName = NULL
 #' @description
 #' Delete a custom inventory type or the data associated with a custom Inventory type. Deleting a custom inventory type is also referred to as deleting a custom inventory schema.
 #'
-#' See [https://paws-r.github.io/docs/ssm/delete_inventory.html](https://paws-r.github.io/docs/ssm/delete_inventory.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_delete_inventory/](https://www.paws-r-sdk.com/docs/ssm_delete_inventory/) for full documentation.
 #'
 #' @param TypeName &#91;required&#93; The name of the custom inventory type for which you want to delete
 #' either all previously collected data or the inventory type itself.
@@ -1067,7 +1064,7 @@ ssm_delete_inventory <- function(TypeName, SchemaDeleteOption = NULL, DryRun = N
 #' @description
 #' Deletes a maintenance window.
 #'
-#' See [https://paws-r.github.io/docs/ssm/delete_maintenance_window.html](https://paws-r.github.io/docs/ssm/delete_maintenance_window.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_delete_maintenance_window/](https://www.paws-r-sdk.com/docs/ssm_delete_maintenance_window/) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window to delete.
 #'
@@ -1096,7 +1093,7 @@ ssm_delete_maintenance_window <- function(WindowId) {
 #' @description
 #' Delete OpsMetadata related to an application.
 #'
-#' See [https://paws-r.github.io/docs/ssm/delete_ops_metadata.html](https://paws-r.github.io/docs/ssm/delete_ops_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_delete_ops_metadata/](https://www.paws-r-sdk.com/docs/ssm_delete_ops_metadata/) for full documentation.
 #'
 #' @param OpsMetadataArn &#91;required&#93; The Amazon Resource Name (ARN) of an OpsMetadata Object to delete.
 #'
@@ -1125,7 +1122,7 @@ ssm_delete_ops_metadata <- function(OpsMetadataArn) {
 #' @description
 #' Delete a parameter from the system. After deleting a parameter, wait for at least 30 seconds to create a parameter with the same name.
 #'
-#' See [https://paws-r.github.io/docs/ssm/delete_parameter.html](https://paws-r.github.io/docs/ssm/delete_parameter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_delete_parameter/](https://www.paws-r-sdk.com/docs/ssm_delete_parameter/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the parameter to delete.
 #'
@@ -1154,7 +1151,7 @@ ssm_delete_parameter <- function(Name) {
 #' @description
 #' Delete a list of parameters. After deleting a parameter, wait for at least 30 seconds to create a parameter with the same name.
 #'
-#' See [https://paws-r.github.io/docs/ssm/delete_parameters.html](https://paws-r.github.io/docs/ssm/delete_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_delete_parameters/](https://www.paws-r-sdk.com/docs/ssm_delete_parameters/) for full documentation.
 #'
 #' @param Names &#91;required&#93; The names of the parameters to delete. After deleting a parameter, wait
 #' for at least 30 seconds to create a parameter with the same name.
@@ -1184,7 +1181,7 @@ ssm_delete_parameters <- function(Names) {
 #' @description
 #' Deletes a patch baseline.
 #'
-#' See [https://paws-r.github.io/docs/ssm/delete_patch_baseline.html](https://paws-r.github.io/docs/ssm/delete_patch_baseline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_delete_patch_baseline/](https://www.paws-r-sdk.com/docs/ssm_delete_patch_baseline/) for full documentation.
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to delete.
 #'
@@ -1213,7 +1210,7 @@ ssm_delete_patch_baseline <- function(BaselineId) {
 #' @description
 #' Deletes a resource data sync configuration. After the configuration is deleted, changes to data on managed nodes are no longer synced to or from the target. Deleting a sync configuration doesn't delete data.
 #'
-#' See [https://paws-r.github.io/docs/ssm/delete_resource_data_sync.html](https://paws-r.github.io/docs/ssm/delete_resource_data_sync.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_delete_resource_data_sync/](https://www.paws-r-sdk.com/docs/ssm_delete_resource_data_sync/) for full documentation.
 #'
 #' @param SyncName &#91;required&#93; The name of the configuration to delete.
 #' @param SyncType Specify the type of resource data sync to delete.
@@ -1243,7 +1240,7 @@ ssm_delete_resource_data_sync <- function(SyncName, SyncType = NULL) {
 #' @description
 #' Deletes a Systems Manager resource policy. A resource policy helps you to define the IAM entity (for example, an Amazon Web Services account) that can manage your Systems Manager resources. Currently, `OpsItemGroup` is the only resource that supports Systems Manager resource policies. The resource policy for `OpsItemGroup` enables Amazon Web Services accounts to view and interact with OpsCenter operational work items (OpsItems).
 #'
-#' See [https://paws-r.github.io/docs/ssm/delete_resource_policy.html](https://paws-r.github.io/docs/ssm/delete_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_delete_resource_policy/](https://www.paws-r-sdk.com/docs/ssm_delete_resource_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the resource to which the policies are
 #' attached.
@@ -1277,7 +1274,7 @@ ssm_delete_resource_policy <- function(ResourceArn, PolicyId, PolicyHash) {
 #' @description
 #' Removes the server or virtual machine from the list of registered servers. You can reregister the node again at any time. If you don't plan to use Run Command on the server, we suggest uninstalling SSM Agent first.
 #'
-#' See [https://paws-r.github.io/docs/ssm/deregister_managed_instance.html](https://paws-r.github.io/docs/ssm/deregister_managed_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_deregister_managed_instance/](https://www.paws-r-sdk.com/docs/ssm_deregister_managed_instance/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The ID assigned to the managed node when you registered it using the
 #' activation process.
@@ -1307,7 +1304,7 @@ ssm_deregister_managed_instance <- function(InstanceId) {
 #' @description
 #' Removes a patch group from a patch baseline.
 #'
-#' See [https://paws-r.github.io/docs/ssm/deregister_patch_baseline_for_patch_group.html](https://paws-r.github.io/docs/ssm/deregister_patch_baseline_for_patch_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_deregister_patch_baseline_for_patch_group/](https://www.paws-r-sdk.com/docs/ssm_deregister_patch_baseline_for_patch_group/) for full documentation.
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to deregister the patch group from.
 #' @param PatchGroup &#91;required&#93; The name of the patch group that should be deregistered from the patch
@@ -1338,7 +1335,7 @@ ssm_deregister_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup
 #' @description
 #' Removes a target from a maintenance window.
 #'
-#' See [https://paws-r.github.io/docs/ssm/deregister_target_from_maintenance_window.html](https://paws-r.github.io/docs/ssm/deregister_target_from_maintenance_window.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_deregister_target_from_maintenance_window/](https://www.paws-r-sdk.com/docs/ssm_deregister_target_from_maintenance_window/) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window the target should be removed from.
 #' @param WindowTargetId &#91;required&#93; The ID of the target definition to remove.
@@ -1371,7 +1368,7 @@ ssm_deregister_target_from_maintenance_window <- function(WindowId, WindowTarget
 #' @description
 #' Removes a task from a maintenance window.
 #'
-#' See [https://paws-r.github.io/docs/ssm/deregister_task_from_maintenance_window.html](https://paws-r.github.io/docs/ssm/deregister_task_from_maintenance_window.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_deregister_task_from_maintenance_window/](https://www.paws-r-sdk.com/docs/ssm_deregister_task_from_maintenance_window/) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window the task should be removed from.
 #' @param WindowTaskId &#91;required&#93; The ID of the task to remove from the maintenance window.
@@ -1404,7 +1401,7 @@ ssm_deregister_task_from_maintenance_window <- function(WindowId, WindowTaskId) 
 #' @description
 #' Describes details about the activation, such as the date and time the activation was created, its expiration date, the Identity and Access Management (IAM) role assigned to the managed nodes in the activation, and the number of nodes registered by using this activation.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_activations.html](https://paws-r.github.io/docs/ssm/describe_activations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_activations/](https://www.paws-r-sdk.com/docs/ssm_describe_activations/) for full documentation.
 #'
 #' @param Filters A filter to view information about your activations.
 #' @param MaxResults The maximum number of items to return for this call. The call also
@@ -1421,7 +1418,7 @@ ssm_describe_activations <- function(Filters = NULL, MaxResults = NULL, NextToke
     name = "DescribeActivations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ActivationList")
   )
   input <- .ssm$describe_activations_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_activations_output()
@@ -1438,7 +1435,7 @@ ssm_describe_activations <- function(Filters = NULL, MaxResults = NULL, NextToke
 #' @description
 #' Describes the association for the specified target or managed node. If you created the association by using the `Targets` parameter, then you must retrieve the association by using the association ID.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_association.html](https://paws-r.github.io/docs/ssm/describe_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_association/](https://www.paws-r-sdk.com/docs/ssm_describe_association/) for full documentation.
 #'
 #' @param Name The name of the SSM document.
 #' @param InstanceId The managed node ID.
@@ -1475,7 +1472,7 @@ ssm_describe_association <- function(Name = NULL, InstanceId = NULL, Association
 #' @description
 #' Views information about a specific execution of a specific association.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_association_execution_targets.html](https://paws-r.github.io/docs/ssm/describe_association_execution_targets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_association_execution_targets/](https://www.paws-r-sdk.com/docs/ssm_describe_association_execution_targets/) for full documentation.
 #'
 #' @param AssociationId &#91;required&#93; The association ID that includes the execution for which you want to
 #' view details.
@@ -1502,7 +1499,7 @@ ssm_describe_association_execution_targets <- function(AssociationId, ExecutionI
     name = "DescribeAssociationExecutionTargets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AssociationExecutionTargets")
   )
   input <- .ssm$describe_association_execution_targets_input(AssociationId = AssociationId, ExecutionId = ExecutionId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_association_execution_targets_output()
@@ -1519,7 +1516,7 @@ ssm_describe_association_execution_targets <- function(AssociationId, ExecutionI
 #' @description
 #' Views all executions for a specific association ID.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_association_executions.html](https://paws-r.github.io/docs/ssm/describe_association_executions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_association_executions/](https://www.paws-r-sdk.com/docs/ssm_describe_association_executions/) for full documentation.
 #'
 #' @param AssociationId &#91;required&#93; The association ID for which you want to view execution history details.
 #' @param Filters Filters for the request. You can specify the following filters and
@@ -1544,7 +1541,7 @@ ssm_describe_association_executions <- function(AssociationId, Filters = NULL, M
     name = "DescribeAssociationExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AssociationExecutions")
   )
   input <- .ssm$describe_association_executions_input(AssociationId = AssociationId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_association_executions_output()
@@ -1561,7 +1558,7 @@ ssm_describe_association_executions <- function(AssociationId, Filters = NULL, M
 #' @description
 #' Provides details about all active and terminated Automation executions.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_automation_executions.html](https://paws-r.github.io/docs/ssm/describe_automation_executions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_automation_executions/](https://www.paws-r-sdk.com/docs/ssm_describe_automation_executions/) for full documentation.
 #'
 #' @param Filters Filters used to limit the scope of executions that are requested.
 #' @param MaxResults The maximum number of items to return for this call. The call also
@@ -1578,7 +1575,7 @@ ssm_describe_automation_executions <- function(Filters = NULL, MaxResults = NULL
     name = "DescribeAutomationExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AutomationExecutionMetadataList")
   )
   input <- .ssm$describe_automation_executions_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_automation_executions_output()
@@ -1596,7 +1593,7 @@ ssm_describe_automation_executions <- function(Filters = NULL, MaxResults = NULL
 #' @description
 #' Information about all active and terminated step executions in an Automation workflow.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_automation_step_executions.html](https://paws-r.github.io/docs/ssm/describe_automation_step_executions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_automation_step_executions/](https://www.paws-r-sdk.com/docs/ssm_describe_automation_step_executions/) for full documentation.
 #'
 #' @param AutomationExecutionId &#91;required&#93; The Automation execution ID for which you want step execution
 #' descriptions.
@@ -1618,7 +1615,7 @@ ssm_describe_automation_step_executions <- function(AutomationExecutionId, Filte
     name = "DescribeAutomationStepExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "StepExecutions")
   )
   input <- .ssm$describe_automation_step_executions_input(AutomationExecutionId = AutomationExecutionId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults, ReverseOrder = ReverseOrder)
   output <- .ssm$describe_automation_step_executions_output()
@@ -1635,7 +1632,7 @@ ssm_describe_automation_step_executions <- function(AutomationExecutionId, Filte
 #' @description
 #' Lists all patches eligible to be included in a patch baseline.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_available_patches.html](https://paws-r.github.io/docs/ssm/describe_available_patches.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_available_patches/](https://www.paws-r-sdk.com/docs/ssm_describe_available_patches/) for full documentation.
 #'
 #' @param Filters Each element in the array is a structure containing a key-value pair.
 #' 
@@ -1739,7 +1736,7 @@ ssm_describe_available_patches <- function(Filters = NULL, MaxResults = NULL, Ne
     name = "DescribeAvailablePatches",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Patches")
   )
   input <- .ssm$describe_available_patches_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_available_patches_output()
@@ -1757,7 +1754,7 @@ ssm_describe_available_patches <- function(Filters = NULL, MaxResults = NULL, Ne
 #' @description
 #' Describes the specified Amazon Web Services Systems Manager document (SSM document).
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_document.html](https://paws-r.github.io/docs/ssm/describe_document.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_document/](https://www.paws-r-sdk.com/docs/ssm_describe_document/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the SSM document.
 #' @param DocumentVersion The document version for which you want information. Can be a specific
@@ -1792,7 +1789,7 @@ ssm_describe_document <- function(Name, DocumentVersion = NULL, VersionName = NU
 #' @description
 #' Describes the permissions for a Amazon Web Services Systems Manager document (SSM document). If you created the document, you are the owner. If a document is shared, it can either be shared privately (by specifying a user's Amazon Web Services account ID) or publicly (*All*).
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_document_permission.html](https://paws-r.github.io/docs/ssm/describe_document_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_document_permission/](https://www.paws-r-sdk.com/docs/ssm_describe_document_permission/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the document for which you are the owner.
 #' @param PermissionType &#91;required&#93; The permission type for the document. The permission type can be
@@ -1828,7 +1825,7 @@ ssm_describe_document_permission <- function(Name, PermissionType, MaxResults = 
 #' @description
 #' All associations for the managed node(s).
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_effective_instance_associations.html](https://paws-r.github.io/docs/ssm/describe_effective_instance_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_effective_instance_associations/](https://www.paws-r-sdk.com/docs/ssm_describe_effective_instance_associations/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The managed node ID for which you want to view all associations.
 #' @param MaxResults The maximum number of items to return for this call. The call also
@@ -1845,7 +1842,7 @@ ssm_describe_effective_instance_associations <- function(InstanceId, MaxResults 
     name = "DescribeEffectiveInstanceAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations")
   )
   input <- .ssm$describe_effective_instance_associations_input(InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_effective_instance_associations_output()
@@ -1863,7 +1860,7 @@ ssm_describe_effective_instance_associations <- function(InstanceId, MaxResults 
 #' @description
 #' Retrieves the current effective patches (the patch and the approval state) for the specified patch baseline. Applies to patch baselines for Windows only.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_effective_patches_for_patch_baseline.html](https://paws-r.github.io/docs/ssm/describe_effective_patches_for_patch_baseline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_effective_patches_for_patch_baseline/](https://www.paws-r-sdk.com/docs/ssm_describe_effective_patches_for_patch_baseline/) for full documentation.
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to retrieve the effective patches for.
 #' @param MaxResults The maximum number of patches to return (per page).
@@ -1878,7 +1875,7 @@ ssm_describe_effective_patches_for_patch_baseline <- function(BaselineId, MaxRes
     name = "DescribeEffectivePatchesForPatchBaseline",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "EffectivePatches")
   )
   input <- .ssm$describe_effective_patches_for_patch_baseline_input(BaselineId = BaselineId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_effective_patches_for_patch_baseline_output()
@@ -1895,7 +1892,7 @@ ssm_describe_effective_patches_for_patch_baseline <- function(BaselineId, MaxRes
 #' @description
 #' The status of the associations for the managed node(s).
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_instance_associations_status.html](https://paws-r.github.io/docs/ssm/describe_instance_associations_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_instance_associations_status/](https://www.paws-r-sdk.com/docs/ssm_describe_instance_associations_status/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The managed node IDs for which you want association status information.
 #' @param MaxResults The maximum number of items to return for this call. The call also
@@ -1912,7 +1909,7 @@ ssm_describe_instance_associations_status <- function(InstanceId, MaxResults = N
     name = "DescribeInstanceAssociationsStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceAssociationStatusInfos")
   )
   input <- .ssm$describe_instance_associations_status_input(InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_instance_associations_status_output()
@@ -1924,14 +1921,14 @@ ssm_describe_instance_associations_status <- function(InstanceId, MaxResults = N
 }
 .ssm$operations$describe_instance_associations_status <- ssm_describe_instance_associations_status
 
-#' Describes one or more of your managed nodes, including information about
-#' the operating system platform, the version of SSM Agent installed on the
-#' managed node, node status, and so on
+#' Provides information about one or more of your managed nodes, including
+#' the operating system platform, SSM Agent version, association status,
+#' and IP address
 #'
 #' @description
-#' Describes one or more of your managed nodes, including information about the operating system platform, the version of SSM Agent installed on the managed node, node status, and so on.
+#' Provides information about one or more of your managed nodes, including the operating system platform, SSM Agent version, association status, and IP address. This operation does not return information for nodes that are either Stopped or Terminated.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_instance_information.html](https://paws-r.github.io/docs/ssm/describe_instance_information.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_instance_information/](https://www.paws-r-sdk.com/docs/ssm_describe_instance_information/) for full documentation.
 #'
 #' @param InstanceInformationFilterList This is a legacy method. We recommend that you don't use this method.
 #' Instead, use the `Filters` data type. `Filters` enables you to return
@@ -1941,11 +1938,12 @@ ssm_describe_instance_associations_status <- function(InstanceId, MaxResults = N
 #' an exception error.
 #' @param Filters One or more filters. Use a filter to return a more specific list of
 #' managed nodes. You can filter based on tags applied to your managed
-#' nodes. Use this `Filters` data type instead of
-#' `InstanceInformationFilterList`, which is deprecated.
+#' nodes. Tag filters can't be combined with other filter types. Use this
+#' `Filters` data type instead of `InstanceInformationFilterList`, which is
+#' deprecated.
 #' @param MaxResults The maximum number of items to return for this call. The call also
 #' returns a token that you can specify in a subsequent call to get the
-#' next set of results.
+#' next set of results. The default value is 10 items.
 #' @param NextToken The token for the next set of items to return. (You received this token
 #' from a previous call.)
 #'
@@ -1957,7 +1955,7 @@ ssm_describe_instance_information <- function(InstanceInformationFilterList = NU
     name = "DescribeInstanceInformation",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstanceInformationList")
   )
   input <- .ssm$describe_instance_information_input(InstanceInformationFilterList = InstanceInformationFilterList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_instance_information_output()
@@ -1974,7 +1972,7 @@ ssm_describe_instance_information <- function(InstanceInformationFilterList = NU
 #' @description
 #' Retrieves the high-level patch state of one or more managed nodes.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_instance_patch_states.html](https://paws-r.github.io/docs/ssm/describe_instance_patch_states.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_instance_patch_states/](https://www.paws-r-sdk.com/docs/ssm_describe_instance_patch_states/) for full documentation.
 #'
 #' @param InstanceIds &#91;required&#93; The ID of the managed node for which patch state information should be
 #' retrieved.
@@ -1990,7 +1988,7 @@ ssm_describe_instance_patch_states <- function(InstanceIds, NextToken = NULL, Ma
     name = "DescribeInstancePatchStates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstancePatchStates")
   )
   input <- .ssm$describe_instance_patch_states_input(InstanceIds = InstanceIds, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$describe_instance_patch_states_output()
@@ -2008,7 +2006,7 @@ ssm_describe_instance_patch_states <- function(InstanceIds, NextToken = NULL, Ma
 #' @description
 #' Retrieves the high-level patch state for the managed nodes in the specified patch group.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_instance_patch_states_for_patch_group.html](https://paws-r.github.io/docs/ssm/describe_instance_patch_states_for_patch_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_instance_patch_states_for_patch_group/](https://www.paws-r-sdk.com/docs/ssm_describe_instance_patch_states_for_patch_group/) for full documentation.
 #'
 #' @param PatchGroup &#91;required&#93; The name of the patch group for which the patch state information should
 #' be retrieved.
@@ -2031,7 +2029,7 @@ ssm_describe_instance_patch_states_for_patch_group <- function(PatchGroup, Filte
     name = "DescribeInstancePatchStatesForPatchGroup",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InstancePatchStates")
   )
   input <- .ssm$describe_instance_patch_states_for_patch_group_input(PatchGroup = PatchGroup, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$describe_instance_patch_states_for_patch_group_output()
@@ -2049,7 +2047,7 @@ ssm_describe_instance_patch_states_for_patch_group <- function(PatchGroup, Filte
 #' @description
 #' Retrieves information about the patches on the specified managed node and their state relative to the patch baseline being used for the node.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_instance_patches.html](https://paws-r.github.io/docs/ssm/describe_instance_patches.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_instance_patches/](https://www.paws-r-sdk.com/docs/ssm_describe_instance_patches/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The ID of the managed node whose patch state information should be
 #' retrieved.
@@ -2087,7 +2085,7 @@ ssm_describe_instance_patches <- function(InstanceId, Filters = NULL, NextToken 
     name = "DescribeInstancePatches",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Patches")
   )
   input <- .ssm$describe_instance_patches_input(InstanceId = InstanceId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$describe_instance_patches_output()
@@ -2104,7 +2102,7 @@ ssm_describe_instance_patches <- function(InstanceId, Filters = NULL, NextToken 
 #' @description
 #' Describes a specific delete inventory operation.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_inventory_deletions.html](https://paws-r.github.io/docs/ssm/describe_inventory_deletions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_inventory_deletions/](https://www.paws-r-sdk.com/docs/ssm_describe_inventory_deletions/) for full documentation.
 #'
 #' @param DeletionId Specify the delete inventory ID for which you want information. This ID
 #' was returned by the [`delete_inventory`][ssm_delete_inventory]
@@ -2123,7 +2121,7 @@ ssm_describe_inventory_deletions <- function(DeletionId = NULL, NextToken = NULL
     name = "DescribeInventoryDeletions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "InventoryDeletions")
   )
   input <- .ssm$describe_inventory_deletions_input(DeletionId = DeletionId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$describe_inventory_deletions_output()
@@ -2141,7 +2139,7 @@ ssm_describe_inventory_deletions <- function(DeletionId = NULL, NextToken = NULL
 #' @description
 #' Retrieves the individual task executions (one per target) for a particular task run as part of a maintenance window execution.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_maintenance_window_execution_task_invocations.html](https://paws-r.github.io/docs/ssm/describe_maintenance_window_execution_task_invocations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_execution_task_invocations/](https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_execution_task_invocations/) for full documentation.
 #'
 #' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution the task is part of.
 #' @param TaskId &#91;required&#93; The ID of the specific task in the maintenance window task that should
@@ -2164,7 +2162,7 @@ ssm_describe_maintenance_window_execution_task_invocations <- function(WindowExe
     name = "DescribeMaintenanceWindowExecutionTaskInvocations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowExecutionTaskInvocationIdentities")
   )
   input <- .ssm$describe_maintenance_window_execution_task_invocations_input(WindowExecutionId = WindowExecutionId, TaskId = TaskId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_execution_task_invocations_output()
@@ -2181,7 +2179,7 @@ ssm_describe_maintenance_window_execution_task_invocations <- function(WindowExe
 #' @description
 #' For a given maintenance window execution, lists the tasks that were run.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_maintenance_window_execution_tasks.html](https://paws-r.github.io/docs/ssm/describe_maintenance_window_execution_tasks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_execution_tasks/](https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_execution_tasks/) for full documentation.
 #'
 #' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution whose task executions should
 #' be retrieved.
@@ -2203,7 +2201,7 @@ ssm_describe_maintenance_window_execution_tasks <- function(WindowExecutionId, F
     name = "DescribeMaintenanceWindowExecutionTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowExecutionTaskIdentities")
   )
   input <- .ssm$describe_maintenance_window_execution_tasks_input(WindowExecutionId = WindowExecutionId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_execution_tasks_output()
@@ -2220,7 +2218,7 @@ ssm_describe_maintenance_window_execution_tasks <- function(WindowExecutionId, F
 #' @description
 #' Lists the executions of a maintenance window. This includes information about when the maintenance window was scheduled to be active, and information about tasks registered and run with the maintenance window.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_maintenance_window_executions.html](https://paws-r.github.io/docs/ssm/describe_maintenance_window_executions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_executions/](https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_executions/) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window whose executions should be retrieved.
 #' @param Filters Each entry in the array is a structure containing:
@@ -2245,7 +2243,7 @@ ssm_describe_maintenance_window_executions <- function(WindowId, Filters = NULL,
     name = "DescribeMaintenanceWindowExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowExecutions")
   )
   input <- .ssm$describe_maintenance_window_executions_input(WindowId = WindowId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_executions_output()
@@ -2262,7 +2260,7 @@ ssm_describe_maintenance_window_executions <- function(WindowId, Filters = NULL,
 #' @description
 #' Retrieves information about upcoming executions of a maintenance window.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_maintenance_window_schedule.html](https://paws-r.github.io/docs/ssm/describe_maintenance_window_schedule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_schedule/](https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_schedule/) for full documentation.
 #'
 #' @param WindowId The ID of the maintenance window to retrieve information about.
 #' @param Targets The managed node ID or key-value pair to retrieve information about.
@@ -2285,7 +2283,7 @@ ssm_describe_maintenance_window_schedule <- function(WindowId = NULL, Targets = 
     name = "DescribeMaintenanceWindowSchedule",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledWindowExecutions")
   )
   input <- .ssm$describe_maintenance_window_schedule_input(WindowId = WindowId, Targets = Targets, ResourceType = ResourceType, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_schedule_output()
@@ -2302,7 +2300,7 @@ ssm_describe_maintenance_window_schedule <- function(WindowId = NULL, Targets = 
 #' @description
 #' Lists the targets registered with the maintenance window.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_maintenance_window_targets.html](https://paws-r.github.io/docs/ssm/describe_maintenance_window_targets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_targets/](https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_targets/) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window whose targets should be retrieved.
 #' @param Filters Optional filters that can be used to narrow down the scope of the
@@ -2322,7 +2320,7 @@ ssm_describe_maintenance_window_targets <- function(WindowId, Filters = NULL, Ma
     name = "DescribeMaintenanceWindowTargets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Targets")
   )
   input <- .ssm$describe_maintenance_window_targets_input(WindowId = WindowId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_targets_output()
@@ -2339,7 +2337,7 @@ ssm_describe_maintenance_window_targets <- function(WindowId, Filters = NULL, Ma
 #' @description
 #' Lists the tasks in a maintenance window.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_maintenance_window_tasks.html](https://paws-r.github.io/docs/ssm/describe_maintenance_window_tasks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_tasks/](https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_tasks/) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window whose tasks should be retrieved.
 #' @param Filters Optional filters used to narrow down the scope of the returned tasks.
@@ -2359,7 +2357,7 @@ ssm_describe_maintenance_window_tasks <- function(WindowId, Filters = NULL, MaxR
     name = "DescribeMaintenanceWindowTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tasks")
   )
   input <- .ssm$describe_maintenance_window_tasks_input(WindowId = WindowId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_window_tasks_output()
@@ -2376,7 +2374,7 @@ ssm_describe_maintenance_window_tasks <- function(WindowId, Filters = NULL, MaxR
 #' @description
 #' Retrieves the maintenance windows in an Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_maintenance_windows.html](https://paws-r.github.io/docs/ssm/describe_maintenance_windows.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_windows/](https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_windows/) for full documentation.
 #'
 #' @param Filters Optional filters used to narrow down the scope of the returned
 #' maintenance windows. Supported filter keys are `Name` and `Enabled`. For
@@ -2395,7 +2393,7 @@ ssm_describe_maintenance_windows <- function(Filters = NULL, MaxResults = NULL, 
     name = "DescribeMaintenanceWindows",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowIdentities")
   )
   input <- .ssm$describe_maintenance_windows_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_windows_output()
@@ -2413,7 +2411,7 @@ ssm_describe_maintenance_windows <- function(Filters = NULL, MaxResults = NULL, 
 #' @description
 #' Retrieves information about the maintenance window targets or tasks that a managed node is associated with.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_maintenance_windows_for_target.html](https://paws-r.github.io/docs/ssm/describe_maintenance_windows_for_target.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_windows_for_target/](https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_windows_for_target/) for full documentation.
 #'
 #' @param Targets &#91;required&#93; The managed node ID or key-value pair to retrieve information about.
 #' @param ResourceType &#91;required&#93; The type of resource you want to retrieve information about. For
@@ -2432,7 +2430,7 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
     name = "DescribeMaintenanceWindowsForTarget",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "WindowIdentities")
   )
   input <- .ssm$describe_maintenance_windows_for_target_input(Targets = Targets, ResourceType = ResourceType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_maintenance_windows_for_target_output()
@@ -2447,9 +2445,9 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' Query a set of OpsItems
 #'
 #' @description
-#' Query a set of OpsItems. You must have permission in Identity and Access Management (IAM) to query a list of OpsItems. For more information, see [Getting started with OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/) in the *Amazon Web Services Systems Manager User Guide*.
+#' Query a set of OpsItems. You must have permission in Identity and Access Management (IAM) to query a list of OpsItems. For more information, see [Set up OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html) in the *Amazon Web Services Systems Manager User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_ops_items.html](https://paws-r.github.io/docs/ssm/describe_ops_items.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_ops_items/](https://www.paws-r-sdk.com/docs/ssm_describe_ops_items/) for full documentation.
 #'
 #' @param OpsItemFilters One or more filters to limit the response.
 #' 
@@ -2505,6 +2503,10 @@ ssm_describe_maintenance_windows_for_target <- function(Targets, ResourceType, M
 #' 
 #'     Operations: Equals
 #' 
+#' -   Key: AccountId
+#' 
+#'     Operations: Equals
+#' 
 #' *The Equals operator for Title matches the first 100 characters. If you
 #' specify more than 100 characters, they system returns an error that the
 #' filter value exceeds the length limit.
@@ -2526,7 +2528,7 @@ ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, Nex
     name = "DescribeOpsItems",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "OpsItemSummaries")
   )
   input <- .ssm$describe_ops_items_input(OpsItemFilters = OpsItemFilters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_ops_items_output()
@@ -2543,7 +2545,7 @@ ssm_describe_ops_items <- function(OpsItemFilters = NULL, MaxResults = NULL, Nex
 #' @description
 #' Get information about a parameter.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_parameters.html](https://paws-r.github.io/docs/ssm/describe_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_parameters/](https://www.paws-r-sdk.com/docs/ssm_describe_parameters/) for full documentation.
 #'
 #' @param Filters This data type is deprecated. Instead, use `ParameterFilters`.
 #' @param ParameterFilters Filters to limit the request results.
@@ -2561,7 +2563,7 @@ ssm_describe_parameters <- function(Filters = NULL, ParameterFilters = NULL, Max
     name = "DescribeParameters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .ssm$describe_parameters_input(Filters = Filters, ParameterFilters = ParameterFilters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_parameters_output()
@@ -2578,7 +2580,7 @@ ssm_describe_parameters <- function(Filters = NULL, ParameterFilters = NULL, Max
 #' @description
 #' Lists the patch baselines in your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_patch_baselines.html](https://paws-r.github.io/docs/ssm/describe_patch_baselines.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_patch_baselines/](https://www.paws-r-sdk.com/docs/ssm_describe_patch_baselines/) for full documentation.
 #'
 #' @param Filters Each element in the array is a structure containing a key-value pair.
 #' 
@@ -2609,7 +2611,7 @@ ssm_describe_patch_baselines <- function(Filters = NULL, MaxResults = NULL, Next
     name = "DescribePatchBaselines",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "BaselineIdentities")
   )
   input <- .ssm$describe_patch_baselines_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_patch_baselines_output()
@@ -2627,7 +2629,7 @@ ssm_describe_patch_baselines <- function(Filters = NULL, MaxResults = NULL, Next
 #' @description
 #' Returns high-level aggregated patch compliance state information for a patch group.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_patch_group_state.html](https://paws-r.github.io/docs/ssm/describe_patch_group_state.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_patch_group_state/](https://www.paws-r-sdk.com/docs/ssm_describe_patch_group_state/) for full documentation.
 #'
 #' @param PatchGroup &#91;required&#93; The name of the patch group whose patch snapshot should be retrieved.
 #'
@@ -2656,7 +2658,7 @@ ssm_describe_patch_group_state <- function(PatchGroup) {
 #' @description
 #' Lists all patch groups that have been registered with patch baselines.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_patch_groups.html](https://paws-r.github.io/docs/ssm/describe_patch_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_patch_groups/](https://www.paws-r-sdk.com/docs/ssm_describe_patch_groups/) for full documentation.
 #'
 #' @param MaxResults The maximum number of patch groups to return (per page).
 #' @param Filters Each element in the array is a structure containing a key-value pair.
@@ -2682,7 +2684,7 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
     name = "DescribePatchGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Mappings")
   )
   input <- .ssm$describe_patch_groups_input(MaxResults = MaxResults, Filters = Filters, NextToken = NextToken)
   output <- .ssm$describe_patch_groups_output()
@@ -2701,7 +2703,7 @@ ssm_describe_patch_groups <- function(MaxResults = NULL, Filters = NULL, NextTok
 #' @description
 #' Lists the properties of available patches organized by product, product family, classification, severity, and other properties of available patches. You can use the reported properties in the filters you specify in requests for operations such as [`create_patch_baseline`][ssm_create_patch_baseline], [`update_patch_baseline`][ssm_update_patch_baseline], [`describe_available_patches`][ssm_describe_available_patches], and [`describe_patch_baselines`][ssm_describe_patch_baselines].
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_patch_properties.html](https://paws-r.github.io/docs/ssm/describe_patch_properties.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_patch_properties/](https://www.paws-r-sdk.com/docs/ssm_describe_patch_properties/) for full documentation.
 #'
 #' @param OperatingSystem &#91;required&#93; The operating system type for which to list patches.
 #' @param Property &#91;required&#93; The patch property for which you want to view patch details.
@@ -2722,7 +2724,7 @@ ssm_describe_patch_properties <- function(OperatingSystem, Property, PatchSet = 
     name = "DescribePatchProperties",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Properties")
   )
   input <- .ssm$describe_patch_properties_input(OperatingSystem = OperatingSystem, Property = Property, PatchSet = PatchSet, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$describe_patch_properties_output()
@@ -2740,7 +2742,7 @@ ssm_describe_patch_properties <- function(OperatingSystem, Property, PatchSet = 
 #' @description
 #' Retrieves a list of all active sessions (both connected and disconnected) or terminated sessions from the past 30 days.
 #'
-#' See [https://paws-r.github.io/docs/ssm/describe_sessions.html](https://paws-r.github.io/docs/ssm/describe_sessions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_describe_sessions/](https://www.paws-r-sdk.com/docs/ssm_describe_sessions/) for full documentation.
 #'
 #' @param State &#91;required&#93; The session status to retrieve a list of sessions for. For example,
 #' "Active".
@@ -2760,7 +2762,7 @@ ssm_describe_sessions <- function(State, MaxResults = NULL, NextToken = NULL, Fi
     name = "DescribeSessions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Sessions")
   )
   input <- .ssm$describe_sessions_input(State = State, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .ssm$describe_sessions_output()
@@ -2777,7 +2779,7 @@ ssm_describe_sessions <- function(State, MaxResults = NULL, NextToken = NULL, Fi
 #' @description
 #' Deletes the association between an OpsItem and a related item. For example, this API operation can delete an Incident Manager incident from an OpsItem. Incident Manager is a capability of Amazon Web Services Systems Manager.
 #'
-#' See [https://paws-r.github.io/docs/ssm/disassociate_ops_item_related_item.html](https://paws-r.github.io/docs/ssm/disassociate_ops_item_related_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_disassociate_ops_item_related_item/](https://www.paws-r-sdk.com/docs/ssm_disassociate_ops_item_related_item/) for full documentation.
 #'
 #' @param OpsItemId &#91;required&#93; The ID of the OpsItem for which you want to delete an association
 #' between the OpsItem and a related item.
@@ -2809,7 +2811,7 @@ ssm_disassociate_ops_item_related_item <- function(OpsItemId, AssociationId) {
 #' @description
 #' Get detailed information about a particular Automation execution.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_automation_execution.html](https://paws-r.github.io/docs/ssm/get_automation_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_automation_execution/](https://www.paws-r-sdk.com/docs/ssm_get_automation_execution/) for full documentation.
 #'
 #' @param AutomationExecutionId &#91;required&#93; The unique identifier for an existing automation execution to examine.
 #' The execution ID is returned by StartAutomationExecution when the
@@ -2841,7 +2843,7 @@ ssm_get_automation_execution <- function(AutomationExecutionId) {
 #' @description
 #' Gets the state of a Amazon Web Services Systems Manager change calendar at the current time or a specified time. If you specify a time, [`get_calendar_state`][ssm_get_calendar_state] returns the state of the calendar at that specific time, and returns the next time that the change calendar state will transition. If you don't specify a time, [`get_calendar_state`][ssm_get_calendar_state] uses the current time. Change Calendar entries have two possible states: `OPEN` or `CLOSED`.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_calendar_state.html](https://paws-r.github.io/docs/ssm/get_calendar_state.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_calendar_state/](https://www.paws-r-sdk.com/docs/ssm_get_calendar_state/) for full documentation.
 #'
 #' @param CalendarNames &#91;required&#93; The names or Amazon Resource Names (ARNs) of the Systems Manager
 #' documents (SSM documents) that represent the calendar entries for which
@@ -2877,7 +2879,7 @@ ssm_get_calendar_state <- function(CalendarNames, AtTime = NULL) {
 #' @description
 #' Returns detailed information about command execution for an invocation or plugin.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_command_invocation.html](https://paws-r.github.io/docs/ssm/get_command_invocation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_command_invocation/](https://www.paws-r-sdk.com/docs/ssm_get_command_invocation/) for full documentation.
 #'
 #' @param CommandId &#91;required&#93; (Required) The parent command ID of the invocation plugin.
 #' @param InstanceId &#91;required&#93; (Required) The ID of the managed node targeted by the command. A
@@ -2924,7 +2926,7 @@ ssm_get_command_invocation <- function(CommandId, InstanceId, PluginName = NULL)
 #' @description
 #' Retrieves the Session Manager connection status for a managed node to determine whether it is running and ready to receive Session Manager connections.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_connection_status.html](https://paws-r.github.io/docs/ssm/get_connection_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_connection_status/](https://www.paws-r-sdk.com/docs/ssm_get_connection_status/) for full documentation.
 #'
 #' @param Target &#91;required&#93; The managed node ID.
 #'
@@ -2953,7 +2955,7 @@ ssm_get_connection_status <- function(Target) {
 #' @description
 #' Retrieves the default patch baseline. Amazon Web Services Systems Manager supports creating multiple default patch baselines. For example, you can create a default patch baseline for each operating system.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_default_patch_baseline.html](https://paws-r.github.io/docs/ssm/get_default_patch_baseline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_default_patch_baseline/](https://www.paws-r-sdk.com/docs/ssm_get_default_patch_baseline/) for full documentation.
 #'
 #' @param OperatingSystem Returns the default patch baseline for the specified operating system.
 #'
@@ -2983,7 +2985,7 @@ ssm_get_default_patch_baseline <- function(OperatingSystem = NULL) {
 #' @description
 #' Retrieves the current snapshot for the patch baseline the managed node uses. This API is primarily used by the `AWS-RunPatchBaseline` Systems Manager document (SSM document).
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_deployable_patch_snapshot_for_instance.html](https://paws-r.github.io/docs/ssm/get_deployable_patch_snapshot_for_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_deployable_patch_snapshot_for_instance/](https://www.paws-r-sdk.com/docs/ssm_get_deployable_patch_snapshot_for_instance/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The ID of the managed node for which the appropriate patch snapshot
 #' should be retrieved.
@@ -3017,7 +3019,7 @@ ssm_get_deployable_patch_snapshot_for_instance <- function(InstanceId, SnapshotI
 #' @description
 #' Gets the contents of the specified Amazon Web Services Systems Manager document (SSM document).
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_document.html](https://paws-r.github.io/docs/ssm/get_document.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_document/](https://www.paws-r-sdk.com/docs/ssm_get_document/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the SSM document.
 #' @param VersionName An optional field specifying the version of the artifact associated with
@@ -3052,7 +3054,7 @@ ssm_get_document <- function(Name, VersionName = NULL, DocumentVersion = NULL, D
 #' @description
 #' Query inventory information. This includes managed node status, such as `Stopped` or `Terminated`.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_inventory.html](https://paws-r.github.io/docs/ssm/get_inventory.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_inventory/](https://www.paws-r-sdk.com/docs/ssm_get_inventory/) for full documentation.
 #'
 #' @param Filters One or more filters. Use a filter to return a more specific list of
 #' results.
@@ -3075,7 +3077,7 @@ ssm_get_inventory <- function(Filters = NULL, Aggregators = NULL, ResultAttribut
     name = "GetInventory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Entities")
   )
   input <- .ssm$get_inventory_input(Filters = Filters, Aggregators = Aggregators, ResultAttributes = ResultAttributes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$get_inventory_output()
@@ -3093,7 +3095,7 @@ ssm_get_inventory <- function(Filters = NULL, Aggregators = NULL, ResultAttribut
 #' @description
 #' Return a list of inventory type names for the account, or return a list of attribute names for a specific Inventory item type.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_inventory_schema.html](https://paws-r.github.io/docs/ssm/get_inventory_schema.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_inventory_schema/](https://www.paws-r-sdk.com/docs/ssm_get_inventory_schema/) for full documentation.
 #'
 #' @param TypeName The type of inventory item to return.
 #' @param NextToken The token for the next set of items to return. (You received this token
@@ -3115,7 +3117,7 @@ ssm_get_inventory_schema <- function(TypeName = NULL, NextToken = NULL, MaxResul
     name = "GetInventorySchema",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Schemas")
   )
   input <- .ssm$get_inventory_schema_input(TypeName = TypeName, NextToken = NextToken, MaxResults = MaxResults, Aggregator = Aggregator, SubType = SubType)
   output <- .ssm$get_inventory_schema_output()
@@ -3132,7 +3134,7 @@ ssm_get_inventory_schema <- function(TypeName = NULL, NextToken = NULL, MaxResul
 #' @description
 #' Retrieves a maintenance window.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_maintenance_window.html](https://paws-r.github.io/docs/ssm/get_maintenance_window.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_maintenance_window/](https://www.paws-r-sdk.com/docs/ssm_get_maintenance_window/) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window for which you want to retrieve
 #' information.
@@ -3162,7 +3164,7 @@ ssm_get_maintenance_window <- function(WindowId) {
 #' @description
 #' Retrieves details about a specific a maintenance window execution.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_maintenance_window_execution.html](https://paws-r.github.io/docs/ssm/get_maintenance_window_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_maintenance_window_execution/](https://www.paws-r-sdk.com/docs/ssm_get_maintenance_window_execution/) for full documentation.
 #'
 #' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution that includes the task.
 #'
@@ -3192,7 +3194,7 @@ ssm_get_maintenance_window_execution <- function(WindowExecutionId) {
 #' @description
 #' Retrieves the details about a specific task run as part of a maintenance window execution.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_maintenance_window_execution_task.html](https://paws-r.github.io/docs/ssm/get_maintenance_window_execution_task.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_maintenance_window_execution_task/](https://www.paws-r-sdk.com/docs/ssm_get_maintenance_window_execution_task/) for full documentation.
 #'
 #' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution that includes the task.
 #' @param TaskId &#91;required&#93; The ID of the specific task execution in the maintenance window task
@@ -3223,7 +3225,7 @@ ssm_get_maintenance_window_execution_task <- function(WindowExecutionId, TaskId)
 #' @description
 #' Retrieves information about a specific task running on a specific target.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_maintenance_window_execution_task_invocation.html](https://paws-r.github.io/docs/ssm/get_maintenance_window_execution_task_invocation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_maintenance_window_execution_task_invocation/](https://www.paws-r-sdk.com/docs/ssm_get_maintenance_window_execution_task_invocation/) for full documentation.
 #'
 #' @param WindowExecutionId &#91;required&#93; The ID of the maintenance window execution for which the task is a part.
 #' @param TaskId &#91;required&#93; The ID of the specific task in the maintenance window task that should
@@ -3255,7 +3257,7 @@ ssm_get_maintenance_window_execution_task_invocation <- function(WindowExecution
 #' @description
 #' Retrieves the details of a maintenance window task.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_maintenance_window_task.html](https://paws-r.github.io/docs/ssm/get_maintenance_window_task.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_maintenance_window_task/](https://www.paws-r-sdk.com/docs/ssm_get_maintenance_window_task/) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The maintenance window ID that includes the task to retrieve.
 #' @param WindowTaskId &#91;required&#93; The maintenance window task ID to retrieve.
@@ -3283,9 +3285,9 @@ ssm_get_maintenance_window_task <- function(WindowId, WindowTaskId) {
 #' Get information about an OpsItem by using the ID
 #'
 #' @description
-#' Get information about an OpsItem by using the ID. You must have permission in Identity and Access Management (IAM) to view information about an OpsItem. For more information, see [Getting started with OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/) in the *Amazon Web Services Systems Manager User Guide*.
+#' Get information about an OpsItem by using the ID. You must have permission in Identity and Access Management (IAM) to view information about an OpsItem. For more information, see [Set up OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html) in the *Amazon Web Services Systems Manager User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_ops_item.html](https://paws-r.github.io/docs/ssm/get_ops_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_ops_item/](https://www.paws-r-sdk.com/docs/ssm_get_ops_item/) for full documentation.
 #'
 #' @param OpsItemId &#91;required&#93; The ID of the OpsItem that you want to get.
 #' @param OpsItemArn The OpsItem Amazon Resource Name (ARN).
@@ -3316,7 +3318,7 @@ ssm_get_ops_item <- function(OpsItemId, OpsItemArn = NULL) {
 #' @description
 #' View operational metadata related to an application in Application Manager.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_ops_metadata.html](https://paws-r.github.io/docs/ssm/get_ops_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_ops_metadata/](https://www.paws-r-sdk.com/docs/ssm_get_ops_metadata/) for full documentation.
 #'
 #' @param OpsMetadataArn &#91;required&#93; The Amazon Resource Name (ARN) of an OpsMetadata Object to view.
 #' @param MaxResults The maximum number of items to return for this call. The call also
@@ -3351,7 +3353,7 @@ ssm_get_ops_metadata <- function(OpsMetadataArn, MaxResults = NULL, NextToken = 
 #' @description
 #' View a summary of operations metadata (OpsData) based on specified filters and aggregators. OpsData can include information about Amazon Web Services Systems Manager OpsCenter operational workitems (OpsItems) as well as information about any Amazon Web Services resource or service configured to report OpsData to Amazon Web Services Systems Manager Explorer.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_ops_summary.html](https://paws-r.github.io/docs/ssm/get_ops_summary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_ops_summary/](https://www.paws-r-sdk.com/docs/ssm_get_ops_summary/) for full documentation.
 #'
 #' @param SyncName Specify the name of a resource data sync to get.
 #' @param Filters Optional filters used to scope down the returned OpsData.
@@ -3372,7 +3374,7 @@ ssm_get_ops_summary <- function(SyncName = NULL, Filters = NULL, Aggregators = N
     name = "GetOpsSummary",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Entities")
   )
   input <- .ssm$get_ops_summary_input(SyncName = SyncName, Filters = Filters, Aggregators = Aggregators, ResultAttributes = ResultAttributes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$get_ops_summary_output()
@@ -3390,7 +3392,7 @@ ssm_get_ops_summary <- function(SyncName = NULL, Filters = NULL, Aggregators = N
 #' @description
 #' Get information about a single parameter by specifying the parameter name.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_parameter.html](https://paws-r.github.io/docs/ssm/get_parameter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_parameter/](https://www.paws-r-sdk.com/docs/ssm_get_parameter/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the parameter you want to query.
 #' 
@@ -3424,7 +3426,7 @@ ssm_get_parameter <- function(Name, WithDecryption = NULL) {
 #' @description
 #' Retrieves the history of all changes to a parameter.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_parameter_history.html](https://paws-r.github.io/docs/ssm/get_parameter_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_parameter_history/](https://www.paws-r-sdk.com/docs/ssm_get_parameter_history/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the parameter for which you want to review history.
 #' @param WithDecryption Return decrypted values for secure string parameters. This flag is
@@ -3443,7 +3445,7 @@ ssm_get_parameter_history <- function(Name, WithDecryption = NULL, MaxResults = 
     name = "GetParameterHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .ssm$get_parameter_history_input(Name = Name, WithDecryption = WithDecryption, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$get_parameter_history_output()
@@ -3461,7 +3463,7 @@ ssm_get_parameter_history <- function(Name, WithDecryption = NULL, MaxResults = 
 #' @description
 #' Get information about one or more parameters by specifying multiple parameter names.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_parameters.html](https://paws-r.github.io/docs/ssm/get_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_parameters/](https://www.paws-r-sdk.com/docs/ssm_get_parameters/) for full documentation.
 #'
 #' @param Names &#91;required&#93; Names of the parameters for which you want to query information.
 #' 
@@ -3497,7 +3499,7 @@ ssm_get_parameters <- function(Names, WithDecryption = NULL) {
 #' @description
 #' Retrieve information about one or more parameters in a specific hierarchy.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_parameters_by_path.html](https://paws-r.github.io/docs/ssm/get_parameters_by_path.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_parameters_by_path/](https://www.paws-r-sdk.com/docs/ssm_get_parameters_by_path/) for full documentation.
 #'
 #' @param Path &#91;required&#93; The hierarchy for the parameter. Hierarchies start with a forward slash
 #' (/). The hierarchy is the parameter name except the last part of the
@@ -3536,7 +3538,7 @@ ssm_get_parameters_by_path <- function(Path, Recursive = NULL, ParameterFilters 
     name = "GetParametersByPath",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .ssm$get_parameters_by_path_input(Path = Path, Recursive = Recursive, ParameterFilters = ParameterFilters, WithDecryption = WithDecryption, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$get_parameters_by_path_output()
@@ -3553,7 +3555,7 @@ ssm_get_parameters_by_path <- function(Path, Recursive = NULL, ParameterFilters 
 #' @description
 #' Retrieves information about a patch baseline.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_patch_baseline.html](https://paws-r.github.io/docs/ssm/get_patch_baseline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_patch_baseline/](https://www.paws-r-sdk.com/docs/ssm_get_patch_baseline/) for full documentation.
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to retrieve.
 #' 
@@ -3590,7 +3592,7 @@ ssm_get_patch_baseline <- function(BaselineId) {
 #' @description
 #' Retrieves the patch baseline that should be used for the specified patch group.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_patch_baseline_for_patch_group.html](https://paws-r.github.io/docs/ssm/get_patch_baseline_for_patch_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_patch_baseline_for_patch_group/](https://www.paws-r-sdk.com/docs/ssm_get_patch_baseline_for_patch_group/) for full documentation.
 #'
 #' @param PatchGroup &#91;required&#93; The name of the patch group whose patch baseline should be retrieved.
 #' @param OperatingSystem Returns the operating system rule specified for patch groups using the
@@ -3621,7 +3623,7 @@ ssm_get_patch_baseline_for_patch_group <- function(PatchGroup, OperatingSystem =
 #' @description
 #' Returns an array of the `Policy` object.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_resource_policies.html](https://paws-r.github.io/docs/ssm/get_resource_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_resource_policies/](https://www.paws-r-sdk.com/docs/ssm_get_resource_policies/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the resource to which the policies are
 #' attached.
@@ -3639,7 +3641,7 @@ ssm_get_resource_policies <- function(ResourceArn, NextToken = NULL, MaxResults 
     name = "GetResourcePolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Policies")
   )
   input <- .ssm$get_resource_policies_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$get_resource_policies_output()
@@ -3657,7 +3659,7 @@ ssm_get_resource_policies <- function(ResourceArn, NextToken = NULL, MaxResults 
 #' @description
 #' `ServiceSetting` is an account-level setting for an Amazon Web Services service. This setting defines how a user interacts with or uses a service or a feature of a service. For example, if an Amazon Web Services service charges money to the account based on feature or service usage, then the Amazon Web Services service team might create a default setting of `false`. This means the user can't use this feature unless they change the setting to `true` and intentionally opt in for a paid feature.
 #'
-#' See [https://paws-r.github.io/docs/ssm/get_service_setting.html](https://paws-r.github.io/docs/ssm/get_service_setting.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_get_service_setting/](https://www.paws-r-sdk.com/docs/ssm_get_service_setting/) for full documentation.
 #'
 #' @param SettingId &#91;required&#93; The ID of the service setting to get. The setting ID can be one of the
 #' following.
@@ -3704,7 +3706,7 @@ ssm_get_service_setting <- function(SettingId) {
 #' @description
 #' A parameter label is a user-defined alias to help you manage different versions of a parameter. When you modify a parameter, Amazon Web Services Systems Manager automatically saves a new version and increments the version number by one. A label can help you remember the purpose of a parameter when there are multiple versions.
 #'
-#' See [https://paws-r.github.io/docs/ssm/label_parameter_version.html](https://paws-r.github.io/docs/ssm/label_parameter_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_label_parameter_version/](https://www.paws-r-sdk.com/docs/ssm_label_parameter_version/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The parameter name on which you want to attach one or more labels.
 #' @param ParameterVersion The specific version of the parameter on which you want to attach one or
@@ -3737,7 +3739,7 @@ ssm_label_parameter_version <- function(Name, ParameterVersion = NULL, Labels) {
 #' @description
 #' Retrieves all versions of an association for a specific association ID.
 #'
-#' See [https://paws-r.github.io/docs/ssm/list_association_versions.html](https://paws-r.github.io/docs/ssm/list_association_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_association_versions/](https://www.paws-r-sdk.com/docs/ssm_list_association_versions/) for full documentation.
 #'
 #' @param AssociationId &#91;required&#93; The association ID for which you want to view all versions.
 #' @param MaxResults The maximum number of items to return for this call. The call also
@@ -3754,7 +3756,7 @@ ssm_list_association_versions <- function(AssociationId, MaxResults = NULL, Next
     name = "ListAssociationVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AssociationVersions")
   )
   input <- .ssm$list_association_versions_input(AssociationId = AssociationId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_association_versions_output()
@@ -3772,7 +3774,7 @@ ssm_list_association_versions <- function(AssociationId, MaxResults = NULL, Next
 #' @description
 #' Returns all State Manager associations in the current Amazon Web Services account and Amazon Web Services Region. You can limit the results to a specific State Manager association document or managed node by specifying a filter. State Manager is a capability of Amazon Web Services Systems Manager.
 #'
-#' See [https://paws-r.github.io/docs/ssm/list_associations.html](https://paws-r.github.io/docs/ssm/list_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_associations/](https://www.paws-r-sdk.com/docs/ssm_list_associations/) for full documentation.
 #'
 #' @param AssociationFilterList One or more filters. Use a filter to return a more specific list of
 #' results.
@@ -3795,7 +3797,7 @@ ssm_list_associations <- function(AssociationFilterList = NULL, MaxResults = NUL
     name = "ListAssociations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Associations")
   )
   input <- .ssm$list_associations_input(AssociationFilterList = AssociationFilterList, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_associations_output()
@@ -3812,7 +3814,7 @@ ssm_list_associations <- function(AssociationFilterList = NULL, MaxResults = NUL
 #' @description
 #' An invocation is copy of a command sent to a specific managed node. A command can apply to one or more managed nodes. A command invocation applies to one managed node. For example, if a user runs [`send_command`][ssm_send_command] against three managed nodes, then a command invocation is created for each requested managed node ID. [`list_command_invocations`][ssm_list_command_invocations] provide status about command execution.
 #'
-#' See [https://paws-r.github.io/docs/ssm/list_command_invocations.html](https://paws-r.github.io/docs/ssm/list_command_invocations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_command_invocations/](https://www.paws-r-sdk.com/docs/ssm_list_command_invocations/) for full documentation.
 #'
 #' @param CommandId (Optional) The invocations for a specific command ID.
 #' @param InstanceId (Optional) The command execution details for a specific managed node ID.
@@ -3834,7 +3836,7 @@ ssm_list_command_invocations <- function(CommandId = NULL, InstanceId = NULL, Ma
     name = "ListCommandInvocations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CommandInvocations")
   )
   input <- .ssm$list_command_invocations_input(CommandId = CommandId, InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters, Details = Details)
   output <- .ssm$list_command_invocations_output()
@@ -3851,7 +3853,7 @@ ssm_list_command_invocations <- function(CommandId = NULL, InstanceId = NULL, Ma
 #' @description
 #' Lists the commands requested by users of the Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/ssm/list_commands.html](https://paws-r.github.io/docs/ssm/list_commands.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_commands/](https://www.paws-r-sdk.com/docs/ssm_list_commands/) for full documentation.
 #'
 #' @param CommandId (Optional) If provided, lists only the specified command.
 #' @param InstanceId (Optional) Lists commands issued against this managed node ID.
@@ -3875,7 +3877,7 @@ ssm_list_commands <- function(CommandId = NULL, InstanceId = NULL, MaxResults = 
     name = "ListCommands",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Commands")
   )
   input <- .ssm$list_commands_input(CommandId = CommandId, InstanceId = InstanceId, MaxResults = MaxResults, NextToken = NextToken, Filters = Filters)
   output <- .ssm$list_commands_output()
@@ -3893,7 +3895,7 @@ ssm_list_commands <- function(CommandId = NULL, InstanceId = NULL, MaxResults = 
 #' @description
 #' For a specified resource ID, this API operation returns a list of compliance statuses for different resource types. Currently, you can only specify one resource ID per call. List results depend on the criteria specified in the filter.
 #'
-#' See [https://paws-r.github.io/docs/ssm/list_compliance_items.html](https://paws-r.github.io/docs/ssm/list_compliance_items.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_compliance_items/](https://www.paws-r-sdk.com/docs/ssm_list_compliance_items/) for full documentation.
 #'
 #' @param Filters One or more compliance filters. Use a filter to return a more specific
 #' list of results.
@@ -3915,7 +3917,7 @@ ssm_list_compliance_items <- function(Filters = NULL, ResourceIds = NULL, Resour
     name = "ListComplianceItems",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ComplianceItems")
   )
   input <- .ssm$list_compliance_items_input(Filters = Filters, ResourceIds = ResourceIds, ResourceTypes = ResourceTypes, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$list_compliance_items_output()
@@ -3933,7 +3935,7 @@ ssm_list_compliance_items <- function(Filters = NULL, ResourceIds = NULL, Resour
 #' @description
 #' Returns a summary count of compliant and non-compliant resources for a compliance type. For example, this call can return State Manager associations, patches, or custom compliance types according to the filter criteria that you specify.
 #'
-#' See [https://paws-r.github.io/docs/ssm/list_compliance_summaries.html](https://paws-r.github.io/docs/ssm/list_compliance_summaries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_compliance_summaries/](https://www.paws-r-sdk.com/docs/ssm_list_compliance_summaries/) for full documentation.
 #'
 #' @param Filters One or more compliance or inventory filters. Use a filter to return a
 #' more specific list of results.
@@ -3951,7 +3953,7 @@ ssm_list_compliance_summaries <- function(Filters = NULL, NextToken = NULL, MaxR
     name = "ListComplianceSummaries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ComplianceSummaryItems")
   )
   input <- .ssm$list_compliance_summaries_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$list_compliance_summaries_output()
@@ -3969,7 +3971,7 @@ ssm_list_compliance_summaries <- function(Filters = NULL, NextToken = NULL, MaxR
 #' @description
 #' Information about approval reviews for a version of a change template in Change Manager.
 #'
-#' See [https://paws-r.github.io/docs/ssm/list_document_metadata_history.html](https://paws-r.github.io/docs/ssm/list_document_metadata_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_document_metadata_history/](https://www.paws-r-sdk.com/docs/ssm_list_document_metadata_history/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the change template.
 #' @param DocumentVersion The version of the change template.
@@ -4006,7 +4008,7 @@ ssm_list_document_metadata_history <- function(Name, DocumentVersion = NULL, Met
 #' @description
 #' List all versions for a document.
 #'
-#' See [https://paws-r.github.io/docs/ssm/list_document_versions.html](https://paws-r.github.io/docs/ssm/list_document_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_document_versions/](https://www.paws-r-sdk.com/docs/ssm_list_document_versions/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the document. You can specify an Amazon Resource Name (ARN).
 #' @param MaxResults The maximum number of items to return for this call. The call also
@@ -4023,7 +4025,7 @@ ssm_list_document_versions <- function(Name, MaxResults = NULL, NextToken = NULL
     name = "ListDocumentVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DocumentVersions")
   )
   input <- .ssm$list_document_versions_input(Name = Name, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_document_versions_output()
@@ -4041,7 +4043,7 @@ ssm_list_document_versions <- function(Name, MaxResults = NULL, NextToken = NULL
 #' @description
 #' Returns all Systems Manager (SSM) documents in the current Amazon Web Services account and Amazon Web Services Region. You can limit the results of this request by using a filter.
 #'
-#' See [https://paws-r.github.io/docs/ssm/list_documents.html](https://paws-r.github.io/docs/ssm/list_documents.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_documents/](https://www.paws-r-sdk.com/docs/ssm_list_documents/) for full documentation.
 #'
 #' @param DocumentFilterList This data type is deprecated. Instead, use `Filters`.
 #' @param Filters One or more `DocumentKeyValuesFilter` objects. Use a filter to return a
@@ -4069,7 +4071,7 @@ ssm_list_documents <- function(DocumentFilterList = NULL, Filters = NULL, MaxRes
     name = "ListDocuments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DocumentIdentifiers")
   )
   input <- .ssm$list_documents_input(DocumentFilterList = DocumentFilterList, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_documents_output()
@@ -4086,7 +4088,7 @@ ssm_list_documents <- function(DocumentFilterList = NULL, Filters = NULL, MaxRes
 #' @description
 #' A list of inventory items returned by the request.
 #'
-#' See [https://paws-r.github.io/docs/ssm/list_inventory_entries.html](https://paws-r.github.io/docs/ssm/list_inventory_entries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_inventory_entries/](https://www.paws-r-sdk.com/docs/ssm_list_inventory_entries/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The managed node ID for which you want inventory information.
 #' @param TypeName &#91;required&#93; The type of inventory item for which you want information.
@@ -4124,7 +4126,7 @@ ssm_list_inventory_entries <- function(InstanceId, TypeName, Filters = NULL, Nex
 #' @description
 #' Returns a list of all OpsItem events in the current Amazon Web Services Region and Amazon Web Services account. You can limit the results to events associated with specific OpsItems by specifying a filter.
 #'
-#' See [https://paws-r.github.io/docs/ssm/list_ops_item_events.html](https://paws-r.github.io/docs/ssm/list_ops_item_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_ops_item_events/](https://www.paws-r-sdk.com/docs/ssm_list_ops_item_events/) for full documentation.
 #'
 #' @param Filters One or more OpsItem filters. Use a filter to return a more specific list
 #' of results.
@@ -4142,7 +4144,7 @@ ssm_list_ops_item_events <- function(Filters = NULL, MaxResults = NULL, NextToke
     name = "ListOpsItemEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .ssm$list_ops_item_events_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_ops_item_events_output()
@@ -4160,7 +4162,7 @@ ssm_list_ops_item_events <- function(Filters = NULL, MaxResults = NULL, NextToke
 #' @description
 #' Lists all related-item resources associated with a Systems Manager OpsCenter OpsItem. OpsCenter is a capability of Amazon Web Services Systems Manager.
 #'
-#' See [https://paws-r.github.io/docs/ssm/list_ops_item_related_items.html](https://paws-r.github.io/docs/ssm/list_ops_item_related_items.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_ops_item_related_items/](https://www.paws-r-sdk.com/docs/ssm_list_ops_item_related_items/) for full documentation.
 #'
 #' @param OpsItemId The ID of the OpsItem for which you want to list all related-item
 #' resources.
@@ -4180,7 +4182,7 @@ ssm_list_ops_item_related_items <- function(OpsItemId = NULL, Filters = NULL, Ma
     name = "ListOpsItemRelatedItems",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .ssm$list_ops_item_related_items_input(OpsItemId = OpsItemId, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_ops_item_related_items_output()
@@ -4198,7 +4200,7 @@ ssm_list_ops_item_related_items <- function(OpsItemId = NULL, Filters = NULL, Ma
 #' @description
 #' Amazon Web Services Systems Manager calls this API operation when displaying all Application Manager OpsMetadata objects or blobs.
 #'
-#' See [https://paws-r.github.io/docs/ssm/list_ops_metadata.html](https://paws-r.github.io/docs/ssm/list_ops_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_ops_metadata/](https://www.paws-r-sdk.com/docs/ssm_list_ops_metadata/) for full documentation.
 #'
 #' @param Filters One or more filters to limit the number of OpsMetadata objects returned
 #' by the call.
@@ -4216,7 +4218,7 @@ ssm_list_ops_metadata <- function(Filters = NULL, MaxResults = NULL, NextToken =
     name = "ListOpsMetadata",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "OpsMetadataList")
   )
   input <- .ssm$list_ops_metadata_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .ssm$list_ops_metadata_output()
@@ -4233,7 +4235,7 @@ ssm_list_ops_metadata <- function(Filters = NULL, MaxResults = NULL, NextToken =
 #' @description
 #' Returns a resource-level summary count. The summary includes information about compliant and non-compliant statuses and detailed compliance-item severity counts, according to the filter criteria you specify.
 #'
-#' See [https://paws-r.github.io/docs/ssm/list_resource_compliance_summaries.html](https://paws-r.github.io/docs/ssm/list_resource_compliance_summaries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_resource_compliance_summaries/](https://www.paws-r-sdk.com/docs/ssm_list_resource_compliance_summaries/) for full documentation.
 #'
 #' @param Filters One or more filters. Use a filter to return a more specific list of
 #' results.
@@ -4251,7 +4253,7 @@ ssm_list_resource_compliance_summaries <- function(Filters = NULL, NextToken = N
     name = "ListResourceComplianceSummaries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceComplianceSummaryItems")
   )
   input <- .ssm$list_resource_compliance_summaries_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$list_resource_compliance_summaries_output()
@@ -4268,7 +4270,7 @@ ssm_list_resource_compliance_summaries <- function(Filters = NULL, NextToken = N
 #' @description
 #' Lists your resource data sync configurations. Includes information about the last time a sync attempted to start, the last sync status, and the last time a sync successfully completed.
 #'
-#' See [https://paws-r.github.io/docs/ssm/list_resource_data_sync.html](https://paws-r.github.io/docs/ssm/list_resource_data_sync.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_resource_data_sync/](https://www.paws-r-sdk.com/docs/ssm_list_resource_data_sync/) for full documentation.
 #'
 #' @param SyncType View a list of resource data syncs according to the sync type. Specify
 #' `SyncToDestination` to view resource data syncs that synchronize data to
@@ -4288,7 +4290,7 @@ ssm_list_resource_data_sync <- function(SyncType = NULL, NextToken = NULL, MaxRe
     name = "ListResourceDataSync",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceDataSyncItems")
   )
   input <- .ssm$list_resource_data_sync_input(SyncType = SyncType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .ssm$list_resource_data_sync_output()
@@ -4305,7 +4307,7 @@ ssm_list_resource_data_sync <- function(SyncType = NULL, NextToken = NULL, MaxRe
 #' @description
 #' Returns a list of the tags assigned to the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/ssm/list_tags_for_resource.html](https://paws-r.github.io/docs/ssm/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/ssm_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; Returns a list of tags for a specific resource type.
 #' @param ResourceId &#91;required&#93; The resource ID for which you want to see a list of tags.
@@ -4336,7 +4338,7 @@ ssm_list_tags_for_resource <- function(ResourceType, ResourceId) {
 #' @description
 #' Shares a Amazon Web Services Systems Manager document (SSM document)publicly or privately. If you share a document privately, you must specify the Amazon Web Services user IDs for those people who can use the document. If you share a document publicly, you must specify *All* as the account ID.
 #'
-#' See [https://paws-r.github.io/docs/ssm/modify_document_permission.html](https://paws-r.github.io/docs/ssm/modify_document_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_modify_document_permission/](https://www.paws-r-sdk.com/docs/ssm_modify_document_permission/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the document that you want to share.
 #' @param PermissionType &#91;required&#93; The permission type for the document. The permission type can be
@@ -4377,7 +4379,7 @@ ssm_modify_document_permission <- function(Name, PermissionType, AccountIdsToAdd
 #' @description
 #' Registers a compliance type and other compliance details on a designated resource. This operation lets you register custom compliance details with a resource. This call overwrites existing compliance information on the resource, so you must provide a full list of compliance items each time that you send the request.
 #'
-#' See [https://paws-r.github.io/docs/ssm/put_compliance_items.html](https://paws-r.github.io/docs/ssm/put_compliance_items.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_put_compliance_items/](https://www.paws-r-sdk.com/docs/ssm_put_compliance_items/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; Specify an ID for this resource. For a managed node, this is the node
 #' ID.
@@ -4432,7 +4434,7 @@ ssm_put_compliance_items <- function(ResourceId, ResourceType, ComplianceType, E
 #' @description
 #' Bulk update custom inventory items on one or more managed nodes. The request adds an inventory item, if it doesn't already exist, or updates an inventory item, if it does exist.
 #'
-#' See [https://paws-r.github.io/docs/ssm/put_inventory.html](https://paws-r.github.io/docs/ssm/put_inventory.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_put_inventory/](https://www.paws-r-sdk.com/docs/ssm_put_inventory/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; An managed node ID where you want to add or update inventory items.
 #' @param Items &#91;required&#93; The inventory items that you want to add or update on managed nodes.
@@ -4462,7 +4464,7 @@ ssm_put_inventory <- function(InstanceId, Items) {
 #' @description
 #' Add a parameter to the system.
 #'
-#' See [https://paws-r.github.io/docs/ssm/put_parameter.html](https://paws-r.github.io/docs/ssm/put_parameter.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_put_parameter/](https://www.paws-r-sdk.com/docs/ssm_put_parameter/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The fully qualified name of the parameter that you want to add to the
 #' system. The fully qualified name includes the complete hierarchy of the
@@ -4706,7 +4708,7 @@ ssm_put_parameter <- function(Name, Description = NULL, Value, Type = NULL, KeyI
 #' @description
 #' Creates or updates a Systems Manager resource policy. A resource policy helps you to define the IAM entity (for example, an Amazon Web Services account) that can manage your Systems Manager resources. Currently, `OpsItemGroup` is the only resource that supports Systems Manager resource policies. The resource policy for `OpsItemGroup` enables Amazon Web Services accounts to view and interact with OpsCenter operational work items (OpsItems).
 #'
-#' See [https://paws-r.github.io/docs/ssm/put_resource_policy.html](https://paws-r.github.io/docs/ssm/put_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_put_resource_policy/](https://www.paws-r-sdk.com/docs/ssm_put_resource_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the resource to which you want to attach a
 #' policy.
@@ -4741,7 +4743,7 @@ ssm_put_resource_policy <- function(ResourceArn, Policy, PolicyId = NULL, Policy
 #' @description
 #' Defines the default patch baseline for the relevant operating system.
 #'
-#' See [https://paws-r.github.io/docs/ssm/register_default_patch_baseline.html](https://paws-r.github.io/docs/ssm/register_default_patch_baseline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_register_default_patch_baseline/](https://www.paws-r-sdk.com/docs/ssm_register_default_patch_baseline/) for full documentation.
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline that should be the default patch baseline.
 #'
@@ -4770,7 +4772,7 @@ ssm_register_default_patch_baseline <- function(BaselineId) {
 #' @description
 #' Registers a patch baseline for a patch group.
 #'
-#' See [https://paws-r.github.io/docs/ssm/register_patch_baseline_for_patch_group.html](https://paws-r.github.io/docs/ssm/register_patch_baseline_for_patch_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_register_patch_baseline_for_patch_group/](https://www.paws-r-sdk.com/docs/ssm_register_patch_baseline_for_patch_group/) for full documentation.
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to register with the patch group.
 #' @param PatchGroup &#91;required&#93; The name of the patch group to be registered with the patch baseline.
@@ -4800,7 +4802,7 @@ ssm_register_patch_baseline_for_patch_group <- function(BaselineId, PatchGroup) 
 #' @description
 #' Registers a target with a maintenance window.
 #'
-#' See [https://paws-r.github.io/docs/ssm/register_target_with_maintenance_window.html](https://paws-r.github.io/docs/ssm/register_target_with_maintenance_window.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_register_target_with_maintenance_window/](https://www.paws-r-sdk.com/docs/ssm_register_target_with_maintenance_window/) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window the target should be registered with.
 #' @param ResourceType &#91;required&#93; The type of target being registered with the maintenance window.
@@ -4877,7 +4879,7 @@ ssm_register_target_with_maintenance_window <- function(WindowId, ResourceType, 
 #' @description
 #' Adds a new task to a maintenance window.
 #'
-#' See [https://paws-r.github.io/docs/ssm/register_task_with_maintenance_window.html](https://paws-r.github.io/docs/ssm/register_task_with_maintenance_window.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_register_task_with_maintenance_window/](https://www.paws-r-sdk.com/docs/ssm_register_task_with_maintenance_window/) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window the task should be added to.
 #' @param Targets The targets (either managed nodes or maintenance window targets).
@@ -5010,7 +5012,7 @@ ssm_register_task_with_maintenance_window <- function(WindowId, Targets = NULL, 
 #' @description
 #' Removes tag keys from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/ssm/remove_tags_from_resource.html](https://paws-r.github.io/docs/ssm/remove_tags_from_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_remove_tags_from_resource/](https://www.paws-r-sdk.com/docs/ssm_remove_tags_from_resource/) for full documentation.
 #'
 #' @param ResourceType &#91;required&#93; The type of resource from which you want to remove a tag.
 #' 
@@ -5068,7 +5070,7 @@ ssm_remove_tags_from_resource <- function(ResourceType, ResourceId, TagKeys) {
 #' @description
 #' `ServiceSetting` is an account-level setting for an Amazon Web Services service. This setting defines how a user interacts with or uses a service or a feature of a service. For example, if an Amazon Web Services service charges money to the account based on feature or service usage, then the Amazon Web Services service team might create a default setting of "false". This means the user can't use this feature unless they change the setting to "true" and intentionally opt in for a paid feature.
 #'
-#' See [https://paws-r.github.io/docs/ssm/reset_service_setting.html](https://paws-r.github.io/docs/ssm/reset_service_setting.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_reset_service_setting/](https://www.paws-r-sdk.com/docs/ssm_reset_service_setting/) for full documentation.
 #'
 #' @param SettingId &#91;required&#93; The Amazon Resource Name (ARN) of the service setting to reset. The
 #' setting ID can be one of the following.
@@ -5114,7 +5116,7 @@ ssm_reset_service_setting <- function(SettingId) {
 #' @description
 #' Reconnects a session to a managed node after it has been disconnected. Connections can be resumed for disconnected sessions, but not terminated sessions.
 #'
-#' See [https://paws-r.github.io/docs/ssm/resume_session.html](https://paws-r.github.io/docs/ssm/resume_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_resume_session/](https://www.paws-r-sdk.com/docs/ssm_resume_session/) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The ID of the disconnected session to resume.
 #'
@@ -5144,7 +5146,7 @@ ssm_resume_session <- function(SessionId) {
 #' @description
 #' Sends a signal to an Automation execution to change the current behavior or status of the execution.
 #'
-#' See [https://paws-r.github.io/docs/ssm/send_automation_signal.html](https://paws-r.github.io/docs/ssm/send_automation_signal.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_send_automation_signal/](https://www.paws-r-sdk.com/docs/ssm_send_automation_signal/) for full documentation.
 #'
 #' @param AutomationExecutionId &#91;required&#93; The unique identifier for an existing Automation execution that you want
 #' to send the signal to.
@@ -5192,7 +5194,7 @@ ssm_send_automation_signal <- function(AutomationExecutionId, SignalType, Payloa
 #' @description
 #' Runs commands on one or more managed nodes.
 #'
-#' See [https://paws-r.github.io/docs/ssm/send_command.html](https://paws-r.github.io/docs/ssm/send_command.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_send_command/](https://www.paws-r-sdk.com/docs/ssm_send_command/) for full documentation.
 #'
 #' @param InstanceIds The IDs of the managed nodes where the command should run. Specifying
 #' managed node IDs is most useful when you are targeting a limited number
@@ -5317,7 +5319,7 @@ ssm_send_command <- function(InstanceIds = NULL, Targets = NULL, DocumentName, D
 #' @description
 #' Runs an association immediately and only one time. This operation can be helpful when troubleshooting associations.
 #'
-#' See [https://paws-r.github.io/docs/ssm/start_associations_once.html](https://paws-r.github.io/docs/ssm/start_associations_once.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_start_associations_once/](https://www.paws-r-sdk.com/docs/ssm_start_associations_once/) for full documentation.
 #'
 #' @param AssociationIds &#91;required&#93; The association IDs that you want to run immediately and only one time.
 #'
@@ -5346,7 +5348,7 @@ ssm_start_associations_once <- function(AssociationIds) {
 #' @description
 #' Initiates execution of an Automation runbook.
 #'
-#' See [https://paws-r.github.io/docs/ssm/start_automation_execution.html](https://paws-r.github.io/docs/ssm/start_automation_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_start_automation_execution/](https://www.paws-r-sdk.com/docs/ssm_start_automation_execution/) for full documentation.
 #'
 #' @param DocumentName &#91;required&#93; The name of the SSM document to run. This can be a public document or a
 #' custom document. To run a shared document belonging to another account,
@@ -5433,7 +5435,7 @@ ssm_start_automation_execution <- function(DocumentName, DocumentVersion = NULL,
 #' @description
 #' Creates a change request for Change Manager. The Automation runbooks specified in the change request run only after all required approvals for the change request have been received.
 #'
-#' See [https://paws-r.github.io/docs/ssm/start_change_request_execution.html](https://paws-r.github.io/docs/ssm/start_change_request_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_start_change_request_execution/](https://www.paws-r-sdk.com/docs/ssm_start_change_request_execution/) for full documentation.
 #'
 #' @param ScheduledTime The date and time specified in the change request to run the Automation
 #' runbooks.
@@ -5511,7 +5513,7 @@ ssm_start_change_request_execution <- function(ScheduledTime = NULL, DocumentNam
 #' @description
 #' Initiates a connection to a target (for example, a managed node) for a Session Manager session. Returns a URL and token that can be used to open a WebSocket connection for sending input and receiving outputs.
 #'
-#' See [https://paws-r.github.io/docs/ssm/start_session.html](https://paws-r.github.io/docs/ssm/start_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_start_session/](https://www.paws-r-sdk.com/docs/ssm_start_session/) for full documentation.
 #'
 #' @param Target &#91;required&#93; The managed node to connect to for the session.
 #' @param DocumentName The name of the SSM document you want to use to define the type of
@@ -5554,7 +5556,7 @@ ssm_start_session <- function(Target, DocumentName = NULL, Reason = NULL, Parame
 #' @description
 #' Stop an Automation that is currently running.
 #'
-#' See [https://paws-r.github.io/docs/ssm/stop_automation_execution.html](https://paws-r.github.io/docs/ssm/stop_automation_execution.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_stop_automation_execution/](https://www.paws-r-sdk.com/docs/ssm_stop_automation_execution/) for full documentation.
 #'
 #' @param AutomationExecutionId &#91;required&#93; The execution ID of the Automation to stop.
 #' @param Type The stop request type. Valid types include the following: Cancel and
@@ -5586,7 +5588,7 @@ ssm_stop_automation_execution <- function(AutomationExecutionId, Type = NULL) {
 #' @description
 #' Permanently ends a session and closes the data connection between the Session Manager client and SSM Agent on the managed node. A terminated session can't be resumed.
 #'
-#' See [https://paws-r.github.io/docs/ssm/terminate_session.html](https://paws-r.github.io/docs/ssm/terminate_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_terminate_session/](https://www.paws-r-sdk.com/docs/ssm_terminate_session/) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; The ID of the session to terminate.
 #'
@@ -5615,7 +5617,7 @@ ssm_terminate_session <- function(SessionId) {
 #' @description
 #' Remove a label or labels from a parameter.
 #'
-#' See [https://paws-r.github.io/docs/ssm/unlabel_parameter_version.html](https://paws-r.github.io/docs/ssm/unlabel_parameter_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_unlabel_parameter_version/](https://www.paws-r-sdk.com/docs/ssm_unlabel_parameter_version/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the parameter from which you want to delete one or more
 #' labels.
@@ -5648,7 +5650,7 @@ ssm_unlabel_parameter_version <- function(Name, ParameterVersion, Labels) {
 #' @description
 #' Updates an association. You can update the association name and version, the document version, schedule, parameters, and Amazon Simple Storage Service (Amazon S3) output. When you call [`update_association`][ssm_update_association], the system removes all optional parameters from the request and overwrites the association with null values for those parameters. This is by design. You must specify all optional parameters in the call, even if you are not changing the parameters. This includes the `Name` parameter. Before calling this API action, we recommend that you call the [`describe_association`][ssm_describe_association] API operation and make a note of all optional parameters required for your [`update_association`][ssm_update_association] call.
 #'
-#' See [https://paws-r.github.io/docs/ssm/update_association.html](https://paws-r.github.io/docs/ssm/update_association.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_update_association/](https://www.paws-r-sdk.com/docs/ssm_update_association/) for full documentation.
 #'
 #' @param AssociationId &#91;required&#93; The ID of the association you want to update.
 #' @param Parameters The parameters you want to update for the association. If you create a
@@ -5810,7 +5812,7 @@ ssm_update_association <- function(AssociationId, Parameters = NULL, DocumentVer
 #' @description
 #' Updates the status of the Amazon Web Services Systems Manager document (SSM document) associated with the specified managed node.
 #'
-#' See [https://paws-r.github.io/docs/ssm/update_association_status.html](https://paws-r.github.io/docs/ssm/update_association_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_update_association_status/](https://www.paws-r-sdk.com/docs/ssm_update_association_status/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the SSM document.
 #' @param InstanceId &#91;required&#93; The managed node ID.
@@ -5841,7 +5843,7 @@ ssm_update_association_status <- function(Name, InstanceId, AssociationStatus) {
 #' @description
 #' Updates one or more values for an SSM document.
 #'
-#' See [https://paws-r.github.io/docs/ssm/update_document.html](https://paws-r.github.io/docs/ssm/update_document.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_update_document/](https://www.paws-r-sdk.com/docs/ssm_update_document/) for full documentation.
 #'
 #' @param Content &#91;required&#93; A valid JSON or YAML string.
 #' @param Attachments A list of key-value pairs that describe attachments to a version of a
@@ -5891,7 +5893,7 @@ ssm_update_document <- function(Content, Attachments = NULL, Name, DisplayName =
 #' @description
 #' Set the default version of a document.
 #'
-#' See [https://paws-r.github.io/docs/ssm/update_document_default_version.html](https://paws-r.github.io/docs/ssm/update_document_default_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_update_document_default_version/](https://www.paws-r-sdk.com/docs/ssm_update_document_default_version/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of a custom document that you want to set as the default
 #' version.
@@ -5924,7 +5926,7 @@ ssm_update_document_default_version <- function(Name, DocumentVersion) {
 #' @description
 #' Updates information related to approval reviews for a specific version of a change template in Change Manager.
 #'
-#' See [https://paws-r.github.io/docs/ssm/update_document_metadata.html](https://paws-r.github.io/docs/ssm/update_document_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_update_document_metadata/](https://www.paws-r-sdk.com/docs/ssm_update_document_metadata/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the change template for which a version's metadata is to be
 #' updated.
@@ -5956,7 +5958,7 @@ ssm_update_document_metadata <- function(Name, DocumentVersion = NULL, DocumentR
 #' @description
 #' Updates an existing maintenance window. Only specified parameters are modified.
 #'
-#' See [https://paws-r.github.io/docs/ssm/update_maintenance_window.html](https://paws-r.github.io/docs/ssm/update_maintenance_window.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_update_maintenance_window/](https://www.paws-r-sdk.com/docs/ssm_update_maintenance_window/) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The ID of the maintenance window to update.
 #' @param Name The name of the maintenance window.
@@ -6021,7 +6023,7 @@ ssm_update_maintenance_window <- function(WindowId, Name = NULL, Description = N
 #' @description
 #' Modifies the target of an existing maintenance window. You can change the following:
 #'
-#' See [https://paws-r.github.io/docs/ssm/update_maintenance_window_target.html](https://paws-r.github.io/docs/ssm/update_maintenance_window_target.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_update_maintenance_window_target/](https://www.paws-r-sdk.com/docs/ssm_update_maintenance_window_target/) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The maintenance window ID with which to modify the target.
 #' @param WindowTargetId &#91;required&#93; The target ID to modify.
@@ -6061,7 +6063,7 @@ ssm_update_maintenance_window_target <- function(WindowId, WindowTargetId, Targe
 #' @description
 #' Modifies a task assigned to a maintenance window. You can't change the task type, but you can change the following values:
 #'
-#' See [https://paws-r.github.io/docs/ssm/update_maintenance_window_task.html](https://paws-r.github.io/docs/ssm/update_maintenance_window_task.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_update_maintenance_window_task/](https://www.paws-r-sdk.com/docs/ssm_update_maintenance_window_task/) for full documentation.
 #'
 #' @param WindowId &#91;required&#93; The maintenance window ID that contains the task to modify.
 #' @param WindowTaskId &#91;required&#93; The task ID to modify.
@@ -6207,7 +6209,7 @@ ssm_update_maintenance_window_task <- function(WindowId, WindowTaskId, Targets =
 #' @description
 #' Changes the Identity and Access Management (IAM) role that is assigned to the on-premises server, edge device, or virtual machines (VM). IAM roles are first assigned to these hybrid nodes during the activation process. For more information, see [`create_activation`][ssm_create_activation].
 #'
-#' See [https://paws-r.github.io/docs/ssm/update_managed_instance_role.html](https://paws-r.github.io/docs/ssm/update_managed_instance_role.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_update_managed_instance_role/](https://www.paws-r-sdk.com/docs/ssm_update_managed_instance_role/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The ID of the managed node where you want to update the role.
 #' @param IamRole &#91;required&#93; The name of the Identity and Access Management (IAM) role that you want
@@ -6244,9 +6246,9 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' Edit or change an OpsItem
 #'
 #' @description
-#' Edit or change an OpsItem. You must have permission in Identity and Access Management (IAM) to update an OpsItem. For more information, see [Getting started with OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/) in the *Amazon Web Services Systems Manager User Guide*.
+#' Edit or change an OpsItem. You must have permission in Identity and Access Management (IAM) to update an OpsItem. For more information, see [Set up OpsCenter](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html) in the *Amazon Web Services Systems Manager User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ssm/update_ops_item.html](https://paws-r.github.io/docs/ssm/update_ops_item.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_update_ops_item/](https://www.paws-r-sdk.com/docs/ssm_update_ops_item/) for full documentation.
 #'
 #' @param Description Update the information about the OpsItem. Provide enough information so
 #' that users reading this OpsItem for the first time understand the issue.
@@ -6275,7 +6277,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' OperationalData to associate an Automation runbook with the OpsItem. To
 #' view Amazon Web Services CLI example commands that use these keys, see
 #' [Creating OpsItems
-#' manually](https://docs.aws.amazon.com/systems-manager/latest/userguide/#OpsCenter-manually-create-OpsItems)
+#' manually](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-manually-create-OpsItems.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param OperationalDataToDelete Keys that you want to remove from the OperationalData map.
 #' @param Notifications The Amazon Resource Name (ARN) of an SNS topic where notifications are
@@ -6288,7 +6290,7 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #' resource.
 #' @param Status The OpsItem status. Status can be `Open`, `In Progress`, or `Resolved`.
 #' For more information, see [Editing OpsItem
-#' details](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems.html#OpsCenter-working-with-OpsItems-editing-details)
+#' details](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-working-with-OpsItems-editing-details.html)
 #' in the *Amazon Web Services Systems Manager User Guide*.
 #' @param OpsItemId &#91;required&#93; The ID of the OpsItem.
 #' @param Title A short heading that describes the nature of the OpsItem and the
@@ -6331,7 +6333,7 @@ ssm_update_ops_item <- function(Description = NULL, OperationalData = NULL, Oper
 #' @description
 #' Amazon Web Services Systems Manager calls this API operation when you edit OpsMetadata in Application Manager.
 #'
-#' See [https://paws-r.github.io/docs/ssm/update_ops_metadata.html](https://paws-r.github.io/docs/ssm/update_ops_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_update_ops_metadata/](https://www.paws-r-sdk.com/docs/ssm_update_ops_metadata/) for full documentation.
 #'
 #' @param OpsMetadataArn &#91;required&#93; The Amazon Resource Name (ARN) of the OpsMetadata Object to update.
 #' @param MetadataToUpdate Metadata to add to an OpsMetadata object.
@@ -6362,7 +6364,7 @@ ssm_update_ops_metadata <- function(OpsMetadataArn, MetadataToUpdate = NULL, Key
 #' @description
 #' Modifies an existing patch baseline. Fields not specified in the request are left unchanged.
 #'
-#' See [https://paws-r.github.io/docs/ssm/update_patch_baseline.html](https://paws-r.github.io/docs/ssm/update_patch_baseline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_update_patch_baseline/](https://www.paws-r-sdk.com/docs/ssm_update_patch_baseline/) for full documentation.
 #'
 #' @param BaselineId &#91;required&#93; The ID of the patch baseline to update.
 #' @param Name The name of the patch baseline.
@@ -6434,7 +6436,7 @@ ssm_update_patch_baseline <- function(BaselineId, Name = NULL, GlobalFilters = N
 #' @description
 #' Update a resource data sync. After you create a resource data sync for a Region, you can't change the account options for that sync. For example, if you create a sync in the us-east-2 (Ohio) Region and you choose the `Include only the current account` option, you can't edit that sync later and choose the `Include all accounts from my Organizations configuration` option. Instead, you must delete the first resource data sync, and create a new one.
 #'
-#' See [https://paws-r.github.io/docs/ssm/update_resource_data_sync.html](https://paws-r.github.io/docs/ssm/update_resource_data_sync.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_update_resource_data_sync/](https://www.paws-r-sdk.com/docs/ssm_update_resource_data_sync/) for full documentation.
 #'
 #' @param SyncName &#91;required&#93; The name of the resource data sync you want to update.
 #' @param SyncType &#91;required&#93; The type of resource data sync. The supported `SyncType` is
@@ -6467,7 +6469,7 @@ ssm_update_resource_data_sync <- function(SyncName, SyncType, SyncSource) {
 #' @description
 #' `ServiceSetting` is an account-level setting for an Amazon Web Services service. This setting defines how a user interacts with or uses a service or a feature of a service. For example, if an Amazon Web Services service charges money to the account based on feature or service usage, then the Amazon Web Services service team might create a default setting of "false". This means the user can't use this feature unless they change the setting to "true" and intentionally opt in for a paid feature.
 #'
-#' See [https://paws-r.github.io/docs/ssm/update_service_setting.html](https://paws-r.github.io/docs/ssm/update_service_setting.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ssm_update_service_setting/](https://www.paws-r-sdk.com/docs/ssm_update_service_setting/) for full documentation.
 #'
 #' @param SettingId &#91;required&#93; The Amazon Resource Name (ARN) of the service setting to update. For
 #' example,

@@ -31,6 +31,6 @@ created the lifecycle hook.}
 \description{
 Completes the lifecycle action for the specified token or instance with the specified result.
 
-See \url{https://paws-r.github.io/docs/autoscaling/complete_lifecycle_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_complete_lifecycle_action/} for full documentation.
 }
 \keyword{internal}

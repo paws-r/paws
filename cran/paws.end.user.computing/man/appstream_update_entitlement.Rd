@@ -26,6 +26,6 @@ appstream_update_entitlement(
 \description{
 Updates the specified entitlement.
 
-See \url{https://paws-r.github.io/docs/appstream/update_entitlement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_update_entitlement/} for full documentation.
 }
 \keyword{internal}

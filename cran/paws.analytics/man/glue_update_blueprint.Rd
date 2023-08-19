@@ -16,6 +16,6 @@ glue_update_blueprint(Name, Description = NULL, BlueprintLocation)
 \description{
 Updates a registered blueprint.
 
-See \url{https://paws-r.github.io/docs/glue/update_blueprint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_update_blueprint/} for full documentation.
 }
 \keyword{internal}

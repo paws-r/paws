@@ -12,6 +12,6 @@ lambda_delete_event_source_mapping(UUID)
 \description{
 Deletes an \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-eventsourcemapping.html}{event source mapping}. You can get the identifier of a mapping from the output of \code{\link[=lambda_list_event_source_mappings]{list_event_source_mappings}}.
 
-See \url{https://paws-r.github.io/docs/lambda/delete_event_source_mapping.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_delete_event_source_mapping/} for full documentation.
 }
 \keyword{internal}

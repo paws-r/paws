@@ -14,6 +14,6 @@ devopsguru_describe_insight(Id, AccountId = NULL)
 \description{
 Returns details about an insight that you specify using its ID.
 
-See \url{https://paws-r.github.io/docs/devopsguru/describe_insight.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_describe_insight/} for full documentation.
 }
 \keyword{internal}

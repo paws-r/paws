@@ -12,6 +12,6 @@ cloudfront_create_origin_access_control(OriginAccessControlConfig)
 \description{
 Creates a new origin access control in CloudFront. After you create an origin access control, you can add it to an origin in a CloudFront distribution so that CloudFront sends authenticated (signed) requests to the origin.
 
-See \url{https://paws-r.github.io/docs/cloudfront/create_origin_access_control.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_create_origin_access_control/} for full documentation.
 }
 \keyword{internal}

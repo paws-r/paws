@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Runs a batch SQL statement over an array of data.
 #'
-#' See [https://paws-r.github.io/docs/rdsdataservice/batch_execute_statement.html](https://paws-r.github.io/docs/rdsdataservice/batch_execute_statement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rdsdataservice_batch_execute_statement/](https://www.paws-r-sdk.com/docs/rdsdataservice_batch_execute_statement/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
 #' @param secretArn &#91;required&#93; The ARN of the secret that enables access to the DB cluster. Enter the
@@ -69,7 +69,7 @@ rdsdataservice_batch_execute_statement <- function(resourceArn, secretArn, sql, 
 #' @description
 #' Starts a SQL transaction.
 #'
-#' See [https://paws-r.github.io/docs/rdsdataservice/begin_transaction.html](https://paws-r.github.io/docs/rdsdataservice/begin_transaction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rdsdataservice_begin_transaction/](https://www.paws-r-sdk.com/docs/rdsdataservice_begin_transaction/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
 #' @param secretArn &#91;required&#93; The name or ARN of the secret that enables access to the DB cluster.
@@ -102,7 +102,7 @@ rdsdataservice_begin_transaction <- function(resourceArn, secretArn, database = 
 #' @description
 #' Ends a SQL transaction started with the [`begin_transaction`][rdsdataservice_begin_transaction] operation and commits the changes.
 #'
-#' See [https://paws-r.github.io/docs/rdsdataservice/commit_transaction.html](https://paws-r.github.io/docs/rdsdataservice/commit_transaction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rdsdataservice_commit_transaction/](https://www.paws-r-sdk.com/docs/rdsdataservice_commit_transaction/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
 #' @param secretArn &#91;required&#93; The name or ARN of the secret that enables access to the DB cluster.
@@ -133,7 +133,7 @@ rdsdataservice_commit_transaction <- function(resourceArn, secretArn, transactio
 #' @description
 #' Runs one or more SQL statements.
 #'
-#' See [https://paws-r.github.io/docs/rdsdataservice/execute_sql.html](https://paws-r.github.io/docs/rdsdataservice/execute_sql.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rdsdataservice_execute_sql/](https://www.paws-r-sdk.com/docs/rdsdataservice_execute_sql/) for full documentation.
 #'
 #' @param dbClusterOrInstanceArn &#91;required&#93; The ARN of the Aurora Serverless DB cluster.
 #' @param awsSecretStoreArn &#91;required&#93; The Amazon Resource Name (ARN) of the secret that enables access to the
@@ -175,7 +175,7 @@ rdsdataservice_execute_sql <- function(dbClusterOrInstanceArn, awsSecretStoreArn
 #' @description
 #' Runs a SQL statement against a database.
 #'
-#' See [https://paws-r.github.io/docs/rdsdataservice/execute_statement.html](https://paws-r.github.io/docs/rdsdataservice/execute_statement.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rdsdataservice_execute_statement/](https://www.paws-r-sdk.com/docs/rdsdataservice_execute_statement/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
 #' @param secretArn &#91;required&#93; The ARN of the secret that enables access to the DB cluster. Enter the
@@ -244,7 +244,7 @@ rdsdataservice_execute_statement <- function(resourceArn, secretArn, sql, databa
 #' @description
 #' Performs a rollback of a transaction. Rolling back a transaction cancels its changes.
 #'
-#' See [https://paws-r.github.io/docs/rdsdataservice/rollback_transaction.html](https://paws-r.github.io/docs/rdsdataservice/rollback_transaction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rdsdataservice_rollback_transaction/](https://www.paws-r-sdk.com/docs/rdsdataservice_rollback_transaction/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Aurora Serverless DB cluster.
 #' @param secretArn &#91;required&#93; The name or ARN of the secret that enables access to the DB cluster.

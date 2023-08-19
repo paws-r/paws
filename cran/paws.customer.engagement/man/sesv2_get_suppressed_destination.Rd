@@ -13,6 +13,6 @@ sesv2_get_suppressed_destination(EmailAddress)
 \description{
 Retrieves information about a specific email address that's on the suppression list for your account.
 
-See \url{https://paws-r.github.io/docs/sesv2/get_suppressed_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_get_suppressed_destination/} for full documentation.
 }
 \keyword{internal}

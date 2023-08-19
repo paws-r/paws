@@ -14,6 +14,6 @@ machinelearning_update_batch_prediction(BatchPredictionId, BatchPredictionName)
 \description{
 Updates the \code{BatchPredictionName} of a \code{BatchPrediction}.
 
-See \url{https://paws-r.github.io/docs/machinelearning/update_batch_prediction.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_update_batch_prediction/} for full documentation.
 }
 \keyword{internal}

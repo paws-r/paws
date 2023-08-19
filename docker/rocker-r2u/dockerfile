@@ -1,0 +1,11 @@
+FROM rocker/r2u:jammy
+
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    libxml2-dev
+
+RUN Rscript -e "install.packages('paws')"
+
+CMD ["R"]

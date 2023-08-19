@@ -26,6 +26,6 @@ supplied, this will be defaulted to 25 per page.}
 \description{
 Returns a list of schema versions that you have created, with minimal information. Schema versions in Deleted status will not be included in the results. Empty results will be returned if there are no schema versions available.
 
-See \url{https://paws-r.github.io/docs/glue/list_schema_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_list_schema_versions/} for full documentation.
 }
 \keyword{internal}

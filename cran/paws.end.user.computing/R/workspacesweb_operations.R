@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Associates a browser settings resource with a web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/associate_browser_settings.html](https://paws-r.github.io/docs/workspacesweb/associate_browser_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_associate_browser_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_associate_browser_settings/) for full documentation.
 #'
 #' @param browserSettingsArn &#91;required&#93; The ARN of the browser settings.
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
@@ -33,12 +33,42 @@ workspacesweb_associate_browser_settings <- function(browserSettingsArn, portalA
 }
 .workspacesweb$operations$associate_browser_settings <- workspacesweb_associate_browser_settings
 
+#' Associates an IP access settings resource with a web portal
+#'
+#' @description
+#' Associates an IP access settings resource with a web portal.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_associate_ip_access_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_associate_ip_access_settings/) for full documentation.
+#'
+#' @param ipAccessSettingsArn &#91;required&#93; The ARN of the IP access settings.
+#' @param portalArn &#91;required&#93; The ARN of the web portal.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_associate_ip_access_settings
+workspacesweb_associate_ip_access_settings <- function(ipAccessSettingsArn, portalArn) {
+  op <- new_operation(
+    name = "AssociateIpAccessSettings",
+    http_method = "PUT",
+    http_path = "/portals/{portalArn+}/ipAccessSettings",
+    paginator = list()
+  )
+  input <- .workspacesweb$associate_ip_access_settings_input(ipAccessSettingsArn = ipAccessSettingsArn, portalArn = portalArn)
+  output <- .workspacesweb$associate_ip_access_settings_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$associate_ip_access_settings <- workspacesweb_associate_ip_access_settings
+
 #' Associates a network settings resource with a web portal
 #'
 #' @description
 #' Associates a network settings resource with a web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/associate_network_settings.html](https://paws-r.github.io/docs/workspacesweb/associate_network_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_associate_network_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_associate_network_settings/) for full documentation.
 #'
 #' @param networkSettingsArn &#91;required&#93; The ARN of the network settings.
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
@@ -68,7 +98,7 @@ workspacesweb_associate_network_settings <- function(networkSettingsArn, portalA
 #' @description
 #' Associates a trust store with a web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/associate_trust_store.html](https://paws-r.github.io/docs/workspacesweb/associate_trust_store.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_associate_trust_store/](https://www.paws-r-sdk.com/docs/workspacesweb_associate_trust_store/) for full documentation.
 #'
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
 #' @param trustStoreArn &#91;required&#93; The ARN of the trust store.
@@ -98,7 +128,7 @@ workspacesweb_associate_trust_store <- function(portalArn, trustStoreArn) {
 #' @description
 #' Associates a user access logging settings resource with a web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/associate_user_access_logging_settings.html](https://paws-r.github.io/docs/workspacesweb/associate_user_access_logging_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_associate_user_access_logging_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_associate_user_access_logging_settings/) for full documentation.
 #'
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
 #' @param userAccessLoggingSettingsArn &#91;required&#93; The ARN of the user access logging settings.
@@ -128,7 +158,7 @@ workspacesweb_associate_user_access_logging_settings <- function(portalArn, user
 #' @description
 #' Associates a user settings resource with a web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/associate_user_settings.html](https://paws-r.github.io/docs/workspacesweb/associate_user_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_associate_user_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_associate_user_settings/) for full documentation.
 #'
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
 #' @param userSettingsArn &#91;required&#93; The ARN of the user settings.
@@ -159,7 +189,7 @@ workspacesweb_associate_user_settings <- function(portalArn, userSettingsArn) {
 #' @description
 #' Creates a browser settings resource that can be associated with a web portal. Once associated with a web portal, browser settings control how the browser will behave once a user starts a streaming session for the web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/create_browser_settings.html](https://paws-r.github.io/docs/workspacesweb/create_browser_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_browser_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_create_browser_settings/) for full documentation.
 #'
 #' @param additionalEncryptionContext Additional encryption context of the browser settings.
 #' @param browserPolicy &#91;required&#93; A JSON string containing Chrome Enterprise policies that will be applied
@@ -202,7 +232,7 @@ workspacesweb_create_browser_settings <- function(additionalEncryptionContext = 
 #' @description
 #' Creates an identity provider resource that is then associated with a web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/create_identity_provider.html](https://paws-r.github.io/docs/workspacesweb/create_identity_provider.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_identity_provider/](https://www.paws-r-sdk.com/docs/workspacesweb_create_identity_provider/) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
@@ -298,13 +328,57 @@ workspacesweb_create_identity_provider <- function(clientToken = NULL, identityP
 }
 .workspacesweb$operations$create_identity_provider <- workspacesweb_create_identity_provider
 
+#' Creates an IP access settings resource that can be associated with a web
+#' portal
+#'
+#' @description
+#' Creates an IP access settings resource that can be associated with a web portal.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_ip_access_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_create_ip_access_settings/) for full documentation.
+#'
+#' @param additionalEncryptionContext Additional encryption context of the IP access settings.
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Idempotency ensures that an API request
+#' completes only once. With an idempotent request, if the original request
+#' completes successfully, subsequent retries with the same client token
+#' returns the result from the original successful request.
+#' 
+#' If you do not specify a client token, one is automatically generated by
+#' the AWS SDK.
+#' @param customerManagedKey The custom managed key of the IP access settings.
+#' @param description The description of the IP access settings.
+#' @param displayName The display name of the IP access settings.
+#' @param ipRules &#91;required&#93; The IP rules of the IP access settings.
+#' @param tags The tags to add to the browser settings resource. A tag is a key-value
+#' pair.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_create_ip_access_settings
+workspacesweb_create_ip_access_settings <- function(additionalEncryptionContext = NULL, clientToken = NULL, customerManagedKey = NULL, description = NULL, displayName = NULL, ipRules, tags = NULL) {
+  op <- new_operation(
+    name = "CreateIpAccessSettings",
+    http_method = "POST",
+    http_path = "/ipAccessSettings",
+    paginator = list()
+  )
+  input <- .workspacesweb$create_ip_access_settings_input(additionalEncryptionContext = additionalEncryptionContext, clientToken = clientToken, customerManagedKey = customerManagedKey, description = description, displayName = displayName, ipRules = ipRules, tags = tags)
+  output <- .workspacesweb$create_ip_access_settings_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$create_ip_access_settings <- workspacesweb_create_ip_access_settings
+
 #' Creates a network settings resource that can be associated with a web
 #' portal
 #'
 #' @description
 #' Creates a network settings resource that can be associated with a web portal. Once associated with a web portal, network settings define how streaming instances will connect with your specified VPC.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/create_network_settings.html](https://paws-r.github.io/docs/workspacesweb/create_network_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_network_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_create_network_settings/) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
@@ -348,7 +422,7 @@ workspacesweb_create_network_settings <- function(clientToken = NULL, securityGr
 #' @description
 #' Creates a web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/create_portal.html](https://paws-r.github.io/docs/workspacesweb/create_portal.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_portal/](https://www.paws-r-sdk.com/docs/workspacesweb_create_portal/) for full documentation.
 #'
 #' @param additionalEncryptionContext The additional encryption context of the portal.
 #' @param authenticationType The type of authentication integration points used when signing into the
@@ -404,7 +478,7 @@ workspacesweb_create_portal <- function(additionalEncryptionContext = NULL, auth
 #' @description
 #' Creates a trust store that can be associated with a web portal. A trust store contains certificate authority (CA) certificates. Once associated with a web portal, the browser in a streaming session will recognize certificates that have been issued using any of the CAs in the trust store. If your organization has internal websites that use certificates issued by private CAs, you should add the private CA certificate to the trust store.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/create_trust_store.html](https://paws-r.github.io/docs/workspacesweb/create_trust_store.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_trust_store/](https://www.paws-r-sdk.com/docs/workspacesweb_create_trust_store/) for full documentation.
 #'
 #' @param certificateList &#91;required&#93; A list of CA certificates to be added to the trust store.
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
@@ -443,7 +517,7 @@ workspacesweb_create_trust_store <- function(certificateList, clientToken = NULL
 #' @description
 #' Creates a user access logging settings resource that can be associated with a web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/create_user_access_logging_settings.html](https://paws-r.github.io/docs/workspacesweb/create_user_access_logging_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_user_access_logging_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_create_user_access_logging_settings/) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
@@ -483,7 +557,7 @@ workspacesweb_create_user_access_logging_settings <- function(clientToken = NULL
 #' @description
 #' Creates a user settings resource that can be associated with a web portal. Once associated with a web portal, user settings control how users can transfer data between a streaming session and the their local devices.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/create_user_settings.html](https://paws-r.github.io/docs/workspacesweb/create_user_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_create_user_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_create_user_settings/) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
@@ -535,7 +609,7 @@ workspacesweb_create_user_settings <- function(clientToken = NULL, copyAllowed, 
 #' @description
 #' Deletes browser settings.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/delete_browser_settings.html](https://paws-r.github.io/docs/workspacesweb/delete_browser_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_delete_browser_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_delete_browser_settings/) for full documentation.
 #'
 #' @param browserSettingsArn &#91;required&#93; The ARN of the browser settings.
 #'
@@ -564,7 +638,7 @@ workspacesweb_delete_browser_settings <- function(browserSettingsArn) {
 #' @description
 #' Deletes the identity provider.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/delete_identity_provider.html](https://paws-r.github.io/docs/workspacesweb/delete_identity_provider.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_delete_identity_provider/](https://www.paws-r-sdk.com/docs/workspacesweb_delete_identity_provider/) for full documentation.
 #'
 #' @param identityProviderArn &#91;required&#93; The ARN of the identity provider.
 #'
@@ -588,12 +662,41 @@ workspacesweb_delete_identity_provider <- function(identityProviderArn) {
 }
 .workspacesweb$operations$delete_identity_provider <- workspacesweb_delete_identity_provider
 
+#' Deletes IP access settings
+#'
+#' @description
+#' Deletes IP access settings.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_delete_ip_access_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_delete_ip_access_settings/) for full documentation.
+#'
+#' @param ipAccessSettingsArn &#91;required&#93; The ARN of the IP access settings.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_delete_ip_access_settings
+workspacesweb_delete_ip_access_settings <- function(ipAccessSettingsArn) {
+  op <- new_operation(
+    name = "DeleteIpAccessSettings",
+    http_method = "DELETE",
+    http_path = "/ipAccessSettings/{ipAccessSettingsArn+}",
+    paginator = list()
+  )
+  input <- .workspacesweb$delete_ip_access_settings_input(ipAccessSettingsArn = ipAccessSettingsArn)
+  output <- .workspacesweb$delete_ip_access_settings_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$delete_ip_access_settings <- workspacesweb_delete_ip_access_settings
+
 #' Deletes network settings
 #'
 #' @description
 #' Deletes network settings.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/delete_network_settings.html](https://paws-r.github.io/docs/workspacesweb/delete_network_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_delete_network_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_delete_network_settings/) for full documentation.
 #'
 #' @param networkSettingsArn &#91;required&#93; The ARN of the network settings.
 #'
@@ -622,7 +725,7 @@ workspacesweb_delete_network_settings <- function(networkSettingsArn) {
 #' @description
 #' Deletes a web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/delete_portal.html](https://paws-r.github.io/docs/workspacesweb/delete_portal.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_delete_portal/](https://www.paws-r-sdk.com/docs/workspacesweb_delete_portal/) for full documentation.
 #'
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
 #'
@@ -651,7 +754,7 @@ workspacesweb_delete_portal <- function(portalArn) {
 #' @description
 #' Deletes the trust store.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/delete_trust_store.html](https://paws-r.github.io/docs/workspacesweb/delete_trust_store.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_delete_trust_store/](https://www.paws-r-sdk.com/docs/workspacesweb_delete_trust_store/) for full documentation.
 #'
 #' @param trustStoreArn &#91;required&#93; The ARN of the trust store.
 #'
@@ -680,7 +783,7 @@ workspacesweb_delete_trust_store <- function(trustStoreArn) {
 #' @description
 #' Deletes user access logging settings.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/delete_user_access_logging_settings.html](https://paws-r.github.io/docs/workspacesweb/delete_user_access_logging_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_delete_user_access_logging_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_delete_user_access_logging_settings/) for full documentation.
 #'
 #' @param userAccessLoggingSettingsArn &#91;required&#93; The ARN of the user access logging settings.
 #'
@@ -709,7 +812,7 @@ workspacesweb_delete_user_access_logging_settings <- function(userAccessLoggingS
 #' @description
 #' Deletes user settings.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/delete_user_settings.html](https://paws-r.github.io/docs/workspacesweb/delete_user_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_delete_user_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_delete_user_settings/) for full documentation.
 #'
 #' @param userSettingsArn &#91;required&#93; The ARN of the user settings.
 #'
@@ -738,7 +841,7 @@ workspacesweb_delete_user_settings <- function(userSettingsArn) {
 #' @description
 #' Disassociates browser settings from a web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/disassociate_browser_settings.html](https://paws-r.github.io/docs/workspacesweb/disassociate_browser_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_disassociate_browser_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_disassociate_browser_settings/) for full documentation.
 #'
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
 #'
@@ -762,12 +865,41 @@ workspacesweb_disassociate_browser_settings <- function(portalArn) {
 }
 .workspacesweb$operations$disassociate_browser_settings <- workspacesweb_disassociate_browser_settings
 
+#' Disassociates IP access settings from a web portal
+#'
+#' @description
+#' Disassociates IP access settings from a web portal.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_disassociate_ip_access_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_disassociate_ip_access_settings/) for full documentation.
+#'
+#' @param portalArn &#91;required&#93; The ARN of the web portal.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_disassociate_ip_access_settings
+workspacesweb_disassociate_ip_access_settings <- function(portalArn) {
+  op <- new_operation(
+    name = "DisassociateIpAccessSettings",
+    http_method = "DELETE",
+    http_path = "/portals/{portalArn+}/ipAccessSettings",
+    paginator = list()
+  )
+  input <- .workspacesweb$disassociate_ip_access_settings_input(portalArn = portalArn)
+  output <- .workspacesweb$disassociate_ip_access_settings_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$disassociate_ip_access_settings <- workspacesweb_disassociate_ip_access_settings
+
 #' Disassociates network settings from a web portal
 #'
 #' @description
 #' Disassociates network settings from a web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/disassociate_network_settings.html](https://paws-r.github.io/docs/workspacesweb/disassociate_network_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_disassociate_network_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_disassociate_network_settings/) for full documentation.
 #'
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
 #'
@@ -796,7 +928,7 @@ workspacesweb_disassociate_network_settings <- function(portalArn) {
 #' @description
 #' Disassociates a trust store from a web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/disassociate_trust_store.html](https://paws-r.github.io/docs/workspacesweb/disassociate_trust_store.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_disassociate_trust_store/](https://www.paws-r-sdk.com/docs/workspacesweb_disassociate_trust_store/) for full documentation.
 #'
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
 #'
@@ -825,7 +957,7 @@ workspacesweb_disassociate_trust_store <- function(portalArn) {
 #' @description
 #' Disassociates user access logging settings from a web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/disassociate_user_access_logging_settings.html](https://paws-r.github.io/docs/workspacesweb/disassociate_user_access_logging_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_disassociate_user_access_logging_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_disassociate_user_access_logging_settings/) for full documentation.
 #'
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
 #'
@@ -854,7 +986,7 @@ workspacesweb_disassociate_user_access_logging_settings <- function(portalArn) {
 #' @description
 #' Disassociates user settings from a web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/disassociate_user_settings.html](https://paws-r.github.io/docs/workspacesweb/disassociate_user_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_disassociate_user_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_disassociate_user_settings/) for full documentation.
 #'
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
 #'
@@ -883,7 +1015,7 @@ workspacesweb_disassociate_user_settings <- function(portalArn) {
 #' @description
 #' Gets browser settings.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/get_browser_settings.html](https://paws-r.github.io/docs/workspacesweb/get_browser_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_get_browser_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_get_browser_settings/) for full documentation.
 #'
 #' @param browserSettingsArn &#91;required&#93; The ARN of the browser settings.
 #'
@@ -912,7 +1044,7 @@ workspacesweb_get_browser_settings <- function(browserSettingsArn) {
 #' @description
 #' Gets the identity provider.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/get_identity_provider.html](https://paws-r.github.io/docs/workspacesweb/get_identity_provider.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_get_identity_provider/](https://www.paws-r-sdk.com/docs/workspacesweb_get_identity_provider/) for full documentation.
 #'
 #' @param identityProviderArn &#91;required&#93; The ARN of the identity provider.
 #'
@@ -936,12 +1068,41 @@ workspacesweb_get_identity_provider <- function(identityProviderArn) {
 }
 .workspacesweb$operations$get_identity_provider <- workspacesweb_get_identity_provider
 
+#' Gets the IP access settings
+#'
+#' @description
+#' Gets the IP access settings.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_get_ip_access_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_get_ip_access_settings/) for full documentation.
+#'
+#' @param ipAccessSettingsArn &#91;required&#93; The ARN of the IP access settings.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_get_ip_access_settings
+workspacesweb_get_ip_access_settings <- function(ipAccessSettingsArn) {
+  op <- new_operation(
+    name = "GetIpAccessSettings",
+    http_method = "GET",
+    http_path = "/ipAccessSettings/{ipAccessSettingsArn+}",
+    paginator = list()
+  )
+  input <- .workspacesweb$get_ip_access_settings_input(ipAccessSettingsArn = ipAccessSettingsArn)
+  output <- .workspacesweb$get_ip_access_settings_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$get_ip_access_settings <- workspacesweb_get_ip_access_settings
+
 #' Gets the network settings
 #'
 #' @description
 #' Gets the network settings.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/get_network_settings.html](https://paws-r.github.io/docs/workspacesweb/get_network_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_get_network_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_get_network_settings/) for full documentation.
 #'
 #' @param networkSettingsArn &#91;required&#93; The ARN of the network settings.
 #'
@@ -970,7 +1131,7 @@ workspacesweb_get_network_settings <- function(networkSettingsArn) {
 #' @description
 #' Gets the web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/get_portal.html](https://paws-r.github.io/docs/workspacesweb/get_portal.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_get_portal/](https://www.paws-r-sdk.com/docs/workspacesweb_get_portal/) for full documentation.
 #'
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
 #'
@@ -999,7 +1160,7 @@ workspacesweb_get_portal <- function(portalArn) {
 #' @description
 #' Gets the service provider metadata.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/get_portal_service_provider_metadata.html](https://paws-r.github.io/docs/workspacesweb/get_portal_service_provider_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_get_portal_service_provider_metadata/](https://www.paws-r-sdk.com/docs/workspacesweb_get_portal_service_provider_metadata/) for full documentation.
 #'
 #' @param portalArn &#91;required&#93; The ARN of the web portal.
 #'
@@ -1028,7 +1189,7 @@ workspacesweb_get_portal_service_provider_metadata <- function(portalArn) {
 #' @description
 #' Gets the trust store.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/get_trust_store.html](https://paws-r.github.io/docs/workspacesweb/get_trust_store.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_get_trust_store/](https://www.paws-r-sdk.com/docs/workspacesweb_get_trust_store/) for full documentation.
 #'
 #' @param trustStoreArn &#91;required&#93; The ARN of the trust store.
 #'
@@ -1057,7 +1218,7 @@ workspacesweb_get_trust_store <- function(trustStoreArn) {
 #' @description
 #' Gets the trust store certificate.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/get_trust_store_certificate.html](https://paws-r.github.io/docs/workspacesweb/get_trust_store_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_get_trust_store_certificate/](https://www.paws-r-sdk.com/docs/workspacesweb_get_trust_store_certificate/) for full documentation.
 #'
 #' @param thumbprint &#91;required&#93; The thumbprint of the trust store certificate.
 #' @param trustStoreArn &#91;required&#93; The ARN of the trust store certificate.
@@ -1087,7 +1248,7 @@ workspacesweb_get_trust_store_certificate <- function(thumbprint, trustStoreArn)
 #' @description
 #' Gets user access logging settings.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/get_user_access_logging_settings.html](https://paws-r.github.io/docs/workspacesweb/get_user_access_logging_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_get_user_access_logging_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_get_user_access_logging_settings/) for full documentation.
 #'
 #' @param userAccessLoggingSettingsArn &#91;required&#93; The ARN of the user access logging settings.
 #'
@@ -1116,7 +1277,7 @@ workspacesweb_get_user_access_logging_settings <- function(userAccessLoggingSett
 #' @description
 #' Gets user settings.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/get_user_settings.html](https://paws-r.github.io/docs/workspacesweb/get_user_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_get_user_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_get_user_settings/) for full documentation.
 #'
 #' @param userSettingsArn &#91;required&#93; The ARN of the user settings.
 #'
@@ -1145,7 +1306,7 @@ workspacesweb_get_user_settings <- function(userSettingsArn) {
 #' @description
 #' Retrieves a list of browser settings.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/list_browser_settings.html](https://paws-r.github.io/docs/workspacesweb/list_browser_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_browser_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_list_browser_settings/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
@@ -1159,7 +1320,7 @@ workspacesweb_list_browser_settings <- function(maxResults = NULL, nextToken = N
     name = "ListBrowserSettings",
     http_method = "GET",
     http_path = "/browserSettings",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_browser_settings_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_browser_settings_output()
@@ -1176,7 +1337,7 @@ workspacesweb_list_browser_settings <- function(maxResults = NULL, nextToken = N
 #' @description
 #' Retrieves a list of identity providers for a specific web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/list_identity_providers.html](https://paws-r.github.io/docs/workspacesweb/list_identity_providers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_identity_providers/](https://www.paws-r-sdk.com/docs/workspacesweb_list_identity_providers/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
@@ -1191,7 +1352,7 @@ workspacesweb_list_identity_providers <- function(maxResults = NULL, nextToken =
     name = "ListIdentityProviders",
     http_method = "GET",
     http_path = "/portals/{portalArn+}/identityProviders",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_identity_providers_input(maxResults = maxResults, nextToken = nextToken, portalArn = portalArn)
   output <- .workspacesweb$list_identity_providers_output()
@@ -1203,12 +1364,43 @@ workspacesweb_list_identity_providers <- function(maxResults = NULL, nextToken =
 }
 .workspacesweb$operations$list_identity_providers <- workspacesweb_list_identity_providers
 
+#' Retrieves a list of IP access settings
+#'
+#' @description
+#' Retrieves a list of IP access settings.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_ip_access_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_list_ip_access_settings/) for full documentation.
+#'
+#' @param maxResults The maximum number of results to be included in the next page.
+#' @param nextToken The pagination token used to retrieve the next page of results for this
+#' operation.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_list_ip_access_settings
+workspacesweb_list_ip_access_settings <- function(maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListIpAccessSettings",
+    http_method = "GET",
+    http_path = "/ipAccessSettings",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
+  )
+  input <- .workspacesweb$list_ip_access_settings_input(maxResults = maxResults, nextToken = nextToken)
+  output <- .workspacesweb$list_ip_access_settings_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$list_ip_access_settings <- workspacesweb_list_ip_access_settings
+
 #' Retrieves a list of network settings
 #'
 #' @description
 #' Retrieves a list of network settings.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/list_network_settings.html](https://paws-r.github.io/docs/workspacesweb/list_network_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_network_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_list_network_settings/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
@@ -1222,7 +1414,7 @@ workspacesweb_list_network_settings <- function(maxResults = NULL, nextToken = N
     name = "ListNetworkSettings",
     http_method = "GET",
     http_path = "/networkSettings",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_network_settings_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_network_settings_output()
@@ -1239,7 +1431,7 @@ workspacesweb_list_network_settings <- function(maxResults = NULL, nextToken = N
 #' @description
 #' Retrieves a list or web portals.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/list_portals.html](https://paws-r.github.io/docs/workspacesweb/list_portals.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_portals/](https://www.paws-r-sdk.com/docs/workspacesweb_list_portals/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
@@ -1253,7 +1445,7 @@ workspacesweb_list_portals <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListPortals",
     http_method = "GET",
     http_path = "/portals",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_portals_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_portals_output()
@@ -1270,7 +1462,7 @@ workspacesweb_list_portals <- function(maxResults = NULL, nextToken = NULL) {
 #' @description
 #' Retrieves a list of tags for a resource.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/list_tags_for_resource.html](https://paws-r.github.io/docs/workspacesweb/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/workspacesweb_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
 #'
@@ -1299,7 +1491,7 @@ workspacesweb_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Retrieves a list of trust store certificates.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/list_trust_store_certificates.html](https://paws-r.github.io/docs/workspacesweb/list_trust_store_certificates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_trust_store_certificates/](https://www.paws-r-sdk.com/docs/workspacesweb_list_trust_store_certificates/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
@@ -1314,7 +1506,7 @@ workspacesweb_list_trust_store_certificates <- function(maxResults = NULL, nextT
     name = "ListTrustStoreCertificates",
     http_method = "GET",
     http_path = "/trustStores/{trustStoreArn+}/certificates",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_trust_store_certificates_input(maxResults = maxResults, nextToken = nextToken, trustStoreArn = trustStoreArn)
   output <- .workspacesweb$list_trust_store_certificates_output()
@@ -1331,7 +1523,7 @@ workspacesweb_list_trust_store_certificates <- function(maxResults = NULL, nextT
 #' @description
 #' Retrieves a list of trust stores.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/list_trust_stores.html](https://paws-r.github.io/docs/workspacesweb/list_trust_stores.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_trust_stores/](https://www.paws-r-sdk.com/docs/workspacesweb_list_trust_stores/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
@@ -1345,7 +1537,7 @@ workspacesweb_list_trust_stores <- function(maxResults = NULL, nextToken = NULL)
     name = "ListTrustStores",
     http_method = "GET",
     http_path = "/trustStores",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_trust_stores_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_trust_stores_output()
@@ -1362,7 +1554,7 @@ workspacesweb_list_trust_stores <- function(maxResults = NULL, nextToken = NULL)
 #' @description
 #' Retrieves a list of user access logging settings.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/list_user_access_logging_settings.html](https://paws-r.github.io/docs/workspacesweb/list_user_access_logging_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_user_access_logging_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_list_user_access_logging_settings/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
@@ -1376,7 +1568,7 @@ workspacesweb_list_user_access_logging_settings <- function(maxResults = NULL, n
     name = "ListUserAccessLoggingSettings",
     http_method = "GET",
     http_path = "/userAccessLoggingSettings",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_user_access_logging_settings_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_user_access_logging_settings_output()
@@ -1393,7 +1585,7 @@ workspacesweb_list_user_access_logging_settings <- function(maxResults = NULL, n
 #' @description
 #' Retrieves a list of user settings.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/list_user_settings.html](https://paws-r.github.io/docs/workspacesweb/list_user_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_list_user_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_list_user_settings/) for full documentation.
 #'
 #' @param maxResults The maximum number of results to be included in the next page.
 #' @param nextToken The pagination token used to retrieve the next page of results for this
@@ -1407,7 +1599,7 @@ workspacesweb_list_user_settings <- function(maxResults = NULL, nextToken = NULL
     name = "ListUserSettings",
     http_method = "GET",
     http_path = "/userSettings",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .workspacesweb$list_user_settings_input(maxResults = maxResults, nextToken = nextToken)
   output <- .workspacesweb$list_user_settings_output()
@@ -1424,7 +1616,7 @@ workspacesweb_list_user_settings <- function(maxResults = NULL, nextToken = NULL
 #' @description
 #' Adds or overwrites one or more tags for the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/tag_resource.html](https://paws-r.github.io/docs/workspacesweb/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_tag_resource/](https://www.paws-r-sdk.com/docs/workspacesweb_tag_resource/) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
@@ -1462,7 +1654,7 @@ workspacesweb_tag_resource <- function(clientToken = NULL, resourceArn, tags) {
 #' @description
 #' Removes one or more tags from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/untag_resource.html](https://paws-r.github.io/docs/workspacesweb/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_untag_resource/](https://www.paws-r-sdk.com/docs/workspacesweb_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource.
 #' @param tagKeys &#91;required&#93; The list of tag keys to remove from the resource.
@@ -1492,7 +1684,7 @@ workspacesweb_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates browser settings.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/update_browser_settings.html](https://paws-r.github.io/docs/workspacesweb/update_browser_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_browser_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_update_browser_settings/) for full documentation.
 #'
 #' @param browserPolicy A JSON string containing Chrome Enterprise policies that will be applied
 #' to all streaming sessions.
@@ -1531,7 +1723,7 @@ workspacesweb_update_browser_settings <- function(browserPolicy = NULL, browserS
 #' @description
 #' Updates the identity provider.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/update_identity_provider.html](https://paws-r.github.io/docs/workspacesweb/update_identity_provider.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_identity_provider/](https://www.paws-r-sdk.com/docs/workspacesweb_update_identity_provider/) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
@@ -1627,12 +1819,52 @@ workspacesweb_update_identity_provider <- function(clientToken = NULL, identityP
 }
 .workspacesweb$operations$update_identity_provider <- workspacesweb_update_identity_provider
 
+#' Updates IP access settings
+#'
+#' @description
+#' Updates IP access settings.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_ip_access_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_update_ip_access_settings/) for full documentation.
+#'
+#' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request. Idempotency ensures that an API request
+#' completes only once. With an idempotent request, if the original request
+#' completes successfully, subsequent retries with the same client token
+#' return the result from the original successful request.
+#' 
+#' If you do not specify a client token, one is automatically generated by
+#' the AWS SDK.
+#' @param description The description of the IP access settings.
+#' @param displayName The display name of the IP access settings.
+#' @param ipAccessSettingsArn &#91;required&#93; The ARN of the IP access settings.
+#' @param ipRules The updated IP rules of the IP access settings.
+#'
+#' @keywords internal
+#'
+#' @rdname workspacesweb_update_ip_access_settings
+workspacesweb_update_ip_access_settings <- function(clientToken = NULL, description = NULL, displayName = NULL, ipAccessSettingsArn, ipRules = NULL) {
+  op <- new_operation(
+    name = "UpdateIpAccessSettings",
+    http_method = "PATCH",
+    http_path = "/ipAccessSettings/{ipAccessSettingsArn+}",
+    paginator = list()
+  )
+  input <- .workspacesweb$update_ip_access_settings_input(clientToken = clientToken, description = description, displayName = displayName, ipAccessSettingsArn = ipAccessSettingsArn, ipRules = ipRules)
+  output <- .workspacesweb$update_ip_access_settings_output()
+  config <- get_config()
+  svc <- .workspacesweb$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspacesweb$operations$update_ip_access_settings <- workspacesweb_update_ip_access_settings
+
 #' Updates network settings
 #'
 #' @description
 #' Updates network settings.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/update_network_settings.html](https://paws-r.github.io/docs/workspacesweb/update_network_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_network_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_update_network_settings/) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
@@ -1675,7 +1907,7 @@ workspacesweb_update_network_settings <- function(clientToken = NULL, networkSet
 #' @description
 #' Updates a web portal.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/update_portal.html](https://paws-r.github.io/docs/workspacesweb/update_portal.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_portal/](https://www.paws-r-sdk.com/docs/workspacesweb_update_portal/) for full documentation.
 #'
 #' @param authenticationType The type of authentication integration points used when signing into the
 #' web portal. Defaults to `Standard`.
@@ -1721,7 +1953,7 @@ workspacesweb_update_portal <- function(authenticationType = NULL, displayName =
 #' @description
 #' Updates the trust store.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/update_trust_store.html](https://paws-r.github.io/docs/workspacesweb/update_trust_store.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_trust_store/](https://www.paws-r-sdk.com/docs/workspacesweb_update_trust_store/) for full documentation.
 #'
 #' @param certificatesToAdd A list of CA certificates to add to the trust store.
 #' @param certificatesToDelete A list of CA certificates to delete from a trust store.
@@ -1760,7 +1992,7 @@ workspacesweb_update_trust_store <- function(certificatesToAdd = NULL, certifica
 #' @description
 #' Updates the user access logging settings.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/update_user_access_logging_settings.html](https://paws-r.github.io/docs/workspacesweb/update_user_access_logging_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_user_access_logging_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_update_user_access_logging_settings/) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request
@@ -1798,7 +2030,7 @@ workspacesweb_update_user_access_logging_settings <- function(clientToken = NULL
 #' @description
 #' Updates the user settings.
 #'
-#' See [https://paws-r.github.io/docs/workspacesweb/update_user_settings.html](https://paws-r.github.io/docs/workspacesweb/update_user_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workspacesweb_update_user_settings/](https://www.paws-r-sdk.com/docs/workspacesweb_update_user_settings/) for full documentation.
 #'
 #' @param clientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. Idempotency ensures that an API request

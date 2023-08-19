@@ -10,6 +10,6 @@ ses_get_account_sending_enabled()
 \description{
 Returns the email sending status of the Amazon SES account for the current region.
 
-See \url{https://paws-r.github.io/docs/ses/get_account_sending_enabled.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_get_account_sending_enabled/} for full documentation.
 }
 \keyword{internal}

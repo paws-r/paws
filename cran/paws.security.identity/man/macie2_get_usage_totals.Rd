@@ -16,6 +16,6 @@ preceding 30 days.}
 \description{
 Retrieves (queries) aggregated usage data for an account.
 
-See \url{https://paws-r.github.io/docs/macie2/get_usage_totals.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_usage_totals/} for full documentation.
 }
 \keyword{internal}

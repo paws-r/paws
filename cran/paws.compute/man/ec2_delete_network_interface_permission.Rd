@@ -24,6 +24,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes a permission for a network interface. By default, you cannot delete the permission if the account for which you're removing the permission has attached the network interface to an instance. However, you can force delete the permission, regardless of any attachment.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_network_interface_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_network_interface_permission/} for full documentation.
 }
 \keyword{internal}

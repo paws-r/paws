@@ -13,7 +13,10 @@ lambda_list_layer_versions(
 )
 }
 \arguments{
-\item{CompatibleRuntime}{A runtime identifier. For example, \code{go1.x}.}
+\item{CompatibleRuntime}{A runtime identifier. For example, \code{go1.x}.
+
+The following list includes deprecated runtimes. For more information,
+see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runtime-support-policy}{Runtime deprecation policy}.}
 
 \item{LayerName}{[required] The name or Amazon Resource Name (ARN) of the layer.}
 
@@ -26,6 +29,6 @@ lambda_list_layer_versions(
 \description{
 Lists the versions of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{Lambda layer}. Versions that have been deleted aren't listed. Specify a \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier} to list only versions that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layer versions that are compatible with that architecture.
 
-See \url{https://paws-r.github.io/docs/lambda/list_layer_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_list_layer_versions/} for full documentation.
 }
 \keyword{internal}

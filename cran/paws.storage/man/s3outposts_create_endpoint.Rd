@@ -34,6 +34,6 @@ endpoint. IP addresses are allocated from this pool for the endpoint.}
 \description{
 Creates an endpoint and associates it with the specified Outpost.
 
-See \url{https://paws-r.github.io/docs/s3outposts/create_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3outposts_create_endpoint/} for full documentation.
 }
 \keyword{internal}

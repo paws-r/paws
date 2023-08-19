@@ -15,6 +15,6 @@ an Amazon Resource Name .}
 \description{
 Adds metadata tags to an Amazon DocumentDB resource. You can use these tags with cost allocation reporting to track costs that are associated with Amazon DocumentDB resources or in a \code{Condition} statement in an Identity and Access Management (IAM) policy for Amazon DocumentDB.
 
-See \url{https://paws-r.github.io/docs/docdb/add_tags_to_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_add_tags_to_resource/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ find the values for OptOutListName and OptOutListArn.}
 \description{
 Deletes an existing opt-out list. All opted out phone numbers in the opt-out list are deleted.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_opt_out_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_opt_out_list/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ continue listing from where the previous operation left off.}
 \description{
 Returns a list of all of the worker configurations in this account and Region.
 
-See \url{https://paws-r.github.io/docs/kafkaconnect/list_worker_configurations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafkaconnect_list_worker_configurations/} for full documentation.
 }
 \keyword{internal}

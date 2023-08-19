@@ -12,6 +12,6 @@ eventbridge_cancel_replay(ReplayName)
 \description{
 Cancels the specified replay.
 
-See \url{https://paws-r.github.io/docs/eventbridge/cancel_replay.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_cancel_replay/} for full documentation.
 }
 \keyword{internal}

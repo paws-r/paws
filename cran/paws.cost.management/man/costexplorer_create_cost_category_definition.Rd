@@ -57,6 +57,6 @@ for Amazon Web Services use
 \description{
 Creates a new Cost Category with the requested name and rules.
 
-See \url{https://paws-r.github.io/docs/costexplorer/create_cost_category_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_create_cost_category_definition/} for full documentation.
 }
 \keyword{internal}

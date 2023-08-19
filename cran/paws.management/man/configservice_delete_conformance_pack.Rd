@@ -14,6 +14,6 @@ configservice_delete_conformance_pack(ConformancePackName)
 \description{
 Deletes the specified conformance pack and all the Config rules, remediation actions, and all evaluation results within that conformance pack.
 
-See \url{https://paws-r.github.io/docs/configservice/delete_conformance_pack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_delete_conformance_pack/} for full documentation.
 }
 \keyword{internal}

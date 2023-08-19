@@ -35,6 +35,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a static route for the specified local gateway route table. You must specify one of the following targets:
 
-See \url{https://paws-r.github.io/docs/ec2/create_local_gateway_route.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_local_gateway_route/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ not exist" error message displays.}
 \description{
 Enables a user in the user pool. After being enabled, users can sign in to AppStream 2.0 and open applications from the stacks to which they are assigned.
 
-See \url{https://paws-r.github.io/docs/appstream/enable_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_enable_user/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ synthetics_get_canary(Name)
 \description{
 Retrieves complete information about one canary. You must specify the name of the canary that you want. To get a list of canaries and their names, use \code{\link[=synthetics_describe_canaries]{describe_canaries}}.
 
-See \url{https://paws-r.github.io/docs/synthetics/get_canary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_get_canary/} for full documentation.
 }
 \keyword{internal}

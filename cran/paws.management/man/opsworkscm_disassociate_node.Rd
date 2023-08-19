@@ -25,6 +25,6 @@ exist.
 \description{
 Disassociates a node from an AWS OpsWorks CM server, and removes the node from the server's managed nodes. After a node is disassociated, the node key pair is no longer valid for accessing the configuration manager's API. For more information about how to associate a node, see \code{\link[=opsworkscm_associate_node]{associate_node}}.
 
-See \url{https://paws-r.github.io/docs/opsworkscm/disassociate_node.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworkscm_disassociate_node/} for full documentation.
 }
 \keyword{internal}

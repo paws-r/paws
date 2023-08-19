@@ -31,6 +31,6 @@ specified when the action type is created.}
 \description{
 Returns information about an action type created for an external provider, where the action is to be used by customers of the external provider. The action can be created with any supported integration model.
 
-See \url{https://paws-r.github.io/docs/codepipeline/get_action_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_get_action_type/} for full documentation.
 }
 \keyword{internal}

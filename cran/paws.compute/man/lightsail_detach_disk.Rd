@@ -13,6 +13,6 @@ lightsail_detach_disk(diskName)
 \description{
 Detaches a stopped block storage disk from a Lightsail instance. Make sure to unmount any file systems on the device within your operating system before stopping the instance and detaching the disk.
 
-See \url{https://paws-r.github.io/docs/lightsail/detach_disk.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_detach_disk/} for full documentation.
 }
 \keyword{internal}

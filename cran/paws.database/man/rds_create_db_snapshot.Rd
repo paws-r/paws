@@ -32,6 +32,6 @@ Constraints:
 \description{
 Creates a snapshot of a DB instance. The source DB instance must be in the \code{available} or \code{storage-optimization} state.
 
-See \url{https://paws-r.github.io/docs/rds/create_db_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_create_db_snapshot/} for full documentation.
 }
 \keyword{internal}

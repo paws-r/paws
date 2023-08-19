@@ -14,6 +14,6 @@ route53recoveryreadiness_create_cross_account_authorization(
 \description{
 Creates a cross-account readiness authorization. This lets you authorize another account to work with Route 53 Application Recovery Controller, for example, to check the readiness status of resources in a separate account.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/create_cross_account_authorization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_create_cross_account_authorization/} for full documentation.
 }
 \keyword{internal}

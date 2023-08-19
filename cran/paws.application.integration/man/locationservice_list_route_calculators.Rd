@@ -19,6 +19,6 @@ Default Value: \code{null}}
 \description{
 Lists route calculator resources in your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/locationservice/list_route_calculators.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_list_route_calculators/} for full documentation.
 }
 \keyword{internal}

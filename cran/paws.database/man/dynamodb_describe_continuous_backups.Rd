@@ -14,6 +14,6 @@ backups and point in time recovery settings.}
 \description{
 Checks the status of continuous backups and point in time recovery on the specified table. Continuous backups are \code{ENABLED} on all tables at table creation. If point in time recovery is enabled, \code{PointInTimeRecoveryStatus} will be set to ENABLED.
 
-See \url{https://paws-r.github.io/docs/dynamodb/describe_continuous_backups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_describe_continuous_backups/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ sfn_describe_map_run(mapRunArn)
 \description{
 Provides information about a Map Run's configuration, progress, and results. For more information, see \href{https://docs.aws.amazon.com/step-functions/latest/dg/concepts-examine-map-run.html}{Examining Map Run} in the \emph{Step Functions Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/sfn/describe_map_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_describe_map_run/} for full documentation.
 }
 \keyword{internal}

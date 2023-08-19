@@ -39,6 +39,6 @@ to in Amazon Connect. Following are acceptable ResourceNames: \code{User} |
 \description{
 This API is in preview release for Amazon Connect and is subject to change.
 
-See \url{https://paws-r.github.io/docs/connect/create_security_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_create_security_profile/} for full documentation.
 }
 \keyword{internal}

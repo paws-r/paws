@@ -25,6 +25,6 @@ in a subsequent call to get the next set of results.}
 \description{
 Returns a summary count of compliant and non-compliant resources for a compliance type. For example, this call can return State Manager associations, patches, or custom compliance types according to the filter criteria that you specify.
 
-See \url{https://paws-r.github.io/docs/ssm/list_compliance_summaries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_list_compliance_summaries/} for full documentation.
 }
 \keyword{internal}

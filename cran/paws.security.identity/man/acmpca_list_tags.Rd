@@ -27,6 +27,6 @@ additional items.}
 \description{
 Lists the tags, if any, that are associated with your private CA or one that has been shared with you. Tags are labels that you can use to identify and organize your CAs. Each tag consists of a key and an optional value. Call the \code{\link[=acmpca_tag_certificate_authority]{tag_certificate_authority}} action to add one or more tags to your CA. Call the \code{\link[=acmpca_untag_certificate_authority]{untag_certificate_authority}} action to remove tags.
 
-See \url{https://paws-r.github.io/docs/acmpca/list_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_list_tags/} for full documentation.
 }
 \keyword{internal}

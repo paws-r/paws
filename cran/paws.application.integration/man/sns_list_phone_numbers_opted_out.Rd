@@ -16,6 +16,6 @@ page of results.}
 \description{
 Returns a list of phone numbers that are opted out, meaning you cannot send SMS messages to them.
 
-See \url{https://paws-r.github.io/docs/sns/list_phone_numbers_opted_out.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_list_phone_numbers_opted_out/} for full documentation.
 }
 \keyword{internal}

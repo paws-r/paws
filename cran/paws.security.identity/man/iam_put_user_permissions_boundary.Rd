@@ -27,6 +27,6 @@ in the \emph{IAM User Guide}.}
 \description{
 Adds or updates the policy that is specified as the IAM user's permissions boundary. You can use an Amazon Web Services managed policy or a customer managed policy to set the boundary for a user. Use the boundary to control the maximum permissions that the user can have. Setting a permissions boundary is an advanced feature that can affect the permissions for the user.
 
-See \url{https://paws-r.github.io/docs/iam/put_user_permissions_boundary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_put_user_permissions_boundary/} for full documentation.
 }
 \keyword{internal}

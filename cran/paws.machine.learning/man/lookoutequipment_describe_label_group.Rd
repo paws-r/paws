@@ -12,6 +12,6 @@ lookoutequipment_describe_label_group(LabelGroupName)
 \description{
 Returns information about the label group.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/describe_label_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_describe_label_group/} for full documentation.
 }
 \keyword{internal}

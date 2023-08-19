@@ -63,6 +63,6 @@ This parameter is used only if the AutoGranted parameter is true.}
 \description{
 The \code{\link[=mturk_update_qualification_type]{update_qualification_type}} operation modifies the attributes of an existing Qualification type, which is represented by a QualificationType data structure. Only the owner of a Qualification type can modify its attributes.
 
-See \url{https://paws-r.github.io/docs/mturk/update_qualification_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_update_qualification_type/} for full documentation.
 }
 \keyword{internal}

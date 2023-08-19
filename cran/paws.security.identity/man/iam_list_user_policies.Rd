@@ -32,6 +32,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the names of the inline policies embedded in the specified IAM user.
 
-See \url{https://paws-r.github.io/docs/iam/list_user_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_user_policies/} for full documentation.
 }
 \keyword{internal}

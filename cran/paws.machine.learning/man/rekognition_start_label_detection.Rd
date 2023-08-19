@@ -55,6 +55,6 @@ analysis operation. Settings can include filters for GENERAL_LABELS.}
 \description{
 Starts asynchronous detection of labels in a stored video.
 
-See \url{https://paws-r.github.io/docs/rekognition/start_label_detection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_start_label_detection/} for full documentation.
 }
 \keyword{internal}

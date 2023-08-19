@@ -12,6 +12,6 @@ appstream_stop_fleet(Name)
 \description{
 Stops the specified fleet.
 
-See \url{https://paws-r.github.io/docs/appstream/stop_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_stop_fleet/} for full documentation.
 }
 \keyword{internal}

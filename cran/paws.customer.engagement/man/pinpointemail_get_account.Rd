@@ -10,6 +10,6 @@ pinpointemail_get_account()
 \description{
 Obtain information about the email-sending status and capabilities of your Amazon Pinpoint account in the current AWS Region.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/get_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_get_account/} for full documentation.
 }
 \keyword{internal}

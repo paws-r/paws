@@ -15,6 +15,6 @@ add tags to.}
 \description{
 Adds tags to an Cloud9 development environment.
 
-See \url{https://paws-r.github.io/docs/cloud9/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloud9_tag_resource/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ will be executed.}
 \description{
 Updates the IAM Identity Center identity store attributes that you can use with the IAM Identity Center instance for attributes-based access control (ABAC). When using an external identity provider as an identity source, you can pass attributes through the SAML assertion as an alternative to configuring attributes from the IAM Identity Center identity store. If a SAML assertion passes any of these attributes, IAM Identity Center replaces the attribute value with the value from the IAM Identity Center identity store. For more information about ABAC, see Attribute-Based Access Control in the \emph{IAM Identity Center User Guide}.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/update_instance_access_control_attribute_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_update_instance_access_control_attribute_configuration/} for full documentation.
 }
 \keyword{internal}

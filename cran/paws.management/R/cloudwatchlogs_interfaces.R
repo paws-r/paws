@@ -5,7 +5,7 @@ NULL
 
 .cloudwatchlogs$associate_kms_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), kmsKeyId = structure(logical(0), tags = list(type = "string")), resourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -52,6 +52,16 @@ NULL
 }
 
 .cloudwatchlogs$create_log_stream_output <- function(...) {
+  list()
+}
+
+.cloudwatchlogs$delete_account_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(policyName = structure(logical(0), tags = list(type = "string")), policyType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$delete_account_policy_output <- function(...) {
   list()
 }
 
@@ -147,6 +157,18 @@ NULL
   list()
 }
 
+.cloudwatchlogs$describe_account_policies_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(policyType = structure(logical(0), tags = list(type = "string")), policyName = structure(logical(0), tags = list(type = "string")), accountIdentifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$describe_account_policies_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(accountPolicies = structure(list(structure(list(policyName = structure(logical(0), tags = list(type = "string")), policyDocument = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "long")), policyType = structure(logical(0), tags = list(type = "string")), scope = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudwatchlogs$describe_destinations_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DestinationNamePrefix = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -179,7 +201,7 @@ NULL
 
 .cloudwatchlogs$describe_log_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(logGroups = structure(list(structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "long")), retentionInDays = structure(logical(0), tags = list(type = "integer")), metricFilterCount = structure(logical(0), tags = list(type = "integer")), arn = structure(logical(0), tags = list(type = "string")), storedBytes = structure(logical(0), tags = list(type = "long")), kmsKeyId = structure(logical(0), tags = list(type = "string")), dataProtectionStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(logGroups = structure(list(structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), creationTime = structure(logical(0), tags = list(type = "long")), retentionInDays = structure(logical(0), tags = list(type = "integer")), metricFilterCount = structure(logical(0), tags = list(type = "integer")), arn = structure(logical(0), tags = list(type = "string")), storedBytes = structure(logical(0), tags = list(type = "long")), kmsKeyId = structure(logical(0), tags = list(type = "string")), dataProtectionStatus = structure(logical(0), tags = list(type = "string")), inheritedProperties = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -257,7 +279,7 @@ NULL
 
 .cloudwatchlogs$disassociate_kms_key_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(logGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), resourceIdentifier = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -333,7 +355,7 @@ NULL
 
 .cloudwatchlogs$get_query_results_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(results = structure(list(structure(list(structure(list(field = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list")), statistics = structure(list(recordsMatched = structure(logical(0), tags = list(type = "double")), recordsScanned = structure(logical(0), tags = list(type = "double")), bytesScanned = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(results = structure(list(structure(list(structure(list(field = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "list")), statistics = structure(list(recordsMatched = structure(logical(0), tags = list(type = "double")), recordsScanned = structure(logical(0), tags = list(type = "double")), bytesScanned = structure(logical(0), tags = list(type = "double"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), encryptionKey = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -358,6 +380,18 @@ NULL
 .cloudwatchlogs$list_tags_log_group_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure", deprecated = TRUE, deprecatedMessage = "Please use the generic tagging API model ListTagsForResourceRequest and ListTagsForResourceResponse"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$put_account_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(policyName = structure(logical(0), tags = list(type = "string")), policyDocument = structure(logical(0), tags = list(type = "string")), policyType = structure(logical(0), tags = list(type = "string")), scope = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$put_account_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(accountPolicy = structure(list(policyName = structure(logical(0), tags = list(type = "string")), policyDocument = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "long")), policyType = structure(logical(0), tags = list(type = "string")), scope = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -14,7 +14,8 @@ mq_update_broker(
   LdapServerMetadata = NULL,
   Logs = NULL,
   MaintenanceWindowStartTime = NULL,
-  SecurityGroups = NULL
+  SecurityGroups = NULL,
+  DataReplicationMode = NULL
 )
 }
 \arguments{
@@ -45,10 +46,12 @@ authorize connections to the broker. Does not apply to RabbitMQ brokers.}
 
 \item{SecurityGroups}{The list of security groups (1 minimum, 5 maximum) that authorizes
 connections to brokers.}
+
+\item{DataReplicationMode}{Defines whether this broker is a part of a data replication pair.}
 }
 \description{
 Adds a pending configuration change to a broker.
 
-See \url{https://paws-r.github.io/docs/mq/update_broker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_update_broker/} for full documentation.
 }
 \keyword{internal}

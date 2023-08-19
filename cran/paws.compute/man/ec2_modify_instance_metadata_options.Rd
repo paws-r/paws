@@ -53,8 +53,7 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{HttpProtocolIpv6}{Enables or disables the IPv6 endpoint for the instance metadata service.
-This setting applies only if you have enabled the HTTP metadata
-endpoint.}
+Applies only if you enabled the HTTP metadata endpoint.}
 
 \item{InstanceMetadataTags}{Set to \code{enabled} to allow access to instance tags from the instance
 metadata. Set to \code{disabled} to turn off access to instance tags from the
@@ -65,6 +64,6 @@ Default: \code{disabled}}
 \description{
 Modify the instance metadata parameters on a running or stopped instance. When you modify the parameters on a stopped instance, they are applied when the instance is started. When you modify the parameters on a running instance, the API responds with a state of “pending”. After the parameter modifications are successfully applied to the instance, the state of the modifications changes from “pending” to “applied” in subsequent describe-instances API calls. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-instance-metadata.html}{Instance metadata and user data} in the \emph{Amazon EC2 User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_instance_metadata_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_instance_metadata_options/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ ses_get_identity_mail_from_domain_attributes(Identities)
 \description{
 Returns the custom MAIL FROM attributes for a list of identities (email addresses : domains).
 
-See \url{https://paws-r.github.io/docs/ses/get_identity_mail_from_domain_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_get_identity_mail_from_domain_attributes/} for full documentation.
 }
 \keyword{internal}

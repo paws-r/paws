@@ -19,6 +19,6 @@ are optional. A maximum of 20 parameters may be modified per request.}
 \description{
 Modifies the parameters of a cache parameter group. You can modify up to 20 parameters in a single request by submitting a list parameter name and value pairs.
 
-See \url{https://paws-r.github.io/docs/elasticache/modify_cache_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_modify_cache_parameter_group/} for full documentation.
 }
 \keyword{internal}

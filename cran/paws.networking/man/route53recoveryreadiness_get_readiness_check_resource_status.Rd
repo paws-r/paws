@@ -25,6 +25,6 @@ identifier generated for the resource by Application Recovery Controller
 \description{
 Gets individual readiness status for a readiness check. To see the overall readiness status for a recovery group, that considers the readiness status for all the readiness checks in the recovery group, use GetRecoveryGroupReadinessSummary.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/get_readiness_check_resource_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_readiness_check_resource_status/} for full documentation.
 }
 \keyword{internal}

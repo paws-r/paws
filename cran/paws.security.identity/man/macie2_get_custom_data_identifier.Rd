@@ -13,6 +13,6 @@ applies to.}
 \description{
 Retrieves the criteria and other settings for a custom data identifier.
 
-See \url{https://paws-r.github.io/docs/macie2/get_custom_data_identifier.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_custom_data_identifier/} for full documentation.
 }
 \keyword{internal}

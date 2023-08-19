@@ -12,6 +12,6 @@ sagemaker_start_monitoring_schedule(MonitoringScheduleName)
 \description{
 Starts a previously stopped monitoring schedule.
 
-See \url{https://paws-r.github.io/docs/sagemaker/start_monitoring_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_start_monitoring_schedule/} for full documentation.
 }
 \keyword{internal}

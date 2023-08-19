@@ -91,6 +91,6 @@ Results are sorted by \code{FilterVariable}.}
 \description{
 Returns a list of \code{\link[=machinelearning_describe_evaluations]{describe_evaluations}} that match the search criteria in the request.
 
-See \url{https://paws-r.github.io/docs/machinelearning/describe_evaluations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_describe_evaluations/} for full documentation.
 }
 \keyword{internal}

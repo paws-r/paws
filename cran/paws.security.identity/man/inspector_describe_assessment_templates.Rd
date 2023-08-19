@@ -13,6 +13,6 @@ inspector_describe_assessment_templates(assessmentTemplateArns)
 \description{
 Describes the assessment templates that are specified by the ARNs of the assessment templates.
 
-See \url{https://paws-r.github.io/docs/inspector/describe_assessment_templates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_describe_assessment_templates/} for full documentation.
 }
 \keyword{internal}

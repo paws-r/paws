@@ -37,6 +37,6 @@ about the resource’s CIDR.}
 \description{
 Modify a resource CIDR. You can use this action to transfer resource CIDRs between scopes and ignore resource CIDRs that you do not want to manage. If set to false, the resource will not be tracked for overlap, it cannot be auto-imported into a pool, and it will be removed from any pool it has an allocation in.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_ipam_resource_cidr.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_ipam_resource_cidr/} for full documentation.
 }
 \keyword{internal}

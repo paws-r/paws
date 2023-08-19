@@ -47,6 +47,6 @@ the completion notification.}
 \description{
 Starts asynchronous detection of inappropriate, unwanted, or offensive content in a stored video. For a list of moderation labels in Amazon Rekognition, see \href{https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html#moderation-api}{Using the image and video moderation APIs}.
 
-See \url{https://paws-r.github.io/docs/rekognition/start_content_moderation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_start_content_moderation/} for full documentation.
 }
 \keyword{internal}

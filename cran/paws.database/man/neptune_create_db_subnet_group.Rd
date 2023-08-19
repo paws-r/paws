@@ -29,6 +29,6 @@ Example: \code{mySubnetgroup}}
 \description{
 Creates a new DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the Amazon Region.
 
-See \url{https://paws-r.github.io/docs/neptune/create_db_subnet_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_create_db_subnet_group/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ deactivating.}
 \description{
 To no longer receive Incident Manager engagements to a contact channel, you can deactivate the channel.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/deactivate_contact_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_deactivate_contact_channel/} for full documentation.
 }
 \keyword{internal}

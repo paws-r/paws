@@ -12,6 +12,6 @@ ivschat_get_logging_configuration(identifier)
 \description{
 Gets the specified logging configuration.
 
-See \url{https://paws-r.github.io/docs/ivschat/get_logging_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivschat_get_logging_configuration/} for full documentation.
 }
 \keyword{internal}

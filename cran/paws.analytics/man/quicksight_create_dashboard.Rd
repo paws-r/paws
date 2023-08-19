@@ -91,6 +91,6 @@ the request to be valid.}
 \description{
 Creates a dashboard from either a template or directly with a \code{DashboardDefinition}. To first create a template, see the \code{\link[=quicksight_create_template]{create_template}} API operation.
 
-See \url{https://paws-r.github.io/docs/quicksight/create_dashboard.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_create_dashboard/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ customerprofiles_untag_resource(resourceArn, tagKeys)
 \description{
 Removes one or more tags from the specified Amazon Connect Customer Profiles resource. In Connect Customer Profiles, domains, profile object types, and integrations can be tagged.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_untag_resource/} for full documentation.
 }
 \keyword{internal}

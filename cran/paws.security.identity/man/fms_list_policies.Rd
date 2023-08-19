@@ -25,6 +25,6 @@ includes a \code{NextToken} value that you can use to get another batch of
 \description{
 Returns an array of \code{PolicySummary} objects.
 
-See \url{https://paws-r.github.io/docs/fms/list_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_list_policies/} for full documentation.
 }
 \keyword{internal}

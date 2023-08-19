@@ -12,6 +12,6 @@ sns_list_topics(NextToken = NULL)
 \description{
 Returns a list of the requester's topics. Each call returns a limited list of topics, up to 100. If there are more topics, a \code{NextToken} is also returned. Use the \code{NextToken} parameter in a new \code{\link[=sns_list_topics]{list_topics}} call to get further results.
 
-See \url{https://paws-r.github.io/docs/sns/list_topics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_list_topics/} for full documentation.
 }
 \keyword{internal}

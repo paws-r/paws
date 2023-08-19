@@ -31,6 +31,6 @@ next set of results.}
 \description{
 Information about approval reviews for a version of a change template in Change Manager.
 
-See \url{https://paws-r.github.io/docs/ssm/list_document_metadata_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_list_document_metadata_history/} for full documentation.
 }
 \keyword{internal}

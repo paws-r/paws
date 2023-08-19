@@ -15,6 +15,6 @@ The ARN must be a full VPC connector ARN.}
 \description{
 Delete an App Runner VPC connector resource. You can't delete a connector that's used by one or more App Runner services.
 
-See \url{https://paws-r.github.io/docs/apprunner/delete_vpc_connector.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_delete_vpc_connector/} for full documentation.
 }
 \keyword{internal}

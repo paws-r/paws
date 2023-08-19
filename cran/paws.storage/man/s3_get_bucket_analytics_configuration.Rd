@@ -20,6 +20,6 @@ different account, the request fails with the HTTP status code
 \description{
 This implementation of the GET action returns an analytics configuration (identified by the analytics configuration ID) from the bucket.
 
-See \url{https://paws-r.github.io/docs/s3/get_bucket_analytics_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_analytics_configuration/} for full documentation.
 }
 \keyword{internal}

@@ -71,6 +71,6 @@ your tags per resource limit.
 \description{
 This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 
-See \url{https://paws-r.github.io/docs/ecs/register_container_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_register_container_instance/} for full documentation.
 }
 \keyword{internal}

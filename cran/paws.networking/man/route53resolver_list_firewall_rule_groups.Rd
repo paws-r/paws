@@ -27,6 +27,6 @@ the prior request in your next request.}
 \description{
 Retrieves the minimal high-level information for the rule groups that you have defined.
 
-See \url{https://paws-r.github.io/docs/route53resolver/list_firewall_rule_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_rule_groups/} for full documentation.
 }
 \keyword{internal}

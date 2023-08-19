@@ -33,39 +33,72 @@ contain before Amazon SQS rejects it. Valid values: An integer from
 \item \code{MessageRetentionPeriod} – The length of time, in seconds, for which
 Amazon SQS retains a message. Valid values: An integer from 60
 seconds (1 minute) to 1,209,600 seconds (14 days). Default: 345,600
-(4 days).
+(4 days). When you change a queue's attributes, the change can take
+up to 60 seconds for most of the attributes to propagate throughout
+the Amazon SQS system. Changes made to the \code{MessageRetentionPeriod}
+attribute can take up to 15 minutes and will impact existing
+messages in the queue potentially causing them to be expired and
+deleted if the \code{MessageRetentionPeriod} is reduced below the age of
+existing messages.
 \item \code{Policy} – The queue's policy. A valid Amazon Web Services policy.
 For more information about policy structure, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html}{Overview of Amazon Web Services IAM Policies}
-in the \emph{Amazon IAM User Guide}.
+in the \emph{IAM User Guide}.
 \item \code{ReceiveMessageWaitTimeSeconds} – The length of time, in seconds,
 for which a \code{\link[=sqs_receive_message]{receive_message}} action waits
 for a message to arrive. Valid values: An integer from 0 to 20
 (seconds). Default: 0.
-\item \code{RedrivePolicy} – The string that includes the parameters for the
-dead-letter queue functionality of the source queue as a JSON
-object. For more information about the redrive policy and
-dead-letter queues, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Using Amazon SQS Dead-Letter Queues}
-in the \emph{Amazon SQS Developer Guide}.
-\itemize{
-\item \code{deadLetterTargetArn} – The Amazon Resource Name (ARN) of the
-dead-letter queue to which Amazon SQS moves messages after the
-value of \code{maxReceiveCount} is exceeded.
-\item \code{maxReceiveCount} – The number of times a message is delivered
-to the source queue before being moved to the dead-letter queue.
-When the \code{ReceiveCount} for a message exceeds the
-\code{maxReceiveCount} for a queue, Amazon SQS moves the message to
-the dead-letter-queue.
-}
-
-The dead-letter queue of a FIFO queue must also be a FIFO queue.
-Similarly, the dead-letter queue of a standard queue must also be a
-standard queue.
 \item \code{VisibilityTimeout} – The visibility timeout for the queue, in
 seconds. Valid values: An integer from 0 to 43,200 (12 hours).
 Default: 30. For more information about the visibility timeout, see
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-visibility-timeout.html}{Visibility Timeout}
 in the \emph{Amazon SQS Developer Guide}.
 }
+
+The following attributes apply only to \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{dead-letter queues:}
+\itemize{
+\item \code{RedrivePolicy} – The string that includes the parameters for the
+dead-letter queue functionality of the source queue as a JSON
+object. The parameters are as follows:
+\itemize{
+\item \code{deadLetterTargetArn} – The Amazon Resource Name (ARN) of the
+dead-letter queue to which Amazon SQS moves messages after the
+value of \code{maxReceiveCount} is exceeded.
+\item \code{maxReceiveCount} – The number of times a message is delivered
+to the source queue before being moved to the dead-letter queue.
+Default: 10. When the \code{ReceiveCount} for a message exceeds the
+\code{maxReceiveCount} for a queue, Amazon SQS moves the message to
+the dead-letter-queue.
+}
+\item \code{RedriveAllowPolicy} – The string that includes the parameters for
+the permissions for the dead-letter queue redrive permission and
+which source queues can specify dead-letter queues as a JSON object.
+The parameters are as follows:
+\itemize{
+\item \code{redrivePermission} – The permission type that defines which
+source queues can specify the current queue as the dead-letter
+queue. Valid values are:
+\itemize{
+\item \code{allowAll} – (Default) Any source queues in this Amazon Web
+Services account in the same Region can specify this queue
+as the dead-letter queue.
+\item \code{denyAll} – No source queues can specify this queue as the
+dead-letter queue.
+\item \code{byQueue} – Only queues specified by the \code{sourceQueueArns}
+parameter can specify this queue as the dead-letter queue.
+}
+\item \code{sourceQueueArns} – The Amazon Resource Names (ARN)s of the
+source queues that can specify this queue as the dead-letter
+queue and redrive messages. You can specify this parameter only
+when the \code{redrivePermission} parameter is set to \code{byQueue}. You
+can specify up to 10 source queue ARNs. To allow more than 10
+source queues to specify dead-letter queues, set the
+\code{redrivePermission} parameter to \code{allowAll}.
+}
+}
+
+The dead-letter queue of a FIFO queue must also be a FIFO queue.
+Similarly, the dead-letter queue of a standard queue must also be a
+standard queue.
 
 The following attributes apply only to
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html}{server-side-encryption}:
@@ -84,10 +117,10 @@ to encrypt or decrypt messages before calling KMS again. An integer
 representing seconds, between 60 seconds (1 minute) and 86,400
 seconds (24 hours). Default: 300 (5 minutes). A shorter time period
 provides better security but results in more calls to KMS which
-might incur charges after Free Tier. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work}{How Does the Data Key Reuse Period Work?}.
+might incur charges after Free Tier. For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-server-side-encryption.html#sqs-how-does-the-data-key-reuse-period-work}{How Does the Data Key Reuse Period Work?}
 \item \code{SqsManagedSseEnabled} – Enables server-side queue encryption using
 SQS owned encryption keys. Only one server-side encryption option is
-supported per queue (e.g.
+supported per queue (for example,
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sse-existing-queue.html}{SSE-KMS}
 or
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html}{SSE-SQS}).
@@ -181,12 +214,12 @@ To be able to tag a queue on creation, you must have the
 \code{sqs:CreateQueue} and \code{sqs:TagQueue} permissions.
 
 Cross-account permissions don't apply to this action. For more
-information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name}{Grant cross-account permissions to a role and a user name}
+information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-basic-examples-of-sqs-policies.html#grant-cross-account-permissions-to-role-and-user-name}{Grant cross-account permissions to a role and a username}
 in the \emph{Amazon SQS Developer Guide}.}
 }
 \description{
 Creates a new standard or FIFO queue. You can pass one or more attributes in the request. Keep the following in mind:
 
-See \url{https://paws-r.github.io/docs/sqs/create_queue.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sqs_create_queue/} for full documentation.
 }
 \keyword{internal}

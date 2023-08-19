@@ -4,22 +4,47 @@
 \alias{customerprofiles}
 \title{Amazon Connect Customer Profiles}
 \usage{
-customerprofiles(config = list())
+customerprofiles(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -54,8 +79,20 @@ might find it helpful to review the \href{https://docs.aws.amazon.com/connect/la
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -64,10 +101,14 @@ might find it helpful to review the \href{https://docs.aws.amazon.com/connect/la
 
 \tabular{ll}{
 \link[paws.customer.engagement:customerprofiles_add_profile_key]{add_profile_key} \tab Associates a new key value with a specific profile, such as a Contact Record ContactId\cr
+\link[paws.customer.engagement:customerprofiles_create_calculated_attribute_definition]{create_calculated_attribute_definition} \tab Creates a new calculated attribute definition\cr
 \link[paws.customer.engagement:customerprofiles_create_domain]{create_domain} \tab Creates a domain, which is a container for all customer data, such as customer profile attributes, object types, profile keys, and encryption keys\cr
+\link[paws.customer.engagement:customerprofiles_create_event_stream]{create_event_stream} \tab Creates an event stream, which is a subscription to real-time events, such as when profiles are created and updated through Amazon Connect Customer Profiles\cr
 \link[paws.customer.engagement:customerprofiles_create_integration_workflow]{create_integration_workflow} \tab Creates an integration workflow\cr
 \link[paws.customer.engagement:customerprofiles_create_profile]{create_profile} \tab Creates a standard profile\cr
+\link[paws.customer.engagement:customerprofiles_delete_calculated_attribute_definition]{delete_calculated_attribute_definition} \tab Deletes an existing calculated attribute definition\cr
 \link[paws.customer.engagement:customerprofiles_delete_domain]{delete_domain} \tab Deletes a specific domain and all of its customer data, such as customer profile attributes and their related objects\cr
+\link[paws.customer.engagement:customerprofiles_delete_event_stream]{delete_event_stream} \tab Disables and deletes the specified event stream\cr
 \link[paws.customer.engagement:customerprofiles_delete_integration]{delete_integration} \tab Removes an integration from a specific domain\cr
 \link[paws.customer.engagement:customerprofiles_delete_profile]{delete_profile} \tab Deletes the standard customer profile and all data pertaining to the profile\cr
 \link[paws.customer.engagement:customerprofiles_delete_profile_key]{delete_profile_key} \tab Removes a searchable key from a customer profile\cr
@@ -75,21 +116,29 @@ might find it helpful to review the \href{https://docs.aws.amazon.com/connect/la
 \link[paws.customer.engagement:customerprofiles_delete_profile_object_type]{delete_profile_object_type} \tab Removes a ProfileObjectType from a specific domain as well as removes all the ProfileObjects of that type\cr
 \link[paws.customer.engagement:customerprofiles_delete_workflow]{delete_workflow} \tab Deletes the specified workflow and all its corresponding resources\cr
 \link[paws.customer.engagement:customerprofiles_get_auto_merging_preview]{get_auto_merging_preview} \tab Tests the auto-merging settings of your Identity Resolution Job without merging your data\cr
+\link[paws.customer.engagement:customerprofiles_get_calculated_attribute_definition]{get_calculated_attribute_definition} \tab Provides more information on a calculated attribute definition for Customer Profiles\cr
+\link[paws.customer.engagement:customerprofiles_get_calculated_attribute_for_profile]{get_calculated_attribute_for_profile} \tab Retrieve a calculated attribute for a customer profile\cr
 \link[paws.customer.engagement:customerprofiles_get_domain]{get_domain} \tab Returns information about a specific domain\cr
+\link[paws.customer.engagement:customerprofiles_get_event_stream]{get_event_stream} \tab Returns information about the specified event stream in a specific domain\cr
 \link[paws.customer.engagement:customerprofiles_get_identity_resolution_job]{get_identity_resolution_job} \tab Returns information about an Identity Resolution Job in a specific domain\cr
 \link[paws.customer.engagement:customerprofiles_get_integration]{get_integration} \tab Returns an integration for a domain\cr
 \link[paws.customer.engagement:customerprofiles_get_matches]{get_matches} \tab Before calling this API, use CreateDomain or UpdateDomain to enable identity resolution: set Matching to true\cr
 \link[paws.customer.engagement:customerprofiles_get_profile_object_type]{get_profile_object_type} \tab Returns the object types for a specific domain\cr
 \link[paws.customer.engagement:customerprofiles_get_profile_object_type_template]{get_profile_object_type_template} \tab Returns the template information for a specific object type\cr
+\link[paws.customer.engagement:customerprofiles_get_similar_profiles]{get_similar_profiles} \tab Returns a set of profiles that belong to the same matching group using the matchId or profileId\cr
 \link[paws.customer.engagement:customerprofiles_get_workflow]{get_workflow} \tab Get details of specified workflow\cr
 \link[paws.customer.engagement:customerprofiles_get_workflow_steps]{get_workflow_steps} \tab Get granular list of steps in workflow\cr
 \link[paws.customer.engagement:customerprofiles_list_account_integrations]{list_account_integrations} \tab Lists all of the integrations associated to a specific URI in the AWS account\cr
+\link[paws.customer.engagement:customerprofiles_list_calculated_attribute_definitions]{list_calculated_attribute_definitions} \tab Lists calculated attribute definitions for Customer Profiles\cr
+\link[paws.customer.engagement:customerprofiles_list_calculated_attributes_for_profile]{list_calculated_attributes_for_profile} \tab Retrieve a list of calculated attributes for a customer profile\cr
 \link[paws.customer.engagement:customerprofiles_list_domains]{list_domains} \tab Returns a list of all the domains for an AWS account that have been created\cr
+\link[paws.customer.engagement:customerprofiles_list_event_streams]{list_event_streams} \tab Returns a list of all the event streams in a specific domain\cr
 \link[paws.customer.engagement:customerprofiles_list_identity_resolution_jobs]{list_identity_resolution_jobs} \tab Lists all of the Identity Resolution Jobs in your domain\cr
 \link[paws.customer.engagement:customerprofiles_list_integrations]{list_integrations} \tab Lists all of the integrations in your domain\cr
 \link[paws.customer.engagement:customerprofiles_list_profile_objects]{list_profile_objects} \tab Returns a list of objects associated with a profile of a given ProfileObjectType\cr
 \link[paws.customer.engagement:customerprofiles_list_profile_object_types]{list_profile_object_types} \tab Lists all of the templates available within the service\cr
 \link[paws.customer.engagement:customerprofiles_list_profile_object_type_templates]{list_profile_object_type_templates} \tab Lists all of the template information for object types\cr
+\link[paws.customer.engagement:customerprofiles_list_rule_based_matches]{list_rule_based_matches} \tab Returns a set of MatchIds that belong to the given domain\cr
 \link[paws.customer.engagement:customerprofiles_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with an Amazon Connect Customer Profiles resource\cr
 \link[paws.customer.engagement:customerprofiles_list_workflows]{list_workflows} \tab Query to list all workflows\cr
 \link[paws.customer.engagement:customerprofiles_merge_profiles]{merge_profiles} \tab Runs an AWS Lambda job that does the following:\cr
@@ -99,6 +148,7 @@ might find it helpful to review the \href{https://docs.aws.amazon.com/connect/la
 \link[paws.customer.engagement:customerprofiles_search_profiles]{search_profiles} \tab Searches for profiles within a specific domain using one or more predefined search keys (e\cr
 \link[paws.customer.engagement:customerprofiles_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified Amazon Connect Customer Profiles resource\cr
 \link[paws.customer.engagement:customerprofiles_untag_resource]{untag_resource} \tab Removes one or more tags from the specified Amazon Connect Customer Profiles resource\cr
+\link[paws.customer.engagement:customerprofiles_update_calculated_attribute_definition]{update_calculated_attribute_definition} \tab Updates an existing calculated attribute definition\cr
 \link[paws.customer.engagement:customerprofiles_update_domain]{update_domain} \tab Updates the properties of a domain, including creating or selecting a dead letter queue or an encryption key\cr
 \link[paws.customer.engagement:customerprofiles_update_profile]{update_profile} \tab Updates the properties of a profile
 }

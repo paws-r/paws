@@ -24,6 +24,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Returns a list of a specified insight's recommendations. Each recommendation includes a list of related metrics and a list of related events.
 
-See \url{https://paws-r.github.io/docs/devopsguru/list_recommendations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_list_recommendations/} for full documentation.
 }
 \keyword{internal}

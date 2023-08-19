@@ -14,6 +14,6 @@ glue_stop_workflow_run(Name, RunId)
 \description{
 Stops the execution of the specified workflow run.
 
-See \url{https://paws-r.github.io/docs/glue/stop_workflow_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_stop_workflow_run/} for full documentation.
 }
 \keyword{internal}

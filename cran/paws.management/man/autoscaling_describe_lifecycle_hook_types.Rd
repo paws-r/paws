@@ -9,6 +9,6 @@ autoscaling_describe_lifecycle_hook_types()
 \description{
 Describes the available types of lifecycle hooks.
 
-See \url{https://paws-r.github.io/docs/autoscaling/describe_lifecycle_hook_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_describe_lifecycle_hook_types/} for full documentation.
 }
 \keyword{internal}

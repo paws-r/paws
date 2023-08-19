@@ -34,6 +34,6 @@ use. These include \code{\link[=acmpca_issue_certificate]{issue_certificate}},
 \description{
 Grants one or more permissions on a private CA to the Certificate Manager (ACM) service principal (\code{acm.amazonaws.com}). These permissions allow ACM to issue and renew ACM certificates that reside in the same Amazon Web Services account as the CA.
 
-See \url{https://paws-r.github.io/docs/acmpca/create_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_create_permission/} for full documentation.
 }
 \keyword{internal}

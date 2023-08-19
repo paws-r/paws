@@ -38,6 +38,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes active client connections and connections that have been terminated within the last 60 minutes for the specified Client VPN endpoint.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_client_vpn_connections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_client_vpn_connections/} for full documentation.
 }
 \keyword{internal}

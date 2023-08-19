@@ -25,6 +25,6 @@ resource.}
 \description{
 Lists the delegates associated with a resource. Users and groups can be resource delegates and answer requests on behalf of the resource.
 
-See \url{https://paws-r.github.io/docs/workmail/list_resource_delegates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_list_resource_delegates/} for full documentation.
 }
 \keyword{internal}

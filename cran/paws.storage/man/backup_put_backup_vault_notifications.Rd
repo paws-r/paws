@@ -43,6 +43,6 @@ supported events.}
 \description{
 Turns on notifications on a backup vault for the specified topic and events.
 
-See \url{https://paws-r.github.io/docs/backup/put_backup_vault_notifications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_put_backup_vault_notifications/} for full documentation.
 }
 \keyword{internal}

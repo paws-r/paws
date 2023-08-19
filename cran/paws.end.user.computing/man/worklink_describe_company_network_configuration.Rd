@@ -13,6 +13,6 @@ worklink_describe_company_network_configuration(FleetArn)
 \description{
 Describes the networking configuration to access the internal websites associated with the specified fleet.
 
-See \url{https://paws-r.github.io/docs/worklink/describe_company_network_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_describe_company_network_configuration/} for full documentation.
 }
 \keyword{internal}

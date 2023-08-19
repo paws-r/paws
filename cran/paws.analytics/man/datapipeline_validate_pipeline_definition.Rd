@@ -25,6 +25,6 @@ pipeline.}
 \description{
 Validates the specified pipeline definition to ensure that it is well formed and can be run without error.
 
-See \url{https://paws-r.github.io/docs/datapipeline/validate_pipeline_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/datapipeline_validate_pipeline_definition/} for full documentation.
 }
 \keyword{internal}

@@ -28,6 +28,6 @@ Environments that you create in the application don't inherit the tags.}
 \description{
 Creates an application that has one configuration template named \code{default} and no application versions.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/create_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_create_application/} for full documentation.
 }
 \keyword{internal}

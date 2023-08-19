@@ -60,6 +60,6 @@ in the FinSpace User Guide.}
 \description{
 Updates a FinSpace Changeset.
 
-See \url{https://paws-r.github.io/docs/finspacedata/update_changeset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_update_changeset/} for full documentation.
 }
 \keyword{internal}

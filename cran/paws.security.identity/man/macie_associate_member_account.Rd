@@ -14,6 +14,6 @@ to associate with Amazon Macie Classic as a member account.}
 \description{
 (Discontinued) Associates a specified Amazon Web Services account with Amazon Macie Classic as a member account.
 
-See \url{https://paws-r.github.io/docs/macie/associate_member_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie_associate_member_account/} for full documentation.
 }
 \keyword{internal}

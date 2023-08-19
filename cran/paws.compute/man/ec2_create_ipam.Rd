@@ -40,6 +40,6 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \description{
 Create an IPAM. Amazon VPC IP Address Manager (IPAM) is a VPC feature that you can use to automate your IP address management workflows including assigning, tracking, troubleshooting, and auditing IP addresses across Amazon Web Services Regions and accounts throughout your Amazon Web Services Organization.
 
-See \url{https://paws-r.github.io/docs/ec2/create_ipam.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_ipam/} for full documentation.
 }
 \keyword{internal}

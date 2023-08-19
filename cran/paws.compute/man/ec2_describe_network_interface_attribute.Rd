@@ -23,6 +23,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes a network interface attribute. You can specify only one attribute at a time.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_network_interface_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_network_interface_attribute/} for full documentation.
 }
 \keyword{internal}

@@ -10,6 +10,6 @@ fms_get_notification_channel()
 \description{
 Information about the Amazon Simple Notification Service (SNS) topic that is used to record Firewall Manager SNS logs.
 
-See \url{https://paws-r.github.io/docs/fms/get_notification_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_get_notification_channel/} for full documentation.
 }
 \keyword{internal}

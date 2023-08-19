@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a root or subordinate private certificate authority (CA). You must specify the CA configuration, an optional configuration for Online Certificate Status Protocol (OCSP) and/or a certificate revocation list (CRL), the CA type, and an optional idempotency token to avoid accidental creation of multiple CAs. The CA configuration specifies the name of the algorithm and key size to be used to create the CA private key, the type of signing algorithm that the CA uses, and X.500 subject information. The OCSP configuration can optionally specify a custom URL for the OCSP responder. The CRL configuration specifies the CRL expiration period in days (the validity period of the CRL), the Amazon S3 bucket that will contain the CRL, and a CNAME alias for the S3 bucket that is included in certificates issued by the CA. If successful, this action returns the Amazon Resource Name (ARN) of the CA.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/create_certificate_authority.html](https://paws-r.github.io/docs/acmpca/create_certificate_authority.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_create_certificate_authority/](https://www.paws-r-sdk.com/docs/acmpca_create_certificate_authority/) for full documentation.
 #'
 #' @param CertificateAuthorityConfiguration &#91;required&#93; Name and bit size of the private key algorithm, the name of the signing
 #' algorithm, and X.500 certificate subject information.
@@ -55,18 +55,17 @@ NULL
 #' 
 #' Default: FIPS_140_2_LEVEL_3_OR_HIGHER
 #' 
-#' *Note:* `FIPS_140_2_LEVEL_3_OR_HIGHER` is not supported in the following
-#' Regions:
-#' 
-#' -   ap-northeast-3
-#' 
-#' -   ap-southeast-3
-#' 
-#' When creating a CA in these Regions, you must provide
+#' Some Amazon Web Services Regions do not support the default. When
+#' creating a CA in these Regions, you must provide
 #' `FIPS_140_2_LEVEL_2_OR_HIGHER` as the argument for
 #' `KeyStorageSecurityStandard`. Failure to do this results in an
 #' `InvalidArgsException` with the message, "A certificate authority cannot
 #' be created in this region with the specified security standard."
+#' 
+#' For information about security standard support in various Regions, see
+#' [Storage and security compliance of Amazon Web Services Private CA
+#' private
+#' keys](https://docs.aws.amazon.com/privateca/latest/userguide/data-protection.html#private-keys).
 #' @param Tags Key-value pairs that will be attached to the new private CA. You can
 #' associate up to 50 tags with a private CA. For information using tags
 #' with IAM to manage permissions, see [Controlling Access Using IAM
@@ -104,7 +103,7 @@ acmpca_create_certificate_authority <- function(CertificateAuthorityConfiguratio
 #' @description
 #' Creates an audit report that lists every time that your CA private key is used. The report is saved in the Amazon S3 bucket that you specify on input. The [`issue_certificate`][acmpca_issue_certificate] and [`revoke_certificate`][acmpca_revoke_certificate] actions use the private key.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/create_certificate_authority_audit_report.html](https://paws-r.github.io/docs/acmpca/create_certificate_authority_audit_report.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_create_certificate_authority_audit_report/](https://www.paws-r-sdk.com/docs/acmpca_create_certificate_authority_audit_report/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of the CA to be audited. This is of the
 #' form:
@@ -140,7 +139,7 @@ acmpca_create_certificate_authority_audit_report <- function(CertificateAuthorit
 #' @description
 #' Grants one or more permissions on a private CA to the Certificate Manager (ACM) service principal (`acm.amazonaws.com`). These permissions allow ACM to issue and renew ACM certificates that reside in the same Amazon Web Services account as the CA.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/create_permission.html](https://paws-r.github.io/docs/acmpca/create_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_create_permission/](https://www.paws-r-sdk.com/docs/acmpca_create_permission/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of the CA that grants the permissions.
 #' You can find the ARN by calling the
@@ -182,7 +181,7 @@ acmpca_create_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #' @description
 #' Deletes a private certificate authority (CA). You must provide the Amazon Resource Name (ARN) of the private CA that you want to delete. You can find the ARN by calling the [`list_certificate_authorities`][acmpca_list_certificate_authorities] action.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/delete_certificate_authority.html](https://paws-r.github.io/docs/acmpca/delete_certificate_authority.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_delete_certificate_authority/](https://www.paws-r-sdk.com/docs/acmpca_delete_certificate_authority/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
 #' [`create_certificate_authority`][acmpca_create_certificate_authority].
@@ -218,7 +217,7 @@ acmpca_delete_certificate_authority <- function(CertificateAuthorityArn, Permane
 #' @description
 #' Revokes permissions on a private CA granted to the Certificate Manager (ACM) service principal (acm.amazonaws.com).
 #'
-#' See [https://paws-r.github.io/docs/acmpca/delete_permission.html](https://paws-r.github.io/docs/acmpca/delete_permission.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_delete_permission/](https://www.paws-r-sdk.com/docs/acmpca_delete_permission/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that issued the
 #' permissions. You can find the CA's ARN by calling the
@@ -256,7 +255,7 @@ acmpca_delete_permission <- function(CertificateAuthorityArn, Principal, SourceA
 #' @description
 #' Deletes the resource-based policy attached to a private CA. Deletion will remove any access that the policy has granted. If there is no policy attached to the private CA, this action will return successful.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/delete_policy.html](https://paws-r.github.io/docs/acmpca/delete_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_delete_policy/](https://www.paws-r-sdk.com/docs/acmpca_delete_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that will have its
 #' policy deleted. You can find the CA's ARN by calling the
@@ -290,7 +289,7 @@ acmpca_delete_policy <- function(ResourceArn) {
 #' @description
 #' Lists information about your private certificate authority (CA) or one that has been shared with you. You specify the private CA on input by its ARN (Amazon Resource Name). The output contains the status of your CA. This can be any of the following:
 #'
-#' See [https://paws-r.github.io/docs/acmpca/describe_certificate_authority.html](https://paws-r.github.io/docs/acmpca/describe_certificate_authority.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_describe_certificate_authority/](https://www.paws-r-sdk.com/docs/acmpca_describe_certificate_authority/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
 #' [`create_certificate_authority`][acmpca_create_certificate_authority].
@@ -324,7 +323,7 @@ acmpca_describe_certificate_authority <- function(CertificateAuthorityArn) {
 #' @description
 #' Lists information about a specific audit report created by calling the [`create_certificate_authority_audit_report`][acmpca_create_certificate_authority_audit_report] action. Audit information is created every time the certificate authority (CA) private key is used. The private key is used when you call the [`issue_certificate`][acmpca_issue_certificate] action or the [`revoke_certificate`][acmpca_revoke_certificate] action.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/describe_certificate_authority_audit_report.html](https://paws-r.github.io/docs/acmpca/describe_certificate_authority_audit_report.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_describe_certificate_authority_audit_report/](https://www.paws-r-sdk.com/docs/acmpca_describe_certificate_authority_audit_report/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of the private CA. This must be of the
 #' form:
@@ -360,7 +359,7 @@ acmpca_describe_certificate_authority_audit_report <- function(CertificateAuthor
 #' @description
 #' Retrieves a certificate from your private CA or one that has been shared with you. The ARN of the certificate is returned when you call the [`issue_certificate`][acmpca_issue_certificate] action. You must specify both the ARN of your private CA and the ARN of the issued certificate when calling the **GetCertificate** action. You can retrieve the certificate if it is in the **ISSUED** state. You can call the [`create_certificate_authority_audit_report`][acmpca_create_certificate_authority_audit_report] action to create a report that contains information about all of the certificates issued and revoked by your private CA.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/get_certificate.html](https://paws-r.github.io/docs/acmpca/get_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_get_certificate/](https://www.paws-r-sdk.com/docs/acmpca_get_certificate/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
 #' [`create_certificate_authority`][acmpca_create_certificate_authority].
@@ -398,7 +397,7 @@ acmpca_get_certificate <- function(CertificateAuthorityArn, CertificateArn) {
 #' @description
 #' Retrieves the certificate and certificate chain for your private certificate authority (CA) or one that has been shared with you. Both the certificate and the chain are base64 PEM-encoded. The chain does not include the CA certificate. Each certificate in the chain signs the one before it.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/get_certificate_authority_certificate.html](https://paws-r.github.io/docs/acmpca/get_certificate_authority_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_get_certificate_authority_certificate/](https://www.paws-r-sdk.com/docs/acmpca_get_certificate_authority_certificate/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) of your private CA. This is of the form:
 #' 
@@ -430,7 +429,7 @@ acmpca_get_certificate_authority_certificate <- function(CertificateAuthorityArn
 #' @description
 #' Retrieves the certificate signing request (CSR) for your private certificate authority (CA). The CSR is created when you call the [`create_certificate_authority`][acmpca_create_certificate_authority] action. Sign the CSR with your Amazon Web Services Private CA-hosted or on-premises root or subordinate CA. Then import the signed certificate back into Amazon Web Services Private CA by calling the [`import_certificate_authority_certificate`][acmpca_import_certificate_authority_certificate] action. The CSR is returned as a base64 PEM-encoded string.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/get_certificate_authority_csr.html](https://paws-r.github.io/docs/acmpca/get_certificate_authority_csr.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_get_certificate_authority_csr/](https://www.paws-r-sdk.com/docs/acmpca_get_certificate_authority_csr/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called the
 #' [`create_certificate_authority`][acmpca_create_certificate_authority]
@@ -463,7 +462,7 @@ acmpca_get_certificate_authority_csr <- function(CertificateAuthorityArn) {
 #' @description
 #' Retrieves the resource-based policy attached to a private CA. If either the private CA resource or the policy cannot be found, this action returns a `ResourceNotFoundException`.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/get_policy.html](https://paws-r.github.io/docs/acmpca/get_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_get_policy/](https://www.paws-r-sdk.com/docs/acmpca_get_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA that will have its
 #' policy retrieved. You can find the CA's ARN by calling the
@@ -495,7 +494,7 @@ acmpca_get_policy <- function(ResourceArn) {
 #' @description
 #' Imports a signed private CA certificate into Amazon Web Services Private CA. This action is used when you are using a chain of trust whose root is located outside Amazon Web Services Private CA. Before you can call this action, the following preparations must in place:
 #'
-#' See [https://paws-r.github.io/docs/acmpca/import_certificate_authority_certificate.html](https://paws-r.github.io/docs/acmpca/import_certificate_authority_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_import_certificate_authority_certificate/](https://www.paws-r-sdk.com/docs/acmpca_import_certificate_authority_certificate/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
 #' [`create_certificate_authority`][acmpca_create_certificate_authority].
@@ -540,7 +539,7 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' @description
 #' Uses your private certificate authority (CA), or one that has been shared with you, to issue a client certificate. This action returns the Amazon Resource Name (ARN) of the certificate. You can retrieve the certificate by calling the [`get_certificate`][acmpca_get_certificate] action and specifying the ARN.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/issue_certificate.html](https://paws-r.github.io/docs/acmpca/issue_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_issue_certificate/](https://www.paws-r-sdk.com/docs/acmpca_issue_certificate/) for full documentation.
 #'
 #' @param ApiPassthrough Specifies X.509 certificate information to be included in the issued
 #' certificate. An `APIPassthrough` or `APICSRPassthrough` template variant
@@ -580,7 +579,7 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' [`create_certificate_authority`][acmpca_create_certificate_authority]
 #' action.
 #' 
-#' The specified signing algorithm family (RSA or ECDSA) much match the
+#' The specified signing algorithm family (RSA or ECDSA) must match the
 #' algorithm family of the CA's secret key.
 #' @param TemplateArn Specifies a custom configuration template to use when issuing a
 #' certificate. If this parameter is not provided, Amazon Web Services
@@ -629,7 +628,8 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' 
 #' The `ValidityNotBefore` value is expressed as an explicit date and time,
 #' using the `Validity` type value `ABSOLUTE`. For more information, see
-#' Validity in this API reference and
+#' [Validity](https://docs.aws.amazon.com/privateca/latest/APIReference/API_Validity.html)
+#' in this API reference and
 #' [Validity](https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.5)
 #' in RFC 5280.
 #' @param IdempotencyToken Alphanumeric string that can be used to distinguish between calls to the
@@ -667,7 +667,7 @@ acmpca_issue_certificate <- function(ApiPassthrough = NULL, CertificateAuthority
 #' @description
 #' Lists the private certificate authorities that you created by using the [`create_certificate_authority`][acmpca_create_certificate_authority] action.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/list_certificate_authorities.html](https://paws-r.github.io/docs/acmpca/list_certificate_authorities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_list_certificate_authorities/](https://www.paws-r-sdk.com/docs/acmpca_list_certificate_authorities/) for full documentation.
 #'
 #' @param NextToken Use this parameter when paginating results in a subsequent request after
 #' you receive a response with truncated results. Set it to the value of
@@ -688,7 +688,7 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
     name = "ListCertificateAuthorities",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CertificateAuthorities")
   )
   input <- .acmpca$list_certificate_authorities_input(NextToken = NextToken, MaxResults = MaxResults, ResourceOwner = ResourceOwner)
   output <- .acmpca$list_certificate_authorities_output()
@@ -706,7 +706,7 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
 #' @description
 #' List all permissions on a private CA, if any, granted to the Certificate Manager (ACM) service principal (acm.amazonaws.com).
 #'
-#' See [https://paws-r.github.io/docs/acmpca/list_permissions.html](https://paws-r.github.io/docs/acmpca/list_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_list_permissions/](https://www.paws-r-sdk.com/docs/acmpca_list_permissions/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA to inspect. You can
 #' find the ARN by calling the
@@ -733,7 +733,7 @@ acmpca_list_permissions <- function(CertificateAuthorityArn, NextToken = NULL, M
     name = "ListPermissions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Permissions")
   )
   input <- .acmpca$list_permissions_input(CertificateAuthorityArn = CertificateAuthorityArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .acmpca$list_permissions_output()
@@ -751,7 +751,7 @@ acmpca_list_permissions <- function(CertificateAuthorityArn, NextToken = NULL, M
 #' @description
 #' Lists the tags, if any, that are associated with your private CA or one that has been shared with you. Tags are labels that you can use to identify and organize your CAs. Each tag consists of a key and an optional value. Call the [`tag_certificate_authority`][acmpca_tag_certificate_authority] action to add one or more tags to your CA. Call the [`untag_certificate_authority`][acmpca_untag_certificate_authority] action to remove tags.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/list_tags.html](https://paws-r.github.io/docs/acmpca/list_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_list_tags/](https://www.paws-r-sdk.com/docs/acmpca_list_tags/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called the
 #' [`create_certificate_authority`][acmpca_create_certificate_authority]
@@ -775,7 +775,7 @@ acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResul
     name = "ListTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
   )
   input <- .acmpca$list_tags_input(CertificateAuthorityArn = CertificateAuthorityArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .acmpca$list_tags_output()
@@ -792,7 +792,7 @@ acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResul
 #' @description
 #' Attaches a resource-based policy to a private CA.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/put_policy.html](https://paws-r.github.io/docs/acmpca/put_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_put_policy/](https://www.paws-r-sdk.com/docs/acmpca_put_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of the private CA to associate with the
 #' policy. The ARN of the CA can be found by calling the
@@ -831,7 +831,7 @@ acmpca_put_policy <- function(ResourceArn, Policy) {
 #' @description
 #' Restores a certificate authority (CA) that is in the `DELETED` state. You can restore a CA during the period that you defined in the **PermanentDeletionTimeInDays** parameter of the [`delete_certificate_authority`][acmpca_delete_certificate_authority] action. Currently, you can specify 7 to 30 days. If you did not specify a **PermanentDeletionTimeInDays** value, by default you can restore the CA at any time in a 30 day period. You can check the time remaining in the restoration period of a private CA in the `DELETED` state by calling the [`describe_certificate_authority`][acmpca_describe_certificate_authority] or [`list_certificate_authorities`][acmpca_list_certificate_authorities] actions. The status of a restored CA is set to its pre-deletion status when the **RestoreCertificateAuthority** action returns. To change its status to `ACTIVE`, call the [`update_certificate_authority`][acmpca_update_certificate_authority] action. If the private CA was in the `PENDING_CERTIFICATE` state at deletion, you must use the [`import_certificate_authority_certificate`][acmpca_import_certificate_authority_certificate] action to import a certificate authority into the private CA before it can be activated. You cannot restore a CA after the restoration period has ended.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/restore_certificate_authority.html](https://paws-r.github.io/docs/acmpca/restore_certificate_authority.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_restore_certificate_authority/](https://www.paws-r-sdk.com/docs/acmpca_restore_certificate_authority/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called the
 #' [`create_certificate_authority`][acmpca_create_certificate_authority]
@@ -865,7 +865,7 @@ acmpca_restore_certificate_authority <- function(CertificateAuthorityArn) {
 #' @description
 #' Revokes a certificate that was issued inside Amazon Web Services Private CA. If you enable a certificate revocation list (CRL) when you create or update your private CA, information about the revoked certificates will be included in the CRL. Amazon Web Services Private CA writes the CRL to an S3 bucket that you specify. A CRL is typically updated approximately 30 minutes after a certificate is revoked. If for any reason the CRL update fails, Amazon Web Services Private CA attempts makes further attempts every 15 minutes. With Amazon CloudWatch, you can create alarms for the metrics `CRLGenerated` and `MisconfiguredCRLBucket`. For more information, see [Supported CloudWatch Metrics](https://docs.aws.amazon.com/privateca/latest/userguide/PcaCloudWatch.html).
 #'
-#' See [https://paws-r.github.io/docs/acmpca/revoke_certificate.html](https://paws-r.github.io/docs/acmpca/revoke_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_revoke_certificate/](https://www.paws-r-sdk.com/docs/acmpca_revoke_certificate/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; Amazon Resource Name (ARN) of the private CA that issued the certificate
 #' to be revoked. This must be of the form:
@@ -911,7 +911,7 @@ acmpca_revoke_certificate <- function(CertificateAuthorityArn, CertificateSerial
 #' @description
 #' Adds one or more tags to your private CA. Tags are labels that you can use to identify and organize your Amazon Web Services resources. Each tag consists of a key and an optional value. You specify the private CA on input by its Amazon Resource Name (ARN). You specify the tag by using a key-value pair. You can apply a tag to just one private CA if you want to identify a specific characteristic of that CA, or you can apply the same tag to multiple private CAs if you want to filter for a common relationship among those CAs. To remove one or more tags, use the [`untag_certificate_authority`][acmpca_untag_certificate_authority] action. Call the [`list_tags`][acmpca_list_tags] action to see what tags are associated with your CA.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/tag_certificate_authority.html](https://paws-r.github.io/docs/acmpca/tag_certificate_authority.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_tag_certificate_authority/](https://www.paws-r-sdk.com/docs/acmpca_tag_certificate_authority/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
 #' [`create_certificate_authority`][acmpca_create_certificate_authority].
@@ -945,7 +945,7 @@ acmpca_tag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' @description
 #' Remove one or more tags from your private CA. A tag consists of a key-value pair. If you do not specify the value portion of the tag when calling this action, the tag will be removed regardless of value. If you specify a value, the tag is removed only if it is associated with the specified value. To add tags to a private CA, use the [`tag_certificate_authority`][acmpca_tag_certificate_authority]. Call the [`list_tags`][acmpca_list_tags] action to see what tags are associated with your CA.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/untag_certificate_authority.html](https://paws-r.github.io/docs/acmpca/untag_certificate_authority.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_untag_certificate_authority/](https://www.paws-r-sdk.com/docs/acmpca_untag_certificate_authority/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; The Amazon Resource Name (ARN) that was returned when you called
 #' [`create_certificate_authority`][acmpca_create_certificate_authority].
@@ -980,7 +980,7 @@ acmpca_untag_certificate_authority <- function(CertificateAuthorityArn, Tags) {
 #' @description
 #' Updates the status or configuration of a private certificate authority (CA). Your private CA must be in the `ACTIVE` or `DISABLED` state before you can update it. You can disable a private CA that is in the `ACTIVE` state or make a CA that is in the `DISABLED` state active again.
 #'
-#' See [https://paws-r.github.io/docs/acmpca/update_certificate_authority.html](https://paws-r.github.io/docs/acmpca/update_certificate_authority.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/acmpca_update_certificate_authority/](https://www.paws-r-sdk.com/docs/acmpca_update_certificate_authority/) for full documentation.
 #'
 #' @param CertificateAuthorityArn &#91;required&#93; Amazon Resource Name (ARN) of the private CA that issued the certificate
 #' to be revoked. This must be of the form:

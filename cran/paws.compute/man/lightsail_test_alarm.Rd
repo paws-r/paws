@@ -23,6 +23,6 @@ determine the alarm state.
 \description{
 Tests an alarm by displaying a banner on the Amazon Lightsail console. If a notification trigger is configured for the specified alarm, the test also sends a notification to the notification protocol (\code{Email} and/or \code{SMS}) configured for the alarm.
 
-See \url{https://paws-r.github.io/docs/lightsail/test_alarm.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_test_alarm/} for full documentation.
 }
 \keyword{internal}

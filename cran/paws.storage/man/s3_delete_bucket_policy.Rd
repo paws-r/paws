@@ -17,6 +17,6 @@ different account, the request fails with the HTTP status code
 \description{
 This implementation of the DELETE action uses the policy subresource to delete the policy of a specified bucket. If you are using an identity other than the root user of the Amazon Web Services account that owns the bucket, the calling identity must have the \code{\link[=s3_delete_bucket_policy]{delete_bucket_policy}} permissions on the specified bucket and belong to the bucket owner's account to use this operation.
 
-See \url{https://paws-r.github.io/docs/s3/delete_bucket_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_delete_bucket_policy/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified network ACL. You can't delete the ACL if it's associated with any subnets. You can't delete the default network ACL.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_network_acl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_network_acl/} for full documentation.
 }
 \keyword{internal}

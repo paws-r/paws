@@ -14,6 +14,6 @@ workspacesweb_associate_browser_settings(browserSettingsArn, portalArn)
 \description{
 Associates a browser settings resource with a web portal.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/associate_browser_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_associate_browser_settings/} for full documentation.
 }
 \keyword{internal}

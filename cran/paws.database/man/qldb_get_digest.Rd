@@ -13,6 +13,6 @@ qldb_get_digest(Name)
 \description{
 Returns the digest of a ledger at the latest committed block in the journal. The response includes a 256-bit hash value and a block address.
 
-See \url{https://paws-r.github.io/docs/qldb/get_digest.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_get_digest/} for full documentation.
 }
 \keyword{internal}

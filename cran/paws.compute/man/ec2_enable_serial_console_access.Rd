@@ -16,6 +16,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Enables access to the EC2 serial console of all instances for your account. By default, access to the EC2 serial console is disabled for your account. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configure-access-to-serial-console.html#serial-console-account-access}{Manage account access to the EC2 serial console} in the \emph{Amazon EC2 User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/enable_serial_console_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_enable_serial_console_access/} for full documentation.
 }
 \keyword{internal}

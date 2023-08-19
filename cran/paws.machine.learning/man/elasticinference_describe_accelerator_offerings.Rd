@@ -23,6 +23,6 @@ availability zone level returning the availability zone id.}
 \description{
 Describes the locations in which a given accelerator type or set of types is present in a given region.
 
-See \url{https://paws-r.github.io/docs/elasticinference/describe_accelerator_offerings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticinference_describe_accelerator_offerings/} for full documentation.
 }
 \keyword{internal}

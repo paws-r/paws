@@ -12,6 +12,6 @@ route53resolver_delete_resolver_rule(ResolverRuleId)
 \description{
 Deletes a Resolver rule. Before you can delete a Resolver rule, you must disassociate it from all the VPCs that you associated the Resolver rule with. For more information, see \code{\link[=route53resolver_disassociate_resolver_rule]{disassociate_resolver_rule}}.
 
-See \url{https://paws-r.github.io/docs/route53resolver/delete_resolver_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_delete_resolver_rule/} for full documentation.
 }
 \keyword{internal}

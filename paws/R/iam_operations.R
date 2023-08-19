@@ -89,10 +89,12 @@ iam_add_client_id_to_open_id_connect_provider <- function(OpenIDConnectProviderA
 #' The caller of this operation must be granted the `PassRole` permission
 #' on the IAM role by a permissions policy.
 #' 
-#' For more information about roles, see [Working with
-#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
-#' For more information about instance profiles, see [About instance
-#' profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
+#' For more information about roles, see [IAM
+#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
+#' in the *IAM User Guide*. For more information about instance profiles,
+#' see [Using instance
+#' profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html)
+#' in the *IAM User Guide*.
 #'
 #' @usage
 #' iam_add_role_to_instance_profile(InstanceProfileName, RoleName)
@@ -224,7 +226,8 @@ iam_add_user_to_group <- function(GroupName, UserName) {
 #' 
 #' You use this operation to attach a managed policy to a group. To embed
 #' an inline policy in a group, use
-#' [`put_group_policy`][iam_put_group_policy].
+#' [`put_group_policy`](https://docs.aws.amazon.com/IAM/latest/APIReference/API_PutGroupPolicy.html)
+#' .
 #' 
 #' As a best practice, you can validate your IAM policies. To learn more,
 #' see [Validating IAM
@@ -302,12 +305,15 @@ iam_attach_group_policy <- function(GroupName, PolicyArn) {
 #' 
 #' You cannot use a managed policy as the role's trust policy. The role's
 #' trust policy is created at the same time as the role, using
-#' [`create_role`][iam_create_role]. You can update a role's trust policy
-#' using [`update_assume_role_policy`][iam_update_assume_role_policy].
+#' [`create_role`](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
+#' . You can update a role's trust policy using
+#' [`UpdateAssumerolePolicy`](https://docs.aws.amazon.com/IAM/latest/APIReference/API_UpdateAssumeRolePolicy.html)
+#' .
 #' 
 #' Use this operation to attach a *managed* policy to a role. To embed an
-#' inline policy in a role, use [`put_role_policy`][iam_put_role_policy].
-#' For more information about policies, see [Managed policies and inline
+#' inline policy in a role, use
+#' [`put_role_policy`](https://docs.aws.amazon.com/IAM/latest/APIReference/API_PutRolePolicy.html)
+#' . For more information about policies, see [Managed policies and inline
 #' policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
@@ -381,7 +387,8 @@ iam_attach_role_policy <- function(RoleName, PolicyArn) {
 #' 
 #' You use this operation to attach a *managed* policy to a user. To embed
 #' an inline policy in a user, use
-#' [`put_user_policy`][iam_put_user_policy].
+#' [`put_user_policy`](https://docs.aws.amazon.com/IAM/latest/APIReference/API_PutUserPolicy.html)
+#' .
 #' 
 #' As a best practice, you can validate your IAM policies. To learn more,
 #' see [Validating IAM
@@ -620,8 +627,10 @@ iam_create_access_key <- function(UserName = NULL) {
 #'
 #' @description
 #' Creates an alias for your Amazon Web Services account. For information
-#' about using an Amazon Web Services account alias, see Using an alias for
-#' your Amazon Web Services account ID in the *IAM User Guide*.
+#' about using an Amazon Web Services account alias, see [Creating,
+#' deleting, and listing an Amazon Web Services account
+#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/CreateAccountAlias.html)
+#' in the *Amazon Web Services Sign-In User Guide*.
 #'
 #' @usage
 #' iam_create_account_alias(AccountAlias)
@@ -1010,7 +1019,8 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #'
 #' @description
 #' Creates an IAM entity to describe an identity provider (IdP) that
-#' supports [OpenID Connect (OIDC)](https://openid.net/connect/).
+#' supports [OpenID Connect
+#' (OIDC)](https://openid.net/developers/how-connect-works/).
 #' 
 #' The OIDC provider that you create with this operation can be used as a
 #' principal in a role's trust policy. Such a policy establishes a trust
@@ -1042,12 +1052,12 @@ iam_create_login_profile <- function(UserName, Password, PasswordResetRequired =
 #' access Amazon Web Services.
 #' 
 #' Amazon Web Services secures communication with some OIDC identity
-#' providers (IdPs) through our library of trusted certificate authorities
-#' (CAs) instead of using a certificate thumbprint to verify your IdP
-#' server certificate. These OIDC IdPs include Google, Auth0, and those
-#' that use an Amazon S3 bucket to host a JSON Web Key Set (JWKS) endpoint.
-#' In these cases, your legacy thumbprint remains in your configuration,
-#' but is no longer used for validation.
+#' providers (IdPs) through our library of trusted root certificate
+#' authorities (CAs) instead of using a certificate thumbprint to verify
+#' your IdP server certificate. These OIDC IdPs include Auth0, GitHub,
+#' Google, and those that use an Amazon S3 bucket to host a JSON Web Key
+#' Set (JWKS) endpoint. In these cases, your legacy thumbprint remains in
+#' your configuration, but is no longer used for validation.
 #' 
 #' The trust for the OIDC provider is derived from the IAM provider that
 #' this operation creates. Therefore, it is best to limit access to the
@@ -1461,11 +1471,12 @@ iam_create_policy_version <- function(PolicyArn, PolicyDocument, SetAsDefault = 
 #' Creates a new role for your Amazon Web Services account
 #'
 #' @description
-#' Creates a new role for your Amazon Web Services account. For more
-#' information about roles, see [IAM
-#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
-#' For information about quotas for role names and the number of roles you
-#' can create, see [IAM and STS
+#' Creates a new role for your Amazon Web Services account.
+#' 
+#' For more information about roles, see [IAM
+#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
+#' in the *IAM User Guide*. For information about quotas for role names and
+#' the number of roles you can create, see [IAM and STS
 #' quotas](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html)
 #' in the *IAM User Guide*.
 #'
@@ -2361,8 +2372,10 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
 #'
 #' @description
 #' Deletes the specified Amazon Web Services account alias. For information
-#' about using an Amazon Web Services account alias, see Using an alias for
-#' your Amazon Web Services account ID in the *IAM User Guide*.
+#' about using an Amazon Web Services account alias, see [Creating,
+#' deleting, and listing an Amazon Web Services account
+#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/CreateAccountAlias.html)
+#' in the *Amazon Web Services Sign-In User Guide*.
 #'
 #' @usage
 #' iam_delete_account_alias(AccountAlias)
@@ -2593,8 +2606,9 @@ iam_delete_group_policy <- function(GroupName, PolicyName) {
 #' profile that is associated with a running instance will break any
 #' applications running on the instance.
 #' 
-#' For more information about instance profiles, see [About instance
-#' profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
+#' For more information about instance profiles, see [Using instance
+#' profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html)
+#' in the *IAM User Guide*.
 #'
 #' @usage
 #' iam_delete_instance_profile(InstanceProfileName)
@@ -4707,7 +4721,7 @@ iam_get_account_authorization_details <- function(Filter = NULL, MaxItems = NULL
     name = "GetAccountAuthorizationDetails",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = list("UserDetailList", "GroupDetailList", "RoleDetailList", "Policies"))
   )
   input <- .iam$get_account_authorization_details_input(Filter = Filter, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$get_account_authorization_details_output()
@@ -5163,7 +5177,7 @@ iam_get_group <- function(GroupName, Marker = NULL, MaxItems = NULL) {
     name = "GetGroup",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Users")
   )
   input <- .iam$get_group_input(GroupName = GroupName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$get_group_output()
@@ -5261,7 +5275,7 @@ iam_get_group_policy <- function(GroupName, PolicyName) {
 #' @description
 #' Retrieves information about the specified instance profile, including
 #' the instance profile's path, GUID, ARN, and role. For more information
-#' about instance profiles, see [About instance
+#' about instance profiles, see [Using instance
 #' profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html)
 #' in the *IAM User Guide*.
 #'
@@ -5444,6 +5458,64 @@ iam_get_login_profile <- function(UserName) {
   return(response)
 }
 .iam$operations$get_login_profile <- iam_get_login_profile
+
+#' Retrieves information about an MFA device for a specified user
+#'
+#' @description
+#' Retrieves information about an MFA device for a specified user.
+#'
+#' @usage
+#' iam_get_mfa_device(SerialNumber, UserName)
+#'
+#' @param SerialNumber &#91;required&#93; Serial number that uniquely identifies the MFA device. For this API, we
+#' only accept FIDO security key
+#' [ARNs](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html).
+#' @param UserName The friendly name identifying the user.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   UserName = "string",
+#'   SerialNumber = "string",
+#'   EnableDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Certifications = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_mfa_device(
+#'   SerialNumber = "string",
+#'   UserName = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname iam_get_mfa_device
+#'
+#' @aliases iam_get_mfa_device
+iam_get_mfa_device <- function(SerialNumber, UserName = NULL) {
+  op <- new_operation(
+    name = "GetMFADevice",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .iam$get_mfa_device_input(SerialNumber = SerialNumber, UserName = UserName)
+  output <- .iam$get_mfa_device_output()
+  config <- get_config()
+  svc <- .iam$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.iam$operations$get_mfa_device <- iam_get_mfa_device
 
 #' Returns information about the specified OpenID Connect (OIDC) provider
 #' resource object in IAM
@@ -5841,8 +5913,9 @@ iam_get_policy_version <- function(PolicyArn, VersionId) {
 #' @description
 #' Retrieves information about the specified role, including the role's
 #' path, GUID, ARN, and the role's trust policy that grants permission to
-#' assume the role. For more information about roles, see [Working with
-#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
+#' assume the role. For more information about roles, see [IAM
+#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
+#' in the *IAM User Guide*.
 #' 
 #' Policies returned by this operation are URL-encoded compliant with [RFC
 #' 3986](https://datatracker.ietf.org/doc/html/rfc3986). You can use a URL
@@ -5957,9 +6030,9 @@ iam_get_role <- function(RoleName) {
 #' policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
-#' For more information about roles, see [Using roles to delegate
-#' permissions and federate
-#' identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
+#' For more information about roles, see [IAM
+#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
+#' in the *IAM User Guide*.
 #'
 #' @usage
 #' iam_get_role_policy(RoleName, PolicyName)
@@ -6882,7 +6955,7 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
     name = "ListAccessKeys",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AccessKeyMetadata")
   )
   input <- .iam$list_access_keys_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_access_keys_output()
@@ -6900,8 +6973,10 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #' @description
 #' Lists the account alias associated with the Amazon Web Services account
 #' (Note: you can have only one). For information about using an Amazon Web
-#' Services account alias, see Using an alias for your Amazon Web Services
-#' account ID in the *IAM User Guide*.
+#' Services account alias, see [Creating, deleting, and listing an Amazon
+#' Web Services account
+#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/CreateAccountAlias.html)
+#' in the *Amazon Web Services Sign-In User Guide*.
 #'
 #' @usage
 #' iam_list_account_aliases(Marker, MaxItems)
@@ -6956,7 +7031,7 @@ iam_list_account_aliases <- function(Marker = NULL, MaxItems = NULL) {
     name = "ListAccountAliases",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AccountAliases")
   )
   input <- .iam$list_account_aliases_input(Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_account_aliases_output()
@@ -7056,7 +7131,7 @@ iam_list_attached_group_policies <- function(GroupName, PathPrefix = NULL, Marke
     name = "ListAttachedGroupPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AttachedPolicies")
   )
   input <- .iam$list_attached_group_policies_input(GroupName = GroupName, PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_attached_group_policies_output()
@@ -7155,7 +7230,7 @@ iam_list_attached_role_policies <- function(RoleName, PathPrefix = NULL, Marker 
     name = "ListAttachedRolePolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AttachedPolicies")
   )
   input <- .iam$list_attached_role_policies_input(RoleName = RoleName, PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_attached_role_policies_output()
@@ -7254,7 +7329,7 @@ iam_list_attached_user_policies <- function(UserName, PathPrefix = NULL, Marker 
     name = "ListAttachedUserPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "AttachedPolicies")
   )
   input <- .iam$list_attached_user_policies_input(UserName = UserName, PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_attached_user_policies_output()
@@ -7380,7 +7455,7 @@ iam_list_entities_for_policy <- function(PolicyArn, EntityFilter = NULL, PathPre
     name = "ListEntitiesForPolicy",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = list("PolicyGroups", "PolicyUsers", "PolicyRoles"))
   )
   input <- .iam$list_entities_for_policy_input(PolicyArn = PolicyArn, EntityFilter = EntityFilter, PathPrefix = PathPrefix, PolicyUsageFilter = PolicyUsageFilter, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_entities_for_policy_output()
@@ -7473,7 +7548,7 @@ iam_list_group_policies <- function(GroupName, Marker = NULL, MaxItems = NULL) {
     name = "ListGroupPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "PolicyNames")
   )
   input <- .iam$list_group_policies_input(GroupName = GroupName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_group_policies_output()
@@ -7567,7 +7642,7 @@ iam_list_groups <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
     name = "ListGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Groups")
   )
   input <- .iam$list_groups_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_groups_output()
@@ -7658,7 +7733,7 @@ iam_list_groups_for_user <- function(UserName, Marker = NULL, MaxItems = NULL) {
     name = "ListGroupsForUser",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Groups")
   )
   input <- .iam$list_groups_for_user_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_groups_for_user_output()
@@ -7736,7 +7811,7 @@ iam_list_instance_profile_tags <- function(InstanceProfileName, Marker = NULL, M
     name = "ListInstanceProfileTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_instance_profile_tags_input(InstanceProfileName = InstanceProfileName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_instance_profile_tags_output()
@@ -7753,8 +7828,9 @@ iam_list_instance_profile_tags <- function(InstanceProfileName, Marker = NULL, M
 #' @description
 #' Lists the instance profiles that have the specified path prefix. If
 #' there are none, the operation returns an empty list. For more
-#' information about instance profiles, see [About instance
-#' profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
+#' information about instance profiles, see [Using instance
+#' profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html)
+#' in the *IAM User Guide*.
 #' 
 #' IAM resource-listing operations return a subset of the available
 #' attributes for the resource. For example, this operation does not return
@@ -7869,7 +7945,7 @@ iam_list_instance_profiles <- function(PathPrefix = NULL, Marker = NULL, MaxItem
     name = "ListInstanceProfiles",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "InstanceProfiles")
   )
   input <- .iam$list_instance_profiles_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_instance_profiles_output()
@@ -7886,8 +7962,9 @@ iam_list_instance_profiles <- function(PathPrefix = NULL, Marker = NULL, MaxItem
 #' @description
 #' Lists the instance profiles that have the specified associated IAM role.
 #' If there are none, the operation returns an empty list. For more
-#' information about instance profiles, go to [About instance
-#' profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
+#' information about instance profiles, go to [Using instance
+#' profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html)
+#' in the *IAM User Guide*.
 #' 
 #' You can paginate the results using the `MaxItems` and `Marker`
 #' parameters.
@@ -7990,7 +8067,7 @@ iam_list_instance_profiles_for_role <- function(RoleName, Marker = NULL, MaxItem
     name = "ListInstanceProfilesForRole",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "InstanceProfiles")
   )
   input <- .iam$list_instance_profiles_for_role_input(RoleName = RoleName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_instance_profiles_for_role_output()
@@ -8071,7 +8148,7 @@ iam_list_mfa_device_tags <- function(SerialNumber, Marker = NULL, MaxItems = NUL
     name = "ListMFADeviceTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_mfa_device_tags_input(SerialNumber = SerialNumber, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_mfa_device_tags_output()
@@ -8155,7 +8232,7 @@ iam_list_mfa_devices <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
     name = "ListMFADevices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "MFADevices")
   )
   input <- .iam$list_mfa_devices_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_mfa_devices_output()
@@ -8239,7 +8316,7 @@ iam_list_open_id_connect_provider_tags <- function(OpenIDConnectProviderArn, Mar
     name = "ListOpenIDConnectProviderTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_open_id_connect_provider_tags_input(OpenIDConnectProviderArn = OpenIDConnectProviderArn, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_open_id_connect_provider_tags_output()
@@ -8441,7 +8518,7 @@ iam_list_policies <- function(Scope = NULL, OnlyAttached = NULL, PathPrefix = NU
     name = "ListPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Policies")
   )
   input <- .iam$list_policies_input(Scope = Scope, OnlyAttached = OnlyAttached, PathPrefix = PathPrefix, PolicyUsageFilter = PolicyUsageFilter, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_policies_output()
@@ -8655,7 +8732,7 @@ iam_list_policy_tags <- function(PolicyArn, Marker = NULL, MaxItems = NULL) {
     name = "ListPolicyTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_policy_tags_input(PolicyArn = PolicyArn, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_policy_tags_output()
@@ -8742,7 +8819,7 @@ iam_list_policy_versions <- function(PolicyArn, Marker = NULL, MaxItems = NULL) 
     name = "ListPolicyVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Versions")
   )
   input <- .iam$list_policy_versions_input(PolicyArn = PolicyArn, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_policy_versions_output()
@@ -8826,7 +8903,7 @@ iam_list_role_policies <- function(RoleName, Marker = NULL, MaxItems = NULL) {
     name = "ListRolePolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "PolicyNames")
   )
   input <- .iam$list_role_policies_input(RoleName = RoleName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_role_policies_output()
@@ -8912,7 +8989,7 @@ iam_list_role_tags <- function(RoleName, Marker = NULL, MaxItems = NULL) {
     name = "ListRoleTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_role_tags_input(RoleName = RoleName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_role_tags_output()
@@ -8929,13 +9006,23 @@ iam_list_role_tags <- function(RoleName, Marker = NULL, MaxItems = NULL) {
 #' @description
 #' Lists the IAM roles that have the specified path prefix. If there are
 #' none, the operation returns an empty list. For more information about
-#' roles, see [Working with
-#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
+#' roles, see [IAM
+#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
+#' in the *IAM User Guide*.
 #' 
 #' IAM resource-listing operations return a subset of the available
-#' attributes for the resource. For example, this operation does not return
-#' tags, even though they are an attribute of the returned object. To view
-#' all of the information for a role, see [`get_role`][iam_get_role].
+#' attributes for the resource. This operation does not return the
+#' following attributes, even though they are an attribute of the returned
+#' object:
+#' 
+#' -   PermissionsBoundary
+#' 
+#' -   RoleLastUsed
+#' 
+#' -   Tags
+#' 
+#' To view all of the information for a role, see
+#' [`get_role`][iam_get_role].
 #' 
 #' You can paginate the results using the `MaxItems` and `Marker`
 #' parameters.
@@ -9027,7 +9114,7 @@ iam_list_roles <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
     name = "ListRoles",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Roles")
   )
   input <- .iam$list_roles_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_roles_output()
@@ -9110,7 +9197,7 @@ iam_list_saml_provider_tags <- function(SAMLProviderArn, Marker = NULL, MaxItems
     name = "ListSAMLProviderTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_saml_provider_tags_input(SAMLProviderArn = SAMLProviderArn, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_saml_provider_tags_output()
@@ -9171,7 +9258,7 @@ iam_list_saml_providers <- function() {
     name = "ListSAMLProviders",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "SAMLProviderList")
   )
   input <- .iam$list_saml_providers_input()
   output <- .iam$list_saml_providers_output()
@@ -9263,7 +9350,7 @@ iam_list_ssh_public_keys <- function(UserName = NULL, Marker = NULL, MaxItems = 
     name = "ListSSHPublicKeys",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "SSHPublicKeys")
   )
   input <- .iam$list_ssh_public_keys_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_ssh_public_keys_output()
@@ -9349,7 +9436,7 @@ iam_list_server_certificate_tags <- function(ServerCertificateName, Marker = NUL
     name = "ListServerCertificateTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_server_certificate_tags_input(ServerCertificateName = ServerCertificateName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_server_certificate_tags_output()
@@ -9455,7 +9542,7 @@ iam_list_server_certificates <- function(PathPrefix = NULL, Marker = NULL, MaxIt
     name = "ListServerCertificates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "ServerCertificateMetadataList")
   )
   input <- .iam$list_server_certificates_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_server_certificates_output()
@@ -9634,7 +9721,7 @@ iam_list_signing_certificates <- function(UserName = NULL, Marker = NULL, MaxIte
     name = "ListSigningCertificates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Certificates")
   )
   input <- .iam$list_signing_certificates_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_signing_certificates_output()
@@ -9718,7 +9805,7 @@ iam_list_user_policies <- function(UserName, Marker = NULL, MaxItems = NULL) {
     name = "ListUserPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "PolicyNames")
   )
   input <- .iam$list_user_policies_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_user_policies_output()
@@ -9804,7 +9891,7 @@ iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
     name = "ListUserTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Tags")
   )
   input <- .iam$list_user_tags_input(UserName = UserName, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_user_tags_output()
@@ -9825,9 +9912,16 @@ iam_list_user_tags <- function(UserName, Marker = NULL, MaxItems = NULL) {
 #' list.
 #' 
 #' IAM resource-listing operations return a subset of the available
-#' attributes for the resource. For example, this operation does not return
-#' tags, even though they are an attribute of the returned object. To view
-#' all of the information for a user, see [`get_user`][iam_get_user].
+#' attributes for the resource. This operation does not return the
+#' following attributes, even though they are an attribute of the returned
+#' object:
+#' 
+#' -   PermissionsBoundary
+#' 
+#' -   Tags
+#' 
+#' To view all of the information for a user, see
+#' [`get_user`][iam_get_user].
 #' 
 #' You can paginate the results using the `MaxItems` and `Marker`
 #' parameters.
@@ -9919,7 +10013,7 @@ iam_list_users <- function(PathPrefix = NULL, Marker = NULL, MaxItems = NULL) {
     name = "ListUsers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "Users")
   )
   input <- .iam$list_users_input(PathPrefix = PathPrefix, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_users_output()
@@ -10042,7 +10136,7 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
     name = "ListVirtualMFADevices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "VirtualMFADevices")
   )
   input <- .iam$list_virtual_mfa_devices_input(AssignmentStatus = AssignmentStatus, Marker = Marker, MaxItems = MaxItems)
   output <- .iam$list_virtual_mfa_devices_output()
@@ -10063,9 +10157,10 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' 
 #' A user can also have managed policies attached to it. To attach a
 #' managed policy to a group, use
-#' [`attach_group_policy`][iam_attach_group_policy]. To create a new
-#' managed policy, use [`create_policy`][iam_create_policy]. For
-#' information about policies, see [Managed policies and inline
+#' [`attach_group_policy`](https://docs.aws.amazon.com/IAM/latest/APIReference/API_AttachGroupPolicy.html)
+#' . To create a new managed policy, use
+#' [`create_policy`](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreatePolicy.html)
+#' . For information about policies, see [Managed policies and inline
 #' policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
@@ -10100,7 +10195,7 @@ iam_list_virtual_mfa_devices <- function(AssignmentStatus = NULL, Marker = NULL,
 #' You must provide policies in JSON format in IAM. However, for
 #' CloudFormation templates formatted in YAML, you can provide the policy
 #' in JSON or YAML format. CloudFormation always converts a YAML policy to
-#' JSON format before submitting it to = IAM.
+#' JSON format before submitting it to IAM.
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) used to
 #' validate this parameter is a string of characters consisting of the
@@ -10243,17 +10338,19 @@ iam_put_role_permissions_boundary <- function(RoleName, PermissionsBoundary) {
 #' When you embed an inline policy in a role, the inline policy is used as
 #' part of the role's access (permissions) policy. The role's trust policy
 #' is created at the same time as the role, using
-#' [`create_role`][iam_create_role]. You can update a role's trust policy
-#' using [`update_assume_role_policy`][iam_update_assume_role_policy]. For
-#' more information about IAM roles, see [Using roles to delegate
-#' permissions and federate
-#' identities](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
+#' [`create_role`](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreateRole.html)
+#' . You can update a role's trust policy using
+#' [`update_assume_role_policy`](https://docs.aws.amazon.com/IAM/latest/APIReference/API_UpdateAssumeRolePolicy.html)
+#' . For more information about roles, see [IAM
+#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
+#' in the *IAM User Guide*.
 #' 
 #' A role can also have a managed policy attached to it. To attach a
 #' managed policy to a role, use
-#' [`attach_role_policy`][iam_attach_role_policy]. To create a new managed
-#' policy, use [`create_policy`][iam_create_policy]. For information about
-#' policies, see [Managed policies and inline
+#' [`attach_role_policy`](https://docs.aws.amazon.com/IAM/latest/APIReference/API_AttachRolePolicy.html)
+#' . To create a new managed policy, use
+#' [`create_policy`](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreatePolicy.html)
+#' . For information about policies, see [Managed policies and inline
 #' policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
@@ -10428,9 +10525,10 @@ iam_put_user_permissions_boundary <- function(UserName, PermissionsBoundary) {
 #' 
 #' An IAM user can also have a managed policy attached to it. To attach a
 #' managed policy to a user, use
-#' [`attach_user_policy`][iam_attach_user_policy]. To create a new managed
-#' policy, use [`create_policy`][iam_create_policy]. For information about
-#' policies, see [Managed policies and inline
+#' [`attach_user_policy`](https://docs.aws.amazon.com/IAM/latest/APIReference/API_AttachUserPolicy.html)
+#' . To create a new managed policy, use
+#' [`create_policy`](https://docs.aws.amazon.com/IAM/latest/APIReference/API_CreatePolicy.html)
+#' . For information about policies, see [Managed policies and inline
 #' policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html)
 #' in the *IAM User Guide*.
 #' 
@@ -10596,10 +10694,12 @@ iam_remove_client_id_from_open_id_connect_provider <- function(OpenIDConnectProv
 #' from an instance profile that is associated with a running instance
 #' might break any applications running on the instance.
 #' 
-#' For more information about IAM roles, see [Working with
-#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html).
-#' For more information about instance profiles, see [About instance
-#' profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html).
+#' For more information about roles, see [IAM
+#' roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html)
+#' in the *IAM User Guide*. For more information about instance profiles,
+#' see [Using instance
+#' profiles](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html)
+#' in the *IAM User Guide*.
 #'
 #' @usage
 #' iam_remove_role_from_instance_profile(InstanceProfileName, RoleName)
@@ -11361,7 +11461,7 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
     name = "SimulateCustomPolicy",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "EvaluationResults")
   )
   input <- .iam$simulate_custom_policy_input(PolicyInputList = PolicyInputList, PermissionsBoundaryPolicyInputList = PermissionsBoundaryPolicyInputList, ActionNames = ActionNames, ResourceArns = ResourceArns, ResourcePolicy = ResourcePolicy, ResourceOwner = ResourceOwner, CallerArn = CallerArn, ContextEntries = ContextEntries, ResourceHandlingOption = ResourceHandlingOption, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$simulate_custom_policy_output()
@@ -11733,7 +11833,7 @@ iam_simulate_principal_policy <- function(PolicySourceArn, PolicyInputList = NUL
     name = "SimulatePrincipalPolicy",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "Marker", result_key = "EvaluationResults")
   )
   input <- .iam$simulate_principal_policy_input(PolicySourceArn = PolicySourceArn, PolicyInputList = PolicyInputList, PermissionsBoundaryPolicyInputList = PermissionsBoundaryPolicyInputList, ActionNames = ActionNames, ResourceArns = ResourceArns, ResourcePolicy = ResourcePolicy, ResourceOwner = ResourceOwner, CallerArn = CallerArn, ContextEntries = ContextEntries, ResourceHandlingOption = ResourceHandlingOption, MaxItems = MaxItems, Marker = Marker)
   output <- .iam$simulate_principal_policy_output()
@@ -13510,12 +13610,12 @@ iam_update_login_profile <- function(UserName, Password = NULL, PasswordResetReq
 #' certificate thumbprint is updated.
 #' 
 #' Amazon Web Services secures communication with some OIDC identity
-#' providers (IdPs) through our library of trusted certificate authorities
-#' (CAs) instead of using a certificate thumbprint to verify your IdP
-#' server certificate. These OIDC IdPs include Google, Auth0, and those
-#' that use an Amazon S3 bucket to host a JSON Web Key Set (JWKS) endpoint.
-#' In these cases, your legacy thumbprint remains in your configuration,
-#' but is no longer used for validation.
+#' providers (IdPs) through our library of trusted root certificate
+#' authorities (CAs) instead of using a certificate thumbprint to verify
+#' your IdP server certificate. These OIDC IdPs include Auth0, GitHub,
+#' Google, and those that use an Amazon S3 bucket to host a JSON Web Key
+#' Set (JWKS) endpoint. In these cases, your legacy thumbprint remains in
+#' your configuration, but is no longer used for validation.
 #' 
 #' Trust for the OIDC provider is derived from the provider certificate and
 #' is validated by the thumbprint. Therefore, it is best to limit access to

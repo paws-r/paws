@@ -36,6 +36,10 @@ rds_create_db_instance_read_replica(
   DeletionProtection = NULL,
   Domain = NULL,
   DomainIAMRoleName = NULL,
+  DomainFqdn = NULL,
+  DomainOu = NULL,
+  DomainAuthSecretArn = NULL,
+  DomainDnsIps = NULL,
   ReplicaMode = NULL,
   MaxAllocatedStorage = NULL,
   CustomIamInstanceProfile = NULL,
@@ -414,6 +418,44 @@ Directory Service.
 
 This setting doesn't apply to RDS Custom.}
 
+\item{DomainFqdn}{The fully qualified domain name (FQDN) of an Active Directory domain.
+
+Constraints:
+\itemize{
+\item Can't be longer than 64 characters.
+}
+
+Example: \code{mymanagedADtest.mymanagedAD.mydomain}}
+
+\item{DomainOu}{The Active Directory organizational unit for your DB instance to join.
+
+Constraints:
+\itemize{
+\item Must be in the distinguished name format.
+\item Can't be longer than 64 characters.
+}
+
+Example:
+\verb{OU=mymanagedADtestOU,DC=mymanagedADtest,DC=mymanagedAD,DC=mydomain}}
+
+\item{DomainAuthSecretArn}{The ARN for the Secrets Manager secret with the credentials for the user
+joining the domain.
+
+Example:
+\code{arn:aws:secretsmanager:region:account-number:secret:myselfmanagedADtestsecret-123456}}
+
+\item{DomainDnsIps}{The IPv4 DNS IP addresses of your primary and secondary Active Directory
+domain controllers.
+
+Constraints:
+\itemize{
+\item Two IP addresses must be provided. If there isn't a secondary domain
+controller, use the IP address of the primary domain controller for
+both entries in the list.
+}
+
+Example: \verb{123.124.125.126,234.235.236.237}}
+
 \item{ReplicaMode}{The open mode of the replica database: mounted or read-only.
 
 This parameter is only supported for Oracle DB instances.
@@ -515,6 +557,6 @@ as the read replica. Cross-Region replication isn't supported.
 \description{
 Creates a new DB instance that acts as a read replica for an existing source DB instance or Multi-AZ DB cluster. You can create a read replica for a DB instance running MySQL, MariaDB, Oracle, PostgreSQL, or SQL Server. You can create a read replica for a Multi-AZ DB cluster running MySQL or PostgreSQL. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_ReadRepl.html}{Working with read replicas} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/multi-az-db-clusters-concepts.html#multi-az-db-clusters-migrating-to-instance-with-read-replica}{Migrating from a Multi-AZ DB cluster to a DB instance using a read replica} in the \emph{Amazon RDS User Guide}.
 
-See \url{https://paws-r.github.io/docs/rds/create_db_instance_read_replica.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_create_db_instance_read_replica/} for full documentation.
 }
 \keyword{internal}

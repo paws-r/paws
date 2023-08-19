@@ -25,6 +25,6 @@ JSON-encoded messages using HTTPS POST.}
 \description{
 Configure Amazon WorkDocs to use Amazon SNS notifications. The endpoint receives a confirmation message, and must confirm the subscription.
 
-See \url{https://paws-r.github.io/docs/workdocs/create_notification_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_create_notification_subscription/} for full documentation.
 }
 \keyword{internal}

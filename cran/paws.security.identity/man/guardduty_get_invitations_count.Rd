@@ -10,6 +10,6 @@ guardduty_get_invitations_count()
 \description{
 Returns the count of all GuardDuty membership invitations that were sent to the current member account except the currently accepted invitation.
 
-See \url{https://paws-r.github.io/docs/guardduty/get_invitations_count.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_get_invitations_count/} for full documentation.
 }
 \keyword{internal}

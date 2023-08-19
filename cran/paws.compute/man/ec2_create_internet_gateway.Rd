@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates an internet gateway for use with a VPC. After creating the internet gateway, you attach it to a VPC using \code{\link[=ec2_attach_internet_gateway]{attach_internet_gateway}}.
 
-See \url{https://paws-r.github.io/docs/ec2/create_internet_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_internet_gateway/} for full documentation.
 }
 \keyword{internal}

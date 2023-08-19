@@ -46,6 +46,6 @@ attached to the instance.}
 \description{
 Modifies the specified network interface attribute. You can specify only one attribute at a time. You can use this action to attach and detach security groups from an existing EC2 instance.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_network_interface_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_network_interface_attribute/} for full documentation.
 }
 \keyword{internal}

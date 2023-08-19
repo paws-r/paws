@@ -90,6 +90,6 @@ The only valid value is \code{HTTP}.}
 \description{
 Creates a service. This action defines the configuration for the following entities:
 
-See \url{https://paws-r.github.io/docs/servicediscovery/create_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicediscovery_create_service/} for full documentation.
 }
 \keyword{internal}

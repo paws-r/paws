@@ -60,6 +60,6 @@ function.}
 \description{
 Invokes a Lambda function. You can invoke a function synchronously (and wait for the response), or asynchronously. To invoke a function asynchronously, set \code{InvocationType} to \code{Event}.
 
-See \url{https://paws-r.github.io/docs/lambda/invoke.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_invoke/} for full documentation.
 }
 \keyword{internal}

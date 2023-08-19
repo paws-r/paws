@@ -14,6 +14,6 @@ wellarchitected_disassociate_lenses(WorkloadId, LensAliases)
 \description{
 Disassociate a lens from a workload.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/disassociate_lenses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_disassociate_lenses/} for full documentation.
 }
 \keyword{internal}

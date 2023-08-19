@@ -25,6 +25,6 @@ SchemaFacet for details.}
 \description{
 Adds a new Facet to an object. An object can have more than one facet applied on it.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/add_facet_to_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_add_facet_to_object/} for full documentation.
 }
 \keyword{internal}

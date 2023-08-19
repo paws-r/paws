@@ -20,6 +20,6 @@ keys are removed from the specified OIDC provider.}
 \description{
 Removes the specified tags from the specified OpenID Connect (OIDC)-compatible identity provider in IAM. For more information about OIDC providers, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers_oidc.html}{About web identity federation}. For more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources} in the \emph{IAM User Guide}.
 
-See \url{https://paws-r.github.io/docs/iam/untag_open_id_connect_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_untag_open_id_connect_provider/} for full documentation.
 }
 \keyword{internal}

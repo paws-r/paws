@@ -17,6 +17,6 @@ your Lake Formation environment.}
 \description{
 Returns an LF-tag definition.
 
-See \url{https://paws-r.github.io/docs/lakeformation/get_lf_tag.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_get_lf_tag/} for full documentation.
 }
 \keyword{internal}

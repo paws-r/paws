@@ -16,6 +16,6 @@ contact has confirmed that the email address is valid.}
 \description{
 For operations that require confirmation that the email address for the registrant contact is valid, such as registering a new domain, this operation returns information about whether the registrant contact has responded.
 
-See \url{https://paws-r.github.io/docs/route53domains/get_contact_reachability_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_get_contact_reachability_status/} for full documentation.
 }
 \keyword{internal}

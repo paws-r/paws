@@ -181,6 +181,6 @@ Targets and TargetMaps can't be specified together.}
 \description{
 Updates an association. You can update the association name and version, the document version, schedule, parameters, and Amazon Simple Storage Service (Amazon S3) output. When you call \code{\link[=ssm_update_association]{update_association}}, the system removes all optional parameters from the request and overwrites the association with null values for those parameters. This is by design. You must specify all optional parameters in the call, even if you are not changing the parameters. This includes the \code{Name} parameter. Before calling this API action, we recommend that you call the \code{\link[=ssm_describe_association]{describe_association}} API operation and make a note of all optional parameters required for your \code{\link[=ssm_update_association]{update_association}} call.
 
-See \url{https://paws-r.github.io/docs/ssm/update_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_update_association/} for full documentation.
 }
 \keyword{internal}

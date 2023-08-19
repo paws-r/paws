@@ -23,6 +23,6 @@ dax_decrease_replication_factor(
 \description{
 Removes one or more nodes from a DAX cluster.
 
-See \url{https://paws-r.github.io/docs/dax/decrease_replication_factor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_decrease_replication_factor/} for full documentation.
 }
 \keyword{internal}

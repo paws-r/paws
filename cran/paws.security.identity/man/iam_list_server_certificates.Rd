@@ -39,6 +39,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the server certificates stored in IAM that have the specified path prefix. If none exist, the operation returns an empty list.
 
-See \url{https://paws-r.github.io/docs/iam/list_server_certificates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_server_certificates/} for full documentation.
 }
 \keyword{internal}

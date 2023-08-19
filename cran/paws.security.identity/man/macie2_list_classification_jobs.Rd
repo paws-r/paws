@@ -24,6 +24,6 @@ paginated response.}
 \description{
 Retrieves a subset of information about one or more classification jobs.
 
-See \url{https://paws-r.github.io/docs/macie2/list_classification_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_list_classification_jobs/} for full documentation.
 }
 \keyword{internal}

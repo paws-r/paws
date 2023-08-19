@@ -40,6 +40,6 @@ set of model card versions, use the token in the next request.}
 \description{
 List existing versions of an Amazon SageMaker Model Card.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_model_card_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_model_card_versions/} for full documentation.
 }
 \keyword{internal}

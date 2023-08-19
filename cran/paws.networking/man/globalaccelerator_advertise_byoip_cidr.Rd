@@ -16,6 +16,6 @@ range.}
 \description{
 Advertises an IPv4 address range that is provisioned for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP). It can take a few minutes before traffic to the specified addresses starts routing to Amazon Web Services because of propagation delays.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/advertise_byoip_cidr.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_advertise_byoip_cidr/} for full documentation.
 }
 \keyword{internal}

@@ -47,6 +47,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists all managed policies that are attached to the specified IAM role.
 
-See \url{https://paws-r.github.io/docs/iam/list_attached_role_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_attached_role_policies/} for full documentation.
 }
 \keyword{internal}

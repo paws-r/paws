@@ -16,6 +16,6 @@ rdsdataservice_rollback_transaction(resourceArn, secretArn, transactionId)
 \description{
 Performs a rollback of a transaction. Rolling back a transaction cancels its changes.
 
-See \url{https://paws-r.github.io/docs/rdsdataservice/rollback_transaction.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rdsdataservice_rollback_transaction/} for full documentation.
 }
 \keyword{internal}

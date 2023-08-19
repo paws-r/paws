@@ -22,6 +22,6 @@ return. To request the first page, leave nextToken empty.}
 \description{
 Returns a list of all revisions for the specified configuration.
 
-See \url{https://paws-r.github.io/docs/mq/list_configuration_revisions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_list_configuration_revisions/} for full documentation.
 }
 \keyword{internal}

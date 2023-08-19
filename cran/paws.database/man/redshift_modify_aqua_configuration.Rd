@@ -18,6 +18,6 @@ whether to use AQUA (Advanced Query Accelerator).}
 \description{
 This operation is retired. Calling this operation does not change AQUA configuration. Amazon Redshift automatically determines whether to use AQUA (Advanced Query Accelerator).
 
-See \url{https://paws-r.github.io/docs/redshift/modify_aqua_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_modify_aqua_configuration/} for full documentation.
 }
 \keyword{internal}

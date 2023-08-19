@@ -18,6 +18,6 @@ glue_create_blueprint(Name, Description = NULL, BlueprintLocation, Tags = NULL)
 \description{
 Registers a blueprint with Glue.
 
-See \url{https://paws-r.github.io/docs/glue/create_blueprint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_create_blueprint/} for full documentation.
 }
 \keyword{internal}

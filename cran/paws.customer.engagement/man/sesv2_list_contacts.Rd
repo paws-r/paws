@@ -31,6 +31,6 @@ the next page of contacts.}
 \description{
 Lists the contacts present in a specific contact list.
 
-See \url{https://paws-r.github.io/docs/sesv2/list_contacts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_list_contacts/} for full documentation.
 }
 \keyword{internal}

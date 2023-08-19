@@ -12,6 +12,6 @@ dlm_get_lifecycle_policy(PolicyId)
 \description{
 Gets detailed information about the specified lifecycle policy.
 
-See \url{https://paws-r.github.io/docs/dlm/get_lifecycle_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dlm_get_lifecycle_policy/} for full documentation.
 }
 \keyword{internal}

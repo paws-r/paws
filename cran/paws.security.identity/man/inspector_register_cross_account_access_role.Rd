@@ -14,6 +14,6 @@ Services needed to perform security assessments.}
 \description{
 Registers the IAM role that grants Amazon Inspector access to AWS Services needed to perform security assessments.
 
-See \url{https://paws-r.github.io/docs/inspector/register_cross_account_access_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_register_cross_account_access_role/} for full documentation.
 }
 \keyword{internal}

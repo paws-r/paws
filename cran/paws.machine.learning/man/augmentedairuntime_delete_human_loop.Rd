@@ -12,6 +12,6 @@ augmentedairuntime_delete_human_loop(HumanLoopName)
 \description{
 Deletes the specified human loop for a flow definition.
 
-See \url{https://paws-r.github.io/docs/augmentedairuntime/delete_human_loop.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/augmentedairuntime_delete_human_loop/} for full documentation.
 }
 \keyword{internal}

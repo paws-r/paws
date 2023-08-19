@@ -13,6 +13,6 @@ auto-termination policy will be fetched.}
 \description{
 Returns the auto-termination policy for an Amazon EMR cluster.
 
-See \url{https://paws-r.github.io/docs/emr/get_auto_termination_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_get_auto_termination_policy/} for full documentation.
 }
 \keyword{internal}

@@ -47,6 +47,6 @@ that the App Runner service runs.}
 \description{
 Update an App Runner service. You can update the source configuration and instance configuration of the service. You can also update the ARN of the auto scaling configuration resource that's associated with the service. However, you can't change the name or the encryption configuration of the service. These can be set only when you create the service.
 
-See \url{https://paws-r.github.io/docs/apprunner/update_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_update_service/} for full documentation.
 }
 \keyword{internal}

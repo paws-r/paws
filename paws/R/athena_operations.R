@@ -284,7 +284,11 @@ athena_batch_get_query_execution <- function(QueryExecutionIds) {
 #' Cancels the capacity reservation with the specified name
 #'
 #' @description
-#' Cancels the capacity reservation with the specified name.
+#' Cancels the capacity reservation with the specified name. Cancelled
+#' reservations remain in your account and will be deleted 45 days after
+#' cancellation. During the 45 days, you cannot re-purpose or reuse a
+#' reservation that has been cancelled, but you can refer to its tags and
+#' view it for historical reference.
 #'
 #' @usage
 #' athena_cancel_capacity_reservation(Name)
@@ -812,6 +816,54 @@ athena_create_work_group <- function(Name, Configuration = NULL, Description = N
   return(response)
 }
 .athena$operations$create_work_group <- athena_create_work_group
+
+#' Deletes a cancelled capacity reservation
+#'
+#' @description
+#' Deletes a cancelled capacity reservation. A reservation must be
+#' cancelled before it can be deleted. A deleted reservation is immediately
+#' removed from your account and can no longer be referenced, including by
+#' its ARN. A deleted reservation cannot be called by
+#' [`get_capacity_reservation`][athena_get_capacity_reservation], and
+#' deleted reservations do not appear in the output of
+#' [`list_capacity_reservations`][athena_list_capacity_reservations].
+#'
+#' @usage
+#' athena_delete_capacity_reservation(Name)
+#'
+#' @param Name &#91;required&#93; The name of the capacity reservation to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_capacity_reservation(
+#'   Name = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname athena_delete_capacity_reservation
+#'
+#' @aliases athena_delete_capacity_reservation
+athena_delete_capacity_reservation <- function(Name) {
+  op <- new_operation(
+    name = "DeleteCapacityReservation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .athena$delete_capacity_reservation_input(Name = Name)
+  output <- .athena$delete_capacity_reservation_output()
+  config <- get_config()
+  svc <- .athena$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.athena$operations$delete_capacity_reservation <- athena_delete_capacity_reservation
 
 #' Deletes a data catalog
 #'
@@ -1888,7 +1940,7 @@ athena_get_query_results <- function(QueryExecutionId, NextToken = NULL, MaxResu
     name = "GetQueryResults",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$get_query_results_input(QueryExecutionId = QueryExecutionId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$get_query_results_output()
@@ -2014,6 +2066,9 @@ athena_get_query_runtime_statistics <- function(QueryExecutionId) {
 #'     MaxConcurrentDpus = 123,
 #'     DefaultExecutorDpuSize = 123,
 #'     AdditionalConfigs = list(
+#'       "string"
+#'     ),
+#'     SparkProperties = list(
 #'       "string"
 #'     )
 #'   ),
@@ -2413,7 +2468,7 @@ athena_list_application_dpu_sizes <- function(MaxResults = NULL, NextToken = NUL
     name = "ListApplicationDPUSizes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_application_dpu_sizes_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .athena$list_application_dpu_sizes_output()
@@ -2508,7 +2563,7 @@ athena_list_calculation_executions <- function(SessionId, StateFilter = NULL, Ma
     name = "ListCalculationExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_calculation_executions_input(SessionId = SessionId, StateFilter = StateFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .athena$list_calculation_executions_output()
@@ -2582,7 +2637,7 @@ athena_list_capacity_reservations <- function(NextToken = NULL, MaxResults = NUL
     name = "ListCapacityReservations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_capacity_reservations_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_capacity_reservations_output()
@@ -2643,7 +2698,7 @@ athena_list_data_catalogs <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListDataCatalogs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DataCatalogsSummary")
   )
   input <- .athena$list_data_catalogs_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_data_catalogs_output()
@@ -2706,7 +2761,7 @@ athena_list_databases <- function(CatalogName, NextToken = NULL, MaxResults = NU
     name = "ListDatabases",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatabaseList")
   )
   input <- .athena$list_databases_input(CatalogName = CatalogName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_databases_output()
@@ -2766,7 +2821,7 @@ athena_list_engine_versions <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListEngineVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_engine_versions_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_engine_versions_output()
@@ -2850,7 +2905,7 @@ athena_list_executors <- function(SessionId, ExecutorStateFilter = NULL, MaxResu
     name = "ListExecutors",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_executors_input(SessionId = SessionId, ExecutorStateFilter = ExecutorStateFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .athena$list_executors_output()
@@ -2918,7 +2973,7 @@ athena_list_named_queries <- function(NextToken = NULL, MaxResults = NULL, WorkG
     name = "ListNamedQueries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_named_queries_input(NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_named_queries_output()
@@ -3120,7 +3175,7 @@ athena_list_prepared_statements <- function(WorkGroup, NextToken = NULL, MaxResu
     name = "ListPreparedStatements",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_prepared_statements_input(WorkGroup = WorkGroup, NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_prepared_statements_output()
@@ -3188,7 +3243,7 @@ athena_list_query_executions <- function(NextToken = NULL, MaxResults = NULL, Wo
     name = "ListQueryExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_query_executions_input(NextToken = NextToken, MaxResults = MaxResults, WorkGroup = WorkGroup)
   output <- .athena$list_query_executions_output()
@@ -3294,7 +3349,7 @@ athena_list_sessions <- function(WorkGroup, StateFilter = NULL, MaxResults = NUL
     name = "ListSessions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_sessions_input(WorkGroup = WorkGroup, StateFilter = StateFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .athena$list_sessions_output()
@@ -3385,7 +3440,7 @@ athena_list_table_metadata <- function(CatalogName, DatabaseName, Expression = N
     name = "ListTableMetadata",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TableMetadataList")
   )
   input <- .athena$list_table_metadata_input(CatalogName = CatalogName, DatabaseName = DatabaseName, Expression = Expression, NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_table_metadata_output()
@@ -3445,7 +3500,7 @@ athena_list_tags_for_resource <- function(ResourceARN, NextToken = NULL, MaxResu
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
   )
   input <- .athena$list_tags_for_resource_input(ResourceARN = ResourceARN, NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_tags_for_resource_output()
@@ -3511,7 +3566,7 @@ athena_list_work_groups <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListWorkGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .athena$list_work_groups_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .athena$list_work_groups_output()
@@ -3808,6 +3863,9 @@ athena_start_query_execution <- function(QueryString, ClientRequestToken = NULL,
 #'     MaxConcurrentDpus = 123,
 #'     DefaultExecutorDpuSize = 123,
 #'     AdditionalConfigs = list(
+#'       "string"
+#'     ),
+#'     SparkProperties = list(
 #'       "string"
 #'     )
 #'   ),

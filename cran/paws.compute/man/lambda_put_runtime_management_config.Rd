@@ -58,6 +58,6 @@ mode.}
 \description{
 Sets the runtime management configuration for a function's version. For more information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/runtimes-update.html}{Runtime updates}.
 
-See \url{https://paws-r.github.io/docs/lambda/put_runtime_management_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_put_runtime_management_config/} for full documentation.
 }
 \keyword{internal}

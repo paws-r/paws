@@ -22,6 +22,6 @@ group that contains one or more reports, an exception is thrown.}
 \description{
 Deletes a report group. Before you delete a report group, you must delete its reports.
 
-See \url{https://paws-r.github.io/docs/codebuild/delete_report_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_delete_report_group/} for full documentation.
 }
 \keyword{internal}

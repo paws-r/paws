@@ -296,6 +296,6 @@ If your alarm uses this parameter, it cannot have Auto Scaling actions.}
 \description{
 Creates or updates an alarm and associates it with the specified metric, metric math expression, anomaly detection model, or Metrics Insights query. For more information about using a Metrics Insights query for an alarm, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Create_Metrics_Insights_Alarm.html}{Create alarms on Metrics Insights queries}.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/put_metric_alarm.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_put_metric_alarm/} for full documentation.
 }
 \keyword{internal}

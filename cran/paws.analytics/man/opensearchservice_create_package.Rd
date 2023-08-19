@@ -23,6 +23,6 @@ opensearchservice_create_package(
 \description{
 Creates a package for use with Amazon OpenSearch Service domains. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/create_package.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_create_package/} for full documentation.
 }
 \keyword{internal}

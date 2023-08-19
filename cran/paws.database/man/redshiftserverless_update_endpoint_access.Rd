@@ -18,6 +18,6 @@ endpoint is modified.}
 \description{
 Updates an Amazon Redshift Serverless managed endpoint.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/update_endpoint_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_update_endpoint_access/} for full documentation.
 }
 \keyword{internal}

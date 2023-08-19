@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified internet gateway. You must detach the internet gateway from the VPC before you can delete it.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_internet_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_internet_gateway/} for full documentation.
 }
 \keyword{internal}

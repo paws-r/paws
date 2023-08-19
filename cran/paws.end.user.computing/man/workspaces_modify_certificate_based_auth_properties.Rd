@@ -22,6 +22,6 @@ delete.}
 \description{
 Modifies the properties of the certificate-based authentication you want to use with your WorkSpaces.
 
-See \url{https://paws-r.github.io/docs/workspaces/modify_certificate_based_auth_properties.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_modify_certificate_based_auth_properties/} for full documentation.
 }
 \keyword{internal}

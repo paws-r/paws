@@ -38,11 +38,13 @@ respectively.}
 
 \item{batchInferenceJobConfig}{The configuration details of a batch inference job.}
 
-\item{tags}{A list of tags to apply to the batch inference job.}
+\item{tags}{A list of
+\href{https://docs.aws.amazon.com/personalize/latest/dg/tagging-resources.html}{tags}
+to apply to the batch inference job.}
 }
 \description{
 Creates a batch inference job. The operation can handle up to 50 million records and the input file must be in JSON format. For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/creating-batch-inference-job.html}{Creating a batch inference job}.
 
-See \url{https://paws-r.github.io/docs/personalize/create_batch_inference_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_create_batch_inference_job/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ sagemaker_describe_image(ImageName)
 \description{
 Describes a SageMaker image.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_image/} for full documentation.
 }
 \keyword{internal}

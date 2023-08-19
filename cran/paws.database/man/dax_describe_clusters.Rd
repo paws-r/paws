@@ -25,6 +25,6 @@ specified by \code{MaxResults}.}
 \description{
 Returns information about all provisioned DAX clusters if no cluster identifier is specified, or about a specific DAX cluster if a cluster identifier is supplied.
 
-See \url{https://paws-r.github.io/docs/dax/describe_clusters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_describe_clusters/} for full documentation.
 }
 \keyword{internal}

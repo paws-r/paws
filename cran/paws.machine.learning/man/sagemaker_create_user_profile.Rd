@@ -40,6 +40,6 @@ that the User Profile launches.}
 \description{
 Creates a user profile. A user profile represents a single user within a domain, and is the main way to reference a "person" for the purposes of sharing, reporting, and other user-oriented features. This entity is created when a user onboards to Amazon SageMaker Studio. If an administrator invites a person by email or imports them from IAM Identity Center, a user profile is automatically created. A user profile is the primary holder of settings for an individual user and has a reference to the user's private Amazon Elastic File System (EFS) home directory.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_user_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_user_profile/} for full documentation.
 }
 \keyword{internal}

@@ -38,11 +38,18 @@ object. The \code{ "MaskConfig": {}} object must be empty.
 For an example data protection policy, see the \strong{Examples} section on
 this page.
 
-The contents of two \code{DataIdentifer} arrays must match exactly.}
+The contents of the two \code{DataIdentifer} arrays must match exactly.
+
+In addition to the two JSON blocks, the \code{policyDocument} can also
+include \code{Name}, \code{Description}, and \code{Version} fields. The \code{Name} is used
+as a dimension when CloudWatch Logs reports audit findings metrics to
+CloudWatch.
+
+The JSON specified in \code{policyDocument} can be up to 30,720 characters.}
 }
 \description{
 Creates a data protection policy for the specified log group. A data protection policy can help safeguard sensitive data that's ingested by the log group by auditing and masking the sensitive log data.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/put_data_protection_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_data_protection_policy/} for full documentation.
 }
 \keyword{internal}

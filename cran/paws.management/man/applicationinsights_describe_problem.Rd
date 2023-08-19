@@ -4,14 +4,17 @@
 \alias{applicationinsights_describe_problem}
 \title{Describes an application problem}
 \usage{
-applicationinsights_describe_problem(ProblemId)
+applicationinsights_describe_problem(ProblemId, AccountId = NULL)
 }
 \arguments{
 \item{ProblemId}{[required] The ID of the problem.}
+
+\item{AccountId}{The AWS account ID for the owner of the resource group affected by the
+problem.}
 }
 \description{
 Describes an application problem.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/describe_problem.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_describe_problem/} for full documentation.
 }
 \keyword{internal}

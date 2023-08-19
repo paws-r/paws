@@ -14,6 +14,6 @@ sagemaker_describe_space(DomainId, SpaceName)
 \description{
 Describes the space.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_space.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_space/} for full documentation.
 }
 \keyword{internal}

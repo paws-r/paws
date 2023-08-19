@@ -11,6 +11,12 @@ NULL
 #' data have been written to it. Completing the snapshot changes the status
 #' to `completed`. You cannot write new blocks to a snapshot after it has
 #' been completed.
+#' 
+#' You should always retry requests that receive server (`5xx`) error
+#' responses, and `ThrottlingException` and `RequestThrottledException`
+#' client error responses. For more information see [Error
+#' retries](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @usage
 #' ebs_complete_snapshot(SnapshotId, ChangedBlocksCount, Checksum,
@@ -75,6 +81,12 @@ ebs_complete_snapshot <- function(SnapshotId, ChangedBlocksCount, Checksum = NUL
 #'
 #' @description
 #' Returns the data in a block in an Amazon Elastic Block Store snapshot.
+#' 
+#' You should always retry requests that receive server (`5xx`) error
+#' responses, and `ThrottlingException` and `RequestThrottledException`
+#' client error responses. For more information see [Error
+#' retries](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @usage
 #' ebs_get_snapshot_block(SnapshotId, BlockIndex, BlockToken)
@@ -145,6 +157,12 @@ ebs_get_snapshot_block <- function(SnapshotId, BlockIndex, BlockToken) {
 #' Returns information about the blocks that are different between two
 #' Amazon Elastic Block Store snapshots of the same volume/snapshot
 #' lineage.
+#' 
+#' You should always retry requests that receive server (`5xx`) error
+#' responses, and `ThrottlingException` and `RequestThrottledException`
+#' client error responses. For more information see [Error
+#' retries](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @usage
 #' ebs_list_changed_blocks(FirstSnapshotId, SecondSnapshotId, NextToken,
@@ -218,7 +236,7 @@ ebs_list_changed_blocks <- function(FirstSnapshotId = NULL, SecondSnapshotId, Ne
     name = "ListChangedBlocks",
     http_method = "GET",
     http_path = "/snapshots/{secondSnapshotId}/changedblocks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .ebs$list_changed_blocks_input(FirstSnapshotId = FirstSnapshotId, SecondSnapshotId = SecondSnapshotId, NextToken = NextToken, MaxResults = MaxResults, StartingBlockIndex = StartingBlockIndex)
   output <- .ebs$list_changed_blocks_output()
@@ -236,6 +254,12 @@ ebs_list_changed_blocks <- function(FirstSnapshotId = NULL, SecondSnapshotId, Ne
 #' @description
 #' Returns information about the blocks in an Amazon Elastic Block Store
 #' snapshot.
+#' 
+#' You should always retry requests that receive server (`5xx`) error
+#' responses, and `ThrottlingException` and `RequestThrottledException`
+#' client error responses. For more information see [Error
+#' retries](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @usage
 #' ebs_list_snapshot_blocks(SnapshotId, NextToken, MaxResults,
@@ -299,7 +323,7 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
     name = "ListSnapshotBlocks",
     http_method = "GET",
     http_path = "/snapshots/{snapshotId}/blocks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .ebs$list_snapshot_blocks_input(SnapshotId = SnapshotId, NextToken = NextToken, MaxResults = MaxResults, StartingBlockIndex = StartingBlockIndex)
   output <- .ebs$list_snapshot_blocks_output()
@@ -319,6 +343,12 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
 #' the `pending` state.
 #' 
 #' Data written to a snapshot must be aligned with 512-KiB sectors.
+#' 
+#' You should always retry requests that receive server (`5xx`) error
+#' responses, and `ThrottlingException` and `RequestThrottledException`
+#' client error responses. For more information see [Error
+#' retries](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @usage
 #' ebs_put_snapshot_block(SnapshotId, BlockIndex, BlockData, DataLength,
@@ -413,6 +443,12 @@ ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength
 #' After creating the snapshot, use
 #' [PutSnapshotBlock](https://docs.aws.amazon.com/ebs/latest/APIReference/API_PutSnapshotBlock.html)
 #' to write blocks of data to the snapshot.
+#' 
+#' You should always retry requests that receive server (`5xx`) error
+#' responses, and `ThrottlingException` and `RequestThrottledException`
+#' client error responses. For more information see [Error
+#' retries](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/error-retries.html)
+#' in the *Amazon Elastic Compute Cloud User Guide*.
 #'
 #' @usage
 #' ebs_start_snapshot(VolumeSize, ParentSnapshotId, Tags, Description,
@@ -520,7 +556,8 @@ ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength
 #'     )
 #'   ),
 #'   ParentSnapshotId = "string",
-#'   KmsKeyArn = "string"
+#'   KmsKeyArn = "string",
+#'   SseType = "sse-ebs"|"sse-kms"|"none"
 #' )
 #' ```
 #'

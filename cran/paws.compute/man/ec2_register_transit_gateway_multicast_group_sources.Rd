@@ -28,6 +28,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Registers sources (network interfaces) with the specified transit gateway multicast group.
 
-See \url{https://paws-r.github.io/docs/ec2/register_transit_gateway_multicast_group_sources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_register_transit_gateway_multicast_group_sources/} for full documentation.
 }
 \keyword{internal}

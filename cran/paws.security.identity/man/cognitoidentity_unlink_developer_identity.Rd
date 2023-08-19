@@ -24,6 +24,6 @@ user.}
 \description{
 Unlinks a \code{DeveloperUserIdentifier} from an existing identity. Unlinked developer users will be considered new identities next time they are seen. If, for a given Cognito identity, you remove all federated identities as well as the developer user identifier, the Cognito identity becomes inaccessible.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/unlink_developer_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_unlink_developer_identity/} for full documentation.
 }
 \keyword{internal}

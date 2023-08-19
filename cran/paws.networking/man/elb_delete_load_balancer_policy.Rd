@@ -14,6 +14,6 @@ elb_delete_load_balancer_policy(LoadBalancerName, PolicyName)
 \description{
 Deletes the specified policy from the specified load balancer. This policy must not be enabled for any listeners.
 
-See \url{https://paws-r.github.io/docs/elb/delete_load_balancer_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_delete_load_balancer_policy/} for full documentation.
 }
 \keyword{internal}

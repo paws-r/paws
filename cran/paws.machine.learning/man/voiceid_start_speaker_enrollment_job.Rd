@@ -44,6 +44,6 @@ file.}
 \description{
 Starts a new batch speaker enrollment job using specified details.
 
-See \url{https://paws-r.github.io/docs/voiceid/start_speaker_enrollment_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_start_speaker_enrollment_job/} for full documentation.
 }
 \keyword{internal}

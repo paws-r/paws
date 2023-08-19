@@ -41,6 +41,6 @@ the maximum length for a tag's value is 256.}
 \description{
 Creates a new custom tape pool. You can use custom tape pool to enable tape retention lock on tapes that are archived in the custom pool.
 
-See \url{https://paws-r.github.io/docs/storagegateway/create_tape_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_create_tape_pool/} for full documentation.
 }
 \keyword{internal}

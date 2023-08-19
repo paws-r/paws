@@ -8,7 +8,7 @@ NULL
 #' @description
 #' This action aborts a multipart upload. After a multipart upload is aborted, no additional parts can be uploaded using that upload ID. The storage consumed by any previously uploaded parts will be freed. However, if any part uploads are currently in progress, those part uploads might or might not succeed. As a result, it might be necessary to abort a given multipart upload multiple times in order to completely free all storage consumed by all parts.
 #'
-#' See [https://paws-r.github.io/docs/s3/abort_multipart_upload.html](https://paws-r.github.io/docs/s3/abort_multipart_upload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_abort_multipart_upload/](https://www.paws-r-sdk.com/docs/s3_abort_multipart_upload/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name to which the upload was taking place.
 #' 
@@ -29,7 +29,7 @@ NULL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Key of the object for which the multipart upload was initiated.
 #' @param UploadId &#91;required&#93; Upload ID that identifies the multipart upload.
@@ -63,7 +63,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' @description
 #' Completes a multipart upload by assembling previously uploaded parts.
 #'
-#' See [https://paws-r.github.io/docs/s3/complete_multipart_upload.html](https://paws-r.github.io/docs/s3/complete_multipart_upload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_complete_multipart_upload/](https://www.paws-r-sdk.com/docs/s3_complete_multipart_upload/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; Name of the bucket to which the multipart upload was initiated.
 #' 
@@ -84,7 +84,7 @@ s3_abort_multipart_upload <- function(Bucket, Key, UploadId, RequestPayer = NULL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
 #' @param MultipartUpload The container for the multipart upload request information.
@@ -159,7 +159,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @description
 #' Creates a copy of an object that is already stored in Amazon S3.
 #'
-#' See [https://paws-r.github.io/docs/s3/copy_object.html](https://paws-r.github.io/docs/s3/copy_object.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_copy_object/](https://www.paws-r-sdk.com/docs/s3_copy_object/) for full documentation.
 #'
 #' @param ACL The canned ACL to apply to the object.
 #' 
@@ -183,7 +183,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Specifies caching behavior along the request/reply chain.
 #' @param ChecksumAlgorithm Indicates the algorithm you want Amazon S3 to use to create the checksum
@@ -262,7 +262,7 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @param TaggingDirective Specifies whether the object tag-set are copied from the source object
 #' or replaced with tag-set provided in the request.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
-#' Amazon S3 (for example, AES256, `aws:kms`).
+#' Amazon S3 (for example, `AES256`, `aws:kms`, `aws:kms:dsse`).
 #' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
@@ -286,21 +286,20 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
-#' @param SSEKMSKeyId Specifies the Amazon Web Services KMS key ID to use for object
-#' encryption. All GET and PUT requests for an object protected by Amazon
-#' Web Services KMS will fail if not made via SSL or using SigV4. For
-#' information about configuring using any of the officially supported
-#' Amazon Web Services SDKs and Amazon Web Services CLI, see [Specifying
-#' the Signature Version in Request
+#' @param SSEKMSKeyId Specifies the KMS key ID to use for object encryption. All GET and PUT
+#' requests for an object protected by KMS will fail if they're not made
+#' via SSL or using SigV4. For information about configuring any of the
+#' officially supported Amazon Web Services SDKs and Amazon Web Services
+#' CLI, see [Specifying the Signature Version in Request
 #' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version)
 #' in the *Amazon S3 User Guide*.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
 #' object encryption. The value of this header is a base64-encoded UTF-8
 #' string holding JSON with the encryption context key-value pairs.
 #' @param BucketKeyEnabled Specifies whether Amazon S3 should use an S3 Bucket Key for object
-#' encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
-#' this header to `true` causes Amazon S3 to use an S3 Bucket Key for
-#' object encryption with SSE-KMS.
+#' encryption with server-side encryption using Key Management Service
+#' (KMS) keys (SSE-KMS). Setting this header to `true` causes Amazon S3 to
+#' use an S3 Bucket Key for object encryption with SSE-KMS.
 #' 
 #' Specifying this header with a COPY action doesn’t affect bucket-level
 #' settings for S3 Bucket Key.
@@ -352,7 +351,7 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #' @description
 #' Creates a new S3 bucket. To create a bucket, you must register with Amazon S3 and have a valid Amazon Web Services Access Key ID to authenticate requests. Anonymous requests are never allowed to create buckets. By creating the bucket, you become the bucket owner.
 #'
-#' See [https://paws-r.github.io/docs/s3/create_bucket.html](https://paws-r.github.io/docs/s3/create_bucket.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_create_bucket/](https://www.paws-r-sdk.com/docs/s3_create_bucket/) for full documentation.
 #'
 #' @param ACL The canned ACL to apply to the bucket.
 #' @param Bucket &#91;required&#93; The name of the bucket to create.
@@ -395,7 +394,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' @description
 #' This action initiates a multipart upload and returns an upload ID. This upload ID is used to associate all of the parts in the specific multipart upload. You specify this upload ID in each of your subsequent upload part requests (see [`upload_part`][s3_upload_part]). You also include this upload ID in the final request to either complete or abort the multipart upload request.
 #'
-#' See [https://paws-r.github.io/docs/s3/create_multipart_upload.html](https://paws-r.github.io/docs/s3/create_multipart_upload.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_create_multipart_upload/](https://www.paws-r-sdk.com/docs/s3_create_multipart_upload/) for full documentation.
 #'
 #' @param ACL The canned ACL to apply to the object.
 #' 
@@ -419,7 +418,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Specifies caching behavior along the request/reply chain.
 #' @param ContentDisposition Specifies presentational information for the object.
@@ -445,7 +444,7 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' @param Key &#91;required&#93; Object key for which the multipart upload is to be initiated.
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
-#' Amazon S3 (for example, AES256, `aws:kms`).
+#' Amazon S3 (for example, `AES256`, `aws:kms`).
 #' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
@@ -468,19 +467,19 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' that the encryption key was transmitted without error.
 #' @param SSEKMSKeyId Specifies the ID of the symmetric encryption customer managed key to use
 #' for object encryption. All GET and PUT requests for an object protected
-#' by Amazon Web Services KMS will fail if not made via SSL or using SigV4.
-#' For information about configuring using any of the officially supported
-#' Amazon Web Services SDKs and Amazon Web Services CLI, see [Specifying
-#' the Signature Version in Request
+#' by KMS will fail if they're not made via SSL or using SigV4. For
+#' information about configuring any of the officially supported Amazon Web
+#' Services SDKs and Amazon Web Services CLI, see [Specifying the Signature
+#' Version in Request
 #' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version)
 #' in the *Amazon S3 User Guide*.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
 #' object encryption. The value of this header is a base64-encoded UTF-8
 #' string holding JSON with the encryption context key-value pairs.
 #' @param BucketKeyEnabled Specifies whether Amazon S3 should use an S3 Bucket Key for object
-#' encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
-#' this header to `true` causes Amazon S3 to use an S3 Bucket Key for
-#' object encryption with SSE-KMS.
+#' encryption with server-side encryption using Key Management Service
+#' (KMS) keys (SSE-KMS). Setting this header to `true` causes Amazon S3 to
+#' use an S3 Bucket Key for object encryption with SSE-KMS.
 #' 
 #' Specifying this header with an object action doesn’t affect bucket-level
 #' settings for S3 Bucket Key.
@@ -524,7 +523,7 @@ s3_create_multipart_upload <- function(ACL = NULL, Bucket, CacheControl = NULL, 
 #' @description
 #' Deletes the S3 bucket. All objects (including all object versions and delete markers) in the bucket must be deleted before the bucket itself can be deleted.
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_bucket.html](https://paws-r.github.io/docs/s3/delete_bucket.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket/](https://www.paws-r-sdk.com/docs/s3_delete_bucket/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; Specifies the bucket being deleted.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -557,7 +556,7 @@ s3_delete_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Deletes an analytics configuration for the bucket (specified by the analytics configuration ID).
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_bucket_analytics_configuration.html](https://paws-r.github.io/docs/s3/delete_bucket_analytics_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_analytics_configuration/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_analytics_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket from which an analytics configuration is deleted.
 #' @param Id &#91;required&#93; The ID that identifies the analytics configuration.
@@ -590,7 +589,7 @@ s3_delete_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketO
 #' @description
 #' Deletes the `cors` configuration information set for the bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_bucket_cors.html](https://paws-r.github.io/docs/s3/delete_bucket_cors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_cors/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_cors/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; Specifies the bucket whose `cors` configuration is being deleted.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -624,7 +623,7 @@ s3_delete_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' This implementation of the DELETE action resets the default encryption for the bucket as server-side encryption with Amazon S3 managed keys (SSE-S3). For information about the bucket default encryption feature, see [Amazon S3 Bucket Default Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_bucket_encryption.html](https://paws-r.github.io/docs/s3/delete_bucket_encryption.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_encryption/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_encryption/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the server-side encryption
 #' configuration to delete.
@@ -658,7 +657,7 @@ s3_delete_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Deletes the S3 Intelligent-Tiering configuration from the specified bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_bucket_intelligent_tiering_configuration.html](https://paws-r.github.io/docs/s3/delete_bucket_intelligent_tiering_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_intelligent_tiering_configuration/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_intelligent_tiering_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose configuration you want to modify
 #' or retrieve.
@@ -690,7 +689,7 @@ s3_delete_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 #' @description
 #' Deletes an inventory configuration (identified by the inventory ID) from the bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_bucket_inventory_configuration.html](https://paws-r.github.io/docs/s3/delete_bucket_inventory_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_inventory_configuration/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_inventory_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the inventory configuration to delete.
 #' @param Id &#91;required&#93; The ID used to identify the inventory configuration.
@@ -723,7 +722,7 @@ s3_delete_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketO
 #' @description
 #' Deletes the lifecycle configuration from the specified bucket. Amazon S3 removes all the lifecycle configuration rules in the lifecycle subresource associated with the bucket. Your objects never expire, and Amazon S3 no longer automatically deletes any objects on the basis of rules contained in the deleted lifecycle configuration.
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_bucket_lifecycle.html](https://paws-r.github.io/docs/s3/delete_bucket_lifecycle.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_lifecycle/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_lifecycle/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name of the lifecycle to delete.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -756,7 +755,7 @@ s3_delete_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Deletes a metrics configuration for the Amazon CloudWatch request metrics (specified by the metrics configuration ID) from the bucket. Note that this doesn't include the daily storage metrics.
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_bucket_metrics_configuration.html](https://paws-r.github.io/docs/s3/delete_bucket_metrics_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_metrics_configuration/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_metrics_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the metrics configuration to delete.
 #' @param Id &#91;required&#93; The ID used to identify the metrics configuration. The ID has a 64
@@ -791,7 +790,7 @@ s3_delete_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwn
 #' @description
 #' Removes `OwnershipControls` for an Amazon S3 bucket. To use this operation, you must have the `s3:PutBucketOwnershipControls` permission. For more information about Amazon S3 permissions, see [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_bucket_ownership_controls.html](https://paws-r.github.io/docs/s3/delete_bucket_ownership_controls.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_ownership_controls/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_ownership_controls/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The Amazon S3 bucket whose `OwnershipControls` you want to delete.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -824,7 +823,7 @@ s3_delete_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NU
 #' @description
 #' This implementation of the DELETE action uses the policy subresource to delete the policy of a specified bucket. If you are using an identity other than the root user of the Amazon Web Services account that owns the bucket, the calling identity must have the [`delete_bucket_policy`][s3_delete_bucket_policy] permissions on the specified bucket and belong to the bucket owner's account to use this operation.
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_bucket_policy.html](https://paws-r.github.io/docs/s3/delete_bucket_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_policy/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_policy/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -856,7 +855,7 @@ s3_delete_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Deletes the replication configuration from the bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_bucket_replication.html](https://paws-r.github.io/docs/s3/delete_bucket_replication.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_replication/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_replication/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -888,7 +887,7 @@ s3_delete_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Deletes the tags from the bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_bucket_tagging.html](https://paws-r.github.io/docs/s3/delete_bucket_tagging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_tagging/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_tagging/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket that has the tag set to be removed.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -920,7 +919,7 @@ s3_delete_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' This action removes the website configuration for a bucket. Amazon S3 returns a `200 OK` response upon successfully deleting a website configuration on the specified bucket. You will get a `200 OK` response if the website configuration you are trying to delete does not exist on the bucket. Amazon S3 returns a `404` response if the bucket specified in the request does not exist.
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_bucket_website.html](https://paws-r.github.io/docs/s3/delete_bucket_website.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_bucket_website/](https://www.paws-r-sdk.com/docs/s3_delete_bucket_website/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name for which you want to remove the website configuration.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -953,7 +952,7 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Removes the null version (if there is one) of an object and inserts a delete marker, which becomes the latest version of the object. If there isn't a null version, Amazon S3 does not remove any objects but will still respond that the command was successful.
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_object.html](https://paws-r.github.io/docs/s3/delete_object.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_object/](https://www.paws-r-sdk.com/docs/s3_delete_object/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name of the bucket containing the object.
 #' 
@@ -974,7 +973,7 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Key name of the object to delete.
 #' @param MFA The concatenation of the authentication device's serial number, a space,
@@ -1015,7 +1014,7 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' @description
 #' Removes the entire tag set from the specified object. For more information about managing object tags, see [Object Tagging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_object_tagging.html](https://paws-r.github.io/docs/s3/delete_object_tagging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_object_tagging/](https://www.paws-r-sdk.com/docs/s3_delete_object_tagging/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the objects from which to remove the tags.
 #' 
@@ -1036,7 +1035,7 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The key that identifies the object in the bucket from which to remove
 #' all tags.
@@ -1071,7 +1070,7 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' @description
 #' This action enables you to delete multiple objects from a bucket using a single HTTP request. If you know the object keys that you want to delete, then this action provides a suitable alternative to sending individual delete requests, reducing per-request overhead.
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_objects.html](https://paws-r.github.io/docs/s3/delete_objects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_objects/](https://www.paws-r-sdk.com/docs/s3_delete_objects/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the objects to delete.
 #' 
@@ -1092,7 +1091,7 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delete &#91;required&#93; Container for the request.
 #' @param MFA The concatenation of the authentication device's serial number, a space,
@@ -1147,7 +1146,7 @@ s3_delete_objects <- function(Bucket, Delete, MFA = NULL, RequestPayer = NULL, B
 #' @description
 #' Removes the `PublicAccessBlock` configuration for an Amazon S3 bucket. To use this operation, you must have the `s3:PutBucketPublicAccessBlock` permission. For more information about permissions, see [Permissions Related to Bucket Subresource Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html#using-with-s3-actions-related-to-bucket-subresources) and [Managing Access Permissions to Your Amazon S3 Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/delete_public_access_block.html](https://paws-r.github.io/docs/s3/delete_public_access_block.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_delete_public_access_block/](https://www.paws-r-sdk.com/docs/s3_delete_public_access_block/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The Amazon S3 bucket whose `PublicAccessBlock` configuration you want to
 #' delete.
@@ -1182,25 +1181,26 @@ s3_delete_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' This implementation of the GET action uses the `accelerate` subresource to return the Transfer Acceleration state of a bucket, which is either `Enabled` or `Suspended`. Amazon S3 Transfer Acceleration is a bucket-level feature that enables you to perform faster data transfers to and from Amazon S3.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_accelerate_configuration.html](https://paws-r.github.io/docs/s3/get_bucket_accelerate_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_accelerate_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_accelerate_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which the accelerate configuration is
 #' retrieved.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
+#' @param RequestPayer 
 #'
 #' @keywords internal
 #'
 #' @rdname s3_get_bucket_accelerate_configuration
-s3_get_bucket_accelerate_configuration <- function(Bucket, ExpectedBucketOwner = NULL) {
+s3_get_bucket_accelerate_configuration <- function(Bucket, ExpectedBucketOwner = NULL, RequestPayer = NULL) {
   op <- new_operation(
     name = "GetBucketAccelerateConfiguration",
     http_method = "GET",
     http_path = "/{Bucket}?accelerate",
     paginator = list()
   )
-  input <- .s3$get_bucket_accelerate_configuration_input(Bucket = Bucket, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$get_bucket_accelerate_configuration_input(Bucket = Bucket, ExpectedBucketOwner = ExpectedBucketOwner, RequestPayer = RequestPayer)
   output <- .s3$get_bucket_accelerate_configuration_output()
   config <- get_config()
   svc <- .s3$service(config)
@@ -1216,7 +1216,7 @@ s3_get_bucket_accelerate_configuration <- function(Bucket, ExpectedBucketOwner =
 #' @description
 #' This implementation of the `GET` action uses the `acl` subresource to return the access control list (ACL) of a bucket. To use `GET` to return the ACL of the bucket, you must have `READ_ACP` access to the bucket. If `READ_ACP` permission is granted to the anonymous user, you can return the ACL of the bucket without using an authorization header.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_acl.html](https://paws-r.github.io/docs/s3/get_bucket_acl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_acl/](https://www.paws-r-sdk.com/docs/s3_get_bucket_acl/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; Specifies the S3 bucket whose ACL is being requested.
 #' 
@@ -1259,7 +1259,7 @@ s3_get_bucket_acl <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' This implementation of the GET action returns an analytics configuration (identified by the analytics configuration ID) from the bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_analytics_configuration.html](https://paws-r.github.io/docs/s3/get_bucket_analytics_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_analytics_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_analytics_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket from which an analytics configuration is
 #' retrieved.
@@ -1294,7 +1294,7 @@ s3_get_bucket_analytics_configuration <- function(Bucket, Id, ExpectedBucketOwne
 #' @description
 #' Returns the Cross-Origin Resource Sharing (CORS) configuration information set for the bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_cors.html](https://paws-r.github.io/docs/s3/get_bucket_cors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_cors/](https://www.paws-r-sdk.com/docs/s3_get_bucket_cors/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name for which to get the cors configuration.
 #' 
@@ -1336,7 +1336,7 @@ s3_get_bucket_cors <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Returns the default encryption configuration for an Amazon S3 bucket. By default, all buckets have a default encryption configuration that uses server-side encryption with Amazon S3 managed keys (SSE-S3). For information about the bucket default encryption feature, see [Amazon S3 Bucket Default Encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_encryption.html](https://paws-r.github.io/docs/s3/get_bucket_encryption.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_encryption/](https://www.paws-r-sdk.com/docs/s3_get_bucket_encryption/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket from which the server-side encryption
 #' configuration is retrieved.
@@ -1369,7 +1369,7 @@ s3_get_bucket_encryption <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Gets the S3 Intelligent-Tiering configuration from the specified bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_intelligent_tiering_configuration.html](https://paws-r.github.io/docs/s3/get_bucket_intelligent_tiering_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_intelligent_tiering_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_intelligent_tiering_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose configuration you want to modify
 #' or retrieve.
@@ -1401,7 +1401,7 @@ s3_get_bucket_intelligent_tiering_configuration <- function(Bucket, Id) {
 #' @description
 #' Returns an inventory configuration (identified by the inventory configuration ID) from the bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_inventory_configuration.html](https://paws-r.github.io/docs/s3/get_bucket_inventory_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_inventory_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_inventory_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the inventory configuration to
 #' retrieve.
@@ -1435,7 +1435,7 @@ s3_get_bucket_inventory_configuration <- function(Bucket, Id, ExpectedBucketOwne
 #' @description
 #' For an updated version of this API, see [`get_bucket_lifecycle_configuration`][s3_get_bucket_lifecycle_configuration]. If you configured a bucket lifecycle using the `filter` element, you should see the updated version of this topic. This topic is provided for backward compatibility.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_lifecycle.html](https://paws-r.github.io/docs/s3/get_bucket_lifecycle.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_lifecycle/](https://www.paws-r-sdk.com/docs/s3_get_bucket_lifecycle/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the lifecycle information.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -1469,7 +1469,7 @@ s3_get_bucket_lifecycle <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Bucket lifecycle configuration now supports specifying a lifecycle rule using an object key name prefix, one or more object tags, or a combination of both. Accordingly, this section describes the latest API. The response describes the new filter element that you can use to specify a filter to select a subset of objects to which the rule applies. If you are using a previous version of the lifecycle configuration, it still works. For the earlier action, see [`get_bucket_lifecycle`][s3_get_bucket_lifecycle].
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_lifecycle_configuration.html](https://paws-r.github.io/docs/s3/get_bucket_lifecycle_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_lifecycle_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_lifecycle_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the lifecycle information.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -1501,7 +1501,7 @@ s3_get_bucket_lifecycle_configuration <- function(Bucket, ExpectedBucketOwner = 
 #' @description
 #' Returns the Region the bucket resides in. You set the bucket's Region using the `LocationConstraint` request parameter in a [`create_bucket`][s3_create_bucket] request. For more information, see [`create_bucket`][s3_create_bucket].
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_location.html](https://paws-r.github.io/docs/s3/get_bucket_location.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_location/](https://www.paws-r-sdk.com/docs/s3_get_bucket_location/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the location.
 #' 
@@ -1544,7 +1544,7 @@ s3_get_bucket_location <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Returns the logging status of a bucket and the permissions users have to view and modify that status.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_logging.html](https://paws-r.github.io/docs/s3/get_bucket_logging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_logging/](https://www.paws-r-sdk.com/docs/s3_get_bucket_logging/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name for which to get the logging information.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -1577,7 +1577,7 @@ s3_get_bucket_logging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Gets a metrics configuration (specified by the metrics configuration ID) from the bucket. Note that this doesn't include the daily storage metrics.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_metrics_configuration.html](https://paws-r.github.io/docs/s3/get_bucket_metrics_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_metrics_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_metrics_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the metrics configuration to retrieve.
 #' @param Id &#91;required&#93; The ID used to identify the metrics configuration. The ID has a 64
@@ -1612,7 +1612,7 @@ s3_get_bucket_metrics_configuration <- function(Bucket, Id, ExpectedBucketOwner 
 #' @description
 #' No longer used, see [`get_bucket_notification_configuration`][s3_get_bucket_notification_configuration].
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_notification.html](https://paws-r.github.io/docs/s3/get_bucket_notification.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_notification/](https://www.paws-r-sdk.com/docs/s3_get_bucket_notification/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the notification configuration.
 #' 
@@ -1654,7 +1654,7 @@ s3_get_bucket_notification <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Returns the notification configuration of a bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_notification_configuration.html](https://paws-r.github.io/docs/s3/get_bucket_notification_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_notification_configuration/](https://www.paws-r-sdk.com/docs/s3_get_bucket_notification_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the notification configuration.
 #' 
@@ -1696,7 +1696,7 @@ s3_get_bucket_notification_configuration <- function(Bucket, ExpectedBucketOwner
 #' @description
 #' Retrieves `OwnershipControls` for an Amazon S3 bucket. To use this operation, you must have the `s3:GetBucketOwnershipControls` permission. For more information about Amazon S3 permissions, see [Specifying permissions in a policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_ownership_controls.html](https://paws-r.github.io/docs/s3/get_bucket_ownership_controls.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_ownership_controls/](https://www.paws-r-sdk.com/docs/s3_get_bucket_ownership_controls/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose `OwnershipControls` you want to
 #' retrieve.
@@ -1729,7 +1729,7 @@ s3_get_bucket_ownership_controls <- function(Bucket, ExpectedBucketOwner = NULL)
 #' @description
 #' Returns the policy of a specified bucket. If you are using an identity other than the root user of the Amazon Web Services account that owns the bucket, the calling identity must have the [`get_bucket_policy`][s3_get_bucket_policy] permissions on the specified bucket and belong to the bucket owner's account in order to use this operation.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_policy.html](https://paws-r.github.io/docs/s3/get_bucket_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_policy/](https://www.paws-r-sdk.com/docs/s3_get_bucket_policy/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name for which to get the bucket policy.
 #' 
@@ -1772,7 +1772,7 @@ s3_get_bucket_policy <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Retrieves the policy status for an Amazon S3 bucket, indicating whether the bucket is public. In order to use this operation, you must have the `s3:GetBucketPolicyStatus` permission. For more information about Amazon S3 permissions, see [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_policy_status.html](https://paws-r.github.io/docs/s3/get_bucket_policy_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_policy_status/](https://www.paws-r-sdk.com/docs/s3_get_bucket_policy_status/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose policy status you want to
 #' retrieve.
@@ -1805,7 +1805,7 @@ s3_get_bucket_policy_status <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Returns the replication configuration of a bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_replication.html](https://paws-r.github.io/docs/s3/get_bucket_replication.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_replication/](https://www.paws-r-sdk.com/docs/s3_get_bucket_replication/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name for which to get the replication information.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -1837,7 +1837,7 @@ s3_get_bucket_replication <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Returns the request payment configuration of a bucket. To use this version of the operation, you must be the bucket owner. For more information, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_request_payment.html](https://paws-r.github.io/docs/s3/get_bucket_request_payment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_request_payment/](https://www.paws-r-sdk.com/docs/s3_get_bucket_request_payment/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the payment request
 #' configuration
@@ -1870,7 +1870,7 @@ s3_get_bucket_request_payment <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Returns the tag set associated with the bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_tagging.html](https://paws-r.github.io/docs/s3/get_bucket_tagging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_tagging/](https://www.paws-r-sdk.com/docs/s3_get_bucket_tagging/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the tagging information.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -1902,7 +1902,7 @@ s3_get_bucket_tagging <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Returns the versioning state of a bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_versioning.html](https://paws-r.github.io/docs/s3/get_bucket_versioning.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_versioning/](https://www.paws-r-sdk.com/docs/s3_get_bucket_versioning/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to get the versioning information.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -1934,7 +1934,7 @@ s3_get_bucket_versioning <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Returns the website configuration for a bucket. To host website on Amazon S3, you can configure a bucket as website by adding a website configuration. For more information about hosting websites, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/get_bucket_website.html](https://paws-r.github.io/docs/s3/get_bucket_website.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_bucket_website/](https://www.paws-r-sdk.com/docs/s3_get_bucket_website/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name for which to get the website configuration.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -1966,7 +1966,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' Retrieves objects from Amazon S3. To use `GET`, you must have `READ` access to the object. If you grant `READ` access to the anonymous user, you can return the object without using an authorization header.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_object.html](https://paws-r.github.io/docs/s3/get_object.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_object/](https://www.paws-r-sdk.com/docs/s3_get_object/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the object.
 #' 
@@ -1990,7 +1990,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
 #' specified; otherwise, return a 412 (precondition failed) error.
@@ -2058,7 +2058,7 @@ s3_get_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNone
 #' @description
 #' Returns the access control list (ACL) of an object. To use this operation, you must have `s3:GetObjectAcl` permissions or `READ_ACP` access to the object. For more information, see [Mapping of ACL permissions and access policy permissions](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#acl-access-policy-permission-mapping) in the *Amazon S3 User Guide*
 #'
-#' See [https://paws-r.github.io/docs/s3/get_object_acl.html](https://paws-r.github.io/docs/s3/get_object_acl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_object_acl/](https://www.paws-r-sdk.com/docs/s3_get_object_acl/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name that contains the object for which to get the ACL
 #' information.
@@ -2104,7 +2104,7 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' @description
 #' Retrieves all the metadata from an object without returning the object itself. This action is useful if you're interested only in an object's metadata. To use [`get_object_attributes`][s3_get_object_attributes], you must have READ access to the object.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_object_attributes.html](https://paws-r.github.io/docs/s3/get_object_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_object_attributes/](https://www.paws-r-sdk.com/docs/s3_get_object_attributes/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket that contains the object.
 #' 
@@ -2125,7 +2125,7 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; The object key.
 #' @param VersionId The version ID used to reference a specific version of the object.
@@ -2146,9 +2146,8 @@ s3_get_object_acl <- function(Bucket, Key, VersionId = NULL, RequestPayer = NULL
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
-#' @param ObjectAttributes &#91;required&#93; An XML header that specifies the fields at the root level that you want
-#' returned in the response. Fields that you do not specify are not
-#' returned.
+#' @param ObjectAttributes &#91;required&#93; Specifies the fields at the root level that you want returned in the
+#' response. Fields that you do not specify are not returned.
 #'
 #' @keywords internal
 #'
@@ -2175,7 +2174,7 @@ s3_get_object_attributes <- function(Bucket, Key, VersionId = NULL, MaxParts = N
 #' @description
 #' Gets an object's current legal hold status. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/get_object_legal_hold.html](https://paws-r.github.io/docs/s3/get_object_legal_hold.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_object_legal_hold/](https://www.paws-r-sdk.com/docs/s3_get_object_legal_hold/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the object whose legal hold status you want
 #' to retrieve.
@@ -2222,7 +2221,7 @@ s3_get_object_legal_hold <- function(Bucket, Key, VersionId = NULL, RequestPayer
 #' @description
 #' Gets the Object Lock configuration for a bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/get_object_lock_configuration.html](https://paws-r.github.io/docs/s3/get_object_lock_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_object_lock_configuration/](https://www.paws-r-sdk.com/docs/s3_get_object_lock_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket whose Object Lock configuration you want to retrieve.
 #' 
@@ -2263,7 +2262,7 @@ s3_get_object_lock_configuration <- function(Bucket, ExpectedBucketOwner = NULL)
 #' @description
 #' Retrieves an object's retention settings. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/get_object_retention.html](https://paws-r.github.io/docs/s3/get_object_retention.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_object_retention/](https://www.paws-r-sdk.com/docs/s3_get_object_retention/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the object whose retention settings you want
 #' to retrieve.
@@ -2310,7 +2309,7 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #' @description
 #' Returns the tag-set of an object. You send the GET request against the tagging subresource associated with the object.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_object_tagging.html](https://paws-r.github.io/docs/s3/get_object_tagging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_object_tagging/](https://www.paws-r-sdk.com/docs/s3_get_object_tagging/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the object for which to get the tagging
 #' information.
@@ -2332,7 +2331,7 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which to get the tagging information.
 #' @param VersionId The versionId of the object for which to get the tagging information.
@@ -2366,7 +2365,7 @@ s3_get_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBucketO
 #' @description
 #' Returns torrent files from a bucket. BitTorrent can save you bandwidth when you're distributing large files.
 #'
-#' See [https://paws-r.github.io/docs/s3/get_object_torrent.html](https://paws-r.github.io/docs/s3/get_object_torrent.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_object_torrent/](https://www.paws-r-sdk.com/docs/s3_get_object_torrent/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the object for which to get the
 #' torrent files.
@@ -2401,7 +2400,7 @@ s3_get_object_torrent <- function(Bucket, Key, RequestPayer = NULL, ExpectedBuck
 #' @description
 #' Retrieves the `PublicAccessBlock` configuration for an Amazon S3 bucket. To use this operation, you must have the `s3:GetBucketPublicAccessBlock` permission. For more information about Amazon S3 permissions, see [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/get_public_access_block.html](https://paws-r.github.io/docs/s3/get_public_access_block.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_get_public_access_block/](https://www.paws-r-sdk.com/docs/s3_get_public_access_block/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose `PublicAccessBlock` configuration
 #' you want to retrieve.
@@ -2435,7 +2434,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' @description
 #' This action is useful to determine if a bucket exists and you have permission to access it. The action returns a `200 OK` if the bucket exists and you have permission to access it.
 #'
-#' See [https://paws-r.github.io/docs/s3/head_bucket.html](https://paws-r.github.io/docs/s3/head_bucket.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_head_bucket/](https://www.paws-r-sdk.com/docs/s3_head_bucket/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
 #' 
@@ -2463,7 +2462,7 @@ s3_get_public_access_block <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
@@ -2493,9 +2492,9 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' object itself
 #'
 #' @description
-#' The HEAD action retrieves metadata from an object without returning the object itself. This action is useful if you're only interested in an object's metadata. To use HEAD, you must have READ access to the object.
+#' The `HEAD` action retrieves metadata from an object without returning the object itself. This action is useful if you're only interested in an object's metadata. To use `HEAD`, you must have READ access to the object.
 #'
-#' See [https://paws-r.github.io/docs/s3/head_object.html](https://paws-r.github.io/docs/s3/head_object.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_head_object/](https://www.paws-r-sdk.com/docs/s3_head_object/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the object.
 #' 
@@ -2516,7 +2515,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param IfMatch Return the object only if its entity tag (ETag) is the same as the one
 #' specified; otherwise, return a 412 (precondition failed) error.
@@ -2582,11 +2581,11 @@ s3_head_object <- function(Bucket, IfMatch = NULL, IfModifiedSince = NULL, IfNon
 #' @description
 #' Lists the analytics configurations for the bucket. You can have up to 1,000 analytics configurations per bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/list_bucket_analytics_configurations.html](https://paws-r.github.io/docs/s3/list_bucket_analytics_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_list_bucket_analytics_configurations/](https://www.paws-r-sdk.com/docs/s3_list_bucket_analytics_configurations/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket from which analytics configurations are
 #' retrieved.
-#' @param ContinuationToken The ContinuationToken that represents a placeholder from where this
+#' @param ContinuationToken The `ContinuationToken` that represents a placeholder from where this
 #' request should begin.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
@@ -2617,7 +2616,7 @@ s3_list_bucket_analytics_configurations <- function(Bucket, ContinuationToken = 
 #' @description
 #' Lists the S3 Intelligent-Tiering configuration from the specified bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/list_bucket_intelligent_tiering_configurations.html](https://paws-r.github.io/docs/s3/list_bucket_intelligent_tiering_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_list_bucket_intelligent_tiering_configurations/](https://www.paws-r-sdk.com/docs/s3_list_bucket_intelligent_tiering_configurations/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose configuration you want to modify
 #' or retrieve.
@@ -2649,12 +2648,12 @@ s3_list_bucket_intelligent_tiering_configurations <- function(Bucket, Continuati
 #' @description
 #' Returns a list of inventory configurations for the bucket. You can have up to 1,000 analytics configurations per bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/list_bucket_inventory_configurations.html](https://paws-r.github.io/docs/s3/list_bucket_inventory_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_list_bucket_inventory_configurations/](https://www.paws-r-sdk.com/docs/s3_list_bucket_inventory_configurations/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the inventory configurations to
 #' retrieve.
 #' @param ContinuationToken The marker used to continue an inventory configuration listing that has
-#' been truncated. Use the NextContinuationToken from a previously
+#' been truncated. Use the `NextContinuationToken` from a previously
 #' truncated list response to continue the listing. The continuation token
 #' is an opaque value that Amazon S3 understands.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -2686,12 +2685,12 @@ s3_list_bucket_inventory_configurations <- function(Bucket, ContinuationToken = 
 #' @description
 #' Lists the metrics configurations for the bucket. The metrics configurations are only for the request metrics of the bucket and do not provide information on daily storage metrics. You can have up to 1,000 configurations per bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/list_bucket_metrics_configurations.html](https://paws-r.github.io/docs/s3/list_bucket_metrics_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_list_bucket_metrics_configurations/](https://www.paws-r-sdk.com/docs/s3_list_bucket_metrics_configurations/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the metrics configurations to
 #' retrieve.
 #' @param ContinuationToken The marker that is used to continue a metrics configuration listing that
-#' has been truncated. Use the NextContinuationToken from a previously
+#' has been truncated. Use the `NextContinuationToken` from a previously
 #' truncated list response to continue the listing. The continuation token
 #' is an opaque value that Amazon S3 understands.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
@@ -2724,7 +2723,7 @@ s3_list_bucket_metrics_configurations <- function(Bucket, ContinuationToken = NU
 #' @description
 #' Returns a list of all buckets owned by the authenticated sender of the request. To use this operation, you must have the `s3:ListAllMyBuckets` permission.
 #'
-#' See [https://paws-r.github.io/docs/s3/list_buckets.html](https://paws-r.github.io/docs/s3/list_buckets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_list_buckets/](https://www.paws-r-sdk.com/docs/s3_list_buckets/) for full documentation.
 #'
 
 #'
@@ -2736,7 +2735,7 @@ s3_list_buckets <- function() {
     name = "ListBuckets",
     http_method = "GET",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Buckets")
   )
   input <- .s3$list_buckets_input()
   output <- .s3$list_buckets_output()
@@ -2753,7 +2752,7 @@ s3_list_buckets <- function() {
 #' @description
 #' This action lists in-progress multipart uploads. An in-progress multipart upload is a multipart upload that has been initiated using the Initiate Multipart Upload request, but has not yet been completed or aborted.
 #'
-#' See [https://paws-r.github.io/docs/s3/list_multipart_uploads.html](https://paws-r.github.io/docs/s3/list_multipart_uploads.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_list_multipart_uploads/](https://www.paws-r-sdk.com/docs/s3_list_multipart_uploads/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket to which the multipart upload was initiated.
 #' 
@@ -2774,7 +2773,7 @@ s3_list_buckets <- function() {
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Delimiter Character you use to group keys.
 #' 
@@ -2785,7 +2784,7 @@ s3_list_buckets <- function() {
 #' key. The keys that are grouped under `CommonPrefixes` result element are
 #' not returned elsewhere in the response.
 #' @param EncodingType 
-#' @param KeyMarker Together with upload-id-marker, this parameter specifies the multipart
+#' @param KeyMarker Together with `upload-id-marker`, this parameter specifies the multipart
 #' upload after which listing should begin.
 #' 
 #' If `upload-id-marker` is not specified, only the keys lexicographically
@@ -2800,8 +2799,8 @@ s3_list_buckets <- function() {
 #' returned in a response.
 #' @param Prefix Lists in-progress uploads only for those keys that begin with the
 #' specified prefix. You can use prefixes to separate a bucket into
-#' different grouping of keys. (You can think of using prefix to make
-#' groups in the same way you'd use a folder in a file system.)
+#' different grouping of keys. (You can think of using `prefix` to make
+#' groups in the same way that you'd use a folder in a file system.)
 #' @param UploadIdMarker Together with key-marker, specifies the multipart upload after which
 #' listing should begin. If key-marker is not specified, the
 #' upload-id-marker parameter is ignored. Otherwise, any multipart uploads
@@ -2811,18 +2810,19 @@ s3_list_buckets <- function() {
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
+#' @param RequestPayer 
 #'
 #' @keywords internal
 #'
 #' @rdname s3_list_multipart_uploads
-s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = NULL, KeyMarker = NULL, MaxUploads = NULL, Prefix = NULL, UploadIdMarker = NULL, ExpectedBucketOwner = NULL) {
+s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = NULL, KeyMarker = NULL, MaxUploads = NULL, Prefix = NULL, UploadIdMarker = NULL, ExpectedBucketOwner = NULL, RequestPayer = NULL) {
   op <- new_operation(
     name = "ListMultipartUploadsRequest",
     http_method = "GET",
     http_path = "/{Bucket}?uploads",
-    paginator = list()
+    paginator = list(input_token = list("KeyMarker", "UploadIdMarker"), limit_key = "MaxUploads", more_results = "IsTruncated", output_token = c("NextKeyMarker", "NextUploadIdMarker"), result_key = list("Uploads", "CommonPrefixes"))
   )
-  input <- .s3$list_multipart_uploads_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, KeyMarker = KeyMarker, MaxUploads = MaxUploads, Prefix = Prefix, UploadIdMarker = UploadIdMarker, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$list_multipart_uploads_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, KeyMarker = KeyMarker, MaxUploads = MaxUploads, Prefix = Prefix, UploadIdMarker = UploadIdMarker, ExpectedBucketOwner = ExpectedBucketOwner, RequestPayer = RequestPayer)
   output <- .s3$list_multipart_uploads_output()
   config <- get_config()
   svc <- .s3$service(config)
@@ -2837,45 +2837,48 @@ s3_list_multipart_uploads <- function(Bucket, Delimiter = NULL, EncodingType = N
 #' @description
 #' Returns metadata about all versions of the objects in a bucket. You can also use request parameters as selection criteria to return metadata about a subset of all the object versions.
 #'
-#' See [https://paws-r.github.io/docs/s3/list_object_versions.html](https://paws-r.github.io/docs/s3/list_object_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_list_object_versions/](https://www.paws-r-sdk.com/docs/s3_list_object_versions/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name that contains the objects.
 #' @param Delimiter A delimiter is a character that you specify to group keys. All keys that
 #' contain the same string between the `prefix` and the first occurrence of
 #' the delimiter are grouped under a single result element in
-#' CommonPrefixes. These groups are counted as one result against the
-#' max-keys limitation. These keys are not returned elsewhere in the
+#' `CommonPrefixes`. These groups are counted as one result against the
+#' `max-keys` limitation. These keys are not returned elsewhere in the
 #' response.
 #' @param EncodingType 
 #' @param KeyMarker Specifies the key to start with when listing objects in a bucket.
-#' @param MaxKeys Sets the maximum number of keys returned in the response. By default the
-#' action returns up to 1,000 key names. The response might contain fewer
-#' keys but will never contain more. If additional keys satisfy the search
-#' criteria, but were not returned because max-keys was exceeded, the
-#' response contains \<isTruncated\>true\</isTruncated\>. To return the
-#' additional keys, see key-marker and version-id-marker.
+#' @param MaxKeys Sets the maximum number of keys returned in the response. By default,
+#' the action returns up to 1,000 key names. The response might contain
+#' fewer keys but will never contain more. If additional keys satisfy the
+#' search criteria, but were not returned because `max-keys` was exceeded,
+#' the response contains `<isTruncated>true</isTruncated>`. To return the
+#' additional keys, see `key-marker` and `version-id-marker`.
 #' @param Prefix Use this parameter to select only those keys that begin with the
 #' specified prefix. You can use prefixes to separate a bucket into
-#' different groupings of keys. (You can think of using prefix to make
-#' groups in the same way you'd use a folder in a file system.) You can use
-#' prefix with delimiter to roll up numerous objects into a single result
-#' under CommonPrefixes.
+#' different groupings of keys. (You can think of using `prefix` to make
+#' groups in the same way that you'd use a folder in a file system.) You
+#' can use `prefix` with `delimiter` to roll up numerous objects into a
+#' single result under `CommonPrefixes`.
 #' @param VersionIdMarker Specifies the object version you want to start listing from.
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
+#' @param RequestPayer 
+#' @param OptionalObjectAttributes Specifies the optional fields that you want returned in the response.
+#' Fields that you do not specify are not returned.
 #'
 #' @keywords internal
 #'
 #' @rdname s3_list_object_versions
-s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NULL, KeyMarker = NULL, MaxKeys = NULL, Prefix = NULL, VersionIdMarker = NULL, ExpectedBucketOwner = NULL) {
+s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NULL, KeyMarker = NULL, MaxKeys = NULL, Prefix = NULL, VersionIdMarker = NULL, ExpectedBucketOwner = NULL, RequestPayer = NULL, OptionalObjectAttributes = NULL) {
   op <- new_operation(
     name = "ListObjectVersions",
     http_method = "GET",
     http_path = "/{Bucket}?versions",
-    paginator = list()
+    paginator = list(input_token = list("KeyMarker", "VersionIdMarker"), limit_key = "MaxKeys", more_results = "IsTruncated", output_token = c("NextKeyMarker", "NextVersionIdMarker"), result_key = list("Versions", "DeleteMarkers", "CommonPrefixes"))
   )
-  input <- .s3$list_object_versions_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, KeyMarker = KeyMarker, MaxKeys = MaxKeys, Prefix = Prefix, VersionIdMarker = VersionIdMarker, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$list_object_versions_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, KeyMarker = KeyMarker, MaxKeys = MaxKeys, Prefix = Prefix, VersionIdMarker = VersionIdMarker, ExpectedBucketOwner = ExpectedBucketOwner, RequestPayer = RequestPayer, OptionalObjectAttributes = OptionalObjectAttributes)
   output <- .s3$list_object_versions_output()
   config <- get_config()
   svc <- .s3$service(config)
@@ -2890,7 +2893,7 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' @description
 #' Returns some or all (up to 1,000) of the objects in a bucket. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A 200 OK response can contain valid or invalid XML. Be sure to design your application to parse the contents of the response and handle it appropriately.
 #'
-#' See [https://paws-r.github.io/docs/s3/list_objects.html](https://paws-r.github.io/docs/s3/list_objects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_list_objects/](https://www.paws-r-sdk.com/docs/s3_list_objects/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket containing the objects.
 #' 
@@ -2911,16 +2914,16 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
-#' @param Delimiter A delimiter is a character you use to group keys.
+#' @param Delimiter A delimiter is a character that you use to group keys.
 #' @param EncodingType 
 #' @param Marker Marker is where you want Amazon S3 to start listing from. Amazon S3
 #' starts listing after this specified key. Marker can be any key in the
 #' bucket.
-#' @param MaxKeys Sets the maximum number of keys returned in the response. By default the
-#' action returns up to 1,000 key names. The response might contain fewer
-#' keys but will never contain more.
+#' @param MaxKeys Sets the maximum number of keys returned in the response. By default,
+#' the action returns up to 1,000 key names. The response might contain
+#' fewer keys but will never contain more.
 #' @param Prefix Limits the response to keys that begin with the specified prefix.
 #' @param RequestPayer Confirms that the requester knows that she or he will be charged for the
 #' list objects request. Bucket owners need not specify this parameter in
@@ -2928,18 +2931,20 @@ s3_list_object_versions <- function(Bucket, Delimiter = NULL, EncodingType = NUL
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
+#' @param OptionalObjectAttributes Specifies the optional fields that you want returned in the response.
+#' Fields that you do not specify are not returned.
 #'
 #' @keywords internal
 #'
 #' @rdname s3_list_objects
-s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marker = NULL, MaxKeys = NULL, Prefix = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
+s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marker = NULL, MaxKeys = NULL, Prefix = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, OptionalObjectAttributes = NULL) {
   op <- new_operation(
     name = "ListObjects",
     http_method = "GET",
     http_path = "/{Bucket}",
-    paginator = list()
+    paginator = list(input_token = c("Marker", "Marker"), limit_key = "MaxKeys", more_results = "IsTruncated", output_token = c("NextMarker", "Contents[-1].Key"), result_key = list("Contents", "CommonPrefixes"))
   )
-  input <- .s3$list_objects_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, Marker = Marker, MaxKeys = MaxKeys, Prefix = Prefix, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$list_objects_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, Marker = Marker, MaxKeys = MaxKeys, Prefix = Prefix, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, OptionalObjectAttributes = OptionalObjectAttributes)
   output <- .s3$list_objects_output()
   config <- get_config()
   svc <- .s3$service(config)
@@ -2953,9 +2958,9 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' request
 #'
 #' @description
-#' Returns some or all (up to 1,000) of the objects in a bucket with each request. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A `200 OK` response can contain valid or invalid XML. Make sure to design your application to parse the contents of the response and handle it appropriately. Objects are returned sorted in an ascending order of the respective key names in the list. For more information about listing objects, see [Listing object keys programmatically](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ListingKeysUsingAPIs.html)
+#' Returns some or all (up to 1,000) of the objects in a bucket with each request. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A `200 OK` response can contain valid or invalid XML. Make sure to design your application to parse the contents of the response and handle it appropriately. Objects are returned sorted in an ascending order of the respective key names in the list. For more information about listing objects, see [Listing object keys programmatically](https://docs.aws.amazon.com/AmazonS3/latest/userguide/ListingKeysUsingAPIs.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3/list_objects_v2.html](https://paws-r.github.io/docs/s3/list_objects_v2.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_list_objects_v2/](https://www.paws-r-sdk.com/docs/s3_list_objects_v2/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; Bucket name to list.
 #' 
@@ -2976,20 +2981,21 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
-#' @param Delimiter A delimiter is a character you use to group keys.
+#' @param Delimiter A delimiter is a character that you use to group keys.
 #' @param EncodingType Encoding type used by Amazon S3 to encode object keys in the response.
-#' @param MaxKeys Sets the maximum number of keys returned in the response. By default the
-#' action returns up to 1,000 key names. The response might contain fewer
-#' keys but will never contain more.
+#' @param MaxKeys Sets the maximum number of keys returned in the response. By default,
+#' the action returns up to 1,000 key names. The response might contain
+#' fewer keys but will never contain more.
 #' @param Prefix Limits the response to keys that begin with the specified prefix.
-#' @param ContinuationToken ContinuationToken indicates Amazon S3 that the list is being continued
-#' on this bucket with a token. ContinuationToken is obfuscated and is not
-#' a real key.
-#' @param FetchOwner The owner field is not present in listV2 by default, if you want to
-#' return owner field with each key in the result then set the fetch owner
-#' field to true.
+#' @param ContinuationToken `ContinuationToken` indicates to Amazon S3 that the list is being
+#' continued on this bucket with a token. `ContinuationToken` is obfuscated
+#' and is not a real key.
+#' @param FetchOwner The owner field is not present in
+#' [`list_objects_v2`][s3_list_objects_v2] by default. If you want to
+#' return the owner field with each key in the result, then set the
+#' `FetchOwner` field to `true`.
 #' @param StartAfter StartAfter is where you want Amazon S3 to start listing from. Amazon S3
 #' starts listing after this specified key. StartAfter can be any key in
 #' the bucket.
@@ -2999,18 +3005,20 @@ s3_list_objects <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Marke
 #' @param ExpectedBucketOwner The account ID of the expected bucket owner. If the bucket is owned by a
 #' different account, the request fails with the HTTP status code
 #' `403 Forbidden` (access denied).
+#' @param OptionalObjectAttributes Specifies the optional fields that you want returned in the response.
+#' Fields that you do not specify are not returned.
 #'
 #' @keywords internal
 #'
 #' @rdname s3_list_objects_v2
-s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, MaxKeys = NULL, Prefix = NULL, ContinuationToken = NULL, FetchOwner = NULL, StartAfter = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL) {
+s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, MaxKeys = NULL, Prefix = NULL, ContinuationToken = NULL, FetchOwner = NULL, StartAfter = NULL, RequestPayer = NULL, ExpectedBucketOwner = NULL, OptionalObjectAttributes = NULL) {
   op <- new_operation(
     name = "ListObjectsV2",
     http_method = "GET",
     http_path = "/{Bucket}?list-type=2",
-    paginator = list()
+    paginator = list(input_token = "ContinuationToken", limit_key = "MaxKeys", output_token = "NextContinuationToken", result_key = list( "Contents", "CommonPrefixes"))
   )
-  input <- .s3$list_objects_v2_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, MaxKeys = MaxKeys, Prefix = Prefix, ContinuationToken = ContinuationToken, FetchOwner = FetchOwner, StartAfter = StartAfter, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner)
+  input <- .s3$list_objects_v2_input(Bucket = Bucket, Delimiter = Delimiter, EncodingType = EncodingType, MaxKeys = MaxKeys, Prefix = Prefix, ContinuationToken = ContinuationToken, FetchOwner = FetchOwner, StartAfter = StartAfter, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, OptionalObjectAttributes = OptionalObjectAttributes)
   output <- .s3$list_objects_v2_output()
   config <- get_config()
   svc <- .s3$service(config)
@@ -3025,7 +3033,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' @description
 #' Lists the parts that have been uploaded for a specific multipart upload. This operation must include the upload ID, which you obtain by sending the initiate multipart upload request (see [`create_multipart_upload`][s3_create_multipart_upload]). This request returns a maximum of 1,000 uploaded parts. The default number of parts returned is 1,000 parts. You can restrict the number of parts returned by specifying the `max-parts` request parameter. If your multipart upload consists of more than 1,000 parts, the response returns an `IsTruncated` field with the value of true, and a `NextPartNumberMarker` element. In subsequent [`list_parts`][s3_list_parts] requests you can include the part-number-marker query string parameter and set its value to the `NextPartNumberMarker` field value from the previous response.
 #'
-#' See [https://paws-r.github.io/docs/s3/list_parts.html](https://paws-r.github.io/docs/s3/list_parts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_list_parts/](https://www.paws-r-sdk.com/docs/s3_list_parts/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket to which the parts are being uploaded.
 #' 
@@ -3046,7 +3054,7 @@ s3_list_objects_v2 <- function(Bucket, Delimiter = NULL, EncodingType = NULL, Ma
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the multipart upload was initiated.
 #' @param MaxParts Sets the maximum number of parts to return.
@@ -3082,7 +3090,7 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
     name = "ListPartsRequest",
     http_method = "GET",
     http_path = "/{Bucket}/{Key+}",
-    paginator = list()
+    paginator = list(input_token = "PartNumberMarker", limit_key = "MaxParts", more_results = "IsTruncated", output_token = "NextPartNumberMarker", result_key = "Parts")
   )
   input <- .s3$list_parts_input(Bucket = Bucket, Key = Key, MaxParts = MaxParts, PartNumberMarker = PartNumberMarker, UploadId = UploadId, RequestPayer = RequestPayer, ExpectedBucketOwner = ExpectedBucketOwner, SSECustomerAlgorithm = SSECustomerAlgorithm, SSECustomerKey = SSECustomerKey, SSECustomerKeyMD5 = SSECustomerKeyMD5)
   output <- .s3$list_parts_output()
@@ -3099,7 +3107,7 @@ s3_list_parts <- function(Bucket, Key, MaxParts = NULL, PartNumberMarker = NULL,
 #' @description
 #' Sets the accelerate configuration of an existing bucket. Amazon S3 Transfer Acceleration is a bucket-level feature that enables you to perform faster data transfers to Amazon S3.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_accelerate_configuration.html](https://paws-r.github.io/docs/s3/put_bucket_accelerate_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_accelerate_configuration/](https://www.paws-r-sdk.com/docs/s3_put_bucket_accelerate_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which the accelerate configuration is set.
 #' @param AccelerateConfiguration &#91;required&#93; Container for setting the transfer acceleration state.
@@ -3144,7 +3152,7 @@ s3_put_bucket_accelerate_configuration <- function(Bucket, AccelerateConfigurati
 #' @description
 #' Sets the permissions on an existing bucket using access control lists (ACL). For more information, see [Using ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html). To set the ACL of a bucket, you must have `WRITE_ACP` permission.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_acl.html](https://paws-r.github.io/docs/s3/put_bucket_acl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_acl/](https://www.paws-r-sdk.com/docs/s3_put_bucket_acl/) for full documentation.
 #'
 #' @param ACL The canned ACL to apply to the bucket.
 #' @param AccessControlPolicy Contains the elements that set the ACL permissions for an object per
@@ -3208,7 +3216,7 @@ s3_put_bucket_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #' @description
 #' Sets an analytics configuration for the bucket (specified by the analytics configuration ID). You can have up to 1,000 analytics configurations per bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_analytics_configuration.html](https://paws-r.github.io/docs/s3/put_bucket_analytics_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_analytics_configuration/](https://www.paws-r-sdk.com/docs/s3_put_bucket_analytics_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket to which an analytics configuration is stored.
 #' @param Id &#91;required&#93; The ID that identifies the analytics configuration.
@@ -3242,7 +3250,7 @@ s3_put_bucket_analytics_configuration <- function(Bucket, Id, AnalyticsConfigura
 #' @description
 #' Sets the `cors` configuration for your bucket. If the configuration exists, Amazon S3 replaces it.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_cors.html](https://paws-r.github.io/docs/s3/put_bucket_cors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_cors/](https://www.paws-r-sdk.com/docs/s3_put_bucket_cors/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; Specifies the bucket impacted by the `cors`configuration.
 #' @param CORSConfiguration &#91;required&#93; Describes the cross-origin access configuration for objects in an Amazon
@@ -3298,7 +3306,7 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' @description
 #' This action uses the `encryption` subresource to configure default encryption and Amazon S3 Bucket Keys for an existing bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_encryption.html](https://paws-r.github.io/docs/s3/put_bucket_encryption.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_encryption/](https://www.paws-r-sdk.com/docs/s3_put_bucket_encryption/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; Specifies default encryption for a bucket using server-side encryption
 #' with different key options. By default, all buckets have a default
@@ -3357,7 +3365,7 @@ s3_put_bucket_encryption <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' @description
 #' Puts a S3 Intelligent-Tiering configuration to the specified bucket. You can have up to 1,000 S3 Intelligent-Tiering configurations per bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_intelligent_tiering_configuration.html](https://paws-r.github.io/docs/s3/put_bucket_intelligent_tiering_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_intelligent_tiering_configuration/](https://www.paws-r-sdk.com/docs/s3_put_bucket_intelligent_tiering_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose configuration you want to modify
 #' or retrieve.
@@ -3390,7 +3398,7 @@ s3_put_bucket_intelligent_tiering_configuration <- function(Bucket, Id, Intellig
 #' @description
 #' This implementation of the `PUT` action adds an inventory configuration (identified by the inventory ID) to the bucket. You can have up to 1,000 inventory configurations per bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_inventory_configuration.html](https://paws-r.github.io/docs/s3/put_bucket_inventory_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_inventory_configuration/](https://www.paws-r-sdk.com/docs/s3_put_bucket_inventory_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket where the inventory configuration will be stored.
 #' @param Id &#91;required&#93; The ID used to identify the inventory configuration.
@@ -3424,7 +3432,7 @@ s3_put_bucket_inventory_configuration <- function(Bucket, Id, InventoryConfigura
 #' @description
 #' For an updated version of this API, see [`put_bucket_lifecycle_configuration`][s3_put_bucket_lifecycle_configuration]. This version has been deprecated. Existing lifecycle configurations will work. For new lifecycle configurations, use the updated API.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_lifecycle.html](https://paws-r.github.io/docs/s3/put_bucket_lifecycle.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_lifecycle/](https://www.paws-r-sdk.com/docs/s3_put_bucket_lifecycle/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; 
 #' @param ContentMD5 For requests made using the Amazon Web Services Command Line Interface
@@ -3472,7 +3480,7 @@ s3_put_bucket_lifecycle <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm
 #' @description
 #' Creates a new lifecycle configuration for the bucket or replaces an existing lifecycle configuration. Keep in mind that this will overwrite an existing lifecycle configuration, so if you want to retain any configuration details, they must be included in the new lifecycle configuration. For information about lifecycle configuration, see [Managing your storage lifecycle](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_lifecycle_configuration.html](https://paws-r.github.io/docs/s3/put_bucket_lifecycle_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_lifecycle_configuration/](https://www.paws-r-sdk.com/docs/s3_put_bucket_lifecycle_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to set the configuration.
 #' @param ChecksumAlgorithm Indicates the algorithm used to create the checksum for the object when
@@ -3517,7 +3525,7 @@ s3_put_bucket_lifecycle_configuration <- function(Bucket, ChecksumAlgorithm = NU
 #' @description
 #' Set the logging parameters for a bucket and to specify permissions for who can view and modify the logging parameters. All logs are saved to buckets in the same Amazon Web Services Region as the source bucket. To set the logging status of a bucket, you must be the bucket owner.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_logging.html](https://paws-r.github.io/docs/s3/put_bucket_logging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_logging/](https://www.paws-r-sdk.com/docs/s3_put_bucket_logging/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which to set the logging parameters.
 #' @param BucketLoggingStatus &#91;required&#93; Container for logging status information.
@@ -3568,7 +3576,7 @@ s3_put_bucket_logging <- function(Bucket, BucketLoggingStatus, ContentMD5 = NULL
 #' @description
 #' Sets a metrics configuration (specified by the metrics configuration ID) for the bucket. You can have up to 1,000 metrics configurations per bucket. If you're updating an existing metrics configuration, note that this is a full replacement of the existing metrics configuration. If you don't include the elements you want to keep, they are erased.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_metrics_configuration.html](https://paws-r.github.io/docs/s3/put_bucket_metrics_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_metrics_configuration/](https://www.paws-r-sdk.com/docs/s3_put_bucket_metrics_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket for which the metrics configuration is set.
 #' @param Id &#91;required&#93; The ID used to identify the metrics configuration. The ID has a 64
@@ -3604,7 +3612,7 @@ s3_put_bucket_metrics_configuration <- function(Bucket, Id, MetricsConfiguration
 #' @description
 #' No longer used, see the [`put_bucket_notification_configuration`][s3_put_bucket_notification_configuration] operation.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_notification.html](https://paws-r.github.io/docs/s3/put_bucket_notification.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_notification/](https://www.paws-r-sdk.com/docs/s3_put_bucket_notification/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket.
 #' @param ContentMD5 The MD5 hash of the
@@ -3654,7 +3662,7 @@ s3_put_bucket_notification <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' @description
 #' Enables notifications of specified events for a bucket. For more information about event notifications, see [Configuring Event Notifications](https://docs.aws.amazon.com/AmazonS3/latest/userguide/EventNotifications.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_notification_configuration.html](https://paws-r.github.io/docs/s3/put_bucket_notification_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_notification_configuration/](https://www.paws-r-sdk.com/docs/s3_put_bucket_notification_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket.
 #' @param NotificationConfiguration &#91;required&#93; 
@@ -3689,7 +3697,7 @@ s3_put_bucket_notification_configuration <- function(Bucket, NotificationConfigu
 #' @description
 #' Creates or modifies `OwnershipControls` for an Amazon S3 bucket. To use this operation, you must have the `s3:PutBucketOwnershipControls` permission. For more information about Amazon S3 permissions, see [Specifying permissions in a policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide//using-with-s3-actions.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_ownership_controls.html](https://paws-r.github.io/docs/s3/put_bucket_ownership_controls.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_ownership_controls/](https://www.paws-r-sdk.com/docs/s3_put_bucket_ownership_controls/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose `OwnershipControls` you want to
 #' set.
@@ -3729,7 +3737,7 @@ s3_put_bucket_ownership_controls <- function(Bucket, ContentMD5 = NULL, Expected
 #' @description
 #' Applies an Amazon S3 bucket policy to an Amazon S3 bucket. If you are using an identity other than the root user of the Amazon Web Services account that owns the bucket, the calling identity must have the [`put_bucket_policy`][s3_put_bucket_policy] permissions on the specified bucket and belong to the bucket owner's account in order to use this operation.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_policy.html](https://paws-r.github.io/docs/s3/put_bucket_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_policy/](https://www.paws-r-sdk.com/docs/s3_put_bucket_policy/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket.
 #' @param ContentMD5 The MD5 hash of the request body.
@@ -3780,7 +3788,7 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 #' @description
 #' Creates a replication configuration or replaces an existing one. For more information, see [Replication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_replication.html](https://paws-r.github.io/docs/s3/put_bucket_replication.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_replication/](https://www.paws-r-sdk.com/docs/s3_put_bucket_replication/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the bucket
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. You must use this
@@ -3833,7 +3841,7 @@ s3_put_bucket_replication <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorit
 #' @description
 #' Sets the request payment configuration for a bucket. By default, the bucket owner pays for downloads from the bucket. This configuration parameter enables the bucket owner (only) to specify that the person requesting the download will be charged for the download. For more information, see [Requester Pays Buckets](https://docs.aws.amazon.com/AmazonS3/latest/userguide/RequesterPaysBuckets.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_request_payment.html](https://paws-r.github.io/docs/s3/put_bucket_request_payment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_request_payment/](https://www.paws-r-sdk.com/docs/s3_put_bucket_request_payment/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. You must use this
@@ -3885,7 +3893,7 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 #' @description
 #' Sets the tags for a bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_tagging.html](https://paws-r.github.io/docs/s3/put_bucket_tagging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_tagging/](https://www.paws-r-sdk.com/docs/s3_put_bucket_tagging/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. You must use this
@@ -3937,7 +3945,7 @@ s3_put_bucket_tagging <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @description
 #' Sets the versioning state of an existing bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_versioning.html](https://paws-r.github.io/docs/s3/put_bucket_versioning.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_versioning/](https://www.paws-r-sdk.com/docs/s3_put_bucket_versioning/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
 #' @param ContentMD5 \>The base64-encoded 128-bit MD5 digest of the data. You must use this
@@ -3992,7 +4000,7 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' @description
 #' Sets the configuration of the website that is specified in the `website` subresource. To configure a bucket as a website, you can add this subresource on the bucket with website configuration information such as the file name of the index document and any redirect rules. For more information, see [Hosting Websites on Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/put_bucket_website.html](https://paws-r.github.io/docs/s3/put_bucket_website.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_bucket_website/](https://www.paws-r-sdk.com/docs/s3_put_bucket_website/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
 #' @param ContentMD5 The base64-encoded 128-bit MD5 digest of the data. You must use this
@@ -4044,7 +4052,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @description
 #' Adds an object to a bucket. You must have WRITE permissions on a bucket to add an object to it.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_object.html](https://paws-r.github.io/docs/s3/put_object.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_object/](https://www.paws-r-sdk.com/docs/s3_put_object/) for full documentation.
 #'
 #' @param ACL The canned ACL to apply to the object. For more information, see [Canned
 #' ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL).
@@ -4070,7 +4078,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CacheControl Can be used to specify caching behavior along the request/reply chain.
 #' For more information, see
@@ -4148,7 +4156,7 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @param Key &#91;required&#93; Object key for which the PUT action was initiated.
 #' @param Metadata A map of metadata to store with the object in S3.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
-#' Amazon S3 (for example, AES256, `aws:kms`).
+#' Amazon S3 (for example, `AES256`, `aws:kms`, `aws:kms:dsse`).
 #' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
 #' created objects. The STANDARD storage class provides high durability and
 #' high availability. Depending on performance needs, you can specify a
@@ -4187,15 +4195,15 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
-#' @param SSEKMSKeyId If `x-amz-server-side-encryption` has a valid value of `aws:kms`, this
-#' header specifies the ID of the Amazon Web Services Key Management
-#' Service (Amazon Web Services KMS) symmetric encryption customer managed
-#' key that was used for the object. If you specify
-#' `x-amz-server-side-encryption:aws:kms`, but do not
+#' @param SSEKMSKeyId If `x-amz-server-side-encryption` has a valid value of `aws:kms` or
+#' `aws:kms:dsse`, this header specifies the ID of the Key Management
+#' Service (KMS) symmetric encryption customer managed key that was used
+#' for the object. If you specify `x-amz-server-side-encryption:aws:kms` or
+#' `x-amz-server-side-encryption:aws:kms:dsse`, but do not
 #' provide` x-amz-server-side-encryption-aws-kms-key-id`, Amazon S3 uses
-#' the Amazon Web Services managed key to protect the data. If the KMS key
-#' does not exist in the same account issuing the command, you must use the
-#' full ARN and not just the ID.
+#' the Amazon Web Services managed key (`aws/s3`) to protect the data. If
+#' the KMS key does not exist in the same account that's issuing the
+#' command, you must use the full ARN and not just the ID.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
 #' object encryption. The value of this header is a base64-encoded UTF-8
 #' string holding JSON with the encryption context key-value pairs. This
@@ -4203,9 +4211,9 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' Amazon Web Services KMS for future [`get_object`][s3_get_object] or
 #' [`copy_object`][s3_copy_object] operations on this object.
 #' @param BucketKeyEnabled Specifies whether Amazon S3 should use an S3 Bucket Key for object
-#' encryption with server-side encryption using AWS KMS (SSE-KMS). Setting
-#' this header to `true` causes Amazon S3 to use an S3 Bucket Key for
-#' object encryption with SSE-KMS.
+#' encryption with server-side encryption using Key Management Service
+#' (KMS) keys (SSE-KMS). Setting this header to `true` causes Amazon S3 to
+#' use an S3 Bucket Key for object encryption with SSE-KMS.
 #' 
 #' Specifying this header with a PUT action doesn’t affect bucket-level
 #' settings for S3 Bucket Key.
@@ -4248,7 +4256,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' @description
 #' Uses the `acl` subresource to set the access control list (ACL) permissions for a new or existing object in an S3 bucket. You must have `WRITE_ACP` permission to set the ACL of an object. For more information, see [What permissions can I grant?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#permissions) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_object_acl.html](https://paws-r.github.io/docs/s3/put_object_acl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_object_acl/](https://www.paws-r-sdk.com/docs/s3_put_object_acl/) for full documentation.
 #'
 #' @param ACL The canned ACL to apply to the object. For more information, see [Canned
 #' ACL](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#CannedACL).
@@ -4320,7 +4328,7 @@ s3_put_object <- function(ACL = NULL, Body = NULL, Bucket, CacheControl = NULL, 
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param RequestPayer 
 #' @param VersionId VersionId used to reference a specific version of the object.
@@ -4353,7 +4361,7 @@ s3_put_object_acl <- function(ACL = NULL, AccessControlPolicy = NULL, Bucket, Co
 #' @description
 #' Applies a legal hold configuration to the specified object. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/put_object_legal_hold.html](https://paws-r.github.io/docs/s3/put_object_legal_hold.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_object_legal_hold/](https://www.paws-r-sdk.com/docs/s3_put_object_legal_hold/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the object that you want to place a legal
 #' hold on.
@@ -4416,7 +4424,7 @@ s3_put_object_legal_hold <- function(Bucket, Key, LegalHold = NULL, RequestPayer
 #' @description
 #' Places an Object Lock configuration on the specified bucket. The rule specified in the Object Lock configuration will be applied by default to every new object placed in the specified bucket. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/put_object_lock_configuration.html](https://paws-r.github.io/docs/s3/put_object_lock_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_object_lock_configuration/](https://www.paws-r-sdk.com/docs/s3_put_object_lock_configuration/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket whose Object Lock configuration you want to create or
 #' replace.
@@ -4469,7 +4477,7 @@ s3_put_object_lock_configuration <- function(Bucket, ObjectLockConfiguration = N
 #' @description
 #' Places an Object Retention configuration on an object. For more information, see [Locking Objects](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lock.html). Users or accounts require the `s3:PutObjectRetention` permission in order to place an Object Retention configuration on objects. Bypassing a Governance Retention configuration requires the `s3:BypassGovernanceRetention` permission.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_object_retention.html](https://paws-r.github.io/docs/s3/put_object_retention.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_object_retention/](https://www.paws-r-sdk.com/docs/s3_put_object_retention/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name that contains the object you want to apply this Object
 #' Retention configuration to.
@@ -4535,7 +4543,7 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' @description
 #' Sets the supplied tag-set to an object that already exists in a bucket.
 #'
-#' See [https://paws-r.github.io/docs/s3/put_object_tagging.html](https://paws-r.github.io/docs/s3/put_object_tagging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_object_tagging/](https://www.paws-r-sdk.com/docs/s3_put_object_tagging/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the object.
 #' 
@@ -4556,7 +4564,7 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Name of the object key.
 #' @param VersionId The versionId of the object that the tag-set will be added to.
@@ -4608,7 +4616,7 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' @description
 #' Creates or modifies the `PublicAccessBlock` configuration for an Amazon S3 bucket. To use this operation, you must have the `s3:PutBucketPublicAccessBlock` permission. For more information about Amazon S3 permissions, see [Specifying Permissions in a Policy](https://docs.aws.amazon.com/AmazonS3/latest/userguide/using-with-s3-actions.html).
 #'
-#' See [https://paws-r.github.io/docs/s3/put_public_access_block.html](https://paws-r.github.io/docs/s3/put_public_access_block.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_put_public_access_block/](https://www.paws-r-sdk.com/docs/s3_put_public_access_block/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The name of the Amazon S3 bucket whose `PublicAccessBlock` configuration
 #' you want to set.
@@ -4664,7 +4672,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' @description
 #' Restores an archived copy of an object back into Amazon S3
 #'
-#' See [https://paws-r.github.io/docs/s3/restore_object.html](https://paws-r.github.io/docs/s3/restore_object.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_restore_object/](https://www.paws-r-sdk.com/docs/s3_restore_object/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name containing the object to restore.
 #' 
@@ -4685,7 +4693,7 @@ s3_put_public_access_block <- function(Bucket, ContentMD5 = NULL, ChecksumAlgori
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param Key &#91;required&#93; Object key for which the action was initiated.
 #' @param VersionId VersionId used to reference a specific version of the object.
@@ -4732,7 +4740,7 @@ s3_restore_object <- function(Bucket, Key, VersionId = NULL, RestoreRequest = NU
 #' @description
 #' This action filters the contents of an Amazon S3 object based on a simple structured query language (SQL) statement. In the request, along with the SQL expression, you must also specify a data serialization format (JSON, CSV, or Apache Parquet) of the object. Amazon S3 uses this format to parse object data into records, and returns only records that match the specified SQL expression. You must also specify the data serialization format for the response.
 #'
-#' See [https://paws-r.github.io/docs/s3/select_object_content.html](https://paws-r.github.io/docs/s3/select_object_content.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_select_object_content/](https://www.paws-r-sdk.com/docs/s3_select_object_content/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The S3 bucket.
 #' @param Key &#91;required&#93; The object key.
@@ -4804,7 +4812,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' @description
 #' Uploads a part in a multipart upload.
 #'
-#' See [https://paws-r.github.io/docs/s3/upload_part.html](https://paws-r.github.io/docs/s3/upload_part.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_upload_part/](https://www.paws-r-sdk.com/docs/s3_upload_part/) for full documentation.
 #'
 #' @param Body Object data.
 #' @param Bucket &#91;required&#93; The name of the bucket to which the multipart upload was initiated.
@@ -4826,7 +4834,7 @@ s3_select_object_content <- function(Bucket, Key, SSECustomerAlgorithm = NULL, S
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param ContentLength Size of the body in bytes. This parameter is useful when the size of the
 #' body cannot be determined automatically.
@@ -4918,7 +4926,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' @description
 #' Uploads a part by copying data from an existing object as data source. You specify the data source by adding the request header `x-amz-copy-source` in your request and a byte range by adding the request header `x-amz-copy-source-range` in your request.
 #'
-#' See [https://paws-r.github.io/docs/s3/upload_part_copy.html](https://paws-r.github.io/docs/s3/upload_part_copy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_upload_part_copy/](https://www.paws-r-sdk.com/docs/s3_upload_part_copy/) for full documentation.
 #'
 #' @param Bucket &#91;required&#93; The bucket name.
 #' 
@@ -4939,7 +4947,7 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #' Services SDKs, you provide the Outposts access point ARN in place of the
 #' bucket name. For more information about S3 on Outposts ARNs, see [What
 #' is S3 on
-#' Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
+#' Outposts?](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html)
 #' in the *Amazon S3 User Guide*.
 #' @param CopySource &#91;required&#93; Specifies the source object for the copy operation. You specify the
 #' value in one of two formats, depending on whether you want to access the
@@ -5049,7 +5057,7 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' @description
 #' Passes transformed objects to a [`get_object`][s3_get_object] operation when using Object Lambda access points. For information about Object Lambda access points, see [Transforming objects with Object Lambda access points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/transforming-objects.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3/write_get_object_response.html](https://paws-r.github.io/docs/s3/write_get_object_response.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3_write_get_object_response/](https://www.paws-r-sdk.com/docs/s3_write_get_object_response/) for full documentation.
 #'
 #' @param RequestRoute &#91;required&#93; Route prefix to the HTTP URL generated.
 #' @param RequestToken &#91;required&#93; A single use encrypted token that maps

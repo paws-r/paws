@@ -20,6 +20,6 @@ elasticache_modify_user_group(
 \description{
 Changes the list of users that belong to the user group.
 
-See \url{https://paws-r.github.io/docs/elasticache/modify_user_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_modify_user_group/} for full documentation.
 }
 \keyword{internal}

@@ -25,6 +25,6 @@ evaluating alert status.}
 \description{
 Update the parameters of a model monitor alert.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_monitoring_alert.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_monitoring_alert/} for full documentation.
 }
 \keyword{internal}

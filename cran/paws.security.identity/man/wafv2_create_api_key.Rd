@@ -31,6 +31,6 @@ Public suffixes aren't allowed. For example, you can't use \code{usa.gov} or
 \description{
 Creates an API key that contains a set of token domains.
 
-See \url{https://paws-r.github.io/docs/wafv2/create_api_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_create_api_key/} for full documentation.
 }
 \keyword{internal}

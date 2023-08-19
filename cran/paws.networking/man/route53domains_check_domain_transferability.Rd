@@ -29,6 +29,6 @@ the current registrar for the domain.}
 \description{
 Checks whether a domain name can be transferred to Amazon Route 53.
 
-See \url{https://paws-r.github.io/docs/route53domains/check_domain_transferability.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_check_domain_transferability/} for full documentation.
 }
 \keyword{internal}

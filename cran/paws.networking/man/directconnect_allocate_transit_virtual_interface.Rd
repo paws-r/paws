@@ -23,6 +23,6 @@ interface.}
 \description{
 Provisions a transit virtual interface to be owned by the specified Amazon Web Services account. Use this type of interface to connect a transit gateway to your Direct Connect gateway.
 
-See \url{https://paws-r.github.io/docs/directconnect/allocate_transit_virtual_interface.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_allocate_transit_virtual_interface/} for full documentation.
 }
 \keyword{internal}

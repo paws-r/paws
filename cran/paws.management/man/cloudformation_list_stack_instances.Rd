@@ -59,6 +59,6 @@ in the \emph{CloudFormation User Guide}.
 \description{
 Returns summary information about stack instances that are associated with the specified stack set. You can filter for stack instances that are associated with a specific Amazon Web Services account name or Region, or that have a specific status.
 
-See \url{https://paws-r.github.io/docs/cloudformation/list_stack_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_list_stack_instances/} for full documentation.
 }
 \keyword{internal}

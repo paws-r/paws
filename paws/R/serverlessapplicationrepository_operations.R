@@ -318,9 +318,9 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' [AWS::IAM:Policy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-policy.html),
 #' [AWS::ApplicationAutoScaling::ScalingPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-applicationautoscaling-scalingpolicy.html),
 #' [AWS::S3::BucketPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-s3-policy.html),
-#' [AWS::SQS::QueuePolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html),
+#' [AWS::SQS::QueuePolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/),
 #' and
-#' [AWS::SNS:TopicPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html).
+#' [AWS::SNS:TopicPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-sns-topicpolicy.html).
 #' 
 #' Applications that contain one or more nested applications require you to
 #' specify CAPABILITY_AUTO_EXPAND.
@@ -330,40 +330,32 @@ serverlessapplicationrepository_create_application_version <- function(Applicati
 #' application before deploying. If you don't specify this parameter for an
 #' application that requires capabilities, the call will fail.
 #' @param ChangeSetName This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation <span
-#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
+#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
 #' API.
 #' @param ClientToken This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation <span
-#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
+#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
 #' API.
 #' @param Description This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation <span
-#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
+#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
 #' API.
 #' @param NotificationArns This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation <span
-#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
+#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
 #' API.
 #' @param ParameterOverrides A list of parameter values for the parameters of the application.
 #' @param ResourceTypes This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation <span
-#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
+#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
 #' API.
 #' @param RollbackConfiguration This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation <span
-#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
+#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
 #' API.
 #' @param SemanticVersion The semantic version of the application:
 #' 
 #' <https://semver.org/>
 #' @param StackName &#91;required&#93; This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation <span
-#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
+#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
 #' API.
 #' @param Tags This property corresponds to the parameter of the same name for the *AWS
-#' CloudFormation <span
-#' href="https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet">CreateChangeSet</span>*
+#' CloudFormation \href{https://docs.aws.amazon.com/goto/WebAPI/cloudformation-2010-05-15/CreateChangeSet}{CreateChangeSet}*
 #' API.
 #' @param TemplateId The UUID returned by CreateCloudFormationTemplate.
 #' 
@@ -809,7 +801,7 @@ serverlessapplicationrepository_list_application_dependencies <- function(Applic
     name = "ListApplicationDependencies",
     http_method = "GET",
     http_path = "/applications/{applicationId}/dependencies",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems")
   )
   input <- .serverlessapplicationrepository$list_application_dependencies_input(ApplicationId = ApplicationId, MaxItems = MaxItems, NextToken = NextToken, SemanticVersion = SemanticVersion)
   output <- .serverlessapplicationrepository$list_application_dependencies_output()
@@ -869,7 +861,7 @@ serverlessapplicationrepository_list_application_versions <- function(Applicatio
     name = "ListApplicationVersions",
     http_method = "GET",
     http_path = "/applications/{applicationId}/versions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems")
   )
   input <- .serverlessapplicationrepository$list_application_versions_input(ApplicationId = ApplicationId, MaxItems = MaxItems, NextToken = NextToken)
   output <- .serverlessapplicationrepository$list_application_versions_output()
@@ -932,7 +924,7 @@ serverlessapplicationrepository_list_applications <- function(MaxItems = NULL, N
     name = "ListApplications",
     http_method = "GET",
     http_path = "/applications",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxItems")
   )
   input <- .serverlessapplicationrepository$list_applications_input(MaxItems = MaxItems, NextToken = NextToken)
   output <- .serverlessapplicationrepository$list_applications_output()

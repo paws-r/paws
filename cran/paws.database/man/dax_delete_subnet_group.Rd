@@ -12,6 +12,6 @@ dax_delete_subnet_group(SubnetGroupName)
 \description{
 Deletes a subnet group.
 
-See \url{https://paws-r.github.io/docs/dax/delete_subnet_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_delete_subnet_group/} for full documentation.
 }
 \keyword{internal}

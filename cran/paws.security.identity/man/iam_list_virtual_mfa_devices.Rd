@@ -34,6 +34,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the virtual MFA devices defined in the Amazon Web Services account by assignment status. If you do not specify an assignment status, the operation returns a list of all virtual MFA devices. Assignment status can be \code{Assigned}, \code{Unassigned}, or \code{Any}.
 
-See \url{https://paws-r.github.io/docs/iam/list_virtual_mfa_devices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_virtual_mfa_devices/} for full documentation.
 }
 \keyword{internal}

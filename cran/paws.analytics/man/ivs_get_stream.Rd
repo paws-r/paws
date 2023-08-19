@@ -12,6 +12,6 @@ ivs_get_stream(channelArn)
 \description{
 Gets information about the active (live) stream on a specified channel.
 
-See \url{https://paws-r.github.io/docs/ivs/get_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivs_get_stream/} for full documentation.
 }
 \keyword{internal}

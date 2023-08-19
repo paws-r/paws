@@ -16,6 +16,6 @@ to retrieve information.}
 \description{
 Returns information about a repository branch, including its name and the last commit ID.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_branch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_branch/} for full documentation.
 }
 \keyword{internal}

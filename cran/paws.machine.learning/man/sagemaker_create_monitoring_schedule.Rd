@@ -25,6 +25,6 @@ Management User Guide}.}
 \description{
 Creates a schedule that regularly starts Amazon SageMaker Processing Jobs to monitor the data captured for an Amazon SageMaker Endpoint.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_monitoring_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_monitoring_schedule/} for full documentation.
 }
 \keyword{internal}

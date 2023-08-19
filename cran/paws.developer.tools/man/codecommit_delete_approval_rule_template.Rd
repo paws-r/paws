@@ -12,6 +12,6 @@ codecommit_delete_approval_rule_template(approvalRuleTemplateName)
 \description{
 Deletes a specified approval rule template. Deleting a template does not remove approval rules on pull requests already created with the template.
 
-See \url{https://paws-r.github.io/docs/codecommit/delete_approval_rule_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_delete_approval_rule_template/} for full documentation.
 }
 \keyword{internal}

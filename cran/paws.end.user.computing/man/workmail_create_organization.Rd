@@ -31,6 +31,6 @@ ID in the request.}
 \description{
 Creates a new WorkMail organization. Optionally, you can choose to associate an existing AWS Directory Service directory with your organization. If an AWS Directory Service directory ID is specified, the organization alias must match the directory alias. If you choose not to associate an existing directory with your organization, then we create a new WorkMail directory for you. For more information, see \href{https://docs.aws.amazon.com/workmail/latest/adminguide/add_new_organization.html}{Adding an organization} in the \emph{WorkMail Administrator Guide}.
 
-See \url{https://paws-r.github.io/docs/workmail/create_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_create_organization/} for full documentation.
 }
 \keyword{internal}

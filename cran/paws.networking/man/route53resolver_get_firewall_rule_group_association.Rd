@@ -15,6 +15,6 @@ route53resolver_get_firewall_rule_group_association(
 \description{
 Retrieves a firewall rule group association, which enables DNS filtering for a VPC with one rule group. A VPC can have more than one firewall rule group association, and a rule group can be associated with more than one VPC.
 
-See \url{https://paws-r.github.io/docs/route53resolver/get_firewall_rule_group_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_get_firewall_rule_group_association/} for full documentation.
 }
 \keyword{internal}

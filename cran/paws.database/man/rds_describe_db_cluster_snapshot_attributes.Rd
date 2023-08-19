@@ -14,6 +14,6 @@ for.}
 \description{
 Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot.
 
-See \url{https://paws-r.github.io/docs/rds/describe_db_cluster_snapshot_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_db_cluster_snapshot_attributes/} for full documentation.
 }
 \keyword{internal}

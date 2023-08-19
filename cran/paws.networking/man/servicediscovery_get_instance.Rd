@@ -14,6 +14,6 @@ servicediscovery_get_instance(ServiceId, InstanceId)
 \description{
 Gets information about a specified instance.
 
-See \url{https://paws-r.github.io/docs/servicediscovery/get_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicediscovery_get_instance/} for full documentation.
 }
 \keyword{internal}

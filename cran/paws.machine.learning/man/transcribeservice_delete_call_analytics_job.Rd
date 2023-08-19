@@ -13,6 +13,6 @@ case sensitive.}
 \description{
 Deletes a Call Analytics job. To use this operation, specify the name of the job you want to delete using \code{CallAnalyticsJobName}. Job names are case sensitive.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/delete_call_analytics_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_delete_call_analytics_job/} for full documentation.
 }
 \keyword{internal}

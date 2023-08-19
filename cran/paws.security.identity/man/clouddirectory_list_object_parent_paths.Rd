@@ -25,6 +25,6 @@ approximate number.}
 \description{
 Retrieves all available parent paths for any object type such as node, leaf node, policy node, and index node objects. For more information about objects, see \href{https://docs.aws.amazon.com/clouddirectory/latest/developerguide/key_concepts_directorystructure.html}{Directory Structure}.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/list_object_parent_paths.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_list_object_parent_paths/} for full documentation.
 }
 \keyword{internal}

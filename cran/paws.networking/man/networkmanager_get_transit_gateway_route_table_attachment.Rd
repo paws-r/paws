@@ -12,6 +12,6 @@ networkmanager_get_transit_gateway_route_table_attachment(AttachmentId)
 \description{
 Returns information about a transit gateway route table attachment.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_transit_gateway_route_table_attachment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_transit_gateway_route_table_attachment/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ attribute. For the unique attribute, the only valid path is
 \description{
 Retrieves \code{GroupId} in an identity store.
 
-See \url{https://paws-r.github.io/docs/identitystore/get_group_id.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/identitystore_get_group_id/} for full documentation.
 }
 \keyword{internal}

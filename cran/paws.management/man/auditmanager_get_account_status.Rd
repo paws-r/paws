@@ -2,13 +2,13 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_get_account_status}
 \alias{auditmanager_get_account_status}
-\title{Returns the registration status of an account in Audit Manager}
+\title{Gets the registration status of an account in Audit Manager}
 \usage{
 auditmanager_get_account_status()
 }
 \description{
-Returns the registration status of an account in Audit Manager.
+Gets the registration status of an account in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_account_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_account_status/} for full documentation.
 }
 \keyword{internal}

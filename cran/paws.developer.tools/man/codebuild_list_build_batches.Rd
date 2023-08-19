@@ -32,6 +32,6 @@ parameter.}
 \description{
 Retrieves the identifiers of your build batches in the current region.
 
-See \url{https://paws-r.github.io/docs/codebuild/list_build_batches.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_list_build_batches/} for full documentation.
 }
 \keyword{internal}

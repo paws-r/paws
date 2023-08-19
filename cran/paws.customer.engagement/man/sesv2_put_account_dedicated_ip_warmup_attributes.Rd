@@ -16,6 +16,6 @@ automatic warm-up feature, or set to \code{false} to disable it.}
 \description{
 Enable or disable the automatic warm-up feature for dedicated IP addresses.
 
-See \url{https://paws-r.github.io/docs/sesv2/put_account_dedicated_ip_warmup_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_put_account_dedicated_ip_warmup_attributes/} for full documentation.
 }
 \keyword{internal}

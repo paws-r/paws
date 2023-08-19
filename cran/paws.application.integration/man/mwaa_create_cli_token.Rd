@@ -13,6 +13,6 @@ mwaa_create_cli_token(Name)
 \description{
 Creates a CLI token for the Airflow CLI. To learn more, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/call-mwaa-apis-cli.html}{Creating an Apache Airflow CLI token}.
 
-See \url{https://paws-r.github.io/docs/mwaa/create_cli_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mwaa_create_cli_token/} for full documentation.
 }
 \keyword{internal}

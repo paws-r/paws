@@ -30,6 +30,6 @@ need to supply a value for this field in the initial request.}
 \description{
 Describes the specified opted out destination numbers or all opted out destination numbers in an opt-out list.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_opted_out_numbers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_opted_out_numbers/} for full documentation.
 }
 \keyword{internal}

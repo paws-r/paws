@@ -8,7 +8,7 @@ NULL
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/create_byte_match_set.html](https://paws-r.github.io/docs/waf/create_byte_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_create_byte_match_set/](https://www.paws-r-sdk.com/docs/waf_create_byte_match_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the ByteMatchSet. You can't change
 #' `Name` after you create a `ByteMatchSet`.
@@ -40,7 +40,7 @@ waf_create_byte_match_set <- function(Name, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/create_geo_match_set.html](https://paws-r.github.io/docs/waf/create_geo_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_create_geo_match_set/](https://www.paws-r-sdk.com/docs/waf_create_geo_match_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the GeoMatchSet. You can't change
 #' `Name` after you create the `GeoMatchSet`.
@@ -72,7 +72,7 @@ waf_create_geo_match_set <- function(Name, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/create_ip_set.html](https://paws-r.github.io/docs/waf/create_ip_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_create_ip_set/](https://www.paws-r-sdk.com/docs/waf_create_ip_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the IPSet. You can't change `Name`
 #' after you create the `IPSet`.
@@ -104,7 +104,7 @@ waf_create_ip_set <- function(Name, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/create_rate_based_rule.html](https://paws-r.github.io/docs/waf/create_rate_based_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_create_rate_based_rule/](https://www.paws-r-sdk.com/docs/waf_create_rate_based_rule/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the RateBasedRule. You can't change
 #' the name of a `RateBasedRule` after you create it.
@@ -156,7 +156,7 @@ waf_create_rate_based_rule <- function(Name, MetricName, RateKey, RateLimit, Cha
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/create_regex_match_set.html](https://paws-r.github.io/docs/waf/create_regex_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_create_regex_match_set/](https://www.paws-r-sdk.com/docs/waf_create_regex_match_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the RegexMatchSet. You can't change
 #' `Name` after you create a `RegexMatchSet`.
@@ -188,7 +188,7 @@ waf_create_regex_match_set <- function(Name, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/create_regex_pattern_set.html](https://paws-r.github.io/docs/waf/create_regex_pattern_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_create_regex_pattern_set/](https://www.paws-r-sdk.com/docs/waf_create_regex_pattern_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the RegexPatternSet. You can't change
 #' `Name` after you create a `RegexPatternSet`.
@@ -220,7 +220,7 @@ waf_create_regex_pattern_set <- function(Name, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/create_rule.html](https://paws-r.github.io/docs/waf/create_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_create_rule/](https://www.paws-r-sdk.com/docs/waf_create_rule/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the Rule. You can't change the name of
 #' a `Rule` after you create it.
@@ -258,7 +258,7 @@ waf_create_rule <- function(Name, MetricName, ChangeToken, Tags = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/create_rule_group.html](https://paws-r.github.io/docs/waf/create_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_create_rule_group/](https://www.paws-r-sdk.com/docs/waf_create_rule_group/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the RuleGroup. You can't change `Name`
 #' after you create a `RuleGroup`.
@@ -297,7 +297,7 @@ waf_create_rule_group <- function(Name, MetricName, ChangeToken, Tags = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/create_size_constraint_set.html](https://paws-r.github.io/docs/waf/create_size_constraint_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_create_size_constraint_set/](https://www.paws-r-sdk.com/docs/waf_create_size_constraint_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the SizeConstraintSet. You can't
 #' change `Name` after you create a `SizeConstraintSet`.
@@ -329,7 +329,7 @@ waf_create_size_constraint_set <- function(Name, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/create_sql_injection_match_set.html](https://paws-r.github.io/docs/waf/create_sql_injection_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_create_sql_injection_match_set/](https://www.paws-r-sdk.com/docs/waf_create_sql_injection_match_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description for the SqlInjectionMatchSet that you're
 #' creating. You can't change `Name` after you create the
@@ -362,7 +362,7 @@ waf_create_sql_injection_match_set <- function(Name, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/create_web_acl.html](https://paws-r.github.io/docs/waf/create_web_acl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_create_web_acl/](https://www.paws-r-sdk.com/docs/waf_create_web_acl/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description of the WebACL. You can't change `Name`
 #' after you create the `WebACL`.
@@ -405,7 +405,7 @@ waf_create_web_acl <- function(Name, MetricName, DefaultAction, ChangeToken, Tag
 #' @description
 #' Creates an AWS CloudFormation WAFV2 template for the specified web ACL in the specified Amazon S3 bucket. Then, in CloudFormation, you create a stack from the template, to create the web ACL and its resources in AWS WAFV2. Use this to migrate your AWS WAF Classic web ACL to the latest version of AWS WAF.
 #'
-#' See [https://paws-r.github.io/docs/waf/create_web_acl_migration_stack.html](https://paws-r.github.io/docs/waf/create_web_acl_migration_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_create_web_acl_migration_stack/](https://www.paws-r-sdk.com/docs/waf_create_web_acl_migration_stack/) for full documentation.
 #'
 #' @param WebACLId &#91;required&#93; The UUID of the WAF Classic web ACL that you want to migrate to WAF v2.
 #' @param S3BucketName &#91;required&#93; The name of the Amazon S3 bucket to store the CloudFormation template
@@ -451,7 +451,7 @@ waf_create_web_acl_migration_stack <- function(WebACLId, S3BucketName, IgnoreUns
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/create_xss_match_set.html](https://paws-r.github.io/docs/waf/create_xss_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_create_xss_match_set/](https://www.paws-r-sdk.com/docs/waf_create_xss_match_set/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A friendly name or description for the XssMatchSet that you're creating.
 #' You can't change `Name` after you create the `XssMatchSet`.
@@ -483,7 +483,7 @@ waf_create_xss_match_set <- function(Name, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/delete_byte_match_set.html](https://paws-r.github.io/docs/waf/delete_byte_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_delete_byte_match_set/](https://www.paws-r-sdk.com/docs/waf_delete_byte_match_set/) for full documentation.
 #'
 #' @param ByteMatchSetId &#91;required&#93; The `ByteMatchSetId` of the ByteMatchSet that you want to delete.
 #' `ByteMatchSetId` is returned by
@@ -517,7 +517,7 @@ waf_delete_byte_match_set <- function(ByteMatchSetId, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/delete_geo_match_set.html](https://paws-r.github.io/docs/waf/delete_geo_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_delete_geo_match_set/](https://www.paws-r-sdk.com/docs/waf_delete_geo_match_set/) for full documentation.
 #'
 #' @param GeoMatchSetId &#91;required&#93; The `GeoMatchSetID` of the GeoMatchSet that you want to delete.
 #' `GeoMatchSetId` is returned by
@@ -551,7 +551,7 @@ waf_delete_geo_match_set <- function(GeoMatchSetId, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/delete_ip_set.html](https://paws-r.github.io/docs/waf/delete_ip_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_delete_ip_set/](https://www.paws-r-sdk.com/docs/waf_delete_ip_set/) for full documentation.
 #'
 #' @param IPSetId &#91;required&#93; The `IPSetId` of the IPSet that you want to delete. `IPSetId` is
 #' returned by [`create_ip_set`][waf_create_ip_set] and by
@@ -584,7 +584,7 @@ waf_delete_ip_set <- function(IPSetId, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/delete_logging_configuration.html](https://paws-r.github.io/docs/waf/delete_logging_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_delete_logging_configuration/](https://www.paws-r-sdk.com/docs/waf_delete_logging_configuration/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL from which you want to
 #' delete the LoggingConfiguration.
@@ -614,7 +614,7 @@ waf_delete_logging_configuration <- function(ResourceArn) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/delete_permission_policy.html](https://paws-r.github.io/docs/waf/delete_permission_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_delete_permission_policy/](https://www.paws-r-sdk.com/docs/waf_delete_permission_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup from which you want to
 #' delete the policy.
@@ -646,7 +646,7 @@ waf_delete_permission_policy <- function(ResourceArn) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/delete_rate_based_rule.html](https://paws-r.github.io/docs/waf/delete_rate_based_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_delete_rate_based_rule/](https://www.paws-r-sdk.com/docs/waf_delete_rate_based_rule/) for full documentation.
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the RateBasedRule that you want to delete. `RuleId` is
 #' returned by [`create_rate_based_rule`][waf_create_rate_based_rule] and
@@ -679,7 +679,7 @@ waf_delete_rate_based_rule <- function(RuleId, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/delete_regex_match_set.html](https://paws-r.github.io/docs/waf/delete_regex_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_delete_regex_match_set/](https://www.paws-r-sdk.com/docs/waf_delete_regex_match_set/) for full documentation.
 #'
 #' @param RegexMatchSetId &#91;required&#93; The `RegexMatchSetId` of the RegexMatchSet that you want to delete.
 #' `RegexMatchSetId` is returned by
@@ -713,7 +713,7 @@ waf_delete_regex_match_set <- function(RegexMatchSetId, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/delete_regex_pattern_set.html](https://paws-r.github.io/docs/waf/delete_regex_pattern_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_delete_regex_pattern_set/](https://www.paws-r-sdk.com/docs/waf_delete_regex_pattern_set/) for full documentation.
 #'
 #' @param RegexPatternSetId &#91;required&#93; The `RegexPatternSetId` of the RegexPatternSet that you want to delete.
 #' `RegexPatternSetId` is returned by
@@ -747,7 +747,7 @@ waf_delete_regex_pattern_set <- function(RegexPatternSetId, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/delete_rule.html](https://paws-r.github.io/docs/waf/delete_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_delete_rule/](https://www.paws-r-sdk.com/docs/waf_delete_rule/) for full documentation.
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the Rule that you want to delete. `RuleId` is returned
 #' by [`create_rule`][waf_create_rule] and by
@@ -780,7 +780,7 @@ waf_delete_rule <- function(RuleId, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/delete_rule_group.html](https://paws-r.github.io/docs/waf/delete_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_delete_rule_group/](https://www.paws-r-sdk.com/docs/waf_delete_rule_group/) for full documentation.
 #'
 #' @param RuleGroupId &#91;required&#93; The `RuleGroupId` of the RuleGroup that you want to delete.
 #' `RuleGroupId` is returned by
@@ -814,7 +814,7 @@ waf_delete_rule_group <- function(RuleGroupId, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/delete_size_constraint_set.html](https://paws-r.github.io/docs/waf/delete_size_constraint_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_delete_size_constraint_set/](https://www.paws-r-sdk.com/docs/waf_delete_size_constraint_set/) for full documentation.
 #'
 #' @param SizeConstraintSetId &#91;required&#93; The `SizeConstraintSetId` of the SizeConstraintSet that you want to
 #' delete. `SizeConstraintSetId` is returned by
@@ -848,7 +848,7 @@ waf_delete_size_constraint_set <- function(SizeConstraintSetId, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/delete_sql_injection_match_set.html](https://paws-r.github.io/docs/waf/delete_sql_injection_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_delete_sql_injection_match_set/](https://www.paws-r-sdk.com/docs/waf_delete_sql_injection_match_set/) for full documentation.
 #'
 #' @param SqlInjectionMatchSetId &#91;required&#93; The `SqlInjectionMatchSetId` of the SqlInjectionMatchSet that you want
 #' to delete. `SqlInjectionMatchSetId` is returned by
@@ -883,7 +883,7 @@ waf_delete_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/delete_web_acl.html](https://paws-r.github.io/docs/waf/delete_web_acl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_delete_web_acl/](https://www.paws-r-sdk.com/docs/waf_delete_web_acl/) for full documentation.
 #'
 #' @param WebACLId &#91;required&#93; The `WebACLId` of the WebACL that you want to delete. `WebACLId` is
 #' returned by [`create_web_acl`][waf_create_web_acl] and by
@@ -916,7 +916,7 @@ waf_delete_web_acl <- function(WebACLId, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/delete_xss_match_set.html](https://paws-r.github.io/docs/waf/delete_xss_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_delete_xss_match_set/](https://www.paws-r-sdk.com/docs/waf_delete_xss_match_set/) for full documentation.
 #'
 #' @param XssMatchSetId &#91;required&#93; The `XssMatchSetId` of the XssMatchSet that you want to delete.
 #' `XssMatchSetId` is returned by
@@ -950,7 +950,7 @@ waf_delete_xss_match_set <- function(XssMatchSetId, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_byte_match_set.html](https://paws-r.github.io/docs/waf/get_byte_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_byte_match_set/](https://www.paws-r-sdk.com/docs/waf_get_byte_match_set/) for full documentation.
 #'
 #' @param ByteMatchSetId &#91;required&#93; The `ByteMatchSetId` of the ByteMatchSet that you want to get.
 #' `ByteMatchSetId` is returned by
@@ -982,7 +982,7 @@ waf_get_byte_match_set <- function(ByteMatchSetId) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_change_token.html](https://paws-r.github.io/docs/waf/get_change_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_change_token/](https://www.paws-r-sdk.com/docs/waf_get_change_token/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1009,7 +1009,7 @@ waf_get_change_token <- function() {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_change_token_status.html](https://paws-r.github.io/docs/waf/get_change_token_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_change_token_status/](https://www.paws-r-sdk.com/docs/waf_get_change_token_status/) for full documentation.
 #'
 #' @param ChangeToken &#91;required&#93; The change token for which you want to get the status. This change token
 #' was previously returned in the
@@ -1040,7 +1040,7 @@ waf_get_change_token_status <- function(ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_geo_match_set.html](https://paws-r.github.io/docs/waf/get_geo_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_geo_match_set/](https://www.paws-r-sdk.com/docs/waf_get_geo_match_set/) for full documentation.
 #'
 #' @param GeoMatchSetId &#91;required&#93; The `GeoMatchSetId` of the GeoMatchSet that you want to get.
 #' `GeoMatchSetId` is returned by
@@ -1072,7 +1072,7 @@ waf_get_geo_match_set <- function(GeoMatchSetId) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_ip_set.html](https://paws-r.github.io/docs/waf/get_ip_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_ip_set/](https://www.paws-r-sdk.com/docs/waf_get_ip_set/) for full documentation.
 #'
 #' @param IPSetId &#91;required&#93; The `IPSetId` of the IPSet that you want to get. `IPSetId` is returned
 #' by [`create_ip_set`][waf_create_ip_set] and by
@@ -1103,7 +1103,7 @@ waf_get_ip_set <- function(IPSetId) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_logging_configuration.html](https://paws-r.github.io/docs/waf/get_logging_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_logging_configuration/](https://www.paws-r-sdk.com/docs/waf_get_logging_configuration/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the web ACL for which you want to get
 #' the LoggingConfiguration.
@@ -1133,7 +1133,7 @@ waf_get_logging_configuration <- function(ResourceArn) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_permission_policy.html](https://paws-r.github.io/docs/waf/get_permission_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_permission_policy/](https://www.paws-r-sdk.com/docs/waf_get_permission_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup for which you want to
 #' get the policy.
@@ -1163,7 +1163,7 @@ waf_get_permission_policy <- function(ResourceArn) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_rate_based_rule.html](https://paws-r.github.io/docs/waf/get_rate_based_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_rate_based_rule/](https://www.paws-r-sdk.com/docs/waf_get_rate_based_rule/) for full documentation.
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the RateBasedRule that you want to get. `RuleId` is
 #' returned by [`create_rate_based_rule`][waf_create_rate_based_rule] and
@@ -1194,7 +1194,7 @@ waf_get_rate_based_rule <- function(RuleId) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_rate_based_rule_managed_keys.html](https://paws-r.github.io/docs/waf/get_rate_based_rule_managed_keys.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_rate_based_rule_managed_keys/](https://www.paws-r-sdk.com/docs/waf_get_rate_based_rule_managed_keys/) for full documentation.
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the RateBasedRule for which you want to get a list of
 #' `ManagedKeys`. `RuleId` is returned by
@@ -1228,7 +1228,7 @@ waf_get_rate_based_rule_managed_keys <- function(RuleId, NextMarker = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_regex_match_set.html](https://paws-r.github.io/docs/waf/get_regex_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_regex_match_set/](https://www.paws-r-sdk.com/docs/waf_get_regex_match_set/) for full documentation.
 #'
 #' @param RegexMatchSetId &#91;required&#93; The `RegexMatchSetId` of the RegexMatchSet that you want to get.
 #' `RegexMatchSetId` is returned by
@@ -1260,7 +1260,7 @@ waf_get_regex_match_set <- function(RegexMatchSetId) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_regex_pattern_set.html](https://paws-r.github.io/docs/waf/get_regex_pattern_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_regex_pattern_set/](https://www.paws-r-sdk.com/docs/waf_get_regex_pattern_set/) for full documentation.
 #'
 #' @param RegexPatternSetId &#91;required&#93; The `RegexPatternSetId` of the RegexPatternSet that you want to get.
 #' `RegexPatternSetId` is returned by
@@ -1292,7 +1292,7 @@ waf_get_regex_pattern_set <- function(RegexPatternSetId) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_rule.html](https://paws-r.github.io/docs/waf/get_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_rule/](https://www.paws-r-sdk.com/docs/waf_get_rule/) for full documentation.
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the Rule that you want to get. `RuleId` is returned by
 #' [`create_rule`][waf_create_rule] and by [`list_rules`][waf_list_rules].
@@ -1322,7 +1322,7 @@ waf_get_rule <- function(RuleId) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_rule_group.html](https://paws-r.github.io/docs/waf/get_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_rule_group/](https://www.paws-r-sdk.com/docs/waf_get_rule_group/) for full documentation.
 #'
 #' @param RuleGroupId &#91;required&#93; The `RuleGroupId` of the RuleGroup that you want to get. `RuleGroupId`
 #' is returned by [`create_rule_group`][waf_create_rule_group] and by
@@ -1353,7 +1353,7 @@ waf_get_rule_group <- function(RuleGroupId) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_sampled_requests.html](https://paws-r.github.io/docs/waf/get_sampled_requests.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_sampled_requests/](https://www.paws-r-sdk.com/docs/waf_get_sampled_requests/) for full documentation.
 #'
 #' @param WebAclId &#91;required&#93; The `WebACLId` of the `WebACL` for which you want
 #' [`get_sampled_requests`][waf_get_sampled_requests] to return a sample of
@@ -1406,7 +1406,7 @@ waf_get_sampled_requests <- function(WebAclId, RuleId, TimeWindow, MaxItems) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_size_constraint_set.html](https://paws-r.github.io/docs/waf/get_size_constraint_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_size_constraint_set/](https://www.paws-r-sdk.com/docs/waf_get_size_constraint_set/) for full documentation.
 #'
 #' @param SizeConstraintSetId &#91;required&#93; The `SizeConstraintSetId` of the SizeConstraintSet that you want to get.
 #' `SizeConstraintSetId` is returned by
@@ -1438,7 +1438,7 @@ waf_get_size_constraint_set <- function(SizeConstraintSetId) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_sql_injection_match_set.html](https://paws-r.github.io/docs/waf/get_sql_injection_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_sql_injection_match_set/](https://www.paws-r-sdk.com/docs/waf_get_sql_injection_match_set/) for full documentation.
 #'
 #' @param SqlInjectionMatchSetId &#91;required&#93; The `SqlInjectionMatchSetId` of the SqlInjectionMatchSet that you want
 #' to get. `SqlInjectionMatchSetId` is returned by
@@ -1471,7 +1471,7 @@ waf_get_sql_injection_match_set <- function(SqlInjectionMatchSetId) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_web_acl.html](https://paws-r.github.io/docs/waf/get_web_acl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_web_acl/](https://www.paws-r-sdk.com/docs/waf_get_web_acl/) for full documentation.
 #'
 #' @param WebACLId &#91;required&#93; The `WebACLId` of the WebACL that you want to get. `WebACLId` is
 #' returned by [`create_web_acl`][waf_create_web_acl] and by
@@ -1502,7 +1502,7 @@ waf_get_web_acl <- function(WebACLId) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/get_xss_match_set.html](https://paws-r.github.io/docs/waf/get_xss_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_get_xss_match_set/](https://www.paws-r-sdk.com/docs/waf_get_xss_match_set/) for full documentation.
 #'
 #' @param XssMatchSetId &#91;required&#93; The `XssMatchSetId` of the XssMatchSet that you want to get.
 #' `XssMatchSetId` is returned by
@@ -1534,7 +1534,7 @@ waf_get_xss_match_set <- function(XssMatchSetId) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/list_activated_rules_in_rule_group.html](https://paws-r.github.io/docs/waf/list_activated_rules_in_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_list_activated_rules_in_rule_group/](https://www.paws-r-sdk.com/docs/waf_list_activated_rules_in_rule_group/) for full documentation.
 #'
 #' @param RuleGroupId The `RuleGroupId` of the RuleGroup for which you want to get a list of
 #' ActivatedRule objects.
@@ -1575,7 +1575,7 @@ waf_list_activated_rules_in_rule_group <- function(RuleGroupId = NULL, NextMarke
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/list_byte_match_sets.html](https://paws-r.github.io/docs/waf/list_byte_match_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_list_byte_match_sets/](https://www.paws-r-sdk.com/docs/waf_list_byte_match_sets/) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more `ByteMatchSets`
 #' than the value of `Limit`, AWS WAF returns a `NextMarker` value in the
@@ -1614,7 +1614,7 @@ waf_list_byte_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/list_geo_match_sets.html](https://paws-r.github.io/docs/waf/list_geo_match_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_list_geo_match_sets/](https://www.paws-r-sdk.com/docs/waf_list_geo_match_sets/) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more `GeoMatchSet`s than
 #' the value of `Limit`, AWS WAF returns a `NextMarker` value in the
@@ -1653,7 +1653,7 @@ waf_list_geo_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/list_ip_sets.html](https://paws-r.github.io/docs/waf/list_ip_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_list_ip_sets/](https://www.paws-r-sdk.com/docs/waf_list_ip_sets/) for full documentation.
 #'
 #' @param NextMarker AWS WAF returns a `NextMarker` value in the response that allows you to
 #' list another group of `IPSets`. For the second and subsequent
@@ -1690,7 +1690,7 @@ waf_list_ip_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/list_logging_configurations.html](https://paws-r.github.io/docs/waf/list_logging_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_list_logging_configurations/](https://www.paws-r-sdk.com/docs/waf_list_logging_configurations/) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more
 #' `LoggingConfigurations` than the value of `Limit`, AWS WAF returns a
@@ -1731,7 +1731,7 @@ waf_list_logging_configurations <- function(NextMarker = NULL, Limit = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/list_rate_based_rules.html](https://paws-r.github.io/docs/waf/list_rate_based_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_list_rate_based_rules/](https://www.paws-r-sdk.com/docs/waf_list_rate_based_rules/) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more `Rules` than the
 #' value of `Limit`, AWS WAF returns a `NextMarker` value in the response
@@ -1769,7 +1769,7 @@ waf_list_rate_based_rules <- function(NextMarker = NULL, Limit = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/list_regex_match_sets.html](https://paws-r.github.io/docs/waf/list_regex_match_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_list_regex_match_sets/](https://www.paws-r-sdk.com/docs/waf_list_regex_match_sets/) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more `RegexMatchSet`
 #' objects than the value of `Limit`, AWS WAF returns a `NextMarker` value
@@ -1808,7 +1808,7 @@ waf_list_regex_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/list_regex_pattern_sets.html](https://paws-r.github.io/docs/waf/list_regex_pattern_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_list_regex_pattern_sets/](https://www.paws-r-sdk.com/docs/waf_list_regex_pattern_sets/) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more `RegexPatternSet`
 #' objects than the value of `Limit`, AWS WAF returns a `NextMarker` value
@@ -1848,7 +1848,7 @@ waf_list_regex_pattern_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/list_rule_groups.html](https://paws-r.github.io/docs/waf/list_rule_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_list_rule_groups/](https://www.paws-r-sdk.com/docs/waf_list_rule_groups/) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more `RuleGroups` than
 #' the value of `Limit`, AWS WAF returns a `NextMarker` value in the
@@ -1886,7 +1886,7 @@ waf_list_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/list_rules.html](https://paws-r.github.io/docs/waf/list_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_list_rules/](https://www.paws-r-sdk.com/docs/waf_list_rules/) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more `Rules` than the
 #' value of `Limit`, AWS WAF returns a `NextMarker` value in the response
@@ -1924,7 +1924,7 @@ waf_list_rules <- function(NextMarker = NULL, Limit = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/list_size_constraint_sets.html](https://paws-r.github.io/docs/waf/list_size_constraint_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_list_size_constraint_sets/](https://www.paws-r-sdk.com/docs/waf_list_size_constraint_sets/) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more
 #' `SizeConstraintSets` than the value of `Limit`, AWS WAF returns a
@@ -1964,7 +1964,7 @@ waf_list_size_constraint_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/list_sql_injection_match_sets.html](https://paws-r.github.io/docs/waf/list_sql_injection_match_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_list_sql_injection_match_sets/](https://www.paws-r-sdk.com/docs/waf_list_sql_injection_match_sets/) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more
 #' SqlInjectionMatchSet objects than the value of `Limit`, AWS WAF returns
@@ -2003,7 +2003,7 @@ waf_list_sql_injection_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/list_subscribed_rule_groups.html](https://paws-r.github.io/docs/waf/list_subscribed_rule_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_list_subscribed_rule_groups/](https://www.paws-r-sdk.com/docs/waf_list_subscribed_rule_groups/) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more
 #' `ByteMatchSets`subscribed rule groups than the value of `Limit`, AWS WAF
@@ -2042,7 +2042,7 @@ waf_list_subscribed_rule_groups <- function(NextMarker = NULL, Limit = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/list_tags_for_resource.html](https://paws-r.github.io/docs/waf/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/waf_list_tags_for_resource/) for full documentation.
 #'
 #' @param NextMarker 
 #' @param Limit 
@@ -2073,7 +2073,7 @@ waf_list_tags_for_resource <- function(NextMarker = NULL, Limit = NULL, Resource
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/list_web_ac_ls.html](https://paws-r.github.io/docs/waf/list_web_ac_ls.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_list_web_ac_ls/](https://www.paws-r-sdk.com/docs/waf_list_web_ac_ls/) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more `WebACL` objects
 #' than the number that you specify for `Limit`, AWS WAF returns a
@@ -2112,7 +2112,7 @@ waf_list_web_ac_ls <- function(NextMarker = NULL, Limit = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/list_xss_match_sets.html](https://paws-r.github.io/docs/waf/list_xss_match_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_list_xss_match_sets/](https://www.paws-r-sdk.com/docs/waf_list_xss_match_sets/) for full documentation.
 #'
 #' @param NextMarker If you specify a value for `Limit` and you have more XssMatchSet objects
 #' than the value of `Limit`, AWS WAF returns a `NextMarker` value in the
@@ -2151,7 +2151,7 @@ waf_list_xss_match_sets <- function(NextMarker = NULL, Limit = NULL) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/put_logging_configuration.html](https://paws-r.github.io/docs/waf/put_logging_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_put_logging_configuration/](https://www.paws-r-sdk.com/docs/waf_put_logging_configuration/) for full documentation.
 #'
 #' @param LoggingConfiguration &#91;required&#93; The Amazon Kinesis Data Firehose that contains the inspected traffic
 #' information, the redacted fields details, and the Amazon Resource Name
@@ -2185,7 +2185,7 @@ waf_put_logging_configuration <- function(LoggingConfiguration) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/put_permission_policy.html](https://paws-r.github.io/docs/waf/put_permission_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_put_permission_policy/](https://www.paws-r-sdk.com/docs/waf_put_permission_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the RuleGroup to which you want to
 #' attach the policy.
@@ -2216,7 +2216,7 @@ waf_put_permission_policy <- function(ResourceArn, Policy) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/tag_resource.html](https://paws-r.github.io/docs/waf/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_tag_resource/](https://www.paws-r-sdk.com/docs/waf_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; 
 #' @param Tags &#91;required&#93; 
@@ -2246,7 +2246,7 @@ waf_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/untag_resource.html](https://paws-r.github.io/docs/waf/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_untag_resource/](https://www.paws-r-sdk.com/docs/waf_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; 
 #' @param TagKeys &#91;required&#93; 
@@ -2276,7 +2276,7 @@ waf_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/update_byte_match_set.html](https://paws-r.github.io/docs/waf/update_byte_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_update_byte_match_set/](https://www.paws-r-sdk.com/docs/waf_update_byte_match_set/) for full documentation.
 #'
 #' @param ByteMatchSetId &#91;required&#93; The `ByteMatchSetId` of the ByteMatchSet that you want to update.
 #' `ByteMatchSetId` is returned by
@@ -2320,7 +2320,7 @@ waf_update_byte_match_set <- function(ByteMatchSetId, ChangeToken, Updates) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/update_geo_match_set.html](https://paws-r.github.io/docs/waf/update_geo_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_update_geo_match_set/](https://www.paws-r-sdk.com/docs/waf_update_geo_match_set/) for full documentation.
 #'
 #' @param GeoMatchSetId &#91;required&#93; The `GeoMatchSetId` of the GeoMatchSet that you want to update.
 #' `GeoMatchSetId` is returned by
@@ -2365,7 +2365,7 @@ waf_update_geo_match_set <- function(GeoMatchSetId, ChangeToken, Updates) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/update_ip_set.html](https://paws-r.github.io/docs/waf/update_ip_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_update_ip_set/](https://www.paws-r-sdk.com/docs/waf_update_ip_set/) for full documentation.
 #'
 #' @param IPSetId &#91;required&#93; The `IPSetId` of the IPSet that you want to update. `IPSetId` is
 #' returned by [`create_ip_set`][waf_create_ip_set] and by
@@ -2406,7 +2406,7 @@ waf_update_ip_set <- function(IPSetId, ChangeToken, Updates) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/update_rate_based_rule.html](https://paws-r.github.io/docs/waf/update_rate_based_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_update_rate_based_rule/](https://www.paws-r-sdk.com/docs/waf_update_rate_based_rule/) for full documentation.
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the `RateBasedRule` that you want to update. `RuleId` is
 #' returned by [`create_rate_based_rule`][waf_create_rate_based_rule] and
@@ -2446,7 +2446,7 @@ waf_update_rate_based_rule <- function(RuleId, ChangeToken, Updates, RateLimit) 
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/update_regex_match_set.html](https://paws-r.github.io/docs/waf/update_regex_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_update_regex_match_set/](https://www.paws-r-sdk.com/docs/waf_update_regex_match_set/) for full documentation.
 #'
 #' @param RegexMatchSetId &#91;required&#93; The `RegexMatchSetId` of the RegexMatchSet that you want to update.
 #' `RegexMatchSetId` is returned by
@@ -2483,7 +2483,7 @@ waf_update_regex_match_set <- function(RegexMatchSetId, Updates, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/update_regex_pattern_set.html](https://paws-r.github.io/docs/waf/update_regex_pattern_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_update_regex_pattern_set/](https://www.paws-r-sdk.com/docs/waf_update_regex_pattern_set/) for full documentation.
 #'
 #' @param RegexPatternSetId &#91;required&#93; The `RegexPatternSetId` of the RegexPatternSet that you want to update.
 #' `RegexPatternSetId` is returned by
@@ -2519,7 +2519,7 @@ waf_update_regex_pattern_set <- function(RegexPatternSetId, Updates, ChangeToken
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/update_rule.html](https://paws-r.github.io/docs/waf/update_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_update_rule/](https://www.paws-r-sdk.com/docs/waf_update_rule/) for full documentation.
 #'
 #' @param RuleId &#91;required&#93; The `RuleId` of the `Rule` that you want to update. `RuleId` is returned
 #' by [`create_rule`][waf_create_rule] and by
@@ -2560,7 +2560,7 @@ waf_update_rule <- function(RuleId, ChangeToken, Updates) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/update_rule_group.html](https://paws-r.github.io/docs/waf/update_rule_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_update_rule_group/](https://www.paws-r-sdk.com/docs/waf_update_rule_group/) for full documentation.
 #'
 #' @param RuleGroupId &#91;required&#93; The `RuleGroupId` of the RuleGroup that you want to update.
 #' `RuleGroupId` is returned by
@@ -2604,7 +2604,7 @@ waf_update_rule_group <- function(RuleGroupId, Updates, ChangeToken) {
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/update_size_constraint_set.html](https://paws-r.github.io/docs/waf/update_size_constraint_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_update_size_constraint_set/](https://www.paws-r-sdk.com/docs/waf_update_size_constraint_set/) for full documentation.
 #'
 #' @param SizeConstraintSetId &#91;required&#93; The `SizeConstraintSetId` of the SizeConstraintSet that you want to
 #' update. `SizeConstraintSetId` is returned by
@@ -2648,7 +2648,7 @@ waf_update_size_constraint_set <- function(SizeConstraintSetId, ChangeToken, Upd
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/update_sql_injection_match_set.html](https://paws-r.github.io/docs/waf/update_sql_injection_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_update_sql_injection_match_set/](https://www.paws-r-sdk.com/docs/waf_update_sql_injection_match_set/) for full documentation.
 #'
 #' @param SqlInjectionMatchSetId &#91;required&#93; The `SqlInjectionMatchSetId` of the `SqlInjectionMatchSet` that you want
 #' to update. `SqlInjectionMatchSetId` is returned by
@@ -2694,7 +2694,7 @@ waf_update_sql_injection_match_set <- function(SqlInjectionMatchSetId, ChangeTok
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/update_web_acl.html](https://paws-r.github.io/docs/waf/update_web_acl.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_update_web_acl/](https://www.paws-r-sdk.com/docs/waf_update_web_acl/) for full documentation.
 #'
 #' @param WebACLId &#91;required&#93; The `WebACLId` of the WebACL that you want to update. `WebACLId` is
 #' returned by [`create_web_acl`][waf_create_web_acl] and by
@@ -2746,7 +2746,7 @@ waf_update_web_acl <- function(WebACLId, ChangeToken, Updates = NULL, DefaultAct
 #' @description
 #' This is **AWS WAF Classic** documentation. For more information, see [AWS WAF Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html) in the developer guide.
 #'
-#' See [https://paws-r.github.io/docs/waf/update_xss_match_set.html](https://paws-r.github.io/docs/waf/update_xss_match_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/waf_update_xss_match_set/](https://www.paws-r-sdk.com/docs/waf_update_xss_match_set/) for full documentation.
 #'
 #' @param XssMatchSetId &#91;required&#93; The `XssMatchSetId` of the `XssMatchSet` that you want to update.
 #' `XssMatchSetId` is returned by

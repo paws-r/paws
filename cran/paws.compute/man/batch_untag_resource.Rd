@@ -17,6 +17,6 @@ jobs of array and multi-node parallel (MNP) jobs aren't supported.}
 \description{
 Deletes specified tags from an Batch resource.
 
-See \url{https://paws-r.github.io/docs/batch/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_untag_resource/} for full documentation.
 }
 \keyword{internal}

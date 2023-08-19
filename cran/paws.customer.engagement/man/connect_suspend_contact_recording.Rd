@@ -2,7 +2,8 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_suspend_contact_recording}
 \alias{connect_suspend_contact_recording}
-\title{When a contact is being recorded, this API suspends recording the call}
+\title{When a contact is being recorded, this API suspends recording the call
+or screen}
 \usage{
 connect_suspend_contact_recording(InstanceId, ContactId, InitialContactId)
 }
@@ -16,8 +17,8 @@ in the Amazon Resource Name (ARN) of the instance.}
 associated with the first interaction with the contact center.}
 }
 \description{
-When a contact is being recorded, this API suspends recording the call. For example, you might suspend the call recording while collecting sensitive information, such as a credit card number. Then use ResumeContactRecording to restart recording.
+When a contact is being recorded, this API suspends recording the call or screen. For example, you might suspend the call or screen recording while collecting sensitive information, such as a credit card number. Then use ResumeContactRecording to restart recording.
 
-See \url{https://paws-r.github.io/docs/connect/suspend_contact_recording.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_suspend_contact_recording/} for full documentation.
 }
 \keyword{internal}

@@ -33,6 +33,6 @@ list.}
 \description{
 Lists the action executions that have occurred in a pipeline.
 
-See \url{https://paws-r.github.io/docs/codepipeline/list_action_executions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_list_action_executions/} for full documentation.
 }
 \keyword{internal}

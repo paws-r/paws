@@ -38,6 +38,6 @@ s3-bucket_name//AWSLogs/aws_account_id}
 \description{
 Update the attributes for an accelerator.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/update_accelerator_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_update_accelerator_attributes/} for full documentation.
 }
 \keyword{internal}

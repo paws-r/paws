@@ -21,6 +21,6 @@ Default: disabled (\code{false})}
 \description{
 Gets the console output for the specified instance. For Linux instances, the instance console output displays the exact console output that would normally be displayed on a physical monitor attached to a computer. For Windows instances, the instance console output includes the last three system event log errors.
 
-See \url{https://paws-r.github.io/docs/ec2/get_console_output.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_console_output/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ execution for which you want to retrieve the evaluation summary.}
 \description{
 Returns a summary of resource evaluation for the specified resource evaluation ID from the proactive rules that were run. The results indicate which evaluation context was used to evaluate the rules, which resource details were evaluated, the evaluation mode that was run, and whether the resource details comply with the configuration of the proactive rules.
 
-See \url{https://paws-r.github.io/docs/configservice/get_resource_evaluation_summary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_get_resource_evaluation_summary/} for full documentation.
 }
 \keyword{internal}

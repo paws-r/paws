@@ -17,6 +17,6 @@ batch of the results.}
 \description{
 Gets information about AWS tags for a specified Amazon Resource Name (ARN) in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats}{CodeCommit Resources and Operations} in the \emph{AWS CodeCommit User Guide}.
 
-See \url{https://paws-r.github.io/docs/codecommit/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

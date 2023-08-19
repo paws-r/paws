@@ -76,6 +76,6 @@ Update.}
 \description{
 Modifies the cluster configuration of the specified Elasticsearch domain, setting as setting the instance type and the number of instances.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/update_elasticsearch_domain_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_update_elasticsearch_domain_config/} for full documentation.
 }
 \keyword{internal}

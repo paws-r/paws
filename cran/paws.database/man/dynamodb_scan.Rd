@@ -257,6 +257,6 @@ to true, you will receive a \code{ValidationException}.}
 \description{
 The \code{\link[=dynamodb_scan]{scan}} operation returns one or more items and item attributes by accessing every item in a table or a secondary index. To have DynamoDB return fewer items, you can provide a \code{FilterExpression} operation.
 
-See \url{https://paws-r.github.io/docs/dynamodb/scan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_scan/} for full documentation.
 }
 \keyword{internal}

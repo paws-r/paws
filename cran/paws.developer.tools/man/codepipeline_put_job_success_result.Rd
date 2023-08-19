@@ -37,6 +37,6 @@ included only when there is no continuation token on the request.}
 \description{
 Represents the success of a job as returned to the pipeline by a job worker. Used for custom actions only.
 
-See \url{https://paws-r.github.io/docs/codepipeline/put_job_success_result.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_put_job_success_result/} for full documentation.
 }
 \keyword{internal}

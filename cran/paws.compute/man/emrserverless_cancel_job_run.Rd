@@ -14,6 +14,6 @@ emrserverless_cancel_job_run(applicationId, jobRunId)
 \description{
 Cancels a job run.
 
-See \url{https://paws-r.github.io/docs/emrserverless/cancel_job_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrserverless_cancel_job_run/} for full documentation.
 }
 \keyword{internal}

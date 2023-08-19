@@ -27,6 +27,7 @@ make_code_files <- function(api) {
   result$interfaces <- make_interfaces_files(api)
   result$service <- make_service_files(api)
   result$custom <- make_custom_operations_files(api)
+  result$reexports <- make_reexports()
   return(result)
 }
 
@@ -78,11 +79,23 @@ make_custom_operations_files <- function(api) {
   return(result)
 }
 
+make_reexports <- function() {
+  result <- list()
+  from <- system_file("templates/reexports_paws.common.R", package = methods::getPackageName())
+  filename <- "reexports_paws.common.R"
+  if (from != "" && file.exists(from)) {
+    contents <- readLines(from)
+    result[[file.path(CODE_DIR, filename)]] <- paste(contents, collapse = "\n")
+  }
+  return(result)
+}
+
 make_docs_files <- function(api) {
   result <- list()
   result$operations <- make_operations_files(api, doc_maker = make_docs_long)
   result$service <- make_service_files(api)
   result$custom <- make_custom_operations_files(api)
+  result$reexports <- make_reexports()
   return(result)
 }
 

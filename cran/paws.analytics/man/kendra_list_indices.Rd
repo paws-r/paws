@@ -16,6 +16,6 @@ can use this pagination token to retrieve the next set of indexes.}
 \description{
 Lists the Amazon Kendra indexes that you created.
 
-See \url{https://paws-r.github.io/docs/kendra/list_indices.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_list_indices/} for full documentation.
 }
 \keyword{internal}

@@ -93,6 +93,6 @@ get the next batch of objects.}
 \description{
 Retrieves the reservation utilization for your account. Management account in an organization have access to member accounts. You can filter data by dimensions in a time period. You can use \code{\link[=costexplorer_get_dimension_values]{get_dimension_values}} to determine the possible dimension values. Currently, you can group only by \code{SUBSCRIPTION_ID}.
 
-See \url{https://paws-r.github.io/docs/costexplorer/get_reservation_utilization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_reservation_utilization/} for full documentation.
 }
 \keyword{internal}

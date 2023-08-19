@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Indexes the search suggestions. For more information, see [Configuring Suggesters](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html#configuring-suggesters) in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/build_suggesters.html](https://paws-r.github.io/docs/cloudsearch/build_suggesters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_build_suggesters/](https://www.paws-r-sdk.com/docs/cloudsearch_build_suggesters/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #'
@@ -37,7 +37,7 @@ cloudsearch_build_suggesters <- function(DomainName) {
 #' @description
 #' Creates a new search domain. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html" target="_blank">Creating a Search Domain</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/create_domain.html](https://paws-r.github.io/docs/cloudsearch/create_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_create_domain/](https://www.paws-r-sdk.com/docs/cloudsearch_create_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; A name for the domain you are creating. Allowed characters are a-z
 #' (lower-case letters), 0-9, and hyphen (-). Domain names must start with
@@ -70,7 +70,7 @@ cloudsearch_create_domain <- function(DomainName) {
 #' @description
 #' Configures an analysis scheme that can be applied to a `text` or `text-array` field to define language-specific text processing options. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">Configuring Analysis Schemes</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/define_analysis_scheme.html](https://paws-r.github.io/docs/cloudsearch/define_analysis_scheme.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_define_analysis_scheme/](https://www.paws-r-sdk.com/docs/cloudsearch_define_analysis_scheme/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param AnalysisScheme &#91;required&#93; 
@@ -100,7 +100,7 @@ cloudsearch_define_analysis_scheme <- function(DomainName, AnalysisScheme) {
 #' @description
 #' Configures an `Expression` for the search domain. Used to create new expressions and modify existing ones. If the expression exists, the new configuration replaces the old one. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/define_expression.html](https://paws-r.github.io/docs/cloudsearch/define_expression.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_define_expression/](https://www.paws-r-sdk.com/docs/cloudsearch_define_expression/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param Expression &#91;required&#93; 
@@ -130,7 +130,7 @@ cloudsearch_define_expression <- function(DomainName, Expression) {
 #' @description
 #' Configures an `IndexField` for the search domain. Used to create new fields and modify existing ones. You must specify the name of the domain you are configuring and an index field configuration. The index field configuration specifies a unique name, the index field type, and the options you want to configure for the field. The options you can specify depend on the `IndexFieldType`. If the field exists, the new configuration replaces the old one. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html" target="_blank">Configuring Index Fields</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/define_index_field.html](https://paws-r.github.io/docs/cloudsearch/define_index_field.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_define_index_field/](https://www.paws-r-sdk.com/docs/cloudsearch_define_index_field/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param IndexField &#91;required&#93; The index field and field options you want to configure.
@@ -160,7 +160,7 @@ cloudsearch_define_index_field <- function(DomainName, IndexField) {
 #' @description
 #' Configures a suggester for a domain. A suggester enables you to display possible matches before users finish typing their queries. When you configure a suggester, you must specify the name of the text field you want to search for possible matches and a unique name for the suggester. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/define_suggester.html](https://paws-r.github.io/docs/cloudsearch/define_suggester.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_define_suggester/](https://www.paws-r-sdk.com/docs/cloudsearch_define_suggester/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param Suggester &#91;required&#93; 
@@ -190,7 +190,7 @@ cloudsearch_define_suggester <- function(DomainName, Suggester) {
 #' @description
 #' Deletes an analysis scheme. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">Configuring Analysis Schemes</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/delete_analysis_scheme.html](https://paws-r.github.io/docs/cloudsearch/delete_analysis_scheme.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_delete_analysis_scheme/](https://www.paws-r-sdk.com/docs/cloudsearch_delete_analysis_scheme/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param AnalysisSchemeName &#91;required&#93; The name of the analysis scheme you want to delete.
@@ -220,7 +220,7 @@ cloudsearch_delete_analysis_scheme <- function(DomainName, AnalysisSchemeName) {
 #' @description
 #' Permanently deletes a search domain and all of its data. Once a domain has been deleted, it cannot be recovered. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/deleting-domains.html" target="_blank">Deleting a Search Domain</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/delete_domain.html](https://paws-r.github.io/docs/cloudsearch/delete_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_delete_domain/](https://www.paws-r-sdk.com/docs/cloudsearch_delete_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to permanently delete.
 #'
@@ -249,7 +249,7 @@ cloudsearch_delete_domain <- function(DomainName) {
 #' @description
 #' Removes an `Expression` from the search domain. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/delete_expression.html](https://paws-r.github.io/docs/cloudsearch/delete_expression.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_delete_expression/](https://www.paws-r-sdk.com/docs/cloudsearch_delete_expression/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param ExpressionName &#91;required&#93; The name of the `Expression` to delete.
@@ -279,7 +279,7 @@ cloudsearch_delete_expression <- function(DomainName, ExpressionName) {
 #' @description
 #' Removes an `IndexField` from the search domain. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-index-fields.html" target="_blank">Configuring Index Fields</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/delete_index_field.html](https://paws-r.github.io/docs/cloudsearch/delete_index_field.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_delete_index_field/](https://www.paws-r-sdk.com/docs/cloudsearch_delete_index_field/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param IndexFieldName &#91;required&#93; The name of the index field your want to remove from the domain's
@@ -310,7 +310,7 @@ cloudsearch_delete_index_field <- function(DomainName, IndexFieldName) {
 #' @description
 #' Deletes a suggester. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/delete_suggester.html](https://paws-r.github.io/docs/cloudsearch/delete_suggester.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_delete_suggester/](https://www.paws-r-sdk.com/docs/cloudsearch_delete_suggester/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param SuggesterName &#91;required&#93; Specifies the name of the suggester you want to delete.
@@ -340,7 +340,7 @@ cloudsearch_delete_suggester <- function(DomainName, SuggesterName) {
 #' @description
 #' Gets the analysis schemes configured for a domain. An analysis scheme defines language-specific text processing options for a `text` field. Can be limited to specific analysis schemes by name. By default, shows all analysis schemes and includes any pending changes to the configuration. Set the `Deployed` option to `true` to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-analysis-schemes.html" target="_blank">Configuring Analysis Schemes</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/describe_analysis_schemes.html](https://paws-r.github.io/docs/cloudsearch/describe_analysis_schemes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_describe_analysis_schemes/](https://www.paws-r-sdk.com/docs/cloudsearch_describe_analysis_schemes/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to describe.
 #' @param AnalysisSchemeNames The analysis schemes you want to describe.
@@ -355,7 +355,7 @@ cloudsearch_describe_analysis_schemes <- function(DomainName, AnalysisSchemeName
     name = "DescribeAnalysisSchemes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "AnalysisSchemes")
   )
   input <- .cloudsearch$describe_analysis_schemes_input(DomainName = DomainName, AnalysisSchemeNames = AnalysisSchemeNames, Deployed = Deployed)
   output <- .cloudsearch$describe_analysis_schemes_output()
@@ -372,7 +372,7 @@ cloudsearch_describe_analysis_schemes <- function(DomainName, AnalysisSchemeName
 #' @description
 #' Gets the availability options configured for a domain. By default, shows the configuration with any pending changes. Set the `Deployed` option to `true` to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html" target="_blank">Configuring Availability Options</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/describe_availability_options.html](https://paws-r.github.io/docs/cloudsearch/describe_availability_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_describe_availability_options/](https://www.paws-r-sdk.com/docs/cloudsearch_describe_availability_options/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to describe.
 #' @param Deployed Whether to display the deployed configuration (`true`) or include any
@@ -404,7 +404,7 @@ cloudsearch_describe_availability_options <- function(DomainName, Deployed = NUL
 #' @description
 #' Returns the domain's endpoint options, specifically whether all requests to the domain must arrive over HTTPS. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html" target="_blank">Configuring Domain Endpoint Options</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/describe_domain_endpoint_options.html](https://paws-r.github.io/docs/cloudsearch/describe_domain_endpoint_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_describe_domain_endpoint_options/](https://www.paws-r-sdk.com/docs/cloudsearch_describe_domain_endpoint_options/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; A string that represents the name of a domain.
 #' @param Deployed Whether to retrieve the latest configuration (which might be in a
@@ -436,7 +436,7 @@ cloudsearch_describe_domain_endpoint_options <- function(DomainName, Deployed = 
 #' @description
 #' Gets information about the search domains owned by this account. Can be limited to specific domains. Shows all domains by default. To get the number of searchable documents in a domain, use the console or submit a `matchall` request to your domain's search endpoint: `q=matchall&amp;q.parser=structured&amp;size=0`. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html" target="_blank">Getting Information about a Search Domain</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/describe_domains.html](https://paws-r.github.io/docs/cloudsearch/describe_domains.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_describe_domains/](https://www.paws-r-sdk.com/docs/cloudsearch_describe_domains/) for full documentation.
 #'
 #' @param DomainNames The names of the domains you want to include in the response.
 #'
@@ -448,7 +448,7 @@ cloudsearch_describe_domains <- function(DomainNames = NULL) {
     name = "DescribeDomains",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "DomainStatusList")
   )
   input <- .cloudsearch$describe_domains_input(DomainNames = DomainNames)
   output <- .cloudsearch$describe_domains_output()
@@ -465,7 +465,7 @@ cloudsearch_describe_domains <- function(DomainNames = NULL) {
 #' @description
 #' Gets the expressions configured for the search domain. Can be limited to specific expressions by name. By default, shows all expressions and includes any pending changes to the configuration. Set the `Deployed` option to `true` to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-expressions.html" target="_blank">Configuring Expressions</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/describe_expressions.html](https://paws-r.github.io/docs/cloudsearch/describe_expressions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_describe_expressions/](https://www.paws-r-sdk.com/docs/cloudsearch_describe_expressions/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to describe.
 #' @param ExpressionNames Limits the [`describe_expressions`][cloudsearch_describe_expressions]
@@ -482,7 +482,7 @@ cloudsearch_describe_expressions <- function(DomainName, ExpressionNames = NULL,
     name = "DescribeExpressions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Expressions")
   )
   input <- .cloudsearch$describe_expressions_input(DomainName = DomainName, ExpressionNames = ExpressionNames, Deployed = Deployed)
   output <- .cloudsearch$describe_expressions_output()
@@ -499,7 +499,7 @@ cloudsearch_describe_expressions <- function(DomainName, ExpressionNames = NULL,
 #' @description
 #' Gets information about the index fields configured for the search domain. Can be limited to specific fields by name. By default, shows all fields and includes any pending changes to the configuration. Set the `Deployed` option to `true` to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-domain-info.html" target="_blank">Getting Domain Information</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/describe_index_fields.html](https://paws-r.github.io/docs/cloudsearch/describe_index_fields.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_describe_index_fields/](https://www.paws-r-sdk.com/docs/cloudsearch_describe_index_fields/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to describe.
 #' @param FieldNames A list of the index fields you want to describe. If not specified,
@@ -515,7 +515,7 @@ cloudsearch_describe_index_fields <- function(DomainName, FieldNames = NULL, Dep
     name = "DescribeIndexFields",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "IndexFields")
   )
   input <- .cloudsearch$describe_index_fields_input(DomainName = DomainName, FieldNames = FieldNames, Deployed = Deployed)
   output <- .cloudsearch$describe_index_fields_output()
@@ -532,7 +532,7 @@ cloudsearch_describe_index_fields <- function(DomainName, FieldNames = NULL, Dep
 #' @description
 #' Gets the scaling parameters configured for a domain. A domain's scaling parameters specify the desired search instance type and replication count. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html" target="_blank">Configuring Scaling Options</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/describe_scaling_parameters.html](https://paws-r.github.io/docs/cloudsearch/describe_scaling_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_describe_scaling_parameters/](https://www.paws-r-sdk.com/docs/cloudsearch_describe_scaling_parameters/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #'
@@ -562,7 +562,7 @@ cloudsearch_describe_scaling_parameters <- function(DomainName) {
 #' @description
 #' Gets information about the access policies that control access to the domain's document and search endpoints. By default, shows the configuration with any pending changes. Set the `Deployed` option to `true` to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank">Configuring Access for a Search Domain</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/describe_service_access_policies.html](https://paws-r.github.io/docs/cloudsearch/describe_service_access_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_describe_service_access_policies/](https://www.paws-r-sdk.com/docs/cloudsearch_describe_service_access_policies/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to describe.
 #' @param Deployed Whether to display the deployed configuration (`true`) or include any
@@ -593,7 +593,7 @@ cloudsearch_describe_service_access_policies <- function(DomainName, Deployed = 
 #' @description
 #' Gets the suggesters configured for a domain. A suggester enables you to display possible matches before users finish typing their queries. Can be limited to specific suggesters by name. By default, shows all suggesters and includes any pending changes to the configuration. Set the `Deployed` option to `true` to show the active configuration and exclude pending changes. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/getting-suggestions.html" target="_blank">Getting Search Suggestions</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/describe_suggesters.html](https://paws-r.github.io/docs/cloudsearch/describe_suggesters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_describe_suggesters/](https://www.paws-r-sdk.com/docs/cloudsearch_describe_suggesters/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain you want to describe.
 #' @param SuggesterNames The suggesters you want to describe.
@@ -608,7 +608,7 @@ cloudsearch_describe_suggesters <- function(DomainName, SuggesterNames = NULL, D
     name = "DescribeSuggesters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "Suggesters")
   )
   input <- .cloudsearch$describe_suggesters_input(DomainName = DomainName, SuggesterNames = SuggesterNames, Deployed = Deployed)
   output <- .cloudsearch$describe_suggesters_output()
@@ -626,7 +626,7 @@ cloudsearch_describe_suggesters <- function(DomainName, SuggesterNames = NULL, D
 #' @description
 #' Tells the search domain to start indexing its documents using the latest indexing options. This operation must be invoked to activate options whose OptionStatus is `RequiresIndexDocuments`.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/index_documents.html](https://paws-r.github.io/docs/cloudsearch/index_documents.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_index_documents/](https://www.paws-r-sdk.com/docs/cloudsearch_index_documents/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #'
@@ -655,7 +655,7 @@ cloudsearch_index_documents <- function(DomainName) {
 #' @description
 #' Lists all search domains owned by an account.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/list_domain_names.html](https://paws-r.github.io/docs/cloudsearch/list_domain_names.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_list_domain_names/](https://www.paws-r-sdk.com/docs/cloudsearch_list_domain_names/) for full documentation.
 #'
 
 #'
@@ -684,7 +684,7 @@ cloudsearch_list_domain_names <- function() {
 #' @description
 #' Configures the availability options for a domain. Enabling the Multi-AZ option expands an Amazon CloudSearch domain to an additional Availability Zone in the same Region to increase fault tolerance in the event of a service disruption. Changes to the Multi-AZ option can take about half an hour to become active. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-availability-options.html" target="_blank">Configuring Availability Options</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/update_availability_options.html](https://paws-r.github.io/docs/cloudsearch/update_availability_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_update_availability_options/](https://www.paws-r-sdk.com/docs/cloudsearch_update_availability_options/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param MultiAZ &#91;required&#93; You expand an existing search domain to a second Availability Zone by
@@ -718,7 +718,7 @@ cloudsearch_update_availability_options <- function(DomainName, MultiAZ) {
 #' @description
 #' Updates the domain's endpoint options, specifically whether all requests to the domain must arrive over HTTPS. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-domain-endpoint-options.html" target="_blank">Configuring Domain Endpoint Options</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/update_domain_endpoint_options.html](https://paws-r.github.io/docs/cloudsearch/update_domain_endpoint_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_update_domain_endpoint_options/](https://www.paws-r-sdk.com/docs/cloudsearch_update_domain_endpoint_options/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; A string that represents the name of a domain.
 #' @param DomainEndpointOptions &#91;required&#93; Whether to require that all requests to the domain arrive over HTTPS. We
@@ -751,7 +751,7 @@ cloudsearch_update_domain_endpoint_options <- function(DomainName, DomainEndpoin
 #' @description
 #' Configures scaling parameters for a domain. A domain's scaling parameters specify the desired search instance type and replication count. Amazon CloudSearch will still automatically scale your domain based on the volume of data and traffic, but not below the desired instance type and replication count. If the Multi-AZ option is enabled, these values control the resources used per Availability Zone. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html" target="_blank">Configuring Scaling Options</a> in the *Amazon CloudSearch Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/update_scaling_parameters.html](https://paws-r.github.io/docs/cloudsearch/update_scaling_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_update_scaling_parameters/](https://www.paws-r-sdk.com/docs/cloudsearch_update_scaling_parameters/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param ScalingParameters &#91;required&#93; 
@@ -782,7 +782,7 @@ cloudsearch_update_scaling_parameters <- function(DomainName, ScalingParameters)
 #' @description
 #' Configures the access rules that control access to the domain's document and search endpoints. For more information, see <a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-access.html" target="_blank">Configuring Access for an Amazon CloudSearch Domain</a>.
 #'
-#' See [https://paws-r.github.io/docs/cloudsearch/update_service_access_policies.html](https://paws-r.github.io/docs/cloudsearch/update_service_access_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudsearch_update_service_access_policies/](https://www.paws-r-sdk.com/docs/cloudsearch_update_service_access_policies/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param AccessPolicies &#91;required&#93; The access rules you want to configure. These rules replace any existing

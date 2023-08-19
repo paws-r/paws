@@ -20,6 +20,6 @@ opsworks_update_rds_db_instance(
 \description{
 Updates an Amazon RDS instance.
 
-See \url{https://paws-r.github.io/docs/opsworks/update_rds_db_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_update_rds_db_instance/} for full documentation.
 }
 \keyword{internal}

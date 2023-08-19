@@ -16,6 +16,6 @@ example, a cluster identifier or an Amazon EMR Studio ID.}
 \description{
 Removes tags from an Amazon EMR resource, such as a cluster or Amazon EMR Studio. Tags make it easier to associate resources in various ways, such as grouping clusters to track your Amazon EMR resource allocation costs. For more information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-plan-tags.html}{Tag Clusters}.
 
-See \url{https://paws-r.github.io/docs/emr/remove_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_remove_tags/} for full documentation.
 }
 \keyword{internal}

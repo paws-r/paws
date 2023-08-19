@@ -2,19 +2,19 @@
 % Please edit documentation in R/healthlake_operations.R
 \name{healthlake_tag_resource}
 \alias{healthlake_tag_resource}
-\title{Adds a user specifed key and value tag to a Data Store}
+\title{Adds a user specified key and value tag to a data store}
 \usage{
 healthlake_tag_resource(ResourceARN, Tags)
 }
 \arguments{
-\item{ResourceARN}{[required] The Amazon Resource Name(ARN)that gives Amazon HealthLake access to the
-Data Store which tags are being added to.}
+\item{ResourceARN}{[required] The Amazon Resource Name(ARN)that gives AWS HealthLake access to the
+data store which tags are being added to.}
 
-\item{Tags}{[required] The user specified key and value pair tags being added to a Data Store.}
+\item{Tags}{[required] The user specified key and value pair tags being added to a data store.}
 }
 \description{
-Adds a user specifed key and value tag to a Data Store.
+Adds a user specified key and value tag to a data store.
 
-See \url{https://paws-r.github.io/docs/healthlake/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/healthlake_tag_resource/} for full documentation.
 }
 \keyword{internal}

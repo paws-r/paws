@@ -51,6 +51,6 @@ must be an IAM role within your FinSpace account.}
 \description{
 Creates a new user in FinSpace.
 
-See \url{https://paws-r.github.io/docs/finspacedata/create_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_create_user/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ Example: \code{mydbsubnetgroup}}
 \description{
 Modifies an existing DB subnet group. DB subnet groups must contain at least one subnet in at least two AZs in the Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/rds/modify_db_subnet_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_modify_db_subnet_group/} for full documentation.
 }
 \keyword{internal}

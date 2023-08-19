@@ -20,6 +20,6 @@ the template.}
 \description{
 Deletes a template.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_template/} for full documentation.
 }
 \keyword{internal}

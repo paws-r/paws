@@ -47,6 +47,6 @@ request.}
 \description{
 Describes the specified Dedicated Hosts or all your Dedicated Hosts.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_hosts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_hosts/} for full documentation.
 }
 \keyword{internal}

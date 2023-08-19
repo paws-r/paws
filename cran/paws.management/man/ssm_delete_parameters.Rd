@@ -13,6 +13,6 @@ for at least 30 seconds to create a parameter with the same name.}
 \description{
 Delete a list of parameters. After deleting a parameter, wait for at least 30 seconds to create a parameter with the same name.
 
-See \url{https://paws-r.github.io/docs/ssm/delete_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_delete_parameters/} for full documentation.
 }
 \keyword{internal}

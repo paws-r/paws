@@ -14,6 +14,6 @@ prometheusservice_tag_resource(resourceArn, tags)
 \description{
 Creates tags for the specified resource.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_tag_resource/} for full documentation.
 }
 \keyword{internal}

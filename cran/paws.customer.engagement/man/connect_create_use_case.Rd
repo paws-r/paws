@@ -26,6 +26,6 @@ For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
 \description{
 Creates a use case for an integration association.
 
-See \url{https://paws-r.github.io/docs/connect/create_use_case.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_create_use_case/} for full documentation.
 }
 \keyword{internal}

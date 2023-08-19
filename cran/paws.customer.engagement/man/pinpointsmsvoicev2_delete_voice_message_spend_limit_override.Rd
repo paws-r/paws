@@ -10,6 +10,6 @@ pinpointsmsvoicev2_delete_voice_message_spend_limit_override()
 \description{
 Deletes an account level monthly spend limit override for sending voice messages. Deleting a spend limit override sets the \code{EnforcedLimit} equal to the \code{MaxLimit}, which is controlled by Amazon Web Services. For more information on spending limits (quotas) see \href{https://docs.aws.amazon.com/pinpoint/latest/developerguide/quotas.html}{Amazon Pinpoint quotas} in the \emph{Amazon Pinpoint Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/delete_voice_message_spend_limit_override.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_delete_voice_message_spend_limit_override/} for full documentation.
 }
 \keyword{internal}

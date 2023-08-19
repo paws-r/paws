@@ -23,6 +23,6 @@ For more information about the syntax, see \href{https://docs.aws.amazon.com/Ama
 \description{
 Creates a dashboard if it does not already exist, or updates an existing dashboard. If you update a dashboard, the entire contents are replaced with what you specify here.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/put_dashboard.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_put_dashboard/} for full documentation.
 }
 \keyword{internal}

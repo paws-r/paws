@@ -14,6 +14,6 @@ nimblestudio_get_streaming_image(streamingImageId, studioId)
 \description{
 Get streaming image.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/get_streaming_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_get_streaming_image/} for full documentation.
 }
 \keyword{internal}

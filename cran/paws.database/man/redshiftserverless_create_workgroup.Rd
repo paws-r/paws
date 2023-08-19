@@ -51,6 +51,6 @@ public network.}
 \description{
 Creates an workgroup in Amazon Redshift Serverless.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/create_workgroup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_create_workgroup/} for full documentation.
 }
 \keyword{internal}

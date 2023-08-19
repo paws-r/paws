@@ -18,6 +18,6 @@ requirement.}
 \description{
 The \code{\link[=mturk_accept_qualification_request]{accept_qualification_request}} operation approves a Worker's request for a Qualification.
 
-See \url{https://paws-r.github.io/docs/mturk/accept_qualification_request.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_accept_qualification_request/} for full documentation.
 }
 \keyword{internal}

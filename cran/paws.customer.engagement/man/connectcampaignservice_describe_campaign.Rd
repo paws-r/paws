@@ -12,6 +12,6 @@ connectcampaignservice_describe_campaign(id)
 \description{
 Describes the specific campaign.
 
-See \url{https://paws-r.github.io/docs/connectcampaignservice/describe_campaign.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectcampaignservice_describe_campaign/} for full documentation.
 }
 \keyword{internal}

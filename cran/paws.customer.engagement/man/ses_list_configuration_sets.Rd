@@ -17,6 +17,6 @@ position of the configuration set in the configuration set list.}
 \description{
 Provides a list of the configuration sets associated with your Amazon SES account in the current AWS Region. For information about using configuration sets, see \href{https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html}{Monitoring Your Amazon SES Sending Activity} in the \emph{Amazon SES Developer Guide.}
 
-See \url{https://paws-r.github.io/docs/ses/list_configuration_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_list_configuration_sets/} for full documentation.
 }
 \keyword{internal}

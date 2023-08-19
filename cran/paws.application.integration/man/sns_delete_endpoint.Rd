@@ -12,6 +12,6 @@ sns_delete_endpoint(EndpointArn)
 \description{
 Deletes the endpoint for a device and mobile app from Amazon SNS. This action is idempotent. For more information, see \href{https://docs.aws.amazon.com/sns/latest/dg/sns-mobile-application-as-subscriber.html}{Using Amazon SNS Mobile Push Notifications}.
 
-See \url{https://paws-r.github.io/docs/sns/delete_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_delete_endpoint/} for full documentation.
 }
 \keyword{internal}

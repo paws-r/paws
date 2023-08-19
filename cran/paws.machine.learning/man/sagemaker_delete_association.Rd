@@ -14,6 +14,6 @@ sagemaker_delete_association(SourceArn, DestinationArn)
 \description{
 Deletes an association.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_association/} for full documentation.
 }
 \keyword{internal}

@@ -65,6 +65,6 @@ For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam
 \description{
 Maps users to their groups so that you only need to provide the user ID when you issue the query.
 
-See \url{https://paws-r.github.io/docs/kendra/put_principal_mapping.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_put_principal_mapping/} for full documentation.
 }
 \keyword{internal}

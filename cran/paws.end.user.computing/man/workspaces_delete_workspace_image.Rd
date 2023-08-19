@@ -12,6 +12,6 @@ workspaces_delete_workspace_image(ImageId)
 \description{
 Deletes the specified image from your account. To delete an image, you must first delete any bundles that are associated with the image and unshare the image if it is shared with other accounts.
 
-See \url{https://paws-r.github.io/docs/workspaces/delete_workspace_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_delete_workspace_image/} for full documentation.
 }
 \keyword{internal}

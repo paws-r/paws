@@ -16,6 +16,6 @@ frauddetector_put_entity_type(name, description = NULL, tags = NULL)
 \description{
 Creates or updates an entity type. An entity represents who is performing the event. As part of a fraud prediction, you pass the entity ID to indicate the specific entity who performed the event. An entity type classifies the entity. Example classifications include customer, merchant, or account.
 
-See \url{https://paws-r.github.io/docs/frauddetector/put_entity_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_put_entity_type/} for full documentation.
 }
 \keyword{internal}

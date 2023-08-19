@@ -30,6 +30,6 @@ This value is \code{null} when there are no more items to return.}
 \description{
 Describes the running instances for the specified Spot Fleet.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_spot_fleet_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_spot_fleet_instances/} for full documentation.
 }
 \keyword{internal}

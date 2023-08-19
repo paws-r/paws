@@ -20,6 +20,6 @@ fsx_update_file_cache(
 \description{
 Updates the configuration of an existing Amazon File Cache resource. You can update multiple properties in a single request.
 
-See \url{https://paws-r.github.io/docs/fsx/update_file_cache.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_update_file_cache/} for full documentation.
 }
 \keyword{internal}

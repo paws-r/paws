@@ -2,9 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_describe_security_group_references}
 \alias{ec2_describe_security_group_references}
-\title{[VPC only] Describes the VPCs on the other side of a VPC peering
-connection that are referencing the security groups you've specified in
-this request}
+\title{Describes the VPCs on the other side of a VPC peering connection that
+are referencing the security groups you've specified in this request}
 \usage{
 ec2_describe_security_group_references(DryRun = NULL, GroupId)
 }
@@ -17,8 +16,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{GroupId}{[required] The IDs of the security groups in your account.}
 }
 \description{
-[VPC only] Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request.
+Describes the VPCs on the other side of a VPC peering connection that are referencing the security groups you've specified in this request.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_security_group_references.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_security_group_references/} for full documentation.
 }
 \keyword{internal}

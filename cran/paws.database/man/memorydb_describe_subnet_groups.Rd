@@ -26,6 +26,6 @@ the next page. Keep all other arguments unchanged.}
 \description{
 Returns a list of subnet group descriptions. If a subnet group name is specified, the list contains only the description of that group.
 
-See \url{https://paws-r.github.io/docs/memorydb/describe_subnet_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_describe_subnet_groups/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ apigateway_update_resource(restApiId, resourceId, patchOperations = NULL)
 \description{
 Changes information about a Resource resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/update_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_update_resource/} for full documentation.
 }
 \keyword{internal}

@@ -146,6 +146,6 @@ SMS is preferred through email.}
 \description{
 Creates a new Amazon Cognito user pool and sets the password policy for the pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/create_user_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_pool/} for full documentation.
 }
 \keyword{internal}

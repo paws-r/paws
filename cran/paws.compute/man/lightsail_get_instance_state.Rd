@@ -12,6 +12,6 @@ lightsail_get_instance_state(instanceName)
 \description{
 Returns the state of a specific instance. Works on one instance at a time.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_instance_state.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_instance_state/} for full documentation.
 }
 \keyword{internal}

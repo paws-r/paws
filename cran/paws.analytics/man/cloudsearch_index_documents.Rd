@@ -13,6 +13,6 @@ cloudsearch_index_documents(DomainName)
 \description{
 Tells the search domain to start indexing its documents using the latest indexing options. This operation must be invoked to activate options whose OptionStatus is \code{RequiresIndexDocuments}.
 
-See \url{https://paws-r.github.io/docs/cloudsearch/index_documents.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudsearch_index_documents/} for full documentation.
 }
 \keyword{internal}

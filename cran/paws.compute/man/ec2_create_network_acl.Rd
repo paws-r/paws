@@ -19,6 +19,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a network ACL in a VPC. Network ACLs provide an optional layer of security (in addition to security groups) for the instances in your VPC.
 
-See \url{https://paws-r.github.io/docs/ec2/create_network_acl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_network_acl/} for full documentation.
 }
 \keyword{internal}

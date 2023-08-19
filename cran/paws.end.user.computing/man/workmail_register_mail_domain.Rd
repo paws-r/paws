@@ -17,6 +17,6 @@ workmail_register_mail_domain(ClientToken = NULL, OrganizationId, DomainName)
 \description{
 Registers a new domain in WorkMail and SES, and configures it for use by WorkMail. Emails received by SES for this domain are routed to the specified WorkMail organization, and WorkMail has permanent permission to use the specified domain for sending your users' emails.
 
-See \url{https://paws-r.github.io/docs/workmail/register_mail_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_register_mail_domain/} for full documentation.
 }
 \keyword{internal}

@@ -22,7 +22,7 @@ Constraints:
 }}
 
 \item{SourceSnapshotClusterIdentifier}{The identifier of the cluster the source snapshot was created from. This
-parameter is required if your IAM user or role has a policy containing a
+parameter is required if your IAM user has a policy containing a
 snapshot resource element that specifies anything other than * for the
 cluster name.
 
@@ -53,6 +53,6 @@ The default value is -1.}
 \description{
 Copies the specified automated cluster snapshot to a new manual cluster snapshot. The source must be an automated snapshot and it must be in the available state.
 
-See \url{https://paws-r.github.io/docs/redshift/copy_cluster_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_copy_cluster_snapshot/} for full documentation.
 }
 \keyword{internal}

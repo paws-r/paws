@@ -27,6 +27,6 @@ error.}
 \description{
 Lists all Map Runs that were started by a given state machine execution. Use this API action to obtain Map Run ARNs, and then call \code{\link[=sfn_describe_map_run]{describe_map_run}} to obtain more information, if needed.
 
-See \url{https://paws-r.github.io/docs/sfn/list_map_runs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_list_map_runs/} for full documentation.
 }
 \keyword{internal}

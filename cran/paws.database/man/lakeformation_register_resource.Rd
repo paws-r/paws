@@ -28,6 +28,6 @@ For more information, see \href{https://docs.aws.amazon.com/lake-formation/lates
 \description{
 Registers the resource as managed by the Data Catalog.
 
-See \url{https://paws-r.github.io/docs/lakeformation/register_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_register_resource/} for full documentation.
 }
 \keyword{internal}

@@ -117,16 +117,20 @@ maybe_spot_check <- function(cache_result, value_expr, key_label) {
         immediate. = TRUE, call. = FALSE
       )
       cat(file = stderr(), "Key:\n")
-      cat(file = stderr(),
-        paste0(collapse = "\n",
+      cat(
+        file = stderr(),
+        paste0(
+          collapse = "\n",
           "  ",
           key_label
         )
       )
       cat(file = stderr(), "\n")
       cat(file = stderr(), "Difference:\n")
-      cat(file = stderr(),
-        paste0(collapse = "\n",
+      cat(
+        file = stderr(),
+        paste0(
+          collapse = "\n",
           "  ",
           utils::capture.output(print(waldo::compare(
             cache_result, value,

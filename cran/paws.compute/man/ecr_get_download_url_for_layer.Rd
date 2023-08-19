@@ -20,6 +20,6 @@ download.}
 \description{
 Retrieves the pre-signed Amazon S3 download URL corresponding to an image layer. You can only get URLs for image layers that are referenced in an image.
 
-See \url{https://paws-r.github.io/docs/ecr/get_download_url_for_layer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_get_download_url_for_layer/} for full documentation.
 }
 \keyword{internal}

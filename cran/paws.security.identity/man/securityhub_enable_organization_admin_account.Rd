@@ -13,6 +13,6 @@ as the Security Hub administrator account.}
 \description{
 Designates the Security Hub administrator account for an organization. Can only be called by the organization management account.
 
-See \url{https://paws-r.github.io/docs/securityhub/enable_organization_admin_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_enable_organization_admin_account/} for full documentation.
 }
 \keyword{internal}

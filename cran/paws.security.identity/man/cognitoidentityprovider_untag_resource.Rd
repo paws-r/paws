@@ -15,6 +15,6 @@ assigned to.}
 \description{
 Removes the specified tags from an Amazon Cognito user pool. You can use this action up to 5 times per second, per account.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_untag_resource/} for full documentation.
 }
 \keyword{internal}

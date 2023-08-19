@@ -14,6 +14,6 @@ lexmodelsv2_describe_bot_alias(botAliasId, botId)
 \description{
 Get information about a specific bot alias.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/describe_bot_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_describe_bot_alias/} for full documentation.
 }
 \keyword{internal}

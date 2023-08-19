@@ -12,6 +12,6 @@ ses_create_configuration_set(ConfigurationSet)
 \description{
 Creates a configuration set.
 
-See \url{https://paws-r.github.io/docs/ses/create_configuration_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_create_configuration_set/} for full documentation.
 }
 \keyword{internal}

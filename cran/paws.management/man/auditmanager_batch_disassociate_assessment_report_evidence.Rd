@@ -21,6 +21,6 @@ auditmanager_batch_disassociate_assessment_report_evidence(
 \description{
 Disassociates a list of evidence from an assessment report in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/batch_disassociate_assessment_report_evidence.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_batch_disassociate_assessment_report_evidence/} for full documentation.
 }
 \keyword{internal}

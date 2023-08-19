@@ -4,22 +4,42 @@
 \alias{sqs}
 \title{Amazon Simple Queue Service}
 \usage{
-sqs(config = list())
+sqs(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -82,8 +102,20 @@ the following automatically:
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -92,6 +124,7 @@ the following automatically:
 
 \tabular{ll}{
 \link[=sqs_add_permission]{add_permission} \tab Adds a permission to a queue for a specific principal\cr
+\link[=sqs_cancel_message_move_task]{cancel_message_move_task} \tab Cancels a specified message movement task\cr
 \link[=sqs_change_message_visibility]{change_message_visibility} \tab Changes the visibility timeout of a specified message in a queue to a new value\cr
 \link[=sqs_change_message_visibility_batch]{change_message_visibility_batch} \tab Changes the visibility timeout of multiple messages\cr
 \link[=sqs_create_queue]{create_queue} \tab Creates a new standard or FIFO queue\cr
@@ -101,14 +134,16 @@ the following automatically:
 \link[=sqs_get_queue_attributes]{get_queue_attributes} \tab Gets attributes for the specified queue\cr
 \link[=sqs_get_queue_url]{get_queue_url} \tab Returns the URL of an existing Amazon SQS queue\cr
 \link[=sqs_list_dead_letter_source_queues]{list_dead_letter_source_queues} \tab Returns a list of your queues that have the RedrivePolicy queue attribute configured with a dead-letter queue\cr
+\link[=sqs_list_message_move_tasks]{list_message_move_tasks} \tab Gets the most recent message movement tasks (up to 10) under a specific source queue\cr
 \link[=sqs_list_queues]{list_queues} \tab Returns a list of your queues in the current region\cr
 \link[=sqs_list_queue_tags]{list_queue_tags} \tab List all cost allocation tags added to the specified Amazon SQS queue\cr
-\link[=sqs_purge_queue]{purge_queue} \tab Deletes the messages in a queue specified by the QueueURL parameter\cr
+\link[=sqs_purge_queue]{purge_queue} \tab Deletes available messages in a queue (including in-flight messages) specified by the QueueURL parameter\cr
 \link[=sqs_receive_message]{receive_message} \tab Retrieves one or more messages (up to 10), from the specified queue\cr
 \link[=sqs_remove_permission]{remove_permission} \tab Revokes any permissions in the queue policy that matches the specified Label parameter\cr
 \link[=sqs_send_message]{send_message} \tab Delivers a message to the specified queue\cr
-\link[=sqs_send_message_batch]{send_message_batch} \tab Delivers up to ten messages to the specified queue\cr
+\link[=sqs_send_message_batch]{send_message_batch} \tab You can use SendMessageBatch to send up to 10 messages to the specified queue by assigning either identical or different values to each message (or by not assigning values at all)\cr
 \link[=sqs_set_queue_attributes]{set_queue_attributes} \tab Sets the value of one or more queue attributes\cr
+\link[=sqs_start_message_move_task]{start_message_move_task} \tab Starts an asynchronous task to move messages from a specified source queue to a specified destination queue\cr
 \link[=sqs_tag_queue]{tag_queue} \tab Add cost allocation tags to the specified Amazon SQS queue\cr
 \link[=sqs_untag_queue]{untag_queue} \tab Remove cost allocation tags from the specified Amazon SQS queue
 }

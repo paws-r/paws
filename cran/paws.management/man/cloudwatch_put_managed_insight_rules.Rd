@@ -13,6 +13,6 @@ cloudwatch_put_managed_insight_rules(ManagedRules)
 \description{
 Creates a managed Contributor Insights rule for a specified Amazon Web Services resource. When you enable a managed rule, you create a Contributor Insights rule that collects data from Amazon Web Services services. You cannot edit these rules with \code{\link[=cloudwatch_put_insight_rule]{put_insight_rule}}. The rules can be enabled, disabled, and deleted using \code{\link[=cloudwatch_enable_insight_rules]{enable_insight_rules}}, \code{\link[=cloudwatch_disable_insight_rules]{disable_insight_rules}}, and \code{\link[=cloudwatch_delete_insight_rules]{delete_insight_rules}}. If a previously created managed rule is currently disabled, a subsequent call to this API will re-enable it. Use \code{\link[=cloudwatch_list_managed_insight_rules]{list_managed_insight_rules}} to describe all available rules.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/put_managed_insight_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_put_managed_insight_rules/} for full documentation.
 }
 \keyword{internal}

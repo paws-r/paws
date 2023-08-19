@@ -27,6 +27,6 @@ error.}
 \description{
 Restarts a failed batch build. Only batch builds that have failed can be retried.
 
-See \url{https://paws-r.github.io/docs/codebuild/retry_build_batch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_retry_build_batch/} for full documentation.
 }
 \keyword{internal}

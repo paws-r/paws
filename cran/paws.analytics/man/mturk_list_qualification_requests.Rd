@@ -21,6 +21,6 @@ mturk_list_qualification_requests(
 \description{
 The \code{\link[=mturk_list_qualification_requests]{list_qualification_requests}} operation retrieves requests for Qualifications of a particular Qualification type. The owner of the Qualification type calls this operation to poll for pending requests, and accepts them using the AcceptQualification operation.
 
-See \url{https://paws-r.github.io/docs/mturk/list_qualification_requests.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_list_qualification_requests/} for full documentation.
 }
 \keyword{internal}

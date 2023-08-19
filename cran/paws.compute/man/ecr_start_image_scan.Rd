@@ -18,6 +18,6 @@ do not specify a registry, the default registry is assumed.}
 \description{
 Starts an image vulnerability scan. An image scan can only be started once per 24 hours on an individual image. This limit includes if an image was scanned on initial push. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-scanning.html}{Image scanning} in the \emph{Amazon Elastic Container Registry User Guide}.
 
-See \url{https://paws-r.github.io/docs/ecr/start_image_scan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_start_image_scan/} for full documentation.
 }
 \keyword{internal}

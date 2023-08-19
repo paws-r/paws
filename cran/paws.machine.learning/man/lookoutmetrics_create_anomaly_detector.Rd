@@ -28,6 +28,6 @@ to apply to the anomaly detector.}
 \description{
 Creates an anomaly detector.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/create_anomaly_detector.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_create_anomaly_detector/} for full documentation.
 }
 \keyword{internal}

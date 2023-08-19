@@ -42,6 +42,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Modifies the connection options for your Site-to-Site VPN connection.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_vpn_connection_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_vpn_connection_options/} for full documentation.
 }
 \keyword{internal}

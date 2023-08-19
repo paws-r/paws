@@ -22,23 +22,23 @@ input data for the job.}
 \item{OutputDataConfig}{[required] The output configuration that specifies where to send the output files.}
 
 \item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the AWS Identity and Access Management
-(IAM) role that grants Comprehend Medical; read access to your input
-data. For more information, see \href{https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med}{Role-Based Permissions Required for Asynchronous Operations}.}
+(IAM) role that grants Amazon Comprehend Medical read access to your
+input data. For more information, see \href{https://docs.aws.amazon.com/comprehend-medical/latest/dev/security-iam-permissions.html#auth-role-permissions-med}{Role-Based Permissions Required for Asynchronous Operations}.}
 
 \item{JobName}{The identifier of the job.}
 
 \item{ClientRequestToken}{A unique identifier for the request. If you don't set the client request
-token, Comprehend Medical; generates one for you.}
+token, Amazon Comprehend Medical generates one for you.}
 
 \item{KMSKey}{An AWS Key Management Service key to encrypt your output files. If you
 do not specify a key, the files are written in plain text.}
 
 \item{LanguageCode}{[required] The language of the input documents. All documents must be in the same
-language. Comprehend Medical; processes files in US English (en).}
+language. Amazon Comprehend Medical processes files in US English (en).}
 }
 \description{
 Starts an asynchronous medical entity detection job for a collection of documents. Use the \code{\link[=comprehendmedical_describe_entities_detection_v2_job]{describe_entities_detection_v2_job}} operation to track the status of a job.
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/start_entities_detection_v2_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_start_entities_detection_v2_job/} for full documentation.
 }
 \keyword{internal}

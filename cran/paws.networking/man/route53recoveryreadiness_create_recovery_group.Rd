@@ -20,6 +20,6 @@ route53recoveryreadiness_create_recovery_group(
 \description{
 Creates a recovery group in an account. A recovery group corresponds to an application and includes a list of the cells that make up the application.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/create_recovery_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_create_recovery_group/} for full documentation.
 }
 \keyword{internal}

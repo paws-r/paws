@@ -4,7 +4,11 @@
 \alias{keyspaces_create_keyspace}
 \title{The CreateKeyspace operation adds a new keyspace to your account}
 \usage{
-keyspaces_create_keyspace(keyspaceName, tags = NULL)
+keyspaces_create_keyspace(
+  keyspaceName,
+  tags = NULL,
+  replicationSpecification = NULL
+)
 }
 \arguments{
 \item{keyspaceName}{[required] The name of the keyspace to be created.}
@@ -13,10 +17,21 @@ keyspaces_create_keyspace(keyspaceName, tags = NULL)
 
 For more information, see \href{https://docs.aws.amazon.com/keyspaces/latest/devguide/tagging-keyspaces.html}{Adding tags and labels to Amazon Keyspaces resources}
 in the \emph{Amazon Keyspaces Developer Guide}.}
+
+\item{replicationSpecification}{The replication specification of the keyspace includes:
+\itemize{
+\item \code{replicationStrategy} - the required value is \code{SINGLE_REGION} or
+\code{MULTI_REGION}.
+\item \code{regionList} - if the \code{replicationStrategy} is \code{MULTI_REGION}, the
+\code{regionList} requires the current Region and at least one additional
+Amazon Web Services Region where the keyspace is going to be
+replicated in. The maximum number of supported replication Regions
+including the current Region is six.
+}}
 }
 \description{
 The \code{\link[=keyspaces_create_keyspace]{create_keyspace}} operation adds a new keyspace to your account. In an Amazon Web Services account, keyspace names must be unique within each Region.
 
-See \url{https://paws-r.github.io/docs/keyspaces/create_keyspace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/keyspaces_create_keyspace/} for full documentation.
 }
 \keyword{internal}

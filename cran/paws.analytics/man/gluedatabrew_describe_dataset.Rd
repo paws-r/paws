@@ -12,6 +12,6 @@ gluedatabrew_describe_dataset(Name)
 \description{
 Returns the definition of a specific DataBrew dataset.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/describe_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_describe_dataset/} for full documentation.
 }
 \keyword{internal}

@@ -88,6 +88,6 @@ Specify the \code{Rules} property. For more information, see \href{https://docs.
 \description{
 Updates the specified constraint.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/update_constraint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_update_constraint/} for full documentation.
 }
 \keyword{internal}

@@ -41,6 +41,6 @@ EXTERNAL knowledge bases.}
 \description{
 Creates a knowledge base.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/create_knowledge_base.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_create_knowledge_base/} for full documentation.
 }
 \keyword{internal}

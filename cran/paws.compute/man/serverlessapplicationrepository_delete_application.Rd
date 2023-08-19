@@ -12,6 +12,6 @@ serverlessapplicationrepository_delete_application(ApplicationId)
 \description{
 Deletes the specified application.
 
-See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/delete_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_delete_application/} for full documentation.
 }
 \keyword{internal}

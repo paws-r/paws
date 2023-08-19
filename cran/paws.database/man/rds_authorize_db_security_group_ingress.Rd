@@ -38,6 +38,6 @@ groups, \code{EC2SecurityGroupId} must be provided. Otherwise,
 \description{
 Enables ingress to a DBSecurityGroup using one of two forms of authorization. First, EC2 or VPC security groups can be added to the DBSecurityGroup if the application using the database is running on EC2 or VPC instances. Second, IP ranges are available if the application accessing your database is running on the internet. Required parameters for this API are one of CIDR range, EC2SecurityGroupId for VPC, or (EC2SecurityGroupOwnerId and either EC2SecurityGroupName or EC2SecurityGroupId for non-VPC).
 
-See \url{https://paws-r.github.io/docs/rds/authorize_db_security_group_ingress.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_authorize_db_security_group_ingress/} for full documentation.
 }
 \keyword{internal}

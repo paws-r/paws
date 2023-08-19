@@ -23,6 +23,6 @@ the default event bus is used.}
 \description{
 Revokes the permission of another Amazon Web Services account to be able to put events to the specified event bus. Specify the account to revoke by the \code{StatementId} value that you associated with the account when you granted it permission with \code{\link[=eventbridge_put_permission]{put_permission}}. You can find the \code{StatementId} by using \code{\link[=eventbridge_describe_event_bus]{describe_event_bus}}.
 
-See \url{https://paws-r.github.io/docs/eventbridge/remove_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_remove_permission/} for full documentation.
 }
 \keyword{internal}

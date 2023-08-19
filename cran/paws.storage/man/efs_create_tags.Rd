@@ -15,6 +15,6 @@ operation modifies the tags only, not the file system.}
 \description{
 DEPRECATED - \code{\link[=efs_create_tags]{create_tags}} is deprecated and not maintained. To create tags for EFS resources, use the API action.
 
-See \url{https://paws-r.github.io/docs/efs/create_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_create_tags/} for full documentation.
 }
 \keyword{internal}

@@ -10,14 +10,15 @@ auditmanager_update_settings(
   defaultProcessOwners = NULL,
   kmsKey = NULL,
   evidenceFinderEnabled = NULL,
-  deregistrationPolicy = NULL
+  deregistrationPolicy = NULL,
+  defaultExportDestination = NULL
 )
 }
 \arguments{
 \item{snsTopic}{The Amazon Simple Notification Service (Amazon SNS) topic that Audit
 Manager sends notifications to.}
 
-\item{defaultAssessmentReportsDestination}{The default storage destination for assessment reports.}
+\item{defaultAssessmentReportsDestination}{The default S3 destination bucket for storing assessment reports.}
 
 \item{defaultProcessOwners}{A list of the default audit owners.}
 
@@ -38,10 +39,12 @@ Audit Manager.}
 \item{deregistrationPolicy}{The deregistration policy for your Audit Manager data. You can use this
 attribute to determine how your data is handled when you deregister
 Audit Manager.}
+
+\item{defaultExportDestination}{The default S3 destination bucket for storing evidence finder exports.}
 }
 \description{
 Updates Audit Manager settings for the current account.
 
-See \url{https://paws-r.github.io/docs/auditmanager/update_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_update_settings/} for full documentation.
 }
 \keyword{internal}

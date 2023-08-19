@@ -26,6 +26,6 @@ returned.}
 \description{
 Get a consolidated report of your workloads.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/get_consolidated_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_get_consolidated_report/} for full documentation.
 }
 \keyword{internal}

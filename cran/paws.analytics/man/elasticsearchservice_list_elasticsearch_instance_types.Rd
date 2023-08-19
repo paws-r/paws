@@ -29,6 +29,6 @@ containing NextToken. It is used for pagination.}
 \description{
 List all Elasticsearch instance types that are supported for given ElasticsearchVersion
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/list_elasticsearch_instance_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_list_elasticsearch_instance_types/} for full documentation.
 }
 \keyword{internal}

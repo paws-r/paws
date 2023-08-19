@@ -17,6 +17,7 @@ docdb_modify_db_cluster(
   PreferredMaintenanceWindow = NULL,
   CloudwatchLogsExportConfiguration = NULL,
   EngineVersion = NULL,
+  AllowMajorVersionUpgrade = NULL,
   DeletionProtection = NULL
 )
 }
@@ -118,7 +119,19 @@ Amazon CloudWatch Logs for a specific instance or cluster. The
 exported (or not exported) to CloudWatch Logs.}
 
 \item{EngineVersion}{The version number of the database engine to which you want to upgrade.
-Modifying engine version is not supported on Amazon DocumentDB.}
+Changing this parameter results in an outage. The change is applied
+during the next maintenance window unless \code{ApplyImmediately} is enabled.
+
+To list all of the available engine versions for Amazon DocumentDB use
+the following command:
+
+\verb{aws docdb describe-db-engine-versions --engine docdb --query "DBEngineVersions[].EngineVersion"}}
+
+\item{AllowMajorVersionUpgrade}{A value that indicates whether major version upgrades are allowed.
+
+Constraints: You must allow major version upgrades when specifying a
+value for the \code{EngineVersion} parameter that is a different major
+version than the DB cluster's current version.}
 
 \item{DeletionProtection}{Specifies whether this cluster can be deleted. If \code{DeletionProtection}
 is enabled, the cluster cannot be deleted unless it is modified and
@@ -128,6 +141,6 @@ from being accidentally deleted.}
 \description{
 Modifies a setting for an Amazon DocumentDB cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.
 
-See \url{https://paws-r.github.io/docs/docdb/modify_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_modify_db_cluster/} for full documentation.
 }
 \keyword{internal}

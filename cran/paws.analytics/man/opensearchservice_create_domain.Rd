@@ -105,6 +105,6 @@ time (for the Region that the domain is created in) is used.}
 \description{
 Creates an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html}{Creating and managing Amazon OpenSearch Service domains}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/create_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_create_domain/} for full documentation.
 }
 \keyword{internal}

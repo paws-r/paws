@@ -31,6 +31,6 @@ a particular Amazon SNS topic.}
 \description{
 Given an identity (an email address or a domain), sets whether Amazon SES includes the original email headers in the Amazon Simple Notification Service (Amazon SNS) notifications of a specified type.
 
-See \url{https://paws-r.github.io/docs/ses/set_identity_headers_in_notifications_enabled.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_set_identity_headers_in_notifications_enabled/} for full documentation.
 }
 \keyword{internal}

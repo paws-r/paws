@@ -27,6 +27,6 @@ description of every error.}
 \description{
 Describes AWS OpsWorks Stacks service errors.
 
-See \url{https://paws-r.github.io/docs/opsworks/describe_service_errors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_describe_service_errors/} for full documentation.
 }
 \keyword{internal}

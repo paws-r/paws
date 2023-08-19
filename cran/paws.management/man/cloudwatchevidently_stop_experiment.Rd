@@ -24,6 +24,6 @@ cloudwatchevidently_stop_experiment(
 \description{
 Stops an experiment that is currently running. If you stop an experiment, you can't resume it or restart it.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/stop_experiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_stop_experiment/} for full documentation.
 }
 \keyword{internal}

@@ -42,6 +42,6 @@ to grant cross-account access, otherwise the call fails. Default is
 \description{
 Sets the Data Catalog resource policy for access control.
 
-See \url{https://paws-r.github.io/docs/glue/put_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_put_resource_policy/} for full documentation.
 }
 \keyword{internal}

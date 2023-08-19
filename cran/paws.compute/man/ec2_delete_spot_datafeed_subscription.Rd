@@ -15,6 +15,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the data feed for Spot Instances.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_spot_datafeed_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_spot_datafeed_subscription/} for full documentation.
 }
 \keyword{internal}

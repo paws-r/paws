@@ -24,6 +24,6 @@ and the value that is displayed on your authentication device.}
 \description{
 This operation sets the versioning state for S3 on Outposts buckets only. To set the versioning state for an S3 bucket, see \code{\link[=s3control_put_bucket_versioning]{put_bucket_versioning}} in the \emph{Amazon S3 API Reference}.
 
-See \url{https://paws-r.github.io/docs/s3control/put_bucket_versioning.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_put_bucket_versioning/} for full documentation.
 }
 \keyword{internal}

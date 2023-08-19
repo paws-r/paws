@@ -12,6 +12,6 @@ customerprofiles_get_domain(DomainName)
 \description{
 Returns information about a specific domain.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/get_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_get_domain/} for full documentation.
 }
 \keyword{internal}

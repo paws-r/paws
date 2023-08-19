@@ -18,6 +18,6 @@ User to the LDAP service in your self-managed AD.}
 \description{
 Enables alternative client authentication methods for the specified directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/enable_client_authentication.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_enable_client_authentication/} for full documentation.
 }
 \keyword{internal}

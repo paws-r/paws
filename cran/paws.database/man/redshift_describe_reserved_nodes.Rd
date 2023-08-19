@@ -34,6 +34,6 @@ set of response records by providing the returned marker value in the
 \description{
 Returns the descriptions of the reserved nodes.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_reserved_nodes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_reserved_nodes/} for full documentation.
 }
 \keyword{internal}

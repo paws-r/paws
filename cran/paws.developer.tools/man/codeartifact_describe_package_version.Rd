@@ -44,6 +44,6 @@ namespace.
 \description{
 Returns a \href{https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html}{PackageVersionDescription} object that contains information about the requested package version.
 
-See \url{https://paws-r.github.io/docs/codeartifact/describe_package_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_describe_package_version/} for full documentation.
 }
 \keyword{internal}

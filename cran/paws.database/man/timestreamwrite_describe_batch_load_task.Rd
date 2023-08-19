@@ -13,6 +13,6 @@ timestreamwrite_describe_batch_load_task(TaskId)
 \description{
 Returns information about the batch load task, including configurations, mappings, progress, and other details. \href{https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html}{Service quotas apply}. See \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-batch-load.html}{code sample} for details.
 
-See \url{https://paws-r.github.io/docs/timestreamwrite/describe_batch_load_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamwrite_describe_batch_load_task/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ channel.}
 \description{
 Updates a contact's contact channel.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/update_contact_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_update_contact_channel/} for full documentation.
 }
 \keyword{internal}

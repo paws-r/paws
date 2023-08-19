@@ -157,6 +157,6 @@ characters.}
 \description{
 Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service. When you submit a \code{\link[=servicediscovery_register_instance]{register_instance}} request, the following occurs:
 
-See \url{https://paws-r.github.io/docs/servicediscovery/register_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicediscovery_register_instance/} for full documentation.
 }
 \keyword{internal}

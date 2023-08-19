@@ -4,17 +4,17 @@
 \alias{prometheusservice_delete_logging_configuration}
 \title{Delete logging configuration}
 \usage{
-prometheusservice_delete_logging_configuration(clientToken = NULL, workspaceId)
+prometheusservice_delete_logging_configuration(workspaceId, clientToken = NULL)
 }
 \arguments{
+\item{workspaceId}{[required] The ID of the workspace to vend logs to.}
+
 \item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
 idempotency of the request.}
-
-\item{workspaceId}{[required] The ID of the workspace to vend logs to.}
 }
 \description{
 Delete logging configuration.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/delete_logging_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_delete_logging_configuration/} for full documentation.
 }
 \keyword{internal}

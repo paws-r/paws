@@ -14,6 +14,6 @@ dlm_untag_resource(ResourceArn, TagKeys)
 \description{
 Removes the specified tags from the specified resource.
 
-See \url{https://paws-r.github.io/docs/dlm/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dlm_untag_resource/} for full documentation.
 }
 \keyword{internal}

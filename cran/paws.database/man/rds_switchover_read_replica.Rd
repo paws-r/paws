@@ -20,6 +20,6 @@ instance.
 \description{
 Switches over an Oracle standby database in an Oracle Data Guard environment, making it the new primary database. Issue this command in the Region that hosts the current standby database.
 
-See \url{https://paws-r.github.io/docs/rds/switchover_read_replica.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_switchover_read_replica/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ repository.}
 \description{
 Removes a tag from an associated repository.
 
-See \url{https://paws-r.github.io/docs/codegurureviewer/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codegurureviewer_untag_resource/} for full documentation.
 }
 \keyword{internal}

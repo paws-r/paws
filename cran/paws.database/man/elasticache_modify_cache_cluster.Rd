@@ -285,6 +285,6 @@ onward or Memcached engine version 1.6.6 on all instances built on the
 \description{
 Modifies the settings for a cluster. You can use this operation to change one or more cluster configuration parameters by specifying the parameters and the new values.
 
-See \url{https://paws-r.github.io/docs/elasticache/modify_cache_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_modify_cache_cluster/} for full documentation.
 }
 \keyword{internal}

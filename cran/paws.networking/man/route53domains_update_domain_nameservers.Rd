@@ -21,6 +21,6 @@ route53domains_update_domain_nameservers(
 \description{
 This operation replaces the current set of name servers for the domain with the specified set of name servers. If you use Amazon Route 53 as your DNS service, specify the four name servers in the delegation set for the hosted zone for the domain.
 
-See \url{https://paws-r.github.io/docs/route53domains/update_domain_nameservers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_update_domain_nameservers/} for full documentation.
 }
 \keyword{internal}

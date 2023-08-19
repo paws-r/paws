@@ -39,6 +39,6 @@ algorithms, use the token in the next request.}
 \description{
 Lists the machine learning algorithms that have been created.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_algorithms.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_algorithms/} for full documentation.
 }
 \keyword{internal}

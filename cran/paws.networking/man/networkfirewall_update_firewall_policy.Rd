@@ -60,6 +60,6 @@ policy resources.}
 \description{
 Updates the properties of the specified firewall policy.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/update_firewall_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_update_firewall_policy/} for full documentation.
 }
 \keyword{internal}

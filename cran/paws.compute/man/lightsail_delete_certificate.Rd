@@ -16,6 +16,6 @@ list of certificate names that you can specify.}
 \description{
 Deletes an SSL/TLS certificate for your Amazon Lightsail content delivery network (CDN) distribution.
 
-See \url{https://paws-r.github.io/docs/lightsail/delete_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_delete_certificate/} for full documentation.
 }
 \keyword{internal}

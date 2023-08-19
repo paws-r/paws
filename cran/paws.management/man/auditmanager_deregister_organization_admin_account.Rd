@@ -13,6 +13,6 @@ auditmanager_deregister_organization_admin_account(adminAccountId = NULL)
 \description{
 Removes the specified Amazon Web Services account as a delegated administrator for Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/deregister_organization_admin_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_deregister_organization_admin_account/} for full documentation.
 }
 \keyword{internal}

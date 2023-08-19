@@ -14,6 +14,6 @@ codedeploy_remove_tags_from_on_premises_instances(tags, instanceNames)
 \description{
 Removes one or more tags from one or more on-premises instances.
 
-See \url{https://paws-r.github.io/docs/codedeploy/remove_tags_from_on_premises_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_remove_tags_from_on_premises_instances/} for full documentation.
 }
 \keyword{internal}

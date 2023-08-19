@@ -61,6 +61,6 @@ in \emph{Batch User Guide}.}
 \description{
 Creates an Batch job queue. When you create a job queue, you associate one or more compute environments to the queue and assign an order of preference for the compute environments.
 
-See \url{https://paws-r.github.io/docs/batch/create_job_queue.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_create_job_queue/} for full documentation.
 }
 \keyword{internal}

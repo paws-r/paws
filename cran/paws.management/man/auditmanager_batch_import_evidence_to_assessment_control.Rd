@@ -2,7 +2,7 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_batch_import_evidence_to_assessment_control}
 \alias{auditmanager_batch_import_evidence_to_assessment_control}
-\title{Uploads one or more pieces of evidence to a control in an Audit Manager
+\title{Adds one or more pieces of evidence to a control in an Audit Manager
 assessment}
 \usage{
 auditmanager_batch_import_evidence_to_assessment_control(
@@ -22,8 +22,8 @@ auditmanager_batch_import_evidence_to_assessment_control(
 \item{manualEvidence}{[required] The list of manual evidence objects.}
 }
 \description{
-Uploads one or more pieces of evidence to a control in an Audit Manager assessment. You can upload manual evidence from any Amazon Simple Storage Service (Amazon S3) bucket by specifying the S3 URI of the evidence.
+Adds one or more pieces of evidence to a control in an Audit Manager assessment.
 
-See \url{https://paws-r.github.io/docs/auditmanager/batch_import_evidence_to_assessment_control.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_batch_import_evidence_to_assessment_control/} for full documentation.
 }
 \keyword{internal}

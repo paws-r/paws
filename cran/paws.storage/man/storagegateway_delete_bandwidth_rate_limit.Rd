@@ -17,6 +17,6 @@ Valid Values: \code{UPLOAD} | \code{DOWNLOAD} | \code{ALL}}
 \description{
 Deletes the bandwidth rate limits of a gateway. You can delete either the upload and download bandwidth rate limit, or you can delete both. If you delete only one of the limits, the other limit remains unchanged. To specify which gateway to work with, use the Amazon Resource Name (ARN) of the gateway in your request. This operation is supported only for the stored volume, cached volume, and tape gateway types.
 
-See \url{https://paws-r.github.io/docs/storagegateway/delete_bandwidth_rate_limit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_delete_bandwidth_rate_limit/} for full documentation.
 }
 \keyword{internal}

@@ -28,6 +28,6 @@ that can consist of any upper or lowercased letter or digit.}
 \description{
 Deletes the specified service-specific credential.
 
-See \url{https://paws-r.github.io/docs/iam/delete_service_specific_credential.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_delete_service_specific_credential/} for full documentation.
 }
 \keyword{internal}

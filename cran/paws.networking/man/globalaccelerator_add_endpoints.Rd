@@ -14,6 +14,6 @@ globalaccelerator_add_endpoints(EndpointConfigurations, EndpointGroupArn)
 \description{
 Add endpoints to an endpoint group. The \code{\link[=globalaccelerator_add_endpoints]{add_endpoints}} API operation is the recommended option for adding endpoints. The alternative options are to add endpoints when you create an endpoint group (with the \code{\link[=globalaccelerator_create_endpoint_group]{create_endpoint_group}} API) or when you update an endpoint group (with the \code{\link[=globalaccelerator_update_endpoint_group]{update_endpoint_group}} API).
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/add_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_add_endpoints/} for full documentation.
 }
 \keyword{internal}

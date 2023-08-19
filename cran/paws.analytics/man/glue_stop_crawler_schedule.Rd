@@ -13,6 +13,6 @@ glue_stop_crawler_schedule(CrawlerName)
 \description{
 Sets the schedule state of the specified crawler to \code{NOT_SCHEDULED}, but does not stop the crawler if it is already running.
 
-See \url{https://paws-r.github.io/docs/glue/stop_crawler_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_stop_crawler_schedule/} for full documentation.
 }
 \keyword{internal}

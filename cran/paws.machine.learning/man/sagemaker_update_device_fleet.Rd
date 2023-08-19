@@ -31,6 +31,6 @@ the role alias will be "SageMakerEdge-demo-fleet".}
 \description{
 Updates a fleet of devices.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_device_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_device_fleet/} for full documentation.
 }
 \keyword{internal}

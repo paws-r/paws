@@ -23,6 +23,6 @@ sagemaker_update_hub(
 \description{
 Update a hub.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_hub.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_hub/} for full documentation.
 }
 \keyword{internal}

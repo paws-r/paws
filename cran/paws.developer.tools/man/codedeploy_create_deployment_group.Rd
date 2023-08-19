@@ -107,6 +107,6 @@ value, both of which you define.}
 \description{
 Creates a deployment group to which application revisions are deployed.
 
-See \url{https://paws-r.github.io/docs/codedeploy/create_deployment_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_create_deployment_group/} for full documentation.
 }
 \keyword{internal}

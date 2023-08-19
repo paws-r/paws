@@ -25,6 +25,6 @@ of repository sync definitions previously requested.}
 \description{
 List repository sync definitions with detail data.
 
-See \url{https://paws-r.github.io/docs/proton/list_repository_sync_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_list_repository_sync_definitions/} for full documentation.
 }
 \keyword{internal}

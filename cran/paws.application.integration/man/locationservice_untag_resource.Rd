@@ -19,6 +19,6 @@ remove tags.
 \description{
 Removes one or more tags from the specified Amazon Location resource.
 
-See \url{https://paws-r.github.io/docs/locationservice/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_untag_resource/} for full documentation.
 }
 \keyword{internal}

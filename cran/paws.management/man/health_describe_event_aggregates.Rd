@@ -29,6 +29,6 @@ returned, the response does not contain a pagination token value.}
 \description{
 Returns the number of events of each event type (issue, scheduled change, and account notification). If no filter is specified, the counts of all events in each category are returned.
 
-See \url{https://paws-r.github.io/docs/health/describe_event_aggregates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/health_describe_event_aggregates/} for full documentation.
 }
 \keyword{internal}

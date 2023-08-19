@@ -27,6 +27,6 @@ creating.}
 \description{
 (Enterprise edition only) Creates a new namespace for you to use with Amazon QuickSight.
 
-See \url{https://paws-r.github.io/docs/quicksight/create_namespace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_create_namespace/} for full documentation.
 }
 \keyword{internal}

@@ -64,6 +64,6 @@ request token, Amazon Lookout for Equipment generates one.}
 \description{
 Creates a scheduled inference. Scheduling an inference is setting up a continuous real-time inference plan to analyze new measurement data. When setting up the schedule, you provide an S3 bucket location for the input data, assign it a delimiter between separate entries in the data, set an offset delay if desired, and set the frequency of inferencing. You must also provide an S3 bucket location for the output data.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/create_inference_scheduler.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_create_inference_scheduler/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/usergui
 \description{
 Retrieves the JSON text of the resource-based policy document attached to the secret. For more information about permissions policies attached to a secret, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-policies.html}{Permissions policies attached to a secret}.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/get_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_get_resource_policy/} for full documentation.
 }
 \keyword{internal}

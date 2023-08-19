@@ -13,6 +13,6 @@ connect_get_traffic_distribution(Id)
 \description{
 Retrieves the current traffic distribution for a given traffic distribution group.
 
-See \url{https://paws-r.github.io/docs/connect/get_traffic_distribution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_get_traffic_distribution/} for full documentation.
 }
 \keyword{internal}

@@ -45,6 +45,6 @@ different account, the request fails with the HTTP status code
 \description{
 Applies an Amazon S3 bucket policy to an Amazon S3 bucket. If you are using an identity other than the root user of the Amazon Web Services account that owns the bucket, the calling identity must have the \code{\link[=s3_put_bucket_policy]{put_bucket_policy}} permissions on the specified bucket and belong to the bucket owner's account in order to use this operation.
 
-See \url{https://paws-r.github.io/docs/s3/put_bucket_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_policy/} for full documentation.
 }
 \keyword{internal}

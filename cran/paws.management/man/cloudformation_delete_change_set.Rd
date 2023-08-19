@@ -16,6 +16,6 @@ name or Amazon Resource Name (ARN) that's associated with it.}
 \description{
 Deletes the specified change set. Deleting change sets ensures that no one executes the wrong change set.
 
-See \url{https://paws-r.github.io/docs/cloudformation/delete_change_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_delete_change_set/} for full documentation.
 }
 \keyword{internal}

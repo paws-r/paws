@@ -13,6 +13,6 @@ configuration and all of its revisions.}
 \description{
 Returns a description of this MSK configuration.
 
-See \url{https://paws-r.github.io/docs/kafka/describe_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_describe_configuration/} for full documentation.
 }
 \keyword{internal}

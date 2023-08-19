@@ -22,6 +22,6 @@ from after a previous call to ListFileShares. Optional.}
 \description{
 Gets a list of the file shares for a specific S3 File Gateway, or the list of file shares that belong to the calling user account. This operation is only supported for S3 File Gateways.
 
-See \url{https://paws-r.github.io/docs/storagegateway/list_file_shares.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_list_file_shares/} for full documentation.
 }
 \keyword{internal}

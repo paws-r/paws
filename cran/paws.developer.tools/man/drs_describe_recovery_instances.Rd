@@ -20,6 +20,6 @@ drs_describe_recovery_instances(
 \description{
 Lists all Recovery Instances or multiple Recovery Instances by ID.
 
-See \url{https://paws-r.github.io/docs/drs/describe_recovery_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_describe_recovery_instances/} for full documentation.
 }
 \keyword{internal}

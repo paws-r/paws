@@ -16,6 +16,6 @@ are optional. A maximum of 20 parameters may be updated per request.}
 \description{
 Updates the parameters of a parameter group. You can modify up to 20 parameters in a single request by submitting a list parameter name and value pairs.
 
-See \url{https://paws-r.github.io/docs/memorydb/update_parameter_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_update_parameter_group/} for full documentation.
 }
 \keyword{internal}

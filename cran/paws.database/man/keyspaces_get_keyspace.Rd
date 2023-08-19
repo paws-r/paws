@@ -13,6 +13,6 @@ keyspaces_get_keyspace(keyspaceName)
 \description{
 Returns the name and the Amazon Resource Name (ARN) of the specified table.
 
-See \url{https://paws-r.github.io/docs/keyspaces/get_keyspace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/keyspaces_get_keyspace/} for full documentation.
 }
 \keyword{internal}

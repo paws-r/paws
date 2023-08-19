@@ -16,6 +16,6 @@ spaces. You can also include any of the following characters: _+=,.@-}
 \description{
 Deletes the specified IAM group. The group must not contain any users or have any attached policies.
 
-See \url{https://paws-r.github.io/docs/iam/delete_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_delete_group/} for full documentation.
 }
 \keyword{internal}

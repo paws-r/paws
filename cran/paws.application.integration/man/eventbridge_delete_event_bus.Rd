@@ -12,6 +12,6 @@ eventbridge_delete_event_bus(Name)
 \description{
 Deletes the specified custom event bus or partner event bus. All rules associated with this event bus need to be deleted. You can't delete your account's default event bus.
 
-See \url{https://paws-r.github.io/docs/eventbridge/delete_event_bus.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_delete_event_bus/} for full documentation.
 }
 \keyword{internal}

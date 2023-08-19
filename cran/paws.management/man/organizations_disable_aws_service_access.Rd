@@ -16,6 +16,6 @@ typically in the form of a URL, such as
 \description{
 Disables the integration of an Amazon Web Services service (the service that is specified by \code{ServicePrincipal}) with Organizations. When you disable integration, the specified service no longer can create a \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/using-service-linked-roles.html}{service-linked role} in \emph{new} accounts in your organization. This means the service can't perform operations on your behalf on any new accounts in your organization. The service can still perform operations in older accounts until the service completes its clean-up from Organizations.
 
-See \url{https://paws-r.github.io/docs/organizations/disable_aws_service_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_disable_aws_service_access/} for full documentation.
 }
 \keyword{internal}

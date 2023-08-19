@@ -19,6 +19,6 @@ configuration.}
 \description{
 Updates the maintenance configuration of the Kinesis Data Analytics application.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/update_application_maintenance_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_update_application_maintenance_configuration/} for full documentation.
 }
 \keyword{internal}

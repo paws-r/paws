@@ -35,6 +35,6 @@ panorama_create_application_instance(
 \description{
 Creates an application instance and deploys it to a device.
 
-See \url{https://paws-r.github.io/docs/panorama/create_application_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_create_application_instance/} for full documentation.
 }
 \keyword{internal}

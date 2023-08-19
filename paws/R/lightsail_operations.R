@@ -7097,13 +7097,13 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL, appC
 #' Returns information about one or more Amazon Lightsail SSL/TLS
 #' certificates.
 #' 
-#' To get a summary of a certificate, ommit `includeCertificateDetails`
-#' from your request. The response will include only the certificate Amazon
+#' To get a summary of a certificate, omit `includeCertificateDetails` from
+#' your request. The response will include only the certificate Amazon
 #' Resource Name (ARN), certificate name, domain name, and tags.
 #'
 #' @usage
 #' lightsail_get_certificates(certificateStatuses,
-#'   includeCertificateDetails, certificateName)
+#'   includeCertificateDetails, certificateName, pageToken)
 #'
 #' @param certificateStatuses The status of the certificates for which to return information.
 #' 
@@ -7122,6 +7122,12 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL, appC
 #' 
 #' When omitted, the response includes all of your certificates in the
 #' Amazon Web Services Region where the request is made.
+#' @param pageToken The token to advance to the next page of results from your request.
+#' 
+#' To get a page token, perform an initial
+#' [`get_certificates`][lightsail_get_certificates] request. If your
+#' results are paginated, the response will return a next page token that
+#' you can specify as the page token in a subsequent request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7214,7 +7220,8 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL, appC
 #'         )
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   nextPageToken = "string"
 #' )
 #' ```
 #'
@@ -7225,7 +7232,8 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL, appC
 #'     "PENDING_VALIDATION"|"ISSUED"|"INACTIVE"|"EXPIRED"|"VALIDATION_TIMED_OUT"|"REVOKED"|"FAILED"
 #'   ),
 #'   includeCertificateDetails = TRUE|FALSE,
-#'   certificateName = "string"
+#'   certificateName = "string",
+#'   pageToken = "string"
 #' )
 #' ```
 #'
@@ -7234,14 +7242,14 @@ lightsail_get_bundles <- function(includeInactive = NULL, pageToken = NULL, appC
 #' @rdname lightsail_get_certificates
 #'
 #' @aliases lightsail_get_certificates
-lightsail_get_certificates <- function(certificateStatuses = NULL, includeCertificateDetails = NULL, certificateName = NULL) {
+lightsail_get_certificates <- function(certificateStatuses = NULL, includeCertificateDetails = NULL, certificateName = NULL, pageToken = NULL) {
   op <- new_operation(
     name = "GetCertificates",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lightsail$get_certificates_input(certificateStatuses = certificateStatuses, includeCertificateDetails = includeCertificateDetails, certificateName = certificateName)
+  input <- .lightsail$get_certificates_input(certificateStatuses = certificateStatuses, includeCertificateDetails = includeCertificateDetails, certificateName = certificateName, pageToken = pageToken)
   output <- .lightsail$get_certificates_output()
   config <- get_config()
   svc <- .lightsail$service(config)
@@ -8113,7 +8121,7 @@ lightsail_get_container_services <- function(serviceName = NULL) {
 #' 
 #' -   Specified in the Unix time format.
 #' 
-#'     For example, if you wish to use a start time of October 1, 2018, at
+#'     For example, if you want to use a start time of October 1, 2018, at
 #'     8 PM UTC, specify `1538424000` as the start time.
 #' 
 #' You can convert a human-friendly time to Unix time format using a
@@ -8126,7 +8134,7 @@ lightsail_get_container_services <- function(serviceName = NULL) {
 #' 
 #' -   Specified in the Unix time format.
 #' 
-#'     For example, if you wish to use an end time of October 1, 2018, at 9
+#'     For example, if you want to use an end time of October 1, 2018, at 9
 #'     PM UTC, specify `1538427600` as the end time.
 #' 
 #' You can convert a human-friendly time to Unix time format using a

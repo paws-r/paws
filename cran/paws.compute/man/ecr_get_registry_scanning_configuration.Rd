@@ -9,6 +9,6 @@ ecr_get_registry_scanning_configuration()
 \description{
 Retrieves the scanning configuration for a registry.
 
-See \url{https://paws-r.github.io/docs/ecr/get_registry_scanning_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_get_registry_scanning_configuration/} for full documentation.
 }
 \keyword{internal}

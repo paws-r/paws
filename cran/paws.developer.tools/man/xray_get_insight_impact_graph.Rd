@@ -24,6 +24,6 @@ the next page of results.}
 \description{
 Retrieves a service graph structure filtered by the specified insight. The service graph is limited to only structural information. For a complete service graph, use this API with the GetServiceGraph API.
 
-See \url{https://paws-r.github.io/docs/xray/get_insight_impact_graph.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_get_insight_impact_graph/} for full documentation.
 }
 \keyword{internal}

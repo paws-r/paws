@@ -35,6 +35,6 @@ with the Amazon Web Services account ID making that call.
 \description{
 Creates or updates a resource policy allowing other Amazon Web Services services to put log events to this account, such as Amazon Route 53. An account can have up to 10 resource policies per Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/put_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_resource_policy/} for full documentation.
 }
 \keyword{internal}

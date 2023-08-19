@@ -35,6 +35,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 An Amazon Web Services Verified Access group is a collection of Amazon Web Services Verified Access endpoints who's associated applications have similar security requirements. Each instance within a Verified Access group shares an Verified Access policy. For example, you can group all Verified Access instances associated with "sales" applications together and use one common Verified Access policy.
 
-See \url{https://paws-r.github.io/docs/ec2/create_verified_access_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_verified_access_group/} for full documentation.
 }
 \keyword{internal}

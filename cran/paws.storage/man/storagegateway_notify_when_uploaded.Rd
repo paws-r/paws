@@ -13,6 +13,6 @@ storagegateway_notify_when_uploaded(FileShareARN)
 \description{
 Sends you notification through CloudWatch Events when all files written to your file share have been uploaded to S3. Amazon S3.
 
-See \url{https://paws-r.github.io/docs/storagegateway/notify_when_uploaded.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_notify_when_uploaded/} for full documentation.
 }
 \keyword{internal}

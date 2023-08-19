@@ -39,6 +39,6 @@ no more hosted zones to get.}
 \description{
 Lists all the private hosted zones that a specified VPC is associated with, regardless of which Amazon Web Services account or Amazon Web Services service owns the hosted zones. The \code{HostedZoneOwner} structure in the response contains one of the following values:
 
-See \url{https://paws-r.github.io/docs/route53/list_hosted_zones_by_vpc.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_hosted_zones_by_vpc/} for full documentation.
 }
 \keyword{internal}

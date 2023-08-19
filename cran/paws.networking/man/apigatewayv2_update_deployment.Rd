@@ -16,6 +16,6 @@ apigatewayv2_update_deployment(ApiId, DeploymentId, Description = NULL)
 \description{
 Updates a Deployment.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/update_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_update_deployment/} for full documentation.
 }
 \keyword{internal}

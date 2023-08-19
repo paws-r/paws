@@ -31,6 +31,6 @@ is intended to prevent accidental repository lock outs.}
 \description{
 Applies a repository policy to the specified repository to control access permissions. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-policies.html}{Amazon ECR Repository policies} in the \emph{Amazon Elastic Container Registry User Guide}.
 
-See \url{https://paws-r.github.io/docs/ecr/set_repository_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_set_repository_policy/} for full documentation.
 }
 \keyword{internal}

@@ -35,6 +35,6 @@ the mesh with your account. For more information about mesh sharing, see
 \description{
 Updates an existing route for a specified service mesh and virtual router.
 
-See \url{https://paws-r.github.io/docs/appmesh/update_route.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appmesh_update_route/} for full documentation.
 }
 \keyword{internal}

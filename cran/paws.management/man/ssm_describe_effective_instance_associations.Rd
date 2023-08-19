@@ -23,6 +23,6 @@ from a previous call.)}
 \description{
 All associations for the managed node(s).
 
-See \url{https://paws-r.github.io/docs/ssm/describe_effective_instance_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_effective_instance_associations/} for full documentation.
 }
 \keyword{internal}

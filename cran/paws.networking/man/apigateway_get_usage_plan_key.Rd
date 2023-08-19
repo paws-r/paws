@@ -16,6 +16,6 @@ plan customer.}
 \description{
 Gets a usage plan key of a given key identifier.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_usage_plan_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_usage_plan_key/} for full documentation.
 }
 \keyword{internal}

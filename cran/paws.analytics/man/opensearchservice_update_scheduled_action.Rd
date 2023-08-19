@@ -45,6 +45,6 @@ Only specify this parameter if you set \code{ScheduleAt} to \code{TIMESTAMP}.}
 \description{
 Reschedules a planned domain configuration change for a later time. This change can be a scheduled \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/service-software.html}{service software update} or a \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/auto-tune.html#auto-tune-types}{blue/green Auto-Tune enhancement}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/update_scheduled_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_update_scheduled_action/} for full documentation.
 }
 \keyword{internal}

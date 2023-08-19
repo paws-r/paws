@@ -18,6 +18,6 @@ updated.}
 \description{
 Updates information related to approval reviews for a specific version of a change template in Change Manager.
 
-See \url{https://paws-r.github.io/docs/ssm/update_document_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_update_document_metadata/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ replaced.}
 \description{
 This operation adds or updates tags for a specified domain.
 
-See \url{https://paws-r.github.io/docs/route53domains/update_tags_for_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_update_tags_for_domain/} for full documentation.
 }
 \keyword{internal}

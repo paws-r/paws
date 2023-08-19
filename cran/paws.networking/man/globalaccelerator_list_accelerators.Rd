@@ -16,6 +16,6 @@ previous call.}
 \description{
 List the accelerators for an Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/list_accelerators.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_list_accelerators/} for full documentation.
 }
 \keyword{internal}

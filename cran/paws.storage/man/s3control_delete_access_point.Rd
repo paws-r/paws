@@ -28,6 +28,6 @@ The value must be URL encoded.}
 \description{
 Deletes the specified access point.
 
-See \url{https://paws-r.github.io/docs/s3control/delete_access_point.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_delete_access_point/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ networkmanager_list_attachments(
 \description{
 Returns a list of core network attachments.
 
-See \url{https://paws-r.github.io/docs/networkmanager/list_attachments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_list_attachments/} for full documentation.
 }
 \keyword{internal}

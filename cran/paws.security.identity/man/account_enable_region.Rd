@@ -39,6 +39,6 @@ Region until the enabling process is fully completed.}
 \description{
 Enables (opts-in) a particular Region for an account.
 
-See \url{https://paws-r.github.io/docs/account/enable_region.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/account_enable_region/} for full documentation.
 }
 \keyword{internal}

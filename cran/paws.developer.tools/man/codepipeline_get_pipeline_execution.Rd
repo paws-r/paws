@@ -17,6 +17,6 @@ details.}
 \description{
 Returns information about an execution of a pipeline, including details about artifacts, the pipeline execution ID, and the name, version, and status of the pipeline.
 
-See \url{https://paws-r.github.io/docs/codepipeline/get_pipeline_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_get_pipeline_execution/} for full documentation.
 }
 \keyword{internal}

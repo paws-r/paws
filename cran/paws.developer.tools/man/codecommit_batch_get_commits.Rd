@@ -18,6 +18,6 @@ shortened SHA IDs.}
 \description{
 Returns information about the contents of one or more commits in a repository.
 
-See \url{https://paws-r.github.io/docs/codecommit/batch_get_commits.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_batch_get_commits/} for full documentation.
 }
 \keyword{internal}

@@ -149,6 +149,6 @@ value for the \code{MessageDeduplicationId} parameter for the
 \description{
 Allows a topic owner to set an attribute of the topic to a new value.
 
-See \url{https://paws-r.github.io/docs/sns/set_topic_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_set_topic_attributes/} for full documentation.
 }
 \keyword{internal}

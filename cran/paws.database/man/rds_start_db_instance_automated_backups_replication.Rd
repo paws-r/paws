@@ -50,6 +50,6 @@ that can run in the source Amazon Web Services Region.}
 \description{
 Enables replication of automated backups to a different Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/rds/start_db_instance_automated_backups_replication.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_start_db_instance_automated_backups_replication/} for full documentation.
 }
 \keyword{internal}

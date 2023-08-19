@@ -15,6 +15,6 @@ customerprofiles_list_domains(NextToken = NULL, MaxResults = NULL)
 \description{
 Returns a list of all the domains for an AWS account that have been created.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/list_domains.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_list_domains/} for full documentation.
 }
 \keyword{internal}

@@ -34,6 +34,6 @@ the current tag value with the specified one.}
 \description{
 Adds or edits tags on a \href{https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#customer-cmk}{customer managed key}.
 
-See \url{https://paws-r.github.io/docs/kms/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_tag_resource/} for full documentation.
 }
 \keyword{internal}

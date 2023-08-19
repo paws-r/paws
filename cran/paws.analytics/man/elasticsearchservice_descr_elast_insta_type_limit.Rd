@@ -24,6 +24,6 @@ modify. This should be present only if we are querying for Elasticsearch
 \description{
 Describe Elasticsearch Limits for a given InstanceType and ElasticsearchVersion. When modifying existing Domain, specify the \code{DomainName} to know what Limits are supported for modifying.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_instance_type_limits.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_elasticsearch_instance_type_limits/} for full documentation.
 }
 \keyword{internal}

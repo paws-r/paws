@@ -25,6 +25,6 @@ SDKs.}
 \description{
 Creates a configuration for DNS query logging. After you create a query logging configuration, Amazon Route 53 begins to publish log data to an Amazon CloudWatch Logs log group.
 
-See \url{https://paws-r.github.io/docs/route53/create_query_logging_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_create_query_logging_config/} for full documentation.
 }
 \keyword{internal}

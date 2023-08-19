@@ -13,6 +13,6 @@ athena_get_named_query(NamedQueryId)
 \description{
 Returns information about a single query. Requires that you have access to the workgroup in which the query was saved.
 
-See \url{https://paws-r.github.io/docs/athena/get_named_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_get_named_query/} for full documentation.
 }
 \keyword{internal}

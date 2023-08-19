@@ -34,6 +34,6 @@ with this token. This can be any UTF-8 encoded text.}
 \description{
 Creates an encrypted token that is used by a chat participant to establish an individual WebSocket chat connection to a room. When the token is used to connect to chat, the connection is valid for the session duration specified in the request. The token becomes invalid at the token-expiration timestamp included in the response.
 
-See \url{https://paws-r.github.io/docs/ivschat/create_chat_token.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivschat_create_chat_token/} for full documentation.
 }
 \keyword{internal}

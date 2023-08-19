@@ -36,6 +36,6 @@ again using the returned token to retrieve the next page.}
 \description{
 Returns a list of snapshots.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/list_snapshots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_list_snapshots/} for full documentation.
 }
 \keyword{internal}

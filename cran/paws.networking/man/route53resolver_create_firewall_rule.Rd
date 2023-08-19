@@ -84,6 +84,6 @@ This setting is required if the \code{BlockResponse} setting is \code{OVERRIDE}.
 \description{
 Creates a single DNS Firewall rule in the specified rule group, using the specified domain list.
 
-See \url{https://paws-r.github.io/docs/route53resolver/create_firewall_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_create_firewall_rule/} for full documentation.
 }
 \keyword{internal}

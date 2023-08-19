@@ -15,6 +15,6 @@ then the tags are removed from the cluster.}
 \description{
 Removes the association of tags from a DAX resource. You can call \code{\link[=dax_untag_resource]{untag_resource}} up to 5 times per second, per account.
 
-See \url{https://paws-r.github.io/docs/dax/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_untag_resource/} for full documentation.
 }
 \keyword{internal}

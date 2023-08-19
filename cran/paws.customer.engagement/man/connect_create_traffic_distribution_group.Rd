@@ -32,6 +32,6 @@ For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
 \description{
 Creates a traffic distribution group given an Amazon Connect instance that has been replicated.
 
-See \url{https://paws-r.github.io/docs/connect/create_traffic_distribution_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_create_traffic_distribution_group/} for full documentation.
 }
 \keyword{internal}

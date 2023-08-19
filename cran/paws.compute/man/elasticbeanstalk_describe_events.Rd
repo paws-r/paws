@@ -61,6 +61,6 @@ results.}
 \description{
 Returns list of event descriptions matching criteria up to the last 6 weeks.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/describe_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_describe_events/} for full documentation.
 }
 \keyword{internal}

@@ -86,6 +86,6 @@ Results are sorted by \code{FilterVariable}.}
 \description{
 Returns a list of \code{DataSource} that match the search criteria in the request.
 
-See \url{https://paws-r.github.io/docs/machinelearning/describe_data_sources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_describe_data_sources/} for full documentation.
 }
 \keyword{internal}

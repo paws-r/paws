@@ -6,6 +6,7 @@
 \usage{
 locationservice_search_place_index_for_position(
   IndexName,
+  Key = NULL,
   Language = NULL,
   MaxResults = NULL,
   Position
@@ -13,6 +14,9 @@ locationservice_search_place_index_for_position(
 }
 \arguments{
 \item{IndexName}{[required] The name of the place index resource you want to use for the search.}
+
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+to authorize the request.}
 
 \item{Language}{The preferred language used to return results. The value must be a valid
 BCP 47 language tag, for example, \code{en} for English.
@@ -49,6 +53,6 @@ For example, \verb{[-123.1174, 49.2847]} represents a position with longitude
 \description{
 Reverse geocodes a given coordinate and returns a legible address. Allows you to search for Places or points of interest near a given position.
 
-See \url{https://paws-r.github.io/docs/locationservice/search_place_index_for_position.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_search_place_index_for_position/} for full documentation.
 }
 \keyword{internal}

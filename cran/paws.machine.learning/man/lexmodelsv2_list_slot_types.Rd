@@ -45,6 +45,6 @@ return the next page of results.}
 \description{
 Gets a list of slot types that match the specified criteria.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/list_slot_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_list_slot_types/} for full documentation.
 }
 \keyword{internal}

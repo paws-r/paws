@@ -27,6 +27,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Returns a list of the events emitted by the resources that are evaluated by DevOps Guru. You can use filters to specify which events are returned.
 
-See \url{https://paws-r.github.io/docs/devopsguru/list_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_list_events/} for full documentation.
 }
 \keyword{internal}

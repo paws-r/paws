@@ -14,6 +14,6 @@ lookoutmetrics_get_anomaly_group(AnomalyGroupId, AnomalyDetectorArn)
 \description{
 Returns details about a group of anomalous metrics.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/get_anomaly_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_get_anomaly_group/} for full documentation.
 }
 \keyword{internal}

@@ -50,6 +50,6 @@ group (shard).}
 \description{
 Dynamically decreases the number of replicas in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group. This operation is performed with no cluster down time.
 
-See \url{https://paws-r.github.io/docs/elasticache/decrease_replica_count.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_decrease_replica_count/} for full documentation.
 }
 \keyword{internal}

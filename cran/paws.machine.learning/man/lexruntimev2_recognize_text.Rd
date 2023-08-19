@@ -36,6 +36,6 @@ create any request attributes with the prefix \verb{x-amz-lex:}.}
 \description{
 Sends user input to Amazon Lex V2. Client applications use this API to send requests to Amazon Lex V2 at runtime. Amazon Lex V2 then interprets the user input using the machine learning model that it build for the bot.
 
-See \url{https://paws-r.github.io/docs/lexruntimev2/recognize_text.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexruntimev2_recognize_text/} for full documentation.
 }
 \keyword{internal}

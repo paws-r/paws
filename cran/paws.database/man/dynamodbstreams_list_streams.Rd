@@ -24,6 +24,6 @@ will evaluate. Use the value that was returned for
 \description{
 Returns an array of stream ARNs associated with the current account and endpoint. If the \code{TableName} parameter is present, then \code{\link[=dynamodbstreams_list_streams]{list_streams}} will return only the streams ARNs for that table.
 
-See \url{https://paws-r.github.io/docs/dynamodbstreams/list_streams.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodbstreams_list_streams/} for full documentation.
 }
 \keyword{internal}

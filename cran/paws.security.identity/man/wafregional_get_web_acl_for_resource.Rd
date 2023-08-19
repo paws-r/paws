@@ -21,6 +21,6 @@ The ARN should be in one of the following formats:
 \description{
 This is \strong{AWS WAF Classic Regional} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-See \url{https://paws-r.github.io/docs/wafregional/get_web_acl_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafregional_get_web_acl_for_resource/} for full documentation.
 }
 \keyword{internal}

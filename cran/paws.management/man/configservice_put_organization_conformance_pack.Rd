@@ -43,8 +43,8 @@ This field is optional.}
 organization conformance pack while deploying a conformance pack.}
 }
 \description{
-Deploys conformance packs across member accounts in an Amazon Web Services Organization. For information on how many organization conformance packs and how many Config rules you can have per account, see \href{https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html}{\strong{Service Limits}} in the Config Developer Guide.
+Deploys conformance packs across member accounts in an Amazon Web Services Organization. For information on how many organization conformance packs and how many Config rules you can have per account, see \href{https://docs.aws.amazon.com/config/latest/developerguide/configlimits.html}{\strong{Service Limits}} in the \emph{Config Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/configservice/put_organization_conformance_pack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_put_organization_conformance_pack/} for full documentation.
 }
 \keyword{internal}

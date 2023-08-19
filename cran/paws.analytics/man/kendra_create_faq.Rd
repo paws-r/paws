@@ -36,6 +36,8 @@ identify and organize your resources and to control access to resources.}
 format, a CSV format that includes customs attributes in a header, and a
 JSON format that includes custom attributes.
 
+The default format is CSV.
+
 The format must match the format of the file stored in the S3 bucket
 identified in the \code{S3Path} parameter.
 
@@ -52,6 +54,6 @@ supported languages, including their codes, see \href{https://docs.aws.amazon.co
 \description{
 Creates a set of frequently ask questions (FAQs) using a specified FAQ file stored in an Amazon S3 bucket.
 
-See \url{https://paws-r.github.io/docs/kendra/create_faq.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_create_faq/} for full documentation.
 }
 \keyword{internal}

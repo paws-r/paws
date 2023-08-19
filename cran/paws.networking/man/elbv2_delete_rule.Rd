@@ -12,6 +12,6 @@ elbv2_delete_rule(RuleArn)
 \description{
 Deletes the specified rule.
 
-See \url{https://paws-r.github.io/docs/elbv2/delete_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_delete_rule/} for full documentation.
 }
 \keyword{internal}

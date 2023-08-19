@@ -16,6 +16,6 @@ you might see an \code{InvalidParameterValue} error.}
 \description{
 Returns the refresh status of the Trusted Advisor checks that have the specified check IDs. You can get the check IDs by calling the \code{\link[=support_describe_trusted_advisor_checks]{describe_trusted_advisor_checks}} operation.
 
-See \url{https://paws-r.github.io/docs/support/describe_trusted_advisor_check_refresh_statuses.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/support_describe_trusted_advisor_check_refresh_statuses/} for full documentation.
 }
 \keyword{internal}

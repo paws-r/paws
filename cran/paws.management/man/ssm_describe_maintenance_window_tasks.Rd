@@ -28,6 +28,6 @@ from a previous call.)}
 \description{
 Lists the tasks in a maintenance window.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_maintenance_window_tasks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_tasks/} for full documentation.
 }
 \keyword{internal}

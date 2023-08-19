@@ -14,6 +14,6 @@ workmail_describe_mailbox_export_job(JobId, OrganizationId)
 \description{
 Describes the current status of a mailbox export job.
 
-See \url{https://paws-r.github.io/docs/workmail/describe_mailbox_export_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_describe_mailbox_export_job/} for full documentation.
 }
 \keyword{internal}

@@ -58,6 +58,6 @@ configuration resource. A tag is a key-value pair.}
 \description{
 Create an App Runner automatic scaling configuration resource. App Runner requires this resource when you create or update App Runner services and you require non-default auto scaling settings. You can share an auto scaling configuration across multiple services.
 
-See \url{https://paws-r.github.io/docs/apprunner/create_auto_scaling_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_create_auto_scaling_configuration/} for full documentation.
 }
 \keyword{internal}

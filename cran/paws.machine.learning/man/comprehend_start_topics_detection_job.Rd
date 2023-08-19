@@ -57,6 +57,6 @@ indicate its use by the sales department.}
 \description{
 Starts an asynchronous topic detection job. Use the \code{DescribeTopicDetectionJob} operation to track the status of a job.
 
-See \url{https://paws-r.github.io/docs/comprehend/start_topics_detection_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_start_topics_detection_job/} for full documentation.
 }
 \keyword{internal}

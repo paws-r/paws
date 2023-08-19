@@ -14,6 +14,6 @@ workmail_get_impersonation_role(OrganizationId, ImpersonationRoleId)
 \description{
 Gets the impersonation role details for the given WorkMail organization.
 
-See \url{https://paws-r.github.io/docs/workmail/get_impersonation_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_get_impersonation_role/} for full documentation.
 }
 \keyword{internal}

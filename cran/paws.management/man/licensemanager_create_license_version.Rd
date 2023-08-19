@@ -51,6 +51,6 @@ idempotency of the request.}
 \description{
 Creates a new version of the specified license.
 
-See \url{https://paws-r.github.io/docs/licensemanager/create_license_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_create_license_version/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ it for the request to ensure idempotency.}
 \description{
 Deletes a studio component resource.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/delete_studio_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_delete_studio_component/} for full documentation.
 }
 \keyword{internal}

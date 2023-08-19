@@ -14,6 +14,6 @@ that you want to delete.}
 \description{
 Delete an App Runner VPC Ingress Connection resource that's associated with an App Runner service. The VPC Ingress Connection must be in one of the following states to be deleted:
 
-See \url{https://paws-r.github.io/docs/apprunner/delete_vpc_ingress_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apprunner_delete_vpc_ingress_connection/} for full documentation.
 }
 \keyword{internal}

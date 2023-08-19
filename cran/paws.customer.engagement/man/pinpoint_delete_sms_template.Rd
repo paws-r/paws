@@ -38,6 +38,6 @@ of the template.
 \description{
 Deletes a message template for messages that were sent through the SMS channel.
 
-See \url{https://paws-r.github.io/docs/pinpoint/delete_sms_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_delete_sms_template/} for full documentation.
 }
 \keyword{internal}

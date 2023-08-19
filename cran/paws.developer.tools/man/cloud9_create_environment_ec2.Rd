@@ -94,6 +94,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates an Cloud9 development environment, launches an Amazon Elastic Compute Cloud (Amazon EC2) instance, and then connects from the instance to the environment.
 
-See \url{https://paws-r.github.io/docs/cloud9/create_environment_ec2.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloud9_create_environment_ec2/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ connectcampaignservice_delete_campaign(id)
 \description{
 Deletes a campaign from the specified Amazon Connect account.
 
-See \url{https://paws-r.github.io/docs/connectcampaignservice/delete_campaign.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectcampaignservice_delete_campaign/} for full documentation.
 }
 \keyword{internal}

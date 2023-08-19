@@ -55,6 +55,6 @@ associated with them.}
 \description{
 Returns a list of Amazon Redshift parameter groups, including parameter groups you created and the default parameter group. For each parameter group, the response includes the parameter group name, description, and parameter group family name. You can optionally specify a name to retrieve the description of a specific parameter group.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_cluster_parameter_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_cluster_parameter_groups/} for full documentation.
 }
 \keyword{internal}

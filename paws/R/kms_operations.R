@@ -815,7 +815,7 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #'
 #' @usage
 #' kms_create_grant(KeyId, GranteePrincipal, RetiringPrincipal, Operations,
-#'   Constraints, GrantTokens, Name)
+#'   Constraints, GrantTokens, Name, DryRun)
 #'
 #' @param KeyId &#91;required&#93; Identifies the KMS key for the grant. The grant gives principals
 #' permission to use this KMS key.
@@ -930,6 +930,11 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' every [`create_grant`][kms_create_grant] request, even when a duplicate
 #' `GrantId` is returned. All grant tokens for the same grant ID can be
 #' used interchangeably.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -960,7 +965,8 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #'   GrantTokens = list(
 #'     "string"
 #'   ),
-#'   Name = "string"
+#'   Name = "string",
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -983,14 +989,14 @@ kms_create_custom_key_store <- function(CustomKeyStoreName, CloudHsmClusterId = 
 #' @rdname kms_create_grant
 #'
 #' @aliases kms_create_grant
-kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, Operations, Constraints = NULL, GrantTokens = NULL, Name = NULL) {
+kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, Operations, Constraints = NULL, GrantTokens = NULL, Name = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "CreateGrant",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$create_grant_input(KeyId = KeyId, GranteePrincipal = GranteePrincipal, RetiringPrincipal = RetiringPrincipal, Operations = Operations, Constraints = Constraints, GrantTokens = GrantTokens, Name = Name)
+  input <- .kms$create_grant_input(KeyId = KeyId, GranteePrincipal = GranteePrincipal, RetiringPrincipal = RetiringPrincipal, Operations = Operations, Constraints = Constraints, GrantTokens = GrantTokens, Name = Name, DryRun = DryRun)
   output <- .kms$create_grant_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -1083,14 +1089,6 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' verify ([`verify_mac`][kms_verify_mac]) HMAC codes for messages up to
 #' 4096 bytes.
 #' 
-#' HMAC KMS keys are not supported in all Amazon Web Services Regions. If
-#' you try to create an HMAC KMS key in an Amazon Web Services Region in
-#' which HMAC keys are not supported, the [`create_key`][kms_create_key]
-#' operation returns an `UnsupportedOperationException`. For a list of
-#' Regions in which HMAC KMS keys are supported, see [HMAC keys in
-#' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/hmac.html) in
-#' the *Key Management Service Developer Guide*.
-#' 
 #' ### Multi-Region primary keys
 #' 
 #' ### Imported key material
@@ -1121,22 +1119,23 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html)
 #' in the *Key Management Service Developer Guide*.
 #' 
-#' To import your own key material into a KMS key, begin by creating a
-#' symmetric encryption KMS key with no key material. To do this, use the
-#' `Origin` parameter of [`create_key`][kms_create_key] with a value of
-#' `EXTERNAL`. Next, use
+#' To import your own key material into a KMS key, begin by creating a KMS
+#' key with no key material. To do this, use the `Origin` parameter of
+#' [`create_key`][kms_create_key] with a value of `EXTERNAL`. Next, use
 #' [`get_parameters_for_import`][kms_get_parameters_for_import] operation
-#' to get a public key and import token, and use the public key to encrypt
-#' your key material. Then, use
+#' to get a public key and import token. Use the wrapping public key to
+#' encrypt your key material. Then, use
 #' [`import_key_material`][kms_import_key_material] with your import token
 #' to import the key material. For step-by-step instructions, see
 #' [Importing Key
 #' Material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
 #' in the *Key Management Service Developer Guide* .
 #' 
-#' This feature supports only symmetric encryption KMS keys, including
-#' multi-Region symmetric encryption KMS keys. You cannot import key
-#' material into any other type of KMS key.
+#' You can import key material into KMS keys of all supported KMS key
+#' types: symmetric encryption KMS keys, HMAC KMS keys, asymmetric
+#' encryption KMS keys, and asymmetric signing KMS keys. You can also
+#' create multi-Region keys with imported key material. However, you can't
+#' import key material into a KMS key in a custom key store.
 #' 
 #' To create a multi-Region primary key with imported key material, use the
 #' `Origin` parameter of [`create_key`][kms_create_key] with a value of
@@ -1621,9 +1620,9 @@ kms_create_grant <- function(KeyId, GranteePrincipal, RetiringPrincipal = NULL, 
 #'   MultiRegion = TRUE
 #' )
 #' 
-#' # This example creates a KMS key with no key material. When the operation
-#' # is complete, you can import your own key material into the KMS key. To
-#' # create this KMS key, set the Origin parameter to EXTERNAL.
+#' # This example creates a symmetric KMS key with no key material. When the
+#' # operation is complete, you can import your own key material into the KMS
+#' # key. To create this KMS key, set the Origin parameter to EXTERNAL.
 #' svc$create_key(
 #'   Origin = "EXTERNAL"
 #' )
@@ -1771,7 +1770,7 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #'
 #' @usage
 #' kms_decrypt(CiphertextBlob, EncryptionContext, GrantTokens, KeyId,
-#'   EncryptionAlgorithm, Recipient)
+#'   EncryptionAlgorithm, Recipient, DryRun)
 #'
 #' @param CiphertextBlob &#91;required&#93; Ciphertext to be decrypted. The blob includes metadata.
 #' @param EncryptionContext Specifies the encryption context to use when decrypting the data. An
@@ -1866,6 +1865,11 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' uses
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1893,7 +1897,8 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #'   Recipient = list(
 #'     KeyEncryptionAlgorithm = "RSAES_OAEP_SHA_256",
 #'     AttestationDocument = raw
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1937,14 +1942,14 @@ kms_create_key <- function(Policy = NULL, Description = NULL, KeyUsage = NULL, C
 #' @rdname kms_decrypt
 #'
 #' @aliases kms_decrypt
-kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = NULL, KeyId = NULL, EncryptionAlgorithm = NULL, Recipient = NULL) {
+kms_decrypt <- function(CiphertextBlob, EncryptionContext = NULL, GrantTokens = NULL, KeyId = NULL, EncryptionAlgorithm = NULL, Recipient = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "Decrypt",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$decrypt_input(CiphertextBlob = CiphertextBlob, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, KeyId = KeyId, EncryptionAlgorithm = EncryptionAlgorithm, Recipient = Recipient)
+  input <- .kms$decrypt_input(CiphertextBlob = CiphertextBlob, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, KeyId = KeyId, EncryptionAlgorithm = EncryptionAlgorithm, Recipient = Recipient, DryRun = DryRun)
   output <- .kms$decrypt_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -2164,22 +2169,19 @@ kms_delete_custom_key_store <- function(CustomKeyStoreId) {
 }
 .kms$operations$delete_custom_key_store <- kms_delete_custom_key_store
 
-#' Deletes key material that you previously imported
+#' Deletes key material that was previously imported
 #'
 #' @description
-#' Deletes key material that you previously imported. This operation makes
-#' the specified KMS key unusable. For more information about importing key
-#' material into KMS, see [Importing Key
+#' Deletes key material that was previously imported. This operation makes
+#' the specified KMS key temporarily unusable. To restore the usability of
+#' the KMS key, reimport the same key material. For more information about
+#' importing key material into KMS, see [Importing Key
 #' Material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
 #' in the *Key Management Service Developer Guide*.
 #' 
 #' When the specified KMS key is in the `PendingDeletion` state, this
 #' operation does not change the KMS key's state. Otherwise, it changes the
 #' KMS key's state to `PendingImport`.
-#' 
-#' After you delete key material, you can use
-#' [`import_key_material`][kms_import_key_material] to reimport the same
-#' key material into the KMS key.
 #' 
 #' The KMS key that you use for this operation must be in a compatible key
 #' state. For details, see [Key states of KMS
@@ -2431,7 +2433,7 @@ kms_describe_custom_key_stores <- function(CustomKeyStoreId = NULL, CustomKeySto
     name = "DescribeCustomKeyStores",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "CustomKeyStores")
   )
   input <- .kms$describe_custom_key_stores_input(CustomKeyStoreId = CustomKeyStoreId, CustomKeyStoreName = CustomKeyStoreName, Limit = Limit, Marker = Marker)
   output <- .kms$describe_custom_key_stores_output()
@@ -3308,7 +3310,7 @@ kms_enable_key_rotation <- function(KeyId) {
 #'
 #' @usage
 #' kms_encrypt(KeyId, Plaintext, EncryptionContext, GrantTokens,
-#'   EncryptionAlgorithm)
+#'   EncryptionAlgorithm, DryRun)
 #'
 #' @param KeyId &#91;required&#93; Identifies the KMS key to use in the encryption operation. The KMS key
 #' must have a `KeyUsage` of `ENCRYPT_DECRYPT`. To find the `KeyUsage` of a
@@ -3375,6 +3377,11 @@ kms_enable_key_rotation <- function(KeyId) {
 #' recommend RSAES_OAEP_SHA_256.
 #' 
 #' The SM2PKE algorithm is only available in China Regions.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3397,7 +3404,8 @@ kms_enable_key_rotation <- function(KeyId) {
 #'   GrantTokens = list(
 #'     "string"
 #'   ),
-#'   EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"|"SM2PKE"
+#'   EncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"|"SM2PKE",
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3425,14 +3433,14 @@ kms_enable_key_rotation <- function(KeyId) {
 #' @rdname kms_encrypt
 #'
 #' @aliases kms_encrypt
-kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens = NULL, EncryptionAlgorithm = NULL) {
+kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens = NULL, EncryptionAlgorithm = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "Encrypt",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$encrypt_input(KeyId = KeyId, Plaintext = Plaintext, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, EncryptionAlgorithm = EncryptionAlgorithm)
+  input <- .kms$encrypt_input(KeyId = KeyId, Plaintext = Plaintext, EncryptionContext = EncryptionContext, GrantTokens = GrantTokens, EncryptionAlgorithm = EncryptionAlgorithm, DryRun = DryRun)
   output <- .kms$encrypt_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -3515,7 +3523,7 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' encryption library, such as the [Amazon Web Services Encryption
 #' SDK](https://docs.aws.amazon.com/encryption-sdk/latest/developer-guide/),
 #' the [Amazon DynamoDB Encryption
-#' Client](https://docs.aws.amazon.com/dynamodb-encryption-client/latest/devguide/),
+#' Client](https://docs.aws.amazon.com/database-encryption-sdk/latest/devguide/),
 #' or [Amazon S3 client-side
 #' encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingClientSideEncryption.html)
 #' to do these tasks for you.
@@ -3562,7 +3570,7 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #'
 #' @usage
 #' kms_generate_data_key(KeyId, EncryptionContext, NumberOfBytes, KeySpec,
-#'   GrantTokens, Recipient)
+#'   GrantTokens, Recipient, DryRun)
 #'
 #' @param KeyId &#91;required&#93; Specifies the symmetric encryption KMS key that encrypts the data key.
 #' You cannot specify an asymmetric KMS key or a KMS key in a custom key
@@ -3655,6 +3663,11 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' uses
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3682,7 +3695,8 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #'   Recipient = list(
 #'     KeyEncryptionAlgorithm = "RSAES_OAEP_SHA_256",
 #'     AttestationDocument = raw
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3719,14 +3733,14 @@ kms_encrypt <- function(KeyId, Plaintext, EncryptionContext = NULL, GrantTokens 
 #' @rdname kms_generate_data_key
 #'
 #' @aliases kms_generate_data_key
-kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes = NULL, KeySpec = NULL, GrantTokens = NULL, Recipient = NULL) {
+kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes = NULL, KeySpec = NULL, GrantTokens = NULL, Recipient = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GenerateDataKey",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$generate_data_key_input(KeyId = KeyId, EncryptionContext = EncryptionContext, NumberOfBytes = NumberOfBytes, KeySpec = KeySpec, GrantTokens = GrantTokens, Recipient = Recipient)
+  input <- .kms$generate_data_key_input(KeyId = KeyId, EncryptionContext = EncryptionContext, NumberOfBytes = NumberOfBytes, KeySpec = KeySpec, GrantTokens = GrantTokens, Recipient = Recipient, DryRun = DryRun)
   output <- .kms$generate_data_key_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -3843,7 +3857,7 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #'
 #' @usage
 #' kms_generate_data_key_pair(EncryptionContext, KeyId, KeyPairSpec,
-#'   GrantTokens, Recipient)
+#'   GrantTokens, Recipient, DryRun)
 #'
 #' @param EncryptionContext Specifies the encryption context that will be used when encrypting the
 #' private key in the data key pair.
@@ -3930,6 +3944,11 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' uses
 #' KMS](https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3958,7 +3977,8 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #'   Recipient = list(
 #'     KeyEncryptionAlgorithm = "RSAES_OAEP_SHA_256",
 #'     AttestationDocument = raw
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3996,14 +4016,14 @@ kms_generate_data_key <- function(KeyId, EncryptionContext = NULL, NumberOfBytes
 #' @rdname kms_generate_data_key_pair
 #'
 #' @aliases kms_generate_data_key_pair
-kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairSpec, GrantTokens = NULL, Recipient = NULL) {
+kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairSpec, GrantTokens = NULL, Recipient = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GenerateDataKeyPair",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$generate_data_key_pair_input(EncryptionContext = EncryptionContext, KeyId = KeyId, KeyPairSpec = KeyPairSpec, GrantTokens = GrantTokens, Recipient = Recipient)
+  input <- .kms$generate_data_key_pair_input(EncryptionContext = EncryptionContext, KeyId = KeyId, KeyPairSpec = KeyPairSpec, GrantTokens = GrantTokens, Recipient = Recipient, DryRun = DryRun)
   output <- .kms$generate_data_key_pair_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -4087,7 +4107,7 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #'
 #' @usage
 #' kms_generate_data_key_pair_without_plaintext(EncryptionContext, KeyId,
-#'   KeyPairSpec, GrantTokens)
+#'   KeyPairSpec, GrantTokens, DryRun)
 #'
 #' @param EncryptionContext Specifies the encryption context that will be used when encrypting the
 #' private key in the data key pair.
@@ -4147,6 +4167,11 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #' and [Using a grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4169,7 +4194,8 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #'   KeyPairSpec = "RSA_2048"|"RSA_3072"|"RSA_4096"|"ECC_NIST_P256"|"ECC_NIST_P384"|"ECC_NIST_P521"|"ECC_SECG_P256K1"|"SM2",
 #'   GrantTokens = list(
 #'     "string"
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4190,14 +4216,14 @@ kms_generate_data_key_pair <- function(EncryptionContext = NULL, KeyId, KeyPairS
 #' @rdname kms_generate_data_key_pair_without_plaintext
 #'
 #' @aliases kms_generate_data_key_pair_without_plaintext
-kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NULL, KeyId, KeyPairSpec, GrantTokens = NULL) {
+kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NULL, KeyId, KeyPairSpec, GrantTokens = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GenerateDataKeyPairWithoutPlaintext",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$generate_data_key_pair_without_plaintext_input(EncryptionContext = EncryptionContext, KeyId = KeyId, KeyPairSpec = KeyPairSpec, GrantTokens = GrantTokens)
+  input <- .kms$generate_data_key_pair_without_plaintext_input(EncryptionContext = EncryptionContext, KeyId = KeyId, KeyPairSpec = KeyPairSpec, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$generate_data_key_pair_without_plaintext_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -4292,7 +4318,7 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #'
 #' @usage
 #' kms_generate_data_key_without_plaintext(KeyId, EncryptionContext,
-#'   KeySpec, NumberOfBytes, GrantTokens)
+#'   KeySpec, NumberOfBytes, GrantTokens, DryRun)
 #'
 #' @param KeyId &#91;required&#93; Specifies the symmetric encryption KMS key that encrypts the data key.
 #' You cannot specify an asymmetric KMS key or a KMS key in a custom key
@@ -4351,6 +4377,11 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #' and [Using a grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4372,7 +4403,8 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #'   NumberOfBytes = 123,
 #'   GrantTokens = list(
 #'     "string"
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4392,14 +4424,14 @@ kms_generate_data_key_pair_without_plaintext <- function(EncryptionContext = NUL
 #' @rdname kms_generate_data_key_without_plaintext
 #'
 #' @aliases kms_generate_data_key_without_plaintext
-kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = NULL, KeySpec = NULL, NumberOfBytes = NULL, GrantTokens = NULL) {
+kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = NULL, KeySpec = NULL, NumberOfBytes = NULL, GrantTokens = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GenerateDataKeyWithoutPlaintext",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$generate_data_key_without_plaintext_input(KeyId = KeyId, EncryptionContext = EncryptionContext, KeySpec = KeySpec, NumberOfBytes = NumberOfBytes, GrantTokens = GrantTokens)
+  input <- .kms$generate_data_key_without_plaintext_input(KeyId = KeyId, EncryptionContext = EncryptionContext, KeySpec = KeySpec, NumberOfBytes = NumberOfBytes, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$generate_data_key_without_plaintext_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -4453,7 +4485,7 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #' **Related operations**: [`verify_mac`][kms_verify_mac]
 #'
 #' @usage
-#' kms_generate_mac(Message, KeyId, MacAlgorithm, GrantTokens)
+#' kms_generate_mac(Message, KeyId, MacAlgorithm, GrantTokens, DryRun)
 #'
 #' @param Message &#91;required&#93; The message to be hashed. Specify a message of up to 4,096 bytes.
 #' 
@@ -4482,6 +4514,11 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #' and [Using a grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4501,7 +4538,8 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #'   MacAlgorithm = "HMAC_SHA_224"|"HMAC_SHA_256"|"HMAC_SHA_384"|"HMAC_SHA_512",
 #'   GrantTokens = list(
 #'     "string"
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4522,14 +4560,14 @@ kms_generate_data_key_without_plaintext <- function(KeyId, EncryptionContext = N
 #' @rdname kms_generate_mac
 #'
 #' @aliases kms_generate_mac
-kms_generate_mac <- function(Message, KeyId, MacAlgorithm, GrantTokens = NULL) {
+kms_generate_mac <- function(Message, KeyId, MacAlgorithm, GrantTokens = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "GenerateMac",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$generate_mac_input(Message = Message, KeyId = KeyId, MacAlgorithm = MacAlgorithm, GrantTokens = GrantTokens)
+  input <- .kms$generate_mac_input(Message = Message, KeyId = KeyId, MacAlgorithm = MacAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$generate_mac_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -4906,36 +4944,75 @@ kms_get_key_rotation_status <- function(KeyId) {
 }
 .kms$operations$get_key_rotation_status <- kms_get_key_rotation_status
 
-#' Returns the items you need to import key material into a symmetric
-#' encryption KMS key
+#' Returns the public key and an import token you need to import or
+#' reimport key material for a KMS key
 #'
 #' @description
-#' Returns the items you need to import key material into a symmetric
-#' encryption KMS key. For more information about importing key material
-#' into KMS, see [Importing key
+#' Returns the public key and an import token you need to import or
+#' reimport key material for a KMS key.
+#' 
+#' By default, KMS keys are created with key material that KMS generates.
+#' This operation supports [Importing key
+#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
+#' an advanced feature that lets you generate and import the cryptographic
+#' key material for a KMS key. For more information about importing key
+#' material into KMS, see [Importing key
 #' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
 #' in the *Key Management Service Developer Guide*.
 #' 
-#' This operation returns a public key and an import token. Use the public
-#' key to encrypt the symmetric key material. Store the import token to
-#' send with a subsequent [`import_key_material`][kms_import_key_material]
-#' request.
+#' Before calling
+#' [`get_parameters_for_import`][kms_get_parameters_for_import], use the
+#' [`create_key`][kms_create_key] operation with an `Origin` value of
+#' `EXTERNAL` to create a KMS key with no key material. You can import key
+#' material for a symmetric encryption KMS key, HMAC KMS key, asymmetric
+#' encryption KMS key, or asymmetric signing KMS key. You can also import
+#' key material into a [multi-Region
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html)
+#' of any supported type. However, you can't import key material into a KMS
+#' key in a [custom key
+#' store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
+#' You can also use
+#' [`get_parameters_for_import`][kms_get_parameters_for_import] to get a
+#' public key and import token to [reimport the original key
+#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#reimport-key-material)
+#' into a KMS key whose key material expired or was deleted.
 #' 
-#' You must specify the key ID of the symmetric encryption KMS key into
-#' which you will import key material. The KMS key `Origin` must be
-#' `EXTERNAL`. You must also specify the wrapping algorithm and type of
-#' wrapping key (public key) that you will use to encrypt the key material.
-#' You cannot perform this operation on an asymmetric KMS key, an HMAC KMS
-#' key, or on any KMS key in a different Amazon Web Services account.
+#' [`get_parameters_for_import`][kms_get_parameters_for_import] returns the
+#' items that you need to import your key material.
 #' 
-#' To import key material, you must use the public key and import token
-#' from the same response. These items are valid for 24 hours. The
-#' expiration date and time appear in the
+#' -   The public key (or "wrapping key") of an RSA key pair that KMS
+#'     generates.
+#' 
+#'     You will use this public key to encrypt ("wrap") your key material
+#'     while it's in transit to KMS.
+#' 
+#' -   A import token that ensures that KMS can decrypt your key material
+#'     and associate it with the correct KMS key.
+#' 
+#' The public key and its import token are permanently linked and must be
+#' used together. Each public key and import token set is valid for 24
+#' hours. The expiration date and time appear in the `ParametersValidTo`
+#' field in the
 #' [`get_parameters_for_import`][kms_get_parameters_for_import] response.
-#' You cannot use an expired token in an
+#' You cannot use an expired public key or import token in an
 #' [`import_key_material`][kms_import_key_material] request. If your key
 #' and token expire, send another
 #' [`get_parameters_for_import`][kms_get_parameters_for_import] request.
+#' 
+#' [`get_parameters_for_import`][kms_get_parameters_for_import] requires
+#' the following information:
+#' 
+#' -   The key ID of the KMS key for which you are importing the key
+#'     material.
+#' 
+#' -   The key spec of the public key ("wrapping key") that you will use to
+#'     encrypt your key material during import.
+#' 
+#' -   The wrapping algorithm that you will use with the public key to
+#'     encrypt your key material.
+#' 
+#' You can use the same or a different public key spec and wrapping
+#' algorithm each time you import or reimport the same key material.
 #' 
 #' The KMS key that you use for this operation must be in a compatible key
 #' state. For details, see [Key states of KMS
@@ -4958,8 +5035,11 @@ kms_get_key_rotation_status <- function(KeyId) {
 #' @usage
 #' kms_get_parameters_for_import(KeyId, WrappingAlgorithm, WrappingKeySpec)
 #'
-#' @param KeyId &#91;required&#93; The identifier of the symmetric encryption KMS key into which you will
-#' import key material. The `Origin` of the KMS key must be `EXTERNAL`.
+#' @param KeyId &#91;required&#93; The identifier of the KMS key that will be associated with the imported
+#' key material. The `Origin` of the KMS key must be `EXTERNAL`.
+#' 
+#' All KMS key types are supported, including multi-Region keys. However,
+#' you cannot import key material into a KMS key in a custom key store.
 #' 
 #' Specify the key ID or key ARN of the KMS key.
 #' 
@@ -4972,19 +5052,50 @@ kms_get_key_rotation_status <- function(KeyId) {
 #' 
 #' To get the key ID and key ARN for a KMS key, use
 #' [`list_keys`][kms_list_keys] or [`describe_key`][kms_describe_key].
-#' @param WrappingAlgorithm &#91;required&#93; The algorithm you will use to encrypt the key material before using the
-#' [`import_key_material`][kms_import_key_material] operation to import it.
-#' For more information, see [Encrypt the key
-#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-encrypt-key-material.html)
+#' @param WrappingAlgorithm &#91;required&#93; The algorithm you will use with the RSA public key (`PublicKey`) in the
+#' response to protect your key material during import. For more
+#' information, see [Select a wrapping
+#' algorithm](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-get-public-key-and-token.html#select-wrapping-algorithm)
 #' in the *Key Management Service Developer Guide*.
 #' 
-#' The `RSAES_PKCS1_V1_5` wrapping algorithm is deprecated. We recommend
-#' that you begin using a different wrapping algorithm immediately. KMS
-#' will end support for `RSAES_PKCS1_V1_5` by October 1, 2023 pursuant to
-#' cryptographic key management guidance from the National Institute of
-#' Standards and Technology (NIST).
-#' @param WrappingKeySpec &#91;required&#93; The type of wrapping key (public key) to return in the response. Only
-#' 2048-bit RSA public keys are supported.
+#' For RSA_AES wrapping algorithms, you encrypt your key material with an
+#' AES key that you generate, then encrypt your AES key with the RSA public
+#' key from KMS. For RSAES wrapping algorithms, you encrypt your key
+#' material directly with the RSA public key from KMS.
+#' 
+#' The wrapping algorithms that you can use depend on the type of key
+#' material that you are importing. To import an RSA private key, you must
+#' use an RSA_AES wrapping algorithm.
+#' 
+#' -   **RSA_AES_KEY_WRAP_SHA_256** — Supported for wrapping RSA and ECC
+#'     key material.
+#' 
+#' -   **RSA_AES_KEY_WRAP_SHA_1** — Supported for wrapping RSA and ECC key
+#'     material.
+#' 
+#' -   **RSAES_OAEP_SHA_256** — Supported for all types of key material,
+#'     except RSA key material (private key).
+#' 
+#'     You cannot use the RSAES_OAEP_SHA_256 wrapping algorithm with the
+#'     RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.
+#' 
+#' -   **RSAES_OAEP_SHA_1** — Supported for all types of key material,
+#'     except RSA key material (private key).
+#' 
+#'     You cannot use the RSAES_OAEP_SHA_1 wrapping algorithm with the
+#'     RSA_2048 wrapping key spec to wrap ECC_NIST_P521 key material.
+#' 
+#' -   **RSAES_PKCS1_V1_5** (Deprecated) — Supported only for symmetric
+#'     encryption key material (and only in legacy mode).
+#' @param WrappingKeySpec &#91;required&#93; The type of RSA public key to return in the response. You will use this
+#' wrapping key with the specified wrapping algorithm to protect your key
+#' material during import.
+#' 
+#' Use the longest RSA wrapping key that is practical.
+#' 
+#' You cannot use an RSA_2048 public key to directly wrap an ECC_NIST_P521
+#' private key. Instead, use an RSA_AES wrapping algorithm or choose a
+#' longer RSA public key.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5003,19 +5114,50 @@ kms_get_key_rotation_status <- function(KeyId) {
 #' ```
 #' svc$get_parameters_for_import(
 #'   KeyId = "string",
-#'   WrappingAlgorithm = "RSAES_PKCS1_V1_5"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256",
-#'   WrappingKeySpec = "RSA_2048"
+#'   WrappingAlgorithm = "RSAES_PKCS1_V1_5"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"|"RSA_AES_KEY_WRAP_SHA_1"|"RSA_AES_KEY_WRAP_SHA_256",
+#'   WrappingKeySpec = "RSA_2048"|"RSA_3072"|"RSA_4096"
 #' )
 #' ```
 #'
 #' @examples
 #' \dontrun{
-#' # The following example retrieves the public key and import token for the
-#' # specified KMS key.
+#' # The following example downloads a public key and import token to import
+#' # symmetric encryption key material. It uses the default wrapping key spec
+#' # and the RSAES_OAEP_SHA_256 wrapping algorithm.
 #' svc$get_parameters_for_import(
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab",
 #'   WrappingAlgorithm = "RSAES_OAEP_SHA_1",
 #'   WrappingKeySpec = "RSA_2048"
+#' )
+#' 
+#' # The following example downloads a public key and import token to import
+#' # an RSA private key. It uses a required RSA_AES wrapping algorithm and
+#' # the largest supported private key.
+#' svc$get_parameters_for_import(
+#'   KeyId = "arn:aws:kms:us-east-2:111122223333:key/8888abcd-12ab-34cd-56ef-1234567890ab",
+#'   WrappingAlgorithm = "RSA_AES_KEY_WRAP_SHA_256",
+#'   WrappingKeySpec = "RSA_4096"
+#' )
+#' 
+#' # The following example downloads a public key and import token to import
+#' # an ECC_NIST_P521 (secp521r1) private key. You cannot directly wrap this
+#' # ECC key under an RSA_2048 public key, although you can use an RSA_2048
+#' # public key with an RSA_AES wrapping algorithm to wrap any supported key
+#' # material. This example requests an RSA_3072 public key for use with the
+#' # RSAES_OAEP_SHA_256.
+#' svc$get_parameters_for_import(
+#'   KeyId = "arn:aws:kms:us-east-2:111122223333:key/9876abcd-12ab-34cd-56ef-1234567890ab",
+#'   WrappingAlgorithm = "RSAES_OAEP_SHA_256",
+#'   WrappingKeySpec = "RSA_3072"
+#' )
+#' 
+#' # The following example downloads a public key and import token to import
+#' # an HMAC key. It uses the RSAES_OAEP_SHA_256 wrapping algorithm and an
+#' # RSA_4096 private key.
+#' svc$get_parameters_for_import(
+#'   KeyId = "2468abcd-12ab-34cd-56ef-1234567890ab",
+#'   WrappingAlgorithm = "RSAES_OAEP_SHA_256",
+#'   WrappingKeySpec = "RSA_4096"
 #' )
 #' }
 #'
@@ -5204,42 +5346,91 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 }
 .kms$operations$get_public_key <- kms_get_public_key
 
-#' Imports key material into an existing symmetric encryption KMS key that
-#' was created without key material
+#' Imports or reimports key material into an existing KMS key that was
+#' created without key material
 #'
 #' @description
-#' Imports key material into an existing symmetric encryption KMS key that
-#' was created without key material. After you successfully import key
-#' material into a KMS key, you can [reimport the same key
-#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#reimport-key-material)
-#' into that KMS key, but you cannot import different key material.
+#' Imports or reimports key material into an existing KMS key that was
+#' created without key material.
+#' [`import_key_material`][kms_import_key_material] also sets the
+#' expiration model and expiration date of the imported key material.
 #' 
-#' You cannot perform this operation on an asymmetric KMS key, an HMAC KMS
-#' key, or on any KMS key in a different Amazon Web Services account. For
-#' more information about creating KMS keys with no key material and then
-#' importing key material, see [Importing Key
-#' Material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
+#' By default, KMS keys are created with key material that KMS generates.
+#' This operation supports [Importing key
+#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html),
+#' an advanced feature that lets you generate and import the cryptographic
+#' key material for a KMS key. For more information about importing key
+#' material into KMS, see [Importing key
+#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html)
 #' in the *Key Management Service Developer Guide*.
 #' 
-#' Before using this operation, call
-#' [`get_parameters_for_import`][kms_get_parameters_for_import]. Its
-#' response includes a public key and an import token. Use the public key
-#' to encrypt the key material. Then, submit the import token from the same
-#' [`get_parameters_for_import`][kms_get_parameters_for_import] response.
+#' After you successfully import key material into a KMS key, you can
+#' [reimport the same key
+#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys.html#reimport-key-material)
+#' into that KMS key, but you cannot import different key material. You
+#' might reimport key material to replace key material that expired or key
+#' material that you deleted. You might also reimport key material to
+#' change the expiration model or expiration date of the key material.
+#' Before reimporting key material, if necessary, call
+#' [`delete_imported_key_material`][kms_delete_imported_key_material] to
+#' delete the current imported key material.
 #' 
-#' When calling this operation, you must specify the following values:
+#' Each time you import key material into KMS, you can determine whether
+#' (`ExpirationModel`) and when (`ValidTo`) the key material expires. To
+#' change the expiration of your key material, you must import it again,
+#' either by calling [`import_key_material`][kms_import_key_material] or
+#' using the [import
+#' features](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-import-key-material.html#importing-keys-import-key-material-console)
+#' of the KMS console.
 #' 
-#' -   The key ID or key ARN of a KMS key with no key material. Its
-#'     `Origin` must be `EXTERNAL`.
+#' Before calling [`import_key_material`][kms_import_key_material]:
 #' 
-#'     To create a KMS key with no key material, call
-#'     [`create_key`][kms_create_key] and set the value of its `Origin`
-#'     parameter to `EXTERNAL`. To get the `Origin` of a KMS key, call
-#'     [`describe_key`][kms_describe_key].)
+#' -   Create or identify a KMS key with no key material. The KMS key must
+#'     have an `Origin` value of `EXTERNAL`, which indicates that the KMS
+#'     key is designed for imported key material.
 #' 
-#' -   The encrypted key material. To get the public key to encrypt the key
-#'     material, call
-#'     [`get_parameters_for_import`][kms_get_parameters_for_import].
+#'     To create an new KMS key for imported key material, call the
+#'     [`create_key`][kms_create_key] operation with an `Origin` value of
+#'     `EXTERNAL`. You can create a symmetric encryption KMS key, HMAC KMS
+#'     key, asymmetric encryption KMS key, or asymmetric signing KMS key.
+#'     You can also import key material into a [multi-Region
+#'     key](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html)
+#'     of any supported type. However, you can't import key material into a
+#'     KMS key in a [custom key
+#'     store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html).
+#' 
+#' -   Use the [`describe_key`][kms_describe_key] operation to verify that
+#'     the `KeyState` of the KMS key is `PendingImport`, which indicates
+#'     that the KMS key has no key material.
+#' 
+#'     If you are reimporting the same key material into an existing KMS
+#'     key, you might need to call the
+#'     [`delete_imported_key_material`][kms_delete_imported_key_material]
+#'     to delete its existing key material.
+#' 
+#' -   Call the
+#'     [`get_parameters_for_import`][kms_get_parameters_for_import]
+#'     operation to get a public key and import token set for importing key
+#'     material.
+#' 
+#' -   Use the public key in the
+#'     [`get_parameters_for_import`][kms_get_parameters_for_import]
+#'     response to encrypt your key material.
+#' 
+#' Then, in an [`import_key_material`][kms_import_key_material] request,
+#' you submit your encrypted key material and import token. When calling
+#' this operation, you must specify the following values:
+#' 
+#' -   The key ID or key ARN of the KMS key to associate with the imported
+#'     key material. Its `Origin` must be `EXTERNAL` and its `KeyState`
+#'     must be `PendingImport`. You cannot perform this operation on a KMS
+#'     key in a [custom key
+#'     store](https://docs.aws.amazon.com/kms/latest/developerguide/custom-key-store-overview.html),
+#'     or on a KMS key in a different Amazon Web Services account. To get
+#'     the `Origin` and `KeyState` of a KMS key, call
+#'     [`describe_key`][kms_describe_key].
+#' 
+#' -   The encrypted key material.
 #' 
 #' -   The import token that
 #'     [`get_parameters_for_import`][kms_get_parameters_for_import]
@@ -5248,15 +5439,22 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #'     response.
 #' 
 #' -   Whether the key material expires (`ExpirationModel`) and, if so,
-#'     when (`ValidTo`). If you set an expiration date, on the specified
-#'     date, KMS deletes the key material from the KMS key, making the KMS
-#'     key unusable. To use the KMS key in cryptographic operations again,
-#'     you must reimport the same key material. The only way to change the
-#'     expiration model or expiration date is by reimporting the same key
-#'     material and specifying a new expiration date.
+#'     when (`ValidTo`). For help with this choice, see [Setting an
+#'     expiration
+#'     time](https://docs.aws.amazon.com/en_us/kms/latest/developerguide/importing-keys.html#importing-keys-expiration)
+#'     in the *Key Management Service Developer Guide*.
+#' 
+#'     If you set an expiration date, KMS deletes the key material from the
+#'     KMS key on the specified date, making the KMS key unusable. To use
+#'     the KMS key in cryptographic operations again, you must reimport the
+#'     same key material. However, you can delete and reimport the key
+#'     material at any time, including before the key material expires.
+#'     Each time you reimport, you can eliminate or reset the expiration
+#'     time.
 #' 
 #' When this operation is successful, the key state of the KMS key changes
-#' from `PendingImport` to `Enabled`, and you can use the KMS key.
+#' from `PendingImport` to `Enabled`, and you can use the KMS key in
+#' cryptographic operations.
 #' 
 #' If this operation fails, use the exception to help determine the
 #' problem. If the error is related to the key material, the import token,
@@ -5289,14 +5487,20 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #' kms_import_key_material(KeyId, ImportToken, EncryptedKeyMaterial,
 #'   ValidTo, ExpirationModel)
 #'
-#' @param KeyId &#91;required&#93; The identifier of the symmetric encryption KMS key that receives the
-#' imported key material. This must be the same KMS key specified in the
-#' `KeyID` parameter of the corresponding
+#' @param KeyId &#91;required&#93; The identifier of the KMS key that will be associated with the imported
+#' key material. This must be the same KMS key specified in the `KeyID`
+#' parameter of the corresponding
 #' [`get_parameters_for_import`][kms_get_parameters_for_import] request.
-#' The `Origin` of the KMS key must be `EXTERNAL`. You cannot perform this
-#' operation on an asymmetric KMS key, an HMAC KMS key, a KMS key in a
-#' custom key store, or on a KMS key in a different Amazon Web Services
-#' account
+#' The `Origin` of the KMS key must be `EXTERNAL` and its `KeyState` must
+#' be `PendingImport`.
+#' 
+#' The KMS key can be a symmetric encryption KMS key, HMAC KMS key,
+#' asymmetric encryption KMS key, or asymmetric signing KMS key, including
+#' a [multi-Region
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-overview.html)
+#' of any supported type. You cannot perform this operation on a KMS key in
+#' a custom key store, or on a KMS key in a different Amazon Web Services
+#' account.
 #' 
 #' Specify the key ID or key ARN of the KMS key.
 #' 
@@ -5314,7 +5518,7 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #' must be from the same response that contained the public key that you
 #' used to encrypt the key material.
 #' @param EncryptedKeyMaterial &#91;required&#93; The encrypted key material to import. The key material must be encrypted
-#' with the public wrapping key that
+#' under the public wrapping key that
 #' [`get_parameters_for_import`][kms_get_parameters_for_import] returned,
 #' using the wrapping algorithm that you specified in the same
 #' [`get_parameters_for_import`][kms_get_parameters_for_import] request.
@@ -5336,7 +5540,10 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #' ([`delete_imported_key_material`][kms_delete_imported_key_material]) and
 #' reimport the key material.
 #' @param ExpirationModel Specifies whether the key material expires. The default is
-#' `KEY_MATERIAL_EXPIRES`.
+#' `KEY_MATERIAL_EXPIRES`. For help with this choice, see [Setting an
+#' expiration
+#' time](https://docs.aws.amazon.com/en_us/kms/latest/developerguide/importing-keys.html#importing-keys-expiration)
+#' in the *Key Management Service Developer Guide*.
 #' 
 #' When the value of `ExpirationModel` is `KEY_MATERIAL_EXPIRES`, you must
 #' specify a value for the `ValidTo` parameter. When value is
@@ -5344,9 +5551,7 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #' 
 #' You cannot change the `ExpirationModel` or `ValidTo` values for the
 #' current import after the request completes. To change either value, you
-#' must delete
-#' ([`delete_imported_key_material`][kms_delete_imported_key_material]) and
-#' reimport the key material.
+#' must reimport the key material.
 #'
 #' @return
 #' An empty list.
@@ -5372,6 +5577,17 @@ kms_get_public_key <- function(KeyId, GrantTokens = NULL) {
 #'   ExpirationModel = "KEY_MATERIAL_DOES_NOT_EXPIRE",
 #'   ImportToken = "<binary data>",
 #'   KeyId = "1234abcd-12ab-34cd-56ef-1234567890ab"
+#' )
+#' 
+#' # The following example imports key material that expires in 3 days. It
+#' # might be part of an application that frequently reimports the same key
+#' # material to comply with business rules or regulations.
+#' svc$import_key_material(
+#'   EncryptedKeyMaterial = "<binary data>",
+#'   ExpirationModel = "KEY_MATERIAL_EXPIRES",
+#'   ImportToken = "<binary data>",
+#'   KeyId = "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab",
+#'   ValidTo = "2023-09-30T00:00:00-00:00"
 #' )
 #' }
 #'
@@ -5520,7 +5736,7 @@ kms_list_aliases <- function(KeyId = NULL, Limit = NULL, Marker = NULL) {
     name = "ListAliases",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Aliases")
   )
   input <- .kms$list_aliases_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_aliases_output()
@@ -5667,7 +5883,7 @@ kms_list_grants <- function(Limit = NULL, Marker = NULL, KeyId, GrantId = NULL, 
     name = "ListGrants",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Grants")
   )
   input <- .kms$list_grants_input(Limit = Limit, Marker = Marker, KeyId = KeyId, GrantId = GrantId, GranteePrincipal = GranteePrincipal)
   output <- .kms$list_grants_output()
@@ -5767,7 +5983,7 @@ kms_list_key_policies <- function(KeyId, Limit = NULL, Marker = NULL) {
     name = "ListKeyPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "PolicyNames")
   )
   input <- .kms$list_key_policies_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_key_policies_output()
@@ -5855,7 +6071,7 @@ kms_list_keys <- function(Limit = NULL, Marker = NULL) {
     name = "ListKeys",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Keys")
   )
   input <- .kms$list_keys_input(Limit = Limit, Marker = Marker)
   output <- .kms$list_keys_output()
@@ -5967,7 +6183,7 @@ kms_list_resource_tags <- function(KeyId, Limit = NULL, Marker = NULL) {
     name = "ListResourceTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Tags")
   )
   input <- .kms$list_resource_tags_input(KeyId = KeyId, Limit = Limit, Marker = Marker)
   output <- .kms$list_resource_tags_output()
@@ -6103,7 +6319,7 @@ kms_list_retirable_grants <- function(Limit = NULL, Marker = NULL, RetiringPrinc
     name = "ListRetirableGrants",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "Limit", output_token = "NextMarker", result_key = "Grants")
   )
   input <- .kms$list_retirable_grants_input(Limit = Limit, Marker = Marker, RetiringPrincipal = RetiringPrincipal)
   output <- .kms$list_retirable_grants_output()
@@ -6367,7 +6583,8 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #' @usage
 #' kms_re_encrypt(CiphertextBlob, SourceEncryptionContext, SourceKeyId,
 #'   DestinationKeyId, DestinationEncryptionContext,
-#'   SourceEncryptionAlgorithm, DestinationEncryptionAlgorithm, GrantTokens)
+#'   SourceEncryptionAlgorithm, DestinationEncryptionAlgorithm, GrantTokens,
+#'   DryRun)
 #'
 #' @param CiphertextBlob &#91;required&#93; Ciphertext of the data to reencrypt.
 #' @param SourceEncryptionContext Specifies the encryption context to use to decrypt the ciphertext. Enter
@@ -6488,6 +6705,11 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #' and [Using a grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6517,7 +6739,8 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #'   DestinationEncryptionAlgorithm = "SYMMETRIC_DEFAULT"|"RSAES_OAEP_SHA_1"|"RSAES_OAEP_SHA_256"|"SM2PKE",
 #'   GrantTokens = list(
 #'     "string"
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -6535,14 +6758,14 @@ kms_put_key_policy <- function(KeyId, PolicyName, Policy, BypassPolicyLockoutSaf
 #' @rdname kms_re_encrypt
 #'
 #' @aliases kms_re_encrypt
-kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, SourceKeyId = NULL, DestinationKeyId, DestinationEncryptionContext = NULL, SourceEncryptionAlgorithm = NULL, DestinationEncryptionAlgorithm = NULL, GrantTokens = NULL) {
+kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, SourceKeyId = NULL, DestinationKeyId, DestinationEncryptionContext = NULL, SourceEncryptionAlgorithm = NULL, DestinationEncryptionAlgorithm = NULL, GrantTokens = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "ReEncrypt",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$re_encrypt_input(CiphertextBlob = CiphertextBlob, SourceEncryptionContext = SourceEncryptionContext, SourceKeyId = SourceKeyId, DestinationKeyId = DestinationKeyId, DestinationEncryptionContext = DestinationEncryptionContext, SourceEncryptionAlgorithm = SourceEncryptionAlgorithm, DestinationEncryptionAlgorithm = DestinationEncryptionAlgorithm, GrantTokens = GrantTokens)
+  input <- .kms$re_encrypt_input(CiphertextBlob = CiphertextBlob, SourceEncryptionContext = SourceEncryptionContext, SourceKeyId = SourceKeyId, DestinationKeyId = DestinationKeyId, DestinationEncryptionContext = DestinationEncryptionContext, SourceEncryptionAlgorithm = SourceEncryptionAlgorithm, DestinationEncryptionAlgorithm = DestinationEncryptionAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$re_encrypt_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -6703,9 +6926,9 @@ kms_re_encrypt <- function(CiphertextBlob, SourceEncryptionContext = NULL, Sourc
 #' (ARNs)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *Amazon Web Services General Reference*. For information about
 #' enabling and disabling Regions, see [Enabling a
-#' Region](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-enable)
+#' Region](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html#rande-manage-enable)
 #' and [Disabling a
-#' Region](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html#rande-manage-disable)
+#' Region](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html#rande-manage-disable)
 #' in the *Amazon Web Services General Reference*.
 #' @param Policy The key policy to attach to the KMS key. This parameter is optional. If
 #' you do not provide a key policy, KMS attaches the [default key
@@ -6970,7 +7193,7 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
 #' -   [`revoke_grant`][kms_revoke_grant]
 #'
 #' @usage
-#' kms_retire_grant(GrantToken, KeyId, GrantId)
+#' kms_retire_grant(GrantToken, KeyId, GrantId, DryRun)
 #'
 #' @param GrantToken Identifies the grant to be retired. You can use a grant token to
 #' identify a new grant even before it has achieved eventual consistency.
@@ -6992,6 +7215,11 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
 #' 
 #' -   Grant ID Example -
 #'     0123456789012345678901234567890123456789012345678901234567890123
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' An empty list.
@@ -7001,7 +7229,8 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
 #' svc$retire_grant(
 #'   GrantToken = "string",
 #'   KeyId = "string",
-#'   GrantId = "string"
+#'   GrantId = "string",
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -7019,14 +7248,14 @@ kms_replicate_key <- function(KeyId, ReplicaRegion, Policy = NULL, BypassPolicyL
 #' @rdname kms_retire_grant
 #'
 #' @aliases kms_retire_grant
-kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
+kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "RetireGrant",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$retire_grant_input(GrantToken = GrantToken, KeyId = KeyId, GrantId = GrantId)
+  input <- .kms$retire_grant_input(GrantToken = GrantToken, KeyId = KeyId, GrantId = GrantId, DryRun = DryRun)
   output <- .kms$retire_grant_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -7078,7 +7307,7 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
 #' -   [`retire_grant`][kms_retire_grant]
 #'
 #' @usage
-#' kms_revoke_grant(KeyId, GrantId)
+#' kms_revoke_grant(KeyId, GrantId, DryRun)
 #'
 #' @param KeyId &#91;required&#93; A unique identifier for the KMS key associated with the grant. To get
 #' the key ID and key ARN for a KMS key, use [`list_keys`][kms_list_keys]
@@ -7099,6 +7328,11 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
 #' @param GrantId &#91;required&#93; Identifies the grant to revoke. To get the grant ID, use
 #' [`create_grant`][kms_create_grant], [`list_grants`][kms_list_grants], or
 #' [`list_retirable_grants`][kms_list_retirable_grants].
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' An empty list.
@@ -7107,7 +7341,8 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
 #' ```
 #' svc$revoke_grant(
 #'   KeyId = "string",
-#'   GrantId = "string"
+#'   GrantId = "string",
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -7125,14 +7360,14 @@ kms_retire_grant <- function(GrantToken = NULL, KeyId = NULL, GrantId = NULL) {
 #' @rdname kms_revoke_grant
 #'
 #' @aliases kms_revoke_grant
-kms_revoke_grant <- function(KeyId, GrantId) {
+kms_revoke_grant <- function(KeyId, GrantId, DryRun = NULL) {
   op <- new_operation(
     name = "RevokeGrant",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$revoke_grant_input(KeyId = KeyId, GrantId = GrantId)
+  input <- .kms$revoke_grant_input(KeyId = KeyId, GrantId = GrantId, DryRun = DryRun)
   output <- .kms$revoke_grant_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -7158,8 +7393,11 @@ kms_revoke_grant <- function(KeyId, GrantId) {
 #' 
 #' Deleting a KMS key is a destructive and potentially dangerous operation.
 #' When a KMS key is deleted, all data that was encrypted under the KMS key
-#' is unrecoverable. (The only exception is a multi-Region replica key.) To
-#' prevent the use of a KMS key without deleting it, use
+#' is unrecoverable. (The only exception is a [multi-Region replica
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/multi-region-keys-delete.html),
+#' or an [asymmetric or HMAC KMS key with imported key
+#' material](https://docs.aws.amazon.com/kms/latest/developerguide/importing-keys-managing.html#import-delete-key).)
+#' To prevent the use of a KMS key without deleting it, use
 #' [`disable_key`][kms_disable_key].
 #' 
 #' You can schedule the deletion of a multi-Region primary key and its
@@ -7236,7 +7474,11 @@ kms_revoke_grant <- function(KeyId, GrantId) {
 #' Otherwise, the waiting period begins immediately.
 #' 
 #' This value is optional. If you include a value, it must be between 7 and
-#' 30, inclusive. If you do not include a value, it defaults to 30.
+#' 30, inclusive. If you do not include a value, it defaults to 30. You can
+#' use the
+#' [`kms:ScheduleKeyDeletionPendingWindowInDays`](https://docs.aws.amazon.com/kms/latest/developerguide/conditions-kms.html#conditions-kms-schedule-key-deletion-pending-window-in-days)
+#' condition key to further constrain the values that principals can
+#' specify in the `PendingWindowInDays` parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7358,7 +7600,8 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' **Related operations**: [`verify`][kms_verify]
 #'
 #' @usage
-#' kms_sign(KeyId, Message, MessageType, GrantTokens, SigningAlgorithm)
+#' kms_sign(KeyId, Message, MessageType, GrantTokens, SigningAlgorithm,
+#'   DryRun)
 #'
 #' @param KeyId &#91;required&#93; Identifies an asymmetric KMS key. KMS uses the private key in the
 #' asymmetric KMS key to sign the message. The `KeyUsage` type of the KMS
@@ -7441,6 +7684,11 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' specified asymmetric KMS key. When signing with RSA key pairs,
 #' RSASSA-PSS algorithms are preferred. We include RSASSA-PKCS1-v1_5
 #' algorithms for compatibility with existing applications.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7461,7 +7709,8 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #'   GrantTokens = list(
 #'     "string"
 #'   ),
-#'   SigningAlgorithm = "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"|"SM2DSA"
+#'   SigningAlgorithm = "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"|"SM2DSA",
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -7494,14 +7743,14 @@ kms_schedule_key_deletion <- function(KeyId, PendingWindowInDays = NULL) {
 #' @rdname kms_sign
 #'
 #' @aliases kms_sign
-kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, SigningAlgorithm) {
+kms_sign <- function(KeyId, Message, MessageType = NULL, GrantTokens = NULL, SigningAlgorithm, DryRun = NULL) {
   op <- new_operation(
     name = "Sign",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$sign_input(KeyId = KeyId, Message = Message, MessageType = MessageType, GrantTokens = GrantTokens, SigningAlgorithm = SigningAlgorithm)
+  input <- .kms$sign_input(KeyId = KeyId, Message = Message, MessageType = MessageType, GrantTokens = GrantTokens, SigningAlgorithm = SigningAlgorithm, DryRun = DryRun)
   output <- .kms$sign_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -8536,7 +8785,7 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #'
 #' @usage
 #' kms_verify(KeyId, Message, MessageType, Signature, SigningAlgorithm,
-#'   GrantTokens)
+#'   GrantTokens, DryRun)
 #'
 #' @param KeyId &#91;required&#93; Identifies the asymmetric KMS key that will be used to verify the
 #' signature. This must be the same KMS key that was used to generate the
@@ -8618,6 +8867,11 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #' and [Using a grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8639,7 +8893,8 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #'   SigningAlgorithm = "RSASSA_PSS_SHA_256"|"RSASSA_PSS_SHA_384"|"RSASSA_PSS_SHA_512"|"RSASSA_PKCS1_V1_5_SHA_256"|"RSASSA_PKCS1_V1_5_SHA_384"|"RSASSA_PKCS1_V1_5_SHA_512"|"ECDSA_SHA_256"|"ECDSA_SHA_384"|"ECDSA_SHA_512"|"SM2DSA",
 #'   GrantTokens = list(
 #'     "string"
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -8674,14 +8929,14 @@ kms_update_primary_region <- function(KeyId, PrimaryRegion) {
 #' @rdname kms_verify
 #'
 #' @aliases kms_verify
-kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlgorithm, GrantTokens = NULL) {
+kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlgorithm, GrantTokens = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "Verify",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$verify_input(KeyId = KeyId, Message = Message, MessageType = MessageType, Signature = Signature, SigningAlgorithm = SigningAlgorithm, GrantTokens = GrantTokens)
+  input <- .kms$verify_input(KeyId = KeyId, Message = Message, MessageType = MessageType, Signature = Signature, SigningAlgorithm = SigningAlgorithm, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$verify_output()
   config <- get_config()
   svc <- .kms$service(config)
@@ -8729,7 +8984,7 @@ kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlg
 #' **Related operations**: [`generate_mac`][kms_generate_mac]
 #'
 #' @usage
-#' kms_verify_mac(Message, KeyId, MacAlgorithm, Mac, GrantTokens)
+#' kms_verify_mac(Message, KeyId, MacAlgorithm, Mac, GrantTokens, DryRun)
 #'
 #' @param Message &#91;required&#93; The message that will be used in the verification. Enter the same
 #' message that was used to generate the HMAC.
@@ -8759,6 +9014,11 @@ kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlg
 #' and [Using a grant
 #' token](https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token)
 #' in the *Key Management Service Developer Guide*.
+#' @param DryRun Checks if your request will succeed. `DryRun` is an optional parameter.
+#' 
+#' To learn more about how to use this parameter, see [Testing your KMS API
+#' calls](https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html)
+#' in the *Key Management Service Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8779,7 +9039,8 @@ kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlg
 #'   Mac = raw,
 #'   GrantTokens = list(
 #'     "string"
-#'   )
+#'   ),
+#'   DryRun = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -8801,14 +9062,14 @@ kms_verify <- function(KeyId, Message, MessageType = NULL, Signature, SigningAlg
 #' @rdname kms_verify_mac
 #'
 #' @aliases kms_verify_mac
-kms_verify_mac <- function(Message, KeyId, MacAlgorithm, Mac, GrantTokens = NULL) {
+kms_verify_mac <- function(Message, KeyId, MacAlgorithm, Mac, GrantTokens = NULL, DryRun = NULL) {
   op <- new_operation(
     name = "VerifyMac",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kms$verify_mac_input(Message = Message, KeyId = KeyId, MacAlgorithm = MacAlgorithm, Mac = Mac, GrantTokens = GrantTokens)
+  input <- .kms$verify_mac_input(Message = Message, KeyId = KeyId, MacAlgorithm = MacAlgorithm, Mac = Mac, GrantTokens = GrantTokens, DryRun = DryRun)
   output <- .kms$verify_mac_output()
   config <- get_config()
   svc <- .kms$service(config)

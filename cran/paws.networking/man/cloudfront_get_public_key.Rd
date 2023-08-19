@@ -12,6 +12,6 @@ cloudfront_get_public_key(Id)
 \description{
 Gets a public key.
 
-See \url{https://paws-r.github.io/docs/cloudfront/get_public_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_get_public_key/} for full documentation.
 }
 \keyword{internal}

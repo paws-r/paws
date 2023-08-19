@@ -31,6 +31,6 @@ in the \emph{CloudFormation User Guide}.
 \description{
 Deletes a stack set. Before you can delete a stack set, all its member stack instances must be deleted. For more information about how to complete this, see \code{\link[=cloudformation_delete_stack_instances]{delete_stack_instances}}.
 
-See \url{https://paws-r.github.io/docs/cloudformation/delete_stack_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_delete_stack_set/} for full documentation.
 }
 \keyword{internal}

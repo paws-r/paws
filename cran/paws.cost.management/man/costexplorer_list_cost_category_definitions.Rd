@@ -23,6 +23,6 @@ results than the maximum page size.}
 \description{
 Returns the name, Amazon Resource Name (ARN), \code{NumberOfRules} and effective dates of all Cost Categories defined in the account. You have the option to use \code{EffectiveOn} to return a list of Cost Categories that were active on a specific date. If there is no \code{EffectiveOn} specified, you’ll see Cost Categories that are effective on the current date. If Cost Category is still effective, \code{EffectiveEnd} is omitted in the response. \code{\link[=costexplorer_list_cost_category_definitions]{list_cost_category_definitions}} supports pagination. The request can have a \code{MaxResults} range up to 100.
 
-See \url{https://paws-r.github.io/docs/costexplorer/list_cost_category_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_list_cost_category_definitions/} for full documentation.
 }
 \keyword{internal}

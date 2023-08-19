@@ -12,6 +12,6 @@ redshiftserverless_get_namespace(namespaceName)
 \description{
 Returns information about a namespace in Amazon Redshift Serverless.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/get_namespace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_get_namespace/} for full documentation.
 }
 \keyword{internal}

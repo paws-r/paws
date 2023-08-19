@@ -33,6 +33,6 @@ recognized faces.}
 \description{
 Gets the face search results for Amazon Rekognition Video face search started by \code{\link[=rekognition_start_face_search]{start_face_search}}. The search returns faces in a collection that match the faces of persons detected in a video. It also includes the time(s) that faces are matched in the video.
 
-See \url{https://paws-r.github.io/docs/rekognition/get_face_search.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_get_face_search/} for full documentation.
 }
 \keyword{internal}

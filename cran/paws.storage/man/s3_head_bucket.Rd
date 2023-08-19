@@ -30,7 +30,7 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
@@ -40,6 +40,6 @@ different account, the request fails with the HTTP status code
 \description{
 This action is useful to determine if a bucket exists and you have permission to access it. The action returns a \verb{200 OK} if the bucket exists and you have permission to access it.
 
-See \url{https://paws-r.github.io/docs/s3/head_bucket.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_head_bucket/} for full documentation.
 }
 \keyword{internal}

@@ -40,6 +40,6 @@ indicate its use by the sales department.}
 \description{
 Starts an asynchronous event detection job for a collection of documents.
 
-See \url{https://paws-r.github.io/docs/comprehend/start_events_detection_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_start_events_detection_job/} for full documentation.
 }
 \keyword{internal}

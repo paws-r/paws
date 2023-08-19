@@ -21,6 +21,6 @@ Default value: \code{null}}
 \description{
 Lists API key resources in your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/locationservice/list_keys.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_list_keys/} for full documentation.
 }
 \keyword{internal}

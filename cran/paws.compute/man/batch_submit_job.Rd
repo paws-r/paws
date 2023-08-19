@@ -30,9 +30,12 @@ letters, numbers, hyphens (-), and underscores (_).}
 \item{jobQueue}{[required] The job queue where the job is submitted. You can specify either the
 name or the Amazon Resource Name (ARN) of the queue.}
 
-\item{shareIdentifier}{The share identifier for the job. If the job queue doesn't have a
-scheduling policy, then this parameter must not be specified. If the job
-queue has a scheduling policy, then this parameter must be specified.}
+\item{shareIdentifier}{The share identifier for the job. Don't specify this parameter if the
+job queue doesn't have a scheduling policy. If the job queue has a
+scheduling policy, then this parameter must be specified.
+
+This string is limited to 255 alphanumeric characters, and can be
+followed by an asterisk (*).}
 
 \item{schedulingPriorityOverride}{The scheduling priority for the job. This only affects jobs in job
 queues with a fair share policy. Jobs with a higher scheduling priority
@@ -121,6 +124,6 @@ definition.}
 \description{
 Submits an Batch job from a job definition. Parameters that are specified during \code{\link[=batch_submit_job]{submit_job}} override parameters defined in the job definition. vCPU and memory requirements that are specified in the \code{resourceRequirements} objects in the job definition are the exception. They can't be overridden this way using the \code{memory} and \code{vcpus} parameters. Rather, you must specify updates to job definition parameters in a \code{resourceRequirements} object that's included in the \code{containerOverrides} parameter.
 
-See \url{https://paws-r.github.io/docs/batch/submit_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_submit_job/} for full documentation.
 }
 \keyword{internal}

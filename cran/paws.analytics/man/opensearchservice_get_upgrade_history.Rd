@@ -27,6 +27,6 @@ operations, which returns results in the next page.}
 \description{
 Retrieves the complete history of the last 10 upgrades performed on an Amazon OpenSearch Service domain.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/get_upgrade_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_get_upgrade_history/} for full documentation.
 }
 \keyword{internal}

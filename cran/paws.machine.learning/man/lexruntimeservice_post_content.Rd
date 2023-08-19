@@ -131,6 +131,6 @@ contexts for the session are cleared.}
 \description{
 Sends user input (text or speech) to Amazon Lex. Clients use this API to send text and audio requests to Amazon Lex at runtime. Amazon Lex interprets the user input using the machine learning model that it built for the bot.
 
-See \url{https://paws-r.github.io/docs/lexruntimeservice/post_content.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexruntimeservice_post_content/} for full documentation.
 }
 \keyword{internal}

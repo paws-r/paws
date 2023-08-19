@@ -25,6 +25,6 @@ page.}
 \description{
 Describes all packages available to OpenSearch Service. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/describe_packages.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_describe_packages/} for full documentation.
 }
 \keyword{internal}

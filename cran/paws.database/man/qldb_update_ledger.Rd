@@ -56,6 +56,6 @@ in the \emph{Key Management Service Developer Guide}.}
 \description{
 Updates properties on a ledger.
 
-See \url{https://paws-r.github.io/docs/qldb/update_ledger.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_update_ledger/} for full documentation.
 }
 \keyword{internal}

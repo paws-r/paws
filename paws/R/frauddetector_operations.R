@@ -89,7 +89,7 @@ frauddetector_batch_create_variable <- function(variableEntries, tags = NULL) {
 #'   variables = list(
 #'     list(
 #'       name = "string",
-#'       dataType = "STRING"|"INTEGER"|"FLOAT"|"BOOLEAN",
+#'       dataType = "STRING"|"INTEGER"|"FLOAT"|"BOOLEAN"|"DATETIME",
 #'       dataSource = "EVENT"|"MODEL_SCORE"|"EXTERNAL_MODEL_SCORE",
 #'       defaultValue = "string",
 #'       description = "string",
@@ -753,7 +753,7 @@ frauddetector_create_rule <- function(ruleId, detectorId, description = NULL, ex
 #'   description, variableType, tags)
 #'
 #' @param name &#91;required&#93; The name of the variable.
-#' @param dataType &#91;required&#93; The data type.
+#' @param dataType &#91;required&#93; The data type of the variable.
 #' @param dataSource &#91;required&#93; The source of the data.
 #' @param defaultValue &#91;required&#93; The default value for the variable when no value is received.
 #' @param description The description.
@@ -771,7 +771,7 @@ frauddetector_create_rule <- function(ruleId, detectorId, description = NULL, ex
 #' ```
 #' svc$create_variable(
 #'   name = "string",
-#'   dataType = "STRING"|"INTEGER"|"FLOAT"|"BOOLEAN",
+#'   dataType = "STRING"|"INTEGER"|"FLOAT"|"BOOLEAN"|"DATETIME",
 #'   dataSource = "EVENT"|"MODEL_SCORE"|"EXTERNAL_MODEL_SCORE",
 #'   defaultValue = "string",
 #'   description = "string",
@@ -1042,6 +1042,8 @@ frauddetector_delete_entity_type <- function(name) {
 #' 
 #' When you delete an event, Amazon Fraud Detector permanently deletes that
 #' event and the event data is no longer stored in Amazon Fraud Detector.
+#' If `deleteAuditHistory` is `True`, event data is available through
+#' search for up to 30 seconds after the delete operation is completed.
 #'
 #' @usage
 #' frauddetector_delete_event(eventId, eventTypeName, deleteAuditHistory)
@@ -1049,7 +1051,7 @@ frauddetector_delete_entity_type <- function(name) {
 #' @param eventId &#91;required&#93; The ID of the event to delete.
 #' @param eventTypeName &#91;required&#93; The name of the event type.
 #' @param deleteAuditHistory Specifies whether or not to delete any predictions associated with the
-#' event.
+#' event. If set to `True`,
 #'
 #' @return
 #' An empty list.
@@ -1847,7 +1849,7 @@ frauddetector_describe_model_versions <- function(modelId = NULL, modelVersionNu
     name = "DescribeModelVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$describe_model_versions_input(modelId = modelId, modelVersionNumber = modelVersionNumber, modelType = modelType, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$describe_model_versions_output()
@@ -1921,7 +1923,7 @@ frauddetector_get_batch_import_jobs <- function(jobId = NULL, maxResults = NULL,
     name = "GetBatchImportJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_batch_import_jobs_input(jobId = jobId, maxResults = maxResults, nextToken = nextToken)
   output <- .frauddetector$get_batch_import_jobs_output()
@@ -1997,7 +1999,7 @@ frauddetector_get_batch_prediction_jobs <- function(jobId = NULL, maxResults = N
     name = "GetBatchPredictionJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_batch_prediction_jobs_input(jobId = jobId, maxResults = maxResults, nextToken = nextToken)
   output <- .frauddetector$get_batch_prediction_jobs_output()
@@ -2188,7 +2190,7 @@ frauddetector_get_detectors <- function(detectorId = NULL, nextToken = NULL, max
     name = "GetDetectors",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_detectors_input(detectorId = detectorId, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_detectors_output()
@@ -2254,7 +2256,7 @@ frauddetector_get_entity_types <- function(name = NULL, nextToken = NULL, maxRes
     name = "GetEntityTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_entity_types_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_entity_types_output()
@@ -2652,7 +2654,10 @@ frauddetector_get_event_prediction_metadata <- function(eventId, eventTypeName, 
 #'       ),
 #'       lastUpdatedTime = "string",
 #'       createdTime = "string",
-#'       arn = "string"
+#'       arn = "string",
+#'       eventOrchestration = list(
+#'         eventBridgeEnabled = TRUE|FALSE
+#'       )
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -2678,7 +2683,7 @@ frauddetector_get_event_types <- function(name = NULL, nextToken = NULL, maxResu
     name = "GetEventTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_event_types_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_event_types_output()
@@ -2763,7 +2768,7 @@ frauddetector_get_external_models <- function(modelEndpoint = NULL, nextToken = 
     name = "GetExternalModels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_external_models_input(modelEndpoint = modelEndpoint, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_external_models_output()
@@ -2874,7 +2879,7 @@ frauddetector_get_labels <- function(name = NULL, nextToken = NULL, maxResults =
     name = "GetLabels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_labels_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_labels_output()
@@ -2928,7 +2933,7 @@ frauddetector_get_list_elements <- function(name, nextToken = NULL, maxResults =
     name = "GetListElements",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_list_elements_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_list_elements_output()
@@ -2991,7 +2996,7 @@ frauddetector_get_lists_metadata <- function(name = NULL, nextToken = NULL, maxR
     name = "GetListsMetadata",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_lists_metadata_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_lists_metadata_output()
@@ -3144,7 +3149,7 @@ frauddetector_get_models <- function(modelId = NULL, modelType = NULL, nextToken
     name = "GetModels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_models_input(modelId = modelId, modelType = modelType, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_models_output()
@@ -3209,7 +3214,7 @@ frauddetector_get_outcomes <- function(name = NULL, nextToken = NULL, maxResults
     name = "GetOutcomes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_outcomes_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_outcomes_output()
@@ -3291,7 +3296,7 @@ frauddetector_get_rules <- function(ruleId = NULL, detectorId, ruleVersion = NUL
     name = "GetRules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_rules_input(ruleId = ruleId, detectorId = detectorId, ruleVersion = ruleVersion, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_rules_output()
@@ -3327,7 +3332,7 @@ frauddetector_get_rules <- function(ruleId = NULL, detectorId, ruleVersion = NUL
 #'   variables = list(
 #'     list(
 #'       name = "string",
-#'       dataType = "STRING"|"INTEGER"|"FLOAT"|"BOOLEAN",
+#'       dataType = "STRING"|"INTEGER"|"FLOAT"|"BOOLEAN"|"DATETIME",
 #'       dataSource = "EVENT"|"MODEL_SCORE"|"EXTERNAL_MODEL_SCORE",
 #'       defaultValue = "string",
 #'       description = "string",
@@ -3360,7 +3365,7 @@ frauddetector_get_variables <- function(name = NULL, nextToken = NULL, maxResult
     name = "GetVariables",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_variables_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_variables_output()
@@ -3455,7 +3460,7 @@ frauddetector_list_event_predictions <- function(eventId = NULL, eventType = NUL
     name = "ListEventPredictions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$list_event_predictions_input(eventId = eventId, eventType = eventType, detectorId = detectorId, detectorVersionId = detectorVersionId, predictionTimeRange = predictionTimeRange, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$list_event_predictions_output()
@@ -3515,7 +3520,7 @@ frauddetector_list_tags_for_resource <- function(resourceARN, nextToken = NULL, 
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$list_tags_for_resource_input(resourceARN = resourceARN, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$list_tags_for_resource_output()
@@ -3648,7 +3653,7 @@ frauddetector_put_entity_type <- function(name, description = NULL, tags = NULL)
 #'
 #' @usage
 #' frauddetector_put_event_type(name, description, eventVariables, labels,
-#'   entityTypes, eventIngestion, tags)
+#'   entityTypes, eventIngestion, tags, eventOrchestration)
 #'
 #' @param name &#91;required&#93; The name.
 #' @param description The description of the event type.
@@ -3656,8 +3661,11 @@ frauddetector_put_entity_type <- function(name, description = NULL, tags = NULL)
 #' @param labels The event type labels.
 #' @param entityTypes &#91;required&#93; The entity type for the event type. Example entity types: customer,
 #' merchant, account.
-#' @param eventIngestion Specifies if ingenstion is enabled or disabled.
+#' @param eventIngestion Specifies if ingestion is enabled or disabled.
 #' @param tags A collection of key and value pairs.
+#' @param eventOrchestration Enables or disables event orchestration. If enabled, you can send event
+#' predictions to select AWS services for downstream processing of the
+#' events.
 #'
 #' @return
 #' An empty list.
@@ -3682,6 +3690,9 @@ frauddetector_put_entity_type <- function(name, description = NULL, tags = NULL)
 #'       key = "string",
 #'       value = "string"
 #'     )
+#'   ),
+#'   eventOrchestration = list(
+#'     eventBridgeEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -3691,14 +3702,14 @@ frauddetector_put_entity_type <- function(name, description = NULL, tags = NULL)
 #' @rdname frauddetector_put_event_type
 #'
 #' @aliases frauddetector_put_event_type
-frauddetector_put_event_type <- function(name, description = NULL, eventVariables, labels = NULL, entityTypes, eventIngestion = NULL, tags = NULL) {
+frauddetector_put_event_type <- function(name, description = NULL, eventVariables, labels = NULL, entityTypes, eventIngestion = NULL, tags = NULL, eventOrchestration = NULL) {
   op <- new_operation(
     name = "PutEventType",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$put_event_type_input(name = name, description = description, eventVariables = eventVariables, labels = labels, entityTypes = entityTypes, eventIngestion = eventIngestion, tags = tags)
+  input <- .frauddetector$put_event_type_input(name = name, description = description, eventVariables = eventVariables, labels = labels, entityTypes = entityTypes, eventIngestion = eventIngestion, tags = tags, eventOrchestration = eventOrchestration)
   output <- .frauddetector$put_event_type_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -3844,7 +3855,7 @@ frauddetector_put_kms_encryption_key <- function(kmsEncryptionKeyArn) {
 #'
 #' @param name &#91;required&#93; The label name.
 #' @param description The label description.
-#' @param tags 
+#' @param tags A collection of key and value pairs.
 #'
 #' @return
 #' An empty list.

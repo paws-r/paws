@@ -26,6 +26,6 @@ be for the same VPC as subnet specified.}
 \description{
 Creates a mount target for a file system. You can then mount the file system on EC2 instances by using the mount target.
 
-See \url{https://paws-r.github.io/docs/efs/create_mount_target.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_create_mount_target/} for full documentation.
 }
 \keyword{internal}

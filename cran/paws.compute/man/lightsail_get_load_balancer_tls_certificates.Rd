@@ -14,6 +14,6 @@ certificate.}
 \description{
 Returns information about the TLS certificates that are associated with the specified Lightsail load balancer.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_load_balancer_tls_certificates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_load_balancer_tls_certificates/} for full documentation.
 }
 \keyword{internal}

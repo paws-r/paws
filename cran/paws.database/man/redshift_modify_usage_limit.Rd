@@ -18,6 +18,6 @@ more information about this parameter, see UsageLimit.}
 \description{
 Modifies a usage limit in a cluster. You can't modify the feature type or period of a usage limit.
 
-See \url{https://paws-r.github.io/docs/redshift/modify_usage_limit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_modify_usage_limit/} for full documentation.
 }
 \keyword{internal}

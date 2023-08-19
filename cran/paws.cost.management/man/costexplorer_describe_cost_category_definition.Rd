@@ -18,6 +18,6 @@ costexplorer_describe_cost_category_definition(
 \description{
 Returns the name, Amazon Resource Name (ARN), rules, definition, and effective dates of a Cost Category that's defined in the account.
 
-See \url{https://paws-r.github.io/docs/costexplorer/describe_cost_category_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/costexplorer_describe_cost_category_definition/} for full documentation.
 }
 \keyword{internal}

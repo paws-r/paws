@@ -27,6 +27,6 @@ being pushed to the repository.}
 \description{
 The \code{\link[=ecr_put_image_scanning_configuration]{put_image_scanning_configuration}} API is being deprecated, in favor of specifying the image scanning configuration at the registry level. For more information, see \code{\link[=ecr_put_registry_scanning_configuration]{put_registry_scanning_configuration}}.
 
-See \url{https://paws-r.github.io/docs/ecr/put_image_scanning_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_put_image_scanning_configuration/} for full documentation.
 }
 \keyword{internal}

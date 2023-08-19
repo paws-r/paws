@@ -29,6 +29,6 @@ policy.}
 \description{
 Deletes the resource policy that is set on a repository. After a resource policy is deleted, the permissions allowed and denied by the deleted policy are removed. The effect of deleting a resource policy might not be immediate.
 
-See \url{https://paws-r.github.io/docs/codeartifact/delete_repository_permissions_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_delete_repository_permissions_policy/} for full documentation.
 }
 \keyword{internal}

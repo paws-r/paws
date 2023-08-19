@@ -9,6 +9,6 @@ shield_describe_subscription()
 \description{
 Provides details about the Shield Advanced subscription for an account.
 
-See \url{https://paws-r.github.io/docs/shield/describe_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_describe_subscription/} for full documentation.
 }
 \keyword{internal}

@@ -34,6 +34,6 @@ operation.}
 \description{
 Adds an InputProcessingConfiguration to a SQL-based Kinesis Data Analytics application. An input processor pre-processes records on the input stream before the application's SQL code executes. Currently, the only input processor available is \href{https://docs.aws.amazon.com/lambda/}{Amazon Lambda}.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_input_processing_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_input_processing_configuration/} for full documentation.
 }
 \keyword{internal}

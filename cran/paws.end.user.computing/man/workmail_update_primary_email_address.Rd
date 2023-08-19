@@ -16,6 +16,6 @@ workmail_update_primary_email_address(OrganizationId, EntityId, Email)
 \description{
 Updates the primary email for a user, group, or resource. The current email is moved into the list of aliases (or swapped between an existing alias and the current primary email), and the email provided in the input is promoted as the primary.
 
-See \url{https://paws-r.github.io/docs/workmail/update_primary_email_address.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_update_primary_email_address/} for full documentation.
 }
 \keyword{internal}

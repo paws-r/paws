@@ -13,6 +13,6 @@ will be fetched.}
 \description{
 Fetches the attached managed scaling policy for an Amazon EMR cluster.
 
-See \url{https://paws-r.github.io/docs/emr/get_managed_scaling_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_get_managed_scaling_policy/} for full documentation.
 }
 \keyword{internal}

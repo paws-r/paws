@@ -13,7 +13,7 @@ ec2_describe_internet_gateways(
 )
 }
 \arguments{
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{attachment.state} - The current state of the attachment between the
 gateway and the VPC (\code{available}). Present only if a VPC is
@@ -37,7 +37,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{InternetGatewayIds}{One or more internet gateway IDs.
+\item{InternetGatewayIds}{The IDs of the internet gateways.
 
 Default: Describes all your internet gateways.}
 
@@ -52,6 +52,6 @@ output. For more information, see
 \description{
 Describes one or more of your internet gateways.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_internet_gateways.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_internet_gateways/} for full documentation.
 }
 \keyword{internal}

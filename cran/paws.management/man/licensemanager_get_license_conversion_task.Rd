@@ -12,6 +12,6 @@ licensemanager_get_license_conversion_task(LicenseConversionTaskId)
 \description{
 Gets information about the specified license type conversion task.
 
-See \url{https://paws-r.github.io/docs/licensemanager/get_license_conversion_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_get_license_conversion_task/} for full documentation.
 }
 \keyword{internal}

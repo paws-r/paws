@@ -21,9 +21,9 @@ request.}
 
 \item{JobOutputDataConfig}{[required]}
 
-\item{DatastoreId}{[required] The AWS-generated Data Store ID.}
+\item{DatastoreId}{[required] The AWS-generated data store ID.}
 
-\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) that gives Amazon HealthLake access
+\item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) that gives AWS HealthLake access
 permission.}
 
 \item{ClientToken}{[required] Optional user provided token used for ensuring idempotency.}
@@ -31,6 +31,6 @@ permission.}
 \description{
 Begins a FHIR Import job.
 
-See \url{https://paws-r.github.io/docs/healthlake/start_fhir_import_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/healthlake_start_fhir_import_job/} for full documentation.
 }
 \keyword{internal}

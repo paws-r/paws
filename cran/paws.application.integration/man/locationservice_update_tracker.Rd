@@ -6,6 +6,7 @@
 \usage{
 locationservice_update_tracker(
   Description = NULL,
+  EventBridgeEnabled = NULL,
   PositionFiltering = NULL,
   PricingPlan = NULL,
   PricingPlanDataSource = NULL,
@@ -14,6 +15,13 @@ locationservice_update_tracker(
 }
 \arguments{
 \item{Description}{Updates the description for the tracker resource.}
+
+\item{EventBridgeEnabled}{Whether to enable position \code{UPDATE} events from this tracker to be sent
+to EventBridge.
+
+You do not need enable this feature to get \code{ENTER} and \code{EXIT} events for
+geofences with this tracker. Those events are always sent to
+EventBridge.}
 
 \item{PositionFiltering}{Updates the position filtering for the tracker resource.
 
@@ -51,6 +59,6 @@ evaluations.
 \description{
 Updates the specified properties of a given tracker resource.
 
-See \url{https://paws-r.github.io/docs/locationservice/update_tracker.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_update_tracker/} for full documentation.
 }
 \keyword{internal}

@@ -228,6 +228,10 @@ emrcontainers_create_job_template <- function(name, clientToken, jobTemplateData
 #'       ),
 #'       s3MonitoringConfiguration = list(
 #'         logUri = "string"
+#'       ),
+#'       containerLogRotationConfiguration = list(
+#'         rotationSize = "string",
+#'         maxFilesToKeep = 123
 #'       )
 #'     )
 #'   ),
@@ -529,6 +533,10 @@ emrcontainers_delete_virtual_cluster <- function(id) {
 #'         ),
 #'         s3MonitoringConfiguration = list(
 #'           logUri = "string"
+#'         ),
+#'         containerLogRotationConfiguration = list(
+#'           rotationSize = "string",
+#'           maxFilesToKeep = 123
 #'         )
 #'       )
 #'     ),
@@ -757,6 +765,10 @@ emrcontainers_describe_job_template <- function(id) {
 #'         ),
 #'         s3MonitoringConfiguration = list(
 #'           logUri = "string"
+#'         ),
+#'         containerLogRotationConfiguration = list(
+#'           rotationSize = "string",
+#'           maxFilesToKeep = 123
 #'         )
 #'       )
 #'     ),
@@ -1001,6 +1013,10 @@ emrcontainers_get_managed_endpoint_session_credentials <- function(endpointIdent
 #'           ),
 #'           s3MonitoringConfiguration = list(
 #'             logUri = "string"
+#'           ),
+#'           containerLogRotationConfiguration = list(
+#'             rotationSize = "string",
+#'             maxFilesToKeep = 123
 #'           )
 #'         )
 #'       ),
@@ -1070,7 +1086,7 @@ emrcontainers_list_job_runs <- function(virtualClusterId, createdBefore = NULL, 
     name = "ListJobRuns",
     http_method = "GET",
     http_path = "/virtualclusters/{virtualClusterId}/jobruns",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobRuns")
   )
   input <- .emrcontainers$list_job_runs_input(virtualClusterId = virtualClusterId, createdBefore = createdBefore, createdAfter = createdAfter, name = name, states = states, maxResults = maxResults, nextToken = nextToken)
   output <- .emrcontainers$list_job_runs_output()
@@ -1195,7 +1211,7 @@ emrcontainers_list_job_templates <- function(createdAfter = NULL, createdBefore 
     name = "ListJobTemplates",
     http_method = "GET",
     http_path = "/jobtemplates",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templates")
   )
   input <- .emrcontainers$list_job_templates_input(createdAfter = createdAfter, createdBefore = createdBefore, maxResults = maxResults, nextToken = nextToken)
   output <- .emrcontainers$list_job_templates_output()
@@ -1263,6 +1279,10 @@ emrcontainers_list_job_templates <- function(createdAfter = NULL, createdBefore 
 #'           ),
 #'           s3MonitoringConfiguration = list(
 #'             logUri = "string"
+#'           ),
+#'           containerLogRotationConfiguration = list(
+#'             rotationSize = "string",
+#'             maxFilesToKeep = 123
 #'           )
 #'         )
 #'       ),
@@ -1316,7 +1336,7 @@ emrcontainers_list_managed_endpoints <- function(virtualClusterId, createdBefore
     name = "ListManagedEndpoints",
     http_method = "GET",
     http_path = "/virtualclusters/{virtualClusterId}/endpoints",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "endpoints")
   )
   input <- .emrcontainers$list_managed_endpoints_input(virtualClusterId = virtualClusterId, createdBefore = createdBefore, createdAfter = createdAfter, types = types, states = states, maxResults = maxResults, nextToken = nextToken)
   output <- .emrcontainers$list_managed_endpoints_output()
@@ -1461,7 +1481,7 @@ emrcontainers_list_virtual_clusters <- function(containerProviderId = NULL, cont
     name = "ListVirtualClusters",
     http_method = "GET",
     http_path = "/virtualclusters",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "virtualClusters")
   )
   input <- .emrcontainers$list_virtual_clusters_input(containerProviderId = containerProviderId, containerProviderType = containerProviderType, createdAfter = createdAfter, createdBefore = createdBefore, states = states, maxResults = maxResults, nextToken = nextToken)
   output <- .emrcontainers$list_virtual_clusters_output()
@@ -1546,6 +1566,10 @@ emrcontainers_list_virtual_clusters <- function(containerProviderId = NULL, cont
 #'       ),
 #'       s3MonitoringConfiguration = list(
 #'         logUri = "string"
+#'       ),
+#'       containerLogRotationConfiguration = list(
+#'         rotationSize = "string",
+#'         maxFilesToKeep = 123
 #'       )
 #'     )
 #'   ),

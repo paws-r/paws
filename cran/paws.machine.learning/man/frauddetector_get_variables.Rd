@@ -16,6 +16,6 @@ frauddetector_get_variables(name = NULL, nextToken = NULL, maxResults = NULL)
 \description{
 Gets all of the variables or the specific variable. This is a paginated API. Providing null \code{maxSizePerPage} results in retrieving maximum of 100 records per page. If you provide \code{maxSizePerPage} the value must be between 50 and 100. To get the next page result, a provide a pagination token from \code{GetVariablesResult} as part of your request. Null pagination token fetches the records from the beginning.
 
-See \url{https://paws-r.github.io/docs/frauddetector/get_variables.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_get_variables/} for full documentation.
 }
 \keyword{internal}

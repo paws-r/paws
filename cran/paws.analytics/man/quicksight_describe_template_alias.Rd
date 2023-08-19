@@ -21,6 +21,6 @@ apply to templates.}
 \description{
 Describes the template alias for a template.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_template_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_template_alias/} for full documentation.
 }
 \keyword{internal}

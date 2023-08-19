@@ -63,6 +63,6 @@ the request to be valid.}
 \description{
 Creates an analysis in Amazon QuickSight. Analyses can be created either from a template or from an \code{AnalysisDefinition}.
 
-See \url{https://paws-r.github.io/docs/quicksight/create_analysis.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_create_analysis/} for full documentation.
 }
 \keyword{internal}

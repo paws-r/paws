@@ -12,6 +12,6 @@ networkmanager_get_resource_policy(ResourceArn)
 \description{
 Returns information about a resource policy.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_resource_policy/} for full documentation.
 }
 \keyword{internal}

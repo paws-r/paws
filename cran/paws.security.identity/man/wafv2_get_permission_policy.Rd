@@ -13,6 +13,6 @@ get the policy.}
 \description{
 Returns the IAM policy that is attached to the specified rule group.
 
-See \url{https://paws-r.github.io/docs/wafv2/get_permission_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_get_permission_policy/} for full documentation.
 }
 \keyword{internal}

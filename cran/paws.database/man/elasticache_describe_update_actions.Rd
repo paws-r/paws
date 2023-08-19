@@ -46,6 +46,6 @@ the value specified by \code{MaxRecords}.}
 \description{
 Returns details of the update actions
 
-See \url{https://paws-r.github.io/docs/elasticache/describe_update_actions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_describe_update_actions/} for full documentation.
 }
 \keyword{internal}

@@ -76,6 +76,6 @@ associated with version 3 of the face model or higher.}
 \description{
 Detects faces in the input image and adds them to the specified collection.
 
-See \url{https://paws-r.github.io/docs/rekognition/index_faces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_index_faces/} for full documentation.
 }
 \keyword{internal}

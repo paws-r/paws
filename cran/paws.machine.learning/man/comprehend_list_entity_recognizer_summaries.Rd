@@ -19,6 +19,6 @@ comprehend_list_entity_recognizer_summaries(
 \description{
 Gets a list of summaries for the entity recognizers that you have created.
 
-See \url{https://paws-r.github.io/docs/comprehend/list_entity_recognizer_summaries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_list_entity_recognizer_summaries/} for full documentation.
 }
 \keyword{internal}

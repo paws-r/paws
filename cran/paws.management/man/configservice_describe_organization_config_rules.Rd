@@ -25,6 +25,6 @@ the next page of results in a paginated response.}
 \description{
 Returns a list of organization Config rules.
 
-See \url{https://paws-r.github.io/docs/configservice/describe_organization_config_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_describe_organization_config_rules/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ dynamodb_update_continuous_backups(TableName, PointInTimeRecoverySpecification)
 \description{
 \code{\link[=dynamodb_update_continuous_backups]{update_continuous_backups}} enables or disables point in time recovery for the specified table. A successful \code{\link[=dynamodb_update_continuous_backups]{update_continuous_backups}} call returns the current \code{ContinuousBackupsDescription}. Continuous backups are \code{ENABLED} on all tables at table creation. If point in time recovery is enabled, \code{PointInTimeRecoveryStatus} will be set to ENABLED.
 
-See \url{https://paws-r.github.io/docs/dynamodb/update_continuous_backups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_update_continuous_backups/} for full documentation.
 }
 \keyword{internal}

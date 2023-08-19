@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Accepts a directory sharing request that was sent from the directory owner account.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/accept_shared_directory.html](https://paws-r.github.io/docs/directoryservice/accept_shared_directory.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_accept_shared_directory/](https://www.paws-r-sdk.com/docs/directoryservice_accept_shared_directory/) for full documentation.
 #'
 #' @param SharedDirectoryId &#91;required&#93; Identifier of the shared directory in the directory consumer account.
 #' This identifier is different for each directory owner account.
@@ -41,7 +41,7 @@ directoryservice_accept_shared_directory <- function(SharedDirectoryId) {
 #' @description
 #' If the DNS server for your self-managed domain uses a publicly addressable IP address, you must add a CIDR address block to correctly route traffic to and from your Microsoft AD on Amazon Web Services. *AddIpRoutes* adds this address block. You can also use *AddIpRoutes* to facilitate routing traffic that uses public IP ranges from your Microsoft AD on Amazon Web Services to a peer VPC.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/add_ip_routes.html](https://paws-r.github.io/docs/directoryservice/add_ip_routes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_add_ip_routes/](https://www.paws-r-sdk.com/docs/directoryservice_add_ip_routes/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; Identifier (ID) of the directory to which to add the address block.
 #' @param IpRoutes &#91;required&#93; IP address blocks, using CIDR format, of the traffic to route. This is
@@ -123,7 +123,7 @@ directoryservice_add_ip_routes <- function(DirectoryId, IpRoutes, UpdateSecurity
 #' @description
 #' Adds two domain controllers in the specified Region for the specified directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/add_region.html](https://paws-r.github.io/docs/directoryservice/add_region.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_add_region/](https://www.paws-r-sdk.com/docs/directoryservice_add_region/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory to which you want to add Region
 #' replication.
@@ -156,7 +156,7 @@ directoryservice_add_region <- function(DirectoryId, RegionName, VPCSettings) {
 #' @description
 #' Adds or overwrites one or more tags for the specified directory. Each directory can have a maximum of 50 tags. Each tag consists of a key and optional value. Tag keys must be unique to each resource.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/add_tags_to_resource.html](https://paws-r.github.io/docs/directoryservice/add_tags_to_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_add_tags_to_resource/](https://www.paws-r-sdk.com/docs/directoryservice_add_tags_to_resource/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; Identifier (ID) for the directory to which to add the tag.
 #' @param Tags &#91;required&#93; The tags to be assigned to the directory.
@@ -186,7 +186,7 @@ directoryservice_add_tags_to_resource <- function(ResourceId, Tags) {
 #' @description
 #' Cancels an in-progress schema extension to a Microsoft AD directory. Once a schema extension has started replicating to all domain controllers, the task can no longer be canceled. A schema extension can be canceled during any of the following states; `Initializing`, `CreatingSnapshot`, and `UpdatingSchema`.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/cancel_schema_extension.html](https://paws-r.github.io/docs/directoryservice/cancel_schema_extension.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_cancel_schema_extension/](https://www.paws-r-sdk.com/docs/directoryservice_cancel_schema_extension/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory whose schema extension will be canceled.
 #' @param SchemaExtensionId &#91;required&#93; The identifier of the schema extension that will be canceled.
@@ -216,7 +216,7 @@ directoryservice_cancel_schema_extension <- function(DirectoryId, SchemaExtensio
 #' @description
 #' Creates an AD Connector to connect to a self-managed directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/connect_directory.html](https://paws-r.github.io/docs/directoryservice/connect_directory.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_connect_directory/](https://www.paws-r-sdk.com/docs/directoryservice_connect_directory/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The fully qualified name of your self-managed directory, such as
 #' `corp.example.com`.
@@ -253,7 +253,7 @@ directoryservice_connect_directory <- function(Name, ShortName = NULL, Password,
 #' @description
 #' Creates an alias for a directory and assigns the alias to the directory. The alias is used to construct the access URL for the directory, such as `http://<alias>.awsapps.com`.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/create_alias.html](https://paws-r.github.io/docs/directoryservice/create_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_create_alias/](https://www.paws-r-sdk.com/docs/directoryservice_create_alias/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory for which to create the alias.
 #' @param Alias &#91;required&#93; The requested alias.
@@ -287,7 +287,7 @@ directoryservice_create_alias <- function(DirectoryId, Alias) {
 #' @description
 #' Creates an Active Directory computer object in the specified directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/create_computer.html](https://paws-r.github.io/docs/directoryservice/create_computer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_create_computer/](https://www.paws-r-sdk.com/docs/directoryservice_create_computer/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory in which to create the computer account.
 #' @param ComputerName &#91;required&#93; The name of the computer account.
@@ -324,7 +324,7 @@ directoryservice_create_computer <- function(DirectoryId, ComputerName, Password
 #' @description
 #' Creates a conditional forwarder associated with your Amazon Web Services directory. Conditional forwarders are required in order to set up a trust relationship with another domain. The conditional forwarder points to the trusted domain.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/create_conditional_forwarder.html](https://paws-r.github.io/docs/directoryservice/create_conditional_forwarder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_create_conditional_forwarder/](https://www.paws-r-sdk.com/docs/directoryservice_create_conditional_forwarder/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The directory ID of the Amazon Web Services directory for which you are
 #' creating the conditional forwarder.
@@ -358,7 +358,7 @@ directoryservice_create_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' @description
 #' Creates a Simple AD directory. For more information, see [Simple Active Directory](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_simple_ad.html) in the *Directory Service Admin Guide*.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/create_directory.html](https://paws-r.github.io/docs/directoryservice/create_directory.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_create_directory/](https://www.paws-r-sdk.com/docs/directoryservice_create_directory/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The fully qualified name for the directory, such as `corp.example.com`.
 #' @param ShortName The NetBIOS name of the directory, such as `CORP`.
@@ -427,7 +427,7 @@ directoryservice_create_directory <- function(Name, ShortName = NULL, Password, 
 #' @description
 #' Creates a subscription to forward real-time Directory Service domain controller security logs to the specified Amazon CloudWatch log group in your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/create_log_subscription.html](https://paws-r.github.io/docs/directoryservice/create_log_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_create_log_subscription/](https://www.paws-r-sdk.com/docs/directoryservice_create_log_subscription/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; Identifier of the directory to which you want to subscribe and receive
 #' real-time logs to your specified CloudWatch log group.
@@ -459,7 +459,7 @@ directoryservice_create_log_subscription <- function(DirectoryId, LogGroupName) 
 #' @description
 #' Creates a Microsoft AD directory in the Amazon Web Services Cloud. For more information, see [Managed Microsoft AD](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/directory_microsoft_ad.html) in the *Directory Service Admin Guide*.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/create_microsoft_ad.html](https://paws-r.github.io/docs/directoryservice/create_microsoft_ad.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_create_microsoft_ad/](https://www.paws-r-sdk.com/docs/directoryservice_create_microsoft_ad/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The fully qualified domain name for the Managed Microsoft AD directory,
 #' such as `corp.example.com`. This name will resolve inside your VPC only.
@@ -508,7 +508,7 @@ directoryservice_create_microsoft_ad <- function(Name, ShortName = NULL, Passwor
 #' @description
 #' Creates a snapshot of a Simple AD or Microsoft AD directory in the Amazon Web Services cloud.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/create_snapshot.html](https://paws-r.github.io/docs/directoryservice/create_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_create_snapshot/](https://www.paws-r-sdk.com/docs/directoryservice_create_snapshot/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory of which to take a snapshot.
 #' @param Name The descriptive name to apply to the snapshot.
@@ -539,7 +539,7 @@ directoryservice_create_snapshot <- function(DirectoryId, Name = NULL) {
 #' @description
 #' Directory Service for Microsoft Active Directory allows you to configure trust relationships. For example, you can establish a trust between your Managed Microsoft AD directory, and your existing self-managed Microsoft Active Directory. This would allow you to provide users and groups access to resources in either domain, with a single set of credentials.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/create_trust.html](https://paws-r.github.io/docs/directoryservice/create_trust.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_create_trust/](https://www.paws-r-sdk.com/docs/directoryservice_create_trust/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The Directory ID of the Managed Microsoft AD directory for which to
 #' establish the trust relationship.
@@ -579,7 +579,7 @@ directoryservice_create_trust <- function(DirectoryId, RemoteDomainName, TrustPa
 #' @description
 #' Deletes a conditional forwarder that has been set up for your Amazon Web Services directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/delete_conditional_forwarder.html](https://paws-r.github.io/docs/directoryservice/delete_conditional_forwarder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_delete_conditional_forwarder/](https://www.paws-r-sdk.com/docs/directoryservice_delete_conditional_forwarder/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The directory ID for which you are deleting the conditional forwarder.
 #' @param RemoteDomainName &#91;required&#93; The fully qualified domain name (FQDN) of the remote domain with which
@@ -610,7 +610,7 @@ directoryservice_delete_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' @description
 #' Deletes an Directory Service directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/delete_directory.html](https://paws-r.github.io/docs/directoryservice/delete_directory.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_delete_directory/](https://www.paws-r-sdk.com/docs/directoryservice_delete_directory/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory to delete.
 #'
@@ -639,7 +639,7 @@ directoryservice_delete_directory <- function(DirectoryId) {
 #' @description
 #' Deletes the specified log subscription.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/delete_log_subscription.html](https://paws-r.github.io/docs/directoryservice/delete_log_subscription.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_delete_log_subscription/](https://www.paws-r-sdk.com/docs/directoryservice_delete_log_subscription/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; Identifier of the directory whose log subscription you want to delete.
 #'
@@ -668,7 +668,7 @@ directoryservice_delete_log_subscription <- function(DirectoryId) {
 #' @description
 #' Deletes a directory snapshot.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/delete_snapshot.html](https://paws-r.github.io/docs/directoryservice/delete_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_delete_snapshot/](https://www.paws-r-sdk.com/docs/directoryservice_delete_snapshot/) for full documentation.
 #'
 #' @param SnapshotId &#91;required&#93; The identifier of the directory snapshot to be deleted.
 #'
@@ -698,7 +698,7 @@ directoryservice_delete_snapshot <- function(SnapshotId) {
 #' @description
 #' Deletes an existing trust relationship between your Managed Microsoft AD directory and an external domain.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/delete_trust.html](https://paws-r.github.io/docs/directoryservice/delete_trust.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_delete_trust/](https://www.paws-r-sdk.com/docs/directoryservice_delete_trust/) for full documentation.
 #'
 #' @param TrustId &#91;required&#93; The Trust ID of the trust relationship to be deleted.
 #' @param DeleteAssociatedConditionalForwarder Delete a conditional forwarder as part of a DeleteTrustRequest.
@@ -729,7 +729,7 @@ directoryservice_delete_trust <- function(TrustId, DeleteAssociatedConditionalFo
 #' @description
 #' Deletes from the system the certificate that was registered for secure LDAP or client certificate authentication.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/deregister_certificate.html](https://paws-r.github.io/docs/directoryservice/deregister_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_deregister_certificate/](https://www.paws-r-sdk.com/docs/directoryservice_deregister_certificate/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param CertificateId &#91;required&#93; The identifier of the certificate.
@@ -760,7 +760,7 @@ directoryservice_deregister_certificate <- function(DirectoryId, CertificateId) 
 #' @description
 #' Removes the specified directory as a publisher to the specified Amazon SNS topic.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/deregister_event_topic.html](https://paws-r.github.io/docs/directoryservice/deregister_event_topic.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_deregister_event_topic/](https://www.paws-r-sdk.com/docs/directoryservice_deregister_event_topic/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The Directory ID to remove as a publisher. This directory will no longer
 #' send messages to the specified Amazon SNS topic.
@@ -793,7 +793,7 @@ directoryservice_deregister_event_topic <- function(DirectoryId, TopicName) {
 #' @description
 #' Displays information about the certificate registered for secure LDAP or client certificate authentication.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/describe_certificate.html](https://paws-r.github.io/docs/directoryservice/describe_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_describe_certificate/](https://www.paws-r-sdk.com/docs/directoryservice_describe_certificate/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param CertificateId &#91;required&#93; The identifier of the certificate.
@@ -824,7 +824,7 @@ directoryservice_describe_certificate <- function(DirectoryId, CertificateId) {
 #' @description
 #' Retrieves information about the type of client authentication for the specified directory, if the type is specified. If no type is specified, information about all client authentication types that are supported for the specified directory is retrieved. Currently, only `SmartCard` is supported.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/describe_client_authentication_settings.html](https://paws-r.github.io/docs/directoryservice/describe_client_authentication_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_describe_client_authentication_settings/](https://www.paws-r-sdk.com/docs/directoryservice_describe_client_authentication_settings/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory for which to retrieve information.
 #' @param Type The type of client authentication for which to retrieve information. If
@@ -846,7 +846,7 @@ directoryservice_describe_client_authentication_settings <- function(DirectoryId
     name = "DescribeClientAuthenticationSettings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "ClientAuthenticationSettingsInfo")
   )
   input <- .directoryservice$describe_client_authentication_settings_input(DirectoryId = DirectoryId, Type = Type, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_client_authentication_settings_output()
@@ -863,7 +863,7 @@ directoryservice_describe_client_authentication_settings <- function(DirectoryId
 #' @description
 #' Obtains information about the conditional forwarders for this account.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/describe_conditional_forwarders.html](https://paws-r.github.io/docs/directoryservice/describe_conditional_forwarders.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_describe_conditional_forwarders/](https://www.paws-r-sdk.com/docs/directoryservice_describe_conditional_forwarders/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The directory ID for which to get the list of associated conditional
 #' forwarders.
@@ -896,7 +896,7 @@ directoryservice_describe_conditional_forwarders <- function(DirectoryId, Remote
 #' @description
 #' Obtains information about the directories that belong to this account.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/describe_directories.html](https://paws-r.github.io/docs/directoryservice/describe_directories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_describe_directories/](https://www.paws-r-sdk.com/docs/directoryservice_describe_directories/) for full documentation.
 #'
 #' @param DirectoryIds A list of identifiers of the directories for which to obtain the
 #' information. If this member is null, all directories that belong to the
@@ -918,7 +918,7 @@ directoryservice_describe_directories <- function(DirectoryIds = NULL, NextToken
     name = "DescribeDirectories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "DirectoryDescriptions")
   )
   input <- .directoryservice$describe_directories_input(DirectoryIds = DirectoryIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_directories_output()
@@ -935,7 +935,7 @@ directoryservice_describe_directories <- function(DirectoryIds = NULL, NextToken
 #' @description
 #' Provides information about any domain controllers in your directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/describe_domain_controllers.html](https://paws-r.github.io/docs/directoryservice/describe_domain_controllers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_describe_domain_controllers/](https://www.paws-r-sdk.com/docs/directoryservice_describe_domain_controllers/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; Identifier of the directory for which to retrieve the domain controller
 #' information.
@@ -954,7 +954,7 @@ directoryservice_describe_domain_controllers <- function(DirectoryId, DomainCont
     name = "DescribeDomainControllers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken")
   )
   input <- .directoryservice$describe_domain_controllers_input(DirectoryId = DirectoryId, DomainControllerIds = DomainControllerIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_domain_controllers_output()
@@ -972,7 +972,7 @@ directoryservice_describe_domain_controllers <- function(DirectoryId, DomainCont
 #' @description
 #' Obtains information about which Amazon SNS topics receive status messages from the specified directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/describe_event_topics.html](https://paws-r.github.io/docs/directoryservice/describe_event_topics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_describe_event_topics/](https://www.paws-r-sdk.com/docs/directoryservice_describe_event_topics/) for full documentation.
 #'
 #' @param DirectoryId The Directory ID for which to get the list of associated Amazon SNS
 #' topics. If this member is null, associations for all Directory IDs are
@@ -1008,7 +1008,7 @@ directoryservice_describe_event_topics <- function(DirectoryId = NULL, TopicName
 #' @description
 #' Describes the status of LDAP security for the specified directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/describe_ldaps_settings.html](https://paws-r.github.io/docs/directoryservice/describe_ldaps_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_describe_ldaps_settings/](https://www.paws-r-sdk.com/docs/directoryservice_describe_ldaps_settings/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param Type The type of LDAP security to enable. Currently only the value `Client`
@@ -1024,7 +1024,7 @@ directoryservice_describe_ldaps_settings <- function(DirectoryId, Type = NULL, N
     name = "DescribeLDAPSSettings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "LDAPSSettingsInfo")
   )
   input <- .directoryservice$describe_ldaps_settings_input(DirectoryId = DirectoryId, Type = Type, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_ldaps_settings_output()
@@ -1042,7 +1042,7 @@ directoryservice_describe_ldaps_settings <- function(DirectoryId, Type = NULL, N
 #' @description
 #' Provides information about the Regions that are configured for multi-Region replication.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/describe_regions.html](https://paws-r.github.io/docs/directoryservice/describe_regions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_describe_regions/](https://www.paws-r-sdk.com/docs/directoryservice_describe_regions/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param RegionName The name of the Region. For example, `us-east-1`.
@@ -1058,7 +1058,7 @@ directoryservice_describe_regions <- function(DirectoryId, RegionName = NULL, Ne
     name = "DescribeRegions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "RegionsDescription")
   )
   input <- .directoryservice$describe_regions_input(DirectoryId = DirectoryId, RegionName = RegionName, NextToken = NextToken)
   output <- .directoryservice$describe_regions_output()
@@ -1076,7 +1076,7 @@ directoryservice_describe_regions <- function(DirectoryId, RegionName = NULL, Ne
 #' @description
 #' Retrieves information about the configurable settings for the specified directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/describe_settings.html](https://paws-r.github.io/docs/directoryservice/describe_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_describe_settings/](https://www.paws-r-sdk.com/docs/directoryservice_describe_settings/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory for which to retrieve information.
 #' @param Status The status of the directory settings for which to retrieve information.
@@ -1109,7 +1109,7 @@ directoryservice_describe_settings <- function(DirectoryId, Status = NULL, NextT
 #' @description
 #' Returns the shared directories in your account.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/describe_shared_directories.html](https://paws-r.github.io/docs/directoryservice/describe_shared_directories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_describe_shared_directories/](https://www.paws-r-sdk.com/docs/directoryservice_describe_shared_directories/) for full documentation.
 #'
 #' @param OwnerDirectoryId &#91;required&#93; Returns the identifier of the directory in the directory owner account.
 #' @param SharedDirectoryIds A list of identifiers of all shared directories in your account.
@@ -1127,7 +1127,7 @@ directoryservice_describe_shared_directories <- function(OwnerDirectoryId, Share
     name = "DescribeSharedDirectories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "SharedDirectories")
   )
   input <- .directoryservice$describe_shared_directories_input(OwnerDirectoryId = OwnerDirectoryId, SharedDirectoryIds = SharedDirectoryIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_shared_directories_output()
@@ -1145,7 +1145,7 @@ directoryservice_describe_shared_directories <- function(OwnerDirectoryId, Share
 #' @description
 #' Obtains information about the directory snapshots that belong to this account.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/describe_snapshots.html](https://paws-r.github.io/docs/directoryservice/describe_snapshots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_describe_snapshots/](https://www.paws-r-sdk.com/docs/directoryservice_describe_snapshots/) for full documentation.
 #'
 #' @param DirectoryId The identifier of the directory for which to retrieve snapshot
 #' information.
@@ -1165,7 +1165,7 @@ directoryservice_describe_snapshots <- function(DirectoryId = NULL, SnapshotIds 
     name = "DescribeSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Snapshots")
   )
   input <- .directoryservice$describe_snapshots_input(DirectoryId = DirectoryId, SnapshotIds = SnapshotIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_snapshots_output()
@@ -1182,7 +1182,7 @@ directoryservice_describe_snapshots <- function(DirectoryId = NULL, SnapshotIds 
 #' @description
 #' Obtains information about the trust relationships for this account.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/describe_trusts.html](https://paws-r.github.io/docs/directoryservice/describe_trusts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_describe_trusts/](https://www.paws-r-sdk.com/docs/directoryservice_describe_trusts/) for full documentation.
 #'
 #' @param DirectoryId The Directory ID of the Amazon Web Services directory that is a part of
 #' the requested trust relationship.
@@ -1204,7 +1204,7 @@ directoryservice_describe_trusts <- function(DirectoryId = NULL, TrustIds = NULL
     name = "DescribeTrusts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Trusts")
   )
   input <- .directoryservice$describe_trusts_input(DirectoryId = DirectoryId, TrustIds = TrustIds, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$describe_trusts_output()
@@ -1221,7 +1221,7 @@ directoryservice_describe_trusts <- function(DirectoryId = NULL, TrustIds = NULL
 #' @description
 #' Describes the updates of a directory for a particular update type.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/describe_update_directory.html](https://paws-r.github.io/docs/directoryservice/describe_update_directory.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_describe_update_directory/](https://www.paws-r-sdk.com/docs/directoryservice_describe_update_directory/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The unique identifier of the directory.
 #' @param UpdateType &#91;required&#93; The type of updates you want to describe for the directory.
@@ -1239,7 +1239,7 @@ directoryservice_describe_update_directory <- function(DirectoryId, UpdateType, 
     name = "DescribeUpdateDirectory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "UpdateActivities")
   )
   input <- .directoryservice$describe_update_directory_input(DirectoryId = DirectoryId, UpdateType = UpdateType, RegionName = RegionName, NextToken = NextToken)
   output <- .directoryservice$describe_update_directory_output()
@@ -1257,7 +1257,7 @@ directoryservice_describe_update_directory <- function(DirectoryId, UpdateType, 
 #' @description
 #' Disables alternative client authentication methods for the specified directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/disable_client_authentication.html](https://paws-r.github.io/docs/directoryservice/disable_client_authentication.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_disable_client_authentication/](https://www.paws-r-sdk.com/docs/directoryservice_disable_client_authentication/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory
 #' @param Type &#91;required&#93; The type of client authentication to disable. Currently, only the
@@ -1288,7 +1288,7 @@ directoryservice_disable_client_authentication <- function(DirectoryId, Type) {
 #' @description
 #' Deactivates LDAP secure calls for the specified directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/disable_ldaps.html](https://paws-r.github.io/docs/directoryservice/disable_ldaps.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_disable_ldaps/](https://www.paws-r-sdk.com/docs/directoryservice_disable_ldaps/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param Type &#91;required&#93; The type of LDAP security to enable. Currently only the value `Client`
@@ -1321,7 +1321,7 @@ directoryservice_disable_ldaps <- function(DirectoryId, Type) {
 #' @description
 #' Disables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/disable_radius.html](https://paws-r.github.io/docs/directoryservice/disable_radius.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_disable_radius/](https://www.paws-r-sdk.com/docs/directoryservice_disable_radius/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory for which to disable MFA.
 #'
@@ -1350,7 +1350,7 @@ directoryservice_disable_radius <- function(DirectoryId) {
 #' @description
 #' Disables single-sign on for a directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/disable_sso.html](https://paws-r.github.io/docs/directoryservice/disable_sso.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_disable_sso/](https://www.paws-r-sdk.com/docs/directoryservice_disable_sso/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory for which to disable single-sign on.
 #' @param UserName The username of an alternate account to use to disable single-sign on.
@@ -1392,7 +1392,7 @@ directoryservice_disable_sso <- function(DirectoryId, UserName = NULL, Password 
 #' @description
 #' Enables alternative client authentication methods for the specified directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/enable_client_authentication.html](https://paws-r.github.io/docs/directoryservice/enable_client_authentication.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_enable_client_authentication/](https://www.paws-r-sdk.com/docs/directoryservice_enable_client_authentication/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the specified directory.
 #' @param Type &#91;required&#93; The type of client authentication to enable. Currently only the value
@@ -1426,7 +1426,7 @@ directoryservice_enable_client_authentication <- function(DirectoryId, Type) {
 #' @description
 #' Activates the switch for the specific directory to always use LDAP secure calls.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/enable_ldaps.html](https://paws-r.github.io/docs/directoryservice/enable_ldaps.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_enable_ldaps/](https://www.paws-r-sdk.com/docs/directoryservice_enable_ldaps/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param Type &#91;required&#93; The type of LDAP security to enable. Currently only the value `Client`
@@ -1459,7 +1459,7 @@ directoryservice_enable_ldaps <- function(DirectoryId, Type) {
 #' @description
 #' Enables multi-factor authentication (MFA) with the Remote Authentication Dial In User Service (RADIUS) server for an AD Connector or Microsoft AD directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/enable_radius.html](https://paws-r.github.io/docs/directoryservice/enable_radius.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_enable_radius/](https://www.paws-r-sdk.com/docs/directoryservice_enable_radius/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory for which to enable MFA.
 #' @param RadiusSettings &#91;required&#93; A RadiusSettings object that contains information about the RADIUS
@@ -1490,7 +1490,7 @@ directoryservice_enable_radius <- function(DirectoryId, RadiusSettings) {
 #' @description
 #' Enables single sign-on for a directory. Single sign-on allows users in your directory to access certain Amazon Web Services services from a computer joined to the directory without having to enter their credentials separately.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/enable_sso.html](https://paws-r.github.io/docs/directoryservice/enable_sso.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_enable_sso/](https://www.paws-r-sdk.com/docs/directoryservice_enable_sso/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory for which to enable single-sign on.
 #' @param UserName The username of an alternate account to use to enable single-sign on.
@@ -1531,7 +1531,7 @@ directoryservice_enable_sso <- function(DirectoryId, UserName = NULL, Password =
 #' @description
 #' Obtains directory limit information for the current Region.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/get_directory_limits.html](https://paws-r.github.io/docs/directoryservice/get_directory_limits.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_get_directory_limits/](https://www.paws-r-sdk.com/docs/directoryservice_get_directory_limits/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1558,7 +1558,7 @@ directoryservice_get_directory_limits <- function() {
 #' @description
 #' Obtains the manual snapshot limits for a directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/get_snapshot_limits.html](https://paws-r.github.io/docs/directoryservice/get_snapshot_limits.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_get_snapshot_limits/](https://www.paws-r-sdk.com/docs/directoryservice_get_snapshot_limits/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; Contains the identifier of the directory to obtain the limits for.
 #'
@@ -1588,7 +1588,7 @@ directoryservice_get_snapshot_limits <- function(DirectoryId) {
 #' @description
 #' For the specified directory, lists all the certificates registered for a secure LDAP or client certificate authentication.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/list_certificates.html](https://paws-r.github.io/docs/directoryservice/list_certificates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_list_certificates/](https://www.paws-r-sdk.com/docs/directoryservice_list_certificates/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param NextToken A token for requesting another page of certificates if the `NextToken`
@@ -1605,7 +1605,7 @@ directoryservice_list_certificates <- function(DirectoryId, NextToken = NULL, Li
     name = "ListCertificates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "CertificatesInfo")
   )
   input <- .directoryservice$list_certificates_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_certificates_output()
@@ -1622,7 +1622,7 @@ directoryservice_list_certificates <- function(DirectoryId, NextToken = NULL, Li
 #' @description
 #' Lists the address blocks that you have added to a directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/list_ip_routes.html](https://paws-r.github.io/docs/directoryservice/list_ip_routes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_list_ip_routes/](https://www.paws-r-sdk.com/docs/directoryservice_list_ip_routes/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; Identifier (ID) of the directory for which you want to retrieve the IP
 #' addresses.
@@ -1640,7 +1640,7 @@ directoryservice_list_ip_routes <- function(DirectoryId, NextToken = NULL, Limit
     name = "ListIpRoutes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "IpRoutesInfo")
   )
   input <- .directoryservice$list_ip_routes_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_ip_routes_output()
@@ -1657,7 +1657,7 @@ directoryservice_list_ip_routes <- function(DirectoryId, NextToken = NULL, Limit
 #' @description
 #' Lists the active log subscriptions for the Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/list_log_subscriptions.html](https://paws-r.github.io/docs/directoryservice/list_log_subscriptions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_list_log_subscriptions/](https://www.paws-r-sdk.com/docs/directoryservice_list_log_subscriptions/) for full documentation.
 #'
 #' @param DirectoryId If a *DirectoryID* is provided, lists only the log subscription
 #' associated with that directory. If no *DirectoryId* is provided, lists
@@ -1675,7 +1675,7 @@ directoryservice_list_log_subscriptions <- function(DirectoryId = NULL, NextToke
     name = "ListLogSubscriptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "LogSubscriptions")
   )
   input <- .directoryservice$list_log_subscriptions_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_log_subscriptions_output()
@@ -1692,7 +1692,7 @@ directoryservice_list_log_subscriptions <- function(DirectoryId = NULL, NextToke
 #' @description
 #' Lists all schema extensions applied to a Microsoft AD Directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/list_schema_extensions.html](https://paws-r.github.io/docs/directoryservice/list_schema_extensions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_list_schema_extensions/](https://www.paws-r-sdk.com/docs/directoryservice_list_schema_extensions/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory from which to retrieve the schema
 #' extension information.
@@ -1709,7 +1709,7 @@ directoryservice_list_schema_extensions <- function(DirectoryId, NextToken = NUL
     name = "ListSchemaExtensions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "SchemaExtensionsInfo")
   )
   input <- .directoryservice$list_schema_extensions_input(DirectoryId = DirectoryId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_schema_extensions_output()
@@ -1726,7 +1726,7 @@ directoryservice_list_schema_extensions <- function(DirectoryId, NextToken = NUL
 #' @description
 #' Lists all tags on a directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/list_tags_for_resource.html](https://paws-r.github.io/docs/directoryservice/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/directoryservice_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; Identifier (ID) of the directory for which you want to retrieve tags.
 #' @param NextToken Reserved for future use.
@@ -1740,7 +1740,7 @@ directoryservice_list_tags_for_resource <- function(ResourceId, NextToken = NULL
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Tags")
   )
   input <- .directoryservice$list_tags_for_resource_input(ResourceId = ResourceId, NextToken = NextToken, Limit = Limit)
   output <- .directoryservice$list_tags_for_resource_output()
@@ -1758,7 +1758,7 @@ directoryservice_list_tags_for_resource <- function(ResourceId, NextToken = NULL
 #' @description
 #' Registers a certificate for a secure LDAP or client certificate authentication.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/register_certificate.html](https://paws-r.github.io/docs/directoryservice/register_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_register_certificate/](https://www.paws-r-sdk.com/docs/directoryservice_register_certificate/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory.
 #' @param CertificateData &#91;required&#93; The certificate PEM string that needs to be registered.
@@ -1793,7 +1793,7 @@ directoryservice_register_certificate <- function(DirectoryId, CertificateData, 
 #' @description
 #' Associates a directory with an Amazon SNS topic. This establishes the directory as a publisher to the specified Amazon SNS topic. You can then receive email or text (SMS) messages when the status of your directory changes. You get notified if your directory goes from an Active status to an Impaired or Inoperable status. You also receive a notification when the directory returns to an Active status.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/register_event_topic.html](https://paws-r.github.io/docs/directoryservice/register_event_topic.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_register_event_topic/](https://www.paws-r-sdk.com/docs/directoryservice_register_event_topic/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The Directory ID that will publish status messages to the Amazon SNS
 #' topic.
@@ -1827,7 +1827,7 @@ directoryservice_register_event_topic <- function(DirectoryId, TopicName) {
 #' @description
 #' Rejects a directory sharing request that was sent from the directory owner account.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/reject_shared_directory.html](https://paws-r.github.io/docs/directoryservice/reject_shared_directory.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_reject_shared_directory/](https://www.paws-r-sdk.com/docs/directoryservice_reject_shared_directory/) for full documentation.
 #'
 #' @param SharedDirectoryId &#91;required&#93; Identifier of the shared directory in the directory consumer account.
 #' This identifier is different for each directory owner account.
@@ -1857,7 +1857,7 @@ directoryservice_reject_shared_directory <- function(SharedDirectoryId) {
 #' @description
 #' Removes IP address blocks from a directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/remove_ip_routes.html](https://paws-r.github.io/docs/directoryservice/remove_ip_routes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_remove_ip_routes/](https://www.paws-r-sdk.com/docs/directoryservice_remove_ip_routes/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; Identifier (ID) of the directory from which you want to remove the IP
 #' addresses.
@@ -1889,7 +1889,7 @@ directoryservice_remove_ip_routes <- function(DirectoryId, CidrIps) {
 #' @description
 #' Stops all replication and removes the domain controllers from the specified Region. You cannot remove the primary Region with this operation. Instead, use the [`delete_directory`][directoryservice_delete_directory] API.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/remove_region.html](https://paws-r.github.io/docs/directoryservice/remove_region.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_remove_region/](https://www.paws-r-sdk.com/docs/directoryservice_remove_region/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory for which you want to remove Region
 #' replication.
@@ -1919,7 +1919,7 @@ directoryservice_remove_region <- function(DirectoryId) {
 #' @description
 #' Removes tags from a directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/remove_tags_from_resource.html](https://paws-r.github.io/docs/directoryservice/remove_tags_from_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_remove_tags_from_resource/](https://www.paws-r-sdk.com/docs/directoryservice_remove_tags_from_resource/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; Identifier (ID) of the directory from which to remove the tag.
 #' @param TagKeys &#91;required&#93; The tag key (name) of the tag to be removed.
@@ -1950,7 +1950,7 @@ directoryservice_remove_tags_from_resource <- function(ResourceId, TagKeys) {
 #' @description
 #' Resets the password for any user in your Managed Microsoft AD or Simple AD directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/reset_user_password.html](https://paws-r.github.io/docs/directoryservice/reset_user_password.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_reset_user_password/](https://www.paws-r-sdk.com/docs/directoryservice_reset_user_password/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; Identifier of the Managed Microsoft AD or Simple AD directory in which
 #' the user resides.
@@ -1982,7 +1982,7 @@ directoryservice_reset_user_password <- function(DirectoryId, UserName, NewPassw
 #' @description
 #' Restores a directory using an existing directory snapshot.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/restore_from_snapshot.html](https://paws-r.github.io/docs/directoryservice/restore_from_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_restore_from_snapshot/](https://www.paws-r-sdk.com/docs/directoryservice_restore_from_snapshot/) for full documentation.
 #'
 #' @param SnapshotId &#91;required&#93; The identifier of the snapshot to restore from.
 #'
@@ -2013,7 +2013,7 @@ directoryservice_restore_from_snapshot <- function(SnapshotId) {
 #' @description
 #' Shares a specified directory (`DirectoryId`) in your Amazon Web Services account (directory owner) with another Amazon Web Services account (directory consumer). With this operation you can use your directory from any Amazon Web Services account and from any Amazon VPC within an Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/share_directory.html](https://paws-r.github.io/docs/directoryservice/share_directory.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_share_directory/](https://www.paws-r-sdk.com/docs/directoryservice_share_directory/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; Identifier of the Managed Microsoft AD directory that you want to share
 #' with other Amazon Web Services accounts.
@@ -2053,7 +2053,7 @@ directoryservice_share_directory <- function(DirectoryId, ShareNotes = NULL, Sha
 #' @description
 #' Applies a schema extension to a Microsoft AD directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/start_schema_extension.html](https://paws-r.github.io/docs/directoryservice/start_schema_extension.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_start_schema_extension/](https://www.paws-r-sdk.com/docs/directoryservice_start_schema_extension/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory for which the schema extension will be
 #' applied to.
@@ -2091,7 +2091,7 @@ directoryservice_start_schema_extension <- function(DirectoryId, CreateSnapshotB
 #' @description
 #' Stops the directory sharing between the directory owner and consumer accounts.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/unshare_directory.html](https://paws-r.github.io/docs/directoryservice/unshare_directory.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_unshare_directory/](https://www.paws-r-sdk.com/docs/directoryservice_unshare_directory/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the Managed Microsoft AD directory that you want to
 #' stop sharing.
@@ -2124,7 +2124,7 @@ directoryservice_unshare_directory <- function(DirectoryId, UnshareTarget) {
 #' @description
 #' Updates a conditional forwarder that has been set up for your Amazon Web Services directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/update_conditional_forwarder.html](https://paws-r.github.io/docs/directoryservice/update_conditional_forwarder.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_update_conditional_forwarder/](https://www.paws-r-sdk.com/docs/directoryservice_update_conditional_forwarder/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The directory ID of the Amazon Web Services directory for which to
 #' update the conditional forwarder.
@@ -2158,7 +2158,7 @@ directoryservice_update_conditional_forwarder <- function(DirectoryId, RemoteDom
 #' @description
 #' Updates the directory for a particular update type.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/update_directory_setup.html](https://paws-r.github.io/docs/directoryservice/update_directory_setup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_update_directory_setup/](https://www.paws-r-sdk.com/docs/directoryservice_update_directory_setup/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory on which you want to perform the update.
 #' @param UpdateType &#91;required&#93; The type of update that needs to be performed on the directory. For
@@ -2193,7 +2193,7 @@ directoryservice_update_directory_setup <- function(DirectoryId, UpdateType, OSU
 #' @description
 #' Adds or removes domain controllers to or from the directory. Based on the difference between current value and new value (provided through this API call), domain controllers will be added or removed. It may take up to 45 minutes for any new domain controllers to become fully active once the requested number of domain controllers is updated. During this time, you cannot make another update request.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/update_number_of_domain_controllers.html](https://paws-r.github.io/docs/directoryservice/update_number_of_domain_controllers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_update_number_of_domain_controllers/](https://www.paws-r-sdk.com/docs/directoryservice_update_number_of_domain_controllers/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; Identifier of the directory to which the domain controllers will be
 #' added or removed.
@@ -2225,7 +2225,7 @@ directoryservice_update_number_of_domain_controllers <- function(DirectoryId, De
 #' @description
 #' Updates the Remote Authentication Dial In User Service (RADIUS) server information for an AD Connector or Microsoft AD directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/update_radius.html](https://paws-r.github.io/docs/directoryservice/update_radius.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_update_radius/](https://www.paws-r-sdk.com/docs/directoryservice_update_radius/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory for which to update the RADIUS server
 #' information.
@@ -2257,7 +2257,7 @@ directoryservice_update_radius <- function(DirectoryId, RadiusSettings) {
 #' @description
 #' Updates the configurable settings for the specified directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/update_settings.html](https://paws-r.github.io/docs/directoryservice/update_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_update_settings/](https://www.paws-r-sdk.com/docs/directoryservice_update_settings/) for full documentation.
 #'
 #' @param DirectoryId &#91;required&#93; The identifier of the directory for which to update settings.
 #' @param Settings &#91;required&#93; The list of Setting objects.
@@ -2288,7 +2288,7 @@ directoryservice_update_settings <- function(DirectoryId, Settings) {
 #' @description
 #' Updates the trust that has been set up between your Managed Microsoft AD directory and an self-managed Active Directory.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/update_trust.html](https://paws-r.github.io/docs/directoryservice/update_trust.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_update_trust/](https://www.paws-r-sdk.com/docs/directoryservice_update_trust/) for full documentation.
 #'
 #' @param TrustId &#91;required&#93; Identifier of the trust relationship.
 #' @param SelectiveAuth Updates selective authentication for the trust.
@@ -2319,7 +2319,7 @@ directoryservice_update_trust <- function(TrustId, SelectiveAuth = NULL) {
 #' @description
 #' Directory Service for Microsoft Active Directory allows you to configure and verify trust relationships.
 #'
-#' See [https://paws-r.github.io/docs/directoryservice/verify_trust.html](https://paws-r.github.io/docs/directoryservice/verify_trust.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/directoryservice_verify_trust/](https://www.paws-r-sdk.com/docs/directoryservice_verify_trust/) for full documentation.
 #'
 #' @param TrustId &#91;required&#93; The unique Trust ID of the trust relationship to verify.
 #'

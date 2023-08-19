@@ -18,6 +18,6 @@ workspaces_modify_workspace_access_properties(
 \description{
 Specifies which devices and operating systems users can use to access their WorkSpaces. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/update-directory-details.html#control-device-access}{Control Device Access}.
 
-See \url{https://paws-r.github.io/docs/workspaces/modify_workspace_access_properties.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_modify_workspace_access_properties/} for full documentation.
 }
 \keyword{internal}

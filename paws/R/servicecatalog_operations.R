@@ -146,15 +146,63 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #' 
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
-#' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). This field allows an
-#' ARN with no `accountID` if `PrincipalType` is `IAM_PATTERN`.
+#' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). If the `PrincipalType`
+#' is `IAM`, the supported value is a fully defined [IAM Amazon Resource
+#' Name
+#' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns).
+#' If the `PrincipalType` is `IAM_PATTERN`, the supported value is an `IAM`
+#' ARN *without an AccountID* in the following format:
 #' 
-#' You can associate multiple `IAM` patterns even if the account has no
-#' principal with that name. This is useful in Principal Name Sharing if
-#' you want to share a principal without creating it in the account that
-#' owns the portfolio.
+#' *arn:partition:iam:::resource-type/resource-id*
+#' 
+#' The ARN resource-id can be either:
+#' 
+#' -   A fully formed resource-id. For example,
+#'     *arn:aws:iam:::role/resource-name* or
+#'     *arn:aws:iam:::role/resource-path/resource-name*
+#' 
+#' -   A wildcard ARN. The wildcard ARN accepts `IAM_PATTERN` values with a
+#'     "*" or "?" in the resource-id segment of the ARN. For example
+#'     *arn:partition:service:::resource-type/resource-path/resource-name*.
+#'     The new symbols are exclusive to the **resource-path** and
+#'     **resource-name** and cannot replace the **resource-type** or other
+#'     ARN values.
+#' 
+#'     The ARN path and principal name allow unlimited wildcard characters.
+#' 
+#' Examples of an **acceptable** wildcard ARN:
+#' 
+#' -   arn:aws:iam:::role/ResourceName_*
+#' 
+#' -   arn:aws:iam:::role/*/ResourceName_?
+#' 
+#' Examples of an **unacceptable** wildcard ARN:
+#' 
+#' -   arn:aws:iam:::*/ResourceName
+#' 
+#' You can associate multiple `IAM_PATTERN`s even if the account has no
+#' principal with that name.
+#' 
+#' The "?" wildcard character matches zero or one of any character. This is
+#' similar to ".?" in regular regex context. The "*" wildcard character
+#' matches any number of any characters. This is similar to ".*" in
+#' regular regex context.
+#' 
+#' In the IAM Principal ARN format
+#' (*arn:partition:iam:::resource-type/resource-path/resource-name*), valid
+#' resource-type values include **user/**, **group/**, or **role/**. The
+#' "?" and "*" characters are allowed only after the resource-type in the
+#' resource-id segment. You can use special characters anywhere within the
+#' resource-id.
+#' 
+#' The "*" character also matches the "/" character, allowing paths to be
+#' formed *within* the resource-id. For example,
+#' *arn:aws:iam:::role/*/ResourceName_?* matches both
+#' *arn:aws:iam:::role/pathA/pathB/ResourceName_1* and
+#' *arn:aws:iam:::role/pathA/ResourceName_1*.
 #' @param PrincipalType &#91;required&#93; The principal type. The supported value is `IAM` if you use a fully
-#' defined ARN, or `IAM_PATTERN` if you use an ARN with no `accountID`.
+#' defined Amazon Resource Name (ARN), or `IAM_PATTERN` if you use an ARN
+#' with no `accountID`, with or without wildcard characters.
 #'
 #' @return
 #' An empty list.
@@ -2240,7 +2288,7 @@ servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToke
     name = "DescribePortfolioShares",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$describe_portfolio_shares_input(PortfolioId = PortfolioId, Type = Type, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$describe_portfolio_shares_output()
@@ -2772,7 +2820,7 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #' @usage
 #' servicecatalog_describe_provisioning_artifact(AcceptLanguage,
 #'   ProvisioningArtifactId, ProductId, ProvisioningArtifactName,
-#'   ProductName, Verbose)
+#'   ProductName, Verbose, IncludeProvisioningArtifactParameters)
 #'
 #' @param AcceptLanguage The language code.
 #' 
@@ -2784,6 +2832,8 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #' @param ProvisioningArtifactName The provisioning artifact name.
 #' @param ProductName The product name.
 #' @param Verbose Indicates whether a verbose level of detail is enabled.
+#' @param IncludeProvisioningArtifactParameters Indicates if the API call response does or does not include additional
+#' details about the provisioning parameters.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2804,7 +2854,27 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #'   Info = list(
 #'     "string"
 #'   ),
-#'   Status = "AVAILABLE"|"CREATING"|"FAILED"
+#'   Status = "AVAILABLE"|"CREATING"|"FAILED",
+#'   ProvisioningArtifactParameters = list(
+#'     list(
+#'       ParameterKey = "string",
+#'       DefaultValue = "string",
+#'       ParameterType = "string",
+#'       IsNoEcho = TRUE|FALSE,
+#'       Description = "string",
+#'       ParameterConstraints = list(
+#'         AllowedValues = list(
+#'           "string"
+#'         ),
+#'         AllowedPattern = "string",
+#'         ConstraintDescription = "string",
+#'         MaxLength = "string",
+#'         MinLength = "string",
+#'         MaxValue = "string",
+#'         MinValue = "string"
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -2816,7 +2886,8 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #'   ProductId = "string",
 #'   ProvisioningArtifactName = "string",
 #'   ProductName = "string",
-#'   Verbose = TRUE|FALSE
+#'   Verbose = TRUE|FALSE,
+#'   IncludeProvisioningArtifactParameters = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -2825,14 +2896,14 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #' @rdname servicecatalog_describe_provisioning_artifact
 #'
 #' @aliases servicecatalog_describe_provisioning_artifact
-servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL, ProvisioningArtifactId = NULL, ProductId = NULL, ProvisioningArtifactName = NULL, ProductName = NULL, Verbose = NULL) {
+servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL, ProvisioningArtifactId = NULL, ProductId = NULL, ProvisioningArtifactName = NULL, ProductName = NULL, Verbose = NULL, IncludeProvisioningArtifactParameters = NULL) {
   op <- new_operation(
     name = "DescribeProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicecatalog$describe_provisioning_artifact_input(AcceptLanguage = AcceptLanguage, ProvisioningArtifactId = ProvisioningArtifactId, ProductId = ProductId, ProvisioningArtifactName = ProvisioningArtifactName, ProductName = ProductName, Verbose = Verbose)
+  input <- .servicecatalog$describe_provisioning_artifact_input(AcceptLanguage = AcceptLanguage, ProvisioningArtifactId = ProvisioningArtifactId, ProductId = ProductId, ProvisioningArtifactName = ProvisioningArtifactName, ProductName = ProductName, Verbose = Verbose, IncludeProvisioningArtifactParameters = IncludeProvisioningArtifactParameters)
   output <- .servicecatalog$describe_provisioning_artifact_output()
   config <- get_config()
   svc <- .servicecatalog$service(config)
@@ -3397,6 +3468,17 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
 #' enabled: after disassociating a principal, share recipient accounts will
 #' no longer be able to provision products in this portfolio using a role
 #' matching the name of the associated principal.
+#' 
+#' For more information, review
+#' [associate-principal-with-portfolio](https://docs.aws.amazon.com/cli/latest/reference/servicecatalog/associate-principal-with-portfolio.html#options)
+#' in the Amazon Web Services CLI Command Reference.
+#' 
+#' If you disassociate a principal from a portfolio, with PrincipalType as
+#' `IAM`, the same principal will still have access to the portfolio if it
+#' matches one of the associated principals of type `IAM_PATTERN`. To fully
+#' remove access for a principal, verify all the associated Principals of
+#' type `IAM_PATTERN`, and then ensure you disassociate any `IAM_PATTERN`
+#' principals that match the principal whose access you are removing.
 #'
 #' @usage
 #' servicecatalog_disassociate_principal_from_portfolio(AcceptLanguage,
@@ -3409,9 +3491,11 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). This field allows an
-#' ARN with no `accountID` if `PrincipalType` is `IAM_PATTERN`.
+#' ARN with no `accountID` with or without wildcard characters if
+#' `PrincipalType` is `IAM_PATTERN`.
 #' @param PrincipalType The supported value is `IAM` if you use a fully defined ARN, or
-#' `IAM_PATTERN` if you use no `accountID`.
+#' `IAM_PATTERN` if you specify an `IAM` ARN with no AccountId, with or
+#' without wildcard characters.
 #'
 #' @return
 #' An empty list.
@@ -3962,7 +4046,7 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
     name = "GetProvisionedProductOutputs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$get_provisioned_product_outputs_input(AcceptLanguage = AcceptLanguage, ProvisionedProductId = ProvisionedProductId, ProvisionedProductName = ProvisionedProductName, OutputKeys = OutputKeys, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$get_provisioned_product_outputs_output()
@@ -4170,7 +4254,7 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
     name = "ListAcceptedPortfolioShares",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_accepted_portfolio_shares_input(AcceptLanguage = AcceptLanguage, PageToken = PageToken, PageSize = PageSize, PortfolioShareType = PortfolioShareType)
   output <- .servicecatalog$list_accepted_portfolio_shares_output()
@@ -4234,7 +4318,7 @@ servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, Reso
     name = "ListBudgetsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_budgets_for_resource_input(AcceptLanguage = AcceptLanguage, ResourceId = ResourceId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_budgets_for_resource_output()
@@ -4305,7 +4389,7 @@ servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL,
     name = "ListConstraintsForPortfolio",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_constraints_for_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, ProductId = ProductId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_constraints_for_portfolio_output()
@@ -4392,7 +4476,7 @@ servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, P
     name = "ListLaunchPaths",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_launch_paths_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_launch_paths_output()
@@ -4472,7 +4556,7 @@ servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = N
     name = "ListOrganizationPortfolioAccess",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_organization_portfolio_access_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, OrganizationNodeType = OrganizationNodeType, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_organization_portfolio_access_output()
@@ -4542,7 +4626,7 @@ servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, Portfoli
     name = "ListPortfolioAccess",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_portfolio_access_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, OrganizationParentId = OrganizationParentId, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_portfolio_access_output()
@@ -4610,7 +4694,7 @@ servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NU
     name = "ListPortfolios",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_portfolios_input(AcceptLanguage = AcceptLanguage, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_portfolios_output()
@@ -4681,7 +4765,7 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
     name = "ListPortfoliosForProduct",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_portfolios_for_product_input(AcceptLanguage = AcceptLanguage, ProductId = ProductId, PageToken = PageToken, PageSize = PageSize)
   output <- .servicecatalog$list_portfolios_for_product_output()
@@ -4748,7 +4832,7 @@ servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, 
     name = "ListPrincipalsForPortfolio",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_principals_for_portfolio_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_principals_for_portfolio_output()
@@ -4980,7 +5064,7 @@ servicecatalog_list_provisioning_artifacts_for_service_action <- function(Servic
     name = "ListProvisioningArtifactsForServiceAction",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_provisioning_artifacts_for_service_action_input(ServiceActionId = ServiceActionId, PageSize = PageSize, PageToken = PageToken, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$list_provisioning_artifacts_for_service_action_output()
@@ -5149,7 +5233,7 @@ servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceTy
     name = "ListResourcesForTagOption",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "PageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_resources_for_tag_option_input(TagOptionId = TagOptionId, ResourceType = ResourceType, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_resources_for_tag_option_output()
@@ -5213,7 +5297,7 @@ servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize 
     name = "ListServiceActions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_service_actions_input(AcceptLanguage = AcceptLanguage, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_service_actions_output()
@@ -5285,7 +5369,7 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
     name = "ListServiceActionsForProvisioningArtifact",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_service_actions_for_provisioning_artifact_input(ProductId = ProductId, ProvisioningArtifactId = ProvisioningArtifactId, PageSize = PageSize, PageToken = PageToken, AcceptLanguage = AcceptLanguage)
   output <- .servicecatalog$list_service_actions_for_provisioning_artifact_output()
@@ -5421,7 +5505,7 @@ servicecatalog_list_tag_options <- function(Filters = NULL, PageSize = NULL, Pag
     name = "ListTagOptions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "PageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$list_tag_options_input(Filters = Filters, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$list_tag_options_output()
@@ -6003,7 +6087,7 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
     name = "SearchProducts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$search_products_input(AcceptLanguage = AcceptLanguage, Filters = Filters, PageSize = PageSize, SortBy = SortBy, SortOrder = SortOrder, PageToken = PageToken)
   output <- .servicecatalog$search_products_output()
@@ -6121,7 +6205,7 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
     name = "SearchProductsAsAdmin",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$search_products_as_admin_input(AcceptLanguage = AcceptLanguage, PortfolioId = PortfolioId, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder, PageToken = PageToken, PageSize = PageSize, ProductSource = ProductSource)
   output <- .servicecatalog$search_products_as_admin_output()
@@ -6236,7 +6320,7 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
     name = "SearchProvisionedProducts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PageToken", output_token = "NextPageToken", limit_key = "PageSize")
   )
   input <- .servicecatalog$search_provisioned_products_input(AcceptLanguage = AcceptLanguage, AccessLevelFilter = AccessLevelFilter, Filters = Filters, SortBy = SortBy, SortOrder = SortOrder, PageSize = PageSize, PageToken = PageToken)
   output <- .servicecatalog$search_provisioned_products_output()

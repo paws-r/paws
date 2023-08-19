@@ -14,6 +14,6 @@ lightsail_delete_disk(diskName, forceDeleteAddOns = NULL)
 \description{
 Deletes the specified block storage disk. The disk must be in the \code{available} state (not attached to a Lightsail instance).
 
-See \url{https://paws-r.github.io/docs/lightsail/delete_disk.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_delete_disk/} for full documentation.
 }
 \keyword{internal}

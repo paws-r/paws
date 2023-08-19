@@ -16,6 +16,6 @@ removed from the resource.}
 \description{
 Remove a customer tag from a resource. A tag is a key-value pair of metadata associated with an Proton resource.
 
-See \url{https://paws-r.github.io/docs/proton/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_untag_resource/} for full documentation.
 }
 \keyword{internal}

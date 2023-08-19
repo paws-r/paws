@@ -36,6 +36,6 @@ action in the \emph{Certificate Manager API Reference}.}
 \description{
 Revokes a certificate that was issued inside Amazon Web Services Private CA. If you enable a certificate revocation list (CRL) when you create or update your private CA, information about the revoked certificates will be included in the CRL. Amazon Web Services Private CA writes the CRL to an S3 bucket that you specify. A CRL is typically updated approximately 30 minutes after a certificate is revoked. If for any reason the CRL update fails, Amazon Web Services Private CA attempts makes further attempts every 15 minutes. With Amazon CloudWatch, you can create alarms for the metrics \code{CRLGenerated} and \code{MisconfiguredCRLBucket}. For more information, see \href{https://docs.aws.amazon.com/privateca/latest/userguide/PcaCloudWatch.html}{Supported CloudWatch Metrics}.
 
-See \url{https://paws-r.github.io/docs/acmpca/revoke_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_revoke_certificate/} for full documentation.
 }
 \keyword{internal}

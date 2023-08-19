@@ -16,6 +16,6 @@ details.}
 \description{
 Requests the details of a job for a third party action. Used for partner actions only.
 
-See \url{https://paws-r.github.io/docs/codepipeline/get_third_party_job_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_get_third_party_job_details/} for full documentation.
 }
 \keyword{internal}

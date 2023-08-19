@@ -19,7 +19,7 @@ NULL
 #' in the *Amazon Keyspaces Developer Guide*.
 #'
 #' @usage
-#' keyspaces_create_keyspace(keyspaceName, tags)
+#' keyspaces_create_keyspace(keyspaceName, tags, replicationSpecification)
 #'
 #' @param keyspaceName &#91;required&#93; The name of the keyspace to be created.
 #' @param tags A list of key-value pair tags to be attached to the keyspace.
@@ -27,6 +27,16 @@ NULL
 #' For more information, see [Adding tags and labels to Amazon Keyspaces
 #' resources](https://docs.aws.amazon.com/keyspaces/latest/devguide/tagging-keyspaces.html)
 #' in the *Amazon Keyspaces Developer Guide*.
+#' @param replicationSpecification The replication specification of the keyspace includes:
+#' 
+#' -   `replicationStrategy` - the required value is `SINGLE_REGION` or
+#'     `MULTI_REGION`.
+#' 
+#' -   `regionList` - if the `replicationStrategy` is `MULTI_REGION`, the
+#'     `regionList` requires the current Region and at least one additional
+#'     Amazon Web Services Region where the keyspace is going to be
+#'     replicated in. The maximum number of supported replication Regions
+#'     including the current Region is six.
 #'
 #' @return
 #' A list with the following syntax:
@@ -45,6 +55,12 @@ NULL
 #'       key = "string",
 #'       value = "string"
 #'     )
+#'   ),
+#'   replicationSpecification = list(
+#'     replicationStrategy = "SINGLE_REGION"|"MULTI_REGION",
+#'     regionList = list(
+#'       "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -54,14 +70,14 @@ NULL
 #' @rdname keyspaces_create_keyspace
 #'
 #' @aliases keyspaces_create_keyspace
-keyspaces_create_keyspace <- function(keyspaceName, tags = NULL) {
+keyspaces_create_keyspace <- function(keyspaceName, tags = NULL, replicationSpecification = NULL) {
   op <- new_operation(
     name = "CreateKeyspace",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .keyspaces$create_keyspace_input(keyspaceName = keyspaceName, tags = tags)
+  input <- .keyspaces$create_keyspace_input(keyspaceName = keyspaceName, tags = tags, replicationSpecification = replicationSpecification)
   output <- .keyspaces$create_keyspace_output()
   config <- get_config()
   svc <- .keyspaces$service(config)
@@ -406,7 +422,11 @@ keyspaces_delete_table <- function(keyspaceName, tableName) {
 #' ```
 #' list(
 #'   keyspaceName = "string",
-#'   resourceArn = "string"
+#'   resourceArn = "string",
+#'   replicationStrategy = "SINGLE_REGION"|"MULTI_REGION",
+#'   replicationRegions = list(
+#'     "string"
+#'   )
 #' )
 #' ```
 #'
@@ -575,7 +595,11 @@ keyspaces_get_table <- function(keyspaceName, tableName) {
 #'   keyspaces = list(
 #'     list(
 #'       keyspaceName = "string",
-#'       resourceArn = "string"
+#'       resourceArn = "string",
+#'       replicationStrategy = "SINGLE_REGION"|"MULTI_REGION",
+#'       replicationRegions = list(
+#'         "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -599,7 +623,7 @@ keyspaces_list_keyspaces <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListKeyspaces",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "keyspaces")
   )
   input <- .keyspaces$list_keyspaces_input(nextToken = nextToken, maxResults = maxResults)
   output <- .keyspaces$list_keyspaces_output()
@@ -661,7 +685,7 @@ keyspaces_list_tables <- function(nextToken = NULL, maxResults = NULL, keyspaceN
     name = "ListTables",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tables")
   )
   input <- .keyspaces$list_tables_input(nextToken = nextToken, maxResults = maxResults, keyspaceName = keyspaceName)
   output <- .keyspaces$list_tables_output()
@@ -724,7 +748,7 @@ keyspaces_list_tags_for_resource <- function(resourceArn, nextToken = NULL, maxR
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tags")
   )
   input <- .keyspaces$list_tags_for_resource_input(resourceArn = resourceArn, nextToken = nextToken, maxResults = maxResults)
   output <- .keyspaces$list_tags_for_resource_output()
@@ -916,8 +940,10 @@ keyspaces_restore_table <- function(sourceKeyspaceName, sourceTableName, targetK
 #' in the *Amazon Keyspaces Developer Guide*.
 #' 
 #' For IAM policy examples that show how to control access to Amazon
-#' Keyspaces resources based on tags, see Amazon Keyspaces resource access
-#' based on tags in the *Amazon Keyspaces Developer Guide*.
+#' Keyspaces resources based on tags, see [Amazon Keyspaces resource access
+#' based on
+#' tags](https://docs.aws.amazon.com/keyspaces/latest/devguide/security_iam_id-based-policy-examples.html#security_iam_id-based-policy-examples-tags)
+#' in the *Amazon Keyspaces Developer Guide*.
 #'
 #' @usage
 #' keyspaces_tag_resource(resourceArn, tags)

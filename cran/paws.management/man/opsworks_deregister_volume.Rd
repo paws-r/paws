@@ -14,6 +14,6 @@ stack, not the Amazon EC2 volume ID.}
 \description{
 Deregisters an Amazon EBS volume. The volume can then be registered by another stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
 
-See \url{https://paws-r.github.io/docs/opsworks/deregister_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_deregister_volume/} for full documentation.
 }
 \keyword{internal}

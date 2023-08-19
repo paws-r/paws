@@ -19,6 +19,6 @@ routing endpoint.}
 \description{
 Associate a virtual private cloud (VPC) subnet endpoint with your custom routing accelerator.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/add_custom_routing_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_add_custom_routing_endpoints/} for full documentation.
 }
 \keyword{internal}

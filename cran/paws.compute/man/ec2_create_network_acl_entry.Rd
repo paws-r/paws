@@ -63,6 +63,6 @@ is reserved for internal use.}
 \description{
 Creates an entry (a rule) in a network ACL with the specified rule number. Each network ACL has a set of numbered ingress rules and a separate set of numbered egress rules. When determining whether a packet should be allowed in or out of a subnet associated with the ACL, we process the entries in the ACL according to the rule numbers, in ascending order. Each network ACL has a set of ingress rules and a separate set of egress rules.
 
-See \url{https://paws-r.github.io/docs/ec2/create_network_acl_entry.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_network_acl_entry/} for full documentation.
 }
 \keyword{internal}

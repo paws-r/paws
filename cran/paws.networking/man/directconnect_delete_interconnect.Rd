@@ -12,6 +12,6 @@ directconnect_delete_interconnect(interconnectId)
 \description{
 Deletes the specified interconnect.
 
-See \url{https://paws-r.github.io/docs/directconnect/delete_interconnect.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_delete_interconnect/} for full documentation.
 }
 \keyword{internal}

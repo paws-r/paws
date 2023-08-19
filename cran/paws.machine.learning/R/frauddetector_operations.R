@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a batch of variables.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/batch_create_variable.html](https://paws-r.github.io/docs/frauddetector/batch_create_variable.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_batch_create_variable/](https://www.paws-r-sdk.com/docs/frauddetector_batch_create_variable/) for full documentation.
 #'
 #' @param variableEntries &#91;required&#93; The list of variables for the batch create variable request.
 #' @param tags A collection of key and value pairs.
@@ -38,7 +38,7 @@ frauddetector_batch_create_variable <- function(variableEntries, tags = NULL) {
 #' @description
 #' Gets a batch of variables.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/batch_get_variable.html](https://paws-r.github.io/docs/frauddetector/batch_get_variable.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_batch_get_variable/](https://www.paws-r-sdk.com/docs/frauddetector_batch_get_variable/) for full documentation.
 #'
 #' @param names &#91;required&#93; The list of variable names to get.
 #'
@@ -67,7 +67,7 @@ frauddetector_batch_get_variable <- function(names) {
 #' @description
 #' Cancels an in-progress batch import job.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/cancel_batch_import_job.html](https://paws-r.github.io/docs/frauddetector/cancel_batch_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_cancel_batch_import_job/](https://www.paws-r-sdk.com/docs/frauddetector_cancel_batch_import_job/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The ID of an in-progress batch import job to cancel.
 #' 
@@ -99,7 +99,7 @@ frauddetector_cancel_batch_import_job <- function(jobId) {
 #' @description
 #' Cancels the specified batch prediction job.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/cancel_batch_prediction_job.html](https://paws-r.github.io/docs/frauddetector/cancel_batch_prediction_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_cancel_batch_prediction_job/](https://www.paws-r-sdk.com/docs/frauddetector_cancel_batch_prediction_job/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The ID of the batch prediction job to cancel.
 #'
@@ -128,7 +128,7 @@ frauddetector_cancel_batch_prediction_job <- function(jobId) {
 #' @description
 #' Creates a batch import job.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/create_batch_import_job.html](https://paws-r.github.io/docs/frauddetector/create_batch_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_create_batch_import_job/](https://www.paws-r-sdk.com/docs/frauddetector_create_batch_import_job/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The ID of the batch import job. The ID cannot be of a past job, unless
 #' the job exists in `CREATE_FAILED` state.
@@ -170,7 +170,7 @@ frauddetector_create_batch_import_job <- function(jobId, inputPath, outputPath, 
 #' @description
 #' Creates a batch prediction job.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/create_batch_prediction_job.html](https://paws-r.github.io/docs/frauddetector/create_batch_prediction_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_create_batch_prediction_job/](https://www.paws-r-sdk.com/docs/frauddetector_create_batch_prediction_job/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The ID of the batch prediction job.
 #' @param inputPath &#91;required&#93; The Amazon S3 location of your training file.
@@ -212,7 +212,7 @@ frauddetector_create_batch_prediction_job <- function(jobId, inputPath, outputPa
 #' @description
 #' Creates a detector version. The detector version starts in a `DRAFT` status.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/create_detector_version.html](https://paws-r.github.io/docs/frauddetector/create_detector_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_create_detector_version/](https://www.paws-r-sdk.com/docs/frauddetector_create_detector_version/) for full documentation.
 #'
 #' @param detectorId &#91;required&#93; The ID of the detector under which you want to create a new version.
 #' @param description The description of the detector version.
@@ -259,7 +259,7 @@ frauddetector_create_detector_version <- function(detectorId, description = NULL
 #' @description
 #' Creates a list.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/create_list.html](https://paws-r.github.io/docs/frauddetector/create_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_create_list/](https://www.paws-r-sdk.com/docs/frauddetector_create_list/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the list.
 #' @param elements The names of the elements, if providing. You can also create an empty
@@ -296,7 +296,7 @@ frauddetector_create_list <- function(name, elements = NULL, variableType = NULL
 #' @description
 #' Creates a model using the specified model type.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/create_model.html](https://paws-r.github.io/docs/frauddetector/create_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_create_model/](https://www.paws-r-sdk.com/docs/frauddetector_create_model/) for full documentation.
 #'
 #' @param modelId &#91;required&#93; The model ID.
 #' @param modelType &#91;required&#93; The model type.
@@ -330,7 +330,7 @@ frauddetector_create_model <- function(modelId, modelType, description = NULL, e
 #' @description
 #' Creates a version of the model using the specified model type and model id.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/create_model_version.html](https://paws-r.github.io/docs/frauddetector/create_model_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_create_model_version/](https://www.paws-r-sdk.com/docs/frauddetector_create_model_version/) for full documentation.
 #'
 #' @param modelId &#91;required&#93; The model ID.
 #' @param modelType &#91;required&#93; The model type.
@@ -367,7 +367,7 @@ frauddetector_create_model_version <- function(modelId, modelType, trainingDataS
 #' @description
 #' Creates a rule for use with the specified detector.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/create_rule.html](https://paws-r.github.io/docs/frauddetector/create_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_create_rule/](https://www.paws-r-sdk.com/docs/frauddetector_create_rule/) for full documentation.
 #'
 #' @param ruleId &#91;required&#93; The rule ID.
 #' @param detectorId &#91;required&#93; The detector ID for the rule's parent detector.
@@ -402,10 +402,10 @@ frauddetector_create_rule <- function(ruleId, detectorId, description = NULL, ex
 #' @description
 #' Creates a variable.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/create_variable.html](https://paws-r.github.io/docs/frauddetector/create_variable.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_create_variable/](https://www.paws-r-sdk.com/docs/frauddetector_create_variable/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the variable.
-#' @param dataType &#91;required&#93; The data type.
+#' @param dataType &#91;required&#93; The data type of the variable.
 #' @param dataSource &#91;required&#93; The source of the data.
 #' @param defaultValue &#91;required&#93; The default value for the variable when no value is received.
 #' @param description The description.
@@ -441,7 +441,7 @@ frauddetector_create_variable <- function(name, dataType, dataSource, defaultVal
 #' @description
 #' Deletes the specified batch import job ID record. This action does not delete the data that was batch imported.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/delete_batch_import_job.html](https://paws-r.github.io/docs/frauddetector/delete_batch_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_delete_batch_import_job/](https://www.paws-r-sdk.com/docs/frauddetector_delete_batch_import_job/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The ID of the batch import job to delete.
 #'
@@ -470,7 +470,7 @@ frauddetector_delete_batch_import_job <- function(jobId) {
 #' @description
 #' Deletes a batch prediction job.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/delete_batch_prediction_job.html](https://paws-r.github.io/docs/frauddetector/delete_batch_prediction_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_delete_batch_prediction_job/](https://www.paws-r-sdk.com/docs/frauddetector_delete_batch_prediction_job/) for full documentation.
 #'
 #' @param jobId &#91;required&#93; The ID of the batch prediction job to delete.
 #'
@@ -499,7 +499,7 @@ frauddetector_delete_batch_prediction_job <- function(jobId) {
 #' @description
 #' Deletes the detector. Before deleting a detector, you must first delete all detector versions and rule versions associated with the detector.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/delete_detector.html](https://paws-r.github.io/docs/frauddetector/delete_detector.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_delete_detector/](https://www.paws-r-sdk.com/docs/frauddetector_delete_detector/) for full documentation.
 #'
 #' @param detectorId &#91;required&#93; The ID of the detector to delete.
 #'
@@ -528,7 +528,7 @@ frauddetector_delete_detector <- function(detectorId) {
 #' @description
 #' Deletes the detector version. You cannot delete detector versions that are in `ACTIVE` status.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/delete_detector_version.html](https://paws-r.github.io/docs/frauddetector/delete_detector_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_delete_detector_version/](https://www.paws-r-sdk.com/docs/frauddetector_delete_detector_version/) for full documentation.
 #'
 #' @param detectorId &#91;required&#93; The ID of the parent detector for the detector version to delete.
 #' @param detectorVersionId &#91;required&#93; The ID of the detector version to delete.
@@ -558,7 +558,7 @@ frauddetector_delete_detector_version <- function(detectorId, detectorVersionId)
 #' @description
 #' Deletes an entity type.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/delete_entity_type.html](https://paws-r.github.io/docs/frauddetector/delete_entity_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_delete_entity_type/](https://www.paws-r-sdk.com/docs/frauddetector_delete_entity_type/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the entity type to delete.
 #'
@@ -587,12 +587,12 @@ frauddetector_delete_entity_type <- function(name) {
 #' @description
 #' Deletes the specified event.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/delete_event.html](https://paws-r.github.io/docs/frauddetector/delete_event.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_delete_event/](https://www.paws-r-sdk.com/docs/frauddetector_delete_event/) for full documentation.
 #'
 #' @param eventId &#91;required&#93; The ID of the event to delete.
 #' @param eventTypeName &#91;required&#93; The name of the event type.
 #' @param deleteAuditHistory Specifies whether or not to delete any predictions associated with the
-#' event.
+#' event. If set to `True`,
 #'
 #' @keywords internal
 #'
@@ -619,7 +619,7 @@ frauddetector_delete_event <- function(eventId, eventTypeName, deleteAuditHistor
 #' @description
 #' Deletes an event type.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/delete_event_type.html](https://paws-r.github.io/docs/frauddetector/delete_event_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_delete_event_type/](https://www.paws-r-sdk.com/docs/frauddetector_delete_event_type/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the event type to delete.
 #'
@@ -648,7 +648,7 @@ frauddetector_delete_event_type <- function(name) {
 #' @description
 #' Deletes all events of a particular event type.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/delete_events_by_event_type.html](https://paws-r.github.io/docs/frauddetector/delete_events_by_event_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_delete_events_by_event_type/](https://www.paws-r-sdk.com/docs/frauddetector_delete_events_by_event_type/) for full documentation.
 #'
 #' @param eventTypeName &#91;required&#93; The name of the event type.
 #'
@@ -677,7 +677,7 @@ frauddetector_delete_events_by_event_type <- function(eventTypeName) {
 #' @description
 #' Removes a SageMaker model from Amazon Fraud Detector.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/delete_external_model.html](https://paws-r.github.io/docs/frauddetector/delete_external_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_delete_external_model/](https://www.paws-r-sdk.com/docs/frauddetector_delete_external_model/) for full documentation.
 #'
 #' @param modelEndpoint &#91;required&#93; The endpoint of the Amazon Sagemaker model to delete.
 #'
@@ -706,7 +706,7 @@ frauddetector_delete_external_model <- function(modelEndpoint) {
 #' @description
 #' Deletes a label.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/delete_label.html](https://paws-r.github.io/docs/frauddetector/delete_label.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_delete_label/](https://www.paws-r-sdk.com/docs/frauddetector_delete_label/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the label to delete.
 #'
@@ -735,7 +735,7 @@ frauddetector_delete_label <- function(name) {
 #' @description
 #' Deletes the list, provided it is not used in a rule.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/delete_list.html](https://paws-r.github.io/docs/frauddetector/delete_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_delete_list/](https://www.paws-r-sdk.com/docs/frauddetector_delete_list/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the list to delete.
 #'
@@ -764,7 +764,7 @@ frauddetector_delete_list <- function(name) {
 #' @description
 #' Deletes a model.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/delete_model.html](https://paws-r.github.io/docs/frauddetector/delete_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_delete_model/](https://www.paws-r-sdk.com/docs/frauddetector_delete_model/) for full documentation.
 #'
 #' @param modelId &#91;required&#93; The model ID of the model to delete.
 #' @param modelType &#91;required&#93; The model type of the model to delete.
@@ -794,7 +794,7 @@ frauddetector_delete_model <- function(modelId, modelType) {
 #' @description
 #' Deletes a model version.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/delete_model_version.html](https://paws-r.github.io/docs/frauddetector/delete_model_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_delete_model_version/](https://www.paws-r-sdk.com/docs/frauddetector_delete_model_version/) for full documentation.
 #'
 #' @param modelId &#91;required&#93; The model ID of the model version to delete.
 #' @param modelType &#91;required&#93; The model type of the model version to delete.
@@ -825,7 +825,7 @@ frauddetector_delete_model_version <- function(modelId, modelType, modelVersionN
 #' @description
 #' Deletes an outcome.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/delete_outcome.html](https://paws-r.github.io/docs/frauddetector/delete_outcome.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_delete_outcome/](https://www.paws-r-sdk.com/docs/frauddetector_delete_outcome/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the outcome to delete.
 #'
@@ -854,7 +854,7 @@ frauddetector_delete_outcome <- function(name) {
 #' @description
 #' Deletes the rule. You cannot delete a rule if it is used by an `ACTIVE` or `INACTIVE` detector version.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/delete_rule.html](https://paws-r.github.io/docs/frauddetector/delete_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_delete_rule/](https://www.paws-r-sdk.com/docs/frauddetector_delete_rule/) for full documentation.
 #'
 #' @param rule &#91;required&#93; 
 #'
@@ -883,7 +883,7 @@ frauddetector_delete_rule <- function(rule) {
 #' @description
 #' Deletes a variable.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/delete_variable.html](https://paws-r.github.io/docs/frauddetector/delete_variable.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_delete_variable/](https://www.paws-r-sdk.com/docs/frauddetector_delete_variable/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the variable to delete.
 #'
@@ -912,7 +912,7 @@ frauddetector_delete_variable <- function(name) {
 #' @description
 #' Gets all versions for a specified detector.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/describe_detector.html](https://paws-r.github.io/docs/frauddetector/describe_detector.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_describe_detector/](https://www.paws-r-sdk.com/docs/frauddetector_describe_detector/) for full documentation.
 #'
 #' @param detectorId &#91;required&#93; The detector ID.
 #' @param nextToken The next token from the previous response.
@@ -944,7 +944,7 @@ frauddetector_describe_detector <- function(detectorId, nextToken = NULL, maxRes
 #' @description
 #' Gets all of the model versions for the specified model type or for the specified model type and model ID. You can also get details for a single, specified model version.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/describe_model_versions.html](https://paws-r.github.io/docs/frauddetector/describe_model_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_describe_model_versions/](https://www.paws-r-sdk.com/docs/frauddetector_describe_model_versions/) for full documentation.
 #'
 #' @param modelId The model ID.
 #' @param modelVersionNumber The model version number.
@@ -960,7 +960,7 @@ frauddetector_describe_model_versions <- function(modelId = NULL, modelVersionNu
     name = "DescribeModelVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$describe_model_versions_input(modelId = modelId, modelVersionNumber = modelVersionNumber, modelType = modelType, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$describe_model_versions_output()
@@ -977,7 +977,7 @@ frauddetector_describe_model_versions <- function(modelId = NULL, modelVersionNu
 #' @description
 #' Gets all batch import jobs or a specific job of the specified ID. This is a paginated API. If you provide a null `maxResults`, this action retrieves a maximum of 50 records per page. If you provide a `maxResults`, the value must be between 1 and 50. To get the next page results, provide the pagination token from the `GetBatchImportJobsResponse` as part of your request. A null pagination token fetches the records from the beginning.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_batch_import_jobs.html](https://paws-r.github.io/docs/frauddetector/get_batch_import_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_batch_import_jobs/](https://www.paws-r-sdk.com/docs/frauddetector_get_batch_import_jobs/) for full documentation.
 #'
 #' @param jobId The ID of the batch import job to get.
 #' @param maxResults The maximum number of objects to return for request.
@@ -991,7 +991,7 @@ frauddetector_get_batch_import_jobs <- function(jobId = NULL, maxResults = NULL,
     name = "GetBatchImportJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_batch_import_jobs_input(jobId = jobId, maxResults = maxResults, nextToken = nextToken)
   output <- .frauddetector$get_batch_import_jobs_output()
@@ -1008,7 +1008,7 @@ frauddetector_get_batch_import_jobs <- function(jobId = NULL, maxResults = NULL,
 #' @description
 #' Gets all batch prediction jobs or a specific job if you specify a job ID. This is a paginated API. If you provide a null maxResults, this action retrieves a maximum of 50 records per page. If you provide a maxResults, the value must be between 1 and 50. To get the next page results, provide the pagination token from the GetBatchPredictionJobsResponse as part of your request. A null pagination token fetches the records from the beginning.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_batch_prediction_jobs.html](https://paws-r.github.io/docs/frauddetector/get_batch_prediction_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_batch_prediction_jobs/](https://www.paws-r-sdk.com/docs/frauddetector_get_batch_prediction_jobs/) for full documentation.
 #'
 #' @param jobId The batch prediction job for which to get the details.
 #' @param maxResults The maximum number of objects to return for the request.
@@ -1022,7 +1022,7 @@ frauddetector_get_batch_prediction_jobs <- function(jobId = NULL, maxResults = N
     name = "GetBatchPredictionJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_batch_prediction_jobs_input(jobId = jobId, maxResults = maxResults, nextToken = nextToken)
   output <- .frauddetector$get_batch_prediction_jobs_output()
@@ -1039,7 +1039,7 @@ frauddetector_get_batch_prediction_jobs <- function(jobId = NULL, maxResults = N
 #' @description
 #' Retrieves the status of a [`delete_events_by_event_type`][frauddetector_delete_events_by_event_type] action.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_delete_events_by_event_type_status.html](https://paws-r.github.io/docs/frauddetector/get_delete_events_by_event_type_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_delete_events_by_event_type_status/](https://www.paws-r-sdk.com/docs/frauddetector_get_delete_events_by_event_type_status/) for full documentation.
 #'
 #' @param eventTypeName &#91;required&#93; Name of event type for which to get the deletion status.
 #'
@@ -1068,7 +1068,7 @@ frauddetector_get_delete_events_by_event_type_status <- function(eventTypeName) 
 #' @description
 #' Gets a particular detector version.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_detector_version.html](https://paws-r.github.io/docs/frauddetector/get_detector_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_detector_version/](https://www.paws-r-sdk.com/docs/frauddetector_get_detector_version/) for full documentation.
 #'
 #' @param detectorId &#91;required&#93; The detector ID.
 #' @param detectorVersionId &#91;required&#93; The detector version ID.
@@ -1098,7 +1098,7 @@ frauddetector_get_detector_version <- function(detectorId, detectorVersionId) {
 #' @description
 #' Gets all detectors or a single detector if a `detectorId` is specified. This is a paginated API. If you provide a null `maxResults`, this action retrieves a maximum of 10 records per page. If you provide a `maxResults`, the value must be between 5 and 10. To get the next page results, provide the pagination token from the `GetDetectorsResponse` as part of your request. A null pagination token fetches the records from the beginning.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_detectors.html](https://paws-r.github.io/docs/frauddetector/get_detectors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_detectors/](https://www.paws-r-sdk.com/docs/frauddetector_get_detectors/) for full documentation.
 #'
 #' @param detectorId The detector ID.
 #' @param nextToken The next token for the subsequent request.
@@ -1112,7 +1112,7 @@ frauddetector_get_detectors <- function(detectorId = NULL, nextToken = NULL, max
     name = "GetDetectors",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_detectors_input(detectorId = detectorId, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_detectors_output()
@@ -1129,7 +1129,7 @@ frauddetector_get_detectors <- function(detectorId = NULL, nextToken = NULL, max
 #' @description
 #' Gets all entity types or a specific entity type if a name is specified. This is a paginated API. If you provide a null `maxResults`, this action retrieves a maximum of 10 records per page. If you provide a `maxResults`, the value must be between 5 and 10. To get the next page results, provide the pagination token from the `GetEntityTypesResponse` as part of your request. A null pagination token fetches the records from the beginning.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_entity_types.html](https://paws-r.github.io/docs/frauddetector/get_entity_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_entity_types/](https://www.paws-r-sdk.com/docs/frauddetector_get_entity_types/) for full documentation.
 #'
 #' @param name The name.
 #' @param nextToken The next token for the subsequent request.
@@ -1143,7 +1143,7 @@ frauddetector_get_entity_types <- function(name = NULL, nextToken = NULL, maxRes
     name = "GetEntityTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_entity_types_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_entity_types_output()
@@ -1160,7 +1160,7 @@ frauddetector_get_entity_types <- function(name = NULL, nextToken = NULL, maxRes
 #' @description
 #' Retrieves details of events stored with Amazon Fraud Detector. This action does not retrieve prediction results.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_event.html](https://paws-r.github.io/docs/frauddetector/get_event.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_event/](https://www.paws-r-sdk.com/docs/frauddetector_get_event/) for full documentation.
 #'
 #' @param eventId &#91;required&#93; The ID of the event to retrieve.
 #' @param eventTypeName &#91;required&#93; The event type of the event to retrieve.
@@ -1190,7 +1190,7 @@ frauddetector_get_event <- function(eventId, eventTypeName) {
 #' @description
 #' Evaluates an event against a detector version. If a version ID is not provided, the detector’s (`ACTIVE`) version is used.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_event_prediction.html](https://paws-r.github.io/docs/frauddetector/get_event_prediction.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_event_prediction/](https://www.paws-r-sdk.com/docs/frauddetector_get_event_prediction/) for full documentation.
 #'
 #' @param detectorId &#91;required&#93; The detector ID.
 #' @param detectorVersionId The detector version ID.
@@ -1255,7 +1255,7 @@ frauddetector_get_event_prediction <- function(detectorId, detectorVersionId = N
 #' @description
 #' Gets details of the past fraud predictions for the specified event ID, event type, detector ID, and detector version ID that was generated in the specified time period.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_event_prediction_metadata.html](https://paws-r.github.io/docs/frauddetector/get_event_prediction_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_event_prediction_metadata/](https://www.paws-r-sdk.com/docs/frauddetector_get_event_prediction_metadata/) for full documentation.
 #'
 #' @param eventId &#91;required&#93; The event ID.
 #' @param eventTypeName &#91;required&#93; The event type associated with the detector specified for the
@@ -1295,7 +1295,7 @@ frauddetector_get_event_prediction_metadata <- function(eventId, eventTypeName, 
 #' @description
 #' Gets all event types or a specific event type if name is provided. This is a paginated API. If you provide a null `maxResults`, this action retrieves a maximum of 10 records per page. If you provide a `maxResults`, the value must be between 5 and 10. To get the next page results, provide the pagination token from the `GetEventTypesResponse` as part of your request. A null pagination token fetches the records from the beginning.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_event_types.html](https://paws-r.github.io/docs/frauddetector/get_event_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_event_types/](https://www.paws-r-sdk.com/docs/frauddetector_get_event_types/) for full documentation.
 #'
 #' @param name The name.
 #' @param nextToken The next token for the subsequent request.
@@ -1309,7 +1309,7 @@ frauddetector_get_event_types <- function(name = NULL, nextToken = NULL, maxResu
     name = "GetEventTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_event_types_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_event_types_output()
@@ -1327,7 +1327,7 @@ frauddetector_get_event_types <- function(name = NULL, nextToken = NULL, maxResu
 #' @description
 #' Gets the details for one or more Amazon SageMaker models that have been imported into the service. This is a paginated API. If you provide a null `maxResults`, this actions retrieves a maximum of 10 records per page. If you provide a `maxResults`, the value must be between 5 and 10. To get the next page results, provide the pagination token from the `GetExternalModelsResult` as part of your request. A null pagination token fetches the records from the beginning.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_external_models.html](https://paws-r.github.io/docs/frauddetector/get_external_models.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_external_models/](https://www.paws-r-sdk.com/docs/frauddetector_get_external_models/) for full documentation.
 #'
 #' @param modelEndpoint The Amazon SageMaker model endpoint.
 #' @param nextToken The next page token for the request.
@@ -1341,7 +1341,7 @@ frauddetector_get_external_models <- function(modelEndpoint = NULL, nextToken = 
     name = "GetExternalModels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_external_models_input(modelEndpoint = modelEndpoint, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_external_models_output()
@@ -1359,7 +1359,7 @@ frauddetector_get_external_models <- function(modelEndpoint = NULL, nextToken = 
 #' @description
 #' Gets the encryption key if a KMS key has been specified to be used to encrypt content in Amazon Fraud Detector.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_kms_encryption_key.html](https://paws-r.github.io/docs/frauddetector/get_kms_encryption_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_kms_encryption_key/](https://www.paws-r-sdk.com/docs/frauddetector_get_kms_encryption_key/) for full documentation.
 #'
 
 #'
@@ -1388,7 +1388,7 @@ frauddetector_get_kms_encryption_key <- function() {
 #' @description
 #' Gets all labels or a specific label if name is provided. This is a paginated API. If you provide a null `maxResults`, this action retrieves a maximum of 50 records per page. If you provide a `maxResults`, the value must be between 10 and 50. To get the next page results, provide the pagination token from the `GetGetLabelsResponse` as part of your request. A null pagination token fetches the records from the beginning.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_labels.html](https://paws-r.github.io/docs/frauddetector/get_labels.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_labels/](https://www.paws-r-sdk.com/docs/frauddetector_get_labels/) for full documentation.
 #'
 #' @param name The name of the label or labels to get.
 #' @param nextToken The next token for the subsequent request.
@@ -1402,7 +1402,7 @@ frauddetector_get_labels <- function(name = NULL, nextToken = NULL, maxResults =
     name = "GetLabels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_labels_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_labels_output()
@@ -1419,7 +1419,7 @@ frauddetector_get_labels <- function(name = NULL, nextToken = NULL, maxResults =
 #' @description
 #' Gets all the elements in the specified list.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_list_elements.html](https://paws-r.github.io/docs/frauddetector/get_list_elements.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_list_elements/](https://www.paws-r-sdk.com/docs/frauddetector_get_list_elements/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the list.
 #' @param nextToken The next token for the subsequent request.
@@ -1433,7 +1433,7 @@ frauddetector_get_list_elements <- function(name, nextToken = NULL, maxResults =
     name = "GetListElements",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_list_elements_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_list_elements_output()
@@ -1451,7 +1451,7 @@ frauddetector_get_list_elements <- function(name, nextToken = NULL, maxResults =
 #' @description
 #' Gets the metadata of either all the lists under the account or the specified list.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_lists_metadata.html](https://paws-r.github.io/docs/frauddetector/get_lists_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_lists_metadata/](https://www.paws-r-sdk.com/docs/frauddetector_get_lists_metadata/) for full documentation.
 #'
 #' @param name The name of the list.
 #' @param nextToken The next token for the subsequent request.
@@ -1465,7 +1465,7 @@ frauddetector_get_lists_metadata <- function(name = NULL, nextToken = NULL, maxR
     name = "GetListsMetadata",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_lists_metadata_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_lists_metadata_output()
@@ -1482,7 +1482,7 @@ frauddetector_get_lists_metadata <- function(name = NULL, nextToken = NULL, maxR
 #' @description
 #' Gets the details of the specified model version.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_model_version.html](https://paws-r.github.io/docs/frauddetector/get_model_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_model_version/](https://www.paws-r-sdk.com/docs/frauddetector_get_model_version/) for full documentation.
 #'
 #' @param modelId &#91;required&#93; The model ID.
 #' @param modelType &#91;required&#93; The model type.
@@ -1513,7 +1513,7 @@ frauddetector_get_model_version <- function(modelId, modelType, modelVersionNumb
 #' @description
 #' Gets one or more models. Gets all models for the Amazon Web Services account if no model type and no model id provided. Gets all models for the Amazon Web Services account and model type, if the model type is specified but model id is not provided. Gets a specific model if (model type, model id) tuple is specified.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_models.html](https://paws-r.github.io/docs/frauddetector/get_models.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_models/](https://www.paws-r-sdk.com/docs/frauddetector_get_models/) for full documentation.
 #'
 #' @param modelId The model ID.
 #' @param modelType The model type.
@@ -1528,7 +1528,7 @@ frauddetector_get_models <- function(modelId = NULL, modelType = NULL, nextToken
     name = "GetModels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_models_input(modelId = modelId, modelType = modelType, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_models_output()
@@ -1545,7 +1545,7 @@ frauddetector_get_models <- function(modelId = NULL, modelType = NULL, nextToken
 #' @description
 #' Gets one or more outcomes. This is a paginated API. If you provide a null `maxResults`, this actions retrieves a maximum of 100 records per page. If you provide a `maxResults`, the value must be between 50 and 100. To get the next page results, provide the pagination token from the `GetOutcomesResult` as part of your request. A null pagination token fetches the records from the beginning.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_outcomes.html](https://paws-r.github.io/docs/frauddetector/get_outcomes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_outcomes/](https://www.paws-r-sdk.com/docs/frauddetector_get_outcomes/) for full documentation.
 #'
 #' @param name The name of the outcome or outcomes to get.
 #' @param nextToken The next page token for the request.
@@ -1559,7 +1559,7 @@ frauddetector_get_outcomes <- function(name = NULL, nextToken = NULL, maxResults
     name = "GetOutcomes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_outcomes_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_outcomes_output()
@@ -1577,7 +1577,7 @@ frauddetector_get_outcomes <- function(name = NULL, nextToken = NULL, maxResults
 #' @description
 #' Get all rules for a detector (paginated) if `ruleId` and `ruleVersion` are not specified. Gets all rules for the detector and the `ruleId` if present (paginated). Gets a specific rule if both the `ruleId` and the `ruleVersion` are specified.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_rules.html](https://paws-r.github.io/docs/frauddetector/get_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_rules/](https://www.paws-r-sdk.com/docs/frauddetector_get_rules/) for full documentation.
 #'
 #' @param ruleId The rule ID.
 #' @param detectorId &#91;required&#93; The detector ID.
@@ -1593,7 +1593,7 @@ frauddetector_get_rules <- function(ruleId = NULL, detectorId, ruleVersion = NUL
     name = "GetRules",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_rules_input(ruleId = ruleId, detectorId = detectorId, ruleVersion = ruleVersion, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_rules_output()
@@ -1610,7 +1610,7 @@ frauddetector_get_rules <- function(ruleId = NULL, detectorId, ruleVersion = NUL
 #' @description
 #' Gets all of the variables or the specific variable. This is a paginated API. Providing null `maxSizePerPage` results in retrieving maximum of 100 records per page. If you provide `maxSizePerPage` the value must be between 50 and 100. To get the next page result, a provide a pagination token from `GetVariablesResult` as part of your request. Null pagination token fetches the records from the beginning.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/get_variables.html](https://paws-r.github.io/docs/frauddetector/get_variables.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_get_variables/](https://www.paws-r-sdk.com/docs/frauddetector_get_variables/) for full documentation.
 #'
 #' @param name The name of the variable.
 #' @param nextToken The next page token of the get variable request.
@@ -1624,7 +1624,7 @@ frauddetector_get_variables <- function(name = NULL, nextToken = NULL, maxResult
     name = "GetVariables",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$get_variables_input(name = name, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$get_variables_output()
@@ -1641,7 +1641,7 @@ frauddetector_get_variables <- function(name = NULL, nextToken = NULL, maxResult
 #' @description
 #' Gets a list of past predictions. The list can be filtered by detector ID, detector version ID, event ID, event type, or by specifying a time period. If filter is not specified, the most recent prediction is returned.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/list_event_predictions.html](https://paws-r.github.io/docs/frauddetector/list_event_predictions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_list_event_predictions/](https://www.paws-r-sdk.com/docs/frauddetector_list_event_predictions/) for full documentation.
 #'
 #' @param eventId The event ID.
 #' @param eventType The event type associated with the detector.
@@ -1661,7 +1661,7 @@ frauddetector_list_event_predictions <- function(eventId = NULL, eventType = NUL
     name = "ListEventPredictions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$list_event_predictions_input(eventId = eventId, eventType = eventType, detectorId = detectorId, detectorVersionId = detectorVersionId, predictionTimeRange = predictionTimeRange, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$list_event_predictions_output()
@@ -1678,7 +1678,7 @@ frauddetector_list_event_predictions <- function(eventId = NULL, eventType = NUL
 #' @description
 #' Lists all tags associated with the resource. This is a paginated API. To get the next page results, provide the pagination token from the response as part of your request. A null pagination token fetches the records from the beginning.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/list_tags_for_resource.html](https://paws-r.github.io/docs/frauddetector/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/frauddetector_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceARN &#91;required&#93; The ARN that specifies the resource whose tags you want to list.
 #' @param nextToken The next token from the previous results.
@@ -1692,7 +1692,7 @@ frauddetector_list_tags_for_resource <- function(resourceARN, nextToken = NULL, 
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .frauddetector$list_tags_for_resource_input(resourceARN = resourceARN, nextToken = nextToken, maxResults = maxResults)
   output <- .frauddetector$list_tags_for_resource_output()
@@ -1709,7 +1709,7 @@ frauddetector_list_tags_for_resource <- function(resourceARN, nextToken = NULL, 
 #' @description
 #' Creates or updates a detector.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/put_detector.html](https://paws-r.github.io/docs/frauddetector/put_detector.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_put_detector/](https://www.paws-r-sdk.com/docs/frauddetector_put_detector/) for full documentation.
 #'
 #' @param detectorId &#91;required&#93; The detector ID.
 #' @param description The description of the detector.
@@ -1741,7 +1741,7 @@ frauddetector_put_detector <- function(detectorId, description = NULL, eventType
 #' @description
 #' Creates or updates an entity type. An entity represents who is performing the event. As part of a fraud prediction, you pass the entity ID to indicate the specific entity who performed the event. An entity type classifies the entity. Example classifications include customer, merchant, or account.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/put_entity_type.html](https://paws-r.github.io/docs/frauddetector/put_entity_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_put_entity_type/](https://www.paws-r-sdk.com/docs/frauddetector_put_entity_type/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the entity type.
 #' @param description The description.
@@ -1772,7 +1772,7 @@ frauddetector_put_entity_type <- function(name, description = NULL, tags = NULL)
 #' @description
 #' Creates or updates an event type. An event is a business activity that is evaluated for fraud risk. With Amazon Fraud Detector, you generate fraud predictions for events. An event type defines the structure for an event sent to Amazon Fraud Detector. This includes the variables sent as part of the event, the entity performing the event (such as a customer), and the labels that classify the event. Example event types include online payment transactions, account registrations, and authentications.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/put_event_type.html](https://paws-r.github.io/docs/frauddetector/put_event_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_put_event_type/](https://www.paws-r-sdk.com/docs/frauddetector_put_event_type/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name.
 #' @param description The description of the event type.
@@ -1780,20 +1780,23 @@ frauddetector_put_entity_type <- function(name, description = NULL, tags = NULL)
 #' @param labels The event type labels.
 #' @param entityTypes &#91;required&#93; The entity type for the event type. Example entity types: customer,
 #' merchant, account.
-#' @param eventIngestion Specifies if ingenstion is enabled or disabled.
+#' @param eventIngestion Specifies if ingestion is enabled or disabled.
 #' @param tags A collection of key and value pairs.
+#' @param eventOrchestration Enables or disables event orchestration. If enabled, you can send event
+#' predictions to select AWS services for downstream processing of the
+#' events.
 #'
 #' @keywords internal
 #'
 #' @rdname frauddetector_put_event_type
-frauddetector_put_event_type <- function(name, description = NULL, eventVariables, labels = NULL, entityTypes, eventIngestion = NULL, tags = NULL) {
+frauddetector_put_event_type <- function(name, description = NULL, eventVariables, labels = NULL, entityTypes, eventIngestion = NULL, tags = NULL, eventOrchestration = NULL) {
   op <- new_operation(
     name = "PutEventType",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .frauddetector$put_event_type_input(name = name, description = description, eventVariables = eventVariables, labels = labels, entityTypes = entityTypes, eventIngestion = eventIngestion, tags = tags)
+  input <- .frauddetector$put_event_type_input(name = name, description = description, eventVariables = eventVariables, labels = labels, entityTypes = entityTypes, eventIngestion = eventIngestion, tags = tags, eventOrchestration = eventOrchestration)
   output <- .frauddetector$put_event_type_output()
   config <- get_config()
   svc <- .frauddetector$service(config)
@@ -1808,7 +1811,7 @@ frauddetector_put_event_type <- function(name, description = NULL, eventVariable
 #' @description
 #' Creates or updates an Amazon SageMaker model endpoint. You can also use this action to update the configuration of the model endpoint, including the IAM role and/or the mapped variables.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/put_external_model.html](https://paws-r.github.io/docs/frauddetector/put_external_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_put_external_model/](https://www.paws-r-sdk.com/docs/frauddetector_put_external_model/) for full documentation.
 #'
 #' @param modelEndpoint &#91;required&#93; The model endpoints name.
 #' @param modelSource &#91;required&#93; The source of the model.
@@ -1844,7 +1847,7 @@ frauddetector_put_external_model <- function(modelEndpoint, modelSource, invokeM
 #' @description
 #' Specifies the KMS key to be used to encrypt content in Amazon Fraud Detector.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/put_kms_encryption_key.html](https://paws-r.github.io/docs/frauddetector/put_kms_encryption_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_put_kms_encryption_key/](https://www.paws-r-sdk.com/docs/frauddetector_put_kms_encryption_key/) for full documentation.
 #'
 #' @param kmsEncryptionKeyArn &#91;required&#93; The KMS encryption key ARN.
 #' 
@@ -1876,11 +1879,11 @@ frauddetector_put_kms_encryption_key <- function(kmsEncryptionKeyArn) {
 #' @description
 #' Creates or updates label. A label classifies an event as fraudulent or legitimate. Labels are associated with event types and used to train supervised machine learning models in Amazon Fraud Detector.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/put_label.html](https://paws-r.github.io/docs/frauddetector/put_label.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_put_label/](https://www.paws-r-sdk.com/docs/frauddetector_put_label/) for full documentation.
 #'
 #' @param name &#91;required&#93; The label name.
 #' @param description The label description.
-#' @param tags 
+#' @param tags A collection of key and value pairs.
 #'
 #' @keywords internal
 #'
@@ -1907,7 +1910,7 @@ frauddetector_put_label <- function(name, description = NULL, tags = NULL) {
 #' @description
 #' Creates or updates an outcome.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/put_outcome.html](https://paws-r.github.io/docs/frauddetector/put_outcome.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_put_outcome/](https://www.paws-r-sdk.com/docs/frauddetector_put_outcome/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the outcome.
 #' @param description The outcome description.
@@ -1939,7 +1942,7 @@ frauddetector_put_outcome <- function(name, description = NULL, tags = NULL) {
 #' @description
 #' Stores events in Amazon Fraud Detector without generating fraud predictions for those events. For example, you can use [`send_event`][frauddetector_send_event] to upload a historical dataset, which you can then later use to train a model.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/send_event.html](https://paws-r.github.io/docs/frauddetector/send_event.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_send_event/](https://www.paws-r-sdk.com/docs/frauddetector_send_event/) for full documentation.
 #'
 #' @param eventId &#91;required&#93; The event ID to upload.
 #' @param eventTypeName &#91;required&#93; The event type name of the event.
@@ -1979,7 +1982,7 @@ frauddetector_send_event <- function(eventId, eventTypeName, eventTimestamp, eve
 #' @description
 #' Assigns tags to a resource.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/tag_resource.html](https://paws-r.github.io/docs/frauddetector/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_tag_resource/](https://www.paws-r-sdk.com/docs/frauddetector_tag_resource/) for full documentation.
 #'
 #' @param resourceARN &#91;required&#93; The resource ARN.
 #' @param tags &#91;required&#93; The tags to assign to the resource.
@@ -2009,7 +2012,7 @@ frauddetector_tag_resource <- function(resourceARN, tags) {
 #' @description
 #' Removes tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/untag_resource.html](https://paws-r.github.io/docs/frauddetector/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_untag_resource/](https://www.paws-r-sdk.com/docs/frauddetector_untag_resource/) for full documentation.
 #'
 #' @param resourceARN &#91;required&#93; The ARN of the resource from which to remove the tag.
 #' @param tagKeys &#91;required&#93; The resource ARN.
@@ -2039,7 +2042,7 @@ frauddetector_untag_resource <- function(resourceARN, tagKeys) {
 #' @description
 #' Updates a detector version. The detector version attributes that you can update include models, external model endpoints, rules, rule execution mode, and description. You can only update a `DRAFT` detector version.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/update_detector_version.html](https://paws-r.github.io/docs/frauddetector/update_detector_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_update_detector_version/](https://www.paws-r-sdk.com/docs/frauddetector_update_detector_version/) for full documentation.
 #'
 #' @param detectorId &#91;required&#93; The parent detector ID for the detector version you want to update.
 #' @param detectorVersionId &#91;required&#93; The detector version ID.
@@ -2084,7 +2087,7 @@ frauddetector_update_detector_version <- function(detectorId, detectorVersionId,
 #' @description
 #' Updates the detector version's description. You can update the metadata for any detector version (`DRAFT, ACTIVE,` or `INACTIVE`).
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/update_detector_version_metadata.html](https://paws-r.github.io/docs/frauddetector/update_detector_version_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_update_detector_version_metadata/](https://www.paws-r-sdk.com/docs/frauddetector_update_detector_version_metadata/) for full documentation.
 #'
 #' @param detectorId &#91;required&#93; The detector ID.
 #' @param detectorVersionId &#91;required&#93; The detector version ID.
@@ -2115,7 +2118,7 @@ frauddetector_update_detector_version_metadata <- function(detectorId, detectorV
 #' @description
 #' Updates the detector version’s status. You can perform the following promotions or demotions using [`update_detector_version_status`][frauddetector_update_detector_version_status]: `DRAFT` to `ACTIVE`, `ACTIVE` to `INACTIVE`, and `INACTIVE` to `ACTIVE`.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/update_detector_version_status.html](https://paws-r.github.io/docs/frauddetector/update_detector_version_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_update_detector_version_status/](https://www.paws-r-sdk.com/docs/frauddetector_update_detector_version_status/) for full documentation.
 #'
 #' @param detectorId &#91;required&#93; The detector ID.
 #' @param detectorVersionId &#91;required&#93; The detector version ID.
@@ -2148,7 +2151,7 @@ frauddetector_update_detector_version_status <- function(detectorId, detectorVer
 #' @description
 #' Updates the specified event with a new label.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/update_event_label.html](https://paws-r.github.io/docs/frauddetector/update_event_label.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_update_event_label/](https://www.paws-r-sdk.com/docs/frauddetector_update_event_label/) for full documentation.
 #'
 #' @param eventId &#91;required&#93; The ID of the event associated with the label to update.
 #' @param eventTypeName &#91;required&#93; The event type of the event associated with the label to update.
@@ -2181,7 +2184,7 @@ frauddetector_update_event_label <- function(eventId, eventTypeName, assignedLab
 #' @description
 #' Updates a list.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/update_list.html](https://paws-r.github.io/docs/frauddetector/update_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_update_list/](https://www.paws-r-sdk.com/docs/frauddetector_update_list/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the list to update.
 #' @param elements One or more list elements to add or replace. If you are providing the
@@ -2228,7 +2231,7 @@ frauddetector_update_list <- function(name, elements = NULL, description = NULL,
 #' @description
 #' Updates model description.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/update_model.html](https://paws-r.github.io/docs/frauddetector/update_model.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_update_model/](https://www.paws-r-sdk.com/docs/frauddetector_update_model/) for full documentation.
 #'
 #' @param modelId &#91;required&#93; The model ID.
 #' @param modelType &#91;required&#93; The model type.
@@ -2259,7 +2262,7 @@ frauddetector_update_model <- function(modelId, modelType, description = NULL) {
 #' @description
 #' Updates a model version. Updating a model version retrains an existing model version using updated training data and produces a new minor version of the model. You can update the training data set location and data access role attributes using this action. This action creates and trains a new minor version of the model, for example version 1.01, 1.02, 1.03.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/update_model_version.html](https://paws-r.github.io/docs/frauddetector/update_model_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_update_model_version/](https://www.paws-r-sdk.com/docs/frauddetector_update_model_version/) for full documentation.
 #'
 #' @param modelId &#91;required&#93; The model ID.
 #' @param modelType &#91;required&#93; The model type.
@@ -2295,7 +2298,7 @@ frauddetector_update_model_version <- function(modelId, modelType, majorVersionN
 #' @description
 #' Updates the status of a model version.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/update_model_version_status.html](https://paws-r.github.io/docs/frauddetector/update_model_version_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_update_model_version_status/](https://www.paws-r-sdk.com/docs/frauddetector_update_model_version_status/) for full documentation.
 #'
 #' @param modelId &#91;required&#93; The model ID of the model version to update.
 #' @param modelType &#91;required&#93; The model type.
@@ -2327,7 +2330,7 @@ frauddetector_update_model_version_status <- function(modelId, modelType, modelV
 #' @description
 #' Updates a rule's metadata. The description attribute can be updated.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/update_rule_metadata.html](https://paws-r.github.io/docs/frauddetector/update_rule_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_update_rule_metadata/](https://www.paws-r-sdk.com/docs/frauddetector_update_rule_metadata/) for full documentation.
 #'
 #' @param rule &#91;required&#93; The rule to update.
 #' @param description &#91;required&#93; The rule description.
@@ -2357,7 +2360,7 @@ frauddetector_update_rule_metadata <- function(rule, description) {
 #' @description
 #' Updates a rule version resulting in a new rule version. Updates a rule version resulting in a new rule version (version 1, 2, 3 ...).
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/update_rule_version.html](https://paws-r.github.io/docs/frauddetector/update_rule_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_update_rule_version/](https://www.paws-r-sdk.com/docs/frauddetector_update_rule_version/) for full documentation.
 #'
 #' @param rule &#91;required&#93; The rule to update.
 #' @param description The description.
@@ -2391,7 +2394,7 @@ frauddetector_update_rule_version <- function(rule, description = NULL, expressi
 #' @description
 #' Updates a variable.
 #'
-#' See [https://paws-r.github.io/docs/frauddetector/update_variable.html](https://paws-r.github.io/docs/frauddetector/update_variable.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/frauddetector_update_variable/](https://www.paws-r-sdk.com/docs/frauddetector_update_variable/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the variable.
 #' @param defaultValue The new default value of the variable.

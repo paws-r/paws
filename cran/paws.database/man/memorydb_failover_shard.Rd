@@ -14,6 +14,6 @@ memorydb_failover_shard(ClusterName, ShardName)
 \description{
 Used to failover a shard. This API is designed for testing the behavior of your application in case of MemoryDB failover. It is not designed to be used as a production-level tool for initiating a failover to overcome a problem you may have with the cluster. Moreover, in certain conditions such as large scale operational events, Amazon may block this API.
 
-See \url{https://paws-r.github.io/docs/memorydb/failover_shard.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_failover_shard/} for full documentation.
 }
 \keyword{internal}

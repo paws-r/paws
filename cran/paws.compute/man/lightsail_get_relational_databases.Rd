@@ -18,6 +18,6 @@ request.}
 \description{
 Returns information about all of your databases in Amazon Lightsail.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_relational_databases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_relational_databases/} for full documentation.
 }
 \keyword{internal}

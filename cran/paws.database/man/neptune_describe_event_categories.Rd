@@ -18,6 +18,6 @@ db-snapshot}
 \description{
 Displays a list of categories for all event source types, or, if specified, for a specified source type.
 
-See \url{https://paws-r.github.io/docs/neptune/describe_event_categories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_describe_event_categories/} for full documentation.
 }
 \keyword{internal}

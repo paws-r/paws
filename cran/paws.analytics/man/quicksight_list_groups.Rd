@@ -25,6 +25,6 @@ contains your Amazon QuickSight account.}
 \description{
 Lists all user groups in Amazon QuickSight.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_groups/} for full documentation.
 }
 \keyword{internal}

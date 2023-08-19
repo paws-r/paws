@@ -30,6 +30,6 @@ from a previous call.)}
 \description{
 For a given maintenance window execution, lists the tasks that were run.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_maintenance_window_execution_tasks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_execution_tasks/} for full documentation.
 }
 \keyword{internal}

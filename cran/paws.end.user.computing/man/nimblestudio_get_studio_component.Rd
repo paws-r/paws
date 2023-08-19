@@ -14,6 +14,6 @@ nimblestudio_get_studio_component(studioComponentId, studioId)
 \description{
 Gets a studio component resource.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/get_studio_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_get_studio_component/} for full documentation.
 }
 \keyword{internal}

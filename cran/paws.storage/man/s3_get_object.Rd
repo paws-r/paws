@@ -48,7 +48,7 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{IfMatch}{Return the object only if its entity tag (ETag) is the same as the one
@@ -114,6 +114,6 @@ different account, the request fails with the HTTP status code
 \description{
 Retrieves objects from Amazon S3. To use \code{GET}, you must have \code{READ} access to the object. If you grant \code{READ} access to the anonymous user, you can return the object without using an authorization header.
 
-See \url{https://paws-r.github.io/docs/s3/get_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_object/} for full documentation.
 }
 \keyword{internal}

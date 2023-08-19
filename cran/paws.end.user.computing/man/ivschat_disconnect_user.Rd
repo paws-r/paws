@@ -17,6 +17,6 @@ disconnected. Currently this must be an ARN.}
 \description{
 Disconnects all connections using a specified user ID from a room. This replicates the \href{https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-disconnectuser-publish.html}{DisconnectUser} WebSocket operation in the Amazon IVS Chat Messaging API.
 
-See \url{https://paws-r.github.io/docs/ivschat/disconnect_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivschat_disconnect_user/} for full documentation.
 }
 \keyword{internal}

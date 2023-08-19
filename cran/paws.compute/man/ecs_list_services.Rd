@@ -47,6 +47,6 @@ with the returned \code{nextToken} value. This value can be between 1 and
 \description{
 Returns a list of services. You can filter the results by cluster, launch type, and scheduling strategy.
 
-See \url{https://paws-r.github.io/docs/ecs/list_services.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_list_services/} for full documentation.
 }
 \keyword{internal}

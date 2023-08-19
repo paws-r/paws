@@ -20,6 +20,6 @@ the response body.}
 \description{
 List all field-level encryption configurations that have been created in CloudFront for this account.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_field_level_encryption_configs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_field_level_encryption_configs/} for full documentation.
 }
 \keyword{internal}

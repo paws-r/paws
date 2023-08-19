@@ -22,6 +22,6 @@ Beanstalk and the source bundle remains in Amazon S3.}
 \description{
 Deletes the specified version from the specified application.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/delete_application_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_delete_application_version/} for full documentation.
 }
 \keyword{internal}

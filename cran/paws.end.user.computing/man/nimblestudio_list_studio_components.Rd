@@ -29,6 +29,6 @@ types.}
 \description{
 Lists the \code{StudioComponents} in a studio.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/list_studio_components.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_list_studio_components/} for full documentation.
 }
 \keyword{internal}

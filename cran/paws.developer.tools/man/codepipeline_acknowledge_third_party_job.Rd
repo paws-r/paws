@@ -22,6 +22,6 @@ details.}
 \description{
 Confirms a job worker has received the specified job. Used for partner actions only.
 
-See \url{https://paws-r.github.io/docs/codepipeline/acknowledge_third_party_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_acknowledge_third_party_job/} for full documentation.
 }
 \keyword{internal}

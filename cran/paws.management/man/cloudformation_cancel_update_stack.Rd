@@ -7,7 +7,16 @@
 cloudformation_cancel_update_stack(StackName, ClientRequestToken = NULL)
 }
 \arguments{
-\item{StackName}{[required] The name or the unique stack ID that's associated with the stack.}
+\item{StackName}{[required] If you don't pass a parameter to \code{StackName}, the API returns a response
+that describes all resources in the account.
+
+The IAM policy below can be added to IAM policies when you want to limit
+resource-level permissions and avoid returning a response when no
+parameter is sent in the request:
+
+\verb{\{ "Version": "2012-10-17", "Statement": [\{ "Effect": "Deny", "Action": "cloudformation:DescribeStacks", "NotResource": "arn:aws:cloudformation:*:*:stack/*/*" \}] \}}
+
+The name or the unique stack ID that's associated with the stack.}
 
 \item{ClientRequestToken}{A unique identifier for this
 \code{\link[=cloudformation_cancel_update_stack]{cancel_update_stack}} request.
@@ -20,6 +29,6 @@ ensure that CloudFormation successfully received them.}
 \description{
 Cancels an update on the specified stack. If the call completes successfully, the stack rolls back the update and reverts to the previous stack configuration.
 
-See \url{https://paws-r.github.io/docs/cloudformation/cancel_update_stack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_cancel_update_stack/} for full documentation.
 }
 \keyword{internal}

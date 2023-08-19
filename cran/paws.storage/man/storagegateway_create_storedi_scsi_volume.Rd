@@ -72,6 +72,6 @@ the maximum length for a tag's value is 256.}
 \description{
 Creates a volume on a specified gateway. This operation is only supported in the stored volume gateway type.
 
-See \url{https://paws-r.github.io/docs/storagegateway/create_storedi_scsi_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_create_storedi_scsi_volume/} for full documentation.
 }
 \keyword{internal}

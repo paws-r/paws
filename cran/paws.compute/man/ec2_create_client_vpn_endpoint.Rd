@@ -115,6 +115,6 @@ established.}
 \description{
 Creates a Client VPN endpoint. A Client VPN endpoint is the resource you create and configure to enable and manage client VPN sessions. It is the destination endpoint at which all client VPN sessions are terminated.
 
-See \url{https://paws-r.github.io/docs/ec2/create_client_vpn_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_client_vpn_endpoint/} for full documentation.
 }
 \keyword{internal}

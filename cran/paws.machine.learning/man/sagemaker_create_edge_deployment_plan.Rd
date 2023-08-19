@@ -27,6 +27,6 @@ limited to 10 per deployment.}
 \description{
 Creates an edge deployment plan, consisting of multiple stages. Each stage may have a different deployment configuration and devices.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_edge_deployment_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_edge_deployment_plan/} for full documentation.
 }
 \keyword{internal}

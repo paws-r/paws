@@ -108,6 +108,6 @@ in the \emph{CloudFormation User Guide}.
 \description{
 Updates the parameter values for stack instances for the specified accounts, within the specified Amazon Web Services Regions. A stack instance refers to a stack in a specific account and Region.
 
-See \url{https://paws-r.github.io/docs/cloudformation/update_stack_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_update_stack_instances/} for full documentation.
 }
 \keyword{internal}

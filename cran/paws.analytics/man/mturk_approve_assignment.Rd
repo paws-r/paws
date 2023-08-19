@@ -24,6 +24,6 @@ previously rejected. Defaults to \code{False}.}
 \description{
 The \code{\link[=mturk_approve_assignment]{approve_assignment}} operation approves the results of a completed assignment.
 
-See \url{https://paws-r.github.io/docs/mturk/approve_assignment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_approve_assignment/} for full documentation.
 }
 \keyword{internal}

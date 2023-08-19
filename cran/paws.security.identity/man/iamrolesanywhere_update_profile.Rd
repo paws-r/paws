@@ -33,6 +33,6 @@ session credentials.}
 \description{
 Updates a \emph{profile}, a list of the roles that IAM Roles Anywhere service is trusted to assume. You use profiles to intersect permissions with IAM managed policies.
 
-See \url{https://paws-r.github.io/docs/iamrolesanywhere/update_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iamrolesanywhere_update_profile/} for full documentation.
 }
 \keyword{internal}

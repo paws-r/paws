@@ -12,6 +12,6 @@ batch_describe_jobs(jobs)
 \description{
 Describes a list of Batch jobs.
 
-See \url{https://paws-r.github.io/docs/batch/describe_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_describe_jobs/} for full documentation.
 }
 \keyword{internal}

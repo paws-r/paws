@@ -12,6 +12,6 @@ lightsail_get_disk(diskName)
 \description{
 Returns information about a specific block storage disk.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_disk.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_disk/} for full documentation.
 }
 \keyword{internal}

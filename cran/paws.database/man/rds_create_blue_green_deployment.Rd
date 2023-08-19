@@ -51,6 +51,6 @@ different from the one associated with the source DB cluster.}
 \description{
 Creates a blue/green deployment.
 
-See \url{https://paws-r.github.io/docs/rds/create_blue_green_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_create_blue_green_deployment/} for full documentation.
 }
 \keyword{internal}

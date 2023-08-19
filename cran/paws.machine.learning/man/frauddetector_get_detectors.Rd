@@ -20,6 +20,6 @@ frauddetector_get_detectors(
 \description{
 Gets all detectors or a single detector if a \code{detectorId} is specified. This is a paginated API. If you provide a null \code{maxResults}, this action retrieves a maximum of 10 records per page. If you provide a \code{maxResults}, the value must be between 5 and 10. To get the next page results, provide the pagination token from the \code{GetDetectorsResponse} as part of your request. A null pagination token fetches the records from the beginning.
 
-See \url{https://paws-r.github.io/docs/frauddetector/get_detectors.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_get_detectors/} for full documentation.
 }
 \keyword{internal}

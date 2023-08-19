@@ -14,6 +14,6 @@ efs_tag_resource(ResourceId, Tags)
 \description{
 Creates a tag for an EFS resource. You can create tags for EFS file systems and access points using this API operation.
 
-See \url{https://paws-r.github.io/docs/efs/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_tag_resource/} for full documentation.
 }
 \keyword{internal}

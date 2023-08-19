@@ -12,6 +12,6 @@ augmentedairuntime_stop_human_loop(HumanLoopName)
 \description{
 Stops the specified human loop.
 
-See \url{https://paws-r.github.io/docs/augmentedairuntime/stop_human_loop.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/augmentedairuntime_stop_human_loop/} for full documentation.
 }
 \keyword{internal}

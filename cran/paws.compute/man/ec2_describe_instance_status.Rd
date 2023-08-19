@@ -81,6 +81,6 @@ Default: \code{false}}
 \description{
 Describes the status of the specified instances or all of your instances. By default, only running instances are described, unless you specifically indicate to return the status of all instances.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_instance_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_instance_status/} for full documentation.
 }
 \keyword{internal}

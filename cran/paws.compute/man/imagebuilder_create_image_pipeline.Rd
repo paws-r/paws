@@ -58,6 +58,6 @@ Enabled by default.}
 \description{
 Creates a new image pipeline. Image pipelines enable you to automate the creation and distribution of images.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/create_image_pipeline.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_create_image_pipeline/} for full documentation.
 }
 \keyword{internal}

@@ -36,6 +36,6 @@ finspacedata_update_dataset(
 \description{
 Updates a FinSpace Dataset.
 
-See \url{https://paws-r.github.io/docs/finspacedata/update_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_update_dataset/} for full documentation.
 }
 \keyword{internal}

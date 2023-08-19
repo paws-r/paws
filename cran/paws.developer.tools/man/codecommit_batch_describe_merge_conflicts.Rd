@@ -55,6 +55,6 @@ batch of the results.}
 \description{
 Returns information about one or more merge conflicts in the attempted merge of two commit specifiers using the squash or three-way merge strategy.
 
-See \url{https://paws-r.github.io/docs/codecommit/batch_describe_merge_conflicts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_batch_describe_merge_conflicts/} for full documentation.
 }
 \keyword{internal}

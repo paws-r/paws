@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Accepts an invitation for the member account to contribute data to a behavior graph. This operation can only be called by an invited member account.
 #'
-#' See [https://paws-r.github.io/docs/detective/accept_invitation.html](https://paws-r.github.io/docs/detective/accept_invitation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_accept_invitation/](https://www.paws-r-sdk.com/docs/detective_accept_invitation/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph that the member account is accepting the
 #' invitation for.
@@ -41,7 +41,7 @@ detective_accept_invitation <- function(GraphArn) {
 #' @description
 #' Gets data source package information for the behavior graph.
 #'
-#' See [https://paws-r.github.io/docs/detective/batch_get_graph_member_datasources.html](https://paws-r.github.io/docs/detective/batch_get_graph_member_datasources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_batch_get_graph_member_datasources/](https://www.paws-r-sdk.com/docs/detective_batch_get_graph_member_datasources/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
 #' @param AccountIds &#91;required&#93; The list of Amazon Web Services accounts to get data source package
@@ -72,7 +72,7 @@ detective_batch_get_graph_member_datasources <- function(GraphArn, AccountIds) {
 #' @description
 #' Gets information on the data source package history for an account.
 #'
-#' See [https://paws-r.github.io/docs/detective/batch_get_membership_datasources.html](https://paws-r.github.io/docs/detective/batch_get_membership_datasources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_batch_get_membership_datasources/](https://www.paws-r-sdk.com/docs/detective_batch_get_membership_datasources/) for full documentation.
 #'
 #' @param GraphArns &#91;required&#93; The ARN of the behavior graph.
 #'
@@ -102,7 +102,7 @@ detective_batch_get_membership_datasources <- function(GraphArns) {
 #' @description
 #' Creates a new behavior graph for the calling account, and sets that account as the administrator account. This operation is called by the account that is enabling Detective.
 #'
-#' See [https://paws-r.github.io/docs/detective/create_graph.html](https://paws-r.github.io/docs/detective/create_graph.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_create_graph/](https://www.paws-r-sdk.com/docs/detective_create_graph/) for full documentation.
 #'
 #' @param Tags The tags to assign to the new behavior graph. You can add up to 50 tags.
 #' For each tag, you provide the tag key and the tag value. Each tag key
@@ -134,7 +134,7 @@ detective_create_graph <- function(Tags = NULL) {
 #' @description
 #' [`create_members`][detective_create_members] is used to send invitations to accounts. For the organization behavior graph, the Detective administrator account uses [`create_members`][detective_create_members] to enable organization accounts as member accounts.
 #'
-#' See [https://paws-r.github.io/docs/detective/create_members.html](https://paws-r.github.io/docs/detective/create_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_create_members/](https://www.paws-r-sdk.com/docs/detective_create_members/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
 #' @param Message Customized message text to include in the invitation email message to
@@ -176,7 +176,7 @@ detective_create_members <- function(GraphArn, Message = NULL, DisableEmailNotif
 #' @description
 #' Disables the specified behavior graph and queues it to be deleted. This operation removes the behavior graph from each member account's list of behavior graphs.
 #'
-#' See [https://paws-r.github.io/docs/detective/delete_graph.html](https://paws-r.github.io/docs/detective/delete_graph.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_delete_graph/](https://www.paws-r-sdk.com/docs/detective_delete_graph/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph to disable.
 #'
@@ -205,7 +205,7 @@ detective_delete_graph <- function(GraphArn) {
 #' @description
 #' Removes the specified member accounts from the behavior graph. The removed accounts no longer contribute data to the behavior graph. This operation can only be called by the administrator account for the behavior graph.
 #'
-#' See [https://paws-r.github.io/docs/detective/delete_members.html](https://paws-r.github.io/docs/detective/delete_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_delete_members/](https://www.paws-r-sdk.com/docs/detective_delete_members/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph to remove members from.
 #' @param AccountIds &#91;required&#93; The list of Amazon Web Services account identifiers for the member
@@ -238,7 +238,7 @@ detective_delete_members <- function(GraphArn, AccountIds) {
 #' @description
 #' Returns information about the configuration for the organization behavior graph. Currently indicates whether to automatically enable new organization accounts as member accounts.
 #'
-#' See [https://paws-r.github.io/docs/detective/describe_organization_configuration.html](https://paws-r.github.io/docs/detective/describe_organization_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_describe_organization_configuration/](https://www.paws-r-sdk.com/docs/detective_describe_organization_configuration/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the organization behavior graph.
 #'
@@ -267,7 +267,7 @@ detective_describe_organization_configuration <- function(GraphArn) {
 #' @description
 #' Removes the Detective administrator account in the current Region. Deletes the organization behavior graph.
 #'
-#' See [https://paws-r.github.io/docs/detective/disable_organization_admin_account.html](https://paws-r.github.io/docs/detective/disable_organization_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_disable_organization_admin_account/](https://www.paws-r-sdk.com/docs/detective_disable_organization_admin_account/) for full documentation.
 #'
 
 #'
@@ -296,7 +296,7 @@ detective_disable_organization_admin_account <- function() {
 #' @description
 #' Removes the member account from the specified behavior graph. This operation can only be called by an invited member account that has the `ENABLED` status.
 #'
-#' See [https://paws-r.github.io/docs/detective/disassociate_membership.html](https://paws-r.github.io/docs/detective/disassociate_membership.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_disassociate_membership/](https://www.paws-r-sdk.com/docs/detective_disassociate_membership/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph to remove the member account from.
 #' 
@@ -329,7 +329,7 @@ detective_disassociate_membership <- function(GraphArn) {
 #' @description
 #' Designates the Detective administrator account for the organization in the current Region.
 #'
-#' See [https://paws-r.github.io/docs/detective/enable_organization_admin_account.html](https://paws-r.github.io/docs/detective/enable_organization_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_enable_organization_admin_account/](https://www.paws-r-sdk.com/docs/detective_enable_organization_admin_account/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account identifier of the account to designate
 #' as the Detective administrator account for the organization.
@@ -360,7 +360,7 @@ detective_enable_organization_admin_account <- function(AccountId) {
 #' @description
 #' Returns the membership details for specified member accounts for a behavior graph.
 #'
-#' See [https://paws-r.github.io/docs/detective/get_members.html](https://paws-r.github.io/docs/detective/get_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_get_members/](https://www.paws-r-sdk.com/docs/detective_get_members/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph for which to request the member details.
 #' @param AccountIds &#91;required&#93; The list of Amazon Web Services account identifiers for the member
@@ -396,7 +396,7 @@ detective_get_members <- function(GraphArn, AccountIds) {
 #' @description
 #' Lists data source packages in the behavior graph.
 #'
-#' See [https://paws-r.github.io/docs/detective/list_datasource_packages.html](https://paws-r.github.io/docs/detective/list_datasource_packages.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_list_datasource_packages/](https://www.paws-r-sdk.com/docs/detective_list_datasource_packages/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
 #' @param NextToken For requests to get the next page of results, the pagination token that
@@ -412,7 +412,7 @@ detective_list_datasource_packages <- function(GraphArn, NextToken = NULL, MaxRe
     name = "ListDatasourcePackages",
     http_method = "POST",
     http_path = "/graph/datasources/list",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .detective$list_datasource_packages_input(GraphArn = GraphArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .detective$list_datasource_packages_output()
@@ -430,7 +430,7 @@ detective_list_datasource_packages <- function(GraphArn, NextToken = NULL, MaxRe
 #' @description
 #' Returns the list of behavior graphs that the calling account is an administrator account of. This operation can only be called by an administrator account.
 #'
-#' See [https://paws-r.github.io/docs/detective/list_graphs.html](https://paws-r.github.io/docs/detective/list_graphs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_list_graphs/](https://www.paws-r-sdk.com/docs/detective_list_graphs/) for full documentation.
 #'
 #' @param NextToken For requests to get the next page of results, the pagination token that
 #' was returned with the previous set of results. The initial request does
@@ -447,7 +447,7 @@ detective_list_graphs <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListGraphs",
     http_method = "POST",
     http_path = "/graphs/list",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .detective$list_graphs_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .detective$list_graphs_output()
@@ -465,7 +465,7 @@ detective_list_graphs <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Retrieves the list of open and accepted behavior graph invitations for the member account. This operation can only be called by an invited member account.
 #'
-#' See [https://paws-r.github.io/docs/detective/list_invitations.html](https://paws-r.github.io/docs/detective/list_invitations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_list_invitations/](https://www.paws-r-sdk.com/docs/detective_list_invitations/) for full documentation.
 #'
 #' @param NextToken For requests to retrieve the next page of results, the pagination token
 #' that was returned with the previous page of results. The initial request
@@ -482,7 +482,7 @@ detective_list_invitations <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListInvitations",
     http_method = "POST",
     http_path = "/invitations/list",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .detective$list_invitations_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .detective$list_invitations_output()
@@ -499,7 +499,7 @@ detective_list_invitations <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Retrieves the list of member accounts for a behavior graph.
 #'
-#' See [https://paws-r.github.io/docs/detective/list_members.html](https://paws-r.github.io/docs/detective/list_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_list_members/](https://www.paws-r-sdk.com/docs/detective_list_members/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph for which to retrieve the list of member
 #' accounts.
@@ -518,7 +518,7 @@ detective_list_members <- function(GraphArn, NextToken = NULL, MaxResults = NULL
     name = "ListMembers",
     http_method = "POST",
     http_path = "/graph/members/list",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .detective$list_members_input(GraphArn = GraphArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .detective$list_members_output()
@@ -536,7 +536,7 @@ detective_list_members <- function(GraphArn, NextToken = NULL, MaxResults = NULL
 #' @description
 #' Returns information about the Detective administrator account for an organization. Can only be called by the organization management account.
 #'
-#' See [https://paws-r.github.io/docs/detective/list_organization_admin_accounts.html](https://paws-r.github.io/docs/detective/list_organization_admin_accounts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_list_organization_admin_accounts/](https://www.paws-r-sdk.com/docs/detective_list_organization_admin_accounts/) for full documentation.
 #'
 #' @param NextToken For requests to get the next page of results, the pagination token that
 #' was returned with the previous set of results. The initial request does
@@ -551,7 +551,7 @@ detective_list_organization_admin_accounts <- function(NextToken = NULL, MaxResu
     name = "ListOrganizationAdminAccounts",
     http_method = "POST",
     http_path = "/orgs/adminAccountslist",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .detective$list_organization_admin_accounts_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .detective$list_organization_admin_accounts_output()
@@ -568,7 +568,7 @@ detective_list_organization_admin_accounts <- function(NextToken = NULL, MaxResu
 #' @description
 #' Returns the tag values that are assigned to a behavior graph.
 #'
-#' See [https://paws-r.github.io/docs/detective/list_tags_for_resource.html](https://paws-r.github.io/docs/detective/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/detective_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the behavior graph for which to retrieve the tag values.
 #'
@@ -597,7 +597,7 @@ detective_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Rejects an invitation to contribute the account data to a behavior graph. This operation must be called by an invited member account that has the `INVITED` status.
 #'
-#' See [https://paws-r.github.io/docs/detective/reject_invitation.html](https://paws-r.github.io/docs/detective/reject_invitation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_reject_invitation/](https://www.paws-r-sdk.com/docs/detective_reject_invitation/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph to reject the invitation to.
 #' 
@@ -630,7 +630,7 @@ detective_reject_invitation <- function(GraphArn) {
 #' @description
 #' Sends a request to enable data ingest for a member account that has a status of `ACCEPTED_BUT_DISABLED`.
 #'
-#' See [https://paws-r.github.io/docs/detective/start_monitoring_member.html](https://paws-r.github.io/docs/detective/start_monitoring_member.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_start_monitoring_member/](https://www.paws-r-sdk.com/docs/detective_start_monitoring_member/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
 #' @param AccountId &#91;required&#93; The account ID of the member account to try to enable.
@@ -663,7 +663,7 @@ detective_start_monitoring_member <- function(GraphArn, AccountId) {
 #' @description
 #' Applies tag values to a behavior graph.
 #'
-#' See [https://paws-r.github.io/docs/detective/tag_resource.html](https://paws-r.github.io/docs/detective/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_tag_resource/](https://www.paws-r-sdk.com/docs/detective_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the behavior graph to assign the tags to.
 #' @param Tags &#91;required&#93; The tags to assign to the behavior graph. You can add up to 50 tags. For
@@ -696,7 +696,7 @@ detective_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes tags from a behavior graph.
 #'
-#' See [https://paws-r.github.io/docs/detective/untag_resource.html](https://paws-r.github.io/docs/detective/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_untag_resource/](https://www.paws-r-sdk.com/docs/detective_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the behavior graph to remove the tags from.
 #' @param TagKeys &#91;required&#93; The tag keys of the tags to remove from the behavior graph. You can
@@ -727,7 +727,7 @@ detective_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Starts a data source packages for the behavior graph.
 #'
-#' See [https://paws-r.github.io/docs/detective/update_datasource_packages.html](https://paws-r.github.io/docs/detective/update_datasource_packages.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_update_datasource_packages/](https://www.paws-r-sdk.com/docs/detective_update_datasource_packages/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the behavior graph.
 #' @param DatasourcePackages &#91;required&#93; The data source package start for the behavior graph.
@@ -758,7 +758,7 @@ detective_update_datasource_packages <- function(GraphArn, DatasourcePackages) {
 #' @description
 #' Updates the configuration for the Organizations integration in the current Region. Can only be called by the Detective administrator account for the organization.
 #'
-#' See [https://paws-r.github.io/docs/detective/update_organization_configuration.html](https://paws-r.github.io/docs/detective/update_organization_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/detective_update_organization_configuration/](https://www.paws-r-sdk.com/docs/detective_update_organization_configuration/) for full documentation.
 #'
 #' @param GraphArn &#91;required&#93; The ARN of the organization behavior graph.
 #' @param AutoEnable Indicates whether to automatically enable new organization accounts as

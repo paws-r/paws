@@ -14,6 +14,6 @@ route53_delete_key_signing_key(HostedZoneId, Name)
 \description{
 Deletes a key-signing key (KSK). Before you can delete a KSK, you must deactivate it. The KSK must be deactivated before you can delete it regardless of whether the hosted zone is enabled for DNSSEC signing.
 
-See \url{https://paws-r.github.io/docs/route53/delete_key_signing_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_delete_key_signing_key/} for full documentation.
 }
 \keyword{internal}

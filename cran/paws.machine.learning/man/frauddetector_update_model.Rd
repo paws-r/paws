@@ -16,6 +16,6 @@ frauddetector_update_model(modelId, modelType, description = NULL)
 \description{
 Updates model description.
 
-See \url{https://paws-r.github.io/docs/frauddetector/update_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_update_model/} for full documentation.
 }
 \keyword{internal}

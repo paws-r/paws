@@ -12,6 +12,6 @@ globalaccelerator_delete_accelerator(AcceleratorArn)
 \description{
 Delete an accelerator. Before you can delete an accelerator, you must disable it and remove all dependent resources (listeners and endpoint groups). To disable the accelerator, update the accelerator to set \code{Enabled} to false.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/delete_accelerator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_delete_accelerator/} for full documentation.
 }
 \keyword{internal}

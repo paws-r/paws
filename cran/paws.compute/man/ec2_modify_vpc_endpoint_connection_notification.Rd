@@ -28,6 +28,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Modifies a connection notification for VPC endpoint or VPC endpoint service. You can change the SNS topic for the notification, or the events for which to be notified.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_vpc_endpoint_connection_notification.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_vpc_endpoint_connection_notification/} for full documentation.
 }
 \keyword{internal}

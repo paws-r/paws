@@ -19,6 +19,6 @@ the mesh with your account. For more information about mesh sharing, see
 \description{
 Deletes an existing virtual gateway. You cannot delete a virtual gateway if any gateway routes are associated to it.
 
-See \url{https://paws-r.github.io/docs/appmesh/delete_virtual_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appmesh_delete_virtual_gateway/} for full documentation.
 }
 \keyword{internal}

@@ -34,6 +34,6 @@ populates this field. For more information about idempotency, see
 \description{
 Transfers contacts from one agent or queue to another agent or queue at any point after a contact is created. You can transfer a contact to another queue by providing the flow which orchestrates the contact to the destination queue. This gives you more control over contact handling and helps you adhere to the service level agreement (SLA) guaranteed to your customers.
 
-See \url{https://paws-r.github.io/docs/connect/transfer_contact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_transfer_contact/} for full documentation.
 }
 \keyword{internal}

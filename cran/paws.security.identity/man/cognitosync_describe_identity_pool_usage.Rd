@@ -15,6 +15,6 @@ Cognito. GUID generation is unique within a region.}
 \description{
 Gets usage details (for example, data storage) about a particular identity pool.
 
-See \url{https://paws-r.github.io/docs/cognitosync/describe_identity_pool_usage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitosync_describe_identity_pool_usage/} for full documentation.
 }
 \keyword{internal}

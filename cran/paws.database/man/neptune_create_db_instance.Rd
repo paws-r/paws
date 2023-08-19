@@ -281,6 +281,6 @@ protection is enabled in their parent DB cluster.}
 \description{
 Creates a new DB instance.
 
-See \url{https://paws-r.github.io/docs/neptune/create_db_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_create_db_instance/} for full documentation.
 }
 \keyword{internal}

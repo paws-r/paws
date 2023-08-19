@@ -19,6 +19,6 @@ want to delete.}
 \description{
 Deletes a subscriber.
 
-See \url{https://paws-r.github.io/docs/budgets/delete_subscriber.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_delete_subscriber/} for full documentation.
 }
 \keyword{internal}

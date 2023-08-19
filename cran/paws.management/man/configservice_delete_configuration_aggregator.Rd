@@ -13,6 +13,6 @@ configservice_delete_configuration_aggregator(ConfigurationAggregatorName)
 \description{
 Deletes the specified configuration aggregator and the aggregated data associated with the aggregator.
 
-See \url{https://paws-r.github.io/docs/configservice/delete_configuration_aggregator.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_delete_configuration_aggregator/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ apigateway_flush_stage_authorizers_cache(restApiId, stageName)
 \description{
 Flushes all authorizer cache entries on a stage.
 
-See \url{https://paws-r.github.io/docs/apigateway/flush_stage_authorizers_cache.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_flush_stage_authorizers_cache/} for full documentation.
 }
 \keyword{internal}

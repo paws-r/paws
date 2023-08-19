@@ -14,6 +14,6 @@ is described.}
 \description{
 Describes the current email monitoring configuration for a specified organization.
 
-See \url{https://paws-r.github.io/docs/workmail/describe_email_monitoring_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_describe_email_monitoring_configuration/} for full documentation.
 }
 \keyword{internal}

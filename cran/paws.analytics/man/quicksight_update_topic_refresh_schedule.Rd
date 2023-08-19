@@ -25,6 +25,6 @@ Amazon Web Services Region for each Amazon Web Services account.}
 \description{
 Updates a topic refresh schedule.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_topic_refresh_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_topic_refresh_schedule/} for full documentation.
 }
 \keyword{internal}

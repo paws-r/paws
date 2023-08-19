@@ -13,6 +13,6 @@ elasticsearchservice_get_upgrade_status(DomainName)
 \description{
 Retrieves the latest status of the last upgrade or upgrade eligibility check that was performed on the domain.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/get_upgrade_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_get_upgrade_status/} for full documentation.
 }
 \keyword{internal}

@@ -685,7 +685,7 @@ ivschat_list_logging_configurations <- function(maxResults = NULL, nextToken = N
     name = "ListLoggingConfigurations",
     http_method = "POST",
     http_path = "/ListLoggingConfigurations",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivschat$list_logging_configurations_input(maxResults = maxResults, nextToken = nextToken)
   output <- .ivschat$list_logging_configurations_output()
@@ -768,7 +768,7 @@ ivschat_list_rooms <- function(loggingConfigurationIdentifier = NULL, maxResults
     name = "ListRooms",
     http_method = "POST",
     http_path = "/ListRooms",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults")
   )
   input <- .ivschat$list_rooms_input(loggingConfigurationIdentifier = loggingConfigurationIdentifier, maxResults = maxResults, messageReviewHandlerUri = messageReviewHandlerUri, name = name, nextToken = nextToken)
   output <- .ivschat$list_rooms_output()

@@ -42,6 +42,6 @@ default role is named 'vmimport'.}
 \description{
 Exports an Amazon Machine Image (AMI) to a VM file. For more information, see \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmexport_image.html}{Exporting a VM directly from an Amazon Machine Image (AMI)} in the \emph{VM Import/Export User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/export_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_export_image/} for full documentation.
 }
 \keyword{internal}

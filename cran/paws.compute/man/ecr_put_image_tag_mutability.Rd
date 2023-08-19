@@ -27,6 +27,6 @@ prevent them from being overwritten.}
 \description{
 Updates the image tag mutability settings for the specified repository. For more information, see \href{https://docs.aws.amazon.com/AmazonECR/latest/userguide/image-tag-mutability.html}{Image tag mutability} in the \emph{Amazon Elastic Container Registry User Guide}.
 
-See \url{https://paws-r.github.io/docs/ecr/put_image_tag_mutability.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_put_image_tag_mutability/} for full documentation.
 }
 \keyword{internal}

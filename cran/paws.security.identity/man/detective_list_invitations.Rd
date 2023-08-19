@@ -19,6 +19,6 @@ results to return, which is currently 200.}
 \description{
 Retrieves the list of open and accepted behavior graph invitations for the member account. This operation can only be called by an invited member account.
 
-See \url{https://paws-r.github.io/docs/detective/list_invitations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_list_invitations/} for full documentation.
 }
 \keyword{internal}

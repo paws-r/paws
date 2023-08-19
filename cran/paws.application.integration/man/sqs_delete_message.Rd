@@ -16,6 +16,6 @@ Queue URLs and names are case-sensitive.}
 \description{
 Deletes the specified message from the specified queue. To select the message to delete, use the \code{ReceiptHandle} of the message (\emph{not} the \code{MessageId} which you receive when you send the message). Amazon SQS can delete a message from a queue even if a visibility timeout setting causes the message to be locked by another consumer. Amazon SQS automatically deletes messages left in a queue longer than the retention period configured for the queue.
 
-See \url{https://paws-r.github.io/docs/sqs/delete_message.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sqs_delete_message/} for full documentation.
 }
 \keyword{internal}

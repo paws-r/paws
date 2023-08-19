@@ -14,6 +14,6 @@ kafka_reject_client_vpc_connection(ClusterArn, VpcConnectionArn)
 \description{
 Returns empty response.
 
-See \url{https://paws-r.github.io/docs/kafka/reject_client_vpc_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_reject_client_vpc_connection/} for full documentation.
 }
 \keyword{internal}

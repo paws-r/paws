@@ -15,7 +15,7 @@ sagemaker_list_pipeline_executions(
 )
 }
 \arguments{
-\item{PipelineName}{[required] The name of the pipeline.}
+\item{PipelineName}{[required] The name or Amazon Resource Name (ARN) of the pipeline.}
 
 \item{CreatedAfter}{A filter that returns the pipeline executions that were created after a
 specified time.}
@@ -37,6 +37,6 @@ set of pipeline executions, use the token in the next request.}
 \description{
 Gets a list of the pipeline executions.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_pipeline_executions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_pipeline_executions/} for full documentation.
 }
 \keyword{internal}

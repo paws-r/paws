@@ -18,6 +18,6 @@ defined at the cluster.}
 \description{
 Modifies attributes for AWS CloudHSM backup.
 
-See \url{https://paws-r.github.io/docs/cloudhsmv2/modify_backup_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_modify_backup_attributes/} for full documentation.
 }
 \keyword{internal}

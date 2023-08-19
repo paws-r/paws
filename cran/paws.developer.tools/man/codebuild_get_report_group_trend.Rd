@@ -67,6 +67,6 @@ Accumulate the lines not covered values for the specified test reports.}
 \description{
 Analyzes and accumulates test report values for the specified test reports.
 
-See \url{https://paws-r.github.io/docs/codebuild/get_report_group_trend.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_get_report_group_trend/} for full documentation.
 }
 \keyword{internal}

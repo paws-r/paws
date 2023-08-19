@@ -31,6 +31,6 @@ idempotency of the request.}
 \description{
 Updates an Amazon EKS cluster configuration. Your cluster continues to function during the update. The response output includes an update ID that you can use to track the status of your cluster update with the \code{\link[=eks_describe_update]{describe_update}} API operation.
 
-See \url{https://paws-r.github.io/docs/eks/update_cluster_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_update_cluster_config/} for full documentation.
 }
 \keyword{internal}

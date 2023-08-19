@@ -12,6 +12,6 @@ sagemaker_delete_model(ModelName)
 \description{
 Deletes a model. The \code{\link[=sagemaker_delete_model]{delete_model}} API deletes only the model entry that was created in SageMaker when you called the \code{\link[=sagemaker_create_model]{create_model}} API. It does not delete model artifacts, inference code, or the IAM role that you specified when creating the model.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_model/} for full documentation.
 }
 \keyword{internal}

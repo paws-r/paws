@@ -39,6 +39,6 @@ retrying the request.}
 \description{
 Gets the configuration options for the reserved-node exchange. These options include information about the source reserved node and target reserved node offering. Details include the node type, the price, the node count, and the offering type.
 
-See \url{https://paws-r.github.io/docs/redshift/get_reserved_node_exchange_configuration_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_get_reserved_node_exchange_configuration_options/} for full documentation.
 }
 \keyword{internal}

@@ -40,6 +40,6 @@ price of USD 100, specify 100.00.}
 \description{
 Purchase a reservation with configurations that match those of your Dedicated Host. You must have active Dedicated Hosts in your account before you purchase a reservation. This action results in the specified reservation being purchased and charged to your account.
 
-See \url{https://paws-r.github.io/docs/ec2/purchase_host_reservation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_purchase_host_reservation/} for full documentation.
 }
 \keyword{internal}

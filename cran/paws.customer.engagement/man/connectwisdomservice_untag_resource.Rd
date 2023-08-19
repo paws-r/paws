@@ -14,6 +14,6 @@ connectwisdomservice_untag_resource(resourceArn, tagKeys)
 \description{
 Removes the specified tags from the specified resource.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_untag_resource/} for full documentation.
 }
 \keyword{internal}

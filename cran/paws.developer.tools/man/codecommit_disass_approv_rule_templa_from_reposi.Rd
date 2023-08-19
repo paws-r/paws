@@ -20,6 +20,6 @@ repository.}
 \description{
 Removes the association between a template and a repository so that approval rules based on the template are not automatically created when pull requests are created in the specified repository. This does not delete any approval rules previously created for pull requests through the template association.
 
-See \url{https://paws-r.github.io/docs/codecommit/disassociate_approval_rule_template_from_repository.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_disassociate_approval_rule_template_from_repository/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ panorama_remove_application_instance(ApplicationInstanceId)
 \description{
 Removes an application instance.
 
-See \url{https://paws-r.github.io/docs/panorama/remove_application_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_remove_application_instance/} for full documentation.
 }
 \keyword{internal}

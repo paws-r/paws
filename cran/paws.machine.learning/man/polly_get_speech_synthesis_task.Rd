@@ -12,6 +12,6 @@ polly_get_speech_synthesis_task(TaskId)
 \description{
 Retrieves a specific SpeechSynthesisTask object based on its TaskID. This object contains information about the given speech synthesis task, including the status of the task, and a link to the S3 bucket containing the output of the task.
 
-See \url{https://paws-r.github.io/docs/polly/get_speech_synthesis_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/polly_get_speech_synthesis_task/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ proton_cancel_environment_deployment(environmentName)
 \description{
 Attempts to cancel an environment deployment on an \code{\link[=proton_update_environment]{update_environment}} action, if the deployment is \code{IN_PROGRESS}. For more information, see \href{https://docs.aws.amazon.com/proton/latest/userguide/ag-env-update.html}{Update an environment} in the \emph{Proton User guide}.
 
-See \url{https://paws-r.github.io/docs/proton/cancel_environment_deployment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_cancel_environment_deployment/} for full documentation.
 }
 \keyword{internal}

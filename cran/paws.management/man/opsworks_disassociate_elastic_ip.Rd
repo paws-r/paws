@@ -12,6 +12,6 @@ opsworks_disassociate_elastic_ip(ElasticIp)
 \description{
 Disassociates an Elastic IP address from its instance. The address remains registered with the stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/resources.html}{Resource Management}.
 
-See \url{https://paws-r.github.io/docs/opsworks/disassociate_elastic_ip.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_disassociate_elastic_ip/} for full documentation.
 }
 \keyword{internal}

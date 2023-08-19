@@ -31,6 +31,6 @@ provided.}
 \description{
 Get the specified schema by its unique ID assigned when a version of the schema is created or registered. Schema versions in Deleted status will not be included in the results.
 
-See \url{https://paws-r.github.io/docs/glue/get_schema_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_schema_version/} for full documentation.
 }
 \keyword{internal}

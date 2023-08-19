@@ -33,6 +33,6 @@ pipeline.}
 \description{
 Task runners call \code{\link[=datapipeline_poll_for_task]{poll_for_task}} to receive a task to perform from AWS Data Pipeline. The task runner specifies which tasks it can perform by setting a value for the \code{workerGroup} parameter. The task returned can come from any of the pipelines that match the \code{workerGroup} value passed in by the task runner and that was launched using the IAM user credentials specified by the task runner.
 
-See \url{https://paws-r.github.io/docs/datapipeline/poll_for_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/datapipeline_poll_for_task/} for full documentation.
 }
 \keyword{internal}

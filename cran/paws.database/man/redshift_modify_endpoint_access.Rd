@@ -15,6 +15,6 @@ after the endpoint is modified.}
 \description{
 Modifies a Redshift-managed VPC endpoint.
 
-See \url{https://paws-r.github.io/docs/redshift/modify_endpoint_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_modify_endpoint_access/} for full documentation.
 }
 \keyword{internal}

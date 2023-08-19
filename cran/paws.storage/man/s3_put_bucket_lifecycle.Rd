@@ -39,6 +39,6 @@ different account, the request fails with the HTTP status code
 \description{
 For an updated version of this API, see \code{\link[=s3_put_bucket_lifecycle_configuration]{put_bucket_lifecycle_configuration}}. This version has been deprecated. Existing lifecycle configurations will work. For new lifecycle configurations, use the updated API.
 
-See \url{https://paws-r.github.io/docs/s3/put_bucket_lifecycle.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_lifecycle/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ element of the collection.}
 \description{
 Gets a collection of Api resources.
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/get_apis.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_get_apis/} for full documentation.
 }
 \keyword{internal}

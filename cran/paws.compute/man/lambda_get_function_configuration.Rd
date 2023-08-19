@@ -28,6 +28,6 @@ the function.}
 \description{
 Returns the version-specific settings of a Lambda function or version. The output includes only options that can vary between versions of a function. To modify these settings, use \code{\link[=lambda_update_function_configuration]{update_function_configuration}}.
 
-See \url{https://paws-r.github.io/docs/lambda/get_function_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_get_function_configuration/} for full documentation.
 }
 \keyword{internal}

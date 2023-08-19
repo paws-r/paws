@@ -1,6 +1,6 @@
 Package: paws.security.identity
 Title: 'Amazon Web Services' Security, Identity, & Compliance Services
-Version: 0.3.0
+Version: 0.4.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -15,7 +15,7 @@ License: Apache License (>= 2.0)
 URL: https://github.com/paws-r/paws
 BugReports: https://github.com/paws-r/paws/issues
 Imports: 
-    paws.common (>= 0.5.4)
+    paws.common (>= 0.5.9)
 Suggests: 
     testthat
 Encoding: UTF-8
@@ -91,6 +91,7 @@ Collate:
     'ram_service.R'
     'ram_interfaces.R'
     'ram_operations.R'
+    'reexports_paws.common.R'
     'secretsmanager_service.R'
     'secretsmanager_interfaces.R'
     'secretsmanager_operations.R'

@@ -17,6 +17,6 @@ workspacesweb_associate_user_access_logging_settings(
 \description{
 Associates a user access logging settings resource with a web portal.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/associate_user_access_logging_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_associate_user_access_logging_settings/} for full documentation.
 }
 \keyword{internal}

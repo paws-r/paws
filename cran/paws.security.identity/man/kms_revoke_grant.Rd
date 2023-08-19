@@ -4,7 +4,7 @@
 \alias{kms_revoke_grant}
 \title{Deletes the specified grant}
 \usage{
-kms_revoke_grant(KeyId, GrantId)
+kms_revoke_grant(KeyId, GrantId, DryRun = NULL)
 }
 \arguments{
 \item{KeyId}{[required] A unique identifier for the KMS key associated with the grant. To get
@@ -27,10 +27,15 @@ To get the key ID and key ARN for a KMS key, use
 \item{GrantId}{[required] Identifies the grant to revoke. To get the grant ID, use
 \code{\link[=kms_create_grant]{create_grant}}, \code{\link[=kms_list_grants]{list_grants}}, or
 \code{\link[=kms_list_retirable_grants]{list_retirable_grants}}.}
+
+\item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
+
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html}{Testing your KMS API calls}
+in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Deletes the specified grant. You revoke a grant to terminate the permissions that the grant allows. For more information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/#grant-delete}{Retiring and revoking grants} in the \emph{Key Management Service Developer Guide} .
 
-See \url{https://paws-r.github.io/docs/kms/revoke_grant.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_revoke_grant/} for full documentation.
 }
 \keyword{internal}

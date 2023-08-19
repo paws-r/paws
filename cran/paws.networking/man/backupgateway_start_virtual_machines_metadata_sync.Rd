@@ -13,6 +13,6 @@ backupgateway_start_virtual_machines_metadata_sync(HypervisorArn)
 \description{
 This action sends a request to sync metadata across the specified virtual machines.
 
-See \url{https://paws-r.github.io/docs/backupgateway/start_virtual_machines_metadata_sync.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_start_virtual_machines_metadata_sync/} for full documentation.
 }
 \keyword{internal}

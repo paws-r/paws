@@ -49,6 +49,6 @@ exclude some or all of the indexes at the time of restore.}
 \description{
 Restores the specified table to the specified point in time within \code{EarliestRestorableDateTime} and \code{LatestRestorableDateTime}. You can restore your table to any point in time during the last 35 days. Any number of users can execute up to 4 concurrent restores (any type of restore) in a given account.
 
-See \url{https://paws-r.github.io/docs/dynamodb/restore_table_to_point_in_time.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_restore_table_to_point_in_time/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ getting the next set of solution versions (if they exist).}
 \description{
 Returns a list of solution versions for the given solution. When a solution is not specified, all the solution versions associated with the account are listed. The response provides the properties for each solution version, including the Amazon Resource Name (ARN).
 
-See \url{https://paws-r.github.io/docs/personalize/list_solution_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_list_solution_versions/} for full documentation.
 }
 \keyword{internal}

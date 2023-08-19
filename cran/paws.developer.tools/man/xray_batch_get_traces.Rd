@@ -14,6 +14,6 @@ xray_batch_get_traces(TraceIds, NextToken = NULL)
 \description{
 Retrieves a list of traces specified by ID. Each trace is a collection of segment documents that originates from a single request. Use \code{\link[=xray_get_trace_summaries]{get_trace_summaries}} to get a list of trace IDs.
 
-See \url{https://paws-r.github.io/docs/xray/batch_get_traces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_batch_get_traces/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Cancels the specified Capacity Reservation, releases the reserved capacity, and changes the Capacity Reservation's state to \code{cancelled}.
 
-See \url{https://paws-r.github.io/docs/ec2/cancel_capacity_reservation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_cancel_capacity_reservation/} for full documentation.
 }
 \keyword{internal}

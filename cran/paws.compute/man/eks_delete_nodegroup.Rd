@@ -15,6 +15,6 @@ group.}
 \description{
 Deletes an Amazon EKS node group for a cluster.
 
-See \url{https://paws-r.github.io/docs/eks/delete_nodegroup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_delete_nodegroup/} for full documentation.
 }
 \keyword{internal}

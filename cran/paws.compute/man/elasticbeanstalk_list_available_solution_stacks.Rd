@@ -10,6 +10,6 @@ elasticbeanstalk_list_available_solution_stacks()
 \description{
 Returns a list of the available solution stack names, with the public version first and then in reverse chronological order.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/list_available_solution_stacks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_list_available_solution_stacks/} for full documentation.
 }
 \keyword{internal}

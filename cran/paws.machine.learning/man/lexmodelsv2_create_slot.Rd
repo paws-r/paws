@@ -49,7 +49,7 @@ information, see \href{https://docs.aws.amazon.com/lexv2/latest/dg/how-languages
 \item{intentId}{[required] The identifier of the intent that contains the slot.}
 
 \item{multipleValuesSetting}{Indicates whether the slot returns multiple values in one response.
-Multi-value slots are only available in the en-US locale. If you set
+Multi-value slots are only available in the \code{en-US} locale. If you set
 this value to \code{true} in any other locale, Amazon Lex throws a
 \code{ValidationException}.
 
@@ -61,6 +61,6 @@ composite slot.}
 \description{
 Creates a slot in an intent. A slot is a variable needed to fulfill an intent. For example, an \code{OrderPizza} intent might need slots for size, crust, and number of pizzas. For each slot, you define one or more utterances that Amazon Lex uses to elicit a response from the user.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/create_slot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_create_slot/} for full documentation.
 }
 \keyword{internal}

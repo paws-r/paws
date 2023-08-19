@@ -12,6 +12,6 @@ sagemaker_stop_auto_ml_job(AutoMLJobName)
 \description{
 A method for forcing a running job to shut down.
 
-See \url{https://paws-r.github.io/docs/sagemaker/stop_auto_ml_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_stop_auto_ml_job/} for full documentation.
 }
 \keyword{internal}

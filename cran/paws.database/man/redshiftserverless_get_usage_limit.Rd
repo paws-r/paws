@@ -12,6 +12,6 @@ redshiftserverless_get_usage_limit(usageLimitId)
 \description{
 Returns information about a usage limit.
 
-See \url{https://paws-r.github.io/docs/redshiftserverless/get_usage_limit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshiftserverless_get_usage_limit/} for full documentation.
 }
 \keyword{internal}

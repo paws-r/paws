@@ -16,6 +16,6 @@ wellarchitected_update_workload_share(ShareId, WorkloadId, PermissionType)
 \description{
 Update a workload share.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/update_workload_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_update_workload_share/} for full documentation.
 }
 \keyword{internal}

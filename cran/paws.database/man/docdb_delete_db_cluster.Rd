@@ -45,6 +45,6 @@ Constraints:
 \description{
 Deletes a previously provisioned cluster. When you delete a cluster, all automated backups for that cluster are deleted and can't be recovered. Manual DB cluster snapshots of the specified cluster are not deleted.
 
-See \url{https://paws-r.github.io/docs/docdb/delete_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_delete_db_cluster/} for full documentation.
 }
 \keyword{internal}

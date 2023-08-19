@@ -21,6 +21,6 @@ servicequotas_delete_service_quota_increase_request_from_template(
 \description{
 Deletes the quota increase request for the specified quota from your quota request template.
 
-See \url{https://paws-r.github.io/docs/servicequotas/delete_service_quota_increase_request_from_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicequotas_delete_service_quota_increase_request_from_template/} for full documentation.
 }
 \keyword{internal}

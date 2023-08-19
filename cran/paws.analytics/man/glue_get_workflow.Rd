@@ -15,6 +15,6 @@ resource metadata.}
 \description{
 Retrieves resource metadata for a workflow.
 
-See \url{https://paws-r.github.io/docs/glue/get_workflow.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_workflow/} for full documentation.
 }
 \keyword{internal}

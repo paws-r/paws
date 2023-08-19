@@ -16,6 +16,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Resets the default KMS key for EBS encryption for your account in this Region to the Amazon Web Services managed KMS key for EBS.
 
-See \url{https://paws-r.github.io/docs/ec2/reset_ebs_default_kms_key_id.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_reset_ebs_default_kms_key_id/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ ssmcontacts_activate_contact_channel(ContactChannelId, ActivationCode)
 \description{
 Activates a contact's contact channel. Incident Manager can't engage a contact until the contact channel has been activated.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/activate_contact_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_activate_contact_channel/} for full documentation.
 }
 \keyword{internal}

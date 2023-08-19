@@ -24,6 +24,6 @@ for.}
 \description{
 Marks the specified GuardDuty findings as useful or not useful.
 
-See \url{https://paws-r.github.io/docs/guardduty/update_findings_feedback.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_update_findings_feedback/} for full documentation.
 }
 \keyword{internal}

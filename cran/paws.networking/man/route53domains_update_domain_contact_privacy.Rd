@@ -45,8 +45,8 @@ You must specify the same privacy setting for the administrative,
 registrant, and technical contacts.}
 }
 \description{
-This operation updates the specified domain contact's privacy setting. When privacy protection is enabled, contact information such as email address is replaced either with contact information for Amazon Registrar (for .com, .net, and .org domains) or with contact information for our registrar associate, Gandi.
+This operation updates the specified domain contact's privacy setting. When privacy protection is enabled, your contact information is replaced with contact information for the registrar or with the phrase "REDACTED FOR PRIVACY", or "On behalf of \<domain name\> owner."
 
-See \url{https://paws-r.github.io/docs/route53domains/update_domain_contact_privacy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_update_domain_contact_privacy/} for full documentation.
 }
 \keyword{internal}

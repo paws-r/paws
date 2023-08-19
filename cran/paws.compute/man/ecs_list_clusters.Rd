@@ -31,6 +31,6 @@ with the returned \code{nextToken} value. This value can be between 1 and
 \description{
 Returns a list of existing clusters.
 
-See \url{https://paws-r.github.io/docs/ecs/list_clusters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_list_clusters/} for full documentation.
 }
 \keyword{internal}

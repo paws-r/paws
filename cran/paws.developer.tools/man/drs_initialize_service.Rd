@@ -9,6 +9,6 @@ drs_initialize_service()
 \description{
 Initialize Elastic Disaster Recovery.
 
-See \url{https://paws-r.github.io/docs/drs/initialize_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_initialize_service/} for full documentation.
 }
 \keyword{internal}

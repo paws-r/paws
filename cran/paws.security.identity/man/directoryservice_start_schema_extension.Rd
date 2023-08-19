@@ -28,6 +28,6 @@ be no larger than 1MB.}
 \description{
 Applies a schema extension to a Microsoft AD directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/start_schema_extension.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_start_schema_extension/} for full documentation.
 }
 \keyword{internal}

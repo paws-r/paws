@@ -14,6 +14,6 @@ timestreamwrite_delete_table(DatabaseName, TableName)
 \description{
 Deletes a given Timestream table. This is an irreversible operation. After a Timestream database table is deleted, the time-series data stored in the table cannot be recovered.
 
-See \url{https://paws-r.github.io/docs/timestreamwrite/delete_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamwrite_delete_table/} for full documentation.
 }
 \keyword{internal}

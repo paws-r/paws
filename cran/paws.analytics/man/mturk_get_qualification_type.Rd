@@ -13,6 +13,6 @@ mturk_get_qualification_type(QualificationTypeId)
 \description{
 The \code{\link[=mturk_get_qualification_type]{get_qualification_type}}operation retrieves information about a Qualification type using its ID.
 
-See \url{https://paws-r.github.io/docs/mturk/get_qualification_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_get_qualification_type/} for full documentation.
 }
 \keyword{internal}

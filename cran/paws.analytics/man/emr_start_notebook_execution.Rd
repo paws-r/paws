@@ -62,6 +62,6 @@ of 256 characters.}
 \description{
 Starts a notebook execution.
 
-See \url{https://paws-r.github.io/docs/emr/start_notebook_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_start_notebook_execution/} for full documentation.
 }
 \keyword{internal}

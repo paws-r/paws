@@ -37,6 +37,6 @@ different account, the request fails with the HTTP status code
 \description{
 Returns the access control list (ACL) of an object. To use this operation, you must have \code{s3:GetObjectAcl} permissions or \code{READ_ACP} access to the object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#acl-access-policy-permission-mapping}{Mapping of ACL permissions and access policy permissions} in the \emph{Amazon S3 User Guide}
 
-See \url{https://paws-r.github.io/docs/s3/get_object_acl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_object_acl/} for full documentation.
 }
 \keyword{internal}

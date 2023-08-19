@@ -15,6 +15,6 @@ cloudfront_associate_alias(TargetDistributionId, Alias)
 \description{
 Associates an alias (also known as a CNAME or an alternate domain name) with a CloudFront distribution.
 
-See \url{https://paws-r.github.io/docs/cloudfront/associate_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_associate_alias/} for full documentation.
 }
 \keyword{internal}

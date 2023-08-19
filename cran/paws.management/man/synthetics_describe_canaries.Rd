@@ -31,6 +31,6 @@ allowed to view. For more information, see \href{https://docs.aws.amazon.com/Ama
 \description{
 This operation returns a list of the canaries in your account, along with full details about each canary.
 
-See \url{https://paws-r.github.io/docs/synthetics/describe_canaries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_describe_canaries/} for full documentation.
 }
 \keyword{internal}

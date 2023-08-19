@@ -95,6 +95,6 @@ root permissions.}
 \description{
 Updates a notebook instance. NotebookInstance updates include upgrading or downgrading the ML compute instance used for your notebook instance to accommodate changes in your workload requirements.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_notebook_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_notebook_instance/} for full documentation.
 }
 \keyword{internal}

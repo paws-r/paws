@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Deletes the specified report.
 #'
-#' See [https://paws-r.github.io/docs/costandusagereportservice/delete_report_definition.html](https://paws-r.github.io/docs/costandusagereportservice/delete_report_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costandusagereportservice_delete_report_definition/](https://www.paws-r-sdk.com/docs/costandusagereportservice_delete_report_definition/) for full documentation.
 #'
 #' @param ReportName The name of the report that you want to delete. The name must be unique,
 #' is case sensitive, and can't include spaces.
@@ -38,7 +38,7 @@ costandusagereportservice_delete_report_definition <- function(ReportName = NULL
 #' @description
 #' Lists the AWS Cost and Usage reports available to this account.
 #'
-#' See [https://paws-r.github.io/docs/costandusagereportservice/describe_report_definitions.html](https://paws-r.github.io/docs/costandusagereportservice/describe_report_definitions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costandusagereportservice_describe_report_definitions/](https://www.paws-r-sdk.com/docs/costandusagereportservice_describe_report_definitions/) for full documentation.
 #'
 #' @param MaxResults 
 #' @param NextToken 
@@ -51,7 +51,7 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
     name = "DescribeReportDefinitions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .costandusagereportservice$describe_report_definitions_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .costandusagereportservice$describe_report_definitions_output()
@@ -68,7 +68,7 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
 #' @description
 #' Allows you to programatically update your report preferences.
 #'
-#' See [https://paws-r.github.io/docs/costandusagereportservice/modify_report_definition.html](https://paws-r.github.io/docs/costandusagereportservice/modify_report_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costandusagereportservice_modify_report_definition/](https://www.paws-r-sdk.com/docs/costandusagereportservice_modify_report_definition/) for full documentation.
 #'
 #' @param ReportName &#91;required&#93; 
 #' @param ReportDefinition &#91;required&#93; 
@@ -98,7 +98,7 @@ costandusagereportservice_modify_report_definition <- function(ReportName, Repor
 #' @description
 #' Creates a new report using the description that you provide.
 #'
-#' See [https://paws-r.github.io/docs/costandusagereportservice/put_report_definition.html](https://paws-r.github.io/docs/costandusagereportservice/put_report_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/costandusagereportservice_put_report_definition/](https://www.paws-r-sdk.com/docs/costandusagereportservice_put_report_definition/) for full documentation.
 #'
 #' @param ReportDefinition &#91;required&#93; Represents the output of the PutReportDefinition operation. The content
 #' consists of the detailed metadata and data file information.

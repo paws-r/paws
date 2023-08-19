@@ -30,6 +30,6 @@ and version attributes for each time-series data point.}
 \description{
 Enables you to write your time-series data into Timestream. You can specify a single data point or a batch of data points to be inserted into the system. Timestream offers you a flexible schema that auto detects the column names and data types for your Timestream tables based on the dimension names and data types of the data points you specify when invoking writes into the database.
 
-See \url{https://paws-r.github.io/docs/timestreamwrite/write_records.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamwrite_write_records/} for full documentation.
 }
 \keyword{internal}

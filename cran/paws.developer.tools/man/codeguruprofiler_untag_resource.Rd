@@ -16,6 +16,6 @@ are removed from the specified resource.}
 \description{
 Use to remove one or more tags from a resource.
 
-See \url{https://paws-r.github.io/docs/codeguruprofiler/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeguruprofiler_untag_resource/} for full documentation.
 }
 \keyword{internal}

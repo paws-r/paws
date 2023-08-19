@@ -21,6 +21,6 @@ listed related items.}
 \description{
 List all related items for an incident record.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/list_related_items.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_list_related_items/} for full documentation.
 }
 \keyword{internal}

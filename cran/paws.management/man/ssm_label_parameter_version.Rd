@@ -19,6 +19,6 @@ to the latest version.}
 \description{
 A parameter label is a user-defined alias to help you manage different versions of a parameter. When you modify a parameter, Amazon Web Services Systems Manager automatically saves a new version and increments the version number by one. A label can help you remember the purpose of a parameter when there are multiple versions.
 
-See \url{https://paws-r.github.io/docs/ssm/label_parameter_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_label_parameter_version/} for full documentation.
 }
 \keyword{internal}

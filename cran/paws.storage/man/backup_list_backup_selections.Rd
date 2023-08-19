@@ -24,6 +24,6 @@ pointed to by the next token.}
 \description{
 Returns an array containing metadata of the resources associated with the target backup plan.
 
-See \url{https://paws-r.github.io/docs/backup/list_backup_selections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_list_backup_selections/} for full documentation.
 }
 \keyword{internal}

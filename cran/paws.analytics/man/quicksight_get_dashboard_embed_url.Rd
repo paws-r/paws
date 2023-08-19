@@ -75,6 +75,6 @@ the session can access all three dashboards.}
 \description{
 Generates a temporary session URL and authorization code(bearer token) that you can use to embed an Amazon QuickSight read-only dashboard in your website or application. Before you use this command, make sure that you have configured the dashboards and permissions.
 
-See \url{https://paws-r.github.io/docs/quicksight/get_dashboard_embed_url.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_get_dashboard_embed_url/} for full documentation.
 }
 \keyword{internal}

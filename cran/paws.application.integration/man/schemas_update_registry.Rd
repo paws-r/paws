@@ -14,6 +14,6 @@ schemas_update_registry(Description = NULL, RegistryName)
 \description{
 Updates a registry.
 
-See \url{https://paws-r.github.io/docs/schemas/update_registry.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_update_registry/} for full documentation.
 }
 \keyword{internal}

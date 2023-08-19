@@ -14,6 +14,6 @@ networkmanager_tag_resource(ResourceArn, Tags)
 \description{
 Tags a specified resource.
 
-See \url{https://paws-r.github.io/docs/networkmanager/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_tag_resource/} for full documentation.
 }
 \keyword{internal}

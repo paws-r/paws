@@ -35,6 +35,6 @@ the next page of results.}
 \description{
 Returns information about human loops, given the specified parameters. If a human loop was deleted, it will not be included.
 
-See \url{https://paws-r.github.io/docs/augmentedairuntime/list_human_loops.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/augmentedairuntime_list_human_loops/} for full documentation.
 }
 \keyword{internal}

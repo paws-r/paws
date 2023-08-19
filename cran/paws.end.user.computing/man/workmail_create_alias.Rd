@@ -16,6 +16,6 @@ workmail_create_alias(OrganizationId, EntityId, Alias)
 \description{
 Adds an alias to the set of a given member (user or group) of WorkMail.
 
-See \url{https://paws-r.github.io/docs/workmail/create_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_create_alias/} for full documentation.
 }
 \keyword{internal}

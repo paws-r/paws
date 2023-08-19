@@ -35,6 +35,6 @@ a representation of the latest API configuration is exported.}
 \description{
 Export api
 
-See \url{https://paws-r.github.io/docs/apigatewayv2/export_api.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewayv2_export_api/} for full documentation.
 }
 \keyword{internal}

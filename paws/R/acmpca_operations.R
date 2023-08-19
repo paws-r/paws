@@ -81,18 +81,17 @@ NULL
 #' 
 #' Default: FIPS_140_2_LEVEL_3_OR_HIGHER
 #' 
-#' *Note:* `FIPS_140_2_LEVEL_3_OR_HIGHER` is not supported in the following
-#' Regions:
-#' 
-#' -   ap-northeast-3
-#' 
-#' -   ap-southeast-3
-#' 
-#' When creating a CA in these Regions, you must provide
+#' Some Amazon Web Services Regions do not support the default. When
+#' creating a CA in these Regions, you must provide
 #' `FIPS_140_2_LEVEL_2_OR_HIGHER` as the argument for
 #' `KeyStorageSecurityStandard`. Failure to do this results in an
 #' `InvalidArgsException` with the message, "A certificate authority cannot
 #' be created in this region with the specified security standard."
+#' 
+#' For information about security standard support in various Regions, see
+#' [Storage and security compliance of Amazon Web Services Private CA
+#' private
+#' keys](https://docs.aws.amazon.com/privateca/latest/userguide/data-protection.html#private-keys).
 #' @param Tags Key-value pairs that will be attached to the new private CA. You can
 #' associate up to 50 tags with a private CA. For information using tags
 #' with IAM to manage permissions, see [Controlling Access Using IAM
@@ -1396,7 +1395,7 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' [`create_certificate_authority`][acmpca_create_certificate_authority]
 #' action.
 #' 
-#' The specified signing algorithm family (RSA or ECDSA) much match the
+#' The specified signing algorithm family (RSA or ECDSA) must match the
 #' algorithm family of the CA's secret key.
 #' @param TemplateArn Specifies a custom configuration template to use when issuing a
 #' certificate. If this parameter is not provided, Amazon Web Services
@@ -1445,7 +1444,8 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' 
 #' The `ValidityNotBefore` value is expressed as an explicit date and time,
 #' using the `Validity` type value `ABSOLUTE`. For more information, see
-#' Validity in this API reference and
+#' [Validity](https://docs.aws.amazon.com/privateca/latest/APIReference/API_Validity.html)
+#' in this API reference and
 #' [Validity](https://datatracker.ietf.org/doc/html/rfc5280#section-4.1.2.5)
 #' in RFC 5280.
 #' @param IdempotencyToken Alphanumeric string that can be used to distinguish between calls to the
@@ -1782,7 +1782,7 @@ acmpca_list_certificate_authorities <- function(NextToken = NULL, MaxResults = N
     name = "ListCertificateAuthorities",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CertificateAuthorities")
   )
   input <- .acmpca$list_certificate_authorities_input(NextToken = NextToken, MaxResults = MaxResults, ResourceOwner = ResourceOwner)
   output <- .acmpca$list_certificate_authorities_output()
@@ -1888,7 +1888,7 @@ acmpca_list_permissions <- function(CertificateAuthorityArn, NextToken = NULL, M
     name = "ListPermissions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Permissions")
   )
   input <- .acmpca$list_permissions_input(CertificateAuthorityArn = CertificateAuthorityArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .acmpca$list_permissions_output()
@@ -1963,7 +1963,7 @@ acmpca_list_tags <- function(CertificateAuthorityArn, NextToken = NULL, MaxResul
     name = "ListTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
   )
   input <- .acmpca$list_tags_input(CertificateAuthorityArn = CertificateAuthorityArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .acmpca$list_tags_output()

@@ -35,19 +35,20 @@ Constraints: 3-128 alphanumeric characters, parentheses (()), square
 brackets ([]), spaces ( ), periods (.), slashes (/), dashes (-),
 single quotes ('), at-signs (@), or underscores(_)}
 
-\item{NoReboot}{By default, when Amazon EC2 creates the new AMI, it reboots the instance
-so that it can take snapshots of the attached volumes while data is at
-rest, in order to ensure a consistent state. You can set the \code{NoReboot}
-parameter to \code{true} in the API request, or use the \code{--no-reboot} option
-in the CLI to prevent Amazon EC2 from shutting down and rebooting the
-instance.
+\item{NoReboot}{Indicates whether or not the instance should be automatically rebooted
+before creating the image. Specify one of the following values:
+\itemize{
+\item \code{true} - The instance is not rebooted before creating the image.
+This creates crash-consistent snapshots that include only the data
+that has been written to the volumes at the time the snapshots are
+created. Buffered data and data in memory that has not yet been
+written to the volumes is not included in the snapshots.
+\item \code{false} - The instance is rebooted before creating the image. This
+ensures that all buffered data and data in memory is written to the
+volumes before the snapshots are created.
+}
 
-If you choose to bypass the shutdown and reboot process by setting the
-\code{NoReboot} parameter to \code{true} in the API request, or by using the
-\code{--no-reboot} option in the CLI, we can't guarantee the file system
-integrity of the created image.
-
-Default: \code{false} (follow standard reboot process)}
+Default: \code{false}}
 
 \item{TagSpecifications}{The tags to apply to the AMI and snapshots on creation. You can tag the
 AMI, the snapshots, or both.
@@ -67,6 +68,6 @@ To tag an AMI or snapshot after it has been created, see
 \description{
 Creates an Amazon EBS-backed AMI from an Amazon EBS-backed instance that is either running or stopped.
 
-See \url{https://paws-r.github.io/docs/ec2/create_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_image/} for full documentation.
 }
 \keyword{internal}

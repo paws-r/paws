@@ -13,6 +13,6 @@ personalize_describe_dataset_export_job(datasetExportJobArn)
 \description{
 Describes the dataset export job created by \code{\link[=personalize_create_dataset_export_job]{create_dataset_export_job}}, including the export job status.
 
-See \url{https://paws-r.github.io/docs/personalize/describe_dataset_export_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_describe_dataset_export_job/} for full documentation.
 }
 \keyword{internal}

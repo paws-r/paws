@@ -14,6 +14,6 @@ managedgrafana_associate_license(licenseType, workspaceId)
 \description{
 Assigns a Grafana Enterprise license to a workspace. Upgrading to Grafana Enterprise incurs additional fees. For more information, see \href{https://docs.aws.amazon.com/grafana/latest/userguide/upgrade-to-Grafana-Enterprise.html}{Upgrade a workspace to Grafana Enterprise}.
 
-See \url{https://paws-r.github.io/docs/managedgrafana/associate_license.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/managedgrafana_associate_license/} for full documentation.
 }
 \keyword{internal}

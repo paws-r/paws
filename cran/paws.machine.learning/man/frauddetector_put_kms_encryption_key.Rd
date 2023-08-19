@@ -16,6 +16,6 @@ support multi-Region KMS key.}
 \description{
 Specifies the KMS key to be used to encrypt content in Amazon Fraud Detector.
 
-See \url{https://paws-r.github.io/docs/frauddetector/put_kms_encryption_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_put_kms_encryption_key/} for full documentation.
 }
 \keyword{internal}

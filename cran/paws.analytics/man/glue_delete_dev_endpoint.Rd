@@ -12,6 +12,6 @@ glue_delete_dev_endpoint(EndpointName)
 \description{
 Deletes a specified development endpoint.
 
-See \url{https://paws-r.github.io/docs/glue/delete_dev_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_delete_dev_endpoint/} for full documentation.
 }
 \keyword{internal}

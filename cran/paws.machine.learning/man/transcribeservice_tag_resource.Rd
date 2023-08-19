@@ -27,6 +27,6 @@ To learn more about using tags with Amazon Transcribe, refer to \href{https://do
 \description{
 Adds one or more custom tags, each in the form of a key:value pair, to the specified resource.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_tag_resource/} for full documentation.
 }
 \keyword{internal}

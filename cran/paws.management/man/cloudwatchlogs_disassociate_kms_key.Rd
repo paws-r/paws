@@ -2,16 +2,47 @@
 % Please edit documentation in R/cloudwatchlogs_operations.R
 \name{cloudwatchlogs_disassociate_kms_key}
 \alias{cloudwatchlogs_disassociate_kms_key}
-\title{Disassociates the associated KMS key from the specified log group}
+\title{Disassociates the specified KMS key from the specified log group or from
+all CloudWatch Logs Insights query results in the account}
 \usage{
-cloudwatchlogs_disassociate_kms_key(logGroupName)
+cloudwatchlogs_disassociate_kms_key(
+  logGroupName = NULL,
+  resourceIdentifier = NULL
+)
 }
 \arguments{
-\item{logGroupName}{[required] The name of the log group.}
+\item{logGroupName}{The name of the log group.
+
+In your \code{\link[=cloudwatchlogs_disassociate_kms_key]{disassociate_kms_key}}
+operation, you must specify either the \code{resourceIdentifier} parameter or
+the \code{logGroup} parameter, but you can't specify both.}
+
+\item{resourceIdentifier}{Specifies the target for this operation. You must specify one of the
+following:
+\itemize{
+\item Specify the ARN of a log group to stop having CloudWatch Logs use
+the KMS key to encrypt log events that are ingested and stored by
+that log group. After you run this operation, CloudWatch Logs
+encrypts ingested log events with the default CloudWatch Logs
+method. The log group ARN must be in the following format. Replace
+\emph{REGION} and \emph{ACCOUNT_ID} with your Region and account ID.
+
+\code{arn:aws:logs:REGION:ACCOUNT_ID:log-group:LOG_GROUP_NAME }
+\item Specify the following ARN to stop using this key to encrypt the
+results of future \code{\link[=cloudwatchlogs_start_query]{start_query}}
+operations in this account. Replace \emph{REGION} and \emph{ACCOUNT_ID} with
+your Region and account ID.
+
+\verb{arn:aws:logs:REGION:ACCOUNT_ID:query-result:*}
+}
+
+In your \code{DisssociateKmsKey} operation, you must specify either the
+\code{resourceIdentifier} parameter or the \code{logGroup} parameter, but you
+can't specify both.}
 }
 \description{
-Disassociates the associated KMS key from the specified log group.
+Disassociates the specified KMS key from the specified log group or from all CloudWatch Logs Insights query results in the account.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/disassociate_kms_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_disassociate_kms_key/} for full documentation.
 }
 \keyword{internal}

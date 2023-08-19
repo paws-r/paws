@@ -15,6 +15,6 @@ public key identity to delete. For example: \code{E2QWRUHAPOMQZL}.}
 \description{
 Remove a public key you previously added to CloudFront.
 
-See \url{https://paws-r.github.io/docs/cloudfront/delete_public_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_delete_public_key/} for full documentation.
 }
 \keyword{internal}

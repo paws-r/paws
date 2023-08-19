@@ -19,6 +19,6 @@ change a parameter, CodeBuild returns a parameter mismatch error.}
 \description{
 Restarts a build.
 
-See \url{https://paws-r.github.io/docs/codebuild/retry_build.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_retry_build/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ archiving for.}
 \description{
 Cancels archiving of a virtual tape to the virtual tape shelf (VTS) after the archiving process is initiated. This operation is only supported in the tape gateway type.
 
-See \url{https://paws-r.github.io/docs/storagegateway/cancel_archival.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_cancel_archival/} for full documentation.
 }
 \keyword{internal}

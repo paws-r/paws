@@ -13,6 +13,6 @@ deleting.}
 \description{
 Deletes a billing group.
 
-See \url{https://paws-r.github.io/docs/billingconductor/delete_billing_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_delete_billing_group/} for full documentation.
 }
 \keyword{internal}

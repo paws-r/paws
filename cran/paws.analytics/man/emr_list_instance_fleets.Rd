@@ -14,6 +14,6 @@ emr_list_instance_fleets(ClusterId, Marker = NULL)
 \description{
 Lists all available details about the instance fleets in a cluster.
 
-See \url{https://paws-r.github.io/docs/emr/list_instance_fleets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_list_instance_fleets/} for full documentation.
 }
 \keyword{internal}

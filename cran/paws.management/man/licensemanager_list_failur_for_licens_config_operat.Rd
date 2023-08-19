@@ -20,6 +20,6 @@ licensemanager_list_failures_for_license_configuration_operations(
 \description{
 Lists the license configuration operations that failed.
 
-See \url{https://paws-r.github.io/docs/licensemanager/list_failures_for_license_configuration_operations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_list_failures_for_license_configuration_operations/} for full documentation.
 }
 \keyword{internal}

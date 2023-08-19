@@ -22,6 +22,6 @@ from this call.}
 \description{
 Lists the applied quota values for the specified AWS service. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved.
 
-See \url{https://paws-r.github.io/docs/servicequotas/list_service_quotas.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicequotas_list_service_quotas/} for full documentation.
 }
 \keyword{internal}

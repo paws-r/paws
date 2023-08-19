@@ -59,6 +59,6 @@ is marked as expired. The default is 15 minutes, or 900 seconds.}
 \description{
 After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint in an asynchronous manner.
 
-See \url{https://paws-r.github.io/docs/sagemakerruntime/invoke_endpoint_async.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemakerruntime_invoke_endpoint_async/} for full documentation.
 }
 \keyword{internal}

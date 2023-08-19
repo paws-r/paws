@@ -15,6 +15,6 @@ information on.}
 \description{
 Gets information about a set of featured results. Features results are placed above all other results for certain queries. If there's an exact match of a query, then one or more specific documents are featured in the search results.
 
-See \url{https://paws-r.github.io/docs/kendra/describe_featured_results_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_describe_featured_results_set/} for full documentation.
 }
 \keyword{internal}

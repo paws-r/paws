@@ -28,6 +28,6 @@ task run.}
 \description{
 Gets a list of runs for a machine learning transform. Machine learning task runs are asynchronous tasks that Glue runs on your behalf as part of various machine learning workflows. You can get a sortable, filterable list of machine learning task runs by calling \code{\link[=glue_get_ml_task_runs]{get_ml_task_runs}} with their parent transform's \code{TransformID} and other optional parameters as documented in this section.
 
-See \url{https://paws-r.github.io/docs/glue/get_ml_task_runs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_ml_task_runs/} for full documentation.
 }
 \keyword{internal}

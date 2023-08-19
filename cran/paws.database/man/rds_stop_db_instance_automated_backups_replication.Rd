@@ -14,6 +14,6 @@ stop replicating automate backups, for example,
 \description{
 Stops automated backup replication for a DB instance.
 
-See \url{https://paws-r.github.io/docs/rds/stop_db_instance_automated_backups_replication.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_stop_db_instance_automated_backups_replication/} for full documentation.
 }
 \keyword{internal}

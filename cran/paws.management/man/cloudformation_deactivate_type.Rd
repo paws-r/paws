@@ -3,12 +3,12 @@
 \name{cloudformation_deactivate_type}
 \alias{cloudformation_deactivate_type}
 \title{Deactivates a public extension that was previously activated in this
-account and region}
+account and Region}
 \usage{
 cloudformation_deactivate_type(TypeName = NULL, Type = NULL, Arn = NULL)
 }
 \arguments{
-\item{TypeName}{The type name of the extension, in this account and region. If you
+\item{TypeName}{The type name of the extension, in this account and Region. If you
 specified a type name alias when enabling the extension, use the type
 name alias.
 
@@ -19,13 +19,13 @@ Conditional: You must specify either \code{Arn}, or \code{TypeName} and \code{Ty
 Conditional: You must specify either \code{Arn}, or \code{TypeName} and \code{Type}.}
 
 \item{Arn}{The Amazon Resource Name (ARN) for the extension, in this account and
-region.
+Region.
 
 Conditional: You must specify either \code{Arn}, or \code{TypeName} and \code{Type}.}
 }
 \description{
-Deactivates a public extension that was previously activated in this account and region.
+Deactivates a public extension that was previously activated in this account and Region.
 
-See \url{https://paws-r.github.io/docs/cloudformation/deactivate_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_deactivate_type/} for full documentation.
 }
 \keyword{internal}

@@ -60,7 +60,7 @@ perform in Amazon Macie.}
 expression can contain as many as 512 characters.}
 
 \item{severityLevels}{The severity to assign to findings that the custom data identifier
-produces, based on the number of occurrences of text that matches the
+produces, based on the number of occurrences of text that match the
 custom data identifier's detection criteria. You can specify as many as
 three SeverityLevel objects in this array, one for each severity: LOW,
 MEDIUM, or HIGH. If you specify more than one, the occurrences
@@ -85,6 +85,6 @@ characters.}
 \description{
 Creates and defines the criteria and other settings for a custom data identifier.
 
-See \url{https://paws-r.github.io/docs/macie2/create_custom_data_identifier.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_create_custom_data_identifier/} for full documentation.
 }
 \keyword{internal}

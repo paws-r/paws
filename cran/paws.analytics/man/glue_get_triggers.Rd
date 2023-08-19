@@ -18,6 +18,6 @@ returned.}
 \description{
 Gets all the triggers associated with a job.
 
-See \url{https://paws-r.github.io/docs/glue/get_triggers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_triggers/} for full documentation.
 }
 \keyword{internal}

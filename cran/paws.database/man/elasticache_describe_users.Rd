@@ -31,6 +31,6 @@ the value specified by MaxRecords. \>}
 \description{
 Returns a list of users.
 
-See \url{https://paws-r.github.io/docs/elasticache/describe_users.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_describe_users/} for full documentation.
 }
 \keyword{internal}

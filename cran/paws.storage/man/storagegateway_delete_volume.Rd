@@ -15,6 +15,6 @@ of gateway volumes.}
 \description{
 Deletes the specified storage volume that you previously created using the \code{\link[=storagegateway_create_cachedi_scsi_volume]{create_cachedi_scsi_volume}} or \code{\link[=storagegateway_create_storedi_scsi_volume]{create_storedi_scsi_volume}} API. This operation is only supported in the cached volume and stored volume types. For stored volume gateways, the local disk that was configured as the storage volume is not deleted. You can reuse the local disk to create another storage volume.
 
-See \url{https://paws-r.github.io/docs/storagegateway/delete_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_delete_volume/} for full documentation.
 }
 \keyword{internal}

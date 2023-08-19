@@ -72,6 +72,6 @@ provide sensitive information.
 \description{
 Confirms registration of a new user.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/confirm_sign_up.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_confirm_sign_up/} for full documentation.
 }
 \keyword{internal}

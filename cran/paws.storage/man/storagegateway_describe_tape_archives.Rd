@@ -24,6 +24,6 @@ specified number.}
 \description{
 Returns a description of specified virtual tapes in the virtual tape shelf (VTS). This operation is only supported in the tape gateway type.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_tape_archives.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_tape_archives/} for full documentation.
 }
 \keyword{internal}

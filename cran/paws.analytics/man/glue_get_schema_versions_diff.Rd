@@ -31,6 +31,6 @@ One of \code{SchemaArn} or \code{SchemaName} has to be provided.
 \description{
 Fetches the schema version difference in the specified difference type between two stored schema versions in the Schema Registry.
 
-See \url{https://paws-r.github.io/docs/glue/get_schema_versions_diff.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_schema_versions_diff/} for full documentation.
 }
 \keyword{internal}

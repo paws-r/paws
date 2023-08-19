@@ -38,6 +38,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Modifies the configuration of the specified Amazon Web Services Verified Access endpoint.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_verified_access_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_verified_access_endpoint/} for full documentation.
 }
 \keyword{internal}

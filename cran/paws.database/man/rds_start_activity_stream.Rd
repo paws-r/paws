@@ -34,6 +34,6 @@ DB instance. By default, no engine-native audit fields are included.}
 \description{
 Starts a database activity stream to monitor activity on the database. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/DBActivityStreams.html}{Monitoring Amazon Aurora with Database Activity Streams} in the \emph{Amazon Aurora User Guide} or \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/DBActivityStreams.html}{Monitoring Amazon RDS with Database Activity Streams} in the \emph{Amazon RDS User Guide}.
 
-See \url{https://paws-r.github.io/docs/rds/start_activity_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_start_activity_stream/} for full documentation.
 }
 \keyword{internal}

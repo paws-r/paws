@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Grants users or groups in your IAM Identity Center identity source access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
 #'
-#' See [https://paws-r.github.io/docs/kendra/associate_entities_to_experience.html](https://paws-r.github.io/docs/kendra/associate_entities_to_experience.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_associate_entities_to_experience/](https://www.paws-r-sdk.com/docs/kendra_associate_entities_to_experience/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience.
 #' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
@@ -41,7 +41,7 @@ kendra_associate_entities_to_experience <- function(Id, IndexId, EntityList) {
 #' @description
 #' Defines the specific permissions of users or groups in your IAM Identity Center identity source with access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
 #'
-#' See [https://paws-r.github.io/docs/kendra/associate_personas_to_entities.html](https://paws-r.github.io/docs/kendra/associate_personas_to_entities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_associate_personas_to_entities/](https://www.paws-r-sdk.com/docs/kendra_associate_personas_to_entities/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience.
 #' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
@@ -76,7 +76,7 @@ kendra_associate_personas_to_entities <- function(Id, IndexId, Personas) {
 #' @description
 #' Removes one or more documents from an index. The documents must have been added with the [`batch_put_document`][kendra_batch_put_document] API.
 #'
-#' See [https://paws-r.github.io/docs/kendra/batch_delete_document.html](https://paws-r.github.io/docs/kendra/batch_delete_document.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_batch_delete_document/](https://www.paws-r-sdk.com/docs/kendra_batch_delete_document/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index that contains the documents to delete.
 #' @param DocumentIdList &#91;required&#93; One or more identifiers for documents to delete from the index.
@@ -107,7 +107,7 @@ kendra_batch_delete_document <- function(IndexId, DocumentIdList, DataSourceSync
 #' @description
 #' Removes one or more sets of featured results. Features results are placed above all other results for certain queries. If there's an exact match of a query, then one or more specific documents are featured in the search results.
 #'
-#' See [https://paws-r.github.io/docs/kendra/batch_delete_featured_results_set.html](https://paws-r.github.io/docs/kendra/batch_delete_featured_results_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_batch_delete_featured_results_set/](https://www.paws-r-sdk.com/docs/kendra_batch_delete_featured_results_set/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index used for featuring results.
 #' @param FeaturedResultsSetIds &#91;required&#93; The identifiers of the featured results sets that you want to delete.
@@ -138,7 +138,7 @@ kendra_batch_delete_featured_results_set <- function(IndexId, FeaturedResultsSet
 #' @description
 #' Returns the indexing status for one or more documents submitted with the [BatchPutDocument](https://docs.aws.amazon.com/kendra/latest/APIReference/API_BatchPutDocument.html) API.
 #'
-#' See [https://paws-r.github.io/docs/kendra/batch_get_document_status.html](https://paws-r.github.io/docs/kendra/batch_get_document_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_batch_get_document_status/](https://www.paws-r-sdk.com/docs/kendra_batch_get_document_status/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index to add documents to. The index ID is
 #' returned by the
@@ -173,7 +173,7 @@ kendra_batch_get_document_status <- function(IndexId, DocumentInfoList) {
 #' @description
 #' Adds one or more documents to an index.
 #'
-#' See [https://paws-r.github.io/docs/kendra/batch_put_document.html](https://paws-r.github.io/docs/kendra/batch_put_document.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_batch_put_document/](https://www.paws-r-sdk.com/docs/kendra_batch_put_document/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index to add the documents to. You need to create
 #' the index first using the [`create_index`][kendra_create_index] API.
@@ -225,7 +225,7 @@ kendra_batch_put_document <- function(IndexId, RoleArn = NULL, Documents, Custom
 #' @description
 #' Clears existing query suggestions from an index.
 #'
-#' See [https://paws-r.github.io/docs/kendra/clear_query_suggestions.html](https://paws-r.github.io/docs/kendra/clear_query_suggestions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_clear_query_suggestions/](https://www.paws-r-sdk.com/docs/kendra_clear_query_suggestions/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index you want to clear query suggestions from.
 #'
@@ -254,7 +254,7 @@ kendra_clear_query_suggestions <- function(IndexId) {
 #' @description
 #' Creates an access configuration for your documents. This includes user and group access information for your documents. This is useful for user context filtering, where search results are filtered based on the user or their group access to documents.
 #'
-#' See [https://paws-r.github.io/docs/kendra/create_access_control_configuration.html](https://paws-r.github.io/docs/kendra/create_access_control_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_create_access_control_configuration/](https://www.paws-r-sdk.com/docs/kendra_create_access_control_configuration/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index to create an access control configuration
 #' for your documents.
@@ -300,7 +300,7 @@ kendra_create_access_control_configuration <- function(IndexId, Name, Descriptio
 #' @description
 #' Creates a data source connector that you want to use with an Amazon Kendra index.
 #'
-#' See [https://paws-r.github.io/docs/kendra/create_data_source.html](https://paws-r.github.io/docs/kendra/create_data_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_create_data_source/](https://www.paws-r-sdk.com/docs/kendra_create_data_source/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A name for the data source connector.
 #' @param IndexId &#91;required&#93; The identifier of the index you want to use with the data source
@@ -386,7 +386,7 @@ kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL,
 #' @description
 #' Creates an Amazon Kendra experience such as a search application. For more information on creating a search application experience, including using the Python and Java SDKs, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
 #'
-#' See [https://paws-r.github.io/docs/kendra/create_experience.html](https://paws-r.github.io/docs/kendra/create_experience.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_create_experience/](https://www.paws-r-sdk.com/docs/kendra_create_experience/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A name for your Amazon Kendra experience.
 #' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
@@ -435,7 +435,7 @@ kendra_create_experience <- function(Name, IndexId, RoleArn = NULL, Configuratio
 #' @description
 #' Creates a set of frequently ask questions (FAQs) using a specified FAQ file stored in an Amazon S3 bucket.
 #'
-#' See [https://paws-r.github.io/docs/kendra/create_faq.html](https://paws-r.github.io/docs/kendra/create_faq.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_create_faq/](https://www.paws-r-sdk.com/docs/kendra_create_faq/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index for the FAQ.
 #' @param Name &#91;required&#93; A name for the FAQ.
@@ -450,6 +450,8 @@ kendra_create_experience <- function(Name, IndexId, RoleArn = NULL, Configuratio
 #' @param FileFormat The format of the FAQ input file. You can choose between a basic CSV
 #' format, a CSV format that includes customs attributes in a header, and a
 #' JSON format that includes custom attributes.
+#' 
+#' The default format is CSV.
 #' 
 #' The format must match the format of the file stored in the S3 bucket
 #' identified in the `S3Path` parameter.
@@ -491,7 +493,7 @@ kendra_create_faq <- function(IndexId, Name, Description = NULL, S3Path, RoleArn
 #' @description
 #' Creates a set of featured results to display at the top of the search results page. Featured results are placed above all other results for certain queries. You map specific queries to specific documents for featuring in the results. If a query contains an exact match, then one or more specific documents are featured in the search results.
 #'
-#' See [https://paws-r.github.io/docs/kendra/create_featured_results_set.html](https://paws-r.github.io/docs/kendra/create_featured_results_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_create_featured_results_set/](https://www.paws-r-sdk.com/docs/kendra_create_featured_results_set/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index that you want to use for featuring results.
 #' @param FeaturedResultsSetName &#91;required&#93; A name for the set of featured results.
@@ -546,7 +548,7 @@ kendra_create_featured_results_set <- function(IndexId, FeaturedResultsSetName, 
 #' @description
 #' Creates an Amazon Kendra index. Index creation is an asynchronous API. To determine if index creation has completed, check the `Status` field returned from a call to [`describe_index`][kendra_describe_index]. The `Status` field is set to `ACTIVE` when the index is ready to use.
 #'
-#' See [https://paws-r.github.io/docs/kendra/create_index.html](https://paws-r.github.io/docs/kendra/create_index.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_create_index/](https://www.paws-r-sdk.com/docs/kendra_create_index/) for full documentation.
 #'
 #' @param Name &#91;required&#93; A name for the index.
 #' @param Edition The Amazon Kendra edition to use for the index. Choose
@@ -619,7 +621,7 @@ kendra_create_index <- function(Name, Edition = NULL, RoleArn, ServerSideEncrypt
 #' @description
 #' Creates a block list to exlcude certain queries from suggestions.
 #'
-#' See [https://paws-r.github.io/docs/kendra/create_query_suggestions_block_list.html](https://paws-r.github.io/docs/kendra/create_query_suggestions_block_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_create_query_suggestions_block_list/](https://www.paws-r-sdk.com/docs/kendra_create_query_suggestions_block_list/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index you want to create a query suggestions block
 #' list for.
@@ -674,7 +676,7 @@ kendra_create_query_suggestions_block_list <- function(IndexId, Name, Descriptio
 #' @description
 #' Creates a thesaurus for an index. The thesaurus contains a list of synonyms in Solr format.
 #'
-#' See [https://paws-r.github.io/docs/kendra/create_thesaurus.html](https://paws-r.github.io/docs/kendra/create_thesaurus.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_create_thesaurus/](https://www.paws-r-sdk.com/docs/kendra_create_thesaurus/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index for the thesaurus.
 #' @param Name &#91;required&#93; A name for the thesaurus.
@@ -718,7 +720,7 @@ kendra_create_thesaurus <- function(IndexId, Name, Description = NULL, RoleArn, 
 #' @description
 #' Deletes an access control configuration that you created for your documents in an index. This includes user and group access information for your documents. This is useful for user context filtering, where search results are filtered based on the user or their group access to documents.
 #'
-#' See [https://paws-r.github.io/docs/kendra/delete_access_control_configuration.html](https://paws-r.github.io/docs/kendra/delete_access_control_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_delete_access_control_configuration/](https://www.paws-r-sdk.com/docs/kendra_delete_access_control_configuration/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index for an access control configuration.
 #' @param Id &#91;required&#93; The identifier of the access control configuration you want to delete.
@@ -748,7 +750,7 @@ kendra_delete_access_control_configuration <- function(IndexId, Id) {
 #' @description
 #' Deletes an Amazon Kendra data source connector. An exception is not thrown if the data source is already being deleted. While the data source is being deleted, the `Status` field returned by a call to the [`describe_data_source`][kendra_describe_data_source] API is set to `DELETING`. For more information, see [Deleting Data Sources](https://docs.aws.amazon.com/kendra/latest/dg/delete-data-source.html).
 #'
-#' See [https://paws-r.github.io/docs/kendra/delete_data_source.html](https://paws-r.github.io/docs/kendra/delete_data_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_delete_data_source/](https://www.paws-r-sdk.com/docs/kendra_delete_data_source/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of the data source connector you want to delete.
 #' @param IndexId &#91;required&#93; The identifier of the index used with the data source connector.
@@ -778,7 +780,7 @@ kendra_delete_data_source <- function(Id, IndexId) {
 #' @description
 #' Deletes your Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
 #'
-#' See [https://paws-r.github.io/docs/kendra/delete_experience.html](https://paws-r.github.io/docs/kendra/delete_experience.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_delete_experience/](https://www.paws-r-sdk.com/docs/kendra_delete_experience/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience you want to delete.
 #' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
@@ -808,7 +810,7 @@ kendra_delete_experience <- function(Id, IndexId) {
 #' @description
 #' Removes an FAQ from an index.
 #'
-#' See [https://paws-r.github.io/docs/kendra/delete_faq.html](https://paws-r.github.io/docs/kendra/delete_faq.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_delete_faq/](https://www.paws-r-sdk.com/docs/kendra_delete_faq/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of the FAQ you want to remove.
 #' @param IndexId &#91;required&#93; The identifier of the index for the FAQ.
@@ -838,7 +840,7 @@ kendra_delete_faq <- function(Id, IndexId) {
 #' @description
 #' Deletes an existing Amazon Kendra index. An exception is not thrown if the index is already being deleted. While the index is being deleted, the `Status` field returned by a call to the [`describe_index`][kendra_describe_index] API is set to `DELETING`.
 #'
-#' See [https://paws-r.github.io/docs/kendra/delete_index.html](https://paws-r.github.io/docs/kendra/delete_index.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_delete_index/](https://www.paws-r-sdk.com/docs/kendra_delete_index/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of the index you want to delete.
 #'
@@ -868,7 +870,7 @@ kendra_delete_index <- function(Id) {
 #' @description
 #' Deletes a group so that all users and sub groups that belong to the group can no longer access documents only available to that group.
 #'
-#' See [https://paws-r.github.io/docs/kendra/delete_principal_mapping.html](https://paws-r.github.io/docs/kendra/delete_principal_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_delete_principal_mapping/](https://www.paws-r-sdk.com/docs/kendra_delete_principal_mapping/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index you want to delete a group from.
 #' @param DataSourceId The identifier of the data source you want to delete a group from.
@@ -924,7 +926,7 @@ kendra_delete_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupI
 #' @description
 #' Deletes a block list used for query suggestions for an index.
 #'
-#' See [https://paws-r.github.io/docs/kendra/delete_query_suggestions_block_list.html](https://paws-r.github.io/docs/kendra/delete_query_suggestions_block_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_delete_query_suggestions_block_list/](https://www.paws-r-sdk.com/docs/kendra_delete_query_suggestions_block_list/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index for the block list.
 #' @param Id &#91;required&#93; The identifier of the block list you want to delete.
@@ -954,7 +956,7 @@ kendra_delete_query_suggestions_block_list <- function(IndexId, Id) {
 #' @description
 #' Deletes an existing Amazon Kendra thesaurus.
 #'
-#' See [https://paws-r.github.io/docs/kendra/delete_thesaurus.html](https://paws-r.github.io/docs/kendra/delete_thesaurus.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_delete_thesaurus/](https://www.paws-r-sdk.com/docs/kendra_delete_thesaurus/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of the thesaurus you want to delete.
 #' @param IndexId &#91;required&#93; The identifier of the index for the thesaurus.
@@ -985,7 +987,7 @@ kendra_delete_thesaurus <- function(Id, IndexId) {
 #' @description
 #' Gets information about an access control configuration that you created for your documents in an index. This includes user and group access information for your documents. This is useful for user context filtering, where search results are filtered based on the user or their group access to documents.
 #'
-#' See [https://paws-r.github.io/docs/kendra/describe_access_control_configuration.html](https://paws-r.github.io/docs/kendra/describe_access_control_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_describe_access_control_configuration/](https://www.paws-r-sdk.com/docs/kendra_describe_access_control_configuration/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index for an access control configuration.
 #' @param Id &#91;required&#93; The identifier of the access control configuration you want to get
@@ -1016,7 +1018,7 @@ kendra_describe_access_control_configuration <- function(IndexId, Id) {
 #' @description
 #' Gets information about an Amazon Kendra data source connector.
 #'
-#' See [https://paws-r.github.io/docs/kendra/describe_data_source.html](https://paws-r.github.io/docs/kendra/describe_data_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_describe_data_source/](https://www.paws-r-sdk.com/docs/kendra_describe_data_source/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of the data source connector.
 #' @param IndexId &#91;required&#93; The identifier of the index used with the data source connector.
@@ -1047,7 +1049,7 @@ kendra_describe_data_source <- function(Id, IndexId) {
 #' @description
 #' Gets information about your Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
 #'
-#' See [https://paws-r.github.io/docs/kendra/describe_experience.html](https://paws-r.github.io/docs/kendra/describe_experience.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_describe_experience/](https://www.paws-r-sdk.com/docs/kendra_describe_experience/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience you want to get
 #' information on.
@@ -1078,7 +1080,7 @@ kendra_describe_experience <- function(Id, IndexId) {
 #' @description
 #' Gets information about an FAQ list.
 #'
-#' See [https://paws-r.github.io/docs/kendra/describe_faq.html](https://paws-r.github.io/docs/kendra/describe_faq.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_describe_faq/](https://www.paws-r-sdk.com/docs/kendra_describe_faq/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of the FAQ you want to get information on.
 #' @param IndexId &#91;required&#93; The identifier of the index for the FAQ.
@@ -1108,7 +1110,7 @@ kendra_describe_faq <- function(Id, IndexId) {
 #' @description
 #' Gets information about a set of featured results. Features results are placed above all other results for certain queries. If there's an exact match of a query, then one or more specific documents are featured in the search results.
 #'
-#' See [https://paws-r.github.io/docs/kendra/describe_featured_results_set.html](https://paws-r.github.io/docs/kendra/describe_featured_results_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_describe_featured_results_set/](https://www.paws-r-sdk.com/docs/kendra_describe_featured_results_set/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index used for featuring results.
 #' @param FeaturedResultsSetId &#91;required&#93; The identifier of the set of featured results that you want to get
@@ -1139,7 +1141,7 @@ kendra_describe_featured_results_set <- function(IndexId, FeaturedResultsSetId) 
 #' @description
 #' Gets information about an existing Amazon Kendra index.
 #'
-#' See [https://paws-r.github.io/docs/kendra/describe_index.html](https://paws-r.github.io/docs/kendra/describe_index.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_describe_index/](https://www.paws-r-sdk.com/docs/kendra_describe_index/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of the index you want to get information on.
 #'
@@ -1169,7 +1171,7 @@ kendra_describe_index <- function(Id) {
 #' @description
 #' Describes the processing of `PUT` and `DELETE` actions for mapping users to their groups. This includes information on the status of actions currently processing or yet to be processed, when actions were last updated, when actions were received by Amazon Kendra, the latest action that should process and apply after other actions, and useful error messages if an action could not be processed.
 #'
-#' See [https://paws-r.github.io/docs/kendra/describe_principal_mapping.html](https://paws-r.github.io/docs/kendra/describe_principal_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_describe_principal_mapping/](https://www.paws-r-sdk.com/docs/kendra_describe_principal_mapping/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index required to check the processing of `PUT`
 #' and `DELETE` actions for mapping users to their groups.
@@ -1204,7 +1206,7 @@ kendra_describe_principal_mapping <- function(IndexId, DataSourceId = NULL, Grou
 #' @description
 #' Gets information about a block list used for query suggestions for an index.
 #'
-#' See [https://paws-r.github.io/docs/kendra/describe_query_suggestions_block_list.html](https://paws-r.github.io/docs/kendra/describe_query_suggestions_block_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_describe_query_suggestions_block_list/](https://www.paws-r-sdk.com/docs/kendra_describe_query_suggestions_block_list/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index for the block list.
 #' @param Id &#91;required&#93; The identifier of the block list you want to get information on.
@@ -1234,7 +1236,7 @@ kendra_describe_query_suggestions_block_list <- function(IndexId, Id) {
 #' @description
 #' Gets information on the settings of query suggestions for an index.
 #'
-#' See [https://paws-r.github.io/docs/kendra/describe_query_suggestions_config.html](https://paws-r.github.io/docs/kendra/describe_query_suggestions_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_describe_query_suggestions_config/](https://www.paws-r-sdk.com/docs/kendra_describe_query_suggestions_config/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index with query suggestions that you want to get
 #' information on.
@@ -1264,7 +1266,7 @@ kendra_describe_query_suggestions_config <- function(IndexId) {
 #' @description
 #' Gets information about an existing Amazon Kendra thesaurus.
 #'
-#' See [https://paws-r.github.io/docs/kendra/describe_thesaurus.html](https://paws-r.github.io/docs/kendra/describe_thesaurus.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_describe_thesaurus/](https://www.paws-r-sdk.com/docs/kendra_describe_thesaurus/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of the thesaurus you want to get information on.
 #' @param IndexId &#91;required&#93; The identifier of the index for the thesaurus.
@@ -1295,7 +1297,7 @@ kendra_describe_thesaurus <- function(Id, IndexId) {
 #' @description
 #' Prevents users or groups in your IAM Identity Center identity source from accessing your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
 #'
-#' See [https://paws-r.github.io/docs/kendra/disassociate_entities_from_experience.html](https://paws-r.github.io/docs/kendra/disassociate_entities_from_experience.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_disassociate_entities_from_experience/](https://www.paws-r-sdk.com/docs/kendra_disassociate_entities_from_experience/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience.
 #' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
@@ -1327,7 +1329,7 @@ kendra_disassociate_entities_from_experience <- function(Id, IndexId, EntityList
 #' @description
 #' Removes the specific permissions of users or groups in your IAM Identity Center identity source with access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
 #'
-#' See [https://paws-r.github.io/docs/kendra/disassociate_personas_from_entities.html](https://paws-r.github.io/docs/kendra/disassociate_personas_from_entities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_disassociate_personas_from_entities/](https://www.paws-r-sdk.com/docs/kendra_disassociate_personas_from_entities/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience.
 #' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
@@ -1359,7 +1361,7 @@ kendra_disassociate_personas_from_entities <- function(Id, IndexId, EntityIds) {
 #' @description
 #' Fetches the queries that are suggested to your users.
 #'
-#' See [https://paws-r.github.io/docs/kendra/get_query_suggestions.html](https://paws-r.github.io/docs/kendra/get_query_suggestions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_get_query_suggestions/](https://www.paws-r-sdk.com/docs/kendra_get_query_suggestions/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index you want to get query suggestions from.
 #' @param QueryText &#91;required&#93; The text of a user's query to generate query suggestions.
@@ -1411,7 +1413,7 @@ kendra_get_query_suggestions <- function(IndexId, QueryText, MaxSuggestionsCount
 #' @description
 #' Retrieves search metrics data. The data provides a snapshot of how your users interact with your search application and how effective the application is.
 #'
-#' See [https://paws-r.github.io/docs/kendra/get_snapshots.html](https://paws-r.github.io/docs/kendra/get_snapshots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_get_snapshots/](https://www.paws-r-sdk.com/docs/kendra_get_snapshots/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index to get search metrics data.
 #' @param Interval &#91;required&#93; The time interval or time window to get search metrics data. The time
@@ -1455,7 +1457,7 @@ kendra_get_snapshots <- function(IndexId, Interval, MetricType, NextToken = NULL
     name = "GetSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$get_snapshots_input(IndexId = IndexId, Interval = Interval, MetricType = MetricType, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$get_snapshots_output()
@@ -1472,7 +1474,7 @@ kendra_get_snapshots <- function(IndexId, Interval, MetricType, NextToken = NULL
 #' @description
 #' Lists one or more access control configurations for an index. This includes user and group access information for your documents. This is useful for user context filtering, where search results are filtered based on the user or their group access to documents.
 #'
-#' See [https://paws-r.github.io/docs/kendra/list_access_control_configurations.html](https://paws-r.github.io/docs/kendra/list_access_control_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_list_access_control_configurations/](https://www.paws-r-sdk.com/docs/kendra_list_access_control_configurations/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index for the access control configuration.
 #' @param NextToken If the previous response was incomplete (because there's more data to
@@ -1489,7 +1491,7 @@ kendra_list_access_control_configurations <- function(IndexId, NextToken = NULL,
     name = "ListAccessControlConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_access_control_configurations_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_access_control_configurations_output()
@@ -1506,7 +1508,7 @@ kendra_list_access_control_configurations <- function(IndexId, NextToken = NULL,
 #' @description
 #' Gets statistics about synchronizing a data source connector.
 #'
-#' See [https://paws-r.github.io/docs/kendra/list_data_source_sync_jobs.html](https://paws-r.github.io/docs/kendra/list_data_source_sync_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_list_data_source_sync_jobs/](https://www.paws-r-sdk.com/docs/kendra_list_data_source_sync_jobs/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of the data source connector.
 #' @param IndexId &#91;required&#93; The identifier of the index used with the data source connector.
@@ -1529,7 +1531,7 @@ kendra_list_data_source_sync_jobs <- function(Id, IndexId, NextToken = NULL, Max
     name = "ListDataSourceSyncJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_data_source_sync_jobs_input(Id = Id, IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults, StartTimeFilter = StartTimeFilter, StatusFilter = StatusFilter)
   output <- .kendra$list_data_source_sync_jobs_output()
@@ -1546,7 +1548,7 @@ kendra_list_data_source_sync_jobs <- function(Id, IndexId, NextToken = NULL, Max
 #' @description
 #' Lists the data source connectors that you have created.
 #'
-#' See [https://paws-r.github.io/docs/kendra/list_data_sources.html](https://paws-r.github.io/docs/kendra/list_data_sources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_list_data_sources/](https://www.paws-r-sdk.com/docs/kendra_list_data_sources/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index used with one or more data source
 #' connectors.
@@ -1564,7 +1566,7 @@ kendra_list_data_sources <- function(IndexId, NextToken = NULL, MaxResults = NUL
     name = "ListDataSources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_data_sources_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_data_sources_output()
@@ -1582,7 +1584,7 @@ kendra_list_data_sources <- function(IndexId, NextToken = NULL, MaxResults = NUL
 #' @description
 #' Lists specific permissions of users and groups with access to your Amazon Kendra experience.
 #'
-#' See [https://paws-r.github.io/docs/kendra/list_entity_personas.html](https://paws-r.github.io/docs/kendra/list_entity_personas.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_list_entity_personas/](https://www.paws-r-sdk.com/docs/kendra_list_entity_personas/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience.
 #' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
@@ -1600,7 +1602,7 @@ kendra_list_entity_personas <- function(Id, IndexId, NextToken = NULL, MaxResult
     name = "ListEntityPersonas",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_entity_personas_input(Id = Id, IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_entity_personas_output()
@@ -1618,7 +1620,7 @@ kendra_list_entity_personas <- function(Id, IndexId, NextToken = NULL, MaxResult
 #' @description
 #' Lists users or groups in your IAM Identity Center identity source that are granted access to your Amazon Kendra experience. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
 #'
-#' See [https://paws-r.github.io/docs/kendra/list_experience_entities.html](https://paws-r.github.io/docs/kendra/list_experience_entities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_list_experience_entities/](https://www.paws-r-sdk.com/docs/kendra_list_experience_entities/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience.
 #' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
@@ -1635,7 +1637,7 @@ kendra_list_experience_entities <- function(Id, IndexId, NextToken = NULL) {
     name = "ListExperienceEntities",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken")
   )
   input <- .kendra$list_experience_entities_input(Id = Id, IndexId = IndexId, NextToken = NextToken)
   output <- .kendra$list_experience_entities_output()
@@ -1652,7 +1654,7 @@ kendra_list_experience_entities <- function(Id, IndexId, NextToken = NULL) {
 #' @description
 #' Lists one or more Amazon Kendra experiences. You can create an Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
 #'
-#' See [https://paws-r.github.io/docs/kendra/list_experiences.html](https://paws-r.github.io/docs/kendra/list_experiences.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_list_experiences/](https://www.paws-r-sdk.com/docs/kendra_list_experiences/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index for your Amazon Kendra experience.
 #' @param NextToken If the previous response was incomplete (because there is more data to
@@ -1669,7 +1671,7 @@ kendra_list_experiences <- function(IndexId, NextToken = NULL, MaxResults = NULL
     name = "ListExperiences",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_experiences_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_experiences_output()
@@ -1686,7 +1688,7 @@ kendra_list_experiences <- function(IndexId, NextToken = NULL, MaxResults = NULL
 #' @description
 #' Gets a list of FAQ lists associated with an index.
 #'
-#' See [https://paws-r.github.io/docs/kendra/list_faqs.html](https://paws-r.github.io/docs/kendra/list_faqs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_list_faqs/](https://www.paws-r-sdk.com/docs/kendra_list_faqs/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The index that contains the FAQ lists.
 #' @param NextToken If the previous response was incomplete (because there is more data to
@@ -1703,7 +1705,7 @@ kendra_list_faqs <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
     name = "ListFaqs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_faqs_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_faqs_output()
@@ -1720,7 +1722,7 @@ kendra_list_faqs <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Lists all your sets of featured results for a given index. Features results are placed above all other results for certain queries. If there's an exact match of a query, then one or more specific documents are featured in the search results.
 #'
-#' See [https://paws-r.github.io/docs/kendra/list_featured_results_sets.html](https://paws-r.github.io/docs/kendra/list_featured_results_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_list_featured_results_sets/](https://www.paws-r-sdk.com/docs/kendra_list_featured_results_sets/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index used for featuring results.
 #' @param NextToken If the response is truncated, Amazon Kendra returns a pagination token
@@ -1754,7 +1756,7 @@ kendra_list_featured_results_sets <- function(IndexId, NextToken = NULL, MaxResu
 #' @description
 #' Provides a list of groups that are mapped to users before a given ordering or timestamp identifier.
 #'
-#' See [https://paws-r.github.io/docs/kendra/list_groups_older_than_ordering_id.html](https://paws-r.github.io/docs/kendra/list_groups_older_than_ordering_id.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_list_groups_older_than_ordering_id/](https://www.paws-r-sdk.com/docs/kendra_list_groups_older_than_ordering_id/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index for getting a list of groups mapped to users
 #' before a given ordering or timestamp identifier.
@@ -1777,7 +1779,7 @@ kendra_list_groups_older_than_ordering_id <- function(IndexId, DataSourceId = NU
     name = "ListGroupsOlderThanOrderingId",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_groups_older_than_ordering_id_input(IndexId = IndexId, DataSourceId = DataSourceId, OrderingId = OrderingId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_groups_older_than_ordering_id_output()
@@ -1794,7 +1796,7 @@ kendra_list_groups_older_than_ordering_id <- function(IndexId, DataSourceId = NU
 #' @description
 #' Lists the Amazon Kendra indexes that you created.
 #'
-#' See [https://paws-r.github.io/docs/kendra/list_indices.html](https://paws-r.github.io/docs/kendra/list_indices.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_list_indices/](https://www.paws-r-sdk.com/docs/kendra_list_indices/) for full documentation.
 #'
 #' @param NextToken If the previous response was incomplete (because there is more data to
 #' retrieve), Amazon Kendra returns a pagination token in the response. You
@@ -1809,7 +1811,7 @@ kendra_list_indices <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListIndices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_indices_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_indices_output()
@@ -1826,7 +1828,7 @@ kendra_list_indices <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Lists the block lists used for query suggestions for an index.
 #'
-#' See [https://paws-r.github.io/docs/kendra/list_query_suggestions_block_lists.html](https://paws-r.github.io/docs/kendra/list_query_suggestions_block_lists.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_list_query_suggestions_block_lists/](https://www.paws-r-sdk.com/docs/kendra_list_query_suggestions_block_lists/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index for a list of all block lists that exist for
 #' that index.
@@ -1848,7 +1850,7 @@ kendra_list_query_suggestions_block_lists <- function(IndexId, NextToken = NULL,
     name = "ListQuerySuggestionsBlockLists",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_query_suggestions_block_lists_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_query_suggestions_block_lists_output()
@@ -1865,7 +1867,7 @@ kendra_list_query_suggestions_block_lists <- function(IndexId, NextToken = NULL,
 #' @description
 #' Gets a list of tags associated with a specified resource. Indexes, FAQs, and data sources can have tags associated with them.
 #'
-#' See [https://paws-r.github.io/docs/kendra/list_tags_for_resource.html](https://paws-r.github.io/docs/kendra/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/kendra_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the index, FAQ, or data source to get
 #' a list of tags for.
@@ -1895,7 +1897,7 @@ kendra_list_tags_for_resource <- function(ResourceARN) {
 #' @description
 #' Lists the thesauri for an index.
 #'
-#' See [https://paws-r.github.io/docs/kendra/list_thesauri.html](https://paws-r.github.io/docs/kendra/list_thesauri.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_list_thesauri/](https://www.paws-r-sdk.com/docs/kendra_list_thesauri/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index with one or more thesauri.
 #' @param NextToken If the previous response was incomplete (because there is more data to
@@ -1912,7 +1914,7 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
     name = "ListThesauri",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .kendra$list_thesauri_input(IndexId = IndexId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .kendra$list_thesauri_output()
@@ -1930,7 +1932,7 @@ kendra_list_thesauri <- function(IndexId, NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Maps users to their groups so that you only need to provide the user ID when you issue the query.
 #'
-#' See [https://paws-r.github.io/docs/kendra/put_principal_mapping.html](https://paws-r.github.io/docs/kendra/put_principal_mapping.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_put_principal_mapping/](https://www.paws-r-sdk.com/docs/kendra_put_principal_mapping/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index you want to map users to their groups.
 #' @param DataSourceId The identifier of the data source you want to map users to their groups.
@@ -1995,45 +1997,40 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
 }
 .kendra$operations$put_principal_mapping <- kendra_put_principal_mapping
 
-#' Searches an active index
+#' Searches an index given an input query
 #'
 #' @description
-#' Searches an active index. Use this API to search your documents using query. The [`query`][kendra_query] API enables to do faceted search and to filter results based on document attributes.
+#' Searches an index given an input query.
 #'
-#' See [https://paws-r.github.io/docs/kendra/query.html](https://paws-r.github.io/docs/kendra/query.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_query/](https://www.paws-r-sdk.com/docs/kendra_query/) for full documentation.
 #'
-#' @param IndexId &#91;required&#93; The identifier of the index to search. The identifier is returned in the
-#' response from the [`create_index`][kendra_create_index] API.
+#' @param IndexId &#91;required&#93; The identifier of the index for the search.
 #' @param QueryText The input query text for the search. Amazon Kendra truncates queries at
 #' 30 token words, which excludes punctuation and stop words. Truncation
 #' still applies if you use Boolean or more advanced, complex queries.
-#' @param AttributeFilter Enables filtered searches based on document attributes. You can only
+#' @param AttributeFilter Filters search results by document fields/attributes. You can only
 #' provide one attribute filter; however, the `AndAllFilters`, `NotFilter`,
 #' and `OrAllFilters` parameters contain a list of other filters.
 #' 
-#' The `AttributeFilter` parameter enables you to create a set of filtering
+#' The `AttributeFilter` parameter means you can create a set of filtering
 #' rules that a document must satisfy to be included in the query results.
-#' @param Facets An array of documents attributes. Amazon Kendra returns a count for each
-#' attribute key specified. This helps your users narrow their search.
-#' @param RequestedDocumentAttributes An array of document attributes to include in the response. You can
-#' limit the response to include certain document attributes. By default
+#' @param Facets An array of documents fields/attributes for faceted search. Amazon
+#' Kendra returns a count for each field key specified. This helps your
+#' users narrow their search.
+#' @param RequestedDocumentAttributes An array of document fields/attributes to include in the response. You
+#' can limit the response to include certain document fields. By default,
 #' all document attributes are included in the response.
-#' @param QueryResultTypeFilter Sets the type of query. Only results for the specified query type are
-#' returned.
-#' @param DocumentRelevanceOverrideConfigurations Overrides relevance tuning configurations of fields or attributes set at
+#' @param QueryResultTypeFilter Sets the type of query result or response. Only results for the
+#' specified type are returned.
+#' @param DocumentRelevanceOverrideConfigurations Overrides relevance tuning configurations of fields/attributes set at
 #' the index level.
 #' 
 #' If you use this API to override the relevance tuning configured at the
 #' index level, but there is no relevance tuning configured at the index
 #' level, then Amazon Kendra does not apply any relevance tuning.
 #' 
-#' If there is relevance tuning configured at the index level, but you do
-#' not use this API to override any relevance tuning in the index, then
-#' Amazon Kendra uses the relevance tuning that is configured at the index
-#' level.
-#' 
 #' If there is relevance tuning configured for fields at the index level,
-#' but you use this API to override only some of these fields, then for the
+#' and you use this API to override only some of these fields, then for the
 #' fields you did not override, the importance is set to 1.
 #' @param PageNumber Query results are returned in pages the size of the `PageSize`
 #' parameter. By default, Amazon Kendra returns the first page of results.
@@ -2075,12 +2072,73 @@ kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Face
 }
 .kendra$operations$query <- kendra_query
 
+#' Retrieves relevant passages or text excerpts given an input query
+#'
+#' @description
+#' Retrieves relevant passages or text excerpts given an input query.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kendra_retrieve/](https://www.paws-r-sdk.com/docs/kendra_retrieve/) for full documentation.
+#'
+#' @param IndexId &#91;required&#93; The identifier of the index to retrieve relevant passages for the
+#' search.
+#' @param QueryText &#91;required&#93; The input query text to retrieve relevant passages for the search.
+#' Amazon Kendra truncates queries at 30 token words, which excludes
+#' punctuation and stop words. Truncation still applies if you use Boolean
+#' or more advanced, complex queries.
+#' @param AttributeFilter Filters search results by document fields/attributes. You can only
+#' provide one attribute filter; however, the `AndAllFilters`, `NotFilter`,
+#' and `OrAllFilters` parameters contain a list of other filters.
+#' 
+#' The `AttributeFilter` parameter means you can create a set of filtering
+#' rules that a document must satisfy to be included in the query results.
+#' @param RequestedDocumentAttributes A list of document fields/attributes to include in the response. You can
+#' limit the response to include certain document fields. By default, all
+#' document fields are included in the response.
+#' @param DocumentRelevanceOverrideConfigurations Overrides relevance tuning configurations of fields/attributes set at
+#' the index level.
+#' 
+#' If you use this API to override the relevance tuning configured at the
+#' index level, but there is no relevance tuning configured at the index
+#' level, then Amazon Kendra does not apply any relevance tuning.
+#' 
+#' If there is relevance tuning configured for fields at the index level,
+#' and you use this API to override only some of these fields, then for the
+#' fields you did not override, the importance is set to 1.
+#' @param PageNumber Retrieved relevant passages are returned in pages the size of the
+#' `PageSize` parameter. By default, Amazon Kendra returns the first page
+#' of results. Use this parameter to get result pages after the first one.
+#' @param PageSize Sets the number of retrieved relevant passages that are returned in each
+#' page of results. The default page size is 10. The maximum number of
+#' results returned is 100. If you ask for more than 100 results, only 100
+#' are returned.
+#' @param UserContext The user context token or user and group information.
+#'
+#' @keywords internal
+#'
+#' @rdname kendra_retrieve
+kendra_retrieve <- function(IndexId, QueryText, AttributeFilter = NULL, RequestedDocumentAttributes = NULL, DocumentRelevanceOverrideConfigurations = NULL, PageNumber = NULL, PageSize = NULL, UserContext = NULL) {
+  op <- new_operation(
+    name = "Retrieve",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .kendra$retrieve_input(IndexId = IndexId, QueryText = QueryText, AttributeFilter = AttributeFilter, RequestedDocumentAttributes = RequestedDocumentAttributes, DocumentRelevanceOverrideConfigurations = DocumentRelevanceOverrideConfigurations, PageNumber = PageNumber, PageSize = PageSize, UserContext = UserContext)
+  output <- .kendra$retrieve_output()
+  config <- get_config()
+  svc <- .kendra$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kendra$operations$retrieve <- kendra_retrieve
+
 #' Starts a synchronization job for a data source connector
 #'
 #' @description
 #' Starts a synchronization job for a data source connector. If a synchronization job is already in progress, Amazon Kendra returns a `ResourceInUseException` exception.
 #'
-#' See [https://paws-r.github.io/docs/kendra/start_data_source_sync_job.html](https://paws-r.github.io/docs/kendra/start_data_source_sync_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_start_data_source_sync_job/](https://www.paws-r-sdk.com/docs/kendra_start_data_source_sync_job/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of the data source connector to synchronize.
 #' @param IndexId &#91;required&#93; The identifier of the index used with the data source connector.
@@ -2110,7 +2168,7 @@ kendra_start_data_source_sync_job <- function(Id, IndexId) {
 #' @description
 #' Stops a synchronization job that is currently running. You can't stop a scheduled synchronization job.
 #'
-#' See [https://paws-r.github.io/docs/kendra/stop_data_source_sync_job.html](https://paws-r.github.io/docs/kendra/stop_data_source_sync_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_stop_data_source_sync_job/](https://www.paws-r-sdk.com/docs/kendra_stop_data_source_sync_job/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of the data source connector for which to stop the
 #' synchronization jobs.
@@ -2142,7 +2200,7 @@ kendra_stop_data_source_sync_job <- function(Id, IndexId) {
 #' @description
 #' Enables you to provide feedback to Amazon Kendra to improve the performance of your index.
 #'
-#' See [https://paws-r.github.io/docs/kendra/submit_feedback.html](https://paws-r.github.io/docs/kendra/submit_feedback.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_submit_feedback/](https://www.paws-r-sdk.com/docs/kendra_submit_feedback/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index that was queried.
 #' @param QueryId &#91;required&#93; The identifier of the specific query for which you are submitting
@@ -2179,7 +2237,7 @@ kendra_submit_feedback <- function(IndexId, QueryId, ClickFeedbackItems = NULL, 
 #' @description
 #' Adds the specified tag to the specified index, FAQ, or data source resource. If the tag already exists, the existing value is replaced with the new value.
 #'
-#' See [https://paws-r.github.io/docs/kendra/tag_resource.html](https://paws-r.github.io/docs/kendra/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_tag_resource/](https://www.paws-r-sdk.com/docs/kendra_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the index, FAQ, or data source to tag.
 #' @param Tags &#91;required&#93; A list of tag keys to add to the index, FAQ, or data source. If a tag
@@ -2210,7 +2268,7 @@ kendra_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Removes a tag from an index, FAQ, or a data source.
 #'
-#' See [https://paws-r.github.io/docs/kendra/untag_resource.html](https://paws-r.github.io/docs/kendra/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_untag_resource/](https://www.paws-r-sdk.com/docs/kendra_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the index, FAQ, or data source to
 #' remove the tag from.
@@ -2242,7 +2300,7 @@ kendra_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Updates an access control configuration for your documents in an index. This includes user and group access information for your documents. This is useful for user context filtering, where search results are filtered based on the user or their group access to documents.
 #'
-#' See [https://paws-r.github.io/docs/kendra/update_access_control_configuration.html](https://paws-r.github.io/docs/kendra/update_access_control_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_update_access_control_configuration/](https://www.paws-r-sdk.com/docs/kendra_update_access_control_configuration/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index for an access control configuration.
 #' @param Id &#91;required&#93; The identifier of the access control configuration you want to update.
@@ -2282,7 +2340,7 @@ kendra_update_access_control_configuration <- function(IndexId, Id, Name = NULL,
 #' @description
 #' Updates an existing Amazon Kendra data source connector.
 #'
-#' See [https://paws-r.github.io/docs/kendra/update_data_source.html](https://paws-r.github.io/docs/kendra/update_data_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_update_data_source/](https://www.paws-r-sdk.com/docs/kendra_update_data_source/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of the data source connector you want to update.
 #' @param Name A new name for the data source connector.
@@ -2338,7 +2396,7 @@ kendra_update_data_source <- function(Id, Name = NULL, IndexId, Configuration = 
 #' @description
 #' Updates your Amazon Kendra experience such as a search application. For more information on creating a search application experience, see [Building a search experience with no code](https://docs.aws.amazon.com/kendra/latest/dg/deploying-search-experience-no-code.html).
 #'
-#' See [https://paws-r.github.io/docs/kendra/update_experience.html](https://paws-r.github.io/docs/kendra/update_experience.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_update_experience/](https://www.paws-r-sdk.com/docs/kendra_update_experience/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of your Amazon Kendra experience you want to update.
 #' @param Name A new name for your Amazon Kendra experience.
@@ -2378,7 +2436,7 @@ kendra_update_experience <- function(Id, Name = NULL, IndexId, RoleArn = NULL, C
 #' @description
 #' Updates a set of featured results. Features results are placed above all other results for certain queries. You map specific queries to specific documents for featuring in the results. If a query contains an exact match of a query, then one or more specific documents are featured in the search results.
 #'
-#' See [https://paws-r.github.io/docs/kendra/update_featured_results_set.html](https://paws-r.github.io/docs/kendra/update_featured_results_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_update_featured_results_set/](https://www.paws-r-sdk.com/docs/kendra_update_featured_results_set/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index used for featuring results.
 #' @param FeaturedResultsSetId &#91;required&#93; The identifier of the set of featured results that you want to update.
@@ -2422,7 +2480,7 @@ kendra_update_featured_results_set <- function(IndexId, FeaturedResultsSetId, Fe
 #' @description
 #' Updates an existing Amazon Kendra index.
 #'
-#' See [https://paws-r.github.io/docs/kendra/update_index.html](https://paws-r.github.io/docs/kendra/update_index.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_update_index/](https://www.paws-r-sdk.com/docs/kendra_update_index/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of the index you want to update.
 #' @param Name The name of the index you want to update.
@@ -2472,7 +2530,7 @@ kendra_update_index <- function(Id, Name = NULL, RoleArn = NULL, Description = N
 #' @description
 #' Updates a block list used for query suggestions for an index.
 #'
-#' See [https://paws-r.github.io/docs/kendra/update_query_suggestions_block_list.html](https://paws-r.github.io/docs/kendra/update_query_suggestions_block_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_update_query_suggestions_block_list/](https://www.paws-r-sdk.com/docs/kendra_update_query_suggestions_block_list/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index for the block list.
 #' @param Id &#91;required&#93; The identifier of the block list you want to update.
@@ -2518,7 +2576,7 @@ kendra_update_query_suggestions_block_list <- function(IndexId, Id, Name = NULL,
 #' @description
 #' Updates the settings of query suggestions for an index.
 #'
-#' See [https://paws-r.github.io/docs/kendra/update_query_suggestions_config.html](https://paws-r.github.io/docs/kendra/update_query_suggestions_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_update_query_suggestions_config/](https://www.paws-r-sdk.com/docs/kendra_update_query_suggestions_config/) for full documentation.
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index with query suggestions you want to update.
 #' @param Mode Set the mode to `ENABLED` or `LEARN_ONLY`.
@@ -2593,7 +2651,7 @@ kendra_update_query_suggestions_config <- function(IndexId, Mode = NULL, QueryLo
 #' @description
 #' Updates a thesaurus for an index.
 #'
-#' See [https://paws-r.github.io/docs/kendra/update_thesaurus.html](https://paws-r.github.io/docs/kendra/update_thesaurus.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kendra_update_thesaurus/](https://www.paws-r-sdk.com/docs/kendra_update_thesaurus/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The identifier of the thesaurus you want to update.
 #' @param Name A new name for the thesaurus.

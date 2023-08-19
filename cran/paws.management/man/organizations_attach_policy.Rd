@@ -37,6 +37,6 @@ dash and from 8 to 32 additional lowercase letters or digits.
 \description{
 Attaches a policy to a root, an organizational unit (OU), or an individual account. How the policy affects accounts depends on the type of policy. Refer to the \emph{Organizations User Guide} for information about each policy type:
 
-See \url{https://paws-r.github.io/docs/organizations/attach_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_attach_policy/} for full documentation.
 }
 \keyword{internal}

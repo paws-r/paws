@@ -14,6 +14,6 @@ directoryservice_cancel_schema_extension(DirectoryId, SchemaExtensionId)
 \description{
 Cancels an in-progress schema extension to a Microsoft AD directory. Once a schema extension has started replicating to all domain controllers, the task can no longer be canceled. A schema extension can be canceled during any of the following states; \code{Initializing}, \code{CreatingSnapshot}, and \code{UpdatingSchema}.
 
-See \url{https://paws-r.github.io/docs/directoryservice/cancel_schema_extension.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_cancel_schema_extension/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ lightsail_update_relational_database_parameters(
 \description{
 Allows the update of one or more parameters of a database in Amazon Lightsail.
 
-See \url{https://paws-r.github.io/docs/lightsail/update_relational_database_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_update_relational_database_parameters/} for full documentation.
 }
 \keyword{internal}

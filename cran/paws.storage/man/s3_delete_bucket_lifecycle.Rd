@@ -16,6 +16,6 @@ different account, the request fails with the HTTP status code
 \description{
 Deletes the lifecycle configuration from the specified bucket. Amazon S3 removes all the lifecycle configuration rules in the lifecycle subresource associated with the bucket. Your objects never expire, and Amazon S3 no longer automatically deletes any objects on the basis of rules contained in the deleted lifecycle configuration.
 
-See \url{https://paws-r.github.io/docs/s3/delete_bucket_lifecycle.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_delete_bucket_lifecycle/} for full documentation.
 }
 \keyword{internal}

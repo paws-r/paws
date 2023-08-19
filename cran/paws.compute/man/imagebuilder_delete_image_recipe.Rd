@@ -12,6 +12,6 @@ imagebuilder_delete_image_recipe(imageRecipeArn)
 \description{
 Deletes an image recipe.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/delete_image_recipe.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_delete_image_recipe/} for full documentation.
 }
 \keyword{internal}

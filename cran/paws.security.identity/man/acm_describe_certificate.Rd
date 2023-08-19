@@ -17,6 +17,6 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/lates
 \description{
 Returns detailed metadata about the specified ACM certificate.
 
-See \url{https://paws-r.github.io/docs/acm/describe_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acm_describe_certificate/} for full documentation.
 }
 \keyword{internal}

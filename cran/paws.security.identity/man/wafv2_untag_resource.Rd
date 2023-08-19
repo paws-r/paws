@@ -14,6 +14,6 @@ wafv2_untag_resource(ResourceARN, TagKeys)
 \description{
 Disassociates tags from an Amazon Web Services resource. Tags are key:value pairs that you can associate with Amazon Web Services resources. For example, the tag key might be "customer" and the tag value might be "companyA." You can specify one or more tags to add to each container. You can add up to 50 tags to each Amazon Web Services resource.
 
-See \url{https://paws-r.github.io/docs/wafv2/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafv2_untag_resource/} for full documentation.
 }
 \keyword{internal}

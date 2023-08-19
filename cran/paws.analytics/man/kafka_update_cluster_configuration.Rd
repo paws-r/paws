@@ -22,6 +22,6 @@ a cluster.}
 \description{
 Updates the cluster with the configuration that is specified in the request body.
 
-See \url{https://paws-r.github.io/docs/kafka/update_cluster_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_update_cluster_configuration/} for full documentation.
 }
 \keyword{internal}

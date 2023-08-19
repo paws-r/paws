@@ -14,6 +14,6 @@ example to update, delete, or describe it.}
 \description{
 Returns the specification for the specified protection group.
 
-See \url{https://paws-r.github.io/docs/shield/describe_protection_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_describe_protection_group/} for full documentation.
 }
 \keyword{internal}

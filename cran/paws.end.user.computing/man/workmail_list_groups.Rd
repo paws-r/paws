@@ -17,6 +17,6 @@ does not contain any tokens.}
 \description{
 Returns summaries of the organization's groups.
 
-See \url{https://paws-r.github.io/docs/workmail/list_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_list_groups/} for full documentation.
 }
 \keyword{internal}

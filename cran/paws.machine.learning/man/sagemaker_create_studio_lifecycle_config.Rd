@@ -26,6 +26,6 @@ resource. Tags are searchable using the Search API.}
 \description{
 Creates a new Studio Lifecycle Configuration.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_studio_lifecycle_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_studio_lifecycle_config/} for full documentation.
 }
 \keyword{internal}

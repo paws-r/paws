@@ -19,6 +19,6 @@ previous call.}
 \description{
 List the custom routing accelerators for an Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/list_custom_routing_accelerators.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_list_custom_routing_accelerators/} for full documentation.
 }
 \keyword{internal}

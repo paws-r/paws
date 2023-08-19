@@ -13,6 +13,6 @@ xray_list_resource_policies(NextToken = NULL)
 \description{
 Returns the list of resource policies in the target Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/xray/list_resource_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_list_resource_policies/} for full documentation.
 }
 \keyword{internal}

@@ -38,6 +38,6 @@ different parameters, the retry fails with an
 \description{
 Modifies some of the properties of the specified resource share.
 
-See \url{https://paws-r.github.io/docs/ram/update_resource_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_update_resource_share/} for full documentation.
 }
 \keyword{internal}

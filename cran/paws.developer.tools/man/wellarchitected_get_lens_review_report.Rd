@@ -20,6 +20,6 @@ wellarchitected_get_lens_review_report(
 \description{
 Get lens review report.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/get_lens_review_report.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_get_lens_review_report/} for full documentation.
 }
 \keyword{internal}

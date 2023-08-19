@@ -12,8 +12,8 @@ ssm_get_ops_item(OpsItemId, OpsItemArn = NULL)
 \item{OpsItemArn}{The OpsItem Amazon Resource Name (ARN).}
 }
 \description{
-Get information about an OpsItem by using the ID. You must have permission in Identity and Access Management (IAM) to view information about an OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/}{Getting started with OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
+Get information about an OpsItem by using the ID. You must have permission in Identity and Access Management (IAM) to view information about an OpsItem. For more information, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setup.html}{Set up OpsCenter} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
-See \url{https://paws-r.github.io/docs/ssm/get_ops_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_ops_item/} for full documentation.
 }
 \keyword{internal}

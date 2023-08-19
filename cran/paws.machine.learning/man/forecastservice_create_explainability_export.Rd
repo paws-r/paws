@@ -48,6 +48,6 @@ resource limit. You cannot edit or delete tag keys with this prefix.
 \description{
 Exports an Explainability resource created by the \code{\link[=forecastservice_create_explainability]{create_explainability}} operation. Exported files are exported to an Amazon Simple Storage Service (Amazon S3) bucket.
 
-See \url{https://paws-r.github.io/docs/forecastservice/create_explainability_export.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_create_explainability_export/} for full documentation.
 }
 \keyword{internal}

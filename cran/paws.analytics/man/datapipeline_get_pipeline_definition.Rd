@@ -16,6 +16,6 @@ or \code{active} to use the last definition that was activated.}
 \description{
 Gets the definition of the specified pipeline. You can call \code{\link[=datapipeline_get_pipeline_definition]{get_pipeline_definition}} to retrieve the pipeline definition that you provided using \code{\link[=datapipeline_put_pipeline_definition]{put_pipeline_definition}}.
 
-See \url{https://paws-r.github.io/docs/datapipeline/get_pipeline_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/datapipeline_get_pipeline_definition/} for full documentation.
 }
 \keyword{internal}

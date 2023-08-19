@@ -24,6 +24,6 @@ objects than the number you specify for \code{Limit}, the response includes a
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-See \url{https://paws-r.github.io/docs/wafregional/list_size_constraint_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafregional_list_size_constraint_sets/} for full documentation.
 }
 \keyword{internal}

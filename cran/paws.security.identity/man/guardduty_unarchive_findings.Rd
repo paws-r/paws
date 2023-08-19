@@ -14,6 +14,6 @@ guardduty_unarchive_findings(DetectorId, FindingIds)
 \description{
 Unarchives GuardDuty findings specified by the \code{findingIds}.
 
-See \url{https://paws-r.github.io/docs/guardduty/unarchive_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_unarchive_findings/} for full documentation.
 }
 \keyword{internal}

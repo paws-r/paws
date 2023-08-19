@@ -21,6 +21,6 @@ settings such as the subnets to provision VPC endpoints.}
 \description{
 Registers an identity provider for user-based subscriptions.
 
-See \url{https://paws-r.github.io/docs/licensemanagerusersubscriptions/register_identity_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_register_identity_provider/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ networkmanager_list_core_networks(MaxResults = NULL, NextToken = NULL)
 \description{
 Returns a list of owned and shared core networks.
 
-See \url{https://paws-r.github.io/docs/networkmanager/list_core_networks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_list_core_networks/} for full documentation.
 }
 \keyword{internal}

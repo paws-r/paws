@@ -37,6 +37,6 @@ returns incident records that match any of the values provided.
 \description{
 Lists all incident records in your account. Use this command to retrieve the Amazon Resource Name (ARN) of the incident record you want to update.
 
-See \url{https://paws-r.github.io/docs/ssmincidents/list_incident_records.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmincidents_list_incident_records/} for full documentation.
 }
 \keyword{internal}

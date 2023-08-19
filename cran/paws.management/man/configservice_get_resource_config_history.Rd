@@ -39,6 +39,6 @@ the next page of results in a paginated response.}
 \description{
 Returns a list of \code{ConfigurationItems} for the specified resource. The list contains details about each state of the resource during the specified time interval. If you specified a retention period to retain your \code{ConfigurationItems} between a minimum of 30 days and a maximum of 7 years (2557 days), Config returns the \code{ConfigurationItems} for the specified retention period.
 
-See \url{https://paws-r.github.io/docs/configservice/get_resource_config_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_get_resource_config_history/} for full documentation.
 }
 \keyword{internal}

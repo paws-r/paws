@@ -12,6 +12,6 @@ route53domains_delete_domain(DomainName)
 \description{
 This operation deletes the specified domain. This action is permanent. For more information, see \href{https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-delete.html}{Deleting a domain name registration}.
 
-See \url{https://paws-r.github.io/docs/route53domains/delete_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53domains_delete_domain/} for full documentation.
 }
 \keyword{internal}

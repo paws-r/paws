@@ -14,6 +14,6 @@ with the resource policy.}
 \description{
 Gets a resource-based policy of an Entity that is identified by its resource ARN.
 
-See \url{https://paws-r.github.io/docs/marketplacecatalog/get_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/marketplacecatalog_get_resource_policy/} for full documentation.
 }
 \keyword{internal}

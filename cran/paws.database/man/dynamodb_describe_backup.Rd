@@ -12,6 +12,6 @@ dynamodb_describe_backup(BackupArn)
 \description{
 Describes an existing backup of a table.
 
-See \url{https://paws-r.github.io/docs/dynamodb/describe_backup.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_describe_backup/} for full documentation.
 }
 \keyword{internal}

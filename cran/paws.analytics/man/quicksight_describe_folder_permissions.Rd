@@ -14,6 +14,6 @@ quicksight_describe_folder_permissions(AwsAccountId, FolderId)
 \description{
 Describes permissions for a folder.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_folder_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_folder_permissions/} for full documentation.
 }
 \keyword{internal}

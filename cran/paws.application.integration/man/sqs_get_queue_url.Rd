@@ -19,6 +19,6 @@ queue.}
 \description{
 Returns the URL of an existing Amazon SQS queue.
 
-See \url{https://paws-r.github.io/docs/sqs/get_queue_url.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sqs_get_queue_url/} for full documentation.
 }
 \keyword{internal}

@@ -48,6 +48,6 @@ the next items in a list and not for other programmatic purposes.}
 \description{
 Describes a list of job definitions. You can specify a \code{status} (such as \code{ACTIVE}) to only return job definitions that match that status.
 
-See \url{https://paws-r.github.io/docs/batch/describe_job_definitions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_describe_job_definitions/} for full documentation.
 }
 \keyword{internal}

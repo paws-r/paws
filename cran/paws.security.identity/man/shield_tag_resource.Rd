@@ -15,6 +15,6 @@ update tags for.}
 \description{
 Adds or updates tags for a resource in Shield.
 
-See \url{https://paws-r.github.io/docs/shield/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_tag_resource/} for full documentation.
 }
 \keyword{internal}

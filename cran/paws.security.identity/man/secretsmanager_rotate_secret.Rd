@@ -61,6 +61,6 @@ By default, Secrets Manager rotates the secret immediately.}
 \description{
 Configures and starts the asynchronous process of rotating the secret. For information about rotation, see \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html}{Rotate secrets} in the \emph{Secrets Manager User Guide}. If you include the configuration parameters, the operation sets the values for the secret and then immediately starts a rotation. If you don't include the configuration parameters, the operation starts a rotation with the values already stored in the secret.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/rotate_secret.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_rotate_secret/} for full documentation.
 }
 \keyword{internal}

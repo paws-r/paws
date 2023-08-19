@@ -25,6 +25,6 @@ attachment.}
 \description{
 Creates an Amazon Web Services site-to-site VPN attachment on an edge location of a core network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/create_site_to_site_vpn_attachment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_create_site_to_site_vpn_attachment/} for full documentation.
 }
 \keyword{internal}

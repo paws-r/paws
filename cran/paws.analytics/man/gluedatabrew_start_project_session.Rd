@@ -16,6 +16,6 @@ a different client is currently accessing the project.}
 \description{
 Creates an interactive session, enabling you to manipulate data in a DataBrew project.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/start_project_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_start_project_session/} for full documentation.
 }
 \keyword{internal}

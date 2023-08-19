@@ -25,6 +25,6 @@ means that the key cannot be used.}
 \description{
 Sets the status of an IAM user's SSH public key to active or inactive. SSH public keys that are inactive cannot be used for authentication. This operation can be used to disable a user's SSH public key as part of a key rotation work flow.
 
-See \url{https://paws-r.github.io/docs/iam/update_ssh_public_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_update_ssh_public_key/} for full documentation.
 }
 \keyword{internal}

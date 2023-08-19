@@ -32,6 +32,6 @@ account is the management account of an organization.}
 \description{
 Updates the enrollment (opt in and opt out) status of an account to the Compute Optimizer service.
 
-See \url{https://paws-r.github.io/docs/computeoptimizer/update_enrollment_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_update_enrollment_status/} for full documentation.
 }
 \keyword{internal}

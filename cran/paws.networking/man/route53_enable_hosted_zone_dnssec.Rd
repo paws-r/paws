@@ -12,6 +12,6 @@ route53_enable_hosted_zone_dnssec(HostedZoneId)
 \description{
 Enables DNSSEC signing in a specific hosted zone.
 
-See \url{https://paws-r.github.io/docs/route53/enable_hosted_zone_dnssec.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_enable_hosted_zone_dnssec/} for full documentation.
 }
 \keyword{internal}

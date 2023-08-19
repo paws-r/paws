@@ -11,6 +11,6 @@ devopsguru_describe_account_health()
 \description{
 Returns the number of open reactive insights, the number of open proactive insights, and the number of metrics analyzed in your Amazon Web Services account. Use these numbers to gauge the health of operations in your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/devopsguru/describe_account_health.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_describe_account_health/} for full documentation.
 }
 \keyword{internal}

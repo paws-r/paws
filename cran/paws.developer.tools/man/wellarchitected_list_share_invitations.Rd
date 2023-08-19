@@ -9,7 +9,8 @@ wellarchitected_list_share_invitations(
   LensNamePrefix = NULL,
   ShareResourceType = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  ProfileNamePrefix = NULL
 )
 }
 \arguments{
@@ -23,10 +24,12 @@ the results.}
 \item{NextToken}{}
 
 \item{MaxResults}{The maximum number of results to return for this request.}
+
+\item{ProfileNamePrefix}{Profile name prefix.}
 }
 \description{
 List the workload invitations.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/list_share_invitations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_list_share_invitations/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ operations, which returns results in the next page.}
 \description{
 Describes the Amazon OpenSearch Service instances that you have reserved in a given Region. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ri.html}{Reserved Instances in Amazon OpenSearch Service}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/describe_reserved_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_describe_reserved_instances/} for full documentation.
 }
 \keyword{internal}

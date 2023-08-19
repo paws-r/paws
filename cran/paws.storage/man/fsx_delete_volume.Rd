@@ -26,6 +26,6 @@ volumes and snapshots.}
 \description{
 Deletes an Amazon FSx for NetApp ONTAP or Amazon FSx for OpenZFS volume.
 
-See \url{https://paws-r.github.io/docs/fsx/delete_volume.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_delete_volume/} for full documentation.
 }
 \keyword{internal}

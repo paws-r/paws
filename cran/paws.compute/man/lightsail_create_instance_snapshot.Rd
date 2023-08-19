@@ -23,6 +23,6 @@ resource after it's created.}
 \description{
 Creates a snapshot of a specific virtual private server, or \emph{instance}. You can use a snapshot to create a new instance that is based on that snapshot.
 
-See \url{https://paws-r.github.io/docs/lightsail/create_instance_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_create_instance_snapshot/} for full documentation.
 }
 \keyword{internal}

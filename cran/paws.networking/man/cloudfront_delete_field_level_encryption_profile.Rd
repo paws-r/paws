@@ -15,6 +15,6 @@ profile to delete. For example: \code{E2QWRUHAPOMQZL}.}
 \description{
 Remove a field-level encryption profile.
 
-See \url{https://paws-r.github.io/docs/cloudfront/delete_field_level_encryption_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_delete_field_level_encryption_profile/} for full documentation.
 }
 \keyword{internal}

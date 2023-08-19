@@ -14,6 +14,6 @@ disassociate.}
 \description{
 Disassociates a member account from an Amazon Inspector delegated administrator.
 
-See \url{https://paws-r.github.io/docs/inspector2/disassociate_member.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_disassociate_member/} for full documentation.
 }
 \keyword{internal}

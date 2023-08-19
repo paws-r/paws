@@ -58,6 +58,6 @@ appropriate to associate it with repositories.}
 \description{
 Creates a template for approval rules that can then be associated with one or more repositories in your AWS account. When you associate a template with a repository, AWS CodeCommit creates an approval rule that matches the conditions of the template for all pull requests that meet the conditions of the template. For more information, see \code{\link[=codecommit_associate_approval_rule_template_with_repository]{associate_approval_rule_template_with_repository}}.
 
-See \url{https://paws-r.github.io/docs/codecommit/create_approval_rule_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_create_approval_rule_template/} for full documentation.
 }
 \keyword{internal}

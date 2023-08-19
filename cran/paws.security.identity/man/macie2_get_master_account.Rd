@@ -10,6 +10,6 @@ macie2_get_master_account()
 \description{
 (Deprecated) Retrieves information about the Amazon Macie administrator account for an account. This operation has been replaced by the GetAdministratorAccount operation.
 
-See \url{https://paws-r.github.io/docs/macie2/get_master_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_get_master_account/} for full documentation.
 }
 \keyword{internal}

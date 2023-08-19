@@ -30,6 +30,6 @@ licensemanager_list_received_grants(
 \description{
 Lists grants that are received. Received grants are grants created while specifying the recipient as this Amazon Web Services account, your organization, or an organizational unit (OU) to which this member account belongs.
 
-See \url{https://paws-r.github.io/docs/licensemanager/list_received_grants.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_list_received_grants/} for full documentation.
 }
 \keyword{internal}

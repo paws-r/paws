@@ -24,6 +24,6 @@ glue_list_data_quality_rulesets(
 \description{
 Returns a paginated list of rulesets for the specified list of Glue tables.
 
-See \url{https://paws-r.github.io/docs/glue/list_data_quality_rulesets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_list_data_quality_rulesets/} for full documentation.
 }
 \keyword{internal}

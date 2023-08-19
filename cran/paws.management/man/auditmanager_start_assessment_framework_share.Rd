@@ -23,6 +23,6 @@ auditmanager_start_assessment_framework_share(
 \description{
 Creates a share request for a custom framework in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/start_assessment_framework_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_start_assessment_framework_share/} for full documentation.
 }
 \keyword{internal}

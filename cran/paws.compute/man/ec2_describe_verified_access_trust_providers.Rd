@@ -32,6 +32,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the specified Amazon Web Services Verified Access trust providers.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_verified_access_trust_providers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_verified_access_trust_providers/} for full documentation.
 }
 \keyword{internal}

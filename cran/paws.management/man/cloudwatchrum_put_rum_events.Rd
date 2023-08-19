@@ -29,6 +29,6 @@ batch of events was collected from.}
 \description{
 Sends telemetry events about your application performance and user behavior to CloudWatch RUM. The code snippet that RUM generates for you to add to your application includes \code{\link[=cloudwatchrum_put_rum_events]{put_rum_events}} operations to send this data to RUM.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/put_rum_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_put_rum_events/} for full documentation.
 }
 \keyword{internal}

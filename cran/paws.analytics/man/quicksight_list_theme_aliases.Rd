@@ -25,6 +25,6 @@ results.}
 \description{
 Lists all the aliases of a theme.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_theme_aliases.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_theme_aliases/} for full documentation.
 }
 \keyword{internal}

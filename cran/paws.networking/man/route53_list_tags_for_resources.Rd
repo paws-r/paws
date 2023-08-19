@@ -19,6 +19,6 @@ for which you want to get a list of tags.}
 \description{
 Lists tags for up to 10 health checks or hosted zones.
 
-See \url{https://paws-r.github.io/docs/route53/list_tags_for_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_tags_for_resources/} for full documentation.
 }
 \keyword{internal}

@@ -96,7 +96,9 @@ tag_del <- function(object, tags = NULL) {
     }
     attr(result, "tags") <- this_tags
   }
-  if (is.atomic(result)) return(result)
+  if (is.atomic(result)) {
+    return(result)
+  }
   for (i in seq_along(result)) {
     result[[i]] <- tag_del(result[[i]], tags)
   }
@@ -111,8 +113,7 @@ tag_del <- function(object, tags = NULL) {
 type <- function(object) {
   type_tag <- tag_get(object, "type")
   if (type_tag != "") {
-    t <- switch(
-      type_tag,
+    t <- switch(type_tag,
       structure = "structure",
       list = "list",
       map = "map",

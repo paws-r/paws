@@ -27,6 +27,6 @@ or HIPAA.}
 \description{
 Creates a custom framework in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/create_assessment_framework.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_create_assessment_framework/} for full documentation.
 }
 \keyword{internal}

@@ -15,7 +15,8 @@ s3_list_objects_v2(
   FetchOwner = NULL,
   StartAfter = NULL,
   RequestPayer = NULL,
-  ExpectedBucketOwner = NULL
+  ExpectedBucketOwner = NULL,
+  OptionalObjectAttributes = NULL
 )
 }
 \arguments{
@@ -35,26 +36,27 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
-\item{Delimiter}{A delimiter is a character you use to group keys.}
+\item{Delimiter}{A delimiter is a character that you use to group keys.}
 
 \item{EncodingType}{Encoding type used by Amazon S3 to encode object keys in the response.}
 
-\item{MaxKeys}{Sets the maximum number of keys returned in the response. By default the
-action returns up to 1,000 key names. The response might contain fewer
-keys but will never contain more.}
+\item{MaxKeys}{Sets the maximum number of keys returned in the response. By default,
+the action returns up to 1,000 key names. The response might contain
+fewer keys but will never contain more.}
 
 \item{Prefix}{Limits the response to keys that begin with the specified prefix.}
 
-\item{ContinuationToken}{ContinuationToken indicates Amazon S3 that the list is being continued
-on this bucket with a token. ContinuationToken is obfuscated and is not
-a real key.}
+\item{ContinuationToken}{\code{ContinuationToken} indicates to Amazon S3 that the list is being
+continued on this bucket with a token. \code{ContinuationToken} is obfuscated
+and is not a real key.}
 
-\item{FetchOwner}{The owner field is not present in listV2 by default, if you want to
-return owner field with each key in the result then set the fetch owner
-field to true.}
+\item{FetchOwner}{The owner field is not present in
+\code{\link[=s3_list_objects_v2]{list_objects_v2}} by default. If you want to
+return the owner field with each key in the result, then set the
+\code{FetchOwner} field to \code{true}.}
 
 \item{StartAfter}{StartAfter is where you want Amazon S3 to start listing from. Amazon S3
 starts listing after this specified key. StartAfter can be any key in
@@ -67,10 +69,13 @@ parameter in their requests.}
 \item{ExpectedBucketOwner}{The account ID of the expected bucket owner. If the bucket is owned by a
 different account, the request fails with the HTTP status code
 \verb{403 Forbidden} (access denied).}
+
+\item{OptionalObjectAttributes}{Specifies the optional fields that you want returned in the response.
+Fields that you do not specify are not returned.}
 }
 \description{
-Returns some or all (up to 1,000) of the objects in a bucket with each request. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A \verb{200 OK} response can contain valid or invalid XML. Make sure to design your application to parse the contents of the response and handle it appropriately. Objects are returned sorted in an ascending order of the respective key names in the list. For more information about listing objects, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ListingKeysUsingAPIs.html}{Listing object keys programmatically}
+Returns some or all (up to 1,000) of the objects in a bucket with each request. You can use the request parameters as selection criteria to return a subset of the objects in a bucket. A \verb{200 OK} response can contain valid or invalid XML. Make sure to design your application to parse the contents of the response and handle it appropriately. Objects are returned sorted in an ascending order of the respective key names in the list. For more information about listing objects, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ListingKeysUsingAPIs.html}{Listing object keys programmatically} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3/list_objects_v2.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_list_objects_v2/} for full documentation.
 }
 \keyword{internal}

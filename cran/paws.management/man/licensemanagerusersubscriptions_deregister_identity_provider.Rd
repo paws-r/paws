@@ -18,6 +18,6 @@ licensemanagerusersubscriptions_deregister_identity_provider(
 \description{
 Deregisters the identity provider from providing user-based subscriptions.
 
-See \url{https://paws-r.github.io/docs/licensemanagerusersubscriptions/deregister_identity_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanagerusersubscriptions_deregister_identity_provider/} for full documentation.
 }
 \keyword{internal}

@@ -22,6 +22,6 @@ token from a previous call.)}
 \description{
 Gets information about a warm pool and its instances.
 
-See \url{https://paws-r.github.io/docs/autoscaling/describe_warm_pool.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_describe_warm_pool/} for full documentation.
 }
 \keyword{internal}

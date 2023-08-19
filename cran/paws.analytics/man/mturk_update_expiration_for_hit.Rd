@@ -15,6 +15,6 @@ mturk_update_expiration_for_hit(HITId, ExpireAt)
 \description{
 The \code{\link[=mturk_update_expiration_for_hit]{update_expiration_for_hit}} operation allows you update the expiration time of a HIT. If you update it to a time in the past, the HIT will be immediately expired.
 
-See \url{https://paws-r.github.io/docs/mturk/update_expiration_for_hit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_update_expiration_for_hit/} for full documentation.
 }
 \keyword{internal}

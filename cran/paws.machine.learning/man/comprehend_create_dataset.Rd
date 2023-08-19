@@ -38,6 +38,6 @@ token, Amazon Comprehend generates one.}
 \description{
 Creates a dataset to upload training or test data for a model associated with a flywheel. For more information about datasets, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/flywheels-about.html}{Flywheel overview} in the \emph{Amazon Comprehend Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/comprehend/create_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_create_dataset/} for full documentation.
 }
 \keyword{internal}

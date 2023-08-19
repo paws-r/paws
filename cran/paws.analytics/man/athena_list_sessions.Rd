@@ -47,6 +47,6 @@ previous page call.}
 \description{
 Lists the sessions in a workgroup that are in an active state like \code{CREATING}, \code{CREATED}, \code{IDLE}, or \code{BUSY}. Newer sessions are listed first; older sessions are listed later.
 
-See \url{https://paws-r.github.io/docs/athena/list_sessions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_list_sessions/} for full documentation.
 }
 \keyword{internal}

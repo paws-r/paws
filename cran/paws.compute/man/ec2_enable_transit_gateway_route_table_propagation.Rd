@@ -27,6 +27,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Enables the specified attachment to propagate routes to the specified propagation route table.
 
-See \url{https://paws-r.github.io/docs/ec2/enable_transit_gateway_route_table_propagation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_enable_transit_gateway_route_table_propagation/} for full documentation.
 }
 \keyword{internal}

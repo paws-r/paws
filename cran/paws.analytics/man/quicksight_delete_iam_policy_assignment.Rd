@@ -21,6 +21,6 @@ policy assignment.}
 \description{
 Deletes an existing IAM policy assignment.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_iam_policy_assignment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_iam_policy_assignment/} for full documentation.
 }
 \keyword{internal}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_disassociate_members}
 \alias{guardduty_disassociate_members}
-\title{Disassociates GuardDuty member accounts (to the current administrator
+\title{Disassociates GuardDuty member accounts (from the current administrator
 account) specified by the account IDs}
 \usage{
 guardduty_disassociate_members(DetectorId, AccountIds)
@@ -15,8 +15,8 @@ want to disassociate from the administrator account.}
 disassociate from the administrator account.}
 }
 \description{
-Disassociates GuardDuty member accounts (to the current administrator account) specified by the account IDs.
+Disassociates GuardDuty member accounts (from the current administrator account) specified by the account IDs.
 
-See \url{https://paws-r.github.io/docs/guardduty/disassociate_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_disassociate_members/} for full documentation.
 }
 \keyword{internal}

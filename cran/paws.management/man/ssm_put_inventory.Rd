@@ -14,6 +14,6 @@ ssm_put_inventory(InstanceId, Items)
 \description{
 Bulk update custom inventory items on one or more managed nodes. The request adds an inventory item, if it doesn't already exist, or updates an inventory item, if it does exist.
 
-See \url{https://paws-r.github.io/docs/ssm/put_inventory.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_put_inventory/} for full documentation.
 }
 \keyword{internal}

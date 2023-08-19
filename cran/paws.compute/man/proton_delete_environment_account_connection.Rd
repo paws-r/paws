@@ -12,6 +12,6 @@ proton_delete_environment_account_connection(id)
 \description{
 In an environment account, delete an environment account connection.
 
-See \url{https://paws-r.github.io/docs/proton/delete_environment_account_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_delete_environment_account_connection/} for full documentation.
 }
 \keyword{internal}

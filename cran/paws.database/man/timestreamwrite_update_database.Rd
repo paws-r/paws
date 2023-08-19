@@ -26,6 +26,6 @@ You can specify the \code{KmsKeyId} using any of the following:
 \description{
 Modifies the KMS key for an existing database. While updating the database, you must specify the database name and the identifier of the new KMS key to be used (\code{KmsKeyId}). If there are any concurrent \code{\link[=timestreamwrite_update_database]{update_database}} requests, first writer wins.
 
-See \url{https://paws-r.github.io/docs/timestreamwrite/update_database.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamwrite_update_database/} for full documentation.
 }
 \keyword{internal}

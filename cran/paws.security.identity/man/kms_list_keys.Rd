@@ -22,6 +22,6 @@ truncated response you just received.}
 \description{
 Gets a list of all KMS keys in the caller's Amazon Web Services account and Region.
 
-See \url{https://paws-r.github.io/docs/kms/list_keys.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_list_keys/} for full documentation.
 }
 \keyword{internal}

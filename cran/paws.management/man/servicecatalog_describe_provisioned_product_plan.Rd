@@ -28,6 +28,6 @@ results, use null.}
 \description{
 Gets information about the resource changes for the specified plan.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/describe_provisioned_product_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioned_product_plan/} for full documentation.
 }
 \keyword{internal}

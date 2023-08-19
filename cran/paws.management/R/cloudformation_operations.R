@@ -3,13 +3,40 @@
 #' @include cloudformation_service.R
 NULL
 
+#' Activate trusted access with Organizations
+#'
+#' @description
+#' Activate trusted access with Organizations. With trusted access between StackSets and Organizations activated, the management account has permissions to create and manage StackSets for your organization.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_activate_organizations_access/](https://www.paws-r-sdk.com/docs/cloudformation_activate_organizations_access/) for full documentation.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_activate_organizations_access
+cloudformation_activate_organizations_access <- function() {
+  op <- new_operation(
+    name = "ActivateOrganizationsAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$activate_organizations_access_input()
+  output <- .cloudformation$activate_organizations_access_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$activate_organizations_access <- cloudformation_activate_organizations_access
+
 #' Activates a public third-party extension, making it available for use in
 #' stack templates
 #'
 #' @description
 #' Activates a public third-party extension, making it available for use in stack templates. For more information, see [Using public extensions](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/registry-public.html) in the *CloudFormation User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/activate_type.html](https://paws-r.github.io/docs/cloudformation/activate_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_activate_type/](https://www.paws-r-sdk.com/docs/cloudformation_activate_type/) for full documentation.
 #'
 #' @param Type The extension type.
 #' 
@@ -27,21 +54,21 @@ NULL
 #' 
 #' Conditional: You must specify `PublicTypeArn`, or `TypeName`, `Type`,
 #' and `PublisherId`.
-#' @param TypeNameAlias An alias to assign to the public extension, in this account and region.
+#' @param TypeNameAlias An alias to assign to the public extension, in this account and Region.
 #' If you specify an alias for the extension, CloudFormation treats the
-#' alias as the extension type name within this account and region. You
+#' alias as the extension type name within this account and Region. You
 #' must use the alias to refer to the extension in your templates, API
 #' calls, and CloudFormation console.
 #' 
-#' An extension alias must be unique within a given account and region. You
+#' An extension alias must be unique within a given account and Region. You
 #' can activate the same public resource multiple times in the same account
-#' and region, using different type name aliases.
-#' @param AutoUpdate Whether to automatically update the extension in this account and region
+#' and Region, using different type name aliases.
+#' @param AutoUpdate Whether to automatically update the extension in this account and Region
 #' when a new *minor* version is published by the extension publisher.
 #' Major versions released by the publisher must be manually updated.
 #' 
 #' The default is `true`.
-#' @param LoggingConfig 
+#' @param LoggingConfig Contains logging configuration information for an extension.
 #' @param ExecutionRoleArn The name of the IAM execution role to use to activate the extension.
 #' @param VersionBump Manually updates a previously-activated type to a new major or minor
 #' version, if available. You can also use this parameter to update the
@@ -80,12 +107,12 @@ cloudformation_activate_type <- function(Type = NULL, PublicTypeArn = NULL, Publ
 .cloudformation$operations$activate_type <- cloudformation_activate_type
 
 #' Returns configuration data for the specified CloudFormation extensions,
-#' from the CloudFormation registry for the account and region
+#' from the CloudFormation registry for the account and Region
 #'
 #' @description
-#' Returns configuration data for the specified CloudFormation extensions, from the CloudFormation registry for the account and region.
+#' Returns configuration data for the specified CloudFormation extensions, from the CloudFormation registry for the account and Region.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/batch_describe_type_configurations.html](https://paws-r.github.io/docs/cloudformation/batch_describe_type_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_batch_describe_type_configurations/](https://www.paws-r-sdk.com/docs/cloudformation_batch_describe_type_configurations/) for full documentation.
 #'
 #' @param TypeConfigurationIdentifiers &#91;required&#93; The list of identifiers for the desired extension configurations.
 #'
@@ -114,9 +141,18 @@ cloudformation_batch_describe_type_configurations <- function(TypeConfigurationI
 #' @description
 #' Cancels an update on the specified stack. If the call completes successfully, the stack rolls back the update and reverts to the previous stack configuration.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/cancel_update_stack.html](https://paws-r.github.io/docs/cloudformation/cancel_update_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_cancel_update_stack/](https://www.paws-r-sdk.com/docs/cloudformation_cancel_update_stack/) for full documentation.
 #'
-#' @param StackName &#91;required&#93; The name or the unique stack ID that's associated with the stack.
+#' @param StackName &#91;required&#93; If you don't pass a parameter to `StackName`, the API returns a response
+#' that describes all resources in the account.
+#' 
+#' The IAM policy below can be added to IAM policies when you want to limit
+#' resource-level permissions and avoid returning a response when no
+#' parameter is sent in the request:
+#' 
+#' `{ "Version": "2012-10-17", "Statement": [{ "Effect": "Deny", "Action": "cloudformation:DescribeStacks", "NotResource": "arn:aws:cloudformation:*:*:stack/*/*" }] }`
+#' 
+#' The name or the unique stack ID that's associated with the stack.
 #' @param ClientRequestToken A unique identifier for this
 #' [`cancel_update_stack`][cloudformation_cancel_update_stack] request.
 #' Specify this token if you plan to retry requests so that CloudFormation
@@ -151,7 +187,7 @@ cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = N
 #' @description
 #' For a specified stack that's in the `UPDATE_ROLLBACK_FAILED` state, continues rolling it back to the `UPDATE_ROLLBACK_COMPLETE` state. Depending on the cause of the failure, you can manually [fix the error](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/troubleshooting.html#troubleshooting-errors-update-rollback-failed) and continue the rollback. By continuing the rollback, you can return your stack to a working state (the `UPDATE_ROLLBACK_COMPLETE` state), and then try to update the stack again.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/continue_update_rollback.html](https://paws-r.github.io/docs/cloudformation/continue_update_rollback.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_continue_update_rollback/](https://www.paws-r-sdk.com/docs/cloudformation_continue_update_rollback/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name or the unique ID of the stack that you want to continue rolling
 #' back.
@@ -213,7 +249,7 @@ cloudformation_cancel_update_stack <- function(StackName, ClientRequestToken = N
 #' @param ClientRequestToken A unique identifier for this
 #' [`continue_update_rollback`][cloudformation_continue_update_rollback]
 #' request. Specify this token if you plan to retry requests so that
-#' CloudFormationknows that you're not attempting to continue the rollback
+#' CloudFormation knows that you're not attempting to continue the rollback
 #' to a stack with the same name. You might retry
 #' [`continue_update_rollback`][cloudformation_continue_update_rollback]
 #' requests to ensure that CloudFormation successfully received them.
@@ -244,7 +280,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' @description
 #' Creates a list of changes that will be applied to a stack so that you can review the changes before executing them. You can create a change set for a stack that doesn't exist or an existing stack. If you create a change set for a stack that doesn't exist, the change set shows all of the resources that CloudFormation will create. If you create a change set for an existing stack, CloudFormation compares the stack's information with the information that you submit in the change set and lists the differences. Use change sets to understand which resources CloudFormation will create or change, and how it will change resources in an existing stack, before you create or update a stack.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/create_change_set.html](https://paws-r.github.io/docs/cloudformation/create_change_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_create_change_set/](https://www.paws-r-sdk.com/docs/cloudformation_create_change_set/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name or the unique ID of the stack for which you are creating a
 #' change set. CloudFormation generates the change set by comparing this
@@ -397,7 +433,7 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' If you create a change set for a new stack, CloudFormation creates a
 #' stack with a unique stack ID, but no template or resources. The stack
 #' will be in the
-#' [`REVIEW_IN_PROGRESS`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995)
+#' [REVIEW_IN_PROGRESS](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-describing-stacks.html#d0e11995)
 #' state until you execute the change set.
 #' 
 #' By default, CloudFormation specifies `UPDATE`. You can't use the
@@ -407,18 +443,43 @@ cloudformation_continue_update_rollback <- function(StackName, RoleARN = NULL, R
 #' @param IncludeNestedStacks Creates a change set for the all nested stacks specified in the
 #' template. The default behavior of this action is set to `False`. To
 #' include nested sets in a change set, specify `True`.
+#' @param OnStackFailure Determines what action will be taken if stack creation fails. If this
+#' parameter is specified, the `DisableRollback` parameter to the
+#' [`execute_change_set`][cloudformation_execute_change_set] API operation
+#' must not be specified. This must be one of these values:
+#' 
+#' -   `DELETE` - Deletes the change set if the stack creation fails. This
+#'     is only valid when the `ChangeSetType` parameter is set to `CREATE`.
+#'     If the deletion of the stack fails, the status of the stack is
+#'     `DELETE_FAILED`.
+#' 
+#' -   `DO_NOTHING` - if the stack creation fails, do nothing. This is
+#'     equivalent to specifying `true` for the `DisableRollback` parameter
+#'     to the [`execute_change_set`][cloudformation_execute_change_set] API
+#'     operation.
+#' 
+#' -   `ROLLBACK` - if the stack creation fails, roll back the stack. This
+#'     is equivalent to specifying `false` for the `DisableRollback`
+#'     parameter to the
+#'     [`execute_change_set`][cloudformation_execute_change_set] API
+#'     operation.
+#' 
+#' For nested stacks, when the `OnStackFailure` parameter is set to
+#' `DELETE` for the change set for the parent stack, any failure in a child
+#' stack will cause the parent stack creation to fail and all stacks to be
+#' deleted.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudformation_create_change_set
-cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, NotificationARNs = NULL, Tags = NULL, ChangeSetName, ClientToken = NULL, Description = NULL, ChangeSetType = NULL, ResourcesToImport = NULL, IncludeNestedStacks = NULL) {
+cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, NotificationARNs = NULL, Tags = NULL, ChangeSetName, ClientToken = NULL, Description = NULL, ChangeSetType = NULL, ResourcesToImport = NULL, IncludeNestedStacks = NULL, OnStackFailure = NULL) {
   op <- new_operation(
     name = "CreateChangeSet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$create_change_set_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, NotificationARNs = NotificationARNs, Tags = Tags, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, ChangeSetType = ChangeSetType, ResourcesToImport = ResourcesToImport, IncludeNestedStacks = IncludeNestedStacks)
+  input <- .cloudformation$create_change_set_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, NotificationARNs = NotificationARNs, Tags = Tags, ChangeSetName = ChangeSetName, ClientToken = ClientToken, Description = Description, ChangeSetType = ChangeSetType, ResourcesToImport = ResourcesToImport, IncludeNestedStacks = IncludeNestedStacks, OnStackFailure = OnStackFailure)
   output <- .cloudformation$create_change_set_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -431,9 +492,9 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' Creates a stack as specified in the template
 #'
 #' @description
-#' Creates a stack as specified in the template. After the call completes successfully, the stack creation starts. You can check the status of the stack through the [`describe_stacks`][cloudformation_describe_stacks]operation.
+#' Creates a stack as specified in the template. After the call completes successfully, the stack creation starts. You can check the status of the stack through the [`describe_stacks`][cloudformation_describe_stacks] operation.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/create_stack.html](https://paws-r.github.io/docs/cloudformation/create_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_create_stack/](https://www.paws-r-sdk.com/docs/cloudformation_create_stack/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name that's associated with the stack. The name must be unique in
 #' the Region in which you are creating the stack.
@@ -629,18 +690,25 @@ cloudformation_create_change_set <- function(StackName, TemplateBody = NULL, Tem
 #' stacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-nested-stacks.html),
 #' termination protection is set on the root stack and can't be changed
 #' directly on the nested stack.
+#' @param RetainExceptOnCreate This deletion policy deletes newly created resources, but retains
+#' existing resources, when a stack operation is rolled back. This ensures
+#' new, empty, and unused resources are deleted, while critical resources
+#' and their data are retained. `RetainExceptOnCreate` can be specified for
+#' any resource that supports the
+#' [DeletionPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html)
+#' attribute.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudformation_create_stack
-cloudformation_create_stack <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, Parameters = NULL, DisableRollback = NULL, RollbackConfiguration = NULL, TimeoutInMinutes = NULL, NotificationARNs = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, OnFailure = NULL, StackPolicyBody = NULL, StackPolicyURL = NULL, Tags = NULL, ClientRequestToken = NULL, EnableTerminationProtection = NULL) {
+cloudformation_create_stack <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, Parameters = NULL, DisableRollback = NULL, RollbackConfiguration = NULL, TimeoutInMinutes = NULL, NotificationARNs = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, OnFailure = NULL, StackPolicyBody = NULL, StackPolicyURL = NULL, Tags = NULL, ClientRequestToken = NULL, EnableTerminationProtection = NULL, RetainExceptOnCreate = NULL) {
   op <- new_operation(
     name = "CreateStack",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$create_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, Parameters = Parameters, DisableRollback = DisableRollback, RollbackConfiguration = RollbackConfiguration, TimeoutInMinutes = TimeoutInMinutes, NotificationARNs = NotificationARNs, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, OnFailure = OnFailure, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, Tags = Tags, ClientRequestToken = ClientRequestToken, EnableTerminationProtection = EnableTerminationProtection)
+  input <- .cloudformation$create_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, Parameters = Parameters, DisableRollback = DisableRollback, RollbackConfiguration = RollbackConfiguration, TimeoutInMinutes = TimeoutInMinutes, NotificationARNs = NotificationARNs, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, OnFailure = OnFailure, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, Tags = Tags, ClientRequestToken = ClientRequestToken, EnableTerminationProtection = EnableTerminationProtection, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$create_stack_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -656,7 +724,7 @@ cloudformation_create_stack <- function(StackName, TemplateBody = NULL, Template
 #' @description
 #' Creates stack instances for the specified accounts, within the specified Amazon Web Services Regions. A stack instance refers to a stack in a specific account and Region. You must specify at least one value for either `Accounts` or `DeploymentTargets`, and you must specify at least one value for `Regions`.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/create_stack_instances.html](https://paws-r.github.io/docs/cloudformation/create_stack_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_create_stack_instances/](https://www.paws-r-sdk.com/docs/cloudformation_create_stack_instances/) for full documentation.
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to create stack
 #' instances from.
@@ -756,7 +824,7 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' @description
 #' Creates a stack set.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/create_stack_set.html](https://paws-r.github.io/docs/cloudformation/create_stack_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_create_stack_set/](https://www.paws-r-sdk.com/docs/cloudformation_create_stack_set/) for full documentation.
 #'
 #' @param StackSetName &#91;required&#93; The name to associate with the stack set. The name must be unique in the
 #' Region where you create your stack set.
@@ -827,9 +895,8 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
 #' 
-#'     For more information, see [Acknowledging IAM Resources in
-#'     CloudFormation
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'     For more information, see Acknowledging IAM Resources in
+#'     CloudFormation Templates.
 #' 
 #' -   `CAPABILITY_AUTO_EXPAND`
 #' 
@@ -838,18 +905,15 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #'     directly from the processed template, without first reviewing the
 #'     resulting changes in a change set. To create the stack set directly,
 #'     you must acknowledge this capability. For more information, see
-#'     [Using CloudFormation Macros to Perform Custom Processing on
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'     Using CloudFormation Macros to Perform Custom Processing on
+#'     Templates.
 #' 
 #'     Stack sets with service-managed permissions don't currently support
-#'     the use of macros in templates. (This includes the
-#'     [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
-#'     and
-#'     [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
-#'     transforms, which are macros hosted by CloudFormation.) Even if you
-#'     specify this capability for a stack set with service-managed
-#'     permissions, if you reference a macro in your template the stack set
-#'     operation will fail.
+#'     the use of macros in templates. (This includes the AWS::Include and
+#'     AWS::Serverless transforms, which are macros hosted by
+#'     CloudFormation.) Even if you specify this capability for a stack set
+#'     with service-managed permissions, if you reference a macro in your
+#'     template the stack set operation will fail.
 #' @param Tags The key-value pairs to associate with this stack set and the stacks
 #' created from it. CloudFormation also propagates these tags to supported
 #' resources that are created in the stacks. A maximum number of 50 tags
@@ -866,10 +930,9 @@ cloudformation_create_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #' Specify an IAM role only if you are using customized administrator roles
 #' to control which users or groups can manage specific stack sets within
-#' the same administrator account. For more information, see
-#' [Prerequisites: Granting Permissions for Stack Set
-#' Operations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
-#' in the *CloudFormation User Guide*.
+#' the same administrator account. For more information, see Prerequisites:
+#' Granting Permissions for Stack Set Operations in the *CloudFormation
+#' User Guide*.
 #' @param ExecutionRoleName The name of the IAM execution role to use to create the stack set. If
 #' you do not specify an execution role, CloudFormation uses the
 #' `AWSCloudFormationStackSetExecutionRole` role for the stack set
@@ -949,15 +1012,42 @@ cloudformation_create_stack_set <- function(StackSetName, Description = NULL, Te
 }
 .cloudformation$operations$create_stack_set <- cloudformation_create_stack_set
 
-#' Deactivates a public extension that was previously activated in this
-#' account and region
+#' Deactivates trusted access with Organizations
 #'
 #' @description
-#' Deactivates a public extension that was previously activated in this account and region.
+#' Deactivates trusted access with Organizations. If trusted access is deactivated, the management account does not have permissions to create and manage service-managed StackSets for your organization.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/deactivate_type.html](https://paws-r.github.io/docs/cloudformation/deactivate_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_deactivate_organizations_access/](https://www.paws-r-sdk.com/docs/cloudformation_deactivate_organizations_access/) for full documentation.
 #'
-#' @param TypeName The type name of the extension, in this account and region. If you
+#' @keywords internal
+#'
+#' @rdname cloudformation_deactivate_organizations_access
+cloudformation_deactivate_organizations_access <- function() {
+  op <- new_operation(
+    name = "DeactivateOrganizationsAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$deactivate_organizations_access_input()
+  output <- .cloudformation$deactivate_organizations_access_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$deactivate_organizations_access <- cloudformation_deactivate_organizations_access
+
+#' Deactivates a public extension that was previously activated in this
+#' account and Region
+#'
+#' @description
+#' Deactivates a public extension that was previously activated in this account and Region.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_deactivate_type/](https://www.paws-r-sdk.com/docs/cloudformation_deactivate_type/) for full documentation.
+#'
+#' @param TypeName The type name of the extension, in this account and Region. If you
 #' specified a type name alias when enabling the extension, use the type
 #' name alias.
 #' 
@@ -966,7 +1056,7 @@ cloudformation_create_stack_set <- function(StackSetName, Description = NULL, Te
 #' 
 #' Conditional: You must specify either `Arn`, or `TypeName` and `Type`.
 #' @param Arn The Amazon Resource Name (ARN) for the extension, in this account and
-#' region.
+#' Region.
 #' 
 #' Conditional: You must specify either `Arn`, or `TypeName` and `Type`.
 #'
@@ -995,7 +1085,7 @@ cloudformation_deactivate_type <- function(TypeName = NULL, Type = NULL, Arn = N
 #' @description
 #' Deletes the specified change set. Deleting change sets ensures that no one executes the wrong change set.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/delete_change_set.html](https://paws-r.github.io/docs/cloudformation/delete_change_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_delete_change_set/](https://www.paws-r-sdk.com/docs/cloudformation_delete_change_set/) for full documentation.
 #'
 #' @param ChangeSetName &#91;required&#93; The name or Amazon Resource Name (ARN) of the change set that you want
 #' to delete.
@@ -1027,7 +1117,7 @@ cloudformation_delete_change_set <- function(ChangeSetName, StackName = NULL) {
 #' @description
 #' Deletes a specified stack. Once the call completes successfully, stack deletion starts. Deleted stacks don't show up in the [`describe_stacks`][cloudformation_describe_stacks] operation if the deletion has been completed successfully.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/delete_stack.html](https://paws-r.github.io/docs/cloudformation/delete_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_delete_stack/](https://www.paws-r-sdk.com/docs/cloudformation_delete_stack/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name or the unique stack ID that's associated with the stack.
 #' @param RetainResources For stacks in the `DELETE_FAILED` state, a list of resource logical IDs
@@ -1092,7 +1182,7 @@ cloudformation_delete_stack <- function(StackName, RetainResources = NULL, RoleA
 #' @description
 #' Deletes stack instances for the specified accounts, in the specified Amazon Web Services Regions.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/delete_stack_instances.html](https://paws-r.github.io/docs/cloudformation/delete_stack_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_delete_stack_instances/](https://www.paws-r-sdk.com/docs/cloudformation_delete_stack_instances/) for full documentation.
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to delete stack
 #' instances for.
@@ -1168,7 +1258,7 @@ cloudformation_delete_stack_instances <- function(StackSetName, Accounts = NULL,
 #' @description
 #' Deletes a stack set. Before you can delete a stack set, all its member stack instances must be deleted. For more information about how to complete this, see [`delete_stack_instances`][cloudformation_delete_stack_instances].
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/delete_stack_set.html](https://paws-r.github.io/docs/cloudformation/delete_stack_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_delete_stack_set/](https://www.paws-r-sdk.com/docs/cloudformation_delete_stack_set/) for full documentation.
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you're deleting. You can
 #' obtain this value by running
@@ -1217,7 +1307,7 @@ cloudformation_delete_stack_set <- function(StackSetName, CallAs = NULL) {
 #' @description
 #' Marks an extension or extension version as `DEPRECATED` in the CloudFormation registry, removing it from active use. Deprecated extensions or extension versions cannot be used in CloudFormation operations.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/deregister_type.html](https://paws-r.github.io/docs/cloudformation/deregister_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_deregister_type/](https://www.paws-r-sdk.com/docs/cloudformation_deregister_type/) for full documentation.
 #'
 #' @param Arn The Amazon Resource Name (ARN) of the extension.
 #' 
@@ -1258,7 +1348,7 @@ cloudformation_deregister_type <- function(Arn = NULL, Type = NULL, TypeName = N
 #' @description
 #' Retrieves your account's CloudFormation limits, such as the maximum number of stacks that you can create in your account. For more information about account limits, see [CloudFormation Quotas](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html) in the *CloudFormation User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/describe_account_limits.html](https://paws-r.github.io/docs/cloudformation/describe_account_limits.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_account_limits/](https://www.paws-r-sdk.com/docs/cloudformation_describe_account_limits/) for full documentation.
 #'
 #' @param NextToken A string that identifies the next page of limits that you want to
 #' retrieve.
@@ -1271,7 +1361,7 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
     name = "DescribeAccountLimits",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "AccountLimits")
   )
   input <- .cloudformation$describe_account_limits_input(NextToken = NextToken)
   output <- .cloudformation$describe_account_limits_output()
@@ -1289,7 +1379,7 @@ cloudformation_describe_account_limits <- function(NextToken = NULL) {
 #' @description
 #' Returns the inputs for the change set and a list of changes that CloudFormation will make if you execute the change set. For more information, see [Updating Stacks Using Change Sets](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-updating-stacks-changesets.html) in the CloudFormation User Guide.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/describe_change_set.html](https://paws-r.github.io/docs/cloudformation/describe_change_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_change_set/](https://www.paws-r-sdk.com/docs/cloudformation_describe_change_set/) for full documentation.
 #'
 #' @param ChangeSetName &#91;required&#93; The name or Amazon Resource Name (ARN) of the change set that you want
 #' to describe.
@@ -1326,7 +1416,7 @@ cloudformation_describe_change_set <- function(ChangeSetName, StackName = NULL, 
 #' @description
 #' Returns hook-related information for the change set and a list of changes that CloudFormation makes when you run the change set.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/describe_change_set_hooks.html](https://paws-r.github.io/docs/cloudformation/describe_change_set_hooks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_change_set_hooks/](https://www.paws-r-sdk.com/docs/cloudformation_describe_change_set_hooks/) for full documentation.
 #'
 #' @param ChangeSetName &#91;required&#93; The name or Amazon Resource Name (ARN) of the change set that you want
 #' to describe.
@@ -1359,12 +1449,56 @@ cloudformation_describe_change_set_hooks <- function(ChangeSetName, StackName = 
 }
 .cloudformation$operations$describe_change_set_hooks <- cloudformation_describe_change_set_hooks
 
+#' Retrieves information about the account's OrganizationAccess status
+#'
+#' @description
+#' Retrieves information about the account's `OrganizationAccess` status. This API can be called either by the management account or the delegated administrator by using the `CallAs` parameter. This API can also be called without the `CallAs` parameter by the management account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_organizations_access/](https://www.paws-r-sdk.com/docs/cloudformation_describe_organizations_access/) for full documentation.
+#'
+#' @param CallAs \[Service-managed permissions\] Specifies whether you are acting as an
+#' account administrator in the organization's management account or as a
+#' delegated administrator in a member account.
+#' 
+#' By default, `SELF` is specified.
+#' 
+#' -   If you are signed in to the management account, specify `SELF`.
+#' 
+#' -   If you are signed in to a delegated administrator account, specify
+#'     `DELEGATED_ADMIN`.
+#' 
+#'     Your Amazon Web Services account must be registered as a delegated
+#'     administrator in the management account. For more information, see
+#'     [Register a delegated
+#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'     in the *CloudFormation User Guide*.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_describe_organizations_access
+cloudformation_describe_organizations_access <- function(CallAs = NULL) {
+  op <- new_operation(
+    name = "DescribeOrganizationsAccess",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$describe_organizations_access_input(CallAs = CallAs)
+  output <- .cloudformation$describe_organizations_access_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$describe_organizations_access <- cloudformation_describe_organizations_access
+
 #' Returns information about a CloudFormation extension publisher
 #'
 #' @description
 #' Returns information about a CloudFormation extension publisher.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/describe_publisher.html](https://paws-r.github.io/docs/cloudformation/describe_publisher.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_publisher/](https://www.paws-r-sdk.com/docs/cloudformation_describe_publisher/) for full documentation.
 #'
 #' @param PublisherId The ID of the extension publisher.
 #' 
@@ -1396,9 +1530,9 @@ cloudformation_describe_publisher <- function(PublisherId = NULL) {
 #' Returns information about a stack drift detection operation
 #'
 #' @description
-#' Returns information about a stack drift detection operation. A stack drift detection operation detects whether a stack's actual configuration differs, or has *drifted*, from it's expected configuration, as defined in the stack template and any values specified as template parameters. A stack is considered to have drifted if one or more of its resources have drifted. For more information about stack and resource drift, see [Detecting Unregulated Configuration Changes to Stacks and Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+#' Returns information about a stack drift detection operation. A stack drift detection operation detects whether a stack's actual configuration differs, or has *drifted*, from its expected configuration, as defined in the stack template and any values specified as template parameters. A stack is considered to have drifted if one or more of its resources have drifted. For more information about stack and resource drift, see [Detecting Unregulated Configuration Changes to Stacks and Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/describe_stack_drift_detection_status.html](https://paws-r.github.io/docs/cloudformation/describe_stack_drift_detection_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_drift_detection_status/](https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_drift_detection_status/) for full documentation.
 #'
 #' @param StackDriftDetectionId &#91;required&#93; The ID of the drift detection results of this operation.
 #' 
@@ -1432,7 +1566,7 @@ cloudformation_describe_stack_drift_detection_status <- function(StackDriftDetec
 #' @description
 #' Returns all stack related events for a specified stack in reverse chronological order. For more information about a stack's event history, go to [Stacks](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-whatis-concepts.html) in the CloudFormation User Guide.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/describe_stack_events.html](https://paws-r.github.io/docs/cloudformation/describe_stack_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_events/](https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_events/) for full documentation.
 #'
 #' @param StackName The name or the unique stack ID that's associated with the stack, which
 #' aren't always interchangeable:
@@ -1454,7 +1588,7 @@ cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = N
     name = "DescribeStackEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackEvents")
   )
   input <- .cloudformation$describe_stack_events_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$describe_stack_events_output()
@@ -1466,13 +1600,13 @@ cloudformation_describe_stack_events <- function(StackName = NULL, NextToken = N
 }
 .cloudformation$operations$describe_stack_events <- cloudformation_describe_stack_events
 
-#' Returns the stack instance that's associated with the specified stack
-#' set, Amazon Web Services account, and Region
+#' Returns the stack instance that's associated with the specified
+#' StackSet, Amazon Web Services account, and Amazon Web Services Region
 #'
 #' @description
-#' Returns the stack instance that's associated with the specified stack set, Amazon Web Services account, and Region.
+#' Returns the stack instance that's associated with the specified StackSet, Amazon Web Services account, and Amazon Web Services Region.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/describe_stack_instance.html](https://paws-r.github.io/docs/cloudformation/describe_stack_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_instance/](https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_instance/) for full documentation.
 #'
 #' @param StackSetName &#91;required&#93; The name or the unique stack ID of the stack set that you want to get
 #' stack instance information for.
@@ -1522,7 +1656,7 @@ cloudformation_describe_stack_instance <- function(StackSetName, StackInstanceAc
 #' @description
 #' Returns a description of the specified resource in the specified stack.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/describe_stack_resource.html](https://paws-r.github.io/docs/cloudformation/describe_stack_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_resource/](https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_resource/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name or the unique stack ID that's associated with the stack, which
 #' aren't always interchangeable:
@@ -1563,7 +1697,7 @@ cloudformation_describe_stack_resource <- function(StackName, LogicalResourceId)
 #' @description
 #' Returns drift information for the resources that have been checked for drift in the specified stack. This includes actual and expected configuration values for resources where CloudFormation detects configuration drift.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/describe_stack_resource_drifts.html](https://paws-r.github.io/docs/cloudformation/describe_stack_resource_drifts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_resource_drifts/](https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_resource_drifts/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name of the stack for which you want drift information.
 #' @param StackResourceDriftStatusFilters The resource drift status values to use as filters for the resource
@@ -1593,7 +1727,7 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
     name = "DescribeStackResourceDrifts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudformation$describe_stack_resource_drifts_input(StackName = StackName, StackResourceDriftStatusFilters = StackResourceDriftStatusFilters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudformation$describe_stack_resource_drifts_output()
@@ -1611,7 +1745,7 @@ cloudformation_describe_stack_resource_drifts <- function(StackName, StackResour
 #' @description
 #' Returns Amazon Web Services resource descriptions for running and deleted stacks. If `StackName` is specified, all the associated resources that are part of the stack are returned. If `PhysicalResourceId` is specified, the associated resources of the stack that the resource belongs to are returned.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/describe_stack_resources.html](https://paws-r.github.io/docs/cloudformation/describe_stack_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_resources/](https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_resources/) for full documentation.
 #'
 #' @param StackName The name or the unique stack ID that is associated with the stack, which
 #' aren't always interchangeable:
@@ -1651,7 +1785,7 @@ cloudformation_describe_stack_resources <- function(StackName = NULL, LogicalRes
     name = "DescribeStackResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "StackResources")
   )
   input <- .cloudformation$describe_stack_resources_input(StackName = StackName, LogicalResourceId = LogicalResourceId, PhysicalResourceId = PhysicalResourceId)
   output <- .cloudformation$describe_stack_resources_output()
@@ -1663,12 +1797,12 @@ cloudformation_describe_stack_resources <- function(StackName = NULL, LogicalRes
 }
 .cloudformation$operations$describe_stack_resources <- cloudformation_describe_stack_resources
 
-#' Returns the description of the specified stack set
+#' Returns the description of the specified StackSet
 #'
 #' @description
-#' Returns the description of the specified stack set.
+#' Returns the description of the specified StackSet.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/describe_stack_set.html](https://paws-r.github.io/docs/cloudformation/describe_stack_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_set/](https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_set/) for full documentation.
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set whose description you want.
 #' @param CallAs \[Service-managed permissions\] Specifies whether you are acting as an
@@ -1709,12 +1843,12 @@ cloudformation_describe_stack_set <- function(StackSetName, CallAs = NULL) {
 }
 .cloudformation$operations$describe_stack_set <- cloudformation_describe_stack_set
 
-#' Returns the description of the specified stack set operation
+#' Returns the description of the specified StackSet operation
 #'
 #' @description
-#' Returns the description of the specified stack set operation.
+#' Returns the description of the specified StackSet operation.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/describe_stack_set_operation.html](https://paws-r.github.io/docs/cloudformation/describe_stack_set_operation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_set_operation/](https://www.paws-r-sdk.com/docs/cloudformation_describe_stack_set_operation/) for full documentation.
 #'
 #' @param StackSetName &#91;required&#93; The name or the unique stack ID of the stack set for the stack
 #' operation.
@@ -1763,9 +1897,22 @@ cloudformation_describe_stack_set_operation <- function(StackSetName, OperationI
 #' @description
 #' Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/describe_stacks.html](https://paws-r.github.io/docs/cloudformation/describe_stacks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_stacks/](https://www.paws-r-sdk.com/docs/cloudformation_describe_stacks/) for full documentation.
 #'
-#' @param StackName The name or the unique stack ID that's associated with the stack, which
+#' @param StackName If you don't pass a parameter to `StackName`, the API returns a response
+#' that describes all resources in the account. This requires
+#' [`list_stacks`][cloudformation_list_stacks] and
+#' [`describe_stacks`][cloudformation_describe_stacks] permissions.
+#' 
+#' The IAM policy below can be added to IAM policies when you want to limit
+#' resource-level permissions and avoid returning a response when no
+#' parameter is sent in the request:
+#' 
+#' \{ "Version": "2012-10-17", "Statement": \[\{ "Effect": "Deny",
+#' "Action": "cloudformation:DescribeStacks", "NotResource":
+#' "arn:aws:cloudformation:*:*:stack/*/*" \}\] \}
+#' 
+#' The name or the unique stack ID that's associated with the stack, which
 #' aren't always interchangeable:
 #' 
 #' -   Running stacks: You can specify either the stack's name or its
@@ -1785,7 +1932,7 @@ cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
     name = "DescribeStacks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Stacks")
   )
   input <- .cloudformation$describe_stacks_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$describe_stacks_output()
@@ -1802,7 +1949,7 @@ cloudformation_describe_stacks <- function(StackName = NULL, NextToken = NULL) {
 #' @description
 #' Returns detailed information about an extension that has been registered.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/describe_type.html](https://paws-r.github.io/docs/cloudformation/describe_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_type/](https://www.paws-r-sdk.com/docs/cloudformation_describe_type/) for full documentation.
 #'
 #' @param Type The kind of extension.
 #' 
@@ -1853,7 +2000,7 @@ cloudformation_describe_type <- function(Type = NULL, TypeName = NULL, Arn = NUL
 #' @description
 #' Returns information about an extension's registration, including its current status and type and version identifiers.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/describe_type_registration.html](https://paws-r.github.io/docs/cloudformation/describe_type_registration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_describe_type_registration/](https://www.paws-r-sdk.com/docs/cloudformation_describe_type_registration/) for full documentation.
 #'
 #' @param RegistrationToken &#91;required&#93; The identifier for this registration request.
 #' 
@@ -1882,13 +2029,13 @@ cloudformation_describe_type_registration <- function(RegistrationToken) {
 .cloudformation$operations$describe_type_registration <- cloudformation_describe_type_registration
 
 #' Detects whether a stack's actual configuration differs, or has drifted,
-#' from it's expected configuration, as defined in the stack template and
+#' from its expected configuration, as defined in the stack template and
 #' any values specified as template parameters
 #'
 #' @description
-#' Detects whether a stack's actual configuration differs, or has *drifted*, from it's expected configuration, as defined in the stack template and any values specified as template parameters. For each resource in the stack that supports drift detection, CloudFormation compares the actual configuration of the resource with its expected template configuration. Only resource properties explicitly defined in the stack template are checked for drift. A stack is considered to have drifted if one or more of its resources differ from their expected template configurations. For more information, see [Detecting Unregulated Configuration Changes to Stacks and Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+#' Detects whether a stack's actual configuration differs, or has *drifted*, from its expected configuration, as defined in the stack template and any values specified as template parameters. For each resource in the stack that supports drift detection, CloudFormation compares the actual configuration of the resource with its expected template configuration. Only resource properties explicitly defined in the stack template are checked for drift. A stack is considered to have drifted if one or more of its resources differ from their expected template configurations. For more information, see [Detecting Unregulated Configuration Changes to Stacks and Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/detect_stack_drift.html](https://paws-r.github.io/docs/cloudformation/detect_stack_drift.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_detect_stack_drift/](https://www.paws-r-sdk.com/docs/cloudformation_detect_stack_drift/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name of the stack for which you want to detect drift.
 #' @param LogicalResourceIds The logical names of any resources you want to use as filters.
@@ -1914,13 +2061,13 @@ cloudformation_detect_stack_drift <- function(StackName, LogicalResourceIds = NU
 .cloudformation$operations$detect_stack_drift <- cloudformation_detect_stack_drift
 
 #' Returns information about whether a resource's actual configuration
-#' differs, or has drifted, from it's expected configuration, as defined in
+#' differs, or has drifted, from its expected configuration, as defined in
 #' the stack template and any values specified as template parameters
 #'
 #' @description
-#' Returns information about whether a resource's actual configuration differs, or has *drifted*, from it's expected configuration, as defined in the stack template and any values specified as template parameters. This information includes actual and expected property values for resources in which CloudFormation detects drift. Only resource properties explicitly defined in the stack template are checked for drift. For more information about stack and resource drift, see [Detecting Unregulated Configuration Changes to Stacks and Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
+#' Returns information about whether a resource's actual configuration differs, or has *drifted*, from its expected configuration, as defined in the stack template and any values specified as template parameters. This information includes actual and expected property values for resources in which CloudFormation detects drift. Only resource properties explicitly defined in the stack template are checked for drift. For more information about stack and resource drift, see [Detecting Unregulated Configuration Changes to Stacks and Resources](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-stack-drift.html).
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/detect_stack_resource_drift.html](https://paws-r.github.io/docs/cloudformation/detect_stack_resource_drift.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_detect_stack_resource_drift/](https://www.paws-r-sdk.com/docs/cloudformation_detect_stack_resource_drift/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name of the stack to which the resource belongs.
 #' @param LogicalResourceId &#91;required&#93; The logical name of the resource for which to return drift information.
@@ -1950,11 +2097,16 @@ cloudformation_detect_stack_resource_drift <- function(StackName, LogicalResourc
 #' @description
 #' Detect drift on a stack set. When CloudFormation performs drift detection on a stack set, it performs drift detection on the stack associated with each stack instance in the stack set. For more information, see [How CloudFormation performs drift detection on a stack set](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-drift.html).
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/detect_stack_set_drift.html](https://paws-r.github.io/docs/cloudformation/detect_stack_set_drift.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_detect_stack_set_drift/](https://www.paws-r-sdk.com/docs/cloudformation_detect_stack_set_drift/) for full documentation.
 #'
 #' @param StackSetName &#91;required&#93; The name of the stack set on which to perform the drift detection
 #' operation.
-#' @param OperationPreferences 
+#' @param OperationPreferences The user-specified preferences for how CloudFormation performs a stack
+#' set operation.
+#' 
+#' For more information about maximum concurrent accounts and failure
+#' tolerance, see [Stack set operation
+#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
 #' @param OperationId *The ID of the stack set operation.*
 #' @param CallAs \[Service-managed permissions\] Specifies whether you are acting as an
 #' account administrator in the organization's management account or as a
@@ -1999,7 +2151,7 @@ cloudformation_detect_stack_set_drift <- function(StackSetName, OperationPrefere
 #' @description
 #' Returns the estimated monthly cost of a template. The return value is an Amazon Web Services Simple Monthly Calculator URL with a query string that describes the resources required to run the template.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/estimate_template_cost.html](https://paws-r.github.io/docs/cloudformation/estimate_template_cost.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_estimate_template_cost/](https://www.paws-r-sdk.com/docs/cloudformation_estimate_template_cost/) for full documentation.
 #'
 #' @param TemplateBody Structure containing the template body with a minimum length of 1 byte
 #' and a maximum length of 51,200 bytes. (For more information, go to
@@ -2045,7 +2197,7 @@ cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateU
 #' @description
 #' Updates a stack using the input information that was provided when the specified change set was created. After the call successfully completes, CloudFormation starts updating the stack. Use the [`describe_stacks`][cloudformation_describe_stacks] action to view the status of the update.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/execute_change_set.html](https://paws-r.github.io/docs/cloudformation/execute_change_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_execute_change_set/](https://www.paws-r-sdk.com/docs/cloudformation_execute_change_set/) for full documentation.
 #'
 #' @param ChangeSetName &#91;required&#93; The name or Amazon Resource Name (ARN) of the change set that you want
 #' use to update the specified stack.
@@ -2060,21 +2212,42 @@ cloudformation_estimate_template_cost <- function(TemplateBody = NULL, TemplateU
 #' [`execute_change_set`][cloudformation_execute_change_set] requests to
 #' ensure that CloudFormation successfully received them.
 #' @param DisableRollback Preserves the state of previously provisioned resources when an
-#' operation fails.
+#' operation fails. This parameter can't be specified when the
+#' `OnStackFailure` parameter to the
+#' [`create_change_set`][cloudformation_create_change_set] API operation
+#' was specified.
+#' 
+#' -   `True` - if the stack creation fails, do nothing. This is equivalent
+#'     to specifying `DO_NOTHING` for the `OnStackFailure` parameter to the
+#'     [`create_change_set`][cloudformation_create_change_set] API
+#'     operation.
+#' 
+#' -   `False` - if the stack creation fails, roll back the stack. This is
+#'     equivalent to specifying `ROLLBACK` for the `OnStackFailure`
+#'     parameter to the
+#'     [`create_change_set`][cloudformation_create_change_set] API
+#'     operation.
 #' 
 #' Default: `True`
+#' @param RetainExceptOnCreate This deletion policy deletes newly created resources, but retains
+#' existing resources, when a stack operation is rolled back. This ensures
+#' new, empty, and unused resources are deleted, while critical resources
+#' and their data are retained. `RetainExceptOnCreate` can be specified for
+#' any resource that supports the
+#' [DeletionPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html)
+#' attribute.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudformation_execute_change_set
-cloudformation_execute_change_set <- function(ChangeSetName, StackName = NULL, ClientRequestToken = NULL, DisableRollback = NULL) {
+cloudformation_execute_change_set <- function(ChangeSetName, StackName = NULL, ClientRequestToken = NULL, DisableRollback = NULL, RetainExceptOnCreate = NULL) {
   op <- new_operation(
     name = "ExecuteChangeSet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$execute_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName, ClientRequestToken = ClientRequestToken, DisableRollback = DisableRollback)
+  input <- .cloudformation$execute_change_set_input(ChangeSetName = ChangeSetName, StackName = StackName, ClientRequestToken = ClientRequestToken, DisableRollback = DisableRollback, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$execute_change_set_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -2089,7 +2262,7 @@ cloudformation_execute_change_set <- function(ChangeSetName, StackName = NULL, C
 #' @description
 #' Returns the stack policy for a specified stack. If a stack doesn't have a policy, a null value is returned.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/get_stack_policy.html](https://paws-r.github.io/docs/cloudformation/get_stack_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_get_stack_policy/](https://www.paws-r-sdk.com/docs/cloudformation_get_stack_policy/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name or unique stack ID that's associated with the stack whose
 #' policy you want to get.
@@ -2119,7 +2292,7 @@ cloudformation_get_stack_policy <- function(StackName) {
 #' @description
 #' Returns the template body for a specified stack. You can get the template for running or deleted stacks.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/get_template.html](https://paws-r.github.io/docs/cloudformation/get_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_get_template/](https://www.paws-r-sdk.com/docs/cloudformation_get_template/) for full documentation.
 #'
 #' @param StackName The name or the unique stack ID that's associated with the stack, which
 #' aren't always interchangeable:
@@ -2167,7 +2340,7 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #' @description
 #' Returns information about a new or existing template. The [`get_template_summary`][cloudformation_get_template_summary] action is useful for viewing parameter information, such as default parameter values and parameter types, before you create or update a stack or stack set.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/get_template_summary.html](https://paws-r.github.io/docs/cloudformation/get_template_summary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_get_template_summary/](https://www.paws-r-sdk.com/docs/cloudformation_get_template_summary/) for full documentation.
 #'
 #' @param TemplateBody Structure containing the template body with a minimum length of 1 byte
 #' and a maximum length of 51,200 bytes. For more information about
@@ -2214,18 +2387,21 @@ cloudformation_get_template <- function(StackName = NULL, ChangeSetName = NULL, 
 #'     [Register a delegated
 #'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
 #'     in the *CloudFormation User Guide*.
+#' @param TemplateSummaryConfig Specifies options for the
+#' [`get_template_summary`][cloudformation_get_template_summary] API
+#' action.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudformation_get_template_summary
-cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL = NULL, StackName = NULL, StackSetName = NULL, CallAs = NULL) {
+cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL = NULL, StackName = NULL, StackSetName = NULL, CallAs = NULL, TemplateSummaryConfig = NULL) {
   op <- new_operation(
     name = "GetTemplateSummary",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$get_template_summary_input(TemplateBody = TemplateBody, TemplateURL = TemplateURL, StackName = StackName, StackSetName = StackSetName, CallAs = CallAs)
+  input <- .cloudformation$get_template_summary_input(TemplateBody = TemplateBody, TemplateURL = TemplateURL, StackName = StackName, StackSetName = StackSetName, CallAs = CallAs, TemplateSummaryConfig = TemplateSummaryConfig)
   output <- .cloudformation$get_template_summary_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -2240,7 +2416,7 @@ cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL
 #' @description
 #' Import existing stacks into a new stack sets. Use the stack import operation to import up to 10 stacks into a new stack set in the same account as the source stack or in a different administrator account and Region, by specifying the stack ID of the stack you intend to import.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/import_stacks_to_stack_set.html](https://paws-r.github.io/docs/cloudformation/import_stacks_to_stack_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_import_stacks_to_stack_set/](https://www.paws-r-sdk.com/docs/cloudformation_import_stacks_to_stack_set/) for full documentation.
 #'
 #' @param StackSetName &#91;required&#93; The name of the stack set. The name must be unique in the Region where
 #' you create your stack set.
@@ -2253,7 +2429,12 @@ cloudformation_get_template_summary <- function(TemplateBody = NULL, TemplateURL
 #' Specify either `StackIds` or `StackIdsUrl`.
 #' @param OrganizationalUnitIds The list of OU ID's to which the stacks being imported has to be mapped
 #' as deployment target.
-#' @param OperationPreferences 
+#' @param OperationPreferences The user-specified preferences for how CloudFormation performs a stack
+#' set operation.
+#' 
+#' For more information about maximum concurrent accounts and failure
+#' tolerance, see [Stack set operation
+#' options](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-concepts.html#stackset-ops-options).
 #' @param OperationId A unique, user defined, identifier for the stack set operation.
 #' @param CallAs By default, `SELF` is specified. Use `SELF` for stack sets with
 #' self-managed permissions.
@@ -2287,7 +2468,7 @@ cloudformation_import_stacks_to_stack_set <- function(StackSetName, StackIds = N
 #' @description
 #' Returns the ID and status of each active change set for a stack. For example, CloudFormation lists change sets that are in the `CREATE_IN_PROGRESS` or `CREATE_PENDING` state.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/list_change_sets.html](https://paws-r.github.io/docs/cloudformation/list_change_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_list_change_sets/](https://www.paws-r-sdk.com/docs/cloudformation_list_change_sets/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name or the Amazon Resource Name (ARN) of the stack for which you
 #' want to list change sets.
@@ -2303,7 +2484,7 @@ cloudformation_list_change_sets <- function(StackName, NextToken = NULL) {
     name = "ListChangeSets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .cloudformation$list_change_sets_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$list_change_sets_output()
@@ -2319,9 +2500,9 @@ cloudformation_list_change_sets <- function(StackName, NextToken = NULL) {
 #' call this action
 #'
 #' @description
-#' Lists all exported output values in the account and Region in which you call this action. Use this action to see the exported output values that you can import into other stacks. To import values, use the [`Fn::ImportValue`](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html) function.
+#' Lists all exported output values in the account and Region in which you call this action. Use this action to see the exported output values that you can import into other stacks. To import values, use the [Fn::ImportValue](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html) function.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/list_exports.html](https://paws-r.github.io/docs/cloudformation/list_exports.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_list_exports/](https://www.paws-r-sdk.com/docs/cloudformation_list_exports/) for full documentation.
 #'
 #' @param NextToken A string (provided by the [`list_exports`][cloudformation_list_exports]
 #' response output) that identifies the next page of exported output values
@@ -2335,7 +2516,7 @@ cloudformation_list_exports <- function(NextToken = NULL) {
     name = "ListExports",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Exports")
   )
   input <- .cloudformation$list_exports_input(NextToken = NextToken)
   output <- .cloudformation$list_exports_output()
@@ -2352,7 +2533,7 @@ cloudformation_list_exports <- function(NextToken = NULL) {
 #' @description
 #' Lists all stacks that are importing an exported output value. To modify or remove an exported output value, first use this action to see which stacks are using it. To see the exported output values in your account, see [`list_exports`][cloudformation_list_exports].
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/list_imports.html](https://paws-r.github.io/docs/cloudformation/list_imports.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_list_imports/](https://www.paws-r-sdk.com/docs/cloudformation_list_imports/) for full documentation.
 #'
 #' @param ExportName &#91;required&#93; The name of the exported output value. CloudFormation returns the stack
 #' names that are importing this value.
@@ -2368,7 +2549,7 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
     name = "ListImports",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "Imports")
   )
   input <- .cloudformation$list_imports_input(ExportName = ExportName, NextToken = NextToken)
   output <- .cloudformation$list_imports_output()
@@ -2380,13 +2561,86 @@ cloudformation_list_imports <- function(ExportName, NextToken = NULL) {
 }
 .cloudformation$operations$list_imports <- cloudformation_list_imports
 
+#' Returns drift information for resources in a stack instance
+#'
+#' @description
+#' Returns drift information for resources in a stack instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_list_stack_instance_resource_drifts/](https://www.paws-r-sdk.com/docs/cloudformation_list_stack_instance_resource_drifts/) for full documentation.
+#'
+#' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to list drifted
+#' resources for.
+#' @param NextToken If the previous paginated request didn't return all of the remaining
+#' results, the response object's `NextToken` parameter value is set to a
+#' token. To retrieve the next set of results, call this action again and
+#' assign that token to the request object's `NextToken` parameter. If
+#' there are no remaining results, the previous response object's
+#' `NextToken` parameter is set to `null`.
+#' @param MaxResults The maximum number of results to be returned with a single call. If the
+#' number of available results exceeds this maximum, the response includes
+#' a `NextToken` value that you can assign to the `NextToken` request
+#' parameter to get the next set of results.
+#' @param StackInstanceResourceDriftStatuses The resource drift status of the stack instance.
+#' 
+#' -   `DELETED`: The resource differs from its expected template
+#'     configuration in that the resource has been deleted.
+#' 
+#' -   `MODIFIED`: One or more resource properties differ from their
+#'     expected template values.
+#' 
+#' -   `IN_SYNC`: The resource's actual configuration matches its expected
+#'     template configuration.
+#' 
+#' -   `NOT_CHECKED`: CloudFormation doesn't currently return this value.
+#' @param StackInstanceAccount &#91;required&#93; The name of the Amazon Web Services account that you want to list
+#' resource drifts for.
+#' @param StackInstanceRegion &#91;required&#93; The name of the Region where you want to list resource drifts.
+#' @param OperationId &#91;required&#93; The unique ID of the drift operation.
+#' @param CallAs \[Service-managed permissions\] Specifies whether you are acting as an
+#' account administrator in the organization's management account or as a
+#' delegated administrator in a member account.
+#' 
+#' By default, `SELF` is specified. Use `SELF` for stack sets with
+#' self-managed permissions.
+#' 
+#' -   If you are signed in to the management account, specify `SELF`.
+#' 
+#' -   If you are signed in to a delegated administrator account, specify
+#'     `DELEGATED_ADMIN`.
+#' 
+#'     Your Amazon Web Services account must be registered as a delegated
+#'     administrator in the management account. For more information, see
+#'     [Register a delegated
+#'     administrator](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html)
+#'     in the *CloudFormation User Guide*.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudformation_list_stack_instance_resource_drifts
+cloudformation_list_stack_instance_resource_drifts <- function(StackSetName, NextToken = NULL, MaxResults = NULL, StackInstanceResourceDriftStatuses = NULL, StackInstanceAccount, StackInstanceRegion, OperationId, CallAs = NULL) {
+  op <- new_operation(
+    name = "ListStackInstanceResourceDrifts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudformation$list_stack_instance_resource_drifts_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, StackInstanceResourceDriftStatuses = StackInstanceResourceDriftStatuses, StackInstanceAccount = StackInstanceAccount, StackInstanceRegion = StackInstanceRegion, OperationId = OperationId, CallAs = CallAs)
+  output <- .cloudformation$list_stack_instance_resource_drifts_output()
+  config <- get_config()
+  svc <- .cloudformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudformation$operations$list_stack_instance_resource_drifts <- cloudformation_list_stack_instance_resource_drifts
+
 #' Returns summary information about stack instances that are associated
 #' with the specified stack set
 #'
 #' @description
 #' Returns summary information about stack instances that are associated with the specified stack set. You can filter for stack instances that are associated with a specific Amazon Web Services account name or Region, or that have a specific status.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/list_stack_instances.html](https://paws-r.github.io/docs/cloudformation/list_stack_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_list_stack_instances/](https://www.paws-r-sdk.com/docs/cloudformation_list_stack_instances/) for full documentation.
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to list stack
 #' instances for.
@@ -2431,7 +2685,7 @@ cloudformation_list_stack_instances <- function(StackSetName, NextToken = NULL, 
     name = "ListStackInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .cloudformation$list_stack_instances_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, StackInstanceAccount = StackInstanceAccount, StackInstanceRegion = StackInstanceRegion, CallAs = CallAs)
   output <- .cloudformation$list_stack_instances_output()
@@ -2448,7 +2702,7 @@ cloudformation_list_stack_instances <- function(StackSetName, NextToken = NULL, 
 #' @description
 #' Returns descriptions of all resources of the specified stack.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/list_stack_resources.html](https://paws-r.github.io/docs/cloudformation/list_stack_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_list_stack_resources/](https://www.paws-r-sdk.com/docs/cloudformation_list_stack_resources/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name or the unique stack ID that is associated with the stack, which
 #' aren't always interchangeable:
@@ -2470,7 +2724,7 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
     name = "ListStackResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackResourceSummaries")
   )
   input <- .cloudformation$list_stack_resources_input(StackName = StackName, NextToken = NextToken)
   output <- .cloudformation$list_stack_resources_output()
@@ -2487,7 +2741,7 @@ cloudformation_list_stack_resources <- function(StackName, NextToken = NULL) {
 #' @description
 #' Returns summary information about the results of a stack set operation.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/list_stack_set_operation_results.html](https://paws-r.github.io/docs/cloudformation/list_stack_set_operation_results.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_list_stack_set_operation_results/](https://www.paws-r-sdk.com/docs/cloudformation_list_stack_set_operation_results/) for full documentation.
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to get operation
 #' results for.
@@ -2530,7 +2784,7 @@ cloudformation_list_stack_set_operation_results <- function(StackSetName, Operat
     name = "ListStackSetOperationResults",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .cloudformation$list_stack_set_operation_results_input(StackSetName = StackSetName, OperationId = OperationId, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs, Filters = Filters)
   output <- .cloudformation$list_stack_set_operation_results_output()
@@ -2547,7 +2801,7 @@ cloudformation_list_stack_set_operation_results <- function(StackSetName, Operat
 #' @description
 #' Returns summary information about operations performed on a stack set.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/list_stack_set_operations.html](https://paws-r.github.io/docs/cloudformation/list_stack_set_operations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_list_stack_set_operations/](https://www.paws-r-sdk.com/docs/cloudformation_list_stack_set_operations/) for full documentation.
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to get operation
 #' summaries for.
@@ -2588,7 +2842,7 @@ cloudformation_list_stack_set_operations <- function(StackSetName, NextToken = N
     name = "ListStackSetOperations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .cloudformation$list_stack_set_operations_input(StackSetName = StackSetName, NextToken = NextToken, MaxResults = MaxResults, CallAs = CallAs)
   output <- .cloudformation$list_stack_set_operations_output()
@@ -2606,7 +2860,7 @@ cloudformation_list_stack_set_operations <- function(StackSetName, NextToken = N
 #' @description
 #' Returns summary information about stack sets that are associated with the user.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/list_stack_sets.html](https://paws-r.github.io/docs/cloudformation/list_stack_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_list_stack_sets/](https://www.paws-r-sdk.com/docs/cloudformation_list_stack_sets/) for full documentation.
 #'
 #' @param NextToken If the previous paginated request didn't return all the remaining
 #' results, the response object's `NextToken` parameter value is set to a
@@ -2647,7 +2901,7 @@ cloudformation_list_stack_sets <- function(NextToken = NULL, MaxResults = NULL, 
     name = "ListStackSets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Summaries")
   )
   input <- .cloudformation$list_stack_sets_input(NextToken = NextToken, MaxResults = MaxResults, Status = Status, CallAs = CallAs)
   output <- .cloudformation$list_stack_sets_output()
@@ -2665,7 +2919,7 @@ cloudformation_list_stack_sets <- function(NextToken = NULL, MaxResults = NULL, 
 #' @description
 #' Returns the summary information for stacks whose status matches the specified StackStatusFilter. Summary information for stacks that have been deleted is kept for 90 days after the stack is deleted. If no StackStatusFilter is specified, summary information for all stacks is returned (including existing stacks and stacks that have been deleted).
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/list_stacks.html](https://paws-r.github.io/docs/cloudformation/list_stacks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_list_stacks/](https://www.paws-r-sdk.com/docs/cloudformation_list_stacks/) for full documentation.
 #'
 #' @param NextToken A string that identifies the next page of stacks that you want to
 #' retrieve.
@@ -2682,7 +2936,7 @@ cloudformation_list_stacks <- function(NextToken = NULL, StackStatusFilter = NUL
     name = "ListStacks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", result_key = "StackSummaries")
   )
   input <- .cloudformation$list_stacks_input(NextToken = NextToken, StackStatusFilter = StackStatusFilter)
   output <- .cloudformation$list_stacks_output()
@@ -2699,7 +2953,7 @@ cloudformation_list_stacks <- function(NextToken = NULL, StackStatusFilter = NUL
 #' @description
 #' Returns a list of registration tokens for the specified extension(s).
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/list_type_registrations.html](https://paws-r.github.io/docs/cloudformation/list_type_registrations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_list_type_registrations/](https://www.paws-r-sdk.com/docs/cloudformation_list_type_registrations/) for full documentation.
 #'
 #' @param Type The kind of extension.
 #' 
@@ -2732,7 +2986,7 @@ cloudformation_list_type_registrations <- function(Type = NULL, TypeName = NULL,
     name = "ListTypeRegistrations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudformation$list_type_registrations_input(Type = Type, TypeName = TypeName, TypeArn = TypeArn, RegistrationStatusFilter = RegistrationStatusFilter, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudformation$list_type_registrations_output()
@@ -2749,7 +3003,7 @@ cloudformation_list_type_registrations <- function(Type = NULL, TypeName = NULL,
 #' @description
 #' Returns summary information about the versions of an extension.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/list_type_versions.html](https://paws-r.github.io/docs/cloudformation/list_type_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_list_type_versions/](https://www.paws-r-sdk.com/docs/cloudformation_list_type_versions/) for full documentation.
 #'
 #' @param Type The kind of the extension.
 #' 
@@ -2797,7 +3051,7 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
     name = "ListTypeVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .cloudformation$list_type_versions_input(Type = Type, TypeName = TypeName, Arn = Arn, MaxResults = MaxResults, NextToken = NextToken, DeprecatedStatus = DeprecatedStatus, PublisherId = PublisherId)
   output <- .cloudformation$list_type_versions_output()
@@ -2815,7 +3069,7 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
 #' @description
 #' Returns summary information about extension that have been registered with CloudFormation.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/list_types.html](https://paws-r.github.io/docs/cloudformation/list_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_list_types/](https://www.paws-r-sdk.com/docs/cloudformation_list_types/) for full documentation.
 #'
 #' @param Visibility The scope at which the extensions are visible and usable in
 #' CloudFormation operations.
@@ -2823,13 +3077,13 @@ cloudformation_list_type_versions <- function(Type = NULL, TypeName = NULL, Arn 
 #' Valid values include:
 #' 
 #' -   `PRIVATE`: Extensions that are visible and usable within this
-#'     account and region. This includes:
+#'     account and Region. This includes:
 #' 
 #'     -   Private extensions you have registered in this account and
-#'         region.
+#'         Region.
 #' 
 #'     -   Public extensions that you have activated in this account and
-#'         region.
+#'         Region.
 #' 
 #' -   `PUBLIC`: Extensions that are publicly visible and available to be
 #'     activated within any Amazon Web Services account. This includes
@@ -2890,7 +3144,7 @@ cloudformation_list_types <- function(Visibility = NULL, ProvisioningType = NULL
     name = "ListTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TypeSummaries")
   )
   input <- .cloudformation$list_types_input(Visibility = Visibility, ProvisioningType = ProvisioningType, DeprecatedStatus = DeprecatedStatus, Type = Type, Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cloudformation$list_types_output()
@@ -2903,12 +3157,12 @@ cloudformation_list_types <- function(Visibility = NULL, ProvisioningType = NULL
 .cloudformation$operations$list_types <- cloudformation_list_types
 
 #' Publishes the specified extension to the CloudFormation registry as a
-#' public extension in this region
+#' public extension in this Region
 #'
 #' @description
-#' Publishes the specified extension to the CloudFormation registry as a public extension in this region. Public extensions are available for use by all CloudFormation users. For more information about publishing extensions, see [Publishing extensions to make them available for public use](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html) in the *CloudFormation CLI User Guide*.
+#' Publishes the specified extension to the CloudFormation registry as a public extension in this Region. Public extensions are available for use by all CloudFormation users. For more information about publishing extensions, see [Publishing extensions to make them available for public use](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/publish-extension.html) in the *CloudFormation CLI User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/publish_type.html](https://paws-r.github.io/docs/cloudformation/publish_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_publish_type/](https://www.paws-r-sdk.com/docs/cloudformation_publish_type/) for full documentation.
 #'
 #' @param Type The type of the extension.
 #' 
@@ -2961,7 +3215,7 @@ cloudformation_publish_type <- function(Type = NULL, Arn = NULL, TypeName = NULL
 #' @description
 #' Reports progress of a resource handler to CloudFormation.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/record_handler_progress.html](https://paws-r.github.io/docs/cloudformation/record_handler_progress.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_record_handler_progress/](https://www.paws-r-sdk.com/docs/cloudformation_record_handler_progress/) for full documentation.
 #'
 #' @param BearerToken &#91;required&#93; Reserved for use by the [CloudFormation
 #' CLI](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/what-is-cloudformation-cli.html).
@@ -3004,7 +3258,7 @@ cloudformation_record_handler_progress <- function(BearerToken, OperationStatus,
 #' @description
 #' Registers your account as a publisher of public extensions in the CloudFormation registry. Public extensions are available for use by all CloudFormation users. This publisher ID applies to your account in all Amazon Web Services Regions.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/register_publisher.html](https://paws-r.github.io/docs/cloudformation/register_publisher.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_register_publisher/](https://www.paws-r-sdk.com/docs/cloudformation_register_publisher/) for full documentation.
 #'
 #' @param AcceptTermsAndConditions Whether you accept the [Terms and
 #' Conditions](https://cloudformation-registry-documents.s3.amazonaws.com/Terms_and_Conditions_for_AWS_CloudFormation_Registry_Publishers.pdf)
@@ -3047,7 +3301,7 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
 #' @description
 #' Registers an extension with the CloudFormation service. Registering an extension makes it available for use in CloudFormation templates in your Amazon Web Services account, and includes:
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/register_type.html](https://paws-r.github.io/docs/cloudformation/register_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_register_type/](https://www.paws-r-sdk.com/docs/cloudformation_register_type/) for full documentation.
 #'
 #' @param Type The kind of extension.
 #' @param TypeName &#91;required&#93; The name of the extension being registered.
@@ -3101,9 +3355,7 @@ cloudformation_register_publisher <- function(AcceptTermsAndConditions = NULL, C
 #' in the *Identity and Access Management User Guide*.
 #' 
 #' If your extension calls Amazon Web Services APIs in any of its handlers,
-#' you must create an *<span
-#' href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html">IAM
-#' execution role</span>* that includes the necessary permissions to call
+#' you must create an *\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM execution role}* that includes the necessary permissions to call
 #' those Amazon Web Services APIs, and provision that execution role in
 #' your account. When CloudFormation needs to invoke the resource type
 #' handler, CloudFormation assumes this execution role to create a
@@ -3142,25 +3394,32 @@ cloudformation_register_type <- function(Type = NULL, TypeName, SchemaHandlerPac
 #' @description
 #' When specifying [`rollback_stack`][cloudformation_rollback_stack], you preserve the state of previously provisioned resources when an operation fails. You can check the status of the stack through the [`describe_stacks`][cloudformation_describe_stacks] operation.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/rollback_stack.html](https://paws-r.github.io/docs/cloudformation/rollback_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_rollback_stack/](https://www.paws-r-sdk.com/docs/cloudformation_rollback_stack/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name that's associated with the stack.
 #' @param RoleARN The Amazon Resource Name (ARN) of an Identity and Access Management role
 #' that CloudFormation assumes to rollback the stack.
 #' @param ClientRequestToken A unique identifier for this
 #' [`rollback_stack`][cloudformation_rollback_stack] request.
+#' @param RetainExceptOnCreate This deletion policy deletes newly created resources, but retains
+#' existing resources, when a stack operation is rolled back. This ensures
+#' new, empty, and unused resources are deleted, while critical resources
+#' and their data are retained. `RetainExceptOnCreate` can be specified for
+#' any resource that supports the
+#' [DeletionPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html)
+#' attribute.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudformation_rollback_stack
-cloudformation_rollback_stack <- function(StackName, RoleARN = NULL, ClientRequestToken = NULL) {
+cloudformation_rollback_stack <- function(StackName, RoleARN = NULL, ClientRequestToken = NULL, RetainExceptOnCreate = NULL) {
   op <- new_operation(
     name = "RollbackStack",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$rollback_stack_input(StackName = StackName, RoleARN = RoleARN, ClientRequestToken = ClientRequestToken)
+  input <- .cloudformation$rollback_stack_input(StackName = StackName, RoleARN = RoleARN, ClientRequestToken = ClientRequestToken, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$rollback_stack_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -3175,7 +3434,7 @@ cloudformation_rollback_stack <- function(StackName, RoleARN = NULL, ClientReque
 #' @description
 #' Sets a stack policy for a specified stack.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/set_stack_policy.html](https://paws-r.github.io/docs/cloudformation/set_stack_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_set_stack_policy/](https://www.paws-r-sdk.com/docs/cloudformation_set_stack_policy/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name or unique stack ID that you want to associate a policy with.
 #' @param StackPolicyBody Structure containing the stack policy body. For more information, go to
@@ -3209,34 +3468,33 @@ cloudformation_set_stack_policy <- function(StackName, StackPolicyBody = NULL, S
 .cloudformation$operations$set_stack_policy <- cloudformation_set_stack_policy
 
 #' Specifies the configuration data for a registered CloudFormation
-#' extension, in the given account and region
+#' extension, in the given account and Region
 #'
 #' @description
-#' Specifies the configuration data for a registered CloudFormation extension, in the given account and region.
+#' Specifies the configuration data for a registered CloudFormation extension, in the given account and Region.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/set_type_configuration.html](https://paws-r.github.io/docs/cloudformation/set_type_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_set_type_configuration/](https://www.paws-r-sdk.com/docs/cloudformation_set_type_configuration/) for full documentation.
 #'
 #' @param TypeArn The Amazon Resource Name (ARN) for the extension, in this account and
-#' region.
+#' Region.
 #' 
 #' For public extensions, this will be the ARN assigned when you [activate
 #' the
 #' type](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_ActivateType.html)
-#' in this account and region. For private extensions, this will be the ARN
+#' in this account and Region. For private extensions, this will be the ARN
 #' assigned when you [register the
 #' type](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_RegisterType.html)
-#' in this account and region.
+#' in this account and Region.
 #' 
 #' Do not include the extension versions suffix at the end of the ARN. You
 #' can set the configuration for an extension, but not for a specific
 #' extension version.
-#' @param Configuration &#91;required&#93; The configuration data for the extension, in this account and region.
+#' @param Configuration &#91;required&#93; The configuration data for the extension, in this account and Region.
 #' 
 #' The configuration data must be formatted as JSON, and validate against
 #' the schema returned in the `ConfigurationSchema` response element of
-#' [API_DescribeType](https://docs.aws.amazon.com/AWSCloudFormation/latest/APIReference/API_DescribeType.html).
-#' For more information, see [Defining account-level configuration data for
-#' an
+#' [`describe_type`][cloudformation_describe_type]. For more information,
+#' see [Defining account-level configuration data for an
 #' extension](https://docs.aws.amazon.com/cloudformation-cli/latest/userguide/resource-type-model.html#resource-type-howto-configuration)
 #' in the *CloudFormation CLI User Guide*.
 #' @param ConfigurationAlias An alias by which to refer to this extension configuration data.
@@ -3277,7 +3535,7 @@ cloudformation_set_type_configuration <- function(TypeArn = NULL, Configuration,
 #' @description
 #' Specify the default version of an extension. The default version of an extension will be used in CloudFormation operations.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/set_type_default_version.html](https://paws-r.github.io/docs/cloudformation/set_type_default_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_set_type_default_version/](https://www.paws-r-sdk.com/docs/cloudformation_set_type_default_version/) for full documentation.
 #'
 #' @param Arn The Amazon Resource Name (ARN) of the extension for which you want
 #' version summary information.
@@ -3319,7 +3577,7 @@ cloudformation_set_type_default_version <- function(Arn = NULL, Type = NULL, Typ
 #' @description
 #' Sends a signal to the specified resource with a success or failure status. You can use the [`signal_resource`][cloudformation_signal_resource] operation in conjunction with a creation policy or update policy. CloudFormation doesn't proceed with a stack creation or update until resources receive the required number of signals or the timeout period is exceeded. The [`signal_resource`][cloudformation_signal_resource] operation is useful in cases where you want to send signals from anywhere other than an Amazon EC2 instance.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/signal_resource.html](https://paws-r.github.io/docs/cloudformation/signal_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_signal_resource/](https://www.paws-r-sdk.com/docs/cloudformation_signal_resource/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The stack name or unique stack ID that includes the resource that you
 #' want to signal.
@@ -3359,7 +3617,7 @@ cloudformation_signal_resource <- function(StackName, LogicalResourceId, UniqueI
 #' @description
 #' Stops an in-progress operation on a stack set and its associated stack instances. StackSets will cancel all the unstarted stack instance deployments and wait for those are in-progress to complete.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/stop_stack_set_operation.html](https://paws-r.github.io/docs/cloudformation/stop_stack_set_operation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_stop_stack_set_operation/](https://www.paws-r-sdk.com/docs/cloudformation_stop_stack_set_operation/) for full documentation.
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to stop the
 #' operation for.
@@ -3408,7 +3666,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId, C
 #' @description
 #' Tests a registered extension to make sure it meets all necessary requirements for being published in the CloudFormation registry.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/test_type.html](https://paws-r.github.io/docs/cloudformation/test_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_test_type/](https://www.paws-r-sdk.com/docs/cloudformation_test_type/) for full documentation.
 #'
 #' @param Arn The Amazon Resource Name (ARN) of the extension.
 #' 
@@ -3425,7 +3683,7 @@ cloudformation_stop_stack_set_operation <- function(StackSetName, OperationId, C
 #' `Type`.
 #' 
 #' If you don't specify a version, CloudFormation uses the default version
-#' of the extension in this account and region for testing.
+#' of the extension in this account and Region for testing.
 #' @param LogDeliveryBucket The S3 bucket to which CloudFormation delivers the contract test
 #' execution logs.
 #' 
@@ -3471,7 +3729,7 @@ cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, V
 #' @description
 #' Updates a stack as specified in the template. After the call completes successfully, the stack update starts. You can check the status of the stack through the [`describe_stacks`][cloudformation_describe_stacks] action.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/update_stack.html](https://paws-r.github.io/docs/cloudformation/update_stack.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_update_stack/](https://www.paws-r-sdk.com/docs/cloudformation_update_stack/) for full documentation.
 #'
 #' @param StackName &#91;required&#93; The name or unique stack ID of the stack to update.
 #' @param TemplateBody Structure containing the template body with a minimum length of 1 byte
@@ -3673,18 +3931,25 @@ cloudformation_test_type <- function(Arn = NULL, Type = NULL, TypeName = NULL, V
 #' the console, each stack event would be assigned the same token in the
 #' following format:
 #' `Console-CreateStack-7f59c3cf-00d2-40c7-b2ff-e75db0987002`.
+#' @param RetainExceptOnCreate This deletion policy deletes newly created resources, but retains
+#' existing resources, when a stack operation is rolled back. This ensures
+#' new, empty, and unused resources are deleted, while critical resources
+#' and their data are retained. `RetainExceptOnCreate` can be specified for
+#' any resource that supports the
+#' [DeletionPolicy](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html)
+#' attribute.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudformation_update_stack
-cloudformation_update_stack <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, StackPolicyDuringUpdateBody = NULL, StackPolicyDuringUpdateURL = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, StackPolicyBody = NULL, StackPolicyURL = NULL, NotificationARNs = NULL, Tags = NULL, DisableRollback = NULL, ClientRequestToken = NULL) {
+cloudformation_update_stack <- function(StackName, TemplateBody = NULL, TemplateURL = NULL, UsePreviousTemplate = NULL, StackPolicyDuringUpdateBody = NULL, StackPolicyDuringUpdateURL = NULL, Parameters = NULL, Capabilities = NULL, ResourceTypes = NULL, RoleARN = NULL, RollbackConfiguration = NULL, StackPolicyBody = NULL, StackPolicyURL = NULL, NotificationARNs = NULL, Tags = NULL, DisableRollback = NULL, ClientRequestToken = NULL, RetainExceptOnCreate = NULL) {
   op <- new_operation(
     name = "UpdateStack",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudformation$update_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, StackPolicyDuringUpdateBody = StackPolicyDuringUpdateBody, StackPolicyDuringUpdateURL = StackPolicyDuringUpdateURL, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, NotificationARNs = NotificationARNs, Tags = Tags, DisableRollback = DisableRollback, ClientRequestToken = ClientRequestToken)
+  input <- .cloudformation$update_stack_input(StackName = StackName, TemplateBody = TemplateBody, TemplateURL = TemplateURL, UsePreviousTemplate = UsePreviousTemplate, StackPolicyDuringUpdateBody = StackPolicyDuringUpdateBody, StackPolicyDuringUpdateURL = StackPolicyDuringUpdateURL, Parameters = Parameters, Capabilities = Capabilities, ResourceTypes = ResourceTypes, RoleARN = RoleARN, RollbackConfiguration = RollbackConfiguration, StackPolicyBody = StackPolicyBody, StackPolicyURL = StackPolicyURL, NotificationARNs = NotificationARNs, Tags = Tags, DisableRollback = DisableRollback, ClientRequestToken = ClientRequestToken, RetainExceptOnCreate = RetainExceptOnCreate)
   output <- .cloudformation$update_stack_output()
   config <- get_config()
   svc <- .cloudformation$service(config)
@@ -3700,7 +3965,7 @@ cloudformation_update_stack <- function(StackName, TemplateBody = NULL, Template
 #' @description
 #' Updates the parameter values for stack instances for the specified accounts, within the specified Amazon Web Services Regions. A stack instance refers to a stack in a specific account and Region.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/update_stack_instances.html](https://paws-r.github.io/docs/cloudformation/update_stack_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_update_stack_instances/](https://www.paws-r-sdk.com/docs/cloudformation_update_stack_instances/) for full documentation.
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set associated with the stack
 #' instances.
@@ -3812,7 +4077,7 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' @description
 #' Updates the stack set, and associated stack instances in the specified accounts and Amazon Web Services Regions.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/update_stack_set.html](https://paws-r.github.io/docs/cloudformation/update_stack_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_update_stack_set/](https://www.paws-r-sdk.com/docs/cloudformation_update_stack_set/) for full documentation.
 #'
 #' @param StackSetName &#91;required&#93; The name or unique ID of the stack set that you want to update.
 #' @param Description A brief description of updates that you are making.
@@ -3880,9 +4145,8 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #'     -   [AWS::IAM::UserToGroupAddition](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html)
 #' 
-#'     For more information, see [Acknowledging IAM Resources in
-#'     CloudFormation
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities).
+#'     For more information, see Acknowledging IAM Resources in
+#'     CloudFormation Templates.
 #' 
 #' -   `CAPABILITY_AUTO_EXPAND`
 #' 
@@ -3891,18 +4155,15 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #'     directly from the processed template, without first reviewing the
 #'     resulting changes in a change set. To update the stack set directly,
 #'     you must acknowledge this capability. For more information, see
-#'     [Using CloudFormation Macros to Perform Custom Processing on
-#'     Templates](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html).
+#'     Using CloudFormation Macros to Perform Custom Processing on
+#'     Templates.
 #' 
 #'     Stack sets with service-managed permissions do not currently support
-#'     the use of macros in templates. (This includes the
-#'     [AWS::Include](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html)
-#'     and
-#'     [AWS::Serverless](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html)
-#'     transforms, which are macros hosted by CloudFormation.) Even if you
-#'     specify this capability for a stack set with service-managed
-#'     permissions, if you reference a macro in your template the stack set
-#'     operation will fail.
+#'     the use of macros in templates. (This includes the AWS::Include and
+#'     AWS::Serverless transforms, which are macros hosted by
+#'     CloudFormation.) Even if you specify this capability for a stack set
+#'     with service-managed permissions, if you reference a macro in your
+#'     template the stack set operation will fail.
 #' @param Tags The key-value pairs to associate with this stack set and the stacks
 #' created from it. CloudFormation also propagates these tags to supported
 #' resources that are created in the stacks. You can specify a maximum
@@ -3940,10 +4201,8 @@ cloudformation_update_stack_instances <- function(StackSetName, Accounts = NULL,
 #' 
 #' Specify an IAM role only if you are using customized administrator roles
 #' to control which users or groups can manage specific stack sets within
-#' the same administrator account. For more information, see [Granting
-#' Permissions for Stack Set
-#' Operations](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html)
-#' in the *CloudFormation User Guide*.
+#' the same administrator account. For more information, see Granting
+#' Permissions for Stack Set Operations in the *CloudFormation User Guide*.
 #' 
 #' If you specified a customized administrator role when you created the
 #' stack set, you must specify a customized administrator role, even if it
@@ -4085,7 +4344,7 @@ cloudformation_update_stack_set <- function(StackSetName, Description = NULL, Te
 #' @description
 #' Updates termination protection for the specified stack. If a user attempts to delete a stack with termination protection enabled, the operation fails and the stack remains unchanged. For more information, see [Protecting a Stack From Being Deleted](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-cfn-protect-stacks.html) in the *CloudFormation User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/update_termination_protection.html](https://paws-r.github.io/docs/cloudformation/update_termination_protection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_update_termination_protection/](https://www.paws-r-sdk.com/docs/cloudformation_update_termination_protection/) for full documentation.
 #'
 #' @param EnableTerminationProtection &#91;required&#93; Whether to enable termination protection on the specified stack.
 #' @param StackName &#91;required&#93; The name or unique ID of the stack for which you want to set termination
@@ -4116,7 +4375,7 @@ cloudformation_update_termination_protection <- function(EnableTerminationProtec
 #' @description
 #' Validates a specified template. CloudFormation first checks if the template is valid JSON. If it isn't, CloudFormation checks if the template is valid YAML. If both these checks fail, CloudFormation returns a template validation error.
 #'
-#' See [https://paws-r.github.io/docs/cloudformation/validate_template.html](https://paws-r.github.io/docs/cloudformation/validate_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudformation_validate_template/](https://www.paws-r-sdk.com/docs/cloudformation_validate_template/) for full documentation.
 #'
 #' @param TemplateBody Structure containing the template body with a minimum length of 1 byte
 #' and a maximum length of 51,200 bytes. For more information, go to

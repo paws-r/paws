@@ -22,6 +22,6 @@ control. If you are disabling a control, then this is required.}
 \description{
 Used to control whether an individual security standard control is enabled or disabled.
 
-See \url{https://paws-r.github.io/docs/securityhub/update_standards_control.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_update_standards_control/} for full documentation.
 }
 \keyword{internal}

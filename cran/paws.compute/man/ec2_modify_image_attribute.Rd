@@ -72,6 +72,6 @@ After you set the value to \code{v2.0}, you can't undo it. The only way to
 \description{
 Modifies the specified attribute of the specified AMI. You can specify only one attribute at a time.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_image_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_image_attribute/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ apigateway_delete_usage_plan(usagePlanId)
 \description{
 Deletes a usage plan of a given plan Id.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_usage_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_usage_plan/} for full documentation.
 }
 \keyword{internal}

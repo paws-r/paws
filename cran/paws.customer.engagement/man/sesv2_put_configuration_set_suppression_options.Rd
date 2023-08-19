@@ -28,6 +28,6 @@ hard bounce.
 \description{
 Specify the account suppression list preferences for a configuration set.
 
-See \url{https://paws-r.github.io/docs/sesv2/put_configuration_set_suppression_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_put_configuration_set_suppression_options/} for full documentation.
 }
 \keyword{internal}

@@ -33,6 +33,6 @@ smaller than this part size.}
 \description{
 This operation initiates a multipart upload. Amazon S3 Glacier creates a multipart upload resource and returns its ID in the response. The multipart upload ID is used in subsequent requests to upload parts of an archive (see \code{\link[=glacier_upload_multipart_part]{upload_multipart_part}}).
 
-See \url{https://paws-r.github.io/docs/glacier/initiate_multipart_upload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_initiate_multipart_upload/} for full documentation.
 }
 \keyword{internal}

@@ -41,6 +41,6 @@ carriage return (\verb{U+000D})
 \description{
 Gets a list of all of the context keys referenced in all the IAM policies that are attached to the specified IAM entity. The entity can be an IAM user, group, or role. If you specify a user, then the request also includes all of the policies attached to groups that the user is a member of.
 
-See \url{https://paws-r.github.io/docs/iam/get_context_keys_for_principal_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_context_keys_for_principal_policy/} for full documentation.
 }
 \keyword{internal}

@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates an HTTP namespace. Service instances registered using an HTTP namespace can be discovered using a [`discover_instances`][servicediscovery_discover_instances] request but can't be discovered using DNS.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/create_http_namespace.html](https://paws-r.github.io/docs/servicediscovery/create_http_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_create_http_namespace/](https://www.paws-r-sdk.com/docs/servicediscovery_create_http_namespace/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name that you want to assign to this namespace.
 #' @param CreatorRequestId A unique string that identifies the request and that allows failed
@@ -47,7 +47,7 @@ servicediscovery_create_http_namespace <- function(Name, CreatorRequestId = NULL
 #' @description
 #' Creates a private namespace based on DNS, which is visible only inside a specified Amazon VPC. The namespace defines your service naming scheme. For example, if you name your namespace `example.com` and name your service `backend`, the resulting DNS name for the service is `backend.example.com`. Service instances that are registered using a private DNS namespace can be discovered using either a [`discover_instances`][servicediscovery_discover_instances] request or using DNS. For the current quota on the number of namespaces that you can create using the same Amazon Web Services account, see [Cloud Map quotas](https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html) in the *Cloud Map Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/create_private_dns_namespace.html](https://paws-r.github.io/docs/servicediscovery/create_private_dns_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_create_private_dns_namespace/](https://www.paws-r-sdk.com/docs/servicediscovery_create_private_dns_namespace/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name that you want to assign to this namespace. When you create a
 #' private DNS namespace, Cloud Map automatically creates an Amazon
@@ -90,7 +90,7 @@ servicediscovery_create_private_dns_namespace <- function(Name, CreatorRequestId
 #' @description
 #' Creates a public namespace based on DNS, which is visible on the internet. The namespace defines your service naming scheme. For example, if you name your namespace `example.com` and name your service `backend`, the resulting DNS name for the service is `backend.example.com`. You can discover instances that were registered with a public DNS namespace by using either a [`discover_instances`][servicediscovery_discover_instances] request or using DNS. For the current quota on the number of namespaces that you can create using the same Amazon Web Services account, see [Cloud Map quotas](https://docs.aws.amazon.com/cloud-map/latest/dg/cloud-map-limits.html) in the *Cloud Map Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/create_public_dns_namespace.html](https://paws-r.github.io/docs/servicediscovery/create_public_dns_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_create_public_dns_namespace/](https://www.paws-r-sdk.com/docs/servicediscovery_create_public_dns_namespace/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name that you want to assign to this namespace.
 #' 
@@ -132,7 +132,7 @@ servicediscovery_create_public_dns_namespace <- function(Name, CreatorRequestId 
 #' @description
 #' Creates a service. This action defines the configuration for the following entities:
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/create_service.html](https://paws-r.github.io/docs/servicediscovery/create_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_create_service/](https://www.paws-r-sdk.com/docs/servicediscovery_create_service/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name that you want to assign to the service.
 #' 
@@ -222,7 +222,7 @@ servicediscovery_create_service <- function(Name, NamespaceId = NULL, CreatorReq
 #' @description
 #' Deletes a namespace from the current account. If the namespace still contains one or more services, the request fails.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/delete_namespace.html](https://paws-r.github.io/docs/servicediscovery/delete_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_delete_namespace/](https://www.paws-r-sdk.com/docs/servicediscovery_delete_namespace/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the namespace that you want to delete.
 #'
@@ -251,7 +251,7 @@ servicediscovery_delete_namespace <- function(Id) {
 #' @description
 #' Deletes a specified service. If the service still contains one or more registered instances, the request fails.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/delete_service.html](https://paws-r.github.io/docs/servicediscovery/delete_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_delete_service/](https://www.paws-r-sdk.com/docs/servicediscovery_delete_service/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the service that you want to delete.
 #'
@@ -281,7 +281,7 @@ servicediscovery_delete_service <- function(Id) {
 #' @description
 #' Deletes the Amazon Route 53 DNS records and health check, if any, that Cloud Map created for the specified instance.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/deregister_instance.html](https://paws-r.github.io/docs/servicediscovery/deregister_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_deregister_instance/](https://www.paws-r-sdk.com/docs/servicediscovery_deregister_instance/) for full documentation.
 #'
 #' @param ServiceId &#91;required&#93; The ID of the service that the instance is associated with.
 #' @param InstanceId &#91;required&#93; The value that you specified for `Id` in the
@@ -312,7 +312,7 @@ servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
 #' @description
 #' Discovers registered instances for a specified namespace and service. You can use [`discover_instances`][servicediscovery_discover_instances] to discover instances for any type of namespace. For public and private DNS namespaces, you can also use DNS queries to discover instances.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/discover_instances.html](https://paws-r.github.io/docs/servicediscovery/discover_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_discover_instances/](https://www.paws-r-sdk.com/docs/servicediscovery_discover_instances/) for full documentation.
 #'
 #' @param NamespaceName &#91;required&#93; The `HttpName` name of the namespace. It's found in the `HttpProperties`
 #' member of the `Properties` member of the namespace.
@@ -378,7 +378,7 @@ servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxR
 #' @description
 #' Gets information about a specified instance.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/get_instance.html](https://paws-r.github.io/docs/servicediscovery/get_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_get_instance/](https://www.paws-r-sdk.com/docs/servicediscovery_get_instance/) for full documentation.
 #'
 #' @param ServiceId &#91;required&#93; The ID of the service that the instance is associated with.
 #' @param InstanceId &#91;required&#93; The ID of the instance that you want to get information about.
@@ -409,7 +409,7 @@ servicediscovery_get_instance <- function(ServiceId, InstanceId) {
 #' @description
 #' Gets the current health status (`Healthy`, `Unhealthy`, or `Unknown`) of one or more instances that are associated with a specified service.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/get_instances_health_status.html](https://paws-r.github.io/docs/servicediscovery/get_instances_health_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_get_instances_health_status/](https://www.paws-r-sdk.com/docs/servicediscovery_get_instances_health_status/) for full documentation.
 #'
 #' @param ServiceId &#91;required&#93; The ID of the service that the instance is associated with.
 #' @param Instances An array that contains the IDs of all the instances that you want to get
@@ -444,7 +444,7 @@ servicediscovery_get_instances_health_status <- function(ServiceId, Instances = 
     name = "GetInstancesHealthStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$get_instances_health_status_input(ServiceId = ServiceId, Instances = Instances, MaxResults = MaxResults, NextToken = NextToken)
   output <- .servicediscovery$get_instances_health_status_output()
@@ -461,7 +461,7 @@ servicediscovery_get_instances_health_status <- function(ServiceId, Instances = 
 #' @description
 #' Gets information about a namespace.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/get_namespace.html](https://paws-r.github.io/docs/servicediscovery/get_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_get_namespace/](https://www.paws-r-sdk.com/docs/servicediscovery_get_namespace/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the namespace that you want to get information about.
 #'
@@ -491,7 +491,7 @@ servicediscovery_get_namespace <- function(Id) {
 #' @description
 #' Gets information about any operation that returns an operation ID in the response, such as a [`create_service`][servicediscovery_create_service] request.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/get_operation.html](https://paws-r.github.io/docs/servicediscovery/get_operation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_get_operation/](https://www.paws-r-sdk.com/docs/servicediscovery_get_operation/) for full documentation.
 #'
 #' @param OperationId &#91;required&#93; The ID of the operation that you want to get more information about.
 #'
@@ -520,7 +520,7 @@ servicediscovery_get_operation <- function(OperationId) {
 #' @description
 #' Gets the settings for a specified service.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/get_service.html](https://paws-r.github.io/docs/servicediscovery/get_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_get_service/](https://www.paws-r-sdk.com/docs/servicediscovery_get_service/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the service that you want to get settings for.
 #'
@@ -550,7 +550,7 @@ servicediscovery_get_service <- function(Id) {
 #' @description
 #' Lists summary information about the instances that you registered by using a specified service.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/list_instances.html](https://paws-r.github.io/docs/servicediscovery/list_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_list_instances/](https://www.paws-r-sdk.com/docs/servicediscovery_list_instances/) for full documentation.
 #'
 #' @param ServiceId &#91;required&#93; The ID of the service that you want to list instances for.
 #' @param NextToken For the first [`list_instances`][servicediscovery_list_instances]
@@ -573,7 +573,7 @@ servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResu
     name = "ListInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$list_instances_input(ServiceId = ServiceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicediscovery$list_instances_output()
@@ -591,7 +591,7 @@ servicediscovery_list_instances <- function(ServiceId, NextToken = NULL, MaxResu
 #' @description
 #' Lists summary information about the namespaces that were created by the current Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/list_namespaces.html](https://paws-r.github.io/docs/servicediscovery/list_namespaces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_list_namespaces/](https://www.paws-r-sdk.com/docs/servicediscovery_list_namespaces/) for full documentation.
 #'
 #' @param NextToken For the first [`list_namespaces`][servicediscovery_list_namespaces]
 #' request, omit this value.
@@ -624,7 +624,7 @@ servicediscovery_list_namespaces <- function(NextToken = NULL, MaxResults = NULL
     name = "ListNamespaces",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$list_namespaces_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .servicediscovery$list_namespaces_output()
@@ -641,7 +641,7 @@ servicediscovery_list_namespaces <- function(NextToken = NULL, MaxResults = NULL
 #' @description
 #' Lists operations that match the criteria that you specify.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/list_operations.html](https://paws-r.github.io/docs/servicediscovery/list_operations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_list_operations/](https://www.paws-r-sdk.com/docs/servicediscovery_list_operations/) for full documentation.
 #'
 #' @param NextToken For the first [`list_operations`][servicediscovery_list_operations]
 #' request, omit this value.
@@ -675,7 +675,7 @@ servicediscovery_list_operations <- function(NextToken = NULL, MaxResults = NULL
     name = "ListOperations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$list_operations_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .servicediscovery$list_operations_output()
@@ -693,7 +693,7 @@ servicediscovery_list_operations <- function(NextToken = NULL, MaxResults = NULL
 #' @description
 #' Lists summary information for all the services that are associated with one or more specified namespaces.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/list_services.html](https://paws-r.github.io/docs/servicediscovery/list_services.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_list_services/](https://www.paws-r-sdk.com/docs/servicediscovery_list_services/) for full documentation.
 #'
 #' @param NextToken For the first [`list_services`][servicediscovery_list_services] request,
 #' omit this value.
@@ -726,7 +726,7 @@ servicediscovery_list_services <- function(NextToken = NULL, MaxResults = NULL, 
     name = "ListServices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .servicediscovery$list_services_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .servicediscovery$list_services_output()
@@ -743,7 +743,7 @@ servicediscovery_list_services <- function(NextToken = NULL, MaxResults = NULL, 
 #' @description
 #' Lists tags for the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/list_tags_for_resource.html](https://paws-r.github.io/docs/servicediscovery/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/servicediscovery_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to retrieve
 #' tags for.
@@ -774,7 +774,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #' @description
 #' Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service. When you submit a [`register_instance`][servicediscovery_register_instance] request, the following occurs:
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/register_instance.html](https://paws-r.github.io/docs/servicediscovery/register_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_register_instance/](https://www.paws-r-sdk.com/docs/servicediscovery_register_instance/) for full documentation.
 #'
 #' @param ServiceId &#91;required&#93; The ID of the service that you want to use for settings for the
 #' instance.
@@ -945,7 +945,7 @@ servicediscovery_register_instance <- function(ServiceId, InstanceId, CreatorReq
 #' @description
 #' Adds one or more tags to the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/tag_resource.html](https://paws-r.github.io/docs/servicediscovery/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_tag_resource/](https://www.paws-r-sdk.com/docs/servicediscovery_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to retrieve
 #' tags for.
@@ -978,7 +978,7 @@ servicediscovery_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Removes one or more tags from the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/untag_resource.html](https://paws-r.github.io/docs/servicediscovery/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_untag_resource/](https://www.paws-r-sdk.com/docs/servicediscovery_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to retrieve
 #' tags for.
@@ -1009,7 +1009,7 @@ servicediscovery_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Updates an HTTP namespace.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/update_http_namespace.html](https://paws-r.github.io/docs/servicediscovery/update_http_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_update_http_namespace/](https://www.paws-r-sdk.com/docs/servicediscovery_update_http_namespace/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the namespace that you want to update.
 #' @param UpdaterRequestId A unique string that identifies the request and that allows failed
@@ -1045,7 +1045,7 @@ servicediscovery_update_http_namespace <- function(Id, UpdaterRequestId = NULL, 
 #' @description
 #' Submits a request to change the health status of a custom health check to healthy or unhealthy.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/update_instance_custom_health_status.html](https://paws-r.github.io/docs/servicediscovery/update_instance_custom_health_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_update_instance_custom_health_status/](https://www.paws-r-sdk.com/docs/servicediscovery_update_instance_custom_health_status/) for full documentation.
 #'
 #' @param ServiceId &#91;required&#93; The ID of the service that includes the configuration for the custom
 #' health check that you want to change the status for.
@@ -1077,7 +1077,7 @@ servicediscovery_update_instance_custom_health_status <- function(ServiceId, Ins
 #' @description
 #' Updates a private DNS namespace.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/update_private_dns_namespace.html](https://paws-r.github.io/docs/servicediscovery/update_private_dns_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_update_private_dns_namespace/](https://www.paws-r-sdk.com/docs/servicediscovery_update_private_dns_namespace/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the namespace that you want to update.
 #' @param UpdaterRequestId A unique string that identifies the request and that allows failed
@@ -1112,7 +1112,7 @@ servicediscovery_update_private_dns_namespace <- function(Id, UpdaterRequestId =
 #' @description
 #' Updates a public DNS namespace.
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/update_public_dns_namespace.html](https://paws-r.github.io/docs/servicediscovery/update_public_dns_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_update_public_dns_namespace/](https://www.paws-r-sdk.com/docs/servicediscovery_update_public_dns_namespace/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the namespace being updated.
 #' @param UpdaterRequestId A unique string that identifies the request and that allows failed
@@ -1147,7 +1147,7 @@ servicediscovery_update_public_dns_namespace <- function(Id, UpdaterRequestId = 
 #' @description
 #' Submits a request to perform the following operations:
 #'
-#' See [https://paws-r.github.io/docs/servicediscovery/update_service.html](https://paws-r.github.io/docs/servicediscovery/update_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_update_service/](https://www.paws-r-sdk.com/docs/servicediscovery_update_service/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID of the service that you want to update.
 #' @param Service &#91;required&#93; A complex type that contains the new settings for the service.

@@ -12,6 +12,6 @@ codebuild_batch_get_reports(reportArns)
 \description{
 Returns an array of reports.
 
-See \url{https://paws-r.github.io/docs/codebuild/batch_get_reports.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_batch_get_reports/} for full documentation.
 }
 \keyword{internal}

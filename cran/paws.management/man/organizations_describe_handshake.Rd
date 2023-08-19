@@ -22,6 +22,6 @@ digits.}
 \description{
 Retrieves information about a previously requested handshake. The handshake ID comes from the response to the original \code{\link[=organizations_invite_account_to_organization]{invite_account_to_organization}} operation that generated the handshake.
 
-See \url{https://paws-r.github.io/docs/organizations/describe_handshake.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_describe_handshake/} for full documentation.
 }
 \keyword{internal}

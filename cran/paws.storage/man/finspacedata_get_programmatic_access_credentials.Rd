@@ -17,6 +17,6 @@ finspacedata_get_programmatic_access_credentials(
 \description{
 Request programmatic credentials to use with FinSpace SDK.
 
-See \url{https://paws-r.github.io/docs/finspacedata/get_programmatic_access_credentials.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_get_programmatic_access_credentials/} for full documentation.
 }
 \keyword{internal}

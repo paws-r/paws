@@ -20,6 +20,6 @@ API call.}
 \description{
 Describes an existing export job.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_asset_bundle_export_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_asset_bundle_export_job/} for full documentation.
 }
 \keyword{internal}

@@ -36,6 +36,6 @@ requests.
 \description{
 Applies a pending maintenance action to a resource (for example, to a DB instance).
 
-See \url{https://paws-r.github.io/docs/rds/apply_pending_maintenance_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_apply_pending_maintenance_action/} for full documentation.
 }
 \keyword{internal}

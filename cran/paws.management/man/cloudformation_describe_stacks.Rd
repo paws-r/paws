@@ -8,7 +8,20 @@ specified, then it returns the description for all the stacks created}
 cloudformation_describe_stacks(StackName = NULL, NextToken = NULL)
 }
 \arguments{
-\item{StackName}{The name or the unique stack ID that's associated with the stack, which
+\item{StackName}{If you don't pass a parameter to \code{StackName}, the API returns a response
+that describes all resources in the account. This requires
+\code{\link[=cloudformation_list_stacks]{list_stacks}} and
+\code{\link[=cloudformation_describe_stacks]{describe_stacks}} permissions.
+
+The IAM policy below can be added to IAM policies when you want to limit
+resource-level permissions and avoid returning a response when no
+parameter is sent in the request:
+
+\{ "Version": "2012-10-17", "Statement": [\{ "Effect": "Deny",
+"Action": "cloudformation:DescribeStacks", "NotResource":
+"arn:aws:cloudformation:\emph{:}:stack/\emph{/}" \}] \}
+
+The name or the unique stack ID that's associated with the stack, which
 aren't always interchangeable:
 \itemize{
 \item Running stacks: You can specify either the stack's name or its
@@ -24,6 +37,6 @@ retrieve.}
 \description{
 Returns the description for the specified stack; if no stack name was specified, then it returns the description for all the stacks created.
 
-See \url{https://paws-r.github.io/docs/cloudformation/describe_stacks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_describe_stacks/} for full documentation.
 }
 \keyword{internal}

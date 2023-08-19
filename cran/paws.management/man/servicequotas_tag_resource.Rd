@@ -20,6 +20,6 @@ operation.}
 \description{
 Adds tags to the specified applied quota. You can include one or more tags to add to the quota.
 
-See \url{https://paws-r.github.io/docs/servicequotas/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicequotas_tag_resource/} for full documentation.
 }
 \keyword{internal}

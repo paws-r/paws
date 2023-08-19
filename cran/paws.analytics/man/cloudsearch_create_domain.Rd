@@ -15,6 +15,6 @@ long.}
 \description{
 Creates a new search domain. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/creating-domains.html" target="_blank">}}Creating a Search Domain\if{html}{\out{</a>}} in the \emph{Amazon CloudSearch Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudsearch/create_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudsearch_create_domain/} for full documentation.
 }
 \keyword{internal}

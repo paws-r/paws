@@ -32,6 +32,6 @@ panorama_create_node_from_template_job(
 \description{
 Creates a camera stream node.
 
-See \url{https://paws-r.github.io/docs/panorama/create_node_from_template_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/panorama_create_node_from_template_job/} for full documentation.
 }
 \keyword{internal}

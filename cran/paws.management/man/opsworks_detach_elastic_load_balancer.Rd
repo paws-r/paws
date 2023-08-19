@@ -15,6 +15,6 @@ to.}
 \description{
 Detaches a specified Elastic Load Balancing instance from its layer.
 
-See \url{https://paws-r.github.io/docs/opsworks/detach_elastic_load_balancer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_detach_elastic_load_balancer/} for full documentation.
 }
 \keyword{internal}

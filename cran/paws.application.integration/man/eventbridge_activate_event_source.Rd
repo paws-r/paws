@@ -12,6 +12,6 @@ eventbridge_activate_event_source(Name)
 \description{
 Activates a partner event source that has been deactivated. Once activated, your matching event bus will start receiving events from the event source.
 
-See \url{https://paws-r.github.io/docs/eventbridge/activate_event_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_activate_event_source/} for full documentation.
 }
 \keyword{internal}

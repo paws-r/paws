@@ -35,6 +35,6 @@ For example,
 \description{
 Rejects an offer to share the specified portfolio.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/reject_portfolio_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_reject_portfolio_share/} for full documentation.
 }
 \keyword{internal}

@@ -6,17 +6,20 @@
 \usage{
 applicationinsights_describe_component_configuration(
   ResourceGroupName,
-  ComponentName
+  ComponentName,
+  AccountId = NULL
 )
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
 
 \item{ComponentName}{[required] The name of the component.}
+
+\item{AccountId}{The AWS account ID for the resource group owner.}
 }
 \description{
 Describes the monitoring configuration of the component.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/describe_component_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_describe_component_configuration/} for full documentation.
 }
 \keyword{internal}

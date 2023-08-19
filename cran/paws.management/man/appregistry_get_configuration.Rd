@@ -9,6 +9,6 @@ appregistry_get_configuration()
 \description{
 Retrieves a \code{TagKey} configuration from an account.
 
-See \url{https://paws-r.github.io/docs/appregistry/get_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_get_configuration/} for full documentation.
 }
 \keyword{internal}

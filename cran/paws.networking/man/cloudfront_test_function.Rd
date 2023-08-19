@@ -23,6 +23,6 @@ in the \emph{Amazon CloudFront Developer Guide}.}
 \description{
 Tests a CloudFront function.
 
-See \url{https://paws-r.github.io/docs/cloudfront/test_function.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_test_function/} for full documentation.
 }
 \keyword{internal}

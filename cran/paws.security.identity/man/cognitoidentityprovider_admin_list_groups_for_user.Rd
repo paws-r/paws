@@ -25,6 +25,6 @@ list.}
 \description{
 Lists the groups that the user belongs to.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_list_groups_for_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_list_groups_for_user/} for full documentation.
 }
 \keyword{internal}

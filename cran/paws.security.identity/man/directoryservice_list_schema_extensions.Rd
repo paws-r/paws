@@ -23,6 +23,6 @@ Pass null if this is the first call.}
 \description{
 Lists all schema extensions applied to a Microsoft AD Directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/list_schema_extensions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_list_schema_extensions/} for full documentation.
 }
 \keyword{internal}

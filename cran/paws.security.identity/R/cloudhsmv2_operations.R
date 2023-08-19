@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Copy an AWS CloudHSM cluster backup to a different region.
 #'
-#' See [https://paws-r.github.io/docs/cloudhsmv2/copy_backup_to_region.html](https://paws-r.github.io/docs/cloudhsmv2/copy_backup_to_region.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_copy_backup_to_region/](https://www.paws-r-sdk.com/docs/cloudhsmv2_copy_backup_to_region/) for full documentation.
 #'
 #' @param DestinationRegion &#91;required&#93; The AWS region that will contain your copied CloudHSM cluster backup.
 #' @param BackupId &#91;required&#93; The ID of the backup that will be copied to the destination region.
@@ -42,7 +42,7 @@ cloudhsmv2_copy_backup_to_region <- function(DestinationRegion, BackupId, TagLis
 #' @description
 #' Creates a new AWS CloudHSM cluster.
 #'
-#' See [https://paws-r.github.io/docs/cloudhsmv2/create_cluster.html](https://paws-r.github.io/docs/cloudhsmv2/create_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_create_cluster/](https://www.paws-r-sdk.com/docs/cloudhsmv2_create_cluster/) for full documentation.
 #'
 #' @param BackupRetentionPolicy A policy that defines how the service retains backups.
 #' @param HsmType &#91;required&#93; The type of HSM to use in the cluster. Currently the only allowed value
@@ -86,7 +86,7 @@ cloudhsmv2_create_cluster <- function(BackupRetentionPolicy = NULL, HsmType, Sou
 #' @description
 #' Creates a new hardware security module (HSM) in the specified AWS CloudHSM cluster.
 #'
-#' See [https://paws-r.github.io/docs/cloudhsmv2/create_hsm.html](https://paws-r.github.io/docs/cloudhsmv2/create_hsm.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_create_hsm/](https://www.paws-r-sdk.com/docs/cloudhsmv2_create_hsm/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the HSM's cluster. To find the cluster ID, use
 #' [`describe_clusters`][cloudhsmv2_describe_clusters].
@@ -123,7 +123,7 @@ cloudhsmv2_create_hsm <- function(ClusterId, AvailabilityZone, IpAddress = NULL)
 #' @description
 #' Deletes a specified AWS CloudHSM backup. A backup can be restored up to 7 days after the DeleteBackup request is made. For more information on restoring a backup, see [`restore_backup`][cloudhsmv2_restore_backup].
 #'
-#' See [https://paws-r.github.io/docs/cloudhsmv2/delete_backup.html](https://paws-r.github.io/docs/cloudhsmv2/delete_backup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_backup/](https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_backup/) for full documentation.
 #'
 #' @param BackupId &#91;required&#93; The ID of the backup to be deleted. To find the ID of a backup, use the
 #' [`describe_backups`][cloudhsmv2_describe_backups] operation.
@@ -153,7 +153,7 @@ cloudhsmv2_delete_backup <- function(BackupId) {
 #' @description
 #' Deletes the specified AWS CloudHSM cluster. Before you can delete a cluster, you must delete all HSMs in the cluster. To see if the cluster contains any HSMs, use [`describe_clusters`][cloudhsmv2_describe_clusters]. To delete an HSM, use [`delete_hsm`][cloudhsmv2_delete_hsm].
 #'
-#' See [https://paws-r.github.io/docs/cloudhsmv2/delete_cluster.html](https://paws-r.github.io/docs/cloudhsmv2/delete_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_cluster/](https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_cluster/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you are deleting. To find the
 #' cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
@@ -183,7 +183,7 @@ cloudhsmv2_delete_cluster <- function(ClusterId) {
 #' @description
 #' Deletes the specified HSM. To specify an HSM, you can use its identifier (ID), the IP address of the HSM's elastic network interface (ENI), or the ID of the HSM's ENI. You need to specify only one of these values. To find these values, use [`describe_clusters`][cloudhsmv2_describe_clusters].
 #'
-#' See [https://paws-r.github.io/docs/cloudhsmv2/delete_hsm.html](https://paws-r.github.io/docs/cloudhsmv2/delete_hsm.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_hsm/](https://www.paws-r-sdk.com/docs/cloudhsmv2_delete_hsm/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that contains the HSM that you are
 #' deleting.
@@ -218,7 +218,7 @@ cloudhsmv2_delete_hsm <- function(ClusterId, HsmId = NULL, EniId = NULL, EniIp =
 #' @description
 #' Gets information about backups of AWS CloudHSM clusters.
 #'
-#' See [https://paws-r.github.io/docs/cloudhsmv2/describe_backups.html](https://paws-r.github.io/docs/cloudhsmv2/describe_backups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_describe_backups/](https://www.paws-r-sdk.com/docs/cloudhsmv2_describe_backups/) for full documentation.
 #'
 #' @param NextToken The `NextToken` value that you received in the previous response. Use
 #' this value to get more backups.
@@ -256,7 +256,7 @@ cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Fil
     name = "DescribeBackups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .cloudhsmv2$describe_backups_input(NextToken = NextToken, MaxResults = MaxResults, Filters = Filters, SortAscending = SortAscending)
   output <- .cloudhsmv2$describe_backups_output()
@@ -273,7 +273,7 @@ cloudhsmv2_describe_backups <- function(NextToken = NULL, MaxResults = NULL, Fil
 #' @description
 #' Gets information about AWS CloudHSM clusters.
 #'
-#' See [https://paws-r.github.io/docs/cloudhsmv2/describe_clusters.html](https://paws-r.github.io/docs/cloudhsmv2/describe_clusters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_describe_clusters/](https://www.paws-r-sdk.com/docs/cloudhsmv2_describe_clusters/) for full documentation.
 #'
 #' @param Filters One or more filters to limit the items returned in the response.
 #' 
@@ -300,7 +300,7 @@ cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxRe
     name = "DescribeClusters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .cloudhsmv2$describe_clusters_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudhsmv2$describe_clusters_output()
@@ -319,7 +319,7 @@ cloudhsmv2_describe_clusters <- function(Filters = NULL, NextToken = NULL, MaxRe
 #' @description
 #' Claims an AWS CloudHSM cluster by submitting the cluster certificate issued by your issuing certificate authority (CA) and the CA's root certificate. Before you can claim a cluster, you must sign the cluster's certificate signing request (CSR) with your issuing CA. To get the cluster's CSR, use [`describe_clusters`][cloudhsmv2_describe_clusters].
 #'
-#' See [https://paws-r.github.io/docs/cloudhsmv2/initialize_cluster.html](https://paws-r.github.io/docs/cloudhsmv2/initialize_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_initialize_cluster/](https://www.paws-r-sdk.com/docs/cloudhsmv2_initialize_cluster/) for full documentation.
 #'
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you are claiming. To find the
 #' cluster ID, use [`describe_clusters`][cloudhsmv2_describe_clusters].
@@ -357,7 +357,7 @@ cloudhsmv2_initialize_cluster <- function(ClusterId, SignedCert, TrustAnchor) {
 #' @description
 #' Gets a list of tags for the specified AWS CloudHSM cluster.
 #'
-#' See [https://paws-r.github.io/docs/cloudhsmv2/list_tags.html](https://paws-r.github.io/docs/cloudhsmv2/list_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_list_tags/](https://www.paws-r-sdk.com/docs/cloudhsmv2_list_tags/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The cluster identifier (ID) for the cluster whose tags you are getting.
 #' To find the cluster ID, use
@@ -376,7 +376,7 @@ cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL
     name = "ListTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .cloudhsmv2$list_tags_input(ResourceId = ResourceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .cloudhsmv2$list_tags_output()
@@ -393,7 +393,7 @@ cloudhsmv2_list_tags <- function(ResourceId, NextToken = NULL, MaxResults = NULL
 #' @description
 #' Modifies attributes for AWS CloudHSM backup.
 #'
-#' See [https://paws-r.github.io/docs/cloudhsmv2/modify_backup_attributes.html](https://paws-r.github.io/docs/cloudhsmv2/modify_backup_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_modify_backup_attributes/](https://www.paws-r-sdk.com/docs/cloudhsmv2_modify_backup_attributes/) for full documentation.
 #'
 #' @param BackupId &#91;required&#93; The identifier (ID) of the backup to modify. To find the ID of a backup,
 #' use the [`describe_backups`][cloudhsmv2_describe_backups] operation.
@@ -427,7 +427,7 @@ cloudhsmv2_modify_backup_attributes <- function(BackupId, NeverExpires) {
 #' @description
 #' Modifies AWS CloudHSM cluster.
 #'
-#' See [https://paws-r.github.io/docs/cloudhsmv2/modify_cluster.html](https://paws-r.github.io/docs/cloudhsmv2/modify_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_modify_cluster/](https://www.paws-r-sdk.com/docs/cloudhsmv2_modify_cluster/) for full documentation.
 #'
 #' @param BackupRetentionPolicy &#91;required&#93; A policy that defines how the service retains backups.
 #' @param ClusterId &#91;required&#93; The identifier (ID) of the cluster that you want to modify. To find the
@@ -459,7 +459,7 @@ cloudhsmv2_modify_cluster <- function(BackupRetentionPolicy, ClusterId) {
 #' @description
 #' Restores a specified AWS CloudHSM backup that is in the `PENDING_DELETION` state. For mor information on deleting a backup, see [`delete_backup`][cloudhsmv2_delete_backup].
 #'
-#' See [https://paws-r.github.io/docs/cloudhsmv2/restore_backup.html](https://paws-r.github.io/docs/cloudhsmv2/restore_backup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_restore_backup/](https://www.paws-r-sdk.com/docs/cloudhsmv2_restore_backup/) for full documentation.
 #'
 #' @param BackupId &#91;required&#93; The ID of the backup to be restored. To find the ID of a backup, use the
 #' [`describe_backups`][cloudhsmv2_describe_backups] operation.
@@ -490,7 +490,7 @@ cloudhsmv2_restore_backup <- function(BackupId) {
 #' @description
 #' Adds or overwrites one or more tags for the specified AWS CloudHSM cluster.
 #'
-#' See [https://paws-r.github.io/docs/cloudhsmv2/tag_resource.html](https://paws-r.github.io/docs/cloudhsmv2/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_tag_resource/](https://www.paws-r-sdk.com/docs/cloudhsmv2_tag_resource/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The cluster identifier (ID) for the cluster that you are tagging. To
 #' find the cluster ID, use
@@ -523,7 +523,7 @@ cloudhsmv2_tag_resource <- function(ResourceId, TagList) {
 #' @description
 #' Removes the specified tag or tags from the specified AWS CloudHSM cluster.
 #'
-#' See [https://paws-r.github.io/docs/cloudhsmv2/untag_resource.html](https://paws-r.github.io/docs/cloudhsmv2/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudhsmv2_untag_resource/](https://www.paws-r-sdk.com/docs/cloudhsmv2_untag_resource/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The cluster identifier (ID) for the cluster whose tags you are removing.
 #' To find the cluster ID, use

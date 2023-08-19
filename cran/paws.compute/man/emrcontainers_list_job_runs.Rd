@@ -32,6 +32,6 @@ emrcontainers_list_job_runs(
 \description{
 Lists job runs based on a set of parameters. A job run is a unit of work, such as a Spark jar, PySpark script, or SparkSQL query, that you submit to Amazon EMR on EKS.
 
-See \url{https://paws-r.github.io/docs/emrcontainers/list_job_runs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrcontainers_list_job_runs/} for full documentation.
 }
 \keyword{internal}

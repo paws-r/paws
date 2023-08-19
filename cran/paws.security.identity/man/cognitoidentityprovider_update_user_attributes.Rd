@@ -57,6 +57,6 @@ provide sensitive information.
 \description{
 Allows a user to update a specific attribute (one at a time).
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/update_user_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_user_attributes/} for full documentation.
 }
 \keyword{internal}

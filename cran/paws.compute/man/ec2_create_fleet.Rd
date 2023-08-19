@@ -2,7 +2,8 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_create_fleet}
 \alias{ec2_create_fleet}
-\title{Launches an EC2 Fleet}
+\title{Creates an EC2 Fleet that contains the configuration information for
+On-Demand Instances and Spot Instances}
 \usage{
 ec2_create_fleet(
   DryRun = NULL,
@@ -91,8 +92,8 @@ If the fleet type is \code{maintain} or \code{request}, specify a resource type 
 \item{Context}{Reserved.}
 }
 \description{
-Launches an EC2 Fleet.
+Creates an EC2 Fleet that contains the configuration information for On-Demand Instances and Spot Instances. Instances are launched immediately if there is available capacity.
 
-See \url{https://paws-r.github.io/docs/ec2/create_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_fleet/} for full documentation.
 }
 \keyword{internal}

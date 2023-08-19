@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a cell in an account.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/create_cell.html](https://paws-r.github.io/docs/route53recoveryreadiness/create_cell.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_create_cell/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_create_cell/) for full documentation.
 #'
 #' @param CellName &#91;required&#93; The name of the cell to create.
 #' @param Cells A list of cell Amazon Resource Names (ARNs) contained within this cell,
@@ -41,7 +41,7 @@ route53recoveryreadiness_create_cell <- function(CellName, Cells = NULL, Tags = 
 #' @description
 #' Creates a cross-account readiness authorization. This lets you authorize another account to work with Route 53 Application Recovery Controller, for example, to check the readiness status of resources in a separate account.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/create_cross_account_authorization.html](https://paws-r.github.io/docs/route53recoveryreadiness/create_cross_account_authorization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_create_cross_account_authorization/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_create_cross_account_authorization/) for full documentation.
 #'
 #' @param CrossAccountAuthorization &#91;required&#93; The cross-account authorization.
 #'
@@ -70,7 +70,7 @@ route53recoveryreadiness_create_cross_account_authorization <- function(CrossAcc
 #' @description
 #' Creates a readiness check in an account. A readiness check monitors a resource set in your application, such as a set of Amazon Aurora instances, that Application Recovery Controller is auditing recovery readiness for. The audits run once every minute on every resource that's associated with a readiness check.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/create_readiness_check.html](https://paws-r.github.io/docs/route53recoveryreadiness/create_readiness_check.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_create_readiness_check/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_create_readiness_check/) for full documentation.
 #'
 #' @param ReadinessCheckName &#91;required&#93; The name of the readiness check to create.
 #' @param ResourceSetName &#91;required&#93; The name of the resource set to check.
@@ -101,7 +101,7 @@ route53recoveryreadiness_create_readiness_check <- function(ReadinessCheckName, 
 #' @description
 #' Creates a recovery group in an account. A recovery group corresponds to an application and includes a list of the cells that make up the application.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/create_recovery_group.html](https://paws-r.github.io/docs/route53recoveryreadiness/create_recovery_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_create_recovery_group/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_create_recovery_group/) for full documentation.
 #'
 #' @param Cells A list of the cell Amazon Resource Names (ARNs) in the recovery group.
 #' @param RecoveryGroupName &#91;required&#93; The name of the recovery group to create.
@@ -132,7 +132,7 @@ route53recoveryreadiness_create_recovery_group <- function(Cells = NULL, Recover
 #' @description
 #' Creates a resource set. A resource set is a set of resources of one type that span multiple cells. You can associate a resource set with a readiness check to monitor the resources for failover readiness.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/create_resource_set.html](https://paws-r.github.io/docs/route53recoveryreadiness/create_resource_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_create_resource_set/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_create_resource_set/) for full documentation.
 #'
 #' @param ResourceSetName &#91;required&#93; The name of the resource set to create.
 #' @param ResourceSetType &#91;required&#93; The resource type of the resources in the resource set. Enter one of the
@@ -175,7 +175,7 @@ route53recoveryreadiness_create_resource_set <- function(ResourceSetName, Resour
 #' @description
 #' Delete a cell. When successful, the response code is 204, with no response body.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/delete_cell.html](https://paws-r.github.io/docs/route53recoveryreadiness/delete_cell.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_delete_cell/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_delete_cell/) for full documentation.
 #'
 #' @param CellName &#91;required&#93; The name of the cell.
 #'
@@ -204,7 +204,7 @@ route53recoveryreadiness_delete_cell <- function(CellName) {
 #' @description
 #' Deletes cross account readiness authorization.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/delete_cross_account_authorization.html](https://paws-r.github.io/docs/route53recoveryreadiness/delete_cross_account_authorization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_delete_cross_account_authorization/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_delete_cross_account_authorization/) for full documentation.
 #'
 #' @param CrossAccountAuthorization &#91;required&#93; The cross-account authorization.
 #'
@@ -233,7 +233,7 @@ route53recoveryreadiness_delete_cross_account_authorization <- function(CrossAcc
 #' @description
 #' Deletes a readiness check.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/delete_readiness_check.html](https://paws-r.github.io/docs/route53recoveryreadiness/delete_readiness_check.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_delete_readiness_check/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_delete_readiness_check/) for full documentation.
 #'
 #' @param ReadinessCheckName &#91;required&#93; Name of a readiness check.
 #'
@@ -262,7 +262,7 @@ route53recoveryreadiness_delete_readiness_check <- function(ReadinessCheckName) 
 #' @description
 #' Deletes a recovery group.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/delete_recovery_group.html](https://paws-r.github.io/docs/route53recoveryreadiness/delete_recovery_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_delete_recovery_group/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_delete_recovery_group/) for full documentation.
 #'
 #' @param RecoveryGroupName &#91;required&#93; The name of a recovery group.
 #'
@@ -291,7 +291,7 @@ route53recoveryreadiness_delete_recovery_group <- function(RecoveryGroupName) {
 #' @description
 #' Deletes a resource set.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/delete_resource_set.html](https://paws-r.github.io/docs/route53recoveryreadiness/delete_resource_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_delete_resource_set/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_delete_resource_set/) for full documentation.
 #'
 #' @param ResourceSetName &#91;required&#93; Name of a resource set.
 #'
@@ -321,7 +321,7 @@ route53recoveryreadiness_delete_resource_set <- function(ResourceSetName) {
 #' @description
 #' Gets recommendations about architecture designs for improving resiliency for an application, based on a recovery group.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/get_architecture_recommendations.html](https://paws-r.github.io/docs/route53recoveryreadiness/get_architecture_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_architecture_recommendations/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_architecture_recommendations/) for full documentation.
 #'
 #' @param MaxResults The number of objects that you want to return with this call.
 #' @param NextToken The token that identifies which batch of results you want to see.
@@ -354,7 +354,7 @@ route53recoveryreadiness_get_architecture_recommendations <- function(MaxResults
 #' @description
 #' Gets information about a cell including cell name, cell Amazon Resource Name (ARN), ARNs of nested cells for this cell, and a list of those cell ARNs with their associated recovery group ARNs.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/get_cell.html](https://paws-r.github.io/docs/route53recoveryreadiness/get_cell.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_cell/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_cell/) for full documentation.
 #'
 #' @param CellName &#91;required&#93; The name of the cell.
 #'
@@ -383,7 +383,7 @@ route53recoveryreadiness_get_cell <- function(CellName) {
 #' @description
 #' Gets readiness for a cell. Aggregates the readiness of all the resources that are associated with the cell into a single value.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/get_cell_readiness_summary.html](https://paws-r.github.io/docs/route53recoveryreadiness/get_cell_readiness_summary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_cell_readiness_summary/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_cell_readiness_summary/) for full documentation.
 #'
 #' @param CellName &#91;required&#93; The name of the cell.
 #' @param MaxResults The number of objects that you want to return with this call.
@@ -397,7 +397,7 @@ route53recoveryreadiness_get_cell_readiness_summary <- function(CellName, MaxRes
     name = "GetCellReadinessSummary",
     http_method = "GET",
     http_path = "/cellreadiness/{cellName}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ReadinessChecks", non_aggregate_keys = list( "Readiness"))
   )
   input <- .route53recoveryreadiness$get_cell_readiness_summary_input(CellName = CellName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$get_cell_readiness_summary_output()
@@ -414,7 +414,7 @@ route53recoveryreadiness_get_cell_readiness_summary <- function(CellName, MaxRes
 #' @description
 #' Gets details about a readiness check.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/get_readiness_check.html](https://paws-r.github.io/docs/route53recoveryreadiness/get_readiness_check.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_readiness_check/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_readiness_check/) for full documentation.
 #'
 #' @param ReadinessCheckName &#91;required&#93; Name of a readiness check.
 #'
@@ -443,7 +443,7 @@ route53recoveryreadiness_get_readiness_check <- function(ReadinessCheckName) {
 #' @description
 #' Gets individual readiness status for a readiness check. To see the overall readiness status for a recovery group, that considers the readiness status for all the readiness checks in the recovery group, use GetRecoveryGroupReadinessSummary.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/get_readiness_check_resource_status.html](https://paws-r.github.io/docs/route53recoveryreadiness/get_readiness_check_resource_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_readiness_check_resource_status/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_readiness_check_resource_status/) for full documentation.
 #'
 #' @param MaxResults The number of objects that you want to return with this call.
 #' @param NextToken The token that identifies which batch of results you want to see.
@@ -460,7 +460,7 @@ route53recoveryreadiness_get_readiness_check_resource_status <- function(MaxResu
     name = "GetReadinessCheckResourceStatus",
     http_method = "GET",
     http_path = "/readinesschecks/{readinessCheckName}/resource/{resourceIdentifier}/status",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Rules", non_aggregate_keys = list("Readiness"))
   )
   input <- .route53recoveryreadiness$get_readiness_check_resource_status_input(MaxResults = MaxResults, NextToken = NextToken, ReadinessCheckName = ReadinessCheckName, ResourceIdentifier = ResourceIdentifier)
   output <- .route53recoveryreadiness$get_readiness_check_resource_status_output()
@@ -477,7 +477,7 @@ route53recoveryreadiness_get_readiness_check_resource_status <- function(MaxResu
 #' @description
 #' Gets the readiness status for an individual readiness check. To see the overall readiness status for a recovery group, that considers the readiness status for all the readiness checks in a recovery group, use GetRecoveryGroupReadinessSummary.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/get_readiness_check_status.html](https://paws-r.github.io/docs/route53recoveryreadiness/get_readiness_check_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_readiness_check_status/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_readiness_check_status/) for full documentation.
 #'
 #' @param MaxResults The number of objects that you want to return with this call.
 #' @param NextToken The token that identifies which batch of results you want to see.
@@ -491,7 +491,7 @@ route53recoveryreadiness_get_readiness_check_status <- function(MaxResults = NUL
     name = "GetReadinessCheckStatus",
     http_method = "GET",
     http_path = "/readinesschecks/{readinessCheckName}/status",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Resources", non_aggregate_keys = list("Readiness", "Messages"))
   )
   input <- .route53recoveryreadiness$get_readiness_check_status_input(MaxResults = MaxResults, NextToken = NextToken, ReadinessCheckName = ReadinessCheckName)
   output <- .route53recoveryreadiness$get_readiness_check_status_output()
@@ -509,7 +509,7 @@ route53recoveryreadiness_get_readiness_check_status <- function(MaxResults = NUL
 #' @description
 #' Gets details about a recovery group, including a list of the cells that are included in it.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/get_recovery_group.html](https://paws-r.github.io/docs/route53recoveryreadiness/get_recovery_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_recovery_group/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_recovery_group/) for full documentation.
 #'
 #' @param RecoveryGroupName &#91;required&#93; The name of a recovery group.
 #'
@@ -539,7 +539,7 @@ route53recoveryreadiness_get_recovery_group <- function(RecoveryGroupName) {
 #' @description
 #' Displays a summary of information about a recovery group's readiness status. Includes the readiness checks for resources in the recovery group and the readiness status of each one.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/get_recovery_group_readiness_summary.html](https://paws-r.github.io/docs/route53recoveryreadiness/get_recovery_group_readiness_summary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_recovery_group_readiness_summary/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_recovery_group_readiness_summary/) for full documentation.
 #'
 #' @param MaxResults The number of objects that you want to return with this call.
 #' @param NextToken The token that identifies which batch of results you want to see.
@@ -553,7 +553,7 @@ route53recoveryreadiness_get_recovery_group_readiness_summary <- function(MaxRes
     name = "GetRecoveryGroupReadinessSummary",
     http_method = "GET",
     http_path = "/recoverygroupreadiness/{recoveryGroupName}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ReadinessChecks", non_aggregate_keys = list( "Readiness"))
   )
   input <- .route53recoveryreadiness$get_recovery_group_readiness_summary_input(MaxResults = MaxResults, NextToken = NextToken, RecoveryGroupName = RecoveryGroupName)
   output <- .route53recoveryreadiness$get_recovery_group_readiness_summary_output()
@@ -571,7 +571,7 @@ route53recoveryreadiness_get_recovery_group_readiness_summary <- function(MaxRes
 #' @description
 #' Displays the details about a resource set, including a list of the resources in the set.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/get_resource_set.html](https://paws-r.github.io/docs/route53recoveryreadiness/get_resource_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_resource_set/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_resource_set/) for full documentation.
 #'
 #' @param ResourceSetName &#91;required&#93; Name of a resource set.
 #'
@@ -600,7 +600,7 @@ route53recoveryreadiness_get_resource_set <- function(ResourceSetName) {
 #' @description
 #' Lists the cells for an account.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/list_cells.html](https://paws-r.github.io/docs/route53recoveryreadiness/list_cells.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_cells/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_cells/) for full documentation.
 #'
 #' @param MaxResults The number of objects that you want to return with this call.
 #' @param NextToken The token that identifies which batch of results you want to see.
@@ -613,7 +613,7 @@ route53recoveryreadiness_list_cells <- function(MaxResults = NULL, NextToken = N
     name = "ListCells",
     http_method = "GET",
     http_path = "/cells",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Cells")
   )
   input <- .route53recoveryreadiness$list_cells_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$list_cells_output()
@@ -631,7 +631,7 @@ route53recoveryreadiness_list_cells <- function(MaxResults = NULL, NextToken = N
 #' @description
 #' Lists the cross-account readiness authorizations that are in place for an account.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/list_cross_account_authorizations.html](https://paws-r.github.io/docs/route53recoveryreadiness/list_cross_account_authorizations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_cross_account_authorizations/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_cross_account_authorizations/) for full documentation.
 #'
 #' @param MaxResults The number of objects that you want to return with this call.
 #' @param NextToken The token that identifies which batch of results you want to see.
@@ -644,7 +644,7 @@ route53recoveryreadiness_list_cross_account_authorizations <- function(MaxResult
     name = "ListCrossAccountAuthorizations",
     http_method = "GET",
     http_path = "/crossaccountauthorizations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CrossAccountAuthorizations")
   )
   input <- .route53recoveryreadiness$list_cross_account_authorizations_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$list_cross_account_authorizations_output()
@@ -661,7 +661,7 @@ route53recoveryreadiness_list_cross_account_authorizations <- function(MaxResult
 #' @description
 #' Lists the readiness checks for an account.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/list_readiness_checks.html](https://paws-r.github.io/docs/route53recoveryreadiness/list_readiness_checks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_readiness_checks/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_readiness_checks/) for full documentation.
 #'
 #' @param MaxResults The number of objects that you want to return with this call.
 #' @param NextToken The token that identifies which batch of results you want to see.
@@ -674,7 +674,7 @@ route53recoveryreadiness_list_readiness_checks <- function(MaxResults = NULL, Ne
     name = "ListReadinessChecks",
     http_method = "GET",
     http_path = "/readinesschecks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ReadinessChecks")
   )
   input <- .route53recoveryreadiness$list_readiness_checks_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$list_readiness_checks_output()
@@ -691,7 +691,7 @@ route53recoveryreadiness_list_readiness_checks <- function(MaxResults = NULL, Ne
 #' @description
 #' Lists the recovery groups in an account.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/list_recovery_groups.html](https://paws-r.github.io/docs/route53recoveryreadiness/list_recovery_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_recovery_groups/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_recovery_groups/) for full documentation.
 #'
 #' @param MaxResults The number of objects that you want to return with this call.
 #' @param NextToken The token that identifies which batch of results you want to see.
@@ -704,7 +704,7 @@ route53recoveryreadiness_list_recovery_groups <- function(MaxResults = NULL, Nex
     name = "ListRecoveryGroups",
     http_method = "GET",
     http_path = "/recoverygroups",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryGroups")
   )
   input <- .route53recoveryreadiness$list_recovery_groups_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$list_recovery_groups_output()
@@ -721,7 +721,7 @@ route53recoveryreadiness_list_recovery_groups <- function(MaxResults = NULL, Nex
 #' @description
 #' Lists the resource sets in an account.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/list_resource_sets.html](https://paws-r.github.io/docs/route53recoveryreadiness/list_resource_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_resource_sets/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_resource_sets/) for full documentation.
 #'
 #' @param MaxResults The number of objects that you want to return with this call.
 #' @param NextToken The token that identifies which batch of results you want to see.
@@ -734,7 +734,7 @@ route53recoveryreadiness_list_resource_sets <- function(MaxResults = NULL, NextT
     name = "ListResourceSets",
     http_method = "GET",
     http_path = "/resourcesets",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceSets")
   )
   input <- .route53recoveryreadiness$list_resource_sets_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .route53recoveryreadiness$list_resource_sets_output()
@@ -752,7 +752,7 @@ route53recoveryreadiness_list_resource_sets <- function(MaxResults = NULL, NextT
 #' @description
 #' Lists all readiness rules, or lists the readiness rules for a specific resource type.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/list_rules.html](https://paws-r.github.io/docs/route53recoveryreadiness/list_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_rules/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_rules/) for full documentation.
 #'
 #' @param MaxResults The number of objects that you want to return with this call.
 #' @param NextToken The token that identifies which batch of results you want to see.
@@ -766,7 +766,7 @@ route53recoveryreadiness_list_rules <- function(MaxResults = NULL, NextToken = N
     name = "ListRules",
     http_method = "GET",
     http_path = "/rules",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Rules")
   )
   input <- .route53recoveryreadiness$list_rules_input(MaxResults = MaxResults, NextToken = NextToken, ResourceType = ResourceType)
   output <- .route53recoveryreadiness$list_rules_output()
@@ -783,7 +783,7 @@ route53recoveryreadiness_list_rules <- function(MaxResults = NULL, NextToken = N
 #' @description
 #' Lists the tags for a resource.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/list_tags_for_resources.html](https://paws-r.github.io/docs/route53recoveryreadiness/list_tags_for_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_tags_for_resources/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_list_tags_for_resources/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for a resource.
 #'
@@ -812,7 +812,7 @@ route53recoveryreadiness_list_tags_for_resources <- function(ResourceArn) {
 #' @description
 #' Adds a tag to a resource.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/tag_resource.html](https://paws-r.github.io/docs/route53recoveryreadiness/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_tag_resource/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for a resource.
 #' @param Tags &#91;required&#93; 
@@ -842,7 +842,7 @@ route53recoveryreadiness_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes a tag from a resource.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/untag_resource.html](https://paws-r.github.io/docs/route53recoveryreadiness/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_untag_resource/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) for a resource.
 #' @param TagKeys &#91;required&#93; The keys for tags you add to resources.
@@ -873,7 +873,7 @@ route53recoveryreadiness_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates a cell to replace the list of nested cells with a new list of nested cells.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/update_cell.html](https://paws-r.github.io/docs/route53recoveryreadiness/update_cell.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_update_cell/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_update_cell/) for full documentation.
 #'
 #' @param CellName &#91;required&#93; The name of the cell.
 #' @param Cells &#91;required&#93; A list of cell Amazon Resource Names (ARNs), which completely replaces
@@ -904,7 +904,7 @@ route53recoveryreadiness_update_cell <- function(CellName, Cells) {
 #' @description
 #' Updates a readiness check.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/update_readiness_check.html](https://paws-r.github.io/docs/route53recoveryreadiness/update_readiness_check.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_update_readiness_check/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_update_readiness_check/) for full documentation.
 #'
 #' @param ReadinessCheckName &#91;required&#93; Name of a readiness check.
 #' @param ResourceSetName &#91;required&#93; The name of the resource set to be checked.
@@ -934,7 +934,7 @@ route53recoveryreadiness_update_readiness_check <- function(ReadinessCheckName, 
 #' @description
 #' Updates a recovery group.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/update_recovery_group.html](https://paws-r.github.io/docs/route53recoveryreadiness/update_recovery_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_update_recovery_group/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_update_recovery_group/) for full documentation.
 #'
 #' @param Cells &#91;required&#93; A list of cell Amazon Resource Names (ARNs). This list completely
 #' replaces the previous list.
@@ -965,7 +965,7 @@ route53recoveryreadiness_update_recovery_group <- function(Cells, RecoveryGroupN
 #' @description
 #' Updates a resource set.
 #'
-#' See [https://paws-r.github.io/docs/route53recoveryreadiness/update_resource_set.html](https://paws-r.github.io/docs/route53recoveryreadiness/update_resource_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoveryreadiness_update_resource_set/](https://www.paws-r-sdk.com/docs/route53recoveryreadiness_update_resource_set/) for full documentation.
 #'
 #' @param ResourceSetName &#91;required&#93; Name of a resource set.
 #' @param ResourceSetType &#91;required&#93; The resource type of the resources in the resource set. Enter one of the

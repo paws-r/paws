@@ -17,6 +17,6 @@ index exist.}
 \description{
 Attaches the specified object to the specified index.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/attach_to_index.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_attach_to_index/} for full documentation.
 }
 \keyword{internal}

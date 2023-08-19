@@ -14,6 +14,6 @@ recyclebin_lock_rule(Identifier, LockConfiguration)
 \description{
 Locks a retention rule. A locked retention rule can't be modified or deleted.
 
-See \url{https://paws-r.github.io/docs/recyclebin/lock_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/recyclebin_lock_rule/} for full documentation.
 }
 \keyword{internal}

@@ -24,6 +24,6 @@ does not honor the cooldown period during manual scaling activities.}
 \description{
 Sets the size of the specified Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/set_desired_capacity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_set_desired_capacity/} for full documentation.
 }
 \keyword{internal}

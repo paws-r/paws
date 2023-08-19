@@ -17,6 +17,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Cancels (stops) an active journey.
 
-See \url{https://paws-r.github.io/docs/pinpoint/update_journey_state.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_update_journey_state/} for full documentation.
 }
 \keyword{internal}

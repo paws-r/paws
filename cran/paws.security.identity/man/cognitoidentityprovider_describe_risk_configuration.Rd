@@ -17,6 +17,6 @@ cognitoidentityprovider_describe_risk_configuration(
 \description{
 Describes the risk configuration.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/describe_risk_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_risk_configuration/} for full documentation.
 }
 \keyword{internal}

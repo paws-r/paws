@@ -6,12 +6,23 @@
 the geometry of an existing geofence if a geofence ID is included in the
 request}
 \usage{
-locationservice_put_geofence(CollectionName, GeofenceId, Geometry)
+locationservice_put_geofence(
+  CollectionName,
+  GeofenceId,
+  GeofenceProperties = NULL,
+  Geometry
+)
 }
 \arguments{
 \item{CollectionName}{[required] The geofence collection to store the geofence in.}
 
 \item{GeofenceId}{[required] An identifier for the geofence. For example, \code{ExampleGeofence-1}.}
+
+\item{GeofenceProperties}{Associates one of more properties with the geofence. A property is a
+key-value pair stored with the geofence and added to any geofence event
+triggered with that geofence.
+
+Format: \code{"key" : "value"}}
 
 \item{Geometry}{[required] Contains the details to specify the position of the geofence. Can be
 either a polygon or a circle. Including both will return a validation
@@ -23,6 +34,6 @@ can have a maximum of 1,000 vertices.}
 \description{
 Stores a geofence geometry in a given geofence collection, or updates the geometry of an existing geofence if a geofence ID is included in the request.
 
-See \url{https://paws-r.github.io/docs/locationservice/put_geofence.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_put_geofence/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ The maximum length is 255 characters.}
 \description{
 Exports a running or stopped instance to an Amazon S3 bucket.
 
-See \url{https://paws-r.github.io/docs/ec2/create_instance_export_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_instance_export_task/} for full documentation.
 }
 \keyword{internal}

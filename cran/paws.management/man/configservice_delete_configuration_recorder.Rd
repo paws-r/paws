@@ -15,6 +15,6 @@ action.}
 \description{
 Deletes the configuration recorder.
 
-See \url{https://paws-r.github.io/docs/configservice/delete_configuration_recorder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_delete_configuration_recorder/} for full documentation.
 }
 \keyword{internal}

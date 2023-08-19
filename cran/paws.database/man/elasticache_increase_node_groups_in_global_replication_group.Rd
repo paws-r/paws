@@ -26,6 +26,6 @@ permitted value for this parameter is true.}
 \description{
 Increase the number of node groups in the Global datastore
 
-See \url{https://paws-r.github.io/docs/elasticache/increase_node_groups_in_global_replication_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_increase_node_groups_in_global_replication_group/} for full documentation.
 }
 \keyword{internal}

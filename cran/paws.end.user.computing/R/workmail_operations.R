@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Adds a member (user or group) to the resource's set of delegates.
 #'
-#' See [https://paws-r.github.io/docs/workmail/associate_delegate_to_resource.html](https://paws-r.github.io/docs/workmail/associate_delegate_to_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_associate_delegate_to_resource/](https://www.paws-r-sdk.com/docs/workmail_associate_delegate_to_resource/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The organization under which the resource exists.
 #' @param ResourceId &#91;required&#93; The resource for which members (users or groups) are associated.
@@ -39,7 +39,7 @@ workmail_associate_delegate_to_resource <- function(OrganizationId, ResourceId, 
 #' @description
 #' Adds a member (user or group) to the group's set.
 #'
-#' See [https://paws-r.github.io/docs/workmail/associate_member_to_group.html](https://paws-r.github.io/docs/workmail/associate_member_to_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_associate_member_to_group/](https://www.paws-r-sdk.com/docs/workmail_associate_member_to_group/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The organization under which the group exists.
 #' @param GroupId &#91;required&#93; The group to which the member (user or group) is associated.
@@ -70,7 +70,7 @@ workmail_associate_member_to_group <- function(OrganizationId, GroupId, MemberId
 #' @description
 #' Assumes an impersonation role for the given WorkMail organization. This method returns an authentication token you can use to make impersonated calls.
 #'
-#' See [https://paws-r.github.io/docs/workmail/assume_impersonation_role.html](https://paws-r.github.io/docs/workmail/assume_impersonation_role.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_assume_impersonation_role/](https://www.paws-r-sdk.com/docs/workmail_assume_impersonation_role/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization under which the impersonation role will be
 #' assumed.
@@ -101,7 +101,7 @@ workmail_assume_impersonation_role <- function(OrganizationId, ImpersonationRole
 #' @description
 #' Cancels a mailbox export job.
 #'
-#' See [https://paws-r.github.io/docs/workmail/cancel_mailbox_export_job.html](https://paws-r.github.io/docs/workmail/cancel_mailbox_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_cancel_mailbox_export_job/](https://www.paws-r-sdk.com/docs/workmail_cancel_mailbox_export_job/) for full documentation.
 #'
 #' @param ClientToken &#91;required&#93; The idempotency token for the client request.
 #' @param JobId &#91;required&#93; The job ID.
@@ -132,7 +132,7 @@ workmail_cancel_mailbox_export_job <- function(ClientToken, JobId, OrganizationI
 #' @description
 #' Adds an alias to the set of a given member (user or group) of WorkMail.
 #'
-#' See [https://paws-r.github.io/docs/workmail/create_alias.html](https://paws-r.github.io/docs/workmail/create_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_create_alias/](https://www.paws-r-sdk.com/docs/workmail_create_alias/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The organization under which the member (user or group) exists.
 #' @param EntityId &#91;required&#93; The member (user or group) to which this alias is added.
@@ -164,7 +164,7 @@ workmail_create_alias <- function(OrganizationId, EntityId, Alias) {
 #' @description
 #' Creates an `AvailabilityConfiguration` for the given WorkMail organization and domain.
 #'
-#' See [https://paws-r.github.io/docs/workmail/create_availability_configuration.html](https://paws-r.github.io/docs/workmail/create_availability_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_create_availability_configuration/](https://www.paws-r-sdk.com/docs/workmail_create_availability_configuration/) for full documentation.
 #'
 #' @param ClientToken An idempotent token that ensures that an API request is executed only
 #' once.
@@ -204,7 +204,7 @@ workmail_create_availability_configuration <- function(ClientToken = NULL, Organ
 #' @description
 #' Creates a group that can be used in WorkMail by calling the [`register_to_work_mail`][workmail_register_to_work_mail] operation.
 #'
-#' See [https://paws-r.github.io/docs/workmail/create_group.html](https://paws-r.github.io/docs/workmail/create_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_create_group/](https://www.paws-r-sdk.com/docs/workmail_create_group/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The organization under which the group is to be created.
 #' @param Name &#91;required&#93; The name of the group.
@@ -234,7 +234,7 @@ workmail_create_group <- function(OrganizationId, Name) {
 #' @description
 #' Creates an impersonation role for the given WorkMail organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/create_impersonation_role.html](https://paws-r.github.io/docs/workmail/create_impersonation_role.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_create_impersonation_role/](https://www.paws-r-sdk.com/docs/workmail_create_impersonation_role/) for full documentation.
 #'
 #' @param ClientToken The idempotency token for the client request.
 #' @param OrganizationId &#91;required&#93; The WorkMail organization to create the new impersonation role within.
@@ -270,7 +270,7 @@ workmail_create_impersonation_role <- function(ClientToken = NULL, OrganizationI
 #' @description
 #' Creates a new mobile device access rule for the specified WorkMail organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/create_mobile_device_access_rule.html](https://paws-r.github.io/docs/workmail/create_mobile_device_access_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_create_mobile_device_access_rule/](https://www.paws-r-sdk.com/docs/workmail_create_mobile_device_access_rule/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization under which the rule will be created.
 #' @param ClientToken The idempotency token for the client request.
@@ -316,7 +316,7 @@ workmail_create_mobile_device_access_rule <- function(OrganizationId, ClientToke
 #' @description
 #' Creates a new WorkMail organization. Optionally, you can choose to associate an existing AWS Directory Service directory with your organization. If an AWS Directory Service directory ID is specified, the organization alias must match the directory alias. If you choose not to associate an existing directory with your organization, then we create a new WorkMail directory for you. For more information, see [Adding an organization](https://docs.aws.amazon.com/workmail/latest/adminguide/add_new_organization.html) in the *WorkMail Administrator Guide*.
 #'
-#' See [https://paws-r.github.io/docs/workmail/create_organization.html](https://paws-r.github.io/docs/workmail/create_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_create_organization/](https://www.paws-r-sdk.com/docs/workmail_create_organization/) for full documentation.
 #'
 #' @param DirectoryId The AWS Directory Service directory ID.
 #' @param Alias &#91;required&#93; The organization alias.
@@ -352,7 +352,7 @@ workmail_create_organization <- function(DirectoryId = NULL, Alias, ClientToken 
 #' @description
 #' Creates a new WorkMail resource.
 #'
-#' See [https://paws-r.github.io/docs/workmail/create_resource.html](https://paws-r.github.io/docs/workmail/create_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_create_resource/](https://www.paws-r-sdk.com/docs/workmail_create_resource/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier associated with the organization for which the resource
 #' is created.
@@ -386,7 +386,7 @@ workmail_create_resource <- function(OrganizationId, Name, Type) {
 #' @description
 #' Creates a user who can be used in WorkMail by calling the [`register_to_work_mail`][workmail_register_to_work_mail] operation.
 #'
-#' See [https://paws-r.github.io/docs/workmail/create_user.html](https://paws-r.github.io/docs/workmail/create_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_create_user/](https://www.paws-r-sdk.com/docs/workmail_create_user/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier of the organization for which the user is created.
 #' @param Name &#91;required&#93; The name for the new user. WorkMail directory user names have a maximum
@@ -419,7 +419,7 @@ workmail_create_user <- function(OrganizationId, Name, DisplayName, Password) {
 #' @description
 #' Deletes an access control rule for the specified WorkMail organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/delete_access_control_rule.html](https://paws-r.github.io/docs/workmail/delete_access_control_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_delete_access_control_rule/](https://www.paws-r-sdk.com/docs/workmail_delete_access_control_rule/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization.
 #' @param Name &#91;required&#93; The name of the access control rule.
@@ -450,7 +450,7 @@ workmail_delete_access_control_rule <- function(OrganizationId, Name) {
 #' @description
 #' Remove one or more specified aliases from a set of aliases for a given user.
 #'
-#' See [https://paws-r.github.io/docs/workmail/delete_alias.html](https://paws-r.github.io/docs/workmail/delete_alias.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_delete_alias/](https://www.paws-r-sdk.com/docs/workmail_delete_alias/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the user exists.
 #' @param EntityId &#91;required&#93; The identifier for the member (user or group) from which to have the
@@ -485,7 +485,7 @@ workmail_delete_alias <- function(OrganizationId, EntityId, Alias) {
 #' @description
 #' Deletes the `AvailabilityConfiguration` for the given WorkMail organization and domain.
 #'
-#' See [https://paws-r.github.io/docs/workmail/delete_availability_configuration.html](https://paws-r.github.io/docs/workmail/delete_availability_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_delete_availability_configuration/](https://www.paws-r-sdk.com/docs/workmail_delete_availability_configuration/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization for which the `AvailabilityConfiguration` will
 #' be deleted.
@@ -516,7 +516,7 @@ workmail_delete_availability_configuration <- function(OrganizationId, DomainNam
 #' @description
 #' Deletes the email monitoring configuration for a specified organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/delete_email_monitoring_configuration.html](https://paws-r.github.io/docs/workmail/delete_email_monitoring_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_delete_email_monitoring_configuration/](https://www.paws-r-sdk.com/docs/workmail_delete_email_monitoring_configuration/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The ID of the organization from which the email monitoring configuration
 #' is deleted.
@@ -546,7 +546,7 @@ workmail_delete_email_monitoring_configuration <- function(OrganizationId) {
 #' @description
 #' Deletes a group from WorkMail.
 #'
-#' See [https://paws-r.github.io/docs/workmail/delete_group.html](https://paws-r.github.io/docs/workmail/delete_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_delete_group/](https://www.paws-r-sdk.com/docs/workmail_delete_group/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The organization that contains the group.
 #' @param GroupId &#91;required&#93; The identifier of the group to be deleted.
@@ -576,7 +576,7 @@ workmail_delete_group <- function(OrganizationId, GroupId) {
 #' @description
 #' Deletes an impersonation role for the given WorkMail organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/delete_impersonation_role.html](https://paws-r.github.io/docs/workmail/delete_impersonation_role.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_delete_impersonation_role/](https://www.paws-r-sdk.com/docs/workmail_delete_impersonation_role/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization from which to delete the impersonation role.
 #' @param ImpersonationRoleId &#91;required&#93; The ID of the impersonation role to delete.
@@ -606,7 +606,7 @@ workmail_delete_impersonation_role <- function(OrganizationId, ImpersonationRole
 #' @description
 #' Deletes permissions granted to a member (user or group).
 #'
-#' See [https://paws-r.github.io/docs/workmail/delete_mailbox_permissions.html](https://paws-r.github.io/docs/workmail/delete_mailbox_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_delete_mailbox_permissions/](https://www.paws-r-sdk.com/docs/workmail_delete_mailbox_permissions/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier of the organization under which the member (user or
 #' group) exists.
@@ -640,7 +640,7 @@ workmail_delete_mailbox_permissions <- function(OrganizationId, EntityId, Grante
 #' @description
 #' Deletes the mobile device access override for the given WorkMail organization, user, and device.
 #'
-#' See [https://paws-r.github.io/docs/workmail/delete_mobile_device_access_override.html](https://paws-r.github.io/docs/workmail/delete_mobile_device_access_override.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_delete_mobile_device_access_override/](https://www.paws-r-sdk.com/docs/workmail_delete_mobile_device_access_override/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization for which the access override will be deleted.
 #' @param UserId &#91;required&#93; The WorkMail user for which you want to delete the override. Accepts the
@@ -681,7 +681,7 @@ workmail_delete_mobile_device_access_override <- function(OrganizationId, UserId
 #' @description
 #' Deletes a mobile device access rule for the specified WorkMail organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/delete_mobile_device_access_rule.html](https://paws-r.github.io/docs/workmail/delete_mobile_device_access_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_delete_mobile_device_access_rule/](https://www.paws-r-sdk.com/docs/workmail_delete_mobile_device_access_rule/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization under which the rule will be deleted.
 #' @param MobileDeviceAccessRuleId &#91;required&#93; The identifier of the rule to be deleted.
@@ -712,7 +712,7 @@ workmail_delete_mobile_device_access_rule <- function(OrganizationId, MobileDevi
 #' @description
 #' Deletes an WorkMail organization and all underlying AWS resources managed by WorkMail as part of the organization. You can choose whether to delete the associated directory. For more information, see [Removing an organization](https://docs.aws.amazon.com/workmail/latest/adminguide/delete_organization.html) in the *WorkMail Administrator Guide*.
 #'
-#' See [https://paws-r.github.io/docs/workmail/delete_organization.html](https://paws-r.github.io/docs/workmail/delete_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_delete_organization/](https://www.paws-r-sdk.com/docs/workmail_delete_organization/) for full documentation.
 #'
 #' @param ClientToken The idempotency token associated with the request.
 #' @param OrganizationId &#91;required&#93; The organization ID.
@@ -744,7 +744,7 @@ workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, Del
 #' @description
 #' Deletes the specified resource.
 #'
-#' See [https://paws-r.github.io/docs/workmail/delete_resource.html](https://paws-r.github.io/docs/workmail/delete_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_delete_resource/](https://www.paws-r-sdk.com/docs/workmail_delete_resource/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier associated with the organization from which the resource
 #' is deleted.
@@ -775,7 +775,7 @@ workmail_delete_resource <- function(OrganizationId, ResourceId) {
 #' @description
 #' Deletes the specified retention policy from the specified organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/delete_retention_policy.html](https://paws-r.github.io/docs/workmail/delete_retention_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_delete_retention_policy/](https://www.paws-r-sdk.com/docs/workmail_delete_retention_policy/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The organization ID.
 #' @param Id &#91;required&#93; The retention policy ID.
@@ -805,7 +805,7 @@ workmail_delete_retention_policy <- function(OrganizationId, Id) {
 #' @description
 #' Deletes a user from WorkMail and all subsequent systems. Before you can delete a user, the user state must be `DISABLED`. Use the [`describe_user`][workmail_describe_user] action to confirm the user state.
 #'
-#' See [https://paws-r.github.io/docs/workmail/delete_user.html](https://paws-r.github.io/docs/workmail/delete_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_delete_user/](https://www.paws-r-sdk.com/docs/workmail_delete_user/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The organization that contains the user to be deleted.
 #' @param UserId &#91;required&#93; The identifier of the user to be deleted.
@@ -835,7 +835,7 @@ workmail_delete_user <- function(OrganizationId, UserId) {
 #' @description
 #' Mark a user, group, or resource as no longer used in WorkMail. This action disassociates the mailbox and schedules it for clean-up. WorkMail keeps mailboxes for 30 days before they are permanently removed. The functionality in the console is *Disable*.
 #'
-#' See [https://paws-r.github.io/docs/workmail/deregister_from_work_mail.html](https://paws-r.github.io/docs/workmail/deregister_from_work_mail.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_deregister_from_work_mail/](https://www.paws-r-sdk.com/docs/workmail_deregister_from_work_mail/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the WorkMail entity
 #' exists.
@@ -867,7 +867,7 @@ workmail_deregister_from_work_mail <- function(OrganizationId, EntityId) {
 #' @description
 #' Removes a domain from WorkMail, stops email routing to WorkMail, and removes the authorization allowing WorkMail use. SES keeps the domain because other applications may use it. You must first remove any email address used by WorkMail entities before you remove the domain.
 #'
-#' See [https://paws-r.github.io/docs/workmail/deregister_mail_domain.html](https://paws-r.github.io/docs/workmail/deregister_mail_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_deregister_mail_domain/](https://www.paws-r-sdk.com/docs/workmail_deregister_mail_domain/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization for which the domain will be deregistered.
 #' @param DomainName &#91;required&#93; The domain to deregister in WorkMail and SES.
@@ -898,7 +898,7 @@ workmail_deregister_mail_domain <- function(OrganizationId, DomainName) {
 #' @description
 #' Describes the current email monitoring configuration for a specified organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/describe_email_monitoring_configuration.html](https://paws-r.github.io/docs/workmail/describe_email_monitoring_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_describe_email_monitoring_configuration/](https://www.paws-r-sdk.com/docs/workmail_describe_email_monitoring_configuration/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The ID of the organization for which the email monitoring configuration
 #' is described.
@@ -928,7 +928,7 @@ workmail_describe_email_monitoring_configuration <- function(OrganizationId) {
 #' @description
 #' Returns the data available for the group.
 #'
-#' See [https://paws-r.github.io/docs/workmail/describe_group.html](https://paws-r.github.io/docs/workmail/describe_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_describe_group/](https://www.paws-r-sdk.com/docs/workmail_describe_group/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the group exists.
 #' @param GroupId &#91;required&#93; The identifier for the group to be described.
@@ -958,7 +958,7 @@ workmail_describe_group <- function(OrganizationId, GroupId) {
 #' @description
 #' Lists the settings in a DMARC policy for a specified organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/describe_inbound_dmarc_settings.html](https://paws-r.github.io/docs/workmail/describe_inbound_dmarc_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_describe_inbound_dmarc_settings/](https://www.paws-r-sdk.com/docs/workmail_describe_inbound_dmarc_settings/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; Lists the ID of the given organization.
 #'
@@ -987,7 +987,7 @@ workmail_describe_inbound_dmarc_settings <- function(OrganizationId) {
 #' @description
 #' Describes the current status of a mailbox export job.
 #'
-#' See [https://paws-r.github.io/docs/workmail/describe_mailbox_export_job.html](https://paws-r.github.io/docs/workmail/describe_mailbox_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_describe_mailbox_export_job/](https://www.paws-r-sdk.com/docs/workmail_describe_mailbox_export_job/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The mailbox export job ID.
 #' @param OrganizationId &#91;required&#93; The organization ID.
@@ -1018,7 +1018,7 @@ workmail_describe_mailbox_export_job <- function(JobId, OrganizationId) {
 #' @description
 #' Provides more information regarding a given organization based on its identifier.
 #'
-#' See [https://paws-r.github.io/docs/workmail/describe_organization.html](https://paws-r.github.io/docs/workmail/describe_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_describe_organization/](https://www.paws-r-sdk.com/docs/workmail_describe_organization/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization to be described.
 #'
@@ -1047,7 +1047,7 @@ workmail_describe_organization <- function(OrganizationId) {
 #' @description
 #' Returns the data available for the resource.
 #'
-#' See [https://paws-r.github.io/docs/workmail/describe_resource.html](https://paws-r.github.io/docs/workmail/describe_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_describe_resource/](https://www.paws-r-sdk.com/docs/workmail_describe_resource/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier associated with the organization for which the resource
 #' is described.
@@ -1078,7 +1078,7 @@ workmail_describe_resource <- function(OrganizationId, ResourceId) {
 #' @description
 #' Provides information regarding the user.
 #'
-#' See [https://paws-r.github.io/docs/workmail/describe_user.html](https://paws-r.github.io/docs/workmail/describe_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_describe_user/](https://www.paws-r-sdk.com/docs/workmail_describe_user/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the user exists.
 #' @param UserId &#91;required&#93; The identifier for the user to be described.
@@ -1108,7 +1108,7 @@ workmail_describe_user <- function(OrganizationId, UserId) {
 #' @description
 #' Removes a member from the resource's set of delegates.
 #'
-#' See [https://paws-r.github.io/docs/workmail/disassociate_delegate_from_resource.html](https://paws-r.github.io/docs/workmail/disassociate_delegate_from_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_disassociate_delegate_from_resource/](https://www.paws-r-sdk.com/docs/workmail_disassociate_delegate_from_resource/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the resource exists.
 #' @param ResourceId &#91;required&#93; The identifier of the resource from which delegates' set members are
@@ -1141,7 +1141,7 @@ workmail_disassociate_delegate_from_resource <- function(OrganizationId, Resourc
 #' @description
 #' Removes a member from a group.
 #'
-#' See [https://paws-r.github.io/docs/workmail/disassociate_member_from_group.html](https://paws-r.github.io/docs/workmail/disassociate_member_from_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_disassociate_member_from_group/](https://www.paws-r-sdk.com/docs/workmail_disassociate_member_from_group/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the group exists.
 #' @param GroupId &#91;required&#93; The identifier for the group from which members are removed.
@@ -1174,7 +1174,7 @@ workmail_disassociate_member_from_group <- function(OrganizationId, GroupId, Mem
 #' @description
 #' Gets the effects of an organization's access control rules as they apply to a specified IPv4 address, access protocol action, and user ID or impersonation role ID. You must provide either the user ID or impersonation role ID. Impersonation role ID can only be used with Action EWS.
 #'
-#' See [https://paws-r.github.io/docs/workmail/get_access_control_effect.html](https://paws-r.github.io/docs/workmail/get_access_control_effect.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_get_access_control_effect/](https://www.paws-r-sdk.com/docs/workmail_get_access_control_effect/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization.
 #' @param IpAddress &#91;required&#93; The IPv4 address.
@@ -1208,7 +1208,7 @@ workmail_get_access_control_effect <- function(OrganizationId, IpAddress, Action
 #' @description
 #' Gets the default retention policy details for the specified organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/get_default_retention_policy.html](https://paws-r.github.io/docs/workmail/get_default_retention_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_get_default_retention_policy/](https://www.paws-r-sdk.com/docs/workmail_get_default_retention_policy/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The organization ID.
 #'
@@ -1237,7 +1237,7 @@ workmail_get_default_retention_policy <- function(OrganizationId) {
 #' @description
 #' Gets the impersonation role details for the given WorkMail organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/get_impersonation_role.html](https://paws-r.github.io/docs/workmail/get_impersonation_role.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_get_impersonation_role/](https://www.paws-r-sdk.com/docs/workmail_get_impersonation_role/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization from which to retrieve the impersonation role.
 #' @param ImpersonationRoleId &#91;required&#93; The impersonation role ID to retrieve.
@@ -1267,7 +1267,7 @@ workmail_get_impersonation_role <- function(OrganizationId, ImpersonationRoleId)
 #' @description
 #' Tests whether the given impersonation role can impersonate a target user.
 #'
-#' See [https://paws-r.github.io/docs/workmail/get_impersonation_role_effect.html](https://paws-r.github.io/docs/workmail/get_impersonation_role_effect.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_get_impersonation_role_effect/](https://www.paws-r-sdk.com/docs/workmail_get_impersonation_role_effect/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization where the impersonation role is defined.
 #' @param ImpersonationRoleId &#91;required&#93; The impersonation role ID to test.
@@ -1307,7 +1307,7 @@ workmail_get_impersonation_role_effect <- function(OrganizationId, Impersonation
 #' @description
 #' Gets details for a mail domain, including domain records required to configure your domain with recommended security.
 #'
-#' See [https://paws-r.github.io/docs/workmail/get_mail_domain.html](https://paws-r.github.io/docs/workmail/get_mail_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_get_mail_domain/](https://www.paws-r-sdk.com/docs/workmail_get_mail_domain/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization for which the domain is retrieved.
 #' @param DomainName &#91;required&#93; The domain from which you want to retrieve details.
@@ -1337,7 +1337,7 @@ workmail_get_mail_domain <- function(OrganizationId, DomainName) {
 #' @description
 #' Requests a user's mailbox details for a specified organization and user.
 #'
-#' See [https://paws-r.github.io/docs/workmail/get_mailbox_details.html](https://paws-r.github.io/docs/workmail/get_mailbox_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_get_mailbox_details/](https://www.paws-r-sdk.com/docs/workmail_get_mailbox_details/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization that contains the user whose mailbox
 #' details are being requested.
@@ -1369,7 +1369,7 @@ workmail_get_mailbox_details <- function(OrganizationId, UserId) {
 #' @description
 #' Simulates the effect of the mobile device access rules for the given attributes of a sample access event. Use this method to test the effects of the current set of mobile device access rules for the WorkMail organization for a particular user's attributes.
 #'
-#' See [https://paws-r.github.io/docs/workmail/get_mobile_device_access_effect.html](https://paws-r.github.io/docs/workmail/get_mobile_device_access_effect.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_get_mobile_device_access_effect/](https://www.paws-r-sdk.com/docs/workmail_get_mobile_device_access_effect/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization to simulate the access effect for.
 #' @param DeviceType Device type the simulated user will report.
@@ -1403,7 +1403,7 @@ workmail_get_mobile_device_access_effect <- function(OrganizationId, DeviceType 
 #' @description
 #' Gets the mobile device access override for the given WorkMail organization, user, and device.
 #'
-#' See [https://paws-r.github.io/docs/workmail/get_mobile_device_access_override.html](https://paws-r.github.io/docs/workmail/get_mobile_device_access_override.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_get_mobile_device_access_override/](https://www.paws-r-sdk.com/docs/workmail_get_mobile_device_access_override/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization to which you want to apply the override.
 #' @param UserId &#91;required&#93; Identifies the WorkMail user for the override. Accepts the following
@@ -1443,7 +1443,7 @@ workmail_get_mobile_device_access_override <- function(OrganizationId, UserId, D
 #' @description
 #' Lists the access control rules for the specified organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/list_access_control_rules.html](https://paws-r.github.io/docs/workmail/list_access_control_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_access_control_rules/](https://www.paws-r-sdk.com/docs/workmail_list_access_control_rules/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization.
 #'
@@ -1473,7 +1473,7 @@ workmail_list_access_control_rules <- function(OrganizationId) {
 #' @description
 #' Creates a paginated call to list the aliases associated with a given entity.
 #'
-#' See [https://paws-r.github.io/docs/workmail/list_aliases.html](https://paws-r.github.io/docs/workmail/list_aliases.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_aliases/](https://www.paws-r-sdk.com/docs/workmail_list_aliases/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the entity exists.
 #' @param EntityId &#91;required&#93; The identifier for the entity for which to list the aliases.
@@ -1489,7 +1489,7 @@ workmail_list_aliases <- function(OrganizationId, EntityId, NextToken = NULL, Ma
     name = "ListAliases",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_aliases_input(OrganizationId = OrganizationId, EntityId = EntityId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_aliases_output()
@@ -1507,7 +1507,7 @@ workmail_list_aliases <- function(OrganizationId, EntityId, NextToken = NULL, Ma
 #' @description
 #' List all the `AvailabilityConfiguration`'s for the given WorkMail organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/list_availability_configurations.html](https://paws-r.github.io/docs/workmail/list_availability_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_availability_configurations/](https://www.paws-r-sdk.com/docs/workmail_list_availability_configurations/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization for which the `AvailabilityConfiguration`'s
 #' will be listed.
@@ -1523,7 +1523,7 @@ workmail_list_availability_configurations <- function(OrganizationId, MaxResults
     name = "ListAvailabilityConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AvailabilityConfigurations")
   )
   input <- .workmail$list_availability_configurations_input(OrganizationId = OrganizationId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .workmail$list_availability_configurations_output()
@@ -1540,7 +1540,7 @@ workmail_list_availability_configurations <- function(OrganizationId, MaxResults
 #' @description
 #' Returns an overview of the members of a group. Users and groups can be members of a group.
 #'
-#' See [https://paws-r.github.io/docs/workmail/list_group_members.html](https://paws-r.github.io/docs/workmail/list_group_members.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_group_members/](https://www.paws-r-sdk.com/docs/workmail_list_group_members/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the group exists.
 #' @param GroupId &#91;required&#93; The identifier for the group to which the members (users or groups) are
@@ -1557,7 +1557,7 @@ workmail_list_group_members <- function(OrganizationId, GroupId, NextToken = NUL
     name = "ListGroupMembers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_group_members_input(OrganizationId = OrganizationId, GroupId = GroupId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_group_members_output()
@@ -1574,7 +1574,7 @@ workmail_list_group_members <- function(OrganizationId, GroupId, NextToken = NUL
 #' @description
 #' Returns summaries of the organization's groups.
 #'
-#' See [https://paws-r.github.io/docs/workmail/list_groups.html](https://paws-r.github.io/docs/workmail/list_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_groups/](https://www.paws-r-sdk.com/docs/workmail_list_groups/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the groups exist.
 #' @param NextToken The token to use to retrieve the next page of results. The first call
@@ -1589,7 +1589,7 @@ workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = 
     name = "ListGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_groups_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_groups_output()
@@ -1606,7 +1606,7 @@ workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = 
 #' @description
 #' Lists all the impersonation roles for the given WorkMail organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/list_impersonation_roles.html](https://paws-r.github.io/docs/workmail/list_impersonation_roles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_impersonation_roles/](https://www.paws-r-sdk.com/docs/workmail_list_impersonation_roles/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization to which the listed impersonation roles
 #' belong.
@@ -1622,7 +1622,7 @@ workmail_list_impersonation_roles <- function(OrganizationId, NextToken = NULL, 
     name = "ListImpersonationRoles",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_impersonation_roles_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_impersonation_roles_output()
@@ -1639,7 +1639,7 @@ workmail_list_impersonation_roles <- function(OrganizationId, NextToken = NULL, 
 #' @description
 #' Lists the mail domains in a given WorkMail organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/list_mail_domains.html](https://paws-r.github.io/docs/workmail/list_mail_domains.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_mail_domains/](https://www.paws-r-sdk.com/docs/workmail_list_mail_domains/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization for which to list domains.
 #' @param MaxResults The maximum number of results to return in a single call.
@@ -1654,7 +1654,7 @@ workmail_list_mail_domains <- function(OrganizationId, MaxResults = NULL, NextTo
     name = "ListMailDomains",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_mail_domains_input(OrganizationId = OrganizationId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .workmail$list_mail_domains_output()
@@ -1672,7 +1672,7 @@ workmail_list_mail_domains <- function(OrganizationId, MaxResults = NULL, NextTo
 #' @description
 #' Lists the mailbox export jobs started for the specified organization within the last seven days.
 #'
-#' See [https://paws-r.github.io/docs/workmail/list_mailbox_export_jobs.html](https://paws-r.github.io/docs/workmail/list_mailbox_export_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_mailbox_export_jobs/](https://www.paws-r-sdk.com/docs/workmail_list_mailbox_export_jobs/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The organization ID.
 #' @param NextToken The token to use to retrieve the next page of results.
@@ -1686,7 +1686,7 @@ workmail_list_mailbox_export_jobs <- function(OrganizationId, NextToken = NULL, 
     name = "ListMailboxExportJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_mailbox_export_jobs_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_mailbox_export_jobs_output()
@@ -1704,7 +1704,7 @@ workmail_list_mailbox_export_jobs <- function(OrganizationId, NextToken = NULL, 
 #' @description
 #' Lists the mailbox permissions associated with a user, group, or resource mailbox.
 #'
-#' See [https://paws-r.github.io/docs/workmail/list_mailbox_permissions.html](https://paws-r.github.io/docs/workmail/list_mailbox_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_mailbox_permissions/](https://www.paws-r-sdk.com/docs/workmail_list_mailbox_permissions/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier of the organization under which the user, group, or
 #' resource exists.
@@ -1722,7 +1722,7 @@ workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToke
     name = "ListMailboxPermissions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_mailbox_permissions_input(OrganizationId = OrganizationId, EntityId = EntityId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_mailbox_permissions_output()
@@ -1740,7 +1740,7 @@ workmail_list_mailbox_permissions <- function(OrganizationId, EntityId, NextToke
 #' @description
 #' Lists all the mobile device access overrides for any given combination of WorkMail organization, user, or device.
 #'
-#' See [https://paws-r.github.io/docs/workmail/list_mobile_device_access_overrides.html](https://paws-r.github.io/docs/workmail/list_mobile_device_access_overrides.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_mobile_device_access_overrides/](https://www.paws-r-sdk.com/docs/workmail_list_mobile_device_access_overrides/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization under which to list mobile device access
 #' overrides.
@@ -1766,7 +1766,7 @@ workmail_list_mobile_device_access_overrides <- function(OrganizationId, UserId 
     name = "ListMobileDeviceAccessOverrides",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_mobile_device_access_overrides_input(OrganizationId = OrganizationId, UserId = UserId, DeviceId = DeviceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_mobile_device_access_overrides_output()
@@ -1784,7 +1784,7 @@ workmail_list_mobile_device_access_overrides <- function(OrganizationId, UserId 
 #' @description
 #' Lists the mobile device access rules for the specified WorkMail organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/list_mobile_device_access_rules.html](https://paws-r.github.io/docs/workmail/list_mobile_device_access_rules.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_mobile_device_access_rules/](https://www.paws-r-sdk.com/docs/workmail_list_mobile_device_access_rules/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization for which to list the rules.
 #'
@@ -1813,7 +1813,7 @@ workmail_list_mobile_device_access_rules <- function(OrganizationId) {
 #' @description
 #' Returns summaries of the customer's organizations.
 #'
-#' See [https://paws-r.github.io/docs/workmail/list_organizations.html](https://paws-r.github.io/docs/workmail/list_organizations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_organizations/](https://www.paws-r-sdk.com/docs/workmail_list_organizations/) for full documentation.
 #'
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not contain any tokens.
@@ -1827,7 +1827,7 @@ workmail_list_organizations <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListOrganizations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_organizations_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_organizations_output()
@@ -1844,7 +1844,7 @@ workmail_list_organizations <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Lists the delegates associated with a resource. Users and groups can be resource delegates and answer requests on behalf of the resource.
 #'
-#' See [https://paws-r.github.io/docs/workmail/list_resource_delegates.html](https://paws-r.github.io/docs/workmail/list_resource_delegates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_resource_delegates/](https://www.paws-r-sdk.com/docs/workmail_list_resource_delegates/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization that contains the resource for which
 #' delegates are listed.
@@ -1861,7 +1861,7 @@ workmail_list_resource_delegates <- function(OrganizationId, ResourceId, NextTok
     name = "ListResourceDelegates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_resource_delegates_input(OrganizationId = OrganizationId, ResourceId = ResourceId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_resource_delegates_output()
@@ -1878,7 +1878,7 @@ workmail_list_resource_delegates <- function(OrganizationId, ResourceId, NextTok
 #' @description
 #' Returns summaries of the organization's resources.
 #'
-#' See [https://paws-r.github.io/docs/workmail/list_resources.html](https://paws-r.github.io/docs/workmail/list_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_resources/](https://www.paws-r-sdk.com/docs/workmail_list_resources/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the resources exist.
 #' @param NextToken The token to use to retrieve the next page of results. The first call
@@ -1893,7 +1893,7 @@ workmail_list_resources <- function(OrganizationId, NextToken = NULL, MaxResults
     name = "ListResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_resources_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_resources_output()
@@ -1910,7 +1910,7 @@ workmail_list_resources <- function(OrganizationId, NextToken = NULL, MaxResults
 #' @description
 #' Lists the tags applied to an WorkMail organization resource.
 #'
-#' See [https://paws-r.github.io/docs/workmail/list_tags_for_resource.html](https://paws-r.github.io/docs/workmail/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/workmail_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The resource ARN.
 #'
@@ -1939,7 +1939,7 @@ workmail_list_tags_for_resource <- function(ResourceARN) {
 #' @description
 #' Returns summaries of the organization's users.
 #'
-#' See [https://paws-r.github.io/docs/workmail/list_users.html](https://paws-r.github.io/docs/workmail/list_users.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_users/](https://www.paws-r-sdk.com/docs/workmail_list_users/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the users exist.
 #' @param NextToken The token to use to retrieve the next page of results. The first call
@@ -1954,7 +1954,7 @@ workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = N
     name = "ListUsers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .workmail$list_users_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .workmail$list_users_output()
@@ -1971,7 +1971,7 @@ workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = N
 #' @description
 #' Adds a new access control rule for the specified organization. The rule allows or denies access to the organization for the specified IPv4 addresses, access protocol actions, user IDs and impersonation IDs. Adding a new rule with the same name as an existing rule replaces the older rule.
 #'
-#' See [https://paws-r.github.io/docs/workmail/put_access_control_rule.html](https://paws-r.github.io/docs/workmail/put_access_control_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_put_access_control_rule/](https://www.paws-r-sdk.com/docs/workmail_put_access_control_rule/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The rule name.
 #' @param Effect &#91;required&#93; The rule effect.
@@ -2016,7 +2016,7 @@ workmail_put_access_control_rule <- function(Name, Effect, Description, IpRanges
 #' @description
 #' Creates or updates the email monitoring configuration for a specified organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/put_email_monitoring_configuration.html](https://paws-r.github.io/docs/workmail/put_email_monitoring_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_put_email_monitoring_configuration/](https://www.paws-r-sdk.com/docs/workmail_put_email_monitoring_configuration/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The ID of the organization for which the email monitoring configuration
 #' is set.
@@ -2050,7 +2050,7 @@ workmail_put_email_monitoring_configuration <- function(OrganizationId, RoleArn,
 #' @description
 #' Enables or disables a DMARC policy for a given organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/put_inbound_dmarc_settings.html](https://paws-r.github.io/docs/workmail/put_inbound_dmarc_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_put_inbound_dmarc_settings/](https://www.paws-r-sdk.com/docs/workmail_put_inbound_dmarc_settings/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The ID of the organization that you are applying the DMARC policy to.
 #' @param Enforced &#91;required&#93; Enforces or suspends a policy after it's applied.
@@ -2080,7 +2080,7 @@ workmail_put_inbound_dmarc_settings <- function(OrganizationId, Enforced) {
 #' @description
 #' Sets permissions for a user, group, or resource. This replaces any pre-existing permissions.
 #'
-#' See [https://paws-r.github.io/docs/workmail/put_mailbox_permissions.html](https://paws-r.github.io/docs/workmail/put_mailbox_permissions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_put_mailbox_permissions/](https://www.paws-r-sdk.com/docs/workmail_put_mailbox_permissions/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier of the organization under which the user, group, or
 #' resource exists.
@@ -2122,7 +2122,7 @@ workmail_put_mailbox_permissions <- function(OrganizationId, EntityId, GranteeId
 #' @description
 #' Creates or updates a mobile device access override for the given WorkMail organization, user, and device.
 #'
-#' See [https://paws-r.github.io/docs/workmail/put_mobile_device_access_override.html](https://paws-r.github.io/docs/workmail/put_mobile_device_access_override.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_put_mobile_device_access_override/](https://www.paws-r-sdk.com/docs/workmail_put_mobile_device_access_override/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; Identifies the WorkMail organization for which you create the override.
 #' @param UserId &#91;required&#93; The WorkMail user for which you create the override. Accepts the
@@ -2164,7 +2164,7 @@ workmail_put_mobile_device_access_override <- function(OrganizationId, UserId, D
 #' @description
 #' Puts a retention policy to the specified organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/put_retention_policy.html](https://paws-r.github.io/docs/workmail/put_retention_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_put_retention_policy/](https://www.paws-r-sdk.com/docs/workmail_put_retention_policy/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The organization ID.
 #' @param Id The retention policy ID.
@@ -2198,7 +2198,7 @@ workmail_put_retention_policy <- function(OrganizationId, Id = NULL, Name, Descr
 #' @description
 #' Registers a new domain in WorkMail and SES, and configures it for use by WorkMail. Emails received by SES for this domain are routed to the specified WorkMail organization, and WorkMail has permanent permission to use the specified domain for sending your users' emails.
 #'
-#' See [https://paws-r.github.io/docs/workmail/register_mail_domain.html](https://paws-r.github.io/docs/workmail/register_mail_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_register_mail_domain/](https://www.paws-r-sdk.com/docs/workmail_register_mail_domain/) for full documentation.
 #'
 #' @param ClientToken Idempotency token used when retrying requests.
 #' @param OrganizationId &#91;required&#93; The WorkMail organization under which you're creating the domain.
@@ -2230,7 +2230,7 @@ workmail_register_mail_domain <- function(ClientToken = NULL, OrganizationId, Do
 #' @description
 #' Registers an existing and disabled user, group, or resource for WorkMail use by associating a mailbox and calendaring capabilities. It performs no change if the user, group, or resource is enabled and fails if the user, group, or resource is deleted. This operation results in the accumulation of costs. For more information, see [Pricing](https://aws.amazon.com/workmail/pricing/). The equivalent console functionality for this operation is *Enable*.
 #'
-#' See [https://paws-r.github.io/docs/workmail/register_to_work_mail.html](https://paws-r.github.io/docs/workmail/register_to_work_mail.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_register_to_work_mail/](https://www.paws-r-sdk.com/docs/workmail_register_to_work_mail/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the user, group, or
 #' resource exists.
@@ -2262,7 +2262,7 @@ workmail_register_to_work_mail <- function(OrganizationId, EntityId, Email) {
 #' @description
 #' Allows the administrator to reset the password for a user.
 #'
-#' See [https://paws-r.github.io/docs/workmail/reset_password.html](https://paws-r.github.io/docs/workmail/reset_password.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_reset_password/](https://www.paws-r-sdk.com/docs/workmail_reset_password/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier of the organization that contains the user for which the
 #' password is reset.
@@ -2296,7 +2296,7 @@ workmail_reset_password <- function(OrganizationId, UserId, Password) {
 #' @description
 #' Starts a mailbox export job to export MIME-format email messages and calendar items from the specified mailbox to the specified Amazon Simple Storage Service (Amazon S3) bucket. For more information, see [Exporting mailbox content](https://docs.aws.amazon.com/workmail/latest/adminguide/mail-export.html) in the *WorkMail Administrator Guide*.
 #'
-#' See [https://paws-r.github.io/docs/workmail/start_mailbox_export_job.html](https://paws-r.github.io/docs/workmail/start_mailbox_export_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_start_mailbox_export_job/](https://www.paws-r-sdk.com/docs/workmail_start_mailbox_export_job/) for full documentation.
 #'
 #' @param ClientToken &#91;required&#93; The idempotency token for the client request.
 #' @param OrganizationId &#91;required&#93; The identifier associated with the organization.
@@ -2335,7 +2335,7 @@ workmail_start_mailbox_export_job <- function(ClientToken, OrganizationId, Entit
 #' @description
 #' Applies the specified tags to the specified WorkMailorganization resource.
 #'
-#' See [https://paws-r.github.io/docs/workmail/tag_resource.html](https://paws-r.github.io/docs/workmail/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_tag_resource/](https://www.paws-r-sdk.com/docs/workmail_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The resource ARN.
 #' @param Tags &#91;required&#93; The tag key-value pairs.
@@ -2366,7 +2366,7 @@ workmail_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Performs a test on an availability provider to ensure that access is allowed. For EWS, it verifies the provided credentials can be used to successfully log in. For Lambda, it verifies that the Lambda function can be invoked and that the resource access policy was configured to deny anonymous access. An anonymous invocation is one done without providing either a `SourceArn` or `SourceAccount` header.
 #'
-#' See [https://paws-r.github.io/docs/workmail/test_availability_configuration.html](https://paws-r.github.io/docs/workmail/test_availability_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_test_availability_configuration/](https://www.paws-r-sdk.com/docs/workmail_test_availability_configuration/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization where the availability provider will be
 #' tested.
@@ -2402,7 +2402,7 @@ workmail_test_availability_configuration <- function(OrganizationId, DomainName 
 #' @description
 #' Untags the specified tags from the specified WorkMail organization resource.
 #'
-#' See [https://paws-r.github.io/docs/workmail/untag_resource.html](https://paws-r.github.io/docs/workmail/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_untag_resource/](https://www.paws-r-sdk.com/docs/workmail_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The resource ARN.
 #' @param TagKeys &#91;required&#93; The tag keys.
@@ -2433,7 +2433,7 @@ workmail_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Updates an existing `AvailabilityConfiguration` for the given WorkMail organization and domain.
 #'
-#' See [https://paws-r.github.io/docs/workmail/update_availability_configuration.html](https://paws-r.github.io/docs/workmail/update_availability_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_update_availability_configuration/](https://www.paws-r-sdk.com/docs/workmail_update_availability_configuration/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization for which the `AvailabilityConfiguration` will
 #' be updated.
@@ -2472,7 +2472,7 @@ workmail_update_availability_configuration <- function(OrganizationId, DomainNam
 #' @description
 #' Updates the default mail domain for an organization. The default mail domain is used by the WorkMail AWS Console to suggest an email address when enabling a mail user. You can only have one default domain.
 #'
-#' See [https://paws-r.github.io/docs/workmail/update_default_mail_domain.html](https://paws-r.github.io/docs/workmail/update_default_mail_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_update_default_mail_domain/](https://www.paws-r-sdk.com/docs/workmail_update_default_mail_domain/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization for which to list domains.
 #' @param DomainName &#91;required&#93; The domain name that will become the default domain.
@@ -2502,7 +2502,7 @@ workmail_update_default_mail_domain <- function(OrganizationId, DomainName) {
 #' @description
 #' Updates an impersonation role for the given WorkMail organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/update_impersonation_role.html](https://paws-r.github.io/docs/workmail/update_impersonation_role.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_update_impersonation_role/](https://www.paws-r-sdk.com/docs/workmail_update_impersonation_role/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization that contains the impersonation role to
 #' update.
@@ -2538,7 +2538,7 @@ workmail_update_impersonation_role <- function(OrganizationId, ImpersonationRole
 #' @description
 #' Updates a user's current mailbox quota for a specified organization and user.
 #'
-#' See [https://paws-r.github.io/docs/workmail/update_mailbox_quota.html](https://paws-r.github.io/docs/workmail/update_mailbox_quota.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_update_mailbox_quota/](https://www.paws-r-sdk.com/docs/workmail_update_mailbox_quota/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization that contains the user for whom to
 #' update the mailbox quota.
@@ -2571,7 +2571,7 @@ workmail_update_mailbox_quota <- function(OrganizationId, UserId, MailboxQuota) 
 #' @description
 #' Updates a mobile device access rule for the specified WorkMail organization.
 #'
-#' See [https://paws-r.github.io/docs/workmail/update_mobile_device_access_rule.html](https://paws-r.github.io/docs/workmail/update_mobile_device_access_rule.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_update_mobile_device_access_rule/](https://www.paws-r-sdk.com/docs/workmail_update_mobile_device_access_rule/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The WorkMail organization under which the rule will be updated.
 #' @param MobileDeviceAccessRuleId &#91;required&#93; The identifier of the rule to be updated.
@@ -2617,7 +2617,7 @@ workmail_update_mobile_device_access_rule <- function(OrganizationId, MobileDevi
 #' @description
 #' Updates the primary email for a user, group, or resource. The current email is moved into the list of aliases (or swapped between an existing alias and the current primary email), and the email provided in the input is promoted as the primary.
 #'
-#' See [https://paws-r.github.io/docs/workmail/update_primary_email_address.html](https://paws-r.github.io/docs/workmail/update_primary_email_address.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_update_primary_email_address/](https://www.paws-r-sdk.com/docs/workmail_update_primary_email_address/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The organization that contains the user, group, or resource to update.
 #' @param EntityId &#91;required&#93; The user, group, or resource to update.
@@ -2648,7 +2648,7 @@ workmail_update_primary_email_address <- function(OrganizationId, EntityId, Emai
 #' @description
 #' Updates data for the resource. To have the latest information, it must be preceded by a [`describe_resource`][workmail_describe_resource] call. The dataset in the request should be the one expected when performing another [`describe_resource`][workmail_describe_resource] call.
 #'
-#' See [https://paws-r.github.io/docs/workmail/update_resource.html](https://paws-r.github.io/docs/workmail/update_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmail_update_resource/](https://www.paws-r-sdk.com/docs/workmail_update_resource/) for full documentation.
 #'
 #' @param OrganizationId &#91;required&#93; The identifier associated with the organization for which the resource
 #' is updated.

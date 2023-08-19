@@ -2,7 +2,7 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_get_change_logs}
 \alias{auditmanager_get_change_logs}
-\title{Returns a list of changelogs from Audit Manager}
+\title{Gets a list of changelogs from Audit Manager}
 \usage{
 auditmanager_get_change_logs(
   assessmentId,
@@ -25,8 +25,8 @@ auditmanager_get_change_logs(
 call.}
 }
 \description{
-Returns a list of changelogs from Audit Manager.
+Gets a list of changelogs from Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_change_logs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_change_logs/} for full documentation.
 }
 \keyword{internal}

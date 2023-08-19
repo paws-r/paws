@@ -40,7 +40,7 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{IfMatch}{Return the object only if its entity tag (ETag) is the same as the one
@@ -96,8 +96,8 @@ KMS), you must have permission to use the \code{kms:Decrypt} action for the
 request to succeed.}
 }
 \description{
-The HEAD action retrieves metadata from an object without returning the object itself. This action is useful if you're only interested in an object's metadata. To use HEAD, you must have READ access to the object.
+The \code{HEAD} action retrieves metadata from an object without returning the object itself. This action is useful if you're only interested in an object's metadata. To use \code{HEAD}, you must have READ access to the object.
 
-See \url{https://paws-r.github.io/docs/s3/head_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_head_object/} for full documentation.
 }
 \keyword{internal}

@@ -18,6 +18,6 @@ URLs cannot contain the ARN.}
 \description{
 Updates the template URI of a knowledge base. This is only supported for knowledge bases of type EXTERNAL. Include a single variable in \verb{$\{variable\}} format; this interpolated by Wisdom using ingested content. For example, if you ingest a Salesforce article, it has an \code{Id} value, and you can set the template URI to \verb{https://myInstanceName.lightning.force.com/lightning/r/Knowledge__kav/*$\{Id\}*/view}.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/update_knowledge_base_template_uri.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_update_knowledge_base_template_uri/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ specify as the page token in a subsequent request.}
 \description{
 Returns information about all operations.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_operations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_operations/} for full documentation.
 }
 \keyword{internal}

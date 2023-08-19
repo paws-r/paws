@@ -25,6 +25,6 @@ attribute mappings.}
 \description{
 You can use this operation to use default (username and clientID) attribute or custom attribute mappings.
 
-See \url{https://paws-r.github.io/docs/cognitoidentity/set_principal_tag_attribute_map.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentity_set_principal_tag_attribute_map/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ backup_get_backup_plan_from_json(BackupPlanTemplateJson)
 \description{
 Returns a valid JSON document specifying a backup plan or an error.
 
-See \url{https://paws-r.github.io/docs/backup/get_backup_plan_from_json.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_get_backup_plan_from_json/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ information about Glue resource ARNs, see the \href{https://docs.aws.amazon.com/
 \description{
 Adds tags to a resource. A tag is a label you can assign to an Amazon Web Services resource. In Glue, you can tag only certain resources. For information about what resources you can tag, see \href{https://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html}{Amazon Web Services Tags in Glue}.
 
-See \url{https://paws-r.github.io/docs/glue/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_tag_resource/} for full documentation.
 }
 \keyword{internal}

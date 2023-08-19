@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a new capacity provider. Capacity providers are associated with an Amazon ECS cluster and are used in capacity provider strategies to facilitate cluster auto scaling.
 #'
-#' See [https://paws-r.github.io/docs/ecs/create_capacity_provider.html](https://paws-r.github.io/docs/ecs/create_capacity_provider.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_create_capacity_provider/](https://www.paws-r-sdk.com/docs/ecs_create_capacity_provider/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the capacity provider. Up to 255 characters are allowed.
 #' They include letters (both upper and lowercase letters), numbers,
@@ -69,7 +69,7 @@ ecs_create_capacity_provider <- function(name, autoScalingGroupProvider, tags = 
 #' @description
 #' Creates a new Amazon ECS cluster. By default, your account receives a `default` cluster when you launch your first container instance. However, you can create your own cluster with a unique name with the [`create_cluster`][ecs_create_cluster] action.
 #'
-#' See [https://paws-r.github.io/docs/ecs/create_cluster.html](https://paws-r.github.io/docs/ecs/create_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_create_cluster/](https://www.paws-r-sdk.com/docs/ecs_create_cluster/) for full documentation.
 #'
 #' @param clusterName The name of your cluster. If you don't specify a name for your cluster,
 #' you create a cluster that's named `default`. Up to 255 letters
@@ -186,7 +186,7 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' @description
 #' Runs and maintains your desired number of tasks from a specified task definition. If the number of tasks running in a service drops below the `desiredCount`, Amazon ECS runs another copy of the task in the specified cluster. To update an existing service, see the [`update_service`][ecs_update_service] action.
 #'
-#' See [https://paws-r.github.io/docs/ecs/create_service.html](https://paws-r.github.io/docs/ecs/create_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_create_service/](https://www.paws-r-sdk.com/docs/ecs_create_service/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' you run your service on. If you do not specify a cluster, the default
@@ -421,11 +421,16 @@ ecs_create_cluster <- function(clusterName = NULL, tags = NULL, settings = NULL,
 #' within the service. For more information, see [Tagging your Amazon ECS
 #' resources](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-using-tags.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' When you use Amazon ECS managed tags, you need to set the
+#' `propagateTags` request parameter.
 #' @param propagateTags Specifies whether to propagate the tags from the task definition to the
 #' task. If no value is specified, the tags aren't propagated. Tags can
 #' only be propagated to the task during task creation. To add tags to a
 #' task after task creation, use the [`tag_resource`][ecs_tag_resource] API
 #' action.
+#' 
+#' The default is `NONE`.
 #' @param enableExecuteCommand Determines whether the execute command functionality is turned on for
 #' the service. If `true`, this enables execute command functionality on
 #' all containers in the service tasks.
@@ -467,7 +472,7 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' @description
 #' Create a task set in the specified cluster and service. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS deployment types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ecs/create_task_set.html](https://paws-r.github.io/docs/ecs/create_task_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_create_task_set/](https://www.paws-r-sdk.com/docs/ecs_create_task_set/) for full documentation.
 #'
 #' @param service &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the service to
 #' create the task set in.
@@ -586,7 +591,7 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 #' @description
 #' Disables an account setting for a specified user, role, or the root user for an account.
 #'
-#' See [https://paws-r.github.io/docs/ecs/delete_account_setting.html](https://paws-r.github.io/docs/ecs/delete_account_setting.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_delete_account_setting/](https://www.paws-r-sdk.com/docs/ecs_delete_account_setting/) for full documentation.
 #'
 #' @param name &#91;required&#93; The resource name to disable the account setting for. If
 #' `serviceLongArnFormat` is specified, the ARN for your Amazon ECS
@@ -627,7 +632,7 @@ ecs_delete_account_setting <- function(name, principalArn = NULL) {
 #' @description
 #' Deletes one or more custom attributes from an Amazon ECS resource.
 #'
-#' See [https://paws-r.github.io/docs/ecs/delete_attributes.html](https://paws-r.github.io/docs/ecs/delete_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_delete_attributes/](https://www.paws-r-sdk.com/docs/ecs_delete_attributes/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' contains the resource to delete attributes. If you do not specify a
@@ -663,7 +668,7 @@ ecs_delete_attributes <- function(cluster = NULL, attributes) {
 #' @description
 #' Deletes the specified capacity provider.
 #'
-#' See [https://paws-r.github.io/docs/ecs/delete_capacity_provider.html](https://paws-r.github.io/docs/ecs/delete_capacity_provider.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_delete_capacity_provider/](https://www.paws-r-sdk.com/docs/ecs_delete_capacity_provider/) for full documentation.
 #'
 #' @param capacityProvider &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the capacity
 #' provider to delete.
@@ -693,7 +698,7 @@ ecs_delete_capacity_provider <- function(capacityProvider) {
 #' @description
 #' Deletes the specified cluster. The cluster transitions to the `INACTIVE` state. Clusters with an `INACTIVE` status might remain discoverable in your account for a period of time. However, this behavior is subject to change in the future. We don't recommend that you rely on `INACTIVE` clusters persisting.
 #'
-#' See [https://paws-r.github.io/docs/ecs/delete_cluster.html](https://paws-r.github.io/docs/ecs/delete_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_delete_cluster/](https://www.paws-r-sdk.com/docs/ecs_delete_cluster/) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster to
 #' delete.
@@ -723,7 +728,7 @@ ecs_delete_cluster <- function(cluster) {
 #' @description
 #' Deletes a specified service within a cluster. You can delete a service if you have no running tasks in it and the desired task count is zero. If the service is actively maintaining tasks, you can't delete it, and you must update the service to a desired task count of zero. For more information, see [`update_service`][ecs_update_service].
 #'
-#' See [https://paws-r.github.io/docs/ecs/delete_service.html](https://paws-r.github.io/docs/ecs/delete_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_delete_service/](https://www.paws-r-sdk.com/docs/ecs_delete_service/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the service to delete. If you do not specify a cluster, the
@@ -758,7 +763,7 @@ ecs_delete_service <- function(cluster = NULL, service, force = NULL) {
 #' @description
 #' Deletes one or more task definitions.
 #'
-#' See [https://paws-r.github.io/docs/ecs/delete_task_definitions.html](https://paws-r.github.io/docs/ecs/delete_task_definitions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_delete_task_definitions/](https://www.paws-r-sdk.com/docs/ecs_delete_task_definitions/) for full documentation.
 #'
 #' @param taskDefinitions &#91;required&#93; The `family` and `revision` (`family:revision`) or full Amazon Resource
 #' Name (ARN) of the task definition to delete. You must specify a
@@ -791,7 +796,7 @@ ecs_delete_task_definitions <- function(taskDefinitions) {
 #' @description
 #' Deletes a specified task set within a service. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS deployment types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ecs/delete_task_set.html](https://paws-r.github.io/docs/ecs/delete_task_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_delete_task_set/](https://www.paws-r-sdk.com/docs/ecs_delete_task_set/) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the service that the task set found in to delete.
@@ -827,7 +832,7 @@ ecs_delete_task_set <- function(cluster, service, taskSet, force = NULL) {
 #' @description
 #' Deregisters an Amazon ECS container instance from the specified cluster. This instance is no longer available to run tasks.
 #'
-#' See [https://paws-r.github.io/docs/ecs/deregister_container_instance.html](https://paws-r.github.io/docs/ecs/deregister_container_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_deregister_container_instance/](https://www.paws-r-sdk.com/docs/ecs_deregister_container_instance/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the container instance to deregister. If you do not specify a
@@ -876,7 +881,7 @@ ecs_deregister_container_instance <- function(cluster = NULL, containerInstance,
 #' @description
 #' Deregisters the specified task definition by family and revision. Upon deregistration, the task definition is marked as `INACTIVE`. Existing tasks and services that reference an `INACTIVE` task definition continue to run without disruption. Existing services that reference an `INACTIVE` task definition can still scale up or down by modifying the service's desired count. If you want to delete a task definition revision, you must first deregister the task definition revision.
 #'
-#' See [https://paws-r.github.io/docs/ecs/deregister_task_definition.html](https://paws-r.github.io/docs/ecs/deregister_task_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_deregister_task_definition/](https://www.paws-r-sdk.com/docs/ecs_deregister_task_definition/) for full documentation.
 #'
 #' @param taskDefinition &#91;required&#93; The `family` and `revision` (`family:revision`) or full Amazon Resource
 #' Name (ARN) of the task definition to deregister. You must specify a
@@ -907,7 +912,7 @@ ecs_deregister_task_definition <- function(taskDefinition) {
 #' @description
 #' Describes one or more of your capacity providers.
 #'
-#' See [https://paws-r.github.io/docs/ecs/describe_capacity_providers.html](https://paws-r.github.io/docs/ecs/describe_capacity_providers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_describe_capacity_providers/](https://www.paws-r-sdk.com/docs/ecs_describe_capacity_providers/) for full documentation.
 #'
 #' @param capacityProviders The short name or full Amazon Resource Name (ARN) of one or more
 #' capacity providers. Up to `100` capacity providers can be described in
@@ -963,7 +968,7 @@ ecs_describe_capacity_providers <- function(capacityProviders = NULL, include = 
 #' @description
 #' Describes one or more of your clusters.
 #'
-#' See [https://paws-r.github.io/docs/ecs/describe_clusters.html](https://paws-r.github.io/docs/ecs/describe_clusters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_describe_clusters/](https://www.paws-r-sdk.com/docs/ecs_describe_clusters/) for full documentation.
 #'
 #' @param clusters A list of up to 100 cluster names or full cluster Amazon Resource Name
 #' (ARN) entries. If you do not specify a cluster, the default cluster is
@@ -1012,7 +1017,7 @@ ecs_describe_clusters <- function(clusters = NULL, include = NULL) {
 #' @description
 #' Describes one or more container instances. Returns metadata about each container instance requested.
 #'
-#' See [https://paws-r.github.io/docs/ecs/describe_container_instances.html](https://paws-r.github.io/docs/ecs/describe_container_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_describe_container_instances/](https://www.paws-r-sdk.com/docs/ecs_describe_container_instances/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the container instances to describe. If you do not specify a
@@ -1052,7 +1057,7 @@ ecs_describe_container_instances <- function(cluster = NULL, containerInstances,
 #' @description
 #' Describes the specified services running in your cluster.
 #'
-#' See [https://paws-r.github.io/docs/ecs/describe_services.html](https://paws-r.github.io/docs/ecs/describe_services.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_describe_services/](https://www.paws-r-sdk.com/docs/ecs_describe_services/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN)the cluster that hosts
 #' the service to describe. If you do not specify a cluster, the default
@@ -1090,7 +1095,7 @@ ecs_describe_services <- function(cluster = NULL, services, include = NULL) {
 #' @description
 #' Describes a task definition. You can specify a `family` and `revision` to find information about a specific task definition, or you can simply specify the family to find the latest `ACTIVE` revision in that family.
 #'
-#' See [https://paws-r.github.io/docs/ecs/describe_task_definition.html](https://paws-r.github.io/docs/ecs/describe_task_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_describe_task_definition/](https://www.paws-r-sdk.com/docs/ecs_describe_task_definition/) for full documentation.
 #'
 #' @param taskDefinition &#91;required&#93; The `family` for the latest `ACTIVE` revision, `family` and `revision`
 #' (`family:revision`) for a specific revision in the family, or full
@@ -1124,7 +1129,7 @@ ecs_describe_task_definition <- function(taskDefinition, include = NULL) {
 #' @description
 #' Describes the task sets in the specified cluster and service. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS Deployment Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ecs/describe_task_sets.html](https://paws-r.github.io/docs/ecs/describe_task_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_describe_task_sets/](https://www.paws-r-sdk.com/docs/ecs_describe_task_sets/) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the service that the task sets exist in.
@@ -1160,7 +1165,7 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = 
 #' @description
 #' Describes a specified task or tasks.
 #'
-#' See [https://paws-r.github.io/docs/ecs/describe_tasks.html](https://paws-r.github.io/docs/ecs/describe_tasks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_describe_tasks/](https://www.paws-r-sdk.com/docs/ecs_describe_tasks/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the task or tasks to describe. If you do not specify a cluster,
@@ -1198,7 +1203,7 @@ ecs_describe_tasks <- function(cluster = NULL, tasks, include = NULL) {
 #' @description
 #' This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 #'
-#' See [https://paws-r.github.io/docs/ecs/discover_poll_endpoint.html](https://paws-r.github.io/docs/ecs/discover_poll_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_discover_poll_endpoint/](https://www.paws-r-sdk.com/docs/ecs_discover_poll_endpoint/) for full documentation.
 #'
 #' @param containerInstance The container instance ID or full ARN of the container instance. For
 #' more information about the ARN format, see [Amazon Resource Name
@@ -1232,7 +1237,7 @@ ecs_discover_poll_endpoint <- function(containerInstance = NULL, cluster = NULL)
 #' @description
 #' Runs a command remotely on a container within a task.
 #'
-#' See [https://paws-r.github.io/docs/ecs/execute_command.html](https://paws-r.github.io/docs/ecs/execute_command.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_execute_command/](https://www.paws-r-sdk.com/docs/ecs_execute_command/) for full documentation.
 #'
 #' @param cluster The Amazon Resource Name (ARN) or short name of the cluster the task is
 #' running in. If you do not specify a cluster, the default cluster is
@@ -1269,7 +1274,7 @@ ecs_execute_command <- function(cluster = NULL, container = NULL, command, inter
 #' @description
 #' Retrieves the protection status of tasks in an Amazon ECS service.
 #'
-#' See [https://paws-r.github.io/docs/ecs/get_task_protection.html](https://paws-r.github.io/docs/ecs/get_task_protection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_get_task_protection/](https://www.paws-r-sdk.com/docs/ecs_get_task_protection/) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the service that the task sets exist in.
@@ -1300,7 +1305,7 @@ ecs_get_task_protection <- function(cluster, tasks = NULL) {
 #' @description
 #' Lists the account settings for a specified principal.
 #'
-#' See [https://paws-r.github.io/docs/ecs/list_account_settings.html](https://paws-r.github.io/docs/ecs/list_account_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_list_account_settings/](https://www.paws-r-sdk.com/docs/ecs_list_account_settings/) for full documentation.
 #'
 #' @param name The name of the account setting you want to list the settings for.
 #' @param value The value of the account settings to filter results with. You must also
@@ -1345,7 +1350,7 @@ ecs_list_account_settings <- function(name = NULL, value = NULL, principalArn = 
     name = "ListAccountSettings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "settings")
   )
   input <- .ecs$list_account_settings_input(name = name, value = value, principalArn = principalArn, effectiveSettings = effectiveSettings, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_account_settings_output()
@@ -1363,7 +1368,7 @@ ecs_list_account_settings <- function(name = NULL, value = NULL, principalArn = 
 #' @description
 #' Lists the attributes for Amazon ECS resources within a specified target type and cluster. When you specify a target type and cluster, [`list_attributes`][ecs_list_attributes] returns a list of attribute objects, one for each attribute on each resource. You can filter the list of results to a single attribute name to only return results that have that name. You can also filter the results by attribute name and value. You can do this, for example, to see which container instances in a cluster are running a Linux AMI (`ecs.os-type=linux`).
 #'
-#' See [https://paws-r.github.io/docs/ecs/list_attributes.html](https://paws-r.github.io/docs/ecs/list_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_list_attributes/](https://www.paws-r-sdk.com/docs/ecs_list_attributes/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster to list
 #' attributes. If you do not specify a cluster, the default cluster is
@@ -1400,7 +1405,7 @@ ecs_list_attributes <- function(cluster = NULL, targetType, attributeName = NULL
     name = "ListAttributes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "attributes")
   )
   input <- .ecs$list_attributes_input(cluster = cluster, targetType = targetType, attributeName = attributeName, attributeValue = attributeValue, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_attributes_output()
@@ -1417,7 +1422,7 @@ ecs_list_attributes <- function(cluster = NULL, targetType, attributeName = NULL
 #' @description
 #' Returns a list of existing clusters.
 #'
-#' See [https://paws-r.github.io/docs/ecs/list_clusters.html](https://paws-r.github.io/docs/ecs/list_clusters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_list_clusters/](https://www.paws-r-sdk.com/docs/ecs_list_clusters/) for full documentation.
 #'
 #' @param nextToken The `nextToken` value returned from a
 #' [`list_clusters`][ecs_list_clusters] request indicating that more
@@ -1447,7 +1452,7 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
     name = "ListClusters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "clusterArns")
   )
   input <- .ecs$list_clusters_input(nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_clusters_output()
@@ -1464,7 +1469,7 @@ ecs_list_clusters <- function(nextToken = NULL, maxResults = NULL) {
 #' @description
 #' Returns a list of container instances in a specified cluster. You can filter the results of a [`list_container_instances`][ecs_list_container_instances] operation with cluster query language statements inside the `filter` parameter. For more information, see [Cluster Query Language](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/cluster-query-language.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ecs/list_container_instances.html](https://paws-r.github.io/docs/ecs/list_container_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_list_container_instances/](https://www.paws-r-sdk.com/docs/ecs_list_container_instances/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the container instances to list. If you do not specify a cluster,
@@ -1511,7 +1516,7 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
     name = "ListContainerInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "containerInstanceArns")
   )
   input <- .ecs$list_container_instances_input(cluster = cluster, filter = filter, nextToken = nextToken, maxResults = maxResults, status = status)
   output <- .ecs$list_container_instances_output()
@@ -1528,7 +1533,7 @@ ecs_list_container_instances <- function(cluster = NULL, filter = NULL, nextToke
 #' @description
 #' Returns a list of services. You can filter the results by cluster, launch type, and scheduling strategy.
 #'
-#' See [https://paws-r.github.io/docs/ecs/list_services.html](https://paws-r.github.io/docs/ecs/list_services.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_list_services/](https://www.paws-r-sdk.com/docs/ecs_list_services/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster to use
 #' when filtering the [`list_services`][ecs_list_services] results. If you
@@ -1565,7 +1570,7 @@ ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NUL
     name = "ListServices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "serviceArns")
   )
   input <- .ecs$list_services_input(cluster = cluster, nextToken = nextToken, maxResults = maxResults, launchType = launchType, schedulingStrategy = schedulingStrategy)
   output <- .ecs$list_services_output()
@@ -1583,7 +1588,7 @@ ecs_list_services <- function(cluster = NULL, nextToken = NULL, maxResults = NUL
 #' @description
 #' This operation lists all of the services that are associated with a Cloud Map namespace. This list might include services in different clusters. In contrast, [`list_services`][ecs_list_services] can only list services in one cluster at a time. If you need to filter the list of services in a single cluster by various parameters, use [`list_services`][ecs_list_services]. For more information, see [Service Connect](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-connect.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ecs/list_services_by_namespace.html](https://paws-r.github.io/docs/ecs/list_services_by_namespace.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_list_services_by_namespace/](https://www.paws-r-sdk.com/docs/ecs_list_services_by_namespace/) for full documentation.
 #'
 #' @param namespace &#91;required&#93; The namespace name or full Amazon Resource Name (ARN) of the Cloud Map
 #' namespace to list the services in.
@@ -1622,7 +1627,7 @@ ecs_list_services_by_namespace <- function(namespace, nextToken = NULL, maxResul
     name = "ListServicesByNamespace",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "serviceArns")
   )
   input <- .ecs$list_services_by_namespace_input(namespace = namespace, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_services_by_namespace_output()
@@ -1639,7 +1644,7 @@ ecs_list_services_by_namespace <- function(namespace, nextToken = NULL, maxResul
 #' @description
 #' List the tags for an Amazon ECS resource.
 #'
-#' See [https://paws-r.github.io/docs/ecs/list_tags_for_resource.html](https://paws-r.github.io/docs/ecs/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/ecs_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource to list the
 #' tags for. Currently, the supported resources are Amazon ECS tasks,
@@ -1671,7 +1676,7 @@ ecs_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Returns a list of task definition families that are registered to your account. This list includes task definition families that no longer have any `ACTIVE` task definition revisions.
 #'
-#' See [https://paws-r.github.io/docs/ecs/list_task_definition_families.html](https://paws-r.github.io/docs/ecs/list_task_definition_families.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_list_task_definition_families/](https://www.paws-r-sdk.com/docs/ecs_list_task_definition_families/) for full documentation.
 #'
 #' @param familyPrefix The `familyPrefix` is a string that's used to filter the results of
 #' [`list_task_definition_families`][ecs_list_task_definition_families]. If
@@ -1716,7 +1721,7 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
     name = "ListTaskDefinitionFamilies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "families")
   )
   input <- .ecs$list_task_definition_families_input(familyPrefix = familyPrefix, status = status, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_task_definition_families_output()
@@ -1733,7 +1738,7 @@ ecs_list_task_definition_families <- function(familyPrefix = NULL, status = NULL
 #' @description
 #' Returns a list of task definitions that are registered to your account. You can filter the results by family name with the `familyPrefix` parameter or by status with the `status` parameter.
 #'
-#' See [https://paws-r.github.io/docs/ecs/list_task_definitions.html](https://paws-r.github.io/docs/ecs/list_task_definitions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_list_task_definitions/](https://www.paws-r-sdk.com/docs/ecs_list_task_definitions/) for full documentation.
 #'
 #' @param familyPrefix The full family name to filter the
 #' [`list_task_definitions`][ecs_list_task_definitions] results with.
@@ -1781,7 +1786,7 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
     name = "ListTaskDefinitions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "taskDefinitionArns")
   )
   input <- .ecs$list_task_definitions_input(familyPrefix = familyPrefix, status = status, sort = sort, nextToken = nextToken, maxResults = maxResults)
   output <- .ecs$list_task_definitions_output()
@@ -1798,7 +1803,7 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
 #' @description
 #' Returns a list of tasks. You can filter the results by cluster, task definition family, container instance, launch type, what IAM principal started the task, or by the desired status of the task.
 #'
-#' See [https://paws-r.github.io/docs/ecs/list_tasks.html](https://paws-r.github.io/docs/ecs/list_tasks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_list_tasks/](https://www.paws-r-sdk.com/docs/ecs_list_tasks/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster to use
 #' when filtering the [`list_tasks`][ecs_list_tasks] results. If you do not
@@ -1859,7 +1864,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
     name = "ListTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken", result_key = "taskArns")
   )
   input <- .ecs$list_tasks_input(cluster = cluster, containerInstance = containerInstance, family = family, nextToken = nextToken, maxResults = maxResults, startedBy = startedBy, serviceName = serviceName, desiredStatus = desiredStatus, launchType = launchType)
   output <- .ecs$list_tasks_output()
@@ -1876,7 +1881,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' @description
 #' Modifies an account setting. Account settings are set on a per-Region basis.
 #'
-#' See [https://paws-r.github.io/docs/ecs/put_account_setting.html](https://paws-r.github.io/docs/ecs/put_account_setting.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_put_account_setting/](https://www.paws-r-sdk.com/docs/ecs_put_account_setting/) for full documentation.
 #'
 #' @param name &#91;required&#93; The Amazon ECS resource name for which to modify the account setting. If
 #' `serviceLongArnFormat` is specified, the ARN for your Amazon ECS
@@ -1931,7 +1936,7 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' @description
 #' Modifies an account setting for all users on an account for whom no individual account setting has been specified. Account settings are set on a per-Region basis.
 #'
-#' See [https://paws-r.github.io/docs/ecs/put_account_setting_default.html](https://paws-r.github.io/docs/ecs/put_account_setting_default.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_put_account_setting_default/](https://www.paws-r-sdk.com/docs/ecs_put_account_setting_default/) for full documentation.
 #'
 #' @param name &#91;required&#93; The resource name for which to modify the account setting. If
 #' `serviceLongArnFormat` is specified, the ARN for your Amazon ECS
@@ -1983,7 +1988,7 @@ ecs_put_account_setting_default <- function(name, value) {
 #' @description
 #' Create or update an attribute on an Amazon ECS resource. If the attribute doesn't exist, it's created. If the attribute exists, its value is replaced with the specified value. To delete an attribute, use [`delete_attributes`][ecs_delete_attributes]. For more information, see [Attributes](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ecs/put_attributes.html](https://paws-r.github.io/docs/ecs/put_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_put_attributes/](https://www.paws-r-sdk.com/docs/ecs_put_attributes/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' contains the resource to apply attributes. If you do not specify a
@@ -2018,7 +2023,7 @@ ecs_put_attributes <- function(cluster = NULL, attributes) {
 #' @description
 #' Modifies the available capacity providers and the default capacity provider strategy for a cluster.
 #'
-#' See [https://paws-r.github.io/docs/ecs/put_cluster_capacity_providers.html](https://paws-r.github.io/docs/ecs/put_cluster_capacity_providers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_put_cluster_capacity_providers/](https://www.paws-r-sdk.com/docs/ecs_put_cluster_capacity_providers/) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster to
 #' modify the capacity provider settings for. If you don't specify a
@@ -2087,7 +2092,7 @@ ecs_put_cluster_capacity_providers <- function(cluster, capacityProviders, defau
 #' @description
 #' This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 #'
-#' See [https://paws-r.github.io/docs/ecs/register_container_instance.html](https://paws-r.github.io/docs/ecs/register_container_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_register_container_instance/](https://www.paws-r-sdk.com/docs/ecs_register_container_instance/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster to
 #' register your container instance with. If you do not specify a cluster,
@@ -2162,7 +2167,7 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #' @description
 #' Registers a new task definition from the supplied `family` and `containerDefinitions`. Optionally, you can add data volumes to your containers with the `volumes` parameter. For more information about task definition parameters and defaults, see [Amazon ECS Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ecs/register_task_definition.html](https://paws-r.github.io/docs/ecs/register_task_definition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_register_task_definition/](https://www.paws-r-sdk.com/docs/ecs_register_task_definition/) for full documentation.
 #'
 #' @param family &#91;required&#93; You must specify a `family` for a task definition. You can use it track
 #' multiple versions of the same task definition. The `family` is used as a
@@ -2452,7 +2457,7 @@ ecs_register_task_definition <- function(family, taskRoleArn = NULL, executionRo
 #' @description
 #' Starts a new task using the specified task definition.
 #'
-#' See [https://paws-r.github.io/docs/ecs/run_task.html](https://paws-r.github.io/docs/ecs/run_task.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_run_task/](https://www.paws-r-sdk.com/docs/ecs_run_task/) for full documentation.
 #'
 #' @param capacityProviderStrategy The capacity provider strategy to use for the task.
 #' 
@@ -2636,7 +2641,7 @@ ecs_run_task <- function(capacityProviderStrategy = NULL, cluster = NULL, count 
 #' @description
 #' Starts a new task from the specified task definition on the specified container instance or instances.
 #'
-#' See [https://paws-r.github.io/docs/ecs/start_task.html](https://paws-r.github.io/docs/ecs/start_task.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_start_task/](https://www.paws-r-sdk.com/docs/ecs_start_task/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster where
 #' to start your task. If you do not specify a cluster, the default cluster
@@ -2738,7 +2743,7 @@ ecs_start_task <- function(cluster = NULL, containerInstances, enableECSManagedT
 #' @description
 #' Stops a running task. Any tags associated with the task will be deleted.
 #'
-#' See [https://paws-r.github.io/docs/ecs/stop_task.html](https://paws-r.github.io/docs/ecs/stop_task.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_stop_task/](https://www.paws-r-sdk.com/docs/ecs_stop_task/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the task to stop. If you do not specify a cluster, the default
@@ -2776,7 +2781,7 @@ ecs_stop_task <- function(cluster = NULL, task, reason = NULL) {
 #' @description
 #' This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 #'
-#' See [https://paws-r.github.io/docs/ecs/submit_attachment_state_changes.html](https://paws-r.github.io/docs/ecs/submit_attachment_state_changes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_submit_attachment_state_changes/](https://www.paws-r-sdk.com/docs/ecs_submit_attachment_state_changes/) for full documentation.
 #'
 #' @param cluster The short name or full ARN of the cluster that hosts the container
 #' instance the attachment belongs to.
@@ -2808,7 +2813,7 @@ ecs_submit_attachment_state_changes <- function(cluster = NULL, attachments) {
 #' @description
 #' This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 #'
-#' See [https://paws-r.github.io/docs/ecs/submit_container_state_change.html](https://paws-r.github.io/docs/ecs/submit_container_state_change.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_submit_container_state_change/](https://www.paws-r-sdk.com/docs/ecs_submit_container_state_change/) for full documentation.
 #'
 #' @param cluster The short name or full ARN of the cluster that hosts the container.
 #' @param task The task ID or full Amazon Resource Name (ARN) of the task that hosts
@@ -2846,7 +2851,7 @@ ecs_submit_container_state_change <- function(cluster = NULL, task = NULL, conta
 #' @description
 #' This action is only used by the Amazon ECS agent, and it is not intended for use outside of the agent.
 #'
-#' See [https://paws-r.github.io/docs/ecs/submit_task_state_change.html](https://paws-r.github.io/docs/ecs/submit_task_state_change.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_submit_task_state_change/](https://www.paws-r-sdk.com/docs/ecs_submit_task_state_change/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the task.
@@ -2886,7 +2891,7 @@ ecs_submit_task_state_change <- function(cluster = NULL, task = NULL, status = N
 #' @description
 #' Associates the specified tags to a resource with the specified `resourceArn`. If existing tags on a resource aren't specified in the request parameters, they aren't changed. When a resource is deleted, the tags that are associated with that resource are deleted as well.
 #'
-#' See [https://paws-r.github.io/docs/ecs/tag_resource.html](https://paws-r.github.io/docs/ecs/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_tag_resource/](https://www.paws-r-sdk.com/docs/ecs_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to add tags to.
 #' Currently, the supported resources are Amazon ECS capacity providers,
@@ -2943,7 +2948,7 @@ ecs_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Deletes specified tags from a resource.
 #'
-#' See [https://paws-r.github.io/docs/ecs/untag_resource.html](https://paws-r.github.io/docs/ecs/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_untag_resource/](https://www.paws-r-sdk.com/docs/ecs_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to delete tags from.
 #' Currently, the supported resources are Amazon ECS capacity providers,
@@ -2975,7 +2980,7 @@ ecs_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Modifies the parameters for a capacity provider.
 #'
-#' See [https://paws-r.github.io/docs/ecs/update_capacity_provider.html](https://paws-r.github.io/docs/ecs/update_capacity_provider.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_update_capacity_provider/](https://www.paws-r-sdk.com/docs/ecs_update_capacity_provider/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the capacity provider to update.
 #' @param autoScalingGroupProvider &#91;required&#93; An object that represent the parameters to update for the Auto Scaling
@@ -3006,7 +3011,7 @@ ecs_update_capacity_provider <- function(name, autoScalingGroupProvider) {
 #' @description
 #' Updates the cluster.
 #'
-#' See [https://paws-r.github.io/docs/ecs/update_cluster.html](https://paws-r.github.io/docs/ecs/update_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_update_cluster/](https://www.paws-r-sdk.com/docs/ecs_update_cluster/) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The name of the cluster to modify the settings for.
 #' @param settings The cluster settings for your cluster.
@@ -3054,7 +3059,7 @@ ecs_update_cluster <- function(cluster, settings = NULL, configuration = NULL, s
 #' @description
 #' Modifies the settings to use for a cluster.
 #'
-#' See [https://paws-r.github.io/docs/ecs/update_cluster_settings.html](https://paws-r.github.io/docs/ecs/update_cluster_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_update_cluster_settings/](https://www.paws-r-sdk.com/docs/ecs_update_cluster_settings/) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The name of the cluster to modify the settings for.
 #' @param settings &#91;required&#93; The setting to use by default for a cluster. This parameter is used to
@@ -3095,7 +3100,7 @@ ecs_update_cluster_settings <- function(cluster, settings) {
 #' @description
 #' Updates the Amazon ECS container agent on a specified container instance. Updating the Amazon ECS container agent doesn't interrupt running tasks or services on the container instance. The process for updating the agent differs depending on whether your container instance was launched with the Amazon ECS-optimized AMI or another operating system.
 #'
-#' See [https://paws-r.github.io/docs/ecs/update_container_agent.html](https://paws-r.github.io/docs/ecs/update_container_agent.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_update_container_agent/](https://www.paws-r-sdk.com/docs/ecs_update_container_agent/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' your container instance is running on. If you do not specify a cluster,
@@ -3128,7 +3133,7 @@ ecs_update_container_agent <- function(cluster = NULL, containerInstance) {
 #' @description
 #' Modifies the status of an Amazon ECS container instance.
 #'
-#' See [https://paws-r.github.io/docs/ecs/update_container_instances_state.html](https://paws-r.github.io/docs/ecs/update_container_instances_state.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_update_container_instances_state/](https://www.paws-r-sdk.com/docs/ecs_update_container_instances_state/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the container instance to update. If you do not specify a cluster,
@@ -3166,7 +3171,7 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #' @description
 #' Modifies the parameters of a service.
 #'
-#' See [https://paws-r.github.io/docs/ecs/update_service.html](https://paws-r.github.io/docs/ecs/update_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_update_service/](https://www.paws-r-sdk.com/docs/ecs_update_service/) for full documentation.
 #'
 #' @param cluster The short name or full Amazon Resource Name (ARN) of the cluster that
 #' your service runs on. If you do not specify a cluster, the default
@@ -3353,7 +3358,7 @@ ecs_update_service <- function(cluster = NULL, service, desiredCount = NULL, tas
 #' @description
 #' Modifies which task set in a service is the primary task set. Any parameters that are updated on the primary task set in a service will transition to the service. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS Deployment Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ecs/update_service_primary_task_set.html](https://paws-r.github.io/docs/ecs/update_service_primary_task_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_update_service_primary_task_set/](https://www.paws-r-sdk.com/docs/ecs_update_service_primary_task_set/) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the service that the task set exists in.
@@ -3387,7 +3392,7 @@ ecs_update_service_primary_task_set <- function(cluster, service, primaryTaskSet
 #' @description
 #' Updates the protection status of a task. You can set `protectionEnabled` to `true` to protect your task from termination during scale-in events from [Service Autoscaling](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-auto-scaling.html) or [deployments](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html).
 #'
-#' See [https://paws-r.github.io/docs/ecs/update_task_protection.html](https://paws-r.github.io/docs/ecs/update_task_protection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_update_task_protection/](https://www.paws-r-sdk.com/docs/ecs_update_task_protection/) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the service that the task sets exist in.
@@ -3429,7 +3434,7 @@ ecs_update_task_protection <- function(cluster, tasks, protectionEnabled, expire
 #' @description
 #' Modifies a task set. This is used when a service uses the `EXTERNAL` deployment controller type. For more information, see [Amazon ECS Deployment Types](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-types.html) in the *Amazon Elastic Container Service Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/ecs/update_task_set.html](https://paws-r.github.io/docs/ecs/update_task_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ecs_update_task_set/](https://www.paws-r-sdk.com/docs/ecs_update_task_set/) for full documentation.
 #'
 #' @param cluster &#91;required&#93; The short name or full Amazon Resource Name (ARN) of the cluster that
 #' hosts the service that the task set is found in.

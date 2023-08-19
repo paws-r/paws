@@ -15,7 +15,7 @@ NULL
 
 .cloudfront$copy_distribution_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(PrimaryDistributionId = structure(logical(0), tags = list(location = "uri", locationName = "PrimaryDistributionId", type = "string")), Staging = structure(logical(0), tags = list(location = "header", locationName = "Staging", type = "boolean")), IfMatch = structure(logical(0), tags = list(location = "header", locationName = "If-Match", type = "string")), CallerReference = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", locationName = "CopyDistributionRequest", xmlNamespace = "http://cloudfront.amazonaws.com/doc/2020-05-31/"))
+  shape <- structure(list(PrimaryDistributionId = structure(logical(0), tags = list(location = "uri", locationName = "PrimaryDistributionId", type = "string")), Staging = structure(logical(0), tags = list(location = "header", locationName = "Staging", type = "boolean")), IfMatch = structure(logical(0), tags = list(location = "header", locationName = "If-Match", type = "string")), CallerReference = structure(logical(0), tags = list(type = "string")), Enabled = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure", locationName = "CopyDistributionRequest", xmlNamespace = "http://cloudfront.amazonaws.com/doc/2020-05-31/"))
   return(populate(args, shape))
 }
 

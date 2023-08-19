@@ -24,6 +24,6 @@ containing NextToken. It is used for pagination.}
 \description{
 Lists available reserved Elasticsearch instance offerings.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/describe_reserved_elasticsearch_instance_offerings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_reserved_elasticsearch_instance_offerings/} for full documentation.
 }
 \keyword{internal}

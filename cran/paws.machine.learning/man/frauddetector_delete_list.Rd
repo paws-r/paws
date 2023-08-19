@@ -12,6 +12,6 @@ frauddetector_delete_list(name)
 \description{
 Deletes the list, provided it is not used in a rule.
 
-See \url{https://paws-r.github.io/docs/frauddetector/delete_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_delete_list/} for full documentation.
 }
 \keyword{internal}

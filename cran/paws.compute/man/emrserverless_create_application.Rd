@@ -23,7 +23,7 @@ emrserverless_create_application(
 \arguments{
 \item{name}{The name of the application.}
 
-\item{releaseLabel}{[required] The EMR release associated with the application.}
+\item{releaseLabel}{[required] The Amazon EMR release associated with the application.}
 
 \item{type}{[required] The type of application you want to start, such as Spark or Hive.}
 
@@ -64,6 +64,6 @@ worker types.}
 \description{
 Creates an application.
 
-See \url{https://paws-r.github.io/docs/emrserverless/create_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrserverless_create_application/} for full documentation.
 }
 \keyword{internal}

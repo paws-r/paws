@@ -17,6 +17,6 @@ and the maximum value is 500.}
 \description{
 Describe an existing Authorizers resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_authorizers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_authorizers/} for full documentation.
 }
 \keyword{internal}

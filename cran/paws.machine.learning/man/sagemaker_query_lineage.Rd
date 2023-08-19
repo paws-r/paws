@@ -53,6 +53,6 @@ response to to retrieve the next page of results.}
 \description{
 Use this action to inspect your lineage and discover relationships between entities. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/querying-lineage-entities.html}{Querying Lineage Entities} in the \emph{Amazon SageMaker Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/sagemaker/query_lineage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_query_lineage/} for full documentation.
 }
 \keyword{internal}

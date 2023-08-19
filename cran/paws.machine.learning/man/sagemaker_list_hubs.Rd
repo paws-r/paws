@@ -40,6 +40,6 @@ set of hubs, use the token in the next request.}
 \description{
 List all existing hubs.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_hubs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_hubs/} for full documentation.
 }
 \keyword{internal}

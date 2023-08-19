@@ -57,6 +57,6 @@ parameter.}
 \description{
 Runs a batch SQL statement over an array of data.
 
-See \url{https://paws-r.github.io/docs/rdsdataservice/batch_execute_statement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rdsdataservice_batch_execute_statement/} for full documentation.
 }
 \keyword{internal}

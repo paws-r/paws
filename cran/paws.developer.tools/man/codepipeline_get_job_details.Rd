@@ -12,6 +12,6 @@ codepipeline_get_job_details(jobId)
 \description{
 Returns information about a job. Used for custom actions only.
 
-See \url{https://paws-r.github.io/docs/codepipeline/get_job_details.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_get_job_details/} for full documentation.
 }
 \keyword{internal}

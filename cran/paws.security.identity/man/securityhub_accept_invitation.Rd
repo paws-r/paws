@@ -16,6 +16,6 @@ administrator account.}
 \description{
 This method is deprecated. Instead, use \code{\link[=securityhub_accept_administrator_invitation]{accept_administrator_invitation}}.
 
-See \url{https://paws-r.github.io/docs/securityhub/accept_invitation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_accept_invitation/} for full documentation.
 }
 \keyword{internal}

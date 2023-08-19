@@ -26,8 +26,8 @@ function name, it is limited to 64 characters in length.}
 references.}
 }
 \description{
-Deletes a Lambda function. To delete a specific function version, use the \code{Qualifier} parameter. Otherwise, all versions and aliases are deleted.
+Deletes a Lambda function. To delete a specific function version, use the \code{Qualifier} parameter. Otherwise, all versions and aliases are deleted. This doesn't require the user to have explicit permissions for \code{\link[=lambda_delete_alias]{delete_alias}}.
 
-See \url{https://paws-r.github.io/docs/lambda/delete_function.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_delete_function/} for full documentation.
 }
 \keyword{internal}

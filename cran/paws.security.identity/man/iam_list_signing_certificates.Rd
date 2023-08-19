@@ -32,6 +32,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Returns information about the signing certificates associated with the specified IAM user. If none exists, the operation returns an empty list.
 
-See \url{https://paws-r.github.io/docs/iam/list_signing_certificates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_signing_certificates/} for full documentation.
 }
 \keyword{internal}

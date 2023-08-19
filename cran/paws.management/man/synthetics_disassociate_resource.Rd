@@ -15,6 +15,6 @@ group ID as the \code{GroupIdentifier}.}
 \description{
 Removes a canary from a group. You must run this operation in the Region where the canary exists.
 
-See \url{https://paws-r.github.io/docs/synthetics/disassociate_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/synthetics_disassociate_resource/} for full documentation.
 }
 \keyword{internal}

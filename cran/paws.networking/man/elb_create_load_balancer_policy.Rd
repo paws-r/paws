@@ -26,6 +26,6 @@ unique within the set of policies for this load balancer.}
 \description{
 Creates a policy with the specified attributes for the specified load balancer.
 
-See \url{https://paws-r.github.io/docs/elb/create_load_balancer_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_create_load_balancer_policy/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ when the activity stream is unlocked or stopped.}
 \description{
 Changes the audit policy state of a database activity stream to either locked (default) or unlocked. A locked policy is read-only, whereas an unlocked policy is read/write. If your activity stream is started and locked, you can unlock it, customize your audit policy, and then lock your activity stream. Restarting the activity stream isn't required. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/DBActivityStreams.Modifying.html}{Modifying a database activity stream} in the \emph{Amazon RDS User Guide}.
 
-See \url{https://paws-r.github.io/docs/rds/modify_activity_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_modify_activity_stream/} for full documentation.
 }
 \keyword{internal}

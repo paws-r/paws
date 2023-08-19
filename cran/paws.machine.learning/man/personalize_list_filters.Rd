@@ -22,6 +22,6 @@ filters (if they exist).}
 \description{
 Lists all filters that belong to a given dataset group.
 
-See \url{https://paws-r.github.io/docs/personalize/list_filters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_list_filters/} for full documentation.
 }
 \keyword{internal}

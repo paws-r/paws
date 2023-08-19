@@ -65,6 +65,6 @@ than or equal to \code{eventTimestamp} of the most recent
 \description{
 Used by deciders to get a DecisionTask from the specified decision \code{taskList}. A decision task may be returned for any open workflow execution that is using the specified task list. The task includes a paginated view of the history of the workflow execution. The decider should use the workflow type and the history to determine how to properly handle the task.
 
-See \url{https://paws-r.github.io/docs/swf/poll_for_decision_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_poll_for_decision_task/} for full documentation.
 }
 \keyword{internal}

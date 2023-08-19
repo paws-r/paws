@@ -28,6 +28,6 @@ for a specific association, use
 \description{
 Describes the association for the specified target or managed node. If you created the association by using the \code{Targets} parameter, then you must retrieve the association by using the association ID.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_association/} for full documentation.
 }
 \keyword{internal}

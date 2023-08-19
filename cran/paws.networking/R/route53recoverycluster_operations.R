@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Get the state for a routing control. A routing control is a simple on/off switch that you can use to route traffic to cells. When a routing control state is On, traffic flows to a cell. When the state is Off, traffic does not flow.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycluster/get_routing_control_state.html](https://paws-r.github.io/docs/route53recoverycluster/get_routing_control_state.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycluster_get_routing_control_state/](https://www.paws-r-sdk.com/docs/route53recoverycluster_get_routing_control_state/) for full documentation.
 #'
 #' @param RoutingControlArn &#91;required&#93; The Amazon Resource Name (ARN) for the routing control that you want to
 #' get the state for.
@@ -40,7 +40,7 @@ route53recoverycluster_get_routing_control_state <- function(RoutingControlArn) 
 #' @description
 #' List routing control names and Amazon Resource Names (ARNs), as well as the routing control state for each routing control, along with the control panel name and control panel ARN for the routing controls. If you specify a control panel ARN, this call lists the routing controls in the control panel. Otherwise, it lists all the routing controls in the cluster.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycluster/list_routing_controls.html](https://paws-r.github.io/docs/route53recoverycluster/list_routing_controls.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycluster_list_routing_controls/](https://www.paws-r-sdk.com/docs/route53recoverycluster_list_routing_controls/) for full documentation.
 #'
 #' @param ControlPanelArn The Amazon Resource Name (ARN) of the control panel of the routing
 #' controls to list.
@@ -57,7 +57,7 @@ route53recoverycluster_list_routing_controls <- function(ControlPanelArn = NULL,
     name = "ListRoutingControls",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RoutingControls")
   )
   input <- .route53recoverycluster$list_routing_controls_input(ControlPanelArn = ControlPanelArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .route53recoverycluster$list_routing_controls_output()
@@ -74,7 +74,7 @@ route53recoverycluster_list_routing_controls <- function(ControlPanelArn = NULL,
 #' @description
 #' Set the state of the routing control to reroute traffic. You can set the value to be On or Off. When the state is On, traffic flows to a cell. When the state is Off, traffic does not flow.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycluster/update_routing_control_state.html](https://paws-r.github.io/docs/route53recoverycluster/update_routing_control_state.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycluster_update_routing_control_state/](https://www.paws-r-sdk.com/docs/route53recoverycluster_update_routing_control_state/) for full documentation.
 #'
 #' @param RoutingControlArn &#91;required&#93; The Amazon Resource Name (ARN) for the routing control that you want to
 #' update the state for.
@@ -113,7 +113,7 @@ route53recoverycluster_update_routing_control_state <- function(RoutingControlAr
 #' @description
 #' Set multiple routing control states. You can set the value for each state to be On or Off. When the state is On, traffic flows to a cell. When it's Off, traffic does not flow.
 #'
-#' See [https://paws-r.github.io/docs/route53recoverycluster/update_routing_control_states.html](https://paws-r.github.io/docs/route53recoverycluster/update_routing_control_states.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycluster_update_routing_control_states/](https://www.paws-r-sdk.com/docs/route53recoverycluster_update_routing_control_states/) for full documentation.
 #'
 #' @param UpdateRoutingControlStateEntries &#91;required&#93; A set of routing control entries that you want to update.
 #' @param SafetyRulesToOverride The Amazon Resource Names (ARNs) for the safety rules that you want to

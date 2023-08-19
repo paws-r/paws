@@ -17,6 +17,6 @@ in the \emph{Amazon RDS User Guide.}}
 \description{
 Removes metadata tags from an Amazon RDS resource.
 
-See \url{https://paws-r.github.io/docs/rds/remove_tags_from_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_remove_tags_from_resource/} for full documentation.
 }
 \keyword{internal}

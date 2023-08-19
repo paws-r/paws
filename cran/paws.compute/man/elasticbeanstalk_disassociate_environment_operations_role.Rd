@@ -13,6 +13,6 @@ role.}
 \description{
 Disassociate the operations role from an environment. After this call is made, Elastic Beanstalk uses the caller's permissions for permissions to downstream services during subsequent calls acting on this environment. For more information, see \href{https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/}{Operations roles} in the \emph{AWS Elastic Beanstalk Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/disassociate_environment_operations_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_disassociate_environment_operations_role/} for full documentation.
 }
 \keyword{internal}

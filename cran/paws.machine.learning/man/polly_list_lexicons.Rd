@@ -15,6 +15,6 @@ where to continue the list of lexicons.}
 \description{
 Returns a list of pronunciation lexicons stored in an Amazon Web Services Region. For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
 
-See \url{https://paws-r.github.io/docs/polly/list_lexicons.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/polly_list_lexicons/} for full documentation.
 }
 \keyword{internal}

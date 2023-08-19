@@ -15,6 +15,6 @@ cognitoidentityprovider_describe_user_pool_client(UserPoolId, ClientId)
 \description{
 Client method for returning the configuration information and metadata of the specified user pool app client.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/describe_user_pool_client.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_user_pool_client/} for full documentation.
 }
 \keyword{internal}

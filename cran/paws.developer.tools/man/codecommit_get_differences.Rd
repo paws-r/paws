@@ -47,6 +47,6 @@ batch of the results.}
 \description{
 Returns information about the differences in a valid commit specifier (such as a branch, tag, HEAD, commit ID, or other fully qualified reference). Results can be limited to a specified path.
 
-See \url{https://paws-r.github.io/docs/codecommit/get_differences.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_get_differences/} for full documentation.
 }
 \keyword{internal}

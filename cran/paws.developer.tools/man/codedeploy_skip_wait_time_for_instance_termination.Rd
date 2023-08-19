@@ -14,6 +14,6 @@ instance termination wait time.}
 \description{
 In a blue/green deployment, overrides any specified wait time and starts terminating instances immediately after the traffic routing is complete.
 
-See \url{https://paws-r.github.io/docs/codedeploy/skip_wait_time_for_instance_termination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_skip_wait_time_for_instance_termination/} for full documentation.
 }
 \keyword{internal}

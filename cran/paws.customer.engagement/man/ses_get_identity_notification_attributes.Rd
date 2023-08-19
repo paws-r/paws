@@ -16,6 +16,6 @@ its name or by using its Amazon Resource Name (ARN). Examples:
 \description{
 Given a list of verified identities (email addresses and/or domains), returns a structure describing identity notification attributes.
 
-See \url{https://paws-r.github.io/docs/ses/get_identity_notification_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_get_identity_notification_attributes/} for full documentation.
 }
 \keyword{internal}

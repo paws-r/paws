@@ -40,6 +40,6 @@ in the \emph{Amazon Web Services Identity and Access Management User Guide}.}
 \description{
 Returns a list of \href{https://docs.aws.amazon.com/codeguru/latest/reviewer-api/API_RecommendationFeedbackSummary.html}{RecommendationFeedbackSummary} objects that contain customer recommendation feedback for all CodeGuru Reviewer users.
 
-See \url{https://paws-r.github.io/docs/codegurureviewer/list_recommendation_feedback.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codegurureviewer_list_recommendation_feedback/} for full documentation.
 }
 \keyword{internal}

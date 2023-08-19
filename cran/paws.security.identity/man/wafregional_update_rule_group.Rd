@@ -29,6 +29,6 @@ You can only insert \code{REGULAR} rules into a rule group.
 \description{
 This is \strong{AWS WAF Classic} documentation. For more information, see \href{https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html}{AWS WAF Classic} in the developer guide.
 
-See \url{https://paws-r.github.io/docs/wafregional/update_rule_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wafregional_update_rule_group/} for full documentation.
 }
 \keyword{internal}

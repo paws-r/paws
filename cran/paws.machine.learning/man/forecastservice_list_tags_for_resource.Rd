@@ -13,6 +13,6 @@ list the tags.}
 \description{
 Lists the tags for an Amazon Forecast resource.
 
-See \url{https://paws-r.github.io/docs/forecastservice/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

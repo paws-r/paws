@@ -12,6 +12,6 @@ autoscaling_create_or_update_tags(Tags)
 \description{
 Creates or updates tags for the specified Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/create_or_update_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_create_or_update_tags/} for full documentation.
 }
 \keyword{internal}

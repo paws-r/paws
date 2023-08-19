@@ -20,6 +20,6 @@ information, see \href{https://docs.aws.amazon.com/lexv2/latest/dg/how-languages
 \description{
 Removes the specified intent.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/delete_intent.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_delete_intent/} for full documentation.
 }
 \keyword{internal}

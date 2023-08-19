@@ -17,6 +17,6 @@ For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/lates
 \description{
 Lists all tags currently on a named resource.
 
-See \url{https://paws-r.github.io/docs/elasticache/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

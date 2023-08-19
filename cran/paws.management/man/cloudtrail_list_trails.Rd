@@ -16,6 +16,6 @@ with NextToken should include those same parameters.}
 \description{
 Lists trails that are in the current account.
 
-See \url{https://paws-r.github.io/docs/cloudtrail/list_trails.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudtrail_list_trails/} for full documentation.
 }
 \keyword{internal}

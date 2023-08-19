@@ -16,6 +16,6 @@ for.}
 \description{
 Resets the password for a specified user ID and generates a temporary one. Only a superuser can reset password for other users. Resetting the password immediately invalidates the previous password associated with the user.
 
-See \url{https://paws-r.github.io/docs/finspacedata/reset_user_password.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_reset_user_password/} for full documentation.
 }
 \keyword{internal}

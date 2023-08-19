@@ -33,6 +33,6 @@ operation to get the specific \code{OutputId}.}
 \description{
 Deletes the output destination configuration from your SQL-based Kinesis Data Analytics application's configuration. Kinesis Data Analytics will no longer write data from the corresponding in-application stream to the external output destination.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_output.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_output/} for full documentation.
 }
 \keyword{internal}

@@ -25,6 +25,6 @@ need to supply a value for this field in the initial request.}
 \description{
 Describes the specified configuration sets or all in your account.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/describe_configuration_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_describe_configuration_sets/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ update.}
 \description{
 \code{\link[=securityhub_update_findings]{update_findings}} is deprecated. Instead of \code{\link[=securityhub_update_findings]{update_findings}}, use \code{\link[=securityhub_batch_update_findings]{batch_update_findings}}.
 
-See \url{https://paws-r.github.io/docs/securityhub/update_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_update_findings/} for full documentation.
 }
 \keyword{internal}

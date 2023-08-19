@@ -17,6 +17,6 @@ results.}
 \description{
 Lists all of the previous runs of a particular DataBrew job.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/list_job_runs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_list_job_runs/} for full documentation.
 }
 \keyword{internal}

@@ -17,7 +17,7 @@ NULL
 
 .ram$associate_resource_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -65,7 +65,7 @@ NULL
 
 .ram$create_resource_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), allowExternalPrincipals = structure(logical(0), tags = list(type = "boolean")), clientToken = structure(logical(0), tags = list(type = "string")), permissionArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), allowExternalPrincipals = structure(logical(0), tags = list(type = "boolean")), clientToken = structure(logical(0), tags = list(type = "string")), permissionArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), sources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -113,7 +113,7 @@ NULL
 
 .ram$disassociate_resource_share_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(resourceShareArn = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), principals = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clientToken = structure(logical(0), tags = list(type = "string")), sources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

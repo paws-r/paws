@@ -25,6 +25,6 @@ to retrieve a list of analyzed resources from.}
 \description{
 Retrieves a list of resources of the specified type that have been analyzed by the specified analyzer..
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/list_analyzed_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_list_analyzed_resources/} for full documentation.
 }
 \keyword{internal}

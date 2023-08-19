@@ -80,6 +80,6 @@ section in the developer guide for more information.}
 \description{
 After you deploy a model into production using Amazon SageMaker hosting services, your client applications use this API to get inferences from the model hosted at the specified endpoint.
 
-See \url{https://paws-r.github.io/docs/sagemakerruntime/invoke_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemakerruntime_invoke_endpoint/} for full documentation.
 }
 \keyword{internal}

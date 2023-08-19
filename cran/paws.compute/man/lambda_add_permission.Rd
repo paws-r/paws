@@ -78,6 +78,6 @@ endpoint. For more information, see \href{https://docs.aws.amazon.com/lambda/lat
 \description{
 Grants an Amazon Web Service, Amazon Web Services account, or Amazon Web Services organization permission to use a function. You can apply the policy at the function level, or specify a qualifier to restrict access to a single version or alias. If you use a qualifier, the invoker must use the full Amazon Resource Name (ARN) of that version or alias to invoke the function. Note: Lambda does not support adding policies to version $LATEST.
 
-See \url{https://paws-r.github.io/docs/lambda/add_permission.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_add_permission/} for full documentation.
 }
 \keyword{internal}

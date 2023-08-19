@@ -35,6 +35,6 @@ records beyond the marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Returns the default engine and system parameter information for the cluster database engine.
 
-See \url{https://paws-r.github.io/docs/rds/describe_engine_default_cluster_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_engine_default_cluster_parameters/} for full documentation.
 }
 \keyword{internal}

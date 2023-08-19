@@ -18,6 +18,6 @@ spaces. You can also include any of the following characters: _+=,.@-}
 \description{
 Retrieves information about the specified server certificate stored in IAM.
 
-See \url{https://paws-r.github.io/docs/iam/get_server_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_server_certificate/} for full documentation.
 }
 \keyword{internal}

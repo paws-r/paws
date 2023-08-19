@@ -25,6 +25,6 @@ results.}
 \description{
 Get all users in a given launch profile membership.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/list_launch_profile_members.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_list_launch_profile_members/} for full documentation.
 }
 \keyword{internal}

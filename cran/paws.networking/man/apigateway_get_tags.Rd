@@ -18,6 +18,6 @@ page. The default value is 25 and the maximum value is 500.}
 \description{
 Gets the Tags collection for a given resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/get_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_get_tags/} for full documentation.
 }
 \keyword{internal}

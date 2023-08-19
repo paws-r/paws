@@ -22,6 +22,6 @@ import job.}
 \description{
 Creates the user import job.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/create_user_import_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_import_job/} for full documentation.
 }
 \keyword{internal}

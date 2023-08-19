@@ -29,6 +29,6 @@ an empty list.}
 \description{
 Retrieves recommendations for the specified session. To avoid retrieving the same recommendations in subsequent calls, use \code{\link[=connectwisdomservice_notify_recommendations_received]{notify_recommendations_received}}. This API supports long-polling behavior with the \code{waitTimeSeconds} parameter. Short poll is the default behavior and only returns recommendations already available. To perform a manual query against an assistant, use \code{\link[=connectwisdomservice_query_assistant]{query_assistant}}.
 
-See \url{https://paws-r.github.io/docs/connectwisdomservice/get_recommendations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectwisdomservice_get_recommendations/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ codestar_list_tags_for_project(id, nextToken = NULL, maxResults = NULL)
 \description{
 Gets the tags for a project.
 
-See \url{https://paws-r.github.io/docs/codestar/list_tags_for_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestar_list_tags_for_project/} for full documentation.
 }
 \keyword{internal}

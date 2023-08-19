@@ -13,6 +13,6 @@ pinpointsmsvoicev2_set_voice_message_spend_limit_override(MonthlyLimit)
 \description{
 Sets an account level monthly spend limit override for sending voice messages. The requested spend limit must be less than or equal to the \code{MaxLimit}, which is set by Amazon Web Services.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoicev2/set_voice_message_spend_limit_override.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoicev2_set_voice_message_spend_limit_override/} for full documentation.
 }
 \keyword{internal}

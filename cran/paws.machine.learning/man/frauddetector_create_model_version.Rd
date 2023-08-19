@@ -35,6 +35,6 @@ Required if \code{trainingDataSource} is \code{INGESTED_EVENTS}.}
 \description{
 Creates a version of the model using the specified model type and model id.
 
-See \url{https://paws-r.github.io/docs/frauddetector/create_model_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_create_model_version/} for full documentation.
 }
 \keyword{internal}

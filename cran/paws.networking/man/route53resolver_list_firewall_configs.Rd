@@ -26,6 +26,6 @@ the prior request in your next request.}
 \description{
 Retrieves the firewall configurations that you have defined. DNS Firewall uses the configurations to manage firewall behavior for your VPCs.
 
-See \url{https://paws-r.github.io/docs/route53resolver/list_firewall_configs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_list_firewall_configs/} for full documentation.
 }
 \keyword{internal}

@@ -89,6 +89,6 @@ statistics such as p95, p99.9, and so on.}
 \description{
 Creates or updates a metric stream. Metric streams can automatically stream CloudWatch metrics to Amazon Web Services destinations, including Amazon S3, and to many third-party solutions.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/put_metric_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_put_metric_stream/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ results.}
 \description{
 Deletes the evaluation results for the specified Config rule. You can specify one Config rule per request. After you delete the evaluation results, you can call the \code{\link[=configservice_start_config_rules_evaluation]{start_config_rules_evaluation}} API to start evaluating your Amazon Web Services resources against the rule.
 
-See \url{https://paws-r.github.io/docs/configservice/delete_evaluation_results.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_delete_evaluation_results/} for full documentation.
 }
 \keyword{internal}

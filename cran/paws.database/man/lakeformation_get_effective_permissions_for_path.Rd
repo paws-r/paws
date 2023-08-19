@@ -29,6 +29,6 @@ list.}
 \description{
 Returns the Lake Formation permissions for a specified table or database resource located at a path in Amazon S3. \code{\link[=lakeformation_get_effective_permissions_for_path]{get_effective_permissions_for_path}} will not return databases and tables if the catalog is encrypted.
 
-See \url{https://paws-r.github.io/docs/lakeformation/get_effective_permissions_for_path.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_get_effective_permissions_for_path/} for full documentation.
 }
 \keyword{internal}

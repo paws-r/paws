@@ -24,6 +24,6 @@ configuration of the parent pipeline for this specific run.}
 \description{
 Updates a pipeline execution.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_pipeline_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_pipeline_execution/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ workgroup contains any named queries, query executions, or notebooks.}
 \description{
 Deletes the workgroup with the specified name. The primary workgroup cannot be deleted.
 
-See \url{https://paws-r.github.io/docs/athena/delete_work_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_delete_work_group/} for full documentation.
 }
 \keyword{internal}

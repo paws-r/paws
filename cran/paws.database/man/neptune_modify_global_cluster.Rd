@@ -56,6 +56,6 @@ after completing the upgrade.}
 \description{
 Modify a setting for an Amazon Neptune global cluster. You can change one or more database configuration parameters by specifying these parameters and their new values in the request.
 
-See \url{https://paws-r.github.io/docs/neptune/modify_global_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_modify_global_cluster/} for full documentation.
 }
 \keyword{internal}

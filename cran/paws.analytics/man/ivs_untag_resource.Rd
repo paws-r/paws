@@ -19,6 +19,6 @@ constraints beyond what is documented there.}
 \description{
 Removes tags from the resource with the specified ARN.
 
-See \url{https://paws-r.github.io/docs/ivs/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivs_untag_resource/} for full documentation.
 }
 \keyword{internal}

@@ -33,6 +33,6 @@ wellarchitected_list_check_summaries(
 \description{
 List of Trusted Advisor checks summarized for all accounts related to the workload.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/list_check_summaries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_list_check_summaries/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ apigateway_update_client_certificate(
 \description{
 Changes information about an ClientCertificate resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/update_client_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_update_client_certificate/} for full documentation.
 }
 \keyword{internal}

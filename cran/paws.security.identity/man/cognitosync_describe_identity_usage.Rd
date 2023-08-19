@@ -19,6 +19,6 @@ Cognito. GUID generation is unique within a region.}
 \description{
 Gets usage information for an identity, including number of datasets and data usage.
 
-See \url{https://paws-r.github.io/docs/cognitosync/describe_identity_usage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitosync_describe_identity_usage/} for full documentation.
 }
 \keyword{internal}

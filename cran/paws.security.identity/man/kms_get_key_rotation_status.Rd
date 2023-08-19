@@ -26,6 +26,6 @@ To get the key ID and key ARN for a KMS key, use
 \description{
 Gets a Boolean value that indicates whether \href{https://docs.aws.amazon.com/kms/latest/developerguide/rotate-keys.html}{automatic rotation of the key material} is enabled for the specified KMS key.
 
-See \url{https://paws-r.github.io/docs/kms/get_key_rotation_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_get_key_rotation_status/} for full documentation.
 }
 \keyword{internal}

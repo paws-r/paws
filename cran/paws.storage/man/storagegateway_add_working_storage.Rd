@@ -18,6 +18,6 @@ length of 300. You can get the disk IDs from the
 \description{
 Configures one or more gateway local disks as working storage for a gateway. This operation is only supported in the stored volume gateway type. This operation is deprecated in cached volume API version 20120630. Use \code{\link[=storagegateway_add_upload_buffer]{add_upload_buffer}} instead.
 
-See \url{https://paws-r.github.io/docs/storagegateway/add_working_storage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_add_working_storage/} for full documentation.
 }
 \keyword{internal}

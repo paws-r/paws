@@ -115,6 +115,6 @@ updates made to the originating rule group.}
 \description{
 Creates the specified stateless or stateful rule group, which includes the rules for network traffic inspection, a capacity setting, and tags.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/create_rule_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_create_rule_group/} for full documentation.
 }
 \keyword{internal}

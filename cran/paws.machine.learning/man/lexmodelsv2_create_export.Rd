@@ -23,6 +23,6 @@ transit between Amazon Lex and your local computer.}
 \description{
 Creates a zip archive containing the contents of a bot or a bot locale. The archive contains a directory structure that contains JSON files that define the bot.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/create_export.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_create_export/} for full documentation.
 }
 \keyword{internal}

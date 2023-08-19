@@ -35,6 +35,6 @@ value.}
 \description{
 Describes one or more Traffic Mirror filters.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_traffic_mirror_filters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_traffic_mirror_filters/} for full documentation.
 }
 \keyword{internal}

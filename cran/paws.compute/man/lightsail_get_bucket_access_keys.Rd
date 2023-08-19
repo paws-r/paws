@@ -13,6 +13,6 @@ lightsail_get_bucket_access_keys(bucketName)
 \description{
 Returns the existing access key IDs for the specified Amazon Lightsail bucket.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_bucket_access_keys.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_bucket_access_keys/} for full documentation.
 }
 \keyword{internal}

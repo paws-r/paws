@@ -40,6 +40,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the allocations from the specified customer-owned address pool.
 
-See \url{https://paws-r.github.io/docs/ec2/get_coip_pool_usage.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_coip_pool_usage/} for full documentation.
 }
 \keyword{internal}

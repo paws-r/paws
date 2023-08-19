@@ -15,6 +15,6 @@ cloudwatchlogs_delete_log_stream(logGroupName, logStreamName)
 \description{
 Deletes the specified log stream and permanently deletes all the archived log events associated with the log stream.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/delete_log_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_log_stream/} for full documentation.
 }
 \keyword{internal}

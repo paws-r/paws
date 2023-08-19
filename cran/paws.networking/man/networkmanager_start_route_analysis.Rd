@@ -28,6 +28,6 @@ route analysis. The default is \code{false}.}
 \description{
 Starts analyzing the routing path between the specified source and destination. For more information, see \href{https://docs.aws.amazon.com/network-manager/latest/tgwnm/route-analyzer.html}{Route Analyzer}.
 
-See \url{https://paws-r.github.io/docs/networkmanager/start_route_analysis.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_start_route_analysis/} for full documentation.
 }
 \keyword{internal}

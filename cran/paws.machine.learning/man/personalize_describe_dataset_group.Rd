@@ -12,6 +12,6 @@ personalize_describe_dataset_group(datasetGroupArn)
 \description{
 Describes the given dataset group. For more information on dataset groups, see \code{\link[=personalize_create_dataset_group]{create_dataset_group}}.
 
-See \url{https://paws-r.github.io/docs/personalize/describe_dataset_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_describe_dataset_group/} for full documentation.
 }
 \keyword{internal}

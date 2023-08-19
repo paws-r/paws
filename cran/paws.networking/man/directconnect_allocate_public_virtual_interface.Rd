@@ -23,6 +23,6 @@ interface.}
 \description{
 Provisions a public virtual interface to be owned by the specified Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/directconnect/allocate_public_virtual_interface.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_allocate_public_virtual_interface/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ retrieve tag information for.}
 \description{
 Retrieve a list of the tags (keys and values) that are associated with a specified application. A \emph{tag} is a label that you optionally define and associate with an application. Each tag consists of a required \emph{tag key} and an optional associated \emph{tag value}. A tag key is a general label that acts as a category for more specific tag values. A tag value acts as a descriptor within a tag key.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

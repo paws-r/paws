@@ -24,7 +24,8 @@ test_that("add XML namespace", {
 })
 
 test_that("check xml build", {
-  params <- structure(list(
+  params <- structure(
+    list(
       foo = structure(logical(0), tags = list(type = "string")),
       bar = structure(list())
     ),
@@ -35,10 +36,12 @@ test_that("check xml build", {
 })
 
 test_that("check nested xml build", {
-  params_nested <- structure(list(
-      nested = structure(list(
-        foo = structure(logical(0), tags = list(type = "string")),
-        bar = structure(list())
+  params_nested <- structure(
+    list(
+      nested = structure(
+        list(
+          foo = structure(logical(0), tags = list(type = "string")),
+          bar = structure(list())
         ),
         tags = list(type = "structure")
       )
@@ -50,8 +53,10 @@ test_that("check nested xml build", {
 })
 
 test_that("check nested xml build with nested default parameters", {
-  params_nested <- structure(list(
-      nested = structure(list(
+  params_nested <- structure(
+    list(
+      nested = structure(
+        list(
           foo = structure(list(
             bar = structure(logical(0))
           ), tags = list(type = "string")),

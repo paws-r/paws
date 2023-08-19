@@ -16,6 +16,6 @@ This operation requires permissions to perform the
 \description{
 Stops a running model. The operation might take a while to complete. To check the current status, call \code{\link[=rekognition_describe_project_versions]{describe_project_versions}}.
 
-See \url{https://paws-r.github.io/docs/rekognition/stop_project_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_stop_project_version/} for full documentation.
 }
 \keyword{internal}

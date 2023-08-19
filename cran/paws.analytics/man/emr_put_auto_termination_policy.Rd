@@ -15,6 +15,6 @@ policy will be attached.}
 \description{
 Auto-termination is supported in Amazon EMR releases 5.30.0 and 6.1.0 and later. For more information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-auto-termination-policy.html}{Using an auto-termination policy}.
 
-See \url{https://paws-r.github.io/docs/emr/put_auto_termination_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_put_auto_termination_policy/} for full documentation.
 }
 \keyword{internal}

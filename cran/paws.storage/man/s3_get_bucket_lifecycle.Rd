@@ -16,6 +16,6 @@ different account, the request fails with the HTTP status code
 \description{
 For an updated version of this API, see \code{\link[=s3_get_bucket_lifecycle_configuration]{get_bucket_lifecycle_configuration}}. If you configured a bucket lifecycle using the \code{filter} element, you should see the updated version of this topic. This topic is provided for backward compatibility.
 
-See \url{https://paws-r.github.io/docs/s3/get_bucket_lifecycle.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_lifecycle/} for full documentation.
 }
 \keyword{internal}

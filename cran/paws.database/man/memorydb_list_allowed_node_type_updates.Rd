@@ -15,6 +15,6 @@ from that to create a list of node types you can scale up to.}
 \description{
 Lists all available node types that you can scale to from your cluster's current node type. When you use the UpdateCluster operation to scale your cluster, the value of the NodeType parameter must be one of the node types returned by this operation.
 
-See \url{https://paws-r.github.io/docs/memorydb/list_allowed_node_type_updates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_list_allowed_node_type_updates/} for full documentation.
 }
 \keyword{internal}

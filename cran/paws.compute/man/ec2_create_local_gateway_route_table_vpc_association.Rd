@@ -27,6 +27,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Associates the specified VPC with the specified local gateway route table.
 
-See \url{https://paws-r.github.io/docs/ec2/create_local_gateway_route_table_vpc_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_local_gateway_route_table_vpc_association/} for full documentation.
 }
 \keyword{internal}

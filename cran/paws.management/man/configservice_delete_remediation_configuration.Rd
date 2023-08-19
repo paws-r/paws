@@ -18,6 +18,6 @@ configuration.}
 \description{
 Deletes the remediation configuration.
 
-See \url{https://paws-r.github.io/docs/configservice/delete_remediation_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_delete_remediation_configuration/} for full documentation.
 }
 \keyword{internal}

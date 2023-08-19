@@ -21,6 +21,6 @@ mturk_list_hi_ts_for_qualification_type(
 \description{
 The \code{\link[=mturk_list_hi_ts_for_qualification_type]{list_hi_ts_for_qualification_type}} operation returns the HITs that use the given Qualification type for a Qualification requirement. The operation returns HITs of any status, except for HITs that have been deleted with the \code{\link[=mturk_delete_hit]{delete_hit}} operation or that have been auto-deleted.
 
-See \url{https://paws-r.github.io/docs/mturk/list_hi_ts_for_qualification_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mturk_list_hi_ts_for_qualification_type/} for full documentation.
 }
 \keyword{internal}

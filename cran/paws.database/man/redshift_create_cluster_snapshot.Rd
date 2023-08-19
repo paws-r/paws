@@ -40,6 +40,6 @@ The default value is -1.}
 \description{
 Creates a manual snapshot of the specified cluster. The cluster must be in the \code{available} state.
 
-See \url{https://paws-r.github.io/docs/redshift/create_cluster_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_create_cluster_snapshot/} for full documentation.
 }
 \keyword{internal}

@@ -28,6 +28,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a local gateway route table virtual interface group association.
 
-See \url{https://paws-r.github.io/docs/ec2/create_local_gateway_route_table_virtual_interface_group_association.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_local_gateway_route_table_virtual_interface_group_association/} for full documentation.
 }
 \keyword{internal}

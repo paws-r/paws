@@ -16,6 +16,6 @@ operation returns this identifier in its response.}
 \description{
 Gets the properties associated with an asynchronous batch translation job including name, ID, status, source and target languages, input/output S3 buckets, and so on.
 
-See \url{https://paws-r.github.io/docs/translate/describe_text_translation_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/translate_describe_text_translation_job/} for full documentation.
 }
 \keyword{internal}

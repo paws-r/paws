@@ -12,6 +12,6 @@ directconnect_describe_connections_on_interconnect(interconnectId)
 \description{
 Deprecated. Use \code{\link[=directconnect_describe_hosted_connections]{describe_hosted_connections}} instead.
 
-See \url{https://paws-r.github.io/docs/directconnect/describe_connections_on_interconnect.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_describe_connections_on_interconnect/} for full documentation.
 }
 \keyword{internal}

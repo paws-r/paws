@@ -21,6 +21,6 @@ ssm_update_ops_metadata(
 \description{
 Amazon Web Services Systems Manager calls this API operation when you edit OpsMetadata in Application Manager.
 
-See \url{https://paws-r.github.io/docs/ssm/update_ops_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_update_ops_metadata/} for full documentation.
 }
 \keyword{internal}

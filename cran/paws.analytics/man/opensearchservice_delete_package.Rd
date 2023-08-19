@@ -14,6 +14,6 @@ value.}
 \description{
 Deletes an Amazon OpenSearch Service package. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/custom-packages.html}{Custom packages for Amazon OpenSearch Service}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/delete_package.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_delete_package/} for full documentation.
 }
 \keyword{internal}

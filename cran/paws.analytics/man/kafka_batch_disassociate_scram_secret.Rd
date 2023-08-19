@@ -14,6 +14,6 @@ kafka_batch_disassociate_scram_secret(ClusterArn, SecretArnList)
 \description{
 Disassociates one or more Scram Secrets from an Amazon MSK cluster.
 
-See \url{https://paws-r.github.io/docs/kafka/batch_disassociate_scram_secret.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_batch_disassociate_scram_secret/} for full documentation.
 }
 \keyword{internal}

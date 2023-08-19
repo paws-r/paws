@@ -20,6 +20,6 @@ route53recoveryreadiness_create_readiness_check(
 \description{
 Creates a readiness check in an account. A readiness check monitors a resource set in your application, such as a set of Amazon Aurora instances, that Application Recovery Controller is auditing recovery readiness for. The audits run once every minute on every resource that's associated with a readiness check.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/create_readiness_check.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_create_readiness_check/} for full documentation.
 }
 \keyword{internal}

@@ -47,6 +47,6 @@ The default value is FALSE.}
 \description{
 Specify the Amazon EC2 instance (destination) IP addresses and ports for a VPC subnet endpoint that cannot receive traffic for a custom routing accelerator. You can deny traffic to all destinations in the VPC endpoint, or deny traffic to a specified list of destination IP addresses and ports. Note that you cannot specify IP addresses or ports outside of the range that you configured for the endpoint group.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/deny_custom_routing_traffic.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_deny_custom_routing_traffic/} for full documentation.
 }
 \keyword{internal}

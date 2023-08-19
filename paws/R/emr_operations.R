@@ -73,7 +73,7 @@ NULL
 #'         TimeoutDurationMinutes = 123,
 #'         TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
 #'         BlockDurationMinutes = 123,
-#'         AllocationStrategy = "capacity-optimized"
+#'         AllocationStrategy = "capacity-optimized"|"price-capacity-optimized"|"lowest-price"|"diversified"
 #'       ),
 #'       OnDemandSpecification = list(
 #'         AllocationStrategy = "lowest-price",
@@ -1222,7 +1222,7 @@ emr_describe_job_flows <- function(CreatedAfter = NULL, CreatedBefore = NULL, Jo
     name = "DescribeJobFlows",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "JobFlows")
   )
   input <- .emr$describe_job_flows_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, JobFlowIds = JobFlowIds, JobFlowStates = JobFlowStates)
   output <- .emr$describe_job_flows_output()
@@ -1966,7 +1966,7 @@ emr_list_bootstrap_actions <- function(ClusterId, Marker = NULL) {
     name = "ListBootstrapActions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "BootstrapActions")
   )
   input <- .emr$list_bootstrap_actions_input(ClusterId = ClusterId, Marker = Marker)
   output <- .emr$list_bootstrap_actions_output()
@@ -2071,7 +2071,7 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
     name = "ListClusters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Clusters")
   )
   input <- .emr$list_clusters_input(CreatedAfter = CreatedAfter, CreatedBefore = CreatedBefore, ClusterStates = ClusterStates, Marker = Marker)
   output <- .emr$list_clusters_output()
@@ -2163,7 +2163,7 @@ emr_list_clusters <- function(CreatedAfter = NULL, CreatedBefore = NULL, Cluster
 #'           TimeoutDurationMinutes = 123,
 #'           TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
 #'           BlockDurationMinutes = 123,
-#'           AllocationStrategy = "capacity-optimized"
+#'           AllocationStrategy = "capacity-optimized"|"price-capacity-optimized"|"lowest-price"|"diversified"
 #'         ),
 #'         OnDemandSpecification = list(
 #'           AllocationStrategy = "lowest-price",
@@ -2206,7 +2206,7 @@ emr_list_instance_fleets <- function(ClusterId, Marker = NULL) {
     name = "ListInstanceFleets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "InstanceFleets")
   )
   input <- .emr$list_instance_fleets_input(ClusterId = ClusterId, Marker = Marker)
   output <- .emr$list_instance_fleets_output()
@@ -2375,7 +2375,7 @@ emr_list_instance_groups <- function(ClusterId, Marker = NULL) {
     name = "ListInstanceGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "InstanceGroups")
   )
   input <- .emr$list_instance_groups_input(ClusterId = ClusterId, Marker = Marker)
   output <- .emr$list_instance_groups_output()
@@ -2482,7 +2482,7 @@ emr_list_instances <- function(ClusterId, InstanceGroupId = NULL, InstanceGroupT
     name = "ListInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Instances")
   )
   input <- .emr$list_instances_input(ClusterId = ClusterId, InstanceGroupId = InstanceGroupId, InstanceGroupTypes = InstanceGroupTypes, InstanceFleetId = InstanceFleetId, InstanceFleetType = InstanceFleetType, InstanceStates = InstanceStates, Marker = Marker)
   output <- .emr$list_instances_output()
@@ -2601,7 +2601,7 @@ emr_list_notebook_executions <- function(EditorId = NULL, Status = NULL, From = 
     name = "ListNotebookExecutions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "NotebookExecutions")
   )
   input <- .emr$list_notebook_executions_input(EditorId = EditorId, Status = Status, From = From, To = To, Marker = Marker, ExecutionEngineId = ExecutionEngineId)
   output <- .emr$list_notebook_executions_output()
@@ -2670,7 +2670,7 @@ emr_list_release_labels <- function(Filters = NULL, NextToken = NULL, MaxResults
     name = "ListReleaseLabels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .emr$list_release_labels_input(Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .emr$list_release_labels_output()
@@ -2730,7 +2730,7 @@ emr_list_security_configurations <- function(Marker = NULL) {
     name = "ListSecurityConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "SecurityConfigurations")
   )
   input <- .emr$list_security_configurations_input(Marker = Marker)
   output <- .emr$list_security_configurations_output()
@@ -2839,7 +2839,7 @@ emr_list_steps <- function(ClusterId, StepStates = NULL, StepIds = NULL, Marker 
     name = "ListSteps",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Steps")
   )
   input <- .emr$list_steps_input(ClusterId = ClusterId, StepStates = StepStates, StepIds = StepIds, Marker = Marker)
   output <- .emr$list_steps_output()
@@ -2906,7 +2906,7 @@ emr_list_studio_session_mappings <- function(StudioId = NULL, IdentityType = NUL
     name = "ListStudioSessionMappings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "SessionMappings")
   )
   input <- .emr$list_studio_session_mappings_input(StudioId = StudioId, IdentityType = IdentityType, Marker = Marker)
   output <- .emr$list_studio_session_mappings_output()
@@ -2969,7 +2969,7 @@ emr_list_studios <- function(Marker = NULL) {
     name = "ListStudios",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "Marker", result_key = "Studios")
   )
   input <- .emr$list_studios_input(Marker = Marker)
   output <- .emr$list_studios_output()
@@ -2980,6 +2980,77 @@ emr_list_studios <- function(Marker = NULL) {
   return(response)
 }
 .emr$operations$list_studios <- emr_list_studios
+
+#' A list of the instance types that Amazon EMR supports
+#'
+#' @description
+#' A list of the instance types that Amazon EMR supports. You can filter
+#' the list by Amazon Web Services Region and Amazon EMR release.
+#'
+#' @usage
+#' emr_list_supported_instance_types(ReleaseLabel, Marker)
+#'
+#' @param ReleaseLabel &#91;required&#93; The Amazon EMR release label determines the [versions of open-source
+#' application
+#' packages](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-app-versions-6.x.html)
+#' that Amazon EMR has installed on the cluster. Release labels are in the
+#' format `emr-x.x.x`, where x.x.x is an Amazon EMR release number such as
+#' `emr-6.10.0`. For more information about Amazon EMR releases and their
+#' included application versions and features, see the *\href{https://docs.aws.amazon.com/emr/latest/ReleaseGuide/emr-release-components.html}{Amazon EMR Release Guide}* .
+#' @param Marker The pagination token that marks the next set of results to retrieve.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   SupportedInstanceTypes = list(
+#'     list(
+#'       Type = "string",
+#'       MemoryGB = 123.0,
+#'       StorageGB = 123,
+#'       VCPU = 123,
+#'       Is64BitsOnly = TRUE|FALSE,
+#'       InstanceFamilyId = "string",
+#'       EbsOptimizedAvailable = TRUE|FALSE,
+#'       EbsOptimizedByDefault = TRUE|FALSE,
+#'       NumberOfDisks = 123,
+#'       EbsStorageOnly = TRUE|FALSE,
+#'       Architecture = "string"
+#'     )
+#'   ),
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_supported_instance_types(
+#'   ReleaseLabel = "string",
+#'   Marker = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname emr_list_supported_instance_types
+#'
+#' @aliases emr_list_supported_instance_types
+emr_list_supported_instance_types <- function(ReleaseLabel, Marker = NULL) {
+  op <- new_operation(
+    name = "ListSupportedInstanceTypes",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "Marker", output_token = "Marker")
+  )
+  input <- .emr$list_supported_instance_types_input(ReleaseLabel = ReleaseLabel, Marker = Marker)
+  output <- .emr$list_supported_instance_types_output()
+  config <- get_config()
+  svc <- .emr$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.emr$operations$list_supported_instance_types <- emr_list_supported_instance_types
 
 #' Modifies the number of steps that can be executed concurrently for the
 #' cluster specified using ClusterID
@@ -4026,7 +4097,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #'             TimeoutDurationMinutes = 123,
 #'             TimeoutAction = "SWITCH_TO_ON_DEMAND"|"TERMINATE_CLUSTER",
 #'             BlockDurationMinutes = 123,
-#'             AllocationStrategy = "capacity-optimized"
+#'             AllocationStrategy = "capacity-optimized"|"price-capacity-optimized"|"lowest-price"|"diversified"
 #'           ),
 #'           OnDemandSpecification = list(
 #'             AllocationStrategy = "lowest-price",

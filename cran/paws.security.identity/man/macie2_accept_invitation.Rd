@@ -25,6 +25,6 @@ compatibility.}
 \description{
 Accepts an Amazon Macie membership invitation that was received from a specific account.
 
-See \url{https://paws-r.github.io/docs/macie2/accept_invitation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_accept_invitation/} for full documentation.
 }
 \keyword{internal}

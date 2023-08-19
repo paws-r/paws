@@ -135,6 +135,6 @@ Services Systems Manager.}
 \description{
 Runs commands on one or more managed nodes.
 
-See \url{https://paws-r.github.io/docs/ssm/send_command.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_send_command/} for full documentation.
 }
 \keyword{internal}

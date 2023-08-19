@@ -41,6 +41,6 @@ start with \verb{aws:}. The tag value can be up to 256 characters.}
 \description{
 Create an ApiKey resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/create_api_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_create_api_key/} for full documentation.
 }
 \keyword{internal}

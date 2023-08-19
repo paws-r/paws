@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified route table. You must disassociate the route table from any subnets before you can delete it. You can't delete the main route table.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_route_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_route_table/} for full documentation.
 }
 \keyword{internal}

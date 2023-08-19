@@ -19,6 +19,6 @@ this token from a previous
 \description{
 Returns configuration details about all the features in the specified project.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/list_features.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_features/} for full documentation.
 }
 \keyword{internal}

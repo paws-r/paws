@@ -13,6 +13,6 @@ inspector_describe_assessment_runs(assessmentRunArns)
 \description{
 Describes the assessment runs that are specified by the ARNs of the assessment runs.
 
-See \url{https://paws-r.github.io/docs/inspector/describe_assessment_runs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_describe_assessment_runs/} for full documentation.
 }
 \keyword{internal}

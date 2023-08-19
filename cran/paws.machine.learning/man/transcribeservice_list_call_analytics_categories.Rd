@@ -27,6 +27,6 @@ default of 5 is used.}
 \description{
 Provides a list of Call Analytics categories, including all rules that make up each category.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/list_call_analytics_categories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_list_call_analytics_categories/} for full documentation.
 }
 \keyword{internal}

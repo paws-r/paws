@@ -19,6 +19,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Rejects VPC endpoint connection requests to your VPC endpoint service.
 
-See \url{https://paws-r.github.io/docs/ec2/reject_vpc_endpoint_connections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_reject_vpc_endpoint_connections/} for full documentation.
 }
 \keyword{internal}

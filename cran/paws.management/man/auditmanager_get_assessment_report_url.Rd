@@ -2,7 +2,7 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_get_assessment_report_url}
 \alias{auditmanager_get_assessment_report_url}
-\title{Returns the URL of an assessment report in Audit Manager}
+\title{Gets the URL of an assessment report in Audit Manager}
 \usage{
 auditmanager_get_assessment_report_url(assessmentReportId, assessmentId)
 }
@@ -12,8 +12,8 @@ auditmanager_get_assessment_report_url(assessmentReportId, assessmentId)
 \item{assessmentId}{[required] The unique identifier for the assessment.}
 }
 \description{
-Returns the URL of an assessment report in Audit Manager.
+Gets the URL of an assessment report in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_assessment_report_url.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_assessment_report_url/} for full documentation.
 }
 \keyword{internal}

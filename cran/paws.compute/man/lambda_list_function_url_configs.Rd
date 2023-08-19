@@ -31,6 +31,6 @@ higher.}
 \description{
 Returns a list of Lambda function URLs for the specified function.
 
-See \url{https://paws-r.github.io/docs/lambda/list_function_url_configs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_list_function_url_configs/} for full documentation.
 }
 \keyword{internal}

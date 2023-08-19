@@ -14,6 +14,6 @@ describe the application.}
 \description{
 Deletes an attribute group, specified either by its attribute group ID, name, or ARN.
 
-See \url{https://paws-r.github.io/docs/appregistry/delete_attribute_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_delete_attribute_group/} for full documentation.
 }
 \keyword{internal}

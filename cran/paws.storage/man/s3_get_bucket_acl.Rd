@@ -26,6 +26,6 @@ different account, the request fails with the HTTP status code
 \description{
 This implementation of the \code{GET} action uses the \code{acl} subresource to return the access control list (ACL) of a bucket. To use \code{GET} to return the ACL of the bucket, you must have \code{READ_ACP} access to the bucket. If \code{READ_ACP} permission is granted to the anonymous user, you can return the ACL of the bucket without using an authorization header.
 
-See \url{https://paws-r.github.io/docs/s3/get_bucket_acl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_acl/} for full documentation.
 }
 \keyword{internal}

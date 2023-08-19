@@ -15,6 +15,6 @@ timestreamwrite_describe_table(DatabaseName, TableName)
 \description{
 Returns information about the table, including the table name, database name, retention duration of the memory store and the magnetic store. \href{https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html}{Service quotas apply}. See \href{https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-table.html}{code sample} for details.
 
-See \url{https://paws-r.github.io/docs/timestreamwrite/describe_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamwrite_describe_table/} for full documentation.
 }
 \keyword{internal}

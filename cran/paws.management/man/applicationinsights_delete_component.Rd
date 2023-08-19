@@ -14,6 +14,6 @@ applicationinsights_delete_component(ResourceGroupName, ComponentName)
 \description{
 Ungroups a custom component. When you ungroup custom components, all applicable monitors that are set up for the component are removed and the instances revert to their standalone status.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/delete_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_delete_component/} for full documentation.
 }
 \keyword{internal}

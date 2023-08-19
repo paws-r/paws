@@ -31,6 +31,6 @@ this parameter equal to \code{NONE}.}
 \description{
 Used to update the configuration related to Organizations. Can only be called from a Security Hub administrator account.
 
-See \url{https://paws-r.github.io/docs/securityhub/update_organization_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_update_organization_configuration/} for full documentation.
 }
 \keyword{internal}

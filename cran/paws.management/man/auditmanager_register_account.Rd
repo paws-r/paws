@@ -14,6 +14,6 @@ auditmanager_register_account(kmsKey = NULL, delegatedAdminAccount = NULL)
 \description{
 Enables Audit Manager for the specified Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/auditmanager/register_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_register_account/} for full documentation.
 }
 \keyword{internal}

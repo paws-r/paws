@@ -24,6 +24,6 @@ the previous request to continue listing results after the first page.}
 \description{
 Lists Amazon Inspector coverage statistics for your environment.
 
-See \url{https://paws-r.github.io/docs/inspector2/list_coverage_statistics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_list_coverage_statistics/} for full documentation.
 }
 \keyword{internal}

@@ -37,6 +37,6 @@ retrieve or modify.}
 \description{
 Deletes the specified alternate contact from an Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/account/delete_alternate_contact.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/account_delete_alternate_contact/} for full documentation.
 }
 \keyword{internal}

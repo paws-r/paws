@@ -25,6 +25,6 @@ size is 100.}
 \description{
 Provides information about the hours of operation for the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/list_hours_of_operations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_list_hours_of_operations/} for full documentation.
 }
 \keyword{internal}

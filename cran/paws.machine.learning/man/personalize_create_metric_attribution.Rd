@@ -28,6 +28,6 @@ parameter. For example SUM(Items.PRICE).}
 \description{
 Creates a metric attribution. A metric attribution creates reports on the data that you import into Amazon Personalize. Depending on how you imported the data, you can view reports in Amazon CloudWatch or Amazon S3. For more information, see \href{https://docs.aws.amazon.com/personalize/latest/dg/measuring-recommendation-impact.html}{Measuring impact of recommendations}.
 
-See \url{https://paws-r.github.io/docs/personalize/create_metric_attribution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_create_metric_attribution/} for full documentation.
 }
 \keyword{internal}

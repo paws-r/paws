@@ -12,6 +12,6 @@ elasticache_delete_snapshot(SnapshotName)
 \description{
 Deletes an existing snapshot. When you receive a successful response from this operation, ElastiCache immediately begins deleting the snapshot; you cannot cancel or revert this operation.
 
-See \url{https://paws-r.github.io/docs/elasticache/delete_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_delete_snapshot/} for full documentation.
 }
 \keyword{internal}

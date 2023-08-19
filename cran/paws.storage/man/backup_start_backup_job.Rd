@@ -82,6 +82,6 @@ option is not enabled by default.}
 \description{
 Starts an on-demand backup job for the specified resource.
 
-See \url{https://paws-r.github.io/docs/backup/start_backup_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_start_backup_job/} for full documentation.
 }
 \keyword{internal}

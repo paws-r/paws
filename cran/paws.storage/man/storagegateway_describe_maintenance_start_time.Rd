@@ -13,6 +13,6 @@ storagegateway_describe_maintenance_start_time(GatewayARN)
 \description{
 Returns your gateway's weekly maintenance start time including the day and time of the week. Note that values are in terms of the gateway's time zone.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_maintenance_start_time.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_maintenance_start_time/} for full documentation.
 }
 \keyword{internal}

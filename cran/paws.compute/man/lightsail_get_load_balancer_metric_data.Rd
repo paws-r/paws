@@ -159,6 +159,6 @@ statistical calculation.
 \description{
 Returns information about health metrics for your Lightsail load balancer.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_load_balancer_metric_data.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_load_balancer_metric_data/} for full documentation.
 }
 \keyword{internal}

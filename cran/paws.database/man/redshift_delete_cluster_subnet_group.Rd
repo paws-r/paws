@@ -12,6 +12,6 @@ redshift_delete_cluster_subnet_group(ClusterSubnetGroupName)
 \description{
 Deletes the specified cluster subnet group.
 
-See \url{https://paws-r.github.io/docs/redshift/delete_cluster_subnet_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_delete_cluster_subnet_group/} for full documentation.
 }
 \keyword{internal}

@@ -32,6 +32,6 @@ you want to associate with the OpsItem.}
 \description{
 Associates a related item to a Systems Manager OpsCenter OpsItem. For example, you can associate an Incident Manager incident or analysis with an OpsItem. Incident Manager and OpsCenter are capabilities of Amazon Web Services Systems Manager.
 
-See \url{https://paws-r.github.io/docs/ssm/associate_ops_item_related_item.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_associate_ops_item_related_item/} for full documentation.
 }
 \keyword{internal}

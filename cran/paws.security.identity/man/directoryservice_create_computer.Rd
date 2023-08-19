@@ -29,6 +29,6 @@ to the computer account.}
 \description{
 Creates an Active Directory computer object in the specified directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/create_computer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_create_computer/} for full documentation.
 }
 \keyword{internal}

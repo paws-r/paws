@@ -9,6 +9,6 @@ cloudsearch_list_domain_names()
 \description{
 Lists all search domains owned by an account.
 
-See \url{https://paws-r.github.io/docs/cloudsearch/list_domain_names.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudsearch_list_domain_names/} for full documentation.
 }
 \keyword{internal}

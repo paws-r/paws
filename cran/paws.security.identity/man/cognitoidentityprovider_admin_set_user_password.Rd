@@ -24,6 +24,6 @@ password.}
 \description{
 Sets the specified user's password in a user pool as an administrator. Works on any user.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_set_user_password.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_set_user_password/} for full documentation.
 }
 \keyword{internal}

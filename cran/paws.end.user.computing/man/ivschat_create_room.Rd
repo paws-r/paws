@@ -36,6 +36,6 @@ is documented there.}
 \description{
 Creates a room that allows clients to connect and pass messages.
 
-See \url{https://paws-r.github.io/docs/ivschat/create_room.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivschat_create_room/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ a previously truncated response.}
 \description{
 Returns a list of images created by the specified pipeline.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/list_image_pipeline_images.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_image_pipeline_images/} for full documentation.
 }
 \keyword{internal}

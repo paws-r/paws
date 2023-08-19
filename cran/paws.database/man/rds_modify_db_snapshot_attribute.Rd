@@ -48,6 +48,6 @@ or restore the manual DB snapshot.}
 \description{
 Adds an attribute and values to, or removes an attribute and values from, a manual DB snapshot.
 
-See \url{https://paws-r.github.io/docs/rds/modify_db_snapshot_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_modify_db_snapshot_attribute/} for full documentation.
 }
 \keyword{internal}

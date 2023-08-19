@@ -24,6 +24,6 @@ populates this field. For more information about idempotency, see
 \description{
 Allows you to confirm that the attachment has been uploaded using the pre-signed URL provided in StartAttachmentUpload API.
 
-See \url{https://paws-r.github.io/docs/connectparticipant/complete_attachment_upload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectparticipant_complete_attachment_upload/} for full documentation.
 }
 \keyword{internal}

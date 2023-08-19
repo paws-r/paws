@@ -23,6 +23,6 @@ account with the \code{logs:Unmask} permission.}
 \description{
 Retrieves all of the fields and values of a single log event. All fields are retrieved, even if the original query that produced the \code{logRecordPointer} retrieved only a subset of fields. Fields are returned as field name/field value pairs.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/get_log_record.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_log_record/} for full documentation.
 }
 \keyword{internal}

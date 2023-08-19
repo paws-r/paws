@@ -29,6 +29,6 @@ that use this segment.}
 \description{
 Use this operation to find which experiments or launches are using a specified segment.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/list_segment_references.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_segment_references/} for full documentation.
 }
 \keyword{internal}

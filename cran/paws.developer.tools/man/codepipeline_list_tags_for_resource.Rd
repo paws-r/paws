@@ -23,6 +23,6 @@ lists all available tags in one call and does not use pagination.}
 \description{
 Gets the set of key-value pairs (metadata) that are used to manage the resource.
 
-See \url{https://paws-r.github.io/docs/codepipeline/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

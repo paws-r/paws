@@ -37,6 +37,6 @@ use the \code{\link[=route53_list_geo_locations]{list_geo_locations}} API.}
 \description{
 Gets information about whether a specified geographic location is supported for Amazon Route 53 geolocation resource record sets.
 
-See \url{https://paws-r.github.io/docs/route53/get_geo_location.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_get_geo_location/} for full documentation.
 }
 \keyword{internal}

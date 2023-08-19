@@ -12,6 +12,6 @@ configservice_describe_delivery_channel_status(DeliveryChannelNames = NULL)
 \description{
 Returns the current status of the specified delivery channel. If a delivery channel is not specified, this action returns the current status of all delivery channels associated with the account.
 
-See \url{https://paws-r.github.io/docs/configservice/describe_delivery_channel_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_describe_delivery_channel_status/} for full documentation.
 }
 \keyword{internal}

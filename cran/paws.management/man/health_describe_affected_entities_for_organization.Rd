@@ -31,6 +31,6 @@ inclusive.}
 \description{
 Returns a list of entities that have been affected by one or more events for one or more accounts in your organization in Organizations, based on the filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the Amazon Web Service.
 
-See \url{https://paws-r.github.io/docs/health/describe_affected_entities_for_organization.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/health_describe_affected_entities_for_organization/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ serverlessapplicationrepository_put_application_policy(
 \description{
 Sets the permission policy for an application. For the list of actions supported for this operation, see \href{https://docs.aws.amazon.com/serverlessrepo/latest/devguide/security_iam_resource-based-policy-examples.html#application-permissions}{Application Permissions} .
 
-See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/put_application_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_put_application_policy/} for full documentation.
 }
 \keyword{internal}

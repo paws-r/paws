@@ -15,6 +15,6 @@ workmail_deregister_mail_domain(OrganizationId, DomainName)
 \description{
 Removes a domain from WorkMail, stops email routing to WorkMail, and removes the authorization allowing WorkMail use. SES keeps the domain because other applications may use it. You must first remove any email address used by WorkMail entities before you remove the domain.
 
-See \url{https://paws-r.github.io/docs/workmail/deregister_mail_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_deregister_mail_domain/} for full documentation.
 }
 \keyword{internal}

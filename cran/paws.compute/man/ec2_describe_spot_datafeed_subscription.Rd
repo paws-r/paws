@@ -15,6 +15,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the data feed for Spot Instances. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/spot-data-feeds.html}{Spot Instance data feed} in the \emph{Amazon EC2 User Guide for Linux Instances}.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_spot_datafeed_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_spot_datafeed_subscription/} for full documentation.
 }
 \keyword{internal}

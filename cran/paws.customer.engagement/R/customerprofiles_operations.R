@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Associates a new key value with a specific profile, such as a Contact Record ContactId.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/add_profile_key.html](https://paws-r.github.io/docs/customerprofiles/add_profile_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_add_profile_key/](https://www.paws-r-sdk.com/docs/customerprofiles_add_profile_key/) for full documentation.
 #'
 #' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
 #' @param KeyName &#91;required&#93; A searchable identifier of a customer profile. The predefined keys you
@@ -42,6 +42,44 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 }
 .customerprofiles$operations$add_profile_key <- customerprofiles_add_profile_key
 
+#' Creates a new calculated attribute definition
+#'
+#' @description
+#' Creates a new calculated attribute definition. After creation, new object data ingested into Customer Profiles will be included in the calculated attribute, which can be retrieved for a profile using the [`get_calculated_attribute_for_profile`][customerprofiles_get_calculated_attribute_for_profile] API. Defining a calculated attribute makes it available for all profiles within a domain. Each calculated attribute can only reference one `ObjectType` and at most, two fields from that `ObjectType`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_create_calculated_attribute_definition/](https://www.paws-r-sdk.com/docs/customerprofiles_create_calculated_attribute_definition/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param CalculatedAttributeName &#91;required&#93; The unique name of the calculated attribute.
+#' @param DisplayName The display name of the calculated attribute.
+#' @param Description The description of the calculated attribute.
+#' @param AttributeDetails &#91;required&#93; Mathematical expression and a list of attribute items specified in that
+#' expression.
+#' @param Conditions The conditions including range, object count, and threshold for the
+#' calculated attribute.
+#' @param Statistic &#91;required&#93; The aggregation operation to perform for the calculated attribute.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_create_calculated_attribute_definition
+customerprofiles_create_calculated_attribute_definition <- function(DomainName, CalculatedAttributeName, DisplayName = NULL, Description = NULL, AttributeDetails, Conditions = NULL, Statistic, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateCalculatedAttributeDefinition",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}",
+    paginator = list()
+  )
+  input <- .customerprofiles$create_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName, DisplayName = DisplayName, Description = Description, AttributeDetails = AttributeDetails, Conditions = Conditions, Statistic = Statistic, Tags = Tags)
+  output <- .customerprofiles$create_calculated_attribute_definition_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$create_calculated_attribute_definition <- customerprofiles_create_calculated_attribute_definition
+
 #' Creates a domain, which is a container for all customer data, such as
 #' customer profile attributes, object types, profile keys, and encryption
 #' keys
@@ -49,7 +87,7 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #' @description
 #' Creates a domain, which is a container for all customer data, such as customer profile attributes, object types, profile keys, and encryption keys. You can create multiple domains, and each domain can have multiple third-party integrations.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/create_domain.html](https://paws-r.github.io/docs/customerprofiles/create_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_create_domain/](https://www.paws-r-sdk.com/docs/customerprofiles_create_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param DefaultExpirationDays &#91;required&#93; The default number of days until the data within the domain expires.
@@ -71,19 +109,28 @@ customerprofiles_add_profile_key <- function(ProfileId, KeyName, Values, DomainN
 #' [`get_matches`][customerprofiles_get_matches] API to return and review
 #' the results. Or, if you have configured `ExportingConfig` in the
 #' `MatchingRequest`, you can download the results from S3.
+#' @param RuleBasedMatching The process of matching duplicate profiles using the Rule-Based
+#' matching. If `RuleBasedMatching` = true, Amazon Connect Customer
+#' Profiles will start to match and merge your profiles according to your
+#' configuration in the `RuleBasedMatchingRequest`. You can use the
+#' [`list_rule_based_matches`][customerprofiles_list_rule_based_matches]
+#' and [`get_similar_profiles`][customerprofiles_get_similar_profiles] API
+#' to return and review the results. Also, if you have configured
+#' `ExportingConfig` in the `RuleBasedMatchingRequest`, you can download
+#' the results from S3.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
 #' @keywords internal
 #'
 #' @rdname customerprofiles_create_domain
-customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, Tags = NULL) {
+customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, RuleBasedMatching = NULL, Tags = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
     http_path = "/domains/{DomainName}",
     paginator = list()
   )
-  input <- .customerprofiles$create_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, Tags = Tags)
+  input <- .customerprofiles$create_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, RuleBasedMatching = RuleBasedMatching, Tags = Tags)
   output <- .customerprofiles$create_domain_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)
@@ -93,12 +140,47 @@ customerprofiles_create_domain <- function(DomainName, DefaultExpirationDays, De
 }
 .customerprofiles$operations$create_domain <- customerprofiles_create_domain
 
+#' Creates an event stream, which is a subscription to real-time events,
+#' such as when profiles are created and updated through Amazon Connect
+#' Customer Profiles
+#'
+#' @description
+#' Creates an event stream, which is a subscription to real-time events, such as when profiles are created and updated through Amazon Connect Customer Profiles.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_create_event_stream/](https://www.paws-r-sdk.com/docs/customerprofiles_create_event_stream/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param Uri &#91;required&#93; The StreamARN of the destination to deliver profile events to. For
+#' example, arn:aws:kinesis:region:account-id:stream/stream-name
+#' @param EventStreamName &#91;required&#93; The name of the event stream.
+#' @param Tags The tags used to organize, track, or control access for this resource.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_create_event_stream
+customerprofiles_create_event_stream <- function(DomainName, Uri, EventStreamName, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateEventStream",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/event-streams/{EventStreamName}",
+    paginator = list()
+  )
+  input <- .customerprofiles$create_event_stream_input(DomainName = DomainName, Uri = Uri, EventStreamName = EventStreamName, Tags = Tags)
+  output <- .customerprofiles$create_event_stream_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$create_event_stream <- customerprofiles_create_event_stream
+
 #' Creates an integration workflow
 #'
 #' @description
 #' Creates an integration workflow. An integration workflow is an async process which ingests historic data and sets up an integration for ongoing updates. The supported Amazon AppFlow sources are Salesforce, ServiceNow, and Marketo.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/create_integration_workflow.html](https://paws-r.github.io/docs/customerprofiles/create_integration_workflow.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_create_integration_workflow/](https://www.paws-r-sdk.com/docs/customerprofiles_create_integration_workflow/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param WorkflowType &#91;required&#93; The type of workflow. The only supported value is APPFLOW_INTEGRATION.
@@ -134,7 +216,7 @@ customerprofiles_create_integration_workflow <- function(DomainName, WorkflowTyp
 #' @description
 #' Creates a standard profile.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/create_profile.html](https://paws-r.github.io/docs/customerprofiles/create_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_create_profile/](https://www.paws-r-sdk.com/docs/customerprofiles_create_profile/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param AccountNumber A unique account number that you have given to the customer.
@@ -184,13 +266,43 @@ customerprofiles_create_profile <- function(DomainName, AccountNumber = NULL, Ad
 }
 .customerprofiles$operations$create_profile <- customerprofiles_create_profile
 
+#' Deletes an existing calculated attribute definition
+#'
+#' @description
+#' Deletes an existing calculated attribute definition. Note that deleting a default calculated attribute is possible, however once deleted, you will be unable to undo that action and will need to recreate it on your own using the CreateCalculatedAttributeDefinition API if you want it back.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_delete_calculated_attribute_definition/](https://www.paws-r-sdk.com/docs/customerprofiles_delete_calculated_attribute_definition/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param CalculatedAttributeName &#91;required&#93; The unique name of the calculated attribute.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_delete_calculated_attribute_definition
+customerprofiles_delete_calculated_attribute_definition <- function(DomainName, CalculatedAttributeName) {
+  op <- new_operation(
+    name = "DeleteCalculatedAttributeDefinition",
+    http_method = "DELETE",
+    http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}",
+    paginator = list()
+  )
+  input <- .customerprofiles$delete_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName)
+  output <- .customerprofiles$delete_calculated_attribute_definition_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$delete_calculated_attribute_definition <- customerprofiles_delete_calculated_attribute_definition
+
 #' Deletes a specific domain and all of its customer data, such as customer
 #' profile attributes and their related objects
 #'
 #' @description
 #' Deletes a specific domain and all of its customer data, such as customer profile attributes and their related objects.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/delete_domain.html](https://paws-r.github.io/docs/customerprofiles/delete_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_delete_domain/](https://www.paws-r-sdk.com/docs/customerprofiles_delete_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #'
@@ -214,12 +326,42 @@ customerprofiles_delete_domain <- function(DomainName) {
 }
 .customerprofiles$operations$delete_domain <- customerprofiles_delete_domain
 
+#' Disables and deletes the specified event stream
+#'
+#' @description
+#' Disables and deletes the specified event stream.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_delete_event_stream/](https://www.paws-r-sdk.com/docs/customerprofiles_delete_event_stream/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param EventStreamName &#91;required&#93; The name of the event stream
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_delete_event_stream
+customerprofiles_delete_event_stream <- function(DomainName, EventStreamName) {
+  op <- new_operation(
+    name = "DeleteEventStream",
+    http_method = "DELETE",
+    http_path = "/domains/{DomainName}/event-streams/{EventStreamName}",
+    paginator = list()
+  )
+  input <- .customerprofiles$delete_event_stream_input(DomainName = DomainName, EventStreamName = EventStreamName)
+  output <- .customerprofiles$delete_event_stream_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$delete_event_stream <- customerprofiles_delete_event_stream
+
 #' Removes an integration from a specific domain
 #'
 #' @description
 #' Removes an integration from a specific domain.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/delete_integration.html](https://paws-r.github.io/docs/customerprofiles/delete_integration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_delete_integration/](https://www.paws-r-sdk.com/docs/customerprofiles_delete_integration/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param Uri &#91;required&#93; The URI of the S3 bucket or any other type of data source.
@@ -250,7 +392,7 @@ customerprofiles_delete_integration <- function(DomainName, Uri) {
 #' @description
 #' Deletes the standard customer profile and all data pertaining to the profile.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/delete_profile.html](https://paws-r.github.io/docs/customerprofiles/delete_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_delete_profile/](https://www.paws-r-sdk.com/docs/customerprofiles_delete_profile/) for full documentation.
 #'
 #' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
 #' @param DomainName &#91;required&#93; The unique name of the domain.
@@ -280,7 +422,7 @@ customerprofiles_delete_profile <- function(ProfileId, DomainName) {
 #' @description
 #' Removes a searchable key from a customer profile.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/delete_profile_key.html](https://paws-r.github.io/docs/customerprofiles/delete_profile_key.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_delete_profile_key/](https://www.paws-r-sdk.com/docs/customerprofiles_delete_profile_key/) for full documentation.
 #'
 #' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
 #' @param KeyName &#91;required&#93; A searchable identifier of a customer profile.
@@ -312,7 +454,7 @@ customerprofiles_delete_profile_key <- function(ProfileId, KeyName, Values, Doma
 #' @description
 #' Removes an object associated with a profile of a given ProfileObjectType.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/delete_profile_object.html](https://paws-r.github.io/docs/customerprofiles/delete_profile_object.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_delete_profile_object/](https://www.paws-r-sdk.com/docs/customerprofiles_delete_profile_object/) for full documentation.
 #'
 #' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
 #' @param ProfileObjectUniqueKey &#91;required&#93; The unique identifier of the profile object generated by the service.
@@ -345,7 +487,7 @@ customerprofiles_delete_profile_object <- function(ProfileId, ProfileObjectUniqu
 #' @description
 #' Removes a ProfileObjectType from a specific domain as well as removes all the ProfileObjects of that type. It also disables integrations from this specific ProfileObjectType. In addition, it scrubs all of the fields of the standard profile that were populated from this ProfileObjectType.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/delete_profile_object_type.html](https://paws-r.github.io/docs/customerprofiles/delete_profile_object_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_delete_profile_object_type/](https://www.paws-r-sdk.com/docs/customerprofiles_delete_profile_object_type/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
@@ -375,7 +517,7 @@ customerprofiles_delete_profile_object_type <- function(DomainName, ObjectTypeNa
 #' @description
 #' Deletes the specified workflow and all its corresponding resources. This is an async process.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/delete_workflow.html](https://paws-r.github.io/docs/customerprofiles/delete_workflow.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_delete_workflow/](https://www.paws-r-sdk.com/docs/customerprofiles_delete_workflow/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param WorkflowId &#91;required&#93; Unique identifier for the workflow.
@@ -406,7 +548,7 @@ customerprofiles_delete_workflow <- function(DomainName, WorkflowId) {
 #' @description
 #' Tests the auto-merging settings of your Identity Resolution Job without merging your data. It randomly selects a sample of matching groups from the existing matching results, and applies the automerging settings that you provided. You can then view the number of profiles in the sample, the number of matches, and the number of profiles identified to be merged. This enables you to evaluate the accuracy of the attributes in your matching list.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/get_auto_merging_preview.html](https://paws-r.github.io/docs/customerprofiles/get_auto_merging_preview.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_auto_merging_preview/](https://www.paws-r-sdk.com/docs/customerprofiles_get_auto_merging_preview/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param Consolidation &#91;required&#93; A list of matching attributes that represent matching criteria.
@@ -435,12 +577,74 @@ customerprofiles_get_auto_merging_preview <- function(DomainName, Consolidation,
 }
 .customerprofiles$operations$get_auto_merging_preview <- customerprofiles_get_auto_merging_preview
 
+#' Provides more information on a calculated attribute definition for
+#' Customer Profiles
+#'
+#' @description
+#' Provides more information on a calculated attribute definition for Customer Profiles.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_calculated_attribute_definition/](https://www.paws-r-sdk.com/docs/customerprofiles_get_calculated_attribute_definition/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param CalculatedAttributeName &#91;required&#93; The unique name of the calculated attribute.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_calculated_attribute_definition
+customerprofiles_get_calculated_attribute_definition <- function(DomainName, CalculatedAttributeName) {
+  op <- new_operation(
+    name = "GetCalculatedAttributeDefinition",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}",
+    paginator = list()
+  )
+  input <- .customerprofiles$get_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName)
+  output <- .customerprofiles$get_calculated_attribute_definition_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_calculated_attribute_definition <- customerprofiles_get_calculated_attribute_definition
+
+#' Retrieve a calculated attribute for a customer profile
+#'
+#' @description
+#' Retrieve a calculated attribute for a customer profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_calculated_attribute_for_profile/](https://www.paws-r-sdk.com/docs/customerprofiles_get_calculated_attribute_for_profile/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
+#' @param CalculatedAttributeName &#91;required&#93; The unique name of the calculated attribute.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_calculated_attribute_for_profile
+customerprofiles_get_calculated_attribute_for_profile <- function(DomainName, ProfileId, CalculatedAttributeName) {
+  op <- new_operation(
+    name = "GetCalculatedAttributeForProfile",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/profile/{ProfileId}/calculated-attributes/{CalculatedAttributeName}",
+    paginator = list()
+  )
+  input <- .customerprofiles$get_calculated_attribute_for_profile_input(DomainName = DomainName, ProfileId = ProfileId, CalculatedAttributeName = CalculatedAttributeName)
+  output <- .customerprofiles$get_calculated_attribute_for_profile_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_calculated_attribute_for_profile <- customerprofiles_get_calculated_attribute_for_profile
+
 #' Returns information about a specific domain
 #'
 #' @description
 #' Returns information about a specific domain.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/get_domain.html](https://paws-r.github.io/docs/customerprofiles/get_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_domain/](https://www.paws-r-sdk.com/docs/customerprofiles_get_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #'
@@ -464,13 +668,44 @@ customerprofiles_get_domain <- function(DomainName) {
 }
 .customerprofiles$operations$get_domain <- customerprofiles_get_domain
 
+#' Returns information about the specified event stream in a specific
+#' domain
+#'
+#' @description
+#' Returns information about the specified event stream in a specific domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_event_stream/](https://www.paws-r-sdk.com/docs/customerprofiles_get_event_stream/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param EventStreamName &#91;required&#93; The name of the event stream provided during create operations.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_event_stream
+customerprofiles_get_event_stream <- function(DomainName, EventStreamName) {
+  op <- new_operation(
+    name = "GetEventStream",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/event-streams/{EventStreamName}",
+    paginator = list()
+  )
+  input <- .customerprofiles$get_event_stream_input(DomainName = DomainName, EventStreamName = EventStreamName)
+  output <- .customerprofiles$get_event_stream_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_event_stream <- customerprofiles_get_event_stream
+
 #' Returns information about an Identity Resolution Job in a specific
 #' domain
 #'
 #' @description
 #' Returns information about an Identity Resolution Job in a specific domain.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/get_identity_resolution_job.html](https://paws-r.github.io/docs/customerprofiles/get_identity_resolution_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_identity_resolution_job/](https://www.paws-r-sdk.com/docs/customerprofiles_get_identity_resolution_job/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param JobId &#91;required&#93; The unique identifier of the Identity Resolution Job.
@@ -500,7 +735,7 @@ customerprofiles_get_identity_resolution_job <- function(DomainName, JobId) {
 #' @description
 #' Returns an integration for a domain.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/get_integration.html](https://paws-r.github.io/docs/customerprofiles/get_integration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_integration/](https://www.paws-r-sdk.com/docs/customerprofiles_get_integration/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param Uri &#91;required&#93; The URI of the S3 bucket or any other type of data source.
@@ -531,7 +766,7 @@ customerprofiles_get_integration <- function(DomainName, Uri) {
 #' @description
 #' Before calling this API, use [`create_domain`][customerprofiles_create_domain] or [`update_domain`][customerprofiles_update_domain] to enable identity resolution: set `Matching` to true.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/get_matches.html](https://paws-r.github.io/docs/customerprofiles/get_matches.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_matches/](https://www.paws-r-sdk.com/docs/customerprofiles_get_matches/) for full documentation.
 #'
 #' @param NextToken The token for the next set of results. Use the value returned in the
 #' previous response in the next request to retrieve the next set of
@@ -564,7 +799,7 @@ customerprofiles_get_matches <- function(NextToken = NULL, MaxResults = NULL, Do
 #' @description
 #' Returns the object types for a specific domain.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/get_profile_object_type.html](https://paws-r.github.io/docs/customerprofiles/get_profile_object_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_profile_object_type/](https://www.paws-r-sdk.com/docs/customerprofiles_get_profile_object_type/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
@@ -594,7 +829,7 @@ customerprofiles_get_profile_object_type <- function(DomainName, ObjectTypeName)
 #' @description
 #' Returns the template information for a specific object type.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/get_profile_object_type_template.html](https://paws-r.github.io/docs/customerprofiles/get_profile_object_type_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_profile_object_type_template/](https://www.paws-r-sdk.com/docs/customerprofiles_get_profile_object_type_template/) for full documentation.
 #'
 #' @param TemplateId &#91;required&#93; A unique identifier for the object template.
 #'
@@ -618,12 +853,49 @@ customerprofiles_get_profile_object_type_template <- function(TemplateId) {
 }
 .customerprofiles$operations$get_profile_object_type_template <- customerprofiles_get_profile_object_type_template
 
+#' Returns a set of profiles that belong to the same matching group using
+#' the matchId or profileId
+#'
+#' @description
+#' Returns a set of profiles that belong to the same matching group using the `matchId` or `profileId`. You can also specify the type of matching that you want for finding similar profiles using either `RULE_BASED_MATCHING` or `ML_BASED_MATCHING`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_similar_profiles/](https://www.paws-r-sdk.com/docs/customerprofiles_get_similar_profiles/) for full documentation.
+#'
+#' @param NextToken The pagination token from the previous
+#' [`get_similar_profiles`][customerprofiles_get_similar_profiles] API
+#' call.
+#' @param MaxResults The maximum number of objects returned per page.
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param MatchType &#91;required&#93; Specify the type of matching to get similar profiles for.
+#' @param SearchKey &#91;required&#93; The string indicating the search key to be used.
+#' @param SearchValue &#91;required&#93; The string based on `SearchKey` to be searched for similar profiles.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_get_similar_profiles
+customerprofiles_get_similar_profiles <- function(NextToken = NULL, MaxResults = NULL, DomainName, MatchType, SearchKey, SearchValue) {
+  op <- new_operation(
+    name = "GetSimilarProfiles",
+    http_method = "POST",
+    http_path = "/domains/{DomainName}/matches",
+    paginator = list()
+  )
+  input <- .customerprofiles$get_similar_profiles_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, MatchType = MatchType, SearchKey = SearchKey, SearchValue = SearchValue)
+  output <- .customerprofiles$get_similar_profiles_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$get_similar_profiles <- customerprofiles_get_similar_profiles
+
 #' Get details of specified workflow
 #'
 #' @description
 #' Get details of specified workflow.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/get_workflow.html](https://paws-r.github.io/docs/customerprofiles/get_workflow.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_workflow/](https://www.paws-r-sdk.com/docs/customerprofiles_get_workflow/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param WorkflowId &#91;required&#93; Unique identifier for the workflow.
@@ -653,7 +925,7 @@ customerprofiles_get_workflow <- function(DomainName, WorkflowId) {
 #' @description
 #' Get granular list of steps in workflow.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/get_workflow_steps.html](https://paws-r.github.io/docs/customerprofiles/get_workflow_steps.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_get_workflow_steps/](https://www.paws-r-sdk.com/docs/customerprofiles_get_workflow_steps/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param WorkflowId &#91;required&#93; Unique identifier for the workflow.
@@ -688,7 +960,7 @@ customerprofiles_get_workflow_steps <- function(DomainName, WorkflowId, NextToke
 #' @description
 #' Lists all of the integrations associated to a specific URI in the AWS account.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/list_account_integrations.html](https://paws-r.github.io/docs/customerprofiles/list_account_integrations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_list_account_integrations/](https://www.paws-r-sdk.com/docs/customerprofiles_list_account_integrations/) for full documentation.
 #'
 #' @param Uri &#91;required&#93; The URI of the S3 bucket or any other type of data source.
 #' @param NextToken The pagination token from the previous ListAccountIntegrations API call.
@@ -716,13 +988,79 @@ customerprofiles_list_account_integrations <- function(Uri, NextToken = NULL, Ma
 }
 .customerprofiles$operations$list_account_integrations <- customerprofiles_list_account_integrations
 
+#' Lists calculated attribute definitions for Customer Profiles
+#'
+#' @description
+#' Lists calculated attribute definitions for Customer Profiles
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_list_calculated_attribute_definitions/](https://www.paws-r-sdk.com/docs/customerprofiles_list_calculated_attribute_definitions/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param NextToken The pagination token from the previous call to
+#' ListCalculatedAttributeDefinitions.
+#' @param MaxResults The maximum number of calculated attribute definitions returned per
+#' page.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_calculated_attribute_definitions
+customerprofiles_list_calculated_attribute_definitions <- function(DomainName, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListCalculatedAttributeDefinitions",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/calculated-attributes",
+    paginator = list()
+  )
+  input <- .customerprofiles$list_calculated_attribute_definitions_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .customerprofiles$list_calculated_attribute_definitions_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_calculated_attribute_definitions <- customerprofiles_list_calculated_attribute_definitions
+
+#' Retrieve a list of calculated attributes for a customer profile
+#'
+#' @description
+#' Retrieve a list of calculated attributes for a customer profile.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_list_calculated_attributes_for_profile/](https://www.paws-r-sdk.com/docs/customerprofiles_list_calculated_attributes_for_profile/) for full documentation.
+#'
+#' @param NextToken The pagination token from the previous call to
+#' ListCalculatedAttributesForProfile.
+#' @param MaxResults The maximum number of calculated attributes returned per page.
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_calculated_attributes_for_profile
+customerprofiles_list_calculated_attributes_for_profile <- function(NextToken = NULL, MaxResults = NULL, DomainName, ProfileId) {
+  op <- new_operation(
+    name = "ListCalculatedAttributesForProfile",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/profile/{ProfileId}/calculated-attributes",
+    paginator = list()
+  )
+  input <- .customerprofiles$list_calculated_attributes_for_profile_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName, ProfileId = ProfileId)
+  output <- .customerprofiles$list_calculated_attributes_for_profile_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_calculated_attributes_for_profile <- customerprofiles_list_calculated_attributes_for_profile
+
 #' Returns a list of all the domains for an AWS account that have been
 #' created
 #'
 #' @description
 #' Returns a list of all the domains for an AWS account that have been created.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/list_domains.html](https://paws-r.github.io/docs/customerprofiles/list_domains.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_list_domains/](https://www.paws-r-sdk.com/docs/customerprofiles_list_domains/) for full documentation.
 #'
 #' @param NextToken The pagination token from the previous ListDomain API call.
 #' @param MaxResults The maximum number of objects returned per page.
@@ -747,12 +1085,43 @@ customerprofiles_list_domains <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .customerprofiles$operations$list_domains <- customerprofiles_list_domains
 
+#' Returns a list of all the event streams in a specific domain
+#'
+#' @description
+#' Returns a list of all the event streams in a specific domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_list_event_streams/](https://www.paws-r-sdk.com/docs/customerprofiles_list_event_streams/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param NextToken Identifies the next page of results to return.
+#' @param MaxResults The maximum number of objects returned per page.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_event_streams
+customerprofiles_list_event_streams <- function(DomainName, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListEventStreams",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/event-streams",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Items")
+  )
+  input <- .customerprofiles$list_event_streams_input(DomainName = DomainName, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .customerprofiles$list_event_streams_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_event_streams <- customerprofiles_list_event_streams
+
 #' Lists all of the Identity Resolution Jobs in your domain
 #'
 #' @description
 #' Lists all of the Identity Resolution Jobs in your domain. The response sorts the list by `JobStartTime`.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/list_identity_resolution_jobs.html](https://paws-r.github.io/docs/customerprofiles/list_identity_resolution_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_list_identity_resolution_jobs/](https://www.paws-r-sdk.com/docs/customerprofiles_list_identity_resolution_jobs/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param NextToken The token for the next set of results. Use the value returned in the
@@ -785,7 +1154,7 @@ customerprofiles_list_identity_resolution_jobs <- function(DomainName, NextToken
 #' @description
 #' Lists all of the integrations in your domain.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/list_integrations.html](https://paws-r.github.io/docs/customerprofiles/list_integrations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_list_integrations/](https://www.paws-r-sdk.com/docs/customerprofiles_list_integrations/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param NextToken The pagination token from the previous ListIntegrations API call.
@@ -818,7 +1187,7 @@ customerprofiles_list_integrations <- function(DomainName, NextToken = NULL, Max
 #' @description
 #' Lists all of the template information for object types.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/list_profile_object_type_templates.html](https://paws-r.github.io/docs/customerprofiles/list_profile_object_type_templates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_list_profile_object_type_templates/](https://www.paws-r-sdk.com/docs/customerprofiles_list_profile_object_type_templates/) for full documentation.
 #'
 #' @param NextToken The pagination token from the previous ListObjectTypeTemplates API call.
 #' @param MaxResults The maximum number of objects returned per page.
@@ -848,7 +1217,7 @@ customerprofiles_list_profile_object_type_templates <- function(NextToken = NULL
 #' @description
 #' Lists all of the templates available within the service.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/list_profile_object_types.html](https://paws-r.github.io/docs/customerprofiles/list_profile_object_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_list_profile_object_types/](https://www.paws-r-sdk.com/docs/customerprofiles_list_profile_object_types/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param NextToken Identifies the next page of results to return.
@@ -880,7 +1249,7 @@ customerprofiles_list_profile_object_types <- function(DomainName, NextToken = N
 #' @description
 #' Returns a list of objects associated with a profile of a given ProfileObjectType.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/list_profile_objects.html](https://paws-r.github.io/docs/customerprofiles/list_profile_objects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_list_profile_objects/](https://www.paws-r-sdk.com/docs/customerprofiles_list_profile_objects/) for full documentation.
 #'
 #' @param NextToken The pagination token from the previous call to ListProfileObjects.
 #' @param MaxResults The maximum number of objects returned per page.
@@ -888,8 +1257,7 @@ customerprofiles_list_profile_object_types <- function(DomainName, NextToken = N
 #' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
 #' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.
 #' @param ObjectFilter Applies a filter to the response to include profile objects with the
-#' specified index values. This filter is only supported for ObjectTypeName
-#' _asset, _case and _order.
+#' specified index values.
 #'
 #' @keywords internal
 #'
@@ -911,13 +1279,46 @@ customerprofiles_list_profile_objects <- function(NextToken = NULL, MaxResults =
 }
 .customerprofiles$operations$list_profile_objects <- customerprofiles_list_profile_objects
 
+#' Returns a set of MatchIds that belong to the given domain
+#'
+#' @description
+#' Returns a set of `MatchIds` that belong to the given domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_list_rule_based_matches/](https://www.paws-r-sdk.com/docs/customerprofiles_list_rule_based_matches/) for full documentation.
+#'
+#' @param NextToken The pagination token from the previous
+#' [`list_rule_based_matches`][customerprofiles_list_rule_based_matches]
+#' API call.
+#' @param MaxResults The maximum number of `MatchIds` returned per page.
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_list_rule_based_matches
+customerprofiles_list_rule_based_matches <- function(NextToken = NULL, MaxResults = NULL, DomainName) {
+  op <- new_operation(
+    name = "ListRuleBasedMatches",
+    http_method = "GET",
+    http_path = "/domains/{DomainName}/profiles/ruleBasedMatches",
+    paginator = list()
+  )
+  input <- .customerprofiles$list_rule_based_matches_input(NextToken = NextToken, MaxResults = MaxResults, DomainName = DomainName)
+  output <- .customerprofiles$list_rule_based_matches_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$list_rule_based_matches <- customerprofiles_list_rule_based_matches
+
 #' Displays the tags associated with an Amazon Connect Customer Profiles
 #' resource
 #'
 #' @description
 #' Displays the tags associated with an Amazon Connect Customer Profiles resource. In Connect Customer Profiles, domains, profile object types, and integrations can be tagged.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/list_tags_for_resource.html](https://paws-r.github.io/docs/customerprofiles/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/customerprofiles_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource for which you want to view tags.
 #'
@@ -946,7 +1347,7 @@ customerprofiles_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Query to list all workflows.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/list_workflows.html](https://paws-r.github.io/docs/customerprofiles/list_workflows.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_list_workflows/](https://www.paws-r-sdk.com/docs/customerprofiles_list_workflows/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param WorkflowType The type of workflow. The only supported value is APPFLOW_INTEGRATION.
@@ -983,7 +1384,7 @@ customerprofiles_list_workflows <- function(DomainName, WorkflowType = NULL, Sta
 #' @description
 #' Runs an AWS Lambda job that does the following:
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/merge_profiles.html](https://paws-r.github.io/docs/customerprofiles/merge_profiles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_merge_profiles/](https://www.paws-r-sdk.com/docs/customerprofiles_merge_profiles/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param MainProfileId &#91;required&#93; The identifier of the profile to be taken.
@@ -1019,7 +1420,7 @@ customerprofiles_merge_profiles <- function(DomainName, MainProfileId, ProfileId
 #' @description
 #' Adds an integration between the service and a third-party service, which includes Amazon AppFlow and Amazon Connect.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/put_integration.html](https://paws-r.github.io/docs/customerprofiles/put_integration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_put_integration/](https://www.paws-r-sdk.com/docs/customerprofiles_put_integration/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param Uri The URI of the S3 bucket or any other type of data source.
@@ -1060,7 +1461,7 @@ customerprofiles_put_integration <- function(DomainName, Uri = NULL, ObjectTypeN
 #' @description
 #' Adds additional objects to customer profiles of a given ObjectType.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/put_profile_object.html](https://paws-r.github.io/docs/customerprofiles/put_profile_object.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_put_profile_object/](https://www.paws-r-sdk.com/docs/customerprofiles_put_profile_object/) for full documentation.
 #'
 #' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
 #' @param Object &#91;required&#93; A string that is serialized from a JSON object.
@@ -1091,7 +1492,7 @@ customerprofiles_put_profile_object <- function(ObjectTypeName, Object, DomainNa
 #' @description
 #' Defines a ProfileObjectType.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/put_profile_object_type.html](https://paws-r.github.io/docs/customerprofiles/put_profile_object_type.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_put_profile_object_type/](https://www.paws-r-sdk.com/docs/customerprofiles_put_profile_object_type/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param ObjectTypeName &#91;required&#93; The name of the profile object type.
@@ -1145,7 +1546,7 @@ customerprofiles_put_profile_object_type <- function(DomainName, ObjectTypeName,
 #' @description
 #' Searches for profiles within a specific domain using one or more predefined search keys (e.g., _fullName, _phone, _email, _account, etc.) and/or custom-defined search keys. A search key is a data type pair that consists of a `KeyName` and `Values` list.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/search_profiles.html](https://paws-r.github.io/docs/customerprofiles/search_profiles.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_search_profiles/](https://www.paws-r-sdk.com/docs/customerprofiles_search_profiles/) for full documentation.
 #'
 #' @param NextToken The pagination token from the previous SearchProfiles API call.
 #' @param MaxResults The maximum number of objects returned per page.
@@ -1210,7 +1611,7 @@ customerprofiles_search_profiles <- function(NextToken = NULL, MaxResults = NULL
 #' @description
 #' Assigns one or more tags (key-value pairs) to the specified Amazon Connect Customer Profiles resource. Tags can help you organize and categorize your resources. You can also use them to scope user permissions by granting a user permission to access or change only resources with certain tag values. In Connect Customer Profiles, domains, profile object types, and integrations can be tagged.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/tag_resource.html](https://paws-r.github.io/docs/customerprofiles/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_tag_resource/](https://www.paws-r-sdk.com/docs/customerprofiles_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource that you're adding tags to.
 #' @param tags &#91;required&#93; The tags used to organize, track, or control access for this resource.
@@ -1241,7 +1642,7 @@ customerprofiles_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes one or more tags from the specified Amazon Connect Customer Profiles resource. In Connect Customer Profiles, domains, profile object types, and integrations can be tagged.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/untag_resource.html](https://paws-r.github.io/docs/customerprofiles/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_untag_resource/](https://www.paws-r-sdk.com/docs/customerprofiles_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource from which you are removing tags.
 #' @param tagKeys &#91;required&#93; The list of tag keys to remove from the resource.
@@ -1266,13 +1667,47 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 }
 .customerprofiles$operations$untag_resource <- customerprofiles_untag_resource
 
+#' Updates an existing calculated attribute definition
+#'
+#' @description
+#' Updates an existing calculated attribute definition. When updating the Conditions, note that increasing the date range of a calculated attribute will not trigger inclusion of historical data greater than the current date range.
+#'
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_update_calculated_attribute_definition/](https://www.paws-r-sdk.com/docs/customerprofiles_update_calculated_attribute_definition/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The unique name of the domain.
+#' @param CalculatedAttributeName &#91;required&#93; The unique name of the calculated attribute.
+#' @param DisplayName The display name of the calculated attribute.
+#' @param Description The description of the calculated attribute.
+#' @param Conditions The conditions including range, object count, and threshold for the
+#' calculated attribute.
+#'
+#' @keywords internal
+#'
+#' @rdname customerprofiles_update_calculated_attribute_definition
+customerprofiles_update_calculated_attribute_definition <- function(DomainName, CalculatedAttributeName, DisplayName = NULL, Description = NULL, Conditions = NULL) {
+  op <- new_operation(
+    name = "UpdateCalculatedAttributeDefinition",
+    http_method = "PUT",
+    http_path = "/domains/{DomainName}/calculated-attributes/{CalculatedAttributeName}",
+    paginator = list()
+  )
+  input <- .customerprofiles$update_calculated_attribute_definition_input(DomainName = DomainName, CalculatedAttributeName = CalculatedAttributeName, DisplayName = DisplayName, Description = Description, Conditions = Conditions)
+  output <- .customerprofiles$update_calculated_attribute_definition_output()
+  config <- get_config()
+  svc <- .customerprofiles$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.customerprofiles$operations$update_calculated_attribute_definition <- customerprofiles_update_calculated_attribute_definition
+
 #' Updates the properties of a domain, including creating or selecting a
 #' dead letter queue or an encryption key
 #'
 #' @description
 #' Updates the properties of a domain, including creating or selecting a dead letter queue or an encryption key.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/update_domain.html](https://paws-r.github.io/docs/customerprofiles/update_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_update_domain/](https://www.paws-r-sdk.com/docs/customerprofiles_update_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param DefaultExpirationDays The default number of days until the data within the domain expires.
@@ -1296,19 +1731,28 @@ customerprofiles_untag_resource <- function(resourceArn, tagKeys) {
 #' [`get_matches`][customerprofiles_get_matches] API to return and review
 #' the results. Or, if you have configured `ExportingConfig` in the
 #' `MatchingRequest`, you can download the results from S3.
+#' @param RuleBasedMatching The process of matching duplicate profiles using the rule-Based
+#' matching. If `RuleBasedMatching` = true, Amazon Connect Customer
+#' Profiles will start to match and merge your profiles according to your
+#' configuration in the `RuleBasedMatchingRequest`. You can use the
+#' [`list_rule_based_matches`][customerprofiles_list_rule_based_matches]
+#' and [`get_similar_profiles`][customerprofiles_get_similar_profiles] API
+#' to return and review the results. Also, if you have configured
+#' `ExportingConfig` in the `RuleBasedMatchingRequest`, you can download
+#' the results from S3.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #'
 #' @keywords internal
 #'
 #' @rdname customerprofiles_update_domain
-customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = NULL, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, Tags = NULL) {
+customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = NULL, DefaultEncryptionKey = NULL, DeadLetterQueueUrl = NULL, Matching = NULL, RuleBasedMatching = NULL, Tags = NULL) {
   op <- new_operation(
     name = "UpdateDomain",
     http_method = "PUT",
     http_path = "/domains/{DomainName}",
     paginator = list()
   )
-  input <- .customerprofiles$update_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, Tags = Tags)
+  input <- .customerprofiles$update_domain_input(DomainName = DomainName, DefaultExpirationDays = DefaultExpirationDays, DefaultEncryptionKey = DefaultEncryptionKey, DeadLetterQueueUrl = DeadLetterQueueUrl, Matching = Matching, RuleBasedMatching = RuleBasedMatching, Tags = Tags)
   output <- .customerprofiles$update_domain_output()
   config <- get_config()
   svc <- .customerprofiles$service(config)
@@ -1323,7 +1767,7 @@ customerprofiles_update_domain <- function(DomainName, DefaultExpirationDays = N
 #' @description
 #' Updates the properties of a profile. The ProfileId is required for updating a customer profile.
 #'
-#' See [https://paws-r.github.io/docs/customerprofiles/update_profile.html](https://paws-r.github.io/docs/customerprofiles/update_profile.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/customerprofiles_update_profile/](https://www.paws-r-sdk.com/docs/customerprofiles_update_profile/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The unique name of the domain.
 #' @param ProfileId &#91;required&#93; The unique identifier of a customer profile.

@@ -38,6 +38,10 @@ rds_create_db_instance(
   StorageEncrypted = NULL,
   KmsKeyId = NULL,
   Domain = NULL,
+  DomainFqdn = NULL,
+  DomainOu = NULL,
+  DomainAuthSecretArn = NULL,
+  DomainDnsIps = NULL,
   CopyTagsToSnapshot = NULL,
   MonitoringInterval = NULL,
   MonitoringRoleArn = NULL,
@@ -59,7 +63,8 @@ rds_create_db_instance(
   StorageThroughput = NULL,
   ManageMasterUserPassword = NULL,
   MasterUserSecretKmsKeyId = NULL,
-  CACertificateIdentifier = NULL
+  CACertificateIdentifier = NULL,
+  DBSystemId = NULL
 )
 }
 \arguments{
@@ -110,9 +115,9 @@ underscores, or digits (0-9).
 
 \strong{Oracle}
 
-The Oracle System ID (SID) of the created DB instance. If you specify
-\code{null}, the default value \code{ORCL} is used. You can't specify the string
-NULL, or any other reserved word, for \code{DBName}.
+The Oracle System ID (SID) of the created DB instance. If you don't
+specify a value, the default value is \code{ORCL}. You can't specify the
+string \code{null}, or any other reserved word, for \code{DBName}.
 
 Default: \code{ORCL}
 
@@ -124,7 +129,8 @@ Constraints:
 \strong{Amazon RDS Custom for Oracle}
 
 The Oracle System ID (SID) of the created RDS Custom DB instance. If you
-don't specify a value, the default value is \code{ORCL}.
+don't specify a value, the default value is \code{ORCL} for non-CDBs and
+\code{RDSCDB} for CDBs.
 
 Default: \code{ORCL}
 
@@ -171,8 +177,8 @@ underscores, or digits (0 to 9).
 \item It can't be a word reserved by the database engine.
 }}
 
-\item{DBInstanceIdentifier}{[required] The DB instance identifier. This parameter is stored as a lowercase
-string.
+\item{DBInstanceIdentifier}{[required] The identifier for this DB instance. This parameter is stored as a
+lowercase string.
 
 Constraints:
 \itemize{
@@ -186,13 +192,10 @@ Example: \code{mydbinstance}}
 \item{AllocatedStorage}{The amount of storage in gibibytes (GiB) to allocate for the DB
 instance.
 
-Type: Integer
-
-\strong{Amazon Aurora}
-
-Not applicable. Aurora cluster volumes automatically grow as the amount
-of data in your database increases, though you are only charged for the
-space that you use in an Aurora cluster volume.
+This setting doesn't apply to Amazon Aurora DB instances. Aurora cluster
+volumes automatically grow as the amount of data in your database
+increases, though you are only charged for the space that you use in an
+Aurora cluster volume.
 
 \strong{Amazon RDS Custom}
 
@@ -206,7 +209,7 @@ Server.
 for RDS Custom for Oracle, 16384 for RDS Custom for SQL Server.
 }
 
-\strong{MySQL}
+\strong{RDS for MariaDB}
 
 Constraints to the amount of storage for each storage type are the
 following:
@@ -218,7 +221,7 @@ to 65536.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
 }
 
-\strong{MariaDB}
+\strong{RDS for MySQL}
 
 Constraints to the amount of storage for each storage type are the
 following:
@@ -230,19 +233,7 @@ to 65536.
 \item Magnetic storage (standard): Must be an integer from 5 to 3072.
 }
 
-\strong{PostgreSQL}
-
-Constraints to the amount of storage for each storage type are the
-following:
-\itemize{
-\item General Purpose (SSD) storage (gp2, gp3): Must be an integer from 20
-to 65536.
-\item Provisioned IOPS storage (io1): Must be an integer from 100 to
-65536.
-\item Magnetic storage (standard): Must be an integer from 5 to 3072.
-}
-
-\strong{Oracle}
+\strong{RDS for Oracle}
 
 Constraints to the amount of storage for each storage type are the
 following:
@@ -254,7 +245,19 @@ to 65536.
 \item Magnetic storage (standard): Must be an integer from 10 to 3072.
 }
 
-\strong{SQL Server}
+\strong{RDS for PostgreSQL}
+
+Constraints to the amount of storage for each storage type are the
+following:
+\itemize{
+\item General Purpose (SSD) storage (gp2, gp3): Must be an integer from 20
+to 65536.
+\item Provisioned IOPS storage (io1): Must be an integer from 100 to
+65536.
+\item Magnetic storage (standard): Must be an integer from 5 to 3072.
+}
+
+\strong{RDS for SQL Server}
 
 Constraints to the amount of storage for each storage type are the
 following:
@@ -280,26 +283,26 @@ following:
 }}
 
 \item{DBInstanceClass}{[required] The compute and memory capacity of the DB instance, for example
-db.m5.large. Not all DB instance classes are available in all Amazon Web
-Services Regions, or for all database engines. For the full list of DB
-instance classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB instance classes}
+\code{db.m5.large}. Not all DB instance classes are available in all Amazon
+Web Services Regions, or for all database engines. For the full list of
+DB instance classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB instance classes}
 in the \emph{Amazon RDS User Guide} or \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.DBInstanceClass.html}{Aurora DB instance classes}
 in the \emph{Amazon Aurora User Guide}.}
 
-\item{Engine}{[required] The name of the database engine to be used for this instance.
+\item{Engine}{[required] The database engine to use for this DB instance.
 
-Not every database engine is available for every Amazon Web Services
+Not every database engine is available in every Amazon Web Services
 Region.
 
 Valid Values:
 \itemize{
 \item \code{aurora-mysql} (for Aurora MySQL DB instances)
 \item \code{aurora-postgresql} (for Aurora PostgreSQL DB instances)
-\item \verb{custom-oracle-ee (for RDS Custom for Oracle DB instances)}
-\item \verb{custom-oracle-ee-cdb (for RDS Custom for Oracle DB instances)}
-\item \verb{custom-sqlserver-ee (for RDS Custom for SQL Server DB instances)}
-\item \verb{custom-sqlserver-se (for RDS Custom for SQL Server DB instances)}
-\item \verb{custom-sqlserver-web (for RDS Custom for SQL Server DB instances)}
+\item \code{custom-oracle-ee} (for RDS Custom for Oracle DB instances)
+\item \code{custom-oracle-ee-cdb} (for RDS Custom for Oracle DB instances)
+\item \code{custom-sqlserver-ee} (for RDS Custom for SQL Server DB instances)
+\item \code{custom-sqlserver-se} (for RDS Custom for SQL Server DB instances)
+\item \code{custom-sqlserver-web} (for RDS Custom for SQL Server DB instances)
 \item \code{mariadb}
 \item \code{mysql}
 \item \code{oracle-ee}
@@ -315,51 +318,38 @@ Valid Values:
 
 \item{MasterUsername}{The name for the master user.
 
-\strong{Amazon Aurora}
+This setting doesn't apply to Amazon Aurora DB instances. The name for
+the master user is managed by the DB cluster.
 
-Not applicable. The name for the master user is managed by the DB
-cluster.
-
-\strong{Amazon RDS}
+This setting is required for RDS DB instances.
 
 Constraints:
 \itemize{
-\item Required.
 \item Must be 1 to 16 letters, numbers, or underscores.
 \item First character must be a letter.
 \item Can't be a reserved word for the chosen database engine.
 }}
 
-\item{MasterUserPassword}{The password for the master user. The password can include any printable
-ASCII character except "/", """, or "@".
+\item{MasterUserPassword}{The password for the master user.
 
-\strong{Amazon Aurora}
+This setting doesn't apply to Amazon Aurora DB instances. The password
+for the master user is managed by the DB cluster.
 
-Not applicable. The password for the master user is managed by the DB
-cluster.
+Constraints:
+\itemize{
+\item Can't be specified if \code{ManageMasterUserPassword} is turned on.
+\item Can include any printable ASCII character except "/", """, or "@".
+}
 
-Constraints: Can't be specified if \code{ManageMasterUserPassword} is turned
-on.
-
-\strong{MariaDB}
-
-Constraints: Must contain from 8 to 41 characters.
-
-\strong{Microsoft SQL Server}
-
-Constraints: Must contain from 8 to 128 characters.
-
-\strong{MySQL}
-
-Constraints: Must contain from 8 to 41 characters.
-
-\strong{Oracle}
-
-Constraints: Must contain from 8 to 30 characters.
-
-\strong{PostgreSQL}
-
-Constraints: Must contain from 8 to 128 characters.}
+Length Constraints:
+\itemize{
+\item RDS for MariaDB - Must contain from 8 to 41 characters.
+\item RDS for Microsoft SQL Server - Must contain from 8 to 128
+characters.
+\item RDS for MySQL - Must contain from 8 to 41 characters.
+\item RDS for Oracle - Must contain from 8 to 30 characters.
+\item RDS for PostgreSQL - Must contain from 8 to 128 characters.
+}}
 
 \item{DBSecurityGroups}{A list of DB security groups to associate with this DB instance.
 
@@ -370,10 +360,8 @@ setting instead.}
 \item{VpcSecurityGroupIds}{A list of Amazon EC2 VPC security groups to associate with this DB
 instance.
 
-\strong{Amazon Aurora}
-
-Not applicable. The associated list of EC2 VPC security groups is
-managed by the DB cluster.
+This setting doesn't apply to Amazon Aurora DB instances. The associated
+list of EC2 VPC security groups is managed by the DB cluster.
 
 Default: The default EC2 VPC security group for the DB subnet group's
 VPC.}
@@ -382,71 +370,78 @@ VPC.}
 information on Amazon Web Services Regions and Availability Zones, see
 \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.RegionsAndAvailabilityZones.html}{Regions and Availability Zones}.
 
-\strong{Amazon Aurora}
-
-Each Aurora DB cluster hosts copies of its storage in three separate
-Availability Zones. Specify one of these Availability Zones. Aurora
-automatically chooses an appropriate Availability Zone if you don't
-specify one.
+For Amazon Aurora, each Aurora DB cluster hosts copies of its storage in
+three separate Availability Zones. Specify one of these Availability
+Zones. Aurora automatically chooses an appropriate Availability Zone if
+you don't specify one.
 
 Default: A random, system-chosen Availability Zone in the endpoint's
 Amazon Web Services Region.
 
-Example: \verb{us-east-1d}
+Constraints:
+\itemize{
+\item The \code{AvailabilityZone} parameter can't be specified if the DB
+instance is a Multi-AZ deployment.
+\item The specified Availability Zone must be in the same Amazon Web
+Services Region as the current endpoint.
+}
 
-Constraint: The \code{AvailabilityZone} parameter can't be specified if the
-DB instance is a Multi-AZ deployment. The specified Availability Zone
-must be in the same Amazon Web Services Region as the current endpoint.}
+Example: \verb{us-east-1d}}
 
 \item{DBSubnetGroupName}{A DB subnet group to associate with this DB instance.
 
-Constraints: Must match the name of an existing DBSubnetGroup. Must not
-be default.
+Constraints:
+\itemize{
+\item Must match the name of an existing DB subnet group.
+\item Must not be \code{default}.
+}
 
 Example: \code{mydbsubnetgroup}}
 
-\item{PreferredMaintenanceWindow}{The time range each week during which system maintenance can occur, in
-Universal Coordinated Time (UTC). For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance}{Amazon RDS Maintenance Window}.
-
-Format: \code{ddd:hh24:mi-ddd:hh24:mi}
+\item{PreferredMaintenanceWindow}{The time range each week during which system maintenance can occur. For
+more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_UpgradeDBInstance.Maintenance.html#Concepts.DBMaintenance}{Amazon RDS Maintenance Window}
+in the \emph{Amazon RDS User Guide.}
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each Amazon Web Services Region, occurring on a random
 day of the week.
 
-Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
-
-Constraints: Minimum 30-minute window.}
+Constraints:
+\itemize{
+\item Must be in the format \code{ddd:hh24:mi-ddd:hh24:mi}.
+\item The day values must be \code{mon | tue | wed | thu | fri | sat | sun}.
+\item Must be in Universal Coordinated Time (UTC).
+\item Must not conflict with the preferred backup window.
+\item Must be at least 30 minutes.
+}}
 
 \item{DBParameterGroupName}{The name of the DB parameter group to associate with this DB instance.
-If you do not specify a value, then the default DB parameter group for
-the specified DB engine and version is used.
+If you don't specify a value, then Amazon RDS uses the default DB
+parameter group for the specified DB engine and version.
 
-This setting doesn't apply to RDS Custom.
+This setting doesn't apply to RDS Custom DB instances.
 
 Constraints:
 \itemize{
-\item It must be 1 to 255 letters, numbers, or hyphens.
+\item Must be 1 to 255 letters, numbers, or hyphens.
 \item The first character must be a letter.
-\item It can't end with a hyphen or contain two consecutive hyphens.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 }}
 
 \item{BackupRetentionPeriod}{The number of days for which automated backups are retained. Setting
 this parameter to a positive number enables backups. Setting this
-parameter to 0 disables automated backups.
+parameter to \code{0} disables automated backups.
 
-\strong{Amazon Aurora}
+This setting doesn't apply to Amazon Aurora DB instances. The retention
+period for automated backups is managed by the DB cluster.
 
-Not applicable. The retention period for automated backups is managed by
-the DB cluster.
-
-Default: 1
+Default: \code{1}
 
 Constraints:
 \itemize{
-\item Must be a value from 0 to 35
-\item Can't be set to 0 if the DB instance is a source to read replicas
-\item Can't be set to 0 for an RDS Custom for Oracle DB instance
+\item Must be a value from 0 to 35.
+\item Can't be set to 0 if the DB instance is a source to read replicas.
+\item Can't be set to 0 for an RDS Custom for Oracle DB instance.
 }}
 
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
@@ -456,10 +451,8 @@ parameter. The default is a 30-minute window selected at random from an
 information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_WorkingWithAutomatedBackups.html#USER_WorkingWithAutomatedBackups.BackupWindow}{Backup window}
 in the \emph{Amazon RDS User Guide}.
 
-\strong{Amazon Aurora}
-
-Not applicable. The daily time range for creating automated backups is
-managed by the DB cluster.
+This setting doesn't apply to Amazon Aurora DB instances. The daily time
+range for creating automated backups is managed by the DB cluster.
 
 Constraints:
 \itemize{
@@ -471,63 +464,42 @@ Constraints:
 
 \item{Port}{The port number on which the database accepts connections.
 
-\strong{MySQL}
+This setting doesn't apply to Aurora DB instances. The port number is
+managed by the cluster.
 
-Default: \code{3306}
+Valid Values: \code{1150-65535}
 
-Valid values: \code{1150-65535}
+Default:
+\itemize{
+\item RDS for MariaDB - \code{3306}
+\item RDS for Microsoft SQL Server - \code{1433}
+\item RDS for MySQL - \code{3306}
+\item RDS for Oracle - \code{1521}
+\item RDS for PostgreSQL - \code{5432}
+}
 
-Type: Integer
+Constraints:
+\itemize{
+\item For RDS for Microsoft SQL Server, the value can't be \code{1234}, \code{1434},
+\code{3260}, \code{3343}, \code{3389}, \code{47001}, or \code{49152-49156}.
+}}
 
-\strong{MariaDB}
+\item{MultiAZ}{Specifies whether the DB instance is a Multi-AZ deployment. You can't
+set the \code{AvailabilityZone} parameter if the DB instance is a Multi-AZ
+deployment.
 
-Default: \code{3306}
-
-Valid values: \code{1150-65535}
-
-Type: Integer
-
-\strong{PostgreSQL}
-
-Default: \code{5432}
-
-Valid values: \code{1150-65535}
-
-Type: Integer
-
-\strong{Oracle}
-
-Default: \code{1521}
-
-Valid values: \code{1150-65535}
-
-\strong{SQL Server}
-
-Default: \code{1433}
-
-Valid values: \code{1150-65535} except \code{1234}, \code{1434}, \code{3260}, \code{3343},
-\code{3389}, \code{47001}, and \code{49152-49156}.
-
-\strong{Amazon Aurora}
-
-Default: \code{3306}
-
-Valid values: \code{1150-65535}
-
-Type: Integer}
-
-\item{MultiAZ}{A value that indicates whether the DB instance is a Multi-AZ deployment.
-You can't set the \code{AvailabilityZone} parameter if the DB instance is a
-Multi-AZ deployment.
-
-This setting doesn't apply to RDS Custom.
-
-\strong{Amazon Aurora}
-
-Not applicable. DB instance Availability Zones (AZs) are managed by the
-DB cluster.}
+This setting doesn't apply to the following DB instances:
+\itemize{
+\item Amazon Aurora (DB instance Availability Zones (AZs) are managed by
+the DB cluster.)
+\item RDS Custom
+}}
 
 \item{EngineVersion}{The version number of the database engine to use.
+
+This setting doesn't apply to Amazon Aurora DB instances. The version
+number of the database engine the DB instance uses is managed by the DB
+cluster.
 
 For a list of valid engine versions, use the
 \code{\link[=rds_describe_db_engine_versions]{describe_db_engine_versions}}
@@ -536,11 +508,6 @@ operation.
 The following are the database engines and links to information about
 the major and minor versions that are available with Amazon RDS. Not
 every database engine is available for every Amazon Web Services Region.
-
-\strong{Amazon Aurora}
-
-Not applicable. The version number of the database engine to be used by
-the DB instance is managed by the DB cluster.
 
 \strong{Amazon RDS Custom for Oracle}
 
@@ -555,93 +522,93 @@ in the \emph{Amazon RDS User Guide}.
 See \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-reqs-limits-MS.html}{RDS Custom for SQL Server general requirements}
 in the \emph{Amazon RDS User Guide}.
 
-\strong{MariaDB}
+\strong{RDS for MariaDB}
 
-For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MariaDB.html#MariaDB.Concepts.VersionMgmt}{MariaDB on Amazon RDS Versions}
+For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MariaDB.html#MariaDB.Concepts.VersionMgmt}{MariaDB on Amazon RDS versions}
 in the \emph{Amazon RDS User Guide}.
 
-\strong{Microsoft SQL Server}
+\strong{RDS for Microsoft SQL Server}
 
-For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.VersionSupport}{Microsoft SQL Server Versions on Amazon RDS}
+For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.VersionSupport}{Microsoft SQL Server versions on Amazon RDS}
 in the \emph{Amazon RDS User Guide}.
 
-\strong{MySQL}
+\strong{RDS for MySQL}
 
-For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt}{MySQL on Amazon RDS Versions}
+For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt}{MySQL on Amazon RDS versions}
 in the \emph{Amazon RDS User Guide}.
 
-\strong{Oracle}
+\strong{RDS for Oracle}
 
-For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/OracleReleaseNotes/Welcome.html}{Oracle Database Engine Release Notes}
+For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/OracleReleaseNotes/Welcome.html}{Oracle Database Engine release notes}
 in the \emph{Amazon RDS User Guide}.
 
-\strong{PostgreSQL}
+\strong{RDS for PostgreSQL}
 
 For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts}{Amazon RDS for PostgreSQL versions and extensions}
 in the \emph{Amazon RDS User Guide}.}
 
-\item{AutoMinorVersionUpgrade}{A value that indicates whether minor engine upgrades are applied
-automatically to the DB instance during the maintenance window. By
-default, minor engine upgrades are applied automatically.
+\item{AutoMinorVersionUpgrade}{Specifies whether minor engine upgrades are applied automatically to the
+DB instance during the maintenance window. By default, minor engine
+upgrades are applied automatically.
 
 If you create an RDS Custom DB instance, you must set
 \code{AutoMinorVersionUpgrade} to \code{false}.}
 
-\item{LicenseModel}{License model information for this DB instance.
+\item{LicenseModel}{The license model information for this DB instance.
 
-Valid values: \code{license-included} | \code{bring-your-own-license} |
-\code{general-public-license}
+This setting doesn't apply to Amazon Aurora or RDS Custom DB instances.
 
-This setting doesn't apply to RDS Custom.
-
-\strong{Amazon Aurora}
-
-Not applicable.}
+Valid Values:
+\itemize{
+\item RDS for MariaDB - \code{general-public-license}
+\item RDS for Microsoft SQL Server - \code{license-included}
+\item RDS for MySQL - \code{general-public-license}
+\item RDS for Oracle - \code{bring-your-own-license | license-included}
+\item RDS for PostgreSQL - \code{postgresql-license}
+}}
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
-be initially allocated for the DB instance. For information about valid
-IOPS values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html}{Amazon RDS DB instance storage}
+initially allocate for the DB instance. For information about valid IOPS
+values, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_Storage.html}{Amazon RDS DB instance storage}
 in the \emph{Amazon RDS User Guide}.
 
-Constraints: For MariaDB, MySQL, Oracle, and PostgreSQL DB instances,
-must be a multiple between .5 and 50 of the storage amount for the DB
-instance. For SQL Server DB instances, must be a multiple between 1 and
-50 of the storage amount for the DB instance.
+This setting doesn't apply to Amazon Aurora DB instances. Storage is
+managed by the DB cluster.
 
-\strong{Amazon Aurora}
+Constraints:
+\itemize{
+\item For RDS for MariaDB, MySQL, Oracle, and PostgreSQL - Must be a
+multiple between .5 and 50 of the storage amount for the DB
+instance.
+\item For RDS for SQL Server - Must be a multiple between 1 and 50 of the
+storage amount for the DB instance.
+}}
 
-Not applicable. Storage is managed by the DB cluster.}
-
-\item{OptionGroupName}{A value that indicates that the DB instance should be associated with
-the specified option group.
+\item{OptionGroupName}{The option group to associate the DB instance with.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
 TDE, can't be removed from an option group. Also, that option group
 can't be removed from a DB instance after it is associated with a DB
 instance.
 
-This setting doesn't apply to RDS Custom.
+This setting doesn't apply to Amazon Aurora or RDS Custom DB instances.}
 
-\strong{Amazon Aurora}
+\item{CharacterSetName}{For supported engines, the character set (\code{CharacterSet}) to associate
+the DB instance with.
 
-Not applicable.}
-
-\item{CharacterSetName}{For supported engines, this value indicates that the DB instance should
-be associated with the specified \code{CharacterSet}.
-
-This setting doesn't apply to RDS Custom. However, if you need to change
-the character set, you can change it on the database itself.
-
-\strong{Amazon Aurora}
-
-Not applicable. The character set is managed by the DB cluster. For more
-information, see \code{\link[=rds_create_db_cluster]{create_db_cluster}}.}
+This setting doesn't apply to the following DB instances:
+\itemize{
+\item Amazon Aurora - The character set is managed by the DB cluster. For
+more information, see \code{\link[=rds_create_db_cluster]{create_db_cluster}}.
+\item RDS Custom - However, if you need to change the character set, you
+can change it on the database itself.
+}}
 
 \item{NcharCharacterSetName}{The name of the NCHAR character set for the Oracle DB instance.
 
-This parameter doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
-\item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
+\item{PubliclyAccessible}{Specifies whether the DB instance is publicly accessible.
 
 When the DB instance is publicly accessible, its Domain Name System
 (DNS) endpoint resolves to the private IP address from within the DB
@@ -677,47 +644,40 @@ attached to it, the DB instance is public.
 
 \item{Tags}{Tags to assign to the DB instance.}
 
-\item{DBClusterIdentifier}{The identifier of the DB cluster that the instance will belong to.
+\item{DBClusterIdentifier}{The identifier of the DB cluster that this DB instance will belong to.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
-\item{StorageType}{Specifies the storage type to be associated with the DB instance.
-
-Valid values: \code{gp2 | gp3 | io1 | standard}
+\item{StorageType}{The storage type to associate with the DB instance.
 
 If you specify \code{io1} or \code{gp3}, you must also include a value for the
 \code{Iops} parameter.
 
-Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp2}
+This setting doesn't apply to Amazon Aurora DB instances. Storage is
+managed by the DB cluster.
 
-\strong{Amazon Aurora}
+Valid Values: \code{gp2 | gp3 | io1 | standard}
 
-Not applicable. Storage is managed by the DB cluster.}
+Default: \code{io1}, if the \code{Iops} parameter is specified. Otherwise, \code{gp2}.}
 
 \item{TdeCredentialArn}{The ARN from the key store with which to associate the instance for TDE
 encryption.
 
-This setting doesn't apply to RDS Custom.
-
-\strong{Amazon Aurora}
-
-Not applicable.}
+This setting doesn't apply to Amazon Aurora or RDS Custom DB instances.}
 
 \item{TdeCredentialPassword}{The password for the given ARN from the key store in order to access the
 device.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
-\item{StorageEncrypted}{A value that indicates whether the DB instance is encrypted. By default,
-it isn't encrypted.
+\item{StorageEncrypted}{Specifes whether the DB instance is encrypted. By default, it isn't
+encrypted.
 
-For RDS Custom instances, either set this parameter to \code{true} or leave
-it unset. If you set this parameter to \code{false}, RDS reports an error.
+For RDS Custom DB instances, either enable this setting or leave it
+unset. Otherwise, Amazon RDS reports an error.
 
-\strong{Amazon Aurora}
-
-Not applicable. The encryption for DB instances is managed by the DB
-cluster.}
+This setting doesn't apply to Amazon Aurora DB instances. The encryption
+for DB instances is managed by the DB cluster.}
 
 \item{KmsKeyId}{The Amazon Web Services KMS key identifier for an encrypted DB instance.
 
@@ -725,11 +685,9 @@ The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
 ARN, or alias name for the KMS key. To use a KMS key in a different
 Amazon Web Services account, specify the key ARN or alias ARN.
 
-\strong{Amazon Aurora}
-
-Not applicable. The Amazon Web Services KMS key identifier is managed by
-the DB cluster. For more information, see
-\code{\link[=rds_create_db_cluster]{create_db_cluster}}.
+This setting doesn't apply to Amazon Aurora DB instances. The Amazon Web
+Services KMS key identifier is managed by the DB cluster. For more
+information, see \code{\link[=rds_create_db_cluster]{create_db_cluster}}.
 
 If \code{StorageEncrypted} is enabled, and you do not specify a value for the
 \code{KmsKeyId} parameter, then Amazon RDS uses your default KMS key. There
@@ -737,46 +695,82 @@ is a default KMS key for your Amazon Web Services account. Your Amazon
 Web Services account has a different default KMS key for each Amazon Web
 Services Region.
 
-\strong{Amazon RDS Custom}
-
-A KMS key is required for RDS Custom instances. For most RDS engines, if
-you leave this parameter empty while enabling \code{StorageEncrypted}, the
-engine uses the default KMS key. However, RDS Custom doesn't use the
-default key when this parameter is empty. You must explicitly specify a
-key.}
+For Amazon RDS Custom, a KMS key is required for DB instances. For most
+RDS engines, if you leave this parameter empty while enabling
+\code{StorageEncrypted}, the engine uses the default KMS key. However, RDS
+Custom doesn't use the default key when this parameter is empty. You
+must explicitly specify a key.}
 
 \item{Domain}{The Active Directory directory ID to create the DB instance in.
-Currently, only MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB
+Currently, only Microsoft SQL Server, MySQL, Oracle, and PostgreSQL DB
 instances can be created in an Active Directory Domain.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html}{Kerberos Authentication}
 in the \emph{Amazon RDS User Guide}.
 
-This setting doesn't apply to RDS Custom.
+This setting doesn't apply to the following DB instances:
+\itemize{
+\item Amazon Aurora (The domain is managed by the DB cluster.)
+\item RDS Custom
+}}
 
-\strong{Amazon Aurora}
+\item{DomainFqdn}{The fully qualified domain name (FQDN) of an Active Directory domain.
 
-Not applicable. The domain is managed by the DB cluster.}
+Constraints:
+\itemize{
+\item Can't be longer than 64 characters.
+}
 
-\item{CopyTagsToSnapshot}{A value that indicates whether to copy tags from the DB instance to
-snapshots of the DB instance. By default, tags are not copied.
+Example: \code{mymanagedADtest.mymanagedAD.mydomain}}
 
-\strong{Amazon Aurora}
+\item{DomainOu}{The Active Directory organizational unit for your DB instance to join.
 
-Not applicable. Copying tags to snapshots is managed by the DB cluster.
-Setting this value for an Aurora DB instance has no effect on the DB
-cluster setting.}
+Constraints:
+\itemize{
+\item Must be in the distinguished name format.
+\item Can't be longer than 64 characters.
+}
+
+Example:
+\verb{OU=mymanagedADtestOU,DC=mymanagedADtest,DC=mymanagedAD,DC=mydomain}}
+
+\item{DomainAuthSecretArn}{The ARN for the Secrets Manager secret with the credentials for the user
+joining the domain.
+
+Example:
+\code{arn:aws:secretsmanager:region:account-number:secret:myselfmanagedADtestsecret-123456}}
+
+\item{DomainDnsIps}{The IPv4 DNS IP addresses of your primary and secondary Active Directory
+domain controllers.
+
+Constraints:
+\itemize{
+\item Two IP addresses must be provided. If there isn't a secondary domain
+controller, use the IP address of the primary domain controller for
+both entries in the list.
+}
+
+Example: \verb{123.124.125.126,234.235.236.237}}
+
+\item{CopyTagsToSnapshot}{Specifies whether to copy tags from the DB instance to snapshots of the
+DB instance. By default, tags are not copied.
+
+This setting doesn't apply to Amazon Aurora DB instances. Copying tags
+to snapshots is managed by the DB cluster. Setting this value for an
+Aurora DB instance has no effect on the DB cluster setting.}
 
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB instance. To disable collection of
-Enhanced Monitoring metrics, specify 0. The default is 0.
+Enhanced Monitoring metrics, specify \code{0}.
 
 If \code{MonitoringRoleArn} is specified, then you must set
-\code{MonitoringInterval} to a value other than 0.
+\code{MonitoringInterval} to a value other than \code{0}.
 
-This setting doesn't apply to RDS Custom.
+This setting doesn't apply to RDS Custom DB instances.
 
-Valid Values: \verb{0, 1, 5, 10, 15, 30, 60}}
+Valid Values: \code{0 | 1 | 5 | 10 | 15 | 30 | 60}
+
+Default: \code{0}}
 
 \item{MonitoringRoleArn}{The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
@@ -784,53 +778,53 @@ metrics to Amazon CloudWatch Logs. For example,
 monitoring role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling}{Setting Up and Enabling Enhanced Monitoring}
 in the \emph{Amazon RDS User Guide}.
 
-If \code{MonitoringInterval} is set to a value other than 0, then you must
+If \code{MonitoringInterval} is set to a value other than \code{0}, then you must
 supply a \code{MonitoringRoleArn} value.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
-\item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
-Directory Service.
+\item{DomainIAMRoleName}{The name of the IAM role to use when making API calls to the Directory
+Service.
 
-This setting doesn't apply to RDS Custom.
+This setting doesn't apply to the following DB instances:
+\itemize{
+\item Amazon Aurora (The domain is managed by the DB cluster.)
+\item RDS Custom
+}}
 
-\strong{Amazon Aurora}
-
-Not applicable. The domain is managed by the DB cluster.}
-
-\item{PromotionTier}{A value that specifies the order in which an Aurora Replica is promoted
-to the primary instance after a failure of the existing primary
-instance. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Managing.Backups.html#Aurora.Managing.FaultTolerance}{Fault Tolerance for an Aurora DB Cluster}
+\item{PromotionTier}{The order of priority in which an Aurora Replica is promoted to the
+primary instance after a failure of the existing primary instance. For
+more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.AuroraHighAvailability.html#Aurora.Managing.FaultTolerance}{Fault Tolerance for an Aurora DB Cluster}
 in the \emph{Amazon Aurora User Guide}.
 
-This setting doesn't apply to RDS Custom.
+This setting doesn't apply to RDS Custom DB instances.
 
-Default: 1
+Default: \code{1}
 
-Valid Values: 0 - 15}
+Valid Values: \code{0 - 15}}
 
 \item{Timezone}{The time zone of the DB instance. The time zone parameter is currently
 supported only by \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_SQLServer.html#SQLServer.Concepts.General.TimeZone}{Microsoft SQL Server}.}
 
-\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of Amazon Web Services
-Identity and Access Management (IAM) accounts to database accounts. By
-default, mapping isn't enabled.
+\item{EnableIAMDatabaseAuthentication}{Specifies whether to enable mapping of Amazon Web Services Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping isn't enabled.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication for MySQL and PostgreSQL}
 in the \emph{Amazon RDS User Guide}.
 
-This setting doesn't apply to RDS Custom.
+This setting doesn't apply to the following DB instances:
+\itemize{
+\item Amazon Aurora (Mapping Amazon Web Services IAM accounts to database
+accounts is managed by the DB cluster.)
+\item RDS Custom
+}}
 
-\strong{Amazon Aurora}
-
-Not applicable. Mapping Amazon Web Services IAM accounts to database
-accounts is managed by the DB cluster.}
-
-\item{EnablePerformanceInsights}{A value that indicates whether to enable Performance Insights for the DB
-instance. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
+\item{EnablePerformanceInsights}{Specifies whether to enable Performance Insights for the DB instance.
+For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
 in the \emph{Amazon RDS User Guide}.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
 \item{PerformanceInsightsKMSKeyId}{The Amazon Web Services KMS key identifier for encryption of Performance
 Insights data.
@@ -838,87 +832,64 @@ Insights data.
 The Amazon Web Services KMS key identifier is the key ARN, key ID, alias
 ARN, or alias name for the KMS key.
 
-If you do not specify a value for \code{PerformanceInsightsKMSKeyId}, then
+If you don't specify a value for \code{PerformanceInsightsKMSKeyId}, then
 Amazon RDS uses your default KMS key. There is a default KMS key for
 your Amazon Web Services account. Your Amazon Web Services account has a
 different default KMS key for each Amazon Web Services Region.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
-\item{PerformanceInsightsRetentionPeriod}{The number of days to retain Performance Insights data. The default is 7
-days. The following values are valid:
+\item{PerformanceInsightsRetentionPeriod}{The number of days to retain Performance Insights data.
+
+This setting doesn't apply to RDS Custom DB instances.
+
+Valid Values:
 \itemize{
-\item 7
-\item \emph{month} * 31, where \emph{month} is a number of months from 1-23
-\item 731
+\item \code{7}
+\item \emph{month} * 31, where \emph{month} is a number of months from 1-23.
+Examples: \code{93} (3 months * 31), \code{341} (11 months * 31), \code{589} (19
+months * 31)
+\item \code{731}
 }
 
-For example, the following values are valid:
-\itemize{
-\item 93 (3 months * 31)
-\item 341 (11 months * 31)
-\item 589 (19 months * 31)
-\item 731
-}
+Default: \code{7} days
 
-If you specify a retention period such as 94, which isn't a valid value,
-RDS issues an error.
-
-This setting doesn't apply to RDS Custom.}
+If you specify a retention period that isn't valid, such as \code{94}, Amazon
+RDS returns an error.}
 
 \item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to
-CloudWatch Logs. The values in the list depend on the DB engine. For
-more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
+CloudWatch Logs. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
 in the \emph{Amazon RDS User Guide}.
 
-\strong{Amazon Aurora}
+This setting doesn't apply to the following DB instances:
+\itemize{
+\item Amazon Aurora (CloudWatch Logs exports are managed by the DB
+cluster.)
+\item RDS Custom
+}
 
-Not applicable. CloudWatch Logs exports are managed by the DB cluster.
-
-\strong{RDS Custom}
-
-Not applicable.
-
-\strong{MariaDB}
-
-Possible values are \code{audit}, \code{error}, \code{general}, and \code{slowquery}.
-
-\strong{Microsoft SQL Server}
-
-Possible values are \code{agent} and \code{error}.
-
-\strong{MySQL}
-
-Possible values are \code{audit}, \code{error}, \code{general}, and \code{slowquery}.
-
-\strong{Oracle}
-
-Possible values are \code{alert}, \code{audit}, \code{listener}, \code{trace}, and
-\code{oemagent}.
-
-\strong{PostgreSQL}
-
-Possible values are \code{postgresql} and \code{upgrade}.}
+The following values are valid for each DB engine:
+\itemize{
+\item RDS for MariaDB - \code{audit | error | general | slowquery}
+\item RDS for Microsoft SQL Server - \code{agent | error}
+\item RDS for MySQL - \code{audit | error | general | slowquery}
+\item RDS for Oracle - \code{alert | audit | listener | trace | oemagent}
+\item RDS for PostgreSQL - \code{postgresql | upgrade}
+}}
 
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance.
 
-This setting doesn't apply to RDS Custom.
+This setting doesn't apply to Amazon Aurora or RDS Custom DB instances.}
 
-\strong{Amazon Aurora}
+\item{DeletionProtection}{Specifies whether the DB instance has deletion protection enabled. The
+database can't be deleted when deletion protection is enabled. By
+default, deletion protection isn't enabled. For more information, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.
 
-Not applicable.}
-
-\item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
-enabled. The database can't be deleted when deletion protection is
-enabled. By default, deletion protection isn't enabled. For more
-information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.
-
-\strong{Amazon Aurora}
-
-Not applicable. You can enable or disable deletion protection for the DB
-cluster. For more information, see
-\code{\link[=rds_create_db_cluster]{create_db_cluster}}. DB instances in a DB
+This setting doesn't apply to Amazon Aurora DB instances. You can enable
+or disable deletion protection for the DB cluster. For more information,
+see \code{\link[=rds_create_db_cluster]{create_db_cluster}}. DB instances in a DB
 cluster can be deleted even when deletion protection is enabled for the
 DB cluster.}
 
@@ -929,14 +900,14 @@ For more information about this setting, including limitations that
 apply to it, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.Autoscaling}{Managing capacity automatically with Amazon RDS storage autoscaling}
 in the \emph{Amazon RDS User Guide}.
 
-This setting doesn't apply to RDS Custom.
+This setting doesn't apply to the following DB instances:
+\itemize{
+\item Amazon Aurora (Storage is managed by the DB cluster.)
+\item RDS Custom
+}}
 
-\strong{Amazon Aurora}
-
-Not applicable. Storage is managed by the DB cluster.}
-
-\item{EnableCustomerOwnedIp}{A value that indicates whether to enable a customer-owned IP address
-(CoIP) for an RDS on Outposts DB instance.
+\item{EnableCustomerOwnedIp}{Specifies whether to enable a customer-owned IP address (CoIP) for an
+RDS on Outposts DB instance.
 
 A \emph{CoIP} provides local or external connectivity to resources in your
 Outpost subnets through your on-premises network. For some use cases, a
@@ -950,8 +921,11 @@ For more information about CoIPs, see \href{https://docs.aws.amazon.com/outposts
 in the \emph{Amazon Web Services Outposts User Guide}.}
 
 \item{CustomIamInstanceProfile}{The instance profile associated with the underlying Amazon EC2 instance
-of an RDS Custom DB instance. The instance profile must meet the
-following requirements:
+of an RDS Custom DB instance.
+
+This setting is required for RDS Custom.
+
+Constraints:
 \itemize{
 \item The profile must exist in your account.
 \item The profile must have an IAM role that Amazon EC2 has permissions to
@@ -961,41 +935,40 @@ start with the prefix \code{AWSRDSCustom}.
 }
 
 For the list of permissions required for the IAM role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-setup-orcl.html#custom-setup-orcl.iam-vpc}{Configure IAM and your VPC}
-in the \emph{Amazon RDS User Guide}.
+in the \emph{Amazon RDS User Guide}.}
 
-This setting is required for RDS Custom.}
+\item{BackupTarget}{The location for storing automated backups and manual snapshots.
 
-\item{BackupTarget}{Specifies where automated backups and manual snapshots are stored.
+Valie Values:
+\itemize{
+\item \code{outposts} (Amazon Web Services Outposts)
+\item \code{region} (Amazon Web Services Region)
+}
 
-Possible values are \code{outposts} (Amazon Web Services Outposts) and
-\code{region} (Amazon Web Services Region). The default is \code{region}.
+Default: \code{region}
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-on-outposts.html}{Working with Amazon RDS on Amazon Web Services Outposts}
 in the \emph{Amazon RDS User Guide}.}
 
 \item{NetworkType}{The network type of the DB instance.
 
-Valid values:
-\itemize{
-\item \code{IPV4}
-\item \code{DUAL}
-}
-
 The network type is determined by the \code{DBSubnetGroup} specified for the
 DB instance. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
 IPv4 and the IPv6 protocols (\code{DUAL}).
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
-in the \emph{Amazon RDS User Guide.}}
+in the \emph{Amazon RDS User Guide.}
 
-\item{StorageThroughput}{Specifies the storage throughput value for the DB instance.
+Valid Values: \code{IPV4 | DUAL}}
+
+\item{StorageThroughput}{The storage throughput value for the DB instance.
 
 This setting applies only to the \code{gp3} storage type.
 
-This setting doesn't apply to RDS Custom or Amazon Aurora.}
+This setting doesn't apply to Amazon Aurora or RDS Custom DB instances.}
 
-\item{ManageMasterUserPassword}{A value that indicates whether to manage the master user password with
-Amazon Web Services Secrets Manager.
+\item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
+Services Secrets Manager.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
 in the \emph{Amazon RDS User Guide.}
@@ -1027,18 +1000,25 @@ There is a default KMS key for your Amazon Web Services account. Your
 Amazon Web Services account has a different default KMS key for each
 Amazon Web Services Region.}
 
-\item{CACertificateIdentifier}{Specifies the CA certificate identifier to use for the DB instance’s
-server certificate.
+\item{CACertificateIdentifier}{The CA certificate identifier to use for the DB instance's server
+certificate.
 
-This setting doesn't apply to RDS Custom.
+This setting doesn't apply to RDS Custom DB instances.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB instance}
 in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.SSL.html}{Using SSL/TLS to encrypt a connection to a DB cluster}
 in the \emph{Amazon Aurora User Guide}.}
+
+\item{DBSystemId}{The Oracle system identifier (SID), which is the name of the Oracle
+database instance that manages your database files. In this context, the
+term "Oracle database instance" refers exclusively to the system global
+area (SGA) and Oracle background processes. If you don't specify a SID,
+the value defaults to \code{RDSCDB}. The Oracle SID is also the name of your
+CDB.}
 }
 \description{
 Creates a new DB instance.
 
-See \url{https://paws-r.github.io/docs/rds/create_db_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_create_db_instance/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Creates a range of customer-owned IP addresses.
 
-See \url{https://paws-r.github.io/docs/ec2/create_coip_cidr.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_coip_cidr/} for full documentation.
 }
 \keyword{internal}

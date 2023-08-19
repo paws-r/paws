@@ -30,6 +30,6 @@ information, see \href{https://docs.aws.amazon.com/codeartifact/latest/ug/repos-
 \description{
 Update the properties of a repository.
 
-See \url{https://paws-r.github.io/docs/codeartifact/update_repository.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_update_repository/} for full documentation.
 }
 \keyword{internal}

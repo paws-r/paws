@@ -13,6 +13,6 @@ update on.}
 \description{
 Cancels a scheduled service software update for an Amazon ES domain. You can only perform this operation before the \code{AutomatedUpdateDate} and when the \code{UpdateStatus} is in the \code{PENDING_UPDATE} state.
 
-See \url{https://paws-r.github.io/docs/elasticsearchservice/cancel_elasticsearch_service_software_update.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticsearchservice_cancel_elasticsearch_service_software_update/} for full documentation.
 }
 \keyword{internal}

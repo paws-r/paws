@@ -39,6 +39,6 @@ This is not supported by Amazon S3 on Outposts buckets.}
 \description{
 This action puts a bucket policy to an Amazon S3 on Outposts bucket. To put a policy on an S3 bucket, see \code{\link[=s3control_put_bucket_policy]{put_bucket_policy}} in the \emph{Amazon S3 API Reference}.
 
-See \url{https://paws-r.github.io/docs/s3control/put_bucket_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_put_bucket_policy/} for full documentation.
 }
 \keyword{internal}

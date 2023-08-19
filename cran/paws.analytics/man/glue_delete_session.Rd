@@ -14,6 +14,6 @@ glue_delete_session(Id, RequestOrigin = NULL)
 \description{
 Deletes the session.
 
-See \url{https://paws-r.github.io/docs/glue/delete_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_delete_session/} for full documentation.
 }
 \keyword{internal}

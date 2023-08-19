@@ -26,6 +26,6 @@ results.}
 \description{
 Lists all the versions of the templates in the current Amazon QuickSight account.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_template_versions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_template_versions/} for full documentation.
 }
 \keyword{internal}

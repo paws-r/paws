@@ -21,6 +21,6 @@ previous call.)}
 \description{
 Lists the specified notification subscriptions.
 
-See \url{https://paws-r.github.io/docs/workdocs/describe_notification_subscriptions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_describe_notification_subscriptions/} for full documentation.
 }
 \keyword{internal}

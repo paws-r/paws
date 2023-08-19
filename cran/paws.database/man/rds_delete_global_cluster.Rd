@@ -12,6 +12,6 @@ rds_delete_global_cluster(GlobalClusterIdentifier)
 \description{
 Deletes a global database cluster. The primary and secondary clusters must already be detached or destroyed first.
 
-See \url{https://paws-r.github.io/docs/rds/delete_global_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_delete_global_cluster/} for full documentation.
 }
 \keyword{internal}

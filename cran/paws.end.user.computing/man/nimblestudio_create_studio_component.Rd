@@ -58,6 +58,6 @@ this resource.}
 \description{
 Creates a studio component resource.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/create_studio_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_create_studio_component/} for full documentation.
 }
 \keyword{internal}

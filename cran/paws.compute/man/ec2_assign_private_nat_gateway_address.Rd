@@ -12,7 +12,7 @@ ec2_assign_private_nat_gateway_address(
 )
 }
 \arguments{
-\item{NatGatewayId}{[required] The NAT gateway ID.}
+\item{NatGatewayId}{[required] The ID of the NAT gateway.}
 
 \item{PrivateIpAddresses}{The private IPv4 addresses you want to assign to the private NAT
 gateway.}
@@ -26,8 +26,8 @@ the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 }
 \description{
-Assigns one or more private IPv4 addresses to a private NAT gateway. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with}{Work with NAT gateways} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Assigns one or more private IPv4 addresses to a private NAT gateway. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-nat-gateway.html#nat-gateway-working-with}{Work with NAT gateways} in the \emph{Amazon VPC User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/assign_private_nat_gateway_address.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_assign_private_nat_gateway_address/} for full documentation.
 }
 \keyword{internal}

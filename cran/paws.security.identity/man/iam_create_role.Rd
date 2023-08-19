@@ -102,8 +102,8 @@ number of tags, then the entire request fails and the resource is not
 created.}
 }
 \description{
-Creates a new role for your Amazon Web Services account. For more information about roles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAM roles}. For information about quotas for role names and the number of roles you can create, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_iam-quotas.html}{IAM and STS quotas} in the \emph{IAM User Guide}.
+Creates a new role for your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/iam/create_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_create_role/} for full documentation.
 }
 \keyword{internal}

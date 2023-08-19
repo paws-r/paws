@@ -15,6 +15,6 @@ detach from the load balancer.}
 \description{
 Detaches the specified instances from a Lightsail load balancer.
 
-See \url{https://paws-r.github.io/docs/lightsail/detach_instances_from_load_balancer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_detach_instances_from_load_balancer/} for full documentation.
 }
 \keyword{internal}

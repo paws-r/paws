@@ -9,6 +9,6 @@ iam_list_saml_providers()
 \description{
 Lists the SAML provider resource objects defined in IAM in the account. IAM resource-listing operations return a subset of the available attributes for the resource. For example, this operation does not return tags, even though they are an attribute of the returned object. To view all of the information for a SAML provider, see \code{\link[=iam_get_saml_provider]{get_saml_provider}}.
 
-See \url{https://paws-r.github.io/docs/iam/list_saml_providers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_saml_providers/} for full documentation.
 }
 \keyword{internal}

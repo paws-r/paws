@@ -33,6 +33,6 @@ from a previous call.)}
 \description{
 Lists the executions of a maintenance window. This includes information about when the maintenance window was scheduled to be active, and information about tasks registered and run with the maintenance window.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_maintenance_window_executions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_maintenance_window_executions/} for full documentation.
 }
 \keyword{internal}

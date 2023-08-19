@@ -17,7 +17,7 @@ ec2_describe_dhcp_options(
 
 Default: Describes all your DHCP options sets.}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{dhcp-options-id} - The ID of a DHCP options set.
 \item \code{key} - The key for one of the options (for example, \code{domain-name}).
@@ -50,6 +50,6 @@ output. For more information, see
 \description{
 Describes one or more of your DHCP options sets.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_dhcp_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_dhcp_options/} for full documentation.
 }
 \keyword{internal}

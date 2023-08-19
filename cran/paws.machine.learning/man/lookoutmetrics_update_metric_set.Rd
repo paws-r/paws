@@ -44,6 +44,6 @@ values are joined with an OR operation.}
 \description{
 Updates a dataset.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/update_metric_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_update_metric_set/} for full documentation.
 }
 \keyword{internal}

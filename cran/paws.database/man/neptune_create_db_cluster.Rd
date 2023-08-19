@@ -195,6 +195,6 @@ should be added.}
 \description{
 Creates a new Amazon Neptune DB cluster.
 
-See \url{https://paws-r.github.io/docs/neptune/create_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_create_db_cluster/} for full documentation.
 }
 \keyword{internal}

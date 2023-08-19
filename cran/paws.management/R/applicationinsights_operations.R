@@ -3,12 +3,44 @@
 #' @include applicationinsights_service.R
 NULL
 
+#' Adds a workload to a component
+#'
+#' @description
+#' Adds a workload to a component. Each component can have at most five workloads.
+#'
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_add_workload/](https://www.paws-r-sdk.com/docs/applicationinsights_add_workload/) for full documentation.
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param ComponentName &#91;required&#93; The name of the component.
+#' @param WorkloadConfiguration &#91;required&#93; The configuration settings of the workload. The value is the escaped
+#' JSON of the configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_add_workload
+applicationinsights_add_workload <- function(ResourceGroupName, ComponentName, WorkloadConfiguration) {
+  op <- new_operation(
+    name = "AddWorkload",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$add_workload_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, WorkloadConfiguration = WorkloadConfiguration)
+  output <- .applicationinsights$add_workload_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$add_workload <- applicationinsights_add_workload
+
 #' Adds an application that is created from a resource group
 #'
 #' @description
 #' Adds an application that is created from a resource group.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/create_application.html](https://paws-r.github.io/docs/applicationinsights/create_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_create_application/](https://www.paws-r-sdk.com/docs/applicationinsights_create_application/) for full documentation.
 #'
 #' @param ResourceGroupName The name of the resource group.
 #' @param OpsCenterEnabled When set to `true`, creates opsItems for any problems detected on an
@@ -56,7 +88,7 @@ applicationinsights_create_application <- function(ResourceGroupName = NULL, Ops
 #' @description
 #' Creates a custom component by grouping similar standalone instances to monitor.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/create_component.html](https://paws-r.github.io/docs/applicationinsights/create_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_create_component/](https://www.paws-r-sdk.com/docs/applicationinsights_create_component/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
@@ -87,7 +119,7 @@ applicationinsights_create_component <- function(ResourceGroupName, ComponentNam
 #' @description
 #' Adds an log pattern to a `LogPatternSet`.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/create_log_pattern.html](https://paws-r.github.io/docs/applicationinsights/create_log_pattern.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_create_log_pattern/](https://www.paws-r-sdk.com/docs/applicationinsights_create_log_pattern/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
@@ -131,7 +163,7 @@ applicationinsights_create_log_pattern <- function(ResourceGroupName, PatternSet
 #' @description
 #' Removes the specified application from monitoring. Does not delete the application.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/delete_application.html](https://paws-r.github.io/docs/applicationinsights/delete_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_delete_application/](https://www.paws-r-sdk.com/docs/applicationinsights_delete_application/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #'
@@ -160,7 +192,7 @@ applicationinsights_delete_application <- function(ResourceGroupName) {
 #' @description
 #' Ungroups a custom component. When you ungroup custom components, all applicable monitors that are set up for the component are removed and the instances revert to their standalone status.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/delete_component.html](https://paws-r.github.io/docs/applicationinsights/delete_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_delete_component/](https://www.paws-r-sdk.com/docs/applicationinsights_delete_component/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
@@ -190,7 +222,7 @@ applicationinsights_delete_component <- function(ResourceGroupName, ComponentNam
 #' @description
 #' Removes the specified log pattern from a `LogPatternSet`.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/delete_log_pattern.html](https://paws-r.github.io/docs/applicationinsights/delete_log_pattern.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_delete_log_pattern/](https://www.paws-r-sdk.com/docs/applicationinsights_delete_log_pattern/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
@@ -221,21 +253,22 @@ applicationinsights_delete_log_pattern <- function(ResourceGroupName, PatternSet
 #' @description
 #' Describes the application.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/describe_application.html](https://paws-r.github.io/docs/applicationinsights/describe_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_describe_application/](https://www.paws-r-sdk.com/docs/applicationinsights_describe_application/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_describe_application
-applicationinsights_describe_application <- function(ResourceGroupName) {
+applicationinsights_describe_application <- function(ResourceGroupName, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_application_input(ResourceGroupName = ResourceGroupName)
+  input <- .applicationinsights$describe_application_input(ResourceGroupName = ResourceGroupName, AccountId = AccountId)
   output <- .applicationinsights$describe_application_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -251,22 +284,23 @@ applicationinsights_describe_application <- function(ResourceGroupName) {
 #' @description
 #' Describes a component and lists the resources that are grouped together in a component.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/describe_component.html](https://paws-r.github.io/docs/applicationinsights/describe_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_describe_component/](https://www.paws-r-sdk.com/docs/applicationinsights_describe_component/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_describe_component
-applicationinsights_describe_component <- function(ResourceGroupName, ComponentName) {
+applicationinsights_describe_component <- function(ResourceGroupName, ComponentName, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeComponent",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_component_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName)
+  input <- .applicationinsights$describe_component_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, AccountId = AccountId)
   output <- .applicationinsights$describe_component_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -281,22 +315,23 @@ applicationinsights_describe_component <- function(ResourceGroupName, ComponentN
 #' @description
 #' Describes the monitoring configuration of the component.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/describe_component_configuration.html](https://paws-r.github.io/docs/applicationinsights/describe_component_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_describe_component_configuration/](https://www.paws-r-sdk.com/docs/applicationinsights_describe_component_configuration/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_describe_component_configuration
-applicationinsights_describe_component_configuration <- function(ResourceGroupName, ComponentName) {
+applicationinsights_describe_component_configuration <- function(ResourceGroupName, ComponentName, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeComponentConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_component_configuration_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName)
+  input <- .applicationinsights$describe_component_configuration_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, AccountId = AccountId)
   output <- .applicationinsights$describe_component_configuration_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -311,23 +346,24 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
 #' @description
 #' Describes the recommended monitoring configuration of the component.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/describe_component_configuration_recommendation.html](https://paws-r.github.io/docs/applicationinsights/describe_component_configuration_recommendation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_describe_component_configuration_recommendation/](https://www.paws-r-sdk.com/docs/applicationinsights_describe_component_configuration_recommendation/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
 #' @param Tier &#91;required&#93; The tier of the application component.
+#' @param RecommendationType The recommended configuration type.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_descri_compon_config_recomm
-applicationinsights_describe_component_configuration_recommendation <- function(ResourceGroupName, ComponentName, Tier) {
+applicationinsights_describe_component_configuration_recommendation <- function(ResourceGroupName, ComponentName, Tier, RecommendationType = NULL) {
   op <- new_operation(
     name = "DescribeComponentConfigurationRecommendation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_component_configuration_recommendation_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, Tier = Tier)
+  input <- .applicationinsights$describe_component_configuration_recommendation_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, Tier = Tier, RecommendationType = RecommendationType)
   output <- .applicationinsights$describe_component_configuration_recommendation_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -342,23 +378,24 @@ applicationinsights_describe_component_configuration_recommendation <- function(
 #' @description
 #' Describe a specific log pattern from a `LogPatternSet`.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/describe_log_pattern.html](https://paws-r.github.io/docs/applicationinsights/describe_log_pattern.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_describe_log_pattern/](https://www.paws-r-sdk.com/docs/applicationinsights_describe_log_pattern/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
 #' @param PatternName &#91;required&#93; The name of the log pattern.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_describe_log_pattern
-applicationinsights_describe_log_pattern <- function(ResourceGroupName, PatternSetName, PatternName) {
+applicationinsights_describe_log_pattern <- function(ResourceGroupName, PatternSetName, PatternName, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeLogPattern",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_log_pattern_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, PatternName = PatternName)
+  input <- .applicationinsights$describe_log_pattern_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, PatternName = PatternName, AccountId = AccountId)
   output <- .applicationinsights$describe_log_pattern_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -373,21 +410,22 @@ applicationinsights_describe_log_pattern <- function(ResourceGroupName, PatternS
 #' @description
 #' Describes an anomaly or error with the application.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/describe_observation.html](https://paws-r.github.io/docs/applicationinsights/describe_observation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_describe_observation/](https://www.paws-r-sdk.com/docs/applicationinsights_describe_observation/) for full documentation.
 #'
 #' @param ObservationId &#91;required&#93; The ID of the observation.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_describe_observation
-applicationinsights_describe_observation <- function(ObservationId) {
+applicationinsights_describe_observation <- function(ObservationId, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeObservation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_observation_input(ObservationId = ObservationId)
+  input <- .applicationinsights$describe_observation_input(ObservationId = ObservationId, AccountId = AccountId)
   output <- .applicationinsights$describe_observation_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -402,21 +440,23 @@ applicationinsights_describe_observation <- function(ObservationId) {
 #' @description
 #' Describes an application problem.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/describe_problem.html](https://paws-r.github.io/docs/applicationinsights/describe_problem.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_describe_problem/](https://www.paws-r-sdk.com/docs/applicationinsights_describe_problem/) for full documentation.
 #'
 #' @param ProblemId &#91;required&#93; The ID of the problem.
+#' @param AccountId The AWS account ID for the owner of the resource group affected by the
+#' problem.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_describe_problem
-applicationinsights_describe_problem <- function(ProblemId) {
+applicationinsights_describe_problem <- function(ProblemId, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeProblem",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_problem_input(ProblemId = ProblemId)
+  input <- .applicationinsights$describe_problem_input(ProblemId = ProblemId, AccountId = AccountId)
   output <- .applicationinsights$describe_problem_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -431,21 +471,22 @@ applicationinsights_describe_problem <- function(ProblemId) {
 #' @description
 #' Describes the anomalies or errors associated with the problem.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/describe_problem_observations.html](https://paws-r.github.io/docs/applicationinsights/describe_problem_observations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_describe_problem_observations/](https://www.paws-r-sdk.com/docs/applicationinsights_describe_problem_observations/) for full documentation.
 #'
 #' @param ProblemId &#91;required&#93; The ID of the problem.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_describe_problem_observations
-applicationinsights_describe_problem_observations <- function(ProblemId) {
+applicationinsights_describe_problem_observations <- function(ProblemId, AccountId = NULL) {
   op <- new_operation(
     name = "DescribeProblemObservations",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_problem_observations_input(ProblemId = ProblemId)
+  input <- .applicationinsights$describe_problem_observations_input(ProblemId = ProblemId, AccountId = AccountId)
   output <- .applicationinsights$describe_problem_observations_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -455,29 +496,62 @@ applicationinsights_describe_problem_observations <- function(ProblemId) {
 }
 .applicationinsights$operations$describe_problem_observations <- applicationinsights_describe_problem_observations
 
+#' Describes a workload and its configuration
+#'
+#' @description
+#' Describes a workload and its configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_describe_workload/](https://www.paws-r-sdk.com/docs/applicationinsights_describe_workload/) for full documentation.
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param ComponentName &#91;required&#93; The name of the component.
+#' @param WorkloadId &#91;required&#93; The ID of the workload.
+#' @param AccountId The AWS account ID for the workload owner.
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_describe_workload
+applicationinsights_describe_workload <- function(ResourceGroupName, ComponentName, WorkloadId, AccountId = NULL) {
+  op <- new_operation(
+    name = "DescribeWorkload",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$describe_workload_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, WorkloadId = WorkloadId, AccountId = AccountId)
+  output <- .applicationinsights$describe_workload_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$describe_workload <- applicationinsights_describe_workload
+
 #' Lists the IDs of the applications that you are monitoring
 #'
 #' @description
 #' Lists the IDs of the applications that you are monitoring.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/list_applications.html](https://paws-r.github.io/docs/applicationinsights/list_applications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_list_applications/](https://www.paws-r-sdk.com/docs/applicationinsights_list_applications/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_list_applications
-applicationinsights_list_applications <- function(MaxResults = NULL, NextToken = NULL) {
+applicationinsights_list_applications <- function(MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
   op <- new_operation(
     name = "ListApplications",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .applicationinsights$list_applications_input(MaxResults = MaxResults, NextToken = NextToken)
+  input <- .applicationinsights$list_applications_input(MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .applicationinsights$list_applications_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -493,25 +567,26 @@ applicationinsights_list_applications <- function(MaxResults = NULL, NextToken =
 #' @description
 #' Lists the auto-grouped, standalone, and custom components of the application.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/list_components.html](https://paws-r.github.io/docs/applicationinsights/list_components.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_list_components/](https://www.paws-r-sdk.com/docs/applicationinsights_list_components/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_list_components
-applicationinsights_list_components <- function(ResourceGroupName, MaxResults = NULL, NextToken = NULL) {
+applicationinsights_list_components <- function(ResourceGroupName, MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
   op <- new_operation(
     name = "ListComponents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .applicationinsights$list_components_input(ResourceGroupName = ResourceGroupName, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .applicationinsights$list_components_input(ResourceGroupName = ResourceGroupName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .applicationinsights$list_components_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -527,7 +602,7 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 #' @description
 #' Lists the INFO, WARN, and ERROR events for periodic configuration updates performed by Application Insights. Examples of events represented are:
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/list_configuration_history.html](https://paws-r.github.io/docs/applicationinsights/list_configuration_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_list_configuration_history/](https://www.paws-r-sdk.com/docs/applicationinsights_list_configuration_history/) for full documentation.
 #'
 #' @param ResourceGroupName Resource group to which the application belongs.
 #' @param StartTime The start time of the event.
@@ -552,18 +627,19 @@ applicationinsights_list_components <- function(ResourceGroupName, MaxResults = 
 #' of that parameter. Pagination continues from the end of the previous
 #' results that returned the `NextToken` value. This value is `null` when
 #' there are no more results to return.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_list_configuration_history
-applicationinsights_list_configuration_history <- function(ResourceGroupName = NULL, StartTime = NULL, EndTime = NULL, EventStatus = NULL, MaxResults = NULL, NextToken = NULL) {
+applicationinsights_list_configuration_history <- function(ResourceGroupName = NULL, StartTime = NULL, EndTime = NULL, EventStatus = NULL, MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
   op <- new_operation(
     name = "ListConfigurationHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .applicationinsights$list_configuration_history_input(ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, EventStatus = EventStatus, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .applicationinsights$list_configuration_history_input(ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, EventStatus = EventStatus, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .applicationinsights$list_configuration_history_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -578,25 +654,26 @@ applicationinsights_list_configuration_history <- function(ResourceGroupName = N
 #' @description
 #' Lists the log pattern sets in the specific application.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/list_log_pattern_sets.html](https://paws-r.github.io/docs/applicationinsights/list_log_pattern_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_list_log_pattern_sets/](https://www.paws-r-sdk.com/docs/applicationinsights_list_log_pattern_sets/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param MaxResults The maximum number of results to return in a single call. To retrieve
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_list_log_pattern_sets
-applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResults = NULL, NextToken = NULL) {
+applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
   op <- new_operation(
     name = "ListLogPatternSets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .applicationinsights$list_log_pattern_sets_input(ResourceGroupName = ResourceGroupName, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .applicationinsights$list_log_pattern_sets_input(ResourceGroupName = ResourceGroupName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .applicationinsights$list_log_pattern_sets_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -611,7 +688,7 @@ applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResu
 #' @description
 #' Lists the log patterns in the specific log `LogPatternSet`.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/list_log_patterns.html](https://paws-r.github.io/docs/applicationinsights/list_log_patterns.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_list_log_patterns/](https://www.paws-r-sdk.com/docs/applicationinsights_list_log_patterns/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName The name of the log pattern set.
@@ -619,18 +696,19 @@ applicationinsights_list_log_pattern_sets <- function(ResourceGroupName, MaxResu
 #' the remaining results, make another call with the returned `NextToken`
 #' value.
 #' @param NextToken The token to request the next page of results.
+#' @param AccountId The AWS account ID for the resource group owner.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_list_log_patterns
-applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetName = NULL, MaxResults = NULL, NextToken = NULL) {
+applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetName = NULL, MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
   op <- new_operation(
     name = "ListLogPatterns",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .applicationinsights$list_log_patterns_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, MaxResults = MaxResults, NextToken = NextToken)
+  input <- .applicationinsights$list_log_patterns_input(ResourceGroupName = ResourceGroupName, PatternSetName = PatternSetName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
   output <- .applicationinsights$list_log_patterns_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -645,8 +723,9 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #' @description
 #' Lists the problems with your application.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/list_problems.html](https://paws-r.github.io/docs/applicationinsights/list_problems.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_list_problems/](https://www.paws-r-sdk.com/docs/applicationinsights_list_problems/) for full documentation.
 #'
+#' @param AccountId The AWS account ID for the resource group owner.
 #' @param ResourceGroupName The name of the resource group.
 #' @param StartTime The time when the problem was detected, in epoch seconds. If you don't
 #' specify a time frame for the request, problems within the past seven
@@ -658,18 +737,20 @@ applicationinsights_list_log_patterns <- function(ResourceGroupName, PatternSetN
 #' value.
 #' @param NextToken The token to request the next page of results.
 #' @param ComponentName The name of the component.
+#' @param Visibility Specifies whether or not you can view the problem. If not specified,
+#' visible and ignored problems are returned.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_list_problems
-applicationinsights_list_problems <- function(ResourceGroupName = NULL, StartTime = NULL, EndTime = NULL, MaxResults = NULL, NextToken = NULL, ComponentName = NULL) {
+applicationinsights_list_problems <- function(AccountId = NULL, ResourceGroupName = NULL, StartTime = NULL, EndTime = NULL, MaxResults = NULL, NextToken = NULL, ComponentName = NULL, Visibility = NULL) {
   op <- new_operation(
     name = "ListProblems",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .applicationinsights$list_problems_input(ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, ComponentName = ComponentName)
+  input <- .applicationinsights$list_problems_input(AccountId = AccountId, ResourceGroupName = ResourceGroupName, StartTime = StartTime, EndTime = EndTime, MaxResults = MaxResults, NextToken = NextToken, ComponentName = ComponentName, Visibility = Visibility)
   output <- .applicationinsights$list_problems_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -685,7 +766,7 @@ applicationinsights_list_problems <- function(ResourceGroupName = NULL, StartTim
 #' @description
 #' Retrieve a list of the tags (keys and values) that are associated with a specified application. A *tag* is a label that you optionally define and associate with an application. Each tag consists of a required *tag key* and an optional associated *tag value*. A tag key is a general label that acts as a category for more specific tag values. A tag value acts as a descriptor within a tag key.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/list_tags_for_resource.html](https://paws-r.github.io/docs/applicationinsights/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/applicationinsights_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the application that you want to
 #' retrieve tag information for.
@@ -710,12 +791,78 @@ applicationinsights_list_tags_for_resource <- function(ResourceARN) {
 }
 .applicationinsights$operations$list_tags_for_resource <- applicationinsights_list_tags_for_resource
 
+#' Lists the workloads that are configured on a given component
+#'
+#' @description
+#' Lists the workloads that are configured on a given component.
+#'
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_list_workloads/](https://www.paws-r-sdk.com/docs/applicationinsights_list_workloads/) for full documentation.
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param ComponentName &#91;required&#93; The name of the component.
+#' @param MaxResults The maximum number of results to return in a single call. To retrieve
+#' the remaining results, make another call with the returned `NextToken`
+#' value.
+#' @param NextToken The token to request the next page of results.
+#' @param AccountId The AWS account ID of the owner of the workload.
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_list_workloads
+applicationinsights_list_workloads <- function(ResourceGroupName, ComponentName, MaxResults = NULL, NextToken = NULL, AccountId = NULL) {
+  op <- new_operation(
+    name = "ListWorkloads",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .applicationinsights$list_workloads_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, MaxResults = MaxResults, NextToken = NextToken, AccountId = AccountId)
+  output <- .applicationinsights$list_workloads_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$list_workloads <- applicationinsights_list_workloads
+
+#' Remove workload from a component
+#'
+#' @description
+#' Remove workload from a component.
+#'
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_remove_workload/](https://www.paws-r-sdk.com/docs/applicationinsights_remove_workload/) for full documentation.
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param ComponentName &#91;required&#93; The name of the component.
+#' @param WorkloadId &#91;required&#93; The ID of the workload.
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_remove_workload
+applicationinsights_remove_workload <- function(ResourceGroupName, ComponentName, WorkloadId) {
+  op <- new_operation(
+    name = "RemoveWorkload",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$remove_workload_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, WorkloadId = WorkloadId)
+  output <- .applicationinsights$remove_workload_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$remove_workload <- applicationinsights_remove_workload
+
 #' Add one or more tags (keys and values) to a specified application
 #'
 #' @description
 #' Add one or more tags (keys and values) to a specified application. A *tag* is a label that you optionally define and associate with an application. Tags can help you categorize and manage application in different ways, such as by purpose, owner, environment, or other criteria.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/tag_resource.html](https://paws-r.github.io/docs/applicationinsights/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_tag_resource/](https://www.paws-r-sdk.com/docs/applicationinsights_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the application that you want to add
 #' one or more tags to.
@@ -749,7 +896,7 @@ applicationinsights_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Remove one or more tags (keys and values) from a specified application.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/untag_resource.html](https://paws-r.github.io/docs/applicationinsights/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_untag_resource/](https://www.paws-r-sdk.com/docs/applicationinsights_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) of the application that you want to
 #' remove one or more tags from.
@@ -786,7 +933,7 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Updates the application.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/update_application.html](https://paws-r.github.io/docs/applicationinsights/update_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_update_application/](https://www.paws-r-sdk.com/docs/applicationinsights_update_application/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param OpsCenterEnabled When set to `true`, creates opsItems for any problems detected on an
@@ -827,7 +974,7 @@ applicationinsights_update_application <- function(ResourceGroupName, OpsCenterE
 #' @description
 #' Updates the custom component name and/or the list of resources that make up the component.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/update_component.html](https://paws-r.github.io/docs/applicationinsights/update_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_update_component/](https://www.paws-r-sdk.com/docs/applicationinsights_update_component/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
@@ -859,7 +1006,7 @@ applicationinsights_update_component <- function(ResourceGroupName, ComponentNam
 #' @description
 #' Updates the monitoring configurations for the component. The configuration input parameter is an escaped JSON of the configuration and should match the schema of what is returned by [`describe_component_configuration_recommendation`][applicationinsights_describe_component_configuration_recommendation].
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/update_component_configuration.html](https://paws-r.github.io/docs/applicationinsights/update_component_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_update_component_configuration/](https://www.paws-r-sdk.com/docs/applicationinsights_update_component_configuration/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
@@ -902,7 +1049,7 @@ applicationinsights_update_component_configuration <- function(ResourceGroupName
 #' @description
 #' Adds a log pattern to a `LogPatternSet`.
 #'
-#' See [https://paws-r.github.io/docs/applicationinsights/update_log_pattern.html](https://paws-r.github.io/docs/applicationinsights/update_log_pattern.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_update_log_pattern/](https://www.paws-r-sdk.com/docs/applicationinsights_update_log_pattern/) for full documentation.
 #'
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param PatternSetName &#91;required&#93; The name of the log pattern set.
@@ -940,3 +1087,72 @@ applicationinsights_update_log_pattern <- function(ResourceGroupName, PatternSet
   return(response)
 }
 .applicationinsights$operations$update_log_pattern <- applicationinsights_update_log_pattern
+
+#' Updates the visibility of the problem or specifies the problem as
+#' RESOLVED
+#'
+#' @description
+#' Updates the visibility of the problem or specifies the problem as `RESOLVED`.
+#'
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_update_problem/](https://www.paws-r-sdk.com/docs/applicationinsights_update_problem/) for full documentation.
+#'
+#' @param ProblemId &#91;required&#93; The ID of the problem.
+#' @param UpdateStatus The status of the problem. Arguments can be passed for only problems
+#' that show a status of `RECOVERING`.
+#' @param Visibility The visibility of a problem. When you pass a value of `IGNORED`, the
+#' problem is removed from the default view, and all notifications for the
+#' problem are suspended. When `VISIBLE` is passed, the `IGNORED` action is
+#' reversed.
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_update_problem
+applicationinsights_update_problem <- function(ProblemId, UpdateStatus = NULL, Visibility = NULL) {
+  op <- new_operation(
+    name = "UpdateProblem",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$update_problem_input(ProblemId = ProblemId, UpdateStatus = UpdateStatus, Visibility = Visibility)
+  output <- .applicationinsights$update_problem_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$update_problem <- applicationinsights_update_problem
+
+#' Adds a workload to a component
+#'
+#' @description
+#' Adds a workload to a component. Each component can have at most five workloads.
+#'
+#' See [https://www.paws-r-sdk.com/docs/applicationinsights_update_workload/](https://www.paws-r-sdk.com/docs/applicationinsights_update_workload/) for full documentation.
+#'
+#' @param ResourceGroupName &#91;required&#93; The name of the resource group.
+#' @param ComponentName &#91;required&#93; The name of the component.
+#' @param WorkloadId The ID of the workload.
+#' @param WorkloadConfiguration &#91;required&#93; The configuration settings of the workload. The value is the escaped
+#' JSON of the configuration.
+#'
+#' @keywords internal
+#'
+#' @rdname applicationinsights_update_workload
+applicationinsights_update_workload <- function(ResourceGroupName, ComponentName, WorkloadId = NULL, WorkloadConfiguration) {
+  op <- new_operation(
+    name = "UpdateWorkload",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .applicationinsights$update_workload_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, WorkloadId = WorkloadId, WorkloadConfiguration = WorkloadConfiguration)
+  output <- .applicationinsights$update_workload_output()
+  config <- get_config()
+  svc <- .applicationinsights$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.applicationinsights$operations$update_workload <- applicationinsights_update_workload

@@ -2,7 +2,7 @@
 % Please edit documentation in R/ec2_operations.R
 \name{ec2_create_vpc_endpoint}
 \alias{ec2_create_vpc_endpoint}
-\title{Creates a VPC endpoint for a specified service}
+\title{Creates a VPC endpoint}
 \usage{
 ec2_create_vpc_endpoint(
   DryRun = NULL,
@@ -30,9 +30,9 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 Default: Gateway}
 
-\item{VpcId}{[required] The ID of the VPC for the endpoint.}
+\item{VpcId}{[required] The ID of the VPC.}
 
-\item{ServiceName}{[required] The service name.}
+\item{ServiceName}{[required] The name of the endpoint service.}
 
 \item{PolicyDocument}{(Interface and gateway endpoints) A policy to attach to the endpoint
 that controls access to the service. The policy must be in valid JSON
@@ -75,8 +75,8 @@ Default: \code{true}}
 \item{TagSpecifications}{The tags to associate with the endpoint.}
 }
 \description{
-Creates a VPC endpoint for a specified service. An endpoint enables you to create a private connection between your VPC and the service. The service may be provided by Amazon Web Services, an Amazon Web Services Marketplace Partner, or another Amazon Web Services account. For more information, see the \href{https://docs.aws.amazon.com/vpc/latest/privatelink/}{Amazon Web Services PrivateLink Guide}.
+Creates a VPC endpoint. A VPC endpoint provides a private connection between the specified VPC and the specified endpoint service. You can use an endpoint service provided by Amazon Web Services, an Amazon Web Services Marketplace Partner, or another Amazon Web Services account. For more information, see the \href{https://docs.aws.amazon.com/vpc/latest/privatelink/}{Amazon Web Services PrivateLink User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/create_vpc_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_vpc_endpoint/} for full documentation.
 }
 \keyword{internal}

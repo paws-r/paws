@@ -18,6 +18,6 @@ underscores are allowed.}
 \description{
 Updates an existing service mesh.
 
-See \url{https://paws-r.github.io/docs/appmesh/update_mesh.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appmesh_update_mesh/} for full documentation.
 }
 \keyword{internal}

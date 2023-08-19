@@ -38,6 +38,6 @@ continues from the end of the items returned by the previous request.}
 \description{
 Describes the events for the specified EC2 Fleet during the specified time.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_fleet_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_fleet_history/} for full documentation.
 }
 \keyword{internal}

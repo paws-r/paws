@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Cancels a job run.
 #'
-#' See [https://paws-r.github.io/docs/emrserverless/cancel_job_run.html](https://paws-r.github.io/docs/emrserverless/cancel_job_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_cancel_job_run/](https://www.paws-r-sdk.com/docs/emrserverless_cancel_job_run/) for full documentation.
 #'
 #' @param applicationId &#91;required&#93; The ID of the application on which the job run will be canceled.
 #' @param jobRunId &#91;required&#93; The ID of the job run to cancel.
@@ -38,10 +38,10 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #' @description
 #' Creates an application.
 #'
-#' See [https://paws-r.github.io/docs/emrserverless/create_application.html](https://paws-r.github.io/docs/emrserverless/create_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_create_application/](https://www.paws-r-sdk.com/docs/emrserverless_create_application/) for full documentation.
 #'
 #' @param name The name of the application.
-#' @param releaseLabel &#91;required&#93; The EMR release associated with the application.
+#' @param releaseLabel &#91;required&#93; The Amazon EMR release associated with the application.
 #' @param type &#91;required&#93; The type of application you want to start, such as Spark or Hive.
 #' @param clientToken &#91;required&#93; The client idempotency token of the application to create. Its value
 #' must be unique for each request.
@@ -93,7 +93,7 @@ emrserverless_create_application <- function(name = NULL, releaseLabel, type, cl
 #' @description
 #' Deletes an application. An application has to be in a stopped or created state in order to be deleted.
 #'
-#' See [https://paws-r.github.io/docs/emrserverless/delete_application.html](https://paws-r.github.io/docs/emrserverless/delete_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_delete_application/](https://www.paws-r-sdk.com/docs/emrserverless_delete_application/) for full documentation.
 #'
 #' @param applicationId &#91;required&#93; The ID of the application that will be deleted.
 #'
@@ -122,7 +122,7 @@ emrserverless_delete_application <- function(applicationId) {
 #' @description
 #' Displays detailed information about a specified application.
 #'
-#' See [https://paws-r.github.io/docs/emrserverless/get_application.html](https://paws-r.github.io/docs/emrserverless/get_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_get_application/](https://www.paws-r-sdk.com/docs/emrserverless_get_application/) for full documentation.
 #'
 #' @param applicationId &#91;required&#93; The ID of the application that will be described.
 #'
@@ -146,12 +146,13 @@ emrserverless_get_application <- function(applicationId) {
 }
 .emrserverless$operations$get_application <- emrserverless_get_application
 
-#' Returns a URL to access the job run dashboard
+#' Creates and returns a URL that you can use to access the application UIs
+#' for a job run
 #'
 #' @description
-#' Returns a URL to access the job run dashboard. The generated URL is valid for one hour, after which you must invoke the API again to generate a new URL.
+#' Creates and returns a URL that you can use to access the application UIs for a job run.
 #'
-#' See [https://paws-r.github.io/docs/emrserverless/get_dashboard_for_job_run.html](https://paws-r.github.io/docs/emrserverless/get_dashboard_for_job_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_get_dashboard_for_job_run/](https://www.paws-r-sdk.com/docs/emrserverless_get_dashboard_for_job_run/) for full documentation.
 #'
 #' @param applicationId &#91;required&#93; The ID of the application.
 #' @param jobRunId &#91;required&#93; The ID of the job run.
@@ -181,7 +182,7 @@ emrserverless_get_dashboard_for_job_run <- function(applicationId, jobRunId) {
 #' @description
 #' Displays detailed information about a job run.
 #'
-#' See [https://paws-r.github.io/docs/emrserverless/get_job_run.html](https://paws-r.github.io/docs/emrserverless/get_job_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_get_job_run/](https://www.paws-r-sdk.com/docs/emrserverless_get_job_run/) for full documentation.
 #'
 #' @param applicationId &#91;required&#93; The ID of the application on which the job run is submitted.
 #' @param jobRunId &#91;required&#93; The ID of the job run.
@@ -211,7 +212,7 @@ emrserverless_get_job_run <- function(applicationId, jobRunId) {
 #' @description
 #' Lists applications based on a set of parameters.
 #'
-#' See [https://paws-r.github.io/docs/emrserverless/list_applications.html](https://paws-r.github.io/docs/emrserverless/list_applications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_list_applications/](https://www.paws-r-sdk.com/docs/emrserverless_list_applications/) for full documentation.
 #'
 #' @param nextToken The token for the next set of application results.
 #' @param maxResults The maximum number of applications that can be listed.
@@ -227,7 +228,7 @@ emrserverless_list_applications <- function(nextToken = NULL, maxResults = NULL,
     name = "ListApplications",
     http_method = "GET",
     http_path = "/applications",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "applications")
   )
   input <- .emrserverless$list_applications_input(nextToken = nextToken, maxResults = maxResults, states = states)
   output <- .emrserverless$list_applications_output()
@@ -244,7 +245,7 @@ emrserverless_list_applications <- function(nextToken = NULL, maxResults = NULL,
 #' @description
 #' Lists job runs based on a set of parameters.
 #'
-#' See [https://paws-r.github.io/docs/emrserverless/list_job_runs.html](https://paws-r.github.io/docs/emrserverless/list_job_runs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_list_job_runs/](https://www.paws-r-sdk.com/docs/emrserverless_list_job_runs/) for full documentation.
 #'
 #' @param applicationId &#91;required&#93; The ID of the application for which to list the job run.
 #' @param nextToken The token for the next set of job run results.
@@ -262,7 +263,7 @@ emrserverless_list_job_runs <- function(applicationId, nextToken = NULL, maxResu
     name = "ListJobRuns",
     http_method = "GET",
     http_path = "/applications/{applicationId}/jobruns",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobRuns")
   )
   input <- .emrserverless$list_job_runs_input(applicationId = applicationId, nextToken = nextToken, maxResults = maxResults, createdAtAfter = createdAtAfter, createdAtBefore = createdAtBefore, states = states)
   output <- .emrserverless$list_job_runs_output()
@@ -279,7 +280,7 @@ emrserverless_list_job_runs <- function(applicationId, nextToken = NULL, maxResu
 #' @description
 #' Lists the tags assigned to the resources.
 #'
-#' See [https://paws-r.github.io/docs/emrserverless/list_tags_for_resource.html](https://paws-r.github.io/docs/emrserverless/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/emrserverless_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource to list the
 #' tags for. Currently, the supported resources are Amazon EMR Serverless
@@ -311,7 +312,7 @@ emrserverless_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' Starts a specified application and initializes initial capacity if configured.
 #'
-#' See [https://paws-r.github.io/docs/emrserverless/start_application.html](https://paws-r.github.io/docs/emrserverless/start_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_start_application/](https://www.paws-r-sdk.com/docs/emrserverless_start_application/) for full documentation.
 #'
 #' @param applicationId &#91;required&#93; The ID of the application to start.
 #'
@@ -340,7 +341,7 @@ emrserverless_start_application <- function(applicationId) {
 #' @description
 #' Starts a job run.
 #'
-#' See [https://paws-r.github.io/docs/emrserverless/start_job_run.html](https://paws-r.github.io/docs/emrserverless/start_job_run.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_start_job_run/](https://www.paws-r-sdk.com/docs/emrserverless_start_job_run/) for full documentation.
 #'
 #' @param applicationId &#91;required&#93; The ID of the application on which to run the job.
 #' @param clientToken &#91;required&#93; The client idempotency token of the job run to start. Its value must be
@@ -379,7 +380,7 @@ emrserverless_start_job_run <- function(applicationId, clientToken, executionRol
 #' @description
 #' Stops a specified application and releases initial capacity if configured. All scheduled and running jobs must be completed or cancelled before stopping an application.
 #'
-#' See [https://paws-r.github.io/docs/emrserverless/stop_application.html](https://paws-r.github.io/docs/emrserverless/stop_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_stop_application/](https://www.paws-r-sdk.com/docs/emrserverless_stop_application/) for full documentation.
 #'
 #' @param applicationId &#91;required&#93; The ID of the application to stop.
 #'
@@ -408,7 +409,7 @@ emrserverless_stop_application <- function(applicationId) {
 #' @description
 #' Assigns tags to resources. A tag is a label that you assign to an Amazon Web Services resource. Each tag consists of a key and an optional value, both of which you define. Tags enable you to categorize your Amazon Web Services resources by attributes such as purpose, owner, or environment. When you have many resources of the same type, you can quickly identify a specific resource based on the tags you've assigned to it.
 #'
-#' See [https://paws-r.github.io/docs/emrserverless/tag_resource.html](https://paws-r.github.io/docs/emrserverless/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_tag_resource/](https://www.paws-r-sdk.com/docs/emrserverless_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource to list the
 #' tags for. Currently, the supported resources are Amazon EMR Serverless
@@ -440,7 +441,7 @@ emrserverless_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Removes tags from resources.
 #'
-#' See [https://paws-r.github.io/docs/emrserverless/untag_resource.html](https://paws-r.github.io/docs/emrserverless/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_untag_resource/](https://www.paws-r-sdk.com/docs/emrserverless_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) that identifies the resource to list the
 #' tags for. Currently, the supported resources are Amazon EMR Serverless
@@ -472,7 +473,7 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Updates a specified application. An application has to be in a stopped or created state in order to be updated.
 #'
-#' See [https://paws-r.github.io/docs/emrserverless/update_application.html](https://paws-r.github.io/docs/emrserverless/update_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/emrserverless_update_application/](https://www.paws-r-sdk.com/docs/emrserverless_update_application/) for full documentation.
 #'
 #' @param applicationId &#91;required&#93; The ID of the application to update.
 #' @param clientToken &#91;required&#93; The client idempotency token of the application to update. Its value
@@ -498,18 +499,20 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' `TezTask` for Hive applications. You can either set image details in
 #' this parameter for each worker type, or in `imageConfiguration` for all
 #' worker types.
+#' @param releaseLabel The Amazon EMR release label for the application. You can change the
+#' release label to use a different release of Amazon EMR.
 #'
 #' @keywords internal
 #'
 #' @rdname emrserverless_update_application
-emrserverless_update_application <- function(applicationId, clientToken, initialCapacity = NULL, maximumCapacity = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL) {
+emrserverless_update_application <- function(applicationId, clientToken, initialCapacity = NULL, maximumCapacity = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, releaseLabel = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "PATCH",
     http_path = "/applications/{applicationId}",
     paginator = list()
   )
-  input <- .emrserverless$update_application_input(applicationId = applicationId, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications)
+  input <- .emrserverless$update_application_input(applicationId = applicationId, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, releaseLabel = releaseLabel)
   output <- .emrserverless$update_application_output()
   config <- get_config()
   svc <- .emrserverless$service(config)

@@ -40,6 +40,6 @@ output. For more information, see
 \description{
 Describes the storage tier status of one or more Amazon EBS snapshots.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_snapshot_tier_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_snapshot_tier_status/} for full documentation.
 }
 \keyword{internal}

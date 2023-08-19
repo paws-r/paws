@@ -17,6 +17,6 @@ operations, which returns results in the next page.}
 \description{
 Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the current Amazon Web Services account and Region.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/list_vpc_endpoints.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_list_vpc_endpoints/} for full documentation.
 }
 \keyword{internal}

@@ -10,7 +10,8 @@ sagemaker_search(
   SortBy = NULL,
   SortOrder = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  CrossAccountFilterOption = NULL
 )
 }
 \arguments{
@@ -34,10 +35,19 @@ can be passed to the next \code{SearchRequest} to continue retrieving
 results.}
 
 \item{MaxResults}{The maximum number of results to return.}
+
+\item{CrossAccountFilterOption}{A cross account filter option. When the value is \code{"CrossAccount"} the
+search results will only include resources made discoverable to you from
+other accounts. When the value is \code{"SameAccount"} or \code{null} the search
+results will only include resources from your account. Default is
+\code{null}. For more information on searching for resources made
+discoverable to your account, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/feature-store-cross-account-discoverability-use.html}{Search discoverable resources}
+in the SageMaker Developer Guide. The maximum number of
+\code{ResourceCatalog}s viewable is 1000.}
 }
 \description{
 Finds SageMaker resources that match a search query. Matching resources are returned as a list of \code{SearchRecord} objects in the response. You can sort the search results by any resource property in a ascending or descending order.
 
-See \url{https://paws-r.github.io/docs/sagemaker/search.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_search/} for full documentation.
 }
 \keyword{internal}

@@ -33,6 +33,6 @@ the time the celebrity was recognized.}
 \description{
 Gets the celebrity recognition results for a Amazon Rekognition Video analysis started by \code{\link[=rekognition_start_celebrity_recognition]{start_celebrity_recognition}}.
 
-See \url{https://paws-r.github.io/docs/rekognition/get_celebrity_recognition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_get_celebrity_recognition/} for full documentation.
 }
 \keyword{internal}

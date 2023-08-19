@@ -14,6 +14,6 @@ cloudwatchevidently_delete_feature(feature, project)
 \description{
 Deletes an Evidently feature.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/delete_feature.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_delete_feature/} for full documentation.
 }
 \keyword{internal}

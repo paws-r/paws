@@ -66,6 +66,6 @@ area.}
 \description{
 Updates a ReplicationConfigurationTemplate by ID.
 
-See \url{https://paws-r.github.io/docs/drs/update_replication_configuration_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_update_replication_configuration_template/} for full documentation.
 }
 \keyword{internal}

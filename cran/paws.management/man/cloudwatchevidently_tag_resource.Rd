@@ -15,6 +15,6 @@ cloudwatchevidently_tag_resource(resourceArn, tags)
 \description{
 Assigns one or more tags (key-value pairs) to the specified CloudWatch Evidently resource. Projects, features, launches, and experiments can be tagged.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_tag_resource/} for full documentation.
 }
 \keyword{internal}

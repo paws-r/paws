@@ -23,6 +23,6 @@ want to asssign the dataset.}
 \description{
 Creates a new Amazon Rekognition Custom Labels dataset. You can create a dataset by using an Amazon Sagemaker format manifest file or by copying an existing Amazon Rekognition Custom Labels dataset.
 
-See \url{https://paws-r.github.io/docs/rekognition/create_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_create_dataset/} for full documentation.
 }
 \keyword{internal}

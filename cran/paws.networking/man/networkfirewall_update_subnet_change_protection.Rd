@@ -48,6 +48,6 @@ to \code{TRUE}.}
 \description{
 Update subnet change protection
 
-See \url{https://paws-r.github.io/docs/networkfirewall/update_subnet_change_protection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_update_subnet_change_protection/} for full documentation.
 }
 \keyword{internal}

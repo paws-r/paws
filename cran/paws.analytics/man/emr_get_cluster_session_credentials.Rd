@@ -20,6 +20,6 @@ ID, role name, and role type using the following format:
 \description{
 Provides temporary, HTTP basic credentials that are associated with a given runtime IAM role and used by a cluster with fine-grained access control activated. You can use these credentials to connect to cluster endpoints that support username and password authentication.
 
-See \url{https://paws-r.github.io/docs/emr/get_cluster_session_credentials.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emr_get_cluster_session_credentials/} for full documentation.
 }
 \keyword{internal}

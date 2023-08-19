@@ -42,6 +42,6 @@ specify the following filter:
 \description{
 Returns a list of dataset import jobs created using the \code{\link[=forecastservice_create_dataset_import_job]{create_dataset_import_job}} operation. For each import job, this operation returns a summary of its properties, including its Amazon Resource Name (ARN). You can retrieve the complete set of properties by using the ARN with the \code{\link[=forecastservice_describe_dataset_import_job]{describe_dataset_import_job}} operation. You can filter the list by providing an array of \href{https://docs.aws.amazon.com/forecast/latest/dg/API_Filter.html}{Filter} objects.
 
-See \url{https://paws-r.github.io/docs/forecastservice/list_dataset_import_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_list_dataset_import_jobs/} for full documentation.
 }
 \keyword{internal}

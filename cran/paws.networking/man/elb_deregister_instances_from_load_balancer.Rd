@@ -14,6 +14,6 @@ elb_deregister_instances_from_load_balancer(LoadBalancerName, Instances)
 \description{
 Deregisters the specified instances from the specified load balancer. After the instance is deregistered, it no longer receives traffic from the load balancer.
 
-See \url{https://paws-r.github.io/docs/elb/deregister_instances_from_load_balancer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_deregister_instances_from_load_balancer/} for full documentation.
 }
 \keyword{internal}

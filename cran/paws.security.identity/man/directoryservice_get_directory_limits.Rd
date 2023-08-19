@@ -9,6 +9,6 @@ directoryservice_get_directory_limits()
 \description{
 Obtains directory limit information for the current Region.
 
-See \url{https://paws-r.github.io/docs/directoryservice/get_directory_limits.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_get_directory_limits/} for full documentation.
 }
 \keyword{internal}

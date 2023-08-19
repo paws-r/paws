@@ -65,6 +65,6 @@ shares that use the specified version of the managed permission.}
 \description{
 Retrieves details about the resource shares that you own or that are shared with you.
 
-See \url{https://paws-r.github.io/docs/ram/get_resource_shares.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_get_resource_shares/} for full documentation.
 }
 \keyword{internal}

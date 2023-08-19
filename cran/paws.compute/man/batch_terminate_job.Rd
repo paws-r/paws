@@ -17,6 +17,6 @@ message is also recorded in the Batch activity logs.}
 \description{
 Terminates a job in a job queue. Jobs that are in the \code{STARTING} or \code{RUNNING} state are terminated, which causes them to transition to \code{FAILED}. Jobs that have not progressed to the \code{STARTING} state are cancelled.
 
-See \url{https://paws-r.github.io/docs/batch/terminate_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_terminate_job/} for full documentation.
 }
 \keyword{internal}

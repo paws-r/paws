@@ -13,6 +13,6 @@ dynamodb_describe_time_to_live(TableName)
 \description{
 Gives a description of the Time to Live (TTL) status on the specified table.
 
-See \url{https://paws-r.github.io/docs/dynamodb/describe_time_to_live.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_describe_time_to_live/} for full documentation.
 }
 \keyword{internal}

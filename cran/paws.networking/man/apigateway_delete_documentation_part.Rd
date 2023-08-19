@@ -14,6 +14,6 @@ apigateway_delete_documentation_part(restApiId, documentationPartId)
 \description{
 Deletes a documentation part
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_documentation_part.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_documentation_part/} for full documentation.
 }
 \keyword{internal}

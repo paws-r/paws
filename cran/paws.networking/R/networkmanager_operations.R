@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Accepts a core network attachment request.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/accept_attachment.html](https://paws-r.github.io/docs/networkmanager/accept_attachment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_accept_attachment/](https://www.paws-r-sdk.com/docs/networkmanager_accept_attachment/) for full documentation.
 #'
 #' @param AttachmentId &#91;required&#93; The ID of the attachment.
 #'
@@ -38,7 +38,7 @@ networkmanager_accept_attachment <- function(AttachmentId) {
 #' @description
 #' Associates a core network Connect peer with a device and optionally, with a link.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/associate_connect_peer.html](https://paws-r.github.io/docs/networkmanager/associate_connect_peer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_associate_connect_peer/](https://www.paws-r-sdk.com/docs/networkmanager_associate_connect_peer/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of your global network.
 #' @param ConnectPeerId &#91;required&#93; The ID of the Connect peer.
@@ -70,7 +70,7 @@ networkmanager_associate_connect_peer <- function(GlobalNetworkId, ConnectPeerId
 #' @description
 #' Associates a customer gateway with a device and optionally, with a link. If you specify a link, it must be associated with the specified device.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/associate_customer_gateway.html](https://paws-r.github.io/docs/networkmanager/associate_customer_gateway.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_associate_customer_gateway/](https://www.paws-r-sdk.com/docs/networkmanager_associate_customer_gateway/) for full documentation.
 #'
 #' @param CustomerGatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the customer gateway.
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
@@ -102,7 +102,7 @@ networkmanager_associate_customer_gateway <- function(CustomerGatewayArn, Global
 #' @description
 #' Associates a link to a device. A device can be associated to multiple links and a link can be associated to multiple devices. The device and link must be in the same global network and the same site.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/associate_link.html](https://paws-r.github.io/docs/networkmanager/associate_link.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_associate_link/](https://www.paws-r-sdk.com/docs/networkmanager_associate_link/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param DeviceId &#91;required&#93; The ID of the device.
@@ -134,7 +134,7 @@ networkmanager_associate_link <- function(GlobalNetworkId, DeviceId, LinkId) {
 #' @description
 #' Associates a transit gateway Connect peer with a device, and optionally, with a link. If you specify a link, it must be associated with the specified device.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/associate_transit_gateway_connect_peer.html](https://paws-r.github.io/docs/networkmanager/associate_transit_gateway_connect_peer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_associate_transit_gateway_connect_peer/](https://www.paws-r-sdk.com/docs/networkmanager_associate_transit_gateway_connect_peer/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param TransitGatewayConnectPeerArn &#91;required&#93; The Amazon Resource Name (ARN) of the Connect peer.
@@ -167,7 +167,7 @@ networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkI
 #' @description
 #' Creates a core network Connect attachment from a specified core network attachment.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/create_connect_attachment.html](https://paws-r.github.io/docs/networkmanager/create_connect_attachment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_create_connect_attachment/](https://www.paws-r-sdk.com/docs/networkmanager_create_connect_attachment/) for full documentation.
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network where you want to create the attachment.
 #' @param EdgeLocation &#91;required&#93; The Region where the edge is located.
@@ -202,7 +202,7 @@ networkmanager_create_connect_attachment <- function(CoreNetworkId, EdgeLocation
 #' @description
 #' Creates a core network Connect peer for a specified core network connect attachment between a core network and an appliance. The peer address and transit gateway address must be the same IP address family (IPv4 or IPv6).
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/create_connect_peer.html](https://paws-r.github.io/docs/networkmanager/create_connect_peer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_create_connect_peer/](https://www.paws-r-sdk.com/docs/networkmanager_create_connect_peer/) for full documentation.
 #'
 #' @param ConnectAttachmentId &#91;required&#93; The ID of the connection attachment.
 #' @param CoreNetworkAddress A Connect peer core network address.
@@ -237,7 +237,7 @@ networkmanager_create_connect_peer <- function(ConnectAttachmentId, CoreNetworkA
 #' @description
 #' Creates a connection between two devices. The devices can be a physical or virtual appliance that connects to a third-party appliance in a VPC, or a physical appliance that connects to another physical appliance in an on-premises network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/create_connection.html](https://paws-r.github.io/docs/networkmanager/create_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_create_connection/](https://www.paws-r-sdk.com/docs/networkmanager_create_connection/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param DeviceId &#91;required&#93; The ID of the first device in the connection.
@@ -275,7 +275,7 @@ networkmanager_create_connection <- function(GlobalNetworkId, DeviceId, Connecte
 #' @description
 #' Creates a core network as part of your global network, and optionally, with a core network policy.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/create_core_network.html](https://paws-r.github.io/docs/networkmanager/create_core_network.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_create_core_network/](https://www.paws-r-sdk.com/docs/networkmanager_create_core_network/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network that a core network will be a part of.
 #' @param Description The description of a core network.
@@ -308,7 +308,7 @@ networkmanager_create_core_network <- function(GlobalNetworkId, Description = NU
 #' @description
 #' Creates a new device in a global network. If you specify both a site ID and a location, the location of the site is used for visualization in the Network Manager console.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/create_device.html](https://paws-r.github.io/docs/networkmanager/create_device.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_create_device/](https://www.paws-r-sdk.com/docs/networkmanager_create_device/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param AWSLocation The Amazon Web Services location of the device, if applicable. For an
@@ -355,7 +355,7 @@ networkmanager_create_device <- function(GlobalNetworkId, AWSLocation = NULL, De
 #' @description
 #' Creates a new, empty global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/create_global_network.html](https://paws-r.github.io/docs/networkmanager/create_global_network.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_create_global_network/](https://www.paws-r-sdk.com/docs/networkmanager_create_global_network/) for full documentation.
 #'
 #' @param Description A description of the global network.
 #' 
@@ -387,7 +387,7 @@ networkmanager_create_global_network <- function(Description = NULL, Tags = NULL
 #' @description
 #' Creates a new link for a specified site.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/create_link.html](https://paws-r.github.io/docs/networkmanager/create_link.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_create_link/](https://www.paws-r-sdk.com/docs/networkmanager_create_link/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param Description A description of the link.
@@ -430,7 +430,7 @@ networkmanager_create_link <- function(GlobalNetworkId, Description = NULL, Type
 #' @description
 #' Creates a new site in a global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/create_site.html](https://paws-r.github.io/docs/networkmanager/create_site.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_create_site/](https://www.paws-r-sdk.com/docs/networkmanager_create_site/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param Description A description of your site.
@@ -473,7 +473,7 @@ networkmanager_create_site <- function(GlobalNetworkId, Description = NULL, Loca
 #' @description
 #' Creates an Amazon Web Services site-to-site VPN attachment on an edge location of a core network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/create_site_to_site_vpn_attachment.html](https://paws-r.github.io/docs/networkmanager/create_site_to_site_vpn_attachment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_create_site_to_site_vpn_attachment/](https://www.paws-r-sdk.com/docs/networkmanager_create_site_to_site_vpn_attachment/) for full documentation.
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network where you're creating a site-to-site VPN
 #' attachment.
@@ -506,7 +506,7 @@ networkmanager_create_site_to_site_vpn_attachment <- function(CoreNetworkId, Vpn
 #' @description
 #' Creates a transit gateway peering connection.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/create_transit_gateway_peering.html](https://paws-r.github.io/docs/networkmanager/create_transit_gateway_peering.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_create_transit_gateway_peering/](https://www.paws-r-sdk.com/docs/networkmanager_create_transit_gateway_peering/) for full documentation.
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network.
 #' @param TransitGatewayArn &#91;required&#93; The ARN of the transit gateway for the peering request.
@@ -538,7 +538,7 @@ networkmanager_create_transit_gateway_peering <- function(CoreNetworkId, Transit
 #' @description
 #' Creates a transit gateway route table attachment.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/create_transit_gateway_route_table_attachment.html](https://paws-r.github.io/docs/networkmanager/create_transit_gateway_route_table_attachment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_create_transit_gateway_route_table_attachment/](https://www.paws-r-sdk.com/docs/networkmanager_create_transit_gateway_route_table_attachment/) for full documentation.
 #'
 #' @param PeeringId &#91;required&#93; The ID of the peer for the
 #' @param TransitGatewayRouteTableArn &#91;required&#93; The ARN of the transit gateway route table for the attachment request.
@@ -572,7 +572,7 @@ networkmanager_create_transit_gateway_route_table_attachment <- function(Peering
 #' @description
 #' Creates a VPC attachment on an edge location of a core network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/create_vpc_attachment.html](https://paws-r.github.io/docs/networkmanager/create_vpc_attachment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_create_vpc_attachment/](https://www.paws-r-sdk.com/docs/networkmanager_create_vpc_attachment/) for full documentation.
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network for the VPC attachment.
 #' @param VpcArn &#91;required&#93; The ARN of the VPC.
@@ -606,7 +606,7 @@ networkmanager_create_vpc_attachment <- function(CoreNetworkId, VpcArn, SubnetAr
 #' @description
 #' Deletes an attachment. Supports all attachment types.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/delete_attachment.html](https://paws-r.github.io/docs/networkmanager/delete_attachment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_delete_attachment/](https://www.paws-r-sdk.com/docs/networkmanager_delete_attachment/) for full documentation.
 #'
 #' @param AttachmentId &#91;required&#93; The ID of the attachment to delete.
 #'
@@ -635,7 +635,7 @@ networkmanager_delete_attachment <- function(AttachmentId) {
 #' @description
 #' Deletes a Connect peer.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/delete_connect_peer.html](https://paws-r.github.io/docs/networkmanager/delete_connect_peer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_delete_connect_peer/](https://www.paws-r-sdk.com/docs/networkmanager_delete_connect_peer/) for full documentation.
 #'
 #' @param ConnectPeerId &#91;required&#93; The ID of the deleted Connect peer.
 #'
@@ -664,7 +664,7 @@ networkmanager_delete_connect_peer <- function(ConnectPeerId) {
 #' @description
 #' Deletes the specified connection in your global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/delete_connection.html](https://paws-r.github.io/docs/networkmanager/delete_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_delete_connection/](https://www.paws-r-sdk.com/docs/networkmanager_delete_connection/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param ConnectionId &#91;required&#93; The ID of the connection.
@@ -694,7 +694,7 @@ networkmanager_delete_connection <- function(GlobalNetworkId, ConnectionId) {
 #' @description
 #' Deletes a core network along with all core network policies. This can only be done if there are no attachments on a core network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/delete_core_network.html](https://paws-r.github.io/docs/networkmanager/delete_core_network.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_delete_core_network/](https://www.paws-r-sdk.com/docs/networkmanager_delete_core_network/) for full documentation.
 #'
 #' @param CoreNetworkId &#91;required&#93; The network ID of the deleted core network.
 #'
@@ -723,7 +723,7 @@ networkmanager_delete_core_network <- function(CoreNetworkId) {
 #' @description
 #' Deletes a policy version from a core network. You can't delete the current LIVE policy.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/delete_core_network_policy_version.html](https://paws-r.github.io/docs/networkmanager/delete_core_network_policy_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_delete_core_network_policy_version/](https://www.paws-r-sdk.com/docs/networkmanager_delete_core_network_policy_version/) for full documentation.
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network for the deleted policy.
 #' @param PolicyVersionId &#91;required&#93; The version ID of the deleted policy.
@@ -753,7 +753,7 @@ networkmanager_delete_core_network_policy_version <- function(CoreNetworkId, Pol
 #' @description
 #' Deletes an existing device. You must first disassociate the device from any links and customer gateways.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/delete_device.html](https://paws-r.github.io/docs/networkmanager/delete_device.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_delete_device/](https://www.paws-r-sdk.com/docs/networkmanager_delete_device/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param DeviceId &#91;required&#93; The ID of the device.
@@ -783,7 +783,7 @@ networkmanager_delete_device <- function(GlobalNetworkId, DeviceId) {
 #' @description
 #' Deletes an existing global network. You must first delete all global network objects (devices, links, and sites), deregister all transit gateways, and delete any core networks.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/delete_global_network.html](https://paws-r.github.io/docs/networkmanager/delete_global_network.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_delete_global_network/](https://www.paws-r-sdk.com/docs/networkmanager_delete_global_network/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #'
@@ -812,7 +812,7 @@ networkmanager_delete_global_network <- function(GlobalNetworkId) {
 #' @description
 #' Deletes an existing link. You must first disassociate the link from any devices and customer gateways.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/delete_link.html](https://paws-r.github.io/docs/networkmanager/delete_link.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_delete_link/](https://www.paws-r-sdk.com/docs/networkmanager_delete_link/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param LinkId &#91;required&#93; The ID of the link.
@@ -842,7 +842,7 @@ networkmanager_delete_link <- function(GlobalNetworkId, LinkId) {
 #' @description
 #' Deletes an existing peering connection.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/delete_peering.html](https://paws-r.github.io/docs/networkmanager/delete_peering.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_delete_peering/](https://www.paws-r-sdk.com/docs/networkmanager_delete_peering/) for full documentation.
 #'
 #' @param PeeringId &#91;required&#93; The ID of the peering connection to delete.
 #'
@@ -871,7 +871,7 @@ networkmanager_delete_peering <- function(PeeringId) {
 #' @description
 #' Deletes a resource policy for the specified resource. This revokes the access of the principals specified in the resource policy.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/delete_resource_policy.html](https://paws-r.github.io/docs/networkmanager/delete_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_delete_resource_policy/](https://www.paws-r-sdk.com/docs/networkmanager_delete_resource_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the policy to delete.
 #'
@@ -900,7 +900,7 @@ networkmanager_delete_resource_policy <- function(ResourceArn) {
 #' @description
 #' Deletes an existing site. The site cannot be associated with any device or link.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/delete_site.html](https://paws-r.github.io/docs/networkmanager/delete_site.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_delete_site/](https://www.paws-r-sdk.com/docs/networkmanager_delete_site/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param SiteId &#91;required&#93; The ID of the site.
@@ -930,7 +930,7 @@ networkmanager_delete_site <- function(GlobalNetworkId, SiteId) {
 #' @description
 #' Deregisters a transit gateway from your global network. This action does not delete your transit gateway, or modify any of its attachments. This action removes any customer gateway associations.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/deregister_transit_gateway.html](https://paws-r.github.io/docs/networkmanager/deregister_transit_gateway.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_deregister_transit_gateway/](https://www.paws-r-sdk.com/docs/networkmanager_deregister_transit_gateway/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param TransitGatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the transit gateway.
@@ -960,7 +960,7 @@ networkmanager_deregister_transit_gateway <- function(GlobalNetworkId, TransitGa
 #' @description
 #' Describes one or more global networks. By default, all global networks are described. To describe the objects in your global network, you must use the appropriate `Get*` action. For example, to list the transit gateways in your global network, use [`get_transit_gateway_registrations`][networkmanager_get_transit_gateway_registrations].
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/describe_global_networks.html](https://paws-r.github.io/docs/networkmanager/describe_global_networks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_describe_global_networks/](https://www.paws-r-sdk.com/docs/networkmanager_describe_global_networks/) for full documentation.
 #'
 #' @param GlobalNetworkIds The IDs of one or more global networks. The maximum is 10.
 #' @param MaxResults The maximum number of results to return.
@@ -974,7 +974,7 @@ networkmanager_describe_global_networks <- function(GlobalNetworkIds = NULL, Max
     name = "DescribeGlobalNetworks",
     http_method = "GET",
     http_path = "/global-networks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "GlobalNetworks")
   )
   input <- .networkmanager$describe_global_networks_input(GlobalNetworkIds = GlobalNetworkIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$describe_global_networks_output()
@@ -991,7 +991,7 @@ networkmanager_describe_global_networks <- function(GlobalNetworkIds = NULL, Max
 #' @description
 #' Disassociates a core network Connect peer from a device and a link.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/disassociate_connect_peer.html](https://paws-r.github.io/docs/networkmanager/disassociate_connect_peer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_disassociate_connect_peer/](https://www.paws-r-sdk.com/docs/networkmanager_disassociate_connect_peer/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param ConnectPeerId &#91;required&#93; The ID of the Connect peer to disassociate from a device.
@@ -1021,7 +1021,7 @@ networkmanager_disassociate_connect_peer <- function(GlobalNetworkId, ConnectPee
 #' @description
 #' Disassociates a customer gateway from a device and a link.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/disassociate_customer_gateway.html](https://paws-r.github.io/docs/networkmanager/disassociate_customer_gateway.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_disassociate_customer_gateway/](https://www.paws-r-sdk.com/docs/networkmanager_disassociate_customer_gateway/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param CustomerGatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the customer gateway.
@@ -1051,7 +1051,7 @@ networkmanager_disassociate_customer_gateway <- function(GlobalNetworkId, Custom
 #' @description
 #' Disassociates an existing device from a link. You must first disassociate any customer gateways that are associated with the link.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/disassociate_link.html](https://paws-r.github.io/docs/networkmanager/disassociate_link.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_disassociate_link/](https://www.paws-r-sdk.com/docs/networkmanager_disassociate_link/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param DeviceId &#91;required&#93; The ID of the device.
@@ -1082,7 +1082,7 @@ networkmanager_disassociate_link <- function(GlobalNetworkId, DeviceId, LinkId) 
 #' @description
 #' Disassociates a transit gateway Connect peer from a device and link.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/disassociate_transit_gateway_connect_peer.html](https://paws-r.github.io/docs/networkmanager/disassociate_transit_gateway_connect_peer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_disassociate_transit_gateway_connect_peer/](https://www.paws-r-sdk.com/docs/networkmanager_disassociate_transit_gateway_connect_peer/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param TransitGatewayConnectPeerArn &#91;required&#93; The Amazon Resource Name (ARN) of the transit gateway Connect peer.
@@ -1112,7 +1112,7 @@ networkmanager_disassociate_transit_gateway_connect_peer <- function(GlobalNetwo
 #' @description
 #' Executes a change set on your core network. Deploys changes globally based on the policy submitted..
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/execute_core_network_change_set.html](https://paws-r.github.io/docs/networkmanager/execute_core_network_change_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_execute_core_network_change_set/](https://www.paws-r-sdk.com/docs/networkmanager_execute_core_network_change_set/) for full documentation.
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network.
 #' @param PolicyVersionId &#91;required&#93; The ID of the policy version.
@@ -1142,7 +1142,7 @@ networkmanager_execute_core_network_change_set <- function(CoreNetworkId, Policy
 #' @description
 #' Returns information about a core network Connect attachment.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_connect_attachment.html](https://paws-r.github.io/docs/networkmanager/get_connect_attachment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_connect_attachment/](https://www.paws-r-sdk.com/docs/networkmanager_get_connect_attachment/) for full documentation.
 #'
 #' @param AttachmentId &#91;required&#93; The ID of the attachment.
 #'
@@ -1171,7 +1171,7 @@ networkmanager_get_connect_attachment <- function(AttachmentId) {
 #' @description
 #' Returns information about a core network Connect peer.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_connect_peer.html](https://paws-r.github.io/docs/networkmanager/get_connect_peer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_connect_peer/](https://www.paws-r-sdk.com/docs/networkmanager_get_connect_peer/) for full documentation.
 #'
 #' @param ConnectPeerId &#91;required&#93; The ID of the Connect peer.
 #'
@@ -1200,7 +1200,7 @@ networkmanager_get_connect_peer <- function(ConnectPeerId) {
 #' @description
 #' Returns information about a core network Connect peer associations.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_connect_peer_associations.html](https://paws-r.github.io/docs/networkmanager/get_connect_peer_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_connect_peer_associations/](https://www.paws-r-sdk.com/docs/networkmanager_get_connect_peer_associations/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param ConnectPeerIds The IDs of the Connect peers.
@@ -1215,7 +1215,7 @@ networkmanager_get_connect_peer_associations <- function(GlobalNetworkId, Connec
     name = "GetConnectPeerAssociations",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/connect-peer-associations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConnectPeerAssociations")
   )
   input <- .networkmanager$get_connect_peer_associations_input(GlobalNetworkId = GlobalNetworkId, ConnectPeerIds = ConnectPeerIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_connect_peer_associations_output()
@@ -1233,7 +1233,7 @@ networkmanager_get_connect_peer_associations <- function(GlobalNetworkId, Connec
 #' @description
 #' Gets information about one or more of your connections in a global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_connections.html](https://paws-r.github.io/docs/networkmanager/get_connections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_connections/](https://www.paws-r-sdk.com/docs/networkmanager_get_connections/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param ConnectionIds One or more connection IDs.
@@ -1249,7 +1249,7 @@ networkmanager_get_connections <- function(GlobalNetworkId, ConnectionIds = NULL
     name = "GetConnections",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/connections",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Connections")
   )
   input <- .networkmanager$get_connections_input(GlobalNetworkId = GlobalNetworkId, ConnectionIds = ConnectionIds, DeviceId = DeviceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_connections_output()
@@ -1266,7 +1266,7 @@ networkmanager_get_connections <- function(GlobalNetworkId, ConnectionIds = NULL
 #' @description
 #' Returns information about the LIVE policy for a core network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_core_network.html](https://paws-r.github.io/docs/networkmanager/get_core_network.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_core_network/](https://www.paws-r-sdk.com/docs/networkmanager_get_core_network/) for full documentation.
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network.
 #'
@@ -1295,7 +1295,7 @@ networkmanager_get_core_network <- function(CoreNetworkId) {
 #' @description
 #' Returns information about a core network change event.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_core_network_change_events.html](https://paws-r.github.io/docs/networkmanager/get_core_network_change_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_core_network_change_events/](https://www.paws-r-sdk.com/docs/networkmanager_get_core_network_change_events/) for full documentation.
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network.
 #' @param PolicyVersionId &#91;required&#93; The ID of the policy version.
@@ -1310,7 +1310,7 @@ networkmanager_get_core_network_change_events <- function(CoreNetworkId, PolicyV
     name = "GetCoreNetworkChangeEvents",
     http_method = "GET",
     http_path = "/core-networks/{coreNetworkId}/core-network-change-events/{policyVersionId}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CoreNetworkChangeEvents")
   )
   input <- .networkmanager$get_core_network_change_events_input(CoreNetworkId = CoreNetworkId, PolicyVersionId = PolicyVersionId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_core_network_change_events_output()
@@ -1328,7 +1328,7 @@ networkmanager_get_core_network_change_events <- function(CoreNetworkId, PolicyV
 #' @description
 #' Returns a change set between the LIVE core network policy and a submitted policy.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_core_network_change_set.html](https://paws-r.github.io/docs/networkmanager/get_core_network_change_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_core_network_change_set/](https://www.paws-r-sdk.com/docs/networkmanager_get_core_network_change_set/) for full documentation.
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network.
 #' @param PolicyVersionId &#91;required&#93; The ID of the policy version.
@@ -1343,7 +1343,7 @@ networkmanager_get_core_network_change_set <- function(CoreNetworkId, PolicyVers
     name = "GetCoreNetworkChangeSet",
     http_method = "GET",
     http_path = "/core-networks/{coreNetworkId}/core-network-change-sets/{policyVersionId}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CoreNetworkChanges")
   )
   input <- .networkmanager$get_core_network_change_set_input(CoreNetworkId = CoreNetworkId, PolicyVersionId = PolicyVersionId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_core_network_change_set_output()
@@ -1360,7 +1360,7 @@ networkmanager_get_core_network_change_set <- function(CoreNetworkId, PolicyVers
 #' @description
 #' Returns details about a core network policy. You can get details about your current live policy or any previous policy version.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_core_network_policy.html](https://paws-r.github.io/docs/networkmanager/get_core_network_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_core_network_policy/](https://www.paws-r-sdk.com/docs/networkmanager_get_core_network_policy/) for full documentation.
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network.
 #' @param PolicyVersionId The ID of a core network policy version.
@@ -1392,7 +1392,7 @@ networkmanager_get_core_network_policy <- function(CoreNetworkId, PolicyVersionI
 #' @description
 #' Gets the association information for customer gateways that are associated with devices and links in your global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_customer_gateway_associations.html](https://paws-r.github.io/docs/networkmanager/get_customer_gateway_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_customer_gateway_associations/](https://www.paws-r-sdk.com/docs/networkmanager_get_customer_gateway_associations/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param CustomerGatewayArns One or more customer gateway Amazon Resource Names (ARNs). The maximum
@@ -1408,7 +1408,7 @@ networkmanager_get_customer_gateway_associations <- function(GlobalNetworkId, Cu
     name = "GetCustomerGatewayAssociations",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/customer-gateway-associations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CustomerGatewayAssociations")
   )
   input <- .networkmanager$get_customer_gateway_associations_input(GlobalNetworkId = GlobalNetworkId, CustomerGatewayArns = CustomerGatewayArns, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_customer_gateway_associations_output()
@@ -1425,7 +1425,7 @@ networkmanager_get_customer_gateway_associations <- function(GlobalNetworkId, Cu
 #' @description
 #' Gets information about one or more of your devices in a global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_devices.html](https://paws-r.github.io/docs/networkmanager/get_devices.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_devices/](https://www.paws-r-sdk.com/docs/networkmanager_get_devices/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param DeviceIds One or more device IDs. The maximum is 10.
@@ -1441,7 +1441,7 @@ networkmanager_get_devices <- function(GlobalNetworkId, DeviceIds = NULL, SiteId
     name = "GetDevices",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/devices",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Devices")
   )
   input <- .networkmanager$get_devices_input(GlobalNetworkId = GlobalNetworkId, DeviceIds = DeviceIds, SiteId = SiteId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_devices_output()
@@ -1458,7 +1458,7 @@ networkmanager_get_devices <- function(GlobalNetworkId, DeviceIds = NULL, SiteId
 #' @description
 #' Gets the link associations for a device or a link. Either the device ID or the link ID must be specified.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_link_associations.html](https://paws-r.github.io/docs/networkmanager/get_link_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_link_associations/](https://www.paws-r-sdk.com/docs/networkmanager_get_link_associations/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param DeviceId The ID of the device.
@@ -1474,7 +1474,7 @@ networkmanager_get_link_associations <- function(GlobalNetworkId, DeviceId = NUL
     name = "GetLinkAssociations",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/link-associations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "LinkAssociations")
   )
   input <- .networkmanager$get_link_associations_input(GlobalNetworkId = GlobalNetworkId, DeviceId = DeviceId, LinkId = LinkId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_link_associations_output()
@@ -1491,7 +1491,7 @@ networkmanager_get_link_associations <- function(GlobalNetworkId, DeviceId = NUL
 #' @description
 #' Gets information about one or more links in a specified global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_links.html](https://paws-r.github.io/docs/networkmanager/get_links.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_links/](https://www.paws-r-sdk.com/docs/networkmanager_get_links/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param LinkIds One or more link IDs. The maximum is 10.
@@ -1509,7 +1509,7 @@ networkmanager_get_links <- function(GlobalNetworkId, LinkIds = NULL, SiteId = N
     name = "GetLinks",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/links",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Links")
   )
   input <- .networkmanager$get_links_input(GlobalNetworkId = GlobalNetworkId, LinkIds = LinkIds, SiteId = SiteId, Type = Type, Provider = Provider, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_links_output()
@@ -1527,7 +1527,7 @@ networkmanager_get_links <- function(GlobalNetworkId, LinkIds = NULL, SiteId = N
 #' @description
 #' Gets the count of network resources, by resource type, for the specified global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_network_resource_counts.html](https://paws-r.github.io/docs/networkmanager/get_network_resource_counts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_network_resource_counts/](https://www.paws-r-sdk.com/docs/networkmanager_get_network_resource_counts/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param ResourceType The resource type.
@@ -1574,7 +1574,7 @@ networkmanager_get_network_resource_counts <- function(GlobalNetworkId, Resource
     name = "GetNetworkResourceCounts",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/network-resource-count",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NetworkResourceCounts")
   )
   input <- .networkmanager$get_network_resource_counts_input(GlobalNetworkId = GlobalNetworkId, ResourceType = ResourceType, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_network_resource_counts_output()
@@ -1591,7 +1591,7 @@ networkmanager_get_network_resource_counts <- function(GlobalNetworkId, Resource
 #' @description
 #' Gets the network resource relationships for the specified global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_network_resource_relationships.html](https://paws-r.github.io/docs/networkmanager/get_network_resource_relationships.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_network_resource_relationships/](https://www.paws-r-sdk.com/docs/networkmanager_get_network_resource_relationships/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param CoreNetworkId The ID of a core network.
@@ -1643,7 +1643,7 @@ networkmanager_get_network_resource_relationships <- function(GlobalNetworkId, C
     name = "GetNetworkResourceRelationships",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/network-resource-relationships",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Relationships")
   )
   input <- .networkmanager$get_network_resource_relationships_input(GlobalNetworkId = GlobalNetworkId, CoreNetworkId = CoreNetworkId, RegisteredGatewayArn = RegisteredGatewayArn, AwsRegion = AwsRegion, AccountId = AccountId, ResourceType = ResourceType, ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_network_resource_relationships_output()
@@ -1660,7 +1660,7 @@ networkmanager_get_network_resource_relationships <- function(GlobalNetworkId, C
 #' @description
 #' Describes the network resources for the specified global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_network_resources.html](https://paws-r.github.io/docs/networkmanager/get_network_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_network_resources/](https://www.paws-r-sdk.com/docs/networkmanager_get_network_resources/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param CoreNetworkId The ID of a core network.
@@ -1725,7 +1725,7 @@ networkmanager_get_network_resources <- function(GlobalNetworkId, CoreNetworkId 
     name = "GetNetworkResources",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/network-resources",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NetworkResources")
   )
   input <- .networkmanager$get_network_resources_input(GlobalNetworkId = GlobalNetworkId, CoreNetworkId = CoreNetworkId, RegisteredGatewayArn = RegisteredGatewayArn, AwsRegion = AwsRegion, AccountId = AccountId, ResourceType = ResourceType, ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_network_resources_output()
@@ -1742,7 +1742,7 @@ networkmanager_get_network_resources <- function(GlobalNetworkId, CoreNetworkId 
 #' @description
 #' Gets the network routes of the specified global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_network_routes.html](https://paws-r.github.io/docs/networkmanager/get_network_routes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_network_routes/](https://www.paws-r-sdk.com/docs/networkmanager_get_network_routes/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param RouteTableIdentifier &#91;required&#93; The ID of the route table.
@@ -1782,7 +1782,7 @@ networkmanager_get_network_routes <- function(GlobalNetworkId, RouteTableIdentif
 #' @description
 #' Gets the network telemetry of the specified global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_network_telemetry.html](https://paws-r.github.io/docs/networkmanager/get_network_telemetry.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_network_telemetry/](https://www.paws-r-sdk.com/docs/networkmanager_get_network_telemetry/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param CoreNetworkId The ID of a core network.
@@ -1834,7 +1834,7 @@ networkmanager_get_network_telemetry <- function(GlobalNetworkId, CoreNetworkId 
     name = "GetNetworkTelemetry",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/network-telemetry",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "NetworkTelemetry")
   )
   input <- .networkmanager$get_network_telemetry_input(GlobalNetworkId = GlobalNetworkId, CoreNetworkId = CoreNetworkId, RegisteredGatewayArn = RegisteredGatewayArn, AwsRegion = AwsRegion, AccountId = AccountId, ResourceType = ResourceType, ResourceArn = ResourceArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_network_telemetry_output()
@@ -1851,7 +1851,7 @@ networkmanager_get_network_telemetry <- function(GlobalNetworkId, CoreNetworkId 
 #' @description
 #' Returns information about a resource policy.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_resource_policy.html](https://paws-r.github.io/docs/networkmanager/get_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_resource_policy/](https://www.paws-r-sdk.com/docs/networkmanager_get_resource_policy/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The ARN of the resource.
 #'
@@ -1880,7 +1880,7 @@ networkmanager_get_resource_policy <- function(ResourceArn) {
 #' @description
 #' Gets information about the specified route analysis.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_route_analysis.html](https://paws-r.github.io/docs/networkmanager/get_route_analysis.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_route_analysis/](https://www.paws-r-sdk.com/docs/networkmanager_get_route_analysis/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param RouteAnalysisId &#91;required&#93; The ID of the route analysis.
@@ -1910,7 +1910,7 @@ networkmanager_get_route_analysis <- function(GlobalNetworkId, RouteAnalysisId) 
 #' @description
 #' Returns information about a site-to-site VPN attachment.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_site_to_site_vpn_attachment.html](https://paws-r.github.io/docs/networkmanager/get_site_to_site_vpn_attachment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_site_to_site_vpn_attachment/](https://www.paws-r-sdk.com/docs/networkmanager_get_site_to_site_vpn_attachment/) for full documentation.
 #'
 #' @param AttachmentId &#91;required&#93; The ID of the attachment.
 #'
@@ -1939,7 +1939,7 @@ networkmanager_get_site_to_site_vpn_attachment <- function(AttachmentId) {
 #' @description
 #' Gets information about one or more of your sites in a global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_sites.html](https://paws-r.github.io/docs/networkmanager/get_sites.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_sites/](https://www.paws-r-sdk.com/docs/networkmanager_get_sites/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param SiteIds One or more site IDs. The maximum is 10.
@@ -1954,7 +1954,7 @@ networkmanager_get_sites <- function(GlobalNetworkId, SiteIds = NULL, MaxResults
     name = "GetSites",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/sites",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Sites")
   )
   input <- .networkmanager$get_sites_input(GlobalNetworkId = GlobalNetworkId, SiteIds = SiteIds, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_sites_output()
@@ -1972,7 +1972,7 @@ networkmanager_get_sites <- function(GlobalNetworkId, SiteIds = NULL, MaxResults
 #' @description
 #' Gets information about one or more of your transit gateway Connect peer associations in a global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_transit_gateway_connect_peer_associations.html](https://paws-r.github.io/docs/networkmanager/get_transit_gateway_connect_peer_associations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_transit_gateway_connect_peer_associations/](https://www.paws-r-sdk.com/docs/networkmanager_get_transit_gateway_connect_peer_associations/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param TransitGatewayConnectPeerArns One or more transit gateway Connect peer Amazon Resource Names (ARNs).
@@ -1987,7 +1987,7 @@ networkmanager_get_transit_gateway_connect_peer_associations <- function(GlobalN
     name = "GetTransitGatewayConnectPeerAssociations",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/transit-gateway-connect-peer-associations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TransitGatewayConnectPeerAssociations")
   )
   input <- .networkmanager$get_transit_gateway_connect_peer_associations_input(GlobalNetworkId = GlobalNetworkId, TransitGatewayConnectPeerArns = TransitGatewayConnectPeerArns, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_transit_gateway_connect_peer_associations_output()
@@ -2004,7 +2004,7 @@ networkmanager_get_transit_gateway_connect_peer_associations <- function(GlobalN
 #' @description
 #' Returns information about a transit gateway peer.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_transit_gateway_peering.html](https://paws-r.github.io/docs/networkmanager/get_transit_gateway_peering.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_transit_gateway_peering/](https://www.paws-r-sdk.com/docs/networkmanager_get_transit_gateway_peering/) for full documentation.
 #'
 #' @param PeeringId &#91;required&#93; The ID of the peering request.
 #'
@@ -2034,7 +2034,7 @@ networkmanager_get_transit_gateway_peering <- function(PeeringId) {
 #' @description
 #' Gets information about the transit gateway registrations in a specified global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_transit_gateway_registrations.html](https://paws-r.github.io/docs/networkmanager/get_transit_gateway_registrations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_transit_gateway_registrations/](https://www.paws-r-sdk.com/docs/networkmanager_get_transit_gateway_registrations/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param TransitGatewayArns The Amazon Resource Names (ARNs) of one or more transit gateways. The
@@ -2050,7 +2050,7 @@ networkmanager_get_transit_gateway_registrations <- function(GlobalNetworkId, Tr
     name = "GetTransitGatewayRegistrations",
     http_method = "GET",
     http_path = "/global-networks/{globalNetworkId}/transit-gateway-registrations",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "TransitGatewayRegistrations")
   )
   input <- .networkmanager$get_transit_gateway_registrations_input(GlobalNetworkId = GlobalNetworkId, TransitGatewayArns = TransitGatewayArns, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$get_transit_gateway_registrations_output()
@@ -2067,7 +2067,7 @@ networkmanager_get_transit_gateway_registrations <- function(GlobalNetworkId, Tr
 #' @description
 #' Returns information about a transit gateway route table attachment.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_transit_gateway_route_table_attachment.html](https://paws-r.github.io/docs/networkmanager/get_transit_gateway_route_table_attachment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_transit_gateway_route_table_attachment/](https://www.paws-r-sdk.com/docs/networkmanager_get_transit_gateway_route_table_attachment/) for full documentation.
 #'
 #' @param AttachmentId &#91;required&#93; The ID of the transit gateway route table attachment.
 #'
@@ -2096,7 +2096,7 @@ networkmanager_get_transit_gateway_route_table_attachment <- function(Attachment
 #' @description
 #' Returns information about a VPC attachment.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/get_vpc_attachment.html](https://paws-r.github.io/docs/networkmanager/get_vpc_attachment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_get_vpc_attachment/](https://www.paws-r-sdk.com/docs/networkmanager_get_vpc_attachment/) for full documentation.
 #'
 #' @param AttachmentId &#91;required&#93; The ID of the attachment.
 #'
@@ -2125,7 +2125,7 @@ networkmanager_get_vpc_attachment <- function(AttachmentId) {
 #' @description
 #' Returns a list of core network attachments.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/list_attachments.html](https://paws-r.github.io/docs/networkmanager/list_attachments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_list_attachments/](https://www.paws-r-sdk.com/docs/networkmanager_list_attachments/) for full documentation.
 #'
 #' @param CoreNetworkId The ID of a core network.
 #' @param AttachmentType The type of attachment.
@@ -2142,7 +2142,7 @@ networkmanager_list_attachments <- function(CoreNetworkId = NULL, AttachmentType
     name = "ListAttachments",
     http_method = "GET",
     http_path = "/attachments",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Attachments")
   )
   input <- .networkmanager$list_attachments_input(CoreNetworkId = CoreNetworkId, AttachmentType = AttachmentType, EdgeLocation = EdgeLocation, State = State, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$list_attachments_output()
@@ -2159,7 +2159,7 @@ networkmanager_list_attachments <- function(CoreNetworkId = NULL, AttachmentType
 #' @description
 #' Returns a list of core network Connect peers.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/list_connect_peers.html](https://paws-r.github.io/docs/networkmanager/list_connect_peers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_list_connect_peers/](https://www.paws-r-sdk.com/docs/networkmanager_list_connect_peers/) for full documentation.
 #'
 #' @param CoreNetworkId The ID of a core network.
 #' @param ConnectAttachmentId The ID of the attachment.
@@ -2174,7 +2174,7 @@ networkmanager_list_connect_peers <- function(CoreNetworkId = NULL, ConnectAttac
     name = "ListConnectPeers",
     http_method = "GET",
     http_path = "/connect-peers",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ConnectPeers")
   )
   input <- .networkmanager$list_connect_peers_input(CoreNetworkId = CoreNetworkId, ConnectAttachmentId = ConnectAttachmentId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$list_connect_peers_output()
@@ -2191,7 +2191,7 @@ networkmanager_list_connect_peers <- function(CoreNetworkId = NULL, ConnectAttac
 #' @description
 #' Returns a list of core network policy versions.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/list_core_network_policy_versions.html](https://paws-r.github.io/docs/networkmanager/list_core_network_policy_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_list_core_network_policy_versions/](https://www.paws-r-sdk.com/docs/networkmanager_list_core_network_policy_versions/) for full documentation.
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network.
 #' @param MaxResults The maximum number of results to return.
@@ -2205,7 +2205,7 @@ networkmanager_list_core_network_policy_versions <- function(CoreNetworkId, MaxR
     name = "ListCoreNetworkPolicyVersions",
     http_method = "GET",
     http_path = "/core-networks/{coreNetworkId}/core-network-policy-versions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CoreNetworkPolicyVersions")
   )
   input <- .networkmanager$list_core_network_policy_versions_input(CoreNetworkId = CoreNetworkId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$list_core_network_policy_versions_output()
@@ -2222,7 +2222,7 @@ networkmanager_list_core_network_policy_versions <- function(CoreNetworkId, MaxR
 #' @description
 #' Returns a list of owned and shared core networks.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/list_core_networks.html](https://paws-r.github.io/docs/networkmanager/list_core_networks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_list_core_networks/](https://www.paws-r-sdk.com/docs/networkmanager_list_core_networks/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to return.
 #' @param NextToken The token for the next page of results.
@@ -2235,7 +2235,7 @@ networkmanager_list_core_networks <- function(MaxResults = NULL, NextToken = NUL
     name = "ListCoreNetworks",
     http_method = "GET",
     http_path = "/core-networks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CoreNetworks")
   )
   input <- .networkmanager$list_core_networks_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$list_core_networks_output()
@@ -2253,7 +2253,7 @@ networkmanager_list_core_networks <- function(MaxResults = NULL, NextToken = NUL
 #' @description
 #' Gets the status of the Service Linked Role (SLR) deployment for the accounts in a given Amazon Web Services Organization.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/list_organization_service_access_status.html](https://paws-r.github.io/docs/networkmanager/list_organization_service_access_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_list_organization_service_access_status/](https://www.paws-r-sdk.com/docs/networkmanager_list_organization_service_access_status/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to return.
 #' @param NextToken The token for the next page of results.
@@ -2283,7 +2283,7 @@ networkmanager_list_organization_service_access_status <- function(MaxResults = 
 #' @description
 #' Lists the peerings for a core network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/list_peerings.html](https://paws-r.github.io/docs/networkmanager/list_peerings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_list_peerings/](https://www.paws-r-sdk.com/docs/networkmanager_list_peerings/) for full documentation.
 #'
 #' @param CoreNetworkId The ID of a core network.
 #' @param PeeringType Returns a list of a peering requests.
@@ -2300,7 +2300,7 @@ networkmanager_list_peerings <- function(CoreNetworkId = NULL, PeeringType = NUL
     name = "ListPeerings",
     http_method = "GET",
     http_path = "/peerings",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Peerings")
   )
   input <- .networkmanager$list_peerings_input(CoreNetworkId = CoreNetworkId, PeeringType = PeeringType, EdgeLocation = EdgeLocation, State = State, MaxResults = MaxResults, NextToken = NextToken)
   output <- .networkmanager$list_peerings_output()
@@ -2317,7 +2317,7 @@ networkmanager_list_peerings <- function(CoreNetworkId = NULL, PeeringType = NUL
 #' @description
 #' Lists the tags for a specified resource.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/list_tags_for_resource.html](https://paws-r.github.io/docs/networkmanager/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/networkmanager_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #'
@@ -2346,7 +2346,7 @@ networkmanager_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Creates a new, immutable version of a core network policy. A subsequent change set is created showing the differences between the LIVE policy and the submitted policy.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/put_core_network_policy.html](https://paws-r.github.io/docs/networkmanager/put_core_network_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_put_core_network_policy/](https://www.paws-r-sdk.com/docs/networkmanager_put_core_network_policy/) for full documentation.
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network.
 #' @param PolicyDocument &#91;required&#93; The policy document.
@@ -2379,7 +2379,7 @@ networkmanager_put_core_network_policy <- function(CoreNetworkId, PolicyDocument
 #' @description
 #' Creates or updates a resource policy.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/put_resource_policy.html](https://paws-r.github.io/docs/networkmanager/put_resource_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_put_resource_policy/](https://www.paws-r-sdk.com/docs/networkmanager_put_resource_policy/) for full documentation.
 #'
 #' @param PolicyDocument &#91;required&#93; The JSON resource policy document.
 #' @param ResourceArn &#91;required&#93; The ARN of the resource policy.
@@ -2409,7 +2409,7 @@ networkmanager_put_resource_policy <- function(PolicyDocument, ResourceArn) {
 #' @description
 #' Registers a transit gateway in your global network. Not all Regions support transit gateways for global networks. For a list of the supported Regions, see [Region Availability](https://docs.aws.amazon.com/network-manager/latest/tgwnm/what-are-global-networks.html#nm-available-regions) in the *Amazon Web Services Transit Gateways for Global Networks User Guide*. The transit gateway can be in any of the supported Amazon Web Services Regions, but it must be owned by the same Amazon Web Services account that owns the global network. You cannot register a transit gateway in more than one global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/register_transit_gateway.html](https://paws-r.github.io/docs/networkmanager/register_transit_gateway.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_register_transit_gateway/](https://www.paws-r-sdk.com/docs/networkmanager_register_transit_gateway/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param TransitGatewayArn &#91;required&#93; The Amazon Resource Name (ARN) of the transit gateway.
@@ -2439,7 +2439,7 @@ networkmanager_register_transit_gateway <- function(GlobalNetworkId, TransitGate
 #' @description
 #' Rejects a core network attachment request.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/reject_attachment.html](https://paws-r.github.io/docs/networkmanager/reject_attachment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_reject_attachment/](https://www.paws-r-sdk.com/docs/networkmanager_reject_attachment/) for full documentation.
 #'
 #' @param AttachmentId &#91;required&#93; The ID of the attachment.
 #'
@@ -2469,7 +2469,7 @@ networkmanager_reject_attachment <- function(AttachmentId) {
 #' @description
 #' Restores a previous policy version as a new, immutable version of a core network policy. A subsequent change set is created showing the differences between the LIVE policy and restored policy.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/restore_core_network_policy_version.html](https://paws-r.github.io/docs/networkmanager/restore_core_network_policy_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_restore_core_network_policy_version/](https://www.paws-r-sdk.com/docs/networkmanager_restore_core_network_policy_version/) for full documentation.
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network.
 #' @param PolicyVersionId &#91;required&#93; The ID of the policy version to restore.
@@ -2500,7 +2500,7 @@ networkmanager_restore_core_network_policy_version <- function(CoreNetworkId, Po
 #' @description
 #' Enables the Network Manager service for an Amazon Web Services Organization. This can only be called by a management account within the organization.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/start_organization_service_access_update.html](https://paws-r.github.io/docs/networkmanager/start_organization_service_access_update.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_start_organization_service_access_update/](https://www.paws-r-sdk.com/docs/networkmanager_start_organization_service_access_update/) for full documentation.
 #'
 #' @param Action &#91;required&#93; The action to take for the update request. This can be either `ENABLE`
 #' or `DISABLE`.
@@ -2531,7 +2531,7 @@ networkmanager_start_organization_service_access_update <- function(Action) {
 #' @description
 #' Starts analyzing the routing path between the specified source and destination. For more information, see [Route Analyzer](https://docs.aws.amazon.com/network-manager/latest/tgwnm/route-analyzer.html).
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/start_route_analysis.html](https://paws-r.github.io/docs/networkmanager/start_route_analysis.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_start_route_analysis/](https://www.paws-r-sdk.com/docs/networkmanager_start_route_analysis/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param Source &#91;required&#93; The source from which traffic originates.
@@ -2565,7 +2565,7 @@ networkmanager_start_route_analysis <- function(GlobalNetworkId, Source, Destina
 #' @description
 #' Tags a specified resource.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/tag_resource.html](https://paws-r.github.io/docs/networkmanager/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_tag_resource/](https://www.paws-r-sdk.com/docs/networkmanager_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param Tags &#91;required&#93; The tags to apply to the specified resource.
@@ -2595,7 +2595,7 @@ networkmanager_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes tags from a specified resource.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/untag_resource.html](https://paws-r.github.io/docs/networkmanager/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_untag_resource/](https://www.paws-r-sdk.com/docs/networkmanager_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
 #' @param TagKeys &#91;required&#93; The tag keys to remove from the specified resource.
@@ -2625,7 +2625,7 @@ networkmanager_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates the information for an existing connection. To remove information for any of the parameters, specify an empty string.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/update_connection.html](https://paws-r.github.io/docs/networkmanager/update_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_update_connection/](https://www.paws-r-sdk.com/docs/networkmanager_update_connection/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param ConnectionId &#91;required&#93; The ID of the connection.
@@ -2660,7 +2660,7 @@ networkmanager_update_connection <- function(GlobalNetworkId, ConnectionId, Link
 #' @description
 #' Updates the description of a core network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/update_core_network.html](https://paws-r.github.io/docs/networkmanager/update_core_network.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_update_core_network/](https://www.paws-r-sdk.com/docs/networkmanager_update_core_network/) for full documentation.
 #'
 #' @param CoreNetworkId &#91;required&#93; The ID of a core network.
 #' @param Description The description of the update.
@@ -2690,7 +2690,7 @@ networkmanager_update_core_network <- function(CoreNetworkId, Description = NULL
 #' @description
 #' Updates the details for an existing device. To remove information for any of the parameters, specify an empty string.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/update_device.html](https://paws-r.github.io/docs/networkmanager/update_device.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_update_device/](https://www.paws-r-sdk.com/docs/networkmanager_update_device/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param DeviceId &#91;required&#93; The ID of the device.
@@ -2737,7 +2737,7 @@ networkmanager_update_device <- function(GlobalNetworkId, DeviceId, AWSLocation 
 #' @description
 #' Updates an existing global network. To remove information for any of the parameters, specify an empty string.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/update_global_network.html](https://paws-r.github.io/docs/networkmanager/update_global_network.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_update_global_network/](https://www.paws-r-sdk.com/docs/networkmanager_update_global_network/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of your global network.
 #' @param Description A description of the global network.
@@ -2769,7 +2769,7 @@ networkmanager_update_global_network <- function(GlobalNetworkId, Description = 
 #' @description
 #' Updates the details for an existing link. To remove information for any of the parameters, specify an empty string.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/update_link.html](https://paws-r.github.io/docs/networkmanager/update_link.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_update_link/](https://www.paws-r-sdk.com/docs/networkmanager_update_link/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param LinkId &#91;required&#93; The ID of the link.
@@ -2809,7 +2809,7 @@ networkmanager_update_link <- function(GlobalNetworkId, LinkId, Description = NU
 #' @description
 #' Updates the resource metadata for the specified global network.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/update_network_resource_metadata.html](https://paws-r.github.io/docs/networkmanager/update_network_resource_metadata.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_update_network_resource_metadata/](https://www.paws-r-sdk.com/docs/networkmanager_update_network_resource_metadata/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param ResourceArn &#91;required&#93; The ARN of the resource.
@@ -2840,7 +2840,7 @@ networkmanager_update_network_resource_metadata <- function(GlobalNetworkId, Res
 #' @description
 #' Updates the information for an existing site. To remove information for any of the parameters, specify an empty string.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/update_site.html](https://paws-r.github.io/docs/networkmanager/update_site.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_update_site/](https://www.paws-r-sdk.com/docs/networkmanager_update_site/) for full documentation.
 #'
 #' @param GlobalNetworkId &#91;required&#93; The ID of the global network.
 #' @param SiteId &#91;required&#93; The ID of your site.
@@ -2880,7 +2880,7 @@ networkmanager_update_site <- function(GlobalNetworkId, SiteId, Description = NU
 #' @description
 #' Updates a VPC attachment.
 #'
-#' See [https://paws-r.github.io/docs/networkmanager/update_vpc_attachment.html](https://paws-r.github.io/docs/networkmanager/update_vpc_attachment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/networkmanager_update_vpc_attachment/](https://www.paws-r-sdk.com/docs/networkmanager_update_vpc_attachment/) for full documentation.
 #'
 #' @param AttachmentId &#91;required&#93; The ID of the attachment.
 #' @param AddSubnetArns Adds a subnet ARN to the VPC attachment.

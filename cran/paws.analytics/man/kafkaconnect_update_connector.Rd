@@ -16,6 +16,6 @@ kafkaconnect_update_connector(capacity, connectorArn, currentVersion)
 \description{
 Updates the specified connector.
 
-See \url{https://paws-r.github.io/docs/kafkaconnect/update_connector.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafkaconnect_update_connector/} for full documentation.
 }
 \keyword{internal}

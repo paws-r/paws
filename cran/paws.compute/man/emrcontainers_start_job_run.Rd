@@ -44,6 +44,6 @@ emrcontainers_start_job_run(
 \description{
 Starts a job run. A job run is a unit of work, such as a Spark jar, PySpark script, or SparkSQL query, that you submit to Amazon EMR on EKS.
 
-See \url{https://paws-r.github.io/docs/emrcontainers/start_job_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrcontainers_start_job_run/} for full documentation.
 }
 \keyword{internal}

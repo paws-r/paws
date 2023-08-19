@@ -23,6 +23,6 @@ current retention period.}
 \description{
 Decreases the Kinesis data stream's retention period, which is the length of time data records are accessible after they are added to the stream. The minimum value of a stream's retention period is 24 hours.
 
-See \url{https://paws-r.github.io/docs/kinesis/decrease_stream_retention_period.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_decrease_stream_retention_period/} for full documentation.
 }
 \keyword{internal}

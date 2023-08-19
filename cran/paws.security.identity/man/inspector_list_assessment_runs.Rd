@@ -36,6 +36,6 @@ you want in the response. The default value is 10. The maximum value is
 \description{
 Lists the assessment runs that correspond to the assessment templates that are specified by the ARNs of the assessment templates.
 
-See \url{https://paws-r.github.io/docs/inspector/list_assessment_runs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_list_assessment_runs/} for full documentation.
 }
 \keyword{internal}

@@ -87,6 +87,6 @@ parameter and retrying the request.}
 \description{
 Returns events related to clusters, security groups, snapshots, and parameter groups for the past 14 days. Events specific to a particular cluster, security group, snapshot or parameter group can be obtained by providing the name as a parameter. By default, the past hour of events are returned.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_events.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_events/} for full documentation.
 }
 \keyword{internal}

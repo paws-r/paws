@@ -35,6 +35,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Restores an archived Amazon EBS snapshot for use temporarily or permanently, or modifies the restore period or restore type for a snapshot that was previously temporarily restored.
 
-See \url{https://paws-r.github.io/docs/ec2/restore_snapshot_tier.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_restore_snapshot_tier/} for full documentation.
 }
 \keyword{internal}

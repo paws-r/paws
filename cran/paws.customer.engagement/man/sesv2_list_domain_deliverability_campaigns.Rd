@@ -37,6 +37,6 @@ which you can use to obtain additional results.}
 \description{
 Retrieve deliverability data for all the campaigns that used a specific domain to send email during a specified time range. This data is available for a domain only if you enabled the Deliverability dashboard for the domain.
 
-See \url{https://paws-r.github.io/docs/sesv2/list_domain_deliverability_campaigns.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_list_domain_deliverability_campaigns/} for full documentation.
 }
 \keyword{internal}

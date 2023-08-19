@@ -16,6 +16,6 @@ version of the bot. To delete the \verb{$LATEST} version, use the
 \description{
 Deletes a specific version of a bot. To delete all versions of a bot, use the \code{\link[=lexmodelbuildingservice_delete_bot]{delete_bot}} operation.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/delete_bot_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_bot_version/} for full documentation.
 }
 \keyword{internal}

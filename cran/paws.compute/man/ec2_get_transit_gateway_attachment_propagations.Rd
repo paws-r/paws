@@ -36,6 +36,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Lists the route tables to which the specified resource attachment propagates routes.
 
-See \url{https://paws-r.github.io/docs/ec2/get_transit_gateway_attachment_propagations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_transit_gateway_attachment_propagations/} for full documentation.
 }
 \keyword{internal}

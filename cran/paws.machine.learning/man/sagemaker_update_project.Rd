@@ -32,6 +32,6 @@ to include this parameter in the request. For more information, see
 \description{
 Updates a machine learning (ML) project that is created from a template that sets up an ML pipeline from training to deploying an approved model.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_project/} for full documentation.
 }
 \keyword{internal}

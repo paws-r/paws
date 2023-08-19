@@ -51,6 +51,6 @@ parameters occur.}
 \description{
 Runs the SQL query statements contained in the \code{Query}. Requires you to have access to the workgroup in which the query ran. Running queries against an external catalog requires \code{\link[=athena_get_data_catalog]{get_data_catalog}} permission to the catalog. For code samples using the Amazon Web Services SDK for Java, see \href{https://docs.aws.amazon.com/athena/latest/ug/code-samples.html}{Examples and Code Samples} in the \emph{Amazon Athena User Guide}.
 
-See \url{https://paws-r.github.io/docs/athena/start_query_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_start_query_execution/} for full documentation.
 }
 \keyword{internal}

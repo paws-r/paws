@@ -12,6 +12,6 @@ wellarchitected_get_workload(WorkloadId)
 \description{
 Get an existing workload.
 
-See \url{https://paws-r.github.io/docs/wellarchitected/get_workload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/wellarchitected_get_workload/} for full documentation.
 }
 \keyword{internal}

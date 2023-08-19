@@ -14,6 +14,6 @@ connectcampaignservice_update_campaign_dialer_config(dialerConfig, id)
 \description{
 Updates the dialer config of a campaign. This API is idempotent.
 
-See \url{https://paws-r.github.io/docs/connectcampaignservice/update_campaign_dialer_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectcampaignservice_update_campaign_dialer_config/} for full documentation.
 }
 \keyword{internal}

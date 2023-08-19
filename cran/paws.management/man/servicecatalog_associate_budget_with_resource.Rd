@@ -14,6 +14,6 @@ servicecatalog_associate_budget_with_resource(BudgetName, ResourceId)
 \description{
 Associates the specified budget with the specified resource.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/associate_budget_with_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_associate_budget_with_resource/} for full documentation.
 }
 \keyword{internal}

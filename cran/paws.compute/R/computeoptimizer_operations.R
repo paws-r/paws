@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Deletes a recommendation preference, such as enhanced infrastructure metrics.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/delete_recommendation_preferences.html](https://paws-r.github.io/docs/computeoptimizer/delete_recommendation_preferences.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_delete_recommendation_preferences/](https://www.paws-r-sdk.com/docs/computeoptimizer_delete_recommendation_preferences/) for full documentation.
 #'
 #' @param resourceType &#91;required&#93; The target resource type of the recommendation preference to delete.
 #' 
@@ -55,7 +55,7 @@ computeoptimizer_delete_recommendation_preferences <- function(resourceType, sco
 #' @description
 #' Describes recommendation export jobs created in the last seven days.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/describe_recommendation_export_jobs.html](https://paws-r.github.io/docs/computeoptimizer/describe_recommendation_export_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_describe_recommendation_export_jobs/](https://www.paws-r-sdk.com/docs/computeoptimizer_describe_recommendation_export_jobs/) for full documentation.
 #'
 #' @param jobIds The identification numbers of the export jobs to return.
 #' 
@@ -83,7 +83,7 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
     name = "DescribeRecommendationExportJobs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationExportJobs")
   )
   input <- .computeoptimizer$describe_recommendation_export_jobs_input(jobIds = jobIds, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$describe_recommendation_export_jobs_output()
@@ -100,7 +100,7 @@ computeoptimizer_describe_recommendation_export_jobs <- function(jobIds = NULL, 
 #' @description
 #' Exports optimization recommendations for Auto Scaling groups.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/export_auto_scaling_group_recommendations.html](https://paws-r.github.io/docs/computeoptimizer/export_auto_scaling_group_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_export_auto_scaling_group_recommendations/](https://www.paws-r-sdk.com/docs/computeoptimizer_export_auto_scaling_group_recommendations/) for full documentation.
 #'
 #' @param accountIds The IDs of the Amazon Web Services accounts for which to export Auto
 #' Scaling group recommendations.
@@ -185,7 +185,7 @@ computeoptimizer_export_auto_scaling_group_recommendations <- function(accountId
 #' @description
 #' Exports optimization recommendations for Amazon EBS volumes.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/export_ebs_volume_recommendations.html](https://paws-r.github.io/docs/computeoptimizer/export_ebs_volume_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_export_ebs_volume_recommendations/](https://www.paws-r-sdk.com/docs/computeoptimizer_export_ebs_volume_recommendations/) for full documentation.
 #'
 #' @param accountIds The IDs of the Amazon Web Services accounts for which to export Amazon
 #' EBS volume recommendations.
@@ -256,7 +256,7 @@ computeoptimizer_export_ebs_volume_recommendations <- function(accountIds = NULL
 #' @description
 #' Exports optimization recommendations for Amazon EC2 instances.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/export_ec2_instance_recommendations.html](https://paws-r.github.io/docs/computeoptimizer/export_ec2_instance_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_export_ec2_instance_recommendations/](https://www.paws-r-sdk.com/docs/computeoptimizer_export_ec2_instance_recommendations/) for full documentation.
 #'
 #' @param accountIds The IDs of the Amazon Web Services accounts for which to export instance
 #' recommendations.
@@ -338,7 +338,7 @@ computeoptimizer_export_ec2_instance_recommendations <- function(accountIds = NU
 #' @description
 #' Exports optimization recommendations for Amazon ECS services on Fargate.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/export_ecs_service_recommendations.html](https://paws-r.github.io/docs/computeoptimizer/export_ecs_service_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_export_ecs_service_recommendations/](https://www.paws-r-sdk.com/docs/computeoptimizer_export_ecs_service_recommendations/) for full documentation.
 #'
 #' @param accountIds The Amazon Web Services account IDs for the export Amazon ECS service
 #' recommendations.
@@ -407,7 +407,7 @@ computeoptimizer_export_ecs_service_recommendations <- function(accountIds = NUL
 #' @description
 #' Exports optimization recommendations for Lambda functions.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/export_lambda_function_recommendations.html](https://paws-r.github.io/docs/computeoptimizer/export_lambda_function_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_export_lambda_function_recommendations/](https://www.paws-r-sdk.com/docs/computeoptimizer_export_lambda_function_recommendations/) for full documentation.
 #'
 #' @param accountIds The IDs of the Amazon Web Services accounts for which to export Lambda
 #' function recommendations.
@@ -478,7 +478,7 @@ computeoptimizer_export_lambda_function_recommendations <- function(accountIds =
 #' @description
 #' Returns Auto Scaling group recommendations.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/get_auto_scaling_group_recommendations.html](https://paws-r.github.io/docs/computeoptimizer/get_auto_scaling_group_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_get_auto_scaling_group_recommendations/](https://www.paws-r-sdk.com/docs/computeoptimizer_get_auto_scaling_group_recommendations/) for full documentation.
 #'
 #' @param accountIds The ID of the Amazon Web Services account for which to return Auto
 #' Scaling group recommendations.
@@ -527,7 +527,7 @@ computeoptimizer_get_auto_scaling_group_recommendations <- function(accountIds =
 #' @description
 #' Returns Amazon Elastic Block Store (Amazon EBS) volume recommendations.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/get_ebs_volume_recommendations.html](https://paws-r.github.io/docs/computeoptimizer/get_ebs_volume_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_get_ebs_volume_recommendations/](https://www.paws-r-sdk.com/docs/computeoptimizer_get_ebs_volume_recommendations/) for full documentation.
 #'
 #' @param volumeArns The Amazon Resource Name (ARN) of the volumes for which to return
 #' recommendations.
@@ -573,7 +573,7 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #' @description
 #' Returns Amazon EC2 instance recommendations.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/get_ec2_instance_recommendations.html](https://paws-r.github.io/docs/computeoptimizer/get_ec2_instance_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_get_ec2_instance_recommendations/](https://www.paws-r-sdk.com/docs/computeoptimizer_get_ec2_instance_recommendations/) for full documentation.
 #'
 #' @param instanceArns The Amazon Resource Name (ARN) of the instances for which to return
 #' recommendations.
@@ -622,7 +622,7 @@ computeoptimizer_get_ec2_instance_recommendations <- function(instanceArns = NUL
 #' @description
 #' Returns the projected utilization metrics of Amazon EC2 instance recommendations.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/get_ec2_recommendation_projected_metrics.html](https://paws-r.github.io/docs/computeoptimizer/get_ec2_recommendation_projected_metrics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_get_ec2_recommendation_projected_metrics/](https://www.paws-r-sdk.com/docs/computeoptimizer_get_ec2_recommendation_projected_metrics/) for full documentation.
 #'
 #' @param instanceArn &#91;required&#93; The Amazon Resource Name (ARN) of the instances for which to return
 #' recommendation projected metrics.
@@ -658,7 +658,7 @@ computeoptimizer_get_ec2_recommendation_projected_metrics <- function(instanceAr
 #' @description
 #' Returns the projected metrics of Amazon ECS service recommendations.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/get_ecs_service_recommendation_projected_metrics.html](https://paws-r.github.io/docs/computeoptimizer/get_ecs_service_recommendation_projected_metrics.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_get_ecs_service_recommendation_projected_metrics/](https://www.paws-r-sdk.com/docs/computeoptimizer_get_ecs_service_recommendation_projected_metrics/) for full documentation.
 #'
 #' @param serviceArn &#91;required&#93; The ARN that identifies the Amazon ECS service.
 #' 
@@ -695,7 +695,7 @@ computeoptimizer_get_ecs_service_recommendation_projected_metrics <- function(se
 #' @description
 #' Returns Amazon ECS service recommendations.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/get_ecs_service_recommendations.html](https://paws-r.github.io/docs/computeoptimizer/get_ecs_service_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_get_ecs_service_recommendations/](https://www.paws-r-sdk.com/docs/computeoptimizer_get_ecs_service_recommendations/) for full documentation.
 #'
 #' @param serviceArns The ARN that identifies the Amazon ECS service.
 #' 
@@ -746,7 +746,7 @@ computeoptimizer_get_ecs_service_recommendations <- function(serviceArns = NULL,
 #' @description
 #' Returns the recommendation preferences that are in effect for a given resource, such as enhanced infrastructure metrics. Considers all applicable preferences that you might have set at the resource, account, and organization level.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/get_effective_recommendation_preferences.html](https://paws-r.github.io/docs/computeoptimizer/get_effective_recommendation_preferences.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_get_effective_recommendation_preferences/](https://www.paws-r-sdk.com/docs/computeoptimizer_get_effective_recommendation_preferences/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which to confirm
 #' effective recommendation preferences. Only EC2 instance and Auto Scaling
@@ -778,7 +778,7 @@ computeoptimizer_get_effective_recommendation_preferences <- function(resourceAr
 #' @description
 #' Returns the enrollment (opt in) status of an account to the Compute Optimizer service.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/get_enrollment_status.html](https://paws-r.github.io/docs/computeoptimizer/get_enrollment_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_get_enrollment_status/](https://www.paws-r-sdk.com/docs/computeoptimizer_get_enrollment_status/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -806,7 +806,7 @@ computeoptimizer_get_enrollment_status <- function() {
 #' @description
 #' Returns the Compute Optimizer enrollment (opt-in) status of organization member accounts, if your account is an organization management account.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/get_enrollment_statuses_for_organization.html](https://paws-r.github.io/docs/computeoptimizer/get_enrollment_statuses_for_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_get_enrollment_statuses_for_organization/](https://www.paws-r-sdk.com/docs/computeoptimizer_get_enrollment_statuses_for_organization/) for full documentation.
 #'
 #' @param filters An array of objects to specify a filter that returns a more specific
 #' list of account enrollment statuses.
@@ -826,7 +826,7 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
     name = "GetEnrollmentStatusesForOrganization",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accountEnrollmentStatuses")
   )
   input <- .computeoptimizer$get_enrollment_statuses_for_organization_input(filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_enrollment_statuses_for_organization_output()
@@ -843,7 +843,7 @@ computeoptimizer_get_enrollment_statuses_for_organization <- function(filters = 
 #' @description
 #' Returns Lambda function recommendations.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/get_lambda_function_recommendations.html](https://paws-r.github.io/docs/computeoptimizer/get_lambda_function_recommendations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_get_lambda_function_recommendations/](https://www.paws-r-sdk.com/docs/computeoptimizer_get_lambda_function_recommendations/) for full documentation.
 #'
 #' @param functionArns The Amazon Resource Name (ARN) of the functions for which to return
 #' recommendations.
@@ -881,7 +881,7 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
     name = "GetLambdaFunctionRecommendations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "lambdaFunctionRecommendations")
   )
   input <- .computeoptimizer$get_lambda_function_recommendations_input(functionArns = functionArns, accountIds = accountIds, filters = filters, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_lambda_function_recommendations_output()
@@ -899,7 +899,7 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
 #' @description
 #' Returns existing recommendation preferences, such as enhanced infrastructure metrics.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/get_recommendation_preferences.html](https://paws-r.github.io/docs/computeoptimizer/get_recommendation_preferences.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_get_recommendation_preferences/](https://www.paws-r-sdk.com/docs/computeoptimizer_get_recommendation_preferences/) for full documentation.
 #'
 #' @param resourceType &#91;required&#93; The target resource type of the recommendation preference for which to
 #' return preferences.
@@ -934,7 +934,7 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
     name = "GetRecommendationPreferences",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationPreferencesDetails")
   )
   input <- .computeoptimizer$get_recommendation_preferences_input(resourceType = resourceType, scope = scope, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_recommendation_preferences_output()
@@ -951,7 +951,7 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
 #' @description
 #' Returns the optimization findings for an account.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/get_recommendation_summaries.html](https://paws-r.github.io/docs/computeoptimizer/get_recommendation_summaries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_get_recommendation_summaries/](https://www.paws-r-sdk.com/docs/computeoptimizer_get_recommendation_summaries/) for full documentation.
 #'
 #' @param accountIds The ID of the Amazon Web Services account for which to return
 #' recommendation summaries.
@@ -976,7 +976,7 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
     name = "GetRecommendationSummaries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "recommendationSummaries")
   )
   input <- .computeoptimizer$get_recommendation_summaries_input(accountIds = accountIds, nextToken = nextToken, maxResults = maxResults)
   output <- .computeoptimizer$get_recommendation_summaries_output()
@@ -994,7 +994,7 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' @description
 #' Creates a new recommendation preference or updates an existing recommendation preference, such as enhanced infrastructure metrics.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/put_recommendation_preferences.html](https://paws-r.github.io/docs/computeoptimizer/put_recommendation_preferences.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_put_recommendation_preferences/](https://www.paws-r-sdk.com/docs/computeoptimizer_put_recommendation_preferences/) for full documentation.
 #'
 #' @param resourceType &#91;required&#93; The target resource type of the recommendation preference to create.
 #' 
@@ -1085,7 +1085,7 @@ computeoptimizer_put_recommendation_preferences <- function(resourceType, scope 
 #' @description
 #' Updates the enrollment (opt in and opt out) status of an account to the Compute Optimizer service.
 #'
-#' See [https://paws-r.github.io/docs/computeoptimizer/update_enrollment_status.html](https://paws-r.github.io/docs/computeoptimizer/update_enrollment_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/computeoptimizer_update_enrollment_status/](https://www.paws-r-sdk.com/docs/computeoptimizer_update_enrollment_status/) for full documentation.
 #'
 #' @param status &#91;required&#93; The new enrollment status of the account.
 #' 

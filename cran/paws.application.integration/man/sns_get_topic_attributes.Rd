@@ -12,6 +12,6 @@ sns_get_topic_attributes(TopicArn)
 \description{
 Returns all of the properties of a topic. Topic properties returned might differ based on the authorization of the user.
 
-See \url{https://paws-r.github.io/docs/sns/get_topic_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_get_topic_attributes/} for full documentation.
 }
 \keyword{internal}

@@ -33,6 +33,6 @@ next set of results.}
 \description{
 For a specified resource ID, this API operation returns a list of compliance statuses for different resource types. Currently, you can only specify one resource ID per call. List results depend on the criteria specified in the filter.
 
-See \url{https://paws-r.github.io/docs/ssm/list_compliance_items.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_list_compliance_items/} for full documentation.
 }
 \keyword{internal}

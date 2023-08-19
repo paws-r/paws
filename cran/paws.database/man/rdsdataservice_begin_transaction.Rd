@@ -23,6 +23,6 @@ rdsdataservice_begin_transaction(
 \description{
 Starts a SQL transaction.
 
-See \url{https://paws-r.github.io/docs/rdsdataservice/begin_transaction.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rdsdataservice_begin_transaction/} for full documentation.
 }
 \keyword{internal}

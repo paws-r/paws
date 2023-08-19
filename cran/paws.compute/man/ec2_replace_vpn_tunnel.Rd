@@ -26,6 +26,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Trigger replacement of specified VPN tunnel.
 
-See \url{https://paws-r.github.io/docs/ec2/replace_vpn_tunnel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_replace_vpn_tunnel/} for full documentation.
 }
 \keyword{internal}

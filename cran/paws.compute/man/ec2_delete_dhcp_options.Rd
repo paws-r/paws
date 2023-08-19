@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified set of DHCP options. You must disassociate the set of DHCP options before you can delete it. You can disassociate the set of DHCP options by associating either a new set of options or the default set of options with the VPC.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_dhcp_options.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_dhcp_options/} for full documentation.
 }
 \keyword{internal}

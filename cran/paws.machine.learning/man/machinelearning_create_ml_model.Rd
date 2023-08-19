@@ -85,6 +85,6 @@ a default.}
 \description{
 Creates a new \code{MLModel} using the \code{DataSource} and the recipe as information sources.
 
-See \url{https://paws-r.github.io/docs/machinelearning/create_ml_model.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/machinelearning_create_ml_model/} for full documentation.
 }
 \keyword{internal}

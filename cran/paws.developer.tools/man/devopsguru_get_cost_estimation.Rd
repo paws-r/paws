@@ -14,6 +14,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Returns an estimate of the monthly cost for DevOps Guru to analyze your Amazon Web Services resources. For more information, see \href{https://docs.aws.amazon.com/devops-guru/latest/userguide/cost-estimate.html}{Estimate your Amazon DevOps Guru costs} and \href{https://aws.amazon.com/devops-guru/pricing/}{Amazon DevOps Guru pricing}.
 
-See \url{https://paws-r.github.io/docs/devopsguru/get_cost_estimation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_get_cost_estimation/} for full documentation.
 }
 \keyword{internal}

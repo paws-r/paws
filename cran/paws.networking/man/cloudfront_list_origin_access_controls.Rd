@@ -20,6 +20,6 @@ response.}
 \description{
 Gets the list of CloudFront origin access controls in this Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_origin_access_controls.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_origin_access_controls/} for full documentation.
 }
 \keyword{internal}

@@ -2,17 +2,17 @@
 % Please edit documentation in R/healthlake_operations.R
 \name{healthlake_list_tags_for_resource}
 \alias{healthlake_list_tags_for_resource}
-\title{Returns a list of all existing tags associated with a Data Store}
+\title{Returns a list of all existing tags associated with a data store}
 \usage{
 healthlake_list_tags_for_resource(ResourceARN)
 }
 \arguments{
-\item{ResourceARN}{[required] The Amazon Resource Name(ARN) of the Data Store for which tags are being
+\item{ResourceARN}{[required] The Amazon Resource Name(ARN) of the data store for which tags are being
 added.}
 }
 \description{
-Returns a list of all existing tags associated with a Data Store.
+Returns a list of all existing tags associated with a data store.
 
-See \url{https://paws-r.github.io/docs/healthlake/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/healthlake_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

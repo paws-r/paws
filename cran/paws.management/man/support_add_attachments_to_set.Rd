@@ -24,6 +24,6 @@ attachment, such as \code{troubleshoot-screenshot.png}.}
 \description{
 Adds one or more attachments to an attachment set.
 
-See \url{https://paws-r.github.io/docs/support/add_attachments_to_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/support_add_attachments_to_set/} for full documentation.
 }
 \keyword{internal}

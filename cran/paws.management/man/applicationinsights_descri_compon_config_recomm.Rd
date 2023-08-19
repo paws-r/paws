@@ -7,7 +7,8 @@
 applicationinsights_describe_component_configuration_recommendation(
   ResourceGroupName,
   ComponentName,
-  Tier
+  Tier,
+  RecommendationType = NULL
 )
 }
 \arguments{
@@ -16,10 +17,12 @@ applicationinsights_describe_component_configuration_recommendation(
 \item{ComponentName}{[required] The name of the component.}
 
 \item{Tier}{[required] The tier of the application component.}
+
+\item{RecommendationType}{The recommended configuration type.}
 }
 \description{
 Describes the recommended monitoring configuration of the component.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/describe_component_configuration_recommendation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_describe_component_configuration_recommendation/} for full documentation.
 }
 \keyword{internal}

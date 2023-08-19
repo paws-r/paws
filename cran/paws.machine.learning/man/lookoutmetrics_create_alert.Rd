@@ -35,6 +35,6 @@ DimensionFilterList.}
 \description{
 Creates an alert for an anomaly detector.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/create_alert.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_create_alert/} for full documentation.
 }
 \keyword{internal}

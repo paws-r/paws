@@ -12,6 +12,6 @@ frauddetector_delete_detector(detectorId)
 \description{
 Deletes the detector. Before deleting a detector, you must first delete all detector versions and rule versions associated with the detector.
 
-See \url{https://paws-r.github.io/docs/frauddetector/delete_detector.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_delete_detector/} for full documentation.
 }
 \keyword{internal}

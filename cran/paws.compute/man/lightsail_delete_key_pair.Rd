@@ -18,6 +18,6 @@ delete a Lightsail default key pair.}
 \description{
 Deletes the specified key pair by removing the public key from Amazon Lightsail.
 
-See \url{https://paws-r.github.io/docs/lightsail/delete_key_pair.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_delete_key_pair/} for full documentation.
 }
 \keyword{internal}

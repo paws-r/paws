@@ -12,6 +12,6 @@ sagemaker_delete_trial(TrialName)
 \description{
 Deletes the specified trial. All trial components that make up the trial must be deleted first. Use the \code{\link[=sagemaker_describe_trial_component]{describe_trial_component}} API to get the list of trial components.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_trial.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_trial/} for full documentation.
 }
 \keyword{internal}

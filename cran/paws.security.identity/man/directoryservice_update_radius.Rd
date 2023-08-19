@@ -17,6 +17,6 @@ server.}
 \description{
 Updates the Remote Authentication Dial In User Service (RADIUS) server information for an AD Connector or Microsoft AD directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/update_radius.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_update_radius/} for full documentation.
 }
 \keyword{internal}

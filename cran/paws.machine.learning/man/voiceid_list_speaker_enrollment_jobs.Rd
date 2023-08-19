@@ -29,6 +29,6 @@ arguments unchanged. Each pagination token expires after 24 hours.}
 \description{
 Lists all the speaker enrollment jobs in the domain with the specified \code{JobStatus}. If \code{JobStatus} is not provided, this lists all jobs with all possible speaker enrollment job statuses.
 
-See \url{https://paws-r.github.io/docs/voiceid/list_speaker_enrollment_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_list_speaker_enrollment_jobs/} for full documentation.
 }
 \keyword{internal}

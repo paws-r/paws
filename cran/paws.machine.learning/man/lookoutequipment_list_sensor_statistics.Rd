@@ -28,6 +28,6 @@ sensor statistics.}
 \description{
 Lists statistics about the data collected for each of the sensors that have been successfully ingested in the particular dataset. Can also be used to retreive Sensor Statistics for a previous ingestion job.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/list_sensor_statistics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_list_sensor_statistics/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ tags.}
 \description{
 Removes tags from the resource.
 
-See \url{https://paws-r.github.io/docs/backupgateway/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backupgateway_untag_resource/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Disassociates an IAM role from an Certificate Manager (ACM) certificate. Disassociating an IAM role from an ACM certificate removes the Amazon S3 object that contains the certificate, certificate chain, and encrypted private key from the Amazon S3 bucket. It also revokes the IAM role's permission to use the KMS key used to encrypt the private key. This effectively revokes the role's permission to use the certificate.
 
-See \url{https://paws-r.github.io/docs/ec2/disassociate_enclave_certificate_iam_role.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_disassociate_enclave_certificate_iam_role/} for full documentation.
 }
 \keyword{internal}

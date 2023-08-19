@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the specified Traffic Mirror session.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_traffic_mirror_session.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_traffic_mirror_session/} for full documentation.
 }
 \keyword{internal}

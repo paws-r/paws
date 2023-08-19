@@ -15,6 +15,6 @@ configuration identity to delete. For example: \code{E2QWRUHAPOMQZL}.}
 \description{
 Remove a field-level encryption configuration.
 
-See \url{https://paws-r.github.io/docs/cloudfront/delete_field_level_encryption_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_delete_field_level_encryption_config/} for full documentation.
 }
 \keyword{internal}

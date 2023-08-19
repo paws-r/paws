@@ -20,6 +20,6 @@ glue_list_data_quality_rule_recommendation_runs(
 \description{
 Lists the recommendation runs meeting the filter criteria.
 
-See \url{https://paws-r.github.io/docs/glue/list_data_quality_rule_recommendation_runs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_list_data_quality_rule_recommendation_runs/} for full documentation.
 }
 \keyword{internal}

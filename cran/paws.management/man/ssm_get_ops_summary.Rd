@@ -34,6 +34,6 @@ next set of results.}
 \description{
 View a summary of operations metadata (OpsData) based on specified filters and aggregators. OpsData can include information about Amazon Web Services Systems Manager OpsCenter operational workitems (OpsItems) as well as information about any Amazon Web Services resource or service configured to report OpsData to Amazon Web Services Systems Manager Explorer.
 
-See \url{https://paws-r.github.io/docs/ssm/get_ops_summary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_get_ops_summary/} for full documentation.
 }
 \keyword{internal}

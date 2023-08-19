@@ -17,6 +17,6 @@ results.}
 \description{
 List EULA acceptances.
 
-See \url{https://paws-r.github.io/docs/nimblestudio/list_eula_acceptances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/nimblestudio_list_eula_acceptances/} for full documentation.
 }
 \keyword{internal}

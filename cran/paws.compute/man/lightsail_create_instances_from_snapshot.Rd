@@ -116,6 +116,6 @@ Developer Guide.
 \description{
 Creates one or more new instances from a manual or automatic snapshot of an instance.
 
-See \url{https://paws-r.github.io/docs/lightsail/create_instances_from_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_create_instances_from_snapshot/} for full documentation.
 }
 \keyword{internal}

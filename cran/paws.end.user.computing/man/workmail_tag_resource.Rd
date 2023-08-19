@@ -15,6 +15,6 @@ workmail_tag_resource(ResourceARN, Tags)
 \description{
 Applies the specified tags to the specified WorkMailorganization resource.
 
-See \url{https://paws-r.github.io/docs/workmail/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_tag_resource/} for full documentation.
 }
 \keyword{internal}

@@ -8,7 +8,8 @@ kms_generate_data_key_pair_without_plaintext(
   EncryptionContext = NULL,
   KeyId,
   KeyPairSpec,
-  GrantTokens = NULL
+  GrantTokens = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -68,10 +69,15 @@ a new grant that has not yet achieved \emph{eventual consistency}. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
 and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token}{Using a grant token}
 in the \emph{Key Management Service Developer Guide}.}
+
+\item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
+
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html}{Testing your KMS API calls}
+in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Returns a unique asymmetric data key pair for use outside of KMS. This operation returns a plaintext public key and a copy of the private key that is encrypted under the symmetric encryption KMS key you specify. Unlike \code{\link[=kms_generate_data_key_pair]{generate_data_key_pair}}, this operation does not return a plaintext private key. The bytes in the keys are random; they are not related to the caller or to the KMS key that is used to encrypt the private key.
 
-See \url{https://paws-r.github.io/docs/kms/generate_data_key_pair_without_plaintext.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_generate_data_key_pair_without_plaintext/} for full documentation.
 }
 \keyword{internal}

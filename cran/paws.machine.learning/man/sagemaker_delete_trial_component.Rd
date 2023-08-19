@@ -12,6 +12,6 @@ sagemaker_delete_trial_component(TrialComponentName)
 \description{
 Deletes the specified trial component. A trial component must be disassociated from all trials before the trial component can be deleted. To disassociate a trial component from a trial, call the \code{\link[=sagemaker_disassociate_trial_component]{disassociate_trial_component}} API.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_trial_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_trial_component/} for full documentation.
 }
 \keyword{internal}

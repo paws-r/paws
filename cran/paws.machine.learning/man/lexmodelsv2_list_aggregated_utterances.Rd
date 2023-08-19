@@ -53,6 +53,6 @@ parameter, a token is returned in the response. Use that token in the
 \description{
 Provides a list of utterances that users have sent to the bot.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/list_aggregated_utterances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_list_aggregated_utterances/} for full documentation.
 }
 \keyword{internal}

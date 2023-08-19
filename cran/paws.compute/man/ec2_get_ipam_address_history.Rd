@@ -44,6 +44,6 @@ page. Defaults to 100.}
 \description{
 Retrieve historical information about a CIDR within an IPAM scope. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/ipam/view-history-cidr-ipam.html}{View the history of IP addresses} in the \emph{Amazon VPC IPAM User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/get_ipam_address_history.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_ipam_address_history/} for full documentation.
 }
 \keyword{internal}

@@ -25,6 +25,6 @@ ValidationException error occurs. The default value is 5.}
 \description{
 Gets a list of the project policies attached to a project.
 
-See \url{https://paws-r.github.io/docs/rekognition/list_project_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_list_project_policies/} for full documentation.
 }
 \keyword{internal}

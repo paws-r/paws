@@ -96,7 +96,7 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{RequestPayer}{}
@@ -110,6 +110,6 @@ different account, the request fails with the HTTP status code
 \description{
 Uses the \code{acl} subresource to set the access control list (ACL) permissions for a new or existing object in an S3 bucket. You must have \code{WRITE_ACP} permission to set the ACL of an object. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#permissions}{What permissions can I grant?} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3/put_object_acl.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_object_acl/} for full documentation.
 }
 \keyword{internal}

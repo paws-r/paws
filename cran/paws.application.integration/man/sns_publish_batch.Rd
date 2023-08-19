@@ -16,6 +16,6 @@ sent to the SNS topic.}
 \description{
 Publishes up to ten messages to the specified topic. This is a batch version of \code{\link[=sns_publish]{publish}}. For FIFO topics, multiple messages within a single batch are published in the order they are sent, and messages are deduplicated within the batch and across batches for 5 minutes.
 
-See \url{https://paws-r.github.io/docs/sns/publish_batch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_publish_batch/} for full documentation.
 }
 \keyword{internal}

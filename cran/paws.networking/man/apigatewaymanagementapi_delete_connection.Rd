@@ -12,6 +12,6 @@ apigatewaymanagementapi_delete_connection(ConnectionId)
 \description{
 Delete the connection with the provided id.
 
-See \url{https://paws-r.github.io/docs/apigatewaymanagementapi/delete_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewaymanagementapi_delete_connection/} for full documentation.
 }
 \keyword{internal}

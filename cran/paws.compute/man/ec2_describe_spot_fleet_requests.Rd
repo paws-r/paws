@@ -30,6 +30,6 @@ This value is \code{null} when there are no more items to return.}
 \description{
 Describes your Spot Fleet requests.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_spot_fleet_requests.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_spot_fleet_requests/} for full documentation.
 }
 \keyword{internal}

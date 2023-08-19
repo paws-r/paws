@@ -12,6 +12,6 @@ prometheusservice_describe_workspace(workspaceId)
 \description{
 Describes an existing AMP workspace.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/describe_workspace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_describe_workspace/} for full documentation.
 }
 \keyword{internal}

@@ -65,32 +65,34 @@ For information on Amazon Web Services Regions and Availability Zones,
 see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Concepts.RegionsAndAvailabilityZones.html}{Choosing the Regions and Availability Zones}
 in the \emph{Amazon Aurora User Guide}.
 
-Valid for: Aurora DB clusters only}
+Valid for Cluster Type: Aurora DB clusters only}
 
 \item{BackupRetentionPeriod}{The number of days for which automated backups are retained.
 
-Default: 1
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
+Default: \code{1}
 
 Constraints:
 \itemize{
-\item Must be a value from 1 to 35
-}
+\item Must be a value from 1 to 35.
+}}
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+\item{CharacterSetName}{The name of the character set (\code{CharacterSet}) to associate the DB
+cluster with.
 
-\item{CharacterSetName}{A value that indicates that the DB cluster should be associated with the
-specified CharacterSet.
-
-Valid for: Aurora DB clusters only}
+Valid for Cluster Type: Aurora DB clusters only}
 
 \item{DatabaseName}{The name for your database of up to 64 alphanumeric characters. If you
-do not provide a name, Amazon RDS doesn't create a database in the DB
+don't provide a name, Amazon RDS doesn't create a database in the DB
 cluster you are creating.
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{DBClusterIdentifier}{[required] The DB cluster identifier. This parameter is stored as a lowercase
-string.
+\item{DBClusterIdentifier}{[required] The identifier for this DB cluster. This parameter is stored as a
+lowercase string.
+
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
 Constraints:
 \itemize{
@@ -99,48 +101,43 @@ Constraints:
 \item Can't end with a hyphen or contain two consecutive hyphens.
 }
 
-Example: \code{my-cluster1}
-
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+Example: \code{my-cluster1}}
 
 \item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to associate with this DB
-cluster. If you do not specify a value, then the default DB cluster
+cluster. If you don't specify a value, then the default DB cluster
 parameter group for the specified DB engine and version is used.
+
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
 Constraints:
 \itemize{
 \item If supplied, must match the name of an existing DB cluster parameter
 group.
-}
-
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+}}
 
 \item{VpcSecurityGroupIds}{A list of EC2 VPC security groups to associate with this DB cluster.
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{DBSubnetGroupName}{A DB subnet group to associate with this DB cluster.
 
 This setting is required to create a Multi-AZ DB cluster.
 
-Constraints: Must match the name of an existing DBSubnetGroup. Must not
-be default.
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
-Example: \code{mydbsubnetgroup}
-
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
-
-\item{Engine}{[required] The name of the database engine to be used for this DB cluster.
-
-Valid Values:
+Constraints:
 \itemize{
-\item \code{aurora-mysql}
-\item \code{aurora-postgresql}
-\item \code{mysql}
-\item \code{postgres}
+\item Must match the name of an existing DB subnet group.
+\item Must not be \code{default}.
 }
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+Example: \code{mydbsubnetgroup}}
+
+\item{Engine}{[required] The database engine to use for this DB cluster.
+
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
+Valid Values: \code{aurora-mysql | aurora-postgresql | mysql | postgres}}
 
 \item{EngineVersion}{The version number of the database engine to use.
 
@@ -168,69 +165,56 @@ the following command:
 
 \verb{aws rds describe-db-engine-versions --engine postgres --query "DBEngineVersions[].EngineVersion"}
 
-\strong{Aurora MySQL}
-
-For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html}{Database engine updates for Amazon Aurora MySQL}
+For information about a specific engine, see the following topics:
+\itemize{
+\item Aurora MySQL - see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraMySQL.Updates.html}{Database engine updates for Amazon Aurora MySQL}
 in the \emph{Amazon Aurora User Guide}.
-
-\strong{Aurora PostgreSQL}
-
-For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Updates.20180305.html}{Amazon Aurora PostgreSQL releases and engine versions}
+\item Aurora PostgreSQL - see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/AuroraPostgreSQL.Updates.20180305.html}{Amazon Aurora PostgreSQL releases and engine versions}
 in the \emph{Amazon Aurora User Guide}.
-
-\strong{MySQL}
-
-For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt}{Amazon RDS for MySQL}
+\item RDS for MySQL - see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_MySQL.html#MySQL.Concepts.VersionMgmt}{Amazon RDS for MySQL}
 in the \emph{Amazon RDS User Guide}.
-
-\strong{PostgreSQL}
-
-For information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts}{Amazon RDS for PostgreSQL}
+\item RDS for PostgreSQL - see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html#PostgreSQL.Concepts}{Amazon RDS for PostgreSQL}
 in the \emph{Amazon RDS User Guide}.
+}
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{Port}{The port number on which the instances in the DB cluster accept
 connections.
 
-\strong{RDS for MySQL and Aurora MySQL}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
-Default: \code{3306}
+Valid Values: \code{1150-65535}
 
-Valid values: \code{1150-65535}
-
-\strong{RDS for PostgreSQL and Aurora PostgreSQL}
-
-Default: \code{5432}
-
-Valid values: \code{1150-65535}
-
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+Default:
+\itemize{
+\item RDS for MySQL and Aurora MySQL - \code{3306}
+\item RDS for PostgreSQL and Aurora PostgreSQL - \code{5432}
+}}
 
 \item{MasterUsername}{The name of the master user for the DB cluster.
+
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
 Constraints:
 \itemize{
 \item Must be 1 to 16 letters or numbers.
 \item First character must be a letter.
 \item Can't be a reserved word for the chosen database engine.
-}
+}}
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+\item{MasterUserPassword}{The password for the master database user.
 
-\item{MasterUserPassword}{The password for the master database user. This password can contain any
-printable ASCII character except "/", """, or "@".
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
 Constraints:
 \itemize{
 \item Must contain from 8 to 41 characters.
+\item Can contain any printable ASCII character except "/", """, or "@".
 \item Can't be specified if \code{ManageMasterUserPassword} is turned on.
-}
+}}
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
-
-\item{OptionGroupName}{A value that indicates that the DB cluster should be associated with the
-specified option group.
+\item{OptionGroupName}{The option group to associate the DB cluster with.
 
 DB clusters are associated with a default option group that can't be
 modified.}
@@ -238,6 +222,8 @@ modified.}
 \item{PreferredBackupWindow}{The daily time range during which automated backups are created if
 automated backups are enabled using the \code{BackupRetentionPeriod}
 parameter.
+
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each Amazon Web Services Region. To view the time
@@ -250,38 +236,37 @@ Constraints:
 \item Must be in Universal Coordinated Time (UTC).
 \item Must not conflict with the preferred maintenance window.
 \item Must be at least 30 minutes.
-}
+}}
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+\item{PreferredMaintenanceWindow}{The weekly time range during which system maintenance can occur.
 
-\item{PreferredMaintenanceWindow}{The weekly time range during which system maintenance can occur, in
-Universal Coordinated Time (UTC).
-
-Format: \code{ddd:hh24:mi-ddd:hh24:mi}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each Amazon Web Services Region, occurring on a random
 day of the week. To see the time blocks available, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_UpgradeDBInstance.Maintenance.html#AdjustingTheMaintenanceWindow.Aurora}{Adjusting the Preferred DB Cluster Maintenance Window}
 in the \emph{Amazon Aurora User Guide}.
 
-Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
-
-Constraints: Minimum 30-minute window.
-
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+Constraints:
+\itemize{
+\item Must be in the format \code{ddd:hh24:mi-ddd:hh24:mi}.
+\item Days must be one of \code{Mon | Tue | Wed | Thu | Fri | Sat | Sun}.
+\item Must be in Universal Coordinated Time (UTC).
+\item Must be at least 30 minutes.
+}}
 
 \item{ReplicationSourceIdentifier}{The Amazon Resource Name (ARN) of the source DB instance or DB cluster
 if this DB cluster is created as a read replica.
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{Tags}{Tags to assign to the DB cluster.
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{StorageEncrypted}{A value that indicates whether the DB cluster is encrypted.
+\item{StorageEncrypted}{Specifies whether the DB cluster is encrypted.
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{KmsKeyId}{The Amazon Web Services KMS key identifier for an encrypted DB cluster.
 
@@ -292,11 +277,11 @@ Amazon Web Services account, specify the key ARN or alias ARN.
 When a KMS key isn't specified in \code{KmsKeyId}:
 \itemize{
 \item If \code{ReplicationSourceIdentifier} identifies an encrypted source,
-then Amazon RDS will use the KMS key used to encrypt the source.
-Otherwise, Amazon RDS will use your default KMS key.
+then Amazon RDS uses the KMS key used to encrypt the source.
+Otherwise, Amazon RDS uses your default KMS key.
 \item If the \code{StorageEncrypted} parameter is enabled and
-\code{ReplicationSourceIdentifier} isn't specified, then Amazon RDS will
-use your default KMS key.
+\code{ReplicationSourceIdentifier} isn't specified, then Amazon RDS uses
+your default KMS key.
 }
 
 There is a default KMS key for your Amazon Web Services account. Your
@@ -304,12 +289,12 @@ Amazon Web Services account has a different default KMS key for each
 Amazon Web Services Region.
 
 If you create a read replica of an encrypted DB cluster in another
-Amazon Web Services Region, you must set \code{KmsKeyId} to a KMS key
+Amazon Web Services Region, make sure to set \code{KmsKeyId} to a KMS key
 identifier that is valid in the destination Amazon Web Services Region.
 This KMS key is used to encrypt the read replica in that Amazon Web
 Services Region.
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{PreSignedUrl}{When you are replicating a DB cluster from one Amazon Web Services
 GovCloud (US) Region to another, an URL that contains a Signature
@@ -353,52 +338,45 @@ specifying \code{PreSignedUrl} manually. Specifying \code{SourceRegion}
 autogenerates a presigned URL that is a valid request for the operation
 that can run in the source Amazon Web Services Region.
 
-Valid for: Aurora DB clusters only
+Valid for Cluster Type: Aurora DB clusters only
 
 If you supply a value for this operation's \code{SourceRegion} parameter, a
 pre-signed URL will be calculated on your behalf.}
 
-\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of Amazon Web Services
-Identity and Access Management (IAM) accounts to database accounts. By
-default, mapping isn't enabled.
+\item{EnableIAMDatabaseAuthentication}{Specifies whether to enable mapping of Amazon Web Services Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping isn't enabled.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication}
 in the \emph{Amazon Aurora User Guide}.
 
-Valid for: Aurora DB clusters only}
+Valid for Cluster Type: Aurora DB clusters only}
 
 \item{BacktrackWindow}{The target backtrack window, in seconds. To disable backtracking, set
-this value to 0.
+this value to \code{0}.
 
-Default: 0
+Valid for Cluster Type: Aurora MySQL DB clusters only
+
+Default: \code{0}
 
 Constraints:
 \itemize{
 \item If specified, this value must be set to a number from 0 to 259,200
 (72 hours).
-}
-
-Valid for: Aurora MySQL DB clusters only}
+}}
 
 \item{EnableCloudwatchLogsExports}{The list of log types that need to be enabled for exporting to
-CloudWatch Logs. The values in the list depend on the DB engine being
-used.
+CloudWatch Logs.
 
-\strong{RDS for MySQL}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
-Possible values are \code{error}, \code{general}, and \code{slowquery}.
-
-\strong{RDS for PostgreSQL}
-
-Possible values are \code{postgresql} and \code{upgrade}.
-
-\strong{Aurora MySQL}
-
-Possible values are \code{audit}, \code{error}, \code{general}, and \code{slowquery}.
-
-\strong{Aurora PostgreSQL}
-
-Possible value is \code{postgresql}.
+The following values are valid for each DB engine:
+\itemize{
+\item Aurora MySQL - \code{audit | error | general | slowquery}
+\item Aurora PostgreSQL - \code{postgresql}
+\item RDS for MySQL - \code{error | general | slowquery}
+\item RDS for PostgreSQL - \code{postgresql | upgrade}
+}
 
 For more information about exporting CloudWatch Logs for Amazon RDS, see
 \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
@@ -406,9 +384,7 @@ in the \emph{Amazon RDS User Guide}.
 
 For more information about exporting CloudWatch Logs for Amazon Aurora,
 see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
-in the \emph{Amazon Aurora User Guide}.
-
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+in the \emph{Amazon Aurora User Guide}.}
 
 \item{EngineMode}{The DB engine mode of the DB cluster, either \code{provisioned} or
 \code{serverless}.
@@ -423,26 +399,26 @@ clusters, see the following sections in the \emph{Amazon Aurora User Guide}:
 \item \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.requirements.html}{Requirements for Aurora Serverless v2}
 }
 
-Valid for: Aurora DB clusters only}
+Valid for Cluster Type: Aurora DB clusters only}
 
 \item{ScalingConfiguration}{For DB clusters in \code{serverless} DB engine mode, the scaling properties
 of the DB cluster.
 
-Valid for: Aurora DB clusters only}
+Valid for Cluster Type: Aurora DB clusters only}
 
-\item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
-enabled. The database can't be deleted when deletion protection is
-enabled. By default, deletion protection isn't enabled.
+\item{DeletionProtection}{Specifies whether the DB cluster has deletion protection enabled. The
+database can't be deleted when deletion protection is enabled. By
+default, deletion protection isn't enabled.
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{GlobalClusterIdentifier}{The global cluster ID of an Aurora cluster that becomes the primary
 cluster in the new global database cluster.
 
-Valid for: Aurora DB clusters only}
+Valid for Cluster Type: Aurora DB clusters only}
 
-\item{EnableHttpEndpoint}{A value that indicates whether to enable the HTTP endpoint for an Aurora
-Serverless v1 DB cluster. By default, the HTTP endpoint is disabled.
+\item{EnableHttpEndpoint}{Specifies whether to enable the HTTP endpoint for an Aurora Serverless
+v1 DB cluster. By default, the HTTP endpoint is disabled.
 
 When enabled, the HTTP endpoint provides a connectionless web service
 API for running SQL queries on the Aurora Serverless v1 DB cluster. You
@@ -452,12 +428,12 @@ editor.
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html}{Using the Data API for Aurora Serverless v1}
 in the \emph{Amazon Aurora User Guide}.
 
-Valid for: Aurora DB clusters only}
+Valid for Cluster Type: Aurora DB clusters only}
 
-\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the DB cluster to
-snapshots of the DB cluster. The default is not to copy them.
+\item{CopyTagsToSnapshot}{Specifies whether to copy all tags from the DB cluster to snapshots of
+the DB cluster. The default is not to copy them.
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{Domain}{The Active Directory directory ID to create the DB cluster in.
 
@@ -467,31 +443,30 @@ authentication to authenticate users that connect to the DB cluster.
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/database-authentication.html}{Kerberos authentication}
 in the \emph{Amazon Aurora User Guide}.
 
-Valid for: Aurora DB clusters only}
+Valid for Cluster Type: Aurora DB clusters only}
 
-\item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
-Directory Service.
+\item{DomainIAMRoleName}{The name of the IAM role to use when making API calls to the Directory
+Service.
 
-Valid for: Aurora DB clusters only}
+Valid for Cluster Type: Aurora DB clusters only}
 
-\item{EnableGlobalWriteForwarding}{A value that indicates whether to enable this DB cluster to forward
-write operations to the primary cluster of an Aurora global database
-(GlobalCluster). By default, write operations are not allowed on Aurora
-DB clusters that are secondary clusters in an Aurora global database.
+\item{EnableGlobalWriteForwarding}{Specifies whether to enable this DB cluster to forward write operations
+to the primary cluster of a global cluster (Aurora global database). By
+default, write operations are not allowed on Aurora DB clusters that are
+secondary clusters in an Aurora global database.
 
 You can set this value only on Aurora DB clusters that are members of an
 Aurora global database. With this parameter enabled, a secondary cluster
-can forward writes to the current primary cluster and the resulting
+can forward writes to the current primary cluster, and the resulting
 changes are replicated back to this cluster. For the primary DB cluster
 of an Aurora global database, this value is used immediately if the
-primary is demoted by the
-\code{\link[=rds_failover_global_cluster]{failover_global_cluster}} API operation,
-but it does nothing until then.
+primary is demoted by a global cluster API operation, but it does
+nothing until then.
 
-Valid for: Aurora DB clusters only}
+Valid for Cluster Type: Aurora DB clusters only}
 
 \item{DBClusterInstanceClass}{The compute and memory capacity of each DB instance in the Multi-AZ DB
-cluster, for example db.m6gd.xlarge. Not all DB instance classes are
+cluster, for example \code{db.m6gd.xlarge}. Not all DB instance classes are
 available in all Amazon Web Services Regions, or for all database
 engines.
 
@@ -501,28 +476,38 @@ in the \emph{Amazon RDS User Guide}.
 
 This setting is required to create a Multi-AZ DB cluster.
 
-Valid for: Multi-AZ DB clusters only}
+Valid for Cluster Type: Multi-AZ DB clusters only}
 
 \item{AllocatedStorage}{The amount of storage in gibibytes (GiB) to allocate to each DB instance
 in the Multi-AZ DB cluster.
 
-This setting is required to create a Multi-AZ DB cluster.
+Valid for Cluster Type: Multi-AZ DB clusters only
 
-Valid for: Multi-AZ DB clusters only}
+This setting is required to create a Multi-AZ DB cluster.}
 
-\item{StorageType}{Specifies the storage type to be associated with the DB cluster.
+\item{StorageType}{The storage type to associate with the DB cluster.
+
+For information on storage types for Aurora DB clusters, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Aurora.Overview.StorageReliability.html#aurora-storage-type}{Storage configurations for Amazon Aurora DB clusters}.
+For information on storage types for Multi-AZ DB clusters, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/create-multi-az-db-cluster.html#create-multi-az-db-cluster-settings}{Settings for creating Multi-AZ DB clusters}.
 
 This setting is required to create a Multi-AZ DB cluster.
 
 When specified for a Multi-AZ DB cluster, a value for the \code{Iops}
 parameter is required.
 
-Valid values: \code{aurora}, \code{aurora-iopt1} (Aurora DB clusters); \code{io1}
-(Multi-AZ DB clusters)
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
-Default: \code{aurora} (Aurora DB clusters); \code{io1} (Multi-AZ DB clusters)
+Valid Values:
+\itemize{
+\item Aurora DB clusters - \code{aurora | aurora-iopt1}
+\item Multi-AZ DB clusters - \code{io1}
+}
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+Default:
+\itemize{
+\item Aurora DB clusters - \code{aurora}
+\item Multi-AZ DB clusters - \code{io1}
+}}
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for each DB instance in the Multi-AZ DB cluster.
@@ -532,12 +517,15 @@ in the \emph{Amazon RDS User Guide}.
 
 This setting is required to create a Multi-AZ DB cluster.
 
-Constraints: Must be a multiple between .5 and 50 of the storage amount
-for the DB cluster.
+Valid for Cluster Type: Multi-AZ DB clusters only
 
-Valid for: Multi-AZ DB clusters only}
+Constraints:
+\itemize{
+\item Must be a multiple between .5 and 50 of the storage amount for the
+DB cluster.
+}}
 
-\item{PubliclyAccessible}{A value that indicates whether the DB cluster is publicly accessible.
+\item{PubliclyAccessible}{Specifies whether the DB cluster is publicly accessible.
 
 When the DB cluster is publicly accessible, its Domain Name System (DNS)
 endpoint resolves to the private IP address from within the DB cluster's
@@ -549,6 +537,8 @@ permit it.
 
 When the DB cluster isn't publicly accessible, it is an internal DB
 cluster with a DNS name that resolves to a private IP address.
+
+Valid for Cluster Type: Multi-AZ DB clusters only
 
 Default: The default behavior varies depending on whether
 \code{DBSubnetGroupName} is specified.
@@ -569,26 +559,26 @@ specified, the following applies:
 gateway attached to it, the DB cluster is private.
 \item If the subnets are part of a VPC that has an internet gateway
 attached to it, the DB cluster is public.
-}
+}}
 
-Valid for: Multi-AZ DB clusters only}
+\item{AutoMinorVersionUpgrade}{Specifies whether minor engine upgrades are applied automatically to the
+DB cluster during the maintenance window. By default, minor engine
+upgrades are applied automatically.
 
-\item{AutoMinorVersionUpgrade}{A value that indicates whether minor engine upgrades are applied
-automatically to the DB cluster during the maintenance window. By
-default, minor engine upgrades are applied automatically.
-
-Valid for: Multi-AZ DB clusters only}
+Valid for Cluster Type: Multi-AZ DB clusters only}
 
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB cluster. To turn off collecting
-Enhanced Monitoring metrics, specify 0. The default is 0.
+Enhanced Monitoring metrics, specify \code{0}.
 
 If \code{MonitoringRoleArn} is specified, also set \code{MonitoringInterval} to a
-value other than 0.
+value other than \code{0}.
 
-Valid Values: \verb{0, 1, 5, 10, 15, 30, 60}
+Valid for Cluster Type: Multi-AZ DB clusters only
 
-Valid for: Multi-AZ DB clusters only}
+Valid Values: \code{0 | 1 | 5 | 10 | 15 | 30 | 60}
+
+Default: \code{0}}
 
 \item{MonitoringRoleArn}{The Amazon Resource Name (ARN) for the IAM role that permits RDS to send
 Enhanced Monitoring metrics to Amazon CloudWatch Logs. An example is
@@ -596,18 +586,17 @@ Enhanced Monitoring metrics to Amazon CloudWatch Logs. An example is
 monitoring role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Monitoring.OS.html#USER_Monitoring.OS.Enabling}{Setting up and enabling Enhanced Monitoring}
 in the \emph{Amazon RDS User Guide}.
 
-If \code{MonitoringInterval} is set to a value other than 0, supply a
+If \code{MonitoringInterval} is set to a value other than \code{0}, supply a
 \code{MonitoringRoleArn} value.
 
-Valid for: Multi-AZ DB clusters only}
+Valid for Cluster Type: Multi-AZ DB clusters only}
 
-\item{EnablePerformanceInsights}{A value that indicates whether to turn on Performance Insights for the
-DB cluster.
+\item{EnablePerformanceInsights}{Specifies whether to turn on Performance Insights for the DB cluster.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
 in the \emph{Amazon RDS User Guide}.
 
-Valid for: Multi-AZ DB clusters only}
+Valid for Cluster Type: Multi-AZ DB clusters only}
 
 \item{PerformanceInsightsKMSKeyId}{The Amazon Web Services KMS key identifier for encryption of Performance
 Insights data.
@@ -620,38 +609,29 @@ Amazon RDS uses your default KMS key. There is a default KMS key for
 your Amazon Web Services account. Your Amazon Web Services account has a
 different default KMS key for each Amazon Web Services Region.
 
-Valid for: Multi-AZ DB clusters only}
+Valid for Cluster Type: Multi-AZ DB clusters only}
 
-\item{PerformanceInsightsRetentionPeriod}{The number of days to retain Performance Insights data. The default is 7
-days. The following values are valid:
+\item{PerformanceInsightsRetentionPeriod}{The number of days to retain Performance Insights data.
+
+Valid for Cluster Type: Multi-AZ DB clusters only
+
+Valid Values:
 \itemize{
-\item 7
-\item \emph{month} * 31, where \emph{month} is a number of months from 1-23
-\item 731
+\item \code{7}
+\item \emph{month} * 31, where \emph{month} is a number of months from 1-23.
+Examples: \code{93} (3 months * 31), \code{341} (11 months * 31), \code{589} (19
+months * 31)
+\item \code{731}
 }
 
-For example, the following values are valid:
-\itemize{
-\item 93 (3 months * 31)
-\item 341 (11 months * 31)
-\item 589 (19 months * 31)
-\item 731
-}
+Default: \code{7} days
 
-If you specify a retention period such as 94, which isn't a valid value,
-RDS issues an error.
-
-Valid for: Multi-AZ DB clusters only}
+If you specify a retention period that isn't valid, such as \code{94}, Amazon
+RDS issues an error.}
 
 \item{ServerlessV2ScalingConfiguration}{}
 
 \item{NetworkType}{The network type of the DB cluster.
-
-Valid values:
-\itemize{
-\item \code{IPV4}
-\item \code{DUAL}
-}
 
 The network type is determined by the \code{DBSubnetGroup} specified for the
 DB cluster. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
@@ -660,24 +640,26 @@ IPv4 and the IPv6 protocols (\code{DUAL}).
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
 in the \emph{Amazon Aurora User Guide.}
 
-Valid for: Aurora DB clusters only}
+Valid for Cluster Type: Aurora DB clusters only
+
+Valid Values: \code{IPV4 | DUAL}}
 
 \item{DBSystemId}{Reserved for future use.}
 
-\item{ManageMasterUserPassword}{A value that indicates whether to manage the master user password with
-Amazon Web Services Secrets Manager.
+\item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
+Services Secrets Manager.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
 in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
 in the \emph{Amazon Aurora User Guide.}
 
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+
 Constraints:
 \itemize{
 \item Can't manage the master user password with Amazon Web Services
 Secrets Manager if \code{MasterUserPassword} is specified.
-}
-
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+}}
 
 \item{MasterUserSecretKmsKeyId}{The Amazon Web Services KMS key identifier to encrypt a secret that is
 automatically generated and managed in Amazon Web Services Secrets
@@ -700,13 +682,13 @@ There is a default KMS key for your Amazon Web Services account. Your
 Amazon Web Services account has a different default KMS key for each
 Amazon Web Services Region.
 
-Valid for: Aurora DB clusters and Multi-AZ DB clusters}
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }
 \description{
 Creates a new Amazon Aurora DB cluster or Multi-AZ DB cluster.
 
-See \url{https://paws-r.github.io/docs/rds/create_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_create_db_cluster/} for full documentation.
 }
 \keyword{internal}

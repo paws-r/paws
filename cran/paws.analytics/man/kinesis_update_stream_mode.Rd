@@ -18,6 +18,6 @@ data streams.}
 \description{
 Updates the capacity mode of the data stream. Currently, in Kinesis Data Streams, you can choose between an \strong{on-demand} capacity mode and a \strong{provisioned} capacity mode for your data stream.
 
-See \url{https://paws-r.github.io/docs/kinesis/update_stream_mode.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesis_update_stream_mode/} for full documentation.
 }
 \keyword{internal}

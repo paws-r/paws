@@ -15,6 +15,6 @@ entries.}
 \description{
 Deletes a specific domain entry.
 
-See \url{https://paws-r.github.io/docs/lightsail/delete_domain_entry.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_delete_domain_entry/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ digits, white space, and the following special characters: _ . /
 \description{
 Removes the tags associated with the keys that are provided in the query.
 
-See \url{https://paws-r.github.io/docs/kafka/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kafka_untag_resource/} for full documentation.
 }
 \keyword{internal}

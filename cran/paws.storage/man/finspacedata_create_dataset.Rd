@@ -39,6 +39,6 @@ finspacedata_create_dataset(
 \description{
 Creates a new FinSpace Dataset.
 
-See \url{https://paws-r.github.io/docs/finspacedata/create_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_create_dataset/} for full documentation.
 }
 \keyword{internal}

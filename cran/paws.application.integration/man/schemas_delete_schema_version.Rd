@@ -16,6 +16,6 @@ schemas_delete_schema_version(RegistryName, SchemaName, SchemaVersion)
 \description{
 Delete the schema version definition
 
-See \url{https://paws-r.github.io/docs/schemas/delete_schema_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/schemas_delete_schema_version/} for full documentation.
 }
 \keyword{internal}

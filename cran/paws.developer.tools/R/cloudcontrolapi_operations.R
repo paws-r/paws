@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Cancels the specified resource operation request. For more information, see [Canceling resource operation requests](https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-manage-requests.html#resource-operations-manage-requests-cancel) in the *Amazon Web Services Cloud Control API User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudcontrolapi/cancel_resource_request.html](https://paws-r.github.io/docs/cloudcontrolapi/cancel_resource_request.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudcontrolapi_cancel_resource_request/](https://www.paws-r-sdk.com/docs/cloudcontrolapi_cancel_resource_request/) for full documentation.
 #'
 #' @param RequestToken &#91;required&#93; The `RequestToken` of the `ProgressEvent` object returned by the
 #' resource operation request.
@@ -38,7 +38,7 @@ cloudcontrolapi_cancel_resource_request <- function(RequestToken) {
 #' @description
 #' Creates the specified resource. For more information, see [Creating a resource](https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-create.html) in the *Amazon Web Services Cloud Control API User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudcontrolapi/create_resource.html](https://paws-r.github.io/docs/cloudcontrolapi/create_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudcontrolapi_create_resource/](https://www.paws-r-sdk.com/docs/cloudcontrolapi_create_resource/) for full documentation.
 #'
 #' @param TypeName &#91;required&#93; The name of the resource type.
 #' @param TypeVersionId For private resource types, the type version to use in this resource
@@ -77,7 +77,21 @@ cloudcontrolapi_cancel_resource_request <- function(RequestToken) {
 #' 
 #' Cloud Control API currently supports JSON as a structured data format.
 #' 
-#'      <p>Specify the desired state as one of the following:</p> <ul> <li> <p>A JSON blob</p> </li> <li> <p>A local path containing the desired state in JSON data format</p> </li> </ul> <p>For more information, see <a href="https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-create.html#resource-operations-create-desiredstate">Composing the desired state of the resource</a> in the <i>Amazon Web Services Cloud Control API User Guide</i>.</p> <p>For more information about the properties of a specific resource, refer to the related topic for the resource in the <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html">Resource and property types reference</a> in the <i>CloudFormation Users Guide</i>.</p> 
+#' Specify the desired state as one of the following:
+#' 
+#' -   A JSON blob
+#' 
+#' -   A local path containing the desired state in JSON data format
+#' 
+#' For more information, see [Composing the desired state of the
+#' resource](https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-create.html#resource-operations-create-desiredstate)
+#' in the *Amazon Web Services Cloud Control API User Guide*.
+#' 
+#' For more information about the properties of a specific resource, refer
+#' to the related topic for the resource in the [Resource and property
+#' types
+#' reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-template-resource-type-ref.html)
+#' in the *CloudFormation Users Guide*.
 #'
 #' @keywords internal
 #'
@@ -104,7 +118,7 @@ cloudcontrolapi_create_resource <- function(TypeName, TypeVersionId = NULL, Role
 #' @description
 #' Deletes the specified resource. For details, see [Deleting a resource](https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-delete.html) in the *Amazon Web Services Cloud Control API User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudcontrolapi/delete_resource.html](https://paws-r.github.io/docs/cloudcontrolapi/delete_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudcontrolapi_delete_resource/](https://www.paws-r-sdk.com/docs/cloudcontrolapi_delete_resource/) for full documentation.
 #'
 #' @param TypeName &#91;required&#93; The name of the resource type.
 #' @param TypeVersionId For private resource types, the type version to use in this resource
@@ -179,7 +193,7 @@ cloudcontrolapi_delete_resource <- function(TypeName, TypeVersionId = NULL, Role
 #' @description
 #' Returns information about the current state of the specified resource. For details, see [Reading a resource's current state](https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-read.html).
 #'
-#' See [https://paws-r.github.io/docs/cloudcontrolapi/get_resource.html](https://paws-r.github.io/docs/cloudcontrolapi/get_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudcontrolapi_get_resource/](https://www.paws-r-sdk.com/docs/cloudcontrolapi_get_resource/) for full documentation.
 #'
 #' @param TypeName &#91;required&#93; The name of the resource type.
 #' @param TypeVersionId For private resource types, the type version to use in this resource
@@ -239,7 +253,7 @@ cloudcontrolapi_get_resource <- function(TypeName, TypeVersionId = NULL, RoleArn
 #' @description
 #' Returns the current status of a resource operation request. For more information, see [Tracking the progress of resource operation requests](https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-manage-requests.html#resource-operations-manage-requests-track) in the *Amazon Web Services Cloud Control API User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudcontrolapi/get_resource_request_status.html](https://paws-r.github.io/docs/cloudcontrolapi/get_resource_request_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudcontrolapi_get_resource_request_status/](https://www.paws-r-sdk.com/docs/cloudcontrolapi_get_resource_request_status/) for full documentation.
 #'
 #' @param RequestToken &#91;required&#93; A unique token used to track the progress of the resource operation
 #' request.
@@ -272,7 +286,7 @@ cloudcontrolapi_get_resource_request_status <- function(RequestToken) {
 #' @description
 #' Returns existing resource operation requests. This includes requests of all status types. For more information, see [Listing active resource operation requests](https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-manage-requests.html#resource-operations-manage-requests-list) in the *Amazon Web Services Cloud Control API User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudcontrolapi/list_resource_requests.html](https://paws-r.github.io/docs/cloudcontrolapi/list_resource_requests.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudcontrolapi_list_resource_requests/](https://www.paws-r-sdk.com/docs/cloudcontrolapi_list_resource_requests/) for full documentation.
 #'
 #' @param MaxResults The maximum number of results to be returned with a single call. If the
 #' number of available results exceeds this maximum, the response includes
@@ -296,7 +310,7 @@ cloudcontrolapi_list_resource_requests <- function(MaxResults = NULL, NextToken 
     name = "ListResourceRequests",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceRequestStatusSummaries")
   )
   input <- .cloudcontrolapi$list_resource_requests_input(MaxResults = MaxResults, NextToken = NextToken, ResourceRequestStatusFilter = ResourceRequestStatusFilter)
   output <- .cloudcontrolapi$list_resource_requests_output()
@@ -313,7 +327,7 @@ cloudcontrolapi_list_resource_requests <- function(MaxResults = NULL, NextToken 
 #' @description
 #' Returns information about the specified resources. For more information, see [Discovering resources](https://docs.aws.amazon.com/cloudcontrolapi/latest/userguide/resource-operations-list.html) in the *Amazon Web Services Cloud Control API User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/cloudcontrolapi/list_resources.html](https://paws-r.github.io/docs/cloudcontrolapi/list_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudcontrolapi_list_resources/](https://www.paws-r-sdk.com/docs/cloudcontrolapi_list_resources/) for full documentation.
 #'
 #' @param TypeName &#91;required&#93; The name of the resource type.
 #' @param TypeVersionId For private resource types, the type version to use in this resource
@@ -349,7 +363,7 @@ cloudcontrolapi_list_resources <- function(TypeName, TypeVersionId = NULL, RoleA
     name = "ListResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ResourceDescriptions")
   )
   input <- .cloudcontrolapi$list_resources_input(TypeName = TypeName, TypeVersionId = TypeVersionId, RoleArn = RoleArn, NextToken = NextToken, MaxResults = MaxResults, ResourceModel = ResourceModel)
   output <- .cloudcontrolapi$list_resources_output()
@@ -366,7 +380,7 @@ cloudcontrolapi_list_resources <- function(TypeName, TypeVersionId = NULL, RoleA
 #' @description
 #' Updates the specified property values in the resource.
 #'
-#' See [https://paws-r.github.io/docs/cloudcontrolapi/update_resource.html](https://paws-r.github.io/docs/cloudcontrolapi/update_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cloudcontrolapi_update_resource/](https://www.paws-r-sdk.com/docs/cloudcontrolapi_update_resource/) for full documentation.
 #'
 #' @param TypeName &#91;required&#93; The name of the resource type.
 #' @param TypeVersionId For private resource types, the type version to use in this resource

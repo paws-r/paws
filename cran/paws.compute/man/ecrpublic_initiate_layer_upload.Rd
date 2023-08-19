@@ -16,6 +16,6 @@ specify a registry, the default public registry is assumed.}
 \description{
 Notifies Amazon ECR that you intend to upload an image layer.
 
-See \url{https://paws-r.github.io/docs/ecrpublic/initiate_layer_upload.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecrpublic_initiate_layer_upload/} for full documentation.
 }
 \keyword{internal}

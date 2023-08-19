@@ -49,6 +49,6 @@ idempotency—that is, the uniqueness—of the request.}
 \description{
 Create a listener to process inbound connections from clients to an accelerator. Connections arrive to assigned static IP addresses on a port, port range, or list of port ranges that you specify.
 
-See \url{https://paws-r.github.io/docs/globalaccelerator/create_listener.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_create_listener/} for full documentation.
 }
 \keyword{internal}

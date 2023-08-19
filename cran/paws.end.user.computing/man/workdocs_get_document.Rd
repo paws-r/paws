@@ -21,6 +21,6 @@ Services administrator credentials to access the API.}
 \description{
 Retrieves details of a document.
 
-See \url{https://paws-r.github.io/docs/workdocs/get_document.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_get_document/} for full documentation.
 }
 \keyword{internal}

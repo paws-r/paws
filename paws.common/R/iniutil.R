@@ -1,3 +1,5 @@
+#' @include util.R
+
 # Get the profile name from an ini file
 extract_ini_profile <- function(item) {
   profile <- gsub("\\[|\\]", "", item)
@@ -17,7 +19,7 @@ extract_ini_parameter <- function(item) {
 # Read in values from an ini file
 read_ini <- function(file_name) {
   if (!file.exists(file_name)) {
-    stop(sprintf("Unable to find file: %s", file_name))
+    stopf("Unable to find file: %s", file_name)
   }
   content <- scan(file_name, what = "", sep = "\n", quiet = T)
   profiles <- list()

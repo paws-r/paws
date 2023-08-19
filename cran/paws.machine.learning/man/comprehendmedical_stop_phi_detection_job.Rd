@@ -12,6 +12,6 @@ comprehendmedical_stop_phi_detection_job(JobId)
 \description{
 Stops a protected health information (PHI) detection job in progress.
 
-See \url{https://paws-r.github.io/docs/comprehendmedical/stop_phi_detection_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehendmedical_stop_phi_detection_job/} for full documentation.
 }
 \keyword{internal}

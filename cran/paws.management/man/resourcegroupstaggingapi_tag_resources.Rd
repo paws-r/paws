@@ -20,6 +20,6 @@ resources. A tag consists of a key and a value that you define.}
 \description{
 Applies one or more tags to the specified resources. Note the following:
 
-See \url{https://paws-r.github.io/docs/resourcegroupstaggingapi/tag_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroupstaggingapi_tag_resources/} for full documentation.
 }
 \keyword{internal}

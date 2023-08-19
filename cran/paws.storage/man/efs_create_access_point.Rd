@@ -42,6 +42,6 @@ the access point will fail.}
 \description{
 Creates an EFS access point. An access point is an application-specific view into an EFS file system that applies an operating system user and group, and a file system path, to any file system request made through the access point. The operating system user and group override any identity information provided by the NFS client. The file system path is exposed as the access point's root directory. Applications using the access point can only access data in the application's own directory and any subdirectories. To learn more, see \href{https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html}{Mounting a file system using EFS access points}.
 
-See \url{https://paws-r.github.io/docs/efs/create_access_point.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_create_access_point/} for full documentation.
 }
 \keyword{internal}

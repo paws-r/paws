@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates an access point and associates it with the specified bucket. For more information, see [Managing Data Access with Amazon S3 Access Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/create_access_point.html](https://paws-r.github.io/docs/s3control/create_access_point.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_create_access_point/](https://www.paws-r-sdk.com/docs/s3control_create_access_point/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the account that owns the
 #' specified access point.
@@ -63,7 +63,7 @@ s3control_create_access_point <- function(AccountId, Name, Bucket, VpcConfigurat
 #' @description
 #' Creates an Object Lambda Access Point. For more information, see [Transforming objects with Object Lambda Access Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/transforming-objects.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/create_access_point_for_object_lambda.html](https://paws-r.github.io/docs/s3control/create_access_point_for_object_lambda.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_create_access_point_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_create_access_point_for_object_lambda/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for owner of the specified Object
 #' Lambda Access Point.
@@ -95,7 +95,7 @@ s3control_create_access_point_for_object_lambda <- function(AccountId, Name, Con
 #' @description
 #' This action creates an Amazon S3 on Outposts bucket. To create an S3 bucket, see [Create Bucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucket.html) in the *Amazon S3 API Reference*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/create_bucket.html](https://paws-r.github.io/docs/s3control/create_bucket.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_create_bucket/](https://www.paws-r-sdk.com/docs/s3control_create_bucket/) for full documentation.
 #'
 #' @param ACL The canned ACL to apply to the bucket.
 #' 
@@ -155,7 +155,7 @@ s3control_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguratio
 #' @description
 #' You can use S3 Batch Operations to perform large-scale batch actions on Amazon S3 objects. Batch Operations can run a single action on lists of Amazon S3 objects that you specify. For more information, see [S3 Batch Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/create_job.html](https://paws-r.github.io/docs/s3control/create_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_create_job/](https://www.paws-r-sdk.com/docs/s3control_create_job/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID that creates the job.
 #' @param ConfirmationRequired Indicates whether confirmation is required before Amazon S3 runs the
@@ -209,7 +209,7 @@ s3control_create_job <- function(AccountId, ConfirmationRequired = NULL, Operati
 #' @description
 #' Creates a Multi-Region Access Point and associates it with the specified buckets. For more information about creating Multi-Region Access Points, see [Creating Multi-Region Access Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/CreatingMultiRegionAccessPoints.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/create_multi_region_access_point.html](https://paws-r.github.io/docs/s3control/create_multi_region_access_point.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_create_multi_region_access_point/](https://www.paws-r-sdk.com/docs/s3control_create_multi_region_access_point/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the owner of the Multi-Region
 #' Access Point. The owner of the Multi-Region Access Point also must own
@@ -244,7 +244,7 @@ s3control_create_multi_region_access_point <- function(AccountId, ClientToken, D
 #' @description
 #' Deletes the specified access point.
 #'
-#' See [https://paws-r.github.io/docs/s3control/delete_access_point.html](https://paws-r.github.io/docs/s3control/delete_access_point.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_point/](https://www.paws-r-sdk.com/docs/s3control_delete_access_point/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the account that owns the
 #' specified access point.
@@ -288,7 +288,7 @@ s3control_delete_access_point <- function(AccountId, Name) {
 #' @description
 #' Deletes the specified Object Lambda Access Point.
 #'
-#' See [https://paws-r.github.io/docs/s3control/delete_access_point_for_object_lambda.html](https://paws-r.github.io/docs/s3control/delete_access_point_for_object_lambda.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_point_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_delete_access_point_for_object_lambda/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID for the account that owns the specified Object Lambda
 #' Access Point.
@@ -319,7 +319,7 @@ s3control_delete_access_point_for_object_lambda <- function(AccountId, Name) {
 #' @description
 #' Deletes the access point policy for the specified access point.
 #'
-#' See [https://paws-r.github.io/docs/s3control/delete_access_point_policy.html](https://paws-r.github.io/docs/s3control/delete_access_point_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_point_policy/](https://www.paws-r-sdk.com/docs/s3control_delete_access_point_policy/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID for the account that owns the specified access point.
 #' @param Name &#91;required&#93; The name of the access point whose policy you want to delete.
@@ -362,7 +362,7 @@ s3control_delete_access_point_policy <- function(AccountId, Name) {
 #' @description
 #' Removes the resource policy for an Object Lambda Access Point.
 #'
-#' See [https://paws-r.github.io/docs/s3control/delete_access_point_policy_for_object_lambda.html](https://paws-r.github.io/docs/s3control/delete_access_point_policy_for_object_lambda.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_access_point_policy_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_delete_access_point_policy_for_object_lambda/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID for the account that owns the specified Object Lambda
 #' Access Point.
@@ -394,7 +394,7 @@ s3control_delete_access_point_policy_for_object_lambda <- function(AccountId, Na
 #' @description
 #' This action deletes an Amazon S3 on Outposts bucket. To delete an S3 bucket, see [`delete_bucket`][s3control_delete_bucket] in the *Amazon S3 API Reference*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/delete_bucket.html](https://paws-r.github.io/docs/s3control/delete_bucket.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_bucket/](https://www.paws-r-sdk.com/docs/s3control_delete_bucket/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID that owns the Outposts bucket.
 #' @param Bucket &#91;required&#93; Specifies the bucket being deleted.
@@ -438,7 +438,7 @@ s3control_delete_bucket <- function(AccountId, Bucket) {
 #' @description
 #' This action deletes an Amazon S3 on Outposts bucket's lifecycle configuration. To delete an S3 bucket's lifecycle configuration, see [DeleteBucketLifecycle](https://docs.aws.amazon.com/AmazonS3/latest/API/API_DeleteBucketLifecycle.html) in the *Amazon S3 API Reference*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/delete_bucket_lifecycle_configuration.html](https://paws-r.github.io/docs/s3control/delete_bucket_lifecycle_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_bucket_lifecycle_configuration/](https://www.paws-r-sdk.com/docs/s3control_delete_bucket_lifecycle_configuration/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID of the lifecycle configuration to delete.
 #' @param Bucket &#91;required&#93; Specifies the bucket.
@@ -481,7 +481,7 @@ s3control_delete_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
 #' @description
 #' This action deletes an Amazon S3 on Outposts bucket policy. To delete an S3 bucket policy, see [`delete_bucket_policy`][s3control_delete_bucket_policy] in the *Amazon S3 API Reference*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/delete_bucket_policy.html](https://paws-r.github.io/docs/s3control/delete_bucket_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_bucket_policy/](https://www.paws-r-sdk.com/docs/s3control_delete_bucket_policy/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID of the Outposts bucket.
 #' @param Bucket &#91;required&#93; Specifies the bucket.
@@ -525,7 +525,7 @@ s3control_delete_bucket_policy <- function(AccountId, Bucket) {
 #' @description
 #' This operation deletes an Amazon S3 on Outposts bucket's replication configuration. To delete an S3 bucket's replication configuration, see [`delete_bucket_replication`][s3control_delete_bucket_replication] in the *Amazon S3 API Reference*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/delete_bucket_replication.html](https://paws-r.github.io/docs/s3control/delete_bucket_replication.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_bucket_replication/](https://www.paws-r-sdk.com/docs/s3control_delete_bucket_replication/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the Outposts bucket to delete the
 #' replication configuration for.
@@ -570,7 +570,7 @@ s3control_delete_bucket_replication <- function(AccountId, Bucket) {
 #' @description
 #' This action deletes an Amazon S3 on Outposts bucket's tags. To delete an S3 bucket tags, see [`delete_bucket_tagging`][s3control_delete_bucket_tagging] in the *Amazon S3 API Reference*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/delete_bucket_tagging.html](https://paws-r.github.io/docs/s3control/delete_bucket_tagging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_bucket_tagging/](https://www.paws-r-sdk.com/docs/s3control_delete_bucket_tagging/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the Outposts bucket tag set to be
 #' removed.
@@ -614,7 +614,7 @@ s3control_delete_bucket_tagging <- function(AccountId, Bucket) {
 #' @description
 #' Removes the entire tag set from the specified S3 Batch Operations job. To use the [`delete_job_tagging`][s3control_delete_job_tagging] operation, you must have permission to perform the `s3:DeleteJobTagging` action. For more information, see [Controlling access and labeling jobs using tags](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-managing-jobs.html#batch-ops-job-tags) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/delete_job_tagging.html](https://paws-r.github.io/docs/s3control/delete_job_tagging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_job_tagging/](https://www.paws-r-sdk.com/docs/s3control_delete_job_tagging/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID associated with the S3 Batch
 #' Operations job.
@@ -645,7 +645,7 @@ s3control_delete_job_tagging <- function(AccountId, JobId) {
 #' @description
 #' Deletes a Multi-Region Access Point. This action does not delete the buckets associated with the Multi-Region Access Point, only the Multi-Region Access Point itself.
 #'
-#' See [https://paws-r.github.io/docs/s3control/delete_multi_region_access_point.html](https://paws-r.github.io/docs/s3control/delete_multi_region_access_point.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_multi_region_access_point/](https://www.paws-r-sdk.com/docs/s3control_delete_multi_region_access_point/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the owner of the Multi-Region
 #' Access Point.
@@ -680,7 +680,7 @@ s3control_delete_multi_region_access_point <- function(AccountId, ClientToken, D
 #' @description
 #' Removes the `PublicAccessBlock` configuration for an Amazon Web Services account. For more information, see [Using Amazon S3 block public access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html).
 #'
-#' See [https://paws-r.github.io/docs/s3control/delete_public_access_block.html](https://paws-r.github.io/docs/s3control/delete_public_access_block.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_public_access_block/](https://www.paws-r-sdk.com/docs/s3control_delete_public_access_block/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID for the Amazon Web Services account whose
 #' `PublicAccessBlock` configuration you want to remove.
@@ -710,7 +710,7 @@ s3control_delete_public_access_block <- function(AccountId) {
 #' @description
 #' Deletes the Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see [Assessing your storage activity and usage with Amazon S3 Storage Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/delete_storage_lens_configuration.html](https://paws-r.github.io/docs/s3control/delete_storage_lens_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_storage_lens_configuration/](https://www.paws-r-sdk.com/docs/s3control_delete_storage_lens_configuration/) for full documentation.
 #'
 #' @param ConfigId &#91;required&#93; The ID of the S3 Storage Lens configuration.
 #' @param AccountId &#91;required&#93; The account ID of the requester.
@@ -740,7 +740,7 @@ s3control_delete_storage_lens_configuration <- function(ConfigId, AccountId) {
 #' @description
 #' Deletes the Amazon S3 Storage Lens configuration tags. For more information about S3 Storage Lens, see [Assessing your storage activity and usage with Amazon S3 Storage Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/delete_storage_lens_configuration_tagging.html](https://paws-r.github.io/docs/s3control/delete_storage_lens_configuration_tagging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_delete_storage_lens_configuration_tagging/](https://www.paws-r-sdk.com/docs/s3control_delete_storage_lens_configuration_tagging/) for full documentation.
 #'
 #' @param ConfigId &#91;required&#93; The ID of the S3 Storage Lens configuration.
 #' @param AccountId &#91;required&#93; The account ID of the requester.
@@ -771,7 +771,7 @@ s3control_delete_storage_lens_configuration_tagging <- function(ConfigId, Accoun
 #' @description
 #' Retrieves the configuration parameters and status for a Batch Operations job. For more information, see [S3 Batch Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/describe_job.html](https://paws-r.github.io/docs/s3control/describe_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_describe_job/](https://www.paws-r-sdk.com/docs/s3control_describe_job/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID associated with the S3 Batch
 #' Operations job.
@@ -803,7 +803,7 @@ s3control_describe_job <- function(AccountId, JobId) {
 #' @description
 #' Retrieves the status of an asynchronous request to manage a Multi-Region Access Point. For more information about managing Multi-Region Access Points and how asynchronous requests work, see [Managing Multi-Region Access Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/describe_multi_region_access_point_operation.html](https://paws-r.github.io/docs/s3control/describe_multi_region_access_point_operation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_describe_multi_region_access_point_operation/](https://www.paws-r-sdk.com/docs/s3control_describe_multi_region_access_point_operation/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the owner of the Multi-Region
 #' Access Point.
@@ -837,7 +837,7 @@ s3control_describe_multi_region_access_point_operation <- function(AccountId, Re
 #' @description
 #' Returns configuration information about the specified access point.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_access_point.html](https://paws-r.github.io/docs/s3control/get_access_point.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_access_point/](https://www.paws-r-sdk.com/docs/s3control_get_access_point/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the account that owns the
 #' specified access point.
@@ -882,7 +882,7 @@ s3control_get_access_point <- function(AccountId, Name) {
 #' @description
 #' Returns configuration for an Object Lambda Access Point.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_access_point_configuration_for_object_lambda.html](https://paws-r.github.io/docs/s3control/get_access_point_configuration_for_object_lambda.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_access_point_configuration_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_get_access_point_configuration_for_object_lambda/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID for the account that owns the specified Object Lambda
 #' Access Point.
@@ -915,7 +915,7 @@ s3control_get_access_point_configuration_for_object_lambda <- function(AccountId
 #' @description
 #' Returns configuration information about the specified Object Lambda Access Point
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_access_point_for_object_lambda.html](https://paws-r.github.io/docs/s3control/get_access_point_for_object_lambda.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_access_point_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_get_access_point_for_object_lambda/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID for the account that owns the specified Object Lambda
 #' Access Point.
@@ -947,7 +947,7 @@ s3control_get_access_point_for_object_lambda <- function(AccountId, Name) {
 #' @description
 #' Returns the access point policy associated with the specified access point.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_access_point_policy.html](https://paws-r.github.io/docs/s3control/get_access_point_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy/](https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID for the account that owns the specified access point.
 #' @param Name &#91;required&#93; The name of the access point whose policy you want to retrieve.
@@ -990,7 +990,7 @@ s3control_get_access_point_policy <- function(AccountId, Name) {
 #' @description
 #' Returns the resource policy for an Object Lambda Access Point.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_access_point_policy_for_object_lambda.html](https://paws-r.github.io/docs/s3control/get_access_point_policy_for_object_lambda.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy_for_object_lambda/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID for the account that owns the specified Object Lambda
 #' Access Point.
@@ -1022,7 +1022,7 @@ s3control_get_access_point_policy_for_object_lambda <- function(AccountId, Name)
 #' @description
 #' Indicates whether the specified access point currently has a policy that allows public access. For more information about public access through access points, see [Managing Data Access with Amazon S3 access points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-points.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_access_point_policy_status.html](https://paws-r.github.io/docs/s3control/get_access_point_policy_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy_status/](https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy_status/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID for the account that owns the specified access point.
 #' @param Name &#91;required&#93; The name of the access point whose policy status you want to retrieve.
@@ -1053,7 +1053,7 @@ s3control_get_access_point_policy_status <- function(AccountId, Name) {
 #' @description
 #' Returns the status of the resource policy associated with an Object Lambda Access Point.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_access_point_policy_status_for_object_lambda.html](https://paws-r.github.io/docs/s3control/get_access_point_policy_status_for_object_lambda.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy_status_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy_status_for_object_lambda/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID for the account that owns the specified Object Lambda
 #' Access Point.
@@ -1084,7 +1084,7 @@ s3control_get_access_point_policy_status_for_object_lambda <- function(AccountId
 #' @description
 #' Gets an Amazon S3 on Outposts bucket. For more information, see [Using Amazon S3 on Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_bucket.html](https://paws-r.github.io/docs/s3control/get_bucket.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_bucket/](https://www.paws-r-sdk.com/docs/s3control_get_bucket/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the Outposts bucket.
 #' @param Bucket &#91;required&#93; Specifies the bucket.
@@ -1128,7 +1128,7 @@ s3control_get_bucket <- function(AccountId, Bucket) {
 #' @description
 #' This action gets an Amazon S3 on Outposts bucket's lifecycle configuration. To get an S3 bucket's lifecycle configuration, see [`get_bucket_lifecycle_configuration`][s3control_get_bucket_lifecycle_configuration] in the *Amazon S3 API Reference*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_bucket_lifecycle_configuration.html](https://paws-r.github.io/docs/s3control/get_bucket_lifecycle_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_bucket_lifecycle_configuration/](https://www.paws-r-sdk.com/docs/s3control_get_bucket_lifecycle_configuration/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the Outposts bucket.
 #' @param Bucket &#91;required&#93; The Amazon Resource Name (ARN) of the bucket.
@@ -1171,7 +1171,7 @@ s3control_get_bucket_lifecycle_configuration <- function(AccountId, Bucket) {
 #' @description
 #' This action gets a bucket policy for an Amazon S3 on Outposts bucket. To get a policy for an S3 bucket, see [`get_bucket_policy`][s3control_get_bucket_policy] in the *Amazon S3 API Reference*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_bucket_policy.html](https://paws-r.github.io/docs/s3control/get_bucket_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_bucket_policy/](https://www.paws-r-sdk.com/docs/s3control_get_bucket_policy/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the Outposts bucket.
 #' @param Bucket &#91;required&#93; Specifies the bucket.
@@ -1215,7 +1215,7 @@ s3control_get_bucket_policy <- function(AccountId, Bucket) {
 #' @description
 #' This operation gets an Amazon S3 on Outposts bucket's replication configuration. To get an S3 bucket's replication configuration, see [`get_bucket_replication`][s3control_get_bucket_replication] in the *Amazon S3 API Reference*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_bucket_replication.html](https://paws-r.github.io/docs/s3control/get_bucket_replication.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_bucket_replication/](https://www.paws-r-sdk.com/docs/s3control_get_bucket_replication/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the Outposts bucket.
 #' @param Bucket &#91;required&#93; Specifies the bucket to get the replication information for.
@@ -1258,7 +1258,7 @@ s3control_get_bucket_replication <- function(AccountId, Bucket) {
 #' @description
 #' This action gets an Amazon S3 on Outposts bucket's tags. To get an S3 bucket tags, see [`get_bucket_tagging`][s3control_get_bucket_tagging] in the *Amazon S3 API Reference*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_bucket_tagging.html](https://paws-r.github.io/docs/s3control/get_bucket_tagging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_bucket_tagging/](https://www.paws-r-sdk.com/docs/s3control_get_bucket_tagging/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the Outposts bucket.
 #' @param Bucket &#91;required&#93; Specifies the bucket.
@@ -1302,7 +1302,7 @@ s3control_get_bucket_tagging <- function(AccountId, Bucket) {
 #' @description
 #' This operation returns the versioning state for S3 on Outposts buckets only. To return the versioning state for an S3 bucket, see [`get_bucket_versioning`][s3control_get_bucket_versioning] in the *Amazon S3 API Reference*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_bucket_versioning.html](https://paws-r.github.io/docs/s3control/get_bucket_versioning.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_bucket_versioning/](https://www.paws-r-sdk.com/docs/s3control_get_bucket_versioning/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 on Outposts bucket.
 #' @param Bucket &#91;required&#93; The S3 on Outposts bucket to return the versioning state for.
@@ -1332,7 +1332,7 @@ s3control_get_bucket_versioning <- function(AccountId, Bucket) {
 #' @description
 #' Returns the tags on an S3 Batch Operations job. To use the [`get_job_tagging`][s3control_get_job_tagging] operation, you must have permission to perform the `s3:GetJobTagging` action. For more information, see [Controlling access and labeling jobs using tags](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops-managing-jobs.html#batch-ops-job-tags) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_job_tagging.html](https://paws-r.github.io/docs/s3control/get_job_tagging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_job_tagging/](https://www.paws-r-sdk.com/docs/s3control_get_job_tagging/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID associated with the S3 Batch
 #' Operations job.
@@ -1364,7 +1364,7 @@ s3control_get_job_tagging <- function(AccountId, JobId) {
 #' @description
 #' Returns configuration information about the specified Multi-Region Access Point.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_multi_region_access_point.html](https://paws-r.github.io/docs/s3control/get_multi_region_access_point.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point/](https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the owner of the Multi-Region
 #' Access Point.
@@ -1402,7 +1402,7 @@ s3control_get_multi_region_access_point <- function(AccountId, Name) {
 #' @description
 #' Returns the access control policy of the specified Multi-Region Access Point.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_multi_region_access_point_policy.html](https://paws-r.github.io/docs/s3control/get_multi_region_access_point_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point_policy/](https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point_policy/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the owner of the Multi-Region
 #' Access Point.
@@ -1439,7 +1439,7 @@ s3control_get_multi_region_access_point_policy <- function(AccountId, Name) {
 #' @description
 #' Indicates whether the specified Multi-Region Access Point has an access control policy that allows public access.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_multi_region_access_point_policy_status.html](https://paws-r.github.io/docs/s3control/get_multi_region_access_point_policy_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point_policy_status/](https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point_policy_status/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the owner of the Multi-Region
 #' Access Point.
@@ -1476,7 +1476,7 @@ s3control_get_multi_region_access_point_policy_status <- function(AccountId, Nam
 #' @description
 #' Returns the routing configuration for a Multi-Region Access Point, indicating which Regions are active or passive.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_multi_region_access_point_routes.html](https://paws-r.github.io/docs/s3control/get_multi_region_access_point_routes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point_routes/](https://www.paws-r-sdk.com/docs/s3control_get_multi_region_access_point_routes/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the owner of the Multi-Region
 #' Access Point.
@@ -1508,7 +1508,7 @@ s3control_get_multi_region_access_point_routes <- function(AccountId, Mrap) {
 #' @description
 #' Retrieves the `PublicAccessBlock` configuration for an Amazon Web Services account. For more information, see [Using Amazon S3 block public access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html).
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_public_access_block.html](https://paws-r.github.io/docs/s3control/get_public_access_block.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_public_access_block/](https://www.paws-r-sdk.com/docs/s3control_get_public_access_block/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID for the Amazon Web Services account whose
 #' `PublicAccessBlock` configuration you want to retrieve.
@@ -1538,7 +1538,7 @@ s3control_get_public_access_block <- function(AccountId) {
 #' @description
 #' Gets the Amazon S3 Storage Lens configuration. For more information, see [Assessing your storage activity and usage with Amazon S3 Storage Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html) in the *Amazon S3 User Guide*. For a complete list of S3 Storage Lens metrics, see [S3 Storage Lens metrics glossary](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_metrics_glossary.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_storage_lens_configuration.html](https://paws-r.github.io/docs/s3control/get_storage_lens_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_storage_lens_configuration/](https://www.paws-r-sdk.com/docs/s3control_get_storage_lens_configuration/) for full documentation.
 #'
 #' @param ConfigId &#91;required&#93; The ID of the Amazon S3 Storage Lens configuration.
 #' @param AccountId &#91;required&#93; The account ID of the requester.
@@ -1568,7 +1568,7 @@ s3control_get_storage_lens_configuration <- function(ConfigId, AccountId) {
 #' @description
 #' Gets the tags of Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see [Assessing your storage activity and usage with Amazon S3 Storage Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/get_storage_lens_configuration_tagging.html](https://paws-r.github.io/docs/s3control/get_storage_lens_configuration_tagging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_get_storage_lens_configuration_tagging/](https://www.paws-r-sdk.com/docs/s3control_get_storage_lens_configuration_tagging/) for full documentation.
 #'
 #' @param ConfigId &#91;required&#93; The ID of the Amazon S3 Storage Lens configuration.
 #' @param AccountId &#91;required&#93; The account ID of the requester.
@@ -1599,7 +1599,7 @@ s3control_get_storage_lens_configuration_tagging <- function(ConfigId, AccountId
 #' @description
 #' Returns a list of the access points that are owned by the current account that's associated with the specified bucket. You can retrieve up to 1000 access points per call. If the specified bucket has more than 1,000 access points (or the number specified in `maxResults`, whichever is less), the response will include a continuation token that you can use to list the additional access points.
 #'
-#' See [https://paws-r.github.io/docs/s3control/list_access_points.html](https://paws-r.github.io/docs/s3control/list_access_points.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_list_access_points/](https://www.paws-r-sdk.com/docs/s3control_list_access_points/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the account that owns the
 #' specified access points.
@@ -1635,7 +1635,7 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
     name = "ListAccessPoints",
     http_method = "GET",
     http_path = "/v20180820/accesspoint",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_access_points_input(AccountId = AccountId, Bucket = Bucket, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_access_points_output()
@@ -1653,7 +1653,7 @@ s3control_list_access_points <- function(AccountId, Bucket = NULL, NextToken = N
 #' @description
 #' Returns some or all (up to 1,000) access points associated with the Object Lambda Access Point per call. If there are more access points than what can be returned in one call, the response will include a continuation token that you can use to list the additional access points.
 #'
-#' See [https://paws-r.github.io/docs/s3control/list_access_points_for_object_lambda.html](https://paws-r.github.io/docs/s3control/list_access_points_for_object_lambda.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_list_access_points_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_list_access_points_for_object_lambda/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID for the account that owns the specified Object Lambda
 #' Access Point.
@@ -1674,7 +1674,7 @@ s3control_list_access_points_for_object_lambda <- function(AccountId, NextToken 
     name = "ListAccessPointsForObjectLambda",
     http_method = "GET",
     http_path = "/v20180820/accesspointforobjectlambda",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "ObjectLambdaAccessPointList")
   )
   input <- .s3control$list_access_points_for_object_lambda_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_access_points_for_object_lambda_output()
@@ -1692,7 +1692,7 @@ s3control_list_access_points_for_object_lambda <- function(AccountId, NextToken 
 #' @description
 #' Lists current S3 Batch Operations jobs and jobs that have ended within the last 30 days for the Amazon Web Services account making the request. For more information, see [S3 Batch Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/list_jobs.html](https://paws-r.github.io/docs/s3control/list_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_list_jobs/](https://www.paws-r-sdk.com/docs/s3control_list_jobs/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID associated with the S3 Batch
 #' Operations job.
@@ -1714,7 +1714,7 @@ s3control_list_jobs <- function(AccountId, JobStatuses = NULL, NextToken = NULL,
     name = "ListJobs",
     http_method = "GET",
     http_path = "/v20180820/jobs",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_jobs_input(AccountId = AccountId, JobStatuses = JobStatuses, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_jobs_output()
@@ -1732,7 +1732,7 @@ s3control_list_jobs <- function(AccountId, JobStatuses = NULL, NextToken = NULL,
 #' @description
 #' Returns a list of the Multi-Region Access Points currently associated with the specified Amazon Web Services account. Each call can return up to 100 Multi-Region Access Points, the maximum number of Multi-Region Access Points that can be associated with a single account.
 #'
-#' See [https://paws-r.github.io/docs/s3control/list_multi_region_access_points.html](https://paws-r.github.io/docs/s3control/list_multi_region_access_points.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_list_multi_region_access_points/](https://www.paws-r-sdk.com/docs/s3control_list_multi_region_access_points/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the owner of the Multi-Region
 #' Access Point.
@@ -1747,7 +1747,7 @@ s3control_list_multi_region_access_points <- function(AccountId, NextToken = NUL
     name = "ListMultiRegionAccessPoints",
     http_method = "GET",
     http_path = "/v20180820/mrap/instances",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_multi_region_access_points_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .s3control$list_multi_region_access_points_output()
@@ -1765,7 +1765,7 @@ s3control_list_multi_region_access_points <- function(AccountId, NextToken = NUL
 #' @description
 #' Returns a list of all Outposts buckets in an Outpost that are owned by the authenticated sender of the request. For more information, see [Using Amazon S3 on Outposts](https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/list_regional_buckets.html](https://paws-r.github.io/docs/s3control/list_regional_buckets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_list_regional_buckets/](https://www.paws-r-sdk.com/docs/s3control_list_regional_buckets/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the Outposts bucket.
 #' @param NextToken 
@@ -1782,7 +1782,7 @@ s3control_list_regional_buckets <- function(AccountId, NextToken = NULL, MaxResu
     name = "ListRegionalBuckets",
     http_method = "GET",
     http_path = "/v20180820/bucket",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .s3control$list_regional_buckets_input(AccountId = AccountId, NextToken = NextToken, MaxResults = MaxResults, OutpostId = OutpostId)
   output <- .s3control$list_regional_buckets_output()
@@ -1799,7 +1799,7 @@ s3control_list_regional_buckets <- function(AccountId, NextToken = NULL, MaxResu
 #' @description
 #' Gets a list of Amazon S3 Storage Lens configurations. For more information about S3 Storage Lens, see [Assessing your storage activity and usage with Amazon S3 Storage Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/list_storage_lens_configurations.html](https://paws-r.github.io/docs/s3control/list_storage_lens_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_list_storage_lens_configurations/](https://www.paws-r-sdk.com/docs/s3control_list_storage_lens_configurations/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID of the requester.
 #' @param NextToken A pagination token to request the next page of results.
@@ -1812,7 +1812,7 @@ s3control_list_storage_lens_configurations <- function(AccountId, NextToken = NU
     name = "ListStorageLensConfigurations",
     http_method = "GET",
     http_path = "/v20180820/storagelens",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken")
   )
   input <- .s3control$list_storage_lens_configurations_input(AccountId = AccountId, NextToken = NextToken)
   output <- .s3control$list_storage_lens_configurations_output()
@@ -1829,7 +1829,7 @@ s3control_list_storage_lens_configurations <- function(AccountId, NextToken = NU
 #' @description
 #' Replaces configuration for an Object Lambda Access Point.
 #'
-#' See [https://paws-r.github.io/docs/s3control/put_access_point_configuration_for_object_lambda.html](https://paws-r.github.io/docs/s3control/put_access_point_configuration_for_object_lambda.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_put_access_point_configuration_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_put_access_point_configuration_for_object_lambda/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID for the account that owns the specified Object Lambda
 #' Access Point.
@@ -1861,7 +1861,7 @@ s3control_put_access_point_configuration_for_object_lambda <- function(AccountId
 #' @description
 #' Associates an access policy with the specified access point. Each access point can have only one policy, so a request made to this API replaces any existing policy associated with the specified access point.
 #'
-#' See [https://paws-r.github.io/docs/s3control/put_access_point_policy.html](https://paws-r.github.io/docs/s3control/put_access_point_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_put_access_point_policy/](https://www.paws-r-sdk.com/docs/s3control_put_access_point_policy/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for owner of the bucket associated
 #' with the specified access point.
@@ -1911,7 +1911,7 @@ s3control_put_access_point_policy <- function(AccountId, Name, Policy) {
 #' @description
 #' Creates or replaces resource policy for an Object Lambda Access Point. For an example policy, see [Creating Object Lambda Access Points](https://docs.aws.amazon.com/AmazonS3/latest/userguide/olap-create.html#olap-create-cli) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/put_access_point_policy_for_object_lambda.html](https://paws-r.github.io/docs/s3control/put_access_point_policy_for_object_lambda.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_put_access_point_policy_for_object_lambda/](https://www.paws-r-sdk.com/docs/s3control_put_access_point_policy_for_object_lambda/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The account ID for the account that owns the specified Object Lambda
 #' Access Point.
@@ -1944,7 +1944,7 @@ s3control_put_access_point_policy_for_object_lambda <- function(AccountId, Name,
 #' @description
 #' This action puts a lifecycle configuration to an Amazon S3 on Outposts bucket. To put a lifecycle configuration to an S3 bucket, see [`put_bucket_lifecycle_configuration`][s3control_put_bucket_lifecycle_configuration] in the *Amazon S3 API Reference*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/put_bucket_lifecycle_configuration.html](https://paws-r.github.io/docs/s3control/put_bucket_lifecycle_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_put_bucket_lifecycle_configuration/](https://www.paws-r-sdk.com/docs/s3control_put_bucket_lifecycle_configuration/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the Outposts bucket.
 #' @param Bucket &#91;required&#93; The name of the bucket for which to set the configuration.
@@ -1975,7 +1975,7 @@ s3control_put_bucket_lifecycle_configuration <- function(AccountId, Bucket, Life
 #' @description
 #' This action puts a bucket policy to an Amazon S3 on Outposts bucket. To put a policy on an S3 bucket, see [`put_bucket_policy`][s3control_put_bucket_policy] in the *Amazon S3 API Reference*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/put_bucket_policy.html](https://paws-r.github.io/docs/s3control/put_bucket_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_put_bucket_policy/](https://www.paws-r-sdk.com/docs/s3control_put_bucket_policy/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the Outposts bucket.
 #' @param Bucket &#91;required&#93; Specifies the bucket.
@@ -2024,7 +2024,7 @@ s3control_put_bucket_policy <- function(AccountId, Bucket, ConfirmRemoveSelfBuck
 #' @description
 #' This action creates an Amazon S3 on Outposts bucket's replication configuration. To create an S3 bucket's replication configuration, see [`put_bucket_replication`][s3control_put_bucket_replication] in the *Amazon S3 API Reference*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/put_bucket_replication.html](https://paws-r.github.io/docs/s3control/put_bucket_replication.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_put_bucket_replication/](https://www.paws-r-sdk.com/docs/s3control_put_bucket_replication/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the Outposts bucket.
 #' @param Bucket &#91;required&#93; Specifies the S3 on Outposts bucket to set the configuration for.
@@ -2068,7 +2068,7 @@ s3control_put_bucket_replication <- function(AccountId, Bucket, ReplicationConfi
 #' @description
 #' This action puts tags on an Amazon S3 on Outposts bucket. To put tags on an S3 bucket, see [`put_bucket_tagging`][s3control_put_bucket_tagging] in the *Amazon S3 API Reference*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/put_bucket_tagging.html](https://paws-r.github.io/docs/s3control/put_bucket_tagging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_put_bucket_tagging/](https://www.paws-r-sdk.com/docs/s3control_put_bucket_tagging/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the Outposts bucket.
 #' @param Bucket &#91;required&#93; The Amazon Resource Name (ARN) of the bucket.
@@ -2112,7 +2112,7 @@ s3control_put_bucket_tagging <- function(AccountId, Bucket, Tagging) {
 #' @description
 #' This operation sets the versioning state for S3 on Outposts buckets only. To set the versioning state for an S3 bucket, see [`put_bucket_versioning`][s3control_put_bucket_versioning] in the *Amazon S3 API Reference*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/put_bucket_versioning.html](https://paws-r.github.io/docs/s3control/put_bucket_versioning.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_put_bucket_versioning/](https://www.paws-r-sdk.com/docs/s3control_put_bucket_versioning/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID of the S3 on Outposts bucket.
 #' @param Bucket &#91;required&#93; The S3 on Outposts bucket to set the versioning state for.
@@ -2145,7 +2145,7 @@ s3control_put_bucket_versioning <- function(AccountId, Bucket, MFA = NULL, Versi
 #' @description
 #' Sets the supplied tag-set on an S3 Batch Operations job.
 #'
-#' See [https://paws-r.github.io/docs/s3control/put_job_tagging.html](https://paws-r.github.io/docs/s3control/put_job_tagging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_put_job_tagging/](https://www.paws-r-sdk.com/docs/s3control_put_job_tagging/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID associated with the S3 Batch
 #' Operations job.
@@ -2178,7 +2178,7 @@ s3control_put_job_tagging <- function(AccountId, JobId, Tags) {
 #' @description
 #' Associates an access control policy with the specified Multi-Region Access Point. Each Multi-Region Access Point can have only one policy, so a request made to this action replaces any existing policy that is associated with the specified Multi-Region Access Point.
 #'
-#' See [https://paws-r.github.io/docs/s3control/put_multi_region_access_point_policy.html](https://paws-r.github.io/docs/s3control/put_multi_region_access_point_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_put_multi_region_access_point_policy/](https://www.paws-r-sdk.com/docs/s3control_put_multi_region_access_point_policy/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the owner of the Multi-Region
 #' Access Point.
@@ -2213,7 +2213,7 @@ s3control_put_multi_region_access_point_policy <- function(AccountId, ClientToke
 #' @description
 #' Creates or modifies the `PublicAccessBlock` configuration for an Amazon Web Services account. For this operation, users must have the `s3:PutAccountPublicAccessBlock` permission. For more information, see [Using Amazon S3 block public access](https://docs.aws.amazon.com/AmazonS3/latest/userguide/access-control-block-public-access.html).
 #'
-#' See [https://paws-r.github.io/docs/s3control/put_public_access_block.html](https://paws-r.github.io/docs/s3control/put_public_access_block.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_put_public_access_block/](https://www.paws-r-sdk.com/docs/s3control_put_public_access_block/) for full documentation.
 #'
 #' @param PublicAccessBlockConfiguration &#91;required&#93; The `PublicAccessBlock` configuration that you want to apply to the
 #' specified Amazon Web Services account.
@@ -2245,7 +2245,7 @@ s3control_put_public_access_block <- function(PublicAccessBlockConfiguration, Ac
 #' @description
 #' Puts an Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see [Working with Amazon S3 Storage Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html) in the *Amazon S3 User Guide*. For a complete list of S3 Storage Lens metrics, see [S3 Storage Lens metrics glossary](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_metrics_glossary.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/put_storage_lens_configuration.html](https://paws-r.github.io/docs/s3control/put_storage_lens_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_put_storage_lens_configuration/](https://www.paws-r-sdk.com/docs/s3control_put_storage_lens_configuration/) for full documentation.
 #'
 #' @param ConfigId &#91;required&#93; The ID of the S3 Storage Lens configuration.
 #' @param AccountId &#91;required&#93; The account ID of the requester.
@@ -2279,7 +2279,7 @@ s3control_put_storage_lens_configuration <- function(ConfigId, AccountId, Storag
 #' @description
 #' Put or replace tags on an existing Amazon S3 Storage Lens configuration. For more information about S3 Storage Lens, see [Assessing your storage activity and usage with Amazon S3 Storage Lens](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/put_storage_lens_configuration_tagging.html](https://paws-r.github.io/docs/s3control/put_storage_lens_configuration_tagging.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_put_storage_lens_configuration_tagging/](https://www.paws-r-sdk.com/docs/s3control_put_storage_lens_configuration_tagging/) for full documentation.
 #'
 #' @param ConfigId &#91;required&#93; The ID of the S3 Storage Lens configuration.
 #' @param AccountId &#91;required&#93; The account ID of the requester.
@@ -2312,7 +2312,7 @@ s3control_put_storage_lens_configuration_tagging <- function(ConfigId, AccountId
 #' @description
 #' Submits an updated route configuration for a Multi-Region Access Point. This API operation updates the routing status for the specified Regions from active to passive, or from passive to active. A value of `0` indicates a passive status, which means that traffic won't be routed to the specified Region. A value of `100` indicates an active status, which means that traffic will be routed to the specified Region. At least one Region must be active at all times.
 #'
-#' See [https://paws-r.github.io/docs/s3control/submit_multi_region_access_point_routes.html](https://paws-r.github.io/docs/s3control/submit_multi_region_access_point_routes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_submit_multi_region_access_point_routes/](https://www.paws-r-sdk.com/docs/s3control_submit_multi_region_access_point_routes/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID for the owner of the Multi-Region
 #' Access Point.
@@ -2346,7 +2346,7 @@ s3control_submit_multi_region_access_point_routes <- function(AccountId, Mrap, R
 #' @description
 #' Updates an existing S3 Batch Operations job's priority. For more information, see [S3 Batch Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/update_job_priority.html](https://paws-r.github.io/docs/s3control/update_job_priority.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_update_job_priority/](https://www.paws-r-sdk.com/docs/s3control_update_job_priority/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID associated with the S3 Batch
 #' Operations job.
@@ -2378,7 +2378,7 @@ s3control_update_job_priority <- function(AccountId, JobId, Priority) {
 #' @description
 #' Updates the status for the specified job. Use this action to confirm that you want to run a job or to cancel an existing job. For more information, see [S3 Batch Operations](https://docs.aws.amazon.com/AmazonS3/latest/userguide/batch-ops.html) in the *Amazon S3 User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/s3control/update_job_status.html](https://paws-r.github.io/docs/s3control/update_job_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/s3control_update_job_status/](https://www.paws-r-sdk.com/docs/s3control_update_job_status/) for full documentation.
 #'
 #' @param AccountId &#91;required&#93; The Amazon Web Services account ID associated with the S3 Batch
 #' Operations job.

@@ -14,6 +14,6 @@ fis_tag_resource(resourceArn, tags)
 \description{
 Applies the specified tags to the specified resource.
 
-See \url{https://paws-r.github.io/docs/fis/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fis_tag_resource/} for full documentation.
 }
 \keyword{internal}

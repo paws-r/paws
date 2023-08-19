@@ -14,6 +14,6 @@ opsworks_register_ecs_cluster(EcsClusterArn, StackId)
 \description{
 Registers a specified Amazon ECS cluster with a stack. You can register only one cluster with a stack. A cluster can be registered with only one stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workinglayers-ecscluster.html}{Resource Management}.
 
-See \url{https://paws-r.github.io/docs/opsworks/register_ecs_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_register_ecs_cluster/} for full documentation.
 }
 \keyword{internal}

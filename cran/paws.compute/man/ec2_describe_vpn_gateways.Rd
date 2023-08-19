@@ -44,6 +44,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes one or more of your virtual private gateways.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_vpn_gateways.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_vpn_gateways/} for full documentation.
 }
 \keyword{internal}

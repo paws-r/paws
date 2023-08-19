@@ -16,6 +16,6 @@ sns_verify_sms_sandbox_phone_number(PhoneNumber, OneTimePassword)
 \description{
 Verifies a destination phone number with a one-time password (OTP) for the calling Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/sns/verify_sms_sandbox_phone_number.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sns_verify_sms_sandbox_phone_number/} for full documentation.
 }
 \keyword{internal}

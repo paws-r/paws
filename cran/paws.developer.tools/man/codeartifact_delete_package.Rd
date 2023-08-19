@@ -39,6 +39,6 @@ packages of those formats do not have a namespace.
 \description{
 Deletes a package and all associated package versions. A deleted package cannot be restored. To delete one or more package versions, use the \code{\link[=codeartifact_delete_package_versions]{delete_package_versions}} API.
 
-See \url{https://paws-r.github.io/docs/codeartifact/delete_package.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_delete_package/} for full documentation.
 }
 \keyword{internal}

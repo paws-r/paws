@@ -15,6 +15,6 @@ cloudwatchrum_tag_resource(ResourceArn, Tags)
 \description{
 Assigns one or more tags (key-value pairs) to the specified CloudWatch RUM resource. Currently, the only resources that can be tagged app monitors.
 
-See \url{https://paws-r.github.io/docs/cloudwatchrum/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchrum_tag_resource/} for full documentation.
 }
 \keyword{internal}

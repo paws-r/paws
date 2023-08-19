@@ -19,6 +19,6 @@ request.}
 \description{
 Returns a list of TLS security policies that you can apply to Lightsail load balancers.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_load_balancer_tls_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_load_balancer_tls_policies/} for full documentation.
 }
 \keyword{internal}

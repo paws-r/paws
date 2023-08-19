@@ -21,6 +21,6 @@ descriptions.}
 \description{
 Updates the content and status of IP rules. To use this operation, you must provide the entire map of rules. You can use the \code{\link[=quicksight_describe_ip_restriction]{describe_ip_restriction}} operation to get the current rule map.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_ip_restriction.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_ip_restriction/} for full documentation.
 }
 \keyword{internal}

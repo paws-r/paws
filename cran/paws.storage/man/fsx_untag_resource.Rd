@@ -15,6 +15,6 @@ doesn't exist, the call will still succeed to be idempotent.}
 \description{
 This action removes a tag from an Amazon FSx resource.
 
-See \url{https://paws-r.github.io/docs/fsx/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_untag_resource/} for full documentation.
 }
 \keyword{internal}

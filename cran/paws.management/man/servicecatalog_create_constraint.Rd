@@ -106,6 +106,6 @@ returned for each repeated request.}
 \description{
 Creates a constraint.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/create_constraint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_create_constraint/} for full documentation.
 }
 \keyword{internal}

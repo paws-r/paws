@@ -35,6 +35,6 @@ results.}
 \description{
 Lists the accounts in an organization that are contained by the specified target root or organizational unit (OU). If you specify the root, you get a list of all the accounts that aren't in any OU. If you specify an OU, you get a list of all the accounts in only that OU and not in any child OUs. To get a list of all accounts in the organization, use the \code{\link[=organizations_list_accounts]{list_accounts}} operation.
 
-See \url{https://paws-r.github.io/docs/organizations/list_accounts_for_parent.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_list_accounts_for_parent/} for full documentation.
 }
 \keyword{internal}

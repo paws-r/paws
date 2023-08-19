@@ -12,6 +12,6 @@ timestreamquery_delete_scheduled_query(ScheduledQueryArn)
 \description{
 Deletes a given scheduled query. This is an irreversible operation.
 
-See \url{https://paws-r.github.io/docs/timestreamquery/delete_scheduled_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamquery_delete_scheduled_query/} for full documentation.
 }
 \keyword{internal}

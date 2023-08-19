@@ -595,7 +595,7 @@ test_that("convert", {
   expect_equal(convert(text), expected)
 })
 
-test_that("check links", {
+test_that("check links part1", {
   text <- "<a href='http://www.example.com'>foo</a>"
   expected <- c("[foo](http://www.example.com/)")
   expect_equal(convert(text), expected)
@@ -627,7 +627,10 @@ test_that("check links", {
   text <- "<a href='example.com'>foo</a>"
   expected <- c("[foo](https://example.com/)")
   expect_equal(convert(text), expected)
+})
 
+test_that("check links part2", {
+  skip_on_ci()
   text <- "<a href='https://httpbin.org/anything#foo?bar=baz'>foo</a>"
   expected <- c("[foo](https://httpbin.org/anything#foo?bar=baz)")
   expect_equal(convert(text), expected)
@@ -700,5 +703,11 @@ test_that("escape_unmatched", {
 test_that("comment_list_itemize", {
   config <- list(foo = "bar")
   expect <- "\\itemize{\n\\item{\\strong{foo}:} {bar}\n}"
+  expect_equal(comment_list_itemize(config), expect)
+})
+
+test_that("comment_list_itemize nested list", {
+  config <- list(foo = "bar", baz = list(qux = "ham"))
+  expect <- "\\itemize{\n\\item{\\strong{foo}:} {bar}\n\\item{\\strong{baz}:} {\\itemize{\n\\item{\\strong{qux}:} {ham}\n}}\n}"
   expect_equal(comment_list_itemize(config), expect)
 })

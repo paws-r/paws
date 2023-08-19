@@ -29,7 +29,9 @@ does not include dashes or spaces.}
 to.}
 
 \item{format}{[required] A format that specifies the type of the package version with the
-requested asset file.}
+requested asset file.
+
+The only supported value is \code{generic}.}
 
 \item{namespace}{The namespace of the package version to publish.}
 
@@ -62,6 +64,6 @@ Valid values: \code{unfinished}}
 \description{
 Creates a new package version containing one or more assets (or files).
 
-See \url{https://paws-r.github.io/docs/codeartifact/publish_package_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_publish_package_version/} for full documentation.
 }
 \keyword{internal}

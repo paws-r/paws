@@ -17,6 +17,6 @@ glue_list_jobs(NextToken = NULL, MaxResults = NULL, Tags = NULL)
 \description{
 Retrieves the names of all job resources in this Amazon Web Services account, or the resources with the specified tag. This operation allows you to see which resources are available in your account, and their names.
 
-See \url{https://paws-r.github.io/docs/glue/list_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_list_jobs/} for full documentation.
 }
 \keyword{internal}

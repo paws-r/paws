@@ -23,6 +23,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Modifies the VPN tunnel endpoint certificate.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_vpn_tunnel_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_vpn_tunnel_certificate/} for full documentation.
 }
 \keyword{internal}

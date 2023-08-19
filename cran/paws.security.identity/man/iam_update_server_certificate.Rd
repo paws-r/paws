@@ -39,6 +39,6 @@ spaces. You can also include any of the following characters: _+=,.@-}
 \description{
 Updates the name and/or the path of the specified server certificate stored in IAM.
 
-See \url{https://paws-r.github.io/docs/iam/update_server_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_update_server_certificate/} for full documentation.
 }
 \keyword{internal}

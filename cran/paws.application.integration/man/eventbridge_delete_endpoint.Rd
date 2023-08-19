@@ -13,6 +13,6 @@ eventbridge_delete_endpoint(Name)
 \description{
 Delete an existing global endpoint. For more information about global endpoints, see \href{https://docs.aws.amazon.com/eventbridge/latest/userguide/eb-global-endpoints.html}{Making applications Regional-fault tolerant with global endpoints and event replication} in the Amazon EventBridge User Guide.
 
-See \url{https://paws-r.github.io/docs/eventbridge/delete_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_delete_endpoint/} for full documentation.
 }
 \keyword{internal}

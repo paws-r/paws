@@ -14,6 +14,6 @@ connectcampaignservice_update_campaign_name(id, name)
 \description{
 Updates the name of a campaign. This API is idempotent.
 
-See \url{https://paws-r.github.io/docs/connectcampaignservice/update_campaign_name.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectcampaignservice_update_campaign_name/} for full documentation.
 }
 \keyword{internal}

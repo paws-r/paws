@@ -17,6 +17,6 @@ described.}
 \description{
 Describes a version of a SageMaker image.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_image_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_image_version/} for full documentation.
 }
 \keyword{internal}

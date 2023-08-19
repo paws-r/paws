@@ -18,6 +18,6 @@ to remove.}
 \description{
 Removes a custom vocabulary from the specified locale in the specified bot.
 
-See \url{https://paws-r.github.io/docs/lexmodelsv2/delete_custom_vocabulary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelsv2_delete_custom_vocabulary/} for full documentation.
 }
 \keyword{internal}

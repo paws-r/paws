@@ -17,6 +17,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Deletes a use case from an integration association.
 
-See \url{https://paws-r.github.io/docs/connect/delete_use_case.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_delete_use_case/} for full documentation.
 }
 \keyword{internal}

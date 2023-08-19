@@ -18,6 +18,6 @@ in a single call.}
 \description{
 Create or update an attribute on an Amazon ECS resource. If the attribute doesn't exist, it's created. If the attribute exists, its value is replaced with the specified value. To delete an attribute, use \code{\link[=ecs_delete_attributes]{delete_attributes}}. For more information, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-placement-constraints.html#attributes}{Attributes} in the \emph{Amazon Elastic Container Service Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/ecs/put_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecs_put_attributes/} for full documentation.
 }
 \keyword{internal}

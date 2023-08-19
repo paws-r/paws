@@ -15,6 +15,6 @@ guardduty_get_remaining_free_trial_days(DetectorId, AccountIds = NULL)
 \description{
 Provides the number of days left for each data source used in the free trial period.
 
-See \url{https://paws-r.github.io/docs/guardduty/get_remaining_free_trial_days.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_get_remaining_free_trial_days/} for full documentation.
 }
 \keyword{internal}

@@ -25,6 +25,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Returns the list of all log groups that are being monitored and tagged by DevOps Guru.
 
-See \url{https://paws-r.github.io/docs/devopsguru/list_monitored_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_list_monitored_resources/} for full documentation.
 }
 \keyword{internal}

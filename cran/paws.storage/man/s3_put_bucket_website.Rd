@@ -44,6 +44,6 @@ different account, the request fails with the HTTP status code
 \description{
 Sets the configuration of the website that is specified in the \code{website} subresource. To configure a bucket as a website, you can add this subresource on the bucket with website configuration information such as the file name of the index document and any redirect rules. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html}{Hosting Websites on Amazon S3}.
 
-See \url{https://paws-r.github.io/docs/s3/put_bucket_website.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_website/} for full documentation.
 }
 \keyword{internal}

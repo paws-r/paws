@@ -22,6 +22,6 @@ return. To request the first page, leave nextToken empty.}
 \description{
 Describe available engine types and versions.
 
-See \url{https://paws-r.github.io/docs/mq/describe_broker_engine_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_describe_broker_engine_types/} for full documentation.
 }
 \keyword{internal}

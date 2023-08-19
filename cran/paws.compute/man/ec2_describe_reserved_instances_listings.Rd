@@ -29,6 +29,6 @@ listing.
 \description{
 Describes your account's Reserved Instance listings in the Reserved Instance Marketplace.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_reserved_instances_listings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_reserved_instances_listings/} for full documentation.
 }
 \keyword{internal}

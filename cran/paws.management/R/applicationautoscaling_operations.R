@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Deletes the specified scaling policy for an Application Auto Scaling scalable target.
 #'
-#' See [https://paws-r.github.io/docs/applicationautoscaling/delete_scaling_policy.html](https://paws-r.github.io/docs/applicationautoscaling/delete_scaling_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationautoscaling_delete_scaling_policy/](https://www.paws-r-sdk.com/docs/applicationautoscaling_delete_scaling_policy/) for full documentation.
 #'
 #' @param PolicyName &#91;required&#93; The name of the scaling policy.
 #' @param ServiceNamespace &#91;required&#93; The namespace of the Amazon Web Services service that provides the
@@ -181,7 +181,7 @@ applicationautoscaling_delete_scaling_policy <- function(PolicyName, ServiceName
 #' @description
 #' Deletes the specified scheduled action for an Application Auto Scaling scalable target.
 #'
-#' See [https://paws-r.github.io/docs/applicationautoscaling/delete_scheduled_action.html](https://paws-r.github.io/docs/applicationautoscaling/delete_scheduled_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationautoscaling_delete_scheduled_action/](https://www.paws-r-sdk.com/docs/applicationautoscaling_delete_scheduled_action/) for full documentation.
 #'
 #' @param ServiceNamespace &#91;required&#93; The namespace of the Amazon Web Services service that provides the
 #' resource. For a resource provided by your own application or service,
@@ -353,7 +353,7 @@ applicationautoscaling_delete_scheduled_action <- function(ServiceNamespace, Sch
 #' @description
 #' Deregisters an Application Auto Scaling scalable target when you have finished using it. To see which resources have been registered, use [`describe_scalable_targets`][applicationautoscaling_describe_scalable_targets].
 #'
-#' See [https://paws-r.github.io/docs/applicationautoscaling/deregister_scalable_target.html](https://paws-r.github.io/docs/applicationautoscaling/deregister_scalable_target.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationautoscaling_deregister_scalable_target/](https://www.paws-r-sdk.com/docs/applicationautoscaling_deregister_scalable_target/) for full documentation.
 #'
 #' @param ServiceNamespace &#91;required&#93; The namespace of the Amazon Web Services service that provides the
 #' resource. For a resource provided by your own application or service,
@@ -523,7 +523,7 @@ applicationautoscaling_deregister_scalable_target <- function(ServiceNamespace, 
 #' @description
 #' Gets information about the scalable targets in the specified namespace.
 #'
-#' See [https://paws-r.github.io/docs/applicationautoscaling/describe_scalable_targets.html](https://paws-r.github.io/docs/applicationautoscaling/describe_scalable_targets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationautoscaling_describe_scalable_targets/](https://www.paws-r-sdk.com/docs/applicationautoscaling_describe_scalable_targets/) for full documentation.
 #'
 #' @param ServiceNamespace &#91;required&#93; The namespace of the Amazon Web Services service that provides the
 #' resource. For a resource provided by your own application or service,
@@ -687,7 +687,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
     name = "DescribeScalableTargets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalableTargets")
   )
   input <- .applicationautoscaling$describe_scalable_targets_input(ServiceNamespace = ServiceNamespace, ResourceIds = ResourceIds, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
   output <- .applicationautoscaling$describe_scalable_targets_output()
@@ -705,7 +705,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
 #' @description
 #' Provides descriptive information about the scaling activities in the specified namespace from the previous six weeks.
 #'
-#' See [https://paws-r.github.io/docs/applicationautoscaling/describe_scaling_activities.html](https://paws-r.github.io/docs/applicationautoscaling/describe_scaling_activities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationautoscaling_describe_scaling_activities/](https://www.paws-r-sdk.com/docs/applicationautoscaling_describe_scaling_activities/) for full documentation.
 #'
 #' @param ServiceNamespace &#91;required&#93; The namespace of the Amazon Web Services service that provides the
 #' resource. For a resource provided by your own application or service,
@@ -874,7 +874,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
     name = "DescribeScalingActivities",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalingActivities")
   )
   input <- .applicationautoscaling$describe_scaling_activities_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken, IncludeNotScaledActivities = IncludeNotScaledActivities)
   output <- .applicationautoscaling$describe_scaling_activities_output()
@@ -892,7 +892,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
 #' @description
 #' Describes the Application Auto Scaling scaling policies for the specified service namespace.
 #'
-#' See [https://paws-r.github.io/docs/applicationautoscaling/describe_scaling_policies.html](https://paws-r.github.io/docs/applicationautoscaling/describe_scaling_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationautoscaling_describe_scaling_policies/](https://www.paws-r-sdk.com/docs/applicationautoscaling_describe_scaling_policies/) for full documentation.
 #'
 #' @param PolicyNames The names of the scaling policies to describe.
 #' @param ServiceNamespace &#91;required&#93; The namespace of the Amazon Web Services service that provides the
@@ -1056,7 +1056,7 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
     name = "DescribeScalingPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalingPolicies")
   )
   input <- .applicationautoscaling$describe_scaling_policies_input(PolicyNames = PolicyNames, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
   output <- .applicationautoscaling$describe_scaling_policies_output()
@@ -1074,7 +1074,7 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
 #' @description
 #' Describes the Application Auto Scaling scheduled actions for the specified service namespace.
 #'
-#' See [https://paws-r.github.io/docs/applicationautoscaling/describe_scheduled_actions.html](https://paws-r.github.io/docs/applicationautoscaling/describe_scheduled_actions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationautoscaling_describe_scheduled_actions/](https://www.paws-r-sdk.com/docs/applicationautoscaling_describe_scheduled_actions/) for full documentation.
 #'
 #' @param ScheduledActionNames The names of the scheduled actions to describe.
 #' @param ServiceNamespace &#91;required&#93; The namespace of the Amazon Web Services service that provides the
@@ -1238,7 +1238,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
     name = "DescribeScheduledActions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledActions")
   )
   input <- .applicationautoscaling$describe_scheduled_actions_input(ScheduledActionNames = ScheduledActionNames, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
   output <- .applicationautoscaling$describe_scheduled_actions_output()
@@ -1256,7 +1256,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
 #' @description
 #' Returns all the tags on the specified Application Auto Scaling scalable target.
 #'
-#' See [https://paws-r.github.io/docs/applicationautoscaling/list_tags_for_resource.html](https://paws-r.github.io/docs/applicationautoscaling/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationautoscaling_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/applicationautoscaling_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; Specify the ARN of the scalable target.
 #' 
@@ -1292,7 +1292,7 @@ applicationautoscaling_list_tags_for_resource <- function(ResourceARN) {
 #' @description
 #' Creates or updates a scaling policy for an Application Auto Scaling scalable target.
 #'
-#' See [https://paws-r.github.io/docs/applicationautoscaling/put_scaling_policy.html](https://paws-r.github.io/docs/applicationautoscaling/put_scaling_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationautoscaling_put_scaling_policy/](https://www.paws-r-sdk.com/docs/applicationautoscaling_put_scaling_policy/) for full documentation.
 #'
 #' @param PolicyName &#91;required&#93; The name of the scaling policy.
 #' 
@@ -1492,7 +1492,7 @@ applicationautoscaling_put_scaling_policy <- function(PolicyName, ServiceNamespa
 #' @description
 #' Creates or updates a scheduled action for an Application Auto Scaling scalable target.
 #'
-#' See [https://paws-r.github.io/docs/applicationautoscaling/put_scheduled_action.html](https://paws-r.github.io/docs/applicationautoscaling/put_scheduled_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationautoscaling_put_scheduled_action/](https://www.paws-r-sdk.com/docs/applicationautoscaling_put_scheduled_action/) for full documentation.
 #'
 #' @param ServiceNamespace &#91;required&#93; The namespace of the Amazon Web Services service that provides the
 #' resource. For a resource provided by your own application or service,
@@ -1705,7 +1705,7 @@ applicationautoscaling_put_scheduled_action <- function(ServiceNamespace, Schedu
 #' @description
 #' Registers or updates a scalable target, which is the resource that you want to scale.
 #'
-#' See [https://paws-r.github.io/docs/applicationautoscaling/register_scalable_target.html](https://paws-r.github.io/docs/applicationautoscaling/register_scalable_target.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationautoscaling_register_scalable_target/](https://www.paws-r-sdk.com/docs/applicationautoscaling_register_scalable_target/) for full documentation.
 #'
 #' @param ServiceNamespace &#91;required&#93; The namespace of the Amazon Web Services service that provides the
 #' resource. For a resource provided by your own application or service,
@@ -1967,7 +1967,7 @@ applicationautoscaling_register_scalable_target <- function(ServiceNamespace, Re
 #' @description
 #' Adds or edits tags on an Application Auto Scaling scalable target.
 #'
-#' See [https://paws-r.github.io/docs/applicationautoscaling/tag_resource.html](https://paws-r.github.io/docs/applicationautoscaling/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationautoscaling_tag_resource/](https://www.paws-r-sdk.com/docs/applicationautoscaling_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; Identifies the Application Auto Scaling scalable target that you want to
 #' apply tags to.
@@ -2017,7 +2017,7 @@ applicationautoscaling_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Deletes tags from an Application Auto Scaling scalable target. To delete a tag, specify the tag key and the Application Auto Scaling scalable target.
 #'
-#' See [https://paws-r.github.io/docs/applicationautoscaling/untag_resource.html](https://paws-r.github.io/docs/applicationautoscaling/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/applicationautoscaling_untag_resource/](https://www.paws-r-sdk.com/docs/applicationautoscaling_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; Identifies the Application Auto Scaling scalable target from which to
 #' remove tags.

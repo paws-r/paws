@@ -26,6 +26,6 @@ the previous request to continue listing results after the first page.}
 \description{
 Lists the filters associated with your account.
 
-See \url{https://paws-r.github.io/docs/inspector2/list_filters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_list_filters/} for full documentation.
 }
 \keyword{internal}

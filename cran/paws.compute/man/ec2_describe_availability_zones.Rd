@@ -62,6 +62,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the Availability Zones, Local Zones, and Wavelength Zones that are available to you. If there is an event impacting a zone, you can use this request to view the state and any provided messages for that zone.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_availability_zones.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_availability_zones/} for full documentation.
 }
 \keyword{internal}

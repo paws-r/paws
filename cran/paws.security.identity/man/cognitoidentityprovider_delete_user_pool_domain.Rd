@@ -16,6 +16,6 @@ domains, this is the prefix alone, such as \code{auth}.}
 \description{
 Deletes a domain for a user pool.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/delete_user_pool_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user_pool_domain/} for full documentation.
 }
 \keyword{internal}

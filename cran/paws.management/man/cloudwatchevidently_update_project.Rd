@@ -28,6 +28,6 @@ AppConfig application that will be used for client-side evaluation.}
 \description{
 Updates the description of an existing project.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/update_project.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_update_project/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,7 @@ customerprofiles_create_domain(
   DefaultEncryptionKey = NULL,
   DeadLetterQueueUrl = NULL,
   Matching = NULL,
+  RuleBasedMatching = NULL,
   Tags = NULL
 )
 }
@@ -41,11 +42,21 @@ After the Identity Resolution Job completes, use the
 the results. Or, if you have configured \code{ExportingConfig} in the
 \code{MatchingRequest}, you can download the results from S3.}
 
+\item{RuleBasedMatching}{The process of matching duplicate profiles using the Rule-Based
+matching. If \code{RuleBasedMatching} = true, Amazon Connect Customer
+Profiles will start to match and merge your profiles according to your
+configuration in the \code{RuleBasedMatchingRequest}. You can use the
+\code{\link[=customerprofiles_list_rule_based_matches]{list_rule_based_matches}}
+and \code{\link[=customerprofiles_get_similar_profiles]{get_similar_profiles}} API
+to return and review the results. Also, if you have configured
+\code{ExportingConfig} in the \code{RuleBasedMatchingRequest}, you can download
+the results from S3.}
+
 \item{Tags}{The tags used to organize, track, or control access for this resource.}
 }
 \description{
 Creates a domain, which is a container for all customer data, such as customer profile attributes, object types, profile keys, and encryption keys. You can create multiple domains, and each domain can have multiple third-party integrations.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/create_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_create_domain/} for full documentation.
 }
 \keyword{internal}

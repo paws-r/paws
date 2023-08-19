@@ -18,6 +18,6 @@ added or removed.}
 \description{
 Adds or removes domain controllers to or from the directory. Based on the difference between current value and new value (provided through this API call), domain controllers will be added or removed. It may take up to 45 minutes for any new domain controllers to become fully active once the requested number of domain controllers is updated. During this time, you cannot make another update request.
 
-See \url{https://paws-r.github.io/docs/directoryservice/update_number_of_domain_controllers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_update_number_of_domain_controllers/} for full documentation.
 }
 \keyword{internal}

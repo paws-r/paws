@@ -26,6 +26,6 @@ networkmanager_put_core_network_policy(
 \description{
 Creates a new, immutable version of a core network policy. A subsequent change set is created showing the differences between the LIVE policy and the submitted policy.
 
-See \url{https://paws-r.github.io/docs/networkmanager/put_core_network_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_put_core_network_policy/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ in the \emph{Alexa Skills Kit}.}
 \description{
 Returns information about a built-in intent.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/get_builtin_intent.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_get_builtin_intent/} for full documentation.
 }
 \keyword{internal}

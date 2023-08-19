@@ -13,6 +13,6 @@ dlm_delete_lifecycle_policy(PolicyId)
 \description{
 Deletes the specified lifecycle policy and halts the automated operations that the policy specified.
 
-See \url{https://paws-r.github.io/docs/dlm/delete_lifecycle_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dlm_delete_lifecycle_policy/} for full documentation.
 }
 \keyword{internal}

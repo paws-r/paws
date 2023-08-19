@@ -13,6 +13,6 @@ you want to delete.}
 \description{
 Deletes an Amazon DocumentDB event notification subscription.
 
-See \url{https://paws-r.github.io/docs/docdb/delete_event_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_delete_event_subscription/} for full documentation.
 }
 \keyword{internal}

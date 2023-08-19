@@ -2,14 +2,14 @@
 % Please edit documentation in R/auditmanager_operations.R
 \name{auditmanager_get_services_in_scope}
 \alias{auditmanager_get_services_in_scope}
-\title{Returns a list of all of the Amazon Web Services that you can choose to
+\title{Gets a list of all of the Amazon Web Services that you can choose to
 include in your assessment}
 \usage{
 auditmanager_get_services_in_scope()
 }
 \description{
-Returns a list of all of the Amazon Web Services that you can choose to include in your assessment. When you \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateAssessment.html}{create an assessment}, specify which of these services you want to include to narrow the assessment's \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Scope.html}{scope}.
+Gets a list of all of the Amazon Web Services that you can choose to include in your assessment. When you \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_CreateAssessment.html}{create an assessment}, specify which of these services you want to include to narrow the assessment's \href{https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Scope.html}{scope}.
 
-See \url{https://paws-r.github.io/docs/auditmanager/get_services_in_scope.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_get_services_in_scope/} for full documentation.
 }
 \keyword{internal}

@@ -19,6 +19,6 @@ replication. For example, \code{us-east-1}.}
 \description{
 Adds two domain controllers in the specified Region for the specified directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/add_region.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_add_region/} for full documentation.
 }
 \keyword{internal}

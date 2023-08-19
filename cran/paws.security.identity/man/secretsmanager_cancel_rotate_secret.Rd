@@ -16,6 +16,6 @@ partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/usergui
 \description{
 Turns off automatic rotation, and if a rotation is currently in progress, cancels the rotation.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/cancel_rotate_secret.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_cancel_rotate_secret/} for full documentation.
 }
 \keyword{internal}

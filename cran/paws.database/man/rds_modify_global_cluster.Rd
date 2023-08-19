@@ -2,7 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_modify_global_cluster}
 \alias{rds_modify_global_cluster}
-\title{Modify a setting for an Amazon Aurora global cluster}
+\title{Modifies a setting for an Amazon Aurora global cluster}
 \usage{
 rds_modify_global_cluster(
   GlobalClusterIdentifier = NULL,
@@ -13,34 +13,31 @@ rds_modify_global_cluster(
 )
 }
 \arguments{
-\item{GlobalClusterIdentifier}{The DB cluster identifier for the global cluster being modified. This
-parameter isn't case-sensitive.
+\item{GlobalClusterIdentifier}{The cluster identifier for the global cluster to modify. This parameter
+isn't case-sensitive.
 
 Constraints:
 \itemize{
 \item Must match the identifier of an existing global database cluster.
 }}
 
-\item{NewGlobalClusterIdentifier}{The new cluster identifier for the global database cluster when
-modifying a global database cluster. This value is stored as a lowercase
-string.
+\item{NewGlobalClusterIdentifier}{The new cluster identifier for the global database cluster. This value
+is stored as a lowercase string.
 
 Constraints:
 \itemize{
-\item Must contain from 1 to 63 letters, numbers, or hyphens
-\item The first character must be a letter
-\item Can't end with a hyphen or contain two consecutive hyphens
+\item Must contain from 1 to 63 letters, numbers, or hyphens.
+\item The first character must be a letter.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 }
 
 Example: \code{my-cluster2}}
 
-\item{DeletionProtection}{Indicates if the global database cluster has deletion protection
-enabled. The global database cluster can't be deleted when deletion
+\item{DeletionProtection}{Specifies whether to enable deletion protection for the global database
+cluster. The global database cluster can't be deleted when deletion
 protection is enabled.}
 
 \item{EngineVersion}{The version number of the database engine to which you want to upgrade.
-Changing this parameter results in an outage. The change is applied
-during the next maintenance window unless \code{ApplyImmediately} is enabled.
 
 To list all of the available engine versions for \code{aurora-mysql} (for
 MySQL-based Aurora global databases), use the following command:
@@ -53,11 +50,11 @@ command:
 
 \verb{aws rds describe-db-engine-versions --engine aurora-postgresql --query '*[]|[?SupportsGlobalDatabases == `true`].[EngineVersion]'}}
 
-\item{AllowMajorVersionUpgrade}{A value that indicates whether major version upgrades are allowed.
+\item{AllowMajorVersionUpgrade}{Specifies whether to allow major version upgrades.
 
-Constraints: You must allow major version upgrades when specifying a
-value for the \code{EngineVersion} parameter that is a different major
-version than the DB cluster's current version.
+Constraints: Must be enabled if you specify a value for the
+\code{EngineVersion} parameter that's a different major version than the
+global cluster's current version.
 
 If you upgrade the major version of a global database, the cluster and
 DB instance parameter groups are set to the default parameter groups for
@@ -65,8 +62,8 @@ the new version. Apply any custom parameter groups after completing the
 upgrade.}
 }
 \description{
-Modify a setting for an Amazon Aurora global cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What is Amazon Aurora?} in the \emph{Amazon Aurora User Guide}.
+Modifies a setting for an Amazon Aurora global cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. For more information on Amazon Aurora, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html}{What is Amazon Aurora?} in the \emph{Amazon Aurora User Guide}.
 
-See \url{https://paws-r.github.io/docs/rds/modify_global_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_modify_global_cluster/} for full documentation.
 }
 \keyword{internal}

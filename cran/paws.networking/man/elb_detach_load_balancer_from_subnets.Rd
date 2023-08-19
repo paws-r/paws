@@ -15,6 +15,6 @@ elb_detach_load_balancer_from_subnets(LoadBalancerName, Subnets)
 \description{
 Removes the specified subnets from the set of configured subnets for the load balancer.
 
-See \url{https://paws-r.github.io/docs/elb/detach_load_balancer_from_subnets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_detach_load_balancer_from_subnets/} for full documentation.
 }
 \keyword{internal}

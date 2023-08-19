@@ -13,6 +13,6 @@ operation for.}
 \description{
 Cancels a resize operation for a cluster.
 
-See \url{https://paws-r.github.io/docs/redshift/cancel_resize.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_cancel_resize/} for full documentation.
 }
 \keyword{internal}

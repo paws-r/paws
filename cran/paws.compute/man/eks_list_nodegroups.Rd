@@ -31,6 +31,6 @@ continues from the end of the previous results that returned the
 \description{
 Lists the Amazon EKS managed node groups associated with the specified cluster in your Amazon Web Services account in the specified Region. Self-managed node groups are not listed.
 
-See \url{https://paws-r.github.io/docs/eks/list_nodegroups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_list_nodegroups/} for full documentation.
 }
 \keyword{internal}

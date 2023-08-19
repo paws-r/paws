@@ -12,6 +12,6 @@ cloudsearch_describe_scaling_parameters(DomainName)
 \description{
 Gets the scaling parameters configured for a domain. A domain's scaling parameters specify the desired search instance type and replication count. For more information, see \if{html}{\out{<a href="https://docs.aws.amazon.com/cloudsearch/latest/developerguide/configuring-scaling-options.html" target="_blank">}}Configuring Scaling Options\if{html}{\out{</a>}} in the \emph{Amazon CloudSearch Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/cloudsearch/describe_scaling_parameters.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudsearch_describe_scaling_parameters/} for full documentation.
 }
 \keyword{internal}

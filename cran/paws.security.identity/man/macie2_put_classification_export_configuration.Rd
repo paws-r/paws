@@ -14,6 +14,6 @@ settings to use when storing results in that location.}
 \description{
 Creates or updates the configuration settings for storing data classification results.
 
-See \url{https://paws-r.github.io/docs/macie2/put_classification_export_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_put_classification_export_configuration/} for full documentation.
 }
 \keyword{internal}

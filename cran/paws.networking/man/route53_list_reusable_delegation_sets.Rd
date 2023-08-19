@@ -27,6 +27,6 @@ than 100, Route 53 returns only the first 100 reusable delegation sets.}
 \description{
 Retrieves a list of the reusable delegation sets that are associated with the current Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/route53/list_reusable_delegation_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_list_reusable_delegation_sets/} for full documentation.
 }
 \keyword{internal}

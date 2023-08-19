@@ -17,6 +17,6 @@ can't set the value of a tag to null.}
 \description{
 Adds one or more tags to the specified resource.
 
-See \url{https://paws-r.github.io/docs/servicediscovery/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicediscovery_tag_resource/} for full documentation.
 }
 \keyword{internal}

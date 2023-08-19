@@ -23,6 +23,6 @@ version resource ARN.}
 \description{
 Returns a list of workflow runtime instance metadata objects for a specific image build version.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/list_workflow_executions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_workflow_executions/} for full documentation.
 }
 \keyword{internal}

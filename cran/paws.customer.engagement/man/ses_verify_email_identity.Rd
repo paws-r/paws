@@ -13,6 +13,6 @@ ses_verify_email_identity(EmailAddress)
 \description{
 Adds an email address to the list of identities for your Amazon SES account in the current AWS region and attempts to verify it. As a result of executing this operation, a verification email is sent to the specified address.
 
-See \url{https://paws-r.github.io/docs/ses/verify_email_identity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_verify_email_identity/} for full documentation.
 }
 \keyword{internal}

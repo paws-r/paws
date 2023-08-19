@@ -58,6 +58,6 @@ associated with them.}
 \description{
 Returns information about Amazon Redshift security groups. If the name of a security group is specified, the response will contain only information about only that security group.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_cluster_security_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_cluster_security_groups/} for full documentation.
 }
 \keyword{internal}

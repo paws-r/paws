@@ -848,7 +848,7 @@ applicationautoscaling_describe_scalable_targets <- function(ServiceNamespace, R
     name = "DescribeScalableTargets",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalableTargets")
   )
   input <- .applicationautoscaling$describe_scalable_targets_input(ServiceNamespace = ServiceNamespace, ResourceIds = ResourceIds, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
   output <- .applicationautoscaling$describe_scalable_targets_output()
@@ -1105,7 +1105,7 @@ applicationautoscaling_describe_scaling_activities <- function(ServiceNamespace,
     name = "DescribeScalingActivities",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalingActivities")
   )
   input <- .applicationautoscaling$describe_scaling_activities_input(ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken, IncludeNotScaledActivities = IncludeNotScaledActivities)
   output <- .applicationautoscaling$describe_scaling_activities_output()
@@ -1408,7 +1408,7 @@ applicationautoscaling_describe_scaling_policies <- function(PolicyNames = NULL,
     name = "DescribeScalingPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScalingPolicies")
   )
   input <- .applicationautoscaling$describe_scaling_policies_input(PolicyNames = PolicyNames, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
   output <- .applicationautoscaling$describe_scaling_policies_output()
@@ -1659,7 +1659,7 @@ applicationautoscaling_describe_scheduled_actions <- function(ScheduledActionNam
     name = "DescribeScheduledActions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ScheduledActions")
   )
   input <- .applicationautoscaling$describe_scheduled_actions_input(ScheduledActionNames = ScheduledActionNames, ServiceNamespace = ServiceNamespace, ResourceId = ResourceId, ScalableDimension = ScalableDimension, MaxResults = MaxResults, NextToken = NextToken)
   output <- .applicationautoscaling$describe_scheduled_actions_output()

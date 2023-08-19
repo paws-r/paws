@@ -12,6 +12,6 @@ forecastservice_describe_forecast(ForecastArn)
 \description{
 Describes a forecast created using the \code{\link[=forecastservice_create_forecast]{create_forecast}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/describe_forecast.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_describe_forecast/} for full documentation.
 }
 \keyword{internal}

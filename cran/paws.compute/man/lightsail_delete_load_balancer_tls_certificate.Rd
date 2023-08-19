@@ -25,6 +25,6 @@ load balancer.}
 \description{
 Deletes an SSL/TLS certificate associated with a Lightsail load balancer.
 
-See \url{https://paws-r.github.io/docs/lightsail/delete_load_balancer_tls_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_delete_load_balancer_tls_certificate/} for full documentation.
 }
 \keyword{internal}

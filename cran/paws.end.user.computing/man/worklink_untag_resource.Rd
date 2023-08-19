@@ -14,6 +14,6 @@ worklink_untag_resource(ResourceArn, TagKeys)
 \description{
 Removes one or more tags from the specified resource.
 
-See \url{https://paws-r.github.io/docs/worklink/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_untag_resource/} for full documentation.
 }
 \keyword{internal}

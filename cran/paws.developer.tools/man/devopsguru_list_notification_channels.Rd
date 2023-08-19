@@ -13,6 +13,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Returns a list of notification channels configured for DevOps Guru. Each notification channel is used to notify you when DevOps Guru generates an insight that contains information about how to improve your operations. The one supported notification channel is Amazon Simple Notification Service (Amazon SNS).
 
-See \url{https://paws-r.github.io/docs/devopsguru/list_notification_channels.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_list_notification_channels/} for full documentation.
 }
 \keyword{internal}

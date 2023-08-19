@@ -27,6 +27,6 @@ the output of previous API calls to make subsequent calls.}
 \description{
 Lists the status of the permission set provisioning requests for a specified IAM Identity Center instance.
 
-See \url{https://paws-r.github.io/docs/ssoadmin/list_permission_set_provisioning_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssoadmin_list_permission_set_provisioning_status/} for full documentation.
 }
 \keyword{internal}

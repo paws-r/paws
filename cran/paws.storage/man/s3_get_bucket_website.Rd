@@ -16,6 +16,6 @@ different account, the request fails with the HTTP status code
 \description{
 Returns the website configuration for a bucket. To host website on Amazon S3, you can configure a bucket as website by adding a website configuration. For more information about hosting websites, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/WebsiteHosting.html}{Hosting Websites on Amazon S3}.
 
-See \url{https://paws-r.github.io/docs/s3/get_bucket_website.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_get_bucket_website/} for full documentation.
 }
 \keyword{internal}

@@ -23,6 +23,6 @@ apigateway_update_method(
 \description{
 Updates an existing Method resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/update_method.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_update_method/} for full documentation.
 }
 \keyword{internal}

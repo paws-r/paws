@@ -34,6 +34,6 @@ request. A \code{False} value will allow the account to be deleted.}
 \description{
 Updates the Amazon QuickSight settings in your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_account_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_account_settings/} for full documentation.
 }
 \keyword{internal}

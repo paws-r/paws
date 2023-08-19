@@ -34,6 +34,6 @@ characters.}
 \description{
 Creates a logical container where backups are stored. A \code{\link[=backup_create_backup_vault]{create_backup_vault}} request includes a name, optionally one or more resource tags, an encryption key, and a request ID.
 
-See \url{https://paws-r.github.io/docs/backup/create_backup_vault.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_create_backup_vault/} for full documentation.
 }
 \keyword{internal}

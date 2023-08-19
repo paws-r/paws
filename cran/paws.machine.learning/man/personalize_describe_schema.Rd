@@ -12,6 +12,6 @@ personalize_describe_schema(schemaArn)
 \description{
 Describes a schema. For more information on schemas, see \code{\link[=personalize_create_schema]{create_schema}}.
 
-See \url{https://paws-r.github.io/docs/personalize/describe_schema.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_describe_schema/} for full documentation.
 }
 \keyword{internal}

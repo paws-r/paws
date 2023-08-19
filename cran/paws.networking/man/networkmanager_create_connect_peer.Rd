@@ -33,6 +33,6 @@ networkmanager_create_connect_peer(
 \description{
 Creates a core network Connect peer for a specified core network connect attachment between a core network and an appliance. The peer address and transit gateway address must be the same IP address family (IPv4 or IPv6).
 
-See \url{https://paws-r.github.io/docs/networkmanager/create_connect_peer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_create_connect_peer/} for full documentation.
 }
 \keyword{internal}

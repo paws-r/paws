@@ -20,6 +20,6 @@ optional attributes.}
 \description{
 Returns the indexing status for one or more documents submitted with the \href{https://docs.aws.amazon.com/kendra/latest/APIReference/API_BatchPutDocument.html}{BatchPutDocument} API.
 
-See \url{https://paws-r.github.io/docs/kendra/batch_get_document_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kendra_batch_get_document_status/} for full documentation.
 }
 \keyword{internal}

@@ -9,6 +9,6 @@ lightsail_download_default_key_pair()
 \description{
 Downloads the regional Amazon Lightsail default key pair.
 
-See \url{https://paws-r.github.io/docs/lightsail/download_default_key_pair.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_download_default_key_pair/} for full documentation.
 }
 \keyword{internal}

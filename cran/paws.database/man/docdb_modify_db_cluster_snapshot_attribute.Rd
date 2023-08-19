@@ -44,6 +44,6 @@ can still copy or restore a manual cluster snapshot.}
 \description{
 Adds an attribute and values to, or removes an attribute and values from, a manual cluster snapshot.
 
-See \url{https://paws-r.github.io/docs/docdb/modify_db_cluster_snapshot_attribute.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_modify_db_cluster_snapshot_attribute/} for full documentation.
 }
 \keyword{internal}

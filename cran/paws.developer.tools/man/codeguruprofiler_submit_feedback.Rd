@@ -27,6 +27,6 @@ data.}
 \description{
 Sends feedback to CodeGuru Profiler about whether the anomaly detected by the analysis is useful or not.
 
-See \url{https://paws-r.github.io/docs/codeguruprofiler/submit_feedback.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeguruprofiler_submit_feedback/} for full documentation.
 }
 \keyword{internal}

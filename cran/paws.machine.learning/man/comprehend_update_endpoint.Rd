@@ -29,6 +29,6 @@ customer CMK.}
 \description{
 Updates information about the specified endpoint. For information about endpoints, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html}{Managing endpoints}.
 
-See \url{https://paws-r.github.io/docs/comprehend/update_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_update_endpoint/} for full documentation.
 }
 \keyword{internal}

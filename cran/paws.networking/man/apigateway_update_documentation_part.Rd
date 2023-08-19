@@ -20,6 +20,6 @@ apigateway_update_documentation_part(
 \description{
 Updates a documentation part.
 
-See \url{https://paws-r.github.io/docs/apigateway/update_documentation_part.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_update_documentation_part/} for full documentation.
 }
 \keyword{internal}

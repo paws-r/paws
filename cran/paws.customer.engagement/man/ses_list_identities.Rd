@@ -21,6 +21,6 @@ inclusive.}
 \description{
 Returns a list containing all of the identities (email addresses and domains) for your AWS account in the current AWS Region, regardless of verification status.
 
-See \url{https://paws-r.github.io/docs/ses/list_identities.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_list_identities/} for full documentation.
 }
 \keyword{internal}

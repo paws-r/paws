@@ -18,6 +18,6 @@ auditmanager_disassociate_assessment_report_evidence_folder(
 \description{
 Disassociates an evidence folder from the specified assessment report in Audit Manager.
 
-See \url{https://paws-r.github.io/docs/auditmanager/disassociate_assessment_report_evidence_folder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/auditmanager_disassociate_assessment_report_evidence_folder/} for full documentation.
 }
 \keyword{internal}

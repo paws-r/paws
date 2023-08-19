@@ -2,8 +2,8 @@
 % Please edit documentation in R/healthlake_operations.R
 \name{healthlake_list_fhir_datastores}
 \alias{healthlake_list_fhir_datastores}
-\title{Lists all FHIR Data Stores that are in the user’s account, regardless of
-Data Store status}
+\title{Lists all FHIR data stores that are in the user’s account, regardless of
+data store status}
 \usage{
 healthlake_list_fhir_datastores(
   Filter = NULL,
@@ -12,16 +12,16 @@ healthlake_list_fhir_datastores(
 )
 }
 \arguments{
-\item{Filter}{Lists all filters associated with a FHIR Data Store request.}
+\item{Filter}{Lists all filters associated with a FHIR data store request.}
 
-\item{NextToken}{Fetches the next page of Data Stores when results are paginated.}
+\item{NextToken}{Fetches the next page of data stores when results are paginated.}
 
-\item{MaxResults}{The maximum number of Data Stores returned in a single page of a
+\item{MaxResults}{The maximum number of data stores returned in a single page of a
 ListFHIRDatastoresRequest call.}
 }
 \description{
-Lists all FHIR Data Stores that are in the user’s account, regardless of Data Store status.
+Lists all FHIR data stores that are in the user’s account, regardless of data store status.
 
-See \url{https://paws-r.github.io/docs/healthlake/list_fhir_datastores.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/healthlake_list_fhir_datastores/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ elbv2_delete_load_balancer(LoadBalancerArn)
 \description{
 Deletes the specified Application Load Balancer, Network Load Balancer, or Gateway Load Balancer. Deleting a load balancer also deletes its listeners.
 
-See \url{https://paws-r.github.io/docs/elbv2/delete_load_balancer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_delete_load_balancer/} for full documentation.
 }
 \keyword{internal}

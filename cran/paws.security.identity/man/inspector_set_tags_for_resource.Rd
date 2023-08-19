@@ -16,6 +16,6 @@ assessment template.}
 \description{
 Sets tags (key and value pairs) to the assessment template that is specified by the ARN of the assessment template.
 
-See \url{https://paws-r.github.io/docs/inspector/set_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector_set_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

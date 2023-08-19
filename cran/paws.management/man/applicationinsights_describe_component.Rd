@@ -5,16 +5,22 @@
 \title{Describes a component and lists the resources that are grouped together
 in a component}
 \usage{
-applicationinsights_describe_component(ResourceGroupName, ComponentName)
+applicationinsights_describe_component(
+  ResourceGroupName,
+  ComponentName,
+  AccountId = NULL
+)
 }
 \arguments{
 \item{ResourceGroupName}{[required] The name of the resource group.}
 
 \item{ComponentName}{[required] The name of the component.}
+
+\item{AccountId}{The AWS account ID for the resource group owner.}
 }
 \description{
 Describes a component and lists the resources that are grouped together in a component.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/describe_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_describe_component/} for full documentation.
 }
 \keyword{internal}

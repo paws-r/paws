@@ -1,8 +1,7 @@
 # Convert an R value to a value acceptable by the AWS API.
 convert_type <- function(value, timestamp_format) {
   t <- tag_get(value, "type")
-  string <- switch(
-    t,
+  string <- switch(t,
     blob = convert_blob(value),
     boolean = convert_boolean(value),
     float = as.character(value),
@@ -42,20 +41,26 @@ convert_timestamp <- function(timestamp, timestamp_format) {
 
 # Convert a base64-encoded value to a raw vector.
 base64_to_raw <- function(value) {
-  if (length(value) == 0) return(character(0))
+  if (length(value) == 0) {
+    return(character(0))
+  }
   return(base64enc::base64decode(value))
 }
 
 # Convert a raw-encoded string to a base64-encoded value.
 # e.g. "foo" (raw: 66 6f 6f) -> "Zm9v".
 raw_to_base64 <- function(value) {
-  if (length(value) == 0) return(character(0))
+  if (length(value) == 0) {
+    return(character(0))
+  }
   return(base64enc::base64encode(value))
 }
 
 # Convert a raw-encoded string to a character variable.
 raw_to_utf8 <- function(value) {
-  if (length(value) == 0) return(character(0))
+  if (length(value) == 0) {
+    return(character(0))
+  }
   result <- rawToChar(value)
   Encoding(result) <- "UTF-8"
   return(result)
@@ -63,8 +68,7 @@ raw_to_utf8 <- function(value) {
 
 # Return a strptime format string for a given timestamp format.
 get_timestamp_format <- function(name) {
-  format_string <- switch(
-    name,
+  format_string <- switch(name,
     iso8601 = "%Y-%m-%dT%H:%M:%SZ",
     rfc822 = "%a, %d %b %Y %H:%M:%S %Z"
   )

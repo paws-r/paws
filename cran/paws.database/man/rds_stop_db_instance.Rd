@@ -15,6 +15,6 @@ immediately before the DB instance is stopped.}
 \description{
 Stops an Amazon RDS DB instance. When you stop a DB instance, Amazon RDS retains the DB instance's metadata, including its endpoint, DB parameter group, and option group membership. Amazon RDS also retains the transaction logs so you can do a point-in-time restore if necessary.
 
-See \url{https://paws-r.github.io/docs/rds/stop_db_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_stop_db_instance/} for full documentation.
 }
 \keyword{internal}

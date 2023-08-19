@@ -26,6 +26,6 @@ rules.}
 \description{
 Describes a pricing rule that can be associated to a pricing plan, or set of pricing plans.
 
-See \url{https://paws-r.github.io/docs/billingconductor/list_pricing_rules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/billingconductor_list_pricing_rules/} for full documentation.
 }
 \keyword{internal}

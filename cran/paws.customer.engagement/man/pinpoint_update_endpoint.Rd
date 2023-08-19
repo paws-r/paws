@@ -18,6 +18,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Creates a new endpoint for an application or updates the settings and attributes of an existing endpoint for an application. You can also use this operation to define custom attributes for an endpoint. If an update includes one or more values for a custom attribute, Amazon Pinpoint replaces (overwrites) any existing values with the new values.
 
-See \url{https://paws-r.github.io/docs/pinpoint/update_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_update_endpoint/} for full documentation.
 }
 \keyword{internal}

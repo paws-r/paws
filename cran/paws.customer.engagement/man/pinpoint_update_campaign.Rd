@@ -17,6 +17,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Updates the configuration and other settings for a campaign.
 
-See \url{https://paws-r.github.io/docs/pinpoint/update_campaign.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_update_campaign/} for full documentation.
 }
 \keyword{internal}

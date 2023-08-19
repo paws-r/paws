@@ -17,6 +17,6 @@ Valid values: \code{db-instance}, \code{db-parameter-group}, \code{db-security-g
 \description{
 Displays a list of categories for all event source types, or, if specified, for a specified source type.
 
-See \url{https://paws-r.github.io/docs/docdb/describe_event_categories.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/docdb_describe_event_categories/} for full documentation.
 }
 \keyword{internal}

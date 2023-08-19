@@ -94,6 +94,6 @@ To add tags to an existing SSM document, use the
 \description{
 Creates a Amazon Web Services Systems Manager (SSM document). An SSM document defines the actions that Systems Manager performs on your managed nodes. For more information about SSM documents, including information about supported schemas, features, and syntax, see \href{https://docs.aws.amazon.com/systems-manager/latest/userguide/documents.html}{Amazon Web Services Systems Manager Documents} in the \emph{Amazon Web Services Systems Manager User Guide}.
 
-See \url{https://paws-r.github.io/docs/ssm/create_document.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_create_document/} for full documentation.
 }
 \keyword{internal}

@@ -46,6 +46,6 @@ query logging configuration.}
 \description{
 Creates a Resolver query logging configuration, which defines where you want Resolver to save DNS query logs that originate in your VPCs. Resolver can log queries only for VPCs that are in the same Region as the query logging configuration.
 
-See \url{https://paws-r.github.io/docs/route53resolver/create_resolver_query_log_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53resolver_create_resolver_query_log_config/} for full documentation.
 }
 \keyword{internal}

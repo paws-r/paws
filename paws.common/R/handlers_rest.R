@@ -10,7 +10,6 @@ rest_build <- function(request) {
 }
 
 rest_build_location_elements <- function(request, values, build_get_query) {
-
   query <- parse_query_string(request$http_request$url$raw_query)
 
   request$http_request$url$raw_path <- request$http_request$url$path
@@ -188,8 +187,7 @@ rest_unmarshal_status_code <- function(status_code) {
 
 # Unmarshal a header.
 rest_unmarshal_header <- function(value, type) {
-  convert <- switch(
-    type,
+  convert <- switch(type,
     blob = base64_to_raw,
     boolean = as.logical,
     double = as.numeric,
@@ -211,7 +209,7 @@ rest_unmarshal_header_map <- function(values, prefix, type) {
   starts_with <- function(x, p) grepl(sprintf("^%s", p), x, ignore.case = TRUE)
   for (name in names(values)) {
     if (starts_with(name, prefix)) {
-      out_name <- substr(name, nchar(prefix)+1, 1e6L)
+      out_name <- substr(name, nchar(prefix) + 1, 1e6L)
       result[[out_name]] <- rest_unmarshal_header(values[[name]], type)
     }
   }
@@ -230,7 +228,7 @@ clean_path <- function(url) {
 # Return a string with special characters escaped, e.g. " " -> "%20".
 escape_path <- function(string, encode_sep) {
   safe <- ""
-  if(!encode_sep){
+  if (!encode_sep) {
     safe <- "/"
   }
   path <- paws_url_encoder(string, safe)

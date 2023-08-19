@@ -23,6 +23,6 @@ version.}
 \description{
 Lists the major version families of each published schema. If a major version ARN is provided as \code{SchemaArn}, the minor version revisions in that family are listed instead.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/list_published_schema_arns.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_list_published_schema_arns/} for full documentation.
 }
 \keyword{internal}

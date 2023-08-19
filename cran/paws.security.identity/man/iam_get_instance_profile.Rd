@@ -15,8 +15,8 @@ consisting of upper and lowercase alphanumeric characters with no
 spaces. You can also include any of the following characters: _+=,.@-}
 }
 \description{
-Retrieves information about the specified instance profile, including the instance profile's path, GUID, ARN, and role. For more information about instance profiles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About instance profiles} in the \emph{IAM User Guide}.
+Retrieves information about the specified instance profile, including the instance profile's path, GUID, ARN, and role. For more information about instance profiles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{Using instance profiles} in the \emph{IAM User Guide}.
 
-See \url{https://paws-r.github.io/docs/iam/get_instance_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_instance_profile/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ you want to protect. For more information about Organizations, see
 \description{
 Sets a Firewall Manager default administrator account. The Firewall Manager default administrator account can manage third-party firewalls and has full administrative scope that allows administration of all policy types, accounts, organizational units, and Regions. This account must be a member account of the organization in Organizations whose resources you want to protect.
 
-See \url{https://paws-r.github.io/docs/fms/associate_admin_account.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_associate_admin_account/} for full documentation.
 }
 \keyword{internal}

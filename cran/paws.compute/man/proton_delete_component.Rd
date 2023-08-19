@@ -12,6 +12,6 @@ proton_delete_component(name)
 \description{
 Delete an Proton component resource.
 
-See \url{https://paws-r.github.io/docs/proton/delete_component.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_delete_component/} for full documentation.
 }
 \keyword{internal}

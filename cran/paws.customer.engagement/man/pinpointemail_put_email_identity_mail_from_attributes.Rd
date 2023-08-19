@@ -37,6 +37,6 @@ is in the \code{Pending}, \code{Failed}, and \code{TemporaryFailure} states.}
 \description{
 Used to enable or disable the custom Mail-From domain configuration for an email identity.
 
-See \url{https://paws-r.github.io/docs/pinpointemail/put_email_identity_mail_from_attributes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointemail_put_email_identity_mail_from_attributes/} for full documentation.
 }
 \keyword{internal}

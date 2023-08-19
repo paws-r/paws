@@ -13,6 +13,6 @@ lookoutequipment_describe_inference_scheduler(InferenceSchedulerName)
 \description{
 Specifies information about the inference scheduler being used, including name, model, status, and associated metadata
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/describe_inference_scheduler.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_describe_inference_scheduler/} for full documentation.
 }
 \keyword{internal}

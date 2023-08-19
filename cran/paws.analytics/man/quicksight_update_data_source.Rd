@@ -38,6 +38,6 @@ connects to your underlying source.}
 \description{
 Updates a data source.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_data_source.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_data_source/} for full documentation.
 }
 \keyword{internal}

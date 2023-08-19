@@ -167,6 +167,6 @@ To learn more about using tags with Amazon Transcribe, refer to \href{https://do
 \description{
 Transcribes the audio from a medical dictation or conversation and applies any additional Request Parameters you choose to include in your request.
 
-See \url{https://paws-r.github.io/docs/transcribeservice/start_medical_transcription_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/transcribeservice_start_medical_transcription_job/} for full documentation.
 }
 \keyword{internal}

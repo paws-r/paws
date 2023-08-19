@@ -39,6 +39,6 @@ in the \emph{Key Management Service Developer Guide}.}
 \description{
 Returns the public key of an asymmetric KMS key. Unlike the private key of a asymmetric KMS key, which never leaves KMS unencrypted, callers with \code{kms:GetPublicKey} permission can download the public key of an asymmetric KMS key. You can share the public key to allow others to encrypt messages and verify signatures outside of KMS. For information about asymmetric KMS keys, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/symmetric-asymmetric.html}{Asymmetric KMS keys} in the \emph{Key Management Service Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/kms/get_public_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_get_public_key/} for full documentation.
 }
 \keyword{internal}

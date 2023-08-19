@@ -17,6 +17,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Updates the configuration and other settings for a journey.
 
-See \url{https://paws-r.github.io/docs/pinpoint/update_journey.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_update_journey/} for full documentation.
 }
 \keyword{internal}

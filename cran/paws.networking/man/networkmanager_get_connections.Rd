@@ -27,6 +27,6 @@ networkmanager_get_connections(
 \description{
 Gets information about one or more of your connections in a global network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_connections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_connections/} for full documentation.
 }
 \keyword{internal}

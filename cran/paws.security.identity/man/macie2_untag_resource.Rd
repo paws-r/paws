@@ -16,6 +16,6 @@ each tag to remove, separated by an ampersand (&).}
 \description{
 Removes one or more tags (keys and values) from an Amazon Macie resource.
 
-See \url{https://paws-r.github.io/docs/macie2/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_untag_resource/} for full documentation.
 }
 \keyword{internal}

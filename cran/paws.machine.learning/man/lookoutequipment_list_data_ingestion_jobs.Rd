@@ -25,6 +25,6 @@ data ingestion jobs.}
 \description{
 Provides a list of all data ingestion jobs, including dataset name and ARN, S3 location of the input data, status, and so on.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/list_data_ingestion_jobs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_list_data_ingestion_jobs/} for full documentation.
 }
 \keyword{internal}

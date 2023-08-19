@@ -19,6 +19,6 @@ operation request that contained the utterance.}
 \description{
 Deletes stored utterances.
 
-See \url{https://paws-r.github.io/docs/lexmodelbuildingservice/delete_utterances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lexmodelbuildingservice_delete_utterances/} for full documentation.
 }
 \keyword{internal}

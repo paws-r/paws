@@ -20,6 +20,6 @@ following format:
 \description{
 Updates the specified Git repository with the specified values.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_code_repository.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_code_repository/} for full documentation.
 }
 \keyword{internal}

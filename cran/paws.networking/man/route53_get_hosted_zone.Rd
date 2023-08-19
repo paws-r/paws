@@ -13,6 +13,6 @@ route53_get_hosted_zone(Id)
 \description{
 Gets information about a specified hosted zone including the four name servers assigned to the hosted zone.
 
-See \url{https://paws-r.github.io/docs/route53/get_hosted_zone.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_get_hosted_zone/} for full documentation.
 }
 \keyword{internal}

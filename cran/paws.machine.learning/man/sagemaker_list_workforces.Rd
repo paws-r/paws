@@ -28,6 +28,6 @@ workforce name.}
 \description{
 Use this operation to list all private and vendor workforces in an Amazon Web Services Region. Note that you can only have one private workforce per Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/sagemaker/list_workforces.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_list_workforces/} for full documentation.
 }
 \keyword{internal}

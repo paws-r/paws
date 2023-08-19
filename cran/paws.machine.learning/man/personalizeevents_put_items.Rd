@@ -15,6 +15,6 @@ item or items to.}
 \description{
 Adds one or more items to an Items dataset. For more information see \href{https://docs.aws.amazon.com/personalize/latest/dg/importing-items.html}{Importing Items Incrementally}.
 
-See \url{https://paws-r.github.io/docs/personalizeevents/put_items.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalizeevents_put_items/} for full documentation.
 }
 \keyword{internal}

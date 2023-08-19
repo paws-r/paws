@@ -44,6 +44,6 @@ The default behavior is \code{FIRST_MATCHED}.}
 \description{
 Creates a detector version. The detector version starts in a \code{DRAFT} status.
 
-See \url{https://paws-r.github.io/docs/frauddetector/create_detector_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_create_detector_version/} for full documentation.
 }
 \keyword{internal}

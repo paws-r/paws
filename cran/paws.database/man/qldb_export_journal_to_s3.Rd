@@ -70,6 +70,6 @@ newline-delimited JSON automatically.}
 \description{
 Exports journal contents within a date and time range from a ledger into a specified Amazon Simple Storage Service (Amazon S3) bucket. A journal export job can write the data objects in either the text or binary representation of Amazon Ion format, or in \emph{JSON Lines} text format.
 
-See \url{https://paws-r.github.io/docs/qldb/export_journal_to_s3.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_export_journal_to_s3/} for full documentation.
 }
 \keyword{internal}

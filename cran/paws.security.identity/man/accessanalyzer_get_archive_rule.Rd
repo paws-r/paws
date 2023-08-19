@@ -14,6 +14,6 @@ accessanalyzer_get_archive_rule(analyzerName, ruleName)
 \description{
 Retrieves information about an archive rule.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/get_archive_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_get_archive_rule/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ operations, which returns results in the next page.}
 \description{
 Lists all the outbound cross-cluster connections for a local (source) Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/cross-cluster-search.html}{Cross-cluster search for Amazon OpenSearch Service}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/describe_outbound_connections.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_describe_outbound_connections/} for full documentation.
 }
 \keyword{internal}

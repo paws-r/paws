@@ -15,6 +15,6 @@ retrieve this ID from \code{\link[=fms_put_apps_list]{put_apps_list}},
 \description{
 Permanently deletes an Firewall Manager applications list.
 
-See \url{https://paws-r.github.io/docs/fms/delete_apps_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_delete_apps_list/} for full documentation.
 }
 \keyword{internal}

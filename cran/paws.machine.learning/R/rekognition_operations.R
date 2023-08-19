@@ -3,13 +3,51 @@
 #' @include rekognition_service.R
 NULL
 
+#' Associates one or more faces with an existing UserID
+#'
+#' @description
+#' Associates one or more faces with an existing UserID. Takes an array of `FaceIds`. Each `FaceId` that are present in the `FaceIds` list is associated with the provided UserID. The maximum number of total `FaceIds` per UserID is 100.
+#'
+#' See [https://www.paws-r-sdk.com/docs/rekognition_associate_faces/](https://www.paws-r-sdk.com/docs/rekognition_associate_faces/) for full documentation.
+#'
+#' @param CollectionId &#91;required&#93; The ID of an existing collection containing the UserID.
+#' @param UserId &#91;required&#93; The ID for the existing UserID.
+#' @param FaceIds &#91;required&#93; An array of FaceIDs to associate with the UserID.
+#' @param UserMatchThreshold An optional value specifying the minimum confidence in the UserID match
+#' to return. The default value is 75.
+#' @param ClientRequestToken Idempotent token used to identify the request to
+#' [`associate_faces`][rekognition_associate_faces]. If you use the same
+#' token with multiple [`associate_faces`][rekognition_associate_faces]
+#' requests, the same response is returned. Use ClientRequestToken to
+#' prevent the same request from being processed more than once.
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_associate_faces
+rekognition_associate_faces <- function(CollectionId, UserId, FaceIds, UserMatchThreshold = NULL, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "AssociateFaces",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$associate_faces_input(CollectionId = CollectionId, UserId = UserId, FaceIds = FaceIds, UserMatchThreshold = UserMatchThreshold, ClientRequestToken = ClientRequestToken)
+  output <- .rekognition$associate_faces_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$associate_faces <- rekognition_associate_faces
+
 #' Compares a face in the source input image with each of the 100 largest
 #' faces detected in the target input image
 #'
 #' @description
 #' Compares a face in the *source* input image with each of the 100 largest faces detected in the *target* input image.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/compare_faces.html](https://paws-r.github.io/docs/rekognition/compare_faces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_compare_faces/](https://www.paws-r-sdk.com/docs/rekognition_compare_faces/) for full documentation.
 #'
 #' @param SourceImage &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing base64-encoded
@@ -66,7 +104,7 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 #' @description
 #' Copies a version of an Amazon Rekognition Custom Labels model from a source project to a destination project. The source and destination projects can be in different AWS accounts but must be in the same AWS Region. You can't copy a model to another AWS service.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/copy_project_version.html](https://paws-r.github.io/docs/rekognition/copy_project_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_copy_project_version/](https://www.paws-r-sdk.com/docs/rekognition_copy_project_version/) for full documentation.
 #'
 #' @param SourceProjectArn &#91;required&#93; The ARN of the source project in the trusting AWS account.
 #' @param SourceProjectVersionArn &#91;required&#93; The ARN of the model version in the source project that you want to copy
@@ -123,7 +161,7 @@ rekognition_copy_project_version <- function(SourceProjectArn, SourceProjectVers
 #' @description
 #' Creates a collection in an AWS Region. You can add faces to the collection using the [`index_faces`][rekognition_index_faces] operation.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/create_collection.html](https://paws-r.github.io/docs/rekognition/create_collection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_create_collection/](https://www.paws-r-sdk.com/docs/rekognition_create_collection/) for full documentation.
 #'
 #' @param CollectionId &#91;required&#93; ID for the collection that you are creating.
 #' @param Tags A set of tags (key-value pairs) that you want to attach to the
@@ -154,7 +192,7 @@ rekognition_create_collection <- function(CollectionId, Tags = NULL) {
 #' @description
 #' Creates a new Amazon Rekognition Custom Labels dataset. You can create a dataset by using an Amazon Sagemaker format manifest file or by copying an existing Amazon Rekognition Custom Labels dataset.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/create_dataset.html](https://paws-r.github.io/docs/rekognition/create_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_create_dataset/](https://www.paws-r-sdk.com/docs/rekognition_create_dataset/) for full documentation.
 #'
 #' @param DatasetSource The source files for the dataset. You can specify the ARN of an existing
 #' dataset or specify the Amazon S3 bucket location of an Amazon Sagemaker
@@ -192,7 +230,7 @@ rekognition_create_dataset <- function(DatasetSource = NULL, DatasetType, Projec
 #' @description
 #' This API operation initiates a Face Liveness session. It returns a `SessionId`, which you can use to start streaming Face Liveness video and get the results for a Face Liveness session. You can use the `OutputConfig` option in the Settings parameter to provide an Amazon S3 bucket location. The Amazon S3 bucket stores reference images and audit images. You can use `AuditImagesLimit` to limit the number of audit images returned. This number is between 0 and 4. By default, it is set to 0. The limit is best effort and based on the duration of the selfie-video.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/create_face_liveness_session.html](https://paws-r.github.io/docs/rekognition/create_face_liveness_session.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_create_face_liveness_session/](https://www.paws-r-sdk.com/docs/rekognition_create_face_liveness_session/) for full documentation.
 #'
 #' @param KmsKeyId The identifier for your AWS Key Management Service key (AWS KMS key).
 #' Used to encrypt audit images and reference images.
@@ -230,7 +268,7 @@ rekognition_create_face_liveness_session <- function(KmsKeyId = NULL, Settings =
 #' @description
 #' Creates a new Amazon Rekognition Custom Labels project. A project is a group of resources (datasets, model versions) that you use to create and manage Amazon Rekognition Custom Labels models.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/create_project.html](https://paws-r.github.io/docs/rekognition/create_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_create_project/](https://www.paws-r-sdk.com/docs/rekognition_create_project/) for full documentation.
 #'
 #' @param ProjectName &#91;required&#93; The name of the project to create.
 #'
@@ -259,7 +297,7 @@ rekognition_create_project <- function(ProjectName) {
 #' @description
 #' Creates a new version of a model and begins training. Models are managed as part of an Amazon Rekognition Custom Labels project. The response from [`create_project_version`][rekognition_create_project_version] is an Amazon Resource Name (ARN) for the version of the model.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/create_project_version.html](https://paws-r.github.io/docs/rekognition/create_project_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_create_project_version/](https://www.paws-r-sdk.com/docs/rekognition_create_project_version/) for full documentation.
 #'
 #' @param ProjectArn &#91;required&#93; The ARN of the Amazon Rekognition Custom Labels project that manages the
 #' model that you want to train.
@@ -322,7 +360,7 @@ rekognition_create_project_version <- function(ProjectArn, VersionName, OutputCo
 #' @description
 #' Creates an Amazon Rekognition stream processor that you can use to detect and recognize faces or to detect labels in a streaming video.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/create_stream_processor.html](https://paws-r.github.io/docs/rekognition/create_stream_processor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_create_stream_processor/](https://www.paws-r-sdk.com/docs/rekognition_create_stream_processor/) for full documentation.
 #'
 #' @param Input &#91;required&#93; Kinesis video stream stream that provides the source streaming video. If
 #' you are using the AWS CLI, the parameter name is `StreamProcessorInput`.
@@ -390,12 +428,49 @@ rekognition_create_stream_processor <- function(Input, Output, Name, Settings, R
 }
 .rekognition$operations$create_stream_processor <- rekognition_create_stream_processor
 
+#' Creates a new User within a collection specified by CollectionId
+#'
+#' @description
+#' Creates a new User within a collection specified by `CollectionId`. Takes `UserId` as a parameter, which is a user provided ID which should be unique within the collection. The provided `UserId` will alias the system generated UUID to make the `UserId` more user friendly.
+#'
+#' See [https://www.paws-r-sdk.com/docs/rekognition_create_user/](https://www.paws-r-sdk.com/docs/rekognition_create_user/) for full documentation.
+#'
+#' @param CollectionId &#91;required&#93; The ID of an existing collection to which the new UserID needs to be
+#' created.
+#' @param UserId &#91;required&#93; ID for the UserID to be created. This ID needs to be unique within the
+#' collection.
+#' @param ClientRequestToken Idempotent token used to identify the request to
+#' [`create_user`][rekognition_create_user]. If you use the same token with
+#' multiple [`create_user`][rekognition_create_user] requests, the same
+#' response is returned. Use ClientRequestToken to prevent the same request
+#' from being processed more than once.
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_create_user
+rekognition_create_user <- function(CollectionId, UserId, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "CreateUser",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$create_user_input(CollectionId = CollectionId, UserId = UserId, ClientRequestToken = ClientRequestToken)
+  output <- .rekognition$create_user_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$create_user <- rekognition_create_user
+
 #' Deletes the specified collection
 #'
 #' @description
 #' Deletes the specified collection. Note that this operation removes all faces in the collection. For an example, see [Deleting a collection](https://docs.aws.amazon.com/rekognition/latest/dg/delete-collection-procedure.html).
 #'
-#' See [https://paws-r.github.io/docs/rekognition/delete_collection.html](https://paws-r.github.io/docs/rekognition/delete_collection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_delete_collection/](https://www.paws-r-sdk.com/docs/rekognition_delete_collection/) for full documentation.
 #'
 #' @param CollectionId &#91;required&#93; ID of the collection to delete.
 #'
@@ -424,7 +499,7 @@ rekognition_delete_collection <- function(CollectionId) {
 #' @description
 #' Deletes an existing Amazon Rekognition Custom Labels dataset. Deleting a dataset might take while. Use [`describe_dataset`][rekognition_describe_dataset] to check the current status. The dataset is still deleting if the value of `Status` is `DELETE_IN_PROGRESS`. If you try to access the dataset after it is deleted, you get a `ResourceNotFoundException` exception.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/delete_dataset.html](https://paws-r.github.io/docs/rekognition/delete_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_delete_dataset/](https://www.paws-r-sdk.com/docs/rekognition_delete_dataset/) for full documentation.
 #'
 #' @param DatasetArn &#91;required&#93; The ARN of the Amazon Rekognition Custom Labels dataset that you want to
 #' delete.
@@ -454,7 +529,7 @@ rekognition_delete_dataset <- function(DatasetArn) {
 #' @description
 #' Deletes faces from a collection. You specify a collection ID and an array of face IDs to remove from the collection.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/delete_faces.html](https://paws-r.github.io/docs/rekognition/delete_faces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_delete_faces/](https://www.paws-r-sdk.com/docs/rekognition_delete_faces/) for full documentation.
 #'
 #' @param CollectionId &#91;required&#93; Collection from which to remove the specific faces.
 #' @param FaceIds &#91;required&#93; An array of face IDs to delete.
@@ -484,7 +559,7 @@ rekognition_delete_faces <- function(CollectionId, FaceIds) {
 #' @description
 #' Deletes an Amazon Rekognition Custom Labels project. To delete a project you must first delete all models associated with the project. To delete a model, see [`delete_project_version`][rekognition_delete_project_version].
 #'
-#' See [https://paws-r.github.io/docs/rekognition/delete_project.html](https://paws-r.github.io/docs/rekognition/delete_project.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_delete_project/](https://www.paws-r-sdk.com/docs/rekognition_delete_project/) for full documentation.
 #'
 #' @param ProjectArn &#91;required&#93; The Amazon Resource Name (ARN) of the project that you want to delete.
 #'
@@ -513,7 +588,7 @@ rekognition_delete_project <- function(ProjectArn) {
 #' @description
 #' Deletes an existing project policy.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/delete_project_policy.html](https://paws-r.github.io/docs/rekognition/delete_project_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_delete_project_policy/](https://www.paws-r-sdk.com/docs/rekognition_delete_project_policy/) for full documentation.
 #'
 #' @param ProjectArn &#91;required&#93; The Amazon Resource Name (ARN) of the project that the project policy
 #' you want to delete is attached to.
@@ -545,7 +620,7 @@ rekognition_delete_project_policy <- function(ProjectArn, PolicyName, PolicyRevi
 #' @description
 #' Deletes an Amazon Rekognition Custom Labels model.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/delete_project_version.html](https://paws-r.github.io/docs/rekognition/delete_project_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_delete_project_version/](https://www.paws-r-sdk.com/docs/rekognition_delete_project_version/) for full documentation.
 #'
 #' @param ProjectVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the model version that you want to
 #' delete.
@@ -575,7 +650,7 @@ rekognition_delete_project_version <- function(ProjectVersionArn) {
 #' @description
 #' Deletes the stream processor identified by `Name`. You assign the value for `Name` when you create the stream processor with [`create_stream_processor`][rekognition_create_stream_processor]. You might not be able to use the same name for a stream processor for a few seconds after calling [`delete_stream_processor`][rekognition_delete_stream_processor].
 #'
-#' See [https://paws-r.github.io/docs/rekognition/delete_stream_processor.html](https://paws-r.github.io/docs/rekognition/delete_stream_processor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_delete_stream_processor/](https://www.paws-r-sdk.com/docs/rekognition_delete_stream_processor/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the stream processor you want to delete.
 #'
@@ -599,12 +674,48 @@ rekognition_delete_stream_processor <- function(Name) {
 }
 .rekognition$operations$delete_stream_processor <- rekognition_delete_stream_processor
 
+#' Deletes the specified UserID within the collection
+#'
+#' @description
+#' Deletes the specified UserID within the collection. Faces that are associated with the UserID are disassociated from the UserID before deleting the specified UserID. If the specified `Collection` or `UserID` is already deleted or not found, a `ResourceNotFoundException` will be thrown. If the action is successful with a 200 response, an empty HTTP body is returned.
+#'
+#' See [https://www.paws-r-sdk.com/docs/rekognition_delete_user/](https://www.paws-r-sdk.com/docs/rekognition_delete_user/) for full documentation.
+#'
+#' @param CollectionId &#91;required&#93; The ID of an existing collection from which the UserID needs to be
+#' deleted.
+#' @param UserId &#91;required&#93; ID for the UserID to be deleted.
+#' @param ClientRequestToken Idempotent token used to identify the request to
+#' [`delete_user`][rekognition_delete_user]. If you use the same token with
+#' multiple [`delete_user`][rekognition_delete_user]requests, the same
+#' response is returned. Use ClientRequestToken to prevent the same request
+#' from being processed more than once.
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_delete_user
+rekognition_delete_user <- function(CollectionId, UserId, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "DeleteUser",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$delete_user_input(CollectionId = CollectionId, UserId = UserId, ClientRequestToken = ClientRequestToken)
+  output <- .rekognition$delete_user_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$delete_user <- rekognition_delete_user
+
 #' Describes the specified collection
 #'
 #' @description
 #' Describes the specified collection. You can use [`describe_collection`][rekognition_describe_collection] to get information, such as the number of faces indexed into a collection and the version of the model used by the collection for face detection.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/describe_collection.html](https://paws-r.github.io/docs/rekognition/describe_collection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_describe_collection/](https://www.paws-r-sdk.com/docs/rekognition_describe_collection/) for full documentation.
 #'
 #' @param CollectionId &#91;required&#93; The ID of the collection to describe.
 #'
@@ -633,7 +744,7 @@ rekognition_describe_collection <- function(CollectionId) {
 #' @description
 #' Describes an Amazon Rekognition Custom Labels dataset. You can get information such as the current status of a dataset and statistics about the images and labels in a dataset.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/describe_dataset.html](https://paws-r.github.io/docs/rekognition/describe_dataset.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_describe_dataset/](https://www.paws-r-sdk.com/docs/rekognition_describe_dataset/) for full documentation.
 #'
 #' @param DatasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset that you want to describe.
 #'
@@ -663,7 +774,7 @@ rekognition_describe_dataset <- function(DatasetArn) {
 #' @description
 #' Lists and describes the versions of a model in an Amazon Rekognition Custom Labels project. You can specify up to 10 model versions in `ProjectVersionArns`. If you don't specify a value, descriptions for all model versions in the project are returned.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/describe_project_versions.html](https://paws-r.github.io/docs/rekognition/describe_project_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_describe_project_versions/](https://www.paws-r-sdk.com/docs/rekognition_describe_project_versions/) for full documentation.
 #'
 #' @param ProjectArn &#91;required&#93; The Amazon Resource Name (ARN) of the project that contains the models
 #' you want to describe.
@@ -689,7 +800,7 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
     name = "DescribeProjectVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProjectVersionDescriptions")
   )
   input <- .rekognition$describe_project_versions_input(ProjectArn = ProjectArn, VersionNames = VersionNames, NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$describe_project_versions_output()
@@ -706,7 +817,7 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
 #' @description
 #' Gets information about your Amazon Rekognition Custom Labels projects.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/describe_projects.html](https://paws-r.github.io/docs/rekognition/describe_projects.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_describe_projects/](https://www.paws-r-sdk.com/docs/rekognition_describe_projects/) for full documentation.
 #'
 #' @param NextToken If the previous response was incomplete (because there is more results
 #' to retrieve), Amazon Rekognition Custom Labels returns a pagination
@@ -727,7 +838,7 @@ rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL, P
     name = "DescribeProjects",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProjectDescriptions")
   )
   input <- .rekognition$describe_projects_input(NextToken = NextToken, MaxResults = MaxResults, ProjectNames = ProjectNames)
   output <- .rekognition$describe_projects_output()
@@ -745,7 +856,7 @@ rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL, P
 #' @description
 #' Provides information about a stream processor created by [`create_stream_processor`][rekognition_create_stream_processor]. You can get information about the input and output streams, the input parameters for the face recognition being performed, and the current status of the stream processor.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/describe_stream_processor.html](https://paws-r.github.io/docs/rekognition/describe_stream_processor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_describe_stream_processor/](https://www.paws-r-sdk.com/docs/rekognition_describe_stream_processor/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the stream processor for which you want information.
 #'
@@ -775,7 +886,7 @@ rekognition_describe_stream_processor <- function(Name) {
 #' @description
 #' Detects custom labels in a supplied image by using an Amazon Rekognition Custom Labels model.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/detect_custom_labels.html](https://paws-r.github.io/docs/rekognition/detect_custom_labels.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_detect_custom_labels/](https://www.paws-r-sdk.com/docs/rekognition_detect_custom_labels/) for full documentation.
 #'
 #' @param ProjectVersionArn &#91;required&#93; The ARN of the model version that you want to use.
 #' @param Image &#91;required&#93; 
@@ -817,7 +928,7 @@ rekognition_detect_custom_labels <- function(ProjectVersionArn, Image, MaxResult
 #' @description
 #' Detects faces within an image that is provided as input.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/detect_faces.html](https://paws-r.github.io/docs/rekognition/detect_faces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_detect_faces/](https://www.paws-r-sdk.com/docs/rekognition_detect_faces/) for full documentation.
 #'
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing base64-encoded
@@ -864,7 +975,7 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' @description
 #' Detects instances of real-world entities within an image (JPEG or PNG) provided as input. This includes objects like flower, tree, and table; events like wedding, graduation, and birthday party; and concepts like landscape, evening, and nature.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/detect_labels.html](https://paws-r.github.io/docs/rekognition/detect_labels.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_detect_labels/](https://www.paws-r-sdk.com/docs/rekognition_detect_labels/) for full documentation.
 #'
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing image bytes is
@@ -918,7 +1029,7 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #' @description
 #' Detects unsafe content in a specified JPEG or PNG format image. Use [`detect_moderation_labels`][rekognition_detect_moderation_labels] to moderate images depending on your requirements. For example, you might want to filter images that contain nudity, but not images containing suggestive content.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/detect_moderation_labels.html](https://paws-r.github.io/docs/rekognition/detect_moderation_labels.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_detect_moderation_labels/](https://www.paws-r-sdk.com/docs/rekognition_detect_moderation_labels/) for full documentation.
 #'
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing base64-encoded
@@ -962,7 +1073,7 @@ rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, Hu
 #' @description
 #' Detects Personal Protective Equipment (PPE) worn by people detected in an image. Amazon Rekognition can detect the following types of PPE.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/detect_protective_equipment.html](https://paws-r.github.io/docs/rekognition/detect_protective_equipment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_detect_protective_equipment/](https://www.paws-r-sdk.com/docs/rekognition_detect_protective_equipment/) for full documentation.
 #'
 #' @param Image &#91;required&#93; The image in which you want to detect PPE on detected persons. The image
 #' can be passed as image bytes or you can reference an image stored in an
@@ -995,7 +1106,7 @@ rekognition_detect_protective_equipment <- function(Image, SummarizationAttribut
 #' @description
 #' Detects text in the input image and converts it into machine-readable text.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/detect_text.html](https://paws-r.github.io/docs/rekognition/detect_text.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_detect_text/](https://www.paws-r-sdk.com/docs/rekognition_detect_text/) for full documentation.
 #'
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an Amazon S3 object. If you
 #' use the AWS CLI to call Amazon Rekognition operations, you can't pass
@@ -1027,13 +1138,51 @@ rekognition_detect_text <- function(Image, Filters = NULL) {
 }
 .rekognition$operations$detect_text <- rekognition_detect_text
 
+#' Removes the association between a Face supplied in an array of FaceIds
+#' and the User
+#'
+#' @description
+#' Removes the association between a `Face` supplied in an array of `FaceIds` and the User. If the User is not present already, then a `ResourceNotFound` exception is thrown. If successful, an array of faces that are disassociated from the User is returned. If a given face is already disassociated from the given UserID, it will be ignored and not be returned in the response. If a given face is already associated with a different User or not found in the collection it will be returned as part of `UnsuccessfulDisassociations`. You can remove 1 - 100 face IDs from a user at one time.
+#'
+#' See [https://www.paws-r-sdk.com/docs/rekognition_disassociate_faces/](https://www.paws-r-sdk.com/docs/rekognition_disassociate_faces/) for full documentation.
+#'
+#' @param CollectionId &#91;required&#93; The ID of an existing collection containing the UserID.
+#' @param UserId &#91;required&#93; ID for the existing UserID.
+#' @param ClientRequestToken Idempotent token used to identify the request to
+#' [`disassociate_faces`][rekognition_disassociate_faces]. If you use the
+#' same token with multiple
+#' [`disassociate_faces`][rekognition_disassociate_faces] requests, the
+#' same response is returned. Use ClientRequestToken to prevent the same
+#' request from being processed more than once.
+#' @param FaceIds &#91;required&#93; An array of face IDs to disassociate from the UserID.
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_disassociate_faces
+rekognition_disassociate_faces <- function(CollectionId, UserId, ClientRequestToken = NULL, FaceIds) {
+  op <- new_operation(
+    name = "DisassociateFaces",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$disassociate_faces_input(CollectionId = CollectionId, UserId = UserId, ClientRequestToken = ClientRequestToken, FaceIds = FaceIds)
+  output <- .rekognition$disassociate_faces_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$disassociate_faces <- rekognition_disassociate_faces
+
 #' Distributes the entries (images) in a training dataset across the
 #' training dataset and the test dataset for a project
 #'
 #' @description
 #' Distributes the entries (images) in a training dataset across the training dataset and the test dataset for a project. [`distribute_dataset_entries`][rekognition_distribute_dataset_entries] moves 20% of the training dataset images to the test dataset. An entry is a JSON Line that describes an image.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/distribute_dataset_entries.html](https://paws-r.github.io/docs/rekognition/distribute_dataset_entries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_distribute_dataset_entries/](https://www.paws-r-sdk.com/docs/rekognition_distribute_dataset_entries/) for full documentation.
 #'
 #' @param Datasets &#91;required&#93; The ARNS for the training dataset and test dataset that you want to use.
 #' The datasets must belong to the same project. The test dataset must be
@@ -1065,7 +1214,7 @@ rekognition_distribute_dataset_entries <- function(Datasets) {
 #' @description
 #' Gets the name and additional information about a celebrity based on their Amazon Rekognition ID. The additional information is returned as an array of URLs. If there is no additional information about the celebrity, this list is empty.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/get_celebrity_info.html](https://paws-r.github.io/docs/rekognition/get_celebrity_info.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_get_celebrity_info/](https://www.paws-r-sdk.com/docs/rekognition_get_celebrity_info/) for full documentation.
 #'
 #' @param Id &#91;required&#93; The ID for the celebrity. You get the celebrity ID from a call to the
 #' [`recognize_celebrities`][rekognition_recognize_celebrities] operation,
@@ -1097,7 +1246,7 @@ rekognition_get_celebrity_info <- function(Id) {
 #' @description
 #' Gets the celebrity recognition results for a Amazon Rekognition Video analysis started by [`start_celebrity_recognition`][rekognition_start_celebrity_recognition].
 #'
-#' See [https://paws-r.github.io/docs/rekognition/get_celebrity_recognition.html](https://paws-r.github.io/docs/rekognition/get_celebrity_recognition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_get_celebrity_recognition/](https://www.paws-r-sdk.com/docs/rekognition_get_celebrity_recognition/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; Job identifier for the required celebrity recognition analysis. You can
 #' get the job identifer from a call to
@@ -1121,7 +1270,7 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
     name = "GetCelebrityRecognition",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$get_celebrity_recognition_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
   output <- .rekognition$get_celebrity_recognition_output()
@@ -1140,7 +1289,7 @@ rekognition_get_celebrity_recognition <- function(JobId, MaxResults = NULL, Next
 #' @description
 #' Gets the inappropriate, unwanted, or offensive content analysis results for a Amazon Rekognition Video analysis started by [`start_content_moderation`][rekognition_start_content_moderation]. For a list of moderation labels in Amazon Rekognition, see [Using the image and video moderation APIs](https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html#moderation-api).
 #'
-#' See [https://paws-r.github.io/docs/rekognition/get_content_moderation.html](https://paws-r.github.io/docs/rekognition/get_content_moderation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_get_content_moderation/](https://www.paws-r-sdk.com/docs/rekognition_get_content_moderation/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier for the inappropriate, unwanted, or offensive content
 #' moderation job. Use `JobId` to identify the job in a subsequent call to
@@ -1169,7 +1318,7 @@ rekognition_get_content_moderation <- function(JobId, MaxResults = NULL, NextTok
     name = "GetContentModeration",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$get_content_moderation_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, AggregateBy = AggregateBy)
   output <- .rekognition$get_content_moderation_output()
@@ -1187,7 +1336,7 @@ rekognition_get_content_moderation <- function(JobId, MaxResults = NULL, NextTok
 #' @description
 #' Gets face detection results for a Amazon Rekognition Video analysis started by [`start_face_detection`][rekognition_start_face_detection].
 #'
-#' See [https://paws-r.github.io/docs/rekognition/get_face_detection.html](https://paws-r.github.io/docs/rekognition/get_face_detection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_get_face_detection/](https://www.paws-r-sdk.com/docs/rekognition_get_face_detection/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; Unique identifier for the face detection job. The `JobId` is returned
 #' from [`start_face_detection`][rekognition_start_face_detection].
@@ -1207,7 +1356,7 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
     name = "GetFaceDetection",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$get_face_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .rekognition$get_face_detection_output()
@@ -1224,7 +1373,7 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' @description
 #' Retrieves the results of a specific Face Liveness session. It requires the `sessionId` as input, which was created using [`create_face_liveness_session`][rekognition_create_face_liveness_session]. Returns the corresponding Face Liveness confidence score, a reference image that includes a face bounding box, and audit images that also contain face bounding boxes. The Face Liveness confidence score ranges from 0 to 100. The reference image can optionally be returned.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/get_face_liveness_session_results.html](https://paws-r.github.io/docs/rekognition/get_face_liveness_session_results.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_get_face_liveness_session_results/](https://www.paws-r-sdk.com/docs/rekognition_get_face_liveness_session_results/) for full documentation.
 #'
 #' @param SessionId &#91;required&#93; A unique 128-bit UUID. This is used to uniquely identify the session and
 #' also acts as an idempotency token for all operations associated with the
@@ -1256,7 +1405,7 @@ rekognition_get_face_liveness_session_results <- function(SessionId) {
 #' @description
 #' Gets the face search results for Amazon Rekognition Video face search started by [`start_face_search`][rekognition_start_face_search]. The search returns faces in a collection that match the faces of persons detected in a video. It also includes the time(s) that faces are matched in the video.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/get_face_search.html](https://paws-r.github.io/docs/rekognition/get_face_search.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_get_face_search/](https://www.paws-r-sdk.com/docs/rekognition_get_face_search/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The job identifer for the search request. You get the job identifier
 #' from an initial call to
@@ -1280,7 +1429,7 @@ rekognition_get_face_search <- function(JobId, MaxResults = NULL, NextToken = NU
     name = "GetFaceSearch",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$get_face_search_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
   output <- .rekognition$get_face_search_output()
@@ -1298,7 +1447,7 @@ rekognition_get_face_search <- function(JobId, MaxResults = NULL, NextToken = NU
 #' @description
 #' Gets the label detection results of a Amazon Rekognition Video analysis started by [`start_label_detection`][rekognition_start_label_detection].
 #'
-#' See [https://paws-r.github.io/docs/rekognition/get_label_detection.html](https://paws-r.github.io/docs/rekognition/get_label_detection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_get_label_detection/](https://www.paws-r-sdk.com/docs/rekognition_get_label_detection/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; Job identifier for the label detection operation for which you want
 #' results returned. You get the job identifer from an initial call to
@@ -1326,7 +1475,7 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
     name = "GetLabelDetection",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$get_label_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy, AggregateBy = AggregateBy)
   output <- .rekognition$get_label_detection_output()
@@ -1344,7 +1493,7 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
 #' @description
 #' Gets the path tracking results of a Amazon Rekognition Video analysis started by [`start_person_tracking`][rekognition_start_person_tracking].
 #'
-#' See [https://paws-r.github.io/docs/rekognition/get_person_tracking.html](https://paws-r.github.io/docs/rekognition/get_person_tracking.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_get_person_tracking/](https://www.paws-r-sdk.com/docs/rekognition_get_person_tracking/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; The identifier for a job that tracks persons in a video. You get the
 #' `JobId` from a call to
@@ -1370,7 +1519,7 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
     name = "GetPersonTracking",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$get_person_tracking_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken, SortBy = SortBy)
   output <- .rekognition$get_person_tracking_output()
@@ -1388,7 +1537,7 @@ rekognition_get_person_tracking <- function(JobId, MaxResults = NULL, NextToken 
 #' @description
 #' Gets the segment detection results of a Amazon Rekognition Video analysis started by [`start_segment_detection`][rekognition_start_segment_detection].
 #'
-#' See [https://paws-r.github.io/docs/rekognition/get_segment_detection.html](https://paws-r.github.io/docs/rekognition/get_segment_detection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_get_segment_detection/](https://www.paws-r-sdk.com/docs/rekognition_get_segment_detection/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; Job identifier for the text detection operation for which you want
 #' results returned. You get the job identifer from an initial call to
@@ -1407,7 +1556,7 @@ rekognition_get_segment_detection <- function(JobId, MaxResults = NULL, NextToke
     name = "GetSegmentDetection",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$get_segment_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .rekognition$get_segment_detection_output()
@@ -1425,7 +1574,7 @@ rekognition_get_segment_detection <- function(JobId, MaxResults = NULL, NextToke
 #' @description
 #' Gets the text detection results of a Amazon Rekognition Video analysis started by [`start_text_detection`][rekognition_start_text_detection].
 #'
-#' See [https://paws-r.github.io/docs/rekognition/get_text_detection.html](https://paws-r.github.io/docs/rekognition/get_text_detection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_get_text_detection/](https://www.paws-r-sdk.com/docs/rekognition_get_text_detection/) for full documentation.
 #'
 #' @param JobId &#91;required&#93; Job identifier for the text detection operation for which you want
 #' results returned. You get the job identifer from an initial call to
@@ -1445,7 +1594,7 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
     name = "GetTextDetection",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$get_text_detection_input(JobId = JobId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .rekognition$get_text_detection_output()
@@ -1463,7 +1612,7 @@ rekognition_get_text_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' @description
 #' Detects faces in the input image and adds them to the specified collection.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/index_faces.html](https://paws-r.github.io/docs/rekognition/index_faces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_index_faces/](https://www.paws-r-sdk.com/docs/rekognition_index_faces/) for full documentation.
 #'
 #' @param CollectionId &#91;required&#93; The ID of an existing collection to which you want to add the faces that
 #' are detected in the input images.
@@ -1543,7 +1692,7 @@ rekognition_index_faces <- function(CollectionId, Image, ExternalImageId = NULL,
 #' @description
 #' Returns list of collection IDs in your account. If the result is truncated, the response also provides a `NextToken` that you can use in the subsequent request to fetch the next set of collection IDs.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/list_collections.html](https://paws-r.github.io/docs/rekognition/list_collections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_list_collections/](https://www.paws-r-sdk.com/docs/rekognition_list_collections/) for full documentation.
 #'
 #' @param NextToken Pagination token from the previous response.
 #' @param MaxResults Maximum number of collection IDs to return.
@@ -1556,7 +1705,7 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListCollections",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "CollectionIds")
   )
   input <- .rekognition$list_collections_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_collections_output()
@@ -1573,7 +1722,7 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Lists the entries (images) within a dataset. An entry is a JSON Line that contains the information for a single image, including the image location, assigned labels, and object location bounding boxes. For more information, see [Creating a manifest file](https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/).
 #'
-#' See [https://paws-r.github.io/docs/rekognition/list_dataset_entries.html](https://paws-r.github.io/docs/rekognition/list_dataset_entries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_list_dataset_entries/](https://www.paws-r-sdk.com/docs/rekognition_list_dataset_entries/) for full documentation.
 #'
 #' @param DatasetArn &#91;required&#93; The Amazon Resource Name (ARN) for the dataset that you want to use.
 #' @param ContainsLabels Specifies a label filter for the response. The response includes an
@@ -1608,7 +1757,7 @@ rekognition_list_dataset_entries <- function(DatasetArn, ContainsLabels = NULL, 
     name = "ListDatasetEntries",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetEntries")
   )
   input <- .rekognition$list_dataset_entries_input(DatasetArn = DatasetArn, ContainsLabels = ContainsLabels, Labeled = Labeled, SourceRefContains = SourceRefContains, HasErrors = HasErrors, NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_dataset_entries_output()
@@ -1625,7 +1774,7 @@ rekognition_list_dataset_entries <- function(DatasetArn, ContainsLabels = NULL, 
 #' @description
 #' Lists the labels in a dataset. Amazon Rekognition Custom Labels uses labels to describe images. For more information, see [Labeling images](https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/md-labeling-images.html).
 #'
-#' See [https://paws-r.github.io/docs/rekognition/list_dataset_labels.html](https://paws-r.github.io/docs/rekognition/list_dataset_labels.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_list_dataset_labels/](https://www.paws-r-sdk.com/docs/rekognition_list_dataset_labels/) for full documentation.
 #'
 #' @param DatasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset that you want to use.
 #' @param NextToken If the previous response was incomplete (because there is more results
@@ -1644,7 +1793,7 @@ rekognition_list_dataset_labels <- function(DatasetArn, NextToken = NULL, MaxRes
     name = "ListDatasetLabels",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "DatasetLabelDescriptions")
   )
   input <- .rekognition$list_dataset_labels_input(DatasetArn = DatasetArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_dataset_labels_output()
@@ -1661,7 +1810,7 @@ rekognition_list_dataset_labels <- function(DatasetArn, NextToken = NULL, MaxRes
 #' @description
 #' Returns metadata for faces in the specified collection. This metadata includes information such as the bounding box coordinates, the confidence (that the bounding box contains a face), and face ID. For an example, see Listing Faces in a Collection in the Amazon Rekognition Developer Guide.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/list_faces.html](https://paws-r.github.io/docs/rekognition/list_faces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_list_faces/](https://www.paws-r-sdk.com/docs/rekognition_list_faces/) for full documentation.
 #'
 #' @param CollectionId &#91;required&#93; ID of the collection from which to list the faces.
 #' @param NextToken If the previous response was incomplete (because there is more data to
@@ -1669,18 +1818,20 @@ rekognition_list_dataset_labels <- function(DatasetArn, NextToken = NULL, MaxRes
 #' response. You can use this pagination token to retrieve the next set of
 #' faces.
 #' @param MaxResults Maximum number of faces to return.
+#' @param UserId An array of user IDs to match when listing faces in a collection.
+#' @param FaceIds An array of face IDs to match when listing faces in a collection.
 #'
 #' @keywords internal
 #'
 #' @rdname rekognition_list_faces
-rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = NULL) {
+rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = NULL, UserId = NULL, FaceIds = NULL) {
   op <- new_operation(
     name = "ListFaces",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Faces")
   )
-  input <- .rekognition$list_faces_input(CollectionId = CollectionId, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .rekognition$list_faces_input(CollectionId = CollectionId, NextToken = NextToken, MaxResults = MaxResults, UserId = UserId, FaceIds = FaceIds)
   output <- .rekognition$list_faces_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -1695,7 +1846,7 @@ rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = 
 #' @description
 #' Gets a list of the project policies attached to a project.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/list_project_policies.html](https://paws-r.github.io/docs/rekognition/list_project_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_list_project_policies/](https://www.paws-r-sdk.com/docs/rekognition_list_project_policies/) for full documentation.
 #'
 #' @param ProjectArn &#91;required&#93; The ARN of the project for which you want to list the project policies.
 #' @param NextToken If the previous response was incomplete (because there is more results
@@ -1714,7 +1865,7 @@ rekognition_list_project_policies <- function(ProjectArn, NextToken = NULL, MaxR
     name = "ListProjectPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProjectPolicies")
   )
   input <- .rekognition$list_project_policies_input(ProjectArn = ProjectArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_project_policies_output()
@@ -1732,7 +1883,7 @@ rekognition_list_project_policies <- function(ProjectArn, NextToken = NULL, MaxR
 #' @description
 #' Gets a list of stream processors that you have created with [`create_stream_processor`][rekognition_create_stream_processor].
 #'
-#' See [https://paws-r.github.io/docs/rekognition/list_stream_processors.html](https://paws-r.github.io/docs/rekognition/list_stream_processors.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_list_stream_processors/](https://www.paws-r-sdk.com/docs/rekognition_list_stream_processors/) for full documentation.
 #'
 #' @param NextToken If the previous response was incomplete (because there are more stream
 #' processors to retrieve), Amazon Rekognition Video returns a pagination
@@ -1749,7 +1900,7 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
     name = "ListStreamProcessors",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
   )
   input <- .rekognition$list_stream_processors_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .rekognition$list_stream_processors_output()
@@ -1767,7 +1918,7 @@ rekognition_list_stream_processors <- function(NextToken = NULL, MaxResults = NU
 #' @description
 #' Returns a list of tags in an Amazon Rekognition collection, stream processor, or Custom Labels model.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/list_tags_for_resource.html](https://paws-r.github.io/docs/rekognition/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/rekognition_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the model, collection, or stream processor
 #' that contains the tags that you want a list of.
@@ -1792,13 +1943,44 @@ rekognition_list_tags_for_resource <- function(ResourceArn) {
 }
 .rekognition$operations$list_tags_for_resource <- rekognition_list_tags_for_resource
 
+#' Returns metadata of the User such as UserID in the specified collection
+#'
+#' @description
+#' Returns metadata of the User such as `UserID` in the specified collection. Anonymous User (to reserve faces without any identity) is not returned as part of this request. The results are sorted by system generated primary key ID. If the response is truncated, `NextToken` is returned in the response that can be used in the subsequent request to retrieve the next set of identities.
+#'
+#' See [https://www.paws-r-sdk.com/docs/rekognition_list_users/](https://www.paws-r-sdk.com/docs/rekognition_list_users/) for full documentation.
+#'
+#' @param CollectionId &#91;required&#93; The ID of an existing collection.
+#' @param MaxResults Maximum number of UsersID to return.
+#' @param NextToken Pagingation token to receive the next set of UsersID.
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_list_users
+rekognition_list_users <- function(CollectionId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListUsers",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Users")
+  )
+  input <- .rekognition$list_users_input(CollectionId = CollectionId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .rekognition$list_users_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$list_users <- rekognition_list_users
+
 #' Attaches a project policy to a Amazon Rekognition Custom Labels project
 #' in a trusting AWS account
 #'
 #' @description
 #' Attaches a project policy to a Amazon Rekognition Custom Labels project in a trusting AWS account. A project policy specifies that a trusted AWS account can copy a model version from a trusting AWS account to a project in the trusted AWS account. To copy a model version you use the [`copy_project_version`][rekognition_copy_project_version] operation.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/put_project_policy.html](https://paws-r.github.io/docs/rekognition/put_project_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_put_project_policy/](https://www.paws-r-sdk.com/docs/rekognition_put_project_policy/) for full documentation.
 #'
 #' @param ProjectArn &#91;required&#93; The Amazon Resource Name (ARN) of the project that the project policy is
 #' attached to.
@@ -1837,7 +2019,7 @@ rekognition_put_project_policy <- function(ProjectArn, PolicyName, PolicyRevisio
 #' @description
 #' Returns an array of celebrities recognized in the input image. For more information, see Recognizing celebrities in the Amazon Rekognition Developer Guide.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/recognize_celebrities.html](https://paws-r.github.io/docs/rekognition/recognize_celebrities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_recognize_celebrities/](https://www.paws-r-sdk.com/docs/rekognition_recognize_celebrities/) for full documentation.
 #'
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing base64-encoded
@@ -1873,7 +2055,7 @@ rekognition_recognize_celebrities <- function(Image) {
 #' @description
 #' For a given input face ID, searches for matching faces in the collection the face belongs to. You get a face ID when you add a face to the collection using the [`index_faces`][rekognition_index_faces] operation. The operation compares the features of the input face with faces in the specified collection.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/search_faces.html](https://paws-r.github.io/docs/rekognition/search_faces.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_search_faces/](https://www.paws-r-sdk.com/docs/rekognition_search_faces/) for full documentation.
 #'
 #' @param CollectionId &#91;required&#93; ID of the collection the face belongs to.
 #' @param FaceId &#91;required&#93; ID of a face to find matches for in the collection.
@@ -1909,7 +2091,7 @@ rekognition_search_faces <- function(CollectionId, FaceId, MaxFaces = NULL, Face
 #' @description
 #' For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces. The operation compares the features of the input face with faces in the specified collection.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/search_faces_by_image.html](https://paws-r.github.io/docs/rekognition/search_faces_by_image.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_search_faces_by_image/](https://www.paws-r-sdk.com/docs/rekognition_search_faces_by_image/) for full documentation.
 #'
 #' @param CollectionId &#91;required&#93; ID of the collection to search.
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
@@ -1958,12 +2140,84 @@ rekognition_search_faces_by_image <- function(CollectionId, Image, MaxFaces = NU
 }
 .rekognition$operations$search_faces_by_image <- rekognition_search_faces_by_image
 
+#' Searches for UserIDs within a collection based on a FaceId or UserId
+#'
+#' @description
+#' Searches for UserIDs within a collection based on a `FaceId` or `UserId`. This API can be used to find the closest UserID (with a highest similarity) to associate a face. The request must be provided with either `FaceId` or `UserId`. The operation returns an array of UserID that match the `FaceId` or `UserId`, ordered by similarity score with the highest similarity first.
+#'
+#' See [https://www.paws-r-sdk.com/docs/rekognition_search_users/](https://www.paws-r-sdk.com/docs/rekognition_search_users/) for full documentation.
+#'
+#' @param CollectionId &#91;required&#93; The ID of an existing collection containing the UserID, used with a
+#' UserId or FaceId. If a FaceId is provided, UserId isn’t required to be
+#' present in the Collection.
+#' @param UserId ID for the existing User.
+#' @param FaceId ID for the existing face.
+#' @param UserMatchThreshold Optional value that specifies the minimum confidence in the matched
+#' UserID to return. Default value of 80.
+#' @param MaxUsers Maximum number of identities to return.
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_search_users
+rekognition_search_users <- function(CollectionId, UserId = NULL, FaceId = NULL, UserMatchThreshold = NULL, MaxUsers = NULL) {
+  op <- new_operation(
+    name = "SearchUsers",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$search_users_input(CollectionId = CollectionId, UserId = UserId, FaceId = FaceId, UserMatchThreshold = UserMatchThreshold, MaxUsers = MaxUsers)
+  output <- .rekognition$search_users_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$search_users <- rekognition_search_users
+
+#' Searches for UserIDs using a supplied image
+#'
+#' @description
+#' Searches for UserIDs using a supplied image. It first detects the largest face in the image, and then searches a specified collection for matching UserIDs.
+#'
+#' See [https://www.paws-r-sdk.com/docs/rekognition_search_users_by_image/](https://www.paws-r-sdk.com/docs/rekognition_search_users_by_image/) for full documentation.
+#'
+#' @param CollectionId &#91;required&#93; The ID of an existing collection containing the UserID.
+#' @param Image &#91;required&#93; 
+#' @param UserMatchThreshold Specifies the minimum confidence in the UserID match to return. Default
+#' value is 80.
+#' @param MaxUsers Maximum number of UserIDs to return.
+#' @param QualityFilter A filter that specifies a quality bar for how much filtering is done to
+#' identify faces. Filtered faces aren't searched for in the collection.
+#' The default value is NONE.
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_search_users_by_image
+rekognition_search_users_by_image <- function(CollectionId, Image, UserMatchThreshold = NULL, MaxUsers = NULL, QualityFilter = NULL) {
+  op <- new_operation(
+    name = "SearchUsersByImage",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$search_users_by_image_input(CollectionId = CollectionId, Image = Image, UserMatchThreshold = UserMatchThreshold, MaxUsers = MaxUsers, QualityFilter = QualityFilter)
+  output <- .rekognition$search_users_by_image_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$search_users_by_image <- rekognition_search_users_by_image
+
 #' Starts asynchronous recognition of celebrities in a stored video
 #'
 #' @description
 #' Starts asynchronous recognition of celebrities in a stored video.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/start_celebrity_recognition.html](https://paws-r.github.io/docs/rekognition/start_celebrity_recognition.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_start_celebrity_recognition/](https://www.paws-r-sdk.com/docs/rekognition_start_celebrity_recognition/) for full documentation.
 #'
 #' @param Video &#91;required&#93; The video in which you want to recognize celebrities. The video must be
 #' stored in an Amazon S3 bucket.
@@ -2008,7 +2262,7 @@ rekognition_start_celebrity_recognition <- function(Video, ClientRequestToken = 
 #' @description
 #' Starts asynchronous detection of inappropriate, unwanted, or offensive content in a stored video. For a list of moderation labels in Amazon Rekognition, see [Using the image and video moderation APIs](https://docs.aws.amazon.com/rekognition/latest/dg/moderation.html#moderation-api).
 #'
-#' See [https://paws-r.github.io/docs/rekognition/start_content_moderation.html](https://paws-r.github.io/docs/rekognition/start_content_moderation.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_start_content_moderation/](https://www.paws-r-sdk.com/docs/rekognition_start_content_moderation/) for full documentation.
 #'
 #' @param Video &#91;required&#93; The video in which you want to detect inappropriate, unwanted, or
 #' offensive content. The video must be stored in an Amazon S3 bucket.
@@ -2061,7 +2315,7 @@ rekognition_start_content_moderation <- function(Video, MinConfidence = NULL, Cl
 #' @description
 #' Starts asynchronous detection of faces in a stored video.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/start_face_detection.html](https://paws-r.github.io/docs/rekognition/start_face_detection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_start_face_detection/](https://www.paws-r-sdk.com/docs/rekognition_start_face_detection/) for full documentation.
 #'
 #' @param Video &#91;required&#93; The video in which you want to detect faces. The video must be stored in
 #' an Amazon S3 bucket.
@@ -2112,7 +2366,7 @@ rekognition_start_face_detection <- function(Video, ClientRequestToken = NULL, N
 #' @description
 #' Starts the asynchronous search for faces in a collection that match the faces of persons detected in a stored video.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/start_face_search.html](https://paws-r.github.io/docs/rekognition/start_face_search.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_start_face_search/](https://www.paws-r-sdk.com/docs/rekognition_start_face_search/) for full documentation.
 #'
 #' @param Video &#91;required&#93; The video you want to search. The video must be stored in an Amazon S3
 #' bucket.
@@ -2159,7 +2413,7 @@ rekognition_start_face_search <- function(Video, ClientRequestToken = NULL, Face
 #' @description
 #' Starts asynchronous detection of labels in a stored video.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/start_label_detection.html](https://paws-r.github.io/docs/rekognition/start_label_detection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_start_label_detection/](https://www.paws-r-sdk.com/docs/rekognition_start_label_detection/) for full documentation.
 #'
 #' @param Video &#91;required&#93; The video in which you want to detect labels. The video must be stored
 #' in an Amazon S3 bucket.
@@ -2217,7 +2471,7 @@ rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, 
 #' @description
 #' Starts the asynchronous tracking of a person's path in a stored video.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/start_person_tracking.html](https://paws-r.github.io/docs/rekognition/start_person_tracking.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_start_person_tracking/](https://www.paws-r-sdk.com/docs/rekognition_start_person_tracking/) for full documentation.
 #'
 #' @param Video &#91;required&#93; The video in which you want to detect people. The video must be stored
 #' in an Amazon S3 bucket.
@@ -2260,7 +2514,7 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
 #' @description
 #' Starts the running of the version of a model. Starting a model takes a while to complete. To check the current state of the model, use [`describe_project_versions`][rekognition_describe_project_versions].
 #'
-#' See [https://paws-r.github.io/docs/rekognition/start_project_version.html](https://paws-r.github.io/docs/rekognition/start_project_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_start_project_version/](https://www.paws-r-sdk.com/docs/rekognition_start_project_version/) for full documentation.
 #'
 #' @param ProjectVersionArn &#91;required&#93; The Amazon Resource Name(ARN) of the model version that you want to
 #' start.
@@ -2302,7 +2556,7 @@ rekognition_start_project_version <- function(ProjectVersionArn, MinInferenceUni
 #' @description
 #' Starts asynchronous detection of segment detection in a stored video.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/start_segment_detection.html](https://paws-r.github.io/docs/rekognition/start_segment_detection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_start_segment_detection/](https://www.paws-r-sdk.com/docs/rekognition_start_segment_detection/) for full documentation.
 #'
 #' @param Video &#91;required&#93; 
 #' @param ClientRequestToken Idempotent token used to identify the start request. If you use the same
@@ -2348,7 +2602,7 @@ rekognition_start_segment_detection <- function(Video, ClientRequestToken = NULL
 #' @description
 #' Starts processing a stream processor. You create a stream processor by calling [`create_stream_processor`][rekognition_create_stream_processor]. To tell [`start_stream_processor`][rekognition_start_stream_processor] which stream processor to start, use the value of the `Name` field specified in the call to [`create_stream_processor`][rekognition_create_stream_processor].
 #'
-#' See [https://paws-r.github.io/docs/rekognition/start_stream_processor.html](https://paws-r.github.io/docs/rekognition/start_stream_processor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_start_stream_processor/](https://www.paws-r-sdk.com/docs/rekognition_start_stream_processor/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of the stream processor to start processing.
 #' @param StartSelector Specifies the starting point in the Kinesis stream to start processing.
@@ -2390,7 +2644,7 @@ rekognition_start_stream_processor <- function(Name, StartSelector = NULL, StopS
 #' @description
 #' Starts asynchronous detection of text in a stored video.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/start_text_detection.html](https://paws-r.github.io/docs/rekognition/start_text_detection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_start_text_detection/](https://www.paws-r-sdk.com/docs/rekognition_start_text_detection/) for full documentation.
 #'
 #' @param Video &#91;required&#93; 
 #' @param ClientRequestToken Idempotent token used to identify the start request. If you use the same
@@ -2430,7 +2684,7 @@ rekognition_start_text_detection <- function(Video, ClientRequestToken = NULL, N
 #' @description
 #' Stops a running model. The operation might take a while to complete. To check the current status, call [`describe_project_versions`][rekognition_describe_project_versions].
 #'
-#' See [https://paws-r.github.io/docs/rekognition/stop_project_version.html](https://paws-r.github.io/docs/rekognition/stop_project_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_stop_project_version/](https://www.paws-r-sdk.com/docs/rekognition_stop_project_version/) for full documentation.
 #'
 #' @param ProjectVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the model version that you want to
 #' delete.
@@ -2464,7 +2718,7 @@ rekognition_stop_project_version <- function(ProjectVersionArn) {
 #' @description
 #' Stops a running stream processor that was created by [`create_stream_processor`][rekognition_create_stream_processor].
 #'
-#' See [https://paws-r.github.io/docs/rekognition/stop_stream_processor.html](https://paws-r.github.io/docs/rekognition/stop_stream_processor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_stop_stream_processor/](https://www.paws-r-sdk.com/docs/rekognition_stop_stream_processor/) for full documentation.
 #'
 #' @param Name &#91;required&#93; The name of a stream processor created by
 #' [`create_stream_processor`][rekognition_create_stream_processor].
@@ -2495,7 +2749,7 @@ rekognition_stop_stream_processor <- function(Name) {
 #' @description
 #' Adds one or more key-value tags to an Amazon Rekognition collection, stream processor, or Custom Labels model. For more information, see [Tagging AWS Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html).
 #'
-#' See [https://paws-r.github.io/docs/rekognition/tag_resource.html](https://paws-r.github.io/docs/rekognition/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_tag_resource/](https://www.paws-r-sdk.com/docs/rekognition_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the model, collection, or stream processor
 #' that you want to assign the tags to.
@@ -2527,7 +2781,7 @@ rekognition_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes one or more tags from an Amazon Rekognition collection, stream processor, or Custom Labels model.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/untag_resource.html](https://paws-r.github.io/docs/rekognition/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_untag_resource/](https://www.paws-r-sdk.com/docs/rekognition_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; Amazon Resource Name (ARN) of the model, collection, or stream processor
 #' that you want to remove the tags from.
@@ -2558,7 +2812,7 @@ rekognition_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Adds or updates one or more entries (images) in a dataset. An entry is a JSON Line which contains the information for a single image, including the image location, assigned labels, and object location bounding boxes. For more information, see Image-Level labels in manifest files and Object localization in manifest files in the *Amazon Rekognition Custom Labels Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/update_dataset_entries.html](https://paws-r.github.io/docs/rekognition/update_dataset_entries.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_update_dataset_entries/](https://www.paws-r-sdk.com/docs/rekognition_update_dataset_entries/) for full documentation.
 #'
 #' @param DatasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset that you want to update.
 #' @param Changes &#91;required&#93; The changes that you want to make to the dataset.
@@ -2588,7 +2842,7 @@ rekognition_update_dataset_entries <- function(DatasetArn, Changes) {
 #' @description
 #' Allows you to update a stream processor. You can change some settings and regions of interest and delete certain parameters.
 #'
-#' See [https://paws-r.github.io/docs/rekognition/update_stream_processor.html](https://paws-r.github.io/docs/rekognition/update_stream_processor.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/rekognition_update_stream_processor/](https://www.paws-r-sdk.com/docs/rekognition_update_stream_processor/) for full documentation.
 #'
 #' @param Name &#91;required&#93; Name of the stream processor that you want to update.
 #' @param SettingsForUpdate The stream processor settings that you want to update. Label detection

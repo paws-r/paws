@@ -14,6 +14,6 @@ quicksight_delete_folder(AwsAccountId, FolderId)
 \description{
 Deletes an empty folder.
 
-See \url{https://paws-r.github.io/docs/quicksight/delete_folder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_delete_folder/} for full documentation.
 }
 \keyword{internal}

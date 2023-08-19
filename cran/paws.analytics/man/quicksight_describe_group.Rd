@@ -19,6 +19,6 @@ contains your Amazon QuickSight account.}
 \description{
 Returns an Amazon QuickSight group's description and Amazon Resource Name (ARN).
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_group/} for full documentation.
 }
 \keyword{internal}

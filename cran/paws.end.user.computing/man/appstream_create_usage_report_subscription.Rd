@@ -9,6 +9,6 @@ appstream_create_usage_report_subscription()
 \description{
 Creates a usage report subscription. Usage reports are generated daily.
 
-See \url{https://paws-r.github.io/docs/appstream/create_usage_report_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_create_usage_report_subscription/} for full documentation.
 }
 \keyword{internal}

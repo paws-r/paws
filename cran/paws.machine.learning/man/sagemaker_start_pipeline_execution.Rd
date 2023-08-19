@@ -10,11 +10,12 @@ sagemaker_start_pipeline_execution(
   PipelineParameters = NULL,
   PipelineExecutionDescription = NULL,
   ClientRequestToken,
-  ParallelismConfiguration = NULL
+  ParallelismConfiguration = NULL,
+  SelectiveExecutionConfig = NULL
 )
 }
 \arguments{
-\item{PipelineName}{[required] The name of the pipeline.}
+\item{PipelineName}{[required] The name or Amazon Resource Name (ARN) of the pipeline.}
 
 \item{PipelineExecutionDisplayName}{The display name of the pipeline execution.}
 
@@ -28,10 +29,12 @@ than once.}
 
 \item{ParallelismConfiguration}{This configuration, if specified, overrides the parallelism
 configuration of the parent pipeline for this specific run.}
+
+\item{SelectiveExecutionConfig}{The selective execution configuration applied to the pipeline run.}
 }
 \description{
 Starts a pipeline execution.
 
-See \url{https://paws-r.github.io/docs/sagemaker/start_pipeline_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_start_pipeline_execution/} for full documentation.
 }
 \keyword{internal}

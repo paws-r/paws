@@ -12,6 +12,6 @@ codebuild_delete_build_batch(id)
 \description{
 Deletes a batch build.
 
-See \url{https://paws-r.github.io/docs/codebuild/delete_build_batch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codebuild_delete_build_batch/} for full documentation.
 }
 \keyword{internal}

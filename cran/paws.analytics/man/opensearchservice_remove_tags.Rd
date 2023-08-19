@@ -16,6 +16,6 @@ delete the specified tags.}
 \description{
 Removes the specified set of tags from an Amazon OpenSearch Service domain. For more information, see \href{https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#managedomains-awsresorcetagging}{Tagging Amazon OpenSearch Service domains}.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/remove_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_remove_tags/} for full documentation.
 }
 \keyword{internal}

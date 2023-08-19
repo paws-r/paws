@@ -51,6 +51,6 @@ manual snapshots instead of automated snapshots.}
 \description{
 Modifies the number of days to retain snapshots in the destination Amazon Web Services Region after they are copied from the source Amazon Web Services Region. By default, this operation only changes the retention period of copied automated snapshots. The retention periods for both new and existing copied automated snapshots are updated with the new retention period. You can set the manual option to change only the retention periods of copied manual snapshots. If you set this option, only newly copied manual snapshots have the new retention period.
 
-See \url{https://paws-r.github.io/docs/redshift/modify_snapshot_copy_retention_period.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_modify_snapshot_copy_retention_period/} for full documentation.
 }
 \keyword{internal}

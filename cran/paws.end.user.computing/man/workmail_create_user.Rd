@@ -20,6 +20,6 @@ length of 64. All others have a maximum length of 20.}
 \description{
 Creates a user who can be used in WorkMail by calling the \code{\link[=workmail_register_to_work_mail]{register_to_work_mail}} operation.
 
-See \url{https://paws-r.github.io/docs/workmail/create_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_create_user/} for full documentation.
 }
 \keyword{internal}

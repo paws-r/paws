@@ -14,6 +14,6 @@ dynamodb_describe_table(TableName)
 \description{
 Returns information about the table, including the current status of the table, when it was created, the primary key schema, and any indexes on the table.
 
-See \url{https://paws-r.github.io/docs/dynamodb/describe_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dynamodb_describe_table/} for full documentation.
 }
 \keyword{internal}

@@ -14,6 +14,6 @@ resourcegroups_get_group(GroupName = NULL, Group = NULL)
 \description{
 Returns information about a specified resource group.
 
-See \url{https://paws-r.github.io/docs/resourcegroups/get_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resourcegroups_get_group/} for full documentation.
 }
 \keyword{internal}

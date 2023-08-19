@@ -24,6 +24,6 @@ Services administrator credentials to access the API.}
 \description{
 Deletes the specified comment from the document version.
 
-See \url{https://paws-r.github.io/docs/workdocs/delete_comment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_delete_comment/} for full documentation.
 }
 \keyword{internal}

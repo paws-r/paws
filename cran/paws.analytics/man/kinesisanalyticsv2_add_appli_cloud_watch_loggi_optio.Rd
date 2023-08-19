@@ -34,6 +34,6 @@ instead of \code{CurrentApplicationVersionId}.}
 \description{
 Adds an Amazon CloudWatch log stream to monitor application configuration errors.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_cloud_watch_logging_option.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_cloud_watch_logging_option/} for full documentation.
 }
 \keyword{internal}

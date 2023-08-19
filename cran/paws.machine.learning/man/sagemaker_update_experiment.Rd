@@ -21,6 +21,6 @@ unique. If \code{DisplayName} isn't specified, \code{ExperimentName} is displaye
 \description{
 Adds, updates, or removes the description of an experiment. Updates the display name of an experiment.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_experiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_experiment/} for full documentation.
 }
 \keyword{internal}

@@ -37,6 +37,6 @@ Initiative (OCI) formats.}
 \description{
 Creates or updates the image manifest and tags that are associated with an image.
 
-See \url{https://paws-r.github.io/docs/ecrpublic/put_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecrpublic_put_image/} for full documentation.
 }
 \keyword{internal}

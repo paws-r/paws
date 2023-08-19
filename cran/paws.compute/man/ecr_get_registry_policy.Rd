@@ -9,6 +9,6 @@ ecr_get_registry_policy()
 \description{
 Retrieves the permissions policy for a registry.
 
-See \url{https://paws-r.github.io/docs/ecr/get_registry_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_get_registry_policy/} for full documentation.
 }
 \keyword{internal}

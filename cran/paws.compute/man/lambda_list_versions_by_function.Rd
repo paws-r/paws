@@ -32,6 +32,6 @@ higher.}
 \description{
 Returns a list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-versions.html}{versions}, with the version-specific configuration of each. Lambda returns up to 50 versions per call.
 
-See \url{https://paws-r.github.io/docs/lambda/list_versions_by_function.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_list_versions_by_function/} for full documentation.
 }
 \keyword{internal}

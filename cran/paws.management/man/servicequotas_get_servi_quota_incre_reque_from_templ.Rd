@@ -21,6 +21,6 @@ servicequotas_get_service_quota_increase_request_from_template(
 \description{
 Retrieves information about the specified quota increase request in your quota request template.
 
-See \url{https://paws-r.github.io/docs/servicequotas/get_service_quota_increase_request_from_template.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicequotas_get_service_quota_increase_request_from_template/} for full documentation.
 }
 \keyword{internal}

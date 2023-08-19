@@ -46,6 +46,6 @@ default value is false (the configuration is not reused).}
 \description{
 Deploys the new \code{EndpointConfig} specified in the request, switches to using newly created endpoint, and then deletes resources provisioned for the endpoint using the previous \code{EndpointConfig} (there is no availability loss).
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_endpoint/} for full documentation.
 }
 \keyword{internal}

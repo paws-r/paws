@@ -16,6 +16,6 @@ quicksight_cancel_ingestion(AwsAccountId, DataSetId, IngestionId)
 \description{
 Cancels an ongoing ingestion of data into SPICE.
 
-See \url{https://paws-r.github.io/docs/quicksight/cancel_ingestion.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_cancel_ingestion/} for full documentation.
 }
 \keyword{internal}

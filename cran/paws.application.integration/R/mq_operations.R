@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a broker. Note: This API is asynchronous.
 #'
-#' See [https://paws-r.github.io/docs/mq/create_broker.html](https://paws-r.github.io/docs/mq/create_broker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_create_broker/](https://www.paws-r-sdk.com/docs/mq_create_broker/) for full documentation.
 #'
 #' @param AuthenticationStrategy Optional. The authentication strategy used to secure the broker. The
 #' default is SIMPLE.
@@ -16,18 +16,25 @@ NULL
 #' versions are released and supported by Amazon MQ. Automatic upgrades
 #' occur during the scheduled maintenance window of the broker or after a
 #' manual broker reboot. Set to true by default, if no value is specified.
-#' @param BrokerName &#91;required&#93; Required. The broker's name. This value must be unique in your AWS
-#' account, 1-50 characters long, must contain only letters, numbers,
-#' dashes, and underscores, and must not contain white spaces, brackets,
-#' wildcard characters, or special characters.
+#' @param BrokerName &#91;required&#93; Required. The broker's name. This value must be unique in your Amazon
+#' Web Services account, 1-50 characters long, must contain only letters,
+#' numbers, dashes, and underscores, and must not contain white spaces,
+#' brackets, wildcard characters, or special characters.
+#' 
+#' Do not add personally identifiable information (PII) or other
+#' confidential or sensitive information in broker names. Broker names are
+#' accessible to other Amazon Web Services services, including CloudWatch
+#' Logs. Broker names are not intended to be used for private or sensitive
+#' data.
 #' @param Configuration A list of information about the configuration.
 #' @param CreatorRequestId The unique ID that the requester receives for the created broker. Amazon
-#' MQ passes your ID with the API action. Note: We recommend using a
-#' Universally Unique Identifier (UUID) for the creatorRequestId. You may
-#' omit the creatorRequestId if your application doesn't require
-#' idempotency.
+#' MQ passes your ID with the API action.
+#' 
+#' We recommend using a Universally Unique Identifier (UUID) for the
+#' creatorRequestId. You may omit the creatorRequestId if your application
+#' doesn't require idempotency.
 #' @param DeploymentMode &#91;required&#93; Required. The broker's deployment mode.
-#' @param EncryptionOptions Encryption options for the broker. Does not apply to RabbitMQ brokers.
+#' @param EncryptionOptions Encryption options for the broker.
 #' @param EngineType &#91;required&#93; Required. The type of broker engine. Currently, Amazon MQ supports
 #' ACTIVEMQ and RABBITMQ.
 #' @param EngineVersion &#91;required&#93; Required. The broker engine's version. For a list of supported engine
@@ -57,32 +64,31 @@ NULL
 #' If you specify subnets in a [shared
 #' VPC](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-sharing.html)
 #' for a RabbitMQ broker, the associated VPC to which the specified subnets
-#' belong must be owned by your AWS account. Amazon MQ will not be able to
-#' create VPC endpoints in VPCs that are not owned by your AWS account.
+#' belong must be owned by your Amazon Web Services account. Amazon MQ will
+#' not be able to create VPC endpoints in VPCs that are not owned by your
+#' Amazon Web Services account.
 #' @param Tags Create tags when creating the broker.
-#' @param Users &#91;required&#93; Required. The list of broker users (persons or applications) who can
-#' access queues and topics. This value can contain only alphanumeric
-#' characters, dashes, periods, underscores, and tildes (- . _ ~). This
-#' value must be 2-100 characters long.
-#' 
-#' Amazon MQ for RabbitMQ
-#' 
-#' When you create an Amazon MQ for RabbitMQ broker, one and only one
+#' @param Users &#91;required&#93; The list of broker users (persons or applications) who can access queues
+#' and topics. For Amazon MQ for RabbitMQ brokers, one and only one
 #' administrative user is accepted and created when a broker is first
 #' provisioned. All subsequent broker users are created by making RabbitMQ
 #' API calls directly to brokers or via the RabbitMQ web console.
+#' @param DataReplicationMode Defines whether this broker is a part of a data replication pair.
+#' @param DataReplicationPrimaryBrokerArn The Amazon Resource Name (ARN) of the primary broker that is used to
+#' replicate data from in a data replication pair, and is applied to the
+#' replica broker. Must be set when dataReplicationMode is set to CRDR.
 #'
 #' @keywords internal
 #'
 #' @rdname mq_create_broker
-mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade, BrokerName, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode, EncryptionOptions = NULL, EngineType, EngineVersion, HostInstanceType, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users) {
+mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade, BrokerName, Configuration = NULL, CreatorRequestId = NULL, DeploymentMode, EncryptionOptions = NULL, EngineType, EngineVersion, HostInstanceType, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, PubliclyAccessible, SecurityGroups = NULL, StorageType = NULL, SubnetIds = NULL, Tags = NULL, Users, DataReplicationMode = NULL, DataReplicationPrimaryBrokerArn = NULL) {
   op <- new_operation(
     name = "CreateBroker",
     http_method = "POST",
     http_path = "/v1/brokers",
     paginator = list()
   )
-  input <- .mq$create_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerName = BrokerName, Configuration = Configuration, CreatorRequestId = CreatorRequestId, DeploymentMode = DeploymentMode, EncryptionOptions = EncryptionOptions, EngineType = EngineType, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, PubliclyAccessible = PubliclyAccessible, SecurityGroups = SecurityGroups, StorageType = StorageType, SubnetIds = SubnetIds, Tags = Tags, Users = Users)
+  input <- .mq$create_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerName = BrokerName, Configuration = Configuration, CreatorRequestId = CreatorRequestId, DeploymentMode = DeploymentMode, EncryptionOptions = EncryptionOptions, EngineType = EngineType, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, PubliclyAccessible = PubliclyAccessible, SecurityGroups = SecurityGroups, StorageType = StorageType, SubnetIds = SubnetIds, Tags = Tags, Users = Users, DataReplicationMode = DataReplicationMode, DataReplicationPrimaryBrokerArn = DataReplicationPrimaryBrokerArn)
   output <- .mq$create_broker_output()
   config <- get_config()
   svc <- .mq$service(config)
@@ -97,7 +103,7 @@ mq_create_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' @description
 #' Creates a new configuration for the specified configuration name. Amazon MQ uses the default configuration (the engine type and version).
 #'
-#' See [https://paws-r.github.io/docs/mq/create_configuration.html](https://paws-r.github.io/docs/mq/create_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_create_configuration/](https://www.paws-r-sdk.com/docs/mq_create_configuration/) for full documentation.
 #'
 #' @param AuthenticationStrategy Optional. The authentication strategy associated with the configuration.
 #' The default is SIMPLE.
@@ -136,7 +142,7 @@ mq_create_configuration <- function(AuthenticationStrategy = NULL, EngineType, E
 #' @description
 #' Add a tag to a resource.
 #'
-#' See [https://paws-r.github.io/docs/mq/create_tags.html](https://paws-r.github.io/docs/mq/create_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_create_tags/](https://www.paws-r-sdk.com/docs/mq_create_tags/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource tag.
 #' @param Tags The key-value pair for the resource tag.
@@ -166,7 +172,7 @@ mq_create_tags <- function(ResourceArn, Tags = NULL) {
 #' @description
 #' Creates an ActiveMQ user.
 #'
-#' See [https://paws-r.github.io/docs/mq/create_user.html](https://paws-r.github.io/docs/mq/create_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_create_user/](https://www.paws-r-sdk.com/docs/mq_create_user/) for full documentation.
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #' @param ConsoleAccess Enables access to the ActiveMQ Web Console for the ActiveMQ user.
@@ -180,18 +186,19 @@ mq_create_tags <- function(ResourceArn, Tags = NULL) {
 #' @param Username &#91;required&#93; The username of the ActiveMQ user. This value can contain only
 #' alphanumeric characters, dashes, periods, underscores, and tildes (- .
 #' _ ~). This value must be 2-100 characters long.
+#' @param ReplicationUser Defines if this user is intended for CRDR replication purposes.
 #'
 #' @keywords internal
 #'
 #' @rdname mq_create_user
-mq_create_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Password, Username) {
+mq_create_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Password, Username, ReplicationUser = NULL) {
   op <- new_operation(
     name = "CreateUser",
     http_method = "POST",
     http_path = "/v1/brokers/{broker-id}/users/{username}",
     paginator = list()
   )
-  input <- .mq$create_user_input(BrokerId = BrokerId, ConsoleAccess = ConsoleAccess, Groups = Groups, Password = Password, Username = Username)
+  input <- .mq$create_user_input(BrokerId = BrokerId, ConsoleAccess = ConsoleAccess, Groups = Groups, Password = Password, Username = Username, ReplicationUser = ReplicationUser)
   output <- .mq$create_user_output()
   config <- get_config()
   svc <- .mq$service(config)
@@ -206,7 +213,7 @@ mq_create_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Passwo
 #' @description
 #' Deletes a broker. Note: This API is asynchronous.
 #'
-#' See [https://paws-r.github.io/docs/mq/delete_broker.html](https://paws-r.github.io/docs/mq/delete_broker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_delete_broker/](https://www.paws-r-sdk.com/docs/mq_delete_broker/) for full documentation.
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #'
@@ -235,7 +242,7 @@ mq_delete_broker <- function(BrokerId) {
 #' @description
 #' Removes a tag from a resource.
 #'
-#' See [https://paws-r.github.io/docs/mq/delete_tags.html](https://paws-r.github.io/docs/mq/delete_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_delete_tags/](https://www.paws-r-sdk.com/docs/mq_delete_tags/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource tag.
 #' @param TagKeys &#91;required&#93; An array of tag keys to delete
@@ -265,7 +272,7 @@ mq_delete_tags <- function(ResourceArn, TagKeys) {
 #' @description
 #' Deletes an ActiveMQ user.
 #'
-#' See [https://paws-r.github.io/docs/mq/delete_user.html](https://paws-r.github.io/docs/mq/delete_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_delete_user/](https://www.paws-r-sdk.com/docs/mq_delete_user/) for full documentation.
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #' @param Username &#91;required&#93; The username of the ActiveMQ user. This value can contain only
@@ -297,7 +304,7 @@ mq_delete_user <- function(BrokerId, Username) {
 #' @description
 #' Returns information about the specified broker.
 #'
-#' See [https://paws-r.github.io/docs/mq/describe_broker.html](https://paws-r.github.io/docs/mq/describe_broker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_describe_broker/](https://www.paws-r-sdk.com/docs/mq_describe_broker/) for full documentation.
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #'
@@ -326,7 +333,7 @@ mq_describe_broker <- function(BrokerId) {
 #' @description
 #' Describe available engine types and versions.
 #'
-#' See [https://paws-r.github.io/docs/mq/describe_broker_engine_types.html](https://paws-r.github.io/docs/mq/describe_broker_engine_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_describe_broker_engine_types/](https://www.paws-r-sdk.com/docs/mq_describe_broker_engine_types/) for full documentation.
 #'
 #' @param EngineType Filter response by engine type.
 #' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by
@@ -359,7 +366,7 @@ mq_describe_broker_engine_types <- function(EngineType = NULL, MaxResults = NULL
 #' @description
 #' Describe available broker instance options.
 #'
-#' See [https://paws-r.github.io/docs/mq/describe_broker_instance_options.html](https://paws-r.github.io/docs/mq/describe_broker_instance_options.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_describe_broker_instance_options/](https://www.paws-r-sdk.com/docs/mq_describe_broker_instance_options/) for full documentation.
 #'
 #' @param EngineType Filter response by engine type.
 #' @param HostInstanceType Filter response by host instance type.
@@ -394,7 +401,7 @@ mq_describe_broker_instance_options <- function(EngineType = NULL, HostInstanceT
 #' @description
 #' Returns information about the specified configuration.
 #'
-#' See [https://paws-r.github.io/docs/mq/describe_configuration.html](https://paws-r.github.io/docs/mq/describe_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_describe_configuration/](https://www.paws-r-sdk.com/docs/mq_describe_configuration/) for full documentation.
 #'
 #' @param ConfigurationId &#91;required&#93; The unique ID that Amazon MQ generates for the configuration.
 #'
@@ -424,7 +431,7 @@ mq_describe_configuration <- function(ConfigurationId) {
 #' @description
 #' Returns the specified configuration revision for the specified configuration.
 #'
-#' See [https://paws-r.github.io/docs/mq/describe_configuration_revision.html](https://paws-r.github.io/docs/mq/describe_configuration_revision.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_describe_configuration_revision/](https://www.paws-r-sdk.com/docs/mq_describe_configuration_revision/) for full documentation.
 #'
 #' @param ConfigurationId &#91;required&#93; The unique ID that Amazon MQ generates for the configuration.
 #' @param ConfigurationRevision &#91;required&#93; The revision of the configuration.
@@ -454,7 +461,7 @@ mq_describe_configuration_revision <- function(ConfigurationId, ConfigurationRev
 #' @description
 #' Returns information about an ActiveMQ user.
 #'
-#' See [https://paws-r.github.io/docs/mq/describe_user.html](https://paws-r.github.io/docs/mq/describe_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_describe_user/](https://www.paws-r-sdk.com/docs/mq_describe_user/) for full documentation.
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #' @param Username &#91;required&#93; The username of the ActiveMQ user. This value can contain only
@@ -486,7 +493,7 @@ mq_describe_user <- function(BrokerId, Username) {
 #' @description
 #' Returns a list of all brokers.
 #'
-#' See [https://paws-r.github.io/docs/mq/list_brokers.html](https://paws-r.github.io/docs/mq/list_brokers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_list_brokers/](https://www.paws-r-sdk.com/docs/mq_list_brokers/) for full documentation.
 #'
 #' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by
 #' default). This value must be an integer from 5 to 100.
@@ -501,7 +508,7 @@ mq_list_brokers <- function(MaxResults = NULL, NextToken = NULL) {
     name = "ListBrokers",
     http_method = "GET",
     http_path = "/v1/brokers",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BrokerSummaries")
   )
   input <- .mq$list_brokers_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .mq$list_brokers_output()
@@ -518,7 +525,7 @@ mq_list_brokers <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Returns a list of all revisions for the specified configuration.
 #'
-#' See [https://paws-r.github.io/docs/mq/list_configuration_revisions.html](https://paws-r.github.io/docs/mq/list_configuration_revisions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_list_configuration_revisions/](https://www.paws-r-sdk.com/docs/mq_list_configuration_revisions/) for full documentation.
 #'
 #' @param ConfigurationId &#91;required&#93; The unique ID that Amazon MQ generates for the configuration.
 #' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by
@@ -551,7 +558,7 @@ mq_list_configuration_revisions <- function(ConfigurationId, MaxResults = NULL, 
 #' @description
 #' Returns a list of all configurations.
 #'
-#' See [https://paws-r.github.io/docs/mq/list_configurations.html](https://paws-r.github.io/docs/mq/list_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_list_configurations/](https://www.paws-r-sdk.com/docs/mq_list_configurations/) for full documentation.
 #'
 #' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by
 #' default). This value must be an integer from 5 to 100.
@@ -583,7 +590,7 @@ mq_list_configurations <- function(MaxResults = NULL, NextToken = NULL) {
 #' @description
 #' Lists tags for a resource.
 #'
-#' See [https://paws-r.github.io/docs/mq/list_tags.html](https://paws-r.github.io/docs/mq/list_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_list_tags/](https://www.paws-r-sdk.com/docs/mq_list_tags/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource tag.
 #'
@@ -612,7 +619,7 @@ mq_list_tags <- function(ResourceArn) {
 #' @description
 #' Returns a list of all ActiveMQ users.
 #'
-#' See [https://paws-r.github.io/docs/mq/list_users.html](https://paws-r.github.io/docs/mq/list_users.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_list_users/](https://www.paws-r-sdk.com/docs/mq_list_users/) for full documentation.
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #' @param MaxResults The maximum number of brokers that Amazon MQ can return per page (20 by
@@ -640,12 +647,43 @@ mq_list_users <- function(BrokerId, MaxResults = NULL, NextToken = NULL) {
 }
 .mq$operations$list_users <- mq_list_users
 
+#' Promotes a data replication replica broker to the primary broker role
+#'
+#' @description
+#' Promotes a data replication replica broker to the primary broker role.
+#'
+#' See [https://www.paws-r-sdk.com/docs/mq_promote/](https://www.paws-r-sdk.com/docs/mq_promote/) for full documentation.
+#'
+#' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
+#' @param Mode &#91;required&#93; The Promote mode requested. Note: Valid values for the parameter are
+#' SWITCHOVER, FAILOVER.
+#'
+#' @keywords internal
+#'
+#' @rdname mq_promote
+mq_promote <- function(BrokerId, Mode) {
+  op <- new_operation(
+    name = "Promote",
+    http_method = "POST",
+    http_path = "/v1/brokers/{broker-id}/promote",
+    paginator = list()
+  )
+  input <- .mq$promote_input(BrokerId = BrokerId, Mode = Mode)
+  output <- .mq$promote_output()
+  config <- get_config()
+  svc <- .mq$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.mq$operations$promote <- mq_promote
+
 #' Reboots a broker
 #'
 #' @description
 #' Reboots a broker. Note: This API is asynchronous.
 #'
-#' See [https://paws-r.github.io/docs/mq/reboot_broker.html](https://paws-r.github.io/docs/mq/reboot_broker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_reboot_broker/](https://www.paws-r-sdk.com/docs/mq_reboot_broker/) for full documentation.
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #'
@@ -674,7 +712,7 @@ mq_reboot_broker <- function(BrokerId) {
 #' @description
 #' Adds a pending configuration change to a broker.
 #'
-#' See [https://paws-r.github.io/docs/mq/update_broker.html](https://paws-r.github.io/docs/mq/update_broker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_update_broker/](https://www.paws-r-sdk.com/docs/mq_update_broker/) for full documentation.
 #'
 #' @param AuthenticationStrategy Optional. The authentication strategy used to secure the broker. The
 #' default is SIMPLE.
@@ -696,18 +734,19 @@ mq_reboot_broker <- function(BrokerId) {
 #' @param MaintenanceWindowStartTime The parameters that determine the WeeklyStartTime.
 #' @param SecurityGroups The list of security groups (1 minimum, 5 maximum) that authorizes
 #' connections to brokers.
+#' @param DataReplicationMode Defines whether this broker is a part of a data replication pair.
 #'
 #' @keywords internal
 #'
 #' @rdname mq_update_broker
-mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerId, Configuration = NULL, EngineVersion = NULL, HostInstanceType = NULL, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, SecurityGroups = NULL) {
+mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgrade = NULL, BrokerId, Configuration = NULL, EngineVersion = NULL, HostInstanceType = NULL, LdapServerMetadata = NULL, Logs = NULL, MaintenanceWindowStartTime = NULL, SecurityGroups = NULL, DataReplicationMode = NULL) {
   op <- new_operation(
     name = "UpdateBroker",
     http_method = "PUT",
     http_path = "/v1/brokers/{broker-id}",
     paginator = list()
   )
-  input <- .mq$update_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerId = BrokerId, Configuration = Configuration, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, SecurityGroups = SecurityGroups)
+  input <- .mq$update_broker_input(AuthenticationStrategy = AuthenticationStrategy, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, BrokerId = BrokerId, Configuration = Configuration, EngineVersion = EngineVersion, HostInstanceType = HostInstanceType, LdapServerMetadata = LdapServerMetadata, Logs = Logs, MaintenanceWindowStartTime = MaintenanceWindowStartTime, SecurityGroups = SecurityGroups, DataReplicationMode = DataReplicationMode)
   output <- .mq$update_broker_output()
   config <- get_config()
   svc <- .mq$service(config)
@@ -722,10 +761,11 @@ mq_update_broker <- function(AuthenticationStrategy = NULL, AutoMinorVersionUpgr
 #' @description
 #' Updates the specified configuration.
 #'
-#' See [https://paws-r.github.io/docs/mq/update_configuration.html](https://paws-r.github.io/docs/mq/update_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_update_configuration/](https://www.paws-r-sdk.com/docs/mq_update_configuration/) for full documentation.
 #'
 #' @param ConfigurationId &#91;required&#93; The unique ID that Amazon MQ generates for the configuration.
-#' @param Data &#91;required&#93; Required. The base64-encoded XML configuration.
+#' @param Data &#91;required&#93; Amazon MQ for Active MQ: The base64-encoded XML configuration. Amazon MQ
+#' for RabbitMQ: the base64-encoded Cuttlefish configuration.
 #' @param Description The description of the configuration.
 #'
 #' @keywords internal
@@ -753,7 +793,7 @@ mq_update_configuration <- function(ConfigurationId, Data, Description = NULL) {
 #' @description
 #' Updates the information for an ActiveMQ user.
 #'
-#' See [https://paws-r.github.io/docs/mq/update_user.html](https://paws-r.github.io/docs/mq/update_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/mq_update_user/](https://www.paws-r-sdk.com/docs/mq_update_user/) for full documentation.
 #'
 #' @param BrokerId &#91;required&#93; The unique ID that Amazon MQ generates for the broker.
 #' @param ConsoleAccess Enables access to the the ActiveMQ Web Console for the ActiveMQ user.
@@ -767,18 +807,19 @@ mq_update_configuration <- function(ConfigurationId, Data, Description = NULL) {
 #' @param Username &#91;required&#93; The username of the ActiveMQ user. This value can contain only
 #' alphanumeric characters, dashes, periods, underscores, and tildes (- .
 #' _ ~). This value must be 2-100 characters long.
+#' @param ReplicationUser Defines whether the user is intended for data replication.
 #'
 #' @keywords internal
 #'
 #' @rdname mq_update_user
-mq_update_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Password = NULL, Username) {
+mq_update_user <- function(BrokerId, ConsoleAccess = NULL, Groups = NULL, Password = NULL, Username, ReplicationUser = NULL) {
   op <- new_operation(
     name = "UpdateUser",
     http_method = "PUT",
     http_path = "/v1/brokers/{broker-id}/users/{username}",
     paginator = list()
   )
-  input <- .mq$update_user_input(BrokerId = BrokerId, ConsoleAccess = ConsoleAccess, Groups = Groups, Password = Password, Username = Username)
+  input <- .mq$update_user_input(BrokerId = BrokerId, ConsoleAccess = ConsoleAccess, Groups = Groups, Password = Password, Username = Username, ReplicationUser = ReplicationUser)
   output <- .mq$update_user_output()
   config <- get_config()
   svc <- .mq$service(config)

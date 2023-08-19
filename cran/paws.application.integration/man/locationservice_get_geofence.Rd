@@ -14,6 +14,6 @@ locationservice_get_geofence(CollectionName, GeofenceId)
 \description{
 Retrieves the geofence details from a geofence collection.
 
-See \url{https://paws-r.github.io/docs/locationservice/get_geofence.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_get_geofence/} for full documentation.
 }
 \keyword{internal}

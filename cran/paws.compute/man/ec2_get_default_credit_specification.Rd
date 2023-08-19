@@ -18,6 +18,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Describes the default credit option for CPU usage of a burstable performance instance family.
 
-See \url{https://paws-r.github.io/docs/ec2/get_default_credit_specification.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_default_credit_specification/} for full documentation.
 }
 \keyword{internal}

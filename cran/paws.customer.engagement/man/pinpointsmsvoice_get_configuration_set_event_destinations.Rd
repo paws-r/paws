@@ -14,6 +14,6 @@ pinpointsmsvoice_get_configuration_set_event_destinations(ConfigurationSetName)
 \description{
 Obtain information about an event destination, including the types of events it reports, the Amazon Resource Name (ARN) of the destination, and the name of the event destination.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoice/get_configuration_set_event_destinations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoice_get_configuration_set_event_destinations/} for full documentation.
 }
 \keyword{internal}

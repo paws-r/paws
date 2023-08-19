@@ -31,6 +31,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Removes an ingress authorization rule from a Client VPN endpoint.
 
-See \url{https://paws-r.github.io/docs/ec2/revoke_client_vpn_ingress.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_revoke_client_vpn_ingress/} for full documentation.
 }
 \keyword{internal}

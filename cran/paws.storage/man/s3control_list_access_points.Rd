@@ -45,6 +45,6 @@ points.}
 \description{
 Returns a list of the access points that are owned by the current account that's associated with the specified bucket. You can retrieve up to 1000 access points per call. If the specified bucket has more than 1,000 access points (or the number specified in \code{maxResults}, whichever is less), the response will include a continuation token that you can use to list the additional access points.
 
-See \url{https://paws-r.github.io/docs/s3control/list_access_points.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_list_access_points/} for full documentation.
 }
 \keyword{internal}

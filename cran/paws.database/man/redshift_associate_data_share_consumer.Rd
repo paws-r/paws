@@ -30,6 +30,6 @@ Region.}
 \description{
 From a datashare consumer account, associates a datashare with the account (AssociateEntireAccount) or the specified namespace (ConsumerArn). If you make this association, the consumer can consume the datashare.
 
-See \url{https://paws-r.github.io/docs/redshift/associate_data_share_consumer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_associate_data_share_consumer/} for full documentation.
 }
 \keyword{internal}

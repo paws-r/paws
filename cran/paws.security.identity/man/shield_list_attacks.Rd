@@ -55,6 +55,6 @@ The default setting is 20.}
 \description{
 Returns all ongoing DDoS attacks or all DDoS attacks during a specified time period.
 
-See \url{https://paws-r.github.io/docs/shield/list_attacks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_list_attacks/} for full documentation.
 }
 \keyword{internal}

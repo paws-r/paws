@@ -14,6 +14,6 @@ voiceid_delete_watchlist(DomainId, WatchlistId)
 \description{
 Deletes the specified watchlist from Voice ID. This API throws an exception when there are fraudsters in the watchlist that you are trying to delete. You must delete the fraudsters, and then delete the watchlist. Every domain has a default watchlist which cannot be deleted.
 
-See \url{https://paws-r.github.io/docs/voiceid/delete_watchlist.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_delete_watchlist/} for full documentation.
 }
 \keyword{internal}

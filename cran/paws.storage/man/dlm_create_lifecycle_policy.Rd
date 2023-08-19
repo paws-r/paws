@@ -29,6 +29,6 @@ _-]+$ are supported.}
 \description{
 Creates a policy to manage the lifecycle of the specified Amazon Web Services resources. You can create up to 100 lifecycle policies.
 
-See \url{https://paws-r.github.io/docs/dlm/create_lifecycle_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dlm_create_lifecycle_policy/} for full documentation.
 }
 \keyword{internal}

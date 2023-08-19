@@ -12,6 +12,6 @@ appstream_delete_image(Name)
 \description{
 Deletes the specified image. You cannot delete an image when it is in use. After you delete an image, you cannot provision new capacity using the image.
 
-See \url{https://paws-r.github.io/docs/appstream/delete_image.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_delete_image/} for full documentation.
 }
 \keyword{internal}

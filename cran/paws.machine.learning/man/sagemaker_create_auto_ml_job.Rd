@@ -2,7 +2,8 @@
 % Please edit documentation in R/sagemaker_operations.R
 \name{sagemaker_create_auto_ml_job}
 \alias{sagemaker_create_auto_ml_job}
-\title{Creates an Autopilot job}
+\title{Creates an Autopilot job also referred to as Autopilot experiment or
+AutoML job}
 \usage{
 sagemaker_create_auto_ml_job(
   AutoMLJobName,
@@ -35,12 +36,11 @@ needed to store artifacts from an AutoML job. Format(s) supported: CSV.}
 \item{ProblemType}{Defines the type of supervised learning problem available for the
 candidates. For more information, see \href{https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-datasets-problem-types.html#autopilot-problem-types}{Amazon SageMaker Autopilot problem types}.}
 
-\item{AutoMLJobObjective}{Defines the objective metric used to measure the predictive quality of
-an AutoML job. You provide an
-\href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html}{AutoMLJobObjective$MetricName}
-and Autopilot infers whether to minimize or maximize it. For
-\code{\link[=sagemaker_create_auto_ml_job_v2]{create_auto_ml_job_v2}}, only
-\code{Accuracy} is supported.}
+\item{AutoMLJobObjective}{Specifies a metric to minimize or maximize as the objective of a job. If
+not specified, the default objective metric depends on the problem type.
+See
+\href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html}{AutoMLJobObjective}
+for the default values.}
 
 \item{AutoMLJobConfig}{A collection of settings used to configure an AutoML job.}
 
@@ -59,8 +59,8 @@ Tag keys must be unique per resource.}
 Autopilot model deployment.}
 }
 \description{
-Creates an Autopilot job.
+Creates an Autopilot job also referred to as Autopilot experiment or AutoML job.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_auto_ml_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_auto_ml_job/} for full documentation.
 }
 \keyword{internal}

@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Adds additional user attributes to the user pool schema.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/add_custom_attributes.html](https://paws-r.github.io/docs/cognitoidentityprovider/add_custom_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_add_custom_attributes/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_add_custom_attributes/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to add custom
 #' attributes.
@@ -39,7 +39,7 @@ cognitoidentityprovider_add_custom_attributes <- function(UserPoolId, CustomAttr
 #' @description
 #' Adds the specified user to the specified group.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_add_user_to_group.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_add_user_to_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_add_user_to_group/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_add_user_to_group/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param Username &#91;required&#93; The username for the user.
@@ -70,7 +70,7 @@ cognitoidentityprovider_admin_add_user_to_group <- function(UserPoolId, Username
 #' @description
 #' Confirms user registration as an admin without using a confirmation code. Works on any user.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_confirm_sign_up.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_confirm_sign_up.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_confirm_sign_up/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_confirm_sign_up/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for which you want to confirm user registration.
 #' @param Username &#91;required&#93; The user name for which you want to confirm user registration.
@@ -129,7 +129,7 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #' @description
 #' Creates a new user in the specified user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_create_user.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_create_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_create_user/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_create_user/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where the user will be created.
 #' @param Username &#91;required&#93; The username for the user. Must be unique within the user pool. Must be
@@ -270,7 +270,7 @@ cognitoidentityprovider_admin_create_user <- function(UserPoolId, Username, User
 #' @description
 #' Deletes a user as an administrator. Works on any user.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_delete_user.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_delete_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_delete_user/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_delete_user/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to delete the user.
 #' @param Username &#91;required&#93; The user name of the user you want to delete.
@@ -300,7 +300,7 @@ cognitoidentityprovider_admin_delete_user <- function(UserPoolId, Username) {
 #' @description
 #' Deletes the user attributes in a user pool as an administrator. Works on any user.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_delete_user_attributes.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_delete_user_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_delete_user_attributes/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_delete_user_attributes/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to delete user
 #' attributes.
@@ -338,7 +338,7 @@ cognitoidentityprovider_admin_delete_user_attributes <- function(UserPoolId, Use
 #' @description
 #' Prevents the user from signing in with the specified external (SAML or social) identity provider (IdP). If the user that you want to deactivate is a Amazon Cognito user pools native username + password user, they can't use their password to sign in. If the user to deactivate is a linked external IdP user, any link between that user and an existing user is removed. When the external user signs in again, and the user is no longer attached to the previously linked `DestinationUser`, the user must create a new user account. See [`admin_link_provider_for_user`][cognitoidentityprovider_admin_link_provider_for_user].
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_disable_provider_for_user.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_disable_provider_for_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_disable_provider_for_user/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_disable_provider_for_user/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param User &#91;required&#93; The user to be disabled.
@@ -368,7 +368,7 @@ cognitoidentityprovider_admin_disable_provider_for_user <- function(UserPoolId, 
 #' @description
 #' Deactivates a user and revokes all access tokens for the user. A deactivated user can't sign in, but still appears in the responses to [`get_user`][cognitoidentityprovider_get_user] and [`list_users`][cognitoidentityprovider_list_users] API requests.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_disable_user.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_disable_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_disable_user/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_disable_user/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to disable the user.
 #' @param Username &#91;required&#93; The user name of the user you want to disable.
@@ -398,7 +398,7 @@ cognitoidentityprovider_admin_disable_user <- function(UserPoolId, Username) {
 #' @description
 #' Enables the specified user as an administrator. Works on any user.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_enable_user.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_enable_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_enable_user/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_enable_user/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to enable the user.
 #' @param Username &#91;required&#93; The user name of the user you want to enable.
@@ -428,7 +428,7 @@ cognitoidentityprovider_admin_enable_user <- function(UserPoolId, Username) {
 #' @description
 #' Forgets the device, as an administrator.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_forget_device.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_forget_device.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_forget_device/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_forget_device/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param Username &#91;required&#93; The user name.
@@ -459,7 +459,7 @@ cognitoidentityprovider_admin_forget_device <- function(UserPoolId, Username, De
 #' @description
 #' Gets the device, as an administrator.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_get_device.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_get_device.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_get_device/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_get_device/) for full documentation.
 #'
 #' @param DeviceKey &#91;required&#93; The device key.
 #' @param UserPoolId &#91;required&#93; The user pool ID.
@@ -490,7 +490,7 @@ cognitoidentityprovider_admin_get_device <- function(DeviceKey, UserPoolId, User
 #' @description
 #' Gets the specified user by user name in a user pool as an administrator. Works on any user.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_get_user.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_get_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_get_user/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_get_user/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to get information
 #' about the user.
@@ -521,7 +521,7 @@ cognitoidentityprovider_admin_get_user <- function(UserPoolId, Username) {
 #' @description
 #' Initiates the authentication flow, as an administrator.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_initiate_auth.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_initiate_auth.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_initiate_auth/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_initiate_auth/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The ID of the Amazon Cognito user pool.
 #' @param ClientId &#91;required&#93; The app client ID.
@@ -666,7 +666,7 @@ cognitoidentityprovider_admin_initiate_auth <- function(UserPoolId, ClientId, Au
 #' @description
 #' Links an existing user account in a user pool (`DestinationUser`) to an identity from an external IdP (`SourceUser`) based on a specified attribute name and value from the external IdP. This allows you to create a link from the existing user account to an external federated user identity that has not yet been used to sign in. You can then use the federated user identity to sign in as the existing user account.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_link_provider_for_user.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_link_provider_for_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_link_provider_for_user/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_link_provider_for_user/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param DestinationUser &#91;required&#93; The existing user in the user pool that you want to assign to the
@@ -734,7 +734,7 @@ cognitoidentityprovider_admin_link_provider_for_user <- function(UserPoolId, Des
 #' @description
 #' Lists devices, as an administrator.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_list_devices.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_list_devices.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_list_devices/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_list_devices/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param Username &#91;required&#93; The user name.
@@ -766,7 +766,7 @@ cognitoidentityprovider_admin_list_devices <- function(UserPoolId, Username, Lim
 #' @description
 #' Lists the groups that the user belongs to.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_list_groups_for_user.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_list_groups_for_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_list_groups_for_user/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_list_groups_for_user/) for full documentation.
 #'
 #' @param Username &#91;required&#93; The username for the user.
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
@@ -783,7 +783,7 @@ cognitoidentityprovider_admin_list_groups_for_user <- function(Username, UserPoo
     name = "AdminListGroupsForUser",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Groups")
   )
   input <- .cognitoidentityprovider$admin_list_groups_for_user_input(Username = Username, UserPoolId = UserPoolId, Limit = Limit, NextToken = NextToken)
   output <- .cognitoidentityprovider$admin_list_groups_for_user_output()
@@ -801,7 +801,7 @@ cognitoidentityprovider_admin_list_groups_for_user <- function(Username, UserPoo
 #' @description
 #' A history of user activity and any risks detected as part of Amazon Cognito advanced security.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_list_user_auth_events.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_list_user_auth_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_list_user_auth_events/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_list_user_auth_events/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param Username &#91;required&#93; The user pool username or an alias.
@@ -818,7 +818,7 @@ cognitoidentityprovider_admin_list_user_auth_events <- function(UserPoolId, User
     name = "AdminListUserAuthEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AuthEvents")
   )
   input <- .cognitoidentityprovider$admin_list_user_auth_events_input(UserPoolId = UserPoolId, Username = Username, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentityprovider$admin_list_user_auth_events_output()
@@ -835,7 +835,7 @@ cognitoidentityprovider_admin_list_user_auth_events <- function(UserPoolId, User
 #' @description
 #' Removes the specified user from the specified group.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_remove_user_from_group.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_remove_user_from_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_remove_user_from_group/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_remove_user_from_group/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param Username &#91;required&#93; The username for the user.
@@ -866,7 +866,7 @@ cognitoidentityprovider_admin_remove_user_from_group <- function(UserPoolId, Use
 #' @description
 #' Resets the specified user's password in a user pool as an administrator. Works on any user.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_reset_user_password.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_reset_user_password.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_reset_user_password/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_reset_user_password/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to reset the user's
 #' password.
@@ -926,7 +926,7 @@ cognitoidentityprovider_admin_reset_user_password <- function(UserPoolId, Userna
 #' @description
 #' Responds to an authentication challenge, as an administrator.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_respond_to_auth_challenge.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_respond_to_auth_challenge.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_respond_to_auth_challenge/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_respond_to_auth_challenge/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The ID of the Amazon Cognito user pool.
 #' @param ClientId &#91;required&#93; The app client ID.
@@ -1068,7 +1068,7 @@ cognitoidentityprovider_admin_respond_to_auth_challenge <- function(UserPoolId, 
 #' @description
 #' The user's multi-factor authentication (MFA) preference, including which MFA options are activated, and if any are preferred. Only one factor can be set as preferred. The preferred MFA factor will be used to authenticate a user if multiple factors are activated. If multiple options are activated and no preference is set, a challenge to choose an MFA option will be returned during sign-in.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_set_user_mfa_preference.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_set_user_mfa_preference.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_set_user_mfa_preference/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_set_user_mfa_preference/) for full documentation.
 #'
 #' @param SMSMfaSettings The SMS text message MFA settings.
 #' @param SoftwareTokenMfaSettings The time-based one-time password software token MFA settings.
@@ -1100,7 +1100,7 @@ cognitoidentityprovider_admin_set_user_mfa_preference <- function(SMSMfaSettings
 #' @description
 #' Sets the specified user's password in a user pool as an administrator. Works on any user.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_set_user_password.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_set_user_password.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_set_user_password/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_set_user_password/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to set the user's
 #' password.
@@ -1133,7 +1133,7 @@ cognitoidentityprovider_admin_set_user_password <- function(UserPoolId, Username
 #' @description
 #' *This action is no longer supported.* You can use it to configure only SMS MFA. You can't use it to configure time-based one-time password (TOTP) software token MFA. To configure either type of MFA, use [`admin_set_user_mfa_preference`][cognitoidentityprovider_admin_set_user_mfa_preference] instead.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_set_user_settings.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_set_user_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_set_user_settings/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_set_user_settings/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The ID of the user pool that contains the user whose options you're
 #' setting.
@@ -1167,7 +1167,7 @@ cognitoidentityprovider_admin_set_user_settings <- function(UserPoolId, Username
 #' @description
 #' Provides feedback for an authentication event indicating if it was from a valid user. This feedback is used for improving the risk evaluation decision for the user pool as part of Amazon Cognito advanced security.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_update_auth_event_feedback.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_update_auth_event_feedback.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_update_auth_event_feedback/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_update_auth_event_feedback/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param Username &#91;required&#93; The user pool username.
@@ -1199,7 +1199,7 @@ cognitoidentityprovider_admin_update_auth_event_feedback <- function(UserPoolId,
 #' @description
 #' Updates the device status as an administrator.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_update_device_status.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_update_device_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_update_device_status/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_update_device_status/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param Username &#91;required&#93; The user name.
@@ -1232,7 +1232,7 @@ cognitoidentityprovider_admin_update_device_status <- function(UserPoolId, Usern
 #' @description
 #' Updates the specified user's attributes, including developer attributes, as an administrator. Works on any user.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_update_user_attributes.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_update_user_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_update_user_attributes/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_update_user_attributes/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to update user
 #' attributes.
@@ -1311,7 +1311,7 @@ cognitoidentityprovider_admin_update_user_attributes <- function(UserPoolId, Use
 #' @description
 #' Signs out a user from all devices. You must sign [`admin_user_global_sign_out`][cognitoidentityprovider_admin_user_global_sign_out] requests with Amazon Web Services credentials. It also invalidates all refresh tokens that Amazon Cognito has issued to a user. The user's current access and ID tokens remain valid until they expire. By default, access and ID tokens expire one hour after they're issued. A user can still use a hosted UI cookie to retrieve new tokens for the duration of the cookie validity period of 1 hour.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/admin_user_global_sign_out.html](https://paws-r.github.io/docs/cognitoidentityprovider/admin_user_global_sign_out.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_user_global_sign_out/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_user_global_sign_out/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param Username &#91;required&#93; The user name.
@@ -1343,7 +1343,7 @@ cognitoidentityprovider_admin_user_global_sign_out <- function(UserPoolId, Usern
 #' @description
 #' Begins setup of time-based one-time password (TOTP) multi-factor authentication (MFA) for a user, with a unique private key that Amazon Cognito generates and returns in the API response. You can authorize an [`associate_software_token`][cognitoidentityprovider_associate_software_token] request with either the user's access token, or a session string from a challenge response that you received from Amazon Cognito.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/associate_software_token.html](https://paws-r.github.io/docs/cognitoidentityprovider/associate_software_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_associate_software_token/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_associate_software_token/) for full documentation.
 #'
 #' @param AccessToken A valid access token that Amazon Cognito issued to the user whose
 #' software token you want to generate.
@@ -1376,7 +1376,7 @@ cognitoidentityprovider_associate_software_token <- function(AccessToken = NULL,
 #' @description
 #' Changes the password for a specified user in a user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/change_password.html](https://paws-r.github.io/docs/cognitoidentityprovider/change_password.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_change_password/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_change_password/) for full documentation.
 #'
 #' @param PreviousPassword &#91;required&#93; The old password.
 #' @param ProposedPassword &#91;required&#93; The new password.
@@ -1408,7 +1408,7 @@ cognitoidentityprovider_change_password <- function(PreviousPassword, ProposedPa
 #' @description
 #' Confirms tracking of the device. This API call is the call that begins device tracking.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/confirm_device.html](https://paws-r.github.io/docs/cognitoidentityprovider/confirm_device.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_confirm_device/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_confirm_device/) for full documentation.
 #'
 #' @param AccessToken &#91;required&#93; A valid access token that Amazon Cognito issued to the user whose device
 #' you want to confirm.
@@ -1441,7 +1441,7 @@ cognitoidentityprovider_confirm_device <- function(AccessToken, DeviceKey, Devic
 #' @description
 #' Allows a user to enter a confirmation code to reset a forgotten password.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/confirm_forgot_password.html](https://paws-r.github.io/docs/cognitoidentityprovider/confirm_forgot_password.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_confirm_forgot_password/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_confirm_forgot_password/) for full documentation.
 #'
 #' @param ClientId &#91;required&#93; The app client ID of the app associated with the user pool.
 #' @param SecretHash A keyed-hash message authentication code (HMAC) calculated using the
@@ -1515,7 +1515,7 @@ cognitoidentityprovider_confirm_forgot_password <- function(ClientId, SecretHash
 #' @description
 #' Confirms registration of a new user.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/confirm_sign_up.html](https://paws-r.github.io/docs/cognitoidentityprovider/confirm_sign_up.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_confirm_sign_up/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_confirm_sign_up/) for full documentation.
 #'
 #' @param ClientId &#91;required&#93; The ID of the app client associated with the user pool.
 #' @param SecretHash A keyed-hash message authentication code (HMAC) calculated using the
@@ -1590,7 +1590,7 @@ cognitoidentityprovider_confirm_sign_up <- function(ClientId, SecretHash = NULL,
 #' @description
 #' Creates a new group in the specified user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/create_group.html](https://paws-r.github.io/docs/cognitoidentityprovider/create_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_group/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_group/) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; The name of the group. Must be unique.
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
@@ -1639,7 +1639,7 @@ cognitoidentityprovider_create_group <- function(GroupName, UserPoolId, Descript
 #' @description
 #' Creates an IdP for a user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/create_identity_provider.html](https://paws-r.github.io/docs/cognitoidentityprovider/create_identity_provider.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_identity_provider/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_identity_provider/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param ProviderName &#91;required&#93; The IdP name.
@@ -1738,7 +1738,7 @@ cognitoidentityprovider_create_identity_provider <- function(UserPoolId, Provide
 #' @description
 #' Creates a new OAuth2.0 resource server and defines custom scopes within it.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/create_resource_server.html](https://paws-r.github.io/docs/cognitoidentityprovider/create_resource_server.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_resource_server/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_resource_server/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param Identifier &#91;required&#93; A unique resource server identifier for the resource server. This could
@@ -1773,7 +1773,7 @@ cognitoidentityprovider_create_resource_server <- function(UserPoolId, Identifie
 #' @description
 #' Creates the user import job.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/create_user_import_job.html](https://paws-r.github.io/docs/cognitoidentityprovider/create_user_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_import_job/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_import_job/) for full documentation.
 #'
 #' @param JobName &#91;required&#93; The job name for the user import job.
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool that the users are being imported
@@ -1807,7 +1807,7 @@ cognitoidentityprovider_create_user_import_job <- function(JobName, UserPoolId, 
 #' @description
 #' Creates a new Amazon Cognito user pool and sets the password policy for the pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/create_user_pool.html](https://paws-r.github.io/docs/cognitoidentityprovider/create_user_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_pool/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_pool/) for full documentation.
 #'
 #' @param PoolName &#91;required&#93; A string used to name the user pool.
 #' @param Policies The policies associated with the new user pool.
@@ -1924,7 +1924,7 @@ cognitoidentityprovider_create_user_pool <- function(PoolName, Policies = NULL, 
 #' @description
 #' Creates the user pool client.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/create_user_pool_client.html](https://paws-r.github.io/docs/cognitoidentityprovider/create_user_pool_client.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_pool_client/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_pool_client/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to create a user pool
 #' client.
@@ -2155,7 +2155,7 @@ cognitoidentityprovider_create_user_pool_client <- function(UserPoolId, ClientNa
 #' @description
 #' Creates a new domain for a user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/create_user_pool_domain.html](https://paws-r.github.io/docs/cognitoidentityprovider/create_user_pool_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_pool_domain/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_pool_domain/) for full documentation.
 #'
 #' @param Domain &#91;required&#93; The domain string. For custom domains, this is the fully-qualified
 #' domain name, such as `auth.example.com`. For Amazon Cognito prefix
@@ -2197,7 +2197,7 @@ cognitoidentityprovider_create_user_pool_domain <- function(Domain, UserPoolId, 
 #' @description
 #' Deletes a group.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/delete_group.html](https://paws-r.github.io/docs/cognitoidentityprovider/delete_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_group/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_group/) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; The name of the group.
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
@@ -2227,7 +2227,7 @@ cognitoidentityprovider_delete_group <- function(GroupName, UserPoolId) {
 #' @description
 #' Deletes an IdP for a user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/delete_identity_provider.html](https://paws-r.github.io/docs/cognitoidentityprovider/delete_identity_provider.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_identity_provider/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_identity_provider/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param ProviderName &#91;required&#93; The IdP name.
@@ -2257,7 +2257,7 @@ cognitoidentityprovider_delete_identity_provider <- function(UserPoolId, Provide
 #' @description
 #' Deletes a resource server.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/delete_resource_server.html](https://paws-r.github.io/docs/cognitoidentityprovider/delete_resource_server.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_resource_server/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_resource_server/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool that hosts the resource server.
 #' @param Identifier &#91;required&#93; The identifier for the resource server.
@@ -2287,7 +2287,7 @@ cognitoidentityprovider_delete_resource_server <- function(UserPoolId, Identifie
 #' @description
 #' Allows a user to delete himself or herself.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/delete_user.html](https://paws-r.github.io/docs/cognitoidentityprovider/delete_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user/) for full documentation.
 #'
 #' @param AccessToken &#91;required&#93; A valid access token that Amazon Cognito issued to the user whose user
 #' profile you want to delete.
@@ -2317,7 +2317,7 @@ cognitoidentityprovider_delete_user <- function(AccessToken) {
 #' @description
 #' Deletes the attributes for a user.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/delete_user_attributes.html](https://paws-r.github.io/docs/cognitoidentityprovider/delete_user_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user_attributes/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user_attributes/) for full documentation.
 #'
 #' @param UserAttributeNames &#91;required&#93; An array of strings representing the user attribute names you want to
 #' delete.
@@ -2352,7 +2352,7 @@ cognitoidentityprovider_delete_user_attributes <- function(UserAttributeNames, A
 #' @description
 #' Deletes the specified Amazon Cognito user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/delete_user_pool.html](https://paws-r.github.io/docs/cognitoidentityprovider/delete_user_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user_pool/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user_pool/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool you want to delete.
 #'
@@ -2381,7 +2381,7 @@ cognitoidentityprovider_delete_user_pool <- function(UserPoolId) {
 #' @description
 #' Allows the developer to delete the user pool client.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/delete_user_pool_client.html](https://paws-r.github.io/docs/cognitoidentityprovider/delete_user_pool_client.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user_pool_client/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user_pool_client/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to delete the client.
 #' @param ClientId &#91;required&#93; The app client ID of the app associated with the user pool.
@@ -2411,7 +2411,7 @@ cognitoidentityprovider_delete_user_pool_client <- function(UserPoolId, ClientId
 #' @description
 #' Deletes a domain for a user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/delete_user_pool_domain.html](https://paws-r.github.io/docs/cognitoidentityprovider/delete_user_pool_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user_pool_domain/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user_pool_domain/) for full documentation.
 #'
 #' @param Domain &#91;required&#93; The domain string. For custom domains, this is the fully-qualified
 #' domain name, such as `auth.example.com`. For Amazon Cognito prefix
@@ -2443,7 +2443,7 @@ cognitoidentityprovider_delete_user_pool_domain <- function(Domain, UserPoolId) 
 #' @description
 #' Gets information about a specific IdP.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/describe_identity_provider.html](https://paws-r.github.io/docs/cognitoidentityprovider/describe_identity_provider.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_identity_provider/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_identity_provider/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param ProviderName &#91;required&#93; The IdP name.
@@ -2473,7 +2473,7 @@ cognitoidentityprovider_describe_identity_provider <- function(UserPoolId, Provi
 #' @description
 #' Describes a resource server.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/describe_resource_server.html](https://paws-r.github.io/docs/cognitoidentityprovider/describe_resource_server.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_resource_server/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_resource_server/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool that hosts the resource server.
 #' @param Identifier &#91;required&#93; The identifier for the resource server
@@ -2503,7 +2503,7 @@ cognitoidentityprovider_describe_resource_server <- function(UserPoolId, Identif
 #' @description
 #' Describes the risk configuration.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/describe_risk_configuration.html](https://paws-r.github.io/docs/cognitoidentityprovider/describe_risk_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_risk_configuration/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_risk_configuration/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param ClientId The app client ID.
@@ -2533,7 +2533,7 @@ cognitoidentityprovider_describe_risk_configuration <- function(UserPoolId, Clie
 #' @description
 #' Describes the user import job.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/describe_user_import_job.html](https://paws-r.github.io/docs/cognitoidentityprovider/describe_user_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_user_import_job/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_user_import_job/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool that the users are being imported
 #' into.
@@ -2565,7 +2565,7 @@ cognitoidentityprovider_describe_user_import_job <- function(UserPoolId, JobId) 
 #' @description
 #' Returns the configuration information and metadata of the specified user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/describe_user_pool.html](https://paws-r.github.io/docs/cognitoidentityprovider/describe_user_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_user_pool/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_user_pool/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool you want to describe.
 #'
@@ -2595,7 +2595,7 @@ cognitoidentityprovider_describe_user_pool <- function(UserPoolId) {
 #' @description
 #' Client method for returning the configuration information and metadata of the specified user pool app client.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/describe_user_pool_client.html](https://paws-r.github.io/docs/cognitoidentityprovider/describe_user_pool_client.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_user_pool_client/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_user_pool_client/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool you want to describe.
 #' @param ClientId &#91;required&#93; The app client ID of the app associated with the user pool.
@@ -2625,7 +2625,7 @@ cognitoidentityprovider_describe_user_pool_client <- function(UserPoolId, Client
 #' @description
 #' Gets information about a domain.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/describe_user_pool_domain.html](https://paws-r.github.io/docs/cognitoidentityprovider/describe_user_pool_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_user_pool_domain/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_describe_user_pool_domain/) for full documentation.
 #'
 #' @param Domain &#91;required&#93; The domain string. For custom domains, this is the fully-qualified
 #' domain name, such as `auth.example.com`. For Amazon Cognito prefix
@@ -2656,7 +2656,7 @@ cognitoidentityprovider_describe_user_pool_domain <- function(Domain) {
 #' @description
 #' Forgets the specified device.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/forget_device.html](https://paws-r.github.io/docs/cognitoidentityprovider/forget_device.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_forget_device/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_forget_device/) for full documentation.
 #'
 #' @param AccessToken A valid access token that Amazon Cognito issued to the user whose
 #' registered device you want to forget.
@@ -2688,7 +2688,7 @@ cognitoidentityprovider_forget_device <- function(AccessToken = NULL, DeviceKey)
 #' @description
 #' Calling this API causes a message to be sent to the end user with a confirmation code that is required to change the user's password. For the `Username` parameter, you can use the username or user alias. The method used to send the confirmation code is sent according to the specified AccountRecoverySetting. For more information, see [Recovering User Accounts](https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-recover-a-user-account.html) in the *Amazon Cognito Developer Guide*. If neither a verified phone number nor a verified email exists, an `InvalidParameterException` is thrown. To use the confirmation code for resetting the password, call [`confirm_forgot_password`][cognitoidentityprovider_confirm_forgot_password].
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/forgot_password.html](https://paws-r.github.io/docs/cognitoidentityprovider/forgot_password.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_forgot_password/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_forgot_password/) for full documentation.
 #'
 #' @param ClientId &#91;required&#93; The ID of the client associated with the user pool.
 #' @param SecretHash A keyed-hash message authentication code (HMAC) calculated using the
@@ -2759,7 +2759,7 @@ cognitoidentityprovider_forgot_password <- function(ClientId, SecretHash = NULL,
 #' @description
 #' Gets the header information for the comma-separated value (CSV) file to be used as input for the user import job.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/get_csv_header.html](https://paws-r.github.io/docs/cognitoidentityprovider/get_csv_header.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_csv_header/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_csv_header/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool that the users are to be imported
 #' into.
@@ -2789,7 +2789,7 @@ cognitoidentityprovider_get_csv_header <- function(UserPoolId) {
 #' @description
 #' Gets the device.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/get_device.html](https://paws-r.github.io/docs/cognitoidentityprovider/get_device.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_device/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_device/) for full documentation.
 #'
 #' @param DeviceKey &#91;required&#93; The device key.
 #' @param AccessToken A valid access token that Amazon Cognito issued to the user whose device
@@ -2820,7 +2820,7 @@ cognitoidentityprovider_get_device <- function(DeviceKey, AccessToken = NULL) {
 #' @description
 #' Gets a group.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/get_group.html](https://paws-r.github.io/docs/cognitoidentityprovider/get_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_group/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_group/) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; The name of the group.
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
@@ -2850,7 +2850,7 @@ cognitoidentityprovider_get_group <- function(GroupName, UserPoolId) {
 #' @description
 #' Gets the specified IdP.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/get_identity_provider_by_identifier.html](https://paws-r.github.io/docs/cognitoidentityprovider/get_identity_provider_by_identifier.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_identity_provider_by_identifier/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_identity_provider_by_identifier/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param IdpIdentifier &#91;required&#93; The IdP identifier.
@@ -2880,7 +2880,7 @@ cognitoidentityprovider_get_identity_provider_by_identifier <- function(UserPool
 #' @description
 #' This method takes a user pool ID, and returns the signing certificate. The issued certificate is valid for 10 years from the date of issue.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/get_signing_certificate.html](https://paws-r.github.io/docs/cognitoidentityprovider/get_signing_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_signing_certificate/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_signing_certificate/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #'
@@ -2910,7 +2910,7 @@ cognitoidentityprovider_get_signing_certificate <- function(UserPoolId) {
 #' @description
 #' Gets the user interface (UI) Customization information for a particular app client's app UI, if any such information exists for the client. If nothing is set for the particular client, but there is an existing pool level customization (the app `clientId` is `ALL`), then that information is returned. If nothing is present, then an empty shape is returned.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/get_ui_customization.html](https://paws-r.github.io/docs/cognitoidentityprovider/get_ui_customization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_ui_customization/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_ui_customization/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param ClientId The client ID for the client app.
@@ -2940,7 +2940,7 @@ cognitoidentityprovider_get_ui_customization <- function(UserPoolId, ClientId = 
 #' @description
 #' Gets the user attributes and metadata for a user.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/get_user.html](https://paws-r.github.io/docs/cognitoidentityprovider/get_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_user/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_user/) for full documentation.
 #'
 #' @param AccessToken &#91;required&#93; A non-expired access token for the user whose information you want to
 #' query.
@@ -2971,7 +2971,7 @@ cognitoidentityprovider_get_user <- function(AccessToken) {
 #' @description
 #' Generates a user attribute verification code for the specified attribute name. Sends a message to a user with a code that they must return in a VerifyUserAttribute request.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/get_user_attribute_verification_code.html](https://paws-r.github.io/docs/cognitoidentityprovider/get_user_attribute_verification_code.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_user_attribute_verification_code/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_user_attribute_verification_code/) for full documentation.
 #'
 #' @param AccessToken &#91;required&#93; A non-expired access token for the user whose attribute verification
 #' code you want to generate.
@@ -3033,7 +3033,7 @@ cognitoidentityprovider_get_user_attribute_verification_code <- function(AccessT
 #' @description
 #' Gets the user pool multi-factor authentication (MFA) configuration.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/get_user_pool_mfa_config.html](https://paws-r.github.io/docs/cognitoidentityprovider/get_user_pool_mfa_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_user_pool_mfa_config/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_get_user_pool_mfa_config/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #'
@@ -3062,7 +3062,7 @@ cognitoidentityprovider_get_user_pool_mfa_config <- function(UserPoolId) {
 #' @description
 #' Signs out users from all devices. It also invalidates all refresh tokens that Amazon Cognito has issued to a user. A user can still use a hosted UI cookie to retrieve new tokens for the duration of the 1-hour cookie validity period.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/global_sign_out.html](https://paws-r.github.io/docs/cognitoidentityprovider/global_sign_out.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_global_sign_out/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_global_sign_out/) for full documentation.
 #'
 #' @param AccessToken &#91;required&#93; A valid access token that Amazon Cognito issued to the user who you want
 #' to sign out.
@@ -3092,7 +3092,7 @@ cognitoidentityprovider_global_sign_out <- function(AccessToken) {
 #' @description
 #' Initiates sign-in for a user in the Amazon Cognito user directory. You can't sign in a user with a federated IdP with [`initiate_auth`][cognitoidentityprovider_initiate_auth]. For more information, see [Adding user pool sign-in through a third party](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation.html).
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/initiate_auth.html](https://paws-r.github.io/docs/cognitoidentityprovider/initiate_auth.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_initiate_auth/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_initiate_auth/) for full documentation.
 #'
 #' @param AuthFlow &#91;required&#93; The authentication flow for this call to run. The API action will depend
 #' on this value. For example:
@@ -3227,7 +3227,7 @@ cognitoidentityprovider_initiate_auth <- function(AuthFlow, AuthParameters = NUL
 #' @description
 #' Lists the sign-in devices that Amazon Cognito has registered to the current user.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/list_devices.html](https://paws-r.github.io/docs/cognitoidentityprovider/list_devices.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_devices/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_devices/) for full documentation.
 #'
 #' @param AccessToken &#91;required&#93; A valid access token that Amazon Cognito issued to the user whose list
 #' of devices you want to view.
@@ -3259,7 +3259,7 @@ cognitoidentityprovider_list_devices <- function(AccessToken, Limit = NULL, Pagi
 #' @description
 #' Lists the groups associated with a user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/list_groups.html](https://paws-r.github.io/docs/cognitoidentityprovider/list_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_groups/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_groups/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param Limit The limit of the request to list groups.
@@ -3275,7 +3275,7 @@ cognitoidentityprovider_list_groups <- function(UserPoolId, Limit = NULL, NextTo
     name = "ListGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Groups")
   )
   input <- .cognitoidentityprovider$list_groups_input(UserPoolId = UserPoolId, Limit = Limit, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_groups_output()
@@ -3292,7 +3292,7 @@ cognitoidentityprovider_list_groups <- function(UserPoolId, Limit = NULL, NextTo
 #' @description
 #' Lists information about all IdPs for a user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/list_identity_providers.html](https://paws-r.github.io/docs/cognitoidentityprovider/list_identity_providers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_identity_providers/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_identity_providers/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param MaxResults The maximum number of IdPs to return.
@@ -3306,7 +3306,7 @@ cognitoidentityprovider_list_identity_providers <- function(UserPoolId, MaxResul
     name = "ListIdentityProviders",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Providers")
   )
   input <- .cognitoidentityprovider$list_identity_providers_input(UserPoolId = UserPoolId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_identity_providers_output()
@@ -3323,7 +3323,7 @@ cognitoidentityprovider_list_identity_providers <- function(UserPoolId, MaxResul
 #' @description
 #' Lists the resource servers for a user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/list_resource_servers.html](https://paws-r.github.io/docs/cognitoidentityprovider/list_resource_servers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_resource_servers/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_resource_servers/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param MaxResults The maximum number of resource servers to return.
@@ -3337,7 +3337,7 @@ cognitoidentityprovider_list_resource_servers <- function(UserPoolId, MaxResults
     name = "ListResourceServers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ResourceServers")
   )
   input <- .cognitoidentityprovider$list_resource_servers_input(UserPoolId = UserPoolId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_resource_servers_output()
@@ -3354,7 +3354,7 @@ cognitoidentityprovider_list_resource_servers <- function(UserPoolId, MaxResults
 #' @description
 #' Lists the tags that are assigned to an Amazon Cognito user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/list_tags_for_resource.html](https://paws-r.github.io/docs/cognitoidentityprovider/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the user pool that the tags are
 #' assigned to.
@@ -3384,7 +3384,7 @@ cognitoidentityprovider_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Lists the user import jobs.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/list_user_import_jobs.html](https://paws-r.github.io/docs/cognitoidentityprovider/list_user_import_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_user_import_jobs/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_user_import_jobs/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool that the users are being imported
 #' into.
@@ -3418,7 +3418,7 @@ cognitoidentityprovider_list_user_import_jobs <- function(UserPoolId, MaxResults
 #' @description
 #' Lists the clients that have been created for the specified user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/list_user_pool_clients.html](https://paws-r.github.io/docs/cognitoidentityprovider/list_user_pool_clients.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_user_pool_clients/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_user_pool_clients/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to list user pool
 #' clients.
@@ -3436,7 +3436,7 @@ cognitoidentityprovider_list_user_pool_clients <- function(UserPoolId, MaxResult
     name = "ListUserPoolClients",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "UserPoolClients")
   )
   input <- .cognitoidentityprovider$list_user_pool_clients_input(UserPoolId = UserPoolId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_user_pool_clients_output()
@@ -3453,7 +3453,7 @@ cognitoidentityprovider_list_user_pool_clients <- function(UserPoolId, MaxResult
 #' @description
 #' Lists the user pools associated with an Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/list_user_pools.html](https://paws-r.github.io/docs/cognitoidentityprovider/list_user_pools.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_user_pools/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_user_pools/) for full documentation.
 #'
 #' @param NextToken An identifier that was returned from the previous call to this
 #' operation, which can be used to return the next set of items in the
@@ -3469,7 +3469,7 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
     name = "ListUserPools",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "UserPools")
   )
   input <- .cognitoidentityprovider$list_user_pools_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .cognitoidentityprovider$list_user_pools_output()
@@ -3486,7 +3486,7 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
 #' @description
 #' Lists the users in the Amazon Cognito user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/list_users.html](https://paws-r.github.io/docs/cognitoidentityprovider/list_users.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_users/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_users/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool on which the search should be
 #' performed.
@@ -3570,7 +3570,7 @@ cognitoidentityprovider_list_users <- function(UserPoolId, AttributesToGet = NUL
     name = "ListUsers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "PaginationToken", limit_key = "Limit", output_token = "PaginationToken", result_key = "Users")
   )
   input <- .cognitoidentityprovider$list_users_input(UserPoolId = UserPoolId, AttributesToGet = AttributesToGet, Limit = Limit, PaginationToken = PaginationToken, Filter = Filter)
   output <- .cognitoidentityprovider$list_users_output()
@@ -3587,7 +3587,7 @@ cognitoidentityprovider_list_users <- function(UserPoolId, AttributesToGet = NUL
 #' @description
 #' Lists the users in the specified group.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/list_users_in_group.html](https://paws-r.github.io/docs/cognitoidentityprovider/list_users_in_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_users_in_group/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_users_in_group/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param GroupName &#91;required&#93; The name of the group.
@@ -3604,7 +3604,7 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
     name = "ListUsersInGroup",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "Limit", output_token = "NextToken", result_key = "Users")
   )
   input <- .cognitoidentityprovider$list_users_in_group_input(UserPoolId = UserPoolId, GroupName = GroupName, Limit = Limit, NextToken = NextToken)
   output <- .cognitoidentityprovider$list_users_in_group_output()
@@ -3622,7 +3622,7 @@ cognitoidentityprovider_list_users_in_group <- function(UserPoolId, GroupName, L
 #' @description
 #' Resends the confirmation (for confirmation of registration) to a specific user in the user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/resend_confirmation_code.html](https://paws-r.github.io/docs/cognitoidentityprovider/resend_confirmation_code.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_resend_confirmation_code/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_resend_confirmation_code/) for full documentation.
 #'
 #' @param ClientId &#91;required&#93; The ID of the client associated with the user pool.
 #' @param SecretHash A keyed-hash message authentication code (HMAC) calculated using the
@@ -3693,7 +3693,7 @@ cognitoidentityprovider_resend_confirmation_code <- function(ClientId, SecretHas
 #' @description
 #' Responds to the authentication challenge.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/respond_to_auth_challenge.html](https://paws-r.github.io/docs/cognitoidentityprovider/respond_to_auth_challenge.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_respond_to_auth_challenge/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_respond_to_auth_challenge/) for full documentation.
 #'
 #' @param ClientId &#91;required&#93; The app client ID.
 #' @param ChallengeName &#91;required&#93; The challenge name. For more information, see
@@ -3819,7 +3819,7 @@ cognitoidentityprovider_respond_to_auth_challenge <- function(ClientId, Challeng
 #' @description
 #' Revokes all of the access tokens generated by, and at the same time as, the specified refresh token. After a token is revoked, you can't use the revoked token to access Amazon Cognito user APIs, or to authorize access to your resource server.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/revoke_token.html](https://paws-r.github.io/docs/cognitoidentityprovider/revoke_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_revoke_token/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_revoke_token/) for full documentation.
 #'
 #' @param Token &#91;required&#93; The refresh token that you want to revoke.
 #' @param ClientId &#91;required&#93; The client ID for the token that you want to revoke.
@@ -3851,7 +3851,7 @@ cognitoidentityprovider_revoke_token <- function(Token, ClientId, ClientSecret =
 #' @description
 #' Configures actions on detected risks. To delete the risk configuration for `UserPoolId` or `ClientId`, pass null values for all four configuration types.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/set_risk_configuration.html](https://paws-r.github.io/docs/cognitoidentityprovider/set_risk_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_risk_configuration/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_risk_configuration/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param ClientId The app client ID. If `ClientId` is null, then the risk configuration is
@@ -3891,7 +3891,7 @@ cognitoidentityprovider_set_risk_configuration <- function(UserPoolId, ClientId 
 #' @description
 #' Sets the user interface (UI) customization information for a user pool's built-in app UI.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/set_ui_customization.html](https://paws-r.github.io/docs/cognitoidentityprovider/set_ui_customization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_ui_customization/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_ui_customization/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param ClientId The client ID for the client app.
@@ -3924,7 +3924,7 @@ cognitoidentityprovider_set_ui_customization <- function(UserPoolId, ClientId = 
 #' @description
 #' Set the user's multi-factor authentication (MFA) method preference, including which MFA factors are activated and if any are preferred. Only one factor can be set as preferred. The preferred MFA factor will be used to authenticate a user if multiple factors are activated. If multiple options are activated and no preference is set, a challenge to choose an MFA option will be returned during sign-in. If an MFA type is activated for a user, the user will be prompted for MFA during all sign-in attempts unless device tracking is turned on and the device has been trusted. If you want MFA to be applied selectively based on the assessed risk level of sign-in attempts, deactivate MFA for users and turn on Adaptive Authentication for the user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/set_user_mfa_preference.html](https://paws-r.github.io/docs/cognitoidentityprovider/set_user_mfa_preference.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_user_mfa_preference/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_user_mfa_preference/) for full documentation.
 #'
 #' @param SMSMfaSettings The SMS text message multi-factor authentication (MFA) settings.
 #' @param SoftwareTokenMfaSettings The time-based one-time password (TOTP) software token MFA settings.
@@ -3956,7 +3956,7 @@ cognitoidentityprovider_set_user_mfa_preference <- function(SMSMfaSettings = NUL
 #' @description
 #' Sets the user pool multi-factor authentication (MFA) configuration.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/set_user_pool_mfa_config.html](https://paws-r.github.io/docs/cognitoidentityprovider/set_user_pool_mfa_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_user_pool_mfa_config/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_user_pool_mfa_config/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param SmsMfaConfiguration The SMS text message MFA configuration.
@@ -3999,7 +3999,7 @@ cognitoidentityprovider_set_user_pool_mfa_config <- function(UserPoolId, SmsMfaC
 #' @description
 #' *This action is no longer supported.* You can use it to configure only SMS MFA. You can't use it to configure time-based one-time password (TOTP) software token MFA. To configure either type of MFA, use [`set_user_mfa_preference`][cognitoidentityprovider_set_user_mfa_preference] instead.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/set_user_settings.html](https://paws-r.github.io/docs/cognitoidentityprovider/set_user_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_user_settings/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_set_user_settings/) for full documentation.
 #'
 #' @param AccessToken &#91;required&#93; A valid access token that Amazon Cognito issued to the user whose user
 #' settings you want to configure.
@@ -4032,7 +4032,7 @@ cognitoidentityprovider_set_user_settings <- function(AccessToken, MFAOptions) {
 #' @description
 #' Registers the user in the specified user pool and creates a user name, password, and user attributes.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/sign_up.html](https://paws-r.github.io/docs/cognitoidentityprovider/sign_up.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_sign_up/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_sign_up/) for full documentation.
 #'
 #' @param ClientId &#91;required&#93; The ID of the client associated with the user pool.
 #' @param SecretHash A keyed-hash message authentication code (HMAC) calculated using the
@@ -4107,7 +4107,7 @@ cognitoidentityprovider_sign_up <- function(ClientId, SecretHash = NULL, Usernam
 #' @description
 #' Starts the user import.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/start_user_import_job.html](https://paws-r.github.io/docs/cognitoidentityprovider/start_user_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_start_user_import_job/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_start_user_import_job/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool that the users are being imported
 #' into.
@@ -4138,7 +4138,7 @@ cognitoidentityprovider_start_user_import_job <- function(UserPoolId, JobId) {
 #' @description
 #' Stops the user import job.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/stop_user_import_job.html](https://paws-r.github.io/docs/cognitoidentityprovider/stop_user_import_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_stop_user_import_job/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_stop_user_import_job/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool that the users are being imported
 #' into.
@@ -4169,7 +4169,7 @@ cognitoidentityprovider_stop_user_import_job <- function(UserPoolId, JobId) {
 #' @description
 #' Assigns a set of tags to an Amazon Cognito user pool. A tag is a label that you can use to categorize and manage user pools in different ways, such as by purpose, owner, environment, or other criteria.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/tag_resource.html](https://paws-r.github.io/docs/cognitoidentityprovider/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_tag_resource/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the user pool to assign the tags to.
 #' @param Tags &#91;required&#93; The tags to assign to the user pool.
@@ -4199,7 +4199,7 @@ cognitoidentityprovider_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes the specified tags from an Amazon Cognito user pool. You can use this action up to 5 times per second, per account.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/untag_resource.html](https://paws-r.github.io/docs/cognitoidentityprovider/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_untag_resource/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the user pool that the tags are
 #' assigned to.
@@ -4231,7 +4231,7 @@ cognitoidentityprovider_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Provides the feedback for an authentication event, whether it was from a valid user or not. This feedback is used for improving the risk evaluation decision for the user pool as part of Amazon Cognito advanced security.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/update_auth_event_feedback.html](https://paws-r.github.io/docs/cognitoidentityprovider/update_auth_event_feedback.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_auth_event_feedback/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_auth_event_feedback/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param Username &#91;required&#93; The user pool username.
@@ -4264,7 +4264,7 @@ cognitoidentityprovider_update_auth_event_feedback <- function(UserPoolId, Usern
 #' @description
 #' Updates the device status.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/update_device_status.html](https://paws-r.github.io/docs/cognitoidentityprovider/update_device_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_device_status/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_device_status/) for full documentation.
 #'
 #' @param AccessToken &#91;required&#93; A valid access token that Amazon Cognito issued to the user whose device
 #' status you want to update.
@@ -4296,7 +4296,7 @@ cognitoidentityprovider_update_device_status <- function(AccessToken, DeviceKey,
 #' @description
 #' Updates the specified group with the specified attributes.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/update_group.html](https://paws-r.github.io/docs/cognitoidentityprovider/update_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_group/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_group/) for full documentation.
 #'
 #' @param GroupName &#91;required&#93; The name of the group.
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
@@ -4332,7 +4332,7 @@ cognitoidentityprovider_update_group <- function(GroupName, UserPoolId, Descript
 #' @description
 #' Updates IdP information for a user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/update_identity_provider.html](https://paws-r.github.io/docs/cognitoidentityprovider/update_identity_provider.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_identity_provider/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_identity_provider/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID.
 #' @param ProviderName &#91;required&#93; The IdP name.
@@ -4365,7 +4365,7 @@ cognitoidentityprovider_update_identity_provider <- function(UserPoolId, Provide
 #' @description
 #' Updates the name and scopes of resource server. All other fields are read-only.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/update_resource_server.html](https://paws-r.github.io/docs/cognitoidentityprovider/update_resource_server.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_resource_server/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_resource_server/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool.
 #' @param Identifier &#91;required&#93; The identifier for the resource server.
@@ -4397,7 +4397,7 @@ cognitoidentityprovider_update_resource_server <- function(UserPoolId, Identifie
 #' @description
 #' Allows a user to update a specific attribute (one at a time).
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/update_user_attributes.html](https://paws-r.github.io/docs/cognitoidentityprovider/update_user_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_user_attributes/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_user_attributes/) for full documentation.
 #'
 #' @param UserAttributes &#91;required&#93; An array of name-value pairs representing user attributes.
 #' 
@@ -4467,7 +4467,7 @@ cognitoidentityprovider_update_user_attributes <- function(UserAttributes, Acces
 #' @description
 #' Updates the specified user pool with the specified attributes. You can get a list of the current user pool settings using [`describe_user_pool`][cognitoidentityprovider_describe_user_pool]. If you don't provide a value for an attribute, it will be set to the default value.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/update_user_pool.html](https://paws-r.github.io/docs/cognitoidentityprovider/update_user_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_user_pool/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_user_pool/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool you want to update.
 #' @param Policies A container with the policies you want to update in a user pool.
@@ -4573,7 +4573,7 @@ cognitoidentityprovider_update_user_pool <- function(UserPoolId, Policies = NULL
 #' @description
 #' Updates the specified user pool app client with the specified attributes. You can get a list of the current user pool app client settings using [`describe_user_pool_client`][cognitoidentityprovider_describe_user_pool_client].
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/update_user_pool_client.html](https://paws-r.github.io/docs/cognitoidentityprovider/update_user_pool_client.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_user_pool_client/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_user_pool_client/) for full documentation.
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where you want to update the user
 #' pool client.
@@ -4791,7 +4791,7 @@ cognitoidentityprovider_update_user_pool_client <- function(UserPoolId, ClientId
 #' @description
 #' Updates the Secure Sockets Layer (SSL) certificate for the custom domain for your user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/update_user_pool_domain.html](https://paws-r.github.io/docs/cognitoidentityprovider/update_user_pool_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_user_pool_domain/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_user_pool_domain/) for full documentation.
 #'
 #' @param Domain &#91;required&#93; The domain name for the custom domain that hosts the sign-up and sign-in
 #' pages for your application. One example might be `auth.example.com`.
@@ -4832,7 +4832,7 @@ cognitoidentityprovider_update_user_pool_domain <- function(Domain, UserPoolId, 
 #' @description
 #' Use this API to register a user's entered time-based one-time password (TOTP) code and mark the user's software token MFA status as "verified" if successful. The request takes an access token or a session string, but not both.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/verify_software_token.html](https://paws-r.github.io/docs/cognitoidentityprovider/verify_software_token.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_verify_software_token/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_verify_software_token/) for full documentation.
 #'
 #' @param AccessToken A valid access token that Amazon Cognito issued to the user whose
 #' software token you want to verify.
@@ -4867,7 +4867,7 @@ cognitoidentityprovider_verify_software_token <- function(AccessToken = NULL, Se
 #' @description
 #' Verifies the specified user attributes in the user pool.
 #'
-#' See [https://paws-r.github.io/docs/cognitoidentityprovider/verify_user_attribute.html](https://paws-r.github.io/docs/cognitoidentityprovider/verify_user_attribute.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/cognitoidentityprovider_verify_user_attribute/](https://www.paws-r-sdk.com/docs/cognitoidentityprovider_verify_user_attribute/) for full documentation.
 #'
 #' @param AccessToken &#91;required&#93; A valid access token that Amazon Cognito issued to the user whose user
 #' attributes you want to verify.

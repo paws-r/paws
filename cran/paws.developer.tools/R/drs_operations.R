@@ -3,13 +3,44 @@
 #' @include drs_service.R
 NULL
 
+#' Associate a Source Network to an existing CloudFormation Stack and
+#' modify launch templates to use this network
+#'
+#' @description
+#' Associate a Source Network to an existing CloudFormation Stack and modify launch templates to use this network. Can be used for reverting to previously deployed CloudFormation stacks.
+#'
+#' See [https://www.paws-r-sdk.com/docs/drs_associate_source_network_stack/](https://www.paws-r-sdk.com/docs/drs_associate_source_network_stack/) for full documentation.
+#'
+#' @param cfnStackName &#91;required&#93; CloudFormation template to associate with a Source Network.
+#' @param sourceNetworkID &#91;required&#93; The Source Network ID to associate with CloudFormation template.
+#'
+#' @keywords internal
+#'
+#' @rdname drs_associate_source_network_stack
+drs_associate_source_network_stack <- function(cfnStackName, sourceNetworkID) {
+  op <- new_operation(
+    name = "AssociateSourceNetworkStack",
+    http_method = "POST",
+    http_path = "/AssociateSourceNetworkStack",
+    paginator = list()
+  )
+  input <- .drs$associate_source_network_stack_input(cfnStackName = cfnStackName, sourceNetworkID = sourceNetworkID)
+  output <- .drs$associate_source_network_stack_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$associate_source_network_stack <- drs_associate_source_network_stack
+
 #' Create an extended source server in the target Account based on the
 #' source server in staging account
 #'
 #' @description
 #' Create an extended source server in the target Account based on the source server in staging account.
 #'
-#' See [https://paws-r.github.io/docs/drs/create_extended_source_server.html](https://paws-r.github.io/docs/drs/create_extended_source_server.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_create_extended_source_server/](https://www.paws-r-sdk.com/docs/drs_create_extended_source_server/) for full documentation.
 #'
 #' @param sourceServerArn &#91;required&#93; This defines the ARN of the source server in staging Account based on
 #' which you want to create an extended source server.
@@ -40,10 +71,11 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #' @description
 #' Creates a new Launch Configuration Template.
 #'
-#' See [https://paws-r.github.io/docs/drs/create_launch_configuration_template.html](https://paws-r.github.io/docs/drs/create_launch_configuration_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_create_launch_configuration_template/](https://www.paws-r-sdk.com/docs/drs_create_launch_configuration_template/) for full documentation.
 #'
 #' @param copyPrivateIp Copy private IP.
 #' @param copyTags Copy tags.
+#' @param exportBucketArn S3 bucket ARN to export Source Network templates.
 #' @param launchDisposition Launch disposition.
 #' @param licensing Licensing.
 #' @param tags Request to associate tags during creation of a Launch Configuration
@@ -53,14 +85,14 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname drs_create_launch_configuration_template
-drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, launchDisposition = NULL, licensing = NULL, tags = NULL, targetInstanceTypeRightSizingMethod = NULL) {
+drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, exportBucketArn = NULL, launchDisposition = NULL, licensing = NULL, tags = NULL, targetInstanceTypeRightSizingMethod = NULL) {
   op <- new_operation(
     name = "CreateLaunchConfigurationTemplate",
     http_method = "POST",
     http_path = "/CreateLaunchConfigurationTemplate",
     paginator = list()
   )
-  input <- .drs$create_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, launchDisposition = launchDisposition, licensing = licensing, tags = tags, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  input <- .drs$create_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, exportBucketArn = exportBucketArn, launchDisposition = launchDisposition, licensing = licensing, tags = tags, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
   output <- .drs$create_launch_configuration_template_output()
   config <- get_config()
   svc <- .drs$service(config)
@@ -75,7 +107,7 @@ drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyT
 #' @description
 #' Creates a new ReplicationConfigurationTemplate.
 #'
-#' See [https://paws-r.github.io/docs/drs/create_replication_configuration_template.html](https://paws-r.github.io/docs/drs/create_replication_configuration_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_create_replication_configuration_template/](https://www.paws-r-sdk.com/docs/drs_create_replication_configuration_template/) for full documentation.
 #'
 #' @param associateDefaultSecurityGroup &#91;required&#93; Whether to associate the default Elastic Disaster Recovery Security
 #' group with the Replication Configuration Template.
@@ -121,12 +153,44 @@ drs_create_replication_configuration_template <- function(associateDefaultSecuri
 }
 .drs$operations$create_replication_configuration_template <- drs_create_replication_configuration_template
 
+#' Create a new Source Network resource for a provided VPC ID
+#'
+#' @description
+#' Create a new Source Network resource for a provided VPC ID.
+#'
+#' See [https://www.paws-r-sdk.com/docs/drs_create_source_network/](https://www.paws-r-sdk.com/docs/drs_create_source_network/) for full documentation.
+#'
+#' @param originAccountID &#91;required&#93; Account containing the VPC to protect.
+#' @param originRegion &#91;required&#93; Region containing the VPC to protect.
+#' @param tags A set of tags to be associated with the Source Network resource.
+#' @param vpcID &#91;required&#93; Which VPC ID to protect.
+#'
+#' @keywords internal
+#'
+#' @rdname drs_create_source_network
+drs_create_source_network <- function(originAccountID, originRegion, tags = NULL, vpcID) {
+  op <- new_operation(
+    name = "CreateSourceNetwork",
+    http_method = "POST",
+    http_path = "/CreateSourceNetwork",
+    paginator = list()
+  )
+  input <- .drs$create_source_network_input(originAccountID = originAccountID, originRegion = originRegion, tags = tags, vpcID = vpcID)
+  output <- .drs$create_source_network_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$create_source_network <- drs_create_source_network
+
 #' Deletes a single Job by ID
 #'
 #' @description
 #' Deletes a single Job by ID.
 #'
-#' See [https://paws-r.github.io/docs/drs/delete_job.html](https://paws-r.github.io/docs/drs/delete_job.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_delete_job/](https://www.paws-r-sdk.com/docs/drs_delete_job/) for full documentation.
 #'
 #' @param jobID &#91;required&#93; The ID of the Job to be deleted.
 #'
@@ -155,7 +219,7 @@ drs_delete_job <- function(jobID) {
 #' @description
 #' Deletes a single Launch Configuration Template by ID.
 #'
-#' See [https://paws-r.github.io/docs/drs/delete_launch_configuration_template.html](https://paws-r.github.io/docs/drs/delete_launch_configuration_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_delete_launch_configuration_template/](https://www.paws-r-sdk.com/docs/drs_delete_launch_configuration_template/) for full documentation.
 #'
 #' @param launchConfigurationTemplateID &#91;required&#93; The ID of the Launch Configuration Template to be deleted.
 #'
@@ -184,7 +248,7 @@ drs_delete_launch_configuration_template <- function(launchConfigurationTemplate
 #' @description
 #' Deletes a single Recovery Instance by ID. This deletes the Recovery Instance resource from Elastic Disaster Recovery. The Recovery Instance must be disconnected first in order to delete it.
 #'
-#' See [https://paws-r.github.io/docs/drs/delete_recovery_instance.html](https://paws-r.github.io/docs/drs/delete_recovery_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_delete_recovery_instance/](https://www.paws-r-sdk.com/docs/drs_delete_recovery_instance/) for full documentation.
 #'
 #' @param recoveryInstanceID &#91;required&#93; The ID of the Recovery Instance to be deleted.
 #'
@@ -213,7 +277,7 @@ drs_delete_recovery_instance <- function(recoveryInstanceID) {
 #' @description
 #' Deletes a single Replication Configuration Template by ID
 #'
-#' See [https://paws-r.github.io/docs/drs/delete_replication_configuration_template.html](https://paws-r.github.io/docs/drs/delete_replication_configuration_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_delete_replication_configuration_template/](https://www.paws-r-sdk.com/docs/drs_delete_replication_configuration_template/) for full documentation.
 #'
 #' @param replicationConfigurationTemplateID &#91;required&#93; The ID of the Replication Configuration Template to be deleted.
 #'
@@ -237,12 +301,41 @@ drs_delete_replication_configuration_template <- function(replicationConfigurati
 }
 .drs$operations$delete_replication_configuration_template <- drs_delete_replication_configuration_template
 
+#' Delete Source Network resource
+#'
+#' @description
+#' Delete Source Network resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/drs_delete_source_network/](https://www.paws-r-sdk.com/docs/drs_delete_source_network/) for full documentation.
+#'
+#' @param sourceNetworkID &#91;required&#93; ID of the Source Network to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname drs_delete_source_network
+drs_delete_source_network <- function(sourceNetworkID) {
+  op <- new_operation(
+    name = "DeleteSourceNetwork",
+    http_method = "POST",
+    http_path = "/DeleteSourceNetwork",
+    paginator = list()
+  )
+  input <- .drs$delete_source_network_input(sourceNetworkID = sourceNetworkID)
+  output <- .drs$delete_source_network_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$delete_source_network <- drs_delete_source_network
+
 #' Deletes a single Source Server by ID
 #'
 #' @description
 #' Deletes a single Source Server by ID. The Source Server must be disconnected first.
 #'
-#' See [https://paws-r.github.io/docs/drs/delete_source_server.html](https://paws-r.github.io/docs/drs/delete_source_server.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_delete_source_server/](https://www.paws-r-sdk.com/docs/drs_delete_source_server/) for full documentation.
 #'
 #' @param sourceServerID &#91;required&#93; The ID of the Source Server to be deleted.
 #'
@@ -271,7 +364,7 @@ drs_delete_source_server <- function(sourceServerID) {
 #' @description
 #' Retrieves a detailed Job log with pagination.
 #'
-#' See [https://paws-r.github.io/docs/drs/describe_job_log_items.html](https://paws-r.github.io/docs/drs/describe_job_log_items.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_describe_job_log_items/](https://www.paws-r-sdk.com/docs/drs_describe_job_log_items/) for full documentation.
 #'
 #' @param jobID &#91;required&#93; The ID of the Job for which Job log items will be retrieved.
 #' @param maxResults Maximum number of Job log items to retrieve.
@@ -285,7 +378,7 @@ drs_describe_job_log_items <- function(jobID, maxResults = NULL, nextToken = NUL
     name = "DescribeJobLogItems",
     http_method = "POST",
     http_path = "/DescribeJobLogItems",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_job_log_items_input(jobID = jobID, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_job_log_items_output()
@@ -302,7 +395,7 @@ drs_describe_job_log_items <- function(jobID, maxResults = NULL, nextToken = NUL
 #' @description
 #' Returns a list of Jobs. Use the JobsID and fromDate and toDate filters to limit which jobs are returned. The response is sorted by creationDataTime - latest date first. Jobs are created by the StartRecovery, TerminateRecoveryInstances and StartFailbackLaunch APIs. Jobs are also created by DiagnosticLaunch and TerminateDiagnosticInstances, which are APIs available only to *Support* and only used in response to relevant support tickets.
 #'
-#' See [https://paws-r.github.io/docs/drs/describe_jobs.html](https://paws-r.github.io/docs/drs/describe_jobs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_describe_jobs/](https://www.paws-r-sdk.com/docs/drs_describe_jobs/) for full documentation.
 #'
 #' @param filters A set of filters by which to return Jobs.
 #' @param maxResults Maximum number of Jobs to retrieve.
@@ -316,7 +409,7 @@ drs_describe_jobs <- function(filters = NULL, maxResults = NULL, nextToken = NUL
     name = "DescribeJobs",
     http_method = "POST",
     http_path = "/DescribeJobs",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_jobs_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_jobs_output()
@@ -334,7 +427,7 @@ drs_describe_jobs <- function(filters = NULL, maxResults = NULL, nextToken = NUL
 #' @description
 #' Lists all Launch Configuration Templates, filtered by Launch Configuration Template IDs
 #'
-#' See [https://paws-r.github.io/docs/drs/describe_launch_configuration_templates.html](https://paws-r.github.io/docs/drs/describe_launch_configuration_templates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_describe_launch_configuration_templates/](https://www.paws-r-sdk.com/docs/drs_describe_launch_configuration_templates/) for full documentation.
 #'
 #' @param launchConfigurationTemplateIDs Request to filter Launch Configuration Templates list by Launch
 #' Configuration Template ID.
@@ -349,7 +442,7 @@ drs_describe_launch_configuration_templates <- function(launchConfigurationTempl
     name = "DescribeLaunchConfigurationTemplates",
     http_method = "POST",
     http_path = "/DescribeLaunchConfigurationTemplates",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_launch_configuration_templates_input(launchConfigurationTemplateIDs = launchConfigurationTemplateIDs, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_launch_configuration_templates_output()
@@ -366,7 +459,7 @@ drs_describe_launch_configuration_templates <- function(launchConfigurationTempl
 #' @description
 #' Lists all Recovery Instances or multiple Recovery Instances by ID.
 #'
-#' See [https://paws-r.github.io/docs/drs/describe_recovery_instances.html](https://paws-r.github.io/docs/drs/describe_recovery_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_describe_recovery_instances/](https://www.paws-r-sdk.com/docs/drs_describe_recovery_instances/) for full documentation.
 #'
 #' @param filters A set of filters by which to return Recovery Instances.
 #' @param maxResults Maximum number of Recovery Instances to retrieve.
@@ -380,7 +473,7 @@ drs_describe_recovery_instances <- function(filters = NULL, maxResults = NULL, n
     name = "DescribeRecoveryInstances",
     http_method = "POST",
     http_path = "/DescribeRecoveryInstances",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_recovery_instances_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_recovery_instances_output()
@@ -397,7 +490,7 @@ drs_describe_recovery_instances <- function(filters = NULL, maxResults = NULL, n
 #' @description
 #' Lists all Recovery Snapshots for a single Source Server.
 #'
-#' See [https://paws-r.github.io/docs/drs/describe_recovery_snapshots.html](https://paws-r.github.io/docs/drs/describe_recovery_snapshots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_describe_recovery_snapshots/](https://www.paws-r-sdk.com/docs/drs_describe_recovery_snapshots/) for full documentation.
 #'
 #' @param filters A set of filters by which to return Recovery Snapshots.
 #' @param maxResults Maximum number of Recovery Snapshots to retrieve.
@@ -413,7 +506,7 @@ drs_describe_recovery_snapshots <- function(filters = NULL, maxResults = NULL, n
     name = "DescribeRecoverySnapshots",
     http_method = "POST",
     http_path = "/DescribeRecoverySnapshots",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_recovery_snapshots_input(filters = filters, maxResults = maxResults, nextToken = nextToken, order = order, sourceServerID = sourceServerID)
   output <- .drs$describe_recovery_snapshots_output()
@@ -431,7 +524,7 @@ drs_describe_recovery_snapshots <- function(filters = NULL, maxResults = NULL, n
 #' @description
 #' Lists all ReplicationConfigurationTemplates, filtered by Source Server IDs.
 #'
-#' See [https://paws-r.github.io/docs/drs/describe_replication_configuration_templates.html](https://paws-r.github.io/docs/drs/describe_replication_configuration_templates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_describe_replication_configuration_templates/](https://www.paws-r-sdk.com/docs/drs_describe_replication_configuration_templates/) for full documentation.
 #'
 #' @param maxResults Maximum number of Replication Configuration Templates to retrieve.
 #' @param nextToken The token of the next Replication Configuration Template to retrieve.
@@ -446,7 +539,7 @@ drs_describe_replication_configuration_templates <- function(maxResults = NULL, 
     name = "DescribeReplicationConfigurationTemplates",
     http_method = "POST",
     http_path = "/DescribeReplicationConfigurationTemplates",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_replication_configuration_templates_input(maxResults = maxResults, nextToken = nextToken, replicationConfigurationTemplateIDs = replicationConfigurationTemplateIDs)
   output <- .drs$describe_replication_configuration_templates_output()
@@ -458,12 +551,43 @@ drs_describe_replication_configuration_templates <- function(maxResults = NULL, 
 }
 .drs$operations$describe_replication_configuration_templates <- drs_describe_replication_configuration_templates
 
+#' Lists all Source Networks or multiple Source Networks filtered by ID
+#'
+#' @description
+#' Lists all Source Networks or multiple Source Networks filtered by ID.
+#'
+#' See [https://www.paws-r-sdk.com/docs/drs_describe_source_networks/](https://www.paws-r-sdk.com/docs/drs_describe_source_networks/) for full documentation.
+#'
+#' @param filters A set of filters by which to return Source Networks.
+#' @param maxResults Maximum number of Source Networks to retrieve.
+#' @param nextToken The token of the next Source Networks to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname drs_describe_source_networks
+drs_describe_source_networks <- function(filters = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeSourceNetworks",
+    http_method = "POST",
+    http_path = "/DescribeSourceNetworks",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+  )
+  input <- .drs$describe_source_networks_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
+  output <- .drs$describe_source_networks_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$describe_source_networks <- drs_describe_source_networks
+
 #' Lists all Source Servers or multiple Source Servers filtered by ID
 #'
 #' @description
 #' Lists all Source Servers or multiple Source Servers filtered by ID.
 #'
-#' See [https://paws-r.github.io/docs/drs/describe_source_servers.html](https://paws-r.github.io/docs/drs/describe_source_servers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_describe_source_servers/](https://www.paws-r-sdk.com/docs/drs_describe_source_servers/) for full documentation.
 #'
 #' @param filters A set of filters by which to return Source Servers.
 #' @param maxResults Maximum number of Source Servers to retrieve.
@@ -477,7 +601,7 @@ drs_describe_source_servers <- function(filters = NULL, maxResults = NULL, nextT
     name = "DescribeSourceServers",
     http_method = "POST",
     http_path = "/DescribeSourceServers",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$describe_source_servers_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .drs$describe_source_servers_output()
@@ -494,7 +618,7 @@ drs_describe_source_servers <- function(filters = NULL, maxResults = NULL, nextT
 #' @description
 #' Disconnect a Recovery Instance from Elastic Disaster Recovery. Data replication is stopped immediately. All AWS resources created by Elastic Disaster Recovery for enabling the replication of the Recovery Instance will be terminated / deleted within 90 minutes. If the agent on the Recovery Instance has not been prevented from communicating with the Elastic Disaster Recovery service, then it will receive a command to uninstall itself (within approximately 10 minutes). The following properties of the Recovery Instance will be changed immediately: dataReplicationInfo.dataReplicationState will be set to DISCONNECTED; The totalStorageBytes property for each of dataReplicationInfo.replicatedDisks will be set to zero; dataReplicationInfo.lagDuration and dataReplicationInfo.lagDuration will be nullified.
 #'
-#' See [https://paws-r.github.io/docs/drs/disconnect_recovery_instance.html](https://paws-r.github.io/docs/drs/disconnect_recovery_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_disconnect_recovery_instance/](https://www.paws-r-sdk.com/docs/drs_disconnect_recovery_instance/) for full documentation.
 #'
 #' @param recoveryInstanceID &#91;required&#93; The ID of the Recovery Instance to disconnect.
 #'
@@ -523,7 +647,7 @@ drs_disconnect_recovery_instance <- function(recoveryInstanceID) {
 #' @description
 #' Disconnects a specific Source Server from Elastic Disaster Recovery. Data replication is stopped immediately. All AWS resources created by Elastic Disaster Recovery for enabling the replication of the Source Server will be terminated / deleted within 90 minutes. You cannot disconnect a Source Server if it has a Recovery Instance. If the agent on the Source Server has not been prevented from communicating with the Elastic Disaster Recovery service, then it will receive a command to uninstall itself (within approximately 10 minutes). The following properties of the SourceServer will be changed immediately: dataReplicationInfo.dataReplicationState will be set to DISCONNECTED; The totalStorageBytes property for each of dataReplicationInfo.replicatedDisks will be set to zero; dataReplicationInfo.lagDuration and dataReplicationInfo.lagDuration will be nullified.
 #'
-#' See [https://paws-r.github.io/docs/drs/disconnect_source_server.html](https://paws-r.github.io/docs/drs/disconnect_source_server.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_disconnect_source_server/](https://www.paws-r-sdk.com/docs/drs_disconnect_source_server/) for full documentation.
 #'
 #' @param sourceServerID &#91;required&#93; The ID of the Source Server to disconnect.
 #'
@@ -547,13 +671,43 @@ drs_disconnect_source_server <- function(sourceServerID) {
 }
 .drs$operations$disconnect_source_server <- drs_disconnect_source_server
 
+#' Export the Source Network CloudFormation template to an S3 bucket
+#'
+#' @description
+#' Export the Source Network CloudFormation template to an S3 bucket.
+#'
+#' See [https://www.paws-r-sdk.com/docs/drs_export_source_network_cfn_template/](https://www.paws-r-sdk.com/docs/drs_export_source_network_cfn_template/) for full documentation.
+#'
+#' @param sourceNetworkID &#91;required&#93; The Source Network ID to export its CloudFormation template to an S3
+#' bucket.
+#'
+#' @keywords internal
+#'
+#' @rdname drs_export_source_network_cfn_template
+drs_export_source_network_cfn_template <- function(sourceNetworkID) {
+  op <- new_operation(
+    name = "ExportSourceNetworkCfnTemplate",
+    http_method = "POST",
+    http_path = "/ExportSourceNetworkCfnTemplate",
+    paginator = list()
+  )
+  input <- .drs$export_source_network_cfn_template_input(sourceNetworkID = sourceNetworkID)
+  output <- .drs$export_source_network_cfn_template_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$export_source_network_cfn_template <- drs_export_source_network_cfn_template
+
 #' Lists all Failback ReplicationConfigurations, filtered by Recovery
 #' Instance ID
 #'
 #' @description
 #' Lists all Failback ReplicationConfigurations, filtered by Recovery Instance ID.
 #'
-#' See [https://paws-r.github.io/docs/drs/get_failback_replication_configuration.html](https://paws-r.github.io/docs/drs/get_failback_replication_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_get_failback_replication_configuration/](https://www.paws-r-sdk.com/docs/drs_get_failback_replication_configuration/) for full documentation.
 #'
 #' @param recoveryInstanceID &#91;required&#93; The ID of the Recovery Instance whose failback replication configuration
 #' should be returned.
@@ -583,7 +737,7 @@ drs_get_failback_replication_configuration <- function(recoveryInstanceID) {
 #' @description
 #' Gets a LaunchConfiguration, filtered by Source Server IDs.
 #'
-#' See [https://paws-r.github.io/docs/drs/get_launch_configuration.html](https://paws-r.github.io/docs/drs/get_launch_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_get_launch_configuration/](https://www.paws-r-sdk.com/docs/drs_get_launch_configuration/) for full documentation.
 #'
 #' @param sourceServerID &#91;required&#93; The ID of the Source Server that we want to retrieve a Launch
 #' Configuration for.
@@ -613,7 +767,7 @@ drs_get_launch_configuration <- function(sourceServerID) {
 #' @description
 #' Gets a ReplicationConfiguration, filtered by Source Server ID.
 #'
-#' See [https://paws-r.github.io/docs/drs/get_replication_configuration.html](https://paws-r.github.io/docs/drs/get_replication_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_get_replication_configuration/](https://www.paws-r-sdk.com/docs/drs_get_replication_configuration/) for full documentation.
 #'
 #' @param sourceServerID &#91;required&#93; The ID of the Source Serve for this Replication Configuration.r
 #'
@@ -642,7 +796,7 @@ drs_get_replication_configuration <- function(sourceServerID) {
 #' @description
 #' Initialize Elastic Disaster Recovery.
 #'
-#' See [https://paws-r.github.io/docs/drs/initialize_service.html](https://paws-r.github.io/docs/drs/initialize_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_initialize_service/](https://www.paws-r-sdk.com/docs/drs_initialize_service/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -670,7 +824,7 @@ drs_initialize_service <- function() {
 #' @description
 #' Returns a list of source servers on a staging account that are extensible, which means that: a. The source server is not already extended into this Account. b. The source server on the Account we’re reading from is not an extension of another source server.
 #'
-#' See [https://paws-r.github.io/docs/drs/list_extensible_source_servers.html](https://paws-r.github.io/docs/drs/list_extensible_source_servers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_list_extensible_source_servers/](https://www.paws-r-sdk.com/docs/drs_list_extensible_source_servers/) for full documentation.
 #'
 #' @param maxResults The maximum number of extensible source servers to retrieve.
 #' @param nextToken The token of the next extensible source server to retrieve.
@@ -685,7 +839,7 @@ drs_list_extensible_source_servers <- function(maxResults = NULL, nextToken = NU
     name = "ListExtensibleSourceServers",
     http_method = "POST",
     http_path = "/ListExtensibleSourceServers",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
   )
   input <- .drs$list_extensible_source_servers_input(maxResults = maxResults, nextToken = nextToken, stagingAccountID = stagingAccountID)
   output <- .drs$list_extensible_source_servers_output()
@@ -703,7 +857,7 @@ drs_list_extensible_source_servers <- function(maxResults = NULL, nextToken = NU
 #' @description
 #' Returns an array of staging accounts for existing extended source servers.
 #'
-#' See [https://paws-r.github.io/docs/drs/list_staging_accounts.html](https://paws-r.github.io/docs/drs/list_staging_accounts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_list_staging_accounts/](https://www.paws-r-sdk.com/docs/drs_list_staging_accounts/) for full documentation.
 #'
 #' @param maxResults The maximum number of staging Accounts to retrieve.
 #' @param nextToken The token of the next staging Account to retrieve.
@@ -716,7 +870,7 @@ drs_list_staging_accounts <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListStagingAccounts",
     http_method = "GET",
     http_path = "/ListStagingAccounts",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "accounts")
   )
   input <- .drs$list_staging_accounts_input(maxResults = maxResults, nextToken = nextToken)
   output <- .drs$list_staging_accounts_output()
@@ -733,7 +887,7 @@ drs_list_staging_accounts <- function(maxResults = NULL, nextToken = NULL) {
 #' @description
 #' List all tags for your Elastic Disaster Recovery resources.
 #'
-#' See [https://paws-r.github.io/docs/drs/list_tags_for_resource.html](https://paws-r.github.io/docs/drs/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/drs_list_tags_for_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The ARN of the resource whose tags should be returned.
 #'
@@ -762,7 +916,7 @@ drs_list_tags_for_resource <- function(resourceArn) {
 #' @description
 #' WARNING: RetryDataReplication is deprecated. Causes the data replication initiation sequence to begin immediately upon next Handshake for the specified Source Server ID, regardless of when the previous initiation started. This command will work only if the Source Server is stalled or is in a DISCONNECTED or STOPPED state.
 #'
-#' See [https://paws-r.github.io/docs/drs/retry_data_replication.html](https://paws-r.github.io/docs/drs/retry_data_replication.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_retry_data_replication/](https://www.paws-r-sdk.com/docs/drs_retry_data_replication/) for full documentation.
 #'
 #' @param sourceServerID &#91;required&#93; The ID of the Source Server whose data replication should be retried.
 #'
@@ -792,7 +946,7 @@ drs_retry_data_replication <- function(sourceServerID) {
 #' @description
 #' Start replication to origin / target region - applies only to protected instances that originated in EC2. For recovery instances on target region - starts replication back to origin region. For failback instances on origin region - starts replication to target region to re-protect them.
 #'
-#' See [https://paws-r.github.io/docs/drs/reverse_replication.html](https://paws-r.github.io/docs/drs/reverse_replication.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_reverse_replication/](https://www.paws-r-sdk.com/docs/drs_reverse_replication/) for full documentation.
 #'
 #' @param recoveryInstanceID &#91;required&#93; The ID of the Recovery Instance that we want to reverse the replication
 #' for.
@@ -823,7 +977,7 @@ drs_reverse_replication <- function(recoveryInstanceID) {
 #' @description
 #' Initiates a Job for launching the machine that is being failed back to from the specified Recovery Instance. This will run conversion on the failback client and will reboot your machine, thus completing the failback process.
 #'
-#' See [https://paws-r.github.io/docs/drs/start_failback_launch.html](https://paws-r.github.io/docs/drs/start_failback_launch.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_start_failback_launch/](https://www.paws-r-sdk.com/docs/drs_start_failback_launch/) for full documentation.
 #'
 #' @param recoveryInstanceIDs &#91;required&#93; The IDs of the Recovery Instance whose failback launch we want to
 #' request.
@@ -854,7 +1008,7 @@ drs_start_failback_launch <- function(recoveryInstanceIDs, tags = NULL) {
 #' @description
 #' Launches Recovery Instances for the specified Source Servers. For each Source Server you may choose a point in time snapshot to launch from, or use an on demand snapshot.
 #'
-#' See [https://paws-r.github.io/docs/drs/start_recovery.html](https://paws-r.github.io/docs/drs/start_recovery.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_start_recovery/](https://www.paws-r-sdk.com/docs/drs_start_recovery/) for full documentation.
 #'
 #' @param isDrill Whether this Source Server Recovery operation is a drill or not.
 #' @param sourceServers &#91;required&#93; The Source Servers that we want to start a Recovery Job for.
@@ -885,7 +1039,7 @@ drs_start_recovery <- function(isDrill = NULL, sourceServers, tags = NULL) {
 #' @description
 #' Starts replication for a stopped Source Server. This action would make the Source Server protected again and restart billing for it.
 #'
-#' See [https://paws-r.github.io/docs/drs/start_replication.html](https://paws-r.github.io/docs/drs/start_replication.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_start_replication/](https://www.paws-r-sdk.com/docs/drs_start_replication/) for full documentation.
 #'
 #' @param sourceServerID &#91;required&#93; The ID of the Source Server to start replication for.
 #'
@@ -909,12 +1063,74 @@ drs_start_replication <- function(sourceServerID) {
 }
 .drs$operations$start_replication <- drs_start_replication
 
+#' Deploy VPC for the specified Source Network and modify launch templates
+#' to use this network
+#'
+#' @description
+#' Deploy VPC for the specified Source Network and modify launch templates to use this network. The VPC will be deployed using a dedicated CloudFormation stack.
+#'
+#' See [https://www.paws-r-sdk.com/docs/drs_start_source_network_recovery/](https://www.paws-r-sdk.com/docs/drs_start_source_network_recovery/) for full documentation.
+#'
+#' @param deployAsNew Don't update existing CloudFormation Stack, recover the network using a
+#' new stack.
+#' @param sourceNetworks &#91;required&#93; The Source Networks that we want to start a Recovery Job for.
+#' @param tags The tags to be associated with the Source Network recovery Job.
+#'
+#' @keywords internal
+#'
+#' @rdname drs_start_source_network_recovery
+drs_start_source_network_recovery <- function(deployAsNew = NULL, sourceNetworks, tags = NULL) {
+  op <- new_operation(
+    name = "StartSourceNetworkRecovery",
+    http_method = "POST",
+    http_path = "/StartSourceNetworkRecovery",
+    paginator = list()
+  )
+  input <- .drs$start_source_network_recovery_input(deployAsNew = deployAsNew, sourceNetworks = sourceNetworks, tags = tags)
+  output <- .drs$start_source_network_recovery_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$start_source_network_recovery <- drs_start_source_network_recovery
+
+#' Starts replication for a Source Network
+#'
+#' @description
+#' Starts replication for a Source Network. This action would make the Source Network protected.
+#'
+#' See [https://www.paws-r-sdk.com/docs/drs_start_source_network_replication/](https://www.paws-r-sdk.com/docs/drs_start_source_network_replication/) for full documentation.
+#'
+#' @param sourceNetworkID &#91;required&#93; ID of the Source Network to replicate.
+#'
+#' @keywords internal
+#'
+#' @rdname drs_start_source_network_replication
+drs_start_source_network_replication <- function(sourceNetworkID) {
+  op <- new_operation(
+    name = "StartSourceNetworkReplication",
+    http_method = "POST",
+    http_path = "/StartSourceNetworkReplication",
+    paginator = list()
+  )
+  input <- .drs$start_source_network_replication_input(sourceNetworkID = sourceNetworkID)
+  output <- .drs$start_source_network_replication_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$start_source_network_replication <- drs_start_source_network_replication
+
 #' Stops the failback process for a specified Recovery Instance
 #'
 #' @description
 #' Stops the failback process for a specified Recovery Instance. This changes the Failback State of the Recovery Instance back to FAILBACK_NOT_STARTED.
 #'
-#' See [https://paws-r.github.io/docs/drs/stop_failback.html](https://paws-r.github.io/docs/drs/stop_failback.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_stop_failback/](https://www.paws-r-sdk.com/docs/drs_stop_failback/) for full documentation.
 #'
 #' @param recoveryInstanceID &#91;required&#93; The ID of the Recovery Instance we want to stop failback for.
 #'
@@ -943,7 +1159,7 @@ drs_stop_failback <- function(recoveryInstanceID) {
 #' @description
 #' Stops replication for a Source Server. This action would make the Source Server unprotected, delete its existing snapshots and stop billing for it.
 #'
-#' See [https://paws-r.github.io/docs/drs/stop_replication.html](https://paws-r.github.io/docs/drs/stop_replication.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_stop_replication/](https://www.paws-r-sdk.com/docs/drs_stop_replication/) for full documentation.
 #'
 #' @param sourceServerID &#91;required&#93; The ID of the Source Server to stop replication for.
 #'
@@ -967,13 +1183,42 @@ drs_stop_replication <- function(sourceServerID) {
 }
 .drs$operations$stop_replication <- drs_stop_replication
 
+#' Stops replication for a Source Network
+#'
+#' @description
+#' Stops replication for a Source Network. This action would make the Source Network unprotected.
+#'
+#' See [https://www.paws-r-sdk.com/docs/drs_stop_source_network_replication/](https://www.paws-r-sdk.com/docs/drs_stop_source_network_replication/) for full documentation.
+#'
+#' @param sourceNetworkID &#91;required&#93; ID of the Source Network to stop replication.
+#'
+#' @keywords internal
+#'
+#' @rdname drs_stop_source_network_replication
+drs_stop_source_network_replication <- function(sourceNetworkID) {
+  op <- new_operation(
+    name = "StopSourceNetworkReplication",
+    http_method = "POST",
+    http_path = "/StopSourceNetworkReplication",
+    paginator = list()
+  )
+  input <- .drs$stop_source_network_replication_input(sourceNetworkID = sourceNetworkID)
+  output <- .drs$stop_source_network_replication_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$stop_source_network_replication <- drs_stop_source_network_replication
+
 #' Adds or overwrites only the specified tags for the specified Elastic
 #' Disaster Recovery resource or resources
 #'
 #' @description
 #' Adds or overwrites only the specified tags for the specified Elastic Disaster Recovery resource or resources. When you specify an existing tag key, the value is overwritten with the new value. Each resource can have a maximum of 50 tags. Each tag consists of a key and optional value.
 #'
-#' See [https://paws-r.github.io/docs/drs/tag_resource.html](https://paws-r.github.io/docs/drs/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_tag_resource/](https://www.paws-r-sdk.com/docs/drs_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; ARN of the resource for which tags are to be added or updated.
 #' @param tags &#91;required&#93; Array of tags to be added or updated.
@@ -1005,7 +1250,7 @@ drs_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Initiates a Job for terminating the EC2 resources associated with the specified Recovery Instances, and then will delete the Recovery Instances from the Elastic Disaster Recovery service.
 #'
-#' See [https://paws-r.github.io/docs/drs/terminate_recovery_instances.html](https://paws-r.github.io/docs/drs/terminate_recovery_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_terminate_recovery_instances/](https://www.paws-r-sdk.com/docs/drs_terminate_recovery_instances/) for full documentation.
 #'
 #' @param recoveryInstanceIDs &#91;required&#93; The IDs of the Recovery Instances that should be terminated.
 #'
@@ -1035,7 +1280,7 @@ drs_terminate_recovery_instances <- function(recoveryInstanceIDs) {
 #' @description
 #' Deletes the specified set of tags from the specified set of Elastic Disaster Recovery resources.
 #'
-#' See [https://paws-r.github.io/docs/drs/untag_resource.html](https://paws-r.github.io/docs/drs/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_untag_resource/](https://www.paws-r-sdk.com/docs/drs_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; ARN of the resource for which tags are to be removed.
 #' @param tagKeys &#91;required&#93; Array of tags to be removed.
@@ -1066,7 +1311,7 @@ drs_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Allows you to update the failback replication configuration of a Recovery Instance by ID.
 #'
-#' See [https://paws-r.github.io/docs/drs/update_failback_replication_configuration.html](https://paws-r.github.io/docs/drs/update_failback_replication_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_update_failback_replication_configuration/](https://www.paws-r-sdk.com/docs/drs_update_failback_replication_configuration/) for full documentation.
 #'
 #' @param bandwidthThrottling Configure bandwidth throttling for the outbound data transfer rate of
 #' the Recovery Instance in Mbps.
@@ -1100,7 +1345,7 @@ drs_update_failback_replication_configuration <- function(bandwidthThrottling = 
 #' @description
 #' Updates a LaunchConfiguration by Source Server ID.
 #'
-#' See [https://paws-r.github.io/docs/drs/update_launch_configuration.html](https://paws-r.github.io/docs/drs/update_launch_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_update_launch_configuration/](https://www.paws-r-sdk.com/docs/drs_update_launch_configuration/) for full documentation.
 #'
 #' @param copyPrivateIp Whether we should copy the Private IP of the Source Server to the
 #' Recovery Instance.
@@ -1140,10 +1385,11 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #' @description
 #' Updates an existing Launch Configuration Template by ID.
 #'
-#' See [https://paws-r.github.io/docs/drs/update_launch_configuration_template.html](https://paws-r.github.io/docs/drs/update_launch_configuration_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_update_launch_configuration_template/](https://www.paws-r-sdk.com/docs/drs_update_launch_configuration_template/) for full documentation.
 #'
 #' @param copyPrivateIp Copy private IP.
 #' @param copyTags Copy tags.
+#' @param exportBucketArn S3 bucket ARN to export Source Network templates.
 #' @param launchConfigurationTemplateID &#91;required&#93; Launch Configuration Template ID.
 #' @param launchDisposition Launch disposition.
 #' @param licensing Licensing.
@@ -1152,14 +1398,14 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #' @keywords internal
 #'
 #' @rdname drs_update_launch_configuration_template
-drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, launchConfigurationTemplateID, launchDisposition = NULL, licensing = NULL, targetInstanceTypeRightSizingMethod = NULL) {
+drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, exportBucketArn = NULL, launchConfigurationTemplateID, launchDisposition = NULL, licensing = NULL, targetInstanceTypeRightSizingMethod = NULL) {
   op <- new_operation(
     name = "UpdateLaunchConfigurationTemplate",
     http_method = "POST",
     http_path = "/UpdateLaunchConfigurationTemplate",
     paginator = list()
   )
-  input <- .drs$update_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, launchConfigurationTemplateID = launchConfigurationTemplateID, launchDisposition = launchDisposition, licensing = licensing, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  input <- .drs$update_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, exportBucketArn = exportBucketArn, launchConfigurationTemplateID = launchConfigurationTemplateID, launchDisposition = launchDisposition, licensing = licensing, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
   output <- .drs$update_launch_configuration_template_output()
   config <- get_config()
   svc <- .drs$service(config)
@@ -1174,7 +1420,7 @@ drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyT
 #' @description
 #' Allows you to update a ReplicationConfiguration by Source Server ID.
 #'
-#' See [https://paws-r.github.io/docs/drs/update_replication_configuration.html](https://paws-r.github.io/docs/drs/update_replication_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_update_replication_configuration/](https://www.paws-r-sdk.com/docs/drs_update_replication_configuration/) for full documentation.
 #'
 #' @param associateDefaultSecurityGroup Whether to associate the default Elastic Disaster Recovery Security
 #' group with the Replication Configuration.
@@ -1226,7 +1472,7 @@ drs_update_replication_configuration <- function(associateDefaultSecurityGroup =
 #' @description
 #' Updates a ReplicationConfigurationTemplate by ID.
 #'
-#' See [https://paws-r.github.io/docs/drs/update_replication_configuration_template.html](https://paws-r.github.io/docs/drs/update_replication_configuration_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/drs_update_replication_configuration_template/](https://www.paws-r-sdk.com/docs/drs_update_replication_configuration_template/) for full documentation.
 #'
 #' @param arn The Replication Configuration Template ARN.
 #' @param associateDefaultSecurityGroup Whether to associate the default Elastic Disaster Recovery Security

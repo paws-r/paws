@@ -49,6 +49,6 @@ will run policy checks that apply to all resource policies.}
 \description{
 Requests the validation of a policy and returns a list of findings. The findings help you identify issues and provide actionable recommendations to resolve the issue and enable you to author functional policies that meet security best practices.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/validate_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_validate_policy/} for full documentation.
 }
 \keyword{internal}

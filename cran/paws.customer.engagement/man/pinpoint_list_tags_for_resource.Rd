@@ -13,6 +13,6 @@ pinpoint_list_tags_for_resource(ResourceArn)
 \description{
 Retrieves all the tags (keys and values) that are associated with an application, campaign, message template, or segment.
 
-See \url{https://paws-r.github.io/docs/pinpoint/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

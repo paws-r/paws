@@ -17,6 +17,6 @@ delegation set.}
 \description{
 Gets the maximum number of hosted zones that you can associate with the specified reusable delegation set.
 
-See \url{https://paws-r.github.io/docs/route53/get_reusable_delegation_set_limit.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_get_reusable_delegation_set_limit/} for full documentation.
 }
 \keyword{internal}

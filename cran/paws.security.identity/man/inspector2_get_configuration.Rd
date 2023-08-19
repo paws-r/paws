@@ -9,6 +9,6 @@ inspector2_get_configuration()
 \description{
 Retrieves setting configurations for Inspector scans.
 
-See \url{https://paws-r.github.io/docs/inspector2/get_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_get_configuration/} for full documentation.
 }
 \keyword{internal}

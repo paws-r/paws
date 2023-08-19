@@ -15,6 +15,6 @@ the domain. It does not include dashes or spaces.}
 \description{
 Deletes a domain. You cannot delete a domain that contains repositories. If you want to delete a domain with repositories, first delete its repositories.
 
-See \url{https://paws-r.github.io/docs/codeartifact/delete_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeartifact_delete_domain/} for full documentation.
 }
 \keyword{internal}

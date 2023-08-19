@@ -160,6 +160,6 @@ type is \code{TargetTrackingScaling}.}
 \description{
 Creates or updates a scaling policy for an Application Auto Scaling scalable target.
 
-See \url{https://paws-r.github.io/docs/applicationautoscaling/put_scaling_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationautoscaling_put_scaling_policy/} for full documentation.
 }
 \keyword{internal}

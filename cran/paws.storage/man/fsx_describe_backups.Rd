@@ -33,6 +33,6 @@ left off.}
 \description{
 Returns the description of a specific Amazon FSx backup, if a \code{BackupIds} value is provided for that backup. Otherwise, it returns all backups owned by your Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
 
-See \url{https://paws-r.github.io/docs/fsx/describe_backups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_describe_backups/} for full documentation.
 }
 \keyword{internal}

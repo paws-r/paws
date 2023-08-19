@@ -13,6 +13,6 @@ forecastservice_delete_forecast_export_job(ForecastExportJobArn)
 \description{
 Deletes a forecast export job created using the \code{\link[=forecastservice_create_forecast_export_job]{create_forecast_export_job}} operation. You can delete only export jobs that have a status of \code{ACTIVE} or \code{CREATE_FAILED}. To get the status, use the \code{\link[=forecastservice_describe_forecast_export_job]{describe_forecast_export_job}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/delete_forecast_export_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_delete_forecast_export_job/} for full documentation.
 }
 \keyword{internal}

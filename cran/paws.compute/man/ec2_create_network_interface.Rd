@@ -99,7 +99,7 @@ count of IPv6 addresses.}
 
 \item{InterfaceType}{The type of network interface. The default is \code{interface}.
 
-The only supported values are \code{efa} and \code{trunk}.}
+The only supported values are \code{interface}, \code{efa}, and \code{trunk}.}
 
 \item{SubnetId}{[required] The ID of the subnet to associate with the network interface.}
 
@@ -111,6 +111,6 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \description{
 Creates a network interface in the specified subnet.
 
-See \url{https://paws-r.github.io/docs/ec2/create_network_interface.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_network_interface/} for full documentation.
 }
 \keyword{internal}

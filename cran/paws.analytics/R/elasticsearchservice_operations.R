@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Allows the destination domain owner to accept an inbound cross-cluster search connection request.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/accept_inbound_cross_cluster_search_connection.html](https://paws-r.github.io/docs/elasticsearchservice/accept_inbound_cross_cluster_search_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_accept_inbound_cross_cluster_search_connection/](https://www.paws-r-sdk.com/docs/elasticsearchservice_accept_inbound_cross_cluster_search_connection/) for full documentation.
 #'
 #' @param CrossClusterSearchConnectionId &#91;required&#93; The id of the inbound connection that you want to accept.
 #'
@@ -38,7 +38,7 @@ elasticsearchservice_accept_inbound_cross_cluster_search_connection <- function(
 #' @description
 #' Attaches tags to an existing Elasticsearch domain. Tags are a set of case-sensitive key value pairs. An Elasticsearch domain may have up to 10 tags. See <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/#es-managedomains-awsresorcetagging" target="_blank">Tagging Amazon Elasticsearch Service Domains for more information.</a>
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/add_tags.html](https://paws-r.github.io/docs/elasticsearchservice/add_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_add_tags/](https://www.paws-r-sdk.com/docs/elasticsearchservice_add_tags/) for full documentation.
 #'
 #' @param ARN &#91;required&#93; Specify the `ARN` for which you want to add the tags.
 #' @param TagList &#91;required&#93; List of `Tag` that need to be added for the Elasticsearch domain.
@@ -68,7 +68,7 @@ elasticsearchservice_add_tags <- function(ARN, TagList) {
 #' @description
 #' Associates a package with an Amazon ES domain.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/associate_package.html](https://paws-r.github.io/docs/elasticsearchservice/associate_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_associate_package/](https://www.paws-r-sdk.com/docs/elasticsearchservice_associate_package/) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; Internal ID of the package that you want to associate with a domain. Use
 #' [`describe_packages`][elasticsearchservice_describe_packages] to find
@@ -101,7 +101,7 @@ elasticsearchservice_associate_package <- function(PackageID, DomainName) {
 #' @description
 #' Provides access to an Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/authorize_vpc_endpoint_access.html](https://paws-r.github.io/docs/elasticsearchservice/authorize_vpc_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_authorize_vpc_endpoint_access/](https://www.paws-r-sdk.com/docs/elasticsearchservice_authorize_vpc_endpoint_access/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the OpenSearch Service domain to provide access to.
 #' @param Account &#91;required&#93; The account ID to grant access to.
@@ -131,7 +131,7 @@ elasticsearchservice_authorize_vpc_endpoint_access <- function(DomainName, Accou
 #' @description
 #' Cancels a scheduled service software update for an Amazon ES domain. You can only perform this operation before the `AutomatedUpdateDate` and when the `UpdateStatus` is in the `PENDING_UPDATE` state.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/cancel_elasticsearch_service_software_update.html](https://paws-r.github.io/docs/elasticsearchservice/cancel_elasticsearch_service_software_update.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_cancel_elasticsearch_service_software_update/](https://www.paws-r-sdk.com/docs/elasticsearchservice_cancel_elasticsearch_service_software_update/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to stop the latest service software
 #' update on.
@@ -161,7 +161,7 @@ elasticsearchservice_cancel_elasticsearch_service_software_update <- function(Do
 #' @description
 #' Creates a new Elasticsearch domain. For more information, see <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#es-createdomains" target="_blank">Creating Elasticsearch Domains</a> in the *Amazon Elasticsearch Service Developer Guide*.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/create_elasticsearch_domain.html](https://paws-r.github.io/docs/elasticsearchservice/create_elasticsearch_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_create_elasticsearch_domain/](https://www.paws-r-sdk.com/docs/elasticsearchservice_create_elasticsearch_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the Elasticsearch domain that you are creating. Domain names
 #' are unique across the domains owned by an account within an AWS region.
@@ -229,7 +229,7 @@ elasticsearchservice_create_elasticsearch_domain <- function(DomainName, Elastic
 #' @description
 #' Creates a new cross-cluster search connection from a source domain to a destination domain.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/create_outbound_cross_cluster_search_connection.html](https://paws-r.github.io/docs/elasticsearchservice/create_outbound_cross_cluster_search_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_create_outbound_cross_cluster_search_connection/](https://www.paws-r-sdk.com/docs/elasticsearchservice_create_outbound_cross_cluster_search_connection/) for full documentation.
 #'
 #' @param SourceDomainInfo &#91;required&#93; Specifies the `DomainInformation` for the source Elasticsearch domain.
 #' @param DestinationDomainInfo &#91;required&#93; Specifies the `DomainInformation` for the destination Elasticsearch
@@ -262,7 +262,7 @@ elasticsearchservice_create_outbound_cross_cluster_search_connection <- function
 #' @description
 #' Create a package for use with Amazon ES domains.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/create_package.html](https://paws-r.github.io/docs/elasticsearchservice/create_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_create_package/](https://www.paws-r-sdk.com/docs/elasticsearchservice_create_package/) for full documentation.
 #'
 #' @param PackageName &#91;required&#93; Unique identifier for the package.
 #' @param PackageType &#91;required&#93; Type of package. Currently supports only TXT-DICTIONARY.
@@ -294,7 +294,7 @@ elasticsearchservice_create_package <- function(PackageName, PackageType, Packag
 #' @description
 #' Creates an Amazon OpenSearch Service-managed VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/create_vpc_endpoint.html](https://paws-r.github.io/docs/elasticsearchservice/create_vpc_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_create_vpc_endpoint/](https://www.paws-r-sdk.com/docs/elasticsearchservice_create_vpc_endpoint/) for full documentation.
 #'
 #' @param DomainArn &#91;required&#93; The Amazon Resource Name (ARN) of the domain to grant access to.
 #' @param VpcOptions &#91;required&#93; Options to specify the subnets and security groups for the endpoint.
@@ -326,7 +326,7 @@ elasticsearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, Clie
 #' @description
 #' Permanently deletes the specified Elasticsearch domain and all of its data. Once a domain is deleted, it cannot be recovered.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/delete_elasticsearch_domain.html](https://paws-r.github.io/docs/elasticsearchservice/delete_elasticsearch_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_delete_elasticsearch_domain/](https://www.paws-r-sdk.com/docs/elasticsearchservice_delete_elasticsearch_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the Elasticsearch domain that you want to permanently
 #' delete.
@@ -357,7 +357,7 @@ elasticsearchservice_delete_elasticsearch_domain <- function(DomainName) {
 #' @description
 #' Deletes the service-linked role that Elasticsearch Service uses to manage and maintain VPC domains. Role deletion will fail if any existing VPC domains use the role. You must delete any such Elasticsearch domains before deleting the role. See <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/vpc.html#es-enabling-slr" target="_blank">Deleting Elasticsearch Service Role</a> in *VPC Endpoints for Amazon Elasticsearch Service Domains*.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/delete_elasticsearch_service_role.html](https://paws-r.github.io/docs/elasticsearchservice/delete_elasticsearch_service_role.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_delete_elasticsearch_service_role/](https://www.paws-r-sdk.com/docs/elasticsearchservice_delete_elasticsearch_service_role/) for full documentation.
 #'
 
 #'
@@ -387,7 +387,7 @@ elasticsearchservice_delete_elasticsearch_service_role <- function() {
 #' @description
 #' Allows the destination domain owner to delete an existing inbound cross-cluster search connection.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/delete_inbound_cross_cluster_search_connection.html](https://paws-r.github.io/docs/elasticsearchservice/delete_inbound_cross_cluster_search_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_delete_inbound_cross_cluster_search_connection/](https://www.paws-r-sdk.com/docs/elasticsearchservice_delete_inbound_cross_cluster_search_connection/) for full documentation.
 #'
 #' @param CrossClusterSearchConnectionId &#91;required&#93; The id of the inbound connection that you want to permanently delete.
 #'
@@ -417,7 +417,7 @@ elasticsearchservice_delete_inbound_cross_cluster_search_connection <- function(
 #' @description
 #' Allows the source domain owner to delete an existing outbound cross-cluster search connection.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/delete_outbound_cross_cluster_search_connection.html](https://paws-r.github.io/docs/elasticsearchservice/delete_outbound_cross_cluster_search_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_delete_outbound_cross_cluster_search_connection/](https://www.paws-r-sdk.com/docs/elasticsearchservice_delete_outbound_cross_cluster_search_connection/) for full documentation.
 #'
 #' @param CrossClusterSearchConnectionId &#91;required&#93; The id of the outbound connection that you want to permanently delete.
 #'
@@ -446,7 +446,7 @@ elasticsearchservice_delete_outbound_cross_cluster_search_connection <- function
 #' @description
 #' Delete the package.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/delete_package.html](https://paws-r.github.io/docs/elasticsearchservice/delete_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_delete_package/](https://www.paws-r-sdk.com/docs/elasticsearchservice_delete_package/) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; Internal ID of the package that you want to delete. Use
 #' [`describe_packages`][elasticsearchservice_describe_packages] to find
@@ -477,7 +477,7 @@ elasticsearchservice_delete_package <- function(PackageID) {
 #' @description
 #' Deletes an Amazon OpenSearch Service-managed interface VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/delete_vpc_endpoint.html](https://paws-r.github.io/docs/elasticsearchservice/delete_vpc_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_delete_vpc_endpoint/](https://www.paws-r-sdk.com/docs/elasticsearchservice_delete_vpc_endpoint/) for full documentation.
 #'
 #' @param VpcEndpointId &#91;required&#93; The unique identifier of the endpoint to be deleted.
 #'
@@ -508,7 +508,7 @@ elasticsearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
 #' @description
 #' Provides scheduled Auto-Tune action details for the Elasticsearch domain, such as Auto-Tune action type, description, severity, and scheduled date.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_domain_auto_tunes.html](https://paws-r.github.io/docs/elasticsearchservice/describe_domain_auto_tunes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_domain_auto_tunes/](https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_domain_auto_tunes/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; Specifies the domain name for which you want Auto-Tune action details.
 #' @param MaxResults Set this value to limit the number of results returned. If not
@@ -524,7 +524,7 @@ elasticsearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResul
     name = "DescribeDomainAutoTunes",
     http_method = "GET",
     http_path = "/2015-01-01/es/domain/{DomainName}/autoTunes",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_domain_auto_tunes_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_domain_auto_tunes_output()
@@ -542,7 +542,7 @@ elasticsearchservice_describe_domain_auto_tunes <- function(DomainName, MaxResul
 #' @description
 #' Returns information about the current blue/green deployment happening on a domain, including a change ID, status, and progress stages.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_domain_change_progress.html](https://paws-r.github.io/docs/elasticsearchservice/describe_domain_change_progress.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_domain_change_progress/](https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_domain_change_progress/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain you want to get the progress information about.
 #' @param ChangeId The specific change ID for which you want to get progress information.
@@ -576,7 +576,7 @@ elasticsearchservice_describe_domain_change_progress <- function(DomainName, Cha
 #' @description
 #' Returns domain configuration information about the specified Elasticsearch domain, including the domain ID, domain endpoint, and domain ARN.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_domain.html](https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_elasticsearch_domain/](https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_elasticsearch_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the Elasticsearch domain for which you want information.
 #'
@@ -607,7 +607,7 @@ elasticsearchservice_describe_elasticsearch_domain <- function(DomainName) {
 #' @description
 #' Provides cluster configuration information about the specified Elasticsearch domain, such as the state, creation date, update version, and update date for cluster options.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_domain_config.html](https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_domain_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_elasticsearch_domain_config/](https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_elasticsearch_domain_config/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The Elasticsearch domain that you want to get information about.
 #'
@@ -638,7 +638,7 @@ elasticsearchservice_describe_elasticsearch_domain_config <- function(DomainName
 #' @description
 #' Returns domain configuration information about the specified Elasticsearch domains, including the domain ID, domain endpoint, and domain ARN.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_domains.html](https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_domains.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_elasticsearch_domains/](https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_elasticsearch_domains/) for full documentation.
 #'
 #' @param DomainNames &#91;required&#93; The Elasticsearch domains for which you want information.
 #'
@@ -668,7 +668,7 @@ elasticsearchservice_describe_elasticsearch_domains <- function(DomainNames) {
 #' @description
 #' Describe Elasticsearch Limits for a given InstanceType and ElasticsearchVersion. When modifying existing Domain, specify the ` DomainName ` to know what Limits are supported for modifying.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_instance_type_limits.html](https://paws-r.github.io/docs/elasticsearchservice/describe_elasticsearch_instance_type_limits.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_elasticsearch_instance_type_limits/](https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_elasticsearch_instance_type_limits/) for full documentation.
 #'
 #' @param DomainName DomainName represents the name of the Domain that we are trying to
 #' modify. This should be present only if we are querying for Elasticsearch
@@ -703,7 +703,7 @@ elasticsearchservice_describe_elasticsearch_instance_type_limits <- function(Dom
 #' @description
 #' Lists all the inbound cross-cluster search connections for a destination domain.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_inbound_cross_cluster_search_connections.html](https://paws-r.github.io/docs/elasticsearchservice/describe_inbound_cross_cluster_search_connections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_inbound_cross_cluster_search_connections/](https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_inbound_cross_cluster_search_connections/) for full documentation.
 #'
 #' @param Filters A list of filters used to match properties for inbound cross-cluster
 #' search connection. Available `Filter` names for this operation are:
@@ -726,7 +726,7 @@ elasticsearchservice_describe_inbound_cross_cluster_search_connections <- functi
     name = "DescribeInboundCrossClusterSearchConnections",
     http_method = "POST",
     http_path = "/2015-01-01/es/ccs/inboundConnection/search",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_inbound_cross_cluster_search_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_inbound_cross_cluster_search_connections_output()
@@ -744,7 +744,7 @@ elasticsearchservice_describe_inbound_cross_cluster_search_connections <- functi
 #' @description
 #' Lists all the outbound cross-cluster search connections for a source domain.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_outbound_cross_cluster_search_connections.html](https://paws-r.github.io/docs/elasticsearchservice/describe_outbound_cross_cluster_search_connections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_outbound_cross_cluster_search_connections/](https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_outbound_cross_cluster_search_connections/) for full documentation.
 #'
 #' @param Filters A list of filters used to match properties for outbound cross-cluster
 #' search connection. Available `Filter` names for this operation are:
@@ -767,7 +767,7 @@ elasticsearchservice_describe_outbound_cross_cluster_search_connections <- funct
     name = "DescribeOutboundCrossClusterSearchConnections",
     http_method = "POST",
     http_path = "/2015-01-01/es/ccs/outboundConnection/search",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_outbound_cross_cluster_search_connections_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_outbound_cross_cluster_search_connections_output()
@@ -784,7 +784,7 @@ elasticsearchservice_describe_outbound_cross_cluster_search_connections <- funct
 #' @description
 #' Describes all packages available to Amazon ES. Includes options for filtering, limiting the number of results, and pagination.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_packages.html](https://paws-r.github.io/docs/elasticsearchservice/describe_packages.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_packages/](https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_packages/) for full documentation.
 #'
 #' @param Filters Only returns packages that match the `DescribePackagesFilterList`
 #' values.
@@ -801,7 +801,7 @@ elasticsearchservice_describe_packages <- function(Filters = NULL, MaxResults = 
     name = "DescribePackages",
     http_method = "POST",
     http_path = "/2015-01-01/packages/describe",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_packages_input(Filters = Filters, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_packages_output()
@@ -818,7 +818,7 @@ elasticsearchservice_describe_packages <- function(Filters = NULL, MaxResults = 
 #' @description
 #' Lists available reserved Elasticsearch instance offerings.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_reserved_elasticsearch_instance_offerings.html](https://paws-r.github.io/docs/elasticsearchservice/describe_reserved_elasticsearch_instance_offerings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_reserved_elasticsearch_instance_offerings/](https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_reserved_elasticsearch_instance_offerings/) for full documentation.
 #'
 #' @param ReservedElasticsearchInstanceOfferingId The offering identifier filter value. Use this parameter to show only
 #' the available offering that matches the specified reservation
@@ -836,7 +836,7 @@ elasticsearchservice_describe_reserved_elasticsearch_instance_offerings <- funct
     name = "DescribeReservedElasticsearchInstanceOfferings",
     http_method = "GET",
     http_path = "/2015-01-01/es/reservedInstanceOfferings",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_reserved_elasticsearch_instance_offerings_input(ReservedElasticsearchInstanceOfferingId = ReservedElasticsearchInstanceOfferingId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_reserved_elasticsearch_instance_offerings_output()
@@ -854,7 +854,7 @@ elasticsearchservice_describe_reserved_elasticsearch_instance_offerings <- funct
 #' @description
 #' Returns information about reserved Elasticsearch instances for this account.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_reserved_elasticsearch_instances.html](https://paws-r.github.io/docs/elasticsearchservice/describe_reserved_elasticsearch_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_reserved_elasticsearch_instances/](https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_reserved_elasticsearch_instances/) for full documentation.
 #'
 #' @param ReservedElasticsearchInstanceId The reserved instance identifier filter value. Use this parameter to
 #' show only the reservation that matches the specified reserved
@@ -872,7 +872,7 @@ elasticsearchservice_describe_reserved_elasticsearch_instances <- function(Reser
     name = "DescribeReservedElasticsearchInstances",
     http_method = "GET",
     http_path = "/2015-01-01/es/reservedInstances",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$describe_reserved_elasticsearch_instances_input(ReservedElasticsearchInstanceId = ReservedElasticsearchInstanceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$describe_reserved_elasticsearch_instances_output()
@@ -889,7 +889,7 @@ elasticsearchservice_describe_reserved_elasticsearch_instances <- function(Reser
 #' @description
 #' Describes one or more Amazon OpenSearch Service-managed VPC endpoints.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/describe_vpc_endpoints.html](https://paws-r.github.io/docs/elasticsearchservice/describe_vpc_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_vpc_endpoints/](https://www.paws-r-sdk.com/docs/elasticsearchservice_describe_vpc_endpoints/) for full documentation.
 #'
 #' @param VpcEndpointIds &#91;required&#93; The unique identifiers of the endpoints to get information about.
 #'
@@ -918,7 +918,7 @@ elasticsearchservice_describe_vpc_endpoints <- function(VpcEndpointIds) {
 #' @description
 #' Dissociates a package from the Amazon ES domain.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/dissociate_package.html](https://paws-r.github.io/docs/elasticsearchservice/dissociate_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_dissociate_package/](https://www.paws-r-sdk.com/docs/elasticsearchservice_dissociate_package/) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; Internal ID of the package that you want to associate with a domain. Use
 #' [`describe_packages`][elasticsearchservice_describe_packages] to find
@@ -950,7 +950,7 @@ elasticsearchservice_dissociate_package <- function(PackageID, DomainName) {
 #' @description
 #' Returns a list of upgrade compatible Elastisearch versions. You can optionally pass a ` DomainName ` to get all upgrade compatible Elasticsearch versions for that specific domain.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/get_compatible_elasticsearch_versions.html](https://paws-r.github.io/docs/elasticsearchservice/get_compatible_elasticsearch_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_get_compatible_elasticsearch_versions/](https://www.paws-r-sdk.com/docs/elasticsearchservice_get_compatible_elasticsearch_versions/) for full documentation.
 #'
 #' @param DomainName 
 #'
@@ -980,7 +980,7 @@ elasticsearchservice_get_compatible_elasticsearch_versions <- function(DomainNam
 #' @description
 #' Returns a list of versions of the package, along with their creation time and commit message.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/get_package_version_history.html](https://paws-r.github.io/docs/elasticsearchservice/get_package_version_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_get_package_version_history/](https://www.paws-r-sdk.com/docs/elasticsearchservice_get_package_version_history/) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; Returns an audit history of versions of the package.
 #' @param MaxResults Limits results to a maximum number of versions.
@@ -996,7 +996,7 @@ elasticsearchservice_get_package_version_history <- function(PackageID, MaxResul
     name = "GetPackageVersionHistory",
     http_method = "GET",
     http_path = "/2015-01-01/packages/{PackageID}/history",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$get_package_version_history_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$get_package_version_history_output()
@@ -1014,7 +1014,7 @@ elasticsearchservice_get_package_version_history <- function(PackageID, MaxResul
 #' @description
 #' Retrieves the complete history of the last 10 upgrades that were performed on the domain.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/get_upgrade_history.html](https://paws-r.github.io/docs/elasticsearchservice/get_upgrade_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_get_upgrade_history/](https://www.paws-r-sdk.com/docs/elasticsearchservice_get_upgrade_history/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param MaxResults 
@@ -1028,7 +1028,7 @@ elasticsearchservice_get_upgrade_history <- function(DomainName, MaxResults = NU
     name = "GetUpgradeHistory",
     http_method = "GET",
     http_path = "/2015-01-01/es/upgradeDomain/{DomainName}/history",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$get_upgrade_history_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$get_upgrade_history_output()
@@ -1046,7 +1046,7 @@ elasticsearchservice_get_upgrade_history <- function(DomainName, MaxResults = NU
 #' @description
 #' Retrieves the latest status of the last upgrade or upgrade eligibility check that was performed on the domain.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/get_upgrade_status.html](https://paws-r.github.io/docs/elasticsearchservice/get_upgrade_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_get_upgrade_status/](https://www.paws-r-sdk.com/docs/elasticsearchservice_get_upgrade_status/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #'
@@ -1076,7 +1076,7 @@ elasticsearchservice_get_upgrade_status <- function(DomainName) {
 #' @description
 #' Returns the name of all Elasticsearch domains owned by the current user's account.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/list_domain_names.html](https://paws-r.github.io/docs/elasticsearchservice/list_domain_names.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_list_domain_names/](https://www.paws-r-sdk.com/docs/elasticsearchservice_list_domain_names/) for full documentation.
 #'
 #' @param EngineType Optional parameter to filter the output by domain engine type.
 #' Acceptable values are 'Elasticsearch' and 'OpenSearch'.
@@ -1106,7 +1106,7 @@ elasticsearchservice_list_domain_names <- function(EngineType = NULL) {
 #' @description
 #' Lists all Amazon ES domains associated with the package.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/list_domains_for_package.html](https://paws-r.github.io/docs/elasticsearchservice/list_domains_for_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_list_domains_for_package/](https://www.paws-r-sdk.com/docs/elasticsearchservice_list_domains_for_package/) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; The package for which to list domains.
 #' @param MaxResults Limits results to a maximum number of domains.
@@ -1122,7 +1122,7 @@ elasticsearchservice_list_domains_for_package <- function(PackageID, MaxResults 
     name = "ListDomainsForPackage",
     http_method = "GET",
     http_path = "/2015-01-01/packages/{PackageID}/domains",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$list_domains_for_package_input(PackageID = PackageID, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$list_domains_for_package_output()
@@ -1140,7 +1140,7 @@ elasticsearchservice_list_domains_for_package <- function(PackageID, MaxResults 
 #' @description
 #' List all Elasticsearch instance types that are supported for given ElasticsearchVersion
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/list_elasticsearch_instance_types.html](https://paws-r.github.io/docs/elasticsearchservice/list_elasticsearch_instance_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_list_elasticsearch_instance_types/](https://www.paws-r-sdk.com/docs/elasticsearchservice_list_elasticsearch_instance_types/) for full documentation.
 #'
 #' @param ElasticsearchVersion &#91;required&#93; Version of Elasticsearch for which list of supported elasticsearch
 #' instance types are needed.
@@ -1160,7 +1160,7 @@ elasticsearchservice_list_elasticsearch_instance_types <- function(Elasticsearch
     name = "ListElasticsearchInstanceTypes",
     http_method = "GET",
     http_path = "/2015-01-01/es/instanceTypes/{ElasticsearchVersion}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$list_elasticsearch_instance_types_input(ElasticsearchVersion = ElasticsearchVersion, DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$list_elasticsearch_instance_types_output()
@@ -1177,7 +1177,7 @@ elasticsearchservice_list_elasticsearch_instance_types <- function(Elasticsearch
 #' @description
 #' List all supported Elasticsearch versions
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/list_elasticsearch_versions.html](https://paws-r.github.io/docs/elasticsearchservice/list_elasticsearch_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_list_elasticsearch_versions/](https://www.paws-r-sdk.com/docs/elasticsearchservice_list_elasticsearch_versions/) for full documentation.
 #'
 #' @param MaxResults Set this value to limit the number of results returned. Value provided
 #' must be greater than 10 else it wont be honored.
@@ -1191,7 +1191,7 @@ elasticsearchservice_list_elasticsearch_versions <- function(MaxResults = NULL, 
     name = "ListElasticsearchVersions",
     http_method = "GET",
     http_path = "/2015-01-01/es/versions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$list_elasticsearch_versions_input(MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$list_elasticsearch_versions_output()
@@ -1208,7 +1208,7 @@ elasticsearchservice_list_elasticsearch_versions <- function(MaxResults = NULL, 
 #' @description
 #' Lists all packages associated with the Amazon ES domain.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/list_packages_for_domain.html](https://paws-r.github.io/docs/elasticsearchservice/list_packages_for_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_list_packages_for_domain/](https://www.paws-r-sdk.com/docs/elasticsearchservice_list_packages_for_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain for which you want to list associated packages.
 #' @param MaxResults Limits results to a maximum number of packages.
@@ -1224,7 +1224,7 @@ elasticsearchservice_list_packages_for_domain <- function(DomainName, MaxResults
     name = "ListPackagesForDomain",
     http_method = "GET",
     http_path = "/2015-01-01/domain/{DomainName}/packages",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .elasticsearchservice$list_packages_for_domain_input(DomainName = DomainName, MaxResults = MaxResults, NextToken = NextToken)
   output <- .elasticsearchservice$list_packages_for_domain_output()
@@ -1241,7 +1241,7 @@ elasticsearchservice_list_packages_for_domain <- function(DomainName, MaxResults
 #' @description
 #' Returns all tags for the given Elasticsearch domain.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/list_tags.html](https://paws-r.github.io/docs/elasticsearchservice/list_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_list_tags/](https://www.paws-r-sdk.com/docs/elasticsearchservice_list_tags/) for full documentation.
 #'
 #' @param ARN &#91;required&#93; Specify the `ARN` for the Elasticsearch domain to which the tags are
 #' attached that you want to view.
@@ -1273,7 +1273,7 @@ elasticsearchservice_list_tags <- function(ARN) {
 #' @description
 #' Retrieves information about each principal that is allowed to access a given Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/list_vpc_endpoint_access.html](https://paws-r.github.io/docs/elasticsearchservice/list_vpc_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_list_vpc_endpoint_access/](https://www.paws-r-sdk.com/docs/elasticsearchservice_list_vpc_endpoint_access/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the OpenSearch Service domain to retrieve access information
 #' for.
@@ -1305,7 +1305,7 @@ elasticsearchservice_list_vpc_endpoint_access <- function(DomainName, NextToken 
 #' @description
 #' Retrieves all Amazon OpenSearch Service-managed VPC endpoints in the current account and Region.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/list_vpc_endpoints.html](https://paws-r.github.io/docs/elasticsearchservice/list_vpc_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_list_vpc_endpoints/](https://www.paws-r-sdk.com/docs/elasticsearchservice_list_vpc_endpoints/) for full documentation.
 #'
 #' @param NextToken Identifier to allow retrieval of paginated results.
 #'
@@ -1335,7 +1335,7 @@ elasticsearchservice_list_vpc_endpoints <- function(NextToken = NULL) {
 #' @description
 #' Retrieves all Amazon OpenSearch Service-managed VPC endpoints associated with a particular domain.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/list_vpc_endpoints_for_domain.html](https://paws-r.github.io/docs/elasticsearchservice/list_vpc_endpoints_for_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_list_vpc_endpoints_for_domain/](https://www.paws-r-sdk.com/docs/elasticsearchservice_list_vpc_endpoints_for_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; Name of the ElasticSearch domain whose VPC endpoints are to be listed.
 #' @param NextToken Provides an identifier to allow retrieval of paginated results.
@@ -1365,7 +1365,7 @@ elasticsearchservice_list_vpc_endpoints_for_domain <- function(DomainName, NextT
 #' @description
 #' Allows you to purchase reserved Elasticsearch instances.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/purchase_reserved_elasticsearch_instance_offering.html](https://paws-r.github.io/docs/elasticsearchservice/purchase_reserved_elasticsearch_instance_offering.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_purchase_reserved_elasticsearch_instance_offering/](https://www.paws-r-sdk.com/docs/elasticsearchservice_purchase_reserved_elasticsearch_instance_offering/) for full documentation.
 #'
 #' @param ReservedElasticsearchInstanceOfferingId &#91;required&#93; The ID of the reserved Elasticsearch instance offering to purchase.
 #' @param ReservationName &#91;required&#93; A customer-specified identifier to track this reservation.
@@ -1397,7 +1397,7 @@ elasticsearchservice_purchase_reserved_elasticsearch_instance_offering <- functi
 #' @description
 #' Allows the destination domain owner to reject an inbound cross-cluster search connection request.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/reject_inbound_cross_cluster_search_connection.html](https://paws-r.github.io/docs/elasticsearchservice/reject_inbound_cross_cluster_search_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_reject_inbound_cross_cluster_search_connection/](https://www.paws-r-sdk.com/docs/elasticsearchservice_reject_inbound_cross_cluster_search_connection/) for full documentation.
 #'
 #' @param CrossClusterSearchConnectionId &#91;required&#93; The id of the inbound connection that you want to reject.
 #'
@@ -1427,7 +1427,7 @@ elasticsearchservice_reject_inbound_cross_cluster_search_connection <- function(
 #' @description
 #' Removes the specified set of tags from the specified Elasticsearch domain.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/remove_tags.html](https://paws-r.github.io/docs/elasticsearchservice/remove_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_remove_tags/](https://www.paws-r-sdk.com/docs/elasticsearchservice_remove_tags/) for full documentation.
 #'
 #' @param ARN &#91;required&#93; Specifies the `ARN` for the Elasticsearch domain from which you want to
 #' delete the specified tags.
@@ -1460,7 +1460,7 @@ elasticsearchservice_remove_tags <- function(ARN, TagKeys) {
 #' @description
 #' Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/revoke_vpc_endpoint_access.html](https://paws-r.github.io/docs/elasticsearchservice/revoke_vpc_endpoint_access.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_revoke_vpc_endpoint_access/](https://www.paws-r-sdk.com/docs/elasticsearchservice_revoke_vpc_endpoint_access/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the OpenSearch Service domain.
 #' @param Account &#91;required&#93; The account ID to revoke access from.
@@ -1490,7 +1490,7 @@ elasticsearchservice_revoke_vpc_endpoint_access <- function(DomainName, Account)
 #' @description
 #' Schedules a service software update for an Amazon ES domain.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/start_elasticsearch_service_software_update.html](https://paws-r.github.io/docs/elasticsearchservice/start_elasticsearch_service_software_update.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_start_elasticsearch_service_software_update/](https://www.paws-r-sdk.com/docs/elasticsearchservice_start_elasticsearch_service_software_update/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to update to the latest service
 #' software.
@@ -1521,7 +1521,7 @@ elasticsearchservice_start_elasticsearch_service_software_update <- function(Dom
 #' @description
 #' Modifies the cluster configuration of the specified Elasticsearch domain, setting as setting the instance type and the number of instances.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/update_elasticsearch_domain_config.html](https://paws-r.github.io/docs/elasticsearchservice/update_elasticsearch_domain_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_update_elasticsearch_domain_config/](https://www.paws-r-sdk.com/docs/elasticsearchservice_update_elasticsearch_domain_config/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the Elasticsearch domain that you are updating.
 #' @param ElasticsearchClusterConfig The type and number of instances to instantiate for the domain cluster.
@@ -1583,7 +1583,7 @@ elasticsearchservice_update_elasticsearch_domain_config <- function(DomainName, 
 #' @description
 #' Updates a package for use with Amazon ES domains.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/update_package.html](https://paws-r.github.io/docs/elasticsearchservice/update_package.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_update_package/](https://www.paws-r-sdk.com/docs/elasticsearchservice_update_package/) for full documentation.
 #'
 #' @param PackageID &#91;required&#93; Unique identifier for the package.
 #' @param PackageSource &#91;required&#93; 
@@ -1616,7 +1616,7 @@ elasticsearchservice_update_package <- function(PackageID, PackageSource, Packag
 #' @description
 #' Modifies an Amazon OpenSearch Service-managed interface VPC endpoint.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/update_vpc_endpoint.html](https://paws-r.github.io/docs/elasticsearchservice/update_vpc_endpoint.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_update_vpc_endpoint/](https://www.paws-r-sdk.com/docs/elasticsearchservice_update_vpc_endpoint/) for full documentation.
 #'
 #' @param VpcEndpointId &#91;required&#93; Unique identifier of the VPC endpoint to be updated.
 #' @param VpcOptions &#91;required&#93; The security groups and/or subnets to add, remove, or modify.
@@ -1647,7 +1647,7 @@ elasticsearchservice_update_vpc_endpoint <- function(VpcEndpointId, VpcOptions) 
 #' @description
 #' Allows you to either upgrade your domain or perform an Upgrade eligibility check to a compatible Elasticsearch version.
 #'
-#' See [https://paws-r.github.io/docs/elasticsearchservice/upgrade_elasticsearch_domain.html](https://paws-r.github.io/docs/elasticsearchservice/upgrade_elasticsearch_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticsearchservice_upgrade_elasticsearch_domain/](https://www.paws-r-sdk.com/docs/elasticsearchservice_upgrade_elasticsearch_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; 
 #' @param TargetVersion &#91;required&#93; The version of Elasticsearch that you intend to upgrade the domain to.

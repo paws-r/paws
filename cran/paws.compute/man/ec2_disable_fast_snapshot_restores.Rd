@@ -24,6 +24,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Disables fast snapshot restores for the specified snapshots in the specified Availability Zones.
 
-See \url{https://paws-r.github.io/docs/ec2/disable_fast_snapshot_restores.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_disable_fast_snapshot_restores/} for full documentation.
 }
 \keyword{internal}

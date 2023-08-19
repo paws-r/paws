@@ -75,6 +75,6 @@ different account, the request fails with the HTTP status code
 \description{
 This action filters the contents of an Amazon S3 object based on a simple structured query language (SQL) statement. In the request, along with the SQL expression, you must also specify a data serialization format (JSON, CSV, or Apache Parquet) of the object. Amazon S3 uses this format to parse object data into records, and returns only records that match the specified SQL expression. You must also specify the data serialization format for the response.
 
-See \url{https://paws-r.github.io/docs/s3/select_object_content.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_select_object_content/} for full documentation.
 }
 \keyword{internal}

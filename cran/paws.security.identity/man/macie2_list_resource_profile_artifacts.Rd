@@ -17,6 +17,6 @@ to.}
 \description{
 Retrieves information about objects that were selected from an S3 bucket for automated sensitive data discovery.
 
-See \url{https://paws-r.github.io/docs/macie2/list_resource_profile_artifacts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_list_resource_profile_artifacts/} for full documentation.
 }
 \keyword{internal}

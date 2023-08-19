@@ -21,6 +21,6 @@ securityhub_update_action_target(
 \description{
 Updates the name and description of a custom action target in Security Hub.
 
-See \url{https://paws-r.github.io/docs/securityhub/update_action_target.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/securityhub_update_action_target/} for full documentation.
 }
 \keyword{internal}

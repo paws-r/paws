@@ -12,6 +12,6 @@ lightsail_get_domain(domainName)
 \description{
 Returns information about a specific domain recordset.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_domain/} for full documentation.
 }
 \keyword{internal}

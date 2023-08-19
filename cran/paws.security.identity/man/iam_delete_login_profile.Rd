@@ -17,6 +17,6 @@ spaces. You can also include any of the following characters: _+=,.@-}
 \description{
 Deletes the password for the specified IAM user, For more information, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_passwords_admin-change-user.html}{Managing passwords for IAM users}.
 
-See \url{https://paws-r.github.io/docs/iam/delete_login_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_delete_login_profile/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ elbv2_add_listener_certificates(ListenerArn, Certificates)
 \description{
 Adds the specified SSL server certificate to the certificate list for the specified HTTPS or TLS listener.
 
-See \url{https://paws-r.github.io/docs/elbv2/add_listener_certificates.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elbv2_add_listener_certificates/} for full documentation.
 }
 \keyword{internal}

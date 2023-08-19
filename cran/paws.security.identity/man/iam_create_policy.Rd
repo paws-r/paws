@@ -83,6 +83,6 @@ created.}
 \description{
 Creates a new managed policy for your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/iam/create_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_create_policy/} for full documentation.
 }
 \keyword{internal}

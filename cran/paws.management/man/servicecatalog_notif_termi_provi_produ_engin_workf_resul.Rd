@@ -28,6 +28,6 @@ starts.}
 \description{
 Notifies the result of the terminate engine execution.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/notify_terminate_provisioned_product_engine_workflow_result.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_notify_terminate_provisioned_product_engine_workflow_result/} for full documentation.
 }
 \keyword{internal}

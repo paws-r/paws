@@ -31,6 +31,6 @@ updated.}
 \description{
 Updates the status of a partner integration.
 
-See \url{https://paws-r.github.io/docs/redshift/update_partner_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_update_partner_status/} for full documentation.
 }
 \keyword{internal}

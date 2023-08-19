@@ -12,6 +12,6 @@ cloud9_describe_environment_status(environmentId)
 \description{
 Gets status information for an Cloud9 development environment.
 
-See \url{https://paws-r.github.io/docs/cloud9/describe_environment_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloud9_describe_environment_status/} for full documentation.
 }
 \keyword{internal}

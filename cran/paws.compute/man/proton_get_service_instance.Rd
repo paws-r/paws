@@ -15,6 +15,6 @@ for.}
 \description{
 Get detailed data for a service instance. A service instance is an instantiation of service template and it runs in a specific environment.
 
-See \url{https://paws-r.github.io/docs/proton/get_service_instance.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_get_service_instance/} for full documentation.
 }
 \keyword{internal}

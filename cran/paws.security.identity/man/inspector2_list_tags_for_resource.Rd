@@ -12,6 +12,6 @@ inspector2_list_tags_for_resource(resourceArn)
 \description{
 Lists all tags attached to a given resource.
 
-See \url{https://paws-r.github.io/docs/inspector2/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

@@ -32,6 +32,6 @@ Web Services Regions you select as operating Regions.}
 \description{
 Modifies a resource discovery. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
 
-See \url{https://paws-r.github.io/docs/ec2/modify_ipam_resource_discovery.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_modify_ipam_resource_discovery/} for full documentation.
 }
 \keyword{internal}

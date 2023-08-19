@@ -24,6 +24,6 @@ none is supplied, the Amazon Web Services account ID is used by default.}
 \description{
 Retrieves table statistics of columns.
 
-See \url{https://paws-r.github.io/docs/glue/delete_column_statistics_for_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_delete_column_statistics_for_table/} for full documentation.
 }
 \keyword{internal}

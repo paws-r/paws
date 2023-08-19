@@ -30,6 +30,6 @@ JSON policy document, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide
 \description{
 Attaches a project policy to a Amazon Rekognition Custom Labels project in a trusting AWS account. A project policy specifies that a trusted AWS account can copy a model version from a trusting AWS account to a project in the trusted AWS account. To copy a model version you use the \code{\link[=rekognition_copy_project_version]{copy_project_version}} operation.
 
-See \url{https://paws-r.github.io/docs/rekognition/put_project_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_put_project_policy/} for full documentation.
 }
 \keyword{internal}

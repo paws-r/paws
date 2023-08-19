@@ -14,6 +14,6 @@ glue_start_crawler_schedule(CrawlerName)
 \description{
 Changes the schedule state of the specified crawler to \code{SCHEDULED}, unless the crawler is already running or the schedule state is already \code{SCHEDULED}.
 
-See \url{https://paws-r.github.io/docs/glue/start_crawler_schedule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_start_crawler_schedule/} for full documentation.
 }
 \keyword{internal}

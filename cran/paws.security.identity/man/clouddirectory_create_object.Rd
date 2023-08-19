@@ -30,6 +30,6 @@ attached.}
 \description{
 Creates an object in a Directory. Additionally attaches the object to a parent, if a parent reference and \code{LinkName} is specified. An object is simply a collection of Facet attributes. You can also use this API call to create a policy object, if the facet from which you create the object is a policy facet.
 
-See \url{https://paws-r.github.io/docs/clouddirectory/create_object.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/clouddirectory_create_object/} for full documentation.
 }
 \keyword{internal}

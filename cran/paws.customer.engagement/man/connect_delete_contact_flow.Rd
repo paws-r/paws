@@ -15,6 +15,6 @@ in the Amazon Resource Name (ARN) of the instance.}
 \description{
 Deletes a flow for the specified Amazon Connect instance.
 
-See \url{https://paws-r.github.io/docs/connect/delete_contact_flow.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_delete_contact_flow/} for full documentation.
 }
 \keyword{internal}

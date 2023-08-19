@@ -9,6 +9,6 @@ autoscaling_describe_metric_collection_types()
 \description{
 Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling.
 
-See \url{https://paws-r.github.io/docs/autoscaling/describe_metric_collection_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_describe_metric_collection_types/} for full documentation.
 }
 \keyword{internal}

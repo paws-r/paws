@@ -14,6 +14,6 @@ personalize_describe_batch_inference_job(batchInferenceJobArn)
 \description{
 Gets the properties of a batch inference job including name, Amazon Resource Name (ARN), status, input and output configurations, and the ARN of the solution version used to generate the recommendations.
 
-See \url{https://paws-r.github.io/docs/personalize/describe_batch_inference_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/personalize_describe_batch_inference_job/} for full documentation.
 }
 \keyword{internal}

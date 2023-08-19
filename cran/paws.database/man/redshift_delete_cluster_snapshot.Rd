@@ -16,7 +16,7 @@ Constraints: Must be the name of an existing snapshot that is in the
 \code{available}, \code{failed}, or \code{cancelled} state.}
 
 \item{SnapshotClusterIdentifier}{The unique identifier of the cluster the snapshot was created from. This
-parameter is required if your IAM user or role has a policy containing a
+parameter is required if your IAM user has a policy containing a
 snapshot resource element that specifies anything other than * for the
 cluster name.
 
@@ -25,6 +25,6 @@ Constraints: Must be the name of valid cluster.}
 \description{
 Deletes the specified manual snapshot. The snapshot must be in the \code{available} state, with no other users authorized to access the snapshot.
 
-See \url{https://paws-r.github.io/docs/redshift/delete_cluster_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_delete_cluster_snapshot/} for full documentation.
 }
 \keyword{internal}

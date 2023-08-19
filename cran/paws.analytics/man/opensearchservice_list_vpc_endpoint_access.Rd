@@ -22,6 +22,6 @@ operations, which returns results in the next page.}
 \description{
 Retrieves information about each Amazon Web Services principal that is allowed to access a given Amazon OpenSearch Service domain through the use of an interface VPC endpoint.
 
-See \url{https://paws-r.github.io/docs/opensearchservice/list_vpc_endpoint_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opensearchservice_list_vpc_endpoint_access/} for full documentation.
 }
 \keyword{internal}

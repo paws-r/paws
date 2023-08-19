@@ -128,6 +128,6 @@ concurrency for a SageMaker Serverless endpoint.
 \description{
 Deletes the specified scheduled action for an Application Auto Scaling scalable target.
 
-See \url{https://paws-r.github.io/docs/applicationautoscaling/delete_scheduled_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationautoscaling_delete_scheduled_action/} for full documentation.
 }
 \keyword{internal}

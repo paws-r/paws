@@ -18,6 +18,6 @@ parameter.}
 \description{
 Associates the list of tags in the input \code{Tags} parameter with the resource identified by the \code{ResourceArn} input parameter.
 
-See \url{https://paws-r.github.io/docs/codedeploy/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_tag_resource/} for full documentation.
 }
 \keyword{internal}

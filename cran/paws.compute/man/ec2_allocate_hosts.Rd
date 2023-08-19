@@ -10,11 +10,12 @@ ec2_allocate_hosts(
   ClientToken = NULL,
   InstanceType = NULL,
   InstanceFamily = NULL,
-  Quantity,
+  Quantity = NULL,
   TagSpecifications = NULL,
   HostRecovery = NULL,
   OutpostArn = NULL,
-  HostMaintenance = NULL
+  HostMaintenance = NULL,
+  AssetIds = NULL
 )
 }
 \arguments{
@@ -49,8 +50,13 @@ only, omit this parameter and specify \strong{InstanceType} instead. You
 cannot specify \strong{InstanceFamily} and \strong{InstanceType} in the same
 request.}
 
-\item{Quantity}{[required] The number of Dedicated Hosts to allocate to your account with these
-parameters.}
+\item{Quantity}{The number of Dedicated Hosts to allocate to your account with these
+parameters. If you are allocating the Dedicated Hosts on an Outpost, and
+you specify \strong{AssetIds}, you can omit this parameter. In this case,
+Amazon EC2 allocates a Dedicated Host on each specified hardware asset.
+If you specify both \strong{AssetIds} and \strong{Quantity}, then the value that
+you specify for \strong{Quantity} must be equal to the number of asset IDs
+specified.}
 
 \item{TagSpecifications}{The tags to apply to the Dedicated Host during creation.}
 
@@ -62,15 +68,32 @@ in the \emph{Amazon EC2 User Guide}.
 Default: \code{off}}
 
 \item{OutpostArn}{The Amazon Resource Name (ARN) of the Amazon Web Services Outpost on
-which to allocate the Dedicated Host.}
+which to allocate the Dedicated Host. If you specify \strong{OutpostArn}, you
+can optionally specify \strong{AssetIds}.
+
+If you are allocating the Dedicated Host in a Region, omit this
+parameter.}
 
 \item{HostMaintenance}{Indicates whether to enable or disable host maintenance for the
 Dedicated Host. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/dedicated-hosts-maintenance.html}{Host maintenance}
 in the \emph{Amazon EC2 User Guide}.}
+
+\item{AssetIds}{The IDs of the Outpost hardware assets on which to allocate the
+Dedicated Hosts. Targeting specific hardware assets on an Outpost can
+help to minimize latency between your workloads. This parameter is
+supported only if you specify \strong{OutpostArn}. If you are allocating the
+Dedicated Hosts in a Region, omit this parameter.
+\itemize{
+\item If you specify this parameter, you can omit \strong{Quantity}. In this
+case, Amazon EC2 allocates a Dedicated Host on each specified
+hardware asset.
+\item If you specify both \strong{AssetIds} and \strong{Quantity}, then the value
+for \strong{Quantity} must be equal to the number of asset IDs specified.
+}}
 }
 \description{
 Allocates a Dedicated Host to your account. At a minimum, specify the supported instance type or instance family, the Availability Zone in which to allocate the host, and the number of hosts to allocate.
 
-See \url{https://paws-r.github.io/docs/ec2/allocate_hosts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_allocate_hosts/} for full documentation.
 }
 \keyword{internal}

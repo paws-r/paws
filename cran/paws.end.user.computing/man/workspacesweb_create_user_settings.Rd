@@ -54,6 +54,6 @@ streaming session.}
 \description{
 Creates a user settings resource that can be associated with a web portal. Once associated with a web portal, user settings control how users can transfer data between a streaming session and the their local devices.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/create_user_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_create_user_settings/} for full documentation.
 }
 \keyword{internal}

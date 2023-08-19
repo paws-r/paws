@@ -12,6 +12,6 @@ comprehend_describe_events_detection_job(JobId)
 \description{
 Gets the status and details of an events detection job.
 
-See \url{https://paws-r.github.io/docs/comprehend/describe_events_detection_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/comprehend_describe_events_detection_job/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ The value must be URL encoded.}
 \description{
 Deletes the access point policy for the specified access point.
 
-See \url{https://paws-r.github.io/docs/s3control/delete_access_point_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_delete_access_point_policy/} for full documentation.
 }
 \keyword{internal}

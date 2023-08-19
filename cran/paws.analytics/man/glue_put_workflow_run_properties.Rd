@@ -17,6 +17,6 @@ updated.}
 \description{
 Puts the specified workflow run properties for the given workflow run. If a property already exists for the specified run, then it overrides the value otherwise adds the property to existing properties.
 
-See \url{https://paws-r.github.io/docs/glue/put_workflow_run_properties.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_put_workflow_run_properties/} for full documentation.
 }
 \keyword{internal}

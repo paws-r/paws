@@ -4,22 +4,47 @@
 \alias{lexmodelsv2}
 \title{Amazon Lex Model Building V2}
 \usage{
-lexmodelsv2(config = list())
+lexmodelsv2(
+  config = list(),
+  credentials = list(),
+  endpoint = NULL,
+  region = NULL
+)
 }
 \arguments{
 \item{config}{Optional configuration of credentials, endpoint, and/or region.
 \itemize{
+\item{\strong{credentials}:} {\itemize{
+\item{\strong{creds}:} {\itemize{
 \item{\strong{access_key_id}:} {AWS access key ID}
 \item{\strong{secret_access_key}:} {AWS secret access key}
 \item{\strong{session_token}:} {AWS temporary session token}
+}}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e., \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
+\item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
 }}
+
+\item{credentials}{Optional credentials shorthand for the config parameter
+\itemize{
+\item{\strong{creds}:} {\itemize{
+\item{\strong{access_key_id}:} {AWS access key ID}
+\item{\strong{secret_access_key}:} {AWS secret access key}
+\item{\strong{session_token}:} {AWS temporary session token}
+}}
+\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
+
+\item{endpoint}{Optional shorthand for complete URL to use for the constructed client.}
+
+\item{region}{Optional shorthand for AWS Region used in instantiating the client.}
 }
 \value{
 A client for the service. You can call the service's operations using
@@ -48,8 +73,20 @@ Amazon Lex Model Building V2
     region = "string",
     close_connection = "logical",
     timeout = "numeric",
-    s3_force_path_style = "logical"
-  )
+    s3_force_path_style = "logical",
+    sts_regional_endpoint = "string"
+  ),
+  credentials = list(
+    creds = list(
+      access_key_id = "string",
+      secret_access_key = "string",
+      session_token = "string"
+    ),
+    profile = "string",
+    anonymous = "logical"
+  ),
+  endpoint = "string",
+  region = "string"
 )
 }\if{html}{\out{</div>}}
 }
@@ -71,6 +108,7 @@ Amazon Lex Model Building V2
 \link[=lexmodelsv2_create_resource_policy_statement]{create_resource_policy_statement} \tab Adds a new resource policy statement to a bot or bot alias\cr
 \link[=lexmodelsv2_create_slot]{create_slot} \tab Creates a slot in an intent\cr
 \link[=lexmodelsv2_create_slot_type]{create_slot_type} \tab Creates a custom slot type\cr
+\link[=lexmodelsv2_create_test_set_discrepancy_report]{create_test_set_discrepancy_report} \tab Create a report that describes the differences between the bot and the test set\cr
 \link[=lexmodelsv2_create_upload_url]{create_upload_url} \tab Gets a pre-signed S3 write URL that you use to upload the zip archive when importing a bot or a bot locale\cr
 \link[=lexmodelsv2_delete_bot]{delete_bot} \tab Deletes all versions of a bot, including the Draft version\cr
 \link[=lexmodelsv2_delete_bot_alias]{delete_bot_alias} \tab Deletes the specified bot alias\cr
@@ -84,6 +122,7 @@ Amazon Lex Model Building V2
 \link[=lexmodelsv2_delete_resource_policy_statement]{delete_resource_policy_statement} \tab Deletes a policy statement from a resource policy\cr
 \link[=lexmodelsv2_delete_slot]{delete_slot} \tab Deletes the specified slot from an intent\cr
 \link[=lexmodelsv2_delete_slot_type]{delete_slot_type} \tab Deletes a slot type from a bot locale\cr
+\link[=lexmodelsv2_delete_test_set]{delete_test_set} \tab The action to delete the selected test set\cr
 \link[=lexmodelsv2_delete_utterances]{delete_utterances} \tab Deletes stored utterances\cr
 \link[=lexmodelsv2_describe_bot]{describe_bot} \tab Provides metadata information about a bot\cr
 \link[=lexmodelsv2_describe_bot_alias]{describe_bot_alias} \tab Get information about a specific bot alias\cr
@@ -97,6 +136,11 @@ Amazon Lex Model Building V2
 \link[=lexmodelsv2_describe_resource_policy]{describe_resource_policy} \tab Gets the resource policy and policy revision for a bot or bot alias\cr
 \link[=lexmodelsv2_describe_slot]{describe_slot} \tab Gets metadata information about a slot\cr
 \link[=lexmodelsv2_describe_slot_type]{describe_slot_type} \tab Gets metadata information about a slot type\cr
+\link[=lexmodelsv2_describe_test_execution]{describe_test_execution} \tab Gets metadata information about the test execution\cr
+\link[=lexmodelsv2_describe_test_set]{describe_test_set} \tab Gets metadata information about the test set\cr
+\link[=lexmodelsv2_describe_test_set_discrepancy_report]{describe_test_set_discrepancy_report} \tab Gets metadata information about the test set discrepancy report\cr
+\link[=lexmodelsv2_describe_test_set_generation]{describe_test_set_generation} \tab Gets metadata information about the test set generation\cr
+\link[=lexmodelsv2_get_test_execution_artifacts_url]{get_test_execution_artifacts_url} \tab The pre-signed Amazon S3 URL to download the test execution result artifacts\cr
 \link[=lexmodelsv2_list_aggregated_utterances]{list_aggregated_utterances} \tab Provides a list of utterances that users have sent to the bot\cr
 \link[=lexmodelsv2_list_bot_aliases]{list_bot_aliases} \tab Gets a list of aliases for the specified bot\cr
 \link[=lexmodelsv2_list_bot_locales]{list_bot_locales} \tab Gets a list of locales for the specified bot\cr
@@ -108,14 +152,27 @@ Amazon Lex Model Building V2
 \link[=lexmodelsv2_list_custom_vocabulary_items]{list_custom_vocabulary_items} \tab Paginated list of custom vocabulary items for a given bot locale's custom vocabulary\cr
 \link[=lexmodelsv2_list_exports]{list_exports} \tab Lists the exports for a bot, bot locale, or custom vocabulary\cr
 \link[=lexmodelsv2_list_imports]{list_imports} \tab Lists the imports for a bot, bot locale, or custom vocabulary\cr
+\link[=lexmodelsv2_list_intent_metrics]{list_intent_metrics} \tab Retrieves summary metrics for the intents in your bot\cr
+\link[=lexmodelsv2_list_intent_paths]{list_intent_paths} \tab Retrieves summary statistics for a path of intents that users take over sessions with your bot\cr
 \link[=lexmodelsv2_list_intents]{list_intents} \tab Get a list of intents that meet the specified criteria\cr
+\link[=lexmodelsv2_list_intent_stage_metrics]{list_intent_stage_metrics} \tab Retrieves summary metrics for the stages within intents in your bot\cr
 \link[=lexmodelsv2_list_recommended_intents]{list_recommended_intents} \tab Gets a list of recommended intents provided by the bot recommendation that you can use in your bot\cr
+\link[=lexmodelsv2_list_session_analytics_data]{list_session_analytics_data} \tab Retrieves a list of metadata for individual user sessions with your bot\cr
+\link[=lexmodelsv2_list_session_metrics]{list_session_metrics} \tab Retrieves summary metrics for the user sessions with your bot\cr
 \link[=lexmodelsv2_list_slots]{list_slots} \tab Gets a list of slots that match the specified criteria\cr
 \link[=lexmodelsv2_list_slot_types]{list_slot_types} \tab Gets a list of slot types that match the specified criteria\cr
 \link[=lexmodelsv2_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of tags associated with a resource\cr
+\link[=lexmodelsv2_list_test_execution_result_items]{list_test_execution_result_items} \tab Gets a list of test execution result items\cr
+\link[=lexmodelsv2_list_test_executions]{list_test_executions} \tab The list of test set executions\cr
+\link[=lexmodelsv2_list_test_set_records]{list_test_set_records} \tab The list of test set records\cr
+\link[=lexmodelsv2_list_test_sets]{list_test_sets} \tab The list of the test sets\cr
+\link[=lexmodelsv2_list_utterance_analytics_data]{list_utterance_analytics_data} \tab To use this API operation, your IAM role must have permissions to perform the ListAggregatedUtterances operation, which provides access to utterance-related analytics\cr
+\link[=lexmodelsv2_list_utterance_metrics]{list_utterance_metrics} \tab To use this API operation, your IAM role must have permissions to perform the ListAggregatedUtterances operation, which provides access to utterance-related analytics\cr
 \link[=lexmodelsv2_search_associated_transcripts]{search_associated_transcripts} \tab Search for associated transcripts that meet the specified criteria\cr
 \link[=lexmodelsv2_start_bot_recommendation]{start_bot_recommendation} \tab Use this to provide your transcript data, and to start the bot recommendation process\cr
 \link[=lexmodelsv2_start_import]{start_import} \tab Starts importing a bot, bot locale, or custom vocabulary from a zip archive that you uploaded to an S3 bucket\cr
+\link[=lexmodelsv2_start_test_execution]{start_test_execution} \tab The action to start test set execution\cr
+\link[=lexmodelsv2_start_test_set_generation]{start_test_set_generation} \tab The action to start the generation of test set\cr
 \link[=lexmodelsv2_stop_bot_recommendation]{stop_bot_recommendation} \tab Stop an already running Bot Recommendation request\cr
 \link[=lexmodelsv2_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 \link[=lexmodelsv2_untag_resource]{untag_resource} \tab Removes tags from a bot, bot alias, or bot channel\cr
@@ -127,7 +184,8 @@ Amazon Lex Model Building V2
 \link[=lexmodelsv2_update_intent]{update_intent} \tab Updates the settings for an intent\cr
 \link[=lexmodelsv2_update_resource_policy]{update_resource_policy} \tab Replaces the existing resource policy for a bot or bot alias with a new one\cr
 \link[=lexmodelsv2_update_slot]{update_slot} \tab Updates the settings for a slot\cr
-\link[=lexmodelsv2_update_slot_type]{update_slot_type} \tab Updates the configuration of an existing slot type
+\link[=lexmodelsv2_update_slot_type]{update_slot_type} \tab Updates the configuration of an existing slot type\cr
+\link[=lexmodelsv2_update_test_set]{update_test_set} \tab The action to update the test set
 }
 }
 

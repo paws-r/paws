@@ -14,6 +14,6 @@ glue_get_crawlers(MaxResults = NULL, NextToken = NULL)
 \description{
 Retrieves metadata for all crawlers defined in the customer account.
 
-See \url{https://paws-r.github.io/docs/glue/get_crawlers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_get_crawlers/} for full documentation.
 }
 \keyword{internal}

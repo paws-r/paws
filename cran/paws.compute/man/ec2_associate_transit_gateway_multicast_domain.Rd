@@ -29,6 +29,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Associates the specified subnets and transit gateway attachments with the specified transit gateway multicast domain.
 
-See \url{https://paws-r.github.io/docs/ec2/associate_transit_gateway_multicast_domain.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_associate_transit_gateway_multicast_domain/} for full documentation.
 }
 \keyword{internal}

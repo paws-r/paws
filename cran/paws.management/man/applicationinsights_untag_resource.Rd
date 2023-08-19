@@ -21,6 +21,6 @@ an ampersand.}
 \description{
 Remove one or more tags (keys and values) from a specified application.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_untag_resource/} for full documentation.
 }
 \keyword{internal}

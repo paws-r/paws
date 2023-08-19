@@ -13,6 +13,6 @@ Currently this must be an ARN.}
 \description{
 Gets the specified room.
 
-See \url{https://paws-r.github.io/docs/ivschat/get_room.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ivschat_get_room/} for full documentation.
 }
 \keyword{internal}

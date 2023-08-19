@@ -230,6 +230,6 @@ continues from the end of the items returned by the previous request.}
 \description{
 Describes the specified instances or all instances.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_instances/} for full documentation.
 }
 \keyword{internal}

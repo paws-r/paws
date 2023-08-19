@@ -2,7 +2,8 @@
 % Please edit documentation in R/emrserverless_operations.R
 \name{emrserverless_get_dashboard_for_job_run}
 \alias{emrserverless_get_dashboard_for_job_run}
-\title{Returns a URL to access the job run dashboard}
+\title{Creates and returns a URL that you can use to access the application UIs
+for a job run}
 \usage{
 emrserverless_get_dashboard_for_job_run(applicationId, jobRunId)
 }
@@ -12,8 +13,8 @@ emrserverless_get_dashboard_for_job_run(applicationId, jobRunId)
 \item{jobRunId}{[required] The ID of the job run.}
 }
 \description{
-Returns a URL to access the job run dashboard. The generated URL is valid for one hour, after which you must invoke the API again to generate a new URL.
+Creates and returns a URL that you can use to access the application UIs for a job run.
 
-See \url{https://paws-r.github.io/docs/emrserverless/get_dashboard_for_job_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/emrserverless_get_dashboard_for_job_run/} for full documentation.
 }
 \keyword{internal}

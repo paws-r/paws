@@ -39,6 +39,6 @@ bucket.}
 \description{
 Updates an existing Amazon Lightsail bucket.
 
-See \url{https://paws-r.github.io/docs/lightsail/update_bucket.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_update_bucket/} for full documentation.
 }
 \keyword{internal}

@@ -34,6 +34,6 @@ certificates.}
 \description{
 Updates the specified Directory Config object in AppStream 2.0. This object includes the configuration information required to join fleets and image builders to Microsoft Active Directory domains.
 
-See \url{https://paws-r.github.io/docs/appstream/update_directory_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_update_directory_config/} for full documentation.
 }
 \keyword{internal}

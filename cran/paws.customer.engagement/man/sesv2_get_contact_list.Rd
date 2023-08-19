@@ -12,6 +12,6 @@ sesv2_get_contact_list(ContactListName)
 \description{
 Returns contact list metadata. It does not return any information about the contacts present in the list.
 
-See \url{https://paws-r.github.io/docs/sesv2/get_contact_list.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sesv2_get_contact_list/} for full documentation.
 }
 \keyword{internal}

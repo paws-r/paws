@@ -33,6 +33,6 @@ records beyond the marker, up to the value specified by \code{MaxRecords}.}
 \description{
 Returns a list of \code{DBSecurityGroup} descriptions. If a \code{DBSecurityGroupName} is specified, the list will contain only the descriptions of the specified DB security group.
 
-See \url{https://paws-r.github.io/docs/rds/describe_db_security_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_db_security_groups/} for full documentation.
 }
 \keyword{internal}

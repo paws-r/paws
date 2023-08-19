@@ -32,6 +32,6 @@ extension version when it is registered.}
 \description{
 Marks an extension or extension version as \code{DEPRECATED} in the CloudFormation registry, removing it from active use. Deprecated extensions or extension versions cannot be used in CloudFormation operations.
 
-See \url{https://paws-r.github.io/docs/cloudformation/deregister_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_deregister_type/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ rekognition_describe_stream_processor(Name)
 \description{
 Provides information about a stream processor created by \code{\link[=rekognition_create_stream_processor]{create_stream_processor}}. You can get information about the input and output streams, the input parameters for the face recognition being performed, and the current status of the stream processor.
 
-See \url{https://paws-r.github.io/docs/rekognition/describe_stream_processor.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_describe_stream_processor/} for full documentation.
 }
 \keyword{internal}

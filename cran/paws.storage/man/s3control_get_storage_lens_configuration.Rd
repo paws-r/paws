@@ -14,6 +14,6 @@ s3control_get_storage_lens_configuration(ConfigId, AccountId)
 \description{
 Gets the Amazon S3 Storage Lens configuration. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens.html}{Assessing your storage activity and usage with Amazon S3 Storage Lens} in the \emph{Amazon S3 User Guide}. For a complete list of S3 Storage Lens metrics, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage_lens_metrics_glossary.html}{S3 Storage Lens metrics glossary} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3control/get_storage_lens_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_get_storage_lens_configuration/} for full documentation.
 }
 \keyword{internal}

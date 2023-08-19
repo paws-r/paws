@@ -14,6 +14,6 @@ apigatewaymanagementapi_post_to_connection(Data, ConnectionId)
 \description{
 Sends the provided data to the specified connection.
 
-See \url{https://paws-r.github.io/docs/apigatewaymanagementapi/post_to_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigatewaymanagementapi_post_to_connection/} for full documentation.
 }
 \keyword{internal}

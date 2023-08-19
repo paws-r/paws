@@ -49,6 +49,6 @@ in the \emph{Amazon RDS User Guide.}}
 \description{
 Updates a manual DB snapshot with a new engine version. The snapshot can be encrypted or unencrypted, but not shared or public.
 
-See \url{https://paws-r.github.io/docs/rds/modify_db_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_modify_db_snapshot/} for full documentation.
 }
 \keyword{internal}

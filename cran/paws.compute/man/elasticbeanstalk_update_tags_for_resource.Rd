@@ -28,6 +28,6 @@ Specify at least one of these parameters: \code{TagsToAdd}, \code{TagsToRemove}.
 \description{
 Update the list of tags applied to an AWS Elastic Beanstalk resource. Two lists can be passed: \code{TagsToAdd} for tags to add or update, and \code{TagsToRemove}.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/update_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_update_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

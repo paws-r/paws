@@ -24,6 +24,6 @@ Services administrator credentials to access the API.}
 \description{
 Changes the status of the document version to ACTIVE.
 
-See \url{https://paws-r.github.io/docs/workdocs/update_document_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workdocs_update_document_version/} for full documentation.
 }
 \keyword{internal}

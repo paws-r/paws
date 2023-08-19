@@ -30,6 +30,6 @@ The following is the format of the ARN:
 \description{
 Returns the projected metrics of Amazon ECS service recommendations.
 
-See \url{https://paws-r.github.io/docs/computeoptimizer/get_ecs_service_recommendation_projected_metrics.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/computeoptimizer_get_ecs_service_recommendation_projected_metrics/} for full documentation.
 }
 \keyword{internal}

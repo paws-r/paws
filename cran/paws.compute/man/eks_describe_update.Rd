@@ -22,6 +22,6 @@ parameter is required if the update is a node group update.}
 \description{
 Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group or Amazon EKS add-on.
 
-See \url{https://paws-r.github.io/docs/eks/describe_update.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_describe_update/} for full documentation.
 }
 \keyword{internal}

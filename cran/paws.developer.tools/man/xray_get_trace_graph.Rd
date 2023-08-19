@@ -14,6 +14,6 @@ xray_get_trace_graph(TraceIds, NextToken = NULL)
 \description{
 Retrieves a service graph for one or more specific trace IDs.
 
-See \url{https://paws-r.github.io/docs/xray/get_trace_graph.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/xray_get_trace_graph/} for full documentation.
 }
 \keyword{internal}

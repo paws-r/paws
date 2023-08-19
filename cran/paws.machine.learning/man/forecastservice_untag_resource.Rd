@@ -15,6 +15,6 @@ list the tags.}
 \description{
 Deletes the specified tags from a resource.
 
-See \url{https://paws-r.github.io/docs/forecastservice/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_untag_resource/} for full documentation.
 }
 \keyword{internal}

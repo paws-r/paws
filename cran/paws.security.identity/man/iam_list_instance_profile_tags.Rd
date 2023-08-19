@@ -35,6 +35,6 @@ subsequent call that tells the service where to continue from.}
 \description{
 Lists the tags that are attached to the specified IAM instance profile. The returned list of tags is sorted by tag key. For more information about tagging, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_tags.html}{Tagging IAM resources} in the \emph{IAM User Guide}.
 
-See \url{https://paws-r.github.io/docs/iam/list_instance_profile_tags.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_instance_profile_tags/} for full documentation.
 }
 \keyword{internal}

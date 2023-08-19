@@ -46,6 +46,6 @@ different account, the request fails with the HTTP status code
 \description{
 Creates a replication configuration or replaces an existing one. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/replication.html}{Replication} in the \emph{Amazon S3 User Guide}.
 
-See \url{https://paws-r.github.io/docs/s3/put_bucket_replication.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_put_bucket_replication/} for full documentation.
 }
 \keyword{internal}

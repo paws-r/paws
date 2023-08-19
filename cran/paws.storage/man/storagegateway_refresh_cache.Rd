@@ -27,6 +27,6 @@ Valid Values: \code{true} | \code{false}}
 \description{
 Refreshes the cached inventory of objects for the specified file share. This operation finds objects in the Amazon S3 bucket that were added, removed, or replaced since the gateway last listed the bucket's contents and cached the results. This operation does not import files into the S3 File Gateway cache storage. It only updates the cached inventory to reflect changes in the inventory of the objects in the S3 bucket. This operation is only supported in the S3 File Gateway types.
 
-See \url{https://paws-r.github.io/docs/storagegateway/refresh_cache.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_refresh_cache/} for full documentation.
 }
 \keyword{internal}

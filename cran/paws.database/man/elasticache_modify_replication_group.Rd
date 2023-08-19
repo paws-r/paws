@@ -221,6 +221,6 @@ and set the cluster mode to Enabled.}
 \description{
 Modifies the settings for a replication group.
 
-See \url{https://paws-r.github.io/docs/elasticache/modify_replication_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticache_modify_replication_group/} for full documentation.
 }
 \keyword{internal}

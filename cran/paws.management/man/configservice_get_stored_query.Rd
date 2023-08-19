@@ -12,6 +12,6 @@ configservice_get_stored_query(QueryName)
 \description{
 Returns the details of a specific stored query.
 
-See \url{https://paws-r.github.io/docs/configservice/get_stored_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_get_stored_query/} for full documentation.
 }
 \keyword{internal}

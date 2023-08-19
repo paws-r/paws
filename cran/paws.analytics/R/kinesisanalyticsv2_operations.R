@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Adds an Amazon CloudWatch log stream to monitor application configuration errors.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_cloud_watch_logging_option.html](https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_cloud_watch_logging_option.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_cloud_watch_logging_option/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_cloud_watch_logging_option/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The Kinesis Data Analytics application name.
 #' @param CurrentApplicationVersionId The version ID of the Kinesis Data Analytics application. You must
@@ -52,7 +52,7 @@ kinesisanalyticsv2_add_application_cloud_watch_logging_option <- function(Applic
 #' @description
 #' Adds a streaming source to your SQL-based Kinesis Data Analytics application.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_input.html](https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_input.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_input/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_input/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of your existing application to which you want to add the
 #' streaming source.
@@ -88,7 +88,7 @@ kinesisanalyticsv2_add_application_input <- function(ApplicationName, CurrentApp
 #' @description
 #' Adds an InputProcessingConfiguration to a SQL-based Kinesis Data Analytics application. An input processor pre-processes records on the input stream before the application's SQL code executes. Currently, the only input processor available is [Amazon Lambda](https://docs.aws.amazon.com/lambda/).
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_input_processing_configuration.html](https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_input_processing_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_input_processing_configuration/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_input_processing_configuration/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to which you want to add the input
 #' processing configuration.
@@ -131,7 +131,7 @@ kinesisanalyticsv2_add_application_input_processing_configuration <- function(Ap
 #' @description
 #' Adds an external destination to your SQL-based Kinesis Data Analytics application.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_output.html](https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_output.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_output/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_output/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to which you want to add the output
 #' configuration.
@@ -173,7 +173,7 @@ kinesisanalyticsv2_add_application_output <- function(ApplicationName, CurrentAp
 #' @description
 #' Adds a reference data source to an existing SQL-based Kinesis Data Analytics application.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_reference_data_source.html](https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_reference_data_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_reference_data_source/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_reference_data_source/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of an existing application.
 #' @param CurrentApplicationVersionId &#91;required&#93; The version of the application for which you are adding the reference
@@ -212,7 +212,7 @@ kinesisanalyticsv2_add_application_reference_data_source <- function(Application
 #' @description
 #' Adds a Virtual Private Cloud (VPC) configuration to the application. Applications can use VPCs to store and access resources securely.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_vpc_configuration.html](https://paws-r.github.io/docs/kinesisanalyticsv2/add_application_vpc_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_vpc_configuration/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_add_application_vpc_configuration/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of an existing application.
 #' @param CurrentApplicationVersionId The version of the application to which you want to add the VPC
@@ -257,7 +257,7 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #' @description
 #' Creates a Kinesis Data Analytics application. For information about creating a Kinesis Data Analytics application, see [Creating an Application](https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html).
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/create_application.html](https://paws-r.github.io/docs/kinesisanalyticsv2/create_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_create_application/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_create_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of your application (for example, `sample-app`).
 #' @param ApplicationDescription A summary description of the application.
@@ -303,7 +303,7 @@ kinesisanalyticsv2_create_application <- function(ApplicationName, ApplicationDe
 #' @description
 #' Creates and returns a URL that you can use to connect to an application's extension.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/create_application_presigned_url.html](https://paws-r.github.io/docs/kinesisanalyticsv2/create_application_presigned_url.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_create_application_presigned_url/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_create_application_presigned_url/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application.
 #' @param UrlType &#91;required&#93; The type of the extension for which to create and return a URL.
@@ -335,7 +335,7 @@ kinesisanalyticsv2_create_application_presigned_url <- function(ApplicationName,
 #' @description
 #' Creates a snapshot of the application's state data.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/create_application_snapshot.html](https://paws-r.github.io/docs/kinesisanalyticsv2/create_application_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_create_application_snapshot/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_create_application_snapshot/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of an existing application
 #' @param SnapshotName &#91;required&#93; An identifier for the application snapshot.
@@ -365,7 +365,7 @@ kinesisanalyticsv2_create_application_snapshot <- function(ApplicationName, Snap
 #' @description
 #' Deletes the specified application. Kinesis Data Analytics halts application execution and deletes the application.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application.html](https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to delete.
 #' @param CreateTimestamp &#91;required&#93; Use the
@@ -398,7 +398,7 @@ kinesisanalyticsv2_delete_application <- function(ApplicationName, CreateTimesta
 #' @description
 #' Deletes an Amazon CloudWatch log stream from an Kinesis Data Analytics application.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_cloud_watch_logging_option.html](https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_cloud_watch_logging_option.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_cloud_watch_logging_option/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_cloud_watch_logging_option/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The application name.
 #' @param CurrentApplicationVersionId The version ID of the application. You must provide the
@@ -443,7 +443,7 @@ kinesisanalyticsv2_delete_application_cloud_watch_logging_option <- function(App
 #' @description
 #' Deletes an InputProcessingConfiguration from an input.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_input_processing_configuration.html](https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_input_processing_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_input_processing_configuration/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_input_processing_configuration/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application.
 #' @param CurrentApplicationVersionId &#91;required&#93; The application version. You can use the
@@ -483,7 +483,7 @@ kinesisanalyticsv2_delete_application_input_processing_configuration <- function
 #' @description
 #' Deletes the output destination configuration from your SQL-based Kinesis Data Analytics application's configuration. Kinesis Data Analytics will no longer write data from the corresponding in-application stream to the external output destination.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_output.html](https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_output.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_output/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_output/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The application name.
 #' @param CurrentApplicationVersionId &#91;required&#93; The application version. You can use the
@@ -527,7 +527,7 @@ kinesisanalyticsv2_delete_application_output <- function(ApplicationName, Curren
 #' @description
 #' Deletes a reference data source configuration from the specified SQL-based Kinesis Data Analytics application's configuration.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_reference_data_source.html](https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_reference_data_source.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_reference_data_source/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_reference_data_source/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of an existing application.
 #' @param CurrentApplicationVersionId &#91;required&#93; The current application version. You can use the
@@ -567,7 +567,7 @@ kinesisanalyticsv2_delete_application_reference_data_source <- function(Applicat
 #' @description
 #' Deletes a snapshot of application state.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_snapshot.html](https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_snapshot/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_snapshot/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of an existing application.
 #' @param SnapshotName &#91;required&#93; The identifier for the snapshot delete.
@@ -599,7 +599,7 @@ kinesisanalyticsv2_delete_application_snapshot <- function(ApplicationName, Snap
 #' @description
 #' Removes a VPC configuration from a Kinesis Data Analytics application.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_vpc_configuration.html](https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_vpc_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_vpc_configuration/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_vpc_configuration/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of an existing application.
 #' @param CurrentApplicationVersionId The current application version ID. You must provide the
@@ -641,7 +641,7 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
 #' @description
 #' Returns information about a specific Kinesis Data Analytics application.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/describe_application.html](https://paws-r.github.io/docs/kinesisanalyticsv2/describe_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application.
 #' @param IncludeAdditionalDetails Displays verbose information about a Kinesis Data Analytics application,
@@ -672,7 +672,7 @@ kinesisanalyticsv2_describe_application <- function(ApplicationName, IncludeAddi
 #' @description
 #' Returns information about a snapshot of application state data.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/describe_application_snapshot.html](https://paws-r.github.io/docs/kinesisanalyticsv2/describe_application_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application_snapshot/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application_snapshot/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of an existing application.
 #' @param SnapshotName &#91;required&#93; The identifier of an application snapshot. You can retrieve this value
@@ -704,7 +704,7 @@ kinesisanalyticsv2_describe_application_snapshot <- function(ApplicationName, Sn
 #' @description
 #' Provides a detailed description of a specified version of the application. To see a list of all the versions of an application, invoke the [`list_application_versions`][kinesisanalyticsv2_list_application_versions] operation.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/describe_application_version.html](https://paws-r.github.io/docs/kinesisanalyticsv2/describe_application_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application_version/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_describe_application_version/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application for which you want to get the version
 #' description.
@@ -739,7 +739,7 @@ kinesisanalyticsv2_describe_application_version <- function(ApplicationName, App
 #' @description
 #' Infers a schema for a SQL-based Kinesis Data Analytics application by evaluating sample records on the specified streaming source (Kinesis data stream or Kinesis Data Firehose delivery stream) or Amazon S3 object. In the response, the operation returns the inferred schema and also the sample records that the operation used to infer the schema.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/discover_input_schema.html](https://paws-r.github.io/docs/kinesisanalyticsv2/discover_input_schema.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_discover_input_schema/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_discover_input_schema/) for full documentation.
 #'
 #' @param ResourceARN The Amazon Resource Name (ARN) of the streaming source.
 #' @param ServiceExecutionRole &#91;required&#93; The ARN of the role that is used to access the streaming source.
@@ -775,7 +775,7 @@ kinesisanalyticsv2_discover_input_schema <- function(ResourceARN = NULL, Service
 #' @description
 #' Lists information about the current application snapshots.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/list_application_snapshots.html](https://paws-r.github.io/docs/kinesisanalyticsv2/list_application_snapshots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_application_snapshots/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_application_snapshots/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of an existing application.
 #' @param Limit The maximum number of application snapshots to list.
@@ -810,7 +810,7 @@ kinesisanalyticsv2_list_application_snapshots <- function(ApplicationName, Limit
 #' @description
 #' Lists all the versions for the specified application, including versions that were rolled back. The response also includes a summary of the configuration associated with each version.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/list_application_versions.html](https://paws-r.github.io/docs/kinesisanalyticsv2/list_application_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_application_versions/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_application_versions/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application for which you want to list all versions.
 #' @param Limit The maximum number of versions to list in this invocation of the
@@ -846,7 +846,7 @@ kinesisanalyticsv2_list_application_versions <- function(ApplicationName, Limit 
 #' @description
 #' Returns a list of Kinesis Data Analytics applications in your account. For each application, the response includes the application name, Amazon Resource Name (ARN), and status.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/list_applications.html](https://paws-r.github.io/docs/kinesisanalyticsv2/list_applications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_applications/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_applications/) for full documentation.
 #'
 #' @param Limit The maximum number of applications to list.
 #' @param NextToken If a previous command returned a pagination token, pass it into this
@@ -879,7 +879,7 @@ kinesisanalyticsv2_list_applications <- function(Limit = NULL, NextToken = NULL)
 #' @description
 #' Retrieves the list of key-value tags assigned to the application. For more information, see [Using Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/list_tags_for_resource.html](https://paws-r.github.io/docs/kinesisanalyticsv2/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the application for which to retrieve tags.
 #'
@@ -908,7 +908,7 @@ kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
 #' @description
 #' Reverts the application to the previous running version. You can roll back an application if you suspect it is stuck in a transient status.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/rollback_application.html](https://paws-r.github.io/docs/kinesisanalyticsv2/rollback_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_rollback_application/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_rollback_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application.
 #' @param CurrentApplicationVersionId &#91;required&#93; The current application version ID. You can retrieve the application
@@ -940,7 +940,7 @@ kinesisanalyticsv2_rollback_application <- function(ApplicationName, CurrentAppl
 #' @description
 #' Starts the specified Kinesis Data Analytics application. After creating an application, you must exclusively call this operation to start your application.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/start_application.html](https://paws-r.github.io/docs/kinesisanalyticsv2/start_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_start_application/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_start_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application.
 #' @param RunConfiguration Identifies the run configuration (start parameters) of a Kinesis Data
@@ -971,7 +971,7 @@ kinesisanalyticsv2_start_application <- function(ApplicationName, RunConfigurati
 #' @description
 #' Stops the application from processing data. You can stop an application only if it is in the running status, unless you set the `Force` parameter to `true`.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/stop_application.html](https://paws-r.github.io/docs/kinesisanalyticsv2/stop_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_stop_application/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_stop_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the running application to stop.
 #' @param Force Set to `true` to force the application to stop. If you set `Force` to
@@ -1015,7 +1015,7 @@ kinesisanalyticsv2_stop_application <- function(ApplicationName, Force = NULL) {
 #' @description
 #' Adds one or more key-value tags to a Kinesis Data Analytics application. Note that the maximum number of application tags includes system tags. The maximum number of user-defined application tags is 50. For more information, see [Using Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/tag_resource.html](https://paws-r.github.io/docs/kinesisanalyticsv2/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_tag_resource/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the application to assign the tags.
 #' @param Tags &#91;required&#93; The key-value tags to assign to the application.
@@ -1045,7 +1045,7 @@ kinesisanalyticsv2_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Removes one or more tags from a Kinesis Data Analytics application. For more information, see [Using Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/untag_resource.html](https://paws-r.github.io/docs/kinesisanalyticsv2/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_untag_resource/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The ARN of the Kinesis Data Analytics application from which to remove
 #' the tags.
@@ -1076,7 +1076,7 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Updates an existing Kinesis Data Analytics application. Using this operation, you can update application code, input configuration, and output configuration.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/update_application.html](https://paws-r.github.io/docs/kinesisanalyticsv2/update_application.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_update_application/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_update_application/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application to update.
 #' @param CurrentApplicationVersionId The current application version ID. You must provide the
@@ -1125,7 +1125,7 @@ kinesisanalyticsv2_update_application <- function(ApplicationName, CurrentApplic
 #' @description
 #' Updates the maintenance configuration of the Kinesis Data Analytics application.
 #'
-#' See [https://paws-r.github.io/docs/kinesisanalyticsv2/update_application_maintenance_configuration.html](https://paws-r.github.io/docs/kinesisanalyticsv2/update_application_maintenance_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_update_application_maintenance_configuration/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_update_application_maintenance_configuration/) for full documentation.
 #'
 #' @param ApplicationName &#91;required&#93; The name of the application for which you want to update the maintenance
 #' configuration.

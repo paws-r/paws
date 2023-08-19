@@ -36,6 +36,6 @@ follows RFC 2616. An example header is Content-Range:bytes 0-4194303/*.}
 \description{
 This operation uploads a part of an archive. You can upload archive parts in any order. You can also upload them in parallel. You can upload up to 10,000 parts for a multipart upload.
 
-See \url{https://paws-r.github.io/docs/glacier/upload_multipart_part.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_upload_multipart_part/} for full documentation.
 }
 \keyword{internal}

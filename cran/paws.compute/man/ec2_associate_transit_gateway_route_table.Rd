@@ -24,6 +24,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Associates the specified attachment with the specified transit gateway route table. You can associate only one route table with an attachment.
 
-See \url{https://paws-r.github.io/docs/ec2/associate_transit_gateway_route_table.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_associate_transit_gateway_route_table/} for full documentation.
 }
 \keyword{internal}

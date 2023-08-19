@@ -15,6 +15,6 @@ Analytics application.}
 \description{
 Starts the specified Kinesis Data Analytics application. After creating an application, you must exclusively call this operation to start your application.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/start_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_start_application/} for full documentation.
 }
 \keyword{internal}

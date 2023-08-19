@@ -25,6 +25,6 @@ special meaning within that tool.}
 \description{
 Changes the password of the IAM user who is calling this operation. This operation can be performed using the CLI, the Amazon Web Services API, or the \strong{My Security Credentials} page in the Amazon Web Services Management Console. The Amazon Web Services account root user password is not affected by this operation.
 
-See \url{https://paws-r.github.io/docs/iam/change_password.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_change_password/} for full documentation.
 }
 \keyword{internal}

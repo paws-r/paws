@@ -16,6 +16,6 @@ token in the next request. Tokens expire after 24 hours.}
 \description{
 Returns a list of datasets created using the \code{\link[=forecastservice_create_dataset]{create_dataset}} operation. For each dataset, a summary of its properties, including its Amazon Resource Name (ARN), is returned. To retrieve the complete set of properties, use the ARN with the \code{\link[=forecastservice_describe_dataset]{describe_dataset}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/list_datasets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_list_datasets/} for full documentation.
 }
 \keyword{internal}

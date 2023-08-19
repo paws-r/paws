@@ -10,7 +10,8 @@ kms_generate_data_key(
   NumberOfBytes = NULL,
   KeySpec = NULL,
   GrantTokens = NULL,
-  Recipient = NULL
+  Recipient = NULL,
+  DryRun = NULL
 )
 }
 \arguments{
@@ -100,10 +101,15 @@ the response is null or empty.
 For information about the interaction between KMS and Amazon Web
 Services Nitro Enclaves, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/services-nitro-enclaves.html}{How Amazon Web Services Nitro Enclaves uses KMS}
 in the \emph{Key Management Service Developer Guide}.}
+
+\item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
+
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html}{Testing your KMS API calls}
+in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Returns a unique symmetric data key for use outside of KMS. This operation returns a plaintext copy of the data key and a copy that is encrypted under a symmetric encryption KMS key that you specify. The bytes in the plaintext key are random; they are not related to the caller or the KMS key. You can use the plaintext key to encrypt your data outside of KMS and store the encrypted data key with the encrypted data.
 
-See \url{https://paws-r.github.io/docs/kms/generate_data_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_generate_data_key/} for full documentation.
 }
 \keyword{internal}

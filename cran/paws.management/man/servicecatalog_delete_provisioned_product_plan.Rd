@@ -25,6 +25,6 @@ product even if it cannot delete the underlying resources.}
 \description{
 Deletes the specified plan.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/delete_provisioned_product_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_delete_provisioned_product_plan/} for full documentation.
 }
 \keyword{internal}

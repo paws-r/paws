@@ -24,6 +24,6 @@ fsx_describe_storage_virtual_machines(
 \description{
 Describes one or more Amazon FSx for NetApp ONTAP storage virtual machines (SVMs).
 
-See \url{https://paws-r.github.io/docs/fsx/describe_storage_virtual_machines.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_describe_storage_virtual_machines/} for full documentation.
 }
 \keyword{internal}

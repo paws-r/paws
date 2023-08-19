@@ -8,7 +8,7 @@ NULL
 #' @description
 #' A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources, with the exception of global replication group. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see [Resource-level permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html).
 #'
-#' See [https://paws-r.github.io/docs/elasticache/add_tags_to_resource.html](https://paws-r.github.io/docs/elasticache/add_tags_to_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_add_tags_to_resource/](https://www.paws-r-sdk.com/docs/elasticache_add_tags_to_resource/) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon Resource Name (ARN) of the resource to which the tags are to
 #' be added, for example
@@ -47,7 +47,7 @@ elasticache_add_tags_to_resource <- function(ResourceName, Tags) {
 #' @description
 #' Allows network ingress to a cache security group. Applications using ElastiCache must be running on Amazon EC2, and Amazon EC2 security groups are used as the authorization mechanism.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/authorize_cache_security_group_ingress.html](https://paws-r.github.io/docs/elasticache/authorize_cache_security_group_ingress.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_authorize_cache_security_group_ingress/](https://www.paws-r-sdk.com/docs/elasticache_authorize_cache_security_group_ingress/) for full documentation.
 #'
 #' @param CacheSecurityGroupName &#91;required&#93; The cache security group that allows network ingress.
 #' @param EC2SecurityGroupName &#91;required&#93; The Amazon EC2 security group to be authorized for ingress to the cache
@@ -81,7 +81,7 @@ elasticache_authorize_cache_security_group_ingress <- function(CacheSecurityGrou
 #' @description
 #' Apply the service update. For more information on service updates and applying them, see [Applying Service Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/).
 #'
-#' See [https://paws-r.github.io/docs/elasticache/batch_apply_update_action.html](https://paws-r.github.io/docs/elasticache/batch_apply_update_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_batch_apply_update_action/](https://www.paws-r-sdk.com/docs/elasticache_batch_apply_update_action/) for full documentation.
 #'
 #' @param ReplicationGroupIds The replication group IDs
 #' @param CacheClusterIds The cache cluster IDs
@@ -112,7 +112,7 @@ elasticache_batch_apply_update_action <- function(ReplicationGroupIds = NULL, Ca
 #' @description
 #' Stop the service update. For more information on service updates and stopping them, see [Stopping Service Updates](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/).
 #'
-#' See [https://paws-r.github.io/docs/elasticache/batch_stop_update_action.html](https://paws-r.github.io/docs/elasticache/batch_stop_update_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_batch_stop_update_action/](https://www.paws-r-sdk.com/docs/elasticache_batch_stop_update_action/) for full documentation.
 #'
 #' @param ReplicationGroupIds The replication group IDs
 #' @param CacheClusterIds The cache cluster IDs
@@ -143,7 +143,7 @@ elasticache_batch_stop_update_action <- function(ReplicationGroupIds = NULL, Cac
 #' @description
 #' Complete the migration of data.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/complete_migration.html](https://paws-r.github.io/docs/elasticache/complete_migration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_complete_migration/](https://www.paws-r-sdk.com/docs/elasticache_complete_migration/) for full documentation.
 #'
 #' @param ReplicationGroupId &#91;required&#93; The ID of the replication group to which data is being migrated.
 #' @param Force Forces the migration to stop without ensuring that data is in sync. It
@@ -175,7 +175,7 @@ elasticache_complete_migration <- function(ReplicationGroupId, Force = NULL) {
 #' @description
 #' Makes a copy of an existing snapshot.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/copy_snapshot.html](https://paws-r.github.io/docs/elasticache/copy_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_copy_snapshot/](https://www.paws-r-sdk.com/docs/elasticache_copy_snapshot/) for full documentation.
 #'
 #' @param SourceSnapshotName &#91;required&#93; The name of an existing snapshot from which to make a copy.
 #' @param TargetSnapshotName &#91;required&#93; A name for the snapshot copy. ElastiCache does not permit overwriting a
@@ -222,7 +222,7 @@ elasticache_copy_snapshot <- function(SourceSnapshotName, TargetSnapshotName, Ta
 #' @description
 #' Creates a cluster. All nodes in the cluster run the same protocol-compliant cache engine software, either Memcached or Redis.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/create_cache_cluster.html](https://paws-r.github.io/docs/elasticache/create_cache_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_create_cache_cluster/](https://www.paws-r-sdk.com/docs/elasticache_create_cache_cluster/) for full documentation.
 #'
 #' @param CacheClusterId &#91;required&#93; The node group (shard) identifier. This parameter is stored as a
 #' lowercase string.
@@ -522,7 +522,7 @@ elasticache_create_cache_cluster <- function(CacheClusterId, ReplicationGroupId 
 #' @description
 #' Creates a new Amazon ElastiCache cache parameter group. An ElastiCache cache parameter group is a collection of parameters and their values that are applied to all of the nodes in any cluster or replication group using the CacheParameterGroup.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/create_cache_parameter_group.html](https://paws-r.github.io/docs/elasticache/create_cache_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_create_cache_parameter_group/](https://www.paws-r-sdk.com/docs/elasticache_create_cache_parameter_group/) for full documentation.
 #'
 #' @param CacheParameterGroupName &#91;required&#93; A user-specified name for the cache parameter group.
 #' @param CacheParameterGroupFamily &#91;required&#93; The name of the cache parameter group family that the cache parameter
@@ -560,7 +560,7 @@ elasticache_create_cache_parameter_group <- function(CacheParameterGroupName, Ca
 #' @description
 #' Creates a new cache security group. Use a cache security group to control access to one or more clusters.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/create_cache_security_group.html](https://paws-r.github.io/docs/elasticache/create_cache_security_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_create_cache_security_group/](https://www.paws-r-sdk.com/docs/elasticache_create_cache_security_group/) for full documentation.
 #'
 #' @param CacheSecurityGroupName &#91;required&#93; A name for the cache security group. This value is stored as a lowercase
 #' string.
@@ -598,7 +598,7 @@ elasticache_create_cache_security_group <- function(CacheSecurityGroupName, Desc
 #' @description
 #' Creates a new cache subnet group.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/create_cache_subnet_group.html](https://paws-r.github.io/docs/elasticache/create_cache_subnet_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_create_cache_subnet_group/](https://www.paws-r-sdk.com/docs/elasticache_create_cache_subnet_group/) for full documentation.
 #'
 #' @param CacheSubnetGroupName &#91;required&#93; A name for the cache subnet group. This value is stored as a lowercase
 #' string.
@@ -638,7 +638,7 @@ elasticache_create_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' @description
 #' Global Datastore for Redis offers fully managed, fast, reliable and secure cross-region replication. Using Global Datastore for Redis, you can create cross-region read replica clusters for ElastiCache for Redis to enable low-latency reads and disaster recovery across regions. For more information, see [Replication Across Regions Using Global Datastore](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Redis-Global-Datastore.html).
 #'
-#' See [https://paws-r.github.io/docs/elasticache/create_global_replication_group.html](https://paws-r.github.io/docs/elasticache/create_global_replication_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_create_global_replication_group/](https://www.paws-r-sdk.com/docs/elasticache_create_global_replication_group/) for full documentation.
 #'
 #' @param GlobalReplicationGroupIdSuffix &#91;required&#93; The suffix name of a Global datastore. Amazon ElastiCache automatically
 #' applies a prefix to the Global datastore ID when it is created. Each
@@ -682,7 +682,7 @@ elasticache_create_global_replication_group <- function(GlobalReplicationGroupId
 #' @description
 #' Creates a Redis (cluster mode disabled) or a Redis (cluster mode enabled) replication group.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/create_replication_group.html](https://paws-r.github.io/docs/elasticache/create_replication_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_create_replication_group/](https://www.paws-r-sdk.com/docs/elasticache_create_replication_group/) for full documentation.
 #'
 #' @param ReplicationGroupId &#91;required&#93; The replication group identifier. This parameter is stored as a
 #' lowercase string.
@@ -1081,7 +1081,7 @@ elasticache_create_replication_group <- function(ReplicationGroupId, Replication
 #' @description
 #' Creates a copy of an entire cluster or replication group at a specific moment in time.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/create_snapshot.html](https://paws-r.github.io/docs/elasticache/create_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_create_snapshot/](https://www.paws-r-sdk.com/docs/elasticache_create_snapshot/) for full documentation.
 #'
 #' @param ReplicationGroupId The identifier of an existing replication group. The snapshot is created
 #' from this replication group.
@@ -1117,7 +1117,7 @@ elasticache_create_snapshot <- function(ReplicationGroupId = NULL, CacheClusterI
 #' @description
 #' For Redis engine version 6.0 onwards: Creates a Redis user. For more information, see [Using Role Based Access Control (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
 #'
-#' See [https://paws-r.github.io/docs/elasticache/create_user.html](https://paws-r.github.io/docs/elasticache/create_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_create_user/](https://www.paws-r-sdk.com/docs/elasticache_create_user/) for full documentation.
 #'
 #' @param UserId &#91;required&#93; The ID of the user.
 #' @param UserName &#91;required&#93; The username of the user.
@@ -1155,7 +1155,7 @@ elasticache_create_user <- function(UserId, UserName, Engine, Passwords = NULL, 
 #' @description
 #' For Redis engine version 6.0 onwards: Creates a Redis user group. For more information, see [Using Role Based Access Control (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html)
 #'
-#' See [https://paws-r.github.io/docs/elasticache/create_user_group.html](https://paws-r.github.io/docs/elasticache/create_user_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_create_user_group/](https://www.paws-r-sdk.com/docs/elasticache_create_user_group/) for full documentation.
 #'
 #' @param UserGroupId &#91;required&#93; The ID of the user group.
 #' @param Engine &#91;required&#93; The current supported value is Redis.
@@ -1188,7 +1188,7 @@ elasticache_create_user_group <- function(UserGroupId, Engine, UserIds = NULL, T
 #' @description
 #' Decreases the number of node groups in a Global datastore
 #'
-#' See [https://paws-r.github.io/docs/elasticache/decrease_node_groups_in_global_replication_group.html](https://paws-r.github.io/docs/elasticache/decrease_node_groups_in_global_replication_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_decrease_node_groups_in_global_replication_group/](https://www.paws-r-sdk.com/docs/elasticache_decrease_node_groups_in_global_replication_group/) for full documentation.
 #'
 #' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global datastore
 #' @param NodeGroupCount &#91;required&#93; The number of node groups (shards) that results from the modification of
@@ -1234,7 +1234,7 @@ elasticache_decrease_node_groups_in_global_replication_group <- function(GlobalR
 #' @description
 #' Dynamically decreases the number of replicas in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group. This operation is performed with no cluster down time.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/decrease_replica_count.html](https://paws-r.github.io/docs/elasticache/decrease_replica_count.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_decrease_replica_count/](https://www.paws-r-sdk.com/docs/elasticache_decrease_replica_count/) for full documentation.
 #'
 #' @param ReplicationGroupId &#91;required&#93; The id of the replication group from which you want to remove replica
 #' nodes.
@@ -1288,7 +1288,7 @@ elasticache_decrease_replica_count <- function(ReplicationGroupId, NewReplicaCou
 #' @description
 #' Deletes a previously provisioned cluster. [`delete_cache_cluster`][elasticache_delete_cache_cluster] deletes all associated cache nodes, node endpoints and the cluster itself. When you receive a successful response from this operation, Amazon ElastiCache immediately begins deleting the cluster; you cannot cancel or revert this operation.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/delete_cache_cluster.html](https://paws-r.github.io/docs/elasticache/delete_cache_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_delete_cache_cluster/](https://www.paws-r-sdk.com/docs/elasticache_delete_cache_cluster/) for full documentation.
 #'
 #' @param CacheClusterId &#91;required&#93; The cluster identifier for the cluster to be deleted. This parameter is
 #' not case sensitive.
@@ -1321,7 +1321,7 @@ elasticache_delete_cache_cluster <- function(CacheClusterId, FinalSnapshotIdenti
 #' @description
 #' Deletes the specified cache parameter group. You cannot delete a cache parameter group if it is associated with any cache clusters. You cannot delete the default cache parameter groups in your account.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/delete_cache_parameter_group.html](https://paws-r.github.io/docs/elasticache/delete_cache_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_delete_cache_parameter_group/](https://www.paws-r-sdk.com/docs/elasticache_delete_cache_parameter_group/) for full documentation.
 #'
 #' @param CacheParameterGroupName &#91;required&#93; The name of the cache parameter group to delete.
 #' 
@@ -1353,7 +1353,7 @@ elasticache_delete_cache_parameter_group <- function(CacheParameterGroupName) {
 #' @description
 #' Deletes a cache security group.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/delete_cache_security_group.html](https://paws-r.github.io/docs/elasticache/delete_cache_security_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_delete_cache_security_group/](https://www.paws-r-sdk.com/docs/elasticache_delete_cache_security_group/) for full documentation.
 #'
 #' @param CacheSecurityGroupName &#91;required&#93; The name of the cache security group to delete.
 #' 
@@ -1384,7 +1384,7 @@ elasticache_delete_cache_security_group <- function(CacheSecurityGroupName) {
 #' @description
 #' Deletes a cache subnet group.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/delete_cache_subnet_group.html](https://paws-r.github.io/docs/elasticache/delete_cache_subnet_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_delete_cache_subnet_group/](https://www.paws-r-sdk.com/docs/elasticache_delete_cache_subnet_group/) for full documentation.
 #'
 #' @param CacheSubnetGroupName &#91;required&#93; The name of the cache subnet group to delete.
 #' 
@@ -1416,7 +1416,7 @@ elasticache_delete_cache_subnet_group <- function(CacheSubnetGroupName) {
 #' @description
 #' Deleting a Global datastore is a two-step process:
 #'
-#' See [https://paws-r.github.io/docs/elasticache/delete_global_replication_group.html](https://paws-r.github.io/docs/elasticache/delete_global_replication_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_delete_global_replication_group/](https://www.paws-r-sdk.com/docs/elasticache_delete_global_replication_group/) for full documentation.
 #'
 #' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global datastore
 #' @param RetainPrimaryReplicationGroup &#91;required&#93; The primary replication group is retained as a standalone replication
@@ -1447,7 +1447,7 @@ elasticache_delete_global_replication_group <- function(GlobalReplicationGroupId
 #' @description
 #' Deletes an existing replication group. By default, this operation deletes the entire replication group, including the primary/primaries and all of the read replicas. If the replication group has only one primary, you can optionally delete only the read replicas, while retaining the primary by setting `RetainPrimaryCluster=true`.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/delete_replication_group.html](https://paws-r.github.io/docs/elasticache/delete_replication_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_delete_replication_group/](https://www.paws-r-sdk.com/docs/elasticache_delete_replication_group/) for full documentation.
 #'
 #' @param ReplicationGroupId &#91;required&#93; The identifier for the cluster to be deleted. This parameter is not case
 #' sensitive.
@@ -1484,7 +1484,7 @@ elasticache_delete_replication_group <- function(ReplicationGroupId, RetainPrima
 #' @description
 #' Deletes an existing snapshot. When you receive a successful response from this operation, ElastiCache immediately begins deleting the snapshot; you cannot cancel or revert this operation.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/delete_snapshot.html](https://paws-r.github.io/docs/elasticache/delete_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_delete_snapshot/](https://www.paws-r-sdk.com/docs/elasticache_delete_snapshot/) for full documentation.
 #'
 #' @param SnapshotName &#91;required&#93; The name of the snapshot to be deleted.
 #'
@@ -1513,7 +1513,7 @@ elasticache_delete_snapshot <- function(SnapshotName) {
 #' @description
 #' For Redis engine version 6.0 onwards: Deletes a user. The user will be removed from all user groups and in turn removed from all replication groups. For more information, see [Using Role Based Access Control (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
 #'
-#' See [https://paws-r.github.io/docs/elasticache/delete_user.html](https://paws-r.github.io/docs/elasticache/delete_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_delete_user/](https://www.paws-r-sdk.com/docs/elasticache_delete_user/) for full documentation.
 #'
 #' @param UserId &#91;required&#93; The ID of the user.
 #'
@@ -1542,7 +1542,7 @@ elasticache_delete_user <- function(UserId) {
 #' @description
 #' For Redis engine version 6.0 onwards: Deletes a user group. The user group must first be disassociated from the replication group before it can be deleted. For more information, see [Using Role Based Access Control (RBAC)](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.RBAC.html).
 #'
-#' See [https://paws-r.github.io/docs/elasticache/delete_user_group.html](https://paws-r.github.io/docs/elasticache/delete_user_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_delete_user_group/](https://www.paws-r-sdk.com/docs/elasticache_delete_user_group/) for full documentation.
 #'
 #' @param UserGroupId &#91;required&#93; The ID of the user group.
 #'
@@ -1573,7 +1573,7 @@ elasticache_delete_user_group <- function(UserGroupId) {
 #' @description
 #' Returns information about all provisioned clusters if no cluster identifier is specified, or about a specific cache cluster if a cluster identifier is supplied.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_cache_clusters.html](https://paws-r.github.io/docs/elasticache/describe_cache_clusters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_cache_clusters/](https://www.paws-r-sdk.com/docs/elasticache_describe_cache_clusters/) for full documentation.
 #'
 #' @param CacheClusterId The user-supplied cluster identifier. If this parameter is specified,
 #' only information about that specific cluster is returned. This parameter
@@ -1604,7 +1604,7 @@ elasticache_describe_cache_clusters <- function(CacheClusterId = NULL, MaxRecord
     name = "DescribeCacheClusters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheClusters")
   )
   input <- .elasticache$describe_cache_clusters_input(CacheClusterId = CacheClusterId, MaxRecords = MaxRecords, Marker = Marker, ShowCacheNodeInfo = ShowCacheNodeInfo, ShowCacheClustersNotInReplicationGroups = ShowCacheClustersNotInReplicationGroups)
   output <- .elasticache$describe_cache_clusters_output()
@@ -1621,7 +1621,7 @@ elasticache_describe_cache_clusters <- function(CacheClusterId = NULL, MaxRecord
 #' @description
 #' Returns a list of the available cache engines and their versions.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_cache_engine_versions.html](https://paws-r.github.io/docs/elasticache/describe_cache_engine_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_cache_engine_versions/](https://www.paws-r-sdk.com/docs/elasticache_describe_cache_engine_versions/) for full documentation.
 #'
 #' @param Engine The cache engine to return. Valid values: `memcached` | `redis`
 #' @param EngineVersion The cache engine version to return.
@@ -1663,7 +1663,7 @@ elasticache_describe_cache_engine_versions <- function(Engine = NULL, EngineVers
     name = "DescribeCacheEngineVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheEngineVersions")
   )
   input <- .elasticache$describe_cache_engine_versions_input(Engine = Engine, EngineVersion = EngineVersion, CacheParameterGroupFamily = CacheParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker, DefaultOnly = DefaultOnly)
   output <- .elasticache$describe_cache_engine_versions_output()
@@ -1680,7 +1680,7 @@ elasticache_describe_cache_engine_versions <- function(Engine = NULL, EngineVers
 #' @description
 #' Returns a list of cache parameter group descriptions. If a cache parameter group name is specified, the list contains only the descriptions for that group.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_cache_parameter_groups.html](https://paws-r.github.io/docs/elasticache/describe_cache_parameter_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_cache_parameter_groups/](https://www.paws-r-sdk.com/docs/elasticache_describe_cache_parameter_groups/) for full documentation.
 #'
 #' @param CacheParameterGroupName The name of a specific cache parameter group to return details for.
 #' @param MaxRecords The maximum number of records to include in the response. If more
@@ -1703,7 +1703,7 @@ elasticache_describe_cache_parameter_groups <- function(CacheParameterGroupName 
     name = "DescribeCacheParameterGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheParameterGroups")
   )
   input <- .elasticache$describe_cache_parameter_groups_input(CacheParameterGroupName = CacheParameterGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_parameter_groups_output()
@@ -1721,7 +1721,7 @@ elasticache_describe_cache_parameter_groups <- function(CacheParameterGroupName 
 #' @description
 #' Returns the detailed parameter list for a particular cache parameter group.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_cache_parameters.html](https://paws-r.github.io/docs/elasticache/describe_cache_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_cache_parameters/](https://www.paws-r-sdk.com/docs/elasticache_describe_cache_parameters/) for full documentation.
 #'
 #' @param CacheParameterGroupName &#91;required&#93; The name of a specific cache parameter group to return details for.
 #' @param Source The parameter types to return.
@@ -1747,7 +1747,7 @@ elasticache_describe_cache_parameters <- function(CacheParameterGroupName, Sourc
     name = "DescribeCacheParameters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Parameters")
   )
   input <- .elasticache$describe_cache_parameters_input(CacheParameterGroupName = CacheParameterGroupName, Source = Source, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_parameters_output()
@@ -1764,7 +1764,7 @@ elasticache_describe_cache_parameters <- function(CacheParameterGroupName, Sourc
 #' @description
 #' Returns a list of cache security group descriptions. If a cache security group name is specified, the list contains only the description of that group. This applicable only when you have ElastiCache in Classic setup
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_cache_security_groups.html](https://paws-r.github.io/docs/elasticache/describe_cache_security_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_cache_security_groups/](https://www.paws-r-sdk.com/docs/elasticache_describe_cache_security_groups/) for full documentation.
 #'
 #' @param CacheSecurityGroupName The name of the cache security group to return details for.
 #' @param MaxRecords The maximum number of records to include in the response. If more
@@ -1787,7 +1787,7 @@ elasticache_describe_cache_security_groups <- function(CacheSecurityGroupName = 
     name = "DescribeCacheSecurityGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheSecurityGroups")
   )
   input <- .elasticache$describe_cache_security_groups_input(CacheSecurityGroupName = CacheSecurityGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_security_groups_output()
@@ -1804,7 +1804,7 @@ elasticache_describe_cache_security_groups <- function(CacheSecurityGroupName = 
 #' @description
 #' Returns a list of cache subnet group descriptions. If a subnet group name is specified, the list contains only the description of that group. This is applicable only when you have ElastiCache in VPC setup. All ElastiCache clusters now launch in VPC by default.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_cache_subnet_groups.html](https://paws-r.github.io/docs/elasticache/describe_cache_subnet_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_cache_subnet_groups/](https://www.paws-r-sdk.com/docs/elasticache_describe_cache_subnet_groups/) for full documentation.
 #'
 #' @param CacheSubnetGroupName The name of the cache subnet group to return details for.
 #' @param MaxRecords The maximum number of records to include in the response. If more
@@ -1827,7 +1827,7 @@ elasticache_describe_cache_subnet_groups <- function(CacheSubnetGroupName = NULL
     name = "DescribeCacheSubnetGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "CacheSubnetGroups")
   )
   input <- .elasticache$describe_cache_subnet_groups_input(CacheSubnetGroupName = CacheSubnetGroupName, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_cache_subnet_groups_output()
@@ -1845,7 +1845,7 @@ elasticache_describe_cache_subnet_groups <- function(CacheSubnetGroupName = NULL
 #' @description
 #' Returns the default engine and system parameter information for the specified cache engine.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_engine_default_parameters.html](https://paws-r.github.io/docs/elasticache/describe_engine_default_parameters.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_engine_default_parameters/](https://www.paws-r-sdk.com/docs/elasticache_describe_engine_default_parameters/) for full documentation.
 #'
 #' @param CacheParameterGroupFamily &#91;required&#93; The name of the cache parameter group family.
 #' 
@@ -1872,7 +1872,7 @@ elasticache_describe_engine_default_parameters <- function(CacheParameterGroupFa
     name = "DescribeEngineDefaultParameters",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "EngineDefaults.Marker", result_key = "EngineDefaults.Parameters")
   )
   input <- .elasticache$describe_engine_default_parameters_input(CacheParameterGroupFamily = CacheParameterGroupFamily, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_engine_default_parameters_output()
@@ -1890,7 +1890,7 @@ elasticache_describe_engine_default_parameters <- function(CacheParameterGroupFa
 #' @description
 #' Returns events related to clusters, cache security groups, and cache parameter groups. You can obtain events specific to a particular cluster, cache security group, or cache parameter group by providing the name as a parameter.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_events.html](https://paws-r.github.io/docs/elasticache/describe_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_events/](https://www.paws-r-sdk.com/docs/elasticache_describe_events/) for full documentation.
 #'
 #' @param SourceIdentifier The identifier of the event source for which events are returned. If not
 #' specified, all sources are included in the response.
@@ -1925,7 +1925,7 @@ elasticache_describe_events <- function(SourceIdentifier = NULL, SourceType = NU
     name = "DescribeEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Events")
   )
   input <- .elasticache$describe_events_input(SourceIdentifier = SourceIdentifier, SourceType = SourceType, StartTime = StartTime, EndTime = EndTime, Duration = Duration, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_events_output()
@@ -1942,7 +1942,7 @@ elasticache_describe_events <- function(SourceIdentifier = NULL, SourceType = NU
 #' @description
 #' Returns information about a particular global replication group. If no identifier is specified, returns information about all Global datastores.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_global_replication_groups.html](https://paws-r.github.io/docs/elasticache/describe_global_replication_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_global_replication_groups/](https://www.paws-r-sdk.com/docs/elasticache_describe_global_replication_groups/) for full documentation.
 #'
 #' @param GlobalReplicationGroupId The name of the Global datastore
 #' @param MaxRecords The maximum number of records to include in the response. If more
@@ -1962,7 +1962,7 @@ elasticache_describe_global_replication_groups <- function(GlobalReplicationGrou
     name = "DescribeGlobalReplicationGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "GlobalReplicationGroups")
   )
   input <- .elasticache$describe_global_replication_groups_input(GlobalReplicationGroupId = GlobalReplicationGroupId, MaxRecords = MaxRecords, Marker = Marker, ShowMemberInfo = ShowMemberInfo)
   output <- .elasticache$describe_global_replication_groups_output()
@@ -1979,7 +1979,7 @@ elasticache_describe_global_replication_groups <- function(GlobalReplicationGrou
 #' @description
 #' Returns information about a particular replication group. If no identifier is specified, [`describe_replication_groups`][elasticache_describe_replication_groups] returns information about all replication groups.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_replication_groups.html](https://paws-r.github.io/docs/elasticache/describe_replication_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_replication_groups/](https://www.paws-r-sdk.com/docs/elasticache_describe_replication_groups/) for full documentation.
 #'
 #' @param ReplicationGroupId The identifier for the replication group to be described. This parameter
 #' is not case sensitive.
@@ -2006,7 +2006,7 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
     name = "DescribeReplicationGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReplicationGroups")
   )
   input <- .elasticache$describe_replication_groups_input(ReplicationGroupId = ReplicationGroupId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_replication_groups_output()
@@ -2024,7 +2024,7 @@ elasticache_describe_replication_groups <- function(ReplicationGroupId = NULL, M
 #' @description
 #' Returns information about reserved cache nodes for this account, or about a specified reserved cache node.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_reserved_cache_nodes.html](https://paws-r.github.io/docs/elasticache/describe_reserved_cache_nodes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_reserved_cache_nodes/](https://www.paws-r-sdk.com/docs/elasticache_describe_reserved_cache_nodes/) for full documentation.
 #'
 #' @param ReservedCacheNodeId The reserved cache node identifier filter value. Use this parameter to
 #' show only the reservation that matches the specified reservation ID.
@@ -2164,7 +2164,7 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
     name = "DescribeReservedCacheNodes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedCacheNodes")
   )
   input <- .elasticache$describe_reserved_cache_nodes_input(ReservedCacheNodeId = ReservedCacheNodeId, ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, CacheNodeType = CacheNodeType, Duration = Duration, ProductDescription = ProductDescription, OfferingType = OfferingType, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_reserved_cache_nodes_output()
@@ -2181,7 +2181,7 @@ elasticache_describe_reserved_cache_nodes <- function(ReservedCacheNodeId = NULL
 #' @description
 #' Lists available reserved cache node offerings.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_reserved_cache_nodes_offerings.html](https://paws-r.github.io/docs/elasticache/describe_reserved_cache_nodes_offerings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_reserved_cache_nodes_offerings/](https://www.paws-r-sdk.com/docs/elasticache_describe_reserved_cache_nodes_offerings/) for full documentation.
 #'
 #' @param ReservedCacheNodesOfferingId The offering identifier filter value. Use this parameter to show only
 #' the available offering that matches the specified reservation
@@ -2322,7 +2322,7 @@ elasticache_describe_reserved_cache_nodes_offerings <- function(ReservedCacheNod
     name = "DescribeReservedCacheNodesOfferings",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ReservedCacheNodesOfferings")
   )
   input <- .elasticache$describe_reserved_cache_nodes_offerings_input(ReservedCacheNodesOfferingId = ReservedCacheNodesOfferingId, CacheNodeType = CacheNodeType, Duration = Duration, ProductDescription = ProductDescription, OfferingType = OfferingType, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_reserved_cache_nodes_offerings_output()
@@ -2339,7 +2339,7 @@ elasticache_describe_reserved_cache_nodes_offerings <- function(ReservedCacheNod
 #' @description
 #' Returns details of the service updates
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_service_updates.html](https://paws-r.github.io/docs/elasticache/describe_service_updates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_service_updates/](https://www.paws-r-sdk.com/docs/elasticache_describe_service_updates/) for full documentation.
 #'
 #' @param ServiceUpdateName The unique ID of the service update
 #' @param ServiceUpdateStatus The status of the service update
@@ -2357,7 +2357,7 @@ elasticache_describe_service_updates <- function(ServiceUpdateName = NULL, Servi
     name = "DescribeServiceUpdates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "ServiceUpdates")
   )
   input <- .elasticache$describe_service_updates_input(ServiceUpdateName = ServiceUpdateName, ServiceUpdateStatus = ServiceUpdateStatus, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_service_updates_output()
@@ -2374,7 +2374,7 @@ elasticache_describe_service_updates <- function(ServiceUpdateName = NULL, Servi
 #' @description
 #' Returns information about cluster or replication group snapshots. By default, [`describe_snapshots`][elasticache_describe_snapshots] lists all of your snapshots; it can optionally describe a single snapshot, or just the snapshots associated with a particular cache cluster.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_snapshots.html](https://paws-r.github.io/docs/elasticache/describe_snapshots.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_snapshots/](https://www.paws-r-sdk.com/docs/elasticache_describe_snapshots/) for full documentation.
 #'
 #' @param ReplicationGroupId A user-supplied replication group identifier. If this parameter is
 #' specified, only snapshots associated with that specific replication
@@ -2409,7 +2409,7 @@ elasticache_describe_snapshots <- function(ReplicationGroupId = NULL, CacheClust
     name = "DescribeSnapshots",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Snapshots")
   )
   input <- .elasticache$describe_snapshots_input(ReplicationGroupId = ReplicationGroupId, CacheClusterId = CacheClusterId, SnapshotName = SnapshotName, SnapshotSource = SnapshotSource, Marker = Marker, MaxRecords = MaxRecords, ShowNodeGroupConfig = ShowNodeGroupConfig)
   output <- .elasticache$describe_snapshots_output()
@@ -2426,7 +2426,7 @@ elasticache_describe_snapshots <- function(ReplicationGroupId = NULL, CacheClust
 #' @description
 #' Returns details of the update actions
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_update_actions.html](https://paws-r.github.io/docs/elasticache/describe_update_actions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_update_actions/](https://www.paws-r-sdk.com/docs/elasticache_describe_update_actions/) for full documentation.
 #'
 #' @param ServiceUpdateName The unique ID of the service update
 #' @param ReplicationGroupIds The replication group IDs
@@ -2452,7 +2452,7 @@ elasticache_describe_update_actions <- function(ServiceUpdateName = NULL, Replic
     name = "DescribeUpdateActions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UpdateActions")
   )
   input <- .elasticache$describe_update_actions_input(ServiceUpdateName = ServiceUpdateName, ReplicationGroupIds = ReplicationGroupIds, CacheClusterIds = CacheClusterIds, Engine = Engine, ServiceUpdateStatus = ServiceUpdateStatus, ServiceUpdateTimeRange = ServiceUpdateTimeRange, UpdateActionStatus = UpdateActionStatus, ShowNodeLevelUpdateStatus = ShowNodeLevelUpdateStatus, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_update_actions_output()
@@ -2469,7 +2469,7 @@ elasticache_describe_update_actions <- function(ServiceUpdateName = NULL, Replic
 #' @description
 #' Returns a list of user groups.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_user_groups.html](https://paws-r.github.io/docs/elasticache/describe_user_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_user_groups/](https://www.paws-r-sdk.com/docs/elasticache_describe_user_groups/) for full documentation.
 #'
 #' @param UserGroupId The ID of the user group.
 #' @param MaxRecords The maximum number of records to include in the response. If more
@@ -2488,7 +2488,7 @@ elasticache_describe_user_groups <- function(UserGroupId = NULL, MaxRecords = NU
     name = "DescribeUserGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "UserGroups")
   )
   input <- .elasticache$describe_user_groups_input(UserGroupId = UserGroupId, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_user_groups_output()
@@ -2505,7 +2505,7 @@ elasticache_describe_user_groups <- function(UserGroupId = NULL, MaxRecords = NU
 #' @description
 #' Returns a list of users.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/describe_users.html](https://paws-r.github.io/docs/elasticache/describe_users.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_describe_users/](https://www.paws-r-sdk.com/docs/elasticache_describe_users/) for full documentation.
 #'
 #' @param Engine The Redis engine.
 #' @param UserId The ID of the user.
@@ -2526,7 +2526,7 @@ elasticache_describe_users <- function(Engine = NULL, UserId = NULL, Filters = N
     name = "DescribeUsers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "Users")
   )
   input <- .elasticache$describe_users_input(Engine = Engine, UserId = UserId, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
   output <- .elasticache$describe_users_output()
@@ -2544,7 +2544,7 @@ elasticache_describe_users <- function(Engine = NULL, UserId = NULL, Filters = N
 #' @description
 #' Remove a secondary cluster from the Global datastore using the Global datastore name. The secondary cluster will no longer receive updates from the primary cluster, but will remain as a standalone cluster in that Amazon region.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/disassociate_global_replication_group.html](https://paws-r.github.io/docs/elasticache/disassociate_global_replication_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_disassociate_global_replication_group/](https://www.paws-r-sdk.com/docs/elasticache_disassociate_global_replication_group/) for full documentation.
 #'
 #' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global datastore
 #' @param ReplicationGroupId &#91;required&#93; The name of the secondary cluster you wish to remove from the Global
@@ -2577,7 +2577,7 @@ elasticache_disassociate_global_replication_group <- function(GlobalReplicationG
 #' @description
 #' Used to failover the primary region to a secondary region. The secondary region will become primary, and all other clusters will become secondary.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/failover_global_replication_group.html](https://paws-r.github.io/docs/elasticache/failover_global_replication_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_failover_global_replication_group/](https://www.paws-r-sdk.com/docs/elasticache_failover_global_replication_group/) for full documentation.
 #'
 #' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global datastore
 #' @param PrimaryRegion &#91;required&#93; The Amazon region of the primary cluster of the Global datastore
@@ -2608,7 +2608,7 @@ elasticache_failover_global_replication_group <- function(GlobalReplicationGroup
 #' @description
 #' Increase the number of node groups in the Global datastore
 #'
-#' See [https://paws-r.github.io/docs/elasticache/increase_node_groups_in_global_replication_group.html](https://paws-r.github.io/docs/elasticache/increase_node_groups_in_global_replication_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_increase_node_groups_in_global_replication_group/](https://www.paws-r-sdk.com/docs/elasticache_increase_node_groups_in_global_replication_group/) for full documentation.
 #'
 #' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global datastore
 #' @param NodeGroupCount &#91;required&#93; The number of node groups you wish to add
@@ -2646,7 +2646,7 @@ elasticache_increase_node_groups_in_global_replication_group <- function(GlobalR
 #' @description
 #' Dynamically increases the number of replicas in a Redis (cluster mode disabled) replication group or the number of replica nodes in one or more node groups (shards) of a Redis (cluster mode enabled) replication group. This operation is performed with no cluster down time.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/increase_replica_count.html](https://paws-r.github.io/docs/elasticache/increase_replica_count.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_increase_replica_count/](https://www.paws-r-sdk.com/docs/elasticache_increase_replica_count/) for full documentation.
 #'
 #' @param ReplicationGroupId &#91;required&#93; The id of the replication group to which you want to add replica nodes.
 #' @param NewReplicaCount The number of read replica nodes you want at the completion of this
@@ -2687,7 +2687,7 @@ elasticache_increase_replica_count <- function(ReplicationGroupId, NewReplicaCou
 #' @description
 #' Lists all available node types that you can scale your Redis cluster's or replication group's current node type.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/list_allowed_node_type_modifications.html](https://paws-r.github.io/docs/elasticache/list_allowed_node_type_modifications.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_list_allowed_node_type_modifications/](https://www.paws-r-sdk.com/docs/elasticache_list_allowed_node_type_modifications/) for full documentation.
 #'
 #' @param CacheClusterId The name of the cluster you want to scale up to a larger node instanced
 #' type. ElastiCache uses the cluster id to identify the current node type
@@ -2729,7 +2729,7 @@ elasticache_list_allowed_node_type_modifications <- function(CacheClusterId = NU
 #' @description
 #' Lists all tags currently on a named resource.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/list_tags_for_resource.html](https://paws-r.github.io/docs/elasticache/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/elasticache_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which you want the
 #' list of tags, for example
@@ -2765,7 +2765,7 @@ elasticache_list_tags_for_resource <- function(ResourceName) {
 #' @description
 #' Modifies the settings for a cluster. You can use this operation to change one or more cluster configuration parameters by specifying the parameters and the new values.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/modify_cache_cluster.html](https://paws-r.github.io/docs/elasticache/modify_cache_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_modify_cache_cluster/](https://www.paws-r-sdk.com/docs/elasticache_modify_cache_cluster/) for full documentation.
 #'
 #' @param CacheClusterId &#91;required&#93; The cluster identifier. This value is stored as a lowercase string.
 #' @param NumCacheNodes The number of cache nodes that the cluster should have. If the value for
@@ -3042,7 +3042,7 @@ elasticache_modify_cache_cluster <- function(CacheClusterId, NumCacheNodes = NUL
 #' @description
 #' Modifies the parameters of a cache parameter group. You can modify up to 20 parameters in a single request by submitting a list parameter name and value pairs.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/modify_cache_parameter_group.html](https://paws-r.github.io/docs/elasticache/modify_cache_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_modify_cache_parameter_group/](https://www.paws-r-sdk.com/docs/elasticache_modify_cache_parameter_group/) for full documentation.
 #'
 #' @param CacheParameterGroupName &#91;required&#93; The name of the cache parameter group to modify.
 #' @param ParameterNameValues &#91;required&#93; An array of parameter names and values for the parameter update. You
@@ -3074,7 +3074,7 @@ elasticache_modify_cache_parameter_group <- function(CacheParameterGroupName, Pa
 #' @description
 #' Modifies an existing cache subnet group.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/modify_cache_subnet_group.html](https://paws-r.github.io/docs/elasticache/modify_cache_subnet_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_modify_cache_subnet_group/](https://www.paws-r-sdk.com/docs/elasticache_modify_cache_subnet_group/) for full documentation.
 #'
 #' @param CacheSubnetGroupName &#91;required&#93; The name for the cache subnet group. This value is stored as a lowercase
 #' string.
@@ -3111,7 +3111,7 @@ elasticache_modify_cache_subnet_group <- function(CacheSubnetGroupName, CacheSub
 #' @description
 #' Modifies the settings for a Global datastore.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/modify_global_replication_group.html](https://paws-r.github.io/docs/elasticache/modify_global_replication_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_modify_global_replication_group/](https://www.paws-r-sdk.com/docs/elasticache_modify_global_replication_group/) for full documentation.
 #'
 #' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global datastore
 #' @param ApplyImmediately &#91;required&#93; This parameter causes the modifications in this request and any pending
@@ -3153,7 +3153,7 @@ elasticache_modify_global_replication_group <- function(GlobalReplicationGroupId
 #' @description
 #' Modifies the settings for a replication group.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/modify_replication_group.html](https://paws-r.github.io/docs/elasticache/modify_replication_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_modify_replication_group/](https://www.paws-r-sdk.com/docs/elasticache_modify_replication_group/) for full documentation.
 #'
 #' @param ReplicationGroupId &#91;required&#93; The identifier of the replication group to modify.
 #' @param ReplicationGroupDescription A description for the replication group. Maximum length is 255
@@ -3344,7 +3344,7 @@ elasticache_modify_replication_group <- function(ReplicationGroupId, Replication
 #' @description
 #' Modifies a replication group's shards (node groups) by allowing you to add shards, remove shards, or rebalance the keyspaces among existing shards.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/modify_replication_group_shard_configuration.html](https://paws-r.github.io/docs/elasticache/modify_replication_group_shard_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_modify_replication_group_shard_configuration/](https://www.paws-r-sdk.com/docs/elasticache_modify_replication_group_shard_configuration/) for full documentation.
 #'
 #' @param ReplicationGroupId &#91;required&#93; The name of the Redis (cluster mode enabled) cluster (replication group)
 #' on which the shards are to be configured.
@@ -3402,7 +3402,7 @@ elasticache_modify_replication_group_shard_configuration <- function(Replication
 #' @description
 #' Changes user password(s) and/or access string.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/modify_user.html](https://paws-r.github.io/docs/elasticache/modify_user.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_modify_user/](https://www.paws-r-sdk.com/docs/elasticache_modify_user/) for full documentation.
 #'
 #' @param UserId &#91;required&#93; The ID of the user.
 #' @param AccessString Access permissions string used for this user.
@@ -3436,7 +3436,7 @@ elasticache_modify_user <- function(UserId, AccessString = NULL, AppendAccessStr
 #' @description
 #' Changes the list of users that belong to the user group.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/modify_user_group.html](https://paws-r.github.io/docs/elasticache/modify_user_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_modify_user_group/](https://www.paws-r-sdk.com/docs/elasticache_modify_user_group/) for full documentation.
 #'
 #' @param UserGroupId &#91;required&#93; The ID of the user group.
 #' @param UserIdsToAdd The list of user IDs to add to the user group.
@@ -3467,7 +3467,7 @@ elasticache_modify_user_group <- function(UserGroupId, UserIdsToAdd = NULL, User
 #' @description
 #' Allows you to purchase a reserved cache node offering. Reserved nodes are not eligible for cancellation and are non-refundable. For more information, see [Managing Costs with Reserved Nodes](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/) for Redis or [Managing Costs with Reserved Nodes](https://docs.aws.amazon.com/AmazonElastiCache/latest/mem-ug/) for Memcached.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/purchase_reserved_cache_nodes_offering.html](https://paws-r.github.io/docs/elasticache/purchase_reserved_cache_nodes_offering.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_purchase_reserved_cache_nodes_offering/](https://www.paws-r-sdk.com/docs/elasticache_purchase_reserved_cache_nodes_offering/) for full documentation.
 #'
 #' @param ReservedCacheNodesOfferingId &#91;required&#93; The ID of the reserved cache node offering to purchase.
 #' 
@@ -3511,7 +3511,7 @@ elasticache_purchase_reserved_cache_nodes_offering <- function(ReservedCacheNode
 #' @description
 #' Redistribute slots to ensure uniform distribution across existing shards in the cluster.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/rebalance_slots_in_global_replication_group.html](https://paws-r.github.io/docs/elasticache/rebalance_slots_in_global_replication_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_rebalance_slots_in_global_replication_group/](https://www.paws-r-sdk.com/docs/elasticache_rebalance_slots_in_global_replication_group/) for full documentation.
 #'
 #' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global datastore
 #' @param ApplyImmediately &#91;required&#93; If `True`, redistribution is applied immediately.
@@ -3541,7 +3541,7 @@ elasticache_rebalance_slots_in_global_replication_group <- function(GlobalReplic
 #' @description
 #' Reboots some, or all, of the cache nodes within a provisioned cluster. This operation applies any modified cache parameter groups to the cluster. The reboot operation takes place as soon as possible, and results in a momentary outage to the cluster. During the reboot, the cluster status is set to REBOOTING.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/reboot_cache_cluster.html](https://paws-r.github.io/docs/elasticache/reboot_cache_cluster.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_reboot_cache_cluster/](https://www.paws-r-sdk.com/docs/elasticache_reboot_cache_cluster/) for full documentation.
 #'
 #' @param CacheClusterId &#91;required&#93; The cluster identifier. This parameter is stored as a lowercase string.
 #' @param CacheNodeIdsToReboot &#91;required&#93; A list of cache node IDs to reboot. A node ID is a numeric identifier
@@ -3573,7 +3573,7 @@ elasticache_reboot_cache_cluster <- function(CacheClusterId, CacheNodeIdsToReboo
 #' @description
 #' Removes the tags identified by the `TagKeys` list from the named resource. A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your ElastiCache resources, with the exception of global replication group. When you add or remove tags on replication groups, those actions will be replicated to all nodes in the replication group. For more information, see [Resource-level permissions](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/IAM.ResourceLevelPermissions.html).
 #'
-#' See [https://paws-r.github.io/docs/elasticache/remove_tags_from_resource.html](https://paws-r.github.io/docs/elasticache/remove_tags_from_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_remove_tags_from_resource/](https://www.paws-r-sdk.com/docs/elasticache_remove_tags_from_resource/) for full documentation.
 #'
 #' @param ResourceName &#91;required&#93; The Amazon Resource Name (ARN) of the resource from which you want the
 #' tags removed, for example
@@ -3612,7 +3612,7 @@ elasticache_remove_tags_from_resource <- function(ResourceName, TagKeys) {
 #' @description
 #' Modifies the parameters of a cache parameter group to the engine or system default value. You can reset specific parameters by submitting a list of parameter names. To reset the entire cache parameter group, specify the `ResetAllParameters` and `CacheParameterGroupName` parameters.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/reset_cache_parameter_group.html](https://paws-r.github.io/docs/elasticache/reset_cache_parameter_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_reset_cache_parameter_group/](https://www.paws-r-sdk.com/docs/elasticache_reset_cache_parameter_group/) for full documentation.
 #'
 #' @param CacheParameterGroupName &#91;required&#93; The name of the cache parameter group to reset.
 #' @param ResetAllParameters If `true`, all parameters in the cache parameter group are reset to
@@ -3650,7 +3650,7 @@ elasticache_reset_cache_parameter_group <- function(CacheParameterGroupName, Res
 #' @description
 #' Revokes ingress from a cache security group. Use this operation to disallow access from an Amazon EC2 security group that had been previously authorized.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/revoke_cache_security_group_ingress.html](https://paws-r.github.io/docs/elasticache/revoke_cache_security_group_ingress.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_revoke_cache_security_group_ingress/](https://www.paws-r-sdk.com/docs/elasticache_revoke_cache_security_group_ingress/) for full documentation.
 #'
 #' @param CacheSecurityGroupName &#91;required&#93; The name of the cache security group to revoke ingress from.
 #' @param EC2SecurityGroupName &#91;required&#93; The name of the Amazon EC2 security group to revoke access from.
@@ -3683,7 +3683,7 @@ elasticache_revoke_cache_security_group_ingress <- function(CacheSecurityGroupNa
 #' @description
 #' Start the migration of data.
 #'
-#' See [https://paws-r.github.io/docs/elasticache/start_migration.html](https://paws-r.github.io/docs/elasticache/start_migration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_start_migration/](https://www.paws-r-sdk.com/docs/elasticache_start_migration/) for full documentation.
 #'
 #' @param ReplicationGroupId &#91;required&#93; The ID of the replication group to which data should be migrated.
 #' @param CustomerNodeEndpointList &#91;required&#93; List of endpoints from which data should be migrated. For Redis (cluster
@@ -3716,7 +3716,7 @@ elasticache_start_migration <- function(ReplicationGroupId, CustomerNodeEndpoint
 #' @description
 #' Represents the input of a [`test_failover`][elasticache_test_failover] operation which test automatic failover on a specified node group (called shard in the console) in a replication group (called cluster in the console).
 #'
-#' See [https://paws-r.github.io/docs/elasticache/test_failover.html](https://paws-r.github.io/docs/elasticache/test_failover.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elasticache_test_failover/](https://www.paws-r-sdk.com/docs/elasticache_test_failover/) for full documentation.
 #'
 #' @param ReplicationGroupId &#91;required&#93; The name of the replication group (console: cluster) whose automatic
 #' failover is being tested by this operation.

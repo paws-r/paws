@@ -14,6 +14,7 @@ locationservice_calculate_route(
   DestinationPosition,
   DistanceUnit = NULL,
   IncludeLegGeometry = NULL,
+  Key = NULL,
   TravelMode = NULL,
   TruckModeOptions = NULL,
   WaypointPositions = NULL
@@ -84,6 +85,9 @@ Default Value: \code{false}
 
 Valid Values: \code{false} | \code{true}}
 
+\item{Key}{The optional \href{https://docs.aws.amazon.com/location/latest/developerguide/using-apikeys.html}{API key}
+to authorize the request.}
+
 \item{TravelMode}{Specifies the mode of transport when calculating a route. Used in
 estimating the speed of travel and road compatibility. You can choose
 \code{Car}, \code{Truck}, \code{Walking}, \code{Bicycle} or \code{Motorcycle} as options for the
@@ -137,6 +141,6 @@ Valid Values: \verb{[-180 to 180,-90 to 90]}}
 \description{
 \href{https://docs.aws.amazon.com/location/latest/developerguide/calculate-route.html}{Calculates a route} given the following required parameters: \code{DeparturePosition} and \code{DestinationPosition}. Requires that you first \href{https://docs.aws.amazon.com/location/latest/APIReference/API_CreateRouteCalculator.html}{create a route calculator resource}.
 
-See \url{https://paws-r.github.io/docs/locationservice/calculate_route.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_calculate_route/} for full documentation.
 }
 \keyword{internal}

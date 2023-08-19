@@ -703,7 +703,7 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #'     ApplicationARN = "string",
 #'     ApplicationDescription = "string",
 #'     ApplicationName = "string",
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0",
 #'     ServiceExecutionRole = "string",
 #'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,
@@ -946,7 +946,7 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #' svc$create_application(
 #'   ApplicationName = "string",
 #'   ApplicationDescription = "string",
-#'   RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15",
+#'   RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0",
 #'   ServiceExecutionRole = "string",
 #'   ApplicationConfiguration = list(
 #'     SqlApplicationConfiguration = list(
@@ -1744,7 +1744,7 @@ kinesisanalyticsv2_delete_application_vpc_configuration <- function(ApplicationN
 #'     ApplicationARN = "string",
 #'     ApplicationDescription = "string",
 #'     ApplicationName = "string",
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0",
 #'     ServiceExecutionRole = "string",
 #'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,
@@ -2100,7 +2100,7 @@ kinesisanalyticsv2_describe_application_snapshot <- function(ApplicationName, Sn
 #'     ApplicationARN = "string",
 #'     ApplicationDescription = "string",
 #'     ApplicationName = "string",
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0",
 #'     ServiceExecutionRole = "string",
 #'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,
@@ -2649,7 +2649,7 @@ kinesisanalyticsv2_list_application_versions <- function(ApplicationName, Limit 
 #'       ApplicationARN = "string",
 #'       ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'       ApplicationVersionId = 123,
-#'       RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15",
+#'       RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0",
 #'       ApplicationMode = "STREAMING"|"INTERACTIVE"
 #'     )
 #'   ),
@@ -2774,7 +2774,7 @@ kinesisanalyticsv2_list_tags_for_resource <- function(ResourceARN) {
 #'     ApplicationARN = "string",
 #'     ApplicationDescription = "string",
 #'     ApplicationName = "string",
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0",
 #'     ServiceExecutionRole = "string",
 #'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,
@@ -3323,7 +3323,7 @@ kinesisanalyticsv2_untag_resource <- function(ResourceARN, TagKeys) {
 #'     ApplicationARN = "string",
 #'     ApplicationDescription = "string",
 #'     ApplicationName = "string",
-#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15",
+#'     RuntimeEnvironment = "SQL-1_0"|"FLINK-1_6"|"FLINK-1_8"|"ZEPPELIN-FLINK-1_0"|"FLINK-1_11"|"FLINK-1_13"|"ZEPPELIN-FLINK-2_0"|"FLINK-1_15"|"ZEPPELIN-FLINK-3_0",
 #'     ServiceExecutionRole = "string",
 #'     ApplicationStatus = "DELETING"|"STARTING"|"STOPPING"|"READY"|"RUNNING"|"UPDATING"|"AUTOSCALING"|"FORCE_STOPPING"|"ROLLING_BACK"|"MAINTENANCE"|"ROLLED_BACK",
 #'     ApplicationVersionId = 123,

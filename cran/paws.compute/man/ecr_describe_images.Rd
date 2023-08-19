@@ -48,6 +48,6 @@ specify images with \code{imageIds}.}
 \description{
 Returns metadata about the images in a repository.
 
-See \url{https://paws-r.github.io/docs/ecr/describe_images.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_describe_images/} for full documentation.
 }
 \keyword{internal}

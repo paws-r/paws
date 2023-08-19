@@ -19,7 +19,7 @@ quicksight_start_asset_bundle_import_job(
 job is completed, you can reuse this ID for another job.}
 
 \item{AssetBundleImportSource}{[required] The source of the asset bundle zip file that contains the data that you
-want to import.}
+want to import. The file must be in \code{QUICKSIGHT_JSON} format.}
 
 \item{OverrideParameters}{Optional overrides to be applied to the resource configuration before
 import.}
@@ -30,12 +30,12 @@ If you choose \code{ROLLBACK}, failed import jobs will attempt to undo any
 asset changes caused by the failed job.
 
 If you choose \code{DO_NOTHING}, failed import jobs will not attempt to roll
-back any asset changes caused by the failed job, possibly leaving the
+back any asset changes caused by the failed job, possibly keeping the
 Amazon QuickSight account in an inconsistent state.}
 }
 \description{
 Starts an Asset Bundle import job.
 
-See \url{https://paws-r.github.io/docs/quicksight/start_asset_bundle_import_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_start_asset_bundle_import_job/} for full documentation.
 }
 \keyword{internal}

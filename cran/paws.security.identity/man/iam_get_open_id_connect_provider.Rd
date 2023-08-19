@@ -20,6 +20,6 @@ in the \emph{Amazon Web Services General Reference}.}
 \description{
 Returns information about the specified OpenID Connect (OIDC) provider resource object in IAM.
 
-See \url{https://paws-r.github.io/docs/iam/get_open_id_connect_provider.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_get_open_id_connect_provider/} for full documentation.
 }
 \keyword{internal}

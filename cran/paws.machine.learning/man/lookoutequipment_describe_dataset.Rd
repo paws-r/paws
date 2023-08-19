@@ -13,6 +13,6 @@ lookoutequipment_describe_dataset(DatasetName)
 \description{
 Provides a JSON description of the data in each time series dataset, including names, column names, and data types.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/describe_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_describe_dataset/} for full documentation.
 }
 \keyword{internal}

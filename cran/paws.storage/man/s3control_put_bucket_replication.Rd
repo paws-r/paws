@@ -30,6 +30,6 @@ The value must be URL encoded.}
 \description{
 This action creates an Amazon S3 on Outposts bucket's replication configuration. To create an S3 bucket's replication configuration, see \code{\link[=s3control_put_bucket_replication]{put_bucket_replication}} in the \emph{Amazon S3 API Reference}.
 
-See \url{https://paws-r.github.io/docs/s3control/put_bucket_replication.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_put_bucket_replication/} for full documentation.
 }
 \keyword{internal}

@@ -13,6 +13,6 @@ snapshot information.}
 \description{
 Returns the available automatic snapshots for an instance or disk. For more information, see the Amazon Lightsail Developer Guide.
 
-See \url{https://paws-r.github.io/docs/lightsail/get_auto_snapshots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lightsail_get_auto_snapshots/} for full documentation.
 }
 \keyword{internal}

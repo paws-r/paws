@@ -13,6 +13,6 @@ your Amazon Inspector organization.}
 \description{
 Updates the configurations for your Amazon Inspector organization.
 
-See \url{https://paws-r.github.io/docs/inspector2/update_organization_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/inspector2_update_organization_configuration/} for full documentation.
 }
 \keyword{internal}

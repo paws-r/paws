@@ -15,6 +15,6 @@ Access Point.}
 \description{
 Returns the resource policy for an Object Lambda Access Point.
 
-See \url{https://paws-r.github.io/docs/s3control/get_access_point_policy_for_object_lambda.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_get_access_point_policy_for_object_lambda/} for full documentation.
 }
 \keyword{internal}

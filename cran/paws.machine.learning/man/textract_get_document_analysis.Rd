@@ -25,6 +25,6 @@ blocks.}
 \description{
 Gets the results for an Amazon Textract asynchronous operation that analyzes text in a document.
 
-See \url{https://paws-r.github.io/docs/textract/get_document_analysis.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/textract_get_document_analysis/} for full documentation.
 }
 \keyword{internal}

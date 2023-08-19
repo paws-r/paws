@@ -57,6 +57,6 @@ If no \code{NextToken} is specified, the first page is retrieved.}
 \description{
 Lists the platform branches available for your account in an AWS Region. Provides summary information about each platform branch.
 
-See \url{https://paws-r.github.io/docs/elasticbeanstalk/list_platform_branches.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticbeanstalk_list_platform_branches/} for full documentation.
 }
 \keyword{internal}

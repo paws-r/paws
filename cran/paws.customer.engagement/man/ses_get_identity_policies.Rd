@@ -23,6 +23,6 @@ policies that are attached to the identity, you can use
 \description{
 Returns the requested sending authorization policies for the given identity (an email address or a domain). The policies are returned as a map of policy names to policy contents. You can retrieve a maximum of 20 policies at a time.
 
-See \url{https://paws-r.github.io/docs/ses/get_identity_policies.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ses_get_identity_policies/} for full documentation.
 }
 \keyword{internal}

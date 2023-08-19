@@ -9,13 +9,14 @@ mq_update_configuration(ConfigurationId, Data, Description = NULL)
 \arguments{
 \item{ConfigurationId}{[required] The unique ID that Amazon MQ generates for the configuration.}
 
-\item{Data}{[required] Required. The base64-encoded XML configuration.}
+\item{Data}{[required] Amazon MQ for Active MQ: The base64-encoded XML configuration. Amazon MQ
+for RabbitMQ: the base64-encoded Cuttlefish configuration.}
 
 \item{Description}{The description of the configuration.}
 }
 \description{
 Updates the specified configuration.
 
-See \url{https://paws-r.github.io/docs/mq/update_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/mq_update_configuration/} for full documentation.
 }
 \keyword{internal}

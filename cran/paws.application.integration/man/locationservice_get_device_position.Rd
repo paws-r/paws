@@ -14,6 +14,6 @@ locationservice_get_device_position(DeviceId, TrackerName)
 \description{
 Retrieves a device's most recent position according to its sample time.
 
-See \url{https://paws-r.github.io/docs/locationservice/get_device_position.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_get_device_position/} for full documentation.
 }
 \keyword{internal}

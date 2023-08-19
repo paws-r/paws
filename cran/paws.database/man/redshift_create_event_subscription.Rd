@@ -67,6 +67,6 @@ Values: ERROR, INFO}
 \description{
 Creates an Amazon Redshift event notification subscription. This action requires an ARN (Amazon Resource Name) of an Amazon SNS topic created by either the Amazon Redshift console, the Amazon SNS console, or the Amazon SNS API. To obtain an ARN with Amazon SNS, you must create a topic in Amazon SNS and subscribe to the topic. The ARN is displayed in the SNS console.
 
-See \url{https://paws-r.github.io/docs/redshift/create_event_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_create_event_subscription/} for full documentation.
 }
 \keyword{internal}

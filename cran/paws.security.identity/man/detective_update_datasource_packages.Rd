@@ -14,6 +14,6 @@ detective_update_datasource_packages(GraphArn, DatasourcePackages)
 \description{
 Starts a data source packages for the behavior graph.
 
-See \url{https://paws-r.github.io/docs/detective/update_datasource_packages.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_update_datasource_packages/} for full documentation.
 }
 \keyword{internal}

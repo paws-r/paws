@@ -23,6 +23,6 @@ described be limited to the specified number.}
 \description{
 Returns a list of virtual tape recovery points that are available for the specified tape gateway.
 
-See \url{https://paws-r.github.io/docs/storagegateway/describe_tape_recovery_points.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_tape_recovery_points/} for full documentation.
 }
 \keyword{internal}

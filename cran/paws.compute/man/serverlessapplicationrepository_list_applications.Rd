@@ -17,6 +17,6 @@ serverlessapplicationrepository_list_applications(
 \description{
 Lists applications owned by the requester.
 
-See \url{https://paws-r.github.io/docs/serverlessapplicationrepository/list_applications.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/serverlessapplicationrepository_list_applications/} for full documentation.
 }
 \keyword{internal}

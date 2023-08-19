@@ -13,6 +13,6 @@ polly_get_lexicon(Name)
 \description{
 Returns the content of the specified pronunciation lexicon stored in an Amazon Web Services Region. For more information, see \href{https://docs.aws.amazon.com/polly/latest/dg/managing-lexicons.html}{Managing Lexicons}.
 
-See \url{https://paws-r.github.io/docs/polly/get_lexicon.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/polly_get_lexicon/} for full documentation.
 }
 \keyword{internal}

@@ -20,6 +20,6 @@ frauddetector_list_tags_for_resource(
 \description{
 Lists all tags associated with the resource. This is a paginated API. To get the next page results, provide the pagination token from the response as part of your request. A null pagination token fetches the records from the beginning.
 
-See \url{https://paws-r.github.io/docs/frauddetector/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/frauddetector_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

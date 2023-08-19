@@ -18,6 +18,6 @@ results.}
 \description{
 Lists dashboards in an Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/quicksight/list_dashboards.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_list_dashboards/} for full documentation.
 }
 \keyword{internal}

@@ -27,6 +27,6 @@ case, you could specify the following key-value pairs:
 \description{
 If you create a new application in Application Manager, Amazon Web Services Systems Manager calls this API operation to specify information about the new application, including the application type.
 
-See \url{https://paws-r.github.io/docs/ssm/create_ops_metadata.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_create_ops_metadata/} for full documentation.
 }
 \keyword{internal}

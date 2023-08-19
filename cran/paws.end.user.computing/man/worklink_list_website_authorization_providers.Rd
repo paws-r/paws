@@ -22,6 +22,6 @@ this operation. If this value is null, it retrieves the first page.}
 \description{
 Retrieves a list of website authorization providers associated with a specified fleet.
 
-See \url{https://paws-r.github.io/docs/worklink/list_website_authorization_providers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_list_website_authorization_providers/} for full documentation.
 }
 \keyword{internal}

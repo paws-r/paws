@@ -16,6 +16,6 @@ budgets_describe_budget_action(AccountId, BudgetName, ActionId)
 \description{
 Describes a budget action detail.
 
-See \url{https://paws-r.github.io/docs/budgets/describe_budget_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/budgets_describe_budget_action/} for full documentation.
 }
 \keyword{internal}

@@ -10,6 +10,6 @@ backup_describe_global_settings()
 \description{
 Describes whether the Amazon Web Services account is opted in to cross-account backup. Returns an error if the account is not a member of an Organizations organization. Example: \verb{describe-global-settings --region us-west-2}
 
-See \url{https://paws-r.github.io/docs/backup/describe_global_settings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_describe_global_settings/} for full documentation.
 }
 \keyword{internal}

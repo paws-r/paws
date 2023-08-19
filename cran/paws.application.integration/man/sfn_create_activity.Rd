@@ -38,6 +38,6 @@ symbols: \verb{_ . : / = + - @}.}
 \description{
 Creates an activity. An activity is a task that you write in any programming language and host on any machine that has access to Step Functions. Activities must poll Step Functions using the \code{\link[=sfn_get_activity_task]{get_activity_task}} API action and respond using \verb{SendTask*} API actions. This function lets Step Functions know the existence of your activity and returns an identifier for use in a state machine and when polling from the activity.
 
-See \url{https://paws-r.github.io/docs/sfn/create_activity.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sfn_create_activity/} for full documentation.
 }
 \keyword{internal}

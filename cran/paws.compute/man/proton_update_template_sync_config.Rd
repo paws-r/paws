@@ -31,6 +31,6 @@ limits the template bundle search to this repository directory.}
 \description{
 Update template sync configuration parameters, except for the \code{templateName} and \code{templateType}. Repository details (branch, name, and provider) should be of a linked repository. A linked repository is a repository that has been registered with Proton. For more information, see \code{\link[=proton_create_repository]{create_repository}}.
 
-See \url{https://paws-r.github.io/docs/proton/update_template_sync_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_update_template_sync_config/} for full documentation.
 }
 \keyword{internal}

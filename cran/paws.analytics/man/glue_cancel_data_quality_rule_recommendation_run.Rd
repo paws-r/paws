@@ -13,6 +13,6 @@ glue_cancel_data_quality_rule_recommendation_run(RunId)
 \description{
 Cancels the specified recommendation run that was being used to generate rules.
 
-See \url{https://paws-r.github.io/docs/glue/cancel_data_quality_rule_recommendation_run.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_cancel_data_quality_rule_recommendation_run/} for full documentation.
 }
 \keyword{internal}

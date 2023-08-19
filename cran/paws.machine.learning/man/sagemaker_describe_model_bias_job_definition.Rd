@@ -13,6 +13,6 @@ within an Amazon Web Services Region in the Amazon Web Services account.}
 \description{
 Returns a description of a model bias job definition.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_model_bias_job_definition.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_model_bias_job_definition/} for full documentation.
 }
 \keyword{internal}

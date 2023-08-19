@@ -12,6 +12,6 @@ augmentedairuntime_describe_human_loop(HumanLoopName)
 \description{
 Returns information about the specified human loop. If the human loop was deleted, this operation will return a \code{ResourceNotFoundException} error.
 
-See \url{https://paws-r.github.io/docs/augmentedairuntime/describe_human_loop.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/augmentedairuntime_describe_human_loop/} for full documentation.
 }
 \keyword{internal}

@@ -26,6 +26,6 @@ connectcampaignservice_create_campaign(
 \description{
 Creates a campaign for the specified Amazon Connect account. This API is idempotent.
 
-See \url{https://paws-r.github.io/docs/connectcampaignservice/create_campaign.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectcampaignservice_create_campaign/} for full documentation.
 }
 \keyword{internal}

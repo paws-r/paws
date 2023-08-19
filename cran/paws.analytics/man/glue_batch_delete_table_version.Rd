@@ -27,6 +27,6 @@ representation of an integer. Each version is incremented by 1.}
 \description{
 Deletes a specified batch of versions of a table.
 
-See \url{https://paws-r.github.io/docs/glue/batch_delete_table_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_batch_delete_table_version/} for full documentation.
 }
 \keyword{internal}

@@ -17,6 +17,6 @@ does not contain any tokens.}
 \description{
 Returns summaries of the organization's users.
 
-See \url{https://paws-r.github.io/docs/workmail/list_users.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_list_users/} for full documentation.
 }
 \keyword{internal}

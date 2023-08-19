@@ -19,6 +19,6 @@ number of items.}
 \description{
 Lists the iSCSI stored volumes of a gateway. Results are sorted by volume ARN. The response includes only the volume ARNs. If you want additional volume information, use the \code{\link[=storagegateway_describe_storedi_scsi_volumes]{describe_storedi_scsi_volumes}} or the \code{\link[=storagegateway_describe_cachedi_scsi_volumes]{describe_cachedi_scsi_volumes}} API.
 
-See \url{https://paws-r.github.io/docs/storagegateway/list_volumes.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_list_volumes/} for full documentation.
 }
 \keyword{internal}

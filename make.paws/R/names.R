@@ -22,7 +22,9 @@ struct_name <- function(api) {
     name <- api$metadata$serviceFullName
   }
 
-  if (length(name) == 0) return(character(0))
+  if (length(name) == 0) {
+    return(character(0))
+  }
 
   name <- trimws(name)
 

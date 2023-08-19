@@ -29,6 +29,6 @@ Use \code{ARCHIVE} to change an Active finding to an Archived finding. Use
 \description{
 Updates the status for the specified findings.
 
-See \url{https://paws-r.github.io/docs/accessanalyzer/update_findings.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/accessanalyzer_update_findings/} for full documentation.
 }
 \keyword{internal}

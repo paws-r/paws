@@ -12,6 +12,6 @@ recyclebin_list_tags_for_resource(ResourceArn)
 \description{
 Lists the tags assigned to a retention rule.
 
-See \url{https://paws-r.github.io/docs/recyclebin/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/recyclebin_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

@@ -1,7 +1,7 @@
 Package: paws.common
 Type: Package
 Title: Paws Low-Level Amazon Web Services API
-Version: 0.5.6
+Version: 0.5.9
 Authors@R: c(
         person("David", "Kretch", email = "david.kretch@gmail.com", role = "aut"),
         person("Adam", "Banker", email = "adam.banker39@gmail.com", role = "aut"),
@@ -25,6 +25,7 @@ Imports:
     jsonlite,
     methods,
     utils,
+    stats,
     Rcpp,
     xml2
 Suggests:
@@ -38,6 +39,7 @@ Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 7.2.3
 Collate:
     'RcppExports.R'
+    'util.R'
     'struct.R'
     'handlers.R'
     'logging.R'
@@ -55,7 +57,6 @@ Collate:
     'service.R'
     'custom_dynamodb.R'
     'custom_rds.R'
-    'util.R'
     'xmlutil.R'
     'stream.R'
     'custom_s3.R'
@@ -70,14 +71,16 @@ Collate:
     'idempotency.R'
     'jsonutil.R'
     'onLoad.R'
+    'paginate.R'
     'populate.R'
     'populateutil.R'
     'tags.R'
     'queryutil.R'
     'request.R'
+    'service_parameter_helper.R'
     'signer_v4.R'
-    'signer_query.R'
     'signer_s3.R'
     'signer_s3v4.R'
+    'signer_v1.R'
     'signer_v2.R'
     'time.R'

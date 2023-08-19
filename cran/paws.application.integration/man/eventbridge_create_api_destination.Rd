@@ -33,6 +33,6 @@ endpoint.}
 \description{
 Creates an API destination, which is an HTTP invocation endpoint configured as a target for events.
 
-See \url{https://paws-r.github.io/docs/eventbridge/create_api_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eventbridge_create_api_destination/} for full documentation.
 }
 \keyword{internal}

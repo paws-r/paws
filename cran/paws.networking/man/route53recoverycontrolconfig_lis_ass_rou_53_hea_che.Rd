@@ -21,6 +21,6 @@ route53recoverycontrolconfig_list_associated_route_53_health_checks(
 \description{
 Returns an array of all Amazon Route 53 health checks associated with a specific routing control.
 
-See \url{https://paws-r.github.io/docs/route53recoverycontrolconfig/list_associated_route_53_health_checks.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_list_associated_route_53_health_checks/} for full documentation.
 }
 \keyword{internal}

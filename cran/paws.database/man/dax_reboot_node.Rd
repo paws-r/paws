@@ -14,6 +14,6 @@ dax_reboot_node(ClusterName, NodeId)
 \description{
 Reboots a single node of a DAX cluster. The reboot action takes place as soon as possible. During the reboot, the node status is set to REBOOTING.
 
-See \url{https://paws-r.github.io/docs/dax/reboot_node.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/dax_reboot_node/} for full documentation.
 }
 \keyword{internal}

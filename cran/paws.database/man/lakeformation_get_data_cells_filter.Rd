@@ -23,6 +23,6 @@ lakeformation_get_data_cells_filter(
 \description{
 Returns a data cells filter.
 
-See \url{https://paws-r.github.io/docs/lakeformation/get_data_cells_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lakeformation_get_data_cells_filter/} for full documentation.
 }
 \keyword{internal}

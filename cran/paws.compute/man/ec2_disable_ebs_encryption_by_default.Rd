@@ -16,6 +16,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Disables EBS encryption by default for your account in the current Region.
 
-See \url{https://paws-r.github.io/docs/ec2/disable_ebs_encryption_by_default.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_disable_ebs_encryption_by_default/} for full documentation.
 }
 \keyword{internal}

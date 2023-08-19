@@ -17,6 +17,6 @@ this token from a previous
 \description{
 Returns configuration details about all the projects in the current Region in your account.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/list_projects.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_list_projects/} for full documentation.
 }
 \keyword{internal}

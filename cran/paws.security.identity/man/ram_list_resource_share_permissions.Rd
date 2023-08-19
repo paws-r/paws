@@ -35,6 +35,6 @@ receive all of the results.}
 \description{
 Lists the RAM permissions that are associated with a resource share.
 
-See \url{https://paws-r.github.io/docs/ram/list_resource_share_permissions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_list_resource_share_permissions/} for full documentation.
 }
 \keyword{internal}

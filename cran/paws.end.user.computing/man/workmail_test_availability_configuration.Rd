@@ -27,6 +27,6 @@ tested.}
 \description{
 Performs a test on an availability provider to ensure that access is allowed. For EWS, it verifies the provided credentials can be used to successfully log in. For Lambda, it verifies that the Lambda function can be invoked and that the resource access policy was configured to deny anonymous access. An anonymous invocation is one done without providing either a \code{SourceArn} or \code{SourceAccount} header.
 
-See \url{https://paws-r.github.io/docs/workmail/test_availability_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workmail_test_availability_configuration/} for full documentation.
 }
 \keyword{internal}

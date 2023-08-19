@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Adds the specified tags to the specified load balancer. Each load balancer can have a maximum of 10 tags.
 #'
-#' See [https://paws-r.github.io/docs/elb/add_tags.html](https://paws-r.github.io/docs/elb/add_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_add_tags/](https://www.paws-r-sdk.com/docs/elb_add_tags/) for full documentation.
 #'
 #' @param LoadBalancerNames &#91;required&#93; The name of the load balancer. You can specify one load balancer only.
 #' @param Tags &#91;required&#93; The tags.
@@ -39,7 +39,7 @@ elb_add_tags <- function(LoadBalancerNames, Tags) {
 #' @description
 #' Associates one or more security groups with your load balancer in a virtual private cloud (VPC). The specified security groups override the previously associated security groups.
 #'
-#' See [https://paws-r.github.io/docs/elb/apply_security_groups_to_load_balancer.html](https://paws-r.github.io/docs/elb/apply_security_groups_to_load_balancer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_apply_security_groups_to_load_balancer/](https://www.paws-r-sdk.com/docs/elb_apply_security_groups_to_load_balancer/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param SecurityGroups &#91;required&#93; The IDs of the security groups to associate with the load balancer. Note
@@ -71,7 +71,7 @@ elb_apply_security_groups_to_load_balancer <- function(LoadBalancerName, Securit
 #' @description
 #' Adds one or more subnets to the set of configured subnets for the specified load balancer.
 #'
-#' See [https://paws-r.github.io/docs/elb/attach_load_balancer_to_subnets.html](https://paws-r.github.io/docs/elb/attach_load_balancer_to_subnets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_attach_load_balancer_to_subnets/](https://www.paws-r-sdk.com/docs/elb_attach_load_balancer_to_subnets/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param Subnets &#91;required&#93; The IDs of the subnets to add. You can add only one subnet per
@@ -103,7 +103,7 @@ elb_attach_load_balancer_to_subnets <- function(LoadBalancerName, Subnets) {
 #' @description
 #' Specifies the health check settings to use when evaluating the health state of your EC2 instances.
 #'
-#' See [https://paws-r.github.io/docs/elb/configure_health_check.html](https://paws-r.github.io/docs/elb/configure_health_check.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_configure_health_check/](https://www.paws-r-sdk.com/docs/elb_configure_health_check/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param HealthCheck &#91;required&#93; The configuration information.
@@ -134,7 +134,7 @@ elb_configure_health_check <- function(LoadBalancerName, HealthCheck) {
 #' @description
 #' Generates a stickiness policy with sticky session lifetimes that follow that of an application-generated cookie. This policy can be associated only with HTTP/HTTPS listeners.
 #'
-#' See [https://paws-r.github.io/docs/elb/create_app_cookie_stickiness_policy.html](https://paws-r.github.io/docs/elb/create_app_cookie_stickiness_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_create_app_cookie_stickiness_policy/](https://www.paws-r-sdk.com/docs/elb_create_app_cookie_stickiness_policy/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param PolicyName &#91;required&#93; The name of the policy being created. Policy names must consist of
@@ -169,7 +169,7 @@ elb_create_app_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName
 #' @description
 #' Generates a stickiness policy with sticky session lifetimes controlled by the lifetime of the browser (user-agent) or a specified expiration period. This policy can be associated only with HTTP/HTTPS listeners.
 #'
-#' See [https://paws-r.github.io/docs/elb/create_lb_cookie_stickiness_policy.html](https://paws-r.github.io/docs/elb/create_lb_cookie_stickiness_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_create_lb_cookie_stickiness_policy/](https://www.paws-r-sdk.com/docs/elb_create_lb_cookie_stickiness_policy/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param PolicyName &#91;required&#93; The name of the policy being created. Policy names must consist of
@@ -205,7 +205,7 @@ elb_create_lb_cookie_stickiness_policy <- function(LoadBalancerName, PolicyName,
 #' @description
 #' Creates a Classic Load Balancer.
 #'
-#' See [https://paws-r.github.io/docs/elb/create_load_balancer.html](https://paws-r.github.io/docs/elb/create_load_balancer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_create_load_balancer/](https://www.paws-r-sdk.com/docs/elb_create_load_balancer/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' 
@@ -273,7 +273,7 @@ elb_create_load_balancer <- function(LoadBalancerName, Listeners, AvailabilityZo
 #' @description
 #' Creates one or more listeners for the specified load balancer. If a listener with the specified port does not already exist, it is created; otherwise, the properties of the new listener must match the properties of the existing listener.
 #'
-#' See [https://paws-r.github.io/docs/elb/create_load_balancer_listeners.html](https://paws-r.github.io/docs/elb/create_load_balancer_listeners.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_create_load_balancer_listeners/](https://www.paws-r-sdk.com/docs/elb_create_load_balancer_listeners/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param Listeners &#91;required&#93; The listeners.
@@ -304,7 +304,7 @@ elb_create_load_balancer_listeners <- function(LoadBalancerName, Listeners) {
 #' @description
 #' Creates a policy with the specified attributes for the specified load balancer.
 #'
-#' See [https://paws-r.github.io/docs/elb/create_load_balancer_policy.html](https://paws-r.github.io/docs/elb/create_load_balancer_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_create_load_balancer_policy/](https://www.paws-r-sdk.com/docs/elb_create_load_balancer_policy/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param PolicyName &#91;required&#93; The name of the load balancer policy to be created. This name must be
@@ -338,7 +338,7 @@ elb_create_load_balancer_policy <- function(LoadBalancerName, PolicyName, Policy
 #' @description
 #' Deletes the specified load balancer.
 #'
-#' See [https://paws-r.github.io/docs/elb/delete_load_balancer.html](https://paws-r.github.io/docs/elb/delete_load_balancer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_delete_load_balancer/](https://www.paws-r-sdk.com/docs/elb_delete_load_balancer/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #'
@@ -367,7 +367,7 @@ elb_delete_load_balancer <- function(LoadBalancerName) {
 #' @description
 #' Deletes the specified listeners from the specified load balancer.
 #'
-#' See [https://paws-r.github.io/docs/elb/delete_load_balancer_listeners.html](https://paws-r.github.io/docs/elb/delete_load_balancer_listeners.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_delete_load_balancer_listeners/](https://www.paws-r-sdk.com/docs/elb_delete_load_balancer_listeners/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param LoadBalancerPorts &#91;required&#93; The client port numbers of the listeners.
@@ -397,7 +397,7 @@ elb_delete_load_balancer_listeners <- function(LoadBalancerName, LoadBalancerPor
 #' @description
 #' Deletes the specified policy from the specified load balancer. This policy must not be enabled for any listeners.
 #'
-#' See [https://paws-r.github.io/docs/elb/delete_load_balancer_policy.html](https://paws-r.github.io/docs/elb/delete_load_balancer_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_delete_load_balancer_policy/](https://www.paws-r-sdk.com/docs/elb_delete_load_balancer_policy/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param PolicyName &#91;required&#93; The name of the policy.
@@ -427,7 +427,7 @@ elb_delete_load_balancer_policy <- function(LoadBalancerName, PolicyName) {
 #' @description
 #' Deregisters the specified instances from the specified load balancer. After the instance is deregistered, it no longer receives traffic from the load balancer.
 #'
-#' See [https://paws-r.github.io/docs/elb/deregister_instances_from_load_balancer.html](https://paws-r.github.io/docs/elb/deregister_instances_from_load_balancer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_deregister_instances_from_load_balancer/](https://www.paws-r-sdk.com/docs/elb_deregister_instances_from_load_balancer/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param Instances &#91;required&#93; The IDs of the instances.
@@ -458,7 +458,7 @@ elb_deregister_instances_from_load_balancer <- function(LoadBalancerName, Instan
 #' @description
 #' Describes the current Elastic Load Balancing resource limits for your AWS account.
 #'
-#' See [https://paws-r.github.io/docs/elb/describe_account_limits.html](https://paws-r.github.io/docs/elb/describe_account_limits.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_describe_account_limits/](https://www.paws-r-sdk.com/docs/elb_describe_account_limits/) for full documentation.
 #'
 #' @param Marker The marker for the next set of results. (You received this marker from a
 #' previous call.)
@@ -490,7 +490,7 @@ elb_describe_account_limits <- function(Marker = NULL, PageSize = NULL) {
 #' @description
 #' Describes the state of the specified instances with respect to the specified load balancer. If no instances are specified, the call describes the state of all instances that are currently registered with the load balancer. If instances are specified, their state is returned even if they are no longer registered with the load balancer. The state of terminated instances is not returned.
 #'
-#' See [https://paws-r.github.io/docs/elb/describe_instance_health.html](https://paws-r.github.io/docs/elb/describe_instance_health.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_describe_instance_health/](https://www.paws-r-sdk.com/docs/elb_describe_instance_health/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param Instances The IDs of the instances.
@@ -503,7 +503,7 @@ elb_describe_instance_health <- function(LoadBalancerName, Instances = NULL) {
     name = "DescribeInstanceHealth",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "InstanceStates")
   )
   input <- .elb$describe_instance_health_input(LoadBalancerName = LoadBalancerName, Instances = Instances)
   output <- .elb$describe_instance_health_output()
@@ -520,7 +520,7 @@ elb_describe_instance_health <- function(LoadBalancerName, Instances = NULL) {
 #' @description
 #' Describes the attributes for the specified load balancer.
 #'
-#' See [https://paws-r.github.io/docs/elb/describe_load_balancer_attributes.html](https://paws-r.github.io/docs/elb/describe_load_balancer_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_describe_load_balancer_attributes/](https://www.paws-r-sdk.com/docs/elb_describe_load_balancer_attributes/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #'
@@ -549,7 +549,7 @@ elb_describe_load_balancer_attributes <- function(LoadBalancerName) {
 #' @description
 #' Describes the specified policies.
 #'
-#' See [https://paws-r.github.io/docs/elb/describe_load_balancer_policies.html](https://paws-r.github.io/docs/elb/describe_load_balancer_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_describe_load_balancer_policies/](https://www.paws-r-sdk.com/docs/elb_describe_load_balancer_policies/) for full documentation.
 #'
 #' @param LoadBalancerName The name of the load balancer.
 #' @param PolicyNames The names of the policies.
@@ -562,7 +562,7 @@ elb_describe_load_balancer_policies <- function(LoadBalancerName = NULL, PolicyN
     name = "DescribeLoadBalancerPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "PolicyDescriptions")
   )
   input <- .elb$describe_load_balancer_policies_input(LoadBalancerName = LoadBalancerName, PolicyNames = PolicyNames)
   output <- .elb$describe_load_balancer_policies_output()
@@ -580,7 +580,7 @@ elb_describe_load_balancer_policies <- function(LoadBalancerName = NULL, PolicyN
 #' @description
 #' Describes the specified load balancer policy types or all load balancer policy types.
 #'
-#' See [https://paws-r.github.io/docs/elb/describe_load_balancer_policy_types.html](https://paws-r.github.io/docs/elb/describe_load_balancer_policy_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_describe_load_balancer_policy_types/](https://www.paws-r-sdk.com/docs/elb_describe_load_balancer_policy_types/) for full documentation.
 #'
 #' @param PolicyTypeNames The names of the policy types. If no names are specified, describes all
 #' policy types defined by Elastic Load Balancing.
@@ -593,7 +593,7 @@ elb_describe_load_balancer_policy_types <- function(PolicyTypeNames = NULL) {
     name = "DescribeLoadBalancerPolicyTypes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(result_key = "PolicyTypeDescriptions")
   )
   input <- .elb$describe_load_balancer_policy_types_input(PolicyTypeNames = PolicyTypeNames)
   output <- .elb$describe_load_balancer_policy_types_output()
@@ -610,7 +610,7 @@ elb_describe_load_balancer_policy_types <- function(PolicyTypeNames = NULL) {
 #' @description
 #' Describes the specified the load balancers. If no load balancers are specified, the call describes all of your load balancers.
 #'
-#' See [https://paws-r.github.io/docs/elb/describe_load_balancers.html](https://paws-r.github.io/docs/elb/describe_load_balancers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_describe_load_balancers/](https://www.paws-r-sdk.com/docs/elb_describe_load_balancers/) for full documentation.
 #'
 #' @param LoadBalancerNames The names of the load balancers.
 #' @param Marker The marker for the next set of results. (You received this marker from a
@@ -626,7 +626,7 @@ elb_describe_load_balancers <- function(LoadBalancerNames = NULL, Marker = NULL,
     name = "DescribeLoadBalancers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "NextMarker", result_key = "LoadBalancerDescriptions")
   )
   input <- .elb$describe_load_balancers_input(LoadBalancerNames = LoadBalancerNames, Marker = Marker, PageSize = PageSize)
   output <- .elb$describe_load_balancers_output()
@@ -643,7 +643,7 @@ elb_describe_load_balancers <- function(LoadBalancerNames = NULL, Marker = NULL,
 #' @description
 #' Describes the tags associated with the specified load balancers.
 #'
-#' See [https://paws-r.github.io/docs/elb/describe_tags.html](https://paws-r.github.io/docs/elb/describe_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_describe_tags/](https://www.paws-r-sdk.com/docs/elb_describe_tags/) for full documentation.
 #'
 #' @param LoadBalancerNames &#91;required&#93; The names of the load balancers.
 #'
@@ -673,7 +673,7 @@ elb_describe_tags <- function(LoadBalancerNames) {
 #' @description
 #' Removes the specified subnets from the set of configured subnets for the load balancer.
 #'
-#' See [https://paws-r.github.io/docs/elb/detach_load_balancer_from_subnets.html](https://paws-r.github.io/docs/elb/detach_load_balancer_from_subnets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_detach_load_balancer_from_subnets/](https://www.paws-r-sdk.com/docs/elb_detach_load_balancer_from_subnets/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param Subnets &#91;required&#93; The IDs of the subnets.
@@ -704,7 +704,7 @@ elb_detach_load_balancer_from_subnets <- function(LoadBalancerName, Subnets) {
 #' @description
 #' Removes the specified Availability Zones from the set of Availability Zones for the specified load balancer in EC2-Classic or a default VPC.
 #'
-#' See [https://paws-r.github.io/docs/elb/disable_availability_zones_for_load_balancer.html](https://paws-r.github.io/docs/elb/disable_availability_zones_for_load_balancer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_disable_availability_zones_for_load_balancer/](https://www.paws-r-sdk.com/docs/elb_disable_availability_zones_for_load_balancer/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param AvailabilityZones &#91;required&#93; The Availability Zones.
@@ -735,7 +735,7 @@ elb_disable_availability_zones_for_load_balancer <- function(LoadBalancerName, A
 #' @description
 #' Adds the specified Availability Zones to the set of Availability Zones for the specified load balancer in EC2-Classic or a default VPC.
 #'
-#' See [https://paws-r.github.io/docs/elb/enable_availability_zones_for_load_balancer.html](https://paws-r.github.io/docs/elb/enable_availability_zones_for_load_balancer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_enable_availability_zones_for_load_balancer/](https://www.paws-r-sdk.com/docs/elb_enable_availability_zones_for_load_balancer/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param AvailabilityZones &#91;required&#93; The Availability Zones. These must be in the same region as the load
@@ -766,7 +766,7 @@ elb_enable_availability_zones_for_load_balancer <- function(LoadBalancerName, Av
 #' @description
 #' Modifies the attributes of the specified load balancer.
 #'
-#' See [https://paws-r.github.io/docs/elb/modify_load_balancer_attributes.html](https://paws-r.github.io/docs/elb/modify_load_balancer_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_modify_load_balancer_attributes/](https://www.paws-r-sdk.com/docs/elb_modify_load_balancer_attributes/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param LoadBalancerAttributes &#91;required&#93; The attributes for the load balancer.
@@ -796,7 +796,7 @@ elb_modify_load_balancer_attributes <- function(LoadBalancerName, LoadBalancerAt
 #' @description
 #' Adds the specified instances to the specified load balancer.
 #'
-#' See [https://paws-r.github.io/docs/elb/register_instances_with_load_balancer.html](https://paws-r.github.io/docs/elb/register_instances_with_load_balancer.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_register_instances_with_load_balancer/](https://www.paws-r-sdk.com/docs/elb_register_instances_with_load_balancer/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param Instances &#91;required&#93; The IDs of the instances.
@@ -826,7 +826,7 @@ elb_register_instances_with_load_balancer <- function(LoadBalancerName, Instance
 #' @description
 #' Removes one or more tags from the specified load balancer.
 #'
-#' See [https://paws-r.github.io/docs/elb/remove_tags.html](https://paws-r.github.io/docs/elb/remove_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_remove_tags/](https://www.paws-r-sdk.com/docs/elb_remove_tags/) for full documentation.
 #'
 #' @param LoadBalancerNames &#91;required&#93; The name of the load balancer. You can specify a maximum of one load
 #' balancer name.
@@ -858,7 +858,7 @@ elb_remove_tags <- function(LoadBalancerNames, Tags) {
 #' @description
 #' Sets the certificate that terminates the specified listener's SSL connections. The specified certificate replaces any prior certificate that was used on the same load balancer and port.
 #'
-#' See [https://paws-r.github.io/docs/elb/set_load_balancer_listener_ssl_certificate.html](https://paws-r.github.io/docs/elb/set_load_balancer_listener_ssl_certificate.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_set_load_balancer_listener_ssl_certificate/](https://www.paws-r-sdk.com/docs/elb_set_load_balancer_listener_ssl_certificate/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param LoadBalancerPort &#91;required&#93; The port that uses the specified SSL certificate.
@@ -890,7 +890,7 @@ elb_set_load_balancer_listener_ssl_certificate <- function(LoadBalancerName, Loa
 #' @description
 #' Replaces the set of policies associated with the specified port on which the EC2 instance is listening with a new set of policies. At this time, only the back-end server authentication policy type can be applied to the instance ports; this policy type is composed of multiple public key policies.
 #'
-#' See [https://paws-r.github.io/docs/elb/set_load_balancer_policies_for_backend_server.html](https://paws-r.github.io/docs/elb/set_load_balancer_policies_for_backend_server.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_set_load_balancer_policies_for_backend_server/](https://www.paws-r-sdk.com/docs/elb_set_load_balancer_policies_for_backend_server/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param InstancePort &#91;required&#93; The port number associated with the EC2 instance.
@@ -923,7 +923,7 @@ elb_set_load_balancer_policies_for_backend_server <- function(LoadBalancerName, 
 #' @description
 #' Replaces the current set of policies for the specified load balancer port with the specified set of policies.
 #'
-#' See [https://paws-r.github.io/docs/elb/set_load_balancer_policies_of_listener.html](https://paws-r.github.io/docs/elb/set_load_balancer_policies_of_listener.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/elb_set_load_balancer_policies_of_listener/](https://www.paws-r-sdk.com/docs/elb_set_load_balancer_policies_of_listener/) for full documentation.
 #'
 #' @param LoadBalancerName &#91;required&#93; The name of the load balancer.
 #' @param LoadBalancerPort &#91;required&#93; The external port of the load balancer.

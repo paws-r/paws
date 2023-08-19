@@ -46,6 +46,6 @@ The value must be either -1 or an integer between 1 and 3,653.}
 \description{
 Enables the automatic copy of snapshots from one region to another region for a specified cluster.
 
-See \url{https://paws-r.github.io/docs/redshift/enable_snapshot_copy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_enable_snapshot_copy/} for full documentation.
 }
 \keyword{internal}

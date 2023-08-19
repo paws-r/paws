@@ -13,6 +13,6 @@ retrieve.}
 \description{
 Gets a component policy.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/get_component_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_get_component_policy/} for full documentation.
 }
 \keyword{internal}

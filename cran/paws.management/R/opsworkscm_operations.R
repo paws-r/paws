@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Associates a new node with the server. For more information about how to disassociate a node, see [`disassociate_node`][opsworkscm_disassociate_node].
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/associate_node.html](https://paws-r.github.io/docs/opsworkscm/associate_node.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_associate_node/](https://www.paws-r-sdk.com/docs/opsworkscm_associate_node/) for full documentation.
 #'
 #' @param ServerName &#91;required&#93; The name of the server with which to associate the node.
 #' @param NodeName &#91;required&#93; The name of the node.
@@ -53,7 +53,7 @@ opsworkscm_associate_node <- function(ServerName, NodeName, EngineAttributes) {
 #' @description
 #' Creates an application-level backup of a server. While the server is in the `BACKING_UP` state, the server cannot be changed, and no additional backup can be created.
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/create_backup.html](https://paws-r.github.io/docs/opsworkscm/create_backup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_create_backup/](https://www.paws-r-sdk.com/docs/opsworkscm_create_backup/) for full documentation.
 #'
 #' @param ServerName &#91;required&#93; The name of the server that you want to back up.
 #' @param Description A user-defined description of the backup.
@@ -101,7 +101,7 @@ opsworkscm_create_backup <- function(ServerName, Description = NULL, Tags = NULL
 #' @description
 #' Creates and immedately starts a new server. The server is ready to use when it is in the `HEALTHY` state. By default, you can create a maximum of 10 servers.
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/create_server.html](https://paws-r.github.io/docs/opsworkscm/create_server.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_create_server/](https://www.paws-r-sdk.com/docs/opsworkscm_create_server/) for full documentation.
 #'
 #' @param AssociatePublicIpAddress Associate a public IP address with a server that you are launching.
 #' Valid values are `true` or `false`. The default value is `true`.
@@ -294,7 +294,7 @@ opsworkscm_create_server <- function(AssociatePublicIpAddress = NULL, CustomDoma
 #' @description
 #' Deletes a backup. You can delete both manual and automated backups. This operation is asynchronous.
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/delete_backup.html](https://paws-r.github.io/docs/opsworkscm/delete_backup.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_delete_backup/](https://www.paws-r-sdk.com/docs/opsworkscm_delete_backup/) for full documentation.
 #'
 #' @param BackupId &#91;required&#93; The ID of the backup to delete. Run the DescribeBackups command to get a
 #' list of backup IDs. Backup IDs are in the format
@@ -326,7 +326,7 @@ opsworkscm_delete_backup <- function(BackupId) {
 #' @description
 #' Deletes the server and the underlying AWS CloudFormation stacks (including the server's EC2 instance). When you run this command, the server state is updated to `DELETING`. After the server is deleted, it is no longer returned by `DescribeServer` requests. If the AWS CloudFormation stack cannot be deleted, the server cannot be deleted.
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/delete_server.html](https://paws-r.github.io/docs/opsworkscm/delete_server.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_delete_server/](https://www.paws-r-sdk.com/docs/opsworkscm_delete_server/) for full documentation.
 #'
 #' @param ServerName &#91;required&#93; The ID of the server to delete.
 #'
@@ -355,7 +355,7 @@ opsworkscm_delete_server <- function(ServerName) {
 #' @description
 #' Describes your OpsWorks-CM account attributes.
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/describe_account_attributes.html](https://paws-r.github.io/docs/opsworkscm/describe_account_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_describe_account_attributes/](https://www.paws-r-sdk.com/docs/opsworkscm_describe_account_attributes/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -382,7 +382,7 @@ opsworkscm_describe_account_attributes <- function() {
 #' @description
 #' Describes backups. The results are ordered by time, with newest backups first. If you do not specify a BackupId or ServerName, the command returns all backups.
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/describe_backups.html](https://paws-r.github.io/docs/opsworkscm/describe_backups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_describe_backups/](https://www.paws-r-sdk.com/docs/opsworkscm_describe_backups/) for full documentation.
 #'
 #' @param BackupId Describes a single backup.
 #' @param ServerName Returns backups for the server with the specified ServerName.
@@ -399,7 +399,7 @@ opsworkscm_describe_backups <- function(BackupId = NULL, ServerName = NULL, Next
     name = "DescribeBackups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Backups")
   )
   input <- .opsworkscm$describe_backups_input(BackupId = BackupId, ServerName = ServerName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$describe_backups_output()
@@ -416,7 +416,7 @@ opsworkscm_describe_backups <- function(BackupId = NULL, ServerName = NULL, Next
 #' @description
 #' Describes events for a specified server. Results are ordered by time, with newest events first.
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/describe_events.html](https://paws-r.github.io/docs/opsworkscm/describe_events.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_describe_events/](https://www.paws-r-sdk.com/docs/opsworkscm_describe_events/) for full documentation.
 #'
 #' @param ServerName &#91;required&#93; The name of the server for which you want to view events.
 #' @param NextToken NextToken is a string that is returned in some command responses. It
@@ -442,7 +442,7 @@ opsworkscm_describe_events <- function(ServerName, NextToken = NULL, MaxResults 
     name = "DescribeEvents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServerEvents")
   )
   input <- .opsworkscm$describe_events_input(ServerName = ServerName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$describe_events_output()
@@ -460,7 +460,7 @@ opsworkscm_describe_events <- function(ServerName, NextToken = NULL, MaxResults 
 #' @description
 #' Returns the current status of an existing association or disassociation request.
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/describe_node_association_status.html](https://paws-r.github.io/docs/opsworkscm/describe_node_association_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_describe_node_association_status/](https://www.paws-r-sdk.com/docs/opsworkscm_describe_node_association_status/) for full documentation.
 #'
 #' @param NodeAssociationStatusToken &#91;required&#93; The token returned in either the AssociateNodeResponse or the
 #' DisassociateNodeResponse.
@@ -492,7 +492,7 @@ opsworkscm_describe_node_association_status <- function(NodeAssociationStatusTok
 #' @description
 #' Lists all configuration management servers that are identified with your account. Only the stored results from Amazon DynamoDB are returned. AWS OpsWorks CM does not query other services.
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/describe_servers.html](https://paws-r.github.io/docs/opsworkscm/describe_servers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_describe_servers/](https://www.paws-r-sdk.com/docs/opsworkscm_describe_servers/) for full documentation.
 #'
 #' @param ServerName Describes the server with the specified ServerName.
 #' @param NextToken This is not currently implemented for
@@ -508,7 +508,7 @@ opsworkscm_describe_servers <- function(ServerName = NULL, NextToken = NULL, Max
     name = "DescribeServers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Servers")
   )
   input <- .opsworkscm$describe_servers_input(ServerName = ServerName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$describe_servers_output()
@@ -526,7 +526,7 @@ opsworkscm_describe_servers <- function(ServerName = NULL, NextToken = NULL, Max
 #' @description
 #' Disassociates a node from an AWS OpsWorks CM server, and removes the node from the server's managed nodes. After a node is disassociated, the node key pair is no longer valid for accessing the configuration manager's API. For more information about how to associate a node, see [`associate_node`][opsworkscm_associate_node].
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/disassociate_node.html](https://paws-r.github.io/docs/opsworkscm/disassociate_node.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_disassociate_node/](https://www.paws-r-sdk.com/docs/opsworkscm_disassociate_node/) for full documentation.
 #'
 #' @param ServerName &#91;required&#93; The name of the server from which to disassociate the node.
 #' @param NodeName &#91;required&#93; The name of the client node.
@@ -564,7 +564,7 @@ opsworkscm_disassociate_node <- function(ServerName, NodeName, EngineAttributes 
 #' @description
 #' Exports a specified server engine attribute as a base64-encoded string. For example, you can export user data that you can use in EC2 to associate nodes with a server.
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/export_server_engine_attribute.html](https://paws-r.github.io/docs/opsworkscm/export_server_engine_attribute.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_export_server_engine_attribute/](https://www.paws-r-sdk.com/docs/opsworkscm_export_server_engine_attribute/) for full documentation.
 #'
 #' @param ExportAttributeName &#91;required&#93; The name of the export attribute. Currently, the supported export
 #' attribute is `Userdata`. This exports a user data script that includes
@@ -618,7 +618,7 @@ opsworkscm_export_server_engine_attribute <- function(ExportAttributeName, Serve
 #' @description
 #' Returns a list of tags that are applied to the specified AWS OpsWorks for Chef Automate or AWS OpsWorks for Puppet Enterprise servers or backups.
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/list_tags_for_resource.html](https://paws-r.github.io/docs/opsworkscm/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/opsworkscm_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of an AWS OpsWorks for Chef Automate or
 #' AWS OpsWorks for Puppet Enterprise server for which you want to show
@@ -648,7 +648,7 @@ opsworkscm_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, Max
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Tags")
   )
   input <- .opsworkscm$list_tags_for_resource_input(ResourceArn = ResourceArn, NextToken = NextToken, MaxResults = MaxResults)
   output <- .opsworkscm$list_tags_for_resource_output()
@@ -666,7 +666,7 @@ opsworkscm_list_tags_for_resource <- function(ResourceArn, NextToken = NULL, Max
 #' @description
 #' Restores a backup to a server that is in a `CONNECTION_LOST`, `HEALTHY`, `RUNNING`, `UNHEALTHY`, or `TERMINATED` state. When you run RestoreServer, the server's EC2 instance is deleted, and a new EC2 instance is configured. RestoreServer maintains the existing server endpoint, so configuration management of the server's client devices (nodes) should continue to work.
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/restore_server.html](https://paws-r.github.io/docs/opsworkscm/restore_server.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_restore_server/](https://www.paws-r-sdk.com/docs/opsworkscm_restore_server/) for full documentation.
 #'
 #' @param BackupId &#91;required&#93; The ID of the backup that you want to use to restore a server.
 #' @param ServerName &#91;required&#93; The name of the server that you want to restore.
@@ -703,7 +703,7 @@ opsworkscm_restore_server <- function(BackupId, ServerName, InstanceType = NULL,
 #' @description
 #' Manually starts server maintenance. This command can be useful if an earlier maintenance attempt failed, and the underlying cause of maintenance failure has been resolved. The server is in an `UNDER_MAINTENANCE` state while maintenance is in progress.
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/start_maintenance.html](https://paws-r.github.io/docs/opsworkscm/start_maintenance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_start_maintenance/](https://www.paws-r-sdk.com/docs/opsworkscm_start_maintenance/) for full documentation.
 #'
 #' @param ServerName &#91;required&#93; The name of the server on which to run maintenance.
 #' @param EngineAttributes Engine attributes that are specific to the server on which you want to
@@ -745,7 +745,7 @@ opsworkscm_start_maintenance <- function(ServerName, EngineAttributes = NULL) {
 #' @description
 #' Applies tags to an AWS OpsWorks for Chef Automate or AWS OpsWorks for Puppet Enterprise server, or to server backups.
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/tag_resource.html](https://paws-r.github.io/docs/opsworkscm/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_tag_resource/](https://www.paws-r-sdk.com/docs/opsworkscm_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of a resource to which you want to
 #' apply tags. For example,
@@ -794,7 +794,7 @@ opsworkscm_tag_resource <- function(ResourceArn, Tags) {
 #' @description
 #' Removes specified tags from an AWS OpsWorks-CM server or backup.
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/untag_resource.html](https://paws-r.github.io/docs/opsworkscm/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_untag_resource/](https://www.paws-r-sdk.com/docs/opsworkscm_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Number (ARN) of a resource from which you want to
 #' remove tags. For example,
@@ -826,7 +826,7 @@ opsworkscm_untag_resource <- function(ResourceArn, TagKeys) {
 #' @description
 #' Updates settings for a server.
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/update_server.html](https://paws-r.github.io/docs/opsworkscm/update_server.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_update_server/](https://www.paws-r-sdk.com/docs/opsworkscm_update_server/) for full documentation.
 #'
 #' @param DisableAutomatedBackup Setting DisableAutomatedBackup to `true` disables automated or scheduled
 #' backups. Automated backups are enabled by default.
@@ -860,7 +860,7 @@ opsworkscm_update_server <- function(DisableAutomatedBackup = NULL, BackupRetent
 #' @description
 #' Updates engine-specific attributes on a specified server. The server enters the `MODIFYING` state when this operation is in progress. Only one update can occur at a time. You can use this command to reset a Chef server's public key (`CHEF_PIVOTAL_KEY`) or a Puppet server's admin password (`PUPPET_ADMIN_PASSWORD`).
 #'
-#' See [https://paws-r.github.io/docs/opsworkscm/update_server_engine_attributes.html](https://paws-r.github.io/docs/opsworkscm/update_server_engine_attributes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/opsworkscm_update_server_engine_attributes/](https://www.paws-r-sdk.com/docs/opsworkscm_update_server_engine_attributes/) for full documentation.
 #'
 #' @param ServerName &#91;required&#93; The name of the server to update.
 #' @param AttributeName &#91;required&#93; The name of the engine attribute to update.

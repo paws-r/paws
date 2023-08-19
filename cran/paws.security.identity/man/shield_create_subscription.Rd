@@ -9,6 +9,6 @@ shield_create_subscription()
 \description{
 Activates Shield Advanced for an account.
 
-See \url{https://paws-r.github.io/docs/shield/create_subscription.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/shield_create_subscription/} for full documentation.
 }
 \keyword{internal}

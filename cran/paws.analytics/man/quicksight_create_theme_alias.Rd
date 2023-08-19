@@ -26,6 +26,6 @@ are reserved by Amazon QuickSight.}
 \description{
 Creates a theme alias for a theme.
 
-See \url{https://paws-r.github.io/docs/quicksight/create_theme_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_create_theme_alias/} for full documentation.
 }
 \keyword{internal}

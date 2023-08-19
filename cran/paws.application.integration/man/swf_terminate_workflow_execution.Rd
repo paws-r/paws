@@ -49,6 +49,6 @@ registration time then a fault is returned.}
 \description{
 Records a \code{WorkflowExecutionTerminated} event and forces closure of the workflow execution identified by the given domain, runId, and workflowId. The child policy, registered with the workflow type or specified when starting this execution, is applied to any open child workflow executions of this workflow execution.
 
-See \url{https://paws-r.github.io/docs/swf/terminate_workflow_execution.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/swf_terminate_workflow_execution/} for full documentation.
 }
 \keyword{internal}

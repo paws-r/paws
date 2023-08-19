@@ -17,6 +17,6 @@ pinpointsmsvoice_delete_configuration_set_event_destination(
 \description{
 Deletes an event destination in a configuration set.
 
-See \url{https://paws-r.github.io/docs/pinpointsmsvoice/delete_configuration_set_event_destination.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpointsmsvoice_delete_configuration_set_event_destination/} for full documentation.
 }
 \keyword{internal}

@@ -52,6 +52,6 @@ you can \href{https://docs.aws.amazon.com/servicequotas/latest/userguide/request
 \description{
 Updates the configuration for a Lambda function URL.
 
-See \url{https://paws-r.github.io/docs/lambda/update_function_url_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_update_function_url_config/} for full documentation.
 }
 \keyword{internal}

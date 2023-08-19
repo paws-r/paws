@@ -17,6 +17,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Deletes the queued purchases for the specified Reserved Instances.
 
-See \url{https://paws-r.github.io/docs/ec2/delete_queued_reserved_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_delete_queued_reserved_instances/} for full documentation.
 }
 \keyword{internal}

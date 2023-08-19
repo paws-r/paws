@@ -42,6 +42,6 @@ message with no action taken.}
 \description{
 Updates an existing report plan identified by its \code{ReportPlanName} with the input document in JSON format.
 
-See \url{https://paws-r.github.io/docs/backup/update_report_plan.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_update_report_plan/} for full documentation.
 }
 \keyword{internal}

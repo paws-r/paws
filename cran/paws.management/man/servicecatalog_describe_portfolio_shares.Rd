@@ -38,6 +38,6 @@ results, use null.}
 \description{
 Returns a summary of each of the portfolio shares that were created for the specified portfolio.
 
-See \url{https://paws-r.github.io/docs/servicecatalog/describe_portfolio_shares.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicecatalog_describe_portfolio_shares/} for full documentation.
 }
 \keyword{internal}

@@ -28,6 +28,6 @@ that you can use to retrieve the next page of access points.}
 \description{
 Returns some or all (up to 1,000) access points associated with the Object Lambda Access Point per call. If there are more access points than what can be returned in one call, the response will include a continuation token that you can use to list the additional access points.
 
-See \url{https://paws-r.github.io/docs/s3control/list_access_points_for_object_lambda.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3control_list_access_points_for_object_lambda/} for full documentation.
 }
 \keyword{internal}

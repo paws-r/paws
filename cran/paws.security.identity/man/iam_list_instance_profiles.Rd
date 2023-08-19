@@ -36,8 +36,8 @@ returns \code{true}, and \code{Marker} contains a value to include in the
 subsequent call that tells the service where to continue from.}
 }
 \description{
-Lists the instance profiles that have the specified path prefix. If there are none, the operation returns an empty list. For more information about instance profiles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{About instance profiles}.
+Lists the instance profiles that have the specified path prefix. If there are none, the operation returns an empty list. For more information about instance profiles, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_use_switch-role-ec2_instance-profiles.html}{Using instance profiles} in the \emph{IAM User Guide}.
 
-See \url{https://paws-r.github.io/docs/iam/list_instance_profiles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_list_instance_profiles/} for full documentation.
 }
 \keyword{internal}

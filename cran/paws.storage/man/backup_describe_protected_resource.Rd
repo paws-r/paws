@@ -15,6 +15,6 @@ format of the ARN depends on the resource type.}
 \description{
 Returns information about a saved resource, including the last time it was backed up, its Amazon Resource Name (ARN), and the Amazon Web Services service type of the saved resource.
 
-See \url{https://paws-r.github.io/docs/backup/describe_protected_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_describe_protected_resource/} for full documentation.
 }
 \keyword{internal}

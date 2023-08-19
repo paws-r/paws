@@ -33,6 +33,6 @@ alias.}
 \description{
 Adds a provisioned concurrency configuration to a function's alias or version.
 
-See \url{https://paws-r.github.io/docs/lambda/put_provisioned_concurrency_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lambda_put_provisioned_concurrency_config/} for full documentation.
 }
 \keyword{internal}

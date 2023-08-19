@@ -22,6 +22,6 @@ You must specify the ARN or the name, and you can specify both.}
 \description{
 Deletes the specified TLSInspectionConfiguration.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/delete_tls_inspection_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_delete_tls_inspection_configuration/} for full documentation.
 }
 \keyword{internal}

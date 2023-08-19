@@ -23,6 +23,6 @@ workspaces_update_connect_client_add_in(
 \description{
 Updates a Amazon Connect client add-in. Use this action to update the name and endpoint URL of a Amazon Connect client add-in.
 
-See \url{https://paws-r.github.io/docs/workspaces/update_connect_client_add_in.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_update_connect_client_add_in/} for full documentation.
 }
 \keyword{internal}

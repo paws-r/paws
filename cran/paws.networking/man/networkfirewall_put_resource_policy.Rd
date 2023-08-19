@@ -36,6 +36,6 @@ account that you specified in \code{Arn}.}
 \description{
 Creates or updates an IAM policy for your rule group or firewall policy. Use this to share rule groups and firewall policies between accounts. This operation works in conjunction with the Amazon Web Services Resource Access Manager (RAM) service to manage resource sharing for Network Firewall.
 
-See \url{https://paws-r.github.io/docs/networkfirewall/put_resource_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkfirewall_put_resource_policy/} for full documentation.
 }
 \keyword{internal}

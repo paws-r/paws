@@ -27,6 +27,6 @@ the browser session.}
 \description{
 Generates a stickiness policy with sticky session lifetimes controlled by the lifetime of the browser (user-agent) or a specified expiration period. This policy can be associated only with HTTP/HTTPS listeners.
 
-See \url{https://paws-r.github.io/docs/elb/create_lb_cookie_stickiness_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_create_lb_cookie_stickiness_policy/} for full documentation.
 }
 \keyword{internal}

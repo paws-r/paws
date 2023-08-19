@@ -14,6 +14,6 @@ policy types defined by Elastic Load Balancing.}
 \description{
 Describes the specified load balancer policy types or all load balancer policy types.
 
-See \url{https://paws-r.github.io/docs/elb/describe_load_balancer_policy_types.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elb_describe_load_balancer_policy_types/} for full documentation.
 }
 \keyword{internal}

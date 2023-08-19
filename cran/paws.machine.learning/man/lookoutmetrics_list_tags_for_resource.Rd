@@ -12,6 +12,6 @@ lookoutmetrics_list_tags_for_resource(ResourceArn)
 \description{
 Gets a list of \href{https://docs.aws.amazon.com/lookoutmetrics/latest/dev/detectors-tags.html}{tags} for a detector, dataset, or alert.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

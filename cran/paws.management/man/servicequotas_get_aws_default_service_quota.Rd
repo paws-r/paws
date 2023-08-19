@@ -14,6 +14,6 @@ servicequotas_get_aws_default_service_quota(ServiceCode, QuotaCode)
 \description{
 Retrieves the default value for the specified quota. The default value does not reflect any quota increases.
 
-See \url{https://paws-r.github.io/docs/servicequotas/get_aws_default_service_quota.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/servicequotas_get_aws_default_service_quota/} for full documentation.
 }
 \keyword{internal}

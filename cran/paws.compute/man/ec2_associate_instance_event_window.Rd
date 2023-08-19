@@ -23,6 +23,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Associates one or more targets with an event window. Only one type of target (instance IDs, Dedicated Host IDs, or tags) can be specified with an event window.
 
-See \url{https://paws-r.github.io/docs/ec2/associate_instance_event_window.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_associate_instance_event_window/} for full documentation.
 }
 \keyword{internal}

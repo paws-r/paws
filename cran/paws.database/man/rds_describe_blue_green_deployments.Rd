@@ -2,7 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_describe_blue_green_deployments}
 \alias{rds_describe_blue_green_deployments}
-\title{Returns information about blue/green deployments}
+\title{Describes one or more blue/green deployments}
 \usage{
 rds_describe_blue_green_deployments(
   BlueGreenDeploymentIdentifier = NULL,
@@ -12,19 +12,18 @@ rds_describe_blue_green_deployments(
 )
 }
 \arguments{
-\item{BlueGreenDeploymentIdentifier}{The blue/green deployment identifier. If this parameter is specified,
-information from only the specific blue/green deployment is returned.
-This parameter isn't case-sensitive.
+\item{BlueGreenDeploymentIdentifier}{The blue/green deployment identifier. If you specify this parameter, the
+response only includes information about the specific blue/green
+deployment. This parameter isn't case-sensitive.
 
 Constraints:
 \itemize{
-\item If supplied, must match an existing blue/green deployment
-identifier.
+\item Must match an existing blue/green deployment identifier.
 }}
 
 \item{Filters}{A filter that specifies one or more blue/green deployments to describe.
 
-Supported filters:
+Valid Values:
 \itemize{
 \item \code{blue-green-deployment-identifier} - Accepts system-generated
 identifiers for blue/green deployments. The results list only
@@ -43,7 +42,7 @@ deployments with the specified target databases.
 
 \item{Marker}{An optional pagination token provided by a previous
 \code{\link[=rds_describe_blue_green_deployments]{describe_blue_green_deployments}}
-request. If this parameter is specified, the response includes only
+request. If you specify this parameter, the response only includes
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 
 \item{MaxRecords}{The maximum number of records to include in the response. If more
@@ -53,11 +52,15 @@ remaining results.
 
 Default: 100
 
-Constraints: Minimum 20, maximum 100.}
+Constraints:
+\itemize{
+\item Must be a minimum of 20.
+\item Can't exceed 100.
+}}
 }
 \description{
-Returns information about blue/green deployments.
+Describes one or more blue/green deployments.
 
-See \url{https://paws-r.github.io/docs/rds/describe_blue_green_deployments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rds_describe_blue_green_deployments/} for full documentation.
 }
 \keyword{internal}

@@ -34,6 +34,6 @@ idempotency of the request. For more information, see \href{https://docs.aws.ama
 \description{
 Create an IPAM scope. In IPAM, a scope is the highest-level container within IPAM. An IPAM contains two default scopes. Each scope represents the IP space for a single network. The private scope is intended for all private IP address space. The public scope is intended for all public IP address space. Scopes enable you to reuse IP addresses across multiple unconnected networks without causing IP address overlap or conflict.
 
-See \url{https://paws-r.github.io/docs/ec2/create_ipam_scope.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_ipam_scope/} for full documentation.
 }
 \keyword{internal}

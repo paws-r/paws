@@ -16,6 +16,6 @@ You can specify numeric versions (\code{X.Y}) or \code{LATEST_WORKING}.
 \description{
 Deletes one or more versions of a recipe at a time.
 
-See \url{https://paws-r.github.io/docs/gluedatabrew/batch_delete_recipe_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/gluedatabrew_batch_delete_recipe_version/} for full documentation.
 }
 \keyword{internal}

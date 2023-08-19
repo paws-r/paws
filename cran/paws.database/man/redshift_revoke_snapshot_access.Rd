@@ -19,7 +19,7 @@ redshift_revoke_snapshot_access(
 message to revoke access.}
 
 \item{SnapshotClusterIdentifier}{The identifier of the cluster the snapshot was created from. This
-parameter is required if your IAM user or role has a policy containing a
+parameter is required if your IAM user has a policy containing a
 snapshot resource element that specifies anything other than * for the
 cluster name.}
 
@@ -29,6 +29,6 @@ restore the specified snapshot.}
 \description{
 Removes the ability of the specified Amazon Web Services account to restore the specified snapshot. If the account is currently restoring the snapshot, the restore will run to completion.
 
-See \url{https://paws-r.github.io/docs/redshift/revoke_snapshot_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_revoke_snapshot_access/} for full documentation.
 }
 \keyword{internal}

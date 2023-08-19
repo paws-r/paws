@@ -65,7 +65,7 @@ message to restore from a cluster. You must specify this parameter or
 \code{snapshotIdentifier}, but not both.}
 
 \item{SnapshotClusterIdentifier}{The name of the cluster the source snapshot was created from. This
-parameter is required if your IAM user or role has a policy containing a
+parameter is required if your IAM user has a policy containing a
 snapshot resource element that specifies anything other than * for the
 cluster name.}
 
@@ -240,6 +240,6 @@ encrypted with Key Management Service (KMS) and a customer managed key.}
 \description{
 Creates a new cluster from a snapshot. By default, Amazon Redshift creates the resulting cluster with the same configuration as the original cluster from which the snapshot was created, except that the new cluster is created with the default cluster security and parameter groups. After Amazon Redshift creates the cluster, you can use the \code{\link[=redshift_modify_cluster]{modify_cluster}} API to associate a different security group and different parameter group with the restored cluster. If you are using a DS node type, you can also choose to change to another DS node type of the same size during restore.
 
-See \url{https://paws-r.github.io/docs/redshift/restore_from_cluster_snapshot.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_restore_from_cluster_snapshot/} for full documentation.
 }
 \keyword{internal}

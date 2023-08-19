@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Retrieves the raw content of an in-transit email message, in MIME format.
 #'
-#' See [https://paws-r.github.io/docs/workmailmessageflow/get_raw_message_content.html](https://paws-r.github.io/docs/workmailmessageflow/get_raw_message_content.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmailmessageflow_get_raw_message_content/](https://www.paws-r-sdk.com/docs/workmailmessageflow_get_raw_message_content/) for full documentation.
 #'
 #' @param messageId &#91;required&#93; The identifier of the email message to retrieve.
 #'
@@ -37,7 +37,7 @@ workmailmessageflow_get_raw_message_content <- function(messageId) {
 #' @description
 #' Updates the raw content of an in-transit email message, in MIME format.
 #'
-#' See [https://paws-r.github.io/docs/workmailmessageflow/put_raw_message_content.html](https://paws-r.github.io/docs/workmailmessageflow/put_raw_message_content.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/workmailmessageflow_put_raw_message_content/](https://www.paws-r-sdk.com/docs/workmailmessageflow_put_raw_message_content/) for full documentation.
 #'
 #' @param messageId &#91;required&#93; The identifier of the email message being updated.
 #' @param content &#91;required&#93; Describes the raw message content of the updated email message.

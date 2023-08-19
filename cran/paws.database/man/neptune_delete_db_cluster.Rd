@@ -45,6 +45,6 @@ Constraints:
 \description{
 The DeleteDBCluster action deletes a previously provisioned DB cluster. When you delete a DB cluster, all automated backups for that DB cluster are deleted and can't be recovered. Manual DB cluster snapshots of the specified DB cluster are not deleted.
 
-See \url{https://paws-r.github.io/docs/neptune/delete_db_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/neptune_delete_db_cluster/} for full documentation.
 }
 \keyword{internal}

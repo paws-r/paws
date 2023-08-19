@@ -12,6 +12,6 @@ sagemaker_delete_app_image_config(AppImageConfigName)
 \description{
 Deletes an AppImageConfig.
 
-See \url{https://paws-r.github.io/docs/sagemaker/delete_app_image_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_delete_app_image_config/} for full documentation.
 }
 \keyword{internal}

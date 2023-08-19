@@ -20,8 +20,8 @@ default subnet for this Availability Zone, you must delete it before you
 can create an IPv6 only subnet.}
 }
 \description{
-Creates a default subnet with a size \verb{/20} IPv4 CIDR block in the specified Availability Zone in your default VPC. You can have only one default subnet per Availability Zone. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-subnet}{Creating a default subnet} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Creates a default subnet with a size \verb{/20} IPv4 CIDR block in the specified Availability Zone in your default VPC. You can have only one default subnet per Availability Zone. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/default-vpc.html#create-default-subnet}{Create a default subnet} in the \emph{Amazon VPC User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/create_default_subnet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_default_subnet/} for full documentation.
 }
 \keyword{internal}

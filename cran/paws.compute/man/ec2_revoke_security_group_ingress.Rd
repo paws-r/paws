@@ -26,14 +26,12 @@ specifying a source security group.}
 the protocol is ICMP, this is the type number. A value of -1 indicates
 all ICMP types.}
 
-\item{GroupId}{The ID of the security group. You must specify either the security group
-ID or the security group name in the request. For security groups in a
-nondefault VPC, you must specify the security group ID.}
+\item{GroupId}{The ID of the security group.}
 
-\item{GroupName}{[EC2-Classic, default VPC] The name of the security group. You must
-specify either the security group ID or the security group name in the
-request. For security groups in a nondefault VPC, you must specify the
-security group ID.}
+\item{GroupName}{[Default VPC] The name of the security group. You must specify either
+the security group ID or the security group name in the request. For
+security groups in a nondefault VPC, you must specify the security group
+ID.}
 
 \item{IpPermissions}{The sets of IP permissions. You can't specify a source security group
 and a CIDR IP address range in the same set of permissions.}
@@ -41,19 +39,14 @@ and a CIDR IP address range in the same set of permissions.}
 \item{IpProtocol}{The IP protocol name (\code{tcp}, \code{udp}, \code{icmp}) or number (see \href{http://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml}{Protocol Numbers}).
 Use \code{-1} to specify all.}
 
-\item{SourceSecurityGroupName}{[EC2-Classic, default VPC] The name of the source security group. You
-can't specify this parameter in combination with the following
-parameters: the CIDR IP address range, the start of the port range, the
-IP protocol, and the end of the port range. For EC2-VPC, the source
-security group must be in the same VPC. To revoke a specific rule for an
-IP protocol and port range, use a set of IP permissions instead.}
+\item{SourceSecurityGroupName}{[Default VPC] The name of the source security group. You can't specify
+this parameter in combination with the following parameters: the CIDR IP
+address range, the start of the port range, the IP protocol, and the end
+of the port range. The source security group must be in the same VPC. To
+revoke a specific rule for an IP protocol and port range, use a set of
+IP permissions instead.}
 
-\item{SourceSecurityGroupOwnerId}{[EC2-Classic] The Amazon Web Services account ID of the source
-security group, if the source security group is in a different account.
-You can't specify this parameter in combination with the following
-parameters: the CIDR IP address range, the IP protocol, the start of the
-port range, and the end of the port range. To revoke a specific rule for
-an IP protocol and port range, use a set of IP permissions instead.}
+\item{SourceSecurityGroupOwnerId}{Not supported.}
 
 \item{ToPort}{If the protocol is TCP or UDP, this is the end of the port range. If the
 protocol is ICMP, this is the code. A value of -1 indicates all ICMP
@@ -69,6 +62,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Removes the specified inbound (ingress) rules from a security group.
 
-See \url{https://paws-r.github.io/docs/ec2/revoke_security_group_ingress.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_revoke_security_group_ingress/} for full documentation.
 }
 \keyword{internal}

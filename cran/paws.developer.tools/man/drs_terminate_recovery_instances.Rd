@@ -14,6 +14,6 @@ drs_terminate_recovery_instances(recoveryInstanceIDs)
 \description{
 Initiates a Job for terminating the EC2 resources associated with the specified Recovery Instances, and then will delete the Recovery Instances from the Elastic Disaster Recovery service.
 
-See \url{https://paws-r.github.io/docs/drs/terminate_recovery_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_terminate_recovery_instances/} for full documentation.
 }
 \keyword{internal}

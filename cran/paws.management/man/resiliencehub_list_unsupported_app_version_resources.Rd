@@ -32,6 +32,6 @@ in the response so that the remaining results can be retrieved.}
 \description{
 Lists the resources that are not currently supported in Resilience Hub. An unsupported resource is a resource that exists in the object that was used to create an app, but is not supported by Resilience Hub.
 
-See \url{https://paws-r.github.io/docs/resiliencehub/list_unsupported_app_version_resources.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/resiliencehub_list_unsupported_app_version_resources/} for full documentation.
 }
 \keyword{internal}

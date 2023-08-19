@@ -12,6 +12,6 @@ backup_describe_copy_job(CopyJobId)
 \description{
 Returns metadata associated with creating a copy of a resource.
 
-See \url{https://paws-r.github.io/docs/backup/describe_copy_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/backup_describe_copy_job/} for full documentation.
 }
 \keyword{internal}

@@ -39,6 +39,6 @@ findings.}
 \description{
 Updates the filter specified by the filter name.
 
-See \url{https://paws-r.github.io/docs/guardduty/update_filter.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_update_filter/} for full documentation.
 }
 \keyword{internal}

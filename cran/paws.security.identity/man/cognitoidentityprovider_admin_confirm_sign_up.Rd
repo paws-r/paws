@@ -46,6 +46,6 @@ provide sensitive information.
 \description{
 Confirms user registration as an admin without using a confirmation code. Works on any user.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/admin_confirm_sign_up.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_confirm_sign_up/} for full documentation.
 }
 \keyword{internal}

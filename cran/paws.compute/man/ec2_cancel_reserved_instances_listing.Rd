@@ -13,6 +13,6 @@ ec2_cancel_reserved_instances_listing(ReservedInstancesListingId)
 \description{
 Cancels the specified Reserved Instance listing in the Reserved Instance Marketplace.
 
-See \url{https://paws-r.github.io/docs/ec2/cancel_reserved_instances_listing.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_cancel_reserved_instances_listing/} for full documentation.
 }
 \keyword{internal}

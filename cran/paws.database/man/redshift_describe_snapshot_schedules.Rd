@@ -39,6 +39,6 @@ returned \code{marker} value.}
 \description{
 Returns a list of snapshot schedules.
 
-See \url{https://paws-r.github.io/docs/redshift/describe_snapshot_schedules.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_describe_snapshot_schedules/} for full documentation.
 }
 \keyword{internal}

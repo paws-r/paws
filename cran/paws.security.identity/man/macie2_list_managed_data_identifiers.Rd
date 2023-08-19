@@ -14,6 +14,6 @@ paginated response.}
 \description{
 Retrieves information about all the managed data identifiers that Amazon Macie currently provides.
 
-See \url{https://paws-r.github.io/docs/macie2/list_managed_data_identifiers.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/macie2_list_managed_data_identifiers/} for full documentation.
 }
 \keyword{internal}

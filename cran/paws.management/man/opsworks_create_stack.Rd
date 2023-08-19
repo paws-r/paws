@@ -232,6 +232,6 @@ instance, which overrides the stack's default setting.}
 \description{
 Creates a new stack. For more information, see \href{https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-edit.html}{Create a New Stack}.
 
-See \url{https://paws-r.github.io/docs/opsworks/create_stack.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/opsworks_create_stack/} for full documentation.
 }
 \keyword{internal}

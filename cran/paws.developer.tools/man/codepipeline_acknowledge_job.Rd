@@ -19,6 +19,6 @@ request that returned this job.}
 \description{
 Returns information about a specified job and whether that job has been received by the job worker. Used for custom actions only.
 
-See \url{https://paws-r.github.io/docs/codepipeline/acknowledge_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codepipeline_acknowledge_job/} for full documentation.
 }
 \keyword{internal}

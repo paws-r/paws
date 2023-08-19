@@ -29,6 +29,6 @@ profile before the user can access resources.}
 \description{
 Updates a team member's attributes in an AWS CodeStar project. For example, you can change a team member's role in the project, or change whether they have remote access to project resources.
 
-See \url{https://paws-r.github.io/docs/codestar/update_team_member.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codestar_update_team_member/} for full documentation.
 }
 \keyword{internal}

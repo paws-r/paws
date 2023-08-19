@@ -12,6 +12,6 @@ proton_get_service(name)
 \description{
 Get detailed data for a service.
 
-See \url{https://paws-r.github.io/docs/proton/get_service.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/proton_get_service/} for full documentation.
 }
 \keyword{internal}

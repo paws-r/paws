@@ -19,6 +19,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Creates a new segment for an application or updates the configuration, dimension, and other settings for an existing segment that's associated with an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/update_segment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_update_segment/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ fis_get_target_resource_type(resourceType)
 \description{
 Gets information about the specified resource type.
 
-See \url{https://paws-r.github.io/docs/fis/get_target_resource_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fis_get_target_resource_type/} for full documentation.
 }
 \keyword{internal}

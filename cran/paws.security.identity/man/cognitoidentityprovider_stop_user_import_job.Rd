@@ -15,6 +15,6 @@ into.}
 \description{
 Stops the user import job.
 
-See \url{https://paws-r.github.io/docs/cognitoidentityprovider/stop_user_import_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_stop_user_import_job/} for full documentation.
 }
 \keyword{internal}

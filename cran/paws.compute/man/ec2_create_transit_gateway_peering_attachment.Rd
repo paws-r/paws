@@ -38,6 +38,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Requests a transit gateway peering attachment between the specified transit gateway (requester) and a peer transit gateway (accepter). The peer transit gateway can be in your account or a different Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/ec2/create_transit_gateway_peering_attachment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_transit_gateway_peering_attachment/} for full documentation.
 }
 \keyword{internal}

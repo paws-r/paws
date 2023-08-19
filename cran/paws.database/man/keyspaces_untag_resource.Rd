@@ -16,6 +16,6 @@ resource.}
 \description{
 Removes the association of tags from a Amazon Keyspaces resource.
 
-See \url{https://paws-r.github.io/docs/keyspaces/untag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/keyspaces_untag_resource/} for full documentation.
 }
 \keyword{internal}

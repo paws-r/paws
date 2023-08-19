@@ -35,6 +35,6 @@ the next page of results in a paginated response.}
 \description{
 Indicates whether the specified Amazon Web Services resources are compliant. If a resource is noncompliant, this action returns the number of Config rules that the resource does not comply with.
 
-See \url{https://paws-r.github.io/docs/configservice/describe_compliance_by_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_describe_compliance_by_resource/} for full documentation.
 }
 \keyword{internal}

@@ -34,6 +34,6 @@ practices for the security of your data.}
 \description{
 Creates a group of labels.
 
-See \url{https://paws-r.github.io/docs/lookoutequipment/create_label_group.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_create_label_group/} for full documentation.
 }
 \keyword{internal}

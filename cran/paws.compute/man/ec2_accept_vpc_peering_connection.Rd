@@ -18,6 +18,6 @@ the request.}
 \description{
 Accept a VPC peering connection request. To accept a request, the VPC peering connection must be in the \code{pending-acceptance} state, and you must be the owner of the peer VPC. Use \code{\link[=ec2_describe_vpc_peering_connections]{describe_vpc_peering_connections}} to view your outstanding VPC peering connection requests.
 
-See \url{https://paws-r.github.io/docs/ec2/accept_vpc_peering_connection.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_accept_vpc_peering_connection/} for full documentation.
 }
 \keyword{internal}

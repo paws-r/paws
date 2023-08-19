@@ -23,6 +23,6 @@ networkmanager_associate_customer_gateway(
 \description{
 Associates a customer gateway with a device and optionally, with a link. If you specify a link, it must be associated with the specified device.
 
-See \url{https://paws-r.github.io/docs/networkmanager/associate_customer_gateway.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_associate_customer_gateway/} for full documentation.
 }
 \keyword{internal}

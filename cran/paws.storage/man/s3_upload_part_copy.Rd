@@ -43,7 +43,7 @@ takes the form
 \code{ AccessPointName-AccountId.outpostID.s3-outposts.Region.amazonaws.com}.
 When you use this action with S3 on Outposts through the Amazon Web
 Services SDKs, you provide the Outposts access point ARN in place of the
-bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts}
+bucket name. For more information about S3 on Outposts ARNs, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/S3onOutposts.html}{What is S3 on Outposts?}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{CopySource}{[required] Specifies the source object for the copy operation. You specify the
@@ -147,6 +147,6 @@ code \verb{403 Forbidden} (access denied).}
 \description{
 Uploads a part by copying data from an existing object as data source. You specify the data source by adding the request header \code{x-amz-copy-source} in your request and a byte range by adding the request header \code{x-amz-copy-source-range} in your request.
 
-See \url{https://paws-r.github.io/docs/s3/upload_part_copy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_upload_part_copy/} for full documentation.
 }
 \keyword{internal}

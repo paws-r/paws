@@ -107,6 +107,6 @@ in the \emph{Amazon Web Services General Reference Guide}.}
 \description{
 Creates a new, empty file system. The operation requires a creation token in the request that Amazon EFS uses to ensure idempotent creation (calling the operation with same creation token has no effect). If a file system does not currently exist that is owned by the caller's Amazon Web Services account with the specified creation token, this operation does the following:
 
-See \url{https://paws-r.github.io/docs/efs/create_file_system.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_create_file_system/} for full documentation.
 }
 \keyword{internal}

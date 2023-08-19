@@ -12,6 +12,6 @@ detective_delete_graph(GraphArn)
 \description{
 Disables the specified behavior graph and queues it to be deleted. This operation removes the behavior graph from each member account's list of behavior graphs.
 
-See \url{https://paws-r.github.io/docs/detective/delete_graph.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_delete_graph/} for full documentation.
 }
 \keyword{internal}

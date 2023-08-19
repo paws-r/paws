@@ -14,6 +14,6 @@ finspacedata_delete_dataset(clientToken = NULL, datasetId)
 \description{
 Deletes a FinSpace Dataset.
 
-See \url{https://paws-r.github.io/docs/finspacedata/delete_dataset.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/finspacedata_delete_dataset/} for full documentation.
 }
 \keyword{internal}

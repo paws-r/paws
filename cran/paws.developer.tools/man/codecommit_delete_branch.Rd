@@ -15,6 +15,6 @@ codecommit_delete_branch(repositoryName, branchName)
 \description{
 Deletes a branch from a repository, unless that branch is the default branch for the repository.
 
-See \url{https://paws-r.github.io/docs/codecommit/delete_branch.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codecommit_delete_branch/} for full documentation.
 }
 \keyword{internal}

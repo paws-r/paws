@@ -9,6 +9,6 @@ ecr_delete_registry_policy()
 \description{
 Deletes the registry permissions policy.
 
-See \url{https://paws-r.github.io/docs/ecr/delete_registry_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_delete_registry_policy/} for full documentation.
 }
 \keyword{internal}

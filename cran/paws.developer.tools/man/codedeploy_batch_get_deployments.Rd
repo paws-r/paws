@@ -13,6 +13,6 @@ deployment IDs you can specify is 25.}
 \description{
 Gets information about one or more deployments. The maximum number of deployments that can be returned is 25.
 
-See \url{https://paws-r.github.io/docs/codedeploy/batch_get_deployments.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_batch_get_deployments/} for full documentation.
 }
 \keyword{internal}

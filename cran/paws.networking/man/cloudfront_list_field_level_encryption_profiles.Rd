@@ -20,6 +20,6 @@ response body.}
 \description{
 Request a list of field-level encryption profiles that have been created in CloudFront for this account.
 
-See \url{https://paws-r.github.io/docs/cloudfront/list_field_level_encryption_profiles.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudfront_list_field_level_encryption_profiles/} for full documentation.
 }
 \keyword{internal}

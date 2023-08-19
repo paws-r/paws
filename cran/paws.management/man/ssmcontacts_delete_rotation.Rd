@@ -12,6 +12,6 @@ ssmcontacts_delete_rotation(RotationId)
 \description{
 Deletes a rotation from the system. If a rotation belongs to more than one on-call schedule, this operation deletes it from all of them.
 
-See \url{https://paws-r.github.io/docs/ssmcontacts/delete_rotation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssmcontacts_delete_rotation/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ that can consist of any upper or lowercased letter or digit.}
 \description{
 Sets the status of a service-specific credential to \code{Active} or \code{Inactive}. Service-specific credentials that are inactive cannot be used for authentication to the service. This operation can be used to disable a user's service-specific credential as part of a credential rotation work flow.
 
-See \url{https://paws-r.github.io/docs/iam/update_service_specific_credential.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/iam_update_service_specific_credential/} for full documentation.
 }
 \keyword{internal}

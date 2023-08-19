@@ -12,6 +12,6 @@ apigateway_delete_api_key(apiKey)
 \description{
 Deletes the ApiKey resource.
 
-See \url{https://paws-r.github.io/docs/apigateway/delete_api_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/apigateway_delete_api_key/} for full documentation.
 }
 \keyword{internal}

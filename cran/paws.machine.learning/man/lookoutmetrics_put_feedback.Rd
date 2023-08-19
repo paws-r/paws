@@ -14,6 +14,6 @@ lookoutmetrics_put_feedback(AnomalyDetectorArn, AnomalyGroupTimeSeriesFeedback)
 \description{
 Add feedback for an anomalous metric.
 
-See \url{https://paws-r.github.io/docs/lookoutmetrics/put_feedback.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/lookoutmetrics_put_feedback/} for full documentation.
 }
 \keyword{internal}

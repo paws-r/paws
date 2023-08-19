@@ -33,6 +33,6 @@ EFS file system.}
 \description{
 Returns the description of a specific Amazon EFS file system if either the file system \code{CreationToken} or the \code{FileSystemId} is provided. Otherwise, it returns descriptions of all file systems owned by the caller's Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
 
-See \url{https://paws-r.github.io/docs/efs/describe_file_systems.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_describe_file_systems/} for full documentation.
 }
 \keyword{internal}

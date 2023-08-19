@@ -6,9 +6,9 @@ NULL
 #' Creates a new Timestream batch load task
 #'
 #' @description
-#' Creates a new Timestream batch load task. A batch load task processes data from a CSV source in an S3 location and writes to a Timestream table. A mapping from source to target is defined in a batch load task. Errors and events are written to a report at an S3 location. For the report, if the KMS key is not specified, the batch load task will be encrypted with a Timestream managed KMS key located in your account. For more information, see [Amazon Web Services managed keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk). [Service quotas apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html). For details, see [code sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-batch-load.html).
+#' Creates a new Timestream batch load task. A batch load task processes data from a CSV source in an S3 location and writes to a Timestream table. A mapping from source to target is defined in a batch load task. Errors and events are written to a report at an S3 location. For the report, if the KMS key is not specified, the report will be encrypted with an S3 managed key when `SSE_S3` is the option. Otherwise an error is thrown. For more information, see [Amazon Web Services managed keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk). [Service quotas apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html). For details, see [code sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-batch-load.html).
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/create_batch_load_task.html](https://paws-r.github.io/docs/timestreamwrite/create_batch_load_task.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_create_batch_load_task/](https://www.paws-r-sdk.com/docs/timestreamwrite_create_batch_load_task/) for full documentation.
 #'
 #' @param ClientToken 
 #' @param DataModelConfiguration 
@@ -44,7 +44,7 @@ timestreamwrite_create_batch_load_task <- function(ClientToken = NULL, DataModel
 #' @description
 #' Creates a new Timestream database. If the KMS key is not specified, the database will be encrypted with a Timestream managed KMS key located in your account. For more information, see [Amazon Web Services managed keys](https://docs.aws.amazon.com/kms/latest/developerguide/concepts.html#aws-managed-cmk). [Service quotas apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html). For details, see [code sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-db.html).
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/create_database.html](https://paws-r.github.io/docs/timestreamwrite/create_database.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_create_database/](https://www.paws-r-sdk.com/docs/timestreamwrite_create_database/) for full documentation.
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
 #' @param KmsKeyId The KMS key for the database. If the KMS key is not specified, the
@@ -78,7 +78,7 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 #' @description
 #' Adds a new table to an existing database in your account. In an Amazon Web Services account, table names must be at least unique within each Region if they are in the same database. You might have identical table names in the same Region if the tables are in separate databases. While creating the table, you must specify the table name, database name, and the retention properties. [Service quotas apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html). See [code sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.create-table.html) for details.
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/create_table.html](https://paws-r.github.io/docs/timestreamwrite/create_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_create_table/](https://www.paws-r-sdk.com/docs/timestreamwrite_create_table/) for full documentation.
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
 #' @param TableName &#91;required&#93; The name of the Timestream table.
@@ -87,18 +87,19 @@ timestreamwrite_create_database <- function(DatabaseName, KmsKeyId = NULL, Tags 
 #' @param Tags A list of key-value pairs to label the table.
 #' @param MagneticStoreWriteProperties Contains properties to set on the table when enabling magnetic store
 #' writes.
+#' @param Schema The schema of the table.
 #'
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_create_table
-timestreamwrite_create_table <- function(DatabaseName, TableName, RetentionProperties = NULL, Tags = NULL, MagneticStoreWriteProperties = NULL) {
+timestreamwrite_create_table <- function(DatabaseName, TableName, RetentionProperties = NULL, Tags = NULL, MagneticStoreWriteProperties = NULL, Schema = NULL) {
   op <- new_operation(
     name = "CreateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .timestreamwrite$create_table_input(DatabaseName = DatabaseName, TableName = TableName, RetentionProperties = RetentionProperties, Tags = Tags, MagneticStoreWriteProperties = MagneticStoreWriteProperties)
+  input <- .timestreamwrite$create_table_input(DatabaseName = DatabaseName, TableName = TableName, RetentionProperties = RetentionProperties, Tags = Tags, MagneticStoreWriteProperties = MagneticStoreWriteProperties, Schema = Schema)
   output <- .timestreamwrite$create_table_output()
   config <- get_config()
   svc <- .timestreamwrite$service(config)
@@ -113,7 +114,7 @@ timestreamwrite_create_table <- function(DatabaseName, TableName, RetentionPrope
 #' @description
 #' Deletes a given Timestream database. *This is an irreversible operation. After a database is deleted, the time-series data from its tables cannot be recovered.*
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/delete_database.html](https://paws-r.github.io/docs/timestreamwrite/delete_database.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_delete_database/](https://www.paws-r-sdk.com/docs/timestreamwrite_delete_database/) for full documentation.
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database to be deleted.
 #'
@@ -142,7 +143,7 @@ timestreamwrite_delete_database <- function(DatabaseName) {
 #' @description
 #' Deletes a given Timestream table. This is an irreversible operation. After a Timestream database table is deleted, the time-series data stored in the table cannot be recovered.
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/delete_table.html](https://paws-r.github.io/docs/timestreamwrite/delete_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_delete_table/](https://www.paws-r-sdk.com/docs/timestreamwrite_delete_table/) for full documentation.
 #'
 #' @param DatabaseName &#91;required&#93; The name of the database where the Timestream database is to be deleted.
 #' @param TableName &#91;required&#93; The name of the Timestream table to be deleted.
@@ -173,7 +174,7 @@ timestreamwrite_delete_table <- function(DatabaseName, TableName) {
 #' @description
 #' Returns information about the batch load task, including configurations, mappings, progress, and other details. [Service quotas apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html). See [code sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-batch-load.html) for details.
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/describe_batch_load_task.html](https://paws-r.github.io/docs/timestreamwrite/describe_batch_load_task.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_describe_batch_load_task/](https://www.paws-r-sdk.com/docs/timestreamwrite_describe_batch_load_task/) for full documentation.
 #'
 #' @param TaskId &#91;required&#93; The ID of the batch load task.
 #'
@@ -204,7 +205,7 @@ timestreamwrite_describe_batch_load_task <- function(TaskId) {
 #' @description
 #' Returns information about the database, including the database name, time that the database was created, and the total number of tables found within the database. [Service quotas apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html). See [code sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-db.html) for details.
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/describe_database.html](https://paws-r.github.io/docs/timestreamwrite/describe_database.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_describe_database/](https://www.paws-r-sdk.com/docs/timestreamwrite_describe_database/) for full documentation.
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
 #'
@@ -234,7 +235,7 @@ timestreamwrite_describe_database <- function(DatabaseName) {
 #' @description
 #' Returns a list of available endpoints to make Timestream API calls against. This API operation is available through both the Write and Query APIs.
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/describe_endpoints.html](https://paws-r.github.io/docs/timestreamwrite/describe_endpoints.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_describe_endpoints/](https://www.paws-r-sdk.com/docs/timestreamwrite_describe_endpoints/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -262,7 +263,7 @@ timestreamwrite_describe_endpoints <- function() {
 #' @description
 #' Returns information about the table, including the table name, database name, retention duration of the memory store and the magnetic store. [Service quotas apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html). See [code sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.describe-table.html) for details.
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/describe_table.html](https://paws-r.github.io/docs/timestreamwrite/describe_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_describe_table/](https://www.paws-r-sdk.com/docs/timestreamwrite_describe_table/) for full documentation.
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
 #' @param TableName &#91;required&#93; The name of the Timestream table.
@@ -293,7 +294,7 @@ timestreamwrite_describe_table <- function(DatabaseName, TableName) {
 #' @description
 #' Provides a list of batch load tasks, along with the name, status, when the task is resumable until, and other details. See [code sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-batch-load-tasks.html) for details.
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/list_batch_load_tasks.html](https://paws-r.github.io/docs/timestreamwrite/list_batch_load_tasks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_list_batch_load_tasks/](https://www.paws-r-sdk.com/docs/timestreamwrite_list_batch_load_tasks/) for full documentation.
 #'
 #' @param NextToken A token to specify where to start paginating. This is the NextToken from
 #' a previously truncated response.
@@ -311,7 +312,7 @@ timestreamwrite_list_batch_load_tasks <- function(NextToken = NULL, MaxResults =
     name = "ListBatchLoadTasks",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .timestreamwrite$list_batch_load_tasks_input(NextToken = NextToken, MaxResults = MaxResults, TaskStatus = TaskStatus)
   output <- .timestreamwrite$list_batch_load_tasks_output()
@@ -328,7 +329,7 @@ timestreamwrite_list_batch_load_tasks <- function(NextToken = NULL, MaxResults =
 #' @description
 #' Returns a list of your Timestream databases. [Service quotas apply](https://docs.aws.amazon.com/timestream/latest/developerguide/ts-limits.html). See [code sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-db.html) for details.
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/list_databases.html](https://paws-r.github.io/docs/timestreamwrite/list_databases.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_list_databases/](https://www.paws-r-sdk.com/docs/timestreamwrite_list_databases/) for full documentation.
 #'
 #' @param NextToken The pagination token. To resume pagination, provide the NextToken value
 #' as argument of a subsequent API invocation.
@@ -345,7 +346,7 @@ timestreamwrite_list_databases <- function(NextToken = NULL, MaxResults = NULL) 
     name = "ListDatabases",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .timestreamwrite$list_databases_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .timestreamwrite$list_databases_output()
@@ -363,7 +364,7 @@ timestreamwrite_list_databases <- function(NextToken = NULL, MaxResults = NULL) 
 #' @description
 #' Provides a list of tables, along with the name, status, and retention properties of each table. See [code sample](https://docs.aws.amazon.com/timestream/latest/developerguide/code-samples.list-table.html) for details.
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/list_tables.html](https://paws-r.github.io/docs/timestreamwrite/list_tables.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_list_tables/](https://www.paws-r-sdk.com/docs/timestreamwrite_list_tables/) for full documentation.
 #'
 #' @param DatabaseName The name of the Timestream database.
 #' @param NextToken The pagination token. To resume pagination, provide the NextToken value
@@ -381,7 +382,7 @@ timestreamwrite_list_tables <- function(DatabaseName = NULL, NextToken = NULL, M
     name = "ListTables",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .timestreamwrite$list_tables_input(DatabaseName = DatabaseName, NextToken = NextToken, MaxResults = MaxResults)
   output <- .timestreamwrite$list_tables_output()
@@ -398,7 +399,7 @@ timestreamwrite_list_tables <- function(DatabaseName = NULL, NextToken = NULL, M
 #' @description
 #' Lists all tags on a Timestream resource.
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/list_tags_for_resource.html](https://paws-r.github.io/docs/timestreamwrite/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/timestreamwrite_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Timestream resource with tags to be listed. This value is an Amazon
 #' Resource Name (ARN).
@@ -428,7 +429,7 @@ timestreamwrite_list_tags_for_resource <- function(ResourceARN) {
 #' @description
 #' Resume batch load task
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/resume_batch_load_task.html](https://paws-r.github.io/docs/timestreamwrite/resume_batch_load_task.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_resume_batch_load_task/](https://www.paws-r-sdk.com/docs/timestreamwrite_resume_batch_load_task/) for full documentation.
 #'
 #' @param TaskId &#91;required&#93; The ID of the batch load task to resume.
 #'
@@ -457,7 +458,7 @@ timestreamwrite_resume_batch_load_task <- function(TaskId) {
 #' @description
 #' Associates a set of tags with a Timestream resource. You can then activate these user-defined tags so that they appear on the Billing and Cost Management console for cost allocation tracking.
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/tag_resource.html](https://paws-r.github.io/docs/timestreamwrite/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_tag_resource/](https://www.paws-r-sdk.com/docs/timestreamwrite_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; Identifies the Timestream resource to which tags should be added. This
 #' value is an Amazon Resource Name (ARN).
@@ -488,7 +489,7 @@ timestreamwrite_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Removes the association of tags from a Timestream resource.
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/untag_resource.html](https://paws-r.github.io/docs/timestreamwrite/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_untag_resource/](https://www.paws-r-sdk.com/docs/timestreamwrite_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Timestream resource that the tags will be removed from. This value
 #' is an Amazon Resource Name (ARN).
@@ -520,7 +521,7 @@ timestreamwrite_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Modifies the KMS key for an existing database. While updating the database, you must specify the database name and the identifier of the new KMS key to be used (`KmsKeyId`). If there are any concurrent [`update_database`][timestreamwrite_update_database] requests, first writer wins.
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/update_database.html](https://paws-r.github.io/docs/timestreamwrite/update_database.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_update_database/](https://www.paws-r-sdk.com/docs/timestreamwrite_update_database/) for full documentation.
 #'
 #' @param DatabaseName &#91;required&#93; The name of the database.
 #' @param KmsKeyId &#91;required&#93; The identifier of the new KMS key (`KmsKeyId`) to be used to encrypt the
@@ -565,25 +566,26 @@ timestreamwrite_update_database <- function(DatabaseName, KmsKeyId) {
 #' @description
 #' Modifies the retention duration of the memory store and magnetic store for your Timestream table. Note that the change in retention duration takes effect immediately. For example, if the retention period of the memory store was initially set to 2 hours and then changed to 24 hours, the memory store will be capable of holding 24 hours of data, but will be populated with 24 hours of data 22 hours after this change was made. Timestream does not retrieve data from the magnetic store to populate the memory store.
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/update_table.html](https://paws-r.github.io/docs/timestreamwrite/update_table.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_update_table/](https://www.paws-r-sdk.com/docs/timestreamwrite_update_table/) for full documentation.
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
 #' @param TableName &#91;required&#93; The name of the Timestream table.
 #' @param RetentionProperties The retention duration of the memory store and the magnetic store.
 #' @param MagneticStoreWriteProperties Contains properties to set on the table when enabling magnetic store
 #' writes.
+#' @param Schema The schema of the table.
 #'
 #' @keywords internal
 #'
 #' @rdname timestreamwrite_update_table
-timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionProperties = NULL, MagneticStoreWriteProperties = NULL) {
+timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionProperties = NULL, MagneticStoreWriteProperties = NULL, Schema = NULL) {
   op <- new_operation(
     name = "UpdateTable",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .timestreamwrite$update_table_input(DatabaseName = DatabaseName, TableName = TableName, RetentionProperties = RetentionProperties, MagneticStoreWriteProperties = MagneticStoreWriteProperties)
+  input <- .timestreamwrite$update_table_input(DatabaseName = DatabaseName, TableName = TableName, RetentionProperties = RetentionProperties, MagneticStoreWriteProperties = MagneticStoreWriteProperties, Schema = Schema)
   output <- .timestreamwrite$update_table_output()
   config <- get_config()
   svc <- .timestreamwrite$service(config)
@@ -598,7 +600,7 @@ timestreamwrite_update_table <- function(DatabaseName, TableName, RetentionPrope
 #' @description
 #' Enables you to write your time-series data into Timestream. You can specify a single data point or a batch of data points to be inserted into the system. Timestream offers you a flexible schema that auto detects the column names and data types for your Timestream tables based on the dimension names and data types of the data points you specify when invoking writes into the database.
 #'
-#' See [https://paws-r.github.io/docs/timestreamwrite/write_records.html](https://paws-r.github.io/docs/timestreamwrite/write_records.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/timestreamwrite_write_records/](https://www.paws-r-sdk.com/docs/timestreamwrite_write_records/) for full documentation.
 #'
 #' @param DatabaseName &#91;required&#93; The name of the Timestream database.
 #' @param TableName &#91;required&#93; The name of the Timestream table.

@@ -69,6 +69,6 @@ area.}
 \description{
 Allows you to update a ReplicationConfiguration by Source Server ID.
 
-See \url{https://paws-r.github.io/docs/drs/update_replication_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/drs_update_replication_configuration/} for full documentation.
 }
 \keyword{internal}

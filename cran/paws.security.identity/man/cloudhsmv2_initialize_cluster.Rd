@@ -25,6 +25,6 @@ be in PEM format and can contain a maximum of 5000 characters.}
 \description{
 Claims an AWS CloudHSM cluster by submitting the cluster certificate issued by your issuing certificate authority (CA) and the CA's root certificate. Before you can claim a cluster, you must sign the cluster's certificate signing request (CSR) with your issuing CA. To get the cluster's CSR, use \code{\link[=cloudhsmv2_describe_clusters]{describe_clusters}}.
 
-See \url{https://paws-r.github.io/docs/cloudhsmv2/initialize_cluster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudhsmv2_initialize_cluster/} for full documentation.
 }
 \keyword{internal}

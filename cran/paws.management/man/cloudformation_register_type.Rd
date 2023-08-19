@@ -63,9 +63,7 @@ adding trust relationships, see \href{https://docs.aws.amazon.com/IAM/latest/Use
 in the \emph{Identity and Access Management User Guide}.
 
 If your extension calls Amazon Web Services APIs in any of its handlers,
-you must create an \emph{\if{html}{\out{<span
-href="https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html">}}IAM
-execution role\if{html}{\out{</span>}}} that includes the necessary permissions to call
+you must create an \emph{\href{https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles.html}{IAMexecution role}} that includes the necessary permissions to call
 those Amazon Web Services APIs, and provision that execution role in
 your account. When CloudFormation needs to invoke the resource type
 handler, CloudFormation assumes this execution role to create a
@@ -82,6 +80,6 @@ multiple times.}
 \description{
 Registers an extension with the CloudFormation service. Registering an extension makes it available for use in CloudFormation templates in your Amazon Web Services account, and includes:
 
-See \url{https://paws-r.github.io/docs/cloudformation/register_type.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_register_type/} for full documentation.
 }
 \keyword{internal}

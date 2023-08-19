@@ -28,6 +28,6 @@ next page of results in a paginated response.}
 \description{
 Returns detailed status for each member account within an organization for a given organization conformance pack.
 
-See \url{https://paws-r.github.io/docs/configservice/get_organization_conformance_pack_detailed_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_get_organization_conformance_pack_detailed_status/} for full documentation.
 }
 \keyword{internal}

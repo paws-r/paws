@@ -112,6 +112,6 @@ The following example sets \code{NotificationPolicy} off.
 \description{
 Updates a Network File System (NFS) file share. This operation is only supported in S3 File Gateways.
 
-See \url{https://paws-r.github.io/docs/storagegateway/update_nfs_file_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/storagegateway_update_nfs_file_share/} for full documentation.
 }
 \keyword{internal}

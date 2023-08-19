@@ -20,6 +20,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Rejects a request to attach a VPC to a transit gateway.
 
-See \url{https://paws-r.github.io/docs/ec2/reject_transit_gateway_vpc_attachment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_reject_transit_gateway_vpc_attachment/} for full documentation.
 }
 \keyword{internal}

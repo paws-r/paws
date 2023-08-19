@@ -19,6 +19,6 @@ but updating the description is optional.}
 \description{
 Saves a new query or updates an existing saved query. The \code{QueryName} must be unique for a single Amazon Web Services account and a single Amazon Web Services Region. You can create upto 300 queries in a single Amazon Web Services account and a single Amazon Web Services Region.
 
-See \url{https://paws-r.github.io/docs/configservice/put_stored_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_put_stored_query/} for full documentation.
 }
 \keyword{internal}

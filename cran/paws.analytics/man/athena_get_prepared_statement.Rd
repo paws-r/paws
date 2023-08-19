@@ -15,6 +15,6 @@ athena_get_prepared_statement(StatementName, WorkGroup)
 \description{
 Retrieves the prepared statement with the specified name from the specified workgroup.
 
-See \url{https://paws-r.github.io/docs/athena/get_prepared_statement.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_get_prepared_statement/} for full documentation.
 }
 \keyword{internal}

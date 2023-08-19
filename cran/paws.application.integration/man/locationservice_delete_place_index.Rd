@@ -12,6 +12,6 @@ locationservice_delete_place_index(IndexName)
 \description{
 Deletes a place index resource from your Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/locationservice/delete_place_index.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_delete_place_index/} for full documentation.
 }
 \keyword{internal}

@@ -29,6 +29,6 @@ is used.}
 \description{
 Returns an overview of your organization's history based on the specified time range. The overview includes the total reactive and proactive insights.
 
-See \url{https://paws-r.github.io/docs/devopsguru/describe_organization_overview.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/devopsguru_describe_organization_overview/} for full documentation.
 }
 \keyword{internal}

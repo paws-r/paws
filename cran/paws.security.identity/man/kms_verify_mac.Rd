@@ -5,7 +5,14 @@
 \title{Verifies the hash-based message authentication code (HMAC) for a
 specified message, HMAC KMS key, and MAC algorithm}
 \usage{
-kms_verify_mac(Message, KeyId, MacAlgorithm, Mac, GrantTokens = NULL)
+kms_verify_mac(
+  Message,
+  KeyId,
+  MacAlgorithm,
+  Mac,
+  GrantTokens = NULL,
+  DryRun = NULL
+)
 }
 \arguments{
 \item{Message}{[required] The message that will be used in the verification. Enter the same
@@ -38,10 +45,15 @@ a new grant that has not yet achieved \emph{eventual consistency}. For more
 information, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/grants.html#grant_token}{Grant token}
 and \href{https://docs.aws.amazon.com/kms/latest/developerguide/grant-manage.html#using-grant-token}{Using a grant token}
 in the \emph{Key Management Service Developer Guide}.}
+
+\item{DryRun}{Checks if your request will succeed. \code{DryRun} is an optional parameter.
+
+To learn more about how to use this parameter, see \href{https://docs.aws.amazon.com/kms/latest/developerguide/programming-dryrun.html}{Testing your KMS API calls}
+in the \emph{Key Management Service Developer Guide}.}
 }
 \description{
 Verifies the hash-based message authentication code (HMAC) for a specified message, HMAC KMS key, and MAC algorithm. To verify the HMAC, \code{\link[=kms_verify_mac]{verify_mac}} computes an HMAC using the message, HMAC KMS key, and MAC algorithm that you specify, and compares the computed HMAC to the HMAC that you specify. If the HMACs are identical, the verification succeeds; otherwise, it fails. Verification indicates that the message hasn't changed since the HMAC was calculated, and the specified key was used to generate and verify the HMAC.
 
-See \url{https://paws-r.github.io/docs/kms/verify_mac.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kms_verify_mac/} for full documentation.
 }
 \keyword{internal}

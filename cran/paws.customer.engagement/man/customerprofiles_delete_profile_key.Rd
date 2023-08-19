@@ -18,6 +18,6 @@ customerprofiles_delete_profile_key(ProfileId, KeyName, Values, DomainName)
 \description{
 Removes a searchable key from a customer profile.
 
-See \url{https://paws-r.github.io/docs/customerprofiles/delete_profile_key.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/customerprofiles_delete_profile_key/} for full documentation.
 }
 \keyword{internal}

@@ -69,6 +69,6 @@ notebook kernels.
 \description{
 Updates the properties of a SageMaker image version.
 
-See \url{https://paws-r.github.io/docs/sagemaker/update_image_version.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_update_image_version/} for full documentation.
 }
 \keyword{internal}

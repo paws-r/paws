@@ -16,6 +16,6 @@ A tag key must be accompanied by a tag value, although null is accepted.}
 \description{
 A tag is a key-value pair where the key and value are case-sensitive. You can use tags to categorize and track all your MemoryDB resources. When you add or remove tags on clusters, those actions will be replicated to all nodes in the cluster. For more information, see \href{https://docs.aws.amazon.com/memorydb/latest/devguide/iam.resourcelevelpermissions.html}{Resource-level permissions}.
 
-See \url{https://paws-r.github.io/docs/memorydb/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/memorydb_tag_resource/} for full documentation.
 }
 \keyword{internal}

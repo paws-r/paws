@@ -32,6 +32,6 @@ networkmanager_get_links(
 \description{
 Gets information about one or more links in a specified global network.
 
-See \url{https://paws-r.github.io/docs/networkmanager/get_links.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/networkmanager_get_links/} for full documentation.
 }
 \keyword{internal}

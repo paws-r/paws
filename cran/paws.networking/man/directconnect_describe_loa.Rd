@@ -24,6 +24,6 @@ value is application/pdf.}
 \description{
 Gets the LOA-CFA for a connection, interconnect, or link aggregation group (LAG).
 
-See \url{https://paws-r.github.io/docs/directconnect/describe_loa.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directconnect_describe_loa/} for full documentation.
 }
 \keyword{internal}

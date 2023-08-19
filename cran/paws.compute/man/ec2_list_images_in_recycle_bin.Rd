@@ -32,6 +32,6 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \description{
 Lists one or more AMIs that are currently in the Recycle Bin. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/recycle-bin.html}{Recycle Bin} in the \emph{Amazon EC2 User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/list_images_in_recycle_bin.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_list_images_in_recycle_bin/} for full documentation.
 }
 \keyword{internal}

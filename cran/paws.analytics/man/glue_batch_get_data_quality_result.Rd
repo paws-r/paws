@@ -12,6 +12,6 @@ glue_batch_get_data_quality_result(ResultIds)
 \description{
 Retrieves a list of data quality results for the specified result IDs.
 
-See \url{https://paws-r.github.io/docs/glue/batch_get_data_quality_result.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_batch_get_data_quality_result/} for full documentation.
 }
 \keyword{internal}

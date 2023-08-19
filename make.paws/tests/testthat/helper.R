@@ -18,26 +18,27 @@
 #
 # $z
 # [1] "bye"
-mock2 <- function(..., cycle = FALSE, side_effect = NULL, envir = parent.frame()){
+mock2 <- function(..., cycle = FALSE, side_effect = NULL, envir = parent.frame()) {
   return_values <- eval(substitute(alist(...)))
   return_values_env <- envir
   call_no <- 0
   calls <- list()
   args <- list()
-  mock <- function(...){
+  mock <- function(...) {
     call_no <<- call_no + 1
     calls[[call_no]] <<- match.call()
     args[[call_no]] <<- list(...)
     if (length(return_values)) {
-      if (call_no > length(return_values) && !cycle)
-        stop("too many calls to mock object and cycle set to FALSE", call.=FALSE)
+      if (call_no > length(return_values) && !cycle) {
+        stop("too many calls to mock object and cycle set to FALSE", call. = FALSE)
+      }
       value <- return_values[[
-        (call_no - 1)%%length(return_values) + 1
+        (call_no - 1) %% length(return_values) + 1
       ]]
       return(eval(value, envir = return_values_env))
     }
 
-    if(!is.null(side_effect)){
+    if (!is.null(side_effect)) {
       return(side_effect(...))
     }
   }
@@ -47,14 +48,15 @@ mock2 <- function(..., cycle = FALSE, side_effect = NULL, envir = parent.frame()
 
 
 # retrieves a list of all arguments used for the last mocked function call
-mock_arg <- function(m){
+mock_arg <- function(m) {
   env <- environment(m)
-  if (env$call_no == 0)
+  if (env$call_no == 0) {
     return(NULL)
+  }
   return(env$args[[env$call_no]])
 }
 
 # counts the number of times the mocked function was called
-mock_call_no <- function(m){
+mock_call_no <- function(m) {
   environment(m)$call_no
 }

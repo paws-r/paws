@@ -19,6 +19,6 @@ query for later use.}
 \description{
 A synchronous operation that allows you to submit a query with parameters to be stored by Timestream for later running. Timestream only supports using this operation with the \code{PrepareQueryRequest$ValidateOnly} set to \code{true}.
 
-See \url{https://paws-r.github.io/docs/timestreamquery/prepare_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamquery_prepare_query/} for full documentation.
 }
 \keyword{internal}

@@ -15,6 +15,6 @@ empty.}
 \description{
 Distributes the entries (images) in a training dataset across the training dataset and the test dataset for a project. \code{\link[=rekognition_distribute_dataset_entries]{distribute_dataset_entries}} moves 20\% of the training dataset images to the test dataset. An entry is a JSON Line that describes an image.
 
-See \url{https://paws-r.github.io/docs/rekognition/distribute_dataset_entries.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/rekognition_distribute_dataset_entries/} for full documentation.
 }
 \keyword{internal}

@@ -18,7 +18,7 @@ actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
 
-\item{EgressOnlyInternetGatewayIds}{One or more egress-only internet gateway IDs.}
+\item{EgressOnlyInternetGatewayIds}{The IDs of the egress-only internet gateways.}
 
 \item{MaxResults}{The maximum number of items to return for this request. To get the next
 page of items, make another request with the token returned in the
@@ -28,7 +28,7 @@ output. For more information, see
 \item{NextToken}{The token returned from a previous paginated request. Pagination
 continues from the end of the items returned by the previous request.}
 
-\item{Filters}{One or more filters.
+\item{Filters}{The filters.
 \itemize{
 \item \code{tag}:\<key\> - The key/value combination of a tag assigned to the
 resource. Use the tag key in the filter name and the tag value as
@@ -43,6 +43,6 @@ regardless of the tag value.
 \description{
 Describes one or more of your egress-only internet gateways.
 
-See \url{https://paws-r.github.io/docs/ec2/describe_egress_only_internet_gateways.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_describe_egress_only_internet_gateways/} for full documentation.
 }
 \keyword{internal}

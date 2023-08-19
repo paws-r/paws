@@ -19,6 +19,6 @@ is 50.}
 \description{
 Deletes one or more scheduled actions for the specified Auto Scaling group.
 
-See \url{https://paws-r.github.io/docs/autoscaling/batch_delete_scheduled_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/autoscaling_batch_delete_scheduled_action/} for full documentation.
 }
 \keyword{internal}

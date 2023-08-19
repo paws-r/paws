@@ -11,7 +11,8 @@ ram_create_resource_share(
   tags = NULL,
   allowExternalPrincipals = NULL,
   clientToken = NULL,
-  permissionArns = NULL
+  permissionArns = NULL,
+  sources = NULL
 )
 }
 \arguments{
@@ -71,10 +72,13 @@ not specify an ARN for the permission, RAM automatically attaches the
 default version of the permission for each resource type. You can
 associate only one permission with each resource type included in the
 resource share.}
+
+\item{sources}{Specifies from which source accounts the service principal has access to
+the resources in this resource share.}
 }
 \description{
 Creates a resource share. You can provide a list of the \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)} for the resources that you want to share, a list of principals you want to share the resources with, and the permissions to grant those principals.
 
-See \url{https://paws-r.github.io/docs/ram/create_resource_share.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ram_create_resource_share/} for full documentation.
 }
 \keyword{internal}

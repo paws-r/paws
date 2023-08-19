@@ -42,6 +42,6 @@ not created.}
 \description{
 Creates a policy of a specified type that you can attach to a root, an organizational unit (OU), or an individual Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/organizations/create_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/organizations_create_policy/} for full documentation.
 }
 \keyword{internal}

@@ -639,7 +639,7 @@ braket_search_devices <- function(filters, maxResults = NULL, nextToken = NULL) 
     name = "SearchDevices",
     http_method = "POST",
     http_path = "/devices",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "devices")
   )
   input <- .braket$search_devices_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .braket$search_devices_output()
@@ -720,7 +720,7 @@ braket_search_jobs <- function(filters, maxResults = NULL, nextToken = NULL) {
     name = "SearchJobs",
     http_method = "POST",
     http_path = "/jobs",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "jobs")
   )
   input <- .braket$search_jobs_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .braket$search_jobs_output()
@@ -800,7 +800,7 @@ braket_search_quantum_tasks <- function(filters, maxResults = NULL, nextToken = 
     name = "SearchQuantumTasks",
     http_method = "POST",
     http_path = "/quantum-tasks",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "quantumTasks")
   )
   input <- .braket$search_quantum_tasks_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
   output <- .braket$search_quantum_tasks_output()

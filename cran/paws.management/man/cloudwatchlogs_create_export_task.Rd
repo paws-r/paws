@@ -43,6 +43,6 @@ you don't specify a value, the default is \code{exportedlogs}.}
 \description{
 Creates an export task so that you can efficiently export data from a log group to an Amazon S3 bucket. When you perform a \code{\link[=cloudwatchlogs_create_export_task]{create_export_task}} operation, you must use credentials that have permission to write to the S3 bucket that you specify as the destination.
 
-See \url{https://paws-r.github.io/docs/cloudwatchlogs/create_export_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_export_task/} for full documentation.
 }
 \keyword{internal}

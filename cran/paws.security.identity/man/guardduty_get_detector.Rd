@@ -12,6 +12,6 @@ guardduty_get_detector(DetectorId)
 \description{
 Retrieves an Amazon GuardDuty detector specified by the detectorId.
 
-See \url{https://paws-r.github.io/docs/guardduty/get_detector.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/guardduty_get_detector/} for full documentation.
 }
 \keyword{internal}

@@ -42,6 +42,6 @@ For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
 \description{
 Creates a custom vocabulary associated with your Amazon Connect instance. You can set a custom vocabulary to be your default vocabulary for a given language. Contact Lens for Amazon Connect uses the default vocabulary in post-call and real-time contact analysis sessions for that language.
 
-See \url{https://paws-r.github.io/docs/connect/create_vocabulary.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connect_create_vocabulary/} for full documentation.
 }
 \keyword{internal}

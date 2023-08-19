@@ -12,6 +12,6 @@ timestreamwrite_resume_batch_load_task(TaskId)
 \description{
 Resume batch load task
 
-See \url{https://paws-r.github.io/docs/timestreamwrite/resume_batch_load_task.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamwrite_resume_batch_load_task/} for full documentation.
 }
 \keyword{internal}

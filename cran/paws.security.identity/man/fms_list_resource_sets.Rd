@@ -21,6 +21,6 @@ subsequent call to get the next batch of objects.}
 \description{
 Returns an array of \code{ResourceSetSummary} objects.
 
-See \url{https://paws-r.github.io/docs/fms/list_resource_sets.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fms_list_resource_sets/} for full documentation.
 }
 \keyword{internal}

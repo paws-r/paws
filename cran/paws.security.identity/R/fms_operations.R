@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Sets a Firewall Manager default administrator account. The Firewall Manager default administrator account can manage third-party firewalls and has full administrative scope that allows administration of all policy types, accounts, organizational units, and Regions. This account must be a member account of the organization in Organizations whose resources you want to protect.
 #'
-#' See [https://paws-r.github.io/docs/fms/associate_admin_account.html](https://paws-r.github.io/docs/fms/associate_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_associate_admin_account/](https://www.paws-r-sdk.com/docs/fms_associate_admin_account/) for full documentation.
 #'
 #' @param AdminAccount &#91;required&#93; The Amazon Web Services account ID to associate with Firewall Manager as
 #' the Firewall Manager default administrator account. This account must be
@@ -43,7 +43,7 @@ fms_associate_admin_account <- function(AdminAccount) {
 #' @description
 #' Sets the Firewall Manager policy administrator as a tenant administrator of a third-party firewall service. A tenant is an instance of the third-party firewall service that's associated with your Amazon Web Services customer account.
 #'
-#' See [https://paws-r.github.io/docs/fms/associate_third_party_firewall.html](https://paws-r.github.io/docs/fms/associate_third_party_firewall.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_associate_third_party_firewall/](https://www.paws-r-sdk.com/docs/fms_associate_third_party_firewall/) for full documentation.
 #'
 #' @param ThirdPartyFirewall &#91;required&#93; The name of the third-party firewall vendor.
 #'
@@ -72,7 +72,7 @@ fms_associate_third_party_firewall <- function(ThirdPartyFirewall) {
 #' @description
 #' Associate resources to a Firewall Manager resource set.
 #'
-#' See [https://paws-r.github.io/docs/fms/batch_associate_resource.html](https://paws-r.github.io/docs/fms/batch_associate_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_batch_associate_resource/](https://www.paws-r-sdk.com/docs/fms_batch_associate_resource/) for full documentation.
 #'
 #' @param ResourceSetIdentifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
 #' the resource set.
@@ -105,7 +105,7 @@ fms_batch_associate_resource <- function(ResourceSetIdentifier, Items) {
 #' @description
 #' Disassociates resources from a Firewall Manager resource set.
 #'
-#' See [https://paws-r.github.io/docs/fms/batch_disassociate_resource.html](https://paws-r.github.io/docs/fms/batch_disassociate_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_batch_disassociate_resource/](https://www.paws-r-sdk.com/docs/fms_batch_disassociate_resource/) for full documentation.
 #'
 #' @param ResourceSetIdentifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
 #' the resource set.
@@ -138,7 +138,7 @@ fms_batch_disassociate_resource <- function(ResourceSetIdentifier, Items) {
 #' @description
 #' Permanently deletes an Firewall Manager applications list.
 #'
-#' See [https://paws-r.github.io/docs/fms/delete_apps_list.html](https://paws-r.github.io/docs/fms/delete_apps_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_delete_apps_list/](https://www.paws-r-sdk.com/docs/fms_delete_apps_list/) for full documentation.
 #'
 #' @param ListId &#91;required&#93; The ID of the applications list that you want to delete. You can
 #' retrieve this ID from [`put_apps_list`][fms_put_apps_list],
@@ -172,7 +172,7 @@ fms_delete_apps_list <- function(ListId) {
 #' @description
 #' Deletes an Firewall Manager association with the IAM role and the Amazon Simple Notification Service (SNS) topic that is used to record Firewall Manager SNS logs.
 #'
-#' See [https://paws-r.github.io/docs/fms/delete_notification_channel.html](https://paws-r.github.io/docs/fms/delete_notification_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_delete_notification_channel/](https://www.paws-r-sdk.com/docs/fms_delete_notification_channel/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -199,7 +199,7 @@ fms_delete_notification_channel <- function() {
 #' @description
 #' Permanently deletes an Firewall Manager policy.
 #'
-#' See [https://paws-r.github.io/docs/fms/delete_policy.html](https://paws-r.github.io/docs/fms/delete_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_delete_policy/](https://www.paws-r-sdk.com/docs/fms_delete_policy/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The ID of the policy that you want to delete. You can retrieve this ID
 #' from [`put_policy`][fms_put_policy] and
@@ -257,7 +257,7 @@ fms_delete_policy <- function(PolicyId, DeleteAllPolicyResources = NULL) {
 #' @description
 #' Permanently deletes an Firewall Manager protocols list.
 #'
-#' See [https://paws-r.github.io/docs/fms/delete_protocols_list.html](https://paws-r.github.io/docs/fms/delete_protocols_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_delete_protocols_list/](https://www.paws-r-sdk.com/docs/fms_delete_protocols_list/) for full documentation.
 #'
 #' @param ListId &#91;required&#93; The ID of the protocols list that you want to delete. You can retrieve
 #' this ID from [`put_protocols_list`][fms_put_protocols_list],
@@ -289,7 +289,7 @@ fms_delete_protocols_list <- function(ListId) {
 #' @description
 #' Deletes the specified ResourceSet.
 #'
-#' See [https://paws-r.github.io/docs/fms/delete_resource_set.html](https://paws-r.github.io/docs/fms/delete_resource_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_delete_resource_set/](https://www.paws-r-sdk.com/docs/fms_delete_resource_set/) for full documentation.
 #'
 #' @param Identifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
 #' the resource set.
@@ -319,7 +319,7 @@ fms_delete_resource_set <- function(Identifier) {
 #' @description
 #' Disassociates an Firewall Manager administrator account. To set a different account as an Firewall Manager administrator, submit a [`put_admin_account`][fms_put_admin_account] request. To set an account as a default administrator account, you must submit an [`associate_admin_account`][fms_associate_admin_account] request.
 #'
-#' See [https://paws-r.github.io/docs/fms/disassociate_admin_account.html](https://paws-r.github.io/docs/fms/disassociate_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_disassociate_admin_account/](https://www.paws-r-sdk.com/docs/fms_disassociate_admin_account/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -347,7 +347,7 @@ fms_disassociate_admin_account <- function() {
 #' @description
 #' Disassociates a Firewall Manager policy administrator from a third-party firewall tenant. When you call [`disassociate_third_party_firewall`][fms_disassociate_third_party_firewall], the third-party firewall vendor deletes all of the firewalls that are associated with the account.
 #'
-#' See [https://paws-r.github.io/docs/fms/disassociate_third_party_firewall.html](https://paws-r.github.io/docs/fms/disassociate_third_party_firewall.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_disassociate_third_party_firewall/](https://www.paws-r-sdk.com/docs/fms_disassociate_third_party_firewall/) for full documentation.
 #'
 #' @param ThirdPartyFirewall &#91;required&#93; The name of the third-party firewall vendor.
 #'
@@ -377,7 +377,7 @@ fms_disassociate_third_party_firewall <- function(ThirdPartyFirewall) {
 #' @description
 #' Returns the Organizations account that is associated with Firewall Manager as the Firewall Manager default administrator.
 #'
-#' See [https://paws-r.github.io/docs/fms/get_admin_account.html](https://paws-r.github.io/docs/fms/get_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_get_admin_account/](https://www.paws-r-sdk.com/docs/fms_get_admin_account/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -404,7 +404,7 @@ fms_get_admin_account <- function() {
 #' @description
 #' Returns information about the specified account's administrative scope. The admistrative scope defines the resources that an Firewall Manager administrator can manage.
 #'
-#' See [https://paws-r.github.io/docs/fms/get_admin_scope.html](https://paws-r.github.io/docs/fms/get_admin_scope.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_get_admin_scope/](https://www.paws-r-sdk.com/docs/fms_get_admin_scope/) for full documentation.
 #'
 #' @param AdminAccount &#91;required&#93; The administator account that you want to get the details for.
 #'
@@ -434,7 +434,7 @@ fms_get_admin_scope <- function(AdminAccount) {
 #' @description
 #' Returns information about the specified Firewall Manager applications list.
 #'
-#' See [https://paws-r.github.io/docs/fms/get_apps_list.html](https://paws-r.github.io/docs/fms/get_apps_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_get_apps_list/](https://www.paws-r-sdk.com/docs/fms_get_apps_list/) for full documentation.
 #'
 #' @param ListId &#91;required&#93; The ID of the Firewall Manager applications list that you want the
 #' details for.
@@ -467,7 +467,7 @@ fms_get_apps_list <- function(ListId, DefaultList = NULL) {
 #' @description
 #' Returns detailed compliance information about the specified member account. Details include resources that are in and out of compliance with the specified policy.
 #'
-#' See [https://paws-r.github.io/docs/fms/get_compliance_detail.html](https://paws-r.github.io/docs/fms/get_compliance_detail.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_get_compliance_detail/](https://www.paws-r-sdk.com/docs/fms_get_compliance_detail/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The ID of the policy that you want to get the details for. `PolicyId` is
 #' returned by [`put_policy`][fms_put_policy] and by
@@ -501,7 +501,7 @@ fms_get_compliance_detail <- function(PolicyId, MemberAccount) {
 #' @description
 #' Information about the Amazon Simple Notification Service (SNS) topic that is used to record Firewall Manager SNS logs.
 #'
-#' See [https://paws-r.github.io/docs/fms/get_notification_channel.html](https://paws-r.github.io/docs/fms/get_notification_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_get_notification_channel/](https://www.paws-r-sdk.com/docs/fms_get_notification_channel/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -528,7 +528,7 @@ fms_get_notification_channel <- function() {
 #' @description
 #' Returns information about the specified Firewall Manager policy.
 #'
-#' See [https://paws-r.github.io/docs/fms/get_policy.html](https://paws-r.github.io/docs/fms/get_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_get_policy/](https://www.paws-r-sdk.com/docs/fms_get_policy/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The ID of the Firewall Manager policy that you want the details for.
 #'
@@ -558,7 +558,7 @@ fms_get_policy <- function(PolicyId) {
 #' @description
 #' If you created a Shield Advanced policy, returns policy-level attack summary information in the event of a potential DDoS attack. Other policy types are currently unsupported.
 #'
-#' See [https://paws-r.github.io/docs/fms/get_protection_status.html](https://paws-r.github.io/docs/fms/get_protection_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_get_protection_status/](https://www.paws-r-sdk.com/docs/fms_get_protection_status/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The ID of the policy for which you want to get the attack information.
 #' @param MemberAccountId The Amazon Web Services account that is in scope of the policy that you
@@ -608,7 +608,7 @@ fms_get_protection_status <- function(PolicyId, MemberAccountId = NULL, StartTim
 #' @description
 #' Returns information about the specified Firewall Manager protocols list.
 #'
-#' See [https://paws-r.github.io/docs/fms/get_protocols_list.html](https://paws-r.github.io/docs/fms/get_protocols_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_get_protocols_list/](https://www.paws-r-sdk.com/docs/fms_get_protocols_list/) for full documentation.
 #'
 #' @param ListId &#91;required&#93; The ID of the Firewall Manager protocols list that you want the details
 #' for.
@@ -640,7 +640,7 @@ fms_get_protocols_list <- function(ListId, DefaultList = NULL) {
 #' @description
 #' Gets information about a specific resource set.
 #'
-#' See [https://paws-r.github.io/docs/fms/get_resource_set.html](https://paws-r.github.io/docs/fms/get_resource_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_get_resource_set/](https://www.paws-r-sdk.com/docs/fms_get_resource_set/) for full documentation.
 #'
 #' @param Identifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
 #' the resource set.
@@ -671,7 +671,7 @@ fms_get_resource_set <- function(Identifier) {
 #' @description
 #' The onboarding status of a Firewall Manager admin account to third-party firewall vendor tenant.
 #'
-#' See [https://paws-r.github.io/docs/fms/get_third_party_firewall_association_status.html](https://paws-r.github.io/docs/fms/get_third_party_firewall_association_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_get_third_party_firewall_association_status/](https://www.paws-r-sdk.com/docs/fms_get_third_party_firewall_association_status/) for full documentation.
 #'
 #' @param ThirdPartyFirewall &#91;required&#93; The name of the third-party firewall vendor.
 #'
@@ -701,7 +701,7 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #' @description
 #' Retrieves violations for a resource based on the specified Firewall Manager policy and Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/fms/get_violation_details.html](https://paws-r.github.io/docs/fms/get_violation_details.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_get_violation_details/](https://www.paws-r-sdk.com/docs/fms_get_violation_details/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The ID of the Firewall Manager policy that you want the details for.
 #' This currently only supports security group content audit policies.
@@ -741,7 +741,7 @@ fms_get_violation_details <- function(PolicyId, MemberAccount, ResourceId, Resou
 #' @description
 #' Returns a `AdminAccounts` object that lists the Firewall Manager administrators within the organization that are onboarded to Firewall Manager by [`associate_admin_account`][fms_associate_admin_account].
 #'
-#' See [https://paws-r.github.io/docs/fms/list_admin_accounts_for_organization.html](https://paws-r.github.io/docs/fms/list_admin_accounts_for_organization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_list_admin_accounts_for_organization/](https://www.paws-r-sdk.com/docs/fms_list_admin_accounts_for_organization/) for full documentation.
 #'
 #' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
 #' number of objects that are still available for retrieval exceeds the
@@ -761,7 +761,7 @@ fms_list_admin_accounts_for_organization <- function(NextToken = NULL, MaxResult
     name = "ListAdminAccountsForOrganization",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AdminAccounts")
   )
   input <- .fms$list_admin_accounts_for_organization_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_admin_accounts_for_organization_output()
@@ -779,7 +779,7 @@ fms_list_admin_accounts_for_organization <- function(NextToken = NULL, MaxResult
 #' @description
 #' Lists the accounts that are managing the specified Organizations member account. This is useful for any member account so that they can view the accounts who are managing their account. This operation only returns the managing administrators that have the requested account within their AdminScope.
 #'
-#' See [https://paws-r.github.io/docs/fms/list_admins_managing_account.html](https://paws-r.github.io/docs/fms/list_admins_managing_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_list_admins_managing_account/](https://www.paws-r-sdk.com/docs/fms_list_admins_managing_account/) for full documentation.
 #'
 #' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
 #' number of objects that are still available for retrieval exceeds the
@@ -799,7 +799,7 @@ fms_list_admins_managing_account <- function(NextToken = NULL, MaxResults = NULL
     name = "ListAdminsManagingAccount",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AdminAccounts")
   )
   input <- .fms$list_admins_managing_account_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_admins_managing_account_output()
@@ -816,7 +816,7 @@ fms_list_admins_managing_account <- function(NextToken = NULL, MaxResults = NULL
 #' @description
 #' Returns an array of `AppsListDataSummary` objects.
 #'
-#' See [https://paws-r.github.io/docs/fms/list_apps_lists.html](https://paws-r.github.io/docs/fms/list_apps_lists.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_list_apps_lists/](https://www.paws-r-sdk.com/docs/fms_list_apps_lists/) for full documentation.
 #'
 #' @param DefaultLists Specifies whether the lists to retrieve are default lists owned by
 #' Firewall Manager.
@@ -841,7 +841,7 @@ fms_list_apps_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxResult
     name = "ListAppsLists",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "AppsLists")
   )
   input <- .fms$list_apps_lists_input(DefaultLists = DefaultLists, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_apps_lists_output()
@@ -858,7 +858,7 @@ fms_list_apps_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxResult
 #' @description
 #' Returns an array of `PolicyComplianceStatus` objects. Use `PolicyComplianceStatus` to get a summary of which member accounts are protected by the specified policy.
 #'
-#' See [https://paws-r.github.io/docs/fms/list_compliance_status.html](https://paws-r.github.io/docs/fms/list_compliance_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_list_compliance_status/](https://www.paws-r-sdk.com/docs/fms_list_compliance_status/) for full documentation.
 #'
 #' @param PolicyId &#91;required&#93; The ID of the Firewall Manager policy that you want the details for.
 #' @param NextToken If you specify a value for `MaxResults` and you have more
@@ -883,7 +883,7 @@ fms_list_compliance_status <- function(PolicyId, NextToken = NULL, MaxResults = 
     name = "ListComplianceStatus",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PolicyComplianceStatusList")
   )
   input <- .fms$list_compliance_status_input(PolicyId = PolicyId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_compliance_status_output()
@@ -901,7 +901,7 @@ fms_list_compliance_status <- function(PolicyId, NextToken = NULL, MaxResults = 
 #' @description
 #' Returns an array of resources in the organization's accounts that are available to be associated with a resource set.
 #'
-#' See [https://paws-r.github.io/docs/fms/list_discovered_resources.html](https://paws-r.github.io/docs/fms/list_discovered_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_list_discovered_resources/](https://www.paws-r-sdk.com/docs/fms_list_discovered_resources/) for full documentation.
 #'
 #' @param MemberAccountIds &#91;required&#93; The Amazon Web Services account IDs to discover resources in. Only one
 #' account is supported per request. The account must be a member of your
@@ -943,7 +943,7 @@ fms_list_discovered_resources <- function(MemberAccountIds, ResourceType, MaxRes
 #' @description
 #' Returns a `MemberAccounts` object that lists the member accounts in the administrator's Amazon Web Services organization.
 #'
-#' See [https://paws-r.github.io/docs/fms/list_member_accounts.html](https://paws-r.github.io/docs/fms/list_member_accounts.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_list_member_accounts/](https://www.paws-r-sdk.com/docs/fms_list_member_accounts/) for full documentation.
 #'
 #' @param NextToken If you specify a value for `MaxResults` and you have more account IDs
 #' than the number that you specify for `MaxResults`, Firewall Manager
@@ -965,7 +965,7 @@ fms_list_member_accounts <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListMemberAccounts",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "MemberAccounts")
   )
   input <- .fms$list_member_accounts_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_member_accounts_output()
@@ -982,7 +982,7 @@ fms_list_member_accounts <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Returns an array of `PolicySummary` objects.
 #'
-#' See [https://paws-r.github.io/docs/fms/list_policies.html](https://paws-r.github.io/docs/fms/list_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_list_policies/](https://www.paws-r-sdk.com/docs/fms_list_policies/) for full documentation.
 #'
 #' @param NextToken If you specify a value for `MaxResults` and you have more
 #' `PolicySummary` objects than the number that you specify for
@@ -1006,7 +1006,7 @@ fms_list_policies <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "PolicyList")
   )
   input <- .fms$list_policies_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_policies_output()
@@ -1023,7 +1023,7 @@ fms_list_policies <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Returns an array of `ProtocolsListDataSummary` objects.
 #'
-#' See [https://paws-r.github.io/docs/fms/list_protocols_lists.html](https://paws-r.github.io/docs/fms/list_protocols_lists.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_list_protocols_lists/](https://www.paws-r-sdk.com/docs/fms_list_protocols_lists/) for full documentation.
 #'
 #' @param DefaultLists Specifies whether the lists to retrieve are default lists owned by
 #' Firewall Manager.
@@ -1048,7 +1048,7 @@ fms_list_protocols_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxR
     name = "ListProtocolsLists",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProtocolsLists")
   )
   input <- .fms$list_protocols_lists_input(DefaultLists = DefaultLists, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_protocols_lists_output()
@@ -1066,7 +1066,7 @@ fms_list_protocols_lists <- function(DefaultLists = NULL, NextToken = NULL, MaxR
 #' @description
 #' Returns an array of resources that are currently associated to a resource set.
 #'
-#' See [https://paws-r.github.io/docs/fms/list_resource_set_resources.html](https://paws-r.github.io/docs/fms/list_resource_set_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_list_resource_set_resources/](https://www.paws-r-sdk.com/docs/fms_list_resource_set_resources/) for full documentation.
 #'
 #' @param Identifier &#91;required&#93; A unique identifier for the resource set, used in a request to refer to
 #' the resource set.
@@ -1105,7 +1105,7 @@ fms_list_resource_set_resources <- function(Identifier, MaxResults = NULL, NextT
 #' @description
 #' Returns an array of `ResourceSetSummary` objects.
 #'
-#' See [https://paws-r.github.io/docs/fms/list_resource_sets.html](https://paws-r.github.io/docs/fms/list_resource_sets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_list_resource_sets/](https://www.paws-r-sdk.com/docs/fms_list_resource_sets/) for full documentation.
 #'
 #' @param NextToken When you request a list of objects with a `MaxResults` setting, if the
 #' number of objects that are still available for retrieval exceeds the
@@ -1143,7 +1143,7 @@ fms_list_resource_sets <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Retrieves the list of tags for the specified Amazon Web Services resource.
 #'
-#' See [https://paws-r.github.io/docs/fms/list_tags_for_resource.html](https://paws-r.github.io/docs/fms/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/fms_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return tags for. The
 #' Firewall Manager resources that support tagging are policies,
@@ -1175,7 +1175,7 @@ fms_list_tags_for_resource <- function(ResourceArn) {
 #' @description
 #' Retrieves a list of all of the third-party firewall policies that are associated with the third-party firewall administrator's account.
 #'
-#' See [https://paws-r.github.io/docs/fms/list_third_party_firewall_firewall_policies.html](https://paws-r.github.io/docs/fms/list_third_party_firewall_firewall_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_list_third_party_firewall_firewall_policies/](https://www.paws-r-sdk.com/docs/fms_list_third_party_firewall_firewall_policies/) for full documentation.
 #'
 #' @param ThirdPartyFirewall &#91;required&#93; The name of the third-party firewall vendor.
 #' @param NextToken If the previous response included a `NextToken` element, the specified
@@ -1201,7 +1201,7 @@ fms_list_third_party_firewall_firewall_policies <- function(ThirdPartyFirewall, 
     name = "ListThirdPartyFirewallFirewallPolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ThirdPartyFirewallFirewallPolicies")
   )
   input <- .fms$list_third_party_firewall_firewall_policies_input(ThirdPartyFirewall = ThirdPartyFirewall, NextToken = NextToken, MaxResults = MaxResults)
   output <- .fms$list_third_party_firewall_firewall_policies_output()
@@ -1218,7 +1218,7 @@ fms_list_third_party_firewall_firewall_policies <- function(ThirdPartyFirewall, 
 #' @description
 #' Creates or updates an Firewall Manager administrator account. The account must be a member of the organization that was onboarded to Firewall Manager by [`associate_admin_account`][fms_associate_admin_account]. Only the organization's management account can create an Firewall Manager administrator account. When you create an Firewall Manager administrator account, the service checks to see if the account is already a delegated administrator within Organizations. If the account isn't a delegated administrator, Firewall Manager calls Organizations to delegate the account within Organizations. For more information about administrator accounts within Organizations, see [Managing the Amazon Web Services Accounts in Your Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts.html).
 #'
-#' See [https://paws-r.github.io/docs/fms/put_admin_account.html](https://paws-r.github.io/docs/fms/put_admin_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_put_admin_account/](https://www.paws-r-sdk.com/docs/fms_put_admin_account/) for full documentation.
 #'
 #' @param AdminAccount &#91;required&#93; The Amazon Web Services account ID to add as an Firewall Manager
 #' administrator account. The account must be a member of the organization
@@ -1258,7 +1258,7 @@ fms_put_admin_account <- function(AdminAccount, AdminScope = NULL) {
 #' @description
 #' Creates an Firewall Manager applications list.
 #'
-#' See [https://paws-r.github.io/docs/fms/put_apps_list.html](https://paws-r.github.io/docs/fms/put_apps_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_put_apps_list/](https://www.paws-r-sdk.com/docs/fms_put_apps_list/) for full documentation.
 #'
 #' @param AppsList &#91;required&#93; The details of the Firewall Manager applications list to be created.
 #' @param TagList The tags associated with the resource.
@@ -1289,7 +1289,7 @@ fms_put_apps_list <- function(AppsList, TagList = NULL) {
 #' @description
 #' Designates the IAM role and Amazon Simple Notification Service (SNS) topic that Firewall Manager uses to record SNS logs.
 #'
-#' See [https://paws-r.github.io/docs/fms/put_notification_channel.html](https://paws-r.github.io/docs/fms/put_notification_channel.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_put_notification_channel/](https://www.paws-r-sdk.com/docs/fms_put_notification_channel/) for full documentation.
 #'
 #' @param SnsTopicArn &#91;required&#93; The Amazon Resource Name (ARN) of the SNS topic that collects
 #' notifications from Firewall Manager.
@@ -1321,7 +1321,7 @@ fms_put_notification_channel <- function(SnsTopicArn, SnsRoleName) {
 #' @description
 #' Creates an Firewall Manager policy.
 #'
-#' See [https://paws-r.github.io/docs/fms/put_policy.html](https://paws-r.github.io/docs/fms/put_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_put_policy/](https://www.paws-r-sdk.com/docs/fms_put_policy/) for full documentation.
 #'
 #' @param Policy &#91;required&#93; The details of the Firewall Manager policy to be created.
 #' @param TagList The tags to add to the Amazon Web Services resource.
@@ -1351,7 +1351,7 @@ fms_put_policy <- function(Policy, TagList = NULL) {
 #' @description
 #' Creates an Firewall Manager protocols list.
 #'
-#' See [https://paws-r.github.io/docs/fms/put_protocols_list.html](https://paws-r.github.io/docs/fms/put_protocols_list.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_put_protocols_list/](https://www.paws-r-sdk.com/docs/fms_put_protocols_list/) for full documentation.
 #'
 #' @param ProtocolsList &#91;required&#93; The details of the Firewall Manager protocols list to be created.
 #' @param TagList The tags associated with the resource.
@@ -1381,7 +1381,7 @@ fms_put_protocols_list <- function(ProtocolsList, TagList = NULL) {
 #' @description
 #' Creates the resource set.
 #'
-#' See [https://paws-r.github.io/docs/fms/put_resource_set.html](https://paws-r.github.io/docs/fms/put_resource_set.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_put_resource_set/](https://www.paws-r-sdk.com/docs/fms_put_resource_set/) for full documentation.
 #'
 #' @param ResourceSet &#91;required&#93; Details about the resource set to be created or updated.\>
 #' @param TagList Retrieves the tags associated with the specified resource set. Tags are
@@ -1416,7 +1416,7 @@ fms_put_resource_set <- function(ResourceSet, TagList = NULL) {
 #' @description
 #' Adds one or more tags to an Amazon Web Services resource.
 #'
-#' See [https://paws-r.github.io/docs/fms/tag_resource.html](https://paws-r.github.io/docs/fms/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_tag_resource/](https://www.paws-r-sdk.com/docs/fms_tag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return tags for. The
 #' Firewall Manager resources that support tagging are policies,
@@ -1448,7 +1448,7 @@ fms_tag_resource <- function(ResourceArn, TagList) {
 #' @description
 #' Removes one or more tags from an Amazon Web Services resource.
 #'
-#' See [https://paws-r.github.io/docs/fms/untag_resource.html](https://paws-r.github.io/docs/fms/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/fms_untag_resource/](https://www.paws-r-sdk.com/docs/fms_untag_resource/) for full documentation.
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to return tags for. The
 #' Firewall Manager resources that support tagging are policies,

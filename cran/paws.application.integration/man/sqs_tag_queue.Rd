@@ -14,6 +14,6 @@ sqs_tag_queue(QueueUrl, Tags)
 \description{
 Add cost allocation tags to the specified Amazon SQS queue. For an overview, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-queue-tags.html}{Tagging Your Amazon SQS Queues} in the \emph{Amazon SQS Developer Guide}.
 
-See \url{https://paws-r.github.io/docs/sqs/tag_queue.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sqs_tag_queue/} for full documentation.
 }
 \keyword{internal}

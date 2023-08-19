@@ -16,6 +16,6 @@ jobs aren't supported.}
 \description{
 Lists the tags for an Batch resource. Batch resources that support tags are compute environments, jobs, job definitions, job queues, and scheduling policies. ARNs for child jobs of array and multi-node parallel (MNP) jobs aren't supported.
 
-See \url{https://paws-r.github.io/docs/batch/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/batch_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

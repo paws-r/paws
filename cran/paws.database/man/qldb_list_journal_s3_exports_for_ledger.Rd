@@ -26,6 +26,6 @@ call, then you should use that value as input here.}
 \description{
 Returns all journal export jobs for a specified ledger.
 
-See \url{https://paws-r.github.io/docs/qldb/list_journal_s3_exports_for_ledger.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/qldb_list_journal_s3_exports_for_ledger/} for full documentation.
 }
 \keyword{internal}

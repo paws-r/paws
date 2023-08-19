@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Associates your quota request template with your organization. When a new account is created in your organization, the quota increase requests in the template are automatically applied to the account. You can add a quota increase request for any adjustable quota to your template.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/associate_service_quota_template.html](https://paws-r.github.io/docs/servicequotas/associate_service_quota_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_associate_service_quota_template/](https://www.paws-r-sdk.com/docs/servicequotas_associate_service_quota_template/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -36,7 +36,7 @@ servicequotas_associate_service_quota_template <- function() {
 #' @description
 #' Deletes the quota increase request for the specified quota from your quota request template.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/delete_service_quota_increase_request_from_template.html](https://paws-r.github.io/docs/servicequotas/delete_service_quota_increase_request_from_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_delete_service_quota_increase_request_from_template/](https://www.paws-r-sdk.com/docs/servicequotas_delete_service_quota_increase_request_from_template/) for full documentation.
 #'
 #' @param ServiceCode &#91;required&#93; The service identifier.
 #' @param QuotaCode &#91;required&#93; The quota identifier.
@@ -67,7 +67,7 @@ servicequotas_delete_service_quota_increase_request_from_template <- function(Se
 #' @description
 #' Disables your quota request template. After a template is disabled, the quota increase requests in the template are not applied to new accounts in your organization. Disabling a quota request template does not apply its quota increase requests.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/disassociate_service_quota_template.html](https://paws-r.github.io/docs/servicequotas/disassociate_service_quota_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_disassociate_service_quota_template/](https://www.paws-r-sdk.com/docs/servicequotas_disassociate_service_quota_template/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -94,7 +94,7 @@ servicequotas_disassociate_service_quota_template <- function() {
 #' @description
 #' Retrieves the default value for the specified quota. The default value does not reflect any quota increases.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/get_aws_default_service_quota.html](https://paws-r.github.io/docs/servicequotas/get_aws_default_service_quota.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_get_aws_default_service_quota/](https://www.paws-r-sdk.com/docs/servicequotas_get_aws_default_service_quota/) for full documentation.
 #'
 #' @param ServiceCode &#91;required&#93; The service identifier.
 #' @param QuotaCode &#91;required&#93; The quota identifier.
@@ -124,7 +124,7 @@ servicequotas_get_aws_default_service_quota <- function(ServiceCode, QuotaCode) 
 #' @description
 #' Retrieves the status of the association for the quota request template.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/get_association_for_service_quota_template.html](https://paws-r.github.io/docs/servicequotas/get_association_for_service_quota_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_get_association_for_service_quota_template/](https://www.paws-r-sdk.com/docs/servicequotas_get_association_for_service_quota_template/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -151,7 +151,7 @@ servicequotas_get_association_for_service_quota_template <- function() {
 #' @description
 #' Retrieves information about the specified quota increase request.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/get_requested_service_quota_change.html](https://paws-r.github.io/docs/servicequotas/get_requested_service_quota_change.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_get_requested_service_quota_change/](https://www.paws-r-sdk.com/docs/servicequotas_get_requested_service_quota_change/) for full documentation.
 #'
 #' @param RequestId &#91;required&#93; The ID of the quota increase request.
 #'
@@ -180,7 +180,7 @@ servicequotas_get_requested_service_quota_change <- function(RequestId) {
 #' @description
 #' Retrieves the applied quota value for the specified quota. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/get_service_quota.html](https://paws-r.github.io/docs/servicequotas/get_service_quota.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_get_service_quota/](https://www.paws-r-sdk.com/docs/servicequotas_get_service_quota/) for full documentation.
 #'
 #' @param ServiceCode &#91;required&#93; The service identifier.
 #' @param QuotaCode &#91;required&#93; The quota identifier.
@@ -211,7 +211,7 @@ servicequotas_get_service_quota <- function(ServiceCode, QuotaCode) {
 #' @description
 #' Retrieves information about the specified quota increase request in your quota request template.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/get_service_quota_increase_request_from_template.html](https://paws-r.github.io/docs/servicequotas/get_service_quota_increase_request_from_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_get_service_quota_increase_request_from_template/](https://www.paws-r-sdk.com/docs/servicequotas_get_service_quota_increase_request_from_template/) for full documentation.
 #'
 #' @param ServiceCode &#91;required&#93; The service identifier.
 #' @param QuotaCode &#91;required&#93; The quota identifier.
@@ -242,7 +242,7 @@ servicequotas_get_service_quota_increase_request_from_template <- function(Servi
 #' @description
 #' Lists the default values for the quotas for the specified AWS service. A default value does not reflect any quota increases.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/list_aws_default_service_quotas.html](https://paws-r.github.io/docs/servicequotas/list_aws_default_service_quotas.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_list_aws_default_service_quotas/](https://www.paws-r-sdk.com/docs/servicequotas_list_aws_default_service_quotas/) for full documentation.
 #'
 #' @param ServiceCode &#91;required&#93; The service identifier.
 #' @param NextToken The token for the next page of results.
@@ -258,7 +258,7 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
     name = "ListAWSDefaultServiceQuotas",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Quotas")
   )
   input <- .servicequotas$list_aws_default_service_quotas_input(ServiceCode = ServiceCode, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_aws_default_service_quotas_output()
@@ -275,7 +275,7 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
 #' @description
 #' Retrieves the quota increase requests for the specified service.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/list_requested_service_quota_change_history.html](https://paws-r.github.io/docs/servicequotas/list_requested_service_quota_change_history.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_list_requested_service_quota_change_history/](https://www.paws-r-sdk.com/docs/servicequotas_list_requested_service_quota_change_history/) for full documentation.
 #'
 #' @param ServiceCode The service identifier.
 #' @param Status The status of the quota increase request.
@@ -292,7 +292,7 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
     name = "ListRequestedServiceQuotaChangeHistory",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RequestedQuotas")
   )
   input <- .servicequotas$list_requested_service_quota_change_history_input(ServiceCode = ServiceCode, Status = Status, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_requested_service_quota_change_history_output()
@@ -309,7 +309,7 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
 #' @description
 #' Retrieves the quota increase requests for the specified quota.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/list_requested_service_quota_change_history_by_quota.html](https://paws-r.github.io/docs/servicequotas/list_requested_service_quota_change_history_by_quota.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_list_requested_service_quota_change_history_by_quota/](https://www.paws-r-sdk.com/docs/servicequotas_list_requested_service_quota_change_history_by_quota/) for full documentation.
 #'
 #' @param ServiceCode &#91;required&#93; The service identifier.
 #' @param QuotaCode &#91;required&#93; The quota identifier.
@@ -327,7 +327,7 @@ servicequotas_list_requested_service_quota_change_history_by_quota <- function(S
     name = "ListRequestedServiceQuotaChangeHistoryByQuota",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RequestedQuotas")
   )
   input <- .servicequotas$list_requested_service_quota_change_history_by_quota_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, Status = Status, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_requested_service_quota_change_history_by_quota_output()
@@ -345,7 +345,7 @@ servicequotas_list_requested_service_quota_change_history_by_quota <- function(S
 #' @description
 #' Lists the quota increase requests in the specified quota request template.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/list_service_quota_increase_requests_in_template.html](https://paws-r.github.io/docs/servicequotas/list_service_quota_increase_requests_in_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_list_service_quota_increase_requests_in_template/](https://www.paws-r-sdk.com/docs/servicequotas_list_service_quota_increase_requests_in_template/) for full documentation.
 #'
 #' @param ServiceCode The service identifier.
 #' @param AwsRegion The AWS Region.
@@ -362,7 +362,7 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
     name = "ListServiceQuotaIncreaseRequestsInTemplate",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ServiceQuotaIncreaseRequestInTemplateList")
   )
   input <- .servicequotas$list_service_quota_increase_requests_in_template_input(ServiceCode = ServiceCode, AwsRegion = AwsRegion, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_service_quota_increase_requests_in_template_output()
@@ -379,7 +379,7 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
 #' @description
 #' Lists the applied quota values for the specified AWS service. For some quotas, only the default values are available. If the applied quota value is not available for a quota, the quota is not retrieved.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/list_service_quotas.html](https://paws-r.github.io/docs/servicequotas/list_service_quotas.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_list_service_quotas/](https://www.paws-r-sdk.com/docs/servicequotas_list_service_quotas/) for full documentation.
 #'
 #' @param ServiceCode &#91;required&#93; The service identifier.
 #' @param NextToken The token for the next page of results.
@@ -395,7 +395,7 @@ servicequotas_list_service_quotas <- function(ServiceCode, NextToken = NULL, Max
     name = "ListServiceQuotas",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Quotas")
   )
   input <- .servicequotas$list_service_quotas_input(ServiceCode = ServiceCode, NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_service_quotas_output()
@@ -413,7 +413,7 @@ servicequotas_list_service_quotas <- function(ServiceCode, NextToken = NULL, Max
 #' @description
 #' Lists the names and codes for the services integrated with Service Quotas.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/list_services.html](https://paws-r.github.io/docs/servicequotas/list_services.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_list_services/](https://www.paws-r-sdk.com/docs/servicequotas_list_services/) for full documentation.
 #'
 #' @param NextToken The token for the next page of results.
 #' @param MaxResults The maximum number of results to return with a single call. To retrieve
@@ -428,7 +428,7 @@ servicequotas_list_services <- function(NextToken = NULL, MaxResults = NULL) {
     name = "ListServices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Services")
   )
   input <- .servicequotas$list_services_input(NextToken = NextToken, MaxResults = MaxResults)
   output <- .servicequotas$list_services_output()
@@ -445,7 +445,7 @@ servicequotas_list_services <- function(NextToken = NULL, MaxResults = NULL) {
 #' @description
 #' Returns a list of the tags assigned to the specified applied quota.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/list_tags_for_resource.html](https://paws-r.github.io/docs/servicequotas/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/servicequotas_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) for the applied quota for which you want
 #' to list tags. You can get this information by using the Service Quotas
@@ -480,7 +480,7 @@ servicequotas_list_tags_for_resource <- function(ResourceARN) {
 #' @description
 #' Adds a quota increase request to your quota request template.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/put_service_quota_increase_request_into_template.html](https://paws-r.github.io/docs/servicequotas/put_service_quota_increase_request_into_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_put_service_quota_increase_request_into_template/](https://www.paws-r-sdk.com/docs/servicequotas_put_service_quota_increase_request_into_template/) for full documentation.
 #'
 #' @param QuotaCode &#91;required&#93; The quota identifier.
 #' @param ServiceCode &#91;required&#93; The service identifier.
@@ -512,7 +512,7 @@ servicequotas_put_service_quota_increase_request_into_template <- function(Quota
 #' @description
 #' Submits a quota increase request for the specified quota.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/request_service_quota_increase.html](https://paws-r.github.io/docs/servicequotas/request_service_quota_increase.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_request_service_quota_increase/](https://www.paws-r-sdk.com/docs/servicequotas_request_service_quota_increase/) for full documentation.
 #'
 #' @param ServiceCode &#91;required&#93; The service identifier.
 #' @param QuotaCode &#91;required&#93; The quota identifier.
@@ -543,7 +543,7 @@ servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode,
 #' @description
 #' Adds tags to the specified applied quota. You can include one or more tags to add to the quota.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/tag_resource.html](https://paws-r.github.io/docs/servicequotas/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_tag_resource/](https://www.paws-r-sdk.com/docs/servicequotas_tag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) for the applied quota. You can get this
 #' information by using the Service Quotas console, or by listing the
@@ -579,7 +579,7 @@ servicequotas_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Removes tags from the specified applied quota. You can specify one or more tags to remove.
 #'
-#' See [https://paws-r.github.io/docs/servicequotas/untag_resource.html](https://paws-r.github.io/docs/servicequotas/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/servicequotas_untag_resource/](https://www.paws-r-sdk.com/docs/servicequotas_untag_resource/) for full documentation.
 #'
 #' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) for the applied quota that you want to
 #' untag. You can get this information by using the Service Quotas console,

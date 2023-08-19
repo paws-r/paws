@@ -9,7 +9,7 @@ NULL
 #' @description
 #' In a management account, an environment account connection request is accepted. When the environment account connection request is accepted, Proton can use the associated IAM role to provision environment infrastructure resources in the associated environment account.
 #'
-#' See [https://paws-r.github.io/docs/proton/accept_environment_account_connection.html](https://paws-r.github.io/docs/proton/accept_environment_account_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_accept_environment_account_connection/](https://www.paws-r-sdk.com/docs/proton_accept_environment_account_connection/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the environment account connection.
 #'
@@ -39,7 +39,7 @@ proton_accept_environment_account_connection <- function(id) {
 #' @description
 #' Attempts to cancel a component deployment (for a component that is in the `IN_PROGRESS` deployment status).
 #'
-#' See [https://paws-r.github.io/docs/proton/cancel_component_deployment.html](https://paws-r.github.io/docs/proton/cancel_component_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_cancel_component_deployment/](https://www.paws-r-sdk.com/docs/proton_cancel_component_deployment/) for full documentation.
 #'
 #' @param componentName &#91;required&#93; The name of the component with the deployment to cancel.
 #'
@@ -69,7 +69,7 @@ proton_cancel_component_deployment <- function(componentName) {
 #' @description
 #' Attempts to cancel an environment deployment on an [`update_environment`][proton_update_environment] action, if the deployment is `IN_PROGRESS`. For more information, see [Update an environment](https://docs.aws.amazon.com/proton/latest/userguide/ag-env-update.html) in the *Proton User guide*.
 #'
-#' See [https://paws-r.github.io/docs/proton/cancel_environment_deployment.html](https://paws-r.github.io/docs/proton/cancel_environment_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_cancel_environment_deployment/](https://www.paws-r-sdk.com/docs/proton_cancel_environment_deployment/) for full documentation.
 #'
 #' @param environmentName &#91;required&#93; The name of the environment with the deployment to cancel.
 #'
@@ -99,7 +99,7 @@ proton_cancel_environment_deployment <- function(environmentName) {
 #' @description
 #' Attempts to cancel a service instance deployment on an [`update_service_instance`][proton_update_service_instance] action, if the deployment is `IN_PROGRESS`. For more information, see [Update a service instance](https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-instance-update.html) in the *Proton User guide*.
 #'
-#' See [https://paws-r.github.io/docs/proton/cancel_service_instance_deployment.html](https://paws-r.github.io/docs/proton/cancel_service_instance_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_cancel_service_instance_deployment/](https://www.paws-r-sdk.com/docs/proton_cancel_service_instance_deployment/) for full documentation.
 #'
 #' @param serviceInstanceName &#91;required&#93; The name of the service instance with the deployment to cancel.
 #' @param serviceName &#91;required&#93; The name of the service with the service instance deployment to cancel.
@@ -130,7 +130,7 @@ proton_cancel_service_instance_deployment <- function(serviceInstanceName, servi
 #' @description
 #' Attempts to cancel a service pipeline deployment on an [`update_service_pipeline`][proton_update_service_pipeline] action, if the deployment is `IN_PROGRESS`. For more information, see [Update a service pipeline](https://docs.aws.amazon.com/proton/latest/userguide/ag-svc-pipeline-update.html) in the *Proton User guide*.
 #'
-#' See [https://paws-r.github.io/docs/proton/cancel_service_pipeline_deployment.html](https://paws-r.github.io/docs/proton/cancel_service_pipeline_deployment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_cancel_service_pipeline_deployment/](https://www.paws-r-sdk.com/docs/proton_cancel_service_pipeline_deployment/) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the service with the service pipeline deployment to cancel.
 #'
@@ -159,7 +159,7 @@ proton_cancel_service_pipeline_deployment <- function(serviceName) {
 #' @description
 #' Create an Proton component. A component is an infrastructure extension for a service instance.
 #'
-#' See [https://paws-r.github.io/docs/proton/create_component.html](https://paws-r.github.io/docs/proton/create_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_create_component/](https://www.paws-r-sdk.com/docs/proton_create_component/) for full documentation.
 #'
 #' @param clientToken The client token for the created component.
 #' @param description An optional customer-provided description of the component.
@@ -218,7 +218,7 @@ proton_create_component <- function(clientToken = NULL, description = NULL, envi
 #' @description
 #' Deploy a new environment. An Proton environment is created from an environment template that defines infrastructure and resources that can be shared across services.
 #'
-#' See [https://paws-r.github.io/docs/proton/create_environment.html](https://paws-r.github.io/docs/proton/create_environment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_create_environment/](https://www.paws-r-sdk.com/docs/proton_create_environment/) for full documentation.
 #'
 #' @param codebuildRoleArn The Amazon Resource Name (ARN) of the IAM service role that allows
 #' Proton to provision infrastructure using CodeBuild-based provisioning on
@@ -308,7 +308,7 @@ proton_create_environment <- function(codebuildRoleArn = NULL, componentRoleArn 
 #' @description
 #' Create an environment account connection in an environment account so that environment infrastructure resources can be provisioned in the environment account from a management account.
 #'
-#' See [https://paws-r.github.io/docs/proton/create_environment_account_connection.html](https://paws-r.github.io/docs/proton/create_environment_account_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_create_environment_account_connection/](https://www.paws-r-sdk.com/docs/proton_create_environment_account_connection/) for full documentation.
 #'
 #' @param clientToken When included, if two identical requests are made with the same client
 #' token, Proton returns the environment account connection that the first
@@ -371,7 +371,7 @@ proton_create_environment_account_connection <- function(clientToken = NULL, cod
 #' @description
 #' Create an environment template for Proton. For more information, see [Environment Templates](https://docs.aws.amazon.com/proton/latest/userguide/ag-templates.html) in the *Proton User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/proton/create_environment_template.html](https://paws-r.github.io/docs/proton/create_environment_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_create_environment_template/](https://www.paws-r-sdk.com/docs/proton_create_environment_template/) for full documentation.
 #'
 #' @param description A description of the environment template.
 #' @param displayName The environment template name as displayed in the developer interface.
@@ -411,7 +411,7 @@ proton_create_environment_template <- function(description = NULL, displayName =
 #' @description
 #' Create a new major or minor version of an environment template. A major version of an environment template is a version that *isn't* backwards compatible. A minor version of an environment template is a version that's backwards compatible within its major version.
 #'
-#' See [https://paws-r.github.io/docs/proton/create_environment_template_version.html](https://paws-r.github.io/docs/proton/create_environment_template_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_create_environment_template_version/](https://www.paws-r-sdk.com/docs/proton_create_environment_template_version/) for full documentation.
 #'
 #' @param clientToken When included, if two identical requests are made with the same client
 #' token, Proton returns the environment template version that the first
@@ -457,7 +457,7 @@ proton_create_environment_template_version <- function(clientToken = NULL, descr
 #' @description
 #' Create and register a link to a repository. Proton uses the link to repeatedly access the repository, to either push to it (self-managed provisioning) or pull from it (template sync). You can share a linked repository across multiple resources (like environments using self-managed provisioning, or synced templates). When you create a repository link, Proton creates a [service-linked role](https://docs.aws.amazon.com/proton/latest/userguide/using-service-linked-roles.html) for you.
 #'
-#' See [https://paws-r.github.io/docs/proton/create_repository.html](https://paws-r.github.io/docs/proton/create_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_create_repository/](https://www.paws-r-sdk.com/docs/proton_create_repository/) for full documentation.
 #'
 #' @param connectionArn &#91;required&#93; The Amazon Resource Name (ARN) of your AWS CodeStar connection that
 #' connects Proton to your repository provider account. For more
@@ -500,7 +500,7 @@ proton_create_repository <- function(connectionArn, encryptionKey = NULL, name, 
 #' @description
 #' Create an Proton service. An Proton service is an instantiation of a service template and often includes several service instances and pipeline. For more information, see [Services](https://docs.aws.amazon.com/proton/latest/userguide/ag-services.html) in the *Proton User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/proton/create_service.html](https://paws-r.github.io/docs/proton/create_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_create_service/](https://www.paws-r-sdk.com/docs/proton_create_service/) for full documentation.
 #'
 #' @param branchName The name of the code repository branch that holds the code that's
 #' deployed in Proton. *Don't* include this parameter if your service
@@ -557,7 +557,7 @@ proton_create_service <- function(branchName = NULL, description = NULL, name, r
 #' @description
 #' Create a service instance.
 #'
-#' See [https://paws-r.github.io/docs/proton/create_service_instance.html](https://paws-r.github.io/docs/proton/create_service_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_create_service_instance/](https://www.paws-r-sdk.com/docs/proton_create_service_instance/) for full documentation.
 #'
 #' @param clientToken The client token of the service instance to create.
 #' @param name &#91;required&#93; The name of the service instance to create.
@@ -599,7 +599,7 @@ proton_create_service_instance <- function(clientToken = NULL, name, serviceName
 #' @description
 #' Create the Proton Ops configuration file.
 #'
-#' See [https://paws-r.github.io/docs/proton/create_service_sync_config.html](https://paws-r.github.io/docs/proton/create_service_sync_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_create_service_sync_config/](https://www.paws-r-sdk.com/docs/proton_create_service_sync_config/) for full documentation.
 #'
 #' @param branch &#91;required&#93; The repository branch for your Proton Ops file.
 #' @param filePath &#91;required&#93; The path to the Proton Ops file.
@@ -632,7 +632,7 @@ proton_create_service_sync_config <- function(branch, filePath, repositoryName, 
 #' @description
 #' Create a service template. The administrator creates a service template to define standardized infrastructure and an optional CI/CD service pipeline. Developers, in turn, select the service template from Proton. If the selected service template includes a service pipeline definition, they provide a link to their source code repository. Proton then deploys and manages the infrastructure defined by the selected service template. For more information, see [Proton templates](https://docs.aws.amazon.com/proton/latest/userguide/ag-templates.html) in the *Proton User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/proton/create_service_template.html](https://paws-r.github.io/docs/proton/create_service_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_create_service_template/](https://www.paws-r-sdk.com/docs/proton_create_service_template/) for full documentation.
 #'
 #' @param description A description of the service template.
 #' @param displayName The name of the service template as displayed in the developer
@@ -677,7 +677,7 @@ proton_create_service_template <- function(description = NULL, displayName = NUL
 #' @description
 #' Create a new major or minor version of a service template. A major version of a service template is a version that *isn't* backward compatible. A minor version of a service template is a version that's backward compatible within its major version.
 #'
-#' See [https://paws-r.github.io/docs/proton/create_service_template_version.html](https://paws-r.github.io/docs/proton/create_service_template_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_create_service_template_version/](https://www.paws-r-sdk.com/docs/proton_create_service_template_version/) for full documentation.
 #'
 #' @param clientToken When included, if two identical requests are made with the same client
 #' token, Proton returns the service template version that the first
@@ -734,7 +734,7 @@ proton_create_service_template_version <- function(clientToken = NULL, compatibl
 #' @description
 #' Set up a template to create new template versions automatically by tracking a linked repository. A linked repository is a repository that has been registered with Proton. For more information, see [`create_repository`][proton_create_repository].
 #'
-#' See [https://paws-r.github.io/docs/proton/create_template_sync_config.html](https://paws-r.github.io/docs/proton/create_template_sync_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_create_template_sync_config/](https://www.paws-r-sdk.com/docs/proton_create_template_sync_config/) for full documentation.
 #'
 #' @param branch &#91;required&#93; The repository branch for your template.
 #' @param repositoryName &#91;required&#93; The repository name (for example, `myrepos/myrepo`).
@@ -770,7 +770,7 @@ proton_create_template_sync_config <- function(branch, repositoryName, repositor
 #' @description
 #' Delete an Proton component resource.
 #'
-#' See [https://paws-r.github.io/docs/proton/delete_component.html](https://paws-r.github.io/docs/proton/delete_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_delete_component/](https://www.paws-r-sdk.com/docs/proton_delete_component/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the component to delete.
 #'
@@ -794,12 +794,41 @@ proton_delete_component <- function(name) {
 }
 .proton$operations$delete_component <- proton_delete_component
 
+#' Delete the deployment
+#'
+#' @description
+#' Delete the deployment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/proton_delete_deployment/](https://www.paws-r-sdk.com/docs/proton_delete_deployment/) for full documentation.
+#'
+#' @param id &#91;required&#93; The ID of the deployment to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname proton_delete_deployment
+proton_delete_deployment <- function(id) {
+  op <- new_operation(
+    name = "DeleteDeployment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .proton$delete_deployment_input(id = id)
+  output <- .proton$delete_deployment_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$delete_deployment <- proton_delete_deployment
+
 #' Delete an environment
 #'
 #' @description
 #' Delete an environment.
 #'
-#' See [https://paws-r.github.io/docs/proton/delete_environment.html](https://paws-r.github.io/docs/proton/delete_environment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_delete_environment/](https://www.paws-r-sdk.com/docs/proton_delete_environment/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the environment to delete.
 #'
@@ -828,7 +857,7 @@ proton_delete_environment <- function(name) {
 #' @description
 #' In an environment account, delete an environment account connection.
 #'
-#' See [https://paws-r.github.io/docs/proton/delete_environment_account_connection.html](https://paws-r.github.io/docs/proton/delete_environment_account_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_delete_environment_account_connection/](https://www.paws-r-sdk.com/docs/proton_delete_environment_account_connection/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the environment account connection to delete.
 #'
@@ -858,7 +887,7 @@ proton_delete_environment_account_connection <- function(id) {
 #' @description
 #' If no other major or minor versions of an environment template exist, delete the environment template.
 #'
-#' See [https://paws-r.github.io/docs/proton/delete_environment_template.html](https://paws-r.github.io/docs/proton/delete_environment_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_delete_environment_template/](https://www.paws-r-sdk.com/docs/proton_delete_environment_template/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the environment template to delete.
 #'
@@ -889,7 +918,7 @@ proton_delete_environment_template <- function(name) {
 #' @description
 #' If no other minor versions of an environment template exist, delete a major version of the environment template if it's not the `Recommended` version. Delete the `Recommended` version of the environment template if no other major versions or minor versions of the environment template exist. A major version of an environment template is a version that's not backward compatible.
 #'
-#' See [https://paws-r.github.io/docs/proton/delete_environment_template_version.html](https://paws-r.github.io/docs/proton/delete_environment_template_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_delete_environment_template_version/](https://www.paws-r-sdk.com/docs/proton_delete_environment_template_version/) for full documentation.
 #'
 #' @param majorVersion &#91;required&#93; The environment template major version to delete.
 #' @param minorVersion &#91;required&#93; The environment template minor version to delete.
@@ -920,7 +949,7 @@ proton_delete_environment_template_version <- function(majorVersion, minorVersio
 #' @description
 #' De-register and unlink your repository.
 #'
-#' See [https://paws-r.github.io/docs/proton/delete_repository.html](https://paws-r.github.io/docs/proton/delete_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_delete_repository/](https://www.paws-r-sdk.com/docs/proton_delete_repository/) for full documentation.
 #'
 #' @param name &#91;required&#93; The repository name.
 #' @param provider &#91;required&#93; The repository provider.
@@ -950,7 +979,7 @@ proton_delete_repository <- function(name, provider) {
 #' @description
 #' Delete a service, with its instances and pipeline.
 #'
-#' See [https://paws-r.github.io/docs/proton/delete_service.html](https://paws-r.github.io/docs/proton/delete_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_delete_service/](https://www.paws-r-sdk.com/docs/proton_delete_service/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the service to delete.
 #'
@@ -979,7 +1008,7 @@ proton_delete_service <- function(name) {
 #' @description
 #' Delete the Proton Ops file.
 #'
-#' See [https://paws-r.github.io/docs/proton/delete_service_sync_config.html](https://paws-r.github.io/docs/proton/delete_service_sync_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_delete_service_sync_config/](https://www.paws-r-sdk.com/docs/proton_delete_service_sync_config/) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the service that you want to delete the service sync
 #' configuration for.
@@ -1010,7 +1039,7 @@ proton_delete_service_sync_config <- function(serviceName) {
 #' @description
 #' If no other major or minor versions of the service template exist, delete the service template.
 #'
-#' See [https://paws-r.github.io/docs/proton/delete_service_template.html](https://paws-r.github.io/docs/proton/delete_service_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_delete_service_template/](https://www.paws-r-sdk.com/docs/proton_delete_service_template/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the service template to delete.
 #'
@@ -1040,7 +1069,7 @@ proton_delete_service_template <- function(name) {
 #' @description
 #' If no other minor versions of a service template exist, delete a major version of the service template if it's not the `Recommended` version. Delete the `Recommended` version of the service template if no other major versions or minor versions of the service template exist. A major version of a service template is a version that *isn't* backwards compatible.
 #'
-#' See [https://paws-r.github.io/docs/proton/delete_service_template_version.html](https://paws-r.github.io/docs/proton/delete_service_template_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_delete_service_template_version/](https://www.paws-r-sdk.com/docs/proton_delete_service_template_version/) for full documentation.
 #'
 #' @param majorVersion &#91;required&#93; The service template major version to delete.
 #' @param minorVersion &#91;required&#93; The service template minor version to delete.
@@ -1071,7 +1100,7 @@ proton_delete_service_template_version <- function(majorVersion, minorVersion, t
 #' @description
 #' Delete a template sync configuration.
 #'
-#' See [https://paws-r.github.io/docs/proton/delete_template_sync_config.html](https://paws-r.github.io/docs/proton/delete_template_sync_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_delete_template_sync_config/](https://www.paws-r-sdk.com/docs/proton_delete_template_sync_config/) for full documentation.
 #'
 #' @param templateName &#91;required&#93; The template name.
 #' @param templateType &#91;required&#93; The template type.
@@ -1101,7 +1130,7 @@ proton_delete_template_sync_config <- function(templateName, templateType) {
 #' @description
 #' Get detail data for Proton account-wide settings.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_account_settings.html](https://paws-r.github.io/docs/proton/get_account_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_account_settings/](https://www.paws-r-sdk.com/docs/proton_get_account_settings/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1128,7 +1157,7 @@ proton_get_account_settings <- function() {
 #' @description
 #' Get detailed data for a component.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_component.html](https://paws-r.github.io/docs/proton/get_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_component/](https://www.paws-r-sdk.com/docs/proton_get_component/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the component that you want to get the detailed data for.
 #'
@@ -1152,12 +1181,46 @@ proton_get_component <- function(name) {
 }
 .proton$operations$get_component <- proton_get_component
 
+#' Get detailed data for a deployment
+#'
+#' @description
+#' Get detailed data for a deployment.
+#'
+#' See [https://www.paws-r-sdk.com/docs/proton_get_deployment/](https://www.paws-r-sdk.com/docs/proton_get_deployment/) for full documentation.
+#'
+#' @param componentName The name of a component that you want to get the detailed data for.
+#' @param environmentName The name of a environment that you want to get the detailed data for.
+#' @param id &#91;required&#93; The ID of the deployment that you want to get the detailed data for.
+#' @param serviceInstanceName The name of the service instance associated with the given deployment
+#' ID. `serviceName` must be specified to identify the service instance.
+#' @param serviceName The name of the service associated with the given deployment ID.
+#'
+#' @keywords internal
+#'
+#' @rdname proton_get_deployment
+proton_get_deployment <- function(componentName = NULL, environmentName = NULL, id, serviceInstanceName = NULL, serviceName = NULL) {
+  op <- new_operation(
+    name = "GetDeployment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .proton$get_deployment_input(componentName = componentName, environmentName = environmentName, id = id, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
+  output <- .proton$get_deployment_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$get_deployment <- proton_get_deployment
+
 #' Get detailed data for an environment
 #'
 #' @description
 #' Get detailed data for an environment.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_environment.html](https://paws-r.github.io/docs/proton/get_environment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_environment/](https://www.paws-r-sdk.com/docs/proton_get_environment/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the environment that you want to get the detailed data for.
 #'
@@ -1187,7 +1250,7 @@ proton_get_environment <- function(name) {
 #' @description
 #' In an environment account, get the detailed data for an environment account connection.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_environment_account_connection.html](https://paws-r.github.io/docs/proton/get_environment_account_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_environment_account_connection/](https://www.paws-r-sdk.com/docs/proton_get_environment_account_connection/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the environment account connection that you want to get the
 #' detailed data for.
@@ -1217,7 +1280,7 @@ proton_get_environment_account_connection <- function(id) {
 #' @description
 #' Get detailed data for an environment template.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_environment_template.html](https://paws-r.github.io/docs/proton/get_environment_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_environment_template/](https://www.paws-r-sdk.com/docs/proton_get_environment_template/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the environment template that you want to get the detailed
 #' data for.
@@ -1248,7 +1311,7 @@ proton_get_environment_template <- function(name) {
 #' @description
 #' Get detailed data for a major or minor version of an environment template.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_environment_template_version.html](https://paws-r.github.io/docs/proton/get_environment_template_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_environment_template_version/](https://www.paws-r-sdk.com/docs/proton_get_environment_template_version/) for full documentation.
 #'
 #' @param majorVersion &#91;required&#93; To get environment template major version detail data, include
 #' `major Version`.
@@ -1282,7 +1345,7 @@ proton_get_environment_template_version <- function(majorVersion, minorVersion, 
 #' @description
 #' Get detail data for a linked repository.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_repository.html](https://paws-r.github.io/docs/proton/get_repository.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_repository/](https://www.paws-r-sdk.com/docs/proton_get_repository/) for full documentation.
 #'
 #' @param name &#91;required&#93; The repository name, for example `myrepos/myrepo`.
 #' @param provider &#91;required&#93; The repository provider.
@@ -1312,7 +1375,7 @@ proton_get_repository <- function(name, provider) {
 #' @description
 #' Get the sync status of a repository used for Proton template sync. For more information about template sync, see .
 #'
-#' See [https://paws-r.github.io/docs/proton/get_repository_sync_status.html](https://paws-r.github.io/docs/proton/get_repository_sync_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_repository_sync_status/](https://www.paws-r-sdk.com/docs/proton_get_repository_sync_status/) for full documentation.
 #'
 #' @param branch &#91;required&#93; The repository branch.
 #' @param repositoryName &#91;required&#93; The repository name.
@@ -1344,7 +1407,7 @@ proton_get_repository_sync_status <- function(branch, repositoryName, repository
 #' @description
 #' Get counts of Proton resources.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_resources_summary.html](https://paws-r.github.io/docs/proton/get_resources_summary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_resources_summary/](https://www.paws-r-sdk.com/docs/proton_get_resources_summary/) for full documentation.
 #'
 #' @keywords internal
 #'
@@ -1371,7 +1434,7 @@ proton_get_resources_summary <- function() {
 #' @description
 #' Get detailed data for a service.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_service.html](https://paws-r.github.io/docs/proton/get_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_service/](https://www.paws-r-sdk.com/docs/proton_get_service/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the service that you want to get the detailed data for.
 #'
@@ -1400,7 +1463,7 @@ proton_get_service <- function(name) {
 #' @description
 #' Get detailed data for a service instance. A service instance is an instantiation of service template and it runs in a specific environment.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_service_instance.html](https://paws-r.github.io/docs/proton/get_service_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_service_instance/](https://www.paws-r-sdk.com/docs/proton_get_service_instance/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of a service instance that you want to get the detailed data
 #' for.
@@ -1431,7 +1494,7 @@ proton_get_service_instance <- function(name, serviceName) {
 #' @description
 #' Get the status of the synced service instance.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_service_instance_sync_status.html](https://paws-r.github.io/docs/proton/get_service_instance_sync_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_service_instance_sync_status/](https://www.paws-r-sdk.com/docs/proton_get_service_instance_sync_status/) for full documentation.
 #'
 #' @param serviceInstanceName &#91;required&#93; The name of the service instance that you want the sync status input
 #' for.
@@ -1462,7 +1525,7 @@ proton_get_service_instance_sync_status <- function(serviceInstanceName, service
 #' @description
 #' Get detailed data for the service sync blocker summary.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_service_sync_blocker_summary.html](https://paws-r.github.io/docs/proton/get_service_sync_blocker_summary.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_service_sync_blocker_summary/](https://www.paws-r-sdk.com/docs/proton_get_service_sync_blocker_summary/) for full documentation.
 #'
 #' @param serviceInstanceName The name of the service instance that you want to get the service sync
 #' blocker summary for. If given bothe the instance name and the service
@@ -1495,7 +1558,7 @@ proton_get_service_sync_blocker_summary <- function(serviceInstanceName = NULL, 
 #' @description
 #' Get detailed information for the service sync configuration.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_service_sync_config.html](https://paws-r.github.io/docs/proton/get_service_sync_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_service_sync_config/](https://www.paws-r-sdk.com/docs/proton_get_service_sync_config/) for full documentation.
 #'
 #' @param serviceName &#91;required&#93; The name of the service that you want to get the service sync
 #' configuration for.
@@ -1525,7 +1588,7 @@ proton_get_service_sync_config <- function(serviceName) {
 #' @description
 #' Get detailed data for a service template.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_service_template.html](https://paws-r.github.io/docs/proton/get_service_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_service_template/](https://www.paws-r-sdk.com/docs/proton_get_service_template/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the service template that you want to get detailed data for.
 #'
@@ -1554,7 +1617,7 @@ proton_get_service_template <- function(name) {
 #' @description
 #' Get detailed data for a major or minor version of a service template.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_service_template_version.html](https://paws-r.github.io/docs/proton/get_service_template_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_service_template_version/](https://www.paws-r-sdk.com/docs/proton_get_service_template_version/) for full documentation.
 #'
 #' @param majorVersion &#91;required&#93; To get service template major version detail data, include
 #' `major Version`.
@@ -1588,7 +1651,7 @@ proton_get_service_template_version <- function(majorVersion, minorVersion, temp
 #' @description
 #' Get detail data for a template sync configuration.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_template_sync_config.html](https://paws-r.github.io/docs/proton/get_template_sync_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_template_sync_config/](https://www.paws-r-sdk.com/docs/proton_get_template_sync_config/) for full documentation.
 #'
 #' @param templateName &#91;required&#93; The template name.
 #' @param templateType &#91;required&#93; The template type.
@@ -1618,7 +1681,7 @@ proton_get_template_sync_config <- function(templateName, templateType) {
 #' @description
 #' Get the status of a template sync.
 #'
-#' See [https://paws-r.github.io/docs/proton/get_template_sync_status.html](https://paws-r.github.io/docs/proton/get_template_sync_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_get_template_sync_status/](https://www.paws-r-sdk.com/docs/proton_get_template_sync_status/) for full documentation.
 #'
 #' @param templateName &#91;required&#93; The template name.
 #' @param templateType &#91;required&#93; The template type.
@@ -1649,23 +1712,24 @@ proton_get_template_sync_status <- function(templateName, templateType, template
 #' @description
 #' Get a list of component Infrastructure as Code (IaC) outputs.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_component_outputs.html](https://paws-r.github.io/docs/proton/list_component_outputs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_component_outputs/](https://www.paws-r-sdk.com/docs/proton_list_component_outputs/) for full documentation.
 #'
 #' @param componentName &#91;required&#93; The name of the component whose outputs you want.
+#' @param deploymentId The ID of the deployment whose outputs you want.
 #' @param nextToken A token that indicates the location of the next output in the array of
 #' outputs, after the list of outputs that was previously requested.
 #'
 #' @keywords internal
 #'
 #' @rdname proton_list_component_outputs
-proton_list_component_outputs <- function(componentName, nextToken = NULL) {
+proton_list_component_outputs <- function(componentName, deploymentId = NULL, nextToken = NULL) {
   op <- new_operation(
     name = "ListComponentOutputs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs")
   )
-  input <- .proton$list_component_outputs_input(componentName = componentName, nextToken = nextToken)
+  input <- .proton$list_component_outputs_input(componentName = componentName, deploymentId = deploymentId, nextToken = nextToken)
   output <- .proton$list_component_outputs_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -1680,7 +1744,7 @@ proton_list_component_outputs <- function(componentName, nextToken = NULL) {
 #' @description
 #' List provisioned resources for a component with details.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_component_provisioned_resources.html](https://paws-r.github.io/docs/proton/list_component_provisioned_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_component_provisioned_resources/](https://www.paws-r-sdk.com/docs/proton_list_component_provisioned_resources/) for full documentation.
 #'
 #' @param componentName &#91;required&#93; The name of the component whose provisioned resources you want.
 #' @param nextToken A token that indicates the location of the next provisioned resource in
@@ -1695,7 +1759,7 @@ proton_list_component_provisioned_resources <- function(componentName, nextToken
     name = "ListComponentProvisionedResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources")
   )
   input <- .proton$list_component_provisioned_resources_input(componentName = componentName, nextToken = nextToken)
   output <- .proton$list_component_provisioned_resources_output()
@@ -1712,7 +1776,7 @@ proton_list_component_provisioned_resources <- function(componentName, nextToken
 #' @description
 #' List components with summary data. You can filter the result list by environment, service, or a single service instance.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_components.html](https://paws-r.github.io/docs/proton/list_components.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_components/](https://www.paws-r-sdk.com/docs/proton_list_components/) for full documentation.
 #'
 #' @param environmentName The name of an environment for result list filtering. Proton returns
 #' components associated with the environment or attached to service
@@ -1734,7 +1798,7 @@ proton_list_components <- function(environmentName = NULL, maxResults = NULL, ne
     name = "ListComponents",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "components")
   )
   input <- .proton$list_components_input(environmentName = environmentName, maxResults = maxResults, nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$list_components_output()
@@ -1746,12 +1810,52 @@ proton_list_components <- function(environmentName = NULL, maxResults = NULL, ne
 }
 .proton$operations$list_components <- proton_list_components
 
+#' List deployments
+#'
+#' @description
+#' List deployments. You can filter the result list by environment, service, or a single service instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/proton_list_deployments/](https://www.paws-r-sdk.com/docs/proton_list_deployments/) for full documentation.
+#'
+#' @param componentName The name of a component for result list filtering. Proton returns
+#' deployments associated with that component.
+#' @param environmentName The name of an environment for result list filtering. Proton returns
+#' deployments associated with the environment.
+#' @param maxResults The maximum number of deployments to list.
+#' @param nextToken A token that indicates the location of the next deployment in the array
+#' of deployment, after the list of deployment that was previously
+#' requested.
+#' @param serviceInstanceName The name of a service instance for result list filtering. Proton returns
+#' the deployments associated with the service instance.
+#' @param serviceName The name of a service for result list filtering. Proton returns
+#' deployments associated with service instances of the service.
+#'
+#' @keywords internal
+#'
+#' @rdname proton_list_deployments
+proton_list_deployments <- function(componentName = NULL, environmentName = NULL, maxResults = NULL, nextToken = NULL, serviceInstanceName = NULL, serviceName = NULL) {
+  op <- new_operation(
+    name = "ListDeployments",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "deployments")
+  )
+  input <- .proton$list_deployments_input(componentName = componentName, environmentName = environmentName, maxResults = maxResults, nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
+  output <- .proton$list_deployments_output()
+  config <- get_config()
+  svc <- .proton$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.proton$operations$list_deployments <- proton_list_deployments
+
 #' View a list of environment account connections
 #'
 #' @description
 #' View a list of environment account connections.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_environment_account_connections.html](https://paws-r.github.io/docs/proton/list_environment_account_connections.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_environment_account_connections/](https://www.paws-r-sdk.com/docs/proton_list_environment_account_connections/) for full documentation.
 #'
 #' @param environmentName The environment name that's associated with each listed environment
 #' account connection.
@@ -1772,7 +1876,7 @@ proton_list_environment_account_connections <- function(environmentName = NULL, 
     name = "ListEnvironmentAccountConnections",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "environmentAccountConnections")
   )
   input <- .proton$list_environment_account_connections_input(environmentName = environmentName, maxResults = maxResults, nextToken = nextToken, requestedBy = requestedBy, statuses = statuses)
   output <- .proton$list_environment_account_connections_output()
@@ -1789,8 +1893,9 @@ proton_list_environment_account_connections <- function(environmentName = NULL, 
 #' @description
 #' List the infrastructure as code outputs for your environment.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_environment_outputs.html](https://paws-r.github.io/docs/proton/list_environment_outputs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_environment_outputs/](https://www.paws-r-sdk.com/docs/proton_list_environment_outputs/) for full documentation.
 #'
+#' @param deploymentId The ID of the deployment whose outputs you want.
 #' @param environmentName &#91;required&#93; The environment name.
 #' @param nextToken A token that indicates the location of the next environment output in
 #' the array of environment outputs, after the list of environment outputs
@@ -1799,14 +1904,14 @@ proton_list_environment_account_connections <- function(environmentName = NULL, 
 #' @keywords internal
 #'
 #' @rdname proton_list_environment_outputs
-proton_list_environment_outputs <- function(environmentName, nextToken = NULL) {
+proton_list_environment_outputs <- function(deploymentId = NULL, environmentName, nextToken = NULL) {
   op <- new_operation(
     name = "ListEnvironmentOutputs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs")
   )
-  input <- .proton$list_environment_outputs_input(environmentName = environmentName, nextToken = nextToken)
+  input <- .proton$list_environment_outputs_input(deploymentId = deploymentId, environmentName = environmentName, nextToken = nextToken)
   output <- .proton$list_environment_outputs_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -1821,7 +1926,7 @@ proton_list_environment_outputs <- function(environmentName, nextToken = NULL) {
 #' @description
 #' List the provisioned resources for your environment.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_environment_provisioned_resources.html](https://paws-r.github.io/docs/proton/list_environment_provisioned_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_environment_provisioned_resources/](https://www.paws-r-sdk.com/docs/proton_list_environment_provisioned_resources/) for full documentation.
 #'
 #' @param environmentName &#91;required&#93; The environment name.
 #' @param nextToken A token that indicates the location of the next environment provisioned
@@ -1836,7 +1941,7 @@ proton_list_environment_provisioned_resources <- function(environmentName, nextT
     name = "ListEnvironmentProvisionedResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources")
   )
   input <- .proton$list_environment_provisioned_resources_input(environmentName = environmentName, nextToken = nextToken)
   output <- .proton$list_environment_provisioned_resources_output()
@@ -1853,7 +1958,7 @@ proton_list_environment_provisioned_resources <- function(environmentName, nextT
 #' @description
 #' List major or minor versions of an environment template with detail data.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_environment_template_versions.html](https://paws-r.github.io/docs/proton/list_environment_template_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_environment_template_versions/](https://www.paws-r-sdk.com/docs/proton_list_environment_template_versions/) for full documentation.
 #'
 #' @param majorVersion To view a list of minor of versions under a major version of an
 #' environment template, include `major Version`.
@@ -1875,7 +1980,7 @@ proton_list_environment_template_versions <- function(majorVersion = NULL, maxRe
     name = "ListEnvironmentTemplateVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templateVersions")
   )
   input <- .proton$list_environment_template_versions_input(majorVersion = majorVersion, maxResults = maxResults, nextToken = nextToken, templateName = templateName)
   output <- .proton$list_environment_template_versions_output()
@@ -1892,7 +1997,7 @@ proton_list_environment_template_versions <- function(majorVersion = NULL, maxRe
 #' @description
 #' List environment templates.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_environment_templates.html](https://paws-r.github.io/docs/proton/list_environment_templates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_environment_templates/](https://www.paws-r-sdk.com/docs/proton_list_environment_templates/) for full documentation.
 #'
 #' @param maxResults The maximum number of environment templates to list.
 #' @param nextToken A token that indicates the location of the next environment template in
@@ -1907,7 +2012,7 @@ proton_list_environment_templates <- function(maxResults = NULL, nextToken = NUL
     name = "ListEnvironmentTemplates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templates")
   )
   input <- .proton$list_environment_templates_input(maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_environment_templates_output()
@@ -1924,7 +2029,7 @@ proton_list_environment_templates <- function(maxResults = NULL, nextToken = NUL
 #' @description
 #' List environments with detail data summaries.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_environments.html](https://paws-r.github.io/docs/proton/list_environments.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_environments/](https://www.paws-r-sdk.com/docs/proton_list_environments/) for full documentation.
 #'
 #' @param environmentTemplates An array of the versions of the environment template.
 #' @param maxResults The maximum number of environments to list.
@@ -1940,7 +2045,7 @@ proton_list_environments <- function(environmentTemplates = NULL, maxResults = N
     name = "ListEnvironments",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "environments")
   )
   input <- .proton$list_environments_input(environmentTemplates = environmentTemplates, maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_environments_output()
@@ -1957,7 +2062,7 @@ proton_list_environments <- function(environmentTemplates = NULL, maxResults = N
 #' @description
 #' List linked repositories with detail data.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_repositories.html](https://paws-r.github.io/docs/proton/list_repositories.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_repositories/](https://www.paws-r-sdk.com/docs/proton_list_repositories/) for full documentation.
 #'
 #' @param maxResults The maximum number of repositories to list.
 #' @param nextToken A token that indicates the location of the next repository in the array
@@ -1971,7 +2076,7 @@ proton_list_repositories <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListRepositories",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "repositories")
   )
   input <- .proton$list_repositories_input(maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_repositories_output()
@@ -1988,7 +2093,7 @@ proton_list_repositories <- function(maxResults = NULL, nextToken = NULL) {
 #' @description
 #' List repository sync definitions with detail data.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_repository_sync_definitions.html](https://paws-r.github.io/docs/proton/list_repository_sync_definitions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_repository_sync_definitions/](https://www.paws-r-sdk.com/docs/proton_list_repository_sync_definitions/) for full documentation.
 #'
 #' @param nextToken A token that indicates the location of the next repository sync
 #' definition in the array of repository sync definitions, after the list
@@ -2005,7 +2110,7 @@ proton_list_repository_sync_definitions <- function(nextToken = NULL, repository
     name = "ListRepositorySyncDefinitions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "syncDefinitions")
   )
   input <- .proton$list_repository_sync_definitions_input(nextToken = nextToken, repositoryName = repositoryName, repositoryProvider = repositoryProvider, syncType = syncType)
   output <- .proton$list_repository_sync_definitions_output()
@@ -2022,8 +2127,9 @@ proton_list_repository_sync_definitions <- function(nextToken = NULL, repository
 #' @description
 #' Get a list service of instance Infrastructure as Code (IaC) outputs.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_service_instance_outputs.html](https://paws-r.github.io/docs/proton/list_service_instance_outputs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_service_instance_outputs/](https://www.paws-r-sdk.com/docs/proton_list_service_instance_outputs/) for full documentation.
 #'
+#' @param deploymentId The ID of the deployment whose outputs you want.
 #' @param nextToken A token that indicates the location of the next output in the array of
 #' outputs, after the list of outputs that was previously requested.
 #' @param serviceInstanceName &#91;required&#93; The name of the service instance whose outputs you want.
@@ -2032,14 +2138,14 @@ proton_list_repository_sync_definitions <- function(nextToken = NULL, repository
 #' @keywords internal
 #'
 #' @rdname proton_list_service_instance_outputs
-proton_list_service_instance_outputs <- function(nextToken = NULL, serviceInstanceName, serviceName) {
+proton_list_service_instance_outputs <- function(deploymentId = NULL, nextToken = NULL, serviceInstanceName, serviceName) {
   op <- new_operation(
     name = "ListServiceInstanceOutputs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs")
   )
-  input <- .proton$list_service_instance_outputs_input(nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
+  input <- .proton$list_service_instance_outputs_input(deploymentId = deploymentId, nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$list_service_instance_outputs_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -2054,7 +2160,7 @@ proton_list_service_instance_outputs <- function(nextToken = NULL, serviceInstan
 #' @description
 #' List provisioned resources for a service instance with details.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_service_instance_provisioned_resources.html](https://paws-r.github.io/docs/proton/list_service_instance_provisioned_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_service_instance_provisioned_resources/](https://www.paws-r-sdk.com/docs/proton_list_service_instance_provisioned_resources/) for full documentation.
 #'
 #' @param nextToken A token that indicates the location of the next provisioned resource in
 #' the array of provisioned resources, after the list of provisioned
@@ -2070,7 +2176,7 @@ proton_list_service_instance_provisioned_resources <- function(nextToken = NULL,
     name = "ListServiceInstanceProvisionedResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources")
   )
   input <- .proton$list_service_instance_provisioned_resources_input(nextToken = nextToken, serviceInstanceName = serviceInstanceName, serviceName = serviceName)
   output <- .proton$list_service_instance_provisioned_resources_output()
@@ -2087,7 +2193,7 @@ proton_list_service_instance_provisioned_resources <- function(nextToken = NULL,
 #' @description
 #' List service instances with summary data. This action lists service instances of all services in the Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_service_instances.html](https://paws-r.github.io/docs/proton/list_service_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_service_instances/](https://www.paws-r-sdk.com/docs/proton_list_service_instances/) for full documentation.
 #'
 #' @param filters An array of filtering criteria that scope down the result list. By
 #' default, all service instances in the Amazon Web Services account are
@@ -2115,7 +2221,7 @@ proton_list_service_instances <- function(filters = NULL, maxResults = NULL, nex
     name = "ListServiceInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "serviceInstances")
   )
   input <- .proton$list_service_instances_input(filters = filters, maxResults = maxResults, nextToken = nextToken, serviceName = serviceName, sortBy = sortBy, sortOrder = sortOrder)
   output <- .proton$list_service_instances_output()
@@ -2132,8 +2238,9 @@ proton_list_service_instances <- function(filters = NULL, maxResults = NULL, nex
 #' @description
 #' Get a list of service pipeline Infrastructure as Code (IaC) outputs.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_service_pipeline_outputs.html](https://paws-r.github.io/docs/proton/list_service_pipeline_outputs.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_service_pipeline_outputs/](https://www.paws-r-sdk.com/docs/proton_list_service_pipeline_outputs/) for full documentation.
 #'
+#' @param deploymentId The ID of the deployment you want the outputs for.
 #' @param nextToken A token that indicates the location of the next output in the array of
 #' outputs, after the list of outputs that was previously requested.
 #' @param serviceName &#91;required&#93; The name of the service whose pipeline's outputs you want.
@@ -2141,14 +2248,14 @@ proton_list_service_instances <- function(filters = NULL, maxResults = NULL, nex
 #' @keywords internal
 #'
 #' @rdname proton_list_service_pipeline_outputs
-proton_list_service_pipeline_outputs <- function(nextToken = NULL, serviceName) {
+proton_list_service_pipeline_outputs <- function(deploymentId = NULL, nextToken = NULL, serviceName) {
   op <- new_operation(
     name = "ListServicePipelineOutputs",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "outputs")
   )
-  input <- .proton$list_service_pipeline_outputs_input(nextToken = nextToken, serviceName = serviceName)
+  input <- .proton$list_service_pipeline_outputs_input(deploymentId = deploymentId, nextToken = nextToken, serviceName = serviceName)
   output <- .proton$list_service_pipeline_outputs_output()
   config <- get_config()
   svc <- .proton$service(config)
@@ -2163,7 +2270,7 @@ proton_list_service_pipeline_outputs <- function(nextToken = NULL, serviceName) 
 #' @description
 #' List provisioned resources for a service and pipeline with details.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_service_pipeline_provisioned_resources.html](https://paws-r.github.io/docs/proton/list_service_pipeline_provisioned_resources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_service_pipeline_provisioned_resources/](https://www.paws-r-sdk.com/docs/proton_list_service_pipeline_provisioned_resources/) for full documentation.
 #'
 #' @param nextToken A token that indicates the location of the next provisioned resource in
 #' the array of provisioned resources, after the list of provisioned
@@ -2178,7 +2285,7 @@ proton_list_service_pipeline_provisioned_resources <- function(nextToken = NULL,
     name = "ListServicePipelineProvisionedResources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", result_key = "provisionedResources")
   )
   input <- .proton$list_service_pipeline_provisioned_resources_input(nextToken = nextToken, serviceName = serviceName)
   output <- .proton$list_service_pipeline_provisioned_resources_output()
@@ -2195,7 +2302,7 @@ proton_list_service_pipeline_provisioned_resources <- function(nextToken = NULL,
 #' @description
 #' List major or minor versions of a service template with detail data.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_service_template_versions.html](https://paws-r.github.io/docs/proton/list_service_template_versions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_service_template_versions/](https://www.paws-r-sdk.com/docs/proton_list_service_template_versions/) for full documentation.
 #'
 #' @param majorVersion To view a list of minor of versions under a major version of a service
 #' template, include `major Version`.
@@ -2217,7 +2324,7 @@ proton_list_service_template_versions <- function(majorVersion = NULL, maxResult
     name = "ListServiceTemplateVersions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templateVersions")
   )
   input <- .proton$list_service_template_versions_input(majorVersion = majorVersion, maxResults = maxResults, nextToken = nextToken, templateName = templateName)
   output <- .proton$list_service_template_versions_output()
@@ -2234,7 +2341,7 @@ proton_list_service_template_versions <- function(majorVersion = NULL, maxResult
 #' @description
 #' List service templates with detail data.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_service_templates.html](https://paws-r.github.io/docs/proton/list_service_templates.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_service_templates/](https://www.paws-r-sdk.com/docs/proton_list_service_templates/) for full documentation.
 #'
 #' @param maxResults The maximum number of service templates to list.
 #' @param nextToken A token that indicates the location of the next service template in the
@@ -2249,7 +2356,7 @@ proton_list_service_templates <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListServiceTemplates",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "templates")
   )
   input <- .proton$list_service_templates_input(maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_service_templates_output()
@@ -2266,7 +2373,7 @@ proton_list_service_templates <- function(maxResults = NULL, nextToken = NULL) {
 #' @description
 #' List services with summaries of detail data.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_services.html](https://paws-r.github.io/docs/proton/list_services.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_services/](https://www.paws-r-sdk.com/docs/proton_list_services/) for full documentation.
 #'
 #' @param maxResults The maximum number of services to list.
 #' @param nextToken A token that indicates the location of the next service in the array of
@@ -2280,7 +2387,7 @@ proton_list_services <- function(maxResults = NULL, nextToken = NULL) {
     name = "ListServices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "services")
   )
   input <- .proton$list_services_input(maxResults = maxResults, nextToken = nextToken)
   output <- .proton$list_services_output()
@@ -2297,7 +2404,7 @@ proton_list_services <- function(maxResults = NULL, nextToken = NULL) {
 #' @description
 #' List tags for a resource. For more information, see [Proton resources and tagging](https://docs.aws.amazon.com/proton/latest/userguide/resources.html) in the *Proton User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/proton/list_tags_for_resource.html](https://paws-r.github.io/docs/proton/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/proton_list_tags_for_resource/) for full documentation.
 #'
 #' @param maxResults The maximum number of tags to list.
 #' @param nextToken A token that indicates the location of the next resource tag in the
@@ -2313,7 +2420,7 @@ proton_list_tags_for_resource <- function(maxResults = NULL, nextToken = NULL, r
     name = "ListTagsForResource",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "tags")
   )
   input <- .proton$list_tags_for_resource_input(maxResults = maxResults, nextToken = nextToken, resourceArn = resourceArn)
   output <- .proton$list_tags_for_resource_output()
@@ -2331,7 +2438,7 @@ proton_list_tags_for_resource <- function(maxResults = NULL, nextToken = NULL, r
 #' @description
 #' Notify Proton of status changes to a provisioned resource when you use self-managed provisioning.
 #'
-#' See [https://paws-r.github.io/docs/proton/notify_resource_deployment_status_change.html](https://paws-r.github.io/docs/proton/notify_resource_deployment_status_change.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_notify_resource_deployment_status_change/](https://www.paws-r-sdk.com/docs/proton_notify_resource_deployment_status_change/) for full documentation.
 #'
 #' @param deploymentId The deployment ID for your provisioned resource.
 #' @param outputs The provisioned resource state change detail data that's returned by
@@ -2366,7 +2473,7 @@ proton_notify_resource_deployment_status_change <- function(deploymentId = NULL,
 #' @description
 #' In a management account, reject an environment account connection from another environment account.
 #'
-#' See [https://paws-r.github.io/docs/proton/reject_environment_account_connection.html](https://paws-r.github.io/docs/proton/reject_environment_account_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_reject_environment_account_connection/](https://www.paws-r-sdk.com/docs/proton_reject_environment_account_connection/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the environment account connection to reject.
 #'
@@ -2395,7 +2502,7 @@ proton_reject_environment_account_connection <- function(id) {
 #' @description
 #' Tag a resource. A tag is a key-value pair of metadata that you associate with an Proton resource.
 #'
-#' See [https://paws-r.github.io/docs/proton/tag_resource.html](https://paws-r.github.io/docs/proton/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_tag_resource/](https://www.paws-r-sdk.com/docs/proton_tag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Proton resource to apply customer
 #' tags to.
@@ -2426,7 +2533,7 @@ proton_tag_resource <- function(resourceArn, tags) {
 #' @description
 #' Remove a customer tag from a resource. A tag is a key-value pair of metadata associated with an Proton resource.
 #'
-#' See [https://paws-r.github.io/docs/proton/untag_resource.html](https://paws-r.github.io/docs/proton/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_untag_resource/](https://www.paws-r-sdk.com/docs/proton_untag_resource/) for full documentation.
 #'
 #' @param resourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource to remove customer tags
 #' from.
@@ -2459,7 +2566,7 @@ proton_untag_resource <- function(resourceArn, tagKeys) {
 #' @description
 #' Update Proton settings that are used for multiple services in the Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/proton/update_account_settings.html](https://paws-r.github.io/docs/proton/update_account_settings.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_update_account_settings/](https://www.paws-r-sdk.com/docs/proton_update_account_settings/) for full documentation.
 #'
 #' @param deletePipelineProvisioningRepository Set to `true` to remove a configured pipeline repository from the
 #' account settings. Don't set this field if you are updating the
@@ -2508,7 +2615,7 @@ proton_update_account_settings <- function(deletePipelineProvisioningRepository 
 #' @description
 #' Update a component.
 #'
-#' See [https://paws-r.github.io/docs/proton/update_component.html](https://paws-r.github.io/docs/proton/update_component.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_update_component/](https://www.paws-r-sdk.com/docs/proton_update_component/) for full documentation.
 #'
 #' @param clientToken The client token for the updated component.
 #' @param deploymentType &#91;required&#93; The deployment type. It defines the mode for updating a component, as
@@ -2574,7 +2681,7 @@ proton_update_component <- function(clientToken = NULL, deploymentType, descript
 #' @description
 #' Update an environment.
 #'
-#' See [https://paws-r.github.io/docs/proton/update_environment.html](https://paws-r.github.io/docs/proton/update_environment.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_update_environment/](https://www.paws-r-sdk.com/docs/proton_update_environment/) for full documentation.
 #'
 #' @param codebuildRoleArn The Amazon Resource Name (ARN) of the IAM service role that allows
 #' Proton to provision infrastructure using CodeBuild-based provisioning on
@@ -2669,7 +2776,7 @@ proton_update_environment <- function(codebuildRoleArn = NULL, componentRoleArn 
 #' @description
 #' In an environment account, update an environment account connection to use a new IAM role.
 #'
-#' See [https://paws-r.github.io/docs/proton/update_environment_account_connection.html](https://paws-r.github.io/docs/proton/update_environment_account_connection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_update_environment_account_connection/](https://www.paws-r-sdk.com/docs/proton_update_environment_account_connection/) for full documentation.
 #'
 #' @param codebuildRoleArn The Amazon Resource Name (ARN) of an IAM service role in the environment
 #' account. Proton uses this role to provision infrastructure resources
@@ -2716,7 +2823,7 @@ proton_update_environment_account_connection <- function(codebuildRoleArn = NULL
 #' @description
 #' Update an environment template.
 #'
-#' See [https://paws-r.github.io/docs/proton/update_environment_template.html](https://paws-r.github.io/docs/proton/update_environment_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_update_environment_template/](https://www.paws-r-sdk.com/docs/proton_update_environment_template/) for full documentation.
 #'
 #' @param description A description of the environment template update.
 #' @param displayName The name of the environment template to update as displayed in the
@@ -2748,7 +2855,7 @@ proton_update_environment_template <- function(description = NULL, displayName =
 #' @description
 #' Update a major or minor version of an environment template.
 #'
-#' See [https://paws-r.github.io/docs/proton/update_environment_template_version.html](https://paws-r.github.io/docs/proton/update_environment_template_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_update_environment_template_version/](https://www.paws-r-sdk.com/docs/proton_update_environment_template_version/) for full documentation.
 #'
 #' @param description A description of environment template version to update.
 #' @param majorVersion &#91;required&#93; To update a major version of an environment template, include
@@ -2784,7 +2891,7 @@ proton_update_environment_template_version <- function(description = NULL, major
 #' @description
 #' Edit a service description or use a spec to add and delete service instances.
 #'
-#' See [https://paws-r.github.io/docs/proton/update_service.html](https://paws-r.github.io/docs/proton/update_service.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_update_service/](https://www.paws-r-sdk.com/docs/proton_update_service/) for full documentation.
 #'
 #' @param description The edited service description.
 #' @param name &#91;required&#93; The name of the service to edit.
@@ -2820,7 +2927,7 @@ proton_update_service <- function(description = NULL, name, spec = NULL) {
 #' @description
 #' Update a service instance.
 #'
-#' See [https://paws-r.github.io/docs/proton/update_service_instance.html](https://paws-r.github.io/docs/proton/update_service_instance.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_update_service_instance/](https://www.paws-r-sdk.com/docs/proton_update_service_instance/) for full documentation.
 #'
 #' @param clientToken The client token of the service instance to update.
 #' @param deploymentType &#91;required&#93; The deployment type. It defines the mode for updating a service
@@ -2890,7 +2997,7 @@ proton_update_service_instance <- function(clientToken = NULL, deploymentType, n
 #' @description
 #' Update the service pipeline.
 #'
-#' See [https://paws-r.github.io/docs/proton/update_service_pipeline.html](https://paws-r.github.io/docs/proton/update_service_pipeline.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_update_service_pipeline/](https://www.paws-r-sdk.com/docs/proton_update_service_pipeline/) for full documentation.
 #'
 #' @param deploymentType &#91;required&#93; The deployment type.
 #' 
@@ -2962,7 +3069,7 @@ proton_update_service_pipeline <- function(deploymentType, serviceName, spec, te
 #' @description
 #' Update the service sync blocker by resolving it.
 #'
-#' See [https://paws-r.github.io/docs/proton/update_service_sync_blocker.html](https://paws-r.github.io/docs/proton/update_service_sync_blocker.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_update_service_sync_blocker/](https://www.paws-r-sdk.com/docs/proton_update_service_sync_blocker/) for full documentation.
 #'
 #' @param id &#91;required&#93; The ID of the service sync blocker.
 #' @param resolvedReason &#91;required&#93; The reason the service sync blocker was resolved.
@@ -2992,7 +3099,7 @@ proton_update_service_sync_blocker <- function(id, resolvedReason) {
 #' @description
 #' Update the Proton Ops config file.
 #'
-#' See [https://paws-r.github.io/docs/proton/update_service_sync_config.html](https://paws-r.github.io/docs/proton/update_service_sync_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_update_service_sync_config/](https://www.paws-r-sdk.com/docs/proton_update_service_sync_config/) for full documentation.
 #'
 #' @param branch &#91;required&#93; The name of the code repository branch where the Proton Ops file is
 #' found.
@@ -3026,7 +3133,7 @@ proton_update_service_sync_config <- function(branch, filePath, repositoryName, 
 #' @description
 #' Update a service template.
 #'
-#' See [https://paws-r.github.io/docs/proton/update_service_template.html](https://paws-r.github.io/docs/proton/update_service_template.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_update_service_template/](https://www.paws-r-sdk.com/docs/proton_update_service_template/) for full documentation.
 #'
 #' @param description A description of the service template update.
 #' @param displayName The name of the service template to update that's displayed in the
@@ -3058,7 +3165,7 @@ proton_update_service_template <- function(description = NULL, displayName = NUL
 #' @description
 #' Update a major or minor version of a service template.
 #'
-#' See [https://paws-r.github.io/docs/proton/update_service_template_version.html](https://paws-r.github.io/docs/proton/update_service_template_version.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_update_service_template_version/](https://www.paws-r-sdk.com/docs/proton_update_service_template_version/) for full documentation.
 #'
 #' @param compatibleEnvironmentTemplates An array of environment template objects that are compatible with this
 #' service template version. A service instance based on this service
@@ -3107,7 +3214,7 @@ proton_update_service_template_version <- function(compatibleEnvironmentTemplate
 #' @description
 #' Update template sync configuration parameters, except for the `templateName` and `templateType`. Repository details (branch, name, and provider) should be of a linked repository. A linked repository is a repository that has been registered with Proton. For more information, see [`create_repository`][proton_create_repository].
 #'
-#' See [https://paws-r.github.io/docs/proton/update_template_sync_config.html](https://paws-r.github.io/docs/proton/update_template_sync_config.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/proton_update_template_sync_config/](https://www.paws-r-sdk.com/docs/proton_update_template_sync_config/) for full documentation.
 #'
 #' @param branch &#91;required&#93; The repository branch for your template.
 #' @param repositoryName &#91;required&#93; The repository name (for example, `myrepos/myrepo`).

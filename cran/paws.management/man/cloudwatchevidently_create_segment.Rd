@@ -35,6 +35,6 @@ For more information, see \href{https://docs.aws.amazon.com/tag-editor/latest/us
 \description{
 Use this operation to define a \emph{segment} of your audience. A segment is a portion of your audience that share one or more characteristics. Examples could be Chrome browser users, users in Europe, or Firefox browser users in Europe who also fit other criteria that your application collects, such as age.
 
-See \url{https://paws-r.github.io/docs/cloudwatchevidently/create_segment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatchevidently_create_segment/} for full documentation.
 }
 \keyword{internal}

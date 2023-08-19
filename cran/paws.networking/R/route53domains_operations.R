@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Accepts the transfer of a domain from another Amazon Web Services account to the currentAmazon Web Services account. You initiate a transfer between Amazon Web Services accounts using [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
 #'
-#' See [https://paws-r.github.io/docs/route53domains/accept_domain_transfer_from_another_aws_account.html](https://paws-r.github.io/docs/route53domains/accept_domain_transfer_from_another_aws_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_accept_domain_transfer_from_another_aws_account/](https://www.paws-r-sdk.com/docs/route53domains_accept_domain_transfer_from_another_aws_account/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that was specified when another Amazon Web
 #' Services account submitted a
@@ -45,7 +45,7 @@ route53domains_accept_domain_transfer_from_another_aws_account <- function(Domai
 #' @description
 #' Creates a delegation signer (DS) record in the registry zone for this domain name.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/associate_delegation_signer_to_domain.html](https://paws-r.github.io/docs/route53domains/associate_delegation_signer_to_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_associate_delegation_signer_to_domain/](https://www.paws-r-sdk.com/docs/route53domains_associate_delegation_signer_to_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain.
 #' @param SigningAttributes &#91;required&#93; The information about a key, including the algorithm, public key-value,
@@ -77,7 +77,7 @@ route53domains_associate_delegation_signer_to_domain <- function(DomainName, Sig
 #' @description
 #' Cancels the transfer of a domain from the current Amazon Web Services account to another Amazon Web Services account. You initiate a transfer betweenAmazon Web Services accounts using [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
 #'
-#' See [https://paws-r.github.io/docs/route53domains/cancel_domain_transfer_to_another_aws_account.html](https://paws-r.github.io/docs/route53domains/cancel_domain_transfer_to_another_aws_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_cancel_domain_transfer_to_another_aws_account/](https://www.paws-r-sdk.com/docs/route53domains_cancel_domain_transfer_to_another_aws_account/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain for which you want to cancel the transfer to
 #' another Amazon Web Services account.
@@ -107,7 +107,7 @@ route53domains_cancel_domain_transfer_to_another_aws_account <- function(DomainN
 #' @description
 #' This operation checks the availability of one domain name. Note that if the availability status of a domain is pending, you must submit another request to determine the availability of the domain name.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/check_domain_availability.html](https://paws-r.github.io/docs/route53domains/check_domain_availability.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_check_domain_availability/](https://www.paws-r-sdk.com/docs/route53domains_check_domain_availability/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to get availability for. The
 #' top-level domain (TLD), such as .com, must be a TLD that Route 53
@@ -162,7 +162,7 @@ route53domains_check_domain_availability <- function(DomainName, IdnLangCode = N
 #' @description
 #' Checks whether a domain name can be transferred to Amazon Route 53.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/check_domain_transferability.html](https://paws-r.github.io/docs/route53domains/check_domain_transferability.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_check_domain_transferability/](https://www.paws-r-sdk.com/docs/route53domains_check_domain_transferability/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to transfer to Route 53. The
 #' top-level domain (TLD), such as .com, must be a TLD that Route 53
@@ -211,7 +211,7 @@ route53domains_check_domain_transferability <- function(DomainName, AuthCode = N
 #' @description
 #' This operation deletes the specified domain. This action is permanent. For more information, see [Deleting a domain name registration](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/domain-delete.html).
 #'
-#' See [https://paws-r.github.io/docs/route53domains/delete_domain.html](https://paws-r.github.io/docs/route53domains/delete_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_delete_domain/](https://www.paws-r-sdk.com/docs/route53domains_delete_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; Name of the domain to be deleted.
 #'
@@ -240,7 +240,7 @@ route53domains_delete_domain <- function(DomainName) {
 #' @description
 #' This operation deletes the specified tags for a domain.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/delete_tags_for_domain.html](https://paws-r.github.io/docs/route53domains/delete_tags_for_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_delete_tags_for_domain/](https://www.paws-r-sdk.com/docs/route53domains_delete_tags_for_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain for which you want to delete one or more tags.
 #' @param TagsToDelete &#91;required&#93; A list of tag keys to delete.
@@ -271,7 +271,7 @@ route53domains_delete_tags_for_domain <- function(DomainName, TagsToDelete) {
 #' @description
 #' This operation disables automatic renewal of domain registration for the specified domain.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/disable_domain_auto_renew.html](https://paws-r.github.io/docs/route53domains/disable_domain_auto_renew.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_disable_domain_auto_renew/](https://www.paws-r-sdk.com/docs/route53domains_disable_domain_auto_renew/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to disable automatic renewal for.
 #'
@@ -301,7 +301,7 @@ route53domains_disable_domain_auto_renew <- function(DomainName) {
 #' @description
 #' This operation removes the transfer lock on the domain (specifically the `clientTransferProhibited` status) to allow domain transfers. We recommend you refrain from performing this action unless you intend to transfer the domain to a different registrar. Successful submission returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/disable_domain_transfer_lock.html](https://paws-r.github.io/docs/route53domains/disable_domain_transfer_lock.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_disable_domain_transfer_lock/](https://www.paws-r-sdk.com/docs/route53domains_disable_domain_transfer_lock/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to remove the transfer lock for.
 #'
@@ -331,7 +331,7 @@ route53domains_disable_domain_transfer_lock <- function(DomainName) {
 #' @description
 #' Deletes a delegation signer (DS) record in the registry zone for this domain name.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/disassociate_delegation_signer_from_domain.html](https://paws-r.github.io/docs/route53domains/disassociate_delegation_signer_from_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_disassociate_delegation_signer_from_domain/](https://www.paws-r-sdk.com/docs/route53domains_disassociate_delegation_signer_from_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; Name of the domain.
 #' @param Id &#91;required&#93; An internal identification number assigned to each DS record after it’s
@@ -364,7 +364,7 @@ route53domains_disassociate_delegation_signer_from_domain <- function(DomainName
 #' @description
 #' This operation configures Amazon Route 53 to automatically renew the specified domain before the domain registration expires. The cost of renewing your domain registration is billed to your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/enable_domain_auto_renew.html](https://paws-r.github.io/docs/route53domains/enable_domain_auto_renew.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_enable_domain_auto_renew/](https://www.paws-r-sdk.com/docs/route53domains_enable_domain_auto_renew/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to enable automatic renewal for.
 #'
@@ -394,7 +394,7 @@ route53domains_enable_domain_auto_renew <- function(DomainName) {
 #' @description
 #' This operation sets the transfer lock on the domain (specifically the `clientTransferProhibited` status) to prevent domain transfers. Successful submission returns an operation ID that you can use to track the progress and completion of the action. If the request is not completed successfully, the domain registrant will be notified by email.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/enable_domain_transfer_lock.html](https://paws-r.github.io/docs/route53domains/enable_domain_transfer_lock.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_enable_domain_transfer_lock/](https://www.paws-r-sdk.com/docs/route53domains_enable_domain_transfer_lock/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to set the transfer lock for.
 #'
@@ -426,7 +426,7 @@ route53domains_enable_domain_transfer_lock <- function(DomainName) {
 #' @description
 #' For operations that require confirmation that the email address for the registrant contact is valid, such as registering a new domain, this operation returns information about whether the registrant contact has responded.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/get_contact_reachability_status.html](https://paws-r.github.io/docs/route53domains/get_contact_reachability_status.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_get_contact_reachability_status/](https://www.paws-r-sdk.com/docs/route53domains_get_contact_reachability_status/) for full documentation.
 #'
 #' @param domainName The name of the domain for which you want to know whether the registrant
 #' contact has confirmed that the email address is valid.
@@ -457,7 +457,7 @@ route53domains_get_contact_reachability_status <- function(domainName = NULL) {
 #' @description
 #' This operation returns detailed information about a specified domain that is associated with the current Amazon Web Services account. Contact information for the domain is also returned as part of the output.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/get_domain_detail.html](https://paws-r.github.io/docs/route53domains/get_domain_detail.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_get_domain_detail/](https://www.paws-r-sdk.com/docs/route53domains_get_domain_detail/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to get detailed information about.
 #'
@@ -487,7 +487,7 @@ route53domains_get_domain_detail <- function(DomainName) {
 #' @description
 #' The GetDomainSuggestions operation returns a list of suggested domain names.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/get_domain_suggestions.html](https://paws-r.github.io/docs/route53domains/get_domain_suggestions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_get_domain_suggestions/](https://www.paws-r-sdk.com/docs/route53domains_get_domain_suggestions/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; A domain name that you want to use as the basis for a list of possible
 #' domain names. The top-level domain (TLD), such as .com, must be a TLD
@@ -547,7 +547,7 @@ route53domains_get_domain_suggestions <- function(DomainName, SuggestionCount, O
 #' @description
 #' This operation returns the current status of an operation that is not completed.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/get_operation_detail.html](https://paws-r.github.io/docs/route53domains/get_operation_detail.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_get_operation_detail/](https://www.paws-r-sdk.com/docs/route53domains_get_operation_detail/) for full documentation.
 #'
 #' @param OperationId &#91;required&#93; The identifier for the operation for which you want to get the status.
 #' Route 53 returned the identifier in the response to the original
@@ -580,7 +580,7 @@ route53domains_get_operation_detail <- function(OperationId) {
 #' @description
 #' This operation returns all the domain names registered with Amazon Route 53 for the current Amazon Web Services account if no filtering conditions are used.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/list_domains.html](https://paws-r.github.io/docs/route53domains/list_domains.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_list_domains/](https://www.paws-r-sdk.com/docs/route53domains_list_domains/) for full documentation.
 #'
 #' @param FilterConditions A complex type that contains information about the filters applied
 #' during the [`list_domains`][route53domains_list_domains] request. The
@@ -609,7 +609,7 @@ route53domains_list_domains <- function(FilterConditions = NULL, SortCondition =
     name = "ListDomains",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "Domains")
   )
   input <- .route53domains$list_domains_input(FilterConditions = FilterConditions, SortCondition = SortCondition, Marker = Marker, MaxItems = MaxItems)
   output <- .route53domains$list_domains_output()
@@ -628,7 +628,7 @@ route53domains_list_domains <- function(FilterConditions = NULL, SortCondition =
 #' @description
 #' Returns information about all of the operations that return an operation ID and that have ever been performed on domains that were registered by the current account.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/list_operations.html](https://paws-r.github.io/docs/route53domains/list_operations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_list_operations/](https://www.paws-r-sdk.com/docs/route53domains_list_operations/) for full documentation.
 #'
 #' @param SubmittedSince An optional parameter that lets you get information about all the
 #' operations that you submitted after a specified date and time. Specify
@@ -656,7 +656,7 @@ route53domains_list_operations <- function(SubmittedSince = NULL, Marker = NULL,
     name = "ListOperations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "Operations")
   )
   input <- .route53domains$list_operations_input(SubmittedSince = SubmittedSince, Marker = Marker, MaxItems = MaxItems, Status = Status, Type = Type, SortBy = SortBy, SortOrder = SortOrder)
   output <- .route53domains$list_operations_output()
@@ -674,7 +674,7 @@ route53domains_list_operations <- function(SubmittedSince = NULL, Marker = NULL,
 #' @description
 #' Lists the following prices for either all the TLDs supported by Route 53, or the specified TLD:
 #'
-#' See [https://paws-r.github.io/docs/route53domains/list_prices.html](https://paws-r.github.io/docs/route53domains/list_prices.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_list_prices/](https://www.paws-r-sdk.com/docs/route53domains_list_prices/) for full documentation.
 #'
 #' @param Tld The TLD for which you want to receive the pricing information. For
 #' example. `.net`.
@@ -702,7 +702,7 @@ route53domains_list_prices <- function(Tld = NULL, Marker = NULL, MaxItems = NUL
     name = "ListPrices",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "Prices")
   )
   input <- .route53domains$list_prices_input(Tld = Tld, Marker = Marker, MaxItems = MaxItems)
   output <- .route53domains$list_prices_output()
@@ -720,7 +720,7 @@ route53domains_list_prices <- function(Tld = NULL, Marker = NULL, MaxItems = NUL
 #' @description
 #' This operation returns all of the tags that are associated with the specified domain.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/list_tags_for_domain.html](https://paws-r.github.io/docs/route53domains/list_tags_for_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_list_tags_for_domain/](https://www.paws-r-sdk.com/docs/route53domains_list_tags_for_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain for which you want to get a list of tags.
 #'
@@ -749,7 +749,7 @@ route53domains_list_tags_for_domain <- function(DomainName) {
 #' @description
 #' Moves a domain from Amazon Web Services to another registrar.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/push_domain.html](https://paws-r.github.io/docs/route53domains/push_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_push_domain/](https://www.paws-r-sdk.com/docs/route53domains_push_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; Name of the domain.
 #' @param Target &#91;required&#93; New IPS tag for the domain.
@@ -777,9 +777,9 @@ route53domains_push_domain <- function(DomainName, Target) {
 #' This operation registers a domain
 #'
 #' @description
-#' This operation registers a domain. Domains are registered either by Amazon Registrar (for .com, .net, and .org domains) or by our registrar associate, Gandi (for all other domains). For some top-level domains (TLDs), this operation requires extra parameters.
+#' This operation registers a domain. For some top-level domains (TLDs), this operation requires extra parameters.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/register_domain.html](https://paws-r.github.io/docs/route53domains/register_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_register_domain/](https://www.paws-r-sdk.com/docs/route53domains_register_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain name that you want to register. The top-level domain (TLD),
 #' such as .com, must be a TLD that Route 53 supports. For a list of
@@ -889,7 +889,7 @@ route53domains_register_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #' @description
 #' Rejects the transfer of a domain from another Amazon Web Services account to the current Amazon Web Services account. You initiate a transfer betweenAmazon Web Services accounts using [`transfer_domain_to_another_aws_account`][route53domains_transfer_domain_to_another_aws_account].
 #'
-#' See [https://paws-r.github.io/docs/route53domains/reject_domain_transfer_from_another_aws_account.html](https://paws-r.github.io/docs/route53domains/reject_domain_transfer_from_another_aws_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_reject_domain_transfer_from_another_aws_account/](https://www.paws-r-sdk.com/docs/route53domains_reject_domain_transfer_from_another_aws_account/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that was specified when another Amazon Web
 #' Services account submitted a
@@ -921,7 +921,7 @@ route53domains_reject_domain_transfer_from_another_aws_account <- function(Domai
 #' @description
 #' This operation renews a domain for the specified number of years. The cost of renewing your domain is billed to your Amazon Web Services account.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/renew_domain.html](https://paws-r.github.io/docs/route53domains/renew_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_renew_domain/](https://www.paws-r-sdk.com/docs/route53domains_renew_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to renew.
 #' @param DurationInYears The number of years that you want to renew the domain for. The maximum
@@ -963,7 +963,7 @@ route53domains_renew_domain <- function(DomainName, DurationInYears = NULL, Curr
 #' @description
 #' For operations that require confirmation that the email address for the registrant contact is valid, such as registering a new domain, this operation resends the confirmation email to the current email address for the registrant contact.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/resend_contact_reachability_email.html](https://paws-r.github.io/docs/route53domains/resend_contact_reachability_email.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_resend_contact_reachability_email/](https://www.paws-r-sdk.com/docs/route53domains_resend_contact_reachability_email/) for full documentation.
 #'
 #' @param domainName The name of the domain for which you want Route 53 to resend a
 #' confirmation email to the registrant contact.
@@ -993,7 +993,7 @@ route53domains_resend_contact_reachability_email <- function(domainName = NULL) 
 #' @description
 #' Resend the form of authorization email for this operation.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/resend_operation_authorization.html](https://paws-r.github.io/docs/route53domains/resend_operation_authorization.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_resend_operation_authorization/](https://www.paws-r-sdk.com/docs/route53domains_resend_operation_authorization/) for full documentation.
 #'
 #' @param OperationId &#91;required&#93; Operation ID.
 #'
@@ -1022,7 +1022,7 @@ route53domains_resend_operation_authorization <- function(OperationId) {
 #' @description
 #' This operation returns the authorization code for the domain. To transfer a domain to another registrar, you provide this value to the new registrar.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/retrieve_domain_auth_code.html](https://paws-r.github.io/docs/route53domains/retrieve_domain_auth_code.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_retrieve_domain_auth_code/](https://www.paws-r-sdk.com/docs/route53domains_retrieve_domain_auth_code/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to get an authorization code for.
 #'
@@ -1049,9 +1049,9 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' Transfers a domain from another registrar to Amazon Route 53
 #'
 #' @description
-#' Transfers a domain from another registrar to Amazon Route 53. When the transfer is complete, the domain is registered either with Amazon Registrar (for .com, .net, and .org domains) or with our registrar associate, Gandi (for all other TLDs).
+#' Transfers a domain from another registrar to Amazon Route 53.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/transfer_domain.html](https://paws-r.github.io/docs/route53domains/transfer_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_transfer_domain/](https://www.paws-r-sdk.com/docs/route53domains_transfer_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to transfer to Route 53. The
 #' top-level domain (TLD), such as .com, must be a TLD that Route 53
@@ -1089,13 +1089,11 @@ route53domains_retrieve_domain_auth_code <- function(DomainName) {
 #' @param TechContact &#91;required&#93; Provides detailed contact information.
 #' @param PrivacyProtectAdminContact Whether you want to conceal contact information from WHOIS queries. If
 #' you specify `true`, WHOIS ("who is") queries return contact information
-#' either for Amazon Registrar (for .com, .net, and .org domains) or for
-#' our registrar associate, Gandi (for all other TLDs). If you specify
-#' `false`, WHOIS queries return the information that you entered for the
-#' admin contact.
+#' for the registrar, the phrase "REDACTED FOR PRIVACY", or "On behalf of
+#' \<domain name\> owner.".
 #' 
-#' You must specify the same privacy setting for the administrative,
-#' registrant, and technical contacts.
+#' While some domains may allow different privacy settings per contact, we
+#' recommend specifying the same privacy setting for all contacts.
 #' 
 #' Default: `true`
 #' @param PrivacyProtectRegistrantContact Whether you want to conceal contact information from WHOIS queries. If
@@ -1147,7 +1145,7 @@ route53domains_transfer_domain <- function(DomainName, IdnLangCode = NULL, Durat
 #' @description
 #' Transfers a domain from the current Amazon Web Services account to another Amazon Web Services account. Note the following:
 #'
-#' See [https://paws-r.github.io/docs/route53domains/transfer_domain_to_another_aws_account.html](https://paws-r.github.io/docs/route53domains/transfer_domain_to_another_aws_account.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_transfer_domain_to_another_aws_account/](https://www.paws-r-sdk.com/docs/route53domains_transfer_domain_to_another_aws_account/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to transfer from the current Amazon
 #' Web Services account to another account.
@@ -1179,13 +1177,14 @@ route53domains_transfer_domain_to_another_aws_account <- function(DomainName, Ac
 #' @description
 #' This operation updates the contact information for a particular domain. You must specify information for at least one contact: registrant, administrator, or technical.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/update_domain_contact.html](https://paws-r.github.io/docs/route53domains/update_domain_contact.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_update_domain_contact/](https://www.paws-r-sdk.com/docs/route53domains_update_domain_contact/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to update contact information for.
 #' @param AdminContact Provides detailed contact information.
 #' @param RegistrantContact Provides detailed contact information.
 #' @param TechContact Provides detailed contact information.
-#' @param Consent Customer's consent for the owner change request.
+#' @param Consent Customer's consent for the owner change request. Required if the domain
+#' is not free (consent price is more than $0.00).
 #'
 #' @keywords internal
 #'
@@ -1210,9 +1209,9 @@ route53domains_update_domain_contact <- function(DomainName, AdminContact = NULL
 #' This operation updates the specified domain contact's privacy setting
 #'
 #' @description
-#' This operation updates the specified domain contact's privacy setting. When privacy protection is enabled, contact information such as email address is replaced either with contact information for Amazon Registrar (for .com, .net, and .org domains) or with contact information for our registrar associate, Gandi.
+#' This operation updates the specified domain contact's privacy setting. When privacy protection is enabled, your contact information is replaced with contact information for the registrar or with the phrase "REDACTED FOR PRIVACY", or "On behalf of \<domain name\> owner."
 #'
-#' See [https://paws-r.github.io/docs/route53domains/update_domain_contact_privacy.html](https://paws-r.github.io/docs/route53domains/update_domain_contact_privacy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_update_domain_contact_privacy/](https://www.paws-r-sdk.com/docs/route53domains_update_domain_contact_privacy/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to update the privacy setting for.
 #' @param AdminPrivacy Whether you want to conceal contact information from WHOIS queries. If
@@ -1269,7 +1268,7 @@ route53domains_update_domain_contact_privacy <- function(DomainName, AdminPrivac
 #' @description
 #' This operation replaces the current set of name servers for the domain with the specified set of name servers. If you use Amazon Route 53 as your DNS service, specify the four name servers in the delegation set for the hosted zone for the domain.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/update_domain_nameservers.html](https://paws-r.github.io/docs/route53domains/update_domain_nameservers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_update_domain_nameservers/](https://www.paws-r-sdk.com/docs/route53domains_update_domain_nameservers/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The name of the domain that you want to change name servers for.
 #' @param FIAuthKey The authorization key for .fi domains
@@ -1300,7 +1299,7 @@ route53domains_update_domain_nameservers <- function(DomainName, FIAuthKey = NUL
 #' @description
 #' This operation adds or updates tags for a specified domain.
 #'
-#' See [https://paws-r.github.io/docs/route53domains/update_tags_for_domain.html](https://paws-r.github.io/docs/route53domains/update_tags_for_domain.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_update_tags_for_domain/](https://www.paws-r-sdk.com/docs/route53domains_update_tags_for_domain/) for full documentation.
 #'
 #' @param DomainName &#91;required&#93; The domain for which you want to add or update tags.
 #' @param TagsToUpdate A list of the tag keys and values that you want to add or update. If you
@@ -1333,7 +1332,7 @@ route53domains_update_tags_for_domain <- function(DomainName, TagsToUpdate = NUL
 #' @description
 #' Returns all the domain-related billing records for the current Amazon Web Services account for a specified period
 #'
-#' See [https://paws-r.github.io/docs/route53domains/view_billing.html](https://paws-r.github.io/docs/route53domains/view_billing.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/route53domains_view_billing/](https://www.paws-r-sdk.com/docs/route53domains_view_billing/) for full documentation.
 #'
 #' @param Start The beginning date and time for the time period for which you want a
 #' list of billing records. Specify the date and time in Unix time format
@@ -1363,7 +1362,7 @@ route53domains_view_billing <- function(Start = NULL, End = NULL, Marker = NULL,
     name = "ViewBilling",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "Marker", limit_key = "MaxItems", output_token = "NextPageMarker", result_key = "BillingRecords")
   )
   input <- .route53domains$view_billing_input(Start = Start, End = End, Marker = Marker, MaxItems = MaxItems)
   output <- .route53domains$view_billing_output()

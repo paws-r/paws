@@ -17,6 +17,6 @@ token in the next request. Tokens expire after 24 hours.}
 \description{
 Returns a list of dataset groups created using the \code{\link[=forecastservice_create_dataset_group]{create_dataset_group}} operation. For each dataset group, this operation returns a summary of its properties, including its Amazon Resource Name (ARN). You can retrieve the complete set of properties by using the dataset group ARN with the \code{\link[=forecastservice_describe_dataset_group]{describe_dataset_group}} operation.
 
-See \url{https://paws-r.github.io/docs/forecastservice/list_dataset_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/forecastservice_list_dataset_groups/} for full documentation.
 }
 \keyword{internal}

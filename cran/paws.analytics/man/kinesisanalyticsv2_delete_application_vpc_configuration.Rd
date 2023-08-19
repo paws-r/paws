@@ -33,6 +33,6 @@ instead of \code{CurrentApplicationVersionId}.}
 \description{
 Removes a VPC configuration from a Kinesis Data Analytics application.
 
-See \url{https://paws-r.github.io/docs/kinesisanalyticsv2/delete_application_vpc_configuration.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_delete_application_vpc_configuration/} for full documentation.
 }
 \keyword{internal}

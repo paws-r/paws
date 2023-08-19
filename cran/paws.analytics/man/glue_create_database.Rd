@@ -17,6 +17,6 @@ provided, the Amazon Web Services account ID is used by default.}
 \description{
 Creates a new database in a Data Catalog.
 
-See \url{https://paws-r.github.io/docs/glue/create_database.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glue_create_database/} for full documentation.
 }
 \keyword{internal}

@@ -16,6 +16,6 @@ different account, the request fails with the HTTP status code
 \description{
 Deletes the replication configuration from the bucket.
 
-See \url{https://paws-r.github.io/docs/s3/delete_bucket_replication.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/s3_delete_bucket_replication/} for full documentation.
 }
 \keyword{internal}

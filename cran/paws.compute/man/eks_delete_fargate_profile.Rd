@@ -15,6 +15,6 @@ to delete.}
 \description{
 Deletes an Fargate profile.
 
-See \url{https://paws-r.github.io/docs/eks/delete_fargate_profile.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/eks_delete_fargate_profile/} for full documentation.
 }
 \keyword{internal}

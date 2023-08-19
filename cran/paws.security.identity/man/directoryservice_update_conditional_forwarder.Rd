@@ -24,6 +24,6 @@ conditional forwarder.}
 \description{
 Updates a conditional forwarder that has been set up for your Amazon Web Services directory.
 
-See \url{https://paws-r.github.io/docs/directoryservice/update_conditional_forwarder.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/directoryservice_update_conditional_forwarder/} for full documentation.
 }
 \keyword{internal}

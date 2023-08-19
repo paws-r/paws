@@ -9,7 +9,7 @@ NULL
 #' @description
 #' Seals and completes the snapshot after all of the required blocks of data have been written to it. Completing the snapshot changes the status to `completed`. You cannot write new blocks to a snapshot after it has been completed.
 #'
-#' See [https://paws-r.github.io/docs/ebs/complete_snapshot.html](https://paws-r.github.io/docs/ebs/complete_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ebs_complete_snapshot/](https://www.paws-r-sdk.com/docs/ebs_complete_snapshot/) for full documentation.
 #'
 #' @param SnapshotId &#91;required&#93; The ID of the snapshot.
 #' @param ChangedBlocksCount &#91;required&#93; The number of blocks that were written to the snapshot.
@@ -50,7 +50,7 @@ ebs_complete_snapshot <- function(SnapshotId, ChangedBlocksCount, Checksum = NUL
 #' @description
 #' Returns the data in a block in an Amazon Elastic Block Store snapshot.
 #'
-#' See [https://paws-r.github.io/docs/ebs/get_snapshot_block.html](https://paws-r.github.io/docs/ebs/get_snapshot_block.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ebs_get_snapshot_block/](https://www.paws-r-sdk.com/docs/ebs_get_snapshot_block/) for full documentation.
 #'
 #' @param SnapshotId &#91;required&#93; The ID of the snapshot containing the block from which to get data.
 #' 
@@ -95,7 +95,7 @@ ebs_get_snapshot_block <- function(SnapshotId, BlockIndex, BlockToken) {
 #' @description
 #' Returns information about the blocks that are different between two Amazon Elastic Block Store snapshots of the same volume/snapshot lineage.
 #'
-#' See [https://paws-r.github.io/docs/ebs/list_changed_blocks.html](https://paws-r.github.io/docs/ebs/list_changed_blocks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ebs_list_changed_blocks/](https://www.paws-r-sdk.com/docs/ebs_list_changed_blocks/) for full documentation.
 #'
 #' @param FirstSnapshotId The ID of the first snapshot to use for the comparison.
 #' 
@@ -132,7 +132,7 @@ ebs_list_changed_blocks <- function(FirstSnapshotId = NULL, SecondSnapshotId, Ne
     name = "ListChangedBlocks",
     http_method = "GET",
     http_path = "/snapshots/{secondSnapshotId}/changedblocks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .ebs$list_changed_blocks_input(FirstSnapshotId = FirstSnapshotId, SecondSnapshotId = SecondSnapshotId, NextToken = NextToken, MaxResults = MaxResults, StartingBlockIndex = StartingBlockIndex)
   output <- .ebs$list_changed_blocks_output()
@@ -150,7 +150,7 @@ ebs_list_changed_blocks <- function(FirstSnapshotId = NULL, SecondSnapshotId, Ne
 #' @description
 #' Returns information about the blocks in an Amazon Elastic Block Store snapshot.
 #'
-#' See [https://paws-r.github.io/docs/ebs/list_snapshot_blocks.html](https://paws-r.github.io/docs/ebs/list_snapshot_blocks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ebs_list_snapshot_blocks/](https://www.paws-r-sdk.com/docs/ebs_list_snapshot_blocks/) for full documentation.
 #'
 #' @param SnapshotId &#91;required&#93; The ID of the snapshot from which to get block indexes and block tokens.
 #' @param NextToken The token to request the next page of results.
@@ -179,7 +179,7 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
     name = "ListSnapshotBlocks",
     http_method = "GET",
     http_path = "/snapshots/{snapshotId}/blocks",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .ebs$list_snapshot_blocks_input(SnapshotId = SnapshotId, NextToken = NextToken, MaxResults = MaxResults, StartingBlockIndex = StartingBlockIndex)
   output <- .ebs$list_snapshot_blocks_output()
@@ -196,7 +196,7 @@ ebs_list_snapshot_blocks <- function(SnapshotId, NextToken = NULL, MaxResults = 
 #' @description
 #' Writes a block of data to a snapshot. If the specified block contains data, the existing data is overwritten. The target snapshot must be in the `pending` state.
 #'
-#' See [https://paws-r.github.io/docs/ebs/put_snapshot_block.html](https://paws-r.github.io/docs/ebs/put_snapshot_block.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ebs_put_snapshot_block/](https://www.paws-r-sdk.com/docs/ebs_put_snapshot_block/) for full documentation.
 #'
 #' @param SnapshotId &#91;required&#93; The ID of the snapshot.
 #' 
@@ -259,7 +259,7 @@ ebs_put_snapshot_block <- function(SnapshotId, BlockIndex, BlockData, DataLength
 #' @description
 #' Creates a new Amazon EBS snapshot. The new snapshot enters the `pending` state after the request completes.
 #'
-#' See [https://paws-r.github.io/docs/ebs/start_snapshot.html](https://paws-r.github.io/docs/ebs/start_snapshot.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/ebs_start_snapshot/](https://www.paws-r-sdk.com/docs/ebs_start_snapshot/) for full documentation.
 #'
 #' @param VolumeSize &#91;required&#93; The size of the volume, in GiB. The maximum size is `65536` GiB (64
 #' TiB).

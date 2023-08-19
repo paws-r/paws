@@ -34,6 +34,6 @@ you import a root CA, there is no chain.}
 \description{
 Imports a signed private CA certificate into Amazon Web Services Private CA. This action is used when you are using a chain of trust whose root is located outside Amazon Web Services Private CA. Before you can call this action, the following preparations must in place:
 
-See \url{https://paws-r.github.io/docs/acmpca/import_certificate_authority_certificate.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/acmpca_import_certificate_authority_certificate/} for full documentation.
 }
 \keyword{internal}

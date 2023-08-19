@@ -15,6 +15,6 @@ configuration for.}
 \description{
 Remove one anomaly notifications channel for a profiling group.
 
-See \url{https://paws-r.github.io/docs/codeguruprofiler/remove_notification_channel.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codeguruprofiler_remove_notification_channel/} for full documentation.
 }
 \keyword{internal}

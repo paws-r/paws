@@ -14,6 +14,6 @@ voiceid_delete_fraudster(DomainId, FraudsterId)
 \description{
 Deletes the specified fraudster from Voice ID. This action disassociates the fraudster from any watchlists it is a part of.
 
-See \url{https://paws-r.github.io/docs/voiceid/delete_fraudster.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/voiceid_delete_fraudster/} for full documentation.
 }
 \keyword{internal}

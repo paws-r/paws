@@ -17,6 +17,6 @@ not include a pagination token.}
 \description{
 Returns information about the Detective administrator account for an organization. Can only be called by the organization management account.
 
-See \url{https://paws-r.github.io/docs/detective/list_organization_admin_accounts.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/detective_list_organization_admin_accounts/} for full documentation.
 }
 \keyword{internal}

@@ -38,6 +38,6 @@ change the tags of an existing rule, use
 \description{
 Creates a Contributor Insights rule. Rules evaluate log events in a CloudWatch Logs log group, enabling you to find contributor data for the log events in that log group. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ContributorInsights.html}{Using Contributor Insights to Analyze High-Cardinality Data}.
 
-See \url{https://paws-r.github.io/docs/cloudwatch/put_insight_rule.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudwatch_put_insight_rule/} for full documentation.
 }
 \keyword{internal}

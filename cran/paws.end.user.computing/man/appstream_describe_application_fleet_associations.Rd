@@ -25,6 +25,6 @@ operation.}
 \description{
 Retrieves a list that describes one or more application fleet associations. Either ApplicationArn or FleetName must be specified.
 
-See \url{https://paws-r.github.io/docs/appstream/describe_application_fleet_associations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_describe_application_fleet_associations/} for full documentation.
 }
 \keyword{internal}

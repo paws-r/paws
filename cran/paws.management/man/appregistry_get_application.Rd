@@ -12,6 +12,6 @@ appregistry_get_application(application)
 \description{
 Retrieves metadata information about one of your applications. The application can be specified by its ARN, ID, or name (which is unique within one account in one region at a given point in time). Specify by ARN or ID in automated workflows if you want to make sure that the exact same application is returned or a \code{ResourceNotFoundException} is thrown, avoiding the ABA addressing problem.
 
-See \url{https://paws-r.github.io/docs/appregistry/get_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_get_application/} for full documentation.
 }
 \keyword{internal}

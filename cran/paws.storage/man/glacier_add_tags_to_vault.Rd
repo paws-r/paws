@@ -21,6 +21,6 @@ The value can be an empty string.}
 \description{
 This operation adds the specified tags to a vault. Each tag is composed of a key and a value. Each vault can have up to 10 tags. If your request would cause the tag limit for the vault to be exceeded, the operation throws the \code{LimitExceededException} error. If a tag already exists on the vault under a specified key, the existing key value will be overwritten. For more information about tags, see \href{https://docs.aws.amazon.com/amazonglacier/latest/dev/tagging.html}{Tagging Amazon S3 Glacier Resources}.
 
-See \url{https://paws-r.github.io/docs/glacier/add_tags_to_vault.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/glacier_add_tags_to_vault/} for full documentation.
 }
 \keyword{internal}

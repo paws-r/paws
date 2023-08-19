@@ -13,6 +13,6 @@ as the \strong{Project ID} on the Amazon Pinpoint console.}
 \description{
 Deletes the event stream for an application.
 
-See \url{https://paws-r.github.io/docs/pinpoint/delete_event_stream.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_delete_event_stream/} for full documentation.
 }
 \keyword{internal}

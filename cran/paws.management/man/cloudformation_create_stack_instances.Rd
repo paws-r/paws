@@ -97,6 +97,6 @@ in the \emph{CloudFormation User Guide}.
 \description{
 Creates stack instances for the specified accounts, within the specified Amazon Web Services Regions. A stack instance refers to a stack in a specific account and Region. You must specify at least one value for either \code{Accounts} or \code{DeploymentTargets}, and you must specify at least one value for \code{Regions}.
 
-See \url{https://paws-r.github.io/docs/cloudformation/create_stack_instances.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/cloudformation_create_stack_instances/} for full documentation.
 }
 \keyword{internal}

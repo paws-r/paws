@@ -45,6 +45,6 @@ filtering, see \href{https://docs.aws.amazon.com/cli/latest/userguide/cli-usage-
 \description{
 Returns resource CIDRs managed by IPAM in a given scope. If an IPAM is associated with more than one resource discovery, the resource CIDRs across all of the resource discoveries is returned. A resource discovery is an IPAM component that enables IPAM to manage and monitor resources that belong to the owning account.
 
-See \url{https://paws-r.github.io/docs/ec2/get_ipam_resource_cidrs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_get_ipam_resource_cidrs/} for full documentation.
 }
 \keyword{internal}

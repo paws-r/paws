@@ -204,6 +204,6 @@ applies to Elastic fleets.}
 \description{
 Creates a fleet. A fleet consists of streaming instances that your users access for their applications and desktops.
 
-See \url{https://paws-r.github.io/docs/appstream/create_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appstream_create_fleet/} for full documentation.
 }
 \keyword{internal}

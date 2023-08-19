@@ -27,6 +27,6 @@ the AWS SDK.}
 \description{
 Creates a trust store that can be associated with a web portal. A trust store contains certificate authority (CA) certificates. Once associated with a web portal, the browser in a streaming session will recognize certificates that have been issued using any of the CAs in the trust store. If your organization has internal websites that use certificates issued by private CAs, you should add the private CA certificate to the trust store.
 
-See \url{https://paws-r.github.io/docs/workspacesweb/create_trust_store.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspacesweb_create_trust_store/} for full documentation.
 }
 \keyword{internal}

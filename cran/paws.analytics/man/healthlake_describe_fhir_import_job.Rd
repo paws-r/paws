@@ -8,13 +8,13 @@ name, and the status of the job}
 healthlake_describe_fhir_import_job(DatastoreId, JobId)
 }
 \arguments{
-\item{DatastoreId}{[required] The AWS-generated ID of the Data Store.}
+\item{DatastoreId}{[required] The AWS-generated ID of the data store.}
 
 \item{JobId}{[required] The AWS-generated job ID.}
 }
 \description{
 Displays the properties of a FHIR import job, including the ID, ARN, name, and the status of the job.
 
-See \url{https://paws-r.github.io/docs/healthlake/describe_fhir_import_job.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/healthlake_describe_fhir_import_job/} for full documentation.
 }
 \keyword{internal}

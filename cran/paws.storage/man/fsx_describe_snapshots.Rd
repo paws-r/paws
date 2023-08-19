@@ -27,6 +27,6 @@ error occurs.}
 \description{
 Returns the description of specific Amazon FSx for OpenZFS snapshots, if a \code{SnapshotIds} value is provided. Otherwise, this operation returns all snapshots owned by your Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
 
-See \url{https://paws-r.github.io/docs/fsx/describe_snapshots.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/fsx_describe_snapshots/} for full documentation.
 }
 \keyword{internal}

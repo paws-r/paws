@@ -72,6 +72,6 @@ a problem is encountered when writing the query results.}
 \description{
 Create a scheduled query that will be run on your behalf at the configured schedule. Timestream assumes the execution role provided as part of the \code{ScheduledQueryExecutionRoleArn} parameter to run the query. You can use the \code{NotificationConfiguration} parameter to configure notification for your scheduled query operations.
 
-See \url{https://paws-r.github.io/docs/timestreamquery/create_scheduled_query.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/timestreamquery_create_scheduled_query/} for full documentation.
 }
 \keyword{internal}

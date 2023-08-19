@@ -46,6 +46,6 @@ the resources in the account, set this parameter to \code{ACCOUNT_BASED}.}
 \description{
 Adds an application that is created from a resource group.
 
-See \url{https://paws-r.github.io/docs/applicationinsights/create_application.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/applicationinsights_create_application/} for full documentation.
 }
 \keyword{internal}

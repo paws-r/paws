@@ -27,6 +27,6 @@ unique. If you don't specify \code{DisplayName}, the value in
 \description{
 Creates a SageMaker \emph{experiment}. An experiment is a collection of \emph{trials} that are observed, compared and evaluated as a group. A trial is a set of steps, called \emph{trial components}, that produce a machine learning model.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_experiment.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_experiment/} for full documentation.
 }
 \keyword{internal}

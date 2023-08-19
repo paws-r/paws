@@ -21,6 +21,6 @@ route53recoveryreadiness_get_architecture_recommendations(
 \description{
 Gets recommendations about architecture designs for improving resiliency for an application, based on a recovery group.
 
-See \url{https://paws-r.github.io/docs/route53recoveryreadiness/get_architecture_recommendations.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53recoveryreadiness_get_architecture_recommendations/} for full documentation.
 }
 \keyword{internal}

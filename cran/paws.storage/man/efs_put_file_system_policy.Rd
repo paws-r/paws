@@ -32,6 +32,6 @@ requests on this file system. The default value is \code{False}.}
 \description{
 Applies an Amazon EFS \code{FileSystemPolicy} to an Amazon EFS file system. A file system policy is an IAM resource-based policy and can contain multiple policy statements. A file system always has exactly one file system policy, which can be the default policy or an explicit policy set or updated using this API operation. EFS file system policies have a 20,000 character limit. When an explicit policy is set, it overrides the default policy. For more information about the default file system policy, see \href{https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html#default-filesystempolicy}{Default EFS File System Policy}.
 
-See \url{https://paws-r.github.io/docs/efs/put_file_system_policy.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/efs_put_file_system_policy/} for full documentation.
 }
 \keyword{internal}

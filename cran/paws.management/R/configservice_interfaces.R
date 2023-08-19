@@ -325,7 +325,7 @@ NULL
 
 .configservice$describe_configuration_recorders_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationRecorders = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), roleARN = structure(logical(0), tags = list(type = "string")), recordingGroup = structure(list(allSupported = structure(logical(0), tags = list(type = "boolean")), includeGlobalResourceTypes = structure(logical(0), tags = list(type = "boolean")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationRecorders = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), roleARN = structure(logical(0), tags = list(type = "string")), recordingGroup = structure(list(allSupported = structure(logical(0), tags = list(type = "boolean")), includeGlobalResourceTypes = structure(logical(0), tags = list(type = "boolean")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), exclusionByResourceTypes = structure(list(resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), recordingStrategy = structure(list(useOnly = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -831,7 +831,7 @@ NULL
 
 .configservice$put_configuration_recorder_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ConfigurationRecorder = structure(list(name = structure(logical(0), tags = list(type = "string")), roleARN = structure(logical(0), tags = list(type = "string")), recordingGroup = structure(list(allSupported = structure(logical(0), tags = list(type = "boolean")), includeGlobalResourceTypes = structure(logical(0), tags = list(type = "boolean")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(ConfigurationRecorder = structure(list(name = structure(logical(0), tags = list(type = "string")), roleARN = structure(logical(0), tags = list(type = "string")), recordingGroup = structure(list(allSupported = structure(logical(0), tags = list(type = "boolean")), includeGlobalResourceTypes = structure(logical(0), tags = list(type = "boolean")), resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), exclusionByResourceTypes = structure(list(resourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), recordingStrategy = structure(list(useOnly = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

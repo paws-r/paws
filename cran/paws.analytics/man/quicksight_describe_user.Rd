@@ -18,6 +18,6 @@ contains your Amazon QuickSight account.}
 \description{
 Returns information about a user, given the user name.
 
-See \url{https://paws-r.github.io/docs/quicksight/describe_user.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_describe_user/} for full documentation.
 }
 \keyword{internal}

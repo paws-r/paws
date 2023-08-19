@@ -31,6 +31,6 @@ owner, or environment. For more information, see \href{https://docs.aws.amazon.c
 \description{
 Creates an endpoint using the endpoint configuration specified in the request. SageMaker uses the endpoint to provision resources and deploy models. You create the endpoint configuration with the \code{\link[=sagemaker_create_endpoint_config]{create_endpoint_config}} API.
 
-See \url{https://paws-r.github.io/docs/sagemaker/create_endpoint.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_create_endpoint/} for full documentation.
 }
 \keyword{internal}

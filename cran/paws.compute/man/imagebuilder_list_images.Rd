@@ -41,6 +41,6 @@ a previously truncated response.}
 \description{
 Returns the list of images that you have access to. Newly created images can take up to two minutes to appear in the ListImages API Results.
 
-See \url{https://paws-r.github.io/docs/imagebuilder/list_images.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/imagebuilder_list_images/} for full documentation.
 }
 \keyword{internal}

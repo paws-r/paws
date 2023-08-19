@@ -24,6 +24,6 @@ reusable, the ID for that hosted zone.}
 \description{
 Creates a delegation set (a group of four name servers) that can be reused by multiple hosted zones that were created by the same Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/route53/create_reusable_delegation_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/route53_create_reusable_delegation_set/} for full documentation.
 }
 \keyword{internal}

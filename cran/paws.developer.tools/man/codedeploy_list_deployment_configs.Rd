@@ -16,6 +16,6 @@ list.}
 \description{
 Lists the deployment configurations with the IAM user or Amazon Web Services account.
 
-See \url{https://paws-r.github.io/docs/codedeploy/list_deployment_configs.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/codedeploy_list_deployment_configs/} for full documentation.
 }
 \keyword{internal}

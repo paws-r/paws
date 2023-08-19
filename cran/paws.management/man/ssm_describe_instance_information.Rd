@@ -2,9 +2,9 @@
 % Please edit documentation in R/ssm_operations.R
 \name{ssm_describe_instance_information}
 \alias{ssm_describe_instance_information}
-\title{Describes one or more of your managed nodes, including information about
-the operating system platform, the version of SSM Agent installed on the
-managed node, node status, and so on}
+\title{Provides information about one or more of your managed nodes, including
+the operating system platform, SSM Agent version, association status,
+and IP address}
 \usage{
 ssm_describe_instance_information(
   InstanceInformationFilterList = NULL,
@@ -23,19 +23,20 @@ an exception error.}
 
 \item{Filters}{One or more filters. Use a filter to return a more specific list of
 managed nodes. You can filter based on tags applied to your managed
-nodes. Use this \code{Filters} data type instead of
-\code{InstanceInformationFilterList}, which is deprecated.}
+nodes. Tag filters can't be combined with other filter types. Use this
+\code{Filters} data type instead of \code{InstanceInformationFilterList}, which is
+deprecated.}
 
 \item{MaxResults}{The maximum number of items to return for this call. The call also
 returns a token that you can specify in a subsequent call to get the
-next set of results.}
+next set of results. The default value is 10 items.}
 
 \item{NextToken}{The token for the next set of items to return. (You received this token
 from a previous call.)}
 }
 \description{
-Describes one or more of your managed nodes, including information about the operating system platform, the version of SSM Agent installed on the managed node, node status, and so on.
+Provides information about one or more of your managed nodes, including the operating system platform, SSM Agent version, association status, and IP address. This operation does not return information for nodes that are either Stopped or Terminated.
 
-See \url{https://paws-r.github.io/docs/ssm/describe_instance_information.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_describe_instance_information/} for full documentation.
 }
 \keyword{internal}

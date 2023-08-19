@@ -24,6 +24,6 @@ in the Amazon Web Services CLI User Guide.}
 \description{
 Attaches tags to a secret. Tags consist of a key name and a value. Tags are part of the secret's metadata. They are not associated with specific versions of the secret. This operation appends tags to the existing list of tags.
 
-See \url{https://paws-r.github.io/docs/secretsmanager/tag_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/secretsmanager_tag_resource/} for full documentation.
 }
 \keyword{internal}

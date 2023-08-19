@@ -18,6 +18,6 @@ example, Config adds 3 exceptions for 3 resource keys.}
 \description{
 Deletes one or more remediation exceptions mentioned in the resource keys.
 
-See \url{https://paws-r.github.io/docs/configservice/delete_remediation_exceptions.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/configservice_delete_remediation_exceptions/} for full documentation.
 }
 \keyword{internal}

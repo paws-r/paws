@@ -56,6 +56,6 @@ only.}
 \description{
 Updates a dataset. This operation doesn't support datasets that include uploaded files as a source. Partial updates are not supported by this operation.
 
-See \url{https://paws-r.github.io/docs/quicksight/update_data_set.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/quicksight_update_data_set/} for full documentation.
 }
 \keyword{internal}

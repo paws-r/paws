@@ -23,6 +23,6 @@ If this parameter is omitted, it defaults to 25. This value is optional.}
 \description{
 Lists all attribute groups that are associated with specified application. Results are paginated.
 
-See \url{https://paws-r.github.io/docs/appregistry/list_associated_attribute_groups.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/appregistry_list_associated_attribute_groups/} for full documentation.
 }
 \keyword{internal}

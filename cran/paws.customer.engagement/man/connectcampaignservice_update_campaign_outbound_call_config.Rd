@@ -23,6 +23,6 @@ connectcampaignservice_update_campaign_outbound_call_config(
 \description{
 Updates the outbound call config of a campaign. This API is idempotent.
 
-See \url{https://paws-r.github.io/docs/connectcampaignservice/update_campaign_outbound_call_config.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/connectcampaignservice_update_campaign_outbound_call_config/} for full documentation.
 }
 \keyword{internal}

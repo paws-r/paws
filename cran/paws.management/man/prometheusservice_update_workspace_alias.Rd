@@ -5,22 +5,22 @@
 \title{Updates an AMP workspace alias}
 \usage{
 prometheusservice_update_workspace_alias(
+  workspaceId,
   alias = NULL,
-  clientToken = NULL,
-  workspaceId
+  clientToken = NULL
 )
 }
 \arguments{
+\item{workspaceId}{[required] The ID of the workspace being updated.}
+
 \item{alias}{The new alias of the workspace.}
 
 \item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
 idempotency of the request.}
-
-\item{workspaceId}{[required] The ID of the workspace being updated.}
 }
 \description{
 Updates an AMP workspace alias.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/update_workspace_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_update_workspace_alias/} for full documentation.
 }
 \keyword{internal}

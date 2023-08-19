@@ -12,6 +12,6 @@ elasticinference_list_tags_for_resource(resourceArn)
 \description{
 Returns all tags of an Elastic Inference Accelerator.
 
-See \url{https://paws-r.github.io/docs/elasticinference/list_tags_for_resource.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/elasticinference_list_tags_for_resource/} for full documentation.
 }
 \keyword{internal}

@@ -12,6 +12,6 @@ worklink_delete_fleet(FleetArn)
 \description{
 Deletes a fleet. Prevents users from accessing previously associated websites.
 
-See \url{https://paws-r.github.io/docs/worklink/delete_fleet.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/worklink_delete_fleet/} for full documentation.
 }
 \keyword{internal}

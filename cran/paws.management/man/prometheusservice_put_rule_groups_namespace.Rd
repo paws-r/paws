@@ -5,25 +5,25 @@
 \title{Update a rule groups namespace}
 \usage{
 prometheusservice_put_rule_groups_namespace(
-  clientToken = NULL,
-  data,
+  workspaceId,
   name,
-  workspaceId
+  data,
+  clientToken = NULL
 )
 }
 \arguments{
-\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
-idempotency of the request.}
-
-\item{data}{[required] The namespace data that define the rule groups.}
+\item{workspaceId}{[required] The ID of the workspace in which to update the rule group namespace.}
 
 \item{name}{[required] The rule groups namespace name.}
 
-\item{workspaceId}{[required] The ID of the workspace in which to update the rule group namespace.}
+\item{data}{[required] The namespace data that define the rule groups.}
+
+\item{clientToken}{Optional, unique, case-sensitive, user-provided identifier to ensure the
+idempotency of the request.}
 }
 \description{
 Update a rule groups namespace.
 
-See \url{https://paws-r.github.io/docs/prometheusservice/put_rule_groups_namespace.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/prometheusservice_put_rule_groups_namespace/} for full documentation.
 }
 \keyword{internal}

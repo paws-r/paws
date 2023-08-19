@@ -16,6 +16,6 @@ then the latest version of the model card is described.}
 \description{
 Describes the content, creation time, and security configuration of an Amazon SageMaker Model Card.
 
-See \url{https://paws-r.github.io/docs/sagemaker/describe_model_card.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/sagemaker_describe_model_card/} for full documentation.
 }
 \keyword{internal}

@@ -21,6 +21,6 @@ do not specify a registry, the default registry is assumed.}
 \description{
 Returns the replication status for a specified image.
 
-See \url{https://paws-r.github.io/docs/ecr/describe_image_replication_status.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ecr_describe_image_replication_status/} for full documentation.
 }
 \keyword{internal}

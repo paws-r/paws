@@ -22,6 +22,6 @@ for your account.}
 \description{
 Creates the specified connection alias for use with cross-Region redirection. For more information, see \href{https://docs.aws.amazon.com/workspaces/latest/adminguide/cross-region-redirection.html}{Cross-Region Redirection for Amazon WorkSpaces}.
 
-See \url{https://paws-r.github.io/docs/workspaces/create_connection_alias.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/workspaces_create_connection_alias/} for full documentation.
 }
 \keyword{internal}

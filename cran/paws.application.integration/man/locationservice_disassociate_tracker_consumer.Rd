@@ -21,6 +21,6 @@ resource across all Amazon Web Services.
 \description{
 Removes the association between a tracker resource and a geofence collection.
 
-See \url{https://paws-r.github.io/docs/locationservice/disassociate_tracker_consumer.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/locationservice_disassociate_tracker_consumer/} for full documentation.
 }
 \keyword{internal}

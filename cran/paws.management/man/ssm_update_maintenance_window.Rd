@@ -74,6 +74,6 @@ specified are set to null.}
 \description{
 Updates an existing maintenance window. Only specified parameters are modified.
 
-See \url{https://paws-r.github.io/docs/ssm/update_maintenance_window.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ssm_update_maintenance_window/} for full documentation.
 }
 \keyword{internal}

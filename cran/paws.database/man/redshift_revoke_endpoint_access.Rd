@@ -26,6 +26,6 @@ authorization are also deleted.}
 \description{
 Revokes access to a cluster.
 
-See \url{https://paws-r.github.io/docs/redshift/revoke_endpoint_access.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_revoke_endpoint_access/} for full documentation.
 }
 \keyword{internal}

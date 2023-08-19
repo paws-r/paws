@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates an EFS access point. An access point is an application-specific view into an EFS file system that applies an operating system user and group, and a file system path, to any file system request made through the access point. The operating system user and group override any identity information provided by the NFS client. The file system path is exposed as the access point's root directory. Applications using the access point can only access data in the application's own directory and any subdirectories. To learn more, see [Mounting a file system using EFS access points](https://docs.aws.amazon.com/efs/latest/ug/efs-access-points.html).
 #'
-#' See [https://paws-r.github.io/docs/efs/create_access_point.html](https://paws-r.github.io/docs/efs/create_access_point.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_create_access_point/](https://www.paws-r-sdk.com/docs/efs_create_access_point/) for full documentation.
 #'
 #' @param ClientToken &#91;required&#93; A string of up to 64 ASCII characters that Amazon EFS uses to ensure
 #' idempotent creation.
@@ -59,7 +59,7 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' @description
 #' Creates a new, empty file system. The operation requires a creation token in the request that Amazon EFS uses to ensure idempotent creation (calling the operation with same creation token has no effect). If a file system does not currently exist that is owned by the caller's Amazon Web Services account with the specified creation token, this operation does the following:
 #'
-#' See [https://paws-r.github.io/docs/efs/create_file_system.html](https://paws-r.github.io/docs/efs/create_file_system.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_create_file_system/](https://www.paws-r-sdk.com/docs/efs_create_file_system/) for full documentation.
 #'
 #' @param CreationToken &#91;required&#93; A string of up to 64 ASCII characters. Amazon EFS uses this to ensure
 #' idempotent creation.
@@ -174,7 +174,7 @@ efs_create_file_system <- function(CreationToken, PerformanceMode = NULL, Encryp
 #' @description
 #' Creates a mount target for a file system. You can then mount the file system on EC2 instances by using the mount target.
 #'
-#' See [https://paws-r.github.io/docs/efs/create_mount_target.html](https://paws-r.github.io/docs/efs/create_mount_target.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_create_mount_target/](https://www.paws-r-sdk.com/docs/efs_create_mount_target/) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system for which to create the mount target.
 #' @param SubnetId &#91;required&#93; The ID of the subnet to add the mount target in. For file systems that
@@ -210,7 +210,7 @@ efs_create_mount_target <- function(FileSystemId, SubnetId, IpAddress = NULL, Se
 #' @description
 #' Creates a replication configuration that replicates an existing EFS file system to a new, read-only file system. For more information, see [Amazon EFS replication](https://docs.aws.amazon.com/efs/latest/ug/efs-replication.html) in the *Amazon EFS User Guide*. The replication configuration specifies the following:
 #'
-#' See [https://paws-r.github.io/docs/efs/create_replication_configuration.html](https://paws-r.github.io/docs/efs/create_replication_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_create_replication_configuration/](https://www.paws-r-sdk.com/docs/efs_create_replication_configuration/) for full documentation.
 #'
 #' @param SourceFileSystemId &#91;required&#93; Specifies the Amazon EFS file system that you want to replicate. This
 #' file system cannot already be a source or destination file system in
@@ -243,7 +243,7 @@ efs_create_replication_configuration <- function(SourceFileSystemId, Destination
 #' @description
 #' DEPRECATED - [`create_tags`][efs_create_tags] is deprecated and not maintained. To create tags for EFS resources, use the API action.
 #'
-#' See [https://paws-r.github.io/docs/efs/create_tags.html](https://paws-r.github.io/docs/efs/create_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_create_tags/](https://www.paws-r-sdk.com/docs/efs_create_tags/) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system whose tags you want to modify (String). This
 #' operation modifies the tags only, not the file system.
@@ -274,7 +274,7 @@ efs_create_tags <- function(FileSystemId, Tags) {
 #' @description
 #' Deletes the specified access point. After deletion is complete, new clients can no longer connect to the access points. Clients connected to the access point at the time of deletion will continue to function until they terminate their connection.
 #'
-#' See [https://paws-r.github.io/docs/efs/delete_access_point.html](https://paws-r.github.io/docs/efs/delete_access_point.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_delete_access_point/](https://www.paws-r-sdk.com/docs/efs_delete_access_point/) for full documentation.
 #'
 #' @param AccessPointId &#91;required&#93; The ID of the access point that you want to delete.
 #'
@@ -303,7 +303,7 @@ efs_delete_access_point <- function(AccessPointId) {
 #' @description
 #' Deletes a file system, permanently severing access to its contents. Upon return, the file system no longer exists and you can't access any contents of the deleted file system.
 #'
-#' See [https://paws-r.github.io/docs/efs/delete_file_system.html](https://paws-r.github.io/docs/efs/delete_file_system.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_delete_file_system/](https://www.paws-r-sdk.com/docs/efs_delete_file_system/) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system you want to delete.
 #'
@@ -332,7 +332,7 @@ efs_delete_file_system <- function(FileSystemId) {
 #' @description
 #' Deletes the `FileSystemPolicy` for the specified file system. The default `FileSystemPolicy` goes into effect once the existing policy is deleted. For more information about the default file system policy, see [Using Resource-based Policies with EFS](https://docs.aws.amazon.com/efs/latest/ug/).
 #'
-#' See [https://paws-r.github.io/docs/efs/delete_file_system_policy.html](https://paws-r.github.io/docs/efs/delete_file_system_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_delete_file_system_policy/](https://www.paws-r-sdk.com/docs/efs_delete_file_system_policy/) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; Specifies the EFS file system for which to delete the
 #' `FileSystemPolicy`.
@@ -362,7 +362,7 @@ efs_delete_file_system_policy <- function(FileSystemId) {
 #' @description
 #' Deletes the specified mount target.
 #'
-#' See [https://paws-r.github.io/docs/efs/delete_mount_target.html](https://paws-r.github.io/docs/efs/delete_mount_target.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_delete_mount_target/](https://www.paws-r-sdk.com/docs/efs_delete_mount_target/) for full documentation.
 #'
 #' @param MountTargetId &#91;required&#93; The ID of the mount target to delete (String).
 #'
@@ -391,7 +391,7 @@ efs_delete_mount_target <- function(MountTargetId) {
 #' @description
 #' Deletes an existing replication configuration. To delete a replication configuration, you must make the request from the Amazon Web Services Region in which the destination file system is located. Deleting a replication configuration ends the replication process. After a replication configuration is deleted, the destination file system is no longer read-only. You can write to the destination file system after its status becomes `Writeable`.
 #'
-#' See [https://paws-r.github.io/docs/efs/delete_replication_configuration.html](https://paws-r.github.io/docs/efs/delete_replication_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_delete_replication_configuration/](https://www.paws-r-sdk.com/docs/efs_delete_replication_configuration/) for full documentation.
 #'
 #' @param SourceFileSystemId &#91;required&#93; The ID of the source file system in the replication configuration.
 #'
@@ -420,7 +420,7 @@ efs_delete_replication_configuration <- function(SourceFileSystemId) {
 #' @description
 #' DEPRECATED - [`delete_tags`][efs_delete_tags] is deprecated and not maintained. To remove tags from EFS resources, use the API action.
 #'
-#' See [https://paws-r.github.io/docs/efs/delete_tags.html](https://paws-r.github.io/docs/efs/delete_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_delete_tags/](https://www.paws-r-sdk.com/docs/efs_delete_tags/) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system whose tags you want to delete (String).
 #' @param TagKeys &#91;required&#93; A list of tag keys to delete.
@@ -451,7 +451,7 @@ efs_delete_tags <- function(FileSystemId, TagKeys) {
 #' @description
 #' Returns the description of a specific Amazon EFS access point if the `AccessPointId` is provided. If you provide an EFS `FileSystemId`, it returns descriptions of all access points for that file system. You can provide either an `AccessPointId` or a `FileSystemId` in the request, but not both.
 #'
-#' See [https://paws-r.github.io/docs/efs/describe_access_points.html](https://paws-r.github.io/docs/efs/describe_access_points.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_describe_access_points/](https://www.paws-r-sdk.com/docs/efs_describe_access_points/) for full documentation.
 #'
 #' @param MaxResults (Optional) When retrieving all access points for a file system, you can
 #' optionally specify the `MaxItems` parameter to limit the number of
@@ -472,7 +472,7 @@ efs_describe_access_points <- function(MaxResults = NULL, NextToken = NULL, Acce
     name = "DescribeAccessPoints",
     http_method = "GET",
     http_path = "/2015-02-01/access-points",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .efs$describe_access_points_input(MaxResults = MaxResults, NextToken = NextToken, AccessPointId = AccessPointId, FileSystemId = FileSystemId)
   output <- .efs$describe_access_points_output()
@@ -491,7 +491,7 @@ efs_describe_access_points <- function(MaxResults = NULL, NextToken = NULL, Acce
 #' @description
 #' Returns the account preferences settings for the Amazon Web Services account associated with the user making the request, in the current Amazon Web Services Region. For more information, see [Managing Amazon EFS resource IDs](https://docs.aws.amazon.com/efs/latest/ug/).
 #'
-#' See [https://paws-r.github.io/docs/efs/describe_account_preferences.html](https://paws-r.github.io/docs/efs/describe_account_preferences.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_describe_account_preferences/](https://www.paws-r-sdk.com/docs/efs_describe_account_preferences/) for full documentation.
 #'
 #' @param NextToken (Optional) You can use `NextToken` in a subsequent request to fetch the
 #' next page of Amazon Web Services account preferences if the response
@@ -525,7 +525,7 @@ efs_describe_account_preferences <- function(NextToken = NULL, MaxResults = NULL
 #' @description
 #' Returns the backup policy for the specified EFS file system.
 #'
-#' See [https://paws-r.github.io/docs/efs/describe_backup_policy.html](https://paws-r.github.io/docs/efs/describe_backup_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_describe_backup_policy/](https://www.paws-r-sdk.com/docs/efs_describe_backup_policy/) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; Specifies which EFS file system to retrieve the `BackupPolicy` for.
 #'
@@ -554,7 +554,7 @@ efs_describe_backup_policy <- function(FileSystemId) {
 #' @description
 #' Returns the `FileSystemPolicy` for the specified EFS file system.
 #'
-#' See [https://paws-r.github.io/docs/efs/describe_file_system_policy.html](https://paws-r.github.io/docs/efs/describe_file_system_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_describe_file_system_policy/](https://www.paws-r-sdk.com/docs/efs_describe_file_system_policy/) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; Specifies which EFS file system to retrieve the `FileSystemPolicy` for.
 #'
@@ -584,7 +584,7 @@ efs_describe_file_system_policy <- function(FileSystemId) {
 #' @description
 #' Returns the description of a specific Amazon EFS file system if either the file system `CreationToken` or the `FileSystemId` is provided. Otherwise, it returns descriptions of all file systems owned by the caller's Amazon Web Services account in the Amazon Web Services Region of the endpoint that you're calling.
 #'
-#' See [https://paws-r.github.io/docs/efs/describe_file_systems.html](https://paws-r.github.io/docs/efs/describe_file_systems.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_describe_file_systems/](https://www.paws-r-sdk.com/docs/efs_describe_file_systems/) for full documentation.
 #'
 #' @param MaxItems (Optional) Specifies the maximum number of file systems to return in the
 #' response (integer). This number is automatically set to 100. The
@@ -608,7 +608,7 @@ efs_describe_file_systems <- function(MaxItems = NULL, Marker = NULL, CreationTo
     name = "DescribeFileSystems",
     http_method = "GET",
     http_path = "/2015-02-01/file-systems",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems")
   )
   input <- .efs$describe_file_systems_input(MaxItems = MaxItems, Marker = Marker, CreationToken = CreationToken, FileSystemId = FileSystemId)
   output <- .efs$describe_file_systems_output()
@@ -626,7 +626,7 @@ efs_describe_file_systems <- function(MaxItems = NULL, Marker = NULL, CreationTo
 #' @description
 #' Returns the current `LifecycleConfiguration` object for the specified Amazon EFS file system. EFS lifecycle management uses the `LifecycleConfiguration` object to identify which files to move to the EFS Infrequent Access (IA) storage class. For a file system without a `LifecycleConfiguration` object, the call returns an empty array in the response.
 #'
-#' See [https://paws-r.github.io/docs/efs/describe_lifecycle_configuration.html](https://paws-r.github.io/docs/efs/describe_lifecycle_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_describe_lifecycle_configuration/](https://www.paws-r-sdk.com/docs/efs_describe_lifecycle_configuration/) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system whose `LifecycleConfiguration` object you want
 #' to retrieve (String).
@@ -656,7 +656,7 @@ efs_describe_lifecycle_configuration <- function(FileSystemId) {
 #' @description
 #' Returns the security groups currently in effect for a mount target. This operation requires that the network interface of the mount target has been created and the lifecycle state of the mount target is not `deleted`.
 #'
-#' See [https://paws-r.github.io/docs/efs/describe_mount_target_security_groups.html](https://paws-r.github.io/docs/efs/describe_mount_target_security_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_describe_mount_target_security_groups/](https://www.paws-r-sdk.com/docs/efs_describe_mount_target_security_groups/) for full documentation.
 #'
 #' @param MountTargetId &#91;required&#93; The ID of the mount target whose security groups you want to retrieve.
 #'
@@ -686,7 +686,7 @@ efs_describe_mount_target_security_groups <- function(MountTargetId) {
 #' @description
 #' Returns the descriptions of all the current mount targets, or a specific mount target, for a file system. When requesting all of the current mount targets, the order of mount targets returned in the response is unspecified.
 #'
-#' See [https://paws-r.github.io/docs/efs/describe_mount_targets.html](https://paws-r.github.io/docs/efs/describe_mount_targets.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_describe_mount_targets/](https://www.paws-r-sdk.com/docs/efs_describe_mount_targets/) for full documentation.
 #'
 #' @param MaxItems (Optional) Maximum number of mount targets to return in the response.
 #' Currently, this number is automatically set to 10, and other values are
@@ -733,7 +733,7 @@ efs_describe_mount_targets <- function(MaxItems = NULL, Marker = NULL, FileSyste
 #' @description
 #' Retrieves the replication configuration for a specific file system. If a file system is not specified, all of the replication configurations for the Amazon Web Services account in an Amazon Web Services Region are retrieved.
 #'
-#' See [https://paws-r.github.io/docs/efs/describe_replication_configurations.html](https://paws-r.github.io/docs/efs/describe_replication_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_describe_replication_configurations/](https://www.paws-r-sdk.com/docs/efs_describe_replication_configurations/) for full documentation.
 #'
 #' @param FileSystemId You can retrieve the replication configuration for a specific file
 #' system by providing its file system ID.
@@ -767,7 +767,7 @@ efs_describe_replication_configurations <- function(FileSystemId = NULL, NextTok
 #' @description
 #' DEPRECATED - The [`describe_tags`][efs_describe_tags] action is deprecated and not maintained. To view tags associated with EFS resources, use the [`list_tags_for_resource`][efs_list_tags_for_resource] API action.
 #'
-#' See [https://paws-r.github.io/docs/efs/describe_tags.html](https://paws-r.github.io/docs/efs/describe_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_describe_tags/](https://www.paws-r-sdk.com/docs/efs_describe_tags/) for full documentation.
 #'
 #' @param MaxItems (Optional) The maximum number of file system tags to return in the
 #' response. Currently, this number is automatically set to 100, and other
@@ -786,7 +786,7 @@ efs_describe_tags <- function(MaxItems = NULL, Marker = NULL, FileSystemId) {
     name = "DescribeTags",
     http_method = "GET",
     http_path = "/2015-02-01/tags/{FileSystemId}/",
-    paginator = list()
+    paginator = list(input_token = "Marker", output_token = "NextMarker", limit_key = "MaxItems")
   )
   input <- .efs$describe_tags_input(MaxItems = MaxItems, Marker = Marker, FileSystemId = FileSystemId)
   output <- .efs$describe_tags_output()
@@ -803,7 +803,7 @@ efs_describe_tags <- function(MaxItems = NULL, Marker = NULL, FileSystemId) {
 #' @description
 #' Lists all tags for a top-level EFS resource. You must provide the ID of the resource that you want to retrieve the tags for.
 #'
-#' See [https://paws-r.github.io/docs/efs/list_tags_for_resource.html](https://paws-r.github.io/docs/efs/list_tags_for_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/efs_list_tags_for_resource/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; Specifies the EFS resource you want to retrieve tags for. You can
 #' retrieve tags for EFS file systems and access points using this API
@@ -822,7 +822,7 @@ efs_list_tags_for_resource <- function(ResourceId, MaxResults = NULL, NextToken 
     name = "ListTagsForResource",
     http_method = "GET",
     http_path = "/2015-02-01/resource-tags/{ResourceId}",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .efs$list_tags_for_resource_input(ResourceId = ResourceId, MaxResults = MaxResults, NextToken = NextToken)
   output <- .efs$list_tags_for_resource_output()
@@ -839,7 +839,7 @@ efs_list_tags_for_resource <- function(ResourceId, MaxResults = NULL, NextToken 
 #' @description
 #' Modifies the set of security groups in effect for a mount target.
 #'
-#' See [https://paws-r.github.io/docs/efs/modify_mount_target_security_groups.html](https://paws-r.github.io/docs/efs/modify_mount_target_security_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_modify_mount_target_security_groups/](https://www.paws-r-sdk.com/docs/efs_modify_mount_target_security_groups/) for full documentation.
 #'
 #' @param MountTargetId &#91;required&#93; The ID of the mount target whose security groups you want to modify.
 #' @param SecurityGroups An array of up to five VPC security group IDs.
@@ -872,7 +872,7 @@ efs_modify_mount_target_security_groups <- function(MountTargetId, SecurityGroup
 #' @description
 #' Use this operation to set the account preference in the current Amazon Web Services Region to use long 17 character (63 bit) or short 8 character (32 bit) resource IDs for new EFS file system and mount target resources. All existing resource IDs are not affected by any changes you make. You can set the ID preference during the opt-in period as EFS transitions to long resource IDs. For more information, see [Managing Amazon EFS resource IDs](https://docs.aws.amazon.com/efs/latest/ug/).
 #'
-#' See [https://paws-r.github.io/docs/efs/put_account_preferences.html](https://paws-r.github.io/docs/efs/put_account_preferences.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_put_account_preferences/](https://www.paws-r-sdk.com/docs/efs_put_account_preferences/) for full documentation.
 #'
 #' @param ResourceIdType &#91;required&#93; Specifies the EFS resource ID preference to set for the user's Amazon
 #' Web Services account, in the current Amazon Web Services Region, either
@@ -908,7 +908,7 @@ efs_put_account_preferences <- function(ResourceIdType) {
 #' @description
 #' Updates the file system's backup policy. Use this action to start or stop automatic backups of the file system.
 #'
-#' See [https://paws-r.github.io/docs/efs/put_backup_policy.html](https://paws-r.github.io/docs/efs/put_backup_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_put_backup_policy/](https://www.paws-r-sdk.com/docs/efs_put_backup_policy/) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; Specifies which EFS file system to update the backup policy for.
 #' @param BackupPolicy &#91;required&#93; The backup policy included in the
@@ -939,7 +939,7 @@ efs_put_backup_policy <- function(FileSystemId, BackupPolicy) {
 #' @description
 #' Applies an Amazon EFS `FileSystemPolicy` to an Amazon EFS file system. A file system policy is an IAM resource-based policy and can contain multiple policy statements. A file system always has exactly one file system policy, which can be the default policy or an explicit policy set or updated using this API operation. EFS file system policies have a 20,000 character limit. When an explicit policy is set, it overrides the default policy. For more information about the default file system policy, see [Default EFS File System Policy](https://docs.aws.amazon.com/efs/latest/ug/iam-access-control-nfs-efs.html#default-filesystempolicy).
 #'
-#' See [https://paws-r.github.io/docs/efs/put_file_system_policy.html](https://paws-r.github.io/docs/efs/put_file_system_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_put_file_system_policy/](https://www.paws-r-sdk.com/docs/efs_put_file_system_policy/) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the EFS file system that you want to create or update the
 #' `FileSystemPolicy` for.
@@ -984,7 +984,7 @@ efs_put_file_system_policy <- function(FileSystemId, Policy, BypassPolicyLockout
 #' @description
 #' Use this action to manage EFS lifecycle management and EFS Intelligent-Tiering. A `LifecycleConfiguration` consists of one or more `LifecyclePolicy` objects that define the following:
 #'
-#' See [https://paws-r.github.io/docs/efs/put_lifecycle_configuration.html](https://paws-r.github.io/docs/efs/put_lifecycle_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_put_lifecycle_configuration/](https://www.paws-r-sdk.com/docs/efs_put_lifecycle_configuration/) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system for which you are creating the
 #' `LifecycleConfiguration` object (String).
@@ -1032,7 +1032,7 @@ efs_put_lifecycle_configuration <- function(FileSystemId, LifecyclePolicies) {
 #' @description
 #' Creates a tag for an EFS resource. You can create tags for EFS file systems and access points using this API operation.
 #'
-#' See [https://paws-r.github.io/docs/efs/tag_resource.html](https://paws-r.github.io/docs/efs/tag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_tag_resource/](https://www.paws-r-sdk.com/docs/efs_tag_resource/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; The ID specifying the EFS resource that you want to create a tag for.
 #' @param Tags &#91;required&#93; An array of `Tag` objects to add. Each `Tag` object is a key-value pair.
@@ -1062,7 +1062,7 @@ efs_tag_resource <- function(ResourceId, Tags) {
 #' @description
 #' Removes tags from an EFS resource. You can remove tags from EFS file systems and access points using this API operation.
 #'
-#' See [https://paws-r.github.io/docs/efs/untag_resource.html](https://paws-r.github.io/docs/efs/untag_resource.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_untag_resource/](https://www.paws-r-sdk.com/docs/efs_untag_resource/) for full documentation.
 #'
 #' @param ResourceId &#91;required&#93; Specifies the EFS resource that you want to remove tags from.
 #' @param TagKeys &#91;required&#93; The keys of the key-value tag pairs that you want to remove from the
@@ -1094,7 +1094,7 @@ efs_untag_resource <- function(ResourceId, TagKeys) {
 #' @description
 #' Updates the throughput mode or the amount of provisioned throughput of an existing file system.
 #'
-#' See [https://paws-r.github.io/docs/efs/update_file_system.html](https://paws-r.github.io/docs/efs/update_file_system.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/efs_update_file_system/](https://www.paws-r-sdk.com/docs/efs_update_file_system/) for full documentation.
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system that you want to update.
 #' @param ThroughputMode (Optional) Updates the file system's throughput mode. If you're not

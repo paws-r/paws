@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Attaches one or more EC2 instances to the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/attach_instances.html](https://paws-r.github.io/docs/autoscaling/attach_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_attach_instances/](https://www.paws-r-sdk.com/docs/autoscaling_attach_instances/) for full documentation.
 #'
 #' @param InstanceIds The IDs of the instances. You can specify up to 20 instances.
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
@@ -39,7 +39,7 @@ autoscaling_attach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 #' @description
 #' This API operation is superseded by [`attach_traffic_sources`][autoscaling_attach_traffic_sources], which can attach multiple traffic sources types. We recommend using [`attach_traffic_sources`][autoscaling_attach_traffic_sources] to simplify how you manage traffic sources. However, we continue to support [`attach_load_balancer_target_groups`][autoscaling_attach_load_balancer_target_groups]. You can use both the original [`attach_load_balancer_target_groups`][autoscaling_attach_load_balancer_target_groups] API operation and [`attach_traffic_sources`][autoscaling_attach_traffic_sources] on the same Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/attach_load_balancer_target_groups.html](https://paws-r.github.io/docs/autoscaling/attach_load_balancer_target_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_attach_load_balancer_target_groups/](https://www.paws-r-sdk.com/docs/autoscaling_attach_load_balancer_target_groups/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param TargetGroupARNs &#91;required&#93; The Amazon Resource Names (ARNs) of the target groups. You can specify
@@ -74,7 +74,7 @@ autoscaling_attach_load_balancer_target_groups <- function(AutoScalingGroupName,
 #' @description
 #' This API operation is superseded by [`attach_traffic_sources`][autoscaling_attach_traffic_sources], which can attach multiple traffic sources types. We recommend using [`attach_traffic_sources`][autoscaling_attach_traffic_sources] to simplify how you manage traffic sources. However, we continue to support [`attach_load_balancers`][autoscaling_attach_load_balancers]. You can use both the original [`attach_load_balancers`][autoscaling_attach_load_balancers] API operation and [`attach_traffic_sources`][autoscaling_attach_traffic_sources] on the same Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/attach_load_balancers.html](https://paws-r.github.io/docs/autoscaling/attach_load_balancers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_attach_load_balancers/](https://www.paws-r-sdk.com/docs/autoscaling_attach_load_balancers/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param LoadBalancerNames &#91;required&#93; The names of the load balancers. You can specify up to 10 load
@@ -105,7 +105,7 @@ autoscaling_attach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
 #' @description
 #' Attaches one or more traffic sources to the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/attach_traffic_sources.html](https://paws-r.github.io/docs/autoscaling/attach_traffic_sources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_attach_traffic_sources/](https://www.paws-r-sdk.com/docs/autoscaling_attach_traffic_sources/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param TrafficSources &#91;required&#93; The unique identifiers of one or more traffic sources. You can specify
@@ -137,7 +137,7 @@ autoscaling_attach_traffic_sources <- function(AutoScalingGroupName, TrafficSour
 #' @description
 #' Deletes one or more scheduled actions for the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/batch_delete_scheduled_action.html](https://paws-r.github.io/docs/autoscaling/batch_delete_scheduled_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_batch_delete_scheduled_action/](https://www.paws-r-sdk.com/docs/autoscaling_batch_delete_scheduled_action/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param ScheduledActionNames &#91;required&#93; The names of the scheduled actions to delete. The maximum number allowed
@@ -169,7 +169,7 @@ autoscaling_batch_delete_scheduled_action <- function(AutoScalingGroupName, Sche
 #' @description
 #' Creates or updates one or more scheduled scaling actions for an Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/batch_put_scheduled_update_group_action.html](https://paws-r.github.io/docs/autoscaling/batch_put_scheduled_update_group_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_batch_put_scheduled_update_group_action/](https://www.paws-r-sdk.com/docs/autoscaling_batch_put_scheduled_update_group_action/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param ScheduledUpdateGroupActions &#91;required&#93; One or more scheduled actions. The maximum number allowed is 50.
@@ -199,7 +199,7 @@ autoscaling_batch_put_scheduled_update_group_action <- function(AutoScalingGroup
 #' @description
 #' Cancels an instance refresh or rollback that is in progress. If an instance refresh or rollback is not in progress, an `ActiveInstanceRefreshNotFound` error occurs.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/cancel_instance_refresh.html](https://paws-r.github.io/docs/autoscaling/cancel_instance_refresh.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_cancel_instance_refresh/](https://www.paws-r-sdk.com/docs/autoscaling_cancel_instance_refresh/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #'
@@ -229,7 +229,7 @@ autoscaling_cancel_instance_refresh <- function(AutoScalingGroupName) {
 #' @description
 #' Completes the lifecycle action for the specified token or instance with the specified result.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/complete_lifecycle_action.html](https://paws-r.github.io/docs/autoscaling/complete_lifecycle_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_complete_lifecycle_action/](https://www.paws-r-sdk.com/docs/autoscaling_complete_lifecycle_action/) for full documentation.
 #'
 #' @param LifecycleHookName &#91;required&#93; The name of the lifecycle hook.
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
@@ -268,7 +268,7 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' @description
 #' **We strongly recommend using a launch template when calling this operation to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2.**
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/create_auto_scaling_group.html](https://paws-r.github.io/docs/autoscaling/create_auto_scaling_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_create_auto_scaling_group/](https://www.paws-r-sdk.com/docs/autoscaling_create_auto_scaling_group/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group. This name must be unique per Region
 #' per account.
@@ -494,7 +494,7 @@ autoscaling_create_auto_scaling_group <- function(AutoScalingGroupName, LaunchCo
 #' @description
 #' Creates a launch configuration.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/create_launch_configuration.html](https://paws-r.github.io/docs/autoscaling/create_launch_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_create_launch_configuration/](https://www.paws-r-sdk.com/docs/autoscaling_create_launch_configuration/) for full documentation.
 #'
 #' @param LaunchConfigurationName &#91;required&#93; The name of the launch configuration. This name must be unique per
 #' Region per account.
@@ -658,7 +658,7 @@ autoscaling_create_launch_configuration <- function(LaunchConfigurationName, Ima
 #' @description
 #' Creates or updates tags for the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/create_or_update_tags.html](https://paws-r.github.io/docs/autoscaling/create_or_update_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_create_or_update_tags/](https://www.paws-r-sdk.com/docs/autoscaling_create_or_update_tags/) for full documentation.
 #'
 #' @param Tags &#91;required&#93; One or more tags.
 #'
@@ -687,7 +687,7 @@ autoscaling_create_or_update_tags <- function(Tags) {
 #' @description
 #' Deletes the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/delete_auto_scaling_group.html](https://paws-r.github.io/docs/autoscaling/delete_auto_scaling_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_delete_auto_scaling_group/](https://www.paws-r-sdk.com/docs/autoscaling_delete_auto_scaling_group/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param ForceDelete Specifies that the group is to be deleted along with all instances
@@ -720,7 +720,7 @@ autoscaling_delete_auto_scaling_group <- function(AutoScalingGroupName, ForceDel
 #' @description
 #' Deletes the specified launch configuration.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/delete_launch_configuration.html](https://paws-r.github.io/docs/autoscaling/delete_launch_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_delete_launch_configuration/](https://www.paws-r-sdk.com/docs/autoscaling_delete_launch_configuration/) for full documentation.
 #'
 #' @param LaunchConfigurationName &#91;required&#93; The name of the launch configuration.
 #'
@@ -749,7 +749,7 @@ autoscaling_delete_launch_configuration <- function(LaunchConfigurationName) {
 #' @description
 #' Deletes the specified lifecycle hook.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/delete_lifecycle_hook.html](https://paws-r.github.io/docs/autoscaling/delete_lifecycle_hook.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_delete_lifecycle_hook/](https://www.paws-r-sdk.com/docs/autoscaling_delete_lifecycle_hook/) for full documentation.
 #'
 #' @param LifecycleHookName &#91;required&#93; The name of the lifecycle hook.
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
@@ -779,7 +779,7 @@ autoscaling_delete_lifecycle_hook <- function(LifecycleHookName, AutoScalingGrou
 #' @description
 #' Deletes the specified notification.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/delete_notification_configuration.html](https://paws-r.github.io/docs/autoscaling/delete_notification_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_delete_notification_configuration/](https://www.paws-r-sdk.com/docs/autoscaling_delete_notification_configuration/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param TopicARN &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon SNS topic.
@@ -809,7 +809,7 @@ autoscaling_delete_notification_configuration <- function(AutoScalingGroupName, 
 #' @description
 #' Deletes the specified scaling policy.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/delete_policy.html](https://paws-r.github.io/docs/autoscaling/delete_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_delete_policy/](https://www.paws-r-sdk.com/docs/autoscaling_delete_policy/) for full documentation.
 #'
 #' @param AutoScalingGroupName The name of the Auto Scaling group.
 #' @param PolicyName &#91;required&#93; The name or Amazon Resource Name (ARN) of the policy.
@@ -839,7 +839,7 @@ autoscaling_delete_policy <- function(AutoScalingGroupName = NULL, PolicyName) {
 #' @description
 #' Deletes the specified scheduled action.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/delete_scheduled_action.html](https://paws-r.github.io/docs/autoscaling/delete_scheduled_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_delete_scheduled_action/](https://www.paws-r-sdk.com/docs/autoscaling_delete_scheduled_action/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param ScheduledActionName &#91;required&#93; The name of the action to delete.
@@ -869,7 +869,7 @@ autoscaling_delete_scheduled_action <- function(AutoScalingGroupName, ScheduledA
 #' @description
 #' Deletes the specified tags.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/delete_tags.html](https://paws-r.github.io/docs/autoscaling/delete_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_delete_tags/](https://www.paws-r-sdk.com/docs/autoscaling_delete_tags/) for full documentation.
 #'
 #' @param Tags &#91;required&#93; One or more tags.
 #'
@@ -898,7 +898,7 @@ autoscaling_delete_tags <- function(Tags) {
 #' @description
 #' Deletes the warm pool for the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/delete_warm_pool.html](https://paws-r.github.io/docs/autoscaling/delete_warm_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_delete_warm_pool/](https://www.paws-r-sdk.com/docs/autoscaling_delete_warm_pool/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param ForceDelete Specifies that the warm pool is to be deleted along with all of its
@@ -932,7 +932,7 @@ autoscaling_delete_warm_pool <- function(AutoScalingGroupName, ForceDelete = NUL
 #' @description
 #' Describes the current Amazon EC2 Auto Scaling resource quotas for your account.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_account_limits.html](https://paws-r.github.io/docs/autoscaling/describe_account_limits.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_account_limits/](https://www.paws-r-sdk.com/docs/autoscaling_describe_account_limits/) for full documentation.
 #'
 
 #'
@@ -962,7 +962,7 @@ autoscaling_describe_account_limits <- function() {
 #' @description
 #' Describes the available adjustment types for step scaling and simple scaling policies.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_adjustment_types.html](https://paws-r.github.io/docs/autoscaling/describe_adjustment_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_adjustment_types/](https://www.paws-r-sdk.com/docs/autoscaling_describe_adjustment_types/) for full documentation.
 #'
 
 #'
@@ -991,7 +991,7 @@ autoscaling_describe_adjustment_types <- function() {
 #' @description
 #' Gets information about the Auto Scaling groups in the account and Region.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_auto_scaling_groups.html](https://paws-r.github.io/docs/autoscaling/describe_auto_scaling_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_auto_scaling_groups/](https://www.paws-r-sdk.com/docs/autoscaling_describe_auto_scaling_groups/) for full documentation.
 #'
 #' @param AutoScalingGroupNames The names of the Auto Scaling groups. By default, you can only specify
 #' up to 50 names. You can optionally increase this limit using the
@@ -1012,7 +1012,7 @@ autoscaling_describe_auto_scaling_groups <- function(AutoScalingGroupNames = NUL
     name = "DescribeAutoScalingGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AutoScalingGroups")
   )
   input <- .autoscaling$describe_auto_scaling_groups_input(AutoScalingGroupNames = AutoScalingGroupNames, NextToken = NextToken, MaxRecords = MaxRecords, Filters = Filters)
   output <- .autoscaling$describe_auto_scaling_groups_output()
@@ -1030,7 +1030,7 @@ autoscaling_describe_auto_scaling_groups <- function(AutoScalingGroupNames = NUL
 #' @description
 #' Gets information about the Auto Scaling instances in the account and Region.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_auto_scaling_instances.html](https://paws-r.github.io/docs/autoscaling/describe_auto_scaling_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_auto_scaling_instances/](https://www.paws-r-sdk.com/docs/autoscaling_describe_auto_scaling_instances/) for full documentation.
 #'
 #' @param InstanceIds The IDs of the instances. If you omit this property, all Auto Scaling
 #' instances are described. If you specify an ID that does not exist, it is
@@ -1050,7 +1050,7 @@ autoscaling_describe_auto_scaling_instances <- function(InstanceIds = NULL, MaxR
     name = "DescribeAutoScalingInstances",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "AutoScalingInstances")
   )
   input <- .autoscaling$describe_auto_scaling_instances_input(InstanceIds = InstanceIds, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .autoscaling$describe_auto_scaling_instances_output()
@@ -1068,7 +1068,7 @@ autoscaling_describe_auto_scaling_instances <- function(InstanceIds = NULL, MaxR
 #' @description
 #' Describes the notification types that are supported by Amazon EC2 Auto Scaling.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_auto_scaling_notification_types.html](https://paws-r.github.io/docs/autoscaling/describe_auto_scaling_notification_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_auto_scaling_notification_types/](https://www.paws-r-sdk.com/docs/autoscaling_describe_auto_scaling_notification_types/) for full documentation.
 #'
 
 #'
@@ -1098,7 +1098,7 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #' @description
 #' Gets information about the instance refreshes for the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_instance_refreshes.html](https://paws-r.github.io/docs/autoscaling/describe_instance_refreshes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_instance_refreshes/](https://www.paws-r-sdk.com/docs/autoscaling_describe_instance_refreshes/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param InstanceRefreshIds One or more instance refresh IDs.
@@ -1133,7 +1133,7 @@ autoscaling_describe_instance_refreshes <- function(AutoScalingGroupName, Instan
 #' @description
 #' Gets information about the launch configurations in the account and Region.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_launch_configurations.html](https://paws-r.github.io/docs/autoscaling/describe_launch_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_launch_configurations/](https://www.paws-r-sdk.com/docs/autoscaling_describe_launch_configurations/) for full documentation.
 #'
 #' @param LaunchConfigurationNames The launch configuration names. If you omit this property, all launch
 #' configurations are described.
@@ -1152,7 +1152,7 @@ autoscaling_describe_launch_configurations <- function(LaunchConfigurationNames 
     name = "DescribeLaunchConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "LaunchConfigurations")
   )
   input <- .autoscaling$describe_launch_configurations_input(LaunchConfigurationNames = LaunchConfigurationNames, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_launch_configurations_output()
@@ -1169,7 +1169,7 @@ autoscaling_describe_launch_configurations <- function(LaunchConfigurationNames 
 #' @description
 #' Describes the available types of lifecycle hooks.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_lifecycle_hook_types.html](https://paws-r.github.io/docs/autoscaling/describe_lifecycle_hook_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_lifecycle_hook_types/](https://www.paws-r-sdk.com/docs/autoscaling_describe_lifecycle_hook_types/) for full documentation.
 #'
 
 #'
@@ -1199,7 +1199,7 @@ autoscaling_describe_lifecycle_hook_types <- function() {
 #' @description
 #' Gets information about the lifecycle hooks for the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_lifecycle_hooks.html](https://paws-r.github.io/docs/autoscaling/describe_lifecycle_hooks.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_lifecycle_hooks/](https://www.paws-r-sdk.com/docs/autoscaling_describe_lifecycle_hooks/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param LifecycleHookNames The names of one or more lifecycle hooks. If you omit this property, all
@@ -1231,7 +1231,7 @@ autoscaling_describe_lifecycle_hooks <- function(AutoScalingGroupName, Lifecycle
 #' @description
 #' This API operation is superseded by [`describe_traffic_sources`][autoscaling_describe_traffic_sources], which can describe multiple traffic sources types. We recommend using [`detach_traffic_sources`][autoscaling_detach_traffic_sources] to simplify how you manage traffic sources. However, we continue to support [`describe_load_balancer_target_groups`][autoscaling_describe_load_balancer_target_groups]. You can use both the original [`describe_load_balancer_target_groups`][autoscaling_describe_load_balancer_target_groups] API operation and [`describe_traffic_sources`][autoscaling_describe_traffic_sources] on the same Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_load_balancer_target_groups.html](https://paws-r.github.io/docs/autoscaling/describe_load_balancer_target_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_load_balancer_target_groups/](https://www.paws-r-sdk.com/docs/autoscaling_describe_load_balancer_target_groups/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param NextToken The token for the next set of items to return. (You received this token
@@ -1265,7 +1265,7 @@ autoscaling_describe_load_balancer_target_groups <- function(AutoScalingGroupNam
 #' @description
 #' This API operation is superseded by [`describe_traffic_sources`][autoscaling_describe_traffic_sources], which can describe multiple traffic sources types. We recommend using [`describe_traffic_sources`][autoscaling_describe_traffic_sources] to simplify how you manage traffic sources. However, we continue to support [`describe_load_balancers`][autoscaling_describe_load_balancers]. You can use both the original [`describe_load_balancers`][autoscaling_describe_load_balancers] API operation and [`describe_traffic_sources`][autoscaling_describe_traffic_sources] on the same Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_load_balancers.html](https://paws-r.github.io/docs/autoscaling/describe_load_balancers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_load_balancers/](https://www.paws-r-sdk.com/docs/autoscaling_describe_load_balancers/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param NextToken The token for the next set of items to return. (You received this token
@@ -1298,7 +1298,7 @@ autoscaling_describe_load_balancers <- function(AutoScalingGroupName, NextToken 
 #' @description
 #' Describes the available CloudWatch metrics for Amazon EC2 Auto Scaling.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_metric_collection_types.html](https://paws-r.github.io/docs/autoscaling/describe_metric_collection_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_metric_collection_types/](https://www.paws-r-sdk.com/docs/autoscaling_describe_metric_collection_types/) for full documentation.
 #'
 
 #'
@@ -1328,7 +1328,7 @@ autoscaling_describe_metric_collection_types <- function() {
 #' @description
 #' Gets information about the Amazon SNS notifications that are configured for one or more Auto Scaling groups.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_notification_configurations.html](https://paws-r.github.io/docs/autoscaling/describe_notification_configurations.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_notification_configurations/](https://www.paws-r-sdk.com/docs/autoscaling_describe_notification_configurations/) for full documentation.
 #'
 #' @param AutoScalingGroupNames The name of the Auto Scaling group.
 #' @param NextToken The token for the next set of items to return. (You received this token
@@ -1344,7 +1344,7 @@ autoscaling_describe_notification_configurations <- function(AutoScalingGroupNam
     name = "DescribeNotificationConfigurations",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "NotificationConfigurations")
   )
   input <- .autoscaling$describe_notification_configurations_input(AutoScalingGroupNames = AutoScalingGroupNames, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_notification_configurations_output()
@@ -1361,7 +1361,7 @@ autoscaling_describe_notification_configurations <- function(AutoScalingGroupNam
 #' @description
 #' Gets information about the scaling policies in the account and Region.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_policies.html](https://paws-r.github.io/docs/autoscaling/describe_policies.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_policies/](https://www.paws-r-sdk.com/docs/autoscaling_describe_policies/) for full documentation.
 #'
 #' @param AutoScalingGroupName The name of the Auto Scaling group.
 #' @param PolicyNames The names of one or more policies. If you omit this property, all
@@ -1385,7 +1385,7 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
     name = "DescribePolicies",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "ScalingPolicies")
   )
   input <- .autoscaling$describe_policies_input(AutoScalingGroupName = AutoScalingGroupName, PolicyNames = PolicyNames, PolicyTypes = PolicyTypes, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_policies_output()
@@ -1402,7 +1402,7 @@ autoscaling_describe_policies <- function(AutoScalingGroupName = NULL, PolicyNam
 #' @description
 #' Gets information about the scaling activities in the account and Region.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_scaling_activities.html](https://paws-r.github.io/docs/autoscaling/describe_scaling_activities.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_scaling_activities/](https://www.paws-r-sdk.com/docs/autoscaling_describe_scaling_activities/) for full documentation.
 #'
 #' @param ActivityIds The activity IDs of the desired scaling activities. If you omit this
 #' property, all activities for the past six weeks are described. If
@@ -1426,7 +1426,7 @@ autoscaling_describe_scaling_activities <- function(ActivityIds = NULL, AutoScal
     name = "DescribeScalingActivities",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Activities")
   )
   input <- .autoscaling$describe_scaling_activities_input(ActivityIds = ActivityIds, AutoScalingGroupName = AutoScalingGroupName, IncludeDeletedGroups = IncludeDeletedGroups, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .autoscaling$describe_scaling_activities_output()
@@ -1444,7 +1444,7 @@ autoscaling_describe_scaling_activities <- function(ActivityIds = NULL, AutoScal
 #' @description
 #' Describes the scaling process types for use with the [`resume_processes`][autoscaling_resume_processes] and [`suspend_processes`][autoscaling_suspend_processes] APIs.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_scaling_process_types.html](https://paws-r.github.io/docs/autoscaling/describe_scaling_process_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_scaling_process_types/](https://www.paws-r-sdk.com/docs/autoscaling_describe_scaling_process_types/) for full documentation.
 #'
 
 #'
@@ -1474,7 +1474,7 @@ autoscaling_describe_scaling_process_types <- function() {
 #' @description
 #' Gets information about the scheduled actions that haven't run or that have not reached their end time.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_scheduled_actions.html](https://paws-r.github.io/docs/autoscaling/describe_scheduled_actions.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_scheduled_actions/](https://www.paws-r-sdk.com/docs/autoscaling_describe_scheduled_actions/) for full documentation.
 #'
 #' @param AutoScalingGroupName The name of the Auto Scaling group.
 #' @param ScheduledActionNames The names of one or more scheduled actions. If you omit this property,
@@ -1499,7 +1499,7 @@ autoscaling_describe_scheduled_actions <- function(AutoScalingGroupName = NULL, 
     name = "DescribeScheduledActions",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "ScheduledUpdateGroupActions")
   )
   input <- .autoscaling$describe_scheduled_actions_input(AutoScalingGroupName = AutoScalingGroupName, ScheduledActionNames = ScheduledActionNames, StartTime = StartTime, EndTime = EndTime, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_scheduled_actions_output()
@@ -1516,7 +1516,7 @@ autoscaling_describe_scheduled_actions <- function(AutoScalingGroupName = NULL, 
 #' @description
 #' Describes the specified tags.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_tags.html](https://paws-r.github.io/docs/autoscaling/describe_tags.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_tags/](https://www.paws-r-sdk.com/docs/autoscaling_describe_tags/) for full documentation.
 #'
 #' @param Filters One or more filters to scope the tags to return. The maximum number of
 #' filters per filter type (for example, `auto-scaling-group`) is 1000.
@@ -1533,7 +1533,7 @@ autoscaling_describe_tags <- function(Filters = NULL, NextToken = NULL, MaxRecor
     name = "DescribeTags",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Tags")
   )
   input <- .autoscaling$describe_tags_input(Filters = Filters, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_tags_output()
@@ -1550,7 +1550,7 @@ autoscaling_describe_tags <- function(Filters = NULL, NextToken = NULL, MaxRecor
 #' @description
 #' Describes the termination policies supported by Amazon EC2 Auto Scaling.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_termination_policy_types.html](https://paws-r.github.io/docs/autoscaling/describe_termination_policy_types.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_termination_policy_types/](https://www.paws-r-sdk.com/docs/autoscaling_describe_termination_policy_types/) for full documentation.
 #'
 
 #'
@@ -1580,7 +1580,7 @@ autoscaling_describe_termination_policy_types <- function() {
 #' @description
 #' Gets information about the traffic sources for the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_traffic_sources.html](https://paws-r.github.io/docs/autoscaling/describe_traffic_sources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_traffic_sources/](https://www.paws-r-sdk.com/docs/autoscaling_describe_traffic_sources/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param TrafficSourceType The traffic source type that you want to describe.
@@ -1606,7 +1606,7 @@ autoscaling_describe_traffic_sources <- function(AutoScalingGroupName, TrafficSo
     name = "DescribeTrafficSources",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken")
   )
   input <- .autoscaling$describe_traffic_sources_input(AutoScalingGroupName = AutoScalingGroupName, TrafficSourceType = TrafficSourceType, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_traffic_sources_output()
@@ -1623,7 +1623,7 @@ autoscaling_describe_traffic_sources <- function(AutoScalingGroupName, TrafficSo
 #' @description
 #' Gets information about a warm pool and its instances.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/describe_warm_pool.html](https://paws-r.github.io/docs/autoscaling/describe_warm_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_describe_warm_pool/](https://www.paws-r-sdk.com/docs/autoscaling_describe_warm_pool/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param MaxRecords The maximum number of instances to return with this call. The maximum
@@ -1639,7 +1639,7 @@ autoscaling_describe_warm_pool <- function(AutoScalingGroupName, MaxRecords = NU
     name = "DescribeWarmPool",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken", result_key = "Instances")
   )
   input <- .autoscaling$describe_warm_pool_input(AutoScalingGroupName = AutoScalingGroupName, MaxRecords = MaxRecords, NextToken = NextToken)
   output <- .autoscaling$describe_warm_pool_output()
@@ -1656,7 +1656,7 @@ autoscaling_describe_warm_pool <- function(AutoScalingGroupName, MaxRecords = NU
 #' @description
 #' Removes one or more instances from the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/detach_instances.html](https://paws-r.github.io/docs/autoscaling/detach_instances.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_detach_instances/](https://www.paws-r-sdk.com/docs/autoscaling_detach_instances/) for full documentation.
 #'
 #' @param InstanceIds The IDs of the instances. You can specify up to 20 instances.
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
@@ -1689,7 +1689,7 @@ autoscaling_detach_instances <- function(InstanceIds = NULL, AutoScalingGroupNam
 #' @description
 #' This API operation is superseded by [`detach_traffic_sources`][autoscaling_detach_traffic_sources], which can detach multiple traffic sources types. We recommend using [`detach_traffic_sources`][autoscaling_detach_traffic_sources] to simplify how you manage traffic sources. However, we continue to support [`detach_load_balancer_target_groups`][autoscaling_detach_load_balancer_target_groups]. You can use both the original [`detach_load_balancer_target_groups`][autoscaling_detach_load_balancer_target_groups] API operation and [`detach_traffic_sources`][autoscaling_detach_traffic_sources] on the same Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/detach_load_balancer_target_groups.html](https://paws-r.github.io/docs/autoscaling/detach_load_balancer_target_groups.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_detach_load_balancer_target_groups/](https://www.paws-r-sdk.com/docs/autoscaling_detach_load_balancer_target_groups/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param TargetGroupARNs &#91;required&#93; The Amazon Resource Names (ARN) of the target groups. You can specify up
@@ -1721,7 +1721,7 @@ autoscaling_detach_load_balancer_target_groups <- function(AutoScalingGroupName,
 #' @description
 #' This API operation is superseded by [`detach_traffic_sources`][autoscaling_detach_traffic_sources], which can detach multiple traffic sources types. We recommend using [`detach_traffic_sources`][autoscaling_detach_traffic_sources] to simplify how you manage traffic sources. However, we continue to support [`detach_load_balancers`][autoscaling_detach_load_balancers]. You can use both the original [`detach_load_balancers`][autoscaling_detach_load_balancers] API operation and [`detach_traffic_sources`][autoscaling_detach_traffic_sources] on the same Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/detach_load_balancers.html](https://paws-r.github.io/docs/autoscaling/detach_load_balancers.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_detach_load_balancers/](https://www.paws-r-sdk.com/docs/autoscaling_detach_load_balancers/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param LoadBalancerNames &#91;required&#93; The names of the load balancers. You can specify up to 10 load
@@ -1753,7 +1753,7 @@ autoscaling_detach_load_balancers <- function(AutoScalingGroupName, LoadBalancer
 #' @description
 #' Detaches one or more traffic sources from the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/detach_traffic_sources.html](https://paws-r.github.io/docs/autoscaling/detach_traffic_sources.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_detach_traffic_sources/](https://www.paws-r-sdk.com/docs/autoscaling_detach_traffic_sources/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param TrafficSources &#91;required&#93; The unique identifiers of one or more traffic sources. You can specify
@@ -1784,7 +1784,7 @@ autoscaling_detach_traffic_sources <- function(AutoScalingGroupName, TrafficSour
 #' @description
 #' Disables group metrics collection for the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/disable_metrics_collection.html](https://paws-r.github.io/docs/autoscaling/disable_metrics_collection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_disable_metrics_collection/](https://www.paws-r-sdk.com/docs/autoscaling_disable_metrics_collection/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param Metrics Identifies the metrics to disable.
@@ -1862,7 +1862,7 @@ autoscaling_disable_metrics_collection <- function(AutoScalingGroupName, Metrics
 #' @description
 #' Enables group metrics collection for the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/enable_metrics_collection.html](https://paws-r.github.io/docs/autoscaling/enable_metrics_collection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_enable_metrics_collection/](https://www.paws-r-sdk.com/docs/autoscaling_enable_metrics_collection/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param Metrics Identifies the metrics to enable.
@@ -1943,7 +1943,7 @@ autoscaling_enable_metrics_collection <- function(AutoScalingGroupName, Metrics 
 #' @description
 #' Moves the specified instances into the standby state.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/enter_standby.html](https://paws-r.github.io/docs/autoscaling/enter_standby.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_enter_standby/](https://www.paws-r-sdk.com/docs/autoscaling_enter_standby/) for full documentation.
 #'
 #' @param InstanceIds The IDs of the instances. You can specify up to 20 instances.
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
@@ -1975,7 +1975,7 @@ autoscaling_enter_standby <- function(InstanceIds = NULL, AutoScalingGroupName, 
 #' @description
 #' Executes the specified policy. This can be useful for testing the design of your scaling policy.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/execute_policy.html](https://paws-r.github.io/docs/autoscaling/execute_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_execute_policy/](https://www.paws-r-sdk.com/docs/autoscaling_execute_policy/) for full documentation.
 #'
 #' @param AutoScalingGroupName The name of the Auto Scaling group.
 #' @param PolicyName &#91;required&#93; The name or ARN of the policy.
@@ -2027,7 +2027,7 @@ autoscaling_execute_policy <- function(AutoScalingGroupName = NULL, PolicyName, 
 #' @description
 #' Moves the specified instances out of the standby state.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/exit_standby.html](https://paws-r.github.io/docs/autoscaling/exit_standby.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_exit_standby/](https://www.paws-r-sdk.com/docs/autoscaling_exit_standby/) for full documentation.
 #'
 #' @param InstanceIds The IDs of the instances. You can specify up to 20 instances.
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
@@ -2057,7 +2057,7 @@ autoscaling_exit_standby <- function(InstanceIds = NULL, AutoScalingGroupName) {
 #' @description
 #' Retrieves the forecast data for a predictive scaling policy.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/get_predictive_scaling_forecast.html](https://paws-r.github.io/docs/autoscaling/get_predictive_scaling_forecast.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_get_predictive_scaling_forecast/](https://www.paws-r-sdk.com/docs/autoscaling_get_predictive_scaling_forecast/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param PolicyName &#91;required&#93; The name of the policy.
@@ -2097,7 +2097,7 @@ autoscaling_get_predictive_scaling_forecast <- function(AutoScalingGroupName, Po
 #' @description
 #' Creates or updates a lifecycle hook for the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/put_lifecycle_hook.html](https://paws-r.github.io/docs/autoscaling/put_lifecycle_hook.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_put_lifecycle_hook/](https://www.paws-r-sdk.com/docs/autoscaling_put_lifecycle_hook/) for full documentation.
 #'
 #' @param LifecycleHookName &#91;required&#93; The name of the lifecycle hook.
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
@@ -2169,7 +2169,7 @@ autoscaling_put_lifecycle_hook <- function(LifecycleHookName, AutoScalingGroupNa
 #' @description
 #' Configures an Auto Scaling group to send notifications when specified events take place. Subscribers to the specified topic can have messages delivered to an endpoint such as a web server or an email address.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/put_notification_configuration.html](https://paws-r.github.io/docs/autoscaling/put_notification_configuration.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_put_notification_configuration/](https://www.paws-r-sdk.com/docs/autoscaling_put_notification_configuration/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param TopicARN &#91;required&#93; The Amazon Resource Name (ARN) of the Amazon SNS topic.
@@ -2203,7 +2203,7 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #' @description
 #' Creates or updates a scaling policy for an Auto Scaling group. Scaling policies are used to scale an Auto Scaling group based on configurable metrics. If no policies are defined, the dynamic scaling and predictive scaling features are not used.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/put_scaling_policy.html](https://paws-r.github.io/docs/autoscaling/put_scaling_policy.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_put_scaling_policy/](https://www.paws-r-sdk.com/docs/autoscaling_put_scaling_policy/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param PolicyName &#91;required&#93; The name of the policy.
@@ -2245,7 +2245,7 @@ autoscaling_put_notification_configuration <- function(AutoScalingGroupName, Top
 #' @param ScalingAdjustment The amount by which to scale, based on the specified adjustment type. A
 #' positive value adds to the current capacity while a negative number
 #' removes from the current capacity. For exact capacity, you must specify
-#' a positive value.
+#' a non-negative value.
 #' 
 #' Required if the policy type is `SimpleScaling`. (Not used with any other
 #' policy type.)
@@ -2347,7 +2347,7 @@ autoscaling_put_scaling_policy <- function(AutoScalingGroupName, PolicyName, Pol
 #' @description
 #' Creates or updates a scheduled scaling action for an Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/put_scheduled_update_group_action.html](https://paws-r.github.io/docs/autoscaling/put_scheduled_update_group_action.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_put_scheduled_update_group_action/](https://www.paws-r-sdk.com/docs/autoscaling_put_scheduled_update_group_action/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param ScheduledActionName &#91;required&#93; The name of this scaling action.
@@ -2413,7 +2413,7 @@ autoscaling_put_scheduled_update_group_action <- function(AutoScalingGroupName, 
 #' @description
 #' Creates or updates a warm pool for the specified Auto Scaling group. A warm pool is a pool of pre-initialized EC2 instances that sits alongside the Auto Scaling group. Whenever your application needs to scale out, the Auto Scaling group can draw on the warm pool to meet its new desired capacity. For more information and example configurations, see [Warm pools for Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-warm-pools.html) in the *Amazon EC2 Auto Scaling User Guide*.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/put_warm_pool.html](https://paws-r.github.io/docs/autoscaling/put_warm_pool.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_put_warm_pool/](https://www.paws-r-sdk.com/docs/autoscaling_put_warm_pool/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param MaxGroupPreparedCapacity Specifies the maximum number of instances that are allowed to be in the
@@ -2472,7 +2472,7 @@ autoscaling_put_warm_pool <- function(AutoScalingGroupName, MaxGroupPreparedCapa
 #' @description
 #' Records a heartbeat for the lifecycle action associated with the specified token or instance. This extends the timeout by the length of time defined using the [`put_lifecycle_hook`][autoscaling_put_lifecycle_hook] API call.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/record_lifecycle_action_heartbeat.html](https://paws-r.github.io/docs/autoscaling/record_lifecycle_action_heartbeat.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_record_lifecycle_action_heartbeat/](https://www.paws-r-sdk.com/docs/autoscaling_record_lifecycle_action_heartbeat/) for full documentation.
 #'
 #' @param LifecycleHookName &#91;required&#93; The name of the lifecycle hook.
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
@@ -2508,7 +2508,7 @@ autoscaling_record_lifecycle_action_heartbeat <- function(LifecycleHookName, Aut
 #' @description
 #' Resumes the specified suspended auto scaling processes, or all suspended process, for the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/resume_processes.html](https://paws-r.github.io/docs/autoscaling/resume_processes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_resume_processes/](https://www.paws-r-sdk.com/docs/autoscaling_resume_processes/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param ScalingProcesses One or more of the following processes:
@@ -2559,14 +2559,14 @@ autoscaling_resume_processes <- function(AutoScalingGroupName, ScalingProcesses 
 #' @description
 #' Cancels an instance refresh that is in progress and rolls back any changes that it made. Amazon EC2 Auto Scaling replaces any instances that were replaced during the instance refresh. This restores your Auto Scaling group to the configuration that it was using before the start of the instance refresh.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/rollback_instance_refresh.html](https://paws-r.github.io/docs/autoscaling/rollback_instance_refresh.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_rollback_instance_refresh/](https://www.paws-r-sdk.com/docs/autoscaling_rollback_instance_refresh/) for full documentation.
 #'
-#' @param AutoScalingGroupName The name of the Auto Scaling group.
+#' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #'
 #' @keywords internal
 #'
 #' @rdname autoscaling_rollback_instance_refresh
-autoscaling_rollback_instance_refresh <- function(AutoScalingGroupName = NULL) {
+autoscaling_rollback_instance_refresh <- function(AutoScalingGroupName) {
   op <- new_operation(
     name = "RollbackInstanceRefresh",
     http_method = "POST",
@@ -2588,7 +2588,7 @@ autoscaling_rollback_instance_refresh <- function(AutoScalingGroupName = NULL) {
 #' @description
 #' Sets the size of the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/set_desired_capacity.html](https://paws-r.github.io/docs/autoscaling/set_desired_capacity.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_set_desired_capacity/](https://www.paws-r-sdk.com/docs/autoscaling_set_desired_capacity/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param DesiredCapacity &#91;required&#93; The desired capacity is the initial capacity of the Auto Scaling group
@@ -2623,7 +2623,7 @@ autoscaling_set_desired_capacity <- function(AutoScalingGroupName, DesiredCapaci
 #' @description
 #' Sets the health status of the specified instance.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/set_instance_health.html](https://paws-r.github.io/docs/autoscaling/set_instance_health.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_set_instance_health/](https://www.paws-r-sdk.com/docs/autoscaling_set_instance_health/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The ID of the instance.
 #' @param HealthStatus &#91;required&#93; The health status of the instance. Set to `Healthy` to have the instance
@@ -2664,7 +2664,7 @@ autoscaling_set_instance_health <- function(InstanceId, HealthStatus, ShouldResp
 #' @description
 #' Updates the instance protection settings of the specified instances. This operation cannot be called on instances in a warm pool.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/set_instance_protection.html](https://paws-r.github.io/docs/autoscaling/set_instance_protection.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_set_instance_protection/](https://www.paws-r-sdk.com/docs/autoscaling_set_instance_protection/) for full documentation.
 #'
 #' @param InstanceIds &#91;required&#93; One or more instance IDs. You can specify up to 50 instances.
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
@@ -2696,7 +2696,7 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #' @description
 #' Starts an instance refresh. During an instance refresh, Amazon EC2 Auto Scaling performs a rolling update of instances in an Auto Scaling group. Instances are terminated first and then replaced, which temporarily reduces the capacity available within your Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/start_instance_refresh.html](https://paws-r.github.io/docs/autoscaling/start_instance_refresh.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_start_instance_refresh/](https://www.paws-r-sdk.com/docs/autoscaling_start_instance_refresh/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param Strategy The strategy to use for the instance refresh. The only valid value is
@@ -2754,7 +2754,7 @@ autoscaling_start_instance_refresh <- function(AutoScalingGroupName, Strategy = 
 #' @description
 #' Suspends the specified auto scaling processes, or all processes, for the specified Auto Scaling group.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/suspend_processes.html](https://paws-r.github.io/docs/autoscaling/suspend_processes.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_suspend_processes/](https://www.paws-r-sdk.com/docs/autoscaling_suspend_processes/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param ScalingProcesses One or more of the following processes:
@@ -2805,7 +2805,7 @@ autoscaling_suspend_processes <- function(AutoScalingGroupName, ScalingProcesses
 #' @description
 #' Terminates the specified instance and optionally adjusts the desired group size. This operation cannot be called on instances in a warm pool.
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/terminate_instance_in_auto_scaling_group.html](https://paws-r.github.io/docs/autoscaling/terminate_instance_in_auto_scaling_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_terminate_instance_in_auto_scaling_group/](https://www.paws-r-sdk.com/docs/autoscaling_terminate_instance_in_auto_scaling_group/) for full documentation.
 #'
 #' @param InstanceId &#91;required&#93; The ID of the instance.
 #' @param ShouldDecrementDesiredCapacity &#91;required&#93; Indicates whether terminating the instance also decrements the size of
@@ -2837,7 +2837,7 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' @description
 #' **We strongly recommend that all Auto Scaling groups use launch templates to ensure full functionality for Amazon EC2 Auto Scaling and Amazon EC2.**
 #'
-#' See [https://paws-r.github.io/docs/autoscaling/update_auto_scaling_group.html](https://paws-r.github.io/docs/autoscaling/update_auto_scaling_group.html) for full documentation.
+#' See [https://www.paws-r-sdk.com/docs/autoscaling_update_auto_scaling_group/](https://www.paws-r-sdk.com/docs/autoscaling_update_auto_scaling_group/) for full documentation.
 #'
 #' @param AutoScalingGroupName &#91;required&#93; The name of the Auto Scaling group.
 #' @param LaunchConfigurationName The name of the launch configuration. If you specify

@@ -85,8 +85,8 @@ parameter.}
 \item{TagSpecifications}{The tags to assign to the VPC.}
 }
 \description{
-Creates a VPC with the specified CIDR blocks. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/configure-your-vpc.html#vpc-cidr-blocks}{VPC CIDR blocks} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Creates a VPC with the specified CIDR blocks. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/vpc-ip-addressing.html}{IP addressing for your VPCs and subnets} in the \emph{Amazon VPC User Guide}.
 
-See \url{https://paws-r.github.io/docs/ec2/create_vpc.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/ec2_create_vpc/} for full documentation.
 }
 \keyword{internal}

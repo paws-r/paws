@@ -10,8 +10,8 @@ athena_cancel_capacity_reservation(Name)
 \item{Name}{[required] The name of the capacity reservation to cancel.}
 }
 \description{
-Cancels the capacity reservation with the specified name.
+Cancels the capacity reservation with the specified name. Cancelled reservations remain in your account and will be deleted 45 days after cancellation. During the 45 days, you cannot re-purpose or reuse a reservation that has been cancelled, but you can refer to its tags and view it for historical reference.
 
-See \url{https://paws-r.github.io/docs/athena/cancel_capacity_reservation.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/athena_cancel_capacity_reservation/} for full documentation.
 }
 \keyword{internal}

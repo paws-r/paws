@@ -12,6 +12,6 @@ licensemanager_reject_grant(GrantArn)
 \description{
 Rejects the specified grant.
 
-See \url{https://paws-r.github.io/docs/licensemanager/reject_grant.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/licensemanager_reject_grant/} for full documentation.
 }
 \keyword{internal}

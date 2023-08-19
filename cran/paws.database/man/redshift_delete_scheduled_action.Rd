@@ -12,6 +12,6 @@ redshift_delete_scheduled_action(ScheduledActionName)
 \description{
 Deletes a scheduled action.
 
-See \url{https://paws-r.github.io/docs/redshift/delete_scheduled_action.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/redshift_delete_scheduled_action/} for full documentation.
 }
 \keyword{internal}

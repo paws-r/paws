@@ -18,6 +18,6 @@ paginated response.}
 \description{
 Retrieves information about all the applications that are associated with your Amazon Pinpoint account.
 
-See \url{https://paws-r.github.io/docs/pinpoint/get_apps.html} for full documentation.
+See \url{https://www.paws-r-sdk.com/docs/pinpoint_get_apps/} for full documentation.
 }
 \keyword{internal}
