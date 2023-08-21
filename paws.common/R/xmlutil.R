@@ -174,7 +174,8 @@ xml_unmarshal <- function(raw_data, interface = NULL, result_name = NULL) {
     if (inherits(data, "xml_document")) {
       data <- xml2::xml_contents(data)
     }
-    result <- list(result_name = xml_parse(data, interface[[result_name]]))
+    result <- list(xml_parse(data, interface[[result_name]]))
+    names(result) <- result_name
     return(result)
   }
 
