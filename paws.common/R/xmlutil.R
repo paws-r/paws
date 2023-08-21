@@ -174,8 +174,7 @@ xml_unmarshal <- function(raw_data, interface = NULL, result_name = NULL) {
     if (inherits(data, "xml_document")) {
       data <- xml2::xml_contents(data)
     }
-    result <- list()
-    result[[result_name]] <- xml_parse(data, interface[[result_name]])
+    result <- list(result_name = xml_parse(data, interface[[result_name]]))
     return(result)
   }
 
@@ -356,7 +355,7 @@ xml_parse_list <- function(xml_elts, interface_i, tags_i, tag_type = NULL) {
 }
 
 xml_parse_scalar <- function(xml_elts, interface_i, tags_i, tag_type = NULL) {
-  results <- vapply(xml_elts, xml2::xml_text, FUN.VALUE = character(1))
+  results <- xml2::xml_text(xml_elts)
 
   convert <- switch(tag_type,
     blob = base64_to_raw,
