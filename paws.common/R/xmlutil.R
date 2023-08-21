@@ -482,7 +482,11 @@ transpose  <- function(x) {
 
   for (row in seq.int(1, n_row)) {
     for (col in col_seq) {
-      vals[col] <- list(rep_len(x[[col]], n_row)[[row]])
+      vals[col] <- (
+        if (length(x[[col]]) < n_row)
+          list(rep_len(x[[col]], n_row)[[row]])
+        else list(x[[col]][[row]])
+      )
     }
     out[[row]] <- vals
   }
