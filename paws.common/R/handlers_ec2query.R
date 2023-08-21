@@ -24,7 +24,7 @@ ec2query_unmarshal <- function(request) {
   body <- xml2::read_xml(request$http_response$body, encoding = "utf8")
   interface <- request$data
   data <- xml2::xml_contents(body)
-  request$data <- xml_parse(data, interface)
+  request$data <- xml_parse(data, interface, xml2::xml_name(data))
   return(request)
 }
 
