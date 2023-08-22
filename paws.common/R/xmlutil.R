@@ -1,6 +1,6 @@
 # Decode raw bytes XML into an R list object.
 decode_xml <- function(raw) {
-  obj <- xml_to_list(raw_to_utf8(raw))
+  obj <- xml_to_list(raw)
   return(obj)
 }
 
@@ -9,7 +9,7 @@ xml_to_list <- function(value) {
   if (is_empty(value)) {
     return(NULL)
   }
-  result <- xml2::as_list(xml2::read_xml(value))
+  result <- xml2::as_list(xml2::read_xml(value, encoding = "utf8"))
   return(result)
 }
 
@@ -115,7 +115,7 @@ xml_build_structure <- function(params) {
     }
   }
   # Check cache list for default elements
-  if (all(sapply(parsed_result, is_empty_xml))) {
+  if (all(vapply(parsed_result, is_empty_xml, FUN.VALUE = logical(1)))) {
     return(NULL)
   }
   return(result)
@@ -169,23 +169,37 @@ xml_build_scalar <- function(params) {
 #-------------------------------------------------------------------------------
 
 # Unmarshal `data` provided as a list into the shape in `interface`.
-xml_unmarshal <- function(data, interface, result_name = NULL) {
-  if (is.null(data)) {
+xml_unmarshal <- function(raw_data, interface = NULL, result_name = NULL) {
+  if (is_empty(raw_data)) {
     return(interface)
   }
 
-  # help to parse xml:
+  data <- xml2::read_xml(raw_data, encoding = "utf8")
+  xml_nms <- xml2::xml_name(data)
+
+  # drop a level if result_name is known in data
   # https://github.com/paws-r/paws/issues/501
-  if (!is.null(result_name) && result_name %in% names(data)) {
-    return(xml_parse(data, interface))
+  if (!is.null(result_name) && result_name %in% xml_nms) {
+    if (inherits(data, "xml_document")) {
+      data <- xml2::xml_contents(data)
+      xml_nms <- xml2::xml_name(data)
+    }
+    result <- list(
+      xml_parse(data, interface[[result_name]], xml_nms)
+    )
+    names(result) <- result_name
+    return(result)
   }
 
-  root <- data[[1]]
-  if (!is.null(result_name) && result_name %in% names(root)) {
-    root <- root[[result_name]]
+  root <- xml2::xml_contents(data)
+  xml_nms <- xml2::xml_name(root)
+
+  if (!is.null(result_name) && result_name %in% xml_nms) {
+    root <- xml2::xml_contents(root)
+    xml_nms <- xml2::xml_name(root)
   }
-  result <- xml_parse(root, interface)
-  return(result)
+
+  return(xml_parse(root, interface, xml_nms))
 }
 
 # Unmarshal errors in `data` provided as a list.
@@ -209,103 +223,155 @@ xml_unmarshal_error <- function(data, status_code) {
 #   `list(reservationSet = "foo", nextToken = "bar")`
 # to output shape
 #   `list(Reservations = foo, NextToken = bar)`.
-xml_parse <- function(node, interface) {
-  t <- type(interface)
+xml_parse <- function(data, interface, data_nms) {
+  nms <- names(interface)
+  if (length(interface) == 0) {
+    interface <- list(interface)
+  }
+
+  result <- vector("list", length = length(interface))
+  for (i in seq_along(interface)) {
+    interface_i <- interface[[i]]
+    tags_i <- attr(interface_i, "tags")
+    flattened <- tags_i[["flattened"]]
+
+    if (isTRUE(flattened) && !is.null(tags_i[["locationNameList"]])) {
+      key <- tags_i[["locationNameList"]]
+    } else if (!is.null(tags_i[["locationName"]])) {
+      key <- tags_i[["locationName"]]
+    } else {
+      key <- nms[[i]]
+    }
+
+    if (is.null(key)) {
+      found <- TRUE
+    } else {
+      # Check if element exists in response
+      found <- (key == data_nms)
+    }
+    result[[i]] <- (
+      if (any(found)) {
+        xml_elts <- data[found]
+        parse_xml_elt(xml_elts, interface_i, tags_i)
+      } else {
+        default_parse_xml(interface_i, tags_i)
+      })
+  }
+  names(result) <- nms
+  return(result)
+}
+
+
+parse_xml_elt <- function(xml_elts, interface_i, tags_i) {
+  tag_type <- tags_i[["type"]]
+  t <- type(interface_i)
   parse_fn <- switch(t,
     structure = xml_parse_structure,
     map = xml_parse_map,
     list = xml_parse_list,
     xml_parse_scalar
   )
-  result <- parse_fn(node, interface)
+
+  result <- parse_fn(xml_elts, interface_i, tags_i, tag_type)
+
   return(result)
 }
 
-xml_parse_structure <- function(node, interface) {
-  payload <- tag_get(node, "payload")
-  if (length(payload) > 0 && payload != "") {
-    result <- xml_parse_structure(payload, interface)
-    return(result)
+xml_parse_structure <- function(xml_elts, interface_i, tags_i, tag_type = NULL) {
+  xml_elt <- xml2::xml_contents(xml_elts)
+  result <- xml_parse(xml_elt, interface_i, xml2::xml_name(xml_elt))
+
+  flattened <- tags_i[["flattened"]]
+
+  # the `is.list()` check is necessary because e.g. `CheckSumAlgorithm` has
+  # a list interface though it isn't a list?!
+  if (isTRUE(flattened) && is.list(result)) {
+    result <- transpose(result)
   }
 
-  result <- interface
-  for (name in names(interface)) {
-    field <- interface[[name]]
-
-    # Skip fields that don't come from the response body.
-    if (tag_get(field, "location") != "") {
-      next
-    }
-
-    node_name <- name
-    flattened <- tag_get(field, "flattened") != ""
-    if (flattened && tag_get(field, "locationNameList") != "") {
-      node_name <- tag_get(field, "locationNameList")
-    } else if (tag_get(field, "locationName") != "") {
-      node_name <- tag_get(field, "locationName")
-    }
-
-    elem <- node[[node_name]]
-    if (flattened) {
-      elem <- node[names(node) == node_name]
-    }
-
-    parsed <- xml_parse(elem, field)
-
-    result[[name]] <- parsed
-  }
+  attr(result, "tags") <- tags_i
   return(result)
 }
 
-xml_parse_list <- function(node, interface) {
-  if (length(node) == 0) {
+xml_parse_map <- function(xml_elts, interface_i, tags_i, tag_type = NULL) {
+  if (length(xml_elts) == 0) {
     return(list())
   }
-  names(node) <- NULL
-  result <- lapply(node, function(x) xml_parse(x, interface[[1]]))
-  if (type(interface[[1]]) == "scalar") {
+  flattened <- tags_i[["flattened"]]
+
+  key_name <- tags_i[["locationNameKey"]] %||% "key"
+  value_name <- tags_i[["locationNameValue"]] %||% "value"
+
+  result <- list()
+  if (isTRUE(flattened)) {
+    for (i in seq_along(xml_elts)) {
+      result[[i]] <- xml_parse_map_entry(
+        xml_elts[[i]], interface_i, key_name, value_name, flattened
+      )
+    }
+  } else {
+    contents <- xml2::xml_contents(xml_elts)
+    for (i in seq_along(contents)) {
+      result[[i]] <- xml_parse_map_entry(
+        contents[[i]], interface_i, key_name, value_name, flattened
+      )
+    }
+  }
+  result <- unlist(result, recursive = FALSE)
+
+  attr(result, "tags") <- tags_i
+
+  return(result)
+}
+
+xml_parse_map_entry <- function(xml_elts_i, interface_i, key_name, value_name, flattened) {
+  contents <- xml2::xml_contents(xml_elts_i)
+  contents_nms <- xml2::xml_name(contents)
+
+  key <- xml2::xml_text(contents[(key_name == contents_nms)])
+  value <- contents[(value_name == contents_nms)]
+  xml_value <- xml2::xml_contents(value)
+  result <- xml_parse(xml_value, interface_i[[1]], xml2::xml_name(xml_value))
+  if (!isTRUE(flattened)) {
+    result <- list(result)
+  }
+  names(result) <- key
+  return(result)
+}
+
+xml_parse_list <- function(xml_elts, interface_i, tags_i, tag_type = NULL) {
+  contents <- xml2::xml_contents(xml_elts)
+  xml_nms <- xml2::xml_name(contents)
+  nms <- names(interface_i[[1]])
+
+  if (is.null(nms) || any(xml_nms %in% nms)) {
+    result <- xml_parse(contents, interface_i[[1]], xml_nms)
+  } else {
+    result <- lapply(contents, function(x) {
+      xml_elt <- xml2::xml_contents(x)
+      xml_parse(xml_elt, interface_i[[1]], xml2::xml_name(xml_elt))
+    })
+  }
+
+  flattened <- tags_i[["flattened"]]
+
+  if (type(interface_i[[1]]) == "scalar") {
     result <- unlist(result)
   }
+
+  # the `is.list()` check is necessary because e.g. `CheckSumAlgorithm` has
+  # a list interface though it isn't a list?!
+  if (isTRUE(flattened)) {
+    result <- transpose(result)
+  }
+
   return(result)
 }
 
-xml_parse_map <- function(node, interface) {
-  if (length(node) == 0) {
-    return(list())
-  }
-  result <- list()
-  multiple_entries <- length(unique(names(node))) == 1
-  if (multiple_entries) {
-    children <- node
-  } else {
-    children <- list(node) # wrap singular map entry
-  }
-  for (child in children) {
-    parsed <- xml_parse_map_entry(child, interface)
-    result <- c(result, parsed)
-  }
-  return(result)
-}
+xml_parse_scalar <- function(xml_elts, interface_i, tags_i, tag_type = NULL) {
+  results <- xml2::xml_text(xml_elts)
 
-xml_parse_map_entry <- function(node, interface) {
-  key_name <- tag_get(interface, "locationNameKey")
-  value_name <- tag_get(interface, "locationNameValue")
-  if (key_name == "") key_name <- "key"
-  if (value_name == "") value_name <- "value"
-  key <- unlist(node[[key_name]])
-  value <- node[[value_name]]
-  result <- list()
-  result[[key]] <- xml_parse(value, interface[[1]])
-  return(result)
-}
-
-xml_parse_scalar <- function(node, interface) {
-  # Use `unlist` to avoid embedded lists in scalar nodes; `xml2::as_list`
-  # converts <foo>abc</foo> to `list(foo = list("abc"))`, when we want
-  # `list(foo = "abc")`.
-  data <- unlist(node)
-  t <- tag_get(interface, "type")
-  convert <- switch(t,
+  convert <- switch(tag_type,
     blob = base64_to_raw,
     boolean = as.logical,
     double = as.numeric,
@@ -313,8 +379,125 @@ xml_parse_scalar <- function(node, interface) {
     integer = as.numeric,
     long = as.numeric,
     timestamp = function(x) as_timestamp(x, format = "iso8601"),
-    as.character
+    function(x) {
+      # if (identical(x, "")) return(character(0))
+      # return(x)
+      if (identical(x, "")) x <- NULL
+      as.character(x)
+    }
   )
-  result <- convert(data)
+  result <- convert(results)
+  names(result) <- names(interface_i)
   return(result)
+}
+
+default_parse_xml <- function(interface_i, tags_i, default = NULL) {
+  tag_type <- tags_i[["type"]]
+
+  t <- type(interface_i)
+  parse_fn <- switch(t,
+    structure = default_parse_structure,
+    map = default_parse_map,
+    list = default_parse_list,
+    default_parse_scalar
+  )
+  return(parse_fn(interface_i, tag_type, default))
+}
+
+default_parse_structure <- function(interface_i, tag_type = NULL, default = NULL) {
+  len_interface_i <- length(interface_i)
+  if (len_interface_i == 0) {
+    return(list(list()))
+  }
+  nms <- names(interface_i)
+  result <- vector("list", len_interface_i)
+  for (i in seq_along(interface_i)) {
+    tags_i <- attr(interface_i[[i]], "tags")
+    result[[i]] <- default_parse_xml(interface_i[[i]], tags_i, default)
+  }
+  names(result) <- nms
+  return(result)
+}
+
+default_parse_map <- function(interface_i, tag_type = NULL, default = NULL) {
+  len_interface_i <- length(interface_i)
+  if (len_interface_i == 0) {
+    return(list(list()))
+  }
+  nms <- names(interface_i)
+  result <- vector("list", len_interface_i)
+  for (i in seq_along(interface_i)) {
+    tags_i <- attr(interface_i[[i]], "tags")
+    result[[i]] <- default_parse_xml(interface_i[[i]], tags_i, list())
+  }
+  names(result) <- nms
+  return(list(result))
+}
+
+default_parse_list <- function(interface_i, tag_type = NULL, default = NULL) {
+  interface_i <- interface_i[[1]]
+  len_interface_i <- length(interface_i)
+  if (len_interface_i == 0) {
+    return(list(list()))
+  }
+  nms <- names(interface_i)
+  result <- vector("list", len_interface_i)
+  for (i in seq_along(interface_i)) {
+    tags_i <- attr(interface_i[[i]], "tags")
+    result[[i]] <- default_parse_xml(interface_i[[i]], tags_i, list())
+  }
+  names(result) <- nms
+  return(result)
+}
+
+xml_scalar_default <- function(interface, default) {
+  if (length(interface) > 0) interface else default
+}
+
+default_parse_scalar <- function(interface_i, tag_type = NULL, default = NULL) {
+  default_value <- default %||% character()
+  result <- switch(tag_type,
+    integer = xml_scalar_default(interface_i, numeric()),
+    double = xml_scalar_default(interface_i, numeric()),
+    long = xml_scalar_default(interface_i, numeric()),
+    float = xml_scalar_default(interface_i, numeric()),
+    timestamp = xml_scalar_default(interface_i, as.POSIXct(NULL)),
+    boolean = xml_scalar_default(interface_i, logical()),
+    xml_scalar_default(interface_i, default_value)
+  )
+  return(result)
+}
+
+transpose <- function(x) {
+  if (!is.list(x)) {
+    return(x)
+  }
+  n_col <- length(x)
+  if (n_col == 0) {
+    return(list())
+  }
+  n_row <- length(x[[1]])
+  if (n_row == 0) {
+    return(list())
+  }
+  out <- vector("list", length = n_row)
+  col_seq <- seq.int(n_col, 1)
+
+  vals <- vector("list", length = n_col)
+  names(vals) <- names(x)
+
+  for (row in seq.int(1, n_row)) {
+    for (col in col_seq) {
+      vals[col] <- (
+        if (length(x[[col]]) < n_row) {
+          list(rep_len(x[[col]], n_row)[[row]])
+        } else {
+          list(x[[col]][[row]])
+        }
+      )
+    }
+    out[[row]] <- vals
+  }
+  names(out) <- names(x[[1]])
+  return(out)
 }

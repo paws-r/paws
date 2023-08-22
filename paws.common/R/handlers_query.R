@@ -24,7 +24,7 @@ query_build <- function(request) {
 
 # Unmarshal the response from a Query protocol response.
 query_unmarshal <- function(request) {
-  data <- decode_xml(request$http_response$body)
+  data <- request$http_response$body
   interface <- request$data
   result_name <- paste0(request$operation$name, "Result")
   request$data <- xml_unmarshal(data, interface, result_name)
