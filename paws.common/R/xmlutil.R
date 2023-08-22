@@ -347,9 +347,9 @@ xml_parse_list <- function(xml_elts, interface_i, tags_i, tag_type = NULL) {
   if (is.null(nms) || any(xml_nms %in% nms)) {
     result <- xml_parse(contents, interface_i[[1]], xml_nms)
   } else {
-    xml_nms <- xml2::xml_name(xml2::xml_children(contents[[1]]))
     result <- lapply(contents, function(x) {
-      xml_parse(xml2::xml_contents(x), interface_i[[1]], xml_nms)
+      xml_elt <- xml2::xml_contents(x)
+      xml_parse(xml_elt, interface_i[[1]], xml2::xml_name(xml_elt))
     })
   }
 
