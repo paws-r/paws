@@ -6,7 +6,9 @@ decode_xml <- function(raw) {
 
 # Convert an XML string to an R list.
 xml_to_list <- function(value) {
-  if (is_empty(value)) return(NULL)
+  if (is_empty(value)) {
+    return(NULL)
+  }
   result <- xml2::as_list(xml2::read_xml(value, encoding = "utf8"))
   return(result)
 }
@@ -24,7 +26,9 @@ list_to_xml <- function(value) {
 add_xmlns <- function(xml_list, xmlns = "") {
   result <- xml_list
   attr(result, "xmlns") <- xmlns
-  if (!is.list(result)) return(result)
+  if (!is.list(result)) {
+    return(result)
+  }
   for (i in seq_along(result)) {
     result[[i]] <- add_xmlns(result[[i]], xmlns)
   }
@@ -67,14 +71,14 @@ xml_build_body <- function(request) {
 }
 
 xml_build <- function(params) {
-
   location <- tag_get(params, "location")
-  if (location != "") return(NULL)
+  if (location != "") {
+    return(NULL)
+  }
 
   t <- type(params)
 
-  build_fn <- switch(
-    t,
+  build_fn <- switch(t,
     structure = xml_build_structure,
     list = xml_build_list,
     xml_build_scalar
@@ -111,12 +115,16 @@ xml_build_structure <- function(params) {
     }
   }
   # Check cache list for default elements
-  if (all(sapply(parsed_result, is_empty_xml))) return(NULL)
+  if (all(vapply(parsed_result, is_empty_xml, FUN.VALUE = logical(1)))) {
+    return(NULL)
+  }
   return(result)
 }
 
 xml_build_list <- function(params) {
-  if (length(params) == 0) return(list())
+  if (length(params) == 0) {
+    return(list())
+  }
   children <- lapply(params, function(x) xml_build(x))
 
   location_name <- tag_get(params, "locationName")
@@ -140,10 +148,11 @@ xml_build_scalar <- function(params) {
   # converts <foo>abc</foo> to `list(foo = list("abc"))`, when we want
   # `list(foo = "abc")`.
   data <- unlist(params)
-  if (length(data) == 0) return(NULL)
+  if (length(data) == 0) {
+    return(NULL)
+  }
   t <- tag_get(params, "type")
-  convert <- switch(
-    t,
+  convert <- switch(t,
     blob = raw_to_base64,
     boolean = convert_boolean,
     double = as.numeric,
@@ -246,8 +255,7 @@ xml_parse <- function(data, interface, data_nms) {
         parse_xml_elt(xml_elts, interface_i, tags_i)
       } else {
         default_parse_xml(interface_i, tags_i)
-      }
-    )
+      })
   }
   names(result) <- nms
   return(result)
@@ -285,7 +293,7 @@ xml_parse_structure <- function(xml_elts, interface_i, tags_i, tag_type = NULL) 
   return(result)
 }
 
-xml_parse_map <- function(xml_elts, interface_i,  tags_i, tag_type = NULL) {
+xml_parse_map <- function(xml_elts, interface_i, tags_i, tag_type = NULL) {
   if (length(xml_elts) == 0) {
     return(list())
   }
@@ -298,14 +306,14 @@ xml_parse_map <- function(xml_elts, interface_i,  tags_i, tag_type = NULL) {
   if (isTRUE(flattened)) {
     for (i in seq_along(xml_elts)) {
       result[[i]] <- xml_parse_map_entry(
-        xml_elts[[i]], interface_i,  key_name, value_name, flattened
+        xml_elts[[i]], interface_i, key_name, value_name, flattened
       )
     }
   } else {
     contents <- xml2::xml_contents(xml_elts)
-    for (i in  seq_along(contents)) {
+    for (i in seq_along(contents)) {
       result[[i]] <- xml_parse_map_entry(
-        contents[[i]], interface_i,  key_name, value_name, flattened
+        contents[[i]], interface_i, key_name, value_name, flattened
       )
     }
   }
@@ -332,7 +340,6 @@ xml_parse_map_entry <- function(xml_elts_i, interface_i, key_name, value_name, f
 }
 
 xml_parse_list <- function(xml_elts, interface_i, tags_i, tag_type = NULL) {
-
   contents <- xml2::xml_contents(xml_elts)
   xml_nms <- xml2::xml_name(contents)
   nms <- names(interface_i[[1]])
@@ -340,7 +347,6 @@ xml_parse_list <- function(xml_elts, interface_i, tags_i, tag_type = NULL) {
   if (is.null(nms) || any(xml_nms %in% nms)) {
     result <- xml_parse(contents, interface_i[[1]], xml_nms)
   } else {
-    # xml_nms <- xml2::xml_name(xml2::xml_contents(contents[[1]]))
     result <- lapply(contents, function(x) {
       xml_elt <- xml2::xml_contents(x)
       xml_parse(xml_elt, interface_i[[1]], xml2::xml_name(xml_elt))
@@ -462,7 +468,7 @@ default_parse_scalar <- function(interface_i, tag_type = NULL, default = NULL) {
   return(result)
 }
 
-transpose  <- function(x) {
+transpose <- function(x) {
   if (!is.list(x)) {
     return(x)
   }
@@ -483,9 +489,11 @@ transpose  <- function(x) {
   for (row in seq.int(1, n_row)) {
     for (col in col_seq) {
       vals[col] <- (
-        if (length(x[[col]]) < n_row)
+        if (length(x[[col]]) < n_row) {
           list(rep_len(x[[col]], n_row)[[row]])
-        else list(x[[col]][[row]])
+        } else {
+          list(x[[col]][[row]])
+        }
       )
     }
     out[[row]] <- vals
