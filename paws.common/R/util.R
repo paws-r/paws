@@ -36,7 +36,7 @@ is_empty.raw <- function(x) {
 # Check if a list of values is empty. If the list is recursive, search the list.
 #' @export
 is_empty.list <- function(x) {
-  return(all(sapply(x, is_empty)))
+  return(all(vapply(x, is_empty, FUN.VALUE = logical(1))))
 }
 
 #' @export
@@ -83,7 +83,7 @@ is_empty_xml.list <- function(x) {
   if (length(x) == 0) {
     return(FALSE)
   }
-  return(all(sapply(x, is_empty_xml)))
+  return(all(vapply(x, is_empty_xml, FUN.VALUE = logical(1))))
 }
 
 #' @export
