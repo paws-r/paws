@@ -1,7 +1,7 @@
-# paws.common 0.5.9
+# paws.common 0.6.0
 * use known interface when parsing xml (@619) improving performance by 3-6x. thanks to @mgirlich for raising, implementing initial method and testing.
 * add expiration parameter to creds
-* add signature_version to config
+* add signature_version to config (#645)
 * add the ability to paginate paws methods (#30)
 * overwrite file destination when writing to disk. This mimics python's boto3 sdk behaviour.
 
