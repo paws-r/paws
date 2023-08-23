@@ -38,7 +38,7 @@ character: path for logs to populate, default output logs to console.
 }
 \examples{
 # log to a file
-temp_file = tempfile()
+temp_file <- tempfile()
 paws_config_log(file = temp_file)
 unlink(temp_file)
 
