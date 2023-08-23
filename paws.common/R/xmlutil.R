@@ -262,7 +262,6 @@ xml_parse <- function(data, interface, data_nms) {
   return(result)
 }
 
-
 parse_xml_elt <- function(xml_elts, interface_i, tags_i) {
   tag_type <- tags_i[["type"]]
   t <- type(interface_i)
@@ -417,7 +416,7 @@ default_parse_structure <- function(interface_i, tag_type = NULL, default = NULL
     result[[i]] <- default_parse_xml(interface_i[[i]], tags_i, default)
   }
   names(result) <- nms
-  return(result)
+  return(list(result))
 }
 
 default_parse_map <- function(interface_i, tag_type = NULL, default = NULL) {
@@ -448,7 +447,7 @@ default_parse_list <- function(interface_i, tag_type = NULL, default = NULL) {
     result[[i]] <- default_parse_xml(interface_i[[i]], tags_i, list())
   }
   names(result) <- nms
-  return(result)
+  return(list(result))
 }
 
 xml_scalar_default <- function(interface, default) {
@@ -491,7 +490,7 @@ transpose <- function(x) {
     for (col in col_seq) {
       vals[col] <- (
         if (length(x[[col]]) < n_row) {
-          list(rep_len(list(x[[col]]), n_row)[[row]])
+          list(rep_len(x[[col]], n_row)[[row]])
         } else {
           list(x[[col]][[row]])
         }
