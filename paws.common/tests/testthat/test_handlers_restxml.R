@@ -814,3 +814,45 @@ test_that("unmarshal error", {
   expect_equal(err$status_code, 400)
   expect_equal(err$error_response$RequestID, "Baz")
 })
+
+op_output14 <- Structure(
+  Contents = List(
+    Structure(
+      Size = Scalar(type = "integer"),
+      Owner = list(
+        DisplayName = Scalar(type = "string"),
+        ID = Scalar(type = "string")
+      )
+    ),
+    .tags = list(flattened = TRUE)
+  )
+)
+
+test_that("unmarshal default flattened list", {
+  req <- new_request(svc, op, NULL, op_output14)
+  req$http_response <- HttpResponse(
+    status_code = 200,
+    body = charToRaw("<OperationNameResponse><Contents><Size>12345</Size></Contents></OperationNameResponse>")
+  )
+  req <- unmarshal(req)
+  out <- req$data
+  expect_equal(out$Contents[[1]]$Size, 12345)
+  expect_equal(out$Contents[[1]]$Owner$DisplayName, character())
+  expect_equal(out$Contents[[1]]$Owner$ID, character())
+})
+
+test_that("unmarshal default flattened list", {
+  req <- new_request(svc, op, NULL, op_output14)
+  req$http_response <- HttpResponse(
+    status_code = 200,
+    body = charToRaw("<OperationNameResponse><Contents><Size>12345</Size></Contents><Contents><Size>6789</Size></Contents></OperationNameResponse>")
+  )
+  req <- unmarshal(req)
+  out <- req$data
+  expect_equal(out$Contents[[1]]$Size, 12345)
+  expect_equal(out$Contents[[1]]$Owner$DisplayName, character())
+  expect_equal(out$Contents[[1]]$Owner$ID, character())
+  expect_equal(out$Contents[[2]]$Size, 6789)
+  expect_equal(out$Contents[[2]]$Owner$DisplayName, character())
+  expect_equal(out$Contents[[2]]$Owner$ID, character())
+})
