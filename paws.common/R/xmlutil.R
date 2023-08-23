@@ -255,7 +255,8 @@ xml_parse <- function(data, interface, data_nms) {
         parse_xml_elt(xml_elts, interface_i, tags_i)
       } else {
         default_parse_xml(interface_i, tags_i)
-      })
+      }
+    )
   }
   names(result) <- nms
   return(result)
@@ -490,7 +491,7 @@ transpose <- function(x) {
     for (col in col_seq) {
       vals[col] <- (
         if (length(x[[col]]) < n_row) {
-          list(rep_len(x[[col]], n_row)[[row]])
+          list(rep_len(list(x[[col]]), n_row)[[row]])
         } else {
           list(x[[col]][[row]])
         }
