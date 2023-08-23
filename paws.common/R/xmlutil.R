@@ -279,13 +279,13 @@ parse_xml_elt <- function(xml_elts, interface_i, tags_i) {
 
 xml_parse_structure <- function(xml_elts, interface_i, tags_i, tag_type = NULL) {
   xml_elt <- xml2::xml_contents(xml_elts)
-  result <- xml_parse(xml_elt, interface_i, xml2::xml_name(xml_elt))
+  result <- list(xml_parse(xml_elt, interface_i, xml2::xml_name(xml_elt)))
 
   flattened <- tags_i[["flattened"]]
 
   # the `is.list()` check is necessary because e.g. `CheckSumAlgorithm` has
   # a list interface though it isn't a list?!
-  if (isTRUE(flattened) && is.list(result)) {
+  if (isTRUE(flattened)) {
     result <- transpose(result)
   }
 

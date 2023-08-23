@@ -856,3 +856,29 @@ test_that("unmarshal default flattened list", {
   expect_equal(out$Contents[[2]]$Owner$DisplayName, character())
   expect_equal(out$Contents[[2]]$Owner$ID, character())
 })
+
+op_output15 <- Structure(
+  Version = List(
+    Structure(
+      Size = Scalar(type = "integer"),
+      Owner = list(
+        DisplayName = Scalar(type = "string"),
+        ID = Scalar(type = "string")
+      )
+    ),
+    .tags = list(flattened = TRUE)
+  )
+)
+
+test_that("unmarshal nested structure", {
+  req <- new_request(svc, op, NULL, op_output15)
+  req$http_response <- HttpResponse(
+    status_code = 200,
+    body = charToRaw("<OperationNameResponse><Version><Size>9</Size><Owner><ID>bar</ID><DisplayName>foo</DisplayName></Owner></Version></OperationNameResponse>")
+  )
+  req <- unmarshal(req)
+  out <- req$data
+  expect_equal(out$Version[[1]]$Size, 9)
+  expect_equal(out$Version[[1]]$Owner$DisplayName, "foo")
+  expect_equal(out$Version[[1]]$Owner$ID, "bar")
+})
