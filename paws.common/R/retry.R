@@ -1,5 +1,6 @@
 #' @include util.R
 
+# Retry attempts for an expanded list of errors/exceptions:
 retryable_codes <- c(
   # Transient errors/exceptions
   "RequestTimeout",
@@ -26,11 +27,20 @@ retryable_codes <- c(
 
 # https://github.com/boto/boto3/blob/0b82bf9843ad6d350b48442c47f4a484a886ee3f/docs/source/guide/retries.rst#standard-retry-mode
 standard_retry_handler <- function(request) {
+  # Handle first api call
   # exit if no error
   if (is.null(request[["error"]])) {
     return(request)
   }
 
+  request <- unmarshal_error(request)
+  error <- aws_error(request[["error"]])
+  # If error is not retryable raise error
+  if (!check_if_retryable(error)) {
+    stop(error)
+  }
+
+  # retry api call
   retries <- request[["config"]][["max_retries"]]
   for (i in seq_len(retries)) {
     tryCatch({
@@ -44,27 +54,27 @@ standard_retry_handler <- function(request) {
       }
       return(request)
     }, paws_error = function(error) {
-      if (retry_able(error)) {
+      if (check_if_retryable(error)) {
         exp_back_off(error, i, retries)
-        } else {
-          stop(error)
-        }
+      } else {
+        stop(error)
       }
-    )
+    })
   }
 }
 
-# Retry attempts on nondescriptive, transient error codes. Specifically, these HTTP status codes: 500, 502, 503, 504.
-retry_able <- function(error) {
+check_if_retryable <- function(error) {
   error_code <- error[["error_response"]][["Code"]]
   status_code <- error[["status_code"]]
-  retry_able <- FALSE
+  retryable <- FALSE
+
   if (!is_empty(error_code) && error_code %in% retryable_codes) {
-    retry_able <- TRUE
+    retryable <- TRUE
+  # Retry attempts on nondescriptive, transient error codes. Specifically, these HTTP status codes: 500, 502, 503, 504.
   } else if (!is_empty(status_code) && status_code %in% c(500, 502, 503, 504)) {
-    retry_able <- TRUE
+    retryable <- TRUE
   }
-  return(retry_able)
+  return(retryable)
 }
 
 # Any retry attempt will include an exponential backoff by a base factor of 2 for a maximum backoff time of 20 seconds.
@@ -77,25 +87,3 @@ exp_back_off <- function(error, i, retries) {
   log_error("Request failed. Retrying in %.3f seconds...", time)
   Sys.sleep(time)
 }
-
-
-## Temp Archive
-
-# See https://docs.aws.amazon.com/sdkref/latest/guide/feature-retry-behavior.html
-# retry_api_call <- function(expr, retries) {
-#   attempts <- seq_len(retries + 1) - 1
-#   for (i in attempts) {
-#     tryCatch(
-#       {
-#         return(eval.parent(substitute(expr)))
-#       },
-#       paws_error = function(error) {
-#         if (retry_able(error)) {
-#           exp_back_off(error, i, retries)
-#         } else {
-#           stop(error)
-#         }
-#       }
-#     )
-#   }
-# }
