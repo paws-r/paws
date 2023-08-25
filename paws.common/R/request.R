@@ -165,10 +165,7 @@ send_request <- function(request) {
   request <- unmarshal_meta(request)
   request <- validate_response(request)
 
-  if (!is.null(request$error)) {
-    request <- unmarshal_error(request)
-    stop(aws_error(request$error))
-  }
+  request <- retry(request)
 
   request <- unmarshal(request)
 

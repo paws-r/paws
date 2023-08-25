@@ -14,6 +14,7 @@ config(
   endpoint = "",
   region = "",
   close_connection = FALSE,
+  max_retries = 3,
   connect_timeout = 60,
   s3_force_path_style = FALSE,
   sts_regional_endpoint = "",
@@ -58,6 +59,8 @@ in the \verb{IAM Identity Center OIDC API Reference Guide}.}
 \item{region}{The AWS Region used in instantiating the client.}
 
 \item{close_connection}{Immediately close all HTTP connections.}
+
+\item{max_retries}{Max number of retries call AWS API (default set to 3).}
 
 \item{connect_timeout}{The time in seconds till a timeout exception is thrown
 when attempting to make a connection. The default is 60 seconds.}
@@ -113,12 +116,12 @@ config(credentials(creds("dummy", "secret")))
 
 # set service parameter access_key_id and secret_access_key using using lists
 config(
-  credentials = list(
-    creds = list(
-      access_key_id = "dummy",
-      secret_access_key = "secret"
+    credentials = list(
+        creds = list(
+            access_key_id = "dummy",
+            secret_access_key = "secret"
+        )
     )
-  )
 )
 
 }
