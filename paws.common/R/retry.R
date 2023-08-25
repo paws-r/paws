@@ -39,7 +39,6 @@ standard_retry_handler <- function(request) {
   if (!check_if_retryable(error)) {
     stop(error)
   }
-
   # retry api call
   retries <- request[["config"]][["max_retries"]]
   for (i in seq_len(retries)) {
@@ -50,6 +49,7 @@ standard_retry_handler <- function(request) {
 
       if (!is.null(request[["error"]])) {
         request <- unmarshal_error(request)
+        R <<- request
         stop(aws_error(request[["error"]]))
       }
       return(request)
@@ -64,7 +64,7 @@ standard_retry_handler <- function(request) {
 }
 
 check_if_retryable <- function(error) {
-  error_code <- error[["error_response"]][["Code"]]
+  error_code <- error[["error_response"]][["Code"]] %||% error[["error_response"]][["__type"]]
   status_code <- error[["status_code"]]
   retryable <- FALSE
 
