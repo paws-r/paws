@@ -15,7 +15,6 @@
 #' in order to retrieve the next page of results.
 #'
 #' @param Operation The operation for example an s3 operation: \code{svc$list_buckets()}
-#' @param MaxRetries Max number of retries call AWS API.
 #' @param PageSize The size of each page.
 #' @param MaxItems Limits the maximum number of total returned items returned while paginating.
 #' @param StartingToken Can be used to modify the starting marker or token of a paginator.
@@ -38,7 +37,6 @@
 #' @name paginate
 #' @export
 paginate <- function(Operation,
-                     MaxRetries = 5,
                      PageSize = NULL,
                      MaxItems = NULL,
                      StartingToken = NULL) {
@@ -59,7 +57,7 @@ paginate <- function(Operation,
   no_items <- 0
   result <- list()
   while (!identical(fn[[paginator$input_token[[1]]]], character(0))) {
-    resp <- retry_api_call(eval(fn), retries = MaxRetries)
+    resp <- eval(fn)
     new_tokens <- get_tokens(resp, paginator$output_token)
     for (i in seq_along(new_tokens)) {
       fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]
@@ -246,7 +244,7 @@ paginate_xapply <- function(
   no_items <- 0
   result <- list()
   while (!identical(fn[[paginator$input_token[[1]]]], character(0))) {
-    resp <- retry_api_call(eval(fn), retries = MaxRetries)
+    resp <- eval(fn)
     new_tokens <- get_tokens(resp, paginator$output_token)
     for (i in seq_along(new_tokens)) {
       fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]
@@ -332,35 +330,4 @@ get_token_len <- function(resp, token) {
       }
     }
   )
-}
-
-# See https://docs.aws.amazon.com/sdkref/latest/guide/feature-retry-behavior.html
-retry_api_call <- function(expr, retries) {
-  for (i in seq_len(retries + 1)) {
-    tryCatch(
-      {
-        return(eval.parent(substitute(expr)))
-      },
-      error = function(err) {
-        msg <- err$message
-
-        # Only Retry rate exceeded errors.
-        if (grepl("rate exceeded", msg, ignore.case = T)) {
-          exp_back_off(err, i, retries)
-        } else {
-          stop(err)
-        }
-      }
-    )
-  }
-}
-
-# Retry with exponential backoff with jitter
-exp_back_off <- function(error, i, retries) {
-  if (i == (retries + 1)) {
-    stop(error)
-  }
-  time <- min(runif(1) * 2^i, 20)
-  log_error("Request failed. Retrying in %s seconds...", time)
-  Sys.sleep(time)
 }
