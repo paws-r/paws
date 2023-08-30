@@ -427,6 +427,12 @@ default_parse_map <- function(interface_i, tag_type = NULL) {
 }
 
 default_parse_list <- function(interface_i, tag_type = NULL) {
+  interface_i <- interface_i[[1]]
+  len_interface_i <- length(interface_i)
+  if (len_interface_i == 0) {
+    return(list(list()))
+  }
+
   return(list())
 }
 
