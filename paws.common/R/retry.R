@@ -43,13 +43,16 @@ standard_retry_handler <- function(request) {
   retries <- request[["config"]][["max_retries"]]
   for (i in seq_len(retries)) {
     tryCatch({
+      # request <- sign(request)
+      # if (!is.null(request$error)) {
+      #   stop(aws_error(request$error))
+      # }
       request <- send(request)
       request <- unmarshal_meta(request)
       request <- validate_response(request)
 
       if (!is.null(request[["error"]])) {
         request <- unmarshal_error(request)
-        R <<- request
         stop(aws_error(request[["error"]]))
       }
       return(request)
