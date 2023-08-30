@@ -85,7 +85,6 @@ paginate <- function(Operation,
 paginate_lapply <- function(Operation,
                             FUN,
                             ...,
-                            MaxRetries = 5,
                             PageSize = NULL,
                             MaxItems = NULL,
                             StartingToken = NULL) {
@@ -107,7 +106,6 @@ paginate_lapply <- function(Operation,
     paginator = fn_update$paginator,
     FUN = FUN,
     ...,
-    MaxRetries = MaxRetries,
     MaxItems = MaxItems
   )
   return(result)
@@ -119,7 +117,6 @@ paginate_sapply <- function(Operation,
                             FUN,
                             ...,
                             simplify = TRUE,
-                            MaxRetries = 5,
                             PageSize = NULL,
                             MaxItems = NULL,
                             StartingToken = NULL) {
@@ -141,7 +138,6 @@ paginate_sapply <- function(Operation,
     paginator = fn_update$paginator,
     FUN = FUN,
     ...,
-    MaxRetries = MaxRetries,
     MaxItems = MaxItems
   )
 
@@ -238,7 +234,6 @@ paginate_xapply <- function(
     paginator,
     FUN,
     ...,
-    MaxRetries = 5,
     MaxItems = NULL) {
   primary_result_key <- paginator$result_key[[1]]
   no_items <- 0

@@ -12,7 +12,6 @@ paginate_lapply(
   Operation,
   FUN,
   ...,
-  MaxRetries = 5,
   PageSize = NULL,
   MaxItems = NULL,
   StartingToken = NULL
@@ -23,7 +22,6 @@ paginate_sapply(
   FUN,
   ...,
   simplify = TRUE,
-  MaxRetries = 5,
   PageSize = NULL,
   MaxItems = NULL,
   StartingToken = NULL
