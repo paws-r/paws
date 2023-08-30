@@ -169,9 +169,9 @@ send_request <- function(request) {
 
   request <- unmarshal(request)
 
-  out <- get_request_output(request)
+  # out <- get_request_output(request)
 
-  return(out)
+  return(request$data)
 }
 
 #-------------------------------------------------------------------------------
