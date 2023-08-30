@@ -372,8 +372,6 @@ xml_parse_scalar <- function(xml_elts, interface_i, tags_i, tag_type = NULL, fla
     long = as.numeric,
     timestamp = function(x) as_timestamp(x, format = "iso8601"),
     function(x) {
-      # if (identical(x, "")) return(character(0))
-      # return(x)
       if (identical(x, "")) x <- NULL
       as.character(x)
     }
