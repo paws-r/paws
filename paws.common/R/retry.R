@@ -41,12 +41,13 @@ standard_retry_handler <- function(request) {
   }
   # retry api call
   retries <- request[["config"]][["max_retries"]]
-  for (i in seq_len(retries)) {
+  exit_retries <- retries + 1
+  for (i in seq_len(exit_retries)) {
     tryCatch({
-      # request <- sign(request)
-      # if (!is.null(request$error)) {
-      #   stop(aws_error(request$error))
-      # }
+      request <- sign(request)
+      if (!is.null(request[["error"]])) {
+        stop(aws_error(request[["error"]]))
+      }
       request <- send(request)
       request <- unmarshal_meta(request)
       request <- validate_response(request)
@@ -58,7 +59,7 @@ standard_retry_handler <- function(request) {
       return(request)
     }, paws_error = function(error) {
       if (check_if_retryable(error)) {
-        exp_back_off(error, i, retries)
+        exp_back_off(error, i, exit_retries)
       } else {
         stop(error)
       }
@@ -83,7 +84,7 @@ check_if_retryable <- function(error) {
 # Any retry attempt will include an exponential backoff by a base factor of 2 for a maximum backoff time of 20 seconds.
 # Retry with exponential backoff with jitter
 exp_back_off <- function(error, i, retries) {
-  if (i == (retries)) {
+  if (i == retries) {
     stop(error)
   }
   time <- min(runif(1) * 2^i, 20)
