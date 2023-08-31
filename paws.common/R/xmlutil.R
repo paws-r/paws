@@ -1,4 +1,5 @@
 #' @include util.R
+#' @include tags.R
 
 # Decode raw bytes XML into an R list object.
 decode_xml <- function(raw) {
