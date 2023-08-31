@@ -171,7 +171,7 @@ xml_build_scalar <- function(params) {
 # Unmarshal `data` provided as a list into the shape in `interface`.
 xml_unmarshal <- function(raw_data, interface = NULL, result_name = NULL) {
   if (is_empty(raw_data)) {
-    return(interface)
+    return(tag_del(interface))
   }
 
   data <- xml2::read_xml(raw_data, encoding = "utf8")
@@ -437,7 +437,12 @@ default_parse_list <- function(interface_i, tag_type = NULL) {
 }
 
 xml_scalar_default <- function(interface, default) {
-  if (length(interface) > 0) interface else default
+  if (length(interface) > 0) {
+    attr(interface, "tags") <- NULL
+    return(interface)
+  } else {
+    return(default)
+  }
 }
 
 default_parse_scalar <- function(interface_i, tag_type = NULL) {
