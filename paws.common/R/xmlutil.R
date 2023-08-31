@@ -1,3 +1,5 @@
+#' @include util.R
+
 # Decode raw bytes XML into an R list object.
 decode_xml <- function(raw) {
   obj <- xml_to_list(raw)
