@@ -857,6 +857,22 @@ test_that("unmarshal default flattened list", {
   expect_equal(out$Contents[[2]]$Owner$ID, character())
 })
 
+test_that("unmarshal OperationNameResult not in interface but in xml", {
+  req <- new_request(svc, op, NULL, op_output14)
+  req$http_response <- HttpResponse(
+    status_code = 200,
+    body = charToRaw("<OperationNameResult><Contents><Size>12345</Size></Contents><Contents><Size>6789</Size></Contents></OperationNameResult>")
+  )
+  req <- unmarshal(req)
+  out <- req$data
+  expect_equal(out$Contents[[1]]$Size, 12345)
+  expect_equal(out$Contents[[1]]$Owner$DisplayName, character())
+  expect_equal(out$Contents[[1]]$Owner$ID, character())
+  expect_equal(out$Contents[[2]]$Size, 6789)
+  expect_equal(out$Contents[[2]]$Owner$DisplayName, character())
+  expect_equal(out$Contents[[2]]$Owner$ID, character())
+})
+
 op_output15 <- Structure(
   Version = List(
     Structure(
@@ -874,11 +890,14 @@ test_that("unmarshal nested structure", {
   req <- new_request(svc, op, NULL, op_output15)
   req$http_response <- HttpResponse(
     status_code = 200,
-    body = charToRaw("<OperationNameResponse><Version><Size>9</Size><Owner><ID>bar</ID><DisplayName>foo</DisplayName></Owner></Version></OperationNameResponse>")
+    body = charToRaw("<OperationNameResponse><Version><Size>9</Size><Owner><ID>bar</ID><DisplayName>foo</DisplayName></Owner></Version><Version><Size>10</Size><Owner><ID>zoo</ID><DisplayName>cho</DisplayName></Owner></Version></OperationNameResponse>")
   )
   req <- unmarshal(req)
   out <- req$data
   expect_equal(out$Version[[1]]$Size, 9)
   expect_equal(out$Version[[1]]$Owner$DisplayName, "foo")
   expect_equal(out$Version[[1]]$Owner$ID, "bar")
+  expect_equal(out$Version[[2]]$Size, 10)
+  expect_equal(out$Version[[2]]$Owner$DisplayName, "cho")
+  expect_equal(out$Version[[2]]$Owner$ID, "zoo")
 })
