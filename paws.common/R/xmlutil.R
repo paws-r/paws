@@ -184,10 +184,12 @@ xml_unmarshal <- function(raw_data, interface = NULL, result_name = NULL) {
       data <- xml2::xml_contents(data)
       xml_nms <- xml2::xml_name(data)
     }
-    result <- list(
-      xml_parse(data, interface[[result_name]], xml_nms)
-    )
-    names(result) <- result_name
+    if (result_name %in% names(interface)) {
+      result <- list(xml_parse(data, interface[[result_name]], xml_nms))
+      names(result) <- result_name
+    } else {
+      result <- xml_parse(data, interface, xml_nms)
+    }
     return(result)
   }
 
