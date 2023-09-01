@@ -32,7 +32,7 @@ NULL
 #' User Guide](https://docs.aws.amazon.com/workspaces/latest/userguide/).
 #' For more information about using the CLI to manage your WorkSpaces
 #' resources, see the [WorkSpaces section of the CLI
-#' Reference](https://docs.aws.amazon.com/cli/latest/reference/workspaces/index.html).
+#' Reference](https://docs.aws.amazon.com/cli/latest/reference/workspaces/).
 #'
 #' @param
 #' config

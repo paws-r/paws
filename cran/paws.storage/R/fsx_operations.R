@@ -56,7 +56,7 @@ fsx_associate_file_system_aliases <- function(ClientRequestToken = NULL, FileSys
 #' task is in either the PENDING or EXECUTING state
 #'
 #' @description
-#' Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the `PENDING` or `EXECUTING` state. When you cancel a task, Amazon FSx does the following.
+#' Cancels an existing Amazon FSx for Lustre data repository task if that task is in either the `PENDING` or `EXECUTING` state. When you cancel am export task, Amazon FSx does the following.
 #'
 #' See [https://www.paws-r-sdk.com/docs/fsx_cancel_data_repository_task/](https://www.paws-r-sdk.com/docs/fsx_cancel_data_repository_task/) for full documentation.
 #'
@@ -175,7 +175,7 @@ fsx_create_backup <- function(FileSystemId = NULL, ClientRequestToken = NULL, Ta
 #' Creates an Amazon FSx for Lustre data repository association (DRA)
 #'
 #' @description
-#' Creates an Amazon FSx for Lustre data repository association (DRA). A data repository association is a link between a directory on the file system and an Amazon S3 bucket or prefix. You can have a maximum of 8 data repository associations on a file system. Data repository associations are supported on all FSx for Lustre 2.12 and newer file systems, excluding `scratch_1` deployment type.
+#' Creates an Amazon FSx for Lustre data repository association (DRA). A data repository association is a link between a directory on the file system and an Amazon S3 bucket or prefix. You can have a maximum of 8 data repository associations on a file system. Data repository associations are supported on all FSx for Lustre 2.12 and 2.15 file systems, excluding `scratch_1` deployment type.
 #'
 #' See [https://www.paws-r-sdk.com/docs/fsx_create_data_repository_association/](https://www.paws-r-sdk.com/docs/fsx_create_data_repository_association/) for full documentation.
 #'
@@ -244,15 +244,32 @@ fsx_create_data_repository_association <- function(FileSystemId, FileSystemPath 
 #' Creates an Amazon FSx for Lustre data repository task
 #'
 #' @description
-#' Creates an Amazon FSx for Lustre data repository task. You use data repository tasks to perform bulk operations between your Amazon FSx file system and its linked data repositories. An example of a data repository task is exporting any data and metadata changes, including POSIX metadata, to files, directories, and symbolic links (symlinks) from your FSx file system to a linked data repository. A [`create_data_repository_task`][fsx_create_data_repository_task] operation will fail if a data repository is not linked to the FSx file system. To learn more about data repository tasks, see [Data Repository Tasks](https://docs.aws.amazon.com/fsx/latest/LustreGuide/data-repository-tasks.html). To learn more about linking a data repository to your file system, see [Linking your file system to an S3 bucket](https://docs.aws.amazon.com/fsx/latest/LustreGuide/create-dra-linked-data-repo.html).
+#' Creates an Amazon FSx for Lustre data repository task. A [`create_data_repository_task`][fsx_create_data_repository_task] operation will fail if a data repository is not linked to the FSx file system.
 #'
 #' See [https://www.paws-r-sdk.com/docs/fsx_create_data_repository_task/](https://www.paws-r-sdk.com/docs/fsx_create_data_repository_task/) for full documentation.
 #'
 #' @param Type &#91;required&#93; Specifies the type of data repository task to create.
-#' @param Paths A list of paths for the data repository task to use when the task is
-#' processed. If a path that you provide isn't valid, the task fails.
 #' 
-#' -   For export tasks, the list contains paths on the Amazon FSx file
+#' -   `EXPORT_TO_REPOSITORY` tasks export from your Amazon FSx for Lustre
+#'     file system to a linked data repository.
+#' 
+#' -   `IMPORT_METADATA_FROM_REPOSITORY` tasks import metadata changes from
+#'     a linked S3 bucket to your Amazon FSx for Lustre file system.
+#' 
+#' -   `RELEASE_DATA_FROM_FILESYSTEM` tasks release files in your Amazon
+#'     FSx for Lustre file system that have been exported to a linked S3
+#'     bucket and that meet your specified release criteria.
+#' 
+#' -   `AUTO_RELEASE_DATA` tasks automatically release files from an Amazon
+#'     File Cache resource.
+#' @param Paths A list of paths for the data repository task to use when the task is
+#' processed. If a path that you provide isn't valid, the task fails. If
+#' you don't provide paths, the default behavior is to export all files to
+#' S3 (for export tasks), import all files from S3 (for import tasks), or
+#' release all exported files that meet the last accessed time criteria
+#' (for release tasks).
+#' 
+#' -   For export tasks, the list contains paths on the FSx for Lustre file
 #'     system from which the files are exported to the Amazon S3 bucket.
 #'     The default path is the file system root directory. The paths you
 #'     provide need to be relative to the mount point of the file system.
@@ -261,9 +278,19 @@ fsx_create_data_repository_association <- function(FileSystemId, FileSystemPath 
 #'     provide is `path1`.
 #' 
 #' -   For import tasks, the list contains paths in the Amazon S3 bucket
-#'     from which POSIX metadata changes are imported to the Amazon FSx
+#'     from which POSIX metadata changes are imported to the FSx for Lustre
 #'     file system. The path can be an S3 bucket or prefix in the format
 #'     `s3://myBucket/myPrefix` (where `myPrefix` is optional).
+#' 
+#' -   For release tasks, the list contains directory or file paths on the
+#'     FSx for Lustre file system from which to release exported files. If
+#'     a directory is specified, files within the directory are released.
+#'     If a file path is specified, only that file is released. To release
+#'     all exported files in the file system, specify a forward slash (/)
+#'     as the path.
+#' 
+#'     A file must also meet the last accessed time criteria specified in
+#'     for the file to be released.
 #' @param FileSystemId &#91;required&#93; 
 #' @param Report &#91;required&#93; Defines whether or not Amazon FSx provides a CompletionReport once the
 #' task has completed. A CompletionReport provides a detailed report on the
@@ -276,18 +303,20 @@ fsx_create_data_repository_association <- function(FileSystemId, FileSystemPath 
 #' @param CapacityToRelease Specifies the amount of data to release, in GiB, by an Amazon File Cache
 #' `AUTO_RELEASE_DATA` task that automatically releases files from the
 #' cache.
+#' @param ReleaseConfiguration The configuration that specifies the last accessed time criteria for
+#' files that will be released from an Amazon FSx for Lustre file system.
 #'
 #' @keywords internal
 #'
 #' @rdname fsx_create_data_repository_task
-fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Report, ClientRequestToken = NULL, Tags = NULL, CapacityToRelease = NULL) {
+fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Report, ClientRequestToken = NULL, Tags = NULL, CapacityToRelease = NULL, ReleaseConfiguration = NULL) {
   op <- new_operation(
     name = "CreateDataRepositoryTask",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .fsx$create_data_repository_task_input(Type = Type, Paths = Paths, FileSystemId = FileSystemId, Report = Report, ClientRequestToken = ClientRequestToken, Tags = Tags, CapacityToRelease = CapacityToRelease)
+  input <- .fsx$create_data_repository_task_input(Type = Type, Paths = Paths, FileSystemId = FileSystemId, Report = Report, ClientRequestToken = ClientRequestToken, Tags = Tags, CapacityToRelease = CapacityToRelease, ReleaseConfiguration = ReleaseConfiguration)
   output <- .fsx$create_data_repository_task_output()
   config <- get_config()
   svc <- .fsx$service(config)
@@ -457,14 +486,15 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #' @param LustreConfiguration 
 #' @param OntapConfiguration 
 #' @param FileSystemTypeVersion (Optional) For FSx for Lustre file systems, sets the Lustre version for
-#' the file system that you're creating. Valid values are `2.10` and
-#' `2.12`:
+#' the file system that you're creating. Valid values are `2.10`, `2.12`m
+#' and `2.15`:
 #' 
 #' -   2.10 is supported by the Scratch and Persistent_1 Lustre deployment
 #'     types.
 #' 
-#' -   2.12 is supported by all Lustre deployment types. `2.12` is required
-#'     when setting FSx for Lustre `DeploymentType` to `PERSISTENT_2`.
+#' -   2.12 and 2.15 are supported by all Lustre deployment types. `2.12`
+#'     or `2.15` is required when setting FSx for Lustre `DeploymentType`
+#'     to `PERSISTENT_2`.
 #' 
 #' Default value = `2.10`, except when `DeploymentType` is set to
 #' `PERSISTENT_2`, then the default is `2.12`.
@@ -545,7 +575,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' original SSD file system had a storage capacity of at least 2000 GiB.
 #' @param KmsKeyId 
 #' @param FileSystemTypeVersion Sets the version for the Amazon FSx for Lustre file system that you're
-#' creating from a backup. Valid values are `2.10` and `2.12`.
+#' creating from a backup. Valid values are `2.10`, `2.12`, and `2.15`.
 #' 
 #' You don't need to specify `FileSystemTypeVersion` because it will be
 #' applied using the backup's `FileSystemTypeVersion` setting. If you
@@ -773,7 +803,7 @@ fsx_delete_backup <- function(BackupId, ClientRequestToken = NULL) {
 #' system
 #'
 #' @description
-#' Deletes a data repository association on an Amazon FSx for Lustre file system. Deleting the data repository association unlinks the file system from the Amazon S3 bucket. When deleting a data repository association, you have the option of deleting the data in the file system that corresponds to the data repository association. Data repository associations are supported on all FSx for Lustre 2.12 and newer file systems, excluding `scratch_1` deployment type.
+#' Deletes a data repository association on an Amazon FSx for Lustre file system. Deleting the data repository association unlinks the file system from the Amazon S3 bucket. When deleting a data repository association, you have the option of deleting the data in the file system that corresponds to the data repository association. Data repository associations are supported on all FSx for Lustre 2.12 and 2.15 file systems, excluding `scratch_1` deployment type.
 #'
 #' See [https://www.paws-r-sdk.com/docs/fsx_delete_data_repository_association/](https://www.paws-r-sdk.com/docs/fsx_delete_data_repository_association/) for full documentation.
 #'
@@ -1011,7 +1041,7 @@ fsx_describe_backups <- function(BackupIds = NULL, Filters = NULL, MaxResults = 
 #' are provided in the request, or if filters are used in the request
 #'
 #' @description
-#' Returns the description of specific Amazon FSx for Lustre or Amazon File Cache data repository associations, if one or more `AssociationIds` values are provided in the request, or if filters are used in the request. Data repository associations are supported on Amazon File Cache resources and all FSx for Lustre 2.12 and newer file systems, excluding `scratch_1` deployment type.
+#' Returns the description of specific Amazon FSx for Lustre or Amazon File Cache data repository associations, if one or more `AssociationIds` values are provided in the request, or if filters are used in the request. Data repository associations are supported on Amazon File Cache resources and all FSx for Lustre 2.12 and 2,15 file systems, excluding `scratch_1` deployment type.
 #'
 #' See [https://www.paws-r-sdk.com/docs/fsx_describe_data_repository_associations/](https://www.paws-r-sdk.com/docs/fsx_describe_data_repository_associations/) for full documentation.
 #'
@@ -1507,7 +1537,7 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 #' an Amazon FSx for Lustre file system
 #'
 #' @description
-#' Updates the configuration of an existing data repository association on an Amazon FSx for Lustre file system. Data repository associations are supported on all FSx for Lustre 2.12 and newer file systems, excluding `scratch_1` deployment type.
+#' Updates the configuration of an existing data repository association on an Amazon FSx for Lustre file system. Data repository associations are supported on all FSx for Lustre 2.12 and 2.15 file systems, excluding `scratch_1` deployment type.
 #'
 #' See [https://www.paws-r-sdk.com/docs/fsx_update_data_repository_association/](https://www.paws-r-sdk.com/docs/fsx_update_data_repository_association/) for full documentation.
 #'
@@ -1642,18 +1672,19 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' @param LustreConfiguration 
 #' @param OntapConfiguration 
 #' @param OpenZFSConfiguration The configuration updates for an FSx for OpenZFS file system.
+#' @param StorageType 
 #'
 #' @keywords internal
 #'
 #' @rdname fsx_update_file_system
-fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, StorageCapacity = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, OpenZFSConfiguration = NULL) {
+fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, StorageCapacity = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, OpenZFSConfiguration = NULL, StorageType = NULL) {
   op <- new_operation(
     name = "UpdateFileSystem",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .fsx$update_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, StorageCapacity = StorageCapacity, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, OpenZFSConfiguration = OpenZFSConfiguration)
+  input <- .fsx$update_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, StorageCapacity = StorageCapacity, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, OpenZFSConfiguration = OpenZFSConfiguration, StorageType = StorageType)
   output <- .fsx$update_file_system_output()
   config <- get_config()
   svc <- .fsx$service(config)

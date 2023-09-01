@@ -1242,9 +1242,9 @@ xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
 #' requests, and downstream services that they call as a result. Root
 #' services process incoming requests and make calls to downstream
 #' services. Root services are applications that use the [Amazon Web
-#' Services X-Ray SDK](https://docs.aws.amazon.com/xray/index.html).
-#' Downstream services can be other applications, Amazon Web Services
-#' resources, HTTP web APIs, or SQL databases.
+#' Services X-Ray SDK](https://docs.aws.amazon.com/xray/). Downstream
+#' services can be other applications, Amazon Web Services resources, HTTP
+#' web APIs, or SQL databases.
 #'
 #' @usage
 #' xray_get_service_graph(StartTime, EndTime, GroupName, GroupARN,
@@ -2271,10 +2271,10 @@ xray_put_telemetry_records <- function(TelemetryRecords, EC2InstanceId = NULL, H
 #'
 #' @description
 #' Uploads segment documents to Amazon Web Services X-Ray. The [X-Ray
-#' SDK](https://docs.aws.amazon.com/xray/index.html) generates segment
-#' documents and sends them to the X-Ray daemon, which uploads them in
-#' batches. A segment document can be a completed segment, an in-progress
-#' segment, or an array of subsegments.
+#' SDK](https://docs.aws.amazon.com/xray/) generates segment documents and
+#' sends them to the X-Ray daemon, which uploads them in batches. A segment
+#' document can be a completed segment, an in-progress segment, or an array
+#' of subsegments.
 #' 
 #' Segments must include the following fields. For the full segment
 #' document schema, see [Amazon Web Services X-Ray Segment

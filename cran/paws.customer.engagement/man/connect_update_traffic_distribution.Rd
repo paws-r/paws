@@ -4,7 +4,12 @@
 \alias{connect_update_traffic_distribution}
 \title{Updates the traffic distribution for a given traffic distribution group}
 \usage{
-connect_update_traffic_distribution(Id, TelephonyConfig = NULL)
+connect_update_traffic_distribution(
+  Id,
+  TelephonyConfig = NULL,
+  SignInConfig = NULL,
+  AgentConfig = NULL
+)
 }
 \arguments{
 \item{Id}{[required] The identifier of the traffic distribution group. This can be the ID or
@@ -13,6 +18,11 @@ distribution group was created. The ARN must be provided if the call is
 from the replicated Region.}
 
 \item{TelephonyConfig}{The distribution of traffic between the instance and its replica(s).}
+
+\item{SignInConfig}{The distribution of allowing signing in to the instance and its
+replica(s).}
+
+\item{AgentConfig}{The distribution of agents between the instance and its replica(s).}
 }
 \description{
 Updates the traffic distribution for a given traffic distribution group.

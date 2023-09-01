@@ -76,8 +76,8 @@ Valid Values: \code{true} | \code{false}}
 file share. Set it to \code{false} to map file and directory permissions to
 the POSIX permissions.
 
-For more information, see \href{https://docs.aws.amazon.com/storagegateway/index.html}{Using Microsoft Windows ACLs to control access to an SMB file share} in the
-\emph{Storage Gateway User Guide}.
+For more information, see \href{https://docs.aws.amazon.com/storagegateway/}{Using Microsoft Windows ACLs to control access to an SMB file share} in the \emph{Storage
+Gateway User Guide}.
 
 Valid Values: \code{true} | \code{false}}
 

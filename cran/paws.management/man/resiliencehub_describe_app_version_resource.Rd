@@ -15,23 +15,23 @@ resiliencehub_describe_app_version_resource(
 )
 }
 \arguments{
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
-format for this ARN is:
+\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format
+for this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
 information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference} guide.}
 
-\item{appVersion}{[required] The Resilience Hub application version.}
+\item{appVersion}{[required] Resilience Hub application version.}
 
-\item{awsAccountId}{The Amazon Web Services account that owns the physical resource.}
+\item{awsAccountId}{Amazon Web Services account that owns the physical resource.}
 
-\item{awsRegion}{The Amazon Web Services region that owns the physical resource.}
+\item{awsRegion}{Amazon Web Services region that owns the physical resource.}
 
-\item{logicalResourceId}{The logical identifier of the resource.}
+\item{logicalResourceId}{Logical identifier of the resource.}
 
-\item{physicalResourceId}{The physical identifier of the resource.}
+\item{physicalResourceId}{Physical identifier of the resource.}
 
-\item{resourceName}{The name of the resource.}
+\item{resourceName}{Name of the resource.}
 }
 \description{
 Describes a resource of the Resilience Hub application.

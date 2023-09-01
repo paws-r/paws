@@ -17,13 +17,19 @@ codecommit_get_comments_for_pull_request(
 \item{pullRequestId}{[required] The system-generated ID of the pull request. To get this ID, use
 \code{\link[=codecommit_list_pull_requests]{list_pull_requests}}.}
 
-\item{repositoryName}{The name of the repository that contains the pull request.}
+\item{repositoryName}{The name of the repository that contains the pull request. Requirement
+is conditional: \code{repositoryName} must be specified when \code{beforeCommitId}
+and \code{afterCommitId} are included.}
 
 \item{beforeCommitId}{The full commit ID of the commit in the destination branch that was the
-tip of the branch at the time the pull request was created.}
+tip of the branch at the time the pull request was created. Requirement
+is conditional: \code{beforeCommitId} must be specified when \code{repositoryName}
+is included.}
 
 \item{afterCommitId}{The full commit ID of the commit in the source branch that was the tip
-of the branch at the time the comment was made.}
+of the branch at the time the comment was made. Requirement is
+conditional: \code{afterCommitId} must be specified when \code{repositoryName} is
+included.}
 
 \item{nextToken}{An enumeration token that, when provided in a request, returns the next
 batch of the results.}

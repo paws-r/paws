@@ -22,7 +22,7 @@ in the Amazon Resource Name (ARN) of the instance.}
 
 \item{QueueId}{The identifier for the queue.}
 
-\item{UserId}{The identifier for the user.}
+\item{UserId}{The identifier for the user. This can be the ID or the ARN of the user.}
 
 \item{ContactFlowId}{[required] The identifier of the flow.}
 

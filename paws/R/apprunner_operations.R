@@ -230,9 +230,9 @@ apprunner_create_auto_scaling_configuration <- function(AutoScalingConfiguration
 #' private repositories from certain third-party providers. You can share a
 #' connection across multiple services.
 #' 
-#' A connection resource is needed to access GitHub repositories. GitHub
-#' requires a user interface approval process through the App Runner
-#' console before you can use the connection.
+#' A connection resource is needed to access GitHub and Bitbucket
+#' repositories. Both require a user interface approval process through the
+#' App Runner console before you can use the connection.
 #'
 #' @usage
 #' apprunner_create_connection(ConnectionName, ProviderType, Tags)
@@ -251,7 +251,7 @@ apprunner_create_auto_scaling_configuration <- function(AutoScalingConfiguration
 #'   Connection = list(
 #'     ConnectionName = "string",
 #'     ConnectionArn = "string",
-#'     ProviderType = "GITHUB",
+#'     ProviderType = "GITHUB"|"BITBUCKET",
 #'     Status = "PENDING_HANDSHAKE"|"AVAILABLE"|"ERROR"|"DELETED",
 #'     CreatedAt = as.POSIXct(
 #'       "2015-01-01"
@@ -264,7 +264,7 @@ apprunner_create_auto_scaling_configuration <- function(AutoScalingConfiguration
 #' ```
 #' svc$create_connection(
 #'   ConnectionName = "string",
-#'   ProviderType = "GITHUB",
+#'   ProviderType = "GITHUB"|"BITBUCKET",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -922,7 +922,7 @@ apprunner_delete_auto_scaling_configuration <- function(AutoScalingConfiguration
 #'   Connection = list(
 #'     ConnectionName = "string",
 #'     ConnectionArn = "string",
-#'     ProviderType = "GITHUB",
+#'     ProviderType = "GITHUB"|"BITBUCKET",
 #'     Status = "PENDING_HANDSHAKE"|"AVAILABLE"|"ERROR"|"DELETED",
 #'     CreatedAt = as.POSIXct(
 #'       "2015-01-01"
@@ -2023,7 +2023,7 @@ apprunner_list_auto_scaling_configurations <- function(AutoScalingConfigurationN
 #'     list(
 #'       ConnectionName = "string",
 #'       ConnectionArn = "string",
-#'       ProviderType = "GITHUB",
+#'       ProviderType = "GITHUB"|"BITBUCKET",
 #'       Status = "PENDING_HANDSHAKE"|"AVAILABLE"|"ERROR"|"DELETED",
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"

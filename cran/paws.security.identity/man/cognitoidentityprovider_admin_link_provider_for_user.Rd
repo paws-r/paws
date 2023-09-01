@@ -16,7 +16,7 @@ cognitoidentityprovider_admin_link_provider_for_user(
 \item{UserPoolId}{[required] The user pool ID for the user pool.}
 
 \item{DestinationUser}{[required] The existing user in the user pool that you want to assign to the
-external IdP user account. This user can be a native (Username +
+external IdP user account. This user can be a local (Username +
 Password) Amazon Cognito user pools user or a federated user (for
 example, a SAML or Facebook user). If the user doesn't exist, Amazon
 Cognito generates an exception. Amazon Cognito returns this user when
@@ -48,13 +48,24 @@ for \code{id}, \code{sub}, and \code{user_id}, respectively. The
 \code{ProviderAttributeValue} for the user must be the same value as the
 \code{id}, \code{sub}, or \code{user_id} value found in the social IdP token.
 
+For OIDC, the \code{ProviderAttributeName} can be any value that matches a
+claim in the ID token, or that your app retrieves from the \code{userInfo}
+endpoint. You must map the claim to a user pool attribute in your IdP
+configuration, and set the user pool attribute name as the value of
+\code{ProviderAttributeName} in your
+\code{\link[=cognitoidentityprovider_admin_link_provider_for_user]{admin_link_provider_for_user}}
+request.
+
 For SAML, the \code{ProviderAttributeName} can be any value that matches a
-claim in the SAML assertion. If you want to link SAML users based on the
-subject of the SAML assertion, you should map the subject to a claim
-through the SAML IdP and submit that claim name as the
-\code{ProviderAttributeName}. If you set \code{ProviderAttributeName} to
+claim in the SAML assertion. To link SAML users based on the subject of
+the SAML assertion, map the subject to a claim through the SAML IdP and
+set that claim name as the value of \code{ProviderAttributeName} in your
+\code{\link[=cognitoidentityprovider_admin_link_provider_for_user]{admin_link_provider_for_user}}
+request.
+
+For both OIDC and SAML users, when you set \code{ProviderAttributeName} to
 \code{Cognito_Subject}, Amazon Cognito will automatically parse the default
-unique identifier found in the subject from the SAML token.}
+unique identifier found in the subject from the IdP token.}
 }
 \description{
 Links an existing user account in a user pool (\code{DestinationUser}) to an identity from an external IdP (\code{SourceUser}) based on a specified attribute name and value from the external IdP. This allows you to create a link from the existing user account to an external federated user identity that has not yet been used to sign in. You can then use the federated user identity to sign in as the existing user account.

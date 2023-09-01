@@ -22,8 +22,8 @@ NULL
 #'     `iam:CreateServiceLinkedRole` permission so that Organizations can
 #'     create the required service-linked role named
 #'     `AWSServiceRoleForOrganizations`. For more information, see
-#'     [Organizations and Service-Linked
-#'     Roles](https://docs.aws.amazon.com/organizations/latest/userguide/#orgs_integration_service-linked-roles)
+#'     [Organizations and service-linked
+#'     roles](https://docs.aws.amazon.com/organizations/latest/userguide/#orgs_integrate_services-using_slrs)
 #'     in the *Organizations User Guide*.
 #' 
 #' -   **Enable all features final confirmation** handshake: only a
@@ -32,11 +32,11 @@ NULL
 #'     For more information about invitations, see [Inviting an Amazon Web
 #'     Services account to join your
 #'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_invites.html)
-#'     in the *Organizations User Guide.* For more information about
+#'     in the *Organizations User Guide*. For more information about
 #'     requests to enable all features in the organization, see [Enabling
 #'     all features in your
 #'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
-#'     in the *Organizations User Guide.*
+#'     in the *Organizations User Guide*.
 #' 
 #' After you accept a handshake, it continues to appear in the results of
 #' relevant APIs for only 30 days. After that, it's deleted.
@@ -140,7 +140,8 @@ organizations_accept_handshake <- function(HandshakeId) {
 #' -   [TAG_POLICY](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_tag-policies.html)
 #' 
 #' This operation can be called only from the organization's management
-#' account.
+#' account or by a member account that is a delegated administrator for an
+#' Amazon Web Services service.
 #'
 #' @usage
 #' organizations_attach_policy(PolicyId, TargetId)
@@ -351,17 +352,16 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #'     information on using CloudTrail with Organizations, see [Logging and
 #'     monitoring in
 #'     Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_security_incident-response.html#orgs_cloudtrail-integration)
-#'     in the *Organizations User Guide.*
+#'     in the *Organizations User Guide*.
 #' 
 #' 
 #' -   You can close only 10% of member accounts, between 10 and 200,
 #'     within a rolling 30 day period. This quota is not bound by a
-#'     calendar month, but starts when you close an account.
-#' 
-#'     After you reach this limit, you can close additional accounts in the
-#'     Billing console. For more information, see [Closing an
-#'     account](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/close-account.html)
-#'     in the Amazon Web Services Billing and Cost Management User Guide.
+#'     calendar month, but starts when you close an account. After you
+#'     reach this limit, you can close additional accounts. For more
+#'     information, see [Closing a member account in your
+#'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
+#'     in the *Organizations User Guide*.
 #' 
 #' -   To reinstate a closed account, contact Amazon Web Services Support
 #'     within the 90-day grace period while the account is in SUSPENDED
@@ -374,11 +374,6 @@ organizations_cancel_handshake <- function(HandshakeId) {
 #'     an Amazon Web Services GovCloud (US)
 #'     account](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/Closing-govcloud-account.html)
 #'     in the *Amazon Web Services GovCloud User Guide*.
-#' 
-#' For more information about closing accounts, see [Closing an Amazon Web
-#' Services
-#' account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
-#' in the *Organizations User Guide.*
 #'
 #' @usage
 #' organizations_close_account(AccountId)
@@ -440,14 +435,14 @@ organizations_close_account <- function(AccountId) {
 #'     information on using CloudTrail with Organizations, see [Logging and
 #'     monitoring in
 #'     Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_security_incident-response.html#orgs_cloudtrail-integration)
-#'     in the *Organizations User Guide.*
+#'     in the *Organizations User Guide*.
 #' 
 #' The user who calls the API to create an account must have the
 #' `organizations:CreateAccount` permission. If you enabled all features in
 #' the organization, Organizations creates the required service-linked role
 #' named `AWSServiceRoleForOrganizations`. For more information, see
-#' [Organizations and Service-Linked
-#' Roles](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_integrate_services-using_slrs)
+#' [Organizations and service-linked
+#' roles](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_integrate_services-using_slrs)
 #' in the *Organizations User Guide*.
 #' 
 #' If the request includes tags, then the requester must have the
@@ -463,10 +458,10 @@ organizations_close_account <- function(AccountId) {
 #' This operation can be called only from the organization's management
 #' account.
 #' 
-#' For more information about creating accounts, see [Creating an Amazon
-#' Web Services account in Your
-#' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html)
-#' in the *Organizations User Guide.*
+#' For more information about creating accounts, see [Creating a member
+#' account in your
+#' organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html)
+#' in the *Organizations User Guide*.
 #' 
 #' -   When you create an account in an organization using the
 #'     Organizations console, API, or CLI commands, the information
@@ -474,9 +469,9 @@ organizations_close_account <- function(AccountId) {
 #'     a payment method and signing the end user license agreement (EULA)
 #'     is *not* automatically collected. If you must remove an account from
 #'     your organization later, you can do so only after you provide the
-#'     missing information. Follow the steps at [To leave an organization
-#'     as a member
-#'     account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
+#'     missing information. For more information, see [Considerations
+#'     before removing an account from an
+#'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_account-before-remove.html)
 #'     in the *Organizations User Guide*.
 #' 
 #' -   If you get an exception that indicates that you exceeded your
@@ -492,9 +487,9 @@ organizations_close_account <- function(AccountId) {
 #'     multiple temporary accounts isn't recommended. You can only close an
 #'     account from the Billing and Cost Management console, and you must
 #'     be signed in as the root user. For information on the requirements
-#'     and process for closing an account, see [Closing an Amazon Web
-#'     Services
-#'     account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
+#'     and process for closing an account, see [Closing a member account in
+#'     your
+#'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
 #'     in the *Organizations User Guide*.
 #' 
 #' When you create a member account with this operation, you can choose
@@ -503,8 +498,8 @@ organizations_close_account <- function(AccountId) {
 #' roles that have appropriate permissions can view billing information for
 #' the account. If you disable it, only the account root user can access
 #' billing information. For information about how to disable this switch
-#' for an account, see [Granting Access to Your Billing Information and
-#' Tools](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html).
+#' for an account, see [Granting access to your billing information and
+#' tools](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#grantaccess).
 #'
 #' @usage
 #' organizations_create_account(Email, AccountName, RoleName,
@@ -553,13 +548,13 @@ organizations_close_account <- function(AccountId) {
 #' For more information about how to use this role to access the member
 #' account, see the following links:
 #' 
-#' -   [Accessing and Administering the Member Accounts in Your
-#'     Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
+#' -   [Creating the OrganizationAccountAccessRole in an invited member
+#'     account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
 #'     in the *Organizations User Guide*
 #' 
-#' -   Steps 2 and 3 in [Tutorial: Delegate Access Across Amazon Web
-#'     Services accounts Using IAM
-#'     Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
+#' -   Steps 2 and 3 in [IAM Tutorial: Delegate access across Amazon Web
+#'     Services accounts using IAM
+#'     roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
 #'     in the *IAM User Guide*
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) that is used to
@@ -569,9 +564,9 @@ organizations_close_account <- function(AccountId) {
 #' @param IamUserAccessToBilling If set to `ALLOW`, the new account enables IAM users to access account
 #' billing information *if* they have the required permissions. If set to
 #' `DENY`, only the root user of the new account can access account billing
-#' information. For more information, see [Activating Access to the Billing
+#' information. For more information, see [About IAM access to the Billing
 #' and Cost Management
-#' Console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate)
+#' console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate)
 #' in the *Amazon Web Services Billing and Cost Management User Guide*.
 #' 
 #' If you don't specify this parameter, the value defaults to `ALLOW`, and
@@ -686,9 +681,9 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' 
 #' Organizations automatically creates the required service-linked role
 #' named `AWSServiceRoleForOrganizations`. For more information, see
-#' [Organizations and Service-Linked
-#' Roles](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_integrate_services-using_slrs)
-#' in the *Organizations User Guide.*
+#' [Organizations and service-linked
+#' roles](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html#orgs_integrate_services-using_slrs)
+#' in the *Organizations User Guide*.
 #' 
 #' Amazon Web Services automatically enables CloudTrail for Amazon Web
 #' Services GovCloud (US) accounts, but you should also do the following:
@@ -716,7 +711,7 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' more information on inviting standalone accounts in the Amazon Web
 #' Services GovCloud (US) to join an organization, see
 #' [Organizations](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html)
-#' in the *Amazon Web Services GovCloud User Guide.*
+#' in the *Amazon Web Services GovCloud User Guide*.
 #' 
 #' Calling
 #' [`create_gov_cloud_account`][organizations_create_gov_cloud_account] is
@@ -734,10 +729,10 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #'     operation.
 #' 
 #' -   Check the CloudTrail log for the `CreateAccountResult` event. For
-#'     information on using CloudTrail with Organizations, see [Monitoring
-#'     the Activity in Your
-#'     Organization](https://docs.aws.amazon.com/organizations/latest/userguide/)
-#'     in the *Organizations User Guide.*
+#'     information on using CloudTrail with Organizations, see [Logging and
+#'     monitoring in
+#'     Organizations](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_security_incident-response.html)
+#'     in the *Organizations User Guide*.
 #' 
 #' When you call the
 #' [`create_gov_cloud_account`][organizations_create_gov_cloud_account]
@@ -758,12 +753,12 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' commercial organization. For more information and to view a diagram that
 #' explains how account access works, see
 #' [Organizations](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-organizations.html)
-#' in the *Amazon Web Services GovCloud User Guide.*
+#' in the *Amazon Web Services GovCloud User Guide*.
 #' 
-#' For more information about creating accounts, see [Creating an Amazon
-#' Web Services account in Your
-#' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html)
-#' in the *Organizations User Guide.*
+#' For more information about creating accounts, see [Creating a member
+#' account in your
+#' organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_create.html)
+#' in the *Organizations User Guide*.
 #' 
 #' -   When you create an account in an organization using the
 #'     Organizations console, API, or CLI commands, the information
@@ -771,10 +766,10 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #'     automatically collected. This includes a payment method and signing
 #'     the end user license agreement (EULA). If you must remove an account
 #'     from your organization later, you can do so only after you provide
-#'     the missing information. Follow the steps at [To leave an
-#'     organization as a member
-#'     account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
-#'     in the *Organizations User Guide.*
+#'     the missing information. For more information, see [Considerations
+#'     before removing an account from an
+#'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_account-before-remove.html)
+#'     in the *Organizations User Guide*.
 #' 
 #' -   If you get an exception that indicates that you exceeded your
 #'     account limits for the organization, contact Amazon Web Services
@@ -791,8 +786,8 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #'     only close an account from the Amazon Web Services Billing and Cost
 #'     Management console, and you must be signed in as the root user. For
 #'     information on the requirements and process for closing an account,
-#'     see [Closing an Amazon Web Services
-#'     account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
+#'     see [Closing a member account in your
+#'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_close.html)
 #'     in the *Organizations User Guide*.
 #' 
 #' When you create a member account with this operation, you can choose
@@ -801,8 +796,8 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' roles that have appropriate permissions can view billing information for
 #' the account. If you disable it, only the account root user can access
 #' billing information. For information about how to disable this switch
-#' for an account, see [Granting Access to Your Billing Information and
-#' Tools](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html).
+#' for an account, see [Granting access to your billing information and
+#' tools](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html).
 #'
 #' @usage
 #' organizations_create_gov_cloud_account(Email, AccountName, RoleName,
@@ -861,12 +856,16 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' `OrganizationAccountAccessRole`.
 #' 
 #' For more information about how to use this role to access the member
-#' account, see [Accessing and Administering the Member Accounts in Your
-#' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
-#' in the *Organizations User Guide* and steps 2 and 3 in [Tutorial:
-#' Delegate Access Across Amazon Web Services accounts Using IAM
-#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
-#' in the *IAM User Guide.*
+#' account, see the following links:
+#' 
+#' -   [Creating the OrganizationAccountAccessRole in an invited member
+#'     account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
+#'     in the *Organizations User Guide*
+#' 
+#' -   Steps 2 and 3 in [IAM Tutorial: Delegate access across Amazon Web
+#'     Services accounts using IAM
+#'     roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
+#'     in the *IAM User Guide*
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) that is used to
 #' validate this parameter. The pattern can include uppercase letters,
@@ -876,9 +875,9 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' enables IAM users to access account billing information *if* they have
 #' the required permissions. If set to `DENY`, only the root user of the
 #' new account can access account billing information. For more
-#' information, see [Activating Access to the Billing and Cost Management
-#' Console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate)
-#' in the *Amazon Web Services Billing and Cost Management User Guide.*
+#' information, see [About IAM access to the Billing and Cost Management
+#' console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate)
+#' in the *Amazon Web Services Billing and Cost Management User Guide*.
 #' 
 #' If you don't specify this parameter, the value defaults to `ALLOW`, and
 #' IAM users and roles with the required permissions can access billing
@@ -977,8 +976,8 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #' policies automatically enabled in the root. If you instead choose to
 #' create the organization supporting only the consolidated billing
 #' features by setting the `FeatureSet` parameter to
-#' `CONSOLIDATED_BILLING\"`, no policy types are enabled by default, and
-#' you can't use organization policies
+#' `CONSOLIDATED_BILLING`, no policy types are enabled by default and you
+#' can't use organization policies.
 #'
 #' @usage
 #' organizations_create_organization(FeatureSet)
@@ -990,7 +989,7 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #'     consolidated to and paid by the management account. For more
 #'     information, see [Consolidated
 #'     billing](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only)
-#'     in the *Organizations User Guide.*
+#'     in the *Organizations User Guide*.
 #' 
 #'     The consolidated billing feature subset isn't available for
 #'     organizations in the Amazon Web Services GovCloud (US) Region.
@@ -1000,7 +999,7 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #'     policy type to any member account in the organization. For more
 #'     information, see [All
 #'     features](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all)
-#'     in the *Organizations User Guide.*
+#'     in the *Organizations User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1082,9 +1081,9 @@ organizations_create_organization <- function(FeatureSet = NULL) {
 #' levels deep that you can nest OUs is dependent upon the policy types
 #' enabled for that root. For service control policies, the limit is five.
 #' 
-#' For more information about OUs, see [Managing Organizational
-#' Units](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html)
-#' in the *Organizations User Guide.*
+#' For more information about OUs, see [Managing organizational units
+#' (OUs)](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_ous.html)
+#' in the *Organizations User Guide*.
 #' 
 #' If the request includes tags, then the requester must have the
 #' `organizations:TagResource` permission.
@@ -1188,14 +1187,15 @@ organizations_create_organizational_unit <- function(ParentId, Name, Tags = NULL
 #' organizational unit (OU), or an individual Amazon Web Services account.
 #' 
 #' For more information about policies and their use, see [Managing
-#' Organization
-#' Policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html).
+#' Organizations
+#' policies](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies.html).
 #' 
 #' If the request includes tags, then the requester must have the
 #' `organizations:TagResource` permission.
 #' 
 #' This operation can be called only from the organization's management
-#' account.
+#' account or by a member account that is a delegated administrator for an
+#' Amazon Web Services service.
 #'
 #' @usage
 #' organizations_create_policy(Content, Description, Name, Type, Tags)
@@ -1516,7 +1516,8 @@ organizations_delete_organizational_unit <- function(OrganizationalUnitId) {
 #' units (OUs), roots, and accounts.
 #' 
 #' This operation can be called only from the organization's management
-#' account.
+#' account or by a member account that is a delegated administrator for an
+#' Amazon Web Services service.
 #'
 #' @usage
 #' organizations_delete_policy(PolicyId)
@@ -1860,14 +1861,12 @@ organizations_describe_create_account_status <- function(CreateAccountRequestId)
 #' This operation applies only to policy types *other* than service control
 #' policies (SCPs).
 #' 
-#' For more information about policy inheritance, see [How Policy
-#' Inheritance
-#' Works](https://docs.aws.amazon.com/organizations/latest/userguide/) in
-#' the *Organizations User Guide*.
+#' For more information about policy inheritance, see [Understanding
+#' management policy
+#' inheritance](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_inheritance_mgmt.html)
+#' in the *Organizations User Guide*.
 #' 
-#' This operation can be called only from the organization's management
-#' account or by a member account that is a delegated administrator for an
-#' Amazon Web Services service.
+#' This operation can be called from any account in the organization.
 #'
 #' @usage
 #' organizations_describe_effective_policy(PolicyType, TargetId)
@@ -2257,7 +2256,7 @@ organizations_describe_policy <- function(PolicyId) {
 #' @description
 #' Retrieves information about a resource policy.
 #' 
-#' You can only call this operation from the organization's management
+#' This operation can be called only from the organization's management
 #' account or by a member account that is a delegated administrator for an
 #' Amazon Web Services service.
 #'
@@ -2328,7 +2327,8 @@ organizations_describe_resource_policy <- function() {
 #' list](https://docs.aws.amazon.com/organizations/latest/userguide/#orgs_policies_denylist)".
 #' 
 #' This operation can be called only from the organization's management
-#' account.
+#' account or by a member account that is a delegated administrator for an
+#' Amazon Web Services service.
 #'
 #' @usage
 #' organizations_detach_policy(PolicyId, TargetId)
@@ -2467,10 +2467,9 @@ organizations_detach_policy <- function(PolicyId, TargetId) {
 #' 
 #' For more information about integrating other services with
 #' Organizations, including the list of services that work with
-#' Organizations, see [Integrating Organizations with Other Amazon Web
-#' Services
-#' Services](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
-#' in the *Organizations User Guide.*
+#' Organizations, see [Using Organizations with other Amazon Web Services
+#' services](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
+#' in the *Organizations User Guide*.
 #' 
 #' This operation can be called only from the organization's management
 #' account.
@@ -2534,7 +2533,8 @@ organizations_disable_aws_service_access <- function(ServicePrincipal) {
 #' of policy types for a specified root, and then use this operation.
 #' 
 #' This operation can be called only from the organization's management
-#' account.
+#' account or by a member account that is a delegated administrator for an
+#' Amazon Web Services service.
 #' 
 #' To view the status of available policy types in the organization, use
 #' [`describe_organization`][organizations_describe_organization].
@@ -2640,10 +2640,9 @@ organizations_disable_policy_type <- function(RootId, PolicyType) {
 #' see the documentation for the other Amazon Web Services service.
 #' 
 #' For more information about enabling services to integrate with
-#' Organizations, see [Integrating Organizations with Other Amazon Web
-#' Services
-#' Services](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
-#' in the *Organizations User Guide.*
+#' Organizations, see [Using Organizations with other Amazon Web Services
+#' services](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
+#' in the *Organizations User Guide*.
 #' 
 #' You can only call this operation from the organization's management
 #' account and only if the organization has [enabled all
@@ -2696,9 +2695,9 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
 #' can be called in each account. Until you enable all features, you have
 #' access only to consolidated billing, and you can't use any of the
 #' advanced account administration features that Organizations supports.
-#' For more information, see [Enabling All Features in Your
-#' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
-#' in the *Organizations User Guide.*
+#' For more information, see [Enabling all features in your
+#' organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html)
+#' in the *Organizations User Guide*.
 #' 
 #' This operation is required only for organizations that were created
 #' explicitly with only the consolidated billing features enabled. Calling
@@ -2818,7 +2817,8 @@ organizations_enable_all_features <- function() {
 #' types for a specified root, and then use this operation.
 #' 
 #' This operation can be called only from the organization's management
-#' account.
+#' account or by a member account that is a delegated administrator for an
+#' Amazon Web Services service.
 #' 
 #' You can enable a policy type in a root only if that policy type is
 #' available in the organization. To view the status of available policy
@@ -2922,8 +2922,8 @@ organizations_enable_policy_type <- function(RootId, PolicyType) {
 #'     you can invite only other AISPL accounts to your organization. You
 #'     can't combine accounts from AISPL and Amazon Web Services or from
 #'     any other Amazon Web Services seller. For more information, see
-#'     [Consolidated Billing in
-#'     India](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/).
+#'     [Consolidated billing in
+#'     India](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-India.html).
 #' 
 #' -   If you receive an exception that indicates that you exceeded your
 #'     account limits for the organization or that the operation failed
@@ -3100,11 +3100,10 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL, T
 #' 
 #'     Amazon Web Services uses the payment method to charge for any
 #'     billable (not free tier) Amazon Web Services activity that occurs
-#'     while the account isn't attached to an organization. Follow the
-#'     steps at [To leave an organization when all required account
-#'     information has not yet been
-#'     provided](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
-#'     in the *Organizations User Guide.*
+#'     while the account isn't attached to an organization. For more
+#'     information, see [Considerations before removing an account from an
+#'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_account-before-remove.html)
+#'     in the *Organizations User Guide*.
 #' 
 #' -   The account that you want to leave must not be a delegated
 #'     administrator account for any Amazon Web Services service enabled
@@ -3113,10 +3112,10 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL, T
 #'     account that is remaining in the organization.
 #' 
 #' -   You can leave an organization only after you enable IAM user access
-#'     to billing in your account. For more information, see [Activating
-#'     Access to the Billing and Cost Management
-#'     Console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate)
-#'     in the *Amazon Web Services Billing and Cost Management User Guide.*
+#'     to billing in your account. For more information, see [About IAM
+#'     access to the Billing and Cost Management
+#'     console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate)
+#'     in the *Amazon Web Services Billing and Cost Management User Guide*.
 #' 
 #' -   After the account leaves the organization, all tags that were
 #'     attached to the account object in the organization are deleted.
@@ -3126,6 +3125,11 @@ organizations_invite_account_to_organization <- function(Target, Notes = NULL, T
 #' -   A newly created account has a waiting period before it can be
 #'     removed from its organization. If you get an error that indicates
 #'     that a wait period is required, then try again in a few days.
+#' 
+#' -   If you are using an organization principal to call
+#'     [`leave_organization`][organizations_leave_organization] across
+#'     multiple accounts, you can only do this up to 5 accounts per second
+#'     in a single organization.
 #'
 #' @usage
 #' organizations_leave_organization()
@@ -3177,10 +3181,9 @@ organizations_leave_organization <- function() {
 #' 
 #' For more information about integrating other services with
 #' Organizations, including the list of services that currently work with
-#' Organizations, see [Integrating Organizations with Other Amazon Web
-#' Services
-#' Services](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
-#' in the *Organizations User Guide.*
+#' Organizations, see [Using Organizations with other Amazon Web Services
+#' services](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_integrate_services.html)
+#' in the *Organizations User Guide*.
 #' 
 #' This operation can be called only from the organization's management
 #' account or by a member account that is a delegated administrator for an
@@ -4919,9 +4922,9 @@ organizations_move_account <- function(AccountId, SourceParentId, DestinationPar
 #'
 #' @param Content &#91;required&#93; If provided, the new content for the resource policy. The text must be
 #' correctly formatted JSON that complies with the syntax for the resource
-#' policy's type. For more information, see [Service Control Policy
-#' Syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html)
-#' in the *Organizations User Guide.*
+#' policy's type. For more information, see [SCP
+#' syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html)
+#' in the *Organizations User Guide*.
 #' @param Tags A list of tags that you want to attach to the newly created resource
 #' policy. For each tag in the list, you must specify both a tag key and a
 #' value. You can set the value to an empty string, but you can't set it to
@@ -5065,17 +5068,10 @@ organizations_register_delegated_administrator <- function(AccountId, ServicePri
 #'     standalone account. When you create an account in an organization
 #'     using the Organizations console, API, or CLI commands, the
 #'     information required of standalone accounts is *not* automatically
-#'     collected. For an account that you want to make standalone, you must
-#'     choose a support plan, provide and verify the required contact
-#'     information, and provide a current payment method. Amazon Web
-#'     Services uses the payment method to charge for any billable (not
-#'     free tier) Amazon Web Services activity that occurs while the
-#'     account isn't attached to an organization. To remove an account that
-#'     doesn't yet have this information, you must sign in as the member
-#'     account and follow the steps at [To leave an organization when all
-#'     required account information has not yet been
-#'     provided](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_remove.html#leave-without-all-info)
-#'     in the *Organizations User Guide.*
+#'     collected. For more information, see [Considerations before removing
+#'     an account from an
+#'     organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_account-before-remove.html)
+#'     in the *Organizations User Guide*.
 #' 
 #' -   The account that you want to leave must not be a delegated
 #'     administrator account for any Amazon Web Services service enabled
@@ -5155,7 +5151,8 @@ organizations_remove_account_from_organization <- function(AccountId) {
 #' -   Policy (any type)
 #' 
 #' This operation can be called only from the organization's management
-#' account.
+#' account or by a member account that is a delegated administrator for an
+#' Amazon Web Services service.
 #'
 #' @usage
 #' organizations_tag_resource(ResourceId, Tags)
@@ -5236,7 +5233,8 @@ organizations_tag_resource <- function(ResourceId, Tags) {
 #' -   Policy (any type)
 #' 
 #' This operation can be called only from the organization's management
-#' account.
+#' account or by a member account that is a delegated administrator for an
+#' Amazon Web Services service.
 #'
 #' @usage
 #' organizations_untag_resource(ResourceId, TagKeys)
@@ -5381,7 +5379,8 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' change a policy's type.
 #' 
 #' This operation can be called only from the organization's management
-#' account.
+#' account or by a member account that is a delegated administrator for an
+#' Amazon Web Services service.
 #'
 #' @usage
 #' organizations_update_policy(PolicyId, Name, Description, Content)
@@ -5399,9 +5398,9 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' @param Description If provided, the new description for the policy.
 #' @param Content If provided, the new content for the policy. The text must be correctly
 #' formatted JSON that complies with the syntax for the policy's type. For
-#' more information, see [Service Control Policy
-#' Syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html)
-#' in the *Organizations User Guide.*
+#' more information, see [SCP
+#' syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html)
+#' in the *Organizations User Guide*.
 #'
 #' @return
 #' A list with the following syntax:

@@ -25,7 +25,7 @@ requests, the same session is returned. This token is employed to avoid
 unintentionally creating the same session multiple times.}
 }
 \description{
-This API operation initiates a Face Liveness session. It returns a \code{SessionId}, which you can use to start streaming Face Liveness video and get the results for a Face Liveness session. You can use the \code{OutputConfig} option in the Settings parameter to provide an Amazon S3 bucket location. The Amazon S3 bucket stores reference images and audit images. You can use \code{AuditImagesLimit} to limit the number of audit images returned. This number is between 0 and 4. By default, it is set to 0. The limit is best effort and based on the duration of the selfie-video.
+This API operation initiates a Face Liveness session. It returns a \code{SessionId}, which you can use to start streaming Face Liveness video and get the results for a Face Liveness session.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_create_face_liveness_session/} for full documentation.
 }

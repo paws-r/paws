@@ -17,10 +17,9 @@ quicksight_delete_folder_membership(
 
 \item{FolderId}{[required] The Folder ID.}
 
-\item{MemberId}{[required] The ID of the asset (the dashboard, analysis, or dataset) that you want
-to delete.}
+\item{MemberId}{[required] The ID of the asset that you want to delete.}
 
-\item{MemberType}{[required] The type of the member, including \code{DASHBOARD}, \code{ANALYSIS}, and \code{DATASET}}
+\item{MemberType}{[required] The member type of the asset that you want to delete from a folder.}
 }
 \description{
 Removes an asset, such as a dashboard, analysis, or dataset, from a folder.

@@ -24,7 +24,7 @@ this option to avoid modifying a policy that has changed since you last
 read it.}
 }
 \description{
-Removes a statement from the permissions policy for a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{Lambda layer}. For more information, see \code{\link[=lambda_add_layer_version_permission]{add_layer_version_permission}}.
+Removes a statement from the permissions policy for a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html}{Lambda layer}. For more information, see \code{\link[=lambda_add_layer_version_permission]{add_layer_version_permission}}.
 
 See \url{https://www.paws-r-sdk.com/docs/lambda_remove_layer_version_permission/} for full documentation.
 }

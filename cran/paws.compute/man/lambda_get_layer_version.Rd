@@ -13,7 +13,7 @@ lambda_get_layer_version(LayerName, VersionNumber)
 \item{VersionNumber}{[required] The version number.}
 }
 \description{
-Returns information about a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{Lambda layer}, with a link to download the layer archive that's valid for 10 minutes.
+Returns information about a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html}{Lambda layer}, with a link to download the layer archive that's valid for 10 minutes.
 
 See \url{https://www.paws-r-sdk.com/docs/lambda_get_layer_version/} for full documentation.
 }

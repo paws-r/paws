@@ -142,9 +142,8 @@ finspace_create_kx_changeset <- function(environmentId, databaseName, changeRequ
 #' @param autoScalingConfiguration The configuration based on which FinSpace will scale in or scale out
 #' nodes in your cluster.
 #' @param clusterDescription A description of the cluster.
-#' @param capacityConfiguration &#91;required&#93; A structure for the metadata of a cluster. It includes information about
-#' like the CPUs needed, memory of instances, number of instances, and the
-#' port used while establishing a connection.
+#' @param capacityConfiguration &#91;required&#93; A structure for the metadata of a cluster. It includes information like
+#' the CPUs needed, memory of instances, and number of instances.
 #' @param releaseLabel &#91;required&#93; The version of FinSpace managed kdb to run.
 #' @param vpcConfiguration Configuration details about the network where the Privatelink endpoint
 #' of the cluster resides.
@@ -1041,18 +1040,20 @@ finspace_update_environment <- function(environmentId, name = NULL, description 
 #' @param clusterName &#91;required&#93; A unique name for the cluster that you want to modify.
 #' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
 #' @param databases &#91;required&#93; The structure of databases mounted on the cluster.
+#' @param deploymentConfiguration The configuration that allows you to choose how you want to update the
+#' databases on a cluster.
 #'
 #' @keywords internal
 #'
 #' @rdname finspace_update_kx_cluster_databases
-finspace_update_kx_cluster_databases <- function(environmentId, clusterName, clientToken = NULL, databases) {
+finspace_update_kx_cluster_databases <- function(environmentId, clusterName, clientToken = NULL, databases, deploymentConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateKxClusterDatabases",
     http_method = "PUT",
     http_path = "/kx/environments/{environmentId}/clusters/{clusterName}/configuration/databases",
     paginator = list()
   )
-  input <- .finspace$update_kx_cluster_databases_input(environmentId = environmentId, clusterName = clusterName, clientToken = clientToken, databases = databases)
+  input <- .finspace$update_kx_cluster_databases_input(environmentId = environmentId, clusterName = clusterName, clientToken = clientToken, databases = databases, deploymentConfiguration = deploymentConfiguration)
   output <- .finspace$update_kx_cluster_databases_output()
   config <- get_config()
   svc <- .finspace$service(config)

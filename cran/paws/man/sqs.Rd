@@ -77,7 +77,7 @@ the following automatically:
 \item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes}{Amazon SQS Message Attributes}
 \item \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html}{Amazon SQS Dead-Letter Queues}
 }
-\item \href{https://docs.aws.amazon.com/cli/latest/reference/sqs/index.html}{Amazon SQS in the \emph{Command Line Interface}}
+\item \href{https://docs.aws.amazon.com/cli/latest/reference/sqs/}{Amazon SQS in the \emph{Command Line Interface}}
 \item \emph{Amazon Web Services General Reference}
 \itemize{
 \item \href{https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region}{Regions and Endpoints}

@@ -112,8 +112,9 @@ connectparticipant_complete_attachment_upload <- function(AttachmentIds, ClientT
 #' connectparticipant_create_participant_connection(Type, ParticipantToken,
 #'   ConnectParticipant)
 #'
-#' @param Type Type of connection information required. This can be omitted if
-#' `ConnectParticipant` is `true`.
+#' @param Type Type of connection information required. If you need
+#' `CONNECTION_CREDENTIALS` along with marking participant as connected,
+#' pass `CONNECTION_CREDENTIALS` in `Type`.
 #' @param ParticipantToken &#91;required&#93; This is a header parameter.
 #' 
 #' The ParticipantToken as obtained from
@@ -170,6 +171,68 @@ connectparticipant_create_participant_connection <- function(Type = NULL, Partic
   return(response)
 }
 .connectparticipant$operations$create_participant_connection <- connectparticipant_create_participant_connection
+
+#' Retrieves the view for the specified view token
+#'
+#' @description
+#' Retrieves the view for the specified view token.
+#'
+#' @usage
+#' connectparticipant_describe_view(ViewToken, ConnectionToken)
+#'
+#' @param ViewToken &#91;required&#93; An encrypted token originating from the interactive message of a
+#' ShowView block operation. Represents the desired view.
+#' @param ConnectionToken &#91;required&#93; The connection token.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   View = list(
+#'     Id = "string",
+#'     Arn = "string",
+#'     Name = "string",
+#'     Version = 123,
+#'     Content = list(
+#'       InputSchema = "string",
+#'       Template = "string",
+#'       Actions = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_view(
+#'   ViewToken = "string",
+#'   ConnectionToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname connectparticipant_describe_view
+#'
+#' @aliases connectparticipant_describe_view
+connectparticipant_describe_view <- function(ViewToken, ConnectionToken) {
+  op <- new_operation(
+    name = "DescribeView",
+    http_method = "GET",
+    http_path = "/participant/views/{ViewToken}",
+    paginator = list()
+  )
+  input <- .connectparticipant$describe_view_input(ViewToken = ViewToken, ConnectionToken = ConnectionToken)
+  output <- .connectparticipant$describe_view_output()
+  config <- get_config()
+  svc <- .connectparticipant$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connectparticipant$operations$describe_view <- connectparticipant_describe_view
 
 #' Disconnects a participant
 #'
@@ -330,7 +393,7 @@ connectparticipant_get_attachment <- function(AttachmentId, ConnectionToken) {
 #'       Type = "TYPING"|"PARTICIPANT_JOINED"|"PARTICIPANT_LEFT"|"CHAT_ENDED"|"TRANSFER_SUCCEEDED"|"TRANSFER_FAILED"|"MESSAGE"|"EVENT"|"ATTACHMENT"|"CONNECTION_ACK"|"MESSAGE_DELIVERED"|"MESSAGE_READ",
 #'       ParticipantId = "string",
 #'       DisplayName = "string",
-#'       ParticipantRole = "AGENT"|"CUSTOMER"|"SYSTEM",
+#'       ParticipantRole = "AGENT"|"CUSTOMER"|"SYSTEM"|"CUSTOM_BOT",
 #'       Attachments = list(
 #'         list(
 #'           ContentType = "string",

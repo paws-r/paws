@@ -2611,7 +2611,7 @@ elasticache_failover_global_replication_group <- function(GlobalReplicationGroup
 #' See [https://www.paws-r-sdk.com/docs/elasticache_increase_node_groups_in_global_replication_group/](https://www.paws-r-sdk.com/docs/elasticache_increase_node_groups_in_global_replication_group/) for full documentation.
 #'
 #' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global datastore
-#' @param NodeGroupCount &#91;required&#93; The number of node groups you wish to add
+#' @param NodeGroupCount &#91;required&#93; Total number of node groups you want
 #' @param RegionalConfigurations Describes the replication group IDs, the Amazon regions where they are
 #' stored and the shard configuration for each that comprise the Global
 #' datastore
@@ -3744,3 +3744,34 @@ elasticache_test_failover <- function(ReplicationGroupId, NodeGroupId) {
   return(response)
 }
 .elasticache$operations$test_failover <- elasticache_test_failover
+
+#' Async API to test connection between source and target replication group
+#'
+#' @description
+#' Async API to test connection between source and target replication group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/elasticache_test_migration/](https://www.paws-r-sdk.com/docs/elasticache_test_migration/) for full documentation.
+#'
+#' @param ReplicationGroupId &#91;required&#93; The ID of the replication group to which data is to be migrated.
+#' @param CustomerNodeEndpointList &#91;required&#93; List of endpoints from which data should be migrated. List should have
+#' only one element.
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_test_migration
+elasticache_test_migration <- function(ReplicationGroupId, CustomerNodeEndpointList) {
+  op <- new_operation(
+    name = "TestMigration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$test_migration_input(ReplicationGroupId = ReplicationGroupId, CustomerNodeEndpointList = CustomerNodeEndpointList)
+  output <- .elasticache$test_migration_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$test_migration <- elasticache_test_migration

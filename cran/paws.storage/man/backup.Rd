@@ -100,6 +100,7 @@ providing reporting and auditing.
 \link[=backup_create_backup_vault]{create_backup_vault} \tab Creates a logical container where backups are stored\cr
 \link[=backup_create_framework]{create_framework} \tab Creates a framework with one or more controls\cr
 \link[=backup_create_legal_hold]{create_legal_hold} \tab This action creates a legal hold on a recovery point (backup)\cr
+\link[=backup_create_logically_air_gapped_backup_vault]{create_logically_air_gapped_backup_vault} \tab This request creates a logical container to where backups may be copied\cr
 \link[=backup_create_report_plan]{create_report_plan} \tab Creates a report plan\cr
 \link[=backup_delete_backup_plan]{delete_backup_plan} \tab Deletes a backup plan\cr
 \link[=backup_delete_backup_selection]{delete_backup_selection} \tab Deletes the resource selection associated with a backup plan that is specified by the SelectionId\cr
@@ -143,6 +144,7 @@ providing reporting and auditing.
 \link[=backup_list_frameworks]{list_frameworks} \tab Returns a list of all frameworks for an Amazon Web Services account and Amazon Web Services Region\cr
 \link[=backup_list_legal_holds]{list_legal_holds} \tab This action returns metadata about active and previous legal holds\cr
 \link[=backup_list_protected_resources]{list_protected_resources} \tab Returns an array of resources successfully backed up by Backup, including the time the resource was saved, an Amazon Resource Name (ARN) of the resource, and a resource type\cr
+\link[=backup_list_protected_resources_by_backup_vault]{list_protected_resources_by_backup_vault} \tab This request lists the protected resources corresponding to each backup vault\cr
 \link[=backup_list_recovery_points_by_backup_vault]{list_recovery_points_by_backup_vault} \tab Returns detailed information about the recovery points stored in a backup vault\cr
 \link[=backup_list_recovery_points_by_legal_hold]{list_recovery_points_by_legal_hold} \tab This action returns recovery point ARNs (Amazon Resource Names) of the specified legal hold\cr
 \link[=backup_list_recovery_points_by_resource]{list_recovery_points_by_resource} \tab Returns detailed information about all the recovery points of the type specified by a resource Amazon Resource Name (ARN)\cr

@@ -114,7 +114,7 @@ Services API calls for your Amazon Web Services account and delivers log
 files to an Amazon S3 bucket. By using information collected by
 CloudTrail, you can determine which requests the Organizations service
 received, who made the request and when, and so on. For more about
-Organizations and its support for CloudTrail, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/#orgs_cloudtrail-integration}{Logging Organizations Events with CloudTrail}
+Organizations and its support for CloudTrail, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/#orgs_cloudtrail-integration}{Logging Organizations API calls with CloudTrail}
 in the \emph{Organizations User Guide}. To learn more about CloudTrail,
 including how to turn it on and find your log files, see the \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html}{CloudTrail User Guide}.
 }

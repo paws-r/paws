@@ -74,7 +74,7 @@ about administering WorkSpaces, see the \href{https://docs.aws.amazon.com/worksp
 more information about using the Amazon WorkSpaces client application or
 web browser to access provisioned WorkSpaces, see the \href{https://docs.aws.amazon.com/workspaces/latest/userguide/}{Amazon WorkSpaces User Guide}.
 For more information about using the CLI to manage your WorkSpaces
-resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/workspaces/index.html}{WorkSpaces section of the CLI Reference}.
+resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/workspaces/}{WorkSpaces section of the CLI Reference}.
 }
 \section{Service syntax}{
 

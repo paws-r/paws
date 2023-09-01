@@ -4,20 +4,30 @@
 \alias{resiliencehub_list_app_versions}
 \title{Lists the different versions for the Resilience Hub applications}
 \usage{
-resiliencehub_list_app_versions(appArn, maxResults = NULL, nextToken = NULL)
+resiliencehub_list_app_versions(
+  appArn,
+  endTime = NULL,
+  maxResults = NULL,
+  nextToken = NULL,
+  startTime = NULL
+)
 }
 \arguments{
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
-format for this ARN is:
+\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format
+for this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
 information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference} guide.}
 
-\item{maxResults}{The maximum number of results to include in the response. If more
-results exist than the specified \code{MaxResults} value, a token is included
-in the response so that the remaining results can be retrieved.}
+\item{endTime}{Upper limit of the time range to filter the application versions.}
+
+\item{maxResults}{Maximum number of results to include in the response. If more results
+exist than the specified \code{MaxResults} value, a token is included in the
+response so that the remaining results can be retrieved.}
 
 \item{nextToken}{Null, or the token from a previous call to get the next set of results.}
+
+\item{startTime}{Lower limit of the time range to filter the application versions.}
 }
 \description{
 Lists the different versions for the Resilience Hub applications.

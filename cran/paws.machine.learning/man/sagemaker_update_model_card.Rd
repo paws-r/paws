@@ -11,7 +11,7 @@ sagemaker_update_model_card(
 )
 }
 \arguments{
-\item{ModelCardName}{[required] The name of the model card to update.}
+\item{ModelCardName}{[required] The name or Amazon Resource Name (ARN) of the model card to update.}
 
 \item{Content}{The updated model card content. Content must be in \href{https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html#model-cards-json-schema}{model card JSON schema}
 and provided as a string.

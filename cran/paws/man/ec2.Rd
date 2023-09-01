@@ -62,12 +62,12 @@ that can be attached to any running instance and used like a hard drive.
 To learn more, see the following resources:
 \itemize{
 \item Amazon EC2: \href{https://aws.amazon.com/ec2/}{Amazon EC2 product page},
-\href{https://docs.aws.amazon.com/ec2/index.html}{Amazon EC2 documentation}
+\href{https://docs.aws.amazon.com/ec2/}{Amazon EC2 documentation}
 \item Amazon EBS: \href{https://aws.amazon.com/ebs/}{Amazon EBS product page},
-\href{https://docs.aws.amazon.com/ebs/index.html}{Amazon EBS documentation}
+\href{https://docs.aws.amazon.com/ebs/}{Amazon EBS documentation}
 \item Amazon VPC: \href{https://aws.amazon.com/vpc/}{Amazon VPC product page},
-\href{https://docs.aws.amazon.com/vpc/index.html}{Amazon VPC documentation}
-\item VPN: \href{https://aws.amazon.com/vpn/}{VPN product page}, \href{https://docs.aws.amazon.com/vpn/index.html}{VPN documentation}
+\href{https://docs.aws.amazon.com/vpc/}{Amazon VPC documentation}
+\item VPN: \href{https://aws.amazon.com/vpn/}{VPN product page}, \href{https://docs.aws.amazon.com/vpn/}{VPN documentation}
 }
 }
 \section{Service syntax}{

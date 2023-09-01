@@ -143,7 +143,8 @@ batch_cancel_job <- function(jobId, reason) {
 #'     it to the **AWSBatchServiceRole** service-linked role.
 #' 
 #' -   Set the allocation strategy (`allocationStrategy`) parameter to
-#'     `BEST_FIT_PROGRESSIVE` or `SPOT_CAPACITY_OPTIMIZED`.
+#'     `BEST_FIT_PROGRESSIVE`, `SPOT_CAPACITY_OPTIMIZED`, or
+#'     `SPOT_PRICE_CAPACITY_OPTIMIZED`.
 #' 
 #' -   Set the update to latest image version
 #'     (`updateToLatestImageVersion`) parameter to `true`. The
@@ -280,7 +281,7 @@ batch_cancel_job <- function(jobId, reason) {
 #'   unmanagedvCpus = 123,
 #'   computeResources = list(
 #'     type = "EC2"|"SPOT"|"FARGATE"|"FARGATE_SPOT",
-#'     allocationStrategy = "BEST_FIT"|"BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED",
+#'     allocationStrategy = "BEST_FIT"|"BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED"|"SPOT_PRICE_CAPACITY_OPTIMIZED",
 #'     minvCpus = 123,
 #'     maxvCpus = 123,
 #'     desiredvCpus = 123,
@@ -908,7 +909,7 @@ batch_deregister_job_definition <- function(jobDefinition) {
 #'       statusReason = "string",
 #'       computeResources = list(
 #'         type = "EC2"|"SPOT"|"FARGATE"|"FARGATE_SPOT",
-#'         allocationStrategy = "BEST_FIT"|"BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED",
+#'         allocationStrategy = "BEST_FIT"|"BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED"|"SPOT_PRICE_CAPACITY_OPTIMIZED",
 #'         minvCpus = 123,
 #'         maxvCpus = 123,
 #'         desiredvCpus = 123,
@@ -3477,7 +3478,7 @@ batch_untag_resource <- function(resourceArn, tagKeys) {
 #'     securityGroupIds = list(
 #'       "string"
 #'     ),
-#'     allocationStrategy = "BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED",
+#'     allocationStrategy = "BEST_FIT_PROGRESSIVE"|"SPOT_CAPACITY_OPTIMIZED"|"SPOT_PRICE_CAPACITY_OPTIMIZED",
 #'     instanceTypes = list(
 #'       "string"
 #'     ),

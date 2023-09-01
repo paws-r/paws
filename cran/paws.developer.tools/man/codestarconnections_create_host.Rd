@@ -14,8 +14,7 @@ codestarconnections_create_host(
 )
 }
 \arguments{
-\item{Name}{[required] The name of the host to be created. The name must be unique in the
-calling AWS account.}
+\item{Name}{[required] The name of the host to be created.}
 
 \item{ProviderType}{[required] The name of the installed provider to be associated with your
 connection. The host resource represents the infrastructure where your

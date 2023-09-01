@@ -36,7 +36,10 @@ of a firewall policy after you create it.
 
 You must specify the ARN or the name, and you can specify both.}
 
-\item{FirewallPolicy}{[required] The updated firewall policy to use for the firewall.}
+\item{FirewallPolicy}{[required] The updated firewall policy to use for the firewall. You can't add or
+remove a TLSInspectionConfiguration after you create a firewall policy.
+However, you can replace an existing TLS inspection configuration with
+another \code{TLSInspectionConfiguration}.}
 
 \item{Description}{A description of the firewall policy.}
 

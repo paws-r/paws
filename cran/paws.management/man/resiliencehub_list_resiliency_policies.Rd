@@ -11,9 +11,9 @@ resiliencehub_list_resiliency_policies(
 )
 }
 \arguments{
-\item{maxResults}{The maximum number of results to include in the response. If more
-results exist than the specified \code{MaxResults} value, a token is included
-in the response so that the remaining results can be retrieved.}
+\item{maxResults}{Maximum number of results to include in the response. If more results
+exist than the specified \code{MaxResults} value, a token is included in the
+response so that the remaining results can be retrieved.}
 
 \item{nextToken}{Null, or the token from a previous call to get the next set of results.}
 

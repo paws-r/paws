@@ -66,7 +66,11 @@ versioned models.}
 
 \item{Tags}{A list of key value pairs associated with the model. For more
 information, see \href{https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html}{Tagging Amazon Web Services resources}
-in the \emph{Amazon Web Services General Reference Guide}.}
+in the \emph{Amazon Web Services General Reference Guide}.
+
+If you supply \code{ModelPackageGroupName}, your model package belongs to the
+model group you specify and uses the tags associated with the model
+group. In this case, you cannot supply a \code{tag} argument.}
 
 \item{ModelApprovalStatus}{Whether the model is approved for deployment.
 

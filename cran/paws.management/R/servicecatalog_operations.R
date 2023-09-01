@@ -3187,7 +3187,7 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
 #' 
 #' When the key is `SearchQuery`, the searchable fields are `arn`,
 #' `createdTime`, `id`, `lastRecordId`, `idempotencyToken`, `name`,
-#' `physicalId`, `productId`, `provisioningArtifact`, `type`, `status`,
+#' `physicalId`, `productId`, `provisioningArtifactId`, `type`, `status`,
 #' `tags`, `userArn`, `userArnSession`, `lastProvisioningRecordId`,
 #' `lastSuccessfulProvisioningRecordId`, `productName`, and
 #' `provisioningArtifactName`.

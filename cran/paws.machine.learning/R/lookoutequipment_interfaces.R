@@ -113,6 +113,16 @@ NULL
   list()
 }
 
+.lookoutequipment$delete_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$delete_resource_policy_output <- function(...) {
+  list()
+}
+
 .lookoutequipment$describe_data_ingestion_job_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -121,7 +131,7 @@ NULL
 
 .lookoutequipment$describe_data_ingestion_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), IngestionInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string")), KeyPattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), FailedReason = structure(logical(0), tags = list(type = "string")), DataQualitySummary = structure(list(InsufficientSensorData = structure(list(MissingCompleteSensorData = structure(list(AffectedSensorCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), SensorsWithShortDateRange = structure(list(AffectedSensorCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), MissingSensorData = structure(list(AffectedSensorCount = structure(logical(0), tags = list(type = "integer")), TotalNumberOfMissingValues = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), InvalidSensorData = structure(list(AffectedSensorCount = structure(logical(0), tags = list(type = "integer")), TotalNumberOfInvalidValues = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), UnsupportedTimestamps = structure(list(TotalNumberOfUnsupportedTimestamps = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DuplicateTimestamps = structure(list(TotalNumberOfDuplicateTimestamps = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), IngestedFilesSummary = structure(list(TotalNumberOfFiles = structure(logical(0), tags = list(type = "integer")), IngestedNumberOfFiles = structure(logical(0), tags = list(type = "integer")), DiscardedFiles = structure(list(structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), StatusDetail = structure(logical(0), tags = list(type = "string")), IngestedDataSize = structure(logical(0), tags = list(type = "long")), DataStartTime = structure(logical(0), tags = list(type = "timestamp")), DataEndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), IngestionInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string")), KeyPattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), FailedReason = structure(logical(0), tags = list(type = "string")), DataQualitySummary = structure(list(InsufficientSensorData = structure(list(MissingCompleteSensorData = structure(list(AffectedSensorCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), SensorsWithShortDateRange = structure(list(AffectedSensorCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), MissingSensorData = structure(list(AffectedSensorCount = structure(logical(0), tags = list(type = "integer")), TotalNumberOfMissingValues = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), InvalidSensorData = structure(list(AffectedSensorCount = structure(logical(0), tags = list(type = "integer")), TotalNumberOfInvalidValues = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), UnsupportedTimestamps = structure(list(TotalNumberOfUnsupportedTimestamps = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DuplicateTimestamps = structure(list(TotalNumberOfDuplicateTimestamps = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), IngestedFilesSummary = structure(list(TotalNumberOfFiles = structure(logical(0), tags = list(type = "integer")), IngestedNumberOfFiles = structure(logical(0), tags = list(type = "integer")), DiscardedFiles = structure(list(structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), StatusDetail = structure(logical(0), tags = list(type = "string")), IngestedDataSize = structure(logical(0), tags = list(type = "long")), DataStartTime = structure(logical(0), tags = list(type = "timestamp")), DataEndTime = structure(logical(0), tags = list(type = "timestamp")), SourceDatasetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -133,7 +143,7 @@ NULL
 
 .lookoutequipment$describe_dataset_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DatasetName = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), Schema = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), ServerSideKmsKeyId = structure(logical(0), tags = list(type = "string")), IngestionInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string")), KeyPattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), DataQualitySummary = structure(list(InsufficientSensorData = structure(list(MissingCompleteSensorData = structure(list(AffectedSensorCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), SensorsWithShortDateRange = structure(list(AffectedSensorCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), MissingSensorData = structure(list(AffectedSensorCount = structure(logical(0), tags = list(type = "integer")), TotalNumberOfMissingValues = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), InvalidSensorData = structure(list(AffectedSensorCount = structure(logical(0), tags = list(type = "integer")), TotalNumberOfInvalidValues = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), UnsupportedTimestamps = structure(list(TotalNumberOfUnsupportedTimestamps = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DuplicateTimestamps = structure(list(TotalNumberOfDuplicateTimestamps = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), IngestedFilesSummary = structure(list(TotalNumberOfFiles = structure(logical(0), tags = list(type = "integer")), IngestedNumberOfFiles = structure(logical(0), tags = list(type = "integer")), DiscardedFiles = structure(list(structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string")), DataStartTime = structure(logical(0), tags = list(type = "timestamp")), DataEndTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(DatasetName = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), Schema = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), ServerSideKmsKeyId = structure(logical(0), tags = list(type = "string")), IngestionInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string")), KeyPattern = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), DataQualitySummary = structure(list(InsufficientSensorData = structure(list(MissingCompleteSensorData = structure(list(AffectedSensorCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), SensorsWithShortDateRange = structure(list(AffectedSensorCount = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), MissingSensorData = structure(list(AffectedSensorCount = structure(logical(0), tags = list(type = "integer")), TotalNumberOfMissingValues = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), InvalidSensorData = structure(list(AffectedSensorCount = structure(logical(0), tags = list(type = "integer")), TotalNumberOfInvalidValues = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), UnsupportedTimestamps = structure(list(TotalNumberOfUnsupportedTimestamps = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), DuplicateTimestamps = structure(list(TotalNumberOfDuplicateTimestamps = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "structure")), IngestedFilesSummary = structure(list(TotalNumberOfFiles = structure(logical(0), tags = list(type = "integer")), IngestedNumberOfFiles = structure(logical(0), tags = list(type = "integer")), DiscardedFiles = structure(list(structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string")), DataStartTime = structure(logical(0), tags = list(type = "timestamp")), DataEndTime = structure(logical(0), tags = list(type = "timestamp")), SourceDatasetArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -181,7 +191,55 @@ NULL
 
 .lookoutequipment$describe_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), DatasetName = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), Schema = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), LabelsInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LabelGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TrainingDataStartTime = structure(logical(0), tags = list(type = "timestamp")), TrainingDataEndTime = structure(logical(0), tags = list(type = "timestamp")), EvaluationDataStartTime = structure(logical(0), tags = list(type = "timestamp")), EvaluationDataEndTime = structure(logical(0), tags = list(type = "timestamp")), RoleArn = structure(logical(0), tags = list(type = "string")), DataPreProcessingConfiguration = structure(list(TargetSamplingRate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), TrainingExecutionStartTime = structure(logical(0), tags = list(type = "timestamp")), TrainingExecutionEndTime = structure(logical(0), tags = list(type = "timestamp")), FailedReason = structure(logical(0), tags = list(type = "string")), ModelMetrics = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ServerSideKmsKeyId = structure(logical(0), tags = list(type = "string")), OffCondition = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), DatasetName = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), Schema = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), LabelsInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LabelGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TrainingDataStartTime = structure(logical(0), tags = list(type = "timestamp")), TrainingDataEndTime = structure(logical(0), tags = list(type = "timestamp")), EvaluationDataStartTime = structure(logical(0), tags = list(type = "timestamp")), EvaluationDataEndTime = structure(logical(0), tags = list(type = "timestamp")), RoleArn = structure(logical(0), tags = list(type = "string")), DataPreProcessingConfiguration = structure(list(TargetSamplingRate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), TrainingExecutionStartTime = structure(logical(0), tags = list(type = "timestamp")), TrainingExecutionEndTime = structure(logical(0), tags = list(type = "timestamp")), FailedReason = structure(logical(0), tags = list(type = "string")), ModelMetrics = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ServerSideKmsKeyId = structure(logical(0), tags = list(type = "string")), OffCondition = structure(logical(0), tags = list(type = "string")), SourceModelVersionArn = structure(logical(0), tags = list(type = "string")), ImportJobStartTime = structure(logical(0), tags = list(type = "timestamp")), ImportJobEndTime = structure(logical(0), tags = list(type = "timestamp")), ActiveModelVersion = structure(logical(0), tags = list(type = "long")), ActiveModelVersionArn = structure(logical(0), tags = list(type = "string")), ModelVersionActivatedAt = structure(logical(0), tags = list(type = "timestamp")), PreviousActiveModelVersion = structure(logical(0), tags = list(type = "long")), PreviousActiveModelVersionArn = structure(logical(0), tags = list(type = "string")), PreviousModelVersionActivatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$describe_model_version_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$describe_model_version_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "long")), ModelVersionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string")), DatasetName = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), Schema = structure(logical(0), tags = list(type = "string")), LabelsInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LabelGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TrainingDataStartTime = structure(logical(0), tags = list(type = "timestamp")), TrainingDataEndTime = structure(logical(0), tags = list(type = "timestamp")), EvaluationDataStartTime = structure(logical(0), tags = list(type = "timestamp")), EvaluationDataEndTime = structure(logical(0), tags = list(type = "timestamp")), RoleArn = structure(logical(0), tags = list(type = "string")), DataPreProcessingConfiguration = structure(list(TargetSamplingRate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TrainingExecutionStartTime = structure(logical(0), tags = list(type = "timestamp")), TrainingExecutionEndTime = structure(logical(0), tags = list(type = "timestamp")), FailedReason = structure(logical(0), tags = list(type = "string")), ModelMetrics = structure(logical(0), tags = list(type = "string")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ServerSideKmsKeyId = structure(logical(0), tags = list(type = "string")), OffCondition = structure(logical(0), tags = list(type = "string")), SourceModelVersionArn = structure(logical(0), tags = list(type = "string")), ImportJobStartTime = structure(logical(0), tags = list(type = "timestamp")), ImportJobEndTime = structure(logical(0), tags = list(type = "timestamp")), ImportedDataSizeInBytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$describe_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$describe_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(PolicyRevisionId = structure(logical(0), tags = list(type = "string")), ResourcePolicy = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$import_dataset_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SourceDatasetArn = structure(logical(0), tags = list(type = "string")), DatasetName = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ServerSideKmsKeyId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$import_dataset_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(DatasetName = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$import_model_version_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(SourceModelVersionArn = structure(logical(0), tags = list(type = "string")), ModelName = structure(logical(0), tags = list(type = "string")), DatasetName = structure(logical(0), tags = list(type = "string")), LabelsInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LabelGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ServerSideKmsKeyId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$import_model_version_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), ModelVersionArn = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "long")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -269,6 +327,18 @@ NULL
   return(populate(args, shape))
 }
 
+.lookoutequipment$list_model_versions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string")), CreatedAtEndTime = structure(logical(0), tags = list(type = "timestamp")), CreatedAtStartTime = structure(logical(0), tags = list(type = "timestamp")), MaxModelVersion = structure(logical(0), tags = list(type = "long")), MinModelVersion = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$list_model_versions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ModelVersionSummaries = structure(list(structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "long")), ModelVersionArn = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), Status = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .lookoutequipment$list_models_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), Status = structure(logical(0), tags = list(type = "string")), ModelNameBeginsWith = structure(logical(0), tags = list(type = "string")), DatasetNameBeginsWith = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -277,7 +347,7 @@ NULL
 
 .lookoutequipment$list_models_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ModelSummaries = structure(list(structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), DatasetName = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ModelSummaries = structure(list(structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), DatasetName = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ActiveModelVersion = structure(logical(0), tags = list(type = "long")), ActiveModelVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -302,6 +372,18 @@ NULL
 .lookoutequipment$list_tags_for_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$put_resource_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), ResourcePolicy = structure(logical(0), tags = list(type = "string")), PolicyRevisionId = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$put_resource_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceArn = structure(logical(0), tags = list(type = "string")), PolicyRevisionId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -362,6 +444,18 @@ NULL
 .lookoutequipment$untag_resource_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$update_active_model_version_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$update_active_model_version_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), CurrentActiveVersion = structure(logical(0), tags = list(type = "long")), PreviousActiveVersion = structure(logical(0), tags = list(type = "long")), CurrentActiveVersionArn = structure(logical(0), tags = list(type = "string")), PreviousActiveVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

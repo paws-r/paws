@@ -5,20 +5,20 @@
 \title{Updates the outbound call config of a campaign}
 \usage{
 connectcampaignservice_update_campaign_outbound_call_config(
-  answerMachineDetectionConfig = NULL,
+  id,
   connectContactFlowId = NULL,
   connectSourcePhoneNumber = NULL,
-  id
+  answerMachineDetectionConfig = NULL
 )
 }
 \arguments{
-\item{answerMachineDetectionConfig}{}
+\item{id}{[required]}
 
 \item{connectContactFlowId}{}
 
 \item{connectSourcePhoneNumber}{}
 
-\item{id}{[required]}
+\item{answerMachineDetectionConfig}{}
 }
 \description{
 Updates the outbound call config of a campaign. This API is idempotent.

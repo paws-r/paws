@@ -32,7 +32,7 @@ registered Amazon QuickSight.}
 \item{SnapshotConfiguration}{[required] A structure that describes the configuration of the dashboard snapshot.}
 }
 \description{
-Starts an asynchronous job that generates a dashboard snapshot. You can request up to one paginated PDF and up to five CSVs per API call.
+Starts an asynchronous job that generates a dashboard snapshot. You can request one of the following format configurations per API call.
 
 See \url{https://www.paws-r-sdk.com/docs/quicksight_start_dashboard_snapshot_job/} for full documentation.
 }

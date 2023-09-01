@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_list_user_import_jobs}
 \alias{cognitoidentityprovider_list_user_import_jobs}
-\title{Lists the user import jobs}
+\title{Lists user import jobs for a user pool}
 \usage{
 cognitoidentityprovider_list_user_import_jobs(
   UserPoolId,
@@ -21,7 +21,7 @@ into.}
 which can be used to return the next set of import jobs in the list.}
 }
 \description{
-Lists the user import jobs.
+Lists user import jobs for a user pool.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_user_import_jobs/} for full documentation.
 }

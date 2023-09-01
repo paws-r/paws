@@ -46,7 +46,8 @@ rds_modify_db_cluster(
   RotateMasterUserPassword = NULL,
   MasterUserSecretKmsKeyId = NULL,
   EngineMode = NULL,
-  AllowEngineModeChange = NULL
+  AllowEngineModeChange = NULL,
+  EnableLocalWriteForwarding = NULL
 )
 }
 \arguments{
@@ -562,6 +563,12 @@ Constraints:
 for the \code{EngineMode} parameter from the DB cluster's current engine
 mode.
 }}
+
+\item{EnableLocalWriteForwarding}{Specifies whether read replicas can forward write operations to the
+writer DB instance in the DB cluster. By default, write operations
+aren't allowed on reader DB instances.
+
+Valid for: Aurora DB clusters only}
 }
 \description{
 Modifies the settings of an Amazon Aurora DB cluster or a Multi-AZ DB cluster. You can change one or more settings by specifying these parameters and the new values in the request.

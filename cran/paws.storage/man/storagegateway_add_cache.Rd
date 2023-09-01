@@ -15,7 +15,7 @@ length of 300. You can get the disk IDs from the
 \code{\link[=storagegateway_list_local_disks]{list_local_disks}} API.}
 }
 \description{
-Configures one or more gateway local disks as cache for a gateway. This operation is only supported in the cached volume, tape, and file gateway type (see \href{https://docs.aws.amazon.com/storagegateway/index.html}{How Storage Gateway works (architecture)}.
+Configures one or more gateway local disks as cache for a gateway. This operation is only supported in the cached volume, tape, and file gateway type (see \href{https://docs.aws.amazon.com/storagegateway/}{How Storage Gateway works (architecture)}.
 
 See \url{https://www.paws-r-sdk.com/docs/storagegateway_add_cache/} for full documentation.
 }

@@ -629,8 +629,8 @@ iam_create_access_key <- function(UserName = NULL) {
 #' Creates an alias for your Amazon Web Services account. For information
 #' about using an Amazon Web Services account alias, see [Creating,
 #' deleting, and listing an Amazon Web Services account
-#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/CreateAccountAlias.html)
-#' in the *Amazon Web Services Sign-In User Guide*.
+#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/) in the *Amazon
+#' Web Services Sign-In User Guide*.
 #'
 #' @usage
 #' iam_create_account_alias(AccountAlias)
@@ -2374,8 +2374,8 @@ iam_delete_access_key <- function(UserName = NULL, AccessKeyId) {
 #' Deletes the specified Amazon Web Services account alias. For information
 #' about using an Amazon Web Services account alias, see [Creating,
 #' deleting, and listing an Amazon Web Services account
-#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/CreateAccountAlias.html)
-#' in the *Amazon Web Services Sign-In User Guide*.
+#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/) in the *Amazon
+#' Web Services Sign-In User Guide*.
 #'
 #' @usage
 #' iam_delete_account_alias(AccountAlias)
@@ -6975,8 +6975,8 @@ iam_list_access_keys <- function(UserName = NULL, Marker = NULL, MaxItems = NULL
 #' (Note: you can have only one). For information about using an Amazon Web
 #' Services account alias, see [Creating, deleting, and listing an Amazon
 #' Web Services account
-#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/CreateAccountAlias.html)
-#' in the *Amazon Web Services Sign-In User Guide*.
+#' alias](https://docs.aws.amazon.com/IAM/latest/UserGuide/) in the *Amazon
+#' Web Services Sign-In User Guide*.
 #'
 #' @usage
 #' iam_list_account_aliases(Marker, MaxItems)
@@ -11315,7 +11315,7 @@ iam_set_security_token_service_preferences <- function(GlobalEndpointTokenVersio
 #' VPC, then you must supply the network interface resource. If it includes
 #' an IP subnet, then you must specify the subnet resource. For more
 #' information on the EC2 scenario options, see [Supported
-#' platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html)
+#' platforms](https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/)
 #' in the *Amazon EC2 User Guide*.
 #' 
 #' -   **EC2-VPC-InstanceStore**
@@ -11686,7 +11686,7 @@ iam_simulate_custom_policy <- function(PolicyInputList, PermissionsBoundaryPolic
 #' VPC, then you must supply the network interface resource. If it includes
 #' an IP subnet, then you must specify the subnet resource. For more
 #' information on the EC2 scenario options, see [Supported
-#' platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html)
+#' platforms](https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/)
 #' in the *Amazon EC2 User Guide*.
 #' 
 #' -   **EC2-VPC-InstanceStore**

@@ -65,7 +65,10 @@ make this simpler, the
 response includes the actual username value in the
 \code{USERNAMEUSER_ID_FOR_SRP} attribute. This happens even if you specified
 an alias in your call to
-\code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}.}
+\code{\link[=cognitoidentityprovider_admin_initiate_auth]{admin_initiate_auth}}.
+
+For more information about \code{SECRET_HASH}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#cognito-user-pools-computing-secret-hash}{Computing secret hash values}.
+For information about \code{DEVICE_KEY}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.}
 
 \item{Session}{The session that should be passed both ways in challenge-response calls
 to the service. If an

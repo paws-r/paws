@@ -559,7 +559,7 @@ xray_get_sampling_targets <- function(SamplingStatisticsDocuments) {
 #' requests, and downstream services that they call as a result
 #'
 #' @description
-#' Retrieves a document that describes services that process incoming requests, and downstream services that they call as a result. Root services process incoming requests and make calls to downstream services. Root services are applications that use the [Amazon Web Services X-Ray SDK](https://docs.aws.amazon.com/xray/index.html). Downstream services can be other applications, Amazon Web Services resources, HTTP web APIs, or SQL databases.
+#' Retrieves a document that describes services that process incoming requests, and downstream services that they call as a result. Root services process incoming requests and make calls to downstream services. Root services are applications that use the [Amazon Web Services X-Ray SDK](https://docs.aws.amazon.com/xray/). Downstream services can be other applications, Amazon Web Services resources, HTTP web APIs, or SQL databases.
 #'
 #' See [https://www.paws-r-sdk.com/docs/xray_get_service_graph/](https://www.paws-r-sdk.com/docs/xray_get_service_graph/) for full documentation.
 #'
@@ -896,7 +896,7 @@ xray_put_telemetry_records <- function(TelemetryRecords, EC2InstanceId = NULL, H
 #' Uploads segment documents to Amazon Web Services X-Ray
 #'
 #' @description
-#' Uploads segment documents to Amazon Web Services X-Ray. The [X-Ray SDK](https://docs.aws.amazon.com/xray/index.html) generates segment documents and sends them to the X-Ray daemon, which uploads them in batches. A segment document can be a completed segment, an in-progress segment, or an array of subsegments.
+#' Uploads segment documents to Amazon Web Services X-Ray. The [X-Ray SDK](https://docs.aws.amazon.com/xray/) generates segment documents and sends them to the X-Ray daemon, which uploads them in batches. A segment document can be a completed segment, an in-progress segment, or an array of subsegments.
 #'
 #' See [https://www.paws-r-sdk.com/docs/xray_put_trace_segments/](https://www.paws-r-sdk.com/docs/xray_put_trace_segments/) for full documentation.
 #'

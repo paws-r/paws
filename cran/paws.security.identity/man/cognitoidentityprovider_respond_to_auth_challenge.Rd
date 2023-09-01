@@ -70,7 +70,10 @@ required attributes.
 returned by
 \code{\link[=cognitoidentityprovider_verify_software_token]{verify_software_token}}
 in the \code{Session} parameter.
-}}
+}
+
+For more information about \code{SECRET_HASH}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/signing-up-users-in-your-app.html#cognito-user-pools-computing-secret-hash}{Computing secret hash values}.
+For information about \code{DEVICE_KEY}, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-device-tracking.html}{Working with user devices in your user pool}.}
 
 \item{AnalyticsMetadata}{The Amazon Pinpoint analytics metadata that contributes to your metrics
 for

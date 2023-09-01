@@ -2,7 +2,7 @@
 % Please edit documentation in R/globalaccelerator_operations.R
 \name{globalaccelerator_update_accelerator}
 \alias{globalaccelerator_update_accelerator}
-\title{Update an accelerator}
+\title{Update an accelerator to make changes, such as the following:}
 \usage{
 globalaccelerator_update_accelerator(
   AcceleratorArn,
@@ -28,7 +28,7 @@ If the value is set to true, the accelerator cannot be deleted. If set
 to false, the accelerator can be deleted.}
 }
 \description{
-Update an accelerator.
+Update an accelerator to make changes, such as the following:
 
 See \url{https://www.paws-r-sdk.com/docs/globalaccelerator_update_accelerator/} for full documentation.
 }

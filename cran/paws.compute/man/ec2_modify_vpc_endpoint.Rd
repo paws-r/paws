@@ -17,7 +17,8 @@ ec2_modify_vpc_endpoint(
   RemoveSecurityGroupIds = NULL,
   IpAddressType = NULL,
   DnsOptions = NULL,
-  PrivateDnsEnabled = NULL
+  PrivateDnsEnabled = NULL,
+  SubnetConfigurations = NULL
 )
 }
 \arguments{
@@ -49,10 +50,10 @@ you can specify only one subnet.}
 endpoint.}
 
 \item{AddSecurityGroupIds}{(Interface endpoint) The IDs of the security groups to associate with
-the network interface.}
+the endpoint network interfaces.}
 
 \item{RemoveSecurityGroupIds}{(Interface endpoint) The IDs of the security groups to disassociate from
-the network interface.}
+the endpoint network interfaces.}
 
 \item{IpAddressType}{The IP address type for the endpoint.}
 
@@ -60,6 +61,8 @@ the network interface.}
 
 \item{PrivateDnsEnabled}{(Interface endpoint) Indicates whether a private hosted zone is
 associated with the VPC.}
+
+\item{SubnetConfigurations}{The subnet configurations for the endpoint.}
 }
 \description{
 Modifies attributes of a specified VPC endpoint. The attributes that you can modify depend on the type of VPC endpoint (interface, gateway, or Gateway Load Balancer). For more information, see the \href{https://docs.aws.amazon.com/vpc/latest/privatelink/}{Amazon Web Services PrivateLink Guide}.

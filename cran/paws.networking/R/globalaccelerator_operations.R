@@ -1484,10 +1484,10 @@ globalaccelerator_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .globalaccelerator$operations$untag_resource <- globalaccelerator_untag_resource
 
-#' Update an accelerator
+#' Update an accelerator to make changes, such as the following:
 #'
 #' @description
-#' Update an accelerator.
+#' Update an accelerator to make changes, such as the following:
 #'
 #' See [https://www.paws-r-sdk.com/docs/globalaccelerator_update_accelerator/](https://www.paws-r-sdk.com/docs/globalaccelerator_update_accelerator/) for full documentation.
 #'

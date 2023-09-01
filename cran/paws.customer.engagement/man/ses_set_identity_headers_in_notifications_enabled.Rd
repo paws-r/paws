@@ -21,8 +21,8 @@ notifications.}
 
 \item{Enabled}{[required] Sets whether Amazon SES includes the original email headers in Amazon
 SNS notifications of the specified notification type. A value of \code{true}
-specifies that Amazon SES will include headers in notifications, and a
-value of \code{false} specifies that Amazon SES will not include headers in
+specifies that Amazon SES includes headers in notifications, and a value
+of \code{false} specifies that Amazon SES does not include headers in
 notifications.
 
 This value can only be set when \code{NotificationType} is already set to use

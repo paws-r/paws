@@ -10,7 +10,7 @@ ses_update_template(Template)
 \item{Template}{[required]}
 }
 \description{
-Updates an email template. Email templates enable you to send personalized email to one or more destinations in a single API operation. For more information, see the \href{https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html}{Amazon SES Developer Guide}.
+Updates an email template. Email templates enable you to send personalized email to one or more destinations in a single operation. For more information, see the \href{https://docs.aws.amazon.com/ses/latest/dg/send-personalized-email-api.html}{Amazon SES Developer Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ses_update_template/} for full documentation.
 }

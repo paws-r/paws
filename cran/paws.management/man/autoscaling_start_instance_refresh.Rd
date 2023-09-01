@@ -41,6 +41,7 @@ additional features, such as the following:
 \itemize{
 \item Auto rollback
 \item Checkpoints
+\item CloudWatch alarms
 \item Skip matching
 }}
 }

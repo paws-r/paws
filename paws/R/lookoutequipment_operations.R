@@ -8,7 +8,7 @@ NULL
 #' @description
 #' Creates a container for a collection of data being ingested for
 #' analysis. The dataset contains the metadata describing where the data is
-#' and what the data actually looks like. In other words, it contains the
+#' and what the data actually looks like. For example, it contains the
 #' location of the data source, the data schema, and other information. A
 #' dataset also contains any tags associated with the ingested data.
 #'
@@ -31,7 +31,7 @@ NULL
 #' list(
 #'   DatasetName = "string",
 #'   DatasetArn = "string",
-#'   Status = "CREATED"|"INGESTION_IN_PROGRESS"|"ACTIVE"
+#'   Status = "CREATED"|"INGESTION_IN_PROGRESS"|"ACTIVE"|"IMPORT_IN_PROGRESS"
 #' )
 #' ```
 #'
@@ -412,7 +412,7 @@ lookoutequipment_create_label_group <- function(LabelGroupName, FaultCodes = NUL
 #' ```
 #' list(
 #'   ModelArn = "string",
-#'   Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"
+#'   Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"IMPORT_IN_PROGRESS"
 #' )
 #' ```
 #'
@@ -705,6 +705,49 @@ lookoutequipment_delete_model <- function(ModelName) {
 }
 .lookoutequipment$operations$delete_model <- lookoutequipment_delete_model
 
+#' Deletes the resource policy attached to the resource
+#'
+#' @description
+#' Deletes the resource policy attached to the resource.
+#'
+#' @usage
+#' lookoutequipment_delete_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which the resource
+#' policy should be deleted.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_resource_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutequipment_delete_resource_policy
+#'
+#' @aliases lookoutequipment_delete_resource_policy
+lookoutequipment_delete_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lookoutequipment$delete_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .lookoutequipment$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .lookoutequipment$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutequipment$operations$delete_resource_policy <- lookoutequipment_delete_resource_policy
+
 #' Provides information on a specific data ingestion job such as creation
 #' time, dataset ARN, and status
 #'
@@ -734,7 +777,7 @@ lookoutequipment_delete_model <- function(ModelName) {
 #'   CreatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   Status = "IN_PROGRESS"|"SUCCESS"|"FAILED",
+#'   Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"IMPORT_IN_PROGRESS",
 #'   FailedReason = "string",
 #'   DataQualitySummary = list(
 #'     InsufficientSensorData = list(
@@ -777,7 +820,8 @@ lookoutequipment_delete_model <- function(ModelName) {
 #'   ),
 #'   DataEndTime = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   SourceDatasetArn = "string"
 #' )
 #' ```
 #'
@@ -834,7 +878,7 @@ lookoutequipment_describe_data_ingestion_job <- function(JobId) {
 #'   LastUpdatedAt = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   Status = "CREATED"|"INGESTION_IN_PROGRESS"|"ACTIVE",
+#'   Status = "CREATED"|"INGESTION_IN_PROGRESS"|"ACTIVE"|"IMPORT_IN_PROGRESS",
 #'   Schema = "string",
 #'   ServerSideKmsKeyId = "string",
 #'   IngestionInputConfiguration = list(
@@ -884,7 +928,8 @@ lookoutequipment_describe_data_ingestion_job <- function(JobId) {
 #'   ),
 #'   DataEndTime = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   SourceDatasetArn = "string"
 #' )
 #' ```
 #'
@@ -1166,7 +1211,7 @@ lookoutequipment_describe_label_group <- function(LabelGroupName) {
 #'   DataPreProcessingConfiguration = list(
 #'     TargetSamplingRate = "PT1S"|"PT5S"|"PT10S"|"PT15S"|"PT30S"|"PT1M"|"PT5M"|"PT10M"|"PT15M"|"PT30M"|"PT1H"
 #'   ),
-#'   Status = "IN_PROGRESS"|"SUCCESS"|"FAILED",
+#'   Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"IMPORT_IN_PROGRESS",
 #'   TrainingExecutionStartTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
@@ -1182,7 +1227,24 @@ lookoutequipment_describe_label_group <- function(LabelGroupName) {
 #'     "2015-01-01"
 #'   ),
 #'   ServerSideKmsKeyId = "string",
-#'   OffCondition = "string"
+#'   OffCondition = "string",
+#'   SourceModelVersionArn = "string",
+#'   ImportJobStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ImportJobEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ActiveModelVersion = 123,
+#'   ActiveModelVersionArn = "string",
+#'   ModelVersionActivatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   PreviousActiveModelVersion = 123,
+#'   PreviousActiveModelVersionArn = "string",
+#'   PreviousModelVersionActivatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
 #' )
 #' ```
 #'
@@ -1214,6 +1276,318 @@ lookoutequipment_describe_model <- function(ModelName) {
   return(response)
 }
 .lookoutequipment$operations$describe_model <- lookoutequipment_describe_model
+
+#' Retrieves information about a specific machine learning model version
+#'
+#' @description
+#' Retrieves information about a specific machine learning model version.
+#'
+#' @usage
+#' lookoutequipment_describe_model_version(ModelName, ModelVersion)
+#'
+#' @param ModelName &#91;required&#93; The name of the machine learning model that this version belongs to.
+#' @param ModelVersion &#91;required&#93; The version of the machine learning model.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelName = "string",
+#'   ModelArn = "string",
+#'   ModelVersion = 123,
+#'   ModelVersionArn = "string",
+#'   Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"IMPORT_IN_PROGRESS"|"CANCELED",
+#'   SourceType = "TRAINING"|"RETRAINING"|"IMPORT",
+#'   DatasetName = "string",
+#'   DatasetArn = "string",
+#'   Schema = "string",
+#'   LabelsInputConfiguration = list(
+#'     S3InputConfiguration = list(
+#'       Bucket = "string",
+#'       Prefix = "string"
+#'     ),
+#'     LabelGroupName = "string"
+#'   ),
+#'   TrainingDataStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   TrainingDataEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EvaluationDataStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   EvaluationDataEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   RoleArn = "string",
+#'   DataPreProcessingConfiguration = list(
+#'     TargetSamplingRate = "PT1S"|"PT5S"|"PT10S"|"PT15S"|"PT30S"|"PT1M"|"PT5M"|"PT10M"|"PT15M"|"PT30M"|"PT1H"
+#'   ),
+#'   TrainingExecutionStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   TrainingExecutionEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   FailedReason = "string",
+#'   ModelMetrics = "string",
+#'   LastUpdatedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ServerSideKmsKeyId = "string",
+#'   OffCondition = "string",
+#'   SourceModelVersionArn = "string",
+#'   ImportJobStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ImportJobEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   ImportedDataSizeInBytes = 123
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_model_version(
+#'   ModelName = "string",
+#'   ModelVersion = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutequipment_describe_model_version
+#'
+#' @aliases lookoutequipment_describe_model_version
+lookoutequipment_describe_model_version <- function(ModelName, ModelVersion) {
+  op <- new_operation(
+    name = "DescribeModelVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lookoutequipment$describe_model_version_input(ModelName = ModelName, ModelVersion = ModelVersion)
+  output <- .lookoutequipment$describe_model_version_output()
+  config <- get_config()
+  svc <- .lookoutequipment$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutequipment$operations$describe_model_version <- lookoutequipment_describe_model_version
+
+#' Provides the details of a resource policy attached to a resource
+#'
+#' @description
+#' Provides the details of a resource policy attached to a resource.
+#'
+#' @usage
+#' lookoutequipment_describe_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that is associated with
+#' the resource policy.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   PolicyRevisionId = "string",
+#'   ResourcePolicy = "string",
+#'   CreationTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LastModifiedTime = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_resource_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutequipment_describe_resource_policy
+#'
+#' @aliases lookoutequipment_describe_resource_policy
+lookoutequipment_describe_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DescribeResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lookoutequipment$describe_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .lookoutequipment$describe_resource_policy_output()
+  config <- get_config()
+  svc <- .lookoutequipment$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutequipment$operations$describe_resource_policy <- lookoutequipment_describe_resource_policy
+
+#' Imports a dataset
+#'
+#' @description
+#' Imports a dataset.
+#'
+#' @usage
+#' lookoutequipment_import_dataset(SourceDatasetArn, DatasetName,
+#'   ClientToken, ServerSideKmsKeyId, Tags)
+#'
+#' @param SourceDatasetArn &#91;required&#93; The Amazon Resource Name (ARN) of the dataset to import.
+#' @param DatasetName The name of the machine learning dataset to be created. If the dataset
+#' already exists, Amazon Lookout for Equipment overwrites the existing
+#' dataset. If you don't specify this field, it is filled with the name of
+#' the source dataset.
+#' @param ClientToken &#91;required&#93; A unique identifier for the request. If you do not set the client
+#' request token, Amazon Lookout for Equipment generates one.
+#' @param ServerSideKmsKeyId Provides the identifier of the KMS key key used to encrypt model data by
+#' Amazon Lookout for Equipment.
+#' @param Tags Any tags associated with the dataset to be created.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DatasetName = "string",
+#'   DatasetArn = "string",
+#'   Status = "CREATED"|"INGESTION_IN_PROGRESS"|"ACTIVE"|"IMPORT_IN_PROGRESS",
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$import_dataset(
+#'   SourceDatasetArn = "string",
+#'   DatasetName = "string",
+#'   ClientToken = "string",
+#'   ServerSideKmsKeyId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutequipment_import_dataset
+#'
+#' @aliases lookoutequipment_import_dataset
+lookoutequipment_import_dataset <- function(SourceDatasetArn, DatasetName = NULL, ClientToken, ServerSideKmsKeyId = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "ImportDataset",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lookoutequipment$import_dataset_input(SourceDatasetArn = SourceDatasetArn, DatasetName = DatasetName, ClientToken = ClientToken, ServerSideKmsKeyId = ServerSideKmsKeyId, Tags = Tags)
+  output <- .lookoutequipment$import_dataset_output()
+  config <- get_config()
+  svc <- .lookoutequipment$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutequipment$operations$import_dataset <- lookoutequipment_import_dataset
+
+#' Imports a model that has been trained successfully
+#'
+#' @description
+#' Imports a model that has been trained successfully.
+#'
+#' @usage
+#' lookoutequipment_import_model_version(SourceModelVersionArn, ModelName,
+#'   DatasetName, LabelsInputConfiguration, ClientToken, RoleArn,
+#'   ServerSideKmsKeyId, Tags)
+#'
+#' @param SourceModelVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the model version to import.
+#' @param ModelName The name for the machine learning model to be created. If the model
+#' already exists, Amazon Lookout for Equipment creates a new version. If
+#' you do not specify this field, it is filled with the name of the source
+#' model.
+#' @param DatasetName &#91;required&#93; The name of the dataset for the machine learning model being imported.
+#' @param LabelsInputConfiguration 
+#' @param ClientToken &#91;required&#93; A unique identifier for the request. If you do not set the client
+#' request token, Amazon Lookout for Equipment generates one.
+#' @param RoleArn The Amazon Resource Name (ARN) of a role with permission to access the
+#' data source being used to create the machine learning model.
+#' @param ServerSideKmsKeyId Provides the identifier of the KMS key key used to encrypt model data by
+#' Amazon Lookout for Equipment.
+#' @param Tags The tags associated with the machine learning model to be created.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelName = "string",
+#'   ModelArn = "string",
+#'   ModelVersionArn = "string",
+#'   ModelVersion = 123,
+#'   Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"IMPORT_IN_PROGRESS"|"CANCELED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$import_model_version(
+#'   SourceModelVersionArn = "string",
+#'   ModelName = "string",
+#'   DatasetName = "string",
+#'   LabelsInputConfiguration = list(
+#'     S3InputConfiguration = list(
+#'       Bucket = "string",
+#'       Prefix = "string"
+#'     ),
+#'     LabelGroupName = "string"
+#'   ),
+#'   ClientToken = "string",
+#'   RoleArn = "string",
+#'   ServerSideKmsKeyId = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutequipment_import_model_version
+#'
+#' @aliases lookoutequipment_import_model_version
+lookoutequipment_import_model_version <- function(SourceModelVersionArn, ModelName = NULL, DatasetName, LabelsInputConfiguration = NULL, ClientToken, RoleArn = NULL, ServerSideKmsKeyId = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "ImportModelVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lookoutequipment$import_model_version_input(SourceModelVersionArn = SourceModelVersionArn, ModelName = ModelName, DatasetName = DatasetName, LabelsInputConfiguration = LabelsInputConfiguration, ClientToken = ClientToken, RoleArn = RoleArn, ServerSideKmsKeyId = ServerSideKmsKeyId, Tags = Tags)
+  output <- .lookoutequipment$import_model_version_output()
+  config <- get_config()
+  svc <- .lookoutequipment$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutequipment$operations$import_model_version <- lookoutequipment_import_model_version
 
 #' Provides a list of all data ingestion jobs, including dataset name and
 #' ARN, S3 location of the input data, status, and so on
@@ -1249,7 +1623,7 @@ lookoutequipment_describe_model <- function(ModelName) {
 #'           KeyPattern = "string"
 #'         )
 #'       ),
-#'       Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"
+#'       Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"IMPORT_IN_PROGRESS"
 #'     )
 #'   )
 #' )
@@ -1261,7 +1635,7 @@ lookoutequipment_describe_model <- function(ModelName) {
 #'   DatasetName = "string",
 #'   NextToken = "string",
 #'   MaxResults = 123,
-#'   Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"
+#'   Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"IMPORT_IN_PROGRESS"
 #' )
 #' ```
 #'
@@ -1312,7 +1686,7 @@ lookoutequipment_list_data_ingestion_jobs <- function(DatasetName = NULL, NextTo
 #'     list(
 #'       DatasetName = "string",
 #'       DatasetArn = "string",
-#'       Status = "CREATED"|"INGESTION_IN_PROGRESS"|"ACTIVE",
+#'       Status = "CREATED"|"INGESTION_IN_PROGRESS"|"ACTIVE"|"IMPORT_IN_PROGRESS",
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
 #'       )
@@ -1370,7 +1744,7 @@ lookoutequipment_list_datasets <- function(NextToken = NULL, MaxResults = NULL, 
 #' @param IntervalStartTime &#91;required&#93; Lookout for Equipment will return all the inference events with an end
 #' time equal to or greater than the start time given.
 #' @param IntervalEndTime &#91;required&#93; Returns all the inference events with an end start time equal to or
-#' greater than less than the end time given
+#' greater than less than the end time given.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1555,7 +1929,7 @@ lookoutequipment_list_inference_executions <- function(NextToken = NULL, MaxResu
 #' @param MaxResults Specifies the maximum number of inference schedulers to list.
 #' @param InferenceSchedulerNameBeginsWith The beginning of the name of the inference schedulers to be listed.
 #' @param ModelName The name of the ML model used by the inference scheduler to be listed.
-#' @param Status Specifies the current status of the inference schedulers to list.
+#' @param Status Specifies the current status of the inference schedulers.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1760,6 +2134,97 @@ lookoutequipment_list_labels <- function(LabelGroupName, IntervalStartTime = NUL
 }
 .lookoutequipment$operations$list_labels <- lookoutequipment_list_labels
 
+#' Generates a list of all model versions for a given model, including the
+#' model version, model version ARN, and status
+#'
+#' @description
+#' Generates a list of all model versions for a given model, including the
+#' model version, model version ARN, and status. To list a subset of
+#' versions, use the `MaxModelVersion` and `MinModelVersion` fields.
+#'
+#' @usage
+#' lookoutequipment_list_model_versions(ModelName, NextToken, MaxResults,
+#'   Status, SourceType, CreatedAtEndTime, CreatedAtStartTime,
+#'   MaxModelVersion, MinModelVersion)
+#'
+#' @param ModelName &#91;required&#93; Then name of the machine learning model for which the model versions are
+#' to be listed.
+#' @param NextToken If the total number of results exceeds the limit that the response can
+#' display, the response returns an opaque pagination token indicating
+#' where to continue the listing of machine learning model versions. Use
+#' this token in the `NextToken` field in the request to list the next page
+#' of results.
+#' @param MaxResults Specifies the maximum number of machine learning model versions to list.
+#' @param Status Filter the results based on the current status of the model version.
+#' @param SourceType Filter the results based on the way the model version was generated.
+#' @param CreatedAtEndTime Filter results to return all the model versions created before this
+#' time.
+#' @param CreatedAtStartTime Filter results to return all the model versions created after this time.
+#' @param MaxModelVersion Specifies the highest version of the model to return in the list.
+#' @param MinModelVersion Specifies the lowest version of the model to return in the list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   ModelVersionSummaries = list(
+#'     list(
+#'       ModelName = "string",
+#'       ModelArn = "string",
+#'       ModelVersion = 123,
+#'       ModelVersionArn = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"IMPORT_IN_PROGRESS"|"CANCELED",
+#'       SourceType = "TRAINING"|"RETRAINING"|"IMPORT"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_model_versions(
+#'   ModelName = "string",
+#'   NextToken = "string",
+#'   MaxResults = 123,
+#'   Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"IMPORT_IN_PROGRESS"|"CANCELED",
+#'   SourceType = "TRAINING"|"RETRAINING"|"IMPORT",
+#'   CreatedAtEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CreatedAtStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   MaxModelVersion = 123,
+#'   MinModelVersion = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutequipment_list_model_versions
+#'
+#' @aliases lookoutequipment_list_model_versions
+lookoutequipment_list_model_versions <- function(ModelName, NextToken = NULL, MaxResults = NULL, Status = NULL, SourceType = NULL, CreatedAtEndTime = NULL, CreatedAtStartTime = NULL, MaxModelVersion = NULL, MinModelVersion = NULL) {
+  op <- new_operation(
+    name = "ListModelVersions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .lookoutequipment$list_model_versions_input(ModelName = ModelName, NextToken = NextToken, MaxResults = MaxResults, Status = Status, SourceType = SourceType, CreatedAtEndTime = CreatedAtEndTime, CreatedAtStartTime = CreatedAtStartTime, MaxModelVersion = MaxModelVersion, MinModelVersion = MinModelVersion)
+  output <- .lookoutequipment$list_model_versions_output()
+  config <- get_config()
+  svc <- .lookoutequipment$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutequipment$operations$list_model_versions <- lookoutequipment_list_model_versions
+
 #' Generates a list of all models in the account, including model name and
 #' ARN, dataset, and status
 #'
@@ -1789,10 +2254,12 @@ lookoutequipment_list_labels <- function(LabelGroupName, IntervalStartTime = NUL
 #'       ModelArn = "string",
 #'       DatasetName = "string",
 #'       DatasetArn = "string",
-#'       Status = "IN_PROGRESS"|"SUCCESS"|"FAILED",
+#'       Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"IMPORT_IN_PROGRESS",
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
-#'       )
+#'       ),
+#'       ActiveModelVersion = 123,
+#'       ActiveModelVersionArn = "string"
 #'     )
 #'   )
 #' )
@@ -1803,7 +2270,7 @@ lookoutequipment_list_labels <- function(LabelGroupName, IntervalStartTime = NUL
 #' svc$list_models(
 #'   NextToken = "string",
 #'   MaxResults = 123,
-#'   Status = "IN_PROGRESS"|"SUCCESS"|"FAILED",
+#'   Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"IMPORT_IN_PROGRESS",
 #'   ModelNameBeginsWith = "string",
 #'   DatasetNameBeginsWith = "string"
 #' )
@@ -1992,6 +2459,63 @@ lookoutequipment_list_tags_for_resource <- function(ResourceArn) {
 }
 .lookoutequipment$operations$list_tags_for_resource <- lookoutequipment_list_tags_for_resource
 
+#' Creates a resource control policy for a given resource
+#'
+#' @description
+#' Creates a resource control policy for a given resource.
+#'
+#' @usage
+#' lookoutequipment_put_resource_policy(ResourceArn, ResourcePolicy,
+#'   PolicyRevisionId, ClientToken)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource for which the policy is
+#' being created.
+#' @param ResourcePolicy &#91;required&#93; The JSON-formatted resource policy to create.
+#' @param PolicyRevisionId A unique identifier for a revision of the resource policy.
+#' @param ClientToken &#91;required&#93; A unique identifier for the request. If you do not set the client
+#' request token, Amazon Lookout for Equipment generates one.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceArn = "string",
+#'   PolicyRevisionId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_resource_policy(
+#'   ResourceArn = "string",
+#'   ResourcePolicy = "string",
+#'   PolicyRevisionId = "string",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutequipment_put_resource_policy
+#'
+#' @aliases lookoutequipment_put_resource_policy
+lookoutequipment_put_resource_policy <- function(ResourceArn, ResourcePolicy, PolicyRevisionId = NULL, ClientToken) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lookoutequipment$put_resource_policy_input(ResourceArn = ResourceArn, ResourcePolicy = ResourcePolicy, PolicyRevisionId = PolicyRevisionId, ClientToken = ClientToken)
+  output <- .lookoutequipment$put_resource_policy_output()
+  config <- get_config()
+  svc <- .lookoutequipment$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutequipment$operations$put_resource_policy <- lookoutequipment_put_resource_policy
+
 #' Starts a data ingestion job
 #'
 #' @description
@@ -2015,7 +2539,7 @@ lookoutequipment_list_tags_for_resource <- function(ResourceArn) {
 #' ```
 #' list(
 #'   JobId = "string",
-#'   Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"
+#'   Status = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"IMPORT_IN_PROGRESS"
 #' )
 #' ```
 #'
@@ -2262,6 +2786,62 @@ lookoutequipment_untag_resource <- function(ResourceArn, TagKeys) {
   return(response)
 }
 .lookoutequipment$operations$untag_resource <- lookoutequipment_untag_resource
+
+#' Sets the active model version for a given machine learning model
+#'
+#' @description
+#' Sets the active model version for a given machine learning model.
+#'
+#' @usage
+#' lookoutequipment_update_active_model_version(ModelName, ModelVersion)
+#'
+#' @param ModelName &#91;required&#93; The name of the machine learning model for which the active model
+#' version is being set.
+#' @param ModelVersion &#91;required&#93; The version of the machine learning model for which the active model
+#' version is being set.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelName = "string",
+#'   ModelArn = "string",
+#'   CurrentActiveVersion = 123,
+#'   PreviousActiveVersion = 123,
+#'   CurrentActiveVersionArn = "string",
+#'   PreviousActiveVersionArn = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_active_model_version(
+#'   ModelName = "string",
+#'   ModelVersion = 123
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutequipment_update_active_model_version
+#'
+#' @aliases lookoutequipment_update_active_model_version
+lookoutequipment_update_active_model_version <- function(ModelName, ModelVersion) {
+  op <- new_operation(
+    name = "UpdateActiveModelVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lookoutequipment$update_active_model_version_input(ModelName = ModelName, ModelVersion = ModelVersion)
+  output <- .lookoutequipment$update_active_model_version_output()
+  config <- get_config()
+  svc <- .lookoutequipment$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutequipment$operations$update_active_model_version <- lookoutequipment_update_active_model_version
 
 #' Updates an inference scheduler
 #'

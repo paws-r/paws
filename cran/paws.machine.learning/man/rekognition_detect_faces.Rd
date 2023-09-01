@@ -25,7 +25,13 @@ Requesting more attributes may increase response time.
 
 If you provide both, \verb{["ALL", "DEFAULT"]}, the service uses a logical
 "AND" operator to determine which attributes to return (in this case,
-all attributes).}
+all attributes).
+
+Note that while the FaceOccluded and EyeDirection attributes are
+supported when using \code{\link[=rekognition_detect_faces]{detect_faces}}, they
+aren't supported when analyzing videos with
+\code{\link[=rekognition_start_face_detection]{start_face_detection}} and
+\code{\link[=rekognition_get_face_detection]{get_face_detection}}.}
 }
 \description{
 Detects faces within an image that is provided as input.

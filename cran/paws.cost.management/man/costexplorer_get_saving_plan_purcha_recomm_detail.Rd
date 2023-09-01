@@ -12,7 +12,7 @@ costexplorer_get_savings_plan_purchase_recommendation_details(
 \item{RecommendationDetailId}{[required] The ID that is associated with the Savings Plan recommendation.}
 }
 \description{
-Retrieves the details for a Savings Plan recommendation. These details include the hourly data-points that construct the new cost, coverage, and utilization charts.
+Retrieves the details for a Savings Plan recommendation. These details include the hourly data-points that construct the cost, coverage, and utilization charts.
 
 See \url{https://www.paws-r-sdk.com/docs/costexplorer_get_savings_plan_purchase_recommendation_details/} for full documentation.
 }

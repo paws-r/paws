@@ -63,9 +63,8 @@ nodes in your cluster.}
 
 \item{clusterDescription}{A description of the cluster.}
 
-\item{capacityConfiguration}{[required] A structure for the metadata of a cluster. It includes information about
-like the CPUs needed, memory of instances, number of instances, and the
-port used while establishing a connection.}
+\item{capacityConfiguration}{[required] A structure for the metadata of a cluster. It includes information like
+the CPUs needed, memory of instances, and number of instances.}
 
 \item{releaseLabel}{[required] The version of FinSpace managed kdb to run.}
 

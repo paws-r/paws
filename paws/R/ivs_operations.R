@@ -236,55 +236,9 @@ ivs_batch_start_viewer_session_revocation <- function(viewerSessions) {
 #' constraints beyond what is documented there.
 #' @param type Channel type, which determines the allowable resolution and bitrate. *If
 #' you exceed the allowable input resolution or bitrate, the stream
-#' probably will disconnect immediately.* Some types generate multiple
-#' qualities (renditions) from the original input; this automatically gives
-#' viewers the best experience for their devices and network conditions.
-#' Some types provide transcoded video; transcoding allows higher playback
-#' quality across a range of download speeds. Default: `STANDARD`. Valid
-#' values:
-#' 
-#' -   `BASIC`: Video is transmuxed: Amazon IVS delivers the original input
-#'     quality to viewers. The viewer’s video-quality choice is limited to
-#'     the original input. Input resolution can be up to 1080p and bitrate
-#'     can be up to 1.5 Mbps for 480p and up to 3.5 Mbps for resolutions
-#'     between 480p and 1080p. Original audio is passed through.
-#' 
-#' -   `STANDARD`: Video is transcoded: multiple qualities are generated
-#'     from the original input, to automatically give viewers the best
-#'     experience for their devices and network conditions. Transcoding
-#'     allows higher playback quality across a range of download speeds.
-#'     Resolution can be up to 1080p and bitrate can be up to 8.5 Mbps.
-#'     Audio is transcoded only for renditions 360p and below; above that,
-#'     audio is passed through. This is the default when you create a
-#'     channel.
-#' 
-#' -   `ADVANCED_SD`: Video is transcoded; multiple qualities are generated
-#'     from the original input, to automatically give viewers the best
-#'     experience for their devices and network conditions. Input
-#'     resolution can be up to 1080p and bitrate can be up to 8.5 Mbps;
-#'     output is capped at SD quality (480p). You can select an optional
-#'     transcode preset (see below). Audio for all renditions is
-#'     transcoded, and an audio-only rendition is available.
-#' 
-#' -   `ADVANCED_HD`: Video is transcoded; multiple qualities are generated
-#'     from the original input, to automatically give viewers the best
-#'     experience for their devices and network conditions. Input
-#'     resolution can be up to 1080p and bitrate can be up to 8.5 Mbps;
-#'     output is capped at HD quality (720p). You can select an optional
-#'     transcode preset (see below). Audio for all renditions is
-#'     transcoded, and an audio-only rendition is available.
-#' 
-#' Optional *transcode presets* (available for the `ADVANCED` types) allow
-#' you to trade off available download bandwidth and video quality, to
-#' optimize the viewing experience. There are two presets:
-#' 
-#' -   *Constrained bandwidth delivery* uses a lower bitrate for each
-#'     quality level. Use it if you have low download bandwidth and/or
-#'     simple video content (e.g., talking heads)
-#' 
-#' -   *Higher bandwidth delivery* uses a higher bitrate for each quality
-#'     level. Use it if you have high download bandwidth and/or complex
-#'     video content (e.g., flashes and quick scene changes).
+#' probably will disconnect immediately.* Default: `STANDARD`. For details,
+#' see [Channel
+#' Types](https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/channel-types.html).
 #'
 #' @return
 #' A list with the following syntax:
@@ -563,7 +517,7 @@ ivs_create_stream_key <- function(channelArn, tags = NULL) {
 #' [`stop_stream`][ivs_stop_stream], wait for the Amazon EventBridge
 #' "Stream End" event (to verify that the stream's state is no longer
 #' Live), then call DeleteChannel. (See [Using EventBridge with Amazon
-#' IVS](https://docs.aws.amazon.com/ivs/latest/userguide/eventbridge.html).)
+#' IVS](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/eventbridge.html).)
 #'
 #' @usage
 #' ivs_delete_channel(arn)
@@ -608,7 +562,7 @@ ivs_delete_channel <- function(arn) {
 #' Deletes a specified authorization key pair. This invalidates future
 #' viewer tokens generated using the key pair’s `privateKey`. For more
 #' information, see [Setting Up Private
-#' Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html)
+#' Channels](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html)
 #' in the *Amazon IVS User Guide*.
 #'
 #' @usage
@@ -811,7 +765,7 @@ ivs_get_channel <- function(arn) {
 #' and `fingerprint`. The `privateKey` held by the caller can be used to
 #' generate viewer authorization tokens, to grant viewers access to private
 #' channels. For more information, see [Setting Up Private
-#' Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html)
+#' Channels](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html)
 #' in the *Amazon IVS User Guide*.
 #'
 #' @usage
@@ -1185,7 +1139,7 @@ ivs_get_stream_session <- function(channelArn, streamId = NULL) {
 #' `fingerprint`. The `privateKey` can then be used to generate viewer
 #' authorization tokens, to grant viewers access to private channels. For
 #' more information, see [Setting Up Private
-#' Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html)
+#' Channels](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html)
 #' in the *Amazon IVS User Guide*.
 #'
 #' @usage
@@ -1329,7 +1283,7 @@ ivs_list_channels <- function(filterByName = NULL, filterByRecordingConfiguratio
 #' @description
 #' Gets summary information about playback key pairs. For more information,
 #' see [Setting Up Private
-#' Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html)
+#' Channels](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html)
 #' in the *Amazon IVS User Guide*.
 #'
 #' @usage
@@ -1710,7 +1664,7 @@ ivs_list_tags_for_resource <- function(resourceArn) {
 #' batching your data into a single PutMetadata call.) At most 155 requests
 #' per second per account are allowed. Also see [Embedding Metadata within
 #' a Video
-#' Stream](https://docs.aws.amazon.com/ivs/latest/userguide/metadata.html)
+#' Stream](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/metadata.html)
 #' in the *Amazon IVS User Guide*.
 #'
 #' @usage
@@ -1762,7 +1716,7 @@ ivs_put_metadata <- function(channelArn, metadata) {
 #' version to revoke viewer sessions less than and including that version.
 #' For instructions on associating a viewer ID with a viewer session, see
 #' [Setting Up Private
-#' Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html).
+#' Channels](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html).
 #'
 #' @usage
 #' ivs_start_viewer_session_revocation(channelArn, viewerId,
@@ -1992,55 +1946,9 @@ ivs_untag_resource <- function(resourceArn, tagKeys) {
 #' recording is enabled
 #' @param type Channel type, which determines the allowable resolution and bitrate. *If
 #' you exceed the allowable input resolution or bitrate, the stream
-#' probably will disconnect immediately.* Some types generate multiple
-#' qualities (renditions) from the original input; this automatically gives
-#' viewers the best experience for their devices and network conditions.
-#' Some types provide transcoded video; transcoding allows higher playback
-#' quality across a range of download speeds. Default: `STANDARD`. Valid
-#' values:
-#' 
-#' -   `BASIC`: Video is transmuxed: Amazon IVS delivers the original input
-#'     quality to viewers. The viewer’s video-quality choice is limited to
-#'     the original input. Input resolution can be up to 1080p and bitrate
-#'     can be up to 1.5 Mbps for 480p and up to 3.5 Mbps for resolutions
-#'     between 480p and 1080p. Original audio is passed through.
-#' 
-#' -   `STANDARD`: Video is transcoded: multiple qualities are generated
-#'     from the original input, to automatically give viewers the best
-#'     experience for their devices and network conditions. Transcoding
-#'     allows higher playback quality across a range of download speeds.
-#'     Resolution can be up to 1080p and bitrate can be up to 8.5 Mbps.
-#'     Audio is transcoded only for renditions 360p and below; above that,
-#'     audio is passed through. This is the default when you create a
-#'     channel.
-#' 
-#' -   `ADVANCED_SD`: Video is transcoded; multiple qualities are generated
-#'     from the original input, to automatically give viewers the best
-#'     experience for their devices and network conditions. Input
-#'     resolution can be up to 1080p and bitrate can be up to 8.5 Mbps;
-#'     output is capped at SD quality (480p). You can select an optional
-#'     transcode preset (see below). Audio for all renditions is
-#'     transcoded, and an audio-only rendition is available.
-#' 
-#' -   `ADVANCED_HD`: Video is transcoded; multiple qualities are generated
-#'     from the original input, to automatically give viewers the best
-#'     experience for their devices and network conditions. Input
-#'     resolution can be up to 1080p and bitrate can be up to 8.5 Mbps;
-#'     output is capped at HD quality (720p). You can select an optional
-#'     transcode preset (see below). Audio for all renditions is
-#'     transcoded, and an audio-only rendition is available.
-#' 
-#' Optional *transcode presets* (available for the `ADVANCED` types) allow
-#' you to trade off available download bandwidth and video quality, to
-#' optimize the viewing experience. There are two presets:
-#' 
-#' -   *Constrained bandwidth delivery* uses a lower bitrate for each
-#'     quality level. Use it if you have low download bandwidth and/or
-#'     simple video content (e.g., talking heads)
-#' 
-#' -   *Higher bandwidth delivery* uses a higher bitrate for each quality
-#'     level. Use it if you have high download bandwidth and/or complex
-#'     video content (e.g., flashes and quick scene changes).
+#' probably will disconnect immediately.* Default: `STANDARD`. For details,
+#' see [Channel
+#' Types](https://docs.aws.amazon.com/ivs/latest/LowLatencyAPIReference/channel-types.html).
 #'
 #' @return
 #' A list with the following syntax:

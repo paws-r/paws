@@ -13,12 +13,12 @@ codecommit_create_repository(
 \arguments{
 \item{repositoryName}{[required] The name of the new repository to be created.
 
-The repository name must be unique across the calling AWS account.
-Repository names are limited to 100 alphanumeric, dash, and underscore
-characters, and cannot include certain characters. For more information
-about the limits on repository names, see
-\href{https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html}{Limits}
-in the \emph{AWS CodeCommit User Guide}. The suffix .git is prohibited.}
+The repository name must be unique across the calling Amazon Web
+Services account. Repository names are limited to 100 alphanumeric,
+dash, and underscore characters, and cannot include certain characters.
+For more information about the limits on repository names, see
+\href{https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html}{Quotas}
+in the \emph{CodeCommit User Guide}. The suffix .git is prohibited.}
 
 \item{repositoryDescription}{A comment or description about the new repository.
 

@@ -201,20 +201,30 @@ your tags per resource limit.
 }}
 
 \item{pidMode}{The process namespace to use for the containers in the task. The valid
-values are \code{host} or \code{task}. If \code{host} is specified, then all containers
-within the tasks that specified the \code{host} PID mode on the same
-container instance share the same process namespace with the host Amazon
-EC2 instance. If \code{task} is specified, all containers within the
-specified task share the same process namespace. If no value is
-specified, the default is a private namespace. For more information, see
-\href{https://docs.docker.com/engine/reference/run/#pid-settings---pid}{PID settings}
+values are \code{host} or \code{task}. On Fargate for Linux containers, the only
+valid value is \code{task}. For example, monitoring sidecars might need
+\code{pidMode} to access information about other containers running in the
+same task.
+
+If \code{host} is specified, all containers within the tasks that specified
+the \code{host} PID mode on the same container instance share the same
+process namespace with the host Amazon EC2 instance.
+
+If \code{task} is specified, all containers within the specified task share
+the same process namespace.
+
+If no value is specified, the default is a private namespace for each
+container. For more information, see \href{https://docs.docker.com/engine/reference/run/#pid-settings---pid}{PID settings}
 in the \emph{Docker run reference}.
 
-If the \code{host} PID mode is used, be aware that there is a heightened risk
-of undesired process namespace expose. For more information, see \href{https://docs.docker.com/engine/security/}{Docker security}.
+If the \code{host} PID mode is used, there's a heightened risk of undesired
+process namespace exposure. For more information, see \href{https://docs.docker.com/engine/security/}{Docker security}.
 
-This parameter is not supported for Windows containers or tasks run on
-Fargate.}
+This parameter is not supported for Windows containers.
+
+This parameter is only supported for tasks that are hosted on Fargate if
+the tasks are using platform version \verb{1.4.0} or later (Linux). This
+isn't supported for Windows containers on Fargate.}
 
 \item{ipcMode}{The IPC resource namespace to use for the containers in the task. The
 valid values are \code{host}, \code{task}, or \code{none}. If \code{host} is specified, then

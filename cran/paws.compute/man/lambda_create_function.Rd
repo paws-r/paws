@@ -108,7 +108,7 @@ with
 \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-tags.html}{tags}
 to apply to the function.}
 
-\item{Layers}{A list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{function layers}
+\item{Layers}{A list of \href{https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html}{function layers}
 to add to the function's execution environment. Specify each layer by
 its ARN, including the version.}
 

@@ -1983,7 +1983,7 @@ sagemaker_create_model_card <- function(ModelCardName, SecurityConfig = NULL, Co
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_create_model_card_export_job/](https://www.paws-r-sdk.com/docs/sagemaker_create_model_card_export_job/) for full documentation.
 #'
-#' @param ModelCardName &#91;required&#93; The name of the model card to export.
+#' @param ModelCardName &#91;required&#93; The name or Amazon Resource Name (ARN) of the model card to export.
 #' @param ModelCardVersion The version of the model card to export. If a version is not provided,
 #' then the latest version of the model card is exported.
 #' @param ModelCardExportJobName &#91;required&#93; The name of the model card export job.
@@ -2098,6 +2098,10 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #' information, see [Tagging Amazon Web Services
 #' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
 #' in the *Amazon Web Services General Reference Guide*.
+#' 
+#' If you supply `ModelPackageGroupName`, your model package belongs to the
+#' model group you specify and uses the tags associated with the model
+#' group. In this case, you cannot supply a `tag` argument.
 #' @param ModelApprovalStatus Whether the model is approved for deployment.
 #' 
 #' This parameter is optional for versioned models, and does not apply to
@@ -5559,7 +5563,7 @@ sagemaker_describe_model_bias_job_definition <- function(JobDefinitionName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_describe_model_card/](https://www.paws-r-sdk.com/docs/sagemaker_describe_model_card/) for full documentation.
 #'
-#' @param ModelCardName &#91;required&#93; The name of the model card to describe.
+#' @param ModelCardName &#91;required&#93; The name or Amazon Resource Name (ARN) of the model card to describe.
 #' @param ModelCardVersion The version of the model card to describe. If a version is not provided,
 #' then the latest version of the model card is described.
 #'
@@ -6461,6 +6465,52 @@ sagemaker_get_sagemaker_servicecatalog_portfolio_status <- function() {
   return(response)
 }
 .sagemaker$operations$get_sagemaker_servicecatalog_portfolio_status <- sagemaker_get_sagemaker_servicecatalog_portfolio_status
+
+#' Starts an Amazon SageMaker Inference Recommender autoscaling
+#' recommendation job
+#'
+#' @description
+#' Starts an Amazon SageMaker Inference Recommender autoscaling recommendation job. Returns recommendations for autoscaling policies that you can apply to your SageMaker endpoint.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sagemaker_get_scaling_configuration_recommendation/](https://www.paws-r-sdk.com/docs/sagemaker_get_scaling_configuration_recommendation/) for full documentation.
+#'
+#' @param InferenceRecommendationsJobName &#91;required&#93; The name of a previously completed Inference Recommender job.
+#' @param RecommendationId The recommendation ID of a previously completed inference
+#' recommendation. This ID should come from one of the recommendations
+#' returned by the job specified in the `InferenceRecommendationsJobName`
+#' field.
+#' 
+#' Specify either this field or the `EndpointName` field.
+#' @param EndpointName The name of an endpoint benchmarked during a previously completed
+#' inference recommendation job. This name should come from one of the
+#' recommendations returned by the job specified in the
+#' `InferenceRecommendationsJobName` field.
+#' 
+#' Specify either this field or the `RecommendationId` field.
+#' @param TargetCpuUtilizationPerCore The percentage of how much utilization you want an instance to use
+#' before autoscaling. The default value is 50%.
+#' @param ScalingPolicyObjective An object where you specify the anticipated traffic pattern for an
+#' endpoint.
+#'
+#' @keywords internal
+#'
+#' @rdname sagemaker_get_scaling_configuration_recommendation
+sagemaker_get_scaling_configuration_recommendation <- function(InferenceRecommendationsJobName, RecommendationId = NULL, EndpointName = NULL, TargetCpuUtilizationPerCore = NULL, ScalingPolicyObjective = NULL) {
+  op <- new_operation(
+    name = "GetScalingConfigurationRecommendation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .sagemaker$get_scaling_configuration_recommendation_input(InferenceRecommendationsJobName = InferenceRecommendationsJobName, RecommendationId = RecommendationId, EndpointName = EndpointName, TargetCpuUtilizationPerCore = TargetCpuUtilizationPerCore, ScalingPolicyObjective = ScalingPolicyObjective)
+  output <- .sagemaker$get_scaling_configuration_recommendation_output()
+  config <- get_config()
+  svc <- .sagemaker$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sagemaker$operations$get_scaling_configuration_recommendation <- sagemaker_get_scaling_configuration_recommendation
 
 #' An auto-complete API for the search functionality in the SageMaker
 #' console
@@ -8139,7 +8189,8 @@ sagemaker_list_model_card_export_jobs <- function(ModelCardName, ModelCardVersio
 #' @param CreationTimeBefore Only list model card versions that were created before the time
 #' specified.
 #' @param MaxResults The maximum number of model card versions to list.
-#' @param ModelCardName &#91;required&#93; List model card versions for the model card with the specified name.
+#' @param ModelCardName &#91;required&#93; List model card versions for the model card with the specified name or
+#' Amazon Resource Name (ARN).
 #' @param ModelCardStatus Only list model card versions with the specified approval status.
 #' @param NextToken If the response to a previous
 #' [`list_model_card_versions`][sagemaker_list_model_card_versions] request
@@ -11101,7 +11152,7 @@ sagemaker_update_inference_experiment <- function(Name, Schedule = NULL, Descrip
 #'
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_update_model_card/](https://www.paws-r-sdk.com/docs/sagemaker_update_model_card/) for full documentation.
 #'
-#' @param ModelCardName &#91;required&#93; The name of the model card to update.
+#' @param ModelCardName &#91;required&#93; The name or Amazon Resource Name (ARN) of the model card to update.
 #' @param Content The updated model card content. Content must be in [model card JSON
 #' schema](https://docs.aws.amazon.com/sagemaker/latest/dg/model-cards.html#model-cards-json-schema)
 #' and provided as a string.

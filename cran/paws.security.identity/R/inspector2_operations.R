@@ -96,6 +96,35 @@ inspector2_batch_get_code_snippet <- function(findingArns) {
 }
 .inspector2$operations$batch_get_code_snippet <- inspector2_batch_get_code_snippet
 
+#' Gets vulnerability details for findings
+#'
+#' @description
+#' Gets vulnerability details for findings.
+#'
+#' See [https://www.paws-r-sdk.com/docs/inspector2_batch_get_finding_details/](https://www.paws-r-sdk.com/docs/inspector2_batch_get_finding_details/) for full documentation.
+#'
+#' @param findingArns &#91;required&#93; A list of finding ARNs.
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_batch_get_finding_details
+inspector2_batch_get_finding_details <- function(findingArns) {
+  op <- new_operation(
+    name = "BatchGetFindingDetails",
+    http_method = "POST",
+    http_path = "/findings/details/batch/get",
+    paginator = list()
+  )
+  input <- .inspector2$batch_get_finding_details_input(findingArns = findingArns)
+  output <- .inspector2$batch_get_finding_details_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$batch_get_finding_details <- inspector2_batch_get_finding_details
+
 #' Gets free trial status for multiple Amazon Web Services accounts
 #'
 #' @description

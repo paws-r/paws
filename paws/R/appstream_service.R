@@ -27,7 +27,7 @@ NULL
 #'     page](https://aws.amazon.com/appstream2/)
 #' 
 #' -   [Amazon AppStream 2.0
-#'     documentation](https://docs.aws.amazon.com/appstream2/index.html)
+#'     documentation](https://docs.aws.amazon.com/appstream2/)
 #'
 #' @param
 #' config

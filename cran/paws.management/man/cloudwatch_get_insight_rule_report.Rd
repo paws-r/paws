@@ -58,7 +58,7 @@ period represented by that data point.
 }}
 
 \item{OrderBy}{Determines what statistic to use to rank the contributors. Valid values
-are SUM and MAXIMUM.}
+are \code{Sum} and \code{Maximum}.}
 }
 \description{
 This operation returns the time series data collected by a Contributor Insights rule. The data includes the identity and number of contributors to the log group.

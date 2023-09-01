@@ -62,9 +62,13 @@ If you don't specify this parameter, the role name defaults to
 \code{OrganizationAccountAccessRole}.
 
 For more information about how to use this role to access the member
-account, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role}{Accessing and Administering the Member Accounts in Your Organization}
-in the \emph{Organizations User Guide} and steps 2 and 3 in \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html}{Tutorial: Delegate Access Across Amazon Web Services accounts Using IAM Roles}
-in the \emph{IAM User Guide.}
+account, see the following links:
+\itemize{
+\item \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role}{Creating the OrganizationAccountAccessRole in an invited member account}
+in the \emph{Organizations User Guide}
+\item Steps 2 and 3 in \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html}{IAM Tutorial: Delegate access across Amazon Web Services accounts using IAM roles}
+in the \emph{IAM User Guide}
+}
 
 The \href{https://en.wikipedia.org/wiki/Regex}{regex pattern} that is used to
 validate this parameter. The pattern can include uppercase letters,
@@ -75,8 +79,8 @@ characters: =,.@-}
 enables IAM users to access account billing information \emph{if} they have
 the required permissions. If set to \code{DENY}, only the root user of the
 new account can access account billing information. For more
-information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate}{Activating Access to the Billing and Cost Management Console}
-in the \emph{Amazon Web Services Billing and Cost Management User Guide.}
+information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate}{About IAM access to the Billing and Cost Management console}
+in the \emph{Amazon Web Services Billing and Cost Management User Guide}.
 
 If you don't specify this parameter, the value defaults to \code{ALLOW}, and
 IAM users and roles with the required permissions can access billing

@@ -27,10 +27,11 @@ You must specify either the \code{LaunchTemplateId} or the
 You must specify either the \code{LaunchTemplateName} or the
 \code{LaunchTemplateId}, but not both.}
 
-\item{Versions}{[required] The version numbers of one or more launch template versions to delete.}
+\item{Versions}{[required] The version numbers of one or more launch template versions to delete.
+You can specify up to 200 launch template version numbers.}
 }
 \description{
-Deletes one or more versions of a launch template. You cannot delete the default version of a launch template; you must first assign a different version as the default. If the default version is the only version for the launch template, you must delete the entire launch template using \code{\link[=ec2_delete_launch_template]{delete_launch_template}}.
+Deletes one or more versions of a launch template.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_delete_launch_template_versions/} for full documentation.
 }

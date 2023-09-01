@@ -490,8 +490,8 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 #'
 #' @examples
 #' \dontrun{
-#' # This operation copies a version of an Amazon Rekognition Custom Labels
-#' # model from a source project to a destination project.
+#' # Copies a version of an Amazon Rekognition Custom Labels model from a
+#' # source project to a destination project.
 #' svc$copy_project_version(
 #'   DestinationProjectArn = "arn:aws:rekognition:us-east-1:555555555555:proje...",
 #'   KmsKeyId = "arn:1234abcd-12ab-34cd-56ef-1234567890ab",
@@ -616,9 +616,9 @@ rekognition_create_collection <- function(CollectionId, Tags = NULL) {
 #' dataset by using an Amazon Sagemaker format manifest file or by copying
 #' an existing Amazon Rekognition Custom Labels dataset.
 #' 
-#' To create a training dataset for a project, specify `train` for the
+#' To create a training dataset for a project, specify `TRAIN` for the
 #' value of `DatasetType`. To create the test dataset for a project,
-#' specify `test` for the value of `DatasetType`.
+#' specify `TEST` for the value of `DatasetType`.
 #' 
 #' The response from [`create_dataset`][rekognition_create_dataset] is the
 #' Amazon Resource Name (ARN) for the dataset. Creating a dataset takes a
@@ -652,8 +652,8 @@ rekognition_create_collection <- function(CollectionId, Tags = NULL) {
 #' dataset is created. To add labeled images to the dataset, You can use
 #' the console or call
 #' [`update_dataset_entries`][rekognition_update_dataset_entries].
-#' @param DatasetType &#91;required&#93; The type of the dataset. Specify `train` to create a training dataset.
-#' Specify `test` to create a test dataset.
+#' @param DatasetType &#91;required&#93; The type of the dataset. Specify `TRAIN` to create a training dataset.
+#' Specify `TEST` to create a test dataset.
 #' @param ProjectArn &#91;required&#93; The ARN of the Amazon Rekognition Custom Labels project to which you
 #' want to asssign the dataset.
 #'
@@ -683,6 +683,24 @@ rekognition_create_collection <- function(CollectionId, Tags = NULL) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # Creates an Amazon Rekognition Custom Labels dataset with a manifest file
+#' # stored in an Amazon S3 bucket.
+#' svc$create_dataset(
+#'   DatasetSource = list(
+#'     GroundTruthManifest = list(
+#'       S3Object = list(
+#'         Bucket = "my-bucket",
+#'         Name = "datasets/flowers_training/manifests/output/output.manifest"
+#'       )
+#'     )
+#'   ),
+#'   DatasetType = "TRAIN",
+#'   ProjectArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-project/1690474772815"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname rekognition_create_dataset
@@ -710,13 +728,18 @@ rekognition_create_dataset <- function(DatasetSource = NULL, DatasetType, Projec
 #' @description
 #' This API operation initiates a Face Liveness session. It returns a
 #' `SessionId`, which you can use to start streaming Face Liveness video
-#' and get the results for a Face Liveness session. You can use the
-#' `OutputConfig` option in the Settings parameter to provide an Amazon S3
-#' bucket location. The Amazon S3 bucket stores reference images and audit
-#' images. You can use `AuditImagesLimit` to limit the number of audit
-#' images returned. This number is between 0 and 4. By default, it is set
-#' to 0. The limit is best effort and based on the duration of the
-#' selfie-video.
+#' and get the results for a Face Liveness session.
+#' 
+#' You can use the `OutputConfig` option in the Settings parameter to
+#' provide an Amazon S3 bucket location. The Amazon S3 bucket stores
+#' reference images and audit images. If no Amazon S3 bucket is defined,
+#' raw bytes are sent instead.
+#' 
+#' You can use `AuditImagesLimit` to limit the number of audit images
+#' returned when
+#' [`get_face_liveness_session_results`][rekognition_get_face_liveness_session_results]
+#' is called. This number is between 0 and 4. By default, it is set to 0.
+#' The limit is best effort and based on the duration of the selfie-video.
 #'
 #' @usage
 #' rekognition_create_face_liveness_session(KmsKeyId, Settings,
@@ -807,6 +830,14 @@ rekognition_create_face_liveness_session <- function(KmsKeyId = NULL, Settings =
 #'   ProjectName = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Creates an Amazon Rekognition Custom Labels project.
+#' svc$create_project(
+#'   ProjectName = "my-project"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -965,6 +996,19 @@ rekognition_create_project <- function(ProjectName) {
 #'   KmsKeyId = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Trains a version of an Amazon Rekognition Custom Labels model.
+#' svc$create_project_version(
+#'   OutputConfig = list(
+#'     S3Bucket = "output_bucket",
+#'     S3KeyPrefix = "output_folder"
+#'   ),
+#'   ProjectArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-project/1690474772815",
+#'   VersionName = "1"
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1336,6 +1380,14 @@ rekognition_delete_collection <- function(CollectionId) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # Deletes an Amazon Rekognition Custom Labels dataset.
+#' svc$delete_dataset(
+#'   DatasetArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-proje..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname rekognition_delete_dataset
@@ -1473,6 +1525,14 @@ rekognition_delete_faces <- function(CollectionId, FaceIds) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # Deletes an Amazon Rekognition Custom Labels projects.
+#' svc$delete_project(
+#'   ProjectArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-project/1690405809285"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname rekognition_delete_project
@@ -1597,6 +1657,14 @@ rekognition_delete_project_policy <- function(ProjectArn, PolicyName, PolicyRevi
 #'   ProjectVersionArn = "string"
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Deletes a version of an Amazon Rekognition Custom Labels model.
+#' svc$delete_project_version(
+#'   ProjectVersionArn = "arn:aws:rekognition:us-east-1:111122223333:project/m..."
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -1838,6 +1906,14 @@ rekognition_describe_collection <- function(CollectionId) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # Describes an Amazon Rekognition Custom Labels dataset.
+#' svc$describe_dataset(
+#'   DatasetArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-proje..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname rekognition_describe_dataset
@@ -2035,6 +2111,17 @@ rekognition_describe_dataset <- function(DatasetArn) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # Describes a version of an Amazon Rekognition Custom Labels model.
+#' svc$describe_project_versions(
+#'   ProjectArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-project/1690474772815",
+#'   VersionNames = list(
+#'     "1"
+#'   )
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname rekognition_describe_project_versions
@@ -2118,6 +2205,16 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Describes an Amazon Rekognition Custom Labels projects.
+#' svc$describe_projects(
+#'   ProjectNames = list(
+#'     "my-project"
+#'   )
+#' )
+#' }
 #'
 #' @keywords internal
 #'
@@ -2364,6 +2461,23 @@ rekognition_describe_stream_processor <- function(Name) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # Detects custom labels in an image with an Amazon Rekognition Custom
+#' # Labels model
+#' svc$detect_custom_labels(
+#'   Image = list(
+#'     S3Object = list(
+#'       Bucket = "custom-labels-console-us-east-1-1111111111",
+#'       Name = "assets/flowers_1_test_dataset/camellia4.jpg"
+#'     )
+#'   ),
+#'   MaxResults = 100L,
+#'   MinConfidence = 50L,
+#'   ProjectVersionArn = "arn:aws:rekognition:us-east-1:111122223333:project/m..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname rekognition_detect_custom_labels
@@ -2434,6 +2548,12 @@ rekognition_detect_custom_labels <- function(ProjectVersionArn, Image, MaxResult
 #' If you provide both, `["ALL", "DEFAULT"]`, the service uses a logical
 #' "AND" operator to determine which attributes to return (in this case,
 #' all attributes).
+#' 
+#' Note that while the FaceOccluded and EyeDirection attributes are
+#' supported when using [`detect_faces`][rekognition_detect_faces], they
+#' aren't supported when analyzing videos with
+#' [`start_face_detection`][rekognition_start_face_detection] and
+#' [`get_face_detection`][rekognition_get_face_detection].
 #'
 #' @return
 #' A list with the following syntax:
@@ -2606,10 +2726,11 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' filters. For more information on filtering see [Detecting Labels in an
 #' Image](https://docs.aws.amazon.com/rekognition/latest/dg/labels-detect-labels-image.html).
 #' 
-#' You can specify `MinConfidence` to control the confidence threshold for
-#' the labels returned. The default is 55%. You can also add the
-#' `MaxLabels` parameter to limit the number of labels returned. The
-#' default and upper limit is 1000 labels.
+#' When getting labels, you can specify `MinConfidence` to control the
+#' confidence threshold for the labels returned. The default is 55%. You
+#' can also add the `MaxLabels` parameter to limit the number of labels
+#' returned. The default and upper limit is 1000 labels. These arguments
+#' are only valid when supplying GENERAL_LABELS as a feature type.
 #' 
 #' **Response Elements**
 #' 
@@ -2706,12 +2827,16 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' more information, see Images in the Amazon Rekognition developer guide.
 #' @param MaxLabels Maximum number of labels you want the service to return in the response.
 #' The service returns the specified number of highest confidence labels.
+#' Only valid when GENERAL_LABELS is specified as a feature type in the
+#' Feature input parameter.
 #' @param MinConfidence Specifies the minimum confidence level for the labels to return. Amazon
 #' Rekognition doesn't return any labels with confidence lower than this
 #' specified value.
 #' 
 #' If `MinConfidence` is not specified, the operation returns labels with a
-#' confidence values greater than or equal to 55 percent.
+#' confidence values greater than or equal to 55 percent. Only valid when
+#' GENERAL_LABELS is specified as a feature type in the Feature input
+#' parameter.
 #' @param Features A list of the types of analysis to perform. Specifying GENERAL_LABELS
 #' uses the label detection feature, while specifying IMAGE_PROPERTIES
 #' returns information regarding image color and quality. If no option is
@@ -3451,6 +3576,22 @@ rekognition_disassociate_faces <- function(CollectionId, UserId, ClientRequestTo
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # Distributes an Amazon Rekognition Custom Labels training dataset to a
+#' # test dataset.
+#' svc$distribute_dataset_entries(
+#'   Datasets = list(
+#'     list(
+#'       Arn = "arn:aws:rekognition:us-east-1:111122223333:project/my-proj-2/d..."
+#'     ),
+#'     list(
+#'       Arn = "arn:aws:rekognition:us-east-1:111122223333:project/my-proj-2/d..."
+#'     )
+#'   )
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname rekognition_distribute_dataset_entries
@@ -3961,6 +4102,10 @@ rekognition_get_content_moderation <- function(JobId, MaxResults = NULL, NextTok
 #' [`get_face_detection`][rekognition_get_face_detection] and populate the
 #' `NextToken` request parameter with the token value returned from the
 #' previous call to [`get_face_detection`][rekognition_get_face_detection].
+#' 
+#' Note that for the [`get_face_detection`][rekognition_get_face_detection]
+#' operation, the returned values for `FaceOccluded` and `EyeDirection`
+#' will always be "null".
 #'
 #' @usage
 #' rekognition_get_face_detection(JobId, MaxResults, NextToken)
@@ -4124,7 +4269,13 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' Returns the corresponding Face Liveness confidence score, a reference
 #' image that includes a face bounding box, and audit images that also
 #' contain face bounding boxes. The Face Liveness confidence score ranges
-#' from 0 to 100. The reference image can optionally be returned.
+#' from 0 to 100.
+#' 
+#' The number of audit images returned by
+#' [`get_face_liveness_session_results`][rekognition_get_face_liveness_session_results]
+#' is defined by the `AuditImagesLimit` paramater when calling
+#' [`create_face_liveness_session`][rekognition_create_face_liveness_session].
+#' Reference images are always returned when possible.
 #'
 #' @usage
 #' rekognition_get_face_liveness_session_results(SessionId)
@@ -5042,7 +5193,7 @@ rekognition_get_segment_detection <- function(JobId, MaxResults = NULL, NextToke
 #' 
 #' [`get_text_detection`][rekognition_get_text_detection] returns an array
 #' of detected text (`TextDetections`) sorted by the time the text was
-#' detected, up to 50 words per frame of video.
+#' detected, up to 100 words per frame of video.
 #' 
 #' Each element of the array includes the detected text, the precentage
 #' confidence in the acuracy of the detected text, the time the text was
@@ -5719,6 +5870,23 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # Lists the JSON line entries in an Amazon Rekognition Custom Labels
+#' # dataset.
+#' svc$list_dataset_entries(
+#'   ContainsLabels = list(
+#'     "camellia"
+#'   ),
+#'   DatasetArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-proj-...",
+#'   HasErrors = TRUE,
+#'   Labeled = TRUE,
+#'   MaxResults = 100L,
+#'   NextToken = "",
+#'   SourceRefContains = "camellia4.jpg"
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname rekognition_list_dataset_entries
@@ -5790,6 +5958,17 @@ rekognition_list_dataset_entries <- function(DatasetArn, ContainsLabels = NULL, 
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # Lists the JSON line entries in an Amazon Rekognition Custom Labels
+#' # dataset.
+#' svc$list_dataset_labels(
+#'   DatasetArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-proj-...",
+#'   MaxResults = 100L,
+#'   NextToken = ""
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname rekognition_list_dataset_labels
@@ -5834,8 +6013,10 @@ rekognition_list_dataset_labels <- function(DatasetArn, NextToken = NULL, MaxRes
 #' response. You can use this pagination token to retrieve the next set of
 #' faces.
 #' @param MaxResults Maximum number of faces to return.
-#' @param UserId An array of user IDs to match when listing faces in a collection.
-#' @param FaceIds An array of face IDs to match when listing faces in a collection.
+#' @param UserId An array of user IDs to filter results with when listing faces in a
+#' collection.
+#' @param FaceIds An array of face IDs to filter results with when listing faces in a
+#' collection.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7785,6 +7966,16 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # Starts a version of an Amazon Rekognition Custom Labels model.
+#' svc$start_project_version(
+#'   MaxInferenceUnits = 1L,
+#'   MinInferenceUnits = 1L,
+#'   ProjectVersionArn = "arn:aws:rekognition:us-east-1:111122223333:project/m..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname rekognition_start_project_version
@@ -8144,6 +8335,14 @@ rekognition_start_text_detection <- function(Video, ClientRequestToken = NULL, N
 #' )
 #' ```
 #'
+#' @examples
+#' \dontrun{
+#' # Stops a version of an Amazon Rekognition Custom Labels model.
+#' svc$stop_project_version(
+#'   ProjectVersionArn = "arn:aws:rekognition:us-east-1:111122223333:project/m..."
+#' )
+#' }
+#'
 #' @keywords internal
 #'
 #' @rdname rekognition_stop_project_version
@@ -8371,6 +8570,17 @@ rekognition_untag_resource <- function(ResourceArn, TagKeys) {
 #'   )
 #' )
 #' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Adds dataset entries to an Amazon Rekognition Custom Labels dataset.
+#' svc$update_dataset_entries(
+#'   Changes = list(
+#'     GroundTruth = "\{\"source-ref\":\"s3://custom-labels-console-us-east-1-1111..."
+#'   ),
+#'   DatasetArn = "arn:aws:rekognition:us-east-1:111122223333:project/my-proj-..."
+#' )
+#' }
 #'
 #' @keywords internal
 #'

@@ -53,25 +53,28 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-This is the \emph{AWS CodeCommit API Reference}. This reference provides
-descriptions of the operations and data types for AWS CodeCommit API
-along with usage examples.
+CodeCommit
 
-You can use the AWS CodeCommit API to work with the following objects:
+This is the \emph{CodeCommit API Reference}. This reference provides
+descriptions of the operations and data types for CodeCommit API along
+with usage examples.
+
+You can use the CodeCommit API to work with the following objects:
 
 Repositories, by calling the following:
 \itemize{
 \item \code{\link[=codecommit_batch_get_repositories]{batch_get_repositories}}, which
 returns information about one or more repositories associated with
-your AWS account.
+your Amazon Web Services account.
 \item \code{\link[=codecommit_create_repository]{create_repository}}, which creates
-an AWS CodeCommit repository.
+an CodeCommit repository.
 \item \code{\link[=codecommit_delete_repository]{delete_repository}}, which deletes
-an AWS CodeCommit repository.
+an CodeCommit repository.
 \item \code{\link[=codecommit_get_repository]{get_repository}}, which returns
 information about a specified repository.
 \item \code{\link[=codecommit_list_repositories]{list_repositories}}, which lists all
-AWS CodeCommit repositories associated with your AWS account.
+CodeCommit repositories associated with your Amazon Web Services
+account.
 \item \code{\link[=codecommit_update_repository_description]{update_repository_description}},
 which sets or updates the description of the repository.
 \item \code{\link[=codecommit_update_repository_name]{update_repository_name}}, which
@@ -104,6 +107,8 @@ content of an individual Git blob object in a repository.
 content of a specified file.
 \item \code{\link[=codecommit_get_folder]{get_folder}}, which returns the contents of
 a specified folder or directory.
+\item \code{\link[=codecommit_list_file_commit_history]{list_file_commit_history}},
+which retrieves a list of commits and changes to a specified file.
 \item \code{\link[=codecommit_put_file]{put_file}}, which adds or modifies a single
 file in a specified repository and branch.
 }
@@ -187,7 +192,7 @@ fast-forward merge option.
 which merges the source destination branch of a pull request into
 the specified destination branch for that pull request using the
 squash merge option.
-\item \code{\link[=codecommit_merge_pull_request_by_three_way]{merge_pull_request_by_three_way}}.
+\item \code{\link[=codecommit_merge_pull_request_by_three_way]{merge_pull_request_by_three_way}},
 which merges the source destination branch of a pull request into
 the specified destination branch for that pull request using the
 three-way merge option.
@@ -212,12 +217,12 @@ Approval rule templates, by calling the following:
 \itemize{
 \item \code{\link[=codecommit_associate_approval_rule_template_with_repository]{associate_approval_rule_template_with_repository}},
 which associates a template with a specified repository. After the
-template is associated with a repository, AWS CodeCommit creates
+template is associated with a repository, CodeCommit creates
 approval rules that match the template conditions on every pull
 request created in the specified repository.
 \item \code{\link[=codecommit_batch_associate_approval_rule_template_with_repositories]{batch_associate_approval_rule_template_with_repositories}},
 which associates a template with one or more specified repositories.
-After the template is associated with a repository, AWS CodeCommit
+After the template is associated with a repository, CodeCommit
 creates approval rules that match the template conditions on every
 pull request created in the specified repositories.
 \item \code{\link[=codecommit_batch_disassociate_approval_rule_template_from_repositories]{batch_disassociate_approval_rule_template_from_repositories}},
@@ -227,7 +232,8 @@ automatically created when pull requests are created in those
 repositories.
 \item \code{\link[=codecommit_create_approval_rule_template]{create_approval_rule_template}},
 which creates a template for approval rules that can then be
-associated with one or more repositories in your AWS account.
+associated with one or more repositories in your Amazon Web Services
+account.
 \item \code{\link[=codecommit_delete_approval_rule_template]{delete_approval_rule_template}},
 which deletes the specified template. It does not remove approval
 rules on pull requests already created with the template.
@@ -238,8 +244,8 @@ created when pull requests are created in the specified repository.
 \item \code{\link[=codecommit_get_approval_rule_template]{get_approval_rule_template}},
 which returns information about an approval rule template.
 \item \code{\link[=codecommit_list_approval_rule_templates]{list_approval_rule_templates}},
-which lists all approval rule templates in the AWS Region in your
-AWS account.
+which lists all approval rule templates in the Amazon Web Services
+Region in your Amazon Web Services account.
 \item \code{\link[=codecommit_list_associated_approval_rule_templates_for_repository]{list_associated_approval_rule_templates_for_repository}},
 which lists all approval rule templates that are associated with a
 specified repository.
@@ -276,16 +282,16 @@ creates or updates an emoji reaction to a comment.
 content of a comment on a commit in a repository.
 }
 
-Tags used to tag resources in AWS CodeCommit (not Git tags), by calling
-the following:
+Tags used to tag resources in CodeCommit (not Git tags), by calling the
+following:
 \itemize{
 \item \code{\link[=codecommit_list_tags_for_resource]{list_tags_for_resource}}, which
-gets information about AWS tags for a specified Amazon Resource Name
-(ARN) in AWS CodeCommit.
+gets information about Amazon Web Servicestags for a specified
+Amazon Resource Name (ARN) in CodeCommit.
 \item \code{\link[=codecommit_tag_resource]{tag_resource}}, which adds or updates
-tags for a resource in AWS CodeCommit.
+tags for a resource in CodeCommit.
 \item \code{\link[=codecommit_untag_resource]{untag_resource}}, which removes tags
-for a resource in AWS CodeCommit.
+for a resource in CodeCommit.
 }
 
 Triggers, by calling the following:
@@ -301,7 +307,7 @@ which tests the functionality of a repository trigger by sending
 data to the trigger target.
 }
 
-For information about how to use AWS CodeCommit, see the \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{AWS CodeCommit User Guide}.
+For information about how to use CodeCommit, see the \href{https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html}{CodeCommit User Guide}.
 }
 \section{Service syntax}{
 
@@ -348,7 +354,7 @@ For information about how to use AWS CodeCommit, see the \href{https://docs.aws.
 \link[=codecommit_batch_disassociate_approval_rule_template_from_repositories]{batch_disassociate_approval_rule_template_from_repositories} \tab Removes the association between an approval rule template and one or more specified repositories\cr
 \link[=codecommit_batch_get_commits]{batch_get_commits} \tab Returns information about the contents of one or more commits in a repository\cr
 \link[=codecommit_batch_get_repositories]{batch_get_repositories} \tab Returns information about one or more repositories\cr
-\link[=codecommit_create_approval_rule_template]{create_approval_rule_template} \tab Creates a template for approval rules that can then be associated with one or more repositories in your AWS account\cr
+\link[=codecommit_create_approval_rule_template]{create_approval_rule_template} \tab Creates a template for approval rules that can then be associated with one or more repositories in your Amazon Web Services account\cr
 \link[=codecommit_create_branch]{create_branch} \tab Creates a branch in a repository and points the branch to a commit\cr
 \link[=codecommit_create_commit]{create_commit} \tab Creates a commit for a repository on the tip of a specified branch\cr
 \link[=codecommit_create_pull_request]{create_pull_request} \tab Creates a pull request in the specified repository\cr
@@ -384,13 +390,14 @@ For information about how to use AWS CodeCommit, see the \href{https://docs.aws.
 \link[=codecommit_get_pull_request_override_state]{get_pull_request_override_state} \tab Returns information about whether approval rules have been set aside (overridden) for a pull request, and if so, the Amazon Resource Name (ARN) of the user or identity that overrode the rules and their requirements for the pull request\cr
 \link[=codecommit_get_repository]{get_repository} \tab Returns information about a repository\cr
 \link[=codecommit_get_repository_triggers]{get_repository_triggers} \tab Gets information about triggers configured for a repository\cr
-\link[=codecommit_list_approval_rule_templates]{list_approval_rule_templates} \tab Lists all approval rule templates in the specified AWS Region in your AWS account\cr
+\link[=codecommit_list_approval_rule_templates]{list_approval_rule_templates} \tab Lists all approval rule templates in the specified Amazon Web Services Region in your Amazon Web Services account\cr
 \link[=codecommit_list_associated_approval_rule_templates_for_repository]{list_associated_approval_rule_templates_for_repository} \tab Lists all approval rule templates that are associated with a specified repository\cr
 \link[=codecommit_list_branches]{list_branches} \tab Gets information about one or more branches in a repository\cr
+\link[=codecommit_list_file_commit_history]{list_file_commit_history} \tab Retrieves a list of commits and changes to a specified file\cr
 \link[=codecommit_list_pull_requests]{list_pull_requests} \tab Returns a list of pull requests for a specified repository\cr
 \link[=codecommit_list_repositories]{list_repositories} \tab Gets information about one or more repositories\cr
 \link[=codecommit_list_repositories_for_approval_rule_template]{list_repositories_for_approval_rule_template} \tab Lists all repositories associated with the specified approval rule template\cr
-\link[=codecommit_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about AWS tags for a specified Amazon Resource Name (ARN) in AWS CodeCommit\cr
+\link[=codecommit_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about Amazon Web Servicestags for a specified Amazon Resource Name (ARN) in CodeCommit\cr
 \link[=codecommit_merge_branches_by_fast_forward]{merge_branches_by_fast_forward} \tab Merges two branches using the fast-forward merge strategy\cr
 \link[=codecommit_merge_branches_by_squash]{merge_branches_by_squash} \tab Merges two branches using the squash merge strategy\cr
 \link[=codecommit_merge_branches_by_three_way]{merge_branches_by_three_way} \tab Merges two specified branches using the three-way merge strategy\cr
@@ -402,11 +409,11 @@ For information about how to use AWS CodeCommit, see the \href{https://docs.aws.
 \link[=codecommit_post_comment_for_pull_request]{post_comment_for_pull_request} \tab Posts a comment on a pull request\cr
 \link[=codecommit_post_comment_reply]{post_comment_reply} \tab Posts a comment in reply to an existing comment on a comparison between commits or a pull request\cr
 \link[=codecommit_put_comment_reaction]{put_comment_reaction} \tab Adds or updates a reaction to a specified comment for the user whose identity is used to make the request\cr
-\link[=codecommit_put_file]{put_file} \tab Adds or updates a file in a branch in an AWS CodeCommit repository, and generates a commit for the addition in the specified branch\cr
+\link[=codecommit_put_file]{put_file} \tab Adds or updates a file in a branch in an CodeCommit repository, and generates a commit for the addition in the specified branch\cr
 \link[=codecommit_put_repository_triggers]{put_repository_triggers} \tab Replaces all triggers for a repository\cr
-\link[=codecommit_tag_resource]{tag_resource} \tab Adds or updates tags for a resource in AWS CodeCommit\cr
+\link[=codecommit_tag_resource]{tag_resource} \tab Adds or updates tags for a resource in CodeCommit\cr
 \link[=codecommit_test_repository_triggers]{test_repository_triggers} \tab Tests the functionality of repository triggers by sending information to the trigger target\cr
-\link[=codecommit_untag_resource]{untag_resource} \tab Removes tags for a resource in AWS CodeCommit\cr
+\link[=codecommit_untag_resource]{untag_resource} \tab Removes tags for a resource in CodeCommit\cr
 \link[=codecommit_update_approval_rule_template_content]{update_approval_rule_template_content} \tab Updates the content of an approval rule template\cr
 \link[=codecommit_update_approval_rule_template_description]{update_approval_rule_template_description} \tab Updates the description for a specified approval rule template\cr
 \link[=codecommit_update_approval_rule_template_name]{update_approval_rule_template_name} \tab Updates the name of a specified approval rule template\cr

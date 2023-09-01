@@ -95,7 +95,7 @@ with
 specified. Use this option to avoid modifying a function that has
 changed since you last read it.}
 
-\item{Layers}{A list of \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{function layers}
+\item{Layers}{A list of \href{https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html}{function layers}
 to add to the function's execution environment. Specify each layer by
 its ARN, including the version.}
 

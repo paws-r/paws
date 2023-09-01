@@ -11,8 +11,7 @@ ses_update_configuration_set_tracking_options(
 )
 }
 \arguments{
-\item{ConfigurationSetName}{[required] The name of the configuration set for which you want to update the
-custom tracking domain.}
+\item{ConfigurationSetName}{[required] The name of the configuration set.}
 
 \item{TrackingOptions}{[required]}
 }

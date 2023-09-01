@@ -44,7 +44,7 @@ NULL
 #'         Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
 #' 
 #' -   [Amazon SQS in the *Command Line
-#'     Interface*](https://docs.aws.amazon.com/cli/latest/reference/sqs/index.html)
+#'     Interface*](https://docs.aws.amazon.com/cli/latest/reference/sqs/)
 #' 
 #' -   *Amazon Web Services General Reference*
 #' 

@@ -13,8 +13,8 @@ ses_create_configuration_set_event_destination(
 \item{ConfigurationSetName}{[required] The name of the configuration set that the event destination should be
 associated with.}
 
-\item{EventDestination}{[required] An object that describes the AWS service that email sending event
-information will be published to.}
+\item{EventDestination}{[required] An object that describes the Amazon Web Services service that email
+sending event where information is published.}
 }
 \description{
 Creates a configuration set event destination.

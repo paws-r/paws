@@ -7,7 +7,8 @@
 rds_delete_db_cluster(
   DBClusterIdentifier,
   SkipFinalSnapshot = NULL,
-  FinalDBSnapshotIdentifier = NULL
+  FinalDBSnapshotIdentifier = NULL,
+  DeleteAutomatedBackups = NULL
 )
 }
 \arguments{
@@ -42,6 +43,11 @@ Constraints:
 \item First character must be a letter
 \item Can't end with a hyphen or contain two consecutive hyphens
 }}
+
+\item{DeleteAutomatedBackups}{A value that indicates whether to remove automated backups immediately
+after the DB cluster is deleted. This parameter isn't case-sensitive.
+The default is to remove automated backups immediately after the DB
+cluster is deleted.}
 }
 \description{
 The DeleteDBCluster action deletes a previously provisioned DB cluster. When you delete a DB cluster, all automated backups for that DB cluster are deleted and can't be recovered. Manual DB cluster snapshots of the specified DB cluster are not deleted.

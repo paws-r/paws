@@ -10,7 +10,7 @@ kinesisanalyticsv2_list_tags_for_resource(ResourceARN)
 \item{ResourceARN}{[required] The ARN of the application for which to retrieve tags.}
 }
 \description{
-Retrieves the list of key-value tags assigned to the application. For more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html}{Using Tagging}.
+Retrieves the list of key-value tags assigned to the application. For more information, see \href{https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html}{Using Tagging}.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_tags_for_resource/} for full documentation.
 }

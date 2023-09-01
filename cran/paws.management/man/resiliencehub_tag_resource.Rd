@@ -7,7 +7,7 @@
 resiliencehub_tag_resource(resourceArn, tags)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
+\item{resourceArn}{[required] Amazon Resource Name (ARN) of the resource.}
 
 \item{tags}{[required] The tags to assign to the resource. Each tag consists of a key/value
 pair.}

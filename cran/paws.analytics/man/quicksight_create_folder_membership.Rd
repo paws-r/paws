@@ -16,10 +16,9 @@ quicksight_create_folder_membership(
 
 \item{FolderId}{[required] The ID of the folder.}
 
-\item{MemberId}{[required] The ID of the asset (the dashboard, analysis, or dataset).}
+\item{MemberId}{[required] The ID of the asset that you want to add to the folder.}
 
-\item{MemberType}{[required] The type of the member, including \code{DASHBOARD}, \code{ANALYSIS}, and
-\code{DATASET}.}
+\item{MemberType}{[required] The member type of the asset that you want to add to a folder.}
 }
 \description{
 Adds an asset, such as a dashboard, analysis, or dataset into a folder.

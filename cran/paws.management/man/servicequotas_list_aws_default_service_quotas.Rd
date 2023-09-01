@@ -2,7 +2,8 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_list_aws_default_service_quotas}
 \alias{servicequotas_list_aws_default_service_quotas}
-\title{Lists the default values for the quotas for the specified AWS service}
+\title{Lists the default values for the quotas for the specified Amazon Web
+Service}
 \usage{
 servicequotas_list_aws_default_service_quotas(
   ServiceCode,
@@ -11,16 +12,30 @@ servicequotas_list_aws_default_service_quotas(
 )
 }
 \arguments{
-\item{ServiceCode}{[required] The service identifier.}
+\item{ServiceCode}{[required] Specifies the service identifier. To find the service code value for an
+Amazon Web Services service, use the
+\code{\link[=servicequotas_list_services]{list_services}} operation.}
 
-\item{NextToken}{The token for the next page of results.}
+\item{NextToken}{Specifies a value for receiving additional results after you receive a
+\code{NextToken} response in a previous request. A \code{NextToken} response
+indicates that more output is available. Set this parameter to the value
+of the previous call's \code{NextToken} response to indicate where the output
+should continue from.}
 
-\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, if any, make another call with the token returned
-from this call.}
+\item{MaxResults}{Specifies the maximum number of results that you want included on each
+page of the response. If you do not include this parameter, it defaults
+to a value appropriate to the operation. If additional items exist
+beyond those included in the current response, the \code{NextToken} response
+element is present and has a value (is not null). Include that value as
+the \code{NextToken} request parameter in the next call to the operation to
+get the next part of the results.
+
+An API operation can return fewer results than the maximum even when
+there are more results available. You should check \code{NextToken} after
+every operation to ensure that you receive all of the results.}
 }
 \description{
-Lists the default values for the quotas for the specified AWS service. A default value does not reflect any quota increases.
+Lists the default values for the quotas for the specified Amazon Web Service. A default value does not reflect any quota increases.
 
 See \url{https://www.paws-r-sdk.com/docs/servicequotas_list_aws_default_service_quotas/} for full documentation.
 }

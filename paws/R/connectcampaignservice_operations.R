@@ -10,12 +10,12 @@ NULL
 #' idempotent.
 #'
 #' @usage
-#' connectcampaignservice_create_campaign(connectInstanceId, dialerConfig,
-#'   name, outboundCallConfig, tags)
+#' connectcampaignservice_create_campaign(name, connectInstanceId,
+#'   dialerConfig, outboundCallConfig, tags)
 #'
+#' @param name &#91;required&#93; 
 #' @param connectInstanceId &#91;required&#93; 
 #' @param dialerConfig &#91;required&#93; 
-#' @param name &#91;required&#93; 
 #' @param outboundCallConfig &#91;required&#93; 
 #' @param tags 
 #'
@@ -23,8 +23,8 @@ NULL
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   arn = "string",
 #'   id = "string",
+#'   arn = "string",
 #'   tags = list(
 #'     "string"
 #'   )
@@ -34,23 +34,28 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$create_campaign(
+#'   name = "string",
 #'   connectInstanceId = "string",
 #'   dialerConfig = list(
-#'     predictiveDialerConfig = list(
-#'       bandwidthAllocation = 123.0
-#'     ),
 #'     progressiveDialerConfig = list(
-#'       bandwidthAllocation = 123.0
+#'       bandwidthAllocation = 123.0,
+#'       dialingCapacity = 123.0
+#'     ),
+#'     predictiveDialerConfig = list(
+#'       bandwidthAllocation = 123.0,
+#'       dialingCapacity = 123.0
+#'     ),
+#'     agentlessDialerConfig = list(
+#'       dialingCapacity = 123.0
 #'     )
 #'   ),
-#'   name = "string",
 #'   outboundCallConfig = list(
+#'     connectContactFlowId = "string",
+#'     connectSourcePhoneNumber = "string",
+#'     connectQueueId = "string",
 #'     answerMachineDetectionConfig = list(
 #'       enableAnswerMachineDetection = TRUE|FALSE
-#'     ),
-#'     connectContactFlowId = "string",
-#'     connectQueueId = "string",
-#'     connectSourcePhoneNumber = "string"
+#'     )
 #'   ),
 #'   tags = list(
 #'     "string"
@@ -63,14 +68,14 @@ NULL
 #' @rdname connectcampaignservice_create_campaign
 #'
 #' @aliases connectcampaignservice_create_campaign
-connectcampaignservice_create_campaign <- function(connectInstanceId, dialerConfig, name, outboundCallConfig, tags = NULL) {
+connectcampaignservice_create_campaign <- function(name, connectInstanceId, dialerConfig, outboundCallConfig, tags = NULL) {
   op <- new_operation(
     name = "CreateCampaign",
     http_method = "PUT",
     http_path = "/campaigns",
     paginator = list()
   )
-  input <- .connectcampaignservice$create_campaign_input(connectInstanceId = connectInstanceId, dialerConfig = dialerConfig, name = name, outboundCallConfig = outboundCallConfig, tags = tags)
+  input <- .connectcampaignservice$create_campaign_input(name = name, connectInstanceId = connectInstanceId, dialerConfig = dialerConfig, outboundCallConfig = outboundCallConfig, tags = tags)
   output <- .connectcampaignservice$create_campaign_output()
   config <- get_config()
   svc <- .connectcampaignservice$service(config)
@@ -223,25 +228,30 @@ connectcampaignservice_delete_instance_onboarding_job <- function(connectInstanc
 #' ```
 #' list(
 #'   campaign = list(
+#'     id = "string",
 #'     arn = "string",
+#'     name = "string",
 #'     connectInstanceId = "string",
 #'     dialerConfig = list(
-#'       predictiveDialerConfig = list(
-#'         bandwidthAllocation = 123.0
-#'       ),
 #'       progressiveDialerConfig = list(
-#'         bandwidthAllocation = 123.0
+#'         bandwidthAllocation = 123.0,
+#'         dialingCapacity = 123.0
+#'       ),
+#'       predictiveDialerConfig = list(
+#'         bandwidthAllocation = 123.0,
+#'         dialingCapacity = 123.0
+#'       ),
+#'       agentlessDialerConfig = list(
+#'         dialingCapacity = 123.0
 #'       )
 #'     ),
-#'     id = "string",
-#'     name = "string",
 #'     outboundCallConfig = list(
+#'       connectContactFlowId = "string",
+#'       connectSourcePhoneNumber = "string",
+#'       connectQueueId = "string",
 #'       answerMachineDetectionConfig = list(
 #'         enableAnswerMachineDetection = TRUE|FALSE
-#'       ),
-#'       connectContactFlowId = "string",
-#'       connectQueueId = "string",
-#'       connectSourcePhoneNumber = "string"
+#'       )
 #'     ),
 #'     tags = list(
 #'       "string"
@@ -340,16 +350,16 @@ connectcampaignservice_get_campaign_state <- function(id) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   failedRequests = list(
-#'     list(
-#'       campaignId = "string",
-#'       failureCode = "ResourceNotFound"|"UnknownError"
-#'     )
-#'   ),
 #'   successfulRequests = list(
 #'     list(
 #'       campaignId = "string",
 #'       state = "Initialized"|"Running"|"Paused"|"Stopped"|"Failed"
+#'     )
+#'   ),
+#'   failedRequests = list(
+#'     list(
+#'       campaignId = "string",
+#'       failureCode = "ResourceNotFound"|"UnknownError"
 #'     )
 #'   )
 #' )
@@ -402,12 +412,12 @@ connectcampaignservice_get_campaign_state_batch <- function(campaignIds) {
 #' list(
 #'   connectInstanceConfig = list(
 #'     connectInstanceId = "string",
+#'     serviceLinkedRoleArn = "string",
 #'     encryptionConfig = list(
 #'       enabled = TRUE|FALSE,
 #'       encryptionType = "KMS",
 #'       keyArn = "string"
-#'     ),
-#'     serviceLinkedRoleArn = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -458,8 +468,8 @@ connectcampaignservice_get_connect_instance_config <- function(connectInstanceId
 #' list(
 #'   connectInstanceOnboardingJobStatus = list(
 #'     connectInstanceId = "string",
-#'     failureCode = "EVENT_BRIDGE_ACCESS_DENIED"|"EVENT_BRIDGE_MANAGED_RULE_LIMIT_EXCEEDED"|"IAM_ACCESS_DENIED"|"KMS_ACCESS_DENIED"|"KMS_KEY_NOT_FOUND"|"INTERNAL_FAILURE",
-#'     status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
+#'     status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'     failureCode = "EVENT_BRIDGE_ACCESS_DENIED"|"EVENT_BRIDGE_MANAGED_RULE_LIMIT_EXCEEDED"|"IAM_ACCESS_DENIED"|"KMS_ACCESS_DENIED"|"KMS_KEY_NOT_FOUND"|"INTERNAL_FAILURE"
 #'   )
 #' )
 #' ```
@@ -501,39 +511,39 @@ connectcampaignservice_get_instance_onboarding_job_status <- function(connectIns
 #' Amazon Connect account.
 #'
 #' @usage
-#' connectcampaignservice_list_campaigns(filters, maxResults, nextToken)
+#' connectcampaignservice_list_campaigns(maxResults, nextToken, filters)
 #'
-#' @param filters 
 #' @param maxResults 
 #' @param nextToken 
+#' @param filters 
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
+#'   nextToken = "string",
 #'   campaignSummaryList = list(
 #'     list(
-#'       arn = "string",
-#'       connectInstanceId = "string",
 #'       id = "string",
-#'       name = "string"
+#'       arn = "string",
+#'       name = "string",
+#'       connectInstanceId = "string"
 #'     )
-#'   ),
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$list_campaigns(
+#'   maxResults = 123,
+#'   nextToken = "string",
 #'   filters = list(
 #'     instanceIdFilter = list(
-#'       operator = "Eq",
-#'       value = "string"
+#'       value = "string",
+#'       operator = "Eq"
 #'     )
-#'   ),
-#'   maxResults = 123,
-#'   nextToken = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -542,14 +552,14 @@ connectcampaignservice_get_instance_onboarding_job_status <- function(connectIns
 #' @rdname connectcampaignservice_list_campaigns
 #'
 #' @aliases connectcampaignservice_list_campaigns
-connectcampaignservice_list_campaigns <- function(filters = NULL, maxResults = NULL, nextToken = NULL) {
+connectcampaignservice_list_campaigns <- function(maxResults = NULL, nextToken = NULL, filters = NULL) {
   op <- new_operation(
     name = "ListCampaigns",
     http_method = "POST",
     http_path = "/campaigns-summary",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "campaignSummaryList")
   )
-  input <- .connectcampaignservice$list_campaigns_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
+  input <- .connectcampaignservice$list_campaigns_input(maxResults = maxResults, nextToken = nextToken, filters = filters)
   output <- .connectcampaignservice$list_campaigns_output()
   config <- get_config()
   svc <- .connectcampaignservice$service(config)
@@ -657,26 +667,26 @@ connectcampaignservice_pause_campaign <- function(id) {
 #' account. This API is idempotent.
 #'
 #' @usage
-#' connectcampaignservice_put_dial_request_batch(dialRequests, id)
+#' connectcampaignservice_put_dial_request_batch(id, dialRequests)
 #'
-#' @param dialRequests &#91;required&#93; 
 #' @param id &#91;required&#93; 
+#' @param dialRequests &#91;required&#93; 
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   failedRequests = list(
-#'     list(
-#'       clientToken = "string",
-#'       failureCode = "InvalidInput"|"RequestThrottled"|"UnknownError",
-#'       id = "string"
-#'     )
-#'   ),
 #'   successfulRequests = list(
 #'     list(
 #'       clientToken = "string",
 #'       id = "string"
+#'     )
+#'   ),
+#'   failedRequests = list(
+#'     list(
+#'       clientToken = "string",
+#'       id = "string",
+#'       failureCode = "InvalidInput"|"RequestThrottled"|"UnknownError"
 #'     )
 #'   )
 #' )
@@ -685,19 +695,19 @@ connectcampaignservice_pause_campaign <- function(id) {
 #' @section Request syntax:
 #' ```
 #' svc$put_dial_request_batch(
+#'   id = "string",
 #'   dialRequests = list(
 #'     list(
-#'       attributes = list(
-#'         "string"
-#'       ),
 #'       clientToken = "string",
+#'       phoneNumber = "string",
 #'       expirationTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       phoneNumber = "string"
+#'       attributes = list(
+#'         "string"
+#'       )
 #'     )
-#'   ),
-#'   id = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -706,14 +716,14 @@ connectcampaignservice_pause_campaign <- function(id) {
 #' @rdname connectcampaignservice_put_dial_request_batch
 #'
 #' @aliases connectcampaignservice_put_dial_request_batch
-connectcampaignservice_put_dial_request_batch <- function(dialRequests, id) {
+connectcampaignservice_put_dial_request_batch <- function(id, dialRequests) {
   op <- new_operation(
     name = "PutDialRequestBatch",
     http_method = "PUT",
     http_path = "/campaigns/{id}/dial-requests",
     paginator = list()
   )
-  input <- .connectcampaignservice$put_dial_request_batch_input(dialRequests = dialRequests, id = id)
+  input <- .connectcampaignservice$put_dial_request_batch_input(id = id, dialRequests = dialRequests)
   output <- .connectcampaignservice$put_dial_request_batch_output()
   config <- get_config()
   svc <- .connectcampaignservice$service(config)
@@ -825,8 +835,8 @@ connectcampaignservice_start_campaign <- function(id) {
 #' list(
 #'   connectInstanceOnboardingJobStatus = list(
 #'     connectInstanceId = "string",
-#'     failureCode = "EVENT_BRIDGE_ACCESS_DENIED"|"EVENT_BRIDGE_MANAGED_RULE_LIMIT_EXCEEDED"|"IAM_ACCESS_DENIED"|"KMS_ACCESS_DENIED"|"KMS_KEY_NOT_FOUND"|"INTERNAL_FAILURE",
-#'     status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
+#'     status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'     failureCode = "EVENT_BRIDGE_ACCESS_DENIED"|"EVENT_BRIDGE_MANAGED_RULE_LIMIT_EXCEEDED"|"IAM_ACCESS_DENIED"|"KMS_ACCESS_DENIED"|"KMS_KEY_NOT_FOUND"|"INTERNAL_FAILURE"
 #'   )
 #' )
 #' ```
@@ -1005,10 +1015,10 @@ connectcampaignservice_untag_resource <- function(arn, tagKeys) {
 #' Updates the dialer config of a campaign. This API is idempotent.
 #'
 #' @usage
-#' connectcampaignservice_update_campaign_dialer_config(dialerConfig, id)
+#' connectcampaignservice_update_campaign_dialer_config(id, dialerConfig)
 #'
-#' @param dialerConfig &#91;required&#93; 
 #' @param id &#91;required&#93; 
+#' @param dialerConfig &#91;required&#93; 
 #'
 #' @return
 #' An empty list.
@@ -1016,15 +1026,20 @@ connectcampaignservice_untag_resource <- function(arn, tagKeys) {
 #' @section Request syntax:
 #' ```
 #' svc$update_campaign_dialer_config(
+#'   id = "string",
 #'   dialerConfig = list(
-#'     predictiveDialerConfig = list(
-#'       bandwidthAllocation = 123.0
-#'     ),
 #'     progressiveDialerConfig = list(
-#'       bandwidthAllocation = 123.0
+#'       bandwidthAllocation = 123.0,
+#'       dialingCapacity = 123.0
+#'     ),
+#'     predictiveDialerConfig = list(
+#'       bandwidthAllocation = 123.0,
+#'       dialingCapacity = 123.0
+#'     ),
+#'     agentlessDialerConfig = list(
+#'       dialingCapacity = 123.0
 #'     )
-#'   ),
-#'   id = "string"
+#'   )
 #' )
 #' ```
 #'
@@ -1033,14 +1048,14 @@ connectcampaignservice_untag_resource <- function(arn, tagKeys) {
 #' @rdname connectcampaignservice_update_campaign_dialer_config
 #'
 #' @aliases connectcampaignservice_update_campaign_dialer_config
-connectcampaignservice_update_campaign_dialer_config <- function(dialerConfig, id) {
+connectcampaignservice_update_campaign_dialer_config <- function(id, dialerConfig) {
   op <- new_operation(
     name = "UpdateCampaignDialerConfig",
     http_method = "POST",
     http_path = "/campaigns/{id}/dialer-config",
     paginator = list()
   )
-  input <- .connectcampaignservice$update_campaign_dialer_config_input(dialerConfig = dialerConfig, id = id)
+  input <- .connectcampaignservice$update_campaign_dialer_config_input(id = id, dialerConfig = dialerConfig)
   output <- .connectcampaignservice$update_campaign_dialer_config_output()
   config <- get_config()
   svc <- .connectcampaignservice$service(config)
@@ -1100,14 +1115,14 @@ connectcampaignservice_update_campaign_name <- function(id, name) {
 #' Updates the outbound call config of a campaign. This API is idempotent.
 #'
 #' @usage
-#' connectcampaignservice_update_campaign_outbound_call_config(
-#'   answerMachineDetectionConfig, connectContactFlowId,
-#'   connectSourcePhoneNumber, id)
+#' connectcampaignservice_update_campaign_outbound_call_config(id,
+#'   connectContactFlowId, connectSourcePhoneNumber,
+#'   answerMachineDetectionConfig)
 #'
-#' @param answerMachineDetectionConfig 
+#' @param id &#91;required&#93; 
 #' @param connectContactFlowId 
 #' @param connectSourcePhoneNumber 
-#' @param id &#91;required&#93; 
+#' @param answerMachineDetectionConfig 
 #'
 #' @return
 #' An empty list.
@@ -1115,12 +1130,12 @@ connectcampaignservice_update_campaign_name <- function(id, name) {
 #' @section Request syntax:
 #' ```
 #' svc$update_campaign_outbound_call_config(
-#'   answerMachineDetectionConfig = list(
-#'     enableAnswerMachineDetection = TRUE|FALSE
-#'   ),
+#'   id = "string",
 #'   connectContactFlowId = "string",
 #'   connectSourcePhoneNumber = "string",
-#'   id = "string"
+#'   answerMachineDetectionConfig = list(
+#'     enableAnswerMachineDetection = TRUE|FALSE
+#'   )
 #' )
 #' ```
 #'
@@ -1129,14 +1144,14 @@ connectcampaignservice_update_campaign_name <- function(id, name) {
 #' @rdname connectcampaignservice_update_campaign_outbound_call_config
 #'
 #' @aliases connectcampaignservice_update_campaign_outbound_call_config
-connectcampaignservice_update_campaign_outbound_call_config <- function(answerMachineDetectionConfig = NULL, connectContactFlowId = NULL, connectSourcePhoneNumber = NULL, id) {
+connectcampaignservice_update_campaign_outbound_call_config <- function(id, connectContactFlowId = NULL, connectSourcePhoneNumber = NULL, answerMachineDetectionConfig = NULL) {
   op <- new_operation(
     name = "UpdateCampaignOutboundCallConfig",
     http_method = "POST",
     http_path = "/campaigns/{id}/outbound-call-config",
     paginator = list()
   )
-  input <- .connectcampaignservice$update_campaign_outbound_call_config_input(answerMachineDetectionConfig = answerMachineDetectionConfig, connectContactFlowId = connectContactFlowId, connectSourcePhoneNumber = connectSourcePhoneNumber, id = id)
+  input <- .connectcampaignservice$update_campaign_outbound_call_config_input(id = id, connectContactFlowId = connectContactFlowId, connectSourcePhoneNumber = connectSourcePhoneNumber, answerMachineDetectionConfig = answerMachineDetectionConfig)
   output <- .connectcampaignservice$update_campaign_outbound_call_config_output()
   config <- get_config()
   svc <- .connectcampaignservice$service(config)

@@ -23,7 +23,7 @@ inference schedulers.}
 
 \item{ModelName}{The name of the ML model used by the inference scheduler to be listed.}
 
-\item{Status}{Specifies the current status of the inference schedulers to list.}
+\item{Status}{Specifies the current status of the inference schedulers.}
 }
 \description{
 Retrieves a list of all inference schedulers currently available for your account.

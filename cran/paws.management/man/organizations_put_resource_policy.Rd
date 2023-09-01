@@ -9,8 +9,8 @@ organizations_put_resource_policy(Content, Tags = NULL)
 \arguments{
 \item{Content}{[required] If provided, the new content for the resource policy. The text must be
 correctly formatted JSON that complies with the syntax for the resource
-policy's type. For more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html}{Service Control Policy Syntax}
-in the \emph{Organizations User Guide.}}
+policy's type. For more information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html}{SCP syntax}
+in the \emph{Organizations User Guide}.}
 
 \item{Tags}{A list of tags that you want to attach to the newly created resource
 policy. For each tag in the list, you must specify both a tag key and a

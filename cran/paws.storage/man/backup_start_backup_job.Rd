@@ -39,6 +39,8 @@ canceled if it doesn't start successfully. This value is optional, and
 the default is 8 hours. If this value is included, it must be at least
 60 minutes to avoid errors.
 
+This parameter has a maximum value of 100 years (52,560,000 minutes).
+
 During the start window, the backup job status remains in \code{CREATED}
 status until it has successfully begun or until the start window time
 has run out. If within the start window time Backup receives an error
@@ -52,7 +54,10 @@ time is over).}
 complete, or else Backup will cancel the job. This value is optional.
 This value begins counting down from when the backup was scheduled. It
 does not add additional time for \code{StartWindowMinutes}, or if the backup
-started later than scheduled.}
+started later than scheduled.
+
+Like \code{StartWindowMinutes}, this parameter has a maximum value of 100
+years (52,560,000 minutes).}
 
 \item{Lifecycle}{The lifecycle defines when a protected resource is transitioned to cold
 storage and when it expires. Backup will transition and expire backups
@@ -66,7 +71,9 @@ has been transitioned to cold.
 
 Resource types that are able to be transitioned to cold storage are
 listed in the "Lifecycle to cold storage" section of the \href{https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#features-by-resource}{Feature availability by resource}
-table. Backup ignores this expression for other resource types.}
+table. Backup ignores this expression for other resource types.
+
+This parameter has a maximum value of 100 years (36,500 days).}
 
 \item{RecoveryPointTags}{To help organize your resources, you can assign your own metadata to the
 resources that you create. Each tag is a key-value pair.}

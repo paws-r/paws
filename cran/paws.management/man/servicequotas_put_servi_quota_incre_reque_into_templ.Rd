@@ -12,13 +12,19 @@ servicequotas_put_service_quota_increase_request_into_template(
 )
 }
 \arguments{
-\item{QuotaCode}{[required] The quota identifier.}
+\item{QuotaCode}{[required] Specifies the quota identifier. To find the quota code for a specific
+quota, use the
+\code{\link[=servicequotas_list_service_quotas]{list_service_quotas}} operation,
+and look for the \code{QuotaCode} response in the output for the quota you
+want.}
 
-\item{ServiceCode}{[required] The service identifier.}
+\item{ServiceCode}{[required] Specifies the service identifier. To find the service code value for an
+Amazon Web Services service, use the
+\code{\link[=servicequotas_list_services]{list_services}} operation.}
 
-\item{AwsRegion}{[required] The AWS Region.}
+\item{AwsRegion}{[required] Specifies the Amazon Web Services Region to which the template applies.}
 
-\item{DesiredValue}{[required] The new, increased value for the quota.}
+\item{DesiredValue}{[required] Specifies the new, increased value for the quota.}
 }
 \description{
 Adds a quota increase request to your quota request template.

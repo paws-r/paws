@@ -39,6 +39,18 @@ NULL
   return(populate(args, shape))
 }
 
+.inspector2$batch_get_finding_details_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(findingArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.inspector2$batch_get_finding_details_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(errors = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), findingArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), findingDetails = structure(list(structure(list(cisaData = structure(list(action = structure(logical(0), tags = list(type = "string")), dateAdded = structure(logical(0), tags = list(type = "timestamp")), dateDue = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), cwes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), epssScore = structure(logical(0), tags = list(type = "double", box = TRUE)), evidences = structure(list(structure(list(evidenceDetail = structure(logical(0), tags = list(type = "string")), evidenceRule = structure(logical(0), tags = list(type = "string")), severity = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), exploitObserved = structure(list(firstSeen = structure(logical(0), tags = list(type = "timestamp")), lastSeen = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure")), findingArn = structure(logical(0), tags = list(type = "string")), referenceUrls = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), riskScore = structure(logical(0), tags = list(type = "integer", box = TRUE)), tools = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ttps = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .inspector2$batch_get_free_trial_info_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(accountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))

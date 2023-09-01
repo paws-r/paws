@@ -10,8 +10,7 @@ ses_put_configuration_set_delivery_options(
 )
 }
 \arguments{
-\item{ConfigurationSetName}{[required] The name of the configuration set that you want to specify the delivery
-options for.}
+\item{ConfigurationSetName}{[required] The name of the configuration set.}
 
 \item{DeliveryOptions}{Specifies whether messages that use the configuration set are required
 to use Transport Layer Security (TLS).}

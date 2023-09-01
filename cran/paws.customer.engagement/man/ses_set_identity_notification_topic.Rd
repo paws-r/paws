@@ -12,8 +12,7 @@ ses_set_identity_notification_topic(
 )
 }
 \arguments{
-\item{Identity}{[required] The identity (email address or domain) that you want to set the Amazon
-SNS topic for.
+\item{Identity}{[required] The identity (email address or domain) for the Amazon SNS topic.
 
 You can only specify a verified identity for this parameter.
 
@@ -22,8 +21,8 @@ Resource Name (ARN). The following examples are all valid identities:
 \code{sender@example.com}, \code{example.com},
 \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}.}
 
-\item{NotificationType}{[required] The type of notifications that will be published to the specified Amazon
-SNS topic.}
+\item{NotificationType}{[required] The type of notifications that are published to the specified Amazon SNS
+topic.}
 
 \item{SnsTopic}{The Amazon Resource Name (ARN) of the Amazon SNS topic. If the parameter
 is omitted from the request or a null value is passed, \code{SnsTopic} is

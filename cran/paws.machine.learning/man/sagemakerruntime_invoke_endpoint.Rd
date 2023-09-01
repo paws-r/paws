@@ -33,7 +33,8 @@ For information about the format of the request body, see \href{https://docs.aws
 
 \item{ContentType}{The MIME type of the input data in the request body.}
 
-\item{Accept}{The desired MIME type of the inference in the response.}
+\item{Accept}{The desired MIME type of the inference response from the model
+container.}
 
 \item{CustomAttributes}{Provides additional information about a request for an inference
 submitted to a model hosted at an Amazon SageMaker endpoint. The

@@ -19,8 +19,8 @@ NULL
 #' @param value Specifies a value of the API key.
 #' @param stageKeys DEPRECATED FOR USAGE PLANS - Specifies stages associated with the API
 #' key.
-#' @param customerId An AWS Marketplace customer identifier , when integrating with the AWS
-#' SaaS Marketplace.
+#' @param customerId An Amazon Web Services Marketplace customer identifier, when integrating
+#' with the Amazon Web Services SaaS Marketplace.
 #' @param tags The key-value map of strings. The valid character set is
 #' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
@@ -302,14 +302,14 @@ apigateway_create_documentation_version <- function(restApiId, documentationVers
 #' certificates and end with the root certificate. Use the intermediate
 #' certificates that were provided by your certificate authority. Do not
 #' include any intermediaries that are not in the chain of trust path.
-#' @param certificateArn The reference to an AWS-managed certificate that will be used by
-#' edge-optimized endpoint for this domain name. AWS Certificate Manager is
-#' the only supported source.
+#' @param certificateArn The reference to an Amazon Web Services-managed certificate that will be
+#' used by edge-optimized endpoint for this domain name. Certificate
+#' Manager is the only supported source.
 #' @param regionalCertificateName The user-friendly name of the certificate that will be used by regional
 #' endpoint for this domain name.
-#' @param regionalCertificateArn The reference to an AWS-managed certificate that will be used by
-#' regional endpoint for this domain name. AWS Certificate Manager is the
-#' only supported source.
+#' @param regionalCertificateArn The reference to an Amazon Web Services-managed certificate that will be
+#' used by regional endpoint for this domain name. Certificate Manager is
+#' the only supported source.
 #' @param endpointConfiguration The endpoint configuration of this DomainName showing the endpoint types
 #' of the domain name.
 #' @param tags The key-value map of strings. The valid character set is
@@ -462,7 +462,7 @@ apigateway_create_resource <- function(restApiId, parentId, pathPart) {
 #' smaller than this value. Setting it to zero allows compression for any
 #' payload size.
 #' @param apiKeySource The source of the API key for metering requests according to a usage
-#' plan. Valid values are: \>`HEADER` to read the API key from the
+#' plan. Valid values are: `HEADER` to read the API key from the
 #' `X-API-Key` header of a request. `AUTHORIZER` to read the API key from
 #' the `UsageIdentifierKey` from a custom authorizer.
 #' @param endpointConfiguration The endpoint configuration of this RestApi showing the endpoint types of
@@ -627,8 +627,8 @@ apigateway_create_usage_plan_key <- function(usagePlanId, keyId, keyType) {
 #' @param name &#91;required&#93; The name used to label and identify the VPC link.
 #' @param description The description of the VPC link.
 #' @param targetArns &#91;required&#93; The ARN of the network load balancer of the VPC targeted by the VPC
-#' link. The network load balancer must be owned by the same AWS account of
-#' the API owner.
+#' link. The network load balancer must be owned by the same Amazon Web
+#' Services account of the API owner.
 #' @param tags The key-value map of strings. The valid character set is
 #' \[a-zA-Z+-=._:/\]. The tag key can be up to 128 characters and must not
 #' start with `aws:`. The tag value can be up to 256 characters.
@@ -1450,8 +1450,8 @@ apigateway_get_api_key <- function(apiKey, includeValue = NULL) {
 #' @param limit The maximum number of returned results per page. The default value is 25
 #' and the maximum value is 500.
 #' @param nameQuery The name of queried API keys.
-#' @param customerId The identifier of a customer in AWS Marketplace or an external system,
-#' such as a developer portal.
+#' @param customerId The identifier of a customer in Amazon Web Services Marketplace or an
+#' external system, such as a developer portal.
 #' @param includeValues A boolean flag to specify whether (`true`) or not (`false`) the result
 #' contains key values.
 #'
@@ -2914,9 +2914,9 @@ apigateway_import_api_keys <- function(body, format, failOnWarnings = NULL) {
 #' See [https://www.paws-r-sdk.com/docs/apigateway_import_documentation_parts/](https://www.paws-r-sdk.com/docs/apigateway_import_documentation_parts/) for full documentation.
 #'
 #' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
-#' @param mode A query parameter to indicate whether to overwrite (`OVERWRITE`) any
-#' existing DocumentationParts definition or to merge (`MERGE`) the new
-#' definition into the existing one. The default value is `MERGE`.
+#' @param mode A query parameter to indicate whether to overwrite (`overwrite`) any
+#' existing DocumentationParts definition or to merge (`merge`) the new
+#' definition into the existing one. The default value is `merge`.
 #' @param failOnWarnings A query parameter to specify whether to rollback the documentation
 #' importation (`true`) or not (`false`) when a warning is encountered. The
 #' default value is `false`.
@@ -2969,11 +2969,6 @@ apigateway_import_documentation_parts <- function(restApiId, mode = NULL, failOn
 #' 
 #' To handle imported `basepath`, set `parameters` as `basepath=ignore`,
 #' `basepath=prepend` or `basepath=split`.
-#' 
-#' For example, the AWS CLI command to exclude documentation from the
-#' imported API is:
-#' 
-#' The AWS CLI command to set the regional endpoint on the imported API is:
 #' @param body &#91;required&#93; The POST request body containing external API definitions. Currently,
 #' only OpenAPI definition JSON/YAML files are supported. The maximum size
 #' of the API definition file is 6MB.
@@ -3718,7 +3713,7 @@ apigateway_update_documentation_part <- function(restApiId, documentationPartId,
 #'
 #' See [https://www.paws-r-sdk.com/docs/apigateway_update_documentation_version/](https://www.paws-r-sdk.com/docs/apigateway_update_documentation_version/) for full documentation.
 #'
-#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi..
+#' @param restApiId &#91;required&#93; The string identifier of the associated RestApi.
 #' @param documentationVersion &#91;required&#93; The version identifier of the to-be-updated documentation version.
 #' @param patchOperations For more information about supported patch operations, see [Patch
 #' Operations](https://docs.aws.amazon.com/apigateway/latest/api/patch-operations.html).

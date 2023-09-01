@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_update_user_pool}
 \alias{cognitoidentityprovider_update_user_pool}
-\title{Updates the specified user pool with the specified attributes}
+\title{This action might generate an SMS text message}
 \usage{
 cognitoidentityprovider_update_user_pool(
   UserPoolId,
@@ -109,8 +109,12 @@ such as by purpose, owner, environment, or other criteria.}
 \code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}}
 requests.}
 
-\item{UserPoolAddOns}{Enables advanced security risk detection. Set the key
-\code{AdvancedSecurityMode} to the value "AUDIT".}
+\item{UserPoolAddOns}{User pool add-ons. Contains settings for activation of advanced security
+features. To log user security information but take no action, set to
+\code{AUDIT}. To configure automatic security responses to risky traffic to
+your user pool, set to \code{ENFORCED}.
+
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-advanced-security.html}{Adding advanced security to a user pool}.}
 
 \item{AccountRecoverySetting}{The available verified method a user can use to recover their password
 when they call
@@ -123,7 +127,7 @@ Cognito uses the legacy behavior to determine the recovery method where
 SMS is preferred through email.}
 }
 \description{
-Updates the specified user pool with the specified attributes. You can get a list of the current user pool settings using \code{\link[=cognitoidentityprovider_describe_user_pool]{describe_user_pool}}. If you don't provide a value for an attribute, it will be set to the default value.
+This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_update_user_pool/} for full documentation.
 }

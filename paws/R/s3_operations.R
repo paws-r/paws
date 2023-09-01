@@ -1048,6 +1048,11 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #'
 #' @examples
 #' \dontrun{
+#' # The following example creates a bucket.
+#' svc$create_bucket(
+#'   Bucket = "examplebucket"
+#' )
+#' 
 #' # The following example creates a bucket. The request specifies an AWS
 #' # region where to create the bucket.
 #' svc$create_bucket(
@@ -1055,11 +1060,6 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #'   CreateBucketConfiguration = list(
 #'     LocationConstraint = "eu-west-1"
 #'   )
-#' )
-#' 
-#' # The following example creates a bucket.
-#' svc$create_bucket(
-#'   Bucket = "examplebucket"
 #' )
 #' }
 #'
@@ -2589,16 +2589,16 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'
 #' @examples
 #' \dontrun{
-#' # The following example deletes an object from a non-versioned bucket.
-#' svc$delete_object(
-#'   Bucket = "ExampleBucket",
-#'   Key = "HappyFace.jpg"
-#' )
-#' 
 #' # The following example deletes an object from an S3 bucket.
 #' svc$delete_object(
 #'   Bucket = "examplebucket",
 #'   Key = "objectkey.jpg"
+#' )
+#' 
+#' # The following example deletes an object from a non-versioned bucket.
+#' svc$delete_object(
+#'   Bucket = "ExampleBucket",
+#'   Key = "HappyFace.jpg"
 #' )
 #' }
 #'
@@ -2697,20 +2697,20 @@ s3_delete_object <- function(Bucket, Key, MFA = NULL, VersionId = NULL, RequestP
 #' @examples
 #' \dontrun{
 #' # The following example removes tag set associated with the specified
-#' # object. If the bucket is versioning enabled, the operation removes tag
-#' # set from the latest object version.
-#' svc$delete_object_tagging(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
-#' )
-#' 
-#' # The following example removes tag set associated with the specified
 #' # object version. The request specifies both the object key and object
 #' # version.
 #' svc$delete_object_tagging(
 #'   Bucket = "examplebucket",
 #'   Key = "HappyFace.jpg",
 #'   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
+#' )
+#' 
+#' # The following example removes tag set associated with the specified
+#' # object. If the bucket is versioning enabled, the operation removes tag
+#' # set from the latest object version.
+#' svc$delete_object_tagging(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
 #' )
 #' }
 #'
@@ -5573,18 +5573,18 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'
 #' @examples
 #' \dontrun{
+#' # The following example retrieves an object for an S3 bucket.
+#' svc$get_object(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
+#' )
+#' 
 #' # The following example retrieves an object for an S3 bucket. The request
 #' # specifies the range header to retrieve a specific byte range.
 #' svc$get_object(
 #'   Bucket = "examplebucket",
 #'   Key = "SampleFile.txt",
 #'   Range = "bytes=0-9"
-#' )
-#' 
-#' # The following example retrieves an object for an S3 bucket.
-#' svc$get_object(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
 #' )
 #' }
 #'
@@ -7575,12 +7575,6 @@ s3_list_buckets <- function() {
 #'
 #' @examples
 #' \dontrun{
-#' # The following example lists in-progress multipart uploads on a specific
-#' # bucket.
-#' svc$list_multipart_uploads(
-#'   Bucket = "examplebucket"
-#' )
-#' 
 #' # The following example specifies the upload-id-marker and key-marker from
 #' # previous truncated response to retrieve next setup of multipart uploads.
 #' svc$list_multipart_uploads(
@@ -7588,6 +7582,12 @@ s3_list_buckets <- function() {
 #'   KeyMarker = "nextkeyfrompreviousresponse",
 #'   MaxUploads = "2",
 #'   UploadIdMarker = "valuefrompreviousresponse"
+#' )
+#' 
+#' # The following example lists in-progress multipart uploads on a specific
+#' # bucket.
+#' svc$list_multipart_uploads(
+#'   Bucket = "examplebucket"
 #' )
 #' }
 #'
@@ -11736,28 +11736,6 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'
 #' @examples
 #' \dontrun{
-#' # The following example uploads an object to a versioning-enabled bucket.
-#' # The source file is specified using Windows file syntax. S3 returns
-#' # VersionId of the newly created object.
-#' svc$put_object(
-#'   Body = "HappyFace.jpg",
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
-#' )
-#' 
-#' # The following example creates an object. The request also specifies
-#' # optional metadata. If the bucket is versioning enabled, S3 returns
-#' # version ID in response.
-#' svc$put_object(
-#'   Body = "filetoupload",
-#'   Bucket = "examplebucket",
-#'   Key = "exampleobject",
-#'   Metadata = list(
-#'     metadata1 = "value1",
-#'     metadata2 = "value2"
-#'   )
-#' )
-#' 
 #' # The following example uploads an object. The request specifies optional
 #' # request headers to directs S3 to use specific storage class and use
 #' # server-side encryption.
@@ -11769,12 +11747,14 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   StorageClass = "STANDARD_IA"
 #' )
 #' 
-#' # The following example creates an object. If the bucket is versioning
-#' # enabled, S3 returns version ID in response.
+#' # The following example uploads an object. The request specifies optional
+#' # object tags. The bucket is versioned, therefore S3 returns version ID of
+#' # the newly created object.
 #' svc$put_object(
-#'   Body = "filetoupload",
+#'   Body = "c:\\HappyFace.jpg",
 #'   Bucket = "examplebucket",
-#'   Key = "objectkey"
+#'   Key = "HappyFace.jpg",
+#'   Tagging = "key1=value1&key2=value2"
 #' )
 #' 
 #' # The following example uploads an object. The request specifies the
@@ -11789,14 +11769,21 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   Tagging = "key1=value1&key2=value2"
 #' )
 #' 
-#' # The following example uploads an object. The request specifies optional
-#' # object tags. The bucket is versioned, therefore S3 returns version ID of
-#' # the newly created object.
+#' # The following example creates an object. If the bucket is versioning
+#' # enabled, S3 returns version ID in response.
 #' svc$put_object(
-#'   Body = "c:\\HappyFace.jpg",
+#'   Body = "filetoupload",
 #'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg",
-#'   Tagging = "key1=value1&key2=value2"
+#'   Key = "objectkey"
+#' )
+#' 
+#' # The following example uploads an object to a versioning-enabled bucket.
+#' # The source file is specified using Windows file syntax. S3 returns
+#' # VersionId of the newly created object.
+#' svc$put_object(
+#'   Body = "HappyFace.jpg",
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
 #' )
 #' 
 #' # The following example uploads and object. The request specifies optional
@@ -11808,6 +11795,19 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   Body = "filetoupload",
 #'   Bucket = "examplebucket",
 #'   Key = "exampleobject"
+#' )
+#' 
+#' # The following example creates an object. The request also specifies
+#' # optional metadata. If the bucket is versioning enabled, S3 returns
+#' # version ID in response.
+#' svc$put_object(
+#'   Body = "filetoupload",
+#'   Bucket = "examplebucket",
+#'   Key = "exampleobject",
+#'   Metadata = list(
+#'     metadata1 = "value1",
+#'     metadata2 = "value2"
+#'   )
 #' )
 #' }
 #'

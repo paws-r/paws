@@ -51,7 +51,8 @@ NULL
 #'   host = host,
 #'   port = port,
 #'   client.flag = RMariaDB::CLIENT_SSL
-#' )}
+#' )
+#' }
 #'
 #' @keywords internal
 #'

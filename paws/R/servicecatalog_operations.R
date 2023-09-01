@@ -1029,7 +1029,7 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'       Name = "string",
 #'       Owner = "string",
 #'       ShortDescription = "string",
-#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
+#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE"|"TERRAFORM_CLOUD",
 #'       Distributor = "string",
 #'       HasDefaultPath = TRUE|FALSE,
 #'       SupportEmail = "string",
@@ -1068,7 +1068,7 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'     Id = "string",
 #'     Name = "string",
 #'     Description = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE"|"TERRAFORM_CLOUD",
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -1096,7 +1096,7 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'   SupportDescription = "string",
 #'   SupportEmail = "string",
 #'   SupportUrl = "string",
-#'   ProductType = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
+#'   ProductType = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE"|"TERRAFORM_CLOUD",
 #'   Tags = list(
 #'     list(
 #'       Key = "string",
@@ -1109,7 +1109,7 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'     Info = list(
 #'       "string"
 #'     ),
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE"|"TERRAFORM_CLOUD",
 #'     DisableTemplateValidation = TRUE|FALSE
 #'   ),
 #'   IdempotencyToken = "string",
@@ -1303,7 +1303,7 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
 #'     Id = "string",
 #'     Name = "string",
 #'     Description = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE"|"TERRAFORM_CLOUD",
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -1329,7 +1329,7 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
 #'     Info = list(
 #'       "string"
 #'     ),
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE"|"TERRAFORM_CLOUD",
 #'     DisableTemplateValidation = TRUE|FALSE
 #'   ),
 #'   IdempotencyToken = "string"
@@ -2330,7 +2330,7 @@ servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToke
 #'     Name = "string",
 #'     Owner = "string",
 #'     ShortDescription = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE"|"TERRAFORM_CLOUD",
 #'     Distributor = "string",
 #'     HasDefaultPath = TRUE|FALSE,
 #'     SupportEmail = "string",
@@ -2430,7 +2430,7 @@ servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id = NULL, Na
 #'       Name = "string",
 #'       Owner = "string",
 #'       ShortDescription = "string",
-#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
+#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE"|"TERRAFORM_CLOUD",
 #'       Distributor = "string",
 #'       HasDefaultPath = TRUE|FALSE,
 #'       SupportEmail = "string",
@@ -2558,7 +2558,7 @@ servicecatalog_describe_product_as_admin <- function(AcceptLanguage = NULL, Id =
 #'     Name = "string",
 #'     Owner = "string",
 #'     ShortDescription = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE"|"TERRAFORM_CLOUD",
 #'     Distributor = "string",
 #'     HasDefaultPath = TRUE|FALSE,
 #'     SupportEmail = "string",
@@ -2843,7 +2843,7 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #'     Id = "string",
 #'     Name = "string",
 #'     Description = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE"|"TERRAFORM_CLOUD",
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -4069,7 +4069,7 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
 #' are supported on the provisioned product.
 #' 
 #' Resource import only supports CloudFormation stack ARNs. CloudFormation
-#' StackSets, and non-root nested stacks are not supported.
+#' StackSets, and non-root nested stacks, are not supported.
 #' 
 #' The CloudFormation stack must have one of the following statuses to be
 #' imported: `CREATE_COMPLETE`, `UPDATE_COMPLETE`,
@@ -4080,14 +4080,19 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
 #' matches the associated Service Catalog product provisioning artifact.
 #' 
 #' When you import an existing CloudFormation stack into a portfolio,
-#' constraints that are associated with the product aren't applied during
-#' the import process. The constraints are applied after you call
+#' Service Catalog does not apply the product's associated constraints
+#' during the import process. Service Catalog applies the constraints after
+#' you call
 #' [`update_provisioned_product`][servicecatalog_update_provisioned_product]
 #' for the provisioned product.
 #' 
 #' The user or role that performs this operation must have the
 #' `cloudformation:GetTemplate` and `cloudformation:DescribeStacks` IAM
 #' policy permissions.
+#' 
+#' You can only import one provisioned product at a time. The product's
+#' CloudFormation stack must have the `IMPORT_COMPLETE` status before you
+#' import another.
 #'
 #' @usage
 #' servicecatalog_import_as_provisioned_product(AcceptLanguage, ProductId,
@@ -4946,7 +4951,7 @@ servicecatalog_list_provisioned_product_plans <- function(AcceptLanguage = NULL,
 #'       Id = "string",
 #'       Name = "string",
 #'       Description = "string",
-#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE",
+#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE"|"TERRAFORM_CLOUD",
 #'       CreatedTime = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -5022,7 +5027,7 @@ servicecatalog_list_provisioning_artifacts <- function(AcceptLanguage = NULL, Pr
 #'         Name = "string",
 #'         Owner = "string",
 #'         ShortDescription = "string",
-#'         Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
+#'         Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE"|"TERRAFORM_CLOUD",
 #'         Distributor = "string",
 #'         HasDefaultPath = TRUE|FALSE,
 #'         SupportEmail = "string",
@@ -6041,7 +6046,7 @@ servicecatalog_scan_provisioned_products <- function(AcceptLanguage = NULL, Acce
 #'       Name = "string",
 #'       Owner = "string",
 #'       ShortDescription = "string",
-#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
+#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE"|"TERRAFORM_CLOUD",
 #'       Distributor = "string",
 #'       HasDefaultPath = TRUE|FALSE,
 #'       SupportEmail = "string",
@@ -6137,7 +6142,7 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
 #'         Name = "string",
 #'         Owner = "string",
 #'         ShortDescription = "string",
-#'         Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
+#'         Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE"|"TERRAFORM_CLOUD",
 #'         Distributor = "string",
 #'         HasDefaultPath = TRUE|FALSE,
 #'         SupportEmail = "string",
@@ -6238,7 +6243,7 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
 #' 
 #' When the key is `SearchQuery`, the searchable fields are `arn`,
 #' `createdTime`, `id`, `lastRecordId`, `idempotencyToken`, `name`,
-#' `physicalId`, `productId`, `provisioningArtifact`, `type`, `status`,
+#' `physicalId`, `productId`, `provisioningArtifactId`, `type`, `status`,
 #' `tags`, `userArn`, `userArnSession`, `lastProvisioningRecordId`,
 #' `lastSuccessfulProvisioningRecordId`, `productName`, and
 #' `provisioningArtifactName`.
@@ -6670,7 +6675,7 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #' [`create_portfolio_share`][servicecatalog_create_portfolio_share]
 #' operation is `IN_PROGRESS`, as the share is not available to recipient
 #' entities. In this case, you must wait for the portfolio share to be
-#' COMPLETED.
+#' completed.
 #' 
 #' You must provide the `accountId` or organization node in the input, but
 #' not both.
@@ -6808,7 +6813,7 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #'       Name = "string",
 #'       Owner = "string",
 #'       ShortDescription = "string",
-#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE",
+#'       Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE"|"TERRAFORM_OPEN_SOURCE"|"TERRAFORM_CLOUD",
 #'       Distributor = "string",
 #'       HasDefaultPath = TRUE|FALSE,
 #'       SupportEmail = "string",
@@ -7205,7 +7210,7 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
 #'     Id = "string",
 #'     Name = "string",
 #'     Description = "string",
-#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE",
+#'     Type = "CLOUD_FORMATION_TEMPLATE"|"MARKETPLACE_AMI"|"MARKETPLACE_CAR"|"TERRAFORM_OPEN_SOURCE"|"TERRAFORM_CLOUD",
 #'     CreatedTime = as.POSIXct(
 #'       "2015-01-01"
 #'     ),

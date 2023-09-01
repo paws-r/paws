@@ -60,7 +60,8 @@ controls from supported security standards. Security Hub collects
 security data from Amazon Web Services accounts, services, and
 integrated third-party products and helps you analyze security trends in
 your environment to identify the highest priority security issues. For
-more information about Security Hub, see the \href{https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html}{Security HubUser Guide}.
+more information about Security Hub, see the \href{https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html}{\emph{Security Hub User Guide}}
+.
 
 When you use operations in the Security Hub API, the requests are
 executed only in the Amazon Web Services Region that is currently active
@@ -168,7 +169,7 @@ second.
 \link[paws.security.identity:securityhub_describe_standards_controls]{describe_standards_controls} \tab Returns a list of security standards controls\cr
 \link[paws.security.identity:securityhub_disable_import_findings_for_product]{disable_import_findings_for_product} \tab Disables the integration of the specified product with Security Hub\cr
 \link[paws.security.identity:securityhub_disable_organization_admin_account]{disable_organization_admin_account} \tab Disables a Security Hub administrator account\cr
-\link[paws.security.identity:securityhub_disable_security_hub]{disable_security_hub} \tab Disables Security Hub in your account only in the current Region\cr
+\link[paws.security.identity:securityhub_disable_security_hub]{disable_security_hub} \tab Disables Security Hub in your account only in the current Amazon Web Services Region\cr
 \link[paws.security.identity:securityhub_disassociate_from_administrator_account]{disassociate_from_administrator_account} \tab Disassociates the current Security Hub member account from the associated administrator account\cr
 \link[paws.security.identity:securityhub_disassociate_from_master_account]{disassociate_from_master_account} \tab This method is deprecated\cr
 \link[paws.security.identity:securityhub_disassociate_members]{disassociate_members} \tab Disassociates the specified member accounts from the associated administrator account\cr

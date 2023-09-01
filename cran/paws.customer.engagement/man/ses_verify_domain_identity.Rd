@@ -3,7 +3,7 @@
 \name{ses_verify_domain_identity}
 \alias{ses_verify_domain_identity}
 \title{Adds a domain to the list of identities for your Amazon SES account in
-the current AWS Region and attempts to verify it}
+the current Amazon Web Services Region and attempts to verify it}
 \usage{
 ses_verify_domain_identity(Domain)
 }
@@ -11,7 +11,7 @@ ses_verify_domain_identity(Domain)
 \item{Domain}{[required] The domain to be verified.}
 }
 \description{
-Adds a domain to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it. For more information about verifying domains, see \href{https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html}{Verifying Email Addresses and Domains} in the \emph{Amazon SES Developer Guide.}
+Adds a domain to the list of identities for your Amazon SES account in the current Amazon Web Services Region and attempts to verify it. For more information about verifying domains, see \href{https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html}{Verifying Email Addresses and Domains} in the \emph{Amazon SES Developer Guide.}
 
 See \url{https://www.paws-r-sdk.com/docs/ses_verify_domain_identity/} for full documentation.
 }

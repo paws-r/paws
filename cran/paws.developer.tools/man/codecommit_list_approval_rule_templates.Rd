@@ -2,8 +2,8 @@
 % Please edit documentation in R/codecommit_operations.R
 \name{codecommit_list_approval_rule_templates}
 \alias{codecommit_list_approval_rule_templates}
-\title{Lists all approval rule templates in the specified AWS Region in your
-AWS account}
+\title{Lists all approval rule templates in the specified Amazon Web Services
+Region in your Amazon Web Services account}
 \usage{
 codecommit_list_approval_rule_templates(nextToken = NULL, maxResults = NULL)
 }
@@ -15,7 +15,7 @@ batch of the results.}
 results.}
 }
 \description{
-Lists all approval rule templates in the specified AWS Region in your AWS account. If an AWS Region is not specified, the AWS Region where you are signed in is used.
+Lists all approval rule templates in the specified Amazon Web Services Region in your Amazon Web Services account. If an Amazon Web Services Region is not specified, the Amazon Web Services Region where you are signed in is used.
 
 See \url{https://www.paws-r-sdk.com/docs/codecommit_list_approval_rule_templates/} for full documentation.
 }

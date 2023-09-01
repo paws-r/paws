@@ -11,9 +11,9 @@ servicequotas_list_tags_for_resource(ResourceARN)
 to list tags. You can get this information by using the Service Quotas
 console, or by listing the quotas using the
 \href{https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html}{list-service-quotas}
-AWS CLI command or the
-\code{\link[=servicequotas_list_service_quotas]{list_service_quotas}} AWS API
-operation.}
+CLI command or the
+\code{\link[=servicequotas_list_service_quotas]{list_service_quotas}} Amazon Web
+Services API operation.}
 }
 \description{
 Returns a list of the tags assigned to the specified applied quota.

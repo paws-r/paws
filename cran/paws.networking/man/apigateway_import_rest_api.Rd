@@ -26,12 +26,7 @@ To configure the endpoint type, set \code{parameters} as
 \code{EDGE}.
 
 To handle imported \code{basepath}, set \code{parameters} as \code{basepath=ignore},
-\code{basepath=prepend} or \code{basepath=split}.
-
-For example, the AWS CLI command to exclude documentation from the
-imported API is:
-
-The AWS CLI command to set the regional endpoint on the imported API is:}
+\code{basepath=prepend} or \code{basepath=split}.}
 
 \item{body}{[required] The POST request body containing external API definitions. Currently,
 only OpenAPI definition JSON/YAML files are supported. The maximum size

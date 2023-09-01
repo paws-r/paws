@@ -27,6 +27,18 @@ NULL
   return(populate(args, shape))
 }
 
+.connectparticipant$describe_view_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ViewToken = structure(logical(0), tags = list(location = "uri", locationName = "ViewToken", type = "string")), ConnectionToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.connectparticipant$describe_view_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(View = structure(list(Id = structure(logical(0), tags = list(type = "string")), Arn = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Version = structure(logical(0), tags = list(type = "integer")), Content = structure(list(InputSchema = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Template = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), Actions = structure(list(structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .connectparticipant$disconnect_participant_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), ConnectionToken = structure(logical(0), tags = list(location = "header", locationName = "X-Amz-Bearer", type = "string"))), tags = list(type = "structure"))

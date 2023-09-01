@@ -31,7 +31,18 @@ or only from the Region in which it was created.}
 \item{OrganizationEnabled}{Specifies whether an event data store collects events logged for an
 organization in Organizations.}
 
-\item{RetentionPeriod}{The retention period, in days.}
+\item{RetentionPeriod}{The retention period of the event data store, in days. You can set a
+retention period of up to 2557 days, the equivalent of seven years.
+CloudTrail Lake determines whether to retain an event by checking if the
+\code{eventTime} of the event is within the specified retention period. For
+example, if you set a retention period of 90 days, CloudTrail will
+remove events when the \code{eventTime} is older than 90 days.
+
+If you decrease the retention period of an event data store, CloudTrail
+will remove any events with an \code{eventTime} older than the new retention
+period. For example, if the previous retention period was 365 days and
+you decrease it to 100 days, CloudTrail will remove events with an
+\code{eventTime} older than 100 days.}
 
 \item{TerminationProtectionEnabled}{Indicates that termination protection is enabled and the event data
 store cannot be automatically deleted.}

@@ -25,7 +25,7 @@ inference events.}
 time equal to or greater than the start time given.}
 
 \item{IntervalEndTime}{[required] Returns all the inference events with an end start time equal to or
-greater than less than the end time given}
+greater than less than the end time given.}
 }
 \description{
 Lists all inference events that have been found for the specified inference scheduler.

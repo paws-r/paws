@@ -3,12 +3,12 @@
 \name{ses_get_account_sending_enabled}
 \alias{ses_get_account_sending_enabled}
 \title{Returns the email sending status of the Amazon SES account for the
-current region}
+current Region}
 \usage{
 ses_get_account_sending_enabled()
 }
 \description{
-Returns the email sending status of the Amazon SES account for the current region.
+Returns the email sending status of the Amazon SES account for the current Region.
 
 See \url{https://www.paws-r-sdk.com/docs/ses_get_account_sending_enabled/} for full documentation.
 }

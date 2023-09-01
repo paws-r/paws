@@ -5,7 +5,11 @@
 \title{Returns metadata associated with a recovery point, including ID, status,
 encryption, and lifecycle}
 \usage{
-backup_describe_recovery_point(BackupVaultName, RecoveryPointArn)
+backup_describe_recovery_point(
+  BackupVaultName,
+  RecoveryPointArn,
+  BackupVaultAccountId = NULL
+)
 }
 \arguments{
 \item{BackupVaultName}{[required] The name of a logical container where backups are stored. Backup vaults
@@ -16,6 +20,8 @@ consist of lowercase letters, numbers, and hyphens.}
 \item{RecoveryPointArn}{[required] An Amazon Resource Name (ARN) that uniquely identifies a recovery point;
 for example,
 \verb{arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45}.}
+
+\item{BackupVaultAccountId}{This is the account ID of the specified backup vault.}
 }
 \description{
 Returns metadata associated with a recovery point, including ID, status, encryption, and lifecycle.

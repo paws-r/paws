@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_list_users}
 \alias{cognitoidentityprovider_list_users}
-\title{Lists the users in the Amazon Cognito user pool}
+\title{Lists users and their basic details in a user pool}
 \usage{
 cognitoidentityprovider_list_users(
   UserPoolId,
@@ -16,9 +16,10 @@ cognitoidentityprovider_list_users(
 \item{UserPoolId}{[required] The user pool ID for the user pool on which the search should be
 performed.}
 
-\item{AttributesToGet}{An array of strings, where each string is the name of a user attribute
-to be returned for each user in the search results. If the array is
-null, all attributes are returned.}
+\item{AttributesToGet}{A JSON array of user attribute names, for example \code{given_name}, that you
+want Amazon Cognito to include in the response for each user. When you
+don't provide an \code{AttributesToGet} parameter, Amazon Cognito returns all
+attributes for each user.}
 
 \item{Limit}{Maximum number of users to be returned.}
 
@@ -79,7 +80,7 @@ and \href{https://docs.aws.amazon.com/cognito/latest/developerguide/how-to-manag
 in the \emph{Amazon Cognito Developer Guide}.}
 }
 \description{
-Lists the users in the Amazon Cognito user pool.
+Lists users and their basic details in a user pool.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_list_users/} for full documentation.
 }

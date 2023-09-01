@@ -14,8 +14,8 @@ dataset is created. To add labeled images to the dataset, You can use
 the console or call
 \code{\link[=rekognition_update_dataset_entries]{update_dataset_entries}}.}
 
-\item{DatasetType}{[required] The type of the dataset. Specify \code{train} to create a training dataset.
-Specify \code{test} to create a test dataset.}
+\item{DatasetType}{[required] The type of the dataset. Specify \code{TRAIN} to create a training dataset.
+Specify \code{TEST} to create a test dataset.}
 
 \item{ProjectArn}{[required] The ARN of the Amazon Rekognition Custom Labels project to which you
 want to asssign the dataset.}

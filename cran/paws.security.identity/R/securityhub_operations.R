@@ -1089,10 +1089,11 @@ securityhub_disable_organization_admin_account <- function(AdminAccountId) {
 }
 .securityhub$operations$disable_organization_admin_account <- securityhub_disable_organization_admin_account
 
-#' Disables Security Hub in your account only in the current Region
+#' Disables Security Hub in your account only in the current Amazon Web
+#' Services Region
 #'
 #' @description
-#' Disables Security Hub in your account only in the current Region. To disable Security Hub in all Regions, you must submit one request per Region where you have enabled Security Hub.
+#' Disables Security Hub in your account only in the current Amazon Web Services Region. To disable Security Hub in all Regions, you must submit one request per Region where you have enabled Security Hub.
 #'
 #' See [https://www.paws-r-sdk.com/docs/securityhub_disable_security_hub/](https://www.paws-r-sdk.com/docs/securityhub_disable_security_hub/) for full documentation.
 #'

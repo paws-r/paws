@@ -3,7 +3,7 @@
 \name{ses_update_configuration_set_reputation_metrics_enabled}
 \alias{ses_update_configuration_set_reputation_metrics_enabled}
 \title{Enables or disables the publishing of reputation metrics for emails sent
-using a specific configuration set in a given AWS Region}
+using a specific configuration set in a given Amazon Web Services Region}
 \usage{
 ses_update_configuration_set_reputation_metrics_enabled(
   ConfigurationSetName,
@@ -11,14 +11,14 @@ ses_update_configuration_set_reputation_metrics_enabled(
 )
 }
 \arguments{
-\item{ConfigurationSetName}{[required] The name of the configuration set that you want to update.}
+\item{ConfigurationSetName}{[required] The name of the configuration set to update.}
 
-\item{Enabled}{[required] Describes whether or not Amazon SES will publish reputation metrics for
-the configuration set, such as bounce and complaint rates, to Amazon
+\item{Enabled}{[required] Describes whether or not Amazon SES publishes reputation metrics for the
+configuration set, such as bounce and complaint rates, to Amazon
 CloudWatch.}
 }
 \description{
-Enables or disables the publishing of reputation metrics for emails sent using a specific configuration set in a given AWS Region. Reputation metrics include bounce and complaint rates. These metrics are published to Amazon CloudWatch. By using CloudWatch, you can create alarms when bounce or complaint rates exceed certain thresholds.
+Enables or disables the publishing of reputation metrics for emails sent using a specific configuration set in a given Amazon Web Services Region. Reputation metrics include bounce and complaint rates. These metrics are published to Amazon CloudWatch. By using CloudWatch, you can create alarms when bounce or complaint rates exceed certain thresholds.
 
 See \url{https://www.paws-r-sdk.com/docs/ses_update_configuration_set_reputation_metrics_enabled/} for full documentation.
 }

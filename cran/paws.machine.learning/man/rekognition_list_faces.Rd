@@ -22,9 +22,11 @@ faces.}
 
 \item{MaxResults}{Maximum number of faces to return.}
 
-\item{UserId}{An array of user IDs to match when listing faces in a collection.}
+\item{UserId}{An array of user IDs to filter results with when listing faces in a
+collection.}
 
-\item{FaceIds}{An array of face IDs to match when listing faces in a collection.}
+\item{FaceIds}{An array of face IDs to filter results with when listing faces in a
+collection.}
 }
 \description{
 Returns metadata for faces in the specified collection. This metadata includes information such as the bounding box coordinates, the confidence (that the bounding box contains a face), and face ID. For an example, see Listing Faces in a Collection in the Amazon Rekognition Developer Guide.

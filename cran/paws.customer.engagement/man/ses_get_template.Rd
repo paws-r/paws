@@ -8,7 +8,7 @@ and text part) for the template you specify}
 ses_get_template(TemplateName)
 }
 \arguments{
-\item{TemplateName}{[required] The name of the template you want to retrieve.}
+\item{TemplateName}{[required] The name of the template to retrieve.}
 }
 \description{
 Displays the template object (which includes the Subject line, HTML part and text part) for the template you specify.

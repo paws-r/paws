@@ -20,8 +20,8 @@ NULL
 #' determine the actual configuration of your gateway.
 #' 
 #' For more information, see [Getting activation
-#' key](https://docs.aws.amazon.com/storagegateway/index.html) in the
-#' *Storage Gateway User Guide*.
+#' key](https://docs.aws.amazon.com/storagegateway/) in the *Storage
+#' Gateway User Guide*.
 #' @param GatewayName &#91;required&#93; The name you configured for your gateway.
 #' @param GatewayTimezone &#91;required&#93; A value that indicates the time zone you want to set for the gateway.
 #' The time zone is of the format "GMT-hr:mm" or "GMT+hr:mm". For example,
@@ -85,7 +85,7 @@ storagegateway_activate_gateway <- function(ActivationKey, GatewayName, GatewayT
 #' Configures one or more gateway local disks as cache for a gateway
 #'
 #' @description
-#' Configures one or more gateway local disks as cache for a gateway. This operation is only supported in the cached volume, tape, and file gateway type (see [How Storage Gateway works (architecture)](https://docs.aws.amazon.com/storagegateway/index.html).
+#' Configures one or more gateway local disks as cache for a gateway. This operation is only supported in the cached volume, tape, and file gateway type (see [How Storage Gateway works (architecture)](https://docs.aws.amazon.com/storagegateway/).
 #'
 #' See [https://www.paws-r-sdk.com/docs/storagegateway_add_cache/](https://www.paws-r-sdk.com/docs/storagegateway_add_cache/) for full documentation.
 #'
@@ -721,8 +721,8 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' 
 #' For more information, see [Using Microsoft Windows ACLs to control
 #' access to an SMB file
-#' share](https://docs.aws.amazon.com/storagegateway/index.html) in the
-#' *Storage Gateway User Guide*.
+#' share](https://docs.aws.amazon.com/storagegateway/) in the *Storage
+#' Gateway User Guide*.
 #' 
 #' Valid Values: `true` | `false`
 #' @param AccessBasedEnumeration The files and folders on this share will only be visible to users with
@@ -3413,8 +3413,8 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' 
 #' For more information, see [Using Microsoft Windows ACLs to control
 #' access to an SMB file
-#' share](https://docs.aws.amazon.com/storagegateway/index.html) in the
-#' *Storage Gateway User Guide*.
+#' share](https://docs.aws.amazon.com/storagegateway/) in the *Storage
+#' Gateway User Guide*.
 #' 
 #' Valid Values: `true` | `false`
 #' @param AccessBasedEnumeration The files and folders on this share will only be visible to users with

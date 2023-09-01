@@ -26,13 +26,13 @@ retrieve this information by using
 When you update the content of the approval rule, you can specify
 approvers in an approval pool in one of two ways:
 \itemize{
-\item \strong{CodeCommitApprovers}: This option only requires an AWS account
-and a resource. It can be used for both IAM users and federated
-access users whose name matches the provided resource name. This is
-a very powerful option that offers a great deal of flexibility. For
-example, if you specify the AWS account \emph{123456789012} and
-\emph{Mary_Major}, all of the following are counted as approvals coming
-from that user:
+\item \strong{CodeCommitApprovers}: This option only requires an Amazon Web
+Services account and a resource. It can be used for both IAM users
+and federated access users whose name matches the provided resource
+name. This is a very powerful option that offers a great deal of
+flexibility. For example, if you specify the Amazon Web Services
+account \emph{123456789012} and \emph{Mary_Major}, all of the following are
+counted as approvals coming from that user:
 \itemize{
 \item An IAM user in the account
 (arn:aws:iam::\emph{123456789012}:user/\emph{Mary_Major})

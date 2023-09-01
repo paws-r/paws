@@ -78,7 +78,8 @@ endpoints.
 Global Accelerator is a global service that supports endpoints in
 multiple Amazon Web Services Regions but you must specify the US West
 (Oregon) Region to create, update, or otherwise work with accelerators.
-That is, for example, specify \verb{--region us-west-2} on AWS CLI commands.
+That is, for example, specify \verb{--region us-west-2} on Amazon Web
+Services CLI commands.
 
 By default, Global Accelerator provides you with static IP addresses
 that you associate with your accelerator. The static IP addresses are
@@ -199,7 +200,7 @@ see the \href{https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-g
 \link[=globalaccelerator_remove_endpoints]{remove_endpoints} \tab Remove endpoints from an endpoint group\cr
 \link[=globalaccelerator_tag_resource]{tag_resource} \tab Add tags to an accelerator resource\cr
 \link[=globalaccelerator_untag_resource]{untag_resource} \tab Remove tags from a Global Accelerator resource\cr
-\link[=globalaccelerator_update_accelerator]{update_accelerator} \tab Update an accelerator\cr
+\link[=globalaccelerator_update_accelerator]{update_accelerator} \tab Update an accelerator to make changes, such as the following:\cr
 \link[=globalaccelerator_update_accelerator_attributes]{update_accelerator_attributes} \tab Update the attributes for an accelerator\cr
 \link[=globalaccelerator_update_custom_routing_accelerator]{update_custom_routing_accelerator} \tab Update a custom routing accelerator\cr
 \link[=globalaccelerator_update_custom_routing_accelerator_attributes]{update_custom_routing_accelerator_attributes} \tab Update the attributes for a custom routing accelerator\cr

@@ -43,8 +43,27 @@ findings.}
 You can only use the following attributes to query findings:
 \itemize{
 \item accountId
-\item region
 \item id
+\item region
+\item severity
+
+To filter on the basis of severity, the API and CLI use the
+following input list for the
+\href{https://docs.aws.amazon.com/guardduty/latest/APIReference/API_FindingCriteria.html}{FindingCriteria}
+condition:
+\itemize{
+\item \strong{Low}: \verb{["1", "2", "3"]}
+\item \strong{Medium}: \verb{["4", "5", "6"]}
+\item \strong{High}: \verb{["7", "8", "9"]}
+}
+
+For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_findings.html#guardduty_findings-severity}{Severity levels for GuardDuty findings}.
+\item type
+\item updatedAt
+
+Type: ISO 8601 string format: YYYY-MM-DDTHH:MM:SS.SSSZ or
+YYYY-MM-DDTHH:MM:SSZ depending on whether the value contains
+milliseconds.
 \item resource.accessKeyDetails.accessKeyId
 \item resource.accessKeyDetails.principalId
 \item resource.accessKeyDetails.userName
@@ -52,7 +71,8 @@ You can only use the following attributes to query findings:
 \item resource.instanceDetails.iamInstanceProfile.id
 \item resource.instanceDetails.imageId
 \item resource.instanceDetails.instanceId
-\item resource.instanceDetails.outpostArn
+\item resource.instanceDetails.tags.key
+\item resource.instanceDetails.tags.value
 \item resource.instanceDetails.networkInterfaces.ipv6Addresses
 \item resource.instanceDetails.networkInterfaces.privateIpAddresses.privateIpAddress
 \item resource.instanceDetails.networkInterfaces.publicDnsName
@@ -61,14 +81,17 @@ You can only use the following attributes to query findings:
 \item resource.instanceDetails.networkInterfaces.securityGroups.groupName
 \item resource.instanceDetails.networkInterfaces.subnetId
 \item resource.instanceDetails.networkInterfaces.vpcId
-\item resource.instanceDetails.tags.key
-\item resource.instanceDetails.tags.value
+\item resource.instanceDetails.outpostArn
 \item resource.resourceType
+\item resource.s3BucketDetails.publicAccess.effectivePermissions
+\item resource.s3BucketDetails.name
+\item resource.s3BucketDetails.tags.key
+\item resource.s3BucketDetails.tags.value
+\item resource.s3BucketDetails.type
 \item service.action.actionType
 \item service.action.awsApiCallAction.api
 \item service.action.awsApiCallAction.callerType
 \item service.action.awsApiCallAction.errorCode
-\item service.action.awsApiCallAction.userAgent
 \item service.action.awsApiCallAction.remoteIpDetails.city.cityName
 \item service.action.awsApiCallAction.remoteIpDetails.country.countryName
 \item service.action.awsApiCallAction.remoteIpDetails.ipAddressV4
@@ -80,27 +103,48 @@ You can only use the following attributes to query findings:
 \item service.action.networkConnectionAction.connectionDirection
 \item service.action.networkConnectionAction.localPortDetails.port
 \item service.action.networkConnectionAction.protocol
-\item service.action.networkConnectionAction.localIpDetails.ipAddressV4
 \item service.action.networkConnectionAction.remoteIpDetails.city.cityName
 \item service.action.networkConnectionAction.remoteIpDetails.country.countryName
 \item service.action.networkConnectionAction.remoteIpDetails.ipAddressV4
 \item service.action.networkConnectionAction.remoteIpDetails.organization.asn
 \item service.action.networkConnectionAction.remoteIpDetails.organization.asnOrg
 \item service.action.networkConnectionAction.remotePortDetails.port
+\item service.action.awsApiCallAction.remoteAccountDetails.affiliated
+\item service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV4
+\item service.action.kubernetesApiCallAction.requestUri
+\item service.action.networkConnectionAction.localIpDetails.ipAddressV4
+\item service.action.networkConnectionAction.protocol
+\item service.action.awsApiCallAction.serviceName
+\item service.action.awsApiCallAction.remoteAccountDetails.accountId
 \item service.additionalInfo.threatListName
-\item resource.s3BucketDetails.publicAccess.effectivePermissions
-\item resource.s3BucketDetails.name
-\item resource.s3BucketDetails.tags.key
-\item resource.s3BucketDetails.tags.value
-\item resource.s3BucketDetails.type
 \item service.resourceRole
-\item severity
-\item type
-\item updatedAt
-
-Type: ISO 8601 string format: YYYY-MM-DDTHH:MM:SS.SSSZ or
-YYYY-MM-DDTHH:MM:SSZ depending on whether the value contains
-milliseconds.
+\item resource.eksClusterDetails.name
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.name
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.namespace
+\item resource.kubernetesDetails.kubernetesUserDetails.username
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.containers.image
+\item resource.kubernetesDetails.kubernetesWorkloadDetails.containers.imagePrefix
+\item service.ebsVolumeScanDetails.scanId
+\item service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.name
+\item service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.severity
+\item service.ebsVolumeScanDetails.scanDetections.threatDetectedByName.threatNames.filePaths.hash
+\item resource.ecsClusterDetails.name
+\item resource.ecsClusterDetails.taskDetails.containers.image
+\item resource.ecsClusterDetails.taskDetails.definitionArn
+\item resource.containerDetails.image
+\item resource.rdsDbInstanceDetails.dbInstanceIdentifier
+\item resource.rdsDbInstanceDetails.dbClusterIdentifier
+\item resource.rdsDbInstanceDetails.engine
+\item resource.rdsDbUserDetails.user
+\item resource.rdsDbInstanceDetails.tags.key
+\item resource.rdsDbInstanceDetails.tags.value
+\item service.runtimeDetails.process.executableSha256
+\item service.runtimeDetails.process.name
+\item service.runtimeDetails.process.name
+\item resource.lambdaDetails.functionName
+\item resource.lambdaDetails.functionArn
+\item resource.lambdaDetails.tags.key
+\item resource.lambdaDetails.tags.value
 }}
 
 \item{ClientToken}{The idempotency token for the create request.}

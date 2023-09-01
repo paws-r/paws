@@ -7,8 +7,7 @@
 ses_delete_custom_verification_email_template(TemplateName)
 }
 \arguments{
-\item{TemplateName}{[required] The name of the custom verification email template that you want to
-delete.}
+\item{TemplateName}{[required] The name of the custom verification email template to delete.}
 }
 \description{
 Deletes an existing custom verification email template.

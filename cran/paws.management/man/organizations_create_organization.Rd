@@ -13,7 +13,7 @@ feature set supports different levels of functionality.
 \item \code{CONSOLIDATED_BILLING}: All member accounts have their bills
 consolidated to and paid by the management account. For more
 information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only}{Consolidated billing}
-in the \emph{Organizations User Guide.}
+in the \emph{Organizations User Guide}.
 
 The consolidated billing feature subset isn't available for
 organizations in the Amazon Web Services GovCloud (US) Region.
@@ -21,7 +21,7 @@ organizations in the Amazon Web Services GovCloud (US) Region.
 billing feature set, the management account can also apply any
 policy type to any member account in the organization. For more
 information, see \href{https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all}{All features}
-in the \emph{Organizations User Guide.}
+in the \emph{Organizations User Guide}.
 }}
 }
 \description{

@@ -3,7 +3,8 @@
 \name{ses_send_custom_verification_email}
 \alias{ses_send_custom_verification_email}
 \title{Adds an email address to the list of identities for your Amazon SES
-account in the current AWS Region and attempts to verify it}
+account in the current Amazon Web Services Region and attempts to verify
+it}
 \usage{
 ses_send_custom_verification_email(
   EmailAddress,
@@ -20,7 +21,7 @@ the verification email.}
 \item{ConfigurationSetName}{Name of a configuration set to use when sending the verification email.}
 }
 \description{
-Adds an email address to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it. As a result of executing this operation, a customized verification email is sent to the specified address.
+Adds an email address to the list of identities for your Amazon SES account in the current Amazon Web Services Region and attempts to verify it. As a result of executing this operation, a customized verification email is sent to the specified address.
 
 See \url{https://www.paws-r-sdk.com/docs/ses_send_custom_verification_email/} for full documentation.
 }

@@ -5,13 +5,13 @@ NULL
 
 .connectcampaignservice$create_campaign_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectInstanceId = structure(logical(0), tags = list(type = "string")), dialerConfig = structure(list(predictiveDialerConfig = structure(list(bandwidthAllocation = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), progressiveDialerConfig = structure(list(bandwidthAllocation = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), name = structure(logical(0), tags = list(type = "string")), outboundCallConfig = structure(list(answerMachineDetectionConfig = structure(list(enableAnswerMachineDetection = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), connectContactFlowId = structure(logical(0), tags = list(type = "string")), connectQueueId = structure(logical(0), tags = list(type = "string")), connectSourcePhoneNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), connectInstanceId = structure(logical(0), tags = list(type = "string")), dialerConfig = structure(list(progressiveDialerConfig = structure(list(bandwidthAllocation = structure(logical(0), tags = list(type = "double", box = TRUE)), dialingCapacity = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), predictiveDialerConfig = structure(list(bandwidthAllocation = structure(logical(0), tags = list(type = "double", box = TRUE)), dialingCapacity = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), agentlessDialerConfig = structure(list(dialingCapacity = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), outboundCallConfig = structure(list(connectContactFlowId = structure(logical(0), tags = list(type = "string")), connectSourcePhoneNumber = structure(logical(0), tags = list(type = "string")), connectQueueId = structure(logical(0), tags = list(type = "string")), answerMachineDetectionConfig = structure(list(enableAnswerMachineDetection = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .connectcampaignservice$create_campaign_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(arn = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -53,7 +53,7 @@ NULL
 
 .connectcampaignservice$describe_campaign_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(campaign = structure(list(arn = structure(logical(0), tags = list(type = "string")), connectInstanceId = structure(logical(0), tags = list(type = "string")), dialerConfig = structure(list(predictiveDialerConfig = structure(list(bandwidthAllocation = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), progressiveDialerConfig = structure(list(bandwidthAllocation = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), outboundCallConfig = structure(list(answerMachineDetectionConfig = structure(list(enableAnswerMachineDetection = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), connectContactFlowId = structure(logical(0), tags = list(type = "string")), connectQueueId = structure(logical(0), tags = list(type = "string")), connectSourcePhoneNumber = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(campaign = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), connectInstanceId = structure(logical(0), tags = list(type = "string")), dialerConfig = structure(list(progressiveDialerConfig = structure(list(bandwidthAllocation = structure(logical(0), tags = list(type = "double", box = TRUE)), dialingCapacity = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), predictiveDialerConfig = structure(list(bandwidthAllocation = structure(logical(0), tags = list(type = "double", box = TRUE)), dialingCapacity = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), agentlessDialerConfig = structure(list(dialingCapacity = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), outboundCallConfig = structure(list(connectContactFlowId = structure(logical(0), tags = list(type = "string")), connectSourcePhoneNumber = structure(logical(0), tags = list(type = "string")), connectQueueId = structure(logical(0), tags = list(type = "string")), answerMachineDetectionConfig = structure(list(enableAnswerMachineDetection = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -77,7 +77,7 @@ NULL
 
 .connectcampaignservice$get_campaign_state_batch_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(failedRequests = structure(list(structure(list(campaignId = structure(logical(0), tags = list(type = "string")), failureCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), successfulRequests = structure(list(structure(list(campaignId = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(successfulRequests = structure(list(structure(list(campaignId = structure(logical(0), tags = list(type = "string")), state = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), failedRequests = structure(list(structure(list(campaignId = structure(logical(0), tags = list(type = "string")), failureCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -89,7 +89,7 @@ NULL
 
 .connectcampaignservice$get_connect_instance_config_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectInstanceConfig = structure(list(connectInstanceId = structure(logical(0), tags = list(type = "string")), encryptionConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), encryptionType = structure(logical(0), tags = list(type = "string")), keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), serviceLinkedRoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(connectInstanceConfig = structure(list(connectInstanceId = structure(logical(0), tags = list(type = "string")), serviceLinkedRoleArn = structure(logical(0), tags = list(type = "string")), encryptionConfig = structure(list(enabled = structure(logical(0), tags = list(type = "boolean")), encryptionType = structure(logical(0), tags = list(type = "string")), keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -101,19 +101,19 @@ NULL
 
 .connectcampaignservice$get_instance_onboarding_job_status_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectInstanceOnboardingJobStatus = structure(list(connectInstanceId = structure(logical(0), tags = list(type = "string")), failureCode = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(connectInstanceOnboardingJobStatus = structure(list(connectInstanceId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), failureCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .connectcampaignservice$list_campaigns_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(filters = structure(list(instanceIdFilter = structure(list(operator = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(type = "string")), filters = structure(list(instanceIdFilter = structure(list(value = structure(logical(0), tags = list(type = "string")), operator = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .connectcampaignservice$list_campaigns_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(campaignSummaryList = structure(list(structure(list(arn = structure(logical(0), tags = list(type = "string")), connectInstanceId = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), campaignSummaryList = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), name = structure(logical(0), tags = list(type = "string")), connectInstanceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -141,13 +141,13 @@ NULL
 
 .connectcampaignservice$put_dial_request_batch_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(dialRequests = structure(list(structure(list(attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE)), clientToken = structure(logical(0), tags = list(type = "string")), expirationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), phoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list")), id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), dialRequests = structure(list(structure(list(clientToken = structure(logical(0), tags = list(type = "string")), phoneNumber = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), expirationTime = structure(logical(0), tags = list(type = "timestamp", timestampFormat = "iso8601")), attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .connectcampaignservice$put_dial_request_batch_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(failedRequests = structure(list(structure(list(clientToken = structure(logical(0), tags = list(type = "string")), failureCode = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), successfulRequests = structure(list(structure(list(clientToken = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(successfulRequests = structure(list(structure(list(clientToken = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), failedRequests = structure(list(structure(list(clientToken = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(type = "string")), failureCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -179,7 +179,7 @@ NULL
 
 .connectcampaignservice$start_instance_onboarding_job_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(connectInstanceOnboardingJobStatus = structure(list(connectInstanceId = structure(logical(0), tags = list(type = "string")), failureCode = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(connectInstanceOnboardingJobStatus = structure(list(connectInstanceId = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), failureCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -215,7 +215,7 @@ NULL
 
 .connectcampaignservice$update_campaign_dialer_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(dialerConfig = structure(list(predictiveDialerConfig = structure(list(bandwidthAllocation = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), progressiveDialerConfig = structure(list(bandwidthAllocation = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE)), id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), dialerConfig = structure(list(progressiveDialerConfig = structure(list(bandwidthAllocation = structure(logical(0), tags = list(type = "double", box = TRUE)), dialingCapacity = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), predictiveDialerConfig = structure(list(bandwidthAllocation = structure(logical(0), tags = list(type = "double", box = TRUE)), dialingCapacity = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure")), agentlessDialerConfig = structure(list(dialingCapacity = structure(logical(0), tags = list(type = "double", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure", union = TRUE))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -235,7 +235,7 @@ NULL
 
 .connectcampaignservice$update_campaign_outbound_call_config_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(answerMachineDetectionConfig = structure(list(enableAnswerMachineDetection = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure")), connectContactFlowId = structure(logical(0), tags = list(type = "string")), connectSourcePhoneNumber = structure(logical(0), tags = list(type = "string")), id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), connectContactFlowId = structure(logical(0), tags = list(type = "string")), connectSourcePhoneNumber = structure(logical(0), tags = list(type = "string")), answerMachineDetectionConfig = structure(list(enableAnswerMachineDetection = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

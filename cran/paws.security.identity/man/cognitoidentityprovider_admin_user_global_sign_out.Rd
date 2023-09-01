@@ -12,7 +12,7 @@ cognitoidentityprovider_admin_user_global_sign_out(UserPoolId, Username)
 \item{Username}{[required] The user name.}
 }
 \description{
-Signs out a user from all devices. You must sign \code{\link[=cognitoidentityprovider_admin_user_global_sign_out]{admin_user_global_sign_out}} requests with Amazon Web Services credentials. It also invalidates all refresh tokens that Amazon Cognito has issued to a user. The user's current access and ID tokens remain valid until they expire. By default, access and ID tokens expire one hour after they're issued. A user can still use a hosted UI cookie to retrieve new tokens for the duration of the cookie validity period of 1 hour.
+Signs out a user from all devices. \code{\link[=cognitoidentityprovider_admin_user_global_sign_out]{admin_user_global_sign_out}} invalidates all identity, access and refresh tokens that Amazon Cognito has issued to a user. A user can still use a hosted UI cookie to retrieve new tokens for the duration of the 1-hour cookie validity period.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_user_global_sign_out/} for full documentation.
 }

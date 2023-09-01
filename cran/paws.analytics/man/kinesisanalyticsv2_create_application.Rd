@@ -34,14 +34,14 @@ monitor application configuration errors.}
 \item{Tags}{A list of one or more tags to assign to the application. A tag is a
 key-value pair that identifies an application. Note that the maximum
 number of application tags includes system tags. The maximum number of
-user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html}{Using Tagging}.}
+user-defined application tags is 50. For more information, see \href{https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html}{Using Tagging}.}
 
 \item{ApplicationMode}{Use the \code{STREAMING} mode to create a Kinesis Data Analytics For Flink
 application. To create a Kinesis Data Analytics Studio notebook, use the
 \code{INTERACTIVE} mode.}
 }
 \description{
-Creates a Kinesis Data Analytics application. For information about creating a Kinesis Data Analytics application, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html}{Creating an Application}.
+Creates a Kinesis Data Analytics application. For information about creating a Kinesis Data Analytics application, see \href{https://docs.aws.amazon.com/managed-flink/latest/java/getting-started.html}{Creating an Application}.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_create_application/} for full documentation.
 }

@@ -11,7 +11,8 @@ connect_create_routing_profile(
   DefaultOutboundQueueId,
   QueueConfigs = NULL,
   MediaConcurrencies,
-  Tags = NULL
+  Tags = NULL,
+  AgentAvailabilityTimer = NULL
 )
 }
 \arguments{
@@ -38,6 +39,10 @@ for this routing profile.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
 For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}
+
+\item{AgentAvailabilityTimer}{Whether agents with this routing profile will have their routing order
+calculated based on \emph{longest idle time} or \emph{time since their last
+inbound contact}.}
 }
 \description{
 Creates a new routing profile.

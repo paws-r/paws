@@ -4,12 +4,24 @@
 \alias{quicksight_describe_folder_permissions}
 \title{Describes permissions for a folder}
 \usage{
-quicksight_describe_folder_permissions(AwsAccountId, FolderId)
+quicksight_describe_folder_permissions(
+  AwsAccountId,
+  FolderId,
+  Namespace = NULL,
+  MaxResults = NULL,
+  NextToken = NULL
+)
 }
 \arguments{
 \item{AwsAccountId}{[required] The ID for the Amazon Web Services account that contains the folder.}
 
 \item{FolderId}{[required] The ID of the folder.}
+
+\item{Namespace}{The namespace of the folder whose permissions you want described.}
+
+\item{MaxResults}{The maximum number of results to be returned per request.}
+
+\item{NextToken}{A pagination token for the next set of results.}
 }
 \description{
 Describes permissions for a folder.

@@ -3,7 +3,8 @@
 \name{ses_verify_email_identity}
 \alias{ses_verify_email_identity}
 \title{Adds an email address to the list of identities for your Amazon SES
-account in the current AWS region and attempts to verify it}
+account in the current Amazon Web Services Region and attempts to verify
+it}
 \usage{
 ses_verify_email_identity(EmailAddress)
 }
@@ -11,7 +12,7 @@ ses_verify_email_identity(EmailAddress)
 \item{EmailAddress}{[required] The email address to be verified.}
 }
 \description{
-Adds an email address to the list of identities for your Amazon SES account in the current AWS region and attempts to verify it. As a result of executing this operation, a verification email is sent to the specified address.
+Adds an email address to the list of identities for your Amazon SES account in the current Amazon Web Services Region and attempts to verify it. As a result of executing this operation, a verification email is sent to the specified address.
 
 See \url{https://www.paws-r-sdk.com/docs/ses_verify_email_identity/} for full documentation.
 }

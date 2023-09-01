@@ -12,7 +12,8 @@ fsx_update_file_system(
   WindowsConfiguration = NULL,
   LustreConfiguration = NULL,
   OntapConfiguration = NULL,
-  OpenZFSConfiguration = NULL
+  OpenZFSConfiguration = NULL,
+  StorageType = NULL
 )
 }
 \arguments{
@@ -72,6 +73,8 @@ system.}
 \item{OntapConfiguration}{}
 
 \item{OpenZFSConfiguration}{The configuration updates for an FSx for OpenZFS file system.}
+
+\item{StorageType}{}
 }
 \description{
 Use this operation to update the configuration of an existing Amazon FSx file system. You can update multiple properties in a single request.

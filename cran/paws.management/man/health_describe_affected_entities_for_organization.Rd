@@ -7,14 +7,15 @@ for one or more accounts in your organization in Organizations, based on
 the filter criteria}
 \usage{
 health_describe_affected_entities_for_organization(
-  organizationEntityFilters,
+  organizationEntityFilters = NULL,
   locale = NULL,
   nextToken = NULL,
-  maxResults = NULL
+  maxResults = NULL,
+  organizationEntityAccountFilters = NULL
 )
 }
 \arguments{
-\item{organizationEntityFilters}{[required] A JSON set of elements including the \code{awsAccountId} and the \code{eventArn}.}
+\item{organizationEntityFilters}{A JSON set of elements including the \code{awsAccountId} and the \code{eventArn}.}
 
 \item{locale}{The locale (language) to return information in. English (en) is the
 default and the only supported value at this time.}
@@ -27,6 +28,9 @@ returned, the response does not contain a pagination token value.}
 
 \item{maxResults}{The maximum number of items to return in one batch, between 10 and 100,
 inclusive.}
+
+\item{organizationEntityAccountFilters}{A JSON set of elements including the \code{awsAccountId}, \code{eventArn} and a
+set of \code{statusCodes}.}
 }
 \description{
 Returns a list of entities that have been affected by one or more events for one or more accounts in your organization in Organizations, based on the filter criteria. Entities can refer to individual customer resources, groups of customer resources, or any other construct, depending on the Amazon Web Service.

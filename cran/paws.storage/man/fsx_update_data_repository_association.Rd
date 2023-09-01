@@ -34,7 +34,7 @@ repository to the file system or automatically exported from the file
 system to the data repository.}
 }
 \description{
-Updates the configuration of an existing data repository association on an Amazon FSx for Lustre file system. Data repository associations are supported on all FSx for Lustre 2.12 and newer file systems, excluding \code{scratch_1} deployment type.
+Updates the configuration of an existing data repository association on an Amazon FSx for Lustre file system. Data repository associations are supported on all FSx for Lustre 2.12 and 2.15 file systems, excluding \code{scratch_1} deployment type.
 
 See \url{https://www.paws-r-sdk.com/docs/fsx_update_data_repository_association/} for full documentation.
 }

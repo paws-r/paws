@@ -2,7 +2,7 @@
 % Please edit documentation in R/codecommit_operations.R
 \name{codecommit_tag_resource}
 \alias{codecommit_tag_resource}
-\title{Adds or updates tags for a resource in AWS CodeCommit}
+\title{Adds or updates tags for a resource in CodeCommit}
 \usage{
 codecommit_tag_resource(resourceArn, tags)
 }
@@ -13,7 +13,7 @@ or update tags.}
 \item{tags}{[required] The key-value pair to use when tagging this repository.}
 }
 \description{
-Adds or updates tags for a resource in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats}{CodeCommit Resources and Operations} in the \emph{AWS CodeCommit User Guide}.
+Adds or updates tags for a resource in CodeCommit. For a list of valid resources in CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats}{CodeCommit Resources and Operations} in the \emph{CodeCommit User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/codecommit_tag_resource/} for full documentation.
 }

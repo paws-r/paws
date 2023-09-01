@@ -7,7 +7,7 @@
 rds_restore_db_cluster_to_point_in_time(
   DBClusterIdentifier,
   RestoreType = NULL,
-  SourceDBClusterIdentifier,
+  SourceDBClusterIdentifier = NULL,
   RestoreToTime = NULL,
   UseLatestRestorableTime = NULL,
   Port = NULL,
@@ -31,7 +31,8 @@ rds_restore_db_cluster_to_point_in_time(
   PubliclyAccessible = NULL,
   Iops = NULL,
   ServerlessV2ScalingConfiguration = NULL,
-  NetworkType = NULL
+  NetworkType = NULL,
+  SourceDbClusterResourceId = NULL
 )
 }
 \arguments{
@@ -60,7 +61,7 @@ restored as a full copy of the source DB cluster.
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{SourceDBClusterIdentifier}{[required] The identifier of the source DB cluster from which to restore.
+\item{SourceDBClusterIdentifier}{The identifier of the source DB cluster from which to restore.
 
 Constraints:
 \itemize{
@@ -347,6 +348,8 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Aur
 in the \emph{Amazon Aurora User Guide.}
 
 Valid for: Aurora DB clusters only}
+
+\item{SourceDbClusterResourceId}{The resource ID of the source DB cluster from which to restore.}
 }
 \description{
 Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before \code{LatestRestorableTime} for up to \code{BackupRetentionPeriod} days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group.

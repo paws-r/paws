@@ -269,6 +269,7 @@ Other Resources:
 \link[paws.machine.learning:sagemaker_get_lineage_group_policy]{get_lineage_group_policy} \tab The resource policy for the lineage group\cr
 \link[paws.machine.learning:sagemaker_get_model_package_group_policy]{get_model_package_group_policy} \tab Gets a resource policy that manages access for a model group\cr
 \link[paws.machine.learning:sagemaker_get_sagemaker_servicecatalog_portfolio_status]{get_sagemaker_servicecatalog_portfolio_status} \tab Gets the status of Service Catalog in SageMaker\cr
+\link[paws.machine.learning:sagemaker_get_scaling_configuration_recommendation]{get_scaling_configuration_recommendation} \tab Starts an Amazon SageMaker Inference Recommender autoscaling recommendation job\cr
 \link[paws.machine.learning:sagemaker_get_search_suggestions]{get_search_suggestions} \tab An auto-complete API for the search functionality in the SageMaker console\cr
 \link[paws.machine.learning:sagemaker_import_hub_content]{import_hub_content} \tab Import hub content\cr
 \link[paws.machine.learning:sagemaker_list_actions]{list_actions} \tab Lists the actions in your account and their properties\cr

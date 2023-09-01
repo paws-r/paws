@@ -349,13 +349,14 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #' Network Firewall re-encrypts the traffic before sending it to its
 #' destination.
 #' 
-#' To use a TLS inspection configuration, you add it to a Network Firewall
-#' firewall policy, then you apply the firewall policy to a firewall.
-#' Network Firewall acts as a proxy service to decrypt and inspect inbound
-#' traffic. You can reference a TLS inspection configuration from more than
-#' one firewall policy, and you can use a firewall policy in more than one
-#' firewall. For more information about using TLS inspection
-#' configurations, see [Decrypting SSL/TLS traffic with TLS inspection
+#' To use a TLS inspection configuration, you add it to a new Network
+#' Firewall firewall policy, then you apply the firewall policy to a
+#' firewall. Network Firewall acts as a proxy service to decrypt and
+#' inspect inbound traffic. You can reference a TLS inspection
+#' configuration from more than one firewall policy, and you can use a
+#' firewall policy in more than one firewall. For more information about
+#' using TLS inspection configurations, see [Decrypting SSL/TLS traffic
+#' with TLS inspection
 #' configurations](https://docs.aws.amazon.com/network-firewall/latest/developerguide/)
 #' in the *Network Firewall Developer Guide*.
 #' @param Description A description of the TLS inspection configuration.
@@ -1365,7 +1366,10 @@ networkfirewall_update_firewall_encryption_configuration <- function(UpdateToken
 #' of a firewall policy after you create it.
 #' 
 #' You must specify the ARN or the name, and you can specify both.
-#' @param FirewallPolicy &#91;required&#93; The updated firewall policy to use for the firewall.
+#' @param FirewallPolicy &#91;required&#93; The updated firewall policy to use for the firewall. You can't add or
+#' remove a TLSInspectionConfiguration after you create a firewall policy.
+#' However, you can replace an existing TLS inspection configuration with
+#' another `TLSInspectionConfiguration`.
 #' @param Description A description of the firewall policy.
 #' @param DryRun Indicates whether you want Network Firewall to just check the validity
 #' of the request, rather than run the request.
@@ -1662,13 +1666,14 @@ networkfirewall_update_subnet_change_protection <- function(UpdateToken = NULL, 
 #' Network Firewall re-encrypts the traffic before sending it to its
 #' destination.
 #' 
-#' To use a TLS inspection configuration, you add it to a Network Firewall
-#' firewall policy, then you apply the firewall policy to a firewall.
-#' Network Firewall acts as a proxy service to decrypt and inspect inbound
-#' traffic. You can reference a TLS inspection configuration from more than
-#' one firewall policy, and you can use a firewall policy in more than one
-#' firewall. For more information about using TLS inspection
-#' configurations, see [Decrypting SSL/TLS traffic with TLS inspection
+#' To use a TLS inspection configuration, you add it to a new Network
+#' Firewall firewall policy, then you apply the firewall policy to a
+#' firewall. Network Firewall acts as a proxy service to decrypt and
+#' inspect inbound traffic. You can reference a TLS inspection
+#' configuration from more than one firewall policy, and you can use a
+#' firewall policy in more than one firewall. For more information about
+#' using TLS inspection configurations, see [Decrypting SSL/TLS traffic
+#' with TLS inspection
 #' configurations](https://docs.aws.amazon.com/network-firewall/latest/developerguide/)
 #' in the *Network Firewall Developer Guide*.
 #' @param Description A description of the TLS inspection configuration.

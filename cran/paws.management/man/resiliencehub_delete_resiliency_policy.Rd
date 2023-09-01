@@ -11,8 +11,8 @@ resiliencehub_delete_resiliency_policy(clientToken = NULL, policyArn)
 case-sensitive string of up to 64 ASCII characters. You should not reuse
 the same client token for other API requests.}
 
-\item{policyArn}{[required] The Amazon Resource Name (ARN) of the resiliency policy. The format for
-this ARN is:
+\item{policyArn}{[required] Amazon Resource Name (ARN) of the resiliency policy. The format for this
+ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:resiliency-policy/\code{policy-id}.
 For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference} guide.}

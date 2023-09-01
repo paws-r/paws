@@ -232,6 +232,104 @@ inspector2_batch_get_code_snippet <- function(findingArns) {
 }
 .inspector2$operations$batch_get_code_snippet <- inspector2_batch_get_code_snippet
 
+#' Gets vulnerability details for findings
+#'
+#' @description
+#' Gets vulnerability details for findings.
+#'
+#' @usage
+#' inspector2_batch_get_finding_details(findingArns)
+#'
+#' @param findingArns &#91;required&#93; A list of finding ARNs.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   errors = list(
+#'     list(
+#'       errorCode = "INTERNAL_ERROR"|"ACCESS_DENIED"|"FINDING_DETAILS_NOT_FOUND"|"INVALID_INPUT",
+#'       errorMessage = "string",
+#'       findingArn = "string"
+#'     )
+#'   ),
+#'   findingDetails = list(
+#'     list(
+#'       cisaData = list(
+#'         action = "string",
+#'         dateAdded = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         dateDue = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       cwes = list(
+#'         "string"
+#'       ),
+#'       epssScore = 123.0,
+#'       evidences = list(
+#'         list(
+#'           evidenceDetail = "string",
+#'           evidenceRule = "string",
+#'           severity = "string"
+#'         )
+#'       ),
+#'       exploitObserved = list(
+#'         firstSeen = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         lastSeen = as.POSIXct(
+#'           "2015-01-01"
+#'         )
+#'       ),
+#'       findingArn = "string",
+#'       referenceUrls = list(
+#'         "string"
+#'       ),
+#'       riskScore = 123,
+#'       tools = list(
+#'         "string"
+#'       ),
+#'       ttps = list(
+#'         "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$batch_get_finding_details(
+#'   findingArns = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname inspector2_batch_get_finding_details
+#'
+#' @aliases inspector2_batch_get_finding_details
+inspector2_batch_get_finding_details <- function(findingArns) {
+  op <- new_operation(
+    name = "BatchGetFindingDetails",
+    http_method = "POST",
+    http_path = "/findings/details/batch/get",
+    paginator = list()
+  )
+  input <- .inspector2$batch_get_finding_details_input(findingArns = findingArns)
+  output <- .inspector2$batch_get_finding_details_output()
+  config <- get_config()
+  svc <- .inspector2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.inspector2$operations$batch_get_finding_details <- inspector2_batch_get_finding_details
+
 #' Gets free trial status for multiple Amazon Web Services accounts
 #'
 #' @description

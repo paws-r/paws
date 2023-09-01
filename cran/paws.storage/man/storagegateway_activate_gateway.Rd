@@ -25,8 +25,8 @@ parameters, however, these are merely defaults -- the arguments you pass
 to the \code{\link[=storagegateway_activate_gateway]{activate_gateway}} API call
 determine the actual configuration of your gateway.
 
-For more information, see \href{https://docs.aws.amazon.com/storagegateway/index.html}{Getting activation key} in the
-\emph{Storage Gateway User Guide}.}
+For more information, see \href{https://docs.aws.amazon.com/storagegateway/}{Getting activation key} in the \emph{Storage
+Gateway User Guide}.}
 
 \item{GatewayName}{[required] The name you configured for your gateway.}
 

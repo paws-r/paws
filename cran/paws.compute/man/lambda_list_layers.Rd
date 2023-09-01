@@ -25,7 +25,7 @@ see \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html#runt
 \item{CompatibleArchitecture}{The compatible \href{https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html}{instruction set architecture}.}
 }
 \description{
-Lists \href{https://docs.aws.amazon.com/lambda/latest/dg/invocation-layers.html}{Lambda layers} and shows information about the latest version of each. Specify a \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier} to list only layers that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layers that are compatible with that \href{https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html}{instruction set architecture}.
+Lists \href{https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html}{Lambda layers} and shows information about the latest version of each. Specify a \href{https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtimes.html}{runtime identifier} to list only layers that indicate that they're compatible with that runtime. Specify a compatible architecture to include only layers that are compatible with that \href{https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html}{instruction set architecture}.
 
 See \url{https://www.paws-r-sdk.com/docs/lambda_list_layers/} for full documentation.
 }

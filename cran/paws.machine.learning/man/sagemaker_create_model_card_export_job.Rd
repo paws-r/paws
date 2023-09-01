@@ -12,7 +12,7 @@ sagemaker_create_model_card_export_job(
 )
 }
 \arguments{
-\item{ModelCardName}{[required] The name of the model card to export.}
+\item{ModelCardName}{[required] The name or Amazon Resource Name (ARN) of the model card to export.}
 
 \item{ModelCardVersion}{The version of the model card to export. If a version is not provided,
 then the latest version of the model card is exported.}

@@ -8,8 +8,7 @@ for open and click event tracking}
 ses_delete_configuration_set_tracking_options(ConfigurationSetName)
 }
 \arguments{
-\item{ConfigurationSetName}{[required] The name of the configuration set from which you want to delete the
-tracking options.}
+\item{ConfigurationSetName}{[required] The name of the configuration set.}
 }
 \description{
 Deletes an association between a configuration set and a custom domain for open and click event tracking.

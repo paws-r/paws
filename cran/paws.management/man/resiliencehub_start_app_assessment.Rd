@@ -13,8 +13,8 @@ resiliencehub_start_app_assessment(
 )
 }
 \arguments{
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
-format for this ARN is:
+\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format
+for this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
 information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference} guide.}
@@ -27,8 +27,8 @@ in the \emph{AWS General Reference} guide.}
 case-sensitive string of up to 64 ASCII characters. You should not reuse
 the same client token for other API requests.}
 
-\item{tags}{The tags assigned to the resource. A tag is a label that you assign to
-an Amazon Web Services resource. Each tag consists of a key/value pair.}
+\item{tags}{Tags assigned to the resource. A tag is a label that you assign to an
+Amazon Web Services resource. Each tag consists of a key/value pair.}
 }
 \description{
 Creates a new application assessment for an application.

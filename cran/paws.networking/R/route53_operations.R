@@ -3015,12 +3015,11 @@ route53_update_traffic_policy_comment <- function(Id, Version, Comment) {
 }
 .route53$operations$update_traffic_policy_comment <- route53_update_traffic_policy_comment
 
-#' After you submit a UpdateTrafficPolicyInstance request, there's a brief
-#' delay while Route 53 creates the resource record sets that are specified
-#' in the traffic policy definition
+#' Updates the resource record sets in a specified hosted zone that were
+#' created based on the settings in a specified traffic policy version
 #'
 #' @description
-#' After you submit a [`update_traffic_policy_instance`][route53_update_traffic_policy_instance] request, there's a brief delay while Route 53 creates the resource record sets that are specified in the traffic policy definition. Use [`get_traffic_policy_instance`][route53_get_traffic_policy_instance] with the `id` of updated traffic policy instance confirm that the [`update_traffic_policy_instance`][route53_update_traffic_policy_instance] request completed successfully. For more information, see the `State` response element.
+#' Updates the resource record sets in a specified hosted zone that were created based on the settings in a specified traffic policy version.
 #'
 #' See [https://www.paws-r-sdk.com/docs/route53_update_traffic_policy_instance/](https://www.paws-r-sdk.com/docs/route53_update_traffic_policy_instance/) for full documentation.
 #'

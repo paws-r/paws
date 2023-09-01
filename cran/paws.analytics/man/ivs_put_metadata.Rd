@@ -13,7 +13,7 @@ have an active stream.}
 \item{metadata}{[required] Metadata to insert into the stream. Maximum: 1 KB per request.}
 }
 \description{
-Inserts metadata into the active stream of the specified channel. At most 5 requests per second per channel are allowed, each with a maximum 1 KB payload. (If 5 TPS is not sufficient for your needs, we recommend batching your data into a single PutMetadata call.) At most 155 requests per second per account are allowed. Also see \href{https://docs.aws.amazon.com/ivs/latest/userguide/metadata.html}{Embedding Metadata within a Video Stream} in the \emph{Amazon IVS User Guide}.
+Inserts metadata into the active stream of the specified channel. At most 5 requests per second per channel are allowed, each with a maximum 1 KB payload. (If 5 TPS is not sufficient for your needs, we recommend batching your data into a single PutMetadata call.) At most 155 requests per second per account are allowed. Also see \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/metadata.html}{Embedding Metadata within a Video Stream} in the \emph{Amazon IVS User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ivs_put_metadata/} for full documentation.
 }

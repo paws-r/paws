@@ -1221,7 +1221,8 @@ ecs_create_service <- function(cluster = NULL, serviceName, taskDefinition = NUL
 #' registry, the tasks in this task set will have the
 #' `ECS_TASK_SET_EXTERNAL_ID` Cloud Map attribute set to the provided
 #' value.
-#' @param taskDefinition &#91;required&#93; The task definition for the tasks in the task set to use.
+#' @param taskDefinition &#91;required&#93; The task definition for the tasks in the task set to use. If a revision
+#' isn't specified, the latest `ACTIVE` revision is used.
 #' @param networkConfiguration An object representing the network configuration for a task set.
 #' @param loadBalancers A load balancer object representing the load balancer to use with the
 #' task set. The supported load balancer types are either an Application
@@ -1488,7 +1489,7 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 #' ```
 #' list(
 #'   setting = list(
-#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization",
+#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod",
 #'     value = "string",
 #'     principalArn = "string"
 #'   )
@@ -1498,7 +1499,7 @@ ecs_create_task_set <- function(service, cluster, externalId = NULL, taskDefinit
 #' @section Request syntax:
 #' ```
 #' svc$delete_account_setting(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization",
+#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod",
 #'   principalArn = "string"
 #' )
 #' ```
@@ -4465,6 +4466,11 @@ ecs_describe_task_sets <- function(cluster, service, taskSets = NULL, include = 
 #' 
 #' Currently, stopped tasks appear in the returned results for at least one
 #' hour.
+#' 
+#' If you have tasks with tags, and then delete the cluster, the tagged
+#' tasks are returned in the response. If you create a new cluster with the
+#' same name as the deleted cluster, the tagged tasks are not included in
+#' the response.
 #'
 #' @usage
 #' ecs_describe_tasks(cluster, tasks, include)
@@ -4980,7 +4986,7 @@ ecs_get_task_protection <- function(cluster, tasks = NULL) {
 #' list(
 #'   settings = list(
 #'     list(
-#'       name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization",
+#'       name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod",
 #'       value = "string",
 #'       principalArn = "string"
 #'     )
@@ -4992,7 +4998,7 @@ ecs_get_task_protection <- function(cluster, tasks = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$list_account_settings(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization",
+#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod",
 #'   value = "string",
 #'   principalArn = "string",
 #'   effectiveSettings = TRUE|FALSE,
@@ -5767,8 +5773,7 @@ ecs_list_task_definitions <- function(familyPrefix = NULL, status = NULL, sort =
 #' definition family, container instance, launch type, what IAM principal
 #' started the task, or by the desired status of the task.
 #' 
-#' Recently stopped tasks might appear in the returned results. Currently,
-#' stopped tasks appear in the returned results for at least one hour.
+#' Recently stopped tasks might appear in the returned results.
 #'
 #' @usage
 #' ecs_list_tasks(cluster, containerInstance, family, nextToken,
@@ -5901,17 +5906,16 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' Settings](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' When `serviceLongArnFormat`, `taskLongArnFormat`, or
-#' `containerInstanceLongArnFormat` are specified, the Amazon Resource Name
-#' (ARN) and resource ID format of the resource type for a specified user,
-#' role, or the root user for an account is affected. The opt-in and
-#' opt-out account setting must be set for each Amazon ECS resource
-#' separately. The ARN and resource ID format of a resource is defined by
-#' the opt-in status of the user or role that created the resource. You
-#' must turn on this setting to use Amazon ECS features such as resource
-#' tagging.
+#' When you specify `serviceLongArnFormat`, `taskLongArnFormat`, or
+#' `containerInstanceLongArnFormat`, the Amazon Resource Name (ARN) and
+#' resource ID format of the resource type for a specified user, role, or
+#' the root user for an account is affected. The opt-in and opt-out account
+#' setting must be set for each Amazon ECS resource separately. The ARN and
+#' resource ID format of a resource is defined by the opt-in status of the
+#' user or role that created the resource. You must turn on this setting to
+#' use Amazon ECS features such as resource tagging.
 #' 
-#' When `awsvpcTrunking` is specified, the elastic network interface (ENI)
+#' When you specify `awsvpcTrunking`, the elastic network interface (ENI)
 #' limit for any new container instances that support the feature is
 #' changed. If `awsvpcTrunking` is turned on, any new container instances
 #' that support the feature are launched have the increased ENI limits
@@ -5919,7 +5923,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' Trunking](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-instance-eni.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
 #' 
-#' When `containerInsights` is specified, the default setting indicating
+#' When you specify `containerInsights`, the default setting indicating
 #' whether Amazon Web Services CloudWatch Container Insights is turned on
 #' for your clusters is changed. If `containerInsights` is turned on, any
 #' new clusters that are created will have Container Insights turned on
@@ -5937,33 +5941,59 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' information, see [Grant permission to tag resources on
 #' creation](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/supported-iam-actions-tagging.html)
 #' in the *Amazon ECS Developer Guide*.
+#' 
+#' When Amazon Web Services determines that a security or infrastructure
+#' update is needed for an Amazon ECS task hosted on Fargate, the tasks
+#' need to be stopped and new tasks launched to replace them. Use
+#' `fargateTaskRetirementWaitPeriod` to configure the wait time to retire a
+#' Fargate task. For information about the Fargate tasks maintenance, see
+#' [Amazon Web Services Fargate task
+#' maintenance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html)
+#' in the *Amazon ECS Developer Guide*.
 #'
 #' @usage
 #' ecs_put_account_setting(name, value, principalArn)
 #'
 #' @param name &#91;required&#93; The Amazon ECS resource name for which to modify the account setting. If
-#' `serviceLongArnFormat` is specified, the ARN for your Amazon ECS
-#' services is affected. If `taskLongArnFormat` is specified, the ARN and
-#' resource ID for your Amazon ECS tasks is affected. If
-#' `containerInstanceLongArnFormat` is specified, the ARN and resource ID
-#' for your Amazon ECS container instances is affected. If `awsvpcTrunking`
-#' is specified, the elastic network interface (ENI) limit for your Amazon
-#' ECS container instances is affected. If `containerInsights` is
-#' specified, the default setting for Amazon Web Services CloudWatch
-#' Container Insights for your clusters is affected. If `fargateFIPSMode`
-#' is specified, Fargate FIPS 140 compliance is affected. If
-#' `tagResourceAuthorization` is specified, the opt-in option for tagging
+#' you specify `serviceLongArnFormat`, the ARN for your Amazon ECS services
+#' is affected. If you specify `taskLongArnFormat`, the ARN and resource ID
+#' for your Amazon ECS tasks is affected. If you specify
+#' `containerInstanceLongArnFormat`, the ARN and resource ID for your
+#' Amazon ECS container instances is affected. If you specify
+#' `awsvpcTrunking`, the elastic network interface (ENI) limit for your
+#' Amazon ECS container instances is affected. If you specify
+#' `containerInsights`, the default setting for Amazon Web Services
+#' CloudWatch Container Insights for your clusters is affected. If you
+#' specify `fargateFIPSMode`, Fargate FIPS 140 compliance is affected. If
+#' you specify `tagResourceAuthorization`, the opt-in option for tagging
 #' resources on creation is affected. For information about the opt-in
 #' timeline, see [Tagging authorization
 #' timeline](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#tag-resources)
-#' in the *Amazon ECS Developer Guide*.
+#' in the *Amazon ECS Developer Guide*. If you specify
+#' `fargateTaskRetirementWaitPeriod`, the wait time to retire a Fargate
+#' task is affected.
 #' @param value &#91;required&#93; The account setting value for the specified principal ARN. Accepted
 #' values are `enabled`, `disabled`, `on`, and `off`.
+#' 
+#' When you specify `fargateTaskRetirementWaitPeriod` for the `name`, the
+#' following are the valid values:
+#' 
+#' -   `0` - immediately retire the tasks and patch Fargate
+#' 
+#'     There is no advanced notification. Your tasks are retired
+#'     immediately, and Fargate is patched without any notification.
+#' 
+#' -   `7` -wait 7 calendar days to retire the tasks and patch Fargate
+#' 
+#' -   `14` - wait 14 calendar days to retire the tasks and patch Fargate
 #' @param principalArn The ARN of the principal, which can be a user, role, or the root user.
 #' If you specify the root user, it modifies the account setting for all
 #' users, roles, and the root user of the account unless a user or role
 #' explicitly overrides these settings. If this field is omitted, the
 #' setting is changed only for the authenticated user.
+#' 
+#' You must use the root user when you set the Fargate wait time
+#' (`fargateTaskRetirementWaitPeriod`).
 #' 
 #' Federated users assume the account setting of the root user and can't
 #' have explicit account settings set for them.
@@ -5973,7 +6003,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' ```
 #' list(
 #'   setting = list(
-#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization",
+#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod",
 #'     value = "string",
 #'     principalArn = "string"
 #'   )
@@ -5983,7 +6013,7 @@ ecs_list_tasks <- function(cluster = NULL, containerInstance = NULL, family = NU
 #' @section Request syntax:
 #' ```
 #' svc$put_account_setting(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization",
+#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod",
 #'   value = "string",
 #'   principalArn = "string"
 #' )
@@ -6045,20 +6075,22 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' @usage
 #' ecs_put_account_setting_default(name, value)
 #'
-#' @param name &#91;required&#93; The resource name for which to modify the account setting. If
-#' `serviceLongArnFormat` is specified, the ARN for your Amazon ECS
-#' services is affected. If `taskLongArnFormat` is specified, the ARN and
-#' resource ID for your Amazon ECS tasks is affected. If
-#' `containerInstanceLongArnFormat` is specified, the ARN and resource ID
-#' for your Amazon ECS container instances is affected. If `awsvpcTrunking`
-#' is specified, the ENI limit for your Amazon ECS container instances is
-#' affected. If `containerInsights` is specified, the default setting for
+#' @param name &#91;required&#93; The resource name for which to modify the account setting. If you
+#' specify `serviceLongArnFormat`, the ARN for your Amazon ECS services is
+#' affected. If you specify `taskLongArnFormat`, the ARN and resource ID
+#' for your Amazon ECS tasks is affected. If you specify
+#' `containerInstanceLongArnFormat`, the ARN and resource ID for your
+#' Amazon ECS container instances is affected. If you specify
+#' `awsvpcTrunking`, the ENI limit for your Amazon ECS container instances
+#' is affected. If you specify `containerInsights`, the default setting for
 #' Amazon Web Services CloudWatch Container Insights for your clusters is
-#' affected. If `tagResourceAuthorization` is specified, the opt-in option
+#' affected. If you specify `tagResourceAuthorization`, the opt-in option
 #' for tagging resources on creation is affected. For information about the
 #' opt-in timeline, see [Tagging authorization
 #' timeline](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#tag-resources)
-#' in the *Amazon ECS Developer Guide*.
+#' in the *Amazon ECS Developer Guide*. If you specify
+#' `fargateTaskRetirementWaitPeriod`, the default wait time to retire a
+#' Fargate task due to required maintenance is affected.
 #' 
 #' When you specify `fargateFIPSMode` for the `name` and `enabled` for the
 #' `value`, Fargate uses FIPS-140 compliant cryptographic algorithms on
@@ -6067,15 +6099,36 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' (FIPS) 140-2
 #' compliance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-fips-compliance.html)
 #' in the *Amazon Elastic Container Service Developer Guide*.
+#' 
+#' When Amazon Web Services determines that a security or infrastructure
+#' update is needed for an Amazon ECS task hosted on Fargate, the tasks
+#' need to be stopped and new tasks launched to replace them. Use
+#' `fargateTaskRetirementWaitPeriod` to set the wait time to retire a
+#' Fargate task to the default. For information about the Fargate tasks
+#' maintenance, see [Amazon Web Services Fargate task
+#' maintenance](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html)
+#' in the *Amazon ECS Developer Guide*.
 #' @param value &#91;required&#93; The account setting value for the specified principal ARN. Accepted
 #' values are `enabled`, `disabled`, `on`, and `off`.
+#' 
+#' When you specify `fargateTaskRetirementWaitPeriod` for the `name`, the
+#' following are the valid values:
+#' 
+#' -   `0` - immediately retire the tasks and patch Fargate
+#' 
+#'     There is no advanced notification. Your tasks are retired
+#'     immediately, and Fargate is patched without any notification.
+#' 
+#' -   `7` -wait 7 calendar days to retire the tasks and patch Fargate
+#' 
+#' -   `14` - wait 14 calendar days to retire the tasks and patch Fargate
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
 #'   setting = list(
-#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization",
+#'     name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod",
 #'     value = "string",
 #'     principalArn = "string"
 #'   )
@@ -6085,7 +6138,7 @@ ecs_put_account_setting <- function(name, value, principalArn = NULL) {
 #' @section Request syntax:
 #' ```
 #' svc$put_account_setting_default(
-#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization",
+#'   name = "serviceLongArnFormat"|"taskLongArnFormat"|"containerInstanceLongArnFormat"|"awsvpcTrunking"|"containerInsights"|"fargateFIPSMode"|"tagResourceAuthorization"|"fargateTaskRetirementWaitPeriod",
 #'   value = "string"
 #' )
 #' ```
@@ -6822,22 +6875,32 @@ ecs_register_container_instance <- function(cluster = NULL, instanceIdentityDocu
 #'     values with this prefix. Tags with this prefix do not count against
 #'     your tags per resource limit.
 #' @param pidMode The process namespace to use for the containers in the task. The valid
-#' values are `host` or `task`. If `host` is specified, then all containers
-#' within the tasks that specified the `host` PID mode on the same
-#' container instance share the same process namespace with the host Amazon
-#' EC2 instance. If `task` is specified, all containers within the
-#' specified task share the same process namespace. If no value is
-#' specified, the default is a private namespace. For more information, see
-#' [PID
+#' values are `host` or `task`. On Fargate for Linux containers, the only
+#' valid value is `task`. For example, monitoring sidecars might need
+#' `pidMode` to access information about other containers running in the
+#' same task.
+#' 
+#' If `host` is specified, all containers within the tasks that specified
+#' the `host` PID mode on the same container instance share the same
+#' process namespace with the host Amazon EC2 instance.
+#' 
+#' If `task` is specified, all containers within the specified task share
+#' the same process namespace.
+#' 
+#' If no value is specified, the default is a private namespace for each
+#' container. For more information, see [PID
 #' settings](https://docs.docker.com/engine/reference/run/#pid-settings---pid)
 #' in the *Docker run reference*.
 #' 
-#' If the `host` PID mode is used, be aware that there is a heightened risk
-#' of undesired process namespace expose. For more information, see [Docker
+#' If the `host` PID mode is used, there's a heightened risk of undesired
+#' process namespace exposure. For more information, see [Docker
 #' security](https://docs.docker.com/engine/security/).
 #' 
-#' This parameter is not supported for Windows containers or tasks run on
-#' Fargate.
+#' This parameter is not supported for Windows containers.
+#' 
+#' This parameter is only supported for tasks that are hosted on Fargate if
+#' the tasks are using platform version `1.4.0` or later (Linux). This
+#' isn't supported for Windows containers on Fargate.
 #' @param ipcMode The IPC resource namespace to use for the containers in the task. The
 #' valid values are `host`, `task`, or `none`. If `host` is specified, then
 #' all containers within the tasks that specified the `host` IPC mode on
@@ -9914,17 +9977,16 @@ ecs_update_container_instances_state <- function(cluster = NULL, containerInstan
 #'     with the largest number of running tasks for this service.
 #' 
 #' You must have a service-linked role when you update any of the following
-#' service properties. If you specified a custom role when you created the
-#' service, Amazon ECS automatically replaces the
-#' [roleARN](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_Service.html#ECS-Type-Service-roleArn)
-#' associated with the service with the ARN of your service-linked role.
-#' For more information, see [Service-linked
-#' roles](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/using-service-linked-roles.html)
-#' in the *Amazon Elastic Container Service Developer Guide*.
+#' service properties:
 #' 
-#' -   `loadBalancers,`
+#' -   `loadBalancers`,
 #' 
 #' -   `serviceRegistries`
+#' 
+#' For more information about the role see the
+#' [`create_service`][ecs_create_service] request parameter
+#' [`role`](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_CreateService.html#ECS-CreateService-request-role)
+#' .
 #'
 #' @usage
 #' ecs_update_service(cluster, service, desiredCount, taskDefinition,

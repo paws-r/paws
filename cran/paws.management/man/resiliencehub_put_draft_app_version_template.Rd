@@ -8,8 +8,8 @@ version}
 resiliencehub_put_draft_app_version_template(appArn, appTemplateBody)
 }
 \arguments{
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
-format for this ARN is:
+\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format
+for this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
 information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference} guide.}
@@ -33,7 +33,7 @@ Each \code{resources} array item includes the following fields:
 \itemize{
 \item \emph{logicalResourceId}
 
-The logical identifier of the resource.
+Logical identifier of the resource.
 
 Type: Object
 
@@ -41,7 +41,7 @@ Each \code{logicalResourceId} object includes the following fields:
 \itemize{
 \item \code{identifier}
 
-The identifier of the resource.
+Identifier of the resource.
 
 Type: String
 \item \code{logicalStackName}
@@ -63,8 +63,8 @@ belongs to.
 Type: String
 \item \code{eksSourceName}
 
-The name of the Amazon Elastic Kubernetes Service cluster
-and namespace this resource belongs to.
+Name of the Amazon Elastic Kubernetes Service cluster and
+namespace this resource belongs to.
 
 This parameter accepts values in "eks-cluster/namespace"
 format.
@@ -99,9 +99,9 @@ Value:
 }
 \item \strong{\code{appComponents}}
 
-The list of Application Components that this resource belongs to. If
-an Application Component is not part of the Resilience Hub
-application, it will be added.
+List of Application Components that this resource belongs to. If an
+Application Component is not part of the Resilience Hub application,
+it will be added.
 
 Type: Array
 
@@ -109,13 +109,13 @@ Each \code{appComponents} array item includes the following fields:
 \itemize{
 \item \code{name}
 
-The name of the Application Component.
+Name of the Application Component.
 
 Type: String
 \item \code{type}
 
-The type of Application Component. For more information about
-the types of Application Component, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/AppComponent.grouping.html}{Grouping resources in an AppComponent}.
+Type of Application Component. For more information about the
+types of Application Component, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/AppComponent.grouping.html}{Grouping resources in an AppComponent}.
 
 Type: String
 \item \code{resourceNames}
@@ -153,7 +153,7 @@ Each \code{excludedResources} array item includes the following fields:
 \itemize{
 \item \emph{logicalResourceIds}
 
-The logical identifier of the resource.
+Logical identifier of the resource.
 
 Type: Object
 
@@ -169,7 +169,7 @@ Each \code{logicalResourceIds} object includes the following fields:
 \itemize{
 \item \code{identifier}
 
-The identifier of the resource.
+Identifier of the resource.
 
 Type: String
 \item \code{logicalStackName}
@@ -191,8 +191,8 @@ belongs to.
 Type: String
 \item \code{eksSourceName}
 
-The name of the Amazon Elastic Kubernetes Service cluster
-and namespace this resource belongs to.
+Name of the Amazon Elastic Kubernetes Service cluster and
+namespace this resource belongs to.
 
 This parameter accepts values in "eks-cluster/namespace"
 format.
@@ -202,7 +202,7 @@ Type: String
 }
 \item \strong{\code{version}}
 
-The Resilience Hub application version.
+Resilience Hub application version.
 \item \code{additionalInfo}
 
 Additional configuration parameters for an Resilience Hub
