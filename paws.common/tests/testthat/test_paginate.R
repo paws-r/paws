@@ -33,26 +33,6 @@ test_that("check empty token is returned", {
 })
 
 ########################################################################
-# retry_api_call
-########################################################################
-
-test_that("check if retry_api_call retries correctly", {
-  mock_exp_back_off <- mock2(side_effect = exp_back_off)
-  mockery::stub(retry_api_call, "exp_back_off", mock_exp_back_off)
-
-  expect_error(retry_api_call(stop("rate exceeded"), 2))
-  expect_equal(mock_call_no(mock_exp_back_off), 3)
-})
-
-test_that("check if retry_api_call doesn't retry", {
-  mock_exp_back_off <- mock2(side_effect = exp_back_off)
-  mockery::stub(retry_api_call, "exp_back_off", mock_exp_back_off)
-
-  expect_error(retry_api_call(stop("error"), 2))
-  expect_equal(mock_call_no(mock_exp_back_off), 0)
-})
-
-########################################################################
 # paginate_update_fn
 ########################################################################
 
@@ -128,7 +108,6 @@ test_that("check paginate_update_fn unable to paginate", {
   )
 })
 
-
 ########################################################################
 # paginate
 ########################################################################
@@ -159,7 +138,7 @@ test_that("check paginate", {
       )
     )
   )
-  mock_retry_api_call <- mock2(
+  mock_eval <- mock2(
     list(Contents = list("foo"), NextToken = "token1"),
     list(Contents = list("bar"), NextToken = "token2"),
     list(Contents = list("zoo"), NextToken = character())
@@ -173,119 +152,14 @@ test_that("check paginate", {
 
   mockery::stub(paginate, "substitute", mock_substitute)
   mockery::stub(paginate, "paginate_update_fn", mock_paginate_update_fn)
-  mockery::stub(paginate, "retry_api_call", mock_retry_api_call)
+  mockery::stub(paginate, "eval", mock_eval)
 
   actual <- paginate("dummy")
-  actual_args <- mockery::mock_args(mock_retry_api_call)
-
-  expect_equal(actual_args, list(
-    list(list(NextToken = NULL, MaxKey = NULL), retries = 5),
-    list(list(NextToken = "token1", MaxKey = NULL), retries = 5),
-    list(list(NextToken = "token2", MaxKey = NULL), retries = 5)
-  ))
-  expect_equal(actual, expected)
-})
-
-test_that("check paginate do.call", {
-  dummy_internal <- function(paginator) {
-    paginator
-  }
-  dummy_op <- function(x, NextToken = NULL, MaxKey = NULL) {
-    op <- dummy_internal(paginator = list(
-      input_token = "NextToken",
-      output_token = "NextToken",
-      limit_key = "MaxKey",
-      result_key = "Contents"
-    ))
-    list(NextToken = NextToken, MaxKey = MaxKey)
-  }
-  mock_substitute <- mock2(substitute(do.call(dummy_op, list(x = "hi"))))
-
-  mock_paginate_update_fn <- mock2(
-    list(
-      fn = substitute(dummy_op(x = "hi")),
-      paginator = list(
-        input_token = "NextToken",
-        output_token = "NextToken",
-        limit_key = "MaxKey",
-        result_key = "Contents"
-      )
-    )
-  )
-  mock_retry_api_call <- mock2(
-    list(Contents = list("foo"), NextToken = "token1"),
-    list(Contents = list("bar"), NextToken = "token2"),
-    list(Contents = list("zoo"), NextToken = character())
-  )
-
-  expected <- list(
-    list(Contents = list("foo"), NextToken = "token1"),
-    list(Contents = list("bar"), NextToken = "token2"),
-    list(Contents = list("zoo"), NextToken = character())
-  )
-
-  mockery::stub(paginate, "substitute", mock_substitute)
-  mockery::stub(paginate, "paginate_update_fn", mock_paginate_update_fn)
-  mockery::stub(paginate, "retry_api_call", mock_retry_api_call)
-
-  actual <- paginate("dummy")
-  actual_args <- mockery::mock_args(mock_retry_api_call)
-
-  expect_equal(actual_args, list(
-    list(list(NextToken = NULL, MaxKey = NULL), retries = 5),
-    list(list(NextToken = "token1", MaxKey = NULL), retries = 5),
-    list(list(NextToken = "token2", MaxKey = NULL), retries = 5)
-  ))
-  expect_equal(actual, expected)
-})
-
-test_that("check paginate restrict MaxItems", {
-  dummy_internal <- function(paginator) {
-    paginator
-  }
-  dummy_op <- function(x, NextToken = NULL, MaxKey = NULL) {
-    op <- dummy_internal(paginator = list(
-      input_token = "NextToken",
-      output_token = "NextToken",
-      limit_key = "MaxKey",
-      result_key = "Contents"
-    ))
-    list(NextToken = NextToken, MaxKey = MaxKey)
-  }
-  mock_substitute <- mock2(substitute(do.call(dummy_op, list(x = "hi"))))
-
-  mock_paginate_update_fn <- mock2(
-    list(
-      fn = substitute(dummy_op(x = "hi")),
-      paginator = list(
-        input_token = "NextToken",
-        output_token = "NextToken",
-        limit_key = "MaxKey",
-        result_key = "Contents"
-      )
-    )
-  )
-  mock_retry_api_call <- mock2(
-    list(Contents = list("foo"), NextToken = "token1"),
-    list(Contents = list("bar"), NextToken = "token2"),
-    list(Contents = list("zoo"), NextToken = character())
-  )
-
-  expected <- list(
-    list(Contents = list("foo"), NextToken = "token1"),
-    list(Contents = list("bar"), NextToken = "token2")
-  )
-
-  mockery::stub(paginate, "substitute", mock_substitute)
-  mockery::stub(paginate, "paginate_update_fn", mock_paginate_update_fn)
-  mockery::stub(paginate, "retry_api_call", mock_retry_api_call)
-
-  actual <- paginate("dummy", MaxItems = 2)
-  actual_args <- mockery::mock_args(mock_retry_api_call)
-
-  expect_equal(actual_args, list(
-    list(list(NextToken = NULL, MaxKey = NULL), retries = 5),
-    list(list(NextToken = "token1", MaxKey = NULL), retries = 5)
+  actual_args <- mockery::mock_args(mock_eval)
+  expect_equal(lapply(actual_args, function(x) as.list(x[[1]][-1])), list(
+    list(x = "hi"),
+    list(x = "hi", NextToken = "token1"),
+    list(x = "hi", NextToken = "token2")
   ))
   expect_equal(actual, expected)
 })
@@ -308,7 +182,7 @@ test_that("check paginate_xapply", {
     list(NextToken = NextToken, MaxKey = MaxKey)
   }
 
-  mock_retry_api_call <- mock2(
+  mock_eval <- mock2(
     list(Contents = list("foo"), NextToken = "token1"),
     list(Contents = list("bar"), NextToken = "token2"),
     list(Contents = list("zoo"), NextToken = character())
@@ -320,7 +194,7 @@ test_that("check paginate_xapply", {
     list(Contents = list("zoo"), NextToken = character())
   )
 
-  mockery::stub(paginate_xapply, "retry_api_call", mock_retry_api_call)
+  mockery::stub(paginate_xapply, "eval", mock_eval)
 
   actual <- paginate_xapply(
     substitute(dummy_op(x = "hi")),
@@ -333,15 +207,14 @@ test_that("check paginate_xapply", {
     FUN = function(resp) {
       resp
     },
-    MaxRetries = 5,
     MaxItems = NULL
   )
-  actual_args <- mockery::mock_args(mock_retry_api_call)
+  actual_args <- mockery::mock_args(mock_eval)
 
-  expect_equal(actual_args, list(
-    list(list(NextToken = NULL, MaxKey = NULL), retries = 5),
-    list(list(NextToken = "token1", MaxKey = NULL), retries = 5),
-    list(list(NextToken = "token2", MaxKey = NULL), retries = 5)
+  expect_equal(lapply(actual_args, function(x) as.list(x[[1]][-1])), list(
+    list(x = "hi"),
+    list(x = "hi", NextToken = "token1"),
+    list(x = "hi", NextToken = "token2")
   ))
   expect_equal(actual, expected)
 })
@@ -360,7 +233,7 @@ test_that("check paginate_xapply restrict MaxItems", {
     list(NextToken = NextToken, MaxKey = MaxKey)
   }
 
-  mock_retry_api_call <- mock2(
+  mock_eval <- mock2(
     list(Contents = list("foo"), NextToken = "token1"),
     list(Contents = list("bar"), NextToken = "token2"),
     list(Contents = list("zoo"), NextToken = character())
@@ -371,7 +244,7 @@ test_that("check paginate_xapply restrict MaxItems", {
     list(Contents = list("bar"), NextToken = "token2")
   )
 
-  mockery::stub(paginate_xapply, "retry_api_call", mock_retry_api_call)
+  mockery::stub(paginate_xapply, "eval", mock_eval)
 
   actual <- paginate_xapply(
     substitute(dummy_op(x = "hi")),
@@ -384,14 +257,12 @@ test_that("check paginate_xapply restrict MaxItems", {
     FUN = function(resp) {
       resp
     },
-    MaxRetries = 5,
     MaxItems = 2
   )
-  actual_args <- mockery::mock_args(mock_retry_api_call)
-
-  expect_equal(actual_args, list(
-    list(list(NextToken = NULL, MaxKey = NULL), retries = 5),
-    list(list(NextToken = "token1", MaxKey = NULL), retries = 5)
+  actual_args <- mockery::mock_args(mock_eval)
+  expect_equal(lapply(actual_args, function(x) as.list(x[[1]][-1])), list(
+    list(x = "hi"),
+    list(x = "hi", NextToken = "token1")
   ))
   expect_equal(actual, expected)
 })

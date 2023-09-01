@@ -28,6 +28,7 @@
 #' @param close_connection Immediately close all HTTP connections.
 #' @param connect_timeout The time in seconds till a timeout exception is thrown
 #' when attempting to make a connection. The default is 60 seconds.
+#' @param max_retries Max number of retries call AWS API (default set to 3).
 #' @param s3_force_path_style Set this to `true` to force the request to use path-style
 #' addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.
 #' @param sts_regional_endpoint Set sts regional endpoint resolver to regional or

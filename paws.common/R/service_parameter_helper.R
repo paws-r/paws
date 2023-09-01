@@ -28,6 +28,7 @@
 #' @param close_connection Immediately close all HTTP connections.
 #' @param connect_timeout The time in seconds till a timeout exception is thrown
 #' when attempting to make a connection. The default is 60 seconds.
+#' @param max_retries Max number of retries call AWS API (default set to 3).
 #' @param s3_force_path_style Set this to `true` to force the request to use path-style
 #' addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.
 #' @param sts_regional_endpoint Set sts regional endpoint resolver to regional or
@@ -63,49 +64,45 @@
 #'
 #' # set service parameter access_key_id and secret_access_key using using lists
 #' config(
-#'   credentials = list(
-#'     creds = list(
-#'       access_key_id = "dummy",
-#'       secret_access_key = "secret"
+#'     credentials = list(
+#'         creds = list(
+#'             access_key_id = "dummy",
+#'             secret_access_key = "secret"
+#'         )
 #'     )
-#'   )
 #' )
 #'
 #' @name set_service_parameter
 #' @export
-config <- function(
-    credentials = list(creds = list(
-      access_key_id = "",
-      secret_access_key = "", session_token = "", access_token = "",
-      expiration = Inf
-    ), profile = "", anonymous = FALSE), endpoint = "",
-    region = "", close_connection = FALSE, connect_timeout = 60,
-    s3_force_path_style = FALSE, sts_regional_endpoint = "",
-    signature_version = "") {
-  .args <- as.list(environment(), all.names = TRUE)
-  class(.args) <- "struct"
-  return(.args)
+config <- function (credentials = list(creds = list(access_key_id = "", 
+    secret_access_key = "", session_token = "", access_token = "", 
+    expiration = Inf), profile = "", anonymous = FALSE), endpoint = "", 
+    region = "", close_connection = FALSE, max_retries = 3, connect_timeout = 60, 
+    s3_force_path_style = FALSE, sts_regional_endpoint = "", 
+    signature_version = "") 
+{
+    .args <- as.list(environment(), all.names = TRUE)
+    class(.args) <- "struct"
+    return(.args)
 }
 
 #' @rdname set_service_parameter
 #' @export
-credentials <- function(
-    creds = list(
-      access_key_id = "", secret_access_key = "",
-      session_token = "", access_token = "", expiration = Inf
-    ),
-    profile = "", anonymous = FALSE) {
-  .args <- as.list(environment(), all.names = TRUE)
-  class(.args) <- "struct"
-  return(.args)
+credentials <- function (creds = list(access_key_id = "", secret_access_key = "", 
+    session_token = "", access_token = "", expiration = Inf), 
+    profile = "", anonymous = FALSE) 
+{
+    .args <- as.list(environment(), all.names = TRUE)
+    class(.args) <- "struct"
+    return(.args)
 }
 
 #' @rdname set_service_parameter
 #' @export
-creds <- function(
-    access_key_id = "", secret_access_key = "", session_token = "",
-    access_token = "", expiration = Inf) {
-  .args <- as.list(environment(), all.names = TRUE)
-  class(.args) <- "struct"
-  return(.args)
+creds <- function (access_key_id = "", secret_access_key = "", session_token = "", 
+    access_token = "", expiration = Inf) 
+{
+    .args <- as.list(environment(), all.names = TRUE)
+    class(.args) <- "struct"
+    return(.args)
 }
