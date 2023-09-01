@@ -3,7 +3,6 @@
   "endpoint_resolver",
   "enforce_should_retry_check",
   "disable_ssl",
-  "max_retries",
   "retryer",
   "disable_param_validation",
   "disable_compute_checksums",

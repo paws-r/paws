@@ -46,6 +46,9 @@ new_handlers <- function(protocol, signer) {
     ),
     unmarshal_error = HandlerList(
       handler(protocol, "unmarshal_error")
+    ),
+    retry = HandlerList(
+      standard_retry_handler
     )
   )
   return(handlers)

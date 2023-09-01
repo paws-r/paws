@@ -6,19 +6,12 @@
 \alias{paginate_sapply}
 \title{Paginate over an operation.}
 \usage{
-paginate(
-  Operation,
-  MaxRetries = 5,
-  PageSize = NULL,
-  MaxItems = NULL,
-  StartingToken = NULL
-)
+paginate(Operation, PageSize = NULL, MaxItems = NULL, StartingToken = NULL)
 
 paginate_lapply(
   Operation,
   FUN,
   ...,
-  MaxRetries = 5,
   PageSize = NULL,
   MaxItems = NULL,
   StartingToken = NULL
@@ -29,7 +22,6 @@ paginate_sapply(
   FUN,
   ...,
   simplify = TRUE,
-  MaxRetries = 5,
   PageSize = NULL,
   MaxItems = NULL,
   StartingToken = NULL
@@ -37,8 +29,6 @@ paginate_sapply(
 }
 \arguments{
 \item{Operation}{The operation for example an s3 operation: \code{svc$list_buckets()}}
-
-\item{MaxRetries}{Max number of retries call AWS API.}
 
 \item{PageSize}{The size of each page.}
 
