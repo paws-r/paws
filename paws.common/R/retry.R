@@ -36,17 +36,17 @@ standard_retry_handler <- function(request) {
   request <- unmarshal_error(request)
   error <- aws_error(request[["error"]])
   retries <- request[["config"]][["max_retries"]]
+  exit_retries <- retries + 1
 
   # If error is not retryable raise error
-  if (!check_if_retryable(error)) {
+  if (!check_if_retryable(error) || retries == 0) {
     stop(error)
   } else {
     # initial backoff
-    exp_back_off(error, 1, retries)
+    exp_back_off(error, 1, exit_retries)
   }
 
   # retry api call
-  exit_retries <- retries + 1
   for (i in seq.int(2, exit_retries)) {
     tryCatch({
       request <- sign(request)
