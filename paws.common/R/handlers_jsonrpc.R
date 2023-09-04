@@ -35,7 +35,7 @@ jsonrpc_unmarshal <- function(request) {
   body <- request$http_response$body
   if (data_filled(request) && length(body) > 0) {
     data <- decode_json(body)
-    request$data <- json_parse(data, request$data)
+    request$data <- tag_del(json_parse(data, request$data))
   }
   return(request)
 }
