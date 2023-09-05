@@ -22,18 +22,18 @@ message. (You can also specify both.)
 
 Amazon SES does not support the SMTPUTF8 extension, as described
 in\href{https://datatracker.ietf.org/doc/html/rfc6531}{RFC6531}. For this
-reason, the \emph{local part} of a source email address (the part of the
-email address that precedes the @ sign) may only contain \href{https://en.wikipedia.org/wiki/Email_address#Local-part}{7-bit ASCII characters}. If
-the \emph{domain part} of an address (the part after the @ sign) contains
-non-ASCII characters, they must be encoded using Punycode, as described
-in \href{https://datatracker.ietf.org/doc/html/rfc3492.html}{RFC3492}. The
-sender name (also known as the \emph{friendly name}) may contain non-ASCII
-characters. These characters must be encoded using MIME encoded-word
-syntax, as described in \href{https://datatracker.ietf.org/doc/html/rfc2047}{RFC 2047}. MIME encoded-word
-syntax uses the following form: \verb{=?charset?encoding?encoded-text?=}.
+reason, the email address string must be 7-bit ASCII. If you want to
+send to or from email addresses that contain Unicode characters in the
+domain part of an address, you must encode the domain using Punycode.
+Punycode is not permitted in the local part of the email address (the
+part before the @ sign) nor in the "friendly from" name. If you want to
+use Unicode characters in the "friendly from" name, you must encode the
+"friendly from" name using MIME encoded-word syntax, as described in
+\href{https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html}{Sending raw email using the Amazon SES API}. For
+more information about Punycode, see \href{https://datatracker.ietf.org/doc/html/rfc3492}{RFC 3492}.
 
 If you specify the \code{Source} parameter and have feedback forwarding
-enabled, then bounces and complaints will be sent to this email address.
+enabled, then bounces and complaints are sent to this email address.
 This takes precedence over any Return-Path header that you might include
 in the raw text of the message.}
 
@@ -48,7 +48,7 @@ line.
 \item All of the required header fields must be present in the message.
 \item Each part of a multipart MIME message must be formatted properly.
 \item Attachments must be of a content type that Amazon SES supports. For
-a list on unsupported content types, see \href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Unsupported Attachment Types} in
+a list on unsupported content types, see \href{https://docs.aws.amazon.com/ses/latest/dg/mime-types.html}{Unsupported Attachment Types} in
 the \emph{Amazon SES Developer Guide}.
 \item The entire message must be base64-encoded.
 \item If any of the MIME parts in your message contain content that is

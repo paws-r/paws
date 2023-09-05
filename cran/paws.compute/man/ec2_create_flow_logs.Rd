@@ -92,9 +92,7 @@ available fields, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/flo
 in the \emph{Amazon VPC User Guide} or \href{https://docs.aws.amazon.com/vpc/latest/tgw/tgw-flow-logs.html#flow-log-records}{Transit Gateway Flow Log records}
 in the \emph{Amazon Web Services Transit Gateway Guide}.
 
-Specify the fields using the \verb{$\{field-id\}} format, separated by spaces.
-For the CLI, surround this parameter value with single quotes on Linux
-or double quotes on Windows.}
+Specify the fields using the \verb{$\{field-id\}} format, separated by spaces.}
 
 \item{TagSpecifications}{The tags to apply to the flow logs.}
 

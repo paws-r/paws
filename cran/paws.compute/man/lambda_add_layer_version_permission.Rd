@@ -40,7 +40,7 @@ this option to avoid modifying a policy that has changed since you last
 read it.}
 }
 \description{
-Adds permissions to the resource-based policy of a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{Lambda layer}. Use this action to grant layer usage permission to other accounts. You can grant permission to a single account, all accounts in an organization, or all Amazon Web Services accounts.
+Adds permissions to the resource-based policy of a version of an \href{https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html}{Lambda layer}. Use this action to grant layer usage permission to other accounts. You can grant permission to a single account, all accounts in an organization, or all Amazon Web Services accounts.
 
 See \url{https://www.paws-r-sdk.com/docs/lambda_add_layer_version_permission/} for full documentation.
 }

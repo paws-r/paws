@@ -5999,7 +5999,7 @@ elasticache_failover_global_replication_group <- function(GlobalReplicationGroup
 #'   ApplyImmediately)
 #'
 #' @param GlobalReplicationGroupId &#91;required&#93; The name of the Global datastore
-#' @param NodeGroupCount &#91;required&#93; The number of node groups you wish to add
+#' @param NodeGroupCount &#91;required&#93; Total number of node groups you want
 #' @param RegionalConfigurations Describes the replication group IDs, the Amazon regions where they are
 #' stored and the shard configuration for each that comprise the Global
 #' datastore
@@ -8904,3 +8904,185 @@ elasticache_test_failover <- function(ReplicationGroupId, NodeGroupId) {
   return(response)
 }
 .elasticache$operations$test_failover <- elasticache_test_failover
+
+#' Async API to test connection between source and target replication group
+#'
+#' @description
+#' Async API to test connection between source and target replication
+#' group.
+#'
+#' @usage
+#' elasticache_test_migration(ReplicationGroupId, CustomerNodeEndpointList)
+#'
+#' @param ReplicationGroupId &#91;required&#93; The ID of the replication group to which data is to be migrated.
+#' @param CustomerNodeEndpointList &#91;required&#93; List of endpoints from which data should be migrated. List should have
+#' only one element.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ReplicationGroup = list(
+#'     ReplicationGroupId = "string",
+#'     Description = "string",
+#'     GlobalReplicationGroupInfo = list(
+#'       GlobalReplicationGroupId = "string",
+#'       GlobalReplicationGroupMemberRole = "string"
+#'     ),
+#'     Status = "string",
+#'     PendingModifiedValues = list(
+#'       PrimaryClusterId = "string",
+#'       AutomaticFailoverStatus = "enabled"|"disabled",
+#'       Resharding = list(
+#'         SlotMigration = list(
+#'           ProgressPercentage = 123.0
+#'         )
+#'       ),
+#'       AuthTokenStatus = "SETTING"|"ROTATING",
+#'       UserGroups = list(
+#'         UserGroupIdsToAdd = list(
+#'           "string"
+#'         ),
+#'         UserGroupIdsToRemove = list(
+#'           "string"
+#'         )
+#'       ),
+#'       LogDeliveryConfigurations = list(
+#'         list(
+#'           LogType = "slow-log"|"engine-log",
+#'           DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'           DestinationDetails = list(
+#'             CloudWatchLogsDetails = list(
+#'               LogGroup = "string"
+#'             ),
+#'             KinesisFirehoseDetails = list(
+#'               DeliveryStream = "string"
+#'             )
+#'           ),
+#'           LogFormat = "text"|"json"
+#'         )
+#'       ),
+#'       TransitEncryptionEnabled = TRUE|FALSE,
+#'       TransitEncryptionMode = "preferred"|"required",
+#'       ClusterMode = "enabled"|"disabled"|"compatible"
+#'     ),
+#'     MemberClusters = list(
+#'       "string"
+#'     ),
+#'     NodeGroups = list(
+#'       list(
+#'         NodeGroupId = "string",
+#'         Status = "string",
+#'         PrimaryEndpoint = list(
+#'           Address = "string",
+#'           Port = 123
+#'         ),
+#'         ReaderEndpoint = list(
+#'           Address = "string",
+#'           Port = 123
+#'         ),
+#'         Slots = "string",
+#'         NodeGroupMembers = list(
+#'           list(
+#'             CacheClusterId = "string",
+#'             CacheNodeId = "string",
+#'             ReadEndpoint = list(
+#'               Address = "string",
+#'               Port = 123
+#'             ),
+#'             PreferredAvailabilityZone = "string",
+#'             PreferredOutpostArn = "string",
+#'             CurrentRole = "string"
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     SnapshottingClusterId = "string",
+#'     AutomaticFailover = "enabled"|"disabled"|"enabling"|"disabling",
+#'     MultiAZ = "enabled"|"disabled",
+#'     ConfigurationEndpoint = list(
+#'       Address = "string",
+#'       Port = 123
+#'     ),
+#'     SnapshotRetentionLimit = 123,
+#'     SnapshotWindow = "string",
+#'     ClusterEnabled = TRUE|FALSE,
+#'     CacheNodeType = "string",
+#'     AuthTokenEnabled = TRUE|FALSE,
+#'     AuthTokenLastModifiedDate = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     TransitEncryptionEnabled = TRUE|FALSE,
+#'     AtRestEncryptionEnabled = TRUE|FALSE,
+#'     MemberClustersOutpostArns = list(
+#'       "string"
+#'     ),
+#'     KmsKeyId = "string",
+#'     ARN = "string",
+#'     UserGroupIds = list(
+#'       "string"
+#'     ),
+#'     LogDeliveryConfigurations = list(
+#'       list(
+#'         LogType = "slow-log"|"engine-log",
+#'         DestinationType = "cloudwatch-logs"|"kinesis-firehose",
+#'         DestinationDetails = list(
+#'           CloudWatchLogsDetails = list(
+#'             LogGroup = "string"
+#'           ),
+#'           KinesisFirehoseDetails = list(
+#'             DeliveryStream = "string"
+#'           )
+#'         ),
+#'         LogFormat = "text"|"json",
+#'         Status = "active"|"enabling"|"modifying"|"disabling"|"error",
+#'         Message = "string"
+#'       )
+#'     ),
+#'     ReplicationGroupCreateTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     DataTiering = "enabled"|"disabled",
+#'     AutoMinorVersionUpgrade = TRUE|FALSE,
+#'     NetworkType = "ipv4"|"ipv6"|"dual_stack",
+#'     IpDiscovery = "ipv4"|"ipv6",
+#'     TransitEncryptionMode = "preferred"|"required",
+#'     ClusterMode = "enabled"|"disabled"|"compatible"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$test_migration(
+#'   ReplicationGroupId = "string",
+#'   CustomerNodeEndpointList = list(
+#'     list(
+#'       Address = "string",
+#'       Port = 123
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname elasticache_test_migration
+#'
+#' @aliases elasticache_test_migration
+elasticache_test_migration <- function(ReplicationGroupId, CustomerNodeEndpointList) {
+  op <- new_operation(
+    name = "TestMigration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .elasticache$test_migration_input(ReplicationGroupId = ReplicationGroupId, CustomerNodeEndpointList = CustomerNodeEndpointList)
+  output <- .elasticache$test_migration_output()
+  config <- get_config()
+  svc <- .elasticache$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.elasticache$operations$test_migration <- elasticache_test_migration

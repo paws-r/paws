@@ -3,7 +3,7 @@
 \name{ses_list_configuration_sets}
 \alias{ses_list_configuration_sets}
 \title{Provides a list of the configuration sets associated with your Amazon
-SES account in the current AWS Region}
+SES account in the current Amazon Web Services Region}
 \usage{
 ses_list_configuration_sets(NextToken = NULL, MaxItems = NULL)
 }
@@ -15,7 +15,7 @@ position of the configuration set in the configuration set list.}
 \item{MaxItems}{The number of configuration sets to return.}
 }
 \description{
-Provides a list of the configuration sets associated with your Amazon SES account in the current AWS Region. For information about using configuration sets, see \href{https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html}{Monitoring Your Amazon SES Sending Activity} in the \emph{Amazon SES Developer Guide.}
+Provides a list of the configuration sets associated with your Amazon SES account in the current Amazon Web Services Region. For information about using configuration sets, see \href{https://docs.aws.amazon.com/ses/latest/dg/monitor-sending-activity.html}{Monitoring Your Amazon SES Sending Activity} in the \emph{Amazon SES Developer Guide.}
 
 See \url{https://www.paws-r-sdk.com/docs/ses_list_configuration_sets/} for full documentation.
 }

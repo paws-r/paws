@@ -28,6 +28,10 @@ test_that("list_email_templates", {
   expect_error(svc$list_email_templates(), NA)
 })
 
+test_that("list_export_jobs", {
+  expect_error(svc$list_export_jobs(), NA)
+})
+
 test_that("list_import_jobs", {
   expect_error(svc$list_import_jobs(), NA)
 })

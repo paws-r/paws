@@ -12,7 +12,8 @@ rds_describe_db_cluster_snapshots(
   MaxRecords = NULL,
   Marker = NULL,
   IncludeShared = NULL,
-  IncludePublic = NULL
+  IncludePublic = NULL,
+  DbClusterResourceId = NULL
 )
 }
 \arguments{
@@ -107,6 +108,8 @@ account. By default, the public snapshots are not included.
 You can share a manual DB cluster snapshot as public by using the
 \code{\link[=rds_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute}}
 API action.}
+
+\item{DbClusterResourceId}{A specific DB cluster resource ID to describe.}
 }
 \description{
 Returns information about DB cluster snapshots. This API action supports pagination.

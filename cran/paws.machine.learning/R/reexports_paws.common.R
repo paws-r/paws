@@ -10,6 +10,10 @@ paws.common::paginate_lapply
 #' @export
 paws.common::paginate_sapply
 
+#' @importFrom paws.common list_paginators
+#' @export
+paws.common::list_paginators
+
 #' @importFrom paws.common config
 #' @export
 paws.common::config

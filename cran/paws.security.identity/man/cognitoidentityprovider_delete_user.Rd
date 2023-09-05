@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_delete_user}
 \alias{cognitoidentityprovider_delete_user}
-\title{Allows a user to delete himself or herself}
+\title{Allows a user to delete their own user profile}
 \usage{
 cognitoidentityprovider_delete_user(AccessToken)
 }
@@ -11,7 +11,7 @@ cognitoidentityprovider_delete_user(AccessToken)
 profile you want to delete.}
 }
 \description{
-Allows a user to delete himself or herself.
+Allows a user to delete their own user profile.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_delete_user/} for full documentation.
 }

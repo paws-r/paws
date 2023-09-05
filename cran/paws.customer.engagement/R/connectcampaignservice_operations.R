@@ -10,23 +10,23 @@ NULL
 #'
 #' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_create_campaign/](https://www.paws-r-sdk.com/docs/connectcampaignservice_create_campaign/) for full documentation.
 #'
+#' @param name &#91;required&#93; 
 #' @param connectInstanceId &#91;required&#93; 
 #' @param dialerConfig &#91;required&#93; 
-#' @param name &#91;required&#93; 
 #' @param outboundCallConfig &#91;required&#93; 
 #' @param tags 
 #'
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_create_campaign
-connectcampaignservice_create_campaign <- function(connectInstanceId, dialerConfig, name, outboundCallConfig, tags = NULL) {
+connectcampaignservice_create_campaign <- function(name, connectInstanceId, dialerConfig, outboundCallConfig, tags = NULL) {
   op <- new_operation(
     name = "CreateCampaign",
     http_method = "PUT",
     http_path = "/campaigns",
     paginator = list()
   )
-  input <- .connectcampaignservice$create_campaign_input(connectInstanceId = connectInstanceId, dialerConfig = dialerConfig, name = name, outboundCallConfig = outboundCallConfig, tags = tags)
+  input <- .connectcampaignservice$create_campaign_input(name = name, connectInstanceId = connectInstanceId, dialerConfig = dialerConfig, outboundCallConfig = outboundCallConfig, tags = tags)
   output <- .connectcampaignservice$create_campaign_output()
   config <- get_config()
   svc <- .connectcampaignservice$service(config)
@@ -277,21 +277,21 @@ connectcampaignservice_get_instance_onboarding_job_status <- function(connectIns
 #'
 #' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_list_campaigns/](https://www.paws-r-sdk.com/docs/connectcampaignservice_list_campaigns/) for full documentation.
 #'
-#' @param filters 
 #' @param maxResults 
 #' @param nextToken 
+#' @param filters 
 #'
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_list_campaigns
-connectcampaignservice_list_campaigns <- function(filters = NULL, maxResults = NULL, nextToken = NULL) {
+connectcampaignservice_list_campaigns <- function(maxResults = NULL, nextToken = NULL, filters = NULL) {
   op <- new_operation(
     name = "ListCampaigns",
     http_method = "POST",
     http_path = "/campaigns-summary",
     paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "campaignSummaryList")
   )
-  input <- .connectcampaignservice$list_campaigns_input(filters = filters, maxResults = maxResults, nextToken = nextToken)
+  input <- .connectcampaignservice$list_campaigns_input(maxResults = maxResults, nextToken = nextToken, filters = filters)
   output <- .connectcampaignservice$list_campaigns_output()
   config <- get_config()
   svc <- .connectcampaignservice$service(config)
@@ -366,20 +366,20 @@ connectcampaignservice_pause_campaign <- function(id) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_put_dial_request_batch/](https://www.paws-r-sdk.com/docs/connectcampaignservice_put_dial_request_batch/) for full documentation.
 #'
-#' @param dialRequests &#91;required&#93; 
 #' @param id &#91;required&#93; 
+#' @param dialRequests &#91;required&#93; 
 #'
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_put_dial_request_batch
-connectcampaignservice_put_dial_request_batch <- function(dialRequests, id) {
+connectcampaignservice_put_dial_request_batch <- function(id, dialRequests) {
   op <- new_operation(
     name = "PutDialRequestBatch",
     http_method = "PUT",
     http_path = "/campaigns/{id}/dial-requests",
     paginator = list()
   )
-  input <- .connectcampaignservice$put_dial_request_batch_input(dialRequests = dialRequests, id = id)
+  input <- .connectcampaignservice$put_dial_request_batch_input(id = id, dialRequests = dialRequests)
   output <- .connectcampaignservice$put_dial_request_batch_output()
   config <- get_config()
   svc <- .connectcampaignservice$service(config)
@@ -573,20 +573,20 @@ connectcampaignservice_untag_resource <- function(arn, tagKeys) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_update_campaign_dialer_config/](https://www.paws-r-sdk.com/docs/connectcampaignservice_update_campaign_dialer_config/) for full documentation.
 #'
-#' @param dialerConfig &#91;required&#93; 
 #' @param id &#91;required&#93; 
+#' @param dialerConfig &#91;required&#93; 
 #'
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_update_campaign_dialer_config
-connectcampaignservice_update_campaign_dialer_config <- function(dialerConfig, id) {
+connectcampaignservice_update_campaign_dialer_config <- function(id, dialerConfig) {
   op <- new_operation(
     name = "UpdateCampaignDialerConfig",
     http_method = "POST",
     http_path = "/campaigns/{id}/dialer-config",
     paginator = list()
   )
-  input <- .connectcampaignservice$update_campaign_dialer_config_input(dialerConfig = dialerConfig, id = id)
+  input <- .connectcampaignservice$update_campaign_dialer_config_input(id = id, dialerConfig = dialerConfig)
   output <- .connectcampaignservice$update_campaign_dialer_config_output()
   config <- get_config()
   svc <- .connectcampaignservice$service(config)
@@ -633,22 +633,22 @@ connectcampaignservice_update_campaign_name <- function(id, name) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/connectcampaignservice_update_campaign_outbound_call_config/](https://www.paws-r-sdk.com/docs/connectcampaignservice_update_campaign_outbound_call_config/) for full documentation.
 #'
-#' @param answerMachineDetectionConfig 
+#' @param id &#91;required&#93; 
 #' @param connectContactFlowId 
 #' @param connectSourcePhoneNumber 
-#' @param id &#91;required&#93; 
+#' @param answerMachineDetectionConfig 
 #'
 #' @keywords internal
 #'
 #' @rdname connectcampaignservice_update_campaign_outbound_call_config
-connectcampaignservice_update_campaign_outbound_call_config <- function(answerMachineDetectionConfig = NULL, connectContactFlowId = NULL, connectSourcePhoneNumber = NULL, id) {
+connectcampaignservice_update_campaign_outbound_call_config <- function(id, connectContactFlowId = NULL, connectSourcePhoneNumber = NULL, answerMachineDetectionConfig = NULL) {
   op <- new_operation(
     name = "UpdateCampaignOutboundCallConfig",
     http_method = "POST",
     http_path = "/campaigns/{id}/outbound-call-config",
     paginator = list()
   )
-  input <- .connectcampaignservice$update_campaign_outbound_call_config_input(answerMachineDetectionConfig = answerMachineDetectionConfig, connectContactFlowId = connectContactFlowId, connectSourcePhoneNumber = connectSourcePhoneNumber, id = id)
+  input <- .connectcampaignservice$update_campaign_outbound_call_config_input(id = id, connectContactFlowId = connectContactFlowId, connectSourcePhoneNumber = connectSourcePhoneNumber, answerMachineDetectionConfig = answerMachineDetectionConfig)
   output <- .connectcampaignservice$update_campaign_outbound_call_config_output()
   config <- get_config()
   svc <- .connectcampaignservice$service(config)

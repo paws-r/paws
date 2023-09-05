@@ -15,25 +15,25 @@ resiliencehub_delete_app_version_resource(
 )
 }
 \arguments{
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
-format for this ARN is:
+\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format
+for this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
 information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference} guide.}
 
-\item{awsAccountId}{The Amazon Web Services account that owns the physical resource.}
+\item{awsAccountId}{Amazon Web Services account that owns the physical resource.}
 
-\item{awsRegion}{The Amazon Web Services region that owns the physical resource.}
+\item{awsRegion}{Amazon Web Services region that owns the physical resource.}
 
 \item{clientToken}{Used for an idempotency token. A client token is a unique,
 case-sensitive string of up to 64 ASCII characters. You should not reuse
 the same client token for other API requests.}
 
-\item{logicalResourceId}{The logical identifier of the resource.}
+\item{logicalResourceId}{Logical identifier of the resource.}
 
-\item{physicalResourceId}{The physical identifier of the resource.}
+\item{physicalResourceId}{Physical identifier of the resource.}
 
-\item{resourceName}{The name of the resource.}
+\item{resourceName}{Name of the resource.}
 }
 \description{
 Deletes a resource from the Resilience Hub application.

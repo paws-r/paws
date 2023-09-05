@@ -16,8 +16,8 @@ resiliencehub_list_app_assessments(
 )
 }
 \arguments{
-\item{appArn}{The Amazon Resource Name (ARN) of the Resilience Hub application. The
-format for this ARN is:
+\item{appArn}{Amazon Resource Name (ARN) of the Resilience Hub application. The format
+for this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
 information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference} guide.}
@@ -31,9 +31,9 @@ in the \emph{AWS General Reference} guide.}
 \item{invoker}{Specifies the entity that invoked a specific assessment, either a \code{User}
 or the \code{System}.}
 
-\item{maxResults}{The maximum number of results to include in the response. If more
-results exist than the specified \code{MaxResults} value, a token is included
-in the response so that the remaining results can be retrieved.}
+\item{maxResults}{Maximum number of results to include in the response. If more results
+exist than the specified \code{MaxResults} value, a token is included in the
+response so that the remaining results can be retrieved.}
 
 \item{nextToken}{Null, or the token from a previous call to get the next set of results.}
 

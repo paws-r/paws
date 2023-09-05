@@ -11,7 +11,8 @@ quicksight_create_folder(
   FolderType = NULL,
   ParentFolderArn = NULL,
   Permissions = NULL,
-  Tags = NULL
+  Tags = NULL,
+  SharingModel = NULL
 )
 }
 \arguments{
@@ -35,6 +36,9 @@ permissions of a folder.
 To specify no permissions, omit \code{Permissions}.}
 
 \item{Tags}{Tags for the folder.}
+
+\item{SharingModel}{An optional parameter that determines the sharing scope of the folder.
+The default value for this parameter is \code{ACCOUNT}.}
 }
 \description{
 Creates an empty shared folder.

@@ -1070,9 +1070,10 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' # This example creates an Auto Scaling group.
 #' svc$create_auto_scaling_group(
 #'   AutoScalingGroupName = "my-auto-scaling-group",
+#'   DefaultInstanceWarmup = 120L,
 #'   LaunchTemplate = list(
 #'     LaunchTemplateName = "my-template-for-auto-scaling",
-#'     Version = "$Latest"
+#'     Version = "$Default"
 #'   ),
 #'   MaxInstanceLifetime = 2592000L,
 #'   MaxSize = 3L,
@@ -1088,7 +1089,7 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #'   HealthCheckType = "ELB",
 #'   LaunchTemplate = list(
 #'     LaunchTemplateName = "my-template-for-auto-scaling",
-#'     Version = "$Latest"
+#'     Version = "$Default"
 #'   ),
 #'   MaxSize = 3L,
 #'   MinSize = 1L,
@@ -1111,19 +1112,19 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #'     InstancesDistribution = list(
 #'       OnDemandBaseCapacity = 1L,
 #'       OnDemandPercentageAboveBaseCapacity = 50L,
-#'       SpotAllocationStrategy = "capacity-optimized"
+#'       SpotAllocationStrategy = "price-capacity-optimized"
 #'     ),
 #'     LaunchTemplate = list(
 #'       LaunchTemplateSpecification = list(
 #'         LaunchTemplateName = "my-launch-template-for-x86",
-#'         Version = "$Latest"
+#'         Version = "$Default"
 #'       ),
 #'       Overrides = list(
 #'         list(
 #'           InstanceType = "c6g.large",
 #'           LaunchTemplateSpecification = list(
 #'             LaunchTemplateName = "my-launch-template-for-arm",
-#'             Version = "$Latest"
+#'             Version = "$Default"
 #'           )
 #'         ),
 #'         list(
@@ -1131,6 +1132,47 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #'         ),
 #'         list(
 #'           InstanceType = "c5a.large"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   VPCZoneIdentifier = "subnet-057fa0918fEXAMPLE, subnet-610acd08EXAMPLE"
+#' )
+#' 
+#' # This example creates an Auto Scaling group using attribute-based
+#' # instance type selection. It requires the instance types to have a
+#' # minimum of four vCPUs and a maximum of eight vCPUs, a minimum of 16,384
+#' # MiB of memory, and an Intel manufactured CPU.
+#' svc$create_auto_scaling_group(
+#'   AutoScalingGroupName = "my-asg",
+#'   DesiredCapacity = 4L,
+#'   DesiredCapacityTypes = "units",
+#'   MaxSize = 100L,
+#'   MinSize = 0L,
+#'   MixedInstancesPolicy = list(
+#'     InstancesDistribution = list(
+#'       OnDemandPercentageAboveBaseCapacity = 50L,
+#'       SpotAllocationStrategy = "price-capacity-optimized"
+#'     ),
+#'     LaunchTemplate = list(
+#'       LaunchTemplateSpecification = list(
+#'         LaunchTemplateName = "my-template-for-auto-scaling",
+#'         Version = "$Default"
+#'       ),
+#'       Overrides = list(
+#'         list(
+#'           InstanceRequirements = list(
+#'             CpuManufacturers = list(
+#'               "intel"
+#'             ),
+#'             MemoryMiB = list(
+#'               Min = 16384L
+#'             ),
+#'             VCpuCount = list(
+#'               Max = 8L,
+#'               Min = 4L
+#'             )
+#'           )
 #'         )
 #'       )
 #'     )
@@ -2608,7 +2650,12 @@ autoscaling_describe_auto_scaling_notification_types <- function() {
 #'         SkipMatching = TRUE|FALSE,
 #'         AutoRollback = TRUE|FALSE,
 #'         ScaleInProtectedInstances = "Refresh"|"Ignore"|"Wait",
-#'         StandbyInstances = "Terminate"|"Ignore"|"Wait"
+#'         StandbyInstances = "Terminate"|"Ignore"|"Wait",
+#'         AlarmSpecification = list(
+#'           Alarms = list(
+#'             "string"
+#'           )
+#'         )
 #'       ),
 #'       DesiredConfiguration = list(
 #'         LaunchTemplate = list(
@@ -6656,6 +6703,8 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #' 
 #' -   Checkpoints
 #' 
+#' -   CloudWatch alarms
+#' 
 #' -   Skip matching
 #'
 #' @return
@@ -6784,7 +6833,12 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #'     SkipMatching = TRUE|FALSE,
 #'     AutoRollback = TRUE|FALSE,
 #'     ScaleInProtectedInstances = "Refresh"|"Ignore"|"Wait",
-#'     StandbyInstances = "Terminate"|"Ignore"|"Wait"
+#'     StandbyInstances = "Terminate"|"Ignore"|"Wait",
+#'     AlarmSpecification = list(
+#'       Alarms = list(
+#'         "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -6802,9 +6856,14 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #'     )
 #'   ),
 #'   Preferences = list(
-#'     InstanceWarmup = 400L,
-#'     MinHealthyPercentage = 90L,
-#'     SkipMatching = TRUE
+#'     AlarmSpecification = list(
+#'       Alarms = list(
+#'         "my-alarm"
+#'       )
+#'     ),
+#'     AutoRollback = TRUE,
+#'     InstanceWarmup = 200L,
+#'     MinHealthyPercentage = 90L
 #'   )
 #' )
 #' }

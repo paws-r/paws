@@ -33,7 +33,8 @@ registry, the tasks in this task set will have the
 \code{ECS_TASK_SET_EXTERNAL_ID} Cloud Map attribute set to the provided
 value.}
 
-\item{taskDefinition}{[required] The task definition for the tasks in the task set to use.}
+\item{taskDefinition}{[required] The task definition for the tasks in the task set to use. If a revision
+isn't specified, the latest \code{ACTIVE} revision is used.}
 
 \item{networkConfiguration}{An object representing the network configuration for a task set.}
 

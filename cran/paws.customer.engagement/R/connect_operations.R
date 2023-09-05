@@ -386,6 +386,44 @@ connect_associate_security_key <- function(InstanceId, Key) {
 }
 .connect$operations$associate_security_key <- connect_associate_security_key
 
+#' Associates an agent with a traffic distribution group
+#'
+#' @description
+#' Associates an agent with a traffic distribution group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connect_associate_traffic_distribution_group_user/](https://www.paws-r-sdk.com/docs/connect_associate_traffic_distribution_group_user/) for full documentation.
+#'
+#' @param TrafficDistributionGroupId &#91;required&#93; The identifier of the traffic distribution group. This can be the ID or
+#' the ARN if the API is being called in the Region where the traffic
+#' distribution group was created. The ARN must be provided if the call is
+#' from the replicated Region.
+#' @param UserId &#91;required&#93; The identifier of the user account. This can be the ID or the ARN of the
+#' user.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#'
+#' @keywords internal
+#'
+#' @rdname connect_associate_traffic_distribution_group_user
+connect_associate_traffic_distribution_group_user <- function(TrafficDistributionGroupId, UserId, InstanceId) {
+  op <- new_operation(
+    name = "AssociateTrafficDistributionGroupUser",
+    http_method = "PUT",
+    http_path = "/traffic-distribution-group/{TrafficDistributionGroupId}/user",
+    paginator = list()
+  )
+  input <- .connect$associate_traffic_distribution_group_user_input(TrafficDistributionGroupId = TrafficDistributionGroupId, UserId = UserId, InstanceId = InstanceId)
+  output <- .connect$associate_traffic_distribution_group_user_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$associate_traffic_distribution_group_user <- connect_associate_traffic_distribution_group_user
+
 #' Claims an available phone number to your Amazon Connect instance or
 #' traffic distribution group
 #'
@@ -901,18 +939,21 @@ connect_create_quick_connect <- function(InstanceId, Name, Description = NULL, Q
 #' for this routing profile.
 #' @param Tags The tags used to organize, track, or control access for this resource.
 #' For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.
+#' @param AgentAvailabilityTimer Whether agents with this routing profile will have their routing order
+#' calculated based on *longest idle time* or *time since their last
+#' inbound contact*.
 #'
 #' @keywords internal
 #'
 #' @rdname connect_create_routing_profile
-connect_create_routing_profile <- function(InstanceId, Name, Description, DefaultOutboundQueueId, QueueConfigs = NULL, MediaConcurrencies, Tags = NULL) {
+connect_create_routing_profile <- function(InstanceId, Name, Description, DefaultOutboundQueueId, QueueConfigs = NULL, MediaConcurrencies, Tags = NULL, AgentAvailabilityTimer = NULL) {
   op <- new_operation(
     name = "CreateRoutingProfile",
     http_method = "PUT",
     http_path = "/routing-profiles/{InstanceId}",
     paginator = list()
   )
-  input <- .connect$create_routing_profile_input(InstanceId = InstanceId, Name = Name, Description = Description, DefaultOutboundQueueId = DefaultOutboundQueueId, QueueConfigs = QueueConfigs, MediaConcurrencies = MediaConcurrencies, Tags = Tags)
+  input <- .connect$create_routing_profile_input(InstanceId = InstanceId, Name = Name, Description = Description, DefaultOutboundQueueId = DefaultOutboundQueueId, QueueConfigs = QueueConfigs, MediaConcurrencies = MediaConcurrencies, Tags = Tags, AgentAvailabilityTimer = AgentAvailabilityTimer)
   output <- .connect$create_routing_profile_output()
   config <- get_config()
   svc <- .connect$service(config)
@@ -2990,6 +3031,43 @@ connect_disassociate_security_key <- function(InstanceId, AssociationId) {
   return(response)
 }
 .connect$operations$disassociate_security_key <- connect_disassociate_security_key
+
+#' Disassociates an agent from a traffic distribution group
+#'
+#' @description
+#' Disassociates an agent from a traffic distribution group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connect_disassociate_traffic_distribution_group_user/](https://www.paws-r-sdk.com/docs/connect_disassociate_traffic_distribution_group_user/) for full documentation.
+#'
+#' @param TrafficDistributionGroupId &#91;required&#93; The identifier of the traffic distribution group. This can be the ID or
+#' the ARN if the API is being called in the Region where the traffic
+#' distribution group was created. The ARN must be provided if the call is
+#' from the replicated Region.
+#' @param UserId &#91;required&#93; The identifier for the user. This can be the ID or the ARN of the user.
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#'
+#' @keywords internal
+#'
+#' @rdname connect_disassociate_traffic_distribution_group_user
+connect_disassociate_traffic_distribution_group_user <- function(TrafficDistributionGroupId, UserId, InstanceId) {
+  op <- new_operation(
+    name = "DisassociateTrafficDistributionGroupUser",
+    http_method = "DELETE",
+    http_path = "/traffic-distribution-group/{TrafficDistributionGroupId}/user",
+    paginator = list()
+  )
+  input <- .connect$disassociate_traffic_distribution_group_user_input(TrafficDistributionGroupId = TrafficDistributionGroupId, UserId = UserId, InstanceId = InstanceId)
+  output <- .connect$disassociate_traffic_distribution_group_user_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$disassociate_traffic_distribution_group_user <- connect_disassociate_traffic_distribution_group_user
 
 #' Dismisses contacts from an agent’s CCP and returns the agent to an
 #' available state, which allows the agent to receive a new routed contact
@@ -5284,6 +5362,42 @@ connect_list_task_templates <- function(InstanceId, NextToken = NULL, MaxResults
 }
 .connect$operations$list_task_templates <- connect_list_task_templates
 
+#' Lists traffic distribution group users
+#'
+#' @description
+#' Lists traffic distribution group users.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connect_list_traffic_distribution_group_users/](https://www.paws-r-sdk.com/docs/connect_list_traffic_distribution_group_users/) for full documentation.
+#'
+#' @param TrafficDistributionGroupId &#91;required&#93; The identifier of the traffic distribution group. This can be the ID or
+#' the ARN if the API is being called in the Region where the traffic
+#' distribution group was created. The ARN must be provided if the call is
+#' from the replicated Region.
+#' @param MaxResults The maximum number of results to return per page.
+#' @param NextToken The token for the next set of results. Use the value returned in the
+#' previous response in the next request to retrieve the next set of
+#' results.
+#'
+#' @keywords internal
+#'
+#' @rdname connect_list_traffic_distribution_group_users
+connect_list_traffic_distribution_group_users <- function(TrafficDistributionGroupId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListTrafficDistributionGroupUsers",
+    http_method = "GET",
+    http_path = "/traffic-distribution-group/{TrafficDistributionGroupId}/user",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "TrafficDistributionGroupUserSummaryList")
+  )
+  input <- .connect$list_traffic_distribution_group_users_input(TrafficDistributionGroupId = TrafficDistributionGroupId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .connect$list_traffic_distribution_group_users_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$list_traffic_distribution_group_users <- connect_list_traffic_distribution_group_users
+
 #' Lists traffic distribution groups
 #'
 #' @description
@@ -6578,7 +6692,7 @@ connect_tag_resource <- function(resourceArn, tags) {
 #' in the Amazon Resource Name (ARN) of the instance.
 #' @param ContactId &#91;required&#93; The identifier of the contact in this instance of Amazon Connect.
 #' @param QueueId The identifier for the queue.
-#' @param UserId The identifier for the user.
+#' @param UserId The identifier for the user. This can be the ID or the ARN of the user.
 #' @param ContactFlowId &#91;required&#93; The identifier of the flow.
 #' @param ClientToken A unique, case-sensitive identifier that you provide to ensure the
 #' idempotency of the request. If not provided, the Amazon Web Services SDK
@@ -7515,6 +7629,44 @@ connect_update_quick_connect_name <- function(InstanceId, QuickConnectId, Name =
 }
 .connect$operations$update_quick_connect_name <- connect_update_quick_connect_name
 
+#' Whether agents with this routing profile will have their routing order
+#' calculated based on time since their last inbound contact or longest
+#' idle time
+#'
+#' @description
+#' Whether agents with this routing profile will have their routing order calculated based on *time since their last inbound contact* or *longest idle time*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/connect_update_routing_profile_agent_availability_timer/](https://www.paws-r-sdk.com/docs/connect_update_routing_profile_agent_availability_timer/) for full documentation.
+#'
+#' @param InstanceId &#91;required&#93; The identifier of the Amazon Connect instance. You can [find the
+#' instance
+#' ID](https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html)
+#' in the Amazon Resource Name (ARN) of the instance.
+#' @param RoutingProfileId &#91;required&#93; The identifier of the routing profile.
+#' @param AgentAvailabilityTimer &#91;required&#93; Whether agents with this routing profile will have their routing order
+#' calculated based on *time since their last inbound contact* or *longest
+#' idle time*.
+#'
+#' @keywords internal
+#'
+#' @rdname connect_update_routing_profile_agent_availability_timer
+connect_update_routing_profile_agent_availability_timer <- function(InstanceId, RoutingProfileId, AgentAvailabilityTimer) {
+  op <- new_operation(
+    name = "UpdateRoutingProfileAgentAvailabilityTimer",
+    http_method = "POST",
+    http_path = "/routing-profiles/{InstanceId}/{RoutingProfileId}/agent-availability-timer",
+    paginator = list()
+  )
+  input <- .connect$update_routing_profile_agent_availability_timer_input(InstanceId = InstanceId, RoutingProfileId = RoutingProfileId, AgentAvailabilityTimer = AgentAvailabilityTimer)
+  output <- .connect$update_routing_profile_agent_availability_timer_output()
+  config <- get_config()
+  svc <- .connect$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.connect$operations$update_routing_profile_agent_availability_timer <- connect_update_routing_profile_agent_availability_timer
+
 #' Updates the channels that agents can handle in the Contact Control Panel
 #' (CCP) for a routing profile
 #'
@@ -7797,18 +7949,21 @@ connect_update_task_template <- function(TaskTemplateId, InstanceId, Name = NULL
 #' distribution group was created. The ARN must be provided if the call is
 #' from the replicated Region.
 #' @param TelephonyConfig The distribution of traffic between the instance and its replica(s).
+#' @param SignInConfig The distribution of allowing signing in to the instance and its
+#' replica(s).
+#' @param AgentConfig The distribution of agents between the instance and its replica(s).
 #'
 #' @keywords internal
 #'
 #' @rdname connect_update_traffic_distribution
-connect_update_traffic_distribution <- function(Id, TelephonyConfig = NULL) {
+connect_update_traffic_distribution <- function(Id, TelephonyConfig = NULL, SignInConfig = NULL, AgentConfig = NULL) {
   op <- new_operation(
     name = "UpdateTrafficDistribution",
     http_method = "PUT",
     http_path = "/traffic-distribution/{Id}",
     paginator = list()
   )
-  input <- .connect$update_traffic_distribution_input(Id = Id, TelephonyConfig = TelephonyConfig)
+  input <- .connect$update_traffic_distribution_input(Id = Id, TelephonyConfig = TelephonyConfig, SignInConfig = SignInConfig, AgentConfig = AgentConfig)
   output <- .connect$update_traffic_distribution_output()
   config <- get_config()
   svc <- .connect$service(config)

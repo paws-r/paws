@@ -8,28 +8,49 @@ individual account setting has been specified}
 ecs_put_account_setting_default(name, value)
 }
 \arguments{
-\item{name}{[required] The resource name for which to modify the account setting. If
-\code{serviceLongArnFormat} is specified, the ARN for your Amazon ECS
-services is affected. If \code{taskLongArnFormat} is specified, the ARN and
-resource ID for your Amazon ECS tasks is affected. If
-\code{containerInstanceLongArnFormat} is specified, the ARN and resource ID
-for your Amazon ECS container instances is affected. If \code{awsvpcTrunking}
-is specified, the ENI limit for your Amazon ECS container instances is
-affected. If \code{containerInsights} is specified, the default setting for
+\item{name}{[required] The resource name for which to modify the account setting. If you
+specify \code{serviceLongArnFormat}, the ARN for your Amazon ECS services is
+affected. If you specify \code{taskLongArnFormat}, the ARN and resource ID
+for your Amazon ECS tasks is affected. If you specify
+\code{containerInstanceLongArnFormat}, the ARN and resource ID for your
+Amazon ECS container instances is affected. If you specify
+\code{awsvpcTrunking}, the ENI limit for your Amazon ECS container instances
+is affected. If you specify \code{containerInsights}, the default setting for
 Amazon Web Services CloudWatch Container Insights for your clusters is
-affected. If \code{tagResourceAuthorization} is specified, the opt-in option
+affected. If you specify \code{tagResourceAuthorization}, the opt-in option
 for tagging resources on creation is affected. For information about the
 opt-in timeline, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#tag-resources}{Tagging authorization timeline}
-in the \emph{Amazon ECS Developer Guide}.
+in the \emph{Amazon ECS Developer Guide}. If you specify
+\code{fargateTaskRetirementWaitPeriod}, the default wait time to retire a
+Fargate task due to required maintenance is affected.
 
 When you specify \code{fargateFIPSMode} for the \code{name} and \code{enabled} for the
 \code{value}, Fargate uses FIPS-140 compliant cryptographic algorithms on
 your tasks. For more information about FIPS-140 compliance with Fargate,
 see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-fips-compliance.html}{Amazon Web Services Fargate Federal Information Processing Standard (FIPS) 140-2 compliance}
-in the \emph{Amazon Elastic Container Service Developer Guide}.}
+in the \emph{Amazon Elastic Container Service Developer Guide}.
+
+When Amazon Web Services determines that a security or infrastructure
+update is needed for an Amazon ECS task hosted on Fargate, the tasks
+need to be stopped and new tasks launched to replace them. Use
+\code{fargateTaskRetirementWaitPeriod} to set the wait time to retire a
+Fargate task to the default. For information about the Fargate tasks
+maintenance, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-maintenance.html}{Amazon Web Services Fargate task maintenance}
+in the \emph{Amazon ECS Developer Guide}.}
 
 \item{value}{[required] The account setting value for the specified principal ARN. Accepted
-values are \code{enabled}, \code{disabled}, \code{on}, and \code{off}.}
+values are \code{enabled}, \code{disabled}, \code{on}, and \code{off}.
+
+When you specify \code{fargateTaskRetirementWaitPeriod} for the \code{name}, the
+following are the valid values:
+\itemize{
+\item \code{0} - immediately retire the tasks and patch Fargate
+
+There is no advanced notification. Your tasks are retired
+immediately, and Fargate is patched without any notification.
+\item \code{7} -wait 7 calendar days to retire the tasks and patch Fargate
+\item \code{14} - wait 14 calendar days to retire the tasks and patch Fargate
+}}
 }
 \description{
 Modifies an account setting for all users on an account for whom no individual account setting has been specified. Account settings are set on a per-Region basis.

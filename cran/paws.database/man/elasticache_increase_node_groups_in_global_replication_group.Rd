@@ -14,7 +14,7 @@ elasticache_increase_node_groups_in_global_replication_group(
 \arguments{
 \item{GlobalReplicationGroupId}{[required] The name of the Global datastore}
 
-\item{NodeGroupCount}{[required] The number of node groups you wish to add}
+\item{NodeGroupCount}{[required] Total number of node groups you want}
 
 \item{RegionalConfigurations}{Describes the replication group IDs, the Amazon regions where they are
 stored and the shard configuration for each that comprise the Global

@@ -14,7 +14,7 @@ License: Apache License (>= 2.0)
 URL: https://github.com/paws-r/paws
 BugReports: https://github.com/paws-r/paws/issues
 Imports: 
-    paws.common (>= 0.5.9)
+    paws.common (>= 0.6.0)
 Suggests: 
     testthat
 Encoding: UTF-8

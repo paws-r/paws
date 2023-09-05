@@ -15,7 +15,7 @@ NULL
 #' Guide](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/configuration-samples.html).
 #' The guide also contains [sample code for sending signed HTTP requests to
 #' the Elasticsearch
-#' APIs](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/request-signing.html).
+#' APIs](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/).
 #' 
 #' The endpoint for configuration service requests is region-specific:
 #' es.*region*.amazonaws.com. For example, es.us-east-1.amazonaws.com. For

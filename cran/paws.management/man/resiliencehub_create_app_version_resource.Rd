@@ -21,31 +21,31 @@ resiliencehub_create_app_version_resource(
 \arguments{
 \item{additionalInfo}{Currently, there is no supported additional information for resources.}
 
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
-format for this ARN is:
+\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format
+for this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
 information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference} guide.}
 
-\item{appComponents}{[required] The list of Application Components that this resource belongs to. If an
+\item{appComponents}{[required] List of Application Components that this resource belongs to. If an
 Application Component is not part of the Resilience Hub application, it
 will be added.}
 
-\item{awsAccountId}{The Amazon Web Services account that owns the physical resource.}
+\item{awsAccountId}{Amazon Web Services account that owns the physical resource.}
 
-\item{awsRegion}{The Amazon Web Services region that owns the physical resource.}
+\item{awsRegion}{Amazon Web Services region that owns the physical resource.}
 
 \item{clientToken}{Used for an idempotency token. A client token is a unique,
 case-sensitive string of up to 64 ASCII characters. You should not reuse
 the same client token for other API requests.}
 
-\item{logicalResourceId}{[required] The logical identifier of the resource.}
+\item{logicalResourceId}{[required] Logical identifier of the resource.}
 
-\item{physicalResourceId}{[required] The physical identifier of the resource.}
+\item{physicalResourceId}{[required] Physical identifier of the resource.}
 
-\item{resourceName}{The name of the resource.}
+\item{resourceName}{Name of the resource.}
 
-\item{resourceType}{[required] The type of resource.}
+\item{resourceType}{[required] Type of resource.}
 }
 \description{
 Adds a resource to the Resilience Hub application and assigns it to the specified Application Components. If you specify a new Application Component, Resilience Hub will automatically create the Application Component.

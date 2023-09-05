@@ -29,8 +29,8 @@ objective (RTO) and recovery point objective (RPO) in seconds.}
 
 \item{policyName}{[required] The name of the policy}
 
-\item{tags}{The tags assigned to the resource. A tag is a label that you assign to
-an Amazon Web Services resource. Each tag consists of a key/value pair.}
+\item{tags}{Tags assigned to the resource. A tag is a label that you assign to an
+Amazon Web Services resource. Each tag consists of a key/value pair.}
 
 \item{tier}{[required] The tier for this resiliency policy, ranging from the highest severity
 (\code{MissionCritical}) to lowest (\code{NonCritical}).}

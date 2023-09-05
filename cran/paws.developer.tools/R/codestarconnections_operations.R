@@ -3,18 +3,18 @@
 #' @include codestarconnections_service.R
 NULL
 
-#' Creates a connection that can then be given to other AWS services like
-#' CodePipeline so that it can access third-party code repositories
+#' Creates a connection that can then be given to other Amazon Web Services
+#' services like CodePipeline so that it can access third-party code
+#' repositories
 #'
 #' @description
-#' Creates a connection that can then be given to other AWS services like CodePipeline so that it can access third-party code repositories. The connection is in pending status until the third-party connection handshake is completed from the console.
+#' Creates a connection that can then be given to other Amazon Web Services services like CodePipeline so that it can access third-party code repositories. The connection is in pending status until the third-party connection handshake is completed from the console.
 #'
 #' See [https://www.paws-r-sdk.com/docs/codestarconnections_create_connection/](https://www.paws-r-sdk.com/docs/codestarconnections_create_connection/) for full documentation.
 #'
 #' @param ProviderType The name of the external provider where your third-party code repository
 #' is configured.
-#' @param ConnectionName &#91;required&#93; The name of the connection to be created. The name must be unique in the
-#' calling AWS account.
+#' @param ConnectionName &#91;required&#93; The name of the connection to be created.
 #' @param Tags The key-value pair to use when tagging the resource.
 #' @param HostArn The Amazon Resource Name (ARN) of the host associated with the
 #' connection to be created.
@@ -47,8 +47,7 @@ codestarconnections_create_connection <- function(ProviderType = NULL, Connectio
 #'
 #' See [https://www.paws-r-sdk.com/docs/codestarconnections_create_host/](https://www.paws-r-sdk.com/docs/codestarconnections_create_host/) for full documentation.
 #'
-#' @param Name &#91;required&#93; The name of the host to be created. The name must be unique in the
-#' calling AWS account.
+#' @param Name &#91;required&#93; The name of the host to be created.
 #' @param ProviderType &#91;required&#93; The name of the installed provider to be associated with your
 #' connection. The host resource represents the infrastructure where your
 #' provider type is installed. The valid provider type is GitHub Enterprise
@@ -334,10 +333,10 @@ codestarconnections_tag_resource <- function(ResourceArn, Tags) {
 }
 .codestarconnections$operations$tag_resource <- codestarconnections_tag_resource
 
-#' Removes tags from an AWS resource
+#' Removes tags from an Amazon Web Services resource
 #'
 #' @description
-#' Removes tags from an AWS resource.
+#' Removes tags from an Amazon Web Services resource.
 #'
 #' See [https://www.paws-r-sdk.com/docs/codestarconnections_untag_resource/](https://www.paws-r-sdk.com/docs/codestarconnections_untag_resource/) for full documentation.
 #'

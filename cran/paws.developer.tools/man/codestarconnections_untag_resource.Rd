@@ -2,7 +2,7 @@
 % Please edit documentation in R/codestarconnections_operations.R
 \name{codestarconnections_untag_resource}
 \alias{codestarconnections_untag_resource}
-\title{Removes tags from an AWS resource}
+\title{Removes tags from an Amazon Web Services resource}
 \usage{
 codestarconnections_untag_resource(ResourceArn, TagKeys)
 }
@@ -12,7 +12,7 @@ codestarconnections_untag_resource(ResourceArn, TagKeys)
 \item{TagKeys}{[required] The list of keys for the tags to be removed from the resource.}
 }
 \description{
-Removes tags from an AWS resource.
+Removes tags from an Amazon Web Services resource.
 
 See \url{https://www.paws-r-sdk.com/docs/codestarconnections_untag_resource/} for full documentation.
 }

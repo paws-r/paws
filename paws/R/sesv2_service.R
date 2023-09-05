@@ -92,16 +92,16 @@ NULL
 #' @examples
 #' \dontrun{
 #' svc <- sesv2()
-#' # This example converts a dedicated IP pool from STANDARD to MANAGED.
-#' svc$put_dedicated_ip_pool_scaling_attributes(
-#'   PoolName = "sample-ses-pool",
-#'   ScalingMode = "MANAGED"
+#' # Cancels the export job with ID ef28cf62-9d8e-4b60-9283-b09816c99a99
+#' svc$cancel_export_job(
+#'   JobId = "ef28cf62-9d8e-4b60-9283-b09816c99a99"
 #' )
 #' }
 #'
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=sesv2_batch_get_metric_data]{batch_get_metric_data} \tab Retrieves batches of metric data collected based on your sending activity\cr
+#'  \link[=sesv2_cancel_export_job]{cancel_export_job} \tab Cancels an export job\cr
 #'  \link[=sesv2_create_configuration_set]{create_configuration_set} \tab Create a configuration set\cr
 #'  \link[=sesv2_create_configuration_set_event_destination]{create_configuration_set_event_destination} \tab Create an event destination\cr
 #'  \link[=sesv2_create_contact]{create_contact} \tab Creates a contact, which is an end-user who is receiving the email, and adds them to a contact list\cr
@@ -112,6 +112,7 @@ NULL
 #'  \link[=sesv2_create_email_identity]{create_email_identity} \tab Starts the process of verifying an email identity\cr
 #'  \link[=sesv2_create_email_identity_policy]{create_email_identity_policy} \tab Creates the specified sending authorization policy for the given identity (an email address or a domain)\cr
 #'  \link[=sesv2_create_email_template]{create_email_template} \tab Creates an email template\cr
+#'  \link[=sesv2_create_export_job]{create_export_job} \tab Creates an export job for a data source and destination\cr
 #'  \link[=sesv2_create_import_job]{create_import_job} \tab Creates an import job for a data destination\cr
 #'  \link[=sesv2_delete_configuration_set]{delete_configuration_set} \tab Delete an existing configuration set\cr
 #'  \link[=sesv2_delete_configuration_set_event_destination]{delete_configuration_set_event_destination} \tab Delete an event destination\cr
@@ -140,7 +141,9 @@ NULL
 #'  \link[=sesv2_get_email_identity]{get_email_identity} \tab Provides information about a specific identity, including the identity's verification status, sending authorization policies, its DKIM authentication status, and its custom Mail-From settings\cr
 #'  \link[=sesv2_get_email_identity_policies]{get_email_identity_policies} \tab Returns the requested sending authorization policies for the given identity (an email address or a domain)\cr
 #'  \link[=sesv2_get_email_template]{get_email_template} \tab Displays the template object (which includes the subject line, HTML part and text part) for the template you specify\cr
+#'  \link[=sesv2_get_export_job]{get_export_job} \tab Provides information about an export job\cr
 #'  \link[=sesv2_get_import_job]{get_import_job} \tab Provides information about an import job\cr
+#'  \link[=sesv2_get_message_insights]{get_message_insights} \tab Provides information about a specific message, including the from address, the subject, the recipient address, email tags, as well as events associated with the message\cr
 #'  \link[=sesv2_get_suppressed_destination]{get_suppressed_destination} \tab Retrieves information about a specific email address that's on the suppression list for your account\cr
 #'  \link[=sesv2_list_configuration_sets]{list_configuration_sets} \tab List all of the configuration sets associated with your account in the current region\cr
 #'  \link[=sesv2_list_contact_lists]{list_contact_lists} \tab Lists all of the contact lists available\cr
@@ -151,6 +154,7 @@ NULL
 #'  \link[=sesv2_list_domain_deliverability_campaigns]{list_domain_deliverability_campaigns} \tab Retrieve deliverability data for all the campaigns that used a specific domain to send email during a specified time range\cr
 #'  \link[=sesv2_list_email_identities]{list_email_identities} \tab Returns a list of all of the email identities that are associated with your Amazon Web Services account\cr
 #'  \link[=sesv2_list_email_templates]{list_email_templates} \tab Lists the email templates present in your Amazon SES account in the current Amazon Web Services Region\cr
+#'  \link[=sesv2_list_export_jobs]{list_export_jobs} \tab Lists all of the export jobs\cr
 #'  \link[=sesv2_list_import_jobs]{list_import_jobs} \tab Lists all of the import jobs\cr
 #'  \link[=sesv2_list_recommendations]{list_recommendations} \tab Lists the recommendations present in your Amazon SES account in the current Amazon Web Services Region\cr
 #'  \link[=sesv2_list_suppressed_destinations]{list_suppressed_destinations} \tab Retrieves a list of email addresses that are on the suppression list for your account\cr

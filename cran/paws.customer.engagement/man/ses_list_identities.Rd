@@ -3,14 +3,14 @@
 \name{ses_list_identities}
 \alias{ses_list_identities}
 \title{Returns a list containing all of the identities (email addresses and
-domains) for your AWS account in the current AWS Region, regardless of
-verification status}
+domains) for your Amazon Web Services account in the current Amazon Web
+Services Region, regardless of verification status}
 \usage{
 ses_list_identities(IdentityType = NULL, NextToken = NULL, MaxItems = NULL)
 }
 \arguments{
 \item{IdentityType}{The type of the identities to list. Possible values are "EmailAddress"
-and "Domain". If this parameter is omitted, then all identities will be
+and "Domain". If this parameter is omitted, then all identities are
 listed.}
 
 \item{NextToken}{The token to use for pagination.}
@@ -19,7 +19,7 @@ listed.}
 inclusive.}
 }
 \description{
-Returns a list containing all of the identities (email addresses and domains) for your AWS account in the current AWS Region, regardless of verification status.
+Returns a list containing all of the identities (email addresses and domains) for your Amazon Web Services account in the current Amazon Web Services Region, regardless of verification status.
 
 See \url{https://www.paws-r-sdk.com/docs/ses_list_identities/} for full documentation.
 }

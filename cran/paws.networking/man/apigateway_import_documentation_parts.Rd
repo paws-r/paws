@@ -14,9 +14,9 @@ apigateway_import_documentation_parts(
 \arguments{
 \item{restApiId}{[required] The string identifier of the associated RestApi.}
 
-\item{mode}{A query parameter to indicate whether to overwrite (\code{OVERWRITE}) any
-existing DocumentationParts definition or to merge (\code{MERGE}) the new
-definition into the existing one. The default value is \code{MERGE}.}
+\item{mode}{A query parameter to indicate whether to overwrite (\code{overwrite}) any
+existing DocumentationParts definition or to merge (\code{merge}) the new
+definition into the existing one. The default value is \code{merge}.}
 
 \item{failOnWarnings}{A query parameter to specify whether to rollback the documentation
 importation (\code{true}) or not (\code{false}) when a warning is encountered. The

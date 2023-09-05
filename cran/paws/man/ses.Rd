@@ -54,6 +54,15 @@ This document contains reference information for the \href{https://aws.amazon.co
 For a list of Amazon SES endpoints to use in service requests, see
 \href{https://docs.aws.amazon.com/ses/latest/dg/regions.html}{Regions and Amazon SES} in the
 \href{https://docs.aws.amazon.com/ses/latest/dg/Welcome.html}{Amazon SES Developer Guide}.
+
+This documentation contains reference information related to the
+following:
+\itemize{
+\item \href{https://docs.aws.amazon.com/ses/latest/APIReference/API_Operations.html}{Amazon SES API Actions}
+\item \href{https://docs.aws.amazon.com/ses/latest/APIReference/API_Types.html}{Amazon SES API Data Types}
+\item \href{https://docs.aws.amazon.com/ses/latest/APIReference/CommonParameters.html}{Common Parameters}
+\item \href{https://docs.aws.amazon.com/ses/latest/APIReference/CommonErrors.html}{Common Errors}
+}
 }
 \section{Service syntax}{
 
@@ -118,7 +127,7 @@ For a list of Amazon SES endpoints to use in service requests, see
 \link[paws.customer.engagement:ses_describe_configuration_set]{describe_configuration_set} \tab Returns the details of the specified configuration set\cr
 \link[paws.customer.engagement:ses_describe_receipt_rule]{describe_receipt_rule} \tab Returns the details of the specified receipt rule\cr
 \link[paws.customer.engagement:ses_describe_receipt_rule_set]{describe_receipt_rule_set} \tab Returns the details of the specified receipt rule set\cr
-\link[paws.customer.engagement:ses_get_account_sending_enabled]{get_account_sending_enabled} \tab Returns the email sending status of the Amazon SES account for the current region\cr
+\link[paws.customer.engagement:ses_get_account_sending_enabled]{get_account_sending_enabled} \tab Returns the email sending status of the Amazon SES account for the current Region\cr
 \link[paws.customer.engagement:ses_get_custom_verification_email_template]{get_custom_verification_email_template} \tab Returns the custom email verification template for the template name you specify\cr
 \link[paws.customer.engagement:ses_get_identity_dkim_attributes]{get_identity_dkim_attributes} \tab Returns the current status of Easy DKIM signing for an entity\cr
 \link[paws.customer.engagement:ses_get_identity_mail_from_domain_attributes]{get_identity_mail_from_domain_attributes} \tab Returns the custom MAIL FROM attributes for a list of identities (email addresses : domains)\cr
@@ -126,22 +135,22 @@ For a list of Amazon SES endpoints to use in service requests, see
 \link[paws.customer.engagement:ses_get_identity_policies]{get_identity_policies} \tab Returns the requested sending authorization policies for the given identity (an email address or a domain)\cr
 \link[paws.customer.engagement:ses_get_identity_verification_attributes]{get_identity_verification_attributes} \tab Given a list of identities (email addresses and/or domains), returns the verification status and (for domain identities) the verification token for each identity\cr
 \link[paws.customer.engagement:ses_get_send_quota]{get_send_quota} \tab Provides the sending limits for the Amazon SES account\cr
-\link[paws.customer.engagement:ses_get_send_statistics]{get_send_statistics} \tab Provides sending statistics for the current AWS Region\cr
+\link[paws.customer.engagement:ses_get_send_statistics]{get_send_statistics} \tab Provides sending statistics for the current Amazon Web Services Region\cr
 \link[paws.customer.engagement:ses_get_template]{get_template} \tab Displays the template object (which includes the Subject line, HTML part and text part) for the template you specify\cr
-\link[paws.customer.engagement:ses_list_configuration_sets]{list_configuration_sets} \tab Provides a list of the configuration sets associated with your Amazon SES account in the current AWS Region\cr
-\link[paws.customer.engagement:ses_list_custom_verification_email_templates]{list_custom_verification_email_templates} \tab Lists the existing custom verification email templates for your account in the current AWS Region\cr
-\link[paws.customer.engagement:ses_list_identities]{list_identities} \tab Returns a list containing all of the identities (email addresses and domains) for your AWS account in the current AWS Region, regardless of verification status\cr
+\link[paws.customer.engagement:ses_list_configuration_sets]{list_configuration_sets} \tab Provides a list of the configuration sets associated with your Amazon SES account in the current Amazon Web Services Region\cr
+\link[paws.customer.engagement:ses_list_custom_verification_email_templates]{list_custom_verification_email_templates} \tab Lists the existing custom verification email templates for your account in the current Amazon Web Services Region\cr
+\link[paws.customer.engagement:ses_list_identities]{list_identities} \tab Returns a list containing all of the identities (email addresses and domains) for your Amazon Web Services account in the current Amazon Web Services Region, regardless of verification status\cr
 \link[paws.customer.engagement:ses_list_identity_policies]{list_identity_policies} \tab Returns a list of sending authorization policies that are attached to the given identity (an email address or a domain)\cr
-\link[paws.customer.engagement:ses_list_receipt_filters]{list_receipt_filters} \tab Lists the IP address filters associated with your AWS account in the current AWS Region\cr
-\link[paws.customer.engagement:ses_list_receipt_rule_sets]{list_receipt_rule_sets} \tab Lists the receipt rule sets that exist under your AWS account in the current AWS Region\cr
-\link[paws.customer.engagement:ses_list_templates]{list_templates} \tab Lists the email templates present in your Amazon SES account in the current AWS Region\cr
+\link[paws.customer.engagement:ses_list_receipt_filters]{list_receipt_filters} \tab Lists the IP address filters associated with your Amazon Web Services account in the current Amazon Web Services Region\cr
+\link[paws.customer.engagement:ses_list_receipt_rule_sets]{list_receipt_rule_sets} \tab Lists the receipt rule sets that exist under your Amazon Web Services account in the current Amazon Web Services Region\cr
+\link[paws.customer.engagement:ses_list_templates]{list_templates} \tab Lists the email templates present in your Amazon SES account in the current Amazon Web Services Region\cr
 \link[paws.customer.engagement:ses_list_verified_email_addresses]{list_verified_email_addresses} \tab Deprecated\cr
 \link[paws.customer.engagement:ses_put_configuration_set_delivery_options]{put_configuration_set_delivery_options} \tab Adds or updates the delivery options for a configuration set\cr
 \link[paws.customer.engagement:ses_put_identity_policy]{put_identity_policy} \tab Adds or updates a sending authorization policy for the specified identity (an email address or a domain)\cr
 \link[paws.customer.engagement:ses_reorder_receipt_rule_set]{reorder_receipt_rule_set} \tab Reorders the receipt rules within a receipt rule set\cr
 \link[paws.customer.engagement:ses_send_bounce]{send_bounce} \tab Generates and sends a bounce message to the sender of an email you received through Amazon SES\cr
 \link[paws.customer.engagement:ses_send_bulk_templated_email]{send_bulk_templated_email} \tab Composes an email message to multiple destinations\cr
-\link[paws.customer.engagement:ses_send_custom_verification_email]{send_custom_verification_email} \tab Adds an email address to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it\cr
+\link[paws.customer.engagement:ses_send_custom_verification_email]{send_custom_verification_email} \tab Adds an email address to the list of identities for your Amazon SES account in the current Amazon Web Services Region and attempts to verify it\cr
 \link[paws.customer.engagement:ses_send_email]{send_email} \tab Composes an email message and immediately queues it for sending\cr
 \link[paws.customer.engagement:ses_send_raw_email]{send_raw_email} \tab Composes an email message and immediately queues it for sending\cr
 \link[paws.customer.engagement:ses_send_templated_email]{send_templated_email} \tab Composes an email message using an email template and immediately queues it for sending\cr
@@ -153,18 +162,18 @@ For a list of Amazon SES endpoints to use in service requests, see
 \link[paws.customer.engagement:ses_set_identity_notification_topic]{set_identity_notification_topic} \tab Sets an Amazon Simple Notification Service (Amazon SNS) topic to use when delivering notifications\cr
 \link[paws.customer.engagement:ses_set_receipt_rule_position]{set_receipt_rule_position} \tab Sets the position of the specified receipt rule in the receipt rule set\cr
 \link[paws.customer.engagement:ses_test_render_template]{test_render_template} \tab Creates a preview of the MIME content of an email when provided with a template and a set of replacement data\cr
-\link[paws.customer.engagement:ses_update_account_sending_enabled]{update_account_sending_enabled} \tab Enables or disables email sending across your entire Amazon SES account in the current AWS Region\cr
+\link[paws.customer.engagement:ses_update_account_sending_enabled]{update_account_sending_enabled} \tab Enables or disables email sending across your entire Amazon SES account in the current Amazon Web Services Region\cr
 \link[paws.customer.engagement:ses_update_configuration_set_event_destination]{update_configuration_set_event_destination} \tab Updates the event destination of a configuration set\cr
-\link[paws.customer.engagement:ses_update_configuration_set_reputation_metrics_enabled]{update_configuration_set_reputation_metrics_enabled} \tab Enables or disables the publishing of reputation metrics for emails sent using a specific configuration set in a given AWS Region\cr
-\link[paws.customer.engagement:ses_update_configuration_set_sending_enabled]{update_configuration_set_sending_enabled} \tab Enables or disables email sending for messages sent using a specific configuration set in a given AWS Region\cr
+\link[paws.customer.engagement:ses_update_configuration_set_reputation_metrics_enabled]{update_configuration_set_reputation_metrics_enabled} \tab Enables or disables the publishing of reputation metrics for emails sent using a specific configuration set in a given Amazon Web Services Region\cr
+\link[paws.customer.engagement:ses_update_configuration_set_sending_enabled]{update_configuration_set_sending_enabled} \tab Enables or disables email sending for messages sent using a specific configuration set in a given Amazon Web Services Region\cr
 \link[paws.customer.engagement:ses_update_configuration_set_tracking_options]{update_configuration_set_tracking_options} \tab Modifies an association between a configuration set and a custom domain for open and click event tracking\cr
 \link[paws.customer.engagement:ses_update_custom_verification_email_template]{update_custom_verification_email_template} \tab Updates an existing custom verification email template\cr
 \link[paws.customer.engagement:ses_update_receipt_rule]{update_receipt_rule} \tab Updates a receipt rule\cr
 \link[paws.customer.engagement:ses_update_template]{update_template} \tab Updates an email template\cr
 \link[paws.customer.engagement:ses_verify_domain_dkim]{verify_domain_dkim} \tab Returns a set of DKIM tokens for a domain identity\cr
-\link[paws.customer.engagement:ses_verify_domain_identity]{verify_domain_identity} \tab Adds a domain to the list of identities for your Amazon SES account in the current AWS Region and attempts to verify it\cr
+\link[paws.customer.engagement:ses_verify_domain_identity]{verify_domain_identity} \tab Adds a domain to the list of identities for your Amazon SES account in the current Amazon Web Services Region and attempts to verify it\cr
 \link[paws.customer.engagement:ses_verify_email_address]{verify_email_address} \tab Deprecated\cr
-\link[paws.customer.engagement:ses_verify_email_identity]{verify_email_identity} \tab Adds an email address to the list of identities for your Amazon SES account in the current AWS region and attempts to verify it
+\link[paws.customer.engagement:ses_verify_email_identity]{verify_email_identity} \tab Adds an email address to the list of identities for your Amazon SES account in the current Amazon Web Services Region and attempts to verify it
 }
 }
 

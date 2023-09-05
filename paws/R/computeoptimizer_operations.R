@@ -43,7 +43,7 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$delete_recommendation_preferences(
-#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService",
+#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License",
 #'   scope = list(
 #'     name = "Organization"|"AccountId"|"ResourceArn",
 #'     value = "string"
@@ -125,7 +125,7 @@ computeoptimizer_delete_recommendation_preferences <- function(resourceType, sco
 #'           metadataKey = "string"
 #'         )
 #'       ),
-#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService",
+#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License",
 #'       status = "Queued"|"InProgress"|"Complete"|"Failed",
 #'       creationTimestamp = as.POSIXct(
 #'         "2015-01-01"
@@ -836,6 +836,127 @@ computeoptimizer_export_lambda_function_recommendations <- function(accountIds =
 }
 .computeoptimizer$operations$export_lambda_function_recommendations <- computeoptimizer_export_lambda_function_recommendations
 
+#' Export optimization recommendations for your licenses
+#'
+#' @description
+#' Export optimization recommendations for your licenses.
+#' 
+#' Recommendations are exported in a comma-separated values (CSV) file, and
+#' its metadata in a JavaScript Object Notation (JSON) file, to an existing
+#' Amazon Simple Storage Service (Amazon S3) bucket that you specify. For
+#' more information, see [Exporting
+#' Recommendations](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html)
+#' in the *Compute Optimizer User Guide*.
+#' 
+#' You can have only one license export job in progress per Amazon Web
+#' Services Region.
+#'
+#' @usage
+#' computeoptimizer_export_license_recommendations(accountIds, filters,
+#'   fieldsToExport, s3DestinationConfig, fileFormat, includeMemberAccounts)
+#'
+#' @param accountIds The IDs of the Amazon Web Services accounts for which to export license
+#' recommendations.
+#' 
+#' If your account is the management account of an organization, use this
+#' parameter to specify the member account for which you want to export
+#' recommendations.
+#' 
+#' This parameter can't be specified together with the include member
+#' accounts parameter. The parameters are mutually exclusive.
+#' 
+#' If this parameter is omitted, recommendations for member accounts aren't
+#' included in the export.
+#' 
+#' You can specify multiple account IDs per request.
+#' @param filters An array of objects to specify a filter that exports a more specific set
+#' of license recommendations.
+#' @param fieldsToExport The recommendations data to include in the export file. For more
+#' information about the fields that can be exported, see [Exported
+#' files](https://docs.aws.amazon.com/compute-optimizer/latest/ug/exporting-recommendations.html#exported-files)
+#' in the *Compute Optimizer User Guide*.
+#' @param s3DestinationConfig &#91;required&#93; 
+#' @param fileFormat The format of the export file.
+#' 
+#' A CSV file is the only export format currently supported.
+#' @param includeMemberAccounts Indicates whether to include recommendations for resources in all member
+#' accounts of the organization if your account is the management account
+#' of an organization.
+#' 
+#' The member accounts must also be opted in to Compute Optimizer, and
+#' trusted access for Compute Optimizer must be enabled in the organization
+#' account. For more information, see [Compute Optimizer and Amazon Web
+#' Services Organizations trusted
+#' access](https://docs.aws.amazon.com/compute-optimizer/latest/ug/security-iam.html#trusted-service-access)
+#' in the *Compute Optimizer User Guide*.
+#' 
+#' If this parameter is omitted, recommendations for member accounts of the
+#' organization aren't included in the export file .
+#' 
+#' This parameter cannot be specified together with the account IDs
+#' parameter. The parameters are mutually exclusive.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   jobId = "string",
+#'   s3Destination = list(
+#'     bucket = "string",
+#'     key = "string",
+#'     metadataKey = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$export_license_recommendations(
+#'   accountIds = list(
+#'     "string"
+#'   ),
+#'   filters = list(
+#'     list(
+#'       name = "Finding"|"FindingReasonCode"|"LicenseName",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   fieldsToExport = list(
+#'     "AccountId"|"ResourceArn"|"LookbackPeriodInDays"|"LastRefreshTimestamp"|"Finding"|"FindingReasonCodes"|"CurrentLicenseConfigurationNumberOfCores"|"CurrentLicenseConfigurationInstanceType"|"CurrentLicenseConfigurationOperatingSystem"|"CurrentLicenseConfigurationLicenseName"|"CurrentLicenseConfigurationLicenseEdition"|"CurrentLicenseConfigurationLicenseModel"|"CurrentLicenseConfigurationLicenseVersion"|"CurrentLicenseConfigurationMetricsSource"|"RecommendationOptionsOperatingSystem"|"RecommendationOptionsLicenseEdition"|"RecommendationOptionsLicenseModel"|"RecommendationOptionsSavingsOpportunityPercentage"|"RecommendationOptionsEstimatedMonthlySavingsCurrency"|"RecommendationOptionsEstimatedMonthlySavingsValue"|"Tags"
+#'   ),
+#'   s3DestinationConfig = list(
+#'     bucket = "string",
+#'     keyPrefix = "string"
+#'   ),
+#'   fileFormat = "Csv",
+#'   includeMemberAccounts = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_export_license_recommendations
+#'
+#' @aliases computeoptimizer_export_license_recommendations
+computeoptimizer_export_license_recommendations <- function(accountIds = NULL, filters = NULL, fieldsToExport = NULL, s3DestinationConfig, fileFormat = NULL, includeMemberAccounts = NULL) {
+  op <- new_operation(
+    name = "ExportLicenseRecommendations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .computeoptimizer$export_license_recommendations_input(accountIds = accountIds, filters = filters, fieldsToExport = fieldsToExport, s3DestinationConfig = s3DestinationConfig, fileFormat = fileFormat, includeMemberAccounts = includeMemberAccounts)
+  output <- .computeoptimizer$export_license_recommendations_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$export_license_recommendations <- computeoptimizer_export_license_recommendations
+
 #' Returns Auto Scaling group recommendations
 #'
 #' @description
@@ -1240,7 +1361,7 @@ computeoptimizer_get_ebs_volume_recommendations <- function(volumeArns = NULL, n
 #'       recommendationSources = list(
 #'         list(
 #'           recommendationSourceArn = "string",
-#'           recommendationSourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"EcsService"
+#'           recommendationSourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"EcsService"|"License"
 #'         )
 #'       ),
 #'       lastRefreshTimestamp = as.POSIXct(
@@ -2030,6 +2151,154 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
 }
 .computeoptimizer$operations$get_lambda_function_recommendations <- computeoptimizer_get_lambda_function_recommendations
 
+#' Returns license recommendations for Amazon EC2 instances that run on a
+#' specific license
+#'
+#' @description
+#' Returns license recommendations for Amazon EC2 instances that run on a
+#' specific license.
+#' 
+#' Compute Optimizer generates recommendations for licenses that meet a
+#' specific set of requirements. For more information, see the [Supported
+#' resources and
+#' requirements](https://docs.aws.amazon.com/compute-optimizer/latest/ug/requirements.html)
+#' in the *Compute Optimizer User Guide*.
+#'
+#' @usage
+#' computeoptimizer_get_license_recommendations(resourceArns, nextToken,
+#'   maxResults, filters, accountIds)
+#'
+#' @param resourceArns The ARN that identifies the Amazon EC2 instance.
+#' 
+#' The following is the format of the ARN:
+#' 
+#' `arn:aws:ec2:region:aws_account_id:instance/instance-id`
+#' @param nextToken The token to advance to the next page of license recommendations.
+#' @param maxResults The maximum number of license recommendations to return with a single
+#' request.
+#' 
+#' To retrieve the remaining results, make another request with the
+#' returned `nextToken` value.
+#' @param filters An array of objects to specify a filter that returns a more specific
+#' list of license recommendations.
+#' @param accountIds The ID of the Amazon Web Services account for which to return license
+#' recommendations.
+#' 
+#' If your account is the management account of an organization, use this
+#' parameter to specify the member account for which you want to return
+#' license recommendations.
+#' 
+#' Only one account ID can be specified per request.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   nextToken = "string",
+#'   licenseRecommendations = list(
+#'     list(
+#'       resourceArn = "string",
+#'       accountId = "string",
+#'       currentLicenseConfiguration = list(
+#'         numberOfCores = 123,
+#'         instanceType = "string",
+#'         operatingSystem = "string",
+#'         licenseEdition = "Enterprise"|"Standard"|"Free"|"NoLicenseEditionFound",
+#'         licenseName = "SQLServer",
+#'         licenseModel = "LicenseIncluded"|"BringYourOwnLicense",
+#'         licenseVersion = "string",
+#'         metricsSource = list(
+#'           list(
+#'             provider = "CloudWatchApplicationInsights",
+#'             providerArn = "string"
+#'           )
+#'         )
+#'       ),
+#'       lookbackPeriodInDays = 123.0,
+#'       lastRefreshTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       finding = "InsufficientMetrics"|"Optimized"|"NotOptimized",
+#'       findingReasonCodes = list(
+#'         "InvalidCloudWatchApplicationInsightsSetup"|"CloudWatchApplicationInsightsError"|"LicenseOverprovisioned"|"Optimized"
+#'       ),
+#'       licenseRecommendationOptions = list(
+#'         list(
+#'           rank = 123,
+#'           operatingSystem = "string",
+#'           licenseEdition = "Enterprise"|"Standard"|"Free"|"NoLicenseEditionFound",
+#'           licenseModel = "LicenseIncluded"|"BringYourOwnLicense",
+#'           savingsOpportunity = list(
+#'             savingsOpportunityPercentage = 123.0,
+#'             estimatedMonthlySavings = list(
+#'               currency = "USD"|"CNY",
+#'               value = 123.0
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       tags = list(
+#'         list(
+#'           key = "string",
+#'           value = "string"
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   errors = list(
+#'     list(
+#'       identifier = "string",
+#'       code = "string",
+#'       message = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_license_recommendations(
+#'   resourceArns = list(
+#'     "string"
+#'   ),
+#'   nextToken = "string",
+#'   maxResults = 123,
+#'   filters = list(
+#'     list(
+#'       name = "Finding"|"FindingReasonCode"|"LicenseName",
+#'       values = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   accountIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname computeoptimizer_get_license_recommendations
+#'
+#' @aliases computeoptimizer_get_license_recommendations
+computeoptimizer_get_license_recommendations <- function(resourceArns = NULL, nextToken = NULL, maxResults = NULL, filters = NULL, accountIds = NULL) {
+  op <- new_operation(
+    name = "GetLicenseRecommendations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .computeoptimizer$get_license_recommendations_input(resourceArns = resourceArns, nextToken = nextToken, maxResults = maxResults, filters = filters, accountIds = accountIds)
+  output <- .computeoptimizer$get_license_recommendations_output()
+  config <- get_config()
+  svc <- .computeoptimizer$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.computeoptimizer$operations$get_license_recommendations <- computeoptimizer_get_license_recommendations
+
 #' Returns existing recommendation preferences, such as enhanced
 #' infrastructure metrics
 #'
@@ -2086,7 +2355,7 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
 #'         name = "Organization"|"AccountId"|"ResourceArn",
 #'         value = "string"
 #'       ),
-#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService",
+#'       resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License",
 #'       enhancedInfrastructureMetrics = "Active"|"Inactive",
 #'       inferredWorkloadTypes = "Active"|"Inactive",
 #'       externalMetricsPreference = list(
@@ -2100,7 +2369,7 @@ computeoptimizer_get_lambda_function_recommendations <- function(functionArns = 
 #' @section Request syntax:
 #' ```
 #' svc$get_recommendation_preferences(
-#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService",
+#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License",
 #'   scope = list(
 #'     name = "Organization"|"AccountId"|"ResourceArn",
 #'     value = "string"
@@ -2192,7 +2461,7 @@ computeoptimizer_get_recommendation_preferences <- function(resourceType, scope 
 #'           )
 #'         )
 #'       ),
-#'       recommendationResourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"EcsService",
+#'       recommendationResourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"EcsService"|"License",
 #'       accountId = "string",
 #'       savingsOpportunity = list(
 #'         savingsOpportunityPercentage = 123.0,
@@ -2341,7 +2610,7 @@ computeoptimizer_get_recommendation_summaries <- function(accountIds = NULL, nex
 #' @section Request syntax:
 #' ```
 #' svc$put_recommendation_preferences(
-#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService",
+#'   resourceType = "Ec2Instance"|"AutoScalingGroup"|"EbsVolume"|"LambdaFunction"|"NotApplicable"|"EcsService"|"License",
 #'   scope = list(
 #'     name = "Organization"|"AccountId"|"ResourceArn",
 #'     value = "string"

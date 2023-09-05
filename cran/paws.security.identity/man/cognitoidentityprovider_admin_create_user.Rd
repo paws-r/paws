@@ -82,10 +82,10 @@ This parameter isn't required. If you don't specify a value, Amazon
 Cognito generates one for you.
 
 The temporary password can only be used until the user account
-expiration limit that you specified when you created the user pool. To
-reset the account after that time limit, you must call
-\code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}} again,
-specifying \code{"RESEND"} for the \code{MessageAction} parameter.}
+expiration limit that you set for your user pool. To reset the account
+after that time limit, you must call
+\code{\link[=cognitoidentityprovider_admin_create_user]{admin_create_user}} again
+and specify \code{RESEND} for the \code{MessageAction} parameter.}
 
 \item{ForceAliasCreation}{This parameter is used only if the \code{phone_number_verified} or
 \code{email_verified} attribute is set to \code{True}. Otherwise, it is ignored.

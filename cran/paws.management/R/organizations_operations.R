@@ -208,13 +208,13 @@ organizations_close_account <- function(AccountId) {
 #' For more information about how to use this role to access the member
 #' account, see the following links:
 #' 
-#' -   [Accessing and Administering the Member Accounts in Your
-#'     Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
+#' -   [Creating the OrganizationAccountAccessRole in an invited member
+#'     account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
 #'     in the *Organizations User Guide*
 #' 
-#' -   Steps 2 and 3 in [Tutorial: Delegate Access Across Amazon Web
-#'     Services accounts Using IAM
-#'     Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
+#' -   Steps 2 and 3 in [IAM Tutorial: Delegate access across Amazon Web
+#'     Services accounts using IAM
+#'     roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
 #'     in the *IAM User Guide*
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) that is used to
@@ -224,9 +224,9 @@ organizations_close_account <- function(AccountId) {
 #' @param IamUserAccessToBilling If set to `ALLOW`, the new account enables IAM users to access account
 #' billing information *if* they have the required permissions. If set to
 #' `DENY`, only the root user of the new account can access account billing
-#' information. For more information, see [Activating Access to the Billing
+#' information. For more information, see [About IAM access to the Billing
 #' and Cost Management
-#' Console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate)
+#' console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate)
 #' in the *Amazon Web Services Billing and Cost Management User Guide*.
 #' 
 #' If you don't specify this parameter, the value defaults to `ALLOW`, and
@@ -323,12 +323,16 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' `OrganizationAccountAccessRole`.
 #' 
 #' For more information about how to use this role to access the member
-#' account, see [Accessing and Administering the Member Accounts in Your
-#' Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
-#' in the *Organizations User Guide* and steps 2 and 3 in [Tutorial:
-#' Delegate Access Across Amazon Web Services accounts Using IAM
-#' Roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
-#' in the *IAM User Guide.*
+#' account, see the following links:
+#' 
+#' -   [Creating the OrganizationAccountAccessRole in an invited member
+#'     account](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html#orgs_manage_accounts_create-cross-account-role)
+#'     in the *Organizations User Guide*
+#' 
+#' -   Steps 2 and 3 in [IAM Tutorial: Delegate access across Amazon Web
+#'     Services accounts using IAM
+#'     roles](https://docs.aws.amazon.com/IAM/latest/UserGuide/tutorial_cross-account-with-roles.html)
+#'     in the *IAM User Guide*
 #' 
 #' The [regex pattern](https://en.wikipedia.org/wiki/Regex) that is used to
 #' validate this parameter. The pattern can include uppercase letters,
@@ -338,9 +342,9 @@ organizations_create_account <- function(Email, AccountName, RoleName = NULL, Ia
 #' enables IAM users to access account billing information *if* they have
 #' the required permissions. If set to `DENY`, only the root user of the
 #' new account can access account billing information. For more
-#' information, see [Activating Access to the Billing and Cost Management
-#' Console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate)
-#' in the *Amazon Web Services Billing and Cost Management User Guide.*
+#' information, see [About IAM access to the Billing and Cost Management
+#' console](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/control-access-billing.html#ControllingAccessWebsite-Activate)
+#' in the *Amazon Web Services Billing and Cost Management User Guide*.
 #' 
 #' If you don't specify this parameter, the value defaults to `ALLOW`, and
 #' IAM users and roles with the required permissions can access billing
@@ -396,7 +400,7 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #'     consolidated to and paid by the management account. For more
 #'     information, see [Consolidated
 #'     billing](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-cb-only)
-#'     in the *Organizations User Guide.*
+#'     in the *Organizations User Guide*.
 #' 
 #'     The consolidated billing feature subset isn't available for
 #'     organizations in the Amazon Web Services GovCloud (US) Region.
@@ -406,7 +410,7 @@ organizations_create_gov_cloud_account <- function(Email, AccountName, RoleName 
 #'     policy type to any member account in the organization. For more
 #'     information, see [All
 #'     features](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_getting-started_concepts.html#feature-set-all)
-#'     in the *Organizations User Guide.*
+#'     in the *Organizations User Guide*.
 #'
 #' @keywords internal
 #'
@@ -1201,7 +1205,7 @@ organizations_enable_aws_service_access <- function(ServicePrincipal) {
 #' Enables all features in an organization
 #'
 #' @description
-#' Enables all features in an organization. This enables the use of organization policies that can restrict the services and actions that can be called in each account. Until you enable all features, you have access only to consolidated billing, and you can't use any of the advanced account administration features that Organizations supports. For more information, see [Enabling All Features in Your Organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html) in the *Organizations User Guide.*
+#' Enables all features in an organization. This enables the use of organization policies that can restrict the services and actions that can be called in each account. Until you enable all features, you have access only to consolidated billing, and you can't use any of the advanced account administration features that Organizations supports. For more information, see [Enabling all features in your organization](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_org_support-all-features.html) in the *Organizations User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/organizations_enable_all_features/](https://www.paws-r-sdk.com/docs/organizations_enable_all_features/) for full documentation.
 #'
@@ -2244,9 +2248,9 @@ organizations_move_account <- function(AccountId, SourceParentId, DestinationPar
 #'
 #' @param Content &#91;required&#93; If provided, the new content for the resource policy. The text must be
 #' correctly formatted JSON that complies with the syntax for the resource
-#' policy's type. For more information, see [Service Control Policy
-#' Syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html)
-#' in the *Organizations User Guide.*
+#' policy's type. For more information, see [SCP
+#' syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html)
+#' in the *Organizations User Guide*.
 #' @param Tags A list of tags that you want to attach to the newly created resource
 #' policy. For each tag in the list, you must specify both a tag key and a
 #' value. You can set the value to an empty string, but you can't set it to
@@ -2500,9 +2504,9 @@ organizations_update_organizational_unit <- function(OrganizationalUnitId, Name 
 #' @param Description If provided, the new description for the policy.
 #' @param Content If provided, the new content for the policy. The text must be correctly
 #' formatted JSON that complies with the syntax for the policy's type. For
-#' more information, see [Service Control Policy
-#' Syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html)
-#' in the *Organizations User Guide.*
+#' more information, see [SCP
+#' syntax](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_scps_syntax.html)
+#' in the *Organizations User Guide*.
 #'
 #' @keywords internal
 #'

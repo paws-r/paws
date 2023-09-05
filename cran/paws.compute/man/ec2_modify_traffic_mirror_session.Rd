@@ -28,7 +28,12 @@ source, or have a VPC peering connection with the source.}
 VXLAN header. To mirror a subset, set this to the length (in bytes) to
 mirror. For example, if you set this value to 100, then the first 100
 bytes that meet the filter criteria are copied to the target. Do not
-specify this parameter when you want to mirror the entire packet.}
+specify this parameter when you want to mirror the entire packet.
+
+For sessions with Network Load Balancer (NLB) traffic mirror targets,
+the default \code{PacketLength} will be set to 8500. Valid values are 1-8500.
+Setting a \code{PacketLength} greater than 8500 will result in an error
+response.}
 
 \item{SessionNumber}{The session number determines the order in which sessions are evaluated
 when an interface is used by multiple sessions. The first session with a

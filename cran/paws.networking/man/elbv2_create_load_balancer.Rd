@@ -70,8 +70,8 @@ balancer, you can specify one IPv6 address per subnet.
 Availability Zones. You cannot specify Elastic IP addresses for your
 subnets.}
 
-\item{SecurityGroups}{[Application Load Balancers] The IDs of the security groups for the
-load balancer.}
+\item{SecurityGroups}{[Application Load Balancers and Network Load Balancers] The IDs of the
+security groups for the load balancer.}
 
 \item{Scheme}{The nodes of an Internet-facing load balancer have public IP addresses.
 The DNS name of an Internet-facing load balancer is publicly resolvable

@@ -7,7 +7,7 @@
 servicequotas_get_requested_service_quota_change(RequestId)
 }
 \arguments{
-\item{RequestId}{[required] The ID of the quota increase request.}
+\item{RequestId}{[required] Specifies the ID of the quota increase request.}
 }
 \description{
 Retrieves information about the specified quota increase request.

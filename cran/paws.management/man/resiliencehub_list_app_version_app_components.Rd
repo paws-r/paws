@@ -12,13 +12,13 @@ resiliencehub_list_app_version_app_components(
 )
 }
 \arguments{
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
-format for this ARN is:
+\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format
+for this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
 information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference} guide.}
 
-\item{appVersion}{[required] The version of the Application Component.}
+\item{appVersion}{[required] Version of the Application Component.}
 
 \item{maxResults}{Maximum number of Application Components to be displayed per Resilience
 Hub application version.}

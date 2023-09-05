@@ -39,7 +39,7 @@ Default: 20}
 
 \item{SortBy}{The sort type for returned values.}
 
-\item{SortOrder}{The sort order ofr returned values, either ascending or descending.}
+\item{SortOrder}{The sort order for returned values, either ascending or descending.}
 }
 \description{
 Returns information about all of the operations that return an operation ID and that have ever been performed on domains that were registered by the current account.

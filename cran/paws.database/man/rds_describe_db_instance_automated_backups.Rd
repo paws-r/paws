@@ -19,7 +19,7 @@ backup. This parameter isn't case-sensitive.}
 
 \item{DBInstanceIdentifier}{(Optional) The user-supplied instance identifier. If this parameter is
 specified, it must match the identifier of an existing DB instance. It
-returns information from the specific DB instance' automated backup.
+returns information from the specific DB instance's automated backup.
 This parameter isn't case-sensitive.}
 
 \item{Filters}{A filter that specifies which resources to return based on status.
@@ -28,11 +28,11 @@ Supported filters are the following:
 \itemize{
 \item \code{status}
 \itemize{
-\item \code{active} - automated backups for current instances
-\item \code{retained} - automated backups for deleted instances and after
-backup replication is stopped
-\item \code{creating} - automated backups that are waiting for the first
-automated snapshot to be available
+\item \code{active} - Automated backups for current instances.
+\item \code{creating} - Automated backups that are waiting for the first
+automated snapshot to be available.
+\item \code{retained} - Automated backups for deleted instances and after
+backup replication is stopped.
 }
 \item \code{db-instance-id} - Accepts DB instance identifiers and Amazon
 Resource Names (ARNs). The results list includes only information

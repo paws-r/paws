@@ -2,28 +2,48 @@
 % Please edit documentation in R/servicequotas_operations.R
 \name{servicequotas_list_requested_service_quota_change_history}
 \alias{servicequotas_list_requested_service_quota_change_history}
-\title{Retrieves the quota increase requests for the specified service}
+\title{Retrieves the quota increase requests for the specified Amazon Web
+Service}
 \usage{
 servicequotas_list_requested_service_quota_change_history(
   ServiceCode = NULL,
   Status = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  QuotaRequestedAtLevel = NULL
 )
 }
 \arguments{
-\item{ServiceCode}{The service identifier.}
+\item{ServiceCode}{Specifies the service identifier. To find the service code value for an
+Amazon Web Services service, use the
+\code{\link[=servicequotas_list_services]{list_services}} operation.}
 
-\item{Status}{The status of the quota increase request.}
+\item{Status}{Specifies that you want to filter the results to only the requests with
+the matching status.}
 
-\item{NextToken}{The token for the next page of results.}
+\item{NextToken}{Specifies a value for receiving additional results after you receive a
+\code{NextToken} response in a previous request. A \code{NextToken} response
+indicates that more output is available. Set this parameter to the value
+of the previous call's \code{NextToken} response to indicate where the output
+should continue from.}
 
-\item{MaxResults}{The maximum number of results to return with a single call. To retrieve
-the remaining results, if any, make another call with the token returned
-from this call.}
+\item{MaxResults}{Specifies the maximum number of results that you want included on each
+page of the response. If you do not include this parameter, it defaults
+to a value appropriate to the operation. If additional items exist
+beyond those included in the current response, the \code{NextToken} response
+element is present and has a value (is not null). Include that value as
+the \code{NextToken} request parameter in the next call to the operation to
+get the next part of the results.
+
+An API operation can return fewer results than the maximum even when
+there are more results available. You should check \code{NextToken} after
+every operation to ensure that you receive all of the results.}
+
+\item{QuotaRequestedAtLevel}{Specifies at which level within the Amazon Web Services account the
+quota request applies to.}
 }
 \description{
-Retrieves the quota increase requests for the specified service.
+Retrieves the quota increase requests for the specified Amazon Web Service.
 
 See \url{https://www.paws-r-sdk.com/docs/servicequotas_list_requested_service_quota_change_history/} for full documentation.
 }

@@ -99,15 +99,19 @@ fsx_associate_file_system_aliases <- function(ClientRequestToken = NULL, FileSys
 #'
 #' @description
 #' Cancels an existing Amazon FSx for Lustre data repository task if that
-#' task is in either the `PENDING` or `EXECUTING` state. When you cancel a
-#' task, Amazon FSx does the following.
+#' task is in either the `PENDING` or `EXECUTING` state. When you cancel am
+#' export task, Amazon FSx does the following.
 #' 
 #' -   Any files that FSx has already exported are not reverted.
 #' 
-#' -   FSx continues to export any files that are "in-flight" when the
-#'     cancel operation is received.
+#' -   FSx continues to export any files that are in-flight when the cancel
+#'     operation is received.
 #' 
 #' -   FSx does not export any files that have not yet been exported.
+#' 
+#' For a release task, Amazon FSx will stop releasing files upon
+#' cancellation. Any files that have already been released will remain in
+#' the released state.
 #'
 #' @usage
 #' fsx_cancel_data_repository_task(TaskId)
@@ -301,6 +305,10 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'           FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'           FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'           AuditLogDestination = "string"
+#'         ),
+#'         DiskIopsConfiguration = list(
+#'           Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'           Iops = 123
 #'         )
 #'       ),
 #'       LustreConfiguration = list(
@@ -336,7 +344,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -503,14 +511,20 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'         CopyTagsToBackups = TRUE|FALSE,
 #'         CopyTagsToVolumes = TRUE|FALSE,
 #'         DailyAutomaticBackupStartTime = "string",
-#'         DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'         DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'         ThroughputCapacity = 123,
 #'         WeeklyMaintenanceStartTime = "string",
 #'         DiskIopsConfiguration = list(
 #'           Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'           Iops = 123
 #'         ),
-#'         RootVolumeId = "string"
+#'         RootVolumeId = "string",
+#'         PreferredSubnetId = "string",
+#'         EndpointIpAddressRange = "string",
+#'         RouteTableIds = list(
+#'           "string"
+#'         ),
+#'         EndpointIpAddress = "string"
 #'       )
 #'     ),
 #'     DirectoryInformation = list(
@@ -584,7 +598,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -652,6 +666,10 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'                 FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'                 FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'                 AuditLogDestination = "string"
+#'               ),
+#'               DiskIopsConfiguration = list(
+#'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'                 Iops = 123
 #'               )
 #'             ),
 #'             LustreConfiguration = list(
@@ -723,14 +741,20 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'               CopyTagsToBackups = TRUE|FALSE,
 #'               CopyTagsToVolumes = TRUE|FALSE,
 #'               DailyAutomaticBackupStartTime = "string",
-#'               DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'               DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'               ThroughputCapacity = 123,
 #'               WeeklyMaintenanceStartTime = "string",
 #'               DiskIopsConfiguration = list(
 #'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'                 Iops = 123
 #'               ),
-#'               RootVolumeId = "string"
+#'               RootVolumeId = "string",
+#'               PreferredSubnetId = "string",
+#'               EndpointIpAddressRange = "string",
+#'               RouteTableIds = list(
+#'                 "string"
+#'               ),
+#'               EndpointIpAddress = "string"
 #'             )
 #'           ),
 #'           FailureDetails = list(
@@ -1008,6 +1032,10 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'           FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'           FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'           AuditLogDestination = "string"
+#'         ),
+#'         DiskIopsConfiguration = list(
+#'           Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'           Iops = 123
 #'         )
 #'       ),
 #'       LustreConfiguration = list(
@@ -1043,7 +1071,7 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -1210,14 +1238,20 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'         CopyTagsToBackups = TRUE|FALSE,
 #'         CopyTagsToVolumes = TRUE|FALSE,
 #'         DailyAutomaticBackupStartTime = "string",
-#'         DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'         DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'         ThroughputCapacity = 123,
 #'         WeeklyMaintenanceStartTime = "string",
 #'         DiskIopsConfiguration = list(
 #'           Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'           Iops = 123
 #'         ),
-#'         RootVolumeId = "string"
+#'         RootVolumeId = "string",
+#'         PreferredSubnetId = "string",
+#'         EndpointIpAddressRange = "string",
+#'         RouteTableIds = list(
+#'           "string"
+#'         ),
+#'         EndpointIpAddress = "string"
 #'       )
 #'     ),
 #'     DirectoryInformation = list(
@@ -1291,7 +1325,7 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -1359,6 +1393,10 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'                 FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'                 FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'                 AuditLogDestination = "string"
+#'               ),
+#'               DiskIopsConfiguration = list(
+#'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'                 Iops = 123
 #'               )
 #'             ),
 #'             LustreConfiguration = list(
@@ -1430,14 +1468,20 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'               CopyTagsToBackups = TRUE|FALSE,
 #'               CopyTagsToVolumes = TRUE|FALSE,
 #'               DailyAutomaticBackupStartTime = "string",
-#'               DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'               DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'               ThroughputCapacity = 123,
 #'               WeeklyMaintenanceStartTime = "string",
 #'               DiskIopsConfiguration = list(
 #'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'                 Iops = 123
 #'               ),
-#'               RootVolumeId = "string"
+#'               RootVolumeId = "string",
+#'               PreferredSubnetId = "string",
+#'               EndpointIpAddressRange = "string",
+#'               RouteTableIds = list(
+#'                 "string"
+#'               ),
+#'               EndpointIpAddress = "string"
 #'             )
 #'           ),
 #'           FailureDetails = list(
@@ -1565,7 +1609,7 @@ fsx_create_backup <- function(FileSystemId = NULL, ClientRequestToken = NULL, Ta
 #' data repository association is a link between a directory on the file
 #' system and an Amazon S3 bucket or prefix. You can have a maximum of 8
 #' data repository associations on a file system. Data repository
-#' associations are supported on all FSx for Lustre 2.12 and newer file
+#' associations are supported on all FSx for Lustre 2.12 and 2.15 file
 #' systems, excluding `scratch_1` deployment type.
 #' 
 #' Each data repository association must have a unique Amazon FSx file
@@ -1740,15 +1784,25 @@ fsx_create_data_repository_association <- function(FileSystemId, FileSystemPath 
 #' Creates an Amazon FSx for Lustre data repository task
 #'
 #' @description
-#' Creates an Amazon FSx for Lustre data repository task. You use data
-#' repository tasks to perform bulk operations between your Amazon FSx file
-#' system and its linked data repositories. An example of a data repository
-#' task is exporting any data and metadata changes, including POSIX
-#' metadata, to files, directories, and symbolic links (symlinks) from your
-#' FSx file system to a linked data repository. A
+#' Creates an Amazon FSx for Lustre data repository task. A
 #' [`create_data_repository_task`][fsx_create_data_repository_task]
 #' operation will fail if a data repository is not linked to the FSx file
-#' system. To learn more about data repository tasks, see [Data Repository
+#' system.
+#' 
+#' You use import and export data repository tasks to perform bulk
+#' operations between your FSx for Lustre file system and its linked data
+#' repositories. An example of a data repository task is exporting any data
+#' and metadata changes, including POSIX metadata, to files, directories,
+#' and symbolic links (symlinks) from your FSx file system to a linked data
+#' repository.
+#' 
+#' You use release data repository tasks to release data from your file
+#' system for files that are exported to S3. The metadata of released files
+#' remains on the file system so users or applications can still access
+#' released files by reading the files again, which will restore data from
+#' Amazon S3 to the FSx for Lustre file system.
+#' 
+#' To learn more about data repository tasks, see [Data Repository
 #' Tasks](https://docs.aws.amazon.com/fsx/latest/LustreGuide/data-repository-tasks.html).
 #' To learn more about linking a data repository to your file system, see
 #' [Linking your file system to an S3
@@ -1756,13 +1810,30 @@ fsx_create_data_repository_association <- function(FileSystemId, FileSystemPath 
 #'
 #' @usage
 #' fsx_create_data_repository_task(Type, Paths, FileSystemId, Report,
-#'   ClientRequestToken, Tags, CapacityToRelease)
+#'   ClientRequestToken, Tags, CapacityToRelease, ReleaseConfiguration)
 #'
 #' @param Type &#91;required&#93; Specifies the type of data repository task to create.
-#' @param Paths A list of paths for the data repository task to use when the task is
-#' processed. If a path that you provide isn't valid, the task fails.
 #' 
-#' -   For export tasks, the list contains paths on the Amazon FSx file
+#' -   `EXPORT_TO_REPOSITORY` tasks export from your Amazon FSx for Lustre
+#'     file system to a linked data repository.
+#' 
+#' -   `IMPORT_METADATA_FROM_REPOSITORY` tasks import metadata changes from
+#'     a linked S3 bucket to your Amazon FSx for Lustre file system.
+#' 
+#' -   `RELEASE_DATA_FROM_FILESYSTEM` tasks release files in your Amazon
+#'     FSx for Lustre file system that have been exported to a linked S3
+#'     bucket and that meet your specified release criteria.
+#' 
+#' -   `AUTO_RELEASE_DATA` tasks automatically release files from an Amazon
+#'     File Cache resource.
+#' @param Paths A list of paths for the data repository task to use when the task is
+#' processed. If a path that you provide isn't valid, the task fails. If
+#' you don't provide paths, the default behavior is to export all files to
+#' S3 (for export tasks), import all files from S3 (for import tasks), or
+#' release all exported files that meet the last accessed time criteria
+#' (for release tasks).
+#' 
+#' -   For export tasks, the list contains paths on the FSx for Lustre file
 #'     system from which the files are exported to the Amazon S3 bucket.
 #'     The default path is the file system root directory. The paths you
 #'     provide need to be relative to the mount point of the file system.
@@ -1771,9 +1842,19 @@ fsx_create_data_repository_association <- function(FileSystemId, FileSystemPath 
 #'     provide is `path1`.
 #' 
 #' -   For import tasks, the list contains paths in the Amazon S3 bucket
-#'     from which POSIX metadata changes are imported to the Amazon FSx
+#'     from which POSIX metadata changes are imported to the FSx for Lustre
 #'     file system. The path can be an S3 bucket or prefix in the format
 #'     `s3://myBucket/myPrefix` (where `myPrefix` is optional).
+#' 
+#' -   For release tasks, the list contains directory or file paths on the
+#'     FSx for Lustre file system from which to release exported files. If
+#'     a directory is specified, files within the directory are released.
+#'     If a file path is specified, only that file is released. To release
+#'     all exported files in the file system, specify a forward slash (/)
+#'     as the path.
+#' 
+#'     A file must also meet the last accessed time criteria specified in
+#'     for the file to be released.
 #' @param FileSystemId &#91;required&#93; 
 #' @param Report &#91;required&#93; Defines whether or not Amazon FSx provides a CompletionReport once the
 #' task has completed. A CompletionReport provides a detailed report on the
@@ -1786,6 +1867,8 @@ fsx_create_data_repository_association <- function(FileSystemId, FileSystemPath 
 #' @param CapacityToRelease Specifies the amount of data to release, in GiB, by an Amazon File Cache
 #' `AUTO_RELEASE_DATA` task that automatically releases files from the
 #' cache.
+#' @param ReleaseConfiguration The configuration that specifies the last accessed time criteria for
+#' files that will be released from an Amazon FSx for Lustre file system.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1834,7 +1917,13 @@ fsx_create_data_repository_association <- function(FileSystemId, FileSystemPath 
 #'       Scope = "FAILED_FILES_ONLY"
 #'     ),
 #'     CapacityToRelease = 123,
-#'     FileCacheId = "string"
+#'     FileCacheId = "string",
+#'     ReleaseConfiguration = list(
+#'       DurationSinceLastAccess = list(
+#'         Unit = "DAYS",
+#'         Value = 123
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1860,7 +1949,13 @@ fsx_create_data_repository_association <- function(FileSystemId, FileSystemPath 
 #'       Value = "string"
 #'     )
 #'   ),
-#'   CapacityToRelease = 123
+#'   CapacityToRelease = 123,
+#'   ReleaseConfiguration = list(
+#'     DurationSinceLastAccess = list(
+#'       Unit = "DAYS",
+#'       Value = 123
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1869,14 +1964,14 @@ fsx_create_data_repository_association <- function(FileSystemId, FileSystemPath 
 #' @rdname fsx_create_data_repository_task
 #'
 #' @aliases fsx_create_data_repository_task
-fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Report, ClientRequestToken = NULL, Tags = NULL, CapacityToRelease = NULL) {
+fsx_create_data_repository_task <- function(Type, Paths = NULL, FileSystemId, Report, ClientRequestToken = NULL, Tags = NULL, CapacityToRelease = NULL, ReleaseConfiguration = NULL) {
   op <- new_operation(
     name = "CreateDataRepositoryTask",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .fsx$create_data_repository_task_input(Type = Type, Paths = Paths, FileSystemId = FileSystemId, Report = Report, ClientRequestToken = ClientRequestToken, Tags = Tags, CapacityToRelease = CapacityToRelease)
+  input <- .fsx$create_data_repository_task_input(Type = Type, Paths = Paths, FileSystemId = FileSystemId, Report = Report, ClientRequestToken = ClientRequestToken, Tags = Tags, CapacityToRelease = CapacityToRelease, ReleaseConfiguration = ReleaseConfiguration)
   output <- .fsx$create_data_repository_task_output()
   config <- get_config()
   svc <- .fsx$service(config)
@@ -2219,14 +2314,15 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #' @param LustreConfiguration 
 #' @param OntapConfiguration 
 #' @param FileSystemTypeVersion (Optional) For FSx for Lustre file systems, sets the Lustre version for
-#' the file system that you're creating. Valid values are `2.10` and
-#' `2.12`:
+#' the file system that you're creating. Valid values are `2.10`, `2.12`m
+#' and `2.15`:
 #' 
 #' -   2.10 is supported by the Scratch and Persistent_1 Lustre deployment
 #'     types.
 #' 
-#' -   2.12 is supported by all Lustre deployment types. `2.12` is required
-#'     when setting FSx for Lustre `DeploymentType` to `PERSISTENT_2`.
+#' -   2.12 and 2.15 are supported by all Lustre deployment types. `2.12`
+#'     or `2.15` is required when setting FSx for Lustre `DeploymentType`
+#'     to `PERSISTENT_2`.
 #' 
 #' Default value = `2.10`, except when `DeploymentType` is set to
 #' `PERSISTENT_2`, then the default is `2.12`.
@@ -2302,6 +2398,10 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'         FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'         FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'         AuditLogDestination = "string"
+#'       ),
+#'       DiskIopsConfiguration = list(
+#'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'         Iops = 123
 #'       )
 #'     ),
 #'     LustreConfiguration = list(
@@ -2337,7 +2437,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -2504,14 +2604,20 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'       CopyTagsToBackups = TRUE|FALSE,
 #'       CopyTagsToVolumes = TRUE|FALSE,
 #'       DailyAutomaticBackupStartTime = "string",
-#'       DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'       DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'       ThroughputCapacity = 123,
 #'       WeeklyMaintenanceStartTime = "string",
 #'       DiskIopsConfiguration = list(
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'         Iops = 123
 #'       ),
-#'       RootVolumeId = "string"
+#'       RootVolumeId = "string",
+#'       PreferredSubnetId = "string",
+#'       EndpointIpAddressRange = "string",
+#'       RouteTableIds = list(
+#'         "string"
+#'       ),
+#'       EndpointIpAddress = "string"
 #'     )
 #'   )
 #' )
@@ -2563,6 +2669,10 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'       FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'       FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'       AuditLogDestination = "string"
+#'     ),
+#'     DiskIopsConfiguration = list(
+#'       Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'       Iops = 123
 #'     )
 #'   ),
 #'   LustreConfiguration = list(
@@ -2612,7 +2722,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'     CopyTagsToBackups = TRUE|FALSE,
 #'     CopyTagsToVolumes = TRUE|FALSE,
 #'     DailyAutomaticBackupStartTime = "string",
-#'     DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'     DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'     ThroughputCapacity = 123,
 #'     WeeklyMaintenanceStartTime = "string",
 #'     DiskIopsConfiguration = list(
@@ -2643,6 +2753,11 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'       ),
 #'       CopyTagsToSnapshots = TRUE|FALSE,
 #'       ReadOnly = TRUE|FALSE
+#'     ),
+#'     PreferredSubnetId = "string",
+#'     EndpointIpAddressRange = "string",
+#'     RouteTableIds = list(
+#'       "string"
 #'     )
 #'   )
 #' )
@@ -2797,7 +2912,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #' original SSD file system had a storage capacity of at least 2000 GiB.
 #' @param KmsKeyId 
 #' @param FileSystemTypeVersion Sets the version for the Amazon FSx for Lustre file system that you're
-#' creating from a backup. Valid values are `2.10` and `2.12`.
+#' creating from a backup. Valid values are `2.10`, `2.12`, and `2.15`.
 #' 
 #' You don't need to specify `FileSystemTypeVersion` because it will be
 #' applied using the backup's `FileSystemTypeVersion` setting. If you
@@ -2881,6 +2996,10 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'         FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'         FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'         AuditLogDestination = "string"
+#'       ),
+#'       DiskIopsConfiguration = list(
+#'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'         Iops = 123
 #'       )
 #'     ),
 #'     LustreConfiguration = list(
@@ -2916,7 +3035,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -3083,14 +3202,20 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'       CopyTagsToBackups = TRUE|FALSE,
 #'       CopyTagsToVolumes = TRUE|FALSE,
 #'       DailyAutomaticBackupStartTime = "string",
-#'       DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'       DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'       ThroughputCapacity = 123,
 #'       WeeklyMaintenanceStartTime = "string",
 #'       DiskIopsConfiguration = list(
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'         Iops = 123
 #'       ),
-#'       RootVolumeId = "string"
+#'       RootVolumeId = "string",
+#'       PreferredSubnetId = "string",
+#'       EndpointIpAddressRange = "string",
+#'       RouteTableIds = list(
+#'         "string"
+#'       ),
+#'       EndpointIpAddress = "string"
 #'     )
 #'   )
 #' )
@@ -3139,6 +3264,10 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'       FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'       FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'       AuditLogDestination = "string"
+#'     ),
+#'     DiskIopsConfiguration = list(
+#'       Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'       Iops = 123
 #'     )
 #'   ),
 #'   LustreConfiguration = list(
@@ -3173,7 +3302,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'     CopyTagsToBackups = TRUE|FALSE,
 #'     CopyTagsToVolumes = TRUE|FALSE,
 #'     DailyAutomaticBackupStartTime = "string",
-#'     DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'     DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'     ThroughputCapacity = 123,
 #'     WeeklyMaintenanceStartTime = "string",
 #'     DiskIopsConfiguration = list(
@@ -3204,6 +3333,11 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'       ),
 #'       CopyTagsToSnapshots = TRUE|FALSE,
 #'       ReadOnly = TRUE|FALSE
+#'     ),
+#'     PreferredSubnetId = "string",
+#'     EndpointIpAddressRange = "string",
+#'     RouteTableIds = list(
+#'       "string"
 #'     )
 #'   ),
 #'   StorageCapacity = 123
@@ -3322,7 +3456,7 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -3390,6 +3524,10 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'               FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'               FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'               AuditLogDestination = "string"
+#'             ),
+#'             DiskIopsConfiguration = list(
+#'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'               Iops = 123
 #'             )
 #'           ),
 #'           LustreConfiguration = list(
@@ -3461,14 +3599,20 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'             CopyTagsToBackups = TRUE|FALSE,
 #'             CopyTagsToVolumes = TRUE|FALSE,
 #'             DailyAutomaticBackupStartTime = "string",
-#'             DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'             DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'             ThroughputCapacity = 123,
 #'             WeeklyMaintenanceStartTime = "string",
 #'             DiskIopsConfiguration = list(
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'               Iops = 123
 #'             ),
-#'             RootVolumeId = "string"
+#'             RootVolumeId = "string",
+#'             PreferredSubnetId = "string",
+#'             EndpointIpAddressRange = "string",
+#'             RouteTableIds = list(
+#'               "string"
+#'             ),
+#'             EndpointIpAddress = "string"
 #'           )
 #'         ),
 #'         FailureDetails = list(
@@ -3855,7 +3999,7 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -3923,6 +4067,10 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'               FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'               FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'               AuditLogDestination = "string"
+#'             ),
+#'             DiskIopsConfiguration = list(
+#'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'               Iops = 123
 #'             )
 #'           ),
 #'           LustreConfiguration = list(
@@ -3994,14 +4142,20 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             CopyTagsToBackups = TRUE|FALSE,
 #'             CopyTagsToVolumes = TRUE|FALSE,
 #'             DailyAutomaticBackupStartTime = "string",
-#'             DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'             DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'             ThroughputCapacity = 123,
 #'             WeeklyMaintenanceStartTime = "string",
 #'             DiskIopsConfiguration = list(
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'               Iops = 123
 #'             ),
-#'             RootVolumeId = "string"
+#'             RootVolumeId = "string",
+#'             PreferredSubnetId = "string",
+#'             EndpointIpAddressRange = "string",
+#'             RouteTableIds = list(
+#'               "string"
+#'             ),
+#'             EndpointIpAddress = "string"
 #'           )
 #'         ),
 #'         FailureDetails = list(
@@ -4260,7 +4414,7 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -4328,6 +4482,10 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'               FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'               FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'               AuditLogDestination = "string"
+#'             ),
+#'             DiskIopsConfiguration = list(
+#'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'               Iops = 123
 #'             )
 #'           ),
 #'           LustreConfiguration = list(
@@ -4399,14 +4557,20 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'             CopyTagsToBackups = TRUE|FALSE,
 #'             CopyTagsToVolumes = TRUE|FALSE,
 #'             DailyAutomaticBackupStartTime = "string",
-#'             DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'             DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'             ThroughputCapacity = 123,
 #'             WeeklyMaintenanceStartTime = "string",
 #'             DiskIopsConfiguration = list(
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'               Iops = 123
 #'             ),
-#'             RootVolumeId = "string"
+#'             RootVolumeId = "string",
+#'             PreferredSubnetId = "string",
+#'             EndpointIpAddressRange = "string",
+#'             RouteTableIds = list(
+#'               "string"
+#'             ),
+#'             EndpointIpAddress = "string"
 #'           )
 #'         ),
 #'         FailureDetails = list(
@@ -4627,7 +4791,7 @@ fsx_delete_backup <- function(BackupId, ClientRequestToken = NULL) {
 #' from the Amazon S3 bucket. When deleting a data repository association,
 #' you have the option of deleting the data in the file system that
 #' corresponds to the data repository association. Data repository
-#' associations are supported on all FSx for Lustre 2.12 and newer file
+#' associations are supported on all FSx for Lustre 2.12 and 2.15 file
 #' systems, excluding `scratch_1` deployment type.
 #'
 #' @usage
@@ -4757,6 +4921,25 @@ fsx_delete_file_cache <- function(FileCacheId, ClientRequestToken = NULL) {
 #' system, a final backup is created upon deletion. This final backup isn't
 #' subject to the file system's retention policy, and must be manually
 #' deleted.
+#' 
+#' To delete an Amazon FSx for Lustre file system, first
+#' [unmount](https://docs.aws.amazon.com/fsx/latest/LustreGuide/unmounting-fs.html)
+#' it from every connected Amazon EC2 instance, then provide a
+#' `FileSystemId` value to the `DeleFileSystem` operation. By default,
+#' Amazon FSx will not take a final backup when the
+#' [`delete_file_system`][fsx_delete_file_system] operation is invoked. On
+#' file systems not linked to an Amazon S3 bucket, set `SkipFinalBackup` to
+#' `false` to take a final backup of the file system you are deleting.
+#' Backups cannot be enabled on S3-linked file systems. To ensure all of
+#' your data is written back to S3 before deleting your file system, you
+#' can either monitor for the
+#' [AgeOfOldestQueuedMessage](https://docs.aws.amazon.com/fsx/latest/LustreGuide/monitoring-cloudwatch.html#auto-import-export-metrics)
+#' metric to be zero (if using automatic export) or you can run an [export
+#' data repository
+#' task](https://docs.aws.amazon.com/fsx/latest/LustreGuide/export-data-repo-task-dra.html).
+#' If you have automatic export enabled and want to use an export data
+#' repository task, you have to disable automatic export before executing
+#' the export data repository task.
 #' 
 #' The [`delete_file_system`][fsx_delete_file_system] operation returns
 #' while the file system has the `DELETING` status. You can check the file
@@ -5215,6 +5398,10 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'             FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'             FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'             AuditLogDestination = "string"
+#'           ),
+#'           DiskIopsConfiguration = list(
+#'             Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'             Iops = 123
 #'           )
 #'         ),
 #'         LustreConfiguration = list(
@@ -5250,7 +5437,7 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'         ),
 #'         AdministrativeActions = list(
 #'           list(
-#'             AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'             AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'             ProgressPercent = 123,
 #'             RequestTime = as.POSIXct(
 #'               "2015-01-01"
@@ -5417,14 +5604,20 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'           CopyTagsToBackups = TRUE|FALSE,
 #'           CopyTagsToVolumes = TRUE|FALSE,
 #'           DailyAutomaticBackupStartTime = "string",
-#'           DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'           DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'           ThroughputCapacity = 123,
 #'           WeeklyMaintenanceStartTime = "string",
 #'           DiskIopsConfiguration = list(
 #'             Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'             Iops = 123
 #'           ),
-#'           RootVolumeId = "string"
+#'           RootVolumeId = "string",
+#'           PreferredSubnetId = "string",
+#'           EndpointIpAddressRange = "string",
+#'           RouteTableIds = list(
+#'             "string"
+#'           ),
+#'           EndpointIpAddress = "string"
 #'         )
 #'       ),
 #'       DirectoryInformation = list(
@@ -5498,7 +5691,7 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'         ),
 #'         AdministrativeActions = list(
 #'           list(
-#'             AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'             AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'             ProgressPercent = 123,
 #'             RequestTime = as.POSIXct(
 #'               "2015-01-01"
@@ -5566,6 +5759,10 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                   FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'                   FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'                   AuditLogDestination = "string"
+#'                 ),
+#'                 DiskIopsConfiguration = list(
+#'                   Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'                   Iops = 123
 #'                 )
 #'               ),
 #'               LustreConfiguration = list(
@@ -5637,14 +5834,20 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'                 CopyTagsToBackups = TRUE|FALSE,
 #'                 CopyTagsToVolumes = TRUE|FALSE,
 #'                 DailyAutomaticBackupStartTime = "string",
-#'                 DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'                 DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'                 ThroughputCapacity = 123,
 #'                 WeeklyMaintenanceStartTime = "string",
 #'                 DiskIopsConfiguration = list(
 #'                   Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'                   Iops = 123
 #'                 ),
-#'                 RootVolumeId = "string"
+#'                 RootVolumeId = "string",
+#'                 PreferredSubnetId = "string",
+#'                 EndpointIpAddressRange = "string",
+#'                 RouteTableIds = list(
+#'                   "string"
+#'                 ),
+#'                 EndpointIpAddress = "string"
 #'               )
 #'             ),
 #'             FailureDetails = list(
@@ -5772,7 +5975,7 @@ fsx_describe_backups <- function(BackupIds = NULL, Filters = NULL, MaxResults = 
 #' Cache data repository associations, if one or more `AssociationIds`
 #' values are provided in the request, or if filters are used in the
 #' request. Data repository associations are supported on Amazon File Cache
-#' resources and all FSx for Lustre 2.12 and newer file systems, excluding
+#' resources and all FSx for Lustre 2.12 and 2,15 file systems, excluding
 #' `scratch_1` deployment type.
 #' 
 #' You can use filters to narrow the response to include just data
@@ -5987,7 +6190,13 @@ fsx_describe_data_repository_associations <- function(AssociationIds = NULL, Fil
 #'         Scope = "FAILED_FILES_ONLY"
 #'       ),
 #'       CapacityToRelease = 123,
-#'       FileCacheId = "string"
+#'       FileCacheId = "string",
+#'       ReleaseConfiguration = list(
+#'         DurationSinceLastAccess = list(
+#'           Unit = "DAYS",
+#'           Value = 123
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -6345,6 +6554,10 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'           FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'           FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'           AuditLogDestination = "string"
+#'         ),
+#'         DiskIopsConfiguration = list(
+#'           Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'           Iops = 123
 #'         )
 #'       ),
 #'       LustreConfiguration = list(
@@ -6380,7 +6593,7 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -6547,14 +6760,20 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'         CopyTagsToBackups = TRUE|FALSE,
 #'         CopyTagsToVolumes = TRUE|FALSE,
 #'         DailyAutomaticBackupStartTime = "string",
-#'         DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'         DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'         ThroughputCapacity = 123,
 #'         WeeklyMaintenanceStartTime = "string",
 #'         DiskIopsConfiguration = list(
 #'           Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'           Iops = 123
 #'         ),
-#'         RootVolumeId = "string"
+#'         RootVolumeId = "string",
+#'         PreferredSubnetId = "string",
+#'         EndpointIpAddressRange = "string",
+#'         RouteTableIds = list(
+#'           "string"
+#'         ),
+#'         EndpointIpAddress = "string"
 #'       )
 #'     )
 #'   ),
@@ -6670,7 +6889,7 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -6738,6 +6957,10 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #'                 FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'                 FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'                 AuditLogDestination = "string"
+#'               ),
+#'               DiskIopsConfiguration = list(
+#'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'                 Iops = 123
 #'               )
 #'             ),
 #'             LustreConfiguration = list(
@@ -6809,14 +7032,20 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #'               CopyTagsToBackups = TRUE|FALSE,
 #'               CopyTagsToVolumes = TRUE|FALSE,
 #'               DailyAutomaticBackupStartTime = "string",
-#'               DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'               DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'               ThroughputCapacity = 123,
 #'               WeeklyMaintenanceStartTime = "string",
 #'               DiskIopsConfiguration = list(
 #'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'                 Iops = 123
 #'               ),
-#'               RootVolumeId = "string"
+#'               RootVolumeId = "string",
+#'               PreferredSubnetId = "string",
+#'               EndpointIpAddressRange = "string",
+#'               RouteTableIds = list(
+#'                 "string"
+#'               ),
+#'               EndpointIpAddress = "string"
 #'             )
 #'           ),
 #'           FailureDetails = list(
@@ -7179,7 +7408,7 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -7247,6 +7476,10 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'                 FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'                 FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'                 AuditLogDestination = "string"
+#'               ),
+#'               DiskIopsConfiguration = list(
+#'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'                 Iops = 123
 #'               )
 #'             ),
 #'             LustreConfiguration = list(
@@ -7318,14 +7551,20 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'               CopyTagsToBackups = TRUE|FALSE,
 #'               CopyTagsToVolumes = TRUE|FALSE,
 #'               DailyAutomaticBackupStartTime = "string",
-#'               DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'               DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'               ThroughputCapacity = 123,
 #'               WeeklyMaintenanceStartTime = "string",
 #'               DiskIopsConfiguration = list(
 #'                 Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'                 Iops = 123
 #'               ),
-#'               RootVolumeId = "string"
+#'               RootVolumeId = "string",
+#'               PreferredSubnetId = "string",
+#'               EndpointIpAddressRange = "string",
+#'               RouteTableIds = list(
+#'                 "string"
+#'               ),
+#'               EndpointIpAddress = "string"
 #'             )
 #'           ),
 #'           FailureDetails = list(
@@ -7680,6 +7919,10 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'         FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'         FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'         AuditLogDestination = "string"
+#'       ),
+#'       DiskIopsConfiguration = list(
+#'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'         Iops = 123
 #'       )
 #'     ),
 #'     LustreConfiguration = list(
@@ -7715,7 +7958,7 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -7882,14 +8125,20 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'       CopyTagsToBackups = TRUE|FALSE,
 #'       CopyTagsToVolumes = TRUE|FALSE,
 #'       DailyAutomaticBackupStartTime = "string",
-#'       DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'       DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'       ThroughputCapacity = 123,
 #'       WeeklyMaintenanceStartTime = "string",
 #'       DiskIopsConfiguration = list(
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'         Iops = 123
 #'       ),
-#'       RootVolumeId = "string"
+#'       RootVolumeId = "string",
+#'       PreferredSubnetId = "string",
+#'       EndpointIpAddressRange = "string",
+#'       RouteTableIds = list(
+#'         "string"
+#'       ),
+#'       EndpointIpAddress = "string"
 #'     )
 #'   )
 #' )
@@ -7962,7 +8211,7 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'   Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
 #'   AdministrativeActions = list(
 #'     list(
-#'       AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'       AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'       ProgressPercent = 123,
 #'       RequestTime = as.POSIXct(
 #'         "2015-01-01"
@@ -8030,6 +8279,10 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'             FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'             FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'             AuditLogDestination = "string"
+#'           ),
+#'           DiskIopsConfiguration = list(
+#'             Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'             Iops = 123
 #'           )
 #'         ),
 #'         LustreConfiguration = list(
@@ -8101,14 +8354,20 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'           CopyTagsToBackups = TRUE|FALSE,
 #'           CopyTagsToVolumes = TRUE|FALSE,
 #'           DailyAutomaticBackupStartTime = "string",
-#'           DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'           DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'           ThroughputCapacity = 123,
 #'           WeeklyMaintenanceStartTime = "string",
 #'           DiskIopsConfiguration = list(
 #'             Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'             Iops = 123
 #'           ),
-#'           RootVolumeId = "string"
+#'           RootVolumeId = "string",
+#'           PreferredSubnetId = "string",
+#'           EndpointIpAddressRange = "string",
+#'           RouteTableIds = list(
+#'             "string"
+#'           ),
+#'           EndpointIpAddress = "string"
 #'         )
 #'       ),
 #'       FailureDetails = list(
@@ -8400,7 +8659,7 @@ fsx_untag_resource <- function(ResourceARN, TagKeys) {
 #' @description
 #' Updates the configuration of an existing data repository association on
 #' an Amazon FSx for Lustre file system. Data repository associations are
-#' supported on all FSx for Lustre 2.12 and newer file systems, excluding
+#' supported on all FSx for Lustre 2.12 and 2.15 file systems, excluding
 #' `scratch_1` deployment type.
 #'
 #' @usage
@@ -8638,7 +8897,11 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' 
 #' -   `StorageCapacity`
 #' 
+#' -   `StorageType`
+#' 
 #' -   `ThroughputCapacity`
+#' 
+#' -   `DiskIopsConfiguration`
 #' 
 #' -   `WeeklyMaintenanceStartTime`
 #' 
@@ -8684,6 +8947,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' For FSx for OpenZFS file systems, you can update the following
 #' properties:
 #' 
+#' -   `AddRouteTableIds`
+#' 
 #' -   `AutomaticBackupRetentionDays`
 #' 
 #' -   `CopyTagsToBackups`
@@ -8694,6 +8959,8 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' 
 #' -   `DiskIopsConfiguration`
 #' 
+#' -   `RemoveRouteTableIds`
+#' 
 #' -   `StorageCapacity`
 #' 
 #' -   `ThroughputCapacity`
@@ -8703,7 +8970,7 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' @usage
 #' fsx_update_file_system(FileSystemId, ClientRequestToken,
 #'   StorageCapacity, WindowsConfiguration, LustreConfiguration,
-#'   OntapConfiguration, OpenZFSConfiguration)
+#'   OntapConfiguration, OpenZFSConfiguration, StorageType)
 #'
 #' @param FileSystemId &#91;required&#93; The ID of the file system that you are updating.
 #' @param ClientRequestToken A string of up to 63 ASCII characters that Amazon FSx uses to ensure
@@ -8760,6 +9027,7 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' @param LustreConfiguration 
 #' @param OntapConfiguration 
 #' @param OpenZFSConfiguration The configuration updates for an FSx for OpenZFS file system.
+#' @param StorageType 
 #'
 #' @return
 #' A list with the following syntax:
@@ -8827,6 +9095,10 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'         FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'         FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'         AuditLogDestination = "string"
+#'       ),
+#'       DiskIopsConfiguration = list(
+#'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'         Iops = 123
 #'       )
 #'     ),
 #'     LustreConfiguration = list(
@@ -8862,7 +9134,7 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -9029,14 +9301,20 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'       CopyTagsToBackups = TRUE|FALSE,
 #'       CopyTagsToVolumes = TRUE|FALSE,
 #'       DailyAutomaticBackupStartTime = "string",
-#'       DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'       DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'       ThroughputCapacity = 123,
 #'       WeeklyMaintenanceStartTime = "string",
 #'       DiskIopsConfiguration = list(
 #'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'         Iops = 123
 #'       ),
-#'       RootVolumeId = "string"
+#'       RootVolumeId = "string",
+#'       PreferredSubnetId = "string",
+#'       EndpointIpAddressRange = "string",
+#'       RouteTableIds = list(
+#'         "string"
+#'       ),
+#'       EndpointIpAddress = "string"
 #'     )
 #'   )
 #' )
@@ -9067,6 +9345,10 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'       FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'       FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'       AuditLogDestination = "string"
+#'     ),
+#'     DiskIopsConfiguration = list(
+#'       Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'       Iops = 123
 #'     )
 #'   ),
 #'   LustreConfiguration = list(
@@ -9113,8 +9395,15 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'     DiskIopsConfiguration = list(
 #'       Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'       Iops = 123
+#'     ),
+#'     AddRouteTableIds = list(
+#'       "string"
+#'     ),
+#'     RemoveRouteTableIds = list(
+#'       "string"
 #'     )
-#'   )
+#'   ),
+#'   StorageType = "SSD"|"HDD"
 #' )
 #' ```
 #'
@@ -9136,14 +9425,14 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #' @rdname fsx_update_file_system
 #'
 #' @aliases fsx_update_file_system
-fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, StorageCapacity = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, OpenZFSConfiguration = NULL) {
+fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, StorageCapacity = NULL, WindowsConfiguration = NULL, LustreConfiguration = NULL, OntapConfiguration = NULL, OpenZFSConfiguration = NULL, StorageType = NULL) {
   op <- new_operation(
     name = "UpdateFileSystem",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .fsx$update_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, StorageCapacity = StorageCapacity, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, OpenZFSConfiguration = OpenZFSConfiguration)
+  input <- .fsx$update_file_system_input(FileSystemId = FileSystemId, ClientRequestToken = ClientRequestToken, StorageCapacity = StorageCapacity, WindowsConfiguration = WindowsConfiguration, LustreConfiguration = LustreConfiguration, OntapConfiguration = OntapConfiguration, OpenZFSConfiguration = OpenZFSConfiguration, StorageType = StorageType)
   output <- .fsx$update_file_system_output()
   config <- get_config()
   svc <- .fsx$service(config)
@@ -9190,7 +9479,7 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -9258,6 +9547,10 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
 #'               FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'               FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'               AuditLogDestination = "string"
+#'             ),
+#'             DiskIopsConfiguration = list(
+#'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'               Iops = 123
 #'             )
 #'           ),
 #'           LustreConfiguration = list(
@@ -9329,14 +9622,20 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
 #'             CopyTagsToBackups = TRUE|FALSE,
 #'             CopyTagsToVolumes = TRUE|FALSE,
 #'             DailyAutomaticBackupStartTime = "string",
-#'             DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'             DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'             ThroughputCapacity = 123,
 #'             WeeklyMaintenanceStartTime = "string",
 #'             DiskIopsConfiguration = list(
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'               Iops = 123
 #'             ),
-#'             RootVolumeId = "string"
+#'             RootVolumeId = "string",
+#'             PreferredSubnetId = "string",
+#'             EndpointIpAddressRange = "string",
+#'             RouteTableIds = list(
+#'               "string"
+#'             ),
+#'             EndpointIpAddress = "string"
 #'           )
 #'         ),
 #'         FailureDetails = list(
@@ -9692,7 +9991,7 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -9760,6 +10059,10 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'               FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'               FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
 #'               AuditLogDestination = "string"
+#'             ),
+#'             DiskIopsConfiguration = list(
+#'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'               Iops = 123
 #'             )
 #'           ),
 #'           LustreConfiguration = list(
@@ -9831,14 +10134,20 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'             CopyTagsToBackups = TRUE|FALSE,
 #'             CopyTagsToVolumes = TRUE|FALSE,
 #'             DailyAutomaticBackupStartTime = "string",
-#'             DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'             DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
 #'             ThroughputCapacity = 123,
 #'             WeeklyMaintenanceStartTime = "string",
 #'             DiskIopsConfiguration = list(
 #'               Mode = "AUTOMATIC"|"USER_PROVISIONED",
 #'               Iops = 123
 #'             ),
-#'             RootVolumeId = "string"
+#'             RootVolumeId = "string",
+#'             PreferredSubnetId = "string",
+#'             EndpointIpAddressRange = "string",
+#'             RouteTableIds = list(
+#'               "string"
+#'             ),
+#'             EndpointIpAddress = "string"
 #'           )
 #'         ),
 #'         FailureDetails = list(

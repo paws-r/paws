@@ -112,12 +112,12 @@ in RFC 5280.}
 
 \item{IdempotencyToken}{Alphanumeric string that can be used to distinguish between calls to the
 \strong{IssueCertificate} action. Idempotency tokens for \strong{IssueCertificate}
-time out after one minute. Therefore, if you call \strong{IssueCertificate}
-multiple times with the same idempotency token within one minute, Amazon
-Web Services Private CA recognizes that you are requesting only one
-certificate and will issue only one. If you change the idempotency token
-for each call, Amazon Web Services Private CA recognizes that you are
-requesting multiple certificates.}
+time out after five minutes. Therefore, if you call \strong{IssueCertificate}
+multiple times with the same idempotency token within five minutes,
+Amazon Web Services Private CA recognizes that you are requesting only
+one certificate and will issue only one. If you change the idempotency
+token for each call, Amazon Web Services Private CA recognizes that you
+are requesting multiple certificates.}
 }
 \description{
 Uses your private certificate authority (CA), or one that has been shared with you, to issue a client certificate. This action returns the Amazon Resource Name (ARN) of the certificate. You can retrieve the certificate by calling the \code{\link[=acmpca_get_certificate]{get_certificate}} action and specifying the ARN.

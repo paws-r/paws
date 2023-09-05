@@ -3560,7 +3560,8 @@ glue_create_blueprint <- function(Name, Description = NULL, BlueprintLocation, T
 #'     CustomDatatypeConfigured = TRUE|FALSE,
 #'     CustomDatatypes = list(
 #'       "string"
-#'     )
+#'     ),
+#'     Serde = "OpenCSVSerDe"|"LazySimpleSerDe"|"None"
 #'   )
 #' )
 #' ```
@@ -6664,7 +6665,15 @@ glue_create_security_configuration <- function(Name, EncryptionConfiguration) {
 #'     Progress = 123.0,
 #'     MaxCapacity = 123.0,
 #'     SecurityConfiguration = "string",
-#'     GlueVersion = "string"
+#'     GlueVersion = "string",
+#'     NumberOfWorkers = 123,
+#'     WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
+#'     CompletedOn = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExecutionTime = 123.0,
+#'     DPUSeconds = 123.0,
+#'     IdleTimeout = 123
 #'   )
 #' )
 #' ```
@@ -8739,7 +8748,8 @@ glue_get_catalog_import_status <- function(CatalogId = NULL) {
 #'       CustomDatatypeConfigured = TRUE|FALSE,
 #'       CustomDatatypes = list(
 #'         "string"
-#'       )
+#'       ),
+#'       Serde = "OpenCSVSerDe"|"LazySimpleSerDe"|"None"
 #'     )
 #'   )
 #' )
@@ -8847,7 +8857,8 @@ glue_get_classifier <- function(Name) {
 #'         CustomDatatypeConfigured = TRUE|FALSE,
 #'         CustomDatatypes = list(
 #'           "string"
-#'         )
+#'         ),
+#'         Serde = "OpenCSVSerDe"|"LazySimpleSerDe"|"None"
 #'       )
 #'     )
 #'   ),
@@ -15569,7 +15580,15 @@ glue_get_security_configurations <- function(MaxResults = NULL, NextToken = NULL
 #'     Progress = 123.0,
 #'     MaxCapacity = 123.0,
 #'     SecurityConfiguration = "string",
-#'     GlueVersion = "string"
+#'     GlueVersion = "string",
+#'     NumberOfWorkers = 123,
+#'     WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
+#'     CompletedOn = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExecutionTime = 123.0,
+#'     DPUSeconds = 123.0,
+#'     IdleTimeout = 123
 #'   )
 #' )
 #' ```
@@ -19301,7 +19320,15 @@ glue_list_schemas <- function(RegistryId = NULL, MaxResults = NULL, NextToken = 
 #'       Progress = 123.0,
 #'       MaxCapacity = 123.0,
 #'       SecurityConfiguration = "string",
-#'       GlueVersion = "string"
+#'       GlueVersion = "string",
+#'       NumberOfWorkers = 123,
+#'       WorkerType = "Standard"|"G.1X"|"G.2X"|"G.025X"|"G.4X"|"G.8X"|"Z.2X",
+#'       CompletedOn = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExecutionTime = 123.0,
+#'       DPUSeconds = 123.0,
+#'       IdleTimeout = 123
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -21727,7 +21754,8 @@ glue_update_blueprint <- function(Name, Description = NULL, BlueprintLocation) {
 #'     CustomDatatypeConfigured = TRUE|FALSE,
 #'     CustomDatatypes = list(
 #'       "string"
-#'     )
+#'     ),
+#'     Serde = "OpenCSVSerDe"|"LazySimpleSerDe"|"None"
 #'   )
 #' )
 #' ```

@@ -8,29 +8,45 @@ ecs_put_account_setting(name, value, principalArn = NULL)
 }
 \arguments{
 \item{name}{[required] The Amazon ECS resource name for which to modify the account setting. If
-\code{serviceLongArnFormat} is specified, the ARN for your Amazon ECS
-services is affected. If \code{taskLongArnFormat} is specified, the ARN and
-resource ID for your Amazon ECS tasks is affected. If
-\code{containerInstanceLongArnFormat} is specified, the ARN and resource ID
-for your Amazon ECS container instances is affected. If \code{awsvpcTrunking}
-is specified, the elastic network interface (ENI) limit for your Amazon
-ECS container instances is affected. If \code{containerInsights} is
-specified, the default setting for Amazon Web Services CloudWatch
-Container Insights for your clusters is affected. If \code{fargateFIPSMode}
-is specified, Fargate FIPS 140 compliance is affected. If
-\code{tagResourceAuthorization} is specified, the opt-in option for tagging
+you specify \code{serviceLongArnFormat}, the ARN for your Amazon ECS services
+is affected. If you specify \code{taskLongArnFormat}, the ARN and resource ID
+for your Amazon ECS tasks is affected. If you specify
+\code{containerInstanceLongArnFormat}, the ARN and resource ID for your
+Amazon ECS container instances is affected. If you specify
+\code{awsvpcTrunking}, the elastic network interface (ENI) limit for your
+Amazon ECS container instances is affected. If you specify
+\code{containerInsights}, the default setting for Amazon Web Services
+CloudWatch Container Insights for your clusters is affected. If you
+specify \code{fargateFIPSMode}, Fargate FIPS 140 compliance is affected. If
+you specify \code{tagResourceAuthorization}, the opt-in option for tagging
 resources on creation is affected. For information about the opt-in
 timeline, see \href{https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-account-settings.html#tag-resources}{Tagging authorization timeline}
-in the \emph{Amazon ECS Developer Guide}.}
+in the \emph{Amazon ECS Developer Guide}. If you specify
+\code{fargateTaskRetirementWaitPeriod}, the wait time to retire a Fargate
+task is affected.}
 
 \item{value}{[required] The account setting value for the specified principal ARN. Accepted
-values are \code{enabled}, \code{disabled}, \code{on}, and \code{off}.}
+values are \code{enabled}, \code{disabled}, \code{on}, and \code{off}.
+
+When you specify \code{fargateTaskRetirementWaitPeriod} for the \code{name}, the
+following are the valid values:
+\itemize{
+\item \code{0} - immediately retire the tasks and patch Fargate
+
+There is no advanced notification. Your tasks are retired
+immediately, and Fargate is patched without any notification.
+\item \code{7} -wait 7 calendar days to retire the tasks and patch Fargate
+\item \code{14} - wait 14 calendar days to retire the tasks and patch Fargate
+}}
 
 \item{principalArn}{The ARN of the principal, which can be a user, role, or the root user.
 If you specify the root user, it modifies the account setting for all
 users, roles, and the root user of the account unless a user or role
 explicitly overrides these settings. If this field is omitted, the
 setting is changed only for the authenticated user.
+
+You must use the root user when you set the Fargate wait time
+(\code{fargateTaskRetirementWaitPeriod}).
 
 Federated users assume the account setting of the root user and can't
 have explicit account settings set for them.}

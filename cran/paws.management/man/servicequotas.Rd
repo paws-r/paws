@@ -54,9 +54,9 @@ Operations section.
 }
 \description{
 With Service Quotas, you can view and manage your quotas easily as your
-AWS workloads grow. Quotas, also referred to as limits, are the maximum
-number of resources that you can create in your AWS account. For more
-information, see the \href{https://docs.aws.amazon.com/servicequotas/latest/userguide/}{Service Quotas User Guide}.
+Amazon Web Services workloads grow. Quotas, also referred to as limits,
+are the maximum number of resources that you can create in your Amazon
+Web Services account. For more information, see the \href{https://docs.aws.amazon.com/servicequotas/latest/userguide/}{Service Quotas User Guide}.
 }
 \section{Service syntax}{
 
@@ -105,12 +105,12 @@ information, see the \href{https://docs.aws.amazon.com/servicequotas/latest/user
 \link[=servicequotas_get_requested_service_quota_change]{get_requested_service_quota_change} \tab Retrieves information about the specified quota increase request\cr
 \link[=servicequotas_get_service_quota]{get_service_quota} \tab Retrieves the applied quota value for the specified quota\cr
 \link[=servicequotas_get_service_quota_increase_request_from_template]{get_service_quota_increase_request_from_template} \tab Retrieves information about the specified quota increase request in your quota request template\cr
-\link[=servicequotas_list_aws_default_service_quotas]{list_aws_default_service_quotas} \tab Lists the default values for the quotas for the specified AWS service\cr
-\link[=servicequotas_list_requested_service_quota_change_history]{list_requested_service_quota_change_history} \tab Retrieves the quota increase requests for the specified service\cr
+\link[=servicequotas_list_aws_default_service_quotas]{list_aws_default_service_quotas} \tab Lists the default values for the quotas for the specified Amazon Web Service\cr
+\link[=servicequotas_list_requested_service_quota_change_history]{list_requested_service_quota_change_history} \tab Retrieves the quota increase requests for the specified Amazon Web Service\cr
 \link[=servicequotas_list_requested_service_quota_change_history_by_quota]{list_requested_service_quota_change_history_by_quota} \tab Retrieves the quota increase requests for the specified quota\cr
 \link[=servicequotas_list_service_quota_increase_requests_in_template]{list_service_quota_increase_requests_in_template} \tab Lists the quota increase requests in the specified quota request template\cr
-\link[=servicequotas_list_service_quotas]{list_service_quotas} \tab Lists the applied quota values for the specified AWS service\cr
-\link[=servicequotas_list_services]{list_services} \tab Lists the names and codes for the services integrated with Service Quotas\cr
+\link[=servicequotas_list_service_quotas]{list_service_quotas} \tab Lists the applied quota values for the specified Amazon Web Service\cr
+\link[=servicequotas_list_services]{list_services} \tab Lists the names and codes for the Amazon Web Services integrated with Service Quotas\cr
 \link[=servicequotas_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags assigned to the specified applied quota\cr
 \link[=servicequotas_put_service_quota_increase_request_into_template]{put_service_quota_increase_request_into_template} \tab Adds a quota increase request to your quota request template\cr
 \link[=servicequotas_request_service_quota_increase]{request_service_quota_increase} \tab Submits a quota increase request for the specified quota\cr

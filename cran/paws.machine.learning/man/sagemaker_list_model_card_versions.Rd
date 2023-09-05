@@ -24,7 +24,8 @@ specified.}
 
 \item{MaxResults}{The maximum number of model card versions to list.}
 
-\item{ModelCardName}{[required] List model card versions for the model card with the specified name.}
+\item{ModelCardName}{[required] List model card versions for the model card with the specified name or
+Amazon Resource Name (ARN).}
 
 \item{ModelCardStatus}{Only list model card versions with the specified approval status.}
 

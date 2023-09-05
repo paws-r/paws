@@ -28,7 +28,7 @@ servicecatalog_search_provisioned_products(
 
 When the key is \code{SearchQuery}, the searchable fields are \code{arn},
 \code{createdTime}, \code{id}, \code{lastRecordId}, \code{idempotencyToken}, \code{name},
-\code{physicalId}, \code{productId}, \code{provisioningArtifact}, \code{type}, \code{status},
+\code{physicalId}, \code{productId}, \code{provisioningArtifactId}, \code{type}, \code{status},
 \code{tags}, \code{userArn}, \code{userArnSession}, \code{lastProvisioningRecordId},
 \code{lastSuccessfulProvisioningRecordId}, \code{productName}, and
 \code{provisioningArtifactName}.

@@ -32,8 +32,8 @@ NULL
 #' determine the actual configuration of your gateway.
 #' 
 #' For more information, see [Getting activation
-#' key](https://docs.aws.amazon.com/storagegateway/index.html) in the
-#' *Storage Gateway User Guide*.
+#' key](https://docs.aws.amazon.com/storagegateway/) in the *Storage
+#' Gateway User Guide*.
 #' @param GatewayName &#91;required&#93; The name you configured for your gateway.
 #' @param GatewayTimezone &#91;required&#93; A value that indicates the time zone you want to set for the gateway.
 #' The time zone is of the format "GMT-hr:mm" or "GMT+hr:mm". For example,
@@ -143,7 +143,7 @@ storagegateway_activate_gateway <- function(ActivationKey, GatewayName, GatewayT
 #' Configures one or more gateway local disks as cache for a gateway. This
 #' operation is only supported in the cached volume, tape, and file gateway
 #' type (see [How Storage Gateway works
-#' (architecture)](https://docs.aws.amazon.com/storagegateway/index.html).
+#' (architecture)](https://docs.aws.amazon.com/storagegateway/).
 #' 
 #' In the request, you specify the gateway Amazon Resource Name (ARN) to
 #' which you want to add cache, and one or more disk IDs that you want to
@@ -1282,8 +1282,8 @@ storagegateway_create_nfs_file_share <- function(ClientToken, NFSFileShareDefaul
 #' 
 #' For more information, see [Using Microsoft Windows ACLs to control
 #' access to an SMB file
-#' share](https://docs.aws.amazon.com/storagegateway/index.html) in the
-#' *Storage Gateway User Guide*.
+#' share](https://docs.aws.amazon.com/storagegateway/) in the *Storage
+#' Gateway User Guide*.
 #' 
 #' Valid Values: `true` | `false`
 #' @param AccessBasedEnumeration The files and folders on this share will only be visible to users with
@@ -1452,7 +1452,7 @@ storagegateway_create_smb_file_share <- function(ClientToken, GatewayARN, KMSEnc
 #' snapshots of your gateway volume on a scheduled or ad hoc basis. This
 #' API enables you to take an ad hoc snapshot. For more information, see
 #' [Editing a snapshot
-#' schedule](https://docs.aws.amazon.com/storagegateway/index.html#SchedulingSnapshot).
+#' schedule](https://docs.aws.amazon.com/storagegateway/#SchedulingSnapshot).
 #' 
 #' In the [`create_snapshot`][storagegateway_create_snapshot] request, you
 #' identify the volume by providing its Amazon Resource Name (ARN). You
@@ -2408,7 +2408,7 @@ storagegateway_delete_gateway <- function(GatewayARN) {
 #' You can take snapshots of your gateway volumes on a scheduled or ad hoc
 #' basis. This API action enables you to delete a snapshot schedule for a
 #' volume. For more information, see [Backing up your
-#' volumes](https://docs.aws.amazon.com/storagegateway/index.html). In the
+#' volumes](https://docs.aws.amazon.com/storagegateway/). In the
 #' [`delete_snapshot_schedule`][storagegateway_delete_snapshot_schedule]
 #' request, you identify the volume by providing its Amazon Resource Name
 #' (ARN). This operation is only supported for cached volume gateway types.
@@ -5435,7 +5435,7 @@ storagegateway_list_volumes <- function(GatewayARN = NULL, Marker = NULL, Limit 
 #' function. This operation is only supported for S3 File Gateways.
 #' 
 #' For more information, see [Getting file upload
-#' notification](https://docs.aws.amazon.com/storagegateway/index.html#get-upload-notification)
+#' notification](https://docs.aws.amazon.com/storagegateway/#get-upload-notification)
 #' in the *Storage Gateway User Guide*.
 #'
 #' @usage
@@ -5495,7 +5495,7 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #' You can subscribe to be notified through an Amazon CloudWatch event when
 #' your [`refresh_cache`][storagegateway_refresh_cache] operation
 #' completes. For more information, see [Getting notified about file
-#' operations](https://docs.aws.amazon.com/storagegateway/index.html#get-notification)
+#' operations](https://docs.aws.amazon.com/storagegateway/#get-notification)
 #' in the *Storage Gateway User Guide*. This operation is Only supported
 #' for S3 File Gateways.
 #' 
@@ -5511,7 +5511,7 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #' more than two refreshes at any time. We recommend using the
 #' refresh-complete CloudWatch event notification before issuing additional
 #' requests. For more information, see [Getting notified about file
-#' operations](https://docs.aws.amazon.com/storagegateway/index.html#get-notification)
+#' operations](https://docs.aws.amazon.com/storagegateway/#get-notification)
 #' in the *Storage Gateway User Guide*.
 #' 
 #' -   Wait at least 60 seconds between consecutive RefreshCache API
@@ -5529,7 +5529,7 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #' of folders in the FolderList parameter.
 #' 
 #' For more information, see [Getting notified about file
-#' operations](https://docs.aws.amazon.com/storagegateway/index.html#get-notification)
+#' operations](https://docs.aws.amazon.com/storagegateway/#get-notification)
 #' in the *Storage Gateway User Guide*.
 #'
 #' @usage
@@ -6653,9 +6653,9 @@ storagegateway_update_gateway_information <- function(GatewayARN, GatewayName = 
 #' your iSCSI Initiators' timeouts. For more information about increasing
 #' iSCSI Initiator timeouts for Windows and Linux, see [Customizing your
 #' Windows iSCSI
-#' settings](https://docs.aws.amazon.com/storagegateway/index.html#CustomizeWindowsiSCSISettings)
+#' settings](https://docs.aws.amazon.com/storagegateway/#CustomizeWindowsiSCSISettings)
 #' and [Customizing your Linux iSCSI
-#' settings](https://docs.aws.amazon.com/storagegateway/index.html#CustomizeLinuxiSCSISettings),
+#' settings](https://docs.aws.amazon.com/storagegateway/#CustomizeLinuxiSCSISettings),
 #' respectively.
 #'
 #' @usage
@@ -7022,8 +7022,8 @@ storagegateway_update_nfs_file_share <- function(FileShareARN, KMSEncrypted = NU
 #' 
 #' For more information, see [Using Microsoft Windows ACLs to control
 #' access to an SMB file
-#' share](https://docs.aws.amazon.com/storagegateway/index.html) in the
-#' *Storage Gateway User Guide*.
+#' share](https://docs.aws.amazon.com/storagegateway/) in the *Storage
+#' Gateway User Guide*.
 #' 
 #' Valid Values: `true` | `false`
 #' @param AccessBasedEnumeration The files and folders on this share will only be visible to users with

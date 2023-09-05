@@ -3,18 +3,18 @@
 \name{ses_update_configuration_set_sending_enabled}
 \alias{ses_update_configuration_set_sending_enabled}
 \title{Enables or disables email sending for messages sent using a specific
-configuration set in a given AWS Region}
+configuration set in a given Amazon Web Services Region}
 \usage{
 ses_update_configuration_set_sending_enabled(ConfigurationSetName, Enabled)
 }
 \arguments{
-\item{ConfigurationSetName}{[required] The name of the configuration set that you want to update.}
+\item{ConfigurationSetName}{[required] The name of the configuration set to update.}
 
 \item{Enabled}{[required] Describes whether email sending is enabled or disabled for the
 configuration set.}
 }
 \description{
-Enables or disables email sending for messages sent using a specific configuration set in a given AWS Region. You can use this operation in conjunction with Amazon CloudWatch alarms to temporarily pause email sending for a configuration set when the reputation metrics for that configuration set (such as your bounce on complaint rate) exceed certain thresholds.
+Enables or disables email sending for messages sent using a specific configuration set in a given Amazon Web Services Region. You can use this operation in conjunction with Amazon CloudWatch alarms to temporarily pause email sending for a configuration set when the reputation metrics for that configuration set (such as your bounce on complaint rate) exceed certain thresholds.
 
 See \url{https://www.paws-r-sdk.com/docs/ses_update_configuration_set_sending_enabled/} for full documentation.
 }

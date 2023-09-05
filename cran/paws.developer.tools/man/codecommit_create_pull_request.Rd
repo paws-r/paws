@@ -28,8 +28,9 @@ parameter. If a request is received with the same parameters and a token
 is included, the request returns information about the initial request
 that used that token.
 
-The AWS SDKs prepopulate client request tokens. If you are using an AWS
-SDK, an idempotency token is created for you.}
+The Amazon Web ServicesSDKs prepopulate client request tokens. If you
+are using an Amazon Web ServicesSDK, an idempotency token is created for
+you.}
 }
 \description{
 Creates a pull request in the specified repository.

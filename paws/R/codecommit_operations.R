@@ -505,14 +505,14 @@ codecommit_batch_get_repositories <- function(repositoryNames) {
 .codecommit$operations$batch_get_repositories <- codecommit_batch_get_repositories
 
 #' Creates a template for approval rules that can then be associated with
-#' one or more repositories in your AWS account
+#' one or more repositories in your Amazon Web Services account
 #'
 #' @description
 #' Creates a template for approval rules that can then be associated with
-#' one or more repositories in your AWS account. When you associate a
-#' template with a repository, AWS CodeCommit creates an approval rule that
-#' matches the conditions of the template for all pull requests that meet
-#' the conditions of the template. For more information, see
+#' one or more repositories in your Amazon Web Services account. When you
+#' associate a template with a repository, CodeCommit creates an approval
+#' rule that matches the conditions of the template for all pull requests
+#' that meet the conditions of the template. For more information, see
 #' [`associate_approval_rule_template_with_repository`][codecommit_associate_approval_rule_template_with_repository].
 #'
 #' @usage
@@ -531,13 +531,13 @@ codecommit_batch_get_repositories <- function(repositoryNames) {
 #' When you create the content of the approval rule template, you can
 #' specify approvers in an approval pool in one of two ways:
 #' 
-#' -   **CodeCommitApprovers**: This option only requires an AWS account
-#'     and a resource. It can be used for both IAM users and federated
-#'     access users whose name matches the provided resource name. This is
-#'     a very powerful option that offers a great deal of flexibility. For
-#'     example, if you specify the AWS account *123456789012* and
-#'     *Mary_Major*, all of the following are counted as approvals coming
-#'     from that user:
+#' -   **CodeCommitApprovers**: This option only requires an Amazon Web
+#'     Services account and a resource. It can be used for both IAM users
+#'     and federated access users whose name matches the provided resource
+#'     name. This is a very powerful option that offers a great deal of
+#'     flexibility. For example, if you specify the Amazon Web Services
+#'     account *123456789012* and *Mary_Major*, all of the following are
+#'     counted as approvals coming from that user:
 #' 
 #'     -   An IAM user in the account
 #'         (arn:aws:iam::*123456789012*:user/*Mary_Major*)
@@ -799,8 +799,9 @@ codecommit_create_commit <- function(repositoryName, branchName, parentCommitId 
 #' is included, the request returns information about the initial request
 #' that used that token.
 #' 
-#' The AWS SDKs prepopulate client request tokens. If you are using an AWS
-#' SDK, an idempotency token is created for you.
+#' The Amazon Web ServicesSDKs prepopulate client request tokens. If you
+#' are using an Amazon Web ServicesSDK, an idempotency token is created for
+#' you.
 #'
 #' @return
 #' A list with the following syntax:
@@ -911,19 +912,19 @@ codecommit_create_pull_request <- function(title, description = NULL, targets, c
 #' @param approvalRuleName &#91;required&#93; The name for the approval rule.
 #' @param approvalRuleContent &#91;required&#93; The content of the approval rule, including the number of approvals
 #' needed and the structure of an approval pool defined for approvals, if
-#' any. For more information about approval pools, see the AWS CodeCommit
-#' User Guide.
+#' any. For more information about approval pools, see the CodeCommit User
+#' Guide.
 #' 
 #' When you create the content of the approval rule, you can specify
 #' approvers in an approval pool in one of two ways:
 #' 
-#' -   **CodeCommitApprovers**: This option only requires an AWS account
-#'     and a resource. It can be used for both IAM users and federated
-#'     access users whose name matches the provided resource name. This is
-#'     a very powerful option that offers a great deal of flexibility. For
-#'     example, if you specify the AWS account *123456789012* and
-#'     *Mary_Major*, all of the following would be counted as approvals
-#'     coming from that user:
+#' -   **CodeCommitApprovers**: This option only requires an Amazon Web
+#'     Services account and a resource. It can be used for both IAM users
+#'     and federated access users whose name matches the provided resource
+#'     name. This is a very powerful option that offers a great deal of
+#'     flexibility. For example, if you specify the Amazon Web Services
+#'     account *123456789012* and *Mary_Major*, all of the following would
+#'     be counted as approvals coming from that user:
 #' 
 #'     -   An IAM user in the account
 #'         (arn:aws:iam::*123456789012*:user/*Mary_Major*)
@@ -1010,12 +1011,12 @@ codecommit_create_pull_request_approval_rule <- function(pullRequestId, approval
 #'
 #' @param repositoryName &#91;required&#93; The name of the new repository to be created.
 #' 
-#' The repository name must be unique across the calling AWS account.
-#' Repository names are limited to 100 alphanumeric, dash, and underscore
-#' characters, and cannot include certain characters. For more information
-#' about the limits on repository names, see
-#' [Limits](https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html)
-#' in the *AWS CodeCommit User Guide*. The suffix .git is prohibited.
+#' The repository name must be unique across the calling Amazon Web
+#' Services account. Repository names are limited to 100 alphanumeric,
+#' dash, and underscore characters, and cannot include certain characters.
+#' For more information about the limits on repository names, see
+#' [Quotas](https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html)
+#' in the *CodeCommit User Guide*. The suffix .git is prohibited.
 #' @param repositoryDescription A comment or description about the new repository.
 #' 
 #' The description field for a repository accepts all HTML characters and
@@ -2354,11 +2355,17 @@ codecommit_get_comments_for_compared_commit <- function(repositoryName, beforeCo
 #'
 #' @param pullRequestId &#91;required&#93; The system-generated ID of the pull request. To get this ID, use
 #' [`list_pull_requests`][codecommit_list_pull_requests].
-#' @param repositoryName The name of the repository that contains the pull request.
+#' @param repositoryName The name of the repository that contains the pull request. Requirement
+#' is conditional: `repositoryName` must be specified when `beforeCommitId`
+#' and `afterCommitId` are included.
 #' @param beforeCommitId The full commit ID of the commit in the destination branch that was the
-#' tip of the branch at the time the pull request was created.
+#' tip of the branch at the time the pull request was created. Requirement
+#' is conditional: `beforeCommitId` must be specified when `repositoryName`
+#' is included.
 #' @param afterCommitId The full commit ID of the commit in the source branch that was the tip
-#' of the branch at the time the comment was made.
+#' of the branch at the time the comment was made. Requirement is
+#' conditional: `afterCommitId` must be specified when `repositoryName` is
+#' included.
 #' @param nextToken An enumeration token that, when provided in a request, returns the next
 #' batch of the results.
 #' @param maxResults A non-zero, non-negative integer used to limit the number of returned
@@ -2618,7 +2625,7 @@ codecommit_get_differences <- function(repositoryName, beforeCommitSpecifier = N
 #' @param repositoryName &#91;required&#93; The name of the repository that contains the file.
 #' @param commitSpecifier The fully quaified reference that identifies the commit that contains
 #' the file. For example, you can specify a full commit ID, a tag, a branch
-#' name, or a reference such as refs/heads/master. If none is provided, the
+#' name, or a reference such as refs/heads/main. If none is provided, the
 #' head commit is used.
 #' @param filePath &#91;required&#93; The fully qualified path to the file, including the full name and
 #' extension of the file. For example, /examples/file.md is the fully
@@ -3357,13 +3364,14 @@ codecommit_get_repository_triggers <- function(repositoryName) {
 }
 .codecommit$operations$get_repository_triggers <- codecommit_get_repository_triggers
 
-#' Lists all approval rule templates in the specified AWS Region in your
-#' AWS account
+#' Lists all approval rule templates in the specified Amazon Web Services
+#' Region in your Amazon Web Services account
 #'
 #' @description
-#' Lists all approval rule templates in the specified AWS Region in your
-#' AWS account. If an AWS Region is not specified, the AWS Region where you
-#' are signed in is used.
+#' Lists all approval rule templates in the specified Amazon Web Services
+#' Region in your Amazon Web Services account. If an Amazon Web Services
+#' Region is not specified, the Amazon Web Services Region where you are
+#' signed in is used.
 #'
 #' @usage
 #' codecommit_list_approval_rule_templates(nextToken, maxResults)
@@ -3526,6 +3534,95 @@ codecommit_list_branches <- function(repositoryName, nextToken = NULL) {
 }
 .codecommit$operations$list_branches <- codecommit_list_branches
 
+#' Retrieves a list of commits and changes to a specified file
+#'
+#' @description
+#' Retrieves a list of commits and changes to a specified file.
+#'
+#' @usage
+#' codecommit_list_file_commit_history(repositoryName, commitSpecifier,
+#'   filePath, maxResults, nextToken)
+#'
+#' @param repositoryName &#91;required&#93; The name of the repository that contains the file.
+#' @param commitSpecifier The fully quaified reference that identifies the commit that contains
+#' the file. For example, you can specify a full commit ID, a tag, a branch
+#' name, or a reference such as `refs/heads/main`. If none is provided, the
+#' head commit is used.
+#' @param filePath &#91;required&#93; The full path of the file whose history you want to retrieve, including
+#' the name of the file.
+#' @param maxResults A non-zero, non-negative integer used to limit the number of returned
+#' results.
+#' @param nextToken An enumeration token that allows the operation to batch the results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   revisionDag = list(
+#'     list(
+#'       commit = list(
+#'         commitId = "string",
+#'         treeId = "string",
+#'         parents = list(
+#'           "string"
+#'         ),
+#'         message = "string",
+#'         author = list(
+#'           name = "string",
+#'           email = "string",
+#'           date = "string"
+#'         ),
+#'         committer = list(
+#'           name = "string",
+#'           email = "string",
+#'           date = "string"
+#'         ),
+#'         additionalData = "string"
+#'       ),
+#'       blobId = "string",
+#'       path = "string",
+#'       revisionChildren = list(
+#'         "string"
+#'       )
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_file_commit_history(
+#'   repositoryName = "string",
+#'   commitSpecifier = "string",
+#'   filePath = "string",
+#'   maxResults = 123,
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname codecommit_list_file_commit_history
+#'
+#' @aliases codecommit_list_file_commit_history
+codecommit_list_file_commit_history <- function(repositoryName, commitSpecifier = NULL, filePath, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListFileCommitHistory",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", limit_key = "maxResults", output_token = "nextToken")
+  )
+  input <- .codecommit$list_file_commit_history_input(repositoryName = repositoryName, commitSpecifier = commitSpecifier, filePath = filePath, maxResults = maxResults, nextToken = nextToken)
+  output <- .codecommit$list_file_commit_history_output()
+  config <- get_config()
+  svc <- .codecommit$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.codecommit$operations$list_file_commit_history <- codecommit_list_file_commit_history
+
 #' Returns a list of pull requests for a specified repository
 #'
 #' @description
@@ -3601,7 +3698,7 @@ codecommit_list_pull_requests <- function(repositoryName, authorArn = NULL, pull
 #'
 #' @param nextToken An enumeration token that allows the operation to batch the results of
 #' the operation. Batch sizes are 1,000 for list repository operations.
-#' When the client sends the token back to AWS CodeCommit, another page of
+#' When the client sends the token back to CodeCommit, another page of
 #' 1,000 records is retrieved.
 #' @param sortBy The criteria used to sort the results of a list repositories operation.
 #' @param order The order in which to sort the results of a list repositories operation.
@@ -3711,15 +3808,15 @@ codecommit_list_repositories_for_approval_rule_template <- function(approvalRule
 }
 .codecommit$operations$list_repositories_for_approval_rule_template <- codecommit_list_repositories_for_approval_rule_template
 
-#' Gets information about AWS tags for a specified Amazon Resource Name
-#' (ARN) in AWS CodeCommit
+#' Gets information about Amazon Web Servicestags for a specified Amazon
+#' Resource Name (ARN) in CodeCommit
 #'
 #' @description
-#' Gets information about AWS tags for a specified Amazon Resource Name
-#' (ARN) in AWS CodeCommit. For a list of valid resources in AWS
+#' Gets information about Amazon Web Servicestags for a specified Amazon
+#' Resource Name (ARN) in CodeCommit. For a list of valid resources in
 #' CodeCommit, see [CodeCommit Resources and
 #' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats)
-#' in the *AWS CodeCommit User Guide*.
+#' in the *CodeCommit User Guide*.
 #'
 #' @usage
 #' codecommit_list_tags_for_resource(resourceArn, nextToken)
@@ -4818,8 +4915,8 @@ codecommit_post_comment_reply <- function(inReplyTo, clientRequestToken = NULL, 
 #' @param commentId &#91;required&#93; The ID of the comment to which you want to add or update a reaction.
 #' @param reactionValue &#91;required&#93; The emoji reaction you want to add or update. To remove a reaction,
 #' provide a value of blank or null. You can also provide the value of
-#' none. For information about emoji reaction values supported in AWS
-#' CodeCommit, see the [AWS CodeCommit User
+#' none. For information about emoji reaction values supported in
+#' CodeCommit, see the [CodeCommit User
 #' Guide](https://docs.aws.amazon.com/codecommit/latest/userguide/how-to-commit-comment.html#emoji-reaction-table).
 #'
 #' @return
@@ -4855,11 +4952,11 @@ codecommit_put_comment_reaction <- function(commentId, reactionValue) {
 }
 .codecommit$operations$put_comment_reaction <- codecommit_put_comment_reaction
 
-#' Adds or updates a file in a branch in an AWS CodeCommit repository, and
+#' Adds or updates a file in a branch in an CodeCommit repository, and
 #' generates a commit for the addition in the specified branch
 #'
 #' @description
-#' Adds or updates a file in a branch in an AWS CodeCommit repository, and
+#' Adds or updates a file in a branch in an CodeCommit repository, and
 #' generates a commit for the addition in the specified branch.
 #'
 #' @usage
@@ -5002,13 +5099,13 @@ codecommit_put_repository_triggers <- function(repositoryName, triggers) {
 }
 .codecommit$operations$put_repository_triggers <- codecommit_put_repository_triggers
 
-#' Adds or updates tags for a resource in AWS CodeCommit
+#' Adds or updates tags for a resource in CodeCommit
 #'
 #' @description
-#' Adds or updates tags for a resource in AWS CodeCommit. For a list of
-#' valid resources in AWS CodeCommit, see [CodeCommit Resources and
+#' Adds or updates tags for a resource in CodeCommit. For a list of valid
+#' resources in CodeCommit, see [CodeCommit Resources and
 #' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats)
-#' in the *AWS CodeCommit User Guide*.
+#' in the *CodeCommit User Guide*.
 #'
 #' @usage
 #' codecommit_tag_resource(resourceArn, tags)
@@ -5125,13 +5222,13 @@ codecommit_test_repository_triggers <- function(repositoryName, triggers) {
 }
 .codecommit$operations$test_repository_triggers <- codecommit_test_repository_triggers
 
-#' Removes tags for a resource in AWS CodeCommit
+#' Removes tags for a resource in CodeCommit
 #'
 #' @description
-#' Removes tags for a resource in AWS CodeCommit. For a list of valid
-#' resources in AWS CodeCommit, see [CodeCommit Resources and
+#' Removes tags for a resource in CodeCommit. For a list of valid resources
+#' in CodeCommit, see [CodeCommit Resources and
 #' Operations](https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats)
-#' in the *AWS CodeCommit User Guide*.
+#' in the *CodeCommit User Guide*.
 #'
 #' @usage
 #' codecommit_untag_resource(resourceArn, tagKeys)
@@ -5456,8 +5553,9 @@ codecommit_update_comment <- function(commentId, content) {
 #' @usage
 #' codecommit_update_default_branch(repositoryName, defaultBranchName)
 #'
-#' @param repositoryName &#91;required&#93; The name of the repository to set or change the default branch for.
-#' @param defaultBranchName &#91;required&#93; The name of the branch to set as the default.
+#' @param repositoryName &#91;required&#93; The name of the repository for which you want to set or change the
+#' default branch.
+#' @param defaultBranchName &#91;required&#93; The name of the branch to set as the default branch.
 #'
 #' @return
 #' An empty list.
@@ -5514,13 +5612,13 @@ codecommit_update_default_branch <- function(repositoryName, defaultBranchName) 
 #' When you update the content of the approval rule, you can specify
 #' approvers in an approval pool in one of two ways:
 #' 
-#' -   **CodeCommitApprovers**: This option only requires an AWS account
-#'     and a resource. It can be used for both IAM users and federated
-#'     access users whose name matches the provided resource name. This is
-#'     a very powerful option that offers a great deal of flexibility. For
-#'     example, if you specify the AWS account *123456789012* and
-#'     *Mary_Major*, all of the following are counted as approvals coming
-#'     from that user:
+#' -   **CodeCommitApprovers**: This option only requires an Amazon Web
+#'     Services account and a resource. It can be used for both IAM users
+#'     and federated access users whose name matches the provided resource
+#'     name. This is a very powerful option that offers a great deal of
+#'     flexibility. For example, if you specify the Amazon Web Services
+#'     account *123456789012* and *Mary_Major*, all of the following are
+#'     counted as approvals coming from that user:
 #' 
 #'     -   An IAM user in the account
 #'         (arn:aws:iam::*123456789012*:user/*Mary_Major*)
@@ -6003,12 +6101,12 @@ codecommit_update_repository_description <- function(repositoryName, repositoryD
 #'
 #' @description
 #' Renames a repository. The repository name must be unique across the
-#' calling AWS account. Repository names are limited to 100 alphanumeric,
-#' dash, and underscore characters, and cannot include certain characters.
-#' The suffix .git is prohibited. For more information about the limits on
-#' repository names, see
-#' [Limits](https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html)
-#' in the AWS CodeCommit User Guide.
+#' calling Amazon Web Services account. Repository names are limited to 100
+#' alphanumeric, dash, and underscore characters, and cannot include
+#' certain characters. The suffix .git is prohibited. For more information
+#' about the limits on repository names, see
+#' [Quotas](https://docs.aws.amazon.com/codecommit/latest/userguide/limits.html)
+#' in the CodeCommit User Guide.
 #'
 #' @usage
 #' codecommit_update_repository_name(oldName, newName)

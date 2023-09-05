@@ -2,8 +2,8 @@
 % Please edit documentation in R/codecommit_operations.R
 \name{codecommit_list_tags_for_resource}
 \alias{codecommit_list_tags_for_resource}
-\title{Gets information about AWS tags for a specified Amazon Resource Name
-(ARN) in AWS CodeCommit}
+\title{Gets information about Amazon Web Servicestags for a specified Amazon
+Resource Name (ARN) in CodeCommit}
 \usage{
 codecommit_list_tags_for_resource(resourceArn, nextToken = NULL)
 }
@@ -15,7 +15,7 @@ information about tags, if any.}
 batch of the results.}
 }
 \description{
-Gets information about AWS tags for a specified Amazon Resource Name (ARN) in AWS CodeCommit. For a list of valid resources in AWS CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats}{CodeCommit Resources and Operations} in the \emph{AWS CodeCommit User Guide}.
+Gets information about Amazon Web Servicestags for a specified Amazon Resource Name (ARN) in CodeCommit. For a list of valid resources in CodeCommit, see \href{https://docs.aws.amazon.com/codecommit/latest/userguide/#arn-formats}{CodeCommit Resources and Operations} in the \emph{CodeCommit User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/codecommit_list_tags_for_resource/} for full documentation.
 }

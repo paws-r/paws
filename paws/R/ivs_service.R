@@ -22,7 +22,7 @@ NULL
 #' 
 #' For a summary of notable documentation changes in each release, see
 #' [Document
-#' History](https://docs.aws.amazon.com/ivs/latest/userguide/doc-history.html).
+#' History](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/doc-history.html).
 #' 
 #' **Allowed Header Values**
 #' 
@@ -36,7 +36,7 @@ NULL
 #' 
 #' The following resources contain information about your IVS live stream
 #' (see [Getting Started with Amazon
-#' IVS](https://docs.aws.amazon.com/ivs/latest/userguide/getting-started.html)):
+#' IVS](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/getting-started.html)):
 #' 
 #' -   **Channel** — Stores configuration data related to your live stream.
 #'     You first create a channel and then use the channel’s stream key to
@@ -95,7 +95,7 @@ NULL
 #' -   *Authorization* is about granting permissions. Your IAM roles need
 #'     to have permissions for Amazon IVS API requests. In addition,
 #'     authorization is needed to view [Amazon IVS private
-#'     channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html).
+#'     channels](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html).
 #'     (Private channels are channels that are enabled for "playback
 #'     authorization.")
 #' 
@@ -120,7 +120,7 @@ NULL
 #'     in the *Amazon Web Services General Reference*.
 #' 
 #' -   Managing Amazon IVS permissions — See [Identity and Access
-#'     Management](https://docs.aws.amazon.com/ivs/latest/userguide/security-iam.html)
+#'     Management](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/security-iam.html)
 #'     on the Security page of the *Amazon IVS User Guide*.
 #' 
 #' **Amazon Resource Names (ARNs)**
@@ -206,7 +206,7 @@ NULL
 #' **Private Channel Endpoints**
 #' 
 #' For more information, see [Setting Up Private
-#' Channels](https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html)
+#' Channels](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html)
 #' in the *Amazon IVS User Guide*.
 #' 
 #' -   [`import_playback_key_pair`][ivs_import_playback_key_pair] — Imports

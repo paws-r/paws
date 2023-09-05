@@ -7,7 +7,7 @@
 servicequotas_disassociate_service_quota_template()
 }
 \description{
-Disables your quota request template. After a template is disabled, the quota increase requests in the template are not applied to new accounts in your organization. Disabling a quota request template does not apply its quota increase requests.
+Disables your quota request template. After a template is disabled, the quota increase requests in the template are not applied to new Amazon Web Services accounts in your organization. Disabling a quota request template does not apply its quota increase requests.
 
 See \url{https://www.paws-r-sdk.com/docs/servicequotas_disassociate_service_quota_template/} for full documentation.
 }

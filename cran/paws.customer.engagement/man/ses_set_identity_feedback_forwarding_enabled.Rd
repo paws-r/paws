@@ -11,13 +11,13 @@ ses_set_identity_feedback_forwarding_enabled(Identity, ForwardingEnabled)
 \item{Identity}{[required] The identity for which to set bounce and complaint notification
 forwarding. Examples: \code{user@example.com}, \code{example.com}.}
 
-\item{ForwardingEnabled}{[required] Sets whether Amazon SES will forward bounce and complaint notifications
-as email. \code{true} specifies that Amazon SES will forward bounce and
-complaint notifications as email, in addition to any Amazon SNS topic
-publishing otherwise specified. \code{false} specifies that Amazon SES will
-publish bounce and complaint notifications only through Amazon SNS. This
-value can only be set to \code{false} when Amazon SNS topics are set for both
-\code{Bounce} and \code{Complaint} notification types.}
+\item{ForwardingEnabled}{[required] Sets whether Amazon SES forwards bounce and complaint notifications as
+email. \code{true} specifies that Amazon SES forwards bounce and complaint
+notifications as email, in addition to any Amazon SNS topic publishing
+otherwise specified. \code{false} specifies that Amazon SES publishes bounce
+and complaint notifications only through Amazon SNS. This value can only
+be set to \code{false} when Amazon SNS topics are set for both \code{Bounce} and
+\code{Complaint} notification types.}
 }
 \description{
 Given an identity (an email address or a domain), enables or disables whether Amazon SES forwards bounce and complaint notifications as email. Feedback forwarding can only be disabled when Amazon Simple Notification Service (Amazon SNS) topics are specified for both bounces and complaints.

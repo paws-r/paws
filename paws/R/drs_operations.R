@@ -272,7 +272,7 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #'     tags = list(
 #'       "string"
 #'     ),
-#'     targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"
+#'     targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"|"IN_AWS"
 #'   )
 #' )
 #' ```
@@ -290,7 +290,7 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #'   tags = list(
 #'     "string"
 #'   ),
-#'   targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"
+#'   targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"|"IN_AWS"
 #' )
 #' ```
 #'
@@ -970,7 +970,7 @@ drs_describe_jobs <- function(filters = NULL, maxResults = NULL, nextToken = NUL
 #'       tags = list(
 #'         "string"
 #'       ),
-#'       targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"
+#'       targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"|"IN_AWS"
 #'     )
 #'   ),
 #'   nextToken = "string"
@@ -1903,7 +1903,7 @@ drs_get_failback_replication_configuration <- function(recoveryInstanceID) {
 #'   ),
 #'   name = "string",
 #'   sourceServerID = "string",
-#'   targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"
+#'   targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"|"IN_AWS"
 #' )
 #' ```
 #'
@@ -3436,7 +3436,7 @@ drs_update_failback_replication_configuration <- function(bandwidthThrottling = 
 #'   ),
 #'   name = "string",
 #'   sourceServerID = "string",
-#'   targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"
+#'   targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"|"IN_AWS"
 #' )
 #' ```
 #'
@@ -3451,7 +3451,7 @@ drs_update_failback_replication_configuration <- function(bandwidthThrottling = 
 #'   ),
 #'   name = "string",
 #'   sourceServerID = "string",
-#'   targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"
+#'   targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"|"IN_AWS"
 #' )
 #' ```
 #'
@@ -3512,7 +3512,7 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #'     tags = list(
 #'       "string"
 #'     ),
-#'     targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"
+#'     targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"|"IN_AWS"
 #'   )
 #' )
 #' ```
@@ -3528,7 +3528,7 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #'   licensing = list(
 #'     osByol = TRUE|FALSE
 #'   ),
-#'   targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"
+#'   targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"|"IN_AWS"
 #' )
 #' ```
 #'

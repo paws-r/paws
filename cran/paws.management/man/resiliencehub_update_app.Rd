@@ -9,12 +9,14 @@ resiliencehub_update_app(
   assessmentSchedule = NULL,
   clearResiliencyPolicyArn = NULL,
   description = NULL,
+  eventSubscriptions = NULL,
+  permissionModel = NULL,
   policyArn = NULL
 )
 }
 \arguments{
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
-format for this ARN is:
+\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format
+for this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
 information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference} guide.}
@@ -25,8 +27,16 @@ in the \emph{AWS General Reference} guide.}
 
 \item{description}{The optional description for an app.}
 
-\item{policyArn}{The Amazon Resource Name (ARN) of the resiliency policy. The format for
-this ARN is:
+\item{eventSubscriptions}{The list of events you would like to subscribe and get notification for.
+Currently, Resilience Hub supports notifications only for \strong{Drift
+detected} and \strong{Scheduled assessment failure} events.}
+
+\item{permissionModel}{Defines the roles and credentials that Resilience Hub would use while
+creating an application, importing its resources, and running an
+assessment.}
+
+\item{policyArn}{Amazon Resource Name (ARN) of the resiliency policy. The format for this
+ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:resiliency-policy/\code{policy-id}.
 For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference} guide.}

@@ -2,8 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_create_user_pool}
 \alias{cognitoidentityprovider_create_user_pool}
-\title{Creates a new Amazon Cognito user pool and sets the password policy for
-the pool}
+\title{This action might generate an SMS text message}
 \usage{
 cognitoidentityprovider_create_user_pool(
   PoolName,
@@ -124,13 +123,26 @@ requests.}
 \item{Schema}{An array of schema attributes for the new user pool. These attributes
 can be standard or custom attributes.}
 
-\item{UserPoolAddOns}{Enables advanced security risk detection. Set the key
-\code{AdvancedSecurityMode} to the value "AUDIT".}
+\item{UserPoolAddOns}{User pool add-ons. Contains settings for activation of advanced security
+features. To log user security information but take no action, set to
+\code{AUDIT}. To configure automatic security responses to risky traffic to
+your user pool, set to \code{ENFORCED}.
+
+For more information, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pool-settings-advanced-security.html}{Adding advanced security to a user pool}.}
 
 \item{UsernameConfiguration}{Case sensitivity on the username input for the selected sign-in option.
-For example, when case sensitivity is set to \code{False}, users can sign in
-using either "username" or "Username". This configuration is immutable
-once it has been set. For more information, see
+When case sensitivity is set to \code{False} (case insensitive), users can
+sign in with any combination of capital and lowercase letters. For
+example, \code{username}, \code{USERNAME}, or \code{UserName}, or for email,
+\code{email@example.com} or \code{EMaiL@eXamplE.Com}. For most use cases, set case
+sensitivity to \code{False} (case insensitive) as a best practice. When
+usernames and email addresses are case insensitive, Amazon Cognito
+treats any variation in case as the same user, and prevents a case
+variation from being assigned to the same attribute for a different
+user.
+
+This configuration is immutable after you set it. For more information,
+see
 \href{https://docs.aws.amazon.com/cognito-user-identity-pools/latest/APIReference/API_UsernameConfigurationType.html}{UsernameConfigurationType}.}
 
 \item{AccountRecoverySetting}{The available verified method a user can use to recover their password
@@ -144,7 +156,7 @@ Cognito uses the legacy behavior to determine the recovery method where
 SMS is preferred through email.}
 }
 \description{
-Creates a new Amazon Cognito user pool and sets the password policy for the pool.
+This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_pool/} for full documentation.
 }

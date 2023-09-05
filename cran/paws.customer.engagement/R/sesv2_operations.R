@@ -33,6 +33,35 @@ sesv2_batch_get_metric_data <- function(Queries) {
 }
 .sesv2$operations$batch_get_metric_data <- sesv2_batch_get_metric_data
 
+#' Cancels an export job
+#'
+#' @description
+#' Cancels an export job.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sesv2_cancel_export_job/](https://www.paws-r-sdk.com/docs/sesv2_cancel_export_job/) for full documentation.
+#'
+#' @param JobId &#91;required&#93; The export job ID.
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_cancel_export_job
+sesv2_cancel_export_job <- function(JobId) {
+  op <- new_operation(
+    name = "CancelExportJob",
+    http_method = "PUT",
+    http_path = "/v2/email/export-jobs/{JobId}/cancel",
+    paginator = list()
+  )
+  input <- .sesv2$cancel_export_job_input(JobId = JobId)
+  output <- .sesv2$cancel_export_job_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$cancel_export_job <- sesv2_cancel_export_job
+
 #' Create a configuration set
 #'
 #' @description
@@ -396,6 +425,36 @@ sesv2_create_email_template <- function(TemplateName, TemplateContent) {
   return(response)
 }
 .sesv2$operations$create_email_template <- sesv2_create_email_template
+
+#' Creates an export job for a data source and destination
+#'
+#' @description
+#' Creates an export job for a data source and destination.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sesv2_create_export_job/](https://www.paws-r-sdk.com/docs/sesv2_create_export_job/) for full documentation.
+#'
+#' @param ExportDataSource &#91;required&#93; The data source for the export job.
+#' @param ExportDestination &#91;required&#93; The destination for the export job.
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_create_export_job
+sesv2_create_export_job <- function(ExportDataSource, ExportDestination) {
+  op <- new_operation(
+    name = "CreateExportJob",
+    http_method = "POST",
+    http_path = "/v2/email/export-jobs",
+    paginator = list()
+  )
+  input <- .sesv2$create_export_job_input(ExportDataSource = ExportDataSource, ExportDestination = ExportDestination)
+  output <- .sesv2$create_export_job_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$create_export_job <- sesv2_create_export_job
 
 #' Creates an import job for a data destination
 #'
@@ -1251,6 +1310,35 @@ sesv2_get_email_template <- function(TemplateName) {
 }
 .sesv2$operations$get_email_template <- sesv2_get_email_template
 
+#' Provides information about an export job
+#'
+#' @description
+#' Provides information about an export job.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sesv2_get_export_job/](https://www.paws-r-sdk.com/docs/sesv2_get_export_job/) for full documentation.
+#'
+#' @param JobId &#91;required&#93; The export job ID.
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_get_export_job
+sesv2_get_export_job <- function(JobId) {
+  op <- new_operation(
+    name = "GetExportJob",
+    http_method = "GET",
+    http_path = "/v2/email/export-jobs/{JobId}",
+    paginator = list()
+  )
+  input <- .sesv2$get_export_job_input(JobId = JobId)
+  output <- .sesv2$get_export_job_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$get_export_job <- sesv2_get_export_job
+
 #' Provides information about an import job
 #'
 #' @description
@@ -1279,6 +1367,38 @@ sesv2_get_import_job <- function(JobId) {
   return(response)
 }
 .sesv2$operations$get_import_job <- sesv2_get_import_job
+
+#' Provides information about a specific message, including the from
+#' address, the subject, the recipient address, email tags, as well as
+#' events associated with the message
+#'
+#' @description
+#' Provides information about a specific message, including the from address, the subject, the recipient address, email tags, as well as events associated with the message.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sesv2_get_message_insights/](https://www.paws-r-sdk.com/docs/sesv2_get_message_insights/) for full documentation.
+#'
+#' @param MessageId &#91;required&#93; A `MessageId` is a unique identifier for a message, and is returned when
+#' sending emails through Amazon SES.
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_get_message_insights
+sesv2_get_message_insights <- function(MessageId) {
+  op <- new_operation(
+    name = "GetMessageInsights",
+    http_method = "GET",
+    http_path = "/v2/email/insights/{MessageId}/",
+    paginator = list()
+  )
+  input <- .sesv2$get_message_insights_input(MessageId = MessageId)
+  output <- .sesv2$get_message_insights_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$get_message_insights <- sesv2_get_message_insights
 
 #' Retrieves information about a specific email address that's on the
 #' suppression list for your account
@@ -1663,6 +1783,45 @@ sesv2_list_email_templates <- function(NextToken = NULL, PageSize = NULL) {
   return(response)
 }
 .sesv2$operations$list_email_templates <- sesv2_list_email_templates
+
+#' Lists all of the export jobs
+#'
+#' @description
+#' Lists all of the export jobs.
+#'
+#' See [https://www.paws-r-sdk.com/docs/sesv2_list_export_jobs/](https://www.paws-r-sdk.com/docs/sesv2_list_export_jobs/) for full documentation.
+#'
+#' @param NextToken The pagination token returned from a previous call to
+#' [`list_export_jobs`][sesv2_list_export_jobs] to indicate the position in
+#' the list of export jobs.
+#' @param PageSize Maximum number of export jobs to return at once. Use this parameter to
+#' paginate results. If additional export jobs exist beyond the specified
+#' limit, the `NextToken` element is sent in the response. Use the
+#' `NextToken` value in subsequent calls to
+#' [`list_export_jobs`][sesv2_list_export_jobs] to retrieve additional
+#' export jobs.
+#' @param ExportSourceType A value used to list export jobs that have a certain `ExportSourceType`.
+#' @param JobStatus A value used to list export jobs that have a certain `JobStatus`.
+#'
+#' @keywords internal
+#'
+#' @rdname sesv2_list_export_jobs
+sesv2_list_export_jobs <- function(NextToken = NULL, PageSize = NULL, ExportSourceType = NULL, JobStatus = NULL) {
+  op <- new_operation(
+    name = "ListExportJobs",
+    http_method = "POST",
+    http_path = "/v2/email/list-export-jobs",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "PageSize")
+  )
+  input <- .sesv2$list_export_jobs_input(NextToken = NextToken, PageSize = PageSize, ExportSourceType = ExportSourceType, JobStatus = JobStatus)
+  output <- .sesv2$list_export_jobs_output()
+  config <- get_config()
+  svc <- .sesv2$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.sesv2$operations$list_export_jobs <- sesv2_list_export_jobs
 
 #' Lists all of the import jobs
 #'

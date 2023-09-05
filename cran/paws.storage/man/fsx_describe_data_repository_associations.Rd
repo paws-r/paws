@@ -25,7 +25,7 @@ must be an integer greater than zero.}
 \item{NextToken}{}
 }
 \description{
-Returns the description of specific Amazon FSx for Lustre or Amazon File Cache data repository associations, if one or more \code{AssociationIds} values are provided in the request, or if filters are used in the request. Data repository associations are supported on Amazon File Cache resources and all FSx for Lustre 2.12 and newer file systems, excluding \code{scratch_1} deployment type.
+Returns the description of specific Amazon FSx for Lustre or Amazon File Cache data repository associations, if one or more \code{AssociationIds} values are provided in the request, or if filters are used in the request. Data repository associations are supported on Amazon File Cache resources and all FSx for Lustre 2.12 and 2,15 file systems, excluding \code{scratch_1} deployment type.
 
 See \url{https://www.paws-r-sdk.com/docs/fsx_describe_data_repository_associations/} for full documentation.
 }

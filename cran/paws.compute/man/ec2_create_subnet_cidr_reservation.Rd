@@ -18,16 +18,13 @@ ec2_create_subnet_cidr_reservation(
 
 \item{Cidr}{[required] The IPv4 or IPV6 CIDR range to reserve.}
 
-\item{ReservationType}{[required] The type of reservation.
-
-The following are valid values:
+\item{ReservationType}{[required] The type of reservation. The reservation type determines how the
+reserved IP addresses are assigned to resources.
 \itemize{
-\item \code{prefix}: The Amazon EC2 Prefix Delegation feature assigns the IP
-addresses to network interfaces that are associated with an
-instance. For information about Prefix Delegation, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/}{Prefix Delegation for Amazon EC2 network interfaces} in
-the \emph{Amazon Elastic Compute Cloud User Guide}.
-\item \code{explicit}: You manually assign the IP addresses to resources that
-reside in your subnet.
+\item \code{prefix} - Amazon Web Services assigns the reserved IP addresses to
+network interfaces.
+\item \code{explicit} - You assign the reserved IP addresses to network
+interfaces.
 }}
 
 \item{Description}{The description to assign to the subnet CIDR reservation.}
@@ -40,7 +37,7 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 \item{TagSpecifications}{The tags to assign to the subnet CIDR reservation.}
 }
 \description{
-Creates a subnet CIDR reservation. For information about subnet CIDR reservations, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/subnet-cidr-reservation.html}{Subnet CIDR reservations} in the \emph{Amazon Virtual Private Cloud User Guide}.
+Creates a subnet CIDR reservation. For more information, see \href{https://docs.aws.amazon.com/vpc/latest/userguide/subnet-cidr-reservation.html}{Subnet CIDR reservations} in the \emph{Amazon Virtual Private Cloud User Guide} and \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-prefix-eni.html}{Assign prefixes to network interfaces} in the \emph{Amazon Elastic Compute Cloud User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ec2_create_subnet_cidr_reservation/} for full documentation.
 }

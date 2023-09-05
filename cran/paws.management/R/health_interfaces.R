@@ -29,7 +29,7 @@ NULL
 
 .health$describe_affected_entities_for_organization_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(organizationEntityFilters = structure(list(structure(list(eventArn = structure(logical(0), tags = list(type = "string")), awsAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), locale = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  shape <- structure(list(organizationEntityFilters = structure(list(structure(list(eventArn = structure(logical(0), tags = list(type = "string")), awsAccountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(deprecated = TRUE, deprecatedMessage = "This property is deprecated, use organizationEntityAccountFilters instead.", type = "list")), locale = structure(logical(0), tags = list(type = "string")), nextToken = structure(logical(0), tags = list(type = "string")), maxResults = structure(logical(0), tags = list(type = "integer")), organizationEntityAccountFilters = structure(list(structure(list(eventArn = structure(logical(0), tags = list(type = "string")), awsAccountId = structure(logical(0), tags = list(type = "string")), statusCodes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -47,7 +47,19 @@ NULL
 
 .health$describe_entity_aggregates_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(entityAggregates = structure(list(structure(list(eventArn = structure(logical(0), tags = list(type = "string")), count = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(entityAggregates = structure(list(structure(list(eventArn = structure(logical(0), tags = list(type = "string")), count = structure(logical(0), tags = list(type = "integer")), statuses = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.health$describe_entity_aggregates_for_organization_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(eventArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), awsAccountIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.health$describe_entity_aggregates_for_organization_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(organizationEntityAggregates = structure(list(structure(list(eventArn = structure(logical(0), tags = list(type = "string")), count = structure(logical(0), tags = list(type = "integer")), statuses = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map")), accounts = structure(list(structure(list(accountId = structure(logical(0), tags = list(type = "string")), count = structure(logical(0), tags = list(type = "integer")), statuses = structure(list(structure(logical(0), tags = list(type = "integer"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

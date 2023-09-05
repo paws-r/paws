@@ -121,7 +121,7 @@ deployment, and to get details about Amazon ECS service deployments.
 \itemize{
 \item \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/}{CodeDeploy User Guide}
 \item \href{https://docs.aws.amazon.com/codedeploy/latest/APIReference/}{CodeDeploy API Reference Guide}
-\item \href{https://docs.aws.amazon.com/cli/latest/reference/deploy/index.html}{CLI Reference for CodeDeploy}
+\item \href{https://docs.aws.amazon.com/cli/latest/reference/deploy/}{CLI Reference for CodeDeploy}
 \item CodeDeploy Developer Forum
 }
 }

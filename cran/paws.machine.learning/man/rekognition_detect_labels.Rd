@@ -24,14 +24,18 @@ need to base64-encode image bytes passed using the \code{Bytes} field. For
 more information, see Images in the Amazon Rekognition developer guide.}
 
 \item{MaxLabels}{Maximum number of labels you want the service to return in the response.
-The service returns the specified number of highest confidence labels.}
+The service returns the specified number of highest confidence labels.
+Only valid when GENERAL_LABELS is specified as a feature type in the
+Feature input parameter.}
 
 \item{MinConfidence}{Specifies the minimum confidence level for the labels to return. Amazon
 Rekognition doesn't return any labels with confidence lower than this
 specified value.
 
 If \code{MinConfidence} is not specified, the operation returns labels with a
-confidence values greater than or equal to 55 percent.}
+confidence values greater than or equal to 55 percent. Only valid when
+GENERAL_LABELS is specified as a feature type in the Feature input
+parameter.}
 
 \item{Features}{A list of the types of analysis to perform. Specifying GENERAL_LABELS
 uses the label detection feature, while specifying IMAGE_PROPERTIES

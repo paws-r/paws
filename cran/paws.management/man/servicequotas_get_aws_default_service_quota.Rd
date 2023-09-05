@@ -7,9 +7,15 @@
 servicequotas_get_aws_default_service_quota(ServiceCode, QuotaCode)
 }
 \arguments{
-\item{ServiceCode}{[required] The service identifier.}
+\item{ServiceCode}{[required] Specifies the service identifier. To find the service code value for an
+Amazon Web Services service, use the
+\code{\link[=servicequotas_list_services]{list_services}} operation.}
 
-\item{QuotaCode}{[required] The quota identifier.}
+\item{QuotaCode}{[required] Specifies the quota identifier. To find the quota code for a specific
+quota, use the
+\code{\link[=servicequotas_list_service_quotas]{list_service_quotas}} operation,
+and look for the \code{QuotaCode} response in the output for the quota you
+want.}
 }
 \description{
 Retrieves the default value for the specified quota. The default value does not reflect any quota increases.

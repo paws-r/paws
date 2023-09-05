@@ -323,7 +323,7 @@ NULL
 
 .costexplorer$list_cost_allocation_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(CostAllocationTags = structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(CostAllocationTags = structure(list(structure(list(TagKey = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), LastUpdatedDate = structure(logical(0), tags = list(type = "string")), LastUsedDate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

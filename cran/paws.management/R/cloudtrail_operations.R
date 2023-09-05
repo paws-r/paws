@@ -154,6 +154,17 @@ cloudtrail_create_channel <- function(Name, Source, Destinations, Tags = NULL) {
 #' organization in Organizations.
 #' @param RetentionPeriod The retention period of the event data store, in days. You can set a
 #' retention period of up to 2557 days, the equivalent of seven years.
+#' CloudTrail Lake determines whether to retain an event by checking if the
+#' `eventTime` of the event is within the specified retention period. For
+#' example, if you set a retention period of 90 days, CloudTrail will
+#' remove events when the `eventTime` is older than 90 days.
+#' 
+#' If you plan to copy trail events to this event data store, we recommend
+#' that you consider both the age of the events that you want to copy as
+#' well as how long you want to keep the copied events in your event data
+#' store. For example, if you copy trail events that are 5 years old and
+#' specify a retention period of 7 years, the event data store will retain
+#' those events for two years.
 #' @param TerminationProtectionEnabled Specifies whether termination protection is enabled for the event data
 #' store. If termination protection is enabled, you cannot delete the event
 #' data store until termination protection is disabled.
@@ -1729,7 +1740,18 @@ cloudtrail_update_channel <- function(Channel, Destinations = NULL, Name = NULL)
 #' or only from the Region in which it was created.
 #' @param OrganizationEnabled Specifies whether an event data store collects events logged for an
 #' organization in Organizations.
-#' @param RetentionPeriod The retention period, in days.
+#' @param RetentionPeriod The retention period of the event data store, in days. You can set a
+#' retention period of up to 2557 days, the equivalent of seven years.
+#' CloudTrail Lake determines whether to retain an event by checking if the
+#' `eventTime` of the event is within the specified retention period. For
+#' example, if you set a retention period of 90 days, CloudTrail will
+#' remove events when the `eventTime` is older than 90 days.
+#' 
+#' If you decrease the retention period of an event data store, CloudTrail
+#' will remove any events with an `eventTime` older than the new retention
+#' period. For example, if the previous retention period was 365 days and
+#' you decrease it to 100 days, CloudTrail will remove events with an
+#' `eventTime` older than 100 days.
 #' @param TerminationProtectionEnabled Indicates that termination protection is enabled and the event data
 #' store cannot be automatically deleted.
 #' @param KmsKeyId Specifies the KMS key ID to use to encrypt the events delivered by

@@ -20,12 +20,13 @@ sagemakerruntime_invoke_endpoint_async(
 \arguments{
 \item{EndpointName}{[required] The name of the endpoint that you specified when you created the
 endpoint using the
-\href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html}{\code{CreateEndpoint}}
+\href{https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateEndpoint.html}{CreateEndpoint}
 API.}
 
 \item{ContentType}{The MIME type of the input data in the request body.}
 
-\item{Accept}{The desired MIME type of the inference in the response.}
+\item{Accept}{The desired MIME type of the inference response from the model
+container.}
 
 \item{CustomAttributes}{Provides additional information about a request for an inference
 submitted to a model hosted at an Amazon SageMaker endpoint. The
@@ -40,7 +41,7 @@ The code in your model is responsible for setting or updating any custom
 attributes in the response. If your code does not set this value in the
 response, an empty value is returned. For example, if a custom attribute
 represents the trace ID, your model can prepend the custom attribute
-with \verb{Trace ID}: in your post-processing function.
+with \verb{Trace ID:} in your post-processing function.
 
 This feature is currently supported in the Amazon Web Services SDKs but
 not in the Amazon SageMaker Python SDK.}

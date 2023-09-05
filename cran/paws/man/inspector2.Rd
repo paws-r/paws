@@ -99,6 +99,7 @@ and Amazon ECR environments.
 \link[paws.security.identity:inspector2_associate_member]{associate_member} \tab Associates an Amazon Web Services account with an Amazon Inspector delegated administrator\cr
 \link[paws.security.identity:inspector2_batch_get_account_status]{batch_get_account_status} \tab Retrieves the Amazon Inspector status of multiple Amazon Web Services accounts within your environment\cr
 \link[paws.security.identity:inspector2_batch_get_code_snippet]{batch_get_code_snippet} \tab Retrieves code snippets from findings that Amazon Inspector detected code vulnerabilities in\cr
+\link[paws.security.identity:inspector2_batch_get_finding_details]{batch_get_finding_details} \tab Gets vulnerability details for findings\cr
 \link[paws.security.identity:inspector2_batch_get_free_trial_info]{batch_get_free_trial_info} \tab Gets free trial status for multiple Amazon Web Services accounts\cr
 \link[paws.security.identity:inspector2_batch_get_member_ec_2_deep_inspection_status]{batch_get_member_ec_2_deep_inspection_status} \tab Retrieves Amazon Inspector deep inspection activation status of multiple member accounts within your organization\cr
 \link[paws.security.identity:inspector2_batch_update_member_ec_2_deep_inspection_status]{batch_update_member_ec_2_deep_inspection_status} \tab Activates or deactivates Amazon Inspector deep inspection for the provided member accounts in your organization\cr

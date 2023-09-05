@@ -11,9 +11,9 @@ servicequotas_untag_resource(ResourceARN, TagKeys)
 untag. You can get this information by using the Service Quotas console,
 or by listing the quotas using the
 \href{https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html}{list-service-quotas}
-AWS CLI command or the
-\code{\link[=servicequotas_list_service_quotas]{list_service_quotas}} AWS API
-operation.}
+CLI command or the
+\code{\link[=servicequotas_list_service_quotas]{list_service_quotas}} Amazon Web
+Services API operation.}
 
 \item{TagKeys}{[required] The keys of the tags that you want to remove from the resource.}
 }

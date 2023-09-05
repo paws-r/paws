@@ -1233,7 +1233,8 @@ swf_describe_workflow_type <- function(domain, workflowType) {
 #'           name = "string"
 #'         ),
 #'         taskPriority = "string",
-#'         startToCloseTimeout = "string"
+#'         startToCloseTimeout = "string",
+#'         scheduleToStartTimeout = "string"
 #'       ),
 #'       decisionTaskStartedEventAttributes = list(
 #'         identity = "string",
@@ -1242,10 +1243,14 @@ swf_describe_workflow_type <- function(domain, workflowType) {
 #'       decisionTaskCompletedEventAttributes = list(
 #'         executionContext = "string",
 #'         scheduledEventId = 123,
-#'         startedEventId = 123
+#'         startedEventId = 123,
+#'         taskList = list(
+#'           name = "string"
+#'         ),
+#'         taskListScheduleToStartTimeout = "string"
 #'       ),
 #'       decisionTaskTimedOutEventAttributes = list(
-#'         timeoutType = "START_TO_CLOSE",
+#'         timeoutType = "START_TO_CLOSE"|"SCHEDULE_TO_START",
 #'         scheduledEventId = 123,
 #'         startedEventId = 123
 #'       ),
@@ -2645,7 +2650,8 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #'           name = "string"
 #'         ),
 #'         taskPriority = "string",
-#'         startToCloseTimeout = "string"
+#'         startToCloseTimeout = "string",
+#'         scheduleToStartTimeout = "string"
 #'       ),
 #'       decisionTaskStartedEventAttributes = list(
 #'         identity = "string",
@@ -2654,10 +2660,14 @@ swf_poll_for_activity_task <- function(domain, taskList, identity = NULL) {
 #'       decisionTaskCompletedEventAttributes = list(
 #'         executionContext = "string",
 #'         scheduledEventId = 123,
-#'         startedEventId = 123
+#'         startedEventId = 123,
+#'         taskList = list(
+#'           name = "string"
+#'         ),
+#'         taskListScheduleToStartTimeout = "string"
 #'       ),
 #'       decisionTaskTimedOutEventAttributes = list(
-#'         timeoutType = "START_TO_CLOSE",
+#'         timeoutType = "START_TO_CLOSE"|"SCHEDULE_TO_START",
 #'         scheduledEventId = 123,
 #'         startedEventId = 123
 #'       ),
@@ -3900,7 +3910,7 @@ swf_respond_activity_task_failed <- function(taskToken, reason = NULL, details =
 #'
 #' @usage
 #' swf_respond_decision_task_completed(taskToken, decisions,
-#'   executionContext)
+#'   executionContext, taskList, taskListScheduleToStartTimeout)
 #'
 #' @param taskToken &#91;required&#93; The `taskToken` from the DecisionTask.
 #' 
@@ -3912,6 +3922,20 @@ swf_respond_activity_task_failed <- function(taskToken, reason = NULL, details =
 #' processing this decision task. See the docs for the Decision structure
 #' for details.
 #' @param executionContext User defined context to add to workflow execution.
+#' @param taskList The task list to use for the future decision tasks of this workflow
+#' execution. This list overrides the original task list you specified
+#' while starting the workflow execution.
+#' @param taskListScheduleToStartTimeout Specifies a timeout (in seconds) for the task list override. When this
+#' parameter is missing, the task list override is permanent. This
+#' parameter makes it possible to temporarily override the task list. If a
+#' decision task scheduled on the override task list is not started within
+#' the timeout, the decision task will time out. Amazon SWF will revert the
+#' override and schedule a new decision task to the original task list.
+#' 
+#' If a decision task scheduled on the override task list is started within
+#' the timeout, but not completed within the start-to-close timeout, Amazon
+#' SWF will also revert the override and schedule a new decision task to
+#' the original task list.
 #'
 #' @return
 #' An empty list.
@@ -4021,7 +4045,11 @@ swf_respond_activity_task_failed <- function(taskToken, reason = NULL, details =
 #'       )
 #'     )
 #'   ),
-#'   executionContext = "string"
+#'   executionContext = "string",
+#'   taskList = list(
+#'     name = "string"
+#'   ),
+#'   taskListScheduleToStartTimeout = "string"
 #' )
 #' ```
 #'
@@ -4030,14 +4058,14 @@ swf_respond_activity_task_failed <- function(taskToken, reason = NULL, details =
 #' @rdname swf_respond_decision_task_completed
 #'
 #' @aliases swf_respond_decision_task_completed
-swf_respond_decision_task_completed <- function(taskToken, decisions = NULL, executionContext = NULL) {
+swf_respond_decision_task_completed <- function(taskToken, decisions = NULL, executionContext = NULL, taskList = NULL, taskListScheduleToStartTimeout = NULL) {
   op <- new_operation(
     name = "RespondDecisionTaskCompleted",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .swf$respond_decision_task_completed_input(taskToken = taskToken, decisions = decisions, executionContext = executionContext)
+  input <- .swf$respond_decision_task_completed_input(taskToken = taskToken, decisions = decisions, executionContext = executionContext, taskList = taskList, taskListScheduleToStartTimeout = taskListScheduleToStartTimeout)
   output <- .swf$respond_decision_task_completed_output()
   config <- get_config()
   svc <- .swf$service(config)

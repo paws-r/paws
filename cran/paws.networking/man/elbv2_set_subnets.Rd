@@ -53,8 +53,7 @@ balancer, you can specify one IPv6 address per subnet.}
 \item{IpAddressType}{[Network Load Balancers] The type of IP addresses used by the subnets
 for your load balancer. The possible values are \code{ipv4} (for IPv4
 addresses) and \code{dualstack} (for IPv4 and IPv6 addresses). You can’t
-specify \code{dualstack} for a load balancer with a UDP or TCP_UDP listener.
-.}
+specify \code{dualstack} for a load balancer with a UDP or TCP_UDP listener.}
 }
 \description{
 Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer or Network Load Balancer. The specified subnets replace the previously enabled subnets.

@@ -439,18 +439,20 @@ quicksight_create_data_source <- function(AwsAccountId, DataSourceId, Name, Type
 #' 
 #' To specify no permissions, omit `Permissions`.
 #' @param Tags Tags for the folder.
+#' @param SharingModel An optional parameter that determines the sharing scope of the folder.
+#' The default value for this parameter is `ACCOUNT`.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_create_folder
-quicksight_create_folder <- function(AwsAccountId, FolderId, Name = NULL, FolderType = NULL, ParentFolderArn = NULL, Permissions = NULL, Tags = NULL) {
+quicksight_create_folder <- function(AwsAccountId, FolderId, Name = NULL, FolderType = NULL, ParentFolderArn = NULL, Permissions = NULL, Tags = NULL, SharingModel = NULL) {
   op <- new_operation(
     name = "CreateFolder",
     http_method = "POST",
     http_path = "/accounts/{AwsAccountId}/folders/{FolderId}",
     paginator = list()
   )
-  input <- .quicksight$create_folder_input(AwsAccountId = AwsAccountId, FolderId = FolderId, Name = Name, FolderType = FolderType, ParentFolderArn = ParentFolderArn, Permissions = Permissions, Tags = Tags)
+  input <- .quicksight$create_folder_input(AwsAccountId = AwsAccountId, FolderId = FolderId, Name = Name, FolderType = FolderType, ParentFolderArn = ParentFolderArn, Permissions = Permissions, Tags = Tags, SharingModel = SharingModel)
   output <- .quicksight$create_folder_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -469,9 +471,8 @@ quicksight_create_folder <- function(AwsAccountId, FolderId, Name = NULL, Folder
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
 #' @param FolderId &#91;required&#93; The ID of the folder.
-#' @param MemberId &#91;required&#93; The ID of the asset (the dashboard, analysis, or dataset).
-#' @param MemberType &#91;required&#93; The type of the member, including `DASHBOARD`, `ANALYSIS`, and
-#' `DATASET`.
+#' @param MemberId &#91;required&#93; The ID of the asset that you want to add to the folder.
+#' @param MemberType &#91;required&#93; The member type of the asset that you want to add to a folder.
 #'
 #' @keywords internal
 #'
@@ -1269,9 +1270,8 @@ quicksight_delete_folder <- function(AwsAccountId, FolderId) {
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
 #' @param FolderId &#91;required&#93; The Folder ID.
-#' @param MemberId &#91;required&#93; The ID of the asset (the dashboard, analysis, or dataset) that you want
-#' to delete.
-#' @param MemberType &#91;required&#93; The type of the member, including `DASHBOARD`, `ANALYSIS`, and `DATASET`
+#' @param MemberId &#91;required&#93; The ID of the asset that you want to delete.
+#' @param MemberType &#91;required&#93; The member type of the asset that you want to delete from a folder.
 #'
 #' @keywords internal
 #'
@@ -2389,18 +2389,21 @@ quicksight_describe_folder <- function(AwsAccountId, FolderId) {
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
 #' @param FolderId &#91;required&#93; The ID of the folder.
+#' @param Namespace The namespace of the folder whose permissions you want described.
+#' @param MaxResults The maximum number of results to be returned per request.
+#' @param NextToken A pagination token for the next set of results.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_folder_permissions
-quicksight_describe_folder_permissions <- function(AwsAccountId, FolderId) {
+quicksight_describe_folder_permissions <- function(AwsAccountId, FolderId, Namespace = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeFolderPermissions",
     http_method = "GET",
     http_path = "/accounts/{AwsAccountId}/folders/{FolderId}/permissions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Permissions")
   )
-  input <- .quicksight$describe_folder_permissions_input(AwsAccountId = AwsAccountId, FolderId = FolderId)
+  input <- .quicksight$describe_folder_permissions_input(AwsAccountId = AwsAccountId, FolderId = FolderId, Namespace = Namespace, MaxResults = MaxResults, NextToken = NextToken)
   output <- .quicksight$describe_folder_permissions_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -2419,18 +2422,21 @@ quicksight_describe_folder_permissions <- function(AwsAccountId, FolderId) {
 #'
 #' @param AwsAccountId &#91;required&#93; The ID for the Amazon Web Services account that contains the folder.
 #' @param FolderId &#91;required&#93; The ID of the folder.
+#' @param Namespace The namespace of the folder whose permissions you want described.
+#' @param MaxResults The maximum number of results to be returned per request.
+#' @param NextToken A pagination token for the next set of results.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_describe_folder_resolved_permissions
-quicksight_describe_folder_resolved_permissions <- function(AwsAccountId, FolderId) {
+quicksight_describe_folder_resolved_permissions <- function(AwsAccountId, FolderId, Namespace = NULL, MaxResults = NULL, NextToken = NULL) {
   op <- new_operation(
     name = "DescribeFolderResolvedPermissions",
     http_method = "GET",
     http_path = "/accounts/{AwsAccountId}/folders/{FolderId}/resolved-permissions",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Permissions")
   )
-  input <- .quicksight$describe_folder_resolved_permissions_input(AwsAccountId = AwsAccountId, FolderId = FolderId)
+  input <- .quicksight$describe_folder_resolved_permissions_input(AwsAccountId = AwsAccountId, FolderId = FolderId, Namespace = Namespace, MaxResults = MaxResults, NextToken = NextToken)
   output <- .quicksight$describe_folder_resolved_permissions_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -3607,7 +3613,7 @@ quicksight_list_folder_members <- function(AwsAccountId, FolderId, NextToken = N
     name = "ListFolderMembers",
     http_method = "GET",
     http_path = "/accounts/{AwsAccountId}/folders/{FolderId}/members",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FolderMemberList")
   )
   input <- .quicksight$list_folder_members_input(AwsAccountId = AwsAccountId, FolderId = FolderId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .quicksight$list_folder_members_output()
@@ -3639,7 +3645,7 @@ quicksight_list_folders <- function(AwsAccountId, NextToken = NULL, MaxResults =
     name = "ListFolders",
     http_method = "GET",
     http_path = "/accounts/{AwsAccountId}/folders",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FolderSummaryList")
   )
   input <- .quicksight$list_folders_input(AwsAccountId = AwsAccountId, NextToken = NextToken, MaxResults = MaxResults)
   output <- .quicksight$list_folders_output()
@@ -4646,7 +4652,7 @@ quicksight_search_folders <- function(AwsAccountId, Filters, NextToken = NULL, M
     name = "SearchFolders",
     http_method = "POST",
     http_path = "/accounts/{AwsAccountId}/search/folders",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "FolderSummaryList")
   )
   input <- .quicksight$search_folders_input(AwsAccountId = AwsAccountId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
   output <- .quicksight$search_folders_output()
@@ -4804,7 +4810,7 @@ quicksight_start_asset_bundle_import_job <- function(AwsAccountId, AssetBundleIm
 #' Starts an asynchronous job that generates a dashboard snapshot
 #'
 #' @description
-#' Starts an asynchronous job that generates a dashboard snapshot. You can request up to one paginated PDF and up to five CSVs per API call.
+#' Starts an asynchronous job that generates a dashboard snapshot. You can request one of the following format configurations per API call.
 #'
 #' See [https://www.paws-r-sdk.com/docs/quicksight_start_dashboard_snapshot_job/](https://www.paws-r-sdk.com/docs/quicksight_start_dashboard_snapshot_job/) for full documentation.
 #'

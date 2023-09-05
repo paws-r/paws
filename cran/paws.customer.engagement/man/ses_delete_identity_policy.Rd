@@ -8,17 +8,17 @@ identity (an email address or a domain)}
 ses_delete_identity_policy(Identity, PolicyName)
 }
 \arguments{
-\item{Identity}{[required] The identity that is associated with the policy that you want to delete.
-You can specify the identity by using its name or by using its Amazon
-Resource Name (ARN). Examples: \code{user@example.com}, \code{example.com},
+\item{Identity}{[required] The identity that is associated with the policy to delete. You can
+specify the identity by using its name or by using its Amazon Resource
+Name (ARN). Examples: \code{user@example.com}, \code{example.com},
 \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}.
 
-To successfully call this API, you must own the identity.}
+To successfully call this operation, you must own the identity.}
 
 \item{PolicyName}{[required] The name of the policy to be deleted.}
 }
 \description{
-Deletes the specified sending authorization policy for the given identity (an email address or a domain). This API returns successfully even if a policy with the specified name does not exist.
+Deletes the specified sending authorization policy for the given identity (an email address or a domain). This operation returns successfully even if a policy with the specified name does not exist.
 
 See \url{https://www.paws-r-sdk.com/docs/ses_delete_identity_policy/} for full documentation.
 }

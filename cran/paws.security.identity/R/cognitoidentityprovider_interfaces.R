@@ -701,6 +701,18 @@ NULL
   return(populate(args, shape))
 }
 
+.cognitoidentityprovider$get_log_delivery_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(UserPoolId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cognitoidentityprovider$get_log_delivery_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(LogDeliveryConfiguration = structure(list(UserPoolId = structure(logical(0), tags = list(type = "string")), LogConfigurations = structure(list(structure(list(LogLevel = structure(logical(0), tags = list(type = "string")), EventSource = structure(logical(0), tags = list(type = "string")), CloudWatchLogsConfiguration = structure(list(LogGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cognitoidentityprovider$get_signing_certificate_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(UserPoolId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -938,6 +950,18 @@ NULL
 .cognitoidentityprovider$revoke_token_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cognitoidentityprovider$set_log_delivery_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(UserPoolId = structure(logical(0), tags = list(type = "string")), LogConfigurations = structure(list(structure(list(LogLevel = structure(logical(0), tags = list(type = "string")), EventSource = structure(logical(0), tags = list(type = "string")), CloudWatchLogsConfiguration = structure(list(LogGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cognitoidentityprovider$set_log_delivery_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(LogDeliveryConfiguration = structure(list(UserPoolId = structure(logical(0), tags = list(type = "string")), LogConfigurations = structure(list(structure(list(LogLevel = structure(logical(0), tags = list(type = "string")), EventSource = structure(logical(0), tags = list(type = "string")), CloudWatchLogsConfiguration = structure(list(LogGroupArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

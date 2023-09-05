@@ -9,15 +9,15 @@ ses_list_identity_policies(Identity)
 }
 \arguments{
 \item{Identity}{[required] The identity that is associated with the policy for which the policies
-will be listed. You can specify an identity by using its name or by
-using its Amazon Resource Name (ARN). Examples: \code{user@example.com},
+are listed. You can specify an identity by using its name or by using
+its Amazon Resource Name (ARN). Examples: \code{user@example.com},
 \code{example.com},
 \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}.
 
-To successfully call this API, you must own the identity.}
+To successfully call this operation, you must own the identity.}
 }
 \description{
-Returns a list of sending authorization policies that are attached to the given identity (an email address or a domain). This API returns only a list. If you want the actual policy content, you can use \code{\link[=ses_get_identity_policies]{get_identity_policies}}.
+Returns a list of sending authorization policies that are attached to the given identity (an email address or a domain). This operation returns only a list. To get the actual policy content, use \code{\link[=ses_get_identity_policies]{get_identity_policies}}.
 
 See \url{https://www.paws-r-sdk.com/docs/ses_list_identity_policies/} for full documentation.
 }

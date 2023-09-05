@@ -5,19 +5,19 @@
 \title{Creates a campaign for the specified Amazon Connect account}
 \usage{
 connectcampaignservice_create_campaign(
+  name,
   connectInstanceId,
   dialerConfig,
-  name,
   outboundCallConfig,
   tags = NULL
 )
 }
 \arguments{
+\item{name}{[required]}
+
 \item{connectInstanceId}{[required]}
 
 \item{dialerConfig}{[required]}
-
-\item{name}{[required]}
 
 \item{outboundCallConfig}{[required]}
 

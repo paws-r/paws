@@ -101,6 +101,7 @@ released into production.
 
 \tabular{ll}{
 \link[=resiliencehub_add_draft_app_version_resource_mappings]{add_draft_app_version_resource_mappings} \tab Adds the resource mapping for the draft application version\cr
+\link[=resiliencehub_batch_update_recommendation_status]{batch_update_recommendation_status} \tab Enables you to include or exclude one or more operational recommendations\cr
 \link[=resiliencehub_create_app]{create_app} \tab Creates an Resilience Hub application\cr
 \link[=resiliencehub_create_app_version_app_component]{create_app_version_app_component} \tab Creates a new Application Component in the Resilience Hub application\cr
 \link[=resiliencehub_create_app_version_resource]{create_app_version_resource} \tab Adds a resource to the Resilience Hub application and assigns it to the specified Application Components\cr
@@ -124,6 +125,7 @@ released into production.
 \link[=resiliencehub_describe_resiliency_policy]{describe_resiliency_policy} \tab Describes a specified resiliency policy for an Resilience Hub application\cr
 \link[=resiliencehub_import_resources_to_draft_app_version]{import_resources_to_draft_app_version} \tab Imports resources to Resilience Hub application draft version from different input sources\cr
 \link[=resiliencehub_list_alarm_recommendations]{list_alarm_recommendations} \tab Lists the alarm recommendations for an Resilience Hub application\cr
+\link[=resiliencehub_list_app_assessment_compliance_drifts]{list_app_assessment_compliance_drifts} \tab List of compliance drifts that were detected while running an assessment\cr
 \link[=resiliencehub_list_app_assessments]{list_app_assessments} \tab Lists the assessments for an Resilience Hub application\cr
 \link[=resiliencehub_list_app_component_compliances]{list_app_component_compliances} \tab Lists the compliances for an Resilience Hub Application Component\cr
 \link[=resiliencehub_list_app_component_recommendations]{list_app_component_recommendations} \tab Lists the recommendations for an Resilience Hub Application Component\cr

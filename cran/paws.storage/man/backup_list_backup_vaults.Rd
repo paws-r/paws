@@ -5,9 +5,18 @@
 \title{Returns a list of recovery point storage containers along with
 information about them}
 \usage{
-backup_list_backup_vaults(NextToken = NULL, MaxResults = NULL)
+backup_list_backup_vaults(
+  ByVaultType = NULL,
+  ByShared = NULL,
+  NextToken = NULL,
+  MaxResults = NULL
+)
 }
 \arguments{
+\item{ByVaultType}{This parameter will sort the list of vaults by vault type.}
+
+\item{ByShared}{This parameter will sort the list of vaults by shared vaults.}
+
 \item{NextToken}{The next item following a partial list of returned items. For example,
 if a request is made to return \code{maxResults} number of items, \code{NextToken}
 allows you to return more items in your list starting at the location

@@ -2,12 +2,13 @@
 % Please edit documentation in R/securityhub_operations.R
 \name{securityhub_disable_security_hub}
 \alias{securityhub_disable_security_hub}
-\title{Disables Security Hub in your account only in the current Region}
+\title{Disables Security Hub in your account only in the current Amazon Web
+Services Region}
 \usage{
 securityhub_disable_security_hub()
 }
 \description{
-Disables Security Hub in your account only in the current Region. To disable Security Hub in all Regions, you must submit one request per Region where you have enabled Security Hub.
+Disables Security Hub in your account only in the current Amazon Web Services Region. To disable Security Hub in all Regions, you must submit one request per Region where you have enabled Security Hub.
 
 See \url{https://www.paws-r-sdk.com/docs/securityhub_disable_security_hub/} for full documentation.
 }

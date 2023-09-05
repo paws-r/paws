@@ -173,6 +173,7 @@ NULL
 #'  \link[=rds_delete_blue_green_deployment]{delete_blue_green_deployment} \tab Deletes a blue/green deployment\cr
 #'  \link[=rds_delete_custom_db_engine_version]{delete_custom_db_engine_version} \tab Deletes a custom engine version\cr
 #'  \link[=rds_delete_db_cluster]{delete_db_cluster} \tab The DeleteDBCluster action deletes a previously provisioned DB cluster\cr
+#'  \link[=rds_delete_db_cluster_automated_backup]{delete_db_cluster_automated_backup} \tab Deletes automated backups using the DbClusterResourceId value of the source DB cluster or the Amazon Resource Name (ARN) of the automated backups\cr
 #'  \link[=rds_delete_db_cluster_endpoint]{delete_db_cluster_endpoint} \tab Deletes a custom endpoint and removes it from an Amazon Aurora DB cluster\cr
 #'  \link[=rds_delete_db_cluster_parameter_group]{delete_db_cluster_parameter_group} \tab Deletes a specified DB cluster parameter group\cr
 #'  \link[=rds_delete_db_cluster_snapshot]{delete_db_cluster_snapshot} \tab Deletes a DB cluster snapshot\cr
@@ -191,6 +192,7 @@ NULL
 #'  \link[=rds_describe_account_attributes]{describe_account_attributes} \tab Lists all of the attributes for a customer account\cr
 #'  \link[=rds_describe_blue_green_deployments]{describe_blue_green_deployments} \tab Describes one or more blue/green deployments\cr
 #'  \link[=rds_describe_certificates]{describe_certificates} \tab Lists the set of CA certificates provided by Amazon RDS for this Amazon Web Services account\cr
+#'  \link[=rds_describe_db_cluster_automated_backups]{describe_db_cluster_automated_backups} \tab Displays backups for both current and deleted DB clusters\cr
 #'  \link[=rds_describe_db_cluster_backtracks]{describe_db_cluster_backtracks} \tab Returns information about backtracks for a DB cluster\cr
 #'  \link[=rds_describe_db_cluster_endpoints]{describe_db_cluster_endpoints} \tab Returns information about endpoints for an Amazon Aurora DB cluster\cr
 #'  \link[=rds_describe_db_cluster_parameter_groups]{describe_db_cluster_parameter_groups} \tab Returns a list of DBClusterParameterGroup descriptions\cr
@@ -229,7 +231,7 @@ NULL
 #'  \link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications} \tab You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your DB instance\cr
 #'  \link[=rds_download_db_log_file_portion]{download_db_log_file_portion} \tab Downloads all or a portion of the specified log file, up to 1 MB in size\cr
 #'  \link[=rds_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a DB cluster\cr
-#'  \link[=rds_failover_global_cluster]{failover_global_cluster} \tab Initiates the failover process for an Aurora global database (GlobalCluster)\cr
+#'  \link[=rds_failover_global_cluster]{failover_global_cluster} \tab Promotes the specified secondary DB cluster to be the primary DB cluster in the global database cluster to fail over or switch over a global database\cr
 #'  \link[=rds_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an Amazon RDS resource\cr
 #'  \link[=rds_modify_activity_stream]{modify_activity_stream} \tab Changes the audit policy state of a database activity stream to either locked (default) or unlocked\cr
 #'  \link[=rds_modify_certificates]{modify_certificates} \tab Override the system-default Secure Sockets Layer/Transport Layer Security (SSL/TLS) certificate for Amazon RDS for new DB instances, or remove the override\cr
@@ -248,7 +250,7 @@ NULL
 #'  \link[=rds_modify_db_snapshot_attribute]{modify_db_snapshot_attribute} \tab Adds an attribute and values to, or removes an attribute and values from, a manual DB snapshot\cr
 #'  \link[=rds_modify_db_subnet_group]{modify_db_subnet_group} \tab Modifies an existing DB subnet group\cr
 #'  \link[=rds_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing RDS event notification subscription\cr
-#'  \link[=rds_modify_global_cluster]{modify_global_cluster} \tab Modifies a setting for an Amazon Aurora global cluster\cr
+#'  \link[=rds_modify_global_cluster]{modify_global_cluster} \tab Modifies a setting for an Amazon Aurora global database cluster\cr
 #'  \link[=rds_modify_option_group]{modify_option_group} \tab Modifies an existing option group\cr
 #'  \link[=rds_promote_read_replica]{promote_read_replica} \tab Promotes a read replica DB instance to a standalone DB instance\cr
 #'  \link[=rds_promote_read_replica_db_cluster]{promote_read_replica_db_cluster} \tab Promotes a read replica DB cluster to a standalone DB cluster\cr
@@ -280,6 +282,7 @@ NULL
 #'  \link[=rds_stop_db_instance]{stop_db_instance} \tab Stops an Amazon RDS DB instance\cr
 #'  \link[=rds_stop_db_instance_automated_backups_replication]{stop_db_instance_automated_backups_replication} \tab Stops automated backup replication for a DB instance\cr
 #'  \link[=rds_switchover_blue_green_deployment]{switchover_blue_green_deployment} \tab Switches over a blue/green deployment\cr
+#'  \link[=rds_switchover_global_cluster]{switchover_global_cluster} \tab Switches over the specified secondary DB cluster to be the new primary DB cluster in the global database cluster\cr
 #'  \link[=rds_switchover_read_replica]{switchover_read_replica} \tab Switches over an Oracle standby database in an Oracle Data Guard environment, making it the new primary database
 #' }
 #'

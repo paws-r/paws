@@ -22,7 +22,7 @@ Dedicated Host (\code{default} | \code{host}).
 \item \code{availability-zone} - The Availability Zone of the instance.
 \item \code{block-device-mapping.attach-time} - The attach time for an EBS
 volume mapped to the instance, for example,
-\verb{2010-09-15T17:15:20.000Z}.
+\verb{2022-09-15T17:15:20.000Z}.
 \item \code{block-device-mapping.delete-on-termination} - A Boolean that
 indicates whether the EBS volume is deleted on instance termination.
 \item \code{block-device-mapping.device-name} - The device name specified in
@@ -30,11 +30,27 @@ the block device mapping (for example, \verb{/dev/sdh} or \code{xvdh}).
 \item \code{block-device-mapping.status} - The status for the EBS volume
 (\code{attaching} | \code{attached} | \code{detaching} | \code{detached}).
 \item \code{block-device-mapping.volume-id} - The volume ID of the EBS volume.
+\item \code{boot-mode} - The boot mode that was specified by the AMI
+(\code{legacy-bios} | \code{uefi} | \code{uefi-preferred}).
 \item \code{capacity-reservation-id} - The ID of the Capacity Reservation into
 which the instance was launched.
+\item \code{capacity-reservation-specification.capacity-reservation-preference} -
+The instance's Capacity Reservation preference (\code{open} | \code{none}).
+\item \code{capacity-reservation-specification.capacity-reservation-target.capacity-reservation-id} -
+The ID of the targeted Capacity Reservation.
+\item \code{capacity-reservation-specification.capacity-reservation-target.capacity-reservation-resource-group-arn} -
+The ARN of the targeted Capacity Reservation group.
 \item \code{client-token} - The idempotency token you provided when you
 launched the instance.
+\item \code{current-instance-boot-mode} - The boot mode that is used to launch
+the instance at launch or start (\code{legacy-bios} | \code{uefi}).
 \item \code{dns-name} - The public DNS name of the instance.
+\item \code{ebs-optimized} - A Boolean that indicates whether the instance is
+optimized for Amazon EBS I/O.
+\item \code{ena-support} - A Boolean that indicates whether the instance is
+enabled for enhanced networking with ENA.
+\item \code{enclave-options.enabled} - A Boolean that indicates whether the
+instance is enabled for Amazon Web Services Nitro Enclaves.
 \item \code{hibernation-options.configured} - A Boolean that indicates whether
 the instance is enabled for hibernation. A value of \code{true} means
 that the instance is enabled for hibernation.
@@ -44,6 +60,10 @@ running, if applicable.
 The value \code{xen} is used for both Xen and Nitro hypervisors.
 \item \code{iam-instance-profile.arn} - The instance profile associated with
 the instance. Specified as an ARN.
+\item \code{iam-instance-profile.id} - The instance profile associated with the
+instance. Specified as an ID.
+\item \code{iam-instance-profile.name} - The instance profile associated with
+the instance. Specified as an name.
 \item \code{image-id} - The ID of the image used to launch the instance.
 \item \code{instance-id} - The ID of the instance.
 \item \code{instance-lifecycle} - Indicates whether this is a Spot Instance or
@@ -61,6 +81,7 @@ represented. The valid values are: 0 (pending), 16 (running), 32
 \item \code{instance.group-name} - The name of the security group for the
 instance.
 \item \code{ip-address} - The public IPv4 address of the instance.
+\item \code{ipv6-address} - The IPv6 address of the instance.
 \item \code{kernel-id} - The kernel ID.
 \item \code{key-name} - The name of the key pair used when the instance was
 launched.
@@ -71,22 +92,31 @@ and so on).
 8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for
 example, \verb{2021-09-29T11:04:43.305Z}. You can use a wildcard (\code{*}),
 for example, \verb{2021-09-29T*}, which matches an entire day.
-\item \code{metadata-options.http-tokens} - The metadata request authorization
-state (\code{optional} | \code{required})
+\item \code{license-pool} -
+\item \code{maintenance-options.auto-recovery} - The current automatic recovery
+behavior of the instance (\code{disabled} | \code{default}).
+\item \code{metadata-options.http-endpoint} - The status of access to the HTTP
+metadata endpoint on your instance (\code{enabled} | \code{disabled})
+\item \code{metadata-options.http-protocol-ipv4} - Indicates whether the IPv4
+endpoint is enabled (\code{disabled} | \code{enabled}).
+\item \code{metadata-options.http-protocol-ipv6} - Indicates whether the IPv6
+endpoint is enabled (\code{disabled} | \code{enabled}).
 \item \code{metadata-options.http-put-response-hop-limit} - The HTTP metadata
 request put response hop limit (integer, possible values \code{1} to
 \code{64})
-\item \code{metadata-options.http-endpoint} - The status of access to the HTTP
-metadata endpoint on your instance (\code{enabled} | \code{disabled})
+\item \code{metadata-options.http-tokens} - The metadata request authorization
+state (\code{optional} | \code{required})
 \item \code{metadata-options.instance-metadata-tags} - The status of access to
 instance tags from the instance metadata (\code{enabled} | \code{disabled})
+\item \code{metadata-options.state} - The state of the metadata option changes
+(\code{pending} | \code{applied}).
 \item \code{monitoring-state} - Indicates whether detailed monitoring is
 enabled (\code{disabled} | \code{enabled}).
-\item \code{network-interface.addresses.private-ip-address} - The private IPv4
-address associated with the network interface.
 \item \code{network-interface.addresses.primary} - Specifies whether the IPv4
 address of the network interface is the primary private IPv4
 address.
+\item \code{network-interface.addresses.private-ip-address} - The private IPv4
+address associated with the network interface.
 \item \code{network-interface.addresses.association.public-ip} - The ID of the
 association of an Elastic IP address (IPv4) with a network
 interface.
@@ -158,7 +188,27 @@ instance.
 is located.
 \item \code{platform} - The platform. To list only Windows instances, use
 \code{windows}.
+\item \code{platform-details} - The platform (\code{Linux/UNIX} |
+\verb{Red Hat BYOL Linux} | \verb{ Red Hat Enterprise Linux} |
+\verb{Red Hat Enterprise Linux with HA} |
+\verb{Red Hat Enterprise Linux with SQL Server Standard and HA} |
+\verb{Red Hat Enterprise Linux with SQL Server Enterprise and HA} |
+\verb{Red Hat Enterprise Linux with SQL Server Standard} |
+\verb{Red Hat Enterprise Linux with SQL Server Web} |
+\verb{Red Hat Enterprise Linux with SQL Server Enterprise} |
+\verb{SQL Server Enterprise} | \verb{SQL Server Standard} | \verb{SQL Server Web} |
+\verb{SUSE Linux} | \verb{Ubuntu Pro} | \code{Windows} | \verb{Windows BYOL} |
+\verb{Windows with SQL Server Enterprise} |
+\verb{Windows with SQL Server Standard} | \verb{Windows with SQL Server Web}).
 \item \code{private-dns-name} - The private IPv4 DNS name of the instance.
+\item \code{private-dns-name-options.enable-resource-name-dns-a-record} - A
+Boolean that indicates whether to respond to DNS queries for
+instance hostnames with DNS A records.
+\item \code{private-dns-name-options.enable-resource-name-dns-aaaa-record} - A
+Boolean that indicates whether to respond to DNS queries for
+instance hostnames with DNS AAAA records.
+\item \code{private-dns-name-options.hostname-type} - The type of hostname
+(\code{ip-name} | \code{resource-name}).
 \item \code{private-ip-address} - The private IPv4 address of the instance.
 \item \code{product-code} - The product code associated with the AMI used to
 launch the instance.
@@ -202,6 +252,18 @@ filter to find all resources that have a tag with a specific key,
 regardless of the tag value.
 \item \code{tenancy} - The tenancy of an instance (\code{dedicated} | \code{default} |
 \code{host}).
+\item \code{tpm-support} - Indicates if the instance is configured for NitroTPM
+support (\code{v2.0}).
+\item \code{usage-operation} - The usage operation value for the instance
+(\code{\link[=ec2_run_instances]{run_instances}} | \verb{RunInstances:00g0} |
+\code{RunInstances:0010} | \code{RunInstances:1010} | \code{RunInstances:1014} |
+\code{RunInstances:1110} | \code{RunInstances:0014} | \code{RunInstances:0210} |
+\code{RunInstances:0110} | \code{RunInstances:0100} | \code{RunInstances:0004} |
+\code{RunInstances:0200} | \verb{RunInstances:000g} | \verb{RunInstances:0g00} |
+\code{RunInstances:0002} | \code{RunInstances:0800} | \code{RunInstances:0102} |
+\code{RunInstances:0006} | \code{RunInstances:0202}).
+\item \code{usage-operation-update-time} - The time that the usage operation
+was last updated, for example, \verb{2022-09-15T17:15:20.000Z}.
 \item \code{virtualization-type} - The virtualization type of the instance
 (\code{paravirtual} | \code{hvm}).
 \item \code{vpc-id} - The ID of the VPC that the instance is running in.

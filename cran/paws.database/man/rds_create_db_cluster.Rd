@@ -54,6 +54,7 @@ rds_create_db_cluster(
   DBSystemId = NULL,
   ManageMasterUserPassword = NULL,
   MasterUserSecretKmsKeyId = NULL,
+  EnableLocalWriteForwarding = NULL,
   SourceRegion = NULL
 )
 }
@@ -507,7 +508,11 @@ Default:
 \itemize{
 \item Aurora DB clusters - \code{aurora}
 \item Multi-AZ DB clusters - \code{io1}
-}}
+}
+
+When you create an Aurora DB cluster with the storage type set to
+\code{aurora-iopt1}, the storage type is returned in the response. The
+storage type isn't returned when you set it to \code{aurora}.}
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
 be initially allocated for each DB instance in the Multi-AZ DB cluster.
@@ -683,6 +688,12 @@ Amazon Web Services account has a different default KMS key for each
 Amazon Web Services Region.
 
 Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
+
+\item{EnableLocalWriteForwarding}{Specifies whether read replicas can forward write operations to the
+writer DB instance in the DB cluster. By default, write operations
+aren't allowed on reader DB instances.
+
+Valid for: Aurora DB clusters only}
 
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }

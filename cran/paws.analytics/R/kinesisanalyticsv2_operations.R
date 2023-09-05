@@ -255,7 +255,7 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #' Creates a Kinesis Data Analytics application
 #'
 #' @description
-#' Creates a Kinesis Data Analytics application. For information about creating a Kinesis Data Analytics application, see [Creating an Application](https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html).
+#' Creates a Kinesis Data Analytics application. For information about creating a Kinesis Data Analytics application, see [Creating an Application](https://docs.aws.amazon.com/managed-flink/latest/java/getting-started.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_create_application/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_create_application/) for full documentation.
 #'
@@ -272,7 +272,7 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #' key-value pair that identifies an application. Note that the maximum
 #' number of application tags includes system tags. The maximum number of
 #' user-defined application tags is 50. For more information, see [Using
-#' Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
+#' Tagging](https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html).
 #' @param ApplicationMode Use the `STREAMING` mode to create a Kinesis Data Analytics For Flink
 #' application. To create a Kinesis Data Analytics Studio notebook, use the
 #' `INTERACTIVE` mode.
@@ -877,7 +877,7 @@ kinesisanalyticsv2_list_applications <- function(Limit = NULL, NextToken = NULL)
 #' Retrieves the list of key-value tags assigned to the application
 #'
 #' @description
-#' Retrieves the list of key-value tags assigned to the application. For more information, see [Using Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
+#' Retrieves the list of key-value tags assigned to the application. For more information, see [Using Tagging](https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_list_tags_for_resource/) for full documentation.
 #'
@@ -1013,7 +1013,7 @@ kinesisanalyticsv2_stop_application <- function(ApplicationName, Force = NULL) {
 #' Adds one or more key-value tags to a Kinesis Data Analytics application
 #'
 #' @description
-#' Adds one or more key-value tags to a Kinesis Data Analytics application. Note that the maximum number of application tags includes system tags. The maximum number of user-defined application tags is 50. For more information, see [Using Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
+#' Adds one or more key-value tags to a Kinesis Data Analytics application. Note that the maximum number of application tags includes system tags. The maximum number of user-defined application tags is 50. For more information, see [Using Tagging](https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_tag_resource/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_tag_resource/) for full documentation.
 #'
@@ -1043,7 +1043,7 @@ kinesisanalyticsv2_tag_resource <- function(ResourceARN, Tags) {
 #' Removes one or more tags from a Kinesis Data Analytics application
 #'
 #' @description
-#' Removes one or more tags from a Kinesis Data Analytics application. For more information, see [Using Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
+#' Removes one or more tags from a Kinesis Data Analytics application. For more information, see [Using Tagging](https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_untag_resource/](https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_untag_resource/) for full documentation.
 #'

@@ -20,8 +20,8 @@ and the maximum value is 500.}
 
 \item{nameQuery}{The name of queried API keys.}
 
-\item{customerId}{The identifier of a customer in AWS Marketplace or an external system,
-such as a developer portal.}
+\item{customerId}{The identifier of a customer in Amazon Web Services Marketplace or an
+external system, such as a developer portal.}
 
 \item{includeValues}{A boolean flag to specify whether (\code{true}) or not (\code{false}) the result
 contains key values.}

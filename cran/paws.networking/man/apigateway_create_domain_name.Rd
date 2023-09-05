@@ -41,16 +41,16 @@ certificates and end with the root certificate. Use the intermediate
 certificates that were provided by your certificate authority. Do not
 include any intermediaries that are not in the chain of trust path.}
 
-\item{certificateArn}{The reference to an AWS-managed certificate that will be used by
-edge-optimized endpoint for this domain name. AWS Certificate Manager is
-the only supported source.}
+\item{certificateArn}{The reference to an Amazon Web Services-managed certificate that will be
+used by edge-optimized endpoint for this domain name. Certificate
+Manager is the only supported source.}
 
 \item{regionalCertificateName}{The user-friendly name of the certificate that will be used by regional
 endpoint for this domain name.}
 
-\item{regionalCertificateArn}{The reference to an AWS-managed certificate that will be used by
-regional endpoint for this domain name. AWS Certificate Manager is the
-only supported source.}
+\item{regionalCertificateArn}{The reference to an Amazon Web Services-managed certificate that will be
+used by regional endpoint for this domain name. Certificate Manager is
+the only supported source.}
 
 \item{endpointConfiguration}{The endpoint configuration of this DomainName showing the endpoint types
 of the domain name.}

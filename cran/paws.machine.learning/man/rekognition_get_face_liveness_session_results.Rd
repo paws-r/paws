@@ -12,7 +12,7 @@ also acts as an idempotency token for all operations associated with the
 session.}
 }
 \description{
-Retrieves the results of a specific Face Liveness session. It requires the \code{sessionId} as input, which was created using \code{\link[=rekognition_create_face_liveness_session]{create_face_liveness_session}}. Returns the corresponding Face Liveness confidence score, a reference image that includes a face bounding box, and audit images that also contain face bounding boxes. The Face Liveness confidence score ranges from 0 to 100. The reference image can optionally be returned.
+Retrieves the results of a specific Face Liveness session. It requires the \code{sessionId} as input, which was created using \code{\link[=rekognition_create_face_liveness_session]{create_face_liveness_session}}. Returns the corresponding Face Liveness confidence score, a reference image that includes a face bounding box, and audit images that also contain face bounding boxes. The Face Liveness confidence score ranges from 0 to 100.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_get_face_liveness_session_results/} for full documentation.
 }

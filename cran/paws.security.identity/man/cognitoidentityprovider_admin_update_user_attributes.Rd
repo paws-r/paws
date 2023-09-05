@@ -2,8 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_admin_update_user_attributes}
 \alias{cognitoidentityprovider_admin_update_user_attributes}
-\title{Updates the specified user's attributes, including developer attributes,
-as an administrator}
+\title{This action might generate an SMS text message}
 \usage{
 cognitoidentityprovider_admin_update_user_attributes(
   UserPoolId,
@@ -67,7 +66,7 @@ provide sensitive information.
 }}
 }
 \description{
-Updates the specified user's attributes, including developer attributes, as an administrator. Works on any user.
+This action might generate an SMS text message. Starting June 1, 2021, US telecom carriers require you to register an origination phone number before you can send SMS messages to US phone numbers. If you use SMS text messages in Amazon Cognito, you must register a phone number with Amazon Pinpoint. Amazon Cognito uses the registered number automatically. Otherwise, Amazon Cognito users who must receive SMS messages might not be able to sign up, activate their accounts, or sign in.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_admin_update_user_attributes/} for full documentation.
 }

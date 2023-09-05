@@ -945,18 +945,20 @@ rds_create_blue_green_deployment <- function(BlueGreenDeploymentName, Source, Ta
 #' manifest](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-cev.html#custom-cev.preparing.manifest)
 #' in the *Amazon RDS User Guide*.
 #' @param Tags 
+#' @param SourceCustomDbEngineVersionIdentifier Reserved for future use.
+#' @param UseAwsProvidedLatestImage Reserved for future use.
 #'
 #' @keywords internal
 #'
 #' @rdname rds_create_custom_db_engine_version
-rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseInstallationFilesS3BucketName = NULL, DatabaseInstallationFilesS3Prefix = NULL, ImageId = NULL, KMSKeyId = NULL, Description = NULL, Manifest = NULL, Tags = NULL) {
+rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseInstallationFilesS3BucketName = NULL, DatabaseInstallationFilesS3Prefix = NULL, ImageId = NULL, KMSKeyId = NULL, Description = NULL, Manifest = NULL, Tags = NULL, SourceCustomDbEngineVersionIdentifier = NULL, UseAwsProvidedLatestImage = NULL) {
   op <- new_operation(
     name = "CreateCustomDBEngineVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$create_custom_db_engine_version_input(Engine = Engine, EngineVersion = EngineVersion, DatabaseInstallationFilesS3BucketName = DatabaseInstallationFilesS3BucketName, DatabaseInstallationFilesS3Prefix = DatabaseInstallationFilesS3Prefix, ImageId = ImageId, KMSKeyId = KMSKeyId, Description = Description, Manifest = Manifest, Tags = Tags)
+  input <- .rds$create_custom_db_engine_version_input(Engine = Engine, EngineVersion = EngineVersion, DatabaseInstallationFilesS3BucketName = DatabaseInstallationFilesS3BucketName, DatabaseInstallationFilesS3Prefix = DatabaseInstallationFilesS3Prefix, ImageId = ImageId, KMSKeyId = KMSKeyId, Description = Description, Manifest = Manifest, Tags = Tags, SourceCustomDbEngineVersionIdentifier = SourceCustomDbEngineVersionIdentifier, UseAwsProvidedLatestImage = UseAwsProvidedLatestImage)
   output <- .rds$create_custom_db_engine_version_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -1421,6 +1423,10 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #' -   Aurora DB clusters - `aurora`
 #' 
 #' -   Multi-AZ DB clusters - `io1`
+#' 
+#' When you create an Aurora DB cluster with the storage type set to
+#' `aurora-iopt1`, the storage type is returned in the response. The
+#' storage type isn't returned when you set it to `aurora`.
 #' @param Iops The amount of Provisioned IOPS (input/output operations per second) to
 #' be initially allocated for each DB instance in the Multi-AZ DB cluster.
 #' 
@@ -1590,19 +1596,24 @@ rds_create_custom_db_engine_version <- function(Engine, EngineVersion, DatabaseI
 #' Amazon Web Services Region.
 #' 
 #' Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
+#' @param EnableLocalWriteForwarding Specifies whether read replicas can forward write operations to the
+#' writer DB instance in the DB cluster. By default, write operations
+#' aren't allowed on reader DB instances.
+#' 
+#' Valid for: Aurora DB clusters only
 #' @param SourceRegion The ID of the region that contains the source for the read replica.
 #'
 #' @keywords internal
 #'
 #' @rdname rds_create_db_cluster
-rds_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, CharacterSetName = NULL, DatabaseName = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, ReplicationSourceIdentifier = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, EngineMode = NULL, ScalingConfiguration = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL, EnableHttpEndpoint = NULL, CopyTagsToSnapshot = NULL, Domain = NULL, DomainIAMRoleName = NULL, EnableGlobalWriteForwarding = NULL, DBClusterInstanceClass = NULL, AllocatedStorage = NULL, StorageType = NULL, Iops = NULL, PubliclyAccessible = NULL, AutoMinorVersionUpgrade = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, ServerlessV2ScalingConfiguration = NULL, NetworkType = NULL, DBSystemId = NULL, ManageMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL, SourceRegion = NULL) {
+rds_create_db_cluster <- function(AvailabilityZones = NULL, BackupRetentionPeriod = NULL, CharacterSetName = NULL, DatabaseName = NULL, DBClusterIdentifier, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, DBSubnetGroupName = NULL, Engine, EngineVersion = NULL, Port = NULL, MasterUsername = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, ReplicationSourceIdentifier = NULL, Tags = NULL, StorageEncrypted = NULL, KmsKeyId = NULL, PreSignedUrl = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, EngineMode = NULL, ScalingConfiguration = NULL, DeletionProtection = NULL, GlobalClusterIdentifier = NULL, EnableHttpEndpoint = NULL, CopyTagsToSnapshot = NULL, Domain = NULL, DomainIAMRoleName = NULL, EnableGlobalWriteForwarding = NULL, DBClusterInstanceClass = NULL, AllocatedStorage = NULL, StorageType = NULL, Iops = NULL, PubliclyAccessible = NULL, AutoMinorVersionUpgrade = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, ServerlessV2ScalingConfiguration = NULL, NetworkType = NULL, DBSystemId = NULL, ManageMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL, EnableLocalWriteForwarding = NULL, SourceRegion = NULL) {
   op <- new_operation(
     name = "CreateDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, CharacterSetName = CharacterSetName, DatabaseName = DatabaseName, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ReplicationSourceIdentifier = ReplicationSourceIdentifier, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, EngineMode = EngineMode, ScalingConfiguration = ScalingConfiguration, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier, EnableHttpEndpoint = EnableHttpEndpoint, CopyTagsToSnapshot = CopyTagsToSnapshot, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, EnableGlobalWriteForwarding = EnableGlobalWriteForwarding, DBClusterInstanceClass = DBClusterInstanceClass, AllocatedStorage = AllocatedStorage, StorageType = StorageType, Iops = Iops, PubliclyAccessible = PubliclyAccessible, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, NetworkType = NetworkType, DBSystemId = DBSystemId, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, SourceRegion = SourceRegion)
+  input <- .rds$create_db_cluster_input(AvailabilityZones = AvailabilityZones, BackupRetentionPeriod = BackupRetentionPeriod, CharacterSetName = CharacterSetName, DatabaseName = DatabaseName, DBClusterIdentifier = DBClusterIdentifier, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, DBSubnetGroupName = DBSubnetGroupName, Engine = Engine, EngineVersion = EngineVersion, Port = Port, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ReplicationSourceIdentifier = ReplicationSourceIdentifier, Tags = Tags, StorageEncrypted = StorageEncrypted, KmsKeyId = KmsKeyId, PreSignedUrl = PreSignedUrl, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, EngineMode = EngineMode, ScalingConfiguration = ScalingConfiguration, DeletionProtection = DeletionProtection, GlobalClusterIdentifier = GlobalClusterIdentifier, EnableHttpEndpoint = EnableHttpEndpoint, CopyTagsToSnapshot = CopyTagsToSnapshot, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, EnableGlobalWriteForwarding = EnableGlobalWriteForwarding, DBClusterInstanceClass = DBClusterInstanceClass, AllocatedStorage = AllocatedStorage, StorageType = StorageType, Iops = Iops, PubliclyAccessible = PubliclyAccessible, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, NetworkType = NetworkType, DBSystemId = DBSystemId, ManageMasterUserPassword = ManageMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, EnableLocalWriteForwarding = EnableLocalWriteForwarding, SourceRegion = SourceRegion)
   output <- .rds$create_db_cluster_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -3969,18 +3980,22 @@ rds_delete_custom_db_engine_version <- function(Engine, EngineVersion) {
 #' -   First character must be a letter
 #' 
 #' -   Can't end with a hyphen or contain two consecutive hyphens
+#' @param DeleteAutomatedBackups A value that indicates whether to remove automated backups immediately
+#' after the DB cluster is deleted. This parameter isn't case-sensitive.
+#' The default is to remove automated backups immediately after the DB
+#' cluster is deleted.
 #'
 #' @keywords internal
 #'
 #' @rdname rds_delete_db_cluster
-rds_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NULL, FinalDBSnapshotIdentifier = NULL) {
+rds_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NULL, FinalDBSnapshotIdentifier = NULL, DeleteAutomatedBackups = NULL) {
   op <- new_operation(
     name = "DeleteDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$delete_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, SkipFinalSnapshot = SkipFinalSnapshot, FinalDBSnapshotIdentifier = FinalDBSnapshotIdentifier)
+  input <- .rds$delete_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, SkipFinalSnapshot = SkipFinalSnapshot, FinalDBSnapshotIdentifier = FinalDBSnapshotIdentifier, DeleteAutomatedBackups = DeleteAutomatedBackups)
   output <- .rds$delete_db_cluster_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -3989,6 +4004,38 @@ rds_delete_db_cluster <- function(DBClusterIdentifier, SkipFinalSnapshot = NULL,
   return(response)
 }
 .rds$operations$delete_db_cluster <- rds_delete_db_cluster
+
+#' Deletes automated backups using the DbClusterResourceId value of the
+#' source DB cluster or the Amazon Resource Name (ARN) of the automated
+#' backups
+#'
+#' @description
+#' Deletes automated backups using the `DbClusterResourceId` value of the source DB cluster or the Amazon Resource Name (ARN) of the automated backups.
+#'
+#' See [https://www.paws-r-sdk.com/docs/rds_delete_db_cluster_automated_backup/](https://www.paws-r-sdk.com/docs/rds_delete_db_cluster_automated_backup/) for full documentation.
+#'
+#' @param DbClusterResourceId &#91;required&#93; The identifier for the source DB cluster, which can't be changed and
+#' which is unique to an Amazon Web Services Region.
+#'
+#' @keywords internal
+#'
+#' @rdname rds_delete_db_cluster_automated_backup
+rds_delete_db_cluster_automated_backup <- function(DbClusterResourceId) {
+  op <- new_operation(
+    name = "DeleteDBClusterAutomatedBackup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$delete_db_cluster_automated_backup_input(DbClusterResourceId = DbClusterResourceId)
+  output <- .rds$delete_db_cluster_automated_backup_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$delete_db_cluster_automated_backup <- rds_delete_db_cluster_automated_backup
 
 #' Deletes a custom endpoint and removes it from an Amazon Aurora DB
 #' cluster
@@ -4672,6 +4719,66 @@ rds_describe_certificates <- function(CertificateIdentifier = NULL, Filters = NU
 }
 .rds$operations$describe_certificates <- rds_describe_certificates
 
+#' Displays backups for both current and deleted DB clusters
+#'
+#' @description
+#' Displays backups for both current and deleted DB clusters. For example, use this operation to find details about automated backups for previously deleted clusters. Current clusters are returned for both the [`describe_db_cluster_automated_backups`][rds_describe_db_cluster_automated_backups] and [`describe_db_clusters`][rds_describe_db_clusters] operations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/rds_describe_db_cluster_automated_backups/](https://www.paws-r-sdk.com/docs/rds_describe_db_cluster_automated_backups/) for full documentation.
+#'
+#' @param DbClusterResourceId The resource ID of the DB cluster that is the source of the automated
+#' backup. This parameter isn't case-sensitive.
+#' @param DBClusterIdentifier (Optional) The user-supplied DB cluster identifier. If this parameter is
+#' specified, it must match the identifier of an existing DB cluster. It
+#' returns information from the specific DB cluster's automated backup.
+#' This parameter isn't case-sensitive.
+#' @param Filters A filter that specifies which resources to return based on status.
+#' 
+#' Supported filters are the following:
+#' 
+#' -   `status`
+#' 
+#'     -   `retained` - Automated backups for deleted clusters and after
+#'         backup replication is stopped.
+#' 
+#' -   `db-cluster-id` - Accepts DB cluster identifiers and Amazon Resource
+#'     Names (ARNs). The results list includes only information about the
+#'     DB cluster automated backups identified by these ARNs.
+#' 
+#' -   `db-cluster-resource-id` - Accepts DB resource identifiers and
+#'     Amazon Resource Names (ARNs). The results list includes only
+#'     information about the DB cluster resources identified by these ARNs.
+#' 
+#' Returns all resources by default. The status for each resource is
+#' specified in the response.
+#' @param MaxRecords The maximum number of records to include in the response. If more
+#' records exist than the specified `MaxRecords` value, a pagination token
+#' called a marker is included in the response so that you can retrieve the
+#' remaining results.
+#' @param Marker The pagination token provided in the previous request. If this parameter
+#' is specified the response includes only records beyond the marker, up to
+#' `MaxRecords`.
+#'
+#' @keywords internal
+#'
+#' @rdname rds_describe_db_cluster_automated_backups
+rds_describe_db_cluster_automated_backups <- function(DbClusterResourceId = NULL, DBClusterIdentifier = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeDBClusterAutomatedBackups",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterAutomatedBackups")
+  )
+  input <- .rds$describe_db_cluster_automated_backups_input(DbClusterResourceId = DbClusterResourceId, DBClusterIdentifier = DBClusterIdentifier, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .rds$describe_db_cluster_automated_backups_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$describe_db_cluster_automated_backups <- rds_describe_db_cluster_automated_backups
+
 #' Returns information about backtracks for a DB cluster
 #'
 #' @description
@@ -5032,18 +5139,19 @@ rds_describe_db_cluster_snapshot_attributes <- function(DBClusterSnapshotIdentif
 #' You can share a manual DB cluster snapshot as public by using the
 #' [`modify_db_cluster_snapshot_attribute`][rds_modify_db_cluster_snapshot_attribute]
 #' API action.
+#' @param DbClusterResourceId A specific DB cluster resource ID to describe.
 #'
 #' @keywords internal
 #'
 #' @rdname rds_describe_db_cluster_snapshots
-rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClusterSnapshotIdentifier = NULL, SnapshotType = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL, IncludeShared = NULL, IncludePublic = NULL) {
+rds_describe_db_cluster_snapshots <- function(DBClusterIdentifier = NULL, DBClusterSnapshotIdentifier = NULL, SnapshotType = NULL, Filters = NULL, MaxRecords = NULL, Marker = NULL, IncludeShared = NULL, IncludePublic = NULL, DbClusterResourceId = NULL) {
   op <- new_operation(
     name = "DescribeDBClusterSnapshots",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "DBClusterSnapshots")
   )
-  input <- .rds$describe_db_cluster_snapshots_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, SnapshotType = SnapshotType, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, IncludeShared = IncludeShared, IncludePublic = IncludePublic)
+  input <- .rds$describe_db_cluster_snapshots_input(DBClusterIdentifier = DBClusterIdentifier, DBClusterSnapshotIdentifier = DBClusterSnapshotIdentifier, SnapshotType = SnapshotType, Filters = Filters, MaxRecords = MaxRecords, Marker = Marker, IncludeShared = IncludeShared, IncludePublic = IncludePublic, DbClusterResourceId = DbClusterResourceId)
   output <- .rds$describe_db_cluster_snapshots_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -5275,7 +5383,7 @@ rds_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NULL,
 #' backup. This parameter isn't case-sensitive.
 #' @param DBInstanceIdentifier (Optional) The user-supplied instance identifier. If this parameter is
 #' specified, it must match the identifier of an existing DB instance. It
-#' returns information from the specific DB instance' automated backup.
+#' returns information from the specific DB instance's automated backup.
 #' This parameter isn't case-sensitive.
 #' @param Filters A filter that specifies which resources to return based on status.
 #' 
@@ -5283,13 +5391,13 @@ rds_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NULL,
 #' 
 #' -   `status`
 #' 
-#'     -   `active` - automated backups for current instances
+#'     -   `active` - Automated backups for current instances.
 #' 
-#'     -   `retained` - automated backups for deleted instances and after
-#'         backup replication is stopped
+#'     -   `creating` - Automated backups that are waiting for the first
+#'         automated snapshot to be available.
 #' 
-#'     -   `creating` - automated backups that are waiting for the first
-#'         automated snapshot to be available
+#'     -   `retained` - Automated backups for deleted instances and after
+#'         backup replication is stopped.
 #' 
 #' -   `db-instance-id` - Accepts DB instance identifiers and Amazon
 #'     Resource Names (ARNs). The results list includes only information
@@ -7023,39 +7131,53 @@ rds_failover_db_cluster <- function(DBClusterIdentifier, TargetDBInstanceIdentif
 }
 .rds$operations$failover_db_cluster <- rds_failover_db_cluster
 
-#' Initiates the failover process for an Aurora global database
-#' (GlobalCluster)
+#' Promotes the specified secondary DB cluster to be the primary DB cluster
+#' in the global database cluster to fail over or switch over a global
+#' database
 #'
 #' @description
-#' Initiates the failover process for an Aurora global database (GlobalCluster).
+#' Promotes the specified secondary DB cluster to be the primary DB cluster in the global database cluster to fail over or switch over a global database. Switchover operations were previously called "managed planned failovers."
 #'
 #' See [https://www.paws-r-sdk.com/docs/rds_failover_global_cluster/](https://www.paws-r-sdk.com/docs/rds_failover_global_cluster/) for full documentation.
 #'
-#' @param GlobalClusterIdentifier &#91;required&#93; Identifier of the Aurora global database (GlobalCluster) that should be
-#' failed over. The identifier is the unique key assigned by the user when
-#' the Aurora global database was created. In other words, it's the name of
-#' the Aurora global database that you want to fail over.
+#' @param GlobalClusterIdentifier &#91;required&#93; The identifier of the global database cluster (Aurora global database)
+#' this operation should apply to. The identifier is the unique key
+#' assigned by the user when the Aurora global database is created. In
+#' other words, it's the name of the Aurora global database.
 #' 
 #' Constraints:
 #' 
-#' -   Must match the identifier of an existing GlobalCluster (Aurora
-#'     global database).
-#' @param TargetDbClusterIdentifier &#91;required&#93; Identifier of the secondary Aurora DB cluster that you want to promote
-#' to primary for the Aurora global database (GlobalCluster.) Use the
-#' Amazon Resource Name (ARN) for the identifier so that Aurora can locate
-#' the cluster in its Amazon Web Services Region.
+#' -   Must match the identifier of an existing global database cluster.
+#' @param TargetDbClusterIdentifier &#91;required&#93; The identifier of the secondary Aurora DB cluster that you want to
+#' promote to the primary for the global database cluster. Use the Amazon
+#' Resource Name (ARN) for the identifier so that Aurora can locate the
+#' cluster in its Amazon Web Services Region.
+#' @param AllowDataLoss Specifies whether to allow data loss for this global database cluster
+#' operation. Allowing data loss triggers a global failover operation.
+#' 
+#' If you don't specify `AllowDataLoss`, the global database cluster
+#' operation defaults to a switchover.
+#' 
+#' Constraints:
+#' 
+#' -   Can't be specified together with the `Switchover` parameter.
+#' @param Switchover Specifies whether to switch over this global database cluster.
+#' 
+#' Constraints:
+#' 
+#' -   Can't be specified together with the `AllowDataLoss` parameter.
 #'
 #' @keywords internal
 #'
 #' @rdname rds_failover_global_cluster
-rds_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClusterIdentifier) {
+rds_failover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClusterIdentifier, AllowDataLoss = NULL, Switchover = NULL) {
   op <- new_operation(
     name = "FailoverGlobalCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$failover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier)
+  input <- .rds$failover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier, AllowDataLoss = AllowDataLoss, Switchover = Switchover)
   output <- .rds$failover_global_cluster_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -7794,18 +7916,23 @@ rds_modify_custom_db_engine_version <- function(Engine, EngineVersion, Descripti
 #' -   You must allow engine mode changes when specifying a different value
 #'     for the `EngineMode` parameter from the DB cluster's current engine
 #'     mode.
+#' @param EnableLocalWriteForwarding Specifies whether read replicas can forward write operations to the
+#' writer DB instance in the DB cluster. By default, write operations
+#' aren't allowed on reader DB instances.
+#' 
+#' Valid for: Aurora DB clusters only
 #'
 #' @keywords internal
 #'
 #' @rdname rds_modify_db_cluster
-rds_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, DBInstanceParameterGroupName = NULL, Domain = NULL, DomainIAMRoleName = NULL, ScalingConfiguration = NULL, DeletionProtection = NULL, EnableHttpEndpoint = NULL, CopyTagsToSnapshot = NULL, EnableGlobalWriteForwarding = NULL, DBClusterInstanceClass = NULL, AllocatedStorage = NULL, StorageType = NULL, Iops = NULL, AutoMinorVersionUpgrade = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, ServerlessV2ScalingConfiguration = NULL, NetworkType = NULL, ManageMasterUserPassword = NULL, RotateMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL, EngineMode = NULL, AllowEngineModeChange = NULL) {
+rds_modify_db_cluster <- function(DBClusterIdentifier, NewDBClusterIdentifier = NULL, ApplyImmediately = NULL, BackupRetentionPeriod = NULL, DBClusterParameterGroupName = NULL, VpcSecurityGroupIds = NULL, Port = NULL, MasterUserPassword = NULL, OptionGroupName = NULL, PreferredBackupWindow = NULL, PreferredMaintenanceWindow = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, CloudwatchLogsExportConfiguration = NULL, EngineVersion = NULL, AllowMajorVersionUpgrade = NULL, DBInstanceParameterGroupName = NULL, Domain = NULL, DomainIAMRoleName = NULL, ScalingConfiguration = NULL, DeletionProtection = NULL, EnableHttpEndpoint = NULL, CopyTagsToSnapshot = NULL, EnableGlobalWriteForwarding = NULL, DBClusterInstanceClass = NULL, AllocatedStorage = NULL, StorageType = NULL, Iops = NULL, AutoMinorVersionUpgrade = NULL, MonitoringInterval = NULL, MonitoringRoleArn = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, PerformanceInsightsRetentionPeriod = NULL, ServerlessV2ScalingConfiguration = NULL, NetworkType = NULL, ManageMasterUserPassword = NULL, RotateMasterUserPassword = NULL, MasterUserSecretKmsKeyId = NULL, EngineMode = NULL, AllowEngineModeChange = NULL, EnableLocalWriteForwarding = NULL) {
   op <- new_operation(
     name = "ModifyDBCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DBInstanceParameterGroupName = DBInstanceParameterGroupName, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, ScalingConfiguration = ScalingConfiguration, DeletionProtection = DeletionProtection, EnableHttpEndpoint = EnableHttpEndpoint, CopyTagsToSnapshot = CopyTagsToSnapshot, EnableGlobalWriteForwarding = EnableGlobalWriteForwarding, DBClusterInstanceClass = DBClusterInstanceClass, AllocatedStorage = AllocatedStorage, StorageType = StorageType, Iops = Iops, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, NetworkType = NetworkType, ManageMasterUserPassword = ManageMasterUserPassword, RotateMasterUserPassword = RotateMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, EngineMode = EngineMode, AllowEngineModeChange = AllowEngineModeChange)
+  input <- .rds$modify_db_cluster_input(DBClusterIdentifier = DBClusterIdentifier, NewDBClusterIdentifier = NewDBClusterIdentifier, ApplyImmediately = ApplyImmediately, BackupRetentionPeriod = BackupRetentionPeriod, DBClusterParameterGroupName = DBClusterParameterGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Port = Port, MasterUserPassword = MasterUserPassword, OptionGroupName = OptionGroupName, PreferredBackupWindow = PreferredBackupWindow, PreferredMaintenanceWindow = PreferredMaintenanceWindow, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, CloudwatchLogsExportConfiguration = CloudwatchLogsExportConfiguration, EngineVersion = EngineVersion, AllowMajorVersionUpgrade = AllowMajorVersionUpgrade, DBInstanceParameterGroupName = DBInstanceParameterGroupName, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, ScalingConfiguration = ScalingConfiguration, DeletionProtection = DeletionProtection, EnableHttpEndpoint = EnableHttpEndpoint, CopyTagsToSnapshot = CopyTagsToSnapshot, EnableGlobalWriteForwarding = EnableGlobalWriteForwarding, DBClusterInstanceClass = DBClusterInstanceClass, AllocatedStorage = AllocatedStorage, StorageType = StorageType, Iops = Iops, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, MonitoringInterval = MonitoringInterval, MonitoringRoleArn = MonitoringRoleArn, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, PerformanceInsightsRetentionPeriod = PerformanceInsightsRetentionPeriod, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, NetworkType = NetworkType, ManageMasterUserPassword = ManageMasterUserPassword, RotateMasterUserPassword = RotateMasterUserPassword, MasterUserSecretKmsKeyId = MasterUserSecretKmsKeyId, EngineMode = EngineMode, AllowEngineModeChange = AllowEngineModeChange, EnableLocalWriteForwarding = EnableLocalWriteForwarding)
   output <- .rds$modify_db_cluster_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -9167,10 +9294,10 @@ rds_modify_event_subscription <- function(SubscriptionName, SnsTopicArn = NULL, 
 }
 .rds$operations$modify_event_subscription <- rds_modify_event_subscription
 
-#' Modifies a setting for an Amazon Aurora global cluster
+#' Modifies a setting for an Amazon Aurora global database cluster
 #'
 #' @description
-#' Modifies a setting for an Amazon Aurora global cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. For more information on Amazon Aurora, see [What is Amazon Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html) in the *Amazon Aurora User Guide*.
+#' Modifies a setting for an Amazon Aurora global database cluster. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. For more information on Amazon Aurora, see [What is Amazon Aurora?](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/CHAP_AuroraOverview.html) in the *Amazon Aurora User Guide*.
 #'
 #' See [https://www.paws-r-sdk.com/docs/rds_modify_global_cluster/](https://www.paws-r-sdk.com/docs/rds_modify_global_cluster/) for full documentation.
 #'
@@ -9857,7 +9984,7 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' 
 #' **Aurora MySQL**
 #' 
-#' Examples: `5.7.mysql_aurora.2.07.1`, `8.0.mysql_aurora.3.02.0`
+#' Examples: `5.7.mysql_aurora.2.12.0`, `8.0.mysql_aurora.3.04.0`
 #' @param Port The port number on which the instances in the restored DB cluster accept
 #' connections.
 #' 
@@ -9945,9 +10072,9 @@ rds_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParameter
 #' Valid values: `mysql`
 #' @param SourceEngineVersion &#91;required&#93; The version of the database that the backup files were created from.
 #' 
-#' MySQL versions 5.5, 5.6, and 5.7 are supported.
+#' MySQL versions 5.7 and 8.0 are supported.
 #' 
-#' Example: `5.6.40`, `5.7.28`
+#' Example: `5.7.40`, `8.0.28`
 #' @param S3BucketName &#91;required&#93; The name of the Amazon S3 bucket that contains the data used to create
 #' the Amazon Aurora DB cluster.
 #' @param S3Prefix The prefix for all of the file names that contain the data used to
@@ -10456,7 +10583,7 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' restored as a full copy of the source DB cluster.
 #' 
 #' Valid for: Aurora DB clusters and Multi-AZ DB clusters
-#' @param SourceDBClusterIdentifier &#91;required&#93; The identifier of the source DB cluster from which to restore.
+#' @param SourceDBClusterIdentifier The identifier of the source DB cluster from which to restore.
 #' 
 #' Constraints:
 #' 
@@ -10729,18 +10856,19 @@ rds_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, DBClu
 #' in the *Amazon Aurora User Guide.*
 #' 
 #' Valid for: Aurora DB clusters only
+#' @param SourceDbClusterResourceId The resource ID of the source DB cluster from which to restore.
 #'
 #' @keywords internal
 #'
 #' @rdname rds_restore_db_cluster_to_point_in_time
-rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, DBClusterParameterGroupName = NULL, DeletionProtection = NULL, CopyTagsToSnapshot = NULL, Domain = NULL, DomainIAMRoleName = NULL, ScalingConfiguration = NULL, EngineMode = NULL, DBClusterInstanceClass = NULL, StorageType = NULL, PubliclyAccessible = NULL, Iops = NULL, ServerlessV2ScalingConfiguration = NULL, NetworkType = NULL) {
+rds_restore_db_cluster_to_point_in_time <- function(DBClusterIdentifier, RestoreType = NULL, SourceDBClusterIdentifier = NULL, RestoreToTime = NULL, UseLatestRestorableTime = NULL, Port = NULL, DBSubnetGroupName = NULL, OptionGroupName = NULL, VpcSecurityGroupIds = NULL, Tags = NULL, KmsKeyId = NULL, EnableIAMDatabaseAuthentication = NULL, BacktrackWindow = NULL, EnableCloudwatchLogsExports = NULL, DBClusterParameterGroupName = NULL, DeletionProtection = NULL, CopyTagsToSnapshot = NULL, Domain = NULL, DomainIAMRoleName = NULL, ScalingConfiguration = NULL, EngineMode = NULL, DBClusterInstanceClass = NULL, StorageType = NULL, PubliclyAccessible = NULL, Iops = NULL, ServerlessV2ScalingConfiguration = NULL, NetworkType = NULL, SourceDbClusterResourceId = NULL) {
   op <- new_operation(
     name = "RestoreDBClusterToPointInTime",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rds$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DBClusterParameterGroupName = DBClusterParameterGroupName, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, ScalingConfiguration = ScalingConfiguration, EngineMode = EngineMode, DBClusterInstanceClass = DBClusterInstanceClass, StorageType = StorageType, PubliclyAccessible = PubliclyAccessible, Iops = Iops, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, NetworkType = NetworkType)
+  input <- .rds$restore_db_cluster_to_point_in_time_input(DBClusterIdentifier = DBClusterIdentifier, RestoreType = RestoreType, SourceDBClusterIdentifier = SourceDBClusterIdentifier, RestoreToTime = RestoreToTime, UseLatestRestorableTime = UseLatestRestorableTime, Port = Port, DBSubnetGroupName = DBSubnetGroupName, OptionGroupName = OptionGroupName, VpcSecurityGroupIds = VpcSecurityGroupIds, Tags = Tags, KmsKeyId = KmsKeyId, EnableIAMDatabaseAuthentication = EnableIAMDatabaseAuthentication, BacktrackWindow = BacktrackWindow, EnableCloudwatchLogsExports = EnableCloudwatchLogsExports, DBClusterParameterGroupName = DBClusterParameterGroupName, DeletionProtection = DeletionProtection, CopyTagsToSnapshot = CopyTagsToSnapshot, Domain = Domain, DomainIAMRoleName = DomainIAMRoleName, ScalingConfiguration = ScalingConfiguration, EngineMode = EngineMode, DBClusterInstanceClass = DBClusterInstanceClass, StorageType = StorageType, PubliclyAccessible = PubliclyAccessible, Iops = Iops, ServerlessV2ScalingConfiguration = ServerlessV2ScalingConfiguration, NetworkType = NetworkType, SourceDbClusterResourceId = SourceDbClusterResourceId)
   output <- .rds$restore_db_cluster_to_point_in_time_output()
   config <- get_config()
   svc <- .rds$service(config)
@@ -12380,6 +12508,46 @@ rds_switchover_blue_green_deployment <- function(BlueGreenDeploymentIdentifier, 
   return(response)
 }
 .rds$operations$switchover_blue_green_deployment <- rds_switchover_blue_green_deployment
+
+#' Switches over the specified secondary DB cluster to be the new primary
+#' DB cluster in the global database cluster
+#'
+#' @description
+#' Switches over the specified secondary DB cluster to be the new primary DB cluster in the global database cluster. Switchover operations were previously called "managed planned failovers."
+#'
+#' See [https://www.paws-r-sdk.com/docs/rds_switchover_global_cluster/](https://www.paws-r-sdk.com/docs/rds_switchover_global_cluster/) for full documentation.
+#'
+#' @param GlobalClusterIdentifier &#91;required&#93; The identifier of the global database cluster to switch over. This
+#' parameter isn't case-sensitive.
+#' 
+#' Constraints:
+#' 
+#' -   Must match the identifier of an existing global database cluster
+#'     (Aurora global database).
+#' @param TargetDbClusterIdentifier &#91;required&#93; The identifier of the secondary Aurora DB cluster to promote to the new
+#' primary for the global database cluster. Use the Amazon Resource Name
+#' (ARN) for the identifier so that Aurora can locate the cluster in its
+#' Amazon Web Services Region.
+#'
+#' @keywords internal
+#'
+#' @rdname rds_switchover_global_cluster
+rds_switchover_global_cluster <- function(GlobalClusterIdentifier, TargetDbClusterIdentifier) {
+  op <- new_operation(
+    name = "SwitchoverGlobalCluster",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rds$switchover_global_cluster_input(GlobalClusterIdentifier = GlobalClusterIdentifier, TargetDbClusterIdentifier = TargetDbClusterIdentifier)
+  output <- .rds$switchover_global_cluster_output()
+  config <- get_config()
+  svc <- .rds$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rds$operations$switchover_global_cluster <- rds_switchover_global_cluster
 
 #' Switches over an Oracle standby database in an Oracle Data Guard
 #' environment, making it the new primary database

@@ -63,7 +63,7 @@ supported regions and Amazon IVS HTTPS service endpoints, see the
 *All API request parameters and URLs are case sensitive. *
 
 For a summary of notable documentation changes in each release, see
-\href{https://docs.aws.amazon.com/ivs/latest/userguide/doc-history.html}{Document History}.
+\href{https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/doc-history.html}{Document History}.
 
 \strong{Allowed Header Values}
 \itemize{
@@ -75,7 +75,7 @@ For a summary of notable documentation changes in each release, see
 \strong{Resources}
 
 The following resources contain information about your IVS live stream
-(see \href{https://docs.aws.amazon.com/ivs/latest/userguide/getting-started.html}{Getting Started with Amazon IVS}):
+(see \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/getting-started.html}{Getting Started with Amazon IVS}):
 \itemize{
 \item \strong{Channel} — Stores configuration data related to your live stream.
 You first create a channel and then use the channel’s stream key to
@@ -128,7 +128,7 @@ Note the differences between these concepts:
 authenticated to sign Amazon IVS API requests.
 \item \emph{Authorization} is about granting permissions. Your IAM roles need
 to have permissions for Amazon IVS API requests. In addition,
-authorization is needed to view \href{https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html}{Amazon IVS private channels}.
+authorization is needed to view \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html}{Amazon IVS private channels}.
 (Private channels are channels that are enabled for "playback
 authorization.")
 }
@@ -150,7 +150,7 @@ For more information:
 \itemize{
 \item Authentication and generating signatures — See \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html}{Authenticating Requests (Amazon Web Services Signature Version 4)}
 in the \emph{Amazon Web Services General Reference}.
-\item Managing Amazon IVS permissions — See \href{https://docs.aws.amazon.com/ivs/latest/userguide/security-iam.html}{Identity and Access Management}
+\item Managing Amazon IVS permissions — See \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/security-iam.html}{Identity and Access Management}
 on the Security page of the \emph{Amazon IVS User Guide}.
 }
 
@@ -224,7 +224,7 @@ second per account are allowed.
 
 \strong{Private Channel Endpoints}
 
-For more information, see \href{https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html}{Setting Up Private Channels}
+For more information, see \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html}{Setting Up Private Channels}
 in the \emph{Amazon IVS User Guide}.
 \itemize{
 \item \code{\link[=ivs_import_playback_key_pair]{import_playback_key_pair}} — Imports

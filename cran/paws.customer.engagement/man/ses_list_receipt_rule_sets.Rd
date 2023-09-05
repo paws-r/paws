@@ -2,8 +2,8 @@
 % Please edit documentation in R/ses_operations.R
 \name{ses_list_receipt_rule_sets}
 \alias{ses_list_receipt_rule_sets}
-\title{Lists the receipt rule sets that exist under your AWS account in the
-current AWS Region}
+\title{Lists the receipt rule sets that exist under your Amazon Web Services
+account in the current Amazon Web Services Region}
 \usage{
 ses_list_receipt_rule_sets(NextToken = NULL)
 }
@@ -13,7 +13,7 @@ ses_list_receipt_rule_sets(NextToken = NULL)
 position in the receipt rule set list.}
 }
 \description{
-Lists the receipt rule sets that exist under your AWS account in the current AWS Region. If there are additional receipt rule sets to be retrieved, you will receive a \code{NextToken} that you can provide to the next call to \code{\link[=ses_list_receipt_rule_sets]{list_receipt_rule_sets}} to retrieve the additional entries.
+Lists the receipt rule sets that exist under your Amazon Web Services account in the current Amazon Web Services Region. If there are additional receipt rule sets to be retrieved, you receive a \code{NextToken} that you can provide to the next call to \code{\link[=ses_list_receipt_rule_sets]{list_receipt_rule_sets}} to retrieve the additional entries.
 
 See \url{https://www.paws-r-sdk.com/docs/ses_list_receipt_rule_sets/} for full documentation.
 }

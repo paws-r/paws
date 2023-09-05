@@ -155,11 +155,27 @@ call \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} and specify a
 \code{MetricName}, you must specify either \code{Statistic} or
 \verb{ExtendedStatistic,} but not both.}
 
-\item{ExtendedStatistic}{The percentile statistic for the metric specified in \code{MetricName}.
-Specify a value between p0.0 and p100. When you call
-\code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} and specify a
-\code{MetricName}, you must specify either \code{Statistic} or
-\verb{ExtendedStatistic,} but not both.}
+\item{ExtendedStatistic}{The extended statistic for the metric specified in \code{MetricName}. When
+you call \code{\link[=cloudwatch_put_metric_alarm]{put_metric_alarm}} and specify a
+\code{MetricName}, you must specify either \code{Statistic} or \code{ExtendedStatistic}
+but not both.
+
+If you specify \code{ExtendedStatistic}, the following are valid values:
+\itemize{
+\item \code{p90}
+\item \code{tm90}
+\item \code{tc90}
+\item \code{ts90}
+\item \code{wm90}
+\item \code{IQM}
+\item \code{PR(n:m)} where n and m are values of the metric
+\item \verb{TC(X\%:X\%)} where X is between 10 and 90 inclusive.
+\item \verb{TM(X\%:X\%)} where X is between 10 and 90 inclusive.
+\item \verb{TS(X\%:X\%)} where X is between 10 and 90 inclusive.
+\item \verb{WM(X\%:X\%)} where X is between 10 and 90 inclusive.
+}
+
+For more information about these extended statistics, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Statistics-definitions.html}{CloudWatch statistics definitions}.}
 
 \item{Dimensions}{The dimensions for the metric specified in \code{MetricName}.}
 
@@ -274,7 +290,9 @@ same operation. Instead, you retrieve the metrics you are using in your
 math expression as part of the \code{Metrics} array.}
 
 \item{Tags}{A list of key-value pairs to associate with the alarm. You can associate
-as many as 50 tags with an alarm.
+as many as 50 tags with an alarm. To be able to associate tags with the
+alarm when you create the alarm, you must have the
+\code{cloudwatch:TagResource} permission.
 
 Tags can help you organize and categorize your resources. You can also
 use them to scope user permissions by granting a user permission to

@@ -39,7 +39,7 @@ example, \code{MIT}.
 \item{CompatibleArchitectures}{A list of compatible \href{https://docs.aws.amazon.com/lambda/latest/dg/foundation-arch.html}{instruction set architectures}.}
 }
 \description{
-Creates an \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-layers.html}{Lambda layer} from a ZIP archive. Each time you call \code{\link[=lambda_publish_layer_version]{publish_layer_version}} with the same layer name, a new version is created.
+Creates an \href{https://docs.aws.amazon.com/lambda/latest/dg/chapter-layers.html}{Lambda layer} from a ZIP archive. Each time you call \code{\link[=lambda_publish_layer_version]{publish_layer_version}} with the same layer name, a new version is created.
 
 See \url{https://www.paws-r-sdk.com/docs/lambda_publish_layer_version/} for full documentation.
 }

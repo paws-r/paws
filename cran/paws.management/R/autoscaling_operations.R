@@ -2726,6 +2726,8 @@ autoscaling_set_instance_protection <- function(InstanceIds, AutoScalingGroupNam
 #' 
 #' -   Checkpoints
 #' 
+#' -   CloudWatch alarms
+#' 
 #' -   Skip matching
 #'
 #' @keywords internal

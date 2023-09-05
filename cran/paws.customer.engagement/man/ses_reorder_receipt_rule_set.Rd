@@ -9,8 +9,7 @@ ses_reorder_receipt_rule_set(RuleSetName, RuleNames)
 \arguments{
 \item{RuleSetName}{[required] The name of the receipt rule set to reorder.}
 
-\item{RuleNames}{[required] A list of the specified receipt rule set's receipt rules in the order
-that you want to put them.}
+\item{RuleNames}{[required] The specified receipt rule set's receipt rules, in order.}
 }
 \description{
 Reorders the receipt rules within a receipt rule set.

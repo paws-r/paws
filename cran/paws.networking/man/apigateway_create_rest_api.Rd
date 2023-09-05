@@ -38,7 +38,7 @@ smaller than this value. Setting it to zero allows compression for any
 payload size.}
 
 \item{apiKeySource}{The source of the API key for metering requests according to a usage
-plan. Valid values are: \>\code{HEADER} to read the API key from the
+plan. Valid values are: \code{HEADER} to read the API key from the
 \code{X-API-Key} header of a request. \code{AUTHORIZER} to read the API key from
 the \code{UsageIdentifierKey} from a custom authorizer.}
 

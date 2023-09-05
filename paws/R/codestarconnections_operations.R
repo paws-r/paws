@@ -3,14 +3,15 @@
 #' @include codestarconnections_service.R
 NULL
 
-#' Creates a connection that can then be given to other AWS services like
-#' CodePipeline so that it can access third-party code repositories
+#' Creates a connection that can then be given to other Amazon Web Services
+#' services like CodePipeline so that it can access third-party code
+#' repositories
 #'
 #' @description
-#' Creates a connection that can then be given to other AWS services like
-#' CodePipeline so that it can access third-party code repositories. The
-#' connection is in pending status until the third-party connection
-#' handshake is completed from the console.
+#' Creates a connection that can then be given to other Amazon Web Services
+#' services like CodePipeline so that it can access third-party code
+#' repositories. The connection is in pending status until the third-party
+#' connection handshake is completed from the console.
 #'
 #' @usage
 #' codestarconnections_create_connection(ProviderType, ConnectionName,
@@ -18,8 +19,7 @@ NULL
 #'
 #' @param ProviderType The name of the external provider where your third-party code repository
 #' is configured.
-#' @param ConnectionName &#91;required&#93; The name of the connection to be created. The name must be unique in the
-#' calling AWS account.
+#' @param ConnectionName &#91;required&#93; The name of the connection to be created.
 #' @param Tags The key-value pair to use when tagging the resource.
 #' @param HostArn The Amazon Resource Name (ARN) of the host associated with the
 #' connection to be created.
@@ -41,7 +41,7 @@ NULL
 #' @section Request syntax:
 #' ```
 #' svc$create_connection(
-#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
+#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab",
 #'   ConnectionName = "string",
 #'   Tags = list(
 #'     list(
@@ -93,8 +93,7 @@ codestarconnections_create_connection <- function(ProviderType = NULL, Connectio
 #' codestarconnections_create_host(Name, ProviderType, ProviderEndpoint,
 #'   VpcConfiguration, Tags)
 #'
-#' @param Name &#91;required&#93; The name of the host to be created. The name must be unique in the
-#' calling AWS account.
+#' @param Name &#91;required&#93; The name of the host to be created.
 #' @param ProviderType &#91;required&#93; The name of the installed provider to be associated with your
 #' connection. The host resource represents the infrastructure where your
 #' provider type is installed. The valid provider type is GitHub Enterprise
@@ -124,7 +123,7 @@ codestarconnections_create_connection <- function(ProviderType = NULL, Connectio
 #' ```
 #' svc$create_host(
 #'   Name = "string",
-#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
+#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab",
 #'   ProviderEndpoint = "string",
 #'   VpcConfiguration = list(
 #'     VpcId = "string",
@@ -276,7 +275,7 @@ codestarconnections_delete_host <- function(HostArn) {
 #'   Connection = list(
 #'     ConnectionName = "string",
 #'     ConnectionArn = "string",
-#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
+#'     ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab",
 #'     OwnerAccountId = "string",
 #'     ConnectionStatus = "PENDING"|"AVAILABLE"|"ERROR",
 #'     HostArn = "string"
@@ -331,7 +330,7 @@ codestarconnections_get_connection <- function(ConnectionArn) {
 #' list(
 #'   Name = "string",
 #'   Status = "string",
-#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
+#'   ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab",
 #'   ProviderEndpoint = "string",
 #'   VpcConfiguration = list(
 #'     VpcId = "string",
@@ -403,7 +402,7 @@ codestarconnections_get_host <- function(HostArn) {
 #'     list(
 #'       ConnectionName = "string",
 #'       ConnectionArn = "string",
-#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab",
 #'       OwnerAccountId = "string",
 #'       ConnectionStatus = "PENDING"|"AVAILABLE"|"ERROR",
 #'       HostArn = "string"
@@ -416,7 +415,7 @@ codestarconnections_get_host <- function(HostArn) {
 #' @section Request syntax:
 #' ```
 #' svc$list_connections(
-#'   ProviderTypeFilter = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
+#'   ProviderTypeFilter = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab",
 #'   HostArnFilter = "string",
 #'   MaxResults = 123,
 #'   NextToken = "string"
@@ -468,7 +467,7 @@ codestarconnections_list_connections <- function(ProviderTypeFilter = NULL, Host
 #'     list(
 #'       Name = "string",
 #'       HostArn = "string",
-#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer",
+#'       ProviderType = "Bitbucket"|"GitHub"|"GitHubEnterpriseServer"|"GitLab",
 #'       ProviderEndpoint = "string",
 #'       VpcConfiguration = list(
 #'         VpcId = "string",
@@ -624,10 +623,10 @@ codestarconnections_tag_resource <- function(ResourceArn, Tags) {
 }
 .codestarconnections$operations$tag_resource <- codestarconnections_tag_resource
 
-#' Removes tags from an AWS resource
+#' Removes tags from an Amazon Web Services resource
 #'
 #' @description
-#' Removes tags from an AWS resource.
+#' Removes tags from an Amazon Web Services resource.
 #'
 #' @usage
 #' codestarconnections_untag_resource(ResourceArn, TagKeys)

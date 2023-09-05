@@ -242,9 +242,8 @@ finspace_create_kx_changeset <- function(environmentId, databaseName, changeRequ
 #' @param autoScalingConfiguration The configuration based on which FinSpace will scale in or scale out
 #' nodes in your cluster.
 #' @param clusterDescription A description of the cluster.
-#' @param capacityConfiguration &#91;required&#93; A structure for the metadata of a cluster. It includes information about
-#' like the CPUs needed, memory of instances, number of instances, and the
-#' port used while establishing a connection.
+#' @param capacityConfiguration &#91;required&#93; A structure for the metadata of a cluster. It includes information like
+#' the CPUs needed, memory of instances, and number of instances.
 #' @param releaseLabel &#91;required&#93; The version of FinSpace managed kdb to run.
 #' @param vpcConfiguration Configuration details about the network where the Privatelink endpoint
 #' of the cluster resides.
@@ -1285,7 +1284,23 @@ finspace_get_kx_database <- function(environmentId, databaseName) {
 #'   dedicatedServiceAccountId = "string",
 #'   transitGatewayConfiguration = list(
 #'     transitGatewayID = "string",
-#'     routableCIDRSpace = "string"
+#'     routableCIDRSpace = "string",
+#'     attachmentNetworkAclConfiguration = list(
+#'       list(
+#'         ruleNumber = 123,
+#'         protocol = "string",
+#'         ruleAction = "allow"|"deny",
+#'         portRange = list(
+#'           from = 123,
+#'           to = 123
+#'         ),
+#'         icmpTypeCode = list(
+#'           type = 123,
+#'           code = 123
+#'         ),
+#'         cidrBlock = "string"
+#'       )
+#'     )
 #'   ),
 #'   customDNSConfiguration = list(
 #'     list(
@@ -1780,7 +1795,23 @@ finspace_list_kx_databases <- function(environmentId, nextToken = NULL, maxResul
 #'       dedicatedServiceAccountId = "string",
 #'       transitGatewayConfiguration = list(
 #'         transitGatewayID = "string",
-#'         routableCIDRSpace = "string"
+#'         routableCIDRSpace = "string",
+#'         attachmentNetworkAclConfiguration = list(
+#'           list(
+#'             ruleNumber = 123,
+#'             protocol = "string",
+#'             ruleAction = "allow"|"deny",
+#'             portRange = list(
+#'               from = 123,
+#'               to = 123
+#'             ),
+#'             icmpTypeCode = list(
+#'               type = 123,
+#'               code = 123
+#'             ),
+#'             cidrBlock = "string"
+#'           )
+#'         )
 #'       ),
 #'       customDNSConfiguration = list(
 #'         list(
@@ -2147,12 +2178,14 @@ finspace_update_environment <- function(environmentId, name = NULL, description 
 #'
 #' @usage
 #' finspace_update_kx_cluster_databases(environmentId, clusterName,
-#'   clientToken, databases)
+#'   clientToken, databases, deploymentConfiguration)
 #'
 #' @param environmentId &#91;required&#93; The unique identifier of a kdb environment.
 #' @param clusterName &#91;required&#93; A unique name for the cluster that you want to modify.
 #' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
 #' @param databases &#91;required&#93; The structure of databases mounted on the cluster.
+#' @param deploymentConfiguration The configuration that allows you to choose how you want to update the
+#' databases on a cluster.
 #'
 #' @return
 #' An empty list.
@@ -2176,6 +2209,9 @@ finspace_update_environment <- function(environmentId, name = NULL, description 
 #'       ),
 #'       changesetId = "string"
 #'     )
+#'   ),
+#'   deploymentConfiguration = list(
+#'     deploymentStrategy = "NO_RESTART"|"ROLLING"
 #'   )
 #' )
 #' ```
@@ -2185,14 +2221,14 @@ finspace_update_environment <- function(environmentId, name = NULL, description 
 #' @rdname finspace_update_kx_cluster_databases
 #'
 #' @aliases finspace_update_kx_cluster_databases
-finspace_update_kx_cluster_databases <- function(environmentId, clusterName, clientToken = NULL, databases) {
+finspace_update_kx_cluster_databases <- function(environmentId, clusterName, clientToken = NULL, databases, deploymentConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateKxClusterDatabases",
     http_method = "PUT",
     http_path = "/kx/environments/{environmentId}/clusters/{clusterName}/configuration/databases",
     paginator = list()
   )
-  input <- .finspace$update_kx_cluster_databases_input(environmentId = environmentId, clusterName = clusterName, clientToken = clientToken, databases = databases)
+  input <- .finspace$update_kx_cluster_databases_input(environmentId = environmentId, clusterName = clusterName, clientToken = clientToken, databases = databases, deploymentConfiguration = deploymentConfiguration)
   output <- .finspace$update_kx_cluster_databases_output()
   config <- get_config()
   svc <- .finspace$service(config)
@@ -2292,7 +2328,23 @@ finspace_update_kx_database <- function(environmentId, databaseName, description
 #'   dedicatedServiceAccountId = "string",
 #'   transitGatewayConfiguration = list(
 #'     transitGatewayID = "string",
-#'     routableCIDRSpace = "string"
+#'     routableCIDRSpace = "string",
+#'     attachmentNetworkAclConfiguration = list(
+#'       list(
+#'         ruleNumber = 123,
+#'         protocol = "string",
+#'         ruleAction = "allow"|"deny",
+#'         portRange = list(
+#'           from = 123,
+#'           to = 123
+#'         ),
+#'         icmpTypeCode = list(
+#'           type = 123,
+#'           code = 123
+#'         ),
+#'         cidrBlock = "string"
+#'       )
+#'     )
 #'   ),
 #'   customDNSConfiguration = list(
 #'     list(
@@ -2385,7 +2437,23 @@ finspace_update_kx_environment <- function(environmentId, name = NULL, descripti
 #'   dedicatedServiceAccountId = "string",
 #'   transitGatewayConfiguration = list(
 #'     transitGatewayID = "string",
-#'     routableCIDRSpace = "string"
+#'     routableCIDRSpace = "string",
+#'     attachmentNetworkAclConfiguration = list(
+#'       list(
+#'         ruleNumber = 123,
+#'         protocol = "string",
+#'         ruleAction = "allow"|"deny",
+#'         portRange = list(
+#'           from = 123,
+#'           to = 123
+#'         ),
+#'         icmpTypeCode = list(
+#'           type = 123,
+#'           code = 123
+#'         ),
+#'         cidrBlock = "string"
+#'       )
+#'     )
 #'   ),
 #'   customDNSConfiguration = list(
 #'     list(
@@ -2411,7 +2479,23 @@ finspace_update_kx_environment <- function(environmentId, name = NULL, descripti
 #'   environmentId = "string",
 #'   transitGatewayConfiguration = list(
 #'     transitGatewayID = "string",
-#'     routableCIDRSpace = "string"
+#'     routableCIDRSpace = "string",
+#'     attachmentNetworkAclConfiguration = list(
+#'       list(
+#'         ruleNumber = 123,
+#'         protocol = "string",
+#'         ruleAction = "allow"|"deny",
+#'         portRange = list(
+#'           from = 123,
+#'           to = 123
+#'         ),
+#'         icmpTypeCode = list(
+#'           type = 123,
+#'           code = 123
+#'         ),
+#'         cidrBlock = "string"
+#'       )
+#'     )
 #'   ),
 #'   customDNSConfiguration = list(
 #'     list(

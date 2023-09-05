@@ -3133,8 +3133,8 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
 #'
 #' @description
 #' Retrieves the details for a Savings Plan recommendation. These details
-#' include the hourly data-points that construct the new cost, coverage,
-#' and utilization charts.
+#' include the hourly data-points that construct the cost, coverage, and
+#' utilization charts.
 #'
 #' @usage
 #' costexplorer_get_savings_plan_purchase_recommendation_details(
@@ -4319,7 +4319,9 @@ costexplorer_get_usage_forecast <- function(TimePeriod, Metric, Granularity, Fil
 #'     list(
 #'       TagKey = "string",
 #'       Type = "AWSGenerated"|"UserDefined",
-#'       Status = "Active"|"Inactive"
+#'       Status = "Active"|"Inactive",
+#'       LastUpdatedDate = "string",
+#'       LastUsedDate = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"

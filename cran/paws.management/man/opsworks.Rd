@@ -68,7 +68,7 @@ see:
 \item AWS SDK for .NET
 \item AWS SDK for PHP 2
 \item \href{https://docs.aws.amazon.com/sdk-for-ruby/v2/api/}{AWS SDK for Ruby}
-\item \href{https://docs.aws.amazon.com/sdk-for-javascript/index.html}{AWS SDK for Node.js}
+\item \href{https://docs.aws.amazon.com/sdk-for-javascript/}{AWS SDK for Node.js}
 \item \href{http://docs.pythonboto.org/en/latest/ref/opsworks.html}{AWS SDK for Python(Boto)}
 }
 

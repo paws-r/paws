@@ -3,6 +3,86 @@
 #' @include pi_service.R
 NULL
 
+#' Creates a new performance analysis report for a specific time period for
+#' the DB instance
+#'
+#' @description
+#' Creates a new performance analysis report for a specific time period for the DB instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pi_create_performance_analysis_report/](https://www.paws-r-sdk.com/docs/pi_create_performance_analysis_report/) for full documentation.
+#'
+#' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights will
+#' return metrics. Valid value is `RDS`.
+#' @param Identifier &#91;required&#93; An immutable, Amazon Web Services Region-unique identifier for a data
+#' source. Performance Insights gathers metrics from this data source.
+#' 
+#' To use an Amazon RDS instance as a data source, you specify its
+#' `DbiResourceId` value. For example, specify
+#' `db-ADECBTYHKTSAUMUZQYPDS2GW4A`.
+#' @param StartTime &#91;required&#93; The start time defined for the analysis report.
+#' @param EndTime &#91;required&#93; The end time defined for the analysis report.
+#' @param Tags The metadata assigned to the analysis report consisting of a key-value
+#' pair.
+#'
+#' @keywords internal
+#'
+#' @rdname pi_create_performance_analysis_report
+pi_create_performance_analysis_report <- function(ServiceType, Identifier, StartTime, EndTime, Tags = NULL) {
+  op <- new_operation(
+    name = "CreatePerformanceAnalysisReport",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pi$create_performance_analysis_report_input(ServiceType = ServiceType, Identifier = Identifier, StartTime = StartTime, EndTime = EndTime, Tags = Tags)
+  output <- .pi$create_performance_analysis_report_output()
+  config <- get_config()
+  svc <- .pi$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pi$operations$create_performance_analysis_report <- pi_create_performance_analysis_report
+
+#' Deletes a performance analysis report
+#'
+#' @description
+#' Deletes a performance analysis report.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pi_delete_performance_analysis_report/](https://www.paws-r-sdk.com/docs/pi_delete_performance_analysis_report/) for full documentation.
+#'
+#' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights will
+#' return metrics. Valid value is `RDS`.
+#' @param Identifier &#91;required&#93; An immutable identifier for a data source that is unique for an Amazon
+#' Web Services Region. Performance Insights gathers metrics from this data
+#' source. In the console, the identifier is shown as *ResourceID*. When
+#' you call `DescribeDBInstances`, the identifier is returned as
+#' `DbiResourceId`.
+#' 
+#' To use a DB instance as a data source, specify its `DbiResourceId`
+#' value. For example, specify `db-ABCDEFGHIJKLMNOPQRSTU1VW2X`.
+#' @param AnalysisReportId &#91;required&#93; The unique identifier of the analysis report for deletion.
+#'
+#' @keywords internal
+#'
+#' @rdname pi_delete_performance_analysis_report
+pi_delete_performance_analysis_report <- function(ServiceType, Identifier, AnalysisReportId) {
+  op <- new_operation(
+    name = "DeletePerformanceAnalysisReport",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pi$delete_performance_analysis_report_input(ServiceType = ServiceType, Identifier = Identifier, AnalysisReportId = AnalysisReportId)
+  output <- .pi$delete_performance_analysis_report_output()
+  config <- get_config()
+  svc <- .pi$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pi$operations$delete_performance_analysis_report <- pi_delete_performance_analysis_report
+
 #' For a specific time period, retrieve the top N dimension keys for a
 #' metric
 #'
@@ -172,6 +252,51 @@ pi_get_dimension_key_details <- function(ServiceType, Identifier, Group, GroupId
   return(response)
 }
 .pi$operations$get_dimension_key_details <- pi_get_dimension_key_details
+
+#' Retrieves the report including the report ID, status, time details, and
+#' the insights with recommendations
+#'
+#' @description
+#' Retrieves the report including the report ID, status, time details, and the insights with recommendations. The report status can be `RUNNING`, `SUCCEEDED`, or `FAILED`. The insights include the `description` and `recommendation` fields.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pi_get_performance_analysis_report/](https://www.paws-r-sdk.com/docs/pi_get_performance_analysis_report/) for full documentation.
+#'
+#' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights will
+#' return metrics. Valid value is `RDS`.
+#' @param Identifier &#91;required&#93; An immutable identifier for a data source that is unique for an Amazon
+#' Web Services Region. Performance Insights gathers metrics from this data
+#' source. In the console, the identifier is shown as *ResourceID*. When
+#' you call `DescribeDBInstances`, the identifier is returned as
+#' `DbiResourceId`.
+#' 
+#' To use a DB instance as a data source, specify its `DbiResourceId`
+#' value. For example, specify `db-ABCDEFGHIJKLMNOPQRSTU1VW2X`.
+#' @param AnalysisReportId &#91;required&#93; A unique identifier of the created analysis report. For example,
+#' `report-12345678901234567`
+#' @param TextFormat Indicates the text format in the report. The options are `PLAIN_TEXT` or
+#' `MARKDOWN`. The default value is `plain text`.
+#' @param AcceptLanguage The text language in the report. The default language is `EN_US`
+#' (English).
+#'
+#' @keywords internal
+#'
+#' @rdname pi_get_performance_analysis_report
+pi_get_performance_analysis_report <- function(ServiceType, Identifier, AnalysisReportId, TextFormat = NULL, AcceptLanguage = NULL) {
+  op <- new_operation(
+    name = "GetPerformanceAnalysisReport",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pi$get_performance_analysis_report_input(ServiceType = ServiceType, Identifier = Identifier, AnalysisReportId = AnalysisReportId, TextFormat = TextFormat, AcceptLanguage = AcceptLanguage)
+  output <- .pi$get_performance_analysis_report_output()
+  config <- get_config()
+  svc <- .pi$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pi$operations$get_performance_analysis_report <- pi_get_performance_analysis_report
 
 #' Retrieve the metadata for different features
 #'
@@ -389,3 +514,156 @@ pi_list_available_resource_metrics <- function(ServiceType, Identifier, MetricTy
   return(response)
 }
 .pi$operations$list_available_resource_metrics <- pi_list_available_resource_metrics
+
+#' Lists all the analysis reports created for the DB instance
+#'
+#' @description
+#' Lists all the analysis reports created for the DB instance. The reports are sorted based on the start time of each report.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pi_list_performance_analysis_reports/](https://www.paws-r-sdk.com/docs/pi_list_performance_analysis_reports/) for full documentation.
+#'
+#' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights returns
+#' metrics. Valid value is `RDS`.
+#' @param Identifier &#91;required&#93; An immutable identifier for a data source that is unique for an Amazon
+#' Web Services Region. Performance Insights gathers metrics from this data
+#' source. In the console, the identifier is shown as *ResourceID*. When
+#' you call `DescribeDBInstances`, the identifier is returned as
+#' `DbiResourceId`.
+#' 
+#' To use a DB instance as a data source, specify its `DbiResourceId`
+#' value. For example, specify `db-ABCDEFGHIJKLMNOPQRSTU1VW2X`.
+#' @param NextToken An optional pagination token provided by a previous request. If this
+#' parameter is specified, the response includes only records beyond the
+#' token, up to the value specified by `MaxResults`.
+#' @param MaxResults The maximum number of items to return in the response. If more items
+#' exist than the specified `MaxResults` value, a pagination token is
+#' included in the response so that the remaining results can be retrieved.
+#' @param ListTags Specifies whether or not to include the list of tags in the response.
+#'
+#' @keywords internal
+#'
+#' @rdname pi_list_performance_analysis_reports
+pi_list_performance_analysis_reports <- function(ServiceType, Identifier, NextToken = NULL, MaxResults = NULL, ListTags = NULL) {
+  op <- new_operation(
+    name = "ListPerformanceAnalysisReports",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .pi$list_performance_analysis_reports_input(ServiceType = ServiceType, Identifier = Identifier, NextToken = NextToken, MaxResults = MaxResults, ListTags = ListTags)
+  output <- .pi$list_performance_analysis_reports_output()
+  config <- get_config()
+  svc <- .pi$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pi$operations$list_performance_analysis_reports <- pi_list_performance_analysis_reports
+
+#' Retrieves all the metadata tags associated with Amazon RDS Performance
+#' Insights resource
+#'
+#' @description
+#' Retrieves all the metadata tags associated with Amazon RDS Performance Insights resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pi_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/pi_list_tags_for_resource/) for full documentation.
+#'
+#' @param ServiceType &#91;required&#93; List the tags for the Amazon Web Services service for which Performance
+#' Insights returns metrics. Valid value is `RDS`.
+#' @param ResourceARN &#91;required&#93; Lists all the tags for the Amazon RDS Performance Insights resource.
+#' This value is an Amazon Resource Name (ARN). For information about
+#' creating an ARN, see [Constructing an RDS Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
+#'
+#' @keywords internal
+#'
+#' @rdname pi_list_tags_for_resource
+pi_list_tags_for_resource <- function(ServiceType, ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pi$list_tags_for_resource_input(ServiceType = ServiceType, ResourceARN = ResourceARN)
+  output <- .pi$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .pi$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pi$operations$list_tags_for_resource <- pi_list_tags_for_resource
+
+#' Adds metadata tags to the Amazon RDS Performance Insights resource
+#'
+#' @description
+#' Adds metadata tags to the Amazon RDS Performance Insights resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pi_tag_resource/](https://www.paws-r-sdk.com/docs/pi_tag_resource/) for full documentation.
+#'
+#' @param ServiceType &#91;required&#93; The Amazon Web Services service for which Performance Insights returns
+#' metrics. Valid value is `RDS`.
+#' @param ResourceARN &#91;required&#93; The Amazon RDS Performance Insights resource that the tags are added to.
+#' This value is an Amazon Resource Name (ARN). For information about
+#' creating an ARN, see [Constructing an RDS Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
+#' @param Tags &#91;required&#93; The metadata assigned to an Amazon RDS resource consisting of a
+#' key-value pair.
+#'
+#' @keywords internal
+#'
+#' @rdname pi_tag_resource
+pi_tag_resource <- function(ServiceType, ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pi$tag_resource_input(ServiceType = ServiceType, ResourceARN = ResourceARN, Tags = Tags)
+  output <- .pi$tag_resource_output()
+  config <- get_config()
+  svc <- .pi$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pi$operations$tag_resource <- pi_tag_resource
+
+#' Deletes the metadata tags from the Amazon RDS Performance Insights
+#' resource
+#'
+#' @description
+#' Deletes the metadata tags from the Amazon RDS Performance Insights resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/pi_untag_resource/](https://www.paws-r-sdk.com/docs/pi_untag_resource/) for full documentation.
+#'
+#' @param ServiceType &#91;required&#93; List the tags for the Amazon Web Services service for which Performance
+#' Insights returns metrics. Valid value is `RDS`.
+#' @param ResourceARN &#91;required&#93; The Amazon RDS Performance Insights resource that the tags are added to.
+#' This value is an Amazon Resource Name (ARN). For information about
+#' creating an ARN, see [Constructing an RDS Amazon Resource Name
+#' (ARN)](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_Tagging.ARN.html#USER_Tagging.ARN.Constructing).
+#' @param TagKeys &#91;required&#93; The metadata assigned to an Amazon RDS Performance Insights resource
+#' consisting of a key-value pair.
+#'
+#' @keywords internal
+#'
+#' @rdname pi_untag_resource
+pi_untag_resource <- function(ServiceType, ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .pi$untag_resource_input(ServiceType = ServiceType, ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .pi$untag_resource_output()
+  config <- get_config()
+  svc <- .pi$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.pi$operations$untag_resource <- pi_untag_resource

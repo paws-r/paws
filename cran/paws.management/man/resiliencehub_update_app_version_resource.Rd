@@ -20,32 +20,32 @@ resiliencehub_update_app_version_resource(
 \arguments{
 \item{additionalInfo}{Currently, there is no supported additional information for resources.}
 
-\item{appArn}{[required] The Amazon Resource Name (ARN) of the Resilience Hub application. The
-format for this ARN is:
+\item{appArn}{[required] Amazon Resource Name (ARN) of the Resilience Hub application. The format
+for this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
 information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
 in the \emph{AWS General Reference} guide.}
 
-\item{appComponents}{The list of Application Components that this resource belongs to. If an
+\item{appComponents}{List of Application Components that this resource belongs to. If an
 Application Component is not part of the Resilience Hub application, it
 will be added.}
 
-\item{awsAccountId}{The Amazon Web Services account that owns the physical resource.}
+\item{awsAccountId}{Amazon Web Services account that owns the physical resource.}
 
-\item{awsRegion}{The Amazon Web Services region that owns the physical resource.}
+\item{awsRegion}{Amazon Web Services region that owns the physical resource.}
 
 \item{excluded}{Indicates if a resource is excluded from an Resilience Hub application.
 
 You can exclude only imported resources from an Resilience Hub
 application.}
 
-\item{logicalResourceId}{The logical identifier of the resource.}
+\item{logicalResourceId}{Logical identifier of the resource.}
 
-\item{physicalResourceId}{The physical identifier of the resource.}
+\item{physicalResourceId}{Physical identifier of the resource.}
 
-\item{resourceName}{The name of the resource.}
+\item{resourceName}{Name of the resource.}
 
-\item{resourceType}{The type of resource.}
+\item{resourceType}{Type of resource.}
 }
 \description{
 Updates the resource details in the Resilience Hub application.

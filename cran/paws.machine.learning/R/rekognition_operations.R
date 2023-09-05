@@ -200,8 +200,8 @@ rekognition_create_collection <- function(CollectionId, Tags = NULL) {
 #' dataset is created. To add labeled images to the dataset, You can use
 #' the console or call
 #' [`update_dataset_entries`][rekognition_update_dataset_entries].
-#' @param DatasetType &#91;required&#93; The type of the dataset. Specify `train` to create a training dataset.
-#' Specify `test` to create a test dataset.
+#' @param DatasetType &#91;required&#93; The type of the dataset. Specify `TRAIN` to create a training dataset.
+#' Specify `TEST` to create a test dataset.
 #' @param ProjectArn &#91;required&#93; The ARN of the Amazon Rekognition Custom Labels project to which you
 #' want to asssign the dataset.
 #'
@@ -228,7 +228,7 @@ rekognition_create_dataset <- function(DatasetSource = NULL, DatasetType, Projec
 #' This API operation initiates a Face Liveness session
 #'
 #' @description
-#' This API operation initiates a Face Liveness session. It returns a `SessionId`, which you can use to start streaming Face Liveness video and get the results for a Face Liveness session. You can use the `OutputConfig` option in the Settings parameter to provide an Amazon S3 bucket location. The Amazon S3 bucket stores reference images and audit images. You can use `AuditImagesLimit` to limit the number of audit images returned. This number is between 0 and 4. By default, it is set to 0. The limit is best effort and based on the duration of the selfie-video.
+#' This API operation initiates a Face Liveness session. It returns a `SessionId`, which you can use to start streaming Face Liveness video and get the results for a Face Liveness session.
 #'
 #' See [https://www.paws-r-sdk.com/docs/rekognition_create_face_liveness_session/](https://www.paws-r-sdk.com/docs/rekognition_create_face_liveness_session/) for full documentation.
 #'
@@ -948,6 +948,12 @@ rekognition_detect_custom_labels <- function(ProjectVersionArn, Image, MaxResult
 #' If you provide both, `["ALL", "DEFAULT"]`, the service uses a logical
 #' "AND" operator to determine which attributes to return (in this case,
 #' all attributes).
+#' 
+#' Note that while the FaceOccluded and EyeDirection attributes are
+#' supported when using [`detect_faces`][rekognition_detect_faces], they
+#' aren't supported when analyzing videos with
+#' [`start_face_detection`][rekognition_start_face_detection] and
+#' [`get_face_detection`][rekognition_get_face_detection].
 #'
 #' @keywords internal
 #'
@@ -987,12 +993,16 @@ rekognition_detect_faces <- function(Image, Attributes = NULL) {
 #' more information, see Images in the Amazon Rekognition developer guide.
 #' @param MaxLabels Maximum number of labels you want the service to return in the response.
 #' The service returns the specified number of highest confidence labels.
+#' Only valid when GENERAL_LABELS is specified as a feature type in the
+#' Feature input parameter.
 #' @param MinConfidence Specifies the minimum confidence level for the labels to return. Amazon
 #' Rekognition doesn't return any labels with confidence lower than this
 #' specified value.
 #' 
 #' If `MinConfidence` is not specified, the operation returns labels with a
-#' confidence values greater than or equal to 55 percent.
+#' confidence values greater than or equal to 55 percent. Only valid when
+#' GENERAL_LABELS is specified as a feature type in the Feature input
+#' parameter.
 #' @param Features A list of the types of analysis to perform. Specifying GENERAL_LABELS
 #' uses the label detection feature, while specifying IMAGE_PROPERTIES
 #' returns information regarding image color and quality. If no option is
@@ -1371,7 +1381,7 @@ rekognition_get_face_detection <- function(JobId, MaxResults = NULL, NextToken =
 #' Retrieves the results of a specific Face Liveness session
 #'
 #' @description
-#' Retrieves the results of a specific Face Liveness session. It requires the `sessionId` as input, which was created using [`create_face_liveness_session`][rekognition_create_face_liveness_session]. Returns the corresponding Face Liveness confidence score, a reference image that includes a face bounding box, and audit images that also contain face bounding boxes. The Face Liveness confidence score ranges from 0 to 100. The reference image can optionally be returned.
+#' Retrieves the results of a specific Face Liveness session. It requires the `sessionId` as input, which was created using [`create_face_liveness_session`][rekognition_create_face_liveness_session]. Returns the corresponding Face Liveness confidence score, a reference image that includes a face bounding box, and audit images that also contain face bounding boxes. The Face Liveness confidence score ranges from 0 to 100.
 #'
 #' See [https://www.paws-r-sdk.com/docs/rekognition_get_face_liveness_session_results/](https://www.paws-r-sdk.com/docs/rekognition_get_face_liveness_session_results/) for full documentation.
 #'
@@ -1818,8 +1828,10 @@ rekognition_list_dataset_labels <- function(DatasetArn, NextToken = NULL, MaxRes
 #' response. You can use this pagination token to retrieve the next set of
 #' faces.
 #' @param MaxResults Maximum number of faces to return.
-#' @param UserId An array of user IDs to match when listing faces in a collection.
-#' @param FaceIds An array of face IDs to match when listing faces in a collection.
+#' @param UserId An array of user IDs to filter results with when listing faces in a
+#' collection.
+#' @param FaceIds An array of face IDs to filter results with when listing faces in a
+#' collection.
 #'
 #' @keywords internal
 #'

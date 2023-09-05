@@ -103,7 +103,7 @@ NULL
 #'     in the *Amazon Web Services General Reference*.
 #' 
 #' -   Managing Amazon IVS permissions — See [Identity and Access
-#'     Management](https://docs.aws.amazon.com/ivs/latest/userguide/security-iam.html)
+#'     Management](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/security-iam.html)
 #'     on the Security page of the *Amazon IVS User Guide*.
 #' 
 #' **Amazon Resource Names (ARNs)**

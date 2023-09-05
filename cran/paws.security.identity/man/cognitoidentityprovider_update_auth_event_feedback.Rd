@@ -22,7 +22,12 @@ cognitoidentityprovider_update_auth_event_feedback(
 
 \item{FeedbackToken}{[required] The feedback token.}
 
-\item{FeedbackValue}{[required] The authentication event feedback value.}
+\item{FeedbackValue}{[required] The authentication event feedback value. When you provide a
+\code{FeedbackValue} value of \code{valid}, you tell Amazon Cognito that you trust
+a user session where Amazon Cognito has evaluated some level of risk.
+When you provide a \code{FeedbackValue} value of \code{invalid}, you tell Amazon
+Cognito that you don't trust a user session, or you don't believe that
+Amazon Cognito evaluated a high-enough risk level.}
 }
 \description{
 Provides the feedback for an authentication event, whether it was from a valid user or not. This feedback is used for improving the risk evaluation decision for the user pool as part of Amazon Cognito advanced security.

@@ -8,7 +8,7 @@ template and a set of replacement data}
 ses_test_render_template(TemplateName, TemplateData)
 }
 \arguments{
-\item{TemplateName}{[required] The name of the template that you want to render.}
+\item{TemplateName}{[required] The name of the template to render.}
 
 \item{TemplateData}{[required] A list of replacement values to apply to the template. This parameter is
 a JSON object, typically consisting of key-value pairs in which the keys

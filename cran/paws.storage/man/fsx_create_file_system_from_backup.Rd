@@ -73,7 +73,7 @@ original SSD file system had a storage capacity of at least 2000 GiB.}
 \item{KmsKeyId}{}
 
 \item{FileSystemTypeVersion}{Sets the version for the Amazon FSx for Lustre file system that you're
-creating from a backup. Valid values are \code{2.10} and \code{2.12}.
+creating from a backup. Valid values are \code{2.10}, \code{2.12}, and \code{2.15}.
 
 You don't need to specify \code{FileSystemTypeVersion} because it will be
 applied using the backup's \code{FileSystemTypeVersion} setting. If you

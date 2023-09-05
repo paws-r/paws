@@ -32,7 +32,12 @@ to 100, then the first 100 bytes that meet the filter criteria are
 copied to the target.
 
 If you do not want to mirror the entire packet, use the \code{PacketLength}
-parameter to specify the number of bytes in each packet to mirror.}
+parameter to specify the number of bytes in each packet to mirror.
+
+For sessions with Network Load Balancer (NLB) Traffic Mirror targets the
+default \code{PacketLength} will be set to 8500. Valid values are 1-8500.
+Setting a \code{PacketLength} greater than 8500 will result in an error
+response.}
 
 \item{SessionNumber}{[required] The session number determines the order in which sessions are evaluated
 when an interface is used by multiple sessions. The first session with a

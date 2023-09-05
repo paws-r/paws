@@ -2,30 +2,53 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_failover_global_cluster}
 \alias{rds_failover_global_cluster}
-\title{Initiates the failover process for an Aurora global database
-(GlobalCluster)}
+\title{Promotes the specified secondary DB cluster to be the primary DB cluster
+in the global database cluster to fail over or switch over a global
+database}
 \usage{
-rds_failover_global_cluster(GlobalClusterIdentifier, TargetDbClusterIdentifier)
+rds_failover_global_cluster(
+  GlobalClusterIdentifier,
+  TargetDbClusterIdentifier,
+  AllowDataLoss = NULL,
+  Switchover = NULL
+)
 }
 \arguments{
-\item{GlobalClusterIdentifier}{[required] Identifier of the Aurora global database (GlobalCluster) that should be
-failed over. The identifier is the unique key assigned by the user when
-the Aurora global database was created. In other words, it's the name of
-the Aurora global database that you want to fail over.
+\item{GlobalClusterIdentifier}{[required] The identifier of the global database cluster (Aurora global database)
+this operation should apply to. The identifier is the unique key
+assigned by the user when the Aurora global database is created. In
+other words, it's the name of the Aurora global database.
 
 Constraints:
 \itemize{
-\item Must match the identifier of an existing GlobalCluster (Aurora
-global database).
+\item Must match the identifier of an existing global database cluster.
 }}
 
-\item{TargetDbClusterIdentifier}{[required] Identifier of the secondary Aurora DB cluster that you want to promote
-to primary for the Aurora global database (GlobalCluster.) Use the
-Amazon Resource Name (ARN) for the identifier so that Aurora can locate
-the cluster in its Amazon Web Services Region.}
+\item{TargetDbClusterIdentifier}{[required] The identifier of the secondary Aurora DB cluster that you want to
+promote to the primary for the global database cluster. Use the Amazon
+Resource Name (ARN) for the identifier so that Aurora can locate the
+cluster in its Amazon Web Services Region.}
+
+\item{AllowDataLoss}{Specifies whether to allow data loss for this global database cluster
+operation. Allowing data loss triggers a global failover operation.
+
+If you don't specify \code{AllowDataLoss}, the global database cluster
+operation defaults to a switchover.
+
+Constraints:
+\itemize{
+\item Can't be specified together with the \code{Switchover} parameter.
+}}
+
+\item{Switchover}{Specifies whether to switch over this global database cluster.
+
+Constraints:
+\itemize{
+\item Can't be specified together with the \code{AllowDataLoss} parameter.
+}}
 }
 \description{
-Initiates the failover process for an Aurora global database (GlobalCluster).
+Promotes the specified secondary DB cluster to be the primary DB cluster in the global database cluster to fail over or switch over a global database. Switchover operations were previously called "managed planned failovers."
 
 See \url{https://www.paws-r-sdk.com/docs/rds_failover_global_cluster/} for full documentation.
 }

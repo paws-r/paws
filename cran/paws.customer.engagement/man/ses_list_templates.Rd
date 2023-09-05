@@ -3,7 +3,7 @@
 \name{ses_list_templates}
 \alias{ses_list_templates}
 \title{Lists the email templates present in your Amazon SES account in the
-current AWS Region}
+current Amazon Web Services Region}
 \usage{
 ses_list_templates(NextToken = NULL, MaxItems = NULL)
 }
@@ -13,12 +13,12 @@ ses_list_templates(NextToken = NULL, MaxItems = NULL)
 list of email templates.}
 
 \item{MaxItems}{The maximum number of templates to return. This value must be at least 1
-and less than or equal to 10. If you do not specify a value, or if you
-specify a value less than 1 or greater than 10, the operation will
-return up to 10 results.}
+and less than or equal to 100. If more than 100 items are requested, the
+page size will automatically set to 100. If you do not specify a value,
+10 is the default page size.}
 }
 \description{
-Lists the email templates present in your Amazon SES account in the current AWS Region.
+Lists the email templates present in your Amazon SES account in the current Amazon Web Services Region.
 
 See \url{https://www.paws-r-sdk.com/docs/ses_list_templates/} for full documentation.
 }

@@ -21,10 +21,10 @@ ses_send_bounce(
 be an identity that you have verified with Amazon SES.}
 
 \item{Explanation}{Human-readable text for the bounce message to explain the failure. If
-not specified, the text will be auto-generated based on the bounced
-recipient information.}
+not specified, the text is auto-generated based on the bounced recipient
+information.}
 
-\item{MessageDsn}{Message-related DSN fields. If not specified, Amazon SES will choose the
+\item{MessageDsn}{Message-related DSN fields. If not specified, Amazon SES chooses the
 values.}
 
 \item{BouncedRecipientInfoList}{[required] A list of recipients of the bounced message, including the information
@@ -38,7 +38,7 @@ that permits you to use the address in the "From" header of the bounce.
 For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.}
 }
 \description{
-Generates and sends a bounce message to the sender of an email you received through Amazon SES. You can only use this API on an email up to 24 hours after you receive it.
+Generates and sends a bounce message to the sender of an email you received through Amazon SES. You can only use this operation on an email up to 24 hours after you receive it.
 
 See \url{https://www.paws-r-sdk.com/docs/ses_send_bounce/} for full documentation.
 }

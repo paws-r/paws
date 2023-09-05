@@ -59,7 +59,8 @@ conn <- DBI::dbConnect(
   host = host,
   port = port,
   client.flag = RMariaDB::CLIENT_SSL
-)}
+)
+}
 
 }
 \keyword{internal}

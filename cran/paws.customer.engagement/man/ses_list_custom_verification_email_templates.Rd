@@ -3,7 +3,7 @@
 \name{ses_list_custom_verification_email_templates}
 \alias{ses_list_custom_verification_email_templates}
 \title{Lists the existing custom verification email templates for your account
-in the current AWS Region}
+in the current Amazon Web Services Region}
 \usage{
 ses_list_custom_verification_email_templates(
   NextToken = NULL,
@@ -17,10 +17,10 @@ in your Amazon SES account.}
 \item{MaxResults}{The maximum number of custom verification email templates to return.
 This value must be at least 1 and less than or equal to 50. If you do
 not specify a value, or if you specify a value less than 1 or greater
-than 50, the operation will return up to 50 results.}
+than 50, the operation returns up to 50 results.}
 }
 \description{
-Lists the existing custom verification email templates for your account in the current AWS Region.
+Lists the existing custom verification email templates for your account in the current Amazon Web Services Region.
 
 See \url{https://www.paws-r-sdk.com/docs/ses_list_custom_verification_email_templates/} for full documentation.
 }

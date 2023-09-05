@@ -8,7 +8,9 @@ the taskToken has successfully completed}
 swf_respond_decision_task_completed(
   taskToken,
   decisions = NULL,
-  executionContext = NULL
+  executionContext = NULL,
+  taskList = NULL,
+  taskListScheduleToStartTimeout = NULL
 )
 }
 \arguments{
@@ -24,6 +26,22 @@ processing this decision task. See the docs for the Decision structure
 for details.}
 
 \item{executionContext}{User defined context to add to workflow execution.}
+
+\item{taskList}{The task list to use for the future decision tasks of this workflow
+execution. This list overrides the original task list you specified
+while starting the workflow execution.}
+
+\item{taskListScheduleToStartTimeout}{Specifies a timeout (in seconds) for the task list override. When this
+parameter is missing, the task list override is permanent. This
+parameter makes it possible to temporarily override the task list. If a
+decision task scheduled on the override task list is not started within
+the timeout, the decision task will time out. Amazon SWF will revert the
+override and schedule a new decision task to the original task list.
+
+If a decision task scheduled on the override task list is started within
+the timeout, but not completed within the start-to-close timeout, Amazon
+SWF will also revert the override and schedule a new decision task to
+the original task list.}
 }
 \description{
 Used by deciders to tell the service that the DecisionTask identified by the \code{taskToken} has successfully completed. The \code{decisions} argument specifies the list of decisions made while processing the task.

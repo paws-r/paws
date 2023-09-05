@@ -4,12 +4,12 @@
 \alias{connectcampaignservice_update_campaign_dialer_config}
 \title{Updates the dialer config of a campaign}
 \usage{
-connectcampaignservice_update_campaign_dialer_config(dialerConfig, id)
+connectcampaignservice_update_campaign_dialer_config(id, dialerConfig)
 }
 \arguments{
-\item{dialerConfig}{[required]}
-
 \item{id}{[required]}
+
+\item{dialerConfig}{[required]}
 }
 \description{
 Updates the dialer config of a campaign. This API is idempotent.

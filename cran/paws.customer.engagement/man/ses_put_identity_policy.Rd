@@ -8,12 +8,12 @@ identity (an email address or a domain)}
 ses_put_identity_policy(Identity, PolicyName, Policy)
 }
 \arguments{
-\item{Identity}{[required] The identity that the policy will apply to. You can specify an identity
-by using its name or by using its Amazon Resource Name (ARN). Examples:
-\code{user@example.com}, \code{example.com},
+\item{Identity}{[required] The identity to which that the policy applies. You can specify an
+identity by using its name or by using its Amazon Resource Name (ARN).
+Examples: \code{user@example.com}, \code{example.com},
 \code{arn:aws:ses:us-east-1:123456789012:identity/example.com}.
 
-To successfully call this API, you must own the identity.}
+To successfully call this operation, you must own the identity.}
 
 \item{PolicyName}{[required] The name of the policy.
 

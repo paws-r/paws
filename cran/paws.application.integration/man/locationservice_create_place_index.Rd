@@ -29,8 +29,7 @@ For additional information about
 \href{https://docs.aws.amazon.com/location/latest/developerguide/grab.html}{GrabMaps}'
 coverage, see \href{https://docs.aws.amazon.com/location/latest/developerguide/grab.html#grab-coverage-area}{GrabMaps countries and areas covered}.
 \item \code{Here} – For additional information about \href{https://docs.aws.amazon.com/location/latest/developerguide/HERE.html}{HERE Technologies}'
-coverage in your region of interest, see HERE details on goecoding
-coverage.
+coverage in your region of interest, see \href{https://developer.here.com/documentation/geocoder/dev_guide/topics/coverage-geocoder.html}{HERE details on goecoding coverage}.
 
 If you specify HERE Technologies (\code{Here}) as the data provider, you
 may not \href{https://docs.aws.amazon.com/location/latest/APIReference/API_DataSourceConfiguration.html}{store results}

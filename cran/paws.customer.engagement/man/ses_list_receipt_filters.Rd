@@ -2,13 +2,13 @@
 % Please edit documentation in R/ses_operations.R
 \name{ses_list_receipt_filters}
 \alias{ses_list_receipt_filters}
-\title{Lists the IP address filters associated with your AWS account in the
-current AWS Region}
+\title{Lists the IP address filters associated with your Amazon Web Services
+account in the current Amazon Web Services Region}
 \usage{
 ses_list_receipt_filters()
 }
 \description{
-Lists the IP address filters associated with your AWS account in the current AWS Region.
+Lists the IP address filters associated with your Amazon Web Services account in the current Amazon Web Services Region.
 
 See \url{https://www.paws-r-sdk.com/docs/ses_list_receipt_filters/} for full documentation.
 }

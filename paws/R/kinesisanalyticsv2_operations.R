@@ -669,7 +669,7 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #' @description
 #' Creates a Kinesis Data Analytics application. For information about
 #' creating a Kinesis Data Analytics application, see [Creating an
-#' Application](https://docs.aws.amazon.com/kinesisanalytics/latest/java/getting-started.html).
+#' Application](https://docs.aws.amazon.com/managed-flink/latest/java/getting-started.html).
 #'
 #' @usage
 #' kinesisanalyticsv2_create_application(ApplicationName,
@@ -690,7 +690,7 @@ kinesisanalyticsv2_add_application_vpc_configuration <- function(ApplicationName
 #' key-value pair that identifies an application. Note that the maximum
 #' number of application tags includes system tags. The maximum number of
 #' user-defined application tags is 50. For more information, see [Using
-#' Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
+#' Tagging](https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html).
 #' @param ApplicationMode Use the `STREAMING` mode to create a Kinesis Data Analytics For Flink
 #' application. To create a Kinesis Data Analytics Studio notebook, use the
 #' `INTERACTIVE` mode.
@@ -2692,7 +2692,7 @@ kinesisanalyticsv2_list_applications <- function(Limit = NULL, NextToken = NULL)
 #' @description
 #' Retrieves the list of key-value tags assigned to the application. For
 #' more information, see [Using
-#' Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
+#' Tagging](https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html).
 #'
 #' @usage
 #' kinesisanalyticsv2_list_tags_for_resource(ResourceARN)
@@ -3179,7 +3179,7 @@ kinesisanalyticsv2_stop_application <- function(ApplicationName, Force = NULL) {
 #' Note that the maximum number of application tags includes system tags.
 #' The maximum number of user-defined application tags is 50. For more
 #' information, see [Using
-#' Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
+#' Tagging](https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html).
 #'
 #' @usage
 #' kinesisanalyticsv2_tag_resource(ResourceARN, Tags)
@@ -3230,7 +3230,7 @@ kinesisanalyticsv2_tag_resource <- function(ResourceARN, Tags) {
 #' @description
 #' Removes one or more tags from a Kinesis Data Analytics application. For
 #' more information, see [Using
-#' Tagging](https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html).
+#' Tagging](https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html).
 #'
 #' @usage
 #' kinesisanalyticsv2_untag_resource(ResourceARN, TagKeys)
@@ -3815,7 +3815,7 @@ kinesisanalyticsv2_update_application <- function(ApplicationName, CurrentApplic
 #' 
 #' For information about application maintenance, see [Kinesis Data
 #' Analytics for Apache Flink
-#' Maintenance](https://docs.aws.amazon.com/kinesisanalytics/latest/java/maintenance.html).
+#' Maintenance](https://docs.aws.amazon.com/managed-flink/latest/java/maintenance.html).
 #' 
 #' This operation is supported only for Amazon Kinesis Data Analytics for
 #' Apache Flink.

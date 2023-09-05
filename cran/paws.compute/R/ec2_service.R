@@ -19,19 +19,16 @@ NULL
 #' To learn more, see the following resources:
 #' 
 #' -   Amazon EC2: [Amazon EC2 product page](https://aws.amazon.com/ec2/),
-#'     [Amazon EC2
-#'     documentation](https://docs.aws.amazon.com/ec2/index.html)
+#'     [Amazon EC2 documentation](https://docs.aws.amazon.com/ec2/)
 #' 
 #' -   Amazon EBS: [Amazon EBS product page](https://aws.amazon.com/ebs/),
-#'     [Amazon EBS
-#'     documentation](https://docs.aws.amazon.com/ebs/index.html)
+#'     [Amazon EBS documentation](https://docs.aws.amazon.com/ebs/)
 #' 
 #' -   Amazon VPC: [Amazon VPC product page](https://aws.amazon.com/vpc/),
-#'     [Amazon VPC
-#'     documentation](https://docs.aws.amazon.com/vpc/index.html)
+#'     [Amazon VPC documentation](https://docs.aws.amazon.com/vpc/)
 #' 
 #' -   VPN: [VPN product page](https://aws.amazon.com/vpn/), [VPN
-#'     documentation](https://docs.aws.amazon.com/vpn/index.html)
+#'     documentation](https://docs.aws.amazon.com/vpn/)
 #'
 #' @param
 #' config

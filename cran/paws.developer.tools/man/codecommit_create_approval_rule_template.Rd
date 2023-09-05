@@ -3,7 +3,7 @@
 \name{codecommit_create_approval_rule_template}
 \alias{codecommit_create_approval_rule_template}
 \title{Creates a template for approval rules that can then be associated with
-one or more repositories in your AWS account}
+one or more repositories in your Amazon Web Services account}
 \usage{
 codecommit_create_approval_rule_template(
   approvalRuleTemplateName,
@@ -25,13 +25,13 @@ specified in the template.
 When you create the content of the approval rule template, you can
 specify approvers in an approval pool in one of two ways:
 \itemize{
-\item \strong{CodeCommitApprovers}: This option only requires an AWS account
-and a resource. It can be used for both IAM users and federated
-access users whose name matches the provided resource name. This is
-a very powerful option that offers a great deal of flexibility. For
-example, if you specify the AWS account \emph{123456789012} and
-\emph{Mary_Major}, all of the following are counted as approvals coming
-from that user:
+\item \strong{CodeCommitApprovers}: This option only requires an Amazon Web
+Services account and a resource. It can be used for both IAM users
+and federated access users whose name matches the provided resource
+name. This is a very powerful option that offers a great deal of
+flexibility. For example, if you specify the Amazon Web Services
+account \emph{123456789012} and \emph{Mary_Major}, all of the following are
+counted as approvals coming from that user:
 \itemize{
 \item An IAM user in the account
 (arn:aws:iam::\emph{123456789012}:user/\emph{Mary_Major})
@@ -56,7 +56,7 @@ description that explains what this template does and when it might be
 appropriate to associate it with repositories.}
 }
 \description{
-Creates a template for approval rules that can then be associated with one or more repositories in your AWS account. When you associate a template with a repository, AWS CodeCommit creates an approval rule that matches the conditions of the template for all pull requests that meet the conditions of the template. For more information, see \code{\link[=codecommit_associate_approval_rule_template_with_repository]{associate_approval_rule_template_with_repository}}.
+Creates a template for approval rules that can then be associated with one or more repositories in your Amazon Web Services account. When you associate a template with a repository, CodeCommit creates an approval rule that matches the conditions of the template for all pull requests that meet the conditions of the template. For more information, see \code{\link[=codecommit_associate_approval_rule_template_with_repository]{associate_approval_rule_template_with_repository}}.
 
 See \url{https://www.paws-r-sdk.com/docs/codecommit_create_approval_rule_template/} for full documentation.
 }

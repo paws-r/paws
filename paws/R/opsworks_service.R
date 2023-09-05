@@ -34,7 +34,7 @@ NULL
 #' -   [AWS SDK for Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/)
 #' 
 #' -   [AWS SDK for
-#'     Node.js](https://docs.aws.amazon.com/sdk-for-javascript/index.html)
+#'     Node.js](https://docs.aws.amazon.com/sdk-for-javascript/)
 #' 
 #' -   [AWS SDK for
 #'     Python(Boto)](http://docs.pythonboto.org/en/latest/ref/opsworks.html)

@@ -11,7 +11,7 @@ apigateway_update_documentation_version(
 )
 }
 \arguments{
-\item{restApiId}{[required] The string identifier of the associated RestApi..}
+\item{restApiId}{[required] The string identifier of the associated RestApi.}
 
 \item{documentationVersion}{[required] The version identifier of the to-be-updated documentation version.}
 

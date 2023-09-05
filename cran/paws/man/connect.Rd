@@ -114,6 +114,7 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[paws.customer.engagement:connect_associate_queue_quick_connects]{associate_queue_quick_connects} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_associate_routing_profile_queues]{associate_routing_profile_queues} \tab Associates a set of queues with a routing profile\cr
 \link[paws.customer.engagement:connect_associate_security_key]{associate_security_key} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_associate_traffic_distribution_group_user]{associate_traffic_distribution_group_user} \tab Associates an agent with a traffic distribution group\cr
 \link[paws.customer.engagement:connect_claim_phone_number]{claim_phone_number} \tab Claims an available phone number to your Amazon Connect instance or traffic distribution group\cr
 \link[paws.customer.engagement:connect_create_agent_status]{create_agent_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_create_contact_flow]{create_contact_flow} \tab Creates a flow for the specified Amazon Connect instance\cr
@@ -186,6 +187,7 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[paws.customer.engagement:connect_disassociate_queue_quick_connects]{disassociate_queue_quick_connects} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_disassociate_routing_profile_queues]{disassociate_routing_profile_queues} \tab Disassociates a set of queues from a routing profile\cr
 \link[paws.customer.engagement:connect_disassociate_security_key]{disassociate_security_key} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+\link[paws.customer.engagement:connect_disassociate_traffic_distribution_group_user]{disassociate_traffic_distribution_group_user} \tab Disassociates an agent from a traffic distribution group\cr
 \link[paws.customer.engagement:connect_dismiss_user_contact]{dismiss_user_contact} \tab Dismisses contacts from an agent’s CCP and returns the agent to an available state, which allows the agent to receive a new routed contact\cr
 \link[paws.customer.engagement:connect_get_contact_attributes]{get_contact_attributes} \tab Retrieves the contact attributes for the specified contact\cr
 \link[paws.customer.engagement:connect_get_current_metric_data]{get_current_metric_data} \tab Gets the real-time metric data from the specified Amazon Connect instance\cr
@@ -228,6 +230,7 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[paws.customer.engagement:connect_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
 \link[paws.customer.engagement:connect_list_task_templates]{list_task_templates} \tab Lists task templates for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_list_traffic_distribution_groups]{list_traffic_distribution_groups} \tab Lists traffic distribution groups\cr
+\link[paws.customer.engagement:connect_list_traffic_distribution_group_users]{list_traffic_distribution_group_users} \tab Lists traffic distribution group users\cr
 \link[paws.customer.engagement:connect_list_use_cases]{list_use_cases} \tab Lists the use cases for the integration association\cr
 \link[paws.customer.engagement:connect_list_user_hierarchy_groups]{list_user_hierarchy_groups} \tab Provides summary information about the hierarchy groups for the specified Amazon Connect instance\cr
 \link[paws.customer.engagement:connect_list_users]{list_users} \tab Provides summary information about the users for the specified Amazon Connect instance\cr
@@ -284,6 +287,7 @@ using an endpoint. For a list of Amazon Connect endpoints, see \href{https://doc
 \link[paws.customer.engagement:connect_update_queue_status]{update_queue_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 \link[paws.customer.engagement:connect_update_quick_connect_config]{update_quick_connect_config} \tab Updates the configuration settings for the specified quick connect\cr
 \link[paws.customer.engagement:connect_update_quick_connect_name]{update_quick_connect_name} \tab Updates the name and description of a quick connect\cr
+\link[paws.customer.engagement:connect_update_routing_profile_agent_availability_timer]{update_routing_profile_agent_availability_timer} \tab Whether agents with this routing profile will have their routing order calculated based on time since their last inbound contact or longest idle time\cr
 \link[paws.customer.engagement:connect_update_routing_profile_concurrency]{update_routing_profile_concurrency} \tab Updates the channels that agents can handle in the Contact Control Panel (CCP) for a routing profile\cr
 \link[paws.customer.engagement:connect_update_routing_profile_default_outbound_queue]{update_routing_profile_default_outbound_queue} \tab Updates the default outbound queue of a routing profile\cr
 \link[paws.customer.engagement:connect_update_routing_profile_name]{update_routing_profile_name} \tab Updates the name and description of a routing profile\cr

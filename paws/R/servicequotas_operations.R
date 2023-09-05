@@ -7,9 +7,10 @@ NULL
 #'
 #' @description
 #' Associates your quota request template with your organization. When a
-#' new account is created in your organization, the quota increase requests
-#' in the template are automatically applied to the account. You can add a
-#' quota increase request for any adjustable quota to your template.
+#' new Amazon Web Services account is created in your organization, the
+#' quota increase requests in the template are automatically applied to the
+#' account. You can add a quota increase request for any adjustable quota
+#' to your template.
 #'
 #' @usage
 #' servicequotas_associate_service_quota_template()
@@ -55,9 +56,15 @@ servicequotas_associate_service_quota_template <- function() {
 #' servicequotas_delete_service_quota_increase_request_from_template(
 #'   ServiceCode, QuotaCode, AwsRegion)
 #'
-#' @param ServiceCode &#91;required&#93; The service identifier.
-#' @param QuotaCode &#91;required&#93; The quota identifier.
-#' @param AwsRegion &#91;required&#93; The AWS Region.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
+#' Amazon Web Services service, use the
+#' [`list_services`][servicequotas_list_services] operation.
+#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific
+#' quota, use the
+#' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
+#' and look for the `QuotaCode` response in the output for the quota you
+#' want.
+#' @param AwsRegion &#91;required&#93; Specifies the Amazon Web Services Region for which the request was made.
 #'
 #' @return
 #' An empty list.
@@ -97,9 +104,9 @@ servicequotas_delete_service_quota_increase_request_from_template <- function(Se
 #'
 #' @description
 #' Disables your quota request template. After a template is disabled, the
-#' quota increase requests in the template are not applied to new accounts
-#' in your organization. Disabling a quota request template does not apply
-#' its quota increase requests.
+#' quota increase requests in the template are not applied to new Amazon
+#' Web Services accounts in your organization. Disabling a quota request
+#' template does not apply its quota increase requests.
 #'
 #' @usage
 #' servicequotas_disassociate_service_quota_template()
@@ -143,8 +150,14 @@ servicequotas_disassociate_service_quota_template <- function() {
 #' @usage
 #' servicequotas_get_aws_default_service_quota(ServiceCode, QuotaCode)
 #'
-#' @param ServiceCode &#91;required&#93; The service identifier.
-#' @param QuotaCode &#91;required&#93; The quota identifier.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
+#' Amazon Web Services service, use the
+#' [`list_services`][servicequotas_list_services] operation.
+#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific
+#' quota, use the
+#' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
+#' and look for the `QuotaCode` response in the output for the quota you
+#' want.
 #'
 #' @return
 #' A list with the following syntax:
@@ -175,6 +188,12 @@ servicequotas_disassociate_service_quota_template <- function() {
 #'     ErrorReason = list(
 #'       ErrorCode = "DEPENDENCY_ACCESS_DENIED_ERROR"|"DEPENDENCY_THROTTLING_ERROR"|"DEPENDENCY_SERVICE_ERROR"|"SERVICE_QUOTA_NOT_AVAILABLE_ERROR",
 #'       ErrorMessage = "string"
+#'     ),
+#'     QuotaAppliedAtLevel = "ACCOUNT"|"RESOURCE"|"ALL",
+#'     QuotaContext = list(
+#'       ContextScope = "RESOURCE"|"ACCOUNT",
+#'       ContextScopeType = "string",
+#'       ContextId = "string"
 #'     )
 #'   )
 #' )
@@ -261,7 +280,7 @@ servicequotas_get_association_for_service_quota_template <- function() {
 #' @usage
 #' servicequotas_get_requested_service_quota_change(RequestId)
 #'
-#' @param RequestId &#91;required&#93; The ID of the quota increase request.
+#' @param RequestId &#91;required&#93; Specifies the ID of the quota increase request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -275,7 +294,7 @@ servicequotas_get_association_for_service_quota_template <- function() {
 #'     QuotaCode = "string",
 #'     QuotaName = "string",
 #'     DesiredValue = 123.0,
-#'     Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED",
+#'     Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED"|"NOT_APPROVED"|"INVALID_REQUEST",
 #'     Created = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -285,7 +304,13 @@ servicequotas_get_association_for_service_quota_template <- function() {
 #'     Requester = "string",
 #'     QuotaArn = "string",
 #'     GlobalQuota = TRUE|FALSE,
-#'     Unit = "string"
+#'     Unit = "string",
+#'     QuotaRequestedAtLevel = "ACCOUNT"|"RESOURCE"|"ALL",
+#'     QuotaContext = list(
+#'       ContextScope = "RESOURCE"|"ACCOUNT",
+#'       ContextScopeType = "string",
+#'       ContextId = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -327,10 +352,19 @@ servicequotas_get_requested_service_quota_change <- function(RequestId) {
 #' value is not available for a quota, the quota is not retrieved.
 #'
 #' @usage
-#' servicequotas_get_service_quota(ServiceCode, QuotaCode)
+#' servicequotas_get_service_quota(ServiceCode, QuotaCode, ContextId)
 #'
-#' @param ServiceCode &#91;required&#93; The service identifier.
-#' @param QuotaCode &#91;required&#93; The quota identifier.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
+#' Amazon Web Services service, use the
+#' [`list_services`][servicequotas_list_services] operation.
+#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific
+#' quota, use the
+#' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
+#' and look for the `QuotaCode` response in the output for the quota you
+#' want.
+#' @param ContextId Specifies the Amazon Web Services account or resource to which the quota
+#' applies. The value in this field depends on the context scope associated
+#' with the specified service quota.
 #'
 #' @return
 #' A list with the following syntax:
@@ -361,6 +395,12 @@ servicequotas_get_requested_service_quota_change <- function(RequestId) {
 #'     ErrorReason = list(
 #'       ErrorCode = "DEPENDENCY_ACCESS_DENIED_ERROR"|"DEPENDENCY_THROTTLING_ERROR"|"DEPENDENCY_SERVICE_ERROR"|"SERVICE_QUOTA_NOT_AVAILABLE_ERROR",
 #'       ErrorMessage = "string"
+#'     ),
+#'     QuotaAppliedAtLevel = "ACCOUNT"|"RESOURCE"|"ALL",
+#'     QuotaContext = list(
+#'       ContextScope = "RESOURCE"|"ACCOUNT",
+#'       ContextScopeType = "string",
+#'       ContextId = "string"
 #'     )
 #'   )
 #' )
@@ -370,7 +410,8 @@ servicequotas_get_requested_service_quota_change <- function(RequestId) {
 #' ```
 #' svc$get_service_quota(
 #'   ServiceCode = "string",
-#'   QuotaCode = "string"
+#'   QuotaCode = "string",
+#'   ContextId = "string"
 #' )
 #' ```
 #'
@@ -379,14 +420,14 @@ servicequotas_get_requested_service_quota_change <- function(RequestId) {
 #' @rdname servicequotas_get_service_quota
 #'
 #' @aliases servicequotas_get_service_quota
-servicequotas_get_service_quota <- function(ServiceCode, QuotaCode) {
+servicequotas_get_service_quota <- function(ServiceCode, QuotaCode, ContextId = NULL) {
   op <- new_operation(
     name = "GetServiceQuota",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicequotas$get_service_quota_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode)
+  input <- .servicequotas$get_service_quota_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, ContextId = ContextId)
   output <- .servicequotas$get_service_quota_output()
   config <- get_config()
   svc <- .servicequotas$service(config)
@@ -407,9 +448,15 @@ servicequotas_get_service_quota <- function(ServiceCode, QuotaCode) {
 #' servicequotas_get_service_quota_increase_request_from_template(
 #'   ServiceCode, QuotaCode, AwsRegion)
 #'
-#' @param ServiceCode &#91;required&#93; The service identifier.
-#' @param QuotaCode &#91;required&#93; The quota identifier.
-#' @param AwsRegion &#91;required&#93; The AWS Region.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
+#' Amazon Web Services service, use the
+#' [`list_services`][servicequotas_list_services] operation.
+#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific
+#' quota, use the
+#' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
+#' and look for the `QuotaCode` response in the output for the quota you
+#' want.
+#' @param AwsRegion &#91;required&#93; Specifies the Amazon Web Services Region for which you made the request.
 #'
 #' @return
 #' A list with the following syntax:
@@ -459,21 +506,36 @@ servicequotas_get_service_quota_increase_request_from_template <- function(Servi
 }
 .servicequotas$operations$get_service_quota_increase_request_from_template <- servicequotas_get_service_quota_increase_request_from_template
 
-#' Lists the default values for the quotas for the specified AWS service
+#' Lists the default values for the quotas for the specified Amazon Web
+#' Service
 #'
 #' @description
-#' Lists the default values for the quotas for the specified AWS service. A
-#' default value does not reflect any quota increases.
+#' Lists the default values for the quotas for the specified Amazon Web
+#' Service. A default value does not reflect any quota increases.
 #'
 #' @usage
 #' servicequotas_list_aws_default_service_quotas(ServiceCode, NextToken,
 #'   MaxResults)
 #'
-#' @param ServiceCode &#91;required&#93; The service identifier.
-#' @param NextToken The token for the next page of results.
-#' @param MaxResults The maximum number of results to return with a single call. To retrieve
-#' the remaining results, if any, make another call with the token returned
-#' from this call.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
+#' Amazon Web Services service, use the
+#' [`list_services`][servicequotas_list_services] operation.
+#' @param NextToken Specifies a value for receiving additional results after you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
+#' @param MaxResults Specifies the maximum number of results that you want included on each
+#' page of the response. If you do not include this parameter, it defaults
+#' to a value appropriate to the operation. If additional items exist
+#' beyond those included in the current response, the `NextToken` response
+#' element is present and has a value (is not null). Include that value as
+#' the `NextToken` request parameter in the next call to the operation to
+#' get the next part of the results.
+#' 
+#' An API operation can return fewer results than the maximum even when
+#' there are more results available. You should check `NextToken` after
+#' every operation to ensure that you receive all of the results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -506,6 +568,12 @@ servicequotas_get_service_quota_increase_request_from_template <- function(Servi
 #'       ErrorReason = list(
 #'         ErrorCode = "DEPENDENCY_ACCESS_DENIED_ERROR"|"DEPENDENCY_THROTTLING_ERROR"|"DEPENDENCY_SERVICE_ERROR"|"SERVICE_QUOTA_NOT_AVAILABLE_ERROR",
 #'         ErrorMessage = "string"
+#'       ),
+#'       QuotaAppliedAtLevel = "ACCOUNT"|"RESOURCE"|"ALL",
+#'       QuotaContext = list(
+#'         ContextScope = "RESOURCE"|"ACCOUNT",
+#'         ContextScopeType = "string",
+#'         ContextId = "string"
 #'       )
 #'     )
 #'   )
@@ -543,21 +611,40 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
 }
 .servicequotas$operations$list_aws_default_service_quotas <- servicequotas_list_aws_default_service_quotas
 
-#' Retrieves the quota increase requests for the specified service
+#' Retrieves the quota increase requests for the specified Amazon Web
+#' Service
 #'
 #' @description
-#' Retrieves the quota increase requests for the specified service.
+#' Retrieves the quota increase requests for the specified Amazon Web
+#' Service.
 #'
 #' @usage
 #' servicequotas_list_requested_service_quota_change_history(ServiceCode,
-#'   Status, NextToken, MaxResults)
+#'   Status, NextToken, MaxResults, QuotaRequestedAtLevel)
 #'
-#' @param ServiceCode The service identifier.
-#' @param Status The status of the quota increase request.
-#' @param NextToken The token for the next page of results.
-#' @param MaxResults The maximum number of results to return with a single call. To retrieve
-#' the remaining results, if any, make another call with the token returned
-#' from this call.
+#' @param ServiceCode Specifies the service identifier. To find the service code value for an
+#' Amazon Web Services service, use the
+#' [`list_services`][servicequotas_list_services] operation.
+#' @param Status Specifies that you want to filter the results to only the requests with
+#' the matching status.
+#' @param NextToken Specifies a value for receiving additional results after you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
+#' @param MaxResults Specifies the maximum number of results that you want included on each
+#' page of the response. If you do not include this parameter, it defaults
+#' to a value appropriate to the operation. If additional items exist
+#' beyond those included in the current response, the `NextToken` response
+#' element is present and has a value (is not null). Include that value as
+#' the `NextToken` request parameter in the next call to the operation to
+#' get the next part of the results.
+#' 
+#' An API operation can return fewer results than the maximum even when
+#' there are more results available. You should check `NextToken` after
+#' every operation to ensure that you receive all of the results.
+#' @param QuotaRequestedAtLevel Specifies at which level within the Amazon Web Services account the
+#' quota request applies to.
 #'
 #' @return
 #' A list with the following syntax:
@@ -573,7 +660,7 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
 #'       QuotaCode = "string",
 #'       QuotaName = "string",
 #'       DesiredValue = 123.0,
-#'       Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED",
+#'       Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED"|"NOT_APPROVED"|"INVALID_REQUEST",
 #'       Created = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -583,7 +670,13 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
 #'       Requester = "string",
 #'       QuotaArn = "string",
 #'       GlobalQuota = TRUE|FALSE,
-#'       Unit = "string"
+#'       Unit = "string",
+#'       QuotaRequestedAtLevel = "ACCOUNT"|"RESOURCE"|"ALL",
+#'       QuotaContext = list(
+#'         ContextScope = "RESOURCE"|"ACCOUNT",
+#'         ContextScopeType = "string",
+#'         ContextId = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -593,9 +686,10 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
 #' ```
 #' svc$list_requested_service_quota_change_history(
 #'   ServiceCode = "string",
-#'   Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED",
+#'   Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED"|"NOT_APPROVED"|"INVALID_REQUEST",
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   QuotaRequestedAtLevel = "ACCOUNT"|"RESOURCE"|"ALL"
 #' )
 #' ```
 #'
@@ -604,14 +698,14 @@ servicequotas_list_aws_default_service_quotas <- function(ServiceCode, NextToken
 #' @rdname servicequotas_list_requested_service_quota_change_history
 #'
 #' @aliases servicequotas_list_requested_service_quota_change_history
-servicequotas_list_requested_service_quota_change_history <- function(ServiceCode = NULL, Status = NULL, NextToken = NULL, MaxResults = NULL) {
+servicequotas_list_requested_service_quota_change_history <- function(ServiceCode = NULL, Status = NULL, NextToken = NULL, MaxResults = NULL, QuotaRequestedAtLevel = NULL) {
   op <- new_operation(
     name = "ListRequestedServiceQuotaChangeHistory",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RequestedQuotas")
   )
-  input <- .servicequotas$list_requested_service_quota_change_history_input(ServiceCode = ServiceCode, Status = Status, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .servicequotas$list_requested_service_quota_change_history_input(ServiceCode = ServiceCode, Status = Status, NextToken = NextToken, MaxResults = MaxResults, QuotaRequestedAtLevel = QuotaRequestedAtLevel)
   output <- .servicequotas$list_requested_service_quota_change_history_output()
   config <- get_config()
   svc <- .servicequotas$service(config)
@@ -628,15 +722,37 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
 #'
 #' @usage
 #' servicequotas_list_requested_service_quota_change_history_by_quota(
-#'   ServiceCode, QuotaCode, Status, NextToken, MaxResults)
+#'   ServiceCode, QuotaCode, Status, NextToken, MaxResults,
+#'   QuotaRequestedAtLevel)
 #'
-#' @param ServiceCode &#91;required&#93; The service identifier.
-#' @param QuotaCode &#91;required&#93; The quota identifier.
-#' @param Status The status value of the quota increase request.
-#' @param NextToken The token for the next page of results.
-#' @param MaxResults The maximum number of results to return with a single call. To retrieve
-#' the remaining results, if any, make another call with the token returned
-#' from this call.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
+#' Amazon Web Services service, use the
+#' [`list_services`][servicequotas_list_services] operation.
+#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific
+#' quota, use the
+#' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
+#' and look for the `QuotaCode` response in the output for the quota you
+#' want.
+#' @param Status Specifies that you want to filter the results to only the requests with
+#' the matching status.
+#' @param NextToken Specifies a value for receiving additional results after you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
+#' @param MaxResults Specifies the maximum number of results that you want included on each
+#' page of the response. If you do not include this parameter, it defaults
+#' to a value appropriate to the operation. If additional items exist
+#' beyond those included in the current response, the `NextToken` response
+#' element is present and has a value (is not null). Include that value as
+#' the `NextToken` request parameter in the next call to the operation to
+#' get the next part of the results.
+#' 
+#' An API operation can return fewer results than the maximum even when
+#' there are more results available. You should check `NextToken` after
+#' every operation to ensure that you receive all of the results.
+#' @param QuotaRequestedAtLevel Specifies at which level within the Amazon Web Services account the
+#' quota request applies to.
 #'
 #' @return
 #' A list with the following syntax:
@@ -652,7 +768,7 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
 #'       QuotaCode = "string",
 #'       QuotaName = "string",
 #'       DesiredValue = 123.0,
-#'       Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED",
+#'       Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED"|"NOT_APPROVED"|"INVALID_REQUEST",
 #'       Created = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -662,7 +778,13 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
 #'       Requester = "string",
 #'       QuotaArn = "string",
 #'       GlobalQuota = TRUE|FALSE,
-#'       Unit = "string"
+#'       Unit = "string",
+#'       QuotaRequestedAtLevel = "ACCOUNT"|"RESOURCE"|"ALL",
+#'       QuotaContext = list(
+#'         ContextScope = "RESOURCE"|"ACCOUNT",
+#'         ContextScopeType = "string",
+#'         ContextId = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -673,9 +795,10 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
 #' svc$list_requested_service_quota_change_history_by_quota(
 #'   ServiceCode = "string",
 #'   QuotaCode = "string",
-#'   Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED",
+#'   Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED"|"NOT_APPROVED"|"INVALID_REQUEST",
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   QuotaRequestedAtLevel = "ACCOUNT"|"RESOURCE"|"ALL"
 #' )
 #' ```
 #'
@@ -684,14 +807,14 @@ servicequotas_list_requested_service_quota_change_history <- function(ServiceCod
 #' @rdname servicequotas_list_reque_servi_quota_chang_histo_by_quota
 #'
 #' @aliases servicequotas_list_requested_service_quota_change_history_by_quota
-servicequotas_list_requested_service_quota_change_history_by_quota <- function(ServiceCode, QuotaCode, Status = NULL, NextToken = NULL, MaxResults = NULL) {
+servicequotas_list_requested_service_quota_change_history_by_quota <- function(ServiceCode, QuotaCode, Status = NULL, NextToken = NULL, MaxResults = NULL, QuotaRequestedAtLevel = NULL) {
   op <- new_operation(
     name = "ListRequestedServiceQuotaChangeHistoryByQuota",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "RequestedQuotas")
   )
-  input <- .servicequotas$list_requested_service_quota_change_history_by_quota_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, Status = Status, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .servicequotas$list_requested_service_quota_change_history_by_quota_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, Status = Status, NextToken = NextToken, MaxResults = MaxResults, QuotaRequestedAtLevel = QuotaRequestedAtLevel)
   output <- .servicequotas$list_requested_service_quota_change_history_by_quota_output()
   config <- get_config()
   svc <- .servicequotas$service(config)
@@ -712,12 +835,26 @@ servicequotas_list_requested_service_quota_change_history_by_quota <- function(S
 #' servicequotas_list_service_quota_increase_requests_in_template(
 #'   ServiceCode, AwsRegion, NextToken, MaxResults)
 #'
-#' @param ServiceCode The service identifier.
-#' @param AwsRegion The AWS Region.
-#' @param NextToken The token for the next page of results.
-#' @param MaxResults The maximum number of results to return with a single call. To retrieve
-#' the remaining results, if any, make another call with the token returned
-#' from this call.
+#' @param ServiceCode Specifies the service identifier. To find the service code value for an
+#' Amazon Web Services service, use the
+#' [`list_services`][servicequotas_list_services] operation.
+#' @param AwsRegion Specifies the Amazon Web Services Region for which you made the request.
+#' @param NextToken Specifies a value for receiving additional results after you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
+#' @param MaxResults Specifies the maximum number of results that you want included on each
+#' page of the response. If you do not include this parameter, it defaults
+#' to a value appropriate to the operation. If additional items exist
+#' beyond those included in the current response, the `NextToken` response
+#' element is present and has a value (is not null). Include that value as
+#' the `NextToken` request parameter in the next call to the operation to
+#' get the next part of the results.
+#' 
+#' An API operation can return fewer results than the maximum even when
+#' there are more results available. You should check `NextToken` after
+#' every operation to ensure that you receive all of the results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -771,21 +908,42 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
 }
 .servicequotas$operations$list_service_quota_increase_requests_in_template <- servicequotas_list_service_quota_increase_requests_in_template
 
-#' Lists the applied quota values for the specified AWS service
+#' Lists the applied quota values for the specified Amazon Web Service
 #'
 #' @description
-#' Lists the applied quota values for the specified AWS service. For some
-#' quotas, only the default values are available. If the applied quota
+#' Lists the applied quota values for the specified Amazon Web Service. For
+#' some quotas, only the default values are available. If the applied quota
 #' value is not available for a quota, the quota is not retrieved.
 #'
 #' @usage
-#' servicequotas_list_service_quotas(ServiceCode, NextToken, MaxResults)
+#' servicequotas_list_service_quotas(ServiceCode, NextToken, MaxResults,
+#'   QuotaCode, QuotaAppliedAtLevel)
 #'
-#' @param ServiceCode &#91;required&#93; The service identifier.
-#' @param NextToken The token for the next page of results.
-#' @param MaxResults The maximum number of results to return with a single call. To retrieve
-#' the remaining results, if any, make another call with the token returned
-#' from this call.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
+#' Amazon Web Services service, use the
+#' [`list_services`][servicequotas_list_services] operation.
+#' @param NextToken Specifies a value for receiving additional results after you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
+#' @param MaxResults Specifies the maximum number of results that you want included on each
+#' page of the response. If you do not include this parameter, it defaults
+#' to a value appropriate to the operation. If additional items exist
+#' beyond those included in the current response, the `NextToken` response
+#' element is present and has a value (is not null). Include that value as
+#' the `NextToken` request parameter in the next call to the operation to
+#' get the next part of the results.
+#' 
+#' An API operation can return fewer results than the maximum even when
+#' there are more results available. You should check `NextToken` after
+#' every operation to ensure that you receive all of the results.
+#' @param QuotaCode Specifies the quota identifier. To find the quota code for a specific
+#' quota, use the
+#' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
+#' and look for the `QuotaCode` response in the output for the quota you
+#' want.
+#' @param QuotaAppliedAtLevel Specifies at which level of granularity that the quota value is applied.
 #'
 #' @return
 #' A list with the following syntax:
@@ -818,6 +976,12 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
 #'       ErrorReason = list(
 #'         ErrorCode = "DEPENDENCY_ACCESS_DENIED_ERROR"|"DEPENDENCY_THROTTLING_ERROR"|"DEPENDENCY_SERVICE_ERROR"|"SERVICE_QUOTA_NOT_AVAILABLE_ERROR",
 #'         ErrorMessage = "string"
+#'       ),
+#'       QuotaAppliedAtLevel = "ACCOUNT"|"RESOURCE"|"ALL",
+#'       QuotaContext = list(
+#'         ContextScope = "RESOURCE"|"ACCOUNT",
+#'         ContextScopeType = "string",
+#'         ContextId = "string"
 #'       )
 #'     )
 #'   )
@@ -829,7 +993,9 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
 #' svc$list_service_quotas(
 #'   ServiceCode = "string",
 #'   NextToken = "string",
-#'   MaxResults = 123
+#'   MaxResults = 123,
+#'   QuotaCode = "string",
+#'   QuotaAppliedAtLevel = "ACCOUNT"|"RESOURCE"|"ALL"
 #' )
 #' ```
 #'
@@ -838,14 +1004,14 @@ servicequotas_list_service_quota_increase_requests_in_template <- function(Servi
 #' @rdname servicequotas_list_service_quotas
 #'
 #' @aliases servicequotas_list_service_quotas
-servicequotas_list_service_quotas <- function(ServiceCode, NextToken = NULL, MaxResults = NULL) {
+servicequotas_list_service_quotas <- function(ServiceCode, NextToken = NULL, MaxResults = NULL, QuotaCode = NULL, QuotaAppliedAtLevel = NULL) {
   op <- new_operation(
     name = "ListServiceQuotas",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "Quotas")
   )
-  input <- .servicequotas$list_service_quotas_input(ServiceCode = ServiceCode, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .servicequotas$list_service_quotas_input(ServiceCode = ServiceCode, NextToken = NextToken, MaxResults = MaxResults, QuotaCode = QuotaCode, QuotaAppliedAtLevel = QuotaAppliedAtLevel)
   output <- .servicequotas$list_service_quotas_output()
   config <- get_config()
   svc <- .servicequotas$service(config)
@@ -855,20 +1021,32 @@ servicequotas_list_service_quotas <- function(ServiceCode, NextToken = NULL, Max
 }
 .servicequotas$operations$list_service_quotas <- servicequotas_list_service_quotas
 
-#' Lists the names and codes for the services integrated with Service
-#' Quotas
+#' Lists the names and codes for the Amazon Web Services integrated with
+#' Service Quotas
 #'
 #' @description
-#' Lists the names and codes for the services integrated with Service
-#' Quotas.
+#' Lists the names and codes for the Amazon Web Services integrated with
+#' Service Quotas.
 #'
 #' @usage
 #' servicequotas_list_services(NextToken, MaxResults)
 #'
-#' @param NextToken The token for the next page of results.
-#' @param MaxResults The maximum number of results to return with a single call. To retrieve
-#' the remaining results, if any, make another call with the token returned
-#' from this call.
+#' @param NextToken Specifies a value for receiving additional results after you receive a
+#' `NextToken` response in a previous request. A `NextToken` response
+#' indicates that more output is available. Set this parameter to the value
+#' of the previous call's `NextToken` response to indicate where the output
+#' should continue from.
+#' @param MaxResults Specifies the maximum number of results that you want included on each
+#' page of the response. If you do not include this parameter, it defaults
+#' to a value appropriate to the operation. If additional items exist
+#' beyond those included in the current response, the `NextToken` response
+#' element is present and has a value (is not null). Include that value as
+#' the `NextToken` request parameter in the next call to the operation to
+#' get the next part of the results.
+#' 
+#' An API operation can return fewer results than the maximum even when
+#' there are more results available. You should check `NextToken` after
+#' every operation to ensure that you receive all of the results.
 #'
 #' @return
 #' A list with the following syntax:
@@ -926,9 +1104,9 @@ servicequotas_list_services <- function(NextToken = NULL, MaxResults = NULL) {
 #' to list tags. You can get this information by using the Service Quotas
 #' console, or by listing the quotas using the
 #' [list-service-quotas](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html)
-#' AWS CLI command or the
-#' [`list_service_quotas`][servicequotas_list_service_quotas] AWS API
-#' operation.
+#' CLI command or the
+#' [`list_service_quotas`][servicequotas_list_service_quotas] Amazon Web
+#' Services API operation.
 #'
 #' @return
 #' A list with the following syntax:
@@ -981,10 +1159,16 @@ servicequotas_list_tags_for_resource <- function(ResourceARN) {
 #' servicequotas_put_service_quota_increase_request_into_template(
 #'   QuotaCode, ServiceCode, AwsRegion, DesiredValue)
 #'
-#' @param QuotaCode &#91;required&#93; The quota identifier.
-#' @param ServiceCode &#91;required&#93; The service identifier.
-#' @param AwsRegion &#91;required&#93; The AWS Region.
-#' @param DesiredValue &#91;required&#93; The new, increased value for the quota.
+#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific
+#' quota, use the
+#' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
+#' and look for the `QuotaCode` response in the output for the quota you
+#' want.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
+#' Amazon Web Services service, use the
+#' [`list_services`][servicequotas_list_services] operation.
+#' @param AwsRegion &#91;required&#93; Specifies the Amazon Web Services Region to which the template applies.
+#' @param DesiredValue &#91;required&#93; Specifies the new, increased value for the quota.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1042,11 +1226,20 @@ servicequotas_put_service_quota_increase_request_into_template <- function(Quota
 #'
 #' @usage
 #' servicequotas_request_service_quota_increase(ServiceCode, QuotaCode,
-#'   DesiredValue)
+#'   DesiredValue, ContextId)
 #'
-#' @param ServiceCode &#91;required&#93; The service identifier.
-#' @param QuotaCode &#91;required&#93; The quota identifier.
-#' @param DesiredValue &#91;required&#93; The new, increased value for the quota.
+#' @param ServiceCode &#91;required&#93; Specifies the service identifier. To find the service code value for an
+#' Amazon Web Services service, use the
+#' [`list_services`][servicequotas_list_services] operation.
+#' @param QuotaCode &#91;required&#93; Specifies the quota identifier. To find the quota code for a specific
+#' quota, use the
+#' [`list_service_quotas`][servicequotas_list_service_quotas] operation,
+#' and look for the `QuotaCode` response in the output for the quota you
+#' want.
+#' @param DesiredValue &#91;required&#93; Specifies the new, increased value for the quota.
+#' @param ContextId Specifies the Amazon Web Services account or resource to which the quota
+#' applies. The value in this field depends on the context scope associated
+#' with the specified service quota.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1060,7 +1253,7 @@ servicequotas_put_service_quota_increase_request_into_template <- function(Quota
 #'     QuotaCode = "string",
 #'     QuotaName = "string",
 #'     DesiredValue = 123.0,
-#'     Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED",
+#'     Status = "PENDING"|"CASE_OPENED"|"APPROVED"|"DENIED"|"CASE_CLOSED"|"NOT_APPROVED"|"INVALID_REQUEST",
 #'     Created = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -1070,7 +1263,13 @@ servicequotas_put_service_quota_increase_request_into_template <- function(Quota
 #'     Requester = "string",
 #'     QuotaArn = "string",
 #'     GlobalQuota = TRUE|FALSE,
-#'     Unit = "string"
+#'     Unit = "string",
+#'     QuotaRequestedAtLevel = "ACCOUNT"|"RESOURCE"|"ALL",
+#'     QuotaContext = list(
+#'       ContextScope = "RESOURCE"|"ACCOUNT",
+#'       ContextScopeType = "string",
+#'       ContextId = "string"
+#'     )
 #'   )
 #' )
 #' ```
@@ -1080,7 +1279,8 @@ servicequotas_put_service_quota_increase_request_into_template <- function(Quota
 #' svc$request_service_quota_increase(
 #'   ServiceCode = "string",
 #'   QuotaCode = "string",
-#'   DesiredValue = 123.0
+#'   DesiredValue = 123.0,
+#'   ContextId = "string"
 #' )
 #' ```
 #'
@@ -1089,14 +1289,14 @@ servicequotas_put_service_quota_increase_request_into_template <- function(Quota
 #' @rdname servicequotas_request_service_quota_increase
 #'
 #' @aliases servicequotas_request_service_quota_increase
-servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode, DesiredValue) {
+servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode, DesiredValue, ContextId = NULL) {
   op <- new_operation(
     name = "RequestServiceQuotaIncrease",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .servicequotas$request_service_quota_increase_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, DesiredValue = DesiredValue)
+  input <- .servicequotas$request_service_quota_increase_input(ServiceCode = ServiceCode, QuotaCode = QuotaCode, DesiredValue = DesiredValue, ContextId = ContextId)
   output <- .servicequotas$request_service_quota_increase_output()
   config <- get_config()
   svc <- .servicequotas$service(config)
@@ -1119,9 +1319,9 @@ servicequotas_request_service_quota_increase <- function(ServiceCode, QuotaCode,
 #' information by using the Service Quotas console, or by listing the
 #' quotas using the
 #' [list-service-quotas](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html)
-#' AWS CLI command or the
-#' [`list_service_quotas`][servicequotas_list_service_quotas] AWS API
-#' operation.
+#' CLI command or the
+#' [`list_service_quotas`][servicequotas_list_service_quotas] Amazon Web
+#' Services API operation.
 #' @param Tags &#91;required&#93; The tags that you want to add to the resource.
 #'
 #' @return
@@ -1175,9 +1375,9 @@ servicequotas_tag_resource <- function(ResourceARN, Tags) {
 #' untag. You can get this information by using the Service Quotas console,
 #' or by listing the quotas using the
 #' [list-service-quotas](https://docs.aws.amazon.com/cli/latest/reference/service-quotas/list-service-quotas.html)
-#' AWS CLI command or the
-#' [`list_service_quotas`][servicequotas_list_service_quotas] AWS API
-#' operation.
+#' CLI command or the
+#' [`list_service_quotas`][servicequotas_list_service_quotas] Amazon Web
+#' Services API operation.
 #' @param TagKeys &#91;required&#93; The keys of the tags that you want to remove from the resource.
 #'
 #' @return

@@ -2,8 +2,9 @@
 % Please edit documentation in R/codestarconnections_operations.R
 \name{codestarconnections_create_connection}
 \alias{codestarconnections_create_connection}
-\title{Creates a connection that can then be given to other AWS services like
-CodePipeline so that it can access third-party code repositories}
+\title{Creates a connection that can then be given to other Amazon Web Services
+services like CodePipeline so that it can access third-party code
+repositories}
 \usage{
 codestarconnections_create_connection(
   ProviderType = NULL,
@@ -16,8 +17,7 @@ codestarconnections_create_connection(
 \item{ProviderType}{The name of the external provider where your third-party code repository
 is configured.}
 
-\item{ConnectionName}{[required] The name of the connection to be created. The name must be unique in the
-calling AWS account.}
+\item{ConnectionName}{[required] The name of the connection to be created.}
 
 \item{Tags}{The key-value pair to use when tagging the resource.}
 
@@ -25,7 +25,7 @@ calling AWS account.}
 connection to be created.}
 }
 \description{
-Creates a connection that can then be given to other AWS services like CodePipeline so that it can access third-party code repositories. The connection is in pending status until the third-party connection handshake is completed from the console.
+Creates a connection that can then be given to other Amazon Web Services services like CodePipeline so that it can access third-party code repositories. The connection is in pending status until the third-party connection handshake is completed from the console.
 
 See \url{https://www.paws-r-sdk.com/docs/codestarconnections_create_connection/} for full documentation.
 }

@@ -69,7 +69,7 @@ NULL
 #' CloudTrail, you can determine which requests the Organizations service
 #' received, who made the request and when, and so on. For more about
 #' Organizations and its support for CloudTrail, see [Logging Organizations
-#' Events with
+#' API calls with
 #' CloudTrail](https://docs.aws.amazon.com/organizations/latest/userguide/#orgs_cloudtrail-integration)
 #' in the *Organizations User Guide*. To learn more about CloudTrail,
 #' including how to turn it on and find your log files, see the [CloudTrail

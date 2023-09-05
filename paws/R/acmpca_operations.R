@@ -1450,12 +1450,12 @@ acmpca_import_certificate_authority_certificate <- function(CertificateAuthority
 #' in RFC 5280.
 #' @param IdempotencyToken Alphanumeric string that can be used to distinguish between calls to the
 #' **IssueCertificate** action. Idempotency tokens for **IssueCertificate**
-#' time out after one minute. Therefore, if you call **IssueCertificate**
-#' multiple times with the same idempotency token within one minute, Amazon
-#' Web Services Private CA recognizes that you are requesting only one
-#' certificate and will issue only one. If you change the idempotency token
-#' for each call, Amazon Web Services Private CA recognizes that you are
-#' requesting multiple certificates.
+#' time out after five minutes. Therefore, if you call **IssueCertificate**
+#' multiple times with the same idempotency token within five minutes,
+#' Amazon Web Services Private CA recognizes that you are requesting only
+#' one certificate and will issue only one. If you change the idempotency
+#' token for each call, Amazon Web Services Private CA recognizes that you
+#' are requesting multiple certificates.
 #'
 #' @return
 #' A list with the following syntax:

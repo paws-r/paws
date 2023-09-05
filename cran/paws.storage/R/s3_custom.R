@@ -208,15 +208,16 @@ s3_generate_presigned_url <- function(client_method,
   op <- eval(operation_body[[2]][[3]], envir = getNamespace("paws.common"))
 
   original_params <- formals(operation_fun)
-  original_params <- if(!is.null(original_params)) original_params else list()
+  original_params <- if (!is.null(original_params)) original_params else list()
   param_check <- setdiff(names(params), names(original_params))
 
   if (length(param_check) > 0) {
-    stop(sprintf(
-      "Invalid parameter(s) [`%s`] for client method %s",
-      paste(param_check, collapse = "`, `"), client_method
-    ),
-    call. = FALSE
+    stop(
+      sprintf(
+        "Invalid parameter(s) [`%s`] for client method %s",
+        paste(param_check, collapse = "`, `"), client_method
+      ),
+      call. = FALSE
     )
   }
 
@@ -249,7 +250,8 @@ s3_generate_presigned_url <- function(client_method,
 
   # build request
   request <- do.call(
-    "build", list(request = request), envir = getNamespace("paws.common")
+    "build", list(request = request),
+    envir = getNamespace("paws.common")
   )
 
   signer <- function(config, default) {

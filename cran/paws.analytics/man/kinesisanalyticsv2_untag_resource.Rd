@@ -13,7 +13,7 @@ the tags.}
 \item{TagKeys}{[required] A list of keys of tags to remove from the specified application.}
 }
 \description{
-Removes one or more tags from a Kinesis Data Analytics application. For more information, see \href{https://docs.aws.amazon.com/kinesisanalytics/latest/java/how-tagging.html}{Using Tagging}.
+Removes one or more tags from a Kinesis Data Analytics application. For more information, see \href{https://docs.aws.amazon.com/managed-flink/latest/java/how-tagging.html}{Using Tagging}.
 
 See \url{https://www.paws-r-sdk.com/docs/kinesisanalyticsv2_untag_resource/} for full documentation.
 }

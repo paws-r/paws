@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_create_user_import_job}
 \alias{cognitoidentityprovider_create_user_import_job}
-\title{Creates the user import job}
+\title{Creates a user import job}
 \usage{
 cognitoidentityprovider_create_user_import_job(
   JobName,
@@ -20,7 +20,7 @@ into.}
 import job.}
 }
 \description{
-Creates the user import job.
+Creates a user import job.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_create_user_import_job/} for full documentation.
 }

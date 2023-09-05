@@ -314,7 +314,8 @@ route53domains_check_domain_availability <- function(DomainName, IdnLangCode = N
 #' list(
 #'   Transferability = list(
 #'     Transferable = "TRANSFERABLE"|"UNTRANSFERABLE"|"DONT_KNOW"|"DOMAIN_IN_OWN_ACCOUNT"|"DOMAIN_IN_ANOTHER_ACCOUNT"|"PREMIUM_DOMAIN"
-#'   )
+#'   ),
+#'   Message = "string"
 #' )
 #' ```
 #'
@@ -1208,7 +1209,7 @@ route53domains_list_domains <- function(FilterConditions = NULL, SortCondition =
 #' @param Status The status of the operations.
 #' @param Type An arrays of the domains operation types.
 #' @param SortBy The sort type for returned values.
-#' @param SortOrder The sort order ofr returned values, either ascending or descending.
+#' @param SortOrder The sort order for returned values, either ascending or descending.
 #'
 #' @return
 #' A list with the following syntax:

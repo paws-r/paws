@@ -7,7 +7,7 @@
 resiliencehub_untag_resource(resourceArn, tagKeys)
 }
 \arguments{
-\item{resourceArn}{[required] The Amazon Resource Name (ARN) of the resource.}
+\item{resourceArn}{[required] Amazon Resource Name (ARN) of the resource.}
 
 \item{tagKeys}{[required] The keys of the tags you want to remove.}
 }

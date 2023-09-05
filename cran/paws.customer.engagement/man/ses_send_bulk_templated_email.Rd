@@ -22,7 +22,7 @@ ses_send_bulk_templated_email(
 \item{Source}{[required] The email address that is sending the email. This email address must be
 either individually verified with Amazon SES, or from a domain that has
 been verified with Amazon SES. For information about verifying
-identities, see the \href{https://docs.aws.amazon.com/ses/latest/dg/verify-addresses-and-domains.html}{Amazon SES Developer Guide}.
+identities, see the \href{https://docs.aws.amazon.com/ses/latest/dg/creating-identities.html}{Amazon SES Developer Guide}.
 
 If you are sending on behalf of another user and have been permitted to
 do so by a sending authorization policy, then you must also specify the
@@ -31,15 +31,15 @@ see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.ht
 
 Amazon SES does not support the SMTPUTF8 extension, as described in
 \href{https://datatracker.ietf.org/doc/html/rfc6531}{RFC6531}. For this
-reason, the \emph{local part} of a source email address (the part of the
-email address that precedes the @ sign) may only contain \href{https://en.wikipedia.org/wiki/Email_address#Local-part}{7-bit ASCII characters}. If
-the \emph{domain part} of an address (the part after the @ sign) contains
-non-ASCII characters, they must be encoded using Punycode, as described
-in \href{https://datatracker.ietf.org/doc/html/rfc3492.html}{RFC3492}. The
-sender name (also known as the \emph{friendly name}) may contain non-ASCII
-characters. These characters must be encoded using MIME encoded-word
-syntax, as described in \href{https://datatracker.ietf.org/doc/html/rfc2047}{RFC 2047}. MIME encoded-word
-syntax uses the following form: \verb{=?charset?encoding?encoded-text?=}.}
+reason, the email address string must be 7-bit ASCII. If you want to
+send to or from email addresses that contain Unicode characters in the
+domain part of an address, you must encode the domain using Punycode.
+Punycode is not permitted in the local part of the email address (the
+part before the @ sign) nor in the "friendly from" name. If you want to
+use Unicode characters in the "friendly from" name, you must encode the
+"friendly from" name using MIME encoded-word syntax, as described in
+\href{https://docs.aws.amazon.com/ses/latest/dg/send-email-raw.html}{Sending raw email using the Amazon SES API}. For
+more information about Punycode, see \href{https://datatracker.ietf.org/doc/html/rfc3492}{RFC 3492}.}
 
 \item{SourceArn}{This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
@@ -56,16 +56,15 @@ you would specify the \code{SourceArn} to be
 For more information about sending authorization, see the \href{https://docs.aws.amazon.com/ses/latest/dg/sending-authorization.html}{Amazon SES Developer Guide}.}
 
 \item{ReplyToAddresses}{The reply-to email address(es) for the message. If the recipient replies
-to the message, each reply-to address will receive the reply.}
+to the message, each reply-to address receives the reply.}
 
-\item{ReturnPath}{The email address that bounces and complaints will be forwarded to when
+\item{ReturnPath}{The email address that bounces and complaints are forwarded to when
 feedback forwarding is enabled. If the message cannot be delivered to
-the recipient, then an error message will be returned from the
-recipient's ISP; this message will then be forwarded to the email
-address specified by the \code{ReturnPath} parameter. The \code{ReturnPath}
-parameter is never overwritten. This email address must be either
-individually verified with Amazon SES, or from a domain that has been
-verified with Amazon SES.}
+the recipient, then an error message is returned from the recipient's
+ISP; this message is forwarded to the email address specified by the
+\code{ReturnPath} parameter. The \code{ReturnPath} parameter is never overwritten.
+This email address must be either individually verified with Amazon SES,
+or from a domain that has been verified with Amazon SES.}
 
 \item{ReturnPathArn}{This parameter is used only for sending authorization. It is the ARN of
 the identity that is associated with the sending authorization policy
@@ -101,8 +100,8 @@ pairs in which the keys correspond to replacement tags in the email
 template.}
 
 \item{Destinations}{[required] One or more \code{Destination} objects. All of the recipients in a
-\code{Destination} will receive the same version of the email. You can
-specify up to 50 \code{Destination} objects within a \code{Destinations} array.}
+\code{Destination} receive the same version of the email. You can specify up
+to 50 \code{Destination} objects within a \code{Destinations} array.}
 }
 \description{
 Composes an email message to multiple destinations. The message body is created using an email template.

@@ -646,7 +646,7 @@ route53domains_list_domains <- function(FilterConditions = NULL, SortCondition =
 #' @param Status The status of the operations.
 #' @param Type An arrays of the domains operation types.
 #' @param SortBy The sort type for returned values.
-#' @param SortOrder The sort order ofr returned values, either ascending or descending.
+#' @param SortOrder The sort order for returned values, either ascending or descending.
 #'
 #' @keywords internal
 #'

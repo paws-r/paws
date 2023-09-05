@@ -9,7 +9,8 @@ finspace_update_kx_cluster_databases(
   environmentId,
   clusterName,
   clientToken = NULL,
-  databases
+  databases,
+  deploymentConfiguration = NULL
 )
 }
 \arguments{
@@ -20,6 +21,9 @@ finspace_update_kx_cluster_databases(
 \item{clientToken}{A token that ensures idempotency. This token expires in 10 minutes.}
 
 \item{databases}{[required] The structure of databases mounted on the cluster.}
+
+\item{deploymentConfiguration}{The configuration that allows you to choose how you want to update the
+databases on a cluster.}
 }
 \description{
 Updates the databases mounted on a kdb cluster, which includes the \code{changesetId} and all the dbPaths to be cached. This API does not allow you to change a database name or add a database if you created a cluster without one.

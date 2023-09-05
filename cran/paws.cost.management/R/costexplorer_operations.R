@@ -1331,7 +1331,7 @@ costexplorer_get_rightsizing_recommendation <- function(Filter = NULL, Configura
 #' Retrieves the details for a Savings Plan recommendation
 #'
 #' @description
-#' Retrieves the details for a Savings Plan recommendation. These details include the hourly data-points that construct the new cost, coverage, and utilization charts.
+#' Retrieves the details for a Savings Plan recommendation. These details include the hourly data-points that construct the cost, coverage, and utilization charts.
 #'
 #' See [https://www.paws-r-sdk.com/docs/costexplorer_get_savings_plan_purchase_recommendation_details/](https://www.paws-r-sdk.com/docs/costexplorer_get_savings_plan_purchase_recommendation_details/) for full documentation.
 #'

@@ -166,7 +166,7 @@ opsworks_attach_elastic_load_balancer <- function(ElasticLoadBalancerName, Layer
 #' see [Running a Stack in a
 #' VPC](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html).
 #' For more information about default VPC and EC2 Classic, see [Supported
-#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html).
+#' Platforms](https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/).
 #' @param Attributes A list of stack attributes and values as key/value pairs to be added to
 #' the cloned stack.
 #' @param ServiceRoleArn &#91;required&#93; The stack AWS Identity and Access Management (IAM) role, which allows
@@ -756,7 +756,7 @@ opsworks_create_layer <- function(StackId, Type, Name, Shortname, Attributes = N
 #' see [Running a Stack in a
 #' VPC](https://docs.aws.amazon.com/opsworks/latest/userguide/workingstacks-vpc.html).
 #' For more information about default VPC and EC2-Classic, see [Supported
-#' Platforms](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-classic-platform.html).
+#' Platforms](https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/).
 #' @param Attributes One or more user-defined key-value pairs to be added to the stack
 #' attributes.
 #' @param ServiceRoleArn &#91;required&#93; The stack's AWS Identity and Access Management (IAM) role, which allows

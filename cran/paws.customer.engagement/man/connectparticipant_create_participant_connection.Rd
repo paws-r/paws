@@ -11,8 +11,9 @@ connectparticipant_create_participant_connection(
 )
 }
 \arguments{
-\item{Type}{Type of connection information required. This can be omitted if
-\code{ConnectParticipant} is \code{true}.}
+\item{Type}{Type of connection information required. If you need
+\code{CONNECTION_CREDENTIALS} along with marking participant as connected,
+pass \code{CONNECTION_CREDENTIALS} in \code{Type}.}
 
 \item{ParticipantToken}{[required] This is a header parameter.
 

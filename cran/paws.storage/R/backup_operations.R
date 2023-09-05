@@ -238,6 +238,57 @@ backup_create_legal_hold <- function(Title, Description, IdempotencyToken = NULL
 }
 .backup$operations$create_legal_hold <- backup_create_legal_hold
 
+#' This request creates a logical container to where backups may be copied
+#'
+#' @description
+#' This request creates a logical container to where backups may be copied.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_create_logically_air_gapped_backup_vault/](https://www.paws-r-sdk.com/docs/backup_create_logically_air_gapped_backup_vault/) for full documentation.
+#'
+#' @param BackupVaultName &#91;required&#93; This is the name of the vault that is being created.
+#' @param BackupVaultTags These are the tags that will be included in the newly-created vault.
+#' @param CreatorRequestId This is the ID of the creation request.
+#' @param MinRetentionDays &#91;required&#93; This setting specifies the minimum retention period that the vault
+#' retains its recovery points. If this parameter is not specified, no
+#' minimum retention period is enforced.
+#' 
+#' If specified, any backup or copy job to the vault must have a lifecycle
+#' policy with a retention period equal to or longer than the minimum
+#' retention period. If a job retention period is shorter than that minimum
+#' retention period, then the vault fails the backup or copy job, and you
+#' should either modify your lifecycle settings or use a different vault.
+#' @param MaxRetentionDays &#91;required&#93; This is the setting that specifies the maximum retention period that the
+#' vault retains its recovery points. If this parameter is not specified,
+#' Backup does not enforce a maximum retention period on the recovery
+#' points in the vault (allowing indefinite storage).
+#' 
+#' If specified, any backup or copy job to the vault must have a lifecycle
+#' policy with a retention period equal to or shorter than the maximum
+#' retention period. If the job retention period is longer than that
+#' maximum retention period, then the vault fails the backup or copy job,
+#' and you should either modify your lifecycle settings or use a different
+#' vault.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_create_logically_air_gapped_backup_vault
+backup_create_logically_air_gapped_backup_vault <- function(BackupVaultName, BackupVaultTags = NULL, CreatorRequestId = NULL, MinRetentionDays, MaxRetentionDays) {
+  op <- new_operation(
+    name = "CreateLogicallyAirGappedBackupVault",
+    http_method = "PUT",
+    http_path = "/logically-air-gapped-backup-vaults/{backupVaultName}",
+    paginator = list()
+  )
+  input <- .backup$create_logically_air_gapped_backup_vault_input(BackupVaultName = BackupVaultName, BackupVaultTags = BackupVaultTags, CreatorRequestId = CreatorRequestId, MinRetentionDays = MinRetentionDays, MaxRetentionDays = MaxRetentionDays)
+  output <- .backup$create_logically_air_gapped_backup_vault_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$create_logically_air_gapped_backup_vault <- backup_create_logically_air_gapped_backup_vault
+
 #' Creates a report plan
 #'
 #' @description
@@ -608,18 +659,19 @@ backup_describe_backup_job <- function(BackupJobId) {
 #' are identified by names that are unique to the account used to create
 #' them and the Amazon Web Services Region where they are created. They
 #' consist of lowercase letters, numbers, and hyphens.
+#' @param BackupVaultAccountId This is the account ID of the specified backup vault.
 #'
 #' @keywords internal
 #'
 #' @rdname backup_describe_backup_vault
-backup_describe_backup_vault <- function(BackupVaultName) {
+backup_describe_backup_vault <- function(BackupVaultName, BackupVaultAccountId = NULL) {
   op <- new_operation(
     name = "DescribeBackupVault",
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}",
     paginator = list()
   )
-  input <- .backup$describe_backup_vault_input(BackupVaultName = BackupVaultName)
+  input <- .backup$describe_backup_vault_input(BackupVaultName = BackupVaultName, BackupVaultAccountId = BackupVaultAccountId)
   output <- .backup$describe_backup_vault_output()
   config <- get_config()
   svc <- .backup$service(config)
@@ -762,18 +814,19 @@ backup_describe_protected_resource <- function(ResourceArn) {
 #' @param RecoveryPointArn &#91;required&#93; An Amazon Resource Name (ARN) that uniquely identifies a recovery point;
 #' for example,
 #' `arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45`.
+#' @param BackupVaultAccountId This is the account ID of the specified backup vault.
 #'
 #' @keywords internal
 #'
 #' @rdname backup_describe_recovery_point
-backup_describe_recovery_point <- function(BackupVaultName, RecoveryPointArn) {
+backup_describe_recovery_point <- function(BackupVaultName, RecoveryPointArn, BackupVaultAccountId = NULL) {
   op <- new_operation(
     name = "DescribeRecoveryPoint",
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}",
     paginator = list()
   )
-  input <- .backup$describe_recovery_point_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn)
+  input <- .backup$describe_recovery_point_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn, BackupVaultAccountId = BackupVaultAccountId)
   output <- .backup$describe_recovery_point_output()
   config <- get_config()
   svc <- .backup$service(config)
@@ -1235,18 +1288,19 @@ backup_get_legal_hold <- function(LegalHoldId) {
 #' @param RecoveryPointArn &#91;required&#93; An Amazon Resource Name (ARN) that uniquely identifies a recovery point;
 #' for example,
 #' `arn:aws:backup:us-east-1:123456789012:recovery-point:1EB3B5E7-9EB0-435A-A80B-108B488B0D45`.
+#' @param BackupVaultAccountId This is the account ID of the specified backup vault.
 #'
 #' @keywords internal
 #'
 #' @rdname backup_get_recovery_point_restore_metadata
-backup_get_recovery_point_restore_metadata <- function(BackupVaultName, RecoveryPointArn) {
+backup_get_recovery_point_restore_metadata <- function(BackupVaultName, RecoveryPointArn, BackupVaultAccountId = NULL) {
   op <- new_operation(
     name = "GetRecoveryPointRestoreMetadata",
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/{recoveryPointArn}/restore-metadata",
     paginator = list()
   )
-  input <- .backup$get_recovery_point_restore_metadata_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn)
+  input <- .backup$get_recovery_point_restore_metadata_input(BackupVaultName = BackupVaultName, RecoveryPointArn = RecoveryPointArn, BackupVaultAccountId = BackupVaultAccountId)
   output <- .backup$get_recovery_point_restore_metadata_output()
   config <- get_config()
   svc <- .backup$service(config)
@@ -1512,6 +1566,8 @@ backup_list_backup_selections <- function(BackupPlanId, NextToken = NULL, MaxRes
 #'
 #' See [https://www.paws-r-sdk.com/docs/backup_list_backup_vaults/](https://www.paws-r-sdk.com/docs/backup_list_backup_vaults/) for full documentation.
 #'
+#' @param ByVaultType This parameter will sort the list of vaults by vault type.
+#' @param ByShared This parameter will sort the list of vaults by shared vaults.
 #' @param NextToken The next item following a partial list of returned items. For example,
 #' if a request is made to return `maxResults` number of items, `NextToken`
 #' allows you to return more items in your list starting at the location
@@ -1521,14 +1577,14 @@ backup_list_backup_selections <- function(BackupPlanId, NextToken = NULL, MaxRes
 #' @keywords internal
 #'
 #' @rdname backup_list_backup_vaults
-backup_list_backup_vaults <- function(NextToken = NULL, MaxResults = NULL) {
+backup_list_backup_vaults <- function(ByVaultType = NULL, ByShared = NULL, NextToken = NULL, MaxResults = NULL) {
   op <- new_operation(
     name = "ListBackupVaults",
     http_method = "GET",
     http_path = "/backup-vaults/",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "BackupVaultList")
   )
-  input <- .backup$list_backup_vaults_input(NextToken = NextToken, MaxResults = MaxResults)
+  input <- .backup$list_backup_vaults_input(ByVaultType = ByVaultType, ByShared = ByShared, NextToken = NextToken, MaxResults = MaxResults)
   output <- .backup$list_backup_vaults_output()
   config <- get_config()
   svc <- .backup$service(config)
@@ -1713,6 +1769,44 @@ backup_list_protected_resources <- function(NextToken = NULL, MaxResults = NULL)
 }
 .backup$operations$list_protected_resources <- backup_list_protected_resources
 
+#' This request lists the protected resources corresponding to each backup
+#' vault
+#'
+#' @description
+#' This request lists the protected resources corresponding to each backup vault.
+#'
+#' See [https://www.paws-r-sdk.com/docs/backup_list_protected_resources_by_backup_vault/](https://www.paws-r-sdk.com/docs/backup_list_protected_resources_by_backup_vault/) for full documentation.
+#'
+#' @param BackupVaultName &#91;required&#93; This is the list of protected resources by backup vault within the
+#' vault(s) you specify by name.
+#' @param BackupVaultAccountId This is the list of protected resources by backup vault within the
+#' vault(s) you specify by account ID.
+#' @param NextToken The next item following a partial list of returned items. For example,
+#' if a request is made to return `maxResults` number of items, `NextToken`
+#' allows you to return more items in your list starting at the location
+#' pointed to by the next token.
+#' @param MaxResults The maximum number of items to be returned.
+#'
+#' @keywords internal
+#'
+#' @rdname backup_list_protected_resources_by_backup_vault
+backup_list_protected_resources_by_backup_vault <- function(BackupVaultName, BackupVaultAccountId = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListProtectedResourcesByBackupVault",
+    http_method = "GET",
+    http_path = "/backup-vaults/{backupVaultName}/resources/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Results")
+  )
+  input <- .backup$list_protected_resources_by_backup_vault_input(BackupVaultName = BackupVaultName, BackupVaultAccountId = BackupVaultAccountId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .backup$list_protected_resources_by_backup_vault_output()
+  config <- get_config()
+  svc <- .backup$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.backup$operations$list_protected_resources_by_backup_vault <- backup_list_protected_resources_by_backup_vault
+
 #' Returns detailed information about the recovery points stored in a
 #' backup vault
 #'
@@ -1728,6 +1822,7 @@ backup_list_protected_resources <- function(NextToken = NULL, MaxResults = NULL)
 #' 
 #' Backup vault name might not be available when a supported service
 #' creates the backup.
+#' @param BackupVaultAccountId This parameter will sort the list of recovery points by account ID.
 #' @param NextToken The next item following a partial list of returned items. For example,
 #' if a request is made to return `maxResults` number of items, `NextToken`
 #' allows you to return more items in your list starting at the location
@@ -1747,14 +1842,14 @@ backup_list_protected_resources <- function(NextToken = NULL, MaxResults = NULL)
 #' @keywords internal
 #'
 #' @rdname backup_list_recovery_points_by_backup_vault
-backup_list_recovery_points_by_backup_vault <- function(BackupVaultName, NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByResourceType = NULL, ByBackupPlanId = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByParentRecoveryPointArn = NULL) {
+backup_list_recovery_points_by_backup_vault <- function(BackupVaultName, BackupVaultAccountId = NULL, NextToken = NULL, MaxResults = NULL, ByResourceArn = NULL, ByResourceType = NULL, ByBackupPlanId = NULL, ByCreatedBefore = NULL, ByCreatedAfter = NULL, ByParentRecoveryPointArn = NULL) {
   op <- new_operation(
     name = "ListRecoveryPointsByBackupVault",
     http_method = "GET",
     http_path = "/backup-vaults/{backupVaultName}/recovery-points/",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "RecoveryPoints")
   )
-  input <- .backup$list_recovery_points_by_backup_vault_input(BackupVaultName = BackupVaultName, NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByResourceType = ByResourceType, ByBackupPlanId = ByBackupPlanId, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByParentRecoveryPointArn = ByParentRecoveryPointArn)
+  input <- .backup$list_recovery_points_by_backup_vault_input(BackupVaultName = BackupVaultName, BackupVaultAccountId = BackupVaultAccountId, NextToken = NextToken, MaxResults = MaxResults, ByResourceArn = ByResourceArn, ByResourceType = ByResourceType, ByBackupPlanId = ByBackupPlanId, ByCreatedBefore = ByCreatedBefore, ByCreatedAfter = ByCreatedAfter, ByParentRecoveryPointArn = ByParentRecoveryPointArn)
   output <- .backup$list_recovery_points_by_backup_vault_output()
   config <- get_config()
   svc <- .backup$service(config)
@@ -2200,6 +2295,8 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
 #' the default is 8 hours. If this value is included, it must be at least
 #' 60 minutes to avoid errors.
 #' 
+#' This parameter has a maximum value of 100 years (52,560,000 minutes).
+#' 
 #' During the start window, the backup job status remains in `CREATED`
 #' status until it has successfully begun or until the start window time
 #' has run out. If within the start window time Backup receives an error
@@ -2213,6 +2310,9 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
 #' This value begins counting down from when the backup was scheduled. It
 #' does not add additional time for `StartWindowMinutes`, or if the backup
 #' started later than scheduled.
+#' 
+#' Like `StartWindowMinutes`, this parameter has a maximum value of 100
+#' years (52,560,000 minutes).
 #' @param Lifecycle The lifecycle defines when a protected resource is transitioned to cold
 #' storage and when it expires. Backup will transition and expire backups
 #' automatically according to the lifecycle that you define.
@@ -2228,6 +2328,8 @@ backup_put_backup_vault_notifications <- function(BackupVaultName, SNSTopicArn, 
 #' availability by
 #' resource](https://docs.aws.amazon.com/aws-backup/latest/devguide/whatisbackup.html#features-by-resource)
 #' table. Backup ignores this expression for other resource types.
+#' 
+#' This parameter has a maximum value of 100 years (36,500 days).
 #' @param RecoveryPointTags To help organize your resources, you can assign your own metadata to the
 #' resources that you create. Each tag is a key-value pair.
 #' @param BackupOptions Specifies the backup option for a selected resource. This option is only

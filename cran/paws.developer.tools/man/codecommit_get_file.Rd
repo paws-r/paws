@@ -12,7 +12,7 @@ codecommit_get_file(repositoryName, commitSpecifier = NULL, filePath)
 
 \item{commitSpecifier}{The fully quaified reference that identifies the commit that contains
 the file. For example, you can specify a full commit ID, a tag, a branch
-name, or a reference such as refs/heads/master. If none is provided, the
+name, or a reference such as refs/heads/main. If none is provided, the
 head commit is used.}
 
 \item{filePath}{[required] The fully qualified path to the file, including the full name and

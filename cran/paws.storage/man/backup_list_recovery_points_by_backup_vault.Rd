@@ -7,6 +7,7 @@ backup vault}
 \usage{
 backup_list_recovery_points_by_backup_vault(
   BackupVaultName,
+  BackupVaultAccountId = NULL,
   NextToken = NULL,
   MaxResults = NULL,
   ByResourceArn = NULL,
@@ -25,6 +26,8 @@ consist of lowercase letters, numbers, and hyphens.
 
 Backup vault name might not be available when a supported service
 creates the backup.}
+
+\item{BackupVaultAccountId}{This parameter will sort the list of recovery points by account ID.}
 
 \item{NextToken}{The next item following a partial list of returned items. For example,
 if a request is made to return \code{maxResults} number of items, \code{NextToken}

@@ -12,6 +12,10 @@ test_that("describe_certificates", {
   expect_error(svc$describe_certificates(), NA)
 })
 
+test_that("describe_db_cluster_automated_backups", {
+  expect_error(svc$describe_db_cluster_automated_backups(), NA)
+})
+
 test_that("describe_db_cluster_endpoints", {
   expect_error(svc$describe_db_cluster_endpoints(), NA)
 })

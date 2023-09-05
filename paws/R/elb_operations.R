@@ -1855,7 +1855,7 @@ elb_detach_load_balancer_from_subnets <- function(LoadBalancerName, Subnets) {
 #' Availability Zones.
 #' 
 #' For more information, see [Add or Remove Availability
-#' Zones](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html)
+#' Zones](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage
@@ -1932,7 +1932,7 @@ elb_disable_availability_zones_for_load_balancer <- function(LoadBalancerName, A
 #' The load balancer evenly distributes requests across all its registered
 #' Availability Zones that contain instances. For more information, see
 #' [Add or Remove Availability
-#' Zones](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/enable-disable-az.html)
+#' Zones](https://docs.aws.amazon.com/elasticloadbalancing/latest/classic/)
 #' in the *Classic Load Balancers Guide*.
 #'
 #' @usage

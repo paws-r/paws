@@ -190,8 +190,8 @@ elbv2_create_listener <- function(LoadBalancerArn, Protocol = NULL, Port = NULL,
 #' \[Gateway Load Balancers\] You can specify subnets from one or more
 #' Availability Zones. You cannot specify Elastic IP addresses for your
 #' subnets.
-#' @param SecurityGroups \[Application Load Balancers\] The IDs of the security groups for the
-#' load balancer.
+#' @param SecurityGroups \[Application Load Balancers and Network Load Balancers\] The IDs of the
+#' security groups for the load balancer.
 #' @param Scheme The nodes of an Internet-facing load balancer have public IP addresses.
 #' The DNS name of an Internet-facing load balancer is publicly resolvable
 #' to the public IP addresses of the nodes. Therefore, Internet-facing load
@@ -1266,27 +1266,30 @@ elbv2_set_rule_priorities <- function(RulePriorities) {
 .elbv2$operations$set_rule_priorities <- elbv2_set_rule_priorities
 
 #' Associates the specified security groups with the specified Application
-#' Load Balancer
+#' Load Balancer or Network Load Balancer
 #'
 #' @description
-#' Associates the specified security groups with the specified Application Load Balancer. The specified security groups override the previously associated security groups.
+#' Associates the specified security groups with the specified Application Load Balancer or Network Load Balancer. The specified security groups override the previously associated security groups.
 #'
 #' See [https://www.paws-r-sdk.com/docs/elbv2_set_security_groups/](https://www.paws-r-sdk.com/docs/elbv2_set_security_groups/) for full documentation.
 #'
 #' @param LoadBalancerArn &#91;required&#93; The Amazon Resource Name (ARN) of the load balancer.
 #' @param SecurityGroups &#91;required&#93; The IDs of the security groups.
+#' @param EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic Indicates whether to evaluate inbound security group rules for traffic
+#' sent to a Network Load Balancer through Amazon Web Services PrivateLink.
+#' The default is `on`.
 #'
 #' @keywords internal
 #'
 #' @rdname elbv2_set_security_groups
-elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
+elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups, EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic = NULL) {
   op <- new_operation(
     name = "SetSecurityGroups",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .elbv2$set_security_groups_input(LoadBalancerArn = LoadBalancerArn, SecurityGroups = SecurityGroups)
+  input <- .elbv2$set_security_groups_input(LoadBalancerArn = LoadBalancerArn, SecurityGroups = SecurityGroups, EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic = EnforceSecurityGroupInboundRulesOnPrivateLinkTraffic)
   output <- .elbv2$set_security_groups_output()
   config <- get_config()
   svc <- .elbv2$service(config)
@@ -1342,7 +1345,6 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups) {
 #' for your load balancer. The possible values are `ipv4` (for IPv4
 #' addresses) and `dualstack` (for IPv4 and IPv6 addresses). You can’t
 #' specify `dualstack` for a load balancer with a UDP or TCP_UDP listener.
-#' .
 #'
 #' @keywords internal
 #'

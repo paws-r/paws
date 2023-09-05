@@ -14,7 +14,7 @@ ivs_list_playback_key_pairs(maxResults = NULL, nextToken = NULL)
 \code{nextToken} response field.}
 }
 \description{
-Gets summary information about playback key pairs. For more information, see \href{https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html}{Setting Up Private Channels} in the \emph{Amazon IVS User Guide}.
+Gets summary information about playback key pairs. For more information, see \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html}{Setting Up Private Channels} in the \emph{Amazon IVS User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ivs_list_playback_key_pairs/} for full documentation.
 }

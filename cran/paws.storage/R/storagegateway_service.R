@@ -18,17 +18,17 @@ NULL
 #' Service API Reference*:
 #' 
 #' -   [Storage Gateway required request
-#'     headers](https://docs.aws.amazon.com/storagegateway/index.html#AWSStorageGatewayHTTPRequestsHeaders):
+#'     headers](https://docs.aws.amazon.com/storagegateway/#AWSStorageGatewayHTTPRequestsHeaders):
 #'     Describes the required headers that you must send with every POST
 #'     request to Storage Gateway.
 #' 
 #' -   [Signing
-#'     requests](https://docs.aws.amazon.com/storagegateway/index.html#AWSStorageGatewaySigningRequests):
+#'     requests](https://docs.aws.amazon.com/storagegateway/#AWSStorageGatewaySigningRequests):
 #'     Storage Gateway requires that you authenticate every request you
 #'     send; this topic describes how sign such a request.
 #' 
 #' -   [Error
-#'     responses](https://docs.aws.amazon.com/storagegateway/index.html#APIErrorResponses):
+#'     responses](https://docs.aws.amazon.com/storagegateway/#APIErrorResponses):
 #'     Provides reference information about Storage Gateway errors.
 #' 
 #' -   [Operations in Storage

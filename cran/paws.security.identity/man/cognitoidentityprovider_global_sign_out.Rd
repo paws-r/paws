@@ -2,7 +2,7 @@
 % Please edit documentation in R/cognitoidentityprovider_operations.R
 \name{cognitoidentityprovider_global_sign_out}
 \alias{cognitoidentityprovider_global_sign_out}
-\title{Signs out users from all devices}
+\title{Signs out a user from all devices}
 \usage{
 cognitoidentityprovider_global_sign_out(AccessToken)
 }
@@ -11,7 +11,7 @@ cognitoidentityprovider_global_sign_out(AccessToken)
 to sign out.}
 }
 \description{
-Signs out users from all devices. It also invalidates all refresh tokens that Amazon Cognito has issued to a user. A user can still use a hosted UI cookie to retrieve new tokens for the duration of the 1-hour cookie validity period.
+Signs out a user from all devices. \code{\link[=cognitoidentityprovider_global_sign_out]{global_sign_out}} invalidates all identity, access and refresh tokens that Amazon Cognito has issued to a user. A user can still use a hosted UI cookie to retrieve new tokens for the duration of the 1-hour cookie validity period.
 
 See \url{https://www.paws-r-sdk.com/docs/cognitoidentityprovider_global_sign_out/} for full documentation.
 }

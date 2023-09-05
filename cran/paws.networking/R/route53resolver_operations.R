@@ -2696,13 +2696,13 @@ route53resolver_update_outpost_resolver <- function(Id, Name = NULL, InstanceCou
 #' reverse DNS lookups. This is enabled by default. Disabling this option
 #' will also affect EC2-Classic instances using ClassicLink. For more
 #' information, see
-#' [ClassicLink](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-classiclink.html)
+#' [ClassicLink](https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/)
 #' in the *Amazon EC2 guide*.
 #' 
 #' We are retiring EC2-Classic on August 15, 2022. We recommend that you
 #' migrate from EC2-Classic to a VPC. For more information, see [Migrate
 #' from EC2-Classic to a
-#' VPC](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/vpc-migrate.html)
+#' VPC](https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/)
 #' in the *Amazon EC2 guide* and the blog [EC2-Classic Networking is
 #' Retiring – Here’s How to
 #' Prepare](https://aws.amazon.com/blogs/aws/ec2-classic-is-retiring-heres-how-to-prepare/).

@@ -20,7 +20,7 @@ fsx_delete_data_repository_association(
 the data repository association.}
 }
 \description{
-Deletes a data repository association on an Amazon FSx for Lustre file system. Deleting the data repository association unlinks the file system from the Amazon S3 bucket. When deleting a data repository association, you have the option of deleting the data in the file system that corresponds to the data repository association. Data repository associations are supported on all FSx for Lustre 2.12 and newer file systems, excluding \code{scratch_1} deployment type.
+Deletes a data repository association on an Amazon FSx for Lustre file system. Deleting the data repository association unlinks the file system from the Amazon S3 bucket. When deleting a data repository association, you have the option of deleting the data in the file system that corresponds to the data repository association. Data repository associations are supported on all FSx for Lustre 2.12 and 2.15 file systems, excluding \code{scratch_1} deployment type.
 
 See \url{https://www.paws-r-sdk.com/docs/fsx_delete_data_repository_association/} for full documentation.
 }

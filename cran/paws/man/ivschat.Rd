@@ -137,7 +137,7 @@ For more information:
 \itemize{
 \item Authentication and generating signatures — See \href{https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html}{Authenticating Requests (Amazon Web Services Signature Version 4)}
 in the \emph{Amazon Web Services General Reference}.
-\item Managing Amazon IVS permissions — See \href{https://docs.aws.amazon.com/ivs/latest/userguide/security-iam.html}{Identity and Access Management}
+\item Managing Amazon IVS permissions — See \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/security-iam.html}{Identity and Access Management}
 on the Security page of the \emph{Amazon IVS User Guide}.
 }
 

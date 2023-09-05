@@ -477,7 +477,15 @@ cloudwatch_describe_alarm_history <- function(AlarmName = NULL, AlarmTypes = NUL
 #' If this parameter is specified, you cannot specify `AlarmNames`.
 #' @param AlarmTypes Use this parameter to specify whether you want the operation to return
 #' metric alarms or composite alarms. If you omit this parameter, only
-#' metric alarms are returned.
+#' metric alarms are returned, even if composite alarms exist in the
+#' account.
+#' 
+#' For example, if you omit this parameter or specify `MetricAlarms`, the
+#' operation returns only a list of metric alarms. It does not return any
+#' composite alarms, even if composite alarms exist in the account.
+#' 
+#' If you specify `CompositeAlarms`, the operation returns only a list of
+#' composite alarms, and does not return any metric alarms.
 #' @param ChildrenOfAlarmName If you use this parameter and specify the name of a composite alarm, the
 #' operation returns information about the "children" alarms of the alarm
 #' you specify. These are the metric alarms and composite alarms referenced
@@ -1385,7 +1393,7 @@ cloudwatch_get_dashboard <- function(DashboardName) {
 #' -   `Average` -- the average value from all contributors during the time
 #'     period represented by that data point.
 #' @param OrderBy Determines what statistic to use to rank the contributors. Valid values
-#' are SUM and MAXIMUM.
+#' are `Sum` and `Maximum`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2471,7 +2479,7 @@ cloudwatch_list_metrics <- function(Namespace = NULL, MetricName = NULL, Dimensi
 #' `arn:aws:cloudwatch:Region:account-id:alarm:alarm-name `
 #' 
 #' The ARN format of a Contributor Insights rule is
-#' `arn:aws:cloudwatch:Region:account-id:insight-rule:insight-rule-name `
+#' `arn:aws:cloudwatch:Region:account-id:insight-rule/insight-rule-name `
 #' 
 #' For more information about ARN format, see [Resource Types Defined by
 #' Amazon
@@ -3324,11 +3332,38 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' call [`put_metric_alarm`][cloudwatch_put_metric_alarm] and specify a
 #' `MetricName`, you must specify either `Statistic` or
 #' `ExtendedStatistic,` but not both.
-#' @param ExtendedStatistic The percentile statistic for the metric specified in `MetricName`.
-#' Specify a value between p0.0 and p100. When you call
-#' [`put_metric_alarm`][cloudwatch_put_metric_alarm] and specify a
-#' `MetricName`, you must specify either `Statistic` or
-#' `ExtendedStatistic,` but not both.
+#' @param ExtendedStatistic The extended statistic for the metric specified in `MetricName`. When
+#' you call [`put_metric_alarm`][cloudwatch_put_metric_alarm] and specify a
+#' `MetricName`, you must specify either `Statistic` or `ExtendedStatistic`
+#' but not both.
+#' 
+#' If you specify `ExtendedStatistic`, the following are valid values:
+#' 
+#' -   `p90`
+#' 
+#' -   `tm90`
+#' 
+#' -   `tc90`
+#' 
+#' -   `ts90`
+#' 
+#' -   `wm90`
+#' 
+#' -   `IQM`
+#' 
+#' -   `PR(n:m)` where n and m are values of the metric
+#' 
+#' -   `TC(X%:X%)` where X is between 10 and 90 inclusive.
+#' 
+#' -   `TM(X%:X%)` where X is between 10 and 90 inclusive.
+#' 
+#' -   `TS(X%:X%)` where X is between 10 and 90 inclusive.
+#' 
+#' -   `WM(X%:X%)` where X is between 10 and 90 inclusive.
+#' 
+#' For more information about these extended statistics, see [CloudWatch
+#' statistics
+#' definitions](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Statistics-definitions.html).
 #' @param Dimensions The dimensions for the metric specified in `MetricName`.
 #' @param Period The length, in seconds, used each time the metric specified in
 #' `MetricName` is evaluated. Valid values are 10, 30, and any multiple of
@@ -3437,7 +3472,9 @@ cloudwatch_put_managed_insight_rules <- function(ManagedRules) {
 #' same operation. Instead, you retrieve the metrics you are using in your
 #' math expression as part of the `Metrics` array.
 #' @param Tags A list of key-value pairs to associate with the alarm. You can associate
-#' as many as 50 tags with an alarm.
+#' as many as 50 tags with an alarm. To be able to associate tags with the
+#' alarm when you create the alarm, you must have the
+#' `cloudwatch:TagResource` permission.
 #' 
 #' Tags can help you organize and categorize your resources. You can also
 #' use them to scope user permissions by granting a user permission to
@@ -4067,7 +4104,7 @@ cloudwatch_stop_metric_streams <- function(Names) {
 #' `arn:aws:cloudwatch:Region:account-id:alarm:alarm-name `
 #' 
 #' The ARN format of a Contributor Insights rule is
-#' `arn:aws:cloudwatch:Region:account-id:insight-rule:insight-rule-name `
+#' `arn:aws:cloudwatch:Region:account-id:insight-rule/insight-rule-name `
 #' 
 #' For more information about ARN format, see [Resource Types Defined by
 #' Amazon
@@ -4127,7 +4164,7 @@ cloudwatch_tag_resource <- function(ResourceARN, Tags) {
 #' `arn:aws:cloudwatch:Region:account-id:alarm:alarm-name `
 #' 
 #' The ARN format of a Contributor Insights rule is
-#' `arn:aws:cloudwatch:Region:account-id:insight-rule:insight-rule-name `
+#' `arn:aws:cloudwatch:Region:account-id:insight-rule/insight-rule-name `
 #' 
 #' For more information about ARN format, see [Resource Types Defined by
 #' Amazon

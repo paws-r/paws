@@ -53,14 +53,39 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-Using the Amazon Cognito user pools API, you can create a user pool to
-manage directories and users. You can authenticate a user to obtain
-tokens related to user identity and access policies.
+With the Amazon Cognito user pools API, you can set up user pools and
+app clients, and authenticate users. To authenticate users from
+third-party identity providers (IdPs) in this API, you can \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-pools-identity-federation-consolidate-users.html}{link IdP users to native user profiles}.
+Learn more about the authentication and authorization of federated users
+in the \href{https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-userpools-server-contract-reference.html}{Using the Amazon Cognito user pools API and user pool endpoints}.
 
-This API reference provides information about user pools in Amazon
-Cognito user pools.
+This API reference provides detailed information about API operations
+and object types in Amazon Cognito. At the bottom of the page for each
+API operation and object, under \emph{See Also}, you can learn how to use it
+in an Amazon Web Services SDK in the language of your choice.
 
-For more information, see the \href{https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html}{Amazon Cognito Documentation}.
+Along with resource management operations, the Amazon Cognito user pools
+API includes classes of operations and authorization models for
+client-side and server-side user operations. For more information, see
+\href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html}{Using the Amazon Cognito native and OIDC APIs}
+in the \emph{Amazon Cognito Developer Guide}.
+
+You can also start reading about the \code{CognitoIdentityProvider} client in
+the following SDK guides.
+\itemize{
+\item \href{https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/#cli-aws-cognito-idp}{Amazon Web Services Command Line Interface}
+\item \href{https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/CognitoIdentityProvider/TCognitoIdentityProviderClient.html}{Amazon Web Services SDK for .NET}
+\item \href{https://sdk.amazonaws.com/cpp/api/LATEST/aws-cpp-sdk-cognito-idp/html/class_aws_1_1_cognito_identity_provider_1_1_cognito_identity_provider_client.html}{Amazon Web Services SDK for C++}
+\item \href{https://docs.aws.amazon.com/sdk-for-go/api/service/cognitoidentityprovider/#CognitoIdentityProvider}{Amazon Web Services SDK for Go}
+\item \href{https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/cognitoidentityprovider/CognitoIdentityProviderClient.html}{Amazon Web Services SDK for Java V2}
+\item \href{https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CognitoIdentityServiceProvider.html}{Amazon Web Services SDK for JavaScript}
+\item \href{https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-cognito-idp-2016-04-18.html}{Amazon Web Services SDK for PHP V3}
+\item \href{https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cognito-idp.html}{Amazon Web Services SDK for Python}
+\item \href{https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/CognitoIdentityProvider/Client.html}{Amazon Web Services SDK for Ruby V3}
+}
+
+To get started with an Amazon Web Services SDK, see \href{https://aws.amazon.com/developer/tools/}{Tools to Build on Amazon Web Services}. For
+example actions and scenarios, see \href{https://docs.aws.amazon.com/cognito/latest/developerguide/service_code_examples_cognito-identity-provider.html}{Code examples for Amazon Cognito Identity Provider using Amazon Web Services SDKs}.
 }
 \section{Service syntax}{
 
@@ -126,7 +151,7 @@ For more information, see the \href{https://docs.aws.amazon.com/cognito/latest/d
 \link[paws.security.identity:cognitoidentityprovider_admin_set_user_settings]{admin_set_user_settings} \tab This action is no longer supported\cr
 \link[paws.security.identity:cognitoidentityprovider_admin_update_auth_event_feedback]{admin_update_auth_event_feedback} \tab Provides feedback for an authentication event indicating if it was from a valid user\cr
 \link[paws.security.identity:cognitoidentityprovider_admin_update_device_status]{admin_update_device_status} \tab Updates the device status as an administrator\cr
-\link[paws.security.identity:cognitoidentityprovider_admin_update_user_attributes]{admin_update_user_attributes} \tab Updates the specified user's attributes, including developer attributes, as an administrator\cr
+\link[paws.security.identity:cognitoidentityprovider_admin_update_user_attributes]{admin_update_user_attributes} \tab This action might generate an SMS text message\cr
 \link[paws.security.identity:cognitoidentityprovider_admin_user_global_sign_out]{admin_user_global_sign_out} \tab Signs out a user from all devices\cr
 \link[paws.security.identity:cognitoidentityprovider_associate_software_token]{associate_software_token} \tab Begins setup of time-based one-time password (TOTP) multi-factor authentication (MFA) for a user, with a unique private key that Amazon Cognito generates and returns in the API response\cr
 \link[paws.security.identity:cognitoidentityprovider_change_password]{change_password} \tab Changes the password for a specified user in a user pool\cr
@@ -136,14 +161,14 @@ For more information, see the \href{https://docs.aws.amazon.com/cognito/latest/d
 \link[paws.security.identity:cognitoidentityprovider_create_group]{create_group} \tab Creates a new group in the specified user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_create_identity_provider]{create_identity_provider} \tab Creates an IdP for a user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_create_resource_server]{create_resource_server} \tab Creates a new OAuth2\cr
-\link[paws.security.identity:cognitoidentityprovider_create_user_import_job]{create_user_import_job} \tab Creates the user import job\cr
-\link[paws.security.identity:cognitoidentityprovider_create_user_pool]{create_user_pool} \tab Creates a new Amazon Cognito user pool and sets the password policy for the pool\cr
+\link[paws.security.identity:cognitoidentityprovider_create_user_import_job]{create_user_import_job} \tab Creates a user import job\cr
+\link[paws.security.identity:cognitoidentityprovider_create_user_pool]{create_user_pool} \tab This action might generate an SMS text message\cr
 \link[paws.security.identity:cognitoidentityprovider_create_user_pool_client]{create_user_pool_client} \tab Creates the user pool client\cr
 \link[paws.security.identity:cognitoidentityprovider_create_user_pool_domain]{create_user_pool_domain} \tab Creates a new domain for a user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_delete_group]{delete_group} \tab Deletes a group\cr
 \link[paws.security.identity:cognitoidentityprovider_delete_identity_provider]{delete_identity_provider} \tab Deletes an IdP for a user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_delete_resource_server]{delete_resource_server} \tab Deletes a resource server\cr
-\link[paws.security.identity:cognitoidentityprovider_delete_user]{delete_user} \tab Allows a user to delete himself or herself\cr
+\link[paws.security.identity:cognitoidentityprovider_delete_user]{delete_user} \tab Allows a user to delete their own user profile\cr
 \link[paws.security.identity:cognitoidentityprovider_delete_user_attributes]{delete_user_attributes} \tab Deletes the attributes for a user\cr
 \link[paws.security.identity:cognitoidentityprovider_delete_user_pool]{delete_user_pool} \tab Deletes the specified Amazon Cognito user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_delete_user_pool_client]{delete_user_pool_client} \tab Allows the developer to delete the user pool client\cr
@@ -161,26 +186,28 @@ For more information, see the \href{https://docs.aws.amazon.com/cognito/latest/d
 \link[paws.security.identity:cognitoidentityprovider_get_device]{get_device} \tab Gets the device\cr
 \link[paws.security.identity:cognitoidentityprovider_get_group]{get_group} \tab Gets a group\cr
 \link[paws.security.identity:cognitoidentityprovider_get_identity_provider_by_identifier]{get_identity_provider_by_identifier} \tab Gets the specified IdP\cr
+\link[paws.security.identity:cognitoidentityprovider_get_log_delivery_configuration]{get_log_delivery_configuration} \tab Gets the detailed activity logging configuration for a user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_get_signing_certificate]{get_signing_certificate} \tab This method takes a user pool ID, and returns the signing certificate\cr
 \link[paws.security.identity:cognitoidentityprovider_get_ui_customization]{get_ui_customization} \tab Gets the user interface (UI) Customization information for a particular app client's app UI, if any such information exists for the client\cr
 \link[paws.security.identity:cognitoidentityprovider_get_user]{get_user} \tab Gets the user attributes and metadata for a user\cr
 \link[paws.security.identity:cognitoidentityprovider_get_user_attribute_verification_code]{get_user_attribute_verification_code} \tab Generates a user attribute verification code for the specified attribute name\cr
 \link[paws.security.identity:cognitoidentityprovider_get_user_pool_mfa_config]{get_user_pool_mfa_config} \tab Gets the user pool multi-factor authentication (MFA) configuration\cr
-\link[paws.security.identity:cognitoidentityprovider_global_sign_out]{global_sign_out} \tab Signs out users from all devices\cr
+\link[paws.security.identity:cognitoidentityprovider_global_sign_out]{global_sign_out} \tab Signs out a user from all devices\cr
 \link[paws.security.identity:cognitoidentityprovider_initiate_auth]{initiate_auth} \tab Initiates sign-in for a user in the Amazon Cognito user directory\cr
 \link[paws.security.identity:cognitoidentityprovider_list_devices]{list_devices} \tab Lists the sign-in devices that Amazon Cognito has registered to the current user\cr
 \link[paws.security.identity:cognitoidentityprovider_list_groups]{list_groups} \tab Lists the groups associated with a user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_list_identity_providers]{list_identity_providers} \tab Lists information about all IdPs for a user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_list_resource_servers]{list_resource_servers} \tab Lists the resource servers for a user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are assigned to an Amazon Cognito user pool\cr
-\link[paws.security.identity:cognitoidentityprovider_list_user_import_jobs]{list_user_import_jobs} \tab Lists the user import jobs\cr
+\link[paws.security.identity:cognitoidentityprovider_list_user_import_jobs]{list_user_import_jobs} \tab Lists user import jobs for a user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_list_user_pool_clients]{list_user_pool_clients} \tab Lists the clients that have been created for the specified user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_list_user_pools]{list_user_pools} \tab Lists the user pools associated with an Amazon Web Services account\cr
-\link[paws.security.identity:cognitoidentityprovider_list_users]{list_users} \tab Lists the users in the Amazon Cognito user pool\cr
+\link[paws.security.identity:cognitoidentityprovider_list_users]{list_users} \tab Lists users and their basic details in a user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_list_users_in_group]{list_users_in_group} \tab Lists the users in the specified group\cr
 \link[paws.security.identity:cognitoidentityprovider_resend_confirmation_code]{resend_confirmation_code} \tab Resends the confirmation (for confirmation of registration) to a specific user in the user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_respond_to_auth_challenge]{respond_to_auth_challenge} \tab Responds to the authentication challenge\cr
 \link[paws.security.identity:cognitoidentityprovider_revoke_token]{revoke_token} \tab Revokes all of the access tokens generated by, and at the same time as, the specified refresh token\cr
+\link[paws.security.identity:cognitoidentityprovider_set_log_delivery_configuration]{set_log_delivery_configuration} \tab Sets up or modifies the detailed activity logging configuration of a user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_set_risk_configuration]{set_risk_configuration} \tab Configures actions on detected risks\cr
 \link[paws.security.identity:cognitoidentityprovider_set_ui_customization]{set_ui_customization} \tab Sets the user interface (UI) customization information for a user pool's built-in app UI\cr
 \link[paws.security.identity:cognitoidentityprovider_set_user_mfa_preference]{set_user_mfa_preference} \tab Set the user's multi-factor authentication (MFA) method preference, including which MFA factors are activated and if any are preferred\cr
@@ -197,7 +224,7 @@ For more information, see the \href{https://docs.aws.amazon.com/cognito/latest/d
 \link[paws.security.identity:cognitoidentityprovider_update_identity_provider]{update_identity_provider} \tab Updates IdP information for a user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_update_resource_server]{update_resource_server} \tab Updates the name and scopes of resource server\cr
 \link[paws.security.identity:cognitoidentityprovider_update_user_attributes]{update_user_attributes} \tab Allows a user to update a specific attribute (one at a time)\cr
-\link[paws.security.identity:cognitoidentityprovider_update_user_pool]{update_user_pool} \tab Updates the specified user pool with the specified attributes\cr
+\link[paws.security.identity:cognitoidentityprovider_update_user_pool]{update_user_pool} \tab This action might generate an SMS text message\cr
 \link[paws.security.identity:cognitoidentityprovider_update_user_pool_client]{update_user_pool_client} \tab Updates the specified user pool app client with the specified attributes\cr
 \link[paws.security.identity:cognitoidentityprovider_update_user_pool_domain]{update_user_pool_domain} \tab Updates the Secure Sockets Layer (SSL) certificate for the custom domain for your user pool\cr
 \link[paws.security.identity:cognitoidentityprovider_verify_software_token]{verify_software_token} \tab Use this API to register a user's entered time-based one-time password (TOTP) code and mark the user's software token MFA status as "verified" if successful\cr
@@ -208,8 +235,30 @@ For more information, see the \href{https://docs.aws.amazon.com/cognito/latest/d
 \examples{
 \dontrun{
 svc <- cognitoidentityprovider()
-svc$add_custom_attributes(
-  Foo = 123
+# This request submits a value for all possible parameters for
+# AdminCreateUser.
+svc$admin_create_user(
+  DesiredDeliveryMediums = list(
+    "SMS"
+  ),
+  MessageAction = "SUPPRESS",
+  TemporaryPassword = "This-is-my-test-99!",
+  UserAttributes = list(
+    list(
+      Name = "name",
+      Value = "John"
+    ),
+    list(
+      Name = "phone_number",
+      Value = "+12065551212"
+    ),
+    list(
+      Name = "email",
+      Value = "testuser@example.com"
+    )
+  ),
+  UserPoolId = "us-east-1_EXAMPLE",
+  Username = "testuser"
 )
 }
 

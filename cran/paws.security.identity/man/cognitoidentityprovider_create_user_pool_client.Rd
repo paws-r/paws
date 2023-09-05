@@ -79,8 +79,8 @@ For example, when you set \code{IdTokenValidity} as \code{10} and
 \code{TokenValidityUnits} as \code{hours}, your user can authenticate their
 session with their ID token for 10 hours.
 
-The default time unit for \code{AccessTokenValidity} in an API request is
-hours. \emph{Valid range} is displayed below in seconds.
+The default time unit for \code{IdTokenValidity} in an API request is hours.
+\emph{Valid range} is displayed below in seconds.
 
 If you don't specify otherwise in the configuration of your app client,
 your ID tokens are valid for one hour.}
@@ -195,8 +195,26 @@ non-person user using a combination of the client ID and client secret.}
 Services are \code{aws.cognito.signin.user.admin}. Custom scopes created in
 Resource Servers are also supported.}
 
-\item{AllowedOAuthFlowsUserPoolClient}{Set to true if the client is allowed to follow the OAuth protocol when
-interacting with Amazon Cognito user pools.}
+\item{AllowedOAuthFlowsUserPoolClient}{Set to \code{true} to use OAuth 2.0 features in your user pool app client.
+
+\code{AllowedOAuthFlowsUserPoolClient} must be \code{true} before you can
+configure the following features in your app client.
+\itemize{
+\item \code{CallBackURLs}: Callback URLs.
+\item \code{LogoutURLs}: Sign-out redirect URLs.
+\item \code{AllowedOAuthScopes}: OAuth 2.0 scopes.
+\item \code{AllowedOAuthFlows}: Support for authorization code, implicit, and
+client credentials OAuth 2.0 grants.
+}
+
+To use OAuth 2.0 features, configure one of these features in the Amazon
+Cognito console or set \code{AllowedOAuthFlowsUserPoolClient} to \code{true} in a
+\code{\link[=cognitoidentityprovider_create_user_pool_client]{create_user_pool_client}}
+or
+\code{\link[=cognitoidentityprovider_update_user_pool_client]{update_user_pool_client}}
+API request. If you don't set a value for
+\code{AllowedOAuthFlowsUserPoolClient} in a request with the CLI or SDKs, it
+defaults to \code{false}.}
 
 \item{AnalyticsConfiguration}{The user pool analytics configuration for collecting metrics and sending
 them to your Amazon Pinpoint campaign.

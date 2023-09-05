@@ -81,7 +81,7 @@ NULL
 #'     Guide](https://docs.aws.amazon.com/codedeploy/latest/APIReference/)
 #' 
 #' -   [CLI Reference for
-#'     CodeDeploy](https://docs.aws.amazon.com/cli/latest/reference/deploy/index.html)
+#'     CodeDeploy](https://docs.aws.amazon.com/cli/latest/reference/deploy/)
 #' 
 #' -   CodeDeploy Developer Forum
 #'

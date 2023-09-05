@@ -12,7 +12,7 @@ NULL
 #' OpenSearch Service Developer
 #' Guide*](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/)
 #' . The guide also contains [sample
-#' code](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/request-signing.html)
+#' code](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/)
 #' for sending signed HTTP requests to the OpenSearch APIs. The endpoint
 #' for configuration service requests is Region specific:
 #' es.*region*.amazonaws.com. For example, es.us-east-1.amazonaws.com. For

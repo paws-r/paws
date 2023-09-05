@@ -13,7 +13,9 @@ rds_create_custom_db_engine_version(
   KMSKeyId = NULL,
   Description = NULL,
   Manifest = NULL,
-  Tags = NULL
+  Tags = NULL,
+  SourceCustomDbEngineVersionIdentifier = NULL,
+  UseAwsProvidedLatestImage = NULL
 )
 }
 \arguments{
@@ -88,6 +90,10 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Use
 in the \emph{Amazon RDS User Guide}.}
 
 \item{Tags}{}
+
+\item{SourceCustomDbEngineVersionIdentifier}{Reserved for future use.}
+
+\item{UseAwsProvidedLatestImage}{Reserved for future use.}
 }
 \description{
 Creates a custom DB engine version (CEV).

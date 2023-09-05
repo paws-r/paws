@@ -11,7 +11,7 @@ ivs_get_playback_key_pair(arn)
 \item{arn}{[required] ARN of the key pair to be returned.}
 }
 \description{
-Gets a specified playback authorization key pair and returns the \code{arn} and \code{fingerprint}. The \code{privateKey} held by the caller can be used to generate viewer authorization tokens, to grant viewers access to private channels. For more information, see \href{https://docs.aws.amazon.com/ivs/latest/userguide/private-channels.html}{Setting Up Private Channels} in the \emph{Amazon IVS User Guide}.
+Gets a specified playback authorization key pair and returns the \code{arn} and \code{fingerprint}. The \code{privateKey} held by the caller can be used to generate viewer authorization tokens, to grant viewers access to private channels. For more information, see \href{https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html}{Setting Up Private Channels} in the \emph{Amazon IVS User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/ivs_get_playback_key_pair/} for full documentation.
 }
