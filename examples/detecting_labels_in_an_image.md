@@ -236,7 +236,7 @@ This step requires you to have AWS S3 access. Please refer to [Step 1: Set up an
 ``` r
 # Note: Upload your image to your S3 bucket.
 s3_uri <- "s3://my-bucket/path/to/dog.1.jpg"
-detect_labels(url = url) |> format_resp()
+detect_labels(s3_uri = s3_uri) |> format_resp()
 
 #> - Label: Animal
 #>   Confidence: 97.6568451
