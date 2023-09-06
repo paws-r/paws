@@ -138,6 +138,7 @@ rest_unmarshal <- function(request) {
     values[[payload_name]] <- payload
     request$data <- values
   }
+  request[["data"]] <- tag_del(request[["data"]])
   return(request)
 }
 
