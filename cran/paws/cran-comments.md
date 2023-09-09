@@ -8,7 +8,7 @@
 
 There were no ERRORs, WARNINGs, or Notes.
 
-Maintainer Notes: tarball package size: 676.7K
+Maintainer Notes: tarball package size: 699K
 
 ## Downstream dependencies
 

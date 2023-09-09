@@ -68,9 +68,9 @@ resource-type values include \strong{user/}, \strong{group/}, or \strong{role/}.
 resource-id segment. You can use special characters anywhere within the
 resource-id.
 
-The "\emph{" character also matches the "/" character, allowing paths to be
+The "*" character also matches the "/" character, allowing paths to be
 formed \emph{within} the resource-id. For example,
-\emph{arn:aws:iam:::role/}/ResourceName_?} matches both
+\emph{arn:aws:iam:::role/*/ResourceName_?} matches both
 \emph{arn:aws:iam:::role/pathA/pathB/ResourceName_1} and
 \emph{arn:aws:iam:::role/pathA/ResourceName_1}.}
 

@@ -11,22 +11,22 @@ NULL
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_accept_portfolio_share/](https://www.paws-r-sdk.com/docs/servicecatalog_accept_portfolio_share/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PortfolioShareType The type of shared portfolios to accept. The default is to accept
 #' imported portfolios.
-#' 
+#'
 #' -   `AWS_ORGANIZATIONS` - Accept portfolios shared by the management
 #'     account of your organization.
-#' 
+#'
 #' -   `IMPORTED` - Accept imported portfolios.
-#' 
+#'
 #' -   `AWS_SERVICECATALOG` - Not supported. (Throws
 #'     ResourceNotFoundException.)
-#' 
+#'
 #' For example,
 #' `aws servicecatalog accept-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS`
 #'
@@ -88,9 +88,9 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_associate_principal_with_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_associate_principal_with_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). If the `PrincipalType`
@@ -99,52 +99,52 @@ servicecatalog_associate_budget_with_resource <- function(BudgetName, ResourceId
 #' (ARN)](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html#identifiers-arns).
 #' If the `PrincipalType` is `IAM_PATTERN`, the supported value is an `IAM`
 #' ARN *without an AccountID* in the following format:
-#' 
+#'
 #' *arn:partition:iam:::resource-type/resource-id*
-#' 
+#'
 #' The ARN resource-id can be either:
-#' 
+#'
 #' -   A fully formed resource-id. For example,
 #'     *arn:aws:iam:::role/resource-name* or
 #'     *arn:aws:iam:::role/resource-path/resource-name*
-#' 
+#'
 #' -   A wildcard ARN. The wildcard ARN accepts `IAM_PATTERN` values with a
 #'     "*" or "?" in the resource-id segment of the ARN. For example
 #'     *arn:partition:service:::resource-type/resource-path/resource-name*.
 #'     The new symbols are exclusive to the **resource-path** and
 #'     **resource-name** and cannot replace the **resource-type** or other
 #'     ARN values.
-#' 
+#'
 #'     The ARN path and principal name allow unlimited wildcard characters.
-#' 
+#'
 #' Examples of an **acceptable** wildcard ARN:
-#' 
+#'
 #' -   arn:aws:iam:::role/ResourceName_*
-#' 
+#'
 #' -   arn:aws:iam:::role/*/ResourceName_?
-#' 
+#'
 #' Examples of an **unacceptable** wildcard ARN:
-#' 
+#'
 #' -   arn:aws:iam:::*/ResourceName
-#' 
+#'
 #' You can associate multiple `IAM_PATTERN`s even if the account has no
 #' principal with that name.
-#' 
+#'
 #' The "?" wildcard character matches zero or one of any character. This is
 #' similar to ".?" in regular regex context. The "*" wildcard character
 #' matches any number of any characters. This is similar to ".*" in
 #' regular regex context.
-#' 
+#'
 #' In the IAM Principal ARN format
 #' (*arn:partition:iam:::resource-type/resource-path/resource-name*), valid
 #' resource-type values include **user/**, **group/**, or **role/**. The
 #' "?" and "*" characters are allowed only after the resource-type in the
 #' resource-id segment. You can use special characters anywhere within the
 #' resource-id.
-#' 
-#' The "*" character also matches the "/" character, allowing paths to be
+#'
+#' The "\*" character also matches the "/" character, allowing paths to be
 #' formed *within* the resource-id. For example,
-#' *arn:aws:iam:::role/*/ResourceName_?* matches both
+#' *arn:aws:iam:::role/\*/ResourceName_?* matches both
 #' *arn:aws:iam:::role/pathA/pathB/ResourceName_1* and
 #' *arn:aws:iam:::role/pathA/ResourceName_1*.
 #' @param PrincipalType &#91;required&#93; The principal type. The supported value is `IAM` if you use a fully
@@ -179,9 +179,9 @@ servicecatalog_associate_principal_with_portfolio <- function(AcceptLanguage = N
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_associate_product_with_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_associate_product_with_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
@@ -219,9 +219,9 @@ servicecatalog_associate_product_with_portfolio <- function(AcceptLanguage = NUL
 #' `pa-4abcdjnxjj6ne`.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #'
 #' @keywords internal
@@ -285,9 +285,9 @@ servicecatalog_associate_tag_option_with_resource <- function(ResourceId, TagOpt
 #' @param ServiceActionAssociations &#91;required&#93; One or more associations, each consisting of the Action ID, the Product
 #' ID, and the Provisioning Artifact ID.
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #'
 #' @keywords internal
@@ -321,9 +321,9 @@ servicecatalog_batch_associate_service_action_with_provisioning_artifact <- func
 #' @param ServiceActionAssociations &#91;required&#93; One or more associations, each consisting of the Action ID, the Product
 #' ID, and the Provisioning Artifact ID.
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #'
 #' @keywords internal
@@ -355,9 +355,9 @@ servicecatalog_batch_disassociate_service_action_from_provisioning_artifact <- f
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_copy_product/](https://www.paws-r-sdk.com/docs/servicecatalog_copy_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param SourceProductArn &#91;required&#93; The Amazon Resource Name (ARN) of the source product.
 #' @param TargetProductId The identifier of the target product. By default, a new product is
@@ -401,86 +401,86 @@ servicecatalog_copy_product <- function(AcceptLanguage = NULL, SourceProductArn,
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_create_constraint/](https://www.paws-r-sdk.com/docs/servicecatalog_create_constraint/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param Parameters &#91;required&#93; The constraint parameters, in JSON format. The syntax depends on the
 #' constraint type as follows:
-#' 
+#'
 #' **LAUNCH**
-#' 
+#'
 #' You are required to specify either the `RoleArn` or the `LocalRoleName`
 #' but can't use both.
-#' 
+#'
 #' Specify the `RoleArn` property as follows:
-#' 
+#'
 #' `{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}`
-#' 
+#'
 #' Specify the `LocalRoleName` property as follows:
-#' 
+#'
 #' `{"LocalRoleName": "SCBasicLaunchRole"}`
-#' 
+#'
 #' If you specify the `LocalRoleName` property, when an account uses the
 #' launch constraint, the IAM role with that name in the account will be
 #' used. This allows launch-role constraints to be account-agnostic so the
 #' administrator can create fewer resources per shared account.
-#' 
+#'
 #' The given role name must exist in the account used to create the launch
 #' constraint and the account of the user who launches a product with this
 #' launch constraint.
-#' 
+#'
 #' You cannot have both a `LAUNCH` and a `STACKSET` constraint.
-#' 
+#'
 #' You also cannot have more than one `LAUNCH` constraint on a product and
 #' portfolio.
-#' 
+#'
 #' **NOTIFICATION**
-#' 
+#'
 #' Specify the `NotificationArns` property as follows:
-#' 
+#'
 #' `{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}`
-#' 
+#'
 #' **RESOURCE_UPDATE**
-#' 
+#'
 #' Specify the `TagUpdatesOnProvisionedProduct` property as follows:
-#' 
+#'
 #' `{"Version":"2.0","Properties":{"TagUpdateOnProvisionedProduct":"String"}}`
-#' 
+#'
 #' The `TagUpdatesOnProvisionedProduct` property accepts a string value of
 #' `ALLOWED` or `NOT_ALLOWED`.
-#' 
+#'
 #' **STACKSET**
-#' 
+#'
 #' Specify the `Parameters` property as follows:
-#' 
+#'
 #' `{"Version": "String", "Properties": {"AccountList": [ "String" ], "RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole": "String"}}`
-#' 
+#'
 #' You cannot have both a `LAUNCH` and a `STACKSET` constraint.
-#' 
+#'
 #' You also cannot have more than one `STACKSET` constraint on a product
 #' and portfolio.
-#' 
+#'
 #' Products with a `STACKSET` constraint will launch an CloudFormation
 #' stack set.
-#' 
+#'
 #' **TEMPLATE**
-#' 
+#'
 #' Specify the `Rules` property. For more information, see [Template
 #' Constraint
 #' Rules](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
 #' @param Type &#91;required&#93; The type of constraint.
-#' 
+#'
 #' -   `LAUNCH`
-#' 
+#'
 #' -   `NOTIFICATION`
-#' 
+#'
 #' -   `RESOURCE_UPDATE`
-#' 
+#'
 #' -   `STACKSET`
-#' 
+#'
 #' -   `TEMPLATE`
 #' @param Description The description of the constraint.
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
@@ -515,9 +515,9 @@ servicecatalog_create_constraint <- function(AcceptLanguage = NULL, PortfolioId,
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_create_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_create_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param DisplayName &#91;required&#93; The name to use for display purposes.
 #' @param Description The description of the portfolio.
@@ -556,9 +556,9 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_create_portfolio_share/](https://www.paws-r-sdk.com/docs/servicecatalog_create_portfolio_share/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param AccountId The Amazon Web Services account ID. For example, `123456789012`.
@@ -571,7 +571,7 @@ servicecatalog_create_portfolio <- function(AcceptLanguage = NULL, DisplayName, 
 #' share. If this flag is not provided, TagOptions sharing is disabled.
 #' @param SharePrincipals Enables or disables `Principal` sharing when creating the portfolio
 #' share. If this flag is not provided, principal sharing is disabled.
-#' 
+#'
 #' When you enable Principal Name Sharing for a portfolio share, the share
 #' recipient account end users with a principal that matches any of the
 #' associated IAM patterns can provision products from the portfolio. Once
@@ -607,9 +607,9 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_create_product/](https://www.paws-r-sdk.com/docs/servicecatalog_create_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param Name &#91;required&#93; The name of the product.
 #' @param Owner &#91;required&#93; The owner of the product.
@@ -618,7 +618,7 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' @param SupportDescription The support information about the product.
 #' @param SupportEmail The contact email for product support.
 #' @param SupportUrl The contact URL for product support.
-#' 
+#'
 #' `^https?:\/\// `/ is the pattern used to validate SupportUrl.
 #' @param ProductType &#91;required&#93; The type of product.
 #' @param Tags One or more tags.
@@ -630,9 +630,9 @@ servicecatalog_create_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' product to the connection source artifact. This automatically manages
 #' the product's artifacts based on changes to the source. The
 #' `SourceConnection` parameter consists of the following sub-fields.
-#' 
+#'
 #' -   `Type`
-#' 
+#'
 #' -   `ConnectionParamters`
 #'
 #' @keywords internal
@@ -663,9 +663,9 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_create_provisioned_product_plan/](https://www.paws-r-sdk.com/docs/servicecatalog_create_provisioned_product_plan/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PlanName &#91;required&#93; The name of the plan.
 #' @param PlanType &#91;required&#93; The plan type.
@@ -686,7 +686,7 @@ servicecatalog_create_product <- function(AcceptLanguage = NULL, Name, Owner, De
 #' requests differ only by the idempotency token, the same response is
 #' returned for each repeated request.
 #' @param Tags One or more tags.
-#' 
+#'
 #' If the plan is for an existing provisioned product, the product must
 #' have a `RESOURCE_UPDATE` constraint with
 #' `TagUpdatesOnProvisionedProduct` set to `ALLOWED` to allow tag updates.
@@ -720,9 +720,9 @@ servicecatalog_create_provisioned_product_plan <- function(AcceptLanguage = NULL
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_create_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_create_provisioning_artifact/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param Parameters &#91;required&#93; The configuration for the provisioning artifact.
@@ -760,40 +760,40 @@ servicecatalog_create_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @param Name &#91;required&#93; The self-service action name.
 #' @param DefinitionType &#91;required&#93; The service action definition type. For example, `SSM_AUTOMATION`.
 #' @param Definition &#91;required&#93; The self-service action definition. Can be one of the following:
-#' 
+#'
 #' **Name**
-#' 
+#'
 #' The name of the Amazon Web Services Systems Manager document (SSM
 #' document). For example, `AWS-RestartEC2Instance`.
-#' 
+#'
 #' If you are using a shared SSM document, you must provide the ARN instead
 #' of the name.
-#' 
+#'
 #' **Version**
-#' 
+#'
 #' The Amazon Web Services Systems Manager automation document version. For
 #' example, `"Version": "1"`
-#' 
+#'
 #' **AssumeRole**
-#' 
+#'
 #' The Amazon Resource Name (ARN) of the role that performs the
 #' self-service actions on your behalf. For example,
 #' `"AssumeRole": "arn:aws:iam::12345678910:role/ActionRole"`.
-#' 
+#'
 #' To reuse the provisioned product launch role, set to
 #' `"AssumeRole": "LAUNCH_ROLE"`.
-#' 
+#'
 #' **Parameters**
-#' 
+#'
 #' The list of parameters in JSON format.
-#' 
+#'
 #' For example: `[{\"Name\":\"InstanceId\",\"Type\":\"TARGET\"}]` or
 #' `[{\"Name\":\"InstanceId\",\"Type\":\"TEXT_VALUE\"}]`.
 #' @param Description The self-service action description.
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
 #' requests differ only by the idempotency token, the same response is
@@ -857,9 +857,9 @@ servicecatalog_create_tag_option <- function(Key, Value) {
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_delete_constraint/](https://www.paws-r-sdk.com/docs/servicecatalog_delete_constraint/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The identifier of the constraint.
 #'
@@ -891,9 +891,9 @@ servicecatalog_delete_constraint <- function(AcceptLanguage = NULL, Id) {
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_delete_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_delete_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The portfolio identifier.
 #'
@@ -926,9 +926,9 @@ servicecatalog_delete_portfolio <- function(AcceptLanguage = NULL, Id) {
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_delete_portfolio_share/](https://www.paws-r-sdk.com/docs/servicecatalog_delete_portfolio_share/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param AccountId The Amazon Web Services account ID.
@@ -962,9 +962,9 @@ servicecatalog_delete_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_delete_product/](https://www.paws-r-sdk.com/docs/servicecatalog_delete_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The product identifier.
 #'
@@ -996,9 +996,9 @@ servicecatalog_delete_product <- function(AcceptLanguage = NULL, Id) {
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_delete_provisioned_product_plan/](https://www.paws-r-sdk.com/docs/servicecatalog_delete_provisioned_product_plan/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PlanId &#91;required&#93; The plan identifier.
 #' @param IgnoreErrors If set to true, Service Catalog stops managing the specified provisioned
@@ -1033,9 +1033,9 @@ servicecatalog_delete_provisioned_product_plan <- function(AcceptLanguage = NULL
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_delete_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_delete_provisioning_artifact/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact.
@@ -1069,9 +1069,9 @@ servicecatalog_delete_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #'
 #' @param Id &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #'
 #' @keywords internal
@@ -1131,9 +1131,9 @@ servicecatalog_delete_tag_option <- function(Id) {
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_constraint/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_constraint/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The identifier of the constraint.
 #'
@@ -1165,9 +1165,9 @@ servicecatalog_describe_constraint <- function(AcceptLanguage = NULL, Id) {
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_copy_product_status/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_copy_product_status/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param CopyProductToken &#91;required&#93; The token for the copy product operation. This token is returned by
 #' [`copy_product`][servicecatalog_copy_product].
@@ -1200,9 +1200,9 @@ servicecatalog_describe_copy_product_status <- function(AcceptLanguage = NULL, C
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The portfolio identifier.
 #'
@@ -1268,15 +1268,15 @@ servicecatalog_describe_portfolio_share_status <- function(PortfolioShareToken) 
 #' retrieved.
 #' @param Type &#91;required&#93; The type of portfolio share to summarize. This field acts as a filter on
 #' the type of portfolio share, which can be one of the following:
-#' 
+#'
 #' 1\. `ACCOUNT` - Represents an external account to account share.
-#' 
+#'
 #' 2\. `ORGANIZATION` - Represents a share to an organization. This share
 #' is available to every account in the organization.
-#' 
+#'
 #' 3\. `ORGANIZATIONAL_UNIT` - Represents a share to an organizational
 #' unit.
-#' 
+#'
 #' 4\. `ORGANIZATION_MEMBER_ACCOUNT` - Represents a share to an account in
 #' the organization.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
@@ -1311,9 +1311,9 @@ servicecatalog_describe_portfolio_shares <- function(PortfolioId, Type, PageToke
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_product/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param Id The product identifier.
 #' @param Name The product name.
@@ -1346,15 +1346,15 @@ servicecatalog_describe_product <- function(AcceptLanguage = NULL, Id = NULL, Na
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_product_as_admin/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_product_as_admin/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param Id The product identifier.
 #' @param Name The product name.
 #' @param SourcePortfolioId The unique identifier of the shared portfolio that the specified product
 #' is associated with.
-#' 
+#'
 #' You can provide this parameter to retrieve the shared TagOptions
 #' associated with the product. If this parameter is provided and if
 #' TagOptions sharing is enabled in the portfolio share, the API returns
@@ -1389,9 +1389,9 @@ servicecatalog_describe_product_as_admin <- function(AcceptLanguage = NULL, Id =
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_product_view/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_product_view/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The product view identifier.
 #'
@@ -1423,18 +1423,18 @@ servicecatalog_describe_product_view <- function(AcceptLanguage = NULL, Id) {
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioned_product/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioned_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param Id The provisioned product identifier. You must provide the name or ID, but
 #' not both.
-#' 
+#'
 #' If you do not provide a name or ID, or you provide both name and ID, an
 #' `InvalidParametersException` will occur.
 #' @param Name The name of the provisioned product. You must provide the name or ID,
 #' but not both.
-#' 
+#'
 #' If you do not provide a name or ID, or you provide both name and ID, an
 #' `InvalidParametersException` will occur.
 #'
@@ -1466,9 +1466,9 @@ servicecatalog_describe_provisioned_product <- function(AcceptLanguage = NULL, I
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioned_product_plan/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioned_product_plan/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PlanId &#91;required&#93; The plan identifier.
 #' @param PageSize The maximum number of items to return with this call.
@@ -1504,9 +1504,9 @@ servicecatalog_describe_provisioned_product_plan <- function(AcceptLanguage = NU
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioning_artifact/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProvisioningArtifactId The identifier of the provisioning artifact.
 #' @param ProductId The product identifier.
@@ -1545,9 +1545,9 @@ servicecatalog_describe_provisioning_artifact <- function(AcceptLanguage = NULL,
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioning_parameters/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_provisioning_parameters/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProductId The product identifier. You must provide the product name or ID, but not
 #' both.
@@ -1591,9 +1591,9 @@ servicecatalog_describe_provisioning_parameters <- function(AcceptLanguage = NUL
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_describe_record/](https://www.paws-r-sdk.com/docs/servicecatalog_describe_record/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The record identifier of the provisioned product. This identifier is
 #' returned by the request operation.
@@ -1630,9 +1630,9 @@ servicecatalog_describe_record <- function(AcceptLanguage = NULL, Id, PageToken 
 #'
 #' @param Id &#91;required&#93; The self-service action identifier.
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #'
 #' @keywords internal
@@ -1667,9 +1667,9 @@ servicecatalog_describe_service_action <- function(Id, AcceptLanguage = NULL) {
 #' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier.
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #'
 #' @keywords internal
@@ -1788,9 +1788,9 @@ servicecatalog_disassociate_budget_from_resource <- function(BudgetName, Resourc
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_principal_from_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_principal_from_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PrincipalARN &#91;required&#93; The ARN of the principal (user, role, or group). This field allows an
@@ -1828,9 +1828,9 @@ servicecatalog_disassociate_principal_from_portfolio <- function(AcceptLanguage 
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_product_from_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_disassociate_product_from_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
@@ -1868,9 +1868,9 @@ servicecatalog_disassociate_product_from_portfolio <- function(AcceptLanguage = 
 #' `pa-4abcdjnxjj6ne`.
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #'
 #' @keywords internal
@@ -1959,9 +1959,9 @@ servicecatalog_enable_aws_organizations_access <- function() {
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_execute_provisioned_product_plan/](https://www.paws-r-sdk.com/docs/servicecatalog_execute_provisioned_product_plan/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PlanId &#91;required&#93; The plan identifier.
 #' @param IdempotencyToken &#91;required&#93; A unique identifier that you provide to ensure idempotency. If multiple
@@ -1999,9 +1999,9 @@ servicecatalog_execute_provisioned_product_plan <- function(AcceptLanguage = NUL
 #' @param ServiceActionId &#91;required&#93; The self-service action identifier. For example, `act-fs7abcd89wxyz`.
 #' @param ExecuteToken &#91;required&#93; An idempotency token that uniquely identifies the execute request.
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param Parameters A map of all self-service action parameters and their values. If a
 #' provided parameter is of a special type, such as `TARGET`, the provided
@@ -2067,9 +2067,9 @@ servicecatalog_get_aws_organizations_access_status <- function() {
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_get_provisioned_product_outputs/](https://www.paws-r-sdk.com/docs/servicecatalog_get_provisioned_product_outputs/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProvisionedProductId The identifier of the provisioned product that you want the outputs
 #' from.
@@ -2111,9 +2111,9 @@ servicecatalog_get_provisioned_product_outputs <- function(AcceptLanguage = NULL
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_import_as_provisioned_product/](https://www.paws-r-sdk.com/docs/servicecatalog_import_as_provisioned_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact.
@@ -2155,22 +2155,22 @@ servicecatalog_import_as_provisioned_product <- function(AcceptLanguage = NULL, 
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_accepted_portfolio_shares/](https://www.paws-r-sdk.com/docs/servicecatalog_list_accepted_portfolio_shares/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PortfolioShareType The type of shared portfolios to list. The default is to list imported
 #' portfolios.
-#' 
+#'
 #' -   `AWS_ORGANIZATIONS` - List portfolios accepted and shared via
 #'     organizational sharing by the management account or delegated
 #'     administrator of your organization.
-#' 
+#'
 #' -   `AWS_SERVICECATALOG` - Deprecated type.
-#' 
+#'
 #' -   `IMPORTED` - List imported portfolios that have been accepted and
 #'     shared through account-to-account sharing.
 #'
@@ -2202,9 +2202,9 @@ servicecatalog_list_accepted_portfolio_shares <- function(AcceptLanguage = NULL,
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_budgets_for_resource/](https://www.paws-r-sdk.com/docs/servicecatalog_list_budgets_for_resource/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ResourceId &#91;required&#93; The resource identifier.
 #' @param PageSize The maximum number of items to return with this call.
@@ -2239,9 +2239,9 @@ servicecatalog_list_budgets_for_resource <- function(AcceptLanguage = NULL, Reso
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_constraints_for_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_list_constraints_for_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param ProductId The product identifier.
@@ -2277,9 +2277,9 @@ servicecatalog_list_constraints_for_portfolio <- function(AcceptLanguage = NULL,
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_launch_paths/](https://www.paws-r-sdk.com/docs/servicecatalog_list_launch_paths/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param PageSize The maximum number of items to return with this call.
@@ -2314,18 +2314,18 @@ servicecatalog_list_launch_paths <- function(AcceptLanguage = NULL, ProductId, P
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_organization_portfolio_access/](https://www.paws-r-sdk.com/docs/servicecatalog_list_organization_portfolio_access/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier. For example, `port-2abcdext3y5fk`.
 #' @param OrganizationNodeType &#91;required&#93; The organization node type that will be returned in the output.
-#' 
+#'
 #' -   `ORGANIZATION` - Organization that has access to the portfolio.
-#' 
+#'
 #' -   `ORGANIZATIONAL_UNIT` - Organizational unit that has access to the
 #'     portfolio within your organization.
-#' 
+#'
 #' -   `ACCOUNT` - Account that has access to the portfolio within your
 #'     organization.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
@@ -2360,9 +2360,9 @@ servicecatalog_list_organization_portfolio_access <- function(AcceptLanguage = N
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_portfolio_access/](https://www.paws-r-sdk.com/docs/servicecatalog_list_portfolio_access/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param OrganizationParentId The ID of an organization node the portfolio is shared with. All
@@ -2400,9 +2400,9 @@ servicecatalog_list_portfolio_access <- function(AcceptLanguage = NULL, Portfoli
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_portfolios/](https://www.paws-r-sdk.com/docs/servicecatalog_list_portfolios/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
@@ -2436,9 +2436,9 @@ servicecatalog_list_portfolios <- function(AcceptLanguage = NULL, PageToken = NU
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_portfolios_for_product/](https://www.paws-r-sdk.com/docs/servicecatalog_list_portfolios_for_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
@@ -2474,9 +2474,9 @@ servicecatalog_list_portfolios_for_product <- function(AcceptLanguage = NULL, Pr
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_principals_for_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_list_principals_for_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PageSize The maximum number of items to return with this call.
@@ -2512,9 +2512,9 @@ servicecatalog_list_principals_for_portfolio <- function(AcceptLanguage = NULL, 
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_provisioned_product_plans/](https://www.paws-r-sdk.com/docs/servicecatalog_list_provisioned_product_plans/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProvisionProductId The product identifier.
 #' @param PageSize The maximum number of items to return with this call.
@@ -2551,9 +2551,9 @@ servicecatalog_list_provisioned_product_plans <- function(AcceptLanguage = NULL,
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_provisioning_artifacts/](https://www.paws-r-sdk.com/docs/servicecatalog_list_provisioning_artifacts/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #'
@@ -2590,9 +2590,9 @@ servicecatalog_list_provisioning_artifacts <- function(AcceptLanguage = NULL, Pr
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #'
 #' @keywords internal
@@ -2623,9 +2623,9 @@ servicecatalog_list_provisioning_artifacts_for_service_action <- function(Servic
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_record_history/](https://www.paws-r-sdk.com/docs/servicecatalog_list_record_history/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param AccessLevelFilter The access level to use to obtain results. The default is `User`.
 #' @param SearchFilter The search filter to scope the results.
@@ -2662,9 +2662,9 @@ servicecatalog_list_record_history <- function(AcceptLanguage = NULL, AccessLeve
 #'
 #' @param TagOptionId &#91;required&#93; The TagOption identifier.
 #' @param ResourceType The resource type.
-#' 
+#'
 #' -   `Portfolio`
-#' 
+#'
 #' -   `Product`
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
@@ -2698,9 +2698,9 @@ servicecatalog_list_resources_for_tag_option <- function(TagOptionId, ResourceTy
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_service_actions/](https://www.paws-r-sdk.com/docs/servicecatalog_list_service_actions/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PageSize The maximum number of items to return with this call.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
@@ -2741,9 +2741,9 @@ servicecatalog_list_service_actions <- function(AcceptLanguage = NULL, PageSize 
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
 #' results, use null.
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #'
 #' @keywords internal
@@ -2775,9 +2775,9 @@ servicecatalog_list_service_actions_for_provisioning_artifact <- function(Produc
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_list_stack_instances_for_provisioned_product/](https://www.paws-r-sdk.com/docs/servicecatalog_list_stack_instances_for_provisioned_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
 #' @param PageToken The page token for the next set of results. To retrieve the first set of
@@ -2954,9 +2954,9 @@ servicecatalog_notify_update_provisioned_product_engine_workflow_result <- funct
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_provision_product/](https://www.paws-r-sdk.com/docs/servicecatalog_provision_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProductId The product identifier. You must provide the name or ID, but not both.
 #' @param ProductName The name of the product. You must provide the name or ID, but not both.
@@ -3010,22 +3010,22 @@ servicecatalog_provision_product <- function(AcceptLanguage = NULL, ProductId = 
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_reject_portfolio_share/](https://www.paws-r-sdk.com/docs/servicecatalog_reject_portfolio_share/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The portfolio identifier.
 #' @param PortfolioShareType The type of shared portfolios to reject. The default is to reject
 #' imported portfolios.
-#' 
+#'
 #' -   `AWS_ORGANIZATIONS` - Reject portfolios shared by the management
 #'     account of your organization.
-#' 
+#'
 #' -   `IMPORTED` - Reject imported portfolios.
-#' 
+#'
 #' -   `AWS_SERVICECATALOG` - Not supported. (Throws
 #'     ResourceNotFoundException.)
-#' 
+#'
 #' For example,
 #' `aws servicecatalog reject-portfolio-share --portfolio-id "port-2qwzkwxt3y5fk" --portfolio-share-type AWS_ORGANIZATIONS`
 #'
@@ -3057,9 +3057,9 @@ servicecatalog_reject_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_scan_provisioned_products/](https://www.paws-r-sdk.com/docs/servicecatalog_scan_provisioned_products/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param AccessLevelFilter The access level to use to obtain results. The default is `User`.
 #' @param PageSize The maximum number of items to return with this call.
@@ -3094,9 +3094,9 @@ servicecatalog_scan_provisioned_products <- function(AcceptLanguage = NULL, Acce
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_search_products/](https://www.paws-r-sdk.com/docs/servicecatalog_search_products/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param Filters The search filters. If no search filters are specified, the output
 #' includes all products to which the caller has access.
@@ -3135,9 +3135,9 @@ servicecatalog_search_products <- function(AcceptLanguage = NULL, Filters = NULL
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_search_products_as_admin/](https://www.paws-r-sdk.com/docs/servicecatalog_search_products_as_admin/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PortfolioId The portfolio identifier.
 #' @param Filters The search filters. If no search filters are specified, the output
@@ -3178,20 +3178,20 @@ servicecatalog_search_products_as_admin <- function(AcceptLanguage = NULL, Portf
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_search_provisioned_products/](https://www.paws-r-sdk.com/docs/servicecatalog_search_provisioned_products/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param AccessLevelFilter The access level to use to obtain results. The default is `User`.
 #' @param Filters The search filters.
-#' 
+#'
 #' When the key is `SearchQuery`, the searchable fields are `arn`,
 #' `createdTime`, `id`, `lastRecordId`, `idempotencyToken`, `name`,
 #' `physicalId`, `productId`, `provisioningArtifactId`, `type`, `status`,
 #' `tags`, `userArn`, `userArnSession`, `lastProvisioningRecordId`,
 #' `lastSuccessfulProvisioningRecordId`, `productName`, and
 #' `provisioningArtifactName`.
-#' 
+#'
 #' Example: `"SearchQuery":["status:AVAILABLE"]`
 #' @param SortBy The sort field. If no value is specified, the results are not sorted.
 #' The valid values are `arn`, `id`, `name`, and `lastRecordId`.
@@ -3238,9 +3238,9 @@ servicecatalog_search_provisioned_products <- function(AcceptLanguage = NULL, Ac
 #' @param IgnoreErrors If set to true, Service Catalog stops managing the specified provisioned
 #' product even if it cannot delete the underlying resources.
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param RetainPhysicalResources When this boolean parameter is set to true, the
 #' [`terminate_provisioned_product`][servicecatalog_terminate_provisioned_product]
@@ -3277,73 +3277,73 @@ servicecatalog_terminate_provisioned_product <- function(ProvisionedProductName 
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_update_constraint/](https://www.paws-r-sdk.com/docs/servicecatalog_update_constraint/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The identifier of the constraint.
 #' @param Description The updated description of the constraint.
 #' @param Parameters The constraint parameters, in JSON format. The syntax depends on the
 #' constraint type as follows:
-#' 
+#'
 #' **LAUNCH**
-#' 
+#'
 #' You are required to specify either the `RoleArn` or the `LocalRoleName`
 #' but can't use both.
-#' 
+#'
 #' Specify the `RoleArn` property as follows:
-#' 
+#'
 #' `{"RoleArn" : "arn:aws:iam::123456789012:role/LaunchRole"}`
-#' 
+#'
 #' Specify the `LocalRoleName` property as follows:
-#' 
+#'
 #' `{"LocalRoleName": "SCBasicLaunchRole"}`
-#' 
+#'
 #' If you specify the `LocalRoleName` property, when an account uses the
 #' launch constraint, the IAM role with that name in the account will be
 #' used. This allows launch-role constraints to be account-agnostic so the
 #' administrator can create fewer resources per shared account.
-#' 
+#'
 #' The given role name must exist in the account used to create the launch
 #' constraint and the account of the user who launches a product with this
 #' launch constraint.
-#' 
+#'
 #' You cannot have both a `LAUNCH` and a `STACKSET` constraint.
-#' 
+#'
 #' You also cannot have more than one `LAUNCH` constraint on a product and
 #' portfolio.
-#' 
+#'
 #' **NOTIFICATION**
-#' 
+#'
 #' Specify the `NotificationArns` property as follows:
-#' 
+#'
 #' `{"NotificationArns" : ["arn:aws:sns:us-east-1:123456789012:Topic"]}`
-#' 
+#'
 #' **RESOURCE_UPDATE**
-#' 
+#'
 #' Specify the `TagUpdatesOnProvisionedProduct` property as follows:
-#' 
+#'
 #' `{"Version":"2.0","Properties":{"TagUpdateOnProvisionedProduct":"String"}}`
-#' 
+#'
 #' The `TagUpdatesOnProvisionedProduct` property accepts a string value of
 #' `ALLOWED` or `NOT_ALLOWED`.
-#' 
+#'
 #' **STACKSET**
-#' 
+#'
 #' Specify the `Parameters` property as follows:
-#' 
+#'
 #' `{"Version": "String", "Properties": {"AccountList": [ "String" ], "RegionList": [ "String" ], "AdminRole": "String", "ExecutionRole": "String"}}`
-#' 
+#'
 #' You cannot have both a `LAUNCH` and a `STACKSET` constraint.
-#' 
+#'
 #' You also cannot have more than one `STACKSET` constraint on a product
 #' and portfolio.
-#' 
+#'
 #' Products with a `STACKSET` constraint will launch an CloudFormation
 #' stack set.
-#' 
+#'
 #' **TEMPLATE**
-#' 
+#'
 #' Specify the `Rules` property. For more information, see [Template
 #' Constraint
 #' Rules](https://docs.aws.amazon.com/servicecatalog/latest/adminguide/reference-template_constraint_rules.html).
@@ -3376,9 +3376,9 @@ servicecatalog_update_constraint <- function(AcceptLanguage = NULL, Id, Descript
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_update_portfolio/](https://www.paws-r-sdk.com/docs/servicecatalog_update_portfolio/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The portfolio identifier.
 #' @param DisplayName The name to use for display purposes.
@@ -3415,15 +3415,15 @@ servicecatalog_update_portfolio <- function(AcceptLanguage = NULL, Id, DisplayNa
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_update_portfolio_share/](https://www.paws-r-sdk.com/docs/servicecatalog_update_portfolio_share/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param PortfolioId &#91;required&#93; The unique identifier of the portfolio for which the share will be
 #' updated.
 #' @param AccountId The Amazon Web Services account Id of the recipient account. This field
 #' is required when updating an external account to account type share.
-#' @param OrganizationNode 
+#' @param OrganizationNode
 #' @param ShareTagOptions Enables or disables `TagOptions` sharing for the portfolio share. If
 #' this field is not provided, the current state of TagOptions sharing on
 #' the portfolio share will not be modified.
@@ -3459,9 +3459,9 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_update_product/](https://www.paws-r-sdk.com/docs/servicecatalog_update_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param Id &#91;required&#93; The product identifier.
 #' @param Name The updated product name.
@@ -3477,9 +3477,9 @@ servicecatalog_update_portfolio_share <- function(AcceptLanguage = NULL, Portfol
 #' product to the connection source artifact. This automatically manages
 #' the product's artifacts based on changes to the source. The
 #' `SourceConnection` parameter consists of the following sub-fields.
-#' 
+#'
 #' -   `Type`
-#' 
+#'
 #' -   `ConnectionParamters`
 #'
 #' @keywords internal
@@ -3511,9 +3511,9 @@ servicecatalog_update_product <- function(AcceptLanguage = NULL, Id, Name = NULL
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_update_provisioned_product/](https://www.paws-r-sdk.com/docs/servicecatalog_update_provisioned_product/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProvisionedProductName The name of the provisioned product. You cannot specify both
 #' `ProvisionedProductName` and `ProvisionedProductId`.
@@ -3566,13 +3566,13 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_update_provisioned_product_properties/](https://www.paws-r-sdk.com/docs/servicecatalog_update_provisioned_product_properties/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProvisionedProductId &#91;required&#93; The identifier of the provisioned product.
 #' @param ProvisionedProductProperties &#91;required&#93; A map that contains the provisioned product properties to be updated.
-#' 
+#'
 #' The `LAUNCH_ROLE` key accepts role ARNs. This key allows an
 #' administrator to call
 #' [`update_provisioned_product_properties`][servicecatalog_update_provisioned_product_properties]
@@ -3584,11 +3584,11 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #' or
 #' [`execute_provisioned_product_service_action`][servicecatalog_execute_provisioned_product_service_action].
 #' Only a role ARN is valid. A user ARN is invalid.
-#' 
+#'
 #' The `OWNER` key accepts user ARNs, IAM role ARNs, and STS assumed-role
 #' ARNs. The owner is the user that has permission to see, update,
 #' terminate, and execute service actions in the provisioned product.
-#' 
+#'
 #' The administrator can change the owner of a provisioned product to
 #' another IAM or STS entity within the same account. Both end user owners
 #' and administrators can see ownership history of the provisioned product
@@ -3599,7 +3599,7 @@ servicecatalog_update_provisioned_product <- function(AcceptLanguage = NULL, Pro
 #' [`describe_record`][servicecatalog_describe_record], but can still see
 #' the product's history from when he was an owner using
 #' [`list_record_history`][servicecatalog_list_record_history].
-#' 
+#'
 #' If a provisioned product ownership is assigned to an end user, they can
 #' see and perform any action through the API or Service Catalog console
 #' such as update, terminate, and execute service actions. If an end user
@@ -3638,24 +3638,24 @@ servicecatalog_update_provisioned_product_properties <- function(AcceptLanguage 
 #' See [https://www.paws-r-sdk.com/docs/servicecatalog_update_provisioning_artifact/](https://www.paws-r-sdk.com/docs/servicecatalog_update_provisioning_artifact/) for full documentation.
 #'
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #' @param ProductId &#91;required&#93; The product identifier.
 #' @param ProvisioningArtifactId &#91;required&#93; The identifier of the provisioning artifact.
 #' @param Name The updated name of the provisioning artifact.
 #' @param Description The updated description of the provisioning artifact.
 #' @param Active Indicates whether the product version is active.
-#' 
+#'
 #' Inactive provisioning artifacts are invisible to end users. End users
 #' cannot launch or update a provisioned product from an inactive
 #' provisioning artifact.
 #' @param Guidance Information set by the administrator to provide guidance to end users
 #' about which provisioning artifacts to use.
-#' 
+#'
 #' The `DEFAULT` value indicates that the product version is active.
-#' 
+#'
 #' The administrator can set the guidance to `DEPRECATED` to inform users
 #' that the product version is deprecated. Users are able to make updates
 #' to a provisioned product of a deprecated version but cannot launch new
@@ -3693,9 +3693,9 @@ servicecatalog_update_provisioning_artifact <- function(AcceptLanguage = NULL, P
 #' @param Definition A map that defines the self-service action.
 #' @param Description The self-service action description.
 #' @param AcceptLanguage The language code.
-#' 
+#'
 #' -   `jp` - Japanese
-#' 
+#'
 #' -   `zh` - Chinese
 #'
 #' @keywords internal
