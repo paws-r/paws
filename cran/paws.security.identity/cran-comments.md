@@ -1,8 +1,3 @@
-Fixed documentation for cran:
-
-Removed following:
-  Warning: <span> proprietary attribute "href"
-
 ## Test environments
 
 * local macOS install, R 4.2.1
@@ -16,10 +11,10 @@ Notes:
 checking installed package size ... NOTE
   installed size is  6.7Mb
   sub-directories of 1Mb or more:
-    R      3.0Mb
-    help   3.5Mb
+    R      3.1Mb
+    help   3.4Mb
 
-Maintainer Notes: tarball package size: 844K
+Maintainer Notes: tarball package size: 871K
 
 ## Downstream dependencies
 
