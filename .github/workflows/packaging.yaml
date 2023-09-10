@@ -81,8 +81,9 @@ jobs:
         id: build
         run: |
           lines <- readLines(file.path("cran", "paws", "DESCRIPTION"))
-          pkgs <- lines[grepl("paws\\.[a-z\\.]", lines, perl = T)]
-          pkgs <- file.path("cran", c("paws", trimws(gsub("\\([^)]*\\).*", "", pkgs))))
+          pkgs <- trimws(gsub("\\([^)]*\\).*", "", lines[grepl("paws\\.[a-z\\.]", lines, perl = T)]))
+          pkgs <- pkgs[pkgs != "paws.common"]
+          pkgs <- file.path("cran", c("paws", pkgs))
           dest_path <- contrib.url("../binaries", type="binary")
           dir.create(dest_path, recursive = TRUE)
 
@@ -98,7 +99,7 @@ jobs:
       - name: 'upload-file'
         run:
           aws s3 sync "../binaries" "s3://paws-r-builds/packages/${{ steps.build.outputs.pkg_version }}/" --acl public-read --quiet
-  
+
   latest-binaries:
     runs-on: ubuntu-latest
     needs: binaries
