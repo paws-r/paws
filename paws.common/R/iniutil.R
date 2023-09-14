@@ -9,7 +9,6 @@ extract_ini_parameter <- function(item) {
 }
 
 # Read in values from an ini file
-# Read in values from an ini file
 read_ini <- function(file_name) {
   if (!file.exists(file_name)) {
     stopf("Unable to find file: %s", file_name)
