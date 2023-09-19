@@ -292,7 +292,7 @@ xml_parse_structure <- function(xml_elts, interface_i, tags_i, tag_type = NULL, 
   if (isTRUE(flattened)) {
     result <- transpose(result)
   } else {
-    result <- list(result)
+    result <- as.list(result)
   }
   return(result)
 }
@@ -411,7 +411,11 @@ default_parse_structure <- function(interface_i, tag_type = NULL) {
     result[[i]] <- default_parse_xml(interface_i[[i]], tags_i)
   }
   names(result) <- nms
-  return(list(result))
+
+  switch(type(interface_i[[1]]),
+    structure = as.list(result),
+    list(result)
+  )
 }
 
 default_parse_map <- function(interface_i, tag_type = NULL) {
