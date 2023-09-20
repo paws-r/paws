@@ -412,10 +412,7 @@ default_parse_structure <- function(interface_i, tag_type = NULL) {
   }
   names(result) <- nms
 
-  switch(type(interface_i[[1]]),
-    structure = as.list(result),
-    list(result)
-  )
+  return(list(result))
 }
 
 default_parse_map <- function(interface_i, tag_type = NULL) {
