@@ -710,6 +710,30 @@ test_that("unmarshal empty output shape", {
   expect_error(unmarshal(req), NA)
 })
 
+op_output16 <- Structure(
+  FooStr = Structure(
+    Foo = Scalar(type = "string"),
+    Bar = Scalar(type = "double")
+  ),
+  ChoStr = Structure(
+    Cho = Scalar(type = "string"),
+    Zar = Scalar(type = "double")
+  ),
+  Zoo = Scalar(type = "string")
+)
+
+test_that("unmarshal nested structures", {
+  req <- new_request(svc, op, NULL, op_output16)
+  req$http_response <- HttpResponse(
+    status_code = 200,
+    body = charToRaw("<OperationNameResponse><OperationNameResult><FooStr><Foo>Hello</Foo><Bar>1234</Bar></FooStr><ChoStr><Cho>World</Cho><Zar>5678</Zar></ChoStr><Zoo>From R</Zoo></OperationNameResult></OperationNameResponse>")
+  )
+  resp <- unmarshal(req)$data
+  expect_equal(resp$FooStr, list(Foo = "Hello", Bar = 1234))
+  expect_equal(resp$ChoStr, list(Cho = "World", Zar = 5678))
+  expect_equal(resp$Zoo, "From R")
+})
+
 #-------------------------------------------------------------------------------
 
 # Unmarshal Error Tests
