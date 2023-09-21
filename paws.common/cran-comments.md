@@ -1,6 +1,5 @@
 ## Submission
-This release contains cran bug fix: https://cran.r-project.org/web/checks/check_results_paws.common.html.
-It also contains helper functions to improve auto-complete.
+This release contains minor bug fixes
 
 ## Test environments
 
