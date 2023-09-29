@@ -120,10 +120,10 @@ service_params <- function() {
         "The name of a profile to use. If not given, then the default profile",
         "is used."
       ),
-      anonymous = "Set anonymous credentials.",
-      endpoint = "The complete URL to use for the constructed client.",
-      region = "The AWS Region used in instantiating the client."
+      anonymous = "Set anonymous credentials."
     ),
+    endpoint = "The complete URL to use for the constructed client.",
+    region = "The AWS Region used in instantiating the client.",
     close_connection = "Immediately close all HTTP connections.",
     timeout = paste(
       "The time in seconds till a timeout exception is thrown when attempting",
