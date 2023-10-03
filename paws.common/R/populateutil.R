@@ -1,3 +1,5 @@
+#' @include util.R
+
 # Construct objects to be filled in by `populate`. These are currently used to
 # create interface objects for testing, e.g. given some user-supplied arguments,
 # populate the interface constructed with these functions, then build the HTTP
@@ -26,7 +28,7 @@ Map <- function(..., .tags = NULL) {
 }
 
 Scalar <- function(value = NULL, .tags = NULL, type = "scalar") {
-  if (length(value) > 1 || !is.atomic(value)) stop("a scalar must be length <= 1")
+  if (length(value) > 1 || !is_atomic(value)) stop("a scalar must be length <= 1")
   if (is.null(value)) value <- logical(0)
   tags <- c(list(type = type), .tags)
   value <- tag_add(value, tags)

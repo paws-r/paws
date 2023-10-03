@@ -219,3 +219,9 @@ get_auth <- function(request) {
 stopf <- function(fmt, ...) {
   stop(sprintf(fmt, ...), call. = FALSE)
 }
+
+# Support R-4.4.0+ changes to `is.atomic`
+# https://stat.ethz.ch/pipermail/r-devel/2023-September/082892.html
+is_atomic <- function(x) {
+  return(is.atomic(x) || is.null(x))
+}
