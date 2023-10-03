@@ -46,3 +46,10 @@ test_that("Reads in values with nested content", {
   expect_equal(content[[profile]][["nested2"]], list(arg4 = "value4"))
   expect_equal(content[[profile]][["arg3"]], "value3")
 })
+
+test_that("Reads empty profiles", {
+  content <- read_ini("data_ini")
+  for (profile in c("empty1", "empty2")) {
+    expect_null(content[[profile]])
+  }
+})
