@@ -12,7 +12,7 @@ jobs:
   Unit-Tests:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }}
+    name: ${{ matrix.config.os }} (${{ matrix.config.R }})
 
     strategy:
       fail-fast: false
@@ -21,6 +21,9 @@ jobs:
           - { os: 'ubuntu-latest', R: 'latest' }
           - { os: 'macOS-latest', R: 'latest' }
           - { os: 'windows-latest', R: 'latest' }
+          - { os: 'ubuntu-latest', R: 'devel' }
+          - { os: 'macOS-latest', R: 'devel' }
+          - { os: 'windows-latest', R: 'devel' }
 
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}

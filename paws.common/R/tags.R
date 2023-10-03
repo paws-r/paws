@@ -1,4 +1,6 @@
-#' Get, set, and delete object tags
+#' @include util.R
+
+#' @title Get, set, and delete object tags
 #'
 #' @description
 #' Tags are metadata stored in an object's attributes, used to store types and
@@ -96,7 +98,7 @@ tag_del <- function(object, tags = NULL) {
     }
     attr(result, "tags") <- this_tags
   }
-  if (is.atomic(result)) {
+  if (is_atomic(result)) {
     return(result)
   }
   for (i in seq_along(result)) {
@@ -131,7 +133,7 @@ guess_type <- function(object) {
   if (!is.null(names(object))) {
     t <- "structure"
   } else {
-    if (is.atomic(object) && length(object) == 1) {
+    if (is_atomic(object) && length(object) == 1) {
       t <- "scalar"
     } else {
       t <- "list"
