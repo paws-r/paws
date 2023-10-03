@@ -14,12 +14,13 @@ read_ini <- function(file_name) {
     stopf("Unable to find file: %s", file_name)
   }
   content <- scan(file_name, what = "", sep = "\n", quiet = T)
+  content_length <- length(content)
 
   # An empty credentials file is valid when using SSO
   # In that case, length(content) is 0.  Don't loop
   # in such a case, since 'grepl(..., content[i])'
   # will return logical(0), causing the 'if' to error out
-  if (length(content) == 0) return(list())
+  if (content_length == 0) return(list())
 
   # Get the profile name from an ini file
   found <- grep("^\\[.*\\]", content)
@@ -30,9 +31,9 @@ read_ini <- function(file_name) {
   names(profiles) <- profile_nms
 
   start <- (found + 1)
-  end <- c(found[-1]-1,  length(content))
+  end <- c(found[-1]-1,  content_length)
   split_content <- strsplit(sub("=", "\n", content, fixed = T), "\n", fixed = T)
-  for (i in seq_along(profiles)) {
+  for (i in which(start <= end)) {
     els <- seq.int(start[i], end[i])
     sub_content <- split_content[els[!(els %in% rm_els)]]
     found_nested_content <- lengths(sub_content) == 1

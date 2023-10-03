@@ -29,6 +29,8 @@ arg2 = value2
 [profile sts]
 sts_regional_endpoint = legacy
 
+[empty1]
+
 [nested]
 nested1 =
   arg1 = value1
@@ -36,3 +38,5 @@ nested1 =
 arg3 = value3
 nested2 =
   arg4 = value4
+
+[empty2]
