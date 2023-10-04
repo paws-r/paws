@@ -22,7 +22,6 @@ jobs:
           - { os: 'macOS-latest', R: 'latest' }
           - { os: 'windows-latest', R: 'latest' }
           - { os: 'ubuntu-latest', R: 'devel' }
-          - { os: 'macOS-latest', R: 'devel' }
           - { os: 'windows-latest', R: 'devel' }
 
     env:
