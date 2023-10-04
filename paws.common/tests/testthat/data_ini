@@ -36,7 +36,7 @@ nested1 =
   arg1 = value1
   arg2 = value2
 arg3 = value3
-nested2 =
+nested2 = 
   arg4 = value4
 
 [empty2]

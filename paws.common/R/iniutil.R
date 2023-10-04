@@ -13,7 +13,11 @@ read_ini <- function(file_name) {
   if (!file.exists(file_name)) {
     stopf("Unable to find file: %s", file_name)
   }
-  content <- scan(file_name, what = "", sep = "\n", quiet = T)
+  content <- sub(
+    "[ \t\r\n]+$", "",
+    scan(file_name, what = "", sep = "\n", quiet = T),
+    perl = TRUE
+  )
   content_length <- length(content)
 
   # An empty credentials file is valid when using SSO
