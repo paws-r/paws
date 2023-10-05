@@ -25,10 +25,10 @@ read_ini <- function(file_name) {
   if (length(content) == 0) return(list())
 
   # Get the profile name from an ini file
-  rm_els <- grep("(^;)|(^#)", content)
+  rm_els <- grep("(^;)|(^\\s+;)|(^#)|(^\\s+#)", content, perl = TRUE)
   if (length(rm_els) > 0) content <- content[-rm_els]
 
-  found <- grep("^\\[.*\\]", content)
+  found <- grep("^\\[.*\\]", content, perl = TRUE)
 
   profile_nms <- gsub("\\[|\\]", "", content[found])
   profiles <- vector("list", length = length(profile_nms))
