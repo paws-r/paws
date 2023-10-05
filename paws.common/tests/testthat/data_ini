@@ -40,3 +40,12 @@ nested2 =
   arg4 = value4
 
 [empty2]
+
+[profile minio]
+region=us-east-1
+output=json
+services = profileminio
+
+[services profileminio]
+s3 =
+ endpoint_url = http://localhost:9000

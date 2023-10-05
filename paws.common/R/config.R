@@ -328,7 +328,7 @@ check_config_file_endpoint <- function(profile = "", service_id = "") {
   }
 
   profile_name <- get_profile_name(profile)
-  if (profile != "default") profile_name <- paste("profile", profile)
+  if (profile_name != "default") profile_name <- paste("profile", profile_name)
 
   config_values <- read_ini(config_path)
 

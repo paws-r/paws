@@ -1,3 +1,4 @@
+#' @include config.R
 #' @include credentials.R
 #' @include handlers.R
 #' @include struct.R
@@ -133,14 +134,14 @@ client_config <- function(service_name, endpoints, cfgs, service_id) {
   }
   # If region not defined, set it
   if (nchar(s$config$region) == 0) {
-    s$config$region <- get_region(cfgs$credentials$profile)
+    s$config$region <- get_region(cfgs[["credentials"]][["profile"]])
   }
   region <- s$config$region
   if (s$config$endpoint != "") {
     endpoint <- s$config$endpoint
     signing_region <- region
   } else {
-    endpoint <- get_service_endpoint(cfgs$credentials$profile, service_id)
+    endpoint <- get_service_endpoint(cfgs[["credentials"]][["profile"]], service_id)
     if (!is.null(endpoint)) {
       signing_region <- region
     } else {
