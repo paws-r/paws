@@ -40,6 +40,7 @@ nested1 =
 arg3 = value3
 nested2 =   
   arg4 = value4
+  ; arg2=value2
 
 [empty2]
 # Empty comment
@@ -52,3 +53,4 @@ services = profileminio
 [services profileminio]
 s3 =
  endpoint_url = http://localhost:9000
+ # Empty comment
