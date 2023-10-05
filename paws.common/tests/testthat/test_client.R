@@ -58,7 +58,8 @@ test_that("client_config uses custom region", {
       endpoint = "dynamodb.{region}.amazonaws.com",
       global = FALSE
     )),
-    cfgs = cfgs
+    cfgs = cfgs,
+    service_id = "foo"
   )
   expect_equal(
     "test_region",
@@ -79,7 +80,8 @@ test_that("client_config uses custom credentials", {
       endpoint = "dynamodb.{region}.amazonaws.com",
       global = FALSE
     )),
-    cfgs = cfgs
+    cfgs = cfgs,
+    service_id = "foo"
   )
   expect_equal(
     "test_key",

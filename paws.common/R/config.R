@@ -307,6 +307,51 @@ get_region <- function(profile = "") {
   return(region)
 }
 
+# Get Endpoint for Service
+# https://docs.aws.amazon.com/sdkref/latest/guide/ss-endpoints-table.html
+# https://docs.aws.amazon.com/sdkref/latest/guide/feature-ss-endpoints.html#ss-endpoints-envar
+get_service_endpoint <- function(profile = "", service_id = "") {
+  service_id <- gsub(" ", "_", service_id)
+  endpoint <- get_env(paste0("AWS_ENDPOINT_URL_", toupper(service_id)))
+  if (endpoint != "") {
+    return(endpoint)
+  }
+
+  endpoint <- check_config_file_endpoint(profile, tolower(service_id))
+  return(endpoint)
+}
+
+check_config_file_endpoint <- function(profile = "", service_id = "") {
+  config_path <- get_config_file_path()
+  if (is.null(config_path)) {
+    return(NULL)
+  }
+
+  profile_name <- get_profile_name(profile)
+  if (profile_name != "default") profile_name <- paste("profile", profile_name)
+
+  config_values <- read_ini(config_path)
+
+  if (is.null(config_values[[profile_name]])) {
+    return(NULL)
+  }
+
+  profile <- config_values[[profile_name]]
+
+  if (!("services" %in% names(profile))) {
+    return(NULL)
+  }
+
+  service_name <- profile[["services"]]
+  profile_service <- config_values[[paste("services", service_name)]][[service_id]]
+  if (is.null(profile_service)) {
+    return(NULL)
+  }
+
+  endpoint <- profile_service[["endpoint_url"]]
+  return(endpoint)
+}
+
 # Get the AWS role ARN to use.
 get_role_arn <- function(role_arn = "") {
   if (!is.null(role_arn) && role_arn != "") {

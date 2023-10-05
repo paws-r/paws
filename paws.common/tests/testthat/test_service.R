@@ -114,3 +114,34 @@ test_that("test custom config credentials take priority", {
   )
   expect_equal(service$config$credentials$profile, "cfgs_profile")
 })
+
+test_that("test service endpoint config file with service present", {
+  mock_get_config_file_path <- mock2("data_ini")
+  mockery::stub(check_config_file_endpoint, "get_config_file_path", mock_get_config_file_path)
+
+  endpoint <- check_config_file_endpoint("minio", "s3")
+  expect_equal(endpoint, "http://localhost:9000")
+})
+
+test_that("test service endpoint config file with service not present", {
+  mock_get_config_file_path <- mock2("data_ini")
+  mockery::stub(check_config_file_endpoint, "get_config_file_path", mock_get_config_file_path)
+
+  endpoint <- check_config_file_endpoint("minio", "ec2")
+  expect_null(endpoint)
+})
+
+test_that("test service endpoint environment variables", {
+  Sys.setenv(
+    "AWS_ENDPOINT_URL_BAR" = "http://localhost:9000",
+    "AWS_ENDPOINT_URL_BAZ_CHO" = "http://localhost:9090"
+  )
+
+  endpoint1 <- get_service_endpoint("foo", "bar")
+  endpoint2 <- get_service_endpoint("foo", "baz cho")
+
+  expect_equal(endpoint1, "http://localhost:9000")
+  expect_equal(endpoint2, "http://localhost:9090")
+
+  Sys.unsetenv(c("AWS_ENDPOINT_URL_BAR", "AWS_ENDPOINT_URL_BAZ_CHO"))
+})
