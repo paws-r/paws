@@ -117,7 +117,8 @@ new_service <- function(metadata, handlers, cfgs = NULL) {
   cfg <- client_config(
     service_name = metadata$service_name,
     endpoints = metadata$endpoints,
-    cfgs = cfgs
+    cfgs = cfgs,
+    service_id = metadata$service_id
   )
 
   signing_name <- metadata$signing_name

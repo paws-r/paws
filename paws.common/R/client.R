@@ -126,7 +126,7 @@ set_sts_signing_region <- function(sts_regional_endpoint, region) {
 }
 
 # client_config returns a ClientConfig configured for the service.
-client_config <- function(service_name, endpoints, cfgs) {
+client_config <- function(service_name, endpoints, cfgs, service_id) {
   s <- new_session()
   if (!is.null(cfgs)) {
     s$config <- cfgs
@@ -140,10 +140,15 @@ client_config <- function(service_name, endpoints, cfgs) {
     endpoint <- s$config$endpoint
     signing_region <- region
   } else {
-    sts_regional_endpoint <- s$config$sts_regional_endpoint
-    e <- resolver_endpoint(service_name, region, endpoints, sts_regional_endpoint)
-    endpoint <- e$endpoint
-    signing_region <- e$signing_region
+    endpoint <- get_service_endpoint(cfgs$credentials$profile, service_id)
+    if (!is.null(endpoint)) {
+      signing_region <- region
+    } else {
+      sts_regional_endpoint <- s$config$sts_regional_endpoint
+      e <- resolver_endpoint(service_name, region, endpoints, sts_regional_endpoint)
+      endpoint <- e$endpoint
+      signing_region <- e$signing_region
+    }
   }
   c <- ClientConfig(
     config = s$config,
