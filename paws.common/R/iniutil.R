@@ -21,7 +21,9 @@ read_ini <- function(file_name) {
   # In that case, length(content) is 0.  Don't loop
   # in such a case, since 'grepl(..., content[i])'
   # will return logical(0), causing the 'if' to error out
-  if (length(content) == 0) return(list())
+  if (length(content) == 0) {
+    return(list())
+  }
 
   # Get the profile name from an ini file
   rm_els <- grep("(^;)|(^\\s+;)|(^#)|(^\\s+#)", content, perl = TRUE)
@@ -34,7 +36,7 @@ read_ini <- function(file_name) {
   names(profiles) <- profile_nms
 
   start <- (found + 1)
-  end <- c(found[-1]-1,  length(content))
+  end <- c(found[-1] - 1, length(content))
   split_content <- strsplit(sub("=", "\n", content, fixed = T), "\n", fixed = T)
   nested_contents <- lengths(split_content) == 1
 
@@ -46,8 +48,7 @@ read_ini <- function(file_name) {
     } else {
       profiles[[i]] <- unlist(lapply(
         split_content[items], extract_ini_parameter
-      ), recursive = F
-      )
+      ), recursive = F)
     }
   }
   return(profiles)
@@ -56,7 +57,7 @@ read_ini <- function(file_name) {
 nested_ini_content <- function(sub_content, found_nested_content) {
   position <- which(found_nested_content)
   start <- (position + 1)
-  end <- c(position[-1]-1,  length(sub_content))
+  end <- c(position[-1] - 1, length(sub_content))
 
   profile_nms <- gsub("^[ \t\r\n]+|[ \t\r\n]+$", "", unlist(sub_content[position]), perl = T)
 
@@ -65,15 +66,13 @@ nested_ini_content <- function(sub_content, found_nested_content) {
 
   profiles <- unlist(lapply(
     sub_content[non_nest], extract_ini_parameter
-  ), recursive = F
-  )
+  ), recursive = F)
   for (i in seq_along(position)) {
     els <- seq.int(start[i], end[i])
     nest_content <- sub_content[els[!(els %in% sub_grp)]]
     profiles[[profile_nms[i]]] <- unlist(lapply(
       nest_content, extract_ini_parameter
-    ), recursive = F
-    )
+    ), recursive = F)
   }
   return(profiles)
 }
