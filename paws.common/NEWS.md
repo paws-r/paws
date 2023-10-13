@@ -1,3 +1,6 @@
+# paws.common 0.6.2.9000
+* minor performance improvement for `read_ini`
+
 # paws.common 0.6.2
 * fix how `read_ini` reads empty profiles from ini files
 * fix is.atomic behavior for R v4.4+
