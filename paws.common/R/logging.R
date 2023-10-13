@@ -13,22 +13,18 @@
 #' helper function \code{`paws_config_log`} or `R:base` \code{options} function.
 #' Users are able to change logging levels without calling \code{paws.common} by
 #' the use of \code{options} e.g. \code{options("paws.log_level" = 2L)}.
-#' \itemize{
-#'    \item{paws.log_level} {integer: The minimum log level that should be tracked}
-#'    \item{paws.log_file} {
-#'        character: path for logs to populate, default output logs to console.
-#'    }
-#'    \item{paws.log_timestamp_fmt} {character: see [format.POSIXct()]}
-#' }
-#' @param level integer to determine the level logging threshold.
-#' \itemize{
-#'     \item{4L :} {DEBUG}
-#'     \item{3L :} {INFO}
-#'     \item{2L :} {WARNING}
-#'     \item{1L :} {ERROR}
-#' }
-#' @param file character path for logs to populate, default output logs to console.
-#' @param timestamp_fmt character for timestamp format, see [format.POSIXct()].
+#' * `paws.log_level` (integer): The minimum log level that should be tracked
+#' * `paws.log_file` (character): path for logs to populate, default output logs to console.
+#' * `paws.log_timestamp_fmt` (character): see [format.POSIXct()]
+#'
+#' @param level (integer) to determine the level logging threshold.
+#' * `4L`: DEBUG
+#' * `3L`: INFO
+#' * `2L`: WARNING
+#' * `1L`: ERROR
+#'
+#' @param file (character) path for logs to populate, default output logs to console.
+#' @param timestamp_fmt (character) for timestamp format, see [format.POSIXct()].
 #' @examples
 #' # log to a file
 #' temp_file <- tempfile()
