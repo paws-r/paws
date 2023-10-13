@@ -1,10 +1,10 @@
 #' @include util.R
 
 # Get a parameter and its value
-extract_ini_parameter <- function(item) {
-  item <- gsub("^[ \t\r\n]+|[ \t\r\n]+$", "", item, perl = T)
-  parameter <- list(item[2])
-  names(parameter) <- item[1]
+extract_ini_parameter <- function(items) {
+  ii <- gsub("^[ \t\r\n]+|[ \t\r\n]+$", "", do.call(rbind, items), perl = T)
+  parameter <- as.list(ii[, 2])
+  names(parameter) <- ii[, 1]
   return(parameter)
 }
 
@@ -17,10 +17,8 @@ read_ini <- function(file_name) {
     scan(file_name, what = "", sep = "\n", quiet = T),
     perl = TRUE
   )
-  # An empty credentials file is valid when using SSO
-  # In that case, length(content) is 0.  Don't loop
-  # in such a case, since 'grepl(..., content[i])'
-  # will return logical(0), causing the 'if' to error out
+
+  # Return empty list for empty files
   if (length(content) == 0) {
     return(list())
   }
@@ -46,9 +44,7 @@ read_ini <- function(file_name) {
     if (any(found_nested_content)) {
       profiles[[i]] <- nested_ini_content(split_content[items], found_nested_content)
     } else {
-      profiles[[i]] <- unlist(lapply(
-        split_content[items], extract_ini_parameter
-      ), recursive = F)
+      profiles[[i]] <- extract_ini_parameter(split_content[items])
     }
   }
   return(profiles)
@@ -56,23 +52,27 @@ read_ini <- function(file_name) {
 
 nested_ini_content <- function(sub_content, found_nested_content) {
   position <- which(found_nested_content)
-  start <- (position + 1)
-  end <- c(position[-1] - 1, length(sub_content))
+  sub_grp <- grep("^[ ]+", do.call(rbind, sub_content)[, 1], invert = T)
+  profile_nms <- gsub(
+    "^[ \t\r\n]+|[ \t\r\n]+$", "",
+    do.call(rbind, sub_content[sub_grp])[, 1],
+    perl = T
+  )
+  profiles <- vector("list", length(profile_nms))
+  names(profiles) <- profile_nms
 
-  profile_nms <- gsub("^[ \t\r\n]+|[ \t\r\n]+$", "", unlist(sub_content[position]), perl = T)
+  non_nest <- !(sub_grp %in% position)
+  profiles[non_nest] <- gsub(
+    "^[ \t\r\n]+|[ \t\r\n]+$", "",
+    do.call(rbind, sub_content[sub_grp[non_nest]])[, 2],
+    perl = T
+  )
 
-  sub_grp <- which(!vapply(sub_content, function(x) grepl("^[ ]+", x[1]), logical(1)))
-  non_nest <- sub_grp[!sub_grp %in% position]
-
-  profiles <- unlist(lapply(
-    sub_content[non_nest], extract_ini_parameter
-  ), recursive = F)
-  for (i in seq_along(position)) {
-    els <- seq.int(start[i], end[i])
-    nest_content <- sub_content[els[!(els %in% sub_grp)]]
-    profiles[[profile_nms[i]]] <- unlist(lapply(
-      nest_content, extract_ini_parameter
-    ), recursive = F)
+  start <- (sub_grp + 1)
+  end <- c(sub_grp[-1] - 1, length(sub_content))
+  for (i in which(start <= end)) {
+    items <- seq.int(start[i], end[i])
+    profiles[[profile_nms[i]]] <- extract_ini_parameter(sub_content[items])
   }
   return(profiles)
 }
