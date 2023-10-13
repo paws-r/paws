@@ -11,17 +11,17 @@ paws_config_log(
 )
 }
 \arguments{
-\item{level}{integer to determine the level logging threshold.
+\item{level}{(integer) to determine the level logging threshold.
 \itemize{
-\item{4L :} {DEBUG}
-\item{3L :} {INFO}
-\item{2L :} {WARNING}
-\item{1L :} {ERROR}
+\item \code{4L}: DEBUG
+\item \code{3L}: INFO
+\item \code{2L}: WARNING
+\item \code{1L}: ERROR
 }}
 
-\item{file}{character path for logs to populate, default output logs to console.}
+\item{file}{(character) path for logs to populate, default output logs to console.}
 
-\item{timestamp_fmt}{character for timestamp format, see \code{\link[=format.POSIXct]{format.POSIXct()}}.}
+\item{timestamp_fmt}{(character) for timestamp format, see \code{\link[=format.POSIXct]{format.POSIXct()}}.}
 }
 \description{
 Ability to configure paws logging system, through the use of paws
@@ -29,11 +29,9 @@ helper function \code{`paws_config_log`} or \code{R:base} \code{options} functio
 Users are able to change logging levels without calling \code{paws.common} by
 the use of \code{options} e.g. \code{options("paws.log_level" = 2L)}.
 \itemize{
-\item{paws.log_level} {integer: The minimum log level that should be tracked}
-\item{paws.log_file} {
-character: path for logs to populate, default output logs to console.
-}
-\item{paws.log_timestamp_fmt} {character: see \code{\link[=format.POSIXct]{format.POSIXct()}}}
+\item \code{paws.log_level} (integer): The minimum log level that should be tracked
+\item \code{paws.log_file} (character): path for logs to populate, default output logs to console.
+\item \code{paws.log_timestamp_fmt} (character): see \code{\link[=format.POSIXct]{format.POSIXct()}}
 }
 }
 \examples{

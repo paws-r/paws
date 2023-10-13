@@ -39,19 +39,19 @@ creds(
 \arguments{
 \item{credentials}{\code{credentials()} or \code{list} is same format.
 \itemize{
-\item{\strong{creds}:} {\code{creds()} or \code{list} in same format.
+\item{\strong{creds}: \code{creds()} or \code{list} in same format.
 \itemize{
-\item{\strong{access_key_id}:} {AWS access key ID}
-\item{\strong{secret_access_key}:} {AWS secret access key}
-\item{\strong{session_token}:} {AWS temporary session token}
-\item{\strong{access_token}:} {The token issued by the \code{CreateToken} API call. For more information, see
+\item{\strong{access_key_id}: AWS access key ID}
+\item{\strong{secret_access_key}: AWS secret access key}
+\item{\strong{session_token}: AWS temporary session token}
+\item{\strong{access_token}: The token issued by the \code{CreateToken} API call. For more information, see
 \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
 in the \verb{IAM Identity Center OIDC API Reference Guide}.}
-\item{\strong{expiration}:} {The date and time when the temporary credentials expire.
+\item{\strong{expiration}: The date and time when the temporary credentials expire.
 \code{expiration} must be a \code{POSIXct} date-time or able to be compared with them.}
 }}
-\item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-\item{\strong{anonymous}:} {Set anonymous credentials.}
+\item{\strong{profile}: The name of a profile to use. If not given, then the default profile is used.}
+\item{\strong{anonymous}: Set anonymous credentials.}
 }}
 
 \item{endpoint}{The complete URL to use for the constructed client.}
@@ -76,13 +76,13 @@ Note that the default version is Signature Version 4.}
 
 \item{creds}{\code{creds()} or \code{list} in same format.
 \itemize{
-\item{\strong{access_key_id}:} {AWS access key ID}
-\item{\strong{secret_access_key}:} {AWS secret access key}
-\item{\strong{session_token}:} {AWS temporary session token}
-\item{\strong{access_token}:} {The token issued by the \code{CreateToken} API call. For more information, see
+\item{\strong{access_key_id}: AWS access key ID}
+\item{\strong{secret_access_key}: AWS secret access key}
+\item{\strong{session_token}: AWS temporary session token}
+\item{\strong{access_token}: The token issued by the \code{CreateToken} API call. For more information, see
 \href{https://docs.aws.amazon.com/singlesignon/latest/OIDCAPIReference/API_CreateToken.html}{CreateToken}
 in the \verb{IAM Identity Center OIDC API Reference Guide}.}
-\item{\strong{expiration}:} {The date and time when the temporary credentials expire.
+\item{\strong{expiration}: The date and time when the temporary credentials expire.
 \code{expiration} must be a \code{POSIXct} date-time or able to be compared with them.}
 }}
 
