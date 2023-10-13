@@ -1,4 +1,4 @@
-# paws.common 0.6.1.9000
+# paws.common 0.6.2
 * fix how `read_ini` reads empty profiles from ini files
 * fix is.atomic behavior for R v4.4+
 * support service specific endpoints (#667). Thanks to @dpprdan for raising ticket and testing methods
