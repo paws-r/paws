@@ -1,8 +1,15 @@
 #' @include util.R
 
 # Get a parameter and its value
-extract_ini_parameter <- function(items) {
+extract_ini_parameter_list <- function(items) {
   ii <- gsub("^[ \t\r\n]+|[ \t\r\n]+$", "", do.call(rbind, items), perl = T)
+  parameter <- as.list(ii[, 2])
+  names(parameter) <- ii[, 1]
+  return(parameter)
+}
+
+extract_ini_parameter_matrix <- function(items) {
+  ii <- gsub("^[ \t\r\n]+|[ \t\r\n]+$", "", items, perl = T)
   parameter <- as.list(ii[, 2])
   names(parameter) <- ii[, 1]
   return(parameter)
@@ -44,35 +51,35 @@ read_ini <- function(file_name) {
     if (any(found_nested_content)) {
       profiles[[i]] <- nested_ini_content(split_content[items], found_nested_content)
     } else {
-      profiles[[i]] <- extract_ini_parameter(split_content[items])
+      profiles[[i]] <- extract_ini_parameter_list(split_content[items])
     }
   }
   return(profiles)
 }
 
 nested_ini_content <- function(sub_content, found_nested_content) {
-  position <- which(found_nested_content)
-  sub_grp <- grep("^[ ]+", do.call(rbind, sub_content)[, 1], invert = T)
+  sub_content <- do.call(rbind, sub_content)
+  sub_grp <- grep("^[ ]+", sub_content[, 1], invert = T)
   profile_nms <- gsub(
-    "^[ \t\r\n]+|[ \t\r\n]+$", "",
-    do.call(rbind, sub_content[sub_grp])[, 1],
+    "^[ \t\r\n]+|[ \t\r\n]+$", "", sub_content[sub_grp],
     perl = T
   )
   profiles <- vector("list", length(profile_nms))
   names(profiles) <- profile_nms
 
+  position <- which(found_nested_content)
   non_nest <- !(sub_grp %in% position)
   profiles[non_nest] <- gsub(
     "^[ \t\r\n]+|[ \t\r\n]+$", "",
-    do.call(rbind, sub_content[sub_grp[non_nest]])[, 2],
+    sub_content[sub_grp[non_nest], 2],
     perl = T
   )
 
   start <- (sub_grp + 1)
-  end <- c(sub_grp[-1] - 1, length(sub_content))
+  end <- c(sub_grp[-1] - 1, nrow(sub_content))
   for (i in which(start <= end)) {
     items <- seq.int(start[i], end[i])
-    profiles[[profile_nms[i]]] <- extract_ini_parameter(sub_content[items])
+    profiles[[profile_nms[i]]] <- extract_ini_parameter_matrix(sub_content[items,,drop = F])
   }
   return(profiles)
 }
