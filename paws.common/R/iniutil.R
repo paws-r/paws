@@ -11,7 +11,11 @@ read_ini <- function(file_name) {
   if (!file.exists(file_name)) {
     stopf("Unable to find file: %s", file_name)
   }
-  content <- scan(file_name, what = "", sep = "\n", quiet = T)
+  content <- sub(
+    "[ \t\r\n]+$", "",
+    scan(file_name, what = "", sep = "\n", quiet = T),
+    perl = TRUE
+  )
   # Return empty list for empty files
   if (length(content) == 0) {
     return(list())
