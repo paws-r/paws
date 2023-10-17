@@ -25,7 +25,8 @@ read_ini <- function(file_name) {
   )
   # Return empty list for empty files
   if (length(content) == 0) {
-    return(list())
+    ini_cache[[file_name]] <- list()
+    return(ini_cache[[file_name]])
   }
 
   # Get the profile name from an ini file
