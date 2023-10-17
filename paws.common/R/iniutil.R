@@ -1,5 +1,7 @@
 #' @include util.R
 
+ini_cache <- new.env(parent = emptyenv())
+
 # Get a parameter and its value
 extract_ini_parameter <- function(items) {
   parameter <- as.list.default(items[, 2])
@@ -11,6 +13,11 @@ read_ini <- function(file_name) {
   if (!file.exists(file_name)) {
     stopf("Unable to find file: %s", file_name)
   }
+
+  if (file_name %in% names(ini_cache)) {
+    return(ini_cache[[file_name]])
+  }
+
   content <- sub(
     "[ \t\r\n]+$", "",
     scan(file_name, what = "", sep = "\n", quiet = T),
@@ -18,7 +25,8 @@ read_ini <- function(file_name) {
   )
   # Return empty list for empty files
   if (length(content) == 0) {
-    return(list())
+    ini_cache[[file_name]] <- list()
+    return(ini_cache[[file_name]])
   }
 
   # Get the profile name from an ini file
@@ -53,6 +61,7 @@ read_ini <- function(file_name) {
       profiles[[i]] <- extract_ini_parameter(split_content[items,,drop = FALSE])
     }
   }
+  ini_cache[[file_name]] <- profiles
   return(profiles)
 }
 
