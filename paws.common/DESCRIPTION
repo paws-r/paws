@@ -39,6 +39,7 @@ Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 7.2.3
 Collate:
     'RcppExports.R'
+    'cache.R'
     'util.R'
     'struct.R'
     'handlers.R'

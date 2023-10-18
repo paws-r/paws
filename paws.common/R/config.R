@@ -1,3 +1,5 @@
+#' @include cache.R
+#' @include util.R
 #' @include iniutil.R
 NULL
 
@@ -243,7 +245,7 @@ get_instance_metadata <- function(query_path = "") {
 # NOTE: Does not work on Windows.
 get_os_env <- function(var) {
   if (.Platform$OS.type == "unix") {
-    value <- system(sprintf("echo $%s", var), intern = T)
+    value <- os_env_cache[[var]] %||% ""
   } else {
     value <- "" # Not implemented on Windows.
   }

@@ -1,6 +1,7 @@
 # paws.common 0.6.2.9000
 * minor performance improvement for `read_ini`
 * cache `read_ini` for improved performance
+* cache unix os environment variables to improve performance on unix systems.
 
 # paws.common 0.6.2
 * fix how `read_ini` reads empty profiles from ini files

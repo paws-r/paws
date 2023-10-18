@@ -1,6 +1,5 @@
+#' @include cache.R
 #' @include util.R
-
-ini_cache <- new.env(parent = emptyenv())
 
 # Get a parameter and its value
 extract_ini_parameter <- function(items) {
