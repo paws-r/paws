@@ -1,6 +1,5 @@
+#' @include cache.R
 #' @include util.R
-
-ini_cache <- new.env(parent = emptyenv())
 
 # Get a parameter and its value
 extract_ini_parameter <- function(items) {
@@ -14,8 +13,8 @@ read_ini <- function(file_name) {
     stopf("Unable to find file: %s", file_name)
   }
 
-  if (file_name %in% names(ini_cache)) {
-    return(ini_cache[[file_name]])
+  if (!is.null(profiles <- ini_cache[[file_name]])) {
+    return(profiles)
   }
 
   content <- sub(
@@ -55,10 +54,10 @@ read_ini <- function(file_name) {
     found_nested_content <- nested_contents[items]
     if (any(found_nested_content)) {
       profiles[[i]] <- nested_ini_content(
-        split_content[items,,drop = FALSE], found_nested_content, which(sub_grps[items])
+        split_content[items, , drop = FALSE], found_nested_content, which(sub_grps[items])
       )
     } else {
-      profiles[[i]] <- extract_ini_parameter(split_content[items,,drop = FALSE])
+      profiles[[i]] <- extract_ini_parameter(split_content[items, , drop = FALSE])
     }
   }
   ini_cache[[file_name]] <- profiles
@@ -78,7 +77,7 @@ nested_ini_content <- function(sub_content, found_nested_content, sub_grp) {
   end <- c(sub_grp[-1] - 1, nrow(sub_content))
   for (i in which(start <= end)) {
     items <- seq.int(start[i], end[i])
-    profiles[[profile_nms[i]]] <- extract_ini_parameter(sub_content[items,,drop = F])
+    profiles[[profile_nms[i]]] <- extract_ini_parameter(sub_content[items, , drop = F])
   }
   return(profiles)
 }
