@@ -56,6 +56,7 @@
     - lakeformation
     - memorydb
     - neptune
+    - neptunedata
     - qldb
     - qldb-session
     - rds
@@ -187,6 +188,7 @@
     - autoscaling-plans
     - cloudformation
     - cloudtrail
+    - cloudtrail-data
     - config
     - events
     - evidently
@@ -211,6 +213,7 @@
     - ssm
     - ssm-contacts
     - ssm-incidents
+    - ssm-sap
     - support
     - synthetics
   title: "'Amazon Web Services' Management & Governance Services"
@@ -243,7 +246,6 @@
 
 - name: machine.learning
   services:
-    - sagemaker-a2i-runtime
     - comprehend
     - comprehendmedical
     - elastic-inference
@@ -264,13 +266,18 @@
     - polly
     - rekognition
     - sagemaker
+    - sagemaker-a2i-runtime
     - sagemaker-edge
     - sagemaker-featurestore-runtime
+    - sagemaker-geospatial
+    - sagemaker-metrics
     - runtime.sagemaker
     - textract
     - transcribe
     - translate
     - voice-id
+    - bedrock
+    - bedrock-runtime
   title: "'Amazon Web Services' Machine Learning Services"
   description: >-
     Interface to 'Amazon Web Services' machine learning services, including
@@ -294,6 +301,7 @@
     - kafka
     - kafkaconnect
     - kendra
+    - kendra-ranking
     - kinesis
     - kinesisanalytics
     - kinesisanalyticsv2
@@ -318,6 +326,7 @@
     - cognito-identity
     - cognito-idp
     - cognito-sync
+    - codeguru-security
     - detective
     - ds
     - fms
@@ -333,6 +342,7 @@
     - rolesanywhere
     - secretsmanager
     - securityhub
+    - securitylake
     - shield
     - sso
     - sso-admin
@@ -402,6 +412,8 @@
     - meteringmarketplace
     - pricing
     - savingsplans
+    - payment-cryptography
+    - payment-cryptography-data
   title: "'Amazon Web Services' Cost Management Services"
   description: >-
     Interface to 'Amazon Web Services' cost management services, including
@@ -436,6 +448,7 @@
     - chime-sdk-media-pipelines
     - chime-sdk-meetings
     - chime-sdk-messaging
+    - chime-sdk-voice
     - lookoutvision
     - outposts
     - workmail

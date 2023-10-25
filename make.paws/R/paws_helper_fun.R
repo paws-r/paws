@@ -61,3 +61,14 @@ paws_service_param_fn <- function(dir = "../paws.common") {
   writeLines(r_file, file.path(dir, "R", "service_parameter_helper.R"))
   roxygen2::roxygenise(dir)
 }
+
+#' @title lists new services from AWS
+#' @param in_dir Directory containing AWS API input files.
+#' @export
+paws_new_services <- function(in_dir = "../vendor/aws-sdk-js") {
+  existing_apis <- yaml::read_yaml(system.file("extdata/packages.yml", package = "make.paws"))
+  existing_apis <- unlist(lapply(existing_apis, \(x) x$services))
+  
+  new_apis <- list_apis(file.path(in_dir, "apis"))
+  return(setdiff(new_apis, existing_apis))
+}
