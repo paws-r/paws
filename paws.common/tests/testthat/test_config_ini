@@ -1,0 +1,17 @@
+[default]
+credential_process = echo '{"Version":[1],"AccessKeyId":["defaultId"],"SecretAccessKey":["defaultSecret"]}'
+
+[profile p1]
+role_arn = arn:aws:iam::p1_role
+role_session_name = p1_role_session
+credential_source = Environment
+
+[profile p2]
+role_arn = arn:aws:iam::p2_role
+role_session_name = p2_role_session
+web_identity_token_file = test_config_webtoken
+
+[profile p3]
+role_arn = arn:aws:iam::p3_role
+role_session_name = p3_role_session
+source_profile = p2

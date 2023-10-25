@@ -67,37 +67,51 @@ test_that("set_config", {
 })
 
 test_that("get_profile_name", {
-  Sys.setenv(AWS_PROFILE = "bar")
-  expect_equal(get_profile_name(), "bar")
-  expect_equal(get_profile_name(NULL), "bar")
-  expect_equal(get_profile_name("foo"), "foo")
+  withr::with_envvar(list(AWS_PROFILE="bar"), {
+    expect_equal(get_profile_name(), "bar")
+    expect_equal(get_profile_name(NULL), "bar")
+    expect_equal(get_profile_name("foo"), "foo")
+  })
 })
 
 test_that("get_region", {
-  Sys.setenv(AWS_REGION = "foo")
-  expect_equal(get_region(), "foo")
-  expect_equal(get_region(NULL), "foo")
+  withr::with_envvar(list(AWS_REGION = "foo"), {
+    expect_equal(get_region(), "foo")
+    expect_equal(get_region(NULL), "foo")
+  })
 })
 
 test_that("get_role_arn", {
-  Sys.setenv(AWS_ROLE_ARN = "bar")
-  expect_equal(get_role_arn(), "bar")
-  expect_equal(get_role_arn(NULL), "bar")
-  expect_equal(get_role_arn("foo"), "foo")
+  withr::with_envvar(list(AWS_ROLE_ARN = "bar"), {
+    expect_equal(get_role_arn(), "bar")
+    expect_equal(get_role_arn(NULL), "bar")
+    expect_equal(get_role_arn("foo"), "foo")
+  })
 })
 
 test_that("get_role_session_name", {
-  Sys.setenv(AWS_ROLE_SESSION_NAME = "bar")
-  expect_equal(get_role_session_name(), "bar")
-  expect_equal(get_role_session_name(NULL), "bar")
-  expect_equal(get_role_session_name("foo"), "foo")
+  withr::with_envvar(list(AWS_ROLE_SESSION_NAME = "bar"), {
+    expect_equal(get_role_session_name(), "bar")
+    expect_equal(get_role_session_name(NULL), "bar")
+    expect_equal(get_role_session_name("foo"), "foo")
+  })
 })
 
 test_that("get_web_identity_token_file", {
-  Sys.setenv(AWS_WEB_IDENTITY_TOKEN_FILE = "bar")
-  expect_equal(get_web_identity_token_file(), "bar")
-  expect_equal(get_web_identity_token_file(NULL), "bar")
-  expect_equal(get_web_identity_token_file("foo"), "foo")
+  expect_error(get_web_identity_token_file(), "No WebIdentityToken file available")
+
+  withr::with_envvar(list(AWS_WEB_IDENTITY_TOKEN_FILE = "bar"), {
+    expect_equal(get_web_identity_token_file(), "bar")
+    expect_equal(get_web_identity_token_file(NULL), "bar")
+    expect_equal(get_web_identity_token_file("foo"), "foo")
+  })
+})
+
+test_that("get_web_identity_token", {
+  withr::with_tempfile("tmp", {
+    write("token", tmp)
+    expect_equal(get_web_identity_token(tmp), "token")
+  })
 })
 
 test_that("get_instance_metadata_imdsv1", {
@@ -466,10 +480,10 @@ test_that("check for invalid token, missing expiresAt", {
 })
 
 test_that("check sts regional from environment", {
-  Sys.setenv("AWS_STS_REGIONAL_ENDPOINTS" = "regional")
-  actual <- get_sts_regional_endpoint()
-  expect_equal(actual, "regional")
-  Sys.unsetenv("AWS_STS_REGIONAL_ENDPOINTS")
+  withr::with_envvar(list(AWS_STS_REGIONAL_ENDPOINTS = "regional"), {
+    actual <- get_sts_regional_endpoint()
+    expect_equal(actual, "regional")
+  })
 })
 
 test_that("check sts regional from config file", {
