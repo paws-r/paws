@@ -75,10 +75,10 @@ test_that("config_file_provider", {
   withr::with_envvar(envvars, {
     # Test missing profile
     expect_null(config_file_provider("invalidProfile"))
-    
+
     # Test default profile using credential_process
     expect_equal(config_file_provider(), creds$default)
-    
+
     # Test profile using environment credential_source
     mock_get_assumed_role_creds <- mock2(creds$p1)
     local_mocked_bindings(
@@ -92,7 +92,7 @@ test_that("config_file_provider", {
                  creds$env$access_key_id)
     expect_equal(mock_arg(mock_get_assumed_role_creds)[[4]]$secret_access_key,
                  creds$env$secret_access_key)
-    
+
     # Test profile using web_identity_token
     mock_web_identity_creds <- mock2(creds$p2)
     local_mocked_bindings(
@@ -105,18 +105,18 @@ test_that("config_file_provider", {
     ))
 
     # Test profile using source_profile
-    mock_get_web_identity_creds <- mock2(profile_creds$p2)
-    mock_get_assumed_role_creds <- mock2(profile_creds$p3)
+    mock_get_web_identity_creds <- mock2(creds$p2)
+    mock_get_assumed_role_creds <- mock2(creds$p3)
     local_mocked_bindings(
       get_assume_role_with_web_identity_creds = mock_get_web_identity_creds,
       get_assumed_role_creds = mock_get_assumed_role_creds
     )
-    expect_equal(config_file_provider("p3"), profile_creds$p3)
+    expect_equal(config_file_provider("p3"), creds$p3)
     expect_equal(mock_arg(mock_get_web_identity_creds), list(
       "arn:aws:iam::p2_role", "p2_role_session", "webtoken_for_p2"
     ))
     expect_equal(mock_arg(mock_get_assumed_role_creds), list(
-      "arn:aws:iam::p3_role", "p3_role_session", NULL, profile_creds$p2
+      "arn:aws:iam::p3_role", "p3_role_session", NULL, creds$p2
     ))
   })
 })
