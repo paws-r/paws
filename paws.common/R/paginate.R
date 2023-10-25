@@ -152,7 +152,7 @@ paginate_update_fn <- function(
     fn,
     PageSize = NULL,
     StartingToken = NULL) {
-  fn_call <- eval(fn[[1]], envir = parent.frame())
+  fn_call <- eval(fn[[1]], envir = parent.frame(n = 2))
   pkg_name <- environmentName(environment(fn_call))
 
   # Ensure method can be found.
@@ -239,7 +239,7 @@ paginate_xapply <- function(
   no_items <- 0
   result <- list()
   while (!identical(fn[[paginator$input_token[[1]]]], character(0))) {
-    resp <- eval(fn, envir = parent.frame())
+    resp <- eval(fn, envir = parent.frame(n = 2))
     new_tokens <- get_tokens(resp, paginator$output_token)
     for (i in seq_along(new_tokens)) {
       fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]
