@@ -455,7 +455,7 @@ default_parse_scalar <- function(interface_i, tag_type = NULL) {
     double = xml_scalar_default(interface_i, numeric()),
     long = xml_scalar_default(interface_i, numeric()),
     float = xml_scalar_default(interface_i, numeric()),
-    timestamp = xml_scalar_default(interface_i, as.POSIXct(NULL)),
+    timestamp = xml_scalar_default(interface_i, .POSIXct(numeric())),
     boolean = xml_scalar_default(interface_i, logical()),
     xml_scalar_default(interface_i, character())
   )
