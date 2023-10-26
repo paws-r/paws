@@ -43,7 +43,7 @@ paginate <- function(Operation,
   fn <- substitute(Operation)
   # rebuild fn for do.call
   if (identical(fn[[1]], .do_call)) {
-    kwargs <- eval(fn[[3]])
+    kwargs <- eval(fn[[3]], envir = parent.frame())
     fn <- fn[2]
     for (key in names(kwargs)) {
       fn[key] <- kwargs[[key]]
@@ -57,7 +57,7 @@ paginate <- function(Operation,
   no_items <- 0
   result <- list()
   while (!identical(fn[[paginator$input_token[[1]]]], character(0))) {
-    resp <- eval(fn)
+    resp <- eval(fn, envir = parent.frame())
     new_tokens <- get_tokens(resp, paginator$output_token)
     for (i in seq_along(new_tokens)) {
       fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]
@@ -93,7 +93,7 @@ paginate_lapply <- function(Operation,
 
   # rebuild fn for do.call
   if (identical(fn[[1]], .do_call)) {
-    kwargs <- eval(fn[[3]])
+    kwargs <- eval(fn[[3]], envir = parent.frame())
     fn <- fn[2]
     for (key in names(kwargs)) {
       fn[key] <- kwargs[[key]]
@@ -125,7 +125,7 @@ paginate_sapply <- function(Operation,
 
   # rebuild fn for do.call
   if (identical(fn[[1]], .do_call)) {
-    kwargs <- eval(fn[[3]])
+    kwargs <- eval(fn[[3]], envir = parent.frame())
     fn <- fn[2]
     for (key in names(kwargs)) {
       fn[key] <- kwargs[[key]]
@@ -152,7 +152,7 @@ paginate_update_fn <- function(
     fn,
     PageSize = NULL,
     StartingToken = NULL) {
-  fn_call <- eval(fn[[1]])
+  fn_call <- eval(fn[[1]], envir = parent.frame(n = 2))
   pkg_name <- environmentName(environment(fn_call))
 
   # Ensure method can be found.
@@ -188,7 +188,7 @@ paginate_update_fn <- function(
 
   return(list(
     fn = fn,
-    paginator = eval(paginator)
+    paginator = eval(paginator, envir = parent.frame())
   ))
 }
 
@@ -239,7 +239,7 @@ paginate_xapply <- function(
   no_items <- 0
   result <- list()
   while (!identical(fn[[paginator$input_token[[1]]]], character(0))) {
-    resp <- eval(fn)
+    resp <- eval(fn, envir = parent.frame(n = 2))
     new_tokens <- get_tokens(resp, paginator$output_token)
     for (i in seq_along(new_tokens)) {
       fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]

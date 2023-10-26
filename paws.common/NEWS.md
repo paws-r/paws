@@ -3,7 +3,8 @@
 * cache `read_ini` for improved performance
 * cache unix os environment variables to improve performance on unix systems.
 * support `web_identity_token_file` in AWS config file thanks to @liuquinlin for implementation.
-* fix `NULL` method `as.POSIXct.default` for older versions of R
+* fix paginate functions failing to receive argument inputs when called within a function (#696). Thanks to @fh-mthomson for identifying issue.
+* fix `NULL` method `as.POSIXct.default` for older versions of R (#698). Thanks to @gp-dev-pw for identifying issue
 
 # paws.common 0.6.2
 * fix how `read_ini` reads empty profiles from ini files
