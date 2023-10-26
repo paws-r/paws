@@ -32,6 +32,7 @@ Suggests:
     covr,
     crayon,
     mockery,
+    withr,
     rstudioapi,
     testthat
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
