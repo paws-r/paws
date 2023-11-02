@@ -35,6 +35,7 @@
     - finspace-data
     - fsx
     - glacier
+    - omics
     - rbin
     - s3
     - s3control
@@ -49,6 +50,7 @@
   services:
     - dax
     - docdb
+    - docdb-elastic
     - dynamodb
     - streams.dynamodb
     - elasticache
@@ -76,17 +78,19 @@
 - name: migration
   services:
     - appflow
-    - discovery
     - appintegrations
-    - dms
+    - cleanrooms
     - dataexchange
     - datasync
+    - discovery
+    - dms
     - importexport
     - m2
     - mgn
     - AWSMigrationHub
     - migrationhub-config
     - migration-hub-refactor-spaces
+    - migrationhuborchestrator
     - migrationhubstrategy
     - sms
     - snowball
@@ -103,7 +107,9 @@
     - apigateway
     - apigatewaymanagementapi
     - apigatewayv2
+    - appfabric
     - appmesh
+    - arc-zonal-shift
     - backup-gateway
     - cloudfront
     - directconnect
@@ -119,6 +125,8 @@
     - route53-recovery-readiness
     - route53resolver
     - servicediscovery
+    - tnb
+    - vpc-lattice
   title: "'Amazon Web Services' Networking & Content Delivery Services"
   description: >-
     Interface to 'Amazon Web Services' networking and content delivery services,
@@ -132,6 +140,7 @@
     - codebuild
     - codeartifact
     - codecommit
+    - codecatalyst
     - codedeploy
     - codeguruprofiler
     - codeguru-reviewer
@@ -162,6 +171,7 @@
 - name: blockchain
   services:
     - managedblockchain
+    - managedblockchain-query
   title: "'Amazon Web Services' Blockchain Services"
   description: >-
     Interface to 'Amazon Web Services' blockchain services, including
@@ -190,6 +200,7 @@
     - cloudtrail
     - cloudtrail-data
     - config
+    - controltower
     - events
     - evidently
     - finspace
@@ -197,8 +208,11 @@
     - health
     - license-manager
     - license-manager-user-subscriptions
+    - license-manager-linux-subscriptions
     - logs
+    - internetmonitor
     - monitoring
+    - oam
     - opsworks
     - opsworkscm
     - organizations
@@ -215,6 +229,7 @@
     - ssm-incidents
     - ssm-sap
     - support
+    - support-app
     - synthetics
   title: "'Amazon Web Services' Management & Governance Services"
   description: >-
@@ -230,10 +245,12 @@
     - kinesis-video-archived-media
     - kinesis-video-media
     - kinesis-video-signaling
+    - kinesis-video-webrtc-storage
     - mediaconnect
     - mediaconvert
     - medialive
     - mediapackage
+    - mediapackagev2
     - mediapackage-vod
     - mediastore
     - mediastore-data
@@ -291,6 +308,7 @@
     - cloudsearch
     - cloudsearchdomain
     - datapipeline
+    - datazone
     - es
     - elasticmapreduce
     - firehose
@@ -298,6 +316,7 @@
     - databrew
     - healthlake
     - ivs
+    - ivs-realtime
     - kafka
     - kafkaconnect
     - kendra
@@ -307,6 +326,8 @@
     - kinesisanalyticsv2
     - mturk-requester
     - opensearch
+    - opensearchserverless
+    - osis
     - quicksight
   title: "'Amazon Web Services' Analytics Services"
   description: >-
@@ -338,6 +359,7 @@
     - kms
     - macie
     - macie2
+    - pca-connector-ad
     - ram
     - rolesanywhere
     - secretsmanager
@@ -348,6 +370,7 @@
     - sso-admin
     - sso-oidc
     - sts
+    - verifiedpermissions
     - waf
     - waf-regional
     - wafv2
@@ -388,11 +411,15 @@
     - location
     - mq
     - mwaa
+    - pipes
+    - resource-explorer-2
     - schemas
+    - scheduler
     - states
     - sns
     - sqs
     - swf
+    - simspaceweaver
   title: "'Amazon Web Services' Application Integration Services"
   description: >-
     Interface to 'Amazon Web Services' application integration services,
@@ -424,16 +451,19 @@
   services:
     - connect
     - connectcampaigns
+    - connectcases
     - connect-contact-lens
     - connectparticipant
+    - email
+    - entityresolution
     - wisdom
     - customer-profiles
     - pinpoint
     - pinpoint-email
-    - sms-voice
     - pinpoint-sms-voice-v2
-    - email
+    - medical-imaging
     - sesv2
+    - sms-voice
   title: "'Amazon Web Services' Customer Engagement Services"
   description: >-
     Interface to 'Amazon Web Services' customer engagement services, including
@@ -488,7 +518,9 @@
     - iotevents
     - iotevents-data
     - iotfleethub
+    - iotfleetwise
     - iot-jobs-data
+    - iot-roborunner
     - iotsecuretunneling
     - iotsitewise
     - iotthingsgraph
