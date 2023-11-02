@@ -2,6 +2,8 @@
 * minor performance improvement for `read_ini`
 * cache `read_ini` for improved performance
 * cache unix os environment variables to improve performance on unix systems.
+* support `web_identity_token_file` in AWS config file thanks to @liuquinlin for implementation.
+* fix paginate functions failing to receive argument inputs when called within a function (#696). Thanks to @fh-mthomson for identifying issue.
 
 # paws.common 0.6.2
 * fix how `read_ini` reads empty profiles from ini files
