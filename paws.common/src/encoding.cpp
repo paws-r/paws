@@ -74,8 +74,6 @@ CharacterVector paws_url_encoder(CharacterVector urls, CharacterVector safe = ""
   CharacterVector output(input_size);
   std::string safe_pattern = Rcpp::as<std::string>(safe);
   std::string holding;
-  size_t scheme_start;
-  size_t first_slash;
 
   //For each string..
   for (int i = 0; i < input_size; ++i){
@@ -90,19 +88,7 @@ CharacterVector paws_url_encoder(CharacterVector urls, CharacterVector safe = ""
     } else {
       holding = Rcpp::as<std::string>(urls[i]);
 
-      //Extract the protocol. If you can't find it, just encode the entire thing.
-      scheme_start = holding.find("://");
-      if(scheme_start == std::string::npos){
-        output[i] = internal_url_encode(holding, safe_pattern);
-      } else {
-        //Otherwise, split out the protocol and encode !protocol.
-        first_slash = holding.find("/", scheme_start+3);
-        if(first_slash == std::string::npos){
-          output[i] = holding.substr(0,scheme_start+3) + internal_url_encode(holding.substr(scheme_start+3), safe_pattern);
-        } else {
-          output[i] = holding.substr(0,first_slash+1) + internal_url_encode(holding.substr(first_slash+1), safe_pattern);
-        }
-      }
+      output[i] = internal_url_encode(holding, safe_pattern);
     }
   }
 

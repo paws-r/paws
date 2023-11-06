@@ -33,6 +33,8 @@ test_that("check if encoded url is correctly decoded", {
   url <- paste0(sample(strsplit(string, "")[[1]], 1e4, replace = T), collapse = "")
   url_encode <- paws_url_encoder(url)
   actual <- unescape(url_encode)
+
+  expect_equal(url_encode, curl::curl_escape(url))
   expect_equal(actual, url)
 })
 
@@ -43,5 +45,6 @@ test_that("check if non-encoded url is correctly decoded", {
   url_encode <- paws_url_encoder(url)
   actual <- unescape(url_encode)
 
+  expect_equal(url_encode, curl::curl_escape(url))
   expect_equal(actual, url)
 })

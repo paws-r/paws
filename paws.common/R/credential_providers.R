@@ -142,7 +142,9 @@ config_file_provider <- function(profile = "") {
       return(creds)
     }
   }
-  if ("role_arn" %in% names(profile)) {
+  profile_nms <- names(profile)
+
+  if ("role_arn" %in% profile_nms) {
     role_arn <- profile$role_arn
     role_session_name <- profile$role_session_name
     if (is.null(role_session_name)) {
@@ -151,16 +153,27 @@ config_file_provider <- function(profile = "") {
     }
     mfa_serial <- profile$mfa_serial
 
-    if ("credential_source" %in% names(profile)) {
+    if ("credential_source" %in% profile_nms) {
       credential_source <- profile$credential_source
       creds <- config_file_credential_source(role_arn, role_session_name, mfa_serial, credential_source)
       if (!is.null(creds)) {
         return(creds)
       }
     }
-    if ("source_profile" %in% names(profile)) {
+    if ("source_profile" %in% profile_nms) {
       source_profile <- profile$source_profile
       creds <- config_file_source_profile(role_arn, role_session_name, mfa_serial, source_profile)
+      if (!is.null(creds)) {
+        return(creds)
+      }
+    }
+
+    # Get web_identity_token
+    # https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-role.html#cli-configure-role-oidc
+    if ("web_identity_token_file" %in% profile_nms) {
+      web_identity_token_file <- profile$web_identity_token_file
+      web_identity_token <- get_web_identity_token(web_identity_token_file)
+      creds <- get_assume_role_with_web_identity_creds(role_arn, role_session_name, web_identity_token)
       if (!is.null(creds)) {
         return(creds)
       }
@@ -440,7 +453,7 @@ get_container_credentials_eks <- function() {
   credentials_list <- get_assume_role_with_web_identity_creds(
     role_arn = get_role_arn(),
     role_session_name = get_role_session_name(),
-    web_identity_token = readLines(get_web_identity_token_file(), warn = FALSE)
+    web_identity_token = get_web_identity_token()
   )
 
   return(credentials_list)

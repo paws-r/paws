@@ -393,6 +393,11 @@ get_web_identity_token_file <- function(web_identity_token_file = "") {
   return(web_identity_token_file)
 }
 
+# Get the Web Identity Token from reading the token file
+get_web_identity_token <- function(web_identity_token_file = "") {
+  return(readLines(get_web_identity_token_file(web_identity_token_file), warn = FALSE))
+}
+
 # Check if sts_regional_endpoint is present in config file
 check_config_file_sts_regional_endpoint <- function(profile = "") {
   config_path <- get_config_file_path()
