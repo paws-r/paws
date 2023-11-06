@@ -19,7 +19,7 @@ read_ini <- function(file_name) {
 
   content <- sub(
     "[ \t\r\n]+$", "",
-    scan(file_name, what = "", sep = "\n", quiet = T),
+    scan(file_name, what = "", sep = "\n", quiet = TRUE),
     perl = TRUE
   )
   # Return empty list for empty files
@@ -46,9 +46,9 @@ read_ini <- function(file_name) {
   split_content <- strsplit(sub("=", "\n", content, fixed = T), "\n", fixed = T)
   nested_contents <- lengths(split_content) == 1
 
-  split_content <- sub("[ \t\r\n]+$", "", do.call(rbind, split_content), perl = T)
+  split_content <- sub("[ \t\r\n]+$", "", do.call(rbind, split_content), perl = TRUE)
   sub_grps <- !grepl("^[ ]+", split_content[, 1])
-  split_content <- sub("^[ \t\r]+", "", split_content, perl = T)
+  split_content <- sub("^[ \t\r]+", "", split_content, perl = TRUE)
   for (i in which(start <= end)) {
     items <- seq.int(start[i], end[i])
     found_nested_content <- nested_contents[items]
