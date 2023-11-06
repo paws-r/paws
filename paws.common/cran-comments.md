@@ -1,5 +1,5 @@
 ## Submission
-This release contains minor bug fixes and fixes cran issue
+This release contains performance improvements
 
 ## Test environments
 
