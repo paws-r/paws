@@ -6,7 +6,7 @@ set_os_env_cache <- function() {
   env <- system("printenv", intern = T)
   # exit if no environment variables can be found
   if (length(env) == 0) return()
-  env <- strsplit(env, "=", fixed = T)
+  env <- strsplit(sub("=", "U+003D", env, fixed = T), "U+003D", fixed = T)
   found <- lengths(env) == 1
   env <- trimws(do.call(rbind, env))
   env[found, 2] <- ""
