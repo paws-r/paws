@@ -3,10 +3,12 @@ ini_cache <- new.env(parent = emptyenv())
 os_env_cache <- new.env(parent = emptyenv())
 
 set_os_env_cache <- function() {
-  env <- system("printenv", intern = T)
+  env <- system("printenv", intern = TRUE)
   # exit if no environment variables can be found
-  if (length(env) == 0) return()
-  env <- strsplit(sub("=", "U+003D", env, fixed = T), "U+003D", fixed = T)
+  if (length(env) == 0) {
+    return()
+  }
+  env <- strsplit(sub("=", "U+003D", env, fixed = TRUE), "U+003D", fixed = TRUE)
   found <- lengths(env) == 1
   env <- trimws(do.call(rbind, env))
   env[found, 2] <- ""
