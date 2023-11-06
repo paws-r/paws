@@ -260,8 +260,7 @@ xml_parse <- function(data, interface, data_nms, flattened = NULL) {
         parse_xml_elt(xml_elts, interface_i, tags_i, flattened)
       } else {
         default_parse_xml(interface_i, tags_i)
-      }
-    )
+      })
   }
   names(result) <- nms
   return(result)
@@ -487,8 +486,7 @@ transpose <- function(x) {
           list(rep_len(x[[col]], n_row)[[row]])
         } else {
           list(x[[col]][[row]])
-        }
-      )
+        })
     }
     out[[row]] <- vals
   }

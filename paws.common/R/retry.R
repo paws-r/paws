@@ -48,27 +48,30 @@ standard_retry_handler <- function(request) {
 
   # retry api call
   for (i in seq.int(2, exit_retries)) {
-    tryCatch({
-      request <- sign(request)
-      if (!is.null(request[["error"]])) {
-        stop(aws_error(request[["error"]]))
-      }
-      request <- send(request)
-      request <- unmarshal_meta(request)
-      request <- validate_response(request)
+    tryCatch(
+      {
+        request <- sign(request)
+        if (!is.null(request[["error"]])) {
+          stop(aws_error(request[["error"]]))
+        }
+        request <- send(request)
+        request <- unmarshal_meta(request)
+        request <- validate_response(request)
 
-      if (!is.null(request[["error"]])) {
-        request <- unmarshal_error(request)
-        stop(aws_error(request[["error"]]))
+        if (!is.null(request[["error"]])) {
+          request <- unmarshal_error(request)
+          stop(aws_error(request[["error"]]))
+        }
+        return(request)
+      },
+      paws_error = function(error) {
+        if (check_if_retryable(error)) {
+          exp_back_off(error, i, exit_retries)
+        } else {
+          stop(error)
+        }
       }
-      return(request)
-    }, paws_error = function(error) {
-      if (check_if_retryable(error)) {
-        exp_back_off(error, i, exit_retries)
-      } else {
-        stop(error)
-      }
-    })
+    )
   }
 }
 
@@ -79,7 +82,7 @@ check_if_retryable <- function(error) {
 
   if (!is_empty(error_code) && error_code %in% retryable_codes) {
     retryable <- TRUE
-  # Retry attempts on nondescriptive, transient error codes. Specifically, these HTTP status codes: 500, 502, 503, 504.
+    # Retry attempts on nondescriptive, transient error codes. Specifically, these HTTP status codes: 500, 502, 503, 504.
   } else if (!is_empty(status_code) && status_code %in% c(500, 502, 503, 504)) {
     retryable <- TRUE
   }
