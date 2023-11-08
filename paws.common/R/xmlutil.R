@@ -111,7 +111,7 @@ xml_build_structure <- function(params) {
       flattened <- tag_get(child, "flattened") != ""
 
       if (flattened) {
-        result[[length(result) + 1]] <- parsed
+        result <- c(result, parsed)
       } else {
         result[[location_name]] <- parsed
       }
