@@ -4,6 +4,5 @@
 #' @useDynLib paws.common _paws_common_paws_url_encoder
 #' @importFrom Rcpp evalCpp
 paws_url_encoder <- function(urls, safe = "") {
-    .Call('_paws_common_paws_url_encoder', PACKAGE = 'paws.common', urls, safe)
+  .Call("_paws_common_paws_url_encoder", PACKAGE = "paws.common", urls, safe)
 }
-
