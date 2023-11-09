@@ -144,6 +144,7 @@
     - codedeploy
     - codeguruprofiler
     - codeguru-reviewer
+    - codeguru-security
     - codepipeline
     - codestar
     - codestar-connections
@@ -311,6 +312,7 @@
     - datazone
     - es
     - elasticmapreduce
+    - entityresolution
     - firehose
     - glue
     - databrew
@@ -347,7 +349,6 @@
     - cognito-identity
     - cognito-idp
     - cognito-sync
-    - codeguru-security
     - detective
     - ds
     - fms
@@ -419,7 +420,6 @@
     - sns
     - sqs
     - swf
-    - simspaceweaver
   title: "'Amazon Web Services' Application Integration Services"
   description: >-
     Interface to 'Amazon Web Services' application integration services,
@@ -455,13 +455,11 @@
     - connect-contact-lens
     - connectparticipant
     - email
-    - entityresolution
     - wisdom
     - customer-profiles
     - pinpoint
     - pinpoint-email
     - pinpoint-sms-voice-v2
-    - medical-imaging
     - sesv2
     - sms-voice
   title: "'Amazon Web Services' Customer Engagement Services"
@@ -481,6 +479,7 @@
     - chime-sdk-voice
     - lookoutvision
     - outposts
+    - medical-imaging
     - workmail
   title: "'Amazon Web Services' Business Applications Services"
   description: >-
@@ -537,6 +536,7 @@
   services:
     - gamelift
     - gamesparks
+    - simspaceweaver
   title: "'Amazon Web Services' Game Development Services"
   description: >-
     Interface to 'Amazon Web Services' game development services, including
