@@ -30,17 +30,17 @@ test_that("check if environmental variables are parsed correctly", {
     paste(sample(letters, 10), collapse = ""),
     paste(sample(letters, 10), collapse = "")
   )
-  fake_env <- c(
-    "ENV_VAR1=foo",
-    sprintf("ENV_VAR2=%s",expect),
-    "ENV_VAR3=bar"
+  fake_env <- list(
+    "AWS_ENV_VAR1" = "foo",
+    "AWS_ENV_VAR2" = expect,
+    "AWS_ENV_VAR3" = "bar"
   )
 
-  mock_system <- mock2(fake_env)
-  mockery::stub(set_os_env_cache, "system", mock_system)
+  mock_env <- mock2(fake_env)
+  mockery::stub(set_os_env_cache, "Sys.getenv", mock_env)
 
   set_os_env_cache()
-  expect_equal(os_env_cache[["ENV_VAR1"]], "foo")
-  expect_equal(os_env_cache[["ENV_VAR2"]], expect)
-  expect_equal(os_env_cache[["ENV_VAR3"]], "bar")
+  expect_equal(os_env_cache[["AWS_ENV_VAR1"]], "foo")
+  expect_equal(os_env_cache[["AWS_ENV_VAR2"]], expect)
+  expect_equal(os_env_cache[["AWS_ENV_VAR3"]], "bar")
 })

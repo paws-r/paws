@@ -1,6 +1,6 @@
 # paws.common 0.6.3.9000
 * ensure xml build structure is correctly flattened (#597)
-* fix cache failing to initialize on certain environments (#706, @fh-mthomson)
+* fix cache failing to initialize on certain environments. Restrict scope of cached environment variables to only those starting with `AWS_*` (#706, @fh-mthomson)
 
 # paws.common 0.6.3
 * minor performance improvement for `read_ini`
