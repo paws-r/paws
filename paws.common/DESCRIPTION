@@ -88,4 +88,3 @@ Collate:
     'signer_v2.R'
     'time.R'
 Config/testthat/edition: 3
-Config/testthat/parallel: true
