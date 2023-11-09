@@ -106,16 +106,16 @@ test_that("credentials are cached", {
   svc <- service(config = list(credentials = list(creds = creds)))
   actual <- svc$get_credentials()
 
-  expect_equivalent(actual$credentials$creds$access_key_id, creds$access_key_id)
-  expect_equivalent(actual$credentials$creds$secret_access_key, creds$secret_access_key)
+  expect_equal(actual$credentials$creds$access_key_id, creds$access_key_id, ignore_attr = TRUE)
+  expect_equal(actual$credentials$creds$secret_access_key, creds$secret_access_key, ignore_attr = TRUE)
 
   # Use cached credentials.
   svc <- service()
   foo <- svc$get_credentials() # get the credentials
   actual <- svc$dont_get_credentials() # access the credentials found above
 
-  expect_equivalent(actual$credentials$creds$access_key_id, "AKID")
-  expect_equivalent(actual$credentials$creds$secret_access_key, "SECRET")
+  expect_equal(actual$credentials$creds$access_key_id, "AKID", ignore_attr = TRUE)
+  expect_equal(actual$credentials$creds$secret_access_key, "SECRET", ignore_attr = TRUE)
 })
 
 test_that("credentials refresh when expired", {

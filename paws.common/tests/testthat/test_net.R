@@ -26,7 +26,7 @@ test_that("connect_timeout", {
   time <- system.time({
     quietly(issue(req))
   })
-  expect_equivalent(time["elapsed"], 1, tolerance = 0.5)
+  expect_equal(time["elapsed"], 1, tolerance = 0.5, ignore_attr = TRUE)
 })
 
 test_that("timeout", {
@@ -39,7 +39,7 @@ test_that("timeout", {
   time <- system.time({
     quietly(issue(req))
   })
-  expect_equivalent(time["elapsed"], 1, tolerance = 0.5)
+  expect_equal(time["elapsed"], 1, tolerance = 0.5, ignore_attr = TRUE)
 })
 
 test_that("connect_timeout does not affect established connections", {

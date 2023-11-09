@@ -773,8 +773,8 @@ test_that("unmarshal elements in header and body", {
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
   out <- req$data
-  expect_equivalent(out$Body, "foo")
-  expect_equivalent(out$Header, "bar")
+  expect_equal(out$Body, "foo", ignore_attr = TRUE)
+  expect_equal(out$Header, "bar", ignore_attr = TRUE)
 })
 
 op_output12 <- Structure(
@@ -793,8 +793,8 @@ test_that("unmarshal result elements at root of xml", {
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
   out <- req$data
-  expect_equivalent(out$OperationNameResult$Body, "foo")
-  expect_equivalent(out$OperationNameResult$Header, "bar")
+  expect_equal(out$OperationNameResult$Body, "foo", ignore_attr = TRUE)
+  expect_equal(out$OperationNameResult$Header, "bar", ignore_attr = TRUE)
 })
 
 op_output13 <- Structure(
