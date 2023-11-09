@@ -79,9 +79,9 @@ test_that("content_md5 works with an empty body", {
   request <- new_request(svc, op, input, output)
   expect_error(result <- build(request), NA)
 
-  actual <- result$http_request$header["Content-Md5"]
+  actual <- result$http_request$header[["Content-Md5"]]
   expected <- base64enc::base64encode(digest::digest(raw(0), serialize = FALSE, raw = TRUE))
-  expect_equivalent(actual, expected)
+  expect_equal(actual, expected)
 })
 
 test_that("content_md5 leave existing Content-MD5 alone", {
@@ -242,7 +242,7 @@ test_that("s3_unmarshal_select_object_content", {
   )
   req <- unmarshal(req)
   out <- req$data
-  expect_equivalent(out$Payload$Records$Payload, "1\n2\n3\n")
+  expect_equal(out$Payload$Records$Payload, "1\n2\n3\n", ignore_attr = TRUE)
 })
 
 test_that("S3 access points", {

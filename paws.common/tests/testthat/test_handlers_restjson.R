@@ -623,17 +623,17 @@ test_that("unmarshal scalar members", {
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
   out <- req$data
-  expect_equivalent(out$Char, "a")
-  expect_equivalent(out$Double, 1.3)
-  expect_equivalent(out$FalseBool, FALSE)
-  expect_equivalent(out$Float, 1.2)
-  expect_equivalent(out$ImaHeader, "test")
-  expect_equivalent(out$ImaHeaderLocation, "abc")
-  expect_equivalent(out$Long, 200L)
-  expect_equivalent(out$Num, 123L)
-  expect_equivalent(out$Status, 200L)
-  expect_equivalent(out$Str, "myname")
-  expect_equivalent(out$TrueBool, TRUE)
+  expect_equal(out$Char, "a", ignore_attr = TRUE)
+  expect_equal(out$Double, 1.3, ignore_attr = TRUE)
+  expect_equal(out$FalseBool, FALSE, ignore_attr = TRUE)
+  expect_equal(out$Float, 1.2, ignore_attr = TRUE)
+  expect_equal(out$ImaHeader, "test", ignore_attr = TRUE)
+  expect_equal(out$ImaHeaderLocation, "abc", ignore_attr = TRUE)
+  expect_equal(out$Long, 200L, ignore_attr = TRUE)
+  expect_equal(out$Num, 123L, ignore_attr = TRUE)
+  expect_equal(out$Status, 200L, ignore_attr = TRUE)
+  expect_equal(out$Str, "myname", ignore_attr = TRUE)
+  expect_equal(out$TrueBool, TRUE, ignore_attr = TRUE)
 })
 
 test_that("unmarshal blob member", {
@@ -670,8 +670,8 @@ test_that("unmarshal timestamp member", {
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
   out <- req$data
-  expect_equivalent(out$TimeMember, unix_time(1.398796238e+09))
-  expect_equivalent(out$StructMember$Foo, unix_time(1.398796238e+09))
+  expect_equal(out$TimeMember, unix_time(1.398796238e+09), ignore_attr = TRUE)
+  expect_equal(out$StructMember$Foo, unix_time(1.398796238e+09), ignore_attr = TRUE)
 })
 
 test_that("unmarshal list", {
@@ -686,8 +686,8 @@ test_that("unmarshal list", {
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
   out <- req$data
-  expect_equivalent(out$ListMember[1], "a")
-  expect_equivalent(out$ListMember[2], "b")
+  expect_equal(out$ListMember[1], "a", ignore_attr = TRUE)
+  expect_equal(out$ListMember[2], "b", ignore_attr = TRUE)
 })
 
 test_that("unmarshal list with structure member", {
@@ -706,8 +706,8 @@ test_that("unmarshal list with structure member", {
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
   out <- req$data
-  expect_equivalent(out$ListMember[[1]]$Foo, "a")
-  expect_equivalent(out$ListMember[[2]]$Foo, "b")
+  expect_equal(out$ListMember[[1]]$Foo, "a", ignore_attr = TRUE)
+  expect_equal(out$ListMember[[2]]$Foo, "b", ignore_attr = TRUE)
 })
 
 test_that("unmarshal map", {
@@ -724,10 +724,10 @@ test_that("unmarshal map", {
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
   out <- req$data
-  expect_equivalent(out$MapMember[["a"]][1], 1)
-  expect_equivalent(out$MapMember[["a"]][2], 2)
-  expect_equivalent(out$MapMember[["b"]][1], 3)
-  expect_equivalent(out$MapMember[["b"]][2], 4)
+  expect_equal(out$MapMember[["a"]][1], 1, ignore_attr = TRUE)
+  expect_equal(out$MapMember[["a"]][2], 2, ignore_attr = TRUE)
+  expect_equal(out$MapMember[["b"]][1], 3, ignore_attr = TRUE)
+  expect_equal(out$MapMember[["b"]][2], 4, ignore_attr = TRUE)
 })
 
 test_that("unmarshal map with timestamps", {
@@ -744,8 +744,8 @@ test_that("unmarshal map with timestamps", {
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
   out <- req$data
-  expect_equivalent(out$MapMember[["a"]], unix_time(1.398796238e+09))
-  expect_equivalent(out$MapMember[["b"]], unix_time(1.398796238e+09))
+  expect_equal(out$MapMember[["a"]], unix_time(1.398796238e+09), ignore_attr = TRUE)
+  expect_equal(out$MapMember[["b"]], unix_time(1.398796238e+09), ignore_attr = TRUE)
 })
 
 test_that("unmarshal ignores extra data", {
@@ -760,8 +760,8 @@ test_that("unmarshal ignores extra data", {
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
   out <- req$data
-  expect_equivalent(names(out), c("StrType"))
-  expect_equivalent(out$StrType, character(0))
+  expect_equal(names(out), c("StrType"), ignore_attr = TRUE)
+  expect_equal(out$StrType, character(0), ignore_attr = TRUE)
 })
 
 test_that("unmarshal header map", {
@@ -779,11 +779,11 @@ test_that("unmarshal header map", {
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
   out <- req$data
-  expect_equivalent(out$AllHeaders[["Content-Length"]], "10")
-  expect_equivalent(out$AllHeaders[["X-Bam"]], "boo")
-  expect_equivalent(out$AllHeaders[["X-Foo"]], "bar")
-  expect_equivalent(out$PrefixedHeaders[["Bam"]], "boo")
-  expect_equivalent(out$PrefixedHeaders[["Foo"]], "bar")
+  expect_equal(out$AllHeaders[["Content-Length"]], "10", ignore_attr = TRUE)
+  expect_equal(out$AllHeaders[["X-Bam"]], "boo", ignore_attr = TRUE)
+  expect_equal(out$AllHeaders[["X-Foo"]], "bar", ignore_attr = TRUE)
+  expect_equal(out$PrefixedHeaders[["Bam"]], "boo", ignore_attr = TRUE)
+  expect_equal(out$PrefixedHeaders[["Foo"]], "bar", ignore_attr = TRUE)
 })
 
 test_that("JSON payload", {
@@ -803,8 +803,8 @@ test_that("JSON payload", {
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
   out <- req$data
-  expect_equivalent(out$Data$Foo, "abc")
-  expect_equivalent(out$Header, "baz")
+  expect_equal(out$Data$Foo, "abc", ignore_attr = TRUE)
+  expect_equal(out$Header, "baz", ignore_attr = TRUE)
 })
 
 # TODO: Streaming payload.
@@ -826,8 +826,8 @@ test_that("unmarshal blob payload", {
   req <- unmarshal_meta(req)
   req <- unmarshal(req)
   out <- req$data
-  expect_equivalent(rawToChar(out$Data), "{\"Foo\": \"abc\"}")
-  expect_equivalent(out$Header, "baz")
+  expect_equal(rawToChar(out$Data), "{\"Foo\": \"abc\"}", ignore_attr = TRUE)
+  expect_equal(out$Header, "baz", ignore_attr = TRUE)
 })
 
 #-------------------------------------------------------------------------------

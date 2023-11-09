@@ -7,15 +7,15 @@ test_that("get_config", {
   )
 
   actual <- svc$operation()
-  expect_equivalent(actual$region, 123)
+  expect_equal(actual$region, 123, ignore_attr = TRUE)
 
   # Check if config is returned when executed in a `do.call`.
-  expect_equivalent(do.call(svc$operation, list()), svc$operation())
+  expect_equal(do.call(svc$operation, list()), svc$operation(), ignore_attr = TRUE)
 
   f <- function() {
     svc$operation()
   }
-  expect_equivalent(f()$region, 123)
+  expect_equal(f()$region, 123, ignore_attr = TRUE)
 
   g <- function() {
     svc <- set_config(
@@ -26,7 +26,7 @@ test_that("get_config", {
     )
     svc$operation()
   }
-  expect_equivalent(g()$endpoint, 456)
+  expect_equal(g()$endpoint, 456, ignore_attr = TRUE)
 
   operation <- svc$operation
   expect_equal(operation(), Config())
@@ -40,7 +40,7 @@ test_that("get_config optional parameter update", {
     cfgs = list(sts_regional_endpoint = "legacy")
   )
   actual <- svc$operation()
-  expect_equivalent(actual$sts_regional_endpoint, "legacy")
+  expect_equal(actual$sts_regional_endpoint, "legacy", ignore_attr = TRUE)
 })
 
 test_that("set_config", {
@@ -60,8 +60,8 @@ test_that("set_config", {
   expect_equal(a$g(), 123)
 
   config <- a$h()
-  expect_equivalent(config$region, "foo")
-  expect_equivalent(config$endpoint, "bar")
+  expect_equal(config$region, "foo", ignore_attr = TRUE)
+  expect_equal(config$endpoint, "bar", ignore_attr = TRUE)
 
   expect_error(set_config(list(), list(foo = 123)))
 })

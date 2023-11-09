@@ -34,7 +34,7 @@ Suggests:
     mockery,
     withr,
     rstudioapi,
-    testthat
+    testthat (>= 3.0.0)
 SystemRequirements: pandoc (>= 1.12.3) - http://pandoc.org
 Roxygen: list(markdown = TRUE, roclets = c("rd", "namespace", "collate"))
 RoxygenNote: 7.2.3
@@ -87,3 +87,5 @@ Collate:
     'signer_v1.R'
     'signer_v2.R'
     'time.R'
+Config/testthat/edition: 3
+Config/testthat/parallel: true

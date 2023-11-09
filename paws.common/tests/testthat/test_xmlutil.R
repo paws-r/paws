@@ -19,8 +19,8 @@ test_that("add XML namespace", {
   expect_equal(attr(result$Foo$Bar[[1]]$Baz, "xmlns"), "https://foo/")
   expect_equal(attr(result$Foo$Bar[[1]]$Baz$Qux, "xmlns"), "https://foo/")
   expect_equal(attr(result$Foo$Bar[[1]]$Baz$Quux, "xmlns"), "https://foo/")
-  expect_equivalent(result$Foo$Bar[[1]]$Baz$Qux, 123)
-  expect_equivalent(result$Foo$Bar[[1]]$Baz$Quux, 456)
+  expect_equal(result$Foo$Bar[[1]]$Baz$Qux, 123, ignore_attr = TRUE)
+  expect_equal(result$Foo$Bar[[1]]$Baz$Quux, 456, ignore_attr = TRUE)
 })
 
 test_that("check xml build", {
