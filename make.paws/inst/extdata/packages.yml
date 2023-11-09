@@ -35,6 +35,7 @@
     - finspace-data
     - fsx
     - glacier
+    - omics
     - rbin
     - s3
     - s3control
@@ -49,6 +50,7 @@
   services:
     - dax
     - docdb
+    - docdb-elastic
     - dynamodb
     - streams.dynamodb
     - elasticache
@@ -56,6 +58,7 @@
     - lakeformation
     - memorydb
     - neptune
+    - neptunedata
     - qldb
     - qldb-session
     - rds
@@ -75,17 +78,19 @@
 - name: migration
   services:
     - appflow
-    - discovery
     - appintegrations
-    - dms
+    - cleanrooms
     - dataexchange
     - datasync
+    - discovery
+    - dms
     - importexport
     - m2
     - mgn
     - AWSMigrationHub
     - migrationhub-config
     - migration-hub-refactor-spaces
+    - migrationhuborchestrator
     - migrationhubstrategy
     - sms
     - snowball
@@ -102,7 +107,9 @@
     - apigateway
     - apigatewaymanagementapi
     - apigatewayv2
+    - appfabric
     - appmesh
+    - arc-zonal-shift
     - backup-gateway
     - cloudfront
     - directconnect
@@ -118,6 +125,8 @@
     - route53-recovery-readiness
     - route53resolver
     - servicediscovery
+    - tnb
+    - vpc-lattice
   title: "'Amazon Web Services' Networking & Content Delivery Services"
   description: >-
     Interface to 'Amazon Web Services' networking and content delivery services,
@@ -131,9 +140,11 @@
     - codebuild
     - codeartifact
     - codecommit
+    - codecatalyst
     - codedeploy
     - codeguruprofiler
     - codeguru-reviewer
+    - codeguru-security
     - codepipeline
     - codestar
     - codestar-connections
@@ -161,6 +172,7 @@
 - name: blockchain
   services:
     - managedblockchain
+    - managedblockchain-query
   title: "'Amazon Web Services' Blockchain Services"
   description: >-
     Interface to 'Amazon Web Services' blockchain services, including
@@ -187,7 +199,9 @@
     - autoscaling-plans
     - cloudformation
     - cloudtrail
+    - cloudtrail-data
     - config
+    - controltower
     - events
     - evidently
     - finspace
@@ -195,8 +209,11 @@
     - health
     - license-manager
     - license-manager-user-subscriptions
+    - license-manager-linux-subscriptions
     - logs
+    - internetmonitor
     - monitoring
+    - oam
     - opsworks
     - opsworkscm
     - organizations
@@ -211,7 +228,9 @@
     - ssm
     - ssm-contacts
     - ssm-incidents
+    - ssm-sap
     - support
+    - support-app
     - synthetics
   title: "'Amazon Web Services' Management & Governance Services"
   description: >-
@@ -227,10 +246,12 @@
     - kinesis-video-archived-media
     - kinesis-video-media
     - kinesis-video-signaling
+    - kinesis-video-webrtc-storage
     - mediaconnect
     - mediaconvert
     - medialive
     - mediapackage
+    - mediapackagev2
     - mediapackage-vod
     - mediastore
     - mediastore-data
@@ -243,7 +264,6 @@
 
 - name: machine.learning
   services:
-    - sagemaker-a2i-runtime
     - comprehend
     - comprehendmedical
     - elastic-inference
@@ -264,13 +284,18 @@
     - polly
     - rekognition
     - sagemaker
+    - sagemaker-a2i-runtime
     - sagemaker-edge
     - sagemaker-featurestore-runtime
+    - sagemaker-geospatial
+    - sagemaker-metrics
     - runtime.sagemaker
     - textract
     - transcribe
     - translate
     - voice-id
+    - bedrock
+    - bedrock-runtime
   title: "'Amazon Web Services' Machine Learning Services"
   description: >-
     Interface to 'Amazon Web Services' machine learning services, including
@@ -284,21 +309,27 @@
     - cloudsearch
     - cloudsearchdomain
     - datapipeline
+    - datazone
     - es
     - elasticmapreduce
+    - entityresolution
     - firehose
     - glue
     - databrew
     - healthlake
     - ivs
+    - ivs-realtime
     - kafka
     - kafkaconnect
     - kendra
+    - kendra-ranking
     - kinesis
     - kinesisanalytics
     - kinesisanalyticsv2
     - mturk-requester
     - opensearch
+    - opensearchserverless
+    - osis
     - quicksight
   title: "'Amazon Web Services' Analytics Services"
   description: >-
@@ -329,15 +360,18 @@
     - kms
     - macie
     - macie2
+    - pca-connector-ad
     - ram
     - rolesanywhere
     - secretsmanager
     - securityhub
+    - securitylake
     - shield
     - sso
     - sso-admin
     - sso-oidc
     - sts
+    - verifiedpermissions
     - waf
     - waf-regional
     - wafv2
@@ -378,7 +412,10 @@
     - location
     - mq
     - mwaa
+    - pipes
+    - resource-explorer-2
     - schemas
+    - scheduler
     - states
     - sns
     - sqs
@@ -402,6 +439,8 @@
     - meteringmarketplace
     - pricing
     - savingsplans
+    - payment-cryptography
+    - payment-cryptography-data
   title: "'Amazon Web Services' Cost Management Services"
   description: >-
     Interface to 'Amazon Web Services' cost management services, including
@@ -412,16 +451,17 @@
   services:
     - connect
     - connectcampaigns
+    - connectcases
     - connect-contact-lens
     - connectparticipant
+    - email
     - wisdom
     - customer-profiles
     - pinpoint
     - pinpoint-email
-    - sms-voice
     - pinpoint-sms-voice-v2
-    - email
     - sesv2
+    - sms-voice
   title: "'Amazon Web Services' Customer Engagement Services"
   description: >-
     Interface to 'Amazon Web Services' customer engagement services, including
@@ -436,8 +476,10 @@
     - chime-sdk-media-pipelines
     - chime-sdk-meetings
     - chime-sdk-messaging
+    - chime-sdk-voice
     - lookoutvision
     - outposts
+    - medical-imaging
     - workmail
   title: "'Amazon Web Services' Business Applications Services"
   description: >-
@@ -475,7 +517,9 @@
     - iotevents
     - iotevents-data
     - iotfleethub
+    - iotfleetwise
     - iot-jobs-data
+    - iot-roborunner
     - iotsecuretunneling
     - iotsitewise
     - iotthingsgraph
@@ -492,6 +536,7 @@
   services:
     - gamelift
     - gamesparks
+    - simspaceweaver
   title: "'Amazon Web Services' Game Development Services"
   description: >-
     Interface to 'Amazon Web Services' game development services, including
