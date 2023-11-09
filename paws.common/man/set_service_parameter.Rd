@@ -116,12 +116,12 @@ config(credentials(creds("dummy", "secret")))
 
 # set service parameter access_key_id and secret_access_key using using lists
 config(
-    credentials = list(
-        creds = list(
-            access_key_id = "dummy",
-            secret_access_key = "secret"
-        )
+  credentials = list(
+    creds = list(
+      access_key_id = "dummy",
+      secret_access_key = "secret"
     )
+  )
 )
 
 }

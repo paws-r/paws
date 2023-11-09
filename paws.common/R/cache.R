@@ -3,17 +3,27 @@ ini_cache <- new.env(parent = emptyenv())
 os_env_cache <- new.env(parent = emptyenv())
 
 set_os_env_cache <- function() {
-  env <- system("printenv", intern = TRUE)
+  env_vars <- system("printenv", intern = TRUE)
+
+  # only cache AWS_* environment variables to avoid caching sensitive information
+  # that may stored as environment variables
+  aws_env_vars <- env_vars[grepl("^AWS_", env_vars)]
+
   # exit if no environment variables can be found
-  if (length(env) == 0) {
+  if (length(aws_env_vars) == 0) {
     return()
   }
-  env <- strsplit(sub("=", "U+003D", env, fixed = TRUE), "U+003D", fixed = TRUE)
-  found <- lengths(env) == 1
-  env <- trimws(do.call(rbind, env))
-  env[found, 2] <- ""
-  for (i in seq_len(nrow(env))) {
-    os_env_cache[[env[i, 1]]] <- env[i, 2]
+  aws_env_vars <- strsplit(
+    sub("=", "U+003D", aws_env_vars, fixed = TRUE),
+    "U+003D",
+    fixed = TRUE
+  )
+  found <- lengths(aws_env_vars) == 1
+  aws_env_vars <- trimws(do.call(rbind, aws_env_vars))
+  if (ncol(aws_env_vars) == 1) aws_env_vars <- cbind(aws_env_vars, "")
+  aws_env_vars[found, 2] <- ""
+  for (i in seq_len(nrow(aws_env_vars))) {
+    os_env_cache[[aws_env_vars[i, 1]]] <- aws_env_vars[i, 2]
   }
 }
 

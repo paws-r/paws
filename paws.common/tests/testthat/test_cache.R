@@ -30,17 +30,63 @@ test_that("check if environmental variables are parsed correctly", {
     paste(sample(letters, 10), collapse = ""),
     paste(sample(letters, 10), collapse = "")
   )
-  fake_env <- c(
-    "ENV_VAR1=foo",
-    sprintf("ENV_VAR2=%s",expect),
-    "ENV_VAR3=bar"
+  fake_env <- list(
+    "AWS_ENV_VAR1=foo",
+    sprintf("AWS_ENV_VAR2=%s", expect),
+    "AWS_ENV_VAR3=bar",
+    "OTHER",
+    "_"
   )
 
-  mock_system <- mock2(fake_env)
-  mockery::stub(set_os_env_cache, "system", mock_system)
+  mock_env <- mock2(fake_env)
+  mockery::stub(set_os_env_cache, "system", mock_env)
 
   set_os_env_cache()
-  expect_equal(os_env_cache[["ENV_VAR1"]], "foo")
-  expect_equal(os_env_cache[["ENV_VAR2"]], expect)
-  expect_equal(os_env_cache[["ENV_VAR3"]], "bar")
+  expect_equal(os_env_cache[["AWS_ENV_VAR1"]], "foo")
+  expect_equal(os_env_cache[["AWS_ENV_VAR2"]], expect)
+  expect_equal(os_env_cache[["AWS_ENV_VAR3"]], "bar")
+  expect_null(os_env_cache[["OTHER"]])
+})
+
+test_that("check if environmental variables remove whitespace", {
+  skip_if(.Platform$OS.type != "unix")
+  expect <- sprintf(
+    "var1=%s var2=%s var2=%s",
+    paste(sample(letters, 10), collapse = ""),
+    paste(sample(letters, 10), collapse = ""),
+    paste(sample(letters, 10), collapse = "")
+  )
+  fake_env <- list(
+    "AWS_ENV_VAR1 = foo ",
+    sprintf("AWS_ENV_VAR2=%s", expect),
+    "AWS_ENV_VAR3   =    bar    ",
+    "OTHER",
+    "_"
+  )
+
+  mock_env <- mock2(fake_env)
+  mockery::stub(set_os_env_cache, "system", mock_env)
+
+  set_os_env_cache()
+  expect_equal(os_env_cache[["AWS_ENV_VAR1"]], "foo")
+  expect_equal(os_env_cache[["AWS_ENV_VAR2"]], expect)
+  expect_equal(os_env_cache[["AWS_ENV_VAR3"]], "bar")
+  expect_null(os_env_cache[["OTHER"]])
+})
+
+test_that("check if environmental variables with nothing assigned", {
+  skip_if(.Platform$OS.type != "unix")
+  fake_env <- list(
+    "AWS_ENV_VAR1",
+    "AWS_ENV_VAR2=",
+    "OTHER"
+  )
+
+  mock_env <- mock2(fake_env)
+  mockery::stub(set_os_env_cache, "system", mock_env)
+
+  set_os_env_cache()
+  expect_equal(os_env_cache[["AWS_ENV_VAR1"]], "")
+  expect_equal(os_env_cache[["AWS_ENV_VAR2"]], "")
+  expect_null(os_env_cache[["OTHER"]])
 })
