@@ -1,5 +1,6 @@
 # paws.common 0.6.3.9000
 * ensure xml build structure is correctly flattened (#597)
+* fix cache failing to initialize on certain environments (#706)
 
 # paws.common 0.6.3
 * minor performance improvement for `read_ini`
