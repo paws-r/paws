@@ -33,7 +33,8 @@ test_that("check if environmental variables are parsed correctly", {
   fake_env <- list(
     "AWS_ENV_VAR1" = "foo",
     "AWS_ENV_VAR2" = expect,
-    "AWS_ENV_VAR3" = "bar"
+    "AWS_ENV_VAR3" = "bar",
+    "OTHER" = NULL
   )
 
   mock_env <- mock2(fake_env)
@@ -43,4 +44,5 @@ test_that("check if environmental variables are parsed correctly", {
   expect_equal(os_env_cache[["AWS_ENV_VAR1"]], "foo")
   expect_equal(os_env_cache[["AWS_ENV_VAR2"]], expect)
   expect_equal(os_env_cache[["AWS_ENV_VAR3"]], "bar")
+  expect_equal(os_env_cache[["OTHER"]], NULL)
 })

@@ -5,14 +5,15 @@ os_env_cache <- new.env(parent = emptyenv())
 set_os_env_cache <- function() {
   env <- Sys.getenv()
 
-  # exit if no environment variables can be found
-  if (length(env) == 0) {
-    return()
-  }
-
   # only cache AWS_* environment variables to avoid caching sensitive information
   # that may stored as environment variables
   aws_env_vars <- env[grepl("^AWS_", names(env))]
+
+  # exit if no environment variables can be found
+  if (length(aws_env_vars) == 0) {
+    return()
+  }
+
   for (i in seq_len(length(aws_env_vars))) {
     os_env_cache[[names(aws_env_vars[i])]] <- as.character(aws_env_vars[i])
   }
