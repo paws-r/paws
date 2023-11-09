@@ -88,10 +88,14 @@ test_that("config_file_provider", {
     expect_equal(mock_arg(mock_get_assumed_role_creds)[1:3], list(
       "arn:aws:iam::p1_role", "p1_role_session", NULL
     ))
-    expect_equal(mock_arg(mock_get_assumed_role_creds)[[4]]$access_key_id,
-                 creds$env$access_key_id)
-    expect_equal(mock_arg(mock_get_assumed_role_creds)[[4]]$secret_access_key,
-                 creds$env$secret_access_key)
+    expect_equal(
+      mock_arg(mock_get_assumed_role_creds)[[4]]$access_key_id,
+      creds$env$access_key_id
+    )
+    expect_equal(
+      mock_arg(mock_get_assumed_role_creds)[[4]]$secret_access_key,
+      creds$env$secret_access_key
+    )
 
     # Test profile using web_identity_token
     mock_web_identity_creds <- mock2(creds$p2)

@@ -83,7 +83,7 @@ dummy_req_error <- function(req, code, msg, status) {
 op <- Operation(name = "OperationName")
 svc1 <- Client(config = Config())
 
-op_output <-Structure(
+op_output <- Structure(
   Timestamp = Scalar(type = "timestamp")
 )
 
@@ -287,4 +287,3 @@ test_that("1 retries", {
   expect_equal(mock_call_no(mock_exp_back_off), 2)
   expect_equal(last_args[[2]], last_args[[3]])
 })
-

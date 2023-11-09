@@ -67,7 +67,7 @@ test_that("set_config", {
 })
 
 test_that("get_profile_name", {
-  withr::with_envvar(list(AWS_PROFILE="bar"), {
+  withr::with_envvar(list(AWS_PROFILE = "bar"), {
     expect_equal(get_profile_name(), "bar")
     expect_equal(get_profile_name(NULL), "bar")
     expect_equal(get_profile_name("foo"), "foo")

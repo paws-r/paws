@@ -111,7 +111,7 @@ xml_build_structure <- function(params) {
       flattened <- tag_get(child, "flattened") != ""
 
       if (flattened) {
-        result[[length(result) + 1]] <- parsed
+        result <- c(result, parsed)
       } else {
         result[[location_name]] <- parsed
       }
@@ -260,8 +260,7 @@ xml_parse <- function(data, interface, data_nms, flattened = NULL) {
         parse_xml_elt(xml_elts, interface_i, tags_i, flattened)
       } else {
         default_parse_xml(interface_i, tags_i)
-      }
-    )
+      })
   }
   names(result) <- nms
   return(result)
@@ -455,7 +454,7 @@ default_parse_scalar <- function(interface_i, tag_type = NULL) {
     double = xml_scalar_default(interface_i, numeric()),
     long = xml_scalar_default(interface_i, numeric()),
     float = xml_scalar_default(interface_i, numeric()),
-    timestamp = xml_scalar_default(interface_i, as.POSIXct(NULL)),
+    timestamp = xml_scalar_default(interface_i, .POSIXct(numeric())),
     boolean = xml_scalar_default(interface_i, logical()),
     xml_scalar_default(interface_i, character())
   )
@@ -487,8 +486,7 @@ transpose <- function(x) {
           list(rep_len(x[[col]], n_row)[[row]])
         } else {
           list(x[[col]][[row]])
-        }
-      )
+        })
     }
     out[[row]] <- vals
   }
