@@ -1,4 +1,4 @@
-# paws.common 0.6.3.9000
+# paws.common 0.6.4
 * ensure xml build structure is correctly flattened (#597)
 * fix cache failing to initialize on certain environments. Restrict scope of cached environment variables to only those starting with `AWS_*` (#706, @fh-mthomson)
 
