@@ -1,5 +1,5 @@
 ## Submission
-This release contains bug fixes that prevented previous release being installed specific unix os systems.
+This release contains bug fixes that prevented previous release being installed on specific unix os systems.
 
 ## Test environments
 
