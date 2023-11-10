@@ -1,5 +1,5 @@
 ## Submission
-This release contains performance improvements
+This release contains bug fixes that prevent package being installed specific unix os systems.
 
 ## Test environments
 
@@ -10,6 +10,14 @@ This release contains performance improvements
 ## R CMD check results
 
 There was one NOTE, no ERRORs or WARNINGs.
+
+* checking CRAN incoming feasibility ... [10s] NOTE
+Maintainer: 'Dyfan Jones <dyfan.r.jones@gmail.com>'
+
+Days since last update: 4
+
+Maintainers Comments:
+Apologies for the fast turn over. This is to address a bug that prevented the package from being installed on some unix OS systems.
 
 ## Downstream dependencies
 
