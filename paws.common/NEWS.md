@@ -1,9 +1,7 @@
-# paws.common 0.6.4.9000
-* fix issue of sorting query mapping causing misalignment (#711). Thanks to @matthias-Q for raising issue.
-
 # paws.common 0.6.4
 * ensure xml build structure is correctly flattened (#597)
 * fix cache failing to initialize on certain environments. Restrict scope of cached environment variables to only those starting with `AWS_*` (#706, @fh-mthomson)
+* fix issue of sorting query mapping causing misalignment (#711). Thanks to @matthias-Q for raising issue.
 
 # paws.common 0.6.3
 * minor performance improvement for `read_ini`

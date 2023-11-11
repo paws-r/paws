@@ -12,9 +12,9 @@ This release contains bug fixes that prevented previous release being installed 
 There was one NOTE, no ERRORs or WARNINGs.
 
 * checking CRAN incoming feasibility ... [10s] NOTE
-Maintainer: 'Dyfan Jones <dyfan.r.jones@gmail.com>'
-
-Days since last update: 4
+  Maintainer: 'Dyfan Jones <dyfan.r.jones@gmail.com>'
+  
+  Days since last update: 5
 
 Maintainers Comments:
 Apologies for the fast turn over. This is to address a bug that prevented the package from being installed on some unix OS systems.
