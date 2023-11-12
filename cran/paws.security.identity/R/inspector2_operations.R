@@ -279,7 +279,7 @@ inspector2_cancel_sbom_export <- function(reportId) {
 #' Creates a filter resource using specified filter criteria
 #'
 #' @description
-#' Creates a filter resource using specified filter criteria.
+#' Creates a filter resource using specified filter criteria. When the filter action is set to `SUPPRESS` this action creates a suppression rule.
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_create_filter/](https://www.paws-r-sdk.com/docs/inspector2_create_filter/) for full documentation.
 #'
@@ -798,11 +798,16 @@ inspector2_get_sbom_export <- function(reportId) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_account_permissions/](https://www.paws-r-sdk.com/docs/inspector2_list_account_permissions/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to return in the response.
+#' @param maxResults The maximum number of results the response can return. If your request
+#' would return more than the maximum the response will return a
+#' `nextToken` value, use this value when you call the action again to get
+#' the remaining results.
 #' @param nextToken A token to use for paginating results that are returned in the response.
 #' Set the value of this parameter to null for the first request to a list
-#' action. For subsequent calls, use the `NextToken` value returned from
-#' the previous request to continue listing results after the first page.
+#' action. If your response returns more than the `maxResults` maximum
+#' value it will also return a `nextToken` value. For subsequent calls, use
+#' the NextToken value returned from the previous request to continue
+#' listing results after the first page.
 #' @param service The service scan type to check permissions for.
 #'
 #' @keywords internal
@@ -834,11 +839,16 @@ inspector2_list_account_permissions <- function(maxResults = NULL, nextToken = N
 #'
 #' @param filterCriteria An object that contains details on the filters to apply to the coverage
 #' data for your environment.
-#' @param maxResults The maximum number of results to return in the response.
+#' @param maxResults The maximum number of results the response can return. If your request
+#' would return more than the maximum the response will return a
+#' `nextToken` value, use this value when you call the action again to get
+#' the remaining results.
 #' @param nextToken A token to use for paginating results that are returned in the response.
 #' Set the value of this parameter to null for the first request to a list
-#' action. For subsequent calls, use the `NextToken` value returned from
-#' the previous request to continue listing results after the first page.
+#' action. If your response returns more than the `maxResults` maximum
+#' value it will also return a `nextToken` value. For subsequent calls, use
+#' the `nextToken` value returned from the previous request to continue
+#' listing results after the first page.
 #'
 #' @keywords internal
 #'
@@ -903,11 +913,16 @@ inspector2_list_coverage_statistics <- function(filterCriteria = NULL, groupBy =
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_delegated_admin_accounts/](https://www.paws-r-sdk.com/docs/inspector2_list_delegated_admin_accounts/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to return in the response.
+#' @param maxResults The maximum number of results the response can return. If your request
+#' would return more than the maximum the response will return a
+#' `nextToken` value, use this value when you call the action again to get
+#' the remaining results.
 #' @param nextToken A token to use for paginating results that are returned in the response.
 #' Set the value of this parameter to null for the first request to a list
-#' action. For subsequent calls, use the `NextToken` value returned from
-#' the previous request to continue listing results after the first page.
+#' action. If your response returns more than the `maxResults` maximum
+#' value it will also return a `nextToken` value. For subsequent calls, use
+#' the `nextToken` value returned from the previous request to continue
+#' listing results after the first page.
 #'
 #' @keywords internal
 #'
@@ -938,11 +953,16 @@ inspector2_list_delegated_admin_accounts <- function(maxResults = NULL, nextToke
 #'
 #' @param action The action the filter applies to matched findings.
 #' @param arns The Amazon resource number (ARN) of the filter.
-#' @param maxResults The maximum number of results to return in the response.
+#' @param maxResults The maximum number of results the response can return. If your request
+#' would return more than the maximum the response will return a
+#' `nextToken` value, use this value when you call the action again to get
+#' the remaining results.
 #' @param nextToken A token to use for paginating results that are returned in the response.
 #' Set the value of this parameter to null for the first request to a list
-#' action. For subsequent calls, use the `NextToken` value returned from
-#' the previous request to continue listing results after the first page.
+#' action. If your response returns more than the `maxResults` maximum
+#' value it will also return a `nextToken` value. For subsequent calls, use
+#' the `nextToken` value returned from the previous request to continue
+#' listing results after the first page.
 #'
 #' @keywords internal
 #'
@@ -977,11 +997,16 @@ inspector2_list_filters <- function(action = NULL, arns = NULL, maxResults = NUL
 #' @param aggregationRequest Details of the aggregation request that is used to filter your
 #' aggregation results.
 #' @param aggregationType &#91;required&#93; The type of the aggregation request.
-#' @param maxResults The maximum number of results to return in the response.
+#' @param maxResults The maximum number of results the response can return. If your request
+#' would return more than the maximum the response will return a
+#' `nextToken` value, use this value when you call the action again to get
+#' the remaining results.
 #' @param nextToken A token to use for paginating results that are returned in the response.
 #' Set the value of this parameter to null for the first request to a list
-#' action. For subsequent calls, use the `NextToken` value returned from
-#' the previous request to continue listing results after the first page.
+#' action. If your response returns more than the `maxResults` maximum
+#' value it will also return a `nextToken` value. For subsequent calls, use
+#' the `nextToken` value returned from the previous request to continue
+#' listing results after the first page.
 #'
 #' @keywords internal
 #'
@@ -1011,11 +1036,16 @@ inspector2_list_finding_aggregations <- function(accountIds = NULL, aggregationR
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_findings/](https://www.paws-r-sdk.com/docs/inspector2_list_findings/) for full documentation.
 #'
 #' @param filterCriteria Details on the filters to apply to your finding results.
-#' @param maxResults The maximum number of results to return in the response.
+#' @param maxResults The maximum number of results the response can return. If your request
+#' would return more than the maximum the response will return a
+#' `nextToken` value, use this value when you call the action again to get
+#' the remaining results.
 #' @param nextToken A token to use for paginating results that are returned in the response.
 #' Set the value of this parameter to null for the first request to a list
-#' action. For subsequent calls, use the `NextToken` value returned from
-#' the previous request to continue listing results after the first page.
+#' action. If your response returns more than the `maxResults` maximum
+#' value it will also return a `nextToken` value. For subsequent calls, use
+#' the `nextToken` value returned from the previous request to continue
+#' listing results after the first page.
 #' @param sortCriteria Details on the sort criteria to apply to your finding results.
 #'
 #' @keywords internal
@@ -1046,11 +1076,16 @@ inspector2_list_findings <- function(filterCriteria = NULL, maxResults = NULL, n
 #'
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_members/](https://www.paws-r-sdk.com/docs/inspector2_list_members/) for full documentation.
 #'
-#' @param maxResults The maximum number of results to return in the response.
+#' @param maxResults The maximum number of results the response can return. If your request
+#' would return more than the maximum the response will return a
+#' `nextToken` value, use this value when you call the action again to get
+#' the remaining results.
 #' @param nextToken A token to use for paginating results that are returned in the response.
 #' Set the value of this parameter to null for the first request to a list
-#' action. For subsequent calls, use the `NextToken` value returned from
-#' the previous request to continue listing results after the first page.
+#' action. If your response returns more than the `maxResults` maximum
+#' value it will also return a `nextToken` value. For subsequent calls, use
+#' the `nextToken` value returned from the previous request to continue
+#' listing results after the first page.
 #' @param onlyAssociated Specifies whether to list only currently associated members if `True` or
 #' to list all members within the organization if `False`.
 #'
@@ -1111,11 +1146,16 @@ inspector2_list_tags_for_resource <- function(resourceArn) {
 #' See [https://www.paws-r-sdk.com/docs/inspector2_list_usage_totals/](https://www.paws-r-sdk.com/docs/inspector2_list_usage_totals/) for full documentation.
 #'
 #' @param accountIds The Amazon Web Services account IDs to retrieve usage totals for.
-#' @param maxResults The maximum number of results to return in the response.
+#' @param maxResults The maximum number of results the response can return. If your request
+#' would return more than the maximum the response will return a
+#' `nextToken` value, use this value when you call the action again to get
+#' the remaining results.
 #' @param nextToken A token to use for paginating results that are returned in the response.
 #' Set the value of this parameter to null for the first request to a list
-#' action. For subsequent calls, use the `NextToken` value returned from
-#' the previous request to continue listing results after the first page.
+#' action. If your response returns more than the `maxResults` maximum
+#' value it will also return a `nextToken` value. For subsequent calls, use
+#' the `nextToken` value returned from the previous request to continue
+#' listing results after the first page.
 #'
 #' @keywords internal
 #'

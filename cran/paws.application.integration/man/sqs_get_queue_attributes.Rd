@@ -132,14 +132,14 @@ or
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html}{SSE-SQS}).
 }
 
-The following attributes apply only to \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO (first-in-first-out) queues}:
+The following attributes apply only to \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/}{FIFO (first-in-first-out) queues}:
 \itemize{
 \item \code{FifoQueue} – Returns information about whether the queue is FIFO.
 For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-understanding-logic.html}{FIFO queue logic}
 in the \emph{Amazon SQS Developer Guide}.
 
 To determine whether a queue is
-\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO},
+\href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/}{FIFO},
 you can check whether \code{QueueName} ends with the \code{.fifo} suffix.
 \item \code{ContentBasedDeduplication} – Returns whether content-based
 deduplication is enabled for the queue. For more information, see

@@ -435,7 +435,9 @@ lambda_create_event_source_mapping <- function(EventSourceArn = NULL, FunctionNa
 #' string array with one of the valid values (arm64 or x86_64). The default
 #' value is `x86_64`.
 #' @param EphemeralStorage The size of the function's `/tmp` directory in MB. The default value is
-#' 512, but can be any whole number between 512 and 10,240 MB.
+#' 512, but can be any whole number between 512 and 10,240 MB. For more
+#' information, see [Configuring ephemeral storage
+#' (console)](https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-ephemeral-storage).
 #' @param SnapStart The function's
 #' [SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html)
 #' setting.
@@ -1525,7 +1527,7 @@ lambda_get_runtime_management_config <- function(FunctionName, Qualifier = NULL)
 #' Invokes a Lambda function
 #'
 #' @description
-#' Invokes a Lambda function. You can invoke a function synchronously (and wait for the response), or asynchronously. To invoke a function asynchronously, set `InvocationType` to `Event`.
+#' Invokes a Lambda function. You can invoke a function synchronously (and wait for the response), or asynchronously. By default, Lambda invokes your function synchronously (i.e. the`InvocationType` is `RequestResponse`). To invoke a function asynchronously, set `InvocationType` to `Event`. Lambda passes the `ClientContext` object to your function for synchronous invocations only.
 #'
 #' See [https://www.paws-r-sdk.com/docs/lambda_invoke/](https://www.paws-r-sdk.com/docs/lambda_invoke/) for full documentation.
 #'
@@ -3043,7 +3045,9 @@ lambda_update_function_code <- function(FunctionName, ZipFile = NULL, S3Bucket =
 #' values](https://docs.aws.amazon.com/lambda/latest/dg/) that override the
 #' values in the container image Docker file.
 #' @param EphemeralStorage The size of the function's `/tmp` directory in MB. The default value is
-#' 512, but can be any whole number between 512 and 10,240 MB.
+#' 512, but can be any whole number between 512 and 10,240 MB. For more
+#' information, see [Configuring ephemeral storage
+#' (console)](https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-ephemeral-storage).
 #' @param SnapStart The function's
 #' [SnapStart](https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html)
 #' setting.

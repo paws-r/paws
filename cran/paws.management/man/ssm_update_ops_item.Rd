@@ -24,8 +24,8 @@ ssm_update_ops_item(
 )
 }
 \arguments{
-\item{Description}{Update the information about the OpsItem. Provide enough information so
-that users reading this OpsItem for the first time understand the issue.}
+\item{Description}{User-defined text that contains information about the OpsItem, in
+Markdown format.}
 
 \item{OperationalData}{Add new keys or edit existing key-value pairs of the OperationalData map
 in the OpsItem object.

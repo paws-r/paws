@@ -409,7 +409,8 @@ comprehend_batch_detect_syntax <- function(TextList, LanguageCode) {
 #' entity identified in the documents.
 #' 
 #' For more information about targeted sentiment, see [Targeted
-#' sentiment](https://docs.aws.amazon.com/comprehend/latest/dg/how-targeted-sentiment.html).
+#' sentiment](https://docs.aws.amazon.com/comprehend/latest/dg/how-targeted-sentiment.html)
+#' in the *Amazon Comprehend Developer Guide*.
 #'
 #' @usage
 #' comprehend_batch_detect_targeted_sentiment(TextList, LanguageCode)
@@ -497,17 +498,28 @@ comprehend_batch_detect_targeted_sentiment <- function(TextList, LanguageCode) {
 }
 .comprehend$operations$batch_detect_targeted_sentiment <- comprehend_batch_detect_targeted_sentiment
 
-#' Creates a new document classification request to analyze a single
-#' document in real-time, using a previously created and trained custom
-#' model and an endpoint
+#' Creates a classification request to analyze a single document in
+#' real-time
 #'
 #' @description
-#' Creates a new document classification request to analyze a single
-#' document in real-time, using a previously created and trained custom
-#' model and an endpoint.
+#' Creates a classification request to analyze a single document in
+#' real-time. [`classify_document`][comprehend_classify_document] supports
+#' the following model types:
 #' 
-#' You can input plain text or you can upload a single-page input document
-#' (text, PDF, Word, or image).
+#' -   Custom classifier - a custom model that you have created and
+#'     trained. For input, you can provide plain text, a single-page
+#'     document (PDF, Word, or image), or Textract API output. For more
+#'     information, see [Custom
+#'     classification](https://docs.aws.amazon.com/comprehend/latest/dg/how-document-classification.html)
+#'     in the *Amazon Comprehend Developer Guide*.
+#' 
+#' -   Prompt classifier - Amazon Comprehend provides a model for
+#'     classifying prompts. For input, you provide English plain text
+#'     input. For prompt classification, the response includes only the
+#'     `Classes` field. For more information about prompt classifiers, see
+#'     [Prompt
+#'     classifiers](https://docs.aws.amazon.com/comprehend/latest/dg/) in
+#'     the *Amazon Comprehend Developer Guide*.
 #' 
 #' If the system detects errors while processing a page in the input
 #' document, the API response includes an entry in `Errors` that describes
@@ -525,12 +537,22 @@ comprehend_batch_detect_targeted_sentiment <- function(TextList, LanguageCode) {
 #'
 #' @param Text The document text to be analyzed. If you enter text using this
 #' parameter, do not use the `Bytes` parameter.
-#' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint. For information about
-#' endpoints, see [Managing
-#' endpoints](https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html).
-#' @param Bytes Use the `Bytes` parameter to input a text, PDF, Word or image file. You
-#' can also use the `Bytes` parameter to input an Amazon Textract
-#' `DetectDocumentText` or `AnalyzeDocument` output file.
+#' @param EndpointArn &#91;required&#93; The Amazon Resource Number (ARN) of the endpoint.
+#' 
+#' For prompt classification, Amazon Comprehend provides the endpoint ARN:
+#' `zzz`.
+#' 
+#' For custom classification, you create an endpoint for your custom model.
+#' For more information, see [Using Amazon Comprehend
+#' endpoints](https://docs.aws.amazon.com/comprehend/latest/dg/using-endpoints.html).
+#' @param Bytes Use the `Bytes` parameter to input a text, PDF, Word or image file.
+#' 
+#' When you classify a document using a custom model, you can also use the
+#' `Bytes` parameter to input an Amazon Textract `DetectDocumentText` or
+#' `AnalyzeDocument` output file.
+#' 
+#' To classify a document using the prompt classifier, use the `Text`
+#' parameter for input.
 #' 
 #' Provide the input document as a sequence of base64-encoded bytes. If
 #' your code uses an Amazon Web Services SDK to classify documents, the SDK
@@ -827,7 +849,7 @@ comprehend_create_dataset <- function(FlywheelArn, DatasetName, DatasetType = NU
 #' @param InputDataConfig &#91;required&#93; Specifies the format and location of the input data for the job.
 #' @param OutputDataConfig Specifies the location for the output files from a custom classifier
 #' job. This parameter is required for a request that creates a native
-#' classifier model.
+#' document model.
 #' @param ClientRequestToken A unique identifier for the request. If you don't set the client request
 #' token, Amazon Comprehend generates one.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. You can specify any of the
@@ -1251,12 +1273,15 @@ comprehend_create_entity_recognizer <- function(RecognizerName, VersionName = NU
 #'
 #' @param FlywheelName &#91;required&#93; Name for the flywheel.
 #' @param ActiveModelArn To associate an existing model with the flywheel, specify the Amazon
-#' Resource Number (ARN) of the model version.
+#' Resource Number (ARN) of the model version. Do not set `TaskConfig` or
+#' `ModelType` if you specify an `ActiveModelArn`.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants Amazon
 #' Comprehend the permissions required to access the flywheel data in the
 #' data lake.
-#' @param TaskConfig Configuration about the custom classifier associated with the flywheel.
-#' @param ModelType The model type.
+#' @param TaskConfig Configuration about the model associated with the flywheel. You need to
+#' set `TaskConfig` if you are creating a flywheel for a new model.
+#' @param ModelType The model type. You need to set `ModelType` if you are creating a
+#' flywheel for a new model.
 #' @param DataLakeS3Uri &#91;required&#93; Enter the S3 location for the data lake. You can specify a new S3 bucket
 #' or a new folder of an existing S3 bucket. The flywheel creates the data
 #' lake at this location.
@@ -3491,7 +3516,8 @@ comprehend_detect_syntax <- function(Text, LanguageCode) {
 #' identified in the text.
 #' 
 #' For more information about targeted sentiment, see [Targeted
-#' sentiment](https://docs.aws.amazon.com/comprehend/latest/dg/how-targeted-sentiment.html).
+#' sentiment](https://docs.aws.amazon.com/comprehend/latest/dg/how-targeted-sentiment.html)
+#' in the *Amazon Comprehend Developer Guide*.
 #'
 #' @usage
 #' comprehend_detect_targeted_sentiment(Text, LanguageCode)
@@ -3562,6 +3588,77 @@ comprehend_detect_targeted_sentiment <- function(Text, LanguageCode) {
   return(response)
 }
 .comprehend$operations$detect_targeted_sentiment <- comprehend_detect_targeted_sentiment
+
+#' Performs toxicity analysis on the list of text strings that you provide
+#' as input
+#'
+#' @description
+#' Performs toxicity analysis on the list of text strings that you provide
+#' as input. The analysis uses the order of strings in the list to
+#' determine context when predicting toxicity. The API response contains a
+#' results list that matches the size of the input list. For more
+#' information about toxicity detection, see [Toxicity
+#' detection](https://docs.aws.amazon.com/comprehend/latest/dg/) in the
+#' *Amazon Comprehend Developer Guide*
+#'
+#' @usage
+#' comprehend_detect_toxic_content(TextSegments, LanguageCode)
+#'
+#' @param TextSegments &#91;required&#93; A list of up to 10 text strings. The maximum size for the list is 10 KB.
+#' @param LanguageCode &#91;required&#93; The language of the input text. Currently, English is the only supported
+#' language.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResultList = list(
+#'     list(
+#'       Labels = list(
+#'         list(
+#'           Name = "GRAPHIC"|"HARASSMENT_OR_ABUSE"|"HATE_SPEECH"|"INSULT"|"PROFANITY"|"SEXUAL"|"VIOLENCE_OR_THREAT",
+#'           Score = 123.0
+#'         )
+#'       ),
+#'       Toxicity = 123.0
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$detect_toxic_content(
+#'   TextSegments = list(
+#'     list(
+#'       Text = "string"
+#'     )
+#'   ),
+#'   LanguageCode = "en"|"es"|"fr"|"de"|"it"|"pt"|"ar"|"hi"|"ja"|"ko"|"zh"|"zh-TW"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname comprehend_detect_toxic_content
+#'
+#' @aliases comprehend_detect_toxic_content
+comprehend_detect_toxic_content <- function(TextSegments, LanguageCode) {
+  op <- new_operation(
+    name = "DetectToxicContent",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .comprehend$detect_toxic_content_input(TextSegments = TextSegments, LanguageCode = LanguageCode)
+  output <- .comprehend$detect_toxic_content_output()
+  config <- get_config()
+  svc <- .comprehend$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.comprehend$operations$detect_toxic_content <- comprehend_detect_toxic_content
 
 #' Creates a new custom model that replicates a source custom model that
 #' you import
@@ -6342,7 +6439,8 @@ comprehend_start_sentiment_detection_job <- function(InputDataConfig, OutputData
 #' @param OutputDataConfig &#91;required&#93; Specifies where to send the output files.
 #' @param DataAccessRoleArn &#91;required&#93; The Amazon Resource Name (ARN) of the IAM role that grants Amazon
 #' Comprehend read access to your input data. For more information, see
-#' Role-based permissions.
+#' [Role-based
+#' permissions](https://docs.aws.amazon.com/comprehend/latest/dg/security_iam_id-based-policy-examples.html#auth-role-permissions).
 #' @param JobName The identifier of the job.
 #' @param LanguageCode &#91;required&#93; The language of the input documents. Currently, English is the only
 #' supported language.

@@ -12,8 +12,8 @@ NULL
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param DisplayName A string containing the name of the group. This value is commonly
-#' displayed when the group is referenced. "Administrator" and
-#' "AWSAdministrators" are reserved names and can't be used for users or
+#' displayed when the group is referenced. `Administrator` and
+#' `AWSAdministrators` are reserved names and can't be used for users or
 #' groups.
 #' @param Description A string containing the description of the group.
 #'
@@ -82,7 +82,7 @@ identitystore_create_group_membership <- function(IdentityStoreId, GroupId, Memb
 #' characters. This value can consist of letters, accented characters,
 #' symbols, numbers, and punctuation. This value is specified at the time
 #' the user is created and stored as an attribute of the user object in the
-#' identity store. "Administrator" and "AWSAdministrators" are reserved
+#' identity store. `Administrator` and `AWSAdministrators` are reserved
 #' names and can't be used for users or groups.
 #' @param Name An object containing the name of the user.
 #' @param DisplayName A string containing the name of the user. This value is typically

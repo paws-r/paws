@@ -23,7 +23,7 @@ For more information about using tags to control access, see
 \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html}{Controlling access to Amazon Web Services resources using tags}.}
 }
 \description{
-Creates a log group with the specified name. You can create up to 20,000 log groups per account.
+Creates a log group with the specified name. You can create up to 1,000,000 log groups per Region per account.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_log_group/} for full documentation.
 }

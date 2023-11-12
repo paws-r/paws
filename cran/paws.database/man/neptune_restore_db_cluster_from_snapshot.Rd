@@ -125,7 +125,10 @@ enabled. By default, deletion protection is disabled.}
 \item{CopyTagsToSnapshot}{\emph{If set to true, tags are copied to any snapshot of the restored DB
 cluster that is created.}}
 
-\item{ServerlessV2ScalingConfiguration}{}
+\item{ServerlessV2ScalingConfiguration}{Contains the scaling configuration of a Neptune Serverless DB cluster.
+
+For more information, see \href{https://docs.aws.amazon.com/neptune/latest/userguide/neptune-serverless-using.html}{Using Amazon Neptune Serverless}
+in the \emph{Amazon Neptune User Guide}.}
 }
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot.

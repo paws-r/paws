@@ -121,9 +121,8 @@ that can run in the source Amazon Web Services Region.
 If you supply a value for this operation's \code{SourceRegion} parameter, a
 pre-signed URL will be calculated on your behalf.}
 
-\item{CopyTags}{A value that indicates whether to copy all tags from the source DB
-cluster snapshot to the target DB cluster snapshot. By default, tags are
-not copied.}
+\item{CopyTags}{Specifies whether to copy all tags from the source DB cluster snapshot
+to the target DB cluster snapshot. By default, tags are not copied.}
 
 \item{Tags}{}
 

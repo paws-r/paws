@@ -63,6 +63,18 @@ NULL
   return(populate(args, shape))
 }
 
+.lookoutequipment$create_retraining_scheduler_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), RetrainingStartDate = structure(logical(0), tags = list(type = "timestamp")), RetrainingFrequency = structure(logical(0), tags = list(type = "string")), LookbackWindow = structure(logical(0), tags = list(type = "string")), PromoteMode = structure(logical(0), tags = list(type = "string")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$create_retraining_scheduler_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .lookoutequipment$delete_dataset_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DatasetName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -120,6 +132,16 @@ NULL
 }
 
 .lookoutequipment$delete_resource_policy_output <- function(...) {
+  list()
+}
+
+.lookoutequipment$delete_retraining_scheduler_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$delete_retraining_scheduler_output <- function(...) {
   list()
 }
 
@@ -191,7 +213,7 @@ NULL
 
 .lookoutequipment$describe_model_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), DatasetName = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), Schema = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), LabelsInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LabelGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TrainingDataStartTime = structure(logical(0), tags = list(type = "timestamp")), TrainingDataEndTime = structure(logical(0), tags = list(type = "timestamp")), EvaluationDataStartTime = structure(logical(0), tags = list(type = "timestamp")), EvaluationDataEndTime = structure(logical(0), tags = list(type = "timestamp")), RoleArn = structure(logical(0), tags = list(type = "string")), DataPreProcessingConfiguration = structure(list(TargetSamplingRate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), TrainingExecutionStartTime = structure(logical(0), tags = list(type = "timestamp")), TrainingExecutionEndTime = structure(logical(0), tags = list(type = "timestamp")), FailedReason = structure(logical(0), tags = list(type = "string")), ModelMetrics = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ServerSideKmsKeyId = structure(logical(0), tags = list(type = "string")), OffCondition = structure(logical(0), tags = list(type = "string")), SourceModelVersionArn = structure(logical(0), tags = list(type = "string")), ImportJobStartTime = structure(logical(0), tags = list(type = "timestamp")), ImportJobEndTime = structure(logical(0), tags = list(type = "timestamp")), ActiveModelVersion = structure(logical(0), tags = list(type = "long")), ActiveModelVersionArn = structure(logical(0), tags = list(type = "string")), ModelVersionActivatedAt = structure(logical(0), tags = list(type = "timestamp")), PreviousActiveModelVersion = structure(logical(0), tags = list(type = "long")), PreviousActiveModelVersionArn = structure(logical(0), tags = list(type = "string")), PreviousModelVersionActivatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), DatasetName = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), Schema = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), LabelsInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LabelGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TrainingDataStartTime = structure(logical(0), tags = list(type = "timestamp")), TrainingDataEndTime = structure(logical(0), tags = list(type = "timestamp")), EvaluationDataStartTime = structure(logical(0), tags = list(type = "timestamp")), EvaluationDataEndTime = structure(logical(0), tags = list(type = "timestamp")), RoleArn = structure(logical(0), tags = list(type = "string")), DataPreProcessingConfiguration = structure(list(TargetSamplingRate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), TrainingExecutionStartTime = structure(logical(0), tags = list(type = "timestamp")), TrainingExecutionEndTime = structure(logical(0), tags = list(type = "timestamp")), FailedReason = structure(logical(0), tags = list(type = "string")), ModelMetrics = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ServerSideKmsKeyId = structure(logical(0), tags = list(type = "string")), OffCondition = structure(logical(0), tags = list(type = "string")), SourceModelVersionArn = structure(logical(0), tags = list(type = "string")), ImportJobStartTime = structure(logical(0), tags = list(type = "timestamp")), ImportJobEndTime = structure(logical(0), tags = list(type = "timestamp")), ActiveModelVersion = structure(logical(0), tags = list(type = "long")), ActiveModelVersionArn = structure(logical(0), tags = list(type = "string")), ModelVersionActivatedAt = structure(logical(0), tags = list(type = "timestamp")), PreviousActiveModelVersion = structure(logical(0), tags = list(type = "long")), PreviousActiveModelVersionArn = structure(logical(0), tags = list(type = "string")), PreviousModelVersionActivatedAt = structure(logical(0), tags = list(type = "timestamp")), PriorModelMetrics = structure(logical(0), tags = list(jsonvalue = TRUE, type = "string")), LatestScheduledRetrainingFailedReason = structure(logical(0), tags = list(type = "string")), LatestScheduledRetrainingStatus = structure(logical(0), tags = list(type = "string")), LatestScheduledRetrainingModelVersion = structure(logical(0), tags = list(type = "long")), LatestScheduledRetrainingStartTime = structure(logical(0), tags = list(type = "timestamp")), LatestScheduledRetrainingAvailableDataInDays = structure(logical(0), tags = list(type = "integer")), NextScheduledRetrainingStartDate = structure(logical(0), tags = list(type = "timestamp")), AccumulatedInferenceDataStartTime = structure(logical(0), tags = list(type = "timestamp")), AccumulatedInferenceDataEndTime = structure(logical(0), tags = list(type = "timestamp")), RetrainingSchedulerStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -203,7 +225,7 @@ NULL
 
 .lookoutequipment$describe_model_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "long")), ModelVersionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string")), DatasetName = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), Schema = structure(logical(0), tags = list(type = "string")), LabelsInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LabelGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TrainingDataStartTime = structure(logical(0), tags = list(type = "timestamp")), TrainingDataEndTime = structure(logical(0), tags = list(type = "timestamp")), EvaluationDataStartTime = structure(logical(0), tags = list(type = "timestamp")), EvaluationDataEndTime = structure(logical(0), tags = list(type = "timestamp")), RoleArn = structure(logical(0), tags = list(type = "string")), DataPreProcessingConfiguration = structure(list(TargetSamplingRate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TrainingExecutionStartTime = structure(logical(0), tags = list(type = "timestamp")), TrainingExecutionEndTime = structure(logical(0), tags = list(type = "timestamp")), FailedReason = structure(logical(0), tags = list(type = "string")), ModelMetrics = structure(logical(0), tags = list(type = "string")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ServerSideKmsKeyId = structure(logical(0), tags = list(type = "string")), OffCondition = structure(logical(0), tags = list(type = "string")), SourceModelVersionArn = structure(logical(0), tags = list(type = "string")), ImportJobStartTime = structure(logical(0), tags = list(type = "timestamp")), ImportJobEndTime = structure(logical(0), tags = list(type = "timestamp")), ImportedDataSizeInBytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "long")), ModelVersionArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), SourceType = structure(logical(0), tags = list(type = "string")), DatasetName = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), Schema = structure(logical(0), tags = list(type = "string")), LabelsInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LabelGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TrainingDataStartTime = structure(logical(0), tags = list(type = "timestamp")), TrainingDataEndTime = structure(logical(0), tags = list(type = "timestamp")), EvaluationDataStartTime = structure(logical(0), tags = list(type = "timestamp")), EvaluationDataEndTime = structure(logical(0), tags = list(type = "timestamp")), RoleArn = structure(logical(0), tags = list(type = "string")), DataPreProcessingConfiguration = structure(list(TargetSamplingRate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), TrainingExecutionStartTime = structure(logical(0), tags = list(type = "timestamp")), TrainingExecutionEndTime = structure(logical(0), tags = list(type = "timestamp")), FailedReason = structure(logical(0), tags = list(type = "string")), ModelMetrics = structure(logical(0), tags = list(type = "string")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ServerSideKmsKeyId = structure(logical(0), tags = list(type = "string")), OffCondition = structure(logical(0), tags = list(type = "string")), SourceModelVersionArn = structure(logical(0), tags = list(type = "string")), ImportJobStartTime = structure(logical(0), tags = list(type = "timestamp")), ImportJobEndTime = structure(logical(0), tags = list(type = "timestamp")), ImportedDataSizeInBytes = structure(logical(0), tags = list(type = "long")), PriorModelMetrics = structure(logical(0), tags = list(type = "string")), RetrainingAvailableDataInDays = structure(logical(0), tags = list(type = "integer")), AutoPromotionResult = structure(logical(0), tags = list(type = "string")), AutoPromotionResultReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -216,6 +238,18 @@ NULL
 .lookoutequipment$describe_resource_policy_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(PolicyRevisionId = structure(logical(0), tags = list(type = "string")), ResourcePolicy = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), LastModifiedTime = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$describe_retraining_scheduler_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$describe_retraining_scheduler_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), RetrainingStartDate = structure(logical(0), tags = list(type = "timestamp")), RetrainingFrequency = structure(logical(0), tags = list(type = "string")), LookbackWindow = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), PromoteMode = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), UpdatedAt = structure(logical(0), tags = list(type = "timestamp"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -233,7 +267,7 @@ NULL
 
 .lookoutequipment$import_model_version_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(SourceModelVersionArn = structure(logical(0), tags = list(type = "string")), ModelName = structure(logical(0), tags = list(type = "string")), DatasetName = structure(logical(0), tags = list(type = "string")), LabelsInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LabelGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ServerSideKmsKeyId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(SourceModelVersionArn = structure(logical(0), tags = list(type = "string")), ModelName = structure(logical(0), tags = list(type = "string")), DatasetName = structure(logical(0), tags = list(type = "string")), LabelsInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LabelGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ClientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), RoleArn = structure(logical(0), tags = list(type = "string")), ServerSideKmsKeyId = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), InferenceDataImportStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -287,7 +321,7 @@ NULL
 
 .lookoutequipment$list_inference_executions_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), InferenceExecutionSummaries = structure(list(structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), InferenceSchedulerName = structure(logical(0), tags = list(type = "string")), InferenceSchedulerArn = structure(logical(0), tags = list(type = "string")), ScheduledStartTime = structure(logical(0), tags = list(type = "timestamp")), DataStartTime = structure(logical(0), tags = list(type = "timestamp")), DataEndTime = structure(logical(0), tags = list(type = "timestamp")), DataInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InputTimeZoneOffset = structure(logical(0), tags = list(type = "string")), InferenceInputNameConfiguration = structure(list(TimestampFormat = structure(logical(0), tags = list(type = "string")), ComponentTimestampDelimiter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), DataOutputConfiguration = structure(list(S3OutputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CustomerResultObject = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), FailedReason = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), InferenceExecutionSummaries = structure(list(structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), InferenceSchedulerName = structure(logical(0), tags = list(type = "string")), InferenceSchedulerArn = structure(logical(0), tags = list(type = "string")), ScheduledStartTime = structure(logical(0), tags = list(type = "timestamp")), DataStartTime = structure(logical(0), tags = list(type = "timestamp")), DataEndTime = structure(logical(0), tags = list(type = "timestamp")), DataInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), InputTimeZoneOffset = structure(logical(0), tags = list(type = "string")), InferenceInputNameConfiguration = structure(list(TimestampFormat = structure(logical(0), tags = list(type = "string")), ComponentTimestampDelimiter = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), DataOutputConfiguration = structure(list(S3OutputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KmsKeyId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), CustomerResultObject = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Status = structure(logical(0), tags = list(type = "string")), FailedReason = structure(logical(0), tags = list(type = "string")), ModelVersion = structure(logical(0), tags = list(type = "long")), ModelVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -347,7 +381,19 @@ NULL
 
 .lookoutequipment$list_models_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ModelSummaries = structure(list(structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), DatasetName = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ActiveModelVersion = structure(logical(0), tags = list(type = "long")), ActiveModelVersionArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(NextToken = structure(logical(0), tags = list(type = "string")), ModelSummaries = structure(list(structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), DatasetName = structure(logical(0), tags = list(type = "string")), DatasetArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), CreatedAt = structure(logical(0), tags = list(type = "timestamp")), ActiveModelVersion = structure(logical(0), tags = list(type = "long")), ActiveModelVersionArn = structure(logical(0), tags = list(type = "string")), LatestScheduledRetrainingStatus = structure(logical(0), tags = list(type = "string")), LatestScheduledRetrainingModelVersion = structure(logical(0), tags = list(type = "long")), LatestScheduledRetrainingStartTime = structure(logical(0), tags = list(type = "timestamp")), NextScheduledRetrainingStartDate = structure(logical(0), tags = list(type = "timestamp")), RetrainingSchedulerStatus = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$list_retraining_schedulers_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelNameBeginsWith = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$list_retraining_schedulers_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(RetrainingSchedulerSummaries = structure(list(structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string")), RetrainingStartDate = structure(logical(0), tags = list(type = "timestamp")), RetrainingFrequency = structure(logical(0), tags = list(type = "string")), LookbackWindow = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -411,6 +457,18 @@ NULL
   return(populate(args, shape))
 }
 
+.lookoutequipment$start_retraining_scheduler_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$start_retraining_scheduler_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .lookoutequipment$stop_inference_scheduler_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(InferenceSchedulerName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -420,6 +478,18 @@ NULL
 .lookoutequipment$stop_inference_scheduler_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(ModelArn = structure(logical(0), tags = list(type = "string")), ModelName = structure(logical(0), tags = list(type = "string")), InferenceSchedulerName = structure(logical(0), tags = list(type = "string")), InferenceSchedulerArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$stop_retraining_scheduler_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$stop_retraining_scheduler_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), ModelArn = structure(logical(0), tags = list(type = "string")), Status = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -476,5 +546,25 @@ NULL
 }
 
 .lookoutequipment$update_label_group_output <- function(...) {
+  list()
+}
+
+.lookoutequipment$update_model_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), LabelsInputConfiguration = structure(list(S3InputConfiguration = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), LabelGroupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$update_model_output <- function(...) {
+  list()
+}
+
+.lookoutequipment$update_retraining_scheduler_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ModelName = structure(logical(0), tags = list(type = "string")), RetrainingStartDate = structure(logical(0), tags = list(type = "timestamp")), RetrainingFrequency = structure(logical(0), tags = list(type = "string")), LookbackWindow = structure(logical(0), tags = list(type = "string")), PromoteMode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.lookoutequipment$update_retraining_scheduler_output <- function(...) {
   list()
 }

@@ -90,10 +90,10 @@ Constraints: Minimum 20, maximum 100.}
 request. If this parameter is specified, the response includes only
 records beyond the marker, up to the value specified by \code{MaxRecords}.}
 
-\item{IncludeShared}{A value that indicates whether to include shared manual DB cluster
-snapshots from other Amazon Web Services accounts that this Amazon Web
-Services account has been given permission to copy or restore. By
-default, these snapshots are not included.
+\item{IncludeShared}{Specifies whether to include shared manual DB cluster snapshots from
+other Amazon Web Services accounts that this Amazon Web Services account
+has been given permission to copy or restore. By default, these
+snapshots are not included.
 
 You can give an Amazon Web Services account permission to restore a
 manual DB cluster snapshot from another Amazon Web Services account by
@@ -101,9 +101,9 @@ the
 \code{\link[=rds_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute}}
 API action.}
 
-\item{IncludePublic}{A value that indicates whether to include manual DB cluster snapshots
-that are public and can be copied or restored by any Amazon Web Services
-account. By default, the public snapshots are not included.
+\item{IncludePublic}{Specifies whether to include manual DB cluster snapshots that are public
+and can be copied or restored by any Amazon Web Services account. By
+default, the public snapshots are not included.
 
 You can share a manual DB cluster snapshot as public by using the
 \code{\link[=rds_modify_db_cluster_snapshot_attribute]{modify_db_cluster_snapshot_attribute}}

@@ -10,7 +10,17 @@ workmail_deregister_from_work_mail(OrganizationId, EntityId)
 \item{OrganizationId}{[required] The identifier for the organization under which the WorkMail entity
 exists.}
 
-\item{EntityId}{[required] The identifier for the member (user or group) to be updated.}
+\item{EntityId}{[required] The identifier for the member to be updated.
+
+The identifier can be \emph{UserId, ResourceId, or Group Id}, \emph{Username,
+Resourcename, or Groupname}, or \emph{email}.
+\itemize{
+\item Entity ID: 12345678-1234-1234-1234-123456789012,
+r-0123456789a0123456789b0123456789, or
+S-1-1-12-1234567890-123456789-123456789-1234
+\item Email address: entity@domain.tld
+\item Entity name: entity
+}}
 }
 \description{
 Mark a user, group, or resource as no longer used in WorkMail. This action disassociates the mailbox and schedules it for clean-up. WorkMail keeps mailboxes for 30 days before they are permanently removed. The functionality in the console is \emph{Disable}.

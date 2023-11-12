@@ -19,9 +19,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -95,10 +95,12 @@ NULL
 #'  \link[=kafka_create_cluster]{create_cluster} \tab Creates a new MSK cluster\cr
 #'  \link[=kafka_create_cluster_v2]{create_cluster_v2} \tab Creates a new MSK cluster\cr
 #'  \link[=kafka_create_configuration]{create_configuration} \tab Creates a new MSK configuration\cr
+#'  \link[=kafka_create_replicator]{create_replicator} \tab Creates the replicator\cr
 #'  \link[=kafka_create_vpc_connection]{create_vpc_connection} \tab Creates a new MSK VPC connection\cr
 #'  \link[=kafka_delete_cluster]{delete_cluster} \tab Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request\cr
 #'  \link[=kafka_delete_cluster_policy]{delete_cluster_policy} \tab Deletes the MSK cluster policy specified by the Amazon Resource Name (ARN) in the request\cr
 #'  \link[=kafka_delete_configuration]{delete_configuration} \tab Deletes an MSK Configuration\cr
+#'  \link[=kafka_delete_replicator]{delete_replicator} \tab Deletes a replicator\cr
 #'  \link[=kafka_delete_vpc_connection]{delete_vpc_connection} \tab Deletes a MSK VPC connection\cr
 #'  \link[=kafka_describe_cluster]{describe_cluster} \tab Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request\cr
 #'  \link[=kafka_describe_cluster_operation]{describe_cluster_operation} \tab Returns a description of the cluster operation specified by the ARN\cr
@@ -106,6 +108,7 @@ NULL
 #'  \link[=kafka_describe_cluster_v2]{describe_cluster_v2} \tab Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request\cr
 #'  \link[=kafka_describe_configuration]{describe_configuration} \tab Returns a description of this MSK configuration\cr
 #'  \link[=kafka_describe_configuration_revision]{describe_configuration_revision} \tab Returns a description of this revision of the configuration\cr
+#'  \link[=kafka_describe_replicator]{describe_replicator} \tab Describes a replicator\cr
 #'  \link[=kafka_describe_vpc_connection]{describe_vpc_connection} \tab Returns a description of this MSK VPC connection\cr
 #'  \link[=kafka_get_bootstrap_brokers]{get_bootstrap_brokers} \tab A list of brokers that a client application can use to bootstrap\cr
 #'  \link[=kafka_get_cluster_policy]{get_cluster_policy} \tab Get the MSK cluster policy specified by the Amazon Resource Name (ARN) in the request\cr
@@ -119,6 +122,7 @@ NULL
 #'  \link[=kafka_list_configurations]{list_configurations} \tab Returns a list of all the MSK configurations in this Region\cr
 #'  \link[=kafka_list_kafka_versions]{list_kafka_versions} \tab Returns a list of Apache Kafka versions\cr
 #'  \link[=kafka_list_nodes]{list_nodes} \tab Returns a list of the broker nodes in the cluster\cr
+#'  \link[=kafka_list_replicators]{list_replicators} \tab Lists the replicators\cr
 #'  \link[=kafka_list_scram_secrets]{list_scram_secrets} \tab Returns a list of the Scram Secrets associated with an Amazon MSK cluster\cr
 #'  \link[=kafka_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags associated with the specified resource\cr
 #'  \link[=kafka_list_vpc_connections]{list_vpc_connections} \tab Returns a list of all the VPC connections in this Region\cr
@@ -135,6 +139,7 @@ NULL
 #'  \link[=kafka_update_configuration]{update_configuration} \tab Updates an MSK configuration\cr
 #'  \link[=kafka_update_connectivity]{update_connectivity} \tab Updates the cluster's connectivity configuration\cr
 #'  \link[=kafka_update_monitoring]{update_monitoring} \tab Updates the monitoring settings for the cluster\cr
+#'  \link[=kafka_update_replication_info]{update_replication_info} \tab Updates replication info of a replicator\cr
 #'  \link[=kafka_update_security]{update_security} \tab Updates the security settings for the cluster\cr
 #'  \link[=kafka_update_storage]{update_storage} \tab Updates cluster broker volume size (or) sets cluster storage mode to TIERED
 #' }

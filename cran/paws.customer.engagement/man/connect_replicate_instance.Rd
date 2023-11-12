@@ -3,7 +3,8 @@
 \name{connect_replicate_instance}
 \alias{connect_replicate_instance}
 \title{Replicates an Amazon Connect instance in the specified Amazon Web
-Services Region}
+Services Region and copies configuration information for Amazon Connect
+resources across Amazon Web Services Regions}
 \usage{
 connect_replicate_instance(
   InstanceId,
@@ -29,7 +30,7 @@ populates this field. For more information about idempotency, see
 unique.}
 }
 \description{
-Replicates an Amazon Connect instance in the specified Amazon Web Services Region.
+Replicates an Amazon Connect instance in the specified Amazon Web Services Region and copies configuration information for Amazon Connect resources across Amazon Web Services Regions.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_replicate_instance/} for full documentation.
 }

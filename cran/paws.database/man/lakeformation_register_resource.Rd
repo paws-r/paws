@@ -8,7 +8,8 @@ lakeformation_register_resource(
   ResourceArn,
   UseServiceLinkedRole = NULL,
   RoleArn = NULL,
-  WithFederation = NULL
+  WithFederation = NULL,
+  HybridAccessEnabled = NULL
 )
 }
 \arguments{
@@ -24,6 +25,10 @@ For more information, see \href{https://docs.aws.amazon.com/lake-formation/lates
 \item{RoleArn}{The identifier for the role that registers the resource.}
 
 \item{WithFederation}{Whether or not the resource is a federated resource.}
+
+\item{HybridAccessEnabled}{Specifies whether the data access of tables pointing to the location can
+be managed by both Lake Formation permissions as well as Amazon S3
+bucket policies.}
 }
 \description{
 Registers the resource as managed by the Data Catalog.

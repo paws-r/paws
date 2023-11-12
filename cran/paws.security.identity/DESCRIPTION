@@ -1,6 +1,6 @@
 Package: paws.security.identity
 Title: 'Amazon Web Services' Security, Identity, & Compliance Services
-Version: 0.4.0
+Version: 0.2.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -88,6 +88,9 @@ Collate:
     'macie_service.R'
     'macie_interfaces.R'
     'macie_operations.R'
+    'pcaconnectorad_service.R'
+    'pcaconnectorad_interfaces.R'
+    'pcaconnectorad_operations.R'
     'ram_service.R'
     'ram_interfaces.R'
     'ram_operations.R'
@@ -98,6 +101,9 @@ Collate:
     'securityhub_service.R'
     'securityhub_interfaces.R'
     'securityhub_operations.R'
+    'securitylake_service.R'
+    'securitylake_interfaces.R'
+    'securitylake_operations.R'
     'shield_service.R'
     'shield_interfaces.R'
     'shield_operations.R'
@@ -113,6 +119,9 @@ Collate:
     'sts_service.R'
     'sts_interfaces.R'
     'sts_operations.R'
+    'verifiedpermissions_service.R'
+    'verifiedpermissions_interfaces.R'
+    'verifiedpermissions_operations.R'
     'waf_service.R'
     'waf_interfaces.R'
     'waf_operations.R'

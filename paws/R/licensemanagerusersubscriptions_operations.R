@@ -14,7 +14,7 @@ NULL
 #' will take 48 hours to appear for billing periods that haven't closed
 #' (marked as **Pending** billing status) in Amazon Web Services Billing.
 #' For more information, see [Viewing your monthly
-#' charges](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/invoice.html)
+#' charges](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/getting-viewing-bill.html)
 #' in the *Amazon Web Services Billing User Guide*.
 #'
 #' @usage
@@ -621,7 +621,7 @@ licensemanagerusersubscriptions_register_identity_provider <- function(IdentityP
 #' will take 48 hours to appear for billing periods that haven't closed
 #' (marked as **Pending** billing status) in Amazon Web Services Billing.
 #' For more information, see [Viewing your monthly
-#' charges](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/invoice.html)
+#' charges](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/getting-viewing-bill.html)
 #' in the *Amazon Web Services Billing User Guide*.
 #'
 #' @usage

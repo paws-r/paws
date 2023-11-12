@@ -11,7 +11,7 @@ codedeploy_delete_resources_by_external_id(externalId = NULL)
 stack ID) that is linked to one or more CodeDeploy resources.}
 }
 \description{
-Deletes resources linked to an external ID.
+Deletes resources linked to an external ID. This action only applies if you have configured blue/green deployments through CloudFormation.
 
 See \url{https://www.paws-r-sdk.com/docs/codedeploy_delete_resources_by_external_id/} for full documentation.
 }

@@ -37,7 +37,11 @@ redshift_restore_from_cluster_snapshot(
   DefaultIamRoleArn = NULL,
   ReservedNodeId = NULL,
   TargetReservedNodeOfferingId = NULL,
-  Encrypted = NULL
+  Encrypted = NULL,
+  ManageMasterPassword = NULL,
+  MasterPasswordSecretKmsKeyId = NULL,
+  IpAddressType = NULL,
+  MultiAZ = NULL
 )
 }
 \arguments{
@@ -236,6 +240,21 @@ from a snapshot.}
 
 \item{Encrypted}{Enables support for restoring an unencrypted snapshot to a cluster
 encrypted with Key Management Service (KMS) and a customer managed key.}
+
+\item{ManageMasterPassword}{If \code{true}, Amazon Redshift uses Secrets Manager to manage the restored
+cluster's admin credentials. If \code{ManageMasterPassword} is false or not
+set, Amazon Redshift uses the admin credentials the cluster had at the
+time the snapshot was taken.}
+
+\item{MasterPasswordSecretKmsKeyId}{The ID of the Key Management Service (KMS) key used to encrypt and store
+the cluster's admin credentials secret. You can only use this parameter
+if \code{ManageMasterPassword} is true.}
+
+\item{IpAddressType}{The IP address type for the cluster. Possible values are \code{ipv4} and
+\code{dualstack}.}
+
+\item{MultiAZ}{If true, the snapshot will be restored to a cluster deployed in two
+Availability Zones.}
 }
 \description{
 Creates a new cluster from a snapshot. By default, Amazon Redshift creates the resulting cluster with the same configuration as the original cluster from which the snapshot was created, except that the new cluster is created with the default cluster security and parameter groups. After Amazon Redshift creates the cluster, you can use the \code{\link[=redshift_modify_cluster]{modify_cluster}} API to associate a different security group and different parameter group with the restored cluster. If you are using a DS node type, you can also choose to change to another DS node type of the same size during restore.

@@ -1,6 +1,6 @@
 Package: paws.application.integration
 Title: 'Amazon Web Services' Application Integration Services
-Version: 0.4.0
+Version: 0.2.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -25,6 +25,12 @@ Collate:
     'eventbridge_service.R'
     'eventbridge_interfaces.R'
     'eventbridge_operations.R'
+    'eventbridgepipes_service.R'
+    'eventbridgepipes_interfaces.R'
+    'eventbridgepipes_operations.R'
+    'eventbridgescheduler_service.R'
+    'eventbridgescheduler_interfaces.R'
+    'eventbridgescheduler_operations.R'
     'locationservice_service.R'
     'locationservice_interfaces.R'
     'locationservice_operations.R'
@@ -35,6 +41,9 @@ Collate:
     'mwaa_interfaces.R'
     'mwaa_operations.R'
     'reexports_paws.common.R'
+    'resourceexplorer_service.R'
+    'resourceexplorer_interfaces.R'
+    'resourceexplorer_operations.R'
     'schemas_service.R'
     'schemas_interfaces.R'
     'schemas_operations.R'

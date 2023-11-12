@@ -1762,7 +1762,7 @@ sesv2_list_email_identities <- function(NextToken = NULL, PageSize = NULL) {
 #' the response includes a `NextToken` element, which you can use to obtain
 #' additional results.
 #' 
-#' The value you specify has to be at least 1, and can be no more than 10.
+#' The value you specify has to be at least 1, and can be no more than 100.
 #'
 #' @keywords internal
 #'

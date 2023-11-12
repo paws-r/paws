@@ -109,6 +109,70 @@ workspaces_associate_ip_groups <- function(DirectoryId, GroupIds) {
 }
 .workspaces$operations$associate_ip_groups <- workspaces_associate_ip_groups
 
+#' Associates the specified application to the specified WorkSpace
+#'
+#' @description
+#' Associates the specified application to the specified WorkSpace.
+#'
+#' @usage
+#' workspaces_associate_workspace_application(WorkspaceId, ApplicationId)
+#'
+#' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
+#' @param ApplicationId &#91;required&#93; The identifier of the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Association = list(
+#'     AssociatedResourceId = "string",
+#'     AssociatedResourceType = "APPLICATION",
+#'     Created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING_INSTALL"|"PENDING_INSTALL_DEPLOYMENT"|"PENDING_UNINSTALL"|"PENDING_UNINSTALL_DEPLOYMENT"|"INSTALLING"|"UNINSTALLING"|"ERROR"|"COMPLETED"|"REMOVED",
+#'     StateReason = list(
+#'       ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable",
+#'       ErrorMessage = "string"
+#'     ),
+#'     WorkspaceId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$associate_workspace_application(
+#'   WorkspaceId = "string",
+#'   ApplicationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_associate_workspace_application
+#'
+#' @aliases workspaces_associate_workspace_application
+workspaces_associate_workspace_application <- function(WorkspaceId, ApplicationId) {
+  op <- new_operation(
+    name = "AssociateWorkspaceApplication",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$associate_workspace_application_input(WorkspaceId = WorkspaceId, ApplicationId = ApplicationId)
+  output <- .workspaces$associate_workspace_application_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$associate_workspace_application <- workspaces_associate_workspace_application
+
 #' Adds one or more rules to the specified IP access control group
 #'
 #' @description
@@ -833,10 +897,13 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #' This operation is asynchronous and returns before the WorkSpaces are
 #' created.
 #' 
-#' The `MANUAL` running mode value is only supported by Amazon WorkSpaces
-#' Core. Contact your account team to be allow-listed to use this value.
-#' For more information, see [Amazon WorkSpaces
-#' Core](https://aws.amazon.com/workspaces/core/).
+#' -   The `MANUAL` running mode value is only supported by Amazon
+#'     WorkSpaces Core. Contact your account team to be allow-listed to use
+#'     this value. For more information, see [Amazon WorkSpaces
+#'     Core](https://aws.amazon.com/workspaces/core/).
+#' 
+#' -   You don't need to specify the `PCOIP` protocol for Linux bundles
+#'     because `WSP` is the default protocol for those bundles.
 #'
 #' @usage
 #' workspaces_create_workspaces(Workspaces)
@@ -864,7 +931,8 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'           ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
 #'           Protocols = list(
 #'             "PCOIP"|"WSP"
-#'           )
+#'           ),
+#'           OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"
 #'         ),
 #'         Tags = list(
 #'           list(
@@ -900,7 +968,8 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
 #'         Protocols = list(
 #'           "PCOIP"|"WSP"
-#'         )
+#'         ),
+#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"
 #'       ),
 #'       ModificationStates = list(
 #'         list(
@@ -940,7 +1009,8 @@ workspaces_create_workspace_image <- function(Name, Description, WorkspaceId, Ta
 #'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
 #'         Protocols = list(
 #'           "PCOIP"|"WSP"
-#'         )
+#'         ),
+#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"
 #'       ),
 #'       Tags = list(
 #'         list(
@@ -1312,6 +1382,76 @@ workspaces_delete_workspace_image <- function(ImageId) {
 }
 .workspaces$operations$delete_workspace_image <- workspaces_delete_workspace_image
 
+#' Deploys associated applications to the specified WorkSpace
+#'
+#' @description
+#' Deploys associated applications to the specified WorkSpace
+#'
+#' @usage
+#' workspaces_deploy_workspace_applications(WorkspaceId, Force)
+#'
+#' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
+#' @param Force Indicates whether the force flag is applied for the specified WorkSpace.
+#' When the force flag is enabled, it allows previously failed deployments
+#' to be retried.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Deployment = list(
+#'     Associations = list(
+#'       list(
+#'         AssociatedResourceId = "string",
+#'         AssociatedResourceType = "APPLICATION",
+#'         Created = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         LastUpdatedTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         State = "PENDING_INSTALL"|"PENDING_INSTALL_DEPLOYMENT"|"PENDING_UNINSTALL"|"PENDING_UNINSTALL_DEPLOYMENT"|"INSTALLING"|"UNINSTALLING"|"ERROR"|"COMPLETED"|"REMOVED",
+#'         StateReason = list(
+#'           ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable",
+#'           ErrorMessage = "string"
+#'         ),
+#'         WorkspaceId = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$deploy_workspace_applications(
+#'   WorkspaceId = "string",
+#'   Force = TRUE|FALSE
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_deploy_workspace_applications
+#'
+#' @aliases workspaces_deploy_workspace_applications
+workspaces_deploy_workspace_applications <- function(WorkspaceId, Force = NULL) {
+  op <- new_operation(
+    name = "DeployWorkspaceApplications",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$deploy_workspace_applications_input(WorkspaceId = WorkspaceId, Force = Force)
+  output <- .workspaces$deploy_workspace_applications_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$deploy_workspace_applications <- workspaces_deploy_workspace_applications
+
 #' Deregisters the specified directory
 #'
 #' @description
@@ -1479,6 +1619,242 @@ workspaces_describe_account_modifications <- function(NextToken = NULL) {
   return(response)
 }
 .workspaces$operations$describe_account_modifications <- workspaces_describe_account_modifications
+
+#' Describes the associations between the application and the specified
+#' associated resources
+#'
+#' @description
+#' Describes the associations between the application and the specified
+#' associated resources.
+#'
+#' @usage
+#' workspaces_describe_application_associations(MaxResults, NextToken,
+#'   ApplicationId, AssociatedResourceTypes)
+#'
+#' @param MaxResults The maximum number of associations to return.
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated,
+#' provide this token to receive the next set of results.
+#' @param ApplicationId &#91;required&#93; The identifier of the specified application.
+#' @param AssociatedResourceTypes &#91;required&#93; The resource type of the associated resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Associations = list(
+#'     list(
+#'       ApplicationId = "string",
+#'       AssociatedResourceId = "string",
+#'       AssociatedResourceType = "WORKSPACE"|"BUNDLE"|"IMAGE",
+#'       Created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       State = "PENDING_INSTALL"|"PENDING_INSTALL_DEPLOYMENT"|"PENDING_UNINSTALL"|"PENDING_UNINSTALL_DEPLOYMENT"|"INSTALLING"|"UNINSTALLING"|"ERROR"|"COMPLETED"|"REMOVED",
+#'       StateReason = list(
+#'         ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable",
+#'         ErrorMessage = "string"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_application_associations(
+#'   MaxResults = 123,
+#'   NextToken = "string",
+#'   ApplicationId = "string",
+#'   AssociatedResourceTypes = list(
+#'     "WORKSPACE"|"BUNDLE"|"IMAGE"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_application_associations
+#'
+#' @aliases workspaces_describe_application_associations
+workspaces_describe_application_associations <- function(MaxResults = NULL, NextToken = NULL, ApplicationId, AssociatedResourceTypes) {
+  op <- new_operation(
+    name = "DescribeApplicationAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+  )
+  input <- .workspaces$describe_application_associations_input(MaxResults = MaxResults, NextToken = NextToken, ApplicationId = ApplicationId, AssociatedResourceTypes = AssociatedResourceTypes)
+  output <- .workspaces$describe_application_associations_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_application_associations <- workspaces_describe_application_associations
+
+#' Describes the specified applications by filtering based on their compute
+#' types, license availability, operating systems, and owners
+#'
+#' @description
+#' Describes the specified applications by filtering based on their compute
+#' types, license availability, operating systems, and owners.
+#'
+#' @usage
+#' workspaces_describe_applications(ApplicationIds, ComputeTypeNames,
+#'   LicenseType, OperatingSystemNames, Owner, MaxResults, NextToken)
+#'
+#' @param ApplicationIds The identifiers of one or more applications.
+#' @param ComputeTypeNames The compute types supported by the applications.
+#' @param LicenseType The license availability for the applications.
+#' @param OperatingSystemNames The operating systems supported by the applications.
+#' @param Owner The owner of the applications.
+#' @param MaxResults The maximum number of applications to return.
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated,
+#' provide this token to receive the next set of results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Applications = list(
+#'     list(
+#'       ApplicationId = "string",
+#'       Created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Description = "string",
+#'       LicenseType = "LICENSED"|"UNLICENSED",
+#'       Name = "string",
+#'       Owner = "string",
+#'       State = "PENDING"|"ERROR"|"AVAILABLE"|"UNINSTALL_ONLY",
+#'       SupportedComputeTypeNames = list(
+#'         "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'       ),
+#'       SupportedOperatingSystemNames = list(
+#'         "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_applications(
+#'   ApplicationIds = list(
+#'     "string"
+#'   ),
+#'   ComputeTypeNames = list(
+#'     "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN"
+#'   ),
+#'   LicenseType = "LICENSED"|"UNLICENSED",
+#'   OperatingSystemNames = list(
+#'     "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"
+#'   ),
+#'   Owner = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_applications
+#'
+#' @aliases workspaces_describe_applications
+workspaces_describe_applications <- function(ApplicationIds = NULL, ComputeTypeNames = NULL, LicenseType = NULL, OperatingSystemNames = NULL, Owner = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeApplications",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+  )
+  input <- .workspaces$describe_applications_input(ApplicationIds = ApplicationIds, ComputeTypeNames = ComputeTypeNames, LicenseType = LicenseType, OperatingSystemNames = OperatingSystemNames, Owner = Owner, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .workspaces$describe_applications_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_applications <- workspaces_describe_applications
+
+#' Describes the associations between the applications and the specified
+#' bundle
+#'
+#' @description
+#' Describes the associations between the applications and the specified
+#' bundle.
+#'
+#' @usage
+#' workspaces_describe_bundle_associations(BundleId,
+#'   AssociatedResourceTypes)
+#'
+#' @param BundleId &#91;required&#93; The identifier of the bundle.
+#' @param AssociatedResourceTypes &#91;required&#93; The resource types of the associated resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Associations = list(
+#'     list(
+#'       AssociatedResourceId = "string",
+#'       AssociatedResourceType = "APPLICATION",
+#'       BundleId = "string",
+#'       Created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       State = "PENDING_INSTALL"|"PENDING_INSTALL_DEPLOYMENT"|"PENDING_UNINSTALL"|"PENDING_UNINSTALL_DEPLOYMENT"|"INSTALLING"|"UNINSTALLING"|"ERROR"|"COMPLETED"|"REMOVED",
+#'       StateReason = list(
+#'         ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable",
+#'         ErrorMessage = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_bundle_associations(
+#'   BundleId = "string",
+#'   AssociatedResourceTypes = list(
+#'     "APPLICATION"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_bundle_associations
+#'
+#' @aliases workspaces_describe_bundle_associations
+workspaces_describe_bundle_associations <- function(BundleId, AssociatedResourceTypes) {
+  op <- new_operation(
+    name = "DescribeBundleAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$describe_bundle_associations_input(BundleId = BundleId, AssociatedResourceTypes = AssociatedResourceTypes)
+  output <- .workspaces$describe_bundle_associations_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_bundle_associations <- workspaces_describe_bundle_associations
 
 #' Describes the specified client branding
 #'
@@ -1853,6 +2229,76 @@ workspaces_describe_connection_aliases <- function(AliasIds = NULL, ResourceId =
 }
 .workspaces$operations$describe_connection_aliases <- workspaces_describe_connection_aliases
 
+#' Describes the associations between the applications and the specified
+#' image
+#'
+#' @description
+#' Describes the associations between the applications and the specified
+#' image.
+#'
+#' @usage
+#' workspaces_describe_image_associations(ImageId, AssociatedResourceTypes)
+#'
+#' @param ImageId &#91;required&#93; The identifier of the image.
+#' @param AssociatedResourceTypes &#91;required&#93; The resource types of the associated resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Associations = list(
+#'     list(
+#'       AssociatedResourceId = "string",
+#'       AssociatedResourceType = "APPLICATION",
+#'       Created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ImageId = "string",
+#'       State = "PENDING_INSTALL"|"PENDING_INSTALL_DEPLOYMENT"|"PENDING_UNINSTALL"|"PENDING_UNINSTALL_DEPLOYMENT"|"INSTALLING"|"UNINSTALLING"|"ERROR"|"COMPLETED"|"REMOVED",
+#'       StateReason = list(
+#'         ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable",
+#'         ErrorMessage = "string"
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_image_associations(
+#'   ImageId = "string",
+#'   AssociatedResourceTypes = list(
+#'     "APPLICATION"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_image_associations
+#'
+#' @aliases workspaces_describe_image_associations
+workspaces_describe_image_associations <- function(ImageId, AssociatedResourceTypes) {
+  op <- new_operation(
+    name = "DescribeImageAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$describe_image_associations_input(ImageId = ImageId, AssociatedResourceTypes = AssociatedResourceTypes)
+  output <- .workspaces$describe_image_associations_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_image_associations <- workspaces_describe_image_associations
+
 #' Describes one or more of your IP access control groups
 #'
 #' @description
@@ -1973,6 +2419,77 @@ workspaces_describe_tags <- function(ResourceId) {
   return(response)
 }
 .workspaces$operations$describe_tags <- workspaces_describe_tags
+
+#' Describes the associations betweens applications and the specified
+#' WorkSpace
+#'
+#' @description
+#' Describes the associations betweens applications and the specified
+#' WorkSpace.
+#'
+#' @usage
+#' workspaces_describe_workspace_associations(WorkspaceId,
+#'   AssociatedResourceTypes)
+#'
+#' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
+#' @param AssociatedResourceTypes &#91;required&#93; The resource types of the associated resources.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Associations = list(
+#'     list(
+#'       AssociatedResourceId = "string",
+#'       AssociatedResourceType = "APPLICATION",
+#'       Created = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       State = "PENDING_INSTALL"|"PENDING_INSTALL_DEPLOYMENT"|"PENDING_UNINSTALL"|"PENDING_UNINSTALL_DEPLOYMENT"|"INSTALLING"|"UNINSTALLING"|"ERROR"|"COMPLETED"|"REMOVED",
+#'       StateReason = list(
+#'         ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable",
+#'         ErrorMessage = "string"
+#'       ),
+#'       WorkspaceId = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_workspace_associations(
+#'   WorkspaceId = "string",
+#'   AssociatedResourceTypes = list(
+#'     "APPLICATION"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_workspace_associations
+#'
+#' @aliases workspaces_describe_workspace_associations
+workspaces_describe_workspace_associations <- function(WorkspaceId, AssociatedResourceTypes) {
+  op <- new_operation(
+    name = "DescribeWorkspaceAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$describe_workspace_associations_input(WorkspaceId = WorkspaceId, AssociatedResourceTypes = AssociatedResourceTypes)
+  output <- .workspaces$describe_workspace_associations_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_workspace_associations <- workspaces_describe_workspace_associations
 
 #' Retrieves a list that describes the available WorkSpace bundles
 #'
@@ -2280,6 +2797,12 @@ workspaces_describe_workspace_image_permissions <- function(ImageId, NextToken =
 #'       Updates = list(
 #'         UpdateAvailable = TRUE|FALSE,
 #'         Description = "string"
+#'       ),
+#'       ErrorDetails = list(
+#'         list(
+#'           ErrorCode = "OutdatedPowershellVersion"|"OfficeInstalled"|"PCoIPAgentInstalled"|"WindowsUpdatesEnabled"|"AutoMountDisabled"|"WorkspacesBYOLAccountNotFound"|"WorkspacesBYOLAccountDisabled"|"DHCPDisabled"|"DiskFreeSpace"|"AdditionalDrivesAttached"|"OSNotSupported"|"DomainJoined"|"AzureDomainJoined"|"FirewallEnabled"|"VMWareToolsInstalled"|"DiskSizeExceeded"|"IncompatiblePartitioning"|"PendingReboot"|"AutoLogonEnabled"|"RealTimeUniversalDisabled"|"MultipleBootPartition"|"Requires64BitOS"|"ZeroRearmCount"|"InPlaceUpgrade"|"AntiVirusInstalled"|"UEFINotSupported",
+#'           ErrorMessage = "string"
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -2440,7 +2963,8 @@ workspaces_describe_workspace_snapshots <- function(WorkspaceId) {
 #'         ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
 #'         Protocols = list(
 #'           "PCOIP"|"WSP"
-#'         )
+#'         ),
+#'         OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"
 #'       ),
 #'       ModificationStates = list(
 #'         list(
@@ -2661,6 +3185,71 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
   return(response)
 }
 .workspaces$operations$disassociate_ip_groups <- workspaces_disassociate_ip_groups
+
+#' Disassociates the specified application from a WorkSpace
+#'
+#' @description
+#' Disassociates the specified application from a WorkSpace.
+#'
+#' @usage
+#' workspaces_disassociate_workspace_application(WorkspaceId,
+#'   ApplicationId)
+#'
+#' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
+#' @param ApplicationId &#91;required&#93; The identifier of the application.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Association = list(
+#'     AssociatedResourceId = "string",
+#'     AssociatedResourceType = "APPLICATION",
+#'     Created = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastUpdatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     State = "PENDING_INSTALL"|"PENDING_INSTALL_DEPLOYMENT"|"PENDING_UNINSTALL"|"PENDING_UNINSTALL_DEPLOYMENT"|"INSTALLING"|"UNINSTALLING"|"ERROR"|"COMPLETED"|"REMOVED",
+#'     StateReason = list(
+#'       ErrorCode = "ValidationError.InsufficientDiskSpace"|"ValidationError.InsufficientMemory"|"ValidationError.UnsupportedOperatingSystem"|"DeploymentError.InternalServerError"|"DeploymentError.WorkspaceUnreachable",
+#'       ErrorMessage = "string"
+#'     ),
+#'     WorkspaceId = "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$disassociate_workspace_application(
+#'   WorkspaceId = "string",
+#'   ApplicationId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_disassociate_workspace_application
+#'
+#' @aliases workspaces_disassociate_workspace_application
+workspaces_disassociate_workspace_application <- function(WorkspaceId, ApplicationId) {
+  op <- new_operation(
+    name = "DisassociateWorkspaceApplication",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$disassociate_workspace_application_input(WorkspaceId = WorkspaceId, ApplicationId = ApplicationId)
+  output <- .workspaces$disassociate_workspace_application_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$disassociate_workspace_application <- workspaces_disassociate_workspace_application
 
 #' Imports client branding
 #'
@@ -3494,7 +4083,8 @@ workspaces_modify_workspace_creation_properties <- function(ResourceId, Workspac
 #'     ComputeTypeName = "VALUE"|"STANDARD"|"PERFORMANCE"|"POWER"|"GRAPHICS"|"POWERPRO"|"GRAPHICSPRO"|"GRAPHICS_G4DN"|"GRAPHICSPRO_G4DN",
 #'     Protocols = list(
 #'       "PCOIP"|"WSP"
-#'     )
+#'     ),
+#'     OperatingSystemName = "AMAZON_LINUX_2"|"UBUNTU_18_04"|"UBUNTU_20_04"|"UBUNTU_22_04"|"UNKNOWN"|"WINDOWS_10"|"WINDOWS_11"|"WINDOWS_7"|"WINDOWS_SERVER_2016"|"WINDOWS_SERVER_2019"|"WINDOWS_SERVER_2022"
 #'   )
 #' )
 #' ```

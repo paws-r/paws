@@ -3,7 +3,8 @@
 \name{storagegateway_list_file_shares}
 \alias{storagegateway_list_file_shares}
 \title{Gets a list of the file shares for a specific S3 File Gateway, or the
-list of file shares that belong to the calling user account}
+list of file shares that belong to the calling Amazon Web Services
+account}
 \usage{
 storagegateway_list_file_shares(GatewayARN = NULL, Limit = NULL, Marker = NULL)
 }
@@ -20,7 +21,7 @@ operation. If present, \code{Marker} specifies where to continue the list
 from after a previous call to ListFileShares. Optional.}
 }
 \description{
-Gets a list of the file shares for a specific S3 File Gateway, or the list of file shares that belong to the calling user account. This operation is only supported for S3 File Gateways.
+Gets a list of the file shares for a specific S3 File Gateway, or the list of file shares that belong to the calling Amazon Web Services account. This operation is only supported for S3 File Gateways.
 
 See \url{https://www.paws-r-sdk.com/docs/storagegateway_list_file_shares/} for full documentation.
 }

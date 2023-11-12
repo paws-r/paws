@@ -33,7 +33,10 @@ NULL
 #'       Record = list(
 #'         list(
 #'           FeatureName = "string",
-#'           ValueAsString = "string"
+#'           ValueAsString = "string",
+#'           ValueAsStringList = list(
+#'             "string"
+#'           )
 #'         )
 #'       ),
 #'       ExpiresAt = "string"
@@ -213,7 +216,10 @@ sagemakerfeaturestoreruntime_delete_record <- function(FeatureGroupName, RecordI
 #'   Record = list(
 #'     list(
 #'       FeatureName = "string",
-#'       ValueAsString = "string"
+#'       ValueAsString = "string",
+#'       ValueAsStringList = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   ExpiresAt = "string"
@@ -313,7 +319,10 @@ sagemakerfeaturestoreruntime_get_record <- function(FeatureGroupName, RecordIden
 #'   Record = list(
 #'     list(
 #'       FeatureName = "string",
-#'       ValueAsString = "string"
+#'       ValueAsString = "string",
+#'       ValueAsStringList = list(
+#'         "string"
+#'       )
 #'     )
 #'   ),
 #'   TargetStores = list(

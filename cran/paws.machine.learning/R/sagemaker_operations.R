@@ -454,6 +454,8 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
 #' -   For text classification: `S3Prefix`.
 #' 
 #' -   For time-series forecasting: `S3Prefix`.
+#' 
+#' -   For text generation (LLMs fine-tuning): `S3Prefix`.
 #' @param OutputDataConfig &#91;required&#93; Provides information about encryption and the Amazon S3 output path
 #' needed to store artifacts from an AutoML job.
 #' @param AutoMLProblemTypeConfig &#91;required&#93; Defines the configuration settings of one of the supported problem
@@ -471,10 +473,21 @@ sagemaker_create_auto_ml_job <- function(AutoMLJobName, InputDataConfig, OutputD
 #' For the list of default values per problem type, see
 #' [AutoMLJobObjective](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_AutoMLJobObjective.html).
 #' 
-#' For tabular problem types, you must either provide both the
-#' `AutoMLJobObjective` and indicate the type of supervised learning
-#' problem in `AutoMLProblemTypeConfig` (`TabularJobConfig.ProblemType`),
-#' or none at all.
+#' -   For tabular problem types: You must either provide both the
+#'     `AutoMLJobObjective` and indicate the type of supervised learning
+#'     problem in `AutoMLProblemTypeConfig`
+#'     (`TabularJobConfig.ProblemType`), or none at all.
+#' 
+#' -   For text generation problem types (LLMs fine-tuning): Fine-tuning
+#'     language models in Autopilot does not require setting the
+#'     `AutoMLJobObjective` field. Autopilot fine-tunes LLMs without
+#'     requiring multiple candidates to be trained and evaluated. Instead,
+#'     using your dataset, Autopilot directly fine-tunes your target model
+#'     to enhance a default objective metric, the cross-entropy loss. After
+#'     fine-tuning a language model, you can evaluate the quality of its
+#'     generated text using different metrics. For a list of the available
+#'     metrics, see [Metrics for fine-tuning LLMs in
+#'     Autopilot](https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-llms-finetuning-metrics.html).
 #' @param ModelDeployConfig Specifies how to generate the endpoint name for an automatic one-click
 #' Autopilot model deployment.
 #' @param DataSplitConfig This structure specifies how to split the data into train and validation
@@ -2140,18 +2153,19 @@ sagemaker_create_model_explainability_job_definition <- function(JobDefinitionNa
 #' Inference Specification specifies artifacts based on this model package
 #' that can be used on inference endpoints. Generally used with SageMaker
 #' Neo to store the compiled artifacts.
+#' @param SkipModelValidation Indicates if you want to skip model validation.
 #'
 #' @keywords internal
 #'
 #' @rdname sagemaker_create_model_package
-sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackageGroupName = NULL, ModelPackageDescription = NULL, InferenceSpecification = NULL, ValidationSpecification = NULL, SourceAlgorithmSpecification = NULL, CertifyForMarketplace = NULL, Tags = NULL, ModelApprovalStatus = NULL, MetadataProperties = NULL, ModelMetrics = NULL, ClientToken = NULL, CustomerMetadataProperties = NULL, DriftCheckBaselines = NULL, Domain = NULL, Task = NULL, SamplePayloadUrl = NULL, AdditionalInferenceSpecifications = NULL) {
+sagemaker_create_model_package <- function(ModelPackageName = NULL, ModelPackageGroupName = NULL, ModelPackageDescription = NULL, InferenceSpecification = NULL, ValidationSpecification = NULL, SourceAlgorithmSpecification = NULL, CertifyForMarketplace = NULL, Tags = NULL, ModelApprovalStatus = NULL, MetadataProperties = NULL, ModelMetrics = NULL, ClientToken = NULL, CustomerMetadataProperties = NULL, DriftCheckBaselines = NULL, Domain = NULL, Task = NULL, SamplePayloadUrl = NULL, AdditionalInferenceSpecifications = NULL, SkipModelValidation = NULL) {
   op <- new_operation(
     name = "CreateModelPackage",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .sagemaker$create_model_package_input(ModelPackageName = ModelPackageName, ModelPackageGroupName = ModelPackageGroupName, ModelPackageDescription = ModelPackageDescription, InferenceSpecification = InferenceSpecification, ValidationSpecification = ValidationSpecification, SourceAlgorithmSpecification = SourceAlgorithmSpecification, CertifyForMarketplace = CertifyForMarketplace, Tags = Tags, ModelApprovalStatus = ModelApprovalStatus, MetadataProperties = MetadataProperties, ModelMetrics = ModelMetrics, ClientToken = ClientToken, CustomerMetadataProperties = CustomerMetadataProperties, DriftCheckBaselines = DriftCheckBaselines, Domain = Domain, Task = Task, SamplePayloadUrl = SamplePayloadUrl, AdditionalInferenceSpecifications = AdditionalInferenceSpecifications)
+  input <- .sagemaker$create_model_package_input(ModelPackageName = ModelPackageName, ModelPackageGroupName = ModelPackageGroupName, ModelPackageDescription = ModelPackageDescription, InferenceSpecification = InferenceSpecification, ValidationSpecification = ValidationSpecification, SourceAlgorithmSpecification = SourceAlgorithmSpecification, CertifyForMarketplace = CertifyForMarketplace, Tags = Tags, ModelApprovalStatus = ModelApprovalStatus, MetadataProperties = MetadataProperties, ModelMetrics = ModelMetrics, ClientToken = ClientToken, CustomerMetadataProperties = CustomerMetadataProperties, DriftCheckBaselines = DriftCheckBaselines, Domain = Domain, Task = Task, SamplePayloadUrl = SamplePayloadUrl, AdditionalInferenceSpecifications = AdditionalInferenceSpecifications, SkipModelValidation = SkipModelValidation)
   output <- .sagemaker$create_model_package_output()
   config <- get_config()
   svc <- .sagemaker$service(config)
@@ -7096,7 +7110,8 @@ sagemaker_list_contexts <- function(SourceUri = NULL, ContextType = NULL, Create
 #' @param EndpointName A filter that lists the data quality job definitions associated with the
 #' specified endpoint.
 #' @param SortBy The field to sort results by. The default is `CreationTime`.
-#' @param SortOrder The sort order for results. The default is `Descending`.
+#' @param SortOrder Whether to sort the results in `Ascending` or `Descending` order. The
+#' default is `Descending`.
 #' @param NextToken If the result of the previous
 #' [`list_data_quality_job_definitions`][sagemaker_list_data_quality_job_definitions]
 #' request was truncated, the response includes a `NextToken`. To retrieve
@@ -8446,7 +8461,8 @@ sagemaker_list_model_packages <- function(CreationTimeAfter = NULL, CreationTime
 #' @param EndpointName A filter that returns only model quality monitoring job definitions that
 #' are associated with the specified endpoint.
 #' @param SortBy The field to sort results by. The default is `CreationTime`.
-#' @param SortOrder The sort order for results. The default is `Descending`.
+#' @param SortOrder Whether to sort the results in `Ascending` or `Descending` order. The
+#' default is `Descending`.
 #' @param NextToken If the result of the previous
 #' [`list_model_quality_job_definitions`][sagemaker_list_model_quality_job_definitions]
 #' request was truncated, the response includes a `NextToken`. To retrieve
@@ -8609,8 +8625,8 @@ sagemaker_list_monitoring_alerts <- function(MonitoringScheduleName, NextToken =
 #'
 #' @param MonitoringScheduleName Name of a specific schedule to fetch jobs for.
 #' @param EndpointName Name of a specific endpoint to fetch jobs for.
-#' @param SortBy Whether to sort results by `Status`, `CreationTime`, `ScheduledTime`
-#' field. The default is `CreationTime`.
+#' @param SortBy Whether to sort the results by the `Status`, `CreationTime`, or
+#' `ScheduledTime` field. The default is `CreationTime`.
 #' @param SortOrder Whether to sort the results in `Ascending` or `Descending` order. The
 #' default is `Descending`.
 #' @param NextToken The token returned if the response is truncated. To retrieve the next
@@ -8657,8 +8673,8 @@ sagemaker_list_monitoring_executions <- function(MonitoringScheduleName = NULL, 
 #' See [https://www.paws-r-sdk.com/docs/sagemaker_list_monitoring_schedules/](https://www.paws-r-sdk.com/docs/sagemaker_list_monitoring_schedules/) for full documentation.
 #'
 #' @param EndpointName Name of a specific endpoint to fetch schedules for.
-#' @param SortBy Whether to sort results by `Status`, `CreationTime`, `ScheduledTime`
-#' field. The default is `CreationTime`.
+#' @param SortBy Whether to sort the results by the `Status`, `CreationTime`, or
+#' `ScheduledTime` field. The default is `CreationTime`.
 #' @param SortOrder Whether to sort the results in `Ascending` or `Descending` order. The
 #' default is `Descending`.
 #' @param NextToken The token returned if the response is truncated. To retrieve the next

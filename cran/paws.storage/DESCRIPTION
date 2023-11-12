@@ -1,6 +1,6 @@
 Package: paws.storage
 Title: 'Amazon Web Services' Storage Services
-Version: 0.4.0
+Version: 0.2.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -45,6 +45,9 @@ Collate:
     'glacier_service.R'
     'glacier_interfaces.R'
     'glacier_operations.R'
+    'omics_service.R'
+    'omics_interfaces.R'
+    'omics_operations.R'
     'recyclebin_service.R'
     'recyclebin_interfaces.R'
     'recyclebin_operations.R'

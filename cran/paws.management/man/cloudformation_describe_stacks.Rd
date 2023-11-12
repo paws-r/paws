@@ -9,9 +9,12 @@ cloudformation_describe_stacks(StackName = NULL, NextToken = NULL)
 }
 \arguments{
 \item{StackName}{If you don't pass a parameter to \code{StackName}, the API returns a response
-that describes all resources in the account. This requires
-\code{\link[=cloudformation_list_stacks]{list_stacks}} and
-\code{\link[=cloudformation_describe_stacks]{describe_stacks}} permissions.
+that describes all resources in the account, which can impact
+performance. This requires \code{\link[=cloudformation_list_stacks]{list_stacks}}
+and \code{\link[=cloudformation_describe_stacks]{describe_stacks}} permissions.
+
+Consider using the \code{\link[=cloudformation_list_stacks]{list_stacks}} API if
+you're not passing a parameter to \code{StackName}.
 
 The IAM policy below can be added to IAM policies when you want to limit
 resource-level permissions and avoid returning a response when no

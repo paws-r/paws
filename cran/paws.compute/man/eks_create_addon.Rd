@@ -49,9 +49,12 @@ add-on might fail.
 installed on your cluster and the Amazon EKS default value is
 different than the existing value, Amazon EKS changes the value to
 the Amazon EKS default value.
-\item \strong{Preserve} – Not supported. You can set this value when updating
-an add-on though. For more information, see
-\code{\link[=eks_update_addon]{update_addon}}.
+\item \strong{Preserve} – This is similar to the NONE option. If the
+self-managed version of the add-on is installed on your cluster
+Amazon EKS doesn't change the add-on resource properties. Creation
+of the add-on might fail if conflicts are detected. This option
+works differently during the update operation. For more information,
+see \code{\link[=eks_update_addon]{update_addon}}.
 }
 
 If you don't currently have the self-managed version of the add-on

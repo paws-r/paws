@@ -51,6 +51,18 @@ NULL
   return(populate(args, shape))
 }
 
+.eks$create_eks_anywhere_subscription_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), term = structure(list(duration = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), licenseQuantity = structure(logical(0), tags = list(type = "integer")), licenseType = structure(logical(0), tags = list(type = "string")), autoRenew = structure(logical(0), tags = list(type = "boolean")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$create_eks_anywhere_subscription_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(subscription = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), effectiveDate = structure(logical(0), tags = list(type = "timestamp")), expirationDate = structure(logical(0), tags = list(type = "timestamp")), licenseQuantity = structure(logical(0), tags = list(type = "integer")), licenseType = structure(logical(0), tags = list(type = "string")), term = structure(list(duration = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), autoRenew = structure(logical(0), tags = list(type = "boolean")), licenseArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .eks$create_fargate_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(fargateProfileName = structure(logical(0), tags = list(type = "string")), clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), podExecutionRoleArn = structure(logical(0), tags = list(type = "string")), subnets = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), selectors = structure(list(structure(list(namespace = structure(logical(0), tags = list(type = "string")), labels = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
@@ -96,6 +108,18 @@ NULL
 .eks$delete_cluster_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(cluster = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), version = structure(logical(0), tags = list(type = "string")), endpoint = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), resourcesVpcConfig = structure(list(subnetIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), securityGroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), clusterSecurityGroupId = structure(logical(0), tags = list(type = "string")), vpcId = structure(logical(0), tags = list(type = "string")), endpointPublicAccess = structure(logical(0), tags = list(type = "boolean")), endpointPrivateAccess = structure(logical(0), tags = list(type = "boolean")), publicAccessCidrs = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), kubernetesNetworkConfig = structure(list(serviceIpv4Cidr = structure(logical(0), tags = list(type = "string")), serviceIpv6Cidr = structure(logical(0), tags = list(type = "string")), ipFamily = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), logging = structure(list(clusterLogging = structure(list(structure(list(types = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), enabled = structure(logical(0), tags = list(type = "boolean", box = TRUE))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), identity = structure(list(oidc = structure(list(issuer = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), certificateAuthority = structure(list(data = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), clientRequestToken = structure(logical(0), tags = list(type = "string")), platformVersion = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map")), encryptionConfig = structure(list(structure(list(resources = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), provider = structure(list(keyArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), connectorConfig = structure(list(activationId = structure(logical(0), tags = list(type = "string")), activationCode = structure(logical(0), tags = list(type = "string")), activationExpiry = structure(logical(0), tags = list(type = "timestamp")), provider = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), id = structure(logical(0), tags = list(type = "string")), health = structure(list(issues = structure(list(structure(list(code = structure(logical(0), tags = list(type = "string")), message = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), outpostConfig = structure(list(outpostArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), controlPlaneInstanceType = structure(logical(0), tags = list(type = "string")), controlPlanePlacement = structure(list(groupName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$delete_eks_anywhere_subscription_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$delete_eks_anywhere_subscription_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(subscription = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), effectiveDate = structure(logical(0), tags = list(type = "timestamp")), expirationDate = structure(logical(0), tags = list(type = "timestamp")), licenseQuantity = structure(logical(0), tags = list(type = "integer")), licenseType = structure(logical(0), tags = list(type = "string")), term = structure(list(duration = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), autoRenew = structure(logical(0), tags = list(type = "boolean")), licenseArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -183,6 +207,18 @@ NULL
   return(populate(args, shape))
 }
 
+.eks$describe_eks_anywhere_subscription_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$describe_eks_anywhere_subscription_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(subscription = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), effectiveDate = structure(logical(0), tags = list(type = "timestamp")), expirationDate = structure(logical(0), tags = list(type = "timestamp")), licenseQuantity = structure(logical(0), tags = list(type = "integer")), licenseType = structure(logical(0), tags = list(type = "string")), term = structure(list(duration = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), autoRenew = structure(logical(0), tags = list(type = "boolean")), licenseArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .eks$describe_fargate_profile_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(clusterName = structure(logical(0), tags = list(location = "uri", locationName = "name", type = "string")), fargateProfileName = structure(logical(0), tags = list(location = "uri", locationName = "fargateProfileName", type = "string"))), tags = list(type = "structure"))
@@ -264,6 +300,18 @@ NULL
 .eks$list_clusters_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(clusters = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$list_eks_anywhere_subscriptions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(maxResults = structure(logical(0), tags = list(location = "querystring", locationName = "maxResults", type = "integer", box = TRUE)), nextToken = structure(logical(0), tags = list(location = "querystring", locationName = "nextToken", type = "string")), includeStatus = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(location = "querystring", locationName = "includeStatus", type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$list_eks_anywhere_subscriptions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(subscriptions = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), effectiveDate = structure(logical(0), tags = list(type = "timestamp")), expirationDate = structure(logical(0), tags = list(type = "timestamp")), licenseQuantity = structure(logical(0), tags = list(type = "integer")), licenseType = structure(logical(0), tags = list(type = "string")), term = structure(list(duration = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), autoRenew = structure(logical(0), tags = list(type = "boolean")), licenseArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -396,6 +444,18 @@ NULL
 .eks$update_cluster_version_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(update = structure(list(id = structure(logical(0), tags = list(type = "string")), status = structure(logical(0), tags = list(type = "string")), type = structure(logical(0), tags = list(type = "string")), params = structure(list(structure(list(type = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), createdAt = structure(logical(0), tags = list(type = "timestamp")), errors = structure(list(structure(list(errorCode = structure(logical(0), tags = list(type = "string")), errorMessage = structure(logical(0), tags = list(type = "string")), resourceIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$update_eks_anywhere_subscription_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(location = "uri", locationName = "id", type = "string")), autoRenew = structure(logical(0), tags = list(type = "boolean")), clientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.eks$update_eks_anywhere_subscription_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(subscription = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), createdAt = structure(logical(0), tags = list(type = "timestamp")), effectiveDate = structure(logical(0), tags = list(type = "timestamp")), expirationDate = structure(logical(0), tags = list(type = "timestamp")), licenseQuantity = structure(logical(0), tags = list(type = "integer")), licenseType = structure(logical(0), tags = list(type = "string")), term = structure(list(duration = structure(logical(0), tags = list(type = "integer")), unit = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), status = structure(logical(0), tags = list(type = "string")), autoRenew = structure(logical(0), tags = list(type = "boolean")), licenseArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

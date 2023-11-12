@@ -6,7 +6,7 @@ NULL
 #' Get the state for a routing control
 #'
 #' @description
-#' Get the state for a routing control. A routing control is a simple on/off switch that you can use to route traffic to cells. When a routing control state is On, traffic flows to a cell. When the state is Off, traffic does not flow.
+#' Get the state for a routing control. A routing control is a simple on/off switch that you can use to route traffic to cells. When a routing control state is set to ON, traffic flows to a cell. When the state is set to OFF, traffic does not flow.
 #'
 #' See [https://www.paws-r-sdk.com/docs/route53recoverycluster_get_routing_control_state/](https://www.paws-r-sdk.com/docs/route53recoverycluster_get_routing_control_state/) for full documentation.
 #'
@@ -72,13 +72,13 @@ route53recoverycluster_list_routing_controls <- function(ControlPanelArn = NULL,
 #' Set the state of the routing control to reroute traffic
 #'
 #' @description
-#' Set the state of the routing control to reroute traffic. You can set the value to be On or Off. When the state is On, traffic flows to a cell. When the state is Off, traffic does not flow.
+#' Set the state of the routing control to reroute traffic. You can set the value to ON or OFF. When the state is ON, traffic flows to a cell. When the state is OFF, traffic does not flow.
 #'
 #' See [https://www.paws-r-sdk.com/docs/route53recoverycluster_update_routing_control_state/](https://www.paws-r-sdk.com/docs/route53recoverycluster_update_routing_control_state/) for full documentation.
 #'
 #' @param RoutingControlArn &#91;required&#93; The Amazon Resource Name (ARN) for the routing control that you want to
 #' update the state for.
-#' @param RoutingControlState &#91;required&#93; The state of the routing control. You can set the value to be On or Off.
+#' @param RoutingControlState &#91;required&#93; The state of the routing control. You can set the value to ON or OFF.
 #' @param SafetyRulesToOverride The Amazon Resource Names (ARNs) for the safety rules that you want to
 #' override when you're updating the state of a routing control. You can
 #' override one safety rule or multiple safety rules by including one or
@@ -111,7 +111,7 @@ route53recoverycluster_update_routing_control_state <- function(RoutingControlAr
 #' Set multiple routing control states
 #'
 #' @description
-#' Set multiple routing control states. You can set the value for each state to be On or Off. When the state is On, traffic flows to a cell. When it's Off, traffic does not flow.
+#' Set multiple routing control states. You can set the value for each state to be ON or OFF. When the state is ON, traffic flows to a cell. When it's OFF, traffic does not flow.
 #'
 #' See [https://www.paws-r-sdk.com/docs/route53recoverycluster_update_routing_control_states/](https://www.paws-r-sdk.com/docs/route53recoverycluster_update_routing_control_states/) for full documentation.
 #'

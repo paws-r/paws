@@ -20,28 +20,27 @@ NULL
 #' @param FeatureTypes &#91;required&#93; A list of the types of analysis to perform. Add TABLES to the list to
 #' return information about the tables that are detected in the input
 #' document. Add FORMS to return detected form data. Add SIGNATURES to
-#' return the locations of detected signatures. To perform both forms and
-#' table analysis, add TABLES and FORMS to `FeatureTypes`. To detect
-#' signatures within form data and table data, add SIGNATURES to either
-#' TABLES or FORMS. All lines and words detected in the document are
-#' included in the response (including text that isn't related to the value
-#' of `FeatureTypes`).
+#' return the locations of detected signatures. Add LAYOUT to the list to
+#' return information about the layout of the document. All lines and words
+#' detected in the document are included in the response (including text
+#' that isn't related to the value of `FeatureTypes`).
 #' @param HumanLoopConfig Sets the configuration for the human in the loop workflow for analyzing
 #' documents.
 #' @param QueriesConfig Contains Queries and the alias for those Queries, as determined by the
 #' input.
+#' @param AdaptersConfig Specifies the adapter to be used when analyzing a document.
 #'
 #' @keywords internal
 #'
 #' @rdname textract_analyze_document
-textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = NULL, QueriesConfig = NULL) {
+textract_analyze_document <- function(Document, FeatureTypes, HumanLoopConfig = NULL, QueriesConfig = NULL, AdaptersConfig = NULL) {
   op <- new_operation(
     name = "AnalyzeDocument",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .textract$analyze_document_input(Document = Document, FeatureTypes = FeatureTypes, HumanLoopConfig = HumanLoopConfig, QueriesConfig = QueriesConfig)
+  input <- .textract$analyze_document_input(Document = Document, FeatureTypes = FeatureTypes, HumanLoopConfig = HumanLoopConfig, QueriesConfig = QueriesConfig, AdaptersConfig = AdaptersConfig)
   output <- .textract$analyze_document_output()
   config <- get_config()
   svc <- .textract$service(config)
@@ -110,6 +109,146 @@ textract_analyze_id <- function(DocumentPages) {
 }
 .textract$operations$analyze_id <- textract_analyze_id
 
+#' Creates an adapter, which can be fine-tuned for enhanced performance on
+#' user provided documents
+#'
+#' @description
+#' Creates an adapter, which can be fine-tuned for enhanced performance on user provided documents. Takes an AdapterName and FeatureType. Currently the only supported feature type is `QUERIES`. You can also provide a Description, Tags, and a ClientRequestToken. You can choose whether or not the adapter should be AutoUpdated with the AutoUpdate argument. By default, AutoUpdate is set to DISABLED.
+#'
+#' See [https://www.paws-r-sdk.com/docs/textract_create_adapter/](https://www.paws-r-sdk.com/docs/textract_create_adapter/) for full documentation.
+#'
+#' @param AdapterName &#91;required&#93; The name to be assigned to the adapter being created.
+#' @param ClientRequestToken Idempotent token is used to recognize the request. If the same token is
+#' used with multiple CreateAdapter requests, the same session is returned.
+#' This token is employed to avoid unintentionally creating the same
+#' session multiple times.
+#' @param Description The description to be assigned to the adapter being created.
+#' @param FeatureTypes &#91;required&#93; The type of feature that the adapter is being trained on. Currrenly,
+#' supported feature types are: `QUERIES`
+#' @param AutoUpdate Controls whether or not the adapter should automatically update.
+#' @param Tags A list of tags to be added to the adapter.
+#'
+#' @keywords internal
+#'
+#' @rdname textract_create_adapter
+textract_create_adapter <- function(AdapterName, ClientRequestToken = NULL, Description = NULL, FeatureTypes, AutoUpdate = NULL, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateAdapter",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$create_adapter_input(AdapterName = AdapterName, ClientRequestToken = ClientRequestToken, Description = Description, FeatureTypes = FeatureTypes, AutoUpdate = AutoUpdate, Tags = Tags)
+  output <- .textract$create_adapter_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$create_adapter <- textract_create_adapter
+
+#' Creates a new version of an adapter
+#'
+#' @description
+#' Creates a new version of an adapter. Operates on a provided AdapterId and a specified dataset provided via the DatasetConfig argument. Requires that you specify an Amazon S3 bucket with the OutputConfig argument. You can provide an optional KMSKeyId, an optional ClientRequestToken, and optional tags.
+#'
+#' See [https://www.paws-r-sdk.com/docs/textract_create_adapter_version/](https://www.paws-r-sdk.com/docs/textract_create_adapter_version/) for full documentation.
+#'
+#' @param AdapterId &#91;required&#93; A string containing a unique ID for the adapter that will receive a new
+#' version.
+#' @param ClientRequestToken Idempotent token is used to recognize the request. If the same token is
+#' used with multiple CreateAdapterVersion requests, the same session is
+#' returned. This token is employed to avoid unintentionally creating the
+#' same session multiple times.
+#' @param DatasetConfig &#91;required&#93; Specifies a dataset used to train a new adapter version. Takes a
+#' ManifestS3Object as the value.
+#' @param KMSKeyId The identifier for your AWS Key Management Service key (AWS KMS key).
+#' Used to encrypt your documents.
+#' @param OutputConfig &#91;required&#93; 
+#' @param Tags A set of tags (key-value pairs) that you want to attach to the adapter
+#' version.
+#'
+#' @keywords internal
+#'
+#' @rdname textract_create_adapter_version
+textract_create_adapter_version <- function(AdapterId, ClientRequestToken = NULL, DatasetConfig, KMSKeyId = NULL, OutputConfig, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateAdapterVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$create_adapter_version_input(AdapterId = AdapterId, ClientRequestToken = ClientRequestToken, DatasetConfig = DatasetConfig, KMSKeyId = KMSKeyId, OutputConfig = OutputConfig, Tags = Tags)
+  output <- .textract$create_adapter_version_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$create_adapter_version <- textract_create_adapter_version
+
+#' Deletes an Amazon Textract adapter
+#'
+#' @description
+#' Deletes an Amazon Textract adapter. Takes an AdapterId and deletes the adapter specified by the ID.
+#'
+#' See [https://www.paws-r-sdk.com/docs/textract_delete_adapter/](https://www.paws-r-sdk.com/docs/textract_delete_adapter/) for full documentation.
+#'
+#' @param AdapterId &#91;required&#93; A string containing a unique ID for the adapter to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname textract_delete_adapter
+textract_delete_adapter <- function(AdapterId) {
+  op <- new_operation(
+    name = "DeleteAdapter",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$delete_adapter_input(AdapterId = AdapterId)
+  output <- .textract$delete_adapter_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$delete_adapter <- textract_delete_adapter
+
+#' Deletes an Amazon Textract adapter version
+#'
+#' @description
+#' Deletes an Amazon Textract adapter version. Requires that you specify both an AdapterId and a AdapterVersion. Deletes the adapter version specified by the AdapterId and the AdapterVersion.
+#'
+#' See [https://www.paws-r-sdk.com/docs/textract_delete_adapter_version/](https://www.paws-r-sdk.com/docs/textract_delete_adapter_version/) for full documentation.
+#'
+#' @param AdapterId &#91;required&#93; A string containing a unique ID for the adapter version that will be
+#' deleted.
+#' @param AdapterVersion &#91;required&#93; Specifies the adapter version to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname textract_delete_adapter_version
+textract_delete_adapter_version <- function(AdapterId, AdapterVersion) {
+  op <- new_operation(
+    name = "DeleteAdapterVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$delete_adapter_version_input(AdapterId = AdapterId, AdapterVersion = AdapterVersion)
+  output <- .textract$delete_adapter_version_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$delete_adapter_version <- textract_delete_adapter_version
+
 #' Detects text in the input document
 #'
 #' @description
@@ -143,6 +282,72 @@ textract_detect_document_text <- function(Document) {
   return(response)
 }
 .textract$operations$detect_document_text <- textract_detect_document_text
+
+#' Gets configuration information for an adapter specified by an AdapterId,
+#' returning information on AdapterName, Description, CreationTime,
+#' AutoUpdate status, and FeatureTypes
+#'
+#' @description
+#' Gets configuration information for an adapter specified by an AdapterId, returning information on AdapterName, Description, CreationTime, AutoUpdate status, and FeatureTypes.
+#'
+#' See [https://www.paws-r-sdk.com/docs/textract_get_adapter/](https://www.paws-r-sdk.com/docs/textract_get_adapter/) for full documentation.
+#'
+#' @param AdapterId &#91;required&#93; A string containing a unique ID for the adapter.
+#'
+#' @keywords internal
+#'
+#' @rdname textract_get_adapter
+textract_get_adapter <- function(AdapterId) {
+  op <- new_operation(
+    name = "GetAdapter",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$get_adapter_input(AdapterId = AdapterId)
+  output <- .textract$get_adapter_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$get_adapter <- textract_get_adapter
+
+#' Gets configuration information for the specified adapter version,
+#' including: AdapterId, AdapterVersion, FeatureTypes, Status,
+#' StatusMessage, DatasetConfig, KMSKeyId, OutputConfig, Tags and
+#' EvaluationMetrics
+#'
+#' @description
+#' Gets configuration information for the specified adapter version, including: AdapterId, AdapterVersion, FeatureTypes, Status, StatusMessage, DatasetConfig, KMSKeyId, OutputConfig, Tags and EvaluationMetrics.
+#'
+#' See [https://www.paws-r-sdk.com/docs/textract_get_adapter_version/](https://www.paws-r-sdk.com/docs/textract_get_adapter_version/) for full documentation.
+#'
+#' @param AdapterId &#91;required&#93; A string specifying a unique ID for the adapter version you want to
+#' retrieve information for.
+#' @param AdapterVersion &#91;required&#93; A string specifying the adapter version you want to retrieve information
+#' for.
+#'
+#' @keywords internal
+#'
+#' @rdname textract_get_adapter_version
+textract_get_adapter_version <- function(AdapterId, AdapterVersion) {
+  op <- new_operation(
+    name = "GetAdapterVersion",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$get_adapter_version_input(AdapterId = AdapterId, AdapterVersion = AdapterVersion)
+  output <- .textract$get_adapter_version_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$get_adapter_version <- textract_get_adapter_version
 
 #' Gets the results for an Amazon Textract asynchronous operation that
 #' analyzes text in a document
@@ -335,6 +540,112 @@ textract_get_lending_analysis_summary <- function(JobId) {
 }
 .textract$operations$get_lending_analysis_summary <- textract_get_lending_analysis_summary
 
+#' List all version of an adapter that meet the specified filtration
+#' criteria
+#'
+#' @description
+#' List all version of an adapter that meet the specified filtration criteria.
+#'
+#' See [https://www.paws-r-sdk.com/docs/textract_list_adapter_versions/](https://www.paws-r-sdk.com/docs/textract_list_adapter_versions/) for full documentation.
+#'
+#' @param AdapterId A string containing a unique ID for the adapter to match for when
+#' listing adapter versions.
+#' @param AfterCreationTime Specifies the lower bound for the ListAdapterVersions operation. Ensures
+#' ListAdapterVersions returns only adapter versions created after the
+#' specified creation time.
+#' @param BeforeCreationTime Specifies the upper bound for the ListAdapterVersions operation. Ensures
+#' ListAdapterVersions returns only adapter versions created after the
+#' specified creation time.
+#' @param MaxResults The maximum number of results to return when listing adapter versions.
+#' @param NextToken Identifies the next page of results to return when listing adapter
+#' versions.
+#'
+#' @keywords internal
+#'
+#' @rdname textract_list_adapter_versions
+textract_list_adapter_versions <- function(AdapterId = NULL, AfterCreationTime = NULL, BeforeCreationTime = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAdapterVersions",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "AdapterVersions")
+  )
+  input <- .textract$list_adapter_versions_input(AdapterId = AdapterId, AfterCreationTime = AfterCreationTime, BeforeCreationTime = BeforeCreationTime, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .textract$list_adapter_versions_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$list_adapter_versions <- textract_list_adapter_versions
+
+#' Lists all adapters that match the specified filtration criteria
+#'
+#' @description
+#' Lists all adapters that match the specified filtration criteria.
+#'
+#' See [https://www.paws-r-sdk.com/docs/textract_list_adapters/](https://www.paws-r-sdk.com/docs/textract_list_adapters/) for full documentation.
+#'
+#' @param AfterCreationTime Specifies the lower bound for the ListAdapters operation. Ensures
+#' ListAdapters returns only adapters created after the specified creation
+#' time.
+#' @param BeforeCreationTime Specifies the upper bound for the ListAdapters operation. Ensures
+#' ListAdapters returns only adapters created before the specified creation
+#' time.
+#' @param MaxResults The maximum number of results to return when listing adapters.
+#' @param NextToken Identifies the next page of results to return when listing adapters.
+#'
+#' @keywords internal
+#'
+#' @rdname textract_list_adapters
+textract_list_adapters <- function(AfterCreationTime = NULL, BeforeCreationTime = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListAdapters",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Adapters")
+  )
+  input <- .textract$list_adapters_input(AfterCreationTime = AfterCreationTime, BeforeCreationTime = BeforeCreationTime, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .textract$list_adapters_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$list_adapters <- textract_list_adapters
+
+#' Lists all tags for an Amazon Textract resource
+#'
+#' @description
+#' Lists all tags for an Amazon Textract resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/textract_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/textract_list_tags_for_resource/) for full documentation.
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) that specifies the resource to list tags
+#' for.
+#'
+#' @keywords internal
+#'
+#' @rdname textract_list_tags_for_resource
+textract_list_tags_for_resource <- function(ResourceARN) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$list_tags_for_resource_input(ResourceARN = ResourceARN)
+  output <- .textract$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$list_tags_for_resource <- textract_list_tags_for_resource
+
 #' Starts the asynchronous analysis of an input document for relationships
 #' between detected items such as key-value pairs, tables, and selection
 #' elements
@@ -373,18 +684,19 @@ textract_get_lending_analysis_summary <- function(JobId) {
 #' bucket. When this parameter is not enabled, the result will be encrypted
 #' server side,using SSE-S3.
 #' @param QueriesConfig 
+#' @param AdaptersConfig Specifies the adapter to be used when analyzing a document.
 #'
 #' @keywords internal
 #'
 #' @rdname textract_start_document_analysis
-textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, ClientRequestToken = NULL, JobTag = NULL, NotificationChannel = NULL, OutputConfig = NULL, KMSKeyId = NULL, QueriesConfig = NULL) {
+textract_start_document_analysis <- function(DocumentLocation, FeatureTypes, ClientRequestToken = NULL, JobTag = NULL, NotificationChannel = NULL, OutputConfig = NULL, KMSKeyId = NULL, QueriesConfig = NULL, AdaptersConfig = NULL) {
   op <- new_operation(
     name = "StartDocumentAnalysis",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .textract$start_document_analysis_input(DocumentLocation = DocumentLocation, FeatureTypes = FeatureTypes, ClientRequestToken = ClientRequestToken, JobTag = JobTag, NotificationChannel = NotificationChannel, OutputConfig = OutputConfig, KMSKeyId = KMSKeyId, QueriesConfig = QueriesConfig)
+  input <- .textract$start_document_analysis_input(DocumentLocation = DocumentLocation, FeatureTypes = FeatureTypes, ClientRequestToken = ClientRequestToken, JobTag = JobTag, NotificationChannel = NotificationChannel, OutputConfig = OutputConfig, KMSKeyId = KMSKeyId, QueriesConfig = QueriesConfig, AdaptersConfig = AdaptersConfig)
   output <- .textract$start_document_analysis_output()
   config <- get_config()
   svc <- .textract$service(config)
@@ -541,3 +853,97 @@ textract_start_lending_analysis <- function(DocumentLocation, ClientRequestToken
   return(response)
 }
 .textract$operations$start_lending_analysis <- textract_start_lending_analysis
+
+#' Adds one or more tags to the specified resource
+#'
+#' @description
+#' Adds one or more tags to the specified resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/textract_tag_resource/](https://www.paws-r-sdk.com/docs/textract_tag_resource/) for full documentation.
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) that specifies the resource to be tagged.
+#' @param Tags &#91;required&#93; A set of tags (key-value pairs) that you want to assign to the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname textract_tag_resource
+textract_tag_resource <- function(ResourceARN, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$tag_resource_input(ResourceARN = ResourceARN, Tags = Tags)
+  output <- .textract$tag_resource_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$tag_resource <- textract_tag_resource
+
+#' Removes any tags with the specified keys from the specified resource
+#'
+#' @description
+#' Removes any tags with the specified keys from the specified resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/textract_untag_resource/](https://www.paws-r-sdk.com/docs/textract_untag_resource/) for full documentation.
+#'
+#' @param ResourceARN &#91;required&#93; The Amazon Resource Name (ARN) that specifies the resource to be
+#' untagged.
+#' @param TagKeys &#91;required&#93; Specifies the tags to be removed from the resource specified by the
+#' ResourceARN.
+#'
+#' @keywords internal
+#'
+#' @rdname textract_untag_resource
+textract_untag_resource <- function(ResourceARN, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$untag_resource_input(ResourceARN = ResourceARN, TagKeys = TagKeys)
+  output <- .textract$untag_resource_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$untag_resource <- textract_untag_resource
+
+#' Update the configuration for an adapter
+#'
+#' @description
+#' Update the configuration for an adapter. FeatureTypes configurations cannot be updated. At least one new parameter must be specified as an argument.
+#'
+#' See [https://www.paws-r-sdk.com/docs/textract_update_adapter/](https://www.paws-r-sdk.com/docs/textract_update_adapter/) for full documentation.
+#'
+#' @param AdapterId &#91;required&#93; A string containing a unique ID for the adapter that will be updated.
+#' @param Description The new description to be applied to the adapter.
+#' @param AdapterName The new name to be applied to the adapter.
+#' @param AutoUpdate The new auto-update status to be applied to the adapter.
+#'
+#' @keywords internal
+#'
+#' @rdname textract_update_adapter
+textract_update_adapter <- function(AdapterId, Description = NULL, AdapterName = NULL, AutoUpdate = NULL) {
+  op <- new_operation(
+    name = "UpdateAdapter",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .textract$update_adapter_input(AdapterId = AdapterId, Description = Description, AdapterName = AdapterName, AutoUpdate = AutoUpdate)
+  output <- .textract$update_adapter_output()
+  config <- get_config()
+  svc <- .textract$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.textract$operations$update_adapter <- textract_update_adapter

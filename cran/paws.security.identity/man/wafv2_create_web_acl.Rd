@@ -43,9 +43,9 @@ match.}
 \item{Description}{A description of the web ACL that helps with identification.}
 
 \item{Rules}{The Rule statements used to identify the web requests that you want to
-allow, block, or count. Each rule includes one top-level statement that
-WAF uses to identify matching web requests, and parameters that govern
-how WAF handles them.}
+manage. Each rule includes one top-level statement that WAF uses to
+identify matching web requests, and parameters that govern how WAF
+handles them.}
 
 \item{VisibilityConfig}{[required] Defines and enables Amazon CloudWatch metrics and web request sample
 collection.}
@@ -93,7 +93,7 @@ and protected resources.
 
 Use this to customize the maximum size of the request body that your
 protected CloudFront distributions forward to WAF for inspection. The
-default is 16 KB (16,384 kilobytes).
+default is 16 KB (16,384 bytes).
 
 You are charged additional fees when your protected resources forward
 body sizes that are larger than the default. For more information, see

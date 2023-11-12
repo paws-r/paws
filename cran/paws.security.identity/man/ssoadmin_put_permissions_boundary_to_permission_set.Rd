@@ -2,8 +2,8 @@
 % Please edit documentation in R/ssoadmin_operations.R
 \name{ssoadmin_put_permissions_boundary_to_permission_set}
 \alias{ssoadmin_put_permissions_boundary_to_permission_set}
-\title{Attaches an AWS managed or customer managed policy to the specified
-PermissionSet as a permissions boundary}
+\title{Attaches an Amazon Web Services managed or customer managed policy to
+the specified PermissionSet as a permissions boundary}
 \usage{
 ssoadmin_put_permissions_boundary_to_permission_set(
   InstanceArn,
@@ -20,7 +20,7 @@ will be executed.}
 \item{PermissionsBoundary}{[required] The permissions boundary that you want to attach to a \code{PermissionSet}.}
 }
 \description{
-Attaches an AWS managed or customer managed policy to the specified PermissionSet as a permissions boundary.
+Attaches an Amazon Web Services managed or customer managed policy to the specified PermissionSet as a permissions boundary.
 
 See \url{https://www.paws-r-sdk.com/docs/ssoadmin_put_permissions_boundary_to_permission_set/} for full documentation.
 }

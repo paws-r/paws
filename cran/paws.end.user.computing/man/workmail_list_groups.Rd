@@ -4,7 +4,12 @@
 \alias{workmail_list_groups}
 \title{Returns summaries of the organization's groups}
 \usage{
-workmail_list_groups(OrganizationId, NextToken = NULL, MaxResults = NULL)
+workmail_list_groups(
+  OrganizationId,
+  NextToken = NULL,
+  MaxResults = NULL,
+  Filters = NULL
+)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the groups exist.}
@@ -13,6 +18,9 @@ workmail_list_groups(OrganizationId, NextToken = NULL, MaxResults = NULL)
 does not contain any tokens.}
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
+
+\item{Filters}{Limit the search results based on the filter criteria. Only one filter
+per request is supported.}
 }
 \description{
 Returns summaries of the organization's groups.

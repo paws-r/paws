@@ -435,7 +435,7 @@ autoscaling_complete_lifecycle_action <- function(LifecycleHookName, AutoScaling
 #' Amazon EC2 Auto Scaling supports `DesiredCapacityType` for
 #' attribute-based instance type selection only. For more information, see
 #' [Creating an Auto Scaling group using attribute-based instance type
-#' selection](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-instance-type-requirements.html)
+#' selection](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-mixed-instances-group-attribute-based-instance-type-selection.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
 #' By default, Amazon EC2 Auto Scaling specifies `units`, which translates
@@ -1115,7 +1115,7 @@ autoscaling_describe_instance_refreshes <- function(AutoScalingGroupName, Instan
     name = "DescribeInstanceRefreshes",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken")
   )
   input <- .autoscaling$describe_instance_refreshes_input(AutoScalingGroupName = AutoScalingGroupName, InstanceRefreshIds = InstanceRefreshIds, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_instance_refreshes_output()
@@ -1247,7 +1247,7 @@ autoscaling_describe_load_balancer_target_groups <- function(AutoScalingGroupNam
     name = "DescribeLoadBalancerTargetGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken")
   )
   input <- .autoscaling$describe_load_balancer_target_groups_input(AutoScalingGroupName = AutoScalingGroupName, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_load_balancer_target_groups_output()
@@ -1281,7 +1281,7 @@ autoscaling_describe_load_balancers <- function(AutoScalingGroupName, NextToken 
     name = "DescribeLoadBalancers",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", limit_key = "MaxRecords", output_token = "NextToken")
   )
   input <- .autoscaling$describe_load_balancers_input(AutoScalingGroupName = AutoScalingGroupName, NextToken = NextToken, MaxRecords = MaxRecords)
   output <- .autoscaling$describe_load_balancers_output()
@@ -2938,7 +2938,7 @@ autoscaling_terminate_instance_in_auto_scaling_group <- function(InstanceId, Sho
 #' Amazon EC2 Auto Scaling supports `DesiredCapacityType` for
 #' attribute-based instance type selection only. For more information, see
 #' [Creating an Auto Scaling group using attribute-based instance type
-#' selection](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-instance-type-requirements.html)
+#' selection](https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-mixed-instances-group-attribute-based-instance-type-selection.html)
 #' in the *Amazon EC2 Auto Scaling User Guide*.
 #' 
 #' By default, Amazon EC2 Auto Scaling specifies `units`, which translates

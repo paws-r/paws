@@ -67,8 +67,9 @@ can be set in the Amazon Web Services KMS key policy:
 exported data.}
 
 \item{ExportOnly}{The data to be exported from the snapshot or cluster. If this parameter
-is not provided, all of the data is exported. Valid values are the
-following:
+isn't provided, all of the data is exported.
+
+Valid Values:
 \itemize{
 \item \code{database} - Export all the data from a specified database.
 \item \code{database.table} \emph{table-name} - Export a table of the snapshot or

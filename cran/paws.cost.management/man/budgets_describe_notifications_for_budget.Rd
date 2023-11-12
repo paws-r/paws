@@ -18,7 +18,7 @@ you want descriptions of.}
 \item{BudgetName}{[required] The name of the budget whose notifications you want descriptions of.}
 
 \item{MaxResults}{An optional integer that represents how many entries a paginated
-response contains. The maximum is 100.}
+response contains.}
 
 \item{NextToken}{The pagination token that you include in your request to indicate the
 next set of results that you want to retrieve.}

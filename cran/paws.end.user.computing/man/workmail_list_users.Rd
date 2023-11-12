@@ -4,7 +4,12 @@
 \alias{workmail_list_users}
 \title{Returns summaries of the organization's users}
 \usage{
-workmail_list_users(OrganizationId, NextToken = NULL, MaxResults = NULL)
+workmail_list_users(
+  OrganizationId,
+  NextToken = NULL,
+  MaxResults = NULL,
+  Filters = NULL
+)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the users exist.}
@@ -13,6 +18,9 @@ workmail_list_users(OrganizationId, NextToken = NULL, MaxResults = NULL)
 does not contain any tokens.}
 
 \item{MaxResults}{The maximum number of results to return in a single call.}
+
+\item{Filters}{Limit the user search results based on the filter criteria. You can only
+use one filter per request.}
 }
 \description{
 Returns summaries of the organization's users.

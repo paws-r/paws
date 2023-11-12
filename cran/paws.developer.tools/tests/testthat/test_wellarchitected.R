@@ -32,6 +32,14 @@ test_that("list_profiles", {
   expect_error(svc$list_profiles(MaxResults = 20), NA)
 })
 
+test_that("list_review_templates", {
+  expect_error(svc$list_review_templates(), NA)
+})
+
+test_that("list_review_templates", {
+  expect_error(svc$list_review_templates(MaxResults = 20), NA)
+})
+
 test_that("list_share_invitations", {
   expect_error(svc$list_share_invitations(), NA)
 })

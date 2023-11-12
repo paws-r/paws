@@ -4,10 +4,18 @@
 \alias{codepipeline_start_pipeline_execution}
 \title{Starts the specified pipeline}
 \usage{
-codepipeline_start_pipeline_execution(name, clientRequestToken = NULL)
+codepipeline_start_pipeline_execution(
+  name,
+  variables = NULL,
+  clientRequestToken = NULL
+)
 }
 \arguments{
 \item{name}{[required] The name of the pipeline to start.}
+
+\item{variables}{A list that overrides pipeline variables for a pipeline execution that's
+being started. Variable names must match \verb{[A-Za-z0-9@\\-_]+}, and the
+values can be anything except an empty string.}
 
 \item{clientRequestToken}{The system-generated unique ID used to identify a unique execution
 request.}

@@ -286,9 +286,20 @@ cognitoidentityprovider_admin_confirm_sign_up <- function(UserPoolId, Username, 
 #'   MessageAction, DesiredDeliveryMediums, ClientMetadata)
 #'
 #' @param UserPoolId &#91;required&#93; The user pool ID for the user pool where the user will be created.
-#' @param Username &#91;required&#93; The username for the user. Must be unique within the user pool. Must be
-#' a UTF-8 string between 1 and 128 characters. After the user is created,
-#' the username can't be changed.
+#' @param Username &#91;required&#93; The value that you want to set as the username sign-in attribute. The
+#' following conditions apply to the username parameter.
+#' 
+#' -   The username can't be a duplicate of another username in the same
+#'     user pool.
+#' 
+#' -   You can't change the value of a username after you create it.
+#' 
+#' -   You can only provide a value if usernames are a valid sign-in
+#'     attribute for your user pool. If your user pool only supports phone
+#'     numbers or email addresses as sign-in attributes, Amazon Cognito
+#'     automatically generates a username value. For more information, see
+#'     [Customizing sign-in
+#'     attributes](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html#user-pool-settings-aliases).
 #' @param UserAttributes An array of name-value pairs that contain user attributes and attribute
 #' values to be set for the user to be created. You can create a user
 #' without specifying any attributes other than `Username`. However, any
@@ -7711,20 +7722,6 @@ cognitoidentityprovider_list_user_pools <- function(NextToken = NULL, MaxResults
 #'
 #' @examples
 #' \dontrun{
-#' # This request submits a value for all possible parameters for ListUsers.
-#' # By iterating the PaginationToken, you can page through and collect all
-#' # users in a user pool.
-#' svc$list_users(
-#'   AttributesToGet = list(
-#'     "email",
-#'     "sub"
-#'   ),
-#'   Filter = ""email"^="testuser"",
-#'   Limit = 3L,
-#'   PaginationToken = "abcd1234EXAMPLE",
-#'   UserPoolId = "us-east-1_EXAMPLE"
-#' )
-#' 
 #' # This request submits a value for all possible parameters for ListUsers.
 #' # By iterating the PaginationToken, you can page through and collect all
 #' # users in a user pool.

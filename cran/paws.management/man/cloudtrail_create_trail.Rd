@@ -69,7 +69,10 @@ delete a trail.}
 identifier that represents the log group to which CloudTrail logs will
 be delivered. You must use a log group that exists in your account.
 
-Not required unless you specify \code{CloudWatchLogsRoleArn}.}
+Not required unless you specify \code{CloudWatchLogsRoleArn}.
+
+Only the management account can configure a CloudWatch Logs log group
+for an organization trail.}
 
 \item{CloudWatchLogsRoleArn}{Specifies the role for the CloudWatch Logs endpoint to assume to write
 to a user's log group. You must use a role that exists in your account.}

@@ -21,7 +21,7 @@ For more information, see \href{https://docs.aws.amazon.com/r53recovery/latest/d
 in the Amazon Route 53 Application Recovery Controller Developer Guide.}
 }
 \description{
-Set multiple routing control states. You can set the value for each state to be On or Off. When the state is On, traffic flows to a cell. When it's Off, traffic does not flow.
+Set multiple routing control states. You can set the value for each state to be ON or OFF. When the state is ON, traffic flows to a cell. When it's OFF, traffic does not flow.
 
 See \url{https://www.paws-r-sdk.com/docs/route53recoverycluster_update_routing_control_states/} for full documentation.
 }

@@ -2,17 +2,17 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_enable_organization_admin_account}
 \alias{guardduty_enable_organization_admin_account}
-\title{Enables an Amazon Web Services account within the organization as the
-GuardDuty delegated administrator}
+\title{Designates an Amazon Web Services account within the organization as
+your GuardDuty delegated administrator}
 \usage{
 guardduty_enable_organization_admin_account(AdminAccountId)
 }
 \arguments{
-\item{AdminAccountId}{[required] The Amazon Web Services Account ID for the organization account to be
+\item{AdminAccountId}{[required] The Amazon Web Services account ID for the organization account to be
 enabled as a GuardDuty delegated administrator.}
 }
 \description{
-Enables an Amazon Web Services account within the organization as the GuardDuty delegated administrator.
+Designates an Amazon Web Services account within the organization as your GuardDuty delegated administrator. Only the organization's management account can run this API operation.
 
 See \url{https://www.paws-r-sdk.com/docs/guardduty_enable_organization_admin_account/} for full documentation.
 }

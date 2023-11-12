@@ -31,6 +31,7 @@ rds_create_db_cluster(
   EnableCloudwatchLogsExports = NULL,
   EngineMode = NULL,
   ScalingConfiguration = NULL,
+  RdsCustomClusterConfiguration = NULL,
   DeletionProtection = NULL,
   GlobalClusterIdentifier = NULL,
   EnableHttpEndpoint = NULL,
@@ -406,6 +407,8 @@ Valid for Cluster Type: Aurora DB clusters only}
 of the DB cluster.
 
 Valid for Cluster Type: Aurora DB clusters only}
+
+\item{RdsCustomClusterConfiguration}{Reserved for future use.}
 
 \item{DeletionProtection}{Specifies whether the DB cluster has deletion protection enabled. The
 database can't be deleted when deletion protection is enabled. By

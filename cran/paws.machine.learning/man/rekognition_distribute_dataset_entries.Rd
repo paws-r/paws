@@ -2,8 +2,7 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_distribute_dataset_entries}
 \alias{rekognition_distribute_dataset_entries}
-\title{Distributes the entries (images) in a training dataset across the
-training dataset and the test dataset for a project}
+\title{This operation applies only to Amazon Rekognition Custom Labels}
 \usage{
 rekognition_distribute_dataset_entries(Datasets)
 }
@@ -13,7 +12,7 @@ The datasets must belong to the same project. The test dataset must be
 empty.}
 }
 \description{
-Distributes the entries (images) in a training dataset across the training dataset and the test dataset for a project. \code{\link[=rekognition_distribute_dataset_entries]{distribute_dataset_entries}} moves 20\% of the training dataset images to the test dataset. An entry is a JSON Line that describes an image.
+This operation applies only to Amazon Rekognition Custom Labels.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_distribute_dataset_entries/} for full documentation.
 }

@@ -150,7 +150,15 @@ kendra_associate_personas_to_entities <- function(Id, IndexId, Personas) {
 #' 
 #' The documents are deleted asynchronously. You can see the progress of
 #' the deletion by using Amazon Web Services CloudWatch. Any error messages
-#' related to the processing of the batch are sent to you CloudWatch log.
+#' related to the processing of the batch are sent to your Amazon Web
+#' Services CloudWatch log. You can also use the
+#' [`batch_get_document_status`][kendra_batch_get_document_status] API to
+#' monitor the progress of deleting your documents.
+#' 
+#' Deleting documents from an index using
+#' [`batch_delete_document`][kendra_batch_delete_document] could take up to
+#' an hour or more, depending on the number of documents you want to
+#' delete.
 #'
 #' @usage
 #' kendra_batch_delete_document(IndexId, DocumentIdList,
@@ -387,7 +395,9 @@ kendra_batch_get_document_status <- function(IndexId, DocumentInfoList) {
 #' The documents are indexed asynchronously. You can see the progress of
 #' the batch using Amazon Web Services CloudWatch. Any error messages
 #' related to processing the batch are sent to your Amazon Web Services
-#' CloudWatch log.
+#' CloudWatch log. You can also use the
+#' [`batch_get_document_status`][kendra_batch_get_document_status] API to
+#' monitor the progress of indexing your documents.
 #' 
 #' For an example of ingesting inline documents using Python and Java SDKs,
 #' see [Adding files directly to an
@@ -1776,9 +1786,8 @@ kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL,
 #' [`query`][kendra_query] API,
 #' [`get_query_suggestions`][kendra_get_query_suggestions] API, and other
 #' required APIs. The role also must include permission to access IAM
-#' Identity Center (successor to Single Sign-On) that stores your user and
-#' group information. For more information, see [IAM access roles for
-#' Amazon
+#' Identity Center that stores your user and group information. For more
+#' information, see [IAM access roles for Amazon
 #' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
 #' @param Configuration Configuration information for your Amazon Kendra experience. This
 #' includes `ContentSourceConfiguration`, which specifies the data source
@@ -2070,9 +2079,10 @@ kendra_create_featured_results_set <- function(IndexId, FeaturedResultsSetName, 
 #' returned from a call to [`describe_index`][kendra_describe_index]. The
 #' `Status` field is set to `ACTIVE` when the index is ready to use.
 #' 
-#' Once the index is active you can index your documents using the
+#' Once the index is active, you can index your documents using the
 #' [`batch_put_document`][kendra_batch_put_document] API or using one of
-#' the supported data sources.
+#' the supported [data
+#' sources](https://docs.aws.amazon.com/kendra/latest/dg/data-sources.html).
 #' 
 #' For an example of creating an index and data source using the Python
 #' SDK, see [Getting started with Python
@@ -2129,8 +2139,8 @@ kendra_create_featured_results_set <- function(IndexId, FeaturedResultsSetName, 
 #' Enables token-based user access control to filter search results on user
 #' context. All documents with no access control and all documents
 #' accessible to the user will be searchable and displayable.
-#' @param UserGroupResolutionConfiguration Gets users and groups from IAM Identity Center (successor to Single
-#' Sign-On) identity source. To configure this, see
+#' @param UserGroupResolutionConfiguration Gets users and groups from IAM Identity Center identity source. To
+#' configure this, see
 #' [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html).
 #'
 #' @return
@@ -2450,6 +2460,10 @@ kendra_delete_access_control_configuration <- function(IndexId, Id) {
 #' [`describe_data_source`][kendra_describe_data_source] API is set to
 #' `DELETING`. For more information, see [Deleting Data
 #' Sources](https://docs.aws.amazon.com/kendra/latest/dg/delete-data-source.html).
+#' 
+#' Deleting an entire data source or re-syncing your index after deleting
+#' specific documents from a data source could take up to an hour or more,
+#' depending on the number of documents you want to delete.
 #'
 #' @usage
 #' kendra_delete_data_source(Id, IndexId)
@@ -5988,6 +6002,14 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
 #' @description
 #' Searches an index given an input query.
 #' 
+#' If you are working with large language models (LLMs) or implementing
+#' retrieval augmented generation (RAG) systems, you can use Amazon
+#' Kendra's [`retrieve`][kendra_retrieve] API, which can return longer
+#' semantically relevant passages. We recommend using the
+#' [`retrieve`][kendra_retrieve] API instead of filing a service limit
+#' increase to increase the [`query`][kendra_query] API document excerpt
+#' length.
+#' 
 #' You can configure boosting or relevance tuning at the query level to
 #' override boosting at the index level, filter based on document
 #' fields/attributes and faceted search, and filter based on the user or
@@ -6015,8 +6037,8 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
 #' kendra_query(IndexId, QueryText, AttributeFilter, Facets,
 #'   RequestedDocumentAttributes, QueryResultTypeFilter,
 #'   DocumentRelevanceOverrideConfigurations, PageNumber, PageSize,
-#'   SortingConfiguration, UserContext, VisitorId,
-#'   SpellCorrectionConfiguration)
+#'   SortingConfiguration, SortingConfigurations, UserContext, VisitorId,
+#'   SpellCorrectionConfiguration, CollapseConfiguration)
 #'
 #' @param IndexId &#91;required&#93; The identifier of the index for the search.
 #' @param QueryText The input query text for the search. Amazon Kendra truncates queries at
@@ -6060,11 +6082,24 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
 #' 
 #' If you don't provide sorting configuration, the results are sorted by
 #' the relevance that Amazon Kendra determines for the result.
+#' @param SortingConfigurations Provides configuration information to determine how the results of a
+#' query are sorted.
+#' 
+#' You can set upto 3 fields that Amazon Kendra should sort the results on,
+#' and specify whether the results should be sorted in ascending or
+#' descending order. The sort field quota can be increased.
+#' 
+#' If you don't provide a sorting configuration, the results are sorted by
+#' the relevance that Amazon Kendra determines for the result. In the case
+#' of ties in sorting the results, the results are sorted by relevance.
 #' @param UserContext The user context token or user and group information.
 #' @param VisitorId Provides an identifier for a specific user. The `VisitorId` should be a
 #' unique identifier, such as a GUID. Don't use personally identifiable
 #' information, such as the user's email address, as the `VisitorId`.
 #' @param SpellCorrectionConfiguration Enables suggested spell corrections for queries.
+#' @param CollapseConfiguration Provides configuration to determine how to group results by document
+#' attribute value, and how to display them (collapsed or expanded) under a
+#' designated primary document for each group.
 #'
 #' @return
 #' A list with the following syntax:
@@ -6152,6 +6187,65 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
 #'           )
 #'         ),
 #'         TotalNumberOfRows = 123
+#'       ),
+#'       CollapsedResultDetail = list(
+#'         DocumentAttribute = list(
+#'           Key = "string",
+#'           Value = list(
+#'             StringValue = "string",
+#'             StringListValue = list(
+#'               "string"
+#'             ),
+#'             LongValue = 123,
+#'             DateValue = as.POSIXct(
+#'               "2015-01-01"
+#'             )
+#'           )
+#'         ),
+#'         ExpandedResults = list(
+#'           list(
+#'             Id = "string",
+#'             DocumentId = "string",
+#'             DocumentTitle = list(
+#'               Text = "string",
+#'               Highlights = list(
+#'                 list(
+#'                   BeginOffset = 123,
+#'                   EndOffset = 123,
+#'                   TopAnswer = TRUE|FALSE,
+#'                   Type = "STANDARD"|"THESAURUS_SYNONYM"
+#'                 )
+#'               )
+#'             ),
+#'             DocumentExcerpt = list(
+#'               Text = "string",
+#'               Highlights = list(
+#'                 list(
+#'                   BeginOffset = 123,
+#'                   EndOffset = 123,
+#'                   TopAnswer = TRUE|FALSE,
+#'                   Type = "STANDARD"|"THESAURUS_SYNONYM"
+#'                 )
+#'               )
+#'             ),
+#'             DocumentURI = "string",
+#'             DocumentAttributes = list(
+#'               list(
+#'                 Key = "string",
+#'                 Value = list(
+#'                   StringValue = "string",
+#'                   StringListValue = list(
+#'                     "string"
+#'                   ),
+#'                   LongValue = 123,
+#'                   DateValue = as.POSIXct(
+#'                     "2015-01-01"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
 #'       )
 #'     )
 #'   ),
@@ -6401,6 +6495,12 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
 #'     DocumentAttributeKey = "string",
 #'     SortOrder = "DESC"|"ASC"
 #'   ),
+#'   SortingConfigurations = list(
+#'     list(
+#'       DocumentAttributeKey = "string",
+#'       SortOrder = "DESC"|"ASC"
+#'     )
+#'   ),
 #'   UserContext = list(
 #'     Token = "string",
 #'     UserId = "string",
@@ -6417,6 +6517,21 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
 #'   VisitorId = "string",
 #'   SpellCorrectionConfiguration = list(
 #'     IncludeQuerySpellCheckSuggestions = TRUE|FALSE
+#'   ),
+#'   CollapseConfiguration = list(
+#'     DocumentAttributeKey = "string",
+#'     SortingConfigurations = list(
+#'       list(
+#'         DocumentAttributeKey = "string",
+#'         SortOrder = "DESC"|"ASC"
+#'       )
+#'     ),
+#'     MissingAttributeKeyStrategy = "IGNORE"|"COLLAPSE"|"EXPAND",
+#'     Expand = TRUE|FALSE,
+#'     ExpandConfiguration = list(
+#'       MaxResultItemsToExpand = 123,
+#'       MaxExpandedResultsPerItem = 123
+#'     )
 #'   )
 #' )
 #' ```
@@ -6426,14 +6541,14 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
 #' @rdname kendra_query
 #'
 #' @aliases kendra_query
-kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Facets = NULL, RequestedDocumentAttributes = NULL, QueryResultTypeFilter = NULL, DocumentRelevanceOverrideConfigurations = NULL, PageNumber = NULL, PageSize = NULL, SortingConfiguration = NULL, UserContext = NULL, VisitorId = NULL, SpellCorrectionConfiguration = NULL) {
+kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Facets = NULL, RequestedDocumentAttributes = NULL, QueryResultTypeFilter = NULL, DocumentRelevanceOverrideConfigurations = NULL, PageNumber = NULL, PageSize = NULL, SortingConfiguration = NULL, SortingConfigurations = NULL, UserContext = NULL, VisitorId = NULL, SpellCorrectionConfiguration = NULL, CollapseConfiguration = NULL) {
   op <- new_operation(
     name = "Query",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kendra$query_input(IndexId = IndexId, QueryText = QueryText, AttributeFilter = AttributeFilter, Facets = Facets, RequestedDocumentAttributes = RequestedDocumentAttributes, QueryResultTypeFilter = QueryResultTypeFilter, DocumentRelevanceOverrideConfigurations = DocumentRelevanceOverrideConfigurations, PageNumber = PageNumber, PageSize = PageSize, SortingConfiguration = SortingConfiguration, UserContext = UserContext, VisitorId = VisitorId, SpellCorrectionConfiguration = SpellCorrectionConfiguration)
+  input <- .kendra$query_input(IndexId = IndexId, QueryText = QueryText, AttributeFilter = AttributeFilter, Facets = Facets, RequestedDocumentAttributes = RequestedDocumentAttributes, QueryResultTypeFilter = QueryResultTypeFilter, DocumentRelevanceOverrideConfigurations = DocumentRelevanceOverrideConfigurations, PageNumber = PageNumber, PageSize = PageSize, SortingConfiguration = SortingConfiguration, SortingConfigurations = SortingConfigurations, UserContext = UserContext, VisitorId = VisitorId, SpellCorrectionConfiguration = SpellCorrectionConfiguration, CollapseConfiguration = CollapseConfiguration)
   output <- .kendra$query_output()
   config <- get_config()
   svc <- .kendra$service(config)
@@ -6455,9 +6570,10 @@ kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Face
 #' semantically relevant passages. This doesn't include question-answer or
 #' FAQ type responses from your index. The passages are text excerpts that
 #' can be semantically extracted from multiple documents and multiple parts
-#' of the same document. If in extreme cases your documents produce no
-#' relevant passages using the [`retrieve`][kendra_retrieve] API, you can
-#' alternatively use the [`query`][kendra_query] API.
+#' of the same document. If in extreme cases your documents produce zero
+#' passages using the [`retrieve`][kendra_retrieve] API, you can
+#' alternatively use the [`query`][kendra_query] API and its types of
+#' responses.
 #' 
 #' You can also do the following:
 #' 
@@ -6467,8 +6583,23 @@ kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Face
 #' 
 #' -   Filter based on the user or their group access to documents
 #' 
+#' -   View the confidence score bucket for a retrieved passage result. The
+#'     confidence bucket provides a relative ranking that indicates how
+#'     confident Amazon Kendra is that the response is relevant to the
+#'     query.
+#' 
+#'     Confidence score buckets are currently available only for English.
+#' 
 #' You can also include certain fields in the response that might provide
 #' useful additional information.
+#' 
+#' The [`retrieve`][kendra_retrieve] API shares the number of [query
+#' capacity
+#' units](https://docs.aws.amazon.com/kendra/latest/APIReference/API_CapacityUnitsConfiguration.html)
+#' that you set for your index. For more information on what's included in
+#' a single capacity unit and the default base capacity for an index, see
+#' [Adjusting
+#' capacity](https://docs.aws.amazon.com/kendra/latest/dg/adjusting-capacity.html).
 #'
 #' @usage
 #' kendra_retrieve(IndexId, QueryText, AttributeFilter,
@@ -6535,6 +6666,9 @@ kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Face
 #'             )
 #'           )
 #'         )
+#'       ),
+#'       ScoreAttributes = list(
+#'         ScoreConfidence = "VERY_HIGH"|"HIGH"|"MEDIUM"|"LOW"|"NOT_AVAILABLE"
 #'       )
 #'     )
 #'   )
@@ -6709,6 +6843,10 @@ kendra_retrieve <- function(IndexId, QueryText, AttributeFilter = NULL, Requeste
 #' Starts a synchronization job for a data source connector. If a
 #' synchronization job is already in progress, Amazon Kendra returns a
 #' `ResourceInUseException` exception.
+#' 
+#' Re-syncing your data source with your index after modifying, adding, or
+#' deleting documents from your data source respository could take up to an
+#' hour or more, depending on the number of documents to sync.
 #'
 #' @usage
 #' kendra_start_data_source_sync_job(Id, IndexId)
@@ -8219,8 +8357,7 @@ kendra_update_featured_results_set <- function(IndexId, FeaturedResultsSetId, Fe
 #' @param UserTokenConfigurations The user token configuration.
 #' @param UserContextPolicy The user context policy.
 #' @param UserGroupResolutionConfiguration Enables fetching access levels of groups and users from an IAM Identity
-#' Center (successor to Single Sign-On) identity source. To configure this,
-#' see
+#' Center identity source. To configure this, see
 #' [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html).
 #'
 #' @return

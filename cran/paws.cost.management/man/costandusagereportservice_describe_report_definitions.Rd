@@ -2,7 +2,8 @@
 % Please edit documentation in R/costandusagereportservice_operations.R
 \name{costandusagereportservice_describe_report_definitions}
 \alias{costandusagereportservice_describe_report_definitions}
-\title{Lists the AWS Cost and Usage reports available to this account}
+\title{Lists the Amazon Web Services Cost and Usage Report available to this
+account}
 \usage{
 costandusagereportservice_describe_report_definitions(
   MaxResults = NULL,
@@ -15,7 +16,7 @@ costandusagereportservice_describe_report_definitions(
 \item{NextToken}{}
 }
 \description{
-Lists the AWS Cost and Usage reports available to this account.
+Lists the Amazon Web Services Cost and Usage Report available to this account.
 
 See \url{https://www.paws-r-sdk.com/docs/costandusagereportservice_describe_report_definitions/} for full documentation.
 }

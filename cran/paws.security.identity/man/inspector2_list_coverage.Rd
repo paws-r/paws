@@ -14,12 +14,17 @@ inspector2_list_coverage(
 \item{filterCriteria}{An object that contains details on the filters to apply to the coverage
 data for your environment.}
 
-\item{maxResults}{The maximum number of results to return in the response.}
+\item{maxResults}{The maximum number of results the response can return. If your request
+would return more than the maximum the response will return a
+\code{nextToken} value, use this value when you call the action again to get
+the remaining results.}
 
 \item{nextToken}{A token to use for paginating results that are returned in the response.
 Set the value of this parameter to null for the first request to a list
-action. For subsequent calls, use the \code{NextToken} value returned from
-the previous request to continue listing results after the first page.}
+action. If your response returns more than the \code{maxResults} maximum
+value it will also return a \code{nextToken} value. For subsequent calls, use
+the \code{nextToken} value returned from the previous request to continue
+listing results after the first page.}
 }
 \description{
 Lists coverage details for you environment.

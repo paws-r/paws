@@ -10,7 +10,7 @@ efs_delete_replication_configuration(SourceFileSystemId)
 \item{SourceFileSystemId}{[required] The ID of the source file system in the replication configuration.}
 }
 \description{
-Deletes an existing replication configuration. To delete a replication configuration, you must make the request from the Amazon Web Services Region in which the destination file system is located. Deleting a replication configuration ends the replication process. After a replication configuration is deleted, the destination file system is no longer read-only. You can write to the destination file system after its status becomes \code{Writeable}.
+Deletes an existing replication configuration. Deleting a replication configuration ends the replication process. After a replication configuration is deleted, the destination file system is no longer read-only. You can write to the destination file system after its status becomes \code{Writeable}.
 
 See \url{https://www.paws-r-sdk.com/docs/efs_delete_replication_configuration/} for full documentation.
 }

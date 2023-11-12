@@ -3,8 +3,8 @@
 \name{connect_resume_contact_recording}
 \alias{connect_resume_contact_recording}
 \title{When a contact is being recorded, and the recording has been suspended
-using SuspendContactRecording, this API resumes recording the call or
-screen}
+using SuspendContactRecording, this API resumes recording whatever
+recording is selected in the flow configuration: call, screen, or both}
 \usage{
 connect_resume_contact_recording(InstanceId, ContactId, InitialContactId)
 }
@@ -18,7 +18,7 @@ in the Amazon Resource Name (ARN) of the instance.}
 associated with the first interaction with the contact center.}
 }
 \description{
-When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording the call or screen.
+When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording whatever recording is selected in the flow configuration: call, screen, or both. If only call recording or only screen recording is enabled, then it would resume.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_resume_contact_recording/} for full documentation.
 }

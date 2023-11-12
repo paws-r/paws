@@ -18,12 +18,13 @@ pricing_list_price_lists(
 that you want to retrieve. For example, to get the list of applicable
 Amazon EC2 price lists, use \code{AmazonEC2}. For a full list of service
 codes containing On-Demand and Reserved Instance (RI) pricing, use the
-\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_DescribeServices.html#awscostmanagement-pricing_DescribeServices-request-FormatVersion}{\code{describe_services}}
-API.
+\code{\link[=pricing_describe_services]{describe_services}} API.
 
-To retrieve the Compute Savings Plan price lists, use
-\code{ComputeSavingsPlans}. To retrieve Machine Learning Savings Plans price
-lists, use \code{MachineLearningSavingsPlans}.}
+To retrieve the Reserved Instance and Compute Savings Plan price lists,
+use \code{ComputeSavingsPlans}.
+
+To retrieve Machine Learning Savings Plans price lists, use
+\code{MachineLearningSavingsPlans}.}
 
 \item{EffectiveDate}{[required] The date that the Price List file prices are effective from.}
 
@@ -31,8 +32,7 @@ lists, use \code{MachineLearningSavingsPlans}.}
 example, to get the price list only for the \verb{US East (N. Virginia)}
 Region, use \code{us-east-1}. If nothing is specified, you retrieve price
 lists for all applicable Regions. The available \code{RegionCode} list can be
-retrieved from
-\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_GetAttributeValues.html}{\code{get_attribute_values}}
+retrieved from \code{\link[=pricing_get_attribute_values]{get_attribute_values}}
 API.}
 
 \item{CurrencyCode}{[required] The three alphabetical character ISO-4217 currency code that the Price

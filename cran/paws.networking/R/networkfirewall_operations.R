@@ -309,18 +309,23 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #' @param SourceMetadata A complex type that contains metadata about the rule group that your own
 #' rule group is copied from. You can use the metadata to keep track of
 #' updates made to the originating rule group.
+#' @param AnalyzeRuleGroup Indicates whether you want Network Firewall to analyze the stateless
+#' rules in the rule group for rule behavior such as asymmetric routing. If
+#' set to `TRUE`, Network Firewall runs the analysis and then creates the
+#' rule group for you. To run the stateless rule group analyzer without
+#' creating the rule group, set `DryRun` to `TRUE`.
 #'
 #' @keywords internal
 #'
 #' @rdname networkfirewall_create_rule_group
-networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, Rules = NULL, Type, Description = NULL, Capacity, Tags = NULL, DryRun = NULL, EncryptionConfiguration = NULL, SourceMetadata = NULL) {
+networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, Rules = NULL, Type, Description = NULL, Capacity, Tags = NULL, DryRun = NULL, EncryptionConfiguration = NULL, SourceMetadata = NULL, AnalyzeRuleGroup = NULL) {
   op <- new_operation(
     name = "CreateRuleGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .networkfirewall$create_rule_group_input(RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, Capacity = Capacity, Tags = Tags, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata)
+  input <- .networkfirewall$create_rule_group_input(RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, Capacity = Capacity, Tags = Tags, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata, AnalyzeRuleGroup = AnalyzeRuleGroup)
   output <- .networkfirewall$create_rule_group_output()
   config <- get_config()
   svc <- .networkfirewall$service(config)
@@ -333,7 +338,7 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #' Creates an Network Firewall TLS inspection configuration
 #'
 #' @description
-#' Creates an Network Firewall TLS inspection configuration. A TLS inspection configuration contains the Certificate Manager certificate references that Network Firewall uses to decrypt and re-encrypt inbound traffic.
+#' Creates an Network Firewall TLS inspection configuration. A TLS inspection configuration contains Certificate Manager certificate associations between and the scope configurations that Network Firewall uses to decrypt and re-encrypt traffic traveling through your firewall.
 #'
 #' See [https://www.paws-r-sdk.com/docs/networkfirewall_create_tls_inspection_configuration/](https://www.paws-r-sdk.com/docs/networkfirewall_create_tls_inspection_configuration/) for full documentation.
 #'
@@ -352,11 +357,11 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #' To use a TLS inspection configuration, you add it to a new Network
 #' Firewall firewall policy, then you apply the firewall policy to a
 #' firewall. Network Firewall acts as a proxy service to decrypt and
-#' inspect inbound traffic. You can reference a TLS inspection
-#' configuration from more than one firewall policy, and you can use a
-#' firewall policy in more than one firewall. For more information about
-#' using TLS inspection configurations, see [Decrypting SSL/TLS traffic
-#' with TLS inspection
+#' inspect the traffic traveling through your firewalls. You can reference
+#' a TLS inspection configuration from more than one firewall policy, and
+#' you can use a firewall policy in more than one firewall. For more
+#' information about using TLS inspection configurations, see [Inspecting
+#' SSL/TLS traffic with TLS inspection
 #' configurations](https://docs.aws.amazon.com/network-firewall/latest/developerguide/)
 #' in the *Network Firewall Developer Guide*.
 #' @param Description A description of the TLS inspection configuration.
@@ -716,18 +721,21 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
 #' 
 #' This setting is required for requests that do not include the
 #' `RuleGroupARN`.
+#' @param AnalyzeRuleGroup Indicates whether you want Network Firewall to analyze the stateless
+#' rules in the rule group for rule behavior such as asymmetric routing. If
+#' set to `TRUE`, Network Firewall runs the analysis.
 #'
 #' @keywords internal
 #'
 #' @rdname networkfirewall_describe_rule_group
-networkfirewall_describe_rule_group <- function(RuleGroupName = NULL, RuleGroupArn = NULL, Type = NULL) {
+networkfirewall_describe_rule_group <- function(RuleGroupName = NULL, RuleGroupArn = NULL, Type = NULL, AnalyzeRuleGroup = NULL) {
   op <- new_operation(
     name = "DescribeRuleGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .networkfirewall$describe_rule_group_input(RuleGroupName = RuleGroupName, RuleGroupArn = RuleGroupArn, Type = Type)
+  input <- .networkfirewall$describe_rule_group_input(RuleGroupName = RuleGroupName, RuleGroupArn = RuleGroupArn, Type = Type, AnalyzeRuleGroup = AnalyzeRuleGroup)
   output <- .networkfirewall$describe_rule_group_output()
   config <- get_config()
   svc <- .networkfirewall$service(config)
@@ -1567,18 +1575,23 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #' @param SourceMetadata A complex type that contains metadata about the rule group that your own
 #' rule group is copied from. You can use the metadata to keep track of
 #' updates made to the originating rule group.
+#' @param AnalyzeRuleGroup Indicates whether you want Network Firewall to analyze the stateless
+#' rules in the rule group for rule behavior such as asymmetric routing. If
+#' set to `TRUE`, Network Firewall runs the analysis and then updates the
+#' rule group for you. To run the stateless rule group analyzer without
+#' updating the rule group, set `DryRun` to `TRUE`.
 #'
 #' @keywords internal
 #'
 #' @rdname networkfirewall_update_rule_group
-networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, RuleGroupName = NULL, RuleGroup = NULL, Rules = NULL, Type = NULL, Description = NULL, DryRun = NULL, EncryptionConfiguration = NULL, SourceMetadata = NULL) {
+networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, RuleGroupName = NULL, RuleGroup = NULL, Rules = NULL, Type = NULL, Description = NULL, DryRun = NULL, EncryptionConfiguration = NULL, SourceMetadata = NULL, AnalyzeRuleGroup = NULL) {
   op <- new_operation(
     name = "UpdateRuleGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .networkfirewall$update_rule_group_input(UpdateToken = UpdateToken, RuleGroupArn = RuleGroupArn, RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata)
+  input <- .networkfirewall$update_rule_group_input(UpdateToken = UpdateToken, RuleGroupArn = RuleGroupArn, RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata, AnalyzeRuleGroup = AnalyzeRuleGroup)
   output <- .networkfirewall$update_rule_group_output()
   config <- get_config()
   svc <- .networkfirewall$service(config)
@@ -1649,7 +1662,7 @@ networkfirewall_update_subnet_change_protection <- function(UpdateToken = NULL, 
 #' inspection configuration
 #'
 #' @description
-#' Updates the TLS inspection configuration settings for the specified TLS inspection configuration. You use a TLS inspection configuration by reference in one or more firewall policies. When you modify a TLS inspection configuration, you modify all firewall policies that use the TLS inspection configuration.
+#' Updates the TLS inspection configuration settings for the specified TLS inspection configuration. You use a TLS inspection configuration by referencing it in one or more firewall policies. When you modify a TLS inspection configuration, you modify all firewall policies that use the TLS inspection configuration.
 #'
 #' See [https://www.paws-r-sdk.com/docs/networkfirewall_update_tls_inspection_configuration/](https://www.paws-r-sdk.com/docs/networkfirewall_update_tls_inspection_configuration/) for full documentation.
 #'
@@ -1669,11 +1682,11 @@ networkfirewall_update_subnet_change_protection <- function(UpdateToken = NULL, 
 #' To use a TLS inspection configuration, you add it to a new Network
 #' Firewall firewall policy, then you apply the firewall policy to a
 #' firewall. Network Firewall acts as a proxy service to decrypt and
-#' inspect inbound traffic. You can reference a TLS inspection
-#' configuration from more than one firewall policy, and you can use a
-#' firewall policy in more than one firewall. For more information about
-#' using TLS inspection configurations, see [Decrypting SSL/TLS traffic
-#' with TLS inspection
+#' inspect the traffic traveling through your firewalls. You can reference
+#' a TLS inspection configuration from more than one firewall policy, and
+#' you can use a firewall policy in more than one firewall. For more
+#' information about using TLS inspection configurations, see [Inspecting
+#' SSL/TLS traffic with TLS inspection
 #' configurations](https://docs.aws.amazon.com/network-firewall/latest/developerguide/)
 #' in the *Network Firewall Developer Guide*.
 #' @param Description A description of the TLS inspection configuration.

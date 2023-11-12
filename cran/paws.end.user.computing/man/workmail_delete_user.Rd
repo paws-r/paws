@@ -9,7 +9,15 @@ workmail_delete_user(OrganizationId, UserId)
 \arguments{
 \item{OrganizationId}{[required] The organization that contains the user to be deleted.}
 
-\item{UserId}{[required] The identifier of the user to be deleted.}
+\item{UserId}{[required] The identifier of the user to be deleted.
+
+The identifier can be the \emph{UserId} or \emph{Username}. The following identity
+formats are available:
+\itemize{
+\item User ID: 12345678-1234-1234-1234-123456789012 or
+S-1-1-12-1234567890-123456789-123456789-1234
+\item User name: user
+}}
 }
 \description{
 Deletes a user from WorkMail and all subsequent systems. Before you can delete a user, the user state must be \code{DISABLED}. Use the \code{\link[=workmail_describe_user]{describe_user}} action to confirm the user state.

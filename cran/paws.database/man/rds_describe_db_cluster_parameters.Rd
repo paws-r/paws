@@ -23,8 +23,14 @@ Constraints:
 DBClusterParameterGroup.
 }}
 
-\item{Source}{A value that indicates to return only parameters for a specific source.
-Parameter sources can be \code{engine}, \code{service}, or \code{customer}.}
+\item{Source}{A specific source to return parameters for.
+
+Valid Values:
+\itemize{
+\item \code{customer}
+\item \code{engine}
+\item \code{service}
+}}
 
 \item{Filters}{This parameter isn't currently supported.}
 

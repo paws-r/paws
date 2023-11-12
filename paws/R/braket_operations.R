@@ -318,6 +318,13 @@ braket_create_quantum_task <- function(action, clientToken, deviceArn, devicePar
 #'   deviceArn = "string",
 #'   deviceCapabilities = "string",
 #'   deviceName = "string",
+#'   deviceQueueInfo = list(
+#'     list(
+#'       queue = "QUANTUM_TASKS_QUEUE"|"JOBS_QUEUE",
+#'       queuePriority = "Normal"|"Priority",
+#'       queueSize = "string"
+#'     )
+#'   ),
 #'   deviceStatus = "ONLINE"|"OFFLINE"|"RETIRED",
 #'   deviceType = "QPU"|"SIMULATOR",
 #'   providerName = "string"
@@ -359,8 +366,9 @@ braket_get_device <- function(deviceArn) {
 #' Retrieves the specified Amazon Braket job.
 #'
 #' @usage
-#' braket_get_job(jobArn)
+#' braket_get_job(additionalAttributeNames, jobArn)
 #'
+#' @param additionalAttributeNames A list of attributes to return information for.
 #' @param jobArn &#91;required&#93; The ARN of the job to retrieve.
 #'
 #' @return
@@ -426,6 +434,11 @@ braket_get_device <- function(deviceArn) {
 #'     kmsKeyId = "string",
 #'     s3Path = "string"
 #'   ),
+#'   queueInfo = list(
+#'     message = "string",
+#'     position = "string",
+#'     queue = "QUANTUM_TASKS_QUEUE"|"JOBS_QUEUE"
+#'   ),
 #'   roleArn = "string",
 #'   startedAt = as.POSIXct(
 #'     "2015-01-01"
@@ -443,6 +456,9 @@ braket_get_device <- function(deviceArn) {
 #' @section Request syntax:
 #' ```
 #' svc$get_job(
+#'   additionalAttributeNames = list(
+#'     "QueueInfo"
+#'   ),
 #'   jobArn = "string"
 #' )
 #' ```
@@ -452,14 +468,14 @@ braket_get_device <- function(deviceArn) {
 #' @rdname braket_get_job
 #'
 #' @aliases braket_get_job
-braket_get_job <- function(jobArn) {
+braket_get_job <- function(additionalAttributeNames = NULL, jobArn) {
   op <- new_operation(
     name = "GetJob",
     http_method = "GET",
     http_path = "/job/{jobArn}",
     paginator = list()
   )
-  input <- .braket$get_job_input(jobArn = jobArn)
+  input <- .braket$get_job_input(additionalAttributeNames = additionalAttributeNames, jobArn = jobArn)
   output <- .braket$get_job_output()
   config <- get_config()
   svc <- .braket$service(config)
@@ -475,8 +491,9 @@ braket_get_job <- function(jobArn) {
 #' Retrieves the specified quantum task.
 #'
 #' @usage
-#' braket_get_quantum_task(quantumTaskArn)
+#' braket_get_quantum_task(additionalAttributeNames, quantumTaskArn)
 #'
+#' @param additionalAttributeNames A list of attributes to return information for.
 #' @param quantumTaskArn &#91;required&#93; the ARN of the task to retrieve.
 #'
 #' @return
@@ -496,6 +513,12 @@ braket_get_job <- function(jobArn) {
 #'   outputS3Bucket = "string",
 #'   outputS3Directory = "string",
 #'   quantumTaskArn = "string",
+#'   queueInfo = list(
+#'     message = "string",
+#'     position = "string",
+#'     queue = "QUANTUM_TASKS_QUEUE"|"JOBS_QUEUE",
+#'     queuePriority = "Normal"|"Priority"
+#'   ),
 #'   shots = 123,
 #'   status = "CREATED"|"QUEUED"|"RUNNING"|"COMPLETED"|"FAILED"|"CANCELLING"|"CANCELLED",
 #'   tags = list(
@@ -507,6 +530,9 @@ braket_get_job <- function(jobArn) {
 #' @section Request syntax:
 #' ```
 #' svc$get_quantum_task(
+#'   additionalAttributeNames = list(
+#'     "QueueInfo"
+#'   ),
 #'   quantumTaskArn = "string"
 #' )
 #' ```
@@ -516,14 +542,14 @@ braket_get_job <- function(jobArn) {
 #' @rdname braket_get_quantum_task
 #'
 #' @aliases braket_get_quantum_task
-braket_get_quantum_task <- function(quantumTaskArn) {
+braket_get_quantum_task <- function(additionalAttributeNames = NULL, quantumTaskArn) {
   op <- new_operation(
     name = "GetQuantumTask",
     http_method = "GET",
     http_path = "/quantum-task/{quantumTaskArn}",
     paginator = list()
   )
-  input <- .braket$get_quantum_task_input(quantumTaskArn = quantumTaskArn)
+  input <- .braket$get_quantum_task_input(additionalAttributeNames = additionalAttributeNames, quantumTaskArn = quantumTaskArn)
   output <- .braket$get_quantum_task_output()
   config <- get_config()
   svc <- .braket$service(config)

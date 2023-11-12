@@ -588,18 +588,26 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' Amazon DocumentDB uses your default KMS key. There is a default KMS key
 #' for your Amazon Web Services account. Your Amazon Web Services account
 #' has a different default KMS key for each Amazon Web Services region.
+#' @param CACertificateIdentifier The CA certificate identifier to use for the DB instance's server
+#' certificate.
+#' 
+#' For more information, see [Updating Your Amazon DocumentDB TLS
+#' Certificates](https://docs.aws.amazon.com/documentdb/latest/developerguide/ca_cert_rotation.html)
+#' and [Encrypting Data in
+#' Transit](https://docs.aws.amazon.com/documentdb/latest/developerguide/security.encryption.ssl.html)
+#' in the *Amazon DocumentDB Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname docdb_create_db_instance
-docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engine, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, Tags = NULL, DBClusterIdentifier, CopyTagsToSnapshot = NULL, PromotionTier = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL) {
+docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engine, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, Tags = NULL, DBClusterIdentifier, CopyTagsToSnapshot = NULL, PromotionTier = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, CACertificateIdentifier = NULL) {
   op <- new_operation(
     name = "CreateDBInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$create_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, Engine = Engine, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, Tags = Tags, DBClusterIdentifier = DBClusterIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId)
+  input <- .docdb$create_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, Engine = Engine, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, Tags = Tags, DBClusterIdentifier = DBClusterIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, CACertificateIdentifier = CACertificateIdentifier)
   output <- .docdb$create_db_instance_output()
   config <- get_config()
   svc <- .docdb$service(config)
@@ -2201,18 +2209,34 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' Amazon DocumentDB uses your default KMS key. There is a default KMS key
 #' for your Amazon Web Services account. Your Amazon Web Services account
 #' has a different default KMS key for each Amazon Web Services region.
+#' @param CertificateRotationRestart Specifies whether the DB instance is restarted when you rotate your
+#' SSL/TLS certificate.
+#' 
+#' By default, the DB instance is restarted when you rotate your SSL/TLS
+#' certificate. The certificate is not updated until the DB instance is
+#' restarted.
+#' 
+#' Set this parameter only if you are *not* using SSL/TLS to connect to the
+#' DB instance.
+#' 
+#' If you are using SSL/TLS to connect to the DB instance, see [Updating
+#' Your Amazon DocumentDB TLS
+#' Certificates](https://docs.aws.amazon.com/documentdb/latest/developerguide/ca_cert_rotation.html)
+#' and [Encrypting Data in
+#' Transit](https://docs.aws.amazon.com/documentdb/latest/developerguide/security.encryption.ssl.html)
+#' in the *Amazon DocumentDB Developer Guide*.
 #'
 #' @keywords internal
 #'
 #' @rdname docdb_modify_db_instance
-docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NULL, ApplyImmediately = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, NewDBInstanceIdentifier = NULL, CACertificateIdentifier = NULL, CopyTagsToSnapshot = NULL, PromotionTier = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL) {
+docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NULL, ApplyImmediately = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, NewDBInstanceIdentifier = NULL, CACertificateIdentifier = NULL, CopyTagsToSnapshot = NULL, PromotionTier = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, CertificateRotationRestart = NULL) {
   op <- new_operation(
     name = "ModifyDBInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, ApplyImmediately = ApplyImmediately, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, NewDBInstanceIdentifier = NewDBInstanceIdentifier, CACertificateIdentifier = CACertificateIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId)
+  input <- .docdb$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, ApplyImmediately = ApplyImmediately, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, NewDBInstanceIdentifier = NewDBInstanceIdentifier, CACertificateIdentifier = CACertificateIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, CertificateRotationRestart = CertificateRotationRestart)
   output <- .docdb$modify_db_instance_output()
   config <- get_config()
   svc <- .docdb$service(config)

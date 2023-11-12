@@ -2,7 +2,7 @@
 % Please edit documentation in R/finspacedata_operations.R
 \name{finspacedata_update_user}
 \alias{finspacedata_update_user}
-\title{Modifies the details of the specified user account}
+\title{Modifies the details of the specified user}
 \usage{
 finspacedata_update_user(
   userId,
@@ -15,7 +15,7 @@ finspacedata_update_user(
 )
 }
 \arguments{
-\item{userId}{[required] The unique identifier for the user account to update.}
+\item{userId}{[required] The unique identifier for the user that you want to update.}
 
 \item{type}{The option to indicate the type of user.
 \itemize{
@@ -46,7 +46,7 @@ must be an IAM role within your FinSpace account.}
 \item{clientToken}{A token that ensures idempotency. This token expires in 10 minutes.}
 }
 \description{
-Modifies the details of the specified user account. You cannot update the \code{userId} for a user.
+Modifies the details of the specified user. You cannot update the \code{userId} for a user.
 
 See \url{https://www.paws-r-sdk.com/docs/finspacedata_update_user/} for full documentation.
 }

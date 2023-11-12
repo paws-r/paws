@@ -14,10 +14,9 @@ rds_reset_db_cluster_parameter_group(
 \arguments{
 \item{DBClusterParameterGroupName}{[required] The name of the DB cluster parameter group to reset.}
 
-\item{ResetAllParameters}{A value that indicates whether to reset all parameters in the DB cluster
-parameter group to their default values. You can't use this parameter if
-there is a list of parameter names specified for the \code{Parameters}
-parameter.}
+\item{ResetAllParameters}{Specifies whether to reset all parameters in the DB cluster parameter
+group to their default values. You can't use this parameter if there is
+a list of parameter names specified for the \code{Parameters} parameter.}
 
 \item{Parameters}{A list of parameter names in the DB cluster parameter group to reset to
 the default values. You can't use this parameter if the

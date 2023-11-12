@@ -2,8 +2,8 @@
 % Please edit documentation in R/finspacedata_operations.R
 \name{finspacedata_associate_user_to_permission_group}
 \alias{finspacedata_associate_user_to_permission_group}
-\title{Adds a user account to a permission group to grant permissions for
-actions a user can perform in FinSpace}
+\title{Adds a user to a permission group to grant permissions for actions a
+user can perform in FinSpace}
 \usage{
 finspacedata_associate_user_to_permission_group(
   permissionGroupId,
@@ -19,7 +19,7 @@ finspacedata_associate_user_to_permission_group(
 \item{clientToken}{A token that ensures idempotency. This token expires in 10 minutes.}
 }
 \description{
-Adds a user account to a permission group to grant permissions for actions a user can perform in FinSpace.
+Adds a user to a permission group to grant permissions for actions a user can perform in FinSpace.
 
 See \url{https://www.paws-r-sdk.com/docs/finspacedata_associate_user_to_permission_group/} for full documentation.
 }

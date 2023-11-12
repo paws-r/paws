@@ -21,7 +21,8 @@ inference schedulers.}
 
 \item{InferenceSchedulerNameBeginsWith}{The beginning of the name of the inference schedulers to be listed.}
 
-\item{ModelName}{The name of the ML model used by the inference scheduler to be listed.}
+\item{ModelName}{The name of the machine learning model used by the inference scheduler
+to be listed.}
 
 \item{Status}{Specifies the current status of the inference schedulers.}
 }

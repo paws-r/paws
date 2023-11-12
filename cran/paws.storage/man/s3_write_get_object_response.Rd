@@ -209,9 +209,10 @@ in Amazon S3 (for example, AES256, \code{aws:kms}).}
 customer-provided encryption key was specified for object stored in
 Amazon S3.}
 
-\item{SSEKMSKeyId}{If present, specifies the ID of the Amazon Web Services Key Management
-Service (Amazon Web Services KMS) symmetric encryption customer managed
-key that was used for stored in Amazon S3 object.}
+\item{SSEKMSKeyId}{If present, specifies the ID (Key ID, Key ARN, or Key Alias) of the
+Amazon Web Services Key Management Service (Amazon Web Services KMS)
+symmetric encryption customer managed key that was used for stored in
+Amazon S3 object.}
 
 \item{SSECustomerKeyMD5}{128-bit MD5 digest of customer-provided encryption key used in Amazon S3
 to encrypt data stored in S3. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html}{Protecting data using server-side encryption with customer-provided encryption keys (SSE-C)}.}

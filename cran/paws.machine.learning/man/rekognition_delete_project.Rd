@@ -2,7 +2,7 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_delete_project}
 \alias{rekognition_delete_project}
-\title{Deletes an Amazon Rekognition Custom Labels project}
+\title{Deletes a Amazon Rekognition project}
 \usage{
 rekognition_delete_project(ProjectArn)
 }
@@ -10,7 +10,7 @@ rekognition_delete_project(ProjectArn)
 \item{ProjectArn}{[required] The Amazon Resource Name (ARN) of the project that you want to delete.}
 }
 \description{
-Deletes an Amazon Rekognition Custom Labels project. To delete a project you must first delete all models associated with the project. To delete a model, see \code{\link[=rekognition_delete_project_version]{delete_project_version}}.
+Deletes a Amazon Rekognition project. To delete a project you must first delete all models or adapters associated with the project. To delete a model or adapter, see \code{\link[=rekognition_delete_project_version]{delete_project_version}}.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_delete_project/} for full documentation.
 }

@@ -9,7 +9,16 @@ workmail_describe_user(OrganizationId, UserId)
 \arguments{
 \item{OrganizationId}{[required] The identifier for the organization under which the user exists.}
 
-\item{UserId}{[required] The identifier for the user to be described.}
+\item{UserId}{[required] The identifier for the user to be described.
+
+The identifier can be the \emph{UserId}, \emph{Username}, or \emph{email}. The
+following identity formats are available:
+\itemize{
+\item User ID: 12345678-1234-1234-1234-123456789012 or
+S-1-1-12-1234567890-123456789-123456789-1234
+\item Email address: user@domain.tld
+\item User name: user
+}}
 }
 \description{
 Provides information regarding the user.

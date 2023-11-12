@@ -1,6 +1,6 @@
 Package: paws.developer.tools
 Title: 'Amazon Web Services' Developer Tools Services
-Version: 0.4.0
+Version: 0.2.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -33,6 +33,9 @@ Collate:
     'codebuild_service.R'
     'codebuild_interfaces.R'
     'codebuild_operations.R'
+    'codecatalyst_service.R'
+    'codecatalyst_interfaces.R'
+    'codecatalyst_operations.R'
     'codecommit_service.R'
     'codecommit_interfaces.R'
     'codecommit_operations.R'
@@ -45,6 +48,9 @@ Collate:
     'codegurureviewer_service.R'
     'codegurureviewer_interfaces.R'
     'codegurureviewer_operations.R'
+    'codegurusecurity_service.R'
+    'codegurusecurity_interfaces.R'
+    'codegurusecurity_operations.R'
     'codepipeline_service.R'
     'codepipeline_interfaces.R'
     'codepipeline_operations.R'

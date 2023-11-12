@@ -8,7 +8,8 @@ managed by WorkMail as part of the organization}
 workmail_delete_organization(
   ClientToken = NULL,
   OrganizationId,
-  DeleteDirectory
+  DeleteDirectory,
+  ForceDelete = NULL
 )
 }
 \arguments{
@@ -18,6 +19,9 @@ workmail_delete_organization(
 
 \item{DeleteDirectory}{[required] If true, deletes the AWS Directory Service directory associated with the
 organization.}
+
+\item{ForceDelete}{Deletes a WorkMail organization even if the organization has enabled
+users.}
 }
 \description{
 Deletes an WorkMail organization and all underlying AWS resources managed by WorkMail as part of the organization. You can choose whether to delete the associated directory. For more information, see \href{https://docs.aws.amazon.com/workmail/latest/adminguide/delete_organization.html}{Removing an organization} in the \emph{WorkMail Administrator Guide}.

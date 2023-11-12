@@ -208,21 +208,22 @@ networkmanager_create_connect_attachment <- function(CoreNetworkId, EdgeLocation
 #' @param CoreNetworkAddress A Connect peer core network address.
 #' @param PeerAddress &#91;required&#93; The Connect peer address.
 #' @param BgpOptions The Connect peer BGP options.
-#' @param InsideCidrBlocks &#91;required&#93; The inside IP addresses used for BGP peering.
+#' @param InsideCidrBlocks The inside IP addresses used for BGP peering.
 #' @param Tags The tags associated with the peer request.
 #' @param ClientToken The client token associated with the request.
+#' @param SubnetArn The subnet ARN for the Connect peer.
 #'
 #' @keywords internal
 #'
 #' @rdname networkmanager_create_connect_peer
-networkmanager_create_connect_peer <- function(ConnectAttachmentId, CoreNetworkAddress = NULL, PeerAddress, BgpOptions = NULL, InsideCidrBlocks, Tags = NULL, ClientToken = NULL) {
+networkmanager_create_connect_peer <- function(ConnectAttachmentId, CoreNetworkAddress = NULL, PeerAddress, BgpOptions = NULL, InsideCidrBlocks = NULL, Tags = NULL, ClientToken = NULL, SubnetArn = NULL) {
   op <- new_operation(
     name = "CreateConnectPeer",
     http_method = "POST",
     http_path = "/connect-peers",
     paginator = list()
   )
-  input <- .networkmanager$create_connect_peer_input(ConnectAttachmentId = ConnectAttachmentId, CoreNetworkAddress = CoreNetworkAddress, PeerAddress = PeerAddress, BgpOptions = BgpOptions, InsideCidrBlocks = InsideCidrBlocks, Tags = Tags, ClientToken = ClientToken)
+  input <- .networkmanager$create_connect_peer_input(ConnectAttachmentId = ConnectAttachmentId, CoreNetworkAddress = CoreNetworkAddress, PeerAddress = PeerAddress, BgpOptions = BgpOptions, InsideCidrBlocks = InsideCidrBlocks, Tags = Tags, ClientToken = ClientToken, SubnetArn = SubnetArn)
   output <- .networkmanager$create_connect_peer_output()
   config <- get_config()
   svc <- .networkmanager$service(config)

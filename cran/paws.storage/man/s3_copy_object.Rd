@@ -169,11 +169,12 @@ or replaced with tag-set provided in the request.}
 \item{ServerSideEncryption}{The server-side encryption algorithm used when storing this object in
 Amazon S3 (for example, \code{AES256}, \code{aws:kms}, \code{aws:kms:dsse}).}
 
-\item{StorageClass}{By default, Amazon S3 uses the STANDARD Storage Class to store newly
-created objects. The STANDARD storage class provides high durability and
-high availability. Depending on performance needs, you can specify a
-different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
-Storage Class. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{Storage Classes}
+\item{StorageClass}{If the \code{x-amz-storage-class} header is not used, the copied object will
+be stored in the STANDARD Storage Class by default. The STANDARD storage
+class provides high durability and high availability. Depending on
+performance needs, you can specify a different Storage Class. Amazon S3
+on Outposts only uses the OUTPOSTS Storage Class. For more information,
+see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{Storage Classes}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{WebsiteRedirectLocation}{If the bucket is configured as a website, redirects requests for this
@@ -196,11 +197,11 @@ appropriate for use with the algorithm specified in the
 1321. Amazon S3 uses this header for a message integrity check to ensure
 that the encryption key was transmitted without error.}
 
-\item{SSEKMSKeyId}{Specifies the KMS key ID to use for object encryption. All GET and PUT
-requests for an object protected by KMS will fail if they're not made
-via SSL or using SigV4. For information about configuring any of the
-officially supported Amazon Web Services SDKs and Amazon Web Services
-CLI, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version}{Specifying the Signature Version in Request Authentication}
+\item{SSEKMSKeyId}{Specifies the KMS ID (Key ID, Key ARN, or Key Alias) to use for object
+encryption. All GET and PUT requests for an object protected by KMS will
+fail if they're not made via SSL or using SigV4. For information about
+configuring any of the officially supported Amazon Web Services SDKs and
+Amazon Web Services CLI, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version}{Specifying the Signature Version in Request Authentication}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{SSEKMSEncryptionContext}{Specifies the Amazon Web Services KMS Encryption Context to use for

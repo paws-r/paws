@@ -63,31 +63,29 @@ ListManagedDataIdentifiers operation.}
 \item{managedDataIdentifierSelector}{The selection type to apply when determining which managed data
 identifiers the job uses to analyze data. Valid values are:
 \itemize{
-\item ALL (default) - Use all managed data identifiers. If you specify
-this value, don't specify any values for the
-managedDataIdentifierIds property.
+\item ALL - Use all managed data identifiers. If you specify this value,
+don't specify any values for the managedDataIdentifierIds property.
 \item EXCLUDE - Use all managed data identifiers except the ones specified
 by the managedDataIdentifierIds property.
 \item INCLUDE - Use only the managed data identifiers specified by the
 managedDataIdentifierIds property.
 \item NONE - Don't use any managed data identifiers. If you specify this
-value, specify at least one custom data identifier for the job
-(customDataIdentifierIds) and don't specify any values for the
+value, specify at least one value for the customDataIdentifierIds
+property and don't specify any values for the
 managedDataIdentifierIds property.
-\item RECOMMENDED - Use only the set of managed data identifiers that
-Amazon Web Services recommends for jobs. If you specify this value,
-don't specify any values for the managedDataIdentifierIds property.
+\item RECOMMENDED (default) - Use the recommended set of managed data
+identifiers. If you specify this value, don't specify any values for
+the managedDataIdentifierIds property.
 }
 
-If you don't specify a value for this property, the job uses all managed
-data identifiers.
+If you don't specify a value for this property, the job uses the
+recommended set of managed data identifiers.
 
-If the job is a recurring job and you don't specify a value for this
-property or you specify ALL or EXCLUDE, each job run automatically uses
-new managed data identifiers that are released. If you specify
-RECOMMENDED for a recurring job, each job run automatically uses all the
-managed data identifiers that are in the recommended set when the job
-starts to run.
+If the job is a recurring job and you specify ALL or EXCLUDE, each job
+run automatically uses new managed data identifiers that are released.
+If you specify RECOMMENDED for a recurring job, each job run
+automatically uses all the managed data identifiers that are in the
+recommended set when the run starts.
 
 For information about individual managed data identifiers or to
 determine which ones are in the recommended set, see \href{https://docs.aws.amazon.com/macie/latest/user/managed-data-identifiers.html}{Using managed data identifiers}

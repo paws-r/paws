@@ -2,7 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_describe_db_engine_versions}
 \alias{rds_describe_db_engine_versions}
-\title{Returns a list of the available DB engines}
+\title{Describes the properties of specific versions of DB engines}
 \usage{
 rds_describe_db_engine_versions(
   Engine = NULL,
@@ -18,7 +18,7 @@ rds_describe_db_engine_versions(
 )
 }
 \arguments{
-\item{Engine}{The database engine to return.
+\item{Engine}{The database engine to return version details for.
 
 Valid Values:
 \itemize{
@@ -38,7 +38,7 @@ Valid Values:
 \item \code{sqlserver-web}
 }}
 
-\item{EngineVersion}{The database engine version to return.
+\item{EngineVersion}{A specific database engine version to return details for.
 
 Example: \verb{5.1.49}}
 
@@ -46,7 +46,7 @@ Example: \verb{5.1.49}}
 
 Constraints:
 \itemize{
-\item If supplied, must match an existing DBParameterGroupFamily.
+\item If supplied, must match an existing DB parameter group family.
 }}
 
 \item{Filters}{A filter that specifies one or more DB engine versions to describe.
@@ -92,11 +92,11 @@ Constraints: Minimum 20, maximum 100.}
 parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 
-\item{DefaultOnly}{A value that indicates whether only the default version of the specified
-engine or engine and major version combination is returned.}
+\item{DefaultOnly}{Specifies whether to return only the default version of the specified
+engine or the engine and major version combination.}
 
-\item{ListSupportedCharacterSets}{A value that indicates whether to list the supported character sets for
-each engine version.
+\item{ListSupportedCharacterSets}{Specifies whether to list the supported character sets for each engine
+version.
 
 If this parameter is enabled and the requested engine supports the
 \code{CharacterSetName} parameter for
@@ -104,11 +104,10 @@ If this parameter is enabled and the requested engine supports the
 list of supported character sets for each engine version.
 
 For RDS Custom, the default is not to list supported character sets. If
-you set \code{ListSupportedCharacterSets} to \code{true}, RDS Custom returns no
-results.}
+you enable this parameter, RDS Custom returns no results.}
 
-\item{ListSupportedTimezones}{A value that indicates whether to list the supported time zones for each
-engine version.
+\item{ListSupportedTimezones}{Specifies whether to list the supported time zones for each engine
+version.
 
 If this parameter is enabled and the requested engine supports the
 \code{TimeZone} parameter for \code{\link[=rds_create_db_instance]{create_db_instance}},
@@ -116,14 +115,13 @@ the response includes a list of supported time zones for each engine
 version.
 
 For RDS Custom, the default is not to list supported time zones. If you
-set \code{ListSupportedTimezones} to \code{true}, RDS Custom returns no results.}
+enable this parameter, RDS Custom returns no results.}
 
-\item{IncludeAll}{A value that indicates whether to include engine versions that aren't
-available in the list. The default is to list only available engine
-versions.}
+\item{IncludeAll}{Specifies whether to also list the engine versions that aren't
+available. The default is to list only available engine versions.}
 }
 \description{
-Returns a list of the available DB engines.
+Describes the properties of specific versions of DB engines.
 
 See \url{https://www.paws-r-sdk.com/docs/rds_describe_db_engine_versions/} for full documentation.
 }

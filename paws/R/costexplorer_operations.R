@@ -2498,6 +2498,13 @@ costexplorer_get_reservation_coverage <- function(TimePeriod, GroupBy = NULL, Gr
 #'               Region = "string",
 #'               CurrentGeneration = TRUE|FALSE,
 #'               SizeFlexEligible = TRUE|FALSE
+#'             ),
+#'             MemoryDBInstanceDetails = list(
+#'               Family = "string",
+#'               NodeType = "string",
+#'               Region = "string",
+#'               CurrentGeneration = TRUE|FALSE,
+#'               SizeFlexEligible = TRUE|FALSE
 #'             )
 #'           ),
 #'           RecommendedNumberOfInstancesToPurchase = "string",

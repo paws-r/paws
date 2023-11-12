@@ -22,9 +22,9 @@ route53recoverycluster(
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -62,9 +62,9 @@ or Amazon Web Services Regions. Routing controls are simple on/off
 switches hosted on a highly available cluster in Route 53 ARC. A cluster
 provides a set of five redundant Regional endpoints against which you
 can run API calls to get or update the state of routing controls. To
-implement failover, you set one routing control On and another one Off,
-to reroute traffic from one Availability Zone or Amazon Web Services
-Region to another.
+implement failover, you set one routing control to ON and another one to
+OFF, to reroute traffic from one Availability Zone or Amazon Web
+Services Region to another.
 
 \emph{Be aware that you must specify a Regional endpoint for a cluster when
 you work with API cluster operations to get or update routing control

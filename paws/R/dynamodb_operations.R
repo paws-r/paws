@@ -2801,7 +2801,17 @@ dynamodb_describe_endpoints <- function() {
 #'     FailureMessage = "string",
 #'     ExportFormat = "DYNAMODB_JSON"|"ION",
 #'     BilledSizeBytes = 123,
-#'     ItemCount = 123
+#'     ItemCount = 123,
+#'     ExportType = "FULL_EXPORT"|"INCREMENTAL_EXPORT",
+#'     IncrementalExportSpecification = list(
+#'       ExportFromTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExportToTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExportViewType = "NEW_IMAGE"|"NEW_AND_OLD_IMAGES"
+#'     )
 #'   )
 #' )
 #' ```
@@ -4265,7 +4275,7 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #' @usage
 #' dynamodb_export_table_to_point_in_time(TableArn, ExportTime,
 #'   ClientToken, S3Bucket, S3BucketOwner, S3Prefix, S3SseAlgorithm,
-#'   S3SseKmsKeyId, ExportFormat)
+#'   S3SseKmsKeyId, ExportFormat, ExportType, IncrementalExportSpecification)
 #'
 #' @param TableArn &#91;required&#93; The Amazon Resource Name (ARN) associated with the table to export.
 #' @param ExportTime Time in the past from which to export table data, counted in seconds
@@ -4299,6 +4309,12 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #' data will be stored (if applicable).
 #' @param ExportFormat The format for the exported data. Valid values for `ExportFormat` are
 #' `DYNAMODB_JSON` or `ION`.
+#' @param ExportType Choice of whether to execute as a full export or incremental export.
+#' Valid values are FULL_EXPORT or INCREMENTAL_EXPORT. The default value is
+#' FULL_EXPORT. If INCREMENTAL_EXPORT is provided, the
+#' IncrementalExportSpecification must also be used.
+#' @param IncrementalExportSpecification Optional object containing the parameters specific to an incremental
+#' export.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4329,7 +4345,17 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #'     FailureMessage = "string",
 #'     ExportFormat = "DYNAMODB_JSON"|"ION",
 #'     BilledSizeBytes = 123,
-#'     ItemCount = 123
+#'     ItemCount = 123,
+#'     ExportType = "FULL_EXPORT"|"INCREMENTAL_EXPORT",
+#'     IncrementalExportSpecification = list(
+#'       ExportFromTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExportToTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       ExportViewType = "NEW_IMAGE"|"NEW_AND_OLD_IMAGES"
+#'     )
 #'   )
 #' )
 #' ```
@@ -4347,7 +4373,17 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #'   S3Prefix = "string",
 #'   S3SseAlgorithm = "AES256"|"KMS",
 #'   S3SseKmsKeyId = "string",
-#'   ExportFormat = "DYNAMODB_JSON"|"ION"
+#'   ExportFormat = "DYNAMODB_JSON"|"ION",
+#'   ExportType = "FULL_EXPORT"|"INCREMENTAL_EXPORT",
+#'   IncrementalExportSpecification = list(
+#'     ExportFromTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExportToTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ExportViewType = "NEW_IMAGE"|"NEW_AND_OLD_IMAGES"
+#'   )
 #' )
 #' ```
 #'
@@ -4356,14 +4392,14 @@ dynamodb_execute_transaction <- function(TransactStatements, ClientRequestToken 
 #' @rdname dynamodb_export_table_to_point_in_time
 #'
 #' @aliases dynamodb_export_table_to_point_in_time
-dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, ClientToken = NULL, S3Bucket, S3BucketOwner = NULL, S3Prefix = NULL, S3SseAlgorithm = NULL, S3SseKmsKeyId = NULL, ExportFormat = NULL) {
+dynamodb_export_table_to_point_in_time <- function(TableArn, ExportTime = NULL, ClientToken = NULL, S3Bucket, S3BucketOwner = NULL, S3Prefix = NULL, S3SseAlgorithm = NULL, S3SseKmsKeyId = NULL, ExportFormat = NULL, ExportType = NULL, IncrementalExportSpecification = NULL) {
   op <- new_operation(
     name = "ExportTableToPointInTime",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .dynamodb$export_table_to_point_in_time_input(TableArn = TableArn, ExportTime = ExportTime, ClientToken = ClientToken, S3Bucket = S3Bucket, S3BucketOwner = S3BucketOwner, S3Prefix = S3Prefix, S3SseAlgorithm = S3SseAlgorithm, S3SseKmsKeyId = S3SseKmsKeyId, ExportFormat = ExportFormat)
+  input <- .dynamodb$export_table_to_point_in_time_input(TableArn = TableArn, ExportTime = ExportTime, ClientToken = ClientToken, S3Bucket = S3Bucket, S3BucketOwner = S3BucketOwner, S3Prefix = S3Prefix, S3SseAlgorithm = S3SseAlgorithm, S3SseKmsKeyId = S3SseKmsKeyId, ExportFormat = ExportFormat, ExportType = ExportType, IncrementalExportSpecification = IncrementalExportSpecification)
   output <- .dynamodb$export_table_to_point_in_time_output()
   config <- get_config()
   svc <- .dynamodb$service(config)
@@ -4801,10 +4837,12 @@ dynamodb_import_table <- function(ClientToken = NULL, S3BucketSource, InputForma
 }
 .dynamodb$operations$import_table <- dynamodb_import_table
 
-#' List backups associated with an Amazon Web Services account
+#' List DynamoDB backups that are associated with an Amazon Web Services
+#' account and weren't made with Amazon Web Services Backup
 #'
 #' @description
-#' List backups associated with an Amazon Web Services account. To list
+#' List DynamoDB backups that are associated with an Amazon Web Services
+#' account and weren't made with Amazon Web Services Backup. To list these
 #' backups for a given table, specify `TableName`.
 #' [`list_backups`][dynamodb_list_backups] returns a paginated list of
 #' results with at most 1 MB worth of items in a page. You can also specify
@@ -4816,6 +4854,10 @@ dynamodb_import_table <- function(ClientToken = NULL, S3BucketSource, InputForma
 #' 
 #' You can call [`list_backups`][dynamodb_list_backups] a maximum of five
 #' times per second.
+#' 
+#' If you want to retrieve the complete list of backups made with Amazon
+#' Web Services Backup, use the [Amazon Web Services Backup list
+#' API.](https://docs.aws.amazon.com/aws-backup/latest/devguide/API_ListBackupJobs.html)
 #'
 #' @usage
 #' dynamodb_list_backups(TableName, Limit, TimeRangeLowerBound,
@@ -4989,7 +5031,8 @@ dynamodb_list_contributor_insights <- function(TableName = NULL, NextToken = NUL
 #'   ExportSummaries = list(
 #'     list(
 #'       ExportArn = "string",
-#'       ExportStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED"
+#'       ExportStatus = "IN_PROGRESS"|"COMPLETED"|"FAILED",
+#'       ExportType = "FULL_EXPORT"|"INCREMENTAL_EXPORT"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -7131,7 +7174,7 @@ dynamodb_restore_table_to_point_in_time <- function(SourceTableArn = NULL, Sourc
 #' units.
 #' 
 #' For more information, see [Filter
-#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.FilterExpression)
+#' Expressions](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.FilterExpression)
 #' in the *Amazon DynamoDB Developer Guide*.
 #' @param ExpressionAttributeNames One or more substitution tokens for attribute names in an expression.
 #' The following are some use cases for using `ExpressionAttributeNames`:

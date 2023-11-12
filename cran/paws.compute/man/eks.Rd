@@ -17,9 +17,9 @@ eks(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -105,10 +105,12 @@ application to Amazon EKS without any code modification required.
 \link[=eks_associate_identity_provider_config]{associate_identity_provider_config} \tab Associate an identity provider configuration to a cluster\cr
 \link[=eks_create_addon]{create_addon} \tab Creates an Amazon EKS add-on\cr
 \link[=eks_create_cluster]{create_cluster} \tab Creates an Amazon EKS control plane\cr
+\link[=eks_create_eks_anywhere_subscription]{create_eks_anywhere_subscription} \tab Creates an EKS Anywhere subscription\cr
 \link[=eks_create_fargate_profile]{create_fargate_profile} \tab Creates an Fargate profile for your Amazon EKS cluster\cr
 \link[=eks_create_nodegroup]{create_nodegroup} \tab Creates a managed node group for an Amazon EKS cluster\cr
 \link[=eks_delete_addon]{delete_addon} \tab Delete an Amazon EKS add-on\cr
 \link[=eks_delete_cluster]{delete_cluster} \tab Deletes the Amazon EKS cluster control plane\cr
+\link[=eks_delete_eks_anywhere_subscription]{delete_eks_anywhere_subscription} \tab Deletes an expired / inactive subscription\cr
 \link[=eks_delete_fargate_profile]{delete_fargate_profile} \tab Deletes an Fargate profile\cr
 \link[=eks_delete_nodegroup]{delete_nodegroup} \tab Deletes an Amazon EKS node group for a cluster\cr
 \link[=eks_deregister_cluster]{deregister_cluster} \tab Deregisters a connected cluster to remove it from the Amazon EKS control plane\cr
@@ -116,13 +118,15 @@ application to Amazon EKS without any code modification required.
 \link[=eks_describe_addon_configuration]{describe_addon_configuration} \tab Returns configuration options\cr
 \link[=eks_describe_addon_versions]{describe_addon_versions} \tab Describes the versions for an add-on\cr
 \link[=eks_describe_cluster]{describe_cluster} \tab Returns descriptive information about an Amazon EKS cluster\cr
+\link[=eks_describe_eks_anywhere_subscription]{describe_eks_anywhere_subscription} \tab Returns descriptive information about a subscription\cr
 \link[=eks_describe_fargate_profile]{describe_fargate_profile} \tab Returns descriptive information about an Fargate profile\cr
 \link[=eks_describe_identity_provider_config]{describe_identity_provider_config} \tab Returns descriptive information about an identity provider configuration\cr
 \link[=eks_describe_nodegroup]{describe_nodegroup} \tab Returns descriptive information about an Amazon EKS node group\cr
 \link[=eks_describe_update]{describe_update} \tab Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group or Amazon EKS add-on\cr
 \link[=eks_disassociate_identity_provider_config]{disassociate_identity_provider_config} \tab Disassociates an identity provider configuration from a cluster\cr
-\link[=eks_list_addons]{list_addons} \tab Lists the available add-ons\cr
+\link[=eks_list_addons]{list_addons} \tab Lists the installed add-ons\cr
 \link[=eks_list_clusters]{list_clusters} \tab Lists the Amazon EKS clusters in your Amazon Web Services account in the specified Region\cr
+\link[=eks_list_eks_anywhere_subscriptions]{list_eks_anywhere_subscriptions} \tab Displays the full description of the subscription\cr
 \link[=eks_list_fargate_profiles]{list_fargate_profiles} \tab Lists the Fargate profiles associated with the specified cluster in your Amazon Web Services account in the specified Region\cr
 \link[=eks_list_identity_provider_configs]{list_identity_provider_configs} \tab A list of identity provider configurations\cr
 \link[=eks_list_nodegroups]{list_nodegroups} \tab Lists the Amazon EKS managed node groups associated with the specified cluster in your Amazon Web Services account in the specified Region\cr
@@ -134,6 +138,7 @@ application to Amazon EKS without any code modification required.
 \link[=eks_update_addon]{update_addon} \tab Updates an Amazon EKS add-on\cr
 \link[=eks_update_cluster_config]{update_cluster_config} \tab Updates an Amazon EKS cluster configuration\cr
 \link[=eks_update_cluster_version]{update_cluster_version} \tab Updates an Amazon EKS cluster to the specified Kubernetes version\cr
+\link[=eks_update_eks_anywhere_subscription]{update_eks_anywhere_subscription} \tab Update an EKS Anywhere Subscription\cr
 \link[=eks_update_nodegroup_config]{update_nodegroup_config} \tab Updates an Amazon EKS managed node group configuration\cr
 \link[=eks_update_nodegroup_version]{update_nodegroup_version} \tab Updates the Kubernetes version or AMI version of an Amazon EKS managed node group
 }

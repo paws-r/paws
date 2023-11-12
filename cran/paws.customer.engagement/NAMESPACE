@@ -3,6 +3,7 @@
 export(config)
 export(connect)
 export(connectcampaignservice)
+export(connectcases)
 export(connectcontactlens)
 export(connectparticipant)
 export(connectwisdomservice)

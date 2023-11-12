@@ -246,8 +246,8 @@ codedeploy_batch_get_applications <- function(applicationNames) {
 #' codedeploy_batch_get_deployment_groups(applicationName,
 #'   deploymentGroupNames)
 #'
-#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the applicable IAM
-#' or Amazon Web Services account.
+#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the applicable
+#' user or Amazon Web Services account.
 #' @param deploymentGroupNames &#91;required&#93; The names of the deployment groups.
 #'
 #' @return
@@ -1142,7 +1142,7 @@ codedeploy_continue_deployment <- function(deploymentId = NULL, deploymentWaitTy
 #' codedeploy_create_application(applicationName, computePlatform, tags)
 #'
 #' @param applicationName &#91;required&#93; The name of the application. This name must be unique with the
-#' applicable IAM or Amazon Web Services account.
+#' applicable user or Amazon Web Services account.
 #' @param computePlatform The destination platform type for the deployment (`Lambda`, `Server`, or
 #' `ECS`).
 #' @param tags The metadata that you apply to CodeDeploy applications to help you
@@ -1205,11 +1205,11 @@ codedeploy_create_application <- function(applicationName, computePlatform = NUL
 #'   autoRollbackConfiguration, updateOutdatedInstancesOnly,
 #'   fileExistsBehavior, overrideAlarmConfiguration)
 #'
-#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
-#' Amazon Web Services account.
+#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the user or Amazon
+#' Web Services account.
 #' @param deploymentGroupName The name of the deployment group.
 #' @param revision The type and location of the revision to deploy.
-#' @param deploymentConfigName The name of a deployment configuration associated with the IAM user or
+#' @param deploymentConfigName The name of a deployment configuration associated with the user or
 #' Amazon Web Services account.
 #' 
 #' If not specified, the value configured in the deployment group is used
@@ -1484,8 +1484,8 @@ codedeploy_create_deployment_config <- function(deploymentConfigName, minimumHea
 #'   blueGreenDeploymentConfiguration, loadBalancerInfo, ec2TagSet,
 #'   ecsServices, onPremisesTagSet, tags)
 #'
-#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
-#' Amazon Web Services account.
+#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the user or Amazon
+#' Web Services account.
 #' @param deploymentGroupName &#91;required&#93; The name of a new deployment group for the specified application.
 #' @param deploymentConfigName If specified, the deployment configuration name can be either one of the
 #' predefined configurations provided with CodeDeploy or a custom
@@ -1719,8 +1719,8 @@ codedeploy_create_deployment_group <- function(applicationName, deploymentGroupN
 #' @usage
 #' codedeploy_delete_application(applicationName)
 #'
-#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
-#' Amazon Web Services account.
+#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the user or Amazon
+#' Web Services account.
 #'
 #' @return
 #' An empty list.
@@ -1765,7 +1765,7 @@ codedeploy_delete_application <- function(applicationName) {
 #' @usage
 #' codedeploy_delete_deployment_config(deploymentConfigName)
 #'
-#' @param deploymentConfigName &#91;required&#93; The name of a deployment configuration associated with the IAM user or
+#' @param deploymentConfigName &#91;required&#93; The name of a deployment configuration associated with the user or
 #' Amazon Web Services account.
 #'
 #' @return
@@ -1808,8 +1808,8 @@ codedeploy_delete_deployment_config <- function(deploymentConfigName) {
 #' @usage
 #' codedeploy_delete_deployment_group(applicationName, deploymentGroupName)
 #'
-#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
-#' Amazon Web Services account.
+#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the user or Amazon
+#' Web Services account.
 #' @param deploymentGroupName &#91;required&#93; The name of a deployment group for the specified application.
 #'
 #' @return
@@ -1905,7 +1905,13 @@ codedeploy_delete_git_hub_account_token <- function(tokenName = NULL) {
 #' Deletes resources linked to an external ID
 #'
 #' @description
-#' Deletes resources linked to an external ID.
+#' Deletes resources linked to an external ID. This action only applies if
+#' you have configured blue/green deployments through CloudFormation.
+#' 
+#' It is not necessary to call this action directly. CloudFormation calls
+#' it on your behalf when it needs to delete stack resources. This action
+#' is offered publicly in case you need to delete resources to comply with
+#' General Data Protection Regulation (GDPR) requirements.
 #'
 #' @usage
 #' codedeploy_delete_resources_by_external_id(externalId)
@@ -1995,8 +2001,8 @@ codedeploy_deregister_on_premises_instance <- function(instanceName) {
 #' @usage
 #' codedeploy_get_application(applicationName)
 #'
-#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
-#' Amazon Web Services account.
+#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the user or Amazon
+#' Web Services account.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2166,7 +2172,7 @@ codedeploy_get_application_revision <- function(applicationName, revision) {
 #' @usage
 #' codedeploy_get_deployment(deploymentId)
 #'
-#' @param deploymentId &#91;required&#93; The unique ID of a deployment associated with the IAM user or Amazon Web
+#' @param deploymentId &#91;required&#93; The unique ID of a deployment associated with the user or Amazon Web
 #' Services account.
 #'
 #' @return
@@ -2394,7 +2400,7 @@ codedeploy_get_deployment <- function(deploymentId) {
 #' @usage
 #' codedeploy_get_deployment_config(deploymentConfigName)
 #'
-#' @param deploymentConfigName &#91;required&#93; The name of a deployment configuration associated with the IAM user or
+#' @param deploymentConfigName &#91;required&#93; The name of a deployment configuration associated with the user or
 #' Amazon Web Services account.
 #'
 #' @return
@@ -2464,8 +2470,8 @@ codedeploy_get_deployment_config <- function(deploymentConfigName) {
 #' @usage
 #' codedeploy_get_deployment_group(applicationName, deploymentGroupName)
 #'
-#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
-#' Amazon Web Services account.
+#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the user or Amazon
+#' Web Services account.
 #' @param deploymentGroupName &#91;required&#93; The name of a deployment group for the specified application.
 #'
 #' @return
@@ -3006,8 +3012,8 @@ codedeploy_get_on_premises_instance <- function(instanceName) {
 #' codedeploy_list_application_revisions(applicationName, sortBy,
 #'   sortOrder, s3Bucket, s3KeyPrefix, deployed, nextToken)
 #'
-#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
-#' Amazon Web Services account.
+#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the user or Amazon
+#' Web Services account.
 #' @param sortBy The column name to use to sort the list results:
 #' 
 #' -   `registerTime`: Sort by the time the revisions were registered with
@@ -3116,12 +3122,12 @@ codedeploy_list_application_revisions <- function(applicationName, sortBy = NULL
 }
 .codedeploy$operations$list_application_revisions <- codedeploy_list_application_revisions
 
-#' Lists the applications registered with the IAM user or Amazon Web
-#' Services account
+#' Lists the applications registered with the user or Amazon Web Services
+#' account
 #'
 #' @description
-#' Lists the applications registered with the IAM user or Amazon Web
-#' Services account.
+#' Lists the applications registered with the user or Amazon Web Services
+#' account.
 #'
 #' @usage
 #' codedeploy_list_applications(nextToken)
@@ -3169,12 +3175,12 @@ codedeploy_list_applications <- function(nextToken = NULL) {
 }
 .codedeploy$operations$list_applications <- codedeploy_list_applications
 
-#' Lists the deployment configurations with the IAM user or Amazon Web
-#' Services account
+#' Lists the deployment configurations with the user or Amazon Web Services
+#' account
 #'
 #' @description
-#' Lists the deployment configurations with the IAM user or Amazon Web
-#' Services account.
+#' Lists the deployment configurations with the user or Amazon Web Services
+#' account.
 #'
 #' @usage
 #' codedeploy_list_deployment_configs(nextToken)
@@ -3224,18 +3230,18 @@ codedeploy_list_deployment_configs <- function(nextToken = NULL) {
 }
 .codedeploy$operations$list_deployment_configs <- codedeploy_list_deployment_configs
 
-#' Lists the deployment groups for an application registered with the IAM
-#' user or Amazon Web Services account
+#' Lists the deployment groups for an application registered with the
+#' Amazon Web Services user or Amazon Web Services account
 #'
 #' @description
-#' Lists the deployment groups for an application registered with the IAM
-#' user or Amazon Web Services account.
+#' Lists the deployment groups for an application registered with the
+#' Amazon Web Services user or Amazon Web Services account.
 #'
 #' @usage
 #' codedeploy_list_deployment_groups(applicationName, nextToken)
 #'
-#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
-#' Amazon Web Services account.
+#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the user or Amazon
+#' Web Services account.
 #' @param nextToken An identifier returned from the previous list deployment groups call. It
 #' can be used to return the next set of deployment groups in the list.
 #'
@@ -3292,8 +3298,8 @@ codedeploy_list_deployment_groups <- function(applicationName, nextToken = NULL)
 #' throws an exception if it is used with a compute platform other than
 #' EC2/On-premises or Lambda.
 #' 
-#' Lists the instance for a deployment associated with the IAM user or
-#' Amazon Web Services account.
+#' Lists the instance for a deployment associated with the user or Amazon
+#' Web Services account.
 #'
 #' @usage
 #' codedeploy_list_deployment_instances(deploymentId, nextToken,
@@ -3438,18 +3444,18 @@ codedeploy_list_deployment_targets <- function(deploymentId = NULL, nextToken = 
 .codedeploy$operations$list_deployment_targets <- codedeploy_list_deployment_targets
 
 #' Lists the deployments in a deployment group for an application
-#' registered with the IAM user or Amazon Web Services account
+#' registered with the user or Amazon Web Services account
 #'
 #' @description
 #' Lists the deployments in a deployment group for an application
-#' registered with the IAM user or Amazon Web Services account.
+#' registered with the user or Amazon Web Services account.
 #'
 #' @usage
 #' codedeploy_list_deployments(applicationName, deploymentGroupName,
 #'   externalId, includeOnlyStatuses, createTimeRange, nextToken)
 #'
-#' @param applicationName The name of an CodeDeploy application associated with the IAM user or
-#' Amazon Web Services account.
+#' @param applicationName The name of an CodeDeploy application associated with the user or Amazon
+#' Web Services account.
 #' 
 #' If `applicationName` is specified, then `deploymentGroupName` must be
 #' specified. If it is not specified, then `deploymentGroupName` must not
@@ -3800,8 +3806,8 @@ codedeploy_put_lifecycle_event_hook_execution_status <- function(deploymentId = 
 #' codedeploy_register_application_revision(applicationName, description,
 #'   revision)
 #'
-#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the IAM user or
-#' Amazon Web Services account.
+#' @param applicationName &#91;required&#93; The name of an CodeDeploy application associated with the user or Amazon
+#' Web Services account.
 #' @param description A comment about the revision.
 #' @param revision &#91;required&#93; Information about the application revision to register, including type
 #' and location.
@@ -3875,7 +3881,7 @@ codedeploy_register_application_revision <- function(applicationName, descriptio
 #'
 #' @param instanceName &#91;required&#93; The name of the on-premises instance to register.
 #' @param iamSessionArn The ARN of the IAM session to associate with the on-premises instance.
-#' @param iamUserArn The ARN of the IAM user to associate with the on-premises instance.
+#' @param iamUserArn The ARN of the user to associate with the on-premises instance.
 #'
 #' @return
 #' An empty list.
@@ -4242,9 +4248,11 @@ codedeploy_update_application <- function(applicationName = NULL, newApplication
 #' 
 #' -   To remove Auto Scaling groups, specify a non-null empty list of Auto
 #'     Scaling group names to detach all CodeDeploy-managed Auto Scaling
-#'     lifecycle hooks. For examples, see Amazon EC2 instances in an Amazon
-#'     EC2 Auto Scaling group fail to launch and receive the error
-#'     "Heartbeat Timeout" in the *CodeDeploy User Guide*.
+#'     lifecycle hooks. For examples, see [Amazon EC2 instances in an
+#'     Amazon EC2 Auto Scaling group fail to launch and receive the error
+#'     "Heartbeat
+#'     Timeout"](https://docs.aws.amazon.com/codedeploy/latest/userguide/troubleshooting-auto-scaling.html#troubleshooting-auto-scaling-heartbeat)
+#'     in the *CodeDeploy User Guide*.
 #' @param serviceRoleArn A replacement ARN for the service role, if you want to change it.
 #' @param triggerConfigurations Information about triggers to change when the deployment group is
 #' updated. For examples, see [Edit a Trigger in a CodeDeploy Deployment

@@ -190,19 +190,20 @@ braket_get_device <- function(deviceArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/braket_get_job/](https://www.paws-r-sdk.com/docs/braket_get_job/) for full documentation.
 #'
+#' @param additionalAttributeNames A list of attributes to return information for.
 #' @param jobArn &#91;required&#93; The ARN of the job to retrieve.
 #'
 #' @keywords internal
 #'
 #' @rdname braket_get_job
-braket_get_job <- function(jobArn) {
+braket_get_job <- function(additionalAttributeNames = NULL, jobArn) {
   op <- new_operation(
     name = "GetJob",
     http_method = "GET",
     http_path = "/job/{jobArn}",
     paginator = list()
   )
-  input <- .braket$get_job_input(jobArn = jobArn)
+  input <- .braket$get_job_input(additionalAttributeNames = additionalAttributeNames, jobArn = jobArn)
   output <- .braket$get_job_output()
   config <- get_config()
   svc <- .braket$service(config)
@@ -219,19 +220,20 @@ braket_get_job <- function(jobArn) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/braket_get_quantum_task/](https://www.paws-r-sdk.com/docs/braket_get_quantum_task/) for full documentation.
 #'
+#' @param additionalAttributeNames A list of attributes to return information for.
 #' @param quantumTaskArn &#91;required&#93; the ARN of the task to retrieve.
 #'
 #' @keywords internal
 #'
 #' @rdname braket_get_quantum_task
-braket_get_quantum_task <- function(quantumTaskArn) {
+braket_get_quantum_task <- function(additionalAttributeNames = NULL, quantumTaskArn) {
   op <- new_operation(
     name = "GetQuantumTask",
     http_method = "GET",
     http_path = "/quantum-task/{quantumTaskArn}",
     paginator = list()
   )
-  input <- .braket$get_quantum_task_input(quantumTaskArn = quantumTaskArn)
+  input <- .braket$get_quantum_task_input(additionalAttributeNames = additionalAttributeNames, quantumTaskArn = quantumTaskArn)
   output <- .braket$get_quantum_task_output()
   config <- get_config()
   svc <- .braket$service(config)

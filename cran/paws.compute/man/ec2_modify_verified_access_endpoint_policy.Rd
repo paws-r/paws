@@ -7,16 +7,17 @@ policy}
 \usage{
 ec2_modify_verified_access_endpoint_policy(
   VerifiedAccessEndpointId,
-  PolicyEnabled,
+  PolicyEnabled = NULL,
   PolicyDocument = NULL,
   ClientToken = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  SseSpecification = NULL
 )
 }
 \arguments{
 \item{VerifiedAccessEndpointId}{[required] The ID of the Verified Access endpoint.}
 
-\item{PolicyEnabled}{[required] The status of the Verified Access policy.}
+\item{PolicyEnabled}{The status of the Verified Access policy.}
 
 \item{PolicyDocument}{The Verified Access policy document.}
 
@@ -27,6 +28,8 @@ your modification request. For more information, see \href{https://docs.aws.amaz
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{SseSpecification}{Options for server side encryption.}
 }
 \description{
 Modifies the specified Amazon Web Services Verified Access endpoint policy.

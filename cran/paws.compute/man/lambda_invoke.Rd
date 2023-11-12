@@ -58,7 +58,7 @@ example, \verb{--payload file://payload.json}.}
 function.}
 }
 \description{
-Invokes a Lambda function. You can invoke a function synchronously (and wait for the response), or asynchronously. To invoke a function asynchronously, set \code{InvocationType} to \code{Event}.
+Invokes a Lambda function. You can invoke a function synchronously (and wait for the response), or asynchronously. By default, Lambda invokes your function synchronously (i.e. the\code{InvocationType} is \code{RequestResponse}). To invoke a function asynchronously, set \code{InvocationType} to \code{Event}. Lambda passes the \code{ClientContext} object to your function for synchronous invocations only.
 
 See \url{https://www.paws-r-sdk.com/docs/lambda_invoke/} for full documentation.
 }

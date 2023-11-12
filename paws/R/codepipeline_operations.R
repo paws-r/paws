@@ -335,7 +335,35 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'         )
 #'       )
 #'     ),
-#'     version = 123
+#'     version = 123,
+#'     pipelineType = "V1"|"V2",
+#'     triggers = list(
+#'       list(
+#'         providerType = "CodeStarSourceConnection",
+#'         gitConfiguration = list(
+#'           sourceActionName = "string",
+#'           push = list(
+#'             list(
+#'               tags = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     variables = list(
+#'       list(
+#'         name = "string",
+#'         defaultValue = "string",
+#'         description = "string"
+#'       )
+#'     )
 #'   ),
 #'   tags = list(
 #'     list(
@@ -409,7 +437,35 @@ codepipeline_create_custom_action_type <- function(category, provider, version, 
 #'         )
 #'       )
 #'     ),
-#'     version = 123
+#'     version = 123,
+#'     pipelineType = "V1"|"V2",
+#'     triggers = list(
+#'       list(
+#'         providerType = "CodeStarSourceConnection",
+#'         gitConfiguration = list(
+#'           sourceActionName = "string",
+#'           push = list(
+#'             list(
+#'               tags = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     variables = list(
+#'       list(
+#'         name = "string",
+#'         defaultValue = "string",
+#'         description = "string"
+#'       )
+#'     )
 #'   ),
 #'   tags = list(
 #'     list(
@@ -1067,7 +1123,35 @@ codepipeline_get_job_details <- function(jobId) {
 #'         )
 #'       )
 #'     ),
-#'     version = 123
+#'     version = 123,
+#'     pipelineType = "V1"|"V2",
+#'     triggers = list(
+#'       list(
+#'         providerType = "CodeStarSourceConnection",
+#'         gitConfiguration = list(
+#'           sourceActionName = "string",
+#'           push = list(
+#'             list(
+#'               tags = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     variables = list(
+#'       list(
+#'         name = "string",
+#'         defaultValue = "string",
+#'         description = "string"
+#'       )
+#'     )
 #'   ),
 #'   metadata = list(
 #'     pipelineArn = "string",
@@ -1150,6 +1234,16 @@ codepipeline_get_pipeline <- function(name, version = NULL) {
 #'           "2015-01-01"
 #'         ),
 #'         revisionUrl = "string"
+#'       )
+#'     ),
+#'     trigger = list(
+#'       triggerType = "CreatePipeline"|"StartPipelineExecution"|"PollForSourceChanges"|"Webhook"|"CloudWatchEvent"|"PutActionRevision"|"WebhookV2",
+#'       triggerDetail = "string"
+#'     ),
+#'     variables = list(
+#'       list(
+#'         name = "string",
+#'         resolvedValue = "string"
 #'       )
 #'     )
 #'   )
@@ -1680,7 +1774,7 @@ codepipeline_list_action_types <- function(actionOwnerFilter = NULL, nextToken =
 #'         )
 #'       ),
 #'       trigger = list(
-#'         triggerType = "CreatePipeline"|"StartPipelineExecution"|"PollForSourceChanges"|"Webhook"|"CloudWatchEvent"|"PutActionRevision",
+#'         triggerType = "CreatePipeline"|"StartPipelineExecution"|"PollForSourceChanges"|"Webhook"|"CloudWatchEvent"|"PutActionRevision"|"WebhookV2",
 #'         triggerDetail = "string"
 #'       ),
 #'       stopTrigger = list(
@@ -1746,6 +1840,7 @@ codepipeline_list_pipeline_executions <- function(pipelineName, maxResults = NUL
 #'     list(
 #'       name = "string",
 #'       version = 123,
+#'       pipelineType = "V1"|"V2",
 #'       created = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -2683,14 +2778,19 @@ codepipeline_register_webhook_with_third_party <- function(webhookName = NULL) {
 }
 .codepipeline$operations$register_webhook_with_third_party <- codepipeline_register_webhook_with_third_party
 
-#' Resumes the pipeline execution by retrying the last failed actions in a
-#' stage
+#' You can retry a stage that has failed without having to run a pipeline
+#' again from the beginning
 #'
 #' @description
-#' Resumes the pipeline execution by retrying the last failed actions in a
-#' stage. You can retry a stage immediately if any of the actions in the
-#' stage fail. When you retry, all actions that are still in progress
-#' continue working, and failed actions are triggered again.
+#' You can retry a stage that has failed without having to run a pipeline
+#' again from the beginning. You do this by either retrying the failed
+#' actions in a stage or by retrying all actions in the stage starting from
+#' the first action in the stage. When you retry the failed actions in a
+#' stage, all actions that are still in progress continue working, and
+#' failed actions are triggered again. When you retry a failed stage from
+#' the first action in the stage, the stage cannot have any actions in
+#' progress. Before a stage can be retried, it must either have all actions
+#' failed or some actions failed and some succeeded.
 #'
 #' @usage
 #' codepipeline_retry_stage_execution(pipelineName, stageName,
@@ -2701,8 +2801,7 @@ codepipeline_register_webhook_with_third_party <- function(webhookName = NULL) {
 #' @param pipelineExecutionId &#91;required&#93; The ID of the pipeline execution in the failed stage to be retried. Use
 #' the [`get_pipeline_state`][codepipeline_get_pipeline_state] action to
 #' retrieve the current pipelineExecutionId of the failed stage
-#' @param retryMode &#91;required&#93; The scope of the retry attempt. Currently, the only supported value is
-#' FAILED_ACTIONS.
+#' @param retryMode &#91;required&#93; The scope of the retry attempt.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2718,7 +2817,7 @@ codepipeline_register_webhook_with_third_party <- function(webhookName = NULL) {
 #'   pipelineName = "string",
 #'   stageName = "string",
 #'   pipelineExecutionId = "string",
-#'   retryMode = "FAILED_ACTIONS"
+#'   retryMode = "FAILED_ACTIONS"|"ALL_ACTIONS"
 #' )
 #' ```
 #'
@@ -2751,9 +2850,13 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
 #' latest commit to the source location specified as part of the pipeline.
 #'
 #' @usage
-#' codepipeline_start_pipeline_execution(name, clientRequestToken)
+#' codepipeline_start_pipeline_execution(name, variables,
+#'   clientRequestToken)
 #'
 #' @param name &#91;required&#93; The name of the pipeline to start.
+#' @param variables A list that overrides pipeline variables for a pipeline execution that's
+#' being started. Variable names must match `[A-Za-z0-9@@\-_]+`, and the
+#' values can be anything except an empty string.
 #' @param clientRequestToken The system-generated unique ID used to identify a unique execution
 #' request.
 #'
@@ -2769,6 +2872,12 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
 #' ```
 #' svc$start_pipeline_execution(
 #'   name = "string",
+#'   variables = list(
+#'     list(
+#'       name = "string",
+#'       value = "string"
+#'     )
+#'   ),
 #'   clientRequestToken = "string"
 #' )
 #' ```
@@ -2778,14 +2887,14 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
 #' @rdname codepipeline_start_pipeline_execution
 #'
 #' @aliases codepipeline_start_pipeline_execution
-codepipeline_start_pipeline_execution <- function(name, clientRequestToken = NULL) {
+codepipeline_start_pipeline_execution <- function(name, variables = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "StartPipelineExecution",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codepipeline$start_pipeline_execution_input(name = name, clientRequestToken = clientRequestToken)
+  input <- .codepipeline$start_pipeline_execution_input(name = name, variables = variables, clientRequestToken = clientRequestToken)
   output <- .codepipeline$start_pipeline_execution_output()
   config <- get_config()
   svc <- .codepipeline$service(config)
@@ -3137,7 +3246,35 @@ codepipeline_update_action_type <- function(actionType) {
 #'         )
 #'       )
 #'     ),
-#'     version = 123
+#'     version = 123,
+#'     pipelineType = "V1"|"V2",
+#'     triggers = list(
+#'       list(
+#'         providerType = "CodeStarSourceConnection",
+#'         gitConfiguration = list(
+#'           sourceActionName = "string",
+#'           push = list(
+#'             list(
+#'               tags = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     variables = list(
+#'       list(
+#'         name = "string",
+#'         defaultValue = "string",
+#'         description = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -3205,7 +3342,35 @@ codepipeline_update_action_type <- function(actionType) {
 #'         )
 #'       )
 #'     ),
-#'     version = 123
+#'     version = 123,
+#'     pipelineType = "V1"|"V2",
+#'     triggers = list(
+#'       list(
+#'         providerType = "CodeStarSourceConnection",
+#'         gitConfiguration = list(
+#'           sourceActionName = "string",
+#'           push = list(
+#'             list(
+#'               tags = list(
+#'                 includes = list(
+#'                   "string"
+#'                 ),
+#'                 excludes = list(
+#'                   "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         )
+#'       )
+#'     ),
+#'     variables = list(
+#'       list(
+#'         name = "string",
+#'         defaultValue = "string",
+#'         description = "string"
+#'       )
+#'     )
 #'   )
 #' )
 #' ```

@@ -2,7 +2,7 @@
 % Please edit documentation in R/finspacedata_operations.R
 \name{finspacedata_disassociate_user_from_permission_group}
 \alias{finspacedata_disassociate_user_from_permission_group}
-\title{Removes a user account from a permission group}
+\title{Removes a user from a permission group}
 \usage{
 finspacedata_disassociate_user_from_permission_group(
   permissionGroupId,
@@ -18,7 +18,7 @@ finspacedata_disassociate_user_from_permission_group(
 \item{clientToken}{A token that ensures idempotency. This token expires in 10 minutes.}
 }
 \description{
-Removes a user account from a permission group.
+Removes a user from a permission group.
 
 See \url{https://www.paws-r-sdk.com/docs/finspacedata_disassociate_user_from_permission_group/} for full documentation.
 }

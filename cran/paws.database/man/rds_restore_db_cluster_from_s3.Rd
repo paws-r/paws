@@ -173,7 +173,7 @@ Constraints: Minimum 30-minute window.}
 
 \item{Tags}{}
 
-\item{StorageEncrypted}{A value that indicates whether the restored DB cluster is encrypted.}
+\item{StorageEncrypted}{Specifies whether the restored DB cluster is encrypted.}
 
 \item{KmsKeyId}{The Amazon Web Services KMS key identifier for an encrypted DB cluster.
 
@@ -187,9 +187,9 @@ default KMS key. There is a default KMS key for your Amazon Web Services
 account. Your Amazon Web Services account has a different default KMS
 key for each Amazon Web Services Region.}
 
-\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of Amazon Web Services
-Identity and Access Management (IAM) accounts to database accounts. By
-default, mapping isn't enabled.
+\item{EnableIAMDatabaseAuthentication}{Specifies whether to enable mapping of Amazon Web Services Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping isn't enabled.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication}
 in the \emph{Amazon Aurora User Guide}.}
@@ -197,7 +197,7 @@ in the \emph{Amazon Aurora User Guide}.}
 \item{SourceEngine}{[required] The identifier for the database engine that was backed up to create the
 files stored in the Amazon S3 bucket.
 
-Valid values: \code{mysql}}
+Valid Values: \code{mysql}}
 
 \item{SourceEngineVersion}{[required] The version of the database that the backup files were created from.
 
@@ -241,13 +241,12 @@ For more information about exporting CloudWatch Logs for Amazon Aurora,
 see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
 in the \emph{Amazon Aurora User Guide}.}
 
-\item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
-enabled. The database can't be deleted when deletion protection is
-enabled. By default, deletion protection isn't enabled.}
+\item{DeletionProtection}{Specifies whether to enable deletion protection for the DB cluster. The
+database can't be deleted when deletion protection is enabled. By
+default, deletion protection isn't enabled.}
 
-\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
-cluster to snapshots of the restored DB cluster. The default is not to
-copy them.}
+\item{CopyTagsToSnapshot}{Specifies whether to copy all tags from the restored DB cluster to
+snapshots of the restored DB cluster. The default is not to copy them.}
 
 \item{Domain}{Specify the Active Directory directory ID to restore the DB cluster in.
 The domain must be created prior to this operation.
@@ -264,7 +263,7 @@ Directory Service.}
 
 \item{NetworkType}{The network type of the DB cluster.
 
-Valid values:
+Valid Values:
 \itemize{
 \item \code{IPV4}
 \item \code{DUAL}
@@ -277,8 +276,8 @@ IPv4 and the IPv6 protocols (\code{DUAL}).
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
 in the \emph{Amazon Aurora User Guide.}}
 
-\item{ManageMasterUserPassword}{A value that indicates whether to manage the master user password with
-Amazon Web Services Secrets Manager.
+\item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
+Services Secrets Manager.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
 in the \emph{Amazon RDS User Guide} and \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
@@ -313,7 +312,7 @@ Amazon Web Services Region.}
 
 \item{StorageType}{Specifies the storage type to be associated with the DB cluster.
 
-Valid values: \code{aurora}, \code{aurora-iopt1}
+Valid Values: \code{aurora}, \code{aurora-iopt1}
 
 Default: \code{aurora}
 

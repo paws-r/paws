@@ -15,32 +15,41 @@ guardduty_update_organization_configuration(
 \arguments{
 \item{DetectorId}{[required] The ID of the detector that configures the delegated administrator.}
 
-\item{AutoEnable}{Indicates whether to automatically enable member accounts in the
+\item{AutoEnable}{Represents whether or not to automatically enable member accounts in the
 organization.
 
 Even though this is still supported, we recommend using
-\code{AutoEnableOrganizationMembers} to achieve the similar results.}
+\code{AutoEnableOrganizationMembers} to achieve the similar results. You must
+provide a value for either \code{autoEnableOrganizationMembers} or
+\code{autoEnable}.}
 
 \item{DataSources}{Describes which data sources will be updated.}
 
 \item{Features}{A list of features that will be configured for the organization.}
 
 \item{AutoEnableOrganizationMembers}{Indicates the auto-enablement configuration of GuardDuty for the member
-accounts in the organization.
+accounts in the organization. You must provide a value for either
+\code{autoEnableOrganizationMembers} or \code{autoEnable}.
+
+Use one of the following configuration values for
+\code{autoEnableOrganizationMembers}:
 \itemize{
 \item \code{NEW}: Indicates that when a new account joins the organization,
 they will have GuardDuty enabled automatically.
-\item \code{ALL}: Indicates that all accounts in the Amazon Web Services
-Organization have GuardDuty enabled automatically. This includes
-\code{NEW} accounts that join the organization and accounts that may have
-been suspended or removed from the organization in GuardDuty.
+\item \code{ALL}: Indicates that all accounts in the organization have
+GuardDuty enabled automatically. This includes \code{NEW} accounts that
+join the organization and accounts that may have been suspended or
+removed from the organization in GuardDuty.
+
+It may take up to 24 hours to update the configuration for all the
+member accounts.
 \item \code{NONE}: Indicates that GuardDuty will not be automatically enabled
-for any accounts in the organization. GuardDuty must be managed for
-each account individually by the administrator.
+for any account in the organization. The administrator must manage
+GuardDuty for each account in the organization individually.
 }}
 }
 \description{
-Configures the delegated administrator account with the provided values. You must provide the value for either \code{autoEnableOrganizationMembers} or \code{autoEnable}.
+Configures the delegated administrator account with the provided values. You must provide a value for either \code{autoEnableOrganizationMembers} or \code{autoEnable}, but not both.
 
 See \url{https://www.paws-r-sdk.com/docs/guardduty_update_organization_configuration/} for full documentation.
 }

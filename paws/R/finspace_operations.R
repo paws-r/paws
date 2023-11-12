@@ -2164,6 +2164,81 @@ finspace_update_environment <- function(environmentId, name = NULL, description 
 }
 .finspace$operations$update_environment <- finspace_update_environment
 
+#' Allows you to update code configuration on a running cluster
+#'
+#' @description
+#' Allows you to update code configuration on a running cluster. By using
+#' this API you can update the code, the initialization script path, and
+#' the command line arguments for a specific cluster. The configuration
+#' that you want to update will override any existing configurations on the
+#' cluster.
+#'
+#' @usage
+#' finspace_update_kx_cluster_code_configuration(environmentId,
+#'   clusterName, clientToken, code, initializationScript,
+#'   commandLineArguments, deploymentConfiguration)
+#'
+#' @param environmentId &#91;required&#93; A unique identifier of the kdb environment.
+#' @param clusterName &#91;required&#93; The name of the cluster.
+#' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
+#' @param code &#91;required&#93; 
+#' @param initializationScript Specifies a Q program that will be run at launch of a cluster. It is a
+#' relative path within *.zip* file that contains the custom code, which
+#' will be loaded on the cluster. It must include the file name itself. For
+#' example, `somedir/init.q`.
+#' @param commandLineArguments Specifies the key-value pairs to make them available inside the cluster.
+#' @param deploymentConfiguration The configuration that allows you to choose how you want to update the
+#' code on a cluster.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_kx_cluster_code_configuration(
+#'   environmentId = "string",
+#'   clusterName = "string",
+#'   clientToken = "string",
+#'   code = list(
+#'     s3Bucket = "string",
+#'     s3Key = "string",
+#'     s3ObjectVersion = "string"
+#'   ),
+#'   initializationScript = "string",
+#'   commandLineArguments = list(
+#'     list(
+#'       key = "string",
+#'       value = "string"
+#'     )
+#'   ),
+#'   deploymentConfiguration = list(
+#'     deploymentStrategy = "ROLLING"|"FORCE"
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname finspace_update_kx_cluster_code_configuration
+#'
+#' @aliases finspace_update_kx_cluster_code_configuration
+finspace_update_kx_cluster_code_configuration <- function(environmentId, clusterName, clientToken = NULL, code, initializationScript = NULL, commandLineArguments = NULL, deploymentConfiguration = NULL) {
+  op <- new_operation(
+    name = "UpdateKxClusterCodeConfiguration",
+    http_method = "PUT",
+    http_path = "/kx/environments/{environmentId}/clusters/{clusterName}/configuration/code",
+    paginator = list()
+  )
+  input <- .finspace$update_kx_cluster_code_configuration_input(environmentId = environmentId, clusterName = clusterName, clientToken = clientToken, code = code, initializationScript = initializationScript, commandLineArguments = commandLineArguments, deploymentConfiguration = deploymentConfiguration)
+  output <- .finspace$update_kx_cluster_code_configuration_output()
+  config <- get_config()
+  svc <- .finspace$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.finspace$operations$update_kx_cluster_code_configuration <- finspace_update_kx_cluster_code_configuration
+
 #' Updates the databases mounted on a kdb cluster, which includes the
 #' changesetId and all the dbPaths to be cached
 #'

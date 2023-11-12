@@ -27,6 +27,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workspaces$associate_workspace_application_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string")), ApplicationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$associate_workspace_application_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Association = structure(list(AssociatedResourceId = structure(logical(0), tags = list(type = "string")), AssociatedResourceType = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), WorkspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspaces$authorize_ip_rules_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupId = structure(logical(0), tags = list(type = "string")), UserRules = structure(list(structure(list(ipRule = structure(logical(0), tags = list(type = "string")), ruleDesc = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
@@ -149,13 +161,13 @@ NULL
 
 .workspaces$create_workspaces_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Workspaces = structure(list(structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), BundleId = structure(logical(0), tags = list(type = "string")), VolumeEncryptionKey = structure(logical(0), tags = list(type = "string")), UserVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), RootVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), WorkspaceProperties = structure(list(RunningMode = structure(logical(0), tags = list(type = "string")), RunningModeAutoStopTimeoutInMinutes = structure(logical(0), tags = list(type = "integer")), RootVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), UserVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), ComputeTypeName = structure(logical(0), tags = list(type = "string")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Workspaces = structure(list(structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), BundleId = structure(logical(0), tags = list(type = "string")), VolumeEncryptionKey = structure(logical(0), tags = list(type = "string")), UserVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), RootVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), WorkspaceProperties = structure(list(RunningMode = structure(logical(0), tags = list(type = "string")), RunningModeAutoStopTimeoutInMinutes = structure(logical(0), tags = list(type = "integer")), RootVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), UserVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), ComputeTypeName = structure(logical(0), tags = list(type = "string")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OperatingSystemName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .workspaces$create_workspaces_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(FailedRequests = structure(list(structure(list(WorkspaceRequest = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), BundleId = structure(logical(0), tags = list(type = "string")), VolumeEncryptionKey = structure(logical(0), tags = list(type = "string")), UserVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), RootVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), WorkspaceProperties = structure(list(RunningMode = structure(logical(0), tags = list(type = "string")), RunningModeAutoStopTimeoutInMinutes = structure(logical(0), tags = list(type = "integer")), RootVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), UserVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), ComputeTypeName = structure(logical(0), tags = list(type = "string")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PendingRequests = structure(list(structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string")), DirectoryId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), BundleId = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ComputerName = structure(logical(0), tags = list(type = "string")), VolumeEncryptionKey = structure(logical(0), tags = list(type = "string")), UserVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), RootVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), WorkspaceProperties = structure(list(RunningMode = structure(logical(0), tags = list(type = "string")), RunningModeAutoStopTimeoutInMinutes = structure(logical(0), tags = list(type = "integer")), RootVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), UserVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), ComputeTypeName = structure(logical(0), tags = list(type = "string")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ModificationStates = structure(list(structure(list(Resource = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RelatedWorkspaces = structure(list(structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(FailedRequests = structure(list(structure(list(WorkspaceRequest = structure(list(DirectoryId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), BundleId = structure(logical(0), tags = list(type = "string")), VolumeEncryptionKey = structure(logical(0), tags = list(type = "string")), UserVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), RootVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), WorkspaceProperties = structure(list(RunningMode = structure(logical(0), tags = list(type = "string")), RunningModeAutoStopTimeoutInMinutes = structure(logical(0), tags = list(type = "integer")), RootVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), UserVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), ComputeTypeName = structure(logical(0), tags = list(type = "string")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OperatingSystemName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), PendingRequests = structure(list(structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string")), DirectoryId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), BundleId = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ComputerName = structure(logical(0), tags = list(type = "string")), VolumeEncryptionKey = structure(logical(0), tags = list(type = "string")), UserVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), RootVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), WorkspaceProperties = structure(list(RunningMode = structure(logical(0), tags = list(type = "string")), RunningModeAutoStopTimeoutInMinutes = structure(logical(0), tags = list(type = "integer")), RootVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), UserVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), ComputeTypeName = structure(logical(0), tags = list(type = "string")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OperatingSystemName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ModificationStates = structure(list(structure(list(Resource = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RelatedWorkspaces = structure(list(structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -243,6 +255,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workspaces$deploy_workspace_applications_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string")), Force = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$deploy_workspace_applications_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Deployment = structure(list(Associations = structure(list(structure(list(AssociatedResourceId = structure(logical(0), tags = list(type = "string")), AssociatedResourceType = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), WorkspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspaces$deregister_workspace_directory_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DirectoryId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -276,6 +300,42 @@ NULL
 .workspaces$describe_account_modifications_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(AccountModifications = structure(list(structure(list(ModificationState = structure(logical(0), tags = list(type = "string")), DedicatedTenancySupport = structure(logical(0), tags = list(type = "string")), DedicatedTenancyManagementCidrRange = structure(logical(0), tags = list(type = "string")), StartTime = structure(logical(0), tags = list(type = "timestamp")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$describe_application_associations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string")), ApplicationId = structure(logical(0), tags = list(type = "string")), AssociatedResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$describe_application_associations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Associations = structure(list(structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), AssociatedResourceId = structure(logical(0), tags = list(type = "string")), AssociatedResourceType = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$describe_applications_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ApplicationIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ComputeTypeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), LicenseType = structure(logical(0), tags = list(type = "string")), OperatingSystemNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Owner = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$describe_applications_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Applications = structure(list(structure(list(ApplicationId = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), Description = structure(logical(0), tags = list(type = "string")), LicenseType = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), SupportedComputeTypeNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SupportedOperatingSystemNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$describe_bundle_associations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(BundleId = structure(logical(0), tags = list(type = "string")), AssociatedResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$describe_bundle_associations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Associations = structure(list(structure(list(AssociatedResourceId = structure(logical(0), tags = list(type = "string")), AssociatedResourceType = structure(logical(0), tags = list(type = "string")), BundleId = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -339,6 +399,18 @@ NULL
   return(populate(args, shape))
 }
 
+.workspaces$describe_image_associations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ImageId = structure(logical(0), tags = list(type = "string")), AssociatedResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$describe_image_associations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Associations = structure(list(structure(list(AssociatedResourceId = structure(logical(0), tags = list(type = "string")), AssociatedResourceType = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), ImageId = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .workspaces$describe_ip_groups_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(GroupIds = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string")), MaxResults = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
@@ -360,6 +432,18 @@ NULL
 .workspaces$describe_tags_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(TagList = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$describe_workspace_associations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string")), AssociatedResourceTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$describe_workspace_associations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Associations = structure(list(structure(list(AssociatedResourceId = structure(logical(0), tags = list(type = "string")), AssociatedResourceType = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), WorkspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -407,7 +491,7 @@ NULL
 
 .workspaces$describe_workspace_images_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Images = structure(list(structure(list(ImageId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), OperatingSystem = structure(list(Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string")), RequiredTenancy = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), Updates = structure(list(UpdateAvailable = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Images = structure(list(structure(list(ImageId = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), OperatingSystem = structure(list(Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), State = structure(logical(0), tags = list(type = "string")), RequiredTenancy = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), OwnerAccountId = structure(logical(0), tags = list(type = "string")), Updates = structure(list(UpdateAvailable = structure(logical(0), tags = list(type = "boolean")), Description = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ErrorDetails = structure(list(structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -431,7 +515,7 @@ NULL
 
 .workspaces$describe_workspaces_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Workspaces = structure(list(structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string")), DirectoryId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), BundleId = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ComputerName = structure(logical(0), tags = list(type = "string")), VolumeEncryptionKey = structure(logical(0), tags = list(type = "string")), UserVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), RootVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), WorkspaceProperties = structure(list(RunningMode = structure(logical(0), tags = list(type = "string")), RunningModeAutoStopTimeoutInMinutes = structure(logical(0), tags = list(type = "integer")), RootVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), UserVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), ComputeTypeName = structure(logical(0), tags = list(type = "string")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure")), ModificationStates = structure(list(structure(list(Resource = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RelatedWorkspaces = structure(list(structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Workspaces = structure(list(structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string")), DirectoryId = structure(logical(0), tags = list(type = "string")), UserName = structure(logical(0), tags = list(type = "string")), IpAddress = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), BundleId = structure(logical(0), tags = list(type = "string")), SubnetId = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string")), ErrorCode = structure(logical(0), tags = list(type = "string")), ComputerName = structure(logical(0), tags = list(type = "string")), VolumeEncryptionKey = structure(logical(0), tags = list(type = "string")), UserVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), RootVolumeEncryptionEnabled = structure(logical(0), tags = list(type = "boolean")), WorkspaceProperties = structure(list(RunningMode = structure(logical(0), tags = list(type = "string")), RunningModeAutoStopTimeoutInMinutes = structure(logical(0), tags = list(type = "integer")), RootVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), UserVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), ComputeTypeName = structure(logical(0), tags = list(type = "string")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OperatingSystemName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), ModificationStates = structure(list(structure(list(Resource = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), RelatedWorkspaces = structure(list(structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string")), Region = structure(logical(0), tags = list(type = "string")), State = structure(logical(0), tags = list(type = "string")), Type = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -468,6 +552,18 @@ NULL
 .workspaces$disassociate_ip_groups_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$disassociate_workspace_application_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string")), ApplicationId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.workspaces$disassociate_workspace_application_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Association = structure(list(AssociatedResourceId = structure(logical(0), tags = list(type = "string")), AssociatedResourceType = structure(logical(0), tags = list(type = "string")), Created = structure(logical(0), tags = list(type = "timestamp")), LastUpdatedTime = structure(logical(0), tags = list(type = "timestamp")), State = structure(logical(0), tags = list(type = "string")), StateReason = structure(list(ErrorCode = structure(logical(0), tags = list(type = "string")), ErrorMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), WorkspaceId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -605,7 +701,7 @@ NULL
 
 .workspaces$modify_workspace_properties_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string")), WorkspaceProperties = structure(list(RunningMode = structure(logical(0), tags = list(type = "string")), RunningModeAutoStopTimeoutInMinutes = structure(logical(0), tags = list(type = "integer")), RootVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), UserVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), ComputeTypeName = structure(logical(0), tags = list(type = "string")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(WorkspaceId = structure(logical(0), tags = list(type = "string")), WorkspaceProperties = structure(list(RunningMode = structure(logical(0), tags = list(type = "string")), RunningModeAutoStopTimeoutInMinutes = structure(logical(0), tags = list(type = "integer")), RootVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), UserVolumeSizeGib = structure(logical(0), tags = list(type = "integer")), ComputeTypeName = structure(logical(0), tags = list(type = "string")), Protocols = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), OperatingSystemName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

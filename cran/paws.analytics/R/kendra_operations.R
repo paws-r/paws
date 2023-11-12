@@ -394,9 +394,8 @@ kendra_create_data_source <- function(Name, IndexId, Type, Configuration = NULL,
 #' [`query`][kendra_query] API,
 #' [`get_query_suggestions`][kendra_get_query_suggestions] API, and other
 #' required APIs. The role also must include permission to access IAM
-#' Identity Center (successor to Single Sign-On) that stores your user and
-#' group information. For more information, see [IAM access roles for
-#' Amazon
+#' Identity Center that stores your user and group information. For more
+#' information, see [IAM access roles for Amazon
 #' Kendra](https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html).
 #' @param Configuration Configuration information for your Amazon Kendra experience. This
 #' includes `ContentSourceConfiguration`, which specifies the data source
@@ -592,8 +591,8 @@ kendra_create_featured_results_set <- function(IndexId, FeaturedResultsSetName, 
 #' Enables token-based user access control to filter search results on user
 #' context. All documents with no access control and all documents
 #' accessible to the user will be searchable and displayable.
-#' @param UserGroupResolutionConfiguration Gets users and groups from IAM Identity Center (successor to Single
-#' Sign-On) identity source. To configure this, see
+#' @param UserGroupResolutionConfiguration Gets users and groups from IAM Identity Center identity source. To
+#' configure this, see
 #' [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html).
 #'
 #' @keywords internal
@@ -2046,23 +2045,36 @@ kendra_put_principal_mapping <- function(IndexId, DataSourceId = NULL, GroupId, 
 #' 
 #' If you don't provide sorting configuration, the results are sorted by
 #' the relevance that Amazon Kendra determines for the result.
+#' @param SortingConfigurations Provides configuration information to determine how the results of a
+#' query are sorted.
+#' 
+#' You can set upto 3 fields that Amazon Kendra should sort the results on,
+#' and specify whether the results should be sorted in ascending or
+#' descending order. The sort field quota can be increased.
+#' 
+#' If you don't provide a sorting configuration, the results are sorted by
+#' the relevance that Amazon Kendra determines for the result. In the case
+#' of ties in sorting the results, the results are sorted by relevance.
 #' @param UserContext The user context token or user and group information.
 #' @param VisitorId Provides an identifier for a specific user. The `VisitorId` should be a
 #' unique identifier, such as a GUID. Don't use personally identifiable
 #' information, such as the user's email address, as the `VisitorId`.
 #' @param SpellCorrectionConfiguration Enables suggested spell corrections for queries.
+#' @param CollapseConfiguration Provides configuration to determine how to group results by document
+#' attribute value, and how to display them (collapsed or expanded) under a
+#' designated primary document for each group.
 #'
 #' @keywords internal
 #'
 #' @rdname kendra_query
-kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Facets = NULL, RequestedDocumentAttributes = NULL, QueryResultTypeFilter = NULL, DocumentRelevanceOverrideConfigurations = NULL, PageNumber = NULL, PageSize = NULL, SortingConfiguration = NULL, UserContext = NULL, VisitorId = NULL, SpellCorrectionConfiguration = NULL) {
+kendra_query <- function(IndexId, QueryText = NULL, AttributeFilter = NULL, Facets = NULL, RequestedDocumentAttributes = NULL, QueryResultTypeFilter = NULL, DocumentRelevanceOverrideConfigurations = NULL, PageNumber = NULL, PageSize = NULL, SortingConfiguration = NULL, SortingConfigurations = NULL, UserContext = NULL, VisitorId = NULL, SpellCorrectionConfiguration = NULL, CollapseConfiguration = NULL) {
   op <- new_operation(
     name = "Query",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .kendra$query_input(IndexId = IndexId, QueryText = QueryText, AttributeFilter = AttributeFilter, Facets = Facets, RequestedDocumentAttributes = RequestedDocumentAttributes, QueryResultTypeFilter = QueryResultTypeFilter, DocumentRelevanceOverrideConfigurations = DocumentRelevanceOverrideConfigurations, PageNumber = PageNumber, PageSize = PageSize, SortingConfiguration = SortingConfiguration, UserContext = UserContext, VisitorId = VisitorId, SpellCorrectionConfiguration = SpellCorrectionConfiguration)
+  input <- .kendra$query_input(IndexId = IndexId, QueryText = QueryText, AttributeFilter = AttributeFilter, Facets = Facets, RequestedDocumentAttributes = RequestedDocumentAttributes, QueryResultTypeFilter = QueryResultTypeFilter, DocumentRelevanceOverrideConfigurations = DocumentRelevanceOverrideConfigurations, PageNumber = PageNumber, PageSize = PageSize, SortingConfiguration = SortingConfiguration, SortingConfigurations = SortingConfigurations, UserContext = UserContext, VisitorId = VisitorId, SpellCorrectionConfiguration = SpellCorrectionConfiguration, CollapseConfiguration = CollapseConfiguration)
   output <- .kendra$query_output()
   config <- get_config()
   svc <- .kendra$service(config)
@@ -2501,8 +2513,7 @@ kendra_update_featured_results_set <- function(IndexId, FeaturedResultsSetId, Fe
 #' @param UserTokenConfigurations The user token configuration.
 #' @param UserContextPolicy The user context policy.
 #' @param UserGroupResolutionConfiguration Enables fetching access levels of groups and users from an IAM Identity
-#' Center (successor to Single Sign-On) identity source. To configure this,
-#' see
+#' Center identity source. To configure this, see
 #' [UserGroupResolutionConfiguration](https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html).
 #'
 #' @keywords internal

@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_start_task_contact}
 \alias{connect_start_task_contact}
-\title{Initiates a flow to start a new task}
+\title{Initiates a flow to start a new task contact}
 \usage{
 connect_start_task_contact(
   InstanceId,
@@ -23,7 +23,10 @@ connect_start_task_contact(
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
 in the Amazon Resource Name (ARN) of the instance.}
 
-\item{PreviousContactId}{The identifier of the previous chat, voice, or task contact.}
+\item{PreviousContactId}{The identifier of the previous chat, voice, or task contact. Any updates
+to user-defined attributes to task contacts linked using the same
+\code{PreviousContactID} will affect every contact in the chain. There can be
+a maximum of 12 linked task contacts in a chain.}
 
 \item{ContactFlowId}{The identifier of the flow for initiating the tasks. To see the
 ContactFlowId in the Amazon Connect console user interface, on the
@@ -46,7 +49,9 @@ underscore characters.}
 Panel (CCP).}
 
 \item{References}{A formatted URL that is shown to an agent in the Contact Control Panel
-(CCP).}
+(CCP). Tasks can have the following reference types at the time of
+creation: \code{URL} | \code{NUMBER} | \code{STRING} | \code{DATE} | \code{EMAIL}. \code{ATTACHMENT}
+is not a supported reference type during task creation.}
 
 \item{Description}{A description of the task that is shown to an agent in the Contact
 Control Panel (CCP).}
@@ -60,16 +65,26 @@ populates this field. For more information about idempotency, see
 the inbound flow. The scheduled time cannot be in the past. It must be
 within up to 6 days in future.}
 
-\item{TaskTemplateId}{A unique identifier for the task template.}
+\item{TaskTemplateId}{A unique identifier for the task template. For more information about
+task templates, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/task-templates.html}{Create task templates}
+in the \emph{Amazon Connect Administrator Guide}.}
 
-\item{QuickConnectId}{The identifier for the quick connect.}
+\item{QuickConnectId}{The identifier for the quick connect. Tasks that are created by using
+\code{QuickConnectId} will use the flow that is defined on agent or queue
+quick connect. For more information about quick connects, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/quick-connects.html}{Create quick connects}.}
 
 \item{RelatedContactId}{The contactId that is
 \href{https://docs.aws.amazon.com/connect/latest/adminguide/tasks.html#linked-tasks}{related}
-to this contact.}
+to this contact. Linking tasks together by using \code{RelatedContactID}
+copies over contact attributes from the related task contact to the new
+task contact. All updates to user-defined attributes in the new task
+contact are limited to the individual contact ID, unlike what happens
+when tasks are linked by using \code{PreviousContactID}. There are no limits
+to the number of contacts that can be linked by using
+\code{RelatedContactId}.}
 }
 \description{
-Initiates a flow to start a new task.
+Initiates a flow to start a new task contact. For more information about task contacts, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/tasks.html}{Concepts: Tasks in Amazon Connect} in the \emph{Amazon Connect Administrator Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_start_task_contact/} for full documentation.
 }

@@ -2696,7 +2696,21 @@ sesv2_get_domain_statistics_report <- function(Domain, StartDate, EndDate) {
 #'     )
 #'   ),
 #'   ConfigurationSetName = "string",
-#'   VerificationStatus = "PENDING"|"SUCCESS"|"FAILED"|"TEMPORARY_FAILURE"|"NOT_STARTED"
+#'   VerificationStatus = "PENDING"|"SUCCESS"|"FAILED"|"TEMPORARY_FAILURE"|"NOT_STARTED",
+#'   VerificationInfo = list(
+#'     LastCheckedTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     LastSuccessTimestamp = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     ErrorType = "SERVICE_ERROR"|"DNS_SERVER_ERROR"|"HOST_NOT_FOUND"|"TYPE_NOT_FOUND"|"INVALID_VALUE",
+#'     SOARecord = list(
+#'       PrimaryNameServer = "string",
+#'       AdminEmail = "string",
+#'       SerialNumber = 123
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -3842,7 +3856,7 @@ sesv2_list_email_identities <- function(NextToken = NULL, PageSize = NULL) {
 #' the response includes a `NextToken` element, which you can use to obtain
 #' additional results.
 #' 
-#' The value you specify has to be at least 1, and can be no more than 10.
+#' The value you specify has to be at least 1, and can be no more than 100.
 #'
 #' @return
 #' A list with the following syntax:

@@ -11,7 +11,17 @@ workmail_register_to_work_mail(OrganizationId, EntityId, Email)
 \item{OrganizationId}{[required] The identifier for the organization under which the user, group, or
 resource exists.}
 
-\item{EntityId}{[required] The identifier for the user, group, or resource to be updated.}
+\item{EntityId}{[required] The identifier for the user, group, or resource to be updated.
+
+The identifier can accept \emph{UserId, ResourceId, or GroupId}, or
+\emph{Username, Resourcename, or Groupname}. The following identity formats
+are available:
+\itemize{
+\item Entity ID: 12345678-1234-1234-1234-123456789012,
+r-0123456789a0123456789b0123456789, or
+S-1-1-12-1234567890-123456789-123456789-1234
+\item Entity name: entity
+}}
 
 \item{Email}{[required] The email for the user, group, or resource to be updated.}
 }

@@ -21,7 +21,8 @@ specified endpoint.}
 
 \item{SortBy}{The field to sort results by. The default is \code{CreationTime}.}
 
-\item{SortOrder}{The sort order for results. The default is \code{Descending}.}
+\item{SortOrder}{Whether to sort the results in \code{Ascending} or \code{Descending} order. The
+default is \code{Descending}.}
 
 \item{NextToken}{If the result of the previous
 \code{\link[=sagemaker_list_data_quality_job_definitions]{list_data_quality_job_definitions}}

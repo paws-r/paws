@@ -15,28 +15,28 @@ ec2_describe_network_interfaces(
 \arguments{
 \item{Filters}{One or more filters.
 \itemize{
-\item \code{addresses.private-ip-address} - The private IPv4 addresses
+\item \code{association.allocation-id} - The allocation ID returned when you
+allocated the Elastic IP address (IPv4) for your network interface.
+\item \code{association.association-id} - The association ID returned when the
+network interface was associated with an IPv4 address.
+\item \code{addresses.association.owner-id} - The owner ID of the addresses
 associated with the network interface.
-\item \code{addresses.primary} - Whether the private IPv4 address is the
-primary IP address associated with the network interface.
 \item \code{addresses.association.public-ip} - The association ID returned when
 the network interface was associated with the Elastic IP address
 (IPv4).
-\item \code{addresses.association.owner-id} - The owner ID of the addresses
+\item \code{addresses.primary} - Whether the private IPv4 address is the
+primary IP address associated with the network interface.
+\item \code{addresses.private-ip-address} - The private IPv4 addresses
 associated with the network interface.
-\item \code{association.association-id} - The association ID returned when the
-network interface was associated with an IPv4 address.
-\item \code{association.allocation-id} - The allocation ID returned when you
-allocated the Elastic IP address (IPv4) for your network interface.
 \item \code{association.ip-owner-id} - The owner of the Elastic IP address
 (IPv4) associated with the network interface.
 \item \code{association.public-ip} - The address of the Elastic IP address
 (IPv4) bound to the network interface.
 \item \code{association.public-dns-name} - The public DNS name for the network
 interface (IPv4).
-\item \code{attachment.attachment-id} - The ID of the interface attachment.
 \item \code{attachment.attach-time} - The time that the network interface was
 attached to an instance.
+\item \code{attachment.attachment-id} - The ID of the interface attachment.
 \item \code{attachment.delete-on-termination} - Indicates whether the
 attachment is deleted when an instance is terminated.
 \item \code{attachment.device-index} - The device index to which the network
@@ -52,25 +52,23 @@ interface.
 \item \code{description} - The description of the network interface.
 \item \code{group-id} - The ID of a security group associated with the network
 interface.
-\item \code{group-name} - The name of a security group associated with the
-network interface.
 \item \code{ipv6-addresses.ipv6-address} - An IPv6 address associated with the
 network interface.
 \item \code{interface-type} - The type of network interface
 (\code{api_gateway_managed} | \code{aws_codestar_connections_managed} |
-\code{branch} | \code{efa} | \code{gateway_load_balancer} |
-\code{gateway_load_balancer_endpoint} | \code{global_accelerator_managed} |
-\code{interface} | \code{iot_rules_managed} | \code{lambda} | \code{load_balancer} |
-\code{nat_gateway} | \code{network_load_balancer} | \code{quicksight} |
-\code{transit_gateway} | \code{trunk} | \code{vpc_endpoint}).
+\code{branch} | \code{ec2_instance_connect_endpoint} | \code{efa} | \code{efs} |
+\code{gateway_load_balancer} | \code{gateway_load_balancer_endpoint} |
+\code{global_accelerator_managed} | \code{interface} | \code{iot_rules_managed} |
+\code{lambda} | \code{load_balancer} | \code{nat_gateway} | \code{network_load_balancer}
+| \code{quicksight} | \code{transit_gateway} | \code{trunk} | \code{vpc_endpoint}).
 \item \code{mac-address} - The MAC address of the network interface.
 \item \code{network-interface-id} - The ID of the network interface.
 \item \code{owner-id} - The Amazon Web Services account ID of the network
 interface owner.
-\item \code{private-ip-address} - The private IPv4 address or addresses of the
-network interface.
 \item \code{private-dns-name} - The private DNS name of the network interface
 (IPv4).
+\item \code{private-ip-address} - The private IPv4 address or addresses of the
+network interface.
 \item \code{requester-id} - The alias or Amazon Web Services account ID of the
 principal or service that created the network interface.
 \item \code{requester-managed} - Indicates whether the network interface is

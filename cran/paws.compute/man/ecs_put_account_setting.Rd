@@ -31,12 +31,12 @@ values are \code{enabled}, \code{disabled}, \code{on}, and \code{off}.
 When you specify \code{fargateTaskRetirementWaitPeriod} for the \code{name}, the
 following are the valid values:
 \itemize{
-\item \code{0} - immediately retire the tasks and patch Fargate
-
-There is no advanced notification. Your tasks are retired
-immediately, and Fargate is patched without any notification.
-\item \code{7} -wait 7 calendar days to retire the tasks and patch Fargate
-\item \code{14} - wait 14 calendar days to retire the tasks and patch Fargate
+\item \code{0} - Amazon Web Services sends the notification, and immediately
+retires the affected tasks.
+\item \code{7} - Amazon Web Services sends the notification, and waits 7
+calendar days to retire the tasks.
+\item \code{14} - Amazon Web Services sends the notification, and waits 14
+calendar days to retire the tasks.
 }}
 
 \item{principalArn}{The ARN of the principal, which can be a user, role, or the root user.

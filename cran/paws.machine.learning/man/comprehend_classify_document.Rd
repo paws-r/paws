@@ -2,9 +2,8 @@
 % Please edit documentation in R/comprehend_operations.R
 \name{comprehend_classify_document}
 \alias{comprehend_classify_document}
-\title{Creates a new document classification request to analyze a single
-document in real-time, using a previously created and trained custom
-model and an endpoint}
+\title{Creates a classification request to analyze a single document in
+real-time}
 \usage{
 comprehend_classify_document(
   Text = NULL,
@@ -17,12 +16,22 @@ comprehend_classify_document(
 \item{Text}{The document text to be analyzed. If you enter text using this
 parameter, do not use the \code{Bytes} parameter.}
 
-\item{EndpointArn}{[required] The Amazon Resource Number (ARN) of the endpoint. For information about
-endpoints, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/manage-endpoints.html}{Managing endpoints}.}
+\item{EndpointArn}{[required] The Amazon Resource Number (ARN) of the endpoint.
 
-\item{Bytes}{Use the \code{Bytes} parameter to input a text, PDF, Word or image file. You
-can also use the \code{Bytes} parameter to input an Amazon Textract
-\code{DetectDocumentText} or \code{AnalyzeDocument} output file.
+For prompt classification, Amazon Comprehend provides the endpoint ARN:
+\code{zzz}.
+
+For custom classification, you create an endpoint for your custom model.
+For more information, see \href{https://docs.aws.amazon.com/comprehend/latest/dg/using-endpoints.html}{Using Amazon Comprehend endpoints}.}
+
+\item{Bytes}{Use the \code{Bytes} parameter to input a text, PDF, Word or image file.
+
+When you classify a document using a custom model, you can also use the
+\code{Bytes} parameter to input an Amazon Textract \code{DetectDocumentText} or
+\code{AnalyzeDocument} output file.
+
+To classify a document using the prompt classifier, use the \code{Text}
+parameter for input.
 
 Provide the input document as a sequence of base64-encoded bytes. If
 your code uses an Amazon Web Services SDK to classify documents, the SDK
@@ -38,7 +47,7 @@ If you use the \code{Bytes} parameter, do not use the \code{Text} parameter.}
 extracting text from PDF documents and image files.}
 }
 \description{
-Creates a new document classification request to analyze a single document in real-time, using a previously created and trained custom model and an endpoint.
+Creates a classification request to analyze a single document in real-time. \code{\link[=comprehend_classify_document]{classify_document}} supports the following model types:
 
 See \url{https://www.paws-r-sdk.com/docs/comprehend_classify_document/} for full documentation.
 }

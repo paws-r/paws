@@ -2,17 +2,17 @@
 % Please edit documentation in R/lookoutequipment_operations.R
 \name{lookoutequipment_describe_model}
 \alias{lookoutequipment_describe_model}
-\title{Provides a JSON containing the overall information about a specific ML
-model, including model name and ARN, dataset, training and evaluation
-information, status, and so on}
+\title{Provides a JSON containing the overall information about a specific
+machine learning model, including model name and ARN, dataset, training
+and evaluation information, status, and so on}
 \usage{
 lookoutequipment_describe_model(ModelName)
 }
 \arguments{
-\item{ModelName}{[required] The name of the ML model to be described.}
+\item{ModelName}{[required] The name of the machine learning model to be described.}
 }
 \description{
-Provides a JSON containing the overall information about a specific ML model, including model name and ARN, dataset, training and evaluation information, status, and so on.
+Provides a JSON containing the overall information about a specific machine learning model, including model name and ARN, dataset, training and evaluation information, status, and so on.
 
 See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_describe_model/} for full documentation.
 }

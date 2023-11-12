@@ -36,7 +36,8 @@ NULL
 #'       )
 #'     ),
 #'     Name = "string",
-#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION"
+#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
+#'     Owner = "string"
 #'   )
 #' )
 #' ```
@@ -105,7 +106,8 @@ route53recoverycontrolconfig_create_cluster <- function(ClientToken = NULL, Clus
 #'     DefaultControlPanel = TRUE|FALSE,
 #'     Name = "string",
 #'     RoutingControlCount = 123,
-#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION"
+#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
+#'     Owner = "string"
 #'   )
 #' )
 #' ```
@@ -178,7 +180,8 @@ route53recoverycontrolconfig_create_control_panel <- function(ClientToken = NULL
 #'     ControlPanelArn = "string",
 #'     Name = "string",
 #'     RoutingControlArn = "string",
-#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION"
+#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
+#'     Owner = "string"
 #'   )
 #' )
 #' ```
@@ -267,7 +270,8 @@ route53recoverycontrolconfig_create_routing_control <- function(ClientToken = NU
 #'     ),
 #'     SafetyRuleArn = "string",
 #'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
-#'     WaitPeriodMs = 123
+#'     WaitPeriodMs = 123,
+#'     Owner = "string"
 #'   ),
 #'   GatingRule = list(
 #'     ControlPanelArn = "string",
@@ -285,7 +289,8 @@ route53recoverycontrolconfig_create_routing_control <- function(ClientToken = NU
 #'     TargetControls = list(
 #'       "string"
 #'     ),
-#'     WaitPeriodMs = 123
+#'     WaitPeriodMs = 123,
+#'     Owner = "string"
 #'   )
 #' )
 #' ```
@@ -546,7 +551,8 @@ route53recoverycontrolconfig_delete_safety_rule <- function(SafetyRuleArn) {
 #'       )
 #'     ),
 #'     Name = "string",
-#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION"
+#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
+#'     Owner = "string"
 #'   )
 #' )
 #' ```
@@ -600,7 +606,8 @@ route53recoverycontrolconfig_describe_cluster <- function(ClusterArn) {
 #'     DefaultControlPanel = TRUE|FALSE,
 #'     Name = "string",
 #'     RoutingControlCount = 123,
-#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION"
+#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
+#'     Owner = "string"
 #'   )
 #' )
 #' ```
@@ -659,7 +666,8 @@ route53recoverycontrolconfig_describe_control_panel <- function(ControlPanelArn)
 #'     ControlPanelArn = "string",
 #'     Name = "string",
 #'     RoutingControlArn = "string",
-#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION"
+#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
+#'     Owner = "string"
 #'   )
 #' )
 #' ```
@@ -720,7 +728,8 @@ route53recoverycontrolconfig_describe_routing_control <- function(RoutingControl
 #'     ),
 #'     SafetyRuleArn = "string",
 #'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
-#'     WaitPeriodMs = 123
+#'     WaitPeriodMs = 123,
+#'     Owner = "string"
 #'   ),
 #'   GatingRule = list(
 #'     ControlPanelArn = "string",
@@ -738,7 +747,8 @@ route53recoverycontrolconfig_describe_routing_control <- function(RoutingControl
 #'     TargetControls = list(
 #'       "string"
 #'     ),
-#'     WaitPeriodMs = 123
+#'     WaitPeriodMs = 123,
+#'     Owner = "string"
 #'   )
 #' )
 #' ```
@@ -771,6 +781,53 @@ route53recoverycontrolconfig_describe_safety_rule <- function(SafetyRuleArn) {
   return(response)
 }
 .route53recoverycontrolconfig$operations$describe_safety_rule <- route53recoverycontrolconfig_describe_safety_rule
+
+#' Get information about the resource policy for a cluster
+#'
+#' @description
+#' Get information about the resource policy for a cluster.
+#'
+#' @usage
+#' route53recoverycontrolconfig_get_resource_policy(ResourceArn)
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Policy = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_resource_policy(
+#'   ResourceArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname route53recoverycontrolconfig_get_resource_policy
+#'
+#' @aliases route53recoverycontrolconfig_get_resource_policy
+route53recoverycontrolconfig_get_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "GET",
+    http_path = "/resourcePolicy/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .route53recoverycontrolconfig$get_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .route53recoverycontrolconfig$get_resource_policy_output()
+  config <- get_config()
+  svc <- .route53recoverycontrolconfig$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53recoverycontrolconfig$operations$get_resource_policy <- route53recoverycontrolconfig_get_resource_policy
 
 #' Returns an array of all Amazon Route 53 health checks associated with a
 #' specific routing control
@@ -854,7 +911,8 @@ route53recoverycontrolconfig_list_associated_route_53_health_checks <- function(
 #'         )
 #'       ),
 #'       Name = "string",
-#'       Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION"
+#'       Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
+#'       Owner = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -915,7 +973,8 @@ route53recoverycontrolconfig_list_clusters <- function(MaxResults = NULL, NextTo
 #'       DefaultControlPanel = TRUE|FALSE,
 #'       Name = "string",
 #'       RoutingControlCount = 123,
-#'       Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION"
+#'       Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
+#'       Owner = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -980,7 +1039,8 @@ route53recoverycontrolconfig_list_control_panels <- function(ClusterArn = NULL, 
 #'       ControlPanelArn = "string",
 #'       Name = "string",
 #'       RoutingControlArn = "string",
-#'       Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION"
+#'       Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
+#'       Owner = "string"
 #'     )
 #'   )
 #' )
@@ -1052,7 +1112,8 @@ route53recoverycontrolconfig_list_routing_controls <- function(ControlPanelArn, 
 #'         ),
 #'         SafetyRuleArn = "string",
 #'         Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
-#'         WaitPeriodMs = 123
+#'         WaitPeriodMs = 123,
+#'         Owner = "string"
 #'       ),
 #'       GATING = list(
 #'         ControlPanelArn = "string",
@@ -1070,7 +1131,8 @@ route53recoverycontrolconfig_list_routing_controls <- function(ControlPanelArn, 
 #'         TargetControls = list(
 #'           "string"
 #'         ),
-#'         WaitPeriodMs = 123
+#'         WaitPeriodMs = 123,
+#'         Owner = "string"
 #'       )
 #'     )
 #'   )
@@ -1272,7 +1334,8 @@ route53recoverycontrolconfig_untag_resource <- function(ResourceArn, TagKeys) {
 #'     DefaultControlPanel = TRUE|FALSE,
 #'     Name = "string",
 #'     RoutingControlCount = 123,
-#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION"
+#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
+#'     Owner = "string"
 #'   )
 #' )
 #' ```
@@ -1330,7 +1393,8 @@ route53recoverycontrolconfig_update_control_panel <- function(ControlPanelArn, C
 #'     ControlPanelArn = "string",
 #'     Name = "string",
 #'     RoutingControlArn = "string",
-#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION"
+#'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
+#'     Owner = "string"
 #'   )
 #' )
 #' ```
@@ -1396,7 +1460,8 @@ route53recoverycontrolconfig_update_routing_control <- function(RoutingControlAr
 #'     ),
 #'     SafetyRuleArn = "string",
 #'     Status = "PENDING"|"DEPLOYED"|"PENDING_DELETION",
-#'     WaitPeriodMs = 123
+#'     WaitPeriodMs = 123,
+#'     Owner = "string"
 #'   ),
 #'   GatingRule = list(
 #'     ControlPanelArn = "string",
@@ -1414,7 +1479,8 @@ route53recoverycontrolconfig_update_routing_control <- function(RoutingControlAr
 #'     TargetControls = list(
 #'       "string"
 #'     ),
-#'     WaitPeriodMs = 123
+#'     WaitPeriodMs = 123,
+#'     Owner = "string"
 #'   )
 #' )
 #' ```

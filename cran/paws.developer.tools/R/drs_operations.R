@@ -77,7 +77,11 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #' @param copyTags Copy tags.
 #' @param exportBucketArn S3 bucket ARN to export Source Network templates.
 #' @param launchDisposition Launch disposition.
+#' @param launchIntoSourceInstance DRS will set the 'launch into instance ID' of any source server when
+#' performing a drill, recovery or failback to the previous region or
+#' availability zone, using the instance ID of the source instance.
 #' @param licensing Licensing.
+#' @param postLaunchEnabled Whether we want to activate post-launch actions.
 #' @param tags Request to associate tags during creation of a Launch Configuration
 #' Template.
 #' @param targetInstanceTypeRightSizingMethod Target instance type right-sizing method.
@@ -85,14 +89,14 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #' @keywords internal
 #'
 #' @rdname drs_create_launch_configuration_template
-drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, exportBucketArn = NULL, launchDisposition = NULL, licensing = NULL, tags = NULL, targetInstanceTypeRightSizingMethod = NULL) {
+drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, exportBucketArn = NULL, launchDisposition = NULL, launchIntoSourceInstance = NULL, licensing = NULL, postLaunchEnabled = NULL, tags = NULL, targetInstanceTypeRightSizingMethod = NULL) {
   op <- new_operation(
     name = "CreateLaunchConfigurationTemplate",
     http_method = "POST",
     http_path = "/CreateLaunchConfigurationTemplate",
     paginator = list()
   )
-  input <- .drs$create_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, exportBucketArn = exportBucketArn, launchDisposition = launchDisposition, licensing = licensing, tags = tags, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  input <- .drs$create_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, exportBucketArn = exportBucketArn, launchDisposition = launchDisposition, launchIntoSourceInstance = launchIntoSourceInstance, licensing = licensing, postLaunchEnabled = postLaunchEnabled, tags = tags, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
   output <- .drs$create_launch_configuration_template_output()
   config <- get_config()
   svc <- .drs$service(config)
@@ -213,6 +217,36 @@ drs_delete_job <- function(jobID) {
   return(response)
 }
 .drs$operations$delete_job <- drs_delete_job
+
+#' Deletes a resource launch action
+#'
+#' @description
+#' Deletes a resource launch action.
+#'
+#' See [https://www.paws-r-sdk.com/docs/drs_delete_launch_action/](https://www.paws-r-sdk.com/docs/drs_delete_launch_action/) for full documentation.
+#'
+#' @param actionId &#91;required&#93; 
+#' @param resourceId &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname drs_delete_launch_action
+drs_delete_launch_action <- function(actionId, resourceId) {
+  op <- new_operation(
+    name = "DeleteLaunchAction",
+    http_method = "POST",
+    http_path = "/DeleteLaunchAction",
+    paginator = list()
+  )
+  input <- .drs$delete_launch_action_input(actionId = actionId, resourceId = resourceId)
+  output <- .drs$delete_launch_action_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$delete_launch_action <- drs_delete_launch_action
 
 #' Deletes a single Launch Configuration Template by ID
 #'
@@ -851,6 +885,38 @@ drs_list_extensible_source_servers <- function(maxResults = NULL, nextToken = NU
 }
 .drs$operations$list_extensible_source_servers <- drs_list_extensible_source_servers
 
+#' Lists resource launch actions
+#'
+#' @description
+#' Lists resource launch actions.
+#'
+#' See [https://www.paws-r-sdk.com/docs/drs_list_launch_actions/](https://www.paws-r-sdk.com/docs/drs_list_launch_actions/) for full documentation.
+#'
+#' @param filters Filters to apply when listing resource launch actions.
+#' @param maxResults Maximum amount of items to return when listing resource launch actions.
+#' @param nextToken Next token to use when listing resource launch actions.
+#' @param resourceId &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname drs_list_launch_actions
+drs_list_launch_actions <- function(filters = NULL, maxResults = NULL, nextToken = NULL, resourceId) {
+  op <- new_operation(
+    name = "ListLaunchActions",
+    http_method = "POST",
+    http_path = "/ListLaunchActions",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+  )
+  input <- .drs$list_launch_actions_input(filters = filters, maxResults = maxResults, nextToken = nextToken, resourceId = resourceId)
+  output <- .drs$list_launch_actions_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$list_launch_actions <- drs_list_launch_actions
+
 #' Returns an array of staging accounts for existing extended source
 #' servers
 #'
@@ -910,6 +976,45 @@ drs_list_tags_for_resource <- function(resourceArn) {
   return(response)
 }
 .drs$operations$list_tags_for_resource <- drs_list_tags_for_resource
+
+#' Puts a resource launch action
+#'
+#' @description
+#' Puts a resource launch action.
+#'
+#' See [https://www.paws-r-sdk.com/docs/drs_put_launch_action/](https://www.paws-r-sdk.com/docs/drs_put_launch_action/) for full documentation.
+#'
+#' @param actionCode &#91;required&#93; Launch action code.
+#' @param actionId &#91;required&#93; 
+#' @param actionVersion &#91;required&#93; 
+#' @param active &#91;required&#93; Whether the launch action is active.
+#' @param category &#91;required&#93; 
+#' @param description &#91;required&#93; 
+#' @param name &#91;required&#93; 
+#' @param optional &#91;required&#93; Whether the launch will not be marked as failed if this action fails.
+#' @param order &#91;required&#93; 
+#' @param parameters 
+#' @param resourceId &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname drs_put_launch_action
+drs_put_launch_action <- function(actionCode, actionId, actionVersion, active, category, description, name, optional, order, parameters = NULL, resourceId) {
+  op <- new_operation(
+    name = "PutLaunchAction",
+    http_method = "POST",
+    http_path = "/PutLaunchAction",
+    paginator = list()
+  )
+  input <- .drs$put_launch_action_input(actionCode = actionCode, actionId = actionId, actionVersion = actionVersion, active = active, category = category, description = description, name = name, optional = optional, order = order, parameters = parameters, resourceId = resourceId)
+  output <- .drs$put_launch_action_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$put_launch_action <- drs_put_launch_action
 
 #' WARNING: RetryDataReplication is deprecated
 #'
@@ -1352,8 +1457,10 @@ drs_update_failback_replication_configuration <- function(bandwidthThrottling = 
 #' @param copyTags Whether we want to copy the tags of the Source Server to the EC2 machine
 #' of the Recovery Instance.
 #' @param launchDisposition The state of the Recovery Instance in EC2 after the recovery operation.
+#' @param launchIntoInstanceProperties Launch into existing instance properties.
 #' @param licensing The licensing configuration to be used for this launch configuration.
 #' @param name The name of the launch configuration.
+#' @param postLaunchEnabled Whether we want to enable post-launch actions for the Source Server.
 #' @param sourceServerID &#91;required&#93; The ID of the Source Server that we want to retrieve a Launch
 #' Configuration for.
 #' @param targetInstanceTypeRightSizingMethod Whether Elastic Disaster Recovery should try to automatically choose the
@@ -1363,14 +1470,14 @@ drs_update_failback_replication_configuration <- function(bandwidthThrottling = 
 #' @keywords internal
 #'
 #' @rdname drs_update_launch_configuration
-drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NULL, launchDisposition = NULL, licensing = NULL, name = NULL, sourceServerID, targetInstanceTypeRightSizingMethod = NULL) {
+drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NULL, launchDisposition = NULL, launchIntoInstanceProperties = NULL, licensing = NULL, name = NULL, postLaunchEnabled = NULL, sourceServerID, targetInstanceTypeRightSizingMethod = NULL) {
   op <- new_operation(
     name = "UpdateLaunchConfiguration",
     http_method = "POST",
     http_path = "/UpdateLaunchConfiguration",
     paginator = list()
   )
-  input <- .drs$update_launch_configuration_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, launchDisposition = launchDisposition, licensing = licensing, name = name, sourceServerID = sourceServerID, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  input <- .drs$update_launch_configuration_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, launchDisposition = launchDisposition, launchIntoInstanceProperties = launchIntoInstanceProperties, licensing = licensing, name = name, postLaunchEnabled = postLaunchEnabled, sourceServerID = sourceServerID, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
   output <- .drs$update_launch_configuration_output()
   config <- get_config()
   svc <- .drs$service(config)
@@ -1392,20 +1499,24 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #' @param exportBucketArn S3 bucket ARN to export Source Network templates.
 #' @param launchConfigurationTemplateID &#91;required&#93; Launch Configuration Template ID.
 #' @param launchDisposition Launch disposition.
+#' @param launchIntoSourceInstance DRS will set the 'launch into instance ID' of any source server when
+#' performing a drill, recovery or failback to the previous region or
+#' availability zone, using the instance ID of the source instance.
 #' @param licensing Licensing.
+#' @param postLaunchEnabled Whether we want to activate post-launch actions.
 #' @param targetInstanceTypeRightSizingMethod Target instance type right-sizing method.
 #'
 #' @keywords internal
 #'
 #' @rdname drs_update_launch_configuration_template
-drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, exportBucketArn = NULL, launchConfigurationTemplateID, launchDisposition = NULL, licensing = NULL, targetInstanceTypeRightSizingMethod = NULL) {
+drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, exportBucketArn = NULL, launchConfigurationTemplateID, launchDisposition = NULL, launchIntoSourceInstance = NULL, licensing = NULL, postLaunchEnabled = NULL, targetInstanceTypeRightSizingMethod = NULL) {
   op <- new_operation(
     name = "UpdateLaunchConfigurationTemplate",
     http_method = "POST",
     http_path = "/UpdateLaunchConfigurationTemplate",
     paginator = list()
   )
-  input <- .drs$update_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, exportBucketArn = exportBucketArn, launchConfigurationTemplateID = launchConfigurationTemplateID, launchDisposition = launchDisposition, licensing = licensing, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  input <- .drs$update_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, exportBucketArn = exportBucketArn, launchConfigurationTemplateID = launchConfigurationTemplateID, launchDisposition = launchDisposition, launchIntoSourceInstance = launchIntoSourceInstance, licensing = licensing, postLaunchEnabled = postLaunchEnabled, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
   output <- .drs$update_launch_configuration_template_output()
   config <- get_config()
   svc <- .drs$service(config)

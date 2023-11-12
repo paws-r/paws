@@ -14,6 +14,7 @@ opensearchservice_update_domain_config(
   CognitoOptions = NULL,
   AdvancedOptions = NULL,
   AccessPolicies = NULL,
+  IPAddressType = NULL,
   LogPublishingOptions = NULL,
   EncryptionAtRestOptions = NULL,
   DomainEndpointOptions = NULL,
@@ -68,6 +69,8 @@ For more information, see \href{https://docs.aws.amazon.com/opensearch-service/l
 \item{AccessPolicies}{Identity and Access Management (IAM) access policy as a JSON-formatted
 string.}
 
+\item{IPAddressType}{The type of IP addresses supported by the endpoint for the domain.}
+
 \item{LogPublishingOptions}{Options to publish OpenSearch logs to Amazon CloudWatch Logs.}
 
 \item{EncryptionAtRestOptions}{Encryption at rest options for the domain.}
@@ -99,7 +102,7 @@ making. For more information, see \href{https://docs.aws.amazon.com/opensearch-s
 \item{SoftwareUpdateOptions}{Service software update options for the domain.}
 }
 \description{
-Modifies the cluster configuration of the specified Amazon OpenSearch Service domain.sl
+Modifies the cluster configuration of the specified Amazon OpenSearch Service domain.
 
 See \url{https://www.paws-r-sdk.com/docs/opensearchservice_update_domain_config/} for full documentation.
 }

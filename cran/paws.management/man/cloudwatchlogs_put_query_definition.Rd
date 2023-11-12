@@ -8,7 +8,8 @@ cloudwatchlogs_put_query_definition(
   name,
   queryDefinitionId = NULL,
   logGroupNames = NULL,
-  queryString
+  queryString,
+  clientToken = NULL
 )
 }
 \arguments{
@@ -35,6 +36,9 @@ the updated definition will contain no log groups.}
 
 \item{queryString}{[required] The query string to use for this definition. For more information, see
 \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html}{CloudWatch Logs Insights Query Syntax}.}
+
+\item{clientToken}{Used as an idempotency token, to avoid returning an exception if the
+service receives the same request twice because of a network error.}
 }
 \description{
 Creates or updates a query definition for CloudWatch Logs Insights. For more information, see \href{https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/AnalyzingLogData.html}{Analyzing Log Data with CloudWatch Logs Insights}.

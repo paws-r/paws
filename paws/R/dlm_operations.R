@@ -73,7 +73,19 @@ NULL
 #'           Times = list(
 #'             "string"
 #'           ),
-#'           CronExpression = "string"
+#'           CronExpression = "string",
+#'           Scripts = list(
+#'             list(
+#'               Stages = list(
+#'                 "PRE"|"POST"
+#'               ),
+#'               ExecutionHandlerService = "AWS_SYSTEMS_MANAGER",
+#'               ExecutionHandler = "string",
+#'               ExecuteOperationOnScriptFailure = TRUE|FALSE,
+#'               ExecutionTimeout = 123,
+#'               MaximumRetryCount = 123
+#'             )
+#'           )
 #'         ),
 #'         RetainRule = list(
 #'           Count = 123,
@@ -393,7 +405,19 @@ dlm_get_lifecycle_policies <- function(PolicyIds = NULL, State = NULL, ResourceT
 #'             Times = list(
 #'               "string"
 #'             ),
-#'             CronExpression = "string"
+#'             CronExpression = "string",
+#'             Scripts = list(
+#'               list(
+#'                 Stages = list(
+#'                   "PRE"|"POST"
+#'                 ),
+#'                 ExecutionHandlerService = "AWS_SYSTEMS_MANAGER",
+#'                 ExecutionHandler = "string",
+#'                 ExecuteOperationOnScriptFailure = TRUE|FALSE,
+#'                 ExecutionTimeout = 123,
+#'                 MaximumRetryCount = 123
+#'               )
+#'             )
 #'           ),
 #'           RetainRule = list(
 #'             Count = 123,
@@ -734,7 +758,19 @@ dlm_untag_resource <- function(ResourceArn, TagKeys) {
 #'           Times = list(
 #'             "string"
 #'           ),
-#'           CronExpression = "string"
+#'           CronExpression = "string",
+#'           Scripts = list(
+#'             list(
+#'               Stages = list(
+#'                 "PRE"|"POST"
+#'               ),
+#'               ExecutionHandlerService = "AWS_SYSTEMS_MANAGER",
+#'               ExecutionHandler = "string",
+#'               ExecuteOperationOnScriptFailure = TRUE|FALSE,
+#'               ExecutionTimeout = 123,
+#'               MaximumRetryCount = 123
+#'             )
+#'           )
 #'         ),
 #'         RetainRule = list(
 #'           Count = 123,

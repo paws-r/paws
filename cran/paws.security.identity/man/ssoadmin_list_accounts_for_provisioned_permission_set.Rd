@@ -2,34 +2,36 @@
 % Please edit documentation in R/ssoadmin_operations.R
 \name{ssoadmin_list_accounts_for_provisioned_permission_set}
 \alias{ssoadmin_list_accounts_for_provisioned_permission_set}
-\title{Lists all the AWS accounts where the specified permission set is
-provisioned}
+\title{Lists all the Amazon Web Services accounts where the specified
+permission set is provisioned}
 \usage{
 ssoadmin_list_accounts_for_provisioned_permission_set(
   InstanceArn,
-  PermissionSetArn,
-  ProvisioningStatus = NULL,
   MaxResults = NULL,
-  NextToken = NULL
+  NextToken = NULL,
+  PermissionSetArn,
+  ProvisioningStatus = NULL
 )
 }
 \arguments{
 \item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
 will be executed. For more information about ARNs, see Amazon Resource
-Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
-
-\item{PermissionSetArn}{[required] The ARN of the PermissionSet from which the associated AWS accounts will
-be listed.}
-
-\item{ProvisioningStatus}{The permission set provisioning status for an AWS account.}
+Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon
+Web Services General Reference}.}
 
 \item{MaxResults}{The maximum number of results to display for the PermissionSet.}
 
 \item{NextToken}{The pagination token for the list API. Initially the value is null. Use
 the output of previous API calls to make subsequent calls.}
+
+\item{PermissionSetArn}{[required] The ARN of the PermissionSet from which the associated Amazon Web
+Services accounts will be listed.}
+
+\item{ProvisioningStatus}{The permission set provisioning status for an Amazon Web Services
+account.}
 }
 \description{
-Lists all the AWS accounts where the specified permission set is provisioned.
+Lists all the Amazon Web Services accounts where the specified permission set is provisioned.
 
 See \url{https://www.paws-r-sdk.com/docs/ssoadmin_list_accounts_for_provisioned_permission_set/} for full documentation.
 }

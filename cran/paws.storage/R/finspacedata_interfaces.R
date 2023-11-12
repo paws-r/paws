@@ -65,7 +65,7 @@ NULL
 
 .finspacedata$create_user_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(emailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string")), firstName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), ApiAccess = structure(logical(0), tags = list(type = "string")), apiAccessPrincipalArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(emailAddress = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), type = structure(logical(0), tags = list(type = "string")), firstName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), lastName = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), apiAccess = structure(logical(0), tags = list(type = "string")), apiAccessPrincipalArn = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -179,7 +179,7 @@ NULL
 
 .finspacedata$get_external_data_view_access_details_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(credentials = structure(list(accessKeyId = structure(logical(0), tags = list(type = "string")), secretAccessKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sessionToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), expiration = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure")), s3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(credentials = structure(list(accessKeyId = structure(logical(0), tags = list(type = "string")), secretAccessKey = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), sessionToken = structure(logical(0), tags = list(type = "string", sensitive = TRUE)), expiration = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure", sensitive = TRUE)), s3Location = structure(list(bucket = structure(logical(0), tags = list(type = "string")), key = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -203,7 +203,7 @@ NULL
 
 .finspacedata$get_programmatic_access_credentials_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(credentials = structure(list(accessKeyId = structure(logical(0), tags = list(type = "string")), secretAccessKey = structure(logical(0), tags = list(type = "string")), sessionToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), durationInMinutes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  shape <- structure(list(credentials = structure(list(accessKeyId = structure(logical(0), tags = list(type = "string")), secretAccessKey = structure(logical(0), tags = list(type = "string")), sessionToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure", sensitive = TRUE)), durationInMinutes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

@@ -15,7 +15,7 @@ locationservice_get_map_glyphs(
 \item{FontStack}{[required] A comma-separated list of fonts to load glyphs from in order of
 preference. For example, \verb{Noto Sans Regular, Arial Unicode}.
 
-Valid fonts stacks for
+Valid font stacks for
 \href{https://docs.aws.amazon.com/location/latest/developerguide/esri.html}{Esri}
 styles:
 \itemize{

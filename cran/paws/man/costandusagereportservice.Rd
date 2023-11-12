@@ -22,9 +22,9 @@ costandusagereportservice(
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -53,18 +53,22 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-The AWS Cost and Usage Report API enables you to programmatically
-create, query, and delete AWS Cost and Usage report definitions.
+You can use the Amazon Web Services Cost and Usage Report API to
+programmatically create, query, and delete Amazon Web Services Cost and
+Usage Report definitions.
 
-AWS Cost and Usage reports track the monthly AWS costs and usage
-associated with your AWS account. The report contains line items for
-each unique combination of AWS product, usage type, and operation that
-your AWS account uses. You can configure the AWS Cost and Usage report
-to show only the data that you want, using the AWS Cost and Usage API.
+Amazon Web Services Cost and Usage Report track the monthly Amazon Web
+Services costs and usage associated with your Amazon Web Services
+account. The report contains line items for each unique combination of
+Amazon Web Services product, usage type, and operation that your Amazon
+Web Services account uses. You can configure the Amazon Web Services
+Cost and Usage Report to show only the data that you want, using the
+Amazon Web Services Cost and Usage Report API.
 
 Service Endpoint
 
-The AWS Cost and Usage Report API provides the following endpoint:
+The Amazon Web Services Cost and Usage Report API provides the following
+endpoint:
 \itemize{
 \item cur.us-east-1.amazonaws.com
 }
@@ -109,9 +113,12 @@ The AWS Cost and Usage Report API provides the following endpoint:
 
 \tabular{ll}{
 \link[paws.cost.management:costandusagereportservice_delete_report_definition]{delete_report_definition} \tab Deletes the specified report\cr
-\link[paws.cost.management:costandusagereportservice_describe_report_definitions]{describe_report_definitions} \tab Lists the AWS Cost and Usage reports available to this account\cr
-\link[paws.cost.management:costandusagereportservice_modify_report_definition]{modify_report_definition} \tab Allows you to programatically update your report preferences\cr
-\link[paws.cost.management:costandusagereportservice_put_report_definition]{put_report_definition} \tab Creates a new report using the description that you provide
+\link[paws.cost.management:costandusagereportservice_describe_report_definitions]{describe_report_definitions} \tab Lists the Amazon Web Services Cost and Usage Report available to this account\cr
+\link[paws.cost.management:costandusagereportservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags associated with the specified report definition\cr
+\link[paws.cost.management:costandusagereportservice_modify_report_definition]{modify_report_definition} \tab Allows you to programmatically update your report preferences\cr
+\link[paws.cost.management:costandusagereportservice_put_report_definition]{put_report_definition} \tab Creates a new report using the description that you provide\cr
+\link[paws.cost.management:costandusagereportservice_tag_resource]{tag_resource} \tab Associates a set of tags with a report definition\cr
+\link[paws.cost.management:costandusagereportservice_untag_resource]{untag_resource} \tab Disassociates a set of tags from a report definition
 }
 }
 

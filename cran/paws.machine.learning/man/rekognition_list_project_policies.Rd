@@ -2,7 +2,7 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_list_project_policies}
 \alias{rekognition_list_project_policies}
-\title{Gets a list of the project policies attached to a project}
+\title{This operation applies only to Amazon Rekognition Custom Labels}
 \usage{
 rekognition_list_project_policies(
   ProjectArn,
@@ -23,7 +23,7 @@ value you can specify is 5. If you specify a value greater than 5, a
 ValidationException error occurs. The default value is 5.}
 }
 \description{
-Gets a list of the project policies attached to a project.
+This operation applies only to Amazon Rekognition Custom Labels.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_list_project_policies/} for full documentation.
 }

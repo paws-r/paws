@@ -280,7 +280,13 @@ sns_create_sms_sandbox_phone_number <- function(PhoneNumber, LanguageCode = NULL
 #' The following attributes apply only to [FIFO
 #' topics](https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html):
 #' 
-#' -   `FifoTopic` – When this is set to `true`, a FIFO topic is created.
+#' -   `ArchivePolicy` – Adds or updates an inline policy document to
+#'     archive messages stored in the specified Amazon SNS topic.
+#' 
+#' -   `BeginningArchiveTime` – The earliest starting point at which a
+#'     message in the topic’s archive can be replayed from. This point in
+#'     time is based on the configured message retention period set by the
+#'     topic’s message archiving policy.
 #' 
 #' -   `ContentBasedDeduplication` – Enables content-based deduplication
 #'     for FIFO topics.
@@ -1832,6 +1838,28 @@ sns_set_topic_attributes <- function(TopicArn, AttributeName, AttributeValue = N
 #'     see [Fanout to Kinesis Data Firehose delivery
 #'     streams](https://docs.aws.amazon.com/sns/latest/dg/sns-firehose-as-subscriber.html)
 #'     in the *Amazon SNS Developer Guide*.
+#' 
+#' The following attributes apply only to [FIFO
+#' topics](https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html):
+#' 
+#' -   `ReplayPolicy` – Adds or updates an inline policy document for a
+#'     subscription to replay messages stored in the specified Amazon SNS
+#'     topic.
+#' 
+#' -   `ReplayStatus` – Retrieves the status of the subscription message
+#'     replay, which can be one of the following:
+#' 
+#'     -   `Completed` – The replay has successfully redelivered all
+#'         messages, and is now delivering newly published messages. If an
+#'         ending point was specified in the `ReplayPolicy` then the
+#'         subscription will no longer receive newly published messages.
+#' 
+#'     -   `In progress` – The replay is currently replaying the selected
+#'         messages.
+#' 
+#'     -   `Failed` – The replay was unable to complete.
+#' 
+#'     -   `Pending` – The default state while the replay initiates.
 #' @param ReturnSubscriptionArn Sets whether the response from the [`subscribe`][sns_subscribe] request
 #' includes the subscription ARN, even if the subscription is not yet
 #' confirmed.

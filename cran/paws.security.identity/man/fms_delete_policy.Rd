@@ -29,6 +29,10 @@ Manager and if it's no longer associated with any resources through
 another policy
 }
 
+For security group common policies, even if set to \code{False}, Firewall
+Manager deletes all security groups created by Firewall Manager that
+aren't associated with any other resources through another policy.
+
 After the cleanup, in-scope resources are no longer protected by web
 ACLs in this policy. Protection of out-of-scope resources remains
 unchanged. Scope is determined by tags that you create and accounts that

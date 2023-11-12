@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_update_security_profile}
 \alias{connect_update_security_profile}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Updates a security profile}
 \usage{
 connect_update_security_profile(
   Description = NULL,
@@ -11,7 +10,8 @@ connect_update_security_profile(
   SecurityProfileId,
   InstanceId,
   AllowedAccessControlTags = NULL,
-  TagRestrictedResources = NULL
+  TagRestrictedResources = NULL,
+  Applications = NULL
 )
 }
 \arguments{
@@ -30,9 +30,14 @@ resources in Amazon Connect.}
 
 \item{TagRestrictedResources}{The list of resources that a security profile applies tag restrictions
 to in Amazon Connect.}
+
+\item{Applications}{This API is in preview release for Amazon Connect and is subject to
+change.
+
+A list of the third-party application's metadata.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Updates a security profile.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_update_security_profile/} for full documentation.
 }

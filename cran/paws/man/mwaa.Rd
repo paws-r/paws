@@ -17,9 +17,9 @@ mwaa(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -73,17 +73,12 @@ operate the Airflow environment.
 \item \code{create_cli_token}
 \item \code{create_web_login_token}
 }
-\item \verb{ops.airflow.\{region\}.amazonaws.com} - This endpoint is used to push
-environment metrics that track environment health.
-\itemize{
-\item \code{publish_metrics}
-}
 }
 
 \strong{Regions}
 
-For a list of regions that Amazon MWAA supports, see \href{https://docs.aws.amazon.com/mwaa/latest/userguide/what-is-mwaa.html#regions-mwaa}{Region availability}
-in the \emph{Amazon MWAA User Guide}.
+For a list of supported regions, see \href{https://docs.aws.amazon.com/general/latest/gr/mwaa.html}{Amazon MWAA endpoints and quotas} in the
+\emph{Amazon Web Services General Reference}.
 }
 \section{Service syntax}{
 

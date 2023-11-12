@@ -8,8 +8,8 @@ NULL
 #' @description
 #' Get the state for a routing control. A routing control is a simple
 #' on/off switch that you can use to route traffic to cells. When a routing
-#' control state is On, traffic flows to a cell. When the state is Off,
-#' traffic does not flow.
+#' control state is set to ON, traffic flows to a cell. When the state is
+#' set to OFF, traffic does not flow.
 #' 
 #' Before you can create a routing control, you must first create a
 #' cluster, and then host the control in a control panel on the cluster.
@@ -94,8 +94,9 @@ route53recoverycluster_get_routing_control_state <- function(RoutingControlArn) 
 #' cluster.
 #' 
 #' A routing control is a simple on/off switch in Route 53 ARC that you can
-#' use to route traffic to cells. When a routing control state is On,
-#' traffic flows to a cell. When the state is Off, traffic does not flow.
+#' use to route traffic to cells. When a routing control state is set to
+#' ON, traffic flows to a cell. When the state is set to OFF, traffic does
+#' not flow.
 #' 
 #' Before you can create a routing control, you must first create a
 #' cluster, and then host the control in a control panel on the cluster.
@@ -139,7 +140,8 @@ route53recoverycluster_get_routing_control_state <- function(RoutingControlArn) 
 #'       ControlPanelName = "string",
 #'       RoutingControlArn = "string",
 #'       RoutingControlName = "string",
-#'       RoutingControlState = "On"|"Off"
+#'       RoutingControlState = "On"|"Off",
+#'       Owner = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -181,8 +183,8 @@ route53recoverycluster_list_routing_controls <- function(ControlPanelArn = NULL,
 #'
 #' @description
 #' Set the state of the routing control to reroute traffic. You can set the
-#' value to be On or Off. When the state is On, traffic flows to a cell.
-#' When the state is Off, traffic does not flow.
+#' value to ON or OFF. When the state is ON, traffic flows to a cell. When
+#' the state is OFF, traffic does not flow.
 #' 
 #' With Route 53 ARC, you can add safety rules for routing controls, which
 #' are safeguards for routing control state updates that help prevent
@@ -221,7 +223,7 @@ route53recoverycluster_list_routing_controls <- function(ControlPanelArn = NULL,
 #'
 #' @param RoutingControlArn &#91;required&#93; The Amazon Resource Name (ARN) for the routing control that you want to
 #' update the state for.
-#' @param RoutingControlState &#91;required&#93; The state of the routing control. You can set the value to be On or Off.
+#' @param RoutingControlState &#91;required&#93; The state of the routing control. You can set the value to ON or OFF.
 #' @param SafetyRulesToOverride The Amazon Resource Names (ARNs) for the safety rules that you want to
 #' override when you're updating the state of a routing control. You can
 #' override one safety rule or multiple safety rules by including one or
@@ -271,8 +273,8 @@ route53recoverycluster_update_routing_control_state <- function(RoutingControlAr
 #'
 #' @description
 #' Set multiple routing control states. You can set the value for each
-#' state to be On or Off. When the state is On, traffic flows to a cell.
-#' When it's Off, traffic does not flow.
+#' state to be ON or OFF. When the state is ON, traffic flows to a cell.
+#' When it's OFF, traffic does not flow.
 #' 
 #' With Route 53 ARC, you can add safety rules for routing controls, which
 #' are safeguards for routing control state updates that help prevent

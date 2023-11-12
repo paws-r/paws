@@ -391,10 +391,11 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 }
 .rekognition$operations$compare_faces <- rekognition_compare_faces
 
-#' Copies a version of an Amazon Rekognition Custom Labels model from a
-#' source project to a destination project
+#' This operation applies only to Amazon Rekognition Custom Labels
 #'
 #' @description
+#' This operation applies only to Amazon Rekognition Custom Labels.
+#' 
 #' Copies a version of an Amazon Rekognition Custom Labels model from a
 #' source project to a destination project. The source and destination
 #' projects can be in different AWS accounts but must be in the same AWS
@@ -413,6 +414,8 @@ rekognition_compare_faces <- function(SourceImage, TargetImage, SimilarityThresh
 #' 
 #' If you are copying a model version to a project in the same AWS account,
 #' you don't need to create a project policy.
+#' 
+#' Copying project versions is supported only for Custom Labels models.
 #' 
 #' To copy a model, the destination project, source project, and source
 #' model version must already exist.
@@ -609,9 +612,11 @@ rekognition_create_collection <- function(CollectionId, Tags = NULL) {
 }
 .rekognition$operations$create_collection <- rekognition_create_collection
 
-#' Creates a new Amazon Rekognition Custom Labels dataset
+#' This operation applies only to Amazon Rekognition Custom Labels
 #'
 #' @description
+#' This operation applies only to Amazon Rekognition Custom Labels.
+#' 
 #' Creates a new Amazon Rekognition Custom Labels dataset. You can create a
 #' dataset by using an Amazon Sagemaker format manifest file or by copying
 #' an existing Amazon Rekognition Custom Labels dataset.
@@ -801,20 +806,27 @@ rekognition_create_face_liveness_session <- function(KmsKeyId = NULL, Settings =
 }
 .rekognition$operations$create_face_liveness_session <- rekognition_create_face_liveness_session
 
-#' Creates a new Amazon Rekognition Custom Labels project
+#' Creates a new Amazon Rekognition project
 #'
 #' @description
-#' Creates a new Amazon Rekognition Custom Labels project. A project is a
-#' group of resources (datasets, model versions) that you use to create and
-#' manage Amazon Rekognition Custom Labels models.
-#' 
-#' This operation requires permissions to perform the
+#' Creates a new Amazon Rekognition project. A project is a group of
+#' resources (datasets, model versions) that you use to create and manage a
+#' Amazon Rekognition Custom Labels Model or custom adapter. You can
+#' specify a feature to create the project with, if no feature is specified
+#' then Custom Labels is used by default. For adapters, you can also choose
+#' whether or not to have the project auto update by using the AutoUpdate
+#' argument. This operation requires permissions to perform the
 #' `rekognition:CreateProject` action.
 #'
 #' @usage
-#' rekognition_create_project(ProjectName)
+#' rekognition_create_project(ProjectName, Feature, AutoUpdate)
 #'
 #' @param ProjectName &#91;required&#93; The name of the project to create.
+#' @param Feature Specifies feature that is being customized. If no value is provided
+#' CUSTOM_LABELS is used as a default.
+#' @param AutoUpdate Specifies whether automatic retraining should be attempted for the
+#' versions of the project. Automatic retraining is done as a best effort.
+#' Required argument for Content Moderation. Applicable only to adapters.
 #'
 #' @return
 #' A list with the following syntax:
@@ -827,7 +839,9 @@ rekognition_create_face_liveness_session <- function(KmsKeyId = NULL, Settings =
 #' @section Request syntax:
 #' ```
 #' svc$create_project(
-#'   ProjectName = "string"
+#'   ProjectName = "string",
+#'   Feature = "CONTENT_MODERATION"|"CUSTOM_LABELS",
+#'   AutoUpdate = "ENABLED"|"DISABLED"
 #' )
 #' ```
 #'
@@ -844,14 +858,14 @@ rekognition_create_face_liveness_session <- function(KmsKeyId = NULL, Settings =
 #' @rdname rekognition_create_project
 #'
 #' @aliases rekognition_create_project
-rekognition_create_project <- function(ProjectName) {
+rekognition_create_project <- function(ProjectName, Feature = NULL, AutoUpdate = NULL) {
   op <- new_operation(
     name = "CreateProject",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$create_project_input(ProjectName = ProjectName)
+  input <- .rekognition$create_project_input(ProjectName = ProjectName, Feature = Feature, AutoUpdate = AutoUpdate)
   output <- .rekognition$create_project_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -861,17 +875,31 @@ rekognition_create_project <- function(ProjectName) {
 }
 .rekognition$operations$create_project <- rekognition_create_project
 
-#' Creates a new version of a model and begins training
+#' Creates a new version of Amazon Rekognition project (like a Custom
+#' Labels model or a custom adapter) and begins training
 #'
 #' @description
-#' Creates a new version of a model and begins training. Models are managed
-#' as part of an Amazon Rekognition Custom Labels project. The response
-#' from [`create_project_version`][rekognition_create_project_version] is
-#' an Amazon Resource Name (ARN) for the version of the model.
+#' Creates a new version of Amazon Rekognition project (like a Custom
+#' Labels model or a custom adapter) and begins training. Models and
+#' adapters are managed as part of a Rekognition project. The response from
+#' [`create_project_version`][rekognition_create_project_version] is an
+#' Amazon Resource Name (ARN) for the project version.
 #' 
-#' Training uses the training and test datasets associated with the
-#' project. For more information, see Creating training and test dataset in
-#' the *Amazon Rekognition Custom Labels Developer Guide*.
+#' The FeatureConfig operation argument allows you to configure specific
+#' model or adapter settings. You can provide a description to the project
+#' version by using the VersionDescription argment. Training can take a
+#' while to complete. You can get the current status by calling
+#' [`describe_project_versions`][rekognition_describe_project_versions].
+#' Training completed successfully if the value of the `Status` field is
+#' `TRAINING_COMPLETED`. Once training has successfully completed, call
+#' [`describe_project_versions`][rekognition_describe_project_versions] to
+#' get the training results and evaluate the model.
+#' 
+#' This operation requires permissions to perform the
+#' `rekognition:CreateProjectVersion` action.
+#' 
+#' *The following applies only to projects with Amazon Rekognition Custom
+#' Labels as the chosen feature:*
 #' 
 #' You can train a model in a project that doesn't have associated datasets
 #' by specifying manifest files in the `TrainingData` and `TestingData`
@@ -885,52 +913,34 @@ rekognition_create_project <- function(ProjectName) {
 #' Instead of training with a project without associated datasets, we
 #' recommend that you use the manifest files to create training and test
 #' datasets for the project.
-#' 
-#' Training takes a while to complete. You can get the current status by
-#' calling
-#' [`describe_project_versions`][rekognition_describe_project_versions].
-#' Training completed successfully if the value of the `Status` field is
-#' `TRAINING_COMPLETED`.
-#' 
-#' If training fails, see Debugging a failed model training in the *Amazon
-#' Rekognition Custom Labels* developer guide.
-#' 
-#' Once training has successfully completed, call
-#' [`describe_project_versions`][rekognition_describe_project_versions] to
-#' get the training results and evaluate the model. For more information,
-#' see Improving a trained Amazon Rekognition Custom Labels model in the
-#' *Amazon Rekognition Custom Labels* developers guide.
-#' 
-#' After evaluating the model, you start the model by calling
-#' [`start_project_version`][rekognition_start_project_version].
-#' 
-#' This operation requires permissions to perform the
-#' `rekognition:CreateProjectVersion` action.
 #'
 #' @usage
 #' rekognition_create_project_version(ProjectArn, VersionName,
-#'   OutputConfig, TrainingData, TestingData, Tags, KmsKeyId)
+#'   OutputConfig, TrainingData, TestingData, Tags, KmsKeyId,
+#'   VersionDescription, FeatureConfig)
 #'
-#' @param ProjectArn &#91;required&#93; The ARN of the Amazon Rekognition Custom Labels project that manages the
-#' model that you want to train.
-#' @param VersionName &#91;required&#93; A name for the version of the model. This value must be unique.
-#' @param OutputConfig &#91;required&#93; The Amazon S3 bucket location to store the results of training. The S3
-#' bucket can be in any AWS account as long as the caller has
-#' `s3:PutObject` permissions on the S3 bucket.
+#' @param ProjectArn &#91;required&#93; The ARN of the Amazon Rekognition project that will manage the project
+#' version you want to train.
+#' @param VersionName &#91;required&#93; A name for the version of the project version. This value must be
+#' unique.
+#' @param OutputConfig &#91;required&#93; The Amazon S3 bucket location to store the results of training. The
+#' bucket can be any S3 bucket in your AWS account. You need `s3:PutObject`
+#' permission on the bucket.
 #' @param TrainingData Specifies an external manifest that the services uses to train the
-#' model. If you specify `TrainingData` you must also specify
+#' project version. If you specify `TrainingData` you must also specify
 #' `TestingData`. The project must not have any associated datasets.
-#' @param TestingData Specifies an external manifest that the service uses to test the model.
-#' If you specify `TestingData` you must also specify `TrainingData`. The
-#' project must not have any associated datasets.
-#' @param Tags A set of tags (key-value pairs) that you want to attach to the model.
+#' @param TestingData Specifies an external manifest that the service uses to test the project
+#' version. If you specify `TestingData` you must also specify
+#' `TrainingData`. The project must not have any associated datasets.
+#' @param Tags A set of tags (key-value pairs) that you want to attach to the project
+#' version.
 #' @param KmsKeyId The identifier for your AWS Key Management Service key (AWS KMS key).
 #' You can supply the Amazon Resource Name (ARN) of your KMS key, the ID of
 #' your KMS key, an alias for your KMS key, or an alias ARN. The key is
-#' used to encrypt training and test images copied into the service for
-#' model training. Your source images are unaffected. The key is also used
-#' to encrypt training results and manifest files written to the output
-#' Amazon S3 bucket (`OutputConfig`).
+#' used to encrypt training images, test images, and manifest files copied
+#' into the service for the project version. Your source images are
+#' unaffected. The key is also used to encrypt training results and
+#' manifest files written to the output Amazon S3 bucket (`OutputConfig`).
 #' 
 #' If you choose to use your own KMS key, you need the following
 #' permissions on the KMS key.
@@ -945,6 +955,10 @@ rekognition_create_project <- function(ProjectName) {
 #' 
 #' If you don't specify a value for `KmsKeyId`, images copied into the
 #' service are encrypted using a key that AWS owns and manages.
+#' @param VersionDescription A description applied to the project version being created.
+#' @param FeatureConfig Feature-specific configuration of the training job. If the job
+#' configuration does not match the feature type associated with the
+#' project, an InvalidParameterException is returned.
 #'
 #' @return
 #' A list with the following syntax:
@@ -993,7 +1007,13 @@ rekognition_create_project <- function(ProjectName) {
 #'   Tags = list(
 #'     "string"
 #'   ),
-#'   KmsKeyId = "string"
+#'   KmsKeyId = "string",
+#'   VersionDescription = "string",
+#'   FeatureConfig = list(
+#'     ContentModeration = list(
+#'       ConfidenceThreshold = 123.0
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1015,14 +1035,14 @@ rekognition_create_project <- function(ProjectName) {
 #' @rdname rekognition_create_project_version
 #'
 #' @aliases rekognition_create_project_version
-rekognition_create_project_version <- function(ProjectArn, VersionName, OutputConfig, TrainingData = NULL, TestingData = NULL, Tags = NULL, KmsKeyId = NULL) {
+rekognition_create_project_version <- function(ProjectArn, VersionName, OutputConfig, TrainingData = NULL, TestingData = NULL, Tags = NULL, KmsKeyId = NULL, VersionDescription = NULL, FeatureConfig = NULL) {
   op <- new_operation(
     name = "CreateProjectVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$create_project_version_input(ProjectArn = ProjectArn, VersionName = VersionName, OutputConfig = OutputConfig, TrainingData = TrainingData, TestingData = TestingData, Tags = Tags, KmsKeyId = KmsKeyId)
+  input <- .rekognition$create_project_version_input(ProjectArn = ProjectArn, VersionName = VersionName, OutputConfig = OutputConfig, TrainingData = TrainingData, TestingData = TestingData, Tags = Tags, KmsKeyId = KmsKeyId, VersionDescription = VersionDescription, FeatureConfig = FeatureConfig)
   output <- .rekognition$create_project_version_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -1347,9 +1367,11 @@ rekognition_delete_collection <- function(CollectionId) {
 }
 .rekognition$operations$delete_collection <- rekognition_delete_collection
 
-#' Deletes an existing Amazon Rekognition Custom Labels dataset
+#' This operation applies only to Amazon Rekognition Custom Labels
 #'
 #' @description
+#' This operation applies only to Amazon Rekognition Custom Labels.
+#' 
 #' Deletes an existing Amazon Rekognition Custom Labels dataset. Deleting a
 #' dataset might take while. Use
 #' [`describe_dataset`][rekognition_describe_dataset] to check the current
@@ -1487,12 +1509,12 @@ rekognition_delete_faces <- function(CollectionId, FaceIds) {
 }
 .rekognition$operations$delete_faces <- rekognition_delete_faces
 
-#' Deletes an Amazon Rekognition Custom Labels project
+#' Deletes a Amazon Rekognition project
 #'
 #' @description
-#' Deletes an Amazon Rekognition Custom Labels project. To delete a project
-#' you must first delete all models associated with the project. To delete
-#' a model, see
+#' Deletes a Amazon Rekognition project. To delete a project you must first
+#' delete all models or adapters associated with the project. To delete a
+#' model or adapter, see
 #' [`delete_project_version`][rekognition_delete_project_version].
 #' 
 #' [`delete_project`][rekognition_delete_project] is an asynchronous
@@ -1555,9 +1577,11 @@ rekognition_delete_project <- function(ProjectArn) {
 }
 .rekognition$operations$delete_project <- rekognition_delete_project
 
-#' Deletes an existing project policy
+#' This operation applies only to Amazon Rekognition Custom Labels
 #'
 #' @description
+#' This operation applies only to Amazon Rekognition Custom Labels.
+#' 
 #' Deletes an existing project policy.
 #' 
 #' To get a list of project policies attached to a project, call
@@ -1622,17 +1646,20 @@ rekognition_delete_project_policy <- function(ProjectArn, PolicyName, PolicyRevi
 }
 .rekognition$operations$delete_project_policy <- rekognition_delete_project_policy
 
-#' Deletes an Amazon Rekognition Custom Labels model
+#' Deletes a Rekognition project model or project version, like a Amazon
+#' Rekognition Custom Labels model or a custom adapter
 #'
 #' @description
-#' Deletes an Amazon Rekognition Custom Labels model.
+#' Deletes a Rekognition project model or project version, like a Amazon
+#' Rekognition Custom Labels model or a custom adapter.
 #' 
-#' You can't delete a model if it is running or if it is training. To check
-#' the status of a model, use the `Status` field returned from
+#' You can't delete a project version if it is running or if it is
+#' training. To check the status of a project version, use the Status field
+#' returned from
 #' [`describe_project_versions`][rekognition_describe_project_versions]. To
-#' stop a running model call
-#' [`stop_project_version`][rekognition_stop_project_version]. If the model
-#' is training, wait until it finishes.
+#' stop a project version call
+#' [`stop_project_version`][rekognition_stop_project_version]. If the
+#' project version is training, wait until it finishes.
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:DeleteProjectVersion` action.
@@ -1640,14 +1667,14 @@ rekognition_delete_project_policy <- function(ProjectArn, PolicyName, PolicyRevi
 #' @usage
 #' rekognition_delete_project_version(ProjectVersionArn)
 #'
-#' @param ProjectVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the model version that you want to
+#' @param ProjectVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the project version that you want to
 #' delete.
 #'
 #' @return
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"|"COPYING_IN_PROGRESS"|"COPYING_COMPLETED"|"COPYING_FAILED"
+#'   Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"|"COPYING_IN_PROGRESS"|"COPYING_COMPLETED"|"COPYING_FAILED"|"DEPRECATED"|"EXPIRED"
 #' )
 #' ```
 #'
@@ -1860,9 +1887,11 @@ rekognition_describe_collection <- function(CollectionId) {
 }
 .rekognition$operations$describe_collection <- rekognition_describe_collection
 
-#' Describes an Amazon Rekognition Custom Labels dataset
+#' This operation applies only to Amazon Rekognition Custom Labels
 #'
 #' @description
+#' This operation applies only to Amazon Rekognition Custom Labels.
+#' 
 #' Describes an Amazon Rekognition Custom Labels dataset. You can get
 #' information such as the current status of a dataset and statistics about
 #' the images and labels in a dataset.
@@ -1936,14 +1965,13 @@ rekognition_describe_dataset <- function(DatasetArn) {
 }
 .rekognition$operations$describe_dataset <- rekognition_describe_dataset
 
-#' Lists and describes the versions of a model in an Amazon Rekognition
-#' Custom Labels project
+#' Lists and describes the versions of an Amazon Rekognition project
 #'
 #' @description
-#' Lists and describes the versions of a model in an Amazon Rekognition
-#' Custom Labels project. You can specify up to 10 model versions in
-#' `ProjectVersionArns`. If you don't specify a value, descriptions for all
-#' model versions in the project are returned.
+#' Lists and describes the versions of an Amazon Rekognition project. You
+#' can specify up to 10 model or adapter versions in `ProjectVersionArns`.
+#' If you don't specify a value, descriptions for all model/adapter
+#' versions in the project are returned.
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:DescribeProjectVersions` action.
@@ -1952,18 +1980,18 @@ rekognition_describe_dataset <- function(DatasetArn) {
 #' rekognition_describe_project_versions(ProjectArn, VersionNames,
 #'   NextToken, MaxResults)
 #'
-#' @param ProjectArn &#91;required&#93; The Amazon Resource Name (ARN) of the project that contains the models
-#' you want to describe.
-#' @param VersionNames A list of model version names that you want to describe. You can add up
-#' to 10 model version names to the list. If you don't specify a value, all
-#' model descriptions are returned. A version name is part of a model
-#' (ProjectVersion) ARN. For example, `my-model.2020-01-21T09.10.15` is the
-#' version name in the following ARN.
+#' @param ProjectArn &#91;required&#93; The Amazon Resource Name (ARN) of the project that contains the
+#' model/adapter you want to describe.
+#' @param VersionNames A list of model or project version names that you want to describe. You
+#' can add up to 10 model or project version names to the list. If you
+#' don't specify a value, all project version descriptions are returned. A
+#' version name is part of a project version ARN. For example,
+#' `my-model.2020-01-21T09.10.15` is the version name in the following ARN.
 #' `arn:aws:rekognition:us-east-1:123456789012:project/getting-started/version/my-model.2020-01-21T09.10.15/1234567890123`.
 #' @param NextToken If the previous response was incomplete (because there is more results
-#' to retrieve), Amazon Rekognition Custom Labels returns a pagination
-#' token in the response. You can use this pagination token to retrieve the
-#' next set of results.
+#' to retrieve), Amazon Rekognition returns a pagination token in the
+#' response. You can use this pagination token to retrieve the next set of
+#' results.
 #' @param MaxResults The maximum number of results to return per paginated call. The largest
 #' value you can specify is 100. If you specify a value greater than 100, a
 #' ValidationException error occurs. The default value is 100.
@@ -1979,7 +2007,7 @@ rekognition_describe_dataset <- function(DatasetArn) {
 #'         "2015-01-01"
 #'       ),
 #'       MinInferenceUnits = 123,
-#'       Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"|"COPYING_IN_PROGRESS"|"COPYING_COMPLETED"|"COPYING_FAILED",
+#'       Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"|"COPYING_IN_PROGRESS"|"COPYING_COMPLETED"|"COPYING_FAILED"|"DEPRECATED"|"EXPIRED",
 #'       StatusMessage = "string",
 #'       BillableTrainingTimeInSeconds = 123,
 #'       TrainingEndTimestamp = as.POSIXct(
@@ -2092,7 +2120,15 @@ rekognition_describe_dataset <- function(DatasetArn) {
 #'       ),
 #'       KmsKeyId = "string",
 #'       MaxInferenceUnits = 123,
-#'       SourceProjectVersionArn = "string"
+#'       SourceProjectVersionArn = "string",
+#'       VersionDescription = "string",
+#'       Feature = "CONTENT_MODERATION"|"CUSTOM_LABELS",
+#'       BaseModelVersion = "string",
+#'       FeatureConfig = list(
+#'         ContentModeration = list(
+#'           ConfidenceThreshold = 123.0
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2144,27 +2180,29 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
 }
 .rekognition$operations$describe_project_versions <- rekognition_describe_project_versions
 
-#' Gets information about your Amazon Rekognition Custom Labels projects
+#' Gets information about your Rekognition projects
 #'
 #' @description
-#' Gets information about your Amazon Rekognition Custom Labels projects.
+#' Gets information about your Rekognition projects.
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:DescribeProjects` action.
 #'
 #' @usage
-#' rekognition_describe_projects(NextToken, MaxResults, ProjectNames)
+#' rekognition_describe_projects(NextToken, MaxResults, ProjectNames,
+#'   Features)
 #'
 #' @param NextToken If the previous response was incomplete (because there is more results
-#' to retrieve), Amazon Rekognition Custom Labels returns a pagination
-#' token in the response. You can use this pagination token to retrieve the
-#' next set of results.
+#' to retrieve), Rekognition returns a pagination token in the response.
+#' You can use this pagination token to retrieve the next set of results.
 #' @param MaxResults The maximum number of results to return per paginated call. The largest
 #' value you can specify is 100. If you specify a value greater than 100, a
 #' ValidationException error occurs. The default value is 100.
-#' @param ProjectNames A list of the projects that you want Amazon Rekognition Custom Labels to
-#' describe. If you don't specify a value, the response includes
-#' descriptions for all the projects in your AWS account.
+#' @param ProjectNames A list of the projects that you want Rekognition to describe. If you
+#' don't specify a value, the response includes descriptions for all the
+#' projects in your AWS account.
+#' @param Features Specifies the type of customization to filter projects by. If no value
+#' is specified, CUSTOM_LABELS is used as a default.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2188,7 +2226,9 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
 #'           StatusMessage = "string",
 #'           StatusMessageCode = "SUCCESS"|"SERVICE_ERROR"|"CLIENT_ERROR"
 #'         )
-#'       )
+#'       ),
+#'       Feature = "CONTENT_MODERATION"|"CUSTOM_LABELS",
+#'       AutoUpdate = "ENABLED"|"DISABLED"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2202,6 +2242,9 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
 #'   MaxResults = 123,
 #'   ProjectNames = list(
 #'     "string"
+#'   ),
+#'   Features = list(
+#'     "CONTENT_MODERATION"|"CUSTOM_LABELS"
 #'   )
 #' )
 #' ```
@@ -2221,14 +2264,14 @@ rekognition_describe_project_versions <- function(ProjectArn, VersionNames = NUL
 #' @rdname rekognition_describe_projects
 #'
 #' @aliases rekognition_describe_projects
-rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL, ProjectNames = NULL) {
+rekognition_describe_projects <- function(NextToken = NULL, MaxResults = NULL, ProjectNames = NULL, Features = NULL) {
   op <- new_operation(
     name = "DescribeProjects",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "ProjectDescriptions")
   )
-  input <- .rekognition$describe_projects_input(NextToken = NextToken, MaxResults = MaxResults, ProjectNames = ProjectNames)
+  input <- .rekognition$describe_projects_input(NextToken = NextToken, MaxResults = MaxResults, ProjectNames = ProjectNames, Features = Features)
   output <- .rekognition$describe_projects_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -2349,10 +2392,11 @@ rekognition_describe_stream_processor <- function(Name) {
 }
 .rekognition$operations$describe_stream_processor <- rekognition_describe_stream_processor
 
-#' Detects custom labels in a supplied image by using an Amazon Rekognition
-#' Custom Labels model
+#' This operation applies only to Amazon Rekognition Custom Labels
 #'
 #' @description
+#' This operation applies only to Amazon Rekognition Custom Labels.
+#' 
 #' Detects custom labels in a supplied image by using an Amazon Rekognition
 #' Custom Labels model.
 #' 
@@ -2402,7 +2446,10 @@ rekognition_describe_stream_processor <- function(Name) {
 #' rekognition_detect_custom_labels(ProjectVersionArn, Image, MaxResults,
 #'   MinConfidence)
 #'
-#' @param ProjectVersionArn &#91;required&#93; The ARN of the model version that you want to use.
+#' @param ProjectVersionArn &#91;required&#93; The ARN of the model version that you want to use. Only models
+#' associated with Custom Labels projects accepted by the operation. If a
+#' provided ARN refers to a model version associated with a project for a
+#' different feature type, then an InvalidParameterException is returned.
 #' @param Image &#91;required&#93; 
 #' @param MaxResults Maximum number of results you want the service to return in the
 #' response. The service returns the specified number of highest confidence
@@ -3049,10 +3096,13 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #' reference to an image in an Amazon S3 bucket. If you use the AWS CLI to
 #' call Amazon Rekognition operations, passing image bytes is not
 #' supported. The image must be either a PNG or JPEG formatted file.
+#' 
+#' You can specify an adapter to use when retrieving label predictions by
+#' providing a `ProjectVersionArn` to the `ProjectVersion` argument.
 #'
 #' @usage
 #' rekognition_detect_moderation_labels(Image, MinConfidence,
-#'   HumanLoopConfig)
+#'   HumanLoopConfig, ProjectVersion)
 #'
 #' @param Image &#91;required&#93; The input image as base64-encoded bytes or an S3 object. If you use the
 #' AWS CLI to call Amazon Rekognition operations, passing base64-encoded
@@ -3069,6 +3119,9 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #' confidence values greater than or equal to 50 percent.
 #' @param HumanLoopConfig Sets up the configuration for human evaluation, including the
 #' FlowDefinition the image will be sent to.
+#' @param ProjectVersion Identifier for the custom adapter. Expects the ProjectVersionArn as a
+#' value. Use the CreateProject or CreateProjectVersion APIs to create a
+#' custom adapter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3088,7 +3141,8 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #'       "string"
 #'     ),
 #'     HumanLoopActivationConditionsEvaluationResults = "string"
-#'   )
+#'   ),
+#'   ProjectVersion = "string"
 #' )
 #' ```
 #'
@@ -3112,7 +3166,8 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #'         "FreeOfPersonallyIdentifiableInformation"|"FreeOfAdultContent"
 #'       )
 #'     )
-#'   )
+#'   ),
+#'   ProjectVersion = "string"
 #' )
 #' ```
 #'
@@ -3121,14 +3176,14 @@ rekognition_detect_labels <- function(Image, MaxLabels = NULL, MinConfidence = N
 #' @rdname rekognition_detect_moderation_labels
 #'
 #' @aliases rekognition_detect_moderation_labels
-rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, HumanLoopConfig = NULL) {
+rekognition_detect_moderation_labels <- function(Image, MinConfidence = NULL, HumanLoopConfig = NULL, ProjectVersion = NULL) {
   op <- new_operation(
     name = "DetectModerationLabels",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .rekognition$detect_moderation_labels_input(Image = Image, MinConfidence = MinConfidence, HumanLoopConfig = HumanLoopConfig)
+  input <- .rekognition$detect_moderation_labels_input(Image = Image, MinConfidence = MinConfidence, HumanLoopConfig = HumanLoopConfig, ProjectVersion = ProjectVersion)
   output <- .rekognition$detect_moderation_labels_output()
   config <- get_config()
   svc <- .rekognition$service(config)
@@ -3530,10 +3585,11 @@ rekognition_disassociate_faces <- function(CollectionId, UserId, ClientRequestTo
 }
 .rekognition$operations$disassociate_faces <- rekognition_disassociate_faces
 
-#' Distributes the entries (images) in a training dataset across the
-#' training dataset and the test dataset for a project
+#' This operation applies only to Amazon Rekognition Custom Labels
 #'
 #' @description
+#' This operation applies only to Amazon Rekognition Custom Labels.
+#' 
 #' Distributes the entries (images) in a training dataset across the
 #' training dataset and the test dataset for a project.
 #' [`distribute_dataset_entries`][rekognition_distribute_dataset_entries]
@@ -4801,6 +4857,107 @@ rekognition_get_label_detection <- function(JobId, MaxResults = NULL, NextToken 
 }
 .rekognition$operations$get_label_detection <- rekognition_get_label_detection
 
+#' Retrieves the results for a given media analysis job
+#'
+#' @description
+#' Retrieves the results for a given media analysis job. Takes a `JobId`
+#' returned by StartMediaAnalysisJob.
+#'
+#' @usage
+#' rekognition_get_media_analysis_job(JobId)
+#'
+#' @param JobId &#91;required&#93; Unique identifier for the media analysis job for which you want to
+#' retrieve results.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string",
+#'   JobName = "string",
+#'   OperationsConfig = list(
+#'     DetectModerationLabels = list(
+#'       MinConfidence = 123.0,
+#'       ProjectVersion = "string"
+#'     )
+#'   ),
+#'   Status = "CREATED"|"QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'   FailureDetails = list(
+#'     Code = "INTERNAL_ERROR"|"INVALID_S3_OBJECT"|"INVALID_MANIFEST"|"INVALID_OUTPUT_CONFIG"|"INVALID_KMS_KEY"|"ACCESS_DENIED"|"RESOURCE_NOT_FOUND"|"RESOURCE_NOT_READY"|"THROTTLED",
+#'     Message = "string"
+#'   ),
+#'   CreationTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   CompletionTimestamp = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   Input = list(
+#'     S3Object = list(
+#'       Bucket = "string",
+#'       Name = "string",
+#'       Version = "string"
+#'     )
+#'   ),
+#'   OutputConfig = list(
+#'     S3Bucket = "string",
+#'     S3KeyPrefix = "string"
+#'   ),
+#'   KmsKeyId = "string",
+#'   Results = list(
+#'     S3Object = list(
+#'       Bucket = "string",
+#'       Name = "string",
+#'       Version = "string"
+#'     )
+#'   ),
+#'   ManifestSummary = list(
+#'     S3Object = list(
+#'       Bucket = "string",
+#'       Name = "string",
+#'       Version = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_media_analysis_job(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Retrieves the results for a given media analysis job.
+#' svc$get_media_analysis_job(
+#'   JobId = "861a0645d98ef88efb75477628c011c04942d9d5f58faf2703c393c8cf8c1537"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_get_media_analysis_job
+#'
+#' @aliases rekognition_get_media_analysis_job
+rekognition_get_media_analysis_job <- function(JobId) {
+  op <- new_operation(
+    name = "GetMediaAnalysisJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$get_media_analysis_job_input(JobId = JobId)
+  output <- .rekognition$get_media_analysis_job_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$get_media_analysis_job <- rekognition_get_media_analysis_job
+
 #' Gets the path tracking results of a Amazon Rekognition Video analysis
 #' started by StartPersonTracking
 #'
@@ -5794,9 +5951,11 @@ rekognition_list_collections <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .rekognition$operations$list_collections <- rekognition_list_collections
 
-#' Lists the entries (images) within a dataset
+#' This operation applies only to Amazon Rekognition Custom Labels
 #'
 #' @description
+#' This operation applies only to Amazon Rekognition Custom Labels.
+#' 
 #' Lists the entries (images) within a dataset. An entry is a JSON Line
 #' that contains the information for a single image, including the image
 #' location, assigned labels, and object location bounding boxes. For more
@@ -5909,9 +6068,11 @@ rekognition_list_dataset_entries <- function(DatasetArn, ContainsLabels = NULL, 
 }
 .rekognition$operations$list_dataset_entries <- rekognition_list_dataset_entries
 
-#' Lists the labels in a dataset
+#' This operation applies only to Amazon Rekognition Custom Labels
 #'
 #' @description
+#' This operation applies only to Amazon Rekognition Custom Labels.
+#' 
 #' Lists the labels in a dataset. Amazon Rekognition Custom Labels uses
 #' labels to describe images. For more information, see [Labeling
 #' images](https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/md-labeling-images.html).
@@ -6087,9 +6248,121 @@ rekognition_list_faces <- function(CollectionId, NextToken = NULL, MaxResults = 
 }
 .rekognition$operations$list_faces <- rekognition_list_faces
 
-#' Gets a list of the project policies attached to a project
+#' Returns a list of media analysis jobs
 #'
 #' @description
+#' Returns a list of media analysis jobs. Results are sorted by
+#' `CreationTimestamp` in descending order.
+#'
+#' @usage
+#' rekognition_list_media_analysis_jobs(NextToken, MaxResults)
+#'
+#' @param NextToken Pagination token, if the previous response was incomplete.
+#' @param MaxResults The maximum number of results to return per paginated call. The largest
+#' value user can specify is 100. If user specifies a value greater than
+#' 100, an `InvalidParameterException` error occurs. The default value is
+#' 100.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   NextToken = "string",
+#'   MediaAnalysisJobs = list(
+#'     list(
+#'       JobId = "string",
+#'       JobName = "string",
+#'       OperationsConfig = list(
+#'         DetectModerationLabels = list(
+#'           MinConfidence = 123.0,
+#'           ProjectVersion = "string"
+#'         )
+#'       ),
+#'       Status = "CREATED"|"QUEUED"|"IN_PROGRESS"|"SUCCEEDED"|"FAILED",
+#'       FailureDetails = list(
+#'         Code = "INTERNAL_ERROR"|"INVALID_S3_OBJECT"|"INVALID_MANIFEST"|"INVALID_OUTPUT_CONFIG"|"INVALID_KMS_KEY"|"ACCESS_DENIED"|"RESOURCE_NOT_FOUND"|"RESOURCE_NOT_READY"|"THROTTLED",
+#'         Message = "string"
+#'       ),
+#'       CreationTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CompletionTimestamp = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       Input = list(
+#'         S3Object = list(
+#'           Bucket = "string",
+#'           Name = "string",
+#'           Version = "string"
+#'         )
+#'       ),
+#'       OutputConfig = list(
+#'         S3Bucket = "string",
+#'         S3KeyPrefix = "string"
+#'       ),
+#'       KmsKeyId = "string",
+#'       Results = list(
+#'         S3Object = list(
+#'           Bucket = "string",
+#'           Name = "string",
+#'           Version = "string"
+#'         )
+#'       ),
+#'       ManifestSummary = list(
+#'         S3Object = list(
+#'           Bucket = "string",
+#'           Name = "string",
+#'           Version = "string"
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_media_analysis_jobs(
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Returns a list of media analysis jobs.
+#' svc$list_media_analysis_jobs(
+#'   MaxResults = 10L
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_list_media_analysis_jobs
+#'
+#' @aliases rekognition_list_media_analysis_jobs
+rekognition_list_media_analysis_jobs <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListMediaAnalysisJobs",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+  )
+  input <- .rekognition$list_media_analysis_jobs_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .rekognition$list_media_analysis_jobs_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$list_media_analysis_jobs <- rekognition_list_media_analysis_jobs
+
+#' This operation applies only to Amazon Rekognition Custom Labels
+#'
+#' @description
+#' This operation applies only to Amazon Rekognition Custom Labels.
+#' 
 #' Gets a list of the project policies attached to a project.
 #' 
 #' To attach a project policy to a project, call
@@ -6362,15 +6635,17 @@ rekognition_list_users <- function(CollectionId, MaxResults = NULL, NextToken = 
 }
 .rekognition$operations$list_users <- rekognition_list_users
 
-#' Attaches a project policy to a Amazon Rekognition Custom Labels project
-#' in a trusting AWS account
+#' This operation applies only to Amazon Rekognition Custom Labels
 #'
 #' @description
+#' This operation applies only to Amazon Rekognition Custom Labels.
+#' 
 #' Attaches a project policy to a Amazon Rekognition Custom Labels project
 #' in a trusting AWS account. A project policy specifies that a trusted AWS
 #' account can copy a model version from a trusting AWS account to a
 #' project in the trusted AWS account. To copy a model version you use the
 #' [`copy_project_version`][rekognition_copy_project_version] operation.
+#' Only applies to Custom Labels projects.
 #' 
 #' For more information about the format of a project policy document, see
 #' Attaching a project policy (SDK) in the *Amazon Rekognition Custom
@@ -7821,6 +8096,111 @@ rekognition_start_label_detection <- function(Video, ClientRequestToken = NULL, 
 }
 .rekognition$operations$start_label_detection <- rekognition_start_label_detection
 
+#' Initiates a new media analysis job
+#'
+#' @description
+#' Initiates a new media analysis job. Accepts a manifest file in an Amazon
+#' S3 bucket. The output is a manifest file and a summary of the manifest
+#' stored in the Amazon S3 bucket.
+#'
+#' @usage
+#' rekognition_start_media_analysis_job(ClientRequestToken, JobName,
+#'   OperationsConfig, Input, OutputConfig, KmsKeyId)
+#'
+#' @param ClientRequestToken Idempotency token used to prevent the accidental creation of duplicate
+#' versions. If you use the same token with multiple
+#' `StartMediaAnalysisJobRequest` requests, the same response is returned.
+#' Use `ClientRequestToken` to prevent the same request from being
+#' processed more than once.
+#' @param JobName The name of the job. Does not have to be unique.
+#' @param OperationsConfig &#91;required&#93; Configuration options for the media analysis job to be created.
+#' @param Input &#91;required&#93; Input data to be analyzed by the job.
+#' @param OutputConfig &#91;required&#93; The Amazon S3 bucket location to store the results.
+#' @param KmsKeyId The identifier of customer managed AWS KMS key (name or ARN). The key is
+#' used to encrypt images copied into the service. The key is also used to
+#' encrypt results and manifest files written to the output Amazon S3
+#' bucket.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   JobId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_media_analysis_job(
+#'   ClientRequestToken = "string",
+#'   JobName = "string",
+#'   OperationsConfig = list(
+#'     DetectModerationLabels = list(
+#'       MinConfidence = 123.0,
+#'       ProjectVersion = "string"
+#'     )
+#'   ),
+#'   Input = list(
+#'     S3Object = list(
+#'       Bucket = "string",
+#'       Name = "string",
+#'       Version = "string"
+#'     )
+#'   ),
+#'   OutputConfig = list(
+#'     S3Bucket = "string",
+#'     S3KeyPrefix = "string"
+#'   ),
+#'   KmsKeyId = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # Initiates a new media analysis job.
+#' svc$start_media_analysis_job(
+#'   Input = list(
+#'     S3Object = list(
+#'       Bucket = "input-bucket",
+#'       Name = "input-manifest.json"
+#'     )
+#'   ),
+#'   JobName = "job-name",
+#'   OperationsConfig = list(
+#'     DetectModerationLabels = list(
+#'       MinConfidence = 50L,
+#'       ProjectVersion = "arn:aws:rekognition:us-east-1:111122223333:project/..."
+#'     )
+#'   ),
+#'   OutputConfig = list(
+#'     S3Bucket = "output-bucket",
+#'     S3KeyPrefix = "output-location"
+#'   )
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname rekognition_start_media_analysis_job
+#'
+#' @aliases rekognition_start_media_analysis_job
+rekognition_start_media_analysis_job <- function(ClientRequestToken = NULL, JobName = NULL, OperationsConfig, Input, OutputConfig, KmsKeyId = NULL) {
+  op <- new_operation(
+    name = "StartMediaAnalysisJob",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .rekognition$start_media_analysis_job_input(ClientRequestToken = ClientRequestToken, JobName = JobName, OperationsConfig = OperationsConfig, Input = Input, OutputConfig = OutputConfig, KmsKeyId = KmsKeyId)
+  output <- .rekognition$start_media_analysis_job_output()
+  config <- get_config()
+  svc <- .rekognition$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.rekognition$operations$start_media_analysis_job <- rekognition_start_media_analysis_job
+
 #' Starts the asynchronous tracking of a person's path in a stored video
 #'
 #' @description
@@ -7910,9 +8290,11 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
 }
 .rekognition$operations$start_person_tracking <- rekognition_start_person_tracking
 
-#' Starts the running of the version of a model
+#' This operation applies only to Amazon Rekognition Custom Labels
 #'
 #' @description
+#' This operation applies only to Amazon Rekognition Custom Labels.
+#' 
 #' Starts the running of the version of a model. Starting a model takes a
 #' while to complete. To check the current state of the model, use
 #' [`describe_project_versions`][rekognition_describe_project_versions].
@@ -7923,9 +8305,6 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
 #' You are charged for the amount of time that the model is running. To
 #' stop a running model, call
 #' [`stop_project_version`][rekognition_stop_project_version].
-#' 
-#' For more information, see *Running a trained Amazon Rekognition Custom
-#' Labels model* in the Amazon Rekognition Custom Labels Guide.
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:StartProjectVersion` action.
@@ -7939,10 +8318,6 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
 #' @param MinInferenceUnits &#91;required&#93; The minimum number of inference units to use. A single inference unit
 #' represents 1 hour of processing.
 #' 
-#' For information about the number of transactions per second (TPS) that
-#' an inference unit can support, see *Running a trained Amazon Rekognition
-#' Custom Labels model* in the Amazon Rekognition Custom Labels Guide.
-#' 
 #' Use a higher number to increase the TPS throughput of your model. You
 #' are charged for the number of inference units that you use.
 #' @param MaxInferenceUnits The maximum number of inference units to use for auto-scaling the model.
@@ -7953,7 +8328,7 @@ rekognition_start_person_tracking <- function(Video, ClientRequestToken = NULL, 
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"|"COPYING_IN_PROGRESS"|"COPYING_COMPLETED"|"COPYING_FAILED"
+#'   Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"|"COPYING_IN_PROGRESS"|"COPYING_COMPLETED"|"COPYING_FAILED"|"DEPRECATED"|"EXPIRED"
 #' )
 #' ```
 #'
@@ -8301,12 +8676,15 @@ rekognition_start_text_detection <- function(Video, ClientRequestToken = NULL, N
 }
 .rekognition$operations$start_text_detection <- rekognition_start_text_detection
 
-#' Stops a running model
+#' This operation applies only to Amazon Rekognition Custom Labels
 #'
 #' @description
+#' This operation applies only to Amazon Rekognition Custom Labels.
+#' 
 #' Stops a running model. The operation might take a while to complete. To
 #' check the current status, call
 #' [`describe_project_versions`][rekognition_describe_project_versions].
+#' Only applies to Custom Labels projects.
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:StopProjectVersion` action.
@@ -8315,7 +8693,7 @@ rekognition_start_text_detection <- function(Video, ClientRequestToken = NULL, N
 #' rekognition_stop_project_version(ProjectVersionArn)
 #'
 #' @param ProjectVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the model version that you want to
-#' delete.
+#' stop.
 #' 
 #' This operation requires permissions to perform the
 #' `rekognition:StopProjectVersion` action.
@@ -8324,7 +8702,7 @@ rekognition_start_text_detection <- function(Video, ClientRequestToken = NULL, N
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"|"COPYING_IN_PROGRESS"|"COPYING_COMPLETED"|"COPYING_FAILED"
+#'   Status = "TRAINING_IN_PROGRESS"|"TRAINING_COMPLETED"|"TRAINING_FAILED"|"STARTING"|"RUNNING"|"FAILED"|"STOPPING"|"STOPPED"|"DELETING"|"COPYING_IN_PROGRESS"|"COPYING_COMPLETED"|"COPYING_FAILED"|"DEPRECATED"|"EXPIRED"
 #' )
 #' ```
 #'
@@ -8516,9 +8894,11 @@ rekognition_untag_resource <- function(ResourceArn, TagKeys) {
 }
 .rekognition$operations$untag_resource <- rekognition_untag_resource
 
-#' Adds or updates one or more entries (images) in a dataset
+#' This operation applies only to Amazon Rekognition Custom Labels
 #'
 #' @description
+#' This operation applies only to Amazon Rekognition Custom Labels.
+#' 
 #' Adds or updates one or more entries (images) in a dataset. An entry is a
 #' JSON Line which contains the information for a single image, including
 #' the image location, assigned labels, and object location bounding boxes.

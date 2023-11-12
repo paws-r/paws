@@ -24,7 +24,10 @@ in the \emph{Amazon Connect Administrator Guide}.}
 
 \item{Description}{The description of the flow.}
 
-\item{Content}{[required] The content of the flow.}
+\item{Content}{[required] The JSON string that represents the content of the flow. For an example,
+see \href{https://docs.aws.amazon.com/connect/latest/APIReference/flow-language-example.html}{Example flow in Amazon Connect Flow language}.
+
+Length Constraints: Minimum length of 1. Maximum length of 256000.}
 
 \item{Tags}{The tags used to organize, track, or control access for this resource.
 For example, \{ "tags": \{"key1":"value1", "key2":"value2"\} \}.}

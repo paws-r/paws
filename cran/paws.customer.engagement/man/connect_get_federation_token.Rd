@@ -2,7 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_get_federation_token}
 \alias{connect_get_federation_token}
-\title{Retrieves a token for federation}
+\title{Supports SAML sign-in for Amazon Connect}
 \usage{
 connect_get_federation_token(InstanceId)
 }
@@ -11,7 +11,7 @@ connect_get_federation_token(InstanceId)
 in the Amazon Resource Name (ARN) of the instance.}
 }
 \description{
-Retrieves a token for federation.
+Supports SAML sign-in for Amazon Connect. Retrieves a token for federation. The token is for the Amazon Connect user which corresponds to the IAM credentials that were used to invoke this action.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_get_federation_token/} for full documentation.
 }

@@ -15,7 +15,9 @@ emrserverless_update_application(
   architecture = NULL,
   imageConfiguration = NULL,
   workerTypeSpecifications = NULL,
-  releaseLabel = NULL
+  releaseLabel = NULL,
+  runtimeConfiguration = NULL,
+  monitoringConfiguration = NULL
 )
 }
 \arguments{
@@ -55,6 +57,14 @@ worker types.}
 
 \item{releaseLabel}{The Amazon EMR release label for the application. You can change the
 release label to use a different release of Amazon EMR.}
+
+\item{runtimeConfiguration}{The
+\href{https://docs.aws.amazon.com/emr-serverless/latest/APIReference/API_Configuration.html}{Configuration}
+specifications to use when updating an application. Each configuration
+consists of a classification and properties. This configuration is
+applied across all the job runs submitted under the application.}
+
+\item{monitoringConfiguration}{The configuration setting for monitoring.}
 }
 \description{
 Updates a specified application. An application has to be in a stopped or created state in order to be updated.

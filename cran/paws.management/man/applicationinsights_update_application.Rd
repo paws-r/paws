@@ -10,7 +10,8 @@ applicationinsights_update_application(
   CWEMonitorEnabled = NULL,
   OpsItemSNSTopicArn = NULL,
   RemoveSNSTopic = NULL,
-  AutoConfigEnabled = NULL
+  AutoConfigEnabled = NULL,
+  AttachMissingPermission = NULL
 )
 }
 \arguments{
@@ -31,6 +32,9 @@ opsItem.}
 problems.}
 
 \item{AutoConfigEnabled}{Turns auto-configuration on or off.}
+
+\item{AttachMissingPermission}{If set to true, the managed policies for SSM and CW will be attached to
+the instance roles if they are missing.}
 }
 \description{
 Updates the application.

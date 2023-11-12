@@ -17,9 +17,9 @@ pricing(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -74,12 +74,8 @@ attribute name and value, you can use
 you're interested in, such as an \code{AmazonEC2} instance, with a
 \verb{Provisioned IOPS} \code{volumeType}.
 
-You can use the following endpoints for the Amazon Web Services Price
-List API:
-\itemize{
-\item https://api.pricing.us-east-1.amazonaws.com
-\item https://api.pricing.ap-south-1.amazonaws.com
-}
+For more information, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html}{Using the Amazon Web Services Price List API}
+in the \emph{Billing User Guide}.
 }
 \section{Service syntax}{
 

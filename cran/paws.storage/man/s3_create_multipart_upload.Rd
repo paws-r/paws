@@ -123,11 +123,12 @@ appropriate for use with the algorithm specified in the
 1321. Amazon S3 uses this header for a message integrity check to ensure
 that the encryption key was transmitted without error.}
 
-\item{SSEKMSKeyId}{Specifies the ID of the symmetric encryption customer managed key to use
-for object encryption. All GET and PUT requests for an object protected
-by KMS will fail if they're not made via SSL or using SigV4. For
-information about configuring any of the officially supported Amazon Web
-Services SDKs and Amazon Web Services CLI, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version}{Specifying the Signature Version in Request Authentication}
+\item{SSEKMSKeyId}{Specifies the ID (Key ID, Key ARN, or Key Alias) of the symmetric
+encryption customer managed key to use for object encryption. All GET
+and PUT requests for an object protected by KMS will fail if they're not
+made via SSL or using SigV4. For information about configuring any of
+the officially supported Amazon Web Services SDKs and Amazon Web
+Services CLI, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version}{Specifying the Signature Version in Request Authentication}
 in the \emph{Amazon S3 User Guide}.}
 
 \item{SSEKMSEncryptionContext}{Specifies the Amazon Web Services KMS Encryption Context to use for

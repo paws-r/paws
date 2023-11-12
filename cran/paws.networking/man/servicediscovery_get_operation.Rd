@@ -3,7 +3,7 @@
 \name{servicediscovery_get_operation}
 \alias{servicediscovery_get_operation}
 \title{Gets information about any operation that returns an operation ID in the
-response, such as a CreateService request}
+response, such as a CreateHttpNamespace request}
 \usage{
 servicediscovery_get_operation(OperationId)
 }
@@ -11,7 +11,7 @@ servicediscovery_get_operation(OperationId)
 \item{OperationId}{[required] The ID of the operation that you want to get more information about.}
 }
 \description{
-Gets information about any operation that returns an operation ID in the response, such as a \code{\link[=servicediscovery_create_service]{create_service}} request.
+Gets information about any operation that returns an operation ID in the response, such as a \code{\link[=servicediscovery_create_http_namespace]{create_http_namespace}} request.
 
 See \url{https://www.paws-r-sdk.com/docs/servicediscovery_get_operation/} for full documentation.
 }

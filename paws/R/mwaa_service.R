@@ -40,16 +40,11 @@ NULL
 #' 
 #'     -   [`create_web_login_token`][mwaa_create_web_login_token]
 #' 
-#' -   `ops.airflow.{region}.amazonaws.com` - This endpoint is used to push
-#'     environment metrics that track environment health.
-#' 
-#'     -   [`publish_metrics`][mwaa_publish_metrics]
-#' 
 #' **Regions**
 #' 
-#' For a list of regions that Amazon MWAA supports, see [Region
-#' availability](https://docs.aws.amazon.com/mwaa/latest/userguide/what-is-mwaa.html#regions-mwaa)
-#' in the *Amazon MWAA User Guide*.
+#' For a list of supported regions, see [Amazon MWAA endpoints and
+#' quotas](https://docs.aws.amazon.com/general/latest/gr/mwaa.html) in the
+#' *Amazon Web Services General Reference*.
 #'
 #' @param
 #' config
@@ -63,9 +58,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}

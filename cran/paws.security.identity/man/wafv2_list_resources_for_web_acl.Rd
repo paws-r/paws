@@ -22,7 +22,7 @@ If you don't provide a resource type, the call uses the resource type
 Default: \code{APPLICATION_LOAD_BALANCER}}
 }
 \description{
-Retrieves an array of the Amazon Resource Names (ARNs) for the regional resources that are associated with the specified web ACL. If you want the list of Amazon CloudFront resources, use the CloudFront call \code{ListDistributionsByWebACLId}.
+Retrieves an array of the Amazon Resource Names (ARNs) for the regional resources that are associated with the specified web ACL.
 
 See \url{https://www.paws-r-sdk.com/docs/wafv2_list_resources_for_web_acl/} for full documentation.
 }

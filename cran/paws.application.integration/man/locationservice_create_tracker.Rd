@@ -8,6 +8,7 @@ lets you retrieve current and historical location of devices}
 locationservice_create_tracker(
   Description = NULL,
   EventBridgeEnabled = NULL,
+  KmsKeyEnableGeospatialQueries = NULL,
   KmsKeyId = NULL,
   PositionFiltering = NULL,
   PricingPlan = NULL,
@@ -25,6 +26,21 @@ to EventBridge.
 You do not need enable this feature to get \code{ENTER} and \code{EXIT} events for
 geofences with this tracker. Those events are always sent to
 EventBridge.}
+
+\item{KmsKeyEnableGeospatialQueries}{Enables \code{GeospatialQueries} for a tracker that uses a \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html}{Amazon Web Services KMS customer managed key}.
+
+This parameter is only used if you are using a KMS customer managed key.
+
+If you wish to encrypt your data using your own KMS customer managed
+key, then the Bounding Polygon Queries feature will be disabled by
+default. This is because by using this feature, a representation of your
+device positions will not be encrypted using the your KMS managed key.
+The exact device position, however; is still encrypted using your
+managed key.
+
+You can choose to opt-in to the Bounding Polygon Quseries feature. This
+is done by setting the \code{KmsKeyEnableGeospatialQueries} parameter to true
+when creating or updating a Tracker.}
 
 \item{KmsKeyId}{A key identifier for an \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html}{Amazon Web Services KMS customer managed key}.
 Enter a key ID, key ARN, alias name, or alias ARN.}

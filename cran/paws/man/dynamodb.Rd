@@ -17,9 +17,9 @@ dynamodb(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -137,7 +137,7 @@ Region, providing built-in high availability and data durability.
 \link[paws.database:dynamodb_export_table_to_point_in_time]{export_table_to_point_in_time} \tab Exports table data to an S3 bucket\cr
 \link[paws.database:dynamodb_get_item]{get_item} \tab The GetItem operation returns a set of attributes for the item with the given primary key\cr
 \link[paws.database:dynamodb_import_table]{import_table} \tab Imports table data from an S3 bucket\cr
-\link[paws.database:dynamodb_list_backups]{list_backups} \tab List backups associated with an Amazon Web Services account\cr
+\link[paws.database:dynamodb_list_backups]{list_backups} \tab List DynamoDB backups that are associated with an Amazon Web Services account and weren't made with Amazon Web Services Backup\cr
 \link[paws.database:dynamodb_list_contributor_insights]{list_contributor_insights} \tab Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes\cr
 \link[paws.database:dynamodb_list_exports]{list_exports} \tab Lists completed exports within the past 90 days\cr
 \link[paws.database:dynamodb_list_global_tables]{list_global_tables} \tab Lists all global tables that have a replica in the specified Region\cr

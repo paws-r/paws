@@ -7,6 +7,7 @@ distribution group}
 \usage{
 connect_list_phone_numbers_v2(
   TargetArn = NULL,
+  InstanceId = NULL,
   MaxResults = NULL,
   NextToken = NULL,
   PhoneNumberCountryCodes = NULL,
@@ -16,10 +17,17 @@ connect_list_phone_numbers_v2(
 }
 \arguments{
 \item{TargetArn}{The Amazon Resource Name (ARN) for Amazon Connect instances or traffic
-distribution groups that phone numbers are claimed to. If \code{TargetArn}
-input is not provided, this API lists numbers claimed to all the Amazon
-Connect instances belonging to your account in the same Amazon Web
-Services Region as the request.}
+distribution groups that phone number inbound traffic is routed through.
+If both \code{TargetArn} and \code{InstanceId} input are not provided, this API
+lists numbers claimed to all the Amazon Connect instances belonging to
+your account in the same Amazon Web Services Region as the request.}
+
+\item{InstanceId}{The identifier of the Amazon Connect instance that phone numbers are
+claimed to. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance. If both \code{TargetArn}
+and \code{InstanceId} are not provided, this API lists numbers claimed to all
+the Amazon Connect instances belonging to your account in the same AWS
+Region as the request.}
 
 \item{MaxResults}{The maximum number of results to return per page.}
 

@@ -1186,8 +1186,8 @@ budgets_describe_budget_actions_for_budget <- function(AccountId, BudgetName, Ma
 #'   NextToken)
 #'
 #' @param AccountId &#91;required&#93; 
-#' @param MaxResults An integer that shows how many budget name entries a paginated response
-#' contains.
+#' @param MaxResults An integer that represents how many budgets a paginated response
+#' contains. The default is 50.
 #' @param NextToken 
 #'
 #' @return
@@ -1364,10 +1364,10 @@ budgets_describe_budget_performance_history <- function(AccountId, BudgetName, T
 #' @usage
 #' budgets_describe_budgets(AccountId, MaxResults, NextToken)
 #'
-#' @param AccountId &#91;required&#93; The `accountId` that is associated with the budgets that you want
-#' descriptions of.
-#' @param MaxResults An optional integer that represents how many entries a paginated
-#' response contains. The maximum is 100.
+#' @param AccountId &#91;required&#93; The `accountId` that is associated with the budgets that you want to
+#' describe.
+#' @param MaxResults An integer that represents how many budgets a paginated response
+#' contains. The default is 100.
 #' @param NextToken The pagination token that you include in your request to indicate the
 #' next set of results that you want to retrieve.
 #'
@@ -1489,7 +1489,7 @@ budgets_describe_budgets <- function(AccountId, MaxResults = NULL, NextToken = N
 #' you want descriptions of.
 #' @param BudgetName &#91;required&#93; The name of the budget whose notifications you want descriptions of.
 #' @param MaxResults An optional integer that represents how many entries a paginated
-#' response contains. The maximum is 100.
+#' response contains.
 #' @param NextToken The pagination token that you include in your request to indicate the
 #' next set of results that you want to retrieve.
 #'
@@ -1556,7 +1556,7 @@ budgets_describe_notifications_for_budget <- function(AccountId, BudgetName, Max
 #' @param BudgetName &#91;required&#93; The name of the budget whose subscribers you want descriptions of.
 #' @param Notification &#91;required&#93; The notification whose subscribers you want to list.
 #' @param MaxResults An optional integer that represents how many entries a paginated
-#' response contains. The maximum is 100.
+#' response contains.
 #' @param NextToken The pagination token that you include in your request to indicate the
 #' next set of results that you want to retrieve.
 #'

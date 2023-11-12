@@ -468,9 +468,15 @@ translate_list_text_translation_jobs <- function(Filter = NULL, NextToken = NULL
 #' data](https://docs.aws.amazon.com/translate/latest/dg/customizing-translations-parallel-data.html).
 #' @param ClientToken &#91;required&#93; A unique identifier for the request. This token is generated for you
 #' when using the Amazon Translate SDK.
-#' @param Settings Settings to configure your translation output, including the option to
-#' set the formality level of the output text and the option to mask
-#' profane words and phrases.
+#' @param Settings Settings to configure your translation output. You can configure the
+#' following options:
+#' 
+#' -   Brevity: not supported.
+#' 
+#' -   Formality: sets the formality level of the output text.
+#' 
+#' -   Profanity: masks profane words and phrases in your translation
+#'     output.
 #'
 #' @keywords internal
 #'
@@ -558,7 +564,7 @@ translate_tag_resource <- function(ResourceArn, Tags) {
 #' language
 #'
 #' @description
-#' Translates the input document from the source language to the target language. This synchronous operation supports plain text or HTML for the input document. [`translate_document`][translate_translate_document] supports translations from English to any supported language, and from any supported language to English. Therefore, specify either the source language code or the target language code as “en” (English).
+#' Translates the input document from the source language to the target language. This synchronous operation supports text, HTML, or Word documents as the input document. [`translate_document`][translate_translate_document] supports translations from English to any supported language, and from any supported language to English. Therefore, specify either the source language code or the target language code as “en” (English).
 #'
 #' See [https://www.paws-r-sdk.com/docs/translate_translate_document/](https://www.paws-r-sdk.com/docs/translate_translate_document/) for full documentation.
 #'
@@ -574,15 +580,32 @@ translate_tag_resource <- function(ResourceArn, Tags) {
 #' 
 #' For more information about custom terminology lists, see [Custom
 #' terminology](https://docs.aws.amazon.com/translate/latest/dg/how-custom-terminology.html).
-#' @param SourceLanguageCode &#91;required&#93; The language code for the language of the source text. Do not use
-#' `auto`, because [`translate_document`][translate_translate_document]
-#' does not support language auto-detection. For a list of supported
-#' language codes, see [Supported
+#' @param SourceLanguageCode &#91;required&#93; The language code for the language of the source text. For a list of
+#' supported language codes, see [Supported
 #' languages](https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html).
+#' 
+#' To have Amazon Translate determine the source language of your text, you
+#' can specify `auto` in the `SourceLanguageCode` field. If you specify
+#' `auto`, Amazon Translate will call [Amazon
+#' Comprehend](https://docs.aws.amazon.com/comprehend/latest/dg/what-is.html)
+#' to determine the source language.
+#' 
+#' If you specify `auto`, you must send the
+#' [`translate_document`][translate_translate_document] request in a region
+#' that supports Amazon Comprehend. Otherwise, the request returns an error
+#' indicating that autodetect is not supported.
 #' @param TargetLanguageCode &#91;required&#93; The language code requested for the translated document. For a list of
 #' supported language codes, see [Supported
 #' languages](https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html).
-#' @param Settings 
+#' @param Settings Settings to configure your translation output. You can configure the
+#' following options:
+#' 
+#' -   Brevity: not supported.
+#' 
+#' -   Formality: sets the formality level of the output text.
+#' 
+#' -   Profanity: masks profane words and phrases in your translation
+#'     output.
 #'
 #' @keywords internal
 #'
@@ -641,9 +664,16 @@ translate_translate_document <- function(Document, TerminologyNames = NULL, Sour
 #' @param TargetLanguageCode &#91;required&#93; The language code requested for the language of the target text. For a
 #' list of language codes, see [Supported
 #' languages](https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html).
-#' @param Settings Settings to configure your translation output, including the option to
-#' set the formality level of the output text and the option to mask
-#' profane words and phrases.
+#' @param Settings Settings to configure your translation output. You can configure the
+#' following options:
+#' 
+#' -   Brevity: reduces the length of the translated output for most
+#'     translations.
+#' 
+#' -   Formality: sets the formality level of the output text.
+#' 
+#' -   Profanity: masks profane words and phrases in your translation
+#'     output.
 #'
 #' @keywords internal
 #'

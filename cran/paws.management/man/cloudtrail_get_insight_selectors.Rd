@@ -3,12 +3,12 @@
 \name{cloudtrail_get_insight_selectors}
 \alias{cloudtrail_get_insight_selectors}
 \title{Describes the settings for the Insights event selectors that you
-configured for your trail}
+configured for your trail or event data store}
 \usage{
-cloudtrail_get_insight_selectors(TrailName)
+cloudtrail_get_insight_selectors(TrailName = NULL, EventDataStore = NULL)
 }
 \arguments{
-\item{TrailName}{[required] Specifies the name of the trail or trail ARN. If you specify a trail
+\item{TrailName}{Specifies the name of the trail or trail ARN. If you specify a trail
 name, the string must meet the following requirements:
 \itemize{
 \item Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
@@ -22,10 +22,17 @@ underscores (_), or dashes (-)
 
 If you specify a trail ARN, it must be in the format:
 
-\code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}}
+\code{arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail}
+
+You cannot use this parameter with the \code{EventDataStore} parameter.}
+
+\item{EventDataStore}{Specifies the ARN (or ID suffix of the ARN) of the event data store for
+which you want to get Insights selectors.
+
+You cannot use this parameter with the \code{TrailName} parameter.}
 }
 \description{
-Describes the settings for the Insights event selectors that you configured for your trail. \code{\link[=cloudtrail_get_insight_selectors]{get_insight_selectors}} shows if CloudTrail Insights event logging is enabled on the trail, and if it is, which insight types are enabled. If you run \code{\link[=cloudtrail_get_insight_selectors]{get_insight_selectors}} on a trail that does not have Insights events enabled, the operation throws the exception \code{InsightNotEnabledException}
+Describes the settings for the Insights event selectors that you configured for your trail or event data store. \code{\link[=cloudtrail_get_insight_selectors]{get_insight_selectors}} shows if CloudTrail Insights event logging is enabled on the trail or event data store, and if it is, which Insights types are enabled. If you run \code{\link[=cloudtrail_get_insight_selectors]{get_insight_selectors}} on a trail or event data store that does not have Insights events enabled, the operation throws the exception \code{InsightNotEnabledException}
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_get_insight_selectors/} for full documentation.
 }

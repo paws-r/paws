@@ -1435,8 +1435,8 @@ locationservice_create_map <- function(Configuration, Description = NULL, MapNam
 #' 
 #' -   `Here` – For additional information about [HERE
 #'     Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)'
-#'     coverage in your region of interest, see [HERE details on goecoding
-#'     coverage](https://developer.here.com/documentation/geocoder/dev_guide/topics/coverage-geocoder.html).
+#'     coverage in your region of interest, see HERE details on goecoding
+#'     coverage.
 #' 
 #'     If you specify HERE Technologies (`Here`) as the data provider, you
 #'     may not [store
@@ -1586,10 +1586,8 @@ locationservice_create_place_index <- function(DataSource, DataSourceConfigurati
 #' 
 #' -   `Here` – For additional information about [HERE
 #'     Technologies](https://docs.aws.amazon.com/location/latest/developerguide/HERE.html)'
-#'     coverage in your region of interest, see [HERE car routing
-#'     coverage](https://developer.here.com/documentation/routing-api/dev_guide/topics/coverage/car-routing.html)
-#'     and [HERE truck routing
-#'     coverage](https://developer.here.com/documentation/routing-api/dev_guide/topics/coverage/truck-routing.html).
+#'     coverage in your region of interest, see HERE car routing coverage
+#'     and HERE truck routing coverage.
 #' 
 #' For additional information , see [Data
 #' providers](https://docs.aws.amazon.com/location/latest/developerguide/what-is-data-provider.html)
@@ -1676,8 +1674,8 @@ locationservice_create_route_calculator <- function(CalculatorName, DataSource, 
 #'
 #' @usage
 #' locationservice_create_tracker(Description, EventBridgeEnabled,
-#'   KmsKeyId, PositionFiltering, PricingPlan, PricingPlanDataSource, Tags,
-#'   TrackerName)
+#'   KmsKeyEnableGeospatialQueries, KmsKeyId, PositionFiltering, PricingPlan,
+#'   PricingPlanDataSource, Tags, TrackerName)
 #'
 #' @param Description An optional description for the tracker resource.
 #' @param EventBridgeEnabled Whether to enable position `UPDATE` events from this tracker to be sent
@@ -1686,6 +1684,22 @@ locationservice_create_route_calculator <- function(CalculatorName, DataSource, 
 #' You do not need enable this feature to get `ENTER` and `EXIT` events for
 #' geofences with this tracker. Those events are always sent to
 #' EventBridge.
+#' @param KmsKeyEnableGeospatialQueries Enables `GeospatialQueries` for a tracker that uses a [Amazon Web
+#' Services KMS customer managed
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html).
+#' 
+#' This parameter is only used if you are using a KMS customer managed key.
+#' 
+#' If you wish to encrypt your data using your own KMS customer managed
+#' key, then the Bounding Polygon Queries feature will be disabled by
+#' default. This is because by using this feature, a representation of your
+#' device positions will not be encrypted using the your KMS managed key.
+#' The exact device position, however; is still encrypted using your
+#' managed key.
+#' 
+#' You can choose to opt-in to the Bounding Polygon Quseries feature. This
+#' is done by setting the `KmsKeyEnableGeospatialQueries` parameter to true
+#' when creating or updating a Tracker.
 #' @param KmsKeyId A key identifier for an [Amazon Web Services KMS customer managed
 #' key](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html).
 #' Enter a key ID, key ARN, alias name, or alias ARN.
@@ -1769,6 +1783,7 @@ locationservice_create_route_calculator <- function(CalculatorName, DataSource, 
 #' svc$create_tracker(
 #'   Description = "string",
 #'   EventBridgeEnabled = TRUE|FALSE,
+#'   KmsKeyEnableGeospatialQueries = TRUE|FALSE,
 #'   KmsKeyId = "string",
 #'   PositionFiltering = "TimeBased"|"DistanceBased"|"AccuracyBased",
 #'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
@@ -1785,14 +1800,14 @@ locationservice_create_route_calculator <- function(CalculatorName, DataSource, 
 #' @rdname locationservice_create_tracker
 #'
 #' @aliases locationservice_create_tracker
-locationservice_create_tracker <- function(Description = NULL, EventBridgeEnabled = NULL, KmsKeyId = NULL, PositionFiltering = NULL, PricingPlan = NULL, PricingPlanDataSource = NULL, Tags = NULL, TrackerName) {
+locationservice_create_tracker <- function(Description = NULL, EventBridgeEnabled = NULL, KmsKeyEnableGeospatialQueries = NULL, KmsKeyId = NULL, PositionFiltering = NULL, PricingPlan = NULL, PricingPlanDataSource = NULL, Tags = NULL, TrackerName) {
   op <- new_operation(
     name = "CreateTracker",
     http_method = "POST",
     http_path = "/tracking/v0/trackers",
     paginator = list()
   )
-  input <- .locationservice$create_tracker_input(Description = Description, EventBridgeEnabled = EventBridgeEnabled, KmsKeyId = KmsKeyId, PositionFiltering = PositionFiltering, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource, Tags = Tags, TrackerName = TrackerName)
+  input <- .locationservice$create_tracker_input(Description = Description, EventBridgeEnabled = EventBridgeEnabled, KmsKeyEnableGeospatialQueries = KmsKeyEnableGeospatialQueries, KmsKeyId = KmsKeyId, PositionFiltering = PositionFiltering, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource, Tags = Tags, TrackerName = TrackerName)
   output <- .locationservice$create_tracker_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -2092,6 +2107,7 @@ locationservice_delete_tracker <- function(TrackerName) {
 #'     "2015-01-01"
 #'   ),
 #'   Description = "string",
+#'   GeofenceCount = 123,
 #'   KmsKeyId = "string",
 #'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
 #'   PricingPlanDataSource = "string",
@@ -2412,6 +2428,7 @@ locationservice_describe_route_calculator <- function(CalculatorName) {
 #'   ),
 #'   Description = "string",
 #'   EventBridgeEnabled = TRUE|FALSE,
+#'   KmsKeyEnableGeospatialQueries = TRUE|FALSE,
 #'   KmsKeyId = "string",
 #'   PositionFiltering = "TimeBased"|"DistanceBased"|"AccuracyBased",
 #'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
@@ -2772,7 +2789,7 @@ locationservice_get_geofence <- function(CollectionName, GeofenceId) {
 #' @param FontStack &#91;required&#93; A comma-separated list of fonts to load glyphs from in order of
 #' preference. For example, `Noto Sans Regular, Arial Unicode`.
 #' 
-#' Valid fonts stacks for
+#' Valid font stacks for
 #' [Esri](https://docs.aws.amazon.com/location/latest/developerguide/esri.html)
 #' styles:
 #' 
@@ -3192,9 +3209,10 @@ locationservice_get_place <- function(IndexName, Key = NULL, Language = NULL, Pl
 #' A batch request to retrieve all device positions.
 #'
 #' @usage
-#' locationservice_list_device_positions(MaxResults, NextToken,
-#'   TrackerName)
+#' locationservice_list_device_positions(FilterGeometry, MaxResults,
+#'   NextToken, TrackerName)
 #'
+#' @param FilterGeometry The geomerty used to filter device positions.
 #' @param MaxResults An optional limit for the number of entries returned in a single call.
 #' 
 #' Default value: `100`
@@ -3232,6 +3250,15 @@ locationservice_get_place <- function(IndexName, Key = NULL, Language = NULL, Pl
 #' @section Request syntax:
 #' ```
 #' svc$list_device_positions(
+#'   FilterGeometry = list(
+#'     Polygon = list(
+#'       list(
+#'         list(
+#'           123.0
+#'         )
+#'       )
+#'     )
+#'   ),
 #'   MaxResults = 123,
 #'   NextToken = "string",
 #'   TrackerName = "string"
@@ -3243,14 +3270,14 @@ locationservice_get_place <- function(IndexName, Key = NULL, Language = NULL, Pl
 #' @rdname locationservice_list_device_positions
 #'
 #' @aliases locationservice_list_device_positions
-locationservice_list_device_positions <- function(MaxResults = NULL, NextToken = NULL, TrackerName) {
+locationservice_list_device_positions <- function(FilterGeometry = NULL, MaxResults = NULL, NextToken = NULL, TrackerName) {
   op <- new_operation(
     name = "ListDevicePositions",
     http_method = "POST",
     http_path = "/tracking/v0/trackers/{TrackerName}/list-positions",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Entries")
   )
-  input <- .locationservice$list_device_positions_input(MaxResults = MaxResults, NextToken = NextToken, TrackerName = TrackerName)
+  input <- .locationservice$list_device_positions_input(FilterGeometry = FilterGeometry, MaxResults = MaxResults, NextToken = NextToken, TrackerName = TrackerName)
   output <- .locationservice$list_device_positions_output()
   config <- get_config()
   svc <- .locationservice$service(config)
@@ -4950,7 +4977,8 @@ locationservice_update_route_calculator <- function(CalculatorName, Description 
 #'
 #' @usage
 #' locationservice_update_tracker(Description, EventBridgeEnabled,
-#'   PositionFiltering, PricingPlan, PricingPlanDataSource, TrackerName)
+#'   KmsKeyEnableGeospatialQueries, PositionFiltering, PricingPlan,
+#'   PricingPlanDataSource, TrackerName)
 #'
 #' @param Description Updates the description for the tracker resource.
 #' @param EventBridgeEnabled Whether to enable position `UPDATE` events from this tracker to be sent
@@ -4959,6 +4987,11 @@ locationservice_update_route_calculator <- function(CalculatorName, Description 
 #' You do not need enable this feature to get `ENTER` and `EXIT` events for
 #' geofences with this tracker. Those events are always sent to
 #' EventBridge.
+#' @param KmsKeyEnableGeospatialQueries Enables `GeospatialQueries` for a tracker that uses a [Amazon Web
+#' Services KMS customer managed
+#' key](https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html).
+#' 
+#' This parameter is only used if you are using a KMS customer managed key.
 #' @param PositionFiltering Updates the position filtering for the tracker resource.
 #' 
 #' Valid values:
@@ -5007,6 +5040,7 @@ locationservice_update_route_calculator <- function(CalculatorName, Description 
 #' svc$update_tracker(
 #'   Description = "string",
 #'   EventBridgeEnabled = TRUE|FALSE,
+#'   KmsKeyEnableGeospatialQueries = TRUE|FALSE,
 #'   PositionFiltering = "TimeBased"|"DistanceBased"|"AccuracyBased",
 #'   PricingPlan = "RequestBasedUsage"|"MobileAssetTracking"|"MobileAssetManagement",
 #'   PricingPlanDataSource = "string",
@@ -5019,14 +5053,14 @@ locationservice_update_route_calculator <- function(CalculatorName, Description 
 #' @rdname locationservice_update_tracker
 #'
 #' @aliases locationservice_update_tracker
-locationservice_update_tracker <- function(Description = NULL, EventBridgeEnabled = NULL, PositionFiltering = NULL, PricingPlan = NULL, PricingPlanDataSource = NULL, TrackerName) {
+locationservice_update_tracker <- function(Description = NULL, EventBridgeEnabled = NULL, KmsKeyEnableGeospatialQueries = NULL, PositionFiltering = NULL, PricingPlan = NULL, PricingPlanDataSource = NULL, TrackerName) {
   op <- new_operation(
     name = "UpdateTracker",
     http_method = "PATCH",
     http_path = "/tracking/v0/trackers/{TrackerName}",
     paginator = list()
   )
-  input <- .locationservice$update_tracker_input(Description = Description, EventBridgeEnabled = EventBridgeEnabled, PositionFiltering = PositionFiltering, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource, TrackerName = TrackerName)
+  input <- .locationservice$update_tracker_input(Description = Description, EventBridgeEnabled = EventBridgeEnabled, KmsKeyEnableGeospatialQueries = KmsKeyEnableGeospatialQueries, PositionFiltering = PositionFiltering, PricingPlan = PricingPlan, PricingPlanDataSource = PricingPlanDataSource, TrackerName = TrackerName)
   output <- .locationservice$update_tracker_output()
   config <- get_config()
   svc <- .locationservice$service(config)

@@ -2,7 +2,7 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_delete_db_instance}
 \alias{rds_delete_db_instance}
-\title{The DeleteDBInstance action deletes a previously provisioned DB instance}
+\title{Deletes a previously provisioned DB instance}
 \usage{
 rds_delete_db_instance(
   DBInstanceIdentifier,
@@ -20,11 +20,11 @@ Constraints:
 \item Must match the name of an existing DB instance.
 }}
 
-\item{SkipFinalSnapshot}{A value that indicates whether to skip the creation of a final DB
-snapshot before deleting the instance. If you enable this parameter, RDS
-doesn't create a DB snapshot. If you don't enable this parameter, RDS
-creates a DB snapshot before the DB instance is deleted. By default,
-skip isn't enabled, and the DB snapshot is created.
+\item{SkipFinalSnapshot}{Specifies whether to skip the creation of a final DB snapshot before
+deleting the instance. If you enable this parameter, RDS doesn't create
+a DB snapshot. If you don't enable this parameter, RDS creates a DB
+snapshot before the DB instance is deleted. By default, skip isn't
+enabled, and the DB snapshot is created.
 
 If you don't enable this parameter, you must specify the
 \code{FinalDBSnapshotIdentifier} parameter.
@@ -54,13 +54,13 @@ Constraints:
 \item Can't be specified when deleting a read replica.
 }}
 
-\item{DeleteAutomatedBackups}{A value that indicates whether to remove automated backups immediately
-after the DB instance is deleted. This parameter isn't case-sensitive.
-The default is to remove automated backups immediately after the DB
-instance is deleted.}
+\item{DeleteAutomatedBackups}{Specifies whether to remove automated backups immediately after the DB
+instance is deleted. This parameter isn't case-sensitive. The default is
+to remove automated backups immediately after the DB instance is
+deleted.}
 }
 \description{
-The DeleteDBInstance action deletes a previously provisioned DB instance. When you delete a DB instance, all automated backups for that instance are deleted and can't be recovered. Manual DB snapshots of the DB instance to be deleted by \code{\link[=rds_delete_db_instance]{delete_db_instance}} are not deleted.
+Deletes a previously provisioned DB instance. When you delete a DB instance, all automated backups for that instance are deleted and can't be recovered. However, manual DB snapshots of the DB instance aren't deleted.
 
 See \url{https://www.paws-r-sdk.com/docs/rds_delete_db_instance/} for full documentation.
 }

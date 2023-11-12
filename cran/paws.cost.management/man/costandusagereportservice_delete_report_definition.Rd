@@ -4,14 +4,14 @@
 \alias{costandusagereportservice_delete_report_definition}
 \title{Deletes the specified report}
 \usage{
-costandusagereportservice_delete_report_definition(ReportName = NULL)
+costandusagereportservice_delete_report_definition(ReportName)
 }
 \arguments{
-\item{ReportName}{The name of the report that you want to delete. The name must be unique,
+\item{ReportName}{[required] The name of the report that you want to delete. The name must be unique,
 is case sensitive, and can't include spaces.}
 }
 \description{
-Deletes the specified report.
+Deletes the specified report. Any tags associated with the report are also deleted.
 
 See \url{https://www.paws-r-sdk.com/docs/costandusagereportservice_delete_report_definition/} for full documentation.
 }

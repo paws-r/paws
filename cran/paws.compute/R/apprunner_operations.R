@@ -54,14 +54,27 @@ apprunner_associate_custom_domain <- function(ServiceArn, DomainName, EnableWWWS
 #' number `1` of this name. When you use the same name in subsequent calls,
 #' App Runner creates incremental revisions of the configuration.
 #' 
-#' The name `DefaultConfiguration` is reserved (it's the configuration that
-#' App Runner uses if you don't provide a custome one). You can't use it to
-#' create a new auto scaling configuration, and you can't create a revision
-#' of it.
+#' Prior to the release of [Auto scale configuration
+#' enhancements](https://docs.aws.amazon.com/apprunner/latest/relnotes/release-2023-09-22-auto-scale-config.html),
+#' the name `DefaultConfiguration` was reserved.
 #' 
-#' When you want to use your own auto scaling configuration for your App
-#' Runner service, *create a configuration with a different name*, and then
-#' provide it when you create or update your service.
+#' This restriction is no longer in place. You can now manage
+#' `DefaultConfiguration` the same way you manage your custom auto scaling
+#' configurations. This means you can do the following with the
+#' `DefaultConfiguration` that App Runner provides:
+#' 
+#' -   Create new revisions of the `DefaultConfiguration`.
+#' 
+#' -   Delete the revisions of the `DefaultConfiguration`.
+#' 
+#' -   Delete the auto scaling configuration for which the App Runner
+#'     `DefaultConfiguration` was created.
+#' 
+#' -   If you delete the auto scaling configuration you can create another
+#'     custom auto scaling configuration with the same
+#'     `DefaultConfiguration` name. The original `DefaultConfiguration`
+#'     resource provided by App Runner remains in your account unless you
+#'     make changes to it.
 #' @param MaxConcurrency The maximum number of concurrent requests that you want an instance to
 #' process. If the number of concurrent requests exceeds this limit, App
 #' Runner scales up your service.
@@ -323,7 +336,7 @@ apprunner_create_vpc_ingress_connection <- function(ServiceArn, VpcIngressConnec
 #' Delete an App Runner automatic scaling configuration resource
 #'
 #' @description
-#' Delete an App Runner automatic scaling configuration resource. You can delete a specific revision or the latest active revision. You can't delete a configuration that's used by one or more App Runner services.
+#' Delete an App Runner automatic scaling configuration resource. You can delete a top level auto scaling configuration, a specific revision of one, or all revisions associated with the top level configuration. You can't delete the default auto scaling configuration or a configuration that's used by one or more App Runner services.
 #'
 #' See [https://www.paws-r-sdk.com/docs/apprunner_delete_auto_scaling_configuration/](https://www.paws-r-sdk.com/docs/apprunner_delete_auto_scaling_configuration/) for full documentation.
 #'
@@ -333,18 +346,23 @@ apprunner_create_vpc_ingress_connection <- function(ServiceArn, VpcIngressConnec
 #' The ARN can be a full auto scaling configuration ARN, or a partial ARN
 #' ending with either `.../name ` or `.../name/revision `. If a revision
 #' isn't specified, the latest active revision is deleted.
+#' @param DeleteAllRevisions Set to `true` to delete all of the revisions associated with the
+#' `AutoScalingConfigurationArn` parameter value.
+#' 
+#' When `DeleteAllRevisions` is set to `true`, the only valid value for the
+#' Amazon Resource Name (ARN) is a partial ARN ending with: `.../name`.
 #'
 #' @keywords internal
 #'
 #' @rdname apprunner_delete_auto_scaling_configuration
-apprunner_delete_auto_scaling_configuration <- function(AutoScalingConfigurationArn) {
+apprunner_delete_auto_scaling_configuration <- function(AutoScalingConfigurationArn, DeleteAllRevisions = NULL) {
   op <- new_operation(
     name = "DeleteAutoScalingConfiguration",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .apprunner$delete_auto_scaling_configuration_input(AutoScalingConfigurationArn = AutoScalingConfigurationArn)
+  input <- .apprunner$delete_auto_scaling_configuration_input(AutoScalingConfigurationArn = AutoScalingConfigurationArn, DeleteAllRevisions = DeleteAllRevisions)
   output <- .apprunner$delete_auto_scaling_configuration_output()
   config <- get_config()
   svc <- .apprunner$service(config)
@@ -973,6 +991,52 @@ apprunner_list_services <- function(NextToken = NULL, MaxResults = NULL) {
 }
 .apprunner$operations$list_services <- apprunner_list_services
 
+#' Returns a list of the associated App Runner services using an auto
+#' scaling configuration
+#'
+#' @description
+#' Returns a list of the associated App Runner services using an auto scaling configuration.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apprunner_list_services_for_auto_scaling_configuration/](https://www.paws-r-sdk.com/docs/apprunner_list_services_for_auto_scaling_configuration/) for full documentation.
+#'
+#' @param AutoScalingConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the App Runner auto scaling
+#' configuration that you want to list the services for.
+#' 
+#' The ARN can be a full auto scaling configuration ARN, or a partial ARN
+#' ending with either `.../name ` or `.../name/revision `. If a revision
+#' isn't specified, the latest active revision is used.
+#' @param MaxResults The maximum number of results to include in each response (result page).
+#' It's used for a paginated request.
+#' 
+#' If you don't specify `MaxResults`, the request retrieves all available
+#' results in a single response.
+#' @param NextToken A token from a previous result page. It's used for a paginated request.
+#' The request retrieves the next result page. All other parameter values
+#' must be identical to the ones specified in the initial request.
+#' 
+#' If you don't specify `NextToken`, the request retrieves the first result
+#' page.
+#'
+#' @keywords internal
+#'
+#' @rdname apprunner_list_services_for_auto_scaling_configuration
+apprunner_list_services_for_auto_scaling_configuration <- function(AutoScalingConfigurationArn, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListServicesForAutoScalingConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .apprunner$list_services_for_auto_scaling_configuration_input(AutoScalingConfigurationArn = AutoScalingConfigurationArn, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .apprunner$list_services_for_auto_scaling_configuration_output()
+  config <- get_config()
+  svc <- .apprunner$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apprunner$operations$list_services_for_auto_scaling_configuration <- apprunner_list_services_for_auto_scaling_configuration
+
 #' List tags that are associated with for an App Runner resource
 #'
 #' @description
@@ -1246,6 +1310,40 @@ apprunner_untag_resource <- function(ResourceArn, TagKeys) {
   return(response)
 }
 .apprunner$operations$untag_resource <- apprunner_untag_resource
+
+#' Update an auto scaling configuration to be the default
+#'
+#' @description
+#' Update an auto scaling configuration to be the default. The existing default auto scaling configuration will be set to non-default automatically.
+#'
+#' See [https://www.paws-r-sdk.com/docs/apprunner_update_default_auto_scaling_configuration/](https://www.paws-r-sdk.com/docs/apprunner_update_default_auto_scaling_configuration/) for full documentation.
+#'
+#' @param AutoScalingConfigurationArn &#91;required&#93; The Amazon Resource Name (ARN) of the App Runner auto scaling
+#' configuration that you want to set as the default.
+#' 
+#' The ARN can be a full auto scaling configuration ARN, or a partial ARN
+#' ending with either `.../name ` or `.../name/revision `. If a revision
+#' isn't specified, the latest active revision is set as the default.
+#'
+#' @keywords internal
+#'
+#' @rdname apprunner_update_default_auto_scaling_configuration
+apprunner_update_default_auto_scaling_configuration <- function(AutoScalingConfigurationArn) {
+  op <- new_operation(
+    name = "UpdateDefaultAutoScalingConfiguration",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .apprunner$update_default_auto_scaling_configuration_input(AutoScalingConfigurationArn = AutoScalingConfigurationArn)
+  output <- .apprunner$update_default_auto_scaling_configuration_output()
+  config <- get_config()
+  svc <- .apprunner$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.apprunner$operations$update_default_auto_scaling_configuration <- apprunner_update_default_auto_scaling_configuration
 
 #' Update an App Runner service
 #'

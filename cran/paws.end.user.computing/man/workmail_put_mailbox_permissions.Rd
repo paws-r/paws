@@ -15,11 +15,31 @@ workmail_put_mailbox_permissions(
 \item{OrganizationId}{[required] The identifier of the organization under which the user, group, or
 resource exists.}
 
-\item{EntityId}{[required] The identifier of the user, group, or resource for which to update
-mailbox permissions.}
+\item{EntityId}{[required] The identifier of the user or resource for which to update mailbox
+permissions.
+
+The identifier can be \emph{UserId, ResourceID, or Group Id}, \emph{Username,
+Resourcename, or Groupname}, or \emph{email}.
+\itemize{
+\item Entity ID: 12345678-1234-1234-1234-123456789012,
+r-0123456789a0123456789b0123456789, or
+S-1-1-12-1234567890-123456789-123456789-1234
+\item Email address: entity@domain.tld
+\item Entity name: entity
+}}
 
 \item{GranteeId}{[required] The identifier of the user, group, or resource to which to grant the
-permissions.}
+permissions.
+
+The identifier can be \emph{UserId, ResourceID, or Group Id}, \emph{Username,
+Resourcename, or Groupname}, or \emph{email}.
+\itemize{
+\item Grantee ID: 12345678-1234-1234-1234-123456789012,
+r-0123456789a0123456789b0123456789, or
+S-1-1-12-1234567890-123456789-123456789-1234
+\item Email address: grantee@domain.tld
+\item Grantee name: grantee
+}}
 
 \item{PermissionValues}{[required] The permissions granted to the grantee. SEND_AS allows the grantee to
 send email as the owner of the mailbox (the grantee is not mentioned on

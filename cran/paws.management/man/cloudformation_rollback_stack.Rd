@@ -21,13 +21,11 @@ that CloudFormation assumes to rollback the stack.}
 \item{ClientRequestToken}{A unique identifier for this
 \code{\link[=cloudformation_rollback_stack]{rollback_stack}} request.}
 
-\item{RetainExceptOnCreate}{This deletion policy deletes newly created resources, but retains
-existing resources, when a stack operation is rolled back. This ensures
-new, empty, and unused resources are deleted, while critical resources
-and their data are retained. \code{RetainExceptOnCreate} can be specified for
-any resource that supports the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html}{DeletionPolicy}
-attribute.}
+\item{RetainExceptOnCreate}{When set to \code{true}, newly created resources are deleted when the
+operation rolls back. This includes newly created resources marked with
+a deletion policy of \code{Retain}.
+
+Default: \code{false}}
 }
 \description{
 When specifying \code{\link[=cloudformation_rollback_stack]{rollback_stack}}, you preserve the state of previously provisioned resources when an operation fails. You can check the status of the stack through the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} operation.

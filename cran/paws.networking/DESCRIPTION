@@ -1,6 +1,6 @@
 Package: paws.networking
 Title: 'Amazon Web Services' Networking & Content Delivery Services
-Version: 0.4.0
+Version: 0.2.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -31,9 +31,15 @@ Collate:
     'apigatewayv2_service.R'
     'apigatewayv2_interfaces.R'
     'apigatewayv2_operations.R'
+    'appfabric_service.R'
+    'appfabric_interfaces.R'
+    'appfabric_operations.R'
     'appmesh_service.R'
     'appmesh_interfaces.R'
     'appmesh_operations.R'
+    'arczonalshift_service.R'
+    'arczonalshift_interfaces.R'
+    'arczonalshift_operations.R'
     'backupgateway_service.R'
     'backupgateway_interfaces.R'
     'backupgateway_operations.R'
@@ -80,3 +86,9 @@ Collate:
     'servicediscovery_service.R'
     'servicediscovery_interfaces.R'
     'servicediscovery_operations.R'
+    'telconetworkbuilder_service.R'
+    'telconetworkbuilder_interfaces.R'
+    'telconetworkbuilder_operations.R'
+    'vpclattice_service.R'
+    'vpclattice_interfaces.R'
+    'vpclattice_operations.R'

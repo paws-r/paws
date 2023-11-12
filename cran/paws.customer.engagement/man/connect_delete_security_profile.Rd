@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_delete_security_profile}
 \alias{connect_delete_security_profile}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Deletes a security profile}
 \usage{
 connect_delete_security_profile(InstanceId, SecurityProfileId)
 }
@@ -14,7 +13,7 @@ in the Amazon Resource Name (ARN) of the instance.}
 \item{SecurityProfileId}{[required] The identifier for the security profle.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Deletes a security profile.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_delete_security_profile/} for full documentation.
 }

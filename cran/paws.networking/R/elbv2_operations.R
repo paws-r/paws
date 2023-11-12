@@ -1300,10 +1300,11 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups, EnforceSe
 .elbv2$operations$set_security_groups <- elbv2_set_security_groups
 
 #' Enables the Availability Zones for the specified public subnets for the
-#' specified Application Load Balancer or Network Load Balancer
+#' specified Application Load Balancer, Network Load Balancer or Gateway
+#' Load Balancer
 #'
 #' @description
-#' Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer or Network Load Balancer. The specified subnets replace the previously enabled subnets.
+#' Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer, Network Load Balancer or Gateway Load Balancer. The specified subnets replace the previously enabled subnets.
 #'
 #' See [https://www.paws-r-sdk.com/docs/elbv2_set_subnets/](https://www.paws-r-sdk.com/docs/elbv2_set_subnets/) for full documentation.
 #'
@@ -1321,6 +1322,9 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups, EnforceSe
 #' from one or more Local Zones.
 #' 
 #' \[Network Load Balancers\] You can specify subnets from one or more
+#' Availability Zones.
+#' 
+#' \[Gateway Load Balancers\] You can specify subnets from one or more
 #' Availability Zones.
 #' @param SubnetMappings The IDs of the public subnets. You can specify only one subnet per
 #' Availability Zone. You must specify either subnets or subnet mappings.
@@ -1341,10 +1345,17 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups, EnforceSe
 #' internal load balancers, you can specify one private IP address per
 #' subnet from the IPv4 range of the subnet. For internet-facing load
 #' balancer, you can specify one IPv6 address per subnet.
+#' 
+#' \[Gateway Load Balancers\] You can specify subnets from one or more
+#' Availability Zones.
 #' @param IpAddressType \[Network Load Balancers\] The type of IP addresses used by the subnets
 #' for your load balancer. The possible values are `ipv4` (for IPv4
 #' addresses) and `dualstack` (for IPv4 and IPv6 addresses). You can’t
 #' specify `dualstack` for a load balancer with a UDP or TCP_UDP listener.
+#' 
+#' \[Gateway Load Balancers\] The type of IP addresses used by the subnets
+#' for your load balancer. The possible values are `ipv4` (for IPv4
+#' addresses) and `dualstack` (for IPv4 and IPv6 addresses).
 #'
 #' @keywords internal
 #'

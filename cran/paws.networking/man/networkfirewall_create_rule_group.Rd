@@ -15,7 +15,8 @@ networkfirewall_create_rule_group(
   Tags = NULL,
   DryRun = NULL,
   EncryptionConfiguration = NULL,
-  SourceMetadata = NULL
+  SourceMetadata = NULL,
+  AnalyzeRuleGroup = NULL
 )
 }
 \arguments{
@@ -111,6 +112,12 @@ resources.}
 \item{SourceMetadata}{A complex type that contains metadata about the rule group that your own
 rule group is copied from. You can use the metadata to keep track of
 updates made to the originating rule group.}
+
+\item{AnalyzeRuleGroup}{Indicates whether you want Network Firewall to analyze the stateless
+rules in the rule group for rule behavior such as asymmetric routing. If
+set to \code{TRUE}, Network Firewall runs the analysis and then creates the
+rule group for you. To run the stateless rule group analyzer without
+creating the rule group, set \code{DryRun} to \code{TRUE}.}
 }
 \description{
 Creates the specified stateless or stateful rule group, which includes the rules for network traffic inspection, a capacity setting, and tags.

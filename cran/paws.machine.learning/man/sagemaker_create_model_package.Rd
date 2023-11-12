@@ -24,7 +24,8 @@ sagemaker_create_model_package(
   Domain = NULL,
   Task = NULL,
   SamplePayloadUrl = NULL,
-  AdditionalInferenceSpecifications = NULL
+  AdditionalInferenceSpecifications = NULL,
+  SkipModelValidation = NULL
 )
 }
 \arguments{
@@ -118,6 +119,8 @@ call.}
 Inference Specification specifies artifacts based on this model package
 that can be used on inference endpoints. Generally used with SageMaker
 Neo to store the compiled artifacts.}
+
+\item{SkipModelValidation}{Indicates if you want to skip model validation.}
 }
 \description{
 Creates a model package that you can use to create SageMaker models or list on Amazon Web Services Marketplace, or a versioned model that is part of a model group. Buyers can subscribe to model packages listed on Amazon Web Services Marketplace to create models in SageMaker.

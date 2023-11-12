@@ -6,8 +6,8 @@ NULL
 #'
 #' @description
 #' Amazon Inspector is a vulnerability discovery service that automates
-#' continuous scanning for security vulnerabilities within your Amazon EC2
-#' and Amazon ECR environments.
+#' continuous scanning for security vulnerabilities within your Amazon EC2,
+#' Amazon ECR, and Amazon Web Services Lambda environments.
 #'
 #' @param
 #' config
@@ -21,9 +21,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}

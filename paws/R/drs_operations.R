@@ -37,6 +37,34 @@ NULL
 #'     ),
 #'     participatingServers = list(
 #'       list(
+#'         launchActionsStatus = list(
+#'           runs = list(
+#'             list(
+#'               action = list(
+#'                 actionCode = "string",
+#'                 actionId = "string",
+#'                 actionVersion = "string",
+#'                 active = TRUE|FALSE,
+#'                 category = "MONITORING"|"VALIDATION"|"CONFIGURATION"|"SECURITY"|"OTHER",
+#'                 description = "string",
+#'                 name = "string",
+#'                 optional = TRUE|FALSE,
+#'                 order = 123,
+#'                 parameters = list(
+#'                   list(
+#'                     type = "SSM_STORE"|"DYNAMIC",
+#'                     value = "string"
+#'                   )
+#'                 ),
+#'                 type = "SSM_AUTOMATION"|"SSM_COMMAND"
+#'               ),
+#'               failureReason = "string",
+#'               runId = "string",
+#'               status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
+#'             )
+#'           ),
+#'           ssmAgentDiscoveryDatetime = "string"
+#'         ),
 #'         launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
 #'         recoveryInstanceID = "string",
 #'         sourceServerID = "string"
@@ -243,14 +271,18 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #'
 #' @usage
 #' drs_create_launch_configuration_template(copyPrivateIp, copyTags,
-#'   exportBucketArn, launchDisposition, licensing, tags,
-#'   targetInstanceTypeRightSizingMethod)
+#'   exportBucketArn, launchDisposition, launchIntoSourceInstance, licensing,
+#'   postLaunchEnabled, tags, targetInstanceTypeRightSizingMethod)
 #'
 #' @param copyPrivateIp Copy private IP.
 #' @param copyTags Copy tags.
 #' @param exportBucketArn S3 bucket ARN to export Source Network templates.
 #' @param launchDisposition Launch disposition.
+#' @param launchIntoSourceInstance DRS will set the 'launch into instance ID' of any source server when
+#' performing a drill, recovery or failback to the previous region or
+#' availability zone, using the instance ID of the source instance.
 #' @param licensing Licensing.
+#' @param postLaunchEnabled Whether we want to activate post-launch actions.
 #' @param tags Request to associate tags during creation of a Launch Configuration
 #' Template.
 #' @param targetInstanceTypeRightSizingMethod Target instance type right-sizing method.
@@ -266,9 +298,11 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #'     exportBucketArn = "string",
 #'     launchConfigurationTemplateID = "string",
 #'     launchDisposition = "STOPPED"|"STARTED",
+#'     launchIntoSourceInstance = TRUE|FALSE,
 #'     licensing = list(
 #'       osByol = TRUE|FALSE
 #'     ),
+#'     postLaunchEnabled = TRUE|FALSE,
 #'     tags = list(
 #'       "string"
 #'     ),
@@ -284,9 +318,11 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #'   copyTags = TRUE|FALSE,
 #'   exportBucketArn = "string",
 #'   launchDisposition = "STOPPED"|"STARTED",
+#'   launchIntoSourceInstance = TRUE|FALSE,
 #'   licensing = list(
 #'     osByol = TRUE|FALSE
 #'   ),
+#'   postLaunchEnabled = TRUE|FALSE,
 #'   tags = list(
 #'     "string"
 #'   ),
@@ -299,14 +335,14 @@ drs_create_extended_source_server <- function(sourceServerArn, tags = NULL) {
 #' @rdname drs_create_launch_configuration_template
 #'
 #' @aliases drs_create_launch_configuration_template
-drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, exportBucketArn = NULL, launchDisposition = NULL, licensing = NULL, tags = NULL, targetInstanceTypeRightSizingMethod = NULL) {
+drs_create_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, exportBucketArn = NULL, launchDisposition = NULL, launchIntoSourceInstance = NULL, licensing = NULL, postLaunchEnabled = NULL, tags = NULL, targetInstanceTypeRightSizingMethod = NULL) {
   op <- new_operation(
     name = "CreateLaunchConfigurationTemplate",
     http_method = "POST",
     http_path = "/CreateLaunchConfigurationTemplate",
     paginator = list()
   )
-  input <- .drs$create_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, exportBucketArn = exportBucketArn, launchDisposition = launchDisposition, licensing = licensing, tags = tags, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  input <- .drs$create_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, exportBucketArn = exportBucketArn, launchDisposition = launchDisposition, launchIntoSourceInstance = launchIntoSourceInstance, licensing = licensing, postLaunchEnabled = postLaunchEnabled, tags = tags, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
   output <- .drs$create_launch_configuration_template_output()
   config <- get_config()
   svc <- .drs$service(config)
@@ -545,6 +581,50 @@ drs_delete_job <- function(jobID) {
   return(response)
 }
 .drs$operations$delete_job <- drs_delete_job
+
+#' Deletes a resource launch action
+#'
+#' @description
+#' Deletes a resource launch action.
+#'
+#' @usage
+#' drs_delete_launch_action(actionId, resourceId)
+#'
+#' @param actionId &#91;required&#93; 
+#' @param resourceId &#91;required&#93; 
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_launch_action(
+#'   actionId = "string",
+#'   resourceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_delete_launch_action
+#'
+#' @aliases drs_delete_launch_action
+drs_delete_launch_action <- function(actionId, resourceId) {
+  op <- new_operation(
+    name = "DeleteLaunchAction",
+    http_method = "POST",
+    http_path = "/DeleteLaunchAction",
+    paginator = list()
+  )
+  input <- .drs$delete_launch_action_input(actionId = actionId, resourceId = resourceId)
+  output <- .drs$delete_launch_action_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$delete_launch_action <- drs_delete_launch_action
 
 #' Deletes a single Launch Configuration Template by ID
 #'
@@ -883,6 +963,34 @@ drs_describe_job_log_items <- function(jobID, maxResults = NULL, nextToken = NUL
 #'       ),
 #'       participatingServers = list(
 #'         list(
+#'           launchActionsStatus = list(
+#'             runs = list(
+#'               list(
+#'                 action = list(
+#'                   actionCode = "string",
+#'                   actionId = "string",
+#'                   actionVersion = "string",
+#'                   active = TRUE|FALSE,
+#'                   category = "MONITORING"|"VALIDATION"|"CONFIGURATION"|"SECURITY"|"OTHER",
+#'                   description = "string",
+#'                   name = "string",
+#'                   optional = TRUE|FALSE,
+#'                   order = 123,
+#'                   parameters = list(
+#'                     list(
+#'                       type = "SSM_STORE"|"DYNAMIC",
+#'                       value = "string"
+#'                     )
+#'                   ),
+#'                   type = "SSM_AUTOMATION"|"SSM_COMMAND"
+#'                 ),
+#'                 failureReason = "string",
+#'                 runId = "string",
+#'                 status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
+#'               )
+#'             ),
+#'             ssmAgentDiscoveryDatetime = "string"
+#'           ),
 #'           launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
 #'           recoveryInstanceID = "string",
 #'           sourceServerID = "string"
@@ -964,9 +1072,11 @@ drs_describe_jobs <- function(filters = NULL, maxResults = NULL, nextToken = NUL
 #'       exportBucketArn = "string",
 #'       launchConfigurationTemplateID = "string",
 #'       launchDisposition = "STOPPED"|"STARTED",
+#'       launchIntoSourceInstance = TRUE|FALSE,
 #'       licensing = list(
 #'         osByol = TRUE|FALSE
 #'       ),
+#'       postLaunchEnabled = TRUE|FALSE,
 #'       tags = list(
 #'         "string"
 #'       ),
@@ -1898,10 +2008,14 @@ drs_get_failback_replication_configuration <- function(recoveryInstanceID) {
 #'   copyTags = TRUE|FALSE,
 #'   ec2LaunchTemplateID = "string",
 #'   launchDisposition = "STOPPED"|"STARTED",
+#'   launchIntoInstanceProperties = list(
+#'     launchIntoEC2InstanceID = "string"
+#'   ),
 #'   licensing = list(
 #'     osByol = TRUE|FALSE
 #'   ),
 #'   name = "string",
+#'   postLaunchEnabled = TRUE|FALSE,
 #'   sourceServerID = "string",
 #'   targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"|"IN_AWS"
 #' )
@@ -2124,6 +2238,83 @@ drs_list_extensible_source_servers <- function(maxResults = NULL, nextToken = NU
 }
 .drs$operations$list_extensible_source_servers <- drs_list_extensible_source_servers
 
+#' Lists resource launch actions
+#'
+#' @description
+#' Lists resource launch actions.
+#'
+#' @usage
+#' drs_list_launch_actions(filters, maxResults, nextToken, resourceId)
+#'
+#' @param filters Filters to apply when listing resource launch actions.
+#' @param maxResults Maximum amount of items to return when listing resource launch actions.
+#' @param nextToken Next token to use when listing resource launch actions.
+#' @param resourceId &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   items = list(
+#'     list(
+#'       actionCode = "string",
+#'       actionId = "string",
+#'       actionVersion = "string",
+#'       active = TRUE|FALSE,
+#'       category = "MONITORING"|"VALIDATION"|"CONFIGURATION"|"SECURITY"|"OTHER",
+#'       description = "string",
+#'       name = "string",
+#'       optional = TRUE|FALSE,
+#'       order = 123,
+#'       parameters = list(
+#'         list(
+#'           type = "SSM_STORE"|"DYNAMIC",
+#'           value = "string"
+#'         )
+#'       ),
+#'       type = "SSM_AUTOMATION"|"SSM_COMMAND"
+#'     )
+#'   ),
+#'   nextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_launch_actions(
+#'   filters = list(
+#'     actionIds = list(
+#'       "string"
+#'     )
+#'   ),
+#'   maxResults = 123,
+#'   nextToken = "string",
+#'   resourceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_list_launch_actions
+#'
+#' @aliases drs_list_launch_actions
+drs_list_launch_actions <- function(filters = NULL, maxResults = NULL, nextToken = NULL, resourceId) {
+  op <- new_operation(
+    name = "ListLaunchActions",
+    http_method = "POST",
+    http_path = "/ListLaunchActions",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "items")
+  )
+  input <- .drs$list_launch_actions_input(filters = filters, maxResults = maxResults, nextToken = nextToken, resourceId = resourceId)
+  output <- .drs$list_launch_actions_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$list_launch_actions <- drs_list_launch_actions
+
 #' Returns an array of staging accounts for existing extended source
 #' servers
 #'
@@ -2228,6 +2419,95 @@ drs_list_tags_for_resource <- function(resourceArn) {
   return(response)
 }
 .drs$operations$list_tags_for_resource <- drs_list_tags_for_resource
+
+#' Puts a resource launch action
+#'
+#' @description
+#' Puts a resource launch action.
+#'
+#' @usage
+#' drs_put_launch_action(actionCode, actionId, actionVersion, active,
+#'   category, description, name, optional, order, parameters, resourceId)
+#'
+#' @param actionCode &#91;required&#93; Launch action code.
+#' @param actionId &#91;required&#93; 
+#' @param actionVersion &#91;required&#93; 
+#' @param active &#91;required&#93; Whether the launch action is active.
+#' @param category &#91;required&#93; 
+#' @param description &#91;required&#93; 
+#' @param name &#91;required&#93; 
+#' @param optional &#91;required&#93; Whether the launch will not be marked as failed if this action fails.
+#' @param order &#91;required&#93; 
+#' @param parameters 
+#' @param resourceId &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   actionCode = "string",
+#'   actionId = "string",
+#'   actionVersion = "string",
+#'   active = TRUE|FALSE,
+#'   category = "MONITORING"|"VALIDATION"|"CONFIGURATION"|"SECURITY"|"OTHER",
+#'   description = "string",
+#'   name = "string",
+#'   optional = TRUE|FALSE,
+#'   order = 123,
+#'   parameters = list(
+#'     list(
+#'       type = "SSM_STORE"|"DYNAMIC",
+#'       value = "string"
+#'     )
+#'   ),
+#'   resourceId = "string",
+#'   type = "SSM_AUTOMATION"|"SSM_COMMAND"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$put_launch_action(
+#'   actionCode = "string",
+#'   actionId = "string",
+#'   actionVersion = "string",
+#'   active = TRUE|FALSE,
+#'   category = "MONITORING"|"VALIDATION"|"CONFIGURATION"|"SECURITY"|"OTHER",
+#'   description = "string",
+#'   name = "string",
+#'   optional = TRUE|FALSE,
+#'   order = 123,
+#'   parameters = list(
+#'     list(
+#'       type = "SSM_STORE"|"DYNAMIC",
+#'       value = "string"
+#'     )
+#'   ),
+#'   resourceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname drs_put_launch_action
+#'
+#' @aliases drs_put_launch_action
+drs_put_launch_action <- function(actionCode, actionId, actionVersion, active, category, description, name, optional, order, parameters = NULL, resourceId) {
+  op <- new_operation(
+    name = "PutLaunchAction",
+    http_method = "POST",
+    http_path = "/PutLaunchAction",
+    paginator = list()
+  )
+  input <- .drs$put_launch_action_input(actionCode = actionCode, actionId = actionId, actionVersion = actionVersion, active = active, category = category, description = description, name = name, optional = optional, order = order, parameters = parameters, resourceId = resourceId)
+  output <- .drs$put_launch_action_output()
+  config <- get_config()
+  svc <- .drs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.drs$operations$put_launch_action <- drs_put_launch_action
 
 #' WARNING: RetryDataReplication is deprecated
 #'
@@ -2468,6 +2748,34 @@ drs_reverse_replication <- function(recoveryInstanceID) {
 #'     ),
 #'     participatingServers = list(
 #'       list(
+#'         launchActionsStatus = list(
+#'           runs = list(
+#'             list(
+#'               action = list(
+#'                 actionCode = "string",
+#'                 actionId = "string",
+#'                 actionVersion = "string",
+#'                 active = TRUE|FALSE,
+#'                 category = "MONITORING"|"VALIDATION"|"CONFIGURATION"|"SECURITY"|"OTHER",
+#'                 description = "string",
+#'                 name = "string",
+#'                 optional = TRUE|FALSE,
+#'                 order = 123,
+#'                 parameters = list(
+#'                   list(
+#'                     type = "SSM_STORE"|"DYNAMIC",
+#'                     value = "string"
+#'                   )
+#'                 ),
+#'                 type = "SSM_AUTOMATION"|"SSM_COMMAND"
+#'               ),
+#'               failureReason = "string",
+#'               runId = "string",
+#'               status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
+#'             )
+#'           ),
+#'           ssmAgentDiscoveryDatetime = "string"
+#'         ),
 #'         launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
 #'         recoveryInstanceID = "string",
 #'         sourceServerID = "string"
@@ -2550,6 +2858,34 @@ drs_start_failback_launch <- function(recoveryInstanceIDs, tags = NULL) {
 #'     ),
 #'     participatingServers = list(
 #'       list(
+#'         launchActionsStatus = list(
+#'           runs = list(
+#'             list(
+#'               action = list(
+#'                 actionCode = "string",
+#'                 actionId = "string",
+#'                 actionVersion = "string",
+#'                 active = TRUE|FALSE,
+#'                 category = "MONITORING"|"VALIDATION"|"CONFIGURATION"|"SECURITY"|"OTHER",
+#'                 description = "string",
+#'                 name = "string",
+#'                 optional = TRUE|FALSE,
+#'                 order = 123,
+#'                 parameters = list(
+#'                   list(
+#'                     type = "SSM_STORE"|"DYNAMIC",
+#'                     value = "string"
+#'                   )
+#'                 ),
+#'                 type = "SSM_AUTOMATION"|"SSM_COMMAND"
+#'               ),
+#'               failureReason = "string",
+#'               runId = "string",
+#'               status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
+#'             )
+#'           ),
+#'           ssmAgentDiscoveryDatetime = "string"
+#'         ),
 #'         launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
 #'         recoveryInstanceID = "string",
 #'         sourceServerID = "string"
@@ -2787,6 +3123,34 @@ drs_start_replication <- function(sourceServerID) {
 #'     ),
 #'     participatingServers = list(
 #'       list(
+#'         launchActionsStatus = list(
+#'           runs = list(
+#'             list(
+#'               action = list(
+#'                 actionCode = "string",
+#'                 actionId = "string",
+#'                 actionVersion = "string",
+#'                 active = TRUE|FALSE,
+#'                 category = "MONITORING"|"VALIDATION"|"CONFIGURATION"|"SECURITY"|"OTHER",
+#'                 description = "string",
+#'                 name = "string",
+#'                 optional = TRUE|FALSE,
+#'                 order = 123,
+#'                 parameters = list(
+#'                   list(
+#'                     type = "SSM_STORE"|"DYNAMIC",
+#'                     value = "string"
+#'                   )
+#'                 ),
+#'                 type = "SSM_AUTOMATION"|"SSM_COMMAND"
+#'               ),
+#'               failureReason = "string",
+#'               runId = "string",
+#'               status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
+#'             )
+#'           ),
+#'           ssmAgentDiscoveryDatetime = "string"
+#'         ),
 #'         launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
 #'         recoveryInstanceID = "string",
 #'         sourceServerID = "string"
@@ -3254,6 +3618,34 @@ drs_tag_resource <- function(resourceArn, tags) {
 #'     ),
 #'     participatingServers = list(
 #'       list(
+#'         launchActionsStatus = list(
+#'           runs = list(
+#'             list(
+#'               action = list(
+#'                 actionCode = "string",
+#'                 actionId = "string",
+#'                 actionVersion = "string",
+#'                 active = TRUE|FALSE,
+#'                 category = "MONITORING"|"VALIDATION"|"CONFIGURATION"|"SECURITY"|"OTHER",
+#'                 description = "string",
+#'                 name = "string",
+#'                 optional = TRUE|FALSE,
+#'                 order = 123,
+#'                 parameters = list(
+#'                   list(
+#'                     type = "SSM_STORE"|"DYNAMIC",
+#'                     value = "string"
+#'                   )
+#'                 ),
+#'                 type = "SSM_AUTOMATION"|"SSM_COMMAND"
+#'               ),
+#'               failureReason = "string",
+#'               runId = "string",
+#'               status = "IN_PROGRESS"|"SUCCEEDED"|"FAILED"
+#'             )
+#'           ),
+#'           ssmAgentDiscoveryDatetime = "string"
+#'         ),
 #'         launchStatus = "PENDING"|"IN_PROGRESS"|"LAUNCHED"|"FAILED"|"TERMINATED",
 #'         recoveryInstanceID = "string",
 #'         sourceServerID = "string"
@@ -3407,16 +3799,18 @@ drs_update_failback_replication_configuration <- function(bandwidthThrottling = 
 #'
 #' @usage
 #' drs_update_launch_configuration(copyPrivateIp, copyTags,
-#'   launchDisposition, licensing, name, sourceServerID,
-#'   targetInstanceTypeRightSizingMethod)
+#'   launchDisposition, launchIntoInstanceProperties, licensing, name,
+#'   postLaunchEnabled, sourceServerID, targetInstanceTypeRightSizingMethod)
 #'
 #' @param copyPrivateIp Whether we should copy the Private IP of the Source Server to the
 #' Recovery Instance.
 #' @param copyTags Whether we want to copy the tags of the Source Server to the EC2 machine
 #' of the Recovery Instance.
 #' @param launchDisposition The state of the Recovery Instance in EC2 after the recovery operation.
+#' @param launchIntoInstanceProperties Launch into existing instance properties.
 #' @param licensing The licensing configuration to be used for this launch configuration.
 #' @param name The name of the launch configuration.
+#' @param postLaunchEnabled Whether we want to enable post-launch actions for the Source Server.
 #' @param sourceServerID &#91;required&#93; The ID of the Source Server that we want to retrieve a Launch
 #' Configuration for.
 #' @param targetInstanceTypeRightSizingMethod Whether Elastic Disaster Recovery should try to automatically choose the
@@ -3431,10 +3825,14 @@ drs_update_failback_replication_configuration <- function(bandwidthThrottling = 
 #'   copyTags = TRUE|FALSE,
 #'   ec2LaunchTemplateID = "string",
 #'   launchDisposition = "STOPPED"|"STARTED",
+#'   launchIntoInstanceProperties = list(
+#'     launchIntoEC2InstanceID = "string"
+#'   ),
 #'   licensing = list(
 #'     osByol = TRUE|FALSE
 #'   ),
 #'   name = "string",
+#'   postLaunchEnabled = TRUE|FALSE,
 #'   sourceServerID = "string",
 #'   targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"|"IN_AWS"
 #' )
@@ -3446,10 +3844,14 @@ drs_update_failback_replication_configuration <- function(bandwidthThrottling = 
 #'   copyPrivateIp = TRUE|FALSE,
 #'   copyTags = TRUE|FALSE,
 #'   launchDisposition = "STOPPED"|"STARTED",
+#'   launchIntoInstanceProperties = list(
+#'     launchIntoEC2InstanceID = "string"
+#'   ),
 #'   licensing = list(
 #'     osByol = TRUE|FALSE
 #'   ),
 #'   name = "string",
+#'   postLaunchEnabled = TRUE|FALSE,
 #'   sourceServerID = "string",
 #'   targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"|"IN_AWS"
 #' )
@@ -3460,14 +3862,14 @@ drs_update_failback_replication_configuration <- function(bandwidthThrottling = 
 #' @rdname drs_update_launch_configuration
 #'
 #' @aliases drs_update_launch_configuration
-drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NULL, launchDisposition = NULL, licensing = NULL, name = NULL, sourceServerID, targetInstanceTypeRightSizingMethod = NULL) {
+drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NULL, launchDisposition = NULL, launchIntoInstanceProperties = NULL, licensing = NULL, name = NULL, postLaunchEnabled = NULL, sourceServerID, targetInstanceTypeRightSizingMethod = NULL) {
   op <- new_operation(
     name = "UpdateLaunchConfiguration",
     http_method = "POST",
     http_path = "/UpdateLaunchConfiguration",
     paginator = list()
   )
-  input <- .drs$update_launch_configuration_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, launchDisposition = launchDisposition, licensing = licensing, name = name, sourceServerID = sourceServerID, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  input <- .drs$update_launch_configuration_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, launchDisposition = launchDisposition, launchIntoInstanceProperties = launchIntoInstanceProperties, licensing = licensing, name = name, postLaunchEnabled = postLaunchEnabled, sourceServerID = sourceServerID, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
   output <- .drs$update_launch_configuration_output()
   config <- get_config()
   svc <- .drs$service(config)
@@ -3485,14 +3887,19 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #' @usage
 #' drs_update_launch_configuration_template(copyPrivateIp, copyTags,
 #'   exportBucketArn, launchConfigurationTemplateID, launchDisposition,
-#'   licensing, targetInstanceTypeRightSizingMethod)
+#'   launchIntoSourceInstance, licensing, postLaunchEnabled,
+#'   targetInstanceTypeRightSizingMethod)
 #'
 #' @param copyPrivateIp Copy private IP.
 #' @param copyTags Copy tags.
 #' @param exportBucketArn S3 bucket ARN to export Source Network templates.
 #' @param launchConfigurationTemplateID &#91;required&#93; Launch Configuration Template ID.
 #' @param launchDisposition Launch disposition.
+#' @param launchIntoSourceInstance DRS will set the 'launch into instance ID' of any source server when
+#' performing a drill, recovery or failback to the previous region or
+#' availability zone, using the instance ID of the source instance.
 #' @param licensing Licensing.
+#' @param postLaunchEnabled Whether we want to activate post-launch actions.
 #' @param targetInstanceTypeRightSizingMethod Target instance type right-sizing method.
 #'
 #' @return
@@ -3506,9 +3913,11 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #'     exportBucketArn = "string",
 #'     launchConfigurationTemplateID = "string",
 #'     launchDisposition = "STOPPED"|"STARTED",
+#'     launchIntoSourceInstance = TRUE|FALSE,
 #'     licensing = list(
 #'       osByol = TRUE|FALSE
 #'     ),
+#'     postLaunchEnabled = TRUE|FALSE,
 #'     tags = list(
 #'       "string"
 #'     ),
@@ -3525,9 +3934,11 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #'   exportBucketArn = "string",
 #'   launchConfigurationTemplateID = "string",
 #'   launchDisposition = "STOPPED"|"STARTED",
+#'   launchIntoSourceInstance = TRUE|FALSE,
 #'   licensing = list(
 #'     osByol = TRUE|FALSE
 #'   ),
+#'   postLaunchEnabled = TRUE|FALSE,
 #'   targetInstanceTypeRightSizingMethod = "NONE"|"BASIC"|"IN_AWS"
 #' )
 #' ```
@@ -3537,14 +3948,14 @@ drs_update_launch_configuration <- function(copyPrivateIp = NULL, copyTags = NUL
 #' @rdname drs_update_launch_configuration_template
 #'
 #' @aliases drs_update_launch_configuration_template
-drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, exportBucketArn = NULL, launchConfigurationTemplateID, launchDisposition = NULL, licensing = NULL, targetInstanceTypeRightSizingMethod = NULL) {
+drs_update_launch_configuration_template <- function(copyPrivateIp = NULL, copyTags = NULL, exportBucketArn = NULL, launchConfigurationTemplateID, launchDisposition = NULL, launchIntoSourceInstance = NULL, licensing = NULL, postLaunchEnabled = NULL, targetInstanceTypeRightSizingMethod = NULL) {
   op <- new_operation(
     name = "UpdateLaunchConfigurationTemplate",
     http_method = "POST",
     http_path = "/UpdateLaunchConfigurationTemplate",
     paginator = list()
   )
-  input <- .drs$update_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, exportBucketArn = exportBucketArn, launchConfigurationTemplateID = launchConfigurationTemplateID, launchDisposition = launchDisposition, licensing = licensing, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
+  input <- .drs$update_launch_configuration_template_input(copyPrivateIp = copyPrivateIp, copyTags = copyTags, exportBucketArn = exportBucketArn, launchConfigurationTemplateID = launchConfigurationTemplateID, launchDisposition = launchDisposition, launchIntoSourceInstance = launchIntoSourceInstance, licensing = licensing, postLaunchEnabled = postLaunchEnabled, targetInstanceTypeRightSizingMethod = targetInstanceTypeRightSizingMethod)
   output <- .drs$update_launch_configuration_template_output()
   config <- get_config()
   svc <- .drs$service(config)

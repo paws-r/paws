@@ -5,16 +5,17 @@
 \title{Describes the status of the assignment deletion request}
 \usage{
 ssoadmin_describe_account_assignment_deletion_status(
-  InstanceArn,
-  AccountAssignmentDeletionRequestId
+  AccountAssignmentDeletionRequestId,
+  InstanceArn
 )
 }
 \arguments{
+\item{AccountAssignmentDeletionRequestId}{[required] The identifier that is used to track the request operation progress.}
+
 \item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
 will be executed. For more information about ARNs, see Amazon Resource
-Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
-
-\item{AccountAssignmentDeletionRequestId}{[required] The identifier that is used to track the request operation progress.}
+Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon
+Web Services General Reference}.}
 }
 \description{
 Describes the status of the assignment deletion request.

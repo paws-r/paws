@@ -21,9 +21,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -95,16 +95,28 @@ NULL
 #'  \link[=textract_analyze_document]{analyze_document} \tab Analyzes an input document for relationships between detected items\cr
 #'  \link[=textract_analyze_expense]{analyze_expense} \tab AnalyzeExpense synchronously analyzes an input document for financially related relationships between text\cr
 #'  \link[=textract_analyze_id]{analyze_id} \tab Analyzes identity documents for relevant information\cr
+#'  \link[=textract_create_adapter]{create_adapter} \tab Creates an adapter, which can be fine-tuned for enhanced performance on user provided documents\cr
+#'  \link[=textract_create_adapter_version]{create_adapter_version} \tab Creates a new version of an adapter\cr
+#'  \link[=textract_delete_adapter]{delete_adapter} \tab Deletes an Amazon Textract adapter\cr
+#'  \link[=textract_delete_adapter_version]{delete_adapter_version} \tab Deletes an Amazon Textract adapter version\cr
 #'  \link[=textract_detect_document_text]{detect_document_text} \tab Detects text in the input document\cr
+#'  \link[=textract_get_adapter]{get_adapter} \tab Gets configuration information for an adapter specified by an AdapterId, returning information on AdapterName, Description, CreationTime, AutoUpdate status, and FeatureTypes\cr
+#'  \link[=textract_get_adapter_version]{get_adapter_version} \tab Gets configuration information for the specified adapter version, including: AdapterId, AdapterVersion, FeatureTypes, Status, StatusMessage, DatasetConfig, KMSKeyId, OutputConfig, Tags and EvaluationMetrics\cr
 #'  \link[=textract_get_document_analysis]{get_document_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes text in a document\cr
 #'  \link[=textract_get_document_text_detection]{get_document_text_detection} \tab Gets the results for an Amazon Textract asynchronous operation that detects text in a document\cr
 #'  \link[=textract_get_expense_analysis]{get_expense_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes invoices and receipts\cr
 #'  \link[=textract_get_lending_analysis]{get_lending_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes text in a lending document\cr
 #'  \link[=textract_get_lending_analysis_summary]{get_lending_analysis_summary} \tab Gets summarized results for the StartLendingAnalysis operation, which analyzes text in a lending document\cr
+#'  \link[=textract_list_adapters]{list_adapters} \tab Lists all adapters that match the specified filtration criteria\cr
+#'  \link[=textract_list_adapter_versions]{list_adapter_versions} \tab List all version of an adapter that meet the specified filtration criteria\cr
+#'  \link[=textract_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags for an Amazon Textract resource\cr
 #'  \link[=textract_start_document_analysis]{start_document_analysis} \tab Starts the asynchronous analysis of an input document for relationships between detected items such as key-value pairs, tables, and selection elements\cr
 #'  \link[=textract_start_document_text_detection]{start_document_text_detection} \tab Starts the asynchronous detection of text in a document\cr
 #'  \link[=textract_start_expense_analysis]{start_expense_analysis} \tab Starts the asynchronous analysis of invoices or receipts for data like contact information, items purchased, and vendor names\cr
-#'  \link[=textract_start_lending_analysis]{start_lending_analysis} \tab Starts the classification and analysis of an input document
+#'  \link[=textract_start_lending_analysis]{start_lending_analysis} \tab Starts the classification and analysis of an input document\cr
+#'  \link[=textract_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource\cr
+#'  \link[=textract_untag_resource]{untag_resource} \tab Removes any tags with the specified keys from the specified resource\cr
+#'  \link[=textract_update_adapter]{update_adapter} \tab Update the configuration for an adapter
 #' }
 #'
 #' @return
