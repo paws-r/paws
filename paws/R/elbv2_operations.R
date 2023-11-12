@@ -1428,6 +1428,25 @@ elbv2_delete_target_group <- function(TargetGroupArn) {
 #' the targets are deregistered, they no longer receive traffic from the
 #' load balancer.
 #' 
+#' The load balancer stops sending requests to targets that are
+#' deregistering, but uses connection draining to ensure that in-flight
+#' traffic completes on the existing connections. This deregistration delay
+#' is configured by default but can be updated for each target group.
+#' 
+#' For more information, see the following:
+#' 
+#' -   [Deregistration
+#'     delay](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html#deregistration-delay)
+#'     in the *Application Load Balancers User Guide*
+#' 
+#' -   [Deregistration
+#'     delay](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#deregistration-delay)
+#'     in the *Network Load Balancers User Guide*
+#' 
+#' -   [Deregistration
+#'     delay](https://docs.aws.amazon.com/elasticloadbalancing/latest/gateway/target-groups.html#deregistration-delay)
+#'     in the *Gateway Load Balancers User Guide*
+#' 
 #' Note: If the specified target does not exist, the action returns
 #' successfully.
 #'
@@ -3969,16 +3988,18 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups, EnforceSe
 .elbv2$operations$set_security_groups <- elbv2_set_security_groups
 
 #' Enables the Availability Zones for the specified public subnets for the
-#' specified Application Load Balancer or Network Load Balancer
+#' specified Application Load Balancer, Network Load Balancer or Gateway
+#' Load Balancer
 #'
 #' @description
 #' Enables the Availability Zones for the specified public subnets for the
-#' specified Application Load Balancer or Network Load Balancer. The
-#' specified subnets replace the previously enabled subnets.
+#' specified Application Load Balancer, Network Load Balancer or Gateway
+#' Load Balancer. The specified subnets replace the previously enabled
+#' subnets.
 #' 
-#' When you specify subnets for a Network Load Balancer, you must include
-#' all subnets that were enabled previously, with their existing
-#' configurations, plus any additional subnets.
+#' When you specify subnets for a Network Load Balancer, or Gateway Load
+#' Balancer you must include all subnets that were enabled previously, with
+#' their existing configurations, plus any additional subnets.
 #'
 #' @usage
 #' elbv2_set_subnets(LoadBalancerArn, Subnets, SubnetMappings,
@@ -3999,6 +4020,9 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups, EnforceSe
 #' 
 #' \[Network Load Balancers\] You can specify subnets from one or more
 #' Availability Zones.
+#' 
+#' \[Gateway Load Balancers\] You can specify subnets from one or more
+#' Availability Zones.
 #' @param SubnetMappings The IDs of the public subnets. You can specify only one subnet per
 #' Availability Zone. You must specify either subnets or subnet mappings.
 #' 
@@ -4018,10 +4042,17 @@ elbv2_set_security_groups <- function(LoadBalancerArn, SecurityGroups, EnforceSe
 #' internal load balancers, you can specify one private IP address per
 #' subnet from the IPv4 range of the subnet. For internet-facing load
 #' balancer, you can specify one IPv6 address per subnet.
+#' 
+#' \[Gateway Load Balancers\] You can specify subnets from one or more
+#' Availability Zones.
 #' @param IpAddressType \[Network Load Balancers\] The type of IP addresses used by the subnets
 #' for your load balancer. The possible values are `ipv4` (for IPv4
 #' addresses) and `dualstack` (for IPv4 and IPv6 addresses). You can’t
 #' specify `dualstack` for a load balancer with a UDP or TCP_UDP listener.
+#' 
+#' \[Gateway Load Balancers\] The type of IP addresses used by the subnets
+#' for your load balancer. The possible values are `ipv4` (for IPv4
+#' addresses) and `dualstack` (for IPv4 and IPv6 addresses).
 #'
 #' @return
 #' A list with the following syntax:

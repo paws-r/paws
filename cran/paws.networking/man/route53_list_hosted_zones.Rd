@@ -8,7 +8,8 @@ associated with the current Amazon Web Services account}
 route53_list_hosted_zones(
   Marker = NULL,
   MaxItems = NULL,
-  DelegationSetId = NULL
+  DelegationSetId = NULL,
+  HostedZoneType = NULL
 )
 }
 \arguments{
@@ -32,6 +33,8 @@ of \code{IsTruncated} in the response is \code{true}, and the value of
 \item{DelegationSetId}{If you're using reusable delegation sets and you want to list all of the
 hosted zones that are associated with a reusable delegation set, specify
 the ID of that reusable delegation set.}
+
+\item{HostedZoneType}{(Optional) Specifies if the hosted zone is private.}
 }
 \description{
 Retrieves a list of the public and private hosted zones that are associated with the current Amazon Web Services account. The response includes a \code{HostedZones} child element for each hosted zone.

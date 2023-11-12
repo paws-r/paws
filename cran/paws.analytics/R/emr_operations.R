@@ -140,7 +140,7 @@ emr_add_tags <- function(ResourceId, Tags) {
 #' Cancels a pending step or steps in a running cluster
 #'
 #' @description
-#' Cancels a pending step or steps in a running cluster. Available only in Amazon EMR versions 4.8.0 and later, excluding version 5.0.0. A maximum of 256 steps are allowed in each CancelSteps request. CancelSteps is idempotent but asynchronous; it does not guarantee that a step will be canceled, even if the request is successfully submitted. When you use Amazon EMR releases 5.28.0 and later, you can cancel steps that are in a `PENDING` or `RUNNING` state. In earlier versions of Amazon EMR, you can only cancel steps that are in a `PENDING` state.
+#' Cancels a pending step or steps in a running cluster. Available only in Amazon EMR versions 4.8.0 and higher, excluding version 5.0.0. A maximum of 256 steps are allowed in each CancelSteps request. CancelSteps is idempotent but asynchronous; it does not guarantee that a step will be canceled, even if the request is successfully submitted. When you use Amazon EMR releases 5.28.0 and higher, you can cancel steps that are in a `PENDING` or `RUNNING` state. In earlier versions of Amazon EMR, you can only cancel steps that are in a `PENDING` state.
 #'
 #' See [https://www.paws-r-sdk.com/docs/emr_cancel_steps/](https://www.paws-r-sdk.com/docs/emr_cancel_steps/) for full documentation.
 #'
@@ -1388,7 +1388,7 @@ emr_put_auto_scaling_policy <- function(ClusterId, InstanceGroupId, AutoScalingP
 #' Auto-termination is supported in Amazon EMR releases 5
 #'
 #' @description
-#' Auto-termination is supported in Amazon EMR releases 5.30.0 and 6.1.0 and later. For more information, see [Using an auto-termination policy](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-auto-termination-policy.html).
+#' Auto-termination is supported in Amazon EMR releases 5.30.0 and 6.1.0 and higher. For more information, see [Using an auto-termination policy](https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-auto-termination-policy.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/emr_put_auto_termination_policy/](https://www.paws-r-sdk.com/docs/emr_put_auto_termination_policy/) for full documentation.
 #'
@@ -1630,25 +1630,25 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' value is not provided, logs are not created.
 #' @param LogEncryptionKmsKeyId The KMS key used for encrypting log files. If a value is not provided,
 #' the logs remain encrypted by AES-256. This attribute is only available
-#' with Amazon EMR releases 5.30.0 and later, excluding Amazon EMR 6.0.0.
+#' with Amazon EMR releases 5.30.0 and higher, excluding Amazon EMR 6.0.0.
 #' @param AdditionalInfo A JSON string for selecting additional features.
 #' @param AmiVersion Applies only to Amazon EMR AMI versions 3.x and 2.x. For Amazon EMR
-#' releases 4.0 and later, `ReleaseLabel` is used. To specify a custom AMI,
-#' use `CustomAmiID`.
+#' releases 4.0 and higher, `ReleaseLabel` is used. To specify a custom
+#' AMI, use `CustomAmiID`.
 #' @param ReleaseLabel The Amazon EMR release label, which determines the version of
 #' open-source application packages installed on the cluster. Release
 #' labels are in the form `emr-x.x.x`, where x.x.x is an Amazon EMR release
 #' version such as `emr-5.14.0`. For more information about Amazon EMR
 #' release versions and included application versions and features, see
 #' <https://docs.aws.amazon.com/emr/latest/ReleaseGuide/>. The release
-#' label applies only to Amazon EMR releases version 4.0 and later. Earlier
-#' versions use `AmiVersion`.
+#' label applies only to Amazon EMR releases version 4.0 and higher.
+#' Earlier versions use `AmiVersion`.
 #' @param Instances &#91;required&#93; A specification of the number and type of Amazon EC2 instances.
 #' @param Steps A list of steps to run.
 #' @param BootstrapActions A list of bootstrap actions to run before Hadoop starts on the cluster
 #' nodes.
 #' @param SupportedProducts For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
-#' later, use Applications.
+#' higher, use Applications.
 #' 
 #' A list of strings that indicates third-party software to use. For more
 #' information, see the [Amazon EMR Developer
@@ -1659,7 +1659,7 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' 
 #' -   "mapr-m5" - launch the job flow using MapR M5 Edition.
 #' @param NewSupportedProducts For Amazon EMR releases 3.x and 2.x. For Amazon EMR releases 4.x and
-#' later, use Applications.
+#' higher, use Applications.
 #' 
 #' A list of strings that indicates third-party software to use with the
 #' job flow that accepts a user argument list. Amazon EMR accepts and
@@ -1688,12 +1688,12 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' 
 #' -   "ganglia" - launch the cluster with the Ganglia Monitoring System
 #'     installed.
-#' @param Applications Applies to Amazon EMR releases 4.0 and later. A case-insensitive list of
-#' applications for Amazon EMR to install and configure when launching the
-#' cluster. For a list of applications available for each Amazon EMR
+#' @param Applications Applies to Amazon EMR releases 4.0 and higher. A case-insensitive list
+#' of applications for Amazon EMR to install and configure when launching
+#' the cluster. For a list of applications available for each Amazon EMR
 #' release version, see the [Amazon EMRRelease
 #' Guide](https://docs.aws.amazon.com/emr/latest/ReleaseGuide/).
-#' @param Configurations For Amazon EMR releases 4.0 and later. The list of configurations
+#' @param Configurations For Amazon EMR releases 4.0 and higher. The list of configurations
 #' supplied for the Amazon EMR cluster that you are creating.
 #' @param VisibleToAllUsers The VisibleToAllUsers parameter is no longer supported. By default, the
 #' value is set to `true`. Setting it to `false` now has no effect.
@@ -1733,16 +1733,16 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' `TERMINATE_AT_INSTANCE_HOUR` indicates that Amazon EMR terminates nodes
 #' at the instance-hour boundary, regardless of when the request to
 #' terminate the instance was submitted. This option is only available with
-#' Amazon EMR 5.1.0 and later and is the default for clusters created using
-#' that version. `TERMINATE_AT_TASK_COMPLETION` indicates that Amazon EMR
-#' adds nodes to a deny list and drains tasks from nodes before terminating
-#' the Amazon EC2 instances, regardless of the instance-hour boundary. With
-#' either behavior, Amazon EMR removes the least active nodes first and
-#' blocks instance termination if it could lead to HDFS corruption.
-#' `TERMINATE_AT_TASK_COMPLETION` available only in Amazon EMR releases
-#' 4.1.0 and later, and is the default for releases of Amazon EMR earlier
-#' than 5.1.0.
-#' @param CustomAmiId Available only in Amazon EMR releases 5.7.0 and later. The ID of a
+#' Amazon EMR 5.1.0 and higher and is the default for clusters created
+#' using that version. `TERMINATE_AT_TASK_COMPLETION` indicates that Amazon
+#' EMR adds nodes to a deny list and drains tasks from nodes before
+#' terminating the Amazon EC2 instances, regardless of the instance-hour
+#' boundary. With either behavior, Amazon EMR removes the least active
+#' nodes first and blocks instance termination if it could lead to HDFS
+#' corruption. `TERMINATE_AT_TASK_COMPLETION` available only in Amazon EMR
+#' releases 4.1.0 and higher, and is the default for releases of Amazon EMR
+#' earlier than 5.1.0.
+#' @param CustomAmiId Available only in Amazon EMR releases 5.7.0 and higher. The ID of a
 #' custom Amazon EBS-backed Linux AMI. If specified, Amazon EMR uses this
 #' AMI when it launches cluster Amazon EC2 instances. For more information
 #' about custom AMIs in Amazon EMR, see [Using a Custom
@@ -1757,9 +1757,9 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' in the *Amazon Elastic Compute Cloud User Guide for Linux Instances*.
 #' For information about finding an AMI ID, see [Finding a Linux
 #' AMI](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/finding-an-ami.html).
-#' @param EbsRootVolumeSize The size, in GiB, of the Amazon EBS root device volume of the Linux AMI
-#' that is used for each Amazon EC2 instance. Available in Amazon EMR
-#' releases 4.x and later.
+#' @param EbsRootVolumeSize The size, in GiB, of the Amazon EBS root device volume for the Linux AMI
+#' that each Amazon EC2 instance uses. Available in Amazon EMR releases 4.x
+#' and higher.
 #' @param RepoUpgradeOnBoot Applies only when `CustomAmiID` is used. Specifies which updates from
 #' the Amazon Linux AMI package repositories to apply automatically when
 #' the instance boots using the AMI. If omitted, the default is `SECURITY`,
@@ -1779,18 +1779,24 @@ emr_remove_tags <- function(ResourceId, TagKeys) {
 #' @param OSReleaseLabel Specifies a particular Amazon Linux release for all nodes in a cluster
 #' launch RunJobFlow request. If a release is not specified, Amazon EMR
 #' uses the latest validated Amazon Linux release for cluster launch.
+#' @param EbsRootVolumeIops The IOPS for the Amazon EBS root device volume for the Linux AMI that
+#' each Amazon EC2 instance uses. Available in Amazon EMR releases 6.15.0
+#' and higher.
+#' @param EbsRootVolumeThroughput The throughput, in MiB/s, of the Amazon EBS root device volume for the
+#' Linux AMI that each Amazon EC2 instance uses. Available in Amazon EMR
+#' releases 6.15.0 and higher.
 #'
 #' @keywords internal
 #'
 #' @rdname emr_run_job_flow
-emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL, StepConcurrencyLevel = NULL, ManagedScalingPolicy = NULL, PlacementGroupConfigs = NULL, AutoTerminationPolicy = NULL, OSReleaseLabel = NULL) {
+emr_run_job_flow <- function(Name, LogUri = NULL, LogEncryptionKmsKeyId = NULL, AdditionalInfo = NULL, AmiVersion = NULL, ReleaseLabel = NULL, Instances, Steps = NULL, BootstrapActions = NULL, SupportedProducts = NULL, NewSupportedProducts = NULL, Applications = NULL, Configurations = NULL, VisibleToAllUsers = NULL, JobFlowRole = NULL, ServiceRole = NULL, Tags = NULL, SecurityConfiguration = NULL, AutoScalingRole = NULL, ScaleDownBehavior = NULL, CustomAmiId = NULL, EbsRootVolumeSize = NULL, RepoUpgradeOnBoot = NULL, KerberosAttributes = NULL, StepConcurrencyLevel = NULL, ManagedScalingPolicy = NULL, PlacementGroupConfigs = NULL, AutoTerminationPolicy = NULL, OSReleaseLabel = NULL, EbsRootVolumeIops = NULL, EbsRootVolumeThroughput = NULL) {
   op <- new_operation(
     name = "RunJobFlow",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, LogEncryptionKmsKeyId = LogEncryptionKmsKeyId, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel, ManagedScalingPolicy = ManagedScalingPolicy, PlacementGroupConfigs = PlacementGroupConfigs, AutoTerminationPolicy = AutoTerminationPolicy, OSReleaseLabel = OSReleaseLabel)
+  input <- .emr$run_job_flow_input(Name = Name, LogUri = LogUri, LogEncryptionKmsKeyId = LogEncryptionKmsKeyId, AdditionalInfo = AdditionalInfo, AmiVersion = AmiVersion, ReleaseLabel = ReleaseLabel, Instances = Instances, Steps = Steps, BootstrapActions = BootstrapActions, SupportedProducts = SupportedProducts, NewSupportedProducts = NewSupportedProducts, Applications = Applications, Configurations = Configurations, VisibleToAllUsers = VisibleToAllUsers, JobFlowRole = JobFlowRole, ServiceRole = ServiceRole, Tags = Tags, SecurityConfiguration = SecurityConfiguration, AutoScalingRole = AutoScalingRole, ScaleDownBehavior = ScaleDownBehavior, CustomAmiId = CustomAmiId, EbsRootVolumeSize = EbsRootVolumeSize, RepoUpgradeOnBoot = RepoUpgradeOnBoot, KerberosAttributes = KerberosAttributes, StepConcurrencyLevel = StepConcurrencyLevel, ManagedScalingPolicy = ManagedScalingPolicy, PlacementGroupConfigs = PlacementGroupConfigs, AutoTerminationPolicy = AutoTerminationPolicy, OSReleaseLabel = OSReleaseLabel, EbsRootVolumeIops = EbsRootVolumeIops, EbsRootVolumeThroughput = EbsRootVolumeThroughput)
   output <- .emr$run_job_flow_output()
   config <- get_config()
   svc <- .emr$service(config)

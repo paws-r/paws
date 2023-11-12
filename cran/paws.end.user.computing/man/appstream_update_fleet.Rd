@@ -25,7 +25,8 @@ appstream_update_fleet(
   Platform = NULL,
   MaxConcurrentSessions = NULL,
   UsbDeviceFilterStrings = NULL,
-  SessionScriptS3Location = NULL
+  SessionScriptS3Location = NULL,
+  MaxSessionsPerInstance = NULL
 )
 }
 \arguments{
@@ -173,6 +174,9 @@ client. This is allowed but not required for Elastic fleets.}
 
 \item{SessionScriptS3Location}{The S3 location of the session scripts configuration zip file. This only
 applies to Elastic fleets.}
+
+\item{MaxSessionsPerInstance}{The maximum number of user sessions on an instance. This only applies to
+multi-session fleets.}
 }
 \description{
 Updates the specified fleet.

@@ -344,7 +344,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -598,7 +598,7 @@ fsx_cancel_data_repository_task <- function(TaskId) {
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -1071,7 +1071,7 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -1325,7 +1325,7 @@ fsx_copy_backup <- function(ClientRequestToken = NULL, SourceBackupId, SourceReg
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -2314,7 +2314,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #' @param LustreConfiguration 
 #' @param OntapConfiguration 
 #' @param FileSystemTypeVersion (Optional) For FSx for Lustre file systems, sets the Lustre version for
-#' the file system that you're creating. Valid values are `2.10`, `2.12`m
+#' the file system that you're creating. Valid values are `2.10`, `2.12`,
 #' and `2.15`:
 #' 
 #' -   2.10 is supported by the Scratch and Persistent_1 Lustre deployment
@@ -2437,7 +2437,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -3035,7 +3035,7 @@ fsx_create_file_system <- function(ClientRequestToken = NULL, FileSystemType, St
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -3456,7 +3456,7 @@ fsx_create_file_system_from_backup <- function(BackupId, ClientRequestToken = NU
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -3999,7 +3999,7 @@ fsx_create_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -4414,7 +4414,7 @@ fsx_create_volume <- function(ClientRequestToken = NULL, VolumeType, Name, Ontap
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -5437,7 +5437,7 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'         ),
 #'         AdministrativeActions = list(
 #'           list(
-#'             AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'             AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'             ProgressPercent = 123,
 #'             RequestTime = as.POSIXct(
 #'               "2015-01-01"
@@ -5691,7 +5691,7 @@ fsx_delete_volume <- function(ClientRequestToken = NULL, VolumeId, OntapConfigur
 #'         ),
 #'         AdministrativeActions = list(
 #'           list(
-#'             AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'             AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'             ProgressPercent = 123,
 #'             RequestTime = as.POSIXct(
 #'               "2015-01-01"
@@ -6593,7 +6593,7 @@ fsx_describe_file_system_aliases <- function(ClientRequestToken = NULL, FileSyst
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -6889,7 +6889,7 @@ fsx_describe_file_systems <- function(FileSystemIds = NULL, MaxResults = NULL, N
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -7408,7 +7408,7 @@ fsx_describe_storage_virtual_machines <- function(StorageVirtualMachineIds = NUL
 #'       ),
 #'       AdministrativeActions = list(
 #'         list(
-#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'           AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'           ProgressPercent = 123,
 #'           RequestTime = as.POSIXct(
 #'             "2015-01-01"
@@ -7958,7 +7958,7 @@ fsx_list_tags_for_resource <- function(ResourceARN, MaxResults = NULL, NextToken
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -8211,7 +8211,7 @@ fsx_release_file_system_nfs_v3_locks <- function(FileSystemId, ClientRequestToke
 #'   Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
 #'   AdministrativeActions = list(
 #'     list(
-#'       AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'       AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'       ProgressPercent = 123,
 #'       RequestTime = as.POSIXct(
 #'         "2015-01-01"
@@ -8529,6 +8529,342 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
   return(response)
 }
 .fsx$operations$restore_volume_from_snapshot <- fsx_restore_volume_from_snapshot
+
+#' After performing steps to repair the Active Directory configuration of
+#' an FSx for Windows File Server file system, use this action to initiate
+#' the process of Amazon FSx attempting to reconnect to the file system
+#'
+#' @description
+#' After performing steps to repair the Active Directory configuration of
+#' an FSx for Windows File Server file system, use this action to initiate
+#' the process of Amazon FSx attempting to reconnect to the file system.
+#'
+#' @usage
+#' fsx_start_misconfigured_state_recovery(ClientRequestToken, FileSystemId)
+#'
+#' @param ClientRequestToken 
+#' @param FileSystemId &#91;required&#93; 
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   FileSystem = list(
+#'     OwnerId = "string",
+#'     CreationTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     FileSystemId = "string",
+#'     FileSystemType = "WINDOWS"|"LUSTRE"|"ONTAP"|"OPENZFS",
+#'     Lifecycle = "AVAILABLE"|"CREATING"|"FAILED"|"DELETING"|"MISCONFIGURED"|"UPDATING"|"MISCONFIGURED_UNAVAILABLE",
+#'     FailureDetails = list(
+#'       Message = "string"
+#'     ),
+#'     StorageCapacity = 123,
+#'     StorageType = "SSD"|"HDD",
+#'     VpcId = "string",
+#'     SubnetIds = list(
+#'       "string"
+#'     ),
+#'     NetworkInterfaceIds = list(
+#'       "string"
+#'     ),
+#'     DNSName = "string",
+#'     KmsKeyId = "string",
+#'     ResourceARN = "string",
+#'     Tags = list(
+#'       list(
+#'         Key = "string",
+#'         Value = "string"
+#'       )
+#'     ),
+#'     WindowsConfiguration = list(
+#'       ActiveDirectoryId = "string",
+#'       SelfManagedActiveDirectoryConfiguration = list(
+#'         DomainName = "string",
+#'         OrganizationalUnitDistinguishedName = "string",
+#'         FileSystemAdministratorsGroup = "string",
+#'         UserName = "string",
+#'         DnsIps = list(
+#'           "string"
+#'         )
+#'       ),
+#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1"|"SINGLE_AZ_2",
+#'       RemoteAdministrationEndpoint = "string",
+#'       PreferredSubnetId = "string",
+#'       PreferredFileServerIp = "string",
+#'       ThroughputCapacity = 123,
+#'       MaintenanceOperationsInProgress = list(
+#'         "PATCHING"|"BACKING_UP"
+#'       ),
+#'       WeeklyMaintenanceStartTime = "string",
+#'       DailyAutomaticBackupStartTime = "string",
+#'       AutomaticBackupRetentionDays = 123,
+#'       CopyTagsToBackups = TRUE|FALSE,
+#'       Aliases = list(
+#'         list(
+#'           Name = "string",
+#'           Lifecycle = "AVAILABLE"|"CREATING"|"DELETING"|"CREATE_FAILED"|"DELETE_FAILED"
+#'         )
+#'       ),
+#'       AuditLogConfiguration = list(
+#'         FileAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'         FileShareAccessAuditLogLevel = "DISABLED"|"SUCCESS_ONLY"|"FAILURE_ONLY"|"SUCCESS_AND_FAILURE",
+#'         AuditLogDestination = "string"
+#'       ),
+#'       DiskIopsConfiguration = list(
+#'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'         Iops = 123
+#'       )
+#'     ),
+#'     LustreConfiguration = list(
+#'       WeeklyMaintenanceStartTime = "string",
+#'       DataRepositoryConfiguration = list(
+#'         Lifecycle = "CREATING"|"AVAILABLE"|"MISCONFIGURED"|"UPDATING"|"DELETING"|"FAILED",
+#'         ImportPath = "string",
+#'         ExportPath = "string",
+#'         ImportedFileChunkSize = 123,
+#'         AutoImportPolicy = "NONE"|"NEW"|"NEW_CHANGED"|"NEW_CHANGED_DELETED",
+#'         FailureDetails = list(
+#'           Message = "string"
+#'         )
+#'       ),
+#'       DeploymentType = "SCRATCH_1"|"SCRATCH_2"|"PERSISTENT_1"|"PERSISTENT_2",
+#'       PerUnitStorageThroughput = 123,
+#'       MountName = "string",
+#'       DailyAutomaticBackupStartTime = "string",
+#'       AutomaticBackupRetentionDays = 123,
+#'       CopyTagsToBackups = TRUE|FALSE,
+#'       DriveCacheType = "NONE"|"READ",
+#'       DataCompressionType = "NONE"|"LZ4",
+#'       LogConfiguration = list(
+#'         Level = "DISABLED"|"WARN_ONLY"|"ERROR_ONLY"|"WARN_ERROR",
+#'         Destination = "string"
+#'       ),
+#'       RootSquashConfiguration = list(
+#'         RootSquash = "string",
+#'         NoSquashNids = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     AdministrativeActions = list(
+#'       list(
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
+#'         ProgressPercent = 123,
+#'         RequestTime = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         Status = "FAILED"|"IN_PROGRESS"|"PENDING"|"COMPLETED"|"UPDATED_OPTIMIZING",
+#'         TargetFileSystemValues = list(),
+#'         FailureDetails = list(
+#'           Message = "string"
+#'         ),
+#'         TargetVolumeValues = list(
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           FileSystemId = "string",
+#'           Lifecycle = "CREATING"|"CREATED"|"DELETING"|"FAILED"|"MISCONFIGURED"|"PENDING"|"AVAILABLE",
+#'           Name = "string",
+#'           OntapConfiguration = list(
+#'             FlexCacheEndpointType = "NONE"|"ORIGIN"|"CACHE",
+#'             JunctionPath = "string",
+#'             SecurityStyle = "UNIX"|"NTFS"|"MIXED",
+#'             SizeInMegabytes = 123,
+#'             StorageEfficiencyEnabled = TRUE|FALSE,
+#'             StorageVirtualMachineId = "string",
+#'             StorageVirtualMachineRoot = TRUE|FALSE,
+#'             TieringPolicy = list(
+#'               CoolingPeriod = 123,
+#'               Name = "SNAPSHOT_ONLY"|"AUTO"|"ALL"|"NONE"
+#'             ),
+#'             UUID = "string",
+#'             OntapVolumeType = "RW"|"DP"|"LS",
+#'             SnapshotPolicy = "string",
+#'             CopyTagsToBackups = TRUE|FALSE,
+#'             SnaplockConfiguration = list(
+#'               AuditLogVolume = TRUE|FALSE,
+#'               AutocommitPeriod = list(
+#'                 Type = "MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"NONE",
+#'                 Value = 123
+#'               ),
+#'               PrivilegedDelete = "DISABLED"|"ENABLED"|"PERMANENTLY_DISABLED",
+#'               RetentionPeriod = list(
+#'                 DefaultRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 ),
+#'                 MinimumRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 ),
+#'                 MaximumRetention = list(
+#'                   Type = "SECONDS"|"MINUTES"|"HOURS"|"DAYS"|"MONTHS"|"YEARS"|"INFINITE"|"UNSPECIFIED",
+#'                   Value = 123
+#'                 )
+#'               ),
+#'               SnaplockType = "COMPLIANCE"|"ENTERPRISE",
+#'               VolumeAppendModeEnabled = TRUE|FALSE
+#'             )
+#'           ),
+#'           ResourceARN = "string",
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           VolumeId = "string",
+#'           VolumeType = "ONTAP"|"OPENZFS",
+#'           LifecycleTransitionReason = list(
+#'             Message = "string"
+#'           ),
+#'           AdministrativeActions = list(),
+#'           OpenZFSConfiguration = list(
+#'             ParentVolumeId = "string",
+#'             VolumePath = "string",
+#'             StorageCapacityReservationGiB = 123,
+#'             StorageCapacityQuotaGiB = 123,
+#'             RecordSizeKiB = 123,
+#'             DataCompressionType = "NONE"|"ZSTD"|"LZ4",
+#'             CopyTagsToSnapshots = TRUE|FALSE,
+#'             OriginSnapshot = list(
+#'               SnapshotARN = "string",
+#'               CopyStrategy = "CLONE"|"FULL_COPY"
+#'             ),
+#'             ReadOnly = TRUE|FALSE,
+#'             NfsExports = list(
+#'               list(
+#'                 ClientConfigurations = list(
+#'                   list(
+#'                     Clients = "string",
+#'                     Options = list(
+#'                       "string"
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             UserAndGroupQuotas = list(
+#'               list(
+#'                 Type = "USER"|"GROUP",
+#'                 Id = 123,
+#'                 StorageCapacityQuotaGiB = 123
+#'               )
+#'             ),
+#'             RestoreToSnapshot = "string",
+#'             DeleteIntermediateSnaphots = TRUE|FALSE,
+#'             DeleteClonedVolumes = TRUE|FALSE
+#'           )
+#'         ),
+#'         TargetSnapshotValues = list(
+#'           ResourceARN = "string",
+#'           SnapshotId = "string",
+#'           Name = "string",
+#'           VolumeId = "string",
+#'           CreationTime = as.POSIXct(
+#'             "2015-01-01"
+#'           ),
+#'           Lifecycle = "PENDING"|"CREATING"|"DELETING"|"AVAILABLE",
+#'           LifecycleTransitionReason = list(
+#'             Message = "string"
+#'           ),
+#'           Tags = list(
+#'             list(
+#'               Key = "string",
+#'               Value = "string"
+#'             )
+#'           ),
+#'           AdministrativeActions = list()
+#'         )
+#'       )
+#'     ),
+#'     OntapConfiguration = list(
+#'       AutomaticBackupRetentionDays = 123,
+#'       DailyAutomaticBackupStartTime = "string",
+#'       DeploymentType = "MULTI_AZ_1"|"SINGLE_AZ_1",
+#'       EndpointIpAddressRange = "string",
+#'       Endpoints = list(
+#'         Intercluster = list(
+#'           DNSName = "string",
+#'           IpAddresses = list(
+#'             "string"
+#'           )
+#'         ),
+#'         Management = list(
+#'           DNSName = "string",
+#'           IpAddresses = list(
+#'             "string"
+#'           )
+#'         )
+#'       ),
+#'       DiskIopsConfiguration = list(
+#'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'         Iops = 123
+#'       ),
+#'       PreferredSubnetId = "string",
+#'       RouteTableIds = list(
+#'         "string"
+#'       ),
+#'       ThroughputCapacity = 123,
+#'       WeeklyMaintenanceStartTime = "string",
+#'       FsxAdminPassword = "string"
+#'     ),
+#'     FileSystemTypeVersion = "string",
+#'     OpenZFSConfiguration = list(
+#'       AutomaticBackupRetentionDays = 123,
+#'       CopyTagsToBackups = TRUE|FALSE,
+#'       CopyTagsToVolumes = TRUE|FALSE,
+#'       DailyAutomaticBackupStartTime = "string",
+#'       DeploymentType = "SINGLE_AZ_1"|"SINGLE_AZ_2"|"MULTI_AZ_1",
+#'       ThroughputCapacity = 123,
+#'       WeeklyMaintenanceStartTime = "string",
+#'       DiskIopsConfiguration = list(
+#'         Mode = "AUTOMATIC"|"USER_PROVISIONED",
+#'         Iops = 123
+#'       ),
+#'       RootVolumeId = "string",
+#'       PreferredSubnetId = "string",
+#'       EndpointIpAddressRange = "string",
+#'       RouteTableIds = list(
+#'         "string"
+#'       ),
+#'       EndpointIpAddress = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_misconfigured_state_recovery(
+#'   ClientRequestToken = "string",
+#'   FileSystemId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_start_misconfigured_state_recovery
+#'
+#' @aliases fsx_start_misconfigured_state_recovery
+fsx_start_misconfigured_state_recovery <- function(ClientRequestToken = NULL, FileSystemId) {
+  op <- new_operation(
+    name = "StartMisconfiguredStateRecovery",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$start_misconfigured_state_recovery_input(ClientRequestToken = ClientRequestToken, FileSystemId = FileSystemId)
+  output <- .fsx$start_misconfigured_state_recovery_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$start_misconfigured_state_recovery <- fsx_start_misconfigured_state_recovery
 
 #' Tags an Amazon FSx resource
 #'
@@ -9134,7 +9470,7 @@ fsx_update_file_cache <- function(FileCacheId, ClientRequestToken = NULL, Lustre
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -9479,7 +9815,7 @@ fsx_update_file_system <- function(FileSystemId, ClientRequestToken = NULL, Stor
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"
@@ -9991,7 +10327,7 @@ fsx_update_storage_virtual_machine <- function(ActiveDirectoryConfiguration = NU
 #'     ),
 #'     AdministrativeActions = list(
 #'       list(
-#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION",
+#'         AdministrativeActionType = "FILE_SYSTEM_UPDATE"|"STORAGE_OPTIMIZATION"|"FILE_SYSTEM_ALIAS_ASSOCIATION"|"FILE_SYSTEM_ALIAS_DISASSOCIATION"|"VOLUME_UPDATE"|"SNAPSHOT_UPDATE"|"RELEASE_NFS_V3_LOCKS"|"VOLUME_RESTORE"|"THROUGHPUT_OPTIMIZATION"|"IOPS_OPTIMIZATION"|"STORAGE_TYPE_OPTIMIZATION"|"MISCONFIGURED_STATE_RECOVERY",
 #'         ProgressPercent = 123,
 #'         RequestTime = as.POSIXct(
 #'           "2015-01-01"

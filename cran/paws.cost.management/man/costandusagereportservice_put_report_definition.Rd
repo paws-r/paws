@@ -4,11 +4,13 @@
 \alias{costandusagereportservice_put_report_definition}
 \title{Creates a new report using the description that you provide}
 \usage{
-costandusagereportservice_put_report_definition(ReportDefinition)
+costandusagereportservice_put_report_definition(ReportDefinition, Tags = NULL)
 }
 \arguments{
 \item{ReportDefinition}{[required] Represents the output of the PutReportDefinition operation. The content
 consists of the detailed metadata and data file information.}
+
+\item{Tags}{The tags to be assigned to the report definition resource.}
 }
 \description{
 Creates a new report using the description that you provide.

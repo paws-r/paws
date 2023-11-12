@@ -12,7 +12,26 @@ NULL
 #'
 #' @param OrganizationId &#91;required&#93; The organization under which the resource exists.
 #' @param ResourceId &#91;required&#93; The resource for which members (users or groups) are associated.
+#' 
+#' The identifier can accept *ResourceId*, *Resourcename*, or *email*. The
+#' following identity formats are available:
+#' 
+#' -   Resource ID: r-0123456789a0123456789b0123456789
+#' 
+#' -   Email address: resource@@domain.tld
+#' 
+#' -   Resource name: resource
 #' @param EntityId &#91;required&#93; The member (user or group) to associate to the resource.
+#' 
+#' The entity ID can accept *UserId or GroupID*, *Username or Groupname*,
+#' or *email*.
+#' 
+#' -   Entity: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: entity@@domain.tld
+#' 
+#' -   Entity: entity
 #'
 #' @keywords internal
 #'
@@ -43,7 +62,27 @@ workmail_associate_delegate_to_resource <- function(OrganizationId, ResourceId, 
 #'
 #' @param OrganizationId &#91;required&#93; The organization under which the group exists.
 #' @param GroupId &#91;required&#93; The group to which the member (user or group) is associated.
+#' 
+#' The identifier can accept *GroupId*, *Groupname*, or *email*. The
+#' following identity formats are available:
+#' 
+#' -   Group ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: group@@domain.tld
+#' 
+#' -   Group name: group
 #' @param MemberId &#91;required&#93; The member (user or group) to associate to the group.
+#' 
+#' The member ID can accept *UserID or GroupId*, *Username or Groupname*,
+#' or *email*.
+#' 
+#' -   Member: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: member@@domain.tld
+#' 
+#' -   Member name: member
 #'
 #' @keywords internal
 #'
@@ -208,18 +247,20 @@ workmail_create_availability_configuration <- function(ClientToken = NULL, Organ
 #'
 #' @param OrganizationId &#91;required&#93; The organization under which the group is to be created.
 #' @param Name &#91;required&#93; The name of the group.
+#' @param HiddenFromGlobalAddressList If this parameter is enabled, the group will be hidden from the address
+#' book.
 #'
 #' @keywords internal
 #'
 #' @rdname workmail_create_group
-workmail_create_group <- function(OrganizationId, Name) {
+workmail_create_group <- function(OrganizationId, Name, HiddenFromGlobalAddressList = NULL) {
   op <- new_operation(
     name = "CreateGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .workmail$create_group_input(OrganizationId = OrganizationId, Name = Name)
+  input <- .workmail$create_group_input(OrganizationId = OrganizationId, Name = Name, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$create_group_output()
   config <- get_config()
   svc <- .workmail$service(config)
@@ -359,18 +400,21 @@ workmail_create_organization <- function(DirectoryId = NULL, Alias, ClientToken 
 #' @param Name &#91;required&#93; The name of the new resource.
 #' @param Type &#91;required&#93; The type of the new resource. The available types are `equipment` and
 #' `room`.
+#' @param Description Resource description.
+#' @param HiddenFromGlobalAddressList If this parameter is enabled, the resource will be hidden from the
+#' address book.
 #'
 #' @keywords internal
 #'
 #' @rdname workmail_create_resource
-workmail_create_resource <- function(OrganizationId, Name, Type) {
+workmail_create_resource <- function(OrganizationId, Name, Type, Description = NULL, HiddenFromGlobalAddressList = NULL) {
   op <- new_operation(
     name = "CreateResource",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .workmail$create_resource_input(OrganizationId = OrganizationId, Name = Name, Type = Type)
+  input <- .workmail$create_resource_input(OrganizationId = OrganizationId, Name = Name, Type = Type, Description = Description, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$create_resource_output()
   config <- get_config()
   svc <- .workmail$service(config)
@@ -392,19 +436,28 @@ workmail_create_resource <- function(OrganizationId, Name, Type) {
 #' @param Name &#91;required&#93; The name for the new user. WorkMail directory user names have a maximum
 #' length of 64. All others have a maximum length of 20.
 #' @param DisplayName &#91;required&#93; The display name for the new user.
-#' @param Password &#91;required&#93; The password for the new user.
+#' @param Password The password for the new user.
+#' @param Role The role of the new user.
+#' 
+#' You cannot pass *SYSTEM_USER* or *RESOURCE* role in a single request.
+#' When a user role is not selected, the default role of *USER* is
+#' selected.
+#' @param FirstName The first name of the new user.
+#' @param LastName The last name of the new user.
+#' @param HiddenFromGlobalAddressList If this parameter is enabled, the user will be hidden from the address
+#' book.
 #'
 #' @keywords internal
 #'
 #' @rdname workmail_create_user
-workmail_create_user <- function(OrganizationId, Name, DisplayName, Password) {
+workmail_create_user <- function(OrganizationId, Name, DisplayName, Password = NULL, Role = NULL, FirstName = NULL, LastName = NULL, HiddenFromGlobalAddressList = NULL) {
   op <- new_operation(
     name = "CreateUser",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .workmail$create_user_input(OrganizationId = OrganizationId, Name = Name, DisplayName = DisplayName, Password = Password)
+  input <- .workmail$create_user_input(OrganizationId = OrganizationId, Name = Name, DisplayName = DisplayName, Password = Password, Role = Role, FirstName = FirstName, LastName = LastName, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$create_user_output()
   config <- get_config()
   svc <- .workmail$service(config)
@@ -550,6 +603,14 @@ workmail_delete_email_monitoring_configuration <- function(OrganizationId) {
 #'
 #' @param OrganizationId &#91;required&#93; The organization that contains the group.
 #' @param GroupId &#91;required&#93; The identifier of the group to be deleted.
+#' 
+#' The identifier can be the *GroupId*, or *Groupname*. The following
+#' identity formats are available:
+#' 
+#' -   Group ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Group name: group
 #'
 #' @keywords internal
 #'
@@ -610,9 +671,30 @@ workmail_delete_impersonation_role <- function(OrganizationId, ImpersonationRole
 #'
 #' @param OrganizationId &#91;required&#93; The identifier of the organization under which the member (user or
 #' group) exists.
-#' @param EntityId &#91;required&#93; The identifier of the member (user or group) that owns the mailbox.
-#' @param GranteeId &#91;required&#93; The identifier of the member (user or group) for which to delete granted
-#' permissions.
+#' @param EntityId &#91;required&#93; The identifier of the entity that owns the mailbox.
+#' 
+#' The identifier can be *UserId or Group Id*, *Username or Groupname*, or
+#' *email*.
+#' 
+#' -   Entity ID: 12345678-1234-1234-1234-123456789012,
+#'     r-0123456789a0123456789b0123456789, or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: entity@@domain.tld
+#' 
+#' -   Entity name: entity
+#' @param GranteeId &#91;required&#93; The identifier of the entity for which to delete granted permissions.
+#' 
+#' The identifier can be *UserId, ResourceID, or Group Id*, *Username or
+#' Groupname*, or *email*.
+#' 
+#' -   Grantee ID:
+#'     12345678-1234-1234-1234-123456789012,r-0123456789a0123456789b0123456789,
+#'     or S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: grantee@@domain.tld
+#' 
+#' -   Grantee name: grantee
 #'
 #' @keywords internal
 #'
@@ -718,18 +800,20 @@ workmail_delete_mobile_device_access_rule <- function(OrganizationId, MobileDevi
 #' @param OrganizationId &#91;required&#93; The organization ID.
 #' @param DeleteDirectory &#91;required&#93; If true, deletes the AWS Directory Service directory associated with the
 #' organization.
+#' @param ForceDelete Deletes a WorkMail organization even if the organization has enabled
+#' users.
 #'
 #' @keywords internal
 #'
 #' @rdname workmail_delete_organization
-workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, DeleteDirectory) {
+workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, DeleteDirectory, ForceDelete = NULL) {
   op <- new_operation(
     name = "DeleteOrganization",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .workmail$delete_organization_input(ClientToken = ClientToken, OrganizationId = OrganizationId, DeleteDirectory = DeleteDirectory)
+  input <- .workmail$delete_organization_input(ClientToken = ClientToken, OrganizationId = OrganizationId, DeleteDirectory = DeleteDirectory, ForceDelete = ForceDelete)
   output <- .workmail$delete_organization_output()
   config <- get_config()
   svc <- .workmail$service(config)
@@ -749,6 +833,13 @@ workmail_delete_organization <- function(ClientToken = NULL, OrganizationId, Del
 #' @param OrganizationId &#91;required&#93; The identifier associated with the organization from which the resource
 #' is deleted.
 #' @param ResourceId &#91;required&#93; The identifier of the resource to be deleted.
+#' 
+#' The identifier can accept *ResourceId*, or *Resourcename*. The following
+#' identity formats are available:
+#' 
+#' -   Resource ID: r-0123456789a0123456789b0123456789
+#' 
+#' -   Resource name: resource
 #'
 #' @keywords internal
 #'
@@ -809,6 +900,14 @@ workmail_delete_retention_policy <- function(OrganizationId, Id) {
 #'
 #' @param OrganizationId &#91;required&#93; The organization that contains the user to be deleted.
 #' @param UserId &#91;required&#93; The identifier of the user to be deleted.
+#' 
+#' The identifier can be the *UserId* or *Username*. The following identity
+#' formats are available:
+#' 
+#' -   User ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   User name: user
 #'
 #' @keywords internal
 #'
@@ -839,7 +938,18 @@ workmail_delete_user <- function(OrganizationId, UserId) {
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the WorkMail entity
 #' exists.
-#' @param EntityId &#91;required&#93; The identifier for the member (user or group) to be updated.
+#' @param EntityId &#91;required&#93; The identifier for the member to be updated.
+#' 
+#' The identifier can be *UserId, ResourceId, or Group Id*, *Username,
+#' Resourcename, or Groupname*, or *email*.
+#' 
+#' -   Entity ID: 12345678-1234-1234-1234-123456789012,
+#'     r-0123456789a0123456789b0123456789, or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: entity@@domain.tld
+#' 
+#' -   Entity name: entity
 #'
 #' @keywords internal
 #'
@@ -923,6 +1033,36 @@ workmail_describe_email_monitoring_configuration <- function(OrganizationId) {
 }
 .workmail$operations$describe_email_monitoring_configuration <- workmail_describe_email_monitoring_configuration
 
+#' Returns basic details about an entity in WorkMail
+#'
+#' @description
+#' Returns basic details about an entity in WorkMail.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workmail_describe_entity/](https://www.paws-r-sdk.com/docs/workmail_describe_entity/) for full documentation.
+#'
+#' @param OrganizationId &#91;required&#93; The identifier for the organization under which the entity exists.
+#' @param Email &#91;required&#93; The email under which the entity exists.
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_describe_entity
+workmail_describe_entity <- function(OrganizationId, Email) {
+  op <- new_operation(
+    name = "DescribeEntity",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$describe_entity_input(OrganizationId = OrganizationId, Email = Email)
+  output <- .workmail$describe_entity_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$describe_entity <- workmail_describe_entity
+
 #' Returns the data available for the group
 #'
 #' @description
@@ -932,6 +1072,16 @@ workmail_describe_email_monitoring_configuration <- function(OrganizationId) {
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the group exists.
 #' @param GroupId &#91;required&#93; The identifier for the group to be described.
+#' 
+#' The identifier can accept *GroupId*, *Groupname*, or *email*. The
+#' following identity formats are available:
+#' 
+#' -   Group ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: group@@domain.tld
+#' 
+#' -   Group name: group
 #'
 #' @keywords internal
 #'
@@ -1052,6 +1202,15 @@ workmail_describe_organization <- function(OrganizationId) {
 #' @param OrganizationId &#91;required&#93; The identifier associated with the organization for which the resource
 #' is described.
 #' @param ResourceId &#91;required&#93; The identifier of the resource to be described.
+#' 
+#' The identifier can accept *ResourceId*, *Resourcename*, or *email*. The
+#' following identity formats are available:
+#' 
+#' -   Resource ID: r-0123456789a0123456789b0123456789
+#' 
+#' -   Email address: resource@@domain.tld
+#' 
+#' -   Resource name: resource
 #'
 #' @keywords internal
 #'
@@ -1082,6 +1241,16 @@ workmail_describe_resource <- function(OrganizationId, ResourceId) {
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the user exists.
 #' @param UserId &#91;required&#93; The identifier for the user to be described.
+#' 
+#' The identifier can be the *UserId*, *Username*, or *email*. The
+#' following identity formats are available:
+#' 
+#' -   User ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: user@@domain.tld
+#' 
+#' -   User name: user
 #'
 #' @keywords internal
 #'
@@ -1113,8 +1282,27 @@ workmail_describe_user <- function(OrganizationId, UserId) {
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the resource exists.
 #' @param ResourceId &#91;required&#93; The identifier of the resource from which delegates' set members are
 #' removed.
+#' 
+#' The identifier can accept *ResourceId*, *Resourcename*, or *email*. The
+#' following identity formats are available:
+#' 
+#' -   Resource ID: r-0123456789a0123456789b0123456789
+#' 
+#' -   Email address: resource@@domain.tld
+#' 
+#' -   Resource name: resource
 #' @param EntityId &#91;required&#93; The identifier for the member (user, group) to be removed from the
 #' resource's delegates.
+#' 
+#' The entity ID can accept *UserId or GroupID*, *Username or Groupname*,
+#' or *email*.
+#' 
+#' -   Entity: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: entity@@domain.tld
+#' 
+#' -   Entity: entity
 #'
 #' @keywords internal
 #'
@@ -1145,7 +1333,27 @@ workmail_disassociate_delegate_from_resource <- function(OrganizationId, Resourc
 #'
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the group exists.
 #' @param GroupId &#91;required&#93; The identifier for the group from which members are removed.
-#' @param MemberId &#91;required&#93; The identifier for the member to be removed to the group.
+#' 
+#' The identifier can accept *GroupId*, *Groupname*, or *email*. The
+#' following identity formats are available:
+#' 
+#' -   Group ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: group@@domain.tld
+#' 
+#' -   Group name: group
+#' @param MemberId &#91;required&#93; The identifier for the member to be removed from the group.
+#' 
+#' The member ID can accept *UserID or GroupId*, *Username or Groupname*,
+#' or *email*.
+#' 
+#' -   Member ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: member@@domain.tld
+#' 
+#' -   Member name: member
 #'
 #' @keywords internal
 #'
@@ -1342,6 +1550,16 @@ workmail_get_mail_domain <- function(OrganizationId, DomainName) {
 #' @param OrganizationId &#91;required&#93; The identifier for the organization that contains the user whose mailbox
 #' details are being requested.
 #' @param UserId &#91;required&#93; The identifier for the user whose mailbox details are being requested.
+#' 
+#' The identifier can be the *UserId*, *Username*, or *email*. The
+#' following identity formats are available:
+#' 
+#' -   User ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: user@@domain.tld
+#' 
+#' -   User name: user
 #'
 #' @keywords internal
 #'
@@ -1545,6 +1763,16 @@ workmail_list_availability_configurations <- function(OrganizationId, MaxResults
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the group exists.
 #' @param GroupId &#91;required&#93; The identifier for the group to which the members (users or groups) are
 #' associated.
+#' 
+#' The identifier can accept *GroupId*, *Groupname*, or *email*. The
+#' following identity formats are available:
+#' 
+#' -   Group ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: group@@domain.tld
+#' 
+#' -   Group name: group
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not contain any tokens.
 #' @param MaxResults The maximum number of results to return in a single call.
@@ -1580,18 +1808,20 @@ workmail_list_group_members <- function(OrganizationId, GroupId, NextToken = NUL
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not contain any tokens.
 #' @param MaxResults The maximum number of results to return in a single call.
+#' @param Filters Limit the search results based on the filter criteria. Only one filter
+#' per request is supported.
 #'
 #' @keywords internal
 #'
 #' @rdname workmail_list_groups
-workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = NULL) {
+workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListGroups",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .workmail$list_groups_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .workmail$list_groups_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .workmail$list_groups_output()
   config <- get_config()
   svc <- .workmail$service(config)
@@ -1600,6 +1830,50 @@ workmail_list_groups <- function(OrganizationId, NextToken = NULL, MaxResults = 
   return(response)
 }
 .workmail$operations$list_groups <- workmail_list_groups
+
+#' Returns all the groups to which an entity belongs
+#'
+#' @description
+#' Returns all the groups to which an entity belongs.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workmail_list_groups_for_entity/](https://www.paws-r-sdk.com/docs/workmail_list_groups_for_entity/) for full documentation.
+#'
+#' @param OrganizationId &#91;required&#93; The identifier for the organization under which the entity exists.
+#' @param EntityId &#91;required&#93; The identifier for the entity.
+#' 
+#' The entity ID can accept *UserId or GroupID*, *Username or Groupname*,
+#' or *email*.
+#' 
+#' -   Entity ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: entity@@domain.tld
+#' 
+#' -   Entity name: entity
+#' @param Filters Limit the search results based on the filter criteria.
+#' @param NextToken The token to use to retrieve the next page of results. The first call
+#' does not contain any tokens.
+#' @param MaxResults The maximum number of results to return in a single call.
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_list_groups_for_entity
+workmail_list_groups_for_entity <- function(OrganizationId, EntityId, Filters = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListGroupsForEntity",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .workmail$list_groups_for_entity_input(OrganizationId = OrganizationId, EntityId = EntityId, Filters = Filters, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .workmail$list_groups_for_entity_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$list_groups_for_entity <- workmail_list_groups_for_entity
 
 #' Lists all the impersonation roles for the given WorkMail organization
 #'
@@ -1708,8 +1982,18 @@ workmail_list_mailbox_export_jobs <- function(OrganizationId, NextToken = NULL, 
 #'
 #' @param OrganizationId &#91;required&#93; The identifier of the organization under which the user, group, or
 #' resource exists.
-#' @param EntityId &#91;required&#93; The identifier of the user, group, or resource for which to list mailbox
+#' @param EntityId &#91;required&#93; The identifier of the user, or resource for which to list mailbox
 #' permissions.
+#' 
+#' The entity ID can accept *UserId or ResourceId*, *Username or
+#' Resourcename*, or *email*.
+#' 
+#' -   Entity ID: 12345678-1234-1234-1234-123456789012, or
+#'     r-0123456789a0123456789b0123456789
+#' 
+#' -   Email address: entity@@domain.tld
+#' 
+#' -   Entity name: entity
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not contain any tokens.
 #' @param MaxResults The maximum number of results to return in a single call.
@@ -1849,6 +2133,15 @@ workmail_list_organizations <- function(NextToken = NULL, MaxResults = NULL) {
 #' @param OrganizationId &#91;required&#93; The identifier for the organization that contains the resource for which
 #' delegates are listed.
 #' @param ResourceId &#91;required&#93; The identifier for the resource whose delegates are listed.
+#' 
+#' The identifier can accept *ResourceId*, *Resourcename*, or *email*. The
+#' following identity formats are available:
+#' 
+#' -   Resource ID: r-0123456789a0123456789b0123456789
+#' 
+#' -   Email address: resource@@domain.tld
+#' 
+#' -   Resource name: resource
 #' @param NextToken The token used to paginate through the delegates associated with a
 #' resource.
 #' @param MaxResults The number of maximum results in a page.
@@ -1884,18 +2177,20 @@ workmail_list_resource_delegates <- function(OrganizationId, ResourceId, NextTok
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not contain any tokens.
 #' @param MaxResults The maximum number of results to return in a single call.
+#' @param Filters Limit the resource search results based on the filter criteria. You can
+#' only use one filter per request.
 #'
 #' @keywords internal
 #'
 #' @rdname workmail_list_resources
-workmail_list_resources <- function(OrganizationId, NextToken = NULL, MaxResults = NULL) {
+workmail_list_resources <- function(OrganizationId, NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListResources",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .workmail$list_resources_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .workmail$list_resources_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .workmail$list_resources_output()
   config <- get_config()
   svc <- .workmail$service(config)
@@ -1945,18 +2240,20 @@ workmail_list_tags_for_resource <- function(ResourceARN) {
 #' @param NextToken The token to use to retrieve the next page of results. The first call
 #' does not contain any tokens.
 #' @param MaxResults The maximum number of results to return in a single call.
+#' @param Filters Limit the user search results based on the filter criteria. You can only
+#' use one filter per request.
 #'
 #' @keywords internal
 #'
 #' @rdname workmail_list_users
-workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = NULL) {
+workmail_list_users <- function(OrganizationId, NextToken = NULL, MaxResults = NULL, Filters = NULL) {
   op <- new_operation(
     name = "ListUsers",
     http_method = "POST",
     http_path = "/",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .workmail$list_users_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .workmail$list_users_input(OrganizationId = OrganizationId, NextToken = NextToken, MaxResults = MaxResults, Filters = Filters)
   output <- .workmail$list_users_output()
   config <- get_config()
   svc <- .workmail$service(config)
@@ -2084,10 +2381,32 @@ workmail_put_inbound_dmarc_settings <- function(OrganizationId, Enforced) {
 #'
 #' @param OrganizationId &#91;required&#93; The identifier of the organization under which the user, group, or
 #' resource exists.
-#' @param EntityId &#91;required&#93; The identifier of the user, group, or resource for which to update
-#' mailbox permissions.
+#' @param EntityId &#91;required&#93; The identifier of the user or resource for which to update mailbox
+#' permissions.
+#' 
+#' The identifier can be *UserId, ResourceID, or Group Id*, *Username,
+#' Resourcename, or Groupname*, or *email*.
+#' 
+#' -   Entity ID: 12345678-1234-1234-1234-123456789012,
+#'     r-0123456789a0123456789b0123456789, or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: entity@@domain.tld
+#' 
+#' -   Entity name: entity
 #' @param GranteeId &#91;required&#93; The identifier of the user, group, or resource to which to grant the
 #' permissions.
+#' 
+#' The identifier can be *UserId, ResourceID, or Group Id*, *Username,
+#' Resourcename, or Groupname*, or *email*.
+#' 
+#' -   Grantee ID: 12345678-1234-1234-1234-123456789012,
+#'     r-0123456789a0123456789b0123456789, or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: grantee@@domain.tld
+#' 
+#' -   Grantee name: grantee
 #' @param PermissionValues &#91;required&#93; The permissions granted to the grantee. SEND_AS allows the grantee to
 #' send email as the owner of the mailbox (the grantee is not mentioned on
 #' these emails). SEND_ON_BEHALF allows the grantee to send email on behalf
@@ -2235,6 +2554,16 @@ workmail_register_mail_domain <- function(ClientToken = NULL, OrganizationId, Do
 #' @param OrganizationId &#91;required&#93; The identifier for the organization under which the user, group, or
 #' resource exists.
 #' @param EntityId &#91;required&#93; The identifier for the user, group, or resource to be updated.
+#' 
+#' The identifier can accept *UserId, ResourceId, or GroupId*, or
+#' *Username, Resourcename, or Groupname*. The following identity formats
+#' are available:
+#' 
+#' -   Entity ID: 12345678-1234-1234-1234-123456789012,
+#'     r-0123456789a0123456789b0123456789, or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Entity name: entity
 #' @param Email &#91;required&#93; The email for the user, group, or resource to be updated.
 #'
 #' @keywords internal
@@ -2301,6 +2630,17 @@ workmail_reset_password <- function(OrganizationId, UserId, Password) {
 #' @param ClientToken &#91;required&#93; The idempotency token for the client request.
 #' @param OrganizationId &#91;required&#93; The identifier associated with the organization.
 #' @param EntityId &#91;required&#93; The identifier of the user or resource associated with the mailbox.
+#' 
+#' The identifier can accept *UserId or ResourceId*, *Username or
+#' Resourcename*, or *email*. The following identity formats are available:
+#' 
+#' -   Entity ID: 12345678-1234-1234-1234-123456789012,
+#'     r-0123456789a0123456789b0123456789 , or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: entity@@domain.tld
+#' 
+#' -   Entity name: entity
 #' @param Description The mailbox export job description.
 #' @param RoleArn &#91;required&#93; The ARN of the AWS Identity and Access Management (IAM) role that grants
 #' write permission to the S3 bucket.
@@ -2497,6 +2837,47 @@ workmail_update_default_mail_domain <- function(OrganizationId, DomainName) {
 }
 .workmail$operations$update_default_mail_domain <- workmail_update_default_mail_domain
 
+#' Updates attibutes in a group
+#'
+#' @description
+#' Updates attibutes in a group.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workmail_update_group/](https://www.paws-r-sdk.com/docs/workmail_update_group/) for full documentation.
+#'
+#' @param OrganizationId &#91;required&#93; The identifier for the organization under which the group exists.
+#' @param GroupId &#91;required&#93; The identifier for the group to be updated.
+#' 
+#' The identifier can accept *GroupId*, *Groupname*, or *email*. The
+#' following identity formats are available:
+#' 
+#' -   Group ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: group@@domain.tld
+#' 
+#' -   Group name: group
+#' @param HiddenFromGlobalAddressList If enabled, the group is hidden from the global address list.
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_update_group
+workmail_update_group <- function(OrganizationId, GroupId, HiddenFromGlobalAddressList = NULL) {
+  op <- new_operation(
+    name = "UpdateGroup",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$update_group_input(OrganizationId = OrganizationId, GroupId = GroupId, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
+  output <- .workmail$update_group_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$update_group <- workmail_update_group
+
 #' Updates an impersonation role for the given WorkMail organization
 #'
 #' @description
@@ -2543,6 +2924,16 @@ workmail_update_impersonation_role <- function(OrganizationId, ImpersonationRole
 #' @param OrganizationId &#91;required&#93; The identifier for the organization that contains the user for whom to
 #' update the mailbox quota.
 #' @param UserId &#91;required&#93; The identifer for the user for whom to update the mailbox quota.
+#' 
+#' The identifier can be the *UserId*, *Username*, or *email*. The
+#' following identity formats are available:
+#' 
+#' -   User ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: user@@domain.tld
+#' 
+#' -   User name: user
 #' @param MailboxQuota &#91;required&#93; The updated mailbox quota, in MB, for the specified user.
 #'
 #' @keywords internal
@@ -2621,6 +3012,18 @@ workmail_update_mobile_device_access_rule <- function(OrganizationId, MobileDevi
 #'
 #' @param OrganizationId &#91;required&#93; The organization that contains the user, group, or resource to update.
 #' @param EntityId &#91;required&#93; The user, group, or resource to update.
+#' 
+#' The identifier can accept *UseriD, ResourceId, or GroupId*, *Username,
+#' Resourcename, or Groupname*, or *email*. The following identity formats
+#' are available:
+#' 
+#' -   Entity ID: 12345678-1234-1234-1234-123456789012,
+#'     r-0123456789a0123456789b0123456789, or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: entity@@domain.tld
+#' 
+#' -   Entity name: entity
 #' @param Email &#91;required&#93; The value of the email to be updated as primary.
 #'
 #' @keywords internal
@@ -2653,20 +3056,32 @@ workmail_update_primary_email_address <- function(OrganizationId, EntityId, Emai
 #' @param OrganizationId &#91;required&#93; The identifier associated with the organization for which the resource
 #' is updated.
 #' @param ResourceId &#91;required&#93; The identifier of the resource to be updated.
+#' 
+#' The identifier can accept *ResourceId*, *Resourcename*, or *email*. The
+#' following identity formats are available:
+#' 
+#' -   Resource ID: r-0123456789a0123456789b0123456789
+#' 
+#' -   Email address: resource@@domain.tld
+#' 
+#' -   Resource name: resource
 #' @param Name The name of the resource to be updated.
 #' @param BookingOptions The resource's booking options to be updated.
+#' @param Description Updates the resource description.
+#' @param Type Updates the resource type.
+#' @param HiddenFromGlobalAddressList If enabled, the resource is hidden from the global address list.
 #'
 #' @keywords internal
 #'
 #' @rdname workmail_update_resource
-workmail_update_resource <- function(OrganizationId, ResourceId, Name = NULL, BookingOptions = NULL) {
+workmail_update_resource <- function(OrganizationId, ResourceId, Name = NULL, BookingOptions = NULL, Description = NULL, Type = NULL, HiddenFromGlobalAddressList = NULL) {
   op <- new_operation(
     name = "UpdateResource",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .workmail$update_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId, Name = Name, BookingOptions = BookingOptions)
+  input <- .workmail$update_resource_input(OrganizationId = OrganizationId, ResourceId = ResourceId, Name = Name, BookingOptions = BookingOptions, Description = Description, Type = Type, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList)
   output <- .workmail$update_resource_output()
   config <- get_config()
   svc <- .workmail$service(config)
@@ -2675,3 +3090,60 @@ workmail_update_resource <- function(OrganizationId, ResourceId, Name = NULL, Bo
   return(response)
 }
 .workmail$operations$update_resource <- workmail_update_resource
+
+#' Updates data for the user
+#'
+#' @description
+#' Updates data for the user. To have the latest information, it must be preceded by a [`describe_user`][workmail_describe_user] call. The dataset in the request should be the one expected when performing another [`describe_user`][workmail_describe_user] call.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workmail_update_user/](https://www.paws-r-sdk.com/docs/workmail_update_user/) for full documentation.
+#'
+#' @param OrganizationId &#91;required&#93; The identifier for the organization under which the user exists.
+#' @param UserId &#91;required&#93; The identifier for the user to be updated.
+#' 
+#' The identifier can be the *UserId*, *Username*, or *email*. The
+#' following identity formats are available:
+#' 
+#' -   User ID: 12345678-1234-1234-1234-123456789012 or
+#'     S-1-1-12-1234567890-123456789-123456789-1234
+#' 
+#' -   Email address: user@@domain.tld
+#' 
+#' -   User name: user
+#' @param Role Updates the user role.
+#' 
+#' You cannot pass *SYSTEM_USER* or *RESOURCE*.
+#' @param DisplayName Updates the display name of the user.
+#' @param FirstName Updates the user's first name.
+#' @param LastName Updates the user's last name.
+#' @param HiddenFromGlobalAddressList If enabled, the user is hidden from the global address list.
+#' @param Initials Updates the user's initials.
+#' @param Telephone Updates the user's contact details.
+#' @param Street Updates the user's street address.
+#' @param JobTitle Updates the user's job title.
+#' @param City Updates the user's city.
+#' @param Company Updates the user's company.
+#' @param ZipCode Updates the user's zipcode.
+#' @param Department Updates the user's department.
+#' @param Country Updates the user's country.
+#' @param Office Updates the user's office.
+#'
+#' @keywords internal
+#'
+#' @rdname workmail_update_user
+workmail_update_user <- function(OrganizationId, UserId, Role = NULL, DisplayName = NULL, FirstName = NULL, LastName = NULL, HiddenFromGlobalAddressList = NULL, Initials = NULL, Telephone = NULL, Street = NULL, JobTitle = NULL, City = NULL, Company = NULL, ZipCode = NULL, Department = NULL, Country = NULL, Office = NULL) {
+  op <- new_operation(
+    name = "UpdateUser",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workmail$update_user_input(OrganizationId = OrganizationId, UserId = UserId, Role = Role, DisplayName = DisplayName, FirstName = FirstName, LastName = LastName, HiddenFromGlobalAddressList = HiddenFromGlobalAddressList, Initials = Initials, Telephone = Telephone, Street = Street, JobTitle = JobTitle, City = City, Company = Company, ZipCode = ZipCode, Department = Department, Country = Country, Office = Office)
+  output <- .workmail$update_user_output()
+  config <- get_config()
+  svc <- .workmail$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workmail$operations$update_user <- workmail_update_user

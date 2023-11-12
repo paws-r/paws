@@ -51,7 +51,8 @@ NULL
 #' svc$add_custom_routing_endpoints(
 #'   EndpointConfigurations = list(
 #'     list(
-#'       EndpointId = "string"
+#'       EndpointId = "string",
+#'       AttachmentArn = "string"
 #'     )
 #'   ),
 #'   EndpointGroupArn = "string"
@@ -139,7 +140,8 @@ globalaccelerator_add_custom_routing_endpoints <- function(EndpointConfiguration
 #'     list(
 #'       EndpointId = "string",
 #'       Weight = 123,
-#'       ClientIPPreservationEnabled = TRUE|FALSE
+#'       ClientIPPreservationEnabled = TRUE|FALSE,
+#'       AttachmentArn = "string"
 #'     )
 #'   ),
 #'   EndpointGroupArn = "string"
@@ -469,6 +471,114 @@ globalaccelerator_create_accelerator <- function(Name, IpAddressType = NULL, IpA
   return(response)
 }
 .globalaccelerator$operations$create_accelerator <- globalaccelerator_create_accelerator
+
+#' Create a cross-account attachment in Global Accelerator
+#'
+#' @description
+#' Create a cross-account attachment in Global Accelerator. You create a
+#' cross-account attachment to specify the *principals* who have permission
+#' to add to accelerators in their own account the resources in your
+#' account that you also list in the attachment.
+#' 
+#' A principal can be an Amazon Web Services account number or the Amazon
+#' Resource Name (ARN) for an accelerator. For account numbers that are
+#' listed as principals, to add a resource listed in the attachment to an
+#' accelerator, you must sign in to an account specified as a principal.
+#' Then you can add the resources that are listed to any of your
+#' accelerators. If an accelerator ARN is listed in the cross-account
+#' attachment as a principal, anyone with permission to make updates to the
+#' accelerator can add as endpoints resources that are listed in the
+#' attachment.
+#'
+#' @usage
+#' globalaccelerator_create_cross_account_attachment(Name, Principals,
+#'   Resources, IdempotencyToken, Tags)
+#'
+#' @param Name &#91;required&#93; The name of the cross-account attachment.
+#' @param Principals The principals to list in the cross-account attachment. A principal can
+#' be an Amazon Web Services account number or the Amazon Resource Name
+#' (ARN) for an accelerator.
+#' @param Resources The Amazon Resource Names (ARNs) for the resources to list in the
+#' cross-account attachment. A resource can be any supported Amazon Web
+#' Services resource type for Global Accelerator.
+#' @param IdempotencyToken &#91;required&#93; A unique, case-sensitive identifier that you provide to ensure the
+#' idempotency—that is, the uniqueness—of the request.
+#' @param Tags Create tags for cross-account attachment.
+#' 
+#' For more information, see [Tagging in Global
+#' Accelerator](https://docs.aws.amazon.com/global-accelerator/latest/dg/tagging-in-global-accelerator.html)
+#' in the *Global Accelerator Developer Guide*.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CrossAccountAttachment = list(
+#'     AttachmentArn = "string",
+#'     Name = "string",
+#'     Principals = list(
+#'       "string"
+#'     ),
+#'     Resources = list(
+#'       list(
+#'         EndpointId = "string",
+#'         Region = "string"
+#'       )
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_cross_account_attachment(
+#'   Name = "string",
+#'   Principals = list(
+#'     "string"
+#'   ),
+#'   Resources = list(
+#'     list(
+#'       EndpointId = "string",
+#'       Region = "string"
+#'     )
+#'   ),
+#'   IdempotencyToken = "string",
+#'   Tags = list(
+#'     list(
+#'       Key = "string",
+#'       Value = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_create_cross_account_attachment
+#'
+#' @aliases globalaccelerator_create_cross_account_attachment
+globalaccelerator_create_cross_account_attachment <- function(Name, Principals = NULL, Resources = NULL, IdempotencyToken, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateCrossAccountAttachment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .globalaccelerator$create_cross_account_attachment_input(Name = Name, Principals = Principals, Resources = Resources, IdempotencyToken = IdempotencyToken, Tags = Tags)
+  output <- .globalaccelerator$create_cross_account_attachment_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$create_cross_account_attachment <- globalaccelerator_create_cross_account_attachment
 
 #' Create a custom routing accelerator
 #'
@@ -868,7 +978,8 @@ globalaccelerator_create_custom_routing_listener <- function(AcceleratorArn, Por
 #'     list(
 #'       EndpointId = "string",
 #'       Weight = 123,
-#'       ClientIPPreservationEnabled = TRUE|FALSE
+#'       ClientIPPreservationEnabled = TRUE|FALSE,
+#'       AttachmentArn = "string"
 #'     )
 #'   ),
 #'   TrafficDialPercentage = 123.0,
@@ -1066,6 +1177,68 @@ globalaccelerator_delete_accelerator <- function(AcceleratorArn) {
   return(response)
 }
 .globalaccelerator$operations$delete_accelerator <- globalaccelerator_delete_accelerator
+
+#' Delete a cross-account attachment
+#'
+#' @description
+#' Delete a cross-account attachment. When you delete an attachment, Global
+#' Accelerator revokes the permission to use the resources in the
+#' attachment from all principals in the list of principals. Global
+#' Accelerator revokes the permission for specific resources by doing the
+#' following:
+#' 
+#' -   If the principal is an account ID, Global Accelerator reviews every
+#'     accelerator in the account and removes cross-account endpoints from
+#'     all accelerators.
+#' 
+#' -   If the principal is an accelerator, Global Accelerator reviews just
+#'     that accelerator and removes cross-account endpoints from it.
+#' 
+#' If there are overlapping permissions provided by multiple cross-account
+#' attachments, Global Accelerator only removes endpoints if there are no
+#' current cross-account attachments that provide access permission. For
+#' example, if you delete a cross-account attachment that lists an
+#' accelerator as a principal, but another cross-account attachment
+#' includes the account ID that owns that accelerator, endpoints will not
+#' be removed from the accelerator.
+#'
+#' @usage
+#' globalaccelerator_delete_cross_account_attachment(AttachmentArn)
+#'
+#' @param AttachmentArn &#91;required&#93; The Amazon Resource Name (ARN) for the cross-account attachment to
+#' delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_cross_account_attachment(
+#'   AttachmentArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_delete_cross_account_attachment
+#'
+#' @aliases globalaccelerator_delete_cross_account_attachment
+globalaccelerator_delete_cross_account_attachment <- function(AttachmentArn) {
+  op <- new_operation(
+    name = "DeleteCrossAccountAttachment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .globalaccelerator$delete_cross_account_attachment_input(AttachmentArn = AttachmentArn)
+  output <- .globalaccelerator$delete_cross_account_attachment_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$delete_cross_account_attachment <- globalaccelerator_delete_cross_account_attachment
 
 #' Delete a custom routing accelerator
 #'
@@ -1585,6 +1758,72 @@ globalaccelerator_describe_accelerator_attributes <- function(AcceleratorArn) {
   return(response)
 }
 .globalaccelerator$operations$describe_accelerator_attributes <- globalaccelerator_describe_accelerator_attributes
+
+#' Gets configuration information about a cross-account attachment
+#'
+#' @description
+#' Gets configuration information about a cross-account attachment.
+#'
+#' @usage
+#' globalaccelerator_describe_cross_account_attachment(AttachmentArn)
+#'
+#' @param AttachmentArn &#91;required&#93; The Amazon Resource Name (ARN) for the cross-account attachment to
+#' describe.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CrossAccountAttachment = list(
+#'     AttachmentArn = "string",
+#'     Name = "string",
+#'     Principals = list(
+#'       "string"
+#'     ),
+#'     Resources = list(
+#'       list(
+#'         EndpointId = "string",
+#'         Region = "string"
+#'       )
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_cross_account_attachment(
+#'   AttachmentArn = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_describe_cross_account_attachment
+#'
+#' @aliases globalaccelerator_describe_cross_account_attachment
+globalaccelerator_describe_cross_account_attachment <- function(AttachmentArn) {
+  op <- new_operation(
+    name = "DescribeCrossAccountAttachment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .globalaccelerator$describe_cross_account_attachment_input(AttachmentArn = AttachmentArn)
+  output <- .globalaccelerator$describe_cross_account_attachment_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$describe_cross_account_attachment <- globalaccelerator_describe_cross_account_attachment
 
 #' Describe a custom routing accelerator
 #'
@@ -2110,6 +2349,188 @@ globalaccelerator_list_byoip_cidrs <- function(MaxResults = NULL, NextToken = NU
 }
 .globalaccelerator$operations$list_byoip_cidrs <- globalaccelerator_list_byoip_cidrs
 
+#' List the cross-account attachments that have been created in Global
+#' Accelerator
+#'
+#' @description
+#' List the cross-account attachments that have been created in Global
+#' Accelerator.
+#'
+#' @usage
+#' globalaccelerator_list_cross_account_attachments(MaxResults, NextToken)
+#'
+#' @param MaxResults The number of cross-account attachment objects that you want to return
+#' with this call. The default value is 10.
+#' @param NextToken The token for the next set of results. You receive this token from a
+#' previous call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CrossAccountAttachments = list(
+#'     list(
+#'       AttachmentArn = "string",
+#'       Name = "string",
+#'       Principals = list(
+#'         "string"
+#'       ),
+#'       Resources = list(
+#'         list(
+#'           EndpointId = "string",
+#'           Region = "string"
+#'         )
+#'       ),
+#'       LastModifiedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       CreatedTime = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_cross_account_attachments(
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_list_cross_account_attachments
+#'
+#' @aliases globalaccelerator_list_cross_account_attachments
+globalaccelerator_list_cross_account_attachments <- function(MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListCrossAccountAttachments",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CrossAccountAttachments")
+  )
+  input <- .globalaccelerator$list_cross_account_attachments_input(MaxResults = MaxResults, NextToken = NextToken)
+  output <- .globalaccelerator$list_cross_account_attachments_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$list_cross_account_attachments <- globalaccelerator_list_cross_account_attachments
+
+#' List the accounts that have cross-account endpoints
+#'
+#' @description
+#' List the accounts that have cross-account endpoints.
+#'
+#' @usage
+#' globalaccelerator_list_cross_account_resource_accounts()
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ResourceOwnerAwsAccountIds = list(
+#'     "string"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_cross_account_resource_accounts()
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_list_cross_account_resource_accounts
+#'
+#' @aliases globalaccelerator_list_cross_account_resource_accounts
+globalaccelerator_list_cross_account_resource_accounts <- function() {
+  op <- new_operation(
+    name = "ListCrossAccountResourceAccounts",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .globalaccelerator$list_cross_account_resource_accounts_input()
+  output <- .globalaccelerator$list_cross_account_resource_accounts_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$list_cross_account_resource_accounts <- globalaccelerator_list_cross_account_resource_accounts
+
+#' List the cross-account endpoints available to add to an accelerator
+#'
+#' @description
+#' List the cross-account endpoints available to add to an accelerator.
+#'
+#' @usage
+#' globalaccelerator_list_cross_account_resources(AcceleratorArn,
+#'   ResourceOwnerAwsAccountId, MaxResults, NextToken)
+#'
+#' @param AcceleratorArn The Amazon Resource Name (ARN) of an accelerator in a cross-account
+#' attachment.
+#' @param ResourceOwnerAwsAccountId &#91;required&#93; The account ID of a resource owner in a cross-account attachment.
+#' @param MaxResults The number of cross-account endpoints objects that you want to return
+#' with this call. The default value is 10.
+#' @param NextToken The token for the next set of results. You receive this token from a
+#' previous call.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CrossAccountResources = list(
+#'     list(
+#'       EndpointId = "string",
+#'       AttachmentArn = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_cross_account_resources(
+#'   AcceleratorArn = "string",
+#'   ResourceOwnerAwsAccountId = "string",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_list_cross_account_resources
+#'
+#' @aliases globalaccelerator_list_cross_account_resources
+globalaccelerator_list_cross_account_resources <- function(AcceleratorArn = NULL, ResourceOwnerAwsAccountId, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListCrossAccountResources",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "CrossAccountResources")
+  )
+  input <- .globalaccelerator$list_cross_account_resources_input(AcceleratorArn = AcceleratorArn, ResourceOwnerAwsAccountId = ResourceOwnerAwsAccountId, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .globalaccelerator$list_cross_account_resources_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$list_cross_account_resources <- globalaccelerator_list_cross_account_resources
+
 #' List the custom routing accelerators for an Amazon Web Services account
 #'
 #' @description
@@ -2252,7 +2673,7 @@ globalaccelerator_list_custom_routing_endpoint_groups <- function(ListenerArn, M
     name = "ListCustomRoutingEndpointGroups",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "EndpointGroups")
   )
   input <- .globalaccelerator$list_custom_routing_endpoint_groups_input(ListenerArn = ListenerArn, MaxResults = MaxResults, NextToken = NextToken)
   output <- .globalaccelerator$list_custom_routing_endpoint_groups_output()
@@ -3202,6 +3623,137 @@ globalaccelerator_update_accelerator_attributes <- function(AcceleratorArn, Flow
 }
 .globalaccelerator$operations$update_accelerator_attributes <- globalaccelerator_update_accelerator_attributes
 
+#' Update a cross-account attachment to add or remove principals or
+#' resources
+#'
+#' @description
+#' Update a cross-account attachment to add or remove principals or
+#' resources. When you update an attachment to remove a principal (account
+#' ID or accelerator) or a resource, Global Accelerator revokes the
+#' permission for specific resources by doing the following:
+#' 
+#' -   If the principal is an account ID, Global Accelerator reviews every
+#'     accelerator in the account and removes cross-account endpoints from
+#'     all accelerators.
+#' 
+#' -   If the principal is an accelerator, Global Accelerator reviews just
+#'     that accelerator and removes cross-account endpoints from it.
+#' 
+#' If there are overlapping permissions provided by multiple cross-account
+#' attachments, Global Accelerator only removes endpoints if there are no
+#' current cross-account attachments that provide access permission. For
+#' example, if you delete a cross-account attachment that lists an
+#' accelerator as a principal, but another cross-account attachment
+#' includes the account ID that owns that accelerator, endpoints will not
+#' be removed from the accelerator.
+#'
+#' @usage
+#' globalaccelerator_update_cross_account_attachment(AttachmentArn, Name,
+#'   AddPrincipals, RemovePrincipals, AddResources, RemoveResources)
+#'
+#' @param AttachmentArn &#91;required&#93; The Amazon Resource Name (ARN) of the cross-account attachment to
+#' update.
+#' @param Name The name of the cross-account attachment.
+#' @param AddPrincipals The principals to add to the cross-account attachment. A principal is an
+#' account or the Amazon Resource Name (ARN) of an accelerator that the
+#' attachment gives permission to add the resources from another account,
+#' listed in the attachment.
+#' 
+#' To add more than one principal, separate the account numbers or
+#' accelerator ARNs, or both, with commas.
+#' @param RemovePrincipals The principals to remove from the cross-account attachment. A principal
+#' is an account or the Amazon Resource Name (ARN) of an accelerator that
+#' is given permission to add the resources from another account, listed in
+#' the cross-account attachment.
+#' 
+#' To remove more than one principal, separate the account numbers or
+#' accelerator ARNs, or both, with commas.
+#' @param AddResources The resources to add to the cross-account attachment. A resource listed
+#' in a cross-account attachment can be added to an accelerator by the
+#' principals that are listed in the attachment.
+#' 
+#' To add more than one resource, separate the resource ARNs with commas.
+#' @param RemoveResources The resources to remove from the cross-account attachment. A resource
+#' listed in a cross-account attachment can be added to an accelerator fy
+#' principals that are listed in the cross-account attachment.
+#' 
+#' To remove more than one resource, separate the resource ARNs with
+#' commas.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   CrossAccountAttachment = list(
+#'     AttachmentArn = "string",
+#'     Name = "string",
+#'     Principals = list(
+#'       "string"
+#'     ),
+#'     Resources = list(
+#'       list(
+#'         EndpointId = "string",
+#'         Region = "string"
+#'       )
+#'     ),
+#'     LastModifiedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     ),
+#'     CreatedTime = as.POSIXct(
+#'       "2015-01-01"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_cross_account_attachment(
+#'   AttachmentArn = "string",
+#'   Name = "string",
+#'   AddPrincipals = list(
+#'     "string"
+#'   ),
+#'   RemovePrincipals = list(
+#'     "string"
+#'   ),
+#'   AddResources = list(
+#'     list(
+#'       EndpointId = "string",
+#'       Region = "string"
+#'     )
+#'   ),
+#'   RemoveResources = list(
+#'     list(
+#'       EndpointId = "string",
+#'       Region = "string"
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname globalaccelerator_update_cross_account_attachment
+#'
+#' @aliases globalaccelerator_update_cross_account_attachment
+globalaccelerator_update_cross_account_attachment <- function(AttachmentArn, Name = NULL, AddPrincipals = NULL, RemovePrincipals = NULL, AddResources = NULL, RemoveResources = NULL) {
+  op <- new_operation(
+    name = "UpdateCrossAccountAttachment",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .globalaccelerator$update_cross_account_attachment_input(AttachmentArn = AttachmentArn, Name = Name, AddPrincipals = AddPrincipals, RemovePrincipals = RemovePrincipals, AddResources = AddResources, RemoveResources = RemoveResources)
+  output <- .globalaccelerator$update_cross_account_attachment_output()
+  config <- get_config()
+  svc <- .globalaccelerator$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.globalaccelerator$operations$update_cross_account_attachment <- globalaccelerator_update_cross_account_attachment
+
 #' Update a custom routing accelerator
 #'
 #' @description
@@ -3518,7 +4070,8 @@ globalaccelerator_update_custom_routing_listener <- function(ListenerArn, PortRa
 #'     list(
 #'       EndpointId = "string",
 #'       Weight = 123,
-#'       ClientIPPreservationEnabled = TRUE|FALSE
+#'       ClientIPPreservationEnabled = TRUE|FALSE,
+#'       AttachmentArn = "string"
 #'     )
 #'   ),
 #'   TrafficDialPercentage = 123.0,

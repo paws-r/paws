@@ -2,17 +2,17 @@
 % Please edit documentation in R/marketplacecatalog_operations.R
 \name{marketplacecatalog_delete_resource_policy}
 \alias{marketplacecatalog_delete_resource_policy}
-\title{Deletes a resource-based policy on an Entity that is identified by its
+\title{Deletes a resource-based policy on an entity that is identified by its
 resource ARN}
 \usage{
 marketplacecatalog_delete_resource_policy(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the Entity resource that is associated
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the entity resource that is associated
 with the resource policy.}
 }
 \description{
-Deletes a resource-based policy on an Entity that is identified by its resource ARN.
+Deletes a resource-based policy on an entity that is identified by its resource ARN.
 
 See \url{https://www.paws-r-sdk.com/docs/marketplacecatalog_delete_resource_policy/} for full documentation.
 }

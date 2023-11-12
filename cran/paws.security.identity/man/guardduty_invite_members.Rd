@@ -28,7 +28,7 @@ members.}
 inviting to GuardDuty as members.}
 }
 \description{
-Invites Amazon Web Services accounts to become members of an organization administered by the Amazon Web Services account that invokes this API. If you are using Amazon Web Services Organizations to manager your GuardDuty environment, this step is not needed. For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html}{Managing accounts with Amazon Web Services Organizations}.
+Invites Amazon Web Services accounts to become members of an organization administered by the Amazon Web Services account that invokes this API. If you are using Amazon Web Services Organizations to manage your GuardDuty environment, this step is not needed. For more information, see \href{https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html}{Managing accounts with organizations}.
 
 See \url{https://www.paws-r-sdk.com/docs/guardduty_invite_members/} for full documentation.
 }

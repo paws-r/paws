@@ -33,12 +33,9 @@ NULL
 #' you're interested in, such as an `AmazonEC2` instance, with a
 #' `Provisioned IOPS` `volumeType`.
 #' 
-#' You can use the following endpoints for the Amazon Web Services Price
-#' List API:
-#' 
-#' -   https://api.pricing.us-east-1.amazonaws.com
-#' 
-#' -   https://api.pricing.ap-south-1.amazonaws.com
+#' For more information, see [Using the Amazon Web Services Price List
+#' API](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html)
+#' in the *Billing User Guide*.
 #'
 #' @param
 #' config
@@ -52,9 +49,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}

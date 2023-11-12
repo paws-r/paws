@@ -17,9 +17,9 @@ elbv2(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -148,7 +148,7 @@ they complete at most one time. If you repeat an operation, it succeeds.
 \link[paws.networking:elbv2_set_ip_address_type]{set_ip_address_type} \tab Sets the type of IP addresses used by the subnets of the specified load balancer\cr
 \link[paws.networking:elbv2_set_rule_priorities]{set_rule_priorities} \tab Sets the priorities of the specified rules\cr
 \link[paws.networking:elbv2_set_security_groups]{set_security_groups} \tab Associates the specified security groups with the specified Application Load Balancer or Network Load Balancer\cr
-\link[paws.networking:elbv2_set_subnets]{set_subnets} \tab Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer or Network Load Balancer
+\link[paws.networking:elbv2_set_subnets]{set_subnets} \tab Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer, Network Load Balancer or Gateway Load Balancer
 }
 }
 

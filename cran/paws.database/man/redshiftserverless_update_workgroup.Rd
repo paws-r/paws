@@ -8,6 +8,7 @@ redshiftserverless_update_workgroup(
   baseCapacity = NULL,
   configParameters = NULL,
   enhancedVpcRouting = NULL,
+  maxCapacity = NULL,
   port = NULL,
   publiclyAccessible = NULL,
   securityGroupIds = NULL,
@@ -29,6 +30,9 @@ monitoring rules and available metrics, see \href{https://docs.aws.amazon.com/re
 \item{enhancedVpcRouting}{The value that specifies whether to turn on enhanced virtual private
 cloud (VPC) routing, which forces Amazon Redshift Serverless to route
 traffic through your VPC.}
+
+\item{maxCapacity}{The maximum data-warehouse capacity Amazon Redshift Serverless uses to
+serve queries. The max capacity is specified in RPUs.}
 
 \item{port}{The custom port to use when connecting to a workgroup. Valid port ranges
 are 5431-5455 and 8191-8215. The default is 5439.}

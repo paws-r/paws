@@ -47,7 +47,8 @@ rds_restore_db_instance_to_point_in_time(
   BackupTarget = NULL,
   NetworkType = NULL,
   StorageThroughput = NULL,
-  AllocatedStorage = NULL
+  AllocatedStorage = NULL,
+  DedicatedLogVolume = NULL
 )
 }
 \arguments{
@@ -58,35 +59,35 @@ Constraints:
 \item Must match the identifier of an existing DB instance.
 }}
 
-\item{TargetDBInstanceIdentifier}{[required] The name of the new DB instance to be created.
+\item{TargetDBInstanceIdentifier}{[required] The name of the new DB instance to create.
 
 Constraints:
 \itemize{
-\item Must contain from 1 to 63 letters, numbers, or hyphens
-\item First character must be a letter
-\item Can't end with a hyphen or contain two consecutive hyphens
+\item Must contain from 1 to 63 letters, numbers, or hyphens.
+\item First character must be a letter.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 }}
 
 \item{RestoreTime}{The date and time to restore from.
 
-Valid Values: Value must be a time in Universal Coordinated Time (UTC)
-format
-
 Constraints:
 \itemize{
-\item Must be before the latest restorable time for the DB instance
+\item Must be a time in Universal Coordinated Time (UTC) format.
+\item Must be before the latest restorable time for the DB instance.
 \item Can't be specified if the \code{UseLatestRestorableTime} parameter is
-enabled
+enabled.
 }
 
 Example: \verb{2009-09-07T23:45:00Z}}
 
-\item{UseLatestRestorableTime}{A value that indicates whether the DB instance is restored from the
-latest backup time. By default, the DB instance isn't restored from the
-latest backup time.
+\item{UseLatestRestorableTime}{Specifies whether the DB instance is restored from the latest backup
+time. By default, the DB instance isn't restored from the latest backup
+time.
 
-Constraints: Can't be specified if the \code{RestoreTime} parameter is
-provided.}
+Constraints:
+\itemize{
+\item Can't be specified if the \code{RestoreTime} parameter is provided.
+}}
 
 \item{DBInstanceClass}{The compute and memory capacity of the Amazon RDS DB instance, for
 example db.m4.large. Not all DB instance classes are available in all
@@ -94,38 +95,49 @@ Amazon Web Services Regions, or for all database engines. For the full
 list of DB instance classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
 in the \emph{Amazon RDS User Guide}.
 
-Default: The same DBInstanceClass as the original DB instance.}
+Default: The same DB instance class as the original DB instance.}
 
 \item{Port}{The port number on which the database accepts connections.
 
-Constraints: Value must be \code{1150-65535}
+Default: The same port as the original DB instance.
 
-Default: The same port as the original DB instance.}
+Constraints:
+\itemize{
+\item The value must be \code{1150-65535}.
+}}
 
 \item{AvailabilityZone}{The Availability Zone (AZ) where the DB instance will be created.
 
 Default: A random, system-chosen Availability Zone.
 
-Constraint: You can't specify the \code{AvailabilityZone} parameter if the DB
+Constraints:
+\itemize{
+\item You can't specify the \code{AvailabilityZone} parameter if the DB
 instance is a Multi-AZ deployment.
+}
 
 Example: \verb{us-east-1a}}
 
 \item{DBSubnetGroupName}{The DB subnet group name to use for the new instance.
 
-Constraints: If supplied, must match the name of an existing
-DBSubnetGroup.
+Constraints:
+\itemize{
+\item If supplied, must match the name of an existing DB subnet group.
+}
 
 Example: \code{mydbsubnetgroup}}
 
-\item{MultiAZ}{A value that indicates whether the DB instance is a Multi-AZ deployment.
+\item{MultiAZ}{Secifies whether the DB instance is a Multi-AZ deployment.
 
 This setting doesn't apply to RDS Custom.
 
-Constraint: You can't specify the \code{AvailabilityZone} parameter if the DB
-instance is a Multi-AZ deployment.}
+Constraints:
+\itemize{
+\item You can't specify the \code{AvailabilityZone} parameter if the DB
+instance is a Multi-AZ deployment.
+}}
 
-\item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
+\item{PubliclyAccessible}{Specifies whether the DB instance is publicly accessible.
 
 When the DB cluster is publicly accessible, its Domain Name System (DNS)
 endpoint resolves to the private IP address from within the DB cluster's
@@ -141,19 +153,19 @@ instance with a DNS name that resolves to a private IP address.
 For more information, see
 \code{\link[=rds_create_db_instance]{create_db_instance}}.}
 
-\item{AutoMinorVersionUpgrade}{A value that indicates whether minor version upgrades are applied
-automatically to the DB instance during the maintenance window.
+\item{AutoMinorVersionUpgrade}{Specifies whether minor version upgrades are applied automatically to
+the DB instance during the maintenance window.
 
 This setting doesn't apply to RDS Custom.}
 
-\item{LicenseModel}{License model information for the restored DB instance.
+\item{LicenseModel}{The license model information for the restored DB instance.
 
 This setting doesn't apply to RDS Custom.
 
-Default: Same as source.
+Valid Values: \code{license-included} | \code{bring-your-own-license} |
+\code{general-public-license}
 
-Valid values: \code{license-included} | \code{bring-your-own-license} |
-\code{general-public-license}}
+Default: Same as the source.}
 
 \item{DBName}{The database name for the restored DB instance.
 
@@ -163,10 +175,6 @@ doesn't apply to RDS Custom.}
 \item{Engine}{The database engine to use for the new instance.
 
 This setting doesn't apply to RDS Custom.
-
-Default: The same as source
-
-Constraint: Must be compatible with the engine of the source
 
 Valid Values:
 \itemize{
@@ -181,19 +189,26 @@ Valid Values:
 \item \code{sqlserver-se}
 \item \code{sqlserver-ex}
 \item \code{sqlserver-web}
+}
+
+Default: The same as source
+
+Constraints:
+\itemize{
+\item Must be compatible with the engine of the source.
 }}
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
-be initially allocated for the DB instance.
+initially allocate for the DB instance.
 
-Constraints: Must be an integer greater than 1000.
+This setting doesn't apply to SQL Server.
 
-\strong{SQL Server}
+Constraints:
+\itemize{
+\item Must be an integer greater than 1000.
+}}
 
-Setting the IOPS value for the SQL Server database engine isn't
-supported.}
-
-\item{OptionGroupName}{The name of the option group to be used for the restored DB instance.
+\item{OptionGroupName}{The name of the option group to use for the restored DB instance.
 
 Permanent options, such as the TDE option for Oracle Advanced Security
 TDE, can't be removed from an option group, and that option group can't
@@ -201,20 +216,22 @@ be removed from a DB instance after it is associated with a DB instance
 
 This setting doesn't apply to RDS Custom.}
 
-\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
-instance to snapshots of the DB instance. By default, tags are not
-copied.}
+\item{CopyTagsToSnapshot}{Specifies whether to copy all tags from the restored DB instance to
+snapshots of the DB instance. By default, tags are not copied.}
 
 \item{Tags}{}
 
-\item{StorageType}{Specifies the storage type to be associated with the DB instance.
+\item{StorageType}{The storage type to associate with the DB instance.
 
-Valid values: \code{gp2 | gp3 | io1 | standard}
+Valid Values: \code{gp2 | gp3 | io1 | standard}
 
-If you specify \code{io1} or \code{gp3}, you must also include a value for the
+Default: \code{io1}, if the \code{Iops} parameter is specified. Otherwise, \code{gp2}.
+
+Constraints:
+\itemize{
+\item If you specify \code{io1} or \code{gp3}, you must also include a value for the
 \code{Iops} parameter.
-
-Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp2}}
+}}
 
 \item{TdeCredentialArn}{The ARN from the key store with which to associate the instance for TDE
 encryption.
@@ -231,10 +248,10 @@ This setting doesn't apply to RDS Custom.}
 Default: The default EC2 VPC security group for the DB subnet group's
 VPC.}
 
-\item{Domain}{Specify the Active Directory directory ID to restore the DB instance in.
-Create the domain before running this command. Currently, you can create
-only the MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB
-instances in an Active Directory Domain.
+\item{Domain}{The Active Directory directory ID to restore the DB instance in. Create
+the domain before running this command. Currently, you can create only
+the MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances in
+an Active Directory Domain.
 
 This setting doesn't apply to RDS Custom.
 
@@ -289,9 +306,9 @@ both entries in the list.
 
 Example: \verb{123.124.125.126,234.235.236.237}}
 
-\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of Amazon Web Services
-Identity and Access Management (IAM) accounts to database accounts. By
-default, mapping isn't enabled.
+\item{EnableIAMDatabaseAuthentication}{Specifies whether to enable mapping of Amazon Web Services Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping isn't enabled.
 
 This setting doesn't apply to RDS Custom.
 
@@ -310,8 +327,8 @@ instance class of the DB instance.
 
 This setting doesn't apply to RDS Custom.}
 
-\item{UseDefaultProcessorFeatures}{A value that indicates whether the DB instance class of the DB instance
-uses its default processor features.
+\item{UseDefaultProcessorFeatures}{Specifies whether the DB instance class of the DB instance uses its
+default processor features.
 
 This setting doesn't apply to RDS Custom.}
 
@@ -324,16 +341,16 @@ This setting doesn't apply to RDS Custom.
 
 Constraints:
 \itemize{
-\item If supplied, must match the name of an existing DBParameterGroup.
+\item If supplied, must match the name of an existing DB parameter group.
 \item Must be 1 to 255 letters, numbers, or hyphens.
 \item First character must be a letter.
 \item Can't end with a hyphen or contain two consecutive hyphens.
 }}
 
-\item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
-enabled. The database can't be deleted when deletion protection is
-enabled. By default, deletion protection isn't enabled. For more
-information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+\item{DeletionProtection}{Specifies whether the DB instance has deletion protection enabled. The
+database can't be deleted when deletion protection is enabled. By
+default, deletion protection isn't enabled. For more information, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 
 \item{SourceDbiResourceId}{The resource ID of the source DB instance from which to restore.}
 
@@ -348,12 +365,12 @@ This setting doesn't apply to RDS Custom.}
 
 \item{SourceDBInstanceAutomatedBackupsArn}{The Amazon Resource Name (ARN) of the replicated automated backups from
 which to restore, for example,
-\code{arn:aws:rds:useast-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE}.
+\code{arn:aws:rds:us-east-1:123456789012:auto-backup:ab-L2IJCEXJP7XQ7HOJ4SIEXAMPLE}.
 
 This setting doesn't apply to RDS Custom.}
 
-\item{EnableCustomerOwnedIp}{A value that indicates whether to enable a customer-owned IP address
-(CoIP) for an RDS on Outposts DB instance.
+\item{EnableCustomerOwnedIp}{Specifies whether to enable a customer-owned IP address (CoIP) for an
+RDS on Outposts DB instance.
 
 A \emph{CoIP} provides local or external connectivity to resources in your
 Outpost subnets through your on-premises network. For some use cases, a
@@ -395,20 +412,20 @@ in the \emph{Amazon RDS User Guide}.}
 
 \item{NetworkType}{The network type of the DB instance.
 
-Valid values:
-\itemize{
-\item \code{IPV4}
-\item \code{DUAL}
-}
-
 The network type is determined by the \code{DBSubnetGroup} specified for the
 DB instance. A \code{DBSubnetGroup} can support only the IPv4 protocol or the
 IPv4 and the IPv6 protocols (\code{DUAL}).
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_VPC.WorkingWithRDSInstanceinaVPC.html}{Working with a DB instance in a VPC}
-in the \emph{Amazon RDS User Guide.}}
+in the \emph{Amazon RDS User Guide.}
 
-\item{StorageThroughput}{Specifies the storage throughput value for the DB instance.
+Valid Values:
+\itemize{
+\item \code{IPV4}
+\item \code{DUAL}
+}}
+
+\item{StorageThroughput}{The storage throughput value for the DB instance.
 
 This setting doesn't apply to RDS Custom or Amazon Aurora.}
 
@@ -419,9 +436,12 @@ instance. Follow the allocation rules specified in
 Be sure to allocate enough storage for your new DB instance so that the
 restore operation can succeed. You can also allocate additional storage
 for future growth.}
+
+\item{DedicatedLogVolume}{Specifies whether to enable a dedicated log volume (DLV) for the DB
+instance.}
 }
 \description{
-Restores a DB instance to an arbitrary point in time. You can restore to any point in time before the time identified by the LatestRestorableTime property. You can restore to a point up to the number of days specified by the BackupRetentionPeriod property.
+Restores a DB instance to an arbitrary point in time. You can restore to any point in time before the time identified by the \code{LatestRestorableTime} property. You can restore to a point up to the number of days specified by the \code{BackupRetentionPeriod} property.
 
 See \url{https://www.paws-r-sdk.com/docs/rds_restore_db_instance_to_point_in_time/} for full documentation.
 }

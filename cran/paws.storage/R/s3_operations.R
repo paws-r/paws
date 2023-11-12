@@ -263,11 +263,12 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' or replaced with tag-set provided in the request.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
 #' Amazon S3 (for example, `AES256`, `aws:kms`, `aws:kms:dsse`).
-#' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
-#' created objects. The STANDARD storage class provides high durability and
-#' high availability. Depending on performance needs, you can specify a
-#' different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
-#' Storage Class. For more information, see [Storage
+#' @param StorageClass If the `x-amz-storage-class` header is not used, the copied object will
+#' be stored in the STANDARD Storage Class by default. The STANDARD storage
+#' class provides high durability and high availability. Depending on
+#' performance needs, you can specify a different Storage Class. Amazon S3
+#' on Outposts only uses the OUTPOSTS Storage Class. For more information,
+#' see [Storage
 #' Classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
 #' in the *Amazon S3 User Guide*.
 #' @param WebsiteRedirectLocation If the bucket is configured as a website, redirects requests for this
@@ -286,11 +287,12 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
-#' @param SSEKMSKeyId Specifies the KMS key ID to use for object encryption. All GET and PUT
-#' requests for an object protected by KMS will fail if they're not made
-#' via SSL or using SigV4. For information about configuring any of the
-#' officially supported Amazon Web Services SDKs and Amazon Web Services
-#' CLI, see [Specifying the Signature Version in Request
+#' @param SSEKMSKeyId Specifies the KMS ID (Key ID, Key ARN, or Key Alias) to use for object
+#' encryption. All GET and PUT requests for an object protected by KMS will
+#' fail if they're not made via SSL or using SigV4. For information about
+#' configuring any of the officially supported Amazon Web Services SDKs and
+#' Amazon Web Services CLI, see [Specifying the Signature Version in
+#' Request
 #' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version)
 #' in the *Amazon S3 User Guide*.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
@@ -465,12 +467,12 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
-#' @param SSEKMSKeyId Specifies the ID of the symmetric encryption customer managed key to use
-#' for object encryption. All GET and PUT requests for an object protected
-#' by KMS will fail if they're not made via SSL or using SigV4. For
-#' information about configuring any of the officially supported Amazon Web
-#' Services SDKs and Amazon Web Services CLI, see [Specifying the Signature
-#' Version in Request
+#' @param SSEKMSKeyId Specifies the ID (Key ID, Key ARN, or Key Alias) of the symmetric
+#' encryption customer managed key to use for object encryption. All GET
+#' and PUT requests for an object protected by KMS will fail if they're not
+#' made via SSL or using SigV4. For information about configuring any of
+#' the officially supported Amazon Web Services SDKs and Amazon Web
+#' Services CLI, see [Specifying the Signature Version in Request
 #' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version)
 #' in the *Amazon S3 User Guide*.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
@@ -4196,9 +4198,10 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
 #' @param SSEKMSKeyId If `x-amz-server-side-encryption` has a valid value of `aws:kms` or
-#' `aws:kms:dsse`, this header specifies the ID of the Key Management
-#' Service (KMS) symmetric encryption customer managed key that was used
-#' for the object. If you specify `x-amz-server-side-encryption:aws:kms` or
+#' `aws:kms:dsse`, this header specifies the ID (Key ID, Key ARN, or Key
+#' Alias) of the Key Management Service (KMS) symmetric encryption customer
+#' managed key that was used for the object. If you specify
+#' `x-amz-server-side-encryption:aws:kms` or
 #' `x-amz-server-side-encryption:aws:kms:dsse`, but do not
 #' provide` x-amz-server-side-encryption-aws-kms-key-id`, Amazon S3 uses
 #' the Amazon Web Services managed key (`aws/s3`) to protect the data. If
@@ -4541,7 +4544,7 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' Sets the supplied tag-set to an object that already exists in a bucket
 #'
 #' @description
-#' Sets the supplied tag-set to an object that already exists in a bucket.
+#' Sets the supplied tag-set to an object that already exists in a bucket. A tag is a key-value pair. For more information, see [Object Tagging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/s3_put_object_tagging/](https://www.paws-r-sdk.com/docs/s3_put_object_tagging/) for full documentation.
 #'
@@ -5202,9 +5205,10 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' @param SSECustomerAlgorithm Encryption algorithm used if server-side encryption with a
 #' customer-provided encryption key was specified for object stored in
 #' Amazon S3.
-#' @param SSEKMSKeyId If present, specifies the ID of the Amazon Web Services Key Management
-#' Service (Amazon Web Services KMS) symmetric encryption customer managed
-#' key that was used for stored in Amazon S3 object.
+#' @param SSEKMSKeyId If present, specifies the ID (Key ID, Key ARN, or Key Alias) of the
+#' Amazon Web Services Key Management Service (Amazon Web Services KMS)
+#' symmetric encryption customer managed key that was used for stored in
+#' Amazon S3 object.
 #' @param SSECustomerKeyMD5 128-bit MD5 digest of customer-provided encryption key used in Amazon S3
 #' to encrypt data stored in S3. For more information, see [Protecting data
 #' using server-side encryption with customer-provided encryption keys

@@ -257,6 +257,10 @@ route53_create_cidr_collection <- function(Name, CallerReference) {
 #' -   If you send a [`create_health_check`][route53_create_health_check]
 #'     request with a unique `CallerReference` but settings identical to an
 #'     existing health check, Route 53 creates the health check.
+#' 
+#' Route 53 does not store the `CallerReference` for a deleted health check
+#' indefinitely. The `CallerReference` for a deleted health check will be
+#' deleted after a number of days.
 #' @param HealthCheckConfig &#91;required&#93; A complex type that contains settings for a new health check.
 #'
 #' @keywords internal
@@ -1220,6 +1224,8 @@ route53_get_dnssec <- function(HostedZoneId) {
 #' @param CountryCode Amazon Route 53 uses the two-letter country codes that are specified in
 #' [ISO standard 3166-1
 #' alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
+#' 
+#' Route 53 also supports the contry code **UA** forr Ukraine.
 #' @param SubdivisionCode The code for the subdivision, such as a particular state within the
 #' United States. For a list of US state abbreviations, see Appendix B:
 #' Two–Letter State and Possession Abbreviations on the United States
@@ -1839,9 +1845,9 @@ route53_list_geo_locations <- function(StartContinentCode = NULL, StartCountryCo
 #' there are no more health checks to get.
 #' @param MaxItems The maximum number of health checks that you want
 #' [`list_health_checks`][route53_list_health_checks] to return in response
-#' to the current request. Amazon Route 53 returns a maximum of 100 items.
-#' If you set `MaxItems` to a value greater than 100, Route 53 returns only
-#' the first 100 health checks.
+#' to the current request. Amazon Route 53 returns a maximum of 1000 items.
+#' If you set `MaxItems` to a value greater than 1000, Route 53 returns
+#' only the first 1000 health checks.
 #'
 #' @keywords internal
 #'
@@ -1889,18 +1895,19 @@ route53_list_health_checks <- function(Marker = NULL, MaxItems = NULL) {
 #' @param DelegationSetId If you're using reusable delegation sets and you want to list all of the
 #' hosted zones that are associated with a reusable delegation set, specify
 #' the ID of that reusable delegation set.
+#' @param HostedZoneType (Optional) Specifies if the hosted zone is private.
 #'
 #' @keywords internal
 #'
 #' @rdname route53_list_hosted_zones
-route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, DelegationSetId = NULL) {
+route53_list_hosted_zones <- function(Marker = NULL, MaxItems = NULL, DelegationSetId = NULL, HostedZoneType = NULL) {
   op <- new_operation(
     name = "ListHostedZones",
     http_method = "GET",
     http_path = "/2013-04-01/hostedzone",
     paginator = list(input_token = "Marker", limit_key = "MaxItems", more_results = "IsTruncated", output_token = "NextMarker", result_key = "HostedZones")
   )
-  input <- .route53$list_hosted_zones_input(Marker = Marker, MaxItems = MaxItems, DelegationSetId = DelegationSetId)
+  input <- .route53$list_hosted_zones_input(Marker = Marker, MaxItems = MaxItems, DelegationSetId = DelegationSetId, HostedZoneType = HostedZoneType)
   output <- .route53$list_hosted_zones_output()
   config <- get_config()
   svc <- .route53$service(config)
@@ -3015,11 +3022,12 @@ route53_update_traffic_policy_comment <- function(Id, Version, Comment) {
 }
 .route53$operations$update_traffic_policy_comment <- route53_update_traffic_policy_comment
 
-#' Updates the resource record sets in a specified hosted zone that were
-#' created based on the settings in a specified traffic policy version
+#' After you submit a UpdateTrafficPolicyInstance request, there's a brief
+#' delay while Route 53 creates the resource record sets that are specified
+#' in the traffic policy definition
 #'
 #' @description
-#' Updates the resource record sets in a specified hosted zone that were created based on the settings in a specified traffic policy version.
+#' After you submit a [`update_traffic_policy_instance`][route53_update_traffic_policy_instance] request, there's a brief delay while Route 53 creates the resource record sets that are specified in the traffic policy definition. Use [`get_traffic_policy_instance`][route53_get_traffic_policy_instance] with the `id` of updated traffic policy instance confirm that the [`update_traffic_policy_instance`][route53_update_traffic_policy_instance] request completed successfully. For more information, see the `State` response element.
 #'
 #' See [https://www.paws-r-sdk.com/docs/route53_update_traffic_policy_instance/](https://www.paws-r-sdk.com/docs/route53_update_traffic_policy_instance/) for full documentation.
 #'

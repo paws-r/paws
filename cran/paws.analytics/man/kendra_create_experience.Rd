@@ -22,8 +22,8 @@ kendra_create_experience(
 \code{\link[=kendra_query]{query}} API,
 \code{\link[=kendra_get_query_suggestions]{get_query_suggestions}} API, and other
 required APIs. The role also must include permission to access IAM
-Identity Center (successor to Single Sign-On) that stores your user and
-group information. For more information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM access roles for Amazon Kendra}.}
+Identity Center that stores your user and group information. For more
+information, see \href{https://docs.aws.amazon.com/kendra/latest/dg/iam-roles.html}{IAM access roles for Amazon Kendra}.}
 
 \item{Configuration}{Configuration information for your Amazon Kendra experience. This
 includes \code{ContentSourceConfiguration}, which specifies the data source

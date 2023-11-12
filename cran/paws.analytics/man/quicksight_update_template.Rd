@@ -11,7 +11,8 @@ quicksight_update_template(
   SourceEntity = NULL,
   VersionDescription = NULL,
   Name = NULL,
-  Definition = NULL
+  Definition = NULL,
+  ValidationStrategy = NULL
 )
 }
 \arguments{
@@ -46,6 +47,9 @@ field.}
 
 A definition is the data model of all features in a Dashboard, Template,
 or Analysis.}
+
+\item{ValidationStrategy}{The option to relax the validation needed to update a template with
+definition objects. This skips the validation step for specific errors.}
 }
 \description{
 Updates a template from an existing Amazon QuickSight analysis or another template.

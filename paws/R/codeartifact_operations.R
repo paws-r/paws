@@ -58,7 +58,7 @@ NULL
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'         status = "Available"
 #'       )
 #'     ),
@@ -185,7 +185,7 @@ codeartifact_associate_external_connection <- function(domain, domainOwner = NUL
 #'   domainOwner = "string",
 #'   sourceRepository = "string",
 #'   destinationRepository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -358,7 +358,7 @@ codeartifact_create_domain <- function(domain, encryptionKey = NULL, tags = NULL
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'         status = "Available"
 #'       )
 #'     ),
@@ -571,7 +571,7 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #' ```
 #' list(
 #'   deletedPackage = list(
-#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'     namespace = "string",
 #'     package = "string",
 #'     originConfiguration = list(
@@ -590,7 +590,7 @@ codeartifact_delete_domain_permissions_policy <- function(domain, domainOwner = 
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string"
 #' )
@@ -681,7 +681,7 @@ codeartifact_delete_package <- function(domain, domainOwner = NULL, repository, 
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -745,7 +745,7 @@ codeartifact_delete_package_versions <- function(domain, domainOwner = NULL, rep
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'         status = "Available"
 #'       )
 #'     ),
@@ -962,7 +962,7 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #' ```
 #' list(
 #'   package = list(
-#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'     namespace = "string",
 #'     name = "string",
 #'     originConfiguration = list(
@@ -981,7 +981,7 @@ codeartifact_describe_domain <- function(domain, domainOwner = NULL) {
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string"
 #' )
@@ -1047,7 +1047,7 @@ codeartifact_describe_package <- function(domain, domainOwner = NULL, repository
 #' ```
 #' list(
 #'   packageVersion = list(
-#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'     format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'     namespace = "string",
 #'     packageName = "string",
 #'     displayName = "string",
@@ -1083,7 +1083,7 @@ codeartifact_describe_package <- function(domain, domainOwner = NULL, repository
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string"
@@ -1146,7 +1146,7 @@ codeartifact_describe_package_version <- function(domain, domainOwner = NULL, re
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'         status = "Available"
 #'       )
 #'     ),
@@ -1224,7 +1224,7 @@ codeartifact_describe_repository <- function(domain, domainOwner = NULL, reposit
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'         status = "Available"
 #'       )
 #'     ),
@@ -1338,7 +1338,7 @@ codeartifact_disassociate_external_connection <- function(domain, domainOwner = 
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -1578,7 +1578,7 @@ codeartifact_get_domain_permissions_policy <- function(domain, domainOwner = NUL
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string",
@@ -1644,7 +1644,7 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   version = "string",
@@ -1659,7 +1659,7 @@ codeartifact_get_package_version_asset <- function(domain, domainOwner = NULL, r
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string"
@@ -1728,7 +1728,7 @@ codeartifact_get_package_version_readme <- function(domain, domainOwner = NULL, 
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift"
 #' )
 #' ```
 #'
@@ -1926,7 +1926,7 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   version = "string",
@@ -1950,7 +1950,7 @@ codeartifact_list_domains <- function(maxResults = NULL, nextToken = NULL) {
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string",
@@ -2026,7 +2026,7 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   version = "string",
@@ -2049,7 +2049,7 @@ codeartifact_list_package_version_assets <- function(domain, domainOwner = NULL,
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string",
@@ -2127,7 +2127,7 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #' ```
 #' list(
 #'   defaultDisplayVersion = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -2154,7 +2154,7 @@ codeartifact_list_package_version_dependencies <- function(domain, domainOwner =
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   status = "Published"|"Unfinished"|"Unlisted"|"Archived"|"Disposed"|"Deleted",
@@ -2242,7 +2242,7 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #' list(
 #'   packages = list(
 #'     list(
-#'       format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'       format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'       namespace = "string",
 #'       package = "string",
 #'       originConfiguration = list(
@@ -2263,7 +2263,7 @@ codeartifact_list_package_versions <- function(domain, domainOwner = NULL, repos
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   packagePrefix = "string",
 #'   maxResults = 123,
@@ -2563,7 +2563,7 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
 #' A list with the following syntax:
 #' ```
 #' list(
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   version = "string",
@@ -2585,7 +2585,7 @@ codeartifact_list_tags_for_resource <- function(resourceArn) {
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   packageVersion = "string",
@@ -2765,7 +2765,7 @@ codeartifact_put_domain_permissions_policy <- function(domain, domainOwner = NUL
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   restrictions = list(
@@ -3042,7 +3042,7 @@ codeartifact_untag_resource <- function(resourceArn, tagKeys) {
 #'   domain = "string",
 #'   domainOwner = "string",
 #'   repository = "string",
-#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'   format = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'   namespace = "string",
 #'   package = "string",
 #'   versions = list(
@@ -3117,7 +3117,7 @@ codeartifact_update_package_versions_status <- function(domain, domainOwner = NU
 #'     externalConnections = list(
 #'       list(
 #'         externalConnectionName = "string",
-#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic",
+#'         packageFormat = "npm"|"pypi"|"maven"|"nuget"|"generic"|"swift",
 #'         status = "Available"
 #'       )
 #'     ),

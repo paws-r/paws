@@ -17,9 +17,9 @@ rds(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -159,7 +159,9 @@ the user guide.
 \link[=rds_create_db_subnet_group]{create_db_subnet_group} \tab Creates a new DB subnet group\cr
 \link[=rds_create_event_subscription]{create_event_subscription} \tab Creates an RDS event notification subscription\cr
 \link[=rds_create_global_cluster]{create_global_cluster} \tab Creates an Aurora global database spread across multiple Amazon Web Services Regions\cr
+\link[=rds_create_integration]{create_integration} \tab Creates a zero-ETL integration with Amazon Redshift\cr
 \link[=rds_create_option_group]{create_option_group} \tab Creates a new option group\cr
+\link[=rds_create_tenant_database]{create_tenant_database} \tab Creates a tenant database in a DB instance that uses the multi-tenant configuration\cr
 \link[=rds_delete_blue_green_deployment]{delete_blue_green_deployment} \tab Deletes a blue/green deployment\cr
 \link[=rds_delete_custom_db_engine_version]{delete_custom_db_engine_version} \tab Deletes a custom engine version\cr
 \link[=rds_delete_db_cluster]{delete_db_cluster} \tab The DeleteDBCluster action deletes a previously provisioned DB cluster\cr
@@ -167,7 +169,7 @@ the user guide.
 \link[=rds_delete_db_cluster_endpoint]{delete_db_cluster_endpoint} \tab Deletes a custom endpoint and removes it from an Amazon Aurora DB cluster\cr
 \link[=rds_delete_db_cluster_parameter_group]{delete_db_cluster_parameter_group} \tab Deletes a specified DB cluster parameter group\cr
 \link[=rds_delete_db_cluster_snapshot]{delete_db_cluster_snapshot} \tab Deletes a DB cluster snapshot\cr
-\link[=rds_delete_db_instance]{delete_db_instance} \tab The DeleteDBInstance action deletes a previously provisioned DB instance\cr
+\link[=rds_delete_db_instance]{delete_db_instance} \tab Deletes a previously provisioned DB instance\cr
 \link[=rds_delete_db_instance_automated_backup]{delete_db_instance_automated_backup} \tab Deletes automated backups using the DbiResourceId value of the source DB instance or the Amazon Resource Name (ARN) of the automated backups\cr
 \link[=rds_delete_db_parameter_group]{delete_db_parameter_group} \tab Deletes a specified DB parameter group\cr
 \link[=rds_delete_db_proxy]{delete_db_proxy} \tab Deletes an existing DB proxy\cr
@@ -177,11 +179,13 @@ the user guide.
 \link[=rds_delete_db_subnet_group]{delete_db_subnet_group} \tab Deletes a DB subnet group\cr
 \link[=rds_delete_event_subscription]{delete_event_subscription} \tab Deletes an RDS event notification subscription\cr
 \link[=rds_delete_global_cluster]{delete_global_cluster} \tab Deletes a global database cluster\cr
+\link[=rds_delete_integration]{delete_integration} \tab Deletes a zero-ETL integration with Amazon Redshift\cr
 \link[=rds_delete_option_group]{delete_option_group} \tab Deletes an existing option group\cr
+\link[=rds_delete_tenant_database]{delete_tenant_database} \tab Deletes a tenant database from your DB instance\cr
 \link[=rds_deregister_db_proxy_targets]{deregister_db_proxy_targets} \tab Remove the association between one or more DBProxyTarget data structures and a DBProxyTargetGroup\cr
 \link[=rds_describe_account_attributes]{describe_account_attributes} \tab Lists all of the attributes for a customer account\cr
 \link[=rds_describe_blue_green_deployments]{describe_blue_green_deployments} \tab Describes one or more blue/green deployments\cr
-\link[=rds_describe_certificates]{describe_certificates} \tab Lists the set of CA certificates provided by Amazon RDS for this Amazon Web Services account\cr
+\link[=rds_describe_certificates]{describe_certificates} \tab Lists the set of certificate authority (CA) certificates provided by Amazon RDS for this Amazon Web Services account\cr
 \link[=rds_describe_db_cluster_automated_backups]{describe_db_cluster_automated_backups} \tab Displays backups for both current and deleted DB clusters\cr
 \link[=rds_describe_db_cluster_backtracks]{describe_db_cluster_backtracks} \tab Returns information about backtracks for a DB cluster\cr
 \link[=rds_describe_db_cluster_endpoints]{describe_db_cluster_endpoints} \tab Returns information about endpoints for an Amazon Aurora DB cluster\cr
@@ -190,7 +194,7 @@ the user guide.
 \link[=rds_describe_db_clusters]{describe_db_clusters} \tab Describes existing Amazon Aurora DB clusters and Multi-AZ DB clusters\cr
 \link[=rds_describe_db_cluster_snapshot_attributes]{describe_db_cluster_snapshot_attributes} \tab Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot\cr
 \link[=rds_describe_db_cluster_snapshots]{describe_db_cluster_snapshots} \tab Returns information about DB cluster snapshots\cr
-\link[=rds_describe_db_engine_versions]{describe_db_engine_versions} \tab Returns a list of the available DB engines\cr
+\link[=rds_describe_db_engine_versions]{describe_db_engine_versions} \tab Describes the properties of specific versions of DB engines\cr
 \link[=rds_describe_db_instance_automated_backups]{describe_db_instance_automated_backups} \tab Displays backups for both current and deleted instances\cr
 \link[=rds_describe_db_instances]{describe_db_instances} \tab Describes provisioned RDS instances\cr
 \link[=rds_describe_db_log_files]{describe_db_log_files} \tab Returns a list of DB log files for the DB instance\cr
@@ -203,6 +207,7 @@ the user guide.
 \link[=rds_describe_db_security_groups]{describe_db_security_groups} \tab Returns a list of DBSecurityGroup descriptions\cr
 \link[=rds_describe_db_snapshot_attributes]{describe_db_snapshot_attributes} \tab Returns a list of DB snapshot attribute names and values for a manual DB snapshot\cr
 \link[=rds_describe_db_snapshots]{describe_db_snapshots} \tab Returns information about DB snapshots\cr
+\link[=rds_describe_db_snapshot_tenant_databases]{describe_db_snapshot_tenant_databases} \tab Describes the tenant databases that exist in a DB snapshot\cr
 \link[=rds_describe_db_subnet_groups]{describe_db_subnet_groups} \tab Returns a list of DBSubnetGroup descriptions\cr
 \link[=rds_describe_engine_default_cluster_parameters]{describe_engine_default_cluster_parameters} \tab Returns the default engine and system parameter information for the cluster database engine\cr
 \link[=rds_describe_engine_default_parameters]{describe_engine_default_parameters} \tab Returns the default engine and system parameter information for the specified database engine\cr
@@ -211,6 +216,7 @@ the user guide.
 \link[=rds_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists all the subscription descriptions for a customer account\cr
 \link[=rds_describe_export_tasks]{describe_export_tasks} \tab Returns information about a snapshot or cluster export to Amazon S3\cr
 \link[=rds_describe_global_clusters]{describe_global_clusters} \tab Returns information about Aurora global database clusters\cr
+\link[=rds_describe_integrations]{describe_integrations} \tab Describe one or more zero-ETL integrations with Amazon Redshift\cr
 \link[=rds_describe_option_group_options]{describe_option_group_options} \tab Describes all available options\cr
 \link[=rds_describe_option_groups]{describe_option_groups} \tab Describes the available option groups\cr
 \link[=rds_describe_orderable_db_instance_options]{describe_orderable_db_instance_options} \tab Returns a list of orderable DB instance options for the specified DB engine, DB engine version, and DB instance class\cr
@@ -218,6 +224,7 @@ the user guide.
 \link[=rds_describe_reserved_db_instances]{describe_reserved_db_instances} \tab Returns information about reserved DB instances for this account, or about a specified reserved DB instance\cr
 \link[=rds_describe_reserved_db_instances_offerings]{describe_reserved_db_instances_offerings} \tab Lists available reserved DB instance offerings\cr
 \link[=rds_describe_source_regions]{describe_source_regions} \tab Returns a list of the source Amazon Web Services Regions where the current Amazon Web Services Region can create a read replica, copy a DB snapshot from, or replicate automated backups from\cr
+\link[=rds_describe_tenant_databases]{describe_tenant_databases} \tab Describes the tenant databases in a DB instance that uses the multi-tenant configuration\cr
 \link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications} \tab You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your DB instance\cr
 \link[=rds_download_db_log_file_portion]{download_db_log_file_portion} \tab Downloads all or a portion of the specified log file, up to 1 MB in size\cr
 \link[=rds_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a DB cluster\cr
@@ -242,6 +249,7 @@ the user guide.
 \link[=rds_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing RDS event notification subscription\cr
 \link[=rds_modify_global_cluster]{modify_global_cluster} \tab Modifies a setting for an Amazon Aurora global database cluster\cr
 \link[=rds_modify_option_group]{modify_option_group} \tab Modifies an existing option group\cr
+\link[=rds_modify_tenant_database]{modify_tenant_database} \tab Modifies an existing tenant database in a DB instance\cr
 \link[=rds_promote_read_replica]{promote_read_replica} \tab Promotes a read replica DB instance to a standalone DB instance\cr
 \link[=rds_promote_read_replica_db_cluster]{promote_read_replica_db_cluster} \tab Promotes a read replica DB cluster to a standalone DB cluster\cr
 \link[=rds_purchase_reserved_db_instances_offering]{purchase_reserved_db_instances_offering} \tab Purchases a reserved DB instance offering\cr

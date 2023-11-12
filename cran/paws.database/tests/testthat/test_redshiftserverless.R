@@ -1,5 +1,9 @@
 svc <- paws::redshiftserverless()
 
+test_that("list_custom_domain_associations", {
+  expect_error(svc$list_custom_domain_associations(), NA)
+})
+
 test_that("list_endpoint_access", {
   expect_error(svc$list_endpoint_access(), NA)
 })

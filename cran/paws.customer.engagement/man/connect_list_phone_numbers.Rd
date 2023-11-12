@@ -17,7 +17,13 @@ connect_list_phone_numbers(
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
 in the Amazon Resource Name (ARN) of the instance.}
 
-\item{PhoneNumberTypes}{The type of phone number.}
+\item{PhoneNumberTypes}{The type of phone number.
+
+We recommend using
+\code{\link[=connect_list_phone_numbers_v2]{list_phone_numbers_v2}} to return phone
+number types. While ListPhoneNumbers returns number types \code{UIFN},
+\code{SHARED}, \code{THIRD_PARTY_TF}, and \code{THIRD_PARTY_DID}, it incorrectly lists
+them as \code{TOLL_FREE} or \code{DID}.}
 
 \item{PhoneNumberCountryCodes}{The ISO country code.}
 

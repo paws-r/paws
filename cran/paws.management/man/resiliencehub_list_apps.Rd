@@ -6,9 +6,12 @@
 \usage{
 resiliencehub_list_apps(
   appArn = NULL,
+  fromLastAssessmentTime = NULL,
   maxResults = NULL,
   name = NULL,
-  nextToken = NULL
+  nextToken = NULL,
+  reverseOrder = NULL,
+  toLastAssessmentTime = NULL
 )
 }
 \arguments{
@@ -16,7 +19,10 @@ resiliencehub_list_apps(
 for this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
 information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference} guide.}
+in the \emph{Amazon Web Services General Reference} guide.}
+
+\item{fromLastAssessmentTime}{Indicates the lower limit of the range that is used to filter
+applications based on their last assessment times.}
 
 \item{maxResults}{Maximum number of results to include in the response. If more results
 exist than the specified \code{MaxResults} value, a token is included in the
@@ -25,6 +31,14 @@ response so that the remaining results can be retrieved.}
 \item{name}{The name for the one of the listed applications.}
 
 \item{nextToken}{Null, or the token from a previous call to get the next set of results.}
+
+\item{reverseOrder}{The application list is sorted based on the values of
+\code{lastAppComplianceEvaluationTime} field. By default, application list is
+sorted in ascending order. To sort the appliation list in descending
+order, set this field to \code{True}.}
+
+\item{toLastAssessmentTime}{Indicates the upper limit of the range that is used to filter the
+applications based on their last assessment times.}
 }
 \description{
 Lists your Resilience Hub applications.

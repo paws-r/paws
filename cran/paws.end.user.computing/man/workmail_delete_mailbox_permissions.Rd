@@ -10,10 +10,29 @@ workmail_delete_mailbox_permissions(OrganizationId, EntityId, GranteeId)
 \item{OrganizationId}{[required] The identifier of the organization under which the member (user or
 group) exists.}
 
-\item{EntityId}{[required] The identifier of the member (user or group) that owns the mailbox.}
+\item{EntityId}{[required] The identifier of the entity that owns the mailbox.
 
-\item{GranteeId}{[required] The identifier of the member (user or group) for which to delete granted
-permissions.}
+The identifier can be \emph{UserId or Group Id}, \emph{Username or Groupname}, or
+\emph{email}.
+\itemize{
+\item Entity ID: 12345678-1234-1234-1234-123456789012,
+r-0123456789a0123456789b0123456789, or
+S-1-1-12-1234567890-123456789-123456789-1234
+\item Email address: entity@domain.tld
+\item Entity name: entity
+}}
+
+\item{GranteeId}{[required] The identifier of the entity for which to delete granted permissions.
+
+The identifier can be \emph{UserId, ResourceID, or Group Id}, \emph{Username or
+Groupname}, or \emph{email}.
+\itemize{
+\item Grantee ID:
+12345678-1234-1234-1234-123456789012,r-0123456789a0123456789b0123456789,
+or S-1-1-12-1234567890-123456789-123456789-1234
+\item Email address: grantee@domain.tld
+\item Grantee name: grantee
+}}
 }
 \description{
 Deletes permissions granted to a member (user or group).

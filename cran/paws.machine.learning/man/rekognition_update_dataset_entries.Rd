@@ -2,7 +2,7 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_update_dataset_entries}
 \alias{rekognition_update_dataset_entries}
-\title{Adds or updates one or more entries (images) in a dataset}
+\title{This operation applies only to Amazon Rekognition Custom Labels}
 \usage{
 rekognition_update_dataset_entries(DatasetArn, Changes)
 }
@@ -12,7 +12,7 @@ rekognition_update_dataset_entries(DatasetArn, Changes)
 \item{Changes}{[required] The changes that you want to make to the dataset.}
 }
 \description{
-Adds or updates one or more entries (images) in a dataset. An entry is a JSON Line which contains the information for a single image, including the image location, assigned labels, and object location bounding boxes. For more information, see Image-Level labels in manifest files and Object localization in manifest files in the \emph{Amazon Rekognition Custom Labels Developer Guide}.
+This operation applies only to Amazon Rekognition Custom Labels.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_update_dataset_entries/} for full documentation.
 }

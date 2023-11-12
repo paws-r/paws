@@ -485,6 +485,9 @@ cloudtrail_create_event_data_store <- function(Name, AdvancedEventSelectors = NU
 #' be delivered. You must use a log group that exists in your account.
 #' 
 #' Not required unless you specify `CloudWatchLogsRoleArn`.
+#' 
+#' Only the management account can configure a CloudWatch Logs log group
+#' for an organization trail.
 #' @param CloudWatchLogsRoleArn Specifies the role for the CloudWatch Logs endpoint to assume to write
 #' to a user's log group. You must use a role that exists in your account.
 #' @param KmsKeyId Specifies the KMS key ID to use to encrypt the logs delivered by
@@ -1383,26 +1386,31 @@ cloudtrail_get_import <- function(ImportId) {
 .cloudtrail$operations$get_import <- cloudtrail_get_import
 
 #' Describes the settings for the Insights event selectors that you
-#' configured for your trail
+#' configured for your trail or event data store
 #'
 #' @description
 #' Describes the settings for the Insights event selectors that you
-#' configured for your trail.
+#' configured for your trail or event data store.
 #' [`get_insight_selectors`][cloudtrail_get_insight_selectors] shows if
-#' CloudTrail Insights event logging is enabled on the trail, and if it is,
-#' which insight types are enabled. If you run
+#' CloudTrail Insights event logging is enabled on the trail or event data
+#' store, and if it is, which Insights types are enabled. If you run
 #' [`get_insight_selectors`][cloudtrail_get_insight_selectors] on a trail
-#' that does not have Insights events enabled, the operation throws the
-#' exception `InsightNotEnabledException`
+#' or event data store that does not have Insights events enabled, the
+#' operation throws the exception `InsightNotEnabledException`
 #' 
-#' For more information, see [Logging CloudTrail Insights Events for
-#' Trails](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html)
+#' Specify either the `EventDataStore` parameter to get Insights event
+#' selectors for an event data store, or the `TrailName` parameter to the
+#' get Insights event selectors for a trail. You cannot specify these
+#' parameters together.
+#' 
+#' For more information, see [Logging CloudTrail Insights
+#' events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html)
 #' in the *CloudTrail User Guide*.
 #'
 #' @usage
-#' cloudtrail_get_insight_selectors(TrailName)
+#' cloudtrail_get_insight_selectors(TrailName, EventDataStore)
 #'
-#' @param TrailName &#91;required&#93; Specifies the name of the trail or trail ARN. If you specify a trail
+#' @param TrailName Specifies the name of the trail or trail ARN. If you specify a trail
 #' name, the string must meet the following requirements:
 #' 
 #' -   Contain only ASCII letters (a-z, A-Z), numbers (0-9), periods (.),
@@ -1420,6 +1428,12 @@ cloudtrail_get_import <- function(ImportId) {
 #' If you specify a trail ARN, it must be in the format:
 #' 
 #' `arn:aws:cloudtrail:us-east-2:123456789012:trail/MyTrail`
+#' 
+#' You cannot use this parameter with the `EventDataStore` parameter.
+#' @param EventDataStore Specifies the ARN (or ID suffix of the ARN) of the event data store for
+#' which you want to get Insights selectors.
+#' 
+#' You cannot use this parameter with the `TrailName` parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1430,14 +1444,17 @@ cloudtrail_get_import <- function(ImportId) {
 #'     list(
 #'       InsightType = "ApiCallRateInsight"|"ApiErrorRateInsight"
 #'     )
-#'   )
+#'   ),
+#'   EventDataStoreArn = "string",
+#'   InsightsDestination = "string"
 #' )
 #' ```
 #'
 #' @section Request syntax:
 #' ```
 #' svc$get_insight_selectors(
-#'   TrailName = "string"
+#'   TrailName = "string",
+#'   EventDataStore = "string"
 #' )
 #' ```
 #'
@@ -1446,14 +1463,14 @@ cloudtrail_get_import <- function(ImportId) {
 #' @rdname cloudtrail_get_insight_selectors
 #'
 #' @aliases cloudtrail_get_insight_selectors
-cloudtrail_get_insight_selectors <- function(TrailName) {
+cloudtrail_get_insight_selectors <- function(TrailName = NULL, EventDataStore = NULL) {
   op <- new_operation(
     name = "GetInsightSelectors",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudtrail$get_insight_selectors_input(TrailName = TrailName)
+  input <- .cloudtrail$get_insight_selectors_input(TrailName = TrailName, EventDataStore = EventDataStore)
   output <- .cloudtrail$get_insight_selectors_output()
   config <- get_config()
   svc <- .cloudtrail$service(config)
@@ -2326,8 +2343,14 @@ cloudtrail_list_trails <- function(NextToken = NULL) {
 #' or [CloudTrail Insights
 #' events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html#cloudtrail-concepts-insights-events)
 #' that are captured by CloudTrail. You can look up events that occurred in
-#' a Region within the last 90 days. Lookup supports the following
-#' attributes for management events:
+#' a Region within the last 90 days.
+#' 
+#' [`lookup_events`][cloudtrail_lookup_events] returns recent Insights
+#' events for trails that enable Insights. To view Insights events for an
+#' event data store, you can run queries on your Insights event data store,
+#' and you can also view the Lake dashboard for Insights.
+#' 
+#' Lookup supports the following attributes for management events:
 #' 
 #' -   Amazon Web Services access key
 #' 
@@ -2680,30 +2703,56 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 .cloudtrail$operations$put_event_selectors <- cloudtrail_put_event_selectors
 
 #' Lets you enable Insights event logging by specifying the Insights
-#' selectors that you want to enable on an existing trail
+#' selectors that you want to enable on an existing trail or event data
+#' store
 #'
 #' @description
 #' Lets you enable Insights event logging by specifying the Insights
-#' selectors that you want to enable on an existing trail. You also use
+#' selectors that you want to enable on an existing trail or event data
+#' store. You also use
 #' [`put_insight_selectors`][cloudtrail_put_insight_selectors] to turn off
-#' Insights event logging, by passing an empty list of insight types. The
-#' valid Insights event types in this release are `ApiErrorRateInsight` and
+#' Insights event logging, by passing an empty list of Insights types. The
+#' valid Insights event types are `ApiErrorRateInsight` and
 #' `ApiCallRateInsight`.
 #' 
-#' To log CloudTrail Insights events on API call volume, the trail must log
-#' `write` management events. To log CloudTrail Insights events on API
-#' error rate, the trail must log `read` or `write` management events. You
-#' can call [`get_event_selectors`][cloudtrail_get_event_selectors] on a
-#' trail to check whether the trail logs management events.
+#' To enable Insights on an event data store, you must specify the ARNs (or
+#' ID suffix of the ARNs) for the source event data store
+#' (`EventDataStore`) and the destination event data store
+#' (`InsightsDestination`). The source event data store logs management
+#' events and enables Insights. The destination event data store logs
+#' Insights events based upon the management event activity of the source
+#' event data store. The source and destination event data stores must
+#' belong to the same Amazon Web Services account.
+#' 
+#' To log Insights events for a trail, you must specify the name
+#' (`TrailName`) of the CloudTrail trail for which you want to change or
+#' add Insights selectors.
+#' 
+#' To log CloudTrail Insights events on API call volume, the trail or event
+#' data store must log `write` management events. To log CloudTrail
+#' Insights events on API error rate, the trail or event data store must
+#' log `read` or `write` management events. You can call
+#' [`get_event_selectors`][cloudtrail_get_event_selectors] on a trail to
+#' check whether the trail logs management events. You can call
+#' [`get_event_data_store`][cloudtrail_get_event_data_store] on an event
+#' data store to check whether the event data store logs management events.
+#' 
+#' For more information, see [Logging CloudTrail Insights
+#' events](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/logging-insights-events-with-cloudtrail.html)
+#' in the *CloudTrail User Guide*.
 #'
 #' @usage
-#' cloudtrail_put_insight_selectors(TrailName, InsightSelectors)
+#' cloudtrail_put_insight_selectors(TrailName, InsightSelectors,
+#'   EventDataStore, InsightsDestination)
 #'
-#' @param TrailName &#91;required&#93; The name of the CloudTrail trail for which you want to change or add
+#' @param TrailName The name of the CloudTrail trail for which you want to change or add
 #' Insights selectors.
-#' @param InsightSelectors &#91;required&#93; A JSON string that contains the insight types you want to log on a
-#' trail. `ApiCallRateInsight` and `ApiErrorRateInsight` are valid Insight
-#' types.
+#' 
+#' You cannot use this parameter with the `EventDataStore` and
+#' `InsightsDestination` parameters.
+#' @param InsightSelectors &#91;required&#93; A JSON string that contains the Insights types you want to log on a
+#' trail or event data store. `ApiCallRateInsight` and
+#' `ApiErrorRateInsight` are valid Insight types.
 #' 
 #' The `ApiCallRateInsight` Insights type analyzes write-only management
 #' API calls that are aggregated per minute against a baseline API call
@@ -2712,6 +2761,18 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 #' The `ApiErrorRateInsight` Insights type analyzes management API calls
 #' that result in error codes. The error is shown if the API call is
 #' unsuccessful.
+#' @param EventDataStore The ARN (or ID suffix of the ARN) of the source event data store for
+#' which you want to change or add Insights selectors. To enable Insights
+#' on an event data store, you must provide both the `EventDataStore` and
+#' `InsightsDestination` parameters.
+#' 
+#' You cannot use this parameter with the `TrailName` parameter.
+#' @param InsightsDestination The ARN (or ID suffix of the ARN) of the destination event data store
+#' that logs Insights events. To enable Insights on an event data store,
+#' you must provide both the `EventDataStore` and `InsightsDestination`
+#' parameters.
+#' 
+#' You cannot use this parameter with the `TrailName` parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2722,7 +2783,9 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 #'     list(
 #'       InsightType = "ApiCallRateInsight"|"ApiErrorRateInsight"
 #'     )
-#'   )
+#'   ),
+#'   EventDataStoreArn = "string",
+#'   InsightsDestination = "string"
 #' )
 #' ```
 #'
@@ -2734,7 +2797,9 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 #'     list(
 #'       InsightType = "ApiCallRateInsight"|"ApiErrorRateInsight"
 #'     )
-#'   )
+#'   ),
+#'   EventDataStore = "string",
+#'   InsightsDestination = "string"
 #' )
 #' ```
 #'
@@ -2743,14 +2808,14 @@ cloudtrail_put_event_selectors <- function(TrailName, EventSelectors = NULL, Adv
 #' @rdname cloudtrail_put_insight_selectors
 #'
 #' @aliases cloudtrail_put_insight_selectors
-cloudtrail_put_insight_selectors <- function(TrailName, InsightSelectors) {
+cloudtrail_put_insight_selectors <- function(TrailName = NULL, InsightSelectors, EventDataStore = NULL, InsightsDestination = NULL) {
   op <- new_operation(
     name = "PutInsightSelectors",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudtrail$put_insight_selectors_input(TrailName = TrailName, InsightSelectors = InsightSelectors)
+  input <- .cloudtrail$put_insight_selectors_input(TrailName = TrailName, InsightSelectors = InsightSelectors, EventDataStore = EventDataStore, InsightsDestination = InsightsDestination)
   output <- .cloudtrail$put_insight_selectors_output()
   config <- get_config()
   svc <- .cloudtrail$service(config)
@@ -2834,8 +2899,8 @@ cloudtrail_put_resource_policy <- function(ResourceArn, ResourcePolicy) {
 #' administrator
 #'
 #' @description
-#' Registers an organization’s member account as the CloudTrail delegated
-#' administrator.
+#' Registers an organization’s member account as the CloudTrail [delegated
+#' administrator](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-delegated-administrator.html).
 #'
 #' @usage
 #' cloudtrail_register_organization_delegated_admin(MemberAccountId)
@@ -3569,8 +3634,8 @@ cloudtrail_update_channel <- function(Channel, Destinations = NULL, Name = NULL)
 #' between 90 and 2557. By default, `TerminationProtection` is enabled.
 #' 
 #' For event data stores for CloudTrail events, `AdvancedEventSelectors`
-#' includes or excludes management and data events in your event data
-#' store. For more information about `AdvancedEventSelectors`, see
+#' includes or excludes management, data, or Insights events in your event
+#' data store. For more information about `AdvancedEventSelectors`, see
 #' [AdvancedEventSelectors](https://docs.aws.amazon.com/awscloudtrail/latest/APIReference/API_AdvancedEventSelector.html).
 #' 
 #' For event data stores for Config configuration items, Audit Manager
@@ -3592,6 +3657,11 @@ cloudtrail_update_channel <- function(Channel, Destinations = NULL, Name = NULL)
 #' or only from the Region in which it was created.
 #' @param OrganizationEnabled Specifies whether an event data store collects events logged for an
 #' organization in Organizations.
+#' 
+#' Only the management account for the organization can convert an
+#' organization event data store to a non-organization event data store, or
+#' convert a non-organization event data store to an organization event
+#' data store.
 #' @param RetentionPeriod The retention period of the event data store, in days. You can set a
 #' retention period of up to 2557 days, the equivalent of seven years.
 #' CloudTrail Lake determines whether to retain an event by checking if the
@@ -3819,6 +3889,9 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' delivered. You must use a log group that exists in your account.
 #' 
 #' Not required unless you specify `CloudWatchLogsRoleArn`.
+#' 
+#' Only the management account can configure a CloudWatch Logs log group
+#' for an organization trail.
 #' @param CloudWatchLogsRoleArn Specifies the role for the CloudWatch Logs endpoint to assume to write
 #' to a user's log group. You must use a role that exists in your account.
 #' @param KmsKeyId Specifies the KMS key ID to use to encrypt the logs delivered by
@@ -3844,13 +3917,16 @@ cloudtrail_update_event_data_store <- function(EventDataStore, Name = NULL, Adva
 #' organization in Organizations, or only for the current Amazon Web
 #' Services account. The default is false, and cannot be true unless the
 #' call is made on behalf of an Amazon Web Services account that is the
-#' management account or delegated administrator account for an
-#' organization in Organizations. If the trail is not an organization trail
-#' and this is set to `true`, the trail will be created in all Amazon Web
-#' Services accounts that belong to the organization. If the trail is an
-#' organization trail and this is set to `false`, the trail will remain in
-#' the current Amazon Web Services account but be deleted from all member
-#' accounts in the organization.
+#' management account for an organization in Organizations. If the trail is
+#' not an organization trail and this is set to `true`, the trail will be
+#' created in all Amazon Web Services accounts that belong to the
+#' organization. If the trail is an organization trail and this is set to
+#' `false`, the trail will remain in the current Amazon Web Services
+#' account but be deleted from all member accounts in the organization.
+#' 
+#' Only the management account for the organization can convert an
+#' organization trail to a non-organization trail, or convert a
+#' non-organization trail to an organization trail.
 #'
 #' @return
 #' A list with the following syntax:

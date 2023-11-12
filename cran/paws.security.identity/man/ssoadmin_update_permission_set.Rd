@@ -5,27 +5,28 @@
 \title{Updates an existing permission set}
 \usage{
 ssoadmin_update_permission_set(
+  Description = NULL,
   InstanceArn,
   PermissionSetArn,
-  Description = NULL,
-  SessionDuration = NULL,
-  RelayState = NULL
+  RelayState = NULL,
+  SessionDuration = NULL
 )
 }
 \arguments{
+\item{Description}{The description of the PermissionSet.}
+
 \item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
 will be executed. For more information about ARNs, see Amazon Resource
-Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
+Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon
+Web Services General Reference}.}
 
 \item{PermissionSetArn}{[required] The ARN of the permission set.}
 
-\item{Description}{The description of the PermissionSet.}
+\item{RelayState}{Used to redirect users within the application during the federation
+authentication process.}
 
 \item{SessionDuration}{The length of time that the application user sessions are valid for in
 the ISO-8601 standard.}
-
-\item{RelayState}{Used to redirect users within the application during the federation
-authentication process.}
 }
 \description{
 Updates an existing permission set.

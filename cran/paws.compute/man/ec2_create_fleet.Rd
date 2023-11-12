@@ -80,7 +80,7 @@ Supported only for fleets of type \code{maintain}. For more information, see
 in the \emph{Amazon EC2 User Guide}.}
 
 \item{TagSpecifications}{The key-value pair for tagging the EC2 Fleet request on creation. For
-more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources}{Tagging your resources}.
+more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html#tag-resources}{Tag your resources}.
 
 If the fleet type is \code{instant}, specify a resource type of \code{fleet} to
 tag the fleet or \code{instance} to tag the instances at launch.

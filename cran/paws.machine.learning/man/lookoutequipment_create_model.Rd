@@ -2,7 +2,7 @@
 % Please edit documentation in R/lookoutequipment_operations.R
 \name{lookoutequipment_create_model}
 \alias{lookoutequipment_create_model}
-\title{Creates an ML model for data inference}
+\title{Creates a machine learning model for data inference}
 \usage{
 lookoutequipment_create_model(
   ModelName,
@@ -22,32 +22,32 @@ lookoutequipment_create_model(
 )
 }
 \arguments{
-\item{ModelName}{[required] The name for the ML model to be created.}
+\item{ModelName}{[required] The name for the machine learning model to be created.}
 
-\item{DatasetName}{[required] The name of the dataset for the ML model being created.}
+\item{DatasetName}{[required] The name of the dataset for the machine learning model being created.}
 
-\item{DatasetSchema}{The data schema for the ML model being created.}
+\item{DatasetSchema}{The data schema for the machine learning model being created.}
 
-\item{LabelsInputConfiguration}{The input configuration for the labels being used for the ML model
-that's being created.}
+\item{LabelsInputConfiguration}{The input configuration for the labels being used for the machine
+learning model that's being created.}
 
 \item{ClientToken}{[required] A unique identifier for the request. If you do not set the client
 request token, Amazon Lookout for Equipment generates one.}
 
 \item{TrainingDataStartTime}{Indicates the time reference in the dataset that should be used to begin
-the subset of training data for the ML model.}
+the subset of training data for the machine learning model.}
 
 \item{TrainingDataEndTime}{Indicates the time reference in the dataset that should be used to end
-the subset of training data for the ML model.}
+the subset of training data for the machine learning model.}
 
 \item{EvaluationDataStartTime}{Indicates the time reference in the dataset that should be used to begin
-the subset of evaluation data for the ML model.}
+the subset of evaluation data for the machine learning model.}
 
 \item{EvaluationDataEndTime}{Indicates the time reference in the dataset that should be used to end
-the subset of evaluation data for the ML model.}
+the subset of evaluation data for the machine learning model.}
 
 \item{RoleArn}{The Amazon Resource Name (ARN) of a role with permission to access the
-data source being used to create the ML model.}
+data source being used to create the machine learning model.}
 
 \item{DataPreProcessingConfiguration}{The configuration is the \code{TargetSamplingRate}, which is the sampling
 rate of the data after post processing by Amazon Lookout for Equipment.
@@ -63,14 +63,14 @@ value for a 1 hour rate is \emph{PT1H}}
 \item{ServerSideKmsKeyId}{Provides the identifier of the KMS key used to encrypt model data by
 Amazon Lookout for Equipment.}
 
-\item{Tags}{Any tags associated with the ML model being created.}
+\item{Tags}{Any tags associated with the machine learning model being created.}
 
 \item{OffCondition}{Indicates that the asset associated with this sensor has been shut off.
 As long as this condition is met, Lookout for Equipment will not use
 data from this asset for training, evaluation, or inference.}
 }
 \description{
-Creates an ML model for data inference.
+Creates a machine learning model for data inference.
 
 See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_create_model/} for full documentation.
 }

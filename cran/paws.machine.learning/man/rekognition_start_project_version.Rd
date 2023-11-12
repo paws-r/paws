@@ -2,7 +2,7 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_start_project_version}
 \alias{rekognition_start_project_version}
-\title{Starts the running of the version of a model}
+\title{This operation applies only to Amazon Rekognition Custom Labels}
 \usage{
 rekognition_start_project_version(
   ProjectVersionArn,
@@ -17,10 +17,6 @@ start.}
 \item{MinInferenceUnits}{[required] The minimum number of inference units to use. A single inference unit
 represents 1 hour of processing.
 
-For information about the number of transactions per second (TPS) that
-an inference unit can support, see \emph{Running a trained Amazon Rekognition
-Custom Labels model} in the Amazon Rekognition Custom Labels Guide.
-
 Use a higher number to increase the TPS throughput of your model. You
 are charged for the number of inference units that you use.}
 
@@ -29,7 +25,7 @@ If you don't specify a value, Amazon Rekognition Custom Labels doesn't
 auto-scale the model.}
 }
 \description{
-Starts the running of the version of a model. Starting a model takes a while to complete. To check the current state of the model, use \code{\link[=rekognition_describe_project_versions]{describe_project_versions}}.
+This operation applies only to Amazon Rekognition Custom Labels.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_start_project_version/} for full documentation.
 }

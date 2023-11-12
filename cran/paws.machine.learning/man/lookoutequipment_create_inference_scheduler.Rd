@@ -18,8 +18,8 @@ lookoutequipment_create_inference_scheduler(
 )
 }
 \arguments{
-\item{ModelName}{[required] The name of the previously trained ML model being used to create the
-inference scheduler.}
+\item{ModelName}{[required] The name of the previously trained machine learning model being used to
+create the inference scheduler.}
 
 \item{InferenceSchedulerName}{[required] The name of the inference scheduler being created.}
 

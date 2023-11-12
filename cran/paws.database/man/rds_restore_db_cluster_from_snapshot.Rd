@@ -32,7 +32,8 @@ rds_restore_db_cluster_from_snapshot(
   Iops = NULL,
   PubliclyAccessible = NULL,
   ServerlessV2ScalingConfiguration = NULL,
-  NetworkType = NULL
+  NetworkType = NULL,
+  RdsCustomClusterConfiguration = NULL
 )
 }
 \arguments{
@@ -176,9 +177,9 @@ isn't encrypted, then the restored DB cluster isn't encrypted.
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of Amazon Web Services
-Identity and Access Management (IAM) accounts to database accounts. By
-default, mapping isn't enabled.
+\item{EnableIAMDatabaseAuthentication}{Specifies whether to enable mapping of Amazon Web Services Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping isn't enabled.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication}
 in the \emph{Amazon Aurora User Guide}.
@@ -258,29 +259,28 @@ parameter group.
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
-enabled. The database can't be deleted when deletion protection is
-enabled. By default, deletion protection isn't enabled.
+\item{DeletionProtection}{Specifies whether to enable deletion protection for the DB cluster. The
+database can't be deleted when deletion protection is enabled. By
+default, deletion protection isn't enabled.
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
-cluster to snapshots of the restored DB cluster. The default is not to
-copy them.
+\item{CopyTagsToSnapshot}{Specifies whether to copy all tags from the restored DB cluster to
+snapshots of the restored DB cluster. The default is not to copy them.
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{Domain}{Specify the Active Directory directory ID to restore the DB cluster in.
-The domain must be created prior to this operation. Currently, only
-MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB instances can be
-created in an Active Directory Domain.
+\item{Domain}{The Active Directory directory ID to restore the DB cluster in. The
+domain must be created prior to this operation. Currently, only MySQL,
+Microsoft SQL Server, Oracle, and PostgreSQL DB instances can be created
+in an Active Directory Domain.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html}{Kerberos Authentication}
 in the \emph{Amazon RDS User Guide}.
 
 Valid for: Aurora DB clusters only}
 
-\item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
+\item{DomainIAMRoleName}{The name of the IAM role to be used when making API calls to the
 Directory Service.
 
 Valid for: Aurora DB clusters only}
@@ -301,7 +301,7 @@ Valid for: Multi-AZ DB clusters only}
 When specified for a Multi-AZ DB cluster, a value for the \code{Iops}
 parameter is required.
 
-Valid values: \code{aurora}, \code{aurora-iopt1} (Aurora DB clusters); \code{io1}
+Valid Values: \code{aurora}, \code{aurora-iopt1} (Aurora DB clusters); \code{io1}
 (Multi-AZ DB clusters)
 
 Default: \code{aurora} (Aurora DB clusters); \code{io1} (Multi-AZ DB clusters)
@@ -319,7 +319,7 @@ for the DB instance.
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{PubliclyAccessible}{A value that indicates whether the DB cluster is publicly accessible.
+\item{PubliclyAccessible}{Specifies whether the DB cluster is publicly accessible.
 
 When the DB cluster is publicly accessible, its Domain Name System (DNS)
 endpoint resolves to the private IP address from within the DB cluster's
@@ -359,7 +359,7 @@ Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{NetworkType}{The network type of the DB cluster.
 
-Valid values:
+Valid Values:
 \itemize{
 \item \code{IPV4}
 \item \code{DUAL}
@@ -373,6 +373,8 @@ For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/Aur
 in the \emph{Amazon Aurora User Guide.}
 
 Valid for: Aurora DB clusters only}
+
+\item{RdsCustomClusterConfiguration}{Reserved for future use.}
 }
 \description{
 Creates a new DB cluster from a DB snapshot or DB cluster snapshot.

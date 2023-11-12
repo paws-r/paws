@@ -2,7 +2,7 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_list_organization_admin_accounts}
 \alias{guardduty_list_organization_admin_accounts}
-\title{Lists the accounts configured as GuardDuty delegated administrators}
+\title{Lists the accounts designated as GuardDuty delegated administrators}
 \usage{
 guardduty_list_organization_admin_accounts(MaxResults = NULL, NextToken = NULL)
 }
@@ -15,7 +15,7 @@ action. For subsequent calls, use the \code{NextToken} value returned from
 the previous request to continue listing results after the first page.}
 }
 \description{
-Lists the accounts configured as GuardDuty delegated administrators.
+Lists the accounts designated as GuardDuty delegated administrators. Only the organization's management account can run this API operation.
 
 See \url{https://www.paws-r-sdk.com/docs/guardduty_list_organization_admin_accounts/} for full documentation.
 }

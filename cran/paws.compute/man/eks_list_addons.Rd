@@ -2,7 +2,7 @@
 % Please edit documentation in R/eks_operations.R
 \name{eks_list_addons}
 \alias{eks_list_addons}
-\title{Lists the available add-ons}
+\title{Lists the installed add-ons}
 \usage{
 eks_list_addons(clusterName, maxResults = NULL, nextToken = NULL)
 }
@@ -28,7 +28,7 @@ to retrieve the next items in a list and not for other programmatic
 purposes.}
 }
 \description{
-Lists the available add-ons.
+Lists the installed add-ons.
 
 See \url{https://www.paws-r-sdk.com/docs/eks_list_addons/} for full documentation.
 }

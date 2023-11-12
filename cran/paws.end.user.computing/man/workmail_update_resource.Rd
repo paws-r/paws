@@ -8,18 +8,35 @@ workmail_update_resource(
   OrganizationId,
   ResourceId,
   Name = NULL,
-  BookingOptions = NULL
+  BookingOptions = NULL,
+  Description = NULL,
+  Type = NULL,
+  HiddenFromGlobalAddressList = NULL
 )
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier associated with the organization for which the resource
 is updated.}
 
-\item{ResourceId}{[required] The identifier of the resource to be updated.}
+\item{ResourceId}{[required] The identifier of the resource to be updated.
+
+The identifier can accept \emph{ResourceId}, \emph{Resourcename}, or \emph{email}. The
+following identity formats are available:
+\itemize{
+\item Resource ID: r-0123456789a0123456789b0123456789
+\item Email address: resource@domain.tld
+\item Resource name: resource
+}}
 
 \item{Name}{The name of the resource to be updated.}
 
 \item{BookingOptions}{The resource's booking options to be updated.}
+
+\item{Description}{Updates the resource description.}
+
+\item{Type}{Updates the resource type.}
+
+\item{HiddenFromGlobalAddressList}{If enabled, the resource is hidden from the global address list.}
 }
 \description{
 Updates data for the resource. To have the latest information, it must be preceded by a \code{\link[=workmail_describe_resource]{describe_resource}} call. The dataset in the request should be the one expected when performing another \code{\link[=workmail_describe_resource]{describe_resource}} call.

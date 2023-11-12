@@ -7,7 +7,7 @@
 codedeploy_get_deployment_config(deploymentConfigName)
 }
 \arguments{
-\item{deploymentConfigName}{[required] The name of a deployment configuration associated with the IAM user or
+\item{deploymentConfigName}{[required] The name of a deployment configuration associated with the user or
 Amazon Web Services account.}
 }
 \description{

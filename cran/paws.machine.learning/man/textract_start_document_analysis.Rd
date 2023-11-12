@@ -14,7 +14,8 @@ textract_start_document_analysis(
   NotificationChannel = NULL,
   OutputConfig = NULL,
   KMSKeyId = NULL,
-  QueriesConfig = NULL
+  QueriesConfig = NULL,
+  AdaptersConfig = NULL
 )
 }
 \arguments{
@@ -53,6 +54,8 @@ bucket. When this parameter is not enabled, the result will be encrypted
 server side,using SSE-S3.}
 
 \item{QueriesConfig}{}
+
+\item{AdaptersConfig}{Specifies the adapter to be used when analyzing a document.}
 }
 \description{
 Starts the asynchronous analysis of an input document for relationships between detected items such as key-value pairs, tables, and selection elements.

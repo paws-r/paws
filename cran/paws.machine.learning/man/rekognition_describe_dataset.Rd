@@ -2,7 +2,7 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_describe_dataset}
 \alias{rekognition_describe_dataset}
-\title{Describes an Amazon Rekognition Custom Labels dataset}
+\title{This operation applies only to Amazon Rekognition Custom Labels}
 \usage{
 rekognition_describe_dataset(DatasetArn)
 }
@@ -10,7 +10,7 @@ rekognition_describe_dataset(DatasetArn)
 \item{DatasetArn}{[required] The Amazon Resource Name (ARN) of the dataset that you want to describe.}
 }
 \description{
-Describes an Amazon Rekognition Custom Labels dataset. You can get information such as the current status of a dataset and statistics about the images and labels in a dataset.
+This operation applies only to Amazon Rekognition Custom Labels.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_describe_dataset/} for full documentation.
 }

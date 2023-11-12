@@ -10,7 +10,8 @@ pinpoint_delete_endpoint(ApplicationId, EndpointId)
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{EndpointId}{[required] The unique identifier for the endpoint.}
+\item{EndpointId}{[required] The case insensitive unique identifier for the endpoint. The identifier
+can't contain \code{$}, \verb{\\\{} or \verb{\\\}}.}
 }
 \description{
 Deletes an endpoint from an application.

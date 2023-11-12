@@ -29,10 +29,10 @@ destination.
 To use a TLS inspection configuration, you add it to a new Network
 Firewall firewall policy, then you apply the firewall policy to a
 firewall. Network Firewall acts as a proxy service to decrypt and
-inspect inbound traffic. You can reference a TLS inspection
-configuration from more than one firewall policy, and you can use a
-firewall policy in more than one firewall. For more information about
-using TLS inspection configurations, see \href{https://docs.aws.amazon.com/network-firewall/latest/developerguide/}{Decrypting SSL/TLS traffic with TLS inspection configurations}
+inspect the traffic traveling through your firewalls. You can reference
+a TLS inspection configuration from more than one firewall policy, and
+you can use a firewall policy in more than one firewall. For more
+information about using TLS inspection configurations, see \href{https://docs.aws.amazon.com/network-firewall/latest/developerguide/}{Inspecting SSL/TLS traffic with TLS inspection configurations}
 in the \emph{Network Firewall Developer Guide}.}
 
 \item{Description}{A description of the TLS inspection configuration.}
@@ -42,7 +42,7 @@ in the \emph{Network Firewall Developer Guide}.}
 \item{EncryptionConfiguration}{}
 }
 \description{
-Creates an Network Firewall TLS inspection configuration. A TLS inspection configuration contains the Certificate Manager certificate references that Network Firewall uses to decrypt and re-encrypt inbound traffic.
+Creates an Network Firewall TLS inspection configuration. A TLS inspection configuration contains Certificate Manager certificate associations between and the scope configurations that Network Firewall uses to decrypt and re-encrypt traffic traveling through your firewall.
 
 See \url{https://www.paws-r-sdk.com/docs/networkfirewall_create_tls_inspection_configuration/} for full documentation.
 }

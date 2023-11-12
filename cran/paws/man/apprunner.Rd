@@ -22,9 +22,9 @@ apprunner(
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -143,6 +143,7 @@ the \emph{Amazon Web Services General Reference}.
 \link[paws.compute:apprunner_list_observability_configurations]{list_observability_configurations} \tab Returns a list of active App Runner observability configurations in your Amazon Web Services account\cr
 \link[paws.compute:apprunner_list_operations]{list_operations} \tab Return a list of operations that occurred on an App Runner service\cr
 \link[paws.compute:apprunner_list_services]{list_services} \tab Returns a list of running App Runner services in your Amazon Web Services account\cr
+\link[paws.compute:apprunner_list_services_for_auto_scaling_configuration]{list_services_for_auto_scaling_configuration} \tab Returns a list of the associated App Runner services using an auto scaling configuration\cr
 \link[paws.compute:apprunner_list_tags_for_resource]{list_tags_for_resource} \tab List tags that are associated with for an App Runner resource\cr
 \link[paws.compute:apprunner_list_vpc_connectors]{list_vpc_connectors} \tab Returns a list of App Runner VPC connectors in your Amazon Web Services account\cr
 \link[paws.compute:apprunner_list_vpc_ingress_connections]{list_vpc_ingress_connections} \tab Return a list of App Runner VPC Ingress Connections in your Amazon Web Services account\cr
@@ -151,6 +152,7 @@ the \emph{Amazon Web Services General Reference}.
 \link[paws.compute:apprunner_start_deployment]{start_deployment} \tab Initiate a manual deployment of the latest commit in a source code repository or the latest image in a source image repository to an App Runner service\cr
 \link[paws.compute:apprunner_tag_resource]{tag_resource} \tab Add tags to, or update the tag values of, an App Runner resource\cr
 \link[paws.compute:apprunner_untag_resource]{untag_resource} \tab Remove tags from an App Runner resource\cr
+\link[paws.compute:apprunner_update_default_auto_scaling_configuration]{update_default_auto_scaling_configuration} \tab Update an auto scaling configuration to be the default\cr
 \link[paws.compute:apprunner_update_service]{update_service} \tab Update an App Runner service\cr
 \link[paws.compute:apprunner_update_vpc_ingress_connection]{update_vpc_ingress_connection} \tab Update an existing App Runner VPC Ingress Connection resource
 }

@@ -19,7 +19,8 @@ from the replicated Region.}
 
 \item{TelephonyConfig}{The distribution of traffic between the instance and its replica(s).}
 
-\item{SignInConfig}{The distribution of allowing signing in to the instance and its
+\item{SignInConfig}{The distribution that determines which Amazon Web Services Regions
+should be used to sign in agents in to both the instance and its
 replica(s).}
 
 \item{AgentConfig}{The distribution of agents between the instance and its replica(s).}

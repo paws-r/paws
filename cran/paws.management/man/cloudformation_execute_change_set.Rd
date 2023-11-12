@@ -48,13 +48,11 @@ operation.
 
 Default: \code{True}}
 
-\item{RetainExceptOnCreate}{This deletion policy deletes newly created resources, but retains
-existing resources, when a stack operation is rolled back. This ensures
-new, empty, and unused resources are deleted, while critical resources
-and their data are retained. \code{RetainExceptOnCreate} can be specified for
-any resource that supports the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html}{DeletionPolicy}
-attribute.}
+\item{RetainExceptOnCreate}{When set to \code{true}, newly created resources are deleted when the
+operation rolls back. This includes newly created resources marked with
+a deletion policy of \code{Retain}.
+
+Default: \code{false}}
 }
 \description{
 Updates a stack using the input information that was provided when the specified change set was created. After the call successfully completes, CloudFormation starts updating the stack. Use the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} action to view the status of the update.

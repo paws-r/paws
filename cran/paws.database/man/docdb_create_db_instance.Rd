@@ -16,7 +16,8 @@ docdb_create_db_instance(
   CopyTagsToSnapshot = NULL,
   PromotionTier = NULL,
   EnablePerformanceInsights = NULL,
-  PerformanceInsightsKMSKeyId = NULL
+  PerformanceInsightsKMSKeyId = NULL,
+  CACertificateIdentifier = NULL
 )
 }
 \arguments{
@@ -91,6 +92,13 @@ If you do not specify a value for PerformanceInsightsKMSKeyId, then
 Amazon DocumentDB uses your default KMS key. There is a default KMS key
 for your Amazon Web Services account. Your Amazon Web Services account
 has a different default KMS key for each Amazon Web Services region.}
+
+\item{CACertificateIdentifier}{The CA certificate identifier to use for the DB instance's server
+certificate.
+
+For more information, see \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/ca_cert_rotation.html}{Updating Your Amazon DocumentDB TLS Certificates}
+and \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/security.encryption.ssl.html}{Encrypting Data in Transit}
+in the \emph{Amazon DocumentDB Developer Guide}.}
 }
 \description{
 Creates a new instance.

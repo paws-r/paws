@@ -3,11 +3,11 @@
 #' @include finspacedata_service.R
 NULL
 
-#' Adds a user account to a permission group to grant permissions for
-#' actions a user can perform in FinSpace
+#' Adds a user to a permission group to grant permissions for actions a
+#' user can perform in FinSpace
 #'
 #' @description
-#' Adds a user account to a permission group to grant permissions for actions a user can perform in FinSpace.
+#' Adds a user to a permission group to grant permissions for actions a user can perform in FinSpace.
 #'
 #' See [https://www.paws-r-sdk.com/docs/finspacedata_associate_user_to_permission_group/](https://www.paws-r-sdk.com/docs/finspacedata_associate_user_to_permission_group/) for full documentation.
 #'
@@ -275,7 +275,7 @@ finspacedata_create_permission_group <- function(name, description = NULL, appli
 #'     are assigned permissions by adding them to a permission group.
 #' @param firstName The first name of the user that you want to register.
 #' @param lastName The last name of the user that you want to register.
-#' @param ApiAccess The option to indicate whether the user can use the
+#' @param apiAccess The option to indicate whether the user can use the
 #' [`get_programmatic_access_credentials`][finspacedata_get_programmatic_access_credentials]
 #' API to obtain credentials that can then be used to access other FinSpace
 #' Data API operations.
@@ -292,14 +292,14 @@ finspacedata_create_permission_group <- function(name, description = NULL, appli
 #' @keywords internal
 #'
 #' @rdname finspacedata_create_user
-finspacedata_create_user <- function(emailAddress, type, firstName = NULL, lastName = NULL, ApiAccess = NULL, apiAccessPrincipalArn = NULL, clientToken = NULL) {
+finspacedata_create_user <- function(emailAddress, type, firstName = NULL, lastName = NULL, apiAccess = NULL, apiAccessPrincipalArn = NULL, clientToken = NULL) {
   op <- new_operation(
     name = "CreateUser",
     http_method = "POST",
     http_path = "/user",
     paginator = list()
   )
-  input <- .finspacedata$create_user_input(emailAddress = emailAddress, type = type, firstName = firstName, lastName = lastName, ApiAccess = ApiAccess, apiAccessPrincipalArn = apiAccessPrincipalArn, clientToken = clientToken)
+  input <- .finspacedata$create_user_input(emailAddress = emailAddress, type = type, firstName = firstName, lastName = lastName, apiAccess = apiAccess, apiAccessPrincipalArn = apiAccessPrincipalArn, clientToken = clientToken)
   output <- .finspacedata$create_user_output()
   config <- get_config()
   svc <- .finspacedata$service(config)
@@ -377,7 +377,7 @@ finspacedata_delete_permission_group <- function(permissionGroupId, clientToken 
 #'
 #' See [https://www.paws-r-sdk.com/docs/finspacedata_disable_user/](https://www.paws-r-sdk.com/docs/finspacedata_disable_user/) for full documentation.
 #'
-#' @param userId &#91;required&#93; The unique identifier for the user account that you want to disable.
+#' @param userId &#91;required&#93; The unique identifier for the user that you want to deactivate.
 #' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
 #'
 #' @keywords internal
@@ -400,10 +400,10 @@ finspacedata_disable_user <- function(userId, clientToken = NULL) {
 }
 .finspacedata$operations$disable_user <- finspacedata_disable_user
 
-#' Removes a user account from a permission group
+#' Removes a user from a permission group
 #'
 #' @description
-#' Removes a user account from a permission group.
+#' Removes a user from a permission group.
 #'
 #' See [https://www.paws-r-sdk.com/docs/finspacedata_disassociate_user_from_permission_group/](https://www.paws-r-sdk.com/docs/finspacedata_disassociate_user_from_permission_group/) for full documentation.
 #'
@@ -438,7 +438,7 @@ finspacedata_disassociate_user_from_permission_group <- function(permissionGroup
 #'
 #' See [https://www.paws-r-sdk.com/docs/finspacedata_enable_user/](https://www.paws-r-sdk.com/docs/finspacedata_enable_user/) for full documentation.
 #'
-#' @param userId &#91;required&#93; The unique identifier for the user account that you want to enable.
+#' @param userId &#91;required&#93; The unique identifier for the user that you want to activate.
 #' @param clientToken A token that ensures idempotency. This token expires in 10 minutes.
 #'
 #' @keywords internal
@@ -614,7 +614,7 @@ finspacedata_get_permission_group <- function(permissionGroupId) {
 #' Request programmatic credentials to use with FinSpace SDK
 #'
 #' @description
-#' Request programmatic credentials to use with FinSpace SDK.
+#' Request programmatic credentials to use with FinSpace SDK. For more information, see [Step 2. Access credentials programmatically using IAM access key id and secret access key](https://docs.aws.amazon.com/finspace/latest/data-api/fs-using-the-finspace-api.html#accessing-credentials).
 #'
 #' See [https://www.paws-r-sdk.com/docs/finspacedata_get_programmatic_access_credentials/](https://www.paws-r-sdk.com/docs/finspacedata_get_programmatic_access_credentials/) for full documentation.
 #'
@@ -832,10 +832,9 @@ finspacedata_list_permission_groups <- function(nextToken = NULL, maxResults) {
 .finspacedata$operations$list_permission_groups <- finspacedata_list_permission_groups
 
 #' Lists all the permission groups that are associated with a specific user
-#' account
 #'
 #' @description
-#' Lists all the permission groups that are associated with a specific user account.
+#' Lists all the permission groups that are associated with a specific user.
 #'
 #' See [https://www.paws-r-sdk.com/docs/finspacedata_list_permission_groups_by_user/](https://www.paws-r-sdk.com/docs/finspacedata_list_permission_groups_by_user/) for full documentation.
 #'
@@ -863,10 +862,10 @@ finspacedata_list_permission_groups_by_user <- function(userId, nextToken = NULL
 }
 .finspacedata$operations$list_permission_groups_by_user <- finspacedata_list_permission_groups_by_user
 
-#' Lists all available user accounts in FinSpace
+#' Lists all available users in FinSpace
 #'
 #' @description
-#' Lists all available user accounts in FinSpace.
+#' Lists all available users in FinSpace.
 #'
 #' See [https://www.paws-r-sdk.com/docs/finspacedata_list_users/](https://www.paws-r-sdk.com/docs/finspacedata_list_users/) for full documentation.
 #'
@@ -1128,14 +1127,14 @@ finspacedata_update_permission_group <- function(permissionGroupId, name = NULL,
 }
 .finspacedata$operations$update_permission_group <- finspacedata_update_permission_group
 
-#' Modifies the details of the specified user account
+#' Modifies the details of the specified user
 #'
 #' @description
-#' Modifies the details of the specified user account. You cannot update the `userId` for a user.
+#' Modifies the details of the specified user. You cannot update the `userId` for a user.
 #'
 #' See [https://www.paws-r-sdk.com/docs/finspacedata_update_user/](https://www.paws-r-sdk.com/docs/finspacedata_update_user/) for full documentation.
 #'
-#' @param userId &#91;required&#93; The unique identifier for the user account to update.
+#' @param userId &#91;required&#93; The unique identifier for the user that you want to update.
 #' @param type The option to indicate the type of user.
 #' 
 #' -   `SUPER_USER`– A user with permission to all the functionality and

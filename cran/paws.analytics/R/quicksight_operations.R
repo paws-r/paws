@@ -211,18 +211,22 @@ quicksight_create_account_subscription <- function(Edition, AuthenticationMethod
 #' 
 #' Either a `SourceEntity` or a `Definition` must be provided in order for
 #' the request to be valid.
+#' @param ValidationStrategy The option to relax the validation needed to create an analysis with
+#' definition objects. This skips the validation step for specific errors.
+#' @param FolderArns When you create the analysis, Amazon QuickSight adds the analysis to
+#' these folders.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_create_analysis
-quicksight_create_analysis <- function(AwsAccountId, AnalysisId, Name, Parameters = NULL, Permissions = NULL, SourceEntity = NULL, ThemeArn = NULL, Tags = NULL, Definition = NULL) {
+quicksight_create_analysis <- function(AwsAccountId, AnalysisId, Name, Parameters = NULL, Permissions = NULL, SourceEntity = NULL, ThemeArn = NULL, Tags = NULL, Definition = NULL, ValidationStrategy = NULL, FolderArns = NULL) {
   op <- new_operation(
     name = "CreateAnalysis",
     http_method = "POST",
     http_path = "/accounts/{AwsAccountId}/analyses/{AnalysisId}",
     paginator = list()
   )
-  input <- .quicksight$create_analysis_input(AwsAccountId = AwsAccountId, AnalysisId = AnalysisId, Name = Name, Parameters = Parameters, Permissions = Permissions, SourceEntity = SourceEntity, ThemeArn = ThemeArn, Tags = Tags, Definition = Definition)
+  input <- .quicksight$create_analysis_input(AwsAccountId = AwsAccountId, AnalysisId = AnalysisId, Name = Name, Parameters = Parameters, Permissions = Permissions, SourceEntity = SourceEntity, ThemeArn = ThemeArn, Tags = Tags, Definition = Definition, ValidationStrategy = ValidationStrategy, FolderArns = FolderArns)
   output <- .quicksight$create_analysis_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -298,18 +302,23 @@ quicksight_create_analysis <- function(AwsAccountId, AnalysisId, Name, Parameter
 #' 
 #' Either a `SourceEntity` or a `Definition` must be provided in order for
 #' the request to be valid.
+#' @param ValidationStrategy The option to relax the validation needed to create a dashboard with
+#' definition objects. This option skips the validation step for specific
+#' errors.
+#' @param FolderArns When you create the dashboard, Amazon QuickSight adds the dashboard to
+#' these folders.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_create_dashboard
-quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Parameters = NULL, Permissions = NULL, SourceEntity = NULL, Tags = NULL, VersionDescription = NULL, DashboardPublishOptions = NULL, ThemeArn = NULL, Definition = NULL) {
+quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Parameters = NULL, Permissions = NULL, SourceEntity = NULL, Tags = NULL, VersionDescription = NULL, DashboardPublishOptions = NULL, ThemeArn = NULL, Definition = NULL, ValidationStrategy = NULL, FolderArns = NULL) {
   op <- new_operation(
     name = "CreateDashboard",
     http_method = "POST",
     http_path = "/accounts/{AwsAccountId}/dashboards/{DashboardId}",
     paginator = list()
   )
-  input <- .quicksight$create_dashboard_input(AwsAccountId = AwsAccountId, DashboardId = DashboardId, Name = Name, Parameters = Parameters, Permissions = Permissions, SourceEntity = SourceEntity, Tags = Tags, VersionDescription = VersionDescription, DashboardPublishOptions = DashboardPublishOptions, ThemeArn = ThemeArn, Definition = Definition)
+  input <- .quicksight$create_dashboard_input(AwsAccountId = AwsAccountId, DashboardId = DashboardId, Name = Name, Parameters = Parameters, Permissions = Permissions, SourceEntity = SourceEntity, Tags = Tags, VersionDescription = VersionDescription, DashboardPublishOptions = DashboardPublishOptions, ThemeArn = ThemeArn, Definition = Definition, ValidationStrategy = ValidationStrategy, FolderArns = FolderArns)
   output <- .quicksight$create_dashboard_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -349,18 +358,20 @@ quicksight_create_dashboard <- function(AwsAccountId, DashboardId, Name, Paramet
 #' assigned to the dataset.
 #' @param DataSetUsageConfiguration 
 #' @param DatasetParameters The parameter declarations of the dataset.
+#' @param FolderArns When you create the dataset, Amazon QuickSight adds the dataset to these
+#' folders.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_create_data_set
-quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTableMap, LogicalTableMap = NULL, ImportMode, ColumnGroups = NULL, FieldFolders = NULL, Permissions = NULL, RowLevelPermissionDataSet = NULL, RowLevelPermissionTagConfiguration = NULL, ColumnLevelPermissionRules = NULL, Tags = NULL, DataSetUsageConfiguration = NULL, DatasetParameters = NULL) {
+quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTableMap, LogicalTableMap = NULL, ImportMode, ColumnGroups = NULL, FieldFolders = NULL, Permissions = NULL, RowLevelPermissionDataSet = NULL, RowLevelPermissionTagConfiguration = NULL, ColumnLevelPermissionRules = NULL, Tags = NULL, DataSetUsageConfiguration = NULL, DatasetParameters = NULL, FolderArns = NULL) {
   op <- new_operation(
     name = "CreateDataSet",
     http_method = "POST",
     http_path = "/accounts/{AwsAccountId}/data-sets",
     paginator = list()
   )
-  input <- .quicksight$create_data_set_input(AwsAccountId = AwsAccountId, DataSetId = DataSetId, Name = Name, PhysicalTableMap = PhysicalTableMap, LogicalTableMap = LogicalTableMap, ImportMode = ImportMode, ColumnGroups = ColumnGroups, FieldFolders = FieldFolders, Permissions = Permissions, RowLevelPermissionDataSet = RowLevelPermissionDataSet, RowLevelPermissionTagConfiguration = RowLevelPermissionTagConfiguration, ColumnLevelPermissionRules = ColumnLevelPermissionRules, Tags = Tags, DataSetUsageConfiguration = DataSetUsageConfiguration, DatasetParameters = DatasetParameters)
+  input <- .quicksight$create_data_set_input(AwsAccountId = AwsAccountId, DataSetId = DataSetId, Name = Name, PhysicalTableMap = PhysicalTableMap, LogicalTableMap = LogicalTableMap, ImportMode = ImportMode, ColumnGroups = ColumnGroups, FieldFolders = FieldFolders, Permissions = Permissions, RowLevelPermissionDataSet = RowLevelPermissionDataSet, RowLevelPermissionTagConfiguration = RowLevelPermissionTagConfiguration, ColumnLevelPermissionRules = ColumnLevelPermissionRules, Tags = Tags, DataSetUsageConfiguration = DataSetUsageConfiguration, DatasetParameters = DatasetParameters, FolderArns = FolderArns)
   output <- .quicksight$create_data_set_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -397,18 +408,20 @@ quicksight_create_data_set <- function(AwsAccountId, DataSetId, Name, PhysicalTa
 #' connects to your underlying source.
 #' @param Tags Contains a map of the key-value pairs for the resource tag or tags
 #' assigned to the data source.
+#' @param FolderArns When you create the data source, Amazon QuickSight adds the data source
+#' to these folders.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_create_data_source
-quicksight_create_data_source <- function(AwsAccountId, DataSourceId, Name, Type, DataSourceParameters = NULL, Credentials = NULL, Permissions = NULL, VpcConnectionProperties = NULL, SslProperties = NULL, Tags = NULL) {
+quicksight_create_data_source <- function(AwsAccountId, DataSourceId, Name, Type, DataSourceParameters = NULL, Credentials = NULL, Permissions = NULL, VpcConnectionProperties = NULL, SslProperties = NULL, Tags = NULL, FolderArns = NULL) {
   op <- new_operation(
     name = "CreateDataSource",
     http_method = "POST",
     http_path = "/accounts/{AwsAccountId}/data-sources",
     paginator = list()
   )
-  input <- .quicksight$create_data_source_input(AwsAccountId = AwsAccountId, DataSourceId = DataSourceId, Name = Name, Type = Type, DataSourceParameters = DataSourceParameters, Credentials = Credentials, Permissions = Permissions, VpcConnectionProperties = VpcConnectionProperties, SslProperties = SslProperties, Tags = Tags)
+  input <- .quicksight$create_data_source_input(AwsAccountId = AwsAccountId, DataSourceId = DataSourceId, Name = Name, Type = Type, DataSourceParameters = DataSourceParameters, Credentials = Credentials, Permissions = Permissions, VpcConnectionProperties = VpcConnectionProperties, SslProperties = SslProperties, Tags = Tags, FolderArns = FolderArns)
   output <- .quicksight$create_data_source_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -754,18 +767,20 @@ quicksight_create_refresh_schedule <- function(DataSetId, AwsAccountId, Schedule
 #' 
 #' Either a `SourceEntity` or a `Definition` must be provided in order for
 #' the request to be valid.
+#' @param ValidationStrategy TThe option to relax the validation needed to create a template with
+#' definition objects. This skips the validation step for specific errors.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_create_template
-quicksight_create_template <- function(AwsAccountId, TemplateId, Name = NULL, Permissions = NULL, SourceEntity = NULL, Tags = NULL, VersionDescription = NULL, Definition = NULL) {
+quicksight_create_template <- function(AwsAccountId, TemplateId, Name = NULL, Permissions = NULL, SourceEntity = NULL, Tags = NULL, VersionDescription = NULL, Definition = NULL, ValidationStrategy = NULL) {
   op <- new_operation(
     name = "CreateTemplate",
     http_method = "POST",
     http_path = "/accounts/{AwsAccountId}/templates/{TemplateId}",
     paginator = list()
   )
-  input <- .quicksight$create_template_input(AwsAccountId = AwsAccountId, TemplateId = TemplateId, Name = Name, Permissions = Permissions, SourceEntity = SourceEntity, Tags = Tags, VersionDescription = VersionDescription, Definition = Definition)
+  input <- .quicksight$create_template_input(AwsAccountId = AwsAccountId, TemplateId = TemplateId, Name = Name, Permissions = Permissions, SourceEntity = SourceEntity, Tags = Tags, VersionDescription = VersionDescription, Definition = Definition, ValidationStrategy = ValidationStrategy)
   output <- .quicksight$create_template_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -4442,18 +4457,19 @@ quicksight_put_data_set_refresh_properties <- function(AwsAccountId, DataSetId, 
 #' should only be used when `ExternalLoginFederationProviderType` parameter
 #' is set to `CUSTOM_OIDC`.
 #' @param ExternalLoginId The identity ID for a user in the external login provider.
+#' @param Tags The tags to associate with the user.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_register_user
-quicksight_register_user <- function(IdentityType, Email, UserRole, IamArn = NULL, SessionName = NULL, AwsAccountId, Namespace, UserName = NULL, CustomPermissionsName = NULL, ExternalLoginFederationProviderType = NULL, CustomFederationProviderUrl = NULL, ExternalLoginId = NULL) {
+quicksight_register_user <- function(IdentityType, Email, UserRole, IamArn = NULL, SessionName = NULL, AwsAccountId, Namespace, UserName = NULL, CustomPermissionsName = NULL, ExternalLoginFederationProviderType = NULL, CustomFederationProviderUrl = NULL, ExternalLoginId = NULL, Tags = NULL) {
   op <- new_operation(
     name = "RegisterUser",
     http_method = "POST",
     http_path = "/accounts/{AwsAccountId}/namespaces/{Namespace}/users",
     paginator = list()
   )
-  input <- .quicksight$register_user_input(IdentityType = IdentityType, Email = Email, UserRole = UserRole, IamArn = IamArn, SessionName = SessionName, AwsAccountId = AwsAccountId, Namespace = Namespace, UserName = UserName, CustomPermissionsName = CustomPermissionsName, ExternalLoginFederationProviderType = ExternalLoginFederationProviderType, CustomFederationProviderUrl = CustomFederationProviderUrl, ExternalLoginId = ExternalLoginId)
+  input <- .quicksight$register_user_input(IdentityType = IdentityType, Email = Email, UserRole = UserRole, IamArn = IamArn, SessionName = SessionName, AwsAccountId = AwsAccountId, Namespace = Namespace, UserName = UserName, CustomPermissionsName = CustomPermissionsName, ExternalLoginFederationProviderType = ExternalLoginFederationProviderType, CustomFederationProviderUrl = CustomFederationProviderUrl, ExternalLoginId = ExternalLoginId, Tags = Tags)
   output <- .quicksight$register_user_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -5015,18 +5031,20 @@ quicksight_update_account_settings <- function(AwsAccountId, DefaultNamespace, N
 #' 
 #' A definition is the data model of all features in a Dashboard, Template,
 #' or Analysis.
+#' @param ValidationStrategy The option to relax the validation needed to update an analysis with
+#' definition objects. This skips the validation step for specific errors.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_update_analysis
-quicksight_update_analysis <- function(AwsAccountId, AnalysisId, Name, Parameters = NULL, SourceEntity = NULL, ThemeArn = NULL, Definition = NULL) {
+quicksight_update_analysis <- function(AwsAccountId, AnalysisId, Name, Parameters = NULL, SourceEntity = NULL, ThemeArn = NULL, Definition = NULL, ValidationStrategy = NULL) {
   op <- new_operation(
     name = "UpdateAnalysis",
     http_method = "PUT",
     http_path = "/accounts/{AwsAccountId}/analyses/{AnalysisId}",
     paginator = list()
   )
-  input <- .quicksight$update_analysis_input(AwsAccountId = AwsAccountId, AnalysisId = AnalysisId, Name = Name, Parameters = Parameters, SourceEntity = SourceEntity, ThemeArn = ThemeArn, Definition = Definition)
+  input <- .quicksight$update_analysis_input(AwsAccountId = AwsAccountId, AnalysisId = AnalysisId, Name = Name, Parameters = Parameters, SourceEntity = SourceEntity, ThemeArn = ThemeArn, Definition = Definition, ValidationStrategy = ValidationStrategy)
   output <- .quicksight$update_analysis_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -5125,18 +5143,20 @@ quicksight_update_analysis_permissions <- function(AwsAccountId, AnalysisId, Gra
 #' 
 #' A definition is the data model of all features in a Dashboard, Template,
 #' or Analysis.
+#' @param ValidationStrategy The option to relax the validation needed to update a dashboard with
+#' definition objects. This skips the validation step for specific errors.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_update_dashboard
-quicksight_update_dashboard <- function(AwsAccountId, DashboardId, Name, SourceEntity = NULL, Parameters = NULL, VersionDescription = NULL, DashboardPublishOptions = NULL, ThemeArn = NULL, Definition = NULL) {
+quicksight_update_dashboard <- function(AwsAccountId, DashboardId, Name, SourceEntity = NULL, Parameters = NULL, VersionDescription = NULL, DashboardPublishOptions = NULL, ThemeArn = NULL, Definition = NULL, ValidationStrategy = NULL) {
   op <- new_operation(
     name = "UpdateDashboard",
     http_method = "PUT",
     http_path = "/accounts/{AwsAccountId}/dashboards/{DashboardId}",
     paginator = list()
   )
-  input <- .quicksight$update_dashboard_input(AwsAccountId = AwsAccountId, DashboardId = DashboardId, Name = Name, SourceEntity = SourceEntity, Parameters = Parameters, VersionDescription = VersionDescription, DashboardPublishOptions = DashboardPublishOptions, ThemeArn = ThemeArn, Definition = Definition)
+  input <- .quicksight$update_dashboard_input(AwsAccountId = AwsAccountId, DashboardId = DashboardId, Name = Name, SourceEntity = SourceEntity, Parameters = Parameters, VersionDescription = VersionDescription, DashboardPublishOptions = DashboardPublishOptions, ThemeArn = ThemeArn, Definition = Definition, ValidationStrategy = ValidationStrategy)
   output <- .quicksight$update_dashboard_output()
   config <- get_config()
   svc <- .quicksight$service(config)
@@ -5646,18 +5666,20 @@ quicksight_update_refresh_schedule <- function(DataSetId, AwsAccountId, Schedule
 #' 
 #' A definition is the data model of all features in a Dashboard, Template,
 #' or Analysis.
+#' @param ValidationStrategy The option to relax the validation needed to update a template with
+#' definition objects. This skips the validation step for specific errors.
 #'
 #' @keywords internal
 #'
 #' @rdname quicksight_update_template
-quicksight_update_template <- function(AwsAccountId, TemplateId, SourceEntity = NULL, VersionDescription = NULL, Name = NULL, Definition = NULL) {
+quicksight_update_template <- function(AwsAccountId, TemplateId, SourceEntity = NULL, VersionDescription = NULL, Name = NULL, Definition = NULL, ValidationStrategy = NULL) {
   op <- new_operation(
     name = "UpdateTemplate",
     http_method = "PUT",
     http_path = "/accounts/{AwsAccountId}/templates/{TemplateId}",
     paginator = list()
   )
-  input <- .quicksight$update_template_input(AwsAccountId = AwsAccountId, TemplateId = TemplateId, SourceEntity = SourceEntity, VersionDescription = VersionDescription, Name = Name, Definition = Definition)
+  input <- .quicksight$update_template_input(AwsAccountId = AwsAccountId, TemplateId = TemplateId, SourceEntity = SourceEntity, VersionDescription = VersionDescription, Name = Name, Definition = Definition, ValidationStrategy = ValidationStrategy)
   output <- .quicksight$update_template_output()
   config <- get_config()
   svc <- .quicksight$service(config)

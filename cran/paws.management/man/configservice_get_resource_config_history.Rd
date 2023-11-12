@@ -2,7 +2,8 @@
 % Please edit documentation in R/configservice_operations.R
 \name{configservice_get_resource_config_history}
 \alias{configservice_get_resource_config_history}
-\title{Returns a list of ConfigurationItems for the specified resource}
+\title{For accurate reporting on the compliance status, you must record the
+AWS::Config::ResourceCompliance resource type}
 \usage{
 configservice_get_resource_config_history(
   resourceType,
@@ -19,12 +20,13 @@ configservice_get_resource_config_history(
 
 \item{resourceId}{[required] The ID of the resource (for example., \code{sg-xxxxxx}).}
 
-\item{laterTime}{The time stamp that indicates a later time. If not specified, current
-time is taken.}
+\item{laterTime}{The chronologically latest time in the time range for which the history
+requested. If not specified, current time is taken.}
 
-\item{earlierTime}{The time stamp that indicates an earlier time. If not specified, the
-action returns paginated results that contain configuration items that
-start when the first configuration item was recorded.}
+\item{earlierTime}{The chronologically earliest time in the time range for which the
+history requested. If not specified, the action returns paginated
+results that contain configuration items that start when the first
+configuration item was recorded.}
 
 \item{chronologicalOrder}{The chronological order for configuration items listed. By default, the
 results are listed in reverse chronological order.}
@@ -37,7 +39,7 @@ specify 0, Config uses the default.}
 the next page of results in a paginated response.}
 }
 \description{
-Returns a list of \code{ConfigurationItems} for the specified resource. The list contains details about each state of the resource during the specified time interval. If you specified a retention period to retain your \code{ConfigurationItems} between a minimum of 30 days and a maximum of 7 years (2557 days), Config returns the \code{ConfigurationItems} for the specified retention period.
+For accurate reporting on the compliance status, you must record the \verb{AWS::Config::ResourceCompliance} resource type. For more information, see \href{https://docs.aws.amazon.com/config/latest/developerguide/select-resources.html}{Selecting Which Resources Config Records}.
 
 See \url{https://www.paws-r-sdk.com/docs/configservice_get_resource_config_history/} for full documentation.
 }

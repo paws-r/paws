@@ -31,7 +31,15 @@ with third-party systems whose content is synchronized automatically.}
 
 \item{renderingConfiguration}{Information about how to render the content.}
 
-\item{serverSideEncryptionConfiguration}{The KMS key used for encryption.}
+\item{serverSideEncryptionConfiguration}{The configuration information for the customer managed key used for
+encryption.
+
+This KMS key must have a policy that allows \code{kms:CreateGrant} and
+\code{kms:DescribeKey} permissions to the IAM identity using the key to
+invoke Wisdom.
+
+For more information about setting up a customer managed key for Wisdom,
+see \href{https://docs.aws.amazon.com/connect/latest/adminguide/enable-wisdom.html}{Enable Amazon Connect Wisdom for your instance}.}
 
 \item{sourceConfiguration}{The source of the knowledge base content. Only set this argument for
 EXTERNAL knowledge bases.}

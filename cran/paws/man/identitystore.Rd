@@ -22,9 +22,9 @@ identitystore(
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -53,12 +53,15 @@ to the client. The available operations are listed in the
 Operations section.
 }
 \description{
-The Identity Store service used by AWS IAM Identity Center (successor to
-AWS Single Sign-On) provides a single place to retrieve all of your
-identities (users and groups). For more information, see the \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html}{IAM Identity Center User Guide}.
+The Identity Store service used by IAM Identity Center provides a single
+place to retrieve all of your identities (users and groups). For more
+information, see the \href{https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html}{IAM Identity Center User Guide}.
 
-\if{html}{\out{<div class="sourceCode">}}\preformatted{ <note> <p>Although AWS Single Sign-On was renamed, the <code>sso</code> and <code>identitystore</code> API namespaces will continue to retain their original name for backward compatibility purposes. For more information, see <a href="https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed">IAM Identity Center rename</a>.</p> </note> <p>This reference guide describes the identity store operations that you can call programatically and includes detailed information about data types and errors.</p> 
-}\if{html}{\out{</div>}}
+This reference guide describes the identity store operations that you
+can call programmatically and includes detailed information about data
+types and errors.
+
+IAM Identity Center uses the \code{sso} and \code{identitystore} API namespaces.
 }
 \section{Service syntax}{
 

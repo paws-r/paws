@@ -2,7 +2,7 @@
 % Please edit documentation in R/finspacedata_operations.R
 \name{finspacedata_list_users}
 \alias{finspacedata_list_users}
-\title{Lists all available user accounts in FinSpace}
+\title{Lists all available users in FinSpace}
 \usage{
 finspacedata_list_users(nextToken = NULL, maxResults)
 }
@@ -12,7 +12,7 @@ finspacedata_list_users(nextToken = NULL, maxResults)
 \item{maxResults}{[required] The maximum number of results per page.}
 }
 \description{
-Lists all available user accounts in FinSpace.
+Lists all available users in FinSpace.
 
 See \url{https://www.paws-r-sdk.com/docs/finspacedata_list_users/} for full documentation.
 }

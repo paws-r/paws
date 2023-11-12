@@ -1490,7 +1490,11 @@ ssm_create_maintenance_window <- function(Name, Description = NULL, StartDate = 
 #'   Severity, ActualStartTime, ActualEndTime, PlannedStartTime,
 #'   PlannedEndTime, AccountId)
 #'
-#' @param Description &#91;required&#93; Information about the OpsItem.
+#' @param Description &#91;required&#93; User-defined text that contains information about the OpsItem, in
+#' Markdown format.
+#' 
+#' Provide enough information so that users viewing this OpsItem for the
+#' first time understand the issue.
 #' @param OpsItemType The type of OpsItem to create. Systems Manager supports the following
 #' types of OpsItems:
 #' 
@@ -2304,6 +2308,74 @@ ssm_delete_maintenance_window <- function(WindowId) {
   return(response)
 }
 .ssm$operations$delete_maintenance_window <- ssm_delete_maintenance_window
+
+#' Delete an OpsItem
+#'
+#' @description
+#' Delete an OpsItem. You must have permission in Identity and Access
+#' Management (IAM) to delete an OpsItem.
+#' 
+#' Note the following important information about this operation.
+#' 
+#' -   Deleting an OpsItem is irreversible. You can't restore a deleted
+#'     OpsItem.
+#' 
+#' -   This operation uses an *eventual consistency model*, which means the
+#'     system can take a few minutes to complete this operation. If you
+#'     delete an OpsItem and immediately call, for example,
+#'     [`get_ops_item`][ssm_get_ops_item], the deleted OpsItem might still
+#'     appear in the response.
+#' 
+#' -   This operation is idempotent. The system doesn't throw an exception
+#'     if you repeatedly call this operation for the same OpsItem. If the
+#'     first call is successful, all additional calls return the same
+#'     successful response as the first call.
+#' 
+#' -   This operation doesn't support cross-account calls. A delegated
+#'     administrator or management account can't delete OpsItems in other
+#'     accounts, even if OpsCenter has been set up for cross-account
+#'     administration. For more information about cross-account
+#'     administration, see [Setting up OpsCenter to centrally manage
+#'     OpsItems across
+#'     accounts](https://docs.aws.amazon.com/systems-manager/latest/userguide/OpsCenter-setting-up-cross-account.html)
+#'     in the *Systems Manager User Guide*.
+#'
+#' @usage
+#' ssm_delete_ops_item(OpsItemId)
+#'
+#' @param OpsItemId &#91;required&#93; The ID of the OpsItem that you want to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_ops_item(
+#'   OpsItemId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname ssm_delete_ops_item
+#'
+#' @aliases ssm_delete_ops_item
+ssm_delete_ops_item <- function(OpsItemId) {
+  op <- new_operation(
+    name = "DeleteOpsItem",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .ssm$delete_ops_item_input(OpsItemId = OpsItemId)
+  output <- .ssm$delete_ops_item_output()
+  config <- get_config()
+  svc <- .ssm$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.ssm$operations$delete_ops_item <- ssm_delete_ops_item
 
 #' Delete OpsMetadata related to an application
 #'
@@ -4261,7 +4333,7 @@ ssm_describe_instance_associations_status <- function(InstanceId, MaxResults = N
 #'       RegistrationDate = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       ResourceType = "ManagedInstance"|"Document"|"EC2Instance",
+#'       ResourceType = "ManagedInstance"|"EC2Instance",
 #'       Name = "string",
 #'       IPAddress = "string",
 #'       ComputerName = "string",
@@ -6651,7 +6723,7 @@ ssm_get_command_invocation <- function(CommandId, InstanceId, PluginName = NULL)
 #' ```
 #' list(
 #'   Target = "string",
-#'   Status = "Connected"|"NotConnected"
+#'   Status = "connected"|"notconnected"
 #' )
 #' ```
 #'
@@ -13890,8 +13962,8 @@ ssm_update_managed_instance_role <- function(InstanceId, IamRole) {
 #'   Status, OpsItemId, Title, Category, Severity, ActualStartTime,
 #'   ActualEndTime, PlannedStartTime, PlannedEndTime, OpsItemArn)
 #'
-#' @param Description Update the information about the OpsItem. Provide enough information so
-#' that users reading this OpsItem for the first time understand the issue.
+#' @param Description User-defined text that contains information about the OpsItem, in
+#' Markdown format.
 #' @param OperationalData Add new keys or edit existing key-value pairs of the OperationalData map
 #' in the OpsItem object.
 #' 

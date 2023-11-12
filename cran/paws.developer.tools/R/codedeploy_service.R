@@ -97,9 +97,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -196,11 +196,11 @@ NULL
 #'  \link[=codedeploy_get_deployment_target]{get_deployment_target} \tab Returns information about a deployment target\cr
 #'  \link[=codedeploy_get_on_premises_instance]{get_on_premises_instance} \tab Gets information about an on-premises instance\cr
 #'  \link[=codedeploy_list_application_revisions]{list_application_revisions} \tab Lists information about revisions for an application\cr
-#'  \link[=codedeploy_list_applications]{list_applications} \tab Lists the applications registered with the IAM user or Amazon Web Services account\cr
-#'  \link[=codedeploy_list_deployment_configs]{list_deployment_configs} \tab Lists the deployment configurations with the IAM user or Amazon Web Services account\cr
-#'  \link[=codedeploy_list_deployment_groups]{list_deployment_groups} \tab Lists the deployment groups for an application registered with the IAM user or Amazon Web Services account\cr
+#'  \link[=codedeploy_list_applications]{list_applications} \tab Lists the applications registered with the user or Amazon Web Services account\cr
+#'  \link[=codedeploy_list_deployment_configs]{list_deployment_configs} \tab Lists the deployment configurations with the user or Amazon Web Services account\cr
+#'  \link[=codedeploy_list_deployment_groups]{list_deployment_groups} \tab Lists the deployment groups for an application registered with the Amazon Web Services user or Amazon Web Services account\cr
 #'  \link[=codedeploy_list_deployment_instances]{list_deployment_instances} \tab The newer BatchGetDeploymentTargets should be used instead because it works with all compute types\cr
-#'  \link[=codedeploy_list_deployments]{list_deployments} \tab Lists the deployments in a deployment group for an application registered with the IAM user or Amazon Web Services account\cr
+#'  \link[=codedeploy_list_deployments]{list_deployments} \tab Lists the deployments in a deployment group for an application registered with the user or Amazon Web Services account\cr
 #'  \link[=codedeploy_list_deployment_targets]{list_deployment_targets} \tab Returns an array of target IDs that are associated a deployment\cr
 #'  \link[=codedeploy_list_git_hub_account_token_names]{list_git_hub_account_token_names} \tab Lists the names of stored connections to GitHub accounts\cr
 #'  \link[=codedeploy_list_on_premises_instances]{list_on_premises_instances} \tab Gets a list of names for one or more on-premises instances\cr

@@ -30,7 +30,7 @@ and dash (-). Spaces are not allowed.}
 \item{tags}{A list of tags for the filter.}
 }
 \description{
-Creates a filter resource using specified filter criteria.
+Creates a filter resource using specified filter criteria. When the filter action is set to \code{SUPPRESS} this action creates a suppression rule.
 
 See \url{https://www.paws-r-sdk.com/docs/inspector2_create_filter/} for full documentation.
 }

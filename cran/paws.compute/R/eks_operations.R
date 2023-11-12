@@ -112,9 +112,12 @@ eks_associate_identity_provider_config <- function(clusterName, oidc, tags = NUL
 #'     different than the existing value, Amazon EKS changes the value to
 #'     the Amazon EKS default value.
 #' 
-#' -   **Preserve** – Not supported. You can set this value when updating
-#'     an add-on though. For more information, see
-#'     [`update_addon`][eks_update_addon].
+#' -   **Preserve** – This is similar to the NONE option. If the
+#'     self-managed version of the add-on is installed on your cluster
+#'     Amazon EKS doesn't change the add-on resource properties. Creation
+#'     of the add-on might fail if conflicts are detected. This option
+#'     works differently during the update operation. For more information,
+#'     see [`update_addon`][eks_update_addon].
 #' 
 #' If you don't currently have the self-managed version of the add-on
 #' installed on your cluster, the Amazon EKS add-on is installed. Amazon
@@ -222,6 +225,58 @@ eks_create_cluster <- function(name, version = NULL, roleArn, resourcesVpcConfig
 }
 .eks$operations$create_cluster <- eks_create_cluster
 
+#' Creates an EKS Anywhere subscription
+#'
+#' @description
+#' Creates an EKS Anywhere subscription. When a subscription is created, it is a contract agreement for the length of the term specified in the request. Licenses that are used to validate support are provisioned in Amazon Web Services License Manager and the caller account is granted access to EKS Anywhere Curated Packages.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_create_eks_anywhere_subscription/](https://www.paws-r-sdk.com/docs/eks_create_eks_anywhere_subscription/) for full documentation.
+#'
+#' @param name &#91;required&#93; The unique name for your subscription. It must be unique in your Amazon
+#' Web Services account in the Amazon Web Services Region you're creating
+#' the subscription in. The name can contain only alphanumeric characters
+#' (case-sensitive), hyphens, and underscores. It must start with an
+#' alphabetic character and can't be longer than 100 characters.
+#' @param term &#91;required&#93; An object representing the term duration and term unit type of your
+#' subscription. This determines the term length of your subscription.
+#' Valid values are MONTHS for term unit and 12 or 36 for term duration,
+#' indicating a 12 month or 36 month subscription. This value cannot be
+#' changed after creating the subscription.
+#' @param licenseQuantity The number of licenses to purchase with the subscription. Valid values
+#' are between 1 and 1000. This value cannot be changed after creating the
+#' subscription.
+#' @param licenseType The license type for all licenses in the subscription. Valid value is
+#' CLUSTER. With the CLUSTER license type, each license covers support for
+#' a single EKS Anywhere cluster.
+#' @param autoRenew A boolean indicating whether the subscription auto renews at the end of
+#' the term.
+#' @param clientRequestToken Unique, case-sensitive identifier that you provide to ensure the
+#' idempotency of the request.
+#' @param tags The metadata for a subscription to assist with categorization and
+#' organization. Each tag consists of a key and an optional value.
+#' Subscription tags do not propagate to any other resources associated
+#' with the subscription.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_create_eks_anywhere_subscription
+eks_create_eks_anywhere_subscription <- function(name, term, licenseQuantity = NULL, licenseType = NULL, autoRenew = NULL, clientRequestToken = NULL, tags = NULL) {
+  op <- new_operation(
+    name = "CreateEksAnywhereSubscription",
+    http_method = "POST",
+    http_path = "/eks-anywhere-subscriptions",
+    paginator = list()
+  )
+  input <- .eks$create_eks_anywhere_subscription_input(name = name, term = term, licenseQuantity = licenseQuantity, licenseType = licenseType, autoRenew = autoRenew, clientRequestToken = clientRequestToken, tags = tags)
+  output <- .eks$create_eks_anywhere_subscription_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$create_eks_anywhere_subscription <- eks_create_eks_anywhere_subscription
+
 #' Creates an Fargate profile for your Amazon EKS cluster
 #'
 #' @description
@@ -277,7 +332,7 @@ eks_create_fargate_profile <- function(fargateProfileName, clusterName, podExecu
 #' Creates a managed node group for an Amazon EKS cluster
 #'
 #' @description
-#' Creates a managed node group for an Amazon EKS cluster. You can only create a node group for your cluster that is equal to the current Kubernetes version for the cluster. All node groups are created with the latest AMI release version for the respective minor Kubernetes version of the cluster, unless you deploy a custom AMI using a launch template. For more information about using launch templates, see [Launch template support](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html).
+#' Creates a managed node group for an Amazon EKS cluster. You can only create a node group for your cluster that is equal to the current Kubernetes version for the cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_create_nodegroup/](https://www.paws-r-sdk.com/docs/eks_create_nodegroup/) for full documentation.
 #'
@@ -475,6 +530,35 @@ eks_delete_cluster <- function(name) {
   return(response)
 }
 .eks$operations$delete_cluster <- eks_delete_cluster
+
+#' Deletes an expired / inactive subscription
+#'
+#' @description
+#' Deletes an expired / inactive subscription. Deleting inactive subscriptions removes them from the Amazon Web Services Management Console view and from list/describe API responses. Subscriptions can only be cancelled within 7 days of creation, and are cancelled by creating a ticket in the Amazon Web Services Support Center.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_delete_eks_anywhere_subscription/](https://www.paws-r-sdk.com/docs/eks_delete_eks_anywhere_subscription/) for full documentation.
+#'
+#' @param id &#91;required&#93; The ID of the subscription.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_delete_eks_anywhere_subscription
+eks_delete_eks_anywhere_subscription <- function(id) {
+  op <- new_operation(
+    name = "DeleteEksAnywhereSubscription",
+    http_method = "DELETE",
+    http_path = "/eks-anywhere-subscriptions/{id}",
+    paginator = list()
+  )
+  input <- .eks$delete_eks_anywhere_subscription_input(id = id)
+  output <- .eks$delete_eks_anywhere_subscription_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$delete_eks_anywhere_subscription <- eks_delete_eks_anywhere_subscription
 
 #' Deletes an Fargate profile
 #'
@@ -711,6 +795,35 @@ eks_describe_cluster <- function(name) {
 }
 .eks$operations$describe_cluster <- eks_describe_cluster
 
+#' Returns descriptive information about a subscription
+#'
+#' @description
+#' Returns descriptive information about a subscription.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_describe_eks_anywhere_subscription/](https://www.paws-r-sdk.com/docs/eks_describe_eks_anywhere_subscription/) for full documentation.
+#'
+#' @param id &#91;required&#93; The ID of the subscription.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_describe_eks_anywhere_subscription
+eks_describe_eks_anywhere_subscription <- function(id) {
+  op <- new_operation(
+    name = "DescribeEksAnywhereSubscription",
+    http_method = "GET",
+    http_path = "/eks-anywhere-subscriptions/{id}",
+    paginator = list()
+  )
+  input <- .eks$describe_eks_anywhere_subscription_input(id = id)
+  output <- .eks$describe_eks_anywhere_subscription_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$describe_eks_anywhere_subscription <- eks_describe_eks_anywhere_subscription
+
 #' Returns descriptive information about an Fargate profile
 #'
 #' @description
@@ -841,7 +954,7 @@ eks_describe_update <- function(name, updateId, nodegroupName = NULL, addonName 
 #' Disassociates an identity provider configuration from a cluster
 #'
 #' @description
-#' Disassociates an identity provider configuration from a cluster. If you disassociate an identity provider from your cluster, users included in the provider can no longer access the cluster. However, you can still access the cluster with Amazon Web Services IAM users.
+#' Disassociates an identity provider configuration from a cluster. If you disassociate an identity provider from your cluster, users included in the provider can no longer access the cluster. However, you can still access the cluster with [IAM principals](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_terms-and-concepts.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_disassociate_identity_provider_config/](https://www.paws-r-sdk.com/docs/eks_disassociate_identity_provider_config/) for full documentation.
 #'
@@ -870,10 +983,10 @@ eks_disassociate_identity_provider_config <- function(clusterName, identityProvi
 }
 .eks$operations$disassociate_identity_provider_config <- eks_disassociate_identity_provider_config
 
-#' Lists the available add-ons
+#' Lists the installed add-ons
 #'
 #' @description
-#' Lists the available add-ons.
+#' Lists the installed add-ons.
 #'
 #' See [https://www.paws-r-sdk.com/docs/eks_list_addons/](https://www.paws-r-sdk.com/docs/eks_list_addons/) for full documentation.
 #'
@@ -964,6 +1077,48 @@ eks_list_clusters <- function(maxResults = NULL, nextToken = NULL, include = NUL
   return(response)
 }
 .eks$operations$list_clusters <- eks_list_clusters
+
+#' Displays the full description of the subscription
+#'
+#' @description
+#' Displays the full description of the subscription.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_list_eks_anywhere_subscriptions/](https://www.paws-r-sdk.com/docs/eks_list_eks_anywhere_subscriptions/) for full documentation.
+#'
+#' @param maxResults The maximum number of cluster results returned by
+#' ListEksAnywhereSubscriptions in paginated output. When you use this
+#' parameter, ListEksAnywhereSubscriptions returns only maxResults results
+#' in a single page along with a nextToken response element. You can see
+#' the remaining results of the initial request by sending another
+#' ListEksAnywhereSubscriptions request with the returned nextToken value.
+#' This value can be between 1 and 100. If you don't use this parameter,
+#' ListEksAnywhereSubscriptions returns up to 10 results and a nextToken
+#' value if applicable.
+#' @param nextToken The nextToken value to include in a future ListEksAnywhereSubscriptions
+#' request. When the results of a ListEksAnywhereSubscriptions request
+#' exceed maxResults, you can use this value to retrieve the next page of
+#' results. This value is null when there are no more results to return.
+#' @param includeStatus An array of subscription statuses to filter on.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_list_eks_anywhere_subscriptions
+eks_list_eks_anywhere_subscriptions <- function(maxResults = NULL, nextToken = NULL, includeStatus = NULL) {
+  op <- new_operation(
+    name = "ListEksAnywhereSubscriptions",
+    http_method = "GET",
+    http_path = "/eks-anywhere-subscriptions",
+    paginator = list()
+  )
+  input <- .eks$list_eks_anywhere_subscriptions_input(maxResults = maxResults, nextToken = nextToken, includeStatus = includeStatus)
+  output <- .eks$list_eks_anywhere_subscriptions_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$list_eks_anywhere_subscriptions <- eks_list_eks_anywhere_subscriptions
 
 #' Lists the Fargate profiles associated with the specified cluster in your
 #' Amazon Web Services account in the specified Region
@@ -1424,6 +1579,39 @@ eks_update_cluster_version <- function(name, version, clientRequestToken = NULL)
   return(response)
 }
 .eks$operations$update_cluster_version <- eks_update_cluster_version
+
+#' Update an EKS Anywhere Subscription
+#'
+#' @description
+#' Update an EKS Anywhere Subscription. Only auto renewal and tags can be updated after subscription creation.
+#'
+#' See [https://www.paws-r-sdk.com/docs/eks_update_eks_anywhere_subscription/](https://www.paws-r-sdk.com/docs/eks_update_eks_anywhere_subscription/) for full documentation.
+#'
+#' @param id &#91;required&#93; 
+#' @param autoRenew &#91;required&#93; A boolean indicating whether or not to automatically renew the
+#' subscription.
+#' @param clientRequestToken Unique, case-sensitive identifier to ensure the idempotency of the
+#' request.
+#'
+#' @keywords internal
+#'
+#' @rdname eks_update_eks_anywhere_subscription
+eks_update_eks_anywhere_subscription <- function(id, autoRenew, clientRequestToken = NULL) {
+  op <- new_operation(
+    name = "UpdateEksAnywhereSubscription",
+    http_method = "POST",
+    http_path = "/eks-anywhere-subscriptions/{id}",
+    paginator = list()
+  )
+  input <- .eks$update_eks_anywhere_subscription_input(id = id, autoRenew = autoRenew, clientRequestToken = clientRequestToken)
+  output <- .eks$update_eks_anywhere_subscription_output()
+  config <- get_config()
+  svc <- .eks$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.eks$operations$update_eks_anywhere_subscription <- eks_update_eks_anywhere_subscription
 
 #' Updates an Amazon EKS managed node group configuration
 #'

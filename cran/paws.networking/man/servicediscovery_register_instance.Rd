@@ -81,7 +81,7 @@ must include settings for an \code{A} record, an \code{AAAA} record, or both.
 \code{HealthCheckConfig} settings, Cloud Map will create the Route 53
 health check, but it doesn't associate the health check with the
 alias record.
-\item Auto naming currently doesn't support creating alias records that
+\item Cloud Map currently doesn't support creating alias records that
 route traffic to Amazon Web Services resources other than Elastic
 Load Balancing load balancers.
 \item If you specify a value for \code{AWS_ALIAS_DNS_NAME}, don't specify

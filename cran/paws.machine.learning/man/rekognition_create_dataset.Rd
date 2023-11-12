@@ -2,7 +2,7 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_create_dataset}
 \alias{rekognition_create_dataset}
-\title{Creates a new Amazon Rekognition Custom Labels dataset}
+\title{This operation applies only to Amazon Rekognition Custom Labels}
 \usage{
 rekognition_create_dataset(DatasetSource = NULL, DatasetType, ProjectArn)
 }
@@ -21,7 +21,7 @@ Specify \code{TEST} to create a test dataset.}
 want to asssign the dataset.}
 }
 \description{
-Creates a new Amazon Rekognition Custom Labels dataset. You can create a dataset by using an Amazon Sagemaker format manifest file or by copying an existing Amazon Rekognition Custom Labels dataset.
+This operation applies only to Amazon Rekognition Custom Labels.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_create_dataset/} for full documentation.
 }

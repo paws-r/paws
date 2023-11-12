@@ -22,7 +22,17 @@ workmail_start_mailbox_export_job(
 
 \item{OrganizationId}{[required] The identifier associated with the organization.}
 
-\item{EntityId}{[required] The identifier of the user or resource associated with the mailbox.}
+\item{EntityId}{[required] The identifier of the user or resource associated with the mailbox.
+
+The identifier can accept \emph{UserId or ResourceId}, \emph{Username or
+Resourcename}, or \emph{email}. The following identity formats are available:
+\itemize{
+\item Entity ID: 12345678-1234-1234-1234-123456789012,
+r-0123456789a0123456789b0123456789 , or
+S-1-1-12-1234567890-123456789-123456789-1234
+\item Email address: entity@domain.tld
+\item Entity name: entity
+}}
 
 \item{Description}{The mailbox export job description.}
 

@@ -2,26 +2,28 @@
 % Please edit documentation in R/ssoadmin_operations.R
 \name{ssoadmin_detach_managed_policy_from_permission_set}
 \alias{ssoadmin_detach_managed_policy_from_permission_set}
-\title{Detaches the attached AWS managed policy ARN from the specified
-permission set}
+\title{Detaches the attached Amazon Web Services managed policy ARN from the
+specified permission set}
 \usage{
 ssoadmin_detach_managed_policy_from_permission_set(
   InstanceArn,
-  PermissionSetArn,
-  ManagedPolicyArn
+  ManagedPolicyArn,
+  PermissionSetArn
 )
 }
 \arguments{
 \item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
 will be executed. For more information about ARNs, see Amazon Resource
-Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
+Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon
+Web Services General Reference}.}
+
+\item{ManagedPolicyArn}{[required] The Amazon Web Services managed policy ARN to be detached from a
+permission set.}
 
 \item{PermissionSetArn}{[required] The ARN of the PermissionSet from which the policy should be detached.}
-
-\item{ManagedPolicyArn}{[required] The AWS managed policy ARN to be detached from a permission set.}
 }
 \description{
-Detaches the attached AWS managed policy ARN from the specified permission set.
+Detaches the attached Amazon Web Services managed policy ARN from the specified permission set.
 
 See \url{https://www.paws-r-sdk.com/docs/ssoadmin_detach_managed_policy_from_permission_set/} for full documentation.
 }

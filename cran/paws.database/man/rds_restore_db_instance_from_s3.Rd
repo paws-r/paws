@@ -53,7 +53,8 @@ rds_restore_db_instance_from_s3(
   NetworkType = NULL,
   StorageThroughput = NULL,
   ManageMasterUserPassword = NULL,
-  MasterUserSecretKmsKeyId = NULL
+  MasterUserSecretKmsKeyId = NULL,
+  DedicatedLogVolume = NULL
 )
 }
 \arguments{
@@ -198,18 +199,18 @@ Valid Values: \code{1150}-\code{65535}
 
 Default: \code{3306}}
 
-\item{MultiAZ}{A value that indicates whether the DB instance is a Multi-AZ deployment.
-If the DB instance is a Multi-AZ deployment, you can't set the
-\code{AvailabilityZone} parameter.}
+\item{MultiAZ}{Specifies whether the DB instance is a Multi-AZ deployment. If the DB
+instance is a Multi-AZ deployment, you can't set the \code{AvailabilityZone}
+parameter.}
 
 \item{EngineVersion}{The version number of the database engine to use. Choose the latest
 minor version of your database engine. For information about engine
 versions, see \code{\link[=rds_create_db_instance]{create_db_instance}}, or call
 \code{\link[=rds_describe_db_engine_versions]{describe_db_engine_versions}}.}
 
-\item{AutoMinorVersionUpgrade}{A value that indicates whether minor engine upgrades are applied
-automatically to the DB instance during the maintenance window. By
-default, minor engine upgrades are not applied automatically.}
+\item{AutoMinorVersionUpgrade}{Specifies whether to automatically apply minor engine upgrades to the DB
+instance during the maintenance window. By default, minor engine
+upgrades are not applied automatically.}
 
 \item{LicenseModel}{The license model for this DB instance. Use \code{general-public-license}.}
 
@@ -222,7 +223,7 @@ in the \emph{Amazon RDS User Guide.}}
 argument is omitted, the default option group for the specified engine
 is used.}
 
-\item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
+\item{PubliclyAccessible}{Specifies whether the DB instance is publicly accessible.
 
 When the DB instance is publicly accessible, its Domain Name System
 (DNS) endpoint resolves to the private IP address from within the DB
@@ -244,14 +245,14 @@ in the \emph{Amazon RDS User Guide.}}
 
 \item{StorageType}{Specifies the storage type to be associated with the DB instance.
 
-Valid values: \code{gp2 | gp3 | io1 | standard}
+Valid Values: \code{gp2 | gp3 | io1 | standard}
 
 If you specify \code{io1} or \code{gp3}, you must also include a value for the
 \code{Iops} parameter.
 
 Default: \code{io1} if the \code{Iops} parameter is specified; otherwise \code{gp2}}
 
-\item{StorageEncrypted}{A value that indicates whether the new DB instance is encrypted or not.}
+\item{StorageEncrypted}{Specifies whether the new DB instance is encrypted or not.}
 
 \item{KmsKeyId}{The Amazon Web Services KMS key identifier for an encrypted DB instance.
 
@@ -265,8 +266,8 @@ default KMS key. There is a default KMS key for your Amazon Web Services
 account. Your Amazon Web Services account has a different default KMS
 key for each Amazon Web Services Region.}
 
-\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the DB instance to
-snapshots of the DB instance. By default, tags are not copied.}
+\item{CopyTagsToSnapshot}{Specifies whether to copy all tags from the DB instance to snapshots of
+the DB instance. By default, tags are not copied.}
 
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
 metrics are collected for the DB instance. To disable collecting
@@ -288,9 +289,9 @@ in the \emph{Amazon RDS User Guide.}
 If \code{MonitoringInterval} is set to a value other than 0, then you must
 supply a \code{MonitoringRoleArn} value.}
 
-\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of Amazon Web Services
-Identity and Access Management (IAM) accounts to database accounts. By
-default, mapping isn't enabled.
+\item{EnableIAMDatabaseAuthentication}{Specifies whether to enable mapping of Amazon Web Services Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping isn't enabled.
 
 For more information about IAM database authentication, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication for MySQL and PostgreSQL}
 in the \emph{Amazon RDS User Guide.}}
@@ -313,8 +314,7 @@ file.}
 \item{S3IngestionRoleArn}{[required] An Amazon Web Services Identity and Access Management (IAM) role to
 allow Amazon RDS to access your Amazon S3 bucket.}
 
-\item{EnablePerformanceInsights}{A value that indicates whether to enable Performance Insights for the DB
-instance.
+\item{EnablePerformanceInsights}{Specifies whether to enable Performance Insights for the DB instance.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
 in the \emph{Amazon RDS User Guide}.}
@@ -357,13 +357,13 @@ in the \emph{Amazon RDS User Guide}.}
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance.}
 
-\item{UseDefaultProcessorFeatures}{A value that indicates whether the DB instance class of the DB instance
-uses its default processor features.}
+\item{UseDefaultProcessorFeatures}{Specifies whether the DB instance class of the DB instance uses its
+default processor features.}
 
-\item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
-enabled. The database can't be deleted when deletion protection is
-enabled. By default, deletion protection isn't enabled. For more
-information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+\item{DeletionProtection}{Specifies whether to enable deletion protection for the DB instance. The
+database can't be deleted when deletion protection is enabled. By
+default, deletion protection isn't enabled. For more information, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 
 \item{MaxAllocatedStorage}{The upper limit in gibibytes (GiB) to which Amazon RDS can automatically
 scale the storage of the DB instance.
@@ -374,7 +374,7 @@ in the \emph{Amazon RDS User Guide}.}
 
 \item{NetworkType}{The network type of the DB instance.
 
-Valid values:
+Valid Values:
 \itemize{
 \item \code{IPV4}
 \item \code{DUAL}
@@ -391,8 +391,8 @@ in the \emph{Amazon RDS User Guide.}}
 
 This setting doesn't apply to RDS Custom or Amazon Aurora.}
 
-\item{ManageMasterUserPassword}{A value that indicates whether to manage the master user password with
-Amazon Web Services Secrets Manager.
+\item{ManageMasterUserPassword}{Specifies whether to manage the master user password with Amazon Web
+Services Secrets Manager.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/rds-secrets-manager.html}{Password management with Amazon Web Services Secrets Manager}
 in the \emph{Amazon RDS User Guide.}
@@ -423,6 +423,9 @@ a customer managed KMS key.
 There is a default KMS key for your Amazon Web Services account. Your
 Amazon Web Services account has a different default KMS key for each
 Amazon Web Services Region.}
+
+\item{DedicatedLogVolume}{Specifies whether to enable a dedicated log volume (DLV) for the DB
+instance.}
 }
 \description{
 Amazon Relational Database Service (Amazon RDS) supports importing MySQL databases by using backup files. You can create a backup of your on-premises database, store it on Amazon Simple Storage Service (Amazon S3), and then restore the backup file onto a new Amazon RDS DB instance running MySQL. For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/MySQL.Procedural.Importing.html}{Importing Data into an Amazon RDS MySQL DB Instance} in the \emph{Amazon RDS User Guide.}

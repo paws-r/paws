@@ -16,6 +16,14 @@ test_that("list_lf_tags", {
   expect_error(svc$list_lf_tags(MaxResults = 20), NA)
 })
 
+test_that("list_lake_formation_opt_ins", {
+  expect_error(svc$list_lake_formation_opt_ins(), NA)
+})
+
+test_that("list_lake_formation_opt_ins", {
+  expect_error(svc$list_lake_formation_opt_ins(MaxResults = 20), NA)
+})
+
 test_that("list_permissions", {
   expect_error(svc$list_permissions(), NA)
 })

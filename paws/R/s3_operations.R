@@ -575,8 +575,12 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' Classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
 #' in the *Amazon S3 User Guide*.
 #' 
-#' If the source object's storage class is GLACIER, you must restore a copy
-#' of this object before you can use it as a source object for the copy
+#' If the source object's storage class is GLACIER or DEEP_ARCHIVE, or the
+#' object's storage class is INTELLIGENT_TIERING and it's [S3
+#' Intelligent-Tiering access
+#' tier](https://docs.aws.amazon.com/AmazonS3/latest/userguide/intelligent-tiering-overview.html#intel-tiering-tier-definition)
+#' is Archive Access or Deep Archive Access, you must restore a copy of
+#' this object before you can use it as a source object for the copy
 #' operation. For more information, see
 #' [`restore_object`][s3_restore_object]. For more information, see
 #' [Copying
@@ -721,11 +725,12 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' or replaced with tag-set provided in the request.
 #' @param ServerSideEncryption The server-side encryption algorithm used when storing this object in
 #' Amazon S3 (for example, `AES256`, `aws:kms`, `aws:kms:dsse`).
-#' @param StorageClass By default, Amazon S3 uses the STANDARD Storage Class to store newly
-#' created objects. The STANDARD storage class provides high durability and
-#' high availability. Depending on performance needs, you can specify a
-#' different Storage Class. Amazon S3 on Outposts only uses the OUTPOSTS
-#' Storage Class. For more information, see [Storage
+#' @param StorageClass If the `x-amz-storage-class` header is not used, the copied object will
+#' be stored in the STANDARD Storage Class by default. The STANDARD storage
+#' class provides high durability and high availability. Depending on
+#' performance needs, you can specify a different Storage Class. Amazon S3
+#' on Outposts only uses the OUTPOSTS Storage Class. For more information,
+#' see [Storage
 #' Classes](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
 #' in the *Amazon S3 User Guide*.
 #' @param WebsiteRedirectLocation If the bucket is configured as a website, redirects requests for this
@@ -744,11 +749,12 @@ s3_complete_multipart_upload <- function(Bucket, Key, MultipartUpload = NULL, Up
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
-#' @param SSEKMSKeyId Specifies the KMS key ID to use for object encryption. All GET and PUT
-#' requests for an object protected by KMS will fail if they're not made
-#' via SSL or using SigV4. For information about configuring any of the
-#' officially supported Amazon Web Services SDKs and Amazon Web Services
-#' CLI, see [Specifying the Signature Version in Request
+#' @param SSEKMSKeyId Specifies the KMS ID (Key ID, Key ARN, or Key Alias) to use for object
+#' encryption. All GET and PUT requests for an object protected by KMS will
+#' fail if they're not made via SSL or using SigV4. For information about
+#' configuring any of the officially supported Amazon Web Services SDKs and
+#' Amazon Web Services CLI, see [Specifying the Signature Version in
+#' Request
 #' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version)
 #' in the *Amazon S3 User Guide*.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
@@ -916,11 +922,13 @@ s3_copy_object <- function(ACL = NULL, Bucket, CacheControl = NULL, ChecksumAlgo
 #' Bucket](https://docs.aws.amazon.com/AmazonS3/latest/API/API_control_CreateBucket.html).
 #' 
 #' By default, the bucket is created in the US East (N. Virginia) Region.
-#' You can optionally specify a Region in the request body. You might
-#' choose a Region to optimize latency, minimize costs, or address
-#' regulatory requirements. For example, if you reside in Europe, you will
-#' probably find it advantageous to create buckets in the Europe (Ireland)
-#' Region. For more information, see [Accessing a
+#' You can optionally specify a Region in the request body. To constrain
+#' the bucket creation to a specific Region, you can use
+#' [`LocationConstraint`](https://docs.aws.amazon.com/AmazonS3/latest/API/API_CreateBucketConfiguration.html)
+#' condition key. You might choose a Region to optimize latency, minimize
+#' costs, or address regulatory requirements. For example, if you reside in
+#' Europe, you will probably find it advantageous to create buckets in the
+#' Europe (Ireland) Region. For more information, see [Accessing a
 #' bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket.html#access-bucket-intro).
 #' 
 #' If you send your create bucket request to the `s3.amazonaws.com`
@@ -1417,12 +1425,12 @@ s3_create_bucket <- function(ACL = NULL, Bucket, CreateBucketConfiguration = NUL
 #' @param SSECustomerKeyMD5 Specifies the 128-bit MD5 digest of the encryption key according to RFC
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
-#' @param SSEKMSKeyId Specifies the ID of the symmetric encryption customer managed key to use
-#' for object encryption. All GET and PUT requests for an object protected
-#' by KMS will fail if they're not made via SSL or using SigV4. For
-#' information about configuring any of the officially supported Amazon Web
-#' Services SDKs and Amazon Web Services CLI, see [Specifying the Signature
-#' Version in Request
+#' @param SSEKMSKeyId Specifies the ID (Key ID, Key ARN, or Key Alias) of the symmetric
+#' encryption customer managed key to use for object encryption. All GET
+#' and PUT requests for an object protected by KMS will fail if they're not
+#' made via SSL or using SigV4. For information about configuring any of
+#' the officially supported Amazon Web Services SDKs and Amazon Web
+#' Services CLI, see [Specifying the Signature Version in Request
 #' Authentication](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingAWSSDK.html#specify-signature-version)
 #' in the *Amazon S3 User Guide*.
 #' @param SSEKMSEncryptionContext Specifies the Amazon Web Services KMS Encryption Context to use for
@@ -2589,16 +2597,16 @@ s3_delete_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'
 #' @examples
 #' \dontrun{
-#' # The following example deletes an object from an S3 bucket.
-#' svc$delete_object(
-#'   Bucket = "examplebucket",
-#'   Key = "objectkey.jpg"
-#' )
-#' 
 #' # The following example deletes an object from a non-versioned bucket.
 #' svc$delete_object(
 #'   Bucket = "ExampleBucket",
 #'   Key = "HappyFace.jpg"
+#' )
+#' 
+#' # The following example deletes an object from an S3 bucket.
+#' svc$delete_object(
+#'   Bucket = "examplebucket",
+#'   Key = "objectkey.jpg"
 #' )
 #' }
 #'
@@ -2886,25 +2894,6 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #'
 #' @examples
 #' \dontrun{
-#' # The following example deletes objects from a bucket. The bucket is
-#' # versioned, and the request does not specify the object version to
-#' # delete. In this case, all versions remain in the bucket and S3 adds a
-#' # delete marker.
-#' svc$delete_objects(
-#'   Bucket = "examplebucket",
-#'   Delete = list(
-#'     Objects = list(
-#'       list(
-#'         Key = "objectkey1"
-#'       ),
-#'       list(
-#'         Key = "objectkey2"
-#'       )
-#'     ),
-#'     Quiet = FALSE
-#'   )
-#' )
-#' 
 #' # The following example deletes objects from a bucket. The request
 #' # specifies object versions. S3 deletes specific object versions and
 #' # returns the key and versions of deleted objects in the response.
@@ -2919,6 +2908,25 @@ s3_delete_object_tagging <- function(Bucket, Key, VersionId = NULL, ExpectedBuck
 #'       list(
 #'         Key = "HappyFace.jpg",
 #'         VersionId = "yoz3HB.ZhCS_tKVEmIOr7qYyyAaZSKVd"
+#'       )
+#'     ),
+#'     Quiet = FALSE
+#'   )
+#' )
+#' 
+#' # The following example deletes objects from a bucket. The bucket is
+#' # versioned, and the request does not specify the object version to
+#' # delete. In this case, all versions remain in the bucket and S3 adds a
+#' # delete marker.
+#' svc$delete_objects(
+#'   Bucket = "examplebucket",
+#'   Delete = list(
+#'     Objects = list(
+#'       list(
+#'         Key = "objectkey1"
+#'       ),
+#'       list(
+#'         Key = "objectkey2"
 #'       )
 #'     ),
 #'     Quiet = FALSE
@@ -5527,7 +5535,7 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   BucketKeyEnabled = TRUE|FALSE,
 #'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW",
 #'   RequestCharged = "requester",
-#'   ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA",
+#'   ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA"|"COMPLETED",
 #'   PartsCount = 123,
 #'   TagCount = 123,
 #'   ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
@@ -5573,18 +5581,18 @@ s3_get_bucket_website <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'
 #' @examples
 #' \dontrun{
-#' # The following example retrieves an object for an S3 bucket.
-#' svc$get_object(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
-#' )
-#' 
 #' # The following example retrieves an object for an S3 bucket. The request
 #' # specifies the range header to retrieve a specific byte range.
 #' svc$get_object(
 #'   Bucket = "examplebucket",
 #'   Key = "SampleFile.txt",
 #'   Range = "bytes=0-9"
+#' )
+#' 
+#' # The following example retrieves an object for an S3 bucket.
+#' svc$get_object(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
 #' )
 #' }
 #'
@@ -6292,18 +6300,18 @@ s3_get_object_retention <- function(Bucket, Key, VersionId = NULL, RequestPayer 
 #'
 #' @examples
 #' \dontrun{
+#' # The following example retrieves tag set of an object.
+#' svc$get_object_tagging(
+#'   Bucket = "examplebucket",
+#'   Key = "HappyFace.jpg"
+#' )
+#' 
 #' # The following example retrieves tag set of an object. The request
 #' # specifies object version.
 #' svc$get_object_tagging(
 #'   Bucket = "examplebucket",
 #'   Key = "exampleobject",
 #'   VersionId = "ydlaNkwWm0SfKJR.T1b1fIdPRbldTYRI"
-#' )
-#' 
-#' # The following example retrieves tag set of an object.
-#' svc$get_object_tagging(
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
 #' )
 #' }
 #'
@@ -6802,7 +6810,7 @@ s3_head_bucket <- function(Bucket, ExpectedBucketOwner = NULL) {
 #'   BucketKeyEnabled = TRUE|FALSE,
 #'   StorageClass = "STANDARD"|"REDUCED_REDUNDANCY"|"STANDARD_IA"|"ONEZONE_IA"|"INTELLIGENT_TIERING"|"GLACIER"|"DEEP_ARCHIVE"|"OUTPOSTS"|"GLACIER_IR"|"SNOW",
 #'   RequestCharged = "requester",
-#'   ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA",
+#'   ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA"|"COMPLETED",
 #'   PartsCount = 123,
 #'   ObjectLockMode = "GOVERNANCE"|"COMPLIANCE",
 #'   ObjectLockRetainUntilDate = as.POSIXct(
@@ -7575,6 +7583,12 @@ s3_list_buckets <- function() {
 #'
 #' @examples
 #' \dontrun{
+#' # The following example lists in-progress multipart uploads on a specific
+#' # bucket.
+#' svc$list_multipart_uploads(
+#'   Bucket = "examplebucket"
+#' )
+#' 
 #' # The following example specifies the upload-id-marker and key-marker from
 #' # previous truncated response to retrieve next setup of multipart uploads.
 #' svc$list_multipart_uploads(
@@ -7582,12 +7596,6 @@ s3_list_buckets <- function() {
 #'   KeyMarker = "nextkeyfrompreviousresponse",
 #'   MaxUploads = "2",
 #'   UploadIdMarker = "valuefrompreviousresponse"
-#' )
-#' 
-#' # The following example lists in-progress multipart uploads on a specific
-#' # bucket.
-#' svc$list_multipart_uploads(
-#'   Bucket = "examplebucket"
 #' )
 #' }
 #'
@@ -9038,17 +9046,16 @@ s3_put_bucket_cors <- function(Bucket, CORSConfiguration, ContentMD5 = NULL, Che
 #' By default, all buckets have a default encryption configuration that
 #' uses server-side encryption with Amazon S3 managed keys (SSE-S3). You
 #' can optionally configure default encryption for a bucket by using
-#' server-side encryption with Key Management Service (KMS) keys (SSE-KMS),
-#' dual-layer server-side encryption with Amazon Web Services KMS keys
-#' (DSSE-KMS), or server-side encryption with customer-provided keys
-#' (SSE-C). If you specify default encryption by using SSE-KMS, you can
-#' also configure Amazon S3 Bucket Keys. For information about bucket
-#' default encryption, see [Amazon S3 bucket default
+#' server-side encryption with Key Management Service (KMS) keys (SSE-KMS)
+#' or dual-layer server-side encryption with Amazon Web Services KMS keys
+#' (DSSE-KMS). If you specify default encryption by using SSE-KMS, you can
+#' also configure [Amazon S3 Bucket
+#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html).
+#' If you use PutBucketEncryption to set your [default bucket
 #' encryption](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-encryption.html)
-#' in the *Amazon S3 User Guide*. For more information about S3 Bucket
-#' Keys, see [Amazon S3 Bucket
-#' Keys](https://docs.aws.amazon.com/AmazonS3/latest/userguide/bucket-key.html)
-#' in the *Amazon S3 User Guide*.
+#' to SSE-KMS, you should verify that your KMS key ID is correct. Amazon S3
+#' does not validate the KMS key ID provided in PutBucketEncryption
+#' requests.
 #' 
 #' This action requires Amazon Web Services Signature Version 4. For more
 #' information, see [Authenticating Requests (Amazon Web Services Signature
@@ -10597,7 +10604,10 @@ s3_put_bucket_policy <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm = 
 #' replication configuration, you provide the name of the destination
 #' bucket or buckets where you want Amazon S3 to replicate objects, the IAM
 #' role that Amazon S3 can assume to replicate objects on your behalf, and
-#' other relevant information.
+#' other relevant information. You can invoke this request for a specific
+#' Amazon Web Services Region by using the
+#' [`aws:RequestedRegion`](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_condition-keys.html#condition-keys-requestedregion)
+#' condition key.
 #' 
 #' A replication configuration must include at least one rule, and can
 #' contain a maximum of 1,000. Each rule identifies a subset of objects to
@@ -10938,30 +10948,21 @@ s3_put_bucket_request_payment <- function(Bucket, ContentMD5 = NULL, ChecksumAlg
 #' Resources](https://docs.aws.amazon.com/AmazonS3/latest/userguide/s3-access-control.html).
 #' 
 #' [`put_bucket_tagging`][s3_put_bucket_tagging] has the following special
-#' errors:
+#' errors. For more Amazon S3 errors see, [Error
+#' Responses](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html).
 #' 
-#' -   Error code: `InvalidTagError`
+#' -   `InvalidTag` - The tag provided was not a valid tag. This error can
+#'     occur if the tag did not pass input validation. For more
+#'     information, see [Using Cost Allocation in Amazon S3 Bucket
+#'     Tags](https://docs.aws.amazon.com/AmazonS3/latest/userguide/CostAllocTagging.html).
 #' 
-#'     -   Description: The tag provided was not a valid tag. This error
-#'         can occur if the tag did not pass input validation. For
-#'         information about tag restrictions, see [User-Defined Tag
-#'         Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
-#'         and [Amazon Web Services-Generated Cost Allocation Tag
-#'         Restrictions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/aws-tag-restrictions.html).
+#' -   `MalformedXML` - The XML provided does not match the schema.
 #' 
-#' -   Error code: `MalformedXMLError`
+#' -   `OperationAborted` - A conflicting conditional action is currently
+#'     in progress against this resource. Please try again.
 #' 
-#'     -   Description: The XML provided does not match the schema.
-#' 
-#' -   Error code: `OperationAbortedError `
-#' 
-#'     -   Description: A conflicting conditional action is currently in
-#'         progress against this resource. Please try again.
-#' 
-#' -   Error code: `InternalError`
-#' 
-#'     -   Description: The service was unable to apply the provided tag to
-#'         the bucket.
+#' -   `InternalError` - The service was unable to apply the provided tag
+#'     to the bucket.
 #' 
 #' The following operations are related to
 #' [`put_bucket_tagging`][s3_put_bucket_tagging]:
@@ -11262,6 +11263,8 @@ s3_put_bucket_versioning <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorith
 #' object redirect. For more information, see [Configuring an Object
 #' Redirect](https://docs.aws.amazon.com/AmazonS3/latest/userguide/how-to-page-redirect.html)
 #' in the *Amazon S3 User Guide*.
+#' 
+#' The maximum request length is limited to 128 KB.
 #'
 #' @usage
 #' s3_put_bucket_website(Bucket, ContentMD5, ChecksumAlgorithm,
@@ -11630,9 +11633,10 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #' 1321. Amazon S3 uses this header for a message integrity check to ensure
 #' that the encryption key was transmitted without error.
 #' @param SSEKMSKeyId If `x-amz-server-side-encryption` has a valid value of `aws:kms` or
-#' `aws:kms:dsse`, this header specifies the ID of the Key Management
-#' Service (KMS) symmetric encryption customer managed key that was used
-#' for the object. If you specify `x-amz-server-side-encryption:aws:kms` or
+#' `aws:kms:dsse`, this header specifies the ID (Key ID, Key ARN, or Key
+#' Alias) of the Key Management Service (KMS) symmetric encryption customer
+#' managed key that was used for the object. If you specify
+#' `x-amz-server-side-encryption:aws:kms` or
 #' `x-amz-server-side-encryption:aws:kms:dsse`, but do not
 #' provide` x-amz-server-side-encryption-aws-kms-key-id`, Amazon S3 uses
 #' the Amazon Web Services managed key (`aws/s3`) to protect the data. If
@@ -11736,6 +11740,26 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'
 #' @examples
 #' \dontrun{
+#' # The following example uploads an object. The request specifies the
+#' # optional server-side encryption option. The request also specifies
+#' # optional object tags. If the bucket is versioning enabled, S3 returns
+#' # version ID in response.
+#' svc$put_object(
+#'   Body = "filetoupload",
+#'   Bucket = "examplebucket",
+#'   Key = "exampleobject",
+#'   ServerSideEncryption = "AES256",
+#'   Tagging = "key1=value1&key2=value2"
+#' )
+#' 
+#' # The following example creates an object. If the bucket is versioning
+#' # enabled, S3 returns version ID in response.
+#' svc$put_object(
+#'   Body = "filetoupload",
+#'   Bucket = "examplebucket",
+#'   Key = "objectkey"
+#' )
+#' 
 #' # The following example uploads an object. The request specifies optional
 #' # request headers to directs S3 to use specific storage class and use
 #' # server-side encryption.
@@ -11757,33 +11781,17 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   Tagging = "key1=value1&key2=value2"
 #' )
 #' 
-#' # The following example uploads an object. The request specifies the
-#' # optional server-side encryption option. The request also specifies
-#' # optional object tags. If the bucket is versioning enabled, S3 returns
+#' # The following example creates an object. The request also specifies
+#' # optional metadata. If the bucket is versioning enabled, S3 returns
 #' # version ID in response.
 #' svc$put_object(
 #'   Body = "filetoupload",
 #'   Bucket = "examplebucket",
 #'   Key = "exampleobject",
-#'   ServerSideEncryption = "AES256",
-#'   Tagging = "key1=value1&key2=value2"
-#' )
-#' 
-#' # The following example creates an object. If the bucket is versioning
-#' # enabled, S3 returns version ID in response.
-#' svc$put_object(
-#'   Body = "filetoupload",
-#'   Bucket = "examplebucket",
-#'   Key = "objectkey"
-#' )
-#' 
-#' # The following example uploads an object to a versioning-enabled bucket.
-#' # The source file is specified using Windows file syntax. S3 returns
-#' # VersionId of the newly created object.
-#' svc$put_object(
-#'   Body = "HappyFace.jpg",
-#'   Bucket = "examplebucket",
-#'   Key = "HappyFace.jpg"
+#'   Metadata = list(
+#'     metadata1 = "value1",
+#'     metadata2 = "value2"
+#'   )
 #' )
 #' 
 #' # The following example uploads and object. The request specifies optional
@@ -11797,17 +11805,13 @@ s3_put_bucket_website <- function(Bucket, ContentMD5 = NULL, ChecksumAlgorithm =
 #'   Key = "exampleobject"
 #' )
 #' 
-#' # The following example creates an object. The request also specifies
-#' # optional metadata. If the bucket is versioning enabled, S3 returns
-#' # version ID in response.
+#' # The following example uploads an object to a versioning-enabled bucket.
+#' # The source file is specified using Windows file syntax. S3 returns
+#' # VersionId of the newly created object.
 #' svc$put_object(
-#'   Body = "filetoupload",
+#'   Body = "HappyFace.jpg",
 #'   Bucket = "examplebucket",
-#'   Key = "exampleobject",
-#'   Metadata = list(
-#'     metadata1 = "value1",
-#'     metadata2 = "value2"
-#'   )
+#'   Key = "HappyFace.jpg"
 #' )
 #' }
 #'
@@ -12466,11 +12470,13 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #'
 #' @description
 #' Sets the supplied tag-set to an object that already exists in a bucket.
+#' A tag is a key-value pair. For more information, see [Object
+#' Tagging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html).
 #' 
-#' A tag is a key-value pair. You can associate tags with an object by
-#' sending a PUT request against the tagging subresource that is associated
-#' with the object. You can retrieve tags by sending a GET request. For
-#' more information, see [`get_object_tagging`][s3_get_object_tagging].
+#' You can associate tags with an object by sending a PUT request against
+#' the tagging subresource that is associated with the object. You can
+#' retrieve tags by sending a GET request. For more information, see
+#' [`get_object_tagging`][s3_get_object_tagging].
 #' 
 #' For tagging-related restrictions related to characters and encodings,
 #' see [Tag
@@ -12485,31 +12491,22 @@ s3_put_object_retention <- function(Bucket, Key, Retention = NULL, RequestPayer 
 #' To put tags of any other version, use the `versionId` query parameter.
 #' You also need permission for the `s3:PutObjectVersionTagging` action.
 #' 
-#' For information about the Amazon S3 object tagging feature, see [Object
-#' Tagging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html).
-#' 
 #' [`put_object_tagging`][s3_put_object_tagging] has the following special
-#' errors:
+#' errors. For more Amazon S3 errors see, [Error
+#' Responses](https://docs.aws.amazon.com/AmazonS3/latest/API/ErrorResponses.html).
 #' 
-#' -   -   *Code: InvalidTagError*
+#' -   `InvalidTag` - The tag provided was not a valid tag. This error can
+#'     occur if the tag did not pass input validation. For more
+#'     information, see [Object
+#'     Tagging](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html).
 #' 
-#'     -   *Cause: The tag provided was not a valid tag. This error can
-#'         occur if the tag did not pass input validation. For more
-#'         information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/dev/object-tagging.html}{Object Tagging}.*
+#' -   `MalformedXML` - The XML provided does not match the schema.
 #' 
-#' -   -   *Code: MalformedXMLError*
+#' -   `OperationAborted` - A conflicting conditional action is currently
+#'     in progress against this resource. Please try again.
 #' 
-#'     -   *Cause: The XML provided does not match the schema.*
-#' 
-#' -   -   *Code: OperationAbortedError*
-#' 
-#'     -   *Cause: A conflicting conditional action is currently in
-#'         progress against this resource. Please try again.*
-#' 
-#' -   -   *Code: InternalError*
-#' 
-#'     -   *Cause: The service was unable to apply the provided tag to the
-#'         object.*
+#' -   `InternalError` - The service was unable to apply the provided tag
+#'     to the object.
 #' 
 #' The following operations are related to
 #' [`put_object_tagging`][s3_put_object_tagging]:
@@ -12653,7 +12650,7 @@ s3_put_object_tagging <- function(Bucket, Key, VersionId = NULL, ContentMD5 = NU
 #' bucket or an object, it checks the `PublicAccessBlock` configuration for
 #' both the bucket (or the bucket that contains the object) and the bucket
 #' owner's account. If the `PublicAccessBlock` configurations are different
-#' between the bucket and the account, Amazon S3 uses the most restrictive
+#' between the bucket and the account, S3 uses the most restrictive
 #' combination of the bucket-level and account-level settings.
 #' 
 #' For more information about when Amazon S3 considers a bucket or an
@@ -13981,6 +13978,16 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'
 #' @examples
 #' \dontrun{
+#' # The following example uploads a part of a multipart upload by copying
+#' # data from an existing object as data source.
+#' svc$upload_part_copy(
+#'   Bucket = "examplebucket",
+#'   CopySource = "/bucketname/sourceobjectkey",
+#'   Key = "examplelargeobject",
+#'   PartNumber = "1",
+#'   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3c..."
+#' )
+#' 
 #' # The following example uploads a part of a multipart upload by copying a
 #' # specified byte range from an existing object as data source.
 #' svc$upload_part_copy(
@@ -13989,16 +13996,6 @@ s3_upload_part <- function(Body = NULL, Bucket, ContentLength = NULL, ContentMD5
 #'   CopySourceRange = "bytes=1-100000",
 #'   Key = "examplelargeobject",
 #'   PartNumber = "2",
-#'   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3c..."
-#' )
-#' 
-#' # The following example uploads a part of a multipart upload by copying
-#' # data from an existing object as data source.
-#' svc$upload_part_copy(
-#'   Bucket = "examplebucket",
-#'   CopySource = "/bucketname/sourceobjectkey",
-#'   Key = "examplelargeobject",
-#'   PartNumber = "1",
 #'   UploadId = "exampleuoh_10OhKhT7YukE9bjzTPRiuaCotmZM_pFngJFir9OZNrSr5cWa3c..."
 #' )
 #' }
@@ -14239,9 +14236,10 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #' @param SSECustomerAlgorithm Encryption algorithm used if server-side encryption with a
 #' customer-provided encryption key was specified for object stored in
 #' Amazon S3.
-#' @param SSEKMSKeyId If present, specifies the ID of the Amazon Web Services Key Management
-#' Service (Amazon Web Services KMS) symmetric encryption customer managed
-#' key that was used for stored in Amazon S3 object.
+#' @param SSEKMSKeyId If present, specifies the ID (Key ID, Key ARN, or Key Alias) of the
+#' Amazon Web Services Key Management Service (Amazon Web Services KMS)
+#' symmetric encryption customer managed key that was used for stored in
+#' Amazon S3 object.
 #' @param SSECustomerKeyMD5 128-bit MD5 digest of customer-provided encryption key used in Amazon S3
 #' to encrypt data stored in S3. For more information, see [Protecting data
 #' using server-side encryption with customer-provided encryption keys
@@ -14299,7 +14297,7 @@ s3_upload_part_copy <- function(Bucket, CopySource, CopySourceIfMatch = NULL, Co
 #'     "2015-01-01"
 #'   ),
 #'   PartsCount = 123,
-#'   ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA",
+#'   ReplicationStatus = "COMPLETE"|"PENDING"|"FAILED"|"REPLICA"|"COMPLETED",
 #'   RequestCharged = "requester",
 #'   Restore = "string",
 #'   ServerSideEncryption = "AES256"|"aws:kms"|"aws:kms:dsse",

@@ -10,7 +10,8 @@ ec2_create_verified_access_instance(
   Description = NULL,
   TagSpecifications = NULL,
   ClientToken = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  FIPSEnabled = NULL
 )
 }
 \arguments{
@@ -25,6 +26,9 @@ your modification request. For more information, see \href{https://docs.aws.amaz
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{FIPSEnabled}{Enable or disable support for Federal Information Processing Standards
+(FIPS) on the instance.}
 }
 \description{
 An Amazon Web Services Verified Access instance is a regional entity that evaluates application requests and grants access only when your security requirements are met.

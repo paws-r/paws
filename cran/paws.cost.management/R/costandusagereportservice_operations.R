@@ -6,17 +6,17 @@ NULL
 #' Deletes the specified report
 #'
 #' @description
-#' Deletes the specified report.
+#' Deletes the specified report. Any tags associated with the report are also deleted.
 #'
 #' See [https://www.paws-r-sdk.com/docs/costandusagereportservice_delete_report_definition/](https://www.paws-r-sdk.com/docs/costandusagereportservice_delete_report_definition/) for full documentation.
 #'
-#' @param ReportName The name of the report that you want to delete. The name must be unique,
+#' @param ReportName &#91;required&#93; The name of the report that you want to delete. The name must be unique,
 #' is case sensitive, and can't include spaces.
 #'
 #' @keywords internal
 #'
 #' @rdname costandusagereportservice_delete_report_definition
-costandusagereportservice_delete_report_definition <- function(ReportName = NULL) {
+costandusagereportservice_delete_report_definition <- function(ReportName) {
   op <- new_operation(
     name = "DeleteReportDefinition",
     http_method = "POST",
@@ -33,10 +33,11 @@ costandusagereportservice_delete_report_definition <- function(ReportName = NULL
 }
 .costandusagereportservice$operations$delete_report_definition <- costandusagereportservice_delete_report_definition
 
-#' Lists the AWS Cost and Usage reports available to this account
+#' Lists the Amazon Web Services Cost and Usage Report available to this
+#' account
 #'
 #' @description
-#' Lists the AWS Cost and Usage reports available to this account.
+#' Lists the Amazon Web Services Cost and Usage Report available to this account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/costandusagereportservice_describe_report_definitions/](https://www.paws-r-sdk.com/docs/costandusagereportservice_describe_report_definitions/) for full documentation.
 #'
@@ -63,10 +64,40 @@ costandusagereportservice_describe_report_definitions <- function(MaxResults = N
 }
 .costandusagereportservice$operations$describe_report_definitions <- costandusagereportservice_describe_report_definitions
 
-#' Allows you to programatically update your report preferences
+#' Lists the tags associated with the specified report definition
 #'
 #' @description
-#' Allows you to programatically update your report preferences.
+#' Lists the tags associated with the specified report definition.
+#'
+#' See [https://www.paws-r-sdk.com/docs/costandusagereportservice_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/costandusagereportservice_list_tags_for_resource/) for full documentation.
+#'
+#' @param ReportName &#91;required&#93; The report name of the report definition that tags are to be returned
+#' for.
+#'
+#' @keywords internal
+#'
+#' @rdname costandusagereportservice_list_tags_for_resource
+costandusagereportservice_list_tags_for_resource <- function(ReportName) {
+  op <- new_operation(
+    name = "ListTagsForResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .costandusagereportservice$list_tags_for_resource_input(ReportName = ReportName)
+  output <- .costandusagereportservice$list_tags_for_resource_output()
+  config <- get_config()
+  svc <- .costandusagereportservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costandusagereportservice$operations$list_tags_for_resource <- costandusagereportservice_list_tags_for_resource
+
+#' Allows you to programmatically update your report preferences
+#'
+#' @description
+#' Allows you to programmatically update your report preferences.
 #'
 #' See [https://www.paws-r-sdk.com/docs/costandusagereportservice_modify_report_definition/](https://www.paws-r-sdk.com/docs/costandusagereportservice_modify_report_definition/) for full documentation.
 #'
@@ -102,18 +133,19 @@ costandusagereportservice_modify_report_definition <- function(ReportName, Repor
 #'
 #' @param ReportDefinition &#91;required&#93; Represents the output of the PutReportDefinition operation. The content
 #' consists of the detailed metadata and data file information.
+#' @param Tags The tags to be assigned to the report definition resource.
 #'
 #' @keywords internal
 #'
 #' @rdname costandusagereportservice_put_report_definition
-costandusagereportservice_put_report_definition <- function(ReportDefinition) {
+costandusagereportservice_put_report_definition <- function(ReportDefinition, Tags = NULL) {
   op <- new_operation(
     name = "PutReportDefinition",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .costandusagereportservice$put_report_definition_input(ReportDefinition = ReportDefinition)
+  input <- .costandusagereportservice$put_report_definition_input(ReportDefinition = ReportDefinition, Tags = Tags)
   output <- .costandusagereportservice$put_report_definition_output()
   config <- get_config()
   svc <- .costandusagereportservice$service(config)
@@ -122,3 +154,65 @@ costandusagereportservice_put_report_definition <- function(ReportDefinition) {
   return(response)
 }
 .costandusagereportservice$operations$put_report_definition <- costandusagereportservice_put_report_definition
+
+#' Associates a set of tags with a report definition
+#'
+#' @description
+#' Associates a set of tags with a report definition.
+#'
+#' See [https://www.paws-r-sdk.com/docs/costandusagereportservice_tag_resource/](https://www.paws-r-sdk.com/docs/costandusagereportservice_tag_resource/) for full documentation.
+#'
+#' @param ReportName &#91;required&#93; The report name of the report definition that tags are to be associated
+#' with.
+#' @param Tags &#91;required&#93; The tags to be assigned to the report definition resource.
+#'
+#' @keywords internal
+#'
+#' @rdname costandusagereportservice_tag_resource
+costandusagereportservice_tag_resource <- function(ReportName, Tags) {
+  op <- new_operation(
+    name = "TagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .costandusagereportservice$tag_resource_input(ReportName = ReportName, Tags = Tags)
+  output <- .costandusagereportservice$tag_resource_output()
+  config <- get_config()
+  svc <- .costandusagereportservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costandusagereportservice$operations$tag_resource <- costandusagereportservice_tag_resource
+
+#' Disassociates a set of tags from a report definition
+#'
+#' @description
+#' Disassociates a set of tags from a report definition.
+#'
+#' See [https://www.paws-r-sdk.com/docs/costandusagereportservice_untag_resource/](https://www.paws-r-sdk.com/docs/costandusagereportservice_untag_resource/) for full documentation.
+#'
+#' @param ReportName &#91;required&#93; The report name of the report definition that tags are to be
+#' disassociated from.
+#' @param TagKeys &#91;required&#93; The tags to be disassociated from the report definition resource.
+#'
+#' @keywords internal
+#'
+#' @rdname costandusagereportservice_untag_resource
+costandusagereportservice_untag_resource <- function(ReportName, TagKeys) {
+  op <- new_operation(
+    name = "UntagResource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .costandusagereportservice$untag_resource_input(ReportName = ReportName, TagKeys = TagKeys)
+  output <- .costandusagereportservice$untag_resource_output()
+  config <- get_config()
+  svc <- .costandusagereportservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.costandusagereportservice$operations$untag_resource <- costandusagereportservice_untag_resource

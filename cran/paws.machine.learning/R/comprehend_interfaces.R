@@ -495,6 +495,18 @@ NULL
   return(populate(args, shape))
 }
 
+.comprehend$detect_toxic_content_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(TextSegments = structure(list(structure(list(Text = structure(logical(0), tags = list(type = "string", sensitive = TRUE))), tags = list(type = "structure"))), tags = list(type = "list", sensitive = TRUE)), LanguageCode = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.comprehend$detect_toxic_content_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResultList = structure(list(structure(list(Labels = structure(list(structure(list(Name = structure(logical(0), tags = list(type = "string")), Score = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list")), Toxicity = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .comprehend$import_model_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(SourceModelArn = structure(logical(0), tags = list(type = "string")), ModelName = structure(logical(0), tags = list(type = "string")), VersionName = structure(logical(0), tags = list(type = "string")), ModelKmsKeyId = structure(logical(0), tags = list(type = "string")), DataAccessRoleArn = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(list(Key = structure(logical(0), tags = list(type = "string")), Value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))

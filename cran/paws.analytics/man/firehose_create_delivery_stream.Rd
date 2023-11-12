@@ -17,7 +17,8 @@ firehose_create_delivery_stream(
   SplunkDestinationConfiguration = NULL,
   HttpEndpointDestinationConfiguration = NULL,
   Tags = NULL,
-  AmazonOpenSearchServerlessDestinationConfiguration = NULL
+  AmazonOpenSearchServerlessDestinationConfiguration = NULL,
+  MSKSourceConfiguration = NULL
 )
 }
 \arguments{
@@ -72,6 +73,8 @@ You can specify up to 50 tags when creating a delivery stream.}
 
 \item{AmazonOpenSearchServerlessDestinationConfiguration}{The destination in the Serverless offering for Amazon OpenSearch
 Service. You can specify only one destination.}
+
+\item{MSKSourceConfiguration}{}
 }
 \description{
 Creates a Kinesis Data Firehose delivery stream.

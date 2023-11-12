@@ -75,8 +75,9 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' Prior to making the [`associate_drt_role`][shield_associate_drt_role]
 #' request, you must attach the `AWSShieldDRTAccessPolicy` managed policy
 #' to the role that you'll specify in the request. You can access this
-#' policy in the IAM console at AWSShieldDRTAccessPolicy. For more
-#' information see [Adding and removing IAM identity
+#' policy in the IAM console at
+#' [AWSShieldDRTAccessPolicy](https://us-east-1.console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy).
+#' For more information see [Adding and removing IAM identity
 #' permissions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-attach-detach.html).
 #' The role must also trust the service principal
 #' `drt.shield.amazonaws.com`. For more information, see [IAM JSON policy
@@ -109,9 +110,10 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' your Amazon Web Services account.
 #' 
 #' Prior to making the [`associate_drt_role`][shield_associate_drt_role]
-#' request, you must attach the AWSShieldDRTAccessPolicy managed policy to
-#' this role. For more information see Attaching and Detaching IAM
-#' Policies.
+#' request, you must attach the
+#' [AWSShieldDRTAccessPolicy](https://us-east-1.console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy)
+#' managed policy to this role. For more information see Attaching and
+#' Detaching IAM Policies.
 #'
 #' @return
 #' An empty list.
@@ -291,9 +293,8 @@ shield_associate_proactive_engagement_details <- function(EmergencyContactList) 
 #' You can add protection to only a single resource with each
 #' [`create_protection`][shield_create_protection] request. You can add
 #' protection to multiple resources at once through the Shield Advanced
-#' console at
-#' [https://console.aws.amazon.com/wafv2/shieldv2#/](https://us-east-1.console.aws.amazon.com/wafv2/shieldv2#/).
-#' For more information see [Getting Started with Shield
+#' console at https://console.aws.amazon.com/wafv2/shieldv2#/. For more
+#' information see [Getting Started with Shield
 #' Advanced](https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html)
 #' and [Adding Shield Advanced protection to Amazon Web Services
 #' resources](https://docs.aws.amazon.com/waf/latest/developerguide/).
@@ -1389,9 +1390,8 @@ shield_disassociate_health_check <- function(ProtectionId, HealthCheckArn) {
 #' To use this feature, you must associate a web ACL with the protected
 #' resource. The web ACL must be created using the latest version of WAF
 #' (v2). You can associate the web ACL through the Shield Advanced console
-#' at
-#' [https://console.aws.amazon.com/wafv2/shieldv2#/](https://us-east-1.console.aws.amazon.com/wafv2/shieldv2#/).
-#' For more information, see [Getting Started with Shield
+#' at https://console.aws.amazon.com/wafv2/shieldv2#/. For more
+#' information, see [Getting Started with Shield
 #' Advanced](https://docs.aws.amazon.com/waf/latest/developerguide/getting-started-ddos.html).
 #' You can also associate the web ACL to the resource through the WAF
 #' console or the WAF API, but you must manage Shield Advanced automatic

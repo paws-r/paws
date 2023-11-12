@@ -2,7 +2,7 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_list_dataset_labels}
 \alias{rekognition_list_dataset_labels}
-\title{Lists the labels in a dataset}
+\title{This operation applies only to Amazon Rekognition Custom Labels}
 \usage{
 rekognition_list_dataset_labels(
   DatasetArn,
@@ -23,7 +23,7 @@ value you can specify is 100. If you specify a value greater than 100, a
 ValidationException error occurs. The default value is 100.}
 }
 \description{
-Lists the labels in a dataset. Amazon Rekognition Custom Labels uses labels to describe images. For more information, see \href{https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/md-labeling-images.html}{Labeling images}.
+This operation applies only to Amazon Rekognition Custom Labels.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_list_dataset_labels/} for full documentation.
 }

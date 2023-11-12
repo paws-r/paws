@@ -15,7 +15,7 @@ finspacedata_get_programmatic_access_credentials(
 \item{environmentId}{[required] The FinSpace environment identifier.}
 }
 \description{
-Request programmatic credentials to use with FinSpace SDK.
+Request programmatic credentials to use with FinSpace SDK. For more information, see \href{https://docs.aws.amazon.com/finspace/latest/data-api/fs-using-the-finspace-api.html#accessing-credentials}{Step 2. Access credentials programmatically using IAM access key id and secret access key}.
 
 See \url{https://www.paws-r-sdk.com/docs/finspacedata_get_programmatic_access_credentials/} for full documentation.
 }

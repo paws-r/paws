@@ -22,9 +22,9 @@ comprehend(
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -103,7 +103,7 @@ sentiment expressed in them, the predominant language used, and more.
 \link[paws.machine.learning:comprehend_batch_detect_sentiment]{batch_detect_sentiment} \tab Inspects a batch of documents and returns an inference of the prevailing sentiment, POSITIVE, NEUTRAL, MIXED, or NEGATIVE, in each one\cr
 \link[paws.machine.learning:comprehend_batch_detect_syntax]{batch_detect_syntax} \tab Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them\cr
 \link[paws.machine.learning:comprehend_batch_detect_targeted_sentiment]{batch_detect_targeted_sentiment} \tab Inspects a batch of documents and returns a sentiment analysis for each entity identified in the documents\cr
-\link[paws.machine.learning:comprehend_classify_document]{classify_document} \tab Creates a new document classification request to analyze a single document in real-time, using a previously created and trained custom model and an endpoint\cr
+\link[paws.machine.learning:comprehend_classify_document]{classify_document} \tab Creates a classification request to analyze a single document in real-time\cr
 \link[paws.machine.learning:comprehend_contains_pii_entities]{contains_pii_entities} \tab Analyzes input text for the presence of personally identifiable information (PII) and returns the labels of identified PII entity types such as name, address, bank account number, or phone number\cr
 \link[paws.machine.learning:comprehend_create_dataset]{create_dataset} \tab Creates a dataset to upload training or test data for a model associated with a flywheel\cr
 \link[paws.machine.learning:comprehend_create_document_classifier]{create_document_classifier} \tab Creates a new document classifier that you can use to categorize documents\cr
@@ -138,6 +138,7 @@ sentiment expressed in them, the predominant language used, and more.
 \link[paws.machine.learning:comprehend_detect_sentiment]{detect_sentiment} \tab Inspects text and returns an inference of the prevailing sentiment (POSITIVE, NEUTRAL, MIXED, or NEGATIVE)\cr
 \link[paws.machine.learning:comprehend_detect_syntax]{detect_syntax} \tab Inspects text for syntax and the part of speech of words in the document\cr
 \link[paws.machine.learning:comprehend_detect_targeted_sentiment]{detect_targeted_sentiment} \tab Inspects the input text and returns a sentiment analysis for each entity identified in the text\cr
+\link[paws.machine.learning:comprehend_detect_toxic_content]{detect_toxic_content} \tab Performs toxicity analysis on the list of text strings that you provide as input\cr
 \link[paws.machine.learning:comprehend_import_model]{import_model} \tab Creates a new custom model that replicates a source custom model that you import\cr
 \link[paws.machine.learning:comprehend_list_datasets]{list_datasets} \tab List the datasets that you have configured in this Region\cr
 \link[paws.machine.learning:comprehend_list_document_classification_jobs]{list_document_classification_jobs} \tab Gets a list of the documentation classification jobs that you have submitted\cr

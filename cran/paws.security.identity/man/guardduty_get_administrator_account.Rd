@@ -2,7 +2,7 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_get_administrator_account}
 \alias{guardduty_get_administrator_account}
-\title{Provides the details for the GuardDuty administrator account associated
+\title{Provides the details of the GuardDuty administrator account associated
 with the current GuardDuty member account}
 \usage{
 guardduty_get_administrator_account(DetectorId)
@@ -11,7 +11,7 @@ guardduty_get_administrator_account(DetectorId)
 \item{DetectorId}{[required] The unique ID of the detector of the GuardDuty member account.}
 }
 \description{
-Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account.
+Provides the details of the GuardDuty administrator account associated with the current GuardDuty member account.
 
 See \url{https://www.paws-r-sdk.com/docs/guardduty_get_administrator_account/} for full documentation.
 }

@@ -91,9 +91,14 @@ in the \emph{Amazon RDS User Guide}.}
 
 \item{Tags}{}
 
-\item{SourceCustomDbEngineVersionIdentifier}{Reserved for future use.}
+\item{SourceCustomDbEngineVersionIdentifier}{The ARN of a CEV to use as a source for creating a new CEV. You can
+specify a different Amazon Machine Imagine (AMI) by using either
+\code{Source} or \code{UseAwsProvidedLatestImage}. You can't specify a different
+JSON manifest when you specify \code{SourceCustomDbEngineVersionIdentifier}.}
 
-\item{UseAwsProvidedLatestImage}{Reserved for future use.}
+\item{UseAwsProvidedLatestImage}{Specifies whether to use the latest service-provided Amazon Machine
+Image (AMI) for the CEV. If you specify \code{UseAwsProvidedLatestImage}, you
+can't also specify \code{ImageId}.}
 }
 \description{
 Creates a custom DB engine version (CEV).

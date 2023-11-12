@@ -8,6 +8,7 @@ redshiftserverless_create_workgroup(
   baseCapacity = NULL,
   configParameters = NULL,
   enhancedVpcRouting = NULL,
+  maxCapacity = NULL,
   namespaceName,
   port = NULL,
   publiclyAccessible = NULL,
@@ -31,6 +32,9 @@ monitoring rules and available metrics, see \href{https://docs.aws.amazon.com/re
 \item{enhancedVpcRouting}{The value that specifies whether to turn on enhanced virtual private
 cloud (VPC) routing, which forces Amazon Redshift Serverless to route
 traffic through your VPC instead of over the internet.}
+
+\item{maxCapacity}{The maximum data-warehouse capacity Amazon Redshift Serverless uses to
+serve queries. The max capacity is specified in RPUs.}
 
 \item{namespaceName}{[required] The name of the namespace to associate with the workgroup.}
 

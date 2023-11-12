@@ -37,22 +37,22 @@ Virginia) as follows:
 \item{IPAddressVersion}{[required] The version of the IP addresses, either \code{IPV4} or \code{IPV6}.}
 
 \item{Addresses}{[required] Contains an array of strings that specifies zero or more IP addresses or
-blocks of IP addresses. All addresses must be specified using Classless
-Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6
-CIDR ranges except for \verb{/0}.
+blocks of IP addresses that you want WAF to inspect for in incoming
+requests. All addresses must be specified using Classless Inter-Domain
+Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges
+except for \verb{/0}.
 
 Example address strings:
 \itemize{
-\item To configure WAF to allow, block, or count requests that originated
-from the IP address 192.0.2.44, specify \verb{192.0.2.44/32}.
-\item To configure WAF to allow, block, or count requests that originated
-from IP addresses from 192.0.2.0 to 192.0.2.255, specify
-\verb{192.0.2.0/24}.
-\item To configure WAF to allow, block, or count requests that originated
-from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify
+\item For requests that originated from the IP address 192.0.2.44, specify
+\verb{192.0.2.44/32}.
+\item For requests that originated from IP addresses from 192.0.2.0 to
+192.0.2.255, specify \verb{192.0.2.0/24}.
+\item For requests that originated from the IP address
+1111:0000:0000:0000:0000:0000:0000:0111, specify
 \code{1111:0000:0000:0000:0000:0000:0000:0111/128}.
-\item To configure WAF to allow, block, or count requests that originated
-from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to
+\item For requests that originated from IP addresses
+1111:0000:0000:0000:0000:0000:0000:0000 to
 1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
 \code{1111:0000:0000:0000:0000:0000:0000:0000/64}.
 }

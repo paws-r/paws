@@ -1,6 +1,6 @@
 Package: paws.analytics
 Title: 'Amazon Web Services' Analytics Services
-Version: 0.4.0
+Version: 0.4.0.9000
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -33,12 +33,18 @@ Collate:
     'datapipeline_service.R'
     'datapipeline_interfaces.R'
     'datapipeline_operations.R'
+    'datazone_service.R'
+    'datazone_interfaces.R'
+    'datazone_operations.R'
     'elasticsearchservice_service.R'
     'elasticsearchservice_interfaces.R'
     'elasticsearchservice_operations.R'
     'emr_service.R'
     'emr_interfaces.R'
     'emr_operations.R'
+    'entityresolution_service.R'
+    'entityresolution_interfaces.R'
+    'entityresolution_operations.R'
     'firehose_service.R'
     'firehose_interfaces.R'
     'firehose_operations.R'
@@ -54,6 +60,9 @@ Collate:
     'ivs_service.R'
     'ivs_interfaces.R'
     'ivs_operations.R'
+    'ivsrealtime_service.R'
+    'ivsrealtime_interfaces.R'
+    'ivsrealtime_operations.R'
     'kafka_service.R'
     'kafka_interfaces.R'
     'kafka_operations.R'
@@ -63,6 +72,9 @@ Collate:
     'kendra_service.R'
     'kendra_interfaces.R'
     'kendra_operations.R'
+    'kendraranking_service.R'
+    'kendraranking_interfaces.R'
+    'kendraranking_operations.R'
     'kinesis_service.R'
     'kinesis_interfaces.R'
     'kinesis_operations.R'
@@ -75,9 +87,15 @@ Collate:
     'mturk_service.R'
     'mturk_interfaces.R'
     'mturk_operations.R'
+    'opensearchingestion_service.R'
+    'opensearchingestion_interfaces.R'
+    'opensearchingestion_operations.R'
     'opensearchservice_service.R'
     'opensearchservice_interfaces.R'
     'opensearchservice_operations.R'
+    'opensearchserviceserverless_service.R'
+    'opensearchserviceserverless_interfaces.R'
+    'opensearchserviceserverless_operations.R'
     'quicksight_service.R'
     'quicksight_interfaces.R'
     'quicksight_operations.R'

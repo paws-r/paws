@@ -3,7 +3,8 @@
 \name{elbv2_set_subnets}
 \alias{elbv2_set_subnets}
 \title{Enables the Availability Zones for the specified public subnets for the
-specified Application Load Balancer or Network Load Balancer}
+specified Application Load Balancer, Network Load Balancer or Gateway
+Load Balancer}
 \usage{
 elbv2_set_subnets(
   LoadBalancerArn,
@@ -28,6 +29,9 @@ subnet.
 from one or more Local Zones.
 
 [Network Load Balancers] You can specify subnets from one or more
+Availability Zones.
+
+[Gateway Load Balancers] You can specify subnets from one or more
 Availability Zones.}
 
 \item{SubnetMappings}{The IDs of the public subnets. You can specify only one subnet per
@@ -48,15 +52,22 @@ Availability Zones. You can specify one Elastic IP address per subnet if
 you need static IP addresses for your internet-facing load balancer. For
 internal load balancers, you can specify one private IP address per
 subnet from the IPv4 range of the subnet. For internet-facing load
-balancer, you can specify one IPv6 address per subnet.}
+balancer, you can specify one IPv6 address per subnet.
+
+[Gateway Load Balancers] You can specify subnets from one or more
+Availability Zones.}
 
 \item{IpAddressType}{[Network Load Balancers] The type of IP addresses used by the subnets
 for your load balancer. The possible values are \code{ipv4} (for IPv4
 addresses) and \code{dualstack} (for IPv4 and IPv6 addresses). You can’t
-specify \code{dualstack} for a load balancer with a UDP or TCP_UDP listener.}
+specify \code{dualstack} for a load balancer with a UDP or TCP_UDP listener.
+
+[Gateway Load Balancers] The type of IP addresses used by the subnets
+for your load balancer. The possible values are \code{ipv4} (for IPv4
+addresses) and \code{dualstack} (for IPv4 and IPv6 addresses).}
 }
 \description{
-Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer or Network Load Balancer. The specified subnets replace the previously enabled subnets.
+Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer, Network Load Balancer or Gateway Load Balancer. The specified subnets replace the previously enabled subnets.
 
 See \url{https://www.paws-r-sdk.com/docs/elbv2_set_subnets/} for full documentation.
 }

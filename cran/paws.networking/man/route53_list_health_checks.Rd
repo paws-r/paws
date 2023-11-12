@@ -21,9 +21,9 @@ there are no more health checks to get.}
 
 \item{MaxItems}{The maximum number of health checks that you want
 \code{\link[=route53_list_health_checks]{list_health_checks}} to return in response
-to the current request. Amazon Route 53 returns a maximum of 100 items.
-If you set \code{MaxItems} to a value greater than 100, Route 53 returns only
-the first 100 health checks.}
+to the current request. Amazon Route 53 returns a maximum of 1000 items.
+If you set \code{MaxItems} to a value greater than 1000, Route 53 returns
+only the first 1000 health checks.}
 }
 \description{
 Retrieve a list of the health checks that are associated with the current Amazon Web Services account.

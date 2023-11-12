@@ -12,7 +12,8 @@ ssoadmin_delete_inline_policy_from_permission_set(
 \arguments{
 \item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
 will be executed. For more information about ARNs, see Amazon Resource
-Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
+Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon
+Web Services General Reference}.}
 
 \item{PermissionSetArn}{[required] The ARN of the permission set that will be used to remove access.}
 }

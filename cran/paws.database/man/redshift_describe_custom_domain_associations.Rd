@@ -2,7 +2,7 @@
 % Please edit documentation in R/redshift_operations.R
 \name{redshift_describe_custom_domain_associations}
 \alias{redshift_describe_custom_domain_associations}
-\title{Contains information for custom domain associations for a cluster}
+\title{Contains information about custom domain associations for a cluster}
 \usage{
 redshift_describe_custom_domain_associations(
   CustomDomainName = NULL,
@@ -22,7 +22,7 @@ association.}
 \item{Marker}{The marker for the custom domain association.}
 }
 \description{
-Contains information for custom domain associations for a cluster.
+Contains information about custom domain associations for a cluster.
 
 See \url{https://www.paws-r-sdk.com/docs/redshift_describe_custom_domain_associations/} for full documentation.
 }

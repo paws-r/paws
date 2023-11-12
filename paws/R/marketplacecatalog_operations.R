@@ -59,17 +59,17 @@ marketplacecatalog_cancel_change_set <- function(Catalog, ChangeSetId) {
 }
 .marketplacecatalog$operations$cancel_change_set <- marketplacecatalog_cancel_change_set
 
-#' Deletes a resource-based policy on an Entity that is identified by its
+#' Deletes a resource-based policy on an entity that is identified by its
 #' resource ARN
 #'
 #' @description
-#' Deletes a resource-based policy on an Entity that is identified by its
+#' Deletes a resource-based policy on an entity that is identified by its
 #' resource ARN.
 #'
 #' @usage
 #' marketplacecatalog_delete_resource_policy(ResourceArn)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Entity resource that is associated
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the entity resource that is associated
 #' with the resource policy.
 #'
 #' @return
@@ -138,6 +138,7 @@ marketplacecatalog_delete_resource_policy <- function(ResourceArn) {
 #'         Identifier = "string"
 #'       ),
 #'       Details = "string",
+#'       DetailsDocument = list(),
 #'       ErrorDetailList = list(
 #'         list(
 #'           ErrorCode = "string",
@@ -200,7 +201,8 @@ marketplacecatalog_describe_change_set <- function(Catalog, ChangeSetId) {
 #'   EntityIdentifier = "string",
 #'   EntityArn = "string",
 #'   LastModifiedDate = "string",
-#'   Details = "string"
+#'   Details = "string",
+#'   DetailsDocument = list()
 #' )
 #' ```
 #'
@@ -234,17 +236,17 @@ marketplacecatalog_describe_entity <- function(Catalog, EntityId) {
 }
 .marketplacecatalog$operations$describe_entity <- marketplacecatalog_describe_entity
 
-#' Gets a resource-based policy of an Entity that is identified by its
+#' Gets a resource-based policy of an entity that is identified by its
 #' resource ARN
 #'
 #' @description
-#' Gets a resource-based policy of an Entity that is identified by its
+#' Gets a resource-based policy of an entity that is identified by its
 #' resource ARN.
 #'
 #' @usage
 #' marketplacecatalog_get_resource_policy(ResourceArn)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Entity resource that is associated
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the entity resource that is associated
 #' with the resource policy.
 #'
 #' @return
@@ -392,7 +394,12 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #' results.
 #' @param MaxResults Specifies the upper limit of the elements on a single page. If a value
 #' isn't provided, the default value is 20.
-#' @param OwnershipType 
+#' @param OwnershipType Filters the returned set of entities based on their owner. The default
+#' is `SELF`. To list entities shared with you through AWS Resource Access
+#' Manager (AWS RAM), set to `SHARED`. Entities shared through the AWS
+#' Marketplace Catalog API
+#' [`put_resource_policy`][marketplacecatalog_put_resource_policy]
+#' operation can't be discovered through the `SHARED` parameter.
 #'
 #' @return
 #' A list with the following syntax:
@@ -515,16 +522,16 @@ marketplacecatalog_list_tags_for_resource <- function(ResourceArn) {
 }
 .marketplacecatalog$operations$list_tags_for_resource <- marketplacecatalog_list_tags_for_resource
 
-#' Attaches a resource-based policy to an Entity
+#' Attaches a resource-based policy to an entity
 #'
 #' @description
-#' Attaches a resource-based policy to an Entity. Examples of an entity
+#' Attaches a resource-based policy to an entity. Examples of an entity
 #' include: `AmiProduct` and `ContainerProduct`.
 #'
 #' @usage
 #' marketplacecatalog_put_resource_policy(ResourceArn, Policy)
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Entity resource you want to
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the entity resource you want to
 #' associate with a resource policy.
 #' @param Policy &#91;required&#93; The policy document to set; formatted in JSON.
 #'
@@ -580,11 +587,11 @@ marketplacecatalog_put_resource_policy <- function(ResourceArn, Policy) {
 #' For more information about working with change sets, see [Working with
 #' change
 #' sets](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets).
-#' For information on change types for single-AMI products, see [Working
+#' For information about change types for single-AMI products, see [Working
 #' with single-AMI
 #' products](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/ami-products.html#working-with-single-AMI-products).
-#' Als, for more information on change types available for container-based
-#' products, see [Working with container
+#' Also, for more information about change types available for
+#' container-based products, see [Working with container
 #' products](https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/container-products.html#working-with-container-products).
 #'
 #' @usage
@@ -626,6 +633,7 @@ marketplacecatalog_put_resource_policy <- function(ResourceArn, Policy) {
 #'         )
 #'       ),
 #'       Details = "string",
+#'       DetailsDocument = list(),
 #'       ChangeName = "string"
 #'     )
 #'   ),

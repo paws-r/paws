@@ -2,8 +2,7 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_copy_project_version}
 \alias{rekognition_copy_project_version}
-\title{Copies a version of an Amazon Rekognition Custom Labels model from a
-source project to a destination project}
+\title{This operation applies only to Amazon Rekognition Custom Labels}
 \usage{
 rekognition_copy_project_version(
   SourceProjectArn,
@@ -51,7 +50,7 @@ If you don't specify a value for \code{KmsKeyId}, images copied into the
 service are encrypted using a key that AWS owns and manages.}
 }
 \description{
-Copies a version of an Amazon Rekognition Custom Labels model from a source project to a destination project. The source and destination projects can be in different AWS accounts but must be in the same AWS Region. You can't copy a model to another AWS service.
+This operation applies only to Amazon Rekognition Custom Labels.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_copy_project_version/} for full documentation.
 }

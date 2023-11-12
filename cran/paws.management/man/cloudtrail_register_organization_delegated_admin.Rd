@@ -12,7 +12,7 @@ cloudtrail_register_organization_delegated_admin(MemberAccountId)
 delegated administrator.}
 }
 \description{
-Registers an organization’s member account as the CloudTrail delegated administrator.
+Registers an organization’s member account as the CloudTrail \href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-delegated-administrator.html}{delegated administrator}.
 
 See \url{https://www.paws-r-sdk.com/docs/cloudtrail_register_organization_delegated_admin/} for full documentation.
 }

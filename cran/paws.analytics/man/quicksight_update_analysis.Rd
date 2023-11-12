@@ -11,7 +11,8 @@ quicksight_update_analysis(
   Parameters = NULL,
   SourceEntity = NULL,
   ThemeArn = NULL,
-  Definition = NULL
+  Definition = NULL,
+  ValidationStrategy = NULL
 )
 }
 \arguments{
@@ -40,6 +41,9 @@ make sure that you have access to it.}
 
 A definition is the data model of all features in a Dashboard, Template,
 or Analysis.}
+
+\item{ValidationStrategy}{The option to relax the validation needed to update an analysis with
+definition objects. This skips the validation step for specific errors.}
 }
 \description{
 Updates an analysis in Amazon QuickSight

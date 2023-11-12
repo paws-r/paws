@@ -22,9 +22,9 @@ configservice(
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -176,7 +176,7 @@ in the \emph{Config Developer Guide}.
 \link[paws.management:configservice_get_organization_config_rule_detailed_status]{get_organization_config_rule_detailed_status} \tab Returns detailed status for each member account within an organization for a given organization Config rule\cr
 \link[paws.management:configservice_get_organization_conformance_pack_detailed_status]{get_organization_conformance_pack_detailed_status} \tab Returns detailed status for each member account within an organization for a given organization conformance pack\cr
 \link[paws.management:configservice_get_organization_custom_rule_policy]{get_organization_custom_rule_policy} \tab Returns the policy definition containing the logic for your organization Config Custom Policy rule\cr
-\link[paws.management:configservice_get_resource_config_history]{get_resource_config_history} \tab Returns a list of ConfigurationItems for the specified resource\cr
+\link[paws.management:configservice_get_resource_config_history]{get_resource_config_history} \tab For accurate reporting on the compliance status, you must record the AWS::Config::ResourceCompliance resource type\cr
 \link[paws.management:configservice_get_resource_evaluation_summary]{get_resource_evaluation_summary} \tab Returns a summary of resource evaluation for the specified resource evaluation ID from the proactive rules that were run\cr
 \link[paws.management:configservice_get_stored_query]{get_stored_query} \tab Returns the details of a specific stored query\cr
 \link[paws.management:configservice_list_aggregate_discovered_resources]{list_aggregate_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions\cr
@@ -190,7 +190,7 @@ in the \emph{Config Developer Guide}.
 \link[paws.management:configservice_put_configuration_aggregator]{put_configuration_aggregator} \tab Creates and updates the configuration aggregator with the selected source accounts and regions\cr
 \link[paws.management:configservice_put_configuration_recorder]{put_configuration_recorder} \tab Creates a new configuration recorder to record configuration changes for specified resource types\cr
 \link[paws.management:configservice_put_conformance_pack]{put_conformance_pack} \tab Creates or updates a conformance pack\cr
-\link[paws.management:configservice_put_delivery_channel]{put_delivery_channel} \tab Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic\cr
+\link[paws.management:configservice_put_delivery_channel]{put_delivery_channel} \tab Creates a delivery channel object to deliver configuration information and other compliance information to an Amazon S3 bucket and Amazon SNS topic\cr
 \link[paws.management:configservice_put_evaluations]{put_evaluations} \tab Used by an Lambda function to deliver evaluation results to Config\cr
 \link[paws.management:configservice_put_external_evaluation]{put_external_evaluation} \tab Add or updates the evaluations for process checks\cr
 \link[paws.management:configservice_put_organization_config_rule]{put_organization_config_rule} \tab Adds or updates an Config rule for your entire organization to evaluate if your Amazon Web Services resources comply with your desired configurations\cr

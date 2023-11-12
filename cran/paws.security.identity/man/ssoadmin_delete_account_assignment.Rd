@@ -2,40 +2,41 @@
 % Please edit documentation in R/ssoadmin_operations.R
 \name{ssoadmin_delete_account_assignment}
 \alias{ssoadmin_delete_account_assignment}
-\title{Deletes a principal's access from a specified AWS account using a
-specified permission set}
+\title{Deletes a principal's access from a specified Amazon Web Services
+account using a specified permission set}
 \usage{
 ssoadmin_delete_account_assignment(
   InstanceArn,
-  TargetId,
-  TargetType,
   PermissionSetArn,
+  PrincipalId,
   PrincipalType,
-  PrincipalId
+  TargetId,
+  TargetType
 )
 }
 \arguments{
 \item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
 will be executed. For more information about ARNs, see Amazon Resource
-Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
-
-\item{TargetId}{[required] TargetID is an AWS account identifier, typically a 10-12 digit string
-(For example, 123456789012).}
-
-\item{TargetType}{[required] The entity type for which the assignment will be deleted.}
+Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon
+Web Services General Reference}.}
 
 \item{PermissionSetArn}{[required] The ARN of the permission set that will be used to remove access.}
-
-\item{PrincipalType}{[required] The entity type for which the assignment will be deleted.}
 
 \item{PrincipalId}{[required] An identifier for an object in IAM Identity Center, such as a user or
 group. PrincipalIds are GUIDs (For example,
 f81d4fae-7dec-11d0-a765-00a0c91e6bf6). For more information about
 PrincipalIds in IAM Identity Center, see the IAM Identity Center
 Identity Store API Reference.}
+
+\item{PrincipalType}{[required] The entity type for which the assignment will be deleted.}
+
+\item{TargetId}{[required] TargetID is an Amazon Web Services account identifier, (For example,
+123456789012).}
+
+\item{TargetType}{[required] The entity type for which the assignment will be deleted.}
 }
 \description{
-Deletes a principal's access from a specified AWS account using a specified permission set.
+Deletes a principal's access from a specified Amazon Web Services account using a specified permission set.
 
 See \url{https://www.paws-r-sdk.com/docs/ssoadmin_delete_account_assignment/} for full documentation.
 }

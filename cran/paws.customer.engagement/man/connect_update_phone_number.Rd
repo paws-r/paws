@@ -7,13 +7,24 @@ instance or traffic distribution group to another Amazon Connect
 instance or traffic distribution group in the same Amazon Web Services
 Region}
 \usage{
-connect_update_phone_number(PhoneNumberId, TargetArn, ClientToken = NULL)
+connect_update_phone_number(
+  PhoneNumberId,
+  TargetArn = NULL,
+  InstanceId = NULL,
+  ClientToken = NULL
+)
 }
 \arguments{
 \item{PhoneNumberId}{[required] A unique identifier for the phone number.}
 
-\item{TargetArn}{[required] The Amazon Resource Name (ARN) for Amazon Connect instances or traffic
-distribution groups that phone numbers are claimed to.}
+\item{TargetArn}{The Amazon Resource Name (ARN) for Amazon Connect instances or traffic
+distribution groups that phone number inbound traffic is routed through.
+You must enter \code{InstanceId} or \code{TargetArn}.}
+
+\item{InstanceId}{The identifier of the Amazon Connect instance that phone numbers are
+claimed to. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance. You must enter
+\code{InstanceId} or \code{TargetArn}.}
 
 \item{ClientToken}{A unique, case-sensitive identifier that you provide to ensure the
 idempotency of the request. If not provided, the Amazon Web Services SDK

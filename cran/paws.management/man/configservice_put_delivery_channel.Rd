@@ -3,7 +3,8 @@
 \name{configservice_put_delivery_channel}
 \alias{configservice_put_delivery_channel}
 \title{Creates a delivery channel object to deliver configuration information
-to an Amazon S3 bucket and Amazon SNS topic}
+and other compliance information to an Amazon S3 bucket and Amazon SNS
+topic}
 \usage{
 configservice_put_delivery_channel(DeliveryChannel)
 }
@@ -13,7 +14,7 @@ configuration information to an Amazon S3 bucket and to an Amazon SNS
 topic.}
 }
 \description{
-Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic.
+Creates a delivery channel object to deliver configuration information and other compliance information to an Amazon S3 bucket and Amazon SNS topic. For more information, see \href{https://docs.aws.amazon.com/config/latest/developerguide/notifications-for-AWS-Config.html}{Notifications that Config Sends to an Amazon SNS topic}.
 
 See \url{https://www.paws-r-sdk.com/docs/configservice_put_delivery_channel/} for full documentation.
 }

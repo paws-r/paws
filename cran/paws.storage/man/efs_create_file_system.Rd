@@ -28,7 +28,9 @@ most file operations. The performance mode can't be changed after the
 file system has been created.
 
 The \code{maxIO} mode is not supported on file systems using One Zone storage
-classes.}
+classes.
+
+Default is \code{generalPurpose}.}
 
 \item{Encrypted}{A Boolean value that, if true, creates an encrypted file system. When
 creating an encrypted file system, you have the option of specifying an
@@ -69,11 +71,11 @@ in the \emph{Amazon EFS User Guide}.
 
 Default is \code{bursting}.}
 
-\item{ProvisionedThroughputInMibps}{The throughput, measured in MiB/s, that you want to provision for a file
-system that you're creating. Valid values are 1-1024. Required if
-\code{ThroughputMode} is set to \code{provisioned}. The upper limit for throughput
-is 1024 MiB/s. To increase this limit, contact Amazon Web Services
-Support. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits}{Amazon EFS quotas that you can increase}
+\item{ProvisionedThroughputInMibps}{The throughput, measured in mebibytes per second (MiBps), that you want
+to provision for a file system that you're creating. Required if
+\code{ThroughputMode} is set to \code{provisioned}. Valid values are 1-3414 MiBps,
+with the upper limit depending on Region. To increase this limit,
+contact Amazon Web Services Support. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits}{Amazon EFS quotas that you can increase}
 in the \emph{Amazon EFS User Guide}.}
 
 \item{AvailabilityZoneName}{Used to create a file system that uses One Zone storage classes. It

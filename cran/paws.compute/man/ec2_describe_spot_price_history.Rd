@@ -30,9 +30,9 @@ be returned.
 \item \code{spot-price} - The Spot price. The value must match exactly (or use
 wildcards; greater than or less than comparison is not supported).
 \item \code{timestamp} - The time stamp of the Spot price history, in UTC
-format (for example, \emph{YYYY}-\emph{MM}-\emph{DD}T\emph{HH}:\emph{MM}:\emph{SS}Z). You can use
-wildcards (* and ?). Greater than or less than comparison is not
-supported.
+format (for example, \emph{ddd MMM dd HH}:\emph{mm}:\emph{ss} UTC \emph{YYYY}). You can
+use wildcards (\code{*} and \verb{?}). Greater than or less than comparison is
+not supported.
 }}
 
 \item{AvailabilityZone}{Filters the results by the specified Availability Zone.}

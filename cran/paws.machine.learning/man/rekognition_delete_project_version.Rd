@@ -2,16 +2,17 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_delete_project_version}
 \alias{rekognition_delete_project_version}
-\title{Deletes an Amazon Rekognition Custom Labels model}
+\title{Deletes a Rekognition project model or project version, like a Amazon
+Rekognition Custom Labels model or a custom adapter}
 \usage{
 rekognition_delete_project_version(ProjectVersionArn)
 }
 \arguments{
-\item{ProjectVersionArn}{[required] The Amazon Resource Name (ARN) of the model version that you want to
+\item{ProjectVersionArn}{[required] The Amazon Resource Name (ARN) of the project version that you want to
 delete.}
 }
 \description{
-Deletes an Amazon Rekognition Custom Labels model.
+Deletes a Rekognition project model or project version, like a Amazon Rekognition Custom Labels model or a custom adapter.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_delete_project_version/} for full documentation.
 }

@@ -150,7 +150,7 @@ opensearchservice_add_tags <- function(ARN, TagList) {
 #'   DomainPackageDetails = list(
 #'     PackageID = "string",
 #'     PackageName = "string",
-#'     PackageType = "TXT-DICTIONARY",
+#'     PackageType = "TXT-DICTIONARY"|"ZIP-PLUGIN",
 #'     LastUpdated = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -324,11 +324,11 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #'
 #' @usage
 #' opensearchservice_create_domain(DomainName, EngineVersion,
-#'   ClusterConfig, EBSOptions, AccessPolicies, SnapshotOptions, VPCOptions,
-#'   CognitoOptions, EncryptionAtRestOptions, NodeToNodeEncryptionOptions,
-#'   AdvancedOptions, LogPublishingOptions, DomainEndpointOptions,
-#'   AdvancedSecurityOptions, TagList, AutoTuneOptions, OffPeakWindowOptions,
-#'   SoftwareUpdateOptions)
+#'   ClusterConfig, EBSOptions, AccessPolicies, IPAddressType,
+#'   SnapshotOptions, VPCOptions, CognitoOptions, EncryptionAtRestOptions,
+#'   NodeToNodeEncryptionOptions, AdvancedOptions, LogPublishingOptions,
+#'   DomainEndpointOptions, AdvancedSecurityOptions, TagList,
+#'   AutoTuneOptions, OffPeakWindowOptions, SoftwareUpdateOptions)
 #'
 #' @param DomainName &#91;required&#93; Name of the OpenSearch Service domain to create. Domain names are unique
 #' across the domains owned by an account within an Amazon Web Services
@@ -343,6 +343,7 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #' OpenSearch Service domain.
 #' @param AccessPolicies Identity and Access Management (IAM) policy document specifying the
 #' access policies for the new domain.
+#' @param IPAddressType The type of IP addresses supported by the endpoint for the domain.
 #' @param SnapshotOptions DEPRECATED. Container for the parameters required to configure automated
 #' snapshots of domain indexes.
 #' @param VPCOptions Container for the values required to configure VPC access domains. If
@@ -408,6 +409,7 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #'     Created = TRUE|FALSE,
 #'     Deleted = TRUE|FALSE,
 #'     Endpoint = "string",
+#'     EndpointV2 = "string",
 #'     Endpoints = list(
 #'       "string"
 #'     ),
@@ -440,6 +442,7 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #'       Throughput = 123
 #'     ),
 #'     AccessPolicies = "string",
+#'     IPAddressType = "ipv4"|"dualstack",
 #'     SnapshotOptions = list(
 #'       AutomatedSnapshotStartHour = 123
 #'     ),
@@ -570,6 +573,7 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #'     Throughput = 123
 #'   ),
 #'   AccessPolicies = "string",
+#'   IPAddressType = "ipv4"|"dualstack",
 #'   SnapshotOptions = list(
 #'     AutomatedSnapshotStartHour = 123
 #'   ),
@@ -674,14 +678,14 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #' @rdname opensearchservice_create_domain
 #'
 #' @aliases opensearchservice_create_domain
-opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, ClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, TagList = NULL, AutoTuneOptions = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL) {
+opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, ClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, TagList = NULL, AutoTuneOptions = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/domain",
     paginator = list()
   )
-  input <- .opensearchservice$create_domain_input(DomainName = DomainName, EngineVersion = EngineVersion, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, TagList = TagList, AutoTuneOptions = AutoTuneOptions, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions)
+  input <- .opensearchservice$create_domain_input(DomainName = DomainName, EngineVersion = EngineVersion, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, TagList = TagList, AutoTuneOptions = AutoTuneOptions, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions)
   output <- .opensearchservice$create_domain_output()
   config <- get_config()
   svc <- .opensearchservice$service(config)
@@ -817,7 +821,7 @@ opensearchservice_create_outbound_connection <- function(LocalDomainInfo, Remote
 #'   PackageDetails = list(
 #'     PackageID = "string",
 #'     PackageName = "string",
-#'     PackageType = "TXT-DICTIONARY",
+#'     PackageType = "TXT-DICTIONARY"|"ZIP-PLUGIN",
 #'     PackageDescription = "string",
 #'     PackageStatus = "COPYING"|"COPY_FAILED"|"VALIDATING"|"VALIDATION_FAILED"|"AVAILABLE"|"DELETING"|"DELETED"|"DELETE_FAILED",
 #'     CreatedAt = as.POSIXct(
@@ -830,6 +834,14 @@ opensearchservice_create_outbound_connection <- function(LocalDomainInfo, Remote
 #'     ErrorDetails = list(
 #'       ErrorType = "string",
 #'       ErrorMessage = "string"
+#'     ),
+#'     EngineVersion = "string",
+#'     AvailablePluginProperties = list(
+#'       Name = "string",
+#'       Description = "string",
+#'       Version = "string",
+#'       ClassName = "string",
+#'       UncompressedSizeInBytes = 123
 #'     )
 #'   )
 #' )
@@ -839,7 +851,7 @@ opensearchservice_create_outbound_connection <- function(LocalDomainInfo, Remote
 #' ```
 #' svc$create_package(
 #'   PackageName = "string",
-#'   PackageType = "TXT-DICTIONARY",
+#'   PackageType = "TXT-DICTIONARY"|"ZIP-PLUGIN",
 #'   PackageDescription = "string",
 #'   PackageSource = list(
 #'     S3BucketName = "string",
@@ -969,6 +981,7 @@ opensearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, ClientT
 #'     Created = TRUE|FALSE,
 #'     Deleted = TRUE|FALSE,
 #'     Endpoint = "string",
+#'     EndpointV2 = "string",
 #'     Endpoints = list(
 #'       "string"
 #'     ),
@@ -1001,6 +1014,7 @@ opensearchservice_create_vpc_endpoint <- function(DomainArn, VpcOptions, ClientT
 #'       Throughput = 123
 #'     ),
 #'     AccessPolicies = "string",
+#'     IPAddressType = "ipv4"|"dualstack",
 #'     SnapshotOptions = list(
 #'       AutomatedSnapshotStartHour = 123
 #'     ),
@@ -1301,7 +1315,7 @@ opensearchservice_delete_outbound_connection <- function(ConnectionId) {
 #'   PackageDetails = list(
 #'     PackageID = "string",
 #'     PackageName = "string",
-#'     PackageType = "TXT-DICTIONARY",
+#'     PackageType = "TXT-DICTIONARY"|"ZIP-PLUGIN",
 #'     PackageDescription = "string",
 #'     PackageStatus = "COPYING"|"COPY_FAILED"|"VALIDATING"|"VALIDATION_FAILED"|"AVAILABLE"|"DELETING"|"DELETED"|"DELETE_FAILED",
 #'     CreatedAt = as.POSIXct(
@@ -1314,6 +1328,14 @@ opensearchservice_delete_outbound_connection <- function(ConnectionId) {
 #'     ErrorDetails = list(
 #'       ErrorType = "string",
 #'       ErrorMessage = "string"
+#'     ),
+#'     EngineVersion = "string",
+#'     AvailablePluginProperties = list(
+#'       Name = "string",
+#'       Description = "string",
+#'       Version = "string",
+#'       ClassName = "string",
+#'       UncompressedSizeInBytes = 123
 #'     )
 #'   )
 #' )
@@ -1425,6 +1447,7 @@ opensearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
 #'     Created = TRUE|FALSE,
 #'     Deleted = TRUE|FALSE,
 #'     Endpoint = "string",
+#'     EndpointV2 = "string",
 #'     Endpoints = list(
 #'       "string"
 #'     ),
@@ -1457,6 +1480,7 @@ opensearchservice_delete_vpc_endpoint <- function(VpcEndpointId) {
 #'       Throughput = 123
 #'     ),
 #'     AccessPolicies = "string",
+#'     IPAddressType = "ipv4"|"dualstack",
 #'     SnapshotOptions = list(
 #'       AutomatedSnapshotStartHour = 123
 #'     ),
@@ -1823,6 +1847,20 @@ opensearchservice_describe_domain_change_progress <- function(DomainName, Change
 #'     ),
 #'     AccessPolicies = list(
 #'       Options = "string",
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
+#'     ),
+#'     IPAddressType = list(
+#'       Options = "ipv4"|"dualstack",
 #'       Status = list(
 #'         CreationDate = as.POSIXct(
 #'           "2015-01-01"
@@ -2269,8 +2307,7 @@ opensearchservice_describe_domain_nodes <- function(DomainName) {
 #' opensearchservice_describe_domains(DomainNames)
 #'
 #' @param DomainNames &#91;required&#93; Array of OpenSearch Service domain names that you want information
-#' about. If you don't specify any domains, OpenSearch Service returns
-#' information about all domains owned by the account.
+#' about. You must specify at least one domain name.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2284,6 +2321,7 @@ opensearchservice_describe_domain_nodes <- function(DomainName) {
 #'       Created = TRUE|FALSE,
 #'       Deleted = TRUE|FALSE,
 #'       Endpoint = "string",
+#'       EndpointV2 = "string",
 #'       Endpoints = list(
 #'         "string"
 #'       ),
@@ -2316,6 +2354,7 @@ opensearchservice_describe_domain_nodes <- function(DomainName) {
 #'         Throughput = 123
 #'       ),
 #'       AccessPolicies = "string",
+#'       IPAddressType = "ipv4"|"dualstack",
 #'       SnapshotOptions = list(
 #'         AutomatedSnapshotStartHour = 123
 #'       ),
@@ -2489,6 +2528,7 @@ opensearchservice_describe_domains <- function(DomainNames) {
 #'     Created = TRUE|FALSE,
 #'     Deleted = TRUE|FALSE,
 #'     Endpoint = "string",
+#'     EndpointV2 = "string",
 #'     Endpoints = list(
 #'       "string"
 #'     ),
@@ -2521,6 +2561,7 @@ opensearchservice_describe_domains <- function(DomainNames) {
 #'       Throughput = 123
 #'     ),
 #'     AccessPolicies = "string",
+#'     IPAddressType = "ipv4"|"dualstack",
 #'     SnapshotOptions = list(
 #'       AutomatedSnapshotStartHour = 123
 #'     ),
@@ -2964,7 +3005,7 @@ opensearchservice_describe_outbound_connections <- function(Filters = NULL, MaxR
 #'     list(
 #'       PackageID = "string",
 #'       PackageName = "string",
-#'       PackageType = "TXT-DICTIONARY",
+#'       PackageType = "TXT-DICTIONARY"|"ZIP-PLUGIN",
 #'       PackageDescription = "string",
 #'       PackageStatus = "COPYING"|"COPY_FAILED"|"VALIDATING"|"VALIDATION_FAILED"|"AVAILABLE"|"DELETING"|"DELETED"|"DELETE_FAILED",
 #'       CreatedAt = as.POSIXct(
@@ -2977,6 +3018,14 @@ opensearchservice_describe_outbound_connections <- function(Filters = NULL, MaxR
 #'       ErrorDetails = list(
 #'         ErrorType = "string",
 #'         ErrorMessage = "string"
+#'       ),
+#'       EngineVersion = "string",
+#'       AvailablePluginProperties = list(
+#'         Name = "string",
+#'         Description = "string",
+#'         Version = "string",
+#'         ClassName = "string",
+#'         UncompressedSizeInBytes = 123
 #'       )
 #'     )
 #'   ),
@@ -2989,7 +3038,7 @@ opensearchservice_describe_outbound_connections <- function(Filters = NULL, MaxR
 #' svc$describe_packages(
 #'   Filters = list(
 #'     list(
-#'       Name = "PackageID"|"PackageName"|"PackageStatus",
+#'       Name = "PackageID"|"PackageName"|"PackageStatus"|"PackageType"|"EngineVersion",
 #'       Value = list(
 #'         "string"
 #'       )
@@ -3293,7 +3342,7 @@ opensearchservice_describe_vpc_endpoints <- function(VpcEndpointIds) {
 #'   DomainPackageDetails = list(
 #'     PackageID = "string",
 #'     PackageName = "string",
-#'     PackageType = "TXT-DICTIONARY",
+#'     PackageType = "TXT-DICTIONARY"|"ZIP-PLUGIN",
 #'     LastUpdated = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
@@ -3396,6 +3445,65 @@ opensearchservice_get_compatible_versions <- function(DomainName = NULL) {
 }
 .opensearchservice$operations$get_compatible_versions <- opensearchservice_get_compatible_versions
 
+#' The status of the maintenance action
+#'
+#' @description
+#' The status of the maintenance action.
+#'
+#' @usage
+#' opensearchservice_get_domain_maintenance_status(DomainName,
+#'   MaintenanceId)
+#'
+#' @param DomainName &#91;required&#93; The name of the domain.
+#' @param MaintenanceId &#91;required&#93; The request ID of the maintenance action.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   Status = "PENDING"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"TIMED_OUT",
+#'   StatusMessage = "string",
+#'   NodeId = "string",
+#'   Action = "REBOOT_NODE"|"RESTART_SEARCH_PROCESS"|"RESTART_DASHBOARD",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$get_domain_maintenance_status(
+#'   DomainName = "string",
+#'   MaintenanceId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_get_domain_maintenance_status
+#'
+#' @aliases opensearchservice_get_domain_maintenance_status
+opensearchservice_get_domain_maintenance_status <- function(DomainName, MaintenanceId) {
+  op <- new_operation(
+    name = "GetDomainMaintenanceStatus",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/domainMaintenance",
+    paginator = list()
+  )
+  input <- .opensearchservice$get_domain_maintenance_status_input(DomainName = DomainName, MaintenanceId = MaintenanceId)
+  output <- .opensearchservice$get_domain_maintenance_status_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$get_domain_maintenance_status <- opensearchservice_get_domain_maintenance_status
+
 #' Returns a list of Amazon OpenSearch Service package versions, along with
 #' their creation time, commit message, and plugin properties (if the
 #' package is a zip plugin package)
@@ -3432,6 +3540,13 @@ opensearchservice_get_compatible_versions <- function(DomainName = NULL) {
 #'       CommitMessage = "string",
 #'       CreatedAt = as.POSIXct(
 #'         "2015-01-01"
+#'       ),
+#'       PluginProperties = list(
+#'         Name = "string",
+#'         Description = "string",
+#'         Version = "string",
+#'         ClassName = "string",
+#'         UncompressedSizeInBytes = 123
 #'       )
 #'     )
 #'   ),
@@ -3599,6 +3714,84 @@ opensearchservice_get_upgrade_status <- function(DomainName) {
 }
 .opensearchservice$operations$get_upgrade_status <- opensearchservice_get_upgrade_status
 
+#' A list of maintenance actions for the domain
+#'
+#' @description
+#' A list of maintenance actions for the domain.
+#'
+#' @usage
+#' opensearchservice_list_domain_maintenances(DomainName, Action, Status,
+#'   MaxResults, NextToken)
+#'
+#' @param DomainName &#91;required&#93; The name of the domain.
+#' @param Action The name of the action.
+#' @param Status The status of the action.
+#' @param MaxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results.
+#' @param NextToken If your initial
+#' [`list_domain_maintenances`][opensearchservice_list_domain_maintenances]
+#' operation returns a `nextToken`, include the returned `nextToken` in
+#' subsequent
+#' [`list_domain_maintenances`][opensearchservice_list_domain_maintenances]
+#' operations, which returns results in the next page.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   DomainMaintenances = list(
+#'     list(
+#'       MaintenanceId = "string",
+#'       DomainName = "string",
+#'       Action = "REBOOT_NODE"|"RESTART_SEARCH_PROCESS"|"RESTART_DASHBOARD",
+#'       NodeId = "string",
+#'       Status = "PENDING"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"TIMED_OUT",
+#'       StatusMessage = "string",
+#'       CreatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       UpdatedAt = as.POSIXct(
+#'         "2015-01-01"
+#'       )
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_domain_maintenances(
+#'   DomainName = "string",
+#'   Action = "REBOOT_NODE"|"RESTART_SEARCH_PROCESS"|"RESTART_DASHBOARD",
+#'   Status = "PENDING"|"IN_PROGRESS"|"COMPLETED"|"FAILED"|"TIMED_OUT",
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_list_domain_maintenances
+#'
+#' @aliases opensearchservice_list_domain_maintenances
+opensearchservice_list_domain_maintenances <- function(DomainName, Action = NULL, Status = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListDomainMaintenances",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/domainMaintenances",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .opensearchservice$list_domain_maintenances_input(DomainName = DomainName, Action = Action, Status = Status, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .opensearchservice$list_domain_maintenances_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$list_domain_maintenances <- opensearchservice_list_domain_maintenances
+
 #' Returns the names of all Amazon OpenSearch Service domains owned by the
 #' current user in the active Region
 #'
@@ -3685,7 +3878,7 @@ opensearchservice_list_domain_names <- function(EngineType = NULL) {
 #'     list(
 #'       PackageID = "string",
 #'       PackageName = "string",
-#'       PackageType = "TXT-DICTIONARY",
+#'       PackageType = "TXT-DICTIONARY"|"ZIP-PLUGIN",
 #'       LastUpdated = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -3848,7 +4041,7 @@ opensearchservice_list_instance_type_details <- function(EngineVersion, DomainNa
 #'     list(
 #'       PackageID = "string",
 #'       PackageName = "string",
-#'       PackageType = "TXT-DICTIONARY",
+#'       PackageType = "TXT-DICTIONARY"|"ZIP-PLUGIN",
 #'       LastUpdated = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
@@ -4493,6 +4686,59 @@ opensearchservice_revoke_vpc_endpoint_access <- function(DomainName, Account) {
 }
 .opensearchservice$operations$revoke_vpc_endpoint_access <- opensearchservice_revoke_vpc_endpoint_access
 
+#' Starts the node maintenance process on the data node
+#'
+#' @description
+#' Starts the node maintenance process on the data node. These processes
+#' can include a node reboot, an Opensearch or Elasticsearch process
+#' restart, or a Dashboard or Kibana restart.
+#'
+#' @usage
+#' opensearchservice_start_domain_maintenance(DomainName, Action, NodeId)
+#'
+#' @param DomainName &#91;required&#93; The name of the domain.
+#' @param Action &#91;required&#93; The name of the action.
+#' @param NodeId The ID of the data node.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   MaintenanceId = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_domain_maintenance(
+#'   DomainName = "string",
+#'   Action = "REBOOT_NODE"|"RESTART_SEARCH_PROCESS"|"RESTART_DASHBOARD",
+#'   NodeId = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_start_domain_maintenance
+#'
+#' @aliases opensearchservice_start_domain_maintenance
+opensearchservice_start_domain_maintenance <- function(DomainName, Action, NodeId = NULL) {
+  op <- new_operation(
+    name = "StartDomainMaintenance",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/domainMaintenance",
+    paginator = list()
+  )
+  input <- .opensearchservice$start_domain_maintenance_input(DomainName = DomainName, Action = Action, NodeId = NodeId)
+  output <- .opensearchservice$start_domain_maintenance_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$start_domain_maintenance <- opensearchservice_start_domain_maintenance
+
 #' Schedules a service software update for an Amazon OpenSearch Service
 #' domain
 #'
@@ -4583,12 +4829,12 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 #'
 #' @description
 #' Modifies the cluster configuration of the specified Amazon OpenSearch
-#' Service domain.sl
+#' Service domain.
 #'
 #' @usage
 #' opensearchservice_update_domain_config(DomainName, ClusterConfig,
 #'   EBSOptions, SnapshotOptions, VPCOptions, CognitoOptions,
-#'   AdvancedOptions, AccessPolicies, LogPublishingOptions,
+#'   AdvancedOptions, AccessPolicies, IPAddressType, LogPublishingOptions,
 #'   EncryptionAtRestOptions, DomainEndpointOptions,
 #'   NodeToNodeEncryptionOptions, AdvancedSecurityOptions, AutoTuneOptions,
 #'   DryRun, DryRunMode, OffPeakWindowOptions, SoftwareUpdateOptions)
@@ -4630,6 +4876,7 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 #' parameters](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomain-configure-advanced-options).
 #' @param AccessPolicies Identity and Access Management (IAM) access policy as a JSON-formatted
 #' string.
+#' @param IPAddressType The type of IP addresses supported by the endpoint for the domain.
 #' @param LogPublishingOptions Options to publish OpenSearch logs to Amazon CloudWatch Logs.
 #' @param EncryptionAtRestOptions Encryption at rest options for the domain.
 #' @param DomainEndpointOptions Additional options for the domain endpoint, such as whether to require
@@ -4724,6 +4971,20 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 #'     ),
 #'     AccessPolicies = list(
 #'       Options = "string",
+#'       Status = list(
+#'         CreationDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateDate = as.POSIXct(
+#'           "2015-01-01"
+#'         ),
+#'         UpdateVersion = 123,
+#'         State = "RequiresIndexDocuments"|"Processing"|"Active",
+#'         PendingDeletion = TRUE|FALSE
+#'       )
+#'     ),
+#'     IPAddressType = list(
+#'       Options = "ipv4"|"dualstack",
 #'       Status = list(
 #'         CreationDate = as.POSIXct(
 #'           "2015-01-01"
@@ -5058,6 +5319,7 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 #'     "string"
 #'   ),
 #'   AccessPolicies = "string",
+#'   IPAddressType = "ipv4"|"dualstack",
 #'   LogPublishingOptions = list(
 #'     list(
 #'       CloudWatchLogsLogGroupArn = "string",
@@ -5139,14 +5401,14 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 #' @rdname opensearchservice_update_domain_config
 #'
 #' @aliases opensearchservice_update_domain_config
-opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DryRunMode = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL) {
+opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DryRunMode = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL) {
   op <- new_operation(
     name = "UpdateDomainConfig",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/config",
     paginator = list()
   )
-  input <- .opensearchservice$update_domain_config_input(DomainName = DomainName, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, DomainEndpointOptions = DomainEndpointOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DryRunMode = DryRunMode, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions)
+  input <- .opensearchservice$update_domain_config_input(DomainName = DomainName, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, LogPublishingOptions = LogPublishingOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, DomainEndpointOptions = DomainEndpointOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DryRunMode = DryRunMode, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions)
   output <- .opensearchservice$update_domain_config_output()
   config <- get_config()
   svc <- .opensearchservice$service(config)
@@ -5180,7 +5442,7 @@ opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = N
 #'   PackageDetails = list(
 #'     PackageID = "string",
 #'     PackageName = "string",
-#'     PackageType = "TXT-DICTIONARY",
+#'     PackageType = "TXT-DICTIONARY"|"ZIP-PLUGIN",
 #'     PackageDescription = "string",
 #'     PackageStatus = "COPYING"|"COPY_FAILED"|"VALIDATING"|"VALIDATION_FAILED"|"AVAILABLE"|"DELETING"|"DELETED"|"DELETE_FAILED",
 #'     CreatedAt = as.POSIXct(
@@ -5193,6 +5455,14 @@ opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = N
 #'     ErrorDetails = list(
 #'       ErrorType = "string",
 #'       ErrorMessage = "string"
+#'     ),
+#'     EngineVersion = "string",
+#'     AvailablePluginProperties = list(
+#'       Name = "string",
+#'       Description = "string",
+#'       Version = "string",
+#'       ClassName = "string",
+#'       UncompressedSizeInBytes = 123
 #'     )
 #'   )
 #' )

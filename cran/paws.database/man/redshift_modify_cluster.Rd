@@ -29,7 +29,11 @@ redshift_modify_cluster(
   KmsKeyId = NULL,
   AvailabilityZoneRelocation = NULL,
   AvailabilityZone = NULL,
-  Port = NULL
+  Port = NULL,
+  ManageMasterPassword = NULL,
+  MasterPasswordSecretKmsKeyId = NULL,
+  IpAddressType = NULL,
+  MultiAZ = NULL
 )
 }
 \arguments{
@@ -88,6 +92,8 @@ asynchronously applied as soon as possible. Between the time of the
 request and the completion of the request, the \code{MasterUserPassword}
 element exists in the \code{PendingModifiedValues} element of the operation
 response.
+
+You can't use \code{MasterUserPassword} if \code{ManageMasterPassword} is \code{true}.
 
 Operations never return the password, so this operation provides a way
 to regain access to the admin user account for a cluster if the password
@@ -237,6 +243,23 @@ Availability Zones after the cluster modification is complete.}
 target Availability Zone.}
 
 \item{Port}{The option to change the port of an Amazon Redshift cluster.}
+
+\item{ManageMasterPassword}{If \code{true}, Amazon Redshift uses Secrets Manager to manage this cluster's
+admin credentials. You can't use \code{MasterUserPassword} if
+\code{ManageMasterPassword} is true. If \code{ManageMasterPassword} is false or
+not set, Amazon Redshift uses \code{MasterUserPassword} for the admin user
+account's password.}
+
+\item{MasterPasswordSecretKmsKeyId}{The ID of the Key Management Service (KMS) key used to encrypt and store
+the cluster's admin credentials secret. You can only use this parameter
+if \code{ManageMasterPassword} is true.}
+
+\item{IpAddressType}{The IP address types that the cluster supports. Possible values are
+\code{ipv4} and \code{dualstack}.}
+
+\item{MultiAZ}{If true and the cluster is currently only deployed in a single
+Availability Zone, the cluster will be modified to be deployed in two
+Availability Zones.}
 }
 \description{
 Modifies the settings for a cluster.

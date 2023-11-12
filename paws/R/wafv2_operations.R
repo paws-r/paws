@@ -20,19 +20,37 @@ NULL
 #' [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
 #' in the *Amazon CloudFront Developer Guide*.
 #' 
-#' When you make changes to web ACLs or web ACL components, like rules and
-#' rule groups, WAF propagates the changes everywhere that the web ACL and
-#' its components are stored and used. Your changes are applied within
-#' seconds, but there might be a brief period of inconsistency when the
-#' changes have arrived in some places and not in others. So, for example,
-#' if you change a rule action setting, the action might be the old action
-#' in one area and the new action in another area. Or if you add an IP
-#' address to an IP set used in a blocking rule, the new address might
-#' briefly be blocked in one area while still allowed in another. This
-#' temporary inconsistency can occur when you first associate a web ACL
-#' with an Amazon Web Services resource and when you change a web ACL that
-#' is already associated with a resource. Generally, any inconsistencies of
-#' this type last only a few seconds.
+#' **Required permissions for customer-managed IAM policies**
+#' 
+#' This call requires permissions that are specific to the protected
+#' resource type. For details, see [Permissions for
+#' AssociateWebACL](https://docs.aws.amazon.com/waf/latest/developerguide/security_iam_service-with-iam.html#security_iam_action-AssociateWebACL)
+#' in the *WAF Developer Guide*.
+#' 
+#' **Temporary inconsistencies during updates**
+#' 
+#' When you create or change a web ACL or other WAF resources, the changes
+#' take a small amount of time to propagate to all areas where the
+#' resources are stored. The propagation time can be from a few seconds to
+#' a number of minutes.
+#' 
+#' The following are examples of the temporary inconsistencies that you
+#' might notice during change propagation:
+#' 
+#' -   After you create a web ACL, if you try to associate it with a
+#'     resource, you might get an exception indicating that the web ACL is
+#'     unavailable.
+#' 
+#' -   After you add a rule group to a web ACL, the new rule group rules
+#'     might be in effect in one area where the web ACL is used and not in
+#'     another.
+#' 
+#' -   After you change a rule action setting, you might see the old action
+#'     in some places and the new action in others.
+#' 
+#' -   After you add an IP address to an IP set that is in use in a
+#'     blocking rule, the new address might be blocked in one area while
+#'     still allowed in another.
 #'
 #' @usage
 #' wafv2_associate_web_acl(WebACLArn, ResourceArn)
@@ -205,6 +223,9 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -269,6 +290,9 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -333,6 +357,9 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -396,6 +423,9 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
@@ -546,6 +576,9 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -651,7 +684,8 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'                 Identifier = "string"
 #'               ),
 #'               AWSManagedRulesBotControlRuleSet = list(
-#'                 InspectionLevel = "COMMON"|"TARGETED"
+#'                 InspectionLevel = "COMMON"|"TARGETED",
+#'                 EnableMachineLearning = TRUE|FALSE
 #'               ),
 #'               AWSManagedRulesATPRuleSet = list(
 #'                 LoginPath = "string",
@@ -886,6 +920,9 @@ wafv2_associate_web_acl <- function(WebACLArn, ResourceArn) {
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -1121,25 +1158,25 @@ wafv2_create_api_key <- function(Scope, TokenDomains) {
 #' @param Description A description of the IP set that helps with identification.
 #' @param IPAddressVersion &#91;required&#93; The version of the IP addresses, either `IPV4` or `IPV6`.
 #' @param Addresses &#91;required&#93; Contains an array of strings that specifies zero or more IP addresses or
-#' blocks of IP addresses. All addresses must be specified using Classless
-#' Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6
-#' CIDR ranges except for `/0`.
+#' blocks of IP addresses that you want WAF to inspect for in incoming
+#' requests. All addresses must be specified using Classless Inter-Domain
+#' Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges
+#' except for `/0`.
 #' 
 #' Example address strings:
 #' 
-#' -   To configure WAF to allow, block, or count requests that originated
-#'     from the IP address 192.0.2.44, specify `192.0.2.44/32`.
+#' -   For requests that originated from the IP address 192.0.2.44, specify
+#'     `192.0.2.44/32`.
 #' 
-#' -   To configure WAF to allow, block, or count requests that originated
-#'     from IP addresses from 192.0.2.0 to 192.0.2.255, specify
-#'     `192.0.2.0/24`.
+#' -   For requests that originated from IP addresses from 192.0.2.0 to
+#'     192.0.2.255, specify `192.0.2.0/24`.
 #' 
-#' -   To configure WAF to allow, block, or count requests that originated
-#'     from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify
+#' -   For requests that originated from the IP address
+#'     1111:0000:0000:0000:0000:0000:0000:0111, specify
 #'     `1111:0000:0000:0000:0000:0000:0000:0111/128`.
 #' 
-#' -   To configure WAF to allow, block, or count requests that originated
-#'     from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to
+#' -   For requests that originated from IP addresses
+#'     1111:0000:0000:0000:0000:0000:0000:0000 to
 #'     1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
 #'     `1111:0000:0000:0000:0000:0000:0000:0000/64`.
 #' 
@@ -1351,9 +1388,9 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' in the *WAF Developer Guide*.
 #' @param Description A description of the rule group that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
-#' allow, block, or count. Each rule includes one top-level statement that
-#' WAF uses to identify matching web requests, and parameters that govern
-#' how WAF handles them.
+#' manage. Each rule includes one top-level statement that WAF uses to
+#' identify matching web requests, and parameters that govern how WAF
+#' handles them.
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
 #' @param Tags An array of key:value pairs to associate with the resource.
@@ -1453,6 +1490,9 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -1517,6 +1557,9 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -1581,6 +1624,9 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -1644,6 +1690,9 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
@@ -1794,6 +1843,9 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -1899,7 +1951,8 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'                 Identifier = "string"
 #'               ),
 #'               AWSManagedRulesBotControlRuleSet = list(
-#'                 InspectionLevel = "COMMON"|"TARGETED"
+#'                 InspectionLevel = "COMMON"|"TARGETED",
+#'                 EnableMachineLearning = TRUE|FALSE
 #'               ),
 #'               AWSManagedRulesATPRuleSet = list(
 #'                 LoginPath = "string",
@@ -2134,6 +2187,9 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -2281,16 +2337,16 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' Creates a WebACL per the specifications provided.
 #' 
 #' A web ACL defines a collection of rules to use to inspect and control
-#' web requests. Each rule has an action defined (allow, block, or count)
-#' for requests that match the statement of the rule. In the web ACL, you
-#' assign a default action to take (allow, block) for any request that does
-#' not match any of the rules. The rules in a web ACL can be a combination
-#' of the types Rule, RuleGroup, and managed rule group. You can associate
-#' a web ACL with one or more Amazon Web Services resources to protect. The
-#' resources can be an Amazon CloudFront distribution, an Amazon API
-#' Gateway REST API, an Application Load Balancer, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' web requests. Each rule has a statement that defines what to look for in
+#' web requests and an action that WAF applies to requests that match the
+#' statement. In the web ACL, you assign a default action to take (allow,
+#' block) for any request that does not match any of the rules. The rules
+#' in a web ACL can be a combination of the types Rule, RuleGroup, and
+#' managed rule group. You can associate a web ACL with one or more Amazon
+#' Web Services resources to protect. The resources can be an Amazon
+#' CloudFront distribution, an Amazon API Gateway REST API, an Application
+#' Load Balancer, an AppSync GraphQL API, an Amazon Cognito user pool, an
+#' App Runner service, or an Amazon Web Services Verified Access instance.
 #'
 #' @usage
 #' wafv2_create_web_acl(Name, Scope, DefaultAction, Description, Rules,
@@ -2316,9 +2372,9 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' match.
 #' @param Description A description of the web ACL that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
-#' allow, block, or count. Each rule includes one top-level statement that
-#' WAF uses to identify matching web requests, and parameters that govern
-#' how WAF handles them.
+#' manage. Each rule includes one top-level statement that WAF uses to
+#' identify matching web requests, and parameters that govern how WAF
+#' handles them.
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
 #' @param Tags An array of key:value pairs to associate with the resource.
@@ -2361,7 +2417,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' 
 #' Use this to customize the maximum size of the request body that your
 #' protected CloudFront distributions forward to WAF for inspection. The
-#' default is 16 KB (16,384 kilobytes).
+#' default is 16 KB (16,384 bytes).
 #' 
 #' You are charged additional fees when your protected resources forward
 #' body sizes that are larger than the default. For more information, see
@@ -2471,6 +2527,9 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -2535,6 +2594,9 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -2599,6 +2661,9 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -2662,6 +2727,9 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
@@ -2812,6 +2880,9 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -2917,7 +2988,8 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'                 Identifier = "string"
 #'               ),
 #'               AWSManagedRulesBotControlRuleSet = list(
-#'                 InspectionLevel = "COMMON"|"TARGETED"
+#'                 InspectionLevel = "COMMON"|"TARGETED",
+#'                 EnableMachineLearning = TRUE|FALSE
 #'               ),
 #'               AWSManagedRulesATPRuleSet = list(
 #'                 LoginPath = "string",
@@ -3152,6 +3224,9 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -4082,6 +4157,13 @@ wafv2_describe_managed_rule_group <- function(VendorName, Name, Scope, VersionNa
 #' see
 #' [UpdateDistribution](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_UpdateDistribution.html)
 #' in the *Amazon CloudFront API Reference*.
+#' 
+#' **Required permissions for customer-managed IAM policies**
+#' 
+#' This call requires permissions that are specific to the protected
+#' resource type. For details, see [Permissions for
+#' DisassociateWebACL](https://docs.aws.amazon.com/waf/latest/developerguide/security_iam_service-with-iam.html#security_iam_action-DisassociateWebACL)
+#' in the *WAF Developer Guide*.
 #'
 #' @usage
 #' wafv2_disassociate_web_acl(ResourceArn)
@@ -4424,6 +4506,9 @@ wafv2_get_ip_set <- function(Name, Scope, Id) {
 #'         ),
 #'         HeaderOrder = list(
 #'           OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'         ),
+#'         JA3Fingerprint = list(
+#'           FallbackBehavior = "MATCH"|"NO_MATCH"
 #'         )
 #'       )
 #'     ),
@@ -4987,6 +5072,9 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -5051,6 +5139,9 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -5115,6 +5206,9 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -5178,6 +5272,9 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
@@ -5328,6 +5425,9 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -5433,7 +5533,8 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'                   Identifier = "string"
 #'                 ),
 #'                 AWSManagedRulesBotControlRuleSet = list(
-#'                   InspectionLevel = "COMMON"|"TARGETED"
+#'                   InspectionLevel = "COMMON"|"TARGETED",
+#'                   EnableMachineLearning = TRUE|FALSE
 #'                 ),
 #'                 AWSManagedRulesATPRuleSet = list(
 #'                   LoginPath = "string",
@@ -5668,6 +5769,9 @@ wafv2_get_regex_pattern_set <- function(Name, Scope, Id) {
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -6102,6 +6206,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -6166,6 +6273,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -6230,6 +6340,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -6293,6 +6406,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
@@ -6443,6 +6559,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -6548,7 +6667,8 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   Identifier = "string"
 #'                 ),
 #'                 AWSManagedRulesBotControlRuleSet = list(
-#'                   InspectionLevel = "COMMON"|"TARGETED"
+#'                   InspectionLevel = "COMMON"|"TARGETED",
+#'                   EnableMachineLearning = TRUE|FALSE
 #'                 ),
 #'                 AWSManagedRulesATPRuleSet = list(
 #'                   LoginPath = "string",
@@ -6783,6 +6903,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -6958,6 +7081,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -7022,6 +7148,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -7086,6 +7215,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -7149,6 +7281,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
@@ -7299,6 +7434,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -7443,6 +7581,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -7464,7 +7605,8 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   Identifier = "string"
 #'                 ),
 #'                 AWSManagedRulesBotControlRuleSet = list(
-#'                   InspectionLevel = "COMMON"|"TARGETED"
+#'                   InspectionLevel = "COMMON"|"TARGETED",
+#'                   EnableMachineLearning = TRUE|FALSE
 #'                 ),
 #'                 AWSManagedRulesATPRuleSet = list(
 #'                   LoginPath = "string",
@@ -7798,6 +7940,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -7862,6 +8007,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -7926,6 +8074,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -7989,6 +8140,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
@@ -8139,6 +8293,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -8283,6 +8440,9 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -8304,7 +8464,8 @@ wafv2_get_sampled_requests <- function(WebAclArn, RuleMetricName, Scope, TimeWin
 #'                   Identifier = "string"
 #'                 ),
 #'                 AWSManagedRulesBotControlRuleSet = list(
-#'                   InspectionLevel = "COMMON"|"TARGETED"
+#'                   InspectionLevel = "COMMON"|"TARGETED",
+#'                   EnableMachineLearning = TRUE|FALSE
 #'                 ),
 #'                 AWSManagedRulesATPRuleSet = list(
 #'                   LoginPath = "string",
@@ -8637,6 +8798,24 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'
 #' @description
 #' Retrieves the WebACL for the specified resource.
+#' 
+#' This call uses [`get_web_acl`][wafv2_get_web_acl], to verify that your
+#' account has permission to access the retrieved web ACL. If you get an
+#' error that indicates that your account isn't authorized to perform
+#' `wafv2:GetWebACL` on the resource, that error won't be included in your
+#' CloudTrail event history.
+#' 
+#' For Amazon CloudFront, don't use this call. Instead, call the CloudFront
+#' action `GetDistributionConfig`. For information, see
+#' [GetDistributionConfig](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_GetDistributionConfig.html)
+#' in the *Amazon CloudFront API Reference*.
+#' 
+#' **Required permissions for customer-managed IAM policies**
+#' 
+#' This call requires permissions that are specific to the protected
+#' resource type. For details, see [Permissions for
+#' GetWebACLForResource](https://docs.aws.amazon.com/waf/latest/developerguide/security_iam_service-with-iam.html#security_iam_action-GetWebACLForResource)
+#' in the *WAF Developer Guide*.
 #'
 #' @usage
 #' wafv2_get_web_acl_for_resource(ResourceArn)
@@ -8757,6 +8936,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -8821,6 +9003,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -8885,6 +9070,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -8948,6 +9136,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
@@ -9098,6 +9289,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -9203,7 +9397,8 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   Identifier = "string"
 #'                 ),
 #'                 AWSManagedRulesBotControlRuleSet = list(
-#'                   InspectionLevel = "COMMON"|"TARGETED"
+#'                   InspectionLevel = "COMMON"|"TARGETED",
+#'                   EnableMachineLearning = TRUE|FALSE
 #'                 ),
 #'                 AWSManagedRulesATPRuleSet = list(
 #'                   LoginPath = "string",
@@ -9438,6 +9633,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'               ),
 #'               HeaderOrder = list(
 #'                 OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'               ),
+#'               JA3Fingerprint = list(
+#'                 FallbackBehavior = "MATCH"|"NO_MATCH"
 #'               )
 #'             ),
 #'             TextTransformations = list(
@@ -9613,6 +9811,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -9677,6 +9878,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -9741,6 +9945,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -9804,6 +10011,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
@@ -9954,6 +10164,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -10098,6 +10311,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -10119,7 +10335,8 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   Identifier = "string"
 #'                 ),
 #'                 AWSManagedRulesBotControlRuleSet = list(
-#'                   InspectionLevel = "COMMON"|"TARGETED"
+#'                   InspectionLevel = "COMMON"|"TARGETED",
+#'                   EnableMachineLearning = TRUE|FALSE
 #'                 ),
 #'                 AWSManagedRulesATPRuleSet = list(
 #'                   LoginPath = "string",
@@ -10453,6 +10670,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -10517,6 +10737,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -10581,6 +10804,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -10644,6 +10870,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
@@ -10794,6 +11023,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -10938,6 +11170,9 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   ),
 #'                   HeaderOrder = list(
 #'                     OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'                   ),
+#'                   JA3Fingerprint = list(
+#'                     FallbackBehavior = "MATCH"|"NO_MATCH"
 #'                   )
 #'                 ),
 #'                 TextTransformations = list(
@@ -10959,7 +11194,8 @@ wafv2_get_web_acl <- function(Name, Scope, Id) {
 #'                   Identifier = "string"
 #'                 ),
 #'                 AWSManagedRulesBotControlRuleSet = list(
-#'                   InspectionLevel = "COMMON"|"TARGETED"
+#'                   InspectionLevel = "COMMON"|"TARGETED",
+#'                   EnableMachineLearning = TRUE|FALSE
 #'                 ),
 #'                 AWSManagedRulesATPRuleSet = list(
 #'                   LoginPath = "string",
@@ -11718,6 +11954,9 @@ wafv2_list_ip_sets <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'           ),
 #'           HeaderOrder = list(
 #'             OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'           ),
+#'           JA3Fingerprint = list(
+#'             FallbackBehavior = "MATCH"|"NO_MATCH"
 #'           )
 #'         )
 #'       ),
@@ -12028,9 +12267,19 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
 #'
 #' @description
 #' Retrieves an array of the Amazon Resource Names (ARNs) for the regional
-#' resources that are associated with the specified web ACL. If you want
-#' the list of Amazon CloudFront resources, use the CloudFront call
-#' `ListDistributionsByWebACLId`.
+#' resources that are associated with the specified web ACL.
+#' 
+#' For Amazon CloudFront, don't use this call. Instead, use the CloudFront
+#' call `ListDistributionsByWebACLId`. For information, see
+#' [ListDistributionsByWebACLId](https://docs.aws.amazon.com/cloudfront/latest/APIReference/API_ListDistributionsByWebACLId.html)
+#' in the *Amazon CloudFront API Reference*.
+#' 
+#' **Required permissions for customer-managed IAM policies**
+#' 
+#' This call requires permissions that are specific to the protected
+#' resource type. For details, see [Permissions for
+#' ListResourcesForWebACL](https://docs.aws.amazon.com/waf/latest/developerguide/security_iam_service-with-iam.html#security_iam_action-ListResourcesForWebACL)
+#' in the *WAF Developer Guide*.
 #'
 #' @usage
 #' wafv2_list_resources_for_web_acl(WebACLArn, ResourceType)
@@ -12446,6 +12695,9 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'         ),
 #'         HeaderOrder = list(
 #'           OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'         ),
+#'         JA3Fingerprint = list(
+#'           FallbackBehavior = "MATCH"|"NO_MATCH"
 #'         )
 #'       )
 #'     ),
@@ -12535,6 +12787,9 @@ wafv2_list_web_ac_ls <- function(Scope, NextMarker = NULL, Limit = NULL) {
 #'         ),
 #'         HeaderOrder = list(
 #'           OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'         ),
+#'         JA3Fingerprint = list(
+#'           FallbackBehavior = "MATCH"|"NO_MATCH"
 #'         )
 #'       )
 #'     ),
@@ -12903,19 +13158,30 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' 
 #' 3.  Provide the complete IP set specification to this call
 #' 
-#' When you make changes to web ACLs or web ACL components, like rules and
-#' rule groups, WAF propagates the changes everywhere that the web ACL and
-#' its components are stored and used. Your changes are applied within
-#' seconds, but there might be a brief period of inconsistency when the
-#' changes have arrived in some places and not in others. So, for example,
-#' if you change a rule action setting, the action might be the old action
-#' in one area and the new action in another area. Or if you add an IP
-#' address to an IP set used in a blocking rule, the new address might
-#' briefly be blocked in one area while still allowed in another. This
-#' temporary inconsistency can occur when you first associate a web ACL
-#' with an Amazon Web Services resource and when you change a web ACL that
-#' is already associated with a resource. Generally, any inconsistencies of
-#' this type last only a few seconds.
+#' **Temporary inconsistencies during updates**
+#' 
+#' When you create or change a web ACL or other WAF resources, the changes
+#' take a small amount of time to propagate to all areas where the
+#' resources are stored. The propagation time can be from a few seconds to
+#' a number of minutes.
+#' 
+#' The following are examples of the temporary inconsistencies that you
+#' might notice during change propagation:
+#' 
+#' -   After you create a web ACL, if you try to associate it with a
+#'     resource, you might get an exception indicating that the web ACL is
+#'     unavailable.
+#' 
+#' -   After you add a rule group to a web ACL, the new rule group rules
+#'     might be in effect in one area where the web ACL is used and not in
+#'     another.
+#' 
+#' -   After you change a rule action setting, you might see the old action
+#'     in some places and the new action in others.
+#' 
+#' -   After you add an IP address to an IP set that is in use in a
+#'     blocking rule, the new address might be blocked in one area while
+#'     still allowed in another.
 #'
 #' @usage
 #' wafv2_update_ip_set(Name, Scope, Id, Description, Addresses, LockToken)
@@ -12940,25 +13206,25 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' delete.
 #' @param Description A description of the IP set that helps with identification.
 #' @param Addresses &#91;required&#93; Contains an array of strings that specifies zero or more IP addresses or
-#' blocks of IP addresses. All addresses must be specified using Classless
-#' Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6
-#' CIDR ranges except for `/0`.
+#' blocks of IP addresses that you want WAF to inspect for in incoming
+#' requests. All addresses must be specified using Classless Inter-Domain
+#' Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges
+#' except for `/0`.
 #' 
 #' Example address strings:
 #' 
-#' -   To configure WAF to allow, block, or count requests that originated
-#'     from the IP address 192.0.2.44, specify `192.0.2.44/32`.
+#' -   For requests that originated from the IP address 192.0.2.44, specify
+#'     `192.0.2.44/32`.
 #' 
-#' -   To configure WAF to allow, block, or count requests that originated
-#'     from IP addresses from 192.0.2.0 to 192.0.2.255, specify
-#'     `192.0.2.0/24`.
+#' -   For requests that originated from IP addresses from 192.0.2.0 to
+#'     192.0.2.255, specify `192.0.2.0/24`.
 #' 
-#' -   To configure WAF to allow, block, or count requests that originated
-#'     from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify
+#' -   For requests that originated from the IP address
+#'     1111:0000:0000:0000:0000:0000:0000:0111, specify
 #'     `1111:0000:0000:0000:0000:0000:0000:0111/128`.
 #' 
-#' -   To configure WAF to allow, block, or count requests that originated
-#'     from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to
+#' -   For requests that originated from IP addresses
+#'     1111:0000:0000:0000:0000:0000:0000:0000 to
 #'     1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
 #'     `1111:0000:0000:0000:0000:0000:0000:0000/64`.
 #' 
@@ -13156,19 +13422,30 @@ wafv2_update_managed_rule_set_version_expiry_date <- function(Name, Scope, Id, L
 #' 
 #' 3.  Provide the complete regex pattern set specification to this call
 #' 
-#' When you make changes to web ACLs or web ACL components, like rules and
-#' rule groups, WAF propagates the changes everywhere that the web ACL and
-#' its components are stored and used. Your changes are applied within
-#' seconds, but there might be a brief period of inconsistency when the
-#' changes have arrived in some places and not in others. So, for example,
-#' if you change a rule action setting, the action might be the old action
-#' in one area and the new action in another area. Or if you add an IP
-#' address to an IP set used in a blocking rule, the new address might
-#' briefly be blocked in one area while still allowed in another. This
-#' temporary inconsistency can occur when you first associate a web ACL
-#' with an Amazon Web Services resource and when you change a web ACL that
-#' is already associated with a resource. Generally, any inconsistencies of
-#' this type last only a few seconds.
+#' **Temporary inconsistencies during updates**
+#' 
+#' When you create or change a web ACL or other WAF resources, the changes
+#' take a small amount of time to propagate to all areas where the
+#' resources are stored. The propagation time can be from a few seconds to
+#' a number of minutes.
+#' 
+#' The following are examples of the temporary inconsistencies that you
+#' might notice during change propagation:
+#' 
+#' -   After you create a web ACL, if you try to associate it with a
+#'     resource, you might get an exception indicating that the web ACL is
+#'     unavailable.
+#' 
+#' -   After you add a rule group to a web ACL, the new rule group rules
+#'     might be in effect in one area where the web ACL is used and not in
+#'     another.
+#' 
+#' -   After you change a rule action setting, you might see the old action
+#'     in some places and the new action in others.
+#' 
+#' -   After you add an IP address to an IP set that is in use in a
+#'     blocking rule, the new address might be blocked in one area while
+#'     still allowed in another.
 #'
 #' @usage
 #' wafv2_update_regex_pattern_set(Name, Scope, Id, Description,
@@ -13266,25 +13543,36 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' 
 #' 3.  Provide the complete rule group specification to this call
 #' 
-#' When you make changes to web ACLs or web ACL components, like rules and
-#' rule groups, WAF propagates the changes everywhere that the web ACL and
-#' its components are stored and used. Your changes are applied within
-#' seconds, but there might be a brief period of inconsistency when the
-#' changes have arrived in some places and not in others. So, for example,
-#' if you change a rule action setting, the action might be the old action
-#' in one area and the new action in another area. Or if you add an IP
-#' address to an IP set used in a blocking rule, the new address might
-#' briefly be blocked in one area while still allowed in another. This
-#' temporary inconsistency can occur when you first associate a web ACL
-#' with an Amazon Web Services resource and when you change a web ACL that
-#' is already associated with a resource. Generally, any inconsistencies of
-#' this type last only a few seconds.
-#' 
 #' A rule group defines a collection of rules to inspect and control web
 #' requests that you can use in a WebACL. When you create a rule group, you
 #' define an immutable capacity limit. If you update a rule group, you must
 #' stay within the capacity. This allows others to reuse the rule group
 #' with confidence in its capacity requirements.
+#' 
+#' **Temporary inconsistencies during updates**
+#' 
+#' When you create or change a web ACL or other WAF resources, the changes
+#' take a small amount of time to propagate to all areas where the
+#' resources are stored. The propagation time can be from a few seconds to
+#' a number of minutes.
+#' 
+#' The following are examples of the temporary inconsistencies that you
+#' might notice during change propagation:
+#' 
+#' -   After you create a web ACL, if you try to associate it with a
+#'     resource, you might get an exception indicating that the web ACL is
+#'     unavailable.
+#' 
+#' -   After you add a rule group to a web ACL, the new rule group rules
+#'     might be in effect in one area where the web ACL is used and not in
+#'     another.
+#' 
+#' -   After you change a rule action setting, you might see the old action
+#'     in some places and the new action in others.
+#' 
+#' -   After you add an IP address to an IP set that is in use in a
+#'     blocking rule, the new address might be blocked in one area while
+#'     still allowed in another.
 #'
 #' @usage
 #' wafv2_update_rule_group(Name, Scope, Id, Description, Rules,
@@ -13310,9 +13598,9 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' update and delete.
 #' @param Description A description of the rule group that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
-#' allow, block, or count. Each rule includes one top-level statement that
-#' WAF uses to identify matching web requests, and parameters that govern
-#' how WAF handles them.
+#' manage. Each rule includes one top-level statement that WAF uses to
+#' identify matching web requests, and parameters that govern how WAF
+#' handles them.
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
 #' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
@@ -13413,6 +13701,9 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -13477,6 +13768,9 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -13541,6 +13835,9 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -13604,6 +13901,9 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
@@ -13754,6 +14054,9 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -13859,7 +14162,8 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'                 Identifier = "string"
 #'               ),
 #'               AWSManagedRulesBotControlRuleSet = list(
-#'                 InspectionLevel = "COMMON"|"TARGETED"
+#'                 InspectionLevel = "COMMON"|"TARGETED",
+#'                 EnableMachineLearning = TRUE|FALSE
 #'               ),
 #'               AWSManagedRulesATPRuleSet = list(
 #'                 LoginPath = "string",
@@ -14094,6 +14398,9 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -14249,31 +14556,42 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' 
 #' 3.  Provide the complete web ACL specification to this call
 #' 
-#' When you make changes to web ACLs or web ACL components, like rules and
-#' rule groups, WAF propagates the changes everywhere that the web ACL and
-#' its components are stored and used. Your changes are applied within
-#' seconds, but there might be a brief period of inconsistency when the
-#' changes have arrived in some places and not in others. So, for example,
-#' if you change a rule action setting, the action might be the old action
-#' in one area and the new action in another area. Or if you add an IP
-#' address to an IP set used in a blocking rule, the new address might
-#' briefly be blocked in one area while still allowed in another. This
-#' temporary inconsistency can occur when you first associate a web ACL
-#' with an Amazon Web Services resource and when you change a web ACL that
-#' is already associated with a resource. Generally, any inconsistencies of
-#' this type last only a few seconds.
-#' 
 #' A web ACL defines a collection of rules to use to inspect and control
-#' web requests. Each rule has an action defined (allow, block, or count)
-#' for requests that match the statement of the rule. In the web ACL, you
-#' assign a default action to take (allow, block) for any request that does
-#' not match any of the rules. The rules in a web ACL can be a combination
-#' of the types Rule, RuleGroup, and managed rule group. You can associate
-#' a web ACL with one or more Amazon Web Services resources to protect. The
-#' resources can be an Amazon CloudFront distribution, an Amazon API
-#' Gateway REST API, an Application Load Balancer, an AppSync GraphQL API,
-#' an Amazon Cognito user pool, an App Runner service, or an Amazon Web
-#' Services Verified Access instance.
+#' web requests. Each rule has a statement that defines what to look for in
+#' web requests and an action that WAF applies to requests that match the
+#' statement. In the web ACL, you assign a default action to take (allow,
+#' block) for any request that does not match any of the rules. The rules
+#' in a web ACL can be a combination of the types Rule, RuleGroup, and
+#' managed rule group. You can associate a web ACL with one or more Amazon
+#' Web Services resources to protect. The resources can be an Amazon
+#' CloudFront distribution, an Amazon API Gateway REST API, an Application
+#' Load Balancer, an AppSync GraphQL API, an Amazon Cognito user pool, an
+#' App Runner service, or an Amazon Web Services Verified Access instance.
+#' 
+#' **Temporary inconsistencies during updates**
+#' 
+#' When you create or change a web ACL or other WAF resources, the changes
+#' take a small amount of time to propagate to all areas where the
+#' resources are stored. The propagation time can be from a few seconds to
+#' a number of minutes.
+#' 
+#' The following are examples of the temporary inconsistencies that you
+#' might notice during change propagation:
+#' 
+#' -   After you create a web ACL, if you try to associate it with a
+#'     resource, you might get an exception indicating that the web ACL is
+#'     unavailable.
+#' 
+#' -   After you add a rule group to a web ACL, the new rule group rules
+#'     might be in effect in one area where the web ACL is used and not in
+#'     another.
+#' 
+#' -   After you change a rule action setting, you might see the old action
+#'     in some places and the new action in others.
+#' 
+#' -   After you add an IP address to an IP set that is in use in a
+#'     blocking rule, the new address might be blocked in one area while
+#'     still allowed in another.
 #'
 #' @usage
 #' wafv2_update_web_acl(Name, Scope, Id, DefaultAction, Description, Rules,
@@ -14302,9 +14620,9 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' match.
 #' @param Description A description of the web ACL that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
-#' allow, block, or count. Each rule includes one top-level statement that
-#' WAF uses to identify matching web requests, and parameters that govern
-#' how WAF handles them.
+#' manage. Each rule includes one top-level statement that WAF uses to
+#' identify matching web requests, and parameters that govern how WAF
+#' handles them.
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
 #' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
@@ -14354,7 +14672,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' 
 #' Use this to customize the maximum size of the request body that your
 #' protected CloudFront distributions forward to WAF for inspection. The
-#' default is 16 KB (16,384 kilobytes).
+#' default is 16 KB (16,384 bytes).
 #' 
 #' You are charged additional fees when your protected resources forward
 #' body sizes that are larger than the default. For more information, see
@@ -14459,6 +14777,9 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -14523,6 +14844,9 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -14587,6 +14911,9 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -14650,6 +14977,9 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           ComparisonOperator = "EQ"|"NE"|"LE"|"LT"|"GE"|"GT",
@@ -14800,6 +15130,9 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(
@@ -14905,7 +15238,8 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'                 Identifier = "string"
 #'               ),
 #'               AWSManagedRulesBotControlRuleSet = list(
-#'                 InspectionLevel = "COMMON"|"TARGETED"
+#'                 InspectionLevel = "COMMON"|"TARGETED",
+#'                 EnableMachineLearning = TRUE|FALSE
 #'               ),
 #'               AWSManagedRulesATPRuleSet = list(
 #'                 LoginPath = "string",
@@ -15140,6 +15474,9 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #'             ),
 #'             HeaderOrder = list(
 #'               OversizeHandling = "CONTINUE"|"MATCH"|"NO_MATCH"
+#'             ),
+#'             JA3Fingerprint = list(
+#'               FallbackBehavior = "MATCH"|"NO_MATCH"
 #'             )
 #'           ),
 #'           TextTransformations = list(

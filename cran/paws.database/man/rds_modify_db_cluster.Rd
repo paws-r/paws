@@ -47,7 +47,8 @@ rds_modify_db_cluster(
   MasterUserSecretKmsKeyId = NULL,
   EngineMode = NULL,
   AllowEngineModeChange = NULL,
-  EnableLocalWriteForwarding = NULL
+  EnableLocalWriteForwarding = NULL,
+  AwsBackupRecoveryPointArn = NULL
 )
 }
 \arguments{
@@ -246,7 +247,7 @@ Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters}
 
 \item{AllowMajorVersionUpgrade}{Specifies whether major version upgrades are allowed.
 
-Valid for Cluster Type: Aurora DB clusters only
+Valid for Cluster Type: Aurora DB clusters and Multi-AZ DB clusters
 
 Constraints:
 \itemize{
@@ -569,6 +570,9 @@ writer DB instance in the DB cluster. By default, write operations
 aren't allowed on reader DB instances.
 
 Valid for: Aurora DB clusters only}
+
+\item{AwsBackupRecoveryPointArn}{The Amazon Resource Name (ARN) of the recovery point in Amazon Web
+Services Backup.}
 }
 \description{
 Modifies the settings of an Amazon Aurora DB cluster or a Multi-AZ DB cluster. You can change one or more settings by specifying these parameters and the new values in the request.

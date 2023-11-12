@@ -19,9 +19,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -90,7 +90,7 @@ NULL
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[=finspacedata_associate_user_to_permission_group]{associate_user_to_permission_group} \tab Adds a user account to a permission group to grant permissions for actions a user can perform in FinSpace\cr
+#'  \link[=finspacedata_associate_user_to_permission_group]{associate_user_to_permission_group} \tab Adds a user to a permission group to grant permissions for actions a user can perform in FinSpace\cr
 #'  \link[=finspacedata_create_changeset]{create_changeset} \tab Creates a new Changeset in a FinSpace Dataset\cr
 #'  \link[=finspacedata_create_dataset]{create_dataset} \tab Creates a new FinSpace Dataset\cr
 #'  \link[=finspacedata_create_data_view]{create_data_view} \tab Creates a Dataview for a Dataset\cr
@@ -99,7 +99,7 @@ NULL
 #'  \link[=finspacedata_delete_dataset]{delete_dataset} \tab Deletes a FinSpace Dataset\cr
 #'  \link[=finspacedata_delete_permission_group]{delete_permission_group} \tab Deletes a permission group\cr
 #'  \link[=finspacedata_disable_user]{disable_user} \tab Denies access to the FinSpace web application and API for the specified user\cr
-#'  \link[=finspacedata_disassociate_user_from_permission_group]{disassociate_user_from_permission_group} \tab Removes a user account from a permission group\cr
+#'  \link[=finspacedata_disassociate_user_from_permission_group]{disassociate_user_from_permission_group} \tab Removes a user from a permission group\cr
 #'  \link[=finspacedata_enable_user]{enable_user} \tab Allows the specified user to access the FinSpace web application and API\cr
 #'  \link[=finspacedata_get_changeset]{get_changeset} \tab Get information about a Changeset\cr
 #'  \link[=finspacedata_get_dataset]{get_dataset} \tab Returns information about a Dataset\cr
@@ -113,14 +113,14 @@ NULL
 #'  \link[=finspacedata_list_datasets]{list_datasets} \tab Lists all of the active Datasets that a user has access to\cr
 #'  \link[=finspacedata_list_data_views]{list_data_views} \tab Lists all available Dataviews for a Dataset\cr
 #'  \link[=finspacedata_list_permission_groups]{list_permission_groups} \tab Lists all available permission groups in FinSpace\cr
-#'  \link[=finspacedata_list_permission_groups_by_user]{list_permission_groups_by_user} \tab Lists all the permission groups that are associated with a specific user account\cr
-#'  \link[=finspacedata_list_users]{list_users} \tab Lists all available user accounts in FinSpace\cr
+#'  \link[=finspacedata_list_permission_groups_by_user]{list_permission_groups_by_user} \tab Lists all the permission groups that are associated with a specific user\cr
+#'  \link[=finspacedata_list_users]{list_users} \tab Lists all available users in FinSpace\cr
 #'  \link[=finspacedata_list_users_by_permission_group]{list_users_by_permission_group} \tab Lists details of all the users in a specific permission group\cr
 #'  \link[=finspacedata_reset_user_password]{reset_user_password} \tab Resets the password for a specified user ID and generates a temporary one\cr
 #'  \link[=finspacedata_update_changeset]{update_changeset} \tab Updates a FinSpace Changeset\cr
 #'  \link[=finspacedata_update_dataset]{update_dataset} \tab Updates a FinSpace Dataset\cr
 #'  \link[=finspacedata_update_permission_group]{update_permission_group} \tab Modifies the details of a permission group\cr
-#'  \link[=finspacedata_update_user]{update_user} \tab Modifies the details of the specified user account
+#'  \link[=finspacedata_update_user]{update_user} \tab Modifies the details of the specified user
 #' }
 #'
 #' @return

@@ -62,7 +62,9 @@ rds_modify_db_instance(
   ManageMasterUserPassword = NULL,
   RotateMasterUserPassword = NULL,
   MasterUserSecretKmsKeyId = NULL,
-  Engine = NULL
+  Engine = NULL,
+  DedicatedLogVolume = NULL,
+  MultiTenant = NULL
 )
 }
 \arguments{
@@ -98,7 +100,17 @@ If you modify the DB instance class, an outage occurs during the change.
 The change is applied during the next maintenance window, unless you
 specify \code{ApplyImmediately} in your request.
 
-Default: Uses existing setting}
+Default: Uses existing setting
+
+Constraints:
+\itemize{
+\item If you are modifying the DB instance class and upgrading the engine
+version at the same time, the currently running engine version must
+be supported on the specified DB instance class. Otherwise, the
+operation returns an error. In this case, first run the operation to
+upgrade the engine version, and then run it again to modify the DB
+instance class.
+}}
 
 \item{DBSubnetGroupName}{The new DB subnet group for the DB instance. You can use this parameter
 to move your DB instance to a different VPC. If your DB instance isn't
@@ -317,7 +329,17 @@ engine version that you specify must be the same or higher than the
 version that the source DB instance or cluster is running.
 
 In RDS Custom for Oracle, this parameter is supported for read replicas
-only if they are in the \code{PATCH_DB_FAILURE} lifecycle.}
+only if they are in the \code{PATCH_DB_FAILURE} lifecycle.
+
+Constraints:
+\itemize{
+\item If you are upgrading the engine version and modifying the DB
+instance class at the same time, the currently running engine
+version must be supported on the specified DB instance class.
+Otherwise, the operation returns an error. In this case, first run
+the operation to upgrade the engine version, and then run it again
+to modify the DB instance class.
+}}
 
 \item{AllowMajorVersionUpgrade}{Specifies whether major version upgrades are allowed. Changing this
 parameter doesn't result in an outage and the change is asynchronously
@@ -888,6 +910,25 @@ parameter group. To avoid reverting to the default, specify a new
 parameter group with \code{--db-parameter-group-name} and a new option
 group with \code{--option-group-name}.
 }}
+
+\item{DedicatedLogVolume}{Indicates whether the DB instance has a dedicated log volume (DLV)
+enabled.}
+
+\item{MultiTenant}{Specifies whether the to convert your DB instance from the single-tenant
+conﬁguration to the multi-tenant conﬁguration. This parameter is
+supported only for RDS for Oracle CDB instances.
+
+During the conversion, RDS creates an initial tenant database and
+associates the DB name, master user name, character set, and national
+character set metadata with this database. The tags associated with the
+instance also propagate to the initial tenant database. You can add more
+tenant databases to your DB instance by using the
+\code{\link[=rds_create_tenant_database]{create_tenant_database}} operation.
+
+The conversion to the multi-tenant configuration is permanent and
+irreversible, so you can't later convert back to the single-tenant
+configuration. When you specify this parameter, you must also specify
+\code{ApplyImmediately}.}
 }
 \description{
 Modifies settings for a DB instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request. To learn what modifications you can make to your DB instance, call \code{\link[=rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications}} before you call \code{\link[=rds_modify_db_instance]{modify_db_instance}}.

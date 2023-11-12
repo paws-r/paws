@@ -27,7 +27,11 @@ but with different settings, Route 53 returns a
 \item If you send a \code{\link[=route53_create_health_check]{create_health_check}}
 request with a unique \code{CallerReference} but settings identical to an
 existing health check, Route 53 creates the health check.
-}}
+}
+
+Route 53 does not store the \code{CallerReference} for a deleted health check
+indefinitely. The \code{CallerReference} for a deleted health check will be
+deleted after a number of days.}
 
 \item{HealthCheckConfig}{[required] A complex type that contains settings for a new health check.}
 }

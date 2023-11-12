@@ -17,9 +17,9 @@ finspace(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -119,6 +119,7 @@ environments.
 \link[=finspace_tag_resource]{tag_resource} \tab Adds metadata tags to a FinSpace resource\cr
 \link[=finspace_untag_resource]{untag_resource} \tab Removes metadata tags from a FinSpace resource\cr
 \link[=finspace_update_environment]{update_environment} \tab Update your FinSpace environment\cr
+\link[=finspace_update_kx_cluster_code_configuration]{update_kx_cluster_code_configuration} \tab Allows you to update code configuration on a running cluster\cr
 \link[=finspace_update_kx_cluster_databases]{update_kx_cluster_databases} \tab Updates the databases mounted on a kdb cluster, which includes the changesetId and all the dbPaths to be cached\cr
 \link[=finspace_update_kx_database]{update_kx_database} \tab Updates information for the given kdb database\cr
 \link[=finspace_update_kx_environment]{update_kx_environment} \tab Updates information for the given kdb environment\cr

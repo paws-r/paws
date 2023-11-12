@@ -12,7 +12,8 @@ ec2_create_verified_access_group(
   PolicyDocument = NULL,
   TagSpecifications = NULL,
   ClientToken = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  SseSpecification = NULL
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ your modification request. For more information, see \href{https://docs.aws.amaz
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{SseSpecification}{Options for server side encryption.}
 }
 \description{
 An Amazon Web Services Verified Access group is a collection of Amazon Web Services Verified Access endpoints who's associated applications have similar security requirements. Each instance within a Verified Access group shares an Verified Access policy. For example, you can group all Verified Access instances associated with "sales" applications together and use one common Verified Access policy.

@@ -8,7 +8,7 @@ user}
 finspacedata_disable_user(userId, clientToken = NULL)
 }
 \arguments{
-\item{userId}{[required] The unique identifier for the user account that you want to disable.}
+\item{userId}{[required] The unique identifier for the user that you want to deactivate.}
 
 \item{clientToken}{A token that ensures idempotency. This token expires in 10 minutes.}
 }

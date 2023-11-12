@@ -22,15 +22,18 @@ comprehend_create_flywheel(
 \item{FlywheelName}{[required] Name for the flywheel.}
 
 \item{ActiveModelArn}{To associate an existing model with the flywheel, specify the Amazon
-Resource Number (ARN) of the model version.}
+Resource Number (ARN) of the model version. Do not set \code{TaskConfig} or
+\code{ModelType} if you specify an \code{ActiveModelArn}.}
 
 \item{DataAccessRoleArn}{[required] The Amazon Resource Name (ARN) of the IAM role that grants Amazon
 Comprehend the permissions required to access the flywheel data in the
 data lake.}
 
-\item{TaskConfig}{Configuration about the custom classifier associated with the flywheel.}
+\item{TaskConfig}{Configuration about the model associated with the flywheel. You need to
+set \code{TaskConfig} if you are creating a flywheel for a new model.}
 
-\item{ModelType}{The model type.}
+\item{ModelType}{The model type. You need to set \code{ModelType} if you are creating a
+flywheel for a new model.}
 
 \item{DataLakeS3Uri}{[required] Enter the S3 location for the data lake. You can specify a new S3 bucket
 or a new folder of an existing S3 bucket. The flywheel creates the data

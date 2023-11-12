@@ -46,9 +46,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -135,6 +135,7 @@ NULL
 #'  \link[=ssm_delete_document]{delete_document} \tab Deletes the Amazon Web Services Systems Manager document (SSM document) and all managed node associations to the document\cr
 #'  \link[=ssm_delete_inventory]{delete_inventory} \tab Delete a custom inventory type or the data associated with a custom Inventory type\cr
 #'  \link[=ssm_delete_maintenance_window]{delete_maintenance_window} \tab Deletes a maintenance window\cr
+#'  \link[=ssm_delete_ops_item]{delete_ops_item} \tab Delete an OpsItem\cr
 #'  \link[=ssm_delete_ops_metadata]{delete_ops_metadata} \tab Delete OpsMetadata related to an application\cr
 #'  \link[=ssm_delete_parameter]{delete_parameter} \tab Delete a parameter from the system\cr
 #'  \link[=ssm_delete_parameters]{delete_parameters} \tab Delete a list of parameters\cr

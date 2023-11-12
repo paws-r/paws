@@ -16,6 +16,14 @@ test_that("list_collections", {
   expect_error(svc$list_collections(MaxResults = 20), NA)
 })
 
+test_that("list_media_analysis_jobs", {
+  expect_error(svc$list_media_analysis_jobs(), NA)
+})
+
+test_that("list_media_analysis_jobs", {
+  expect_error(svc$list_media_analysis_jobs(MaxResults = 20), NA)
+})
+
 test_that("list_stream_processors", {
   expect_error(svc$list_stream_processors(), NA)
 })

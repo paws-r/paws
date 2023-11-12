@@ -26,8 +26,8 @@ codedeploy_create_deployment_group(
 )
 }
 \arguments{
-\item{applicationName}{[required] The name of an CodeDeploy application associated with the IAM user or
-Amazon Web Services account.}
+\item{applicationName}{[required] The name of an CodeDeploy application associated with the user or Amazon
+Web Services account.}
 
 \item{deploymentGroupName}{[required] The name of a new deployment group for the specified application.}
 

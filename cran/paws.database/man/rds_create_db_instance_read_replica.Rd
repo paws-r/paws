@@ -48,6 +48,8 @@ rds_create_db_instance_read_replica(
   EnableCustomerOwnedIp = NULL,
   AllocatedStorage = NULL,
   SourceDBClusterIdentifier = NULL,
+  DedicatedLogVolume = NULL,
+  UpgradeStorageConfig = NULL,
   SourceRegion = NULL
 )
 }
@@ -87,7 +89,7 @@ Services Regions, or for all database engines. For the full list of DB
 instance classes, and availability for your engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB Instance Class}
 in the \emph{Amazon RDS User Guide}.
 
-Default: Inherits from the source DB instance.}
+Default: Inherits the value from the source DB instance.}
 
 \item{AvailabilityZone}{The Availability Zone (AZ) where the read replica will be created.
 
@@ -98,12 +100,11 @@ Example: \verb{us-east-1d}}
 
 \item{Port}{The port number that the DB instance uses for connections.
 
-Default: Inherits from the source DB instance
+Valid Values: \code{1150-65535}
 
-Valid Values: \code{1150-65535}}
+Default: Inherits the value from the source DB instance.}
 
-\item{MultiAZ}{A value that indicates whether the read replica is in a Multi-AZ
-deployment.
+\item{MultiAZ}{Specifies whether the read replica is in a Multi-AZ deployment.
 
 You can create a read replica as a Multi-AZ DB instance. RDS creates a
 standby of your replica in another Availability Zone for failover
@@ -111,44 +112,47 @@ support for the replica. Creating your read replica as a Multi-AZ DB
 instance is independent of whether the source is a Multi-AZ DB instance
 or a Multi-AZ DB cluster.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
-\item{AutoMinorVersionUpgrade}{A value that indicates whether minor engine upgrades are applied
-automatically to the read replica during the maintenance window.
+\item{AutoMinorVersionUpgrade}{Specifies whether to automatically apply minor engine upgrades to the
+read replica during the maintenance window.
 
-This setting doesn't apply to RDS Custom.
+This setting doesn't apply to RDS Custom DB instances.
 
-Default: Inherits from the source DB instance}
+Default: Inherits the value from the source DB instance.}
 
 \item{Iops}{The amount of Provisioned IOPS (input/output operations per second) to
-be initially allocated for the DB instance.}
+initially allocate for the DB instance.}
 
-\item{OptionGroupName}{The option group the DB instance is associated with. If omitted, the
-option group associated with the source instance or cluster is used.
+\item{OptionGroupName}{The option group to associate the DB instance with. If not specified,
+RDS uses the option group associated with the source DB instance or
+cluster.
 
 For SQL Server, you must use the option group associated with the
 source.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
 \item{DBParameterGroupName}{The name of the DB parameter group to associate with this DB instance.
 
-If you do not specify a value for \code{DBParameterGroupName}, then Amazon
-RDS uses the \code{DBParameterGroup} of source DB instance for a same Region
+If you don't specify a value for \code{DBParameterGroupName}, then Amazon RDS
+uses the \code{DBParameterGroup} of the source DB instance for a same Region
 read replica, or the default \code{DBParameterGroup} for the specified DB
 engine for a cross-Region read replica.
 
 Specifying a parameter group for this operation is only supported for
-MySQL and Oracle DB instances. It isn't supported for RDS Custom.
+MySQL DB instances for cross-Region read replicas and for Oracle DB
+instances. It isn't supported for MySQL DB instances for same Region
+read replicas or for RDS Custom.
 
 Constraints:
 \itemize{
 \item Must be 1 to 255 letters, numbers, or hyphens.
-\item First character must be a letter
-\item Can't end with a hyphen or contain two consecutive hyphens
+\item First character must be a letter.
+\item Can't end with a hyphen or contain two consecutive hyphens.
 }}
 
-\item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
+\item{PubliclyAccessible}{Specifies whether the DB instance is publicly accessible.
 
 When the DB cluster is publicly accessible, its Domain Name System (DNS)
 endpoint resolves to the private IP address from within the DB cluster's
@@ -166,17 +170,17 @@ For more information, see
 
 \item{Tags}{}
 
-\item{DBSubnetGroupName}{Specifies a DB subnet group for the DB instance. The new DB instance is
-created in the VPC associated with the DB subnet group. If no DB subnet
-group is specified, then the new DB instance isn't created in a VPC.
+\item{DBSubnetGroupName}{A DB subnet group for the DB instance. The new DB instance is created in
+the VPC associated with the DB subnet group. If no DB subnet group is
+specified, then the new DB instance isn't created in a VPC.
 
 Constraints:
 \itemize{
-\item If supplied, must match the name of an existing DBSubnetGroup.
+\item If supplied, must match the name of an existing DB subnet group.
 \item The specified DB subnet group must be in the same Amazon Web
 Services Region in which the operation is running.
 \item All read replicas in one Amazon Web Services Region that are created
-from the same source DB instance must either:\>
+from the same source DB instance must either:
 \itemize{
 \item Specify DB subnet groups from the same VPC. All these read
 replicas are created in the same VPC.
@@ -190,33 +194,35 @@ Example: \code{mydbsubnetgroup}}
 \item{VpcSecurityGroupIds}{A list of Amazon EC2 VPC security groups to associate with the read
 replica.
 
-This setting doesn't apply to RDS Custom.
+This setting doesn't apply to RDS Custom DB instances.
 
 Default: The default EC2 VPC security group for the DB subnet group's
 VPC.}
 
-\item{StorageType}{Specifies the storage type to be associated with the read replica.
-
-Valid values: \code{gp2 | gp3 | io1 | standard}
+\item{StorageType}{The storage type to associate with the read replica.
 
 If you specify \code{io1} or \code{gp3}, you must also include a value for the
 \code{Iops} parameter.
 
-Default: \code{io1} if the \code{Iops} parameter is specified, otherwise \code{gp2}}
+Valid Values: \code{gp2 | gp3 | io1 | standard}
 
-\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the read replica to
-snapshots of the read replica. By default, tags are not copied.}
+Default: \code{io1} if the \code{Iops} parameter is specified. Otherwise, \code{gp2}.}
+
+\item{CopyTagsToSnapshot}{Specifies whether to copy all tags from the read replica to snapshots of
+the read replica. By default, tags aren't copied.}
 
 \item{MonitoringInterval}{The interval, in seconds, between points when Enhanced Monitoring
-metrics are collected for the read replica. To disable collecting
-Enhanced Monitoring metrics, specify 0. The default is 0.
+metrics are collected for the read replica. To disable collection of
+Enhanced Monitoring metrics, specify \code{0}. The default is \code{0}.
 
-If \code{MonitoringRoleArn} is specified, then you must also set
-\code{MonitoringInterval} to a value other than 0.
+If \code{MonitoringRoleArn} is specified, then you must set
+\code{MonitoringInterval} to a value other than \code{0}.
 
-This setting doesn't apply to RDS Custom.
+This setting doesn't apply to RDS Custom DB instances.
 
-Valid Values: \verb{0, 1, 5, 10, 15, 30, 60}}
+Valid Values: \verb{0, 1, 5, 10, 15, 30, 60}
+
+Default: \code{0}}
 
 \item{MonitoringRoleArn}{The ARN for the IAM role that permits RDS to send enhanced monitoring
 metrics to Amazon CloudWatch Logs. For example,
@@ -227,7 +233,7 @@ in the \emph{Amazon RDS User Guide}.
 If \code{MonitoringInterval} is set to a value other than 0, then you must
 supply a \code{MonitoringRoleArn} value.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
 \item{KmsKeyId}{The Amazon Web Services KMS key identifier for an encrypted read
 replica.
@@ -326,27 +332,26 @@ that can run in the source Amazon Web Services Region.
 \code{SourceRegion} isn't supported for SQL Server, because Amazon RDS for
 SQL Server doesn't support cross-Region read replicas.
 
-This setting doesn't apply to RDS Custom.
+This setting doesn't apply to RDS Custom DB instances.
 
 If you supply a value for this operation's \code{SourceRegion} parameter, a
 pre-signed URL will be calculated on your behalf.}
 
-\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of Amazon Web Services
-Identity and Access Management (IAM) accounts to database accounts. By
-default, mapping isn't enabled.
+\item{EnableIAMDatabaseAuthentication}{Specifies whether to enable mapping of Amazon Web Services Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping isn't enabled.
 
 For more information about IAM database authentication, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication for MySQL and PostgreSQL}
 in the \emph{Amazon RDS User Guide}.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
-\item{EnablePerformanceInsights}{A value that indicates whether to enable Performance Insights for the
-read replica.
+\item{EnablePerformanceInsights}{Specifies whether to enable Performance Insights for the read replica.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{Using Amazon Performance Insights}
 in the \emph{Amazon RDS User Guide}.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
 \item{PerformanceInsightsKMSKeyId}{The Amazon Web Services KMS key identifier for encryption of Performance
 Insights data.
@@ -359,50 +364,47 @@ Amazon RDS uses your default KMS key. There is a default KMS key for
 your Amazon Web Services account. Your Amazon Web Services account has a
 different default KMS key for each Amazon Web Services Region.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
-\item{PerformanceInsightsRetentionPeriod}{The number of days to retain Performance Insights data. The default is 7
-days. The following values are valid:
+\item{PerformanceInsightsRetentionPeriod}{The number of days to retain Performance Insights data.
+
+This setting doesn't apply to RDS Custom DB instances.
+
+Valid Values:
 \itemize{
-\item 7
-\item \emph{month} * 31, where \emph{month} is a number of months from 1-23
-\item 731
+\item \code{7}
+\item \emph{month} * 31, where \emph{month} is a number of months from 1-23.
+Examples: \code{93} (3 months * 31), \code{341} (11 months * 31), \code{589} (19
+months * 31)
+\item \code{731}
 }
 
-For example, the following values are valid:
-\itemize{
-\item 93 (3 months * 31)
-\item 341 (11 months * 31)
-\item 589 (19 months * 31)
-\item 731
-}
+Default: \code{7} days
 
-If you specify a retention period such as 94, which isn't a valid value,
-RDS issues an error.
-
-This setting doesn't apply to RDS Custom.}
+If you specify a retention period that isn't valid, such as \code{94}, Amazon
+RDS returns an error.}
 
 \item{EnableCloudwatchLogsExports}{The list of logs that the new DB instance is to export to CloudWatch
 Logs. The values in the list depend on the DB engine being used. For
 more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.html#USER_LogAccess.Procedural.UploadtoCloudWatch}{Publishing Database Logs to Amazon CloudWatch Logs}
 in the \emph{Amazon RDS User Guide}.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
 \item{ProcessorFeatures}{The number of CPU cores and the number of threads per core for the DB
 instance class of the DB instance.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
-\item{UseDefaultProcessorFeatures}{A value that indicates whether the DB instance class of the DB instance
-uses its default processor features.
+\item{UseDefaultProcessorFeatures}{Specifies whether the DB instance class of the DB instance uses its
+default processor features.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
-\item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
-enabled. The database can't be deleted when deletion protection is
-enabled. By default, deletion protection isn't enabled. For more
-information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+\item{DeletionProtection}{Specifies whether to enable deletion protection for the DB instance. The
+database can't be deleted when deletion protection is enabled. By
+default, deletion protection isn't enabled. For more information, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 
 \item{Domain}{The Active Directory directory ID to create the DB instance in.
 Currently, only MySQL, Microsoft SQL Server, Oracle, and PostgreSQL DB
@@ -411,12 +413,12 @@ instances can be created in an Active Directory Domain.
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/database-authentication.html}{Kerberos Authentication}
 in the \emph{Amazon RDS User Guide}.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
-\item{DomainIAMRoleName}{The name of the IAM role to be used when making API calls to the
-Directory Service.
+\item{DomainIAMRoleName}{The name of the IAM role to use when making API calls to the Directory
+Service.
 
-This setting doesn't apply to RDS Custom.}
+This setting doesn't apply to RDS Custom DB instances.}
 
 \item{DomainFqdn}{The fully qualified domain name (FQDN) of an Active Directory domain.
 
@@ -495,11 +497,11 @@ start with the prefix \code{AWSRDSCustom}.
 For the list of permissions required for the IAM role, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/custom-setup-orcl.html#custom-setup-orcl.iam-vpc}{Configure IAM and your VPC}
 in the \emph{Amazon RDS User Guide}.
 
-This setting is required for RDS Custom.}
+This setting is required for RDS Custom DB instances.}
 
 \item{NetworkType}{The network type of the DB instance.
 
-Valid values:
+Valid Values:
 \itemize{
 \item \code{IPV4}
 \item \code{DUAL}
@@ -514,10 +516,10 @@ in the \emph{Amazon RDS User Guide.}}
 
 \item{StorageThroughput}{Specifies the storage throughput value for the read replica.
 
-This setting doesn't apply to RDS Custom or Amazon Aurora.}
+This setting doesn't apply to RDS Custom or Amazon Aurora DB instances.}
 
-\item{EnableCustomerOwnedIp}{A value that indicates whether to enable a customer-owned IP address
-(CoIP) for an RDS on Outposts read replica.
+\item{EnableCustomerOwnedIp}{Specifies whether to enable a customer-owned IP address (CoIP) for an
+RDS on Outposts read replica.
 
 A \emph{CoIP} provides local or external connectivity to resources in your
 Outpost subnets through your on-premises network. For some use cases, a
@@ -551,6 +553,13 @@ is, its backup retention period must be greater than 0.
 \item The source DB cluster must be in the same Amazon Web Services Region
 as the read replica. Cross-Region replication isn't supported.
 }}
+
+\item{DedicatedLogVolume}{Indicates whether the DB instance has a dedicated log volume (DLV)
+enabled.}
+
+\item{UpgradeStorageConfig}{Whether to upgrade the storage file system configuration on the read
+replica. This option migrates the read replica from the old storage file
+system layout to the preferred layout.}
 
 \item{SourceRegion}{The ID of the region that contains the source for the read replica.}
 }

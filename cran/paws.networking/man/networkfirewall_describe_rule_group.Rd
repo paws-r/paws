@@ -7,7 +7,8 @@
 networkfirewall_describe_rule_group(
   RuleGroupName = NULL,
   RuleGroupArn = NULL,
-  Type = NULL
+  Type = NULL,
+  AnalyzeRuleGroup = NULL
 )
 }
 \arguments{
@@ -26,6 +27,10 @@ contains stateful rules.
 
 This setting is required for requests that do not include the
 \code{RuleGroupARN}.}
+
+\item{AnalyzeRuleGroup}{Indicates whether you want Network Firewall to analyze the stateless
+rules in the rule group for rule behavior such as asymmetric routing. If
+set to \code{TRUE}, Network Firewall runs the analysis.}
 }
 \description{
 Returns the data objects for the specified rule group.

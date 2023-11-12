@@ -22,9 +22,9 @@ opensearchservice(
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -133,9 +133,11 @@ a current list of supported Regions and endpoints, see \href{https://docs.aws.am
 \link[paws.analytics:opensearchservice_describe_vpc_endpoints]{describe_vpc_endpoints} \tab Describes one or more Amazon OpenSearch Service-managed VPC endpoints\cr
 \link[paws.analytics:opensearchservice_dissociate_package]{dissociate_package} \tab Removes a package from the specified Amazon OpenSearch Service domain\cr
 \link[paws.analytics:opensearchservice_get_compatible_versions]{get_compatible_versions} \tab Returns a map of OpenSearch or Elasticsearch versions and the versions you can upgrade them to\cr
+\link[paws.analytics:opensearchservice_get_domain_maintenance_status]{get_domain_maintenance_status} \tab The status of the maintenance action\cr
 \link[paws.analytics:opensearchservice_get_package_version_history]{get_package_version_history} \tab Returns a list of Amazon OpenSearch Service package versions, along with their creation time, commit message, and plugin properties (if the package is a zip plugin package)\cr
 \link[paws.analytics:opensearchservice_get_upgrade_history]{get_upgrade_history} \tab Retrieves the complete history of the last 10 upgrades performed on an Amazon OpenSearch Service domain\cr
 \link[paws.analytics:opensearchservice_get_upgrade_status]{get_upgrade_status} \tab Returns the most recent status of the last upgrade or upgrade eligibility check performed on an Amazon OpenSearch Service domain\cr
+\link[paws.analytics:opensearchservice_list_domain_maintenances]{list_domain_maintenances} \tab A list of maintenance actions for the domain\cr
 \link[paws.analytics:opensearchservice_list_domain_names]{list_domain_names} \tab Returns the names of all Amazon OpenSearch Service domains owned by the current user in the active Region\cr
 \link[paws.analytics:opensearchservice_list_domains_for_package]{list_domains_for_package} \tab Lists all Amazon OpenSearch Service domains associated with a given package\cr
 \link[paws.analytics:opensearchservice_list_instance_type_details]{list_instance_type_details} \tab Lists all instance types and available features for a given OpenSearch or Elasticsearch version\cr
@@ -150,6 +152,7 @@ a current list of supported Regions and endpoints, see \href{https://docs.aws.am
 \link[paws.analytics:opensearchservice_reject_inbound_connection]{reject_inbound_connection} \tab Allows the remote Amazon OpenSearch Service domain owner to reject an inbound cross-cluster connection request\cr
 \link[paws.analytics:opensearchservice_remove_tags]{remove_tags} \tab Removes the specified set of tags from an Amazon OpenSearch Service domain\cr
 \link[paws.analytics:opensearchservice_revoke_vpc_endpoint_access]{revoke_vpc_endpoint_access} \tab Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint\cr
+\link[paws.analytics:opensearchservice_start_domain_maintenance]{start_domain_maintenance} \tab Starts the node maintenance process on the data node\cr
 \link[paws.analytics:opensearchservice_start_service_software_update]{start_service_software_update} \tab Schedules a service software update for an Amazon OpenSearch Service domain\cr
 \link[paws.analytics:opensearchservice_update_domain_config]{update_domain_config} \tab Modifies the cluster configuration of the specified Amazon OpenSearch Service domain\cr
 \link[paws.analytics:opensearchservice_update_package]{update_package} \tab Updates a package for use with Amazon OpenSearch Service domains\cr

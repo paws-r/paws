@@ -18,7 +18,7 @@ results is larger than the number you specified in this parameter, then
 the response includes a \code{NextToken} element, which you can use to obtain
 additional results.
 
-The value you specify has to be at least 1, and can be no more than 10.}
+The value you specify has to be at least 1, and can be no more than 100.}
 }
 \description{
 Lists the email templates present in your Amazon SES account in the current Amazon Web Services Region.

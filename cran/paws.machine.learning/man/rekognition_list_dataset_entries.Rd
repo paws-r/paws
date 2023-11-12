@@ -2,7 +2,7 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_list_dataset_entries}
 \alias{rekognition_list_dataset_entries}
-\title{Lists the entries (images) within a dataset}
+\title{This operation applies only to Amazon Rekognition Custom Labels}
 \usage{
 rekognition_list_dataset_entries(
   DatasetArn,
@@ -47,7 +47,7 @@ value you can specify is 100. If you specify a value greater than 100, a
 ValidationException error occurs. The default value is 100.}
 }
 \description{
-Lists the entries (images) within a dataset. An entry is a JSON Line that contains the information for a single image, including the image location, assigned labels, and object location bounding boxes. For more information, see \href{https://docs.aws.amazon.com/rekognition/latest/customlabels-dg/}{Creating a manifest file}.
+This operation applies only to Amazon Rekognition Custom Labels.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_list_dataset_entries/} for full documentation.
 }

@@ -13,7 +13,7 @@ policy will be attached.}
 \item{AutoTerminationPolicy}{Specifies the auto-termination policy to attach to the cluster.}
 }
 \description{
-Auto-termination is supported in Amazon EMR releases 5.30.0 and 6.1.0 and later. For more information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-auto-termination-policy.html}{Using an auto-termination policy}.
+Auto-termination is supported in Amazon EMR releases 5.30.0 and 6.1.0 and higher. For more information, see \href{https://docs.aws.amazon.com/emr/latest/ManagementGuide/emr-auto-termination-policy.html}{Using an auto-termination policy}.
 
 See \url{https://www.paws-r-sdk.com/docs/emr_put_auto_termination_policy/} for full documentation.
 }

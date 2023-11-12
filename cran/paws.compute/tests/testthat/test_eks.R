@@ -7,3 +7,7 @@ test_that("describe_addon_versions", {
 test_that("list_clusters", {
   expect_error(svc$list_clusters(), NA)
 })
+
+test_that("list_eks_anywhere_subscriptions", {
+  expect_error(svc$list_eks_anywhere_subscriptions(), NA)
+})

@@ -7,7 +7,8 @@
 wellarchitected_list_notifications(
   WorkloadId = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  ResourceArn = NULL
 )
 }
 \arguments{
@@ -16,6 +17,10 @@ wellarchitected_list_notifications(
 \item{NextToken}{}
 
 \item{MaxResults}{The maximum number of results to return for this request.}
+
+\item{ResourceArn}{The ARN for the related resource for the notification.
+
+Only one of \code{WorkloadID} or \code{ResourceARN} should be specified.}
 }
 \description{
 List lens notifications.

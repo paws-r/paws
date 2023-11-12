@@ -19,7 +19,8 @@ ec2_create_verified_access_endpoint(
   PolicyDocument = NULL,
   TagSpecifications = NULL,
   ClientToken = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  SseSpecification = NULL
 )
 }
 \arguments{
@@ -61,6 +62,8 @@ your modification request. For more information, see \href{https://docs.aws.amaz
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{SseSpecification}{Options for server side encryption.}
 }
 \description{
 An Amazon Web Services Verified Access endpoint is where you define your application along with an optional endpoint-level access policy.

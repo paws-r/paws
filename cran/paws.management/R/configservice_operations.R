@@ -2004,20 +2004,22 @@ configservice_get_organization_custom_rule_policy <- function(OrganizationConfig
 }
 .configservice$operations$get_organization_custom_rule_policy <- configservice_get_organization_custom_rule_policy
 
-#' Returns a list of ConfigurationItems for the specified resource
+#' For accurate reporting on the compliance status, you must record the
+#' AWS::Config::ResourceCompliance resource type
 #'
 #' @description
-#' Returns a list of `ConfigurationItems` for the specified resource. The list contains details about each state of the resource during the specified time interval. If you specified a retention period to retain your `ConfigurationItems` between a minimum of 30 days and a maximum of 7 years (2557 days), Config returns the `ConfigurationItems` for the specified retention period.
+#' For accurate reporting on the compliance status, you must record the `AWS::Config::ResourceCompliance` resource type. For more information, see [Selecting Which Resources Config Records](https://docs.aws.amazon.com/config/latest/developerguide/select-resources.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_get_resource_config_history/](https://www.paws-r-sdk.com/docs/configservice_get_resource_config_history/) for full documentation.
 #'
 #' @param resourceType &#91;required&#93; The resource type.
 #' @param resourceId &#91;required&#93; The ID of the resource (for example., `sg-xxxxxx`).
-#' @param laterTime The time stamp that indicates a later time. If not specified, current
-#' time is taken.
-#' @param earlierTime The time stamp that indicates an earlier time. If not specified, the
-#' action returns paginated results that contain configuration items that
-#' start when the first configuration item was recorded.
+#' @param laterTime The chronologically latest time in the time range for which the history
+#' requested. If not specified, current time is taken.
+#' @param earlierTime The chronologically earliest time in the time range for which the
+#' history requested. If not specified, the action returns paginated
+#' results that contain configuration items that start when the first
+#' configuration item was recorded.
 #' @param chronologicalOrder The chronological order for configuration items listed. By default, the
 #' results are listed in reverse chronological order.
 #' @param limit The maximum number of configuration items returned on each page. The
@@ -2484,7 +2486,11 @@ configservice_put_configuration_recorder <- function(ConfigurationRecorder) {
 #' template (max size: 300 KB) that is located in an Amazon S3 bucket in
 #' the same Region as the conformance pack.
 #' 
-#' You must have access to read Amazon S3 bucket.
+#' You must have access to read Amazon S3 bucket. In addition, in order to
+#' ensure a successful deployment, the template object must not be in an
+#' [archived storage
+#' class](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
+#' if this parameter is passed.
 #' @param TemplateBody A string containing the full conformance pack template body. The
 #' structure containing the template body has a minimum length of 1 byte
 #' and a maximum length of 51,200 bytes.
@@ -2526,10 +2532,11 @@ configservice_put_conformance_pack <- function(ConformancePackName, TemplateS3Ur
 .configservice$operations$put_conformance_pack <- configservice_put_conformance_pack
 
 #' Creates a delivery channel object to deliver configuration information
-#' to an Amazon S3 bucket and Amazon SNS topic
+#' and other compliance information to an Amazon S3 bucket and Amazon SNS
+#' topic
 #'
 #' @description
-#' Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic.
+#' Creates a delivery channel object to deliver configuration information and other compliance information to an Amazon S3 bucket and Amazon SNS topic. For more information, see [Notifications that Config Sends to an Amazon SNS topic](https://docs.aws.amazon.com/config/latest/developerguide/notifications-for-AWS-Config.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/configservice_put_delivery_channel/](https://www.paws-r-sdk.com/docs/configservice_put_delivery_channel/) for full documentation.
 #'
@@ -2694,7 +2701,11 @@ configservice_put_organization_config_rule <- function(OrganizationConfigRuleNam
 #' @param TemplateS3Uri Location of file containing the template body. The uri must point to the
 #' conformance pack template (max size: 300 KB).
 #' 
-#' You must have access to read Amazon S3 bucket.
+#' You must have access to read Amazon S3 bucket. In addition, in order to
+#' ensure a successful deployment, the template object must not be in an
+#' [archived storage
+#' class](https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html)
+#' if this parameter is passed.
 #' @param TemplateBody A string containing full conformance pack template body. Structure
 #' containing the template body with a minimum length of 1 byte and a
 #' maximum length of 51,200 bytes.

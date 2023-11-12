@@ -15,8 +15,8 @@ wellarchitected_list_profile_shares(
 \arguments{
 \item{ProfileArn}{[required] The profile ARN.}
 
-\item{SharedWithPrefix}{The Amazon Web Services account ID, IAM role, organization ID, or
-organizational unit (OU) ID with which the profile is shared.}
+\item{SharedWithPrefix}{The Amazon Web Services account ID, organization ID, or organizational
+unit (OU) ID with which the profile is shared.}
 
 \item{NextToken}{}
 

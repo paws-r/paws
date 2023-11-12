@@ -14,8 +14,8 @@ budgets_describe_budget_notifications_for_account(
 \arguments{
 \item{AccountId}{[required]}
 
-\item{MaxResults}{An integer that shows how many budget name entries a paginated response
-contains.}
+\item{MaxResults}{An integer that represents how many budgets a paginated response
+contains. The default is 50.}
 
 \item{NextToken}{}
 }

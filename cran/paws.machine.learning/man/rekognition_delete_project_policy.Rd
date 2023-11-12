@@ -2,7 +2,7 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_delete_project_policy}
 \alias{rekognition_delete_project_policy}
-\title{Deletes an existing project policy}
+\title{This operation applies only to Amazon Rekognition Custom Labels}
 \usage{
 rekognition_delete_project_policy(
   ProjectArn,
@@ -19,7 +19,7 @@ you want to delete is attached to.}
 \item{PolicyRevisionId}{The ID of the project policy revision that you want to delete.}
 }
 \description{
-Deletes an existing project policy.
+This operation applies only to Amazon Rekognition Custom Labels.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_delete_project_policy/} for full documentation.
 }

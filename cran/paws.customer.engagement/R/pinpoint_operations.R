@@ -731,7 +731,8 @@ pinpoint_delete_email_template <- function(TemplateName, Version = NULL) {
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#' @param EndpointId &#91;required&#93; The unique identifier for the endpoint.
+#' @param EndpointId &#91;required&#93; The case insensitive unique identifier for the endpoint. The identifier
+#' can't contain `$`, `\{` or `\}`.
 #'
 #' @keywords internal
 #'
@@ -1908,7 +1909,8 @@ pinpoint_get_email_template <- function(TemplateName, Version = NULL) {
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#' @param EndpointId &#91;required&#93; The unique identifier for the endpoint.
+#' @param EndpointId &#91;required&#93; The case insensitive unique identifier for the endpoint. The identifier
+#' can't contain `$`, `\{` or `\}`.
 #'
 #' @keywords internal
 #'
@@ -3271,11 +3273,11 @@ pinpoint_put_events <- function(ApplicationId, EventsRequest) {
 }
 .pinpoint$operations$put_events <- pinpoint_put_events
 
-#' Removes one or more attributes, of the same attribute type, from all the
-#' endpoints that are associated with an application
+#' Removes one or more custom attributes, of the same attribute type, from
+#' the application
 #'
 #' @description
-#' Removes one or more attributes, of the same attribute type, from all the endpoints that are associated with an application.
+#' Removes one or more custom attributes, of the same attribute type, from the application. Existing endpoints still have the attributes but Amazon Pinpoint will stop capturing new or changed values for these attributes.
 #'
 #' See [https://www.paws-r-sdk.com/docs/pinpoint_remove_attributes/](https://www.paws-r-sdk.com/docs/pinpoint_remove_attributes/) for full documentation.
 #'
@@ -3834,7 +3836,8 @@ pinpoint_update_email_template <- function(CreateNewVersion = NULL, EmailTemplat
 #'
 #' @param ApplicationId &#91;required&#93; The unique identifier for the application. This identifier is displayed
 #' as the **Project ID** on the Amazon Pinpoint console.
-#' @param EndpointId &#91;required&#93; The unique identifier for the endpoint.
+#' @param EndpointId &#91;required&#93; The case insensitive unique identifier for the endpoint. The identifier
+#' can't contain `$`, `\{` or `\}`.
 #' @param EndpointRequest &#91;required&#93; 
 #'
 #' @keywords internal

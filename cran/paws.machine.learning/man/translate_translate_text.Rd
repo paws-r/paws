@@ -43,9 +43,15 @@ indicating that autodetect is not supported.}
 \item{TargetLanguageCode}{[required] The language code requested for the language of the target text. For a
 list of language codes, see \href{https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html}{Supported languages}.}
 
-\item{Settings}{Settings to configure your translation output, including the option to
-set the formality level of the output text and the option to mask
-profane words and phrases.}
+\item{Settings}{Settings to configure your translation output. You can configure the
+following options:
+\itemize{
+\item Brevity: reduces the length of the translated output for most
+translations.
+\item Formality: sets the formality level of the output text.
+\item Profanity: masks profane words and phrases in your translation
+output.
+}}
 }
 \description{
 Translates input text from the source language to the target language. For a list of available languages and language codes, see \href{https://docs.aws.amazon.com/translate/latest/dg/what-is-languages.html}{Supported languages}.

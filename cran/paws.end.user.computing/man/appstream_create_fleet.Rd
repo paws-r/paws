@@ -25,7 +25,8 @@ appstream_create_fleet(
   Platform = NULL,
   MaxConcurrentSessions = NULL,
   UsbDeviceFilterStrings = NULL,
-  SessionScriptS3Location = NULL
+  SessionScriptS3Location = NULL,
+  MaxSessionsPerInstance = NULL
 )
 }
 \arguments{
@@ -112,7 +113,7 @@ minutes before this limit is reached, they are prompted to save any open
 documents before being disconnected. After this time elapses, the
 instance is terminated and replaced by a new instance.
 
-Specify a value between 600 and 360000.}
+Specify a value between 600 and 432000.}
 
 \item{DisconnectTimeoutInSeconds}{The amount of time that a streaming session remains active after users
 disconnect. If users try to reconnect to the streaming session after a
@@ -200,6 +201,9 @@ client. This is allowed but not required for Elastic fleets.}
 
 \item{SessionScriptS3Location}{The S3 location of the session scripts configuration zip file. This only
 applies to Elastic fleets.}
+
+\item{MaxSessionsPerInstance}{The maximum number of user sessions on an instance. This only applies to
+multi-session fleets.}
 }
 \description{
 Creates a fleet. A fleet consists of streaming instances that your users access for their applications and desktops.

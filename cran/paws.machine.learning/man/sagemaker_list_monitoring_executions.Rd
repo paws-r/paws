@@ -27,8 +27,8 @@ sagemaker_list_monitoring_executions(
 
 \item{EndpointName}{Name of a specific endpoint to fetch jobs for.}
 
-\item{SortBy}{Whether to sort results by \code{Status}, \code{CreationTime}, \code{ScheduledTime}
-field. The default is \code{CreationTime}.}
+\item{SortBy}{Whether to sort the results by the \code{Status}, \code{CreationTime}, or
+\code{ScheduledTime} field. The default is \code{CreationTime}.}
 
 \item{SortOrder}{Whether to sort the results in \code{Ascending} or \code{Descending} order. The
 default is \code{Descending}.}

@@ -14,7 +14,7 @@ route53recoverycluster_update_routing_control_state(
 \item{RoutingControlArn}{[required] The Amazon Resource Name (ARN) for the routing control that you want to
 update the state for.}
 
-\item{RoutingControlState}{[required] The state of the routing control. You can set the value to be On or Off.}
+\item{RoutingControlState}{[required] The state of the routing control. You can set the value to ON or OFF.}
 
 \item{SafetyRulesToOverride}{The Amazon Resource Names (ARNs) for the safety rules that you want to
 override when you're updating the state of a routing control. You can
@@ -25,7 +25,7 @@ For more information, see \href{https://docs.aws.amazon.com/r53recovery/latest/d
 in the Amazon Route 53 Application Recovery Controller Developer Guide.}
 }
 \description{
-Set the state of the routing control to reroute traffic. You can set the value to be On or Off. When the state is On, traffic flows to a cell. When the state is Off, traffic does not flow.
+Set the state of the routing control to reroute traffic. You can set the value to ON or OFF. When the state is ON, traffic flows to a cell. When the state is OFF, traffic does not flow.
 
 See \url{https://www.paws-r-sdk.com/docs/route53recoverycluster_update_routing_control_state/} for full documentation.
 }

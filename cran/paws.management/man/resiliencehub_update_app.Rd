@@ -19,7 +19,7 @@ resiliencehub_update_app(
 for this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
 information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference} guide.}
+in the \emph{Amazon Web Services General Reference} guide.}
 
 \item{assessmentSchedule}{Assessment execution schedule with 'Daily' or 'Disabled' values.}
 
@@ -39,7 +39,7 @@ assessment.}
 ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:resiliency-policy/\code{policy-id}.
 For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference} guide.}
+in the \emph{Amazon Web Services General Reference} guide.}
 }
 \description{
 Updates an application.

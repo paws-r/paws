@@ -95,7 +95,19 @@ NULL
 
 .servicediscovery$discover_instances_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Instances = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), NamespaceName = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), HealthStatus = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(Instances = structure(list(structure(list(InstanceId = structure(logical(0), tags = list(type = "string")), NamespaceName = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string")), HealthStatus = structure(logical(0), tags = list(type = "string")), Attributes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), InstancesRevision = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicediscovery$discover_instances_revision_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(NamespaceName = structure(logical(0), tags = list(type = "string")), ServiceName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.servicediscovery$discover_instances_revision_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(InstancesRevision = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

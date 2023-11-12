@@ -72,6 +72,8 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' 
 #' The `maxIO` mode is not supported on file systems using One Zone storage
 #' classes.
+#' 
+#' Default is `generalPurpose`.
 #' @param Encrypted A Boolean value that, if true, creates an encrypted file system. When
 #' creating an encrypted file system, you have the option of specifying an
 #' existing Key Management Service key (KMS key). If you don't specify a
@@ -112,11 +114,12 @@ efs_create_access_point <- function(ClientToken, Tags = NULL, FileSystemId, Posi
 #' in the *Amazon EFS User Guide*.
 #' 
 #' Default is `bursting`.
-#' @param ProvisionedThroughputInMibps The throughput, measured in MiB/s, that you want to provision for a file
-#' system that you're creating. Valid values are 1-1024. Required if
-#' `ThroughputMode` is set to `provisioned`. The upper limit for throughput
-#' is 1024 MiB/s. To increase this limit, contact Amazon Web Services
-#' Support. For more information, see [Amazon EFS quotas that you can
+#' @param ProvisionedThroughputInMibps The throughput, measured in mebibytes per second (MiBps), that you want
+#' to provision for a file system that you're creating. Required if
+#' `ThroughputMode` is set to `provisioned`. Valid values are 1-3414 MiBps,
+#' with the upper limit depending on Region. To increase this limit,
+#' contact Amazon Web Services Support. For more information, see [Amazon
+#' EFS quotas that you can
 #' increase](https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits)
 #' in the *Amazon EFS User Guide*.
 #' @param AvailabilityZoneName Used to create a file system that uses One Zone storage classes. It
@@ -389,7 +392,7 @@ efs_delete_mount_target <- function(MountTargetId) {
 #' Deletes an existing replication configuration
 #'
 #' @description
-#' Deletes an existing replication configuration. To delete a replication configuration, you must make the request from the Amazon Web Services Region in which the destination file system is located. Deleting a replication configuration ends the replication process. After a replication configuration is deleted, the destination file system is no longer read-only. You can write to the destination file system after its status becomes `Writeable`.
+#' Deletes an existing replication configuration. Deleting a replication configuration ends the replication process. After a replication configuration is deleted, the destination file system is no longer read-only. You can write to the destination file system after its status becomes `Writeable`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/efs_delete_replication_configuration/](https://www.paws-r-sdk.com/docs/efs_delete_replication_configuration/) for full documentation.
 #'
@@ -489,7 +492,7 @@ efs_describe_access_points <- function(MaxResults = NULL, NextToken = NULL, Acce
 #' Amazon Web Services Region
 #'
 #' @description
-#' Returns the account preferences settings for the Amazon Web Services account associated with the user making the request, in the current Amazon Web Services Region. For more information, see [Managing Amazon EFS resource IDs](https://docs.aws.amazon.com/efs/latest/ug/).
+#' Returns the account preferences settings for the Amazon Web Services account associated with the user making the request, in the current Amazon Web Services Region.
 #'
 #' See [https://www.paws-r-sdk.com/docs/efs_describe_account_preferences/](https://www.paws-r-sdk.com/docs/efs_describe_account_preferences/) for full documentation.
 #'
@@ -1101,11 +1104,14 @@ efs_untag_resource <- function(ResourceId, TagKeys) {
 #' updating your throughput mode, you don't need to provide this value in
 #' your request. If you are changing the `ThroughputMode` to `provisioned`,
 #' you must also set a value for `ProvisionedThroughputInMibps`.
-#' @param ProvisionedThroughputInMibps (Optional) Sets the amount of provisioned throughput, in MiB/s, for the
-#' file system. Valid values are 1-1024. If you are changing the throughput
-#' mode to provisioned, you must also provide the amount of provisioned
-#' throughput. Required if `ThroughputMode` is changed to `provisioned` on
-#' update.
+#' @param ProvisionedThroughputInMibps (Optional) The throughput, measured in mebibytes per second (MiBps),
+#' that you want to provision for a file system that you're creating.
+#' Required if `ThroughputMode` is set to `provisioned`. Valid values are
+#' 1-3414 MiBps, with the upper limit depending on Region. To increase this
+#' limit, contact Amazon Web Services Support. For more information, see
+#' [Amazon EFS quotas that you can
+#' increase](https://docs.aws.amazon.com/efs/latest/ug/limits.html#soft-limits)
+#' in the *Amazon EFS User Guide*.
 #'
 #' @keywords internal
 #'

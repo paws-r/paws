@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_list_security_profile_permissions}
 \alias{connect_list_security_profile_permissions}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Lists the permissions granted to a security profile}
 \usage{
 connect_list_security_profile_permissions(
   SecurityProfileId,
@@ -25,7 +24,7 @@ results.}
 \item{MaxResults}{The maximum number of results to return per page.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Lists the permissions granted to a security profile.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_list_security_profile_permissions/} for full documentation.
 }

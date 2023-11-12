@@ -7,12 +7,12 @@
 rds_failover_db_cluster(DBClusterIdentifier, TargetDBInstanceIdentifier = NULL)
 }
 \arguments{
-\item{DBClusterIdentifier}{[required] A DB cluster identifier to force a failover for. This parameter isn't
-case-sensitive.
+\item{DBClusterIdentifier}{[required] The identifier of the DB cluster to force a failover for. This parameter
+isn't case-sensitive.
 
 Constraints:
 \itemize{
-\item Must match the identifier of an existing DBCluster.
+\item Must match the identifier of an existing DB cluster.
 }}
 
 \item{TargetDBInstanceIdentifier}{The name of the DB instance to promote to the primary DB instance.

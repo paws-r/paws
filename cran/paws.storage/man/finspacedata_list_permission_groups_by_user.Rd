@@ -2,8 +2,7 @@
 % Please edit documentation in R/finspacedata_operations.R
 \name{finspacedata_list_permission_groups_by_user}
 \alias{finspacedata_list_permission_groups_by_user}
-\title{Lists all the permission groups that are associated with a specific user
-account}
+\title{Lists all the permission groups that are associated with a specific user}
 \usage{
 finspacedata_list_permission_groups_by_user(
   userId,
@@ -19,7 +18,7 @@ finspacedata_list_permission_groups_by_user(
 \item{maxResults}{[required] The maximum number of results per page.}
 }
 \description{
-Lists all the permission groups that are associated with a specific user account.
+Lists all the permission groups that are associated with a specific user.
 
 See \url{https://www.paws-r-sdk.com/docs/finspacedata_list_permission_groups_by_user/} for full documentation.
 }

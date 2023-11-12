@@ -32,6 +32,14 @@ test_that("list_kafka_versions", {
   expect_error(svc$list_kafka_versions(MaxResults = 20), NA)
 })
 
+test_that("list_replicators", {
+  expect_error(svc$list_replicators(), NA)
+})
+
+test_that("list_replicators", {
+  expect_error(svc$list_replicators(MaxResults = 20), NA)
+})
+
 test_that("list_vpc_connections", {
   expect_error(svc$list_vpc_connections(), NA)
 })

@@ -299,7 +299,7 @@ sqs_change_message_visibility_batch <- function(QueueUrl, Entries) {
 #'     [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
 #' 
 #' The following attributes apply only to [FIFO (first-in-first-out)
-#' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
+#' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/):
 #' 
 #' -   `FifoQueue` – Designates a queue as FIFO. Valid values are `true`
 #'     and `false`. If you don't specify the `FifoQueue` attribute, Amazon
@@ -667,7 +667,7 @@ sqs_delete_queue <- function(QueueUrl) {
 #'     [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
 #' 
 #' The following attributes apply only to [FIFO (first-in-first-out)
-#' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
+#' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/):
 #' 
 #' -   `FifoQueue` – Returns information about whether the queue is FIFO.
 #'     For more information, see [FIFO queue
@@ -675,7 +675,7 @@ sqs_delete_queue <- function(QueueUrl) {
 #'     in the *Amazon SQS Developer Guide*.
 #' 
 #'     To determine whether a queue is
-#'     [FIFO](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html),
+#'     [FIFO](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/),
 #'     you can check whether `QueueName` ends with the `.fifo` suffix.
 #' 
 #' -   `ContentBasedDeduplication` – Returns whether content-based
@@ -790,7 +790,7 @@ sqs_list_dead_letter_source_queues <- function(QueueUrl, NextToken = NULL, MaxRe
     name = "ListDeadLetterSourceQueues",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "queueUrls")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "queueUrls")
   )
   input <- .sqs$list_dead_letter_source_queues_input(QueueUrl = QueueUrl, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sqs$list_dead_letter_source_queues_output()
@@ -888,7 +888,7 @@ sqs_list_queues <- function(QueueNamePrefix = NULL, NextToken = NULL, MaxResults
     name = "ListQueues",
     http_method = "POST",
     http_path = "/",
-    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken", result_key = "QueueUrls")
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "QueueUrls")
   )
   input <- .sqs$list_queues_input(QueueNamePrefix = QueueNamePrefix, NextToken = NextToken, MaxResults = MaxResults)
   output <- .sqs$list_queues_output()
@@ -1460,7 +1460,7 @@ sqs_send_message_batch <- function(QueueUrl, Entries) {
 #'     [SSE-SQS](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html)).
 #' 
 #' The following attribute applies only to [FIFO (first-in-first-out)
-#' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html):
+#' queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/):
 #' 
 #' -   `ContentBasedDeduplication` – Enables content-based deduplication.
 #'     For more information, see [Exactly-once

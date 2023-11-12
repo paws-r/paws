@@ -4,9 +4,11 @@
 \alias{braket_get_job}
 \title{Retrieves the specified Amazon Braket job}
 \usage{
-braket_get_job(jobArn)
+braket_get_job(additionalAttributeNames = NULL, jobArn)
 }
 \arguments{
+\item{additionalAttributeNames}{A list of attributes to return information for.}
+
 \item{jobArn}{[required] The ARN of the job to retrieve.}
 }
 \description{

@@ -508,7 +508,8 @@ lexmodelsv2_create_bot <- function(botName, description = NULL, roleArn, dataPri
 #'             cloudWatchLogGroupArn = "string",
 #'             logPrefix = "string"
 #'           )
-#'         )
+#'         ),
+#'         selectiveLoggingEnabled = TRUE|FALSE
 #'       )
 #'     ),
 #'     audioLogSettings = list(
@@ -520,7 +521,8 @@ lexmodelsv2_create_bot <- function(botName, description = NULL, roleArn, dataPri
 #'             s3BucketArn = "string",
 #'             logPrefix = "string"
 #'           )
-#'         )
+#'         ),
+#'         selectiveLoggingEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -564,7 +566,8 @@ lexmodelsv2_create_bot <- function(botName, description = NULL, roleArn, dataPri
 #'             cloudWatchLogGroupArn = "string",
 #'             logPrefix = "string"
 #'           )
-#'         )
+#'         ),
+#'         selectiveLoggingEnabled = TRUE|FALSE
 #'       )
 #'     ),
 #'     audioLogSettings = list(
@@ -576,7 +579,8 @@ lexmodelsv2_create_bot <- function(botName, description = NULL, roleArn, dataPri
 #'             s3BucketArn = "string",
 #'             logPrefix = "string"
 #'           )
-#'         )
+#'         ),
+#'         selectiveLoggingEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -13372,7 +13376,8 @@ lexmodelsv2_describe_bot <- function(botId) {
 #'             cloudWatchLogGroupArn = "string",
 #'             logPrefix = "string"
 #'           )
-#'         )
+#'         ),
+#'         selectiveLoggingEnabled = TRUE|FALSE
 #'       )
 #'     ),
 #'     audioLogSettings = list(
@@ -13384,7 +13389,8 @@ lexmodelsv2_describe_bot <- function(botId) {
 #'             s3BucketArn = "string",
 #'             logPrefix = "string"
 #'           )
-#'         )
+#'         ),
+#'         selectiveLoggingEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -24112,7 +24118,8 @@ lexmodelsv2_update_bot <- function(botId, botName, description = NULL, roleArn, 
 #'             cloudWatchLogGroupArn = "string",
 #'             logPrefix = "string"
 #'           )
-#'         )
+#'         ),
+#'         selectiveLoggingEnabled = TRUE|FALSE
 #'       )
 #'     ),
 #'     audioLogSettings = list(
@@ -24124,7 +24131,8 @@ lexmodelsv2_update_bot <- function(botId, botName, description = NULL, roleArn, 
 #'             s3BucketArn = "string",
 #'             logPrefix = "string"
 #'           )
-#'         )
+#'         ),
+#'         selectiveLoggingEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),
@@ -24169,7 +24177,8 @@ lexmodelsv2_update_bot <- function(botId, botName, description = NULL, roleArn, 
 #'             cloudWatchLogGroupArn = "string",
 #'             logPrefix = "string"
 #'           )
-#'         )
+#'         ),
+#'         selectiveLoggingEnabled = TRUE|FALSE
 #'       )
 #'     ),
 #'     audioLogSettings = list(
@@ -24181,7 +24190,8 @@ lexmodelsv2_update_bot <- function(botId, botName, description = NULL, roleArn, 
 #'             s3BucketArn = "string",
 #'             logPrefix = "string"
 #'           )
-#'         )
+#'         ),
+#'         selectiveLoggingEnabled = TRUE|FALSE
 #'       )
 #'     )
 #'   ),

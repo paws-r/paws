@@ -127,7 +127,8 @@ string array with one of the valid values (arm64 or x86_64). The default
 value is \code{x86_64}.}
 
 \item{EphemeralStorage}{The size of the function's \verb{/tmp} directory in MB. The default value is
-512, but can be any whole number between 512 and 10,240 MB.}
+512, but can be any whole number between 512 and 10,240 MB. For more
+information, see \href{https://docs.aws.amazon.com/lambda/latest/dg/configuration-function-common.html#configuration-ephemeral-storage}{Configuring ephemeral storage (console)}.}
 
 \item{SnapStart}{The function's
 \href{https://docs.aws.amazon.com/lambda/latest/dg/snapstart.html}{SnapStart}

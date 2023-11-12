@@ -2,7 +2,7 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_delete_dataset}
 \alias{rekognition_delete_dataset}
-\title{Deletes an existing Amazon Rekognition Custom Labels dataset}
+\title{This operation applies only to Amazon Rekognition Custom Labels}
 \usage{
 rekognition_delete_dataset(DatasetArn)
 }
@@ -11,7 +11,7 @@ rekognition_delete_dataset(DatasetArn)
 delete.}
 }
 \description{
-Deletes an existing Amazon Rekognition Custom Labels dataset. Deleting a dataset might take while. Use \code{\link[=rekognition_describe_dataset]{describe_dataset}} to check the current status. The dataset is still deleting if the value of \code{Status} is \code{DELETE_IN_PROGRESS}. If you try to access the dataset after it is deleted, you get a \code{ResourceNotFoundException} exception.
+This operation applies only to Amazon Rekognition Custom Labels.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_delete_dataset/} for full documentation.
 }

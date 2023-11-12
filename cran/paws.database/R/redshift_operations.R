@@ -526,8 +526,10 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #'     [Reserved
 #'     Words](https://docs.aws.amazon.com/redshift/latest/dg/r_pg_keywords.html)
 #'     in the Amazon Redshift Database Developer Guide.
-#' @param MasterUserPassword &#91;required&#93; The password associated with the admin user account for the cluster that
+#' @param MasterUserPassword The password associated with the admin user account for the cluster that
 #' is being created.
+#' 
+#' You can't use `MasterUserPassword` if `ManageMasterPassword` is `true`.
 #' 
 #' Constraints:
 #' 
@@ -701,18 +703,30 @@ redshift_create_authentication_profile <- function(AuthenticationProfileName, Au
 #' for the cluster when the cluster was created.
 #' @param LoadSampleData A flag that specifies whether to load sample data once the cluster is
 #' created.
+#' @param ManageMasterPassword If `true`, Amazon Redshift uses Secrets Manager to manage this cluster's
+#' admin credentials. You can't use `MasterUserPassword` if
+#' `ManageMasterPassword` is true. If `ManageMasterPassword` is false or
+#' not set, Amazon Redshift uses `MasterUserPassword` for the admin user
+#' account's password.
+#' @param MasterPasswordSecretKmsKeyId The ID of the Key Management Service (KMS) key used to encrypt and store
+#' the cluster's admin credentials secret. You can only use this parameter
+#' if `ManageMasterPassword` is true.
+#' @param IpAddressType The IP address types that the cluster supports. Possible values are
+#' `ipv4` and `dualstack`.
+#' @param MultiAZ If true, Amazon Redshift will deploy the cluster in two Availability
+#' Zones (AZ).
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_create_cluster
-redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterType = NULL, NodeType, MasterUsername, MasterUserPassword, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ClusterSubnetGroupName = NULL, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, Port = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, NumberOfNodes = NULL, PubliclyAccessible = NULL, Encrypted = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, Tags = NULL, KmsKeyId = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL, DefaultIamRoleArn = NULL, LoadSampleData = NULL) {
+redshift_create_cluster <- function(DBName = NULL, ClusterIdentifier, ClusterType = NULL, NodeType, MasterUsername, MasterUserPassword = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, ClusterSubnetGroupName = NULL, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, Port = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, NumberOfNodes = NULL, PubliclyAccessible = NULL, Encrypted = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, Tags = NULL, KmsKeyId = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL, DefaultIamRoleArn = NULL, LoadSampleData = NULL, ManageMasterPassword = NULL, MasterPasswordSecretKmsKeyId = NULL, IpAddressType = NULL, MultiAZ = NULL) {
   op <- new_operation(
     name = "CreateCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$create_cluster_input(DBName = DBName, ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ClusterSubnetGroupName = ClusterSubnetGroupName, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, Port = Port, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, NumberOfNodes = NumberOfNodes, PubliclyAccessible = PubliclyAccessible, Encrypted = Encrypted, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, Tags = Tags, KmsKeyId = KmsKeyId, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus, DefaultIamRoleArn = DefaultIamRoleArn, LoadSampleData = LoadSampleData)
+  input <- .redshift$create_cluster_input(DBName = DBName, ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, MasterUsername = MasterUsername, MasterUserPassword = MasterUserPassword, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, ClusterSubnetGroupName = ClusterSubnetGroupName, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, Port = Port, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, NumberOfNodes = NumberOfNodes, PubliclyAccessible = PubliclyAccessible, Encrypted = Encrypted, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, Tags = Tags, KmsKeyId = KmsKeyId, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus, DefaultIamRoleArn = DefaultIamRoleArn, LoadSampleData = LoadSampleData, ManageMasterPassword = ManageMasterPassword, MasterPasswordSecretKmsKeyId = MasterPasswordSecretKmsKeyId, IpAddressType = IpAddressType, MultiAZ = MultiAZ)
   output <- .redshift$create_cluster_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -1786,6 +1800,36 @@ redshift_delete_partner <- function(AccountId, ClusterIdentifier, DatabaseName, 
 }
 .redshift$operations$delete_partner <- redshift_delete_partner
 
+#' Deletes the resource policy for a specified resource
+#'
+#' @description
+#' Deletes the resource policy for a specified resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_delete_resource_policy/](https://www.paws-r-sdk.com/docs/redshift_delete_resource_policy/) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource of which its resource
+#' policy is deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_delete_resource_policy
+redshift_delete_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "DeleteResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$delete_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .redshift$delete_resource_policy_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$delete_resource_policy <- redshift_delete_resource_policy
+
 #' Deletes a scheduled action
 #'
 #' @description
@@ -2541,10 +2585,10 @@ redshift_describe_clusters <- function(ClusterIdentifier = NULL, MaxRecords = NU
 }
 .redshift$operations$describe_clusters <- redshift_describe_clusters
 
-#' Contains information for custom domain associations for a cluster
+#' Contains information about custom domain associations for a cluster
 #'
 #' @description
-#' Contains information for custom domain associations for a cluster.
+#' Contains information about custom domain associations for a cluster.
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshift_describe_custom_domain_associations/](https://www.paws-r-sdk.com/docs/redshift_describe_custom_domain_associations/) for full documentation.
 #'
@@ -3152,6 +3196,52 @@ redshift_describe_hsm_configurations <- function(HsmConfigurationIdentifier = NU
   return(response)
 }
 .redshift$operations$describe_hsm_configurations <- redshift_describe_hsm_configurations
+
+#' Returns a list of inbound integrations
+#'
+#' @description
+#' Returns a list of inbound integrations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_describe_inbound_integrations/](https://www.paws-r-sdk.com/docs/redshift_describe_inbound_integrations/) for full documentation.
+#'
+#' @param IntegrationArn The Amazon Resource Name (ARN) of the inbound integration.
+#' @param TargetArn The Amazon Resource Name (ARN) of the target of an inbound integration.
+#' @param MaxRecords The maximum number of response records to return in each call. If the
+#' number of remaining response records exceeds the specified `MaxRecords`
+#' value, a value is returned in a `marker` field of the response. You can
+#' retrieve the next set of records by retrying the command with the
+#' returned marker value.
+#' 
+#' Default: `100`
+#' 
+#' Constraints: minimum 20, maximum 100.
+#' @param Marker An optional parameter that specifies the starting point to return a set
+#' of response records. When the results of a
+#' [`describe_inbound_integrations`][redshift_describe_inbound_integrations]
+#' request exceed the value specified in `MaxRecords`, Amazon Web Services
+#' returns a value in the `Marker` field of the response. You can retrieve
+#' the next set of response records by providing the returned marker value
+#' in the `Marker` parameter and retrying the request.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_describe_inbound_integrations
+redshift_describe_inbound_integrations <- function(IntegrationArn = NULL, TargetArn = NULL, MaxRecords = NULL, Marker = NULL) {
+  op <- new_operation(
+    name = "DescribeInboundIntegrations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "Marker", limit_key = "MaxRecords", output_token = "Marker", result_key = "InboundIntegrations")
+  )
+  input <- .redshift$describe_inbound_integrations_input(IntegrationArn = IntegrationArn, TargetArn = TargetArn, MaxRecords = MaxRecords, Marker = Marker)
+  output <- .redshift$describe_inbound_integrations_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$describe_inbound_integrations <- redshift_describe_inbound_integrations
 
 #' Describes whether information, such as queries and connection attempts,
 #' is being logged for the specified Amazon Redshift cluster
@@ -4097,6 +4187,37 @@ redshift_enable_snapshot_copy <- function(ClusterIdentifier, DestinationRegion, 
 }
 .redshift$operations$enable_snapshot_copy <- redshift_enable_snapshot_copy
 
+#' Fails over the primary compute unit of the specified Multi-AZ cluster to
+#' another Availability Zone
+#'
+#' @description
+#' Fails over the primary compute unit of the specified Multi-AZ cluster to another Availability Zone.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_failover_primary_compute/](https://www.paws-r-sdk.com/docs/redshift_failover_primary_compute/) for full documentation.
+#'
+#' @param ClusterIdentifier &#91;required&#93; The unique identifier of the cluster for which the primary compute unit
+#' will be failed over to another Availability Zone.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_failover_primary_compute
+redshift_failover_primary_compute <- function(ClusterIdentifier) {
+  op <- new_operation(
+    name = "FailoverPrimaryCompute",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$failover_primary_compute_input(ClusterIdentifier = ClusterIdentifier)
+  output <- .redshift$failover_primary_compute_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$failover_primary_compute <- redshift_failover_primary_compute
+
 #' Returns a database user name and temporary password with temporary
 #' authorization to log on to an Amazon Redshift database
 #'
@@ -4323,6 +4444,36 @@ redshift_get_reserved_node_exchange_offerings <- function(ReservedNodeId, MaxRec
 }
 .redshift$operations$get_reserved_node_exchange_offerings <- redshift_get_reserved_node_exchange_offerings
 
+#' Get the resource policy for a specified resource
+#'
+#' @description
+#' Get the resource policy for a specified resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_get_resource_policy/](https://www.paws-r-sdk.com/docs/redshift_get_resource_policy/) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource of which its resource
+#' policy is fetched.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_get_resource_policy
+redshift_get_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$get_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .redshift$get_resource_policy_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$get_resource_policy <- redshift_get_resource_policy
+
 #' This operation is retired
 #'
 #' @description
@@ -4447,6 +4598,8 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' request and the completion of the request, the `MasterUserPassword`
 #' element exists in the `PendingModifiedValues` element of the operation
 #' response.
+#' 
+#' You can't use `MasterUserPassword` if `ManageMasterPassword` is `true`.
 #' 
 #' Operations never return the password, so this operation provides a way
 #' to regain access to the admin user account for a cluster if the password
@@ -4588,18 +4741,31 @@ redshift_modify_authentication_profile <- function(AuthenticationProfileName, Au
 #' @param AvailabilityZone The option to initiate relocation for an Amazon Redshift cluster to the
 #' target Availability Zone.
 #' @param Port The option to change the port of an Amazon Redshift cluster.
+#' @param ManageMasterPassword If `true`, Amazon Redshift uses Secrets Manager to manage this cluster's
+#' admin credentials. You can't use `MasterUserPassword` if
+#' `ManageMasterPassword` is true. If `ManageMasterPassword` is false or
+#' not set, Amazon Redshift uses `MasterUserPassword` for the admin user
+#' account's password.
+#' @param MasterPasswordSecretKmsKeyId The ID of the Key Management Service (KMS) key used to encrypt and store
+#' the cluster's admin credentials secret. You can only use this parameter
+#' if `ManageMasterPassword` is true.
+#' @param IpAddressType The IP address types that the cluster supports. Possible values are
+#' `ipv4` and `dualstack`.
+#' @param MultiAZ If true and the cluster is currently only deployed in a single
+#' Availability Zone, the cluster will be modified to be deployed in two
+#' Availability Zones.
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_modify_cluster
-redshift_modify_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeType = NULL, NumberOfNodes = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, MasterUserPassword = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, PreferredMaintenanceWindow = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, NewClusterIdentifier = NULL, PubliclyAccessible = NULL, ElasticIp = NULL, EnhancedVpcRouting = NULL, MaintenanceTrackName = NULL, Encrypted = NULL, KmsKeyId = NULL, AvailabilityZoneRelocation = NULL, AvailabilityZone = NULL, Port = NULL) {
+redshift_modify_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeType = NULL, NumberOfNodes = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, MasterUserPassword = NULL, ClusterParameterGroupName = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, PreferredMaintenanceWindow = NULL, ClusterVersion = NULL, AllowVersionUpgrade = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, NewClusterIdentifier = NULL, PubliclyAccessible = NULL, ElasticIp = NULL, EnhancedVpcRouting = NULL, MaintenanceTrackName = NULL, Encrypted = NULL, KmsKeyId = NULL, AvailabilityZoneRelocation = NULL, AvailabilityZone = NULL, Port = NULL, ManageMasterPassword = NULL, MasterPasswordSecretKmsKeyId = NULL, IpAddressType = NULL, MultiAZ = NULL) {
   op <- new_operation(
     name = "ModifyCluster",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$modify_cluster_input(ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, NumberOfNodes = NumberOfNodes, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, MasterUserPassword = MasterUserPassword, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, NewClusterIdentifier = NewClusterIdentifier, PubliclyAccessible = PubliclyAccessible, ElasticIp = ElasticIp, EnhancedVpcRouting = EnhancedVpcRouting, MaintenanceTrackName = MaintenanceTrackName, Encrypted = Encrypted, KmsKeyId = KmsKeyId, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AvailabilityZone = AvailabilityZone, Port = Port)
+  input <- .redshift$modify_cluster_input(ClusterIdentifier = ClusterIdentifier, ClusterType = ClusterType, NodeType = NodeType, NumberOfNodes = NumberOfNodes, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, MasterUserPassword = MasterUserPassword, ClusterParameterGroupName = ClusterParameterGroupName, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, PreferredMaintenanceWindow = PreferredMaintenanceWindow, ClusterVersion = ClusterVersion, AllowVersionUpgrade = AllowVersionUpgrade, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, NewClusterIdentifier = NewClusterIdentifier, PubliclyAccessible = PubliclyAccessible, ElasticIp = ElasticIp, EnhancedVpcRouting = EnhancedVpcRouting, MaintenanceTrackName = MaintenanceTrackName, Encrypted = Encrypted, KmsKeyId = KmsKeyId, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AvailabilityZone = AvailabilityZone, Port = Port, ManageMasterPassword = ManageMasterPassword, MasterPasswordSecretKmsKeyId = MasterPasswordSecretKmsKeyId, IpAddressType = IpAddressType, MultiAZ = MultiAZ)
   output <- .redshift$modify_cluster_output()
   config <- get_config()
   svc <- .redshift$service(config)
@@ -5215,6 +5381,37 @@ redshift_purchase_reserved_node_offering <- function(ReservedNodeOfferingId, Nod
 }
 .redshift$operations$purchase_reserved_node_offering <- redshift_purchase_reserved_node_offering
 
+#' Updates the resource policy for a specified resource
+#'
+#' @description
+#' Updates the resource policy for a specified resource.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshift_put_resource_policy/](https://www.paws-r-sdk.com/docs/redshift_put_resource_policy/) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource of which its resource
+#' policy is updated.
+#' @param Policy &#91;required&#93; The content of the resource policy being updated.
+#'
+#' @keywords internal
+#'
+#' @rdname redshift_put_resource_policy
+redshift_put_resource_policy <- function(ResourceArn, Policy) {
+  op <- new_operation(
+    name = "PutResourcePolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshift$put_resource_policy_input(ResourceArn = ResourceArn, Policy = Policy)
+  output <- .redshift$put_resource_policy_output()
+  config <- get_config()
+  svc <- .redshift$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshift$operations$put_resource_policy <- redshift_put_resource_policy
+
 #' Reboots a cluster
 #'
 #' @description
@@ -5532,18 +5729,29 @@ redshift_resize_cluster <- function(ClusterIdentifier, ClusterType = NULL, NodeT
 #' @param TargetReservedNodeOfferingId The identifier of the target reserved node offering.
 #' @param Encrypted Enables support for restoring an unencrypted snapshot to a cluster
 #' encrypted with Key Management Service (KMS) and a customer managed key.
+#' @param ManageMasterPassword If `true`, Amazon Redshift uses Secrets Manager to manage the restored
+#' cluster's admin credentials. If `ManageMasterPassword` is false or not
+#' set, Amazon Redshift uses the admin credentials the cluster had at the
+#' time the snapshot was taken.
+#' @param MasterPasswordSecretKmsKeyId The ID of the Key Management Service (KMS) key used to encrypt and store
+#' the cluster's admin credentials secret. You can only use this parameter
+#' if `ManageMasterPassword` is true.
+#' @param IpAddressType The IP address type for the cluster. Possible values are `ipv4` and
+#' `dualstack`.
+#' @param MultiAZ If true, the snapshot will be restored to a cluster deployed in two
+#' Availability Zones.
 #'
 #' @keywords internal
 #'
 #' @rdname redshift_restore_from_cluster_snapshot
-redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotIdentifier = NULL, SnapshotArn = NULL, SnapshotClusterIdentifier = NULL, Port = NULL, AvailabilityZone = NULL, AllowVersionUpgrade = NULL, ClusterSubnetGroupName = NULL, PubliclyAccessible = NULL, OwnerAccount = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, ClusterParameterGroupName = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, KmsKeyId = NULL, NodeType = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, NumberOfNodes = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL, DefaultIamRoleArn = NULL, ReservedNodeId = NULL, TargetReservedNodeOfferingId = NULL, Encrypted = NULL) {
+redshift_restore_from_cluster_snapshot <- function(ClusterIdentifier, SnapshotIdentifier = NULL, SnapshotArn = NULL, SnapshotClusterIdentifier = NULL, Port = NULL, AvailabilityZone = NULL, AllowVersionUpgrade = NULL, ClusterSubnetGroupName = NULL, PubliclyAccessible = NULL, OwnerAccount = NULL, HsmClientCertificateIdentifier = NULL, HsmConfigurationIdentifier = NULL, ElasticIp = NULL, ClusterParameterGroupName = NULL, ClusterSecurityGroups = NULL, VpcSecurityGroupIds = NULL, PreferredMaintenanceWindow = NULL, AutomatedSnapshotRetentionPeriod = NULL, ManualSnapshotRetentionPeriod = NULL, KmsKeyId = NULL, NodeType = NULL, EnhancedVpcRouting = NULL, AdditionalInfo = NULL, IamRoles = NULL, MaintenanceTrackName = NULL, SnapshotScheduleIdentifier = NULL, NumberOfNodes = NULL, AvailabilityZoneRelocation = NULL, AquaConfigurationStatus = NULL, DefaultIamRoleArn = NULL, ReservedNodeId = NULL, TargetReservedNodeOfferingId = NULL, Encrypted = NULL, ManageMasterPassword = NULL, MasterPasswordSecretKmsKeyId = NULL, IpAddressType = NULL, MultiAZ = NULL) {
   op <- new_operation(
     name = "RestoreFromClusterSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshift$restore_from_cluster_snapshot_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, SnapshotClusterIdentifier = SnapshotClusterIdentifier, Port = Port, AvailabilityZone = AvailabilityZone, AllowVersionUpgrade = AllowVersionUpgrade, ClusterSubnetGroupName = ClusterSubnetGroupName, PubliclyAccessible = PubliclyAccessible, OwnerAccount = OwnerAccount, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, ClusterParameterGroupName = ClusterParameterGroupName, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, KmsKeyId = KmsKeyId, NodeType = NodeType, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, NumberOfNodes = NumberOfNodes, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus, DefaultIamRoleArn = DefaultIamRoleArn, ReservedNodeId = ReservedNodeId, TargetReservedNodeOfferingId = TargetReservedNodeOfferingId, Encrypted = Encrypted)
+  input <- .redshift$restore_from_cluster_snapshot_input(ClusterIdentifier = ClusterIdentifier, SnapshotIdentifier = SnapshotIdentifier, SnapshotArn = SnapshotArn, SnapshotClusterIdentifier = SnapshotClusterIdentifier, Port = Port, AvailabilityZone = AvailabilityZone, AllowVersionUpgrade = AllowVersionUpgrade, ClusterSubnetGroupName = ClusterSubnetGroupName, PubliclyAccessible = PubliclyAccessible, OwnerAccount = OwnerAccount, HsmClientCertificateIdentifier = HsmClientCertificateIdentifier, HsmConfigurationIdentifier = HsmConfigurationIdentifier, ElasticIp = ElasticIp, ClusterParameterGroupName = ClusterParameterGroupName, ClusterSecurityGroups = ClusterSecurityGroups, VpcSecurityGroupIds = VpcSecurityGroupIds, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutomatedSnapshotRetentionPeriod = AutomatedSnapshotRetentionPeriod, ManualSnapshotRetentionPeriod = ManualSnapshotRetentionPeriod, KmsKeyId = KmsKeyId, NodeType = NodeType, EnhancedVpcRouting = EnhancedVpcRouting, AdditionalInfo = AdditionalInfo, IamRoles = IamRoles, MaintenanceTrackName = MaintenanceTrackName, SnapshotScheduleIdentifier = SnapshotScheduleIdentifier, NumberOfNodes = NumberOfNodes, AvailabilityZoneRelocation = AvailabilityZoneRelocation, AquaConfigurationStatus = AquaConfigurationStatus, DefaultIamRoleArn = DefaultIamRoleArn, ReservedNodeId = ReservedNodeId, TargetReservedNodeOfferingId = TargetReservedNodeOfferingId, Encrypted = Encrypted, ManageMasterPassword = ManageMasterPassword, MasterPasswordSecretKmsKeyId = MasterPasswordSecretKmsKeyId, IpAddressType = IpAddressType, MultiAZ = MultiAZ)
   output <- .redshift$restore_from_cluster_snapshot_output()
   config <- get_config()
   svc <- .redshift$service(config)

@@ -61,18 +61,20 @@ applicationinsights_add_workload <- function(ResourceGroupName, ComponentName, W
 #' @param GroupingType Application Insights can create applications based on a resource group
 #' or on an account. To create an account-based application using all of
 #' the resources in the account, set this parameter to `ACCOUNT_BASED`.
+#' @param AttachMissingPermission If set to true, the managed policies for SSM and CW will be attached to
+#' the instance roles if they are missing.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_create_application
-applicationinsights_create_application <- function(ResourceGroupName = NULL, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, Tags = NULL, AutoConfigEnabled = NULL, AutoCreate = NULL, GroupingType = NULL) {
+applicationinsights_create_application <- function(ResourceGroupName = NULL, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, Tags = NULL, AutoConfigEnabled = NULL, AutoCreate = NULL, GroupingType = NULL, AttachMissingPermission = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$create_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, Tags = Tags, AutoConfigEnabled = AutoConfigEnabled, AutoCreate = AutoCreate, GroupingType = GroupingType)
+  input <- .applicationinsights$create_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, Tags = Tags, AutoConfigEnabled = AutoConfigEnabled, AutoCreate = AutoCreate, GroupingType = GroupingType, AttachMissingPermission = AttachMissingPermission)
   output <- .applicationinsights$create_application_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -351,19 +353,20 @@ applicationinsights_describe_component_configuration <- function(ResourceGroupNa
 #' @param ResourceGroupName &#91;required&#93; The name of the resource group.
 #' @param ComponentName &#91;required&#93; The name of the component.
 #' @param Tier &#91;required&#93; The tier of the application component.
+#' @param WorkloadName The name of the workload.
 #' @param RecommendationType The recommended configuration type.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_descri_compon_config_recomm
-applicationinsights_describe_component_configuration_recommendation <- function(ResourceGroupName, ComponentName, Tier, RecommendationType = NULL) {
+applicationinsights_describe_component_configuration_recommendation <- function(ResourceGroupName, ComponentName, Tier, WorkloadName = NULL, RecommendationType = NULL) {
   op <- new_operation(
     name = "DescribeComponentConfigurationRecommendation",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$describe_component_configuration_recommendation_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, Tier = Tier, RecommendationType = RecommendationType)
+  input <- .applicationinsights$describe_component_configuration_recommendation_input(ResourceGroupName = ResourceGroupName, ComponentName = ComponentName, Tier = Tier, WorkloadName = WorkloadName, RecommendationType = RecommendationType)
   output <- .applicationinsights$describe_component_configuration_recommendation_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)
@@ -947,18 +950,20 @@ applicationinsights_untag_resource <- function(ResourceARN, TagKeys) {
 #' @param RemoveSNSTopic Disassociates the SNS topic from the opsItem created for detected
 #' problems.
 #' @param AutoConfigEnabled Turns auto-configuration on or off.
+#' @param AttachMissingPermission If set to true, the managed policies for SSM and CW will be attached to
+#' the instance roles if they are missing.
 #'
 #' @keywords internal
 #'
 #' @rdname applicationinsights_update_application
-applicationinsights_update_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, RemoveSNSTopic = NULL, AutoConfigEnabled = NULL) {
+applicationinsights_update_application <- function(ResourceGroupName, OpsCenterEnabled = NULL, CWEMonitorEnabled = NULL, OpsItemSNSTopicArn = NULL, RemoveSNSTopic = NULL, AutoConfigEnabled = NULL, AttachMissingPermission = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .applicationinsights$update_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, RemoveSNSTopic = RemoveSNSTopic, AutoConfigEnabled = AutoConfigEnabled)
+  input <- .applicationinsights$update_application_input(ResourceGroupName = ResourceGroupName, OpsCenterEnabled = OpsCenterEnabled, CWEMonitorEnabled = CWEMonitorEnabled, OpsItemSNSTopicArn = OpsItemSNSTopicArn, RemoveSNSTopic = RemoveSNSTopic, AutoConfigEnabled = AutoConfigEnabled, AttachMissingPermission = AttachMissingPermission)
   output <- .applicationinsights$update_application_output()
   config <- get_config()
   svc <- .applicationinsights$service(config)

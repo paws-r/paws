@@ -1370,7 +1370,7 @@ transcribeservice_get_call_analytics_category <- function(CategoryName) {
 #'     CallAnalyticsJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'     MediaSampleRateHertz = 123,
-#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
+#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm"|"m4a",
 #'     Media = list(
 #'       MediaFileUri = "string",
 #'       RedactedMediaFileUri = "string"
@@ -1482,7 +1482,7 @@ transcribeservice_get_call_analytics_job <- function(CallAnalyticsJobName) {
 #'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'     MediaSampleRateHertz = 123,
-#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
+#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm"|"m4a",
 #'     Media = list(
 #'       MediaFileUri = "string",
 #'       RedactedMediaFileUri = "string"
@@ -1643,7 +1643,7 @@ transcribeservice_get_medical_vocabulary <- function(VocabularyName) {
 #'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'     MediaSampleRateHertz = 123,
-#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
+#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm"|"m4a",
 #'     Media = list(
 #'       MediaFileUri = "string",
 #'       RedactedMediaFileUri = "string"
@@ -2883,7 +2883,7 @@ transcribeservice_list_vocabulary_filters <- function(NextToken = NULL, MaxResul
 #'     CallAnalyticsJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'     MediaSampleRateHertz = 123,
-#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
+#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm"|"m4a",
 #'     Media = list(
 #'       MediaFileUri = "string",
 #'       RedactedMediaFileUri = "string"
@@ -3203,7 +3203,7 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'     MediaSampleRateHertz = 123,
-#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
+#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm"|"m4a",
 #'     Media = list(
 #'       MediaFileUri = "string",
 #'       RedactedMediaFileUri = "string"
@@ -3248,7 +3248,7 @@ transcribeservice_start_call_analytics_job <- function(CallAnalyticsJobName, Med
 #'   MedicalTranscriptionJobName = "string",
 #'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   MediaSampleRateHertz = 123,
-#'   MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
+#'   MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm"|"m4a",
 #'   Media = list(
 #'     MediaFileUri = "string",
 #'     RedactedMediaFileUri = "string"
@@ -3616,7 +3616,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #'     TranscriptionJobStatus = "QUEUED"|"IN_PROGRESS"|"FAILED"|"COMPLETED",
 #'     LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'     MediaSampleRateHertz = 123,
-#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
+#'     MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm"|"m4a",
 #'     Media = list(
 #'       MediaFileUri = "string",
 #'       RedactedMediaFileUri = "string"
@@ -3710,7 +3710,7 @@ transcribeservice_start_medical_transcription_job <- function(MedicalTranscripti
 #'   TranscriptionJobName = "string",
 #'   LanguageCode = "af-ZA"|"ar-AE"|"ar-SA"|"da-DK"|"de-CH"|"de-DE"|"en-AB"|"en-AU"|"en-GB"|"en-IE"|"en-IN"|"en-US"|"en-WL"|"es-ES"|"es-US"|"fa-IR"|"fr-CA"|"fr-FR"|"he-IL"|"hi-IN"|"id-ID"|"it-IT"|"ja-JP"|"ko-KR"|"ms-MY"|"nl-NL"|"pt-BR"|"pt-PT"|"ru-RU"|"ta-IN"|"te-IN"|"tr-TR"|"zh-CN"|"zh-TW"|"th-TH"|"en-ZA"|"en-NZ"|"vi-VN"|"sv-SE",
 #'   MediaSampleRateHertz = 123,
-#'   MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm",
+#'   MediaFormat = "mp3"|"mp4"|"wav"|"flac"|"ogg"|"amr"|"webm"|"m4a",
 #'   Media = list(
 #'     MediaFileUri = "string",
 #'     RedactedMediaFileUri = "string"

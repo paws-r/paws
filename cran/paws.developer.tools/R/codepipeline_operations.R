@@ -1129,11 +1129,11 @@ codepipeline_register_webhook_with_third_party <- function(webhookName = NULL) {
 }
 .codepipeline$operations$register_webhook_with_third_party <- codepipeline_register_webhook_with_third_party
 
-#' Resumes the pipeline execution by retrying the last failed actions in a
-#' stage
+#' You can retry a stage that has failed without having to run a pipeline
+#' again from the beginning
 #'
 #' @description
-#' Resumes the pipeline execution by retrying the last failed actions in a stage. You can retry a stage immediately if any of the actions in the stage fail. When you retry, all actions that are still in progress continue working, and failed actions are triggered again.
+#' You can retry a stage that has failed without having to run a pipeline again from the beginning. You do this by either retrying the failed actions in a stage or by retrying all actions in the stage starting from the first action in the stage. When you retry the failed actions in a stage, all actions that are still in progress continue working, and failed actions are triggered again. When you retry a failed stage from the first action in the stage, the stage cannot have any actions in progress. Before a stage can be retried, it must either have all actions failed or some actions failed and some succeeded.
 #'
 #' See [https://www.paws-r-sdk.com/docs/codepipeline_retry_stage_execution/](https://www.paws-r-sdk.com/docs/codepipeline_retry_stage_execution/) for full documentation.
 #'
@@ -1142,8 +1142,7 @@ codepipeline_register_webhook_with_third_party <- function(webhookName = NULL) {
 #' @param pipelineExecutionId &#91;required&#93; The ID of the pipeline execution in the failed stage to be retried. Use
 #' the [`get_pipeline_state`][codepipeline_get_pipeline_state] action to
 #' retrieve the current pipelineExecutionId of the failed stage
-#' @param retryMode &#91;required&#93; The scope of the retry attempt. Currently, the only supported value is
-#' FAILED_ACTIONS.
+#' @param retryMode &#91;required&#93; The scope of the retry attempt.
 #'
 #' @keywords internal
 #'
@@ -1173,20 +1172,23 @@ codepipeline_retry_stage_execution <- function(pipelineName, stageName, pipeline
 #' See [https://www.paws-r-sdk.com/docs/codepipeline_start_pipeline_execution/](https://www.paws-r-sdk.com/docs/codepipeline_start_pipeline_execution/) for full documentation.
 #'
 #' @param name &#91;required&#93; The name of the pipeline to start.
+#' @param variables A list that overrides pipeline variables for a pipeline execution that's
+#' being started. Variable names must match `[A-Za-z0-9@@\-_]+`, and the
+#' values can be anything except an empty string.
 #' @param clientRequestToken The system-generated unique ID used to identify a unique execution
 #' request.
 #'
 #' @keywords internal
 #'
 #' @rdname codepipeline_start_pipeline_execution
-codepipeline_start_pipeline_execution <- function(name, clientRequestToken = NULL) {
+codepipeline_start_pipeline_execution <- function(name, variables = NULL, clientRequestToken = NULL) {
   op <- new_operation(
     name = "StartPipelineExecution",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .codepipeline$start_pipeline_execution_input(name = name, clientRequestToken = clientRequestToken)
+  input <- .codepipeline$start_pipeline_execution_input(name = name, variables = variables, clientRequestToken = clientRequestToken)
   output <- .codepipeline$start_pipeline_execution_output()
   config <- get_config()
   svc <- .codepipeline$service(config)

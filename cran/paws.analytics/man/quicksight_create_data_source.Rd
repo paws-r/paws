@@ -14,7 +14,8 @@ quicksight_create_data_source(
   Permissions = NULL,
   VpcConnectionProperties = NULL,
   SslProperties = NULL,
-  Tags = NULL
+  Tags = NULL,
+  FolderArns = NULL
 )
 }
 \arguments{
@@ -47,6 +48,9 @@ connects to your underlying source.}
 
 \item{Tags}{Contains a map of the key-value pairs for the resource tag or tags
 assigned to the data source.}
+
+\item{FolderArns}{When you create the data source, Amazon QuickSight adds the data source
+to these folders.}
 }
 \description{
 Creates a data source.

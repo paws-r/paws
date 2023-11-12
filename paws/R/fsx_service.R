@@ -20,9 +20,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -126,6 +126,7 @@ NULL
 #'  \link[=fsx_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for Amazon FSx resources\cr
 #'  \link[=fsx_release_file_system_nfs_v3_locks]{release_file_system_nfs_v3_locks} \tab Releases the file system lock from an Amazon FSx for OpenZFS file system\cr
 #'  \link[=fsx_restore_volume_from_snapshot]{restore_volume_from_snapshot} \tab Returns an Amazon FSx for OpenZFS volume to the state saved by the specified snapshot\cr
+#'  \link[=fsx_start_misconfigured_state_recovery]{start_misconfigured_state_recovery} \tab After performing steps to repair the Active Directory configuration of an FSx for Windows File Server file system, use this action to initiate the process of Amazon FSx attempting to reconnect to the file system\cr
 #'  \link[=fsx_tag_resource]{tag_resource} \tab Tags an Amazon FSx resource\cr
 #'  \link[=fsx_untag_resource]{untag_resource} \tab This action removes a tag from an Amazon FSx resource\cr
 #'  \link[=fsx_update_data_repository_association]{update_data_repository_association} \tab Updates the configuration of an existing data repository association on an Amazon FSx for Lustre file system\cr

@@ -32,7 +32,8 @@ rds_restore_db_cluster_to_point_in_time(
   Iops = NULL,
   ServerlessV2ScalingConfiguration = NULL,
   NetworkType = NULL,
-  SourceDbClusterResourceId = NULL
+  SourceDbClusterResourceId = NULL,
+  RdsCustomClusterConfiguration = NULL
 )
 }
 \arguments{
@@ -89,9 +90,9 @@ Example: \verb{2015-03-07T23:45:00Z}
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{UseLatestRestorableTime}{A value that indicates whether to restore the DB cluster to the latest
-restorable backup time. By default, the DB cluster isn't restored to the
-latest restorable backup time.
+\item{UseLatestRestorableTime}{Specifies whether to restore the DB cluster to the latest restorable
+backup time. By default, the DB cluster isn't restored to the latest
+restorable backup time.
 
 Constraints: Can't be specified if \code{RestoreToTime} parameter is
 provided.
@@ -153,9 +154,9 @@ then the restore request is rejected.
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of Amazon Web Services
-Identity and Access Management (IAM) accounts to database accounts. By
-default, mapping isn't enabled.
+\item{EnableIAMDatabaseAuthentication}{Specifies whether to enable mapping of Amazon Web Services Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping isn't enabled.
 
 For more information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication}
 in the \emph{Amazon Aurora User Guide}.
@@ -204,9 +205,11 @@ in the \emph{Amazon Aurora User Guide}.
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{DBClusterParameterGroupName}{The name of the DB cluster parameter group to associate with this DB
-cluster. If this argument is omitted, the default DB cluster parameter
-group for the specified engine is used.
+\item{DBClusterParameterGroupName}{The name of the custom DB cluster parameter group to associate with this
+DB cluster.
+
+If the \code{DBClusterParameterGroupName} parameter is omitted, the default
+DB cluster parameter group for the specified engine is used.
 
 Constraints:
 \itemize{
@@ -219,20 +222,19 @@ group.
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{DeletionProtection}{A value that indicates whether the DB cluster has deletion protection
-enabled. The database can't be deleted when deletion protection is
-enabled. By default, deletion protection isn't enabled.
+\item{DeletionProtection}{Specifies whether to enable deletion protection for the DB cluster. The
+database can't be deleted when deletion protection is enabled. By
+default, deletion protection isn't enabled.
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
-cluster to snapshots of the restored DB cluster. The default is not to
-copy them.
+\item{CopyTagsToSnapshot}{Specifies whether to copy all tags from the restored DB cluster to
+snapshots of the restored DB cluster. The default is not to copy them.
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{Domain}{Specify the Active Directory directory ID to restore the DB cluster in.
-The domain must be created prior to this operation.
+\item{Domain}{The Active Directory directory ID to restore the DB cluster in. The
+domain must be created prior to this operation.
 
 For Amazon Aurora DB clusters, Amazon RDS can use Kerberos
 Authentication to authenticate users that connect to the DB cluster. For
@@ -241,7 +243,7 @@ in the \emph{Amazon Aurora User Guide}.
 
 Valid for: Aurora DB clusters only}
 
-\item{DomainIAMRoleName}{Specify the name of the IAM role to be used when making API calls to the
+\item{DomainIAMRoleName}{The name of the IAM role to be used when making API calls to the
 Directory Service.
 
 Valid for: Aurora DB clusters only}
@@ -267,7 +269,7 @@ engines.
 
 For the full list of DB instance classes, and availability for your
 engine, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html}{DB instance class}
-in the \emph{Amazon RDS User Guide.}
+in the \emph{Amazon RDS User Guide}.
 
 Valid for: Multi-AZ DB clusters only}
 
@@ -276,14 +278,14 @@ Valid for: Multi-AZ DB clusters only}
 When specified for a Multi-AZ DB cluster, a value for the \code{Iops}
 parameter is required.
 
-Valid values: \code{aurora}, \code{aurora-iopt1} (Aurora DB clusters); \code{io1}
+Valid Values: \code{aurora}, \code{aurora-iopt1} (Aurora DB clusters); \code{io1}
 (Multi-AZ DB clusters)
 
 Default: \code{aurora} (Aurora DB clusters); \code{io1} (Multi-AZ DB clusters)
 
 Valid for: Aurora DB clusters and Multi-AZ DB clusters}
 
-\item{PubliclyAccessible}{A value that indicates whether the DB cluster is publicly accessible.
+\item{PubliclyAccessible}{Specifies whether the DB cluster is publicly accessible.
 
 When the DB cluster is publicly accessible, its Domain Name System (DNS)
 endpoint resolves to the private IP address from within the DB cluster's
@@ -334,7 +336,7 @@ Valid for: Multi-AZ DB clusters only}
 
 \item{NetworkType}{The network type of the DB cluster.
 
-Valid values:
+Valid Values:
 \itemize{
 \item \code{IPV4}
 \item \code{DUAL}
@@ -350,6 +352,8 @@ in the \emph{Amazon Aurora User Guide.}
 Valid for: Aurora DB clusters only}
 
 \item{SourceDbClusterResourceId}{The resource ID of the source DB cluster from which to restore.}
+
+\item{RdsCustomClusterConfiguration}{Reserved for future use.}
 }
 \description{
 Restores a DB cluster to an arbitrary point in time. Users can restore to any point in time before \code{LatestRestorableTime} for up to \code{BackupRetentionPeriod} days. The target DB cluster is created from the source DB cluster with the same configuration as the original DB cluster, except that the new DB cluster is created with the default DB security group.

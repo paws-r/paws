@@ -2,8 +2,8 @@
 % Please edit documentation in R/codepipeline_operations.R
 \name{codepipeline_retry_stage_execution}
 \alias{codepipeline_retry_stage_execution}
-\title{Resumes the pipeline execution by retrying the last failed actions in a
-stage}
+\title{You can retry a stage that has failed without having to run a pipeline
+again from the beginning}
 \usage{
 codepipeline_retry_stage_execution(
   pipelineName,
@@ -21,11 +21,10 @@ codepipeline_retry_stage_execution(
 the \code{\link[=codepipeline_get_pipeline_state]{get_pipeline_state}} action to
 retrieve the current pipelineExecutionId of the failed stage}
 
-\item{retryMode}{[required] The scope of the retry attempt. Currently, the only supported value is
-FAILED_ACTIONS.}
+\item{retryMode}{[required] The scope of the retry attempt.}
 }
 \description{
-Resumes the pipeline execution by retrying the last failed actions in a stage. You can retry a stage immediately if any of the actions in the stage fail. When you retry, all actions that are still in progress continue working, and failed actions are triggered again.
+You can retry a stage that has failed without having to run a pipeline again from the beginning. You do this by either retrying the failed actions in a stage or by retrying all actions in the stage starting from the first action in the stage. When you retry the failed actions in a stage, all actions that are still in progress continue working, and failed actions are triggered again. When you retry a failed stage from the first action in the stage, the stage cannot have any actions in progress. Before a stage can be retried, it must either have all actions failed or some actions failed and some succeeded.
 
 See \url{https://www.paws-r-sdk.com/docs/codepipeline_retry_stage_execution/} for full documentation.
 }

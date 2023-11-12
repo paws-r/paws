@@ -11,7 +11,8 @@ pinpoint_update_endpoint(ApplicationId, EndpointId, EndpointRequest)
 \item{ApplicationId}{[required] The unique identifier for the application. This identifier is displayed
 as the \strong{Project ID} on the Amazon Pinpoint console.}
 
-\item{EndpointId}{[required] The unique identifier for the endpoint.}
+\item{EndpointId}{[required] The case insensitive unique identifier for the endpoint. The identifier
+can't contain \code{$}, \verb{\\\{} or \verb{\\\}}.}
 
 \item{EndpointRequest}{[required]}
 }

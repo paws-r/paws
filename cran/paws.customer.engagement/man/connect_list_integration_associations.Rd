@@ -9,7 +9,8 @@ connect_list_integration_associations(
   InstanceId,
   IntegrationType = NULL,
   NextToken = NULL,
-  MaxResults = NULL
+  MaxResults = NULL,
+  IntegrationArn = NULL
 )
 }
 \arguments{
@@ -23,6 +24,8 @@ previous response in the next request to retrieve the next set of
 results.}
 
 \item{MaxResults}{The maximum number of results to return per page.}
+
+\item{IntegrationArn}{The Amazon Resource Name (ARN) of the integration.}
 }
 \description{
 Provides summary information about the Amazon Web Services resource associations for the specified Amazon Connect instance.

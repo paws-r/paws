@@ -398,7 +398,16 @@ billingconductor_create_billing_group <- function(ClientToken = NULL, Name, Acco
 #'         "string"
 #'       )
 #'     ),
-#'     Type = "CREDIT"|"FEE"
+#'     Type = "CREDIT"|"FEE",
+#'     LineItemFilters = list(
+#'       list(
+#'         Attribute = "LINE_ITEM_TYPE",
+#'         MatchOption = "NOT_EQUAL",
+#'         Values = list(
+#'           "SAVINGS_PLAN_NEGATION"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -1166,7 +1175,16 @@ billingconductor_list_billing_groups <- function(BillingPeriod = NULL, MaxResult
 #'         Percentage = list(
 #'           PercentageValue = 123.0
 #'         ),
-#'         Type = "CREDIT"|"FEE"
+#'         Type = "CREDIT"|"FEE",
+#'         LineItemFilters = list(
+#'           list(
+#'             Attribute = "LINE_ITEM_TYPE",
+#'             MatchOption = "NOT_EQUAL",
+#'             Values = list(
+#'               "SAVINGS_PLAN_NEGATION"
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       CurrencyCode = "USD"|"CNY",
 #'       Description = "string",
@@ -1257,7 +1275,16 @@ billingconductor_list_custom_line_item_versions <- function(Arn, MaxResults = NU
 #'         Percentage = list(
 #'           PercentageValue = 123.0
 #'         ),
-#'         Type = "CREDIT"|"FEE"
+#'         Type = "CREDIT"|"FEE",
+#'         LineItemFilters = list(
+#'           list(
+#'             Attribute = "LINE_ITEM_TYPE",
+#'             MatchOption = "NOT_EQUAL",
+#'             Values = list(
+#'               "SAVINGS_PLAN_NEGATION"
+#'             )
+#'           )
+#'         )
 #'       ),
 #'       CurrencyCode = "USD"|"CNY",
 #'       Description = "string",
@@ -1915,7 +1942,16 @@ billingconductor_update_billing_group <- function(Arn, Name = NULL, Status = NUL
 #'     Percentage = list(
 #'       PercentageValue = 123.0
 #'     ),
-#'     Type = "CREDIT"|"FEE"
+#'     Type = "CREDIT"|"FEE",
+#'     LineItemFilters = list(
+#'       list(
+#'         Attribute = "LINE_ITEM_TYPE",
+#'         MatchOption = "NOT_EQUAL",
+#'         Values = list(
+#'           "SAVINGS_PLAN_NEGATION"
+#'         )
+#'       )
+#'     )
 #'   ),
 #'   LastModifiedTime = 123,
 #'   AssociationSize = 123
@@ -1934,6 +1970,15 @@ billingconductor_update_billing_group <- function(Arn, Name = NULL, Status = NUL
 #'     ),
 #'     Percentage = list(
 #'       PercentageValue = 123.0
+#'     ),
+#'     LineItemFilters = list(
+#'       list(
+#'         Attribute = "LINE_ITEM_TYPE",
+#'         MatchOption = "NOT_EQUAL",
+#'         Values = list(
+#'           "SAVINGS_PLAN_NEGATION"
+#'         )
+#'       )
 #'     )
 #'   ),
 #'   BillingPeriodRange = list(

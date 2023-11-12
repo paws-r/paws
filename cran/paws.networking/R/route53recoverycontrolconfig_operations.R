@@ -373,6 +373,35 @@ route53recoverycontrolconfig_describe_safety_rule <- function(SafetyRuleArn) {
 }
 .route53recoverycontrolconfig$operations$describe_safety_rule <- route53recoverycontrolconfig_describe_safety_rule
 
+#' Get information about the resource policy for a cluster
+#'
+#' @description
+#' Get information about the resource policy for a cluster.
+#'
+#' See [https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_get_resource_policy/](https://www.paws-r-sdk.com/docs/route53recoverycontrolconfig_get_resource_policy/) for full documentation.
+#'
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource.
+#'
+#' @keywords internal
+#'
+#' @rdname route53recoverycontrolconfig_get_resource_policy
+route53recoverycontrolconfig_get_resource_policy <- function(ResourceArn) {
+  op <- new_operation(
+    name = "GetResourcePolicy",
+    http_method = "GET",
+    http_path = "/resourcePolicy/{ResourceArn}",
+    paginator = list()
+  )
+  input <- .route53recoverycontrolconfig$get_resource_policy_input(ResourceArn = ResourceArn)
+  output <- .route53recoverycontrolconfig$get_resource_policy_output()
+  config <- get_config()
+  svc <- .route53recoverycontrolconfig$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.route53recoverycontrolconfig$operations$get_resource_policy <- route53recoverycontrolconfig_get_resource_policy
+
 #' Returns an array of all Amazon Route 53 health checks associated with a
 #' specific routing control
 #'

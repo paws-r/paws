@@ -184,9 +184,9 @@ codebuild_batch_delete_builds <- function(ids) {
 #'         )
 #'       ),
 #'       environment = list(
-#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
 #'         image = "string",
-#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'         environmentVariables = list(
 #'           list(
 #'             name = "string",
@@ -466,9 +466,9 @@ codebuild_batch_get_build_batches <- function(ids) {
 #'         )
 #'       ),
 #'       environment = list(
-#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
 #'         image = "string",
-#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'         environmentVariables = list(
 #'           list(
 #'             name = "string",
@@ -688,9 +688,9 @@ codebuild_batch_get_builds <- function(ids) {
 #'         )
 #'       ),
 #'       environment = list(
-#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'         type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
 #'         image = "string",
-#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'         computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'         environmentVariables = list(
 #'           list(
 #'             name = "string",
@@ -1186,9 +1186,9 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       environmentVariables = list(
 #'         list(
 #'           name = "string",
@@ -1382,9 +1382,9 @@ codebuild_batch_get_reports <- function(reportArns) {
 #'     )
 #'   ),
 #'   environment = list(
-#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
 #'     image = "string",
-#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'     environmentVariables = list(
 #'       list(
 #'         name = "string",
@@ -3468,9 +3468,9 @@ codebuild_put_resource_policy <- function(policy, resourceArn) {
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       environmentVariables = list(
 #'         list(
 #'           name = "string",
@@ -3714,9 +3714,9 @@ codebuild_retry_build <- function(id = NULL, idempotencyToken = NULL) {
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       environmentVariables = list(
 #'         list(
 #'           name = "string",
@@ -4146,9 +4146,9 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       environmentVariables = list(
 #'         list(
 #'           name = "string",
@@ -4312,9 +4312,9 @@ codebuild_retry_build_batch <- function(id = NULL, idempotencyToken = NULL, retr
 #'     context = "string",
 #'     targetUrl = "string"
 #'   ),
-#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
 #'   imageOverride = "string",
-#'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'   certificateOverride = "string",
 #'   cacheOverride = list(
 #'     type = "NO_CACHE"|"S3"|"LOCAL",
@@ -4647,9 +4647,9 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       environmentVariables = list(
 #'         list(
 #'           name = "string",
@@ -4848,9 +4848,9 @@ codebuild_start_build <- function(projectName, secondarySourcesOverride = NULL, 
 #'   buildspecOverride = "string",
 #'   insecureSslOverride = TRUE|FALSE,
 #'   reportBuildBatchStatusOverride = TRUE|FALSE,
-#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'   environmentTypeOverride = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
 #'   imageOverride = "string",
-#'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'   computeTypeOverride = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'   certificateOverride = "string",
 #'   cacheOverride = list(
 #'     type = "NO_CACHE"|"S3"|"LOCAL",
@@ -5045,9 +5045,9 @@ codebuild_start_build_batch <- function(projectName, secondarySourcesOverride = 
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       environmentVariables = list(
 #'         list(
 #'           name = "string",
@@ -5280,9 +5280,9 @@ codebuild_stop_build <- function(id) {
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       environmentVariables = list(
 #'         list(
 #'           name = "string",
@@ -5617,9 +5617,9 @@ codebuild_stop_build_batch <- function(id) {
 #'       )
 #'     ),
 #'     environment = list(
-#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'       type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
 #'       image = "string",
-#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'       computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'       environmentVariables = list(
 #'         list(
 #'           name = "string",
@@ -5813,9 +5813,9 @@ codebuild_stop_build_batch <- function(id) {
 #'     )
 #'   ),
 #'   environment = list(
-#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER",
+#'     type = "WINDOWS_CONTAINER"|"LINUX_CONTAINER"|"LINUX_GPU_CONTAINER"|"ARM_CONTAINER"|"WINDOWS_SERVER_2019_CONTAINER"|"LINUX_LAMBDA_CONTAINER"|"ARM_LAMBDA_CONTAINER",
 #'     image = "string",
-#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE",
+#'     computeType = "BUILD_GENERAL1_SMALL"|"BUILD_GENERAL1_MEDIUM"|"BUILD_GENERAL1_LARGE"|"BUILD_GENERAL1_2XLARGE"|"BUILD_LAMBDA_1GB"|"BUILD_LAMBDA_2GB"|"BUILD_LAMBDA_4GB"|"BUILD_LAMBDA_8GB"|"BUILD_LAMBDA_10GB",
 #'     environmentVariables = list(
 #'       list(
 #'         name = "string",
@@ -5932,10 +5932,9 @@ codebuild_update_project <- function(name, description = NULL, source = NULL, se
 #'     careful about what information is output to the build logs. Some
 #'     best practice are:
 #' 
-#'     -   Do not store sensitive values, especially Amazon Web Services
-#'         access key IDs and secret access keys, in environment variables.
-#'         We recommend that you use an Amazon EC2 Systems Manager
-#'         Parameter Store or Secrets Manager to store sensitive values.
+#'     -   Do not store sensitive values in environment variables. We
+#'         recommend that you use an Amazon EC2 Systems Manager Parameter
+#'         Store or Secrets Manager to store sensitive values.
 #' 
 #'     -   Follow [Best practices for using
 #'         webhooks](https://docs.aws.amazon.com/codebuild/latest/userguide/webhooks.html#webhook-best-practices)

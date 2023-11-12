@@ -83,17 +83,16 @@ If your stack template contains these resources, we recommend that
 you review all permissions associated with them and edit their
 permissions if necessary.
 \itemize{
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html}{AWS::IAM::AccessKey}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html}{AWS::IAM::Group}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html}{AWS::IAM::Group}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{AWS::IAM::Policy}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html}{AWS::IAM::User}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGroupAddition}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html}{AWS::IAM::User}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
 }
 
-For more information, see Acknowledging IAM Resources in
-CloudFormation Templates.
+For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in CloudFormation Templates}.
 \item \code{CAPABILITY_AUTO_EXPAND}
 
 Some templates reference macros. If your stack set template
@@ -101,15 +100,17 @@ references one or more macros, you must update the stack set
 directly from the processed template, without first reviewing the
 resulting changes in a change set. To update the stack set directly,
 you must acknowledge this capability. For more information, see
-Using CloudFormation Macros to Perform Custom Processing on
-Templates.
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using CloudFormation Macros to Perform Custom Processing on Templates}.
 
 Stack sets with service-managed permissions do not currently support
-the use of macros in templates. (This includes the AWS::Include and
-AWS::Serverless transforms, which are macros hosted by
-CloudFormation.) Even if you specify this capability for a stack set
-with service-managed permissions, if you reference a macro in your
-template the stack set operation will fail.
+the use of macros in templates. (This includes the
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/create-reusable-transform-function-snippets-and-add-to-your-template-with-aws-include-transform.html}{AWS::Include}
+and
+\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/transform-aws-serverless.html}{AWS::Serverless}
+transforms, which are macros hosted by CloudFormation.) Even if you
+specify this capability for a stack set with service-managed
+permissions, if you reference a macro in your template the stack set
+operation will fail.
 }}
 
 \item{Tags}{The key-value pairs to associate with this stack set and the stacks
@@ -150,8 +151,8 @@ stack set.
 
 Specify an IAM role only if you are using customized administrator roles
 to control which users or groups can manage specific stack sets within
-the same administrator account. For more information, see Granting
-Permissions for Stack Set Operations in the \emph{CloudFormation User Guide}.
+the same administrator account. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-prereqs.html}{Granting Permissions for Stack Set Operations}
+in the \emph{CloudFormation User Guide}.
 
 If you specified a customized administrator role when you created the
 stack set, you must specify a customized administrator role, even if it

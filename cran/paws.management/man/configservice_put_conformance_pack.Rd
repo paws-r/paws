@@ -22,7 +22,10 @@ configservice_put_conformance_pack(
 template (max size: 300 KB) that is located in an Amazon S3 bucket in
 the same Region as the conformance pack.
 
-You must have access to read Amazon S3 bucket.}
+You must have access to read Amazon S3 bucket. In addition, in order to
+ensure a successful deployment, the template object must not be in an
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{archived storage class}
+if this parameter is passed.}
 
 \item{TemplateBody}{A string containing the full conformance pack template body. The
 structure containing the template body has a minimum length of 1 byte

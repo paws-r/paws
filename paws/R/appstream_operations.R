@@ -1048,7 +1048,8 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'   DisconnectTimeoutInSeconds, Description, DisplayName,
 #'   EnableDefaultInternetAccess, DomainJoinInfo, Tags,
 #'   IdleDisconnectTimeoutInSeconds, IamRoleArn, StreamView, Platform,
-#'   MaxConcurrentSessions, UsbDeviceFilterStrings, SessionScriptS3Location)
+#'   MaxConcurrentSessions, UsbDeviceFilterStrings, SessionScriptS3Location,
+#'   MaxSessionsPerInstance)
 #'
 #' @param Name &#91;required&#93; A unique name for the fleet.
 #' @param ImageName The name of the image used to create the fleet.
@@ -1162,7 +1163,7 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' documents before being disconnected. After this time elapses, the
 #' instance is terminated and replaced by a new instance.
 #' 
-#' Specify a value between 600 and 360000.
+#' Specify a value between 600 and 432000.
 #' @param DisconnectTimeoutInSeconds The amount of time that a streaming session remains active after users
 #' disconnect. If users try to reconnect to the streaming session after a
 #' disconnection or network interruption within this time interval, they
@@ -1240,6 +1241,8 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' client. This is allowed but not required for Elastic fleets.
 #' @param SessionScriptS3Location The S3 location of the session scripts configuration zip file. This only
 #' applies to Elastic fleets.
+#' @param MaxSessionsPerInstance The maximum number of user sessions on an instance. This only applies to
+#' multi-session fleets.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1258,7 +1261,11 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'       Desired = 123,
 #'       Running = 123,
 #'       InUse = 123,
-#'       Available = 123
+#'       Available = 123,
+#'       DesiredUserSessions = 123,
+#'       AvailableUserSessions = 123,
+#'       ActiveUserSessions = 123,
+#'       ActualUserSessions = 123
 #'     ),
 #'     MaxUserDurationInSeconds = 123,
 #'     DisconnectTimeoutInSeconds = 123,
@@ -1296,7 +1303,8 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'     SessionScriptS3Location = list(
 #'       S3Bucket = "string",
 #'       S3Key = "string"
-#'     )
+#'     ),
+#'     MaxSessionsPerInstance = 123
 #'   )
 #' )
 #' ```
@@ -1310,7 +1318,8 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'   InstanceType = "string",
 #'   FleetType = "ALWAYS_ON"|"ON_DEMAND"|"ELASTIC",
 #'   ComputeCapacity = list(
-#'     DesiredInstances = 123
+#'     DesiredInstances = 123,
+#'     DesiredSessions = 123
 #'   ),
 #'   VpcConfig = list(
 #'     SubnetIds = list(
@@ -1343,7 +1352,8 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'   SessionScriptS3Location = list(
 #'     S3Bucket = "string",
 #'     S3Key = "string"
-#'   )
+#'   ),
+#'   MaxSessionsPerInstance = 123
 #' )
 #' ```
 #'
@@ -1352,14 +1362,14 @@ appstream_create_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' @rdname appstream_create_fleet
 #'
 #' @aliases appstream_create_fleet
-appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, FleetType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, Tags = NULL, IdleDisconnectTimeoutInSeconds = NULL, IamRoleArn = NULL, StreamView = NULL, Platform = NULL, MaxConcurrentSessions = NULL, UsbDeviceFilterStrings = NULL, SessionScriptS3Location = NULL) {
+appstream_create_fleet <- function(Name, ImageName = NULL, ImageArn = NULL, InstanceType, FleetType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, Tags = NULL, IdleDisconnectTimeoutInSeconds = NULL, IamRoleArn = NULL, StreamView = NULL, Platform = NULL, MaxConcurrentSessions = NULL, UsbDeviceFilterStrings = NULL, SessionScriptS3Location = NULL, MaxSessionsPerInstance = NULL) {
   op <- new_operation(
     name = "CreateFleet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location)
+  input <- .appstream$create_fleet_input(Name = Name, ImageName = ImageName, ImageArn = ImageArn, InstanceType = InstanceType, FleetType = FleetType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, Tags = Tags, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location, MaxSessionsPerInstance = MaxSessionsPerInstance)
   output <- .appstream$create_fleet_output()
   config <- get_config()
   svc <- .appstream$service(config)
@@ -3401,7 +3411,11 @@ appstream_describe_entitlements <- function(Name = NULL, StackName, NextToken = 
 #'         Desired = 123,
 #'         Running = 123,
 #'         InUse = 123,
-#'         Available = 123
+#'         Available = 123,
+#'         DesiredUserSessions = 123,
+#'         AvailableUserSessions = 123,
+#'         ActiveUserSessions = 123,
+#'         ActualUserSessions = 123
 #'       ),
 #'       MaxUserDurationInSeconds = 123,
 #'       DisconnectTimeoutInSeconds = 123,
@@ -3439,7 +3453,8 @@ appstream_describe_entitlements <- function(Name = NULL, StackName, NextToken = 
 #'       SessionScriptS3Location = list(
 #'         S3Bucket = "string",
 #'         S3Key = "string"
-#'       )
+#'       ),
+#'       MaxSessionsPerInstance = 123
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3802,7 +3817,7 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #'
 #' @usage
 #' appstream_describe_sessions(StackName, FleetName, UserId, NextToken,
-#'   Limit, AuthenticationType)
+#'   Limit, AuthenticationType, InstanceId)
 #'
 #' @param StackName &#91;required&#93; The name of the stack. This value is case-sensitive.
 #' @param FleetName &#91;required&#93; The name of the fleet. This value is case-sensitive.
@@ -3815,6 +3830,7 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #' @param AuthenticationType The authentication method. Specify `API` for a user authenticated using
 #' a streaming URL or `SAML` for a SAML federated user. The default is to
 #' authenticate users using a streaming URL.
+#' @param InstanceId The identifier for the instance hosting the session.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3838,7 +3854,8 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #'       NetworkAccessConfiguration = list(
 #'         EniPrivateIpAddress = "string",
 #'         EniId = "string"
-#'       )
+#'       ),
+#'       InstanceId = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3853,7 +3870,8 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #'   UserId = "string",
 #'   NextToken = "string",
 #'   Limit = 123,
-#'   AuthenticationType = "API"|"SAML"|"USERPOOL"|"AWS_AD"
+#'   AuthenticationType = "API"|"SAML"|"USERPOOL"|"AWS_AD",
+#'   InstanceId = "string"
 #' )
 #' ```
 #'
@@ -3862,14 +3880,14 @@ appstream_describe_images <- function(Names = NULL, Arns = NULL, Type = NULL, Ne
 #' @rdname appstream_describe_sessions
 #'
 #' @aliases appstream_describe_sessions
-appstream_describe_sessions <- function(StackName, FleetName, UserId = NULL, NextToken = NULL, Limit = NULL, AuthenticationType = NULL) {
+appstream_describe_sessions <- function(StackName, FleetName, UserId = NULL, NextToken = NULL, Limit = NULL, AuthenticationType = NULL, InstanceId = NULL) {
   op <- new_operation(
     name = "DescribeSessions",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$describe_sessions_input(StackName = StackName, FleetName = FleetName, UserId = UserId, NextToken = NextToken, Limit = Limit, AuthenticationType = AuthenticationType)
+  input <- .appstream$describe_sessions_input(StackName = StackName, FleetName = FleetName, UserId = UserId, NextToken = NextToken, Limit = Limit, AuthenticationType = AuthenticationType, InstanceId = InstanceId)
   output <- .appstream$describe_sessions_output()
   config <- get_config()
   svc <- .appstream$service(config)
@@ -5784,7 +5802,7 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'   EnableDefaultInternetAccess, DomainJoinInfo,
 #'   IdleDisconnectTimeoutInSeconds, AttributesToDelete, IamRoleArn,
 #'   StreamView, Platform, MaxConcurrentSessions, UsbDeviceFilterStrings,
-#'   SessionScriptS3Location)
+#'   SessionScriptS3Location, MaxSessionsPerInstance)
 #'
 #' @param ImageName The name of the image used to create the fleet.
 #' @param ImageArn The ARN of the public, private, or shared image to use.
@@ -5948,6 +5966,8 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' client. This is allowed but not required for Elastic fleets.
 #' @param SessionScriptS3Location The S3 location of the session scripts configuration zip file. This only
 #' applies to Elastic fleets.
+#' @param MaxSessionsPerInstance The maximum number of user sessions on an instance. This only applies to
+#' multi-session fleets.
 #'
 #' @return
 #' A list with the following syntax:
@@ -5966,7 +5986,11 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'       Desired = 123,
 #'       Running = 123,
 #'       InUse = 123,
-#'       Available = 123
+#'       Available = 123,
+#'       DesiredUserSessions = 123,
+#'       AvailableUserSessions = 123,
+#'       ActiveUserSessions = 123,
+#'       ActualUserSessions = 123
 #'     ),
 #'     MaxUserDurationInSeconds = 123,
 #'     DisconnectTimeoutInSeconds = 123,
@@ -6004,7 +6028,8 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'     SessionScriptS3Location = list(
 #'       S3Bucket = "string",
 #'       S3Key = "string"
-#'     )
+#'     ),
+#'     MaxSessionsPerInstance = 123
 #'   )
 #' )
 #' ```
@@ -6017,7 +6042,8 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'   Name = "string",
 #'   InstanceType = "string",
 #'   ComputeCapacity = list(
-#'     DesiredInstances = 123
+#'     DesiredInstances = 123,
+#'     DesiredSessions = 123
 #'   ),
 #'   VpcConfig = list(
 #'     SubnetIds = list(
@@ -6039,7 +6065,7 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'   ),
 #'   IdleDisconnectTimeoutInSeconds = 123,
 #'   AttributesToDelete = list(
-#'     "VPC_CONFIGURATION"|"VPC_CONFIGURATION_SECURITY_GROUP_IDS"|"DOMAIN_JOIN_INFO"|"IAM_ROLE_ARN"|"USB_DEVICE_FILTER_STRINGS"|"SESSION_SCRIPT_S3_LOCATION"
+#'     "VPC_CONFIGURATION"|"VPC_CONFIGURATION_SECURITY_GROUP_IDS"|"DOMAIN_JOIN_INFO"|"IAM_ROLE_ARN"|"USB_DEVICE_FILTER_STRINGS"|"SESSION_SCRIPT_S3_LOCATION"|"MAX_SESSIONS_PER_INSTANCE"
 #'   ),
 #'   IamRoleArn = "string",
 #'   StreamView = "APP"|"DESKTOP",
@@ -6051,7 +6077,8 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #'   SessionScriptS3Location = list(
 #'     S3Bucket = "string",
 #'     S3Key = "string"
-#'   )
+#'   ),
+#'   MaxSessionsPerInstance = 123
 #' )
 #' ```
 #'
@@ -6060,14 +6087,14 @@ appstream_update_entitlement <- function(Name, StackName, Description = NULL, Ap
 #' @rdname appstream_update_fleet
 #'
 #' @aliases appstream_update_fleet
-appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NULL, InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, IdleDisconnectTimeoutInSeconds = NULL, AttributesToDelete = NULL, IamRoleArn = NULL, StreamView = NULL, Platform = NULL, MaxConcurrentSessions = NULL, UsbDeviceFilterStrings = NULL, SessionScriptS3Location = NULL) {
+appstream_update_fleet <- function(ImageName = NULL, ImageArn = NULL, Name = NULL, InstanceType = NULL, ComputeCapacity = NULL, VpcConfig = NULL, MaxUserDurationInSeconds = NULL, DisconnectTimeoutInSeconds = NULL, DeleteVpcConfig = NULL, Description = NULL, DisplayName = NULL, EnableDefaultInternetAccess = NULL, DomainJoinInfo = NULL, IdleDisconnectTimeoutInSeconds = NULL, AttributesToDelete = NULL, IamRoleArn = NULL, StreamView = NULL, Platform = NULL, MaxConcurrentSessions = NULL, UsbDeviceFilterStrings = NULL, SessionScriptS3Location = NULL, MaxSessionsPerInstance = NULL) {
   op <- new_operation(
     name = "UpdateFleet",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, AttributesToDelete = AttributesToDelete, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location)
+  input <- .appstream$update_fleet_input(ImageName = ImageName, ImageArn = ImageArn, Name = Name, InstanceType = InstanceType, ComputeCapacity = ComputeCapacity, VpcConfig = VpcConfig, MaxUserDurationInSeconds = MaxUserDurationInSeconds, DisconnectTimeoutInSeconds = DisconnectTimeoutInSeconds, DeleteVpcConfig = DeleteVpcConfig, Description = Description, DisplayName = DisplayName, EnableDefaultInternetAccess = EnableDefaultInternetAccess, DomainJoinInfo = DomainJoinInfo, IdleDisconnectTimeoutInSeconds = IdleDisconnectTimeoutInSeconds, AttributesToDelete = AttributesToDelete, IamRoleArn = IamRoleArn, StreamView = StreamView, Platform = Platform, MaxConcurrentSessions = MaxConcurrentSessions, UsbDeviceFilterStrings = UsbDeviceFilterStrings, SessionScriptS3Location = SessionScriptS3Location, MaxSessionsPerInstance = MaxSessionsPerInstance)
   output <- .appstream$update_fleet_output()
   config <- get_config()
   svc <- .appstream$service(config)

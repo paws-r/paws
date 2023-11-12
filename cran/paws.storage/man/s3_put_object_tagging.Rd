@@ -65,7 +65,7 @@ different account, the request fails with the HTTP status code
 \item{RequestPayer}{}
 }
 \description{
-Sets the supplied tag-set to an object that already exists in a bucket.
+Sets the supplied tag-set to an object that already exists in a bucket. A tag is a key-value pair. For more information, see \href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-tagging.html}{Object Tagging}.
 
 See \url{https://www.paws-r-sdk.com/docs/s3_put_object_tagging/} for full documentation.
 }

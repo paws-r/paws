@@ -85,7 +85,7 @@ pricing_describe_services <- function(ServiceCode = NULL, FormatVersion = NULL, 
 #' Returns a list of attribute values. Attributes are similar to the
 #' details in a Price List API offer file. For a list of available
 #' attributes, see [Offer File
-#' Definitions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs)
+#' Definitions](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-service-price-list-file-for-savings-plans.html#pps-defs)
 #' in the [Billing and Cost Management User
 #' Guide](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html).
 #'
@@ -155,8 +155,7 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
 #' 
 #' This returns the URL that you can retrieve your Price List file from.
 #' This URL is based on the `PriceListArn` and `FileFormat` that you
-#' retrieve from the
-#' [`list_price_lists`](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_ListPriceLists.html)
+#' retrieve from the [`list_price_lists`][pricing_list_price_lists]
 #' response.
 #'
 #' @usage
@@ -164,12 +163,10 @@ pricing_get_attribute_values <- function(ServiceCode, AttributeName, NextToken =
 #'
 #' @param PriceListArn &#91;required&#93; The unique identifier that maps to where your Price List files are
 #' located. `PriceListArn` can be obtained from the
-#' [`list_price_lists`](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_ListPriceLists.html)
-#' response.
+#' [`list_price_lists`][pricing_list_price_lists] response.
 #' @param FileFormat &#91;required&#93; The format that you want to retrieve your Price List files in. The
 #' `FileFormat` can be obtained from the
-#' [`list_price_lists`](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_ListPriceLists.html)
-#' response.
+#' [`list_price_lists`][pricing_list_price_lists] response.
 #'
 #' @return
 #' A list with the following syntax:
@@ -293,8 +290,7 @@ pricing_get_products <- function(ServiceCode, Filters = NULL, FormatVersion = NU
 #' `RegionCode` filter to get the Price List reference that's specific to a
 #' specific Amazon Web Services Region. You can use the `PriceListArn` from
 #' the response to get your preferred Price List files through the
-#' [`get_price_list_file_url`](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_GetPriceListFileUrl.html)
-#' API.
+#' [`get_price_list_file_url`][pricing_get_price_list_file_url] API.
 #'
 #' @usage
 #' pricing_list_price_lists(ServiceCode, EffectiveDate, RegionCode,
@@ -304,19 +300,19 @@ pricing_get_products <- function(ServiceCode, Filters = NULL, FormatVersion = NU
 #' that you want to retrieve. For example, to get the list of applicable
 #' Amazon EC2 price lists, use `AmazonEC2`. For a full list of service
 #' codes containing On-Demand and Reserved Instance (RI) pricing, use the
-#' [`describe_services`](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_DescribeServices.html#awscostmanagement-pricing_DescribeServices-request-FormatVersion)
-#' API.
+#' [`describe_services`][pricing_describe_services] API.
 #' 
-#' To retrieve the Compute Savings Plan price lists, use
-#' `ComputeSavingsPlans`. To retrieve Machine Learning Savings Plans price
-#' lists, use `MachineLearningSavingsPlans`.
+#' To retrieve the Reserved Instance and Compute Savings Plan price lists,
+#' use `ComputeSavingsPlans`.
+#' 
+#' To retrieve Machine Learning Savings Plans price lists, use
+#' `MachineLearningSavingsPlans`.
 #' @param EffectiveDate &#91;required&#93; The date that the Price List file prices are effective from.
 #' @param RegionCode This is used to filter the Price List by Amazon Web Services Region. For
 #' example, to get the price list only for the `US East (N. Virginia)`
 #' Region, use `us-east-1`. If nothing is specified, you retrieve price
 #' lists for all applicable Regions. The available `RegionCode` list can be
-#' retrieved from
-#' [`get_attribute_values`](https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_GetAttributeValues.html)
+#' retrieved from [`get_attribute_values`][pricing_get_attribute_values]
 #' API.
 #' @param CurrencyCode &#91;required&#93; The three alphabetical character ISO-4217 currency code that the Price
 #' List files are denominated in.

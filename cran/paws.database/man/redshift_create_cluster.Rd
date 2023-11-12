@@ -10,7 +10,7 @@ redshift_create_cluster(
   ClusterType = NULL,
   NodeType,
   MasterUsername,
-  MasterUserPassword,
+  MasterUserPassword = NULL,
   ClusterSecurityGroups = NULL,
   VpcSecurityGroupIds = NULL,
   ClusterSubnetGroupName = NULL,
@@ -38,7 +38,11 @@ redshift_create_cluster(
   AvailabilityZoneRelocation = NULL,
   AquaConfigurationStatus = NULL,
   DefaultIamRoleArn = NULL,
-  LoadSampleData = NULL
+  LoadSampleData = NULL,
+  ManageMasterPassword = NULL,
+  MasterPasswordSecretKmsKeyId = NULL,
+  IpAddressType = NULL,
+  MultiAZ = NULL
 )
 }
 \arguments{
@@ -111,8 +115,10 @@ period (dot), at symbol (@), or hyphen.
 in the Amazon Redshift Database Developer Guide.
 }}
 
-\item{MasterUserPassword}{[required] The password associated with the admin user account for the cluster that
+\item{MasterUserPassword}{The password associated with the admin user account for the cluster that
 is being created.
+
+You can't use \code{MasterUserPassword} if \code{ManageMasterPassword} is \code{true}.
 
 Constraints:
 \itemize{
@@ -303,6 +309,22 @@ for the cluster when the cluster was created.}
 
 \item{LoadSampleData}{A flag that specifies whether to load sample data once the cluster is
 created.}
+
+\item{ManageMasterPassword}{If \code{true}, Amazon Redshift uses Secrets Manager to manage this cluster's
+admin credentials. You can't use \code{MasterUserPassword} if
+\code{ManageMasterPassword} is true. If \code{ManageMasterPassword} is false or
+not set, Amazon Redshift uses \code{MasterUserPassword} for the admin user
+account's password.}
+
+\item{MasterPasswordSecretKmsKeyId}{The ID of the Key Management Service (KMS) key used to encrypt and store
+the cluster's admin credentials secret. You can only use this parameter
+if \code{ManageMasterPassword} is true.}
+
+\item{IpAddressType}{The IP address types that the cluster supports. Possible values are
+\code{ipv4} and \code{dualstack}.}
+
+\item{MultiAZ}{If true, Amazon Redshift will deploy the cluster in two Availability
+Zones (AZ).}
 }
 \description{
 Creates a new cluster with the specified parameters.

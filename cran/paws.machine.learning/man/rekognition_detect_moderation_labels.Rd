@@ -7,7 +7,8 @@
 rekognition_detect_moderation_labels(
   Image,
   MinConfidence = NULL,
-  HumanLoopConfig = NULL
+  HumanLoopConfig = NULL,
+  ProjectVersion = NULL
 )
 }
 \arguments{
@@ -28,6 +29,10 @@ confidence values greater than or equal to 50 percent.}
 
 \item{HumanLoopConfig}{Sets up the configuration for human evaluation, including the
 FlowDefinition the image will be sent to.}
+
+\item{ProjectVersion}{Identifier for the custom adapter. Expects the ProjectVersionArn as a
+value. Use the CreateProject or CreateProjectVersion APIs to create a
+custom adapter.}
 }
 \description{
 Detects unsafe content in a specified JPEG or PNG format image. Use \code{\link[=rekognition_detect_moderation_labels]{detect_moderation_labels}} to moderate images depending on your requirements. For example, you might want to filter images that contain nudity, but not images containing suggestive content.

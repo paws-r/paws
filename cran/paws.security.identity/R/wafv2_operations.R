@@ -173,25 +173,25 @@ wafv2_create_api_key <- function(Scope, TokenDomains) {
 #' @param Description A description of the IP set that helps with identification.
 #' @param IPAddressVersion &#91;required&#93; The version of the IP addresses, either `IPV4` or `IPV6`.
 #' @param Addresses &#91;required&#93; Contains an array of strings that specifies zero or more IP addresses or
-#' blocks of IP addresses. All addresses must be specified using Classless
-#' Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6
-#' CIDR ranges except for `/0`.
+#' blocks of IP addresses that you want WAF to inspect for in incoming
+#' requests. All addresses must be specified using Classless Inter-Domain
+#' Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges
+#' except for `/0`.
 #' 
 #' Example address strings:
 #' 
-#' -   To configure WAF to allow, block, or count requests that originated
-#'     from the IP address 192.0.2.44, specify `192.0.2.44/32`.
+#' -   For requests that originated from the IP address 192.0.2.44, specify
+#'     `192.0.2.44/32`.
 #' 
-#' -   To configure WAF to allow, block, or count requests that originated
-#'     from IP addresses from 192.0.2.0 to 192.0.2.255, specify
-#'     `192.0.2.0/24`.
+#' -   For requests that originated from IP addresses from 192.0.2.0 to
+#'     192.0.2.255, specify `192.0.2.0/24`.
 #' 
-#' -   To configure WAF to allow, block, or count requests that originated
-#'     from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify
+#' -   For requests that originated from the IP address
+#'     1111:0000:0000:0000:0000:0000:0000:0111, specify
 #'     `1111:0000:0000:0000:0000:0000:0000:0111/128`.
 #' 
-#' -   To configure WAF to allow, block, or count requests that originated
-#'     from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to
+#' -   For requests that originated from IP addresses
+#'     1111:0000:0000:0000:0000:0000:0000:0000 to
 #'     1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
 #'     `1111:0000:0000:0000:0000:0000:0000:0000/64`.
 #' 
@@ -320,9 +320,9 @@ wafv2_create_regex_pattern_set <- function(Name, Scope, Description = NULL, Regu
 #' in the *WAF Developer Guide*.
 #' @param Description A description of the rule group that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
-#' allow, block, or count. Each rule includes one top-level statement that
-#' WAF uses to identify matching web requests, and parameters that govern
-#' how WAF handles them.
+#' manage. Each rule includes one top-level statement that WAF uses to
+#' identify matching web requests, and parameters that govern how WAF
+#' handles them.
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
 #' @param Tags An array of key:value pairs to associate with the resource.
@@ -387,9 +387,9 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' match.
 #' @param Description A description of the web ACL that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
-#' allow, block, or count. Each rule includes one top-level statement that
-#' WAF uses to identify matching web requests, and parameters that govern
-#' how WAF handles them.
+#' manage. Each rule includes one top-level statement that WAF uses to
+#' identify matching web requests, and parameters that govern how WAF
+#' handles them.
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
 #' @param Tags An array of key:value pairs to associate with the resource.
@@ -432,7 +432,7 @@ wafv2_create_rule_group <- function(Name, Scope, Capacity, Description = NULL, R
 #' 
 #' Use this to customize the maximum size of the request body that your
 #' protected CloudFront distributions forward to WAF for inspection. The
-#' default is 16 KB (16,384 kilobytes).
+#' default is 16 KB (16,384 bytes).
 #' 
 #' You are charged additional fees when your protected resources forward
 #' body sizes that are larger than the default. For more information, see
@@ -1917,7 +1917,7 @@ wafv2_list_regex_pattern_sets <- function(Scope, NextMarker = NULL, Limit = NULL
 #' resources that are associated with the specified web ACL
 #'
 #' @description
-#' Retrieves an array of the Amazon Resource Names (ARNs) for the regional resources that are associated with the specified web ACL. If you want the list of Amazon CloudFront resources, use the CloudFront call `ListDistributionsByWebACLId`.
+#' Retrieves an array of the Amazon Resource Names (ARNs) for the regional resources that are associated with the specified web ACL.
 #'
 #' See [https://www.paws-r-sdk.com/docs/wafv2_list_resources_for_web_acl/](https://www.paws-r-sdk.com/docs/wafv2_list_resources_for_web_acl/) for full documentation.
 #'
@@ -2319,25 +2319,25 @@ wafv2_untag_resource <- function(ResourceARN, TagKeys) {
 #' delete.
 #' @param Description A description of the IP set that helps with identification.
 #' @param Addresses &#91;required&#93; Contains an array of strings that specifies zero or more IP addresses or
-#' blocks of IP addresses. All addresses must be specified using Classless
-#' Inter-Domain Routing (CIDR) notation. WAF supports all IPv4 and IPv6
-#' CIDR ranges except for `/0`.
+#' blocks of IP addresses that you want WAF to inspect for in incoming
+#' requests. All addresses must be specified using Classless Inter-Domain
+#' Routing (CIDR) notation. WAF supports all IPv4 and IPv6 CIDR ranges
+#' except for `/0`.
 #' 
 #' Example address strings:
 #' 
-#' -   To configure WAF to allow, block, or count requests that originated
-#'     from the IP address 192.0.2.44, specify `192.0.2.44/32`.
+#' -   For requests that originated from the IP address 192.0.2.44, specify
+#'     `192.0.2.44/32`.
 #' 
-#' -   To configure WAF to allow, block, or count requests that originated
-#'     from IP addresses from 192.0.2.0 to 192.0.2.255, specify
-#'     `192.0.2.0/24`.
+#' -   For requests that originated from IP addresses from 192.0.2.0 to
+#'     192.0.2.255, specify `192.0.2.0/24`.
 #' 
-#' -   To configure WAF to allow, block, or count requests that originated
-#'     from the IP address 1111:0000:0000:0000:0000:0000:0000:0111, specify
+#' -   For requests that originated from the IP address
+#'     1111:0000:0000:0000:0000:0000:0000:0111, specify
 #'     `1111:0000:0000:0000:0000:0000:0000:0111/128`.
 #' 
-#' -   To configure WAF to allow, block, or count requests that originated
-#'     from IP addresses 1111:0000:0000:0000:0000:0000:0000:0000 to
+#' -   For requests that originated from IP addresses
+#'     1111:0000:0000:0000:0000:0000:0000:0000 to
 #'     1111:0000:0000:0000:ffff:ffff:ffff:ffff, specify
 #'     `1111:0000:0000:0000:0000:0000:0000:0000/64`.
 #' 
@@ -2530,9 +2530,9 @@ wafv2_update_regex_pattern_set <- function(Name, Scope, Id, Description = NULL, 
 #' update and delete.
 #' @param Description A description of the rule group that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
-#' allow, block, or count. Each rule includes one top-level statement that
-#' WAF uses to identify matching web requests, and parameters that govern
-#' how WAF handles them.
+#' manage. Each rule includes one top-level statement that WAF uses to
+#' identify matching web requests, and parameters that govern how WAF
+#' handles them.
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
 #' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
@@ -2607,9 +2607,9 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' match.
 #' @param Description A description of the web ACL that helps with identification.
 #' @param Rules The Rule statements used to identify the web requests that you want to
-#' allow, block, or count. Each rule includes one top-level statement that
-#' WAF uses to identify matching web requests, and parameters that govern
-#' how WAF handles them.
+#' manage. Each rule includes one top-level statement that WAF uses to
+#' identify matching web requests, and parameters that govern how WAF
+#' handles them.
 #' @param VisibilityConfig &#91;required&#93; Defines and enables Amazon CloudWatch metrics and web request sample
 #' collection.
 #' @param LockToken &#91;required&#93; A token used for optimistic locking. WAF returns a token to your `get`
@@ -2659,7 +2659,7 @@ wafv2_update_rule_group <- function(Name, Scope, Id, Description = NULL, Rules =
 #' 
 #' Use this to customize the maximum size of the request body that your
 #' protected CloudFront distributions forward to WAF for inspection. The
-#' default is 16 KB (16,384 kilobytes).
+#' default is 16 KB (16,384 bytes).
 #' 
 #' You are charged additional fees when your protected resources forward
 #' body sizes that are larger than the default. For more information, see

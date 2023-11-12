@@ -12,7 +12,7 @@ resiliencehub_put_draft_app_version_template(appArn, appTemplateBody)
 for this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
 information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference} guide.}
+in the \emph{Amazon Web Services General Reference} guide.}
 
 \item{appTemplateBody}{[required] A JSON string that provides information about your application
 structure. To learn more about the \code{appTemplateBody} template, see the

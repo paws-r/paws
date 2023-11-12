@@ -19,7 +19,8 @@ quicksight_create_data_set(
   ColumnLevelPermissionRules = NULL,
   Tags = NULL,
   DataSetUsageConfiguration = NULL,
-  DatasetParameters = NULL
+  DatasetParameters = NULL,
+  FolderArns = NULL
 )
 }
 \arguments{
@@ -60,6 +61,9 @@ assigned to the dataset.}
 \item{DataSetUsageConfiguration}{}
 
 \item{DatasetParameters}{The parameter declarations of the dataset.}
+
+\item{FolderArns}{When you create the dataset, Amazon QuickSight adds the dataset to these
+folders.}
 }
 \description{
 Creates a dataset. This operation doesn't support datasets that include uploaded files as a source.
