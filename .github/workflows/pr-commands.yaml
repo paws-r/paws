@@ -80,3 +80,60 @@ jobs:
       - uses: r-lib/actions/pr-push@v2
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+  version:
+    if: ${{ github.event.issue.pull_request && (github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'OWNER') && startsWith(github.event.comment.body, '/version') }}
+    name: version
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
+      VERSION: ${{ github.event.comment.body }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: r-lib/actions/pr-fetch@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: r-lib/actions/setup-r@v2
+      
+      - name: Version
+        id: version
+        run: |
+          # extract make.paws::paws_update_version to reduce the need to install make.paws
+          paws_update_version <- function(dir) {
+            var <- Sys.getenv("VERSION")
+            m <- regexpr("[0-9\\.]+", var)
+            version <- gsub('[[:punct:] ]$',"", regmatches(var, m, invert = FALSE))
+            cat("pkg_version=", version, "\n", sep="", file = Sys.getenv("GITHUB_OUTPUT"))
+            packages <- list.files(dir, full.names = T)
+            descriptions <- file.path(packages, "DESCRIPTION")
+            if (length(version) == 0) return()
+            for (desc in descriptions) {
+              lines <- readLines(desc)
+              found <- grepl("Version: [0-9\\.]+", lines, perl = T)
+              lines[found] <- gsub("[0-9\\.]+", version, lines[found])
+              found <- grepl("paws\\..*[0-9]+\\.[0-9]+\\.[0-9]+", lines, 
+                             perl = T)
+              found[found] <- !grepl("paws\\.common.*[0-9]+\\.[0-9]+\\.[0-9]+", 
+                                     lines[found], perl = T)
+              lines[found] <- gsub("[0-9]+\\.[0-9]+\\.[0-9]+", version, 
+                                   lines[found])
+              writeLines(lines, desc)
+            }
+          }
+          
+          paws_update_version("cran")
+        shell: Rscript {0}
+
+      - name: commit
+        if: ${{ steps.version.outputs.pkg_version != '' }}
+        run: |
+          git config --local user.name "$GITHUB_ACTOR"
+          git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git add cran/*
+          git commit -m 'Update Cran Version: ${{ steps.version.outputs.pkg_version }}'
+
+      - uses: r-lib/actions/pr-push@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
