@@ -122,7 +122,7 @@ jobs:
             }
           }
           
-          paws_update_version("cran", version = version)
+          paws_update_version("cran")
         shell: Rscript {0}
 
       - name: commit
