@@ -8,8 +8,15 @@ Manager policy and Amazon Web Services account}
 fms_get_violation_details(PolicyId, MemberAccount, ResourceId, ResourceType)
 }
 \arguments{
-\item{PolicyId}{[required] The ID of the Firewall Manager policy that you want the details for.
-This currently only supports security group content audit policies.}
+\item{PolicyId}{[required] The ID of the Firewall Manager policy that you want the details for. You
+can get violation details for the following policy types:
+\itemize{
+\item DNS Firewall
+\item Imported Network Firewall
+\item Network Firewall
+\item Security group content audit
+\item Third-party firewall
+}}
 
 \item{MemberAccount}{[required] The Amazon Web Services account ID that you want the details for.}
 

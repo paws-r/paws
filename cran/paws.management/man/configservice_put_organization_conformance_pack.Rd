@@ -21,7 +21,10 @@ configservice_put_organization_conformance_pack(
 \item{TemplateS3Uri}{Location of file containing the template body. The uri must point to the
 conformance pack template (max size: 300 KB).
 
-You must have access to read Amazon S3 bucket.}
+You must have access to read Amazon S3 bucket. In addition, in order to
+ensure a successful deployment, the template object must not be in an
+\href{https://docs.aws.amazon.com/AmazonS3/latest/userguide/storage-class-intro.html}{archived storage class}
+if this parameter is passed.}
 
 \item{TemplateBody}{A string containing full conformance pack template body. Structure
 containing the template body with a minimum length of 1 byte and a

@@ -2,17 +2,17 @@
 % Please edit documentation in R/marketplacecatalog_operations.R
 \name{marketplacecatalog_get_resource_policy}
 \alias{marketplacecatalog_get_resource_policy}
-\title{Gets a resource-based policy of an Entity that is identified by its
+\title{Gets a resource-based policy of an entity that is identified by its
 resource ARN}
 \usage{
 marketplacecatalog_get_resource_policy(ResourceArn)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the Entity resource that is associated
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the entity resource that is associated
 with the resource policy.}
 }
 \description{
-Gets a resource-based policy of an Entity that is identified by its resource ARN.
+Gets a resource-based policy of an entity that is identified by its resource ARN.
 
 See \url{https://www.paws-r-sdk.com/docs/marketplacecatalog_get_resource_policy/} for full documentation.
 }

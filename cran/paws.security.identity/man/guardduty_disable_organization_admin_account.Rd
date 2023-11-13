@@ -2,8 +2,8 @@
 % Please edit documentation in R/guardduty_operations.R
 \name{guardduty_disable_organization_admin_account}
 \alias{guardduty_disable_organization_admin_account}
-\title{Disables an Amazon Web Services account within the Organization as the
-GuardDuty delegated administrator}
+\title{Removes the existing GuardDuty delegated administrator of the
+organization}
 \usage{
 guardduty_disable_organization_admin_account(AdminAccountId)
 }
@@ -12,7 +12,7 @@ guardduty_disable_organization_admin_account(AdminAccountId)
 disabled as a GuardDuty delegated administrator.}
 }
 \description{
-Disables an Amazon Web Services account within the Organization as the GuardDuty delegated administrator.
+Removes the existing GuardDuty delegated administrator of the organization. Only the organization's management account can run this API operation.
 
 See \url{https://www.paws-r-sdk.com/docs/guardduty_disable_organization_admin_account/} for full documentation.
 }

@@ -2,30 +2,30 @@
 #'
 #' @description
 #' App Runner
-#'
+#' 
 #' App Runner is an application service that provides a fast, simple, and
 #' cost-effective way to go directly from an existing container image or
 #' source code to a running service in the Amazon Web Services Cloud in
 #' seconds. You don't need to learn new technologies, decide which compute
 #' service to use, or understand how to provision and configure Amazon Web
 #' Services resources.
-#'
+#' 
 #' App Runner connects directly to your container registry or source code
 #' repository. It provides an automatic delivery pipeline with fully
 #' managed operations, high performance, scalability, and security.
-#'
+#' 
 #' For more information about App Runner, see the [App Runner Developer
 #' Guide](https://docs.aws.amazon.com/apprunner/latest/dg/). For release
 #' information, see the [App Runner Release
 #' Notes](https://docs.aws.amazon.com/apprunner/latest/relnotes/).
-#'
+#' 
 #' To install the Software Development Kits (SDKs), Integrated Development
 #' Environment (IDE) Toolkits, and command line tools that you can use to
 #' access the API, see [Tools for Amazon Web
 #' Services](https://aws.amazon.com/developer/tools/).
-#'
+#' 
 #' **Endpoints**
-#'
+#' 
 #' For a list of Region-specific endpoints that App Runner supports, see
 #' [App Runner endpoints and
 #' quotas](https://docs.aws.amazon.com/general/latest/gr/apprunner.html) in
@@ -43,9 +43,9 @@
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -139,6 +139,7 @@
 #'  \link[paws.compute:apprunner_list_observability_configurations]{list_observability_configurations} \tab Returns a list of active App Runner observability configurations in your Amazon Web Services account\cr
 #'  \link[paws.compute:apprunner_list_operations]{list_operations} \tab Return a list of operations that occurred on an App Runner service\cr
 #'  \link[paws.compute:apprunner_list_services]{list_services} \tab Returns a list of running App Runner services in your Amazon Web Services account\cr
+#'  \link[paws.compute:apprunner_list_services_for_auto_scaling_configuration]{list_services_for_auto_scaling_configuration} \tab Returns a list of the associated App Runner services using an auto scaling configuration\cr
 #'  \link[paws.compute:apprunner_list_tags_for_resource]{list_tags_for_resource} \tab List tags that are associated with for an App Runner resource\cr
 #'  \link[paws.compute:apprunner_list_vpc_connectors]{list_vpc_connectors} \tab Returns a list of App Runner VPC connectors in your Amazon Web Services account\cr
 #'  \link[paws.compute:apprunner_list_vpc_ingress_connections]{list_vpc_ingress_connections} \tab Return a list of App Runner VPC Ingress Connections in your Amazon Web Services account\cr
@@ -147,6 +148,7 @@
 #'  \link[paws.compute:apprunner_start_deployment]{start_deployment} \tab Initiate a manual deployment of the latest commit in a source code repository or the latest image in a source image repository to an App Runner service\cr
 #'  \link[paws.compute:apprunner_tag_resource]{tag_resource} \tab Add tags to, or update the tag values of, an App Runner resource\cr
 #'  \link[paws.compute:apprunner_untag_resource]{untag_resource} \tab Remove tags from an App Runner resource\cr
+#'  \link[paws.compute:apprunner_update_default_auto_scaling_configuration]{update_default_auto_scaling_configuration} \tab Update an auto scaling configuration to be the default\cr
 #'  \link[paws.compute:apprunner_update_service]{update_service} \tab Update an App Runner service\cr
 #'  \link[paws.compute:apprunner_update_vpc_ingress_connection]{update_vpc_ingress_connection} \tab Update an existing App Runner VPC Ingress Connection resource
 #' }
@@ -172,7 +174,7 @@ apprunner <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @description
 #' Batch
-#'
+#' 
 #' Using Batch, you can run batch computing workloads on the Amazon Web
 #' Services Cloud. Batch computing is a common means for developers,
 #' scientists, and engineers to access large amounts of compute resources.
@@ -182,7 +184,7 @@ apprunner <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' computing software approach. You can use Batch to efficiently provision
 #' resources d, and work toward eliminating capacity constraints, reducing
 #' your overall compute costs, and delivering results more quickly.
-#'
+#' 
 #' As a fully managed service, Batch can run batch computing workloads of
 #' any scale. Batch automatically provisions compute resources and
 #' optimizes workload distribution based on the quantity and scale of your
@@ -202,9 +204,9 @@ apprunner <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -323,9 +325,9 @@ batch <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' @description
 #' The Amazon Braket API Reference provides information about the
 #' operations and structures supported in Amazon Braket.
-#'
+#' 
 #' Additional Resources:
-#'
+#' 
 #' -   [Amazon Braket Developer
 #'     Guide](https://docs.aws.amazon.com/braket/latest/developerguide/what-is-braket.html)
 #'
@@ -341,9 +343,9 @@ batch <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -475,9 +477,9 @@ braket <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -601,18 +603,18 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #' (Amazon EBS) provides block level storage volumes for use with EC2
 #' instances. EBS volumes are highly available and reliable storage volumes
 #' that can be attached to any running instance and used like a hard drive.
-#'
+#' 
 #' To learn more, see the following resources:
-#'
+#' 
 #' -   Amazon EC2: [Amazon EC2 product page](https://aws.amazon.com/ec2/),
 #'     [Amazon EC2 documentation](https://docs.aws.amazon.com/ec2/)
-#'
+#' 
 #' -   Amazon EBS: [Amazon EBS product page](https://aws.amazon.com/ebs/),
 #'     [Amazon EBS documentation](https://docs.aws.amazon.com/ebs/)
-#'
+#' 
 #' -   Amazon VPC: [Amazon VPC product page](https://aws.amazon.com/vpc/),
 #'     [Amazon VPC documentation](https://docs.aws.amazon.com/vpc/)
-#'
+#' 
 #' -   VPN: [VPN product page](https://aws.amazon.com/vpn/), [VPN
 #'     documentation](https://docs.aws.amazon.com/vpn/)
 #'
@@ -628,9 +630,9 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -924,6 +926,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_describe_aws_network_performance_metric_subscriptions]{describe_aws_network_performance_metric_subscriptions} \tab Describes the current Infrastructure Performance metric subscriptions\cr
 #'  \link[paws.compute:ec2_describe_bundle_tasks]{describe_bundle_tasks} \tab Describes the specified bundle tasks or all of your bundle tasks\cr
 #'  \link[paws.compute:ec2_describe_byoip_cidrs]{describe_byoip_cidrs} \tab Describes the IP address ranges that were specified in calls to ProvisionByoipCidr\cr
+#'  \link[paws.compute:ec2_describe_capacity_block_offerings]{describe_capacity_block_offerings} \tab Describes Capacity Block offerings available for purchase\cr
 #'  \link[paws.compute:ec2_describe_capacity_reservation_fleets]{describe_capacity_reservation_fleets} \tab Describes one or more Capacity Reservation Fleets\cr
 #'  \link[paws.compute:ec2_describe_capacity_reservations]{describe_capacity_reservations} \tab Describes one or more of your Capacity Reservations\cr
 #'  \link[paws.compute:ec2_describe_carrier_gateways]{describe_carrier_gateways} \tab Describes one or more of your carrier gateways\cr
@@ -1071,9 +1074,12 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_disable_ebs_encryption_by_default]{disable_ebs_encryption_by_default} \tab Disables EBS encryption by default for your account in the current Region\cr
 #'  \link[paws.compute:ec2_disable_fast_launch]{disable_fast_launch} \tab Discontinue faster launching for a Windows AMI, and clean up existing pre-provisioned snapshots\cr
 #'  \link[paws.compute:ec2_disable_fast_snapshot_restores]{disable_fast_snapshot_restores} \tab Disables fast snapshot restores for the specified snapshots in the specified Availability Zones\cr
+#'  \link[paws.compute:ec2_disable_image]{disable_image} \tab Sets the AMI state to disabled and removes all launch permissions from the AMI\cr
+#'  \link[paws.compute:ec2_disable_image_block_public_access]{disable_image_block_public_access} \tab Disables block public access for AMIs at the account level in the specified Amazon Web Services Region\cr
 #'  \link[paws.compute:ec2_disable_image_deprecation]{disable_image_deprecation} \tab Cancels the deprecation of the specified AMI\cr
 #'  \link[paws.compute:ec2_disable_ipam_organization_admin_account]{disable_ipam_organization_admin_account} \tab Disable the IPAM account\cr
 #'  \link[paws.compute:ec2_disable_serial_console_access]{disable_serial_console_access} \tab Disables access to the EC2 serial console of all instances for your account\cr
+#'  \link[paws.compute:ec2_disable_snapshot_block_public_access]{disable_snapshot_block_public_access} \tab Disables the block public access for snapshots setting at the account level for the specified Amazon Web Services Region\cr
 #'  \link[paws.compute:ec2_disable_transit_gateway_route_table_propagation]{disable_transit_gateway_route_table_propagation} \tab Disables the specified resource attachment from propagating routes to the specified propagation route table\cr
 #'  \link[paws.compute:ec2_disable_vgw_route_propagation]{disable_vgw_route_propagation} \tab Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a VPC\cr
 #'  \link[paws.compute:ec2_disable_vpc_classic_link]{disable_vpc_classic_link} \tab This action is deprecated\cr
@@ -1097,10 +1103,13 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_enable_ebs_encryption_by_default]{enable_ebs_encryption_by_default} \tab Enables EBS encryption by default for your account in the current Region\cr
 #'  \link[paws.compute:ec2_enable_fast_launch]{enable_fast_launch} \tab When you enable faster launching for a Windows AMI, images are pre-provisioned, using snapshots to launch instances up to 65% faster\cr
 #'  \link[paws.compute:ec2_enable_fast_snapshot_restores]{enable_fast_snapshot_restores} \tab Enables fast snapshot restores for the specified snapshots in the specified Availability Zones\cr
+#'  \link[paws.compute:ec2_enable_image]{enable_image} \tab Re-enables a disabled AMI\cr
+#'  \link[paws.compute:ec2_enable_image_block_public_access]{enable_image_block_public_access} \tab Enables block public access for AMIs at the account level in the specified Amazon Web Services Region\cr
 #'  \link[paws.compute:ec2_enable_image_deprecation]{enable_image_deprecation} \tab Enables deprecation of the specified AMI at the specified date and time\cr
 #'  \link[paws.compute:ec2_enable_ipam_organization_admin_account]{enable_ipam_organization_admin_account} \tab Enable an Organizations member account as the IPAM admin account\cr
 #'  \link[paws.compute:ec2_enable_reachability_analyzer_organization_sharing]{enable_reachability_analyzer_organization_sharing} \tab Establishes a trust relationship between Reachability Analyzer and Organizations\cr
 #'  \link[paws.compute:ec2_enable_serial_console_access]{enable_serial_console_access} \tab Enables access to the EC2 serial console of all instances for your account\cr
+#'  \link[paws.compute:ec2_enable_snapshot_block_public_access]{enable_snapshot_block_public_access} \tab Enables or modifies the block public access for snapshots setting at the account level for the specified Amazon Web Services Region\cr
 #'  \link[paws.compute:ec2_enable_transit_gateway_route_table_propagation]{enable_transit_gateway_route_table_propagation} \tab Enables the specified attachment to propagate routes to the specified propagation route table\cr
 #'  \link[paws.compute:ec2_enable_vgw_route_propagation]{enable_vgw_route_propagation} \tab Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC\cr
 #'  \link[paws.compute:ec2_enable_volume_io]{enable_volume_io} \tab Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent\cr
@@ -1123,6 +1132,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_get_flow_logs_integration_template]{get_flow_logs_integration_template} \tab Generates a CloudFormation template that streamlines and automates the integration of VPC flow logs with Amazon Athena\cr
 #'  \link[paws.compute:ec2_get_groups_for_capacity_reservation]{get_groups_for_capacity_reservation} \tab Lists the resource groups to which a Capacity Reservation has been added\cr
 #'  \link[paws.compute:ec2_get_host_reservation_purchase_preview]{get_host_reservation_purchase_preview} \tab Preview a reservation purchase with configurations that match those of your Dedicated Host\cr
+#'  \link[paws.compute:ec2_get_image_block_public_access_state]{get_image_block_public_access_state} \tab Gets the current state of block public access for AMIs at the account level in the specified Amazon Web Services Region\cr
 #'  \link[paws.compute:ec2_get_instance_types_from_instance_requirements]{get_instance_types_from_instance_requirements} \tab Returns a list of instance types with the specified instance attributes\cr
 #'  \link[paws.compute:ec2_get_instance_uefi_data]{get_instance_uefi_data} \tab A binary representation of the UEFI variable store\cr
 #'  \link[paws.compute:ec2_get_ipam_address_history]{get_ipam_address_history} \tab Retrieve historical information about a CIDR within an IPAM scope\cr
@@ -1138,7 +1148,9 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_get_network_insights_access_scope_content]{get_network_insights_access_scope_content} \tab Gets the content for the specified Network Access Scope\cr
 #'  \link[paws.compute:ec2_get_password_data]{get_password_data} \tab Retrieves the encrypted administrator password for a running Windows instance\cr
 #'  \link[paws.compute:ec2_get_reserved_instances_exchange_quote]{get_reserved_instances_exchange_quote} \tab Returns a quote and exchange information for exchanging one or more specified Convertible Reserved Instances for a new Convertible Reserved Instance\cr
+#'  \link[paws.compute:ec2_get_security_groups_for_vpc]{get_security_groups_for_vpc} \tab Gets security groups that can be associated by the Amazon Web Services account making the request with network interfaces in the specified VPC\cr
 #'  \link[paws.compute:ec2_get_serial_console_access_status]{get_serial_console_access_status} \tab Retrieves the access status of your account to the EC2 serial console of all instances\cr
+#'  \link[paws.compute:ec2_get_snapshot_block_public_access_state]{get_snapshot_block_public_access_state} \tab Gets the current state of block public access for snapshots setting for the account and Region\cr
 #'  \link[paws.compute:ec2_get_spot_placement_scores]{get_spot_placement_scores} \tab Calculates the Spot placement score for a Region or Availability Zone based on the specified target capacity and compute requirements\cr
 #'  \link[paws.compute:ec2_get_subnet_cidr_reservations]{get_subnet_cidr_reservations} \tab Gets information about the subnet CIDR reservations\cr
 #'  \link[paws.compute:ec2_get_transit_gateway_attachment_propagations]{get_transit_gateway_attachment_propagations} \tab Lists the route tables to which the specified resource attachment propagates routes\cr
@@ -1231,6 +1243,7 @@ computeoptimizer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.compute:ec2_provision_byoip_cidr]{provision_byoip_cidr} \tab Provisions an IPv4 or IPv6 address range for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool\cr
 #'  \link[paws.compute:ec2_provision_ipam_pool_cidr]{provision_ipam_pool_cidr} \tab Provision a CIDR to an IPAM pool\cr
 #'  \link[paws.compute:ec2_provision_public_ipv_4_pool_cidr]{provision_public_ipv_4_pool_cidr} \tab Provision a CIDR to a public IPv4 pool\cr
+#'  \link[paws.compute:ec2_purchase_capacity_block]{purchase_capacity_block} \tab Purchase the Capacity Block for use with your account\cr
 #'  \link[paws.compute:ec2_purchase_host_reservation]{purchase_host_reservation} \tab Purchase a reservation with configurations that match those of your Dedicated Host\cr
 #'  \link[paws.compute:ec2_purchase_reserved_instances_offering]{purchase_reserved_instances_offering} \tab Purchases a Reserved Instance for use with your account\cr
 #'  \link[paws.compute:ec2_purchase_scheduled_instances]{purchase_scheduled_instances} \tab You can no longer purchase Scheduled Instances\cr
@@ -1330,9 +1343,9 @@ ec2 <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -1431,7 +1444,7 @@ ec2instanceconnect <- function(config = list(), credentials = list(), endpoint =
 #'
 #' @description
 #' Amazon Elastic Container Registry
-#'
+#' 
 #' Amazon Elastic Container Registry (Amazon ECR) is a managed container
 #' image registry service. Customers can use the familiar Docker CLI, or
 #' their preferred client, to push, pull, and manage images. Amazon ECR
@@ -1439,7 +1452,7 @@ ec2instanceconnect <- function(config = list(), credentials = list(), endpoint =
 #' Open Container Initiative (OCI) images. Amazon ECR supports private
 #' repositories with resource-based permissions using IAM so that specific
 #' users or Amazon EC2 instances can access repositories and images.
-#'
+#' 
 #' Amazon ECR has service endpoints in each supported Region. For more
 #' information, see [Amazon ECR
 #' endpoints](https://docs.aws.amazon.com/general/latest/gr/ecr.html) in
@@ -1457,9 +1470,9 @@ ec2instanceconnect <- function(config = list(), credentials = list(), endpoint =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -1621,9 +1634,9 @@ ecr <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -1738,7 +1751,7 @@ ecrpublic <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @description
 #' Amazon Elastic Container Service
-#'
+#' 
 #' Amazon Elastic Container Service (Amazon ECS) is a highly scalable,
 #' fast, container management service. It makes it easy to run, stop, and
 #' manage Docker containers. You can host your cluster on a serverless
@@ -1746,12 +1759,12 @@ ecrpublic <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' or tasks on Fargate. For more control, you can host your tasks on a
 #' cluster of Amazon Elastic Compute Cloud (Amazon EC2) or External
 #' (on-premises) instances that you manage.
-#'
+#' 
 #' Amazon ECS makes it easy to launch and stop container-based applications
 #' with simple API calls. This makes it easy to get the state of your
 #' cluster from a centralized service, and gives you access to many
 #' familiar Amazon EC2 features.
-#'
+#' 
 #' You can use Amazon ECS to schedule the placement of containers across
 #' your cluster based on your resource needs, isolation policies, and
 #' availability requirements. With Amazon ECS, you don't need to operate
@@ -1770,9 +1783,9 @@ ecrpublic <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -1925,7 +1938,7 @@ ecs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' needing to stand up or maintain your own Kubernetes control plane.
 #' Kubernetes is an open-source system for automating the deployment,
 #' scaling, and management of containerized applications.
-#'
+#' 
 #' Amazon EKS runs up-to-date versions of the open-source Kubernetes
 #' software, so you can use all the existing plugins and tooling from the
 #' Kubernetes community. Applications running on Amazon EKS are fully
@@ -1946,9 +1959,9 @@ ecs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -2034,10 +2047,12 @@ ecs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.compute:eks_associate_identity_provider_config]{associate_identity_provider_config} \tab Associate an identity provider configuration to a cluster\cr
 #'  \link[paws.compute:eks_create_addon]{create_addon} \tab Creates an Amazon EKS add-on\cr
 #'  \link[paws.compute:eks_create_cluster]{create_cluster} \tab Creates an Amazon EKS control plane\cr
+#'  \link[paws.compute:eks_create_eks_anywhere_subscription]{create_eks_anywhere_subscription} \tab Creates an EKS Anywhere subscription\cr
 #'  \link[paws.compute:eks_create_fargate_profile]{create_fargate_profile} \tab Creates an Fargate profile for your Amazon EKS cluster\cr
 #'  \link[paws.compute:eks_create_nodegroup]{create_nodegroup} \tab Creates a managed node group for an Amazon EKS cluster\cr
 #'  \link[paws.compute:eks_delete_addon]{delete_addon} \tab Delete an Amazon EKS add-on\cr
 #'  \link[paws.compute:eks_delete_cluster]{delete_cluster} \tab Deletes the Amazon EKS cluster control plane\cr
+#'  \link[paws.compute:eks_delete_eks_anywhere_subscription]{delete_eks_anywhere_subscription} \tab Deletes an expired / inactive subscription\cr
 #'  \link[paws.compute:eks_delete_fargate_profile]{delete_fargate_profile} \tab Deletes an Fargate profile\cr
 #'  \link[paws.compute:eks_delete_nodegroup]{delete_nodegroup} \tab Deletes an Amazon EKS node group for a cluster\cr
 #'  \link[paws.compute:eks_deregister_cluster]{deregister_cluster} \tab Deregisters a connected cluster to remove it from the Amazon EKS control plane\cr
@@ -2045,13 +2060,15 @@ ecs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.compute:eks_describe_addon_configuration]{describe_addon_configuration} \tab Returns configuration options\cr
 #'  \link[paws.compute:eks_describe_addon_versions]{describe_addon_versions} \tab Describes the versions for an add-on\cr
 #'  \link[paws.compute:eks_describe_cluster]{describe_cluster} \tab Returns descriptive information about an Amazon EKS cluster\cr
+#'  \link[paws.compute:eks_describe_eks_anywhere_subscription]{describe_eks_anywhere_subscription} \tab Returns descriptive information about a subscription\cr
 #'  \link[paws.compute:eks_describe_fargate_profile]{describe_fargate_profile} \tab Returns descriptive information about an Fargate profile\cr
 #'  \link[paws.compute:eks_describe_identity_provider_config]{describe_identity_provider_config} \tab Returns descriptive information about an identity provider configuration\cr
 #'  \link[paws.compute:eks_describe_nodegroup]{describe_nodegroup} \tab Returns descriptive information about an Amazon EKS node group\cr
 #'  \link[paws.compute:eks_describe_update]{describe_update} \tab Returns descriptive information about an update against your Amazon EKS cluster or associated managed node group or Amazon EKS add-on\cr
 #'  \link[paws.compute:eks_disassociate_identity_provider_config]{disassociate_identity_provider_config} \tab Disassociates an identity provider configuration from a cluster\cr
-#'  \link[paws.compute:eks_list_addons]{list_addons} \tab Lists the available add-ons\cr
+#'  \link[paws.compute:eks_list_addons]{list_addons} \tab Lists the installed add-ons\cr
 #'  \link[paws.compute:eks_list_clusters]{list_clusters} \tab Lists the Amazon EKS clusters in your Amazon Web Services account in the specified Region\cr
+#'  \link[paws.compute:eks_list_eks_anywhere_subscriptions]{list_eks_anywhere_subscriptions} \tab Displays the full description of the subscription\cr
 #'  \link[paws.compute:eks_list_fargate_profiles]{list_fargate_profiles} \tab Lists the Fargate profiles associated with the specified cluster in your Amazon Web Services account in the specified Region\cr
 #'  \link[paws.compute:eks_list_identity_provider_configs]{list_identity_provider_configs} \tab A list of identity provider configurations\cr
 #'  \link[paws.compute:eks_list_nodegroups]{list_nodegroups} \tab Lists the Amazon EKS managed node groups associated with the specified cluster in your Amazon Web Services account in the specified Region\cr
@@ -2063,6 +2080,7 @@ ecs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.compute:eks_update_addon]{update_addon} \tab Updates an Amazon EKS add-on\cr
 #'  \link[paws.compute:eks_update_cluster_config]{update_cluster_config} \tab Updates an Amazon EKS cluster configuration\cr
 #'  \link[paws.compute:eks_update_cluster_version]{update_cluster_version} \tab Updates an Amazon EKS cluster to the specified Kubernetes version\cr
+#'  \link[paws.compute:eks_update_eks_anywhere_subscription]{update_eks_anywhere_subscription} \tab Update an EKS Anywhere Subscription\cr
 #'  \link[paws.compute:eks_update_nodegroup_config]{update_nodegroup_config} \tab Updates an Amazon EKS managed node group configuration\cr
 #'  \link[paws.compute:eks_update_nodegroup_version]{update_nodegroup_version} \tab Updates the Kubernetes version or AMI version of an Amazon EKS managed node group
 #' }
@@ -2090,7 +2108,7 @@ eks <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' AWS Elastic Beanstalk makes it easy for you to create, deploy, and
 #' manage scalable, fault-tolerant applications running on the Amazon Web
 #' Services cloud.
-#'
+#' 
 #' For more information about this product, go to the [AWS Elastic
 #' Beanstalk](https://aws.amazon.com/elasticbeanstalk/) details page. The
 #' location of the latest AWS Elastic Beanstalk WSDL is
@@ -2099,9 +2117,9 @@ eks <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' Environment (IDE) Toolkits, and command line tools that enable you to
 #' access the API, go to [Tools for Amazon Web
 #' Services](https://aws.amazon.com/developer/tools/).
-#'
+#' 
 #' **Endpoints**
-#'
+#' 
 #' For a list of region-specific endpoints that AWS Elastic Beanstalk
 #' supports, go to [Regions and
 #' Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#elasticbeanstalk_region)
@@ -2119,9 +2137,9 @@ eks <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -2269,18 +2287,18 @@ elasticbeanstalk <- function(config = list(), credentials = list(), endpoint = N
 #' more information about Amazon EMR on EKS concepts and tasks, see [What
 #' is shared
 #' id="EMR-EKS"/\>](https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/emr-eks.html).
-#'
+#' 
 #' *Amazon EMR containers* is the API name for Amazon EMR on EKS. The
 #' `emr-containers` prefix is used in the following scenarios:
-#'
+#' 
 #' -   It is the prefix in the CLI commands for Amazon EMR on EKS. For
 #'     example, `aws emr-containers start-job-run`.
-#'
+#' 
 #' -   It is the prefix before IAM policy actions for Amazon EMR on EKS.
 #'     For example, `"Action": [ "emr-containers:StartJobRun"]`. For more
 #'     information, see [Policy actions for Amazon EMR on
 #'     EKS](https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions).
-#'
+#' 
 #' -   It is the prefix used in Amazon EMR on EKS service endpoints. For
 #'     example, `emr-containers.us-east-2.amazonaws.com`. For more
 #'     information, see [Amazon EMR on EKSService
@@ -2298,9 +2316,9 @@ elasticbeanstalk <- function(config = list(), credentials = list(), endpoint = N
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -2417,18 +2435,18 @@ emrcontainers <- function(config = list(), credentials = list(), endpoint = NULL
 #' such as Apache Spark and Apache Hive. With Amazon EMR Serverless, you
 #' don’t have to configure, optimize, secure, or operate clusters to run
 #' applications with these frameworks.
-#'
+#' 
 #' The API reference to Amazon EMR Serverless is `emr-serverless`. The
 #' `emr-serverless` prefix is used in the following scenarios:
-#'
+#' 
 #' -   It is the prefix in the CLI commands for Amazon EMR Serverless. For
 #'     example, `aws emr-serverless start-job-run`.
-#'
+#' 
 #' -   It is the prefix before IAM policy actions for Amazon EMR
 #'     Serverless. For example, `"Action": ["emr-serverless:StartJobRun"]`.
 #'     For more information, see [Policy actions for Amazon EMR
 #'     Serverless](https://docs.aws.amazon.com/emr/latest/EMR-Serverless-UserGuide/security_iam_service-with-iam.html#security_iam_service-with-iam-id-based-policies-actions).
-#'
+#' 
 #' -   It is the prefix used in Amazon EMR Serverless service endpoints.
 #'     For example, `emr-serverless.us-east-2.amazonaws.com`.
 #'
@@ -2444,9 +2462,9 @@ emrcontainers <- function(config = list(), credentials = list(), endpoint = NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -2570,9 +2588,9 @@ emrserverless <- function(config = list(), credentials = list(), endpoint = NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -2720,9 +2738,9 @@ imagebuilder <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @description
 #' Lambda
-#'
+#' 
 #' **Overview**
-#'
+#' 
 #' Lambda is a compute service that lets you run code without provisioning
 #' or managing servers. Lambda runs your code on a high-availability
 #' compute infrastructure and performs all of the administration of the
@@ -2733,27 +2751,27 @@ imagebuilder <- function(config = list(), credentials = list(), endpoint = NULL,
 #' service, see [What is
 #' Lambda](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html) in
 #' the **Lambda Developer Guide**.
-#'
+#' 
 #' The *Lambda API Reference* provides information about each of the API
 #' methods, including details about the parameters in each API request and
 #' response.
-#'
+#' 
 #' You can use Software Development Kits (SDKs), Integrated Development
 #' Environment (IDE) Toolkits, and command line tools to access the API.
 #' For installation instructions, see [Tools for Amazon Web
 #' Services](https://aws.amazon.com/developer/tools/).
-#'
+#' 
 #' For a list of Region-specific endpoints that Lambda supports, see Lambda
 #' endpoints and quotas in the *Amazon Web Services General Reference.*.
-#'
+#' 
 #' When making the API calls, you will need to authenticate your request by
 #' providing a signature. Lambda supports signature version 4. For more
 #' information, see [Signature Version 4 signing
 #' process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html)
 #' in the *Amazon Web Services General Reference.*.
-#'
+#' 
 #' **CA certificates**
-#'
+#' 
 #' Because Amazon Web Services SDKs use the CA certificates from your
 #' computer, changes to the certificates on the Amazon Web Services servers
 #' can cause connection failures when you attempt to use an SDK. You can
@@ -2762,33 +2780,33 @@ imagebuilder <- function(config = list(), credentials = list(), endpoint = NULL,
 #' environment and do not manage your own computer, you might need to ask
 #' an administrator to assist with the update process. The following list
 #' shows minimum operating system and Java versions:
-#'
+#' 
 #' -   Microsoft Windows versions that have updates from January 2005 or
 #'     later installed contain at least one of the required CAs in their
 #'     trust list.
-#'
+#' 
 #' -   Mac OS X 10.4 with Java for Mac OS X 10.4 Release 5 (February 2007),
 #'     Mac OS X 10.5 (October 2007), and later versions contain at least
 #'     one of the required CAs in their trust list.
-#'
+#' 
 #' -   Red Hat Enterprise Linux 5 (March 2007), 6, and 7 and CentOS 5, 6,
 #'     and 7 all contain at least one of the required CAs in their default
 #'     trusted CA list.
-#'
+#' 
 #' -   Java 1.4.2_12 (May 2006), 5 Update 2 (March 2005), and all later
 #'     versions, including Java 6 (December 2006), 7, and 8, contain at
 #'     least one of the required CAs in their default trusted CA list.
-#'
+#' 
 #' When accessing the Lambda management console or Lambda API endpoints,
 #' whether through browsers or programmatically, you will need to ensure
 #' your client machines support any of the following CAs:
-#'
+#' 
 #' -   Amazon Root CA 1
-#'
+#' 
 #' -   Starfield Services Root Certificate Authority - G2
-#'
+#' 
 #' -   Starfield Class 2 Certification Authority
-#'
+#' 
 #' Root certificates from the first two authorities are available from
 #' [Amazon trust services](https://www.amazontrust.com/repository/), but
 #' keeping your computer up-to-date is the more straightforward solution.
@@ -2808,9 +2826,9 @@ imagebuilder <- function(config = list(), credentials = list(), endpoint = NULL,
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -2975,12 +2993,12 @@ lambda <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' static IP addresses, load balancers, content delivery network (CDN)
 #' distributions, DNS management of registered domains, and resource
 #' snapshots (backups) - for a low, predictable monthly price.
-#'
+#' 
 #' You can manage your Lightsail resources using the Lightsail console,
 #' Lightsail API, Command Line Interface (CLI), or SDKs. For more
 #' information about Lightsail concepts and tasks, see the Amazon Lightsail
 #' Developer Guide.
-#'
+#' 
 #' This API Reference provides detailed information about the actions, data
 #' types, parameters, and errors of the Lightsail service. For more
 #' information about the supported Amazon Web Services Regions, endpoints,
@@ -3001,9 +3019,9 @@ lambda <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -3259,36 +3277,36 @@ lightsail <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' and [data
 #' types](https://docs.aws.amazon.com/proton/latest/APIReference/API_Types.html)
 #' for the Proton service.
-#'
+#' 
 #' The documentation for each action shows the Query API request parameters
 #' and the XML response.
-#'
+#' 
 #' Alternatively, you can use the Amazon Web Services CLI to access an API.
 #' For more information, see the [Amazon Web Services Command Line
 #' Interface User
 #' Guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html).
-#'
+#' 
 #' The Proton service is a two-pronged automation framework. Administrators
 #' create service templates to provide standardized infrastructure and
 #' deployment tooling for serverless and container based applications.
 #' Developers, in turn, select from the available service templates to
 #' automate their application or service deployments.
-#'
+#' 
 #' Because administrators define the infrastructure and tooling that Proton
 #' deploys and manages, they need permissions to use all of the listed API
 #' operations.
-#'
+#' 
 #' When developers select a specific infrastructure and tooling set, Proton
 #' deploys their applications. To monitor their applications that are
 #' running on Proton, developers need permissions to the service *create*,
 #' *list*, *update* and *delete* API operations and the service instance
 #' *list* and *update* API operations.
-#'
+#' 
 #' To learn more about Proton, see the [Proton User
 #' Guide](https://docs.aws.amazon.com/proton/latest/userguide/Welcome.html).
-#'
+#' 
 #' **Ensuring Idempotency**
-#'
+#' 
 #' When you make a mutating API request, the request typically returns a
 #' result before the asynchronous workflows of the operation are complete.
 #' Operations might also time out or encounter other server issues before
@@ -3299,18 +3317,18 @@ lightsail <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' request and the subsequent retries are successful, the operation occurs
 #' multiple times. This means that you might create more resources than you
 #' intended.
-#'
+#' 
 #' *Idempotency* ensures that an API request action completes no more than
 #' one time. With an idempotent request, if the original request action
 #' completes successfully, any subsequent retries complete successfully
 #' without performing any further actions. However, the result might
 #' contain updated information, such as the current creation status.
-#'
+#' 
 #' The following lists of APIs are grouped according to methods that ensure
 #' idempotency.
-#'
+#' 
 #' **Idempotent create APIs with a client token**
-#'
+#' 
 #' The API actions in this list support idempotency with the use of a
 #' *client token*. The corresponding Amazon Web Services CLI commands also
 #' support idempotency using a client token. A client token is a unique,
@@ -3320,95 +3338,95 @@ lightsail <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' client token for other API requests. If you don’t provide a client token
 #' for these APIs, a default client token is automatically provided by
 #' SDKs.
-#'
+#' 
 #' Given a request action that has succeeded:
-#'
+#' 
 #' If you retry the request using the same client token and the same
 #' parameters, the retry succeeds without performing any further actions
 #' other than returning the original resource detail data in the response.
-#'
+#' 
 #' If you retry the request using the same client token, but one or more of
 #' the parameters are different, the retry throws a `ValidationException`
 #' with an `IdempotentParameterMismatch` error.
-#'
+#' 
 #' Client tokens expire eight hours after a request is made. If you retry
 #' the request with the expired token, a new resource is created.
-#'
+#' 
 #' If the original resource is deleted and you retry the request, a new
 #' resource is created.
-#'
+#' 
 #' Idempotent create APIs with a client token:
-#'
+#' 
 #' -   CreateEnvironmentTemplateVersion
-#'
+#' 
 #' -   CreateServiceTemplateVersion
-#'
+#' 
 #' -   CreateEnvironmentAccountConnection
-#'
+#' 
 #' **Idempotent create APIs**
-#'
+#' 
 #' Given a request action that has succeeded:
-#'
+#' 
 #' If you retry the request with an API from this group, and the original
 #' resource *hasn't* been modified, the retry succeeds without performing
 #' any further actions other than returning the original resource detail
 #' data in the response.
-#'
+#' 
 #' If the original resource has been modified, the retry throws a
 #' `ConflictException`.
-#'
+#' 
 #' If you retry with different input parameters, the retry throws a
 #' `ValidationException` with an `IdempotentParameterMismatch` error.
-#'
+#' 
 #' Idempotent create APIs:
-#'
+#' 
 #' -   CreateEnvironmentTemplate
-#'
+#' 
 #' -   CreateServiceTemplate
-#'
+#' 
 #' -   CreateEnvironment
-#'
+#' 
 #' -   CreateService
-#'
+#' 
 #' **Idempotent delete APIs**
-#'
+#' 
 #' Given a request action that has succeeded:
-#'
+#' 
 #' When you retry the request with an API from this group and the resource
 #' was deleted, its metadata is returned in the response.
-#'
+#' 
 #' If you retry and the resource doesn't exist, the response is empty.
-#'
+#' 
 #' In both cases, the retry succeeds.
-#'
+#' 
 #' Idempotent delete APIs:
-#'
+#' 
 #' -   DeleteEnvironmentTemplate
-#'
+#' 
 #' -   DeleteEnvironmentTemplateVersion
-#'
+#' 
 #' -   DeleteServiceTemplate
-#'
+#' 
 #' -   DeleteServiceTemplateVersion
-#'
+#' 
 #' -   DeleteEnvironmentAccountConnection
-#'
+#' 
 #' **Asynchronous idempotent delete APIs**
-#'
+#' 
 #' Given a request action that has succeeded:
-#'
+#' 
 #' If you retry the request with an API from this group, if the original
 #' request delete operation status is `DELETE_IN_PROGRESS`, the retry
 #' returns the resource detail data in the response without performing any
 #' further actions.
-#'
+#' 
 #' If the original request delete operation is complete, a retry returns an
 #' empty response.
-#'
+#' 
 #' Asynchronous idempotent delete APIs:
-#'
+#' 
 #' -   DeleteEnvironment
-#'
+#' 
 #' -   DeleteService
 #'
 #' @param
@@ -3423,9 +3441,9 @@ lightsail <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -3607,7 +3625,7 @@ proton <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' and enterprises to quickly find and deploy serverless applications in
 #' the AWS Cloud. For more information about serverless applications, see
 #' Serverless Computing and Applications on the AWS website.
-#'
+#' 
 #' The AWS Serverless Application Repository is deeply integrated with the
 #' AWS Lambda console, so that developers of all levels can get started
 #' with serverless computing without needing to learn anything new. You can
@@ -3616,7 +3634,7 @@ proton <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' for applications by name, publisher, or event source. To use an
 #' application, you simply choose it, configure any required fields, and
 #' deploy it with a few clicks.
-#'
+#' 
 #' You can also easily publish applications, sharing them publicly with the
 #' community at large, or privately within your team or across your
 #' organization. To publish a serverless application (or app), you can use
@@ -3625,14 +3643,14 @@ proton <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' manifest file, also known as the AWS Serverless Application Model (AWS
 #' SAM) template. For more information about AWS SAM, see AWS Serverless
 #' Application Model (AWS SAM) on the AWS Labs GitHub repository.
-#'
+#' 
 #' The AWS Serverless Application Repository Developer Guide contains more
 #' information about the two developer experiences available:
-#'
+#' 
 #' -   Consuming Applications – Browse for applications and view
 #'     information about them, including source code and readme files. Also
 #'     install, configure, and deploy applications of your choosing.
-#'
+#' 
 #'     Publishing Applications – Configure and upload applications to make
 #'     them available to other developers, and publish new versions of
 #'     applications.
@@ -3649,9 +3667,9 @@ proton <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -3757,7 +3775,7 @@ serverlessapplicationrepository <- function(config = list(), credentials = list(
 #'
 #' @description
 #' Backup
-#'
+#' 
 #' Backup is a unified backup service designed to protect Amazon Web
 #' Services services and their associated data. Backup simplifies the
 #' creation, migration, restoration, and deletion of backups, while also
@@ -3775,9 +3793,9 @@ serverlessapplicationrepository <- function(config = list(), credentials = list(
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -3956,9 +3974,9 @@ backup <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -4061,7 +4079,7 @@ backupstorage <- function(config = list(), credentials = list(), endpoint = NULL
 #' With Amazon Data Lifecycle Manager, you can manage the lifecycle of your
 #' Amazon Web Services resources. You create lifecycle policies, which are
 #' used to automate operations on the specified resources.
-#'
+#' 
 #' Amazon Data Lifecycle Manager supports Amazon EBS volumes and snapshots.
 #' For information about using Amazon Data Lifecycle Manager with Amazon
 #' EBS, see [Amazon Data Lifecycle
@@ -4080,9 +4098,9 @@ backupstorage <- function(config = list(), credentials = list(), endpoint = NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -4190,7 +4208,7 @@ dlm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' EBS volumes through snapshots. This can be done without having to create
 #' new volumes from snapshots, and then use Amazon Elastic Compute Cloud
 #' (Amazon EC2) instances to compare the differences.
-#'
+#' 
 #' You can create incremental snapshots directly from data on-premises into
 #' volumes and the cloud to use for quick disaster recovery. With the
 #' ability to write and read snapshots, you can write your on-premises data
@@ -4198,7 +4216,7 @@ dlm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' it back to Amazon Web Services or on-premises from the snapshot. You no
 #' longer need to build and maintain complex mechanisms to copy data to and
 #' from Amazon EBS.
-#'
+#' 
 #' This API reference provides detailed information about the actions, data
 #' types, parameters, and errors of the EBS direct APIs. For more
 #' information about the elements that make up the EBS direct APIs, and
@@ -4224,9 +4242,9 @@ dlm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -4345,9 +4363,9 @@ ebs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -4493,9 +4511,9 @@ efs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -4564,7 +4582,7 @@ efs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.storage:finspacedata_associate_user_to_permission_group]{associate_user_to_permission_group} \tab Adds a user account to a permission group to grant permissions for actions a user can perform in FinSpace\cr
+#'  \link[paws.storage:finspacedata_associate_user_to_permission_group]{associate_user_to_permission_group} \tab Adds a user to a permission group to grant permissions for actions a user can perform in FinSpace\cr
 #'  \link[paws.storage:finspacedata_create_changeset]{create_changeset} \tab Creates a new Changeset in a FinSpace Dataset\cr
 #'  \link[paws.storage:finspacedata_create_dataset]{create_dataset} \tab Creates a new FinSpace Dataset\cr
 #'  \link[paws.storage:finspacedata_create_data_view]{create_data_view} \tab Creates a Dataview for a Dataset\cr
@@ -4573,7 +4591,7 @@ efs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.storage:finspacedata_delete_dataset]{delete_dataset} \tab Deletes a FinSpace Dataset\cr
 #'  \link[paws.storage:finspacedata_delete_permission_group]{delete_permission_group} \tab Deletes a permission group\cr
 #'  \link[paws.storage:finspacedata_disable_user]{disable_user} \tab Denies access to the FinSpace web application and API for the specified user\cr
-#'  \link[paws.storage:finspacedata_disassociate_user_from_permission_group]{disassociate_user_from_permission_group} \tab Removes a user account from a permission group\cr
+#'  \link[paws.storage:finspacedata_disassociate_user_from_permission_group]{disassociate_user_from_permission_group} \tab Removes a user from a permission group\cr
 #'  \link[paws.storage:finspacedata_enable_user]{enable_user} \tab Allows the specified user to access the FinSpace web application and API\cr
 #'  \link[paws.storage:finspacedata_get_changeset]{get_changeset} \tab Get information about a Changeset\cr
 #'  \link[paws.storage:finspacedata_get_dataset]{get_dataset} \tab Returns information about a Dataset\cr
@@ -4587,14 +4605,14 @@ efs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.storage:finspacedata_list_datasets]{list_datasets} \tab Lists all of the active Datasets that a user has access to\cr
 #'  \link[paws.storage:finspacedata_list_data_views]{list_data_views} \tab Lists all available Dataviews for a Dataset\cr
 #'  \link[paws.storage:finspacedata_list_permission_groups]{list_permission_groups} \tab Lists all available permission groups in FinSpace\cr
-#'  \link[paws.storage:finspacedata_list_permission_groups_by_user]{list_permission_groups_by_user} \tab Lists all the permission groups that are associated with a specific user account\cr
-#'  \link[paws.storage:finspacedata_list_users]{list_users} \tab Lists all available user accounts in FinSpace\cr
+#'  \link[paws.storage:finspacedata_list_permission_groups_by_user]{list_permission_groups_by_user} \tab Lists all the permission groups that are associated with a specific user\cr
+#'  \link[paws.storage:finspacedata_list_users]{list_users} \tab Lists all available users in FinSpace\cr
 #'  \link[paws.storage:finspacedata_list_users_by_permission_group]{list_users_by_permission_group} \tab Lists details of all the users in a specific permission group\cr
 #'  \link[paws.storage:finspacedata_reset_user_password]{reset_user_password} \tab Resets the password for a specified user ID and generates a temporary one\cr
 #'  \link[paws.storage:finspacedata_update_changeset]{update_changeset} \tab Updates a FinSpace Changeset\cr
 #'  \link[paws.storage:finspacedata_update_dataset]{update_dataset} \tab Updates a FinSpace Dataset\cr
 #'  \link[paws.storage:finspacedata_update_permission_group]{update_permission_group} \tab Modifies the details of a permission group\cr
-#'  \link[paws.storage:finspacedata_update_user]{update_user} \tab Modifies the details of the specified user account
+#'  \link[paws.storage:finspacedata_update_user]{update_user} \tab Modifies the details of the specified user
 #' }
 #'
 #' @return
@@ -4632,9 +4650,9 @@ finspacedata <- function(config = list(), credentials = list(), endpoint = NULL,
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -4738,6 +4756,7 @@ finspacedata <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.storage:fsx_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for Amazon FSx resources\cr
 #'  \link[paws.storage:fsx_release_file_system_nfs_v3_locks]{release_file_system_nfs_v3_locks} \tab Releases the file system lock from an Amazon FSx for OpenZFS file system\cr
 #'  \link[paws.storage:fsx_restore_volume_from_snapshot]{restore_volume_from_snapshot} \tab Returns an Amazon FSx for OpenZFS volume to the state saved by the specified snapshot\cr
+#'  \link[paws.storage:fsx_start_misconfigured_state_recovery]{start_misconfigured_state_recovery} \tab After performing steps to repair the Active Directory configuration of an FSx for Windows File Server file system, use this action to initiate the process of Amazon FSx attempting to reconnect to the file system\cr
 #'  \link[paws.storage:fsx_tag_resource]{tag_resource} \tab Tags an Amazon FSx resource\cr
 #'  \link[paws.storage:fsx_untag_resource]{untag_resource} \tab This action removes a tag from an Amazon FSx resource\cr
 #'  \link[paws.storage:fsx_update_data_repository_association]{update_data_repository_association} \tab Updates the configuration of an existing data repository association on an Amazon FSx for Lustre file system\cr
@@ -4769,7 +4788,7 @@ fsx <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @description
 #' Amazon S3 Glacier (Glacier) is a storage solution for "cold data."
-#'
+#' 
 #' Glacier is an extremely low-cost storage service that provides secure,
 #' durable, and easy-to-use storage for data backup and archival. With
 #' Glacier, customers can store their data cost effectively for months,
@@ -4778,26 +4797,26 @@ fsx <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' don't have to worry about capacity planning, hardware provisioning, data
 #' replication, hardware failure and recovery, or time-consuming hardware
 #' migrations.
-#'
+#' 
 #' Glacier is a great storage choice when low storage cost is paramount and
 #' your data is rarely retrieved. If your application requires fast or
 #' frequent access to your data, consider using Amazon S3. For more
 #' information, see [Amazon Simple Storage Service (Amazon
 #' S3)](https://aws.amazon.com/s3/).
-#'
+#' 
 #' You can store any kind of data in any format. There is no maximum limit
 #' on the total amount of data you can store in Glacier.
-#'
+#' 
 #' If you are a first-time user of Glacier, we recommend that you begin by
 #' reading the following sections in the *Amazon S3 Glacier Developer
 #' Guide*:
-#'
+#' 
 #' -   [What is Amazon S3
 #'     Glacier](https://docs.aws.amazon.com/amazonglacier/latest/dev/introduction.html) -
 #'     This section of the Developer Guide describes the underlying data
 #'     model, the operations it supports, and the AWS SDKs that you can use
 #'     to interact with the service.
-#'
+#' 
 #' -   [Getting Started with Amazon S3
 #'     Glacier](https://docs.aws.amazon.com/amazonglacier/latest/dev/amazon-glacier-getting-started.html) -
 #'     The Getting Started section walks you through the process of
@@ -4816,9 +4835,9 @@ fsx <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -4943,18 +4962,210 @@ glacier <- function(config = list(), credentials = list(), endpoint = NULL, regi
   )
 }
 
+#' Amazon Omics
+#'
+#' @description
+#' This is the *AWS HealthOmics API Reference*. For an introduction to the
+#' service, see [What is AWS
+#' HealthOmics?](https://docs.aws.amazon.com/omics/latest/dev/) in the *AWS
+#' HealthOmics User Guide*.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- omics(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- omics()
+#' svc$abort_multipart_read_set_upload(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.storage:omics_abort_multipart_read_set_upload]{abort_multipart_read_set_upload} \tab Stops a multipart upload\cr
+#'  \link[paws.storage:omics_accept_share]{accept_share} \tab Accepts a share for an analytics store\cr
+#'  \link[paws.storage:omics_batch_delete_read_set]{batch_delete_read_set} \tab Deletes one or more read sets\cr
+#'  \link[paws.storage:omics_cancel_annotation_import_job]{cancel_annotation_import_job} \tab Cancels an annotation import job\cr
+#'  \link[paws.storage:omics_cancel_run]{cancel_run} \tab Cancels a run\cr
+#'  \link[paws.storage:omics_cancel_variant_import_job]{cancel_variant_import_job} \tab Cancels a variant import job\cr
+#'  \link[paws.storage:omics_complete_multipart_read_set_upload]{complete_multipart_read_set_upload} \tab Concludes a multipart upload once you have uploaded all the components\cr
+#'  \link[paws.storage:omics_create_annotation_store]{create_annotation_store} \tab Creates an annotation store\cr
+#'  \link[paws.storage:omics_create_annotation_store_version]{create_annotation_store_version} \tab Creates a new version of an annotation store\cr
+#'  \link[paws.storage:omics_create_multipart_read_set_upload]{create_multipart_read_set_upload} \tab Begins a multipart read set upload\cr
+#'  \link[paws.storage:omics_create_reference_store]{create_reference_store} \tab Creates a reference store\cr
+#'  \link[paws.storage:omics_create_run_group]{create_run_group} \tab Creates a run group\cr
+#'  \link[paws.storage:omics_create_sequence_store]{create_sequence_store} \tab Creates a sequence store\cr
+#'  \link[paws.storage:omics_create_share]{create_share} \tab Creates a share offer that can be accepted outside the account by a subscriber\cr
+#'  \link[paws.storage:omics_create_variant_store]{create_variant_store} \tab Creates a variant store\cr
+#'  \link[paws.storage:omics_create_workflow]{create_workflow} \tab Creates a workflow\cr
+#'  \link[paws.storage:omics_delete_annotation_store]{delete_annotation_store} \tab Deletes an annotation store\cr
+#'  \link[paws.storage:omics_delete_annotation_store_versions]{delete_annotation_store_versions} \tab Deletes one or multiple versions of an annotation store\cr
+#'  \link[paws.storage:omics_delete_reference]{delete_reference} \tab Deletes a genome reference\cr
+#'  \link[paws.storage:omics_delete_reference_store]{delete_reference_store} \tab Deletes a genome reference store\cr
+#'  \link[paws.storage:omics_delete_run]{delete_run} \tab Deletes a workflow run\cr
+#'  \link[paws.storage:omics_delete_run_group]{delete_run_group} \tab Deletes a workflow run group\cr
+#'  \link[paws.storage:omics_delete_sequence_store]{delete_sequence_store} \tab Deletes a sequence store\cr
+#'  \link[paws.storage:omics_delete_share]{delete_share} \tab Deletes a share of an analytics store\cr
+#'  \link[paws.storage:omics_delete_variant_store]{delete_variant_store} \tab Deletes a variant store\cr
+#'  \link[paws.storage:omics_delete_workflow]{delete_workflow} \tab Deletes a workflow\cr
+#'  \link[paws.storage:omics_get_annotation_import_job]{get_annotation_import_job} \tab Gets information about an annotation import job\cr
+#'  \link[paws.storage:omics_get_annotation_store]{get_annotation_store} \tab Gets information about an annotation store\cr
+#'  \link[paws.storage:omics_get_annotation_store_version]{get_annotation_store_version} \tab Retrieves the metadata for an annotation store version\cr
+#'  \link[paws.storage:omics_get_read_set]{get_read_set} \tab Gets a file from a read set\cr
+#'  \link[paws.storage:omics_get_read_set_activation_job]{get_read_set_activation_job} \tab Gets information about a read set activation job\cr
+#'  \link[paws.storage:omics_get_read_set_export_job]{get_read_set_export_job} \tab Gets information about a read set export job\cr
+#'  \link[paws.storage:omics_get_read_set_import_job]{get_read_set_import_job} \tab Gets information about a read set import job\cr
+#'  \link[paws.storage:omics_get_read_set_metadata]{get_read_set_metadata} \tab Gets details about a read set\cr
+#'  \link[paws.storage:omics_get_reference]{get_reference} \tab Gets a reference file\cr
+#'  \link[paws.storage:omics_get_reference_import_job]{get_reference_import_job} \tab Gets information about a reference import job\cr
+#'  \link[paws.storage:omics_get_reference_metadata]{get_reference_metadata} \tab Gets information about a genome reference's metadata\cr
+#'  \link[paws.storage:omics_get_reference_store]{get_reference_store} \tab Gets information about a reference store\cr
+#'  \link[paws.storage:omics_get_run]{get_run} \tab Gets information about a workflow run\cr
+#'  \link[paws.storage:omics_get_run_group]{get_run_group} \tab Gets information about a workflow run group\cr
+#'  \link[paws.storage:omics_get_run_task]{get_run_task} \tab Gets information about a workflow run task\cr
+#'  \link[paws.storage:omics_get_sequence_store]{get_sequence_store} \tab Gets information about a sequence store\cr
+#'  \link[paws.storage:omics_get_share]{get_share} \tab Retrieves the metadata for a share\cr
+#'  \link[paws.storage:omics_get_variant_import_job]{get_variant_import_job} \tab Gets information about a variant import job\cr
+#'  \link[paws.storage:omics_get_variant_store]{get_variant_store} \tab Gets information about a variant store\cr
+#'  \link[paws.storage:omics_get_workflow]{get_workflow} \tab Gets information about a workflow\cr
+#'  \link[paws.storage:omics_list_annotation_import_jobs]{list_annotation_import_jobs} \tab Retrieves a list of annotation import jobs\cr
+#'  \link[paws.storage:omics_list_annotation_stores]{list_annotation_stores} \tab Retrieves a list of annotation stores\cr
+#'  \link[paws.storage:omics_list_annotation_store_versions]{list_annotation_store_versions} \tab Lists the versions of an annotation store\cr
+#'  \link[paws.storage:omics_list_multipart_read_set_uploads]{list_multipart_read_set_uploads} \tab Lists all multipart read set uploads and their statuses\cr
+#'  \link[paws.storage:omics_list_read_set_activation_jobs]{list_read_set_activation_jobs} \tab Retrieves a list of read set activation jobs\cr
+#'  \link[paws.storage:omics_list_read_set_export_jobs]{list_read_set_export_jobs} \tab Retrieves a list of read set export jobs\cr
+#'  \link[paws.storage:omics_list_read_set_import_jobs]{list_read_set_import_jobs} \tab Retrieves a list of read set import jobs\cr
+#'  \link[paws.storage:omics_list_read_sets]{list_read_sets} \tab Retrieves a list of read sets\cr
+#'  \link[paws.storage:omics_list_read_set_upload_parts]{list_read_set_upload_parts} \tab This operation will list all parts in a requested multipart upload for a sequence store\cr
+#'  \link[paws.storage:omics_list_reference_import_jobs]{list_reference_import_jobs} \tab Retrieves a list of reference import jobs\cr
+#'  \link[paws.storage:omics_list_references]{list_references} \tab Retrieves a list of references\cr
+#'  \link[paws.storage:omics_list_reference_stores]{list_reference_stores} \tab Retrieves a list of reference stores\cr
+#'  \link[paws.storage:omics_list_run_groups]{list_run_groups} \tab Retrieves a list of run groups\cr
+#'  \link[paws.storage:omics_list_runs]{list_runs} \tab Retrieves a list of runs\cr
+#'  \link[paws.storage:omics_list_run_tasks]{list_run_tasks} \tab Retrieves a list of tasks for a run\cr
+#'  \link[paws.storage:omics_list_sequence_stores]{list_sequence_stores} \tab Retrieves a list of sequence stores\cr
+#'  \link[paws.storage:omics_list_shares]{list_shares} \tab Lists all shares associated with an account\cr
+#'  \link[paws.storage:omics_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves a list of tags for a resource\cr
+#'  \link[paws.storage:omics_list_variant_import_jobs]{list_variant_import_jobs} \tab Retrieves a list of variant import jobs\cr
+#'  \link[paws.storage:omics_list_variant_stores]{list_variant_stores} \tab Retrieves a list of variant stores\cr
+#'  \link[paws.storage:omics_list_workflows]{list_workflows} \tab Retrieves a list of workflows\cr
+#'  \link[paws.storage:omics_start_annotation_import_job]{start_annotation_import_job} \tab Starts an annotation import job\cr
+#'  \link[paws.storage:omics_start_read_set_activation_job]{start_read_set_activation_job} \tab Activates an archived read set\cr
+#'  \link[paws.storage:omics_start_read_set_export_job]{start_read_set_export_job} \tab Exports a read set to Amazon S3\cr
+#'  \link[paws.storage:omics_start_read_set_import_job]{start_read_set_import_job} \tab Starts a read set import job\cr
+#'  \link[paws.storage:omics_start_reference_import_job]{start_reference_import_job} \tab Starts a reference import job\cr
+#'  \link[paws.storage:omics_start_run]{start_run} \tab Starts a workflow run\cr
+#'  \link[paws.storage:omics_start_variant_import_job]{start_variant_import_job} \tab Starts a variant import job\cr
+#'  \link[paws.storage:omics_tag_resource]{tag_resource} \tab Tags a resource\cr
+#'  \link[paws.storage:omics_untag_resource]{untag_resource} \tab Removes tags from a resource\cr
+#'  \link[paws.storage:omics_update_annotation_store]{update_annotation_store} \tab Updates an annotation store\cr
+#'  \link[paws.storage:omics_update_annotation_store_version]{update_annotation_store_version} \tab Updates the description of an annotation store version\cr
+#'  \link[paws.storage:omics_update_run_group]{update_run_group} \tab Updates a run group\cr
+#'  \link[paws.storage:omics_update_variant_store]{update_variant_store} \tab Updates a variant store\cr
+#'  \link[paws.storage:omics_update_workflow]{update_workflow} \tab Updates a workflow\cr
+#'  \link[paws.storage:omics_upload_read_set_part]{upload_read_set_part} \tab This operation uploads a specific part of a read set
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname omics
+#' @export
+omics <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.storage::omics(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon Recycle Bin
 #'
 #' @description
 #' This is the *Recycle Bin API Reference*. This documentation provides
 #' descriptions and syntax for each of the actions and data types in
 #' Recycle Bin.
-#'
+#' 
 #' Recycle Bin is a resource recovery feature that enables you to restore
 #' accidentally deleted snapshots and EBS-backed AMIs. When using Recycle
 #' Bin, if your resources are deleted, they are retained in the Recycle Bin
 #' for a time period that you specify.
-#'
+#' 
 #' You can restore a resource from the Recycle Bin at any time before its
 #' retention period expires. After you restore a resource from the Recycle
 #' Bin, the resource is removed from the Recycle Bin, and you can then use
@@ -4978,9 +5189,9 @@ glacier <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -5080,7 +5291,7 @@ recyclebin <- function(config = list(), credentials = list(), endpoint = NULL, r
 
 #' Amazon Simple Storage Service
 #'
-#'
+#' 
 #'
 #' @param
 #' config
@@ -5094,9 +5305,9 @@ recyclebin <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -5304,9 +5515,9 @@ s3 <- function(config = list(), credentials = list(), endpoint = NULL, region = 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -5475,9 +5686,9 @@ s3control <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -5574,42 +5785,42 @@ s3outposts <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @description
 #' Storage Gateway Service
-#'
+#' 
 #' Storage Gateway is the service that connects an on-premises software
 #' appliance with cloud-based storage to provide seamless and secure
 #' integration between an organization's on-premises IT environment and the
 #' Amazon Web Services storage infrastructure. The service enables you to
 #' securely upload data to the Amazon Web Services Cloud for cost effective
 #' backup and rapid disaster recovery.
-#'
+#' 
 #' Use the following links to get started using the *Storage Gateway
 #' Service API Reference*:
-#'
+#' 
 #' -   [Storage Gateway required request
 #'     headers](https://docs.aws.amazon.com/storagegateway/#AWSStorageGatewayHTTPRequestsHeaders):
 #'     Describes the required headers that you must send with every POST
 #'     request to Storage Gateway.
-#'
+#' 
 #' -   [Signing
 #'     requests](https://docs.aws.amazon.com/storagegateway/#AWSStorageGatewaySigningRequests):
 #'     Storage Gateway requires that you authenticate every request you
 #'     send; this topic describes how sign such a request.
-#'
+#' 
 #' -   [Error
 #'     responses](https://docs.aws.amazon.com/storagegateway/#APIErrorResponses):
 #'     Provides reference information about Storage Gateway errors.
-#'
+#' 
 #' -   [Operations in Storage
 #'     Gateway](https://docs.aws.amazon.com/storagegateway/latest/APIReference/API_Operations.html):
 #'     Contains detailed descriptions of all Storage Gateway operations,
 #'     their request parameters, response elements, possible errors, and
 #'     examples of requests and responses.
-#'
+#' 
 #' -   [Storage Gateway endpoints and
 #'     quotas](https://docs.aws.amazon.com/general/latest/gr/sg.html):
 #'     Provides a list of each Amazon Web Services Region and the endpoints
 #'     available for use with Storage Gateway.
-#'
+#' 
 #' Storage Gateway resource IDs are in uppercase. When you use these
 #' resource IDs with the Amazon EC2 API, EC2 expects resource IDs in
 #' lowercase. You must change your resource ID to lowercase to use it with
@@ -5617,7 +5828,7 @@ s3outposts <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' be `vol-AA22BB012345DAF670`. When you use this ID with the EC2 API, you
 #' must change it to `vol-aa22bb012345daf670`. Otherwise, the EC2 API might
 #' not behave as expected.
-#'
+#' 
 #' IDs for Storage Gateway volumes and Amazon EBS snapshots created from
 #' gateway volumes are changing to a longer format. Starting in December
 #' 2016, all new volumes and snapshots will be created with a 17-character
@@ -5625,15 +5836,15 @@ s3outposts <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' so you can test your systems with the new format. For more information,
 #' see [Longer EC2 and EBS resource
 #' IDs](https://aws.amazon.com/ec2/faqs/#longer-ids).
-#'
+#' 
 #' For example, a volume Amazon Resource Name (ARN) with the longer volume
 #' ID format looks like the following:
-#'
+#' 
 #' `arn:aws:storagegateway:us-west-2:111122223333:gateway/sgw-12A3456B/volume/vol-1122AABBCCDDEEFFG`.
-#'
+#' 
 #' A snapshot ID with the longer ID format looks like the following:
 #' `snap-78e226633445566ee`.
-#'
+#' 
 #' For more information, see Announcement: Heads-up – Longer Storage
 #' Gateway volume and snapshot IDs coming in 2016.
 #'
@@ -5649,9 +5860,9 @@ s3outposts <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -5763,7 +5974,7 @@ s3outposts <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'  \link[paws.storage:storagegateway_describe_cachedi_scsi_volumes]{describe_cachedi_scsi_volumes} \tab Returns a description of the gateway volumes specified in the request\cr
 #'  \link[paws.storage:storagegateway_describe_chap_credentials]{describe_chap_credentials} \tab Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a specified iSCSI target, one for each target-initiator pair\cr
 #'  \link[paws.storage:storagegateway_describe_file_system_associations]{describe_file_system_associations} \tab Gets the file system association information\cr
-#'  \link[paws.storage:storagegateway_describe_gateway_information]{describe_gateway_information} \tab Returns metadata about a gateway such as its name, network interfaces, configured time zone, and the state (whether the gateway is running or not)\cr
+#'  \link[paws.storage:storagegateway_describe_gateway_information]{describe_gateway_information} \tab Returns metadata about a gateway such as its name, network interfaces, time zone, status, and software version\cr
 #'  \link[paws.storage:storagegateway_describe_maintenance_start_time]{describe_maintenance_start_time} \tab Returns your gateway's weekly maintenance start time including the day and time of the week\cr
 #'  \link[paws.storage:storagegateway_describe_nfs_file_shares]{describe_nfs_file_shares} \tab Gets a description for one or more Network File System (NFS) file shares from an S3 File Gateway\cr
 #'  \link[paws.storage:storagegateway_describe_smb_file_shares]{describe_smb_file_shares} \tab Gets a description for one or more Server Message Block (SMB) file shares from a S3 File Gateway\cr
@@ -5781,7 +5992,7 @@ s3outposts <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'  \link[paws.storage:storagegateway_disassociate_file_system]{disassociate_file_system} \tab Disassociates an Amazon FSx file system from the specified gateway\cr
 #'  \link[paws.storage:storagegateway_join_domain]{join_domain} \tab Adds a file gateway to an Active Directory domain\cr
 #'  \link[paws.storage:storagegateway_list_automatic_tape_creation_policies]{list_automatic_tape_creation_policies} \tab Lists the automatic tape creation policies for a gateway\cr
-#'  \link[paws.storage:storagegateway_list_file_shares]{list_file_shares} \tab Gets a list of the file shares for a specific S3 File Gateway, or the list of file shares that belong to the calling user account\cr
+#'  \link[paws.storage:storagegateway_list_file_shares]{list_file_shares} \tab Gets a list of the file shares for a specific S3 File Gateway, or the list of file shares that belong to the calling Amazon Web Services account\cr
 #'  \link[paws.storage:storagegateway_list_file_system_associations]{list_file_system_associations} \tab Gets a list of FileSystemAssociationSummary objects\cr
 #'  \link[paws.storage:storagegateway_list_gateways]{list_gateways} \tab Lists gateways owned by an Amazon Web Services account in an Amazon Web Services Region specified in the request\cr
 #'  \link[paws.storage:storagegateway_list_local_disks]{list_local_disks} \tab Returns a list of the gateway's local disks\cr
@@ -5859,9 +6070,9 @@ storagegateway <- function(config = list(), credentials = list(), endpoint = NUL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -5991,9 +6202,9 @@ dax <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -6134,6 +6345,126 @@ docdb <- function(config = list(), credentials = list(), endpoint = NULL, region
   )
 }
 
+#' Amazon DocumentDB Elastic Clusters
+#'
+#' @description
+#' The new Amazon Elastic DocumentDB service endpoint.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- docdbelastic(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- docdbelastic()
+#' svc$create_cluster(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.database:docdbelastic_create_cluster]{create_cluster} \tab Creates a new Elastic DocumentDB cluster and returns its Cluster structure\cr
+#'  \link[paws.database:docdbelastic_create_cluster_snapshot]{create_cluster_snapshot} \tab Creates a snapshot of a cluster\cr
+#'  \link[paws.database:docdbelastic_delete_cluster]{delete_cluster} \tab Delete a Elastic DocumentDB cluster\cr
+#'  \link[paws.database:docdbelastic_delete_cluster_snapshot]{delete_cluster_snapshot} \tab Delete a Elastic DocumentDB snapshot\cr
+#'  \link[paws.database:docdbelastic_get_cluster]{get_cluster} \tab Returns information about a specific Elastic DocumentDB cluster\cr
+#'  \link[paws.database:docdbelastic_get_cluster_snapshot]{get_cluster_snapshot} \tab Returns information about a specific Elastic DocumentDB snapshot\cr
+#'  \link[paws.database:docdbelastic_list_clusters]{list_clusters} \tab Returns information about provisioned Elastic DocumentDB clusters\cr
+#'  \link[paws.database:docdbelastic_list_cluster_snapshots]{list_cluster_snapshots} \tab Returns information about Elastic DocumentDB snapshots for a specified cluster\cr
+#'  \link[paws.database:docdbelastic_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on a Elastic DocumentDB resource\cr
+#'  \link[paws.database:docdbelastic_restore_cluster_from_snapshot]{restore_cluster_from_snapshot} \tab Restores a Elastic DocumentDB cluster from a snapshot\cr
+#'  \link[paws.database:docdbelastic_tag_resource]{tag_resource} \tab Adds metadata tags to a Elastic DocumentDB resource\cr
+#'  \link[paws.database:docdbelastic_untag_resource]{untag_resource} \tab Removes metadata tags to a Elastic DocumentDB resource\cr
+#'  \link[paws.database:docdbelastic_update_cluster]{update_cluster} \tab Modifies a Elastic DocumentDB cluster
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname docdbelastic
+#' @export
+docdbelastic <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::docdbelastic(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon DynamoDB
 #'
 #' @description
@@ -6143,14 +6474,14 @@ docdb <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' distributed database, so that you don't have to worry about hardware
 #' provisioning, setup and configuration, replication, software patching,
 #' or cluster scaling.
-#'
+#' 
 #' With DynamoDB, you can create database tables that can store and
 #' retrieve any amount of data, and serve any level of request traffic. You
 #' can scale up or scale down your tables' throughput capacity without
 #' downtime or performance degradation, and use the Amazon Web Services
 #' Management Console to monitor resource utilization and performance
 #' metrics.
-#'
+#' 
 #' DynamoDB automatically spreads the data and traffic for your tables over
 #' a sufficient number of servers to handle your throughput and storage
 #' requirements, while maintaining consistent and fast performance. All of
@@ -6170,9 +6501,9 @@ docdb <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -6302,7 +6633,7 @@ docdb <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'  \link[paws.database:dynamodb_export_table_to_point_in_time]{export_table_to_point_in_time} \tab Exports table data to an S3 bucket\cr
 #'  \link[paws.database:dynamodb_get_item]{get_item} \tab The GetItem operation returns a set of attributes for the item with the given primary key\cr
 #'  \link[paws.database:dynamodb_import_table]{import_table} \tab Imports table data from an S3 bucket\cr
-#'  \link[paws.database:dynamodb_list_backups]{list_backups} \tab List backups associated with an Amazon Web Services account\cr
+#'  \link[paws.database:dynamodb_list_backups]{list_backups} \tab List DynamoDB backups that are associated with an Amazon Web Services account and weren't made with Amazon Web Services Backup\cr
 #'  \link[paws.database:dynamodb_list_contributor_insights]{list_contributor_insights} \tab Returns a list of ContributorInsightsSummary for a table and all its global secondary indexes\cr
 #'  \link[paws.database:dynamodb_list_exports]{list_exports} \tab Lists completed exports within the past 90 days\cr
 #'  \link[paws.database:dynamodb_list_global_tables]{list_global_tables} \tab Lists all global tables that have a replica in the specified Region\cr
@@ -6349,7 +6680,7 @@ dynamodb <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @description
 #' Amazon DynamoDB
-#'
+#' 
 #' Amazon DynamoDB Streams provides API actions for accessing streams and
 #' processing stream records. To learn more about application development
 #' with Streams, see [Capturing Table Activity with DynamoDB
@@ -6368,9 +6699,9 @@ dynamodb <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -6468,13 +6799,13 @@ dynamodbstreams <- function(config = list(), credentials = list(), endpoint = NU
 #' @description
 #' Amazon ElastiCache is a web service that makes it easier to set up,
 #' operate, and scale a distributed cache in the cloud.
-#'
+#' 
 #' With ElastiCache, customers get all of the benefits of a
 #' high-performance, in-memory cache with less of the administrative burden
 #' involved in launching and managing a distributed cache. The service
 #' makes setup, scaling, and cluster failure handling much simpler than in
 #' a self-managed cache deployment.
-#'
+#' 
 #' In addition, through integration with Amazon CloudWatch, customers get
 #' enhanced visibility into the key performance statistics associated with
 #' their cache and can receive alarms if a part of their cache runs hot.
@@ -6491,9 +6822,9 @@ dynamodbstreams <- function(config = list(), credentials = list(), endpoint = NU
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -6657,24 +6988,24 @@ elasticache <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' Web Services Management Console or a few lines of code, you can create
 #' keyspaces and tables in Amazon Keyspaces, without deploying any
 #' infrastructure or installing software.
-#'
+#' 
 #' In addition to supporting Cassandra Query Language (CQL) requests via
 #' open-source Cassandra drivers, Amazon Keyspaces supports data definition
 #' language (DDL) operations to manage keyspaces and tables using the
 #' Amazon Web Services SDK and CLI, as well as infrastructure as code (IaC)
 #' services and tools such as CloudFormation and Terraform. This API
 #' reference describes the supported DDL operations in detail.
-#'
+#' 
 #' For the list of all supported CQL APIs, see [Supported Cassandra APIs,
 #' operations, and data types in Amazon
 #' Keyspaces](https://docs.aws.amazon.com/keyspaces/latest/devguide/cassandra-apis.html)
 #' in the *Amazon Keyspaces Developer Guide*.
-#'
+#' 
 #' To learn how Amazon Keyspaces API actions are recorded with CloudTrail,
 #' see [Amazon Keyspaces information in
 #' CloudTrail](https://docs.aws.amazon.com/keyspaces/latest/devguide/logging-using-cloudtrail.html#service-name-info-in-cloudtrail)
 #' in the *Amazon Keyspaces Developer Guide*.
-#'
+#' 
 #' For more information about Amazon Web Services APIs, for example how to
 #' implement retry logic or how to sign Amazon Web Services API requests,
 #' see [Amazon Web Services
@@ -6693,9 +7024,9 @@ elasticache <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -6800,7 +7131,7 @@ keyspaces <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @description
 #' Lake Formation
-#'
+#' 
 #' Defines the public endpoint for the Lake Formation service.
 #'
 #' @param
@@ -6815,9 +7146,9 @@ keyspaces <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -6893,8 +7224,10 @@ keyspaces <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'  \link[paws.database:lakeformation_cancel_transaction]{cancel_transaction} \tab Attempts to cancel the specified transaction\cr
 #'  \link[paws.database:lakeformation_commit_transaction]{commit_transaction} \tab Attempts to commit the specified transaction\cr
 #'  \link[paws.database:lakeformation_create_data_cells_filter]{create_data_cells_filter} \tab Creates a data cell filter to allow one to grant access to certain columns on certain rows\cr
+#'  \link[paws.database:lakeformation_create_lake_formation_opt_in]{create_lake_formation_opt_in} \tab Enforce Lake Formation permissions for the given databases, tables, and principals\cr
 #'  \link[paws.database:lakeformation_create_lf_tag]{create_lf_tag} \tab Creates an LF-tag with the specified name and values\cr
 #'  \link[paws.database:lakeformation_delete_data_cells_filter]{delete_data_cells_filter} \tab Deletes a data cell filter\cr
+#'  \link[paws.database:lakeformation_delete_lake_formation_opt_in]{delete_lake_formation_opt_in} \tab Remove the Lake Formation permissions enforcement of the given databases, tables, and principals\cr
 #'  \link[paws.database:lakeformation_delete_lf_tag]{delete_lf_tag} \tab Deletes the specified LF-tag given a key name\cr
 #'  \link[paws.database:lakeformation_delete_objects_on_cancel]{delete_objects_on_cancel} \tab For a specific governed table, provides a list of Amazon S3 objects that will be written during the current transaction and that can be automatically deleted if the transaction is canceled\cr
 #'  \link[paws.database:lakeformation_deregister_resource]{deregister_resource} \tab Deregisters the resource as managed by the Data Catalog\cr
@@ -6915,6 +7248,7 @@ keyspaces <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'  \link[paws.database:lakeformation_get_work_units]{get_work_units} \tab Retrieves the work units generated by the StartQueryPlanning operation\cr
 #'  \link[paws.database:lakeformation_grant_permissions]{grant_permissions} \tab Grants permissions to the principal to access metadata in the Data Catalog and data organized in underlying data storage such as Amazon S3\cr
 #'  \link[paws.database:lakeformation_list_data_cells_filter]{list_data_cells_filter} \tab Lists all the data cell filters on a table\cr
+#'  \link[paws.database:lakeformation_list_lake_formation_opt_ins]{list_lake_formation_opt_ins} \tab Retrieve the current list of resources and principals that are opt in to enforce Lake Formation permissions\cr
 #'  \link[paws.database:lakeformation_list_lf_tags]{list_lf_tags} \tab Lists LF-tags that the requester has permission to view\cr
 #'  \link[paws.database:lakeformation_list_permissions]{list_permissions} \tab Returns a list of the principal permissions on the resource, filtered by the permissions of the caller\cr
 #'  \link[paws.database:lakeformation_list_resources]{list_resources} \tab Lists the resources registered to be managed by the Data Catalog\cr
@@ -6975,9 +7309,9 @@ lakeformation <- function(config = list(), credentials = list(), endpoint = NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -7117,7 +7451,7 @@ memorydb <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' connected datasets. Neptune powers graph use cases such as
 #' recommendation engines, fraud detection, knowledge graphs, drug
 #' discovery, and network security.
-#'
+#' 
 #' This interface reference for Amazon Neptune contains documentation for a
 #' programming or command line interface you can use to manage Amazon
 #' Neptune. Note that Amazon Neptune is asynchronous, which means that some
@@ -7140,9 +7474,9 @@ memorydb <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -7299,6 +7633,163 @@ neptune <- function(config = list(), credentials = list(), endpoint = NULL, regi
   )
 }
 
+#' Amazon NeptuneData
+#'
+#' @description
+#' Neptune Data API
+#' 
+#' The Amazon Neptune data API provides SDK support for more than 40 of
+#' Neptune's data operations, including data loading, query execution, data
+#' inquiry, and machine learning. It supports the Gremlin and openCypher
+#' query languages, and is available in all SDK languages. It automatically
+#' signs API requests and greatly simplifies integrating Neptune into your
+#' applications.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- neptunedata(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- neptunedata()
+#' svc$cancel_gremlin_query(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.database:neptunedata_cancel_gremlin_query]{cancel_gremlin_query} \tab Cancels a Gremlin query\cr
+#'  \link[paws.database:neptunedata_cancel_loader_job]{cancel_loader_job} \tab Cancels a specified load job\cr
+#'  \link[paws.database:neptunedata_cancel_ml_data_processing_job]{cancel_ml_data_processing_job} \tab Cancels a Neptune ML data processing job\cr
+#'  \link[paws.database:neptunedata_cancel_ml_model_training_job]{cancel_ml_model_training_job} \tab Cancels a Neptune ML model training job\cr
+#'  \link[paws.database:neptunedata_cancel_ml_model_transform_job]{cancel_ml_model_transform_job} \tab Cancels a specified model transform job\cr
+#'  \link[paws.database:neptunedata_cancel_open_cypher_query]{cancel_open_cypher_query} \tab Cancels a specified openCypher query\cr
+#'  \link[paws.database:neptunedata_create_ml_endpoint]{create_ml_endpoint} \tab Creates a new Neptune ML inference endpoint that lets you query one specific model that the model-training process constructed\cr
+#'  \link[paws.database:neptunedata_delete_ml_endpoint]{delete_ml_endpoint} \tab Cancels the creation of a Neptune ML inference endpoint\cr
+#'  \link[paws.database:neptunedata_delete_propertygraph_statistics]{delete_propertygraph_statistics} \tab Deletes statistics for Gremlin and openCypher (property graph) data\cr
+#'  \link[paws.database:neptunedata_delete_sparql_statistics]{delete_sparql_statistics} \tab Deletes SPARQL statistics\cr
+#'  \link[paws.database:neptunedata_execute_fast_reset]{execute_fast_reset} \tab The fast reset REST API lets you reset a Neptune graph quicky and easily, removing all of its data\cr
+#'  \link[paws.database:neptunedata_execute_gremlin_explain_query]{execute_gremlin_explain_query} \tab Executes a Gremlin Explain query\cr
+#'  \link[paws.database:neptunedata_execute_gremlin_profile_query]{execute_gremlin_profile_query} \tab Executes a Gremlin Profile query, which runs a specified traversal, collects various metrics about the run, and produces a profile report as output\cr
+#'  \link[paws.database:neptunedata_execute_gremlin_query]{execute_gremlin_query} \tab This commands executes a Gremlin query\cr
+#'  \link[paws.database:neptunedata_execute_open_cypher_explain_query]{execute_open_cypher_explain_query} \tab Executes an openCypher explain request\cr
+#'  \link[paws.database:neptunedata_execute_open_cypher_query]{execute_open_cypher_query} \tab Executes an openCypher query\cr
+#'  \link[paws.database:neptunedata_get_engine_status]{get_engine_status} \tab Retrieves the status of the graph database on the host\cr
+#'  \link[paws.database:neptunedata_get_gremlin_query_status]{get_gremlin_query_status} \tab Gets the status of a specified Gremlin query\cr
+#'  \link[paws.database:neptunedata_get_loader_job_status]{get_loader_job_status} \tab Gets status information about a specified load job\cr
+#'  \link[paws.database:neptunedata_get_ml_data_processing_job]{get_ml_data_processing_job} \tab Retrieves information about a specified data processing job\cr
+#'  \link[paws.database:neptunedata_get_ml_endpoint]{get_ml_endpoint} \tab Retrieves details about an inference endpoint\cr
+#'  \link[paws.database:neptunedata_get_ml_model_training_job]{get_ml_model_training_job} \tab Retrieves information about a Neptune ML model training job\cr
+#'  \link[paws.database:neptunedata_get_ml_model_transform_job]{get_ml_model_transform_job} \tab Gets information about a specified model transform job\cr
+#'  \link[paws.database:neptunedata_get_open_cypher_query_status]{get_open_cypher_query_status} \tab Retrieves the status of a specified openCypher query\cr
+#'  \link[paws.database:neptunedata_get_propertygraph_statistics]{get_propertygraph_statistics} \tab Gets property graph statistics (Gremlin and openCypher)\cr
+#'  \link[paws.database:neptunedata_get_propertygraph_stream]{get_propertygraph_stream} \tab Gets a stream for a property graph\cr
+#'  \link[paws.database:neptunedata_get_propertygraph_summary]{get_propertygraph_summary} \tab Gets a graph summary for a property graph\cr
+#'  \link[paws.database:neptunedata_get_rdf_graph_summary]{get_rdf_graph_summary} \tab Gets a graph summary for an RDF graph\cr
+#'  \link[paws.database:neptunedata_get_sparql_statistics]{get_sparql_statistics} \tab Gets RDF statistics (SPARQL)\cr
+#'  \link[paws.database:neptunedata_get_sparql_stream]{get_sparql_stream} \tab Gets a stream for an RDF graph\cr
+#'  \link[paws.database:neptunedata_list_gremlin_queries]{list_gremlin_queries} \tab Lists active Gremlin queries\cr
+#'  \link[paws.database:neptunedata_list_loader_jobs]{list_loader_jobs} \tab Retrieves a list of the loadIds for all active loader jobs\cr
+#'  \link[paws.database:neptunedata_list_ml_data_processing_jobs]{list_ml_data_processing_jobs} \tab Returns a list of Neptune ML data processing jobs\cr
+#'  \link[paws.database:neptunedata_list_ml_endpoints]{list_ml_endpoints} \tab Lists existing inference endpoints\cr
+#'  \link[paws.database:neptunedata_list_ml_model_training_jobs]{list_ml_model_training_jobs} \tab Lists Neptune ML model-training jobs\cr
+#'  \link[paws.database:neptunedata_list_ml_model_transform_jobs]{list_ml_model_transform_jobs} \tab Returns a list of model transform job IDs\cr
+#'  \link[paws.database:neptunedata_list_open_cypher_queries]{list_open_cypher_queries} \tab Lists active openCypher queries\cr
+#'  \link[paws.database:neptunedata_manage_propertygraph_statistics]{manage_propertygraph_statistics} \tab Manages the generation and use of property graph statistics\cr
+#'  \link[paws.database:neptunedata_manage_sparql_statistics]{manage_sparql_statistics} \tab Manages the generation and use of RDF graph statistics\cr
+#'  \link[paws.database:neptunedata_start_loader_job]{start_loader_job} \tab Starts a Neptune bulk loader job to load data from an Amazon S3 bucket into a Neptune DB instance\cr
+#'  \link[paws.database:neptunedata_start_ml_data_processing_job]{start_ml_data_processing_job} \tab Creates a new Neptune ML data processing job for processing the graph data exported from Neptune for training\cr
+#'  \link[paws.database:neptunedata_start_ml_model_training_job]{start_ml_model_training_job} \tab Creates a new Neptune ML model training job\cr
+#'  \link[paws.database:neptunedata_start_ml_model_transform_job]{start_ml_model_transform_job} \tab Creates a new model transform job
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname neptunedata
+#' @export
+neptunedata <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.database::neptunedata(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon QLDB
 #'
 #' @description
@@ -7316,9 +7807,9 @@ neptune <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -7430,10 +7921,10 @@ qldb <- function(config = list(), credentials = list(), endpoint = NULL, region 
 #'
 #' @description
 #' The transactional data APIs for Amazon QLDB
-#'
+#' 
 #' Instead of interacting directly with this API, we recommend using the
 #' QLDB driver or the QLDB shell to execute data transactions on a ledger.
-#'
+#' 
 #' -   If you are working with an AWS SDK, use the QLDB driver. The driver
 #'     provides a high-level abstraction layer above this *QLDB Session*
 #'     data plane and manages `send_command`
@@ -7441,7 +7932,7 @@ qldb <- function(config = list(), credentials = list(), endpoint = NULL, region 
 #'     programming languages, see [Getting started with the
 #'     driver](https://docs.aws.amazon.com/qldb/latest/developerguide/getting-started-driver.html)
 #'     in the *Amazon QLDB Developer Guide*.
-#'
+#' 
 #' -   If you are working with the AWS Command Line Interface (AWS CLI),
 #'     use the QLDB shell. The shell is a command line interface that uses
 #'     the QLDB driver to interact with a ledger. For information, see
@@ -7460,9 +7951,9 @@ qldb <- function(config = list(), credentials = list(), endpoint = NULL, region 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -7560,7 +8051,7 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' industry-standard relational database and manages common database
 #' administration tasks, freeing up developers to focus on what makes their
 #' applications and businesses unique.
-#'
+#' 
 #' Amazon RDS gives you access to the capabilities of a MySQL, MariaDB,
 #' PostgreSQL, Microsoft SQL Server, Oracle, or Amazon Aurora database
 #' server. These capabilities mean that the code, applications, and tools
@@ -7571,7 +8062,7 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' storage capacity to meet your application's demand. As with all Amazon
 #' Web Services, there are no up-front investments, and you pay only for
 #' the resources you use.
-#'
+#' 
 #' This interface reference for Amazon RDS contains documentation for a
 #' programming or command line interface you can use to manage Amazon RDS.
 #' Amazon RDS is asynchronous, which means that some interfaces might
@@ -7581,26 +8072,26 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' next instance reboot, or during the maintenance window. The reference
 #' structure is as follows, and we list following some related topics from
 #' the user guide.
-#'
+#' 
 #' **Amazon RDS API Reference**
-#'
+#' 
 #' -   For the alphabetical list of API actions, see [API
 #'     Actions](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_Operations.html).
-#'
+#' 
 #' -   For the alphabetical list of data types, see [Data
 #'     Types](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/API_Types.html).
-#'
+#' 
 #' -   For a list of common query parameters, see [Common
 #'     Parameters](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/CommonParameters.html).
-#'
+#' 
 #' -   For descriptions of the error codes, see [Common
 #'     Errors](https://docs.aws.amazon.com/AmazonRDS/latest/APIReference/CommonErrors.html).
-#'
+#' 
 #' **Amazon RDS User Guide**
-#'
+#' 
 #' -   For a summary of the Amazon RDS interfaces, see [Available RDS
 #'     Interfaces](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Welcome.html#Welcome.Interfaces).
-#'
+#' 
 #' -   For more information about how to use the Query API, see [Using the
 #'     Query
 #'     API](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Using_the_Query_API.html).
@@ -7617,9 +8108,9 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -7718,7 +8209,9 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.database:rds_create_db_subnet_group]{create_db_subnet_group} \tab Creates a new DB subnet group\cr
 #'  \link[paws.database:rds_create_event_subscription]{create_event_subscription} \tab Creates an RDS event notification subscription\cr
 #'  \link[paws.database:rds_create_global_cluster]{create_global_cluster} \tab Creates an Aurora global database spread across multiple Amazon Web Services Regions\cr
+#'  \link[paws.database:rds_create_integration]{create_integration} \tab Creates a zero-ETL integration with Amazon Redshift\cr
 #'  \link[paws.database:rds_create_option_group]{create_option_group} \tab Creates a new option group\cr
+#'  \link[paws.database:rds_create_tenant_database]{create_tenant_database} \tab Creates a tenant database in a DB instance that uses the multi-tenant configuration\cr
 #'  \link[paws.database:rds_delete_blue_green_deployment]{delete_blue_green_deployment} \tab Deletes a blue/green deployment\cr
 #'  \link[paws.database:rds_delete_custom_db_engine_version]{delete_custom_db_engine_version} \tab Deletes a custom engine version\cr
 #'  \link[paws.database:rds_delete_db_cluster]{delete_db_cluster} \tab The DeleteDBCluster action deletes a previously provisioned DB cluster\cr
@@ -7726,7 +8219,7 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.database:rds_delete_db_cluster_endpoint]{delete_db_cluster_endpoint} \tab Deletes a custom endpoint and removes it from an Amazon Aurora DB cluster\cr
 #'  \link[paws.database:rds_delete_db_cluster_parameter_group]{delete_db_cluster_parameter_group} \tab Deletes a specified DB cluster parameter group\cr
 #'  \link[paws.database:rds_delete_db_cluster_snapshot]{delete_db_cluster_snapshot} \tab Deletes a DB cluster snapshot\cr
-#'  \link[paws.database:rds_delete_db_instance]{delete_db_instance} \tab The DeleteDBInstance action deletes a previously provisioned DB instance\cr
+#'  \link[paws.database:rds_delete_db_instance]{delete_db_instance} \tab Deletes a previously provisioned DB instance\cr
 #'  \link[paws.database:rds_delete_db_instance_automated_backup]{delete_db_instance_automated_backup} \tab Deletes automated backups using the DbiResourceId value of the source DB instance or the Amazon Resource Name (ARN) of the automated backups\cr
 #'  \link[paws.database:rds_delete_db_parameter_group]{delete_db_parameter_group} \tab Deletes a specified DB parameter group\cr
 #'  \link[paws.database:rds_delete_db_proxy]{delete_db_proxy} \tab Deletes an existing DB proxy\cr
@@ -7736,11 +8229,13 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.database:rds_delete_db_subnet_group]{delete_db_subnet_group} \tab Deletes a DB subnet group\cr
 #'  \link[paws.database:rds_delete_event_subscription]{delete_event_subscription} \tab Deletes an RDS event notification subscription\cr
 #'  \link[paws.database:rds_delete_global_cluster]{delete_global_cluster} \tab Deletes a global database cluster\cr
+#'  \link[paws.database:rds_delete_integration]{delete_integration} \tab Deletes a zero-ETL integration with Amazon Redshift\cr
 #'  \link[paws.database:rds_delete_option_group]{delete_option_group} \tab Deletes an existing option group\cr
+#'  \link[paws.database:rds_delete_tenant_database]{delete_tenant_database} \tab Deletes a tenant database from your DB instance\cr
 #'  \link[paws.database:rds_deregister_db_proxy_targets]{deregister_db_proxy_targets} \tab Remove the association between one or more DBProxyTarget data structures and a DBProxyTargetGroup\cr
 #'  \link[paws.database:rds_describe_account_attributes]{describe_account_attributes} \tab Lists all of the attributes for a customer account\cr
 #'  \link[paws.database:rds_describe_blue_green_deployments]{describe_blue_green_deployments} \tab Describes one or more blue/green deployments\cr
-#'  \link[paws.database:rds_describe_certificates]{describe_certificates} \tab Lists the set of CA certificates provided by Amazon RDS for this Amazon Web Services account\cr
+#'  \link[paws.database:rds_describe_certificates]{describe_certificates} \tab Lists the set of certificate authority (CA) certificates provided by Amazon RDS for this Amazon Web Services account\cr
 #'  \link[paws.database:rds_describe_db_cluster_automated_backups]{describe_db_cluster_automated_backups} \tab Displays backups for both current and deleted DB clusters\cr
 #'  \link[paws.database:rds_describe_db_cluster_backtracks]{describe_db_cluster_backtracks} \tab Returns information about backtracks for a DB cluster\cr
 #'  \link[paws.database:rds_describe_db_cluster_endpoints]{describe_db_cluster_endpoints} \tab Returns information about endpoints for an Amazon Aurora DB cluster\cr
@@ -7749,7 +8244,7 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.database:rds_describe_db_clusters]{describe_db_clusters} \tab Describes existing Amazon Aurora DB clusters and Multi-AZ DB clusters\cr
 #'  \link[paws.database:rds_describe_db_cluster_snapshot_attributes]{describe_db_cluster_snapshot_attributes} \tab Returns a list of DB cluster snapshot attribute names and values for a manual DB cluster snapshot\cr
 #'  \link[paws.database:rds_describe_db_cluster_snapshots]{describe_db_cluster_snapshots} \tab Returns information about DB cluster snapshots\cr
-#'  \link[paws.database:rds_describe_db_engine_versions]{describe_db_engine_versions} \tab Returns a list of the available DB engines\cr
+#'  \link[paws.database:rds_describe_db_engine_versions]{describe_db_engine_versions} \tab Describes the properties of specific versions of DB engines\cr
 #'  \link[paws.database:rds_describe_db_instance_automated_backups]{describe_db_instance_automated_backups} \tab Displays backups for both current and deleted instances\cr
 #'  \link[paws.database:rds_describe_db_instances]{describe_db_instances} \tab Describes provisioned RDS instances\cr
 #'  \link[paws.database:rds_describe_db_log_files]{describe_db_log_files} \tab Returns a list of DB log files for the DB instance\cr
@@ -7762,6 +8257,7 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.database:rds_describe_db_security_groups]{describe_db_security_groups} \tab Returns a list of DBSecurityGroup descriptions\cr
 #'  \link[paws.database:rds_describe_db_snapshot_attributes]{describe_db_snapshot_attributes} \tab Returns a list of DB snapshot attribute names and values for a manual DB snapshot\cr
 #'  \link[paws.database:rds_describe_db_snapshots]{describe_db_snapshots} \tab Returns information about DB snapshots\cr
+#'  \link[paws.database:rds_describe_db_snapshot_tenant_databases]{describe_db_snapshot_tenant_databases} \tab Describes the tenant databases that exist in a DB snapshot\cr
 #'  \link[paws.database:rds_describe_db_subnet_groups]{describe_db_subnet_groups} \tab Returns a list of DBSubnetGroup descriptions\cr
 #'  \link[paws.database:rds_describe_engine_default_cluster_parameters]{describe_engine_default_cluster_parameters} \tab Returns the default engine and system parameter information for the cluster database engine\cr
 #'  \link[paws.database:rds_describe_engine_default_parameters]{describe_engine_default_parameters} \tab Returns the default engine and system parameter information for the specified database engine\cr
@@ -7770,6 +8266,7 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.database:rds_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists all the subscription descriptions for a customer account\cr
 #'  \link[paws.database:rds_describe_export_tasks]{describe_export_tasks} \tab Returns information about a snapshot or cluster export to Amazon S3\cr
 #'  \link[paws.database:rds_describe_global_clusters]{describe_global_clusters} \tab Returns information about Aurora global database clusters\cr
+#'  \link[paws.database:rds_describe_integrations]{describe_integrations} \tab Describe one or more zero-ETL integrations with Amazon Redshift\cr
 #'  \link[paws.database:rds_describe_option_group_options]{describe_option_group_options} \tab Describes all available options\cr
 #'  \link[paws.database:rds_describe_option_groups]{describe_option_groups} \tab Describes the available option groups\cr
 #'  \link[paws.database:rds_describe_orderable_db_instance_options]{describe_orderable_db_instance_options} \tab Returns a list of orderable DB instance options for the specified DB engine, DB engine version, and DB instance class\cr
@@ -7777,6 +8274,7 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.database:rds_describe_reserved_db_instances]{describe_reserved_db_instances} \tab Returns information about reserved DB instances for this account, or about a specified reserved DB instance\cr
 #'  \link[paws.database:rds_describe_reserved_db_instances_offerings]{describe_reserved_db_instances_offerings} \tab Lists available reserved DB instance offerings\cr
 #'  \link[paws.database:rds_describe_source_regions]{describe_source_regions} \tab Returns a list of the source Amazon Web Services Regions where the current Amazon Web Services Region can create a read replica, copy a DB snapshot from, or replicate automated backups from\cr
+#'  \link[paws.database:rds_describe_tenant_databases]{describe_tenant_databases} \tab Describes the tenant databases in a DB instance that uses the multi-tenant configuration\cr
 #'  \link[paws.database:rds_describe_valid_db_instance_modifications]{describe_valid_db_instance_modifications} \tab You can call DescribeValidDBInstanceModifications to learn what modifications you can make to your DB instance\cr
 #'  \link[paws.database:rds_download_db_log_file_portion]{download_db_log_file_portion} \tab Downloads all or a portion of the specified log file, up to 1 MB in size\cr
 #'  \link[paws.database:rds_failover_db_cluster]{failover_db_cluster} \tab Forces a failover for a DB cluster\cr
@@ -7801,6 +8299,7 @@ qldbsession <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.database:rds_modify_event_subscription]{modify_event_subscription} \tab Modifies an existing RDS event notification subscription\cr
 #'  \link[paws.database:rds_modify_global_cluster]{modify_global_cluster} \tab Modifies a setting for an Amazon Aurora global database cluster\cr
 #'  \link[paws.database:rds_modify_option_group]{modify_option_group} \tab Modifies an existing option group\cr
+#'  \link[paws.database:rds_modify_tenant_database]{modify_tenant_database} \tab Modifies an existing tenant database in a DB instance\cr
 #'  \link[paws.database:rds_promote_read_replica]{promote_read_replica} \tab Promotes a read replica DB instance to a standalone DB instance\cr
 #'  \link[paws.database:rds_promote_read_replica_db_cluster]{promote_read_replica_db_cluster} \tab Promotes a read replica DB cluster to a standalone DB cluster\cr
 #'  \link[paws.database:rds_purchase_reserved_db_instances_offering]{purchase_reserved_db_instances_offering} \tab Purchases a reserved DB instance offering\cr
@@ -7856,14 +8355,14 @@ rds <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @description
 #' Amazon RDS Data Service
-#'
+#' 
 #' Amazon RDS provides an HTTP endpoint to run SQL statements on an Amazon
 #' Aurora Serverless v1 DB cluster. To run these statements, you work with
 #' the Data Service API.
-#'
+#' 
 #' The Data Service API isn't supported on Amazon Aurora Serverless v2 DB
 #' clusters.
-#'
+#' 
 #' For more information about the Data Service API, see [Using the Data
 #' API](https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/data-api.html)
 #' in the *Amazon Aurora User Guide*.
@@ -7880,9 +8379,9 @@ rds <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -7980,7 +8479,7 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @description
 #' **Overview**
-#'
+#' 
 #' This is an interface reference for Amazon Redshift. It contains
 #' documentation for one of the programming or command line interfaces you
 #' can use to manage Amazon Redshift clusters. Note that Amazon Redshift is
@@ -7992,17 +8491,17 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 #' Amazon Redshift cluster management interfaces, go to [Using the Amazon
 #' Redshift Management
 #' Interfaces](https://docs.aws.amazon.com/redshift/latest/mgmt/using-aws-sdk.html).
-#'
+#' 
 #' Amazon Redshift manages all the work of setting up, operating, and
 #' scaling a data warehouse: provisioning capacity, monitoring and backing
 #' up the cluster, and applying patches and upgrades to the Amazon Redshift
 #' engine. You can focus on using your data to acquire new insights for
 #' your business and customers.
-#'
+#' 
 #' If you are a first-time user of Amazon Redshift, we recommend that you
 #' begin by reading the [Amazon Redshift Getting Started
 #' Guide](https://docs.aws.amazon.com/redshift/latest/gsg/getting-started.html).
-#'
+#' 
 #' If you are a database developer, the [Amazon Redshift Database Developer
 #' Guide](https://docs.aws.amazon.com/redshift/latest/dg/welcome.html)
 #' explains how to design, build, query, and maintain the databases that
@@ -8020,9 +8519,9 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -8131,6 +8630,7 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.database:redshift_delete_hsm_client_certificate]{delete_hsm_client_certificate} \tab Deletes the specified HSM client certificate\cr
 #'  \link[paws.database:redshift_delete_hsm_configuration]{delete_hsm_configuration} \tab Deletes the specified Amazon Redshift HSM configuration\cr
 #'  \link[paws.database:redshift_delete_partner]{delete_partner} \tab Deletes a partner integration from a cluster\cr
+#'  \link[paws.database:redshift_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource policy for a specified resource\cr
 #'  \link[paws.database:redshift_delete_scheduled_action]{delete_scheduled_action} \tab Deletes a scheduled action\cr
 #'  \link[paws.database:redshift_delete_snapshot_copy_grant]{delete_snapshot_copy_grant} \tab Deletes the specified snapshot copy grant\cr
 #'  \link[paws.database:redshift_delete_snapshot_schedule]{delete_snapshot_schedule} \tab Deletes a snapshot schedule\cr
@@ -8147,7 +8647,7 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.database:redshift_describe_cluster_subnet_groups]{describe_cluster_subnet_groups} \tab Returns one or more cluster subnet group objects, which contain metadata about your cluster subnet groups\cr
 #'  \link[paws.database:redshift_describe_cluster_tracks]{describe_cluster_tracks} \tab Returns a list of all the available maintenance tracks\cr
 #'  \link[paws.database:redshift_describe_cluster_versions]{describe_cluster_versions} \tab Returns descriptions of the available Amazon Redshift cluster versions\cr
-#'  \link[paws.database:redshift_describe_custom_domain_associations]{describe_custom_domain_associations} \tab Contains information for custom domain associations for a cluster\cr
+#'  \link[paws.database:redshift_describe_custom_domain_associations]{describe_custom_domain_associations} \tab Contains information about custom domain associations for a cluster\cr
 #'  \link[paws.database:redshift_describe_data_shares]{describe_data_shares} \tab Shows the status of any inbound or outbound datashares available in the specified account\cr
 #'  \link[paws.database:redshift_describe_data_shares_for_consumer]{describe_data_shares_for_consumer} \tab Returns a list of datashares where the account identifier being called is a consumer account identifier\cr
 #'  \link[paws.database:redshift_describe_data_shares_for_producer]{describe_data_shares_for_producer} \tab Returns a list of datashares when the account identifier being called is a producer account identifier\cr
@@ -8159,6 +8659,7 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.database:redshift_describe_event_subscriptions]{describe_event_subscriptions} \tab Lists descriptions of all the Amazon Redshift event notification subscriptions for a customer account\cr
 #'  \link[paws.database:redshift_describe_hsm_client_certificates]{describe_hsm_client_certificates} \tab Returns information about the specified HSM client certificate\cr
 #'  \link[paws.database:redshift_describe_hsm_configurations]{describe_hsm_configurations} \tab Returns information about the specified Amazon Redshift HSM configuration\cr
+#'  \link[paws.database:redshift_describe_inbound_integrations]{describe_inbound_integrations} \tab Returns a list of inbound integrations\cr
 #'  \link[paws.database:redshift_describe_logging_status]{describe_logging_status} \tab Describes whether information, such as queries and connection attempts, is being logged for the specified Amazon Redshift cluster\cr
 #'  \link[paws.database:redshift_describe_node_configuration_options]{describe_node_configuration_options} \tab Returns properties of possible node configurations such as node type, number of nodes, and disk usage for the specified action type\cr
 #'  \link[paws.database:redshift_describe_orderable_cluster_options]{describe_orderable_cluster_options} \tab Returns a list of orderable cluster options\cr
@@ -8179,10 +8680,12 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.database:redshift_disassociate_data_share_consumer]{disassociate_data_share_consumer} \tab From a datashare consumer account, remove association for the specified datashare\cr
 #'  \link[paws.database:redshift_enable_logging]{enable_logging} \tab Starts logging information, such as queries and connection attempts, for the specified Amazon Redshift cluster\cr
 #'  \link[paws.database:redshift_enable_snapshot_copy]{enable_snapshot_copy} \tab Enables the automatic copy of snapshots from one region to another region for a specified cluster\cr
+#'  \link[paws.database:redshift_failover_primary_compute]{failover_primary_compute} \tab Fails over the primary compute unit of the specified Multi-AZ cluster to another Availability Zone\cr
 #'  \link[paws.database:redshift_get_cluster_credentials]{get_cluster_credentials} \tab Returns a database user name and temporary password with temporary authorization to log on to an Amazon Redshift database\cr
 #'  \link[paws.database:redshift_get_cluster_credentials_with_iam]{get_cluster_credentials_with_iam} \tab Returns a database user name and temporary password with temporary authorization to log in to an Amazon Redshift database\cr
 #'  \link[paws.database:redshift_get_reserved_node_exchange_configuration_options]{get_reserved_node_exchange_configuration_options} \tab Gets the configuration options for the reserved-node exchange\cr
 #'  \link[paws.database:redshift_get_reserved_node_exchange_offerings]{get_reserved_node_exchange_offerings} \tab Returns an array of DC2 ReservedNodeOfferings that matches the payment type, term, and usage price of the given DC1 reserved node\cr
+#'  \link[paws.database:redshift_get_resource_policy]{get_resource_policy} \tab Get the resource policy for a specified resource\cr
 #'  \link[paws.database:redshift_modify_aqua_configuration]{modify_aqua_configuration} \tab This operation is retired\cr
 #'  \link[paws.database:redshift_modify_authentication_profile]{modify_authentication_profile} \tab Modifies an authentication profile\cr
 #'  \link[paws.database:redshift_modify_cluster]{modify_cluster} \tab Modifies the settings for a cluster\cr
@@ -8202,6 +8705,7 @@ rdsdataservice <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.database:redshift_modify_usage_limit]{modify_usage_limit} \tab Modifies a usage limit in a cluster\cr
 #'  \link[paws.database:redshift_pause_cluster]{pause_cluster} \tab Pauses a cluster\cr
 #'  \link[paws.database:redshift_purchase_reserved_node_offering]{purchase_reserved_node_offering} \tab Allows you to purchase reserved nodes\cr
+#'  \link[paws.database:redshift_put_resource_policy]{put_resource_policy} \tab Updates the resource policy for a specified resource\cr
 #'  \link[paws.database:redshift_reboot_cluster]{reboot_cluster} \tab Reboots a cluster\cr
 #'  \link[paws.database:redshift_reject_data_share]{reject_data_share} \tab From a datashare consumer account, rejects the specified datashare\cr
 #'  \link[paws.database:redshift_reset_cluster_parameter_group]{reset_cluster_parameter_group} \tab Sets one or more parameters of the specified parameter group to their default values and sets the source values of the parameters to "engine-default"\cr
@@ -8239,7 +8743,7 @@ redshift <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' You can use the Amazon Redshift Data API to run queries on Amazon
 #' Redshift tables. You can run SQL statements, which are committed if the
 #' statement succeeds.
-#'
+#' 
 #' For more information about the Amazon Redshift Data API and CLI usage
 #' examples, see [Using the Amazon Redshift Data
 #' API](https://docs.aws.amazon.com/redshift/latest/mgmt/data-api.html) in
@@ -8257,9 +8761,9 @@ redshift <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -8363,7 +8867,7 @@ redshiftdataapiservice <- function(config = list(), credentials = list(), endpoi
 #' This is an interface reference for Amazon Redshift Serverless. It
 #' contains documentation for one of the programming or command line
 #' interfaces you can use to manage Amazon Redshift Serverless.
-#'
+#' 
 #' Amazon Redshift Serverless automatically provisions data warehouse
 #' capacity and intelligently scales the underlying resources based on
 #' workload demands. Amazon Redshift Serverless adjusts capacity in seconds
@@ -8371,7 +8875,7 @@ redshiftdataapiservice <- function(config = list(), credentials = list(), endpoi
 #' even the most demanding and volatile workloads. Amazon Redshift
 #' Serverless lets you focus on using your data to acquire new insights for
 #' your business and customers.
-#'
+#' 
 #' To learn more about Amazon Redshift Serverless, see [What is Amazon
 #' Redshift
 #' Serverless](https://docs.aws.amazon.com/redshift/latest/mgmt/serverless-whatis.html).
@@ -8388,9 +8892,9 @@ redshiftdataapiservice <- function(config = list(), credentials = list(), endpoi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -8460,11 +8964,13 @@ redshiftdataapiservice <- function(config = list(), credentials = list(), endpoi
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[paws.database:redshiftserverless_convert_recovery_point_to_snapshot]{convert_recovery_point_to_snapshot} \tab Converts a recovery point to a snapshot\cr
+#'  \link[paws.database:redshiftserverless_create_custom_domain_association]{create_custom_domain_association} \tab Creates a custom domain association for Amazon Redshift Serverless\cr
 #'  \link[paws.database:redshiftserverless_create_endpoint_access]{create_endpoint_access} \tab Creates an Amazon Redshift Serverless managed VPC endpoint\cr
 #'  \link[paws.database:redshiftserverless_create_namespace]{create_namespace} \tab Creates a namespace in Amazon Redshift Serverless\cr
 #'  \link[paws.database:redshiftserverless_create_snapshot]{create_snapshot} \tab Creates a snapshot of all databases in a namespace\cr
 #'  \link[paws.database:redshiftserverless_create_usage_limit]{create_usage_limit} \tab Creates a usage limit for a specified Amazon Redshift Serverless usage type\cr
 #'  \link[paws.database:redshiftserverless_create_workgroup]{create_workgroup} \tab Creates an workgroup in Amazon Redshift Serverless\cr
+#'  \link[paws.database:redshiftserverless_delete_custom_domain_association]{delete_custom_domain_association} \tab Deletes a custom domain association for Amazon Redshift Serverless\cr
 #'  \link[paws.database:redshiftserverless_delete_endpoint_access]{delete_endpoint_access} \tab Deletes an Amazon Redshift Serverless managed VPC endpoint\cr
 #'  \link[paws.database:redshiftserverless_delete_namespace]{delete_namespace} \tab Deletes a namespace from Amazon Redshift Serverless\cr
 #'  \link[paws.database:redshiftserverless_delete_resource_policy]{delete_resource_policy} \tab Deletes the specified resource policy\cr
@@ -8472,6 +8978,7 @@ redshiftdataapiservice <- function(config = list(), credentials = list(), endpoi
 #'  \link[paws.database:redshiftserverless_delete_usage_limit]{delete_usage_limit} \tab Deletes a usage limit from Amazon Redshift Serverless\cr
 #'  \link[paws.database:redshiftserverless_delete_workgroup]{delete_workgroup} \tab Deletes a workgroup\cr
 #'  \link[paws.database:redshiftserverless_get_credentials]{get_credentials} \tab Returns a database user name and temporary password with temporary authorization to log in to Amazon Redshift Serverless\cr
+#'  \link[paws.database:redshiftserverless_get_custom_domain_association]{get_custom_domain_association} \tab Gets information about a specific custom domain association\cr
 #'  \link[paws.database:redshiftserverless_get_endpoint_access]{get_endpoint_access} \tab Returns information, such as the name, about a VPC endpoint\cr
 #'  \link[paws.database:redshiftserverless_get_namespace]{get_namespace} \tab Returns information about a namespace in Amazon Redshift Serverless\cr
 #'  \link[paws.database:redshiftserverless_get_recovery_point]{get_recovery_point} \tab Returns information about a recovery point\cr
@@ -8480,6 +8987,7 @@ redshiftdataapiservice <- function(config = list(), credentials = list(), endpoi
 #'  \link[paws.database:redshiftserverless_get_table_restore_status]{get_table_restore_status} \tab Returns information about a TableRestoreStatus object\cr
 #'  \link[paws.database:redshiftserverless_get_usage_limit]{get_usage_limit} \tab Returns information about a usage limit\cr
 #'  \link[paws.database:redshiftserverless_get_workgroup]{get_workgroup} \tab Returns information about a specific workgroup\cr
+#'  \link[paws.database:redshiftserverless_list_custom_domain_associations]{list_custom_domain_associations} \tab Lists custom domain associations for Amazon Redshift Serverless\cr
 #'  \link[paws.database:redshiftserverless_list_endpoint_access]{list_endpoint_access} \tab Returns an array of EndpointAccess objects and relevant information\cr
 #'  \link[paws.database:redshiftserverless_list_namespaces]{list_namespaces} \tab Returns information about a list of specified namespaces\cr
 #'  \link[paws.database:redshiftserverless_list_recovery_points]{list_recovery_points} \tab Returns an array of recovery points\cr
@@ -8494,6 +9002,7 @@ redshiftdataapiservice <- function(config = list(), credentials = list(), endpoi
 #'  \link[paws.database:redshiftserverless_restore_table_from_snapshot]{restore_table_from_snapshot} \tab Restores a table from a snapshot to your Amazon Redshift Serverless instance\cr
 #'  \link[paws.database:redshiftserverless_tag_resource]{tag_resource} \tab Assigns one or more tags to a resource\cr
 #'  \link[paws.database:redshiftserverless_untag_resource]{untag_resource} \tab Removes a tag or set of tags from a resource\cr
+#'  \link[paws.database:redshiftserverless_update_custom_domain_association]{update_custom_domain_association} \tab Updates an Amazon Redshift Serverless certificate associated with a custom domain\cr
 #'  \link[paws.database:redshiftserverless_update_endpoint_access]{update_endpoint_access} \tab Updates an Amazon Redshift Serverless managed endpoint\cr
 #'  \link[paws.database:redshiftserverless_update_namespace]{update_namespace} \tab Updates a namespace with the specified settings\cr
 #'  \link[paws.database:redshiftserverless_update_snapshot]{update_snapshot} \tab Updates a snapshot\cr
@@ -8526,7 +9035,7 @@ redshiftserverless <- function(config = list(), credentials = list(), endpoint =
 #' effort associated with building and operating a web-scale database,
 #' SimpleDB provides developers the freedom to focus on application
 #' development.
-#'
+#' 
 #' A traditional, clustered relational database requires a sizable upfront
 #' capital outlay, is complex to design, and often requires extensive and
 #' repetitive database administration. Amazon SimpleDB is dramatically
@@ -8536,7 +9045,7 @@ redshiftserverless <- function(config = list(), credentials = list(), endpoint =
 #' performance tuning. Developers gain access to this functionality within
 #' Amazon's proven computing environment, are able to scale instantly, and
 #' pay only for what they use.
-#'
+#' 
 #' Visit
 #' [http://aws.amazon.com/simpledb/](https://aws.amazon.com/simpledb/) for
 #' more information.
@@ -8553,9 +9062,9 @@ redshiftserverless <- function(config = list(), credentials = list(), endpoint =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -8670,9 +9179,9 @@ simpledb <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -8784,7 +9293,7 @@ timestreamquery <- function(config = list(), credentials = list(), endpoint = NU
 #' equipment management and maintenance. You can also store and analyze log
 #' data and metrics to improve the performance and availability of your
 #' applications.
-#'
+#' 
 #' Timestream is built from the ground up to effectively ingest, process,
 #' and store time-series data. It organizes data to optimize query
 #' processing. It automatically scales based on the volume of data ingested
@@ -8805,9 +9314,9 @@ timestreamquery <- function(config = list(), credentials = list(), endpoint = NU
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -8935,9 +9444,9 @@ timestreamwrite <- function(config = list(), credentials = list(), endpoint = NU
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -9168,9 +9677,9 @@ apigateway <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -9278,9 +9787,9 @@ apigatewaymanagementapi <- function(config = list(), credentials = list(), endpo
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -9440,6 +9949,151 @@ apigatewayv2 <- function(config = list(), credentials = list(), endpoint = NULL,
   )
 }
 
+#' AppFabric
+#'
+#' @description
+#' Amazon Web Services AppFabric quickly connects software as a service
+#' (SaaS) applications across your organization. This allows IT and
+#' security teams to easily manage and secure applications using a standard
+#' schema, and employees can complete everyday tasks faster using
+#' generative artificial intelligence (AI). You can use these APIs to
+#' complete AppFabric tasks, such as setting up audit log ingestions or
+#' viewing user access. For more information about AppFabric, including the
+#' required permissions to use the service, see the [Amazon Web Services
+#' AppFabric Administration
+#' Guide](https://docs.aws.amazon.com/appfabric/latest/adminguide/). For
+#' more information about using the Command Line Interface (CLI) to manage
+#' your AppFabric resources, see the [AppFabric section of the CLI
+#' Reference](https://docs.aws.amazon.com/cli/latest/reference/appfabric/).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- appfabric(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- appfabric()
+#' svc$batch_get_user_access_tasks(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.networking:appfabric_batch_get_user_access_tasks]{batch_get_user_access_tasks} \tab Gets user access details in a batch request\cr
+#'  \link[paws.networking:appfabric_connect_app_authorization]{connect_app_authorization} \tab Establishes a connection between Amazon Web Services AppFabric and an application, which allows AppFabric to call the APIs of the application\cr
+#'  \link[paws.networking:appfabric_create_app_authorization]{create_app_authorization} \tab Creates an app authorization within an app bundle, which allows AppFabric to connect to an application\cr
+#'  \link[paws.networking:appfabric_create_app_bundle]{create_app_bundle} \tab Creates an app bundle to collect data from an application using AppFabric\cr
+#'  \link[paws.networking:appfabric_create_ingestion]{create_ingestion} \tab Creates a data ingestion for an application\cr
+#'  \link[paws.networking:appfabric_create_ingestion_destination]{create_ingestion_destination} \tab Creates an ingestion destination, which specifies how an application's ingested data is processed by Amazon Web Services AppFabric and where it's delivered\cr
+#'  \link[paws.networking:appfabric_delete_app_authorization]{delete_app_authorization} \tab Deletes an app authorization\cr
+#'  \link[paws.networking:appfabric_delete_app_bundle]{delete_app_bundle} \tab Deletes an app bundle\cr
+#'  \link[paws.networking:appfabric_delete_ingestion]{delete_ingestion} \tab Deletes an ingestion\cr
+#'  \link[paws.networking:appfabric_delete_ingestion_destination]{delete_ingestion_destination} \tab Deletes an ingestion destination\cr
+#'  \link[paws.networking:appfabric_get_app_authorization]{get_app_authorization} \tab Returns information about an app authorization\cr
+#'  \link[paws.networking:appfabric_get_app_bundle]{get_app_bundle} \tab Returns information about an app bundle\cr
+#'  \link[paws.networking:appfabric_get_ingestion]{get_ingestion} \tab Returns information about an ingestion\cr
+#'  \link[paws.networking:appfabric_get_ingestion_destination]{get_ingestion_destination} \tab Returns information about an ingestion destination\cr
+#'  \link[paws.networking:appfabric_list_app_authorizations]{list_app_authorizations} \tab Returns a list of all app authorizations configured for an app bundle\cr
+#'  \link[paws.networking:appfabric_list_app_bundles]{list_app_bundles} \tab Returns a list of app bundles\cr
+#'  \link[paws.networking:appfabric_list_ingestion_destinations]{list_ingestion_destinations} \tab Returns a list of all ingestion destinations configured for an ingestion\cr
+#'  \link[paws.networking:appfabric_list_ingestions]{list_ingestions} \tab Returns a list of all ingestions configured for an app bundle\cr
+#'  \link[paws.networking:appfabric_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags for a resource\cr
+#'  \link[paws.networking:appfabric_start_ingestion]{start_ingestion} \tab Starts (enables) an ingestion, which collects data from an application\cr
+#'  \link[paws.networking:appfabric_start_user_access_tasks]{start_user_access_tasks} \tab Starts the tasks to search user access status for a specific email address\cr
+#'  \link[paws.networking:appfabric_stop_ingestion]{stop_ingestion} \tab Stops (disables) an ingestion\cr
+#'  \link[paws.networking:appfabric_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified resource\cr
+#'  \link[paws.networking:appfabric_untag_resource]{untag_resource} \tab Removes a tag or tags from a resource\cr
+#'  \link[paws.networking:appfabric_update_app_authorization]{update_app_authorization} \tab Updates an app authorization within an app bundle, which allows AppFabric to connect to an application\cr
+#'  \link[paws.networking:appfabric_update_ingestion_destination]{update_ingestion_destination} \tab Updates an ingestion destination, which specifies how an application's ingested data is processed by Amazon Web Services AppFabric and where it's delivered
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname appfabric
+#' @export
+appfabric <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::appfabric(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' AWS App Mesh
 #'
 #' @description
@@ -9447,12 +10101,12 @@ apigatewayv2 <- function(config = list(), credentials = list(), endpoint = NULL,
 #' to monitor and control microservices. App Mesh standardizes how your
 #' microservices communicate, giving you end-to-end visibility and helping
 #' to ensure high availability for your applications.
-#'
+#' 
 #' App Mesh gives you consistent visibility and network traffic controls
 #' for every microservice in an application. You can use App Mesh with
 #' Amazon Web Services Fargate, Amazon ECS, Amazon EKS, Kubernetes on
 #' Amazon Web Services, and Amazon EC2.
-#'
+#' 
 #' App Mesh supports microservice applications that use service discovery
 #' naming for their components. For more information about service
 #' discovery on Amazon ECS, see [Service
@@ -9475,9 +10129,9 @@ apigatewayv2 <- function(config = list(), credentials = list(), endpoint = NULL,
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -9603,23 +10257,167 @@ appmesh <- function(config = list(), credentials = list(), endpoint = NULL, regi
   )
 }
 
+#' AWS ARC - Zonal Shift
+#'
+#' @description
+#' This is the API Reference Guide for the zonal shift feature of Amazon
+#' Route 53 Application Recovery Controller. This guide is for developers
+#' who need detailed information about zonal shift API actions, data types,
+#' and errors.
+#' 
+#' Zonal shift is in preview release for Amazon Route 53 Application
+#' Recovery Controller and is subject to change.
+#' 
+#' Zonal shift in Route 53 ARC enables you to move traffic for a load
+#' balancer resource away from an Availability Zone. Starting a zonal shift
+#' helps your application recover immediately, for example, from a
+#' developer's bad code deployment or from an AWS infrastructure failure in
+#' a single Availability Zone, reducing the impact and time lost from an
+#' issue in one zone.
+#' 
+#' Supported AWS resources are automatically registered with Route 53 ARC.
+#' Resources that are registered for zonal shifts in Route 53 ARC are
+#' managed resources in Route 53 ARC. You can start a zonal shift for any
+#' managed resource in your account in a Region. At this time, you can only
+#' start a zonal shift for Network Load Balancers and Application Load
+#' Balancers with cross-zone load balancing turned off.
+#' 
+#' Zonal shifts are temporary. You must specify an expiration when you
+#' start a zonal shift, of up to three days initially. If you want to still
+#' keep traffic away from an Availability Zone, you can update the zonal
+#' shift and set a new expiration. You can also cancel a zonal shift,
+#' before it expires, for example, if you're ready to restore traffic to
+#' the Availability Zone.
+#' 
+#' For more information about using zonal shift, see the [Amazon Route 53
+#' Application Recovery Controller Developer
+#' Guide](https://docs.aws.amazon.com/r53recovery/latest/dg/what-is-route53-recovery.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- arczonalshift(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- arczonalshift()
+#' svc$cancel_zonal_shift(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.networking:arczonalshift_cancel_zonal_shift]{cancel_zonal_shift} \tab Cancel a zonal shift in Amazon Route 53 Application Recovery Controller that you've started for a resource in your AWS account in an AWS Region\cr
+#'  \link[paws.networking:arczonalshift_get_managed_resource]{get_managed_resource} \tab Get information about a resource that's been registered for zonal shifts with Amazon Route 53 Application Recovery Controller in this AWS Region\cr
+#'  \link[paws.networking:arczonalshift_list_managed_resources]{list_managed_resources} \tab Lists all the resources in your AWS account in this AWS Region that are managed for zonal shifts in Amazon Route 53 Application Recovery Controller, and information about them\cr
+#'  \link[paws.networking:arczonalshift_list_zonal_shifts]{list_zonal_shifts} \tab Lists all the active zonal shifts in Amazon Route 53 Application Recovery Controller in your AWS account in this AWS Region\cr
+#'  \link[paws.networking:arczonalshift_start_zonal_shift]{start_zonal_shift} \tab You start a zonal shift to temporarily move load balancer traffic away from an Availability Zone in a AWS Region, to help your application recover immediately, for example, from a developer's bad code deployment or from an AWS infrastructure failure in a single Availability Zone\cr
+#'  \link[paws.networking:arczonalshift_update_zonal_shift]{update_zonal_shift} \tab Update an active zonal shift in Amazon Route 53 Application Recovery Controller in your AWS account
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname arczonalshift
+#' @export
+arczonalshift <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::arczonalshift(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' AWS Backup Gateway
 #'
 #' @description
 #' Backup gateway
-#'
+#' 
 #' Backup gateway connects Backup to your hypervisor, so you can create,
 #' store, and restore backups of your virtual machines (VMs) anywhere,
 #' whether on-premises or in the VMware Cloud (VMC) on Amazon Web Services.
-#'
+#' 
 #' Add on-premises resources by connecting to a hypervisor through a
 #' gateway. Backup will automatically discover the resources in your
 #' hypervisor.
-#'
+#' 
 #' Use Backup to assign virtual or on-premises resources to a backup plan,
 #' or run on-demand backups. Once you have backed up your resources, you
 #' can view them and restore them like any resource supported by Backup.
-#'
+#' 
 #' To download the Amazon Web Services software to get started, navigate to
 #' the Backup console, choose **Gateways**, then choose **Create gateway**.
 #'
@@ -9635,9 +10433,9 @@ appmesh <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -9770,9 +10568,9 @@ backupgateway <- function(config = list(), credentials = list(), endpoint = NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -9992,9 +10790,9 @@ cloudfront <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -10157,22 +10955,22 @@ directconnect <- function(config = list(), credentials = list(), endpoint = NULL
 #' protocol and port number for connections from clients to the load
 #' balancer and a protocol and port number for connections from the load
 #' balancer to the instances.
-#'
+#' 
 #' Elastic Load Balancing supports three types of load balancers:
 #' Application Load Balancers, Network Load Balancers, and Classic Load
 #' Balancers. You can select a load balancer based on your application
 #' needs. For more information, see the [Elastic Load Balancing User
 #' Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
-#'
+#' 
 #' This reference covers the 2012-06-01 API, which supports Classic Load
 #' Balancers. The 2015-12-01 API supports Application Load Balancers and
 #' Network Load Balancers.
-#'
+#' 
 #' To get started, create a load balancer with one or more listeners using
 #' `create_load_balancer`. Register your
 #' instances with the load balancer using
 #' `register_instances_with_load_balancer`.
-#'
+#' 
 #' All Elastic Load Balancing operations are *idempotent*, which means that
 #' they complete at most one time. If you repeat an operation, it succeeds
 #' with a 200 OK response code.
@@ -10189,9 +10987,9 @@ directconnect <- function(config = list(), credentials = list(), endpoint = NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -10334,23 +11132,23 @@ elb <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' configure a target group with a protocol and port number for connections
 #' from the load balancer to the targets, and with health check settings to
 #' be used when checking the health status of the targets.
-#'
+#' 
 #' Elastic Load Balancing supports the following types of load balancers:
 #' Application Load Balancers, Network Load Balancers, Gateway Load
 #' Balancers, and Classic Load Balancers. This reference covers the
 #' following load balancer types:
-#'
+#' 
 #' -   Application Load Balancer - Operates at the application layer
 #'     (layer 7) and supports HTTP and HTTPS.
-#'
+#' 
 #' -   Network Load Balancer - Operates at the transport layer (layer 4)
 #'     and supports TCP, TLS, and UDP.
-#'
+#' 
 #' -   Gateway Load Balancer - Operates at the network layer (layer 3).
-#'
+#' 
 #' For more information, see the [Elastic Load Balancing User
 #' Guide](https://docs.aws.amazon.com/elasticloadbalancing/latest/userguide/).
-#'
+#' 
 #' All Elastic Load Balancing operations are idempotent, which means that
 #' they complete at most one time. If you repeat an operation, it succeeds.
 #'
@@ -10366,9 +11164,9 @@ elb <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -10483,7 +11281,7 @@ elb <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.networking:elbv2_set_ip_address_type]{set_ip_address_type} \tab Sets the type of IP addresses used by the subnets of the specified load balancer\cr
 #'  \link[paws.networking:elbv2_set_rule_priorities]{set_rule_priorities} \tab Sets the priorities of the specified rules\cr
 #'  \link[paws.networking:elbv2_set_security_groups]{set_security_groups} \tab Associates the specified security groups with the specified Application Load Balancer or Network Load Balancer\cr
-#'  \link[paws.networking:elbv2_set_subnets]{set_subnets} \tab Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer or Network Load Balancer
+#'  \link[paws.networking:elbv2_set_subnets]{set_subnets} \tab Enables the Availability Zones for the specified public subnets for the specified Application Load Balancer, Network Load Balancer or Gateway Load Balancer
 #' }
 #'
 #' @return
@@ -10507,34 +11305,34 @@ elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'
 #' @description
 #' Global Accelerator
-#'
+#' 
 #' This is the *Global Accelerator API Reference*. This guide is for
 #' developers who need detailed information about Global Accelerator API
 #' actions, data types, and errors. For more information about Global
 #' Accelerator features, see the [Global Accelerator Developer
 #' Guide](https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html).
-#'
+#' 
 #' Global Accelerator is a service in which you create *accelerators* to
 #' improve the performance of your applications for local and global users.
 #' Depending on the type of accelerator you choose, you can gain additional
 #' benefits.
-#'
+#' 
 #' -   By using a standard accelerator, you can improve availability of
 #'     your internet applications that are used by a global audience. With
 #'     a standard accelerator, Global Accelerator directs traffic to
 #'     optimal endpoints over the Amazon Web Services global network.
-#'
+#' 
 #' -   For other scenarios, you might choose a custom routing accelerator.
 #'     With a custom routing accelerator, you can use application logic to
 #'     directly map one or more users to a specific endpoint among many
 #'     endpoints.
-#'
+#' 
 #' Global Accelerator is a global service that supports endpoints in
 #' multiple Amazon Web Services Regions but you must specify the US West
 #' (Oregon) Region to create, update, or otherwise work with accelerators.
 #' That is, for example, specify `--region us-west-2` on Amazon Web
 #' Services CLI commands.
-#'
+#' 
 #' By default, Global Accelerator provides you with static IP addresses
 #' that you associate with your accelerator. The static IP addresses are
 #' anycast from the Amazon Web Services edge network. For IPv4, Global
@@ -10543,8 +11341,8 @@ elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' addresses and two static IPv6 addresses. With a standard accelerator for
 #' IPv4, instead of using the addresses that Global Accelerator provides,
 #' you can configure these entry points to be IPv4 addresses from your own
-#' IP address ranges that you bring toGlobal Accelerator (BYOIP).
-#'
+#' IP address ranges that you bring to Global Accelerator (BYOIP).
+#' 
 #' For a standard accelerator, they distribute incoming application traffic
 #' across multiple endpoint resources in multiple Amazon Web Services
 #' Regions , which increases the availability of your applications.
@@ -10554,7 +11352,7 @@ elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' Amazon Web Services Regions. For custom routing accelerators, you map
 #' traffic that arrives to the static IP addresses to specific Amazon EC2
 #' servers in endpoints that are virtual private cloud (VPC) subnets.
-#'
+#' 
 #' The static IP addresses remain assigned to your accelerator for as long
 #' as it exists, even if you disable the accelerator and it no longer
 #' accepts or routes traffic. However, when you *delete* an accelerator,
@@ -10564,14 +11362,14 @@ elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' have permissions to delete an accelerator. For more information, see
 #' [Tag-based
 #' policies](https://docs.aws.amazon.com/global-accelerator/latest/dg/).
-#'
+#' 
 #' For standard accelerators, Global Accelerator uses the Amazon Web
 #' Services global network to route traffic to the optimal regional
 #' endpoint based on health, client location, and policies that you
 #' configure. The service reacts instantly to changes in health or
 #' configuration to ensure that internet traffic from clients is always
 #' directed to healthy endpoints.
-#'
+#' 
 #' For more information about understanding and using Global Accelerator,
 #' see the [Global Accelerator Developer
 #' Guide](https://docs.aws.amazon.com/global-accelerator/latest/dg/what-is-global-accelerator.html).
@@ -10588,9 +11386,9 @@ elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -10664,12 +11462,14 @@ elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'  \link[paws.networking:globalaccelerator_advertise_byoip_cidr]{advertise_byoip_cidr} \tab Advertises an IPv4 address range that is provisioned for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP)\cr
 #'  \link[paws.networking:globalaccelerator_allow_custom_routing_traffic]{allow_custom_routing_traffic} \tab Specify the Amazon EC2 instance (destination) IP addresses and ports for a VPC subnet endpoint that can receive traffic for a custom routing accelerator\cr
 #'  \link[paws.networking:globalaccelerator_create_accelerator]{create_accelerator} \tab Create an accelerator\cr
+#'  \link[paws.networking:globalaccelerator_create_cross_account_attachment]{create_cross_account_attachment} \tab Create a cross-account attachment in Global Accelerator\cr
 #'  \link[paws.networking:globalaccelerator_create_custom_routing_accelerator]{create_custom_routing_accelerator} \tab Create a custom routing accelerator\cr
 #'  \link[paws.networking:globalaccelerator_create_custom_routing_endpoint_group]{create_custom_routing_endpoint_group} \tab Create an endpoint group for the specified listener for a custom routing accelerator\cr
 #'  \link[paws.networking:globalaccelerator_create_custom_routing_listener]{create_custom_routing_listener} \tab Create a listener to process inbound connections from clients to a custom routing accelerator\cr
 #'  \link[paws.networking:globalaccelerator_create_endpoint_group]{create_endpoint_group} \tab Create an endpoint group for the specified listener\cr
 #'  \link[paws.networking:globalaccelerator_create_listener]{create_listener} \tab Create a listener to process inbound connections from clients to an accelerator\cr
 #'  \link[paws.networking:globalaccelerator_delete_accelerator]{delete_accelerator} \tab Delete an accelerator\cr
+#'  \link[paws.networking:globalaccelerator_delete_cross_account_attachment]{delete_cross_account_attachment} \tab Delete a cross-account attachment\cr
 #'  \link[paws.networking:globalaccelerator_delete_custom_routing_accelerator]{delete_custom_routing_accelerator} \tab Delete a custom routing accelerator\cr
 #'  \link[paws.networking:globalaccelerator_delete_custom_routing_endpoint_group]{delete_custom_routing_endpoint_group} \tab Delete an endpoint group from a listener for a custom routing accelerator\cr
 #'  \link[paws.networking:globalaccelerator_delete_custom_routing_listener]{delete_custom_routing_listener} \tab Delete a listener for a custom routing accelerator\cr
@@ -10679,6 +11479,7 @@ elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'  \link[paws.networking:globalaccelerator_deprovision_byoip_cidr]{deprovision_byoip_cidr} \tab Releases the specified address range that you provisioned to use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and deletes the corresponding address pool\cr
 #'  \link[paws.networking:globalaccelerator_describe_accelerator]{describe_accelerator} \tab Describe an accelerator\cr
 #'  \link[paws.networking:globalaccelerator_describe_accelerator_attributes]{describe_accelerator_attributes} \tab Describe the attributes of an accelerator\cr
+#'  \link[paws.networking:globalaccelerator_describe_cross_account_attachment]{describe_cross_account_attachment} \tab Gets configuration information about a cross-account attachment\cr
 #'  \link[paws.networking:globalaccelerator_describe_custom_routing_accelerator]{describe_custom_routing_accelerator} \tab Describe a custom routing accelerator\cr
 #'  \link[paws.networking:globalaccelerator_describe_custom_routing_accelerator_attributes]{describe_custom_routing_accelerator_attributes} \tab Describe the attributes of a custom routing accelerator\cr
 #'  \link[paws.networking:globalaccelerator_describe_custom_routing_endpoint_group]{describe_custom_routing_endpoint_group} \tab Describe an endpoint group for a custom routing accelerator\cr
@@ -10687,6 +11488,9 @@ elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'  \link[paws.networking:globalaccelerator_describe_listener]{describe_listener} \tab Describe a listener\cr
 #'  \link[paws.networking:globalaccelerator_list_accelerators]{list_accelerators} \tab List the accelerators for an Amazon Web Services account\cr
 #'  \link[paws.networking:globalaccelerator_list_byoip_cidrs]{list_byoip_cidrs} \tab Lists the IP address ranges that were specified in calls to ProvisionByoipCidr, including the current state and a history of state changes\cr
+#'  \link[paws.networking:globalaccelerator_list_cross_account_attachments]{list_cross_account_attachments} \tab List the cross-account attachments that have been created in Global Accelerator\cr
+#'  \link[paws.networking:globalaccelerator_list_cross_account_resource_accounts]{list_cross_account_resource_accounts} \tab List the accounts that have cross-account endpoints\cr
+#'  \link[paws.networking:globalaccelerator_list_cross_account_resources]{list_cross_account_resources} \tab List the cross-account endpoints available to add to an accelerator\cr
 #'  \link[paws.networking:globalaccelerator_list_custom_routing_accelerators]{list_custom_routing_accelerators} \tab List the custom routing accelerators for an Amazon Web Services account\cr
 #'  \link[paws.networking:globalaccelerator_list_custom_routing_endpoint_groups]{list_custom_routing_endpoint_groups} \tab List the endpoint groups that are associated with a listener for a custom routing accelerator\cr
 #'  \link[paws.networking:globalaccelerator_list_custom_routing_listeners]{list_custom_routing_listeners} \tab List the listeners for a custom routing accelerator\cr
@@ -10702,6 +11506,7 @@ elbv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'  \link[paws.networking:globalaccelerator_untag_resource]{untag_resource} \tab Remove tags from a Global Accelerator resource\cr
 #'  \link[paws.networking:globalaccelerator_update_accelerator]{update_accelerator} \tab Update an accelerator to make changes, such as the following:\cr
 #'  \link[paws.networking:globalaccelerator_update_accelerator_attributes]{update_accelerator_attributes} \tab Update the attributes for an accelerator\cr
+#'  \link[paws.networking:globalaccelerator_update_cross_account_attachment]{update_cross_account_attachment} \tab Update a cross-account attachment to add or remove principals or resources\cr
 #'  \link[paws.networking:globalaccelerator_update_custom_routing_accelerator]{update_custom_routing_accelerator} \tab Update a custom routing accelerator\cr
 #'  \link[paws.networking:globalaccelerator_update_custom_routing_accelerator_attributes]{update_custom_routing_accelerator_attributes} \tab Update the attributes for a custom routing accelerator\cr
 #'  \link[paws.networking:globalaccelerator_update_custom_routing_listener]{update_custom_routing_listener} \tab Update a listener for a custom routing accelerator\cr
@@ -10733,26 +11538,26 @@ globalaccelerator <- function(config = list(), credentials = list(), endpoint = 
 #' This is the API Reference for Network Firewall. This guide is for
 #' developers who need detailed information about the Network Firewall API
 #' actions, data types, and errors.
-#'
+#' 
 #' -   The REST API requires you to handle connection details, such as
 #'     calculating signatures, handling request retries, and error
 #'     handling. For general information about using the Amazon Web
 #'     Services REST APIs, see [Amazon Web Services
 #'     APIs](https://docs.aws.amazon.com/general/latest/gr/).
-#'
+#' 
 #'     To access Network Firewall using the REST API endpoint:
 #'     `https://network-firewall.<region>.amazonaws.com `
-#'
+#' 
 #' -   Alternatively, you can use one of the Amazon Web Services SDKs to
 #'     access an API that's tailored to the programming language or
 #'     platform that you're using. For more information, see [Amazon Web
 #'     Services SDKs](https://aws.amazon.com/developer/tools/#SDKs).
-#'
+#' 
 #' -   For descriptions of Network Firewall features, including and
 #'     step-by-step instructions on how to use them through the Network
 #'     Firewall console, see the [Network Firewall Developer
 #'     Guide](https://docs.aws.amazon.com/network-firewall/latest/developerguide/).
-#'
+#' 
 #' Network Firewall is a stateful, managed, network firewall and intrusion
 #' detection and prevention service for Amazon Virtual Private Cloud
 #' (Amazon VPC). With Network Firewall, you can filter traffic at the
@@ -10762,48 +11567,48 @@ globalaccelerator <- function(config = list(), credentials = list(), endpoint = 
 #' a free, open source network analysis and threat detection engine.
 #' Network Firewall supports Suricata version 6.0.9. For information about
 #' Suricata, see the [Suricata website](https://suricata.io/).
-#'
+#' 
 #' You can use Network Firewall to monitor and protect your VPC traffic in
 #' a number of ways. The following are just a few examples:
-#'
+#' 
 #' -   Allow domains or IP addresses for known Amazon Web Services service
 #'     endpoints, such as Amazon S3, and block all other forms of traffic.
-#'
+#' 
 #' -   Use custom lists of known bad domains to limit the types of domain
 #'     names that your applications can access.
-#'
+#' 
 #' -   Perform deep packet inspection on traffic entering or leaving your
 #'     VPC.
-#'
+#' 
 #' -   Use stateful protocol detection to filter protocols like HTTPS,
 #'     regardless of the port used.
-#'
+#' 
 #' To enable Network Firewall for your VPCs, you perform steps in both
 #' Amazon VPC and in Network Firewall. For information about using Amazon
 #' VPC, see [Amazon VPC User
 #' Guide](https://docs.aws.amazon.com/vpc/latest/userguide/).
-#'
+#' 
 #' To start using Network Firewall, do the following:
-#'
+#' 
 #' 1.  (Optional) If you don't already have a VPC that you want to protect,
 #'     create it in Amazon VPC.
-#'
+#' 
 #' 2.  In Amazon VPC, in each Availability Zone where you want to have a
 #'     firewall endpoint, create a subnet for the sole use of Network
 #'     Firewall.
-#'
+#' 
 #' 3.  In Network Firewall, create stateless and stateful rule groups, to
 #'     define the components of the network traffic filtering behavior that
 #'     you want your firewall to have.
-#'
+#' 
 #' 4.  In Network Firewall, create a firewall policy that uses your rule
 #'     groups and specifies additional default traffic filtering behavior.
-#'
+#' 
 #' 5.  In Network Firewall, create a firewall and specify your new firewall
 #'     policy and VPC subnets. Network Firewall creates a firewall endpoint
 #'     in each subnet that you specify, with the behavior that's defined in
 #'     the firewall policy.
-#'
+#' 
 #' 6.  In Amazon VPC, use ingress routing enhancements to route traffic
 #'     through the new firewall endpoints.
 #'
@@ -10819,9 +11624,9 @@ globalaccelerator <- function(config = list(), credentials = list(), endpoint = 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -10964,9 +11769,9 @@ networkfirewall <- function(config = list(), credentials = list(), endpoint = NU
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -11144,22 +11949,22 @@ networkmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #' @description
 #' Amazon Route 53 is a highly available and scalable Domain Name System
 #' (DNS) web service.
-#'
+#' 
 #' You can use Route 53 to:
-#'
+#' 
 #' -   Register domain names.
-#'
+#' 
 #'     For more information, see [How domain registration
 #'     works](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-domain-registration.html).
-#'
+#' 
 #' -   Route internet traffic to the resources for your domain
-#'
+#' 
 #'     For more information, see [How internet traffic is routed to your
 #'     website or web
 #'     application](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html).
-#'
+#' 
 #' -   Check the health of your resources.
-#'
+#' 
 #'     For more information, see [How Route 53 checks the health of your
 #'     resources](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-health-checks.html).
 #'
@@ -11175,9 +11980,9 @@ networkmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -11322,7 +12127,7 @@ networkmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.networking:route53_update_health_check]{update_health_check} \tab Updates an existing health check\cr
 #'  \link[paws.networking:route53_update_hosted_zone_comment]{update_hosted_zone_comment} \tab Updates the comment for a specified hosted zone\cr
 #'  \link[paws.networking:route53_update_traffic_policy_comment]{update_traffic_policy_comment} \tab Updates the comment for a specified traffic policy version\cr
-#'  \link[paws.networking:route53_update_traffic_policy_instance]{update_traffic_policy_instance} \tab Updates the resource record sets in a specified hosted zone that were created based on the settings in a specified traffic policy version
+#'  \link[paws.networking:route53_update_traffic_policy_instance]{update_traffic_policy_instance} \tab After you submit a UpdateTrafficPolicyInstance request, there's a brief delay while Route 53 creates the resource record sets that are specified in the traffic policy definition
 #' }
 #'
 #' @return
@@ -11360,9 +12165,9 @@ route53 <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -11489,17 +12294,17 @@ route53domains <- function(config = list(), credentials = list(), endpoint = NUL
 #' @description
 #' Welcome to the Routing Control (Recovery Cluster) API Reference Guide
 #' for Amazon Route 53 Application Recovery Controller.
-#'
+#' 
 #' With Route 53 ARC, you can use routing control with extreme reliability
 #' to recover applications by rerouting traffic across Availability Zones
 #' or Amazon Web Services Regions. Routing controls are simple on/off
 #' switches hosted on a highly available cluster in Route 53 ARC. A cluster
 #' provides a set of five redundant Regional endpoints against which you
 #' can run API calls to get or update the state of routing controls. To
-#' implement failover, you set one routing control On and another one Off,
-#' to reroute traffic from one Availability Zone or Amazon Web Services
-#' Region to another.
-#'
+#' implement failover, you set one routing control to ON and another one to
+#' OFF, to reroute traffic from one Availability Zone or Amazon Web
+#' Services Region to another.
+#' 
 #' *Be aware that you must specify a Regional endpoint for a cluster when
 #' you work with API cluster operations to get or update routing control
 #' states in Route 53 ARC.* In addition, you must specify the US West
@@ -11508,22 +12313,22 @@ route53domains <- function(config = list(), credentials = list(), endpoint = NUL
 #' information, see [Get and update routing control states using the
 #' API](https://docs.aws.amazon.com/r53recovery/latest/dg/routing-control.update.api.html)
 #' in the Amazon Route 53 Application Recovery Controller Developer Guide.
-#'
+#' 
 #' This API guide includes information about the API operations for how to
 #' get and update routing control states in Route 53 ARC. To work with
 #' routing control in Route 53 ARC, you must first create the required
 #' components (clusters, control panels, and routing controls) using the
 #' recovery cluster configuration API.
-#'
+#' 
 #' For more information about working with routing control in Route 53 ARC,
 #' see the following:
-#'
+#' 
 #' -   Create clusters, control panels, and routing controls by using API
 #'     operations. For more information, see the [Recovery Control
 #'     Configuration API Reference Guide for Amazon Route 53 Application
 #'     Recovery
 #'     Controller](https://docs.aws.amazon.com/recovery-cluster/latest/api/).
-#'
+#' 
 #' -   Learn about the components in recovery control, including clusters,
 #'     routing controls, and control panels, and how to work with Route 53
 #'     ARC in the Amazon Web Services console. For more information, see
@@ -11531,14 +12336,14 @@ route53domains <- function(config = list(), credentials = list(), endpoint = NUL
 #'     components](https://docs.aws.amazon.com/r53recovery/latest/dg/introduction-components.html#introduction-components-routing)
 #'     in the Amazon Route 53 Application Recovery Controller Developer
 #'     Guide.
-#'
+#' 
 #' -   Route 53 ARC also provides readiness checks that continually audit
 #'     resources to help make sure that your applications are scaled and
 #'     ready to handle failover traffic. For more information about the
 #'     related API operations, see the [Recovery Readiness API Reference
 #'     Guide for Amazon Route 53 Application Recovery
 #'     Controller](https://docs.aws.amazon.com/recovery-readiness/latest/api/).
-#'
+#' 
 #' -   For more information about creating resilient applications and
 #'     preparing for recovery readiness with Route 53 ARC, see the [Amazon
 #'     Route 53 Application Recovery Controller Developer
@@ -11556,9 +12361,9 @@ route53domains <- function(config = list(), credentials = list(), endpoint = NUL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -11668,9 +12473,9 @@ route53recoverycluster <- function(config = list(), credentials = list(), endpoi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -11751,6 +12556,7 @@ route53recoverycluster <- function(config = list(), credentials = list(), endpoi
 #'  \link[paws.networking:route53recoverycontrolconfig_describe_control_panel]{describe_control_panel} \tab Displays details about a control panel\cr
 #'  \link[paws.networking:route53recoverycontrolconfig_describe_routing_control]{describe_routing_control} \tab Displays details about a routing control\cr
 #'  \link[paws.networking:route53recoverycontrolconfig_describe_safety_rule]{describe_safety_rule} \tab Returns information about a safety rule\cr
+#'  \link[paws.networking:route53recoverycontrolconfig_get_resource_policy]{get_resource_policy} \tab Get information about the resource policy for a cluster\cr
 #'  \link[paws.networking:route53recoverycontrolconfig_list_associated_route_53_health_checks]{list_associated_route_53_health_checks} \tab Returns an array of all Amazon Route 53 health checks associated with a specific routing control\cr
 #'  \link[paws.networking:route53recoverycontrolconfig_list_clusters]{list_clusters} \tab Returns an array of all the clusters in an account\cr
 #'  \link[paws.networking:route53recoverycontrolconfig_list_control_panels]{list_control_panels} \tab Returns an array of control panels in an account or in a cluster\cr
@@ -11798,9 +12604,9 @@ route53recoverycontrolconfig <- function(config = list(), credentials = list(), 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -11929,13 +12735,13 @@ route53recoveryreadiness <- function(config = list(), credentials = list(), endp
 #' instances or Elastic Load Balancing load balancers. Resolver performs
 #' recursive lookups against public name servers for all other domain
 #' names.
-#'
+#' 
 #' You can also configure DNS resolution between your VPC and your network
 #' over a Direct Connect or VPN connection:
-#'
+#' 
 #' **Forward DNS queries from resolvers on your network to Route 53
 #' Resolver**
-#'
+#' 
 #' DNS resolvers on your network can forward DNS queries to Resolver in a
 #' specified VPC. This allows your DNS resolvers to easily resolve domain
 #' names for Amazon Web Services resources such as EC2 instances or records
@@ -11943,10 +12749,10 @@ route53recoveryreadiness <- function(config = list(), credentials = list(), endp
 #' Resolvers on Your Network Forward DNS Queries to Route 53
 #' Resolver](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html#resolver-overview-forward-network-to-vpc)
 #' in the *Amazon Route 53 Developer Guide*.
-#'
+#' 
 #' **Conditionally forward queries from a VPC to resolvers on your
 #' network**
-#'
+#' 
 #' You can configure Resolver to forward queries that it receives from EC2
 #' instances in your VPCs to DNS resolvers on your network. To forward
 #' selected queries, you create Resolver rules that specify the domain
@@ -11959,7 +12765,7 @@ route53recoveryreadiness <- function(config = list(), credentials = list(), endp
 #' [How Route 53 Resolver Forwards DNS Queries from Your VPCs to Your
 #' Network](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/resolver.html#resolver-overview-forward-vpc-to-network)
 #' in the *Amazon Route 53 Developer Guide*.
-#'
+#' 
 #' Like Amazon VPC, Resolver is Regional. In each Region where you have
 #' VPCs, you can choose whether to forward queries from your VPCs to your
 #' network (outbound queries), from your network to your VPCs (inbound
@@ -11977,9 +12783,9 @@ route53recoveryreadiness <- function(config = list(), credentials = list(), endp
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -12139,7 +12945,7 @@ route53resolver <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @description
 #' Cloud Map
-#'
+#' 
 #' With Cloud Map, you can configure public DNS, private DNS, or HTTP
 #' namespaces that your microservice applications run in. When an instance
 #' becomes available, you can call the Cloud Map API to register the
@@ -12160,9 +12966,9 @@ route53resolver <- function(config = list(), credentials = list(), endpoint = NU
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -12242,10 +13048,11 @@ route53resolver <- function(config = list(), credentials = list(), endpoint = NU
 #'  \link[paws.networking:servicediscovery_delete_service]{delete_service} \tab Deletes a specified service\cr
 #'  \link[paws.networking:servicediscovery_deregister_instance]{deregister_instance} \tab Deletes the Amazon Route 53 DNS records and health check, if any, that Cloud Map created for the specified instance\cr
 #'  \link[paws.networking:servicediscovery_discover_instances]{discover_instances} \tab Discovers registered instances for a specified namespace and service\cr
+#'  \link[paws.networking:servicediscovery_discover_instances_revision]{discover_instances_revision} \tab Discovers the increasing revision associated with an instance\cr
 #'  \link[paws.networking:servicediscovery_get_instance]{get_instance} \tab Gets information about a specified instance\cr
 #'  \link[paws.networking:servicediscovery_get_instances_health_status]{get_instances_health_status} \tab Gets the current health status (Healthy, Unhealthy, or Unknown) of one or more instances that are associated with a specified service\cr
 #'  \link[paws.networking:servicediscovery_get_namespace]{get_namespace} \tab Gets information about a namespace\cr
-#'  \link[paws.networking:servicediscovery_get_operation]{get_operation} \tab Gets information about any operation that returns an operation ID in the response, such as a CreateService request\cr
+#'  \link[paws.networking:servicediscovery_get_operation]{get_operation} \tab Gets information about any operation that returns an operation ID in the response, such as a CreateHttpNamespace request\cr
 #'  \link[paws.networking:servicediscovery_get_service]{get_service} \tab Gets the settings for a specified service\cr
 #'  \link[paws.networking:servicediscovery_list_instances]{list_instances} \tab Lists summary information about the instances that you registered by using a specified service\cr
 #'  \link[paws.networking:servicediscovery_list_namespaces]{list_namespaces} \tab Lists summary information about the namespaces that were created by the current Amazon Web Services account\cr
@@ -12279,56 +13086,365 @@ servicediscovery <- function(config = list(), credentials = list(), endpoint = N
   )
 }
 
+#' AWS Telco Network Builder
+#'
+#' @description
+#' Amazon Web Services Telco Network Builder (TNB) is a network automation
+#' service that helps you deploy and manage telecom networks. AWS TNB helps
+#' you with the lifecycle management of your telecommunication network
+#' functions throughout planning, deployment, and post-deployment
+#' activities.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- telconetworkbuilder(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- telconetworkbuilder()
+#' svc$cancel_sol_network_operation(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.networking:telconetworkbuilder_cancel_sol_network_operation]{cancel_sol_network_operation} \tab Cancels a network operation\cr
+#'  \link[paws.networking:telconetworkbuilder_create_sol_function_package]{create_sol_function_package} \tab Creates a function package\cr
+#'  \link[paws.networking:telconetworkbuilder_create_sol_network_instance]{create_sol_network_instance} \tab Creates a network instance\cr
+#'  \link[paws.networking:telconetworkbuilder_create_sol_network_package]{create_sol_network_package} \tab Creates a network package\cr
+#'  \link[paws.networking:telconetworkbuilder_delete_sol_function_package]{delete_sol_function_package} \tab Deletes a function package\cr
+#'  \link[paws.networking:telconetworkbuilder_delete_sol_network_instance]{delete_sol_network_instance} \tab Deletes a network instance\cr
+#'  \link[paws.networking:telconetworkbuilder_delete_sol_network_package]{delete_sol_network_package} \tab Deletes network package\cr
+#'  \link[paws.networking:telconetworkbuilder_get_sol_function_instance]{get_sol_function_instance} \tab Gets the details of a network function instance, including the instantation state and metadata from the function package descriptor in the network function package\cr
+#'  \link[paws.networking:telconetworkbuilder_get_sol_function_package]{get_sol_function_package} \tab Gets the details of an individual function package, such as the operational state and whether the package is in use\cr
+#'  \link[paws.networking:telconetworkbuilder_get_sol_function_package_content]{get_sol_function_package_content} \tab Gets the contents of a function package\cr
+#'  \link[paws.networking:telconetworkbuilder_get_sol_function_package_descriptor]{get_sol_function_package_descriptor} \tab Gets a function package descriptor in a function package\cr
+#'  \link[paws.networking:telconetworkbuilder_get_sol_network_instance]{get_sol_network_instance} \tab Gets the details of the network instance\cr
+#'  \link[paws.networking:telconetworkbuilder_get_sol_network_operation]{get_sol_network_operation} \tab Gets the details of a network operation, including the tasks involved in the network operation and the status of the tasks\cr
+#'  \link[paws.networking:telconetworkbuilder_get_sol_network_package]{get_sol_network_package} \tab Gets the details of a network package\cr
+#'  \link[paws.networking:telconetworkbuilder_get_sol_network_package_content]{get_sol_network_package_content} \tab Gets the contents of a network package\cr
+#'  \link[paws.networking:telconetworkbuilder_get_sol_network_package_descriptor]{get_sol_network_package_descriptor} \tab Gets the content of the network service descriptor\cr
+#'  \link[paws.networking:telconetworkbuilder_instantiate_sol_network_instance]{instantiate_sol_network_instance} \tab Instantiates a network instance\cr
+#'  \link[paws.networking:telconetworkbuilder_list_sol_function_instances]{list_sol_function_instances} \tab Lists network function instances\cr
+#'  \link[paws.networking:telconetworkbuilder_list_sol_function_packages]{list_sol_function_packages} \tab Lists information about function packages\cr
+#'  \link[paws.networking:telconetworkbuilder_list_sol_network_instances]{list_sol_network_instances} \tab Lists your network instances\cr
+#'  \link[paws.networking:telconetworkbuilder_list_sol_network_operations]{list_sol_network_operations} \tab Lists details for a network operation, including when the operation started and the status of the operation\cr
+#'  \link[paws.networking:telconetworkbuilder_list_sol_network_packages]{list_sol_network_packages} \tab Lists network packages\cr
+#'  \link[paws.networking:telconetworkbuilder_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for AWS TNB resources\cr
+#'  \link[paws.networking:telconetworkbuilder_put_sol_function_package_content]{put_sol_function_package_content} \tab Uploads the contents of a function package\cr
+#'  \link[paws.networking:telconetworkbuilder_put_sol_network_package_content]{put_sol_network_package_content} \tab Uploads the contents of a network package\cr
+#'  \link[paws.networking:telconetworkbuilder_tag_resource]{tag_resource} \tab Tags an AWS TNB resource\cr
+#'  \link[paws.networking:telconetworkbuilder_terminate_sol_network_instance]{terminate_sol_network_instance} \tab Terminates a network instance\cr
+#'  \link[paws.networking:telconetworkbuilder_untag_resource]{untag_resource} \tab Untags an AWS TNB resource\cr
+#'  \link[paws.networking:telconetworkbuilder_update_sol_function_package]{update_sol_function_package} \tab Updates the operational state of function package\cr
+#'  \link[paws.networking:telconetworkbuilder_update_sol_network_instance]{update_sol_network_instance} \tab Update a network instance\cr
+#'  \link[paws.networking:telconetworkbuilder_update_sol_network_package]{update_sol_network_package} \tab Updates the operational state of a network package\cr
+#'  \link[paws.networking:telconetworkbuilder_validate_sol_function_package_content]{validate_sol_function_package_content} \tab Validates function package content\cr
+#'  \link[paws.networking:telconetworkbuilder_validate_sol_network_package_content]{validate_sol_network_package_content} \tab Validates network package content
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname telconetworkbuilder
+#' @export
+telconetworkbuilder <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::telconetworkbuilder(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
+#' Amazon VPC Lattice
+#'
+#' @description
+#' Amazon VPC Lattice is a fully managed application networking service
+#' that you use to connect, secure, and monitor all of your services across
+#' multiple accounts and virtual private clouds (VPCs). Amazon VPC Lattice
+#' interconnects your microservices and legacy services within a logical
+#' boundary, so that you can discover and manage them more efficiently. For
+#' more information, see the [Amazon VPC Lattice User
+#' Guide](https://docs.aws.amazon.com/vpc-lattice/latest/ug/)
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- vpclattice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- vpclattice()
+#' svc$batch_update_rule(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.networking:vpclattice_batch_update_rule]{batch_update_rule} \tab Updates the listener rules in a batch\cr
+#'  \link[paws.networking:vpclattice_create_access_log_subscription]{create_access_log_subscription} \tab Enables access logs to be sent to Amazon CloudWatch, Amazon S3, and Amazon Kinesis Data Firehose\cr
+#'  \link[paws.networking:vpclattice_create_listener]{create_listener} \tab Creates a listener for a service\cr
+#'  \link[paws.networking:vpclattice_create_rule]{create_rule} \tab Creates a listener rule\cr
+#'  \link[paws.networking:vpclattice_create_service]{create_service} \tab Creates a service\cr
+#'  \link[paws.networking:vpclattice_create_service_network]{create_service_network} \tab Creates a service network\cr
+#'  \link[paws.networking:vpclattice_create_service_network_service_association]{create_service_network_service_association} \tab Associates a service with a service network\cr
+#'  \link[paws.networking:vpclattice_create_service_network_vpc_association]{create_service_network_vpc_association} \tab Associates a VPC with a service network\cr
+#'  \link[paws.networking:vpclattice_create_target_group]{create_target_group} \tab Creates a target group\cr
+#'  \link[paws.networking:vpclattice_delete_access_log_subscription]{delete_access_log_subscription} \tab Deletes the specified access log subscription\cr
+#'  \link[paws.networking:vpclattice_delete_auth_policy]{delete_auth_policy} \tab Deletes the specified auth policy\cr
+#'  \link[paws.networking:vpclattice_delete_listener]{delete_listener} \tab Deletes the specified listener\cr
+#'  \link[paws.networking:vpclattice_delete_resource_policy]{delete_resource_policy} \tab Deletes the specified resource policy\cr
+#'  \link[paws.networking:vpclattice_delete_rule]{delete_rule} \tab Deletes a listener rule\cr
+#'  \link[paws.networking:vpclattice_delete_service]{delete_service} \tab Deletes a service\cr
+#'  \link[paws.networking:vpclattice_delete_service_network]{delete_service_network} \tab Deletes a service network\cr
+#'  \link[paws.networking:vpclattice_delete_service_network_service_association]{delete_service_network_service_association} \tab Deletes the association between a specified service and the specific service network\cr
+#'  \link[paws.networking:vpclattice_delete_service_network_vpc_association]{delete_service_network_vpc_association} \tab Disassociates the VPC from the service network\cr
+#'  \link[paws.networking:vpclattice_delete_target_group]{delete_target_group} \tab Deletes a target group\cr
+#'  \link[paws.networking:vpclattice_deregister_targets]{deregister_targets} \tab Deregisters the specified targets from the specified target group\cr
+#'  \link[paws.networking:vpclattice_get_access_log_subscription]{get_access_log_subscription} \tab Retrieves information about the specified access log subscription\cr
+#'  \link[paws.networking:vpclattice_get_auth_policy]{get_auth_policy} \tab Retrieves information about the auth policy for the specified service or service network\cr
+#'  \link[paws.networking:vpclattice_get_listener]{get_listener} \tab Retrieves information about the specified listener for the specified service\cr
+#'  \link[paws.networking:vpclattice_get_resource_policy]{get_resource_policy} \tab Retrieves information about the resource policy\cr
+#'  \link[paws.networking:vpclattice_get_rule]{get_rule} \tab Retrieves information about listener rules\cr
+#'  \link[paws.networking:vpclattice_get_service]{get_service} \tab Retrieves information about the specified service\cr
+#'  \link[paws.networking:vpclattice_get_service_network]{get_service_network} \tab Retrieves information about the specified service network\cr
+#'  \link[paws.networking:vpclattice_get_service_network_service_association]{get_service_network_service_association} \tab Retrieves information about the specified association between a service network and a service\cr
+#'  \link[paws.networking:vpclattice_get_service_network_vpc_association]{get_service_network_vpc_association} \tab Retrieves information about the association between a service network and a VPC\cr
+#'  \link[paws.networking:vpclattice_get_target_group]{get_target_group} \tab Retrieves information about the specified target group\cr
+#'  \link[paws.networking:vpclattice_list_access_log_subscriptions]{list_access_log_subscriptions} \tab Lists all access log subscriptions for the specified service network or service\cr
+#'  \link[paws.networking:vpclattice_list_listeners]{list_listeners} \tab Lists the listeners for the specified service\cr
+#'  \link[paws.networking:vpclattice_list_rules]{list_rules} \tab Lists the rules for the listener\cr
+#'  \link[paws.networking:vpclattice_list_service_networks]{list_service_networks} \tab Lists the service networks owned by the caller account or shared with the caller account\cr
+#'  \link[paws.networking:vpclattice_list_service_network_service_associations]{list_service_network_service_associations} \tab Lists the associations between the service network and the service\cr
+#'  \link[paws.networking:vpclattice_list_service_network_vpc_associations]{list_service_network_vpc_associations} \tab Lists the service network and VPC associations\cr
+#'  \link[paws.networking:vpclattice_list_services]{list_services} \tab Lists the services owned by the caller account or shared with the caller account\cr
+#'  \link[paws.networking:vpclattice_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
+#'  \link[paws.networking:vpclattice_list_target_groups]{list_target_groups} \tab Lists your target groups\cr
+#'  \link[paws.networking:vpclattice_list_targets]{list_targets} \tab Lists the targets for the target group\cr
+#'  \link[paws.networking:vpclattice_put_auth_policy]{put_auth_policy} \tab Creates or updates the auth policy\cr
+#'  \link[paws.networking:vpclattice_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based permission policy to a service or service network\cr
+#'  \link[paws.networking:vpclattice_register_targets]{register_targets} \tab Registers the targets with the target group\cr
+#'  \link[paws.networking:vpclattice_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
+#'  \link[paws.networking:vpclattice_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
+#'  \link[paws.networking:vpclattice_update_access_log_subscription]{update_access_log_subscription} \tab Updates the specified access log subscription\cr
+#'  \link[paws.networking:vpclattice_update_listener]{update_listener} \tab Updates the specified listener for the specified service\cr
+#'  \link[paws.networking:vpclattice_update_rule]{update_rule} \tab Updates a rule for the listener\cr
+#'  \link[paws.networking:vpclattice_update_service]{update_service} \tab Updates the specified service\cr
+#'  \link[paws.networking:vpclattice_update_service_network]{update_service_network} \tab Updates the specified service network\cr
+#'  \link[paws.networking:vpclattice_update_service_network_vpc_association]{update_service_network_vpc_association} \tab Updates the service network and VPC association\cr
+#'  \link[paws.networking:vpclattice_update_target_group]{update_target_group} \tab Updates the specified target group
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname vpclattice
+#' @export
+vpclattice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.networking::vpclattice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' AWS Cloud9
 #'
 #' @description
 #' Cloud9
-#'
+#' 
 #' Cloud9 is a collection of tools that you can use to code, build, run,
 #' test, debug, and release software in the cloud.
-#'
+#' 
 #' For more information about Cloud9, see the [Cloud9 User
 #' Guide](https://docs.aws.amazon.com/cloud9/latest/user-guide/).
-#'
+#' 
 #' Cloud9 supports these operations:
-#'
+#' 
 #' -   [`create_environment_ec2`][cloud9_create_environment_ec2]: Creates
 #'     an Cloud9 development environment, launches an Amazon EC2 instance,
 #'     and then connects from the instance to the environment.
-#'
+#' 
 #' -   [`create_environment_membership`][cloud9_create_environment_membership]:
 #'     Adds an environment member to an environment.
-#'
+#' 
 #' -   [`delete_environment`][cloud9_delete_environment]: Deletes an
 #'     environment. If an Amazon EC2 instance is connected to the
 #'     environment, also terminates the instance.
-#'
+#' 
 #' -   [`delete_environment_membership`][cloud9_delete_environment_membership]:
 #'     Deletes an environment member from an environment.
-#'
+#' 
 #' -   [`describe_environment_memberships`][cloud9_describe_environment_memberships]:
 #'     Gets information about environment members for an environment.
-#'
+#' 
 #' -   [`describe_environments`][cloud9_describe_environments]: Gets
 #'     information about environments.
-#'
+#' 
 #' -   [`describe_environment_status`][cloud9_describe_environment_status]:
 #'     Gets status information for an environment.
-#'
+#' 
 #' -   [`list_environments`][cloud9_list_environments]: Gets a list of
 #'     environment identifiers.
-#'
+#' 
 #' -   [`list_tags_for_resource`][cloud9_list_tags_for_resource]: Gets the
 #'     tags for an environment.
-#'
+#' 
 #' -   [`tag_resource`][cloud9_tag_resource]: Adds tags to an environment.
-#'
+#' 
 #' -   [`untag_resource`][cloud9_untag_resource]: Removes tags from an
 #'     environment.
-#'
+#' 
 #' -   [`update_environment`][cloud9_update_environment]: Changes the
 #'     settings of an existing environment.
-#'
+#' 
 #' -   [`update_environment_membership`][cloud9_update_environment_membership]:
 #'     Changes the settings of an existing environment member for an
 #'     environment.
@@ -12345,9 +13461,9 @@ servicediscovery <- function(config = list(), credentials = list(), endpoint = N
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -12409,7 +13525,7 @@ servicediscovery <- function(config = list(), credentials = list(), endpoint = N
 #' @examples
 #' \dontrun{
 #' svc <- cloud9()
-#' #
+#' # 
 #' svc$create_environment_ec2(
 #'   name = "my-demo-environment",
 #'   automaticStopTimeMinutes = 60L,
@@ -12473,9 +13589,9 @@ cloud9 <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -12575,7 +13691,7 @@ cloudcontrolapi <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @description
 #' CodeBuild
-#'
+#' 
 #' CodeBuild is a fully managed build service in the cloud. CodeBuild
 #' compiles your source code, runs unit tests, and produces artifacts that
 #' are ready to deploy. CodeBuild eliminates the need to provision, manage,
@@ -12599,9 +13715,9 @@ cloudcontrolapi <- function(config = list(), credentials = list(), endpoint = NU
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -12745,12 +13861,12 @@ codebuild <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' relationship between a CodeArtifact repository and another repository,
 #' which effectively merges their contents from the point of view of a
 #' package manager client.
-#'
+#' 
 #' **CodeArtifact Components**
-#'
+#' 
 #' Use the information in this guide to help you work with the following
 #' CodeArtifact components:
-#'
+#' 
 #' -   **Repository**: A CodeArtifact repository contains a set of [package
 #'     versions](https://docs.aws.amazon.com/codeartifact/latest/ug/welcome.html#welcome-concepts-package-version),
 #'     each of which maps to a set of assets, or files. Repositories are
@@ -12759,7 +13875,7 @@ codebuild <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'     publishing packages using tools like the **`npm`** CLI, the Maven
 #'     CLI ( **`mvn`** ), Python CLIs ( **`pip`** and `twine`), and NuGet
 #'     CLIs (`nuget` and `dotnet`).
-#'
+#' 
 #' -   **Domain**: Repositories are aggregated into a higher-level entity
 #'     known as a *domain*. All package assets and metadata are stored in
 #'     the domain, but are consumed through repositories. A given package
@@ -12767,19 +13883,19 @@ codebuild <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'     matter how many repositories it's present in. All of the assets and
 #'     metadata in a domain are encrypted with the same customer master key
 #'     (CMK) stored in Key Management Service (KMS).
-#'
+#' 
 #'     Each repository is a member of a single domain and can't be moved to
 #'     a different domain.
-#'
+#' 
 #'     The domain allows organizational policy to be applied across
 #'     multiple repositories, such as which accounts can access
 #'     repositories in the domain, and which public repositories can be
 #'     used as sources of packages.
-#'
+#' 
 #'     Although an organization can have multiple domains, we recommend a
 #'     single production domain that contains all published artifacts so
 #'     that teams can find and share packages across their organization.
-#'
+#' 
 #' -   **Package**: A *package* is a bundle of software and the metadata
 #'     required to resolve dependencies and install the software.
 #'     CodeArtifact supports
@@ -12789,18 +13905,18 @@ codebuild <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'     and
 #'     [NuGet](https://docs.aws.amazon.com/codeartifact/latest/ug/using-nuget.html)
 #'     package formats.
-#'
+#' 
 #'     In CodeArtifact, a package consists of:
-#'
+#' 
 #'     -   A *name* (for example, `webpack` is the name of a popular npm
 #'         package)
-#'
+#' 
 #'     -   An optional namespace (for example, `@@types` in `@@types/node`)
-#'
+#' 
 #'     -   A set of versions (for example, `1.0.0`, `1.0.1`, `1.0.2`, etc.)
-#'
+#' 
 #'     -   Package-level metadata (for example, npm tags)
-#'
+#' 
 #' -   **Package version**: A version of a package, such as
 #'     `@@types/node 12.6.9`. The version number format and semantics vary
 #'     for different package formats. For example, npm package versions
@@ -12808,150 +13924,150 @@ codebuild <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'     specification](https://semver.org/). In CodeArtifact, a package
 #'     version consists of the version identifier, metadata at the package
 #'     version level, and a set of assets.
-#'
+#' 
 #' -   **Upstream repository**: One repository is *upstream* of another
 #'     when the package versions in it can be accessed from the repository
 #'     endpoint of the downstream repository, effectively merging the
 #'     contents of the two repositories from the point of view of a client.
 #'     CodeArtifact allows creating an upstream relationship between two
 #'     repositories.
-#'
+#' 
 #' -   **Asset**: An individual file stored in CodeArtifact associated with
 #'     a package version, such as an npm `.tgz` file or Maven POM and JAR
 #'     files.
-#'
+#' 
 #' CodeArtifact supports these operations:
-#'
+#' 
 #' -   `associate_external_connection`:
 #'     Adds an existing external connection to a repository.
-#'
+#' 
 #' -   `copy_package_versions`:
 #'     Copies package versions from one repository to another repository in
 #'     the same domain.
-#'
+#' 
 #' -   `create_domain`: Creates a domain
-#'
+#' 
 #' -   `create_repository`: Creates a
 #'     CodeArtifact repository in a domain.
-#'
+#' 
 #' -   `delete_domain`: Deletes a domain. You
 #'     cannot delete a domain that contains repositories.
-#'
+#' 
 #' -   `delete_domain_permissions_policy`:
 #'     Deletes the resource policy that is set on a domain.
-#'
+#' 
 #' -   `delete_package`: Deletes a package
 #'     and all associated package versions.
-#'
+#' 
 #' -   `delete_package_versions`:
 #'     Deletes versions of a package. After a package has been deleted, it
 #'     can be republished, but its assets and metadata cannot be restored
 #'     because they have been permanently removed from storage.
-#'
+#' 
 #' -   `delete_repository`: Deletes a
 #'     repository.
-#'
+#' 
 #' -   `delete_repository_permissions_policy`:
 #'     Deletes the resource policy that is set on a repository.
-#'
+#' 
 #' -   `describe_domain`: Returns a
 #'     `DomainDescription` object that contains information about the
 #'     requested domain.
-#'
+#' 
 #' -   `describe_package`: Returns a
 #'     [PackageDescription](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDescription.html)
 #'     object that contains details about a package.
-#'
+#' 
 #' -   `describe_package_version`:
 #'     Returns a
 #'     [PackageVersionDescription](https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html)
 #'     object that contains details about a package version.
-#'
+#' 
 #' -   `describe_repository`: Returns a
 #'     `RepositoryDescription` object that contains detailed information
 #'     about the requested repository.
-#'
+#' 
 #' -   `dispose_package_versions`:
 #'     Disposes versions of a package. A package version with the status
 #'     `Disposed` cannot be restored because they have been permanently
 #'     removed from storage.
-#'
+#' 
 #' -   `disassociate_external_connection`:
 #'     Removes an existing external connection from a repository.
-#'
+#' 
 #' -   `get_authorization_token`:
 #'     Generates a temporary authorization token for accessing repositories
 #'     in the domain. The token expires the authorization period has
 #'     passed. The default authorization period is 12 hours and can be
 #'     customized to any length with a maximum of 12 hours.
-#'
+#' 
 #' -   `get_domain_permissions_policy`:
 #'     Returns the policy of a resource that is attached to the specified
 #'     domain.
-#'
+#' 
 #' -   `get_package_version_asset`:
 #'     Returns the contents of an asset that is in a package version.
-#'
+#' 
 #' -   `get_package_version_readme`:
 #'     Gets the readme file or descriptive text for a package version.
-#'
+#' 
 #' -   `get_repository_endpoint`:
 #'     Returns the endpoint of a repository for a specific package format.
 #'     A repository has one endpoint for each package format:
-#'
+#' 
 #'     -   `maven`
-#'
+#' 
 #'     -   `npm`
-#'
+#' 
 #'     -   `nuget`
-#'
+#' 
 #'     -   `pypi`
-#'
+#' 
 #' -   `get_repository_permissions_policy`:
 #'     Returns the resource policy that is set on a repository.
-#'
+#' 
 #' -   `list_domains`: Returns a list of
 #'     `DomainSummary` objects. Each returned `DomainSummary` object
 #'     contains information about a domain.
-#'
+#' 
 #' -   `list_packages`: Lists the packages in
 #'     a repository.
-#'
+#' 
 #' -   `list_package_version_assets`:
 #'     Lists the assets for a given package version.
-#'
+#' 
 #' -   `list_package_version_dependencies`:
 #'     Returns a list of the direct dependencies for a package version.
-#'
+#' 
 #' -   `list_package_versions`:
 #'     Returns a list of package versions for a specified package in a
 #'     repository.
-#'
+#' 
 #' -   `list_repositories`: Returns a
 #'     list of repositories owned by the Amazon Web Services account that
 #'     called this method.
-#'
+#' 
 #' -   `list_repositories_in_domain`:
 #'     Returns a list of the repositories in a domain.
-#'
+#' 
 #' -   `publish_package_version`:
 #'     Creates a new package version containing one or more assets.
-#'
+#' 
 #' -   `put_domain_permissions_policy`:
 #'     Attaches a resource policy to a domain.
-#'
+#' 
 #' -   `put_package_origin_configuration`:
 #'     Sets the package origin configuration for a package, which determine
 #'     how new versions of the package can be added to a specific
 #'     repository.
-#'
+#' 
 #' -   `put_repository_permissions_policy`:
 #'     Sets the resource policy on a repository that specifies permissions
 #'     to access it.
-#'
+#' 
 #' -   `update_package_versions_status`:
 #'     Updates the status of one or more versions of a package.
-#'
+#' 
 #' -   `update_repository`: Updates the
 #'     properties of a repository.
 #'
@@ -12967,9 +14083,9 @@ codebuild <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -13099,317 +14215,317 @@ codeartifact <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @description
 #' CodeCommit
-#'
+#' 
 #' This is the *CodeCommit API Reference*. This reference provides
 #' descriptions of the operations and data types for CodeCommit API along
 #' with usage examples.
-#'
+#' 
 #' You can use the CodeCommit API to work with the following objects:
-#'
+#' 
 #' Repositories, by calling the following:
-#'
+#' 
 #' -   `batch_get_repositories`, which
 #'     returns information about one or more repositories associated with
 #'     your Amazon Web Services account.
-#'
+#' 
 #' -   `create_repository`, which creates
 #'     an CodeCommit repository.
-#'
+#' 
 #' -   `delete_repository`, which deletes
 #'     an CodeCommit repository.
-#'
+#' 
 #' -   `get_repository`, which returns
 #'     information about a specified repository.
-#'
+#' 
 #' -   `list_repositories`, which lists all
 #'     CodeCommit repositories associated with your Amazon Web Services
 #'     account.
-#'
+#' 
 #' -   `update_repository_description`,
 #'     which sets or updates the description of the repository.
-#'
+#' 
 #' -   `update_repository_name`, which
 #'     changes the name of the repository. If you change the name of a
 #'     repository, no other users of that repository can access it until
 #'     you send them the new HTTPS or SSH URL to use.
-#'
+#' 
 #' Branches, by calling the following:
-#'
+#' 
 #' -   `create_branch`, which creates a branch
 #'     in a specified repository.
-#'
+#' 
 #' -   `delete_branch`, which deletes the
 #'     specified branch in a repository unless it is the default branch.
-#'
+#' 
 #' -   `get_branch`, which returns information
 #'     about a specified branch.
-#'
+#' 
 #' -   `list_branches`, which lists all
 #'     branches for a specified repository.
-#'
+#' 
 #' -   `update_default_branch`, which
 #'     changes the default branch for a repository.
-#'
+#' 
 #' Files, by calling the following:
-#'
+#' 
 #' -   `delete_file`, which deletes the content
 #'     of a specified file from a specified branch.
-#'
+#' 
 #' -   `get_blob`, which returns the base-64 encoded
 #'     content of an individual Git blob object in a repository.
-#'
+#' 
 #' -   `get_file`, which returns the base-64 encoded
 #'     content of a specified file.
-#'
+#' 
 #' -   `get_folder`, which returns the contents of
 #'     a specified folder or directory.
-#'
+#' 
 #' -   `list_file_commit_history`,
 #'     which retrieves a list of commits and changes to a specified file.
-#'
+#' 
 #' -   `put_file`, which adds or modifies a single
 #'     file in a specified repository and branch.
-#'
+#' 
 #' Commits, by calling the following:
-#'
+#' 
 #' -   `batch_get_commits`, which returns
 #'     information about one or more commits in a repository.
-#'
+#' 
 #' -   `create_commit`, which creates a commit
 #'     for changes to a repository.
-#'
+#' 
 #' -   `get_commit`, which returns information
 #'     about a commit, including commit messages and author and committer
 #'     information.
-#'
+#' 
 #' -   `get_differences`, which returns
 #'     information about the differences in a valid commit specifier (such
 #'     as a branch, tag, HEAD, commit ID, or other fully qualified
 #'     reference).
-#'
+#' 
 #' Merges, by calling the following:
-#'
+#' 
 #' -   `batch_describe_merge_conflicts`,
 #'     which returns information about conflicts in a merge between commits
 #'     in a repository.
-#'
+#' 
 #' -   `create_unreferenced_merge_commit`,
 #'     which creates an unreferenced commit between two branches or commits
 #'     for the purpose of comparing them and identifying any potential
 #'     conflicts.
-#'
+#' 
 #' -   `describe_merge_conflicts`,
 #'     which returns information about merge conflicts between the base,
 #'     source, and destination versions of a file in a potential merge.
-#'
+#' 
 #' -   `get_merge_commit`, which returns
 #'     information about the merge between a source and destination commit.
-#'
+#' 
 #' -   `get_merge_conflicts`, which
 #'     returns information about merge conflicts between the source and
 #'     destination branch in a pull request.
-#'
+#' 
 #' -   `get_merge_options`, which returns
 #'     information about the available merge options between two branches
 #'     or commit specifiers.
-#'
+#' 
 #' -   `merge_branches_by_fast_forward`,
 #'     which merges two branches using the fast-forward merge option.
-#'
+#' 
 #' -   `merge_branches_by_squash`,
 #'     which merges two branches using the squash merge option.
-#'
+#' 
 #' -   `merge_branches_by_three_way`,
 #'     which merges two branches using the three-way merge option.
-#'
+#' 
 #' Pull requests, by calling the following:
-#'
+#' 
 #' -   `create_pull_request`, which
 #'     creates a pull request in a specified repository.
-#'
+#' 
 #' -   `create_pull_request_approval_rule`,
 #'     which creates an approval rule for a specified pull request.
-#'
+#' 
 #' -   `delete_pull_request_approval_rule`,
 #'     which deletes an approval rule for a specified pull request.
-#'
+#' 
 #' -   `describe_pull_request_events`,
 #'     which returns information about one or more pull request events.
-#'
+#' 
 #' -   `evaluate_pull_request_approval_rules`,
 #'     which evaluates whether a pull request has met all the conditions
 #'     specified in its associated approval rules.
-#'
+#' 
 #' -   `get_comments_for_pull_request`,
 #'     which returns information about comments on a specified pull
 #'     request.
-#'
+#' 
 #' -   `get_pull_request`, which returns
 #'     information about a specified pull request.
-#'
+#' 
 #' -   `get_pull_request_approval_states`,
 #'     which returns information about the approval states for a specified
 #'     pull request.
-#'
+#' 
 #' -   `get_pull_request_override_state`,
 #'     which returns information about whether approval rules have been set
 #'     aside (overriden) for a pull request, and if so, the Amazon Resource
 #'     Name (ARN) of the user or identity that overrode the rules and their
 #'     requirements for the pull request.
-#'
+#' 
 #' -   `list_pull_requests`, which lists
 #'     all pull requests for a repository.
-#'
+#' 
 #' -   `merge_pull_request_by_fast_forward`,
 #'     which merges the source destination branch of a pull request into
 #'     the specified destination branch for that pull request using the
 #'     fast-forward merge option.
-#'
+#' 
 #' -   `merge_pull_request_by_squash`,
 #'     which merges the source destination branch of a pull request into
 #'     the specified destination branch for that pull request using the
 #'     squash merge option.
-#'
+#' 
 #' -   `merge_pull_request_by_three_way`,
 #'     which merges the source destination branch of a pull request into
 #'     the specified destination branch for that pull request using the
 #'     three-way merge option.
-#'
+#' 
 #' -   `override_pull_request_approval_rules`,
 #'     which sets aside all approval rule requirements for a pull request.
-#'
+#' 
 #' -   `post_comment_for_pull_request`,
 #'     which posts a comment to a pull request at the specified line, file,
 #'     or request.
-#'
+#' 
 #' -   `update_pull_request_approval_rule_content`,
 #'     which updates the structure of an approval rule for a pull request.
-#'
+#' 
 #' -   `update_pull_request_approval_state`,
 #'     which updates the state of an approval on a pull request.
-#'
+#' 
 #' -   `update_pull_request_description`,
 #'     which updates the description of a pull request.
-#'
+#' 
 #' -   `update_pull_request_status`,
 #'     which updates the status of a pull request.
-#'
+#' 
 #' -   `update_pull_request_title`,
 #'     which updates the title of a pull request.
-#'
+#' 
 #' Approval rule templates, by calling the following:
-#'
+#' 
 #' -   `associate_approval_rule_template_with_repository`,
 #'     which associates a template with a specified repository. After the
 #'     template is associated with a repository, CodeCommit creates
 #'     approval rules that match the template conditions on every pull
 #'     request created in the specified repository.
-#'
+#' 
 #' -   `batch_associate_approval_rule_template_with_repositories`,
 #'     which associates a template with one or more specified repositories.
 #'     After the template is associated with a repository, CodeCommit
 #'     creates approval rules that match the template conditions on every
 #'     pull request created in the specified repositories.
-#'
+#' 
 #' -   `batch_disassociate_approval_rule_template_from_repositories`,
 #'     which removes the association between a template and specified
 #'     repositories so that approval rules based on the template are not
 #'     automatically created when pull requests are created in those
 #'     repositories.
-#'
+#' 
 #' -   `create_approval_rule_template`,
 #'     which creates a template for approval rules that can then be
 #'     associated with one or more repositories in your Amazon Web Services
 #'     account.
-#'
+#' 
 #' -   `delete_approval_rule_template`,
 #'     which deletes the specified template. It does not remove approval
 #'     rules on pull requests already created with the template.
-#'
+#' 
 #' -   `disassociate_approval_rule_template_from_repository`,
 #'     which removes the association between a template and a repository so
 #'     that approval rules based on the template are not automatically
 #'     created when pull requests are created in the specified repository.
-#'
+#' 
 #' -   `get_approval_rule_template`,
 #'     which returns information about an approval rule template.
-#'
+#' 
 #' -   `list_approval_rule_templates`,
 #'     which lists all approval rule templates in the Amazon Web Services
 #'     Region in your Amazon Web Services account.
-#'
+#' 
 #' -   `list_associated_approval_rule_templates_for_repository`,
 #'     which lists all approval rule templates that are associated with a
 #'     specified repository.
-#'
+#' 
 #' -   `list_repositories_for_approval_rule_template`,
 #'     which lists all repositories associated with the specified approval
 #'     rule template.
-#'
+#' 
 #' -   `update_approval_rule_template_description`,
 #'     which updates the description of an approval rule template.
-#'
+#' 
 #' -   `update_approval_rule_template_name`,
 #'     which updates the name of an approval rule template.
-#'
+#' 
 #' -   `update_approval_rule_template_content`,
 #'     which updates the content of an approval rule template.
-#'
+#' 
 #' Comments in a repository, by calling the following:
-#'
+#' 
 #' -   `delete_comment_content`, which
 #'     deletes the content of a comment on a commit in a repository.
-#'
+#' 
 #' -   `get_comment`, which returns information
 #'     about a comment on a commit.
-#'
+#' 
 #' -   `get_comment_reactions`, which
 #'     returns information about emoji reactions to comments.
-#'
+#' 
 #' -   `get_comments_for_compared_commit`,
 #'     which returns information about comments on the comparison between
 #'     two commit specifiers in a repository.
-#'
+#' 
 #' -   `post_comment_for_compared_commit`,
 #'     which creates a comment on the comparison between two commit
 #'     specifiers in a repository.
-#'
+#' 
 #' -   `post_comment_reply`, which creates
 #'     a reply to a comment.
-#'
+#' 
 #' -   `put_comment_reaction`, which
 #'     creates or updates an emoji reaction to a comment.
-#'
+#' 
 #' -   `update_comment`, which updates the
 #'     content of a comment on a commit in a repository.
-#'
+#' 
 #' Tags used to tag resources in CodeCommit (not Git tags), by calling the
 #' following:
-#'
+#' 
 #' -   `list_tags_for_resource`, which
 #'     gets information about Amazon Web Servicestags for a specified
 #'     Amazon Resource Name (ARN) in CodeCommit.
-#'
+#' 
 #' -   `tag_resource`, which adds or updates
 #'     tags for a resource in CodeCommit.
-#'
+#' 
 #' -   `untag_resource`, which removes tags
 #'     for a resource in CodeCommit.
-#'
+#' 
 #' Triggers, by calling the following:
-#'
+#' 
 #' -   `get_repository_triggers`,
 #'     which returns information about triggers configured for a
 #'     repository.
-#'
+#' 
 #' -   `put_repository_triggers`,
 #'     which replaces all triggers for a repository and can be used to
 #'     create or delete triggers.
-#'
+#' 
 #' -   `test_repository_triggers`,
 #'     which tests the functionality of a repository trigger by sending
 #'     data to the trigger target.
-#'
+#' 
 #' For information about how to use CodeCommit, see the [CodeCommit User
 #' Guide](https://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html).
 #'
@@ -13425,9 +14541,9 @@ codeartifact <- function(config = list(), credentials = list(), endpoint = NULL,
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -13593,6 +14709,270 @@ codecommit <- function(config = list(), credentials = list(), endpoint = NULL, r
   )
 }
 
+#' Amazon CodeCatalyst
+#'
+#' @description
+#' Welcome to the Amazon CodeCatalyst API reference. This reference
+#' provides descriptions of operations and data types for Amazon
+#' CodeCatalyst. You can use the Amazon CodeCatalyst API to work with the
+#' following objects.
+#' 
+#' Spaces, by calling the following:
+#' 
+#' -   `delete_space`, which deletes a space.
+#' 
+#' -   `get_space`, which returns information
+#'     about a space.
+#' 
+#' -   `get_subscription`, which returns
+#'     information about the Amazon Web Services account used for billing
+#'     purposes and the billing plan for the space.
+#' 
+#' -   `list_spaces`, which retrieves a list of
+#'     spaces.
+#' 
+#' -   `update_space`, which hanges one or
+#'     more values for a space.
+#' 
+#' Projects, by calling the following:
+#' 
+#' -   `create_project` which creates a
+#'     project in a specified space.
+#' 
+#' -   `get_project`, which returns information
+#'     about a project.
+#' 
+#' -   `list_projects`, which retrieves a
+#'     list of projects in a space.
+#' 
+#' Users, by calling the following:
+#' 
+#' -   `get_user_details`, which returns
+#'     information about a user in Amazon CodeCatalyst.
+#' 
+#' Source repositories, by calling the following:
+#' 
+#' -   `create_source_repository`,
+#'     which creates an empty Git-based source repository in a specified
+#'     project.
+#' 
+#' -   `create_source_repository_branch`,
+#'     which creates a branch in a specified repository where you can work
+#'     on code.
+#' 
+#' -   `delete_source_repository`,
+#'     which deletes a source repository.
+#' 
+#' -   `get_source_repository`, which
+#'     returns information about a source repository.
+#' 
+#' -   `get_source_repository_clone_urls`,
+#'     which returns information about the URLs that can be used with a Git
+#'     client to clone a source repository.
+#' 
+#' -   `list_source_repositories`,
+#'     which retrieves a list of source repositories in a project.
+#' 
+#' -   `list_source_repository_branches`,
+#'     which retrieves a list of branches in a source repository.
+#' 
+#' Dev Environments and the Amazon Web Services Toolkits, by calling the
+#' following:
+#' 
+#' -   `create_dev_environment`,
+#'     which creates a Dev Environment, where you can quickly work on the
+#'     code stored in the source repositories of your project.
+#' 
+#' -   `delete_dev_environment`,
+#'     which deletes a Dev Environment.
+#' 
+#' -   `get_dev_environment`, which
+#'     returns information about a Dev Environment.
+#' 
+#' -   `list_dev_environments`, which
+#'     retrieves a list of Dev Environments in a project.
+#' 
+#' -   `list_dev_environment_sessions`,
+#'     which retrieves a list of active Dev Environment sessions in a
+#'     project.
+#' 
+#' -   `start_dev_environment`, which
+#'     starts a specified Dev Environment and puts it into an active state.
+#' 
+#' -   `start_dev_environment_session`,
+#'     which starts a session to a specified Dev Environment.
+#' 
+#' -   `stop_dev_environment`, which
+#'     stops a specified Dev Environment and puts it into an stopped state.
+#' 
+#' -   `stop_dev_environment_session`,
+#'     which stops a session for a specified Dev Environment.
+#' 
+#' -   `update_dev_environment`,
+#'     which changes one or more values for a Dev Environment.
+#' 
+#' Security, activity, and resource management in Amazon CodeCatalyst, by
+#' calling the following:
+#' 
+#' -   `create_access_token`, which
+#'     creates a personal access token (PAT) for the current user.
+#' 
+#' -   `delete_access_token`, which
+#'     deletes a specified personal access token (PAT).
+#' 
+#' -   `list_access_tokens`, which lists
+#'     all personal access tokens (PATs) associated with a user.
+#' 
+#' -   `list_event_logs`, which retrieves a
+#'     list of events that occurred during a specified time period in a
+#'     space.
+#' 
+#' -   `verify_session`, which verifies
+#'     whether the calling user has a valid Amazon CodeCatalyst login and
+#'     session.
+#' 
+#' If you are using the Amazon CodeCatalyst APIs with an SDK or the CLI,
+#' you must configure your computer to work with Amazon CodeCatalyst and
+#' single sign-on (SSO). For more information, see [Setting up to use the
+#' CLI with Amazon
+#' CodeCatalyst](https://docs.aws.amazon.com/codecatalyst/latest/userguide/set-up-cli.html)
+#' and the SSO documentation for your SDK.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- codecatalyst(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- codecatalyst()
+#' svc$create_access_token(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.developer.tools:codecatalyst_create_access_token]{create_access_token} \tab Creates a personal access token (PAT) for the current user\cr
+#'  \link[paws.developer.tools:codecatalyst_create_dev_environment]{create_dev_environment} \tab Creates a Dev Environment in Amazon CodeCatalyst, a cloud-based development environment that you can use to quickly work on the code stored in the source repositories of your project\cr
+#'  \link[paws.developer.tools:codecatalyst_create_project]{create_project} \tab Creates a project in a specified space\cr
+#'  \link[paws.developer.tools:codecatalyst_create_source_repository]{create_source_repository} \tab Creates an empty Git-based source repository in a specified project\cr
+#'  \link[paws.developer.tools:codecatalyst_create_source_repository_branch]{create_source_repository_branch} \tab Creates a branch in a specified source repository in Amazon CodeCatalyst\cr
+#'  \link[paws.developer.tools:codecatalyst_delete_access_token]{delete_access_token} \tab Deletes a specified personal access token (PAT)\cr
+#'  \link[paws.developer.tools:codecatalyst_delete_dev_environment]{delete_dev_environment} \tab Deletes a Dev Environment\cr
+#'  \link[paws.developer.tools:codecatalyst_delete_project]{delete_project} \tab Deletes a project in a space\cr
+#'  \link[paws.developer.tools:codecatalyst_delete_source_repository]{delete_source_repository} \tab Deletes a source repository in Amazon CodeCatalyst\cr
+#'  \link[paws.developer.tools:codecatalyst_delete_space]{delete_space} \tab Deletes a space\cr
+#'  \link[paws.developer.tools:codecatalyst_get_dev_environment]{get_dev_environment} \tab Returns information about a Dev Environment for a source repository in a project\cr
+#'  \link[paws.developer.tools:codecatalyst_get_project]{get_project} \tab Returns information about a project\cr
+#'  \link[paws.developer.tools:codecatalyst_get_source_repository]{get_source_repository} \tab Returns information about a source repository\cr
+#'  \link[paws.developer.tools:codecatalyst_get_source_repository_clone_urls]{get_source_repository_clone_urls} \tab Returns information about the URLs that can be used with a Git client to clone a source repository\cr
+#'  \link[paws.developer.tools:codecatalyst_get_space]{get_space} \tab Returns information about an space\cr
+#'  \link[paws.developer.tools:codecatalyst_get_subscription]{get_subscription} \tab Returns information about the Amazon Web Services account used for billing purposes and the billing plan for the space\cr
+#'  \link[paws.developer.tools:codecatalyst_get_user_details]{get_user_details} \tab Returns information about a user\cr
+#'  \link[paws.developer.tools:codecatalyst_list_access_tokens]{list_access_tokens} \tab Lists all personal access tokens (PATs) associated with the user who calls the API\cr
+#'  \link[paws.developer.tools:codecatalyst_list_dev_environments]{list_dev_environments} \tab Retrieves a list of Dev Environments in a project\cr
+#'  \link[paws.developer.tools:codecatalyst_list_dev_environment_sessions]{list_dev_environment_sessions} \tab Retrieves a list of active sessions for a Dev Environment in a project\cr
+#'  \link[paws.developer.tools:codecatalyst_list_event_logs]{list_event_logs} \tab Retrieves a list of events that occurred during a specified time period in a space\cr
+#'  \link[paws.developer.tools:codecatalyst_list_projects]{list_projects} \tab Retrieves a list of projects\cr
+#'  \link[paws.developer.tools:codecatalyst_list_source_repositories]{list_source_repositories} \tab Retrieves a list of source repositories in a project\cr
+#'  \link[paws.developer.tools:codecatalyst_list_source_repository_branches]{list_source_repository_branches} \tab Retrieves a list of branches in a specified source repository\cr
+#'  \link[paws.developer.tools:codecatalyst_list_spaces]{list_spaces} \tab Retrieves a list of spaces\cr
+#'  \link[paws.developer.tools:codecatalyst_start_dev_environment]{start_dev_environment} \tab Starts a specified Dev Environment and puts it into an active state\cr
+#'  \link[paws.developer.tools:codecatalyst_start_dev_environment_session]{start_dev_environment_session} \tab Starts a session for a specified Dev Environment\cr
+#'  \link[paws.developer.tools:codecatalyst_stop_dev_environment]{stop_dev_environment} \tab Pauses a specified Dev Environment and places it in a non-running state\cr
+#'  \link[paws.developer.tools:codecatalyst_stop_dev_environment_session]{stop_dev_environment_session} \tab Stops a session for a specified Dev Environment\cr
+#'  \link[paws.developer.tools:codecatalyst_update_dev_environment]{update_dev_environment} \tab Changes one or more values for a Dev Environment\cr
+#'  \link[paws.developer.tools:codecatalyst_update_project]{update_project} \tab Changes one or more values for a project\cr
+#'  \link[paws.developer.tools:codecatalyst_update_space]{update_space} \tab Changes one or more values for a space\cr
+#'  \link[paws.developer.tools:codecatalyst_verify_session]{verify_session} \tab Verifies whether the calling user has a valid Amazon CodeCatalyst login and session
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname codecatalyst
+#' @export
+codecatalyst <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::codecatalyst(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' AWS CodeDeploy
 #'
 #' @description
@@ -13600,7 +14980,7 @@ codecommit <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' deployments to Amazon EC2 instances, on-premises instances running in
 #' your own facility, serverless Lambda functions, or applications in an
 #' Amazon ECS service.
-#'
+#' 
 #' You can deploy a nearly unlimited variety of application content, such
 #' as an updated Lambda function, updated applications in an Amazon ECS
 #' service, code, web and configuration files, executables, packages,
@@ -13608,23 +14988,23 @@ codecommit <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' content stored in Amazon S3 buckets, GitHub repositories, or Bitbucket
 #' repositories. You do not need to make changes to your existing code
 #' before you can use CodeDeploy.
-#'
+#' 
 #' CodeDeploy makes it easier for you to rapidly release new features,
 #' helps you avoid downtime during application deployment, and handles the
 #' complexity of updating your applications, without many of the risks
 #' associated with error-prone manual deployments.
-#'
+#' 
 #' **CodeDeploy Components**
-#'
+#' 
 #' Use the information in this guide to help you work with the following
 #' CodeDeploy components:
-#'
+#' 
 #' -   **Application**: A name that uniquely identifies the application you
 #'     want to deploy. CodeDeploy uses this name, which functions as a
 #'     container, to ensure the correct combination of revision, deployment
 #'     configuration, and deployment group are referenced during a
 #'     deployment.
-#'
+#' 
 #' -   **Deployment group**: A set of individual instances, CodeDeploy
 #'     Lambda deployment configuration settings, or an Amazon ECS service
 #'     and network details. A Lambda deployment group specifies how to
@@ -13636,15 +15016,15 @@ codecommit <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'     instances, Amazon EC2 instances in Amazon EC2 Auto Scaling groups,
 #'     or both. All deployment groups can specify optional trigger, alarm,
 #'     and rollback settings.
-#'
+#' 
 #' -   **Deployment configuration**: A set of deployment rules and
 #'     deployment success and failure conditions used by CodeDeploy during
 #'     a deployment.
-#'
+#' 
 #' -   **Deployment**: The process and the components used when updating a
 #'     Lambda function, a containerized application in an Amazon ECS
 #'     service, or of installing content on one or more instances.
-#'
+#' 
 #' -   **Application revisions**: For an Lambda deployment, this is an
 #'     AppSpec file that specifies the Lambda function to be updated and
 #'     one or more functions to validate deployment lifecycle events. For
@@ -13657,23 +15037,23 @@ codecommit <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'     For Amazon S3, a revision is uniquely identified by its Amazon S3
 #'     object key and its ETag, version, or both. For GitHub, a revision is
 #'     uniquely identified by its commit ID.
-#'
+#' 
 #' This guide also contains information to help you get details about the
 #' instances in your deployments, to make on-premises instances available
 #' for CodeDeploy deployments, to get details about a Lambda function
 #' deployment, and to get details about Amazon ECS service deployments.
-#'
+#' 
 #' **CodeDeploy Information Resources**
-#'
+#' 
 #' -   [CodeDeploy User
 #'     Guide](https://docs.aws.amazon.com/codedeploy/latest/userguide/)
-#'
+#' 
 #' -   [CodeDeploy API Reference
 #'     Guide](https://docs.aws.amazon.com/codedeploy/latest/APIReference/)
-#'
+#' 
 #' -   [CLI Reference for
 #'     CodeDeploy](https://docs.aws.amazon.com/cli/latest/reference/deploy/)
-#'
+#' 
 #' -   CodeDeploy Developer Forum
 #'
 #' @param
@@ -13688,9 +15068,9 @@ codecommit <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -13787,11 +15167,11 @@ codecommit <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'  \link[paws.developer.tools:codedeploy_get_deployment_target]{get_deployment_target} \tab Returns information about a deployment target\cr
 #'  \link[paws.developer.tools:codedeploy_get_on_premises_instance]{get_on_premises_instance} \tab Gets information about an on-premises instance\cr
 #'  \link[paws.developer.tools:codedeploy_list_application_revisions]{list_application_revisions} \tab Lists information about revisions for an application\cr
-#'  \link[paws.developer.tools:codedeploy_list_applications]{list_applications} \tab Lists the applications registered with the IAM user or Amazon Web Services account\cr
-#'  \link[paws.developer.tools:codedeploy_list_deployment_configs]{list_deployment_configs} \tab Lists the deployment configurations with the IAM user or Amazon Web Services account\cr
-#'  \link[paws.developer.tools:codedeploy_list_deployment_groups]{list_deployment_groups} \tab Lists the deployment groups for an application registered with the IAM user or Amazon Web Services account\cr
+#'  \link[paws.developer.tools:codedeploy_list_applications]{list_applications} \tab Lists the applications registered with the user or Amazon Web Services account\cr
+#'  \link[paws.developer.tools:codedeploy_list_deployment_configs]{list_deployment_configs} \tab Lists the deployment configurations with the user or Amazon Web Services account\cr
+#'  \link[paws.developer.tools:codedeploy_list_deployment_groups]{list_deployment_groups} \tab Lists the deployment groups for an application registered with the Amazon Web Services user or Amazon Web Services account\cr
 #'  \link[paws.developer.tools:codedeploy_list_deployment_instances]{list_deployment_instances} \tab The newer BatchGetDeploymentTargets should be used instead because it works with all compute types\cr
-#'  \link[paws.developer.tools:codedeploy_list_deployments]{list_deployments} \tab Lists the deployments in a deployment group for an application registered with the IAM user or Amazon Web Services account\cr
+#'  \link[paws.developer.tools:codedeploy_list_deployments]{list_deployments} \tab Lists the deployments in a deployment group for an application registered with the user or Amazon Web Services account\cr
 #'  \link[paws.developer.tools:codedeploy_list_deployment_targets]{list_deployment_targets} \tab Returns an array of target IDs that are associated a deployment\cr
 #'  \link[paws.developer.tools:codedeploy_list_git_hub_account_token_names]{list_git_hub_account_token_names} \tab Lists the names of stored connections to GitHub accounts\cr
 #'  \link[paws.developer.tools:codedeploy_list_on_premises_instances]{list_on_premises_instances} \tab Gets a list of names for one or more on-premises instances\cr
@@ -13830,25 +15210,25 @@ codedeploy <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' @description
 #' This section provides documentation for the Amazon CodeGuru Profiler API
 #' operations.
-#'
+#' 
 #' Amazon CodeGuru Profiler collects runtime performance data from your
 #' live applications, and provides recommendations that can help you
 #' fine-tune your application performance. Using machine learning
 #' algorithms, CodeGuru Profiler can help you find your most expensive
 #' lines of code and suggest ways you can improve efficiency and remove CPU
 #' bottlenecks.
-#'
+#' 
 #' Amazon CodeGuru Profiler provides different visualizations of profiling
 #' data to help you identify what code is running on the CPU, see how much
 #' time is consumed, and suggest ways to reduce CPU utilization.
-#'
+#' 
 #' Amazon CodeGuru Profiler currently supports applications written in all
 #' Java virtual machine (JVM) languages and Python. While CodeGuru Profiler
 #' supports both visualizations and recommendations for applications
 #' written in Java, it can also generate visualizations and a subset of
 #' recommendations for applications written in other JVM languages and
 #' Python.
-#'
+#' 
 #' For more information, see [What is Amazon CodeGuru
 #' Profiler](https://docs.aws.amazon.com/codeguru/latest/profiler-ug/what-is-codeguru-profiler.html)
 #' in the *Amazon CodeGuru Profiler User Guide*.
@@ -13865,9 +15245,9 @@ codedeploy <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -13985,13 +15365,13 @@ codeguruprofiler <- function(config = list(), credentials = list(), endpoint = N
 #' operations. CodeGuru Reviewer is a service that uses program analysis
 #' and machine learning to detect potential defects that are difficult for
 #' developers to find and recommends fixes in your Java and Python code.
-#'
+#' 
 #' By proactively detecting and providing recommendations for addressing
 #' code defects and implementing best practices, CodeGuru Reviewer improves
 #' the overall quality and maintainability of your code base during the
 #' code review stage. For more information about CodeGuru Reviewer, see the
 #' *\href{https://docs.aws.amazon.com/codeguru/latest/reviewer-ug/welcome.html}{Amazon CodeGuru Reviewer User Guide}.*
-#'
+#' 
 #' To improve the security of your CodeGuru Reviewer API calls, you can
 #' establish a private connection between your VPC and CodeGuru Reviewer by
 #' creating an *interface VPC endpoint*. For more information, see
@@ -14011,9 +15391,9 @@ codeguruprofiler <- function(config = list(), credentials = list(), endpoint = N
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -14115,67 +15495,198 @@ codegurureviewer <- function(config = list(), credentials = list(), endpoint = N
   )
 }
 
+#' Amazon CodeGuru Security
+#'
+#' @description
+#' Amazon CodeGuru Security is in preview release and is subject to change.
+#' 
+#' This section provides documentation for the Amazon CodeGuru Security API
+#' operations. CodeGuru Security is a service that uses program analysis
+#' and machine learning to detect security policy violations and
+#' vulnerabilities, and recommends ways to address these security risks.
+#' 
+#' By proactively detecting and providing recommendations for addressing
+#' security risks, CodeGuru Security improves the overall security of your
+#' application code. For more information about CodeGuru Security, see the
+#' [Amazon CodeGuru Security User
+#' Guide](https://docs.aws.amazon.com/codeguru/latest/security-ug/what-is-codeguru-security.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- codegurusecurity(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- codegurusecurity()
+#' svc$batch_get_findings(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.developer.tools:codegurusecurity_batch_get_findings]{batch_get_findings} \tab Returns a list of all requested findings\cr
+#'  \link[paws.developer.tools:codegurusecurity_create_scan]{create_scan} \tab Use to create a scan using code uploaded to an S3 bucket\cr
+#'  \link[paws.developer.tools:codegurusecurity_create_upload_url]{create_upload_url} \tab Generates a pre-signed URL and request headers used to upload a code resource\cr
+#'  \link[paws.developer.tools:codegurusecurity_get_account_configuration]{get_account_configuration} \tab Use to get account level configuration\cr
+#'  \link[paws.developer.tools:codegurusecurity_get_findings]{get_findings} \tab Returns a list of all findings generated by a particular scan\cr
+#'  \link[paws.developer.tools:codegurusecurity_get_metrics_summary]{get_metrics_summary} \tab Returns top level metrics about an account from a specified date, including number of open findings, the categories with most findings, the scans with most open findings, and scans with most open critical findings\cr
+#'  \link[paws.developer.tools:codegurusecurity_get_scan]{get_scan} \tab Returns details about a scan, including whether or not a scan has completed\cr
+#'  \link[paws.developer.tools:codegurusecurity_list_findings_metrics]{list_findings_metrics} \tab Returns metrics about all findings in an account within a specified time range\cr
+#'  \link[paws.developer.tools:codegurusecurity_list_scans]{list_scans} \tab Returns a list of all the standard scans in an account\cr
+#'  \link[paws.developer.tools:codegurusecurity_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of all tags associated with a scan\cr
+#'  \link[paws.developer.tools:codegurusecurity_tag_resource]{tag_resource} \tab Use to add one or more tags to an existing scan\cr
+#'  \link[paws.developer.tools:codegurusecurity_untag_resource]{untag_resource} \tab Use to remove one or more tags from an existing scan\cr
+#'  \link[paws.developer.tools:codegurusecurity_update_account_configuration]{update_account_configuration} \tab Use to update account-level configuration with an encryption key
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname codegurusecurity
+#' @export
+codegurusecurity <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.developer.tools::codegurusecurity(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' AWS CodePipeline
 #'
 #' @description
 #' CodePipeline
-#'
+#' 
 #' **Overview**
-#'
+#' 
 #' This is the CodePipeline API Reference. This guide provides descriptions
 #' of the actions and data types for CodePipeline. Some functionality for
 #' your pipeline can only be configured through the API. For more
 #' information, see the [CodePipeline User
 #' Guide](https://docs.aws.amazon.com/codepipeline/latest/userguide/welcome.html).
-#'
+#' 
 #' You can use the CodePipeline API to work with pipelines, stages,
 #' actions, and transitions.
-#'
+#' 
 #' *Pipelines* are models of automated release processes. Each pipeline is
 #' uniquely named, and consists of stages, actions, and transitions.
-#'
+#' 
 #' You can work with pipelines by calling:
-#'
+#' 
 #' -   `create_pipeline`, which creates a
 #'     uniquely named pipeline.
-#'
+#' 
 #' -   `delete_pipeline`, which deletes the
 #'     specified pipeline.
-#'
+#' 
 #' -   `get_pipeline`, which returns
 #'     information about the pipeline structure and pipeline metadata,
 #'     including the pipeline Amazon Resource Name (ARN).
-#'
+#' 
 #' -   `get_pipeline_execution`,
 #'     which returns information about a specific execution of a pipeline.
-#'
+#' 
 #' -   `get_pipeline_state`, which
 #'     returns information about the current state of the stages and
 #'     actions of a pipeline.
-#'
+#' 
 #' -   `list_action_executions`,
 #'     which returns action-level details for past executions. The details
 #'     include full stage and action-level details, including individual
 #'     action duration, status, any errors that occurred during the
 #'     execution, and input and output artifact location details.
-#'
+#' 
 #' -   `list_pipelines`, which gets a
 #'     summary of all of the pipelines associated with your account.
-#'
+#' 
 #' -   `list_pipeline_executions`,
 #'     which gets a summary of the most recent executions for a pipeline.
-#'
+#' 
 #' -   `start_pipeline_execution`,
 #'     which runs the most recent revision of an artifact through the
 #'     pipeline.
-#'
+#' 
 #' -   `stop_pipeline_execution`,
 #'     which stops the specified pipeline execution from continuing through
 #'     the pipeline.
-#'
+#' 
 #' -   `update_pipeline`, which updates a
 #'     pipeline with edits or changes to the structure of the pipeline.
-#'
+#' 
 #' Pipelines include *stages*. Each stage contains one or more actions that
 #' must complete before the next stage begins. A stage results in success
 #' or failure. If a stage fails, the pipeline stops at that stage and
@@ -14189,7 +15700,7 @@ codegurureviewer <- function(config = list(), credentials = list(), endpoint = N
 #' pipeline. For more information about the structure of stages and
 #' actions, see [CodePipeline Pipeline Structure
 #' Reference](https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html).
-#'
+#' 
 #' Pipeline stages include *actions* that are categorized into categories
 #' such as source or build actions performed in a stage of a pipeline. For
 #' example, you can use a source action to import artifacts into a pipeline
@@ -14199,77 +15710,77 @@ codegurureviewer <- function(config = list(), credentials = list(), endpoint = N
 #' `create_pipeline` and
 #' `get_pipeline_state`. Valid action
 #' categories are:
-#'
+#' 
 #' -   Source
-#'
+#' 
 #' -   Build
-#'
+#' 
 #' -   Test
-#'
+#' 
 #' -   Deploy
-#'
+#' 
 #' -   Approval
-#'
+#' 
 #' -   Invoke
-#'
+#' 
 #' Pipelines also include *transitions*, which allow the transition of
 #' artifacts from one stage to the next in a pipeline after the actions in
 #' one stage complete.
-#'
+#' 
 #' You can work with transitions by calling:
-#'
+#' 
 #' -   `disable_stage_transition`,
 #'     which prevents artifacts from transitioning to the next stage in a
 #'     pipeline.
-#'
+#' 
 #' -   `enable_stage_transition`,
 #'     which enables transition of artifacts between stages in a pipeline.
-#'
+#' 
 #' **Using the API to integrate with CodePipeline**
-#'
+#' 
 #' For third-party integrators or developers who want to create their own
 #' integrations with CodePipeline, the expected sequence varies from the
 #' standard API user. To integrate with CodePipeline, developers need to
 #' work with the following items:
-#'
+#' 
 #' **Jobs**, which are instances of an action. For example, a job for a
 #' source action might import a revision of an artifact from a source.
-#'
+#' 
 #' You can work with jobs by calling:
-#'
+#' 
 #' -   `acknowledge_job`, which confirms
 #'     whether a job worker has received the specified job.
-#'
+#' 
 #' -   `get_job_details`, which returns the
 #'     details of a job.
-#'
+#' 
 #' -   `poll_for_jobs`, which determines
 #'     whether there are any jobs to act on.
-#'
+#' 
 #' -   `put_job_failure_result`,
 #'     which provides details of a job failure.
-#'
+#' 
 #' -   `put_job_success_result`,
 #'     which provides details of a job success.
-#'
+#' 
 #' **Third party jobs**, which are instances of an action created by a
 #' partner action and integrated into CodePipeline. Partner actions are
 #' created by members of the Amazon Web Services Partner Network.
-#'
+#' 
 #' You can work with third party jobs by calling:
-#'
+#' 
 #' -   `acknowledge_third_party_job`,
 #'     which confirms whether a job worker has received the specified job.
-#'
+#' 
 #' -   `get_third_party_job_details`,
 #'     which requests the details of a job for a partner action.
-#'
+#' 
 #' -   `poll_for_third_party_jobs`,
 #'     which determines whether there are any jobs to act on.
-#'
+#' 
 #' -   `put_third_party_job_failure_result`,
 #'     which provides details of a job failure.
-#'
+#' 
 #' -   `put_third_party_job_success_result`,
 #'     which provides details of a job success.
 #'
@@ -14285,9 +15796,9 @@ codegurureviewer <- function(config = list(), credentials = list(), endpoint = N
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -14388,7 +15899,7 @@ codegurureviewer <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.developer.tools:codepipeline_put_third_party_job_success_result]{put_third_party_job_success_result} \tab Represents the success of a third party job as returned to the pipeline by a job worker\cr
 #'  \link[paws.developer.tools:codepipeline_put_webhook]{put_webhook} \tab Defines a webhook and returns a unique webhook URL generated by CodePipeline\cr
 #'  \link[paws.developer.tools:codepipeline_register_webhook_with_third_party]{register_webhook_with_third_party} \tab Configures a connection between the webhook that was created and the external tool with events to be detected\cr
-#'  \link[paws.developer.tools:codepipeline_retry_stage_execution]{retry_stage_execution} \tab Resumes the pipeline execution by retrying the last failed actions in a stage\cr
+#'  \link[paws.developer.tools:codepipeline_retry_stage_execution]{retry_stage_execution} \tab You can retry a stage that has failed without having to run a pipeline again from the beginning\cr
 #'  \link[paws.developer.tools:codepipeline_start_pipeline_execution]{start_pipeline_execution} \tab Starts the specified pipeline\cr
 #'  \link[paws.developer.tools:codepipeline_stop_pipeline_execution]{stop_pipeline_execution} \tab Stops the specified pipeline execution\cr
 #'  \link[paws.developer.tools:codepipeline_tag_resource]{tag_resource} \tab Adds to or modifies the tags of the given resource\cr
@@ -14420,64 +15931,64 @@ codepipeline <- function(config = list(), credentials = list(), endpoint = NULL,
 #' This is the API reference for AWS CodeStar. This reference provides
 #' descriptions of the operations and data types for the AWS CodeStar API
 #' along with usage examples.
-#'
+#' 
 #' You can use the AWS CodeStar API to work with:
-#'
+#' 
 #' Projects and their resources, by calling the following:
-#'
+#' 
 #' -   `delete_project`, which deletes a
 #'     project.
-#'
+#' 
 #' -   `describe_project`, which lists the
 #'     attributes of a project.
-#'
+#' 
 #' -   `list_projects`, which lists all projects
 #'     associated with your AWS account.
-#'
+#' 
 #' -   `list_resources`, which lists the
 #'     resources associated with a project.
-#'
+#' 
 #' -   `list_tags_for_project`, which
 #'     lists the tags associated with a project.
-#'
+#' 
 #' -   `tag_project`, which adds tags to a project.
-#'
+#' 
 #' -   `untag_project`, which removes tags from a
 #'     project.
-#'
+#' 
 #' -   `update_project`, which updates the
 #'     attributes of a project.
-#'
+#' 
 #' Teams and team members, by calling the following:
-#'
+#' 
 #' -   `associate_team_member`, which
 #'     adds an IAM user to the team for a project.
-#'
+#' 
 #' -   `disassociate_team_member`,
 #'     which removes an IAM user from the team for a project.
-#'
+#' 
 #' -   `list_team_members`, which lists all
 #'     the IAM users in the team for a project, including their roles and
 #'     attributes.
-#'
+#' 
 #' -   `update_team_member`, which updates a
 #'     team member's attributes in a project.
-#'
+#' 
 #' Users, by calling the following:
-#'
+#' 
 #' -   `create_user_profile`, which creates
 #'     a user profile that contains data associated with the user across
 #'     all projects.
-#'
+#' 
 #' -   `delete_user_profile`, which deletes
 #'     all user profile information across all projects.
-#'
+#' 
 #' -   `describe_user_profile`, which
 #'     describes the profile of a user.
-#'
+#' 
 #' -   `list_user_profiles`, which lists all
 #'     user profiles.
-#'
+#' 
 #' -   `update_user_profile`, which updates
 #'     the profile for a user.
 #'
@@ -14493,9 +16004,9 @@ codepipeline <- function(config = list(), credentials = list(), endpoint = NULL,
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -14605,12 +16116,12 @@ codestar <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @description
 #' AWS CodeStar Connections
-#'
+#' 
 #' This Amazon Web Services CodeStar Connections API Reference provides
 #' descriptions and usage examples of the operations and data types for the
 #' Amazon Web Services CodeStar Connections API. You can use the
 #' connections API to work with connections and installations.
-#'
+#' 
 #' *Connections* are configurations that you use to connect Amazon Web
 #' Services resources to external code repositories. Each connection is a
 #' resource that can be given to services such as CodePipeline to connect
@@ -14619,63 +16130,63 @@ codestar <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' code change is made to your third-party code repository. Each connection
 #' is named and associated with a unique ARN that is used to reference the
 #' connection.
-#'
+#' 
 #' When you create a connection, the console initiates a third-party
 #' connection handshake. *Installations* are the apps that are used to
 #' conduct this handshake. For example, the installation for the Bitbucket
 #' provider type is the Bitbucket app. When you create a connection, you
 #' can choose an existing installation or create one.
-#'
+#' 
 #' When you want to create a connection to an installed provider type such
 #' as GitHub Enterprise Server, you create a *host* for your connections.
-#'
+#' 
 #' You can work with connections by calling:
-#'
+#' 
 #' -   `create_connection`, which
 #'     creates a uniquely named connection that can be referenced by
 #'     services such as CodePipeline.
-#'
+#' 
 #' -   `delete_connection`, which
 #'     deletes the specified connection.
-#'
+#' 
 #' -   `get_connection`, which
 #'     returns information about the connection, including the connection
 #'     status.
-#'
+#' 
 #' -   `list_connections`, which
 #'     lists the connections associated with your account.
-#'
+#' 
 #' You can work with hosts by calling:
-#'
+#' 
 #' -   `create_host`, which creates a
 #'     host that represents the infrastructure where your provider is
 #'     installed.
-#'
+#' 
 #' -   `delete_host`, which deletes the
 #'     specified host.
-#'
+#' 
 #' -   `get_host`, which returns
 #'     information about the host, including the setup status.
-#'
+#' 
 #' -   `list_hosts`, which lists the
 #'     hosts associated with your account.
-#'
+#' 
 #' You can work with tags in Amazon Web Services CodeStar Connections by
 #' calling the following:
-#'
+#' 
 #' -   `list_tags_for_resource`,
 #'     which gets information about Amazon Web Services tags for a
 #'     specified Amazon Resource Name (ARN) in Amazon Web Services CodeStar
 #'     Connections.
-#'
+#' 
 #' -   `tag_resource`, which adds or
 #'     updates tags for a resource in Amazon Web Services CodeStar
 #'     Connections.
-#'
+#' 
 #' -   `untag_resource`, which
 #'     removes tags for a resource in Amazon Web Services CodeStar
 #'     Connections.
-#'
+#' 
 #' For information about how to use Amazon Web Services CodeStar
 #' Connections, see the [Developer Tools User
 #' Guide](https://docs.aws.amazon.com/dtconsole/latest/userguide/welcome-connections.html).
@@ -14692,9 +16203,9 @@ codestar <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -14801,57 +16312,57 @@ codestarconnections <- function(config = list(), credentials = list(), endpoint 
 #' usage examples of the operations and data types for the AWS CodeStar
 #' Notifications API. You can use the AWS CodeStar Notifications API to
 #' work with the following objects:
-#'
+#' 
 #' Notification rules, by calling the following:
-#'
+#' 
 #' -   `create_notification_rule`,
 #'     which creates a notification rule for a resource in your account.
-#'
+#' 
 #' -   `delete_notification_rule`,
 #'     which deletes a notification rule.
-#'
+#' 
 #' -   `describe_notification_rule`,
 #'     which provides information about a notification rule.
-#'
+#' 
 #' -   `list_notification_rules`,
 #'     which lists the notification rules associated with your account.
-#'
+#' 
 #' -   `update_notification_rule`,
 #'     which changes the name, events, or targets associated with a
 #'     notification rule.
-#'
+#' 
 #' -   `subscribe`, which subscribes a
 #'     target to a notification rule.
-#'
+#' 
 #' -   `unsubscribe`, which removes a
 #'     target from a notification rule.
-#'
+#' 
 #' Targets, by calling the following:
-#'
+#' 
 #' -   `delete_target`, which
 #'     removes a notification rule target from a notification rule.
-#'
+#' 
 #' -   `list_targets`, which lists
 #'     the targets associated with a notification rule.
-#'
+#' 
 #' Events, by calling the following:
-#'
+#' 
 #' -   `list_event_types`, which
 #'     lists the event types you can include in a notification rule.
-#'
+#' 
 #' Tags, by calling the following:
-#'
+#' 
 #' -   `list_tags_for_resource`,
 #'     which lists the tags already associated with a notification rule in
 #'     your account.
-#'
+#' 
 #' -   `tag_resource`, which
 #'     associates a tag you provide with a notification rule in your
 #'     account.
-#'
+#' 
 #' -   `untag_resource`, which
 #'     removes a tag from a notification rule in your account.
-#'
+#' 
 #' For information about how to use AWS CodeStar Notifications, see the
 #' [Amazon Web Services Developer Tools Console User
 #' Guide](https://docs.aws.amazon.com/dtconsole/latest/userguide/what-is-dtconsole.html).
@@ -14868,9 +16379,9 @@ codestarconnections <- function(config = list(), credentials = list(), endpoint 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -14988,9 +16499,9 @@ codestarnotifications <- function(config = list(), credentials = list(), endpoin
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -15065,6 +16576,7 @@ codestarnotifications <- function(config = list(), credentials = list(), endpoin
 #'  \link[paws.developer.tools:drs_create_replication_configuration_template]{create_replication_configuration_template} \tab Creates a new ReplicationConfigurationTemplate\cr
 #'  \link[paws.developer.tools:drs_create_source_network]{create_source_network} \tab Create a new Source Network resource for a provided VPC ID\cr
 #'  \link[paws.developer.tools:drs_delete_job]{delete_job} \tab Deletes a single Job by ID\cr
+#'  \link[paws.developer.tools:drs_delete_launch_action]{delete_launch_action} \tab Deletes a resource launch action\cr
 #'  \link[paws.developer.tools:drs_delete_launch_configuration_template]{delete_launch_configuration_template} \tab Deletes a single Launch Configuration Template by ID\cr
 #'  \link[paws.developer.tools:drs_delete_recovery_instance]{delete_recovery_instance} \tab Deletes a single Recovery Instance by ID\cr
 #'  \link[paws.developer.tools:drs_delete_replication_configuration_template]{delete_replication_configuration_template} \tab Deletes a single Replication Configuration Template by ID\cr
@@ -15086,8 +16598,10 @@ codestarnotifications <- function(config = list(), credentials = list(), endpoin
 #'  \link[paws.developer.tools:drs_get_replication_configuration]{get_replication_configuration} \tab Gets a ReplicationConfiguration, filtered by Source Server ID\cr
 #'  \link[paws.developer.tools:drs_initialize_service]{initialize_service} \tab Initialize Elastic Disaster Recovery\cr
 #'  \link[paws.developer.tools:drs_list_extensible_source_servers]{list_extensible_source_servers} \tab Returns a list of source servers on a staging account that are extensible, which means that: a\cr
+#'  \link[paws.developer.tools:drs_list_launch_actions]{list_launch_actions} \tab Lists resource launch actions\cr
 #'  \link[paws.developer.tools:drs_list_staging_accounts]{list_staging_accounts} \tab Returns an array of staging accounts for existing extended source servers\cr
 #'  \link[paws.developer.tools:drs_list_tags_for_resource]{list_tags_for_resource} \tab List all tags for your Elastic Disaster Recovery resources\cr
+#'  \link[paws.developer.tools:drs_put_launch_action]{put_launch_action} \tab Puts a resource launch action\cr
 #'  \link[paws.developer.tools:drs_retry_data_replication]{retry_data_replication} \tab WARNING: RetryDataReplication is deprecated\cr
 #'  \link[paws.developer.tools:drs_reverse_replication]{reverse_replication} \tab Start replication to origin / target region - applies only to protected instances that originated in EC2\cr
 #'  \link[paws.developer.tools:drs_start_failback_launch]{start_failback_launch} \tab Initiates a Job for launching the machine that is being failed back to from the specified Recovery Instance\cr
@@ -15138,13 +16652,13 @@ drs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' help you improve your operational applications. For more information,
 #' see [What is Amazon DevOps
 #' Guru](https://docs.aws.amazon.com/devops-guru/latest/userguide/welcome.html).
-#'
+#' 
 #' You can specify 1 or 2 Amazon Simple Notification Service topics so you
 #' are notified every time a new insight is created. You can also enable
 #' DevOps Guru to generate an OpsItem in Amazon Web Services Systems
 #' Manager for each insight to help you manage and track your work
 #' addressing insights.
-#'
+#' 
 #' To learn about the DevOps Guru workflow, see [How DevOps Guru
 #' works](https://docs.aws.amazon.com/devops-guru/latest/userguide/welcome.html#how-it-works).
 #' To learn about DevOps Guru concepts, see [Concepts in DevOps
@@ -15162,9 +16676,9 @@ drs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -15303,9 +16817,9 @@ devopsguru <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -15413,7 +16927,7 @@ fis <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @description
 #' Well-Architected Tool
-#'
+#' 
 #' This is the *Well-Architected Tool API Reference*. The WA Tool API
 #' provides programmatic access to the [Well-Architected
 #' Tool](https://aws.amazon.com/well-architected-tool/) in the Amazon Web
@@ -15433,9 +16947,9 @@ fis <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -15511,12 +17025,16 @@ fis <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.developer.tools:wellarchitected_create_milestone]{create_milestone} \tab Create a milestone for an existing workload\cr
 #'  \link[paws.developer.tools:wellarchitected_create_profile]{create_profile} \tab Create a profile\cr
 #'  \link[paws.developer.tools:wellarchitected_create_profile_share]{create_profile_share} \tab Create a profile share\cr
+#'  \link[paws.developer.tools:wellarchitected_create_review_template]{create_review_template} \tab Create a review template\cr
+#'  \link[paws.developer.tools:wellarchitected_create_template_share]{create_template_share} \tab Create a review template share\cr
 #'  \link[paws.developer.tools:wellarchitected_create_workload]{create_workload} \tab Create a new workload\cr
 #'  \link[paws.developer.tools:wellarchitected_create_workload_share]{create_workload_share} \tab Create a workload share\cr
 #'  \link[paws.developer.tools:wellarchitected_delete_lens]{delete_lens} \tab Delete an existing lens\cr
 #'  \link[paws.developer.tools:wellarchitected_delete_lens_share]{delete_lens_share} \tab Delete a lens share\cr
 #'  \link[paws.developer.tools:wellarchitected_delete_profile]{delete_profile} \tab Delete a profile\cr
 #'  \link[paws.developer.tools:wellarchitected_delete_profile_share]{delete_profile_share} \tab Delete a profile share\cr
+#'  \link[paws.developer.tools:wellarchitected_delete_review_template]{delete_review_template} \tab Delete a review template\cr
+#'  \link[paws.developer.tools:wellarchitected_delete_template_share]{delete_template_share} \tab Delete a review template share\cr
 #'  \link[paws.developer.tools:wellarchitected_delete_workload]{delete_workload} \tab Delete an existing workload\cr
 #'  \link[paws.developer.tools:wellarchitected_delete_workload_share]{delete_workload_share} \tab Delete a workload share\cr
 #'  \link[paws.developer.tools:wellarchitected_disassociate_lenses]{disassociate_lenses} \tab Disassociate a lens from a workload\cr
@@ -15531,6 +17049,9 @@ fis <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.developer.tools:wellarchitected_get_milestone]{get_milestone} \tab Get a milestone for an existing workload\cr
 #'  \link[paws.developer.tools:wellarchitected_get_profile]{get_profile} \tab Get profile information\cr
 #'  \link[paws.developer.tools:wellarchitected_get_profile_template]{get_profile_template} \tab Get profile template\cr
+#'  \link[paws.developer.tools:wellarchitected_get_review_template]{get_review_template} \tab Get review template\cr
+#'  \link[paws.developer.tools:wellarchitected_get_review_template_answer]{get_review_template_answer} \tab Get review template answer\cr
+#'  \link[paws.developer.tools:wellarchitected_get_review_template_lens_review]{get_review_template_lens_review} \tab Get a lens review associated with a review template\cr
 #'  \link[paws.developer.tools:wellarchitected_get_workload]{get_workload} \tab Get an existing workload\cr
 #'  \link[paws.developer.tools:wellarchitected_import_lens]{import_lens} \tab Import a new custom lens or update an existing custom lens\cr
 #'  \link[paws.developer.tools:wellarchitected_list_answers]{list_answers} \tab List of answers for a particular workload and lens\cr
@@ -15545,8 +17066,11 @@ fis <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.developer.tools:wellarchitected_list_profile_notifications]{list_profile_notifications} \tab List profile notifications\cr
 #'  \link[paws.developer.tools:wellarchitected_list_profiles]{list_profiles} \tab List profiles\cr
 #'  \link[paws.developer.tools:wellarchitected_list_profile_shares]{list_profile_shares} \tab List profile shares\cr
-#'  \link[paws.developer.tools:wellarchitected_list_share_invitations]{list_share_invitations} \tab List the workload invitations\cr
+#'  \link[paws.developer.tools:wellarchitected_list_review_template_answers]{list_review_template_answers} \tab List the answers of a review template\cr
+#'  \link[paws.developer.tools:wellarchitected_list_review_templates]{list_review_templates} \tab List review templates\cr
+#'  \link[paws.developer.tools:wellarchitected_list_share_invitations]{list_share_invitations} \tab List the share invitations\cr
 #'  \link[paws.developer.tools:wellarchitected_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for a resource\cr
+#'  \link[paws.developer.tools:wellarchitected_list_template_shares]{list_template_shares} \tab List review template shares\cr
 #'  \link[paws.developer.tools:wellarchitected_list_workloads]{list_workloads} \tab Paginated list of workloads\cr
 #'  \link[paws.developer.tools:wellarchitected_list_workload_shares]{list_workload_shares} \tab List the workload shares associated with the workload\cr
 #'  \link[paws.developer.tools:wellarchitected_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource\cr
@@ -15555,11 +17079,15 @@ fis <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.developer.tools:wellarchitected_update_global_settings]{update_global_settings} \tab Updates whether the Amazon Web Services account is opted into organization sharing and discovery integration features\cr
 #'  \link[paws.developer.tools:wellarchitected_update_lens_review]{update_lens_review} \tab Update lens review for a particular workload\cr
 #'  \link[paws.developer.tools:wellarchitected_update_profile]{update_profile} \tab Update a profile\cr
+#'  \link[paws.developer.tools:wellarchitected_update_review_template]{update_review_template} \tab Update a review template\cr
+#'  \link[paws.developer.tools:wellarchitected_update_review_template_answer]{update_review_template_answer} \tab Update a review template answer\cr
+#'  \link[paws.developer.tools:wellarchitected_update_review_template_lens_review]{update_review_template_lens_review} \tab Update a lens review associated with a review template\cr
 #'  \link[paws.developer.tools:wellarchitected_update_share_invitation]{update_share_invitation} \tab Update a workload or custom lens share invitation\cr
 #'  \link[paws.developer.tools:wellarchitected_update_workload]{update_workload} \tab Update an existing workload\cr
 #'  \link[paws.developer.tools:wellarchitected_update_workload_share]{update_workload_share} \tab Update a workload share\cr
 #'  \link[paws.developer.tools:wellarchitected_upgrade_lens_review]{upgrade_lens_review} \tab Upgrade lens review for a particular workload\cr
-#'  \link[paws.developer.tools:wellarchitected_upgrade_profile_version]{upgrade_profile_version} \tab Upgrade a profile
+#'  \link[paws.developer.tools:wellarchitected_upgrade_profile_version]{upgrade_profile_version} \tab Upgrade a profile\cr
+#'  \link[paws.developer.tools:wellarchitected_upgrade_review_template_lens_review]{upgrade_review_template_lens_review} \tab Upgrade the lens review of a review template
 #' }
 #'
 #' @return
@@ -15598,9 +17126,9 @@ wellarchitected <- function(config = list(), credentials = list(), endpoint = NU
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -15735,9 +17263,9 @@ xray <- function(config = list(), credentials = list(), endpoint = NULL, region 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -15851,58 +17379,58 @@ prometheusservice <- function(config = list(), credentials = list(), endpoint = 
 #' @description
 #' With Application Auto Scaling, you can configure automatic scaling for
 #' the following resources:
-#'
+#' 
 #' -   Amazon AppStream 2.0 fleets
-#'
+#' 
 #' -   Amazon Aurora Replicas
-#'
+#' 
 #' -   Amazon Comprehend document classification and entity recognizer
 #'     endpoints
-#'
+#' 
 #' -   Amazon DynamoDB tables and global secondary indexes throughput
 #'     capacity
-#'
+#' 
 #' -   Amazon ECS services
-#'
+#' 
 #' -   Amazon ElastiCache for Redis clusters (replication groups)
-#'
+#' 
 #' -   Amazon EMR clusters
-#'
+#' 
 #' -   Amazon Keyspaces (for Apache Cassandra) tables
-#'
+#' 
 #' -   Lambda function provisioned concurrency
-#'
+#' 
 #' -   Amazon Managed Streaming for Apache Kafka broker storage
-#'
+#' 
 #' -   Amazon Neptune clusters
-#'
+#' 
 #' -   Amazon SageMaker endpoint variants
-#'
+#' 
 #' -   Amazon SageMaker Serverless endpoint provisioned concurrency
-#'
+#' 
 #' -   Spot Fleets (Amazon EC2)
-#'
+#' 
 #' -   Custom resources provided by your own applications or services
-#'
+#' 
 #' To learn more about Application Auto Scaling, see the [Application Auto
 #' Scaling User
 #' Guide](https://docs.aws.amazon.com/autoscaling/application/userguide/what-is-application-auto-scaling.html).
-#'
+#' 
 #' **API Summary**
-#'
+#' 
 #' The Application Auto Scaling service API includes three key sets of
 #' actions:
-#'
+#' 
 #' -   Register and manage scalable targets - Register Amazon Web Services
 #'     or custom resources as scalable targets (a resource that Application
 #'     Auto Scaling can scale), set minimum and maximum capacity limits,
 #'     and retrieve information on existing scalable targets.
-#'
+#' 
 #' -   Configure and manage automatic scaling - Define scaling policies to
 #'     dynamically scale your resources in response to CloudWatch alarms,
 #'     schedule one-time or recurring scaling actions, and retrieve your
 #'     recent scaling activity history.
-#'
+#' 
 #' -   Suspend and resume scaling - Temporarily suspend and later resume
 #'     automatic scaling by calling the
 #'     `register_scalable_target`
@@ -15924,9 +17452,9 @@ prometheusservice <- function(config = list(), credentials = list(), endpoint = 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -16040,7 +17568,7 @@ applicationautoscaling <- function(config = list(), credentials = list(), endpoi
 #' pinpoint the source of issues in your applications (built with
 #' technologies such as Microsoft IIS, .NET, and Microsoft SQL Server), by
 #' providing key insights into detected problems.
-#'
+#' 
 #' After you onboard your application, CloudWatch Application Insights
 #' identifies, recommends, and sets up metrics and logs. It continuously
 #' analyzes and correlates your metrics and logs for unusual behavior to
@@ -16062,9 +17590,9 @@ applicationautoscaling <- function(config = list(), credentials = list(), endpoi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -16190,12 +17718,12 @@ applicationinsights <- function(config = list(), credentials = list(), endpoint 
 #' @description
 #' This reference provides descriptions of the AWS Application Cost
 #' Profiler API.
-#'
+#' 
 #' The AWS Application Cost Profiler API provides programmatic access to
 #' view, create, update, and delete application cost report definitions, as
 #' well as to import your usage data into the Application Cost Profiler
 #' service.
-#'
+#' 
 #' For more information about using this service, see the [AWS Application
 #' Cost Profiler User
 #' Guide](https://docs.aws.amazon.com/application-cost-profiler/latest/userguide/introduction.html).
@@ -16212,9 +17740,9 @@ applicationinsights <- function(config = list(), credentials = list(), endpoint 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -16314,12 +17842,12 @@ applicationcostprofiler <- function(config = list(), credentials = list(), endpo
 #' Welcome to the Audit Manager API reference. This guide is for developers
 #' who need detailed information about the Audit Manager API operations,
 #' data types, and errors.
-#'
+#' 
 #' Audit Manager is a service that provides automated evidence collection
 #' so that you can continually audit your Amazon Web Services usage. You
 #' can use it to assess the effectiveness of your controls, manage risk,
 #' and simplify compliance.
-#'
+#' 
 #' Audit Manager provides prebuilt frameworks that structure and automate
 #' assessments for a given compliance standard. Frameworks include a
 #' prebuilt collection of controls with descriptions and testing
@@ -16327,24 +17855,24 @@ applicationcostprofiler <- function(config = list(), credentials = list(), endpo
 #' the specified compliance standard or regulation. You can also customize
 #' frameworks and controls to support internal audits with specific
 #' requirements.
-#'
+#' 
 #' Use the following links to get started with the Audit Manager API:
-#'
+#' 
 #' -   [Actions](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Operations.html):
 #'     An alphabetical list of all Audit Manager API operations.
-#'
+#' 
 #' -   [Data
 #'     types](https://docs.aws.amazon.com/audit-manager/latest/APIReference/API_Types.html):
 #'     An alphabetical list of all Audit Manager data types.
-#'
+#' 
 #' -   [Common
 #'     parameters](https://docs.aws.amazon.com/audit-manager/latest/APIReference/CommonParameters.html):
 #'     Parameters that all operations can use.
-#'
+#' 
 #' -   [Common
 #'     errors](https://docs.aws.amazon.com/audit-manager/latest/APIReference/CommonErrors.html):
 #'     Client and server errors that all operations can return.
-#'
+#' 
 #' If you're new to Audit Manager, we recommend that you review the [Audit
 #' Manager User
 #' Guide](https://docs.aws.amazon.com/audit-manager/latest/userguide/what-is.html).
@@ -16361,9 +17889,9 @@ applicationcostprofiler <- function(config = list(), credentials = list(), endpo
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -16517,11 +18045,11 @@ auditmanager <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @description
 #' Amazon EC2 Auto Scaling
-#'
+#' 
 #' Amazon EC2 Auto Scaling is designed to automatically launch and
 #' terminate EC2 instances based on user-defined scaling policies,
 #' scheduled actions, and health checks.
-#'
+#' 
 #' For more information, see the [Amazon EC2 Auto Scaling User
 #' Guide](https://docs.aws.amazon.com/autoscaling/ec2/userguide/) and the
 #' [Amazon EC2 Auto Scaling API
@@ -16539,9 +18067,9 @@ auditmanager <- function(config = list(), credentials = list(), endpoint = NULL,
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -16703,30 +18231,30 @@ autoscaling <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @description
 #' AWS Auto Scaling
-#'
+#' 
 #' Use AWS Auto Scaling to create scaling plans for your applications to
 #' automatically scale your scalable AWS resources.
-#'
+#' 
 #' **API Summary**
-#'
+#' 
 #' You can use the AWS Auto Scaling service API to accomplish the following
 #' tasks:
-#'
+#' 
 #' -   Create and manage scaling plans
-#'
+#' 
 #' -   Define target tracking scaling policies to dynamically scale your
 #'     resources based on utilization
-#'
+#' 
 #' -   Scale Amazon EC2 Auto Scaling groups using predictive scaling and
 #'     dynamic scaling to scale your Amazon EC2 capacity faster
-#'
+#' 
 #' -   Set minimum and maximum capacity limits
-#'
+#' 
 #' -   Retrieve information on existing scaling plans
-#'
+#' 
 #' -   Access current forecast data and historical forecast data for up to
 #'     56 days previous
-#'
+#' 
 #' To learn more about AWS Auto Scaling, including information about
 #' granting IAM users required permissions for AWS Auto Scaling actions,
 #' see the [AWS Auto Scaling User
@@ -16744,9 +18272,9 @@ autoscaling <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -16844,7 +18372,7 @@ autoscalingplans <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @description
 #' CloudFormation
-#'
+#' 
 #' CloudFormation allows you to create and manage Amazon Web Services
 #' infrastructure deployments predictably and repeatedly. You can use
 #' CloudFormation to leverage Amazon Web Services products, such as Amazon
@@ -16853,16 +18381,16 @@ autoscalingplans <- function(config = list(), credentials = list(), endpoint = N
 #' highly reliable, highly scalable, cost-effective applications without
 #' creating or configuring the underlying Amazon Web Services
 #' infrastructure.
-#'
+#' 
 #' With CloudFormation, you declare all your resources and dependencies in
 #' a template file. The template defines a collection of resources as a
 #' single unit called a stack. CloudFormation creates and deletes all
 #' member resources of the stack together and manages all dependencies
 #' between the resources for you.
-#'
+#' 
 #' For more information about CloudFormation, see the [CloudFormation
 #' product page](https://aws.amazon.com/cloudformation/).
-#'
+#' 
 #' CloudFormation makes use of other Amazon Web Services products. If you
 #' need additional technical information about a specific Amazon Web
 #' Services product, you can find the product's technical documentation at
@@ -16880,9 +18408,9 @@ autoscalingplans <- function(config = list(), credentials = list(), endpoint = N
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -17044,18 +18572,18 @@ cloudformation <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @description
 #' CloudTrail
-#'
+#' 
 #' This is the CloudTrail API Reference. It provides descriptions of
 #' actions, data types, common parameters, and common errors for
 #' CloudTrail.
-#'
+#' 
 #' CloudTrail is a web service that records Amazon Web Services API calls
 #' for your Amazon Web Services account and delivers log files to an Amazon
 #' S3 bucket. The recorded information includes the identity of the user,
 #' the start time of the Amazon Web Services API call, the source IP
 #' address, the request parameters, and the response elements returned by
 #' the service.
-#'
+#' 
 #' As an alternative to the API, you can use one of the Amazon Web Services
 #' SDKs, which consist of libraries and sample code for various programming
 #' languages and platforms (Java, Ruby, .NET, iOS, Android, etc.). The SDKs
@@ -17064,7 +18592,7 @@ cloudformation <- function(config = list(), credentials = list(), endpoint = NUL
 #' requests automatically. For more information about the Amazon Web
 #' Services SDKs, including how to download and install them, see [Tools to
 #' Build on Amazon Web Services](https://aws.amazon.com/developer/tools/).
-#'
+#' 
 #' See the [CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-user-guide.html)
 #' for information about the data that is included with each Amazon Web
@@ -17082,9 +18610,9 @@ cloudformation <- function(config = list(), credentials = list(), endpoint = NUL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -17169,7 +18697,7 @@ cloudformation <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.management:cloudtrail_get_event_data_store]{get_event_data_store} \tab Returns information about an event data store specified as either an ARN or the ID portion of the ARN\cr
 #'  \link[paws.management:cloudtrail_get_event_selectors]{get_event_selectors} \tab Describes the settings for the event selectors that you configured for your trail\cr
 #'  \link[paws.management:cloudtrail_get_import]{get_import} \tab Returns information about a specific import\cr
-#'  \link[paws.management:cloudtrail_get_insight_selectors]{get_insight_selectors} \tab Describes the settings for the Insights event selectors that you configured for your trail\cr
+#'  \link[paws.management:cloudtrail_get_insight_selectors]{get_insight_selectors} \tab Describes the settings for the Insights event selectors that you configured for your trail or event data store\cr
 #'  \link[paws.management:cloudtrail_get_query_results]{get_query_results} \tab Gets event data results of a query\cr
 #'  \link[paws.management:cloudtrail_get_resource_policy]{get_resource_policy} \tab Retrieves the JSON text of the resource-based policy document attached to the CloudTrail channel\cr
 #'  \link[paws.management:cloudtrail_get_trail]{get_trail} \tab Returns settings information for a specified trail\cr
@@ -17184,7 +18712,7 @@ cloudformation <- function(config = list(), credentials = list(), endpoint = NUL
 #'  \link[paws.management:cloudtrail_list_trails]{list_trails} \tab Lists trails that are in the current account\cr
 #'  \link[paws.management:cloudtrail_lookup_events]{lookup_events} \tab Looks up management events or CloudTrail Insights events that are captured by CloudTrail\cr
 #'  \link[paws.management:cloudtrail_put_event_selectors]{put_event_selectors} \tab Configures an event selector or advanced event selectors for your trail\cr
-#'  \link[paws.management:cloudtrail_put_insight_selectors]{put_insight_selectors} \tab Lets you enable Insights event logging by specifying the Insights selectors that you want to enable on an existing trail\cr
+#'  \link[paws.management:cloudtrail_put_insight_selectors]{put_insight_selectors} \tab Lets you enable Insights event logging by specifying the Insights selectors that you want to enable on an existing trail or event data store\cr
 #'  \link[paws.management:cloudtrail_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based permission policy to a CloudTrail channel that is used for an integration with an event source outside of Amazon Web Services\cr
 #'  \link[paws.management:cloudtrail_register_organization_delegated_admin]{register_organization_delegated_admin} \tab Registers an organization’s member account as the CloudTrail delegated administrator\cr
 #'  \link[paws.management:cloudtrail_remove_tags]{remove_tags} \tab Removes the specified tags from a trail, event data store, or channel\cr
@@ -17218,11 +18746,128 @@ cloudtrail <- function(config = list(), credentials = list(), endpoint = NULL, r
   )
 }
 
+#' AWS CloudTrail Data Service
+#'
+#' @description
+#' The CloudTrail Data Service lets you ingest events into CloudTrail from
+#' any source in your hybrid environments, such as in-house or SaaS
+#' applications hosted on-premises or in the cloud, virtual machines, or
+#' containers. You can store, access, analyze, troubleshoot and take action
+#' on this data without maintaining multiple log aggregators and reporting
+#' tools. After you run
+#' `put_audit_events` to ingest
+#' your application activity into CloudTrail, you can use CloudTrail Lake
+#' to search, query, and analyze the data that is logged from your
+#' applications.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudtraildataservice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- cloudtraildataservice()
+#' svc$put_audit_events(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.management:cloudtraildataservice_put_audit_events]{put_audit_events} \tab Ingests your application events into CloudTrail Lake
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname cloudtraildataservice
+#' @export
+cloudtraildataservice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::cloudtraildataservice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' AWS Config
 #'
 #' @description
 #' Config
-#'
+#' 
 #' Config provides a way to keep track of the configurations of all the
 #' Amazon Web Services resources associated with your Amazon Web Services
 #' account. You can use Config to get the current and historical
@@ -17233,7 +18878,7 @@ cloudtrail <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' or a security group. For a complete list of resources currently
 #' supported by Config, see [Supported Amazon Web Services
 #' resources](https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
-#'
+#' 
 #' You can access and manage Config through the Amazon Web Services
 #' Management Console, the Amazon Web Services Command Line Interface
 #' (Amazon Web Services CLI), the Config API, or the Amazon Web Services
@@ -17261,9 +18906,9 @@ cloudtrail <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -17391,7 +19036,7 @@ cloudtrail <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'  \link[paws.management:configservice_get_organization_config_rule_detailed_status]{get_organization_config_rule_detailed_status} \tab Returns detailed status for each member account within an organization for a given organization Config rule\cr
 #'  \link[paws.management:configservice_get_organization_conformance_pack_detailed_status]{get_organization_conformance_pack_detailed_status} \tab Returns detailed status for each member account within an organization for a given organization conformance pack\cr
 #'  \link[paws.management:configservice_get_organization_custom_rule_policy]{get_organization_custom_rule_policy} \tab Returns the policy definition containing the logic for your organization Config Custom Policy rule\cr
-#'  \link[paws.management:configservice_get_resource_config_history]{get_resource_config_history} \tab Returns a list of ConfigurationItems for the specified resource\cr
+#'  \link[paws.management:configservice_get_resource_config_history]{get_resource_config_history} \tab For accurate reporting on the compliance status, you must record the AWS::Config::ResourceCompliance resource type\cr
 #'  \link[paws.management:configservice_get_resource_evaluation_summary]{get_resource_evaluation_summary} \tab Returns a summary of resource evaluation for the specified resource evaluation ID from the proactive rules that were run\cr
 #'  \link[paws.management:configservice_get_stored_query]{get_stored_query} \tab Returns the details of a specific stored query\cr
 #'  \link[paws.management:configservice_list_aggregate_discovered_resources]{list_aggregate_discovered_resources} \tab Accepts a resource type and returns a list of resource identifiers that are aggregated for a specific resource type across accounts and regions\cr
@@ -17405,7 +19050,7 @@ cloudtrail <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'  \link[paws.management:configservice_put_configuration_aggregator]{put_configuration_aggregator} \tab Creates and updates the configuration aggregator with the selected source accounts and regions\cr
 #'  \link[paws.management:configservice_put_configuration_recorder]{put_configuration_recorder} \tab Creates a new configuration recorder to record configuration changes for specified resource types\cr
 #'  \link[paws.management:configservice_put_conformance_pack]{put_conformance_pack} \tab Creates or updates a conformance pack\cr
-#'  \link[paws.management:configservice_put_delivery_channel]{put_delivery_channel} \tab Creates a delivery channel object to deliver configuration information to an Amazon S3 bucket and Amazon SNS topic\cr
+#'  \link[paws.management:configservice_put_delivery_channel]{put_delivery_channel} \tab Creates a delivery channel object to deliver configuration information and other compliance information to an Amazon S3 bucket and Amazon SNS topic\cr
 #'  \link[paws.management:configservice_put_evaluations]{put_evaluations} \tab Used by an Lambda function to deliver evaluation results to Config\cr
 #'  \link[paws.management:configservice_put_external_evaluation]{put_external_evaluation} \tab Add or updates the evaluations for process checks\cr
 #'  \link[paws.management:configservice_put_organization_config_rule]{put_organization_config_rule} \tab Adds or updates an Config rule for your entire organization to evaluate if your Amazon Web Services resources comply with your desired configurations\cr
@@ -17443,6 +19088,210 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
   )
 }
 
+#' AWS Control Tower
+#'
+#' @description
+#' These interfaces allow you to apply the AWS library of pre-defined
+#' *controls* to your organizational units, programmatically. In AWS
+#' Control Tower, the terms "control" and "guardrail" are synonyms.
+#' 
+#' To call these APIs, you'll need to know:
+#' 
+#' -   the `controlIdentifier` for the control--or guardrail--you are
+#'     targeting.
+#' 
+#' -   the ARN associated with the target organizational unit (OU), which
+#'     we call the `targetIdentifier`.
+#' 
+#' -   the ARN associated with a resource that you wish to tag or untag.
+#' 
+#' **To get the `controlIdentifier` for your AWS Control Tower control:**
+#' 
+#' The `controlIdentifier` is an ARN that is specified for each control.
+#' You can view the `controlIdentifier` in the console on the **Control
+#' details** page, as well as in the documentation.
+#' 
+#' The `controlIdentifier` is unique in each AWS Region for each control.
+#' You can find the `controlIdentifier` for each Region and control in the
+#' [Tables of control
+#' metadata](https://docs.aws.amazon.com/controltower/latest/userguide/control-metadata-tables.html)
+#' in the *AWS Control Tower User Guide.*
+#' 
+#' A quick-reference list of control identifers for the AWS Control Tower
+#' legacy *Strongly recommended* and *Elective* controls is given in
+#' [Resource identifiers for APIs and
+#' controls](https://docs.aws.amazon.com/controltower/latest/userguide/) in
+#' the [Controls reference guide
+#' section](https://docs.aws.amazon.com/controltower/latest/userguide/control-identifiers.html)
+#' of the *AWS Control Tower User Guide*. Remember that *Mandatory*
+#' controls cannot be added or removed.
+#' 
+#' **ARN format:** `arn:aws:controltower:{REGION}::control/{CONTROL_NAME}`
+#' 
+#' **Example:**
+#' 
+#' `arn:aws:controltower:us-west-2::control/AWS-GR_AUTOSCALING_LAUNCH_CONFIG_PUBLIC_IP_DISABLED`
+#' 
+#' **To get the `targetIdentifier`:**
+#' 
+#' The `targetIdentifier` is the ARN for an OU.
+#' 
+#' In the AWS Organizations console, you can find the ARN for the OU on the
+#' **Organizational unit details** page associated with that OU.
+#' 
+#' **OU ARN format:**
+#' 
+#' `arn:${Partition}:organizations::${MasterAccountId}:ou/o-${OrganizationId}/ou-${OrganizationalUnitId}`
+#' 
+#' **Details and examples**
+#' 
+#' -   [Control API input and output examples with
+#'     CLI](https://docs.aws.amazon.com/controltower/latest/userguide/control-api-examples-short.html)
+#' 
+#' -   [Enable controls with
+#'     CloudFormation](https://docs.aws.amazon.com/controltower/latest/userguide/enable-controls.html)
+#' 
+#' -   [Control metadata
+#'     tables](https://docs.aws.amazon.com/controltower/latest/userguide/control-metadata-tables.html)
+#' 
+#' -   [List of identifiers for legacy
+#'     controls](https://docs.aws.amazon.com/controltower/latest/userguide/control-identifiers.html)
+#' 
+#' -   [Controls reference
+#'     guide](https://docs.aws.amazon.com/controltower/latest/userguide/controls.html)
+#' 
+#' -   [Controls library
+#'     groupings](https://docs.aws.amazon.com/controltower/latest/userguide/controls-reference.html)
+#' 
+#' -   [Creating AWS Control Tower resources with AWS
+#'     CloudFormation](https://docs.aws.amazon.com/controltower/latest/userguide/creating-resources-with-cloudformation.html)
+#' 
+#' To view the open source resource repository on GitHub, see
+#' [aws-cloudformation/aws-cloudformation-resource-providers-controltower](https://github.com/aws-cloudformation/aws-cloudformation-resource-providers-controltower)
+#' 
+#' **Recording API Requests**
+#' 
+#' AWS Control Tower supports AWS CloudTrail, a service that records AWS
+#' API calls for your AWS account and delivers log files to an Amazon S3
+#' bucket. By using information collected by CloudTrail, you can determine
+#' which requests the AWS Control Tower service received, who made the
+#' request and when, and so on. For more about AWS Control Tower and its
+#' support for CloudTrail, see [Logging AWS Control Tower Actions with AWS
+#' CloudTrail](https://docs.aws.amazon.com/controltower/latest/userguide/logging-using-cloudtrail.html)
+#' in the AWS Control Tower User Guide. To learn more about CloudTrail,
+#' including how to turn it on and find your log files, see the AWS
+#' CloudTrail User Guide.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- controltower(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- controltower()
+#' svc$disable_control(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.management:controltower_disable_control]{disable_control} \tab This API call turns off a control\cr
+#'  \link[paws.management:controltower_enable_control]{enable_control} \tab This API call activates a control\cr
+#'  \link[paws.management:controltower_get_control_operation]{get_control_operation} \tab Returns the status of a particular EnableControl or DisableControl operation\cr
+#'  \link[paws.management:controltower_get_enabled_control]{get_enabled_control} \tab Retrieves details about an enabled control\cr
+#'  \link[paws.management:controltower_list_enabled_controls]{list_enabled_controls} \tab Lists the controls enabled by AWS Control Tower on the specified organizational unit and the accounts it contains\cr
+#'  \link[paws.management:controltower_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags associated with the resource\cr
+#'  \link[paws.management:controltower_tag_resource]{tag_resource} \tab Applies tags to a resource\cr
+#'  \link[paws.management:controltower_untag_resource]{untag_resource} \tab Removes tags from a resource
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname controltower
+#' @export
+controltower <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::controltower(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon CloudWatch Events
 #'
 #' @description
@@ -17452,18 +19301,18 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 #' match selected events in the stream and route them to targets to take
 #' action. You can also use rules to take action on a predetermined
 #' schedule. For example, you can configure rules to:
-#'
+#' 
 #' -   Automatically invoke an Lambda function to update DNS entries when
 #'     an event notifies you that Amazon EC2 instance enters the running
 #'     state.
-#'
+#' 
 #' -   Direct specific API records from CloudTrail to an Amazon Kinesis
 #'     data stream for detailed analysis of potential security or
 #'     availability risks.
-#'
+#' 
 #' -   Periodically invoke a built-in target to create a snapshot of an
 #'     Amazon EBS volume.
-#'
+#' 
 #' For more information about the features of Amazon EventBridge, see the
 #' [Amazon EventBridge User
 #' Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/).
@@ -17480,9 +19329,9 @@ configservice <- function(config = list(), credentials = list(), endpoint = NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -17630,7 +19479,7 @@ cloudwatchevents <- function(config = list(), credentials = list(), endpoint = N
 #' help you decide when to ramp up traffic to your users. This helps you
 #' reduce risk and identify unintended consequences before you fully launch
 #' the feature.
-#'
+#' 
 #' You can also conduct A/B experiments to make feature design decisions
 #' based on evidence and data. An experiment can test as many as five
 #' variations at once. Evidently collects experiment data and analyzes it
@@ -17650,9 +19499,9 @@ cloudwatchevents <- function(config = list(), credentials = list(), endpoint = N
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -17796,9 +19645,9 @@ cloudwatchevidently <- function(config = list(), credentials = list(), endpoint 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -17896,6 +19745,7 @@ cloudwatchevidently <- function(config = list(), credentials = list(), endpoint 
 #'  \link[paws.management:finspace_tag_resource]{tag_resource} \tab Adds metadata tags to a FinSpace resource\cr
 #'  \link[paws.management:finspace_untag_resource]{untag_resource} \tab Removes metadata tags from a FinSpace resource\cr
 #'  \link[paws.management:finspace_update_environment]{update_environment} \tab Update your FinSpace environment\cr
+#'  \link[paws.management:finspace_update_kx_cluster_code_configuration]{update_kx_cluster_code_configuration} \tab Allows you to update code configuration on a running cluster\cr
 #'  \link[paws.management:finspace_update_kx_cluster_databases]{update_kx_cluster_databases} \tab Updates the databases mounted on a kdb cluster, which includes the changesetId and all the dbPaths to be cached\cr
 #'  \link[paws.management:finspace_update_kx_database]{update_kx_database} \tab Updates information for the given kdb database\cr
 #'  \link[paws.management:finspace_update_kx_environment]{update_kx_environment} \tab Updates information for the given kdb environment\cr
@@ -17929,7 +19779,7 @@ finspace <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' Managed Grafana makes it easy to deploy, operate, and scale Grafana, a
 #' widely deployed data visualization tool that is popular for its
 #' extensible data support.
-#'
+#' 
 #' With Amazon Managed Grafana, you create logically isolated Grafana
 #' servers called *workspaces*. In a workspace, you can create Grafana
 #' dashboards and visualizations to analyze your metrics, logs, and traces
@@ -17948,9 +19798,9 @@ finspace <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -18061,27 +19911,27 @@ managedgrafana <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @description
 #' Health
-#'
+#' 
 #' The Health API provides access to the Health information that appears in
 #' the [Health Dashboard](https://health.aws.amazon.com/health/home). You
 #' can use the API operations to get information about events that might
 #' affect your Amazon Web Services and resources.
-#'
+#' 
 #' You must have a Business, Enterprise On-Ramp, or Enterprise Support plan
 #' from [Amazon Web Services
 #' Support](https://aws.amazon.com/premiumsupport/) to use the Health API.
 #' If you call the Health API from an Amazon Web Services account that
 #' doesn't have a Business, Enterprise On-Ramp, or Enterprise Support plan,
 #' you receive a `SubscriptionRequiredException` error.
-#'
+#' 
 #' For API access, you need an access key ID and a secret access key. Use
 #' temporary credentials instead of long-term access keys when possible.
 #' Temporary credentials include an access key ID, a secret access key, and
 #' a security token that indicates when the credentials expire. For more
 #' information, see [Best practices for managing Amazon Web Services access
-#' keys](https://docs.aws.amazon.com/accounts/latest/reference/best-practices.html)
+#' keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#securing_access-keys)
 #' in the *Amazon Web Services General Reference*.
-#'
+#' 
 #' You can use the Health endpoint health.us-east-1.amazonaws.com (HTTPS)
 #' to call the Health API operations. Health supports a multi-Region
 #' application architecture and has two regional endpoints in an
@@ -18091,11 +19941,11 @@ managedgrafana <- function(config = list(), credentials = list(), endpoint = NUL
 #' see [Accessing the Health
 #' API](https://docs.aws.amazon.com/health/latest/ug/health-api.html) in
 #' the *Health User Guide*.
-#'
+#' 
 #' For authentication of requests, Health uses the [Signature Version 4
 #' Signing
 #' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
-#'
+#' 
 #' If your Amazon Web Services account is part of Organizations, you can
 #' use the Health organizational view feature. This feature provides a
 #' centralized view of Health events across all accounts in your
@@ -18106,15 +19956,15 @@ managedgrafana <- function(config = list(), credentials = list(), endpoint = NUL
 #' more information, see [Aggregating Health
 #' events](https://docs.aws.amazon.com/health/latest/ug/aggregate-events.html)
 #' in the *Health User Guide*.
-#'
+#' 
 #' When you use the Health API operations to return Health events, see the
 #' following recommendations:
-#'
+#' 
 #' -   Use the
 #'     [eventScopeCode](https://docs.aws.amazon.com/health/latest/APIReference/API_Event.html#AWSHealth-Type-Event-eventScopeCode)
 #'     parameter to specify whether to return Health events that are public
 #'     or account-specific.
-#'
+#' 
 #' -   Use pagination to view all events from the response. For example, if
 #'     you call the
 #'     `describe_events_for_organization`
@@ -18134,9 +19984,9 @@ managedgrafana <- function(config = list(), credentials = list(), endpoint = NUL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -18256,9 +20106,9 @@ health <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -18415,9 +20265,9 @@ licensemanager <- function(config = list(), credentials = list(), endpoint = NUL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -18516,6 +20366,118 @@ licensemanagerusersubscriptions <- function(config = list(), credentials = list(
   )
 }
 
+#' AWS License Manager Linux Subscriptions
+#'
+#' @description
+#' With License Manager, you can discover and track your commercial Linux
+#' subscriptions on running Amazon EC2 instances.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- licensemanagerlinuxsubscriptions(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- licensemanagerlinuxsubscriptions()
+#' svc$get_service_settings(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.management:licensemanagerlinuxsubscriptions_get_service_settings]{get_service_settings} \tab Lists the Linux subscriptions service settings\cr
+#'  \link[paws.management:licensemanagerlinuxsubscriptions_list_linux_subscription_instances]{list_linux_subscription_instances} \tab Lists the running Amazon EC2 instances that were discovered with commercial Linux subscriptions\cr
+#'  \link[paws.management:licensemanagerlinuxsubscriptions_list_linux_subscriptions]{list_linux_subscriptions} \tab Lists the Linux subscriptions that have been discovered\cr
+#'  \link[paws.management:licensemanagerlinuxsubscriptions_update_service_settings]{update_service_settings} \tab Updates the service settings for Linux subscriptions
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname licensemanagerlinuxsubscriptions
+#' @export
+licensemanagerlinuxsubscriptions <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::licensemanagerlinuxsubscriptions(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon CloudWatch Logs
 #'
 #' @description
@@ -18525,9 +20487,9 @@ licensemanagerusersubscriptions <- function(config = list(), credentials = list(
 #' CloudWatch console. Alternatively, you can use CloudWatch Logs commands
 #' in the Amazon Web Services CLI, CloudWatch Logs API, or CloudWatch Logs
 #' SDK.
-#'
+#' 
 #' You can use CloudWatch Logs to:
-#'
+#' 
 #' -   **Monitor logs from EC2 instances in real time**: You can use
 #'     CloudWatch Logs to monitor applications and systems using log data.
 #'     For example, CloudWatch Logs can track the number of errors that
@@ -18541,12 +20503,12 @@ licensemanagerusersubscriptions <- function(config = list(), credentials = list(
 #'     Apache access log). When the term you are searching for is found,
 #'     CloudWatch Logs reports the data to a CloudWatch metric that you
 #'     specify.
-#'
+#' 
 #' -   **Monitor CloudTrail logged events**: You can create alarms in
 #'     CloudWatch and receive notifications of particular API activity as
 #'     captured by CloudTrail. You can use the notification to perform
 #'     troubleshooting.
-#'
+#' 
 #' -   **Archive log data**: You can use CloudWatch Logs to store your log
 #'     data in highly durable storage. You can change the log retention
 #'     setting so that any log events earlier than this setting are
@@ -18567,9 +20529,9 @@ licensemanagerusersubscriptions <- function(config = list(), credentials = list(
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -18640,11 +20602,16 @@ licensemanagerusersubscriptions <- function(config = list(), credentials = list(
 #' \tabular{ll}{
 #'  \link[paws.management:cloudwatchlogs_associate_kms_key]{associate_kms_key} \tab Associates the specified KMS key with either one log group in the account, or with all stored CloudWatch Logs query insights results in the account\cr
 #'  \link[paws.management:cloudwatchlogs_cancel_export_task]{cancel_export_task} \tab Cancels the specified export task\cr
+#'  \link[paws.management:cloudwatchlogs_create_delivery]{create_delivery} \tab Creates a delivery\cr
 #'  \link[paws.management:cloudwatchlogs_create_export_task]{create_export_task} \tab Creates an export task so that you can efficiently export data from a log group to an Amazon S3 bucket\cr
 #'  \link[paws.management:cloudwatchlogs_create_log_group]{create_log_group} \tab Creates a log group with the specified name\cr
 #'  \link[paws.management:cloudwatchlogs_create_log_stream]{create_log_stream} \tab Creates a log stream for the specified log group\cr
 #'  \link[paws.management:cloudwatchlogs_delete_account_policy]{delete_account_policy} \tab Deletes a CloudWatch Logs account policy\cr
 #'  \link[paws.management:cloudwatchlogs_delete_data_protection_policy]{delete_data_protection_policy} \tab Deletes the data protection policy from the specified log group\cr
+#'  \link[paws.management:cloudwatchlogs_delete_delivery]{delete_delivery} \tab Deletes s delivery\cr
+#'  \link[paws.management:cloudwatchlogs_delete_delivery_destination]{delete_delivery_destination} \tab Deletes a delivery destination\cr
+#'  \link[paws.management:cloudwatchlogs_delete_delivery_destination_policy]{delete_delivery_destination_policy} \tab Deletes a delivery destination policy\cr
+#'  \link[paws.management:cloudwatchlogs_delete_delivery_source]{delete_delivery_source} \tab Deletes a delivery source\cr
 #'  \link[paws.management:cloudwatchlogs_delete_destination]{delete_destination} \tab Deletes the specified destination, and eventually disables all the subscription filters that publish to it\cr
 #'  \link[paws.management:cloudwatchlogs_delete_log_group]{delete_log_group} \tab Deletes the specified log group and permanently deletes all the archived log events associated with the log group\cr
 #'  \link[paws.management:cloudwatchlogs_delete_log_stream]{delete_log_stream} \tab Deletes the specified log stream and permanently deletes all the archived log events associated with the log stream\cr
@@ -18654,6 +20621,9 @@ licensemanagerusersubscriptions <- function(config = list(), credentials = list(
 #'  \link[paws.management:cloudwatchlogs_delete_retention_policy]{delete_retention_policy} \tab Deletes the specified retention policy\cr
 #'  \link[paws.management:cloudwatchlogs_delete_subscription_filter]{delete_subscription_filter} \tab Deletes the specified subscription filter\cr
 #'  \link[paws.management:cloudwatchlogs_describe_account_policies]{describe_account_policies} \tab Returns a list of all CloudWatch Logs account policies in the account\cr
+#'  \link[paws.management:cloudwatchlogs_describe_deliveries]{describe_deliveries} \tab Retrieves a list of the deliveries that have been created in the account\cr
+#'  \link[paws.management:cloudwatchlogs_describe_delivery_destinations]{describe_delivery_destinations} \tab Retrieves a list of the delivery destinations that have been created in the account\cr
+#'  \link[paws.management:cloudwatchlogs_describe_delivery_sources]{describe_delivery_sources} \tab Retrieves a list of the delivery sources that have been created in the account\cr
 #'  \link[paws.management:cloudwatchlogs_describe_destinations]{describe_destinations} \tab Lists all your destinations\cr
 #'  \link[paws.management:cloudwatchlogs_describe_export_tasks]{describe_export_tasks} \tab Lists the specified export tasks\cr
 #'  \link[paws.management:cloudwatchlogs_describe_log_groups]{describe_log_groups} \tab Lists the specified log groups\cr
@@ -18666,6 +20636,10 @@ licensemanagerusersubscriptions <- function(config = list(), credentials = list(
 #'  \link[paws.management:cloudwatchlogs_disassociate_kms_key]{disassociate_kms_key} \tab Disassociates the specified KMS key from the specified log group or from all CloudWatch Logs Insights query results in the account\cr
 #'  \link[paws.management:cloudwatchlogs_filter_log_events]{filter_log_events} \tab Lists log events from the specified log group\cr
 #'  \link[paws.management:cloudwatchlogs_get_data_protection_policy]{get_data_protection_policy} \tab Returns information about a log group data protection policy\cr
+#'  \link[paws.management:cloudwatchlogs_get_delivery]{get_delivery} \tab Returns complete information about one delivery\cr
+#'  \link[paws.management:cloudwatchlogs_get_delivery_destination]{get_delivery_destination} \tab Retrieves complete information about one delivery destination\cr
+#'  \link[paws.management:cloudwatchlogs_get_delivery_destination_policy]{get_delivery_destination_policy} \tab Retrieves the delivery destination policy assigned to the delivery destination that you specify\cr
+#'  \link[paws.management:cloudwatchlogs_get_delivery_source]{get_delivery_source} \tab Retrieves complete information about one delivery source\cr
 #'  \link[paws.management:cloudwatchlogs_get_log_events]{get_log_events} \tab Lists log events from the specified log stream\cr
 #'  \link[paws.management:cloudwatchlogs_get_log_group_fields]{get_log_group_fields} \tab Returns a list of the fields that are included in log events in the specified log group\cr
 #'  \link[paws.management:cloudwatchlogs_get_log_record]{get_log_record} \tab Retrieves all of the fields and values of a single log event\cr
@@ -18674,6 +20648,9 @@ licensemanagerusersubscriptions <- function(config = list(), credentials = list(
 #'  \link[paws.management:cloudwatchlogs_list_tags_log_group]{list_tags_log_group} \tab The ListTagsLogGroup operation is on the path to deprecation\cr
 #'  \link[paws.management:cloudwatchlogs_put_account_policy]{put_account_policy} \tab Creates an account-level data protection policy that applies to all log groups in the account\cr
 #'  \link[paws.management:cloudwatchlogs_put_data_protection_policy]{put_data_protection_policy} \tab Creates a data protection policy for the specified log group\cr
+#'  \link[paws.management:cloudwatchlogs_put_delivery_destination]{put_delivery_destination} \tab Creates or updates a logical delivery destination\cr
+#'  \link[paws.management:cloudwatchlogs_put_delivery_destination_policy]{put_delivery_destination_policy} \tab Creates and assigns an IAM policy that grants permissions to CloudWatch Logs to deliver logs cross-account to a specified destination in this account\cr
+#'  \link[paws.management:cloudwatchlogs_put_delivery_source]{put_delivery_source} \tab Creates or updates a logical delivery source\cr
 #'  \link[paws.management:cloudwatchlogs_put_destination]{put_destination} \tab Creates or updates a destination\cr
 #'  \link[paws.management:cloudwatchlogs_put_destination_policy]{put_destination_policy} \tab Creates or updates an access policy associated with an existing destination\cr
 #'  \link[paws.management:cloudwatchlogs_put_log_events]{put_log_events} \tab Uploads a batch of log events to the specified log stream\cr
@@ -18708,6 +20685,155 @@ cloudwatchlogs <- function(config = list(), credentials = list(), endpoint = NUL
   )
 }
 
+#' Amazon CloudWatch Internet Monitor
+#'
+#' @description
+#' Amazon CloudWatch Internet Monitor provides visibility into how internet
+#' issues impact the performance and availability between your applications
+#' hosted on Amazon Web Services and your end users. It can reduce the time
+#' it takes for you to diagnose internet issues from days to minutes.
+#' Internet Monitor uses the connectivity data that Amazon Web Services
+#' captures from its global networking footprint to calculate a baseline of
+#' performance and availability for internet traffic. This is the same data
+#' that Amazon Web Services uses to monitor internet uptime and
+#' availability. With those measurements as a baseline, Internet Monitor
+#' raises awareness for you when there are significant problems for your
+#' end users in the different geographic locations where your application
+#' runs.
+#' 
+#' Internet Monitor publishes internet measurements to CloudWatch Logs and
+#' CloudWatch Metrics, to easily support using CloudWatch tools with health
+#' information for geographies and networks specific to your application.
+#' Internet Monitor sends health events to Amazon EventBridge so that you
+#' can set up notifications. If an issue is caused by the Amazon Web
+#' Services network, you also automatically receive an Amazon Web Services
+#' Health Dashboard notification with the steps that Amazon Web Services is
+#' taking to mitigate the problem.
+#' 
+#' To use Internet Monitor, you create a *monitor* and associate your
+#' application's resources with it - VPCs, NLBs, CloudFront distributions,
+#' or WorkSpaces directories - so Internet Monitor can determine where your
+#' application's internet traffic is. Internet Monitor then provides
+#' internet measurements from Amazon Web Services that are specific to the
+#' locations and ASNs (typically, internet service providers or ISPs) that
+#' communicate with your application.
+#' 
+#' For more information, see [Using Amazon CloudWatch Internet
+#' Monitor](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/CloudWatch-InternetMonitor.html)
+#' in the *Amazon CloudWatch User Guide*.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudwatchinternetmonitor(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- cloudwatchinternetmonitor()
+#' svc$create_monitor(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.management:cloudwatchinternetmonitor_create_monitor]{create_monitor} \tab Creates a monitor in Amazon CloudWatch Internet Monitor\cr
+#'  \link[paws.management:cloudwatchinternetmonitor_delete_monitor]{delete_monitor} \tab Deletes a monitor in Amazon CloudWatch Internet Monitor\cr
+#'  \link[paws.management:cloudwatchinternetmonitor_get_health_event]{get_health_event} \tab Gets information the Amazon CloudWatch Internet Monitor has created and stored about a health event for a specified monitor\cr
+#'  \link[paws.management:cloudwatchinternetmonitor_get_monitor]{get_monitor} \tab Gets information about a monitor in Amazon CloudWatch Internet Monitor based on a monitor name\cr
+#'  \link[paws.management:cloudwatchinternetmonitor_list_health_events]{list_health_events} \tab Lists all health events for a monitor in Amazon CloudWatch Internet Monitor\cr
+#'  \link[paws.management:cloudwatchinternetmonitor_list_monitors]{list_monitors} \tab Lists all of your monitors for Amazon CloudWatch Internet Monitor and their statuses, along with the Amazon Resource Name (ARN) and name of each monitor\cr
+#'  \link[paws.management:cloudwatchinternetmonitor_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for a resource\cr
+#'  \link[paws.management:cloudwatchinternetmonitor_tag_resource]{tag_resource} \tab Adds a tag to a resource\cr
+#'  \link[paws.management:cloudwatchinternetmonitor_untag_resource]{untag_resource} \tab Removes a tag from a resource\cr
+#'  \link[paws.management:cloudwatchinternetmonitor_update_monitor]{update_monitor} \tab Updates a monitor
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname cloudwatchinternetmonitor
+#' @export
+cloudwatchinternetmonitor <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::cloudwatchinternetmonitor(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon CloudWatch
 #'
 #' @description
@@ -18716,14 +20842,14 @@ cloudwatchlogs <- function(config = list(), credentials = list(), endpoint = NUL
 #' in real time. You can use CloudWatch to collect and track metrics, which
 #' are the variables you want to measure for your resources and
 #' applications.
-#'
+#' 
 #' CloudWatch alarms send notifications or automatically change the
 #' resources you are monitoring based on rules that you define. For
 #' example, you can monitor the CPU usage and disk reads and writes of your
 #' Amazon EC2 instances. Then, use this data to determine whether you
 #' should launch additional instances to handle increased load. You can
 #' also use this data to stop under-used instances to save money.
-#'
+#' 
 #' In addition to monitoring the built-in metrics that come with Amazon Web
 #' Services, you can monitor your own custom metrics. With CloudWatch, you
 #' gain system-wide visibility into resource utilization, application
@@ -18741,9 +20867,9 @@ cloudwatchlogs <- function(config = list(), credentials = list(), endpoint = NUL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -18869,82 +20995,221 @@ cloudwatch <- function(config = list(), credentials = list(), endpoint = NULL, r
   )
 }
 
+#' CloudWatch Observability Access Manager
+#'
+#' @description
+#' Use Amazon CloudWatch Observability Access Manager to create and manage
+#' links between source accounts and monitoring accounts by using
+#' *CloudWatch cross-account observability*. With CloudWatch cross-account
+#' observability, you can monitor and troubleshoot applications that span
+#' multiple accounts within a Region. Seamlessly search, visualize, and
+#' analyze your metrics, logs, traces, and Application Insights
+#' applications in any of the linked accounts without account boundaries.
+#' 
+#' Set up one or more Amazon Web Services accounts as *monitoring accounts*
+#' and link them with multiple *source accounts*. A monitoring account is a
+#' central Amazon Web Services account that can view and interact with
+#' observability data generated from source accounts. A source account is
+#' an individual Amazon Web Services account that generates observability
+#' data for the resources that reside in it. Source accounts share their
+#' observability data with the monitoring account. The shared observability
+#' data can include metrics in Amazon CloudWatch, logs in Amazon CloudWatch
+#' Logs, traces in X-Ray, and applications in Amazon CloudWatch Application
+#' Insights.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- cloudwatchobservabilityaccessmanager(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- cloudwatchobservabilityaccessmanager()
+#' svc$create_link(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.management:cloudwatchobservabilityaccessmanager_create_link]{create_link} \tab Creates a link between a source account and a sink that you have created in a monitoring account\cr
+#'  \link[paws.management:cloudwatchobservabilityaccessmanager_create_sink]{create_sink} \tab Use this to create a sink in the current account, so that it can be used as a monitoring account in CloudWatch cross-account observability\cr
+#'  \link[paws.management:cloudwatchobservabilityaccessmanager_delete_link]{delete_link} \tab Deletes a link between a monitoring account sink and a source account\cr
+#'  \link[paws.management:cloudwatchobservabilityaccessmanager_delete_sink]{delete_sink} \tab Deletes a sink\cr
+#'  \link[paws.management:cloudwatchobservabilityaccessmanager_get_link]{get_link} \tab Returns complete information about one link\cr
+#'  \link[paws.management:cloudwatchobservabilityaccessmanager_get_sink]{get_sink} \tab Returns complete information about one monitoring account sink\cr
+#'  \link[paws.management:cloudwatchobservabilityaccessmanager_get_sink_policy]{get_sink_policy} \tab Returns the current sink policy attached to this sink\cr
+#'  \link[paws.management:cloudwatchobservabilityaccessmanager_list_attached_links]{list_attached_links} \tab Returns a list of source account links that are linked to this monitoring account sink\cr
+#'  \link[paws.management:cloudwatchobservabilityaccessmanager_list_links]{list_links} \tab Use this operation in a source account to return a list of links to monitoring account sinks that this source account has\cr
+#'  \link[paws.management:cloudwatchobservabilityaccessmanager_list_sinks]{list_sinks} \tab Use this operation in a monitoring account to return the list of sinks created in that account\cr
+#'  \link[paws.management:cloudwatchobservabilityaccessmanager_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a resource\cr
+#'  \link[paws.management:cloudwatchobservabilityaccessmanager_put_sink_policy]{put_sink_policy} \tab Creates or updates the resource policy that grants permissions to source accounts to link to the monitoring account sink\cr
+#'  \link[paws.management:cloudwatchobservabilityaccessmanager_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified resource\cr
+#'  \link[paws.management:cloudwatchobservabilityaccessmanager_untag_resource]{untag_resource} \tab Removes one or more tags from the specified resource\cr
+#'  \link[paws.management:cloudwatchobservabilityaccessmanager_update_link]{update_link} \tab Use this operation to change what types of data are shared from a source account to its linked monitoring account sink
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname cloudwatchobservabilityaccessmanager
+#' @export
+cloudwatchobservabilityaccessmanager <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::cloudwatchobservabilityaccessmanager(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' AWS OpsWorks
 #'
 #' @description
 #' Welcome to the *AWS OpsWorks Stacks API Reference*. This guide provides
 #' descriptions, syntax, and usage examples for AWS OpsWorks Stacks actions
 #' and data types, including common parameters and error codes.
-#'
+#' 
 #' AWS OpsWorks Stacks is an application management service that provides
 #' an integrated experience for overseeing the complete application
 #' lifecycle. For information about this product, go to the [AWS
 #' OpsWorks](https://aws.amazon.com/opsworks/) details page.
-#'
+#' 
 #' **SDKs and CLI**
-#'
+#' 
 #' The most common way to use the AWS OpsWorks Stacks API is by using the
 #' AWS Command Line Interface (CLI) or by using one of the AWS SDKs to
 #' implement applications in your preferred language. For more information,
 #' see:
-#'
+#' 
 #' -   [AWS
 #'     CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html)
-#'
+#' 
 #' -   [AWS SDK for
 #'     Java](https://docs.aws.amazon.com/AWSJavaSDK/latest/javadoc/com/amazonaws/services/opsworks/AWSOpsWorksClient.html)
-#'
+#' 
 #' -   AWS SDK for .NET
-#'
+#' 
 #' -   AWS SDK for PHP 2
-#'
+#' 
 #' -   [AWS SDK for Ruby](https://docs.aws.amazon.com/sdk-for-ruby/v2/api/)
-#'
+#' 
 #' -   [AWS SDK for
 #'     Node.js](https://docs.aws.amazon.com/sdk-for-javascript/)
-#'
+#' 
 #' -   [AWS SDK for
 #'     Python(Boto)](http://docs.pythonboto.org/en/latest/ref/opsworks.html)
-#'
+#' 
 #' **Endpoints**
-#'
+#' 
 #' AWS OpsWorks Stacks supports the following endpoints, all HTTPS. You
 #' must connect to one of the following endpoints. Stacks can only be
 #' accessed or managed within the endpoint in which they are created.
-#'
+#' 
 #' -   opsworks.us-east-1.amazonaws.com
-#'
+#' 
 #' -   opsworks.us-east-2.amazonaws.com
-#'
+#' 
 #' -   opsworks.us-west-1.amazonaws.com
-#'
+#' 
 #' -   opsworks.us-west-2.amazonaws.com
-#'
+#' 
 #' -   opsworks.ca-central-1.amazonaws.com (API only; not available in the
 #'     AWS console)
-#'
+#' 
 #' -   opsworks.eu-west-1.amazonaws.com
-#'
+#' 
 #' -   opsworks.eu-west-2.amazonaws.com
-#'
+#' 
 #' -   opsworks.eu-west-3.amazonaws.com
-#'
+#' 
 #' -   opsworks.eu-central-1.amazonaws.com
-#'
+#' 
 #' -   opsworks.ap-northeast-1.amazonaws.com
-#'
+#' 
 #' -   opsworks.ap-northeast-2.amazonaws.com
-#'
+#' 
 #' -   opsworks.ap-south-1.amazonaws.com
-#'
+#' 
 #' -   opsworks.ap-southeast-1.amazonaws.com
-#'
+#' 
 #' -   opsworks.ap-southeast-2.amazonaws.com
-#'
+#' 
 #' -   opsworks.sa-east-1.amazonaws.com
-#'
+#' 
 #' **Chef Versions**
-#'
+#' 
 #' When you call `create_stack`,
 #' `clone_stack`, or
 #' `update_stack` we recommend you use the
@@ -18952,7 +21217,7 @@ cloudwatch <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' recommended and default value for Linux stacks is currently 12. Windows
 #' stacks use Chef 12.2. For more information, see [Chef
 #' Versions](https://docs.aws.amazon.com/opsworks/latest/userguide/workingcookbook-chef11.html).
-#'
+#' 
 #' You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We
 #' recommend migrating your existing Linux stacks to Chef 12 as soon as
 #' possible.
@@ -18969,9 +21234,9 @@ cloudwatch <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -19141,9 +21406,9 @@ opsworks <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' CM to create and manage AWS OpsWorks for Chef Automate and AWS OpsWorks
 #' for Puppet Enterprise servers, and add or remove nodes for the servers
 #' to manage.
-#'
+#' 
 #' **Glossary of terms**
-#'
+#' 
 #' -   **Server**: A configuration management server that can be
 #'     highly-available. The configuration management server runs on an
 #'     Amazon Elastic Compute Cloud (EC2) instance, and may use various
@@ -19152,57 +21417,57 @@ opsworks <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'     the configuration manager that you want to use, much like Amazon
 #'     RDS. In AWS OpsWorks CM, you do not start or stop servers. After you
 #'     create servers, they continue to run until they are deleted.
-#'
+#' 
 #' -   **Engine**: The engine is the specific configuration manager that
 #'     you want to use. Valid values in this release include `ChefAutomate`
 #'     and `Puppet`.
-#'
+#' 
 #' -   **Backup**: This is an application-level backup of the data that the
 #'     configuration manager stores. AWS OpsWorks CM creates an S3 bucket
 #'     for backups when you launch the first server. A backup maintains a
 #'     snapshot of a server's configuration-related attributes at the time
 #'     the backup starts.
-#'
+#' 
 #' -   **Events**: Events are always related to a server. Events are
 #'     written during server creation, when health checks run, when backups
 #'     are created, when system maintenance is performed, etc. When you
 #'     delete a server, the server's events are also deleted.
-#'
+#' 
 #' -   **Account attributes**: Every account has attributes that are
 #'     assigned in the AWS OpsWorks CM database. These attributes store
 #'     information about configuration limits (servers, backups, etc.) and
 #'     your customer account.
-#'
+#' 
 #' **Endpoints**
-#'
+#' 
 #' AWS OpsWorks CM supports the following endpoints, all HTTPS. You must
 #' connect to one of the following endpoints. Your servers can only be
 #' accessed or managed within the endpoint in which they are created.
-#'
+#' 
 #' -   opsworks-cm.us-east-1.amazonaws.com
-#'
+#' 
 #' -   opsworks-cm.us-east-2.amazonaws.com
-#'
+#' 
 #' -   opsworks-cm.us-west-1.amazonaws.com
-#'
+#' 
 #' -   opsworks-cm.us-west-2.amazonaws.com
-#'
+#' 
 #' -   opsworks-cm.ap-northeast-1.amazonaws.com
-#'
+#' 
 #' -   opsworks-cm.ap-southeast-1.amazonaws.com
-#'
+#' 
 #' -   opsworks-cm.ap-southeast-2.amazonaws.com
-#'
+#' 
 #' -   opsworks-cm.eu-central-1.amazonaws.com
-#'
+#' 
 #' -   opsworks-cm.eu-west-1.amazonaws.com
-#'
+#' 
 #' For more information, see [AWS OpsWorks endpoints and
 #' quotas](https://docs.aws.amazon.com/general/latest/gr/opsworks-service.html)
 #' in the AWS General Reference.
-#'
+#' 
 #' **Throttling limits**
-#'
+#' 
 #' All API operations allow for five requests per second with a burst of 10
 #' requests per second.
 #'
@@ -19218,9 +21483,9 @@ opsworks <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -19333,61 +21598,61 @@ opsworkscm <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' Organizations is a web service that enables you to consolidate your
 #' multiple Amazon Web Services accounts into an *organization* and
 #' centrally manage your accounts and their resources.
-#'
+#' 
 #' This guide provides descriptions of the Organizations operations. For
 #' more information about using this service, see the [Organizations User
 #' Guide](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_introduction.html).
-#'
+#' 
 #' **Support and feedback for Organizations**
-#'
+#' 
 #' We welcome your feedback. Send your comments to
 #' <feedback-awsorganizations@@amazon.com> or post your feedback and
 #' questions in the Organizations support forum. For more information about
 #' the Amazon Web Services support forums, see Forums Help.
-#'
+#' 
 #' **Endpoint to call When using the CLI or the Amazon Web Services SDK**
-#'
+#' 
 #' For the current release of Organizations, specify the `us-east-1` region
 #' for all Amazon Web Services API and CLI calls made from the commercial
 #' Amazon Web Services Regions outside of China. If calling from one of the
 #' Amazon Web Services Regions in China, then specify `cn-northwest-1`. You
 #' can do this in the CLI by using these parameters and commands:
-#'
+#' 
 #' -   Use the following parameter with each command to specify both the
 #'     endpoint and its region:
-#'
+#' 
 #'     `--endpoint-url https://organizations.us-east-1.amazonaws.com`
 #'     *(from commercial Amazon Web Services Regions outside of China)*
-#'
+#' 
 #'     or
-#'
+#' 
 #'     `--endpoint-url https://organizations.cn-northwest-1.amazonaws.com.cn`
 #'     *(from Amazon Web Services Regions in China)*
-#'
+#' 
 #' -   Use the default endpoint, but configure your default region with
 #'     this command:
-#'
+#' 
 #'     `aws configure set default.region us-east-1` *(from commercial
 #'     Amazon Web Services Regions outside of China)*
-#'
+#' 
 #'     or
-#'
+#' 
 #'     `aws configure set default.region cn-northwest-1` *(from Amazon Web
 #'     Services Regions in China)*
-#'
+#' 
 #' -   Use the following parameter with each command to specify the
 #'     endpoint:
-#'
+#' 
 #'     `--region us-east-1` *(from commercial Amazon Web Services Regions
 #'     outside of China)*
-#'
+#' 
 #'     or
-#'
+#' 
 #'     `--region cn-northwest-1` *(from Amazon Web Services Regions in
 #'     China)*
-#'
+#' 
 #' **Recording API Requests**
-#'
+#' 
 #' Organizations supports CloudTrail, a service that records Amazon Web
 #' Services API calls for your Amazon Web Services account and delivers log
 #' files to an Amazon S3 bucket. By using information collected by
@@ -19413,9 +21678,9 @@ opsworkscm <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -19566,31 +21831,31 @@ organizations <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @description
 #' Amazon RDS Performance Insights
-#'
+#' 
 #' Amazon RDS Performance Insights enables you to monitor and explore
 #' different dimensions of database load based on data captured from a
 #' running DB instance. The guide provides detailed information about
 #' Performance Insights data types, parameters and errors.
-#'
+#' 
 #' When Performance Insights is enabled, the Amazon RDS Performance
 #' Insights API provides visibility into the performance of your DB
 #' instance. Amazon CloudWatch provides the authoritative source for Amazon
 #' Web Services service-vended monitoring metrics. Performance Insights
 #' offers a domain-specific view of DB load.
-#'
+#' 
 #' DB load is measured as average active sessions. Performance Insights
 #' provides the data to API consumers as a two-dimensional time-series
 #' dataset. The time dimension provides DB load data for each time point in
 #' the queried time range. Each time point decomposes overall load in
 #' relation to the requested dimensions, measured at that time point.
 #' Examples include SQL, Wait event, User, and Host.
-#'
+#' 
 #' -   To learn more about Performance Insights and Amazon Aurora DB
 #'     instances, go to the *\href{https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/USER_PerfInsights.html}{ Amazon Aurora User Guide}* .
-#'
+#' 
 #' -   To learn more about Performance Insights and Amazon RDS DB
 #'     instances, go to the *\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PerfInsights.html}{ Amazon RDS User Guide}* .
-#'
+#' 
 #' -   To learn more about Performance Insights and Amazon DocumentDB
 #'     clusters, go to the *\href{https://docs.aws.amazon.com/documentdb/latest/developerguide/performance-insights.html}{ Amazon DocumentDB Developer Guide}* .
 #'
@@ -19606,9 +21871,9 @@ organizations <- function(config = list(), credentials = list(), endpoint = NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -19732,9 +21997,9 @@ pi <- function(config = list(), credentials = list(), endpoint = NULL, region = 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -19803,7 +22068,7 @@ pi <- function(config = list(), credentials = list(), endpoint = NULL, region = 
 #'
 #' @section Operations:
 #' \tabular{ll}{
-#'  \link[paws.management:resiliencehub_add_draft_app_version_resource_mappings]{add_draft_app_version_resource_mappings} \tab Adds the resource mapping for the draft application version\cr
+#'  \link[paws.management:resiliencehub_add_draft_app_version_resource_mappings]{add_draft_app_version_resource_mappings} \tab Adds the source of resource-maps to the draft version of an application\cr
 #'  \link[paws.management:resiliencehub_batch_update_recommendation_status]{batch_update_recommendation_status} \tab Enables you to include or exclude one or more operational recommendations\cr
 #'  \link[paws.management:resiliencehub_create_app]{create_app} \tab Creates an Resilience Hub application\cr
 #'  \link[paws.management:resiliencehub_create_app_version_app_component]{create_app_version_app_component} \tab Creates a new Application Component in the Resilience Hub application\cr
@@ -19893,27 +22158,27 @@ resiliencehub <- function(config = list(), credentials = list(), endpoint = NULL
 #' resources also let you quickly view a custom console in Amazon Web
 #' Services Systems Manager that shows Config compliance and other
 #' monitoring data about member resources.
-#'
+#' 
 #' To create a resource group, build a resource query, and specify tags
 #' that identify the criteria that members of the group have in common.
 #' Tags are key-value pairs.
-#'
+#' 
 #' For more information about Resource Groups, see the [Resource Groups
 #' User Guide](https://docs.aws.amazon.com/ARG/latest/userguide/).
-#'
+#' 
 #' Resource Groups uses a REST-compliant API that you can use to perform
 #' the following types of operations.
-#'
+#' 
 #' -   Create, Read, Update, and Delete (CRUD) operations on resource
 #'     groups and resource query entities
-#'
+#' 
 #' -   Applying, editing, and removing tags from resource groups
-#'
+#' 
 #' -   Resolving resource group member ARNs so they can be returned as
 #'     search results
-#'
+#' 
 #' -   Getting data about resources that are members of a group
-#'
+#' 
 #' -   Searching Amazon Web Services resources based on a resource query
 #'
 #' @param
@@ -19928,9 +22193,9 @@ resiliencehub <- function(config = list(), credentials = list(), endpoint = NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -20053,9 +22318,9 @@ resourcegroups <- function(config = list(), credentials = list(), endpoint = NUL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -20160,7 +22425,7 @@ resourcegroupstaggingapi <- function(config = list(), credentials = list(), endp
 #' times, client-side errors, and user behavior. When you view this data,
 #' you can see it all aggregated together and also see breakdowns by the
 #' browsers and devices that your customers use.
-#'
+#' 
 #' You can use the collected data to quickly identify and debug client-side
 #' performance issues. CloudWatch RUM helps you visualize anomalies in your
 #' application performance and find relevant debugging data such as error
@@ -20180,9 +22445,9 @@ resourcegroupstaggingapi <- function(config = list(), credentials = list(), endp
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -20308,9 +22573,9 @@ cloudwatchrum <- function(config = list(), credentials = list(), endpoint = NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -20421,7 +22686,7 @@ servicequotas <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @description
 #' Service Catalog
-#'
+#' 
 #' [Service Catalog](https://aws.amazon.com/servicecatalog/) enables
 #' organizations to create and manage catalogs of IT services that are
 #' approved for Amazon Web Services. To get the most out of this
@@ -20441,9 +22706,9 @@ servicequotas <- function(config = list(), credentials = list(), endpoint = NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -20642,9 +22907,9 @@ servicecatalog <- function(config = list(), credentials = list(), endpoint = NUL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -20763,27 +23028,27 @@ appregistry <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' Amazon Web Services applications and resources and a secure end-to-end
 #' management solution for hybrid cloud environments that enables safe and
 #' secure operations at scale.
-#'
+#' 
 #' This reference is intended to be used with the [Amazon Web Services
 #' Systems Manager User
 #' Guide](https://docs.aws.amazon.com/systems-manager/latest/userguide/).
 #' To get started, see [Setting up Amazon Web Services Systems
 #' Manager](https://docs.aws.amazon.com/systems-manager/latest/userguide/systems-manager-setting-up.html).
-#'
+#' 
 #' **Related resources**
-#'
+#' 
 #' -   For information about each of the capabilities that comprise Systems
 #'     Manager, see [Systems Manager
 #'     capabilities](https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/)
 #'     in the *Amazon Web Services Systems Manager User Guide*.
-#'
+#' 
 #' -   For details about predefined runbooks for Automation, a capability
 #'     of Amazon Web Services Systems Manager, see the *\href{https://docs.aws.amazon.com/systems-manager-automation-runbooks/latest/userguide/automation-runbook-reference.html}{Systems Manager Automation runbook reference}* .
-#'
+#' 
 #' -   For information about AppConfig, a capability of Systems Manager,
 #'     see the *\href{https://docs.aws.amazon.com/appconfig/latest/userguide/}{AppConfig User Guide}* and the *
 #'     \href{https://docs.aws.amazon.com/appconfig/2019-10-09/APIReference/}{AppConfig API Reference}* .
-#'
+#' 
 #' -   For information about Incident Manager, a capability of Systems
 #'     Manager, see the *\href{https://docs.aws.amazon.com/incident-manager/latest/userguide/}{Systems Manager Incident Manager User Guide}* and the *
 #'     \href{https://docs.aws.amazon.com/incident-manager/latest/APIReference/}{Systems Manager Incident Manager API Reference}* .
@@ -20800,9 +23065,9 @@ appregistry <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -20889,6 +23154,7 @@ appregistry <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'  \link[paws.management:ssm_delete_document]{delete_document} \tab Deletes the Amazon Web Services Systems Manager document (SSM document) and all managed node associations to the document\cr
 #'  \link[paws.management:ssm_delete_inventory]{delete_inventory} \tab Delete a custom inventory type or the data associated with a custom Inventory type\cr
 #'  \link[paws.management:ssm_delete_maintenance_window]{delete_maintenance_window} \tab Deletes a maintenance window\cr
+#'  \link[paws.management:ssm_delete_ops_item]{delete_ops_item} \tab Delete an OpsItem\cr
 #'  \link[paws.management:ssm_delete_ops_metadata]{delete_ops_metadata} \tab Delete OpsMetadata related to an application\cr
 #'  \link[paws.management:ssm_delete_parameter]{delete_parameter} \tab Delete a parameter from the system\cr
 #'  \link[paws.management:ssm_delete_parameters]{delete_parameters} \tab Delete a list of parameters\cr
@@ -21035,7 +23301,7 @@ ssm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' designed to help users mitigate and recover from incidents affecting
 #' their Amazon Web Services-hosted applications. An incident is any
 #' unplanned interruption or reduction in quality of services.
-#'
+#' 
 #' Incident Manager increases incident resolution by notifying responders
 #' of impact, highlighting relevant troubleshooting data, and providing
 #' collaboration tools to get services back up and running. To achieve the
@@ -21055,9 +23321,9 @@ ssm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -21191,7 +23457,7 @@ ssmcontacts <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' designed to help users mitigate and recover from incidents affecting
 #' their Amazon Web Services-hosted applications. An incident is any
 #' unplanned interruption or reduction in quality of services.
-#'
+#' 
 #' Incident Manager increases incident resolution by notifying responders
 #' of impact, highlighting relevant troubleshooting data, and providing
 #' collaboration tools to get services back up and running. To achieve the
@@ -21211,9 +23477,9 @@ ssmcontacts <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -21330,64 +23596,192 @@ ssmincidents <- function(config = list(), credentials = list(), endpoint = NULL,
   )
 }
 
+#' AWS Systems Manager for SAP
+#'
+#' @description
+#' This API reference provides descriptions, syntax, and other details
+#' about each of the actions and data types for AWS Systems Manager for
+#' SAP. The topic for each action shows the API request parameters and
+#' responses.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- ssmsap(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- ssmsap()
+#' svc$delete_resource_permission(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.management:ssmsap_delete_resource_permission]{delete_resource_permission} \tab Removes permissions associated with the target database\cr
+#'  \link[paws.management:ssmsap_deregister_application]{deregister_application} \tab Deregister an SAP application with AWS Systems Manager for SAP\cr
+#'  \link[paws.management:ssmsap_get_application]{get_application} \tab Gets an application registered with AWS Systems Manager for SAP\cr
+#'  \link[paws.management:ssmsap_get_component]{get_component} \tab Gets the component of an application registered with AWS Systems Manager for SAP\cr
+#'  \link[paws.management:ssmsap_get_database]{get_database} \tab Gets the SAP HANA database of an application registered with AWS Systems Manager for SAP\cr
+#'  \link[paws.management:ssmsap_get_operation]{get_operation} \tab Gets the details of an operation by specifying the operation ID\cr
+#'  \link[paws.management:ssmsap_get_resource_permission]{get_resource_permission} \tab Gets permissions associated with the target database\cr
+#'  \link[paws.management:ssmsap_list_applications]{list_applications} \tab Lists all the applications registered with AWS Systems Manager for SAP\cr
+#'  \link[paws.management:ssmsap_list_components]{list_components} \tab Lists all the components registered with AWS Systems Manager for SAP\cr
+#'  \link[paws.management:ssmsap_list_databases]{list_databases} \tab Lists the SAP HANA databases of an application registered with AWS Systems Manager for SAP\cr
+#'  \link[paws.management:ssmsap_list_operations]{list_operations} \tab Lists the operations performed by AWS Systems Manager for SAP\cr
+#'  \link[paws.management:ssmsap_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags on an SAP HANA application and/or database registered with AWS Systems Manager for SAP\cr
+#'  \link[paws.management:ssmsap_put_resource_permission]{put_resource_permission} \tab Adds permissions to the target database\cr
+#'  \link[paws.management:ssmsap_register_application]{register_application} \tab Register an SAP application with AWS Systems Manager for SAP\cr
+#'  \link[paws.management:ssmsap_start_application_refresh]{start_application_refresh} \tab Refreshes a registered application\cr
+#'  \link[paws.management:ssmsap_tag_resource]{tag_resource} \tab Creates tag for a resource by specifying the ARN\cr
+#'  \link[paws.management:ssmsap_untag_resource]{untag_resource} \tab Delete the tags for a resource\cr
+#'  \link[paws.management:ssmsap_update_application_settings]{update_application_settings} \tab Updates the settings of an application registered with AWS Systems Manager for SAP
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname ssmsap
+#' @export
+ssmsap <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::ssmsap(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' AWS Support
 #'
 #' @description
 #' Amazon Web Services Support
-#'
+#' 
 #' The *Amazon Web Services Support API Reference* is intended for
 #' programmers who need detailed information about the Amazon Web Services
 #' Support operations and data types. You can use the API to manage your
 #' support cases programmatically. The Amazon Web Services Support API uses
 #' HTTP methods that return results in JSON format.
-#'
+#' 
 #' -   You must have a Business, Enterprise On-Ramp, or Enterprise Support
 #'     plan to use the Amazon Web Services Support API.
-#'
+#' 
 #' -   If you call the Amazon Web Services Support API from an account that
 #'     doesn't have a Business, Enterprise On-Ramp, or Enterprise Support
 #'     plan, the `SubscriptionRequiredException` error message appears. For
 #'     information about changing your support plan, see [Amazon Web
 #'     Services Support](https://aws.amazon.com/premiumsupport/).
-#'
+#' 
 #' You can also use the Amazon Web Services Support API to access features
 #' for [Trusted
 #' Advisor](https://aws.amazon.com/premiumsupport/technology/trusted-advisor/).
 #' You can return a list of checks and their descriptions, get check
 #' results, specify checks to refresh, and get the refresh status of
 #' checks.
-#'
+#' 
 #' You can manage your support cases with the following Amazon Web Services
 #' Support API operations:
-#'
+#' 
 #' -   The `create_case`,
 #'     `describe_cases`,
 #'     `describe_attachment`, and
 #'     `resolve_case` operations create Amazon Web
 #'     Services Support cases, retrieve information about cases, and
 #'     resolve cases.
-#'
+#' 
 #' -   The `describe_communications`,
 #'     `add_communication_to_case`,
 #'     and `add_attachments_to_set`
 #'     operations retrieve and add communications and attachments to Amazon
 #'     Web Services Support cases.
-#'
+#' 
 #' -   The `describe_services` and
 #'     `describe_severity_levels`
 #'     operations return Amazon Web Service names, service codes, service
 #'     categories, and problem severity levels. You use these values when
 #'     you call the `create_case` operation.
-#'
+#' 
 #' You can also use the Amazon Web Services Support API to call the Trusted
 #' Advisor operations. For more information, see [Trusted
 #' Advisor](https://docs.aws.amazon.com/) in the *Amazon Web Services
 #' Support User Guide*.
-#'
+#' 
 #' For authentication of requests, Amazon Web Services Support uses
 #' [Signature Version 4 Signing
 #' Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
-#'
+#' 
 #' For more information about this service and the endpoints to use, see
 #' [About the Amazon Web Services Support
 #' API](https://docs.aws.amazon.com/awssupport/latest/user/about-support-api.html)
@@ -21405,9 +23799,9 @@ ssmincidents <- function(config = list(), credentials = list(), endpoint = NULL,
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -21511,11 +23905,171 @@ support <- function(config = list(), credentials = list(), endpoint = NULL, regi
   )
 }
 
+#' AWS Support App
+#'
+#' @description
+#' Amazon Web Services Support App in Slack
+#' 
+#' You can use the Amazon Web Services Support App in Slack API to manage
+#' your support cases in Slack for your Amazon Web Services account. After
+#' you configure your Slack workspace and channel with the Amazon Web
+#' Services Support App, you can perform the following tasks directly in
+#' your Slack channel:
+#' 
+#' -   Create, search, update, and resolve your support cases
+#' 
+#' -   Request service quota increases for your account
+#' 
+#' -   Invite Amazon Web Services Support agents to your channel so that
+#'     you can chat directly about your support cases
+#' 
+#' For more information about how to perform these actions in Slack, see
+#' the following documentation in the *Amazon Web Services Support User
+#' Guide*:
+#' 
+#' -   [Amazon Web Services Support App in
+#'     Slack](https://docs.aws.amazon.com/awssupport/latest/user/aws-support-app-for-slack.html)
+#' 
+#' -   [Joining a live chat session with Amazon Web Services
+#'     Support](https://docs.aws.amazon.com/awssupport/latest/user/joining-a-live-chat-session.html)
+#' 
+#' -   [Requesting service quota
+#'     increases](https://docs.aws.amazon.com/awssupport/latest/user/service-quota-increase.html)
+#' 
+#' -   [Amazon Web Services Support App commands in
+#'     Slack](https://docs.aws.amazon.com/awssupport/latest/user/support-app-commands.html)
+#' 
+#' You can also use the Amazon Web Services Management Console instead of
+#' the Amazon Web Services Support App API to manage your Slack
+#' configurations. For more information, see [Authorize a Slack workspace
+#' to enable the Amazon Web Services Support
+#' App](https://docs.aws.amazon.com/awssupport/latest/user/authorize-slack-workspace.html).
+#' 
+#' -   You must have a Business or Enterprise Support plan to use the
+#'     Amazon Web Services Support App API.
+#' 
+#' -   For more information about the Amazon Web Services Support App
+#'     endpoints, see the [Amazon Web Services Support App in Slack
+#'     endpoints](https://docs.aws.amazon.com/general/latest/gr/awssupport.html#awssupport_app_region)
+#'     in the *Amazon Web Services General Reference*.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- supportapp(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- supportapp()
+#' svc$create_slack_channel_configuration(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.management:supportapp_create_slack_channel_configuration]{create_slack_channel_configuration} \tab Creates a Slack channel configuration for your Amazon Web Services account\cr
+#'  \link[paws.management:supportapp_delete_account_alias]{delete_account_alias} \tab Deletes an alias for an Amazon Web Services account ID\cr
+#'  \link[paws.management:supportapp_delete_slack_channel_configuration]{delete_slack_channel_configuration} \tab Deletes a Slack channel configuration from your Amazon Web Services account\cr
+#'  \link[paws.management:supportapp_delete_slack_workspace_configuration]{delete_slack_workspace_configuration} \tab Deletes a Slack workspace configuration from your Amazon Web Services account\cr
+#'  \link[paws.management:supportapp_get_account_alias]{get_account_alias} \tab Retrieves the alias from an Amazon Web Services account ID\cr
+#'  \link[paws.management:supportapp_list_slack_channel_configurations]{list_slack_channel_configurations} \tab Lists the Slack channel configurations for an Amazon Web Services account\cr
+#'  \link[paws.management:supportapp_list_slack_workspace_configurations]{list_slack_workspace_configurations} \tab Lists the Slack workspace configurations for an Amazon Web Services account\cr
+#'  \link[paws.management:supportapp_put_account_alias]{put_account_alias} \tab Creates or updates an individual alias for each Amazon Web Services account ID\cr
+#'  \link[paws.management:supportapp_register_slack_workspace_for_organization]{register_slack_workspace_for_organization} \tab Registers a Slack workspace for your Amazon Web Services account\cr
+#'  \link[paws.management:supportapp_update_slack_channel_configuration]{update_slack_channel_configuration} \tab Updates the configuration for a Slack channel, such as case update notifications
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname supportapp
+#' @export
+supportapp <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.management::supportapp(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Synthetics
 #'
 #' @description
 #' Amazon CloudWatch Synthetics
-#'
+#' 
 #' You can use Amazon CloudWatch Synthetics to continually monitor your
 #' services. You can create and manage *canaries*, which are modular,
 #' lightweight scripts that monitor your endpoints and APIs from the
@@ -21528,7 +24082,7 @@ support <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' ServiceLens to Monitor the Health of Your
 #' Applications](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/ServiceLens.html)
 #' in the *Amazon CloudWatch User Guide*.
-#'
+#' 
 #' Before you create and manage canaries, be aware of the security
 #' considerations. For more information, see [Security Considerations for
 #' Synthetics
@@ -21546,9 +24100,9 @@ support <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -21657,154 +24211,6 @@ synthetics <- function(config = list(), credentials = list(), endpoint = NULL, r
   )
 }
 
-#' Amazon Augmented AI Runtime
-#'
-#' @description
-#' Amazon Augmented AI (Amazon A2I) adds the benefit of human judgment to
-#' any machine learning application. When an AI application can't evaluate
-#' data with a high degree of confidence, human reviewers can take over.
-#' This human review is called a human review workflow. To create and start
-#' a human review workflow, you need three resources: a *worker task
-#' template*, a *flow definition*, and a *human loop*.
-#'
-#' For information about these resources and prerequisites for using Amazon
-#' A2I, see [Get Started with Amazon Augmented
-#' AI](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-getting-started.html)
-#' in the Amazon SageMaker Developer Guide.
-#'
-#' This API reference includes information about API actions and data types
-#' that you can use to interact with Amazon A2I programmatically. Use this
-#' guide to:
-#'
-#' -   Start a human loop with the
-#'     `start_human_loop` operation
-#'     when using Amazon A2I with a *custom task type*. To learn more about
-#'     the difference between custom and built-in task types, see [Use Task
-#'     Types](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-task-types-general.html)
-#'     . To learn how to start a human loop using this API, see [Create and
-#'     Start a Human Loop for a Custom Task
-#'     Type](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-start-human-loop.html#a2i-instructions-starthumanloop)
-#'     in the Amazon SageMaker Developer Guide.
-#'
-#' -   Manage your human loops. You can list all human loops that you have
-#'     created, describe individual human loops, and stop and delete human
-#'     loops. To learn more, see [Monitor and Manage Your Human
-#'     Loop](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-monitor-humanloop-results.html)
-#'     in the Amazon SageMaker Developer Guide.
-#'
-#' Amazon A2I integrates APIs from various AWS services to create and start
-#' human review workflows for those services. To learn how Amazon A2I uses
-#' these APIs, see [Use APIs in Amazon
-#' A2I](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-api-references.html)
-#' in the Amazon SageMaker Developer Guide.
-#'
-#' @param
-#' config
-#' Optional configuration of credentials, endpoint, and/or region.
-#' \itemize{
-#' \item{\strong{credentials}:} {\itemize{
-#' \item{\strong{creds}:} {\itemize{
-#' \item{\strong{access_key_id}:} {AWS access key ID}
-#' \item{\strong{secret_access_key}:} {AWS secret access key}
-#' \item{\strong{session_token}:} {AWS temporary session token}
-#' }}
-#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-#' \item{\strong{anonymous}:} {Set anonymous credentials.}
-#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
-#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
-#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
-#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
-#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
-#' }
-#' @param
-#' credentials
-#' Optional credentials shorthand for the config parameter
-#' \itemize{
-#' \item{\strong{creds}:} {\itemize{
-#' \item{\strong{access_key_id}:} {AWS access key ID}
-#' \item{\strong{secret_access_key}:} {AWS secret access key}
-#' \item{\strong{session_token}:} {AWS temporary session token}
-#' }}
-#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-#' \item{\strong{anonymous}:} {Set anonymous credentials.}
-#' }
-#' @param
-#' endpoint
-#' Optional shorthand for complete URL to use for the constructed client.
-#' @param
-#' region
-#' Optional shorthand for AWS Region used in instantiating the client.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- augmentedairuntime(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string"
-#'       ),
-#'       profile = "string",
-#'       anonymous = "logical"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string",
-#'     close_connection = "logical",
-#'     timeout = "numeric",
-#'     s3_force_path_style = "logical",
-#'     sts_regional_endpoint = "string"
-#'   ),
-#'   credentials = list(
-#'     creds = list(
-#'       access_key_id = "string",
-#'       secret_access_key = "string",
-#'       session_token = "string"
-#'     ),
-#'     profile = "string",
-#'     anonymous = "logical"
-#'   ),
-#'   endpoint = "string",
-#'   region = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' svc <- augmentedairuntime()
-#' svc$delete_human_loop(
-#'   Foo = 123
-#' )
-#' }
-#'
-#' @section Operations:
-#' \tabular{ll}{
-#'  \link[paws.machine.learning:augmentedairuntime_delete_human_loop]{delete_human_loop} \tab Deletes the specified human loop for a flow definition\cr
-#'  \link[paws.machine.learning:augmentedairuntime_describe_human_loop]{describe_human_loop} \tab Returns information about the specified human loop\cr
-#'  \link[paws.machine.learning:augmentedairuntime_list_human_loops]{list_human_loops} \tab Returns information about human loops, given the specified parameters\cr
-#'  \link[paws.machine.learning:augmentedairuntime_start_human_loop]{start_human_loop} \tab Starts a human loop, provided that at least one activation condition is met\cr
-#'  \link[paws.machine.learning:augmentedairuntime_stop_human_loop]{stop_human_loop} \tab Stops the specified human loop
-#' }
-#'
-#' @return
-#' A client for the service. You can call the service's operations using
-#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
-#' to the client. The available operations are listed in the
-#' Operations section.
-#'
-#' @rdname augmentedairuntime
-#' @export
-augmentedairuntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
-  paws.machine.learning::augmentedairuntime(
-    config = config,
-    credentials = credentials,
-    endpoint = endpoint,
-    region = region
-  )
-}
-
 #' Amazon Comprehend
 #'
 #' @description
@@ -21825,9 +24231,9 @@ augmentedairuntime <- function(config = list(), credentials = list(), endpoint =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -21902,7 +24308,7 @@ augmentedairuntime <- function(config = list(), credentials = list(), endpoint =
 #'  \link[paws.machine.learning:comprehend_batch_detect_sentiment]{batch_detect_sentiment} \tab Inspects a batch of documents and returns an inference of the prevailing sentiment, POSITIVE, NEUTRAL, MIXED, or NEGATIVE, in each one\cr
 #'  \link[paws.machine.learning:comprehend_batch_detect_syntax]{batch_detect_syntax} \tab Inspects the text of a batch of documents for the syntax and part of speech of the words in the document and returns information about them\cr
 #'  \link[paws.machine.learning:comprehend_batch_detect_targeted_sentiment]{batch_detect_targeted_sentiment} \tab Inspects a batch of documents and returns a sentiment analysis for each entity identified in the documents\cr
-#'  \link[paws.machine.learning:comprehend_classify_document]{classify_document} \tab Creates a new document classification request to analyze a single document in real-time, using a previously created and trained custom model and an endpoint\cr
+#'  \link[paws.machine.learning:comprehend_classify_document]{classify_document} \tab Creates a classification request to analyze a single document in real-time\cr
 #'  \link[paws.machine.learning:comprehend_contains_pii_entities]{contains_pii_entities} \tab Analyzes input text for the presence of personally identifiable information (PII) and returns the labels of identified PII entity types such as name, address, bank account number, or phone number\cr
 #'  \link[paws.machine.learning:comprehend_create_dataset]{create_dataset} \tab Creates a dataset to upload training or test data for a model associated with a flywheel\cr
 #'  \link[paws.machine.learning:comprehend_create_document_classifier]{create_document_classifier} \tab Creates a new document classifier that you can use to categorize documents\cr
@@ -21937,6 +24343,7 @@ augmentedairuntime <- function(config = list(), credentials = list(), endpoint =
 #'  \link[paws.machine.learning:comprehend_detect_sentiment]{detect_sentiment} \tab Inspects text and returns an inference of the prevailing sentiment (POSITIVE, NEUTRAL, MIXED, or NEGATIVE)\cr
 #'  \link[paws.machine.learning:comprehend_detect_syntax]{detect_syntax} \tab Inspects text for syntax and the part of speech of words in the document\cr
 #'  \link[paws.machine.learning:comprehend_detect_targeted_sentiment]{detect_targeted_sentiment} \tab Inspects the input text and returns a sentiment analysis for each entity identified in the text\cr
+#'  \link[paws.machine.learning:comprehend_detect_toxic_content]{detect_toxic_content} \tab Performs toxicity analysis on the list of text strings that you provide as input\cr
 #'  \link[paws.machine.learning:comprehend_import_model]{import_model} \tab Creates a new custom model that replicates a source custom model that you import\cr
 #'  \link[paws.machine.learning:comprehend_list_datasets]{list_datasets} \tab List the datasets that you have configured in this Region\cr
 #'  \link[paws.machine.learning:comprehend_list_document_classification_jobs]{list_document_classification_jobs} \tab Gets a list of the documentation classification jobs that you have submitted\cr
@@ -22023,9 +24430,9 @@ comprehend <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -22143,7 +24550,7 @@ comprehendmedical <- function(config = list(), credentials = list(), endpoint = 
 #'
 #' @description
 #' Elastic Inference public APIs.
-#'
+#' 
 #' February 15, 2023: Starting April 15, 2023, AWS will not onboard new
 #' customers to Amazon Elastic Inference (EI), and will help current
 #' customers migrate their workloads to options that offer better price and
@@ -22165,9 +24572,9 @@ comprehendmedical <- function(config = list(), credentials = list(), endpoint = 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -22278,9 +24685,9 @@ elasticinference <- function(config = list(), credentials = list(), endpoint = N
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -22387,9 +24794,9 @@ forecastqueryservice <- function(config = list(), credentials = list(), endpoint
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -22548,10 +24955,10 @@ forecastservice <- function(config = list(), credentials = list(), endpoint = NU
 #' actions, data types, and errors. For more information about Amazon Fraud
 #' Detector features, see the [Amazon Fraud Detector User
 #' Guide](https://docs.aws.amazon.com/frauddetector/latest/ug/).
-#'
+#' 
 #' We provide the Query API as well as AWS software development kits (SDK)
 #' for Amazon Fraud Detector in Java and Python programming languages.
-#'
+#' 
 #' The Amazon Fraud Detector Query API provides HTTPS requests that use the
 #' HTTP verb GET or POST and a Query parameter `Action`. AWS SDK provides
 #' libraries, sample code, tutorials, and other resources for software
@@ -22576,9 +24983,9 @@ forecastservice <- function(config = list(), credentials = list(), endpoint = NU
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -22743,7 +25150,7 @@ frauddetector <- function(config = list(), credentials = list(), endpoint = NULL
 #'
 #' @description
 #' Amazon Lex Build-Time Actions
-#'
+#' 
 #' Amazon Lex is an AWS service for building conversational voice and text
 #' interfaces. Use these actions to create, update, and delete
 #' conversational bots for new and existing client applications.
@@ -22760,9 +25167,9 @@ frauddetector <- function(config = list(), credentials = list(), endpoint = NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -22896,7 +25303,7 @@ lexmodelbuildingservice <- function(config = list(), credentials = list(), endpo
 
 #' Amazon Lex Model Building V2
 #'
-#'
+#' 
 #'
 #' @param
 #' config
@@ -22910,9 +25317,9 @@ lexmodelbuildingservice <- function(config = list(), credentials = list(), endpo
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -23120,9 +25527,9 @@ lexmodelsv2 <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -23233,9 +25640,9 @@ lexruntimeservice <- function(config = list(), credentials = list(), endpoint = 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -23347,9 +25754,9 @@ lexruntimev2 <- function(config = list(), credentials = list(), endpoint = NULL,
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -23411,8 +25818,13 @@ lexruntimev2 <- function(config = list(), credentials = list(), endpoint = NULL,
 #' @examples
 #' \dontrun{
 #' svc <- lookoutequipment()
-#' svc$create_dataset(
-#'   Foo = 123
+#' # 
+#' svc$create_retraining_scheduler(
+#'   ClientToken = "sample-client-token",
+#'   LookbackWindow = "P360D",
+#'   ModelName = "sample-model",
+#'   PromoteMode = "MANUAL",
+#'   RetrainingFrequency = "P1M"
 #' )
 #' }
 #'
@@ -23422,21 +25834,24 @@ lexruntimev2 <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.machine.learning:lookoutequipment_create_inference_scheduler]{create_inference_scheduler} \tab Creates a scheduled inference\cr
 #'  \link[paws.machine.learning:lookoutequipment_create_label]{create_label} \tab Creates a label for an event\cr
 #'  \link[paws.machine.learning:lookoutequipment_create_label_group]{create_label_group} \tab Creates a group of labels\cr
-#'  \link[paws.machine.learning:lookoutequipment_create_model]{create_model} \tab Creates an ML model for data inference\cr
+#'  \link[paws.machine.learning:lookoutequipment_create_model]{create_model} \tab Creates a machine learning model for data inference\cr
+#'  \link[paws.machine.learning:lookoutequipment_create_retraining_scheduler]{create_retraining_scheduler} \tab Creates a retraining scheduler on the specified model\cr
 #'  \link[paws.machine.learning:lookoutequipment_delete_dataset]{delete_dataset} \tab Deletes a dataset and associated artifacts\cr
 #'  \link[paws.machine.learning:lookoutequipment_delete_inference_scheduler]{delete_inference_scheduler} \tab Deletes an inference scheduler that has been set up\cr
 #'  \link[paws.machine.learning:lookoutequipment_delete_label]{delete_label} \tab Deletes a label\cr
 #'  \link[paws.machine.learning:lookoutequipment_delete_label_group]{delete_label_group} \tab Deletes a group of labels\cr
-#'  \link[paws.machine.learning:lookoutequipment_delete_model]{delete_model} \tab Deletes an ML model currently available for Amazon Lookout for Equipment\cr
+#'  \link[paws.machine.learning:lookoutequipment_delete_model]{delete_model} \tab Deletes a machine learning model currently available for Amazon Lookout for Equipment\cr
 #'  \link[paws.machine.learning:lookoutequipment_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource policy attached to the resource\cr
+#'  \link[paws.machine.learning:lookoutequipment_delete_retraining_scheduler]{delete_retraining_scheduler} \tab Deletes a retraining scheduler from a model\cr
 #'  \link[paws.machine.learning:lookoutequipment_describe_data_ingestion_job]{describe_data_ingestion_job} \tab Provides information on a specific data ingestion job such as creation time, dataset ARN, and status\cr
 #'  \link[paws.machine.learning:lookoutequipment_describe_dataset]{describe_dataset} \tab Provides a JSON description of the data in each time series dataset, including names, column names, and data types\cr
 #'  \link[paws.machine.learning:lookoutequipment_describe_inference_scheduler]{describe_inference_scheduler} \tab Specifies information about the inference scheduler being used, including name, model, status, and associated metadata\cr
 #'  \link[paws.machine.learning:lookoutequipment_describe_label]{describe_label} \tab Returns the name of the label\cr
 #'  \link[paws.machine.learning:lookoutequipment_describe_label_group]{describe_label_group} \tab Returns information about the label group\cr
-#'  \link[paws.machine.learning:lookoutequipment_describe_model]{describe_model} \tab Provides a JSON containing the overall information about a specific ML model, including model name and ARN, dataset, training and evaluation information, status, and so on\cr
+#'  \link[paws.machine.learning:lookoutequipment_describe_model]{describe_model} \tab Provides a JSON containing the overall information about a specific machine learning model, including model name and ARN, dataset, training and evaluation information, status, and so on\cr
 #'  \link[paws.machine.learning:lookoutequipment_describe_model_version]{describe_model_version} \tab Retrieves information about a specific machine learning model version\cr
 #'  \link[paws.machine.learning:lookoutequipment_describe_resource_policy]{describe_resource_policy} \tab Provides the details of a resource policy attached to a resource\cr
+#'  \link[paws.machine.learning:lookoutequipment_describe_retraining_scheduler]{describe_retraining_scheduler} \tab Provides a description of the retraining scheduler, including information such as the model name and retraining parameters\cr
 #'  \link[paws.machine.learning:lookoutequipment_import_dataset]{import_dataset} \tab Imports a dataset\cr
 #'  \link[paws.machine.learning:lookoutequipment_import_model_version]{import_model_version} \tab Imports a model that has been trained successfully\cr
 #'  \link[paws.machine.learning:lookoutequipment_list_data_ingestion_jobs]{list_data_ingestion_jobs} \tab Provides a list of all data ingestion jobs, including dataset name and ARN, S3 location of the input data, status, and so on\cr
@@ -23448,17 +25863,22 @@ lexruntimev2 <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.machine.learning:lookoutequipment_list_labels]{list_labels} \tab Provides a list of labels\cr
 #'  \link[paws.machine.learning:lookoutequipment_list_models]{list_models} \tab Generates a list of all models in the account, including model name and ARN, dataset, and status\cr
 #'  \link[paws.machine.learning:lookoutequipment_list_model_versions]{list_model_versions} \tab Generates a list of all model versions for a given model, including the model version, model version ARN, and status\cr
+#'  \link[paws.machine.learning:lookoutequipment_list_retraining_schedulers]{list_retraining_schedulers} \tab Lists all retraining schedulers in your account, filtering by model name prefix and status\cr
 #'  \link[paws.machine.learning:lookoutequipment_list_sensor_statistics]{list_sensor_statistics} \tab Lists statistics about the data collected for each of the sensors that have been successfully ingested in the particular dataset\cr
 #'  \link[paws.machine.learning:lookoutequipment_list_tags_for_resource]{list_tags_for_resource} \tab Lists all the tags for a specified resource, including key and value\cr
 #'  \link[paws.machine.learning:lookoutequipment_put_resource_policy]{put_resource_policy} \tab Creates a resource control policy for a given resource\cr
 #'  \link[paws.machine.learning:lookoutequipment_start_data_ingestion_job]{start_data_ingestion_job} \tab Starts a data ingestion job\cr
 #'  \link[paws.machine.learning:lookoutequipment_start_inference_scheduler]{start_inference_scheduler} \tab Starts an inference scheduler\cr
+#'  \link[paws.machine.learning:lookoutequipment_start_retraining_scheduler]{start_retraining_scheduler} \tab Starts a retraining scheduler\cr
 #'  \link[paws.machine.learning:lookoutequipment_stop_inference_scheduler]{stop_inference_scheduler} \tab Stops an inference scheduler\cr
+#'  \link[paws.machine.learning:lookoutequipment_stop_retraining_scheduler]{stop_retraining_scheduler} \tab Stops a retraining scheduler\cr
 #'  \link[paws.machine.learning:lookoutequipment_tag_resource]{tag_resource} \tab Associates a given tag to a resource in your account\cr
 #'  \link[paws.machine.learning:lookoutequipment_untag_resource]{untag_resource} \tab Removes a specific tag from a given resource\cr
 #'  \link[paws.machine.learning:lookoutequipment_update_active_model_version]{update_active_model_version} \tab Sets the active model version for a given machine learning model\cr
 #'  \link[paws.machine.learning:lookoutequipment_update_inference_scheduler]{update_inference_scheduler} \tab Updates an inference scheduler\cr
-#'  \link[paws.machine.learning:lookoutequipment_update_label_group]{update_label_group} \tab Updates the label group
+#'  \link[paws.machine.learning:lookoutequipment_update_label_group]{update_label_group} \tab Updates the label group\cr
+#'  \link[paws.machine.learning:lookoutequipment_update_model]{update_model} \tab Updates a model in the account\cr
+#'  \link[paws.machine.learning:lookoutequipment_update_retraining_scheduler]{update_retraining_scheduler} \tab Updates a retraining scheduler
 #' }
 #'
 #' @return
@@ -23498,9 +25918,9 @@ lookoutequipment <- function(config = list(), credentials = list(), endpoint = N
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -23635,9 +26055,9 @@ lookoutmetrics <- function(config = list(), credentials = list(), endpoint = NUL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -23757,7 +26177,7 @@ machinelearning <- function(config = list(), credentials = list(), endpoint = NU
 #'
 #' @description
 #' **Overview**
-#'
+#' 
 #' This is the *AWS Panorama API Reference*. For an introduction to the
 #' service, see [What is AWS
 #' Panorama?](https://docs.aws.amazon.com/panorama/latest/dev/panorama-welcome.html)
@@ -23775,9 +26195,9 @@ machinelearning <- function(config = list(), credentials = list(), endpoint = NU
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -23917,9 +26337,9 @@ panorama <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -24094,9 +26514,9 @@ personalize <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -24189,7 +26609,7 @@ personalizeevents <- function(config = list(), credentials = list(), endpoint = 
 
 #' Amazon Personalize Runtime
 #'
-#'
+#' 
 #'
 #' @param
 #' config
@@ -24203,9 +26623,9 @@ personalizeevents <- function(config = list(), credentials = list(), endpoint = 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -24300,7 +26720,7 @@ personalizeruntime <- function(config = list(), credentials = list(), endpoint =
 #' @description
 #' Amazon Polly is a web service that makes it easy to synthesize speech
 #' from text.
-#'
+#' 
 #' The Amazon Polly service provides API operations for synthesizing
 #' high-quality speech from plain text and Speech Synthesis Markup Language
 #' (SSML), along with managing pronunciations lexicons that enable you to
@@ -24318,9 +26738,9 @@ personalizeruntime <- function(config = list(), credentials = list(), endpoint =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -24431,147 +26851,147 @@ polly <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' Video](https://docs.aws.amazon.com/rekognition/latest/dg/streaming-video.html).
 #' It provides descriptions of actions, data types, common parameters, and
 #' common errors.
-#'
+#' 
 #' **Amazon Rekognition Image**
-#'
+#' 
 #' -   `associate_faces`
-#'
+#' 
 #' -   `compare_faces`
-#'
+#' 
 #' -   `create_collection`
-#'
+#' 
 #' -   `create_user`
-#'
+#' 
 #' -   `delete_collection`
-#'
+#' 
 #' -   `delete_faces`
-#'
+#' 
 #' -   `delete_user`
-#'
+#' 
 #' -   `describe_collection`
-#'
+#' 
 #' -   `detect_faces`
-#'
+#' 
 #' -   `detect_labels`
-#'
+#' 
 #' -   `detect_moderation_labels`
-#'
+#' 
 #' -   `detect_protective_equipment`
-#'
+#' 
 #' -   `detect_text`
-#'
+#' 
 #' -   `disassociate_faces`
-#'
+#' 
 #' -   `get_celebrity_info`
-#'
+#' 
 #' -   `index_faces`
-#'
+#' 
 #' -   `list_collections`
-#'
+#' 
 #' -   `list_faces`
-#'
+#' 
 #' -   `list_users`
-#'
+#' 
 #' -   `recognize_celebrities`
-#'
+#' 
 #' -   `search_faces`
-#'
+#' 
 #' -   `search_faces_by_image`
-#'
+#' 
 #' -   `search_users`
-#'
+#' 
 #' -   `search_users_by_image`
-#'
+#' 
 #' **Amazon Rekognition Custom Labels**
-#'
+#' 
 #' -   `copy_project_version`
-#'
+#' 
 #' -   `create_dataset`
-#'
+#' 
 #' -   `create_project`
-#'
+#' 
 #' -   `create_project_version`
-#'
+#' 
 #' -   `delete_dataset`
-#'
+#' 
 #' -   `delete_project`
-#'
+#' 
 #' -   `delete_project_policy`
-#'
+#' 
 #' -   `delete_project_version`
-#'
+#' 
 #' -   `describe_dataset`
-#'
+#' 
 #' -   `describe_projects`
-#'
+#' 
 #' -   `describe_project_versions`
-#'
+#' 
 #' -   `detect_custom_labels`
-#'
+#' 
 #' -   `distribute_dataset_entries`
-#'
+#' 
 #' -   `list_dataset_entries`
-#'
+#' 
 #' -   `list_dataset_labels`
-#'
+#' 
 #' -   `list_project_policies`
-#'
+#' 
 #' -   `put_project_policy`
-#'
+#' 
 #' -   `start_project_version`
-#'
+#' 
 #' -   `stop_project_version`
-#'
+#' 
 #' -   `update_dataset_entries`
-#'
+#' 
 #' **Amazon Rekognition Video Stored Video**
-#'
+#' 
 #' -   `get_celebrity_recognition`
-#'
+#' 
 #' -   `get_content_moderation`
-#'
+#' 
 #' -   `get_face_detection`
-#'
+#' 
 #' -   `get_face_search`
-#'
+#' 
 #' -   `get_label_detection`
-#'
+#' 
 #' -   `get_person_tracking`
-#'
+#' 
 #' -   `get_segment_detection`
-#'
+#' 
 #' -   `get_text_detection`
-#'
+#' 
 #' -   `start_celebrity_recognition`
-#'
+#' 
 #' -   `start_content_moderation`
-#'
+#' 
 #' -   `start_face_detection`
-#'
+#' 
 #' -   `start_face_search`
-#'
+#' 
 #' -   `start_label_detection`
-#'
+#' 
 #' -   `start_person_tracking`
-#'
+#' 
 #' -   `start_segment_detection`
-#'
+#' 
 #' -   `start_text_detection`
-#'
+#' 
 #' **Amazon Rekognition Video Streaming Video**
-#'
+#' 
 #' -   `create_stream_processor`
-#'
+#' 
 #' -   `delete_stream_processor`
-#'
+#' 
 #' -   `describe_stream_processor`
-#'
+#' 
 #' -   `list_stream_processors`
-#'
+#' 
 #' -   `start_stream_processor`
-#'
+#' 
 #' -   `stop_stream_processor`
-#'
+#' 
 #' -   `update_stream_processor`
 #'
 #' @param
@@ -24586,9 +27006,9 @@ polly <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -24668,35 +27088,35 @@ polly <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' \tabular{ll}{
 #'  \link[paws.machine.learning:rekognition_associate_faces]{associate_faces} \tab Associates one or more faces with an existing UserID\cr
 #'  \link[paws.machine.learning:rekognition_compare_faces]{compare_faces} \tab Compares a face in the source input image with each of the 100 largest faces detected in the target input image\cr
-#'  \link[paws.machine.learning:rekognition_copy_project_version]{copy_project_version} \tab Copies a version of an Amazon Rekognition Custom Labels model from a source project to a destination project\cr
+#'  \link[paws.machine.learning:rekognition_copy_project_version]{copy_project_version} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[paws.machine.learning:rekognition_create_collection]{create_collection} \tab Creates a collection in an AWS Region\cr
-#'  \link[paws.machine.learning:rekognition_create_dataset]{create_dataset} \tab Creates a new Amazon Rekognition Custom Labels dataset\cr
+#'  \link[paws.machine.learning:rekognition_create_dataset]{create_dataset} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[paws.machine.learning:rekognition_create_face_liveness_session]{create_face_liveness_session} \tab This API operation initiates a Face Liveness session\cr
-#'  \link[paws.machine.learning:rekognition_create_project]{create_project} \tab Creates a new Amazon Rekognition Custom Labels project\cr
-#'  \link[paws.machine.learning:rekognition_create_project_version]{create_project_version} \tab Creates a new version of a model and begins training\cr
+#'  \link[paws.machine.learning:rekognition_create_project]{create_project} \tab Creates a new Amazon Rekognition project\cr
+#'  \link[paws.machine.learning:rekognition_create_project_version]{create_project_version} \tab Creates a new version of Amazon Rekognition project (like a Custom Labels model or a custom adapter) and begins training\cr
 #'  \link[paws.machine.learning:rekognition_create_stream_processor]{create_stream_processor} \tab Creates an Amazon Rekognition stream processor that you can use to detect and recognize faces or to detect labels in a streaming video\cr
 #'  \link[paws.machine.learning:rekognition_create_user]{create_user} \tab Creates a new User within a collection specified by CollectionId\cr
 #'  \link[paws.machine.learning:rekognition_delete_collection]{delete_collection} \tab Deletes the specified collection\cr
-#'  \link[paws.machine.learning:rekognition_delete_dataset]{delete_dataset} \tab Deletes an existing Amazon Rekognition Custom Labels dataset\cr
+#'  \link[paws.machine.learning:rekognition_delete_dataset]{delete_dataset} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[paws.machine.learning:rekognition_delete_faces]{delete_faces} \tab Deletes faces from a collection\cr
-#'  \link[paws.machine.learning:rekognition_delete_project]{delete_project} \tab Deletes an Amazon Rekognition Custom Labels project\cr
-#'  \link[paws.machine.learning:rekognition_delete_project_policy]{delete_project_policy} \tab Deletes an existing project policy\cr
-#'  \link[paws.machine.learning:rekognition_delete_project_version]{delete_project_version} \tab Deletes an Amazon Rekognition Custom Labels model\cr
+#'  \link[paws.machine.learning:rekognition_delete_project]{delete_project} \tab Deletes a Amazon Rekognition project\cr
+#'  \link[paws.machine.learning:rekognition_delete_project_policy]{delete_project_policy} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
+#'  \link[paws.machine.learning:rekognition_delete_project_version]{delete_project_version} \tab Deletes a Rekognition project model or project version, like a Amazon Rekognition Custom Labels model or a custom adapter\cr
 #'  \link[paws.machine.learning:rekognition_delete_stream_processor]{delete_stream_processor} \tab Deletes the stream processor identified by Name\cr
 #'  \link[paws.machine.learning:rekognition_delete_user]{delete_user} \tab Deletes the specified UserID within the collection\cr
 #'  \link[paws.machine.learning:rekognition_describe_collection]{describe_collection} \tab Describes the specified collection\cr
-#'  \link[paws.machine.learning:rekognition_describe_dataset]{describe_dataset} \tab Describes an Amazon Rekognition Custom Labels dataset\cr
-#'  \link[paws.machine.learning:rekognition_describe_projects]{describe_projects} \tab Gets information about your Amazon Rekognition Custom Labels projects\cr
-#'  \link[paws.machine.learning:rekognition_describe_project_versions]{describe_project_versions} \tab Lists and describes the versions of a model in an Amazon Rekognition Custom Labels project\cr
+#'  \link[paws.machine.learning:rekognition_describe_dataset]{describe_dataset} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
+#'  \link[paws.machine.learning:rekognition_describe_projects]{describe_projects} \tab Gets information about your Rekognition projects\cr
+#'  \link[paws.machine.learning:rekognition_describe_project_versions]{describe_project_versions} \tab Lists and describes the versions of an Amazon Rekognition project\cr
 #'  \link[paws.machine.learning:rekognition_describe_stream_processor]{describe_stream_processor} \tab Provides information about a stream processor created by CreateStreamProcessor\cr
-#'  \link[paws.machine.learning:rekognition_detect_custom_labels]{detect_custom_labels} \tab Detects custom labels in a supplied image by using an Amazon Rekognition Custom Labels model\cr
+#'  \link[paws.machine.learning:rekognition_detect_custom_labels]{detect_custom_labels} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[paws.machine.learning:rekognition_detect_faces]{detect_faces} \tab Detects faces within an image that is provided as input\cr
 #'  \link[paws.machine.learning:rekognition_detect_labels]{detect_labels} \tab Detects instances of real-world entities within an image (JPEG or PNG) provided as input\cr
 #'  \link[paws.machine.learning:rekognition_detect_moderation_labels]{detect_moderation_labels} \tab Detects unsafe content in a specified JPEG or PNG format image\cr
 #'  \link[paws.machine.learning:rekognition_detect_protective_equipment]{detect_protective_equipment} \tab Detects Personal Protective Equipment (PPE) worn by people detected in an image\cr
 #'  \link[paws.machine.learning:rekognition_detect_text]{detect_text} \tab Detects text in the input image and converts it into machine-readable text\cr
 #'  \link[paws.machine.learning:rekognition_disassociate_faces]{disassociate_faces} \tab Removes the association between a Face supplied in an array of FaceIds and the User\cr
-#'  \link[paws.machine.learning:rekognition_distribute_dataset_entries]{distribute_dataset_entries} \tab Distributes the entries (images) in a training dataset across the training dataset and the test dataset for a project\cr
+#'  \link[paws.machine.learning:rekognition_distribute_dataset_entries]{distribute_dataset_entries} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[paws.machine.learning:rekognition_get_celebrity_info]{get_celebrity_info} \tab Gets the name and additional information about a celebrity based on their Amazon Rekognition ID\cr
 #'  \link[paws.machine.learning:rekognition_get_celebrity_recognition]{get_celebrity_recognition} \tab Gets the celebrity recognition results for a Amazon Rekognition Video analysis started by StartCelebrityRecognition\cr
 #'  \link[paws.machine.learning:rekognition_get_content_moderation]{get_content_moderation} \tab Gets the inappropriate, unwanted, or offensive content analysis results for a Amazon Rekognition Video analysis started by StartContentModeration\cr
@@ -24704,19 +27124,21 @@ polly <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'  \link[paws.machine.learning:rekognition_get_face_liveness_session_results]{get_face_liveness_session_results} \tab Retrieves the results of a specific Face Liveness session\cr
 #'  \link[paws.machine.learning:rekognition_get_face_search]{get_face_search} \tab Gets the face search results for Amazon Rekognition Video face search started by StartFaceSearch\cr
 #'  \link[paws.machine.learning:rekognition_get_label_detection]{get_label_detection} \tab Gets the label detection results of a Amazon Rekognition Video analysis started by StartLabelDetection\cr
+#'  \link[paws.machine.learning:rekognition_get_media_analysis_job]{get_media_analysis_job} \tab Retrieves the results for a given media analysis job\cr
 #'  \link[paws.machine.learning:rekognition_get_person_tracking]{get_person_tracking} \tab Gets the path tracking results of a Amazon Rekognition Video analysis started by StartPersonTracking\cr
 #'  \link[paws.machine.learning:rekognition_get_segment_detection]{get_segment_detection} \tab Gets the segment detection results of a Amazon Rekognition Video analysis started by StartSegmentDetection\cr
 #'  \link[paws.machine.learning:rekognition_get_text_detection]{get_text_detection} \tab Gets the text detection results of a Amazon Rekognition Video analysis started by StartTextDetection\cr
 #'  \link[paws.machine.learning:rekognition_index_faces]{index_faces} \tab Detects faces in the input image and adds them to the specified collection\cr
 #'  \link[paws.machine.learning:rekognition_list_collections]{list_collections} \tab Returns list of collection IDs in your account\cr
-#'  \link[paws.machine.learning:rekognition_list_dataset_entries]{list_dataset_entries} \tab Lists the entries (images) within a dataset\cr
-#'  \link[paws.machine.learning:rekognition_list_dataset_labels]{list_dataset_labels} \tab Lists the labels in a dataset\cr
+#'  \link[paws.machine.learning:rekognition_list_dataset_entries]{list_dataset_entries} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
+#'  \link[paws.machine.learning:rekognition_list_dataset_labels]{list_dataset_labels} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[paws.machine.learning:rekognition_list_faces]{list_faces} \tab Returns metadata for faces in the specified collection\cr
-#'  \link[paws.machine.learning:rekognition_list_project_policies]{list_project_policies} \tab Gets a list of the project policies attached to a project\cr
+#'  \link[paws.machine.learning:rekognition_list_media_analysis_jobs]{list_media_analysis_jobs} \tab Returns a list of media analysis jobs\cr
+#'  \link[paws.machine.learning:rekognition_list_project_policies]{list_project_policies} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[paws.machine.learning:rekognition_list_stream_processors]{list_stream_processors} \tab Gets a list of stream processors that you have created with CreateStreamProcessor\cr
 #'  \link[paws.machine.learning:rekognition_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags in an Amazon Rekognition collection, stream processor, or Custom Labels model\cr
 #'  \link[paws.machine.learning:rekognition_list_users]{list_users} \tab Returns metadata of the User such as UserID in the specified collection\cr
-#'  \link[paws.machine.learning:rekognition_put_project_policy]{put_project_policy} \tab Attaches a project policy to a Amazon Rekognition Custom Labels project in a trusting AWS account\cr
+#'  \link[paws.machine.learning:rekognition_put_project_policy]{put_project_policy} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[paws.machine.learning:rekognition_recognize_celebrities]{recognize_celebrities} \tab Returns an array of celebrities recognized in the input image\cr
 #'  \link[paws.machine.learning:rekognition_search_faces]{search_faces} \tab For a given input face ID, searches for matching faces in the collection the face belongs to\cr
 #'  \link[paws.machine.learning:rekognition_search_faces_by_image]{search_faces_by_image} \tab For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces\cr
@@ -24727,16 +27149,17 @@ polly <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'  \link[paws.machine.learning:rekognition_start_face_detection]{start_face_detection} \tab Starts asynchronous detection of faces in a stored video\cr
 #'  \link[paws.machine.learning:rekognition_start_face_search]{start_face_search} \tab Starts the asynchronous search for faces in a collection that match the faces of persons detected in a stored video\cr
 #'  \link[paws.machine.learning:rekognition_start_label_detection]{start_label_detection} \tab Starts asynchronous detection of labels in a stored video\cr
+#'  \link[paws.machine.learning:rekognition_start_media_analysis_job]{start_media_analysis_job} \tab Initiates a new media analysis job\cr
 #'  \link[paws.machine.learning:rekognition_start_person_tracking]{start_person_tracking} \tab Starts the asynchronous tracking of a person's path in a stored video\cr
-#'  \link[paws.machine.learning:rekognition_start_project_version]{start_project_version} \tab Starts the running of the version of a model\cr
+#'  \link[paws.machine.learning:rekognition_start_project_version]{start_project_version} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[paws.machine.learning:rekognition_start_segment_detection]{start_segment_detection} \tab Starts asynchronous detection of segment detection in a stored video\cr
 #'  \link[paws.machine.learning:rekognition_start_stream_processor]{start_stream_processor} \tab Starts processing a stream processor\cr
 #'  \link[paws.machine.learning:rekognition_start_text_detection]{start_text_detection} \tab Starts asynchronous detection of text in a stored video\cr
-#'  \link[paws.machine.learning:rekognition_stop_project_version]{stop_project_version} \tab Stops a running model\cr
+#'  \link[paws.machine.learning:rekognition_stop_project_version]{stop_project_version} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[paws.machine.learning:rekognition_stop_stream_processor]{stop_stream_processor} \tab Stops a running stream processor that was created by CreateStreamProcessor\cr
 #'  \link[paws.machine.learning:rekognition_tag_resource]{tag_resource} \tab Adds one or more key-value tags to an Amazon Rekognition collection, stream processor, or Custom Labels model\cr
 #'  \link[paws.machine.learning:rekognition_untag_resource]{untag_resource} \tab Removes one or more tags from an Amazon Rekognition collection, stream processor, or Custom Labels model\cr
-#'  \link[paws.machine.learning:rekognition_update_dataset_entries]{update_dataset_entries} \tab Adds or updates one or more entries (images) in a dataset\cr
+#'  \link[paws.machine.learning:rekognition_update_dataset_entries]{update_dataset_entries} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 #'  \link[paws.machine.learning:rekognition_update_stream_processor]{update_stream_processor} \tab Allows you to update a stream processor
 #' }
 #'
@@ -24761,12 +27184,12 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @description
 #' Provides APIs for creating and managing SageMaker resources.
-#'
+#' 
 #' Other Resources:
-#'
+#' 
 #' -   [SageMaker Developer
 #'     Guide](https://docs.aws.amazon.com/sagemaker/latest/dg/whatis.html#first-time-user)
-#'
+#' 
 #' -   [Amazon Augmented AI Runtime API
 #'     Reference](https://docs.aws.amazon.com/augmented-ai/2019-11-07/APIReference/Welcome.html)
 #'
@@ -24782,9 +27205,9 @@ rekognition <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -25176,6 +27599,154 @@ sagemaker <- function(config = list(), credentials = list(), endpoint = NULL, re
   )
 }
 
+#' Amazon Augmented AI Runtime
+#'
+#' @description
+#' Amazon Augmented AI (Amazon A2I) adds the benefit of human judgment to
+#' any machine learning application. When an AI application can't evaluate
+#' data with a high degree of confidence, human reviewers can take over.
+#' This human review is called a human review workflow. To create and start
+#' a human review workflow, you need three resources: a *worker task
+#' template*, a *flow definition*, and a *human loop*.
+#' 
+#' For information about these resources and prerequisites for using Amazon
+#' A2I, see [Get Started with Amazon Augmented
+#' AI](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-getting-started.html)
+#' in the Amazon SageMaker Developer Guide.
+#' 
+#' This API reference includes information about API actions and data types
+#' that you can use to interact with Amazon A2I programmatically. Use this
+#' guide to:
+#' 
+#' -   Start a human loop with the
+#'     `start_human_loop` operation
+#'     when using Amazon A2I with a *custom task type*. To learn more about
+#'     the difference between custom and built-in task types, see [Use Task
+#'     Types](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-task-types-general.html)
+#'     . To learn how to start a human loop using this API, see [Create and
+#'     Start a Human Loop for a Custom Task
+#'     Type](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-start-human-loop.html#a2i-instructions-starthumanloop)
+#'     in the Amazon SageMaker Developer Guide.
+#' 
+#' -   Manage your human loops. You can list all human loops that you have
+#'     created, describe individual human loops, and stop and delete human
+#'     loops. To learn more, see [Monitor and Manage Your Human
+#'     Loop](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-monitor-humanloop-results.html)
+#'     in the Amazon SageMaker Developer Guide.
+#' 
+#' Amazon A2I integrates APIs from various AWS services to create and start
+#' human review workflows for those services. To learn how Amazon A2I uses
+#' these APIs, see [Use APIs in Amazon
+#' A2I](https://docs.aws.amazon.com/sagemaker/latest/dg/a2i-api-references.html)
+#' in the Amazon SageMaker Developer Guide.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- augmentedairuntime(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- augmentedairuntime()
+#' svc$delete_human_loop(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.machine.learning:augmentedairuntime_delete_human_loop]{delete_human_loop} \tab Deletes the specified human loop for a flow definition\cr
+#'  \link[paws.machine.learning:augmentedairuntime_describe_human_loop]{describe_human_loop} \tab Returns information about the specified human loop\cr
+#'  \link[paws.machine.learning:augmentedairuntime_list_human_loops]{list_human_loops} \tab Returns information about human loops, given the specified parameters\cr
+#'  \link[paws.machine.learning:augmentedairuntime_start_human_loop]{start_human_loop} \tab Starts a human loop, provided that at least one activation condition is met\cr
+#'  \link[paws.machine.learning:augmentedairuntime_stop_human_loop]{stop_human_loop} \tab Stops the specified human loop
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname augmentedairuntime
+#' @export
+augmentedairuntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::augmentedairuntime(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon Sagemaker Edge Manager
 #'
 #' @description
@@ -25194,9 +27765,9 @@ sagemaker <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -25293,16 +27864,16 @@ sagemakeredgemanager <- function(config = list(), credentials = list(), endpoint
 #' Contains all data plane API operations and data types for the Amazon
 #' SageMaker Feature Store. Use this API to put, delete, and retrieve (get)
 #' features from a feature store.
-#'
+#' 
 #' Use the following operations to configure your `OnlineStore` and
 #' `OfflineStore` features, and to create and manage feature groups:
-#'
+#' 
 #' -   [CreateFeatureGroup](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_CreateFeatureGroup.html)
-#'
+#' 
 #' -   [DeleteFeatureGroup](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DeleteFeatureGroup.html)
-#'
+#' 
 #' -   [DescribeFeatureGroup](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_DescribeFeatureGroup.html)
-#'
+#' 
 #' -   [ListFeatureGroups](https://docs.aws.amazon.com/sagemaker/latest/APIReference/API_ListFeatureGroups.html)
 #'
 #' @param
@@ -25317,9 +27888,9 @@ sagemakeredgemanager <- function(config = list(), credentials = list(), endpoint
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -25411,6 +27982,244 @@ sagemakerfeaturestoreruntime <- function(config = list(), credentials = list(), 
   )
 }
 
+#' Amazon SageMaker geospatial capabilities
+#'
+#' @description
+#' Provides APIs for creating and managing SageMaker geospatial resources.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- sagemakergeospatialcapabilities(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- sagemakergeospatialcapabilities()
+#' svc$delete_earth_observation_job(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_delete_earth_observation_job]{delete_earth_observation_job} \tab Use this operation to delete an Earth Observation job\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_delete_vector_enrichment_job]{delete_vector_enrichment_job} \tab Use this operation to delete a Vector Enrichment job\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_export_earth_observation_job]{export_earth_observation_job} \tab Use this operation to export results of an Earth Observation job and optionally source images used as input to the EOJ to an Amazon S3 location\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_export_vector_enrichment_job]{export_vector_enrichment_job} \tab Use this operation to copy results of a Vector Enrichment job to an Amazon S3 location\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_get_earth_observation_job]{get_earth_observation_job} \tab Get the details for a previously initiated Earth Observation job\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_get_raster_data_collection]{get_raster_data_collection} \tab Use this operation to get details of a specific raster data collection\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_get_tile]{get_tile} \tab Gets a web mercator tile for the given Earth Observation job\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_get_vector_enrichment_job]{get_vector_enrichment_job} \tab Retrieves details of a Vector Enrichment Job for a given job Amazon Resource Name (ARN)\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_list_earth_observation_jobs]{list_earth_observation_jobs} \tab Use this operation to get a list of the Earth Observation jobs associated with the calling Amazon Web Services account\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_list_raster_data_collections]{list_raster_data_collections} \tab Use this operation to get raster data collections\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags attached to the resource\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_list_vector_enrichment_jobs]{list_vector_enrichment_jobs} \tab Retrieves a list of vector enrichment jobs\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_search_raster_data_collection]{search_raster_data_collection} \tab Allows you run image query on a specific raster data collection to get a list of the satellite imagery matching the selected filters\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_start_earth_observation_job]{start_earth_observation_job} \tab Use this operation to create an Earth observation job\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_start_vector_enrichment_job]{start_vector_enrichment_job} \tab Creates a Vector Enrichment job for the supplied job type\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_stop_earth_observation_job]{stop_earth_observation_job} \tab Use this operation to stop an existing earth observation job\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_stop_vector_enrichment_job]{stop_vector_enrichment_job} \tab Stops the Vector Enrichment job for a given job ARN\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_tag_resource]{tag_resource} \tab The resource you want to tag\cr
+#'  \link[paws.machine.learning:sagemakergeospatialcapabilities_untag_resource]{untag_resource} \tab The resource you want to untag
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname sagemakergeospatialcapabilities
+#' @export
+sagemakergeospatialcapabilities <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::sagemakergeospatialcapabilities(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
+#' Amazon SageMaker Metrics Service
+#'
+#' @description
+#' Contains all data plane API operations and data types for Amazon
+#' SageMaker Metrics. Use these APIs to put and retrieve (get) features
+#' related to your training run.
+#' 
+#' -   `batch_put_metrics`
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- sagemakermetrics(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- sagemakermetrics()
+#' svc$batch_put_metrics(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.machine.learning:sagemakermetrics_batch_put_metrics]{batch_put_metrics} \tab Used to ingest training metrics into SageMaker
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname sagemakermetrics
+#' @export
+sagemakermetrics <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::sagemakermetrics(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon SageMaker Runtime
 #'
 #' @description
@@ -25428,9 +28237,9 @@ sagemakerfeaturestoreruntime <- function(config = list(), credentials = list(), 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -25540,9 +28349,9 @@ sagemakerruntime <- function(config = list(), credentials = list(), endpoint = N
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -25614,16 +28423,28 @@ sagemakerruntime <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.machine.learning:textract_analyze_document]{analyze_document} \tab Analyzes an input document for relationships between detected items\cr
 #'  \link[paws.machine.learning:textract_analyze_expense]{analyze_expense} \tab AnalyzeExpense synchronously analyzes an input document for financially related relationships between text\cr
 #'  \link[paws.machine.learning:textract_analyze_id]{analyze_id} \tab Analyzes identity documents for relevant information\cr
+#'  \link[paws.machine.learning:textract_create_adapter]{create_adapter} \tab Creates an adapter, which can be fine-tuned for enhanced performance on user provided documents\cr
+#'  \link[paws.machine.learning:textract_create_adapter_version]{create_adapter_version} \tab Creates a new version of an adapter\cr
+#'  \link[paws.machine.learning:textract_delete_adapter]{delete_adapter} \tab Deletes an Amazon Textract adapter\cr
+#'  \link[paws.machine.learning:textract_delete_adapter_version]{delete_adapter_version} \tab Deletes an Amazon Textract adapter version\cr
 #'  \link[paws.machine.learning:textract_detect_document_text]{detect_document_text} \tab Detects text in the input document\cr
+#'  \link[paws.machine.learning:textract_get_adapter]{get_adapter} \tab Gets configuration information for an adapter specified by an AdapterId, returning information on AdapterName, Description, CreationTime, AutoUpdate status, and FeatureTypes\cr
+#'  \link[paws.machine.learning:textract_get_adapter_version]{get_adapter_version} \tab Gets configuration information for the specified adapter version, including: AdapterId, AdapterVersion, FeatureTypes, Status, StatusMessage, DatasetConfig, KMSKeyId, OutputConfig, Tags and EvaluationMetrics\cr
 #'  \link[paws.machine.learning:textract_get_document_analysis]{get_document_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes text in a document\cr
 #'  \link[paws.machine.learning:textract_get_document_text_detection]{get_document_text_detection} \tab Gets the results for an Amazon Textract asynchronous operation that detects text in a document\cr
 #'  \link[paws.machine.learning:textract_get_expense_analysis]{get_expense_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes invoices and receipts\cr
 #'  \link[paws.machine.learning:textract_get_lending_analysis]{get_lending_analysis} \tab Gets the results for an Amazon Textract asynchronous operation that analyzes text in a lending document\cr
 #'  \link[paws.machine.learning:textract_get_lending_analysis_summary]{get_lending_analysis_summary} \tab Gets summarized results for the StartLendingAnalysis operation, which analyzes text in a lending document\cr
+#'  \link[paws.machine.learning:textract_list_adapters]{list_adapters} \tab Lists all adapters that match the specified filtration criteria\cr
+#'  \link[paws.machine.learning:textract_list_adapter_versions]{list_adapter_versions} \tab List all version of an adapter that meet the specified filtration criteria\cr
+#'  \link[paws.machine.learning:textract_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags for an Amazon Textract resource\cr
 #'  \link[paws.machine.learning:textract_start_document_analysis]{start_document_analysis} \tab Starts the asynchronous analysis of an input document for relationships between detected items such as key-value pairs, tables, and selection elements\cr
 #'  \link[paws.machine.learning:textract_start_document_text_detection]{start_document_text_detection} \tab Starts the asynchronous detection of text in a document\cr
 #'  \link[paws.machine.learning:textract_start_expense_analysis]{start_expense_analysis} \tab Starts the asynchronous analysis of invoices or receipts for data like contact information, items purchased, and vendor names\cr
-#'  \link[paws.machine.learning:textract_start_lending_analysis]{start_lending_analysis} \tab Starts the classification and analysis of an input document
+#'  \link[paws.machine.learning:textract_start_lending_analysis]{start_lending_analysis} \tab Starts the classification and analysis of an input document\cr
+#'  \link[paws.machine.learning:textract_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource\cr
+#'  \link[paws.machine.learning:textract_untag_resource]{untag_resource} \tab Removes any tags with the specified keys from the specified resource\cr
+#'  \link[paws.machine.learning:textract_update_adapter]{update_adapter} \tab Update the configuration for an adapter
 #' }
 #'
 #' @return
@@ -25648,15 +28469,15 @@ textract <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' @description
 #' Amazon Transcribe offers three main types of batch transcription:
 #' **Standard**, **Medical**, and **Call Analytics**.
-#'
+#' 
 #' -   **Standard transcriptions** are the most common option. Refer to for
 #'     details.
-#'
+#' 
 #' -   **Medical transcriptions** are tailored to medical professionals and
 #'     incorporate medical terms. A common use case for this service is
 #'     transcribing doctor-patient dialogue into after-visit notes. Refer
 #'     to for details.
-#'
+#' 
 #' -   **Call Analytics transcriptions** are designed for use with call
 #'     center audio on two different channels; if you're looking for
 #'     insight into customer service calls, use this option. Refer to for
@@ -25674,9 +28495,9 @@ textract <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -25821,9 +28642,9 @@ transcribeservice <- function(config = list(), credentials = list(), endpoint = 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -25949,9 +28770,9 @@ translate <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -26068,6 +28889,242 @@ voiceid <- function(config = list(), credentials = list(), endpoint = NULL, regi
   )
 }
 
+#' Amazon Bedrock
+#'
+#' @description
+#' Describes the API operations for creating and managing Bedrock models.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- bedrock(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- bedrock()
+#' svc$create_model_customization_job(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.machine.learning:bedrock_create_model_customization_job]{create_model_customization_job} \tab Creates a fine-tuning job to customize a base model\cr
+#'  \link[paws.machine.learning:bedrock_create_provisioned_model_throughput]{create_provisioned_model_throughput} \tab Creates a provisioned throughput with dedicated capacity for a foundation model or a fine-tuned model\cr
+#'  \link[paws.machine.learning:bedrock_delete_custom_model]{delete_custom_model} \tab Deletes a custom model that you created earlier\cr
+#'  \link[paws.machine.learning:bedrock_delete_model_invocation_logging_configuration]{delete_model_invocation_logging_configuration} \tab Delete the invocation logging\cr
+#'  \link[paws.machine.learning:bedrock_delete_provisioned_model_throughput]{delete_provisioned_model_throughput} \tab Deletes a provisioned throughput\cr
+#'  \link[paws.machine.learning:bedrock_get_custom_model]{get_custom_model} \tab Get the properties associated with a Bedrock custom model that you have created\cr
+#'  \link[paws.machine.learning:bedrock_get_foundation_model]{get_foundation_model} \tab Get details about a Bedrock foundation model\cr
+#'  \link[paws.machine.learning:bedrock_get_model_customization_job]{get_model_customization_job} \tab Retrieves the properties associated with a model-customization job, including the status of the job\cr
+#'  \link[paws.machine.learning:bedrock_get_model_invocation_logging_configuration]{get_model_invocation_logging_configuration} \tab Get the current configuration values for model invocation logging\cr
+#'  \link[paws.machine.learning:bedrock_get_provisioned_model_throughput]{get_provisioned_model_throughput} \tab Get details for a provisioned throughput\cr
+#'  \link[paws.machine.learning:bedrock_list_custom_models]{list_custom_models} \tab Returns a list of the custom models that you have created with the CreateModelCustomizationJob operation\cr
+#'  \link[paws.machine.learning:bedrock_list_foundation_models]{list_foundation_models} \tab List of Bedrock foundation models that you can use\cr
+#'  \link[paws.machine.learning:bedrock_list_model_customization_jobs]{list_model_customization_jobs} \tab Returns a list of model customization jobs that you have submitted\cr
+#'  \link[paws.machine.learning:bedrock_list_provisioned_model_throughputs]{list_provisioned_model_throughputs} \tab List the provisioned capacities\cr
+#'  \link[paws.machine.learning:bedrock_list_tags_for_resource]{list_tags_for_resource} \tab List the tags associated with the specified resource\cr
+#'  \link[paws.machine.learning:bedrock_put_model_invocation_logging_configuration]{put_model_invocation_logging_configuration} \tab Set the configuration values for model invocation logging\cr
+#'  \link[paws.machine.learning:bedrock_stop_model_customization_job]{stop_model_customization_job} \tab Stops an active model customization job\cr
+#'  \link[paws.machine.learning:bedrock_tag_resource]{tag_resource} \tab Associate tags with a resource\cr
+#'  \link[paws.machine.learning:bedrock_untag_resource]{untag_resource} \tab Remove one or more tags from a resource\cr
+#'  \link[paws.machine.learning:bedrock_update_provisioned_model_throughput]{update_provisioned_model_throughput} \tab Update a provisioned throughput
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname bedrock
+#' @export
+bedrock <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::bedrock(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
+#' Amazon Bedrock Runtime
+#'
+#' @description
+#' Describes the API operations for running inference using Bedrock models.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- bedrockruntime(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- bedrockruntime()
+#' svc$invoke_model(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.machine.learning:bedrockruntime_invoke_model]{invoke_model} \tab Invokes the specified Bedrock model to run inference using the input provided in the request body\cr
+#'  \link[paws.machine.learning:bedrockruntime_invoke_model_with_response_stream]{invoke_model_with_response_stream} \tab Invoke the specified Bedrock model to run inference using the input provided
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname bedrockruntime
+#' @export
+bedrockruntime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.machine.learning::bedrockruntime(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon Athena
 #'
 #' @description
@@ -26081,13 +29138,13 @@ voiceid <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' is Amazon
 #' Athena](https://docs.aws.amazon.com/athena/latest/ug/what-is.html) in
 #' the *Amazon Athena User Guide*.
-#'
+#' 
 #' If you connect to Athena using the JDBC driver, use version 1.1.0 of the
 #' driver or later with the Amazon Athena API. Earlier version drivers do
 #' not support the API. For more information and to download the driver,
 #' see [Accessing Amazon Athena with
 #' JDBC](https://docs.aws.amazon.com/athena/latest/ug/connect-with-jdbc.html).
-#'
+#' 
 #' For code samples using the Amazon Web Services SDK for Java, see
 #' [Examples and Code
 #' Samples](https://docs.aws.amazon.com/athena/latest/ug/code-samples.html)
@@ -26105,9 +29162,9 @@ voiceid <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -26267,13 +29324,13 @@ athena <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @description
 #' Amazon CloudSearch Configuration Service
-#'
+#' 
 #' You use the Amazon CloudSearch configuration service to create,
 #' configure, and manage search domains. Configuration service requests are
 #' submitted using the AWS Query protocol. AWS Query requests are HTTP or
 #' HTTPS requests submitted via HTTP GET or POST with a query parameter
 #' named Action.
-#'
+#' 
 #' The endpoint for configuration service requests is region-specific:
 #' cloudsearch.*region*.amazonaws.com. For example,
 #' cloudsearch.us-east-1.amazonaws.com. For a current list of supported
@@ -26293,9 +29350,9 @@ athena <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -26414,7 +29471,7 @@ cloudsearch <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' @description
 #' You use the AmazonCloudSearch2013 API to upload documents to a search
 #' domain and search those documents.
-#'
+#' 
 #' The endpoints for submitting
 #' `upload_documents`,
 #' `search`, and
@@ -26423,7 +29480,7 @@ cloudsearch <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' configuration service `DescribeDomains` action. The domain endpoints are
 #' also displayed on the domain dashboard in the Amazon CloudSearch
 #' console. You submit suggest requests to the search endpoint.
-#'
+#' 
 #' For more information, see the [Amazon CloudSearch Developer
 #' Guide](https://docs.aws.amazon.com/cloudsearch/latest/developerguide/).
 #'
@@ -26439,9 +29496,9 @@ cloudsearch <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -26539,14 +29596,14 @@ cloudsearchdomain <- function(config = list(), credentials = list(), endpoint = 
 #' pipeline. AWS Data Pipeline handles the details of scheduling and
 #' ensuring that data dependencies are met so that your application can
 #' focus on processing the data.
-#'
+#' 
 #' AWS Data Pipeline provides a JAR implementation of a task runner called
 #' AWS Data Pipeline Task Runner. AWS Data Pipeline Task Runner provides
 #' logic for common data management scenarios, such as performing database
 #' queries and running data analysis using Amazon Elastic MapReduce (Amazon
 #' EMR). You can use AWS Data Pipeline Task Runner as your task runner, or
 #' you can write your own task runner to provide custom data management.
-#'
+#' 
 #' AWS Data Pipeline implements two main sets of functionality. Use the
 #' first set to create a pipeline and define data sources, schedules,
 #' dependencies, and the transforms to be performed on the data. Use the
@@ -26571,9 +29628,9 @@ cloudsearchdomain <- function(config = list(), credentials = list(), endpoint = 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -26680,21 +29737,233 @@ datapipeline <- function(config = list(), credentials = list(), endpoint = NULL,
   )
 }
 
+#' Amazon DataZone
+#'
+#' @description
+#' Amazon DataZone is a data management service that enables you to
+#' catalog, discover, govern, share, and analyze your data. With Amazon
+#' DataZone, you can share and access your data across accounts and
+#' supported regions. Amazon DataZone simplifies your experience across
+#' Amazon Web Services services, including, but not limited to, Amazon
+#' Redshift, Amazon Athena, Amazon Web Services Glue, and Amazon Web
+#' Services Lake Formation.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- datazone(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- datazone()
+#' svc$accept_predictions(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.analytics:datazone_accept_predictions]{accept_predictions} \tab Accepts automatically generated business-friendly metadata for your Amazon DataZone assets\cr
+#'  \link[paws.analytics:datazone_accept_subscription_request]{accept_subscription_request} \tab Accepts a subscription request to a specific asset\cr
+#'  \link[paws.analytics:datazone_cancel_subscription]{cancel_subscription} \tab Cancels the subscription to the specified asset\cr
+#'  \link[paws.analytics:datazone_create_asset]{create_asset} \tab Creates an asset in Amazon DataZone catalog\cr
+#'  \link[paws.analytics:datazone_create_asset_revision]{create_asset_revision} \tab Creates a revision of the asset\cr
+#'  \link[paws.analytics:datazone_create_asset_type]{create_asset_type} \tab Creates a custom asset type\cr
+#'  \link[paws.analytics:datazone_create_data_source]{create_data_source} \tab Creates an Amazon DataZone data source\cr
+#'  \link[paws.analytics:datazone_create_domain]{create_domain} \tab Creates an Amazon DataZone domain\cr
+#'  \link[paws.analytics:datazone_create_environment]{create_environment} \tab Create an Amazon DataZone environment\cr
+#'  \link[paws.analytics:datazone_create_environment_profile]{create_environment_profile} \tab Creates an Amazon DataZone environment profile\cr
+#'  \link[paws.analytics:datazone_create_form_type]{create_form_type} \tab Creates a metadata form type\cr
+#'  \link[paws.analytics:datazone_create_glossary]{create_glossary} \tab Creates an Amazon DataZone business glossary\cr
+#'  \link[paws.analytics:datazone_create_glossary_term]{create_glossary_term} \tab Creates a business glossary term\cr
+#'  \link[paws.analytics:datazone_create_group_profile]{create_group_profile} \tab Creates a group profile in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_create_listing_change_set]{create_listing_change_set} \tab Create listing change set\cr
+#'  \link[paws.analytics:datazone_create_project]{create_project} \tab Creates an Amazon DataZone project\cr
+#'  \link[paws.analytics:datazone_create_project_membership]{create_project_membership} \tab Creates a project membership in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_create_subscription_grant]{create_subscription_grant} \tab Creates a subsscription grant in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_create_subscription_request]{create_subscription_request} \tab Creates a subscription request in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_create_subscription_target]{create_subscription_target} \tab Creates a subscription target in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_create_user_profile]{create_user_profile} \tab Creates a user profile in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_delete_asset]{delete_asset} \tab Delets an asset in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_delete_asset_type]{delete_asset_type} \tab Deletes an asset type in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_delete_data_source]{delete_data_source} \tab Deletes a data source in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_delete_domain]{delete_domain} \tab Deletes a Amazon DataZone domain\cr
+#'  \link[paws.analytics:datazone_delete_environment]{delete_environment} \tab Deletes an environment in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_delete_environment_blueprint_configuration]{delete_environment_blueprint_configuration} \tab Deletes the blueprint configuration in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_delete_environment_profile]{delete_environment_profile} \tab Deletes an environment profile in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_delete_form_type]{delete_form_type} \tab Delets and metadata form type in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_delete_glossary]{delete_glossary} \tab Deletes a business glossary in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_delete_glossary_term]{delete_glossary_term} \tab Deletes a business glossary term in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_delete_listing]{delete_listing} \tab Delete listing\cr
+#'  \link[paws.analytics:datazone_delete_project]{delete_project} \tab Deletes a project in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_delete_project_membership]{delete_project_membership} \tab Deletes project membership in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_delete_subscription_grant]{delete_subscription_grant} \tab Deletes and subscription grant in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_delete_subscription_request]{delete_subscription_request} \tab Deletes a subscription request in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_delete_subscription_target]{delete_subscription_target} \tab Deletes a subscription target in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_get_asset]{get_asset} \tab Gets an Amazon DataZone asset\cr
+#'  \link[paws.analytics:datazone_get_asset_type]{get_asset_type} \tab Gets an Amazon DataZone asset type\cr
+#'  \link[paws.analytics:datazone_get_data_source]{get_data_source} \tab Gets an Amazon DataZone data source\cr
+#'  \link[paws.analytics:datazone_get_data_source_run]{get_data_source_run} \tab Gets an Amazon DataZone data source run\cr
+#'  \link[paws.analytics:datazone_get_domain]{get_domain} \tab Gets an Amazon DataZone domain\cr
+#'  \link[paws.analytics:datazone_get_environment]{get_environment} \tab Gets an Amazon DataZone environment\cr
+#'  \link[paws.analytics:datazone_get_environment_blueprint]{get_environment_blueprint} \tab Gets an Amazon DataZone blueprint\cr
+#'  \link[paws.analytics:datazone_get_environment_blueprint_configuration]{get_environment_blueprint_configuration} \tab Gets the blueprint configuration in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_get_environment_profile]{get_environment_profile} \tab Gets an evinronment profile in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_get_form_type]{get_form_type} \tab Gets a metadata form type in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_get_glossary]{get_glossary} \tab Gets a business glossary in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_get_glossary_term]{get_glossary_term} \tab Gets a business glossary term in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_get_group_profile]{get_group_profile} \tab Gets a group profile in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_get_iam_portal_login_url]{get_iam_portal_login_url} \tab Gets the data portal URL for the specified Amazon DataZone domain\cr
+#'  \link[paws.analytics:datazone_get_listing]{get_listing} \tab Get listing\cr
+#'  \link[paws.analytics:datazone_get_project]{get_project} \tab Gets a project in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_get_subscription]{get_subscription} \tab Gets a subscription in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_get_subscription_grant]{get_subscription_grant} \tab Gets the subscription grant in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_get_subscription_request_details]{get_subscription_request_details} \tab Gets the details of the specified subscription request\cr
+#'  \link[paws.analytics:datazone_get_subscription_target]{get_subscription_target} \tab Gets the subscription target in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_get_user_profile]{get_user_profile} \tab Gets a user profile in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_list_asset_revisions]{list_asset_revisions} \tab Lists the revisions for the asset\cr
+#'  \link[paws.analytics:datazone_list_data_source_run_activities]{list_data_source_run_activities} \tab Lists data source run activities\cr
+#'  \link[paws.analytics:datazone_list_data_source_runs]{list_data_source_runs} \tab Lists data source runs in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_list_data_sources]{list_data_sources} \tab Lists data sources in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_list_domains]{list_domains} \tab Lists Amazon DataZone domains\cr
+#'  \link[paws.analytics:datazone_list_environment_blueprint_configurations]{list_environment_blueprint_configurations} \tab Lists blueprint configurations for a Amazon DataZone environment\cr
+#'  \link[paws.analytics:datazone_list_environment_blueprints]{list_environment_blueprints} \tab Lists blueprints in an Amazon DataZone environment\cr
+#'  \link[paws.analytics:datazone_list_environment_profiles]{list_environment_profiles} \tab Lists Amazon DataZone environment profiles\cr
+#'  \link[paws.analytics:datazone_list_environments]{list_environments} \tab Lists Amazon DataZone environments\cr
+#'  \link[paws.analytics:datazone_list_notifications]{list_notifications} \tab Lists all Amazon DataZone notifications\cr
+#'  \link[paws.analytics:datazone_list_project_memberships]{list_project_memberships} \tab Lists all members of the specified project\cr
+#'  \link[paws.analytics:datazone_list_projects]{list_projects} \tab Lists Amazon DataZone projects\cr
+#'  \link[paws.analytics:datazone_list_subscription_grants]{list_subscription_grants} \tab Lists subscription grants\cr
+#'  \link[paws.analytics:datazone_list_subscription_requests]{list_subscription_requests} \tab Lists Amazon DataZone subscription requests\cr
+#'  \link[paws.analytics:datazone_list_subscriptions]{list_subscriptions} \tab Lists subscriptions in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_list_subscription_targets]{list_subscription_targets} \tab Lists subscription targets in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for the specified resource in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_put_environment_blueprint_configuration]{put_environment_blueprint_configuration} \tab Writes the configuration for the specified environment blueprint in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_reject_predictions]{reject_predictions} \tab Rejects automatically generated business-friendly metadata for your Amazon DataZone assets\cr
+#'  \link[paws.analytics:datazone_reject_subscription_request]{reject_subscription_request} \tab Rejects the specified subscription request\cr
+#'  \link[paws.analytics:datazone_revoke_subscription]{revoke_subscription} \tab Revokes a specified subscription in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_search]{search} \tab Searches for assets in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_search_group_profiles]{search_group_profiles} \tab Searches group profiles in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_search_listings]{search_listings} \tab Searches listings in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_search_types]{search_types} \tab Searches for types in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_search_user_profiles]{search_user_profiles} \tab Searches user profiles in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_start_data_source_run]{start_data_source_run} \tab Start the run of the specified data source in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_tag_resource]{tag_resource} \tab Tags a resource in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_untag_resource]{untag_resource} \tab Untags a resource in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_update_data_source]{update_data_source} \tab Updates the specified data source in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_update_domain]{update_domain} \tab Updates a Amazon DataZone domain\cr
+#'  \link[paws.analytics:datazone_update_environment]{update_environment} \tab Updates the specified environment in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_update_environment_profile]{update_environment_profile} \tab Updates the specified environment profile in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_update_glossary]{update_glossary} \tab Updates the business glossary in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_update_glossary_term]{update_glossary_term} \tab Updates a business glossary term in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_update_group_profile]{update_group_profile} \tab Updates the specified group profile in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_update_project]{update_project} \tab Updates the specified project in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_update_subscription_grant_status]{update_subscription_grant_status} \tab Updates the status of the specified subscription grant status in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_update_subscription_request]{update_subscription_request} \tab Updates a specified subscription request in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_update_subscription_target]{update_subscription_target} \tab Updates the specified subscription target in Amazon DataZone\cr
+#'  \link[paws.analytics:datazone_update_user_profile]{update_user_profile} \tab Updates the specified user profile in Amazon DataZone
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname datazone
+#' @export
+datazone <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::datazone(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon Elasticsearch Service
 #'
 #' @description
 #' Amazon Elasticsearch Configuration Service
-#'
+#' 
 #' Use the Amazon Elasticsearch Configuration API to create, configure, and
 #' manage Elasticsearch domains.
-#'
+#' 
 #' For sample code that uses the Configuration API, see the [Amazon
 #' Elasticsearch Service Developer
 #' Guide](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/configuration-samples.html).
 #' The guide also contains [sample code for sending signed HTTP requests to
 #' the Elasticsearch
 #' APIs](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/).
-#'
+#' 
 #' The endpoint for configuration service requests is region-specific:
 #' es.*region*.amazonaws.com. For example, es.us-east-1.amazonaws.com. For
 #' a current list of supported regions and endpoints, see <a
@@ -26713,9 +29982,9 @@ datapipeline <- function(config = list(), credentials = list(), endpoint = NULL,
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -26874,9 +30143,9 @@ elasticsearchservice <- function(config = list(), credentials = list(), endpoint
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -27018,11 +30287,161 @@ emr <- function(config = list(), credentials = list(), endpoint = NULL, region =
   )
 }
 
+#' AWS EntityResolution
+#'
+#' @description
+#' Welcome to the *Entity Resolution API Reference*.
+#' 
+#' Entity Resolution is an Amazon Web Services service that provides
+#' pre-configured entity resolution capabilities that enable developers and
+#' analysts at advertising and marketing companies to build an accurate and
+#' complete view of their consumers.
+#' 
+#' With Entity Resolution, you can match source records containing consumer
+#' identifiers, such as name, email address, and phone number. This is true
+#' even when these records have incomplete or conflicting identifiers. For
+#' example, Entity Resolution can effectively match a source record from a
+#' customer relationship management (CRM) system with a source record from
+#' a marketing system containing campaign information.
+#' 
+#' To learn more about Entity Resolution concepts, procedures, and best
+#' practices, see the [Entity Resolution User
+#' Guide](https://docs.aws.amazon.com/entityresolution/latest/userguide/what-is-service.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- entityresolution(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- entityresolution()
+#' svc$create_id_mapping_workflow(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.analytics:entityresolution_create_id_mapping_workflow]{create_id_mapping_workflow} \tab Creates an IdMappingWorkflow object which stores the configuration of the data processing job to be run\cr
+#'  \link[paws.analytics:entityresolution_create_matching_workflow]{create_matching_workflow} \tab Creates a MatchingWorkflow object which stores the configuration of the data processing job to be run\cr
+#'  \link[paws.analytics:entityresolution_create_schema_mapping]{create_schema_mapping} \tab Creates a schema mapping, which defines the schema of the input customer records table\cr
+#'  \link[paws.analytics:entityresolution_delete_id_mapping_workflow]{delete_id_mapping_workflow} \tab Deletes the IdMappingWorkflow with a given name\cr
+#'  \link[paws.analytics:entityresolution_delete_matching_workflow]{delete_matching_workflow} \tab Deletes the MatchingWorkflow with a given name\cr
+#'  \link[paws.analytics:entityresolution_delete_schema_mapping]{delete_schema_mapping} \tab Deletes the SchemaMapping with a given name\cr
+#'  \link[paws.analytics:entityresolution_get_id_mapping_job]{get_id_mapping_job} \tab Gets the status, metrics, and errors (if there are any) that are associated with a job\cr
+#'  \link[paws.analytics:entityresolution_get_id_mapping_workflow]{get_id_mapping_workflow} \tab Returns the IdMappingWorkflow with a given name, if it exists\cr
+#'  \link[paws.analytics:entityresolution_get_match_id]{get_match_id} \tab Returns the corresponding Match ID of a customer record if the record has been processed\cr
+#'  \link[paws.analytics:entityresolution_get_matching_job]{get_matching_job} \tab Gets the status, metrics, and errors (if there are any) that are associated with a job\cr
+#'  \link[paws.analytics:entityresolution_get_matching_workflow]{get_matching_workflow} \tab Returns the MatchingWorkflow with a given name, if it exists\cr
+#'  \link[paws.analytics:entityresolution_get_provider_service]{get_provider_service} \tab Returns the ProviderService of a given name\cr
+#'  \link[paws.analytics:entityresolution_get_schema_mapping]{get_schema_mapping} \tab Returns the SchemaMapping of a given name\cr
+#'  \link[paws.analytics:entityresolution_list_id_mapping_jobs]{list_id_mapping_jobs} \tab Lists all ID mapping jobs for a given workflow\cr
+#'  \link[paws.analytics:entityresolution_list_id_mapping_workflows]{list_id_mapping_workflows} \tab Returns a list of all the IdMappingWorkflows that have been created for an Amazon Web Services account\cr
+#'  \link[paws.analytics:entityresolution_list_matching_jobs]{list_matching_jobs} \tab Lists all jobs for a given workflow\cr
+#'  \link[paws.analytics:entityresolution_list_matching_workflows]{list_matching_workflows} \tab Returns a list of all the MatchingWorkflows that have been created for an Amazon Web Services account\cr
+#'  \link[paws.analytics:entityresolution_list_provider_services]{list_provider_services} \tab Returns a list of all the ProviderServices that are available in this Amazon Web Services Region\cr
+#'  \link[paws.analytics:entityresolution_list_schema_mappings]{list_schema_mappings} \tab Returns a list of all the SchemaMappings that have been created for an Amazon Web Services account\cr
+#'  \link[paws.analytics:entityresolution_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with an Entity Resolution resource\cr
+#'  \link[paws.analytics:entityresolution_start_id_mapping_job]{start_id_mapping_job} \tab Starts the IdMappingJob of a workflow\cr
+#'  \link[paws.analytics:entityresolution_start_matching_job]{start_matching_job} \tab Starts the MatchingJob of a workflow\cr
+#'  \link[paws.analytics:entityresolution_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified Entity Resolution resource\cr
+#'  \link[paws.analytics:entityresolution_untag_resource]{untag_resource} \tab Removes one or more tags from the specified Entity Resolution resource\cr
+#'  \link[paws.analytics:entityresolution_update_id_mapping_workflow]{update_id_mapping_workflow} \tab Updates an existing IdMappingWorkflow\cr
+#'  \link[paws.analytics:entityresolution_update_matching_workflow]{update_matching_workflow} \tab Updates an existing MatchingWorkflow\cr
+#'  \link[paws.analytics:entityresolution_update_schema_mapping]{update_schema_mapping} \tab Updates a schema mapping
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname entityresolution
+#' @export
+entityresolution <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::entityresolution(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon Kinesis Firehose
 #'
 #' @description
 #' Amazon Kinesis Data Firehose API Reference
-#'
+#' 
 #' Amazon Kinesis Data Firehose is a fully managed service that delivers
 #' real-time streaming data to destinations such as Amazon Simple Storage
 #' Service (Amazon S3), Amazon OpenSearch Service, Amazon Redshift, Splunk,
@@ -27040,9 +30459,9 @@ emr <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -27146,7 +30565,7 @@ firehose <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'
 #' @description
 #' Glue
-#'
+#' 
 #' Defines the public endpoint for the Glue service.
 #'
 #' @param
@@ -27161,9 +30580,9 @@ firehose <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -27474,9 +30893,9 @@ glue <- function(config = list(), credentials = list(), endpoint = NULL, region 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -27627,9 +31046,9 @@ gluedatabrew <- function(config = list(), credentials = list(), endpoint = NULL,
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -27734,61 +31153,61 @@ healthlake <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @description
 #' **Introduction**
-#'
+#' 
 #' The Amazon Interactive Video Service (IVS) API is REST compatible, using
 #' a standard HTTP API and an Amazon Web Services EventBridge event stream
 #' for responses. JSON is used for both requests and responses, including
 #' errors.
-#'
+#' 
 #' The API is an Amazon Web Services regional service. For a list of
 #' supported regions and Amazon IVS HTTPS service endpoints, see the
 #' [Amazon IVS
 #' page](https://docs.aws.amazon.com/general/latest/gr/ivs.html) in the
 #' *Amazon Web Services General Reference*.
-#'
+#' 
 #' *All API request parameters and URLs are case sensitive. *
-#'
+#' 
 #' For a summary of notable documentation changes in each release, see
 #' [Document
 #' History](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/doc-history.html).
-#'
+#' 
 #' **Allowed Header Values**
-#'
+#' 
 #' -   ` Accept: ` application/json
-#'
+#' 
 #' -   ` Accept-Encoding: ` gzip, deflate
-#'
+#' 
 #' -   ` Content-Type: `application/json
-#'
+#' 
 #' **Resources**
-#'
+#' 
 #' The following resources contain information about your IVS live stream
 #' (see [Getting Started with Amazon
 #' IVS](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/getting-started.html)):
-#'
+#' 
 #' -   **Channel** — Stores configuration data related to your live stream.
 #'     You first create a channel and then use the channel’s stream key to
 #'     start your live stream. See the Channel endpoints for more
 #'     information.
-#'
+#' 
 #' -   **Stream key** — An identifier assigned by Amazon IVS when you
 #'     create a channel, which is then used to authorize streaming. See the
 #'     StreamKey endpoints for more information. *Treat the stream key like
 #'     a secret, since it allows anyone to stream to the channel.*
-#'
+#' 
 #' -   **Playback key pair** — Video playback may be restricted using
 #'     playback-authorization tokens, which use public-key encryption. A
 #'     playback key pair is the public-private pair of keys used to sign
 #'     and validate the playback-authorization token. See the
 #'     PlaybackKeyPair endpoints for more information.
-#'
+#' 
 #' -   **Recording configuration** — Stores configuration related to
 #'     recording a live stream and where to store the recorded content.
 #'     Multiple channels can reference the same recording configuration.
 #'     See the Recording Configuration endpoints for more information.
-#'
+#' 
 #' **Tagging**
-#'
+#' 
 #' A *tag* is a metadata label that you assign to an Amazon Web Services
 #' resource. A tag comprises a *key* and a *value*, both set by you. For
 #' example, you might set a tag as `topic:nature` to label a particular
@@ -27797,201 +31216,201 @@ healthlake <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' for more information, including restrictions that apply to tags and "Tag
 #' naming limits and requirements"; Amazon IVS has no service-specific
 #' constraints beyond what is documented there.
-#'
+#' 
 #' Tags can help you identify and organize your Amazon Web Services
 #' resources. For example, you can use the same tag for different resources
 #' to indicate that they are related. You can also use tags to manage
 #' access (see [Access
 #' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)).
-#'
+#' 
 #' The Amazon IVS API has these tag-related endpoints:
 #' `tag_resource`,
 #' `untag_resource`, and
 #' `list_tags_for_resource`. The following
 #' resources support tagging: Channels, Stream Keys, Playback Key Pairs,
 #' and Recording Configurations.
-#'
+#' 
 #' At most 50 tags can be applied to a resource.
-#'
+#' 
 #' **Authentication versus Authorization**
-#'
+#' 
 #' Note the differences between these concepts:
-#'
+#' 
 #' -   *Authentication* is about verifying identity. You need to be
 #'     authenticated to sign Amazon IVS API requests.
-#'
+#' 
 #' -   *Authorization* is about granting permissions. Your IAM roles need
 #'     to have permissions for Amazon IVS API requests. In addition,
 #'     authorization is needed to view [Amazon IVS private
 #'     channels](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html).
 #'     (Private channels are channels that are enabled for "playback
 #'     authorization.")
-#'
+#' 
 #' **Authentication**
-#'
+#' 
 #' All Amazon IVS API requests must be authenticated with a signature. The
 #' Amazon Web Services Command-Line Interface (CLI) and Amazon IVS Player
 #' SDKs take care of signing the underlying API calls for you. However, if
 #' your application calls the Amazon IVS API directly, it’s your
 #' responsibility to sign the requests.
-#'
+#' 
 #' You generate a signature using valid Amazon Web Services credentials
 #' that have permission to perform the requested action. For example, you
 #' must sign PutMetadata requests with a signature generated from a user
 #' account that has the `ivs:PutMetadata` permission.
-#'
+#' 
 #' For more information:
-#'
+#' 
 #' -   Authentication and generating signatures — See [Authenticating
 #'     Requests (Amazon Web Services Signature Version
 #'     4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
 #'     in the *Amazon Web Services General Reference*.
-#'
+#' 
 #' -   Managing Amazon IVS permissions — See [Identity and Access
 #'     Management](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/security-iam.html)
 #'     on the Security page of the *Amazon IVS User Guide*.
-#'
+#' 
 #' **Amazon Resource Names (ARNs)**
-#'
+#' 
 #' ARNs uniquely identify AWS resources. An ARN is required when you need
 #' to specify a resource unambiguously across all of AWS, such as in IAM
 #' policies and API calls. For more information, see [Amazon Resource
 #' Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
-#'
+#' 
 #' **Channel Endpoints**
-#'
+#' 
 #' -   `create_channel` — Creates a new channel and
 #'     an associated stream key to start streaming.
-#'
+#' 
 #' -   `get_channel` — Gets the channel configuration
 #'     for the specified channel ARN.
-#'
+#' 
 #' -   `batch_get_channel` — Performs
 #'     `get_channel` on multiple ARNs simultaneously.
-#'
+#' 
 #' -   `list_channels` — Gets summary information
 #'     about all channels in your account, in the Amazon Web Services
 #'     region where the API request is processed. This list can be filtered
 #'     to match a specified name or recording-configuration ARN. Filters
 #'     are mutually exclusive and cannot be used together. If you try to
 #'     use both filters, you will get an error (409 Conflict Exception).
-#'
+#' 
 #' -   `update_channel` — Updates a channel's
 #'     configuration. This does not affect an ongoing stream of this
 #'     channel. You must stop and restart the stream for the changes to
 #'     take effect.
-#'
+#' 
 #' -   `delete_channel` — Deletes the specified
 #'     channel.
-#'
+#' 
 #' **StreamKey Endpoints**
-#'
+#' 
 #' -   `create_stream_key` — Creates a stream key,
 #'     used to initiate a stream, for the specified channel ARN.
-#'
+#' 
 #' -   `get_stream_key` — Gets stream key information
 #'     for the specified ARN.
-#'
+#' 
 #' -   `batch_get_stream_key` — Performs
 #'     `get_stream_key` on multiple ARNs
 #'     simultaneously.
-#'
+#' 
 #' -   `list_stream_keys` — Gets summary
 #'     information about stream keys for the specified channel.
-#'
+#' 
 #' -   `delete_stream_key` — Deletes the stream
 #'     key for the specified ARN, so it can no longer be used to stream.
-#'
+#' 
 #' **Stream Endpoints**
-#'
+#' 
 #' -   `get_stream` — Gets information about the active
 #'     (live) stream on a specified channel.
-#'
+#' 
 #' -   `get_stream_session` — Gets metadata on a
 #'     specified stream.
-#'
+#' 
 #' -   `list_streams` — Gets summary information about
 #'     live streams in your account, in the Amazon Web Services region
 #'     where the API request is processed.
-#'
+#' 
 #' -   `list_stream_sessions` — Gets a summary
 #'     of current and previous streams for a specified channel in your
 #'     account, in the AWS region where the API request is processed.
-#'
+#' 
 #' -   `stop_stream` — Disconnects the incoming RTMPS
 #'     stream for the specified channel. Can be used in conjunction with
 #'     `delete_stream_key` to prevent further
 #'     streaming to a channel.
-#'
+#' 
 #' -   `put_metadata` — Inserts metadata into the
 #'     active stream of the specified channel. At most 5 requests per
 #'     second per channel are allowed, each with a maximum 1 KB payload.
 #'     (If 5 TPS is not sufficient for your needs, we recommend batching
 #'     your data into a single PutMetadata call.) At most 155 requests per
 #'     second per account are allowed.
-#'
+#' 
 #' **Private Channel Endpoints**
-#'
+#' 
 #' For more information, see [Setting Up Private
 #' Channels](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/private-channels.html)
 #' in the *Amazon IVS User Guide*.
-#'
+#' 
 #' -   `import_playback_key_pair` — Imports
 #'     the public portion of a new key pair and returns its `arn` and
 #'     `fingerprint`. The `privateKey` can then be used to generate viewer
 #'     authorization tokens, to grant viewers access to private channels
 #'     (channels enabled for playback authorization).
-#'
+#' 
 #' -   `get_playback_key_pair` — Gets a
 #'     specified playback authorization key pair and returns the `arn` and
 #'     `fingerprint`. The `privateKey` held by the caller can be used to
 #'     generate viewer authorization tokens, to grant viewers access to
 #'     private channels.
-#'
+#' 
 #' -   `list_playback_key_pairs` — Gets
 #'     summary information about playback key pairs.
-#'
+#' 
 #' -   `delete_playback_key_pair` — Deletes
 #'     a specified authorization key pair. This invalidates future viewer
 #'     tokens generated using the key pair’s `privateKey`.
-#'
+#' 
 #' -   `start_viewer_session_revocation`
 #'     — Starts the process of revoking the viewer session associated with
 #'     a specified channel ARN and viewer ID. Optionally, you can provide a
 #'     version to revoke viewer sessions less than and including that
 #'     version.
-#'
+#' 
 #' -   `batch_start_viewer_session_revocation`
 #'     — Performs
 #'     `start_viewer_session_revocation`
 #'     on multiple channel ARN and viewer ID pairs simultaneously.
-#'
+#' 
 #' **RecordingConfiguration Endpoints**
-#'
+#' 
 #' -   `create_recording_configuration`
 #'     — Creates a new recording configuration, used to enable recording to
 #'     Amazon S3.
-#'
+#' 
 #' -   `get_recording_configuration` —
 #'     Gets the recording-configuration metadata for the specified ARN.
-#'
+#' 
 #' -   `list_recording_configurations`
 #'     — Gets summary information about all recording configurations in
 #'     your account, in the Amazon Web Services region where the API
 #'     request is processed.
-#'
+#' 
 #' -   `delete_recording_configuration`
 #'     — Deletes the recording configuration for the specified ARN.
-#'
+#' 
 #' **Amazon Web Services Tags Endpoints**
-#'
+#' 
 #' -   `tag_resource` — Adds or updates tags for the
 #'     Amazon Web Services resource with the specified ARN.
-#'
+#' 
 #' -   `untag_resource` — Removes tags from the
 #'     resource with the specified ARN.
-#'
+#' 
 #' -   `list_tags_for_resource` — Gets
 #'     information about Amazon Web Services tags for the specified ARN.
 #'
@@ -28007,9 +31426,9 @@ healthlake <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -28127,6 +31546,233 @@ ivs <- function(config = list(), credentials = list(), endpoint = NULL, region =
   )
 }
 
+#' Amazon Interactive Video Service RealTime
+#'
+#' @description
+#' **Introduction**
+#' 
+#' The Amazon Interactive Video Service (IVS) real-time API is REST
+#' compatible, using a standard HTTP API and an AWS EventBridge event
+#' stream for responses. JSON is used for both requests and responses,
+#' including errors.
+#' 
+#' Terminology:
+#' 
+#' -   A *stage* is a virtual space where participants can exchange video
+#'     in real time.
+#' 
+#' -   A *participant token* is a token that authenticates a participant
+#'     when they join a stage.
+#' 
+#' -   A *participant object* represents participants (people) in the stage
+#'     and contains information about them. When a token is created, it
+#'     includes a participant ID; when a participant uses that token to
+#'     join a stage, the participant is associated with that participant ID
+#'     There is a 1:1 mapping between participant tokens and participants.
+#' 
+#' **Resources**
+#' 
+#' The following resources contain information about your IVS live stream
+#' (see [Getting Started with Amazon IVS Real-Time
+#' Streaming](https://docs.aws.amazon.com/ivs/latest/RealTimeUserGuide/getting-started.html)):
+#' 
+#' -   **Stage** — A stage is a virtual space where participants can
+#'     exchange video in real time.
+#' 
+#' **Tagging**
+#' 
+#' A *tag* is a metadata label that you assign to an AWS resource. A tag
+#' comprises a *key* and a *value*, both set by you. For example, you might
+#' set a tag as `topic:nature` to label a particular video category. See
+#' [Tagging AWS
+#' Resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#' for more information, including restrictions that apply to tags and "Tag
+#' naming limits and requirements"; Amazon IVS stages has no
+#' service-specific constraints beyond what is documented there.
+#' 
+#' Tags can help you identify and organize your AWS resources. For example,
+#' you can use the same tag for different resources to indicate that they
+#' are related. You can also use tags to manage access (see [Access
+#' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)).
+#' 
+#' The Amazon IVS real-time API has these tag-related endpoints:
+#' `tag_resource`,
+#' `untag_resource`, and
+#' `list_tags_for_resource`. The
+#' following resource supports tagging: Stage.
+#' 
+#' At most 50 tags can be applied to a resource.
+#' 
+#' **Stages Endpoints**
+#' 
+#' -   `create_participant_token` —
+#'     Creates an additional token for a specified stage. This can be done
+#'     after stage creation or when tokens expire.
+#' 
+#' -   `create_stage` — Creates a new stage
+#'     (and optionally participant tokens).
+#' 
+#' -   `delete_stage` — Shuts down and deletes
+#'     the specified stage (disconnecting all participants).
+#' 
+#' -   `disconnect_participant` —
+#'     Disconnects a specified participant and revokes the participant
+#'     permanently from a specified stage.
+#' 
+#' -   `get_participant` — Gets information
+#'     about the specified participant token.
+#' 
+#' -   `get_stage` — Gets information for the
+#'     specified stage.
+#' 
+#' -   `get_stage_session` — Gets
+#'     information for the specified stage session.
+#' 
+#' -   `list_participant_events` —
+#'     Lists events for a specified participant that occurred during a
+#'     specified stage session.
+#' 
+#' -   `list_participants` — Lists all
+#'     participants in a specified stage session.
+#' 
+#' -   `list_stages` — Gets summary information
+#'     about all stages in your account, in the AWS region where the API
+#'     request is processed.
+#' 
+#' -   `list_stage_sessions` — Gets all
+#'     sessions for a specified stage.
+#' 
+#' -   `update_stage` — Updates a stage’s
+#'     configuration.
+#' 
+#' **Tags Endpoints**
+#' 
+#' -   `list_tags_for_resource` —
+#'     Gets information about AWS tags for the specified ARN.
+#' 
+#' -   `tag_resource` — Adds or updates tags
+#'     for the AWS resource with the specified ARN.
+#' 
+#' -   `untag_resource` — Removes tags from
+#'     the resource with the specified ARN.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- ivsrealtime(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- ivsrealtime()
+#' svc$create_participant_token(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.analytics:ivsrealtime_create_participant_token]{create_participant_token} \tab Creates an additional token for a specified stage\cr
+#'  \link[paws.analytics:ivsrealtime_create_stage]{create_stage} \tab Creates a new stage (and optionally participant tokens)\cr
+#'  \link[paws.analytics:ivsrealtime_delete_stage]{delete_stage} \tab Shuts down and deletes the specified stage (disconnecting all participants)\cr
+#'  \link[paws.analytics:ivsrealtime_disconnect_participant]{disconnect_participant} \tab Disconnects a specified participant and revokes the participant permanently from a specified stage\cr
+#'  \link[paws.analytics:ivsrealtime_get_participant]{get_participant} \tab Gets information about the specified participant token\cr
+#'  \link[paws.analytics:ivsrealtime_get_stage]{get_stage} \tab Gets information for the specified stage\cr
+#'  \link[paws.analytics:ivsrealtime_get_stage_session]{get_stage_session} \tab Gets information for the specified stage session\cr
+#'  \link[paws.analytics:ivsrealtime_list_participant_events]{list_participant_events} \tab Lists events for a specified participant that occurred during a specified stage session\cr
+#'  \link[paws.analytics:ivsrealtime_list_participants]{list_participants} \tab Lists all participants in a specified stage session\cr
+#'  \link[paws.analytics:ivsrealtime_list_stages]{list_stages} \tab Gets summary information about all stages in your account, in the AWS region where the API request is processed\cr
+#'  \link[paws.analytics:ivsrealtime_list_stage_sessions]{list_stage_sessions} \tab Gets all sessions for a specified stage\cr
+#'  \link[paws.analytics:ivsrealtime_list_tags_for_resource]{list_tags_for_resource} \tab Gets information about AWS tags for the specified ARN\cr
+#'  \link[paws.analytics:ivsrealtime_tag_resource]{tag_resource} \tab Adds or updates tags for the AWS resource with the specified ARN\cr
+#'  \link[paws.analytics:ivsrealtime_untag_resource]{untag_resource} \tab Removes tags from the resource with the specified ARN\cr
+#'  \link[paws.analytics:ivsrealtime_update_stage]{update_stage} \tab Updates a stage’s configuration
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname ivsrealtime
+#' @export
+ivsrealtime <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::ivsrealtime(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Managed Streaming for Kafka
 #'
 #' @description
@@ -28144,9 +31790,9 @@ ivs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -28220,10 +31866,12 @@ ivs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.analytics:kafka_create_cluster]{create_cluster} \tab Creates a new MSK cluster\cr
 #'  \link[paws.analytics:kafka_create_cluster_v2]{create_cluster_v2} \tab Creates a new MSK cluster\cr
 #'  \link[paws.analytics:kafka_create_configuration]{create_configuration} \tab Creates a new MSK configuration\cr
+#'  \link[paws.analytics:kafka_create_replicator]{create_replicator} \tab Creates the replicator\cr
 #'  \link[paws.analytics:kafka_create_vpc_connection]{create_vpc_connection} \tab Creates a new MSK VPC connection\cr
 #'  \link[paws.analytics:kafka_delete_cluster]{delete_cluster} \tab Deletes the MSK cluster specified by the Amazon Resource Name (ARN) in the request\cr
 #'  \link[paws.analytics:kafka_delete_cluster_policy]{delete_cluster_policy} \tab Deletes the MSK cluster policy specified by the Amazon Resource Name (ARN) in the request\cr
 #'  \link[paws.analytics:kafka_delete_configuration]{delete_configuration} \tab Deletes an MSK Configuration\cr
+#'  \link[paws.analytics:kafka_delete_replicator]{delete_replicator} \tab Deletes a replicator\cr
 #'  \link[paws.analytics:kafka_delete_vpc_connection]{delete_vpc_connection} \tab Deletes a MSK VPC connection\cr
 #'  \link[paws.analytics:kafka_describe_cluster]{describe_cluster} \tab Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request\cr
 #'  \link[paws.analytics:kafka_describe_cluster_operation]{describe_cluster_operation} \tab Returns a description of the cluster operation specified by the ARN\cr
@@ -28231,6 +31879,7 @@ ivs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.analytics:kafka_describe_cluster_v2]{describe_cluster_v2} \tab Returns a description of the MSK cluster whose Amazon Resource Name (ARN) is specified in the request\cr
 #'  \link[paws.analytics:kafka_describe_configuration]{describe_configuration} \tab Returns a description of this MSK configuration\cr
 #'  \link[paws.analytics:kafka_describe_configuration_revision]{describe_configuration_revision} \tab Returns a description of this revision of the configuration\cr
+#'  \link[paws.analytics:kafka_describe_replicator]{describe_replicator} \tab Describes a replicator\cr
 #'  \link[paws.analytics:kafka_describe_vpc_connection]{describe_vpc_connection} \tab Returns a description of this MSK VPC connection\cr
 #'  \link[paws.analytics:kafka_get_bootstrap_brokers]{get_bootstrap_brokers} \tab A list of brokers that a client application can use to bootstrap\cr
 #'  \link[paws.analytics:kafka_get_cluster_policy]{get_cluster_policy} \tab Get the MSK cluster policy specified by the Amazon Resource Name (ARN) in the request\cr
@@ -28244,6 +31893,7 @@ ivs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.analytics:kafka_list_configurations]{list_configurations} \tab Returns a list of all the MSK configurations in this Region\cr
 #'  \link[paws.analytics:kafka_list_kafka_versions]{list_kafka_versions} \tab Returns a list of Apache Kafka versions\cr
 #'  \link[paws.analytics:kafka_list_nodes]{list_nodes} \tab Returns a list of the broker nodes in the cluster\cr
+#'  \link[paws.analytics:kafka_list_replicators]{list_replicators} \tab Lists the replicators\cr
 #'  \link[paws.analytics:kafka_list_scram_secrets]{list_scram_secrets} \tab Returns a list of the Scram Secrets associated with an Amazon MSK cluster\cr
 #'  \link[paws.analytics:kafka_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of the tags associated with the specified resource\cr
 #'  \link[paws.analytics:kafka_list_vpc_connections]{list_vpc_connections} \tab Returns a list of all the VPC connections in this Region\cr
@@ -28260,6 +31910,7 @@ ivs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.analytics:kafka_update_configuration]{update_configuration} \tab Updates an MSK configuration\cr
 #'  \link[paws.analytics:kafka_update_connectivity]{update_connectivity} \tab Updates the cluster's connectivity configuration\cr
 #'  \link[paws.analytics:kafka_update_monitoring]{update_monitoring} \tab Updates the monitoring settings for the cluster\cr
+#'  \link[paws.analytics:kafka_update_replication_info]{update_replication_info} \tab Updates replication info of a replicator\cr
 #'  \link[paws.analytics:kafka_update_security]{update_security} \tab Updates the security settings for the cluster\cr
 #'  \link[paws.analytics:kafka_update_storage]{update_storage} \tab Updates cluster broker volume size (or) sets cluster storage mode to TIERED
 #' }
@@ -28283,7 +31934,7 @@ kafka <- function(config = list(), credentials = list(), endpoint = NULL, region
 
 #' Managed Streaming for Kafka Connect
 #'
-#'
+#' 
 #'
 #' @param
 #' config
@@ -28297,9 +31948,9 @@ kafka <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -28416,9 +32067,9 @@ kafkaconnect <- function(config = list(), credentials = list(), endpoint = NULL,
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -28572,11 +32223,128 @@ kendra <- function(config = list(), credentials = list(), endpoint = NULL, regio
   )
 }
 
+#' Amazon Kendra Intelligent Ranking
+#'
+#' @description
+#' Amazon Kendra Intelligent Ranking uses Amazon Kendra semantic search
+#' capabilities to intelligently re-rank a search service's results.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- kendraranking(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- kendraranking()
+#' svc$create_rescore_execution_plan(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.analytics:kendraranking_create_rescore_execution_plan]{create_rescore_execution_plan} \tab Creates a rescore execution plan\cr
+#'  \link[paws.analytics:kendraranking_delete_rescore_execution_plan]{delete_rescore_execution_plan} \tab Deletes a rescore execution plan\cr
+#'  \link[paws.analytics:kendraranking_describe_rescore_execution_plan]{describe_rescore_execution_plan} \tab Gets information about a rescore execution plan\cr
+#'  \link[paws.analytics:kendraranking_list_rescore_execution_plans]{list_rescore_execution_plans} \tab Lists your rescore execution plans\cr
+#'  \link[paws.analytics:kendraranking_list_tags_for_resource]{list_tags_for_resource} \tab Gets a list of tags associated with a specified resource\cr
+#'  \link[paws.analytics:kendraranking_rescore]{rescore} \tab Rescores or re-ranks search results from a search service such as OpenSearch (self managed)\cr
+#'  \link[paws.analytics:kendraranking_tag_resource]{tag_resource} \tab Adds a specified tag to a specified rescore execution plan\cr
+#'  \link[paws.analytics:kendraranking_untag_resource]{untag_resource} \tab Removes a tag from a rescore execution plan\cr
+#'  \link[paws.analytics:kendraranking_update_rescore_execution_plan]{update_rescore_execution_plan} \tab Updates a rescore execution plan
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname kendraranking
+#' @export
+kendraranking <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::kendraranking(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon Kinesis
 #'
 #' @description
 #' Amazon Kinesis Data Streams Service API Reference
-#'
+#' 
 #' Amazon Kinesis Data Streams is a managed service that scales elastically
 #' for real-time processing of streaming big data.
 #'
@@ -28592,9 +32360,9 @@ kendra <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -28714,12 +32482,12 @@ kinesis <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @description
 #' **Overview**
-#'
+#' 
 #' This documentation is for version 1 of the Amazon Kinesis Data Analytics
 #' API, which only supports SQL applications. Version 2 of the API supports
 #' SQL and Java applications. For more information about version 2, see
 #' Amazon Kinesis Data Analytics API V2 Documentation.
-#'
+#' 
 #' This is the *Amazon Kinesis Analytics v1 API Reference*. The Amazon
 #' Kinesis Analytics Developer Guide provides additional information.
 #'
@@ -28735,9 +32503,9 @@ kinesis <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -28866,9 +32634,9 @@ kinesisanalytics <- function(config = list(), credentials = list(), endpoint = N
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -29004,9 +32772,9 @@ kinesisanalyticsv2 <- function(config = list(), credentials = list(), endpoint =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -29138,7 +32906,7 @@ mturk <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' @description
 #' Use the Amazon OpenSearch Service configuration API to create,
 #' configure, and manage OpenSearch Service domains.
-#'
+#' 
 #' For sample code that uses the configuration API, see the [*Amazon
 #' OpenSearch Service Developer
 #' Guide*](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/)
@@ -29163,9 +32931,9 @@ mturk <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -29265,9 +33033,11 @@ mturk <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'  \link[paws.analytics:opensearchservice_describe_vpc_endpoints]{describe_vpc_endpoints} \tab Describes one or more Amazon OpenSearch Service-managed VPC endpoints\cr
 #'  \link[paws.analytics:opensearchservice_dissociate_package]{dissociate_package} \tab Removes a package from the specified Amazon OpenSearch Service domain\cr
 #'  \link[paws.analytics:opensearchservice_get_compatible_versions]{get_compatible_versions} \tab Returns a map of OpenSearch or Elasticsearch versions and the versions you can upgrade them to\cr
+#'  \link[paws.analytics:opensearchservice_get_domain_maintenance_status]{get_domain_maintenance_status} \tab The status of the maintenance action\cr
 #'  \link[paws.analytics:opensearchservice_get_package_version_history]{get_package_version_history} \tab Returns a list of Amazon OpenSearch Service package versions, along with their creation time, commit message, and plugin properties (if the package is a zip plugin package)\cr
 #'  \link[paws.analytics:opensearchservice_get_upgrade_history]{get_upgrade_history} \tab Retrieves the complete history of the last 10 upgrades performed on an Amazon OpenSearch Service domain\cr
 #'  \link[paws.analytics:opensearchservice_get_upgrade_status]{get_upgrade_status} \tab Returns the most recent status of the last upgrade or upgrade eligibility check performed on an Amazon OpenSearch Service domain\cr
+#'  \link[paws.analytics:opensearchservice_list_domain_maintenances]{list_domain_maintenances} \tab A list of maintenance actions for the domain\cr
 #'  \link[paws.analytics:opensearchservice_list_domain_names]{list_domain_names} \tab Returns the names of all Amazon OpenSearch Service domains owned by the current user in the active Region\cr
 #'  \link[paws.analytics:opensearchservice_list_domains_for_package]{list_domains_for_package} \tab Lists all Amazon OpenSearch Service domains associated with a given package\cr
 #'  \link[paws.analytics:opensearchservice_list_instance_type_details]{list_instance_type_details} \tab Lists all instance types and available features for a given OpenSearch or Elasticsearch version\cr
@@ -29282,6 +33052,7 @@ mturk <- function(config = list(), credentials = list(), endpoint = NULL, region
 #'  \link[paws.analytics:opensearchservice_reject_inbound_connection]{reject_inbound_connection} \tab Allows the remote Amazon OpenSearch Service domain owner to reject an inbound cross-cluster connection request\cr
 #'  \link[paws.analytics:opensearchservice_remove_tags]{remove_tags} \tab Removes the specified set of tags from an Amazon OpenSearch Service domain\cr
 #'  \link[paws.analytics:opensearchservice_revoke_vpc_endpoint_access]{revoke_vpc_endpoint_access} \tab Revokes access to an Amazon OpenSearch Service domain that was provided through an interface VPC endpoint\cr
+#'  \link[paws.analytics:opensearchservice_start_domain_maintenance]{start_domain_maintenance} \tab Starts the node maintenance process on the data node\cr
 #'  \link[paws.analytics:opensearchservice_start_service_software_update]{start_service_software_update} \tab Schedules a service software update for an Amazon OpenSearch Service domain\cr
 #'  \link[paws.analytics:opensearchservice_update_domain_config]{update_domain_config} \tab Modifies the cluster configuration of the specified Amazon OpenSearch Service domain\cr
 #'  \link[paws.analytics:opensearchservice_update_package]{update_package} \tab Updates a package for use with Amazon OpenSearch Service domains\cr
@@ -29307,11 +33078,292 @@ opensearchservice <- function(config = list(), credentials = list(), endpoint = 
   )
 }
 
+#' OpenSearch Service Serverless
+#'
+#' @description
+#' Use the Amazon OpenSearch Serverless API to create, configure, and
+#' manage OpenSearch Serverless collections and security policies.
+#' 
+#' OpenSearch Serverless is an on-demand, pre-provisioned serverless
+#' configuration for Amazon OpenSearch Service. OpenSearch Serverless
+#' removes the operational complexities of provisioning, configuring, and
+#' tuning your OpenSearch clusters. It enables you to easily search and
+#' analyze petabytes of data without having to worry about the underlying
+#' infrastructure and data management.
+#' 
+#' To learn more about OpenSearch Serverless, see [What is Amazon
+#' OpenSearch
+#' Serverless?](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/serverless-overview.html)
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- opensearchserviceserverless(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- opensearchserviceserverless()
+#' svc$batch_get_collection(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.analytics:opensearchserviceserverless_batch_get_collection]{batch_get_collection} \tab Returns attributes for one or more collections, including the collection endpoint and the OpenSearch Dashboards endpoint\cr
+#'  \link[paws.analytics:opensearchserviceserverless_batch_get_effective_lifecycle_policy]{batch_get_effective_lifecycle_policy} \tab Returns a list of successful and failed retrievals for the OpenSearch Serverless indexes\cr
+#'  \link[paws.analytics:opensearchserviceserverless_batch_get_lifecycle_policy]{batch_get_lifecycle_policy} \tab Returns one or more configured OpenSearch Serverless lifecycle policies\cr
+#'  \link[paws.analytics:opensearchserviceserverless_batch_get_vpc_endpoint]{batch_get_vpc_endpoint} \tab Returns attributes for one or more VPC endpoints associated with the current account\cr
+#'  \link[paws.analytics:opensearchserviceserverless_create_access_policy]{create_access_policy} \tab Creates a data access policy for OpenSearch Serverless\cr
+#'  \link[paws.analytics:opensearchserviceserverless_create_collection]{create_collection} \tab Creates a new OpenSearch Serverless collection\cr
+#'  \link[paws.analytics:opensearchserviceserverless_create_lifecycle_policy]{create_lifecycle_policy} \tab Creates a lifecyle policy to be applied to OpenSearch Serverless indexes\cr
+#'  \link[paws.analytics:opensearchserviceserverless_create_security_config]{create_security_config} \tab Specifies a security configuration for OpenSearch Serverless\cr
+#'  \link[paws.analytics:opensearchserviceserverless_create_security_policy]{create_security_policy} \tab Creates a security policy to be used by one or more OpenSearch Serverless collections\cr
+#'  \link[paws.analytics:opensearchserviceserverless_create_vpc_endpoint]{create_vpc_endpoint} \tab Creates an OpenSearch Serverless-managed interface VPC endpoint\cr
+#'  \link[paws.analytics:opensearchserviceserverless_delete_access_policy]{delete_access_policy} \tab Deletes an OpenSearch Serverless access policy\cr
+#'  \link[paws.analytics:opensearchserviceserverless_delete_collection]{delete_collection} \tab Deletes an OpenSearch Serverless collection\cr
+#'  \link[paws.analytics:opensearchserviceserverless_delete_lifecycle_policy]{delete_lifecycle_policy} \tab Deletes an OpenSearch Serverless lifecycle policy\cr
+#'  \link[paws.analytics:opensearchserviceserverless_delete_security_config]{delete_security_config} \tab Deletes a security configuration for OpenSearch Serverless\cr
+#'  \link[paws.analytics:opensearchserviceserverless_delete_security_policy]{delete_security_policy} \tab Deletes an OpenSearch Serverless security policy\cr
+#'  \link[paws.analytics:opensearchserviceserverless_delete_vpc_endpoint]{delete_vpc_endpoint} \tab Deletes an OpenSearch Serverless-managed interface endpoint\cr
+#'  \link[paws.analytics:opensearchserviceserverless_get_access_policy]{get_access_policy} \tab Returns an OpenSearch Serverless access policy\cr
+#'  \link[paws.analytics:opensearchserviceserverless_get_account_settings]{get_account_settings} \tab Returns account-level settings related to OpenSearch Serverless\cr
+#'  \link[paws.analytics:opensearchserviceserverless_get_policies_stats]{get_policies_stats} \tab Returns statistical information about your OpenSearch Serverless access policies, security configurations, and security policies\cr
+#'  \link[paws.analytics:opensearchserviceserverless_get_security_config]{get_security_config} \tab Returns information about an OpenSearch Serverless security configuration\cr
+#'  \link[paws.analytics:opensearchserviceserverless_get_security_policy]{get_security_policy} \tab Returns information about a configured OpenSearch Serverless security policy\cr
+#'  \link[paws.analytics:opensearchserviceserverless_list_access_policies]{list_access_policies} \tab Returns information about a list of OpenSearch Serverless access policies\cr
+#'  \link[paws.analytics:opensearchserviceserverless_list_collections]{list_collections} \tab Lists all OpenSearch Serverless collections\cr
+#'  \link[paws.analytics:opensearchserviceserverless_list_lifecycle_policies]{list_lifecycle_policies} \tab Returns a list of OpenSearch Serverless lifecycle policies\cr
+#'  \link[paws.analytics:opensearchserviceserverless_list_security_configs]{list_security_configs} \tab Returns information about configured OpenSearch Serverless security configurations\cr
+#'  \link[paws.analytics:opensearchserviceserverless_list_security_policies]{list_security_policies} \tab Returns information about configured OpenSearch Serverless security policies\cr
+#'  \link[paws.analytics:opensearchserviceserverless_list_tags_for_resource]{list_tags_for_resource} \tab Returns the tags for an OpenSearch Serverless resource\cr
+#'  \link[paws.analytics:opensearchserviceserverless_list_vpc_endpoints]{list_vpc_endpoints} \tab Returns the OpenSearch Serverless-managed interface VPC endpoints associated with the current account\cr
+#'  \link[paws.analytics:opensearchserviceserverless_tag_resource]{tag_resource} \tab Associates tags with an OpenSearch Serverless resource\cr
+#'  \link[paws.analytics:opensearchserviceserverless_untag_resource]{untag_resource} \tab Removes a tag or set of tags from an OpenSearch Serverless resource\cr
+#'  \link[paws.analytics:opensearchserviceserverless_update_access_policy]{update_access_policy} \tab Updates an OpenSearch Serverless access policy\cr
+#'  \link[paws.analytics:opensearchserviceserverless_update_account_settings]{update_account_settings} \tab Update the OpenSearch Serverless settings for the current Amazon Web Services account\cr
+#'  \link[paws.analytics:opensearchserviceserverless_update_collection]{update_collection} \tab Updates an OpenSearch Serverless collection\cr
+#'  \link[paws.analytics:opensearchserviceserverless_update_lifecycle_policy]{update_lifecycle_policy} \tab Updates an OpenSearch Serverless access policy\cr
+#'  \link[paws.analytics:opensearchserviceserverless_update_security_config]{update_security_config} \tab Updates a security configuration for OpenSearch Serverless\cr
+#'  \link[paws.analytics:opensearchserviceserverless_update_security_policy]{update_security_policy} \tab Updates an OpenSearch Serverless security policy\cr
+#'  \link[paws.analytics:opensearchserviceserverless_update_vpc_endpoint]{update_vpc_endpoint} \tab Updates an OpenSearch Serverless-managed interface endpoint
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname opensearchserviceserverless
+#' @export
+opensearchserviceserverless <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::opensearchserviceserverless(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
+#' Amazon OpenSearch Ingestion
+#'
+#' @description
+#' Use the Amazon OpenSearch Ingestion API to create and manage ingestion
+#' pipelines. OpenSearch Ingestion is a fully managed data collector that
+#' delivers real-time log and trace data to OpenSearch Service domains. For
+#' more information, see [Getting data into your cluster using OpenSearch
+#' Ingestion](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/ingestion.html).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- opensearchingestion(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- opensearchingestion()
+#' svc$create_pipeline(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.analytics:opensearchingestion_create_pipeline]{create_pipeline} \tab Creates an OpenSearch Ingestion pipeline\cr
+#'  \link[paws.analytics:opensearchingestion_delete_pipeline]{delete_pipeline} \tab Deletes an OpenSearch Ingestion pipeline\cr
+#'  \link[paws.analytics:opensearchingestion_get_pipeline]{get_pipeline} \tab Retrieves information about an OpenSearch Ingestion pipeline\cr
+#'  \link[paws.analytics:opensearchingestion_get_pipeline_blueprint]{get_pipeline_blueprint} \tab Retrieves information about a specific blueprint for OpenSearch Ingestion\cr
+#'  \link[paws.analytics:opensearchingestion_get_pipeline_change_progress]{get_pipeline_change_progress} \tab Returns progress information for the current change happening on an OpenSearch Ingestion pipeline\cr
+#'  \link[paws.analytics:opensearchingestion_list_pipeline_blueprints]{list_pipeline_blueprints} \tab Retrieves a list of all available blueprints for Data Prepper\cr
+#'  \link[paws.analytics:opensearchingestion_list_pipelines]{list_pipelines} \tab Lists all OpenSearch Ingestion pipelines in the current Amazon Web Services account and Region\cr
+#'  \link[paws.analytics:opensearchingestion_list_tags_for_resource]{list_tags_for_resource} \tab Lists all resource tags associated with an OpenSearch Ingestion pipeline\cr
+#'  \link[paws.analytics:opensearchingestion_start_pipeline]{start_pipeline} \tab Starts an OpenSearch Ingestion pipeline\cr
+#'  \link[paws.analytics:opensearchingestion_stop_pipeline]{stop_pipeline} \tab Stops an OpenSearch Ingestion pipeline\cr
+#'  \link[paws.analytics:opensearchingestion_tag_resource]{tag_resource} \tab Tags an OpenSearch Ingestion pipeline\cr
+#'  \link[paws.analytics:opensearchingestion_untag_resource]{untag_resource} \tab Removes one or more tags from an OpenSearch Ingestion pipeline\cr
+#'  \link[paws.analytics:opensearchingestion_update_pipeline]{update_pipeline} \tab Updates an OpenSearch Ingestion pipeline\cr
+#'  \link[paws.analytics:opensearchingestion_validate_pipeline]{validate_pipeline} \tab Checks whether an OpenSearch Ingestion pipeline configuration is valid prior to creation
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname opensearchingestion
+#' @export
+opensearchingestion <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.analytics::opensearchingestion(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon QuickSight
 #'
 #' @description
 #' Amazon QuickSight API Reference
-#'
+#' 
 #' Amazon QuickSight is a fully managed, serverless business intelligence
 #' service for the Amazon Web Services Cloud that makes it easy to extend
 #' data and insights to every user in your organization. This API reference
@@ -29330,9 +33382,9 @@ opensearchservice <- function(config = list(), credentials = list(), endpoint = 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -29598,7 +33650,7 @@ quicksight <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' Analyzer, see [Identity and Access Management Access
 #' Analyzer](https://docs.aws.amazon.com/IAM/latest/UserGuide/what-is-access-analyzer.html)
 #' in the **IAM User Guide**.
-#'
+#' 
 #' To start using IAM Access Analyzer, you first need to create an
 #' analyzer.
 #'
@@ -29614,9 +33666,9 @@ quicksight <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -29749,9 +33801,9 @@ accessanalyzer <- function(config = list(), credentials = list(), endpoint = NUL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -29852,7 +33904,7 @@ account <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @description
 #' Certificate Manager
-#'
+#' 
 #' You can use Certificate Manager (ACM) to manage SSL/TLS certificates for
 #' your Amazon Web Services-based websites and applications. For more
 #' information about using ACM, see the [Certificate Manager User
@@ -29870,9 +33922,9 @@ account <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -29982,13 +34034,13 @@ acm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' Reference*. It provides descriptions, syntax, and usage examples for
 #' each of the actions and data types involved in creating and managing a
 #' private certificate authority (CA) for your organization.
-#'
+#' 
 #' The documentation for each action shows the API request parameters and
 #' the JSON response. Alternatively, you can use one of the Amazon Web
 #' Services SDKs to access an API that is tailored to the programming
 #' language or platform that you prefer. For more information, see [Amazon
 #' Web Services SDKs](https://aws.amazon.com/developer/tools/#SDKs).
-#'
+#' 
 #' Each Amazon Web Services Private CA API operation has a quota that
 #' determines the number of times the operation can be called per second.
 #' Amazon Web Services Private CA throttles API requests at different rates
@@ -29999,7 +34051,7 @@ acm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' [ThrottlingException](https://docs.aws.amazon.com/privateca/latest/APIReference/CommonErrors.html)
 #' error. Amazon Web Services Private CA does not guarantee a minimum
 #' request rate for APIs.
-#'
+#' 
 #' To see an up-to-date list of your Amazon Web Services Private CA quotas,
 #' or to request a quota increase, log into your Amazon Web Services
 #' account and visit the Service Quotas console.
@@ -30016,9 +34068,9 @@ acm <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -30133,7 +34185,7 @@ acmpca <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #'
 #' @description
 #' Amazon Cloud Directory
-#'
+#' 
 #' Amazon Cloud Directory is a component of the AWS Directory Service that
 #' simplifies the development and management of cloud-scale web, mobile,
 #' and IoT applications. This guide describes the Cloud Directory
@@ -30156,9 +34208,9 @@ acmpca <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -30316,13 +34368,13 @@ clouddirectory <- function(config = list(), credentials = list(), endpoint = NUL
 #'
 #' @description
 #' AWS CloudHSM Service
-#'
+#' 
 #' This is documentation for **AWS CloudHSM Classic**. For more
 #' information, see [AWS CloudHSM Classic
 #' FAQs](https://aws.amazon.com/cloudhsm/faqs/), the AWS CloudHSM Classic
 #' User Guide, and the [AWS CloudHSM Classic API
 #' Reference](https://docs.aws.amazon.com/cloudhsm/classic/APIReference/).
-#'
+#' 
 #' **For information about the current version of AWS CloudHSM**, see [AWS
 #' CloudHSM](https://aws.amazon.com/cloudhsm/), the [AWS CloudHSM User
 #' Guide](https://docs.aws.amazon.com/cloudhsm/latest/userguide/), and the
@@ -30341,9 +34393,9 @@ clouddirectory <- function(config = list(), credentials = list(), endpoint = NUL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -30470,9 +34522,9 @@ cloudhsm <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -30579,12 +34631,12 @@ cloudhsmv2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @description
 #' Amazon Cognito Federated Identities
-#'
+#' 
 #' Amazon Cognito Federated Identities is a web service that delivers
 #' scoped temporary credentials to mobile devices and other untrusted
 #' environments. It uniquely identifies a device and supplies the user with
 #' a consistent identity over the lifetime of an application.
-#'
+#' 
 #' Using Amazon Cognito Federated Identities, you can enable authentication
 #' with one or more third-party identity providers (Facebook, Google, or
 #' Login with Amazon) or an Amazon Cognito user pool, and you can also
@@ -30592,11 +34644,11 @@ cloudhsmv2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' a unique identifier for each user and acts as an OpenID token provider
 #' trusted by AWS Security Token Service (STS) to access temporary,
 #' limited-privilege AWS credentials.
-#'
+#' 
 #' For a description of the authentication flow from the Amazon Cognito
 #' Developer Guide see [Authentication
 #' Flow](https://docs.aws.amazon.com/cognito/latest/developerguide/authentication-flow.html).
-#'
+#' 
 #' For more information see [Amazon Cognito Federated
 #' Identities](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-identity.html).
 #'
@@ -30612,9 +34664,9 @@ cloudhsmv2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -30736,49 +34788,49 @@ cognitoidentity <- function(config = list(), credentials = list(), endpoint = NU
 #' Learn more about the authentication and authorization of federated users
 #' in the [Using the Amazon Cognito user pools API and user pool
 #' endpoints](https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-userpools-server-contract-reference.html).
-#'
+#' 
 #' This API reference provides detailed information about API operations
 #' and object types in Amazon Cognito. At the bottom of the page for each
 #' API operation and object, under *See Also*, you can learn how to use it
 #' in an Amazon Web Services SDK in the language of your choice.
-#'
+#' 
 #' Along with resource management operations, the Amazon Cognito user pools
 #' API includes classes of operations and authorization models for
 #' client-side and server-side user operations. For more information, see
 #' [Using the Amazon Cognito native and OIDC
 #' APIs](https://docs.aws.amazon.com/cognito/latest/developerguide/user-pools-API-operations.html)
 #' in the *Amazon Cognito Developer Guide*.
-#'
+#' 
 #' You can also start reading about the `CognitoIdentityProvider` client in
 #' the following SDK guides.
-#'
+#' 
 #' -   [Amazon Web Services Command Line
 #'     Interface](https://docs.aws.amazon.com/cli/latest/reference/cognito-idp/#cli-aws-cognito-idp)
-#'
+#' 
 #' -   [Amazon Web Services SDK for
 #'     .NET](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/CognitoIdentityProvider/TCognitoIdentityProviderClient.html)
-#'
+#' 
 #' -   [Amazon Web Services SDK for
 #'     C++](https://sdk.amazonaws.com/cpp/api/LATEST/aws-cpp-sdk-cognito-idp/html/class_aws_1_1_cognito_identity_provider_1_1_cognito_identity_provider_client.html)
-#'
+#' 
 #' -   [Amazon Web Services SDK for
 #'     Go](https://docs.aws.amazon.com/sdk-for-go/api/service/cognitoidentityprovider/#CognitoIdentityProvider)
-#'
+#' 
 #' -   [Amazon Web Services SDK for Java
 #'     V2](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/cognitoidentityprovider/CognitoIdentityProviderClient.html)
-#'
+#' 
 #' -   [Amazon Web Services SDK for
 #'     JavaScript](https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/CognitoIdentityServiceProvider.html)
-#'
+#' 
 #' -   [Amazon Web Services SDK for PHP
 #'     V3](https://docs.aws.amazon.com/aws-sdk-php/v3/api/api-cognito-idp-2016-04-18.html)
-#'
+#' 
 #' -   [Amazon Web Services SDK for
 #'     Python](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cognito-idp.html)
-#'
+#' 
 #' -   [Amazon Web Services SDK for Ruby
 #'     V3](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/CognitoIdentityProvider/Client.html)
-#'
+#' 
 #' To get started with an Amazon Web Services SDK, see [Tools to Build on
 #' Amazon Web Services](https://aws.amazon.com/developer/tools/). For
 #' example actions and scenarios, see [Code examples for Amazon Cognito
@@ -30797,9 +34849,9 @@ cognitoidentity <- function(config = list(), credentials = list(), endpoint = NU
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -31024,13 +35076,13 @@ cognitoidentityprovider <- function(config = list(), credentials = list(), endpo
 #' obtain a normalized user ID and credentials. User data is persisted in a
 #' dataset that can store up to 1 MB of key-value pairs, and you can have
 #' up to 20 datasets per user identity.
-#'
+#' 
 #' With Amazon Cognito Sync, the data stored for each identity is
 #' accessible only to credentials assigned to that identity. In order to
 #' use the Cognito Sync service, you need to make API calls using
 #' credentials retrieved with [Amazon Cognito Identity
 #' service](https://docs.aws.amazon.com/cognitoidentity/latest/APIReference/Welcome.html).
-#'
+#' 
 #' If you want to use Cognito Sync in an Android or iOS application, you
 #' will probably want to make API calls via the AWS Mobile SDK. To learn
 #' more, see the [Developer Guide for
@@ -31050,9 +35102,9 @@ cognitoidentityprovider <- function(config = list(), credentials = list(), endpo
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -31166,70 +35218,70 @@ cognitosync <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' extracts time-based events such as login attempts, API calls, and
 #' network traffic from CloudTrail and Amazon Virtual Private Cloud (Amazon
 #' VPC) flow logs. It also extracts findings detected by Amazon GuardDuty.
-#'
+#' 
 #' The Detective API primarily supports the creation and management of
 #' behavior graphs. A behavior graph contains the extracted data from a set
 #' of member accounts, and is created and managed by an administrator
 #' account.
-#'
+#' 
 #' To add a member account to the behavior graph, the administrator account
 #' sends an invitation to the account. When the account accepts the
 #' invitation, it becomes a member account in the behavior graph.
-#'
+#' 
 #' Detective is also integrated with Organizations. The organization
 #' management account designates the Detective administrator account for
 #' the organization. That account becomes the administrator account for the
 #' organization behavior graph. The Detective administrator account is also
 #' the delegated administrator account for Detective in Organizations.
-#'
+#' 
 #' The Detective administrator account can enable any organization account
 #' as a member account in the organization behavior graph. The organization
 #' accounts do not receive invitations. The Detective administrator account
 #' can also invite other accounts to the organization behavior graph.
-#'
+#' 
 #' Every behavior graph is specific to a Region. You can only use the API
 #' to manage behavior graphs that belong to the Region that is associated
 #' with the currently selected endpoint.
-#'
+#' 
 #' The administrator account for a behavior graph can use the Detective API
 #' to do the following:
-#'
+#' 
 #' -   Enable and disable Detective. Enabling Detective creates a new
 #'     behavior graph.
-#'
+#' 
 #' -   View the list of member accounts in a behavior graph.
-#'
+#' 
 #' -   Add member accounts to a behavior graph.
-#'
+#' 
 #' -   Remove member accounts from a behavior graph.
-#'
+#' 
 #' -   Apply tags to a behavior graph.
-#'
+#' 
 #' The organization management account can use the Detective API to select
 #' the delegated administrator for Detective.
-#'
+#' 
 #' The Detective administrator account for an organization can use the
 #' Detective API to do the following:
-#'
+#' 
 #' -   Perform all of the functions of an administrator account.
-#'
+#' 
 #' -   Determine whether to automatically enable new organization accounts
 #'     as member accounts in the organization behavior graph.
-#'
+#' 
 #' An invited member account can use the Detective API to do the following:
-#'
+#' 
 #' -   View the list of behavior graphs that they are invited to.
-#'
+#' 
 #' -   Accept an invitation to contribute to a behavior graph.
-#'
+#' 
 #' -   Decline an invitation to contribute to a behavior graph.
-#'
+#' 
 #' -   Remove their account from a behavior graph.
-#'
+#' 
 #' All API actions are logged as CloudTrail events. See [Logging Detective
 #' API Calls with
 #' CloudTrail](https://docs.aws.amazon.com/detective/latest/adminguide/logging-using-cloudtrail.html).
-#'
+#' 
 #' We replaced the term "master account" with the term "administrator
 #' account." An administrator account is used to centrally manage multiple
 #' accounts. In the case of Detective, the administrator account manages
@@ -31247,9 +35299,9 @@ cognitosync <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -31365,7 +35417,7 @@ detective <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @description
 #' Directory Service
-#'
+#' 
 #' Directory Service is a web service that makes it easy for you to setup
 #' and run directories in the Amazon Web Services cloud, or connect your
 #' Amazon Web Services resources with an existing self-managed Microsoft
@@ -31375,7 +35427,7 @@ detective <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' Service](https://aws.amazon.com/directoryservice/) and the [Directory
 #' Service Administration
 #' Guide](https://docs.aws.amazon.com/directoryservice/latest/admin-guide/what_is.html).
-#'
+#' 
 #' Amazon Web Services provides SDKs that consist of libraries and sample
 #' code for various programming languages and platforms (Java, Ruby, .Net,
 #' iOS, Android, etc.). The SDKs provide a convenient way to create
@@ -31396,9 +35448,9 @@ detective <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -31561,7 +35613,7 @@ directoryservice <- function(config = list(), credentials = list(), endpoint = N
 #' actions, data types, and errors. For detailed information about Firewall
 #' Manager features, see the [Firewall Manager Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/fms-chapter.html).
-#'
+#' 
 #' Some API actions require explicit resource permissions. For information,
 #' see the developer guide topic [Service roles for Firewall
 #' Manager](https://docs.aws.amazon.com/waf/latest/developerguide/fms-security_iam_service-with-iam.html#fms-security_iam_service-with-iam-roles-service).
@@ -31578,9 +35630,9 @@ directoryservice <- function(config = list(), credentials = list(), endpoint = N
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -31725,13 +35777,13 @@ fms <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' of malware on your Amazon EC2 instances and container workloads. For
 #' example, GuardDuty can detect compromised EC2 instances and container
 #' workloads serving malware, or mining bitcoin.
-#'
+#' 
 #' GuardDuty also monitors Amazon Web Services account access behavior for
 #' signs of compromise, such as unauthorized infrastructure deployments
 #' like EC2 instances deployed in a Region that has never been used, or
 #' unusual API calls like a password policy change to reduce password
 #' strength.
-#'
+#' 
 #' GuardDuty informs you about the status of your Amazon Web Services
 #' environment by producing security findings that you can view in the
 #' GuardDuty console or through Amazon EventBridge. For more information,
@@ -31749,9 +35801,9 @@ fms <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -31841,12 +35893,12 @@ fms <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.security.identity:guardduty_describe_malware_scans]{describe_malware_scans} \tab Returns a list of malware scans\cr
 #'  \link[paws.security.identity:guardduty_describe_organization_configuration]{describe_organization_configuration} \tab Returns information about the account selected as the delegated administrator for GuardDuty\cr
 #'  \link[paws.security.identity:guardduty_describe_publishing_destination]{describe_publishing_destination} \tab Returns information about the publishing destination specified by the provided destinationId\cr
-#'  \link[paws.security.identity:guardduty_disable_organization_admin_account]{disable_organization_admin_account} \tab Disables an Amazon Web Services account within the Organization as the GuardDuty delegated administrator\cr
+#'  \link[paws.security.identity:guardduty_disable_organization_admin_account]{disable_organization_admin_account} \tab Removes the existing GuardDuty delegated administrator of the organization\cr
 #'  \link[paws.security.identity:guardduty_disassociate_from_administrator_account]{disassociate_from_administrator_account} \tab Disassociates the current GuardDuty member account from its administrator account\cr
 #'  \link[paws.security.identity:guardduty_disassociate_from_master_account]{disassociate_from_master_account} \tab Disassociates the current GuardDuty member account from its administrator account\cr
 #'  \link[paws.security.identity:guardduty_disassociate_members]{disassociate_members} \tab Disassociates GuardDuty member accounts (from the current administrator account) specified by the account IDs\cr
-#'  \link[paws.security.identity:guardduty_enable_organization_admin_account]{enable_organization_admin_account} \tab Enables an Amazon Web Services account within the organization as the GuardDuty delegated administrator\cr
-#'  \link[paws.security.identity:guardduty_get_administrator_account]{get_administrator_account} \tab Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account\cr
+#'  \link[paws.security.identity:guardduty_enable_organization_admin_account]{enable_organization_admin_account} \tab Designates an Amazon Web Services account within the organization as your GuardDuty delegated administrator\cr
+#'  \link[paws.security.identity:guardduty_get_administrator_account]{get_administrator_account} \tab Provides the details of the GuardDuty administrator account associated with the current GuardDuty member account\cr
 #'  \link[paws.security.identity:guardduty_get_coverage_statistics]{get_coverage_statistics} \tab Retrieves aggregated statistics for your account\cr
 #'  \link[paws.security.identity:guardduty_get_detector]{get_detector} \tab Retrieves an Amazon GuardDuty detector specified by the detectorId\cr
 #'  \link[paws.security.identity:guardduty_get_filter]{get_filter} \tab Returns the details of the filter specified by the filter name\cr
@@ -31869,7 +35921,7 @@ fms <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.security.identity:guardduty_list_invitations]{list_invitations} \tab Lists all GuardDuty membership invitations that were sent to the current Amazon Web Services account\cr
 #'  \link[paws.security.identity:guardduty_list_ip_sets]{list_ip_sets} \tab Lists the IPSets of the GuardDuty service specified by the detector ID\cr
 #'  \link[paws.security.identity:guardduty_list_members]{list_members} \tab Lists details about all member accounts for the current GuardDuty administrator account\cr
-#'  \link[paws.security.identity:guardduty_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Lists the accounts configured as GuardDuty delegated administrators\cr
+#'  \link[paws.security.identity:guardduty_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Lists the accounts designated as GuardDuty delegated administrators\cr
 #'  \link[paws.security.identity:guardduty_list_publishing_destinations]{list_publishing_destinations} \tab Returns a list of publishing destinations associated with the specified detectorId\cr
 #'  \link[paws.security.identity:guardduty_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for a resource\cr
 #'  \link[paws.security.identity:guardduty_list_threat_intel_sets]{list_threat_intel_sets} \tab Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID\cr
@@ -31911,7 +35963,7 @@ guardduty <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @description
 #' Identity and Access Management
-#'
+#' 
 #' Identity and Access Management (IAM) is a web service for securely
 #' controlling access to Amazon Web Services services. With IAM, you can
 #' centrally manage users, security credentials such as access keys, and
@@ -31933,9 +35985,9 @@ guardduty <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -32189,13 +36241,16 @@ iam <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' AWS SSO Identity Store
 #'
 #' @description
-#' The Identity Store service used by AWS IAM Identity Center (successor to
-#' AWS Single Sign-On) provides a single place to retrieve all of your
-#' identities (users and groups). For more information, see the [IAM
-#' Identity Center User
+#' The Identity Store service used by IAM Identity Center provides a single
+#' place to retrieve all of your identities (users and groups). For more
+#' information, see the [IAM Identity Center User
 #' Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html).
-#'
-#'      <note> <p>Although AWS Single Sign-On was renamed, the <code>sso</code> and <code>identitystore</code> API namespaces will continue to retain their original name for backward compatibility purposes. For more information, see <a href="https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed">IAM Identity Center rename</a>.</p> </note> <p>This reference guide describes the identity store operations that you can call programatically and includes detailed information about data types and errors.</p>
+#' 
+#' This reference guide describes the identity store operations that you
+#' can call programmatically and includes detailed information about data
+#' types and errors.
+#' 
+#' IAM Identity Center uses the `sso` and `identitystore` API namespaces.
 #'
 #' @param
 #' config
@@ -32209,9 +36264,9 @@ iam <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -32338,9 +36393,9 @@ identitystore <- function(config = list(), credentials = list(), endpoint = NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -32479,8 +36534,8 @@ inspector <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @description
 #' Amazon Inspector is a vulnerability discovery service that automates
-#' continuous scanning for security vulnerabilities within your Amazon EC2
-#' and Amazon ECR environments.
+#' continuous scanning for security vulnerabilities within your Amazon EC2,
+#' Amazon ECR, and Amazon Web Services Lambda environments.
 #'
 #' @param
 #' config
@@ -32494,9 +36549,9 @@ inspector <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -32634,17 +36689,17 @@ inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #'
 #' @description
 #' Key Management Service
-#'
+#' 
 #' Key Management Service (KMS) is an encryption and key management web
 #' service. This guide describes the KMS operations that you can call
 #' programmatically. For general information about KMS, see the [*Key
 #' Management Service Developer
 #' Guide*](https://docs.aws.amazon.com/kms/latest/developerguide/) .
-#'
+#' 
 #' KMS has replaced the term *customer master key (CMK)* with *KMS key* and
 #' *KMS key*. The concept has not changed. To prevent breaking changes, KMS
 #' is keeping some variations of this term.
-#'
+#' 
 #' Amazon Web Services provides SDKs that consist of libraries and sample
 #' code for various programming languages and platforms (Java, Ruby, .Net,
 #' macOS, Android, etc.). The SDKs provide a convenient way to create
@@ -32654,10 +36709,10 @@ inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' information about the Amazon Web Services SDKs, including how to
 #' download and install them, see [Tools for Amazon Web
 #' Services](https://aws.amazon.com/developer/tools/).
-#'
+#' 
 #' We recommend that you use the Amazon Web Services SDKs to make
 #' programmatic API calls to KMS.
-#'
+#' 
 #' If you need to use FIPS 140-2 validated cryptographic modules when
 #' communicating with Amazon Web Services, use the FIPS endpoint in your
 #' preferred Amazon Web Services Region. For more information about the
@@ -32665,28 +36720,28 @@ inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' endpoints](https://docs.aws.amazon.com/general/latest/gr/kms.html#kms_region)
 #' in the Key Management Service topic of the *Amazon Web Services General
 #' Reference*.
-#'
+#' 
 #' All KMS API calls must be signed and be transmitted using Transport
 #' Layer Security (TLS). KMS recommends you always use the latest supported
 #' TLS version. Clients must also support cipher suites with Perfect
 #' Forward Secrecy (PFS) such as Ephemeral Diffie-Hellman (DHE) or Elliptic
 #' Curve Ephemeral Diffie-Hellman (ECDHE). Most modern systems such as Java
 #' 7 and later support these modes.
-#'
+#' 
 #' **Signing Requests**
-#'
+#' 
 #' Requests must be signed using an access key ID and a secret access key.
 #' We strongly recommend that you do not use your Amazon Web Services
 #' account root access key ID and secret access key for everyday work. You
 #' can use the access key ID and secret access key for an IAM user or you
 #' can use the Security Token Service (STS) to generate temporary security
 #' credentials and use those to sign requests.
-#'
+#' 
 #' All KMS requests must be signed with [Signature Version
 #' 4](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html).
-#'
+#' 
 #' **Logging API Requests**
-#'
+#' 
 #' KMS supports CloudTrail, a service that logs Amazon Web Services API
 #' calls and related events for your Amazon Web Services account and
 #' delivers them to an Amazon S3 bucket that you specify. By using the
@@ -32695,40 +36750,40 @@ inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' learn more about CloudTrail, including how to turn it on and find your
 #' log files, see the [CloudTrail User
 #' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/).
-#'
+#' 
 #' **Additional Resources**
-#'
+#' 
 #' For more information about credentials and request signing, see the
 #' following:
-#'
+#' 
 #' -   [Amazon Web Services Security
 #'     Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/security-creds.html) -
 #'     This topic provides general information about the types of
 #'     credentials used to access Amazon Web Services.
-#'
+#' 
 #' -   [Temporary Security
 #'     Credentials](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) -
 #'     This section of the *IAM User Guide* describes how to create and use
 #'     temporary security credentials.
-#'
+#' 
 #' -   [Signature Version 4 Signing
 #'     Process](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_aws-signing.html) -
 #'     This set of topics walks you through the process of signing a
 #'     request using an access key ID and a secret access key.
-#'
+#' 
 #' **Commonly Used API Operations**
-#'
+#' 
 #' Of the API operations discussed in this guide, the following will prove
 #' the most useful for most applications. You will likely perform
 #' operations other than these, such as creating keys and assigning
 #' policies, by using the console.
-#'
+#' 
 #' -   `encrypt`
-#'
+#' 
 #' -   `decrypt`
-#'
+#' 
 #' -   `generate_data_key`
-#'
+#' 
 #' -   `generate_data_key_without_plaintext`
 #'
 #' @param
@@ -32743,9 +36798,9 @@ inspector2 <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -32888,9 +36943,9 @@ kms <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @description
 #' Amazon Macie Classic
-#'
+#' 
 #' Amazon Macie Classic has been discontinued and is no longer available.
-#'
+#' 
 #' A new Amazon Macie is now available with significant design improvements
 #' and additional features, at a lower price and in most Amazon Web
 #' Services Regions. We encourage you to take advantage of the new and
@@ -32912,9 +36967,9 @@ kms <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -33026,9 +37081,9 @@ macie <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -33195,6 +37250,143 @@ macie2 <- function(config = list(), credentials = list(), endpoint = NULL, regio
   )
 }
 
+#' PcaConnectorAd
+#'
+#' @description
+#' Amazon Web Services Private CA Connector for Active Directory creates a
+#' connector between Amazon Web Services Private CA and Active Directory
+#' (AD) that enables you to provision security certificates for AD signed
+#' by a private CA that you own. For more information, see [Amazon Web
+#' Services Private CA Connector for Active
+#' Directory](https://docs.aws.amazon.com/privateca/latest/userguide/).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- pcaconnectorad(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- pcaconnectorad()
+#' svc$create_connector(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.security.identity:pcaconnectorad_create_connector]{create_connector} \tab Creates a connector between Amazon Web Services Private CA and an Active Directory\cr
+#'  \link[paws.security.identity:pcaconnectorad_create_directory_registration]{create_directory_registration} \tab Creates a directory registration that authorizes communication between Amazon Web Services Private CA and an Active Directory\cr
+#'  \link[paws.security.identity:pcaconnectorad_create_service_principal_name]{create_service_principal_name} \tab Creates a service principal name (SPN) for the service account in Active Directory\cr
+#'  \link[paws.security.identity:pcaconnectorad_create_template]{create_template} \tab Creates an Active Directory compatible certificate template\cr
+#'  \link[paws.security.identity:pcaconnectorad_create_template_group_access_control_entry]{create_template_group_access_control_entry} \tab Create a group access control entry\cr
+#'  \link[paws.security.identity:pcaconnectorad_delete_connector]{delete_connector} \tab Deletes a connector for Active Directory\cr
+#'  \link[paws.security.identity:pcaconnectorad_delete_directory_registration]{delete_directory_registration} \tab Deletes a directory registration\cr
+#'  \link[paws.security.identity:pcaconnectorad_delete_service_principal_name]{delete_service_principal_name} \tab Deletes the service principal name (SPN) used by a connector to authenticate with your Active Directory\cr
+#'  \link[paws.security.identity:pcaconnectorad_delete_template]{delete_template} \tab Deletes a template\cr
+#'  \link[paws.security.identity:pcaconnectorad_delete_template_group_access_control_entry]{delete_template_group_access_control_entry} \tab Deletes a group access control entry\cr
+#'  \link[paws.security.identity:pcaconnectorad_get_connector]{get_connector} \tab Lists information about your connector\cr
+#'  \link[paws.security.identity:pcaconnectorad_get_directory_registration]{get_directory_registration} \tab A structure that contains information about your directory registration\cr
+#'  \link[paws.security.identity:pcaconnectorad_get_service_principal_name]{get_service_principal_name} \tab Lists the service principal name that the connector uses to authenticate with Active Directory\cr
+#'  \link[paws.security.identity:pcaconnectorad_get_template]{get_template} \tab Retrieves a certificate template that the connector uses to issue certificates from a private CA\cr
+#'  \link[paws.security.identity:pcaconnectorad_get_template_group_access_control_entry]{get_template_group_access_control_entry} \tab Retrieves the group access control entries for a template\cr
+#'  \link[paws.security.identity:pcaconnectorad_list_connectors]{list_connectors} \tab Lists the connectors that you created by using the https://docs\cr
+#'  \link[paws.security.identity:pcaconnectorad_list_directory_registrations]{list_directory_registrations} \tab Lists the directory registrations that you created by using the https://docs\cr
+#'  \link[paws.security.identity:pcaconnectorad_list_service_principal_names]{list_service_principal_names} \tab Lists the service principal names that the connector uses to authenticate with Active Directory\cr
+#'  \link[paws.security.identity:pcaconnectorad_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags, if any, that are associated with your resource\cr
+#'  \link[paws.security.identity:pcaconnectorad_list_template_group_access_control_entries]{list_template_group_access_control_entries} \tab Lists group access control entries you created\cr
+#'  \link[paws.security.identity:pcaconnectorad_list_templates]{list_templates} \tab Lists the templates, if any, that are associated with a connector\cr
+#'  \link[paws.security.identity:pcaconnectorad_tag_resource]{tag_resource} \tab Adds one or more tags to your resource\cr
+#'  \link[paws.security.identity:pcaconnectorad_untag_resource]{untag_resource} \tab Removes one or more tags from your resource\cr
+#'  \link[paws.security.identity:pcaconnectorad_update_template]{update_template} \tab Update template configuration to define the information included in certificates\cr
+#'  \link[paws.security.identity:pcaconnectorad_update_template_group_access_control_entry]{update_template_group_access_control_entry} \tab Update a group access control entry you created using CreateTemplateGroupAccessControlEntry
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname pcaconnectorad
+#' @export
+pcaconnectorad <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::pcaconnectorad(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' AWS Resource Access Manager
 #'
 #' @description
@@ -33206,11 +37398,11 @@ macie2 <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' with your entire organization or to organizational units (OUs). For
 #' supported resource types, you can also share resources with individual
 #' Identity and Access Management (IAM) roles and users.
-#'
+#' 
 #' To learn more about RAM, see the following resources:
-#'
+#' 
 #' -   [Resource Access Manager product page](https://aws.amazon.com/ram/)
-#'
+#' 
 #' -   [Resource Access Manager User
 #'     Guide](https://docs.aws.amazon.com/ram/latest/userguide/)
 #'
@@ -33226,9 +37418,9 @@ macie2 <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -33361,14 +37553,14 @@ ram <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' Services resources. Using IAM Roles Anywhere eliminates the need to
 #' manage long-term credentials for workloads running outside of Amazon Web
 #' Services.
-#'
+#' 
 #' To use IAM Roles Anywhere, your workloads must use X.509 certificates
 #' issued by their certificate authority (CA). You register the CA with IAM
 #' Roles Anywhere as a trust anchor to establish trust between your public
 #' key infrastructure (PKI) and IAM Roles Anywhere. If you don't manage
 #' your own PKI system, you can use Private Certificate Authority to create
 #' a CA and then use that to establish trust with IAM Roles Anywhere.
-#'
+#' 
 #' This guide describes the IAM Roles Anywhere operations that you can call
 #' programmatically. For more information about IAM Roles Anywhere, see the
 #' [IAM Roles Anywhere User
@@ -33386,9 +37578,9 @@ ram <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -33508,33 +37700,33 @@ iamrolesanywhere <- function(config = list(), credentials = list(), endpoint = N
 #'
 #' @description
 #' Amazon Web Services Secrets Manager
-#'
+#' 
 #' Amazon Web Services Secrets Manager provides a service to enable you to
 #' store, manage, and retrieve, secrets.
-#'
+#' 
 #' This guide provides descriptions of the Secrets Manager API. For more
 #' information about using this service, see the [Amazon Web Services
 #' Secrets Manager User
 #' Guide](https://docs.aws.amazon.com/secretsmanager/latest/userguide/).
-#'
+#' 
 #' **API Version**
-#'
+#' 
 #' This version of the Secrets Manager API Reference documents the Secrets
 #' Manager API version 2017-10-17.
-#'
+#' 
 #' For a list of endpoints, see [Amazon Web Services Secrets Manager
 #' endpoints](https://docs.aws.amazon.com/secretsmanager/latest/userguide/asm_access.html#endpoints).
-#'
+#' 
 #' **Support and Feedback for Amazon Web Services Secrets Manager**
-#'
+#' 
 #' We welcome your feedback. Send your comments to
 #' <awssecretsmanager-feedback@@amazon.com>, or post your feedback and
 #' questions in the Amazon Web Services Secrets Manager Discussion Forum.
 #' For more information about the Amazon Web Services Discussion Forums,
 #' see Forums Help.
-#'
+#' 
 #' **Logging API Requests**
-#'
+#' 
 #' Amazon Web Services Secrets Manager supports Amazon Web Services
 #' CloudTrail, a service that records Amazon Web Services API calls for
 #' your Amazon Web Services account and delivers log files to an Amazon S3
@@ -33562,9 +37754,9 @@ iamrolesanywhere <- function(config = list(), credentials = list(), endpoint = N
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -33691,7 +37883,7 @@ secretsmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #' more information about Security Hub, see the [*Security Hub User
 #' Guide*](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html)
 #' .
-#'
+#' 
 #' When you use operations in the Security Hub API, the requests are
 #' executed only in the Amazon Web Services Region that is currently active
 #' or in the specific Amazon Web Services Region that you specify in your
@@ -33699,36 +37891,36 @@ secretsmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #' operation is applied only to that Region. To make the same change in
 #' other Regions, run the same command for each Region in which you want to
 #' apply the change.
-#'
+#' 
 #' For example, if your Region is set to `us-west-2`, when you use
 #' `create_members` to add a member account
 #' to Security Hub, the association of the member account with the
 #' administrator account is created only in the `us-west-2` Region.
 #' Security Hub must be enabled for the member account in the same Region
 #' that the invitation was sent from.
-#'
+#' 
 #' The following throttling limits apply to using Security Hub API
 #' operations.
-#'
+#' 
 #' -   `batch_enable_standards` -
 #'     `RateLimit` of 1 request per second. `BurstLimit` of 1 request per
 #'     second.
-#'
+#' 
 #' -   `get_findings` - `RateLimit` of 3
 #'     requests per second. `BurstLimit` of 6 requests per second.
-#'
+#' 
 #' -   `batch_import_findings` -
 #'     `RateLimit` of 10 requests per second. `BurstLimit` of 30 requests
 #'     per second.
-#'
+#' 
 #' -   `batch_update_findings` -
 #'     `RateLimit` of 10 requests per second. `BurstLimit` of 30 requests
 #'     per second.
-#'
+#' 
 #' -   `update_standards_control` -
 #'     `RateLimit` of 1 request per second. `BurstLimit` of 5 requests per
 #'     second.
-#'
+#' 
 #' -   All other operations - `RateLimit` of 10 requests per second.
 #'     `BurstLimit` of 30 requests per second.
 #'
@@ -33744,9 +37936,9 @@ secretsmanager <- function(config = list(), credentials = list(), endpoint = NUL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -33906,11 +38098,188 @@ securityhub <- function(config = list(), credentials = list(), endpoint = NULL, 
   )
 }
 
+#' Amazon Security Lake
+#'
+#' @description
+#' Amazon Security Lake is a fully managed security data lake service. You
+#' can use Security Lake to automatically centralize security data from
+#' cloud, on-premises, and custom sources into a data lake that's stored in
+#' your Amazon Web Services account. Amazon Web Services Organizations is
+#' an account management service that lets you consolidate multiple Amazon
+#' Web Services accounts into an organization that you create and centrally
+#' manage. With Organizations, you can create member accounts and invite
+#' existing accounts to join your organization. Security Lake helps you
+#' analyze security data for a more complete understanding of your security
+#' posture across the entire organization. It can also help you improve the
+#' protection of your workloads, applications, and data.
+#' 
+#' The data lake is backed by Amazon Simple Storage Service (Amazon S3)
+#' buckets, and you retain ownership over your data.
+#' 
+#' Amazon Security Lake integrates with CloudTrail, a service that provides
+#' a record of actions taken by a user, role, or an Amazon Web Services
+#' service. In Security Lake, CloudTrail captures API calls for Security
+#' Lake as events. The calls captured include calls from the Security Lake
+#' console and code calls to the Security Lake API operations. If you
+#' create a trail, you can enable continuous delivery of CloudTrail events
+#' to an Amazon S3 bucket, including events for Security Lake. If you don't
+#' configure a trail, you can still view the most recent events in the
+#' CloudTrail console in Event history. Using the information collected by
+#' CloudTrail you can determine the request that was made to Security Lake,
+#' the IP address from which the request was made, who made the request,
+#' when it was made, and additional details. To learn more about Security
+#' Lake information in CloudTrail, see the [Amazon Security Lake User
+#' Guide](https://docs.aws.amazon.com/security-lake/latest/userguide/securitylake-cloudtrail.html).
+#' 
+#' Security Lake automates the collection of security-related log and event
+#' data from integrated Amazon Web Services and third-party services. It
+#' also helps you manage the lifecycle of data with customizable retention
+#' and replication settings. Security Lake converts ingested data into
+#' Apache Parquet format and a standard open-source schema called the Open
+#' Cybersecurity Schema Framework (OCSF).
+#' 
+#' Other Amazon Web Services and third-party services can subscribe to the
+#' data that's stored in Security Lake for incident response and security
+#' data analytics.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- securitylake(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- securitylake()
+#' svc$create_aws_log_source(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.security.identity:securitylake_create_aws_log_source]{create_aws_log_source} \tab Adds a natively supported Amazon Web Service as an Amazon Security Lake source\cr
+#'  \link[paws.security.identity:securitylake_create_custom_log_source]{create_custom_log_source} \tab Adds a third-party custom source in Amazon Security Lake, from the Amazon Web Services Region where you want to create a custom source\cr
+#'  \link[paws.security.identity:securitylake_create_data_lake]{create_data_lake} \tab Initializes an Amazon Security Lake instance with the provided (or default) configuration\cr
+#'  \link[paws.security.identity:securitylake_create_data_lake_exception_subscription]{create_data_lake_exception_subscription} \tab Creates the specified notification subscription in Amazon Security Lake for the organization you specify\cr
+#'  \link[paws.security.identity:securitylake_create_data_lake_organization_configuration]{create_data_lake_organization_configuration} \tab Automatically enables Amazon Security Lake for new member accounts in your organization\cr
+#'  \link[paws.security.identity:securitylake_create_subscriber]{create_subscriber} \tab Creates a subscription permission for accounts that are already enabled in Amazon Security Lake\cr
+#'  \link[paws.security.identity:securitylake_create_subscriber_notification]{create_subscriber_notification} \tab Notifies the subscriber when new data is written to the data lake for the sources that the subscriber consumes in Security Lake\cr
+#'  \link[paws.security.identity:securitylake_delete_aws_log_source]{delete_aws_log_source} \tab Removes a natively supported Amazon Web Service as an Amazon Security Lake source\cr
+#'  \link[paws.security.identity:securitylake_delete_custom_log_source]{delete_custom_log_source} \tab Removes a custom log source from Amazon Security Lake, to stop sending data from the custom source to Security Lake\cr
+#'  \link[paws.security.identity:securitylake_delete_data_lake]{delete_data_lake} \tab When you disable Amazon Security Lake from your account, Security Lake is disabled in all Amazon Web Services Regions and it stops collecting data from your sources\cr
+#'  \link[paws.security.identity:securitylake_delete_data_lake_exception_subscription]{delete_data_lake_exception_subscription} \tab Deletes the specified notification subscription in Amazon Security Lake for the organization you specify\cr
+#'  \link[paws.security.identity:securitylake_delete_data_lake_organization_configuration]{delete_data_lake_organization_configuration} \tab Turns off automatic enablement of Amazon Security Lake for member accounts that are added to an organization in Organizations\cr
+#'  \link[paws.security.identity:securitylake_delete_subscriber]{delete_subscriber} \tab Deletes the subscription permission and all notification settings for accounts that are already enabled in Amazon Security Lake\cr
+#'  \link[paws.security.identity:securitylake_delete_subscriber_notification]{delete_subscriber_notification} \tab Deletes the specified notification subscription in Amazon Security Lake for the organization you specify\cr
+#'  \link[paws.security.identity:securitylake_deregister_data_lake_delegated_administrator]{deregister_data_lake_delegated_administrator} \tab Deletes the Amazon Security Lake delegated administrator account for the organization\cr
+#'  \link[paws.security.identity:securitylake_get_data_lake_exception_subscription]{get_data_lake_exception_subscription} \tab Retrieves the details of exception notifications for the account in Amazon Security Lake\cr
+#'  \link[paws.security.identity:securitylake_get_data_lake_organization_configuration]{get_data_lake_organization_configuration} \tab Retrieves the configuration that will be automatically set up for accounts added to the organization after the organization has onboarded to Amazon Security Lake\cr
+#'  \link[paws.security.identity:securitylake_get_data_lake_sources]{get_data_lake_sources} \tab Retrieves a snapshot of the current Region, including whether Amazon Security Lake is enabled for those accounts and which sources Security Lake is collecting data from\cr
+#'  \link[paws.security.identity:securitylake_get_subscriber]{get_subscriber} \tab Retrieves the subscription information for the specified subscription ID\cr
+#'  \link[paws.security.identity:securitylake_list_data_lake_exceptions]{list_data_lake_exceptions} \tab Lists the Amazon Security Lake exceptions that you can use to find the source of problems and fix them\cr
+#'  \link[paws.security.identity:securitylake_list_data_lakes]{list_data_lakes} \tab Retrieves the Amazon Security Lake configuration object for the specified Amazon Web Services Regions\cr
+#'  \link[paws.security.identity:securitylake_list_log_sources]{list_log_sources} \tab Retrieves the log sources in the current Amazon Web Services Region\cr
+#'  \link[paws.security.identity:securitylake_list_subscribers]{list_subscribers} \tab List all subscribers for the specific Amazon Security Lake account ID\cr
+#'  \link[paws.security.identity:securitylake_list_tags_for_resource]{list_tags_for_resource} \tab Retrieves the tags (keys and values) that are associated with an Amazon Security Lake resource: a subscriber, or the data lake configuration for your Amazon Web Services account in a particular Amazon Web Services Region\cr
+#'  \link[paws.security.identity:securitylake_register_data_lake_delegated_administrator]{register_data_lake_delegated_administrator} \tab Designates the Amazon Security Lake delegated administrator account for the organization\cr
+#'  \link[paws.security.identity:securitylake_tag_resource]{tag_resource} \tab Adds or updates one or more tags that are associated with an Amazon Security Lake resource: a subscriber, or the data lake configuration for your Amazon Web Services account in a particular Amazon Web Services Region\cr
+#'  \link[paws.security.identity:securitylake_untag_resource]{untag_resource} \tab Removes one or more tags (keys and values) from an Amazon Security Lake resource: a subscriber, or the data lake configuration for your Amazon Web Services account in a particular Amazon Web Services Region\cr
+#'  \link[paws.security.identity:securitylake_update_data_lake]{update_data_lake} \tab Specifies where to store your security data and for how long\cr
+#'  \link[paws.security.identity:securitylake_update_data_lake_exception_subscription]{update_data_lake_exception_subscription} \tab Updates the specified notification subscription in Amazon Security Lake for the organization you specify\cr
+#'  \link[paws.security.identity:securitylake_update_subscriber]{update_subscriber} \tab Updates an existing subscription for the given Amazon Security Lake account ID\cr
+#'  \link[paws.security.identity:securitylake_update_subscriber_notification]{update_subscriber_notification} \tab Updates an existing notification method for the subscription (SQS or HTTPs endpoint) or switches the notification subscription endpoint for a subscriber
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname securitylake
+#' @export
+securitylake <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::securitylake(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' AWS Shield
 #'
 #' @description
 #' Shield Advanced
-#'
+#' 
 #' This is the *Shield Advanced API Reference*. This guide is for
 #' developers who need detailed information about the Shield Advanced API
 #' actions, data types, and errors. For detailed information about WAF and
@@ -33930,9 +38299,9 @@ securityhub <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -34064,16 +38433,16 @@ shield <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' Identity Center resources such as the AWS access portal. Users can get
 #' AWS account applications and roles assigned to them and get federated
 #' into the application.
-#'
+#' 
 #' Although AWS Single Sign-On was renamed, the `sso` and `identitystore`
 #' API namespaces will continue to retain their original name for backward
 #' compatibility purposes. For more information, see [IAM Identity Center
 #' rename](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed).
-#'
+#' 
 #' This reference guide describes the IAM Identity Center Portal operations
 #' that you can call programatically and includes detailed information on
 #' data types and errors.
-#'
+#' 
 #' AWS provides SDKs that consist of libraries and sample code for various
 #' programming languages and platforms, such as Java, Ruby, .Net, iOS, or
 #' Android. The SDKs provide a convenient way to create programmatic access
@@ -34094,9 +38463,9 @@ shield <- function(config = list(), credentials = list(), endpoint = NULL, regio
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -34191,35 +38560,33 @@ sso <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' AWS Single Sign-On Admin
 #'
 #' @description
-#' AWS IAM Identity Center (successor to AWS Single Sign-On) helps you
-#' securely create, or connect, your workforce identities and manage their
-#' access centrally across AWS accounts and applications. IAM Identity
-#' Center is the recommended approach for workforce authentication and
-#' authorization in AWS, for organizations of any size and type.
-#'
-#' Although AWS Single Sign-On was renamed, the `sso` and `identitystore`
-#' API namespaces will continue to retain their original name for backward
-#' compatibility purposes. For more information, see [IAM Identity Center
-#' rename](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed).
-#'
+#' IAM Identity Center (successor to Single Sign-On) helps you securely
+#' create, or connect, your workforce identities and manage their access
+#' centrally across Amazon Web Services accounts and applications. IAM
+#' Identity Center is the recommended approach for workforce authentication
+#' and authorization in Amazon Web Services, for organizations of any size
+#' and type.
+#' 
+#' IAM Identity Center uses the `sso` and `identitystore` API namespaces.
+#' 
 #' This reference guide provides information on single sign-on operations
-#' which could be used for access management of AWS accounts. For
-#' information about IAM Identity Center features, see the [IAM Identity
-#' Center User
+#' which could be used for access management of Amazon Web Services
+#' accounts. For information about IAM Identity Center features, see the
+#' [IAM Identity Center User
 #' Guide](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html).
-#'
+#' 
 #' Many operations in the IAM Identity Center APIs rely on identifiers for
 #' users and groups, known as principals. For more information about how to
 #' work with principals and principal IDs in IAM Identity Center, see the
 #' [Identity Store API
 #' Reference](https://docs.aws.amazon.com/singlesignon/latest/IdentityStoreAPIReference/welcome.html).
-#'
-#' AWS provides SDKs that consist of libraries and sample code for various
-#' programming languages and platforms (Java, Ruby, .Net, iOS, Android, and
-#' more). The SDKs provide a convenient way to create programmatic access
-#' to IAM Identity Center and other AWS services. For more information
-#' about the AWS SDKs, including how to download and install them, see
-#' [Tools for Amazon Web
+#' 
+#' Amazon Web Services provides SDKs that consist of libraries and sample
+#' code for various programming languages and platforms (Java, Ruby, .Net,
+#' iOS, Android, and more). The SDKs provide a convenient way to create
+#' programmatic access to IAM Identity Center and other Amazon Web Services
+#' services. For more information about the Amazon Web Services SDKs,
+#' including how to download and install them, see [Tools for Amazon Web
 #' Services](https://aws.amazon.com/developer/tools/).
 #'
 #' @param
@@ -34234,9 +38601,9 @@ sso <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -34306,11 +38673,11 @@ sso <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[paws.security.identity:ssoadmin_attach_customer_managed_policy_reference_to_permission_set]{attach_customer_managed_policy_reference_to_permission_set} \tab Attaches the specified customer managed policy to the specified PermissionSet\cr
-#'  \link[paws.security.identity:ssoadmin_attach_managed_policy_to_permission_set]{attach_managed_policy_to_permission_set} \tab Attaches an AWS managed policy ARN to a permission set\cr
-#'  \link[paws.security.identity:ssoadmin_create_account_assignment]{create_account_assignment} \tab Assigns access to a principal for a specified AWS account using a specified permission set\cr
+#'  \link[paws.security.identity:ssoadmin_attach_managed_policy_to_permission_set]{attach_managed_policy_to_permission_set} \tab Attaches an Amazon Web Services managed policy ARN to a permission set\cr
+#'  \link[paws.security.identity:ssoadmin_create_account_assignment]{create_account_assignment} \tab Assigns access to a principal for a specified Amazon Web Services account using a specified permission set\cr
 #'  \link[paws.security.identity:ssoadmin_create_instance_access_control_attribute_configuration]{create_instance_access_control_attribute_configuration} \tab Enables the attributes-based access control (ABAC) feature for the specified IAM Identity Center instance\cr
 #'  \link[paws.security.identity:ssoadmin_create_permission_set]{create_permission_set} \tab Creates a permission set within a specified IAM Identity Center instance\cr
-#'  \link[paws.security.identity:ssoadmin_delete_account_assignment]{delete_account_assignment} \tab Deletes a principal's access from a specified AWS account using a specified permission set\cr
+#'  \link[paws.security.identity:ssoadmin_delete_account_assignment]{delete_account_assignment} \tab Deletes a principal's access from a specified Amazon Web Services account using a specified permission set\cr
 #'  \link[paws.security.identity:ssoadmin_delete_inline_policy_from_permission_set]{delete_inline_policy_from_permission_set} \tab Deletes the inline policy from a specified permission set\cr
 #'  \link[paws.security.identity:ssoadmin_delete_instance_access_control_attribute_configuration]{delete_instance_access_control_attribute_configuration} \tab Disables the attributes-based access control (ABAC) feature for the specified IAM Identity Center instance and deletes all of the attribute mappings that have been configured\cr
 #'  \link[paws.security.identity:ssoadmin_delete_permissions_boundary_from_permission_set]{delete_permissions_boundary_from_permission_set} \tab Deletes the permissions boundary from a specified PermissionSet\cr
@@ -34321,23 +38688,23 @@ sso <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'  \link[paws.security.identity:ssoadmin_describe_permission_set]{describe_permission_set} \tab Gets the details of the permission set\cr
 #'  \link[paws.security.identity:ssoadmin_describe_permission_set_provisioning_status]{describe_permission_set_provisioning_status} \tab Describes the status for the given permission set provisioning request\cr
 #'  \link[paws.security.identity:ssoadmin_detach_customer_managed_policy_reference_from_permission_set]{detach_customer_managed_policy_reference_from_permission_set} \tab Detaches the specified customer managed policy from the specified PermissionSet\cr
-#'  \link[paws.security.identity:ssoadmin_detach_managed_policy_from_permission_set]{detach_managed_policy_from_permission_set} \tab Detaches the attached AWS managed policy ARN from the specified permission set\cr
+#'  \link[paws.security.identity:ssoadmin_detach_managed_policy_from_permission_set]{detach_managed_policy_from_permission_set} \tab Detaches the attached Amazon Web Services managed policy ARN from the specified permission set\cr
 #'  \link[paws.security.identity:ssoadmin_get_inline_policy_for_permission_set]{get_inline_policy_for_permission_set} \tab Obtains the inline policy assigned to the permission set\cr
 #'  \link[paws.security.identity:ssoadmin_get_permissions_boundary_for_permission_set]{get_permissions_boundary_for_permission_set} \tab Obtains the permissions boundary for a specified PermissionSet\cr
-#'  \link[paws.security.identity:ssoadmin_list_account_assignment_creation_status]{list_account_assignment_creation_status} \tab Lists the status of the AWS account assignment creation requests for a specified IAM Identity Center instance\cr
-#'  \link[paws.security.identity:ssoadmin_list_account_assignment_deletion_status]{list_account_assignment_deletion_status} \tab Lists the status of the AWS account assignment deletion requests for a specified IAM Identity Center instance\cr
-#'  \link[paws.security.identity:ssoadmin_list_account_assignments]{list_account_assignments} \tab Lists the assignee of the specified AWS account with the specified permission set\cr
-#'  \link[paws.security.identity:ssoadmin_list_accounts_for_provisioned_permission_set]{list_accounts_for_provisioned_permission_set} \tab Lists all the AWS accounts where the specified permission set is provisioned\cr
+#'  \link[paws.security.identity:ssoadmin_list_account_assignment_creation_status]{list_account_assignment_creation_status} \tab Lists the status of the Amazon Web Services account assignment creation requests for a specified IAM Identity Center instance\cr
+#'  \link[paws.security.identity:ssoadmin_list_account_assignment_deletion_status]{list_account_assignment_deletion_status} \tab Lists the status of the Amazon Web Services account assignment deletion requests for a specified IAM Identity Center instance\cr
+#'  \link[paws.security.identity:ssoadmin_list_account_assignments]{list_account_assignments} \tab Lists the assignee of the specified Amazon Web Services account with the specified permission set\cr
+#'  \link[paws.security.identity:ssoadmin_list_accounts_for_provisioned_permission_set]{list_accounts_for_provisioned_permission_set} \tab Lists all the Amazon Web Services accounts where the specified permission set is provisioned\cr
 #'  \link[paws.security.identity:ssoadmin_list_customer_managed_policy_references_in_permission_set]{list_customer_managed_policy_references_in_permission_set} \tab Lists all customer managed policies attached to a specified PermissionSet\cr
 #'  \link[paws.security.identity:ssoadmin_list_instances]{list_instances} \tab Lists the IAM Identity Center instances that the caller has access to\cr
-#'  \link[paws.security.identity:ssoadmin_list_managed_policies_in_permission_set]{list_managed_policies_in_permission_set} \tab Lists the AWS managed policy that is attached to a specified permission set\cr
+#'  \link[paws.security.identity:ssoadmin_list_managed_policies_in_permission_set]{list_managed_policies_in_permission_set} \tab Lists the Amazon Web Services managed policy that is attached to a specified permission set\cr
 #'  \link[paws.security.identity:ssoadmin_list_permission_set_provisioning_status]{list_permission_set_provisioning_status} \tab Lists the status of the permission set provisioning requests for a specified IAM Identity Center instance\cr
 #'  \link[paws.security.identity:ssoadmin_list_permission_sets]{list_permission_sets} \tab Lists the PermissionSets in an IAM Identity Center instance\cr
-#'  \link[paws.security.identity:ssoadmin_list_permission_sets_provisioned_to_account]{list_permission_sets_provisioned_to_account} \tab Lists all the permission sets that are provisioned to a specified AWS account\cr
+#'  \link[paws.security.identity:ssoadmin_list_permission_sets_provisioned_to_account]{list_permission_sets_provisioned_to_account} \tab Lists all the permission sets that are provisioned to a specified Amazon Web Services account\cr
 #'  \link[paws.security.identity:ssoadmin_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are attached to a specified resource\cr
 #'  \link[paws.security.identity:ssoadmin_provision_permission_set]{provision_permission_set} \tab The process by which a specified permission set is provisioned to the specified target\cr
 #'  \link[paws.security.identity:ssoadmin_put_inline_policy_to_permission_set]{put_inline_policy_to_permission_set} \tab Attaches an inline policy to a permission set\cr
-#'  \link[paws.security.identity:ssoadmin_put_permissions_boundary_to_permission_set]{put_permissions_boundary_to_permission_set} \tab Attaches an AWS managed or customer managed policy to the specified PermissionSet as a permissions boundary\cr
+#'  \link[paws.security.identity:ssoadmin_put_permissions_boundary_to_permission_set]{put_permissions_boundary_to_permission_set} \tab Attaches an Amazon Web Services managed or customer managed policy to the specified PermissionSet as a permissions boundary\cr
 #'  \link[paws.security.identity:ssoadmin_tag_resource]{tag_resource} \tab Associates a set of tags with a specified resource\cr
 #'  \link[paws.security.identity:ssoadmin_untag_resource]{untag_resource} \tab Disassociates a set of tags from a specified resource\cr
 #'  \link[paws.security.identity:ssoadmin_update_instance_access_control_attribute_configuration]{update_instance_access_control_attribute_configuration} \tab Updates the IAM Identity Center identity store attributes that you can use with the IAM Identity Center instance for attributes-based access control (ABAC)\cr
@@ -34369,18 +38736,18 @@ ssoadmin <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' native application) to register with IAM Identity Center. The service
 #' also enables the client to fetch the user’s access token upon successful
 #' authentication and authorization with IAM Identity Center.
-#'
+#' 
 #' Although AWS Single Sign-On was renamed, the `sso` and `identitystore`
 #' API namespaces will continue to retain their original name for backward
 #' compatibility purposes. For more information, see [IAM Identity Center
 #' rename](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html#renamed).
-#'
+#' 
 #' **Considerations for Using This Guide**
-#'
+#' 
 #' Before you begin using this guide, we recommend that you first review
 #' the following important information about how the IAM Identity Center
 #' OIDC service works.
-#'
+#' 
 #' -   The IAM Identity Center OIDC service currently implements only the
 #'     portions of the OAuth 2.0 Device Authorization Grant standard
 #'     ([https://tools.ietf.org/html/rfc8628](https://datatracker.ietf.org/doc/html/rfc8628))
@@ -34388,21 +38755,21 @@ ssoadmin <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'     AWS CLI. Support for other OIDC flows frequently needed for native
 #'     applications, such as Authorization Code Flow (+ PKCE), will be
 #'     addressed in future releases.
-#'
+#' 
 #' -   The service emits only OIDC access tokens, such that obtaining a new
 #'     token (For example, token refresh) requires explicit user
 #'     re-authentication.
-#'
+#' 
 #' -   The access tokens provided by this service grant access to all AWS
 #'     account entitlements assigned to an IAM Identity Center user, not
 #'     just a particular application.
-#'
+#' 
 #' -   The documentation in this guide does not describe the mechanism to
 #'     convert the access token into AWS Auth (“sigv4”) credentials for use
 #'     with IAM-protected AWS service endpoints. For more information, see
 #'     [GetRoleCredentials](https://docs.aws.amazon.com/singlesignon/latest/PortalAPIReference/API_GetRoleCredentials.html)
 #'     in the *IAM Identity Center Portal API Reference Guide*.
-#'
+#' 
 #' For general information about IAM Identity Center, see [What is IAM
 #' Identity
 #' Center?](https://docs.aws.amazon.com/singlesignon/latest/userguide/what-is.html)
@@ -34420,9 +38787,9 @@ ssoadmin <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -34517,7 +38884,7 @@ ssooidc <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #'
 #' @description
 #' Security Token Service
-#'
+#' 
 #' Security Token Service (STS) enables you to request temporary,
 #' limited-privilege credentials for users. This guide provides
 #' descriptions of the STS API. For more information about using this
@@ -34536,9 +38903,9 @@ ssooidc <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -34600,7 +38967,7 @@ ssooidc <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' @examples
 #' \dontrun{
 #' svc <- sts()
-#' #
+#' # 
 #' svc$assume_role(
 #'   ExternalId = "123ABC",
 #'   Policy = "\{\"Version\":\"2012-10-17\",\"Statement\":[\{\"Sid\":\"Stmt1\",\"Effect\":\"A...",
@@ -34656,6 +39023,202 @@ sts <- function(config = list(), credentials = list(), endpoint = NULL, region =
   )
 }
 
+#' Amazon Verified Permissions
+#'
+#' @description
+#' Amazon Verified Permissions is a permissions management service from
+#' Amazon Web Services. You can use Verified Permissions to manage
+#' permissions for your application, and authorize user access based on
+#' those permissions. Using Verified Permissions, application developers
+#' can grant access based on information about the users, resources, and
+#' requested actions. You can also evaluate additional information like
+#' group membership, attributes of the resources, and session context, such
+#' as time of request and IP addresses. Verified Permissions manages these
+#' permissions by letting you create and store authorization policies for
+#' your applications, such as consumer-facing web sites and enterprise
+#' business systems.
+#' 
+#' Verified Permissions uses Cedar as the policy language to express your
+#' permission requirements. Cedar supports both role-based access control
+#' (RBAC) and attribute-based access control (ABAC) authorization models.
+#' 
+#' For more information about configuring, administering, and using Amazon
+#' Verified Permissions in your applications, see the [Amazon Verified
+#' Permissions User
+#' Guide](https://docs.aws.amazon.com/verifiedpermissions/latest/userguide/).
+#' 
+#' For more information about the Cedar policy language, see the [Cedar
+#' Policy Language Guide](https://docs.cedarpolicy.com/).
+#' 
+#' When you write Cedar policies that reference principals, resources and
+#' actions, you can define the unique identifiers used for each of those
+#' elements. We strongly recommend that you follow these best practices:
+#' 
+#' -   **Use values like universally unique identifiers (UUIDs) for all
+#'     principal and resource identifiers.**
+#' 
+#'     For example, if user `jane` leaves the company, and you later let
+#'     someone else use the name `jane`, then that new user automatically
+#'     gets access to everything granted by policies that still reference
+#'     `User::"jane"`. Cedar can’t distinguish between the new user and the
+#'     old. This applies to both principal and resource identifiers. Always
+#'     use identifiers that are guaranteed unique and never reused to
+#'     ensure that you don’t unintentionally grant access because of the
+#'     presence of an old identifier in a policy.
+#' 
+#'     Where you use a UUID for an entity, we recommend that you follow it
+#'     with the // comment specifier and the ‘friendly’ name of your
+#'     entity. This helps to make your policies easier to understand. For
+#'     example: principal == User::"a1b2c3d4-e5f6-a1b2-c3d4-EXAMPLE11111",
+#'     // alice
+#' 
+#' -   **Do not include personally identifying, confidential, or sensitive
+#'     information as part of the unique identifier for your principals or
+#'     resources.** These identifiers are included in log entries shared in
+#'     CloudTrail trails.
+#' 
+#' Several operations return structures that appear similar, but have
+#' different purposes. As new functionality is added to the product, the
+#' structure used in a parameter of one operation might need to change in a
+#' way that wouldn't make sense for the same parameter in a different
+#' operation. To help you understand the purpose of each, the following
+#' naming convention is used for the structures:
+#' 
+#' -   Parameter type structures that end in `Detail` are used in `Get`
+#'     operations.
+#' 
+#' -   Parameter type structures that end in `Item` are used in `List`
+#'     operations.
+#' 
+#' -   Parameter type structures that use neither suffix are used in the
+#'     mutating (create and update) operations.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- verifiedpermissions(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- verifiedpermissions()
+#' svc$create_identity_source(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.security.identity:verifiedpermissions_create_identity_source]{create_identity_source} \tab Creates a reference to an Amazon Cognito user pool as an external identity provider (IdP)\cr
+#'  \link[paws.security.identity:verifiedpermissions_create_policy]{create_policy} \tab Creates a Cedar policy and saves it in the specified policy store\cr
+#'  \link[paws.security.identity:verifiedpermissions_create_policy_store]{create_policy_store} \tab Creates a policy store\cr
+#'  \link[paws.security.identity:verifiedpermissions_create_policy_template]{create_policy_template} \tab Creates a policy template\cr
+#'  \link[paws.security.identity:verifiedpermissions_delete_identity_source]{delete_identity_source} \tab Deletes an identity source that references an identity provider (IdP) such as Amazon Cognito\cr
+#'  \link[paws.security.identity:verifiedpermissions_delete_policy]{delete_policy} \tab Deletes the specified policy from the policy store\cr
+#'  \link[paws.security.identity:verifiedpermissions_delete_policy_store]{delete_policy_store} \tab Deletes the specified policy store\cr
+#'  \link[paws.security.identity:verifiedpermissions_delete_policy_template]{delete_policy_template} \tab Deletes the specified policy template from the policy store\cr
+#'  \link[paws.security.identity:verifiedpermissions_get_identity_source]{get_identity_source} \tab Retrieves the details about the specified identity source\cr
+#'  \link[paws.security.identity:verifiedpermissions_get_policy]{get_policy} \tab Retrieves information about the specified policy\cr
+#'  \link[paws.security.identity:verifiedpermissions_get_policy_store]{get_policy_store} \tab Retrieves details about a policy store\cr
+#'  \link[paws.security.identity:verifiedpermissions_get_policy_template]{get_policy_template} \tab Retrieve the details for the specified policy template in the specified policy store\cr
+#'  \link[paws.security.identity:verifiedpermissions_get_schema]{get_schema} \tab Retrieve the details for the specified schema in the specified policy store\cr
+#'  \link[paws.security.identity:verifiedpermissions_is_authorized]{is_authorized} \tab Makes an authorization decision about a service request described in the parameters\cr
+#'  \link[paws.security.identity:verifiedpermissions_is_authorized_with_token]{is_authorized_with_token} \tab Makes an authorization decision about a service request described in the parameters\cr
+#'  \link[paws.security.identity:verifiedpermissions_list_identity_sources]{list_identity_sources} \tab Returns a paginated list of all of the identity sources defined in the specified policy store\cr
+#'  \link[paws.security.identity:verifiedpermissions_list_policies]{list_policies} \tab Returns a paginated list of all policies stored in the specified policy store\cr
+#'  \link[paws.security.identity:verifiedpermissions_list_policy_stores]{list_policy_stores} \tab Returns a paginated list of all policy stores in the calling Amazon Web Services account\cr
+#'  \link[paws.security.identity:verifiedpermissions_list_policy_templates]{list_policy_templates} \tab Returns a paginated list of all policy templates in the specified policy store\cr
+#'  \link[paws.security.identity:verifiedpermissions_put_schema]{put_schema} \tab Creates or updates the policy schema in the specified policy store\cr
+#'  \link[paws.security.identity:verifiedpermissions_update_identity_source]{update_identity_source} \tab Updates the specified identity source to use a new identity provider (IdP) source, or to change the mapping of identities from the IdP to a different principal entity type\cr
+#'  \link[paws.security.identity:verifiedpermissions_update_policy]{update_policy} \tab Modifies a Cedar static policy in the specified policy store\cr
+#'  \link[paws.security.identity:verifiedpermissions_update_policy_store]{update_policy_store} \tab Modifies the validation setting for a policy store\cr
+#'  \link[paws.security.identity:verifiedpermissions_update_policy_template]{update_policy_template} \tab Updates the specified policy template
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname verifiedpermissions
+#' @export
+verifiedpermissions <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.security.identity::verifiedpermissions(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' AWS WAF
 #'
 #' @description
@@ -34663,13 +39226,13 @@ sts <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
 #' in the developer guide.
-#'
+#' 
 #' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
 #' [AWS WAF Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
-#'
+#' 
 #' This is the *AWS WAF Classic API Reference* for using AWS WAF Classic
 #' with Amazon CloudFront. The AWS WAF Classic actions and data types
 #' listed in the reference are available for protecting Amazon CloudFront
@@ -34693,9 +39256,9 @@ sts <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -34869,13 +39432,13 @@ waf <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' information, see [AWS WAF
 #' Classic](https://docs.aws.amazon.com/waf/latest/developerguide/classic-waf-chapter.html)
 #' in the developer guide.
-#'
+#' 
 #' **For the latest version of AWS WAF**, use the AWS WAFV2 API and see the
 #' [AWS WAF Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
 #' With the latest version, AWS WAF has a single set of endpoints for
 #' regional and global use.
-#'
+#' 
 #' This is the *AWS WAF Regional Classic API Reference* for using AWS WAF
 #' Classic with the AWS resources, Elastic Load Balancing (ELB) Application
 #' Load Balancers and API Gateway APIs. The AWS WAF Classic actions and
@@ -34903,9 +39466,9 @@ waf <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -35080,24 +39643,24 @@ wafregional <- function(config = list(), credentials = list(), endpoint = NULL, 
 #'
 #' @description
 #' WAF
-#'
+#' 
 #' This is the latest version of the **WAF** API, released in November,
 #' 2019. The names of the entities that you use to access this API, like
 #' endpoints and namespaces, all have the versioning information added,
 #' like "V2" or "v2", to distinguish from the prior version. We recommend
 #' migrating your resources to this version, because it has a number of
 #' significant improvements.
-#'
+#' 
 #' If you used WAF prior to this release, you can't use this WAFV2 API to
 #' access any WAF resources that you created before. You can access your
 #' old rules, web ACLs, and other WAF resources only through the WAF
 #' Classic APIs. The WAF Classic APIs have retained the prior names,
 #' endpoints, and namespaces.
-#'
+#' 
 #' For information, including how to migrate your WAF resources to this
 #' version, see the [WAF Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/waf-chapter.html).
-#'
+#' 
 #' WAF is a web application firewall that lets you monitor the HTTP and
 #' HTTPS requests that are forwarded to an Amazon CloudFront distribution,
 #' Amazon API Gateway REST API, Application Load Balancer, AppSync GraphQL
@@ -35108,43 +39671,43 @@ wafregional <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' addresses that requests originate from or the values of query strings,
 #' the protected resource responds to requests with either the requested
 #' content, an HTTP 403 status code (Forbidden), or with a custom response.
-#'
+#' 
 #' This API guide is for developers who need detailed information about WAF
 #' API actions, data types, and errors. For detailed information about WAF
 #' features and guidance for configuring and using WAF, see the [WAF
 #' Developer
 #' Guide](https://docs.aws.amazon.com/waf/latest/developerguide/what-is-aws-waf.html).
-#'
+#' 
 #' You can make calls using the endpoints listed in [WAF endpoints and
 #' quotas](https://docs.aws.amazon.com/general/latest/gr/waf.html).
-#'
+#' 
 #' -   For regional applications, you can use any of the endpoints in the
 #'     list. A regional application can be an Application Load Balancer
 #'     (ALB), an Amazon API Gateway REST API, an AppSync GraphQL API, an
 #'     Amazon Cognito user pool, an App Runner service, or an Amazon Web
 #'     Services Verified Access instance.
-#'
+#' 
 #' -   For Amazon CloudFront applications, you must use the API endpoint
 #'     listed for US East (N. Virginia): us-east-1.
-#'
+#' 
 #' Alternatively, you can use one of the Amazon Web Services SDKs to access
 #' an API that's tailored to the programming language or platform that
 #' you're using. For more information, see [Amazon Web Services
 #' SDKs](https://aws.amazon.com/developer/tools/#SDKs).
-#'
+#' 
 #' We currently provide two versions of the WAF API: this API and the prior
 #' versions, the classic WAF APIs. This new API provides the same
 #' functionality as the older versions, with the following major
 #' improvements:
-#'
+#' 
 #' -   You use one API for both global and regional applications. Where you
 #'     need to distinguish the scope, you specify a `Scope` parameter and
 #'     set it to `CLOUDFRONT` or `REGIONAL`.
-#'
+#' 
 #' -   You can define a web ACL or rule group with a single call, and
 #'     update it with a single call. You define all rule specifications in
 #'     JSON format, and pass them to your rule group or web ACL calls.
-#'
+#' 
 #' -   The limits WAF places on the use of rules more closely reflects the
 #'     cost of running each type of rule. Rule groups include capacity
 #'     settings, so you know the maximum cost of a rule group when you use
@@ -35162,9 +39725,9 @@ wafregional <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -35314,18 +39877,18 @@ wafv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' match selected events in the stream and route them to targets to take
 #' action. You can also use rules to take action on a predetermined
 #' schedule. For example, you can configure rules to:
-#'
+#' 
 #' -   Automatically invoke an Lambda function to update DNS entries when
 #'     an event notifies you that Amazon EC2 instance enters the running
 #'     state.
-#'
+#' 
 #' -   Direct specific API records from CloudTrail to an Amazon Kinesis
 #'     data stream for detailed analysis of potential security or
 #'     availability risks.
-#'
+#' 
 #' -   Periodically invoke a built-in target to create a snapshot of an
 #'     Amazon EBS volume.
-#'
+#' 
 #' For more information about the features of Amazon EventBridge, see the
 #' [Amazon EventBridge User
 #' Guide](https://docs.aws.amazon.com/eventbridge/latest/userguide/).
@@ -35342,9 +39905,9 @@ wafv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -35506,9 +40069,9 @@ eventbridge <- function(config = list(), credentials = list(), endpoint = NULL, 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -35675,9 +40238,9 @@ locationservice <- function(config = list(), credentials = list(), endpoint = NU
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -35792,50 +40355,45 @@ mq <- function(config = list(), credentials = list(), endpoint = NULL, region = 
 #'
 #' @description
 #' Amazon Managed Workflows for Apache Airflow
-#'
+#' 
 #' This section contains the Amazon Managed Workflows for Apache Airflow
 #' (MWAA) API reference documentation. For more information, see [What is
 #' Amazon
 #' MWAA?](https://docs.aws.amazon.com/mwaa/latest/userguide/what-is-mwaa.html).
-#'
+#' 
 #' **Endpoints**
-#'
+#' 
 #' -   `api.airflow.{region}.amazonaws.com` - This endpoint is used for
 #'     environment management.
-#'
+#' 
 #'     -   `create_environment`
-#'
+#' 
 #'     -   `delete_environment`
-#'
+#' 
 #'     -   `get_environment`
-#'
+#' 
 #'     -   `list_environments`
-#'
+#' 
 #'     -   `list_tags_for_resource`
-#'
+#' 
 #'     -   `tag_resource`
-#'
+#' 
 #'     -   `untag_resource`
-#'
+#' 
 #'     -   `update_environment`
-#'
+#' 
 #' -   `env.airflow.{region}.amazonaws.com` - This endpoint is used to
 #'     operate the Airflow environment.
-#'
+#' 
 #'     -   `create_cli_token`
-#'
+#' 
 #'     -   `create_web_login_token`
-#'
-#' -   `ops.airflow.{region}.amazonaws.com` - This endpoint is used to push
-#'     environment metrics that track environment health.
-#'
-#'     -   `publish_metrics`
-#'
+#' 
 #' **Regions**
-#'
-#' For a list of regions that Amazon MWAA supports, see [Region
-#' availability](https://docs.aws.amazon.com/mwaa/latest/userguide/what-is-mwaa.html#regions-mwaa)
-#' in the *Amazon MWAA User Guide*.
+#' 
+#' For a list of supported regions, see [Amazon MWAA endpoints and
+#' quotas](https://docs.aws.amazon.com/general/latest/gr/mwaa.html) in the
+#' *Amazon Web Services General Reference*.
 #'
 #' @param
 #' config
@@ -35849,9 +40407,9 @@ mq <- function(config = list(), credentials = list(), endpoint = NULL, region = 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -35950,6 +40508,287 @@ mwaa <- function(config = list(), credentials = list(), endpoint = NULL, region 
   )
 }
 
+#' Amazon EventBridge Pipes
+#'
+#' @description
+#' Amazon EventBridge Pipes connects event sources to targets. Pipes
+#' reduces the need for specialized knowledge and integration code when
+#' developing event driven architectures. This helps ensures consistency
+#' across your company’s applications. With Pipes, the target can be any
+#' available EventBridge target. To set up a pipe, you select the event
+#' source, add optional event filtering, define optional enrichment, and
+#' select the target for the event data.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- eventbridgepipes(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- eventbridgepipes()
+#' svc$create_pipe(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.application.integration:eventbridgepipes_create_pipe]{create_pipe} \tab Create a pipe\cr
+#'  \link[paws.application.integration:eventbridgepipes_delete_pipe]{delete_pipe} \tab Delete an existing pipe\cr
+#'  \link[paws.application.integration:eventbridgepipes_describe_pipe]{describe_pipe} \tab Get the information about an existing pipe\cr
+#'  \link[paws.application.integration:eventbridgepipes_list_pipes]{list_pipes} \tab Get the pipes associated with this account\cr
+#'  \link[paws.application.integration:eventbridgepipes_list_tags_for_resource]{list_tags_for_resource} \tab Displays the tags associated with a pipe\cr
+#'  \link[paws.application.integration:eventbridgepipes_start_pipe]{start_pipe} \tab Start an existing pipe\cr
+#'  \link[paws.application.integration:eventbridgepipes_stop_pipe]{stop_pipe} \tab Stop an existing pipe\cr
+#'  \link[paws.application.integration:eventbridgepipes_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified pipe\cr
+#'  \link[paws.application.integration:eventbridgepipes_untag_resource]{untag_resource} \tab Removes one or more tags from the specified pipes\cr
+#'  \link[paws.application.integration:eventbridgepipes_update_pipe]{update_pipe} \tab Update an existing pipe
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname eventbridgepipes
+#' @export
+eventbridgepipes <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.application.integration::eventbridgepipes(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
+#' AWS Resource Explorer
+#'
+#' @description
+#' Amazon Web Services Resource Explorer is a resource search and discovery
+#' service. By using Resource Explorer, you can explore your resources
+#' using an internet search engine-like experience. Examples of resources
+#' include Amazon Relational Database Service (Amazon RDS) instances,
+#' Amazon Simple Storage Service (Amazon S3) buckets, or Amazon DynamoDB
+#' tables. You can search for your resources using resource metadata like
+#' names, tags, and IDs. Resource Explorer can search across all of the
+#' Amazon Web Services Regions in your account in which you turn the
+#' service on, to simplify your cross-Region workloads.
+#' 
+#' Resource Explorer scans the resources in each of the Amazon Web Services
+#' Regions in your Amazon Web Services account in which you turn on
+#' Resource Explorer. Resource Explorer [creates and maintains an
+#' index](https://docs.aws.amazon.com/resource-explorer/latest/userguide/getting-started-terms-and-concepts.html#term-index)
+#' in each Region, with the details of that Region's resources.
+#' 
+#' You can [search across all of the indexed Regions in your
+#' account](https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region.html)
+#' by designating one of your Amazon Web Services Regions to contain the
+#' aggregator index for the account. When you [promote a local index in a
+#' Region to become the aggregator index for the
+#' account](https://docs.aws.amazon.com/resource-explorer/latest/userguide/manage-aggregator-region-turn-on.html),
+#' Resource Explorer automatically replicates the index information from
+#' all local indexes in the other Regions to the aggregator index.
+#' Therefore, the Region with the aggregator index has a copy of all
+#' resource information for all Regions in the account where you turned on
+#' Resource Explorer. As a result, views in the aggregator index Region
+#' include resources from all of the indexed Regions in your account.
+#' 
+#' For more information about Amazon Web Services Resource Explorer,
+#' including how to enable and configure the service, see the [Amazon Web
+#' Services Resource Explorer User
+#' Guide](https://docs.aws.amazon.com/resource-explorer/latest/userguide/).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- resourceexplorer(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- resourceexplorer()
+#' svc$associate_default_view(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.application.integration:resourceexplorer_associate_default_view]{associate_default_view} \tab Sets the specified view as the default for the Amazon Web Services Region in which you call this operation\cr
+#'  \link[paws.application.integration:resourceexplorer_batch_get_view]{batch_get_view} \tab Retrieves details about a list of views\cr
+#'  \link[paws.application.integration:resourceexplorer_create_index]{create_index} \tab Turns on Amazon Web Services Resource Explorer in the Amazon Web Services Region in which you called this operation by creating an index\cr
+#'  \link[paws.application.integration:resourceexplorer_create_view]{create_view} \tab Creates a view that users can query by using the Search operation\cr
+#'  \link[paws.application.integration:resourceexplorer_delete_index]{delete_index} \tab Deletes the specified index and turns off Amazon Web Services Resource Explorer in the specified Amazon Web Services Region\cr
+#'  \link[paws.application.integration:resourceexplorer_delete_view]{delete_view} \tab Deletes the specified view\cr
+#'  \link[paws.application.integration:resourceexplorer_disassociate_default_view]{disassociate_default_view} \tab After you call this operation, the affected Amazon Web Services Region no longer has a default view\cr
+#'  \link[paws.application.integration:resourceexplorer_get_default_view]{get_default_view} \tab Retrieves the Amazon Resource Name (ARN) of the view that is the default for the Amazon Web Services Region in which you call this operation\cr
+#'  \link[paws.application.integration:resourceexplorer_get_index]{get_index} \tab Retrieves details about the Amazon Web Services Resource Explorer index in the Amazon Web Services Region in which you invoked the operation\cr
+#'  \link[paws.application.integration:resourceexplorer_get_view]{get_view} \tab Retrieves details of the specified view\cr
+#'  \link[paws.application.integration:resourceexplorer_list_indexes]{list_indexes} \tab Retrieves a list of all of the indexes in Amazon Web Services Regions that are currently collecting resource information for Amazon Web Services Resource Explorer\cr
+#'  \link[paws.application.integration:resourceexplorer_list_supported_resource_types]{list_supported_resource_types} \tab Retrieves a list of all resource types currently supported by Amazon Web Services Resource Explorer\cr
+#'  \link[paws.application.integration:resourceexplorer_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags that are attached to the specified resource\cr
+#'  \link[paws.application.integration:resourceexplorer_list_views]{list_views} \tab Lists the Amazon resource names (ARNs) of the views available in the Amazon Web Services Region in which you call this operation\cr
+#'  \link[paws.application.integration:resourceexplorer_search]{search} \tab Searches for resources and displays details about all resources that match the specified criteria\cr
+#'  \link[paws.application.integration:resourceexplorer_tag_resource]{tag_resource} \tab Adds one or more tag key and value pairs to an Amazon Web Services Resource Explorer view or index\cr
+#'  \link[paws.application.integration:resourceexplorer_untag_resource]{untag_resource} \tab Removes one or more tag key and value pairs from an Amazon Web Services Resource Explorer view or index\cr
+#'  \link[paws.application.integration:resourceexplorer_update_index_type]{update_index_type} \tab Changes the type of the index from one of the following types to the other\cr
+#'  \link[paws.application.integration:resourceexplorer_update_view]{update_view} \tab Modifies some of the details of a view
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname resourceexplorer
+#' @export
+resourceexplorer <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.application.integration::resourceexplorer(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Schemas
 #'
 #' @description
@@ -35967,9 +40806,9 @@ mwaa <- function(config = list(), credentials = list(), endpoint = NULL, region 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -36088,14 +40927,138 @@ schemas <- function(config = list(), credentials = list(), endpoint = NULL, regi
   )
 }
 
+#' Amazon EventBridge Scheduler
+#'
+#' @description
+#' Amazon EventBridge Scheduler is a serverless scheduler that allows you
+#' to create, run, and manage tasks from one central, managed service.
+#' EventBridge Scheduler delivers your tasks reliably, with built-in
+#' mechanisms that adjust your schedules based on the availability of
+#' downstream targets. The following reference lists the available API
+#' actions, and data types for EventBridge Scheduler.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- eventbridgescheduler(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- eventbridgescheduler()
+#' svc$create_schedule(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.application.integration:eventbridgescheduler_create_schedule]{create_schedule} \tab Creates the specified schedule\cr
+#'  \link[paws.application.integration:eventbridgescheduler_create_schedule_group]{create_schedule_group} \tab Creates the specified schedule group\cr
+#'  \link[paws.application.integration:eventbridgescheduler_delete_schedule]{delete_schedule} \tab Deletes the specified schedule\cr
+#'  \link[paws.application.integration:eventbridgescheduler_delete_schedule_group]{delete_schedule_group} \tab Deletes the specified schedule group\cr
+#'  \link[paws.application.integration:eventbridgescheduler_get_schedule]{get_schedule} \tab Retrieves the specified schedule\cr
+#'  \link[paws.application.integration:eventbridgescheduler_get_schedule_group]{get_schedule_group} \tab Retrieves the specified schedule group\cr
+#'  \link[paws.application.integration:eventbridgescheduler_list_schedule_groups]{list_schedule_groups} \tab Returns a paginated list of your schedule groups\cr
+#'  \link[paws.application.integration:eventbridgescheduler_list_schedules]{list_schedules} \tab Returns a paginated list of your EventBridge Scheduler schedules\cr
+#'  \link[paws.application.integration:eventbridgescheduler_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags associated with the Scheduler resource\cr
+#'  \link[paws.application.integration:eventbridgescheduler_tag_resource]{tag_resource} \tab Assigns one or more tags (key-value pairs) to the specified EventBridge Scheduler resource\cr
+#'  \link[paws.application.integration:eventbridgescheduler_untag_resource]{untag_resource} \tab Removes one or more tags from the specified EventBridge Scheduler schedule group\cr
+#'  \link[paws.application.integration:eventbridgescheduler_update_schedule]{update_schedule} \tab Updates the specified schedule
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname eventbridgescheduler
+#' @export
+eventbridgescheduler <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.application.integration::eventbridgescheduler(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' AWS Step Functions
 #'
 #' @description
 #' Step Functions
-#'
+#' 
 #' Step Functions is a service that lets you coordinate the components of
 #' distributed applications and microservices using visual workflows.
-#'
+#' 
 #' You can use Step Functions to build applications from individual
 #' components, each of which performs a discrete function, or *task*,
 #' allowing you to scale and change applications quickly. Step Functions
@@ -36105,7 +41068,7 @@ schemas <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' application executes predictably and in the right order every time. Step
 #' Functions logs the state of each step, so you can quickly diagnose and
 #' debug any issues.
-#'
+#' 
 #' Step Functions manages operations and underlying infrastructure to
 #' ensure your application is available at any scale. You can run tasks on
 #' Amazon Web Services, your own servers, or any system that has access to
@@ -36125,9 +41088,9 @@ schemas <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -36260,12 +41223,12 @@ sfn <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' page](https://aws.amazon.com/sns/). For detailed information about
 #' Amazon SNS features and their associated API calls, see the [Amazon SNS
 #' Developer Guide](https://docs.aws.amazon.com/sns/latest/dg/).
-#'
+#' 
 #' For information on the permissions you need to use this API, see
 #' [Identity and access management in Amazon
 #' SNS](https://docs.aws.amazon.com/sns/latest/dg/) in the *Amazon SNS
 #' Developer Guide.*
-#'
+#' 
 #' We also provide SDKs that enable you to access Amazon SNS from your
 #' preferred programming language. The SDKs contain functionality that
 #' automatically takes care of tasks such as: cryptographically signing
@@ -36285,9 +41248,9 @@ sfn <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -36421,48 +41384,48 @@ sns <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #'
 #' @description
 #' Welcome to the *Amazon SQS API Reference*.
-#'
+#' 
 #' Amazon SQS is a reliable, highly-scalable hosted queue for storing
 #' messages as they travel between applications or microservices. Amazon
 #' SQS moves data between distributed application components and helps you
 #' decouple these components.
-#'
+#' 
 #' For information on the permissions you need to use this API, see
 #' [Identity and access
 #' management](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-authentication-and-access-control.html)
 #' in the *Amazon SQS Developer Guide.*
-#'
+#' 
 #' You can use [Amazon Web Services
 #' SDKs](https://aws.amazon.com/developer/tools/#sdk) to access Amazon SQS
 #' using your favorite programming language. The SDKs perform tasks such as
 #' the following automatically:
-#'
+#' 
 #' -   Cryptographically sign your service requests
-#'
+#' 
 #' -   Retry requests
-#'
+#' 
 #' -   Handle error responses
-#'
+#' 
 #' **Additional information**
-#'
+#' 
 #' -   [Amazon SQS Product Page](https://aws.amazon.com/sqs/)
-#'
+#' 
 #' -   *Amazon SQS Developer Guide*
-#'
+#' 
 #'     -   [Making API
 #'         Requests](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-making-api-requests-xml.html)
-#'
+#' 
 #'     -   [Amazon SQS Message
 #'         Attributes](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-message-metadata.html#sqs-message-attributes)
-#'
+#' 
 #'     -   [Amazon SQS Dead-Letter
 #'         Queues](https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-dead-letter-queues.html)
-#'
+#' 
 #' -   [Amazon SQS in the *Command Line
 #'     Interface*](https://docs.aws.amazon.com/cli/latest/reference/sqs/)
-#'
+#' 
 #' -   *Amazon Web Services General Reference*
-#'
+#' 
 #'     -   [Regions and
 #'         Endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#sqs_region)
 #'
@@ -36478,9 +41441,9 @@ sns <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -36601,11 +41564,11 @@ sqs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' Coordinating tasks in a workflow involves managing intertask
 #' dependencies, scheduling, and concurrency in accordance with the logical
 #' flow of the application.
-#'
+#' 
 #' Amazon SWF gives you full control over implementing tasks and
 #' coordinating them without worrying about underlying complexities such as
 #' tracking their progress and maintaining their state.
-#'
+#' 
 #' This documentation serves as reference only. For a broader overview of
 #' the Amazon SWF programming model, see the *\href{https://docs.aws.amazon.com/amazonswf/latest/developerguide/}{Amazon SWF Developer Guide}* .
 #'
@@ -36621,9 +41584,9 @@ sqs <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -36765,7 +41728,7 @@ swf <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' configuration, the payer account can also see the custom rate applied on
 #' the billing details page of the Amazon Web Services Billing console, or
 #' configure a cost and usage report per billing group.
-#'
+#' 
 #' This documentation shows how you can configure Amazon Web Services
 #' Billing Conductor using its API. For more information about using the
 #' Amazon Web Services Billing Conductor user interface, see the [Amazon
@@ -36784,9 +41747,9 @@ swf <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -36912,45 +41875,45 @@ billingconductor <- function(config = list(), credentials = list(), endpoint = N
 #' service costs, and instance reservations. This API reference provides
 #' descriptions, syntax, and usage examples for each of the actions and
 #' data types for the Amazon Web Services Budgets feature.
-#'
+#' 
 #' Budgets provide you with a way to see the following information:
-#'
+#' 
 #' -   How close your plan is to your budgeted amount or to the free tier
 #'     limits
-#'
+#' 
 #' -   Your usage-to-date, including how much you've used of your Reserved
 #'     Instances (RIs)
-#'
+#' 
 #' -   Your current estimated charges from Amazon Web Services, and how
 #'     much your predicted usage will accrue in charges by the end of the
 #'     month
-#'
+#' 
 #' -   How much of your budget has been used
-#'
+#' 
 #' Amazon Web Services updates your budget status several times a day.
 #' Budgets track your unblended costs, subscriptions, refunds, and RIs. You
 #' can create the following types of budgets:
-#'
+#' 
 #' -   **Cost budgets** - Plan how much you want to spend on a service.
-#'
+#' 
 #' -   **Usage budgets** - Plan how much you want to use one or more
 #'     services.
-#'
+#' 
 #' -   **RI utilization budgets** - Define a utilization threshold, and
 #'     receive alerts when your RI usage falls below that threshold. This
 #'     lets you see if your RIs are unused or under-utilized.
-#'
+#' 
 #' -   **RI coverage budgets** - Define a coverage threshold, and receive
 #'     alerts when the number of your instance hours that are covered by
 #'     RIs fall below that threshold. This lets you see how much of your
 #'     instance usage is covered by a reservation.
-#'
+#' 
 #' Service Endpoint
-#'
+#' 
 #' The Amazon Web Services Budgets API provides the following endpoint:
-#'
+#' 
 #' -   https://budgets.amazonaws.com
-#'
+#' 
 #' For information about costs that are associated with the Amazon Web
 #' Services Budgets API, see [Amazon Web Services Cost Management
 #' Pricing](https://aws.amazon.com/aws-cost-management/).
@@ -36967,9 +41930,9 @@ billingconductor <- function(config = list(), credentials = list(), endpoint = N
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -37083,19 +42046,23 @@ budgets <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' AWS Cost and Usage Report Service
 #'
 #' @description
-#' The AWS Cost and Usage Report API enables you to programmatically
-#' create, query, and delete AWS Cost and Usage report definitions.
-#'
-#' AWS Cost and Usage reports track the monthly AWS costs and usage
-#' associated with your AWS account. The report contains line items for
-#' each unique combination of AWS product, usage type, and operation that
-#' your AWS account uses. You can configure the AWS Cost and Usage report
-#' to show only the data that you want, using the AWS Cost and Usage API.
-#'
+#' You can use the Amazon Web Services Cost and Usage Report API to
+#' programmatically create, query, and delete Amazon Web Services Cost and
+#' Usage Report definitions.
+#' 
+#' Amazon Web Services Cost and Usage Report track the monthly Amazon Web
+#' Services costs and usage associated with your Amazon Web Services
+#' account. The report contains line items for each unique combination of
+#' Amazon Web Services product, usage type, and operation that your Amazon
+#' Web Services account uses. You can configure the Amazon Web Services
+#' Cost and Usage Report to show only the data that you want, using the
+#' Amazon Web Services Cost and Usage Report API.
+#' 
 #' Service Endpoint
-#'
-#' The AWS Cost and Usage Report API provides the following endpoint:
-#'
+#' 
+#' The Amazon Web Services Cost and Usage Report API provides the following
+#' endpoint:
+#' 
 #' -   cur.us-east-1.amazonaws.com
 #'
 #' @param
@@ -37110,9 +42077,9 @@ budgets <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -37184,9 +42151,12 @@ budgets <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[paws.cost.management:costandusagereportservice_delete_report_definition]{delete_report_definition} \tab Deletes the specified report\cr
-#'  \link[paws.cost.management:costandusagereportservice_describe_report_definitions]{describe_report_definitions} \tab Lists the AWS Cost and Usage reports available to this account\cr
-#'  \link[paws.cost.management:costandusagereportservice_modify_report_definition]{modify_report_definition} \tab Allows you to programatically update your report preferences\cr
-#'  \link[paws.cost.management:costandusagereportservice_put_report_definition]{put_report_definition} \tab Creates a new report using the description that you provide
+#'  \link[paws.cost.management:costandusagereportservice_describe_report_definitions]{describe_report_definitions} \tab Lists the Amazon Web Services Cost and Usage Report available to this account\cr
+#'  \link[paws.cost.management:costandusagereportservice_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags associated with the specified report definition\cr
+#'  \link[paws.cost.management:costandusagereportservice_modify_report_definition]{modify_report_definition} \tab Allows you to programmatically update your report preferences\cr
+#'  \link[paws.cost.management:costandusagereportservice_put_report_definition]{put_report_definition} \tab Creates a new report using the description that you provide\cr
+#'  \link[paws.cost.management:costandusagereportservice_tag_resource]{tag_resource} \tab Associates a set of tags with a report definition\cr
+#'  \link[paws.cost.management:costandusagereportservice_untag_resource]{untag_resource} \tab Disassociates a set of tags from a report definition
 #' }
 #'
 #' @return
@@ -37214,13 +42184,13 @@ costandusagereportservice <- function(config = list(), credentials = list(), end
 #' costs or total daily usage. You can also query for granular data. This
 #' might include the number of daily write operations for Amazon DynamoDB
 #' database tables in your production environment.
-#'
+#' 
 #' Service Endpoint
-#'
+#' 
 #' The Cost Explorer API provides the following endpoint:
-#'
+#' 
 #' -   `https://ce.us-east-1.amazonaws.com`
-#'
+#' 
 #' For information about the costs that are associated with the Cost
 #' Explorer API, see [Amazon Web Services Cost Management
 #' Pricing](https://aws.amazon.com/aws-cost-management/).
@@ -37237,9 +42207,9 @@ costandusagereportservice <- function(config = list(), credentials = list(), end
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -37371,7 +42341,7 @@ costexplorer <- function(config = list(), credentials = list(), endpoint = NULL,
 #' Catalog API actions allow you to manage your entities through list,
 #' describe, and update capabilities. An entity can be a product or an
 #' offer on AWS Marketplace.
-#'
+#' 
 #' You can automate your entity update process by integrating the AWS
 #' Marketplace Catalog API with your AWS Marketplace product build or
 #' deployment pipelines. You can also create your own applications on top
@@ -37389,9 +42359,9 @@ costexplorer <- function(config = list(), credentials = list(), endpoint = NULL,
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -37461,14 +42431,14 @@ costexplorer <- function(config = list(), credentials = list(), endpoint = NULL,
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[paws.cost.management:marketplacecatalog_cancel_change_set]{cancel_change_set} \tab Used to cancel an open change request\cr
-#'  \link[paws.cost.management:marketplacecatalog_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource-based policy on an Entity that is identified by its resource ARN\cr
+#'  \link[paws.cost.management:marketplacecatalog_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource-based policy on an entity that is identified by its resource ARN\cr
 #'  \link[paws.cost.management:marketplacecatalog_describe_change_set]{describe_change_set} \tab Provides information about a given change set\cr
 #'  \link[paws.cost.management:marketplacecatalog_describe_entity]{describe_entity} \tab Returns the metadata and content of the entity\cr
-#'  \link[paws.cost.management:marketplacecatalog_get_resource_policy]{get_resource_policy} \tab Gets a resource-based policy of an Entity that is identified by its resource ARN\cr
+#'  \link[paws.cost.management:marketplacecatalog_get_resource_policy]{get_resource_policy} \tab Gets a resource-based policy of an entity that is identified by its resource ARN\cr
 #'  \link[paws.cost.management:marketplacecatalog_list_change_sets]{list_change_sets} \tab Returns the list of change sets owned by the account being used to make the call\cr
 #'  \link[paws.cost.management:marketplacecatalog_list_entities]{list_entities} \tab Provides the list of entities of a given type\cr
 #'  \link[paws.cost.management:marketplacecatalog_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags that have been added to a resource (either an entity or change set)\cr
-#'  \link[paws.cost.management:marketplacecatalog_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based policy to an Entity\cr
+#'  \link[paws.cost.management:marketplacecatalog_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based policy to an entity\cr
 #'  \link[paws.cost.management:marketplacecatalog_start_change_set]{start_change_set} \tab Allows you to request changes for your entities\cr
 #'  \link[paws.cost.management:marketplacecatalog_tag_resource]{tag_resource} \tab Tags a resource (either an entity or change set)\cr
 #'  \link[paws.cost.management:marketplacecatalog_untag_resource]{untag_resource} \tab Removes a tag or list of tags from a resource (either an entity or change set)
@@ -37508,9 +42478,9 @@ marketplacecatalog <- function(config = list(), credentials = list(), endpoint =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -37580,7 +42550,7 @@ marketplacecatalog <- function(config = list(), credentials = list(), endpoint =
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[paws.cost.management:marketplacecommerceanalytics_generate_data_set]{generate_data_set} \tab Given a data set type and data set publication date, asynchronously publishes the requested data set to the specified S3 bucket and notifies the specified SNS topic once the data is available\cr
-#'  \link[paws.cost.management:marketplacecommerceanalytics_start_support_data_export]{start_support_data_export} \tab Given a data set type and a from date, asynchronously publishes the requested customer support data to the specified S3 bucket and notifies the specified SNS topic once the data is available
+#'  \link[paws.cost.management:marketplacecommerceanalytics_start_support_data_export]{start_support_data_export} \tab This target has been deprecated
 #' }
 #'
 #' @return
@@ -37605,15 +42575,15 @@ marketplacecommerceanalytics <- function(config = list(), credentials = list(), 
 #' @description
 #' This reference provides descriptions of the AWS Marketplace Entitlement
 #' Service API.
-#'
+#' 
 #' AWS Marketplace Entitlement Service is used to determine the entitlement
 #' of a customer to a given product. An entitlement represents capacity in
 #' a product owned by the customer. For example, a customer might own some
 #' number of users or seats in an SaaS application or some amount of data
 #' capacity in a multi-tenant database.
-#'
+#' 
 #' **Getting Entitlement Records**
-#'
+#' 
 #' -   *GetEntitlements*- Gets the entitlements for a Marketplace product.
 #'
 #' @param
@@ -37628,9 +42598,9 @@ marketplacecommerceanalytics <- function(config = list(), credentials = list(), 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -37723,40 +42693,40 @@ marketplaceentitlementservice <- function(config = list(), credentials = list(),
 #'
 #' @description
 #' AWS Marketplace Metering Service
-#'
+#' 
 #' This reference provides descriptions of the low-level AWS Marketplace
 #' Metering Service API.
-#'
+#' 
 #' AWS Marketplace sellers can use this API to submit usage data for custom
 #' usage dimensions.
-#'
+#' 
 #' For information on the permissions you need to use this API, see [AWS
 #' Marketplace metering and entitlement API
 #' permissions](https://docs.aws.amazon.com/marketplace/latest/userguide/iam-user-policy-for-aws-marketplace-actions.html)
 #' in the *AWS Marketplace Seller Guide.*
-#'
+#' 
 #' **Submitting Metering Records**
-#'
+#' 
 #' -   *MeterUsage* - Submits the metering record for an AWS Marketplace
 #'     product. `meter_usage` is called
 #'     from an EC2 instance or a container running on EKS or ECS.
-#'
+#' 
 #' -   *BatchMeterUsage* - Submits the metering record for a set of
 #'     customers.
 #'     `batch_meter_usage` is
 #'     called from a software-as-a-service (SaaS) application.
-#'
+#' 
 #' **Accepting New Customers**
-#'
+#' 
 #' -   *ResolveCustomer* - Called by a SaaS application during the
 #'     registration process. When a buyer visits your website during the
 #'     registration process, the buyer submits a Registration Token through
 #'     the browser. The Registration Token is resolved through this API to
 #'     obtain a `CustomerIdentifier` along with the `CustomerAWSAccountId`
 #'     and `ProductCode`.
-#'
+#' 
 #' **Entitlement and Metering for Paid Container Products**
-#'
+#' 
 #' -   Paid container software products sold through AWS Marketplace must
 #'     integrate with the AWS Marketplace Metering Service and call the
 #'     `register_usage` operation for
@@ -37768,14 +42738,14 @@ marketplaceentitlementservice <- function(config = list(), credentials = list(),
 #'     `register_usage` operation,
 #'     see [Container-Based
 #'     Products](https://docs.aws.amazon.com/marketplace/latest/userguide/container-based-products.html).
-#'
+#' 
 #' `batch_meter_usage` API calls
 #' are captured by AWS CloudTrail. You can use Cloudtrail to verify that
 #' the SaaS metering records that you sent are accurate by searching for
 #' records with the `eventName` of
 #' `batch_meter_usage`. You can
 #' also use CloudTrail to audit records over time. For more information,
-#' see the *\href{https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
+#' see the *\href{http://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-concepts.html}{AWS CloudTrail User Guide}.*
 #'
 #' @param
 #' config
@@ -37789,9 +42759,9 @@ marketplaceentitlementservice <- function(config = list(), credentials = list(),
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -37893,16 +42863,16 @@ marketplacemetering <- function(config = list(), credentials = list(), endpoint 
 #' `Storage Class`, and `Operating System`, and provides prices at the SKU
 #' level. You can use the Amazon Web Services Price List to do the
 #' following:
-#'
+#' 
 #' -   Build cost control and scenario planning tools
-#'
+#' 
 #' -   Reconcile billing data
-#'
+#' 
 #' -   Forecast future spend for budgeting purposes
-#'
+#' 
 #' -   Provide cost benefit analysis that compare your internal workloads
 #'     with Amazon Web Services
-#'
+#' 
 #' Use `GetServices` without a service code to retrieve the service codes
 #' for all Amazon Web Services, then `GetServices` with a service code to
 #' retrieve the attribute names for that service. After you have the
@@ -37913,13 +42883,10 @@ marketplacemetering <- function(config = list(), credentials = list(), endpoint 
 #' `get_products` to find specific products that
 #' you're interested in, such as an `AmazonEC2` instance, with a
 #' `Provisioned IOPS` `volumeType`.
-#'
-#' You can use the following endpoints for the Amazon Web Services Price
-#' List API:
-#'
-#' -   https://api.pricing.us-east-1.amazonaws.com
-#'
-#' -   https://api.pricing.ap-south-1.amazonaws.com
+#' 
+#' For more information, see [Using the Amazon Web Services Price List
+#' API](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/price-changes.html)
+#' in the *Billing User Guide*.
 #'
 #' @param
 #' config
@@ -37933,9 +42900,9 @@ marketplacemetering <- function(config = list(), credentials = list(), endpoint 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -38050,9 +43017,9 @@ pricing <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -38149,23 +43116,308 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
   )
 }
 
+#' Payment Cryptography Control Plane
+#'
+#' @description
+#' You use the Amazon Web Services Payment Cryptography Control Plane to
+#' manage the encryption keys you use for payment-related cryptographic
+#' operations. You can create, import, export, share, manage, and delete
+#' keys. You can also manage Identity and Access Management (IAM) policies
+#' for keys. For more information, see [Identity and access
+#' management](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/security-iam.html)
+#' in the *Amazon Web Services Payment Cryptography User Guide.*
+#' 
+#' To use encryption keys for payment-related transaction processing and
+#' associated cryptographic operations, you use the [Amazon Web Services
+#' Payment Cryptography Data
+#' Plane](https://docs.aws.amazon.com/payment-cryptography/latest/DataAPIReference/Welcome.html).
+#' You can encrypt, decrypt, generate, verify, and translate
+#' payment-related cryptographic operations.
+#' 
+#' All Amazon Web Services Payment Cryptography API calls must be signed
+#' and transmitted using Transport Layer Security (TLS). We recommend you
+#' always use the latest supported TLS version for logging API requests.
+#' 
+#' Amazon Web Services Payment Cryptography supports CloudTrail, a service
+#' that logs Amazon Web Services API calls and related events for your
+#' Amazon Web Services account and delivers them to an Amazon S3 bucket
+#' that you specify. By using the information collected by CloudTrail, you
+#' can determine what requests were made to Amazon Web Services Payment
+#' Cryptography, who made the request, when it was made, and so on. If you
+#' don't conﬁgure a trail, you can still view the most recent events in the
+#' CloudTrail console. For more information, see the [CloudTrail User
+#' Guide](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/).
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- paymentcryptographycontrolplane(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- paymentcryptographycontrolplane()
+#' svc$create_alias(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_create_alias]{create_alias} \tab Creates an alias, or a friendly name, for an Amazon Web Services Payment Cryptography key\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_create_key]{create_key} \tab Creates an Amazon Web Services Payment Cryptography key, a logical representation of a cryptographic key, that is unique in your account and Amazon Web Services Region\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_delete_alias]{delete_alias} \tab Deletes the alias, but doesn't affect the underlying key\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_delete_key]{delete_key} \tab Deletes the key material and all metadata associated with Amazon Web Services Payment Cryptography key\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_export_key]{export_key} \tab Exports a key from Amazon Web Services Payment Cryptography using either ANSI X9 TR-34 or TR-31 key export standard\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_get_alias]{get_alias} \tab Gets the Amazon Web Services Payment Cryptography key associated with the alias\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_get_key]{get_key} \tab Gets the key material for an Amazon Web Services Payment Cryptography key, including the immutable and mutable data specified when the key was created\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_get_parameters_for_export]{get_parameters_for_export} \tab Gets the export token and the signing key certificate to initiate a TR-34 key export from Amazon Web Services Payment Cryptography\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_get_parameters_for_import]{get_parameters_for_import} \tab Gets the import token and the wrapping key certificate to initiate a TR-34 key import into Amazon Web Services Payment Cryptography\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_get_public_key_certificate]{get_public_key_certificate} \tab Gets the public key certificate of the asymmetric key pair that exists within Amazon Web Services Payment Cryptography\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_import_key]{import_key} \tab Imports keys and public key certificates into Amazon Web Services Payment Cryptography\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_list_aliases]{list_aliases} \tab Lists the aliases for all keys in the caller's Amazon Web Services account and Amazon Web Services Region\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_list_keys]{list_keys} \tab Lists the keys in the caller's Amazon Web Services account and Amazon Web Services Region\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for an Amazon Web Services resource\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_restore_key]{restore_key} \tab Cancels a scheduled key deletion during the waiting period\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_start_key_usage]{start_key_usage} \tab Enables an Amazon Web Services Payment Cryptography key, which makes it active for cryptographic operations within Amazon Web Services Payment Cryptography\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_stop_key_usage]{stop_key_usage} \tab Disables an Amazon Web Services Payment Cryptography key, which makes it inactive within Amazon Web Services Payment Cryptography\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_tag_resource]{tag_resource} \tab Adds or edits tags on an Amazon Web Services Payment Cryptography key\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_untag_resource]{untag_resource} \tab Deletes a tag from an Amazon Web Services Payment Cryptography key\cr
+#'  \link[paws.cost.management:paymentcryptographycontrolplane_update_alias]{update_alias} \tab Associates an existing Amazon Web Services Payment Cryptography alias with a different key
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname paymentcryptographycontrolplane
+#' @export
+paymentcryptographycontrolplane <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.cost.management::paymentcryptographycontrolplane(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
+#' Payment Cryptography Data Plane
+#'
+#' @description
+#' You use the Amazon Web Services Payment Cryptography Data Plane to
+#' manage how encryption keys are used for payment-related transaction
+#' processing and associated cryptographic operations. You can encrypt,
+#' decrypt, generate, verify, and translate payment-related cryptographic
+#' operations in Amazon Web Services Payment Cryptography. For more
+#' information, see [Data
+#' operations](https://docs.aws.amazon.com/payment-cryptography/latest/userguide/data-operations.html)
+#' in the *Amazon Web Services Payment Cryptography User Guide*.
+#' 
+#' To manage your encryption keys, you use the [Amazon Web Services Payment
+#' Cryptography Control
+#' Plane](https://docs.aws.amazon.com/payment-cryptography/latest/APIReference/Welcome.html).
+#' You can create, import, export, share, manage, and delete keys. You can
+#' also manage Identity and Access Management (IAM) policies for keys.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- paymentcryptographydataplane(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- paymentcryptographydataplane()
+#' svc$decrypt_data(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.cost.management:paymentcryptographydataplane_decrypt_data]{decrypt_data} \tab Decrypts ciphertext data to plaintext using symmetric, asymmetric, or DUKPT data encryption key\cr
+#'  \link[paws.cost.management:paymentcryptographydataplane_encrypt_data]{encrypt_data} \tab Encrypts plaintext data to ciphertext using symmetric, asymmetric, or DUKPT data encryption key\cr
+#'  \link[paws.cost.management:paymentcryptographydataplane_generate_card_validation_data]{generate_card_validation_data} \tab Generates card-related validation data using algorithms such as Card Verification Values (CVV/CVV2), Dynamic Card Verification Values (dCVV/dCVV2), or Card Security Codes (CSC)\cr
+#'  \link[paws.cost.management:paymentcryptographydataplane_generate_mac]{generate_mac} \tab Generates a Message Authentication Code (MAC) cryptogram within Amazon Web Services Payment Cryptography\cr
+#'  \link[paws.cost.management:paymentcryptographydataplane_generate_pin_data]{generate_pin_data} \tab Generates pin-related data such as PIN, PIN Verification Value (PVV), PIN Block, and PIN Offset during new card issuance or reissuance\cr
+#'  \link[paws.cost.management:paymentcryptographydataplane_re_encrypt_data]{re_encrypt_data} \tab Re-encrypt ciphertext using DUKPT, Symmetric and Asymmetric Data Encryption Keys\cr
+#'  \link[paws.cost.management:paymentcryptographydataplane_translate_pin_data]{translate_pin_data} \tab Translates encrypted PIN block from and to ISO 9564 formats 0,1,3,4\cr
+#'  \link[paws.cost.management:paymentcryptographydataplane_verify_auth_request_cryptogram]{verify_auth_request_cryptogram} \tab Verifies Authorization Request Cryptogram (ARQC) for a EMV chip payment card authorization\cr
+#'  \link[paws.cost.management:paymentcryptographydataplane_verify_card_validation_data]{verify_card_validation_data} \tab Verifies card-related validation data using algorithms such as Card Verification Values (CVV/CVV2), Dynamic Card Verification Values (dCVV/dCVV2) and Card Security Codes (CSC)\cr
+#'  \link[paws.cost.management:paymentcryptographydataplane_verify_mac]{verify_mac} \tab Verifies a Message Authentication Code (MAC)\cr
+#'  \link[paws.cost.management:paymentcryptographydataplane_verify_pin_data]{verify_pin_data} \tab Verifies pin-related data such as PIN and PIN Offset using algorithms including VISA PVV and IBM3624
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname paymentcryptographydataplane
+#' @export
+paymentcryptographydataplane <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.cost.management::paymentcryptographydataplane(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon Connect Service
 #'
 #' @description
 #' Amazon Connect is a cloud-based contact center solution that you use to
 #' set up and manage a customer contact center and provide reliable
 #' customer engagement at any scale.
-#'
+#' 
 #' Amazon Connect provides metrics and real-time reporting that enable you
 #' to optimize contact routing. You can also resolve customer issues more
 #' efficiently by getting customers in touch with the appropriate agents.
-#'
+#' 
 #' There are limits to the number of Amazon Connect resources that you can
 #' create. There are also limits to the number of requests that you can
 #' make per second. For more information, see [Amazon Connect Service
 #' Quotas](https://docs.aws.amazon.com/connect/latest/adminguide/amazon-connect-service-limits.html)
 #' in the *Amazon Connect Administrator Guide*.
-#'
+#' 
 #' You can connect programmatically to an Amazon Web Services service by
 #' using an endpoint. For a list of Amazon Connect endpoints, see [Amazon
 #' Connect
@@ -38183,9 +43435,9 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -38266,6 +43518,8 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.customer.engagement:connect_associate_routing_profile_queues]{associate_routing_profile_queues} \tab Associates a set of queues with a routing profile\cr
 #'  \link[paws.customer.engagement:connect_associate_security_key]{associate_security_key} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_associate_traffic_distribution_group_user]{associate_traffic_distribution_group_user} \tab Associates an agent with a traffic distribution group\cr
+#'  \link[paws.customer.engagement:connect_batch_get_flow_association]{batch_get_flow_association} \tab Retrieve the flow associations for the given resources\cr
+#'  \link[paws.customer.engagement:connect_batch_put_contact]{batch_put_contact} \tab Only the Amazon Connect outbound campaigns service principal is allowed to assume a role in your account and call this API\cr
 #'  \link[paws.customer.engagement:connect_claim_phone_number]{claim_phone_number} \tab Claims an available phone number to your Amazon Connect instance or traffic distribution group\cr
 #'  \link[paws.customer.engagement:connect_create_agent_status]{create_agent_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_create_contact_flow]{create_contact_flow} \tab Creates a flow for the specified Amazon Connect instance\cr
@@ -38275,17 +43529,20 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.customer.engagement:connect_create_instance]{create_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_create_integration_association]{create_integration_association} \tab Creates an Amazon Web Services resource association with an Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_create_participant]{create_participant} \tab Adds a new participant into an on-going chat contact\cr
+#'  \link[paws.customer.engagement:connect_create_persistent_contact_association]{create_persistent_contact_association} \tab Enables rehydration of chats for the lifespan of a contact\cr
 #'  \link[paws.customer.engagement:connect_create_prompt]{create_prompt} \tab Creates a prompt\cr
 #'  \link[paws.customer.engagement:connect_create_queue]{create_queue} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_create_quick_connect]{create_quick_connect} \tab Creates a quick connect for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_create_routing_profile]{create_routing_profile} \tab Creates a new routing profile\cr
 #'  \link[paws.customer.engagement:connect_create_rule]{create_rule} \tab Creates a rule for the specified Amazon Connect instance\cr
-#'  \link[paws.customer.engagement:connect_create_security_profile]{create_security_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[paws.customer.engagement:connect_create_security_profile]{create_security_profile} \tab Creates a security profile\cr
 #'  \link[paws.customer.engagement:connect_create_task_template]{create_task_template} \tab Creates a new task template in the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_create_traffic_distribution_group]{create_traffic_distribution_group} \tab Creates a traffic distribution group given an Amazon Connect instance that has been replicated\cr
 #'  \link[paws.customer.engagement:connect_create_use_case]{create_use_case} \tab Creates a use case for an integration association\cr
 #'  \link[paws.customer.engagement:connect_create_user]{create_user} \tab Creates a user account for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_create_user_hierarchy_group]{create_user_hierarchy_group} \tab Creates a new user hierarchy group\cr
+#'  \link[paws.customer.engagement:connect_create_view]{create_view} \tab Creates a new view with the possible status of SAVED or PUBLISHED\cr
+#'  \link[paws.customer.engagement:connect_create_view_version]{create_view_version} \tab Publishes a new version of the view identifier\cr
 #'  \link[paws.customer.engagement:connect_create_vocabulary]{create_vocabulary} \tab Creates a custom vocabulary associated with your Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_deactivate_evaluation_form]{deactivate_evaluation_form} \tab Deactivates an evaluation form in the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_delete_contact_evaluation]{delete_contact_evaluation} \tab Deletes a contact evaluation in the specified Amazon Connect instance\cr
@@ -38300,12 +43557,14 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.customer.engagement:connect_delete_quick_connect]{delete_quick_connect} \tab Deletes a quick connect\cr
 #'  \link[paws.customer.engagement:connect_delete_routing_profile]{delete_routing_profile} \tab Deletes a routing profile\cr
 #'  \link[paws.customer.engagement:connect_delete_rule]{delete_rule} \tab Deletes a rule for the specified Amazon Connect instance\cr
-#'  \link[paws.customer.engagement:connect_delete_security_profile]{delete_security_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[paws.customer.engagement:connect_delete_security_profile]{delete_security_profile} \tab Deletes a security profile\cr
 #'  \link[paws.customer.engagement:connect_delete_task_template]{delete_task_template} \tab Deletes the task template\cr
 #'  \link[paws.customer.engagement:connect_delete_traffic_distribution_group]{delete_traffic_distribution_group} \tab Deletes a traffic distribution group\cr
 #'  \link[paws.customer.engagement:connect_delete_use_case]{delete_use_case} \tab Deletes a use case from an integration association\cr
 #'  \link[paws.customer.engagement:connect_delete_user]{delete_user} \tab Deletes a user account from the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_delete_user_hierarchy_group]{delete_user_hierarchy_group} \tab Deletes an existing user hierarchy group\cr
+#'  \link[paws.customer.engagement:connect_delete_view]{delete_view} \tab Deletes the view entirely\cr
+#'  \link[paws.customer.engagement:connect_delete_view_version]{delete_view_version} \tab Deletes the particular version specified in ViewVersion identifier\cr
 #'  \link[paws.customer.engagement:connect_delete_vocabulary]{delete_vocabulary} \tab Deletes the vocabulary that has the given identifier\cr
 #'  \link[paws.customer.engagement:connect_describe_agent_status]{describe_agent_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_describe_contact]{describe_contact} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -38323,11 +43582,12 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.customer.engagement:connect_describe_quick_connect]{describe_quick_connect} \tab Describes the quick connect\cr
 #'  \link[paws.customer.engagement:connect_describe_routing_profile]{describe_routing_profile} \tab Describes the specified routing profile\cr
 #'  \link[paws.customer.engagement:connect_describe_rule]{describe_rule} \tab Describes a rule for the specified Amazon Connect instance\cr
-#'  \link[paws.customer.engagement:connect_describe_security_profile]{describe_security_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[paws.customer.engagement:connect_describe_security_profile]{describe_security_profile} \tab Gets basic information about the security profle\cr
 #'  \link[paws.customer.engagement:connect_describe_traffic_distribution_group]{describe_traffic_distribution_group} \tab Gets details and status of a traffic distribution group\cr
 #'  \link[paws.customer.engagement:connect_describe_user]{describe_user} \tab Describes the specified user account\cr
 #'  \link[paws.customer.engagement:connect_describe_user_hierarchy_group]{describe_user_hierarchy_group} \tab Describes the specified hierarchy group\cr
 #'  \link[paws.customer.engagement:connect_describe_user_hierarchy_structure]{describe_user_hierarchy_structure} \tab Describes the hierarchy structure of the specified Amazon Connect instance\cr
+#'  \link[paws.customer.engagement:connect_describe_view]{describe_view} \tab Retrieves the view for the specified Amazon Connect instance and view identifier\cr
 #'  \link[paws.customer.engagement:connect_describe_vocabulary]{describe_vocabulary} \tab Describes the specified vocabulary\cr
 #'  \link[paws.customer.engagement:connect_disassociate_approved_origin]{disassociate_approved_origin} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_disassociate_bot]{disassociate_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -38343,7 +43603,7 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.customer.engagement:connect_get_contact_attributes]{get_contact_attributes} \tab Retrieves the contact attributes for the specified contact\cr
 #'  \link[paws.customer.engagement:connect_get_current_metric_data]{get_current_metric_data} \tab Gets the real-time metric data from the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_get_current_user_data]{get_current_user_data} \tab Gets the real-time active user data from the specified Amazon Connect instance\cr
-#'  \link[paws.customer.engagement:connect_get_federation_token]{get_federation_token} \tab Retrieves a token for federation\cr
+#'  \link[paws.customer.engagement:connect_get_federation_token]{get_federation_token} \tab Supports SAML sign-in for Amazon Connect\cr
 #'  \link[paws.customer.engagement:connect_get_metric_data]{get_metric_data} \tab Gets historical metric data from the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_get_metric_data_v2]{get_metric_data_v2} \tab Gets metric data from the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_get_prompt_file]{get_prompt_file} \tab Gets the prompt file\cr
@@ -38376,7 +43636,8 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.customer.engagement:connect_list_routing_profiles]{list_routing_profiles} \tab Provides summary information about the routing profiles for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_list_rules]{list_rules} \tab List all rules for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_list_security_keys]{list_security_keys} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-#'  \link[paws.customer.engagement:connect_list_security_profile_permissions]{list_security_profile_permissions} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[paws.customer.engagement:connect_list_security_profile_applications]{list_security_profile_applications} \tab Returns a list of third-party applications in a specific security profile\cr
+#'  \link[paws.customer.engagement:connect_list_security_profile_permissions]{list_security_profile_permissions} \tab Lists the permissions granted to a security profile\cr
 #'  \link[paws.customer.engagement:connect_list_security_profiles]{list_security_profiles} \tab Provides summary information about the security profiles for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
 #'  \link[paws.customer.engagement:connect_list_task_templates]{list_task_templates} \tab Lists task templates for the specified Amazon Connect instance\cr
@@ -38385,11 +43646,13 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.customer.engagement:connect_list_use_cases]{list_use_cases} \tab Lists the use cases for the integration association\cr
 #'  \link[paws.customer.engagement:connect_list_user_hierarchy_groups]{list_user_hierarchy_groups} \tab Provides summary information about the hierarchy groups for the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_list_users]{list_users} \tab Provides summary information about the users for the specified Amazon Connect instance\cr
+#'  \link[paws.customer.engagement:connect_list_views]{list_views} \tab Returns views in the given instance\cr
+#'  \link[paws.customer.engagement:connect_list_view_versions]{list_view_versions} \tab Returns all the available versions for the specified Amazon Connect instance and view identifier\cr
 #'  \link[paws.customer.engagement:connect_monitor_contact]{monitor_contact} \tab Initiates silent monitoring of a contact\cr
 #'  \link[paws.customer.engagement:connect_put_user_status]{put_user_status} \tab Changes the current status of a user or agent in Amazon Connect\cr
 #'  \link[paws.customer.engagement:connect_release_phone_number]{release_phone_number} \tab Releases a phone number previously claimed to an Amazon Connect instance or traffic distribution group\cr
-#'  \link[paws.customer.engagement:connect_replicate_instance]{replicate_instance} \tab Replicates an Amazon Connect instance in the specified Amazon Web Services Region\cr
-#'  \link[paws.customer.engagement:connect_resume_contact_recording]{resume_contact_recording} \tab When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording the call or screen\cr
+#'  \link[paws.customer.engagement:connect_replicate_instance]{replicate_instance} \tab Replicates an Amazon Connect instance in the specified Amazon Web Services Region and copies configuration information for Amazon Connect resources across Amazon Web Services Regions\cr
+#'  \link[paws.customer.engagement:connect_resume_contact_recording]{resume_contact_recording} \tab When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording whatever recording is selected in the flow configuration: call, screen, or both\cr
 #'  \link[paws.customer.engagement:connect_search_available_phone_numbers]{search_available_phone_numbers} \tab Searches for available phone numbers that you can claim to your Amazon Connect instance or traffic distribution group\cr
 #'  \link[paws.customer.engagement:connect_search_hours_of_operations]{search_hours_of_operations} \tab Searches the hours of operation in an Amazon Connect instance, with optional filtering\cr
 #'  \link[paws.customer.engagement:connect_search_prompts]{search_prompts} \tab Searches prompts in an Amazon Connect instance, with optional filtering\cr
@@ -38405,12 +43668,12 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.customer.engagement:connect_start_contact_recording]{start_contact_recording} \tab Starts recording the contact:\cr
 #'  \link[paws.customer.engagement:connect_start_contact_streaming]{start_contact_streaming} \tab Initiates real-time message streaming for a new chat contact\cr
 #'  \link[paws.customer.engagement:connect_start_outbound_voice_contact]{start_outbound_voice_contact} \tab Places an outbound call to a contact, and then initiates the flow\cr
-#'  \link[paws.customer.engagement:connect_start_task_contact]{start_task_contact} \tab Initiates a flow to start a new task\cr
+#'  \link[paws.customer.engagement:connect_start_task_contact]{start_task_contact} \tab Initiates a flow to start a new task contact\cr
 #'  \link[paws.customer.engagement:connect_stop_contact]{stop_contact} \tab Ends the specified contact\cr
 #'  \link[paws.customer.engagement:connect_stop_contact_recording]{stop_contact_recording} \tab Stops recording a call when a contact is being recorded\cr
 #'  \link[paws.customer.engagement:connect_stop_contact_streaming]{stop_contact_streaming} \tab Ends message streaming on a specified contact\cr
 #'  \link[paws.customer.engagement:connect_submit_contact_evaluation]{submit_contact_evaluation} \tab Submits a contact evaluation in the specified Amazon Connect instance\cr
-#'  \link[paws.customer.engagement:connect_suspend_contact_recording]{suspend_contact_recording} \tab When a contact is being recorded, this API suspends recording the call or screen\cr
+#'  \link[paws.customer.engagement:connect_suspend_contact_recording]{suspend_contact_recording} \tab When a contact is being recorded, this API suspends recording whatever is selected in the flow configuration: call, screen, or both\cr
 #'  \link[paws.customer.engagement:connect_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 #'  \link[paws.customer.engagement:connect_transfer_contact]{transfer_contact} \tab Transfers contacts from one agent or queue to another agent or queue at any point after a contact is created\cr
 #'  \link[paws.customer.engagement:connect_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
@@ -38430,6 +43693,7 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.customer.engagement:connect_update_instance_storage_config]{update_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_update_participant_role_config]{update_participant_role_config} \tab Updates timeouts for when human chat participants are to be considered idle, and when agents are automatically disconnected from a chat due to idleness\cr
 #'  \link[paws.customer.engagement:connect_update_phone_number]{update_phone_number} \tab Updates your claimed phone number from its current Amazon Connect instance or traffic distribution group to another Amazon Connect instance or traffic distribution group in the same Amazon Web Services Region\cr
+#'  \link[paws.customer.engagement:connect_update_phone_number_metadata]{update_phone_number_metadata} \tab Updates a phone number’s metadata\cr
 #'  \link[paws.customer.engagement:connect_update_prompt]{update_prompt} \tab Updates a prompt\cr
 #'  \link[paws.customer.engagement:connect_update_queue_hours_of_operation]{update_queue_hours_of_operation} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[paws.customer.engagement:connect_update_queue_max_contacts]{update_queue_max_contacts} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -38444,7 +43708,7 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.customer.engagement:connect_update_routing_profile_name]{update_routing_profile_name} \tab Updates the name and description of a routing profile\cr
 #'  \link[paws.customer.engagement:connect_update_routing_profile_queues]{update_routing_profile_queues} \tab Updates the properties associated with a set of queues for a routing profile\cr
 #'  \link[paws.customer.engagement:connect_update_rule]{update_rule} \tab Updates a rule for the specified Amazon Connect instance\cr
-#'  \link[paws.customer.engagement:connect_update_security_profile]{update_security_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[paws.customer.engagement:connect_update_security_profile]{update_security_profile} \tab Updates a security profile\cr
 #'  \link[paws.customer.engagement:connect_update_task_template]{update_task_template} \tab Updates details about a specific task template in the specified Amazon Connect instance\cr
 #'  \link[paws.customer.engagement:connect_update_traffic_distribution]{update_traffic_distribution} \tab Updates the traffic distribution for a given traffic distribution group\cr
 #'  \link[paws.customer.engagement:connect_update_user_hierarchy]{update_user_hierarchy} \tab Assigns the specified hierarchy group to the specified user\cr
@@ -38453,7 +43717,9 @@ savingsplans <- function(config = list(), credentials = list(), endpoint = NULL,
 #'  \link[paws.customer.engagement:connect_update_user_identity_info]{update_user_identity_info} \tab Updates the identity information for the specified user\cr
 #'  \link[paws.customer.engagement:connect_update_user_phone_config]{update_user_phone_config} \tab Updates the phone configuration settings for the specified user\cr
 #'  \link[paws.customer.engagement:connect_update_user_routing_profile]{update_user_routing_profile} \tab Assigns the specified routing profile to the specified user\cr
-#'  \link[paws.customer.engagement:connect_update_user_security_profiles]{update_user_security_profiles} \tab Assigns the specified security profiles to the specified user
+#'  \link[paws.customer.engagement:connect_update_user_security_profiles]{update_user_security_profiles} \tab Assigns the specified security profiles to the specified user\cr
+#'  \link[paws.customer.engagement:connect_update_view_content]{update_view_content} \tab Updates the view content of the given view identifier in the specified Amazon Connect instance\cr
+#'  \link[paws.customer.engagement:connect_update_view_metadata]{update_view_metadata} \tab Updates the view metadata
 #' }
 #'
 #' @return
@@ -38490,9 +43756,9 @@ connect <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -38602,6 +43868,149 @@ connectcampaignservice <- function(config = list(), credentials = list(), endpoi
   )
 }
 
+#' Amazon Connect Cases
+#'
+#' @description
+#' With Amazon Connect Cases, your agents can track and manage customer
+#' issues that require multiple interactions, follow-up tasks, and teams in
+#' your contact center. A case represents a customer issue. It records the
+#' issue, the steps and interactions taken to resolve the issue, and the
+#' outcome. For more information, see [Amazon Connect
+#' Cases](https://docs.aws.amazon.com/connect/latest/adminguide/cases.html)
+#' in the *Amazon Connect Administrator Guide*.
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- connectcases(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- connectcases()
+#' svc$batch_get_field(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.customer.engagement:connectcases_batch_get_field]{batch_get_field} \tab Returns the description for the list of fields in the request parameters\cr
+#'  \link[paws.customer.engagement:connectcases_batch_put_field_options]{batch_put_field_options} \tab Creates and updates a set of field options for a single select field in a Cases domain\cr
+#'  \link[paws.customer.engagement:connectcases_create_case]{create_case} \tab Creates a case in the specified Cases domain\cr
+#'  \link[paws.customer.engagement:connectcases_create_domain]{create_domain} \tab Creates a domain, which is a container for all case data, such as cases, fields, templates and layouts\cr
+#'  \link[paws.customer.engagement:connectcases_create_field]{create_field} \tab Creates a field in the Cases domain\cr
+#'  \link[paws.customer.engagement:connectcases_create_layout]{create_layout} \tab Creates a layout in the Cases domain\cr
+#'  \link[paws.customer.engagement:connectcases_create_related_item]{create_related_item} \tab Creates a related item (comments, tasks, and contacts) and associates it with a case\cr
+#'  \link[paws.customer.engagement:connectcases_create_template]{create_template} \tab Creates a template in the Cases domain\cr
+#'  \link[paws.customer.engagement:connectcases_delete_domain]{delete_domain} \tab Deletes a Cases domain\cr
+#'  \link[paws.customer.engagement:connectcases_get_case]{get_case} \tab Returns information about a specific case if it exists\cr
+#'  \link[paws.customer.engagement:connectcases_get_case_event_configuration]{get_case_event_configuration} \tab Returns the case event publishing configuration\cr
+#'  \link[paws.customer.engagement:connectcases_get_domain]{get_domain} \tab Returns information about a specific domain if it exists\cr
+#'  \link[paws.customer.engagement:connectcases_get_layout]{get_layout} \tab Returns the details for the requested layout\cr
+#'  \link[paws.customer.engagement:connectcases_get_template]{get_template} \tab Returns the details for the requested template\cr
+#'  \link[paws.customer.engagement:connectcases_list_cases_for_contact]{list_cases_for_contact} \tab Lists cases for a given contact\cr
+#'  \link[paws.customer.engagement:connectcases_list_domains]{list_domains} \tab Lists all cases domains in the Amazon Web Services account\cr
+#'  \link[paws.customer.engagement:connectcases_list_field_options]{list_field_options} \tab Lists all of the field options for a field identifier in the domain\cr
+#'  \link[paws.customer.engagement:connectcases_list_fields]{list_fields} \tab Lists all fields in a Cases domain\cr
+#'  \link[paws.customer.engagement:connectcases_list_layouts]{list_layouts} \tab Lists all layouts in the given cases domain\cr
+#'  \link[paws.customer.engagement:connectcases_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for a resource\cr
+#'  \link[paws.customer.engagement:connectcases_list_templates]{list_templates} \tab Lists all of the templates in a Cases domain\cr
+#'  \link[paws.customer.engagement:connectcases_put_case_event_configuration]{put_case_event_configuration} \tab Adds case event publishing configuration\cr
+#'  \link[paws.customer.engagement:connectcases_search_cases]{search_cases} \tab Searches for cases within their associated Cases domain\cr
+#'  \link[paws.customer.engagement:connectcases_search_related_items]{search_related_items} \tab Searches for related items that are associated with a case\cr
+#'  \link[paws.customer.engagement:connectcases_tag_resource]{tag_resource} \tab Adds tags to a resource\cr
+#'  \link[paws.customer.engagement:connectcases_untag_resource]{untag_resource} \tab Untags a resource\cr
+#'  \link[paws.customer.engagement:connectcases_update_case]{update_case} \tab Updates the values of fields on a case\cr
+#'  \link[paws.customer.engagement:connectcases_update_field]{update_field} \tab Updates the properties of an existing field\cr
+#'  \link[paws.customer.engagement:connectcases_update_layout]{update_layout} \tab Updates the attributes of an existing layout\cr
+#'  \link[paws.customer.engagement:connectcases_update_template]{update_template} \tab Updates the attributes of an existing template
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname connectcases
+#' @export
+connectcases <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.customer.engagement::connectcases(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon Connect Contact Lens
 #'
 #' @description
@@ -38610,7 +44019,7 @@ connectcampaignservice <- function(config = list(), credentials = list(), endpoi
 #' language processing, and intelligent search capabilities. It performs
 #' sentiment analysis, detects issues, and enables you to automatically
 #' categorize contacts.
-#'
+#' 
 #' Contact Lens for Amazon Connect provides both real-time and post-call
 #' analytics of customer-agent conversations. For more information, see
 #' [Analyze conversations using Contact
@@ -38629,9 +44038,9 @@ connectcampaignservice <- function(config = list(), credentials = list(), endpoi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -38728,7 +44137,7 @@ connectcontactlens <- function(config = list(), credentials = list(), endpoint =
 #' service at a lower cost. Amazon Connect communications capabilities make
 #' it easy for companies to deliver personalized interactions across
 #' communication channels, including chat.
-#'
+#' 
 #' Use the Amazon Connect Participant Service to manage participants (for
 #' example, agents, customers, and managers listening in), and to send
 #' messages and events within a chat contact. The APIs in the service
@@ -38748,9 +44157,9 @@ connectcontactlens <- function(config = list(), credentials = list(), endpoint =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -38847,6 +44256,212 @@ connectparticipant <- function(config = list(), credentials = list(), endpoint =
   )
 }
 
+#' Amazon Simple Email Service
+#'
+#' @description
+#' This document contains reference information for the [Amazon Simple
+#' Email Service](https://aws.amazon.com/ses/) (Amazon SES) API, version
+#' 2010-12-01. This document is best used in conjunction with the [Amazon
+#' SES Developer
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html).
+#' 
+#' For a list of Amazon SES endpoints to use in service requests, see
+#' [Regions and Amazon
+#' SES](https://docs.aws.amazon.com/ses/latest/dg/regions.html) in the
+#' [Amazon SES Developer
+#' Guide](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html).
+#' 
+#' This documentation contains reference information related to the
+#' following:
+#' 
+#' -   [Amazon SES API
+#'     Actions](https://docs.aws.amazon.com/ses/latest/APIReference/API_Operations.html)
+#' 
+#' -   [Amazon SES API Data
+#'     Types](https://docs.aws.amazon.com/ses/latest/APIReference/API_Types.html)
+#' 
+#' -   [Common
+#'     Parameters](https://docs.aws.amazon.com/ses/latest/APIReference/CommonParameters.html)
+#' 
+#' -   [Common
+#'     Errors](https://docs.aws.amazon.com/ses/latest/APIReference/CommonErrors.html)
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- ses(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- ses()
+#' # The following example creates a receipt rule set by cloning an existing
+#' # one:
+#' svc$clone_receipt_rule_set(
+#'   OriginalRuleSetName = "RuleSetToClone",
+#'   RuleSetName = "RuleSetToCreate"
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.customer.engagement:ses_clone_receipt_rule_set]{clone_receipt_rule_set} \tab Creates a receipt rule set by cloning an existing one\cr
+#'  \link[paws.customer.engagement:ses_create_configuration_set]{create_configuration_set} \tab Creates a configuration set\cr
+#'  \link[paws.customer.engagement:ses_create_configuration_set_event_destination]{create_configuration_set_event_destination} \tab Creates a configuration set event destination\cr
+#'  \link[paws.customer.engagement:ses_create_configuration_set_tracking_options]{create_configuration_set_tracking_options} \tab Creates an association between a configuration set and a custom domain for open and click event tracking\cr
+#'  \link[paws.customer.engagement:ses_create_custom_verification_email_template]{create_custom_verification_email_template} \tab Creates a new custom verification email template\cr
+#'  \link[paws.customer.engagement:ses_create_receipt_filter]{create_receipt_filter} \tab Creates a new IP address filter\cr
+#'  \link[paws.customer.engagement:ses_create_receipt_rule]{create_receipt_rule} \tab Creates a receipt rule\cr
+#'  \link[paws.customer.engagement:ses_create_receipt_rule_set]{create_receipt_rule_set} \tab Creates an empty receipt rule set\cr
+#'  \link[paws.customer.engagement:ses_create_template]{create_template} \tab Creates an email template\cr
+#'  \link[paws.customer.engagement:ses_delete_configuration_set]{delete_configuration_set} \tab Deletes a configuration set\cr
+#'  \link[paws.customer.engagement:ses_delete_configuration_set_event_destination]{delete_configuration_set_event_destination} \tab Deletes a configuration set event destination\cr
+#'  \link[paws.customer.engagement:ses_delete_configuration_set_tracking_options]{delete_configuration_set_tracking_options} \tab Deletes an association between a configuration set and a custom domain for open and click event tracking\cr
+#'  \link[paws.customer.engagement:ses_delete_custom_verification_email_template]{delete_custom_verification_email_template} \tab Deletes an existing custom verification email template\cr
+#'  \link[paws.customer.engagement:ses_delete_identity]{delete_identity} \tab Deletes the specified identity (an email address or a domain) from the list of verified identities\cr
+#'  \link[paws.customer.engagement:ses_delete_identity_policy]{delete_identity_policy} \tab Deletes the specified sending authorization policy for the given identity (an email address or a domain)\cr
+#'  \link[paws.customer.engagement:ses_delete_receipt_filter]{delete_receipt_filter} \tab Deletes the specified IP address filter\cr
+#'  \link[paws.customer.engagement:ses_delete_receipt_rule]{delete_receipt_rule} \tab Deletes the specified receipt rule\cr
+#'  \link[paws.customer.engagement:ses_delete_receipt_rule_set]{delete_receipt_rule_set} \tab Deletes the specified receipt rule set and all of the receipt rules it contains\cr
+#'  \link[paws.customer.engagement:ses_delete_template]{delete_template} \tab Deletes an email template\cr
+#'  \link[paws.customer.engagement:ses_delete_verified_email_address]{delete_verified_email_address} \tab Deprecated\cr
+#'  \link[paws.customer.engagement:ses_describe_active_receipt_rule_set]{describe_active_receipt_rule_set} \tab Returns the metadata and receipt rules for the receipt rule set that is currently active\cr
+#'  \link[paws.customer.engagement:ses_describe_configuration_set]{describe_configuration_set} \tab Returns the details of the specified configuration set\cr
+#'  \link[paws.customer.engagement:ses_describe_receipt_rule]{describe_receipt_rule} \tab Returns the details of the specified receipt rule\cr
+#'  \link[paws.customer.engagement:ses_describe_receipt_rule_set]{describe_receipt_rule_set} \tab Returns the details of the specified receipt rule set\cr
+#'  \link[paws.customer.engagement:ses_get_account_sending_enabled]{get_account_sending_enabled} \tab Returns the email sending status of the Amazon SES account for the current Region\cr
+#'  \link[paws.customer.engagement:ses_get_custom_verification_email_template]{get_custom_verification_email_template} \tab Returns the custom email verification template for the template name you specify\cr
+#'  \link[paws.customer.engagement:ses_get_identity_dkim_attributes]{get_identity_dkim_attributes} \tab Returns the current status of Easy DKIM signing for an entity\cr
+#'  \link[paws.customer.engagement:ses_get_identity_mail_from_domain_attributes]{get_identity_mail_from_domain_attributes} \tab Returns the custom MAIL FROM attributes for a list of identities (email addresses : domains)\cr
+#'  \link[paws.customer.engagement:ses_get_identity_notification_attributes]{get_identity_notification_attributes} \tab Given a list of verified identities (email addresses and/or domains), returns a structure describing identity notification attributes\cr
+#'  \link[paws.customer.engagement:ses_get_identity_policies]{get_identity_policies} \tab Returns the requested sending authorization policies for the given identity (an email address or a domain)\cr
+#'  \link[paws.customer.engagement:ses_get_identity_verification_attributes]{get_identity_verification_attributes} \tab Given a list of identities (email addresses and/or domains), returns the verification status and (for domain identities) the verification token for each identity\cr
+#'  \link[paws.customer.engagement:ses_get_send_quota]{get_send_quota} \tab Provides the sending limits for the Amazon SES account\cr
+#'  \link[paws.customer.engagement:ses_get_send_statistics]{get_send_statistics} \tab Provides sending statistics for the current Amazon Web Services Region\cr
+#'  \link[paws.customer.engagement:ses_get_template]{get_template} \tab Displays the template object (which includes the Subject line, HTML part and text part) for the template you specify\cr
+#'  \link[paws.customer.engagement:ses_list_configuration_sets]{list_configuration_sets} \tab Provides a list of the configuration sets associated with your Amazon SES account in the current Amazon Web Services Region\cr
+#'  \link[paws.customer.engagement:ses_list_custom_verification_email_templates]{list_custom_verification_email_templates} \tab Lists the existing custom verification email templates for your account in the current Amazon Web Services Region\cr
+#'  \link[paws.customer.engagement:ses_list_identities]{list_identities} \tab Returns a list containing all of the identities (email addresses and domains) for your Amazon Web Services account in the current Amazon Web Services Region, regardless of verification status\cr
+#'  \link[paws.customer.engagement:ses_list_identity_policies]{list_identity_policies} \tab Returns a list of sending authorization policies that are attached to the given identity (an email address or a domain)\cr
+#'  \link[paws.customer.engagement:ses_list_receipt_filters]{list_receipt_filters} \tab Lists the IP address filters associated with your Amazon Web Services account in the current Amazon Web Services Region\cr
+#'  \link[paws.customer.engagement:ses_list_receipt_rule_sets]{list_receipt_rule_sets} \tab Lists the receipt rule sets that exist under your Amazon Web Services account in the current Amazon Web Services Region\cr
+#'  \link[paws.customer.engagement:ses_list_templates]{list_templates} \tab Lists the email templates present in your Amazon SES account in the current Amazon Web Services Region\cr
+#'  \link[paws.customer.engagement:ses_list_verified_email_addresses]{list_verified_email_addresses} \tab Deprecated\cr
+#'  \link[paws.customer.engagement:ses_put_configuration_set_delivery_options]{put_configuration_set_delivery_options} \tab Adds or updates the delivery options for a configuration set\cr
+#'  \link[paws.customer.engagement:ses_put_identity_policy]{put_identity_policy} \tab Adds or updates a sending authorization policy for the specified identity (an email address or a domain)\cr
+#'  \link[paws.customer.engagement:ses_reorder_receipt_rule_set]{reorder_receipt_rule_set} \tab Reorders the receipt rules within a receipt rule set\cr
+#'  \link[paws.customer.engagement:ses_send_bounce]{send_bounce} \tab Generates and sends a bounce message to the sender of an email you received through Amazon SES\cr
+#'  \link[paws.customer.engagement:ses_send_bulk_templated_email]{send_bulk_templated_email} \tab Composes an email message to multiple destinations\cr
+#'  \link[paws.customer.engagement:ses_send_custom_verification_email]{send_custom_verification_email} \tab Adds an email address to the list of identities for your Amazon SES account in the current Amazon Web Services Region and attempts to verify it\cr
+#'  \link[paws.customer.engagement:ses_send_email]{send_email} \tab Composes an email message and immediately queues it for sending\cr
+#'  \link[paws.customer.engagement:ses_send_raw_email]{send_raw_email} \tab Composes an email message and immediately queues it for sending\cr
+#'  \link[paws.customer.engagement:ses_send_templated_email]{send_templated_email} \tab Composes an email message using an email template and immediately queues it for sending\cr
+#'  \link[paws.customer.engagement:ses_set_active_receipt_rule_set]{set_active_receipt_rule_set} \tab Sets the specified receipt rule set as the active receipt rule set\cr
+#'  \link[paws.customer.engagement:ses_set_identity_dkim_enabled]{set_identity_dkim_enabled} \tab Enables or disables Easy DKIM signing of email sent from an identity\cr
+#'  \link[paws.customer.engagement:ses_set_identity_feedback_forwarding_enabled]{set_identity_feedback_forwarding_enabled} \tab Given an identity (an email address or a domain), enables or disables whether Amazon SES forwards bounce and complaint notifications as email\cr
+#'  \link[paws.customer.engagement:ses_set_identity_headers_in_notifications_enabled]{set_identity_headers_in_notifications_enabled} \tab Given an identity (an email address or a domain), sets whether Amazon SES includes the original email headers in the Amazon Simple Notification Service (Amazon SNS) notifications of a specified type\cr
+#'  \link[paws.customer.engagement:ses_set_identity_mail_from_domain]{set_identity_mail_from_domain} \tab Enables or disables the custom MAIL FROM domain setup for a verified identity (an email address or a domain)\cr
+#'  \link[paws.customer.engagement:ses_set_identity_notification_topic]{set_identity_notification_topic} \tab Sets an Amazon Simple Notification Service (Amazon SNS) topic to use when delivering notifications\cr
+#'  \link[paws.customer.engagement:ses_set_receipt_rule_position]{set_receipt_rule_position} \tab Sets the position of the specified receipt rule in the receipt rule set\cr
+#'  \link[paws.customer.engagement:ses_test_render_template]{test_render_template} \tab Creates a preview of the MIME content of an email when provided with a template and a set of replacement data\cr
+#'  \link[paws.customer.engagement:ses_update_account_sending_enabled]{update_account_sending_enabled} \tab Enables or disables email sending across your entire Amazon SES account in the current Amazon Web Services Region\cr
+#'  \link[paws.customer.engagement:ses_update_configuration_set_event_destination]{update_configuration_set_event_destination} \tab Updates the event destination of a configuration set\cr
+#'  \link[paws.customer.engagement:ses_update_configuration_set_reputation_metrics_enabled]{update_configuration_set_reputation_metrics_enabled} \tab Enables or disables the publishing of reputation metrics for emails sent using a specific configuration set in a given Amazon Web Services Region\cr
+#'  \link[paws.customer.engagement:ses_update_configuration_set_sending_enabled]{update_configuration_set_sending_enabled} \tab Enables or disables email sending for messages sent using a specific configuration set in a given Amazon Web Services Region\cr
+#'  \link[paws.customer.engagement:ses_update_configuration_set_tracking_options]{update_configuration_set_tracking_options} \tab Modifies an association between a configuration set and a custom domain for open and click event tracking\cr
+#'  \link[paws.customer.engagement:ses_update_custom_verification_email_template]{update_custom_verification_email_template} \tab Updates an existing custom verification email template\cr
+#'  \link[paws.customer.engagement:ses_update_receipt_rule]{update_receipt_rule} \tab Updates a receipt rule\cr
+#'  \link[paws.customer.engagement:ses_update_template]{update_template} \tab Updates an email template\cr
+#'  \link[paws.customer.engagement:ses_verify_domain_dkim]{verify_domain_dkim} \tab Returns a set of DKIM tokens for a domain identity\cr
+#'  \link[paws.customer.engagement:ses_verify_domain_identity]{verify_domain_identity} \tab Adds a domain to the list of identities for your Amazon SES account in the current Amazon Web Services Region and attempts to verify it\cr
+#'  \link[paws.customer.engagement:ses_verify_email_address]{verify_email_address} \tab Deprecated\cr
+#'  \link[paws.customer.engagement:ses_verify_email_identity]{verify_email_identity} \tab Adds an email address to the list of identities for your Amazon SES account in the current Amazon Web Services Region and attempts to verify it
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname ses
+#' @export
+ses <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.customer.engagement::ses(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon Connect Wisdom Service
 #'
 #' @description
@@ -38869,9 +44484,9 @@ connectparticipant <- function(config = list(), credentials = list(), endpoint =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -39014,9 +44629,9 @@ connectwisdomservice <- function(config = list(), credentials = list(), endpoint
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -39172,9 +44787,9 @@ customerprofiles <- function(config = list(), credentials = list(), endpoint = N
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -39339,7 +44954,7 @@ customerprofiles <- function(config = list(), credentials = list(), endpoint = N
 #'  \link[paws.customer.engagement:pinpoint_phone_number_validate]{phone_number_validate} \tab Retrieves information about a phone number\cr
 #'  \link[paws.customer.engagement:pinpoint_put_events]{put_events} \tab Creates a new event to record for endpoints, or creates or updates endpoint data that existing events are associated with\cr
 #'  \link[paws.customer.engagement:pinpoint_put_event_stream]{put_event_stream} \tab Creates a new event stream for an application or updates the settings of an existing event stream for an application\cr
-#'  \link[paws.customer.engagement:pinpoint_remove_attributes]{remove_attributes} \tab Removes one or more attributes, of the same attribute type, from all the endpoints that are associated with an application\cr
+#'  \link[paws.customer.engagement:pinpoint_remove_attributes]{remove_attributes} \tab Removes one or more custom attributes, of the same attribute type, from the application\cr
 #'  \link[paws.customer.engagement:pinpoint_send_messages]{send_messages} \tab Creates and sends a direct message\cr
 #'  \link[paws.customer.engagement:pinpoint_send_otp_message]{send_otp_message} \tab Send an OTP message\cr
 #'  \link[paws.customer.engagement:pinpoint_send_users_messages]{send_users_messages} \tab Creates and sends a message to a list of users\cr
@@ -39395,14 +45010,14 @@ pinpoint <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' Welcome to the *Amazon Pinpoint Email API Reference*. This guide
 #' provides information about the Amazon Pinpoint Email API (version 1.0),
 #' including supported operations, data types, parameters, and schemas.
-#'
+#' 
 #' [Amazon Pinpoint](https://aws.amazon.com/pinpoint/) is an AWS service
 #' that you can use to engage with your customers across multiple messaging
 #' channels. You can use Amazon Pinpoint to send email, SMS text messages,
 #' voice messages, and push notifications. The Amazon Pinpoint Email API
 #' provides programmatic access to options that are unique to the email
 #' channel and supplement the options provided by the Amazon Pinpoint API.
-#'
+#' 
 #' If you're new to Amazon Pinpoint, you might find it helpful to also
 #' review the [Amazon Pinpoint Developer
 #' Guide](https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
@@ -39412,7 +45027,7 @@ pinpoint <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' mobile apps and other types of applications. The guide also provides
 #' information about key topics such as Amazon Pinpoint integration with
 #' other AWS services and the limits that apply to using the service.
-#'
+#' 
 #' The Amazon Pinpoint Email API is available in several AWS Regions and it
 #' provides an endpoint for each of these Regions. For a list of all the
 #' Regions and endpoints where the API is currently available, see [AWS
@@ -39422,7 +45037,7 @@ pinpoint <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' Regions, see [Managing AWS
 #' Regions](https://docs.aws.amazon.com/accounts/latest/reference/manage-acct-regions.html)
 #' in the *Amazon Web Services General Reference*.
-#'
+#' 
 #' In each Region, AWS maintains multiple Availability Zones. These
 #' Availability Zones are physically isolated from each other, but are
 #' united by private, low-latency, high-throughput, and highly redundant
@@ -39444,9 +45059,9 @@ pinpoint <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -39576,121 +45191,6 @@ pinpointemail <- function(config = list(), credentials = list(), endpoint = NULL
   )
 }
 
-#' Amazon Pinpoint SMS and Voice Service
-#'
-#' @description
-#' Pinpoint SMS and Voice Messaging public facing APIs
-#'
-#' @param
-#' config
-#' Optional configuration of credentials, endpoint, and/or region.
-#' \itemize{
-#' \item{\strong{credentials}:} {\itemize{
-#' \item{\strong{creds}:} {\itemize{
-#' \item{\strong{access_key_id}:} {AWS access key ID}
-#' \item{\strong{secret_access_key}:} {AWS secret access key}
-#' \item{\strong{session_token}:} {AWS temporary session token}
-#' }}
-#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-#' \item{\strong{anonymous}:} {Set anonymous credentials.}
-#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
-#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
-#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
-#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
-#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
-#' }
-#' @param
-#' credentials
-#' Optional credentials shorthand for the config parameter
-#' \itemize{
-#' \item{\strong{creds}:} {\itemize{
-#' \item{\strong{access_key_id}:} {AWS access key ID}
-#' \item{\strong{secret_access_key}:} {AWS secret access key}
-#' \item{\strong{session_token}:} {AWS temporary session token}
-#' }}
-#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-#' \item{\strong{anonymous}:} {Set anonymous credentials.}
-#' }
-#' @param
-#' endpoint
-#' Optional shorthand for complete URL to use for the constructed client.
-#' @param
-#' region
-#' Optional shorthand for AWS Region used in instantiating the client.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- pinpointsmsvoice(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string"
-#'       ),
-#'       profile = "string",
-#'       anonymous = "logical"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string",
-#'     close_connection = "logical",
-#'     timeout = "numeric",
-#'     s3_force_path_style = "logical",
-#'     sts_regional_endpoint = "string"
-#'   ),
-#'   credentials = list(
-#'     creds = list(
-#'       access_key_id = "string",
-#'       secret_access_key = "string",
-#'       session_token = "string"
-#'     ),
-#'     profile = "string",
-#'     anonymous = "logical"
-#'   ),
-#'   endpoint = "string",
-#'   region = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' svc <- pinpointsmsvoice()
-#' svc$create_configuration_set(
-#'   Foo = 123
-#' )
-#' }
-#'
-#' @section Operations:
-#' \tabular{ll}{
-#'  \link[paws.customer.engagement:pinpointsmsvoice_create_configuration_set]{create_configuration_set} \tab Create a new configuration set\cr
-#'  \link[paws.customer.engagement:pinpointsmsvoice_create_configuration_set_event_destination]{create_configuration_set_event_destination} \tab Create a new event destination in a configuration set\cr
-#'  \link[paws.customer.engagement:pinpointsmsvoice_delete_configuration_set]{delete_configuration_set} \tab Deletes an existing configuration set\cr
-#'  \link[paws.customer.engagement:pinpointsmsvoice_delete_configuration_set_event_destination]{delete_configuration_set_event_destination} \tab Deletes an event destination in a configuration set\cr
-#'  \link[paws.customer.engagement:pinpointsmsvoice_get_configuration_set_event_destinations]{get_configuration_set_event_destinations} \tab Obtain information about an event destination, including the types of events it reports, the Amazon Resource Name (ARN) of the destination, and the name of the event destination\cr
-#'  \link[paws.customer.engagement:pinpointsmsvoice_list_configuration_sets]{list_configuration_sets} \tab List all of the configuration sets associated with your Amazon Pinpoint account in the current region\cr
-#'  \link[paws.customer.engagement:pinpointsmsvoice_send_voice_message]{send_voice_message} \tab Create a new voice message and send it to a recipient's phone number\cr
-#'  \link[paws.customer.engagement:pinpointsmsvoice_update_configuration_set_event_destination]{update_configuration_set_event_destination} \tab Update an event destination in a configuration set
-#' }
-#'
-#' @return
-#' A client for the service. You can call the service's operations using
-#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
-#' to the client. The available operations are listed in the
-#' Operations section.
-#'
-#' @rdname pinpointsmsvoice
-#' @export
-pinpointsmsvoice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
-  paws.customer.engagement::pinpointsmsvoice(
-    config = config,
-    credentials = credentials,
-    endpoint = endpoint,
-    region = region
-  )
-}
-
 #' Amazon Pinpoint SMS Voice V2
 #'
 #' @description
@@ -39698,13 +45198,13 @@ pinpointsmsvoice <- function(config = list(), credentials = list(), endpoint = N
 #' This guide provides information about Amazon Pinpoint SMS and Voice,
 #' version 2 API resources, including supported HTTP methods, parameters,
 #' and schemas.
-#'
+#' 
 #' Amazon Pinpoint is an Amazon Web Services service that you can use to
 #' engage with your recipients across multiple messaging channels. The
 #' Amazon Pinpoint SMS and Voice, version 2 API provides programmatic
 #' access to options that are unique to the SMS and voice channels and
 #' supplements the resources provided by the Amazon Pinpoint API.
-#'
+#' 
 #' If you're new to Amazon Pinpoint, it's also helpful to review the
 #' [Amazon Pinpoint Developer
 #' Guide](https://docs.aws.amazon.com/pinpoint/latest/developerguide/welcome.html).
@@ -39727,9 +45227,9 @@ pinpointsmsvoice <- function(config = list(), credentials = list(), endpoint = N
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -39863,217 +45363,11 @@ pinpointsmsvoicev2 <- function(config = list(), credentials = list(), endpoint =
 #' Amazon Simple Email Service
 #'
 #' @description
-#' This document contains reference information for the [Amazon Simple
-#' Email Service](https://aws.amazon.com/ses/) (Amazon SES) API, version
-#' 2010-12-01. This document is best used in conjunction with the [Amazon
-#' SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html).
-#'
-#' For a list of Amazon SES endpoints to use in service requests, see
-#' [Regions and Amazon
-#' SES](https://docs.aws.amazon.com/ses/latest/dg/regions.html) in the
-#' [Amazon SES Developer
-#' Guide](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html).
-#'
-#' This documentation contains reference information related to the
-#' following:
-#'
-#' -   [Amazon SES API
-#'     Actions](https://docs.aws.amazon.com/ses/latest/APIReference/API_Operations.html)
-#'
-#' -   [Amazon SES API Data
-#'     Types](https://docs.aws.amazon.com/ses/latest/APIReference/API_Types.html)
-#'
-#' -   [Common
-#'     Parameters](https://docs.aws.amazon.com/ses/latest/APIReference/CommonParameters.html)
-#'
-#' -   [Common
-#'     Errors](https://docs.aws.amazon.com/ses/latest/APIReference/CommonErrors.html)
-#'
-#' @param
-#' config
-#' Optional configuration of credentials, endpoint, and/or region.
-#' \itemize{
-#' \item{\strong{credentials}:} {\itemize{
-#' \item{\strong{creds}:} {\itemize{
-#' \item{\strong{access_key_id}:} {AWS access key ID}
-#' \item{\strong{secret_access_key}:} {AWS secret access key}
-#' \item{\strong{session_token}:} {AWS temporary session token}
-#' }}
-#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-#' \item{\strong{anonymous}:} {Set anonymous credentials.}
-#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
-#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
-#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
-#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
-#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
-#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
-#' }
-#' @param
-#' credentials
-#' Optional credentials shorthand for the config parameter
-#' \itemize{
-#' \item{\strong{creds}:} {\itemize{
-#' \item{\strong{access_key_id}:} {AWS access key ID}
-#' \item{\strong{secret_access_key}:} {AWS secret access key}
-#' \item{\strong{session_token}:} {AWS temporary session token}
-#' }}
-#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
-#' \item{\strong{anonymous}:} {Set anonymous credentials.}
-#' }
-#' @param
-#' endpoint
-#' Optional shorthand for complete URL to use for the constructed client.
-#' @param
-#' region
-#' Optional shorthand for AWS Region used in instantiating the client.
-#'
-#' @section Service syntax:
-#' ```
-#' svc <- ses(
-#'   config = list(
-#'     credentials = list(
-#'       creds = list(
-#'         access_key_id = "string",
-#'         secret_access_key = "string",
-#'         session_token = "string"
-#'       ),
-#'       profile = "string",
-#'       anonymous = "logical"
-#'     ),
-#'     endpoint = "string",
-#'     region = "string",
-#'     close_connection = "logical",
-#'     timeout = "numeric",
-#'     s3_force_path_style = "logical",
-#'     sts_regional_endpoint = "string"
-#'   ),
-#'   credentials = list(
-#'     creds = list(
-#'       access_key_id = "string",
-#'       secret_access_key = "string",
-#'       session_token = "string"
-#'     ),
-#'     profile = "string",
-#'     anonymous = "logical"
-#'   ),
-#'   endpoint = "string",
-#'   region = "string"
-#' )
-#' ```
-#'
-#' @examples
-#' \dontrun{
-#' svc <- ses()
-#' # The following example creates a receipt rule set by cloning an existing
-#' # one:
-#' svc$clone_receipt_rule_set(
-#'   OriginalRuleSetName = "RuleSetToClone",
-#'   RuleSetName = "RuleSetToCreate"
-#' )
-#' }
-#'
-#' @section Operations:
-#' \tabular{ll}{
-#'  \link[paws.customer.engagement:ses_clone_receipt_rule_set]{clone_receipt_rule_set} \tab Creates a receipt rule set by cloning an existing one\cr
-#'  \link[paws.customer.engagement:ses_create_configuration_set]{create_configuration_set} \tab Creates a configuration set\cr
-#'  \link[paws.customer.engagement:ses_create_configuration_set_event_destination]{create_configuration_set_event_destination} \tab Creates a configuration set event destination\cr
-#'  \link[paws.customer.engagement:ses_create_configuration_set_tracking_options]{create_configuration_set_tracking_options} \tab Creates an association between a configuration set and a custom domain for open and click event tracking\cr
-#'  \link[paws.customer.engagement:ses_create_custom_verification_email_template]{create_custom_verification_email_template} \tab Creates a new custom verification email template\cr
-#'  \link[paws.customer.engagement:ses_create_receipt_filter]{create_receipt_filter} \tab Creates a new IP address filter\cr
-#'  \link[paws.customer.engagement:ses_create_receipt_rule]{create_receipt_rule} \tab Creates a receipt rule\cr
-#'  \link[paws.customer.engagement:ses_create_receipt_rule_set]{create_receipt_rule_set} \tab Creates an empty receipt rule set\cr
-#'  \link[paws.customer.engagement:ses_create_template]{create_template} \tab Creates an email template\cr
-#'  \link[paws.customer.engagement:ses_delete_configuration_set]{delete_configuration_set} \tab Deletes a configuration set\cr
-#'  \link[paws.customer.engagement:ses_delete_configuration_set_event_destination]{delete_configuration_set_event_destination} \tab Deletes a configuration set event destination\cr
-#'  \link[paws.customer.engagement:ses_delete_configuration_set_tracking_options]{delete_configuration_set_tracking_options} \tab Deletes an association between a configuration set and a custom domain for open and click event tracking\cr
-#'  \link[paws.customer.engagement:ses_delete_custom_verification_email_template]{delete_custom_verification_email_template} \tab Deletes an existing custom verification email template\cr
-#'  \link[paws.customer.engagement:ses_delete_identity]{delete_identity} \tab Deletes the specified identity (an email address or a domain) from the list of verified identities\cr
-#'  \link[paws.customer.engagement:ses_delete_identity_policy]{delete_identity_policy} \tab Deletes the specified sending authorization policy for the given identity (an email address or a domain)\cr
-#'  \link[paws.customer.engagement:ses_delete_receipt_filter]{delete_receipt_filter} \tab Deletes the specified IP address filter\cr
-#'  \link[paws.customer.engagement:ses_delete_receipt_rule]{delete_receipt_rule} \tab Deletes the specified receipt rule\cr
-#'  \link[paws.customer.engagement:ses_delete_receipt_rule_set]{delete_receipt_rule_set} \tab Deletes the specified receipt rule set and all of the receipt rules it contains\cr
-#'  \link[paws.customer.engagement:ses_delete_template]{delete_template} \tab Deletes an email template\cr
-#'  \link[paws.customer.engagement:ses_delete_verified_email_address]{delete_verified_email_address} \tab Deprecated\cr
-#'  \link[paws.customer.engagement:ses_describe_active_receipt_rule_set]{describe_active_receipt_rule_set} \tab Returns the metadata and receipt rules for the receipt rule set that is currently active\cr
-#'  \link[paws.customer.engagement:ses_describe_configuration_set]{describe_configuration_set} \tab Returns the details of the specified configuration set\cr
-#'  \link[paws.customer.engagement:ses_describe_receipt_rule]{describe_receipt_rule} \tab Returns the details of the specified receipt rule\cr
-#'  \link[paws.customer.engagement:ses_describe_receipt_rule_set]{describe_receipt_rule_set} \tab Returns the details of the specified receipt rule set\cr
-#'  \link[paws.customer.engagement:ses_get_account_sending_enabled]{get_account_sending_enabled} \tab Returns the email sending status of the Amazon SES account for the current Region\cr
-#'  \link[paws.customer.engagement:ses_get_custom_verification_email_template]{get_custom_verification_email_template} \tab Returns the custom email verification template for the template name you specify\cr
-#'  \link[paws.customer.engagement:ses_get_identity_dkim_attributes]{get_identity_dkim_attributes} \tab Returns the current status of Easy DKIM signing for an entity\cr
-#'  \link[paws.customer.engagement:ses_get_identity_mail_from_domain_attributes]{get_identity_mail_from_domain_attributes} \tab Returns the custom MAIL FROM attributes for a list of identities (email addresses : domains)\cr
-#'  \link[paws.customer.engagement:ses_get_identity_notification_attributes]{get_identity_notification_attributes} \tab Given a list of verified identities (email addresses and/or domains), returns a structure describing identity notification attributes\cr
-#'  \link[paws.customer.engagement:ses_get_identity_policies]{get_identity_policies} \tab Returns the requested sending authorization policies for the given identity (an email address or a domain)\cr
-#'  \link[paws.customer.engagement:ses_get_identity_verification_attributes]{get_identity_verification_attributes} \tab Given a list of identities (email addresses and/or domains), returns the verification status and (for domain identities) the verification token for each identity\cr
-#'  \link[paws.customer.engagement:ses_get_send_quota]{get_send_quota} \tab Provides the sending limits for the Amazon SES account\cr
-#'  \link[paws.customer.engagement:ses_get_send_statistics]{get_send_statistics} \tab Provides sending statistics for the current Amazon Web Services Region\cr
-#'  \link[paws.customer.engagement:ses_get_template]{get_template} \tab Displays the template object (which includes the Subject line, HTML part and text part) for the template you specify\cr
-#'  \link[paws.customer.engagement:ses_list_configuration_sets]{list_configuration_sets} \tab Provides a list of the configuration sets associated with your Amazon SES account in the current Amazon Web Services Region\cr
-#'  \link[paws.customer.engagement:ses_list_custom_verification_email_templates]{list_custom_verification_email_templates} \tab Lists the existing custom verification email templates for your account in the current Amazon Web Services Region\cr
-#'  \link[paws.customer.engagement:ses_list_identities]{list_identities} \tab Returns a list containing all of the identities (email addresses and domains) for your Amazon Web Services account in the current Amazon Web Services Region, regardless of verification status\cr
-#'  \link[paws.customer.engagement:ses_list_identity_policies]{list_identity_policies} \tab Returns a list of sending authorization policies that are attached to the given identity (an email address or a domain)\cr
-#'  \link[paws.customer.engagement:ses_list_receipt_filters]{list_receipt_filters} \tab Lists the IP address filters associated with your Amazon Web Services account in the current Amazon Web Services Region\cr
-#'  \link[paws.customer.engagement:ses_list_receipt_rule_sets]{list_receipt_rule_sets} \tab Lists the receipt rule sets that exist under your Amazon Web Services account in the current Amazon Web Services Region\cr
-#'  \link[paws.customer.engagement:ses_list_templates]{list_templates} \tab Lists the email templates present in your Amazon SES account in the current Amazon Web Services Region\cr
-#'  \link[paws.customer.engagement:ses_list_verified_email_addresses]{list_verified_email_addresses} \tab Deprecated\cr
-#'  \link[paws.customer.engagement:ses_put_configuration_set_delivery_options]{put_configuration_set_delivery_options} \tab Adds or updates the delivery options for a configuration set\cr
-#'  \link[paws.customer.engagement:ses_put_identity_policy]{put_identity_policy} \tab Adds or updates a sending authorization policy for the specified identity (an email address or a domain)\cr
-#'  \link[paws.customer.engagement:ses_reorder_receipt_rule_set]{reorder_receipt_rule_set} \tab Reorders the receipt rules within a receipt rule set\cr
-#'  \link[paws.customer.engagement:ses_send_bounce]{send_bounce} \tab Generates and sends a bounce message to the sender of an email you received through Amazon SES\cr
-#'  \link[paws.customer.engagement:ses_send_bulk_templated_email]{send_bulk_templated_email} \tab Composes an email message to multiple destinations\cr
-#'  \link[paws.customer.engagement:ses_send_custom_verification_email]{send_custom_verification_email} \tab Adds an email address to the list of identities for your Amazon SES account in the current Amazon Web Services Region and attempts to verify it\cr
-#'  \link[paws.customer.engagement:ses_send_email]{send_email} \tab Composes an email message and immediately queues it for sending\cr
-#'  \link[paws.customer.engagement:ses_send_raw_email]{send_raw_email} \tab Composes an email message and immediately queues it for sending\cr
-#'  \link[paws.customer.engagement:ses_send_templated_email]{send_templated_email} \tab Composes an email message using an email template and immediately queues it for sending\cr
-#'  \link[paws.customer.engagement:ses_set_active_receipt_rule_set]{set_active_receipt_rule_set} \tab Sets the specified receipt rule set as the active receipt rule set\cr
-#'  \link[paws.customer.engagement:ses_set_identity_dkim_enabled]{set_identity_dkim_enabled} \tab Enables or disables Easy DKIM signing of email sent from an identity\cr
-#'  \link[paws.customer.engagement:ses_set_identity_feedback_forwarding_enabled]{set_identity_feedback_forwarding_enabled} \tab Given an identity (an email address or a domain), enables or disables whether Amazon SES forwards bounce and complaint notifications as email\cr
-#'  \link[paws.customer.engagement:ses_set_identity_headers_in_notifications_enabled]{set_identity_headers_in_notifications_enabled} \tab Given an identity (an email address or a domain), sets whether Amazon SES includes the original email headers in the Amazon Simple Notification Service (Amazon SNS) notifications of a specified type\cr
-#'  \link[paws.customer.engagement:ses_set_identity_mail_from_domain]{set_identity_mail_from_domain} \tab Enables or disables the custom MAIL FROM domain setup for a verified identity (an email address or a domain)\cr
-#'  \link[paws.customer.engagement:ses_set_identity_notification_topic]{set_identity_notification_topic} \tab Sets an Amazon Simple Notification Service (Amazon SNS) topic to use when delivering notifications\cr
-#'  \link[paws.customer.engagement:ses_set_receipt_rule_position]{set_receipt_rule_position} \tab Sets the position of the specified receipt rule in the receipt rule set\cr
-#'  \link[paws.customer.engagement:ses_test_render_template]{test_render_template} \tab Creates a preview of the MIME content of an email when provided with a template and a set of replacement data\cr
-#'  \link[paws.customer.engagement:ses_update_account_sending_enabled]{update_account_sending_enabled} \tab Enables or disables email sending across your entire Amazon SES account in the current Amazon Web Services Region\cr
-#'  \link[paws.customer.engagement:ses_update_configuration_set_event_destination]{update_configuration_set_event_destination} \tab Updates the event destination of a configuration set\cr
-#'  \link[paws.customer.engagement:ses_update_configuration_set_reputation_metrics_enabled]{update_configuration_set_reputation_metrics_enabled} \tab Enables or disables the publishing of reputation metrics for emails sent using a specific configuration set in a given Amazon Web Services Region\cr
-#'  \link[paws.customer.engagement:ses_update_configuration_set_sending_enabled]{update_configuration_set_sending_enabled} \tab Enables or disables email sending for messages sent using a specific configuration set in a given Amazon Web Services Region\cr
-#'  \link[paws.customer.engagement:ses_update_configuration_set_tracking_options]{update_configuration_set_tracking_options} \tab Modifies an association between a configuration set and a custom domain for open and click event tracking\cr
-#'  \link[paws.customer.engagement:ses_update_custom_verification_email_template]{update_custom_verification_email_template} \tab Updates an existing custom verification email template\cr
-#'  \link[paws.customer.engagement:ses_update_receipt_rule]{update_receipt_rule} \tab Updates a receipt rule\cr
-#'  \link[paws.customer.engagement:ses_update_template]{update_template} \tab Updates an email template\cr
-#'  \link[paws.customer.engagement:ses_verify_domain_dkim]{verify_domain_dkim} \tab Returns a set of DKIM tokens for a domain identity\cr
-#'  \link[paws.customer.engagement:ses_verify_domain_identity]{verify_domain_identity} \tab Adds a domain to the list of identities for your Amazon SES account in the current Amazon Web Services Region and attempts to verify it\cr
-#'  \link[paws.customer.engagement:ses_verify_email_address]{verify_email_address} \tab Deprecated\cr
-#'  \link[paws.customer.engagement:ses_verify_email_identity]{verify_email_identity} \tab Adds an email address to the list of identities for your Amazon SES account in the current Amazon Web Services Region and attempts to verify it
-#' }
-#'
-#' @return
-#' A client for the service. You can call the service's operations using
-#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
-#' to the client. The available operations are listed in the
-#' Operations section.
-#'
-#' @rdname ses
-#' @export
-ses <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
-  paws.customer.engagement::ses(
-    config = config,
-    credentials = credentials,
-    endpoint = endpoint,
-    region = region
-  )
-}
-
-#' Amazon Simple Email Service
-#'
-#' @description
 #' Amazon SES API v2
-#'
+#' 
 #' [Amazon SES](https://aws.amazon.com/ses/) is an Amazon Web Services
 #' service that you can use to send email messages to your customers.
-#'
+#' 
 #' If you're new to Amazon SES API v2, you might find it helpful to review
 #' the [Amazon Simple Email Service Developer
 #' Guide](https://docs.aws.amazon.com/ses/latest/dg/Welcome.html). The
@@ -40092,9 +45386,9 @@ ses <- function(config = list(), credentials = list(), endpoint = NULL, region =
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -40275,11 +45569,126 @@ sesv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
   )
 }
 
+#' Amazon Pinpoint SMS and Voice Service
+#'
+#' @description
+#' Pinpoint SMS and Voice Messaging public facing APIs
+#'
+#' @param
+#' config
+#' Optional configuration of credentials, endpoint, and/or region.
+#' \itemize{
+#' \item{\strong{credentials}:} {\itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
+#' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
+#' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
+#' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
+#' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
+#' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
+#' \item{\strong{sts_regional_endpoint}:} {Set sts regional endpoint resolver to regional or legacy \url{https://docs.aws.amazon.com/sdkref/latest/guide/feature-sts-regionalized-endpoints.html}}
+#' }
+#' @param
+#' credentials
+#' Optional credentials shorthand for the config parameter
+#' \itemize{
+#' \item{\strong{creds}:} {\itemize{
+#' \item{\strong{access_key_id}:} {AWS access key ID}
+#' \item{\strong{secret_access_key}:} {AWS secret access key}
+#' \item{\strong{session_token}:} {AWS temporary session token}
+#' }}
+#' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
+#' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }
+#' @param
+#' endpoint
+#' Optional shorthand for complete URL to use for the constructed client.
+#' @param
+#' region
+#' Optional shorthand for AWS Region used in instantiating the client.
+#'
+#' @section Service syntax:
+#' ```
+#' svc <- pinpointsmsvoice(
+#'   config = list(
+#'     credentials = list(
+#'       creds = list(
+#'         access_key_id = "string",
+#'         secret_access_key = "string",
+#'         session_token = "string"
+#'       ),
+#'       profile = "string",
+#'       anonymous = "logical"
+#'     ),
+#'     endpoint = "string",
+#'     region = "string",
+#'     close_connection = "logical",
+#'     timeout = "numeric",
+#'     s3_force_path_style = "logical",
+#'     sts_regional_endpoint = "string"
+#'   ),
+#'   credentials = list(
+#'     creds = list(
+#'       access_key_id = "string",
+#'       secret_access_key = "string",
+#'       session_token = "string"
+#'     ),
+#'     profile = "string",
+#'     anonymous = "logical"
+#'   ),
+#'   endpoint = "string",
+#'   region = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' svc <- pinpointsmsvoice()
+#' svc$create_configuration_set(
+#'   Foo = 123
+#' )
+#' }
+#'
+#' @section Operations:
+#' \tabular{ll}{
+#'  \link[paws.customer.engagement:pinpointsmsvoice_create_configuration_set]{create_configuration_set} \tab Create a new configuration set\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoice_create_configuration_set_event_destination]{create_configuration_set_event_destination} \tab Create a new event destination in a configuration set\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoice_delete_configuration_set]{delete_configuration_set} \tab Deletes an existing configuration set\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoice_delete_configuration_set_event_destination]{delete_configuration_set_event_destination} \tab Deletes an event destination in a configuration set\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoice_get_configuration_set_event_destinations]{get_configuration_set_event_destinations} \tab Obtain information about an event destination, including the types of events it reports, the Amazon Resource Name (ARN) of the destination, and the name of the event destination\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoice_list_configuration_sets]{list_configuration_sets} \tab List all of the configuration sets associated with your Amazon Pinpoint account in the current region\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoice_send_voice_message]{send_voice_message} \tab Create a new voice message and send it to a recipient's phone number\cr
+#'  \link[paws.customer.engagement:pinpointsmsvoice_update_configuration_set_event_destination]{update_configuration_set_event_destination} \tab Update an event destination in a configuration set
+#' }
+#'
+#' @return
+#' A client for the service. You can call the service's operations using
+#' syntax like `svc$operation(...)`, where `svc` is the name you've assigned
+#' to the client. The available operations are listed in the
+#' Operations section.
+#'
+#' @rdname pinpointsmsvoice
+#' @export
+pinpointsmsvoice <- function(config = list(), credentials = list(), endpoint = NULL, region = NULL) {
+  paws.customer.engagement::pinpointsmsvoice(
+    config = config,
+    credentials = credentials,
+    endpoint = endpoint,
+    region = region
+  )
+}
+
 #' Amazon AppStream
 #'
 #' @description
 #' Amazon AppStream 2.0
-#'
+#' 
 #' This is the *Amazon AppStream 2.0 API Reference*. This documentation
 #' provides descriptions and syntax for each of the actions and data types
 #' in AppStream 2.0. AppStream 2.0 is a fully managed, secure application
@@ -40287,18 +45696,18 @@ sesv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' without rewriting applications. AppStream 2.0 manages the AWS resources
 #' that are required to host and run your applications, scales
 #' automatically, and provides access to your users on demand.
-#'
+#' 
 #' You can call the AppStream 2.0 API operations by using an interface VPC
 #' endpoint (interface endpoint). For more information, see [Access
 #' AppStream 2.0 API Operations and CLI Commands Through an Interface VPC
 #' Endpoint](https://docs.aws.amazon.com/appstream2/latest/developerguide/access-api-cli-through-interface-vpc-endpoint.html)
 #' in the *Amazon AppStream 2.0 Administration Guide*.
-#'
+#' 
 #' To learn more about AppStream 2.0, see the following resources:
-#'
+#' 
 #' -   [Amazon AppStream 2.0 product
 #'     page](https://aws.amazon.com/appstream2/)
-#'
+#' 
 #' -   [Amazon AppStream 2.0
 #'     documentation](https://docs.aws.amazon.com/appstream2/)
 #'
@@ -40314,9 +45723,9 @@ sesv2 <- function(config = list(), credentials = list(), endpoint = NULL, region
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -40483,42 +45892,42 @@ appstream <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'
 #' @description
 #' **Introduction**
-#'
+#' 
 #' The Amazon IVS Chat control-plane API enables you to create and manage
 #' Amazon IVS Chat resources. You also need to integrate with the [Amazon
 #' IVS Chat Messaging
 #' API](https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/), to
 #' enable users to interact with chat rooms in real time.
-#'
+#' 
 #' The API is an AWS regional service. For a list of supported regions and
 #' Amazon IVS Chat HTTPS service endpoints, see the Amazon IVS Chat
 #' information on the [Amazon IVS
 #' page](https://docs.aws.amazon.com/general/latest/gr/ivs.html) in the
 #' *AWS General Reference*.
-#'
+#' 
 #' **Notes on terminology:**
-#'
+#' 
 #' -   You create service applications using the Amazon IVS Chat API. We
 #'     refer to these as *applications*.
-#'
+#' 
 #' -   You create front-end client applications (browser and Android/iOS
 #'     apps) using the Amazon IVS Chat Messaging API. We refer to these as
 #'     *clients*.
-#'
+#' 
 #' **Resources**
-#'
+#' 
 #' The following resources are part of Amazon IVS Chat:
-#'
+#' 
 #' -   **LoggingConfiguration** — A configuration that allows customers to
 #'     store and record sent messages in a chat room. See the Logging
 #'     Configuration endpoints for more information.
-#'
+#' 
 #' -   **Room** — The central Amazon IVS Chat resource through which
 #'     clients connect to and exchange chat messages. See the Room
 #'     endpoints for more information.
-#'
+#' 
 #' **Tagging**
-#'
+#' 
 #' A *tag* is a metadata label that you assign to an AWS resource. A tag
 #' comprises a *key* and a *value*, both set by you. For example, you might
 #' set a tag as `topic:nature` to label a particular video category. See
@@ -40527,72 +45936,72 @@ appstream <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' for more information, including restrictions that apply to tags and "Tag
 #' naming limits and requirements"; Amazon IVS Chat has no service-specific
 #' constraints beyond what is documented there.
-#'
+#' 
 #' Tags can help you identify and organize your AWS resources. For example,
 #' you can use the same tag for different resources to indicate that they
 #' are related. You can also use tags to manage access (see [Access
 #' Tags](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_tags.html)).
-#'
+#' 
 #' The Amazon IVS Chat API has these tag-related endpoints:
 #' `tag_resource`,
 #' `untag_resource`, and
 #' `list_tags_for_resource`. The
 #' following resource supports tagging: Room.
-#'
+#' 
 #' At most 50 tags can be applied to a resource.
-#'
+#' 
 #' **API Access Security**
-#'
+#' 
 #' Your Amazon IVS Chat applications (service applications and clients)
 #' must be authenticated and authorized to access Amazon IVS Chat
 #' resources. Note the differences between these concepts:
-#'
+#' 
 #' -   *Authentication* is about verifying identity. Requests to the Amazon
 #'     IVS Chat API must be signed to verify your identity.
-#'
+#' 
 #' -   *Authorization* is about granting permissions. Your IAM roles need
 #'     to have permissions for Amazon IVS Chat API requests.
-#'
+#' 
 #' Users (viewers) connect to a room using secure access tokens that you
 #' create using the `create_chat_token`
 #' endpoint through the AWS SDK. You call CreateChatToken for every user’s
 #' chat session, passing identity and authorization information about the
 #' user.
-#'
+#' 
 #' **Signing API Requests**
-#'
+#' 
 #' HTTP API requests must be signed with an AWS SigV4 signature using your
 #' AWS security credentials. The AWS Command Line Interface (CLI) and the
 #' AWS SDKs take care of signing the underlying API calls for you. However,
 #' if your application calls the Amazon IVS Chat HTTP API directly, it’s
 #' your responsibility to sign the requests.
-#'
+#' 
 #' You generate a signature using valid AWS credentials for an IAM role
 #' that has permission to perform the requested action. For example,
 #' DeleteMessage requests must be made using an IAM role that has the
 #' `ivschat:DeleteMessage` permission.
-#'
+#' 
 #' For more information:
-#'
+#' 
 #' -   Authentication and generating signatures — See [Authenticating
 #'     Requests (Amazon Web Services Signature Version
 #'     4)](https://docs.aws.amazon.com/AmazonS3/latest/API/sig-v4-authenticating-requests.html)
 #'     in the *Amazon Web Services General Reference*.
-#'
+#' 
 #' -   Managing Amazon IVS permissions — See [Identity and Access
 #'     Management](https://docs.aws.amazon.com/ivs/latest/LowLatencyUserGuide/security-iam.html)
 #'     on the Security page of the *Amazon IVS User Guide*.
-#'
+#' 
 #' **Amazon Resource Names (ARNs)**
-#'
+#' 
 #' ARNs uniquely identify AWS resources. An ARN is required when you need
 #' to specify a resource unambiguously across all of AWS, such as in IAM
 #' policies and API calls. For more information, see [Amazon Resource
 #' Names](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html)
 #' in the *AWS General Reference*.
-#'
+#' 
 #' **Messaging Endpoints**
-#'
+#' 
 #' -   `delete_message` — Sends an event to a
 #'     specific room which directs clients to delete a specific message;
 #'     that is, unrender it from view and delete it from the client’s chat
@@ -40600,72 +46009,72 @@ appstream <- function(config = list(), credentials = list(), endpoint = NULL, re
 #'     replicates the
 #'     [DeleteMessage](https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-deletemessage-publish.html)
 #'     WebSocket operation in the Amazon IVS Chat Messaging API.
-#'
+#' 
 #' -   `disconnect_user` — Disconnects all
 #'     connections using a specified user ID from a room. This replicates
 #'     the
 #'     [DisconnectUser](https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/actions-disconnectuser-publish.html)
 #'     WebSocket operation in the Amazon IVS Chat Messaging API.
-#'
+#' 
 #' -   `send_event` — Sends an event to a room. Use
 #'     this within your application’s business logic to send events to
 #'     clients of a room; e.g., to notify clients to change the way the
 #'     chat UI is rendered.
-#'
+#' 
 #' **Chat Token Endpoint**
-#'
+#' 
 #' -   `create_chat_token` — Creates an
 #'     encrypted token that is used by a chat participant to establish an
 #'     individual WebSocket chat connection to a room. When the token is
 #'     used to connect to chat, the connection is valid for the session
 #'     duration specified in the request. The token becomes invalid at the
 #'     token-expiration timestamp included in the response.
-#'
+#' 
 #' **Room Endpoints**
-#'
+#' 
 #' -   `create_room` — Creates a room that allows
 #'     clients to connect and pass messages.
-#'
+#' 
 #' -   `delete_room` — Deletes the specified room.
-#'
+#' 
 #' -   `get_room` — Gets the specified room.
-#'
+#' 
 #' -   `list_rooms` — Gets summary information about
 #'     all your rooms in the AWS region where the API request is processed.
-#'
+#' 
 #' -   `update_room` — Updates a room’s
 #'     configuration.
-#'
+#' 
 #' **Logging Configuration Endpoints**
-#'
+#' 
 #' -   `create_logging_configuration`
 #'     — Creates a logging configuration that allows clients to store and
 #'     record sent messages.
-#'
+#' 
 #' -   `delete_logging_configuration`
 #'     — Deletes the specified logging configuration.
-#'
+#' 
 #' -   `get_logging_configuration` —
 #'     Gets the specified logging configuration.
-#'
+#' 
 #' -   `list_logging_configurations`
 #'     — Gets summary information about all your logging configurations in
 #'     the AWS region where the API request is processed.
-#'
+#' 
 #' -   `update_logging_configuration`
 #'     — Updates a specified logging configuration.
-#'
+#' 
 #' **Tags Endpoints**
-#'
+#' 
 #' -   `list_tags_for_resource` — Gets
 #'     information about AWS tags for the specified ARN.
-#'
+#' 
 #' -   `tag_resource` — Adds or updates tags for
 #'     the AWS resource with the specified ARN.
-#'
+#' 
 #' -   `untag_resource` — Removes tags from the
 #'     resource with the specified ARN.
-#'
+#' 
 #' All the above are HTTP operations. There is a separate *messaging* API
 #' for managing Chat resources; see the [Amazon IVS Chat Messaging API
 #' Reference](https://docs.aws.amazon.com/ivs/latest/chatmsgapireference/).
@@ -40682,9 +46091,9 @@ appstream <- function(config = list(), credentials = list(), endpoint = NULL, re
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -40795,7 +46204,7 @@ ivschat <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' Welcome to the Amazon Nimble Studio API reference. This API reference
 #' provides methods, schema, resources, parameters, and more to help you
 #' get the most out of Nimble Studio.
-#'
+#' 
 #' Nimble Studio is a virtual studio that empowers visual effects,
 #' animation, and interactive content teams to create content securely
 #' within a scalable, private cloud service.
@@ -40812,9 +46221,9 @@ ivschat <- function(config = list(), credentials = list(), endpoint = NULL, regi
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -40955,13 +46364,13 @@ nimblestudio <- function(config = list(), credentials = list(), endpoint = NULL,
 #'
 #' @description
 #' The Amazon WorkDocs API is designed for the following use cases:
-#'
+#' 
 #' -   File Migration: File migration applications are supported for users
 #'     who want to migrate their files from an on-premises or off-premises
 #'     file system or service. Users can insert files into a user directory
 #'     structure, as well as allow for basic metadata changes, such as
 #'     modifications to the permissions of files.
-#'
+#' 
 #' -   Security: Support security applications are supported for users who
 #'     have additional security needs, such as antivirus or data loss
 #'     prevention. The API actions, along with CloudTrail, allow these
@@ -40969,13 +46378,13 @@ nimblestudio <- function(config = list(), credentials = list(), endpoint = NULL,
 #'     the application can take the necessary actions and replace the
 #'     target file. If the target file violates the policy, the application
 #'     can also choose to email the user.
-#'
+#' 
 #' -   eDiscovery/Analytics: General administrative applications are
 #'     supported, such as eDiscovery and analytics. These applications can
 #'     choose to mimic or record the actions in an Amazon WorkDocs site,
 #'     along with CloudTrail, to replicate data for eDiscovery, backup, or
 #'     analytical applications.
-#'
+#' 
 #' All Amazon WorkDocs API actions are Amazon authenticated and
 #' certificate-signed. They not only require the use of the Amazon Web
 #' Services SDK, but also allow for the exclusive use of IAM users and
@@ -40987,18 +46396,18 @@ nimblestudio <- function(config = list(), credentials = list(), endpoint = NULL,
 #' file to any user. This allows developers to perform the three use cases
 #' above, as well as give users the ability to grant access on a selective
 #' basis using the IAM model.
-#'
+#' 
 #' The pricing for Amazon WorkDocs APIs varies depending on the API call
 #' type for these actions:
-#'
+#' 
 #' -   `READ (Get*)`
-#'
+#' 
 #' -   `WRITE (Activate*, Add*, Create*, Deactivate*, Initiate*, Update*)`
-#'
+#' 
 #' -   `LIST (Describe*)`
-#'
+#' 
 #' -   `DELETE*, CANCEL`
-#'
+#' 
 #' For information about Amazon WorkDocs API pricing, see [Amazon WorkDocs
 #' Pricing](https://aws.amazon.com/workdocs/pricing/).
 #'
@@ -41014,9 +46423,9 @@ nimblestudio <- function(config = list(), credentials = list(), endpoint = NULL,
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -41173,9 +46582,9 @@ workdocs <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -41306,20 +46715,20 @@ worklink <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' integrate WorkMail with your existing corporate directory and control
 #' both the keys that encrypt your data and the location in which your data
 #' is stored.
-#'
+#' 
 #' The WorkMail API is designed for the following scenarios:
-#'
+#' 
 #' -   Listing and describing organizations
-#'
-#'
+#' 
+#' 
 #' -   Managing users
-#'
-#'
+#' 
+#' 
 #' -   Managing groups
-#'
-#'
+#' 
+#' 
 #' -   Managing resources
-#'
+#' 
 #' All WorkMail API operations are Amazon-authenticated and
 #' certificate-signed. They not only require the use of the AWS SDK, but
 #' also allow for the exclusive use of AWS Identity and Access Management
@@ -41344,9 +46753,9 @@ worklink <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -41443,6 +46852,7 @@ worklink <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.end.user.computing:workmail_deregister_from_work_mail]{deregister_from_work_mail} \tab Mark a user, group, or resource as no longer used in WorkMail\cr
 #'  \link[paws.end.user.computing:workmail_deregister_mail_domain]{deregister_mail_domain} \tab Removes a domain from WorkMail, stops email routing to WorkMail, and removes the authorization allowing WorkMail use\cr
 #'  \link[paws.end.user.computing:workmail_describe_email_monitoring_configuration]{describe_email_monitoring_configuration} \tab Describes the current email monitoring configuration for a specified organization\cr
+#'  \link[paws.end.user.computing:workmail_describe_entity]{describe_entity} \tab Returns basic details about an entity in WorkMail\cr
 #'  \link[paws.end.user.computing:workmail_describe_group]{describe_group} \tab Returns the data available for the group\cr
 #'  \link[paws.end.user.computing:workmail_describe_inbound_dmarc_settings]{describe_inbound_dmarc_settings} \tab Lists the settings in a DMARC policy for a specified organization\cr
 #'  \link[paws.end.user.computing:workmail_describe_mailbox_export_job]{describe_mailbox_export_job} \tab Describes the current status of a mailbox export job\cr
@@ -41464,6 +46874,7 @@ worklink <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.end.user.computing:workmail_list_availability_configurations]{list_availability_configurations} \tab List all the AvailabilityConfiguration's for the given WorkMail organization\cr
 #'  \link[paws.end.user.computing:workmail_list_group_members]{list_group_members} \tab Returns an overview of the members of a group\cr
 #'  \link[paws.end.user.computing:workmail_list_groups]{list_groups} \tab Returns summaries of the organization's groups\cr
+#'  \link[paws.end.user.computing:workmail_list_groups_for_entity]{list_groups_for_entity} \tab Returns all the groups to which an entity belongs\cr
 #'  \link[paws.end.user.computing:workmail_list_impersonation_roles]{list_impersonation_roles} \tab Lists all the impersonation roles for the given WorkMail organization\cr
 #'  \link[paws.end.user.computing:workmail_list_mailbox_export_jobs]{list_mailbox_export_jobs} \tab Lists the mailbox export jobs started for the specified organization within the last seven days\cr
 #'  \link[paws.end.user.computing:workmail_list_mailbox_permissions]{list_mailbox_permissions} \tab Lists the mailbox permissions associated with a user, group, or resource mailbox\cr
@@ -41490,11 +46901,13 @@ worklink <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #'  \link[paws.end.user.computing:workmail_untag_resource]{untag_resource} \tab Untags the specified tags from the specified WorkMail organization resource\cr
 #'  \link[paws.end.user.computing:workmail_update_availability_configuration]{update_availability_configuration} \tab Updates an existing AvailabilityConfiguration for the given WorkMail organization and domain\cr
 #'  \link[paws.end.user.computing:workmail_update_default_mail_domain]{update_default_mail_domain} \tab Updates the default mail domain for an organization\cr
+#'  \link[paws.end.user.computing:workmail_update_group]{update_group} \tab Updates attibutes in a group\cr
 #'  \link[paws.end.user.computing:workmail_update_impersonation_role]{update_impersonation_role} \tab Updates an impersonation role for the given WorkMail organization\cr
 #'  \link[paws.end.user.computing:workmail_update_mailbox_quota]{update_mailbox_quota} \tab Updates a user's current mailbox quota for a specified organization and user\cr
 #'  \link[paws.end.user.computing:workmail_update_mobile_device_access_rule]{update_mobile_device_access_rule} \tab Updates a mobile device access rule for the specified WorkMail organization\cr
 #'  \link[paws.end.user.computing:workmail_update_primary_email_address]{update_primary_email_address} \tab Updates the primary email for a user, group, or resource\cr
-#'  \link[paws.end.user.computing:workmail_update_resource]{update_resource} \tab Updates data for the resource
+#'  \link[paws.end.user.computing:workmail_update_resource]{update_resource} \tab Updates data for the resource\cr
+#'  \link[paws.end.user.computing:workmail_update_user]{update_user} \tab Updates data for the user
 #' }
 #'
 #' @return
@@ -41532,9 +46945,9 @@ workmail <- function(config = list(), credentials = list(), endpoint = NULL, reg
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -41628,14 +47041,14 @@ workmailmessageflow <- function(config = list(), credentials = list(), endpoint 
 #'
 #' @description
 #' Amazon WorkSpaces Service
-#'
+#' 
 #' Amazon WorkSpaces enables you to provision virtual, cloud-based
 #' Microsoft Windows or Amazon Linux desktops for your users, known as
 #' *WorkSpaces*. WorkSpaces eliminates the need to procure and deploy
 #' hardware or install complex software. You can quickly add or remove
 #' users as your needs change. Users can access their virtual desktops from
 #' multiple devices or web browsers.
-#'
+#' 
 #' This API Reference provides detailed information about the actions, data
 #' types, parameters, and errors of the WorkSpaces service. For more
 #' information about the supported Amazon Web Services Regions, endpoints,
@@ -41643,7 +47056,7 @@ workmailmessageflow <- function(config = list(), credentials = list(), endpoint 
 #' endpoints and
 #' quotas](https://docs.aws.amazon.com/general/latest/gr/wsp.html) in the
 #' *Amazon Web Services General Reference*.
-#'
+#' 
 #' You can also manage your WorkSpaces resources using the WorkSpaces
 #' console, Command Line Interface (CLI), and SDKs. For more information
 #' about administering WorkSpaces, see the [Amazon WorkSpaces
@@ -41668,9 +47081,9 @@ workmailmessageflow <- function(config = list(), credentials = list(), endpoint 
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -41741,6 +47154,7 @@ workmailmessageflow <- function(config = list(), credentials = list(), endpoint 
 #' \tabular{ll}{
 #'  \link[paws.end.user.computing:workspaces_associate_connection_alias]{associate_connection_alias} \tab Associates the specified connection alias with the specified directory to enable cross-Region redirection\cr
 #'  \link[paws.end.user.computing:workspaces_associate_ip_groups]{associate_ip_groups} \tab Associates the specified IP access control group with the specified directory\cr
+#'  \link[paws.end.user.computing:workspaces_associate_workspace_application]{associate_workspace_application} \tab Associates the specified application to the specified WorkSpace\cr
 #'  \link[paws.end.user.computing:workspaces_authorize_ip_rules]{authorize_ip_rules} \tab Adds one or more rules to the specified IP access control group\cr
 #'  \link[paws.end.user.computing:workspaces_copy_workspace_image]{copy_workspace_image} \tab Copies the specified image from the specified Region to the current Region\cr
 #'  \link[paws.end.user.computing:workspaces_create_connect_client_add_in]{create_connect_client_add_in} \tab Creates a client-add-in for Amazon Connect within a directory\cr
@@ -41759,16 +47173,22 @@ workmailmessageflow <- function(config = list(), credentials = list(), endpoint 
 #'  \link[paws.end.user.computing:workspaces_delete_tags]{delete_tags} \tab Deletes the specified tags from the specified WorkSpaces resource\cr
 #'  \link[paws.end.user.computing:workspaces_delete_workspace_bundle]{delete_workspace_bundle} \tab Deletes the specified WorkSpace bundle\cr
 #'  \link[paws.end.user.computing:workspaces_delete_workspace_image]{delete_workspace_image} \tab Deletes the specified image from your account\cr
+#'  \link[paws.end.user.computing:workspaces_deploy_workspace_applications]{deploy_workspace_applications} \tab Deploys associated applications to the specified WorkSpace\cr
 #'  \link[paws.end.user.computing:workspaces_deregister_workspace_directory]{deregister_workspace_directory} \tab Deregisters the specified directory\cr
 #'  \link[paws.end.user.computing:workspaces_describe_account]{describe_account} \tab Retrieves a list that describes the configuration of Bring Your Own License (BYOL) for the specified account\cr
 #'  \link[paws.end.user.computing:workspaces_describe_account_modifications]{describe_account_modifications} \tab Retrieves a list that describes modifications to the configuration of Bring Your Own License (BYOL) for the specified account\cr
+#'  \link[paws.end.user.computing:workspaces_describe_application_associations]{describe_application_associations} \tab Describes the associations between the application and the specified associated resources\cr
+#'  \link[paws.end.user.computing:workspaces_describe_applications]{describe_applications} \tab Describes the specified applications by filtering based on their compute types, license availability, operating systems, and owners\cr
+#'  \link[paws.end.user.computing:workspaces_describe_bundle_associations]{describe_bundle_associations} \tab Describes the associations between the applications and the specified bundle\cr
 #'  \link[paws.end.user.computing:workspaces_describe_client_branding]{describe_client_branding} \tab Describes the specified client branding\cr
 #'  \link[paws.end.user.computing:workspaces_describe_client_properties]{describe_client_properties} \tab Retrieves a list that describes one or more specified Amazon WorkSpaces clients\cr
 #'  \link[paws.end.user.computing:workspaces_describe_connect_client_add_ins]{describe_connect_client_add_ins} \tab Retrieves a list of Amazon Connect client add-ins that have been created\cr
 #'  \link[paws.end.user.computing:workspaces_describe_connection_aliases]{describe_connection_aliases} \tab Retrieves a list that describes the connection aliases used for cross-Region redirection\cr
 #'  \link[paws.end.user.computing:workspaces_describe_connection_alias_permissions]{describe_connection_alias_permissions} \tab Describes the permissions that the owner of a connection alias has granted to another Amazon Web Services account for the specified connection alias\cr
+#'  \link[paws.end.user.computing:workspaces_describe_image_associations]{describe_image_associations} \tab Describes the associations between the applications and the specified image\cr
 #'  \link[paws.end.user.computing:workspaces_describe_ip_groups]{describe_ip_groups} \tab Describes one or more of your IP access control groups\cr
 #'  \link[paws.end.user.computing:workspaces_describe_tags]{describe_tags} \tab Describes the specified tags for the specified WorkSpaces resource\cr
+#'  \link[paws.end.user.computing:workspaces_describe_workspace_associations]{describe_workspace_associations} \tab Describes the associations betweens applications and the specified WorkSpace\cr
 #'  \link[paws.end.user.computing:workspaces_describe_workspace_bundles]{describe_workspace_bundles} \tab Retrieves a list that describes the available WorkSpace bundles\cr
 #'  \link[paws.end.user.computing:workspaces_describe_workspace_directories]{describe_workspace_directories} \tab Describes the available directories that are registered with Amazon WorkSpaces\cr
 #'  \link[paws.end.user.computing:workspaces_describe_workspace_image_permissions]{describe_workspace_image_permissions} \tab Describes the permissions that the owner of an image has granted to other Amazon Web Services accounts for an image\cr
@@ -41778,6 +47198,7 @@ workmailmessageflow <- function(config = list(), credentials = list(), endpoint 
 #'  \link[paws.end.user.computing:workspaces_describe_workspace_snapshots]{describe_workspace_snapshots} \tab Describes the snapshots for the specified WorkSpace\cr
 #'  \link[paws.end.user.computing:workspaces_disassociate_connection_alias]{disassociate_connection_alias} \tab Disassociates a connection alias from a directory\cr
 #'  \link[paws.end.user.computing:workspaces_disassociate_ip_groups]{disassociate_ip_groups} \tab Disassociates the specified IP access control group from the specified directory\cr
+#'  \link[paws.end.user.computing:workspaces_disassociate_workspace_application]{disassociate_workspace_application} \tab Disassociates the specified application from a WorkSpace\cr
 #'  \link[paws.end.user.computing:workspaces_import_client_branding]{import_client_branding} \tab Imports client branding\cr
 #'  \link[paws.end.user.computing:workspaces_import_workspace_image]{import_workspace_image} \tab Imports the specified Windows 10 or 11 Bring Your Own License (BYOL) image into Amazon WorkSpaces\cr
 #'  \link[paws.end.user.computing:workspaces_list_available_management_cidr_ranges]{list_available_management_cidr_ranges} \tab Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable Bring Your Own License (BYOL)\cr
@@ -41847,9 +47268,9 @@ workspaces <- function(config = list(), credentials = list(), endpoint = NULL, r
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}

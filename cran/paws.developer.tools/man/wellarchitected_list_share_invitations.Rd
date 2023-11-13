@@ -2,7 +2,7 @@
 % Please edit documentation in R/wellarchitected_operations.R
 \name{wellarchitected_list_share_invitations}
 \alias{wellarchitected_list_share_invitations}
-\title{List the workload invitations}
+\title{List the share invitations}
 \usage{
 wellarchitected_list_share_invitations(
   WorkloadNamePrefix = NULL,
@@ -10,7 +10,8 @@ wellarchitected_list_share_invitations(
   ShareResourceType = NULL,
   NextToken = NULL,
   MaxResults = NULL,
-  ProfileNamePrefix = NULL
+  ProfileNamePrefix = NULL,
+  TemplateNamePrefix = NULL
 )
 }
 \arguments{
@@ -25,10 +26,14 @@ the results.}
 
 \item{MaxResults}{The maximum number of results to return for this request.}
 
-\item{ProfileNamePrefix}{Profile name prefix.}
+\item{ProfileNamePrefix}{An optional string added to the beginning of each profile name returned
+in the results.}
+
+\item{TemplateNamePrefix}{An optional string added to the beginning of each review template name
+returned in the results.}
 }
 \description{
-List the workload invitations.
+List the share invitations.
 
 See \url{https://www.paws-r-sdk.com/docs/wellarchitected_list_share_invitations/} for full documentation.
 }

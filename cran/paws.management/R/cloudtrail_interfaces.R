@@ -197,13 +197,13 @@ NULL
 
 .cloudtrail$get_insight_selectors_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrailName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(TrailName = structure(logical(0), tags = list(type = "string")), EventDataStore = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cloudtrail$get_insight_selectors_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrailARN = structure(logical(0), tags = list(type = "string")), InsightSelectors = structure(list(structure(list(InsightType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(TrailARN = structure(logical(0), tags = list(type = "string")), InsightSelectors = structure(list(structure(list(InsightType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EventDataStoreArn = structure(logical(0), tags = list(type = "string")), InsightsDestination = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -377,13 +377,13 @@ NULL
 
 .cloudtrail$put_insight_selectors_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrailName = structure(logical(0), tags = list(type = "string")), InsightSelectors = structure(list(structure(list(InsightType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(TrailName = structure(logical(0), tags = list(type = "string")), InsightSelectors = structure(list(structure(list(InsightType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EventDataStore = structure(logical(0), tags = list(type = "string")), InsightsDestination = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
 .cloudtrail$put_insight_selectors_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(TrailARN = structure(logical(0), tags = list(type = "string")), InsightSelectors = structure(list(structure(list(InsightType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  shape <- structure(list(TrailARN = structure(logical(0), tags = list(type = "string")), InsightSelectors = structure(list(structure(list(InsightType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), EventDataStoreArn = structure(logical(0), tags = list(type = "string")), InsightsDestination = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

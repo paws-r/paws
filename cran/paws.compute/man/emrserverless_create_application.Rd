@@ -17,7 +17,9 @@ emrserverless_create_application(
   networkConfiguration = NULL,
   architecture = NULL,
   imageConfiguration = NULL,
-  workerTypeSpecifications = NULL
+  workerTypeSpecifications = NULL,
+  runtimeConfiguration = NULL,
+  monitoringConfiguration = NULL
 )
 }
 \arguments{
@@ -60,6 +62,14 @@ worker types for a Spark or Hive application. Valid worker types include
 \code{TezTask} for Hive applications. You can either set image details in
 this parameter for each worker type, or in \code{imageConfiguration} for all
 worker types.}
+
+\item{runtimeConfiguration}{The
+\href{https://docs.aws.amazon.com/emr-serverless/latest/APIReference/API_Configuration.html}{Configuration}
+specifications to use when creating an application. Each configuration
+consists of a classification and properties. This configuration is
+applied to all the job runs submitted under the application.}
+
+\item{monitoringConfiguration}{The configuration setting for monitoring.}
 }
 \description{
 Creates an application.

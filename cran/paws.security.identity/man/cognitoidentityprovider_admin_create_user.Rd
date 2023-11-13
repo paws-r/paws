@@ -19,9 +19,18 @@ cognitoidentityprovider_admin_create_user(
 \arguments{
 \item{UserPoolId}{[required] The user pool ID for the user pool where the user will be created.}
 
-\item{Username}{[required] The username for the user. Must be unique within the user pool. Must be
-a UTF-8 string between 1 and 128 characters. After the user is created,
-the username can't be changed.}
+\item{Username}{[required] The value that you want to set as the username sign-in attribute. The
+following conditions apply to the username parameter.
+\itemize{
+\item The username can't be a duplicate of another username in the same
+user pool.
+\item You can't change the value of a username after you create it.
+\item You can only provide a value if usernames are a valid sign-in
+attribute for your user pool. If your user pool only supports phone
+numbers or email addresses as sign-in attributes, Amazon Cognito
+automatically generates a username value. For more information, see
+\href{https://docs.aws.amazon.com/cognito/latest/developerguide/user-pool-settings-attributes.html#user-pool-settings-aliases}{Customizing sign-in attributes}.
+}}
 
 \item{UserAttributes}{An array of name-value pairs that contain user attributes and attribute
 values to be set for the user to be created. You can create a user

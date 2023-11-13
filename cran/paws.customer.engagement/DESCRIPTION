@@ -1,6 +1,6 @@
 Package: paws.customer.engagement
 Title: 'Amazon Web Services' Customer Engagement Services
-Version: 0.4.0
+Version: 0.4.0.9000
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -27,6 +27,9 @@ Collate:
     'connectcampaignservice_service.R'
     'connectcampaignservice_interfaces.R'
     'connectcampaignservice_operations.R'
+    'connectcases_service.R'
+    'connectcases_interfaces.R'
+    'connectcases_operations.R'
     'connectcontactlens_service.R'
     'connectcontactlens_interfaces.R'
     'connectcontactlens_operations.R'

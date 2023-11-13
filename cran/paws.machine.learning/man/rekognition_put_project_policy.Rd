@@ -2,8 +2,7 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_put_project_policy}
 \alias{rekognition_put_project_policy}
-\title{Attaches a project policy to a Amazon Rekognition Custom Labels project
-in a trusting AWS account}
+\title{This operation applies only to Amazon Rekognition Custom Labels}
 \usage{
 rekognition_put_project_policy(
   ProjectArn,
@@ -28,7 +27,7 @@ must follow the IAM syntax. For more information about the contents of a
 JSON policy document, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html}{IAM JSON policy reference}.}
 }
 \description{
-Attaches a project policy to a Amazon Rekognition Custom Labels project in a trusting AWS account. A project policy specifies that a trusted AWS account can copy a model version from a trusting AWS account to a project in the trusted AWS account. To copy a model version you use the \code{\link[=rekognition_copy_project_version]{copy_project_version}} operation.
+This operation applies only to Amazon Rekognition Custom Labels.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_put_project_policy/} for full documentation.
 }

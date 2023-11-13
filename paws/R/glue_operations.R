@@ -2359,12 +2359,39 @@ glue_batch_get_dev_endpoints <- function(DevEndpointNames) {
 #'             Inputs = list(
 #'               "string"
 #'             )
+#'           ),
+#'           ConnectorDataSource = list(
+#'             Name = "string",
+#'             ConnectionType = "string",
+#'             Data = list(
+#'               "string"
+#'             ),
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           ConnectorDataTarget = list(
+#'             Name = "string",
+#'             ConnectionType = "string",
+#'             Data = list(
+#'               "string"
+#'             ),
+#'             Inputs = list(
+#'               "string"
+#'             )
 #'           )
 #'         )
 #'       ),
 #'       ExecutionClass = "FLEX"|"STANDARD",
 #'       SourceControlDetails = list(
-#'         Provider = "GITHUB"|"AWS_CODE_COMMIT",
+#'         Provider = "GITHUB"|"GITLAB"|"BITBUCKET"|"AWS_CODE_COMMIT",
 #'         Repository = "string",
 #'         Owner = "string",
 #'         Branch = "string",
@@ -5802,12 +5829,39 @@ glue_create_dev_endpoint <- function(EndpointName, RoleArn, SecurityGroupIds = N
 #'         Inputs = list(
 #'           "string"
 #'         )
+#'       ),
+#'       ConnectorDataSource = list(
+#'         Name = "string",
+#'         ConnectionType = "string",
+#'         Data = list(
+#'           "string"
+#'         ),
+#'         OutputSchemas = list(
+#'           list(
+#'             Columns = list(
+#'               list(
+#'                 Name = "string",
+#'                 Type = "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       ConnectorDataTarget = list(
+#'         Name = "string",
+#'         ConnectionType = "string",
+#'         Data = list(
+#'           "string"
+#'         ),
+#'         Inputs = list(
+#'           "string"
+#'         )
 #'       )
 #'     )
 #'   ),
 #'   ExecutionClass = "FLEX"|"STANDARD",
 #'   SourceControlDetails = list(
-#'     Provider = "GITHUB"|"AWS_CODE_COMMIT",
+#'     Provider = "GITHUB"|"GITLAB"|"BITBUCKET"|"AWS_CODE_COMMIT",
 #'     Repository = "string",
 #'     Owner = "string",
 #'     Branch = "string",
@@ -12022,12 +12076,39 @@ glue_get_dev_endpoints <- function(MaxResults = NULL, NextToken = NULL) {
 #'           Inputs = list(
 #'             "string"
 #'           )
+#'         ),
+#'         ConnectorDataSource = list(
+#'           Name = "string",
+#'           ConnectionType = "string",
+#'           Data = list(
+#'             "string"
+#'           ),
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         ConnectorDataTarget = list(
+#'           Name = "string",
+#'           ConnectionType = "string",
+#'           Data = list(
+#'             "string"
+#'           ),
+#'           Inputs = list(
+#'             "string"
+#'           )
 #'         )
 #'       )
 #'     ),
 #'     ExecutionClass = "FLEX"|"STANDARD",
 #'     SourceControlDetails = list(
-#'       Provider = "GITHUB"|"AWS_CODE_COMMIT",
+#'       Provider = "GITHUB"|"GITLAB"|"BITBUCKET"|"AWS_CODE_COMMIT",
 #'       Repository = "string",
 #'       Owner = "string",
 #'       Branch = "string",
@@ -13729,12 +13810,39 @@ glue_get_job_runs <- function(JobName, NextToken = NULL, MaxResults = NULL) {
 #'             Inputs = list(
 #'               "string"
 #'             )
+#'           ),
+#'           ConnectorDataSource = list(
+#'             Name = "string",
+#'             ConnectionType = "string",
+#'             Data = list(
+#'               "string"
+#'             ),
+#'             OutputSchemas = list(
+#'               list(
+#'                 Columns = list(
+#'                   list(
+#'                     Name = "string",
+#'                     Type = "string"
+#'                   )
+#'                 )
+#'               )
+#'             )
+#'           ),
+#'           ConnectorDataTarget = list(
+#'             Name = "string",
+#'             ConnectionType = "string",
+#'             Data = list(
+#'               "string"
+#'             ),
+#'             Inputs = list(
+#'               "string"
+#'             )
 #'           )
 #'         )
 #'       ),
 #'       ExecutionClass = "FLEX"|"STANDARD",
 #'       SourceControlDetails = list(
-#'         Provider = "GITHUB"|"AWS_CODE_COMMIT",
+#'         Provider = "GITHUB"|"GITLAB"|"BITBUCKET"|"AWS_CODE_COMMIT",
 #'         Repository = "string",
 #'         Owner = "string",
 #'         Branch = "string",
@@ -24072,12 +24180,39 @@ glue_update_dev_endpoint <- function(EndpointName, PublicKey = NULL, AddPublicKe
 #'           Inputs = list(
 #'             "string"
 #'           )
+#'         ),
+#'         ConnectorDataSource = list(
+#'           Name = "string",
+#'           ConnectionType = "string",
+#'           Data = list(
+#'             "string"
+#'           ),
+#'           OutputSchemas = list(
+#'             list(
+#'               Columns = list(
+#'                 list(
+#'                   Name = "string",
+#'                   Type = "string"
+#'                 )
+#'               )
+#'             )
+#'           )
+#'         ),
+#'         ConnectorDataTarget = list(
+#'           Name = "string",
+#'           ConnectionType = "string",
+#'           Data = list(
+#'             "string"
+#'           ),
+#'           Inputs = list(
+#'             "string"
+#'           )
 #'         )
 #'       )
 #'     ),
 #'     ExecutionClass = "FLEX"|"STANDARD",
 #'     SourceControlDetails = list(
-#'       Provider = "GITHUB"|"AWS_CODE_COMMIT",
+#'       Provider = "GITHUB"|"GITLAB"|"BITBUCKET"|"AWS_CODE_COMMIT",
 #'       Repository = "string",
 #'       Owner = "string",
 #'       Branch = "string",
@@ -24128,8 +24263,11 @@ glue_update_job <- function(JobName, JobUpdate) {
 #'
 #' @param JobName The name of the Glue job to be synchronized to or from the remote
 #' repository.
-#' @param Provider The provider for the remote repository.
-#' @param RepositoryName The name of the remote repository that contains the job artifacts.
+#' @param Provider The provider for the remote repository. Possible values: GITHUB,
+#' AWS_CODE_COMMIT, GITLAB, BITBUCKET.
+#' @param RepositoryName The name of the remote repository that contains the job artifacts. For
+#' BitBucket providers, `RepositoryName` should include `WorkspaceName`.
+#' Use the format `<WorkspaceName>/<RepositoryName>`.
 #' @param RepositoryOwner The owner of the remote repository that contains the job artifacts.
 #' @param BranchName An optional branch in the remote repository.
 #' @param Folder An optional folder in the remote repository.
@@ -24150,7 +24288,7 @@ glue_update_job <- function(JobName, JobUpdate) {
 #' ```
 #' svc$update_job_from_source_control(
 #'   JobName = "string",
-#'   Provider = "GITHUB"|"AWS_CODE_COMMIT",
+#'   Provider = "GITHUB"|"GITLAB"|"BITBUCKET"|"AWS_CODE_COMMIT",
 #'   RepositoryName = "string",
 #'   RepositoryOwner = "string",
 #'   BranchName = "string",
@@ -24586,8 +24724,11 @@ glue_update_schema <- function(SchemaId, SchemaVersionNumber = NULL, Compatibili
 #'
 #' @param JobName The name of the Glue job to be synchronized to or from the remote
 #' repository.
-#' @param Provider The provider for the remote repository.
-#' @param RepositoryName The name of the remote repository that contains the job artifacts.
+#' @param Provider The provider for the remote repository. Possible values: GITHUB,
+#' AWS_CODE_COMMIT, GITLAB, BITBUCKET.
+#' @param RepositoryName The name of the remote repository that contains the job artifacts. For
+#' BitBucket providers, `RepositoryName` should include `WorkspaceName`.
+#' Use the format `<WorkspaceName>/<RepositoryName>`.
 #' @param RepositoryOwner The owner of the remote repository that contains the job artifacts.
 #' @param BranchName An optional branch in the remote repository.
 #' @param Folder An optional folder in the remote repository.
@@ -24608,7 +24749,7 @@ glue_update_schema <- function(SchemaId, SchemaVersionNumber = NULL, Compatibili
 #' ```
 #' svc$update_source_control_from_job(
 #'   JobName = "string",
-#'   Provider = "GITHUB"|"AWS_CODE_COMMIT",
+#'   Provider = "GITHUB"|"GITLAB"|"BITBUCKET"|"AWS_CODE_COMMIT",
 #'   RepositoryName = "string",
 #'   RepositoryOwner = "string",
 #'   BranchName = "string",

@@ -13,7 +13,9 @@ quicksight_create_analysis(
   SourceEntity = NULL,
   ThemeArn = NULL,
   Tags = NULL,
-  Definition = NULL
+  Definition = NULL,
+  ValidationStrategy = NULL,
+  FolderArns = NULL
 )
 }
 \arguments{
@@ -59,6 +61,12 @@ or Analysis.
 
 Either a \code{SourceEntity} or a \code{Definition} must be provided in order for
 the request to be valid.}
+
+\item{ValidationStrategy}{The option to relax the validation needed to create an analysis with
+definition objects. This skips the validation step for specific errors.}
+
+\item{FolderArns}{When you create the analysis, Amazon QuickSight adds the analysis to
+these folders.}
 }
 \description{
 Creates an analysis in Amazon QuickSight. Analyses can be created either from a template or from an \code{AnalysisDefinition}.

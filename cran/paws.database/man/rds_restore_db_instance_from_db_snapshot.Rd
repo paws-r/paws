@@ -43,7 +43,8 @@ rds_restore_db_instance_from_db_snapshot(
   NetworkType = NULL,
   StorageThroughput = NULL,
   DBClusterSnapshotIdentifier = NULL,
-  AllocatedStorage = NULL
+  AllocatedStorage = NULL,
+  DedicatedLogVolume = NULL
 )
 }
 \arguments{
@@ -101,14 +102,14 @@ DBSubnetGroup.
 
 Example: \code{mydbsubnetgroup}}
 
-\item{MultiAZ}{A value that indicates whether the DB instance is a Multi-AZ deployment.
+\item{MultiAZ}{Specifies whether the DB instance is a Multi-AZ deployment.
 
 This setting doesn't apply to RDS Custom.
 
 Constraint: You can't specify the \code{AvailabilityZone} parameter if the DB
 instance is a Multi-AZ deployment.}
 
-\item{PubliclyAccessible}{A value that indicates whether the DB instance is publicly accessible.
+\item{PubliclyAccessible}{Specifies whether the DB instance is publicly accessible.
 
 When the DB instance is publicly accessible, its Domain Name System
 (DNS) endpoint resolves to the private IP address from within the DB
@@ -124,8 +125,8 @@ instance with a DNS name that resolves to a private IP address.
 For more information, see
 \code{\link[=rds_create_db_instance]{create_db_instance}}.}
 
-\item{AutoMinorVersionUpgrade}{A value that indicates whether minor version upgrades are applied
-automatically to the DB instance during the maintenance window.
+\item{AutoMinorVersionUpgrade}{Specifies whether to automatically apply minor version upgrades to the
+DB instance during the maintenance window.
 
 If you restore an RDS Custom DB instance, you must disable this
 parameter.}
@@ -136,7 +137,7 @@ This setting doesn't apply to RDS Custom.
 
 Default: Same as source.
 
-Valid values: \code{license-included} | \code{bring-your-own-license} |
+Valid Values: \code{license-included} | \code{bring-your-own-license} |
 \code{general-public-license}}
 
 \item{DBName}{The database name for the restored DB instance.
@@ -194,7 +195,7 @@ This setting doesn't apply to RDS Custom.}
 
 \item{StorageType}{Specifies the storage type to be associated with the DB instance.
 
-Valid values: \code{gp2 | gp3 | io1 | standard}
+Valid Values: \code{gp2 | gp3 | io1 | standard}
 
 If you specify \code{io1} or \code{gp3}, you must also include a value for the
 \code{Iops} parameter.
@@ -250,6 +251,9 @@ Example:
 joining the domain.
 
 Constraints:
+\itemize{
+\item Can't be longer than 64 characters.
+}
 
 Example:
 \code{arn:aws:secretsmanager:region:account-number:secret:myselfmanagedADtestsecret-123456}}
@@ -266,8 +270,8 @@ both entries in the list.
 
 Example: \verb{123.124.125.126,234.235.236.237}}
 
-\item{CopyTagsToSnapshot}{A value that indicates whether to copy all tags from the restored DB
-instance to snapshots of the DB instance.
+\item{CopyTagsToSnapshot}{Specifies whether to copy all tags from the restored DB instance to
+snapshots of the DB instance.
 
 In most cases, tags aren't copied by default. However, when you restore
 a DB instance from a DB snapshot, RDS checks whether you specify new
@@ -284,9 +288,9 @@ Service.
 
 This setting doesn't apply to RDS Custom DB instances.}
 
-\item{EnableIAMDatabaseAuthentication}{A value that indicates whether to enable mapping of Amazon Web Services
-Identity and Access Management (IAM) accounts to database accounts. By
-default, mapping is disabled.
+\item{EnableIAMDatabaseAuthentication}{Specifies whether to enable mapping of Amazon Web Services Identity and
+Access Management (IAM) accounts to database accounts. By default,
+mapping is disabled.
 
 For more information about IAM database authentication, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/UsingWithRDS.IAMDBAuth.html}{IAM Database Authentication for MySQL and PostgreSQL}
 in the \emph{Amazon RDS User Guide.}
@@ -305,8 +309,8 @@ instance class of the DB instance.
 
 This setting doesn't apply to RDS Custom.}
 
-\item{UseDefaultProcessorFeatures}{A value that indicates whether the DB instance class of the DB instance
-uses its default processor features.
+\item{UseDefaultProcessorFeatures}{Specifies whether the DB instance class of the DB instance uses its
+default processor features.
 
 This setting doesn't apply to RDS Custom.}
 
@@ -325,13 +329,13 @@ Constraints:
 \item Can't end with a hyphen or contain two consecutive hyphens.
 }}
 
-\item{DeletionProtection}{A value that indicates whether the DB instance has deletion protection
-enabled. The database can't be deleted when deletion protection is
-enabled. By default, deletion protection isn't enabled. For more
-information, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
+\item{DeletionProtection}{Specifies whether to enable deletion protection for the DB instance. The
+database can't be deleted when deletion protection is enabled. By
+default, deletion protection isn't enabled. For more information, see
+\href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_DeleteInstance.html}{Deleting a DB Instance}.}
 
-\item{EnableCustomerOwnedIp}{A value that indicates whether to enable a customer-owned IP address
-(CoIP) for an RDS on Outposts DB instance.
+\item{EnableCustomerOwnedIp}{Specifies whether to enable a customer-owned IP address (CoIP) for an
+RDS on Outposts DB instance.
 
 A \emph{CoIP} provides local or external connectivity to resources in your
 Outpost subnets through your on-premises network. For some use cases, a
@@ -373,7 +377,7 @@ in the \emph{Amazon RDS User Guide}.}
 
 \item{NetworkType}{The network type of the DB instance.
 
-Valid values:
+Valid Values:
 \itemize{
 \item \code{IPV4}
 \item \code{DUAL}
@@ -416,6 +420,9 @@ instance. Follow the allocation rules specified in CreateDBInstance.
 Be sure to allocate enough storage for your new DB instance so that the
 restore operation can succeed. You can also allocate additional storage
 for future growth.}
+
+\item{DedicatedLogVolume}{Specifies whether to enable a dedicated log volume (DLV) for the DB
+instance.}
 }
 \description{
 Creates a new DB instance from a DB snapshot. The target database is created from the source database restore point with most of the source's original configuration, including the default security group and DB parameter group. By default, the new DB instance is created as a Single-AZ deployment, except when the instance is a SQL Server instance that has an option group associated with mirroring. In this case, the instance becomes a Multi-AZ deployment, not a Single-AZ deployment.

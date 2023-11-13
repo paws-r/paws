@@ -59,7 +59,7 @@ Returns healthy instances, unless none are reporting a healthy state. In
 that case, return all instances. This is also called failing open.}
 }
 \description{
-Discovers registered instances for a specified namespace and service. You can use \code{\link[=servicediscovery_discover_instances]{discover_instances}} to discover instances for any type of namespace. For public and private DNS namespaces, you can also use DNS queries to discover instances.
+Discovers registered instances for a specified namespace and service. You can use \code{\link[=servicediscovery_discover_instances]{discover_instances}} to discover instances for any type of namespace. \code{\link[=servicediscovery_discover_instances]{discover_instances}} returns a randomized list of instances allowing customers to distribute traffic evenly across instances. For public and private DNS namespaces, you can also use DNS queries to discover instances.
 
 See \url{https://www.paws-r-sdk.com/docs/servicediscovery_discover_instances/} for full documentation.
 }

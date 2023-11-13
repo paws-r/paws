@@ -126,7 +126,7 @@ or
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html}{SSE-SQS}).
 }
 
-The following attributes apply only to \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO (first-in-first-out) queues}:
+The following attributes apply only to \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/}{FIFO (first-in-first-out) queues}:
 \itemize{
 \item \code{FifoQueue} – Designates a queue as FIFO. Valid values are \code{true}
 and \code{false}. If you don't specify the \code{FifoQueue} attribute, Amazon

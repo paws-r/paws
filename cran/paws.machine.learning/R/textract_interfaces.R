@@ -5,7 +5,7 @@ NULL
 
 .textract$analyze_document_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Document = structure(list(Bytes = structure(logical(0), tags = list(type = "blob")), S3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), FeatureTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HumanLoopConfig = structure(list(HumanLoopName = structure(logical(0), tags = list(type = "string")), FlowDefinitionArn = structure(logical(0), tags = list(type = "string")), DataAttributes = structure(list(ContentClassifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), QueriesConfig = structure(list(Queries = structure(list(structure(list(Text = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), Pages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(Document = structure(list(Bytes = structure(logical(0), tags = list(type = "blob")), S3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), FeatureTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), HumanLoopConfig = structure(list(HumanLoopName = structure(logical(0), tags = list(type = "string")), FlowDefinitionArn = structure(logical(0), tags = list(type = "string")), DataAttributes = structure(list(ContentClassifiers = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure")), QueriesConfig = structure(list(Queries = structure(list(structure(list(Text = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), Pages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), AdaptersConfig = structure(list(Adapters = structure(list(structure(list(AdapterId = structure(logical(0), tags = list(type = "string")), Pages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -39,6 +39,54 @@ NULL
   return(populate(args, shape))
 }
 
+.textract$create_adapter_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdapterName = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), Description = structure(logical(0), tags = list(type = "string")), FeatureTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AutoUpdate = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$create_adapter_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdapterId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$create_adapter_version_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdapterId = structure(logical(0), tags = list(type = "string")), ClientRequestToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), DatasetConfig = structure(list(ManifestS3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), KMSKeyId = structure(logical(0), tags = list(type = "string")), OutputConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$create_adapter_version_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdapterId = structure(logical(0), tags = list(type = "string")), AdapterVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$delete_adapter_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdapterId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$delete_adapter_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$delete_adapter_version_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdapterId = structure(logical(0), tags = list(type = "string")), AdapterVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$delete_adapter_version_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .textract$detect_document_text_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(Document = structure(list(Bytes = structure(logical(0), tags = list(type = "blob")), S3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "structure"))
@@ -48,6 +96,30 @@ NULL
 .textract$detect_document_text_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(DocumentMetadata = structure(list(Pages = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure")), Blocks = structure(list(structure(list(BlockType = structure(logical(0), tags = list(type = "string")), Confidence = structure(logical(0), tags = list(type = "float")), Text = structure(logical(0), tags = list(type = "string")), TextType = structure(logical(0), tags = list(type = "string")), RowIndex = structure(logical(0), tags = list(type = "integer")), ColumnIndex = structure(logical(0), tags = list(type = "integer")), RowSpan = structure(logical(0), tags = list(type = "integer")), ColumnSpan = structure(logical(0), tags = list(type = "integer")), Geometry = structure(list(BoundingBox = structure(list(Width = structure(logical(0), tags = list(type = "float")), Height = structure(logical(0), tags = list(type = "float")), Left = structure(logical(0), tags = list(type = "float")), Top = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), Polygon = structure(list(structure(list(X = structure(logical(0), tags = list(type = "float")), Y = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), Id = structure(logical(0), tags = list(type = "string")), Relationships = structure(list(structure(list(Type = structure(logical(0), tags = list(type = "string")), Ids = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), EntityTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), SelectionStatus = structure(logical(0), tags = list(type = "string")), Page = structure(logical(0), tags = list(type = "integer")), Query = structure(list(Text = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), Pages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))), tags = list(type = "list")), DetectDocumentTextModelVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$get_adapter_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdapterId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$get_adapter_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdapterId = structure(logical(0), tags = list(type = "string")), AdapterName = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), Description = structure(logical(0), tags = list(type = "string")), FeatureTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AutoUpdate = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$get_adapter_version_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdapterId = structure(logical(0), tags = list(type = "string")), AdapterVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$get_adapter_version_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdapterId = structure(logical(0), tags = list(type = "string")), AdapterVersion = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), FeatureTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string")), DatasetConfig = structure(list(ManifestS3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), KMSKeyId = structure(logical(0), tags = list(type = "string")), OutputConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), EvaluationMetrics = structure(list(structure(list(Baseline = structure(list(F1Score = structure(logical(0), tags = list(type = "float")), Precision = structure(logical(0), tags = list(type = "float")), Recall = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), AdapterVersion = structure(list(F1Score = structure(logical(0), tags = list(type = "float")), Precision = structure(logical(0), tags = list(type = "float")), Recall = structure(logical(0), tags = list(type = "float"))), tags = list(type = "structure")), FeatureType = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -111,9 +183,45 @@ NULL
   return(populate(args, shape))
 }
 
+.textract$list_adapter_versions_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdapterId = structure(logical(0), tags = list(type = "string")), AfterCreationTime = structure(logical(0), tags = list(type = "timestamp")), BeforeCreationTime = structure(logical(0), tags = list(type = "timestamp")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$list_adapter_versions_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdapterVersions = structure(list(structure(list(AdapterId = structure(logical(0), tags = list(type = "string")), AdapterVersion = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), FeatureTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Status = structure(logical(0), tags = list(type = "string")), StatusMessage = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$list_adapters_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AfterCreationTime = structure(logical(0), tags = list(type = "timestamp")), BeforeCreationTime = structure(logical(0), tags = list(type = "timestamp")), MaxResults = structure(logical(0), tags = list(type = "integer")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$list_adapters_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Adapters = structure(list(structure(list(AdapterId = structure(logical(0), tags = list(type = "string")), AdapterName = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), FeatureTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$list_tags_for_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$list_tags_for_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .textract$start_document_analysis_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(DocumentLocation = structure(list(S3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), FeatureTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ClientRequestToken = structure(logical(0), tags = list(type = "string")), JobTag = structure(logical(0), tags = list(type = "string")), NotificationChannel = structure(list(SNSTopicArn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KMSKeyId = structure(logical(0), tags = list(type = "string")), QueriesConfig = structure(list(Queries = structure(list(structure(list(Text = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), Pages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  shape <- structure(list(DocumentLocation = structure(list(S3Object = structure(list(Bucket = structure(logical(0), tags = list(type = "string")), Name = structure(logical(0), tags = list(type = "string")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure")), FeatureTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), ClientRequestToken = structure(logical(0), tags = list(type = "string")), JobTag = structure(logical(0), tags = list(type = "string")), NotificationChannel = structure(list(SNSTopicArn = structure(logical(0), tags = list(type = "string")), RoleArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), OutputConfig = structure(list(S3Bucket = structure(logical(0), tags = list(type = "string")), S3Prefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), KMSKeyId = structure(logical(0), tags = list(type = "string")), QueriesConfig = structure(list(Queries = structure(list(structure(list(Text = structure(logical(0), tags = list(type = "string")), Alias = structure(logical(0), tags = list(type = "string")), Pages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure")), AdaptersConfig = structure(list(Adapters = structure(list(structure(list(AdapterId = structure(logical(0), tags = list(type = "string")), Pages = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), Version = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -156,5 +264,41 @@ NULL
 .textract$start_lending_analysis_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(JobId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$tag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), Tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$tag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$untag_resource_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(ResourceARN = structure(logical(0), tags = list(type = "string")), TagKeys = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$untag_resource_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$update_adapter_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdapterId = structure(logical(0), tags = list(type = "string")), Description = structure(logical(0), tags = list(type = "string")), AdapterName = structure(logical(0), tags = list(type = "string")), AutoUpdate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.textract$update_adapter_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(AdapterId = structure(logical(0), tags = list(type = "string")), AdapterName = structure(logical(0), tags = list(type = "string")), CreationTime = structure(logical(0), tags = list(type = "timestamp")), Description = structure(logical(0), tags = list(type = "string")), FeatureTypes = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), AutoUpdate = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }

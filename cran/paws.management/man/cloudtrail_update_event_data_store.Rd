@@ -29,7 +29,12 @@ event data store.}
 or only from the Region in which it was created.}
 
 \item{OrganizationEnabled}{Specifies whether an event data store collects events logged for an
-organization in Organizations.}
+organization in Organizations.
+
+Only the management account for the organization can convert an
+organization event data store to a non-organization event data store, or
+convert a non-organization event data store to an organization event
+data store.}
 
 \item{RetentionPeriod}{The retention period of the event data store, in days. You can set a
 retention period of up to 2557 days, the equivalent of seven years.

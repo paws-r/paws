@@ -2,30 +2,33 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_describe_projects}
 \alias{rekognition_describe_projects}
-\title{Gets information about your Amazon Rekognition Custom Labels projects}
+\title{Gets information about your Rekognition projects}
 \usage{
 rekognition_describe_projects(
   NextToken = NULL,
   MaxResults = NULL,
-  ProjectNames = NULL
+  ProjectNames = NULL,
+  Features = NULL
 )
 }
 \arguments{
 \item{NextToken}{If the previous response was incomplete (because there is more results
-to retrieve), Amazon Rekognition Custom Labels returns a pagination
-token in the response. You can use this pagination token to retrieve the
-next set of results.}
+to retrieve), Rekognition returns a pagination token in the response.
+You can use this pagination token to retrieve the next set of results.}
 
 \item{MaxResults}{The maximum number of results to return per paginated call. The largest
 value you can specify is 100. If you specify a value greater than 100, a
 ValidationException error occurs. The default value is 100.}
 
-\item{ProjectNames}{A list of the projects that you want Amazon Rekognition Custom Labels to
-describe. If you don't specify a value, the response includes
-descriptions for all the projects in your AWS account.}
+\item{ProjectNames}{A list of the projects that you want Rekognition to describe. If you
+don't specify a value, the response includes descriptions for all the
+projects in your AWS account.}
+
+\item{Features}{Specifies the type of customization to filter projects by. If no value
+is specified, CUSTOM_LABELS is used as a default.}
 }
 \description{
-Gets information about your Amazon Rekognition Custom Labels projects.
+Gets information about your Rekognition projects.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_describe_projects/} for full documentation.
 }

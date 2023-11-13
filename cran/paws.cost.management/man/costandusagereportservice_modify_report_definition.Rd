@@ -2,7 +2,7 @@
 % Please edit documentation in R/costandusagereportservice_operations.R
 \name{costandusagereportservice_modify_report_definition}
 \alias{costandusagereportservice_modify_report_definition}
-\title{Allows you to programatically update your report preferences}
+\title{Allows you to programmatically update your report preferences}
 \usage{
 costandusagereportservice_modify_report_definition(
   ReportName,
@@ -15,7 +15,7 @@ costandusagereportservice_modify_report_definition(
 \item{ReportDefinition}{[required]}
 }
 \description{
-Allows you to programatically update your report preferences.
+Allows you to programmatically update your report preferences.
 
 See \url{https://www.paws-r-sdk.com/docs/costandusagereportservice_modify_report_definition/} for full documentation.
 }

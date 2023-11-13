@@ -5,28 +5,29 @@
 \title{Creates a permission set within a specified IAM Identity Center instance}
 \usage{
 ssoadmin_create_permission_set(
-  Name,
   Description = NULL,
   InstanceArn,
-  SessionDuration = NULL,
+  Name,
   RelayState = NULL,
+  SessionDuration = NULL,
   Tags = NULL
 )
 }
 \arguments{
-\item{Name}{[required] The name of the PermissionSet.}
-
 \item{Description}{The description of the PermissionSet.}
 
 \item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
 will be executed. For more information about ARNs, see Amazon Resource
-Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
+Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon
+Web Services General Reference}.}
 
-\item{SessionDuration}{The length of time that the application user sessions are valid in the
-ISO-8601 standard.}
+\item{Name}{[required] The name of the PermissionSet.}
 
 \item{RelayState}{Used to redirect users within the application during the federation
 authentication process.}
+
+\item{SessionDuration}{The length of time that the application user sessions are valid in the
+ISO-8601 standard.}
 
 \item{Tags}{The tags to attach to the new PermissionSet.}
 }

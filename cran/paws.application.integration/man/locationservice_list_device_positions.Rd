@@ -5,12 +5,15 @@
 \title{A batch request to retrieve all device positions}
 \usage{
 locationservice_list_device_positions(
+  FilterGeometry = NULL,
   MaxResults = NULL,
   NextToken = NULL,
   TrackerName
 )
 }
 \arguments{
+\item{FilterGeometry}{The geomerty used to filter device positions.}
+
 \item{MaxResults}{An optional limit for the number of entries returned in a single call.
 
 Default value: \code{100}}

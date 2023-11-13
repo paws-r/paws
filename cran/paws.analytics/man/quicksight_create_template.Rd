@@ -13,7 +13,8 @@ quicksight_create_template(
   SourceEntity = NULL,
   Tags = NULL,
   VersionDescription = NULL,
-  Definition = NULL
+  Definition = NULL,
+  ValidationStrategy = NULL
 )
 }
 \arguments{
@@ -61,6 +62,9 @@ or Analysis.
 
 Either a \code{SourceEntity} or a \code{Definition} must be provided in order for
 the request to be valid.}
+
+\item{ValidationStrategy}{TThe option to relax the validation needed to create a template with
+definition objects. This skips the validation step for specific errors.}
 }
 \description{
 Creates a template either from a \code{TemplateDefinition} or from an existing Amazon QuickSight analysis or template. You can use the resulting template to create additional dashboards, templates, or analyses.

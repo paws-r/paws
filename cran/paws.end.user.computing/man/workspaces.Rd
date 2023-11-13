@@ -22,9 +22,9 @@ workspaces(
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -117,6 +117,7 @@ resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/worksp
 \tabular{ll}{
 \link[=workspaces_associate_connection_alias]{associate_connection_alias} \tab Associates the specified connection alias with the specified directory to enable cross-Region redirection\cr
 \link[=workspaces_associate_ip_groups]{associate_ip_groups} \tab Associates the specified IP access control group with the specified directory\cr
+\link[=workspaces_associate_workspace_application]{associate_workspace_application} \tab Associates the specified application to the specified WorkSpace\cr
 \link[=workspaces_authorize_ip_rules]{authorize_ip_rules} \tab Adds one or more rules to the specified IP access control group\cr
 \link[=workspaces_copy_workspace_image]{copy_workspace_image} \tab Copies the specified image from the specified Region to the current Region\cr
 \link[=workspaces_create_connect_client_add_in]{create_connect_client_add_in} \tab Creates a client-add-in for Amazon Connect within a directory\cr
@@ -135,16 +136,22 @@ resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/worksp
 \link[=workspaces_delete_tags]{delete_tags} \tab Deletes the specified tags from the specified WorkSpaces resource\cr
 \link[=workspaces_delete_workspace_bundle]{delete_workspace_bundle} \tab Deletes the specified WorkSpace bundle\cr
 \link[=workspaces_delete_workspace_image]{delete_workspace_image} \tab Deletes the specified image from your account\cr
+\link[=workspaces_deploy_workspace_applications]{deploy_workspace_applications} \tab Deploys associated applications to the specified WorkSpace\cr
 \link[=workspaces_deregister_workspace_directory]{deregister_workspace_directory} \tab Deregisters the specified directory\cr
 \link[=workspaces_describe_account]{describe_account} \tab Retrieves a list that describes the configuration of Bring Your Own License (BYOL) for the specified account\cr
 \link[=workspaces_describe_account_modifications]{describe_account_modifications} \tab Retrieves a list that describes modifications to the configuration of Bring Your Own License (BYOL) for the specified account\cr
+\link[=workspaces_describe_application_associations]{describe_application_associations} \tab Describes the associations between the application and the specified associated resources\cr
+\link[=workspaces_describe_applications]{describe_applications} \tab Describes the specified applications by filtering based on their compute types, license availability, operating systems, and owners\cr
+\link[=workspaces_describe_bundle_associations]{describe_bundle_associations} \tab Describes the associations between the applications and the specified bundle\cr
 \link[=workspaces_describe_client_branding]{describe_client_branding} \tab Describes the specified client branding\cr
 \link[=workspaces_describe_client_properties]{describe_client_properties} \tab Retrieves a list that describes one or more specified Amazon WorkSpaces clients\cr
 \link[=workspaces_describe_connect_client_add_ins]{describe_connect_client_add_ins} \tab Retrieves a list of Amazon Connect client add-ins that have been created\cr
 \link[=workspaces_describe_connection_aliases]{describe_connection_aliases} \tab Retrieves a list that describes the connection aliases used for cross-Region redirection\cr
 \link[=workspaces_describe_connection_alias_permissions]{describe_connection_alias_permissions} \tab Describes the permissions that the owner of a connection alias has granted to another Amazon Web Services account for the specified connection alias\cr
+\link[=workspaces_describe_image_associations]{describe_image_associations} \tab Describes the associations between the applications and the specified image\cr
 \link[=workspaces_describe_ip_groups]{describe_ip_groups} \tab Describes one or more of your IP access control groups\cr
 \link[=workspaces_describe_tags]{describe_tags} \tab Describes the specified tags for the specified WorkSpaces resource\cr
+\link[=workspaces_describe_workspace_associations]{describe_workspace_associations} \tab Describes the associations betweens applications and the specified WorkSpace\cr
 \link[=workspaces_describe_workspace_bundles]{describe_workspace_bundles} \tab Retrieves a list that describes the available WorkSpace bundles\cr
 \link[=workspaces_describe_workspace_directories]{describe_workspace_directories} \tab Describes the available directories that are registered with Amazon WorkSpaces\cr
 \link[=workspaces_describe_workspace_image_permissions]{describe_workspace_image_permissions} \tab Describes the permissions that the owner of an image has granted to other Amazon Web Services accounts for an image\cr
@@ -154,6 +161,7 @@ resources, see the \href{https://docs.aws.amazon.com/cli/latest/reference/worksp
 \link[=workspaces_describe_workspace_snapshots]{describe_workspace_snapshots} \tab Describes the snapshots for the specified WorkSpace\cr
 \link[=workspaces_disassociate_connection_alias]{disassociate_connection_alias} \tab Disassociates a connection alias from a directory\cr
 \link[=workspaces_disassociate_ip_groups]{disassociate_ip_groups} \tab Disassociates the specified IP access control group from the specified directory\cr
+\link[=workspaces_disassociate_workspace_application]{disassociate_workspace_application} \tab Disassociates the specified application from a WorkSpace\cr
 \link[=workspaces_import_client_branding]{import_client_branding} \tab Imports client branding\cr
 \link[=workspaces_import_workspace_image]{import_workspace_image} \tab Imports the specified Windows 10 or 11 Bring Your Own License (BYOL) image into Amazon WorkSpaces\cr
 \link[=workspaces_list_available_management_cidr_ranges]{list_available_management_cidr_ranges} \tab Retrieves a list of IP address ranges, specified as IPv4 CIDR blocks, that you can use for the network management interface when you enable Bring Your Own License (BYOL)\cr

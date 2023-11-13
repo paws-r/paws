@@ -13,7 +13,8 @@ quicksight_update_dashboard(
   VersionDescription = NULL,
   DashboardPublishOptions = NULL,
   ThemeArn = NULL,
-  Definition = NULL
+  Definition = NULL,
+  ValidationStrategy = NULL
 )
 }
 \arguments{
@@ -69,6 +70,9 @@ in the same Amazon Web Services account where you create the dashboard.}
 
 A definition is the data model of all features in a Dashboard, Template,
 or Analysis.}
+
+\item{ValidationStrategy}{The option to relax the validation needed to update a dashboard with
+definition objects. This skips the validation step for specific errors.}
 }
 \description{
 Updates a dashboard in an Amazon Web Services account.

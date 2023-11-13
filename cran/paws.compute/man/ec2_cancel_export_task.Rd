@@ -7,8 +7,9 @@
 ec2_cancel_export_task(ExportTaskId)
 }
 \arguments{
-\item{ExportTaskId}{[required] The ID of the export task. This is the ID returned by
-\code{\link[=ec2_create_instance_export_task]{create_instance_export_task}}.}
+\item{ExportTaskId}{[required] The ID of the export task. This is the ID returned by the
+\code{\link[=ec2_create_instance_export_task]{create_instance_export_task}} and
+\code{\link[=ec2_export_image]{export_image}} operations.}
 }
 \description{
 Cancels an active export task. The request removes all artifacts of the export, including any partially-created Amazon S3 objects. If the export task is complete or is in the process of transferring the final disk image, the command fails and returns an error.

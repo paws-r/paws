@@ -2,8 +2,7 @@
 % Please edit documentation in R/connect_operations.R
 \name{connect_describe_security_profile}
 \alias{connect_describe_security_profile}
-\title{This API is in preview release for Amazon Connect and is subject to
-change}
+\title{Gets basic information about the security profle}
 \usage{
 connect_describe_security_profile(SecurityProfileId, InstanceId)
 }
@@ -14,7 +13,7 @@ connect_describe_security_profile(SecurityProfileId, InstanceId)
 in the Amazon Resource Name (ARN) of the instance.}
 }
 \description{
-This API is in preview release for Amazon Connect and is subject to change.
+Gets basic information about the security profle.
 
 See \url{https://www.paws-r-sdk.com/docs/connect_describe_security_profile/} for full documentation.
 }

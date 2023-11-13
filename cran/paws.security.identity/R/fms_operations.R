@@ -223,6 +223,10 @@ fms_delete_notification_channel <- function() {
 #'     Manager and if it's no longer associated with any resources through
 #'     another policy
 #' 
+#' For security group common policies, even if set to `False`, Firewall
+#' Manager deletes all security groups created by Firewall Manager that
+#' aren't associated with any other resources through another policy.
+#' 
 #' After the cleanup, in-scope resources are no longer protected by web
 #' ACLs in this policy. Protection of out-of-scope resources remains
 #' unchanged. Scope is determined by tags that you create and accounts that
@@ -703,8 +707,18 @@ fms_get_third_party_firewall_association_status <- function(ThirdPartyFirewall) 
 #'
 #' See [https://www.paws-r-sdk.com/docs/fms_get_violation_details/](https://www.paws-r-sdk.com/docs/fms_get_violation_details/) for full documentation.
 #'
-#' @param PolicyId &#91;required&#93; The ID of the Firewall Manager policy that you want the details for.
-#' This currently only supports security group content audit policies.
+#' @param PolicyId &#91;required&#93; The ID of the Firewall Manager policy that you want the details for. You
+#' can get violation details for the following policy types:
+#' 
+#' -   DNS Firewall
+#' 
+#' -   Imported Network Firewall
+#' 
+#' -   Network Firewall
+#' 
+#' -   Security group content audit
+#' 
+#' -   Third-party firewall
 #' @param MemberAccount &#91;required&#93; The Amazon Web Services account ID that you want the details for.
 #' @param ResourceId &#91;required&#93; The ID of the resource that has violations.
 #' @param ResourceType &#91;required&#93; The resource type. This is in the format shown in the [Amazon Web

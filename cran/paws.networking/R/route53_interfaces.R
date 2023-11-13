@@ -617,7 +617,7 @@ NULL
 
 .route53$list_hosted_zones_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Marker = structure(logical(0), tags = list(location = "querystring", locationName = "marker", type = "string")), MaxItems = structure(logical(0), tags = list(location = "querystring", locationName = "maxitems", type = "string")), DelegationSetId = structure(logical(0), tags = list(location = "querystring", locationName = "delegationsetid", type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Marker = structure(logical(0), tags = list(location = "querystring", locationName = "marker", type = "string")), MaxItems = structure(logical(0), tags = list(location = "querystring", locationName = "maxitems", type = "string")), DelegationSetId = structure(logical(0), tags = list(location = "querystring", locationName = "delegationsetid", type = "string")), HostedZoneType = structure(logical(0), tags = list(location = "querystring", locationName = "hostedzonetype", type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

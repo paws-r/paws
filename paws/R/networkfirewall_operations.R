@@ -413,7 +413,7 @@ networkfirewall_create_firewall <- function(FirewallName, FirewallPolicyArn, Vpc
 #'     FirewallPolicyArn = "string",
 #'     FirewallPolicyId = "string",
 #'     Description = "string",
-#'     FirewallPolicyStatus = "ACTIVE"|"DELETING",
+#'     FirewallPolicyStatus = "ACTIVE"|"DELETING"|"ERROR",
 #'     Tags = list(
 #'       list(
 #'         Key = "string",
@@ -542,7 +542,7 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #' @usage
 #' networkfirewall_create_rule_group(RuleGroupName, RuleGroup, Rules, Type,
 #'   Description, Capacity, Tags, DryRun, EncryptionConfiguration,
-#'   SourceMetadata)
+#'   SourceMetadata, AnalyzeRuleGroup)
 #'
 #' @param RuleGroupName &#91;required&#93; The descriptive name of the rule group. You can't change the name of a
 #' rule group after you create it.
@@ -628,6 +628,11 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #' @param SourceMetadata A complex type that contains metadata about the rule group that your own
 #' rule group is copied from. You can use the metadata to keep track of
 #' updates made to the originating rule group.
+#' @param AnalyzeRuleGroup Indicates whether you want Network Firewall to analyze the stateless
+#' rules in the rule group for rule behavior such as asymmetric routing. If
+#' set to `TRUE`, Network Firewall runs the analysis and then creates the
+#' rule group for you. To run the stateless rule group analyzer without
+#' creating the rule group, set `DryRun` to `TRUE`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -641,7 +646,7 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #'     Description = "string",
 #'     Type = "STATELESS"|"STATEFUL",
 #'     Capacity = 123,
-#'     RuleGroupStatus = "ACTIVE"|"DELETING",
+#'     RuleGroupStatus = "ACTIVE"|"DELETING"|"ERROR",
 #'     Tags = list(
 #'       list(
 #'         Key = "string",
@@ -661,6 +666,15 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #'     SnsTopic = "string",
 #'     LastModifiedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     AnalysisResults = list(
+#'       list(
+#'         IdentifiedRuleIds = list(
+#'           "string"
+#'         ),
+#'         IdentifiedType = "STATELESS_RULE_FORWARDING_ASYMMETRICALLY"|"STATELESS_RULE_CONTAINS_TCP_FLAGS",
+#'         AnalysisDetail = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -812,7 +826,8 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #'   SourceMetadata = list(
 #'     SourceArn = "string",
 #'     SourceUpdateToken = "string"
-#'   )
+#'   ),
+#'   AnalyzeRuleGroup = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -821,14 +836,14 @@ networkfirewall_create_firewall_policy <- function(FirewallPolicyName, FirewallP
 #' @rdname networkfirewall_create_rule_group
 #'
 #' @aliases networkfirewall_create_rule_group
-networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, Rules = NULL, Type, Description = NULL, Capacity, Tags = NULL, DryRun = NULL, EncryptionConfiguration = NULL, SourceMetadata = NULL) {
+networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, Rules = NULL, Type, Description = NULL, Capacity, Tags = NULL, DryRun = NULL, EncryptionConfiguration = NULL, SourceMetadata = NULL, AnalyzeRuleGroup = NULL) {
   op <- new_operation(
     name = "CreateRuleGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .networkfirewall$create_rule_group_input(RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, Capacity = Capacity, Tags = Tags, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata)
+  input <- .networkfirewall$create_rule_group_input(RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, Capacity = Capacity, Tags = Tags, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata, AnalyzeRuleGroup = AnalyzeRuleGroup)
   output <- .networkfirewall$create_rule_group_output()
   config <- get_config()
   svc <- .networkfirewall$service(config)
@@ -842,12 +857,12 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #'
 #' @description
 #' Creates an Network Firewall TLS inspection configuration. A TLS
-#' inspection configuration contains the Certificate Manager certificate
-#' references that Network Firewall uses to decrypt and re-encrypt inbound
-#' traffic.
+#' inspection configuration contains Certificate Manager certificate
+#' associations between and the scope configurations that Network Firewall
+#' uses to decrypt and re-encrypt traffic traveling through your firewall.
 #' 
-#' After you create a TLS inspection configuration, you associate it with a
-#' new firewall policy.
+#' After you create a TLS inspection configuration, you can associate it
+#' with a new firewall policy.
 #' 
 #' To update the settings for a TLS inspection configuration, use
 #' [`update_tls_inspection_configuration`][networkfirewall_update_tls_inspection_configuration].
@@ -864,7 +879,7 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #' [`describe_tls_inspection_configuration`][networkfirewall_describe_tls_inspection_configuration].
 #' 
 #' For more information about TLS inspection configurations, see
-#' [Decrypting SSL/TLS traffic with TLS inspection
+#' [Inspecting SSL/TLS traffic with TLS inspection
 #' configurations](https://docs.aws.amazon.com/network-firewall/latest/developerguide/)
 #' in the *Network Firewall Developer Guide*.
 #'
@@ -888,11 +903,11 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #' To use a TLS inspection configuration, you add it to a new Network
 #' Firewall firewall policy, then you apply the firewall policy to a
 #' firewall. Network Firewall acts as a proxy service to decrypt and
-#' inspect inbound traffic. You can reference a TLS inspection
-#' configuration from more than one firewall policy, and you can use a
-#' firewall policy in more than one firewall. For more information about
-#' using TLS inspection configurations, see [Decrypting SSL/TLS traffic
-#' with TLS inspection
+#' inspect the traffic traveling through your firewalls. You can reference
+#' a TLS inspection configuration from more than one firewall policy, and
+#' you can use a firewall policy in more than one firewall. For more
+#' information about using TLS inspection configurations, see [Inspecting
+#' SSL/TLS traffic with TLS inspection
 #' configurations](https://docs.aws.amazon.com/network-firewall/latest/developerguide/)
 #' in the *Network Firewall Developer Guide*.
 #' @param Description A description of the TLS inspection configuration.
@@ -908,7 +923,7 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #'     TLSInspectionConfigurationArn = "string",
 #'     TLSInspectionConfigurationName = "string",
 #'     TLSInspectionConfigurationId = "string",
-#'     TLSInspectionConfigurationStatus = "ACTIVE"|"DELETING",
+#'     TLSInspectionConfigurationStatus = "ACTIVE"|"DELETING"|"ERROR",
 #'     Description = "string",
 #'     Tags = list(
 #'       list(
@@ -931,6 +946,12 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #'         Status = "string",
 #'         StatusMessage = "string"
 #'       )
+#'     ),
+#'     CertificateAuthority = list(
+#'       CertificateArn = "string",
+#'       CertificateSerial = "string",
+#'       Status = "string",
+#'       StatusMessage = "string"
 #'     )
 #'   )
 #' )
@@ -976,6 +997,11 @@ networkfirewall_create_rule_group <- function(RuleGroupName, RuleGroup = NULL, R
 #'               123
 #'             )
 #'           )
+#'         ),
+#'         CertificateAuthorityArn = "string",
+#'         CheckCertificateRevocationStatus = list(
+#'           RevokedStatusAction = "PASS"|"DROP"|"REJECT",
+#'           UnknownStatusAction = "PASS"|"DROP"|"REJECT"
 #'         )
 #'       )
 #'     )
@@ -1169,7 +1195,7 @@ networkfirewall_delete_firewall <- function(FirewallName = NULL, FirewallArn = N
 #'     FirewallPolicyArn = "string",
 #'     FirewallPolicyId = "string",
 #'     Description = "string",
-#'     FirewallPolicyStatus = "ACTIVE"|"DELETING",
+#'     FirewallPolicyStatus = "ACTIVE"|"DELETING"|"ERROR",
 #'     Tags = list(
 #'       list(
 #'         Key = "string",
@@ -1298,7 +1324,7 @@ networkfirewall_delete_resource_policy <- function(ResourceArn) {
 #'     Description = "string",
 #'     Type = "STATELESS"|"STATEFUL",
 #'     Capacity = 123,
-#'     RuleGroupStatus = "ACTIVE"|"DELETING",
+#'     RuleGroupStatus = "ACTIVE"|"DELETING"|"ERROR",
 #'     Tags = list(
 #'       list(
 #'         Key = "string",
@@ -1318,6 +1344,15 @@ networkfirewall_delete_resource_policy <- function(ResourceArn) {
 #'     SnsTopic = "string",
 #'     LastModifiedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     AnalysisResults = list(
+#'       list(
+#'         IdentifiedRuleIds = list(
+#'           "string"
+#'         ),
+#'         IdentifiedType = "STATELESS_RULE_FORWARDING_ASYMMETRICALLY"|"STATELESS_RULE_CONTAINS_TCP_FLAGS",
+#'         AnalysisDetail = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -1379,7 +1414,7 @@ networkfirewall_delete_rule_group <- function(RuleGroupName = NULL, RuleGroupArn
 #'     TLSInspectionConfigurationArn = "string",
 #'     TLSInspectionConfigurationName = "string",
 #'     TLSInspectionConfigurationId = "string",
-#'     TLSInspectionConfigurationStatus = "ACTIVE"|"DELETING",
+#'     TLSInspectionConfigurationStatus = "ACTIVE"|"DELETING"|"ERROR",
 #'     Description = "string",
 #'     Tags = list(
 #'       list(
@@ -1402,6 +1437,12 @@ networkfirewall_delete_rule_group <- function(RuleGroupName = NULL, RuleGroupArn
 #'         Status = "string",
 #'         StatusMessage = "string"
 #'       )
+#'     ),
+#'     CertificateAuthority = list(
+#'       CertificateArn = "string",
+#'       CertificateSerial = "string",
+#'       Status = "string",
+#'       StatusMessage = "string"
 #'     )
 #'   )
 #' )
@@ -1576,7 +1617,7 @@ networkfirewall_describe_firewall <- function(FirewallName = NULL, FirewallArn =
 #'     FirewallPolicyArn = "string",
 #'     FirewallPolicyId = "string",
 #'     Description = "string",
-#'     FirewallPolicyStatus = "ACTIVE"|"DELETING",
+#'     FirewallPolicyStatus = "ACTIVE"|"DELETING"|"ERROR",
 #'     Tags = list(
 #'       list(
 #'         Key = "string",
@@ -1803,7 +1844,8 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
 #' Returns the data objects for the specified rule group.
 #'
 #' @usage
-#' networkfirewall_describe_rule_group(RuleGroupName, RuleGroupArn, Type)
+#' networkfirewall_describe_rule_group(RuleGroupName, RuleGroupArn, Type,
+#'   AnalyzeRuleGroup)
 #'
 #' @param RuleGroupName The descriptive name of the rule group. You can't change the name of a
 #' rule group after you create it.
@@ -1818,6 +1860,9 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
 #' 
 #' This setting is required for requests that do not include the
 #' `RuleGroupARN`.
+#' @param AnalyzeRuleGroup Indicates whether you want Network Firewall to analyze the stateless
+#' rules in the rule group for rule behavior such as asymmetric routing. If
+#' set to `TRUE`, Network Firewall runs the analysis.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1955,7 +2000,7 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
 #'     Description = "string",
 #'     Type = "STATELESS"|"STATEFUL",
 #'     Capacity = 123,
-#'     RuleGroupStatus = "ACTIVE"|"DELETING",
+#'     RuleGroupStatus = "ACTIVE"|"DELETING"|"ERROR",
 #'     Tags = list(
 #'       list(
 #'         Key = "string",
@@ -1975,6 +2020,15 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
 #'     SnsTopic = "string",
 #'     LastModifiedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     AnalysisResults = list(
+#'       list(
+#'         IdentifiedRuleIds = list(
+#'           "string"
+#'         ),
+#'         IdentifiedType = "STATELESS_RULE_FORWARDING_ASYMMETRICALLY"|"STATELESS_RULE_CONTAINS_TCP_FLAGS",
+#'         AnalysisDetail = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -1985,7 +2039,8 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
 #' svc$describe_rule_group(
 #'   RuleGroupName = "string",
 #'   RuleGroupArn = "string",
-#'   Type = "STATELESS"|"STATEFUL"
+#'   Type = "STATELESS"|"STATEFUL",
+#'   AnalyzeRuleGroup = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -1994,14 +2049,14 @@ networkfirewall_describe_resource_policy <- function(ResourceArn) {
 #' @rdname networkfirewall_describe_rule_group
 #'
 #' @aliases networkfirewall_describe_rule_group
-networkfirewall_describe_rule_group <- function(RuleGroupName = NULL, RuleGroupArn = NULL, Type = NULL) {
+networkfirewall_describe_rule_group <- function(RuleGroupName = NULL, RuleGroupArn = NULL, Type = NULL, AnalyzeRuleGroup = NULL) {
   op <- new_operation(
     name = "DescribeRuleGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .networkfirewall$describe_rule_group_input(RuleGroupName = RuleGroupName, RuleGroupArn = RuleGroupArn, Type = Type)
+  input <- .networkfirewall$describe_rule_group_input(RuleGroupName = RuleGroupName, RuleGroupArn = RuleGroupArn, Type = Type, AnalyzeRuleGroup = AnalyzeRuleGroup)
   output <- .networkfirewall$describe_rule_group_output()
   config <- get_config()
   svc <- .networkfirewall$service(config)
@@ -2147,6 +2202,11 @@ networkfirewall_describe_rule_group_metadata <- function(RuleGroupName = NULL, R
 #'               123
 #'             )
 #'           )
+#'         ),
+#'         CertificateAuthorityArn = "string",
+#'         CheckCertificateRevocationStatus = list(
+#'           RevokedStatusAction = "PASS"|"DROP"|"REJECT",
+#'           UnknownStatusAction = "PASS"|"DROP"|"REJECT"
 #'         )
 #'       )
 #'     )
@@ -2155,7 +2215,7 @@ networkfirewall_describe_rule_group_metadata <- function(RuleGroupName = NULL, R
 #'     TLSInspectionConfigurationArn = "string",
 #'     TLSInspectionConfigurationName = "string",
 #'     TLSInspectionConfigurationId = "string",
-#'     TLSInspectionConfigurationStatus = "ACTIVE"|"DELETING",
+#'     TLSInspectionConfigurationStatus = "ACTIVE"|"DELETING"|"ERROR",
 #'     Description = "string",
 #'     Tags = list(
 #'       list(
@@ -2178,6 +2238,12 @@ networkfirewall_describe_rule_group_metadata <- function(RuleGroupName = NULL, R
 #'         Status = "string",
 #'         StatusMessage = "string"
 #'       )
+#'     ),
+#'     CertificateAuthority = list(
+#'       CertificateArn = "string",
+#'       CertificateSerial = "string",
+#'       Status = "string",
+#'       StatusMessage = "string"
 #'     )
 #'   )
 #' )
@@ -3163,7 +3229,7 @@ networkfirewall_update_firewall_encryption_configuration <- function(UpdateToken
 #'     FirewallPolicyArn = "string",
 #'     FirewallPolicyId = "string",
 #'     Description = "string",
-#'     FirewallPolicyStatus = "ACTIVE"|"DELETING",
+#'     FirewallPolicyStatus = "ACTIVE"|"DELETING"|"ERROR",
 #'     Tags = list(
 #'       list(
 #'         Key = "string",
@@ -3480,7 +3546,7 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #' @usage
 #' networkfirewall_update_rule_group(UpdateToken, RuleGroupArn,
 #'   RuleGroupName, RuleGroup, Rules, Type, Description, DryRun,
-#'   EncryptionConfiguration, SourceMetadata)
+#'   EncryptionConfiguration, SourceMetadata, AnalyzeRuleGroup)
 #'
 #' @param UpdateToken &#91;required&#93; A token used for optimistic locking. Network Firewall returns a token to
 #' your requests that access the rule group. The token marks the state of
@@ -3540,6 +3606,11 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #' @param SourceMetadata A complex type that contains metadata about the rule group that your own
 #' rule group is copied from. You can use the metadata to keep track of
 #' updates made to the originating rule group.
+#' @param AnalyzeRuleGroup Indicates whether you want Network Firewall to analyze the stateless
+#' rules in the rule group for rule behavior such as asymmetric routing. If
+#' set to `TRUE`, Network Firewall runs the analysis and then updates the
+#' rule group for you. To run the stateless rule group analyzer without
+#' updating the rule group, set `DryRun` to `TRUE`.
 #'
 #' @return
 #' A list with the following syntax:
@@ -3553,7 +3624,7 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #'     Description = "string",
 #'     Type = "STATELESS"|"STATEFUL",
 #'     Capacity = 123,
-#'     RuleGroupStatus = "ACTIVE"|"DELETING",
+#'     RuleGroupStatus = "ACTIVE"|"DELETING"|"ERROR",
 #'     Tags = list(
 #'       list(
 #'         Key = "string",
@@ -3573,6 +3644,15 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #'     SnsTopic = "string",
 #'     LastModifiedTime = as.POSIXct(
 #'       "2015-01-01"
+#'     ),
+#'     AnalysisResults = list(
+#'       list(
+#'         IdentifiedRuleIds = list(
+#'           "string"
+#'         ),
+#'         IdentifiedType = "STATELESS_RULE_FORWARDING_ASYMMETRICALLY"|"STATELESS_RULE_CONTAINS_TCP_FLAGS",
+#'         AnalysisDetail = "string"
+#'       )
 #'     )
 #'   )
 #' )
@@ -3719,7 +3799,8 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #'   SourceMetadata = list(
 #'     SourceArn = "string",
 #'     SourceUpdateToken = "string"
-#'   )
+#'   ),
+#'   AnalyzeRuleGroup = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3728,14 +3809,14 @@ networkfirewall_update_logging_configuration <- function(FirewallArn = NULL, Fir
 #' @rdname networkfirewall_update_rule_group
 #'
 #' @aliases networkfirewall_update_rule_group
-networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, RuleGroupName = NULL, RuleGroup = NULL, Rules = NULL, Type = NULL, Description = NULL, DryRun = NULL, EncryptionConfiguration = NULL, SourceMetadata = NULL) {
+networkfirewall_update_rule_group <- function(UpdateToken, RuleGroupArn = NULL, RuleGroupName = NULL, RuleGroup = NULL, Rules = NULL, Type = NULL, Description = NULL, DryRun = NULL, EncryptionConfiguration = NULL, SourceMetadata = NULL, AnalyzeRuleGroup = NULL) {
   op <- new_operation(
     name = "UpdateRuleGroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .networkfirewall$update_rule_group_input(UpdateToken = UpdateToken, RuleGroupArn = RuleGroupArn, RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata)
+  input <- .networkfirewall$update_rule_group_input(UpdateToken = UpdateToken, RuleGroupArn = RuleGroupArn, RuleGroupName = RuleGroupName, RuleGroup = RuleGroup, Rules = Rules, Type = Type, Description = Description, DryRun = DryRun, EncryptionConfiguration = EncryptionConfiguration, SourceMetadata = SourceMetadata, AnalyzeRuleGroup = AnalyzeRuleGroup)
   output <- .networkfirewall$update_rule_group_output()
   config <- get_config()
   svc <- .networkfirewall$service(config)
@@ -3833,7 +3914,7 @@ networkfirewall_update_subnet_change_protection <- function(UpdateToken = NULL, 
 #' @description
 #' Updates the TLS inspection configuration settings for the specified TLS
 #' inspection configuration. You use a TLS inspection configuration by
-#' reference in one or more firewall policies. When you modify a TLS
+#' referencing it in one or more firewall policies. When you modify a TLS
 #' inspection configuration, you modify all firewall policies that use the
 #' TLS inspection configuration.
 #' 
@@ -3864,11 +3945,11 @@ networkfirewall_update_subnet_change_protection <- function(UpdateToken = NULL, 
 #' To use a TLS inspection configuration, you add it to a new Network
 #' Firewall firewall policy, then you apply the firewall policy to a
 #' firewall. Network Firewall acts as a proxy service to decrypt and
-#' inspect inbound traffic. You can reference a TLS inspection
-#' configuration from more than one firewall policy, and you can use a
-#' firewall policy in more than one firewall. For more information about
-#' using TLS inspection configurations, see [Decrypting SSL/TLS traffic
-#' with TLS inspection
+#' inspect the traffic traveling through your firewalls. You can reference
+#' a TLS inspection configuration from more than one firewall policy, and
+#' you can use a firewall policy in more than one firewall. For more
+#' information about using TLS inspection configurations, see [Inspecting
+#' SSL/TLS traffic with TLS inspection
 #' configurations](https://docs.aws.amazon.com/network-firewall/latest/developerguide/)
 #' in the *Network Firewall Developer Guide*.
 #' @param Description A description of the TLS inspection configuration.
@@ -3897,7 +3978,7 @@ networkfirewall_update_subnet_change_protection <- function(UpdateToken = NULL, 
 #'     TLSInspectionConfigurationArn = "string",
 #'     TLSInspectionConfigurationName = "string",
 #'     TLSInspectionConfigurationId = "string",
-#'     TLSInspectionConfigurationStatus = "ACTIVE"|"DELETING",
+#'     TLSInspectionConfigurationStatus = "ACTIVE"|"DELETING"|"ERROR",
 #'     Description = "string",
 #'     Tags = list(
 #'       list(
@@ -3920,6 +4001,12 @@ networkfirewall_update_subnet_change_protection <- function(UpdateToken = NULL, 
 #'         Status = "string",
 #'         StatusMessage = "string"
 #'       )
+#'     ),
+#'     CertificateAuthority = list(
+#'       CertificateArn = "string",
+#'       CertificateSerial = "string",
+#'       Status = "string",
+#'       StatusMessage = "string"
 #'     )
 #'   )
 #' )
@@ -3966,6 +4053,11 @@ networkfirewall_update_subnet_change_protection <- function(UpdateToken = NULL, 
 #'               123
 #'             )
 #'           )
+#'         ),
+#'         CertificateAuthorityArn = "string",
+#'         CheckCertificateRevocationStatus = list(
+#'           RevokedStatusAction = "PASS"|"DROP"|"REJECT",
+#'           UnknownStatusAction = "PASS"|"DROP"|"REJECT"
 #'         )
 #'       )
 #'     )

@@ -4,7 +4,13 @@
 \alias{workmail_create_resource}
 \title{Creates a new WorkMail resource}
 \usage{
-workmail_create_resource(OrganizationId, Name, Type)
+workmail_create_resource(
+  OrganizationId,
+  Name,
+  Type,
+  Description = NULL,
+  HiddenFromGlobalAddressList = NULL
+)
 }
 \arguments{
 \item{OrganizationId}{[required] The identifier associated with the organization for which the resource
@@ -14,6 +20,11 @@ is created.}
 
 \item{Type}{[required] The type of the new resource. The available types are \code{equipment} and
 \code{room}.}
+
+\item{Description}{Resource description.}
+
+\item{HiddenFromGlobalAddressList}{If this parameter is enabled, the resource will be hidden from the
+address book.}
 }
 \description{
 Creates a new WorkMail resource.

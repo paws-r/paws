@@ -79,9 +79,14 @@ For more information, see \href{https://docs.aws.amazon.com/translate/latest/dg/
 \item{ClientToken}{[required] A unique identifier for the request. This token is generated for you
 when using the Amazon Translate SDK.}
 
-\item{Settings}{Settings to configure your translation output, including the option to
-set the formality level of the output text and the option to mask
-profane words and phrases.}
+\item{Settings}{Settings to configure your translation output. You can configure the
+following options:
+\itemize{
+\item Brevity: not supported.
+\item Formality: sets the formality level of the output text.
+\item Profanity: masks profane words and phrases in your translation
+output.
+}}
 }
 \description{
 Starts an asynchronous batch translation job. Use batch translation jobs to translate large volumes of text across multiple documents at once. For batch translation, you can input documents with different source languages (specify \code{auto} as the source language). You can specify one or more target languages. Batch translation translates each input document into each of the target languages. For more information, see \href{https://docs.aws.amazon.com/translate/latest/dg/async.html}{Asynchronous batch processing}.

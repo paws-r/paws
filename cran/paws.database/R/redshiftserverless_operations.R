@@ -37,6 +37,37 @@ redshiftserverless_convert_recovery_point_to_snapshot <- function(recoveryPointI
 }
 .redshiftserverless$operations$convert_recovery_point_to_snapshot <- redshiftserverless_convert_recovery_point_to_snapshot
 
+#' Creates a custom domain association for Amazon Redshift Serverless
+#'
+#' @description
+#' Creates a custom domain association for Amazon Redshift Serverless.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_create_custom_domain_association/](https://www.paws-r-sdk.com/docs/redshiftserverless_create_custom_domain_association/) for full documentation.
+#'
+#' @param customDomainCertificateArn &#91;required&#93; The custom domain name’s certificate Amazon resource name (ARN).
+#' @param customDomainName &#91;required&#93; The custom domain name to associate with the workgroup.
+#' @param workgroupName &#91;required&#93; The name of the workgroup associated with the database.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_create_custom_domain_association
+redshiftserverless_create_custom_domain_association <- function(customDomainCertificateArn, customDomainName, workgroupName) {
+  op <- new_operation(
+    name = "CreateCustomDomainAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshiftserverless$create_custom_domain_association_input(customDomainCertificateArn = customDomainCertificateArn, customDomainName = customDomainName, workgroupName = workgroupName)
+  output <- .redshiftserverless$create_custom_domain_association_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$create_custom_domain_association <- redshiftserverless_create_custom_domain_association
+
 #' Creates an Amazon Redshift Serverless managed VPC endpoint
 #'
 #' @description
@@ -82,8 +113,13 @@ redshiftserverless_create_endpoint_access <- function(endpointName, subnetIds, v
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshiftserverless_create_namespace/](https://www.paws-r-sdk.com/docs/redshiftserverless_create_namespace/) for full documentation.
 #'
+#' @param adminPasswordSecretKmsKeyId The ID of the Key Management Service (KMS) key used to encrypt and store
+#' the namespace's admin credentials secret. You can only use this
+#' parameter if `manageAdminPassword` is true.
 #' @param adminUserPassword The password of the administrator for the first database created in the
 #' namespace.
+#' 
+#' You can't use `adminUserPassword` if `manageAdminPassword` is true.
 #' @param adminUsername The username of the administrator for the first database created in the
 #' namespace.
 #' @param dbName The name of the first database created in the namespace.
@@ -94,20 +130,25 @@ redshiftserverless_create_endpoint_access <- function(endpointName, subnetIds, v
 #' encrypt your data.
 #' @param logExports The types of logs the namespace can export. Available export types are
 #' `userlog`, `connectionlog`, and `useractivitylog`.
+#' @param manageAdminPassword If `true`, Amazon Redshift uses Secrets Manager to manage the
+#' namespace's admin credentials. You can't use `adminUserPassword` if
+#' `manageAdminPassword` is true. If `manageAdminPassword` is false or not
+#' set, Amazon Redshift uses `adminUserPassword` for the admin user
+#' account's password.
 #' @param namespaceName &#91;required&#93; The name of the namespace.
 #' @param tags A list of tag instances.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_create_namespace
-redshiftserverless_create_namespace <- function(adminUserPassword = NULL, adminUsername = NULL, dbName = NULL, defaultIamRoleArn = NULL, iamRoles = NULL, kmsKeyId = NULL, logExports = NULL, namespaceName, tags = NULL) {
+redshiftserverless_create_namespace <- function(adminPasswordSecretKmsKeyId = NULL, adminUserPassword = NULL, adminUsername = NULL, dbName = NULL, defaultIamRoleArn = NULL, iamRoles = NULL, kmsKeyId = NULL, logExports = NULL, manageAdminPassword = NULL, namespaceName, tags = NULL) {
   op <- new_operation(
     name = "CreateNamespace",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftserverless$create_namespace_input(adminUserPassword = adminUserPassword, adminUsername = adminUsername, dbName = dbName, defaultIamRoleArn = defaultIamRoleArn, iamRoles = iamRoles, kmsKeyId = kmsKeyId, logExports = logExports, namespaceName = namespaceName, tags = tags)
+  input <- .redshiftserverless$create_namespace_input(adminPasswordSecretKmsKeyId = adminPasswordSecretKmsKeyId, adminUserPassword = adminUserPassword, adminUsername = adminUsername, dbName = dbName, defaultIamRoleArn = defaultIamRoleArn, iamRoles = iamRoles, kmsKeyId = kmsKeyId, logExports = logExports, manageAdminPassword = manageAdminPassword, namespaceName = namespaceName, tags = tags)
   output <- .redshiftserverless$create_namespace_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config)
@@ -212,6 +253,8 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @param enhancedVpcRouting The value that specifies whether to turn on enhanced virtual private
 #' cloud (VPC) routing, which forces Amazon Redshift Serverless to route
 #' traffic through your VPC instead of over the internet.
+#' @param maxCapacity The maximum data-warehouse capacity Amazon Redshift Serverless uses to
+#' serve queries. The max capacity is specified in RPUs.
 #' @param namespaceName &#91;required&#93; The name of the namespace to associate with the workgroup.
 #' @param port The custom port to use when connecting to a workgroup. Valid port ranges
 #' are 5431-5455 and 8191-8215. The default is 5439.
@@ -225,14 +268,14 @@ redshiftserverless_create_usage_limit <- function(amount, breachAction = NULL, p
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_create_workgroup
-redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, namespaceName, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, workgroupName) {
+redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, maxCapacity = NULL, namespaceName, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, tags = NULL, workgroupName) {
   op <- new_operation(
     name = "CreateWorkgroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, namespaceName = namespaceName, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, workgroupName = workgroupName)
+  input <- .redshiftserverless$create_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, maxCapacity = maxCapacity, namespaceName = namespaceName, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, tags = tags, workgroupName = workgroupName)
   output <- .redshiftserverless$create_workgroup_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config)
@@ -241,6 +284,36 @@ redshiftserverless_create_workgroup <- function(baseCapacity = NULL, configParam
   return(response)
 }
 .redshiftserverless$operations$create_workgroup <- redshiftserverless_create_workgroup
+
+#' Deletes a custom domain association for Amazon Redshift Serverless
+#'
+#' @description
+#' Deletes a custom domain association for Amazon Redshift Serverless.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_delete_custom_domain_association/](https://www.paws-r-sdk.com/docs/redshiftserverless_delete_custom_domain_association/) for full documentation.
+#'
+#' @param customDomainName &#91;required&#93; The custom domain name associated with the workgroup.
+#' @param workgroupName &#91;required&#93; The name of the workgroup associated with the database.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_delete_custom_domain_association
+redshiftserverless_delete_custom_domain_association <- function(customDomainName, workgroupName) {
+  op <- new_operation(
+    name = "DeleteCustomDomainAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshiftserverless$delete_custom_domain_association_input(customDomainName = customDomainName, workgroupName = workgroupName)
+  output <- .redshiftserverless$delete_custom_domain_association_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$delete_custom_domain_association <- redshiftserverless_delete_custom_domain_association
 
 #' Deletes an Amazon Redshift Serverless managed VPC endpoint
 #'
@@ -426,6 +499,8 @@ redshiftserverless_delete_workgroup <- function(workgroupName) {
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshiftserverless_get_credentials/](https://www.paws-r-sdk.com/docs/redshiftserverless_get_credentials/) for full documentation.
 #'
+#' @param customDomainName The custom domain name associated with the workgroup. The custom domain
+#' name or the workgroup name must be included in the request.
 #' @param dbName The name of the database to get temporary authorization to log on to.
 #' 
 #' Constraints:
@@ -445,19 +520,19 @@ redshiftserverless_delete_workgroup <- function(workgroupName) {
 #'     in the Amazon Redshift Database Developer Guide
 #' @param durationSeconds The number of seconds until the returned temporary password expires. The
 #' minimum is 900 seconds, and the maximum is 3600 seconds.
-#' @param workgroupName &#91;required&#93; The name of the workgroup associated with the database.
+#' @param workgroupName The name of the workgroup associated with the database.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_get_credentials
-redshiftserverless_get_credentials <- function(dbName = NULL, durationSeconds = NULL, workgroupName) {
+redshiftserverless_get_credentials <- function(customDomainName = NULL, dbName = NULL, durationSeconds = NULL, workgroupName = NULL) {
   op <- new_operation(
     name = "GetCredentials",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftserverless$get_credentials_input(dbName = dbName, durationSeconds = durationSeconds, workgroupName = workgroupName)
+  input <- .redshiftserverless$get_credentials_input(customDomainName = customDomainName, dbName = dbName, durationSeconds = durationSeconds, workgroupName = workgroupName)
   output <- .redshiftserverless$get_credentials_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config)
@@ -466,6 +541,36 @@ redshiftserverless_get_credentials <- function(dbName = NULL, durationSeconds = 
   return(response)
 }
 .redshiftserverless$operations$get_credentials <- redshiftserverless_get_credentials
+
+#' Gets information about a specific custom domain association
+#'
+#' @description
+#' Gets information about a specific custom domain association.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_get_custom_domain_association/](https://www.paws-r-sdk.com/docs/redshiftserverless_get_custom_domain_association/) for full documentation.
+#'
+#' @param customDomainName &#91;required&#93; The custom domain name associated with the workgroup.
+#' @param workgroupName &#91;required&#93; The name of the workgroup associated with the database.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_get_custom_domain_association
+redshiftserverless_get_custom_domain_association <- function(customDomainName, workgroupName) {
+  op <- new_operation(
+    name = "GetCustomDomainAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshiftserverless$get_custom_domain_association_input(customDomainName = customDomainName, workgroupName = workgroupName)
+  output <- .redshiftserverless$get_custom_domain_association_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$get_custom_domain_association <- redshiftserverless_get_custom_domain_association
 
 #' Returns information, such as the name, about a VPC endpoint
 #'
@@ -703,6 +808,41 @@ redshiftserverless_get_workgroup <- function(workgroupName) {
   return(response)
 }
 .redshiftserverless$operations$get_workgroup <- redshiftserverless_get_workgroup
+
+#' Lists custom domain associations for Amazon Redshift Serverless
+#'
+#' @description
+#' Lists custom domain associations for Amazon Redshift Serverless.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_list_custom_domain_associations/](https://www.paws-r-sdk.com/docs/redshiftserverless_list_custom_domain_associations/) for full documentation.
+#'
+#' @param customDomainCertificateArn The custom domain name’s certificate Amazon resource name (ARN).
+#' @param customDomainName The custom domain name associated with the workgroup.
+#' @param maxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to display the next page of results.
+#' @param nextToken When `nextToken` is returned, there are more results available. The
+#' value of `nextToken` is a unique pagination token for each page. Make
+#' the call again using the returned token to retrieve the next page.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_list_custom_domain_associations
+redshiftserverless_list_custom_domain_associations <- function(customDomainCertificateArn = NULL, customDomainName = NULL, maxResults = NULL, nextToken = NULL) {
+  op <- new_operation(
+    name = "ListCustomDomainAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", output_token = "nextToken", limit_key = "maxResults", result_key = "associations")
+  )
+  input <- .redshiftserverless$list_custom_domain_associations_input(customDomainCertificateArn = customDomainCertificateArn, customDomainName = customDomainName, maxResults = maxResults, nextToken = nextToken)
+  output <- .redshiftserverless$list_custom_domain_associations_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$list_custom_domain_associations <- redshiftserverless_list_custom_domain_associations
 
 #' Returns an array of EndpointAccess objects and relevant information
 #'
@@ -1073,6 +1213,12 @@ redshiftserverless_restore_from_recovery_point <- function(namespaceName, recove
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshiftserverless_restore_from_snapshot/](https://www.paws-r-sdk.com/docs/redshiftserverless_restore_from_snapshot/) for full documentation.
 #'
+#' @param adminPasswordSecretKmsKeyId The ID of the Key Management Service (KMS) key used to encrypt and store
+#' the namespace's admin credentials secret.
+#' @param manageAdminPassword If `true`, Amazon Redshift uses Secrets Manager to manage the restored
+#' snapshot's admin credentials. If `MmanageAdminPassword` is false or not
+#' set, Amazon Redshift uses the admin credentials that the namespace or
+#' cluster had at the time the snapshot was taken.
 #' @param namespaceName &#91;required&#93; The name of the namespace to restore the snapshot to.
 #' @param ownerAccount The Amazon Web Services account that owns the snapshot.
 #' @param snapshotArn The Amazon Resource Name (ARN) of the snapshot to restore from. Required
@@ -1088,14 +1234,14 @@ redshiftserverless_restore_from_recovery_point <- function(namespaceName, recove
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_restore_from_snapshot
-redshiftserverless_restore_from_snapshot <- function(namespaceName, ownerAccount = NULL, snapshotArn = NULL, snapshotName = NULL, workgroupName) {
+redshiftserverless_restore_from_snapshot <- function(adminPasswordSecretKmsKeyId = NULL, manageAdminPassword = NULL, namespaceName, ownerAccount = NULL, snapshotArn = NULL, snapshotName = NULL, workgroupName) {
   op <- new_operation(
     name = "RestoreFromSnapshot",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftserverless$restore_from_snapshot_input(namespaceName = namespaceName, ownerAccount = ownerAccount, snapshotArn = snapshotArn, snapshotName = snapshotName, workgroupName = workgroupName)
+  input <- .redshiftserverless$restore_from_snapshot_input(adminPasswordSecretKmsKeyId = adminPasswordSecretKmsKeyId, manageAdminPassword = manageAdminPassword, namespaceName = namespaceName, ownerAccount = ownerAccount, snapshotArn = snapshotArn, snapshotName = snapshotName, workgroupName = workgroupName)
   output <- .redshiftserverless$restore_from_snapshot_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config)
@@ -1206,6 +1352,39 @@ redshiftserverless_untag_resource <- function(resourceArn, tagKeys) {
 }
 .redshiftserverless$operations$untag_resource <- redshiftserverless_untag_resource
 
+#' Updates an Amazon Redshift Serverless certificate associated with a
+#' custom domain
+#'
+#' @description
+#' Updates an Amazon Redshift Serverless certificate associated with a custom domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/redshiftserverless_update_custom_domain_association/](https://www.paws-r-sdk.com/docs/redshiftserverless_update_custom_domain_association/) for full documentation.
+#'
+#' @param customDomainCertificateArn &#91;required&#93; The custom domain name’s certificate Amazon resource name (ARN). This is
+#' optional.
+#' @param customDomainName &#91;required&#93; The custom domain name associated with the workgroup.
+#' @param workgroupName &#91;required&#93; The name of the workgroup associated with the database.
+#'
+#' @keywords internal
+#'
+#' @rdname redshiftserverless_update_custom_domain_association
+redshiftserverless_update_custom_domain_association <- function(customDomainCertificateArn, customDomainName, workgroupName) {
+  op <- new_operation(
+    name = "UpdateCustomDomainAssociation",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .redshiftserverless$update_custom_domain_association_input(customDomainCertificateArn = customDomainCertificateArn, customDomainName = customDomainName, workgroupName = workgroupName)
+  output <- .redshiftserverless$update_custom_domain_association_output()
+  config <- get_config()
+  svc <- .redshiftserverless$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.redshiftserverless$operations$update_custom_domain_association <- redshiftserverless_update_custom_domain_association
+
 #' Updates an Amazon Redshift Serverless managed endpoint
 #'
 #' @description
@@ -1244,8 +1423,13 @@ redshiftserverless_update_endpoint_access <- function(endpointName, vpcSecurityG
 #'
 #' See [https://www.paws-r-sdk.com/docs/redshiftserverless_update_namespace/](https://www.paws-r-sdk.com/docs/redshiftserverless_update_namespace/) for full documentation.
 #'
+#' @param adminPasswordSecretKmsKeyId The ID of the Key Management Service (KMS) key used to encrypt and store
+#' the namespace's admin credentials secret. You can only use this
+#' parameter if `manageAdminPassword` is true.
 #' @param adminUserPassword The password of the administrator for the first database created in the
 #' namespace. This parameter must be updated together with `adminUsername`.
+#' 
+#' You can't use `adminUserPassword` if `manageAdminPassword` is true.
 #' @param adminUsername The username of the administrator for the first database created in the
 #' namespace. This parameter must be updated together with
 #' `adminUserPassword`.
@@ -1257,20 +1441,25 @@ redshiftserverless_update_endpoint_access <- function(endpointName, vpcSecurityG
 #' encrypt your data.
 #' @param logExports The types of logs the namespace can export. The export types are
 #' `userlog`, `connectionlog`, and `useractivitylog`.
+#' @param manageAdminPassword If `true`, Amazon Redshift uses Secrets Manager to manage the
+#' namespace's admin credentials. You can't use `adminUserPassword` if
+#' `manageAdminPassword` is true. If `manageAdminPassword` is false or not
+#' set, Amazon Redshift uses `adminUserPassword` for the admin user
+#' account's password.
 #' @param namespaceName &#91;required&#93; The name of the namespace to update. You can't update the name of a
 #' namespace once it is created.
 #'
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_update_namespace
-redshiftserverless_update_namespace <- function(adminUserPassword = NULL, adminUsername = NULL, defaultIamRoleArn = NULL, iamRoles = NULL, kmsKeyId = NULL, logExports = NULL, namespaceName) {
+redshiftserverless_update_namespace <- function(adminPasswordSecretKmsKeyId = NULL, adminUserPassword = NULL, adminUsername = NULL, defaultIamRoleArn = NULL, iamRoles = NULL, kmsKeyId = NULL, logExports = NULL, manageAdminPassword = NULL, namespaceName) {
   op <- new_operation(
     name = "UpdateNamespace",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftserverless$update_namespace_input(adminUserPassword = adminUserPassword, adminUsername = adminUsername, defaultIamRoleArn = defaultIamRoleArn, iamRoles = iamRoles, kmsKeyId = kmsKeyId, logExports = logExports, namespaceName = namespaceName)
+  input <- .redshiftserverless$update_namespace_input(adminPasswordSecretKmsKeyId = adminPasswordSecretKmsKeyId, adminUserPassword = adminUserPassword, adminUsername = adminUsername, defaultIamRoleArn = defaultIamRoleArn, iamRoles = iamRoles, kmsKeyId = kmsKeyId, logExports = logExports, manageAdminPassword = manageAdminPassword, namespaceName = namespaceName)
   output <- .redshiftserverless$update_namespace_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config)
@@ -1365,6 +1554,8 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' @param enhancedVpcRouting The value that specifies whether to turn on enhanced virtual private
 #' cloud (VPC) routing, which forces Amazon Redshift Serverless to route
 #' traffic through your VPC.
+#' @param maxCapacity The maximum data-warehouse capacity Amazon Redshift Serverless uses to
+#' serve queries. The max capacity is specified in RPUs.
 #' @param port The custom port to use when connecting to a workgroup. Valid port ranges
 #' are 5431-5455 and 8191-8215. The default is 5439.
 #' @param publiclyAccessible A value that specifies whether the workgroup can be accessible from a
@@ -1377,14 +1568,14 @@ redshiftserverless_update_usage_limit <- function(amount = NULL, breachAction = 
 #' @keywords internal
 #'
 #' @rdname redshiftserverless_update_workgroup
-redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, workgroupName) {
+redshiftserverless_update_workgroup <- function(baseCapacity = NULL, configParameters = NULL, enhancedVpcRouting = NULL, maxCapacity = NULL, port = NULL, publiclyAccessible = NULL, securityGroupIds = NULL, subnetIds = NULL, workgroupName) {
   op <- new_operation(
     name = "UpdateWorkgroup",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, workgroupName = workgroupName)
+  input <- .redshiftserverless$update_workgroup_input(baseCapacity = baseCapacity, configParameters = configParameters, enhancedVpcRouting = enhancedVpcRouting, maxCapacity = maxCapacity, port = port, publiclyAccessible = publiclyAccessible, securityGroupIds = securityGroupIds, subnetIds = subnetIds, workgroupName = workgroupName)
   output <- .redshiftserverless$update_workgroup_output()
   config <- get_config()
   svc <- .redshiftserverless$service(config)

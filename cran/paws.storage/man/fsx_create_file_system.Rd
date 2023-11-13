@@ -105,7 +105,7 @@ created.}
 \item{OntapConfiguration}{}
 
 \item{FileSystemTypeVersion}{(Optional) For FSx for Lustre file systems, sets the Lustre version for
-the file system that you're creating. Valid values are \code{2.10}, \code{2.12}m
+the file system that you're creating. Valid values are \code{2.10}, \code{2.12},
 and \code{2.15}:
 \itemize{
 \item 2.10 is supported by the Scratch and Persistent_1 Lustre deployment

@@ -10,9 +10,10 @@ networkmanager_create_connect_peer(
   CoreNetworkAddress = NULL,
   PeerAddress,
   BgpOptions = NULL,
-  InsideCidrBlocks,
+  InsideCidrBlocks = NULL,
   Tags = NULL,
-  ClientToken = NULL
+  ClientToken = NULL,
+  SubnetArn = NULL
 )
 }
 \arguments{
@@ -24,11 +25,13 @@ networkmanager_create_connect_peer(
 
 \item{BgpOptions}{The Connect peer BGP options.}
 
-\item{InsideCidrBlocks}{[required] The inside IP addresses used for BGP peering.}
+\item{InsideCidrBlocks}{The inside IP addresses used for BGP peering.}
 
 \item{Tags}{The tags associated with the peer request.}
 
 \item{ClientToken}{The client token associated with the request.}
+
+\item{SubnetArn}{The subnet ARN for the Connect peer.}
 }
 \description{
 Creates a core network Connect peer for a specified core network connect attachment between a core network and an appliance. The peer address and transit gateway address must be the same IP address family (IPv4 or IPv6).

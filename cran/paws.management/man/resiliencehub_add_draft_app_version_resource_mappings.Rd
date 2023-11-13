@@ -2,7 +2,7 @@
 % Please edit documentation in R/resiliencehub_operations.R
 \name{resiliencehub_add_draft_app_version_resource_mappings}
 \alias{resiliencehub_add_draft_app_version_resource_mappings}
-\title{Adds the resource mapping for the draft application version}
+\title{Adds the source of resource-maps to the draft version of an application}
 \usage{
 resiliencehub_add_draft_app_version_resource_mappings(appArn, resourceMappings)
 }
@@ -11,7 +11,7 @@ resiliencehub_add_draft_app_version_resource_mappings(appArn, resourceMappings)
 for this ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app/\code{app-id}. For more
 information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference} guide.}
+in the \emph{Amazon Web Services General Reference} guide.}
 
 \item{resourceMappings}{[required] Mappings used to map logical resources from the template to physical
 resources. You can use the mapping type \code{CFN_STACK} if the application
@@ -20,7 +20,7 @@ by using the mapping type \code{RESOURCE}. We recommend using the mapping
 type \code{CFN_STACK} if the application is backed by a CloudFormation stack.}
 }
 \description{
-Adds the resource mapping for the draft application version. You can also update an existing resource mapping to a new physical resource.
+Adds the source of resource-maps to the draft version of an application. During assessment, Resilience Hub will use these resource-maps to resolve the latest physical ID for each resource in the application template. For more information about different types of resources suported by Resilience Hub and how to add them in your application, see \href{https://docs.aws.amazon.com/resilience-hub/latest/userguide/how-app-manage.html}{Step 2: How is your application managed?} in the Resilience Hub User Guide.
 
 See \url{https://www.paws-r-sdk.com/docs/resiliencehub_add_draft_app_version_resource_mappings/} for full documentation.
 }

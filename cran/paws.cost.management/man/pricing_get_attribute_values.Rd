@@ -24,7 +24,7 @@ want to retrieve.}
 \item{MaxResults}{The maximum number of results to return in response.}
 }
 \description{
-Returns a list of attribute values. Attributes are similar to the details in a Price List API offer file. For a list of available attributes, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-an-offer.html#pps-defs}{Offer File Definitions} in the \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html}{Billing and Cost Management User Guide}.
+Returns a list of attribute values. Attributes are similar to the details in a Price List API offer file. For a list of available attributes, see \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/reading-service-price-list-file-for-savings-plans.html#pps-defs}{Offer File Definitions} in the \href{https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/billing-what-is.html}{Billing and Cost Management User Guide}.
 
 See \url{https://www.paws-r-sdk.com/docs/pricing_get_attribute_values/} for full documentation.
 }

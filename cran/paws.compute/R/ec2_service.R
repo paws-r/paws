@@ -42,9 +42,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -338,6 +338,7 @@ NULL
 #'  \link[=ec2_describe_aws_network_performance_metric_subscriptions]{describe_aws_network_performance_metric_subscriptions} \tab Describes the current Infrastructure Performance metric subscriptions\cr
 #'  \link[=ec2_describe_bundle_tasks]{describe_bundle_tasks} \tab Describes the specified bundle tasks or all of your bundle tasks\cr
 #'  \link[=ec2_describe_byoip_cidrs]{describe_byoip_cidrs} \tab Describes the IP address ranges that were specified in calls to ProvisionByoipCidr\cr
+#'  \link[=ec2_describe_capacity_block_offerings]{describe_capacity_block_offerings} \tab Describes Capacity Block offerings available for purchase\cr
 #'  \link[=ec2_describe_capacity_reservation_fleets]{describe_capacity_reservation_fleets} \tab Describes one or more Capacity Reservation Fleets\cr
 #'  \link[=ec2_describe_capacity_reservations]{describe_capacity_reservations} \tab Describes one or more of your Capacity Reservations\cr
 #'  \link[=ec2_describe_carrier_gateways]{describe_carrier_gateways} \tab Describes one or more of your carrier gateways\cr
@@ -485,9 +486,12 @@ NULL
 #'  \link[=ec2_disable_ebs_encryption_by_default]{disable_ebs_encryption_by_default} \tab Disables EBS encryption by default for your account in the current Region\cr
 #'  \link[=ec2_disable_fast_launch]{disable_fast_launch} \tab Discontinue faster launching for a Windows AMI, and clean up existing pre-provisioned snapshots\cr
 #'  \link[=ec2_disable_fast_snapshot_restores]{disable_fast_snapshot_restores} \tab Disables fast snapshot restores for the specified snapshots in the specified Availability Zones\cr
+#'  \link[=ec2_disable_image]{disable_image} \tab Sets the AMI state to disabled and removes all launch permissions from the AMI\cr
+#'  \link[=ec2_disable_image_block_public_access]{disable_image_block_public_access} \tab Disables block public access for AMIs at the account level in the specified Amazon Web Services Region\cr
 #'  \link[=ec2_disable_image_deprecation]{disable_image_deprecation} \tab Cancels the deprecation of the specified AMI\cr
 #'  \link[=ec2_disable_ipam_organization_admin_account]{disable_ipam_organization_admin_account} \tab Disable the IPAM account\cr
 #'  \link[=ec2_disable_serial_console_access]{disable_serial_console_access} \tab Disables access to the EC2 serial console of all instances for your account\cr
+#'  \link[=ec2_disable_snapshot_block_public_access]{disable_snapshot_block_public_access} \tab Disables the block public access for snapshots setting at the account level for the specified Amazon Web Services Region\cr
 #'  \link[=ec2_disable_transit_gateway_route_table_propagation]{disable_transit_gateway_route_table_propagation} \tab Disables the specified resource attachment from propagating routes to the specified propagation route table\cr
 #'  \link[=ec2_disable_vgw_route_propagation]{disable_vgw_route_propagation} \tab Disables a virtual private gateway (VGW) from propagating routes to a specified route table of a VPC\cr
 #'  \link[=ec2_disable_vpc_classic_link]{disable_vpc_classic_link} \tab This action is deprecated\cr
@@ -511,10 +515,13 @@ NULL
 #'  \link[=ec2_enable_ebs_encryption_by_default]{enable_ebs_encryption_by_default} \tab Enables EBS encryption by default for your account in the current Region\cr
 #'  \link[=ec2_enable_fast_launch]{enable_fast_launch} \tab When you enable faster launching for a Windows AMI, images are pre-provisioned, using snapshots to launch instances up to 65% faster\cr
 #'  \link[=ec2_enable_fast_snapshot_restores]{enable_fast_snapshot_restores} \tab Enables fast snapshot restores for the specified snapshots in the specified Availability Zones\cr
+#'  \link[=ec2_enable_image]{enable_image} \tab Re-enables a disabled AMI\cr
+#'  \link[=ec2_enable_image_block_public_access]{enable_image_block_public_access} \tab Enables block public access for AMIs at the account level in the specified Amazon Web Services Region\cr
 #'  \link[=ec2_enable_image_deprecation]{enable_image_deprecation} \tab Enables deprecation of the specified AMI at the specified date and time\cr
 #'  \link[=ec2_enable_ipam_organization_admin_account]{enable_ipam_organization_admin_account} \tab Enable an Organizations member account as the IPAM admin account\cr
 #'  \link[=ec2_enable_reachability_analyzer_organization_sharing]{enable_reachability_analyzer_organization_sharing} \tab Establishes a trust relationship between Reachability Analyzer and Organizations\cr
 #'  \link[=ec2_enable_serial_console_access]{enable_serial_console_access} \tab Enables access to the EC2 serial console of all instances for your account\cr
+#'  \link[=ec2_enable_snapshot_block_public_access]{enable_snapshot_block_public_access} \tab Enables or modifies the block public access for snapshots setting at the account level for the specified Amazon Web Services Region\cr
 #'  \link[=ec2_enable_transit_gateway_route_table_propagation]{enable_transit_gateway_route_table_propagation} \tab Enables the specified attachment to propagate routes to the specified propagation route table\cr
 #'  \link[=ec2_enable_vgw_route_propagation]{enable_vgw_route_propagation} \tab Enables a virtual private gateway (VGW) to propagate routes to the specified route table of a VPC\cr
 #'  \link[=ec2_enable_volume_io]{enable_volume_io} \tab Enables I/O operations for a volume that had I/O operations disabled because the data on the volume was potentially inconsistent\cr
@@ -537,6 +544,7 @@ NULL
 #'  \link[=ec2_get_flow_logs_integration_template]{get_flow_logs_integration_template} \tab Generates a CloudFormation template that streamlines and automates the integration of VPC flow logs with Amazon Athena\cr
 #'  \link[=ec2_get_groups_for_capacity_reservation]{get_groups_for_capacity_reservation} \tab Lists the resource groups to which a Capacity Reservation has been added\cr
 #'  \link[=ec2_get_host_reservation_purchase_preview]{get_host_reservation_purchase_preview} \tab Preview a reservation purchase with configurations that match those of your Dedicated Host\cr
+#'  \link[=ec2_get_image_block_public_access_state]{get_image_block_public_access_state} \tab Gets the current state of block public access for AMIs at the account level in the specified Amazon Web Services Region\cr
 #'  \link[=ec2_get_instance_types_from_instance_requirements]{get_instance_types_from_instance_requirements} \tab Returns a list of instance types with the specified instance attributes\cr
 #'  \link[=ec2_get_instance_uefi_data]{get_instance_uefi_data} \tab A binary representation of the UEFI variable store\cr
 #'  \link[=ec2_get_ipam_address_history]{get_ipam_address_history} \tab Retrieve historical information about a CIDR within an IPAM scope\cr
@@ -552,7 +560,9 @@ NULL
 #'  \link[=ec2_get_network_insights_access_scope_content]{get_network_insights_access_scope_content} \tab Gets the content for the specified Network Access Scope\cr
 #'  \link[=ec2_get_password_data]{get_password_data} \tab Retrieves the encrypted administrator password for a running Windows instance\cr
 #'  \link[=ec2_get_reserved_instances_exchange_quote]{get_reserved_instances_exchange_quote} \tab Returns a quote and exchange information for exchanging one or more specified Convertible Reserved Instances for a new Convertible Reserved Instance\cr
+#'  \link[=ec2_get_security_groups_for_vpc]{get_security_groups_for_vpc} \tab Gets security groups that can be associated by the Amazon Web Services account making the request with network interfaces in the specified VPC\cr
 #'  \link[=ec2_get_serial_console_access_status]{get_serial_console_access_status} \tab Retrieves the access status of your account to the EC2 serial console of all instances\cr
+#'  \link[=ec2_get_snapshot_block_public_access_state]{get_snapshot_block_public_access_state} \tab Gets the current state of block public access for snapshots setting for the account and Region\cr
 #'  \link[=ec2_get_spot_placement_scores]{get_spot_placement_scores} \tab Calculates the Spot placement score for a Region or Availability Zone based on the specified target capacity and compute requirements\cr
 #'  \link[=ec2_get_subnet_cidr_reservations]{get_subnet_cidr_reservations} \tab Gets information about the subnet CIDR reservations\cr
 #'  \link[=ec2_get_transit_gateway_attachment_propagations]{get_transit_gateway_attachment_propagations} \tab Lists the route tables to which the specified resource attachment propagates routes\cr
@@ -645,6 +655,7 @@ NULL
 #'  \link[=ec2_provision_byoip_cidr]{provision_byoip_cidr} \tab Provisions an IPv4 or IPv6 address range for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and creates a corresponding address pool\cr
 #'  \link[=ec2_provision_ipam_pool_cidr]{provision_ipam_pool_cidr} \tab Provision a CIDR to an IPAM pool\cr
 #'  \link[=ec2_provision_public_ipv_4_pool_cidr]{provision_public_ipv_4_pool_cidr} \tab Provision a CIDR to a public IPv4 pool\cr
+#'  \link[=ec2_purchase_capacity_block]{purchase_capacity_block} \tab Purchase the Capacity Block for use with your account\cr
 #'  \link[=ec2_purchase_host_reservation]{purchase_host_reservation} \tab Purchase a reservation with configurations that match those of your Dedicated Host\cr
 #'  \link[=ec2_purchase_reserved_instances_offering]{purchase_reserved_instances_offering} \tab Purchases a Reserved Instance for use with your account\cr
 #'  \link[=ec2_purchase_scheduled_instances]{purchase_scheduled_instances} \tab You can no longer purchase Scheduled Instances\cr

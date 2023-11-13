@@ -2,26 +2,28 @@
 % Please edit documentation in R/ssoadmin_operations.R
 \name{ssoadmin_attach_managed_policy_to_permission_set}
 \alias{ssoadmin_attach_managed_policy_to_permission_set}
-\title{Attaches an AWS managed policy ARN to a permission set}
+\title{Attaches an Amazon Web Services managed policy ARN to a permission set}
 \usage{
 ssoadmin_attach_managed_policy_to_permission_set(
   InstanceArn,
-  PermissionSetArn,
-  ManagedPolicyArn
+  ManagedPolicyArn,
+  PermissionSetArn
 )
 }
 \arguments{
 \item{InstanceArn}{[required] The ARN of the IAM Identity Center instance under which the operation
 will be executed. For more information about ARNs, see Amazon Resource
-Names (ARNs) and AWS Service Namespaces in the \emph{AWS General Reference}.}
+Names (ARNs) and Amazon Web Services Service Namespaces in the \emph{Amazon
+Web Services General Reference}.}
+
+\item{ManagedPolicyArn}{[required] The Amazon Web Services managed policy ARN to be attached to a
+permission set.}
 
 \item{PermissionSetArn}{[required] The ARN of the PermissionSet that the managed policy should be attached
 to.}
-
-\item{ManagedPolicyArn}{[required] The AWS managed policy ARN to be attached to a permission set.}
 }
 \description{
-Attaches an AWS managed policy ARN to a permission set.
+Attaches an Amazon Web Services managed policy ARN to a permission set.
 
 See \url{https://www.paws-r-sdk.com/docs/ssoadmin_attach_managed_policy_to_permission_set/} for full documentation.
 }

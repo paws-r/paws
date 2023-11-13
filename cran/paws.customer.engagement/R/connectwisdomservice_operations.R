@@ -17,7 +17,19 @@ NULL
 #' APIs](https://aws.amazon.com/builders-library/making-retries-safe-with-idempotent-APIs/).
 #' @param description The description of the assistant.
 #' @param name &#91;required&#93; The name of the assistant.
-#' @param serverSideEncryptionConfiguration The KMS key used for encryption.
+#' @param serverSideEncryptionConfiguration The configuration information for the customer managed key used for
+#' encryption.
+#' 
+#' The customer managed key must have a policy that allows
+#' `kms:CreateGrant` and ` kms:DescribeKey` permissions to the IAM identity
+#' using the key to invoke Wisdom. To use Wisdom with chat, the key policy
+#' must also allow `kms:Decrypt`, `kms:GenerateDataKey*`, and
+#' `kms:DescribeKey` permissions to the `connect.amazonaws.com` service
+#' principal.
+#' 
+#' For more information about setting up a customer managed key for Wisdom,
+#' see [Enable Amazon Connect Wisdom for your
+#' instance](https://docs.aws.amazon.com/connect/latest/adminguide/enable-wisdom.html).
 #' @param tags The tags used to organize, track, or control access for this resource.
 #' @param type &#91;required&#93; The type of assistant.
 #'
@@ -148,7 +160,16 @@ connectwisdomservice_create_content <- function(clientToken = NULL, knowledgeBas
 #' with third-party systems whose content is synchronized automatically.
 #' @param name &#91;required&#93; The name of the knowledge base.
 #' @param renderingConfiguration Information about how to render the content.
-#' @param serverSideEncryptionConfiguration The KMS key used for encryption.
+#' @param serverSideEncryptionConfiguration The configuration information for the customer managed key used for
+#' encryption.
+#' 
+#' This KMS key must have a policy that allows `kms:CreateGrant` and
+#' `kms:DescribeKey` permissions to the IAM identity using the key to
+#' invoke Wisdom.
+#' 
+#' For more information about setting up a customer managed key for Wisdom,
+#' see [Enable Amazon Connect Wisdom for your
+#' instance](https://docs.aws.amazon.com/connect/latest/adminguide/enable-wisdom.html).
 #' @param sourceConfiguration The source of the knowledge base content. Only set this argument for
 #' EXTERNAL knowledge bases.
 #' @param tags The tags used to organize, track, or control access for this resource.

@@ -36,9 +36,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -119,6 +119,8 @@ NULL
 #'  \link[=connect_associate_routing_profile_queues]{associate_routing_profile_queues} \tab Associates a set of queues with a routing profile\cr
 #'  \link[=connect_associate_security_key]{associate_security_key} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_associate_traffic_distribution_group_user]{associate_traffic_distribution_group_user} \tab Associates an agent with a traffic distribution group\cr
+#'  \link[=connect_batch_get_flow_association]{batch_get_flow_association} \tab Retrieve the flow associations for the given resources\cr
+#'  \link[=connect_batch_put_contact]{batch_put_contact} \tab Only the Amazon Connect outbound campaigns service principal is allowed to assume a role in your account and call this API\cr
 #'  \link[=connect_claim_phone_number]{claim_phone_number} \tab Claims an available phone number to your Amazon Connect instance or traffic distribution group\cr
 #'  \link[=connect_create_agent_status]{create_agent_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_create_contact_flow]{create_contact_flow} \tab Creates a flow for the specified Amazon Connect instance\cr
@@ -128,17 +130,20 @@ NULL
 #'  \link[=connect_create_instance]{create_instance} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_create_integration_association]{create_integration_association} \tab Creates an Amazon Web Services resource association with an Amazon Connect instance\cr
 #'  \link[=connect_create_participant]{create_participant} \tab Adds a new participant into an on-going chat contact\cr
+#'  \link[=connect_create_persistent_contact_association]{create_persistent_contact_association} \tab Enables rehydration of chats for the lifespan of a contact\cr
 #'  \link[=connect_create_prompt]{create_prompt} \tab Creates a prompt\cr
 #'  \link[=connect_create_queue]{create_queue} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_create_quick_connect]{create_quick_connect} \tab Creates a quick connect for the specified Amazon Connect instance\cr
 #'  \link[=connect_create_routing_profile]{create_routing_profile} \tab Creates a new routing profile\cr
 #'  \link[=connect_create_rule]{create_rule} \tab Creates a rule for the specified Amazon Connect instance\cr
-#'  \link[=connect_create_security_profile]{create_security_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[=connect_create_security_profile]{create_security_profile} \tab Creates a security profile\cr
 #'  \link[=connect_create_task_template]{create_task_template} \tab Creates a new task template in the specified Amazon Connect instance\cr
 #'  \link[=connect_create_traffic_distribution_group]{create_traffic_distribution_group} \tab Creates a traffic distribution group given an Amazon Connect instance that has been replicated\cr
 #'  \link[=connect_create_use_case]{create_use_case} \tab Creates a use case for an integration association\cr
 #'  \link[=connect_create_user]{create_user} \tab Creates a user account for the specified Amazon Connect instance\cr
 #'  \link[=connect_create_user_hierarchy_group]{create_user_hierarchy_group} \tab Creates a new user hierarchy group\cr
+#'  \link[=connect_create_view]{create_view} \tab Creates a new view with the possible status of SAVED or PUBLISHED\cr
+#'  \link[=connect_create_view_version]{create_view_version} \tab Publishes a new version of the view identifier\cr
 #'  \link[=connect_create_vocabulary]{create_vocabulary} \tab Creates a custom vocabulary associated with your Amazon Connect instance\cr
 #'  \link[=connect_deactivate_evaluation_form]{deactivate_evaluation_form} \tab Deactivates an evaluation form in the specified Amazon Connect instance\cr
 #'  \link[=connect_delete_contact_evaluation]{delete_contact_evaluation} \tab Deletes a contact evaluation in the specified Amazon Connect instance\cr
@@ -153,12 +158,14 @@ NULL
 #'  \link[=connect_delete_quick_connect]{delete_quick_connect} \tab Deletes a quick connect\cr
 #'  \link[=connect_delete_routing_profile]{delete_routing_profile} \tab Deletes a routing profile\cr
 #'  \link[=connect_delete_rule]{delete_rule} \tab Deletes a rule for the specified Amazon Connect instance\cr
-#'  \link[=connect_delete_security_profile]{delete_security_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[=connect_delete_security_profile]{delete_security_profile} \tab Deletes a security profile\cr
 #'  \link[=connect_delete_task_template]{delete_task_template} \tab Deletes the task template\cr
 #'  \link[=connect_delete_traffic_distribution_group]{delete_traffic_distribution_group} \tab Deletes a traffic distribution group\cr
 #'  \link[=connect_delete_use_case]{delete_use_case} \tab Deletes a use case from an integration association\cr
 #'  \link[=connect_delete_user]{delete_user} \tab Deletes a user account from the specified Amazon Connect instance\cr
 #'  \link[=connect_delete_user_hierarchy_group]{delete_user_hierarchy_group} \tab Deletes an existing user hierarchy group\cr
+#'  \link[=connect_delete_view]{delete_view} \tab Deletes the view entirely\cr
+#'  \link[=connect_delete_view_version]{delete_view_version} \tab Deletes the particular version specified in ViewVersion identifier\cr
 #'  \link[=connect_delete_vocabulary]{delete_vocabulary} \tab Deletes the vocabulary that has the given identifier\cr
 #'  \link[=connect_describe_agent_status]{describe_agent_status} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_describe_contact]{describe_contact} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -176,11 +183,12 @@ NULL
 #'  \link[=connect_describe_quick_connect]{describe_quick_connect} \tab Describes the quick connect\cr
 #'  \link[=connect_describe_routing_profile]{describe_routing_profile} \tab Describes the specified routing profile\cr
 #'  \link[=connect_describe_rule]{describe_rule} \tab Describes a rule for the specified Amazon Connect instance\cr
-#'  \link[=connect_describe_security_profile]{describe_security_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[=connect_describe_security_profile]{describe_security_profile} \tab Gets basic information about the security profle\cr
 #'  \link[=connect_describe_traffic_distribution_group]{describe_traffic_distribution_group} \tab Gets details and status of a traffic distribution group\cr
 #'  \link[=connect_describe_user]{describe_user} \tab Describes the specified user account\cr
 #'  \link[=connect_describe_user_hierarchy_group]{describe_user_hierarchy_group} \tab Describes the specified hierarchy group\cr
 #'  \link[=connect_describe_user_hierarchy_structure]{describe_user_hierarchy_structure} \tab Describes the hierarchy structure of the specified Amazon Connect instance\cr
+#'  \link[=connect_describe_view]{describe_view} \tab Retrieves the view for the specified Amazon Connect instance and view identifier\cr
 #'  \link[=connect_describe_vocabulary]{describe_vocabulary} \tab Describes the specified vocabulary\cr
 #'  \link[=connect_disassociate_approved_origin]{disassociate_approved_origin} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_disassociate_bot]{disassociate_bot} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -196,7 +204,7 @@ NULL
 #'  \link[=connect_get_contact_attributes]{get_contact_attributes} \tab Retrieves the contact attributes for the specified contact\cr
 #'  \link[=connect_get_current_metric_data]{get_current_metric_data} \tab Gets the real-time metric data from the specified Amazon Connect instance\cr
 #'  \link[=connect_get_current_user_data]{get_current_user_data} \tab Gets the real-time active user data from the specified Amazon Connect instance\cr
-#'  \link[=connect_get_federation_token]{get_federation_token} \tab Retrieves a token for federation\cr
+#'  \link[=connect_get_federation_token]{get_federation_token} \tab Supports SAML sign-in for Amazon Connect\cr
 #'  \link[=connect_get_metric_data]{get_metric_data} \tab Gets historical metric data from the specified Amazon Connect instance\cr
 #'  \link[=connect_get_metric_data_v2]{get_metric_data_v2} \tab Gets metric data from the specified Amazon Connect instance\cr
 #'  \link[=connect_get_prompt_file]{get_prompt_file} \tab Gets the prompt file\cr
@@ -229,7 +237,8 @@ NULL
 #'  \link[=connect_list_routing_profiles]{list_routing_profiles} \tab Provides summary information about the routing profiles for the specified Amazon Connect instance\cr
 #'  \link[=connect_list_rules]{list_rules} \tab List all rules for the specified Amazon Connect instance\cr
 #'  \link[=connect_list_security_keys]{list_security_keys} \tab This API is in preview release for Amazon Connect and is subject to change\cr
-#'  \link[=connect_list_security_profile_permissions]{list_security_profile_permissions} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[=connect_list_security_profile_applications]{list_security_profile_applications} \tab Returns a list of third-party applications in a specific security profile\cr
+#'  \link[=connect_list_security_profile_permissions]{list_security_profile_permissions} \tab Lists the permissions granted to a security profile\cr
 #'  \link[=connect_list_security_profiles]{list_security_profiles} \tab Provides summary information about the security profiles for the specified Amazon Connect instance\cr
 #'  \link[=connect_list_tags_for_resource]{list_tags_for_resource} \tab Lists the tags for the specified resource\cr
 #'  \link[=connect_list_task_templates]{list_task_templates} \tab Lists task templates for the specified Amazon Connect instance\cr
@@ -238,11 +247,13 @@ NULL
 #'  \link[=connect_list_use_cases]{list_use_cases} \tab Lists the use cases for the integration association\cr
 #'  \link[=connect_list_user_hierarchy_groups]{list_user_hierarchy_groups} \tab Provides summary information about the hierarchy groups for the specified Amazon Connect instance\cr
 #'  \link[=connect_list_users]{list_users} \tab Provides summary information about the users for the specified Amazon Connect instance\cr
+#'  \link[=connect_list_views]{list_views} \tab Returns views in the given instance\cr
+#'  \link[=connect_list_view_versions]{list_view_versions} \tab Returns all the available versions for the specified Amazon Connect instance and view identifier\cr
 #'  \link[=connect_monitor_contact]{monitor_contact} \tab Initiates silent monitoring of a contact\cr
 #'  \link[=connect_put_user_status]{put_user_status} \tab Changes the current status of a user or agent in Amazon Connect\cr
 #'  \link[=connect_release_phone_number]{release_phone_number} \tab Releases a phone number previously claimed to an Amazon Connect instance or traffic distribution group\cr
-#'  \link[=connect_replicate_instance]{replicate_instance} \tab Replicates an Amazon Connect instance in the specified Amazon Web Services Region\cr
-#'  \link[=connect_resume_contact_recording]{resume_contact_recording} \tab When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording the call or screen\cr
+#'  \link[=connect_replicate_instance]{replicate_instance} \tab Replicates an Amazon Connect instance in the specified Amazon Web Services Region and copies configuration information for Amazon Connect resources across Amazon Web Services Regions\cr
+#'  \link[=connect_resume_contact_recording]{resume_contact_recording} \tab When a contact is being recorded, and the recording has been suspended using SuspendContactRecording, this API resumes recording whatever recording is selected in the flow configuration: call, screen, or both\cr
 #'  \link[=connect_search_available_phone_numbers]{search_available_phone_numbers} \tab Searches for available phone numbers that you can claim to your Amazon Connect instance or traffic distribution group\cr
 #'  \link[=connect_search_hours_of_operations]{search_hours_of_operations} \tab Searches the hours of operation in an Amazon Connect instance, with optional filtering\cr
 #'  \link[=connect_search_prompts]{search_prompts} \tab Searches prompts in an Amazon Connect instance, with optional filtering\cr
@@ -258,12 +269,12 @@ NULL
 #'  \link[=connect_start_contact_recording]{start_contact_recording} \tab Starts recording the contact:\cr
 #'  \link[=connect_start_contact_streaming]{start_contact_streaming} \tab Initiates real-time message streaming for a new chat contact\cr
 #'  \link[=connect_start_outbound_voice_contact]{start_outbound_voice_contact} \tab Places an outbound call to a contact, and then initiates the flow\cr
-#'  \link[=connect_start_task_contact]{start_task_contact} \tab Initiates a flow to start a new task\cr
+#'  \link[=connect_start_task_contact]{start_task_contact} \tab Initiates a flow to start a new task contact\cr
 #'  \link[=connect_stop_contact]{stop_contact} \tab Ends the specified contact\cr
 #'  \link[=connect_stop_contact_recording]{stop_contact_recording} \tab Stops recording a call when a contact is being recorded\cr
 #'  \link[=connect_stop_contact_streaming]{stop_contact_streaming} \tab Ends message streaming on a specified contact\cr
 #'  \link[=connect_submit_contact_evaluation]{submit_contact_evaluation} \tab Submits a contact evaluation in the specified Amazon Connect instance\cr
-#'  \link[=connect_suspend_contact_recording]{suspend_contact_recording} \tab When a contact is being recorded, this API suspends recording the call or screen\cr
+#'  \link[=connect_suspend_contact_recording]{suspend_contact_recording} \tab When a contact is being recorded, this API suspends recording whatever is selected in the flow configuration: call, screen, or both\cr
 #'  \link[=connect_tag_resource]{tag_resource} \tab Adds the specified tags to the specified resource\cr
 #'  \link[=connect_transfer_contact]{transfer_contact} \tab Transfers contacts from one agent or queue to another agent or queue at any point after a contact is created\cr
 #'  \link[=connect_untag_resource]{untag_resource} \tab Removes the specified tags from the specified resource\cr
@@ -283,6 +294,7 @@ NULL
 #'  \link[=connect_update_instance_storage_config]{update_instance_storage_config} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_update_participant_role_config]{update_participant_role_config} \tab Updates timeouts for when human chat participants are to be considered idle, and when agents are automatically disconnected from a chat due to idleness\cr
 #'  \link[=connect_update_phone_number]{update_phone_number} \tab Updates your claimed phone number from its current Amazon Connect instance or traffic distribution group to another Amazon Connect instance or traffic distribution group in the same Amazon Web Services Region\cr
+#'  \link[=connect_update_phone_number_metadata]{update_phone_number_metadata} \tab Updates a phone number’s metadata\cr
 #'  \link[=connect_update_prompt]{update_prompt} \tab Updates a prompt\cr
 #'  \link[=connect_update_queue_hours_of_operation]{update_queue_hours_of_operation} \tab This API is in preview release for Amazon Connect and is subject to change\cr
 #'  \link[=connect_update_queue_max_contacts]{update_queue_max_contacts} \tab This API is in preview release for Amazon Connect and is subject to change\cr
@@ -297,7 +309,7 @@ NULL
 #'  \link[=connect_update_routing_profile_name]{update_routing_profile_name} \tab Updates the name and description of a routing profile\cr
 #'  \link[=connect_update_routing_profile_queues]{update_routing_profile_queues} \tab Updates the properties associated with a set of queues for a routing profile\cr
 #'  \link[=connect_update_rule]{update_rule} \tab Updates a rule for the specified Amazon Connect instance\cr
-#'  \link[=connect_update_security_profile]{update_security_profile} \tab This API is in preview release for Amazon Connect and is subject to change\cr
+#'  \link[=connect_update_security_profile]{update_security_profile} \tab Updates a security profile\cr
 #'  \link[=connect_update_task_template]{update_task_template} \tab Updates details about a specific task template in the specified Amazon Connect instance\cr
 #'  \link[=connect_update_traffic_distribution]{update_traffic_distribution} \tab Updates the traffic distribution for a given traffic distribution group\cr
 #'  \link[=connect_update_user_hierarchy]{update_user_hierarchy} \tab Assigns the specified hierarchy group to the specified user\cr
@@ -306,7 +318,9 @@ NULL
 #'  \link[=connect_update_user_identity_info]{update_user_identity_info} \tab Updates the identity information for the specified user\cr
 #'  \link[=connect_update_user_phone_config]{update_user_phone_config} \tab Updates the phone configuration settings for the specified user\cr
 #'  \link[=connect_update_user_routing_profile]{update_user_routing_profile} \tab Assigns the specified routing profile to the specified user\cr
-#'  \link[=connect_update_user_security_profiles]{update_user_security_profiles} \tab Assigns the specified security profiles to the specified user
+#'  \link[=connect_update_user_security_profiles]{update_user_security_profiles} \tab Assigns the specified security profiles to the specified user\cr
+#'  \link[=connect_update_view_content]{update_view_content} \tab Updates the view content of the given view identifier in the specified Amazon Connect instance\cr
+#'  \link[=connect_update_view_metadata]{update_view_metadata} \tab Updates the view metadata
 #' }
 #'
 #' @return

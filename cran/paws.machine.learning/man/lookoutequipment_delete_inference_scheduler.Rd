@@ -10,7 +10,7 @@ lookoutequipment_delete_inference_scheduler(InferenceSchedulerName)
 \item{InferenceSchedulerName}{[required] The name of the inference scheduler to be deleted.}
 }
 \description{
-Deletes an inference scheduler that has been set up. Already processed output results are not affected.
+Deletes an inference scheduler that has been set up. Prior inference results will not be deleted.
 
 See \url{https://www.paws-r-sdk.com/docs/lookoutequipment_delete_inference_scheduler/} for full documentation.
 }

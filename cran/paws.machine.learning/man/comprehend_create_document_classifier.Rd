@@ -42,7 +42,7 @@ to indicate its use by the sales department.}
 
 \item{OutputDataConfig}{Specifies the location for the output files from a custom classifier
 job. This parameter is required for a request that creates a native
-classifier model.}
+document model.}
 
 \item{ClientRequestToken}{A unique identifier for the request. If you don't set the client request
 token, Amazon Comprehend generates one.}

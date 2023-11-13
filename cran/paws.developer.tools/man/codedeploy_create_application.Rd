@@ -12,7 +12,7 @@ codedeploy_create_application(
 }
 \arguments{
 \item{applicationName}{[required] The name of the application. This name must be unique with the
-applicable IAM or Amazon Web Services account.}
+applicable user or Amazon Web Services account.}
 
 \item{computePlatform}{The destination platform type for the deployment (\code{Lambda}, \code{Server}, or
 \code{ECS}).}

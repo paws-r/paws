@@ -120,7 +120,7 @@ or
 \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/sqs-configure-sqs-sse-queue.html}{SSE-SQS}).
 }
 
-The following attribute applies only to \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues.html}{FIFO (first-in-first-out) queues}:
+The following attribute applies only to \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/}{FIFO (first-in-first-out) queues}:
 \itemize{
 \item \code{ContentBasedDeduplication} – Enables content-based deduplication.
 For more information, see \href{https://docs.aws.amazon.com/AWSSimpleQueueService/latest/SQSDeveloperGuide/FIFO-queues-exactly-once-processing.html}{Exactly-once processing}

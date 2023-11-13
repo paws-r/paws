@@ -22,9 +22,9 @@ rekognition(
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -184,35 +184,35 @@ common errors.
 \tabular{ll}{
 \link[paws.machine.learning:rekognition_associate_faces]{associate_faces} \tab Associates one or more faces with an existing UserID\cr
 \link[paws.machine.learning:rekognition_compare_faces]{compare_faces} \tab Compares a face in the source input image with each of the 100 largest faces detected in the target input image\cr
-\link[paws.machine.learning:rekognition_copy_project_version]{copy_project_version} \tab Copies a version of an Amazon Rekognition Custom Labels model from a source project to a destination project\cr
+\link[paws.machine.learning:rekognition_copy_project_version]{copy_project_version} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 \link[paws.machine.learning:rekognition_create_collection]{create_collection} \tab Creates a collection in an AWS Region\cr
-\link[paws.machine.learning:rekognition_create_dataset]{create_dataset} \tab Creates a new Amazon Rekognition Custom Labels dataset\cr
+\link[paws.machine.learning:rekognition_create_dataset]{create_dataset} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 \link[paws.machine.learning:rekognition_create_face_liveness_session]{create_face_liveness_session} \tab This API operation initiates a Face Liveness session\cr
-\link[paws.machine.learning:rekognition_create_project]{create_project} \tab Creates a new Amazon Rekognition Custom Labels project\cr
-\link[paws.machine.learning:rekognition_create_project_version]{create_project_version} \tab Creates a new version of a model and begins training\cr
+\link[paws.machine.learning:rekognition_create_project]{create_project} \tab Creates a new Amazon Rekognition project\cr
+\link[paws.machine.learning:rekognition_create_project_version]{create_project_version} \tab Creates a new version of Amazon Rekognition project (like a Custom Labels model or a custom adapter) and begins training\cr
 \link[paws.machine.learning:rekognition_create_stream_processor]{create_stream_processor} \tab Creates an Amazon Rekognition stream processor that you can use to detect and recognize faces or to detect labels in a streaming video\cr
 \link[paws.machine.learning:rekognition_create_user]{create_user} \tab Creates a new User within a collection specified by CollectionId\cr
 \link[paws.machine.learning:rekognition_delete_collection]{delete_collection} \tab Deletes the specified collection\cr
-\link[paws.machine.learning:rekognition_delete_dataset]{delete_dataset} \tab Deletes an existing Amazon Rekognition Custom Labels dataset\cr
+\link[paws.machine.learning:rekognition_delete_dataset]{delete_dataset} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 \link[paws.machine.learning:rekognition_delete_faces]{delete_faces} \tab Deletes faces from a collection\cr
-\link[paws.machine.learning:rekognition_delete_project]{delete_project} \tab Deletes an Amazon Rekognition Custom Labels project\cr
-\link[paws.machine.learning:rekognition_delete_project_policy]{delete_project_policy} \tab Deletes an existing project policy\cr
-\link[paws.machine.learning:rekognition_delete_project_version]{delete_project_version} \tab Deletes an Amazon Rekognition Custom Labels model\cr
+\link[paws.machine.learning:rekognition_delete_project]{delete_project} \tab Deletes a Amazon Rekognition project\cr
+\link[paws.machine.learning:rekognition_delete_project_policy]{delete_project_policy} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
+\link[paws.machine.learning:rekognition_delete_project_version]{delete_project_version} \tab Deletes a Rekognition project model or project version, like a Amazon Rekognition Custom Labels model or a custom adapter\cr
 \link[paws.machine.learning:rekognition_delete_stream_processor]{delete_stream_processor} \tab Deletes the stream processor identified by Name\cr
 \link[paws.machine.learning:rekognition_delete_user]{delete_user} \tab Deletes the specified UserID within the collection\cr
 \link[paws.machine.learning:rekognition_describe_collection]{describe_collection} \tab Describes the specified collection\cr
-\link[paws.machine.learning:rekognition_describe_dataset]{describe_dataset} \tab Describes an Amazon Rekognition Custom Labels dataset\cr
-\link[paws.machine.learning:rekognition_describe_projects]{describe_projects} \tab Gets information about your Amazon Rekognition Custom Labels projects\cr
-\link[paws.machine.learning:rekognition_describe_project_versions]{describe_project_versions} \tab Lists and describes the versions of a model in an Amazon Rekognition Custom Labels project\cr
+\link[paws.machine.learning:rekognition_describe_dataset]{describe_dataset} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
+\link[paws.machine.learning:rekognition_describe_projects]{describe_projects} \tab Gets information about your Rekognition projects\cr
+\link[paws.machine.learning:rekognition_describe_project_versions]{describe_project_versions} \tab Lists and describes the versions of an Amazon Rekognition project\cr
 \link[paws.machine.learning:rekognition_describe_stream_processor]{describe_stream_processor} \tab Provides information about a stream processor created by CreateStreamProcessor\cr
-\link[paws.machine.learning:rekognition_detect_custom_labels]{detect_custom_labels} \tab Detects custom labels in a supplied image by using an Amazon Rekognition Custom Labels model\cr
+\link[paws.machine.learning:rekognition_detect_custom_labels]{detect_custom_labels} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 \link[paws.machine.learning:rekognition_detect_faces]{detect_faces} \tab Detects faces within an image that is provided as input\cr
 \link[paws.machine.learning:rekognition_detect_labels]{detect_labels} \tab Detects instances of real-world entities within an image (JPEG or PNG) provided as input\cr
 \link[paws.machine.learning:rekognition_detect_moderation_labels]{detect_moderation_labels} \tab Detects unsafe content in a specified JPEG or PNG format image\cr
 \link[paws.machine.learning:rekognition_detect_protective_equipment]{detect_protective_equipment} \tab Detects Personal Protective Equipment (PPE) worn by people detected in an image\cr
 \link[paws.machine.learning:rekognition_detect_text]{detect_text} \tab Detects text in the input image and converts it into machine-readable text\cr
 \link[paws.machine.learning:rekognition_disassociate_faces]{disassociate_faces} \tab Removes the association between a Face supplied in an array of FaceIds and the User\cr
-\link[paws.machine.learning:rekognition_distribute_dataset_entries]{distribute_dataset_entries} \tab Distributes the entries (images) in a training dataset across the training dataset and the test dataset for a project\cr
+\link[paws.machine.learning:rekognition_distribute_dataset_entries]{distribute_dataset_entries} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 \link[paws.machine.learning:rekognition_get_celebrity_info]{get_celebrity_info} \tab Gets the name and additional information about a celebrity based on their Amazon Rekognition ID\cr
 \link[paws.machine.learning:rekognition_get_celebrity_recognition]{get_celebrity_recognition} \tab Gets the celebrity recognition results for a Amazon Rekognition Video analysis started by StartCelebrityRecognition\cr
 \link[paws.machine.learning:rekognition_get_content_moderation]{get_content_moderation} \tab Gets the inappropriate, unwanted, or offensive content analysis results for a Amazon Rekognition Video analysis started by StartContentModeration\cr
@@ -220,19 +220,21 @@ common errors.
 \link[paws.machine.learning:rekognition_get_face_liveness_session_results]{get_face_liveness_session_results} \tab Retrieves the results of a specific Face Liveness session\cr
 \link[paws.machine.learning:rekognition_get_face_search]{get_face_search} \tab Gets the face search results for Amazon Rekognition Video face search started by StartFaceSearch\cr
 \link[paws.machine.learning:rekognition_get_label_detection]{get_label_detection} \tab Gets the label detection results of a Amazon Rekognition Video analysis started by StartLabelDetection\cr
+\link[paws.machine.learning:rekognition_get_media_analysis_job]{get_media_analysis_job} \tab Retrieves the results for a given media analysis job\cr
 \link[paws.machine.learning:rekognition_get_person_tracking]{get_person_tracking} \tab Gets the path tracking results of a Amazon Rekognition Video analysis started by StartPersonTracking\cr
 \link[paws.machine.learning:rekognition_get_segment_detection]{get_segment_detection} \tab Gets the segment detection results of a Amazon Rekognition Video analysis started by StartSegmentDetection\cr
 \link[paws.machine.learning:rekognition_get_text_detection]{get_text_detection} \tab Gets the text detection results of a Amazon Rekognition Video analysis started by StartTextDetection\cr
 \link[paws.machine.learning:rekognition_index_faces]{index_faces} \tab Detects faces in the input image and adds them to the specified collection\cr
 \link[paws.machine.learning:rekognition_list_collections]{list_collections} \tab Returns list of collection IDs in your account\cr
-\link[paws.machine.learning:rekognition_list_dataset_entries]{list_dataset_entries} \tab Lists the entries (images) within a dataset\cr
-\link[paws.machine.learning:rekognition_list_dataset_labels]{list_dataset_labels} \tab Lists the labels in a dataset\cr
+\link[paws.machine.learning:rekognition_list_dataset_entries]{list_dataset_entries} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
+\link[paws.machine.learning:rekognition_list_dataset_labels]{list_dataset_labels} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 \link[paws.machine.learning:rekognition_list_faces]{list_faces} \tab Returns metadata for faces in the specified collection\cr
-\link[paws.machine.learning:rekognition_list_project_policies]{list_project_policies} \tab Gets a list of the project policies attached to a project\cr
+\link[paws.machine.learning:rekognition_list_media_analysis_jobs]{list_media_analysis_jobs} \tab Returns a list of media analysis jobs\cr
+\link[paws.machine.learning:rekognition_list_project_policies]{list_project_policies} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 \link[paws.machine.learning:rekognition_list_stream_processors]{list_stream_processors} \tab Gets a list of stream processors that you have created with CreateStreamProcessor\cr
 \link[paws.machine.learning:rekognition_list_tags_for_resource]{list_tags_for_resource} \tab Returns a list of tags in an Amazon Rekognition collection, stream processor, or Custom Labels model\cr
 \link[paws.machine.learning:rekognition_list_users]{list_users} \tab Returns metadata of the User such as UserID in the specified collection\cr
-\link[paws.machine.learning:rekognition_put_project_policy]{put_project_policy} \tab Attaches a project policy to a Amazon Rekognition Custom Labels project in a trusting AWS account\cr
+\link[paws.machine.learning:rekognition_put_project_policy]{put_project_policy} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 \link[paws.machine.learning:rekognition_recognize_celebrities]{recognize_celebrities} \tab Returns an array of celebrities recognized in the input image\cr
 \link[paws.machine.learning:rekognition_search_faces]{search_faces} \tab For a given input face ID, searches for matching faces in the collection the face belongs to\cr
 \link[paws.machine.learning:rekognition_search_faces_by_image]{search_faces_by_image} \tab For a given input image, first detects the largest face in the image, and then searches the specified collection for matching faces\cr
@@ -243,16 +245,17 @@ common errors.
 \link[paws.machine.learning:rekognition_start_face_detection]{start_face_detection} \tab Starts asynchronous detection of faces in a stored video\cr
 \link[paws.machine.learning:rekognition_start_face_search]{start_face_search} \tab Starts the asynchronous search for faces in a collection that match the faces of persons detected in a stored video\cr
 \link[paws.machine.learning:rekognition_start_label_detection]{start_label_detection} \tab Starts asynchronous detection of labels in a stored video\cr
+\link[paws.machine.learning:rekognition_start_media_analysis_job]{start_media_analysis_job} \tab Initiates a new media analysis job\cr
 \link[paws.machine.learning:rekognition_start_person_tracking]{start_person_tracking} \tab Starts the asynchronous tracking of a person's path in a stored video\cr
-\link[paws.machine.learning:rekognition_start_project_version]{start_project_version} \tab Starts the running of the version of a model\cr
+\link[paws.machine.learning:rekognition_start_project_version]{start_project_version} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 \link[paws.machine.learning:rekognition_start_segment_detection]{start_segment_detection} \tab Starts asynchronous detection of segment detection in a stored video\cr
 \link[paws.machine.learning:rekognition_start_stream_processor]{start_stream_processor} \tab Starts processing a stream processor\cr
 \link[paws.machine.learning:rekognition_start_text_detection]{start_text_detection} \tab Starts asynchronous detection of text in a stored video\cr
-\link[paws.machine.learning:rekognition_stop_project_version]{stop_project_version} \tab Stops a running model\cr
+\link[paws.machine.learning:rekognition_stop_project_version]{stop_project_version} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 \link[paws.machine.learning:rekognition_stop_stream_processor]{stop_stream_processor} \tab Stops a running stream processor that was created by CreateStreamProcessor\cr
 \link[paws.machine.learning:rekognition_tag_resource]{tag_resource} \tab Adds one or more key-value tags to an Amazon Rekognition collection, stream processor, or Custom Labels model\cr
 \link[paws.machine.learning:rekognition_untag_resource]{untag_resource} \tab Removes one or more tags from an Amazon Rekognition collection, stream processor, or Custom Labels model\cr
-\link[paws.machine.learning:rekognition_update_dataset_entries]{update_dataset_entries} \tab Adds or updates one or more entries (images) in a dataset\cr
+\link[paws.machine.learning:rekognition_update_dataset_entries]{update_dataset_entries} \tab This operation applies only to Amazon Rekognition Custom Labels\cr
 \link[paws.machine.learning:rekognition_update_stream_processor]{update_stream_processor} \tab Allows you to update a stream processor
 }
 }

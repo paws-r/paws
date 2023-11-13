@@ -178,6 +178,7 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #' OpenSearch Service domain.
 #' @param AccessPolicies Identity and Access Management (IAM) policy document specifying the
 #' access policies for the new domain.
+#' @param IPAddressType The type of IP addresses supported by the endpoint for the domain.
 #' @param SnapshotOptions DEPRECATED. Container for the parameters required to configure automated
 #' snapshots of domain indexes.
 #' @param VPCOptions Container for the values required to configure VPC access domains. If
@@ -235,14 +236,14 @@ opensearchservice_cancel_service_software_update <- function(DomainName) {
 #' @keywords internal
 #'
 #' @rdname opensearchservice_create_domain
-opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, ClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, TagList = NULL, AutoTuneOptions = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL) {
+opensearchservice_create_domain <- function(DomainName, EngineVersion = NULL, ClusterConfig = NULL, EBSOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, EncryptionAtRestOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedOptions = NULL, LogPublishingOptions = NULL, DomainEndpointOptions = NULL, AdvancedSecurityOptions = NULL, TagList = NULL, AutoTuneOptions = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL) {
   op <- new_operation(
     name = "CreateDomain",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/domain",
     paginator = list()
   )
-  input <- .opensearchservice$create_domain_input(DomainName = DomainName, EngineVersion = EngineVersion, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, TagList = TagList, AutoTuneOptions = AutoTuneOptions, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions)
+  input <- .opensearchservice$create_domain_input(DomainName = DomainName, EngineVersion = EngineVersion, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedOptions = AdvancedOptions, LogPublishingOptions = LogPublishingOptions, DomainEndpointOptions = DomainEndpointOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, TagList = TagList, AutoTuneOptions = AutoTuneOptions, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions)
   output <- .opensearchservice$create_domain_output()
   config <- get_config()
   svc <- .opensearchservice$service(config)
@@ -701,8 +702,7 @@ opensearchservice_describe_domain_nodes <- function(DomainName) {
 #' See [https://www.paws-r-sdk.com/docs/opensearchservice_describe_domains/](https://www.paws-r-sdk.com/docs/opensearchservice_describe_domains/) for full documentation.
 #'
 #' @param DomainNames &#91;required&#93; Array of OpenSearch Service domain names that you want information
-#' about. If you don't specify any domains, OpenSearch Service returns
-#' information about all domains owned by the account.
+#' about. You must specify at least one domain name.
 #'
 #' @keywords internal
 #'
@@ -1078,6 +1078,36 @@ opensearchservice_get_compatible_versions <- function(DomainName = NULL) {
 }
 .opensearchservice$operations$get_compatible_versions <- opensearchservice_get_compatible_versions
 
+#' The status of the maintenance action
+#'
+#' @description
+#' The status of the maintenance action.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_get_domain_maintenance_status/](https://www.paws-r-sdk.com/docs/opensearchservice_get_domain_maintenance_status/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The name of the domain.
+#' @param MaintenanceId &#91;required&#93; The request ID of the maintenance action.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_get_domain_maintenance_status
+opensearchservice_get_domain_maintenance_status <- function(DomainName, MaintenanceId) {
+  op <- new_operation(
+    name = "GetDomainMaintenanceStatus",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/domainMaintenance",
+    paginator = list()
+  )
+  input <- .opensearchservice$get_domain_maintenance_status_input(DomainName = DomainName, MaintenanceId = MaintenanceId)
+  output <- .opensearchservice$get_domain_maintenance_status_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$get_domain_maintenance_status <- opensearchservice_get_domain_maintenance_status
+
 #' Returns a list of Amazon OpenSearch Service package versions, along with
 #' their creation time, commit message, and plugin properties (if the
 #' package is a zip plugin package)
@@ -1184,6 +1214,45 @@ opensearchservice_get_upgrade_status <- function(DomainName) {
   return(response)
 }
 .opensearchservice$operations$get_upgrade_status <- opensearchservice_get_upgrade_status
+
+#' A list of maintenance actions for the domain
+#'
+#' @description
+#' A list of maintenance actions for the domain.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_list_domain_maintenances/](https://www.paws-r-sdk.com/docs/opensearchservice_list_domain_maintenances/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The name of the domain.
+#' @param Action The name of the action.
+#' @param Status The status of the action.
+#' @param MaxResults An optional parameter that specifies the maximum number of results to
+#' return. You can use `nextToken` to get the next page of results.
+#' @param NextToken If your initial
+#' [`list_domain_maintenances`][opensearchservice_list_domain_maintenances]
+#' operation returns a `nextToken`, include the returned `nextToken` in
+#' subsequent
+#' [`list_domain_maintenances`][opensearchservice_list_domain_maintenances]
+#' operations, which returns results in the next page.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_list_domain_maintenances
+opensearchservice_list_domain_maintenances <- function(DomainName, Action = NULL, Status = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListDomainMaintenances",
+    http_method = "GET",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/domainMaintenances",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .opensearchservice$list_domain_maintenances_input(DomainName = DomainName, Action = Action, Status = Status, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .opensearchservice$list_domain_maintenances_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$list_domain_maintenances <- opensearchservice_list_domain_maintenances
 
 #' Returns the names of all Amazon OpenSearch Service domains owned by the
 #' current user in the active Region
@@ -1668,6 +1737,37 @@ opensearchservice_revoke_vpc_endpoint_access <- function(DomainName, Account) {
 }
 .opensearchservice$operations$revoke_vpc_endpoint_access <- opensearchservice_revoke_vpc_endpoint_access
 
+#' Starts the node maintenance process on the data node
+#'
+#' @description
+#' Starts the node maintenance process on the data node. These processes can include a node reboot, an Opensearch or Elasticsearch process restart, or a Dashboard or Kibana restart.
+#'
+#' See [https://www.paws-r-sdk.com/docs/opensearchservice_start_domain_maintenance/](https://www.paws-r-sdk.com/docs/opensearchservice_start_domain_maintenance/) for full documentation.
+#'
+#' @param DomainName &#91;required&#93; The name of the domain.
+#' @param Action &#91;required&#93; The name of the action.
+#' @param NodeId The ID of the data node.
+#'
+#' @keywords internal
+#'
+#' @rdname opensearchservice_start_domain_maintenance
+opensearchservice_start_domain_maintenance <- function(DomainName, Action, NodeId = NULL) {
+  op <- new_operation(
+    name = "StartDomainMaintenance",
+    http_method = "POST",
+    http_path = "/2021-01-01/opensearch/domain/{DomainName}/domainMaintenance",
+    paginator = list()
+  )
+  input <- .opensearchservice$start_domain_maintenance_input(DomainName = DomainName, Action = Action, NodeId = NodeId)
+  output <- .opensearchservice$start_domain_maintenance_output()
+  config <- get_config()
+  svc <- .opensearchservice$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.opensearchservice$operations$start_domain_maintenance <- opensearchservice_start_domain_maintenance
+
 #' Schedules a service software update for an Amazon OpenSearch Service
 #' domain
 #'
@@ -1722,7 +1822,7 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 #' Service domain
 #'
 #' @description
-#' Modifies the cluster configuration of the specified Amazon OpenSearch Service domain.sl
+#' Modifies the cluster configuration of the specified Amazon OpenSearch Service domain.
 #'
 #' See [https://www.paws-r-sdk.com/docs/opensearchservice_update_domain_config/](https://www.paws-r-sdk.com/docs/opensearchservice_update_domain_config/) for full documentation.
 #'
@@ -1763,6 +1863,7 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 #' parameters](https://docs.aws.amazon.com/opensearch-service/latest/developerguide/createupdatedomains.html#createdomain-configure-advanced-options).
 #' @param AccessPolicies Identity and Access Management (IAM) access policy as a JSON-formatted
 #' string.
+#' @param IPAddressType The type of IP addresses supported by the endpoint for the domain.
 #' @param LogPublishingOptions Options to publish OpenSearch logs to Amazon CloudWatch Logs.
 #' @param EncryptionAtRestOptions Encryption at rest options for the domain.
 #' @param DomainEndpointOptions Additional options for the domain endpoint, such as whether to require
@@ -1788,14 +1889,14 @@ opensearchservice_start_service_software_update <- function(DomainName, Schedule
 #' @keywords internal
 #'
 #' @rdname opensearchservice_update_domain_config
-opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DryRunMode = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL) {
+opensearchservice_update_domain_config <- function(DomainName, ClusterConfig = NULL, EBSOptions = NULL, SnapshotOptions = NULL, VPCOptions = NULL, CognitoOptions = NULL, AdvancedOptions = NULL, AccessPolicies = NULL, IPAddressType = NULL, LogPublishingOptions = NULL, EncryptionAtRestOptions = NULL, DomainEndpointOptions = NULL, NodeToNodeEncryptionOptions = NULL, AdvancedSecurityOptions = NULL, AutoTuneOptions = NULL, DryRun = NULL, DryRunMode = NULL, OffPeakWindowOptions = NULL, SoftwareUpdateOptions = NULL) {
   op <- new_operation(
     name = "UpdateDomainConfig",
     http_method = "POST",
     http_path = "/2021-01-01/opensearch/domain/{DomainName}/config",
     paginator = list()
   )
-  input <- .opensearchservice$update_domain_config_input(DomainName = DomainName, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, LogPublishingOptions = LogPublishingOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, DomainEndpointOptions = DomainEndpointOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DryRunMode = DryRunMode, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions)
+  input <- .opensearchservice$update_domain_config_input(DomainName = DomainName, ClusterConfig = ClusterConfig, EBSOptions = EBSOptions, SnapshotOptions = SnapshotOptions, VPCOptions = VPCOptions, CognitoOptions = CognitoOptions, AdvancedOptions = AdvancedOptions, AccessPolicies = AccessPolicies, IPAddressType = IPAddressType, LogPublishingOptions = LogPublishingOptions, EncryptionAtRestOptions = EncryptionAtRestOptions, DomainEndpointOptions = DomainEndpointOptions, NodeToNodeEncryptionOptions = NodeToNodeEncryptionOptions, AdvancedSecurityOptions = AdvancedSecurityOptions, AutoTuneOptions = AutoTuneOptions, DryRun = DryRun, DryRunMode = DryRunMode, OffPeakWindowOptions = OffPeakWindowOptions, SoftwareUpdateOptions = SoftwareUpdateOptions)
   output <- .opensearchservice$update_domain_config_output()
   config <- get_config()
   svc <- .opensearchservice$service(config)

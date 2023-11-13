@@ -16,7 +16,8 @@ in the Amazon Resource Name (ARN) of the instance.}
 
 \item{ContactFlowModuleId}{[required] The identifier of the flow module.}
 
-\item{Content}{[required] The content of the flow module.}
+\item{Content}{[required] The JSON string that represents the content of the flow. For an example,
+see \href{https://docs.aws.amazon.com/connect/latest/APIReference/flow-language-example.html}{Example flow in Amazon Connect Flow language}.}
 }
 \description{
 Updates specified flow module for the specified Amazon Connect instance.

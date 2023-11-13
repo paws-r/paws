@@ -20,9 +20,12 @@ glue_update_source_control_from_job(
 \item{JobName}{The name of the Glue job to be synchronized to or from the remote
 repository.}
 
-\item{Provider}{The provider for the remote repository.}
+\item{Provider}{The provider for the remote repository. Possible values: GITHUB,
+AWS_CODE_COMMIT, GITLAB, BITBUCKET.}
 
-\item{RepositoryName}{The name of the remote repository that contains the job artifacts.}
+\item{RepositoryName}{The name of the remote repository that contains the job artifacts. For
+BitBucket providers, \code{RepositoryName} should include \code{WorkspaceName}.
+Use the format \verb{<WorkspaceName>/<RepositoryName>}.}
 
 \item{RepositoryOwner}{The owner of the remote repository that contains the job artifacts.}
 

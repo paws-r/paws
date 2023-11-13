@@ -22,9 +22,9 @@ lookoutequipment(
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -100,21 +100,24 @@ for use in predictive maintenance.
 \link[=lookoutequipment_create_inference_scheduler]{create_inference_scheduler} \tab Creates a scheduled inference\cr
 \link[=lookoutequipment_create_label]{create_label} \tab Creates a label for an event\cr
 \link[=lookoutequipment_create_label_group]{create_label_group} \tab Creates a group of labels\cr
-\link[=lookoutequipment_create_model]{create_model} \tab Creates an ML model for data inference\cr
+\link[=lookoutequipment_create_model]{create_model} \tab Creates a machine learning model for data inference\cr
+\link[=lookoutequipment_create_retraining_scheduler]{create_retraining_scheduler} \tab Creates a retraining scheduler on the specified model\cr
 \link[=lookoutequipment_delete_dataset]{delete_dataset} \tab Deletes a dataset and associated artifacts\cr
 \link[=lookoutequipment_delete_inference_scheduler]{delete_inference_scheduler} \tab Deletes an inference scheduler that has been set up\cr
 \link[=lookoutequipment_delete_label]{delete_label} \tab Deletes a label\cr
 \link[=lookoutequipment_delete_label_group]{delete_label_group} \tab Deletes a group of labels\cr
-\link[=lookoutequipment_delete_model]{delete_model} \tab Deletes an ML model currently available for Amazon Lookout for Equipment\cr
+\link[=lookoutequipment_delete_model]{delete_model} \tab Deletes a machine learning model currently available for Amazon Lookout for Equipment\cr
 \link[=lookoutequipment_delete_resource_policy]{delete_resource_policy} \tab Deletes the resource policy attached to the resource\cr
+\link[=lookoutequipment_delete_retraining_scheduler]{delete_retraining_scheduler} \tab Deletes a retraining scheduler from a model\cr
 \link[=lookoutequipment_describe_data_ingestion_job]{describe_data_ingestion_job} \tab Provides information on a specific data ingestion job such as creation time, dataset ARN, and status\cr
 \link[=lookoutequipment_describe_dataset]{describe_dataset} \tab Provides a JSON description of the data in each time series dataset, including names, column names, and data types\cr
 \link[=lookoutequipment_describe_inference_scheduler]{describe_inference_scheduler} \tab Specifies information about the inference scheduler being used, including name, model, status, and associated metadata\cr
 \link[=lookoutequipment_describe_label]{describe_label} \tab Returns the name of the label\cr
 \link[=lookoutequipment_describe_label_group]{describe_label_group} \tab Returns information about the label group\cr
-\link[=lookoutequipment_describe_model]{describe_model} \tab Provides a JSON containing the overall information about a specific ML model, including model name and ARN, dataset, training and evaluation information, status, and so on\cr
+\link[=lookoutequipment_describe_model]{describe_model} \tab Provides a JSON containing the overall information about a specific machine learning model, including model name and ARN, dataset, training and evaluation information, status, and so on\cr
 \link[=lookoutequipment_describe_model_version]{describe_model_version} \tab Retrieves information about a specific machine learning model version\cr
 \link[=lookoutequipment_describe_resource_policy]{describe_resource_policy} \tab Provides the details of a resource policy attached to a resource\cr
+\link[=lookoutequipment_describe_retraining_scheduler]{describe_retraining_scheduler} \tab Provides a description of the retraining scheduler, including information such as the model name and retraining parameters\cr
 \link[=lookoutequipment_import_dataset]{import_dataset} \tab Imports a dataset\cr
 \link[=lookoutequipment_import_model_version]{import_model_version} \tab Imports a model that has been trained successfully\cr
 \link[=lookoutequipment_list_data_ingestion_jobs]{list_data_ingestion_jobs} \tab Provides a list of all data ingestion jobs, including dataset name and ARN, S3 location of the input data, status, and so on\cr
@@ -126,25 +129,35 @@ for use in predictive maintenance.
 \link[=lookoutequipment_list_labels]{list_labels} \tab Provides a list of labels\cr
 \link[=lookoutequipment_list_models]{list_models} \tab Generates a list of all models in the account, including model name and ARN, dataset, and status\cr
 \link[=lookoutequipment_list_model_versions]{list_model_versions} \tab Generates a list of all model versions for a given model, including the model version, model version ARN, and status\cr
+\link[=lookoutequipment_list_retraining_schedulers]{list_retraining_schedulers} \tab Lists all retraining schedulers in your account, filtering by model name prefix and status\cr
 \link[=lookoutequipment_list_sensor_statistics]{list_sensor_statistics} \tab Lists statistics about the data collected for each of the sensors that have been successfully ingested in the particular dataset\cr
 \link[=lookoutequipment_list_tags_for_resource]{list_tags_for_resource} \tab Lists all the tags for a specified resource, including key and value\cr
 \link[=lookoutequipment_put_resource_policy]{put_resource_policy} \tab Creates a resource control policy for a given resource\cr
 \link[=lookoutequipment_start_data_ingestion_job]{start_data_ingestion_job} \tab Starts a data ingestion job\cr
 \link[=lookoutequipment_start_inference_scheduler]{start_inference_scheduler} \tab Starts an inference scheduler\cr
+\link[=lookoutequipment_start_retraining_scheduler]{start_retraining_scheduler} \tab Starts a retraining scheduler\cr
 \link[=lookoutequipment_stop_inference_scheduler]{stop_inference_scheduler} \tab Stops an inference scheduler\cr
+\link[=lookoutequipment_stop_retraining_scheduler]{stop_retraining_scheduler} \tab Stops a retraining scheduler\cr
 \link[=lookoutequipment_tag_resource]{tag_resource} \tab Associates a given tag to a resource in your account\cr
 \link[=lookoutequipment_untag_resource]{untag_resource} \tab Removes a specific tag from a given resource\cr
 \link[=lookoutequipment_update_active_model_version]{update_active_model_version} \tab Sets the active model version for a given machine learning model\cr
 \link[=lookoutequipment_update_inference_scheduler]{update_inference_scheduler} \tab Updates an inference scheduler\cr
-\link[=lookoutequipment_update_label_group]{update_label_group} \tab Updates the label group
+\link[=lookoutequipment_update_label_group]{update_label_group} \tab Updates the label group\cr
+\link[=lookoutequipment_update_model]{update_model} \tab Updates a model in the account\cr
+\link[=lookoutequipment_update_retraining_scheduler]{update_retraining_scheduler} \tab Updates a retraining scheduler
 }
 }
 
 \examples{
 \dontrun{
 svc <- lookoutequipment()
-svc$create_dataset(
-  Foo = 123
+# 
+svc$create_retraining_scheduler(
+  ClientToken = "sample-client-token",
+  LookbackWindow = "P360D",
+  ModelName = "sample-model",
+  PromoteMode = "MANUAL",
+  RetrainingFrequency = "P1M"
 )
 }
 

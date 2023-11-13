@@ -15,8 +15,8 @@ codedeploy_list_application_revisions(
 )
 }
 \arguments{
-\item{applicationName}{[required] The name of an CodeDeploy application associated with the IAM user or
-Amazon Web Services account.}
+\item{applicationName}{[required] The name of an CodeDeploy application associated with the user or Amazon
+Web Services account.}
 
 \item{sortBy}{The column name to use to sort the list results:
 \itemize{

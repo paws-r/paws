@@ -11,6 +11,7 @@ ec2_describe_images(
   ImageIds = NULL,
   Owners = NULL,
   IncludeDeprecated = NULL,
+  IncludeDisabled = NULL,
   DryRun = NULL,
   MaxResults = NULL,
   NextToken = NULL
@@ -81,6 +82,10 @@ this filter.
 example, \verb{/dev/sda1}).
 \item \code{root-device-type} - The type of the root device volume (\code{ebs} |
 \code{instance-store}).
+\item \code{source-instance-id} - The ID of the instance that the AMI was
+created from if the AMI was created using CreateImage. This filter
+is applicable only if the AMI was created using
+\code{\link[=ec2_create_image]{create_image}}.
 \item \code{state} - The state of the image (\code{available} | \code{pending} |
 \code{failed}).
 \item \code{state-reason-code} - The reason code for the state change.
@@ -114,6 +119,10 @@ Default: No deprecated AMIs are included in the response.
 
 If you are the AMI owner, all deprecated AMIs appear in the response
 regardless of what you specify for this parameter.}
+
+\item{IncludeDisabled}{Specifies whether to include disabled AMIs.
+
+Default: No disabled AMIs are included in the response.}
 
 \item{DryRun}{Checks whether you have the required permissions for the action, without
 actually making the request, and provides an error response. If you have

@@ -811,6 +811,108 @@ lakeformation_create_lf_tag <- function(CatalogId = NULL, TagKey, TagValues) {
 }
 .lakeformation$operations$create_lf_tag <- lakeformation_create_lf_tag
 
+#' Enforce Lake Formation permissions for the given databases, tables, and
+#' principals
+#'
+#' @description
+#' Enforce Lake Formation permissions for the given databases, tables, and
+#' principals.
+#'
+#' @usage
+#' lakeformation_create_lake_formation_opt_in(Principal, Resource)
+#'
+#' @param Principal &#91;required&#93; 
+#' @param Resource &#91;required&#93; 
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_lake_formation_opt_in(
+#'   Principal = list(
+#'     DataLakePrincipalIdentifier = "string"
+#'   ),
+#'   Resource = list(
+#'     Catalog = list(),
+#'     Database = list(
+#'       CatalogId = "string",
+#'       Name = "string"
+#'     ),
+#'     Table = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string",
+#'       Name = "string",
+#'       TableWildcard = list()
+#'     ),
+#'     TableWithColumns = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string",
+#'       Name = "string",
+#'       ColumnNames = list(
+#'         "string"
+#'       ),
+#'       ColumnWildcard = list(
+#'         ExcludedColumnNames = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     DataLocation = list(
+#'       CatalogId = "string",
+#'       ResourceArn = "string"
+#'     ),
+#'     DataCellsFilter = list(
+#'       TableCatalogId = "string",
+#'       DatabaseName = "string",
+#'       TableName = "string",
+#'       Name = "string"
+#'     ),
+#'     LFTag = list(
+#'       CatalogId = "string",
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     ),
+#'     LFTagPolicy = list(
+#'       CatalogId = "string",
+#'       ResourceType = "DATABASE"|"TABLE",
+#'       Expression = list(
+#'         list(
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_create_lake_formation_opt_in
+#'
+#' @aliases lakeformation_create_lake_formation_opt_in
+lakeformation_create_lake_formation_opt_in <- function(Principal, Resource) {
+  op <- new_operation(
+    name = "CreateLakeFormationOptIn",
+    http_method = "POST",
+    http_path = "/CreateLakeFormationOptIn",
+    paginator = list()
+  )
+  input <- .lakeformation$create_lake_formation_opt_in_input(Principal = Principal, Resource = Resource)
+  output <- .lakeformation$create_lake_formation_opt_in_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$create_lake_formation_opt_in <- lakeformation_create_lake_formation_opt_in
+
 #' Deletes a data cell filter
 #'
 #' @description
@@ -911,6 +1013,108 @@ lakeformation_delete_lf_tag <- function(CatalogId = NULL, TagKey) {
   return(response)
 }
 .lakeformation$operations$delete_lf_tag <- lakeformation_delete_lf_tag
+
+#' Remove the Lake Formation permissions enforcement of the given
+#' databases, tables, and principals
+#'
+#' @description
+#' Remove the Lake Formation permissions enforcement of the given
+#' databases, tables, and principals.
+#'
+#' @usage
+#' lakeformation_delete_lake_formation_opt_in(Principal, Resource)
+#'
+#' @param Principal &#91;required&#93; 
+#' @param Resource &#91;required&#93; 
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_lake_formation_opt_in(
+#'   Principal = list(
+#'     DataLakePrincipalIdentifier = "string"
+#'   ),
+#'   Resource = list(
+#'     Catalog = list(),
+#'     Database = list(
+#'       CatalogId = "string",
+#'       Name = "string"
+#'     ),
+#'     Table = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string",
+#'       Name = "string",
+#'       TableWildcard = list()
+#'     ),
+#'     TableWithColumns = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string",
+#'       Name = "string",
+#'       ColumnNames = list(
+#'         "string"
+#'       ),
+#'       ColumnWildcard = list(
+#'         ExcludedColumnNames = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     DataLocation = list(
+#'       CatalogId = "string",
+#'       ResourceArn = "string"
+#'     ),
+#'     DataCellsFilter = list(
+#'       TableCatalogId = "string",
+#'       DatabaseName = "string",
+#'       TableName = "string",
+#'       Name = "string"
+#'     ),
+#'     LFTag = list(
+#'       CatalogId = "string",
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     ),
+#'     LFTagPolicy = list(
+#'       CatalogId = "string",
+#'       ResourceType = "DATABASE"|"TABLE",
+#'       Expression = list(
+#'         list(
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   )
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_delete_lake_formation_opt_in
+#'
+#' @aliases lakeformation_delete_lake_formation_opt_in
+lakeformation_delete_lake_formation_opt_in <- function(Principal, Resource) {
+  op <- new_operation(
+    name = "DeleteLakeFormationOptIn",
+    http_method = "POST",
+    http_path = "/DeleteLakeFormationOptIn",
+    paginator = list()
+  )
+  input <- .lakeformation$delete_lake_formation_opt_in_input(Principal = Principal, Resource = Resource)
+  output <- .lakeformation$delete_lake_formation_opt_in_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$delete_lake_formation_opt_in <- lakeformation_delete_lake_formation_opt_in
 
 #' For a specific governed table, provides a list of Amazon S3 objects that
 #' will be written during the current transaction and that can be
@@ -1050,7 +1254,8 @@ lakeformation_deregister_resource <- function(ResourceArn) {
 #'     LastModified = as.POSIXct(
 #'       "2015-01-01"
 #'     ),
-#'     WithFederation = TRUE|FALSE
+#'     WithFederation = TRUE|FALSE,
+#'     HybridAccessEnabled = TRUE|FALSE
 #'   )
 #' )
 #' ```
@@ -1455,7 +1660,11 @@ lakeformation_get_data_lake_settings <- function(CatalogId = NULL) {
 #'         ResourceShare = list(
 #'           "string"
 #'         )
-#'       )
+#'       ),
+#'       LastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedBy = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2461,6 +2670,185 @@ lakeformation_list_lf_tags <- function(CatalogId = NULL, ResourceShareType = NUL
 }
 .lakeformation$operations$list_lf_tags <- lakeformation_list_lf_tags
 
+#' Retrieve the current list of resources and principals that are opt in to
+#' enforce Lake Formation permissions
+#'
+#' @description
+#' Retrieve the current list of resources and principals that are opt in to
+#' enforce Lake Formation permissions.
+#'
+#' @usage
+#' lakeformation_list_lake_formation_opt_ins(Principal, Resource,
+#'   MaxResults, NextToken)
+#'
+#' @param Principal 
+#' @param Resource A structure for the resource.
+#' @param MaxResults The maximum number of results to return.
+#' @param NextToken A continuation token, if this is not the first call to retrieve this
+#' list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   LakeFormationOptInsInfoList = list(
+#'     list(
+#'       Resource = list(
+#'         Catalog = list(),
+#'         Database = list(
+#'           CatalogId = "string",
+#'           Name = "string"
+#'         ),
+#'         Table = list(
+#'           CatalogId = "string",
+#'           DatabaseName = "string",
+#'           Name = "string",
+#'           TableWildcard = list()
+#'         ),
+#'         TableWithColumns = list(
+#'           CatalogId = "string",
+#'           DatabaseName = "string",
+#'           Name = "string",
+#'           ColumnNames = list(
+#'             "string"
+#'           ),
+#'           ColumnWildcard = list(
+#'             ExcludedColumnNames = list(
+#'               "string"
+#'             )
+#'           )
+#'         ),
+#'         DataLocation = list(
+#'           CatalogId = "string",
+#'           ResourceArn = "string"
+#'         ),
+#'         DataCellsFilter = list(
+#'           TableCatalogId = "string",
+#'           DatabaseName = "string",
+#'           TableName = "string",
+#'           Name = "string"
+#'         ),
+#'         LFTag = list(
+#'           CatalogId = "string",
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         ),
+#'         LFTagPolicy = list(
+#'           CatalogId = "string",
+#'           ResourceType = "DATABASE"|"TABLE",
+#'           Expression = list(
+#'             list(
+#'               TagKey = "string",
+#'               TagValues = list(
+#'                 "string"
+#'               )
+#'             )
+#'           )
+#'         )
+#'       ),
+#'       Principal = list(
+#'         DataLakePrincipalIdentifier = "string"
+#'       ),
+#'       LastModified = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedBy = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_lake_formation_opt_ins(
+#'   Principal = list(
+#'     DataLakePrincipalIdentifier = "string"
+#'   ),
+#'   Resource = list(
+#'     Catalog = list(),
+#'     Database = list(
+#'       CatalogId = "string",
+#'       Name = "string"
+#'     ),
+#'     Table = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string",
+#'       Name = "string",
+#'       TableWildcard = list()
+#'     ),
+#'     TableWithColumns = list(
+#'       CatalogId = "string",
+#'       DatabaseName = "string",
+#'       Name = "string",
+#'       ColumnNames = list(
+#'         "string"
+#'       ),
+#'       ColumnWildcard = list(
+#'         ExcludedColumnNames = list(
+#'           "string"
+#'         )
+#'       )
+#'     ),
+#'     DataLocation = list(
+#'       CatalogId = "string",
+#'       ResourceArn = "string"
+#'     ),
+#'     DataCellsFilter = list(
+#'       TableCatalogId = "string",
+#'       DatabaseName = "string",
+#'       TableName = "string",
+#'       Name = "string"
+#'     ),
+#'     LFTag = list(
+#'       CatalogId = "string",
+#'       TagKey = "string",
+#'       TagValues = list(
+#'         "string"
+#'       )
+#'     ),
+#'     LFTagPolicy = list(
+#'       CatalogId = "string",
+#'       ResourceType = "DATABASE"|"TABLE",
+#'       Expression = list(
+#'         list(
+#'           TagKey = "string",
+#'           TagValues = list(
+#'             "string"
+#'           )
+#'         )
+#'       )
+#'     )
+#'   ),
+#'   MaxResults = 123,
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @keywords internal
+#'
+#' @rdname lakeformation_list_lake_formation_opt_ins
+#'
+#' @aliases lakeformation_list_lake_formation_opt_ins
+lakeformation_list_lake_formation_opt_ins <- function(Principal = NULL, Resource = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "ListLakeFormationOptIns",
+    http_method = "POST",
+    http_path = "/ListLakeFormationOptIns",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+  )
+  input <- .lakeformation$list_lake_formation_opt_ins_input(Principal = Principal, Resource = Resource, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .lakeformation$list_lake_formation_opt_ins_output()
+  config <- get_config()
+  svc <- .lakeformation$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lakeformation$operations$list_lake_formation_opt_ins <- lakeformation_list_lake_formation_opt_ins
+
 #' Returns a list of the principal permissions on the resource, filtered by
 #' the permissions of the caller
 #'
@@ -2571,7 +2959,11 @@ lakeformation_list_lf_tags <- function(CatalogId = NULL, ResourceShareType = NUL
 #'         ResourceShare = list(
 #'           "string"
 #'         )
-#'       )
+#'       ),
+#'       LastUpdated = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       LastUpdatedBy = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -2694,7 +3086,8 @@ lakeformation_list_permissions <- function(CatalogId = NULL, Principal = NULL, R
 #'       LastModified = as.POSIXct(
 #'         "2015-01-01"
 #'       ),
-#'       WithFederation = TRUE|FALSE
+#'       WithFederation = TRUE|FALSE,
+#'       HybridAccessEnabled = TRUE|FALSE
 #'     )
 #'   ),
 #'   NextToken = "string"
@@ -3015,7 +3408,7 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #'
 #' @usage
 #' lakeformation_register_resource(ResourceArn, UseServiceLinkedRole,
-#'   RoleArn, WithFederation)
+#'   RoleArn, WithFederation, HybridAccessEnabled)
 #'
 #' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the resource that you want to
 #' register.
@@ -3027,6 +3420,9 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #' Formation](https://docs.aws.amazon.com/lake-formation/latest/dg/service-linked-roles.html).
 #' @param RoleArn The identifier for the role that registers the resource.
 #' @param WithFederation Whether or not the resource is a federated resource.
+#' @param HybridAccessEnabled Specifies whether the data access of tables pointing to the location can
+#' be managed by both Lake Formation permissions as well as Amazon S3
+#' bucket policies.
 #'
 #' @return
 #' An empty list.
@@ -3037,7 +3433,8 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #'   ResourceArn = "string",
 #'   UseServiceLinkedRole = TRUE|FALSE,
 #'   RoleArn = "string",
-#'   WithFederation = TRUE|FALSE
+#'   WithFederation = TRUE|FALSE,
+#'   HybridAccessEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3046,14 +3443,14 @@ lakeformation_put_data_lake_settings <- function(CatalogId = NULL, DataLakeSetti
 #' @rdname lakeformation_register_resource
 #'
 #' @aliases lakeformation_register_resource
-lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = NULL, RoleArn = NULL, WithFederation = NULL) {
+lakeformation_register_resource <- function(ResourceArn, UseServiceLinkedRole = NULL, RoleArn = NULL, WithFederation = NULL, HybridAccessEnabled = NULL) {
   op <- new_operation(
     name = "RegisterResource",
     http_method = "POST",
     http_path = "/RegisterResource",
     paginator = list()
   )
-  input <- .lakeformation$register_resource_input(ResourceArn = ResourceArn, UseServiceLinkedRole = UseServiceLinkedRole, RoleArn = RoleArn, WithFederation = WithFederation)
+  input <- .lakeformation$register_resource_input(ResourceArn = ResourceArn, UseServiceLinkedRole = UseServiceLinkedRole, RoleArn = RoleArn, WithFederation = WithFederation, HybridAccessEnabled = HybridAccessEnabled)
   output <- .lakeformation$register_resource_output()
   config <- get_config()
   svc <- .lakeformation$service(config)
@@ -3760,11 +4157,15 @@ lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDel
 #' (registered) resource in Lake Formation.
 #'
 #' @usage
-#' lakeformation_update_resource(RoleArn, ResourceArn, WithFederation)
+#' lakeformation_update_resource(RoleArn, ResourceArn, WithFederation,
+#'   HybridAccessEnabled)
 #'
 #' @param RoleArn &#91;required&#93; The new role to use for the given resource registered in Lake Formation.
 #' @param ResourceArn &#91;required&#93; The resource ARN.
 #' @param WithFederation Whether or not the resource is a federated resource.
+#' @param HybridAccessEnabled Specifies whether the data access of tables pointing to the location can
+#' be managed by both Lake Formation permissions as well as Amazon S3
+#' bucket policies.
 #'
 #' @return
 #' An empty list.
@@ -3774,7 +4175,8 @@ lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDel
 #' svc$update_resource(
 #'   RoleArn = "string",
 #'   ResourceArn = "string",
-#'   WithFederation = TRUE|FALSE
+#'   WithFederation = TRUE|FALSE,
+#'   HybridAccessEnabled = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -3783,14 +4185,14 @@ lakeformation_update_lf_tag <- function(CatalogId = NULL, TagKey, TagValuesToDel
 #' @rdname lakeformation_update_resource
 #'
 #' @aliases lakeformation_update_resource
-lakeformation_update_resource <- function(RoleArn, ResourceArn, WithFederation = NULL) {
+lakeformation_update_resource <- function(RoleArn, ResourceArn, WithFederation = NULL, HybridAccessEnabled = NULL) {
   op <- new_operation(
     name = "UpdateResource",
     http_method = "POST",
     http_path = "/UpdateResource",
     paginator = list()
   )
-  input <- .lakeformation$update_resource_input(RoleArn = RoleArn, ResourceArn = ResourceArn, WithFederation = WithFederation)
+  input <- .lakeformation$update_resource_input(RoleArn = RoleArn, ResourceArn = ResourceArn, WithFederation = WithFederation, HybridAccessEnabled = HybridAccessEnabled)
   output <- .lakeformation$update_resource_output()
   config <- get_config()
   svc <- .lakeformation$service(config)

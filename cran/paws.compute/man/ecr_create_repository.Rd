@@ -21,7 +21,10 @@ registry is assumed.}
 \item{repositoryName}{[required] The name to use for the repository. The repository name may be specified
 on its own (such as \code{nginx-web-app}) or it can be prepended with a
 namespace to group the repository into a category (such as
-\code{project-a/nginx-web-app}).}
+\code{project-a/nginx-web-app}).
+
+The repository name must start with a letter and can only contain
+lowercase letters, numbers, hyphens, underscores, and forward slashes.}
 
 \item{tags}{The metadata that you apply to the repository to help you categorize and
 organize them. Each tag consists of a key and an optional value, both of

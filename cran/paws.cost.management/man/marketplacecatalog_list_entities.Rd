@@ -30,7 +30,12 @@ results.}
 \item{MaxResults}{Specifies the upper limit of the elements on a single page. If a value
 isn't provided, the default value is 20.}
 
-\item{OwnershipType}{}
+\item{OwnershipType}{Filters the returned set of entities based on their owner. The default
+is \code{SELF}. To list entities shared with you through AWS Resource Access
+Manager (AWS RAM), set to \code{SHARED}. Entities shared through the AWS
+Marketplace Catalog API
+\code{\link[=marketplacecatalog_put_resource_policy]{put_resource_policy}}
+operation can't be discovered through the \code{SHARED} parameter.}
 }
 \description{
 Provides the list of entities of a given type.

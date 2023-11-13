@@ -23,6 +23,18 @@ NULL
   list()
 }
 
+.cloudwatchlogs$create_delivery_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(deliverySourceName = structure(logical(0), tags = list(type = "string")), deliveryDestinationArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$create_delivery_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(delivery = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), deliverySourceName = structure(logical(0), tags = list(type = "string")), deliveryDestinationArn = structure(logical(0), tags = list(type = "string")), deliveryDestinationType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudwatchlogs$create_export_task_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(taskName = structure(logical(0), tags = list(type = "string")), logGroupName = structure(logical(0), tags = list(type = "string")), logStreamNamePrefix = structure(logical(0), tags = list(type = "string")), from = structure(logical(0), tags = list(type = "long")), to = structure(logical(0), tags = list(type = "long")), destination = structure(logical(0), tags = list(type = "string")), destinationPrefix = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
@@ -72,6 +84,46 @@ NULL
 }
 
 .cloudwatchlogs$delete_data_protection_policy_output <- function(...) {
+  list()
+}
+
+.cloudwatchlogs$delete_delivery_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$delete_delivery_output <- function(...) {
+  list()
+}
+
+.cloudwatchlogs$delete_delivery_destination_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$delete_delivery_destination_output <- function(...) {
+  list()
+}
+
+.cloudwatchlogs$delete_delivery_destination_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(deliveryDestinationName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$delete_delivery_destination_policy_output <- function(...) {
+  list()
+}
+
+.cloudwatchlogs$delete_delivery_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$delete_delivery_source_output <- function(...) {
   list()
 }
 
@@ -166,6 +218,42 @@ NULL
 .cloudwatchlogs$describe_account_policies_output <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(accountPolicies = structure(list(structure(list(policyName = structure(logical(0), tags = list(type = "string")), policyDocument = structure(logical(0), tags = list(type = "string")), lastUpdatedTime = structure(logical(0), tags = list(type = "long")), policyType = structure(logical(0), tags = list(type = "string")), scope = structure(logical(0), tags = list(type = "string")), accountId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$describe_deliveries_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$describe_deliveries_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(deliveries = structure(list(structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), deliverySourceName = structure(logical(0), tags = list(type = "string")), deliveryDestinationArn = structure(logical(0), tags = list(type = "string")), deliveryDestinationType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$describe_delivery_destinations_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$describe_delivery_destinations_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(deliveryDestinations = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), deliveryDestinationType = structure(logical(0), tags = list(type = "string")), outputFormat = structure(logical(0), tags = list(type = "string")), deliveryDestinationConfiguration = structure(list(destinationResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$describe_delivery_sources_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(nextToken = structure(logical(0), tags = list(type = "string")), limit = structure(logical(0), tags = list(type = "integer"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$describe_delivery_sources_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(deliverySources = structure(list(structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), service = structure(logical(0), tags = list(type = "string")), logType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "list")), nextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 
@@ -311,6 +399,54 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudwatchlogs$get_delivery_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(id = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$get_delivery_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(delivery = structure(list(id = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), deliverySourceName = structure(logical(0), tags = list(type = "string")), deliveryDestinationArn = structure(logical(0), tags = list(type = "string")), deliveryDestinationType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$get_delivery_destination_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$get_delivery_destination_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(deliveryDestination = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), deliveryDestinationType = structure(logical(0), tags = list(type = "string")), outputFormat = structure(logical(0), tags = list(type = "string")), deliveryDestinationConfiguration = structure(list(destinationResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$get_delivery_destination_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(deliveryDestinationName = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$get_delivery_destination_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(policy = structure(list(deliveryDestinationPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$get_delivery_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$get_delivery_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(deliverySource = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), service = structure(logical(0), tags = list(type = "string")), logType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudwatchlogs$get_log_events_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(logGroupName = structure(logical(0), tags = list(type = "string")), logGroupIdentifier = structure(logical(0), tags = list(type = "string")), logStreamName = structure(logical(0), tags = list(type = "string")), startTime = structure(logical(0), tags = list(type = "long")), endTime = structure(logical(0), tags = list(type = "long")), nextToken = structure(logical(0), tags = list(type = "string")), limit = structure(logical(0), tags = list(type = "integer")), startFromHead = structure(logical(0), tags = list(type = "boolean")), unmask = structure(logical(0), tags = list(type = "boolean"))), tags = list(type = "structure"))
@@ -407,6 +543,42 @@ NULL
   return(populate(args, shape))
 }
 
+.cloudwatchlogs$put_delivery_destination_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), outputFormat = structure(logical(0), tags = list(type = "string")), deliveryDestinationConfiguration = structure(list(destinationResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$put_delivery_destination_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(deliveryDestination = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), deliveryDestinationType = structure(logical(0), tags = list(type = "string")), outputFormat = structure(logical(0), tags = list(type = "string")), deliveryDestinationConfiguration = structure(list(destinationResourceArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$put_delivery_destination_policy_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(deliveryDestinationName = structure(logical(0), tags = list(type = "string")), deliveryDestinationPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$put_delivery_destination_policy_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(policy = structure(list(deliveryDestinationPolicy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$put_delivery_source_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), resourceArn = structure(logical(0), tags = list(type = "string")), logType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.cloudwatchlogs$put_delivery_source_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(deliverySource = structure(list(name = structure(logical(0), tags = list(type = "string")), arn = structure(logical(0), tags = list(type = "string")), resourceArns = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), service = structure(logical(0), tags = list(type = "string")), logType = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .cloudwatchlogs$put_destination_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(destinationName = structure(logical(0), tags = list(type = "string")), targetArn = structure(logical(0), tags = list(type = "string")), roleArn = structure(logical(0), tags = list(type = "string")), tags = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "map"))), tags = list(type = "structure"))
@@ -453,7 +625,7 @@ NULL
 
 .cloudwatchlogs$put_query_definition_input <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), queryDefinitionId = structure(logical(0), tags = list(type = "string")), logGroupNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), queryString = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(name = structure(logical(0), tags = list(type = "string")), queryDefinitionId = structure(logical(0), tags = list(type = "string")), logGroupNames = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list")), queryString = structure(logical(0), tags = list(type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

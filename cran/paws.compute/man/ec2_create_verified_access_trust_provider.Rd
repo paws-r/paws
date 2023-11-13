@@ -15,7 +15,8 @@ ec2_create_verified_access_trust_provider(
   Description = NULL,
   TagSpecifications = NULL,
   ClientToken = NULL,
-  DryRun = NULL
+  DryRun = NULL,
+  SseSpecification = NULL
 )
 }
 \arguments{
@@ -46,6 +47,8 @@ your modification request. For more information, see \href{https://docs.aws.amaz
 actually making the request, and provides an error response. If you have
 the required permissions, the error response is \code{DryRunOperation}.
 Otherwise, it is \code{UnauthorizedOperation}.}
+
+\item{SseSpecification}{Options for server side encryption.}
 }
 \description{
 A trust provider is a third-party entity that creates, maintains, and manages identity information for users and devices. When an application request is made, the identity information sent by the trust provider is evaluated by Verified Access before allowing or denying the application request.

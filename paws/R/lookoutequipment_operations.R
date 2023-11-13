@@ -91,8 +91,8 @@ lookoutequipment_create_dataset <- function(DatasetName, DatasetSchema = NULL, S
 #'   DataInputConfiguration, DataOutputConfiguration, RoleArn,
 #'   ServerSideKmsKeyId, ClientToken, Tags)
 #'
-#' @param ModelName &#91;required&#93; The name of the previously trained ML model being used to create the
-#' inference scheduler.
+#' @param ModelName &#91;required&#93; The name of the previously trained machine learning model being used to
+#' create the inference scheduler.
 #' @param InferenceSchedulerName &#91;required&#93; The name of the inference scheduler being created.
 #' @param DataDelayOffsetInMinutes The interval (in minutes) of planned delay at the start of each
 #' inference segment. For example, if inference is set to run every ten
@@ -349,10 +349,10 @@ lookoutequipment_create_label_group <- function(LabelGroupName, FaultCodes = NUL
 }
 .lookoutequipment$operations$create_label_group <- lookoutequipment_create_label_group
 
-#' Creates an ML model for data inference
+#' Creates a machine learning model for data inference
 #'
 #' @description
-#' Creates an ML model for data inference.
+#' Creates a machine learning model for data inference.
 #' 
 #' A machine-learning (ML) model is a mathematical model that finds
 #' patterns in your data. In Amazon Lookout for Equipment, the model learns
@@ -373,23 +373,23 @@ lookoutequipment_create_label_group <- function(LabelGroupName, FaultCodes = NUL
 #'   RoleArn, DataPreProcessingConfiguration, ServerSideKmsKeyId, Tags,
 #'   OffCondition)
 #'
-#' @param ModelName &#91;required&#93; The name for the ML model to be created.
-#' @param DatasetName &#91;required&#93; The name of the dataset for the ML model being created.
-#' @param DatasetSchema The data schema for the ML model being created.
-#' @param LabelsInputConfiguration The input configuration for the labels being used for the ML model
-#' that's being created.
+#' @param ModelName &#91;required&#93; The name for the machine learning model to be created.
+#' @param DatasetName &#91;required&#93; The name of the dataset for the machine learning model being created.
+#' @param DatasetSchema The data schema for the machine learning model being created.
+#' @param LabelsInputConfiguration The input configuration for the labels being used for the machine
+#' learning model that's being created.
 #' @param ClientToken &#91;required&#93; A unique identifier for the request. If you do not set the client
 #' request token, Amazon Lookout for Equipment generates one.
 #' @param TrainingDataStartTime Indicates the time reference in the dataset that should be used to begin
-#' the subset of training data for the ML model.
+#' the subset of training data for the machine learning model.
 #' @param TrainingDataEndTime Indicates the time reference in the dataset that should be used to end
-#' the subset of training data for the ML model.
+#' the subset of training data for the machine learning model.
 #' @param EvaluationDataStartTime Indicates the time reference in the dataset that should be used to begin
-#' the subset of evaluation data for the ML model.
+#' the subset of evaluation data for the machine learning model.
 #' @param EvaluationDataEndTime Indicates the time reference in the dataset that should be used to end
-#' the subset of evaluation data for the ML model.
+#' the subset of evaluation data for the machine learning model.
 #' @param RoleArn The Amazon Resource Name (ARN) of a role with permission to access the
-#' data source being used to create the ML model.
+#' data source being used to create the machine learning model.
 #' @param DataPreProcessingConfiguration The configuration is the `TargetSamplingRate`, which is the sampling
 #' rate of the data after post processing by Amazon Lookout for Equipment.
 #' For example, if you provide data that has been collected at a 1 second
@@ -402,7 +402,7 @@ lookoutequipment_create_label_group <- function(LabelGroupName, FaultCodes = NUL
 #' value for a 1 hour rate is *PT1H*
 #' @param ServerSideKmsKeyId Provides the identifier of the KMS key used to encrypt model data by
 #' Amazon Lookout for Equipment.
-#' @param Tags Any tags associated with the ML model being created.
+#' @param Tags Any tags associated with the machine learning model being created.
 #' @param OffCondition Indicates that the asset associated with this sensor has been shut off.
 #' As long as this condition is met, Lookout for Equipment will not use
 #' data from this asset for training, evaluation, or inference.
@@ -481,6 +481,107 @@ lookoutequipment_create_model <- function(ModelName, DatasetName, DatasetSchema 
 }
 .lookoutequipment$operations$create_model <- lookoutequipment_create_model
 
+#' Creates a retraining scheduler on the specified model
+#'
+#' @description
+#' Creates a retraining scheduler on the specified model.
+#'
+#' @usage
+#' lookoutequipment_create_retraining_scheduler(ModelName,
+#'   RetrainingStartDate, RetrainingFrequency, LookbackWindow, PromoteMode,
+#'   ClientToken)
+#'
+#' @param ModelName &#91;required&#93; The name of the model to add the retraining scheduler to.
+#' @param RetrainingStartDate The start date for the retraining scheduler. Lookout for Equipment
+#' truncates the time you provide to the nearest UTC day.
+#' @param RetrainingFrequency &#91;required&#93; This parameter uses the [ISO
+#' 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) standard to set
+#' the frequency at which you want retraining to occur in terms of Years,
+#' Months, and/or Days (note: other parameters like Time are not currently
+#' supported). The minimum value is 30 days (P30D) and the maximum value is
+#' 1 year (P1Y). For example, the following values are valid:
+#' 
+#' -   P3M15D – Every 3 months and 15 days
+#' 
+#' -   P2M – Every 2 months
+#' 
+#' -   P150D – Every 150 days
+#' @param LookbackWindow &#91;required&#93; The number of past days of data that will be used for retraining.
+#' @param PromoteMode Indicates how the service will use new models. In `MANAGED` mode, new
+#' models will automatically be used for inference if they have better
+#' performance than the current model. In `MANUAL` mode, the new models
+#' will not be used [until they are manually
+#' activated](https://docs.aws.amazon.com/lookout-for-equipment/latest/ug/versioning-model.html#model-activation).
+#' @param ClientToken &#91;required&#93; A unique identifier for the request. If you do not set the client
+#' request token, Amazon Lookout for Equipment generates one.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelName = "string",
+#'   ModelArn = "string",
+#'   Status = "PENDING"|"RUNNING"|"STOPPING"|"STOPPED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$create_retraining_scheduler(
+#'   ModelName = "string",
+#'   RetrainingStartDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   RetrainingFrequency = "string",
+#'   LookbackWindow = "string",
+#'   PromoteMode = "MANAGED"|"MANUAL",
+#'   ClientToken = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # 
+#' svc$create_retraining_scheduler(
+#'   ClientToken = "sample-client-token",
+#'   LookbackWindow = "P360D",
+#'   ModelName = "sample-model",
+#'   PromoteMode = "MANUAL",
+#'   RetrainingFrequency = "P1M"
+#' )
+#' 
+#' # 
+#' svc$create_retraining_scheduler(
+#'   ClientToken = "sample-client-token",
+#'   LookbackWindow = "P360D",
+#'   ModelName = "sample-model",
+#'   RetrainingFrequency = "P1M",
+#'   RetrainingStartDate = "2024-01-01T00:00:00Z"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutequipment_create_retraining_scheduler
+#'
+#' @aliases lookoutequipment_create_retraining_scheduler
+lookoutequipment_create_retraining_scheduler <- function(ModelName, RetrainingStartDate = NULL, RetrainingFrequency, LookbackWindow, PromoteMode = NULL, ClientToken) {
+  op <- new_operation(
+    name = "CreateRetrainingScheduler",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lookoutequipment$create_retraining_scheduler_input(ModelName = ModelName, RetrainingStartDate = RetrainingStartDate, RetrainingFrequency = RetrainingFrequency, LookbackWindow = LookbackWindow, PromoteMode = PromoteMode, ClientToken = ClientToken)
+  output <- .lookoutequipment$create_retraining_scheduler_output()
+  config <- get_config()
+  svc <- .lookoutequipment$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutequipment$operations$create_retraining_scheduler <- lookoutequipment_create_retraining_scheduler
+
 #' Deletes a dataset and associated artifacts
 #'
 #' @description
@@ -531,8 +632,8 @@ lookoutequipment_delete_dataset <- function(DatasetName) {
 #' Deletes an inference scheduler that has been set up
 #'
 #' @description
-#' Deletes an inference scheduler that has been set up. Already processed
-#' output results are not affected.
+#' Deletes an inference scheduler that has been set up. Prior inference
+#' results will not be deleted.
 #'
 #' @usage
 #' lookoutequipment_delete_inference_scheduler(InferenceSchedulerName)
@@ -661,17 +762,18 @@ lookoutequipment_delete_label_group <- function(LabelGroupName) {
 }
 .lookoutequipment$operations$delete_label_group <- lookoutequipment_delete_label_group
 
-#' Deletes an ML model currently available for Amazon Lookout for Equipment
+#' Deletes a machine learning model currently available for Amazon Lookout
+#' for Equipment
 #'
 #' @description
-#' Deletes an ML model currently available for Amazon Lookout for
-#' Equipment. This will prevent it from being used with an inference
+#' Deletes a machine learning model currently available for Amazon Lookout
+#' for Equipment. This will prevent it from being used with an inference
 #' scheduler, even one that is already set up.
 #'
 #' @usage
 #' lookoutequipment_delete_model(ModelName)
 #'
-#' @param ModelName &#91;required&#93; The name of the ML model to be deleted.
+#' @param ModelName &#91;required&#93; The name of the machine learning model to be deleted.
 #'
 #' @return
 #' An empty list.
@@ -747,6 +849,57 @@ lookoutequipment_delete_resource_policy <- function(ResourceArn) {
   return(response)
 }
 .lookoutequipment$operations$delete_resource_policy <- lookoutequipment_delete_resource_policy
+
+#' Deletes a retraining scheduler from a model
+#'
+#' @description
+#' Deletes a retraining scheduler from a model. The retraining scheduler
+#' must be in the `STOPPED` status.
+#'
+#' @usage
+#' lookoutequipment_delete_retraining_scheduler(ModelName)
+#'
+#' @param ModelName &#91;required&#93; The name of the model whose retraining scheduler you want to delete.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$delete_retraining_scheduler(
+#'   ModelName = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # 
+#' svc$delete_retraining_scheduler(
+#'   ModelName = "sample-model"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutequipment_delete_retraining_scheduler
+#'
+#' @aliases lookoutequipment_delete_retraining_scheduler
+lookoutequipment_delete_retraining_scheduler <- function(ModelName) {
+  op <- new_operation(
+    name = "DeleteRetrainingScheduler",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lookoutequipment$delete_retraining_scheduler_input(ModelName = ModelName)
+  output <- .lookoutequipment$delete_retraining_scheduler_output()
+  config <- get_config()
+  svc <- .lookoutequipment$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutequipment$operations$delete_retraining_scheduler <- lookoutequipment_delete_retraining_scheduler
 
 #' Provides information on a specific data ingestion job such as creation
 #' time, dataset ARN, and status
@@ -1165,19 +1318,19 @@ lookoutequipment_describe_label_group <- function(LabelGroupName) {
 }
 .lookoutequipment$operations$describe_label_group <- lookoutequipment_describe_label_group
 
-#' Provides a JSON containing the overall information about a specific ML
-#' model, including model name and ARN, dataset, training and evaluation
-#' information, status, and so on
+#' Provides a JSON containing the overall information about a specific
+#' machine learning model, including model name and ARN, dataset, training
+#' and evaluation information, status, and so on
 #'
 #' @description
-#' Provides a JSON containing the overall information about a specific ML
-#' model, including model name and ARN, dataset, training and evaluation
-#' information, status, and so on.
+#' Provides a JSON containing the overall information about a specific
+#' machine learning model, including model name and ARN, dataset, training
+#' and evaluation information, status, and so on.
 #'
 #' @usage
 #' lookoutequipment_describe_model(ModelName)
 #'
-#' @param ModelName &#91;required&#93; The name of the ML model to be described.
+#' @param ModelName &#91;required&#93; The name of the machine learning model to be described.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1244,7 +1397,25 @@ lookoutequipment_describe_label_group <- function(LabelGroupName) {
 #'   PreviousActiveModelVersionArn = "string",
 #'   PreviousModelVersionActivatedAt = as.POSIXct(
 #'     "2015-01-01"
-#'   )
+#'   ),
+#'   PriorModelMetrics = "string",
+#'   LatestScheduledRetrainingFailedReason = "string",
+#'   LatestScheduledRetrainingStatus = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"IMPORT_IN_PROGRESS"|"CANCELED",
+#'   LatestScheduledRetrainingModelVersion = 123,
+#'   LatestScheduledRetrainingStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   LatestScheduledRetrainingAvailableDataInDays = 123,
+#'   NextScheduledRetrainingStartDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   AccumulatedInferenceDataStartTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   AccumulatedInferenceDataEndTime = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   RetrainingSchedulerStatus = "PENDING"|"RUNNING"|"STOPPING"|"STOPPED"
 #' )
 #' ```
 #'
@@ -1347,7 +1518,11 @@ lookoutequipment_describe_model <- function(ModelName) {
 #'   ImportJobEndTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   ImportedDataSizeInBytes = 123
+#'   ImportedDataSizeInBytes = 123,
+#'   PriorModelMetrics = "string",
+#'   RetrainingAvailableDataInDays = 123,
+#'   AutoPromotionResult = "MODEL_PROMOTED"|"MODEL_NOT_PROMOTED"|"RETRAINING_INTERNAL_ERROR"|"RETRAINING_CUSTOMER_ERROR"|"RETRAINING_CANCELLED",
+#'   AutoPromotionResultReason = "string"
 #' )
 #' ```
 #'
@@ -1436,6 +1611,77 @@ lookoutequipment_describe_resource_policy <- function(ResourceArn) {
 }
 .lookoutequipment$operations$describe_resource_policy <- lookoutequipment_describe_resource_policy
 
+#' Provides a description of the retraining scheduler, including
+#' information such as the model name and retraining parameters
+#'
+#' @description
+#' Provides a description of the retraining scheduler, including
+#' information such as the model name and retraining parameters.
+#'
+#' @usage
+#' lookoutequipment_describe_retraining_scheduler(ModelName)
+#'
+#' @param ModelName &#91;required&#93; The name of the model that the retraining scheduler is attached to.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelName = "string",
+#'   ModelArn = "string",
+#'   RetrainingStartDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   RetrainingFrequency = "string",
+#'   LookbackWindow = "string",
+#'   Status = "PENDING"|"RUNNING"|"STOPPING"|"STOPPED",
+#'   PromoteMode = "MANAGED"|"MANUAL",
+#'   CreatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   UpdatedAt = as.POSIXct(
+#'     "2015-01-01"
+#'   )
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$describe_retraining_scheduler(
+#'   ModelName = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # 
+#' svc$describe_retraining_scheduler(
+#'   ModelName = "sample-model"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutequipment_describe_retraining_scheduler
+#'
+#' @aliases lookoutequipment_describe_retraining_scheduler
+lookoutequipment_describe_retraining_scheduler <- function(ModelName) {
+  op <- new_operation(
+    name = "DescribeRetrainingScheduler",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lookoutequipment$describe_retraining_scheduler_input(ModelName = ModelName)
+  output <- .lookoutequipment$describe_retraining_scheduler_output()
+  config <- get_config()
+  svc <- .lookoutequipment$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutequipment$operations$describe_retraining_scheduler <- lookoutequipment_describe_retraining_scheduler
+
 #' Imports a dataset
 #'
 #' @description
@@ -1513,7 +1759,7 @@ lookoutequipment_import_dataset <- function(SourceDatasetArn, DatasetName = NULL
 #' @usage
 #' lookoutequipment_import_model_version(SourceModelVersionArn, ModelName,
 #'   DatasetName, LabelsInputConfiguration, ClientToken, RoleArn,
-#'   ServerSideKmsKeyId, Tags)
+#'   ServerSideKmsKeyId, Tags, InferenceDataImportStrategy)
 #'
 #' @param SourceModelVersionArn &#91;required&#93; The Amazon Resource Name (ARN) of the model version to import.
 #' @param ModelName The name for the machine learning model to be created. If the model
@@ -1529,6 +1775,16 @@ lookoutequipment_import_dataset <- function(SourceDatasetArn, DatasetName = NULL
 #' @param ServerSideKmsKeyId Provides the identifier of the KMS key key used to encrypt model data by
 #' Amazon Lookout for Equipment.
 #' @param Tags The tags associated with the machine learning model to be created.
+#' @param InferenceDataImportStrategy Indicates how to import the accumulated inference data when a model
+#' version is imported. The possible values are as follows:
+#' 
+#' -   NO_IMPORT – Don't import the data.
+#' 
+#' -   ADD_WHEN_EMPTY – Only import the data from the source model if there
+#'     is no existing data in the target model.
+#' 
+#' -   OVERWRITE – Import the data from the source model and overwrite the
+#'     existing data in the target model.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1563,7 +1819,8 @@ lookoutequipment_import_dataset <- function(SourceDatasetArn, DatasetName = NULL
 #'       Key = "string",
 #'       Value = "string"
 #'     )
-#'   )
+#'   ),
+#'   InferenceDataImportStrategy = "NO_IMPORT"|"ADD_WHEN_EMPTY"|"OVERWRITE"
 #' )
 #' ```
 #'
@@ -1572,14 +1829,14 @@ lookoutequipment_import_dataset <- function(SourceDatasetArn, DatasetName = NULL
 #' @rdname lookoutequipment_import_model_version
 #'
 #' @aliases lookoutequipment_import_model_version
-lookoutequipment_import_model_version <- function(SourceModelVersionArn, ModelName = NULL, DatasetName, LabelsInputConfiguration = NULL, ClientToken, RoleArn = NULL, ServerSideKmsKeyId = NULL, Tags = NULL) {
+lookoutequipment_import_model_version <- function(SourceModelVersionArn, ModelName = NULL, DatasetName, LabelsInputConfiguration = NULL, ClientToken, RoleArn = NULL, ServerSideKmsKeyId = NULL, Tags = NULL, InferenceDataImportStrategy = NULL) {
   op <- new_operation(
     name = "ImportModelVersion",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .lookoutequipment$import_model_version_input(SourceModelVersionArn = SourceModelVersionArn, ModelName = ModelName, DatasetName = DatasetName, LabelsInputConfiguration = LabelsInputConfiguration, ClientToken = ClientToken, RoleArn = RoleArn, ServerSideKmsKeyId = ServerSideKmsKeyId, Tags = Tags)
+  input <- .lookoutequipment$import_model_version_input(SourceModelVersionArn = SourceModelVersionArn, ModelName = ModelName, DatasetName = DatasetName, LabelsInputConfiguration = LabelsInputConfiguration, ClientToken = ClientToken, RoleArn = RoleArn, ServerSideKmsKeyId = ServerSideKmsKeyId, Tags = Tags, InferenceDataImportStrategy = InferenceDataImportStrategy)
   output <- .lookoutequipment$import_model_version_output()
   config <- get_config()
   svc <- .lookoutequipment$service(config)
@@ -1869,7 +2126,9 @@ lookoutequipment_list_inference_events <- function(NextToken = NULL, MaxResults 
 #'         Key = "string"
 #'       ),
 #'       Status = "IN_PROGRESS"|"SUCCESS"|"FAILED",
-#'       FailedReason = "string"
+#'       FailedReason = "string",
+#'       ModelVersion = 123,
+#'       ModelVersionArn = "string"
 #'     )
 #'   )
 #' )
@@ -1928,7 +2187,8 @@ lookoutequipment_list_inference_executions <- function(NextToken = NULL, MaxResu
 #' inference schedulers.
 #' @param MaxResults Specifies the maximum number of inference schedulers to list.
 #' @param InferenceSchedulerNameBeginsWith The beginning of the name of the inference schedulers to be listed.
-#' @param ModelName The name of the ML model used by the inference scheduler to be listed.
+#' @param ModelName The name of the machine learning model used by the inference scheduler
+#' to be listed.
 #' @param Status Specifies the current status of the inference schedulers.
 #'
 #' @return
@@ -2237,11 +2497,12 @@ lookoutequipment_list_model_versions <- function(ModelName, NextToken = NULL, Ma
 #'   ModelNameBeginsWith, DatasetNameBeginsWith)
 #'
 #' @param NextToken An opaque pagination token indicating where to continue the listing of
-#' ML models.
-#' @param MaxResults Specifies the maximum number of ML models to list.
-#' @param Status The status of the ML model.
-#' @param ModelNameBeginsWith The beginning of the name of the ML models being listed.
-#' @param DatasetNameBeginsWith The beginning of the name of the dataset of the ML models to be listed.
+#' machine learning models.
+#' @param MaxResults Specifies the maximum number of machine learning models to list.
+#' @param Status The status of the machine learning model.
+#' @param ModelNameBeginsWith The beginning of the name of the machine learning models being listed.
+#' @param DatasetNameBeginsWith The beginning of the name of the dataset of the machine learning models
+#' to be listed.
 #'
 #' @return
 #' A list with the following syntax:
@@ -2259,7 +2520,16 @@ lookoutequipment_list_model_versions <- function(ModelName, NextToken = NULL, Ma
 #'         "2015-01-01"
 #'       ),
 #'       ActiveModelVersion = 123,
-#'       ActiveModelVersionArn = "string"
+#'       ActiveModelVersionArn = "string",
+#'       LatestScheduledRetrainingStatus = "IN_PROGRESS"|"SUCCESS"|"FAILED"|"IMPORT_IN_PROGRESS"|"CANCELED",
+#'       LatestScheduledRetrainingModelVersion = 123,
+#'       LatestScheduledRetrainingStartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       NextScheduledRetrainingStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RetrainingSchedulerStatus = "PENDING"|"RUNNING"|"STOPPING"|"STOPPED"
 #'     )
 #'   )
 #' )
@@ -2297,6 +2567,86 @@ lookoutequipment_list_models <- function(NextToken = NULL, MaxResults = NULL, St
   return(response)
 }
 .lookoutequipment$operations$list_models <- lookoutequipment_list_models
+
+#' Lists all retraining schedulers in your account, filtering by model name
+#' prefix and status
+#'
+#' @description
+#' Lists all retraining schedulers in your account, filtering by model name
+#' prefix and status.
+#'
+#' @usage
+#' lookoutequipment_list_retraining_schedulers(ModelNameBeginsWith, Status,
+#'   NextToken, MaxResults)
+#'
+#' @param ModelNameBeginsWith Specify this field to only list retraining schedulers whose machine
+#' learning models begin with the value you specify.
+#' @param Status Specify this field to only list retraining schedulers whose status
+#' matches the value you specify.
+#' @param NextToken If the number of results exceeds the maximum, a pagination token is
+#' returned. Use the token in the request to show the next page of
+#' retraining schedulers.
+#' @param MaxResults Specifies the maximum number of retraining schedulers to list.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   RetrainingSchedulerSummaries = list(
+#'     list(
+#'       ModelName = "string",
+#'       ModelArn = "string",
+#'       Status = "PENDING"|"RUNNING"|"STOPPING"|"STOPPED",
+#'       RetrainingStartDate = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
+#'       RetrainingFrequency = "string",
+#'       LookbackWindow = "string"
+#'     )
+#'   ),
+#'   NextToken = "string"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$list_retraining_schedulers(
+#'   ModelNameBeginsWith = "string",
+#'   Status = "PENDING"|"RUNNING"|"STOPPING"|"STOPPED",
+#'   NextToken = "string",
+#'   MaxResults = 123
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # 
+#' svc$list_retraining_schedulers(
+#'   MaxResults = 50L
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutequipment_list_retraining_schedulers
+#'
+#' @aliases lookoutequipment_list_retraining_schedulers
+lookoutequipment_list_retraining_schedulers <- function(ModelNameBeginsWith = NULL, Status = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListRetrainingSchedulers",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .lookoutequipment$list_retraining_schedulers_input(ModelNameBeginsWith = ModelNameBeginsWith, Status = Status, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .lookoutequipment$list_retraining_schedulers_output()
+  config <- get_config()
+  svc <- .lookoutequipment$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutequipment$operations$list_retraining_schedulers <- lookoutequipment_list_retraining_schedulers
 
 #' Lists statistics about the data collected for each of the sensors that
 #' have been successfully ingested in the particular dataset
@@ -2632,6 +2982,63 @@ lookoutequipment_start_inference_scheduler <- function(InferenceSchedulerName) {
 }
 .lookoutequipment$operations$start_inference_scheduler <- lookoutequipment_start_inference_scheduler
 
+#' Starts a retraining scheduler
+#'
+#' @description
+#' Starts a retraining scheduler.
+#'
+#' @usage
+#' lookoutequipment_start_retraining_scheduler(ModelName)
+#'
+#' @param ModelName &#91;required&#93; The name of the model whose retraining scheduler you want to start.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelName = "string",
+#'   ModelArn = "string",
+#'   Status = "PENDING"|"RUNNING"|"STOPPING"|"STOPPED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$start_retraining_scheduler(
+#'   ModelName = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # 
+#' svc$start_retraining_scheduler(
+#'   ModelName = "sample-model"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutequipment_start_retraining_scheduler
+#'
+#' @aliases lookoutequipment_start_retraining_scheduler
+lookoutequipment_start_retraining_scheduler <- function(ModelName) {
+  op <- new_operation(
+    name = "StartRetrainingScheduler",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lookoutequipment$start_retraining_scheduler_input(ModelName = ModelName)
+  output <- .lookoutequipment$start_retraining_scheduler_output()
+  config <- get_config()
+  svc <- .lookoutequipment$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutequipment$operations$start_retraining_scheduler <- lookoutequipment_start_retraining_scheduler
+
 #' Stops an inference scheduler
 #'
 #' @description
@@ -2682,6 +3089,63 @@ lookoutequipment_stop_inference_scheduler <- function(InferenceSchedulerName) {
   return(response)
 }
 .lookoutequipment$operations$stop_inference_scheduler <- lookoutequipment_stop_inference_scheduler
+
+#' Stops a retraining scheduler
+#'
+#' @description
+#' Stops a retraining scheduler.
+#'
+#' @usage
+#' lookoutequipment_stop_retraining_scheduler(ModelName)
+#'
+#' @param ModelName &#91;required&#93; The name of the model whose retraining scheduler you want to stop.
+#'
+#' @return
+#' A list with the following syntax:
+#' ```
+#' list(
+#'   ModelName = "string",
+#'   ModelArn = "string",
+#'   Status = "PENDING"|"RUNNING"|"STOPPING"|"STOPPED"
+#' )
+#' ```
+#'
+#' @section Request syntax:
+#' ```
+#' svc$stop_retraining_scheduler(
+#'   ModelName = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # 
+#' svc$stop_retraining_scheduler(
+#'   ModelName = "sample-model"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutequipment_stop_retraining_scheduler
+#'
+#' @aliases lookoutequipment_stop_retraining_scheduler
+lookoutequipment_stop_retraining_scheduler <- function(ModelName) {
+  op <- new_operation(
+    name = "StopRetrainingScheduler",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lookoutequipment$stop_retraining_scheduler_input(ModelName = ModelName)
+  output <- .lookoutequipment$stop_retraining_scheduler_output()
+  config <- get_config()
+  svc <- .lookoutequipment$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutequipment$operations$stop_retraining_scheduler <- lookoutequipment_stop_retraining_scheduler
 
 #' Associates a given tag to a resource in your account
 #'
@@ -2979,3 +3443,146 @@ lookoutequipment_update_label_group <- function(LabelGroupName, FaultCodes = NUL
   return(response)
 }
 .lookoutequipment$operations$update_label_group <- lookoutequipment_update_label_group
+
+#' Updates a model in the account
+#'
+#' @description
+#' Updates a model in the account.
+#'
+#' @usage
+#' lookoutequipment_update_model(ModelName, LabelsInputConfiguration,
+#'   RoleArn)
+#'
+#' @param ModelName &#91;required&#93; The name of the model to update.
+#' @param LabelsInputConfiguration 
+#' @param RoleArn The ARN of the model to update.
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_model(
+#'   ModelName = "string",
+#'   LabelsInputConfiguration = list(
+#'     S3InputConfiguration = list(
+#'       Bucket = "string",
+#'       Prefix = "string"
+#'     ),
+#'     LabelGroupName = "string"
+#'   ),
+#'   RoleArn = "string"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # 
+#' svc$update_model(
+#'   LabelsInputConfiguration = list(
+#'     LabelGroupName = "sample-label-group"
+#'   ),
+#'   ModelName = "sample-model"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutequipment_update_model
+#'
+#' @aliases lookoutequipment_update_model
+lookoutequipment_update_model <- function(ModelName, LabelsInputConfiguration = NULL, RoleArn = NULL) {
+  op <- new_operation(
+    name = "UpdateModel",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lookoutequipment$update_model_input(ModelName = ModelName, LabelsInputConfiguration = LabelsInputConfiguration, RoleArn = RoleArn)
+  output <- .lookoutequipment$update_model_output()
+  config <- get_config()
+  svc <- .lookoutequipment$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutequipment$operations$update_model <- lookoutequipment_update_model
+
+#' Updates a retraining scheduler
+#'
+#' @description
+#' Updates a retraining scheduler.
+#'
+#' @usage
+#' lookoutequipment_update_retraining_scheduler(ModelName,
+#'   RetrainingStartDate, RetrainingFrequency, LookbackWindow, PromoteMode)
+#'
+#' @param ModelName &#91;required&#93; The name of the model whose retraining scheduler you want to update.
+#' @param RetrainingStartDate The start date for the retraining scheduler. Lookout for Equipment
+#' truncates the time you provide to the nearest UTC day.
+#' @param RetrainingFrequency This parameter uses the [ISO
+#' 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations) standard to set
+#' the frequency at which you want retraining to occur in terms of Years,
+#' Months, and/or Days (note: other parameters like Time are not currently
+#' supported). The minimum value is 30 days (P30D) and the maximum value is
+#' 1 year (P1Y). For example, the following values are valid:
+#' 
+#' -   P3M15D – Every 3 months and 15 days
+#' 
+#' -   P2M – Every 2 months
+#' 
+#' -   P150D – Every 150 days
+#' @param LookbackWindow The number of past days of data that will be used for retraining.
+#' @param PromoteMode Indicates how the service will use new models. In `MANAGED` mode, new
+#' models will automatically be used for inference if they have better
+#' performance than the current model. In `MANUAL` mode, the new models
+#' will not be used [until they are manually
+#' activated](https://docs.aws.amazon.com/lookout-for-equipment/latest/ug/versioning-model.html#model-activation).
+#'
+#' @return
+#' An empty list.
+#'
+#' @section Request syntax:
+#' ```
+#' svc$update_retraining_scheduler(
+#'   ModelName = "string",
+#'   RetrainingStartDate = as.POSIXct(
+#'     "2015-01-01"
+#'   ),
+#'   RetrainingFrequency = "string",
+#'   LookbackWindow = "string",
+#'   PromoteMode = "MANAGED"|"MANUAL"
+#' )
+#' ```
+#'
+#' @examples
+#' \dontrun{
+#' # 
+#' svc$update_retraining_scheduler(
+#'   ModelName = "sample-model",
+#'   RetrainingFrequency = "P1Y",
+#'   RetrainingStartDate = "2024-01-01T00:00:00Z"
+#' )
+#' }
+#'
+#' @keywords internal
+#'
+#' @rdname lookoutequipment_update_retraining_scheduler
+#'
+#' @aliases lookoutequipment_update_retraining_scheduler
+lookoutequipment_update_retraining_scheduler <- function(ModelName, RetrainingStartDate = NULL, RetrainingFrequency = NULL, LookbackWindow = NULL, PromoteMode = NULL) {
+  op <- new_operation(
+    name = "UpdateRetrainingScheduler",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .lookoutequipment$update_retraining_scheduler_input(ModelName = ModelName, RetrainingStartDate = RetrainingStartDate, RetrainingFrequency = RetrainingFrequency, LookbackWindow = LookbackWindow, PromoteMode = PromoteMode)
+  output <- .lookoutequipment$update_retraining_scheduler_output()
+  config <- get_config()
+  svc <- .lookoutequipment$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.lookoutequipment$operations$update_retraining_scheduler <- lookoutequipment_update_retraining_scheduler

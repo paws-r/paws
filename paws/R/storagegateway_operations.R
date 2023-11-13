@@ -3238,14 +3238,13 @@ storagegateway_describe_file_system_associations <- function(FileSystemAssociati
 .storagegateway$operations$describe_file_system_associations <- storagegateway_describe_file_system_associations
 
 #' Returns metadata about a gateway such as its name, network interfaces,
-#' configured time zone, and the state (whether the gateway is running or
-#' not)
+#' time zone, status, and software version
 #'
 #' @description
 #' Returns metadata about a gateway such as its name, network interfaces,
-#' configured time zone, and the state (whether the gateway is running or
-#' not). To specify which gateway to describe, use the Amazon Resource Name
-#' (ARN) of the gateway in your request.
+#' time zone, status, and software version. To specify which gateway to
+#' describe, use the Amazon Resource Name (ARN) of the gateway in your
+#' request.
 #'
 #' @usage
 #' storagegateway_describe_gateway_information(GatewayARN)
@@ -3289,7 +3288,8 @@ storagegateway_describe_file_system_associations <- function(FileSystemAssociati
 #'   SupportedGatewayCapacities = list(
 #'     "Small"|"Medium"|"Large"
 #'   ),
-#'   HostEnvironmentId = "string"
+#'   HostEnvironmentId = "string",
+#'   SoftwareVersion = "string"
 #' )
 #' ```
 #'
@@ -4529,6 +4529,16 @@ storagegateway_disassociate_file_system <- function(FileSystemAssociationARN, Fo
 #' @description
 #' Adds a file gateway to an Active Directory domain. This operation is
 #' only supported for file gateways that support the SMB file protocol.
+#' 
+#' Joining a domain creates an Active Directory computer account in the
+#' default organizational unit, using the gateway's **Gateway ID** as the
+#' account name (for example, SGW-1234ADE). If your Active Directory
+#' environment requires that you pre-stage accounts to facilitate the join
+#' domain process, you will need to create this account ahead of time.
+#' 
+#' To create the gateway's computer account in an organizational unit other
+#' than the default, you must specify the organizational unit when joining
+#' the domain.
 #'
 #' @usage
 #' storagegateway_join_domain(GatewayARN, DomainName, OrganizationalUnit,
@@ -4666,12 +4676,13 @@ storagegateway_list_automatic_tape_creation_policies <- function(GatewayARN = NU
 .storagegateway$operations$list_automatic_tape_creation_policies <- storagegateway_list_automatic_tape_creation_policies
 
 #' Gets a list of the file shares for a specific S3 File Gateway, or the
-#' list of file shares that belong to the calling user account
+#' list of file shares that belong to the calling Amazon Web Services
+#' account
 #'
 #' @description
 #' Gets a list of the file shares for a specific S3 File Gateway, or the
-#' list of file shares that belong to the calling user account. This
-#' operation is only supported for S3 File Gateways.
+#' list of file shares that belong to the calling Amazon Web Services
+#' account. This operation is only supported for S3 File Gateways.
 #'
 #' @usage
 #' storagegateway_list_file_shares(GatewayARN, Limit, Marker)
@@ -5435,8 +5446,8 @@ storagegateway_list_volumes <- function(GatewayARN = NULL, Marker = NULL, Limit 
 #' function. This operation is only supported for S3 File Gateways.
 #' 
 #' For more information, see [Getting file upload
-#' notification](https://docs.aws.amazon.com/storagegateway/#get-upload-notification)
-#' in the *Storage Gateway User Guide*.
+#' notification](https://docs.aws.amazon.com/filegateway/latest/files3/monitoring-file-gateway.html#get-notification)
+#' in the *Amazon S3 File Gateway User Guide*.
 #'
 #' @usage
 #' storagegateway_notify_when_uploaded(FileShareARN)
@@ -5516,9 +5527,6 @@ storagegateway_notify_when_uploaded <- function(FileShareARN) {
 #' 
 #' -   Wait at least 60 seconds between consecutive RefreshCache API
 #'     requests.
-#' 
-#' -   RefreshCache does not evict cache entries if invoked consecutively
-#'     within 60 seconds of a previous RefreshCache request.
 #' 
 #' -   If you invoke the RefreshCache API when two requests are already
 #'     being processed, any new request will cause an
@@ -6348,8 +6356,9 @@ storagegateway_update_bandwidth_rate_limit <- function(GatewayARN, AverageUpload
 #' default, gateways do not have bandwidth rate limit schedules, which
 #' means no bandwidth rate limiting is in effect. Use this to initiate or
 #' update a gateway's bandwidth rate limit schedule. This operation is
-#' supported only for volume, tape and S3 file gateways. FSx file gateways
-#' do not support bandwidth rate limits.
+#' supported for volume, tape, and S3 file gateways. S3 file gateways
+#' support bandwidth rate limits for upload only. FSx file gateways do not
+#' support bandwidth rate limits.
 #'
 #' @usage
 #' storagegateway_update_bandwidth_rate_limit_schedule(GatewayARN,

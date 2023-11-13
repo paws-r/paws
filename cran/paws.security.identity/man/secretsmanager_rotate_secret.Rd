@@ -18,24 +18,25 @@ secretsmanager_rotate_secret(
 For an ARN, we recommend that you specify a complete ARN rather than a
 partial ARN. See \href{https://docs.aws.amazon.com/secretsmanager/latest/userguide/troubleshoot.html#ARN_secretnamehyphen}{Finding a secret from a partial ARN}.}
 
-\item{ClientRequestToken}{A unique identifier for the new version of the secret that helps ensure
-idempotency. Secrets Manager uses this value to prevent the accidental
-creation of duplicate versions if there are failures and retries during
-rotation. This value becomes the \code{VersionId} of the new version.
+\item{ClientRequestToken}{A unique identifier for the new version of the secret. You only need to
+specify this value if you implement your own retry logic and you want to
+ensure that Secrets Manager doesn't attempt to create a secret version
+twice.
 
 If you use the Amazon Web Services CLI or one of the Amazon Web Services
-SDK to call this operation, then you can leave this parameter empty. The
-CLI or SDK generates a random UUID for you and includes that in the
-request for this parameter. If you don't use the SDK and instead
-generate a raw HTTP request to the Secrets Manager service endpoint,
-then you must generate a \code{ClientRequestToken} yourself for new versions
-and include that value in the request.
+SDKs to call this operation, then you can leave this parameter empty.
+The CLI or SDK generates a random UUID for you and includes it as the
+value for this parameter in the request.
 
-You only need to specify this value if you implement your own retry
-logic and you want to ensure that Secrets Manager doesn't attempt to
-create a secret version twice. We recommend that you generate a
+If you generate a raw HTTP request to the Secrets Manager service
+endpoint, then you must generate a \code{ClientRequestToken} and include it
+in the request.
+
+This value helps ensure idempotency. Secrets Manager uses this value to
+prevent the accidental creation of duplicate versions if there are
+failures and retries during a rotation. We recommend that you generate a
 \href{https://en.wikipedia.org/wiki/Universally_unique_identifier}{UUID-type}
-value to ensure uniqueness within the specified secret.}
+value to ensure uniqueness of your versions within the specified secret.}
 
 \item{RotationLambdaARN}{For secrets that use a Lambda rotation function to rotate, the ARN of
 the Lambda rotation function.

@@ -15,9 +15,11 @@ kendra_query(
   PageNumber = NULL,
   PageSize = NULL,
   SortingConfiguration = NULL,
+  SortingConfigurations = NULL,
   UserContext = NULL,
   VisitorId = NULL,
-  SpellCorrectionConfiguration = NULL
+  SpellCorrectionConfiguration = NULL,
+  CollapseConfiguration = NULL
 )
 }
 \arguments{
@@ -73,6 +75,17 @@ results are sorted by relevance.
 If you don't provide sorting configuration, the results are sorted by
 the relevance that Amazon Kendra determines for the result.}
 
+\item{SortingConfigurations}{Provides configuration information to determine how the results of a
+query are sorted.
+
+You can set upto 3 fields that Amazon Kendra should sort the results on,
+and specify whether the results should be sorted in ascending or
+descending order. The sort field quota can be increased.
+
+If you don't provide a sorting configuration, the results are sorted by
+the relevance that Amazon Kendra determines for the result. In the case
+of ties in sorting the results, the results are sorted by relevance.}
+
 \item{UserContext}{The user context token or user and group information.}
 
 \item{VisitorId}{Provides an identifier for a specific user. The \code{VisitorId} should be a
@@ -80,6 +93,10 @@ unique identifier, such as a GUID. Don't use personally identifiable
 information, such as the user's email address, as the \code{VisitorId}.}
 
 \item{SpellCorrectionConfiguration}{Enables suggested spell corrections for queries.}
+
+\item{CollapseConfiguration}{Provides configuration to determine how to group results by document
+attribute value, and how to display them (collapsed or expanded) under a
+designated primary document for each group.}
 }
 \description{
 Searches an index given an input query.

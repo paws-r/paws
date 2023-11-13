@@ -99,6 +99,7 @@ milliseconds.
 \item service.action.awsApiCallAction.remoteIpDetails.organization.asnOrg
 \item service.action.awsApiCallAction.serviceName
 \item service.action.dnsRequestAction.domain
+\item service.action.dnsRequestAction.domainWithSuffix
 \item service.action.networkConnectionAction.blocked
 \item service.action.networkConnectionAction.connectionDirection
 \item service.action.networkConnectionAction.localPortDetails.port
@@ -111,7 +112,10 @@ milliseconds.
 \item service.action.networkConnectionAction.remotePortDetails.port
 \item service.action.awsApiCallAction.remoteAccountDetails.affiliated
 \item service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV4
+\item service.action.kubernetesApiCallAction.namespace
+\item service.action.kubernetesApiCallAction.remoteIpDetails.organization.asn
 \item service.action.kubernetesApiCallAction.requestUri
+\item service.action.kubernetesApiCallAction.statusCode
 \item service.action.networkConnectionAction.localIpDetails.ipAddressV4
 \item service.action.networkConnectionAction.protocol
 \item service.action.awsApiCallAction.serviceName

@@ -10,7 +10,9 @@ rds_create_blue_green_deployment(
   TargetEngineVersion = NULL,
   TargetDBParameterGroupName = NULL,
   TargetDBClusterParameterGroupName = NULL,
-  Tags = NULL
+  Tags = NULL,
+  TargetDBInstanceClass = NULL,
+  UpgradeTargetStorageConfig = NULL
 )
 }
 \arguments{
@@ -47,6 +49,14 @@ To test parameter changes, specify a DB cluster parameter group that is
 different from the one associated with the source DB cluster.}
 
 \item{Tags}{Tags to assign to the blue/green deployment.}
+
+\item{TargetDBInstanceClass}{Specify the DB instance class for the databases in the green
+environment.}
+
+\item{UpgradeTargetStorageConfig}{Whether to upgrade the storage file system configuration on the green
+database. This option migrates the green DB instance from the older
+32-bit file system to the preferred configuration. For more information,
+see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_PIOPS.StorageTypes.html#USER_PIOPS.UpgradeFileSystem}{Upgrading the storage file system for a DB instance}.}
 }
 \description{
 Creates a blue/green deployment.

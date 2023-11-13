@@ -351,6 +351,18 @@ NULL
   return(populate(args, shape))
 }
 
+.finspace$update_kx_cluster_code_configuration_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), clusterName = structure(logical(0), tags = list(location = "uri", locationName = "clusterName", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), code = structure(list(s3Bucket = structure(logical(0), tags = list(type = "string")), s3Key = structure(logical(0), tags = list(type = "string")), s3ObjectVersion = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure")), initializationScript = structure(logical(0), tags = list(type = "string")), commandLineArguments = structure(list(structure(list(key = structure(logical(0), tags = list(type = "string")), value = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), deploymentConfiguration = structure(list(deploymentStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.finspace$update_kx_cluster_code_configuration_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .finspace$update_kx_cluster_databases_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(environmentId = structure(logical(0), tags = list(location = "uri", locationName = "environmentId", type = "string")), clusterName = structure(logical(0), tags = list(location = "uri", locationName = "clusterName", type = "string")), clientToken = structure(logical(0), tags = list(idempotencyToken = TRUE, type = "string")), databases = structure(list(structure(list(databaseName = structure(logical(0), tags = list(type = "string")), cacheConfigurations = structure(list(structure(list(cacheType = structure(logical(0), tags = list(type = "string")), dbPaths = structure(list(structure(logical(0), tags = list(type = "string"))), tags = list(type = "list"))), tags = list(type = "structure"))), tags = list(type = "list")), changesetId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), deploymentConfiguration = structure(list(deploymentStrategy = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "structure"))

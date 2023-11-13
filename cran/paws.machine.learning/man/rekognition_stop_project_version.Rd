@@ -2,19 +2,19 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_stop_project_version}
 \alias{rekognition_stop_project_version}
-\title{Stops a running model}
+\title{This operation applies only to Amazon Rekognition Custom Labels}
 \usage{
 rekognition_stop_project_version(ProjectVersionArn)
 }
 \arguments{
 \item{ProjectVersionArn}{[required] The Amazon Resource Name (ARN) of the model version that you want to
-delete.
+stop.
 
 This operation requires permissions to perform the
 \code{rekognition:StopProjectVersion} action.}
 }
 \description{
-Stops a running model. The operation might take a while to complete. To check the current status, call \code{\link[=rekognition_describe_project_versions]{describe_project_versions}}.
+This operation applies only to Amazon Rekognition Custom Labels.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_stop_project_version/} for full documentation.
 }

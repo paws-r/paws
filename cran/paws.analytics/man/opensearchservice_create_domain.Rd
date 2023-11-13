@@ -10,6 +10,7 @@ opensearchservice_create_domain(
   ClusterConfig = NULL,
   EBSOptions = NULL,
   AccessPolicies = NULL,
+  IPAddressType = NULL,
   SnapshotOptions = NULL,
   VPCOptions = NULL,
   CognitoOptions = NULL,
@@ -42,6 +43,8 @@ OpenSearch Service domain.}
 
 \item{AccessPolicies}{Identity and Access Management (IAM) policy document specifying the
 access policies for the new domain.}
+
+\item{IPAddressType}{The type of IP addresses supported by the endpoint for the domain.}
 
 \item{SnapshotOptions}{DEPRECATED. Container for the parameters required to configure automated
 snapshots of domain indexes.}

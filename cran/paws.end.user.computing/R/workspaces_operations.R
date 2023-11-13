@@ -65,6 +65,36 @@ workspaces_associate_ip_groups <- function(DirectoryId, GroupIds) {
 }
 .workspaces$operations$associate_ip_groups <- workspaces_associate_ip_groups
 
+#' Associates the specified application to the specified WorkSpace
+#'
+#' @description
+#' Associates the specified application to the specified WorkSpace.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspaces_associate_workspace_application/](https://www.paws-r-sdk.com/docs/workspaces_associate_workspace_application/) for full documentation.
+#'
+#' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
+#' @param ApplicationId &#91;required&#93; The identifier of the application.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_associate_workspace_application
+workspaces_associate_workspace_application <- function(WorkspaceId, ApplicationId) {
+  op <- new_operation(
+    name = "AssociateWorkspaceApplication",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$associate_workspace_application_input(WorkspaceId = WorkspaceId, ApplicationId = ApplicationId)
+  output <- .workspaces$associate_workspace_application_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$associate_workspace_application <- workspaces_associate_workspace_application
+
 #' Adds one or more rules to the specified IP access control group
 #'
 #' @description
@@ -641,6 +671,38 @@ workspaces_delete_workspace_image <- function(ImageId) {
 }
 .workspaces$operations$delete_workspace_image <- workspaces_delete_workspace_image
 
+#' Deploys associated applications to the specified WorkSpace
+#'
+#' @description
+#' Deploys associated applications to the specified WorkSpace
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspaces_deploy_workspace_applications/](https://www.paws-r-sdk.com/docs/workspaces_deploy_workspace_applications/) for full documentation.
+#'
+#' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
+#' @param Force Indicates whether the force flag is applied for the specified WorkSpace.
+#' When the force flag is enabled, it allows previously failed deployments
+#' to be retried.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_deploy_workspace_applications
+workspaces_deploy_workspace_applications <- function(WorkspaceId, Force = NULL) {
+  op <- new_operation(
+    name = "DeployWorkspaceApplications",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$deploy_workspace_applications_input(WorkspaceId = WorkspaceId, Force = Force)
+  output <- .workspaces$deploy_workspace_applications_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$deploy_workspace_applications <- workspaces_deploy_workspace_applications
+
 #' Deregisters the specified directory
 #'
 #' @description
@@ -730,6 +792,108 @@ workspaces_describe_account_modifications <- function(NextToken = NULL) {
   return(response)
 }
 .workspaces$operations$describe_account_modifications <- workspaces_describe_account_modifications
+
+#' Describes the associations between the application and the specified
+#' associated resources
+#'
+#' @description
+#' Describes the associations between the application and the specified associated resources.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_application_associations/](https://www.paws-r-sdk.com/docs/workspaces_describe_application_associations/) for full documentation.
+#'
+#' @param MaxResults The maximum number of associations to return.
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated,
+#' provide this token to receive the next set of results.
+#' @param ApplicationId &#91;required&#93; The identifier of the specified application.
+#' @param AssociatedResourceTypes &#91;required&#93; The resource type of the associated resources.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_application_associations
+workspaces_describe_application_associations <- function(MaxResults = NULL, NextToken = NULL, ApplicationId, AssociatedResourceTypes) {
+  op <- new_operation(
+    name = "DescribeApplicationAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+  )
+  input <- .workspaces$describe_application_associations_input(MaxResults = MaxResults, NextToken = NextToken, ApplicationId = ApplicationId, AssociatedResourceTypes = AssociatedResourceTypes)
+  output <- .workspaces$describe_application_associations_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_application_associations <- workspaces_describe_application_associations
+
+#' Describes the specified applications by filtering based on their compute
+#' types, license availability, operating systems, and owners
+#'
+#' @description
+#' Describes the specified applications by filtering based on their compute types, license availability, operating systems, and owners.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_applications/](https://www.paws-r-sdk.com/docs/workspaces_describe_applications/) for full documentation.
+#'
+#' @param ApplicationIds The identifiers of one or more applications.
+#' @param ComputeTypeNames The compute types supported by the applications.
+#' @param LicenseType The license availability for the applications.
+#' @param OperatingSystemNames The operating systems supported by the applications.
+#' @param Owner The owner of the applications.
+#' @param MaxResults The maximum number of applications to return.
+#' @param NextToken If you received a `NextToken` from a previous call that was paginated,
+#' provide this token to receive the next set of results.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_applications
+workspaces_describe_applications <- function(ApplicationIds = NULL, ComputeTypeNames = NULL, LicenseType = NULL, OperatingSystemNames = NULL, Owner = NULL, MaxResults = NULL, NextToken = NULL) {
+  op <- new_operation(
+    name = "DescribeApplications",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "NextToken", limit_key = "MaxResults", output_token = "NextToken")
+  )
+  input <- .workspaces$describe_applications_input(ApplicationIds = ApplicationIds, ComputeTypeNames = ComputeTypeNames, LicenseType = LicenseType, OperatingSystemNames = OperatingSystemNames, Owner = Owner, MaxResults = MaxResults, NextToken = NextToken)
+  output <- .workspaces$describe_applications_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_applications <- workspaces_describe_applications
+
+#' Describes the associations between the applications and the specified
+#' bundle
+#'
+#' @description
+#' Describes the associations between the applications and the specified bundle.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_bundle_associations/](https://www.paws-r-sdk.com/docs/workspaces_describe_bundle_associations/) for full documentation.
+#'
+#' @param BundleId &#91;required&#93; The identifier of the bundle.
+#' @param AssociatedResourceTypes &#91;required&#93; The resource types of the associated resource.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_bundle_associations
+workspaces_describe_bundle_associations <- function(BundleId, AssociatedResourceTypes) {
+  op <- new_operation(
+    name = "DescribeBundleAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$describe_bundle_associations_input(BundleId = BundleId, AssociatedResourceTypes = AssociatedResourceTypes)
+  output <- .workspaces$describe_bundle_associations_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_bundle_associations <- workspaces_describe_bundle_associations
 
 #' Describes the specified client branding
 #'
@@ -891,6 +1055,37 @@ workspaces_describe_connection_aliases <- function(AliasIds = NULL, ResourceId =
 }
 .workspaces$operations$describe_connection_aliases <- workspaces_describe_connection_aliases
 
+#' Describes the associations between the applications and the specified
+#' image
+#'
+#' @description
+#' Describes the associations between the applications and the specified image.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_image_associations/](https://www.paws-r-sdk.com/docs/workspaces_describe_image_associations/) for full documentation.
+#'
+#' @param ImageId &#91;required&#93; The identifier of the image.
+#' @param AssociatedResourceTypes &#91;required&#93; The resource types of the associated resource.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_image_associations
+workspaces_describe_image_associations <- function(ImageId, AssociatedResourceTypes) {
+  op <- new_operation(
+    name = "DescribeImageAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$describe_image_associations_input(ImageId = ImageId, AssociatedResourceTypes = AssociatedResourceTypes)
+  output <- .workspaces$describe_image_associations_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_image_associations <- workspaces_describe_image_associations
+
 #' Describes one or more of your IP access control groups
 #'
 #' @description
@@ -953,6 +1148,37 @@ workspaces_describe_tags <- function(ResourceId) {
   return(response)
 }
 .workspaces$operations$describe_tags <- workspaces_describe_tags
+
+#' Describes the associations betweens applications and the specified
+#' WorkSpace
+#'
+#' @description
+#' Describes the associations betweens applications and the specified WorkSpace.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_associations/](https://www.paws-r-sdk.com/docs/workspaces_describe_workspace_associations/) for full documentation.
+#'
+#' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
+#' @param AssociatedResourceTypes &#91;required&#93; The resource types of the associated resources.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_describe_workspace_associations
+workspaces_describe_workspace_associations <- function(WorkspaceId, AssociatedResourceTypes) {
+  op <- new_operation(
+    name = "DescribeWorkspaceAssociations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$describe_workspace_associations_input(WorkspaceId = WorkspaceId, AssociatedResourceTypes = AssociatedResourceTypes)
+  output <- .workspaces$describe_workspace_associations_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$describe_workspace_associations <- workspaces_describe_workspace_associations
 
 #' Retrieves a list that describes the available WorkSpace bundles
 #'
@@ -1259,6 +1485,36 @@ workspaces_disassociate_ip_groups <- function(DirectoryId, GroupIds) {
   return(response)
 }
 .workspaces$operations$disassociate_ip_groups <- workspaces_disassociate_ip_groups
+
+#' Disassociates the specified application from a WorkSpace
+#'
+#' @description
+#' Disassociates the specified application from a WorkSpace.
+#'
+#' See [https://www.paws-r-sdk.com/docs/workspaces_disassociate_workspace_application/](https://www.paws-r-sdk.com/docs/workspaces_disassociate_workspace_application/) for full documentation.
+#'
+#' @param WorkspaceId &#91;required&#93; The identifier of the WorkSpace.
+#' @param ApplicationId &#91;required&#93; The identifier of the application.
+#'
+#' @keywords internal
+#'
+#' @rdname workspaces_disassociate_workspace_application
+workspaces_disassociate_workspace_application <- function(WorkspaceId, ApplicationId) {
+  op <- new_operation(
+    name = "DisassociateWorkspaceApplication",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .workspaces$disassociate_workspace_application_input(WorkspaceId = WorkspaceId, ApplicationId = ApplicationId)
+  output <- .workspaces$disassociate_workspace_application_output()
+  config <- get_config()
+  svc <- .workspaces$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.workspaces$operations$disassociate_workspace_application <- workspaces_disassociate_workspace_application
 
 #' Imports client branding
 #'

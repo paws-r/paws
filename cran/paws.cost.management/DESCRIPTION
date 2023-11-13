@@ -1,6 +1,6 @@
 Package: paws.cost.management
 Title: 'Amazon Web Services' Cost Management Services
-Version: 0.4.0
+Version: 0.4.0.9000
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -45,6 +45,12 @@ Collate:
     'marketplacemetering_service.R'
     'marketplacemetering_interfaces.R'
     'marketplacemetering_operations.R'
+    'paymentcryptographycontrolplane_service.R'
+    'paymentcryptographycontrolplane_interfaces.R'
+    'paymentcryptographycontrolplane_operations.R'
+    'paymentcryptographydataplane_service.R'
+    'paymentcryptographydataplane_interfaces.R'
+    'paymentcryptographydataplane_operations.R'
     'pricing_service.R'
     'pricing_interfaces.R'
     'pricing_operations.R'

@@ -3,7 +3,7 @@
 \name{codedeploy_list_deployments}
 \alias{codedeploy_list_deployments}
 \title{Lists the deployments in a deployment group for an application
-registered with the IAM user or Amazon Web Services account}
+registered with the user or Amazon Web Services account}
 \usage{
 codedeploy_list_deployments(
   applicationName = NULL,
@@ -15,8 +15,8 @@ codedeploy_list_deployments(
 )
 }
 \arguments{
-\item{applicationName}{The name of an CodeDeploy application associated with the IAM user or
-Amazon Web Services account.
+\item{applicationName}{The name of an CodeDeploy application associated with the user or Amazon
+Web Services account.
 
 If \code{applicationName} is specified, then \code{deploymentGroupName} must be
 specified. If it is not specified, then \code{deploymentGroupName} must not
@@ -49,7 +49,7 @@ deployments.}
 be used to return the next set of deployments in the list.}
 }
 \description{
-Lists the deployments in a deployment group for an application registered with the IAM user or Amazon Web Services account.
+Lists the deployments in a deployment group for an application registered with the user or Amazon Web Services account.
 
 See \url{https://www.paws-r-sdk.com/docs/codedeploy_list_deployments/} for full documentation.
 }

@@ -132,7 +132,7 @@ in the \emph{Amazon EC2 Auto Scaling User Guide}.}
 \item{DesiredCapacityType}{The unit of measurement for the value specified for desired capacity.
 Amazon EC2 Auto Scaling supports \code{DesiredCapacityType} for
 attribute-based instance type selection only. For more information, see
-\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-asg-instance-type-requirements.html}{Creating an Auto Scaling group using attribute-based instance type selection}
+\href{https://docs.aws.amazon.com/autoscaling/ec2/userguide/create-mixed-instances-group-attribute-based-instance-type-selection.html}{Creating an Auto Scaling group using attribute-based instance type selection}
 in the \emph{Amazon EC2 Auto Scaling User Guide}.
 
 By default, Amazon EC2 Auto Scaling specifies \code{units}, which translates

@@ -47,9 +47,10 @@ shield_associate_drt_log_bucket <- function(LogBucket) {
 #' your Amazon Web Services account.
 #' 
 #' Prior to making the [`associate_drt_role`][shield_associate_drt_role]
-#' request, you must attach the AWSShieldDRTAccessPolicy managed policy to
-#' this role. For more information see Attaching and Detaching IAM
-#' Policies.
+#' request, you must attach the
+#' [AWSShieldDRTAccessPolicy](https://us-east-1.console.aws.amazon.com/iam/home#/policies/arn:aws:iam::aws:policy/service-role/AWSShieldDRTAccessPolicy)
+#' managed policy to this role. For more information see Attaching and
+#' Detaching IAM Policies.
 #'
 #' @keywords internal
 #'

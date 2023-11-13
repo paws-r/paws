@@ -15,7 +15,8 @@ docdb_modify_db_instance(
   CopyTagsToSnapshot = NULL,
   PromotionTier = NULL,
   EnablePerformanceInsights = NULL,
-  PerformanceInsightsKMSKeyId = NULL
+  PerformanceInsightsKMSKeyId = NULL,
+  CertificateRotationRestart = NULL
 )
 }
 \arguments{
@@ -107,6 +108,20 @@ If you do not specify a value for PerformanceInsightsKMSKeyId, then
 Amazon DocumentDB uses your default KMS key. There is a default KMS key
 for your Amazon Web Services account. Your Amazon Web Services account
 has a different default KMS key for each Amazon Web Services region.}
+
+\item{CertificateRotationRestart}{Specifies whether the DB instance is restarted when you rotate your
+SSL/TLS certificate.
+
+By default, the DB instance is restarted when you rotate your SSL/TLS
+certificate. The certificate is not updated until the DB instance is
+restarted.
+
+Set this parameter only if you are \emph{not} using SSL/TLS to connect to the
+DB instance.
+
+If you are using SSL/TLS to connect to the DB instance, see \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/ca_cert_rotation.html}{Updating Your Amazon DocumentDB TLS Certificates}
+and \href{https://docs.aws.amazon.com/documentdb/latest/developerguide/security.encryption.ssl.html}{Encrypting Data in Transit}
+in the \emph{Amazon DocumentDB Developer Guide}.}
 }
 \description{
 Modifies settings for an instance. You can change one or more database configuration parameters by specifying these parameters and the new values in the request.

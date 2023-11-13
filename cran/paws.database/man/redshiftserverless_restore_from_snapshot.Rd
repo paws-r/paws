@@ -5,6 +5,8 @@
 \title{Restores a namespace from a snapshot}
 \usage{
 redshiftserverless_restore_from_snapshot(
+  adminPasswordSecretKmsKeyId = NULL,
+  manageAdminPassword = NULL,
   namespaceName,
   ownerAccount = NULL,
   snapshotArn = NULL,
@@ -13,6 +15,14 @@ redshiftserverless_restore_from_snapshot(
 )
 }
 \arguments{
+\item{adminPasswordSecretKmsKeyId}{The ID of the Key Management Service (KMS) key used to encrypt and store
+the namespace's admin credentials secret.}
+
+\item{manageAdminPassword}{If \code{true}, Amazon Redshift uses Secrets Manager to manage the restored
+snapshot's admin credentials. If \code{MmanageAdminPassword} is false or not
+set, Amazon Redshift uses the admin credentials that the namespace or
+cluster had at the time the snapshot was taken.}
+
 \item{namespaceName}{[required] The name of the namespace to restore the snapshot to.}
 
 \item{ownerAccount}{The Amazon Web Services account that owns the snapshot.}

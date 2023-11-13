@@ -93,6 +93,40 @@ cloudwatchlogs_cancel_export_task <- function(taskId) {
 }
 .cloudwatchlogs$operations$cancel_export_task <- cloudwatchlogs_cancel_export_task
 
+#' Creates a delivery
+#'
+#' @description
+#' Creates a *delivery*. A delivery is a connection between a logical *delivery source* and a logical *delivery destination* that you have already created.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_delivery/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_delivery/) for full documentation.
+#'
+#' @param deliverySourceName &#91;required&#93; The name of the delivery source to use for this delivery.
+#' @param deliveryDestinationArn &#91;required&#93; The ARN of the delivery destination to use for this delivery.
+#' @param tags An optional list of key-value pairs to associate with the resource.
+#' 
+#' For more information about tagging, see [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_create_delivery
+cloudwatchlogs_create_delivery <- function(deliverySourceName, deliveryDestinationArn, tags = NULL) {
+  op <- new_operation(
+    name = "CreateDelivery",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$create_delivery_input(deliverySourceName = deliverySourceName, deliveryDestinationArn = deliveryDestinationArn, tags = tags)
+  output <- .cloudwatchlogs$create_delivery_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$create_delivery <- cloudwatchlogs_create_delivery
+
 #' Creates an export task so that you can efficiently export data from a
 #' log group to an Amazon S3 bucket
 #'
@@ -142,7 +176,7 @@ cloudwatchlogs_create_export_task <- function(taskName = NULL, logGroupName, log
 #' Creates a log group with the specified name
 #'
 #' @description
-#' Creates a log group with the specified name. You can create up to 20,000 log groups per account.
+#' Creates a log group with the specified name. You can create up to 1,000,000 log groups per Region per account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_log_group/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_create_log_group/) for full documentation.
 #'
@@ -273,6 +307,128 @@ cloudwatchlogs_delete_data_protection_policy <- function(logGroupIdentifier) {
   return(response)
 }
 .cloudwatchlogs$operations$delete_data_protection_policy <- cloudwatchlogs_delete_data_protection_policy
+
+#' Deletes s delivery
+#'
+#' @description
+#' Deletes s *delivery*. A delivery is a connection between a logical *delivery source* and a logical *delivery destination*. Deleting a delivery only deletes the connection between the delivery source and delivery destination. It does not delete the delivery destination or the delivery source.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery/) for full documentation.
+#'
+#' @param id &#91;required&#93; The unique ID of the delivery to delete. You can find the ID of a
+#' delivery with the
+#' [`describe_deliveries`][cloudwatchlogs_describe_deliveries] operation.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_delete_delivery
+cloudwatchlogs_delete_delivery <- function(id) {
+  op <- new_operation(
+    name = "DeleteDelivery",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$delete_delivery_input(id = id)
+  output <- .cloudwatchlogs$delete_delivery_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$delete_delivery <- cloudwatchlogs_delete_delivery
+
+#' Deletes a delivery destination
+#'
+#' @description
+#' Deletes a *delivery destination*. A delivery is a connection between a logical *delivery source* and a logical *delivery destination*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery_destination/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery_destination/) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the delivery destination that you want to delete. You can
+#' find a list of delivery destionation names by using the
+#' [`describe_delivery_destinations`][cloudwatchlogs_describe_delivery_destinations]
+#' operation.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_delete_delivery_destination
+cloudwatchlogs_delete_delivery_destination <- function(name) {
+  op <- new_operation(
+    name = "DeleteDeliveryDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$delete_delivery_destination_input(name = name)
+  output <- .cloudwatchlogs$delete_delivery_destination_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$delete_delivery_destination <- cloudwatchlogs_delete_delivery_destination
+
+#' Deletes a delivery destination policy
+#'
+#' @description
+#' Deletes a delivery destination policy. For more information about these policies, see [`put_delivery_destination_policy`][cloudwatchlogs_put_delivery_destination_policy].
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery_destination_policy/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery_destination_policy/) for full documentation.
+#'
+#' @param deliveryDestinationName &#91;required&#93; The name of the delivery destination that you want to delete the policy
+#' for.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_delete_delivery_destination_policy
+cloudwatchlogs_delete_delivery_destination_policy <- function(deliveryDestinationName) {
+  op <- new_operation(
+    name = "DeleteDeliveryDestinationPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$delete_delivery_destination_policy_input(deliveryDestinationName = deliveryDestinationName)
+  output <- .cloudwatchlogs$delete_delivery_destination_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$delete_delivery_destination_policy <- cloudwatchlogs_delete_delivery_destination_policy
+
+#' Deletes a delivery source
+#'
+#' @description
+#' Deletes a *delivery source*. A delivery is a connection between a logical *delivery source* and a logical *delivery destination*.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery_source/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_delete_delivery_source/) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the delivery source that you want to delete.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_delete_delivery_source
+cloudwatchlogs_delete_delivery_source <- function(name) {
+  op <- new_operation(
+    name = "DeleteDeliverySource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$delete_delivery_source_input(name = name)
+  output <- .cloudwatchlogs$delete_delivery_source_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$delete_delivery_source <- cloudwatchlogs_delete_delivery_source
 
 #' Deletes the specified destination, and eventually disables all the
 #' subscription filters that publish to it
@@ -554,6 +710,101 @@ cloudwatchlogs_describe_account_policies <- function(policyType, policyName = NU
   return(response)
 }
 .cloudwatchlogs$operations$describe_account_policies <- cloudwatchlogs_describe_account_policies
+
+#' Retrieves a list of the deliveries that have been created in the account
+#'
+#' @description
+#' Retrieves a list of the deliveries that have been created in the account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_deliveries/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_deliveries/) for full documentation.
+#'
+#' @param nextToken 
+#' @param limit Optionally specify the maximum number of deliveries to return in the
+#' response.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_describe_deliveries
+cloudwatchlogs_describe_deliveries <- function(nextToken = NULL, limit = NULL) {
+  op <- new_operation(
+    name = "DescribeDeliveries",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "deliveries")
+  )
+  input <- .cloudwatchlogs$describe_deliveries_input(nextToken = nextToken, limit = limit)
+  output <- .cloudwatchlogs$describe_deliveries_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$describe_deliveries <- cloudwatchlogs_describe_deliveries
+
+#' Retrieves a list of the delivery destinations that have been created in
+#' the account
+#'
+#' @description
+#' Retrieves a list of the delivery destinations that have been created in the account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_delivery_destinations/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_delivery_destinations/) for full documentation.
+#'
+#' @param nextToken 
+#' @param limit Optionally specify the maximum number of delivery destinations to return
+#' in the response.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_describe_delivery_destinations
+cloudwatchlogs_describe_delivery_destinations <- function(nextToken = NULL, limit = NULL) {
+  op <- new_operation(
+    name = "DescribeDeliveryDestinations",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "deliveryDestinations")
+  )
+  input <- .cloudwatchlogs$describe_delivery_destinations_input(nextToken = nextToken, limit = limit)
+  output <- .cloudwatchlogs$describe_delivery_destinations_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$describe_delivery_destinations <- cloudwatchlogs_describe_delivery_destinations
+
+#' Retrieves a list of the delivery sources that have been created in the
+#' account
+#'
+#' @description
+#' Retrieves a list of the delivery sources that have been created in the account.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_delivery_sources/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_describe_delivery_sources/) for full documentation.
+#'
+#' @param nextToken 
+#' @param limit Optionally specify the maximum number of delivery sources to return in
+#' the response.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_describe_delivery_sources
+cloudwatchlogs_describe_delivery_sources <- function(nextToken = NULL, limit = NULL) {
+  op <- new_operation(
+    name = "DescribeDeliverySources",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list(input_token = "nextToken", limit_key = "limit", output_token = "nextToken", result_key = "deliverySources")
+  )
+  input <- .cloudwatchlogs$describe_delivery_sources_input(nextToken = nextToken, limit = limit)
+  output <- .cloudwatchlogs$describe_delivery_sources_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$describe_delivery_sources <- cloudwatchlogs_describe_delivery_sources
 
 #' Lists all your destinations
 #'
@@ -1082,6 +1333,124 @@ cloudwatchlogs_get_data_protection_policy <- function(logGroupIdentifier) {
 }
 .cloudwatchlogs$operations$get_data_protection_policy <- cloudwatchlogs_get_data_protection_policy
 
+#' Returns complete information about one delivery
+#'
+#' @description
+#' Returns complete information about one *delivery*. A delivery is a connection between a logical *delivery source* and a logical *delivery destination*
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery/) for full documentation.
+#'
+#' @param id &#91;required&#93; The ID of the delivery that you want to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_get_delivery
+cloudwatchlogs_get_delivery <- function(id) {
+  op <- new_operation(
+    name = "GetDelivery",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$get_delivery_input(id = id)
+  output <- .cloudwatchlogs$get_delivery_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$get_delivery <- cloudwatchlogs_get_delivery
+
+#' Retrieves complete information about one delivery destination
+#'
+#' @description
+#' Retrieves complete information about one delivery destination.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery_destination/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery_destination/) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the delivery destination that you want to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_get_delivery_destination
+cloudwatchlogs_get_delivery_destination <- function(name) {
+  op <- new_operation(
+    name = "GetDeliveryDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$get_delivery_destination_input(name = name)
+  output <- .cloudwatchlogs$get_delivery_destination_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$get_delivery_destination <- cloudwatchlogs_get_delivery_destination
+
+#' Retrieves the delivery destination policy assigned to the delivery
+#' destination that you specify
+#'
+#' @description
+#' Retrieves the delivery destination policy assigned to the delivery destination that you specify. For more information about delivery destinations and their policies, see [`put_delivery_destination_policy`][cloudwatchlogs_put_delivery_destination_policy].
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery_destination_policy/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery_destination_policy/) for full documentation.
+#'
+#' @param deliveryDestinationName &#91;required&#93; The name of the delivery destination that you want to retrieve the
+#' policy of.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_get_delivery_destination_policy
+cloudwatchlogs_get_delivery_destination_policy <- function(deliveryDestinationName) {
+  op <- new_operation(
+    name = "GetDeliveryDestinationPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$get_delivery_destination_policy_input(deliveryDestinationName = deliveryDestinationName)
+  output <- .cloudwatchlogs$get_delivery_destination_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$get_delivery_destination_policy <- cloudwatchlogs_get_delivery_destination_policy
+
+#' Retrieves complete information about one delivery source
+#'
+#' @description
+#' Retrieves complete information about one delivery source.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery_source/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_get_delivery_source/) for full documentation.
+#'
+#' @param name &#91;required&#93; The name of the delivery source that you want to retrieve.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_get_delivery_source
+cloudwatchlogs_get_delivery_source <- function(name) {
+  op <- new_operation(
+    name = "GetDeliverySource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$get_delivery_source_input(name = name)
+  output <- .cloudwatchlogs$get_delivery_source_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$get_delivery_source <- cloudwatchlogs_get_delivery_source
+
 #' Lists log events from the specified log stream
 #'
 #' @description
@@ -1468,6 +1837,114 @@ cloudwatchlogs_put_data_protection_policy <- function(logGroupIdentifier, policy
 }
 .cloudwatchlogs$operations$put_data_protection_policy <- cloudwatchlogs_put_data_protection_policy
 
+#' Creates or updates a logical delivery destination
+#'
+#' @description
+#' Creates or updates a logical *delivery destination*. A delivery destination is an Amazon Web Services resource that represents an Amazon Web Services service that logs can be sent to. CloudWatch Logs, Amazon S3, and Kinesis Data Firehose are supported as logs delivery destinations.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_destination/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_destination/) for full documentation.
+#'
+#' @param name &#91;required&#93; A name for this delivery destination. This name must be unique for all
+#' delivery destinations in your account.
+#' @param outputFormat The format for the logs that this delivery destination will receive.
+#' @param deliveryDestinationConfiguration &#91;required&#93; A structure that contains the ARN of the Amazon Web Services resource
+#' that will receive the logs.
+#' @param tags An optional list of key-value pairs to associate with the resource.
+#' 
+#' For more information about tagging, see [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_put_delivery_destination
+cloudwatchlogs_put_delivery_destination <- function(name, outputFormat = NULL, deliveryDestinationConfiguration, tags = NULL) {
+  op <- new_operation(
+    name = "PutDeliveryDestination",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$put_delivery_destination_input(name = name, outputFormat = outputFormat, deliveryDestinationConfiguration = deliveryDestinationConfiguration, tags = tags)
+  output <- .cloudwatchlogs$put_delivery_destination_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$put_delivery_destination <- cloudwatchlogs_put_delivery_destination
+
+#' Creates and assigns an IAM policy that grants permissions to CloudWatch
+#' Logs to deliver logs cross-account to a specified destination in this
+#' account
+#'
+#' @description
+#' Creates and assigns an IAM policy that grants permissions to CloudWatch Logs to deliver logs cross-account to a specified destination in this account. To configure the delivery of logs from an Amazon Web Services service in another account to a logs delivery destination in the current account, you must do the following:
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_destination_policy/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_destination_policy/) for full documentation.
+#'
+#' @param deliveryDestinationName &#91;required&#93; The name of the delivery destination to assign this policy to.
+#' @param deliveryDestinationPolicy &#91;required&#93; The contents of the policy.
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_put_delivery_destination_policy
+cloudwatchlogs_put_delivery_destination_policy <- function(deliveryDestinationName, deliveryDestinationPolicy) {
+  op <- new_operation(
+    name = "PutDeliveryDestinationPolicy",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$put_delivery_destination_policy_input(deliveryDestinationName = deliveryDestinationName, deliveryDestinationPolicy = deliveryDestinationPolicy)
+  output <- .cloudwatchlogs$put_delivery_destination_policy_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$put_delivery_destination_policy <- cloudwatchlogs_put_delivery_destination_policy
+
+#' Creates or updates a logical delivery source
+#'
+#' @description
+#' Creates or updates a logical *delivery source*. A delivery source represents an Amazon Web Services resource that sends logs to an logs delivery destination. The destination can be CloudWatch Logs, Amazon S3, or Kinesis Data Firehose.
+#'
+#' See [https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_source/](https://www.paws-r-sdk.com/docs/cloudwatchlogs_put_delivery_source/) for full documentation.
+#'
+#' @param name &#91;required&#93; A name for this delivery source. This name must be unique for all
+#' delivery sources in your account.
+#' @param resourceArn &#91;required&#93; The ARN of the Amazon Web Services resource that is generating and
+#' sending logs. For example,
+#' `arn:aws:workmail:us-east-1:123456789012:organization/m-1234EXAMPLEabcd1234abcd1234abcd1234`
+#' @param logType &#91;required&#93; Defines the type of log that the source is sending. For valid values for
+#' this parameter, see the documentation for the source service.
+#' @param tags An optional list of key-value pairs to associate with the resource.
+#' 
+#' For more information about tagging, see [Tagging Amazon Web Services
+#' resources](https://docs.aws.amazon.com/tag-editor/latest/userguide/tagging.html)
+#'
+#' @keywords internal
+#'
+#' @rdname cloudwatchlogs_put_delivery_source
+cloudwatchlogs_put_delivery_source <- function(name, resourceArn, logType, tags = NULL) {
+  op <- new_operation(
+    name = "PutDeliverySource",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .cloudwatchlogs$put_delivery_source_input(name = name, resourceArn = resourceArn, logType = logType, tags = tags)
+  output <- .cloudwatchlogs$put_delivery_source_output()
+  config <- get_config()
+  svc <- .cloudwatchlogs$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.cloudwatchlogs$operations$put_delivery_source <- cloudwatchlogs_put_delivery_source
+
 #' Creates or updates a destination
 #'
 #' @description
@@ -1650,18 +2127,20 @@ cloudwatchlogs_put_metric_filter <- function(logGroupName, filterName, filterPat
 #' @param queryString &#91;required&#93; The query string to use for this definition. For more information, see
 #' [CloudWatch Logs Insights Query
 #' Syntax](https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/CWL_QuerySyntax.html).
+#' @param clientToken Used as an idempotency token, to avoid returning an exception if the
+#' service receives the same request twice because of a network error.
 #'
 #' @keywords internal
 #'
 #' @rdname cloudwatchlogs_put_query_definition
-cloudwatchlogs_put_query_definition <- function(name, queryDefinitionId = NULL, logGroupNames = NULL, queryString) {
+cloudwatchlogs_put_query_definition <- function(name, queryDefinitionId = NULL, logGroupNames = NULL, queryString, clientToken = NULL) {
   op <- new_operation(
     name = "PutQueryDefinition",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .cloudwatchlogs$put_query_definition_input(name = name, queryDefinitionId = queryDefinitionId, logGroupNames = logGroupNames, queryString = queryString)
+  input <- .cloudwatchlogs$put_query_definition_input(name = name, queryDefinitionId = queryDefinitionId, logGroupNames = logGroupNames, queryString = queryString, clientToken = clientToken)
   output <- .cloudwatchlogs$put_query_definition_output()
   config <- get_config()
   svc <- .cloudwatchlogs$service(config)

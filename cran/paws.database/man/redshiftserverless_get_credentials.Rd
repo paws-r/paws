@@ -6,12 +6,16 @@
 authorization to log in to Amazon Redshift Serverless}
 \usage{
 redshiftserverless_get_credentials(
+  customDomainName = NULL,
   dbName = NULL,
   durationSeconds = NULL,
-  workgroupName
+  workgroupName = NULL
 )
 }
 \arguments{
+\item{customDomainName}{The custom domain name associated with the workgroup. The custom domain
+name or the workgroup name must be included in the request.}
+
 \item{dbName}{The name of the database to get temporary authorization to log on to.
 
 Constraints:
@@ -29,7 +33,7 @@ in the Amazon Redshift Database Developer Guide
 \item{durationSeconds}{The number of seconds until the returned temporary password expires. The
 minimum is 900 seconds, and the maximum is 3600 seconds.}
 
-\item{workgroupName}{[required] The name of the workgroup associated with the database.}
+\item{workgroupName}{The name of the workgroup associated with the database.}
 }
 \description{
 Returns a database user name and temporary password with temporary authorization to log in to Amazon Redshift Serverless.

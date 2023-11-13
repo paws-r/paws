@@ -40,9 +40,9 @@ update and delete.}
 \item{Description}{A description of the rule group that helps with identification.}
 
 \item{Rules}{The Rule statements used to identify the web requests that you want to
-allow, block, or count. Each rule includes one top-level statement that
-WAF uses to identify matching web requests, and parameters that govern
-how WAF handles them.}
+manage. Each rule includes one top-level statement that WAF uses to
+identify matching web requests, and parameters that govern how WAF
+handles them.}
 
 \item{VisibilityConfig}{[required] Defines and enables Amazon CloudWatch metrics and web request sample
 collection.}

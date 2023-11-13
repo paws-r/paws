@@ -10,7 +10,9 @@ drs_update_launch_configuration_template(
   exportBucketArn = NULL,
   launchConfigurationTemplateID,
   launchDisposition = NULL,
+  launchIntoSourceInstance = NULL,
   licensing = NULL,
+  postLaunchEnabled = NULL,
   targetInstanceTypeRightSizingMethod = NULL
 )
 }
@@ -25,7 +27,13 @@ drs_update_launch_configuration_template(
 
 \item{launchDisposition}{Launch disposition.}
 
+\item{launchIntoSourceInstance}{DRS will set the 'launch into instance ID' of any source server when
+performing a drill, recovery or failback to the previous region or
+availability zone, using the instance ID of the source instance.}
+
 \item{licensing}{Licensing.}
+
+\item{postLaunchEnabled}{Whether we want to activate post-launch actions.}
 
 \item{targetInstanceTypeRightSizingMethod}{Target instance type right-sizing method.}
 }

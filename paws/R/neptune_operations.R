@@ -20,7 +20,7 @@ NULL
 #' `arn:aws:iam::123456789012:role/NeptuneAccessRole`.
 #' @param FeatureName The name of the feature for the Neptune DB cluster that the IAM role is
 #' to be associated with. For the list of supported feature names, see
-#' [DBEngineVersion](https://docs.aws.amazon.com/neptune/latest/userguide/api-other-apis.html#DBEngineVersion).
+#' DBEngineVersion.
 #'
 #' @return
 #' An empty list.
@@ -682,9 +682,9 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
 #' block of time for each Amazon Region. To see the time blocks available,
-#' see [Adjusting the Preferred Maintenance
-#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/) in the
-#' *Amazon Neptune User Guide.*
+#' see [Neptune Maintenance
+#' Window](https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-maintaining.html#manage-console-maintaining-window)
+#' in the *Amazon Neptune User Guide.*
 #' 
 #' Constraints:
 #' 
@@ -702,10 +702,9 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' 
 #' The default is a 30-minute window selected at random from an 8-hour
 #' block of time for each Amazon Region, occurring on a random day of the
-#' week. To see the time blocks available, see [Adjusting the Preferred
-#' Maintenance
-#' Window](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/) in the
-#' *Amazon Neptune User Guide.*
+#' week. To see the time blocks available, see [Neptune Maintenance
+#' Window](https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-maintaining.html#manage-console-maintaining-window)
+#' in the *Amazon Neptune User Guide.*
 #' 
 #' Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 #' 
@@ -752,7 +751,11 @@ neptune_copy_db_parameter_group <- function(SourceDBParameterGroupIdentifier, Ta
 #' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
 #' enabled. By default, deletion protection is enabled.
-#' @param ServerlessV2ScalingConfiguration 
+#' @param ServerlessV2ScalingConfiguration Contains the scaling configuration of a Neptune Serverless DB cluster.
+#' 
+#' For more information, see [Using Amazon Neptune
+#' Serverless](https://docs.aws.amazon.com/neptune/latest/userguide/neptune-serverless-using.html)
+#' in the *Amazon Neptune User Guide*.
 #' @param GlobalClusterIdentifier The ID of the Neptune global database to which this new DB cluster
 #' should be added.
 #'
@@ -5616,7 +5619,11 @@ neptune_list_tags_for_resource <- function(ResourceName, Filters = NULL) {
 #' enabled. By default, deletion protection is disabled.
 #' @param CopyTagsToSnapshot *If set to true, tags are copied to any snapshot of the DB cluster that
 #' is created.*
-#' @param ServerlessV2ScalingConfiguration 
+#' @param ServerlessV2ScalingConfiguration Contains the scaling configuration of a Neptune Serverless DB cluster.
+#' 
+#' For more information, see [Using Amazon Neptune
+#' Serverless](https://docs.aws.amazon.com/neptune/latest/userguide/neptune-serverless-using.html)
+#' in the *Amazon Neptune User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -7744,7 +7751,11 @@ neptune_reset_db_parameter_group <- function(DBParameterGroupName, ResetAllParam
 #' enabled. By default, deletion protection is disabled.
 #' @param CopyTagsToSnapshot *If set to true, tags are copied to any snapshot of the restored DB
 #' cluster that is created.*
-#' @param ServerlessV2ScalingConfiguration 
+#' @param ServerlessV2ScalingConfiguration Contains the scaling configuration of a Neptune Serverless DB cluster.
+#' 
+#' For more information, see [Using Amazon Neptune
+#' Serverless](https://docs.aws.amazon.com/neptune/latest/userguide/neptune-serverless-using.html)
+#' in the *Amazon Neptune User Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -8045,7 +8056,11 @@ neptune_restore_db_cluster_from_snapshot <- function(AvailabilityZones = NULL, D
 #' @param DeletionProtection A value that indicates whether the DB cluster has deletion protection
 #' enabled. The database can't be deleted when deletion protection is
 #' enabled. By default, deletion protection is disabled.
-#' @param ServerlessV2ScalingConfiguration 
+#' @param ServerlessV2ScalingConfiguration Contains the scaling configuration of a Neptune Serverless DB cluster.
+#' 
+#' For more information, see [Using Amazon Neptune
+#' Serverless](https://docs.aws.amazon.com/neptune/latest/userguide/neptune-serverless-using.html)
+#' in the *Amazon Neptune User Guide*.
 #'
 #' @return
 #' A list with the following syntax:

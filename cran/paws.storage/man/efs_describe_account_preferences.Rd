@@ -18,7 +18,7 @@ specify the \code{MaxItems} parameter to limit the number of objects returned
 in a response. The default value is 100.}
 }
 \description{
-Returns the account preferences settings for the Amazon Web Services account associated with the user making the request, in the current Amazon Web Services Region. For more information, see \href{https://docs.aws.amazon.com/efs/latest/ug/}{Managing Amazon EFS resource IDs}.
+Returns the account preferences settings for the Amazon Web Services account associated with the user making the request, in the current Amazon Web Services Region.
 
 See \url{https://www.paws-r-sdk.com/docs/efs_describe_account_preferences/} for full documentation.
 }

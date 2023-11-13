@@ -28,7 +28,7 @@ identitystore_create_user(
 characters. This value can consist of letters, accented characters,
 symbols, numbers, and punctuation. This value is specified at the time
 the user is created and stored as an attribute of the user object in the
-identity store. "Administrator" and "AWSAdministrators" are reserved
+identity store. \code{Administrator} and \code{AWSAdministrators} are reserved
 names and can't be used for users or groups.}
 
 \item{Name}{An object containing the name of the user.}

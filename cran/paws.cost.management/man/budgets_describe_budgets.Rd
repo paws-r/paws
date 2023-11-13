@@ -7,11 +7,11 @@
 budgets_describe_budgets(AccountId, MaxResults = NULL, NextToken = NULL)
 }
 \arguments{
-\item{AccountId}{[required] The \code{accountId} that is associated with the budgets that you want
-descriptions of.}
+\item{AccountId}{[required] The \code{accountId} that is associated with the budgets that you want to
+describe.}
 
-\item{MaxResults}{An optional integer that represents how many entries a paginated
-response contains. The maximum is 100.}
+\item{MaxResults}{An integer that represents how many budgets a paginated response
+contains. The default is 100.}
 
 \item{NextToken}{The pagination token that you include in your request to indicate the
 next set of results that you want to retrieve.}

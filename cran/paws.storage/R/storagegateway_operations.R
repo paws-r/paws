@@ -1691,11 +1691,10 @@ storagegateway_describe_file_system_associations <- function(FileSystemAssociati
 .storagegateway$operations$describe_file_system_associations <- storagegateway_describe_file_system_associations
 
 #' Returns metadata about a gateway such as its name, network interfaces,
-#' configured time zone, and the state (whether the gateway is running or
-#' not)
+#' time zone, status, and software version
 #'
 #' @description
-#' Returns metadata about a gateway such as its name, network interfaces, configured time zone, and the state (whether the gateway is running or not). To specify which gateway to describe, use the Amazon Resource Name (ARN) of the gateway in your request.
+#' Returns metadata about a gateway such as its name, network interfaces, time zone, status, and software version. To specify which gateway to describe, use the Amazon Resource Name (ARN) of the gateway in your request.
 #'
 #' See [https://www.paws-r-sdk.com/docs/storagegateway_describe_gateway_information/](https://www.paws-r-sdk.com/docs/storagegateway_describe_gateway_information/) for full documentation.
 #'
@@ -2295,10 +2294,11 @@ storagegateway_list_automatic_tape_creation_policies <- function(GatewayARN = NU
 .storagegateway$operations$list_automatic_tape_creation_policies <- storagegateway_list_automatic_tape_creation_policies
 
 #' Gets a list of the file shares for a specific S3 File Gateway, or the
-#' list of file shares that belong to the calling user account
+#' list of file shares that belong to the calling Amazon Web Services
+#' account
 #'
 #' @description
-#' Gets a list of the file shares for a specific S3 File Gateway, or the list of file shares that belong to the calling user account. This operation is only supported for S3 File Gateways.
+#' Gets a list of the file shares for a specific S3 File Gateway, or the list of file shares that belong to the calling Amazon Web Services account. This operation is only supported for S3 File Gateways.
 #'
 #' See [https://www.paws-r-sdk.com/docs/storagegateway_list_file_shares/](https://www.paws-r-sdk.com/docs/storagegateway_list_file_shares/) for full documentation.
 #'
@@ -3046,7 +3046,7 @@ storagegateway_update_bandwidth_rate_limit <- function(GatewayARN, AverageUpload
 #' Updates the bandwidth rate limit schedule for a specified gateway
 #'
 #' @description
-#' Updates the bandwidth rate limit schedule for a specified gateway. By default, gateways do not have bandwidth rate limit schedules, which means no bandwidth rate limiting is in effect. Use this to initiate or update a gateway's bandwidth rate limit schedule. This operation is supported only for volume, tape and S3 file gateways. FSx file gateways do not support bandwidth rate limits.
+#' Updates the bandwidth rate limit schedule for a specified gateway. By default, gateways do not have bandwidth rate limit schedules, which means no bandwidth rate limiting is in effect. Use this to initiate or update a gateway's bandwidth rate limit schedule. This operation is supported for volume, tape, and S3 file gateways. S3 file gateways support bandwidth rate limits for upload only. FSx file gateways do not support bandwidth rate limits.
 #'
 #' See [https://www.paws-r-sdk.com/docs/storagegateway_update_bandwidth_rate_limit_schedule/](https://www.paws-r-sdk.com/docs/storagegateway_update_bandwidth_rate_limit_schedule/) for full documentation.
 #'

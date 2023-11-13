@@ -67,8 +67,8 @@ Enables token-based user access control to filter search results on user
 context. All documents with no access control and all documents
 accessible to the user will be searchable and displayable.}
 
-\item{UserGroupResolutionConfiguration}{Gets users and groups from IAM Identity Center (successor to Single
-Sign-On) identity source. To configure this, see
+\item{UserGroupResolutionConfiguration}{Gets users and groups from IAM Identity Center identity source. To
+configure this, see
 \href{https://docs.aws.amazon.com/kendra/latest/APIReference/API_UserGroupResolutionConfiguration.html}{UserGroupResolutionConfiguration}.}
 }
 \description{

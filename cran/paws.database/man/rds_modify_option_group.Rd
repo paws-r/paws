@@ -24,9 +24,8 @@ configuration.}
 
 \item{OptionsToRemove}{Options in this list are removed from the option group.}
 
-\item{ApplyImmediately}{A value that indicates whether to apply the change immediately or during
-the next maintenance window for each instance associated with the option
-group.}
+\item{ApplyImmediately}{Specifies whether to apply the change immediately or during the next
+maintenance window for each instance associated with the option group.}
 }
 \description{
 Modifies an existing option group.

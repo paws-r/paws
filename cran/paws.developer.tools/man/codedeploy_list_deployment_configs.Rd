@@ -2,8 +2,8 @@
 % Please edit documentation in R/codedeploy_operations.R
 \name{codedeploy_list_deployment_configs}
 \alias{codedeploy_list_deployment_configs}
-\title{Lists the deployment configurations with the IAM user or Amazon Web
-Services account}
+\title{Lists the deployment configurations with the user or Amazon Web Services
+account}
 \usage{
 codedeploy_list_deployment_configs(nextToken = NULL)
 }
@@ -14,7 +14,7 @@ can be used to return the next set of deployment configurations in the
 list.}
 }
 \description{
-Lists the deployment configurations with the IAM user or Amazon Web Services account.
+Lists the deployment configurations with the user or Amazon Web Services account.
 
 See \url{https://www.paws-r-sdk.com/docs/codedeploy_list_deployment_configs/} for full documentation.
 }

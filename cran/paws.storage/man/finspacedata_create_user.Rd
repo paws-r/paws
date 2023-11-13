@@ -9,7 +9,7 @@ finspacedata_create_user(
   type,
   firstName = NULL,
   lastName = NULL,
-  ApiAccess = NULL,
+  apiAccess = NULL,
   apiAccessPrincipalArn = NULL,
   clientToken = NULL
 )
@@ -32,7 +32,7 @@ are assigned permissions by adding them to a permission group.
 
 \item{lastName}{The last name of the user that you want to register.}
 
-\item{ApiAccess}{The option to indicate whether the user can use the
+\item{apiAccess}{The option to indicate whether the user can use the
 \code{\link[=finspacedata_get_programmatic_access_credentials]{get_programmatic_access_credentials}}
 API to obtain credentials that can then be used to access other FinSpace
 Data API operations.

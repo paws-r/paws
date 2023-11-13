@@ -144,6 +144,43 @@ kafka_create_configuration <- function(Description = NULL, KafkaVersions = NULL,
 }
 .kafka$operations$create_configuration <- kafka_create_configuration
 
+#' Creates the replicator
+#'
+#' @description
+#' Creates the replicator.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafka_create_replicator/](https://www.paws-r-sdk.com/docs/kafka_create_replicator/) for full documentation.
+#'
+#' @param Description A summary description of the replicator.
+#' @param KafkaClusters &#91;required&#93; Kafka Clusters to use in setting up sources / targets for replication.
+#' @param ReplicationInfoList &#91;required&#93; A list of replication configurations, where each configuration targets a
+#' given source cluster to target cluster replication flow.
+#' @param ReplicatorName &#91;required&#93; The name of the replicator. Alpha-numeric characters with '-' are
+#' allowed.
+#' @param ServiceExecutionRoleArn &#91;required&#93; The ARN of the IAM role used by the replicator to access resources in
+#' the customer's account (e.g source and target clusters)
+#' @param Tags List of tags to attach to created Replicator.
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_create_replicator
+kafka_create_replicator <- function(Description = NULL, KafkaClusters, ReplicationInfoList, ReplicatorName, ServiceExecutionRoleArn, Tags = NULL) {
+  op <- new_operation(
+    name = "CreateReplicator",
+    http_method = "POST",
+    http_path = "/replication/v1/replicators",
+    paginator = list()
+  )
+  input <- .kafka$create_replicator_input(Description = Description, KafkaClusters = KafkaClusters, ReplicationInfoList = ReplicationInfoList, ReplicatorName = ReplicatorName, ServiceExecutionRoleArn = ServiceExecutionRoleArn, Tags = Tags)
+  output <- .kafka$create_replicator_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$create_replicator <- kafka_create_replicator
+
 #' Creates a new MSK VPC connection
 #'
 #' @description
@@ -268,6 +305,36 @@ kafka_delete_configuration <- function(Arn) {
   return(response)
 }
 .kafka$operations$delete_configuration <- kafka_delete_configuration
+
+#' Deletes a replicator
+#'
+#' @description
+#' Deletes a replicator.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafka_delete_replicator/](https://www.paws-r-sdk.com/docs/kafka_delete_replicator/) for full documentation.
+#'
+#' @param CurrentVersion The current version of the replicator.
+#' @param ReplicatorArn &#91;required&#93; The Amazon Resource Name (ARN) of the replicator to be deleted.
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_delete_replicator
+kafka_delete_replicator <- function(CurrentVersion = NULL, ReplicatorArn) {
+  op <- new_operation(
+    name = "DeleteReplicator",
+    http_method = "DELETE",
+    http_path = "/replication/v1/replicators/{replicatorArn}",
+    paginator = list()
+  )
+  input <- .kafka$delete_replicator_input(CurrentVersion = CurrentVersion, ReplicatorArn = ReplicatorArn)
+  output <- .kafka$delete_replicator_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$delete_replicator <- kafka_delete_replicator
 
 #' Deletes a MSK VPC connection
 #'
@@ -478,6 +545,35 @@ kafka_describe_configuration_revision <- function(Arn, Revision) {
   return(response)
 }
 .kafka$operations$describe_configuration_revision <- kafka_describe_configuration_revision
+
+#' Describes a replicator
+#'
+#' @description
+#' Describes a replicator.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafka_describe_replicator/](https://www.paws-r-sdk.com/docs/kafka_describe_replicator/) for full documentation.
+#'
+#' @param ReplicatorArn &#91;required&#93; The Amazon Resource Name (ARN) of the replicator to be described.
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_describe_replicator
+kafka_describe_replicator <- function(ReplicatorArn) {
+  op <- new_operation(
+    name = "DescribeReplicator",
+    http_method = "GET",
+    http_path = "/replication/v1/replicators/{replicatorArn}",
+    paginator = list()
+  )
+  input <- .kafka$describe_replicator_input(ReplicatorArn = ReplicatorArn)
+  output <- .kafka$describe_replicator_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$describe_replicator <- kafka_describe_replicator
 
 #' Returns a description of this MSK VPC connection
 #'
@@ -899,6 +995,40 @@ kafka_list_nodes <- function(ClusterArn, MaxResults = NULL, NextToken = NULL) {
   return(response)
 }
 .kafka$operations$list_nodes <- kafka_list_nodes
+
+#' Lists the replicators
+#'
+#' @description
+#' Lists the replicators.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafka_list_replicators/](https://www.paws-r-sdk.com/docs/kafka_list_replicators/) for full documentation.
+#'
+#' @param MaxResults The maximum number of results to return in the response. If there are
+#' more results, the response includes a NextToken parameter.
+#' @param NextToken If the response of ListReplicators is truncated, it returns a NextToken
+#' in the response. This NextToken should be sent in the subsequent request
+#' to ListReplicators.
+#' @param ReplicatorNameFilter Returns replicators starting with given name.
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_list_replicators
+kafka_list_replicators <- function(MaxResults = NULL, NextToken = NULL, ReplicatorNameFilter = NULL) {
+  op <- new_operation(
+    name = "ListReplicators",
+    http_method = "GET",
+    http_path = "/replication/v1/replicators",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults", result_key = "Replicators")
+  )
+  input <- .kafka$list_replicators_input(MaxResults = MaxResults, NextToken = NextToken, ReplicatorNameFilter = ReplicatorNameFilter)
+  output <- .kafka$list_replicators_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$list_replicators <- kafka_list_replicators
 
 #' Returns a list of the Scram Secrets associated with an Amazon MSK
 #' cluster
@@ -1465,6 +1595,40 @@ kafka_update_monitoring <- function(ClusterArn, CurrentVersion, EnhancedMonitori
   return(response)
 }
 .kafka$operations$update_monitoring <- kafka_update_monitoring
+
+#' Updates replication info of a replicator
+#'
+#' @description
+#' Updates replication info of a replicator.
+#'
+#' See [https://www.paws-r-sdk.com/docs/kafka_update_replication_info/](https://www.paws-r-sdk.com/docs/kafka_update_replication_info/) for full documentation.
+#'
+#' @param ConsumerGroupReplication Updated consumer group replication information.
+#' @param CurrentVersion &#91;required&#93; Current replicator version.
+#' @param ReplicatorArn &#91;required&#93; The Amazon Resource Name (ARN) of the replicator to be updated.
+#' @param SourceKafkaClusterArn &#91;required&#93; The ARN of the source Kafka cluster.
+#' @param TargetKafkaClusterArn &#91;required&#93; The ARN of the target Kafka cluster.
+#' @param TopicReplication Updated topic replication information.
+#'
+#' @keywords internal
+#'
+#' @rdname kafka_update_replication_info
+kafka_update_replication_info <- function(ConsumerGroupReplication = NULL, CurrentVersion, ReplicatorArn, SourceKafkaClusterArn, TargetKafkaClusterArn, TopicReplication = NULL) {
+  op <- new_operation(
+    name = "UpdateReplicationInfo",
+    http_method = "PUT",
+    http_path = "/replication/v1/replicators/{replicatorArn}/replication-info",
+    paginator = list()
+  )
+  input <- .kafka$update_replication_info_input(ConsumerGroupReplication = ConsumerGroupReplication, CurrentVersion = CurrentVersion, ReplicatorArn = ReplicatorArn, SourceKafkaClusterArn = SourceKafkaClusterArn, TargetKafkaClusterArn = TargetKafkaClusterArn, TopicReplication = TopicReplication)
+  output <- .kafka$update_replication_info_output()
+  config <- get_config()
+  svc <- .kafka$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.kafka$operations$update_replication_info <- kafka_update_replication_info
 
 #' Updates the security settings for the cluster
 #'

@@ -17,9 +17,9 @@ pinpoint(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -180,7 +180,7 @@ Doc Engage API - Amazon Pinpoint API
 \link[=pinpoint_phone_number_validate]{phone_number_validate} \tab Retrieves information about a phone number\cr
 \link[=pinpoint_put_events]{put_events} \tab Creates a new event to record for endpoints, or creates or updates endpoint data that existing events are associated with\cr
 \link[=pinpoint_put_event_stream]{put_event_stream} \tab Creates a new event stream for an application or updates the settings of an existing event stream for an application\cr
-\link[=pinpoint_remove_attributes]{remove_attributes} \tab Removes one or more attributes, of the same attribute type, from all the endpoints that are associated with an application\cr
+\link[=pinpoint_remove_attributes]{remove_attributes} \tab Removes one or more custom attributes, of the same attribute type, from the application\cr
 \link[=pinpoint_send_messages]{send_messages} \tab Creates and sends a direct message\cr
 \link[=pinpoint_send_otp_message]{send_otp_message} \tab Send an OTP message\cr
 \link[=pinpoint_send_users_messages]{send_users_messages} \tab Creates and sends a message to a list of users\cr

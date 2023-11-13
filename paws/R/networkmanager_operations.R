@@ -416,7 +416,7 @@ networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkI
 #'     ),
 #'     TransportAttachmentId = "string",
 #'     Options = list(
-#'       Protocol = "GRE"
+#'       Protocol = "GRE"|"NO_ENCAP"
 #'     )
 #'   )
 #' )
@@ -429,7 +429,7 @@ networkmanager_associate_transit_gateway_connect_peer <- function(GlobalNetworkI
 #'   EdgeLocation = "string",
 #'   TransportAttachmentId = "string",
 #'   Options = list(
-#'     Protocol = "GRE"
+#'     Protocol = "GRE"|"NO_ENCAP"
 #'   ),
 #'   Tags = list(
 #'     list(
@@ -475,15 +475,16 @@ networkmanager_create_connect_attachment <- function(CoreNetworkId, EdgeLocation
 #' @usage
 #' networkmanager_create_connect_peer(ConnectAttachmentId,
 #'   CoreNetworkAddress, PeerAddress, BgpOptions, InsideCidrBlocks, Tags,
-#'   ClientToken)
+#'   ClientToken, SubnetArn)
 #'
 #' @param ConnectAttachmentId &#91;required&#93; The ID of the connection attachment.
 #' @param CoreNetworkAddress A Connect peer core network address.
 #' @param PeerAddress &#91;required&#93; The Connect peer address.
 #' @param BgpOptions The Connect peer BGP options.
-#' @param InsideCidrBlocks &#91;required&#93; The inside IP addresses used for BGP peering.
+#' @param InsideCidrBlocks The inside IP addresses used for BGP peering.
 #' @param Tags The tags associated with the peer request.
 #' @param ClientToken The client token associated with the request.
+#' @param SubnetArn The subnet ARN for the Connect peer.
 #'
 #' @return
 #' A list with the following syntax:
@@ -504,7 +505,7 @@ networkmanager_create_connect_attachment <- function(CoreNetworkId, EdgeLocation
 #'       InsideCidrBlocks = list(
 #'         "string"
 #'       ),
-#'       Protocol = "GRE",
+#'       Protocol = "GRE"|"NO_ENCAP",
 #'       BgpConfigurations = list(
 #'         list(
 #'           CoreNetworkAsn = 123,
@@ -519,7 +520,8 @@ networkmanager_create_connect_attachment <- function(CoreNetworkId, EdgeLocation
 #'         Key = "string",
 #'         Value = "string"
 #'       )
-#'     )
+#'     ),
+#'     SubnetArn = "string"
 #'   )
 #' )
 #' ```
@@ -542,7 +544,8 @@ networkmanager_create_connect_attachment <- function(CoreNetworkId, EdgeLocation
 #'       Value = "string"
 #'     )
 #'   ),
-#'   ClientToken = "string"
+#'   ClientToken = "string",
+#'   SubnetArn = "string"
 #' )
 #' ```
 #'
@@ -551,14 +554,14 @@ networkmanager_create_connect_attachment <- function(CoreNetworkId, EdgeLocation
 #' @rdname networkmanager_create_connect_peer
 #'
 #' @aliases networkmanager_create_connect_peer
-networkmanager_create_connect_peer <- function(ConnectAttachmentId, CoreNetworkAddress = NULL, PeerAddress, BgpOptions = NULL, InsideCidrBlocks, Tags = NULL, ClientToken = NULL) {
+networkmanager_create_connect_peer <- function(ConnectAttachmentId, CoreNetworkAddress = NULL, PeerAddress, BgpOptions = NULL, InsideCidrBlocks = NULL, Tags = NULL, ClientToken = NULL, SubnetArn = NULL) {
   op <- new_operation(
     name = "CreateConnectPeer",
     http_method = "POST",
     http_path = "/connect-peers",
     paginator = list()
   )
-  input <- .networkmanager$create_connect_peer_input(ConnectAttachmentId = ConnectAttachmentId, CoreNetworkAddress = CoreNetworkAddress, PeerAddress = PeerAddress, BgpOptions = BgpOptions, InsideCidrBlocks = InsideCidrBlocks, Tags = Tags, ClientToken = ClientToken)
+  input <- .networkmanager$create_connect_peer_input(ConnectAttachmentId = ConnectAttachmentId, CoreNetworkAddress = CoreNetworkAddress, PeerAddress = PeerAddress, BgpOptions = BgpOptions, InsideCidrBlocks = InsideCidrBlocks, Tags = Tags, ClientToken = ClientToken, SubnetArn = SubnetArn)
   output <- .networkmanager$create_connect_peer_output()
   config <- get_config()
   svc <- .networkmanager$service(config)
@@ -1629,7 +1632,7 @@ networkmanager_delete_attachment <- function(AttachmentId) {
 #'       InsideCidrBlocks = list(
 #'         "string"
 #'       ),
-#'       Protocol = "GRE",
+#'       Protocol = "GRE"|"NO_ENCAP",
 #'       BgpConfigurations = list(
 #'         list(
 #'           CoreNetworkAsn = 123,
@@ -1644,7 +1647,8 @@ networkmanager_delete_attachment <- function(AttachmentId) {
 #'         Key = "string",
 #'         Value = "string"
 #'       )
-#'     )
+#'     ),
+#'     SubnetArn = "string"
 #'   )
 #' )
 #' ```
@@ -2744,7 +2748,7 @@ networkmanager_execute_core_network_change_set <- function(CoreNetworkId, Policy
 #'     ),
 #'     TransportAttachmentId = "string",
 #'     Options = list(
-#'       Protocol = "GRE"
+#'       Protocol = "GRE"|"NO_ENCAP"
 #'     )
 #'   )
 #' )
@@ -2808,7 +2812,7 @@ networkmanager_get_connect_attachment <- function(AttachmentId) {
 #'       InsideCidrBlocks = list(
 #'         "string"
 #'       ),
-#'       Protocol = "GRE",
+#'       Protocol = "GRE"|"NO_ENCAP",
 #'       BgpConfigurations = list(
 #'         list(
 #'           CoreNetworkAsn = 123,
@@ -2823,7 +2827,8 @@ networkmanager_get_connect_attachment <- function(AttachmentId) {
 #'         Key = "string",
 #'         Value = "string"
 #'       )
-#'     )
+#'     ),
+#'     SubnetArn = "string"
 #'   )
 #' )
 #' ```
@@ -5036,7 +5041,8 @@ networkmanager_list_attachments <- function(CoreNetworkId = NULL, AttachmentType
 #'           Key = "string",
 #'           Value = "string"
 #'         )
-#'       )
+#'       ),
+#'       SubnetArn = "string"
 #'     )
 #'   ),
 #'   NextToken = "string"

@@ -20,7 +20,7 @@ resiliencehub_create_recommendation_template(
 is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:app-assessment/\code{app-id}.
 For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference} guide.}
+in the \emph{Amazon Web Services General Reference} guide.}
 
 \item{bucketName}{The name of the Amazon S3 bucket that will contain the recommendation
 template.}

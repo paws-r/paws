@@ -62,7 +62,8 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #' emrserverless_create_application(name, releaseLabel, type, clientToken,
 #'   initialCapacity, maximumCapacity, tags, autoStartConfiguration,
 #'   autoStopConfiguration, networkConfiguration, architecture,
-#'   imageConfiguration, workerTypeSpecifications)
+#'   imageConfiguration, workerTypeSpecifications, runtimeConfiguration,
+#'   monitoringConfiguration)
 #'
 #' @param name The name of the application.
 #' @param releaseLabel &#91;required&#93; The Amazon EMR release associated with the application.
@@ -91,6 +92,12 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #' `TezTask` for Hive applications. You can either set image details in
 #' this parameter for each worker type, or in `imageConfiguration` for all
 #' worker types.
+#' @param runtimeConfiguration The
+#' [Configuration](https://docs.aws.amazon.com/emr-serverless/latest/APIReference/API_Configuration.html)
+#' specifications to use when creating an application. Each configuration
+#' consists of a classification and properties. This configuration is
+#' applied to all the job runs submitted under the application.
+#' @param monitoringConfiguration The configuration setting for monitoring.
 #'
 #' @return
 #' A list with the following syntax:
@@ -152,6 +159,36 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #'         imageUri = "string"
 #'       )
 #'     )
+#'   ),
+#'   runtimeConfiguration = list(
+#'     list(
+#'       classification = "string",
+#'       properties = list(
+#'         "string"
+#'       ),
+#'       configurations = list()
+#'     )
+#'   ),
+#'   monitoringConfiguration = list(
+#'     s3MonitoringConfiguration = list(
+#'       logUri = "string",
+#'       encryptionKeyArn = "string"
+#'     ),
+#'     managedPersistenceMonitoringConfiguration = list(
+#'       enabled = TRUE|FALSE,
+#'       encryptionKeyArn = "string"
+#'     ),
+#'     cloudWatchLoggingConfiguration = list(
+#'       enabled = TRUE|FALSE,
+#'       logGroupName = "string",
+#'       logStreamNamePrefix = "string",
+#'       encryptionKeyArn = "string",
+#'       logTypes = list(
+#'         list(
+#'           "string"
+#'         )
+#'       )
+#'     )
 #'   )
 #' )
 #' ```
@@ -161,14 +198,14 @@ emrserverless_cancel_job_run <- function(applicationId, jobRunId) {
 #' @rdname emrserverless_create_application
 #'
 #' @aliases emrserverless_create_application
-emrserverless_create_application <- function(name = NULL, releaseLabel, type, clientToken, initialCapacity = NULL, maximumCapacity = NULL, tags = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL) {
+emrserverless_create_application <- function(name = NULL, releaseLabel, type, clientToken, initialCapacity = NULL, maximumCapacity = NULL, tags = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, runtimeConfiguration = NULL, monitoringConfiguration = NULL) {
   op <- new_operation(
     name = "CreateApplication",
     http_method = "POST",
     http_path = "/applications",
     paginator = list()
   )
-  input <- .emrserverless$create_application_input(name = name, releaseLabel = releaseLabel, type = type, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, tags = tags, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications)
+  input <- .emrserverless$create_application_input(name = name, releaseLabel = releaseLabel, type = type, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, tags = tags, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, runtimeConfiguration = runtimeConfiguration, monitoringConfiguration = monitoringConfiguration)
   output <- .emrserverless$create_application_output()
   config <- get_config()
   svc <- .emrserverless$service(config)
@@ -292,6 +329,36 @@ emrserverless_delete_application <- function(applicationId) {
 #'         imageConfiguration = list(
 #'           imageUri = "string",
 #'           resolvedImageDigest = "string"
+#'         )
+#'       )
+#'     ),
+#'     runtimeConfiguration = list(
+#'       list(
+#'         classification = "string",
+#'         properties = list(
+#'           "string"
+#'         ),
+#'         configurations = list()
+#'       )
+#'     ),
+#'     monitoringConfiguration = list(
+#'       s3MonitoringConfiguration = list(
+#'         logUri = "string",
+#'         encryptionKeyArn = "string"
+#'       ),
+#'       managedPersistenceMonitoringConfiguration = list(
+#'         enabled = TRUE|FALSE,
+#'         encryptionKeyArn = "string"
+#'       ),
+#'       cloudWatchLoggingConfiguration = list(
+#'         enabled = TRUE|FALSE,
+#'         logGroupName = "string",
+#'         logStreamNamePrefix = "string",
+#'         encryptionKeyArn = "string",
+#'         logTypes = list(
+#'           list(
+#'             "string"
+#'           )
 #'         )
 #'       )
 #'     )
@@ -1044,7 +1111,8 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' emrserverless_update_application(applicationId, clientToken,
 #'   initialCapacity, maximumCapacity, autoStartConfiguration,
 #'   autoStopConfiguration, networkConfiguration, architecture,
-#'   imageConfiguration, workerTypeSpecifications, releaseLabel)
+#'   imageConfiguration, workerTypeSpecifications, releaseLabel,
+#'   runtimeConfiguration, monitoringConfiguration)
 #'
 #' @param applicationId &#91;required&#93; The ID of the application to update.
 #' @param clientToken &#91;required&#93; The client idempotency token of the application to update. Its value
@@ -1072,6 +1140,12 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' worker types.
 #' @param releaseLabel The Amazon EMR release label for the application. You can change the
 #' release label to use a different release of Amazon EMR.
+#' @param runtimeConfiguration The
+#' [Configuration](https://docs.aws.amazon.com/emr-serverless/latest/APIReference/API_Configuration.html)
+#' specifications to use when updating an application. Each configuration
+#' consists of a classification and properties. This configuration is
+#' applied across all the job runs submitted under the application.
+#' @param monitoringConfiguration The configuration setting for monitoring.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1136,6 +1210,36 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'           resolvedImageDigest = "string"
 #'         )
 #'       )
+#'     ),
+#'     runtimeConfiguration = list(
+#'       list(
+#'         classification = "string",
+#'         properties = list(
+#'           "string"
+#'         ),
+#'         configurations = list()
+#'       )
+#'     ),
+#'     monitoringConfiguration = list(
+#'       s3MonitoringConfiguration = list(
+#'         logUri = "string",
+#'         encryptionKeyArn = "string"
+#'       ),
+#'       managedPersistenceMonitoringConfiguration = list(
+#'         enabled = TRUE|FALSE,
+#'         encryptionKeyArn = "string"
+#'       ),
+#'       cloudWatchLoggingConfiguration = list(
+#'         enabled = TRUE|FALSE,
+#'         logGroupName = "string",
+#'         logStreamNamePrefix = "string",
+#'         encryptionKeyArn = "string",
+#'         logTypes = list(
+#'           list(
+#'             "string"
+#'           )
+#'         )
+#'       )
 #'     )
 #'   )
 #' )
@@ -1187,7 +1291,37 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #'       )
 #'     )
 #'   ),
-#'   releaseLabel = "string"
+#'   releaseLabel = "string",
+#'   runtimeConfiguration = list(
+#'     list(
+#'       classification = "string",
+#'       properties = list(
+#'         "string"
+#'       ),
+#'       configurations = list()
+#'     )
+#'   ),
+#'   monitoringConfiguration = list(
+#'     s3MonitoringConfiguration = list(
+#'       logUri = "string",
+#'       encryptionKeyArn = "string"
+#'     ),
+#'     managedPersistenceMonitoringConfiguration = list(
+#'       enabled = TRUE|FALSE,
+#'       encryptionKeyArn = "string"
+#'     ),
+#'     cloudWatchLoggingConfiguration = list(
+#'       enabled = TRUE|FALSE,
+#'       logGroupName = "string",
+#'       logStreamNamePrefix = "string",
+#'       encryptionKeyArn = "string",
+#'       logTypes = list(
+#'         list(
+#'           "string"
+#'         )
+#'       )
+#'     )
+#'   )
 #' )
 #' ```
 #'
@@ -1196,14 +1330,14 @@ emrserverless_untag_resource <- function(resourceArn, tagKeys) {
 #' @rdname emrserverless_update_application
 #'
 #' @aliases emrserverless_update_application
-emrserverless_update_application <- function(applicationId, clientToken, initialCapacity = NULL, maximumCapacity = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, releaseLabel = NULL) {
+emrserverless_update_application <- function(applicationId, clientToken, initialCapacity = NULL, maximumCapacity = NULL, autoStartConfiguration = NULL, autoStopConfiguration = NULL, networkConfiguration = NULL, architecture = NULL, imageConfiguration = NULL, workerTypeSpecifications = NULL, releaseLabel = NULL, runtimeConfiguration = NULL, monitoringConfiguration = NULL) {
   op <- new_operation(
     name = "UpdateApplication",
     http_method = "PATCH",
     http_path = "/applications/{applicationId}",
     paginator = list()
   )
-  input <- .emrserverless$update_application_input(applicationId = applicationId, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, releaseLabel = releaseLabel)
+  input <- .emrserverless$update_application_input(applicationId = applicationId, clientToken = clientToken, initialCapacity = initialCapacity, maximumCapacity = maximumCapacity, autoStartConfiguration = autoStartConfiguration, autoStopConfiguration = autoStopConfiguration, networkConfiguration = networkConfiguration, architecture = architecture, imageConfiguration = imageConfiguration, workerTypeSpecifications = workerTypeSpecifications, releaseLabel = releaseLabel, runtimeConfiguration = runtimeConfiguration, monitoringConfiguration = monitoringConfiguration)
   output <- .emrserverless$update_application_output()
   config <- get_config()
   svc <- .emrserverless$service(config)

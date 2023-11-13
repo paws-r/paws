@@ -9,13 +9,11 @@ pricing_get_price_list_file_url(PriceListArn, FileFormat)
 \arguments{
 \item{PriceListArn}{[required] The unique identifier that maps to where your Price List files are
 located. \code{PriceListArn} can be obtained from the
-\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_ListPriceLists.html}{\code{list_price_lists}}
-response.}
+\code{\link[=pricing_list_price_lists]{list_price_lists}} response.}
 
 \item{FileFormat}{[required] The format that you want to retrieve your Price List files in. The
 \code{FileFormat} can be obtained from the
-\href{https://docs.aws.amazon.com/aws-cost-management/latest/APIReference/API_pricing_ListPriceLists.html}{\code{list_price_lists}}
-response.}
+\code{\link[=pricing_list_price_lists]{list_price_lists}} response.}
 }
 \description{
 \emph{This feature is in preview release and is subject to change. Your use of Amazon Web Services Price List API is subject to the Beta Service Participation terms of the \href{https://aws.amazon.com/service-terms/}{Amazon Web Services Service Terms} (Section 1.10).}

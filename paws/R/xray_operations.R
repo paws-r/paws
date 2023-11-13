@@ -1694,8 +1694,8 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 #'
 #' @param StartTime &#91;required&#93; The start of the time frame for which to retrieve traces.
 #' @param EndTime &#91;required&#93; The end of the time frame for which to retrieve traces.
-#' @param TimeRangeType A parameter to indicate whether to query trace summaries by TraceId or
-#' Event time.
+#' @param TimeRangeType A parameter to indicate whether to query trace summaries by TraceId,
+#' Event (trace update time), or Service (segment end time).
 #' @param Sampling Set to `true` to get summaries for only a subset of available traces.
 #' @param SamplingStrategy A parameter to indicate whether to enable sampling on trace summaries.
 #' Input parameters are Name and Value.
@@ -1711,6 +1711,9 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 #'   TraceSummaries = list(
 #'     list(
 #'       Id = "string",
+#'       StartTime = as.POSIXct(
+#'         "2015-01-01"
+#'       ),
 #'       Duration = 123.0,
 #'       ResponseTime = 123.0,
 #'       HasFault = TRUE|FALSE,
@@ -1895,7 +1898,7 @@ xray_get_trace_graph <- function(TraceIds, NextToken = NULL) {
 #'   EndTime = as.POSIXct(
 #'     "2015-01-01"
 #'   ),
-#'   TimeRangeType = "TraceId"|"Event",
+#'   TimeRangeType = "TraceId"|"Event"|"Service",
 #'   Sampling = TRUE|FALSE,
 #'   SamplingStrategy = list(
 #'     Name = "PartialScan"|"FixedRate",

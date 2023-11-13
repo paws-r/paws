@@ -42,7 +42,7 @@ NULL
 #' addresses and two static IPv6 addresses. With a standard accelerator for
 #' IPv4, instead of using the addresses that Global Accelerator provides,
 #' you can configure these entry points to be IPv4 addresses from your own
-#' IP address ranges that you bring toGlobal Accelerator (BYOIP).
+#' IP address ranges that you bring to Global Accelerator (BYOIP).
 #' 
 #' For a standard accelerator, they distribute incoming application traffic
 #' across multiple endpoint resources in multiple Amazon Web Services
@@ -87,9 +87,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -163,12 +163,14 @@ NULL
 #'  \link[=globalaccelerator_advertise_byoip_cidr]{advertise_byoip_cidr} \tab Advertises an IPv4 address range that is provisioned for use with your Amazon Web Services resources through bring your own IP addresses (BYOIP)\cr
 #'  \link[=globalaccelerator_allow_custom_routing_traffic]{allow_custom_routing_traffic} \tab Specify the Amazon EC2 instance (destination) IP addresses and ports for a VPC subnet endpoint that can receive traffic for a custom routing accelerator\cr
 #'  \link[=globalaccelerator_create_accelerator]{create_accelerator} \tab Create an accelerator\cr
+#'  \link[=globalaccelerator_create_cross_account_attachment]{create_cross_account_attachment} \tab Create a cross-account attachment in Global Accelerator\cr
 #'  \link[=globalaccelerator_create_custom_routing_accelerator]{create_custom_routing_accelerator} \tab Create a custom routing accelerator\cr
 #'  \link[=globalaccelerator_create_custom_routing_endpoint_group]{create_custom_routing_endpoint_group} \tab Create an endpoint group for the specified listener for a custom routing accelerator\cr
 #'  \link[=globalaccelerator_create_custom_routing_listener]{create_custom_routing_listener} \tab Create a listener to process inbound connections from clients to a custom routing accelerator\cr
 #'  \link[=globalaccelerator_create_endpoint_group]{create_endpoint_group} \tab Create an endpoint group for the specified listener\cr
 #'  \link[=globalaccelerator_create_listener]{create_listener} \tab Create a listener to process inbound connections from clients to an accelerator\cr
 #'  \link[=globalaccelerator_delete_accelerator]{delete_accelerator} \tab Delete an accelerator\cr
+#'  \link[=globalaccelerator_delete_cross_account_attachment]{delete_cross_account_attachment} \tab Delete a cross-account attachment\cr
 #'  \link[=globalaccelerator_delete_custom_routing_accelerator]{delete_custom_routing_accelerator} \tab Delete a custom routing accelerator\cr
 #'  \link[=globalaccelerator_delete_custom_routing_endpoint_group]{delete_custom_routing_endpoint_group} \tab Delete an endpoint group from a listener for a custom routing accelerator\cr
 #'  \link[=globalaccelerator_delete_custom_routing_listener]{delete_custom_routing_listener} \tab Delete a listener for a custom routing accelerator\cr
@@ -178,6 +180,7 @@ NULL
 #'  \link[=globalaccelerator_deprovision_byoip_cidr]{deprovision_byoip_cidr} \tab Releases the specified address range that you provisioned to use with your Amazon Web Services resources through bring your own IP addresses (BYOIP) and deletes the corresponding address pool\cr
 #'  \link[=globalaccelerator_describe_accelerator]{describe_accelerator} \tab Describe an accelerator\cr
 #'  \link[=globalaccelerator_describe_accelerator_attributes]{describe_accelerator_attributes} \tab Describe the attributes of an accelerator\cr
+#'  \link[=globalaccelerator_describe_cross_account_attachment]{describe_cross_account_attachment} \tab Gets configuration information about a cross-account attachment\cr
 #'  \link[=globalaccelerator_describe_custom_routing_accelerator]{describe_custom_routing_accelerator} \tab Describe a custom routing accelerator\cr
 #'  \link[=globalaccelerator_describe_custom_routing_accelerator_attributes]{describe_custom_routing_accelerator_attributes} \tab Describe the attributes of a custom routing accelerator\cr
 #'  \link[=globalaccelerator_describe_custom_routing_endpoint_group]{describe_custom_routing_endpoint_group} \tab Describe an endpoint group for a custom routing accelerator\cr
@@ -186,6 +189,9 @@ NULL
 #'  \link[=globalaccelerator_describe_listener]{describe_listener} \tab Describe a listener\cr
 #'  \link[=globalaccelerator_list_accelerators]{list_accelerators} \tab List the accelerators for an Amazon Web Services account\cr
 #'  \link[=globalaccelerator_list_byoip_cidrs]{list_byoip_cidrs} \tab Lists the IP address ranges that were specified in calls to ProvisionByoipCidr, including the current state and a history of state changes\cr
+#'  \link[=globalaccelerator_list_cross_account_attachments]{list_cross_account_attachments} \tab List the cross-account attachments that have been created in Global Accelerator\cr
+#'  \link[=globalaccelerator_list_cross_account_resource_accounts]{list_cross_account_resource_accounts} \tab List the accounts that have cross-account endpoints\cr
+#'  \link[=globalaccelerator_list_cross_account_resources]{list_cross_account_resources} \tab List the cross-account endpoints available to add to an accelerator\cr
 #'  \link[=globalaccelerator_list_custom_routing_accelerators]{list_custom_routing_accelerators} \tab List the custom routing accelerators for an Amazon Web Services account\cr
 #'  \link[=globalaccelerator_list_custom_routing_endpoint_groups]{list_custom_routing_endpoint_groups} \tab List the endpoint groups that are associated with a listener for a custom routing accelerator\cr
 #'  \link[=globalaccelerator_list_custom_routing_listeners]{list_custom_routing_listeners} \tab List the listeners for a custom routing accelerator\cr
@@ -201,6 +207,7 @@ NULL
 #'  \link[=globalaccelerator_untag_resource]{untag_resource} \tab Remove tags from a Global Accelerator resource\cr
 #'  \link[=globalaccelerator_update_accelerator]{update_accelerator} \tab Update an accelerator to make changes, such as the following:\cr
 #'  \link[=globalaccelerator_update_accelerator_attributes]{update_accelerator_attributes} \tab Update the attributes for an accelerator\cr
+#'  \link[=globalaccelerator_update_cross_account_attachment]{update_cross_account_attachment} \tab Update a cross-account attachment to add or remove principals or resources\cr
 #'  \link[=globalaccelerator_update_custom_routing_accelerator]{update_custom_routing_accelerator} \tab Update a custom routing accelerator\cr
 #'  \link[=globalaccelerator_update_custom_routing_accelerator_attributes]{update_custom_routing_accelerator_attributes} \tab Update the attributes for a custom routing accelerator\cr
 #'  \link[=globalaccelerator_update_custom_routing_listener]{update_custom_routing_listener} \tab Update a listener for a custom routing accelerator\cr

@@ -5,18 +5,26 @@
 \title{Updates a namespace with the specified settings}
 \usage{
 redshiftserverless_update_namespace(
+  adminPasswordSecretKmsKeyId = NULL,
   adminUserPassword = NULL,
   adminUsername = NULL,
   defaultIamRoleArn = NULL,
   iamRoles = NULL,
   kmsKeyId = NULL,
   logExports = NULL,
+  manageAdminPassword = NULL,
   namespaceName
 )
 }
 \arguments{
+\item{adminPasswordSecretKmsKeyId}{The ID of the Key Management Service (KMS) key used to encrypt and store
+the namespace's admin credentials secret. You can only use this
+parameter if \code{manageAdminPassword} is true.}
+
 \item{adminUserPassword}{The password of the administrator for the first database created in the
-namespace. This parameter must be updated together with \code{adminUsername}.}
+namespace. This parameter must be updated together with \code{adminUsername}.
+
+You can't use \code{adminUserPassword} if \code{manageAdminPassword} is true.}
 
 \item{adminUsername}{The username of the administrator for the first database created in the
 namespace. This parameter must be updated together with
@@ -33,6 +41,12 @@ encrypt your data.}
 
 \item{logExports}{The types of logs the namespace can export. The export types are
 \code{userlog}, \code{connectionlog}, and \code{useractivitylog}.}
+
+\item{manageAdminPassword}{If \code{true}, Amazon Redshift uses Secrets Manager to manage the
+namespace's admin credentials. You can't use \code{adminUserPassword} if
+\code{manageAdminPassword} is true. If \code{manageAdminPassword} is false or not
+set, Amazon Redshift uses \code{adminUserPassword} for the admin user
+account's password.}
 
 \item{namespaceName}{[required] The name of the namespace to update. You can't update the name of a
 namespace once it is created.}

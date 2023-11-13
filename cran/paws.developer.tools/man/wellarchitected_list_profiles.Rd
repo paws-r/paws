@@ -12,7 +12,8 @@ wellarchitected_list_profiles(
 )
 }
 \arguments{
-\item{ProfileNamePrefix}{Prefix for profile name.}
+\item{ProfileNamePrefix}{An optional string added to the beginning of each profile name returned
+in the results.}
 
 \item{ProfileOwnerType}{Profile owner type.}
 

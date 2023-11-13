@@ -45,7 +45,7 @@ NULL
 
 .s3outposts$list_outposts_with_s3_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(Outposts = structure(list(structure(list(OutpostArn = structure(logical(0), tags = list(type = "string")), OutpostId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), CapacityInBytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(Outposts = structure(list(structure(list(OutpostArn = structure(logical(0), tags = list(type = "string")), S3OutpostArn = structure(logical(0), tags = list(type = "string")), OutpostId = structure(logical(0), tags = list(type = "string")), OwnerId = structure(logical(0), tags = list(type = "string")), CapacityInBytes = structure(logical(0), tags = list(type = "long"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

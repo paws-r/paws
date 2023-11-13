@@ -59,7 +59,12 @@ in the \emph{Key Management Service API Reference}.
 
 The following attributes apply only to \href{https://docs.aws.amazon.com/sns/latest/dg/sns-fifo-topics.html}{FIFO topics}:
 \itemize{
-\item \code{FifoTopic} – When this is set to \code{true}, a FIFO topic is created.
+\item \code{ArchivePolicy} – Adds or updates an inline policy document to
+archive messages stored in the specified Amazon SNS topic.
+\item \code{BeginningArchiveTime} – The earliest starting point at which a
+message in the topic’s archive can be replayed from. This point in
+time is based on the configured message retention period set by the
+topic’s message archiving policy.
 \item \code{ContentBasedDeduplication} – Enables content-based deduplication
 for FIFO topics.
 \itemize{

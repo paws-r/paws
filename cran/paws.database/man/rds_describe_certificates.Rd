@@ -2,8 +2,8 @@
 % Please edit documentation in R/rds_operations.R
 \name{rds_describe_certificates}
 \alias{rds_describe_certificates}
-\title{Lists the set of CA certificates provided by Amazon RDS for this Amazon
-Web Services account}
+\title{Lists the set of certificate authority (CA) certificates provided by
+Amazon RDS for this Amazon Web Services account}
 \usage{
 rds_describe_certificates(
   CertificateIdentifier = NULL,
@@ -39,7 +39,7 @@ parameter is specified, the response includes only records beyond the
 marker, up to the value specified by \code{MaxRecords}.}
 }
 \description{
-Lists the set of CA certificates provided by Amazon RDS for this Amazon Web Services account.
+Lists the set of certificate authority (CA) certificates provided by Amazon RDS for this Amazon Web Services account.
 
 See \url{https://www.paws-r-sdk.com/docs/rds_describe_certificates/} for full documentation.
 }

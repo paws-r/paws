@@ -3,8 +3,7 @@
 \name{storagegateway_describe_gateway_information}
 \alias{storagegateway_describe_gateway_information}
 \title{Returns metadata about a gateway such as its name, network interfaces,
-configured time zone, and the state (whether the gateway is running or
-not)}
+time zone, status, and software version}
 \usage{
 storagegateway_describe_gateway_information(GatewayARN)
 }
@@ -12,7 +11,7 @@ storagegateway_describe_gateway_information(GatewayARN)
 \item{GatewayARN}{[required]}
 }
 \description{
-Returns metadata about a gateway such as its name, network interfaces, configured time zone, and the state (whether the gateway is running or not). To specify which gateway to describe, use the Amazon Resource Name (ARN) of the gateway in your request.
+Returns metadata about a gateway such as its name, network interfaces, time zone, status, and software version. To specify which gateway to describe, use the Amazon Resource Name (ARN) of the gateway in your request.
 
 See \url{https://www.paws-r-sdk.com/docs/storagegateway_describe_gateway_information/} for full documentation.
 }

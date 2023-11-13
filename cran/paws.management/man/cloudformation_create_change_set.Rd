@@ -79,13 +79,13 @@ If your stack template contains these resources, we suggest that you
 review all permissions associated with them and edit their
 permissions if necessary.
 \itemize{
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html}{AWS::IAM::AccessKey}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html}{AWS::IAM::Group}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html}{AWS::IAM::Group}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{AWS::IAM::Policy}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html}{AWS::IAM::User}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGroupAddition}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html}{AWS::IAM::User}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM resources in CloudFormation templates}.
@@ -117,7 +117,10 @@ directly from the template using the
 this capability.
 
 For more information about macros, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using CloudFormation macros to perform custom processing on templates}.
-}}
+}
+
+Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
+specified.}
 
 \item{ResourceTypes}{The template resource types that you have permissions to work with if
 you execute this change set, such as \verb{AWS::EC2::Instance},
@@ -128,7 +131,10 @@ you're updating, the stack update fails. By default, CloudFormation
 grants permissions to all resource types. Identity and Access Management
 (IAM) uses this parameter for condition keys in IAM policies for
 CloudFormation. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html}{Controlling access with Identity and Access Management}
-in the CloudFormation User Guide.}
+in the CloudFormation User Guide.
+
+Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
+specified.}
 
 \item{RoleARN}{The Amazon Resource Name (ARN) of an Identity and Access Management
 (IAM) role that CloudFormation assumes when executing the change set.

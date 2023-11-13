@@ -114,7 +114,11 @@ Valid values: \code{Windows} | \code{Linux}}
 \item{UsageOperation}{The usage operation value. For more information, see \href{https://docs.aws.amazon.com/vm-import/latest/userguide/vmie_prereqs.html#prerequisites}{Licensing options}
 in the \emph{VM Import/Export User Guide}.}
 
-\item{BootMode}{The boot mode of the virtual machine.}
+\item{BootMode}{The boot mode of the virtual machine.
+
+The \code{uefi-preferred} boot mode isn't supported for importing images. For
+more information, see \href{https://docs.aws.amazon.com/vm-import/latest/userguide/prerequisites.html#vmimport-boot-modes}{Boot modes}
+in the \emph{VM Import/Export User Guide}.}
 }
 \description{
 To import your virtual machines (VMs) with a console-based experience, you can use the \emph{Import virtual machine images to Amazon Web Services} template in the Migration Hub Orchestrator console. For more information, see the \href{https://docs.aws.amazon.com/migrationhub-orchestrator/latest/userguide/import-vm-images.html}{\emph{Migration Hub Orchestrator User Guide}} .

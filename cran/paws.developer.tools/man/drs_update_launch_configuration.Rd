@@ -8,8 +8,10 @@ drs_update_launch_configuration(
   copyPrivateIp = NULL,
   copyTags = NULL,
   launchDisposition = NULL,
+  launchIntoInstanceProperties = NULL,
   licensing = NULL,
   name = NULL,
+  postLaunchEnabled = NULL,
   sourceServerID,
   targetInstanceTypeRightSizingMethod = NULL
 )
@@ -23,9 +25,13 @@ of the Recovery Instance.}
 
 \item{launchDisposition}{The state of the Recovery Instance in EC2 after the recovery operation.}
 
+\item{launchIntoInstanceProperties}{Launch into existing instance properties.}
+
 \item{licensing}{The licensing configuration to be used for this launch configuration.}
 
 \item{name}{The name of the launch configuration.}
+
+\item{postLaunchEnabled}{Whether we want to enable post-launch actions for the Source Server.}
 
 \item{sourceServerID}{[required] The ID of the Source Server that we want to retrieve a Launch
 Configuration for.}

@@ -2,18 +2,18 @@
 % Please edit documentation in R/marketplacecatalog_operations.R
 \name{marketplacecatalog_put_resource_policy}
 \alias{marketplacecatalog_put_resource_policy}
-\title{Attaches a resource-based policy to an Entity}
+\title{Attaches a resource-based policy to an entity}
 \usage{
 marketplacecatalog_put_resource_policy(ResourceArn, Policy)
 }
 \arguments{
-\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the Entity resource you want to
+\item{ResourceArn}{[required] The Amazon Resource Name (ARN) of the entity resource you want to
 associate with a resource policy.}
 
 \item{Policy}{[required] The policy document to set; formatted in JSON.}
 }
 \description{
-Attaches a resource-based policy to an Entity. Examples of an entity include: \code{AmiProduct} and \code{ContainerProduct}.
+Attaches a resource-based policy to an entity. Examples of an entity include: \code{AmiProduct} and \code{ContainerProduct}.
 
 See \url{https://www.paws-r-sdk.com/docs/marketplacecatalog_put_resource_policy/} for full documentation.
 }

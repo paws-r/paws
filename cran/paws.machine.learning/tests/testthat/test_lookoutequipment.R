@@ -39,3 +39,11 @@ test_that("list_models", {
 test_that("list_models", {
   expect_error(svc$list_models(MaxResults = 20), NA)
 })
+
+test_that("list_retraining_schedulers", {
+  expect_error(svc$list_retraining_schedulers(), NA)
+})
+
+test_that("list_retraining_schedulers", {
+  expect_error(svc$list_retraining_schedulers(MaxResults = 20), NA)
+})

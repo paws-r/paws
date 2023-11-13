@@ -11,8 +11,10 @@ connect_update_contact_flow_content(InstanceId, ContactFlowId, Content)
 
 \item{ContactFlowId}{[required] The identifier of the flow.}
 
-\item{Content}{[required] The JSON string that represents flow's content. For an example, see
-\href{https://docs.aws.amazon.com/connect/latest/APIReference/flow-language-example.html}{Example contact flow in Amazon Connect Flow language}.}
+\item{Content}{[required] The JSON string that represents the content of the flow. For an example,
+see \href{https://docs.aws.amazon.com/connect/latest/APIReference/flow-language-example.html}{Example flow in Amazon Connect Flow language}.
+
+Length Constraints: Minimum length of 1. Maximum length of 256000.}
 }
 \description{
 Updates the specified flow.

@@ -4,16 +4,19 @@
 \alias{connect_stop_contact}
 \title{Ends the specified contact}
 \usage{
-connect_stop_contact(ContactId, InstanceId)
+connect_stop_contact(ContactId, InstanceId, DisconnectReason = NULL)
 }
 \arguments{
 \item{ContactId}{[required] The ID of the contact.}
 
 \item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
 in the Amazon Resource Name (ARN) of the instance.}
+
+\item{DisconnectReason}{The reason a contact can be disconnected. Only Amazon Connect outbound
+campaigns can provide this field.}
 }
 \description{
-Ends the specified contact. This call does not work for the following initiation methods:
+Ends the specified contact. This call does not work for voice contacts that use the following initiation methods:
 
 See \url{https://www.paws-r-sdk.com/docs/connect_stop_contact/} for full documentation.
 }

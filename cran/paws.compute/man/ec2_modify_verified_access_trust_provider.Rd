@@ -10,7 +10,8 @@ ec2_modify_verified_access_trust_provider(
   OidcOptions = NULL,
   Description = NULL,
   DryRun = NULL,
-  ClientToken = NULL
+  ClientToken = NULL,
+  SseSpecification = NULL
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ Otherwise, it is \code{UnauthorizedOperation}.}
 
 \item{ClientToken}{A unique, case-sensitive token that you provide to ensure idempotency of
 your modification request. For more information, see \href{https://docs.aws.amazon.com/AWSEC2/latest/APIReference/Run_Instance_Idempotency.html}{Ensuring Idempotency}.}
+
+\item{SseSpecification}{Options for server side encryption.}
 }
 \description{
 Modifies the configuration of the specified Amazon Web Services Verified Access trust provider.

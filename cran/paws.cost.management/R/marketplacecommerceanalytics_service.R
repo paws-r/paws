@@ -19,9 +19,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -91,7 +91,7 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=marketplacecommerceanalytics_generate_data_set]{generate_data_set} \tab Given a data set type and data set publication date, asynchronously publishes the requested data set to the specified S3 bucket and notifies the specified SNS topic once the data is available\cr
-#'  \link[=marketplacecommerceanalytics_start_support_data_export]{start_support_data_export} \tab Given a data set type and a from date, asynchronously publishes the requested customer support data to the specified S3 bucket and notifies the specified SNS topic once the data is available
+#'  \link[=marketplacecommerceanalytics_start_support_data_export]{start_support_data_export} \tab This target has been deprecated
 #' }
 #'
 #' @return

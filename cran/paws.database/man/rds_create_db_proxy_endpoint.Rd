@@ -27,10 +27,10 @@ You can specify a different set of security group IDs than for the
 original DB proxy. The default is the default security group for the
 VPC.}
 
-\item{TargetRole}{A value that indicates whether the DB proxy endpoint can be used for
-read/write or read-only operations. The default is \code{READ_WRITE}. The
-only role that proxies for RDS for Microsoft SQL Server support is
-\code{READ_WRITE}.}
+\item{TargetRole}{The role of the DB proxy endpoint. The role determines whether the
+endpoint can be used for read/write or only read operations. The default
+is \code{READ_WRITE}. The only role that proxies for RDS for Microsoft SQL
+Server support is \code{READ_WRITE}.}
 
 \item{Tags}{}
 }

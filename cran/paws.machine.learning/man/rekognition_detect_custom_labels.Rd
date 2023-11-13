@@ -2,8 +2,7 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_detect_custom_labels}
 \alias{rekognition_detect_custom_labels}
-\title{Detects custom labels in a supplied image by using an Amazon Rekognition
-Custom Labels model}
+\title{This operation applies only to Amazon Rekognition Custom Labels}
 \usage{
 rekognition_detect_custom_labels(
   ProjectVersionArn,
@@ -13,7 +12,10 @@ rekognition_detect_custom_labels(
 )
 }
 \arguments{
-\item{ProjectVersionArn}{[required] The ARN of the model version that you want to use.}
+\item{ProjectVersionArn}{[required] The ARN of the model version that you want to use. Only models
+associated with Custom Labels projects accepted by the operation. If a
+provided ARN refers to a model version associated with a project for a
+different feature type, then an InvalidParameterException is returned.}
 
 \item{Image}{[required]}
 
@@ -32,7 +34,7 @@ you don't specify a value for \code{MinConfidence},
 labels based on the assumed threshold of each label.}
 }
 \description{
-Detects custom labels in a supplied image by using an Amazon Rekognition Custom Labels model.
+This operation applies only to Amazon Rekognition Custom Labels.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_detect_custom_labels/} for full documentation.
 }

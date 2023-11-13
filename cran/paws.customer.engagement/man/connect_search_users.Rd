@@ -5,7 +5,7 @@
 \title{Searches users in an Amazon Connect instance, with optional filtering}
 \usage{
 connect_search_users(
-  InstanceId = NULL,
+  InstanceId,
   NextToken = NULL,
   MaxResults = NULL,
   SearchFilter = NULL,
@@ -13,8 +13,10 @@ connect_search_users(
 )
 }
 \arguments{
-\item{InstanceId}{The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
-in the Amazon Resource Name (ARN) of the instance.}
+\item{InstanceId}{[required] The identifier of the Amazon Connect instance. You can \href{https://docs.aws.amazon.com/connect/latest/adminguide/find-instance-arn.html}{find the instance ID}
+in the Amazon Resource Name (ARN) of the instance.
+
+InstanceID is a required field. The "Required: No" below is incorrect.}
 
 \item{NextToken}{The token for the next set of results. Use the value returned in the
 previous response in the next request to retrieve the next set of

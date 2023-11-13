@@ -23,7 +23,7 @@ NULL
 
 .route53recoverycluster$list_routing_controls_output <- function(...) {
   args <- c(as.list(environment()), list(...))
-  shape <- structure(list(RoutingControls = structure(list(structure(list(ControlPanelArn = structure(logical(0), tags = list(type = "string")), ControlPanelName = structure(logical(0), tags = list(type = "string")), RoutingControlArn = structure(logical(0), tags = list(type = "string")), RoutingControlName = structure(logical(0), tags = list(type = "string")), RoutingControlState = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  shape <- structure(list(RoutingControls = structure(list(structure(list(ControlPanelArn = structure(logical(0), tags = list(type = "string")), ControlPanelName = structure(logical(0), tags = list(type = "string")), RoutingControlArn = structure(logical(0), tags = list(type = "string")), RoutingControlName = structure(logical(0), tags = list(type = "string")), RoutingControlState = structure(logical(0), tags = list(type = "string")), Owner = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))), tags = list(type = "list")), NextToken = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
   return(populate(args, shape))
 }
 

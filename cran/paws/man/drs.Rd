@@ -17,9 +17,9 @@ drs(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -95,6 +95,7 @@ AWS Elastic Disaster Recovery Service.
 \link[paws.developer.tools:drs_create_replication_configuration_template]{create_replication_configuration_template} \tab Creates a new ReplicationConfigurationTemplate\cr
 \link[paws.developer.tools:drs_create_source_network]{create_source_network} \tab Create a new Source Network resource for a provided VPC ID\cr
 \link[paws.developer.tools:drs_delete_job]{delete_job} \tab Deletes a single Job by ID\cr
+\link[paws.developer.tools:drs_delete_launch_action]{delete_launch_action} \tab Deletes a resource launch action\cr
 \link[paws.developer.tools:drs_delete_launch_configuration_template]{delete_launch_configuration_template} \tab Deletes a single Launch Configuration Template by ID\cr
 \link[paws.developer.tools:drs_delete_recovery_instance]{delete_recovery_instance} \tab Deletes a single Recovery Instance by ID\cr
 \link[paws.developer.tools:drs_delete_replication_configuration_template]{delete_replication_configuration_template} \tab Deletes a single Replication Configuration Template by ID\cr
@@ -116,8 +117,10 @@ AWS Elastic Disaster Recovery Service.
 \link[paws.developer.tools:drs_get_replication_configuration]{get_replication_configuration} \tab Gets a ReplicationConfiguration, filtered by Source Server ID\cr
 \link[paws.developer.tools:drs_initialize_service]{initialize_service} \tab Initialize Elastic Disaster Recovery\cr
 \link[paws.developer.tools:drs_list_extensible_source_servers]{list_extensible_source_servers} \tab Returns a list of source servers on a staging account that are extensible, which means that: a\cr
+\link[paws.developer.tools:drs_list_launch_actions]{list_launch_actions} \tab Lists resource launch actions\cr
 \link[paws.developer.tools:drs_list_staging_accounts]{list_staging_accounts} \tab Returns an array of staging accounts for existing extended source servers\cr
 \link[paws.developer.tools:drs_list_tags_for_resource]{list_tags_for_resource} \tab List all tags for your Elastic Disaster Recovery resources\cr
+\link[paws.developer.tools:drs_put_launch_action]{put_launch_action} \tab Puts a resource launch action\cr
 \link[paws.developer.tools:drs_retry_data_replication]{retry_data_replication} \tab WARNING: RetryDataReplication is deprecated\cr
 \link[paws.developer.tools:drs_reverse_replication]{reverse_replication} \tab Start replication to origin / target region - applies only to protected instances that originated in EC2\cr
 \link[paws.developer.tools:drs_start_failback_launch]{start_failback_launch} \tab Initiates a Job for launching the machine that is being failed back to from the specified Recovery Instance\cr

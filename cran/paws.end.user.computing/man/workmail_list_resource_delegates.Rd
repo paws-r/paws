@@ -15,7 +15,15 @@ workmail_list_resource_delegates(
 \item{OrganizationId}{[required] The identifier for the organization that contains the resource for which
 delegates are listed.}
 
-\item{ResourceId}{[required] The identifier for the resource whose delegates are listed.}
+\item{ResourceId}{[required] The identifier for the resource whose delegates are listed.
+
+The identifier can accept \emph{ResourceId}, \emph{Resourcename}, or \emph{email}. The
+following identity formats are available:
+\itemize{
+\item Resource ID: r-0123456789a0123456789b0123456789
+\item Email address: resource@domain.tld
+\item Resource name: resource
+}}
 
 \item{NextToken}{The token used to paginate through the delegates associated with a
 resource.}

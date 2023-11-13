@@ -16,8 +16,7 @@ Constraints:
 \item Must match the identifier of an existing DBInstance.
 }}
 
-\item{ForceFailover}{A value that indicates whether the reboot is conducted through a
-Multi-AZ failover.
+\item{ForceFailover}{Specifies whether the reboot is conducted through a Multi-AZ failover.
 
 Constraint: You can't enable force failover if the instance isn't
 configured for Multi-AZ.}

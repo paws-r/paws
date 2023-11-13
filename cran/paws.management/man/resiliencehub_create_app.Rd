@@ -38,7 +38,7 @@ assessment.}
 ARN is:
 arn:\code{partition}:resiliencehub:\code{region}:\code{account}:resiliency-policy/\code{policy-id}.
 For more information about ARNs, see \href{https://docs.aws.amazon.com/IAM/latest/UserGuide/reference-arns.html}{Amazon Resource Names (ARNs)}
-in the \emph{AWS General Reference} guide.}
+in the \emph{Amazon Web Services General Reference} guide.}
 
 \item{tags}{Tags assigned to the resource. A tag is a label that you assign to an
 Amazon Web Services resource. Each tag consists of a key/value pair.}

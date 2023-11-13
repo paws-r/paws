@@ -9,7 +9,9 @@ drs_create_launch_configuration_template(
   copyTags = NULL,
   exportBucketArn = NULL,
   launchDisposition = NULL,
+  launchIntoSourceInstance = NULL,
   licensing = NULL,
+  postLaunchEnabled = NULL,
   tags = NULL,
   targetInstanceTypeRightSizingMethod = NULL
 )
@@ -23,7 +25,13 @@ drs_create_launch_configuration_template(
 
 \item{launchDisposition}{Launch disposition.}
 
+\item{launchIntoSourceInstance}{DRS will set the 'launch into instance ID' of any source server when
+performing a drill, recovery or failback to the previous region or
+availability zone, using the instance ID of the source instance.}
+
 \item{licensing}{Licensing.}
+
+\item{postLaunchEnabled}{Whether we want to activate post-launch actions.}
 
 \item{tags}{Request to associate tags during creation of a Launch Configuration
 Template.}

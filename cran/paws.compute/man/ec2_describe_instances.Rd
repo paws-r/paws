@@ -66,8 +66,9 @@ instance. Specified as an ID.
 the instance. Specified as an name.
 \item \code{image-id} - The ID of the image used to launch the instance.
 \item \code{instance-id} - The ID of the instance.
-\item \code{instance-lifecycle} - Indicates whether this is a Spot Instance or
-a Scheduled Instance (\code{spot} | \code{scheduled}).
+\item \code{instance-lifecycle} - Indicates whether this is a Spot Instance, a
+Scheduled Instance, or a Capacity Block (\code{spot} | \code{scheduled} |
+\code{capacity-block}).
 \item \code{instance-state-code} - The state of the instance, as a 16-bit
 unsigned integer. The high byte is used for internal purposes and
 should be ignored. The low byte is set based on the state
@@ -92,7 +93,6 @@ and so on).
 8601 format in the UTC time zone (YYYY-MM-DDThh:mm:ss.sssZ), for
 example, \verb{2021-09-29T11:04:43.305Z}. You can use a wildcard (\code{*}),
 for example, \verb{2021-09-29T*}, which matches an entire day.
-\item \code{license-pool} -
 \item \code{maintenance-options.auto-recovery} - The current automatic recovery
 behavior of the instance (\code{disabled} | \code{default}).
 \item \code{metadata-options.http-endpoint} - The status of access to the HTTP
@@ -112,58 +112,94 @@ instance tags from the instance metadata (\code{enabled} | \code{disabled})
 (\code{pending} | \code{applied}).
 \item \code{monitoring-state} - Indicates whether detailed monitoring is
 enabled (\code{disabled} | \code{enabled}).
-\item \code{network-interface.addresses.primary} - Specifies whether the IPv4
-address of the network interface is the primary private IPv4
-address.
-\item \code{network-interface.addresses.private-ip-address} - The private IPv4
-address associated with the network interface.
+\item \code{network-interface.addresses.association.allocation-id} - The
+allocation ID.
+\item \code{network-interface.addresses.association.association-id} - The
+association ID.
+\item \code{network-interface.addresses.association.carrier-ip} - The carrier
+IP address.
+\item \code{network-interface.addresses.association.customer-owned-ip} - The
+customer-owned IP address.
+\item \code{network-interface.addresses.association.ip-owner-id} - The owner ID
+of the private IPv4 address associated with the network interface.
+\item \code{network-interface.addresses.association.public-dns-name} - The
+public DNS name.
 \item \code{network-interface.addresses.association.public-ip} - The ID of the
 association of an Elastic IP address (IPv4) with a network
 interface.
-\item \code{network-interface.addresses.association.ip-owner-id} - The owner ID
-of the private IPv4 address associated with the network interface.
-\item \code{network-interface.association.public-ip} - The address of the
-Elastic IP address (IPv4) bound to the network interface.
-\item \code{network-interface.association.ip-owner-id} - The owner of the
-Elastic IP address (IPv4) associated with the network interface.
+\item \code{network-interface.addresses.primary} - Specifies whether the IPv4
+address of the network interface is the primary private IPv4
+address.
+\item \code{network-interface.addresses.private-dns-name} - The private DNS
+name.
+\item \code{network-interface.addresses.private-ip-address} - The private IPv4
+address associated with the network interface.
 \item \code{network-interface.association.allocation-id} - The allocation ID
 returned when you allocated the Elastic IP address (IPv4) for your
 network interface.
 \item \code{network-interface.association.association-id} - The association ID
 returned when the network interface was associated with an IPv4
 address.
+\item \code{network-interface.association.carrier-ip} - The customer-owned IP
+address.
+\item \code{network-interface.association.customer-owned-ip} - The
+customer-owned IP address.
+\item \code{network-interface.association.ip-owner-id} - The owner of the
+Elastic IP address (IPv4) associated with the network interface.
+\item \code{network-interface.association.public-dns-name} - The public DNS
+name.
+\item \code{network-interface.association.public-ip} - The address of the
+Elastic IP address (IPv4) bound to the network interface.
+\item \code{network-interface.attachment.attach-time} - The time that the
+network interface was attached to an instance.
 \item \code{network-interface.attachment.attachment-id} - The ID of the
 interface attachment.
+\item \code{network-interface.attachment.delete-on-termination} - Specifies
+whether the attachment is deleted when an instance is terminated.
+\item \code{network-interface.attachment.device-index} - The device index to
+which the network interface is attached.
 \item \code{network-interface.attachment.instance-id} - The ID of the instance
 to which the network interface is attached.
 \item \code{network-interface.attachment.instance-owner-id} - The owner ID of
 the instance to which the network interface is attached.
-\item \code{network-interface.attachment.device-index} - The device index to
-which the network interface is attached.
+\item \code{network-interface.attachment.network-card-index} - The index of the
+network card.
 \item \code{network-interface.attachment.status} - The status of the attachment
 (\code{attaching} | \code{attached} | \code{detaching} | \code{detached}).
-\item \code{network-interface.attachment.attach-time} - The time that the
-network interface was attached to an instance.
-\item \code{network-interface.attachment.delete-on-termination} - Specifies
-whether the attachment is deleted when an instance is terminated.
 \item \code{network-interface.availability-zone} - The Availability Zone for
 the network interface.
+\item \code{network-interface.deny-all-igw-traffic} - A Boolean that indicates
+whether a network interface with an IPv6 address is unreachable from
+the public internet.
 \item \code{network-interface.description} - The description of the network
 interface.
 \item \code{network-interface.group-id} - The ID of a security group associated
 with the network interface.
 \item \code{network-interface.group-name} - The name of a security group
 associated with the network interface.
+\item \code{network-interface.ipv4-prefixes.ipv4-prefix} - The IPv4 prefixes
+that are assigned to the network interface.
+\item \code{network-interface.ipv6-address} - The IPv6 address associated with
+the network interface.
 \item \code{network-interface.ipv6-addresses.ipv6-address} - The IPv6 address
 associated with the network interface.
+\item \code{network-interface.ipv6-addresses.is-primary-ipv6} - A Boolean that
+indicates whether this is the primary IPv6 address.
+\item \code{network-interface.ipv6-native} - A Boolean that indicates whether
+this is an IPv6 only network interface.
+\item \code{network-interface.ipv6-prefixes.ipv6-prefix} - The IPv6 prefix
+assigned to the network interface.
 \item \code{network-interface.mac-address} - The MAC address of the network
 interface.
 \item \code{network-interface.network-interface-id} - The ID of the network
 interface.
+\item \code{network-interface.outpost-arn} - The ARN of the Outpost.
 \item \code{network-interface.owner-id} - The ID of the owner of the network
 interface.
 \item \code{network-interface.private-dns-name} - The private DNS name of the
 network interface.
+\item \code{network-interface.private-ip-address} - The private IPv4 address.
+\item \code{network-interface.public-dns-name} - The public DNS name.
 \item \code{network-interface.requester-id} - The requester ID for the network
 interface.
 \item \code{network-interface.requester-managed} - Indicates whether the
@@ -177,6 +213,10 @@ disabled. The value must be \code{false} for the network interface to
 perform network address translation (NAT) in your VPC.
 \item \code{network-interface.subnet-id} - The ID of the subnet for the network
 interface.
+\item \code{network-interface.tag-key} - The key of a tag assigned to the
+network interface.
+\item \code{network-interface.tag-value} - The value of a tag assigned to the
+network interface.
 \item \code{network-interface.vpc-id} - The ID of the VPC for the network
 interface.
 \item \code{outpost-arn} - The Amazon Resource Name (ARN) of the Outpost.

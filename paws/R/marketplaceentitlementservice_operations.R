@@ -75,7 +75,7 @@ marketplaceentitlementservice_get_entitlements <- function(ProductCode, Filter =
     name = "GetEntitlements",
     http_method = "POST",
     http_path = "/",
-    paginator = list()
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
   input <- .marketplaceentitlementservice$get_entitlements_input(ProductCode = ProductCode, Filter = Filter, NextToken = NextToken, MaxResults = MaxResults)
   output <- .marketplaceentitlementservice$get_entitlements_output()

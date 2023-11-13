@@ -8,6 +8,7 @@ connect_get_metric_data_v2(
   ResourceArn,
   StartTime,
   EndTime,
+  Interval = NULL,
   Filters,
   Groupings = NULL,
   Metrics,
@@ -21,18 +22,46 @@ connect_get_metric_data_v2(
 
 \item{StartTime}{[required] The timestamp, in UNIX Epoch time format, at which to start the
 reporting interval for the retrieval of historical metrics data. The
-time must be before the end time timestamp. The time range between the
-start and end time must be less than 24 hours. The start time cannot be
-earlier than 35 days before the time of the request. Historical metrics
-are available for 35 days.}
+time must be before the end time timestamp. The start and end time
+depends on the \code{IntervalPeriod} selected. By default the time range
+between start and end time is 35 days. Historical metrics are available
+for 3 months.}
 
 \item{EndTime}{[required] The timestamp, in UNIX Epoch time format, at which to end the reporting
 interval for the retrieval of historical metrics data. The time must be
 later than the start time timestamp. It cannot be later than the current
-timestamp.
+timestamp.}
 
-The time range between the start and end time must be less than 24
-hours.}
+\item{Interval}{The interval period and timezone to apply to returned metrics.
+\itemize{
+\item \code{IntervalPeriod}: An aggregated grouping applied to request metrics.
+Valid \code{IntervalPeriod} values are: \code{FIFTEEN_MIN} | \code{THIRTY_MIN} |
+\code{HOUR} | \code{DAY} | \code{WEEK} | \code{TOTAL}.
+
+For example, if \code{IntervalPeriod} is selected \code{THIRTY_MIN},
+\code{StartTime} and \code{EndTime} differs by 1 day, then Amazon Connect
+returns 48 results in the response. Each result is aggregated by the
+THIRTY_MIN period. By default Amazon Connect aggregates results
+based on the \code{TOTAL} interval period.
+
+The following list describes restrictions on \code{StartTime} and
+\code{EndTime} based on which \code{IntervalPeriod} is requested.
+\itemize{
+\item \code{FIFTEEN_MIN}: The difference between \code{StartTime} and \code{EndTime}
+must be less than 3 days.
+\item \code{THIRTY_MIN}: The difference between \code{StartTime} and \code{EndTime}
+must be less than 3 days.
+\item \code{HOUR}: The difference between \code{StartTime} and \code{EndTime} must be
+less than 3 days.
+\item \code{DAY}: The difference between \code{StartTime} and \code{EndTime} must be
+less than 35 days.
+\item \code{WEEK}: The difference between \code{StartTime} and \code{EndTime} must be
+less than 35 days.
+\item \code{TOTAL}: The difference between \code{StartTime} and \code{EndTime} must
+be less than 35 days.
+}
+\item \code{TimeZone}: The timezone applied to requested metrics.
+}}
 
 \item{Filters}{[required] The filters to apply to returned metrics. You can filter on the
 following resources:
@@ -88,6 +117,13 @@ each metric. The following historical metrics are available. For a
 description of each metric, see \href{https://docs.aws.amazon.com/connect/latest/adminguide/historical-metrics-definitions.html}{Historical metrics definitions}
 in the \emph{Amazon Connect Administrator's Guide}.
 
+\strong{ABANDONMENT_RATE}
+
+Unit: Percent
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
 \strong{AGENT_ADHERENT_TIME}
 
 This metric is available only in Amazon Web Services Regions where
@@ -105,6 +141,16 @@ Unit: Count
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
 Agent Hierarchy
+
+\strong{AGENT_NON_RESPONSE_WITHOUT_CUSTOMER_ABANDONS}
+
+Unit: Count
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+Data for this metric is available starting from October 1, 2023 0:00:00
+GMT.
 
 \strong{AGENT_OCCUPANCY}
 
@@ -161,16 +207,8 @@ supports the following as \code{INITIATION_METHOD}: \code{INBOUND} | \code{OUTBO
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
 Agent Hierarchy
 
-\strong{AVG_AGENT_CONNECTING_TIME}
-
-Unit: Seconds
-
-Valid metric filter key: \code{INITIATION_METHOD}. For now, this metric only
-supports the following as \code{INITIATION_METHOD}: \code{INBOUND} | \code{OUTBOUND} |
-\code{CALLBACK} | \code{API}
-
-Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
-Agent Hierarchy
+The \code{Negate} key in Metric Level Filters is not applicable for this
+metric.
 
 \strong{AVG_CONTACT_DURATION}
 
@@ -215,6 +253,13 @@ Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
 Agent Hierarchy, Feature
 
 Feature is a valid filter but not a valid grouping.
+
+\strong{AVG_HOLD_TIME_ALL_CONTACTS}
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
 
 \strong{AVG_HOLDS}
 
@@ -277,6 +322,12 @@ Unit: Seconds
 Valid groupings and filters: Queue, Channel, Routing Profile, Feature
 
 Feature is a valid filter but not a valid grouping.
+
+\strong{AVG_RESOLUTION_TIME}
+
+Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile
 
 \strong{AVG_TALK_TIME}
 
@@ -350,6 +401,16 @@ Unit: Count
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
 Agent Hierarchy
 
+\strong{CONTACTS_RESOLVED_IN_X}
+
+Unit: Count
+
+Valid groupings and filters: Queue, Channel, Routing Profile
+
+Threshold: For \code{ThresholdValue} enter any whole number from 1 to 604800
+(inclusive), in seconds. For \code{Comparison}, you must enter \code{LT} (for
+"Less than").
+
 \strong{CONTACTS_TRANSFERRED_OUT}
 
 Unit: Count
@@ -376,6 +437,46 @@ Agent Hierarchy
 \strong{MAX_QUEUED_TIME}
 
 Unit: Seconds
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{PERCENT_NON_TALK_TIME}
+
+This metric is available only for contacts analyzed by Contact Lens
+conversational analytics.
+
+Unit: Percentage
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{PERCENT_TALK_TIME}
+
+This metric is available only for contacts analyzed by Contact Lens
+conversational analytics.
+
+Unit: Percentage
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{PERCENT_TALK_TIME_AGENT}
+
+This metric is available only for contacts analyzed by Contact Lens
+conversational analytics.
+
+Unit: Percentage
+
+Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
+Agent Hierarchy
+
+\strong{PERCENT_TALK_TIME_CUSTOMER}
+
+This metric is available only for contacts analyzed by Contact Lens
+conversational analytics.
+
+Unit: Percentage
 
 Valid groupings and filters: Queue, Channel, Routing Profile, Agent,
 Agent Hierarchy

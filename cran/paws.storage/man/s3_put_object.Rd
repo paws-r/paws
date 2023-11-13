@@ -200,9 +200,10 @@ appropriate for use with the algorithm specified in the
 that the encryption key was transmitted without error.}
 
 \item{SSEKMSKeyId}{If \code{x-amz-server-side-encryption} has a valid value of \code{aws:kms} or
-\code{aws:kms:dsse}, this header specifies the ID of the Key Management
-Service (KMS) symmetric encryption customer managed key that was used
-for the object. If you specify \code{x-amz-server-side-encryption:aws:kms} or
+\code{aws:kms:dsse}, this header specifies the ID (Key ID, Key ARN, or Key
+Alias) of the Key Management Service (KMS) symmetric encryption customer
+managed key that was used for the object. If you specify
+\code{x-amz-server-side-encryption:aws:kms} or
 \code{x-amz-server-side-encryption:aws:kms:dsse}, but do not
 provide\code{ x-amz-server-side-encryption-aws-kms-key-id}, Amazon S3 uses
 the Amazon Web Services managed key (\code{aws/s3}) to protect the data. If

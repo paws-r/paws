@@ -18,14 +18,24 @@ time in an Amazon Web Services Region, App Runner creates revision
 number \code{1} of this name. When you use the same name in subsequent calls,
 App Runner creates incremental revisions of the configuration.
 
-The name \code{DefaultConfiguration} is reserved (it's the configuration that
-App Runner uses if you don't provide a custome one). You can't use it to
-create a new auto scaling configuration, and you can't create a revision
-of it.
+Prior to the release of \href{https://docs.aws.amazon.com/apprunner/latest/relnotes/release-2023-09-22-auto-scale-config.html}{Auto scale configuration enhancements},
+the name \code{DefaultConfiguration} was reserved.
 
-When you want to use your own auto scaling configuration for your App
-Runner service, \emph{create a configuration with a different name}, and then
-provide it when you create or update your service.}
+This restriction is no longer in place. You can now manage
+\code{DefaultConfiguration} the same way you manage your custom auto scaling
+configurations. This means you can do the following with the
+\code{DefaultConfiguration} that App Runner provides:
+\itemize{
+\item Create new revisions of the \code{DefaultConfiguration}.
+\item Delete the revisions of the \code{DefaultConfiguration}.
+\item Delete the auto scaling configuration for which the App Runner
+\code{DefaultConfiguration} was created.
+\item If you delete the auto scaling configuration you can create another
+custom auto scaling configuration with the same
+\code{DefaultConfiguration} name. The original \code{DefaultConfiguration}
+resource provided by App Runner remains in your account unless you
+make changes to it.
+}}
 
 \item{MaxConcurrency}{The maximum number of concurrent requests that you want an instance to
 process. If the number of concurrent requests exceeds this limit, App

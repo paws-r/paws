@@ -221,6 +221,71 @@ wellarchitected_create_profile_share <- function(ProfileArn, SharedWith, ClientR
 }
 .wellarchitected$operations$create_profile_share <- wellarchitected_create_profile_share
 
+#' Create a review template
+#'
+#' @description
+#' Create a review template.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_create_review_template/](https://www.paws-r-sdk.com/docs/wellarchitected_create_review_template/) for full documentation.
+#'
+#' @param TemplateName &#91;required&#93; Name of the review template.
+#' @param Description &#91;required&#93; The review template description.
+#' @param Lenses &#91;required&#93; Lenses applied to the review template.
+#' @param Notes 
+#' @param Tags The tags assigned to the review template.
+#' @param ClientRequestToken &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_create_review_template
+wellarchitected_create_review_template <- function(TemplateName, Description, Lenses, Notes = NULL, Tags = NULL, ClientRequestToken) {
+  op <- new_operation(
+    name = "CreateReviewTemplate",
+    http_method = "POST",
+    http_path = "/reviewTemplates",
+    paginator = list()
+  )
+  input <- .wellarchitected$create_review_template_input(TemplateName = TemplateName, Description = Description, Lenses = Lenses, Notes = Notes, Tags = Tags, ClientRequestToken = ClientRequestToken)
+  output <- .wellarchitected$create_review_template_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$create_review_template <- wellarchitected_create_review_template
+
+#' Create a review template share
+#'
+#' @description
+#' Create a review template share.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_create_template_share/](https://www.paws-r-sdk.com/docs/wellarchitected_create_template_share/) for full documentation.
+#'
+#' @param TemplateArn &#91;required&#93; The review template ARN.
+#' @param SharedWith &#91;required&#93; 
+#' @param ClientRequestToken &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_create_template_share
+wellarchitected_create_template_share <- function(TemplateArn, SharedWith, ClientRequestToken) {
+  op <- new_operation(
+    name = "CreateTemplateShare",
+    http_method = "POST",
+    http_path = "/templates/shares/{TemplateArn}",
+    paginator = list()
+  )
+  input <- .wellarchitected$create_template_share_input(TemplateArn = TemplateArn, SharedWith = SharedWith, ClientRequestToken = ClientRequestToken)
+  output <- .wellarchitected$create_template_share_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$create_template_share <- wellarchitected_create_template_share
+
 #' Create a new workload
 #'
 #' @description
@@ -247,18 +312,19 @@ wellarchitected_create_profile_share <- function(ProfileArn, SharedWith, ClientR
 #' workload.
 #' @param Applications List of AppRegistry application ARNs associated to the workload.
 #' @param ProfileArns The list of profile ARNs associated with the workload.
+#' @param ReviewTemplateArns The list of review template ARNs to associate with the workload.
 #'
 #' @keywords internal
 #'
 #' @rdname wellarchitected_create_workload
-wellarchitected_create_workload <- function(WorkloadName, Description, Environment, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IndustryType = NULL, Industry = NULL, Lenses, Notes = NULL, ClientRequestToken, Tags = NULL, DiscoveryConfig = NULL, Applications = NULL, ProfileArns = NULL) {
+wellarchitected_create_workload <- function(WorkloadName, Description, Environment, AccountIds = NULL, AwsRegions = NULL, NonAwsRegions = NULL, PillarPriorities = NULL, ArchitecturalDesign = NULL, ReviewOwner = NULL, IndustryType = NULL, Industry = NULL, Lenses, Notes = NULL, ClientRequestToken, Tags = NULL, DiscoveryConfig = NULL, Applications = NULL, ProfileArns = NULL, ReviewTemplateArns = NULL) {
   op <- new_operation(
     name = "CreateWorkload",
     http_method = "POST",
     http_path = "/workloads",
     paginator = list()
   )
-  input <- .wellarchitected$create_workload_input(WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IndustryType = IndustryType, Industry = Industry, Lenses = Lenses, Notes = Notes, ClientRequestToken = ClientRequestToken, Tags = Tags, DiscoveryConfig = DiscoveryConfig, Applications = Applications, ProfileArns = ProfileArns)
+  input <- .wellarchitected$create_workload_input(WorkloadName = WorkloadName, Description = Description, Environment = Environment, AccountIds = AccountIds, AwsRegions = AwsRegions, NonAwsRegions = NonAwsRegions, PillarPriorities = PillarPriorities, ArchitecturalDesign = ArchitecturalDesign, ReviewOwner = ReviewOwner, IndustryType = IndustryType, Industry = Industry, Lenses = Lenses, Notes = Notes, ClientRequestToken = ClientRequestToken, Tags = Tags, DiscoveryConfig = DiscoveryConfig, Applications = Applications, ProfileArns = ProfileArns, ReviewTemplateArns = ReviewTemplateArns)
   output <- .wellarchitected$create_workload_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -422,6 +488,67 @@ wellarchitected_delete_profile_share <- function(ShareId, ProfileArn, ClientRequ
   return(response)
 }
 .wellarchitected$operations$delete_profile_share <- wellarchitected_delete_profile_share
+
+#' Delete a review template
+#'
+#' @description
+#' Delete a review template.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_delete_review_template/](https://www.paws-r-sdk.com/docs/wellarchitected_delete_review_template/) for full documentation.
+#'
+#' @param TemplateArn &#91;required&#93; The review template ARN.
+#' @param ClientRequestToken &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_delete_review_template
+wellarchitected_delete_review_template <- function(TemplateArn, ClientRequestToken) {
+  op <- new_operation(
+    name = "DeleteReviewTemplate",
+    http_method = "DELETE",
+    http_path = "/reviewTemplates/{TemplateArn}",
+    paginator = list()
+  )
+  input <- .wellarchitected$delete_review_template_input(TemplateArn = TemplateArn, ClientRequestToken = ClientRequestToken)
+  output <- .wellarchitected$delete_review_template_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$delete_review_template <- wellarchitected_delete_review_template
+
+#' Delete a review template share
+#'
+#' @description
+#' Delete a review template share.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_delete_template_share/](https://www.paws-r-sdk.com/docs/wellarchitected_delete_template_share/) for full documentation.
+#'
+#' @param ShareId &#91;required&#93; 
+#' @param TemplateArn &#91;required&#93; The review template ARN.
+#' @param ClientRequestToken &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_delete_template_share
+wellarchitected_delete_template_share <- function(ShareId, TemplateArn, ClientRequestToken) {
+  op <- new_operation(
+    name = "DeleteTemplateShare",
+    http_method = "DELETE",
+    http_path = "/templates/shares/{TemplateArn}/{ShareId}",
+    paginator = list()
+  )
+  input <- .wellarchitected$delete_template_share_input(ShareId = ShareId, TemplateArn = TemplateArn, ClientRequestToken = ClientRequestToken)
+  output <- .wellarchitected$delete_template_share_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$delete_template_share <- wellarchitected_delete_template_share
 
 #' Delete an existing workload
 #'
@@ -851,6 +978,96 @@ wellarchitected_get_profile_template <- function() {
 }
 .wellarchitected$operations$get_profile_template <- wellarchitected_get_profile_template
 
+#' Get review template
+#'
+#' @description
+#' Get review template.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_review_template/](https://www.paws-r-sdk.com/docs/wellarchitected_get_review_template/) for full documentation.
+#'
+#' @param TemplateArn &#91;required&#93; The review template ARN.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_get_review_template
+wellarchitected_get_review_template <- function(TemplateArn) {
+  op <- new_operation(
+    name = "GetReviewTemplate",
+    http_method = "GET",
+    http_path = "/reviewTemplates/{TemplateArn}",
+    paginator = list()
+  )
+  input <- .wellarchitected$get_review_template_input(TemplateArn = TemplateArn)
+  output <- .wellarchitected$get_review_template_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$get_review_template <- wellarchitected_get_review_template
+
+#' Get review template answer
+#'
+#' @description
+#' Get review template answer.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_review_template_answer/](https://www.paws-r-sdk.com/docs/wellarchitected_get_review_template_answer/) for full documentation.
+#'
+#' @param TemplateArn &#91;required&#93; The review template ARN.
+#' @param LensAlias &#91;required&#93; 
+#' @param QuestionId &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_get_review_template_answer
+wellarchitected_get_review_template_answer <- function(TemplateArn, LensAlias, QuestionId) {
+  op <- new_operation(
+    name = "GetReviewTemplateAnswer",
+    http_method = "GET",
+    http_path = "/reviewTemplates/{TemplateArn}/lensReviews/{LensAlias}/answers/{QuestionId}",
+    paginator = list()
+  )
+  input <- .wellarchitected$get_review_template_answer_input(TemplateArn = TemplateArn, LensAlias = LensAlias, QuestionId = QuestionId)
+  output <- .wellarchitected$get_review_template_answer_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$get_review_template_answer <- wellarchitected_get_review_template_answer
+
+#' Get a lens review associated with a review template
+#'
+#' @description
+#' Get a lens review associated with a review template.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_get_review_template_lens_review/](https://www.paws-r-sdk.com/docs/wellarchitected_get_review_template_lens_review/) for full documentation.
+#'
+#' @param TemplateArn &#91;required&#93; The review template ARN.
+#' @param LensAlias &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_get_review_template_lens_review
+wellarchitected_get_review_template_lens_review <- function(TemplateArn, LensAlias) {
+  op <- new_operation(
+    name = "GetReviewTemplateLensReview",
+    http_method = "GET",
+    http_path = "/reviewTemplates/{TemplateArn}/lensReviews/{LensAlias}",
+    paginator = list()
+  )
+  input <- .wellarchitected$get_review_template_lens_review_input(TemplateArn = TemplateArn, LensAlias = LensAlias)
+  output <- .wellarchitected$get_review_template_lens_review_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$get_review_template_lens_review <- wellarchitected_get_review_template_lens_review
+
 #' Get an existing workload
 #'
 #' @description
@@ -1093,8 +1310,8 @@ wellarchitected_list_lens_reviews <- function(WorkloadId, MilestoneNumber = NULL
 #' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_lens_shares/](https://www.paws-r-sdk.com/docs/wellarchitected_list_lens_shares/) for full documentation.
 #'
 #' @param LensAlias &#91;required&#93; 
-#' @param SharedWithPrefix The Amazon Web Services account ID, IAM role, organization ID, or
-#' organizational unit (OU) ID with which the lens is shared.
+#' @param SharedWithPrefix The Amazon Web Services account ID, organization ID, or organizational
+#' unit (OU) ID with which the lens is shared.
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
 #' @param Status 
@@ -1193,18 +1410,21 @@ wellarchitected_list_milestones <- function(WorkloadId, NextToken = NULL, MaxRes
 #' @param WorkloadId 
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
+#' @param ResourceArn The ARN for the related resource for the notification.
+#' 
+#' Only one of `WorkloadID` or `ResourceARN` should be specified.
 #'
 #' @keywords internal
 #'
 #' @rdname wellarchitected_list_notifications
-wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NULL, MaxResults = NULL) {
+wellarchitected_list_notifications <- function(WorkloadId = NULL, NextToken = NULL, MaxResults = NULL, ResourceArn = NULL) {
   op <- new_operation(
     name = "ListNotifications",
     http_method = "POST",
     http_path = "/notifications",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .wellarchitected$list_notifications_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults)
+  input <- .wellarchitected$list_notifications_input(WorkloadId = WorkloadId, NextToken = NextToken, MaxResults = MaxResults, ResourceArn = ResourceArn)
   output <- .wellarchitected$list_notifications_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -1253,8 +1473,8 @@ wellarchitected_list_profile_notifications <- function(WorkloadId = NULL, NextTo
 #' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_profile_shares/](https://www.paws-r-sdk.com/docs/wellarchitected_list_profile_shares/) for full documentation.
 #'
 #' @param ProfileArn &#91;required&#93; The profile ARN.
-#' @param SharedWithPrefix The Amazon Web Services account ID, IAM role, organization ID, or
-#' organizational unit (OU) ID with which the profile is shared.
+#' @param SharedWithPrefix The Amazon Web Services account ID, organization ID, or organizational
+#' unit (OU) ID with which the profile is shared.
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
 #' @param Status 
@@ -1286,7 +1506,8 @@ wellarchitected_list_profile_shares <- function(ProfileArn, SharedWithPrefix = N
 #'
 #' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_profiles/](https://www.paws-r-sdk.com/docs/wellarchitected_list_profiles/) for full documentation.
 #'
-#' @param ProfileNamePrefix Prefix for profile name.
+#' @param ProfileNamePrefix An optional string added to the beginning of each profile name returned
+#' in the results.
 #' @param ProfileOwnerType Profile owner type.
 #' @param NextToken 
 #' @param MaxResults 
@@ -1311,10 +1532,73 @@ wellarchitected_list_profiles <- function(ProfileNamePrefix = NULL, ProfileOwner
 }
 .wellarchitected$operations$list_profiles <- wellarchitected_list_profiles
 
-#' List the workload invitations
+#' List the answers of a review template
 #'
 #' @description
-#' List the workload invitations.
+#' List the answers of a review template.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_review_template_answers/](https://www.paws-r-sdk.com/docs/wellarchitected_list_review_template_answers/) for full documentation.
+#'
+#' @param TemplateArn &#91;required&#93; The ARN of the review template.
+#' @param LensAlias &#91;required&#93; 
+#' @param PillarId 
+#' @param NextToken 
+#' @param MaxResults The maximum number of results to return for this request.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_review_template_answers
+wellarchitected_list_review_template_answers <- function(TemplateArn, LensAlias, PillarId = NULL, NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListReviewTemplateAnswers",
+    http_method = "GET",
+    http_path = "/reviewTemplates/{TemplateArn}/lensReviews/{LensAlias}/answers",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .wellarchitected$list_review_template_answers_input(TemplateArn = TemplateArn, LensAlias = LensAlias, PillarId = PillarId, NextToken = NextToken, MaxResults = MaxResults)
+  output <- .wellarchitected$list_review_template_answers_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_review_template_answers <- wellarchitected_list_review_template_answers
+
+#' List review templates
+#'
+#' @description
+#' List review templates.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_review_templates/](https://www.paws-r-sdk.com/docs/wellarchitected_list_review_templates/) for full documentation.
+#'
+#' @param NextToken 
+#' @param MaxResults 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_review_templates
+wellarchitected_list_review_templates <- function(NextToken = NULL, MaxResults = NULL) {
+  op <- new_operation(
+    name = "ListReviewTemplates",
+    http_method = "GET",
+    http_path = "/reviewTemplates",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .wellarchitected$list_review_templates_input(NextToken = NextToken, MaxResults = MaxResults)
+  output <- .wellarchitected$list_review_templates_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_review_templates <- wellarchitected_list_review_templates
+
+#' List the share invitations
+#'
+#' @description
+#' List the share invitations.
 #'
 #' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_share_invitations/](https://www.paws-r-sdk.com/docs/wellarchitected_list_share_invitations/) for full documentation.
 #'
@@ -1324,19 +1608,22 @@ wellarchitected_list_profiles <- function(ProfileNamePrefix = NULL, ProfileOwner
 #' @param ShareResourceType The type of share invitations to be returned.
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
-#' @param ProfileNamePrefix Profile name prefix.
+#' @param ProfileNamePrefix An optional string added to the beginning of each profile name returned
+#' in the results.
+#' @param TemplateNamePrefix An optional string added to the beginning of each review template name
+#' returned in the results.
 #'
 #' @keywords internal
 #'
 #' @rdname wellarchitected_list_share_invitations
-wellarchitected_list_share_invitations <- function(WorkloadNamePrefix = NULL, LensNamePrefix = NULL, ShareResourceType = NULL, NextToken = NULL, MaxResults = NULL, ProfileNamePrefix = NULL) {
+wellarchitected_list_share_invitations <- function(WorkloadNamePrefix = NULL, LensNamePrefix = NULL, ShareResourceType = NULL, NextToken = NULL, MaxResults = NULL, ProfileNamePrefix = NULL, TemplateNamePrefix = NULL) {
   op <- new_operation(
     name = "ListShareInvitations",
     http_method = "GET",
     http_path = "/shareInvitations",
     paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
   )
-  input <- .wellarchitected$list_share_invitations_input(WorkloadNamePrefix = WorkloadNamePrefix, LensNamePrefix = LensNamePrefix, ShareResourceType = ShareResourceType, NextToken = NextToken, MaxResults = MaxResults, ProfileNamePrefix = ProfileNamePrefix)
+  input <- .wellarchitected$list_share_invitations_input(WorkloadNamePrefix = WorkloadNamePrefix, LensNamePrefix = LensNamePrefix, ShareResourceType = ShareResourceType, NextToken = NextToken, MaxResults = MaxResults, ProfileNamePrefix = ProfileNamePrefix, TemplateNamePrefix = TemplateNamePrefix)
   output <- .wellarchitected$list_share_invitations_output()
   config <- get_config()
   svc <- .wellarchitected$service(config)
@@ -1375,6 +1662,40 @@ wellarchitected_list_tags_for_resource <- function(WorkloadArn) {
 }
 .wellarchitected$operations$list_tags_for_resource <- wellarchitected_list_tags_for_resource
 
+#' List review template shares
+#'
+#' @description
+#' List review template shares.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_template_shares/](https://www.paws-r-sdk.com/docs/wellarchitected_list_template_shares/) for full documentation.
+#'
+#' @param TemplateArn &#91;required&#93; The review template ARN.
+#' @param SharedWithPrefix The Amazon Web Services account ID, organization ID, or organizational
+#' unit (OU) ID with which the profile is shared.
+#' @param NextToken 
+#' @param MaxResults The maximum number of results to return for this request.
+#' @param Status 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_list_template_shares
+wellarchitected_list_template_shares <- function(TemplateArn, SharedWithPrefix = NULL, NextToken = NULL, MaxResults = NULL, Status = NULL) {
+  op <- new_operation(
+    name = "ListTemplateShares",
+    http_method = "GET",
+    http_path = "/templates/shares/{TemplateArn}",
+    paginator = list(input_token = "NextToken", output_token = "NextToken", limit_key = "MaxResults")
+  )
+  input <- .wellarchitected$list_template_shares_input(TemplateArn = TemplateArn, SharedWithPrefix = SharedWithPrefix, NextToken = NextToken, MaxResults = MaxResults, Status = Status)
+  output <- .wellarchitected$list_template_shares_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$list_template_shares <- wellarchitected_list_template_shares
+
 #' List the workload shares associated with the workload
 #'
 #' @description
@@ -1383,8 +1704,8 @@ wellarchitected_list_tags_for_resource <- function(WorkloadArn) {
 #' See [https://www.paws-r-sdk.com/docs/wellarchitected_list_workload_shares/](https://www.paws-r-sdk.com/docs/wellarchitected_list_workload_shares/) for full documentation.
 #'
 #' @param WorkloadId &#91;required&#93; 
-#' @param SharedWithPrefix The Amazon Web Services account ID, IAM role, organization ID, or
-#' organizational unit (OU) ID with which the workload is shared.
+#' @param SharedWithPrefix The Amazon Web Services account ID, organization ID, or organizational
+#' unit (OU) ID with which the workload is shared.
 #' @param NextToken 
 #' @param MaxResults The maximum number of results to return for this request.
 #' @param Status 
@@ -1632,6 +1953,109 @@ wellarchitected_update_profile <- function(ProfileArn, ProfileDescription = NULL
 }
 .wellarchitected$operations$update_profile <- wellarchitected_update_profile
 
+#' Update a review template
+#'
+#' @description
+#' Update a review template.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_update_review_template/](https://www.paws-r-sdk.com/docs/wellarchitected_update_review_template/) for full documentation.
+#'
+#' @param TemplateArn &#91;required&#93; The review template ARN.
+#' @param TemplateName The review template name.
+#' @param Description The review template description.
+#' @param Notes 
+#' @param LensesToAssociate A list of lens aliases or ARNs to apply to the review template.
+#' @param LensesToDisassociate A list of lens aliases or ARNs to unapply to the review template. The
+#' `wellarchitected` lens cannot be unapplied.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_update_review_template
+wellarchitected_update_review_template <- function(TemplateArn, TemplateName = NULL, Description = NULL, Notes = NULL, LensesToAssociate = NULL, LensesToDisassociate = NULL) {
+  op <- new_operation(
+    name = "UpdateReviewTemplate",
+    http_method = "PATCH",
+    http_path = "/reviewTemplates/{TemplateArn}",
+    paginator = list()
+  )
+  input <- .wellarchitected$update_review_template_input(TemplateArn = TemplateArn, TemplateName = TemplateName, Description = Description, Notes = Notes, LensesToAssociate = LensesToAssociate, LensesToDisassociate = LensesToDisassociate)
+  output <- .wellarchitected$update_review_template_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$update_review_template <- wellarchitected_update_review_template
+
+#' Update a review template answer
+#'
+#' @description
+#' Update a review template answer.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_update_review_template_answer/](https://www.paws-r-sdk.com/docs/wellarchitected_update_review_template_answer/) for full documentation.
+#'
+#' @param TemplateArn &#91;required&#93; The review template ARN.
+#' @param LensAlias &#91;required&#93; 
+#' @param QuestionId &#91;required&#93; 
+#' @param SelectedChoices 
+#' @param ChoiceUpdates A list of choices to be updated.
+#' @param Notes 
+#' @param IsApplicable 
+#' @param Reason The update reason.
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_update_review_template_answer
+wellarchitected_update_review_template_answer <- function(TemplateArn, LensAlias, QuestionId, SelectedChoices = NULL, ChoiceUpdates = NULL, Notes = NULL, IsApplicable = NULL, Reason = NULL) {
+  op <- new_operation(
+    name = "UpdateReviewTemplateAnswer",
+    http_method = "PATCH",
+    http_path = "/reviewTemplates/{TemplateArn}/lensReviews/{LensAlias}/answers/{QuestionId}",
+    paginator = list()
+  )
+  input <- .wellarchitected$update_review_template_answer_input(TemplateArn = TemplateArn, LensAlias = LensAlias, QuestionId = QuestionId, SelectedChoices = SelectedChoices, ChoiceUpdates = ChoiceUpdates, Notes = Notes, IsApplicable = IsApplicable, Reason = Reason)
+  output <- .wellarchitected$update_review_template_answer_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$update_review_template_answer <- wellarchitected_update_review_template_answer
+
+#' Update a lens review associated with a review template
+#'
+#' @description
+#' Update a lens review associated with a review template.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_update_review_template_lens_review/](https://www.paws-r-sdk.com/docs/wellarchitected_update_review_template_lens_review/) for full documentation.
+#'
+#' @param TemplateArn &#91;required&#93; The review template ARN.
+#' @param LensAlias &#91;required&#93; 
+#' @param LensNotes 
+#' @param PillarNotes 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_update_review_template_lens_review
+wellarchitected_update_review_template_lens_review <- function(TemplateArn, LensAlias, LensNotes = NULL, PillarNotes = NULL) {
+  op <- new_operation(
+    name = "UpdateReviewTemplateLensReview",
+    http_method = "PATCH",
+    http_path = "/reviewTemplates/{TemplateArn}/lensReviews/{LensAlias}",
+    paginator = list()
+  )
+  input <- .wellarchitected$update_review_template_lens_review_input(TemplateArn = TemplateArn, LensAlias = LensAlias, LensNotes = LensNotes, PillarNotes = PillarNotes)
+  output <- .wellarchitected$update_review_template_lens_review_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$update_review_template_lens_review <- wellarchitected_update_review_template_lens_review
+
 #' Update a workload or custom lens share invitation
 #'
 #' @description
@@ -1807,3 +2231,34 @@ wellarchitected_upgrade_profile_version <- function(WorkloadId, ProfileArn, Mile
   return(response)
 }
 .wellarchitected$operations$upgrade_profile_version <- wellarchitected_upgrade_profile_version
+
+#' Upgrade the lens review of a review template
+#'
+#' @description
+#' Upgrade the lens review of a review template.
+#'
+#' See [https://www.paws-r-sdk.com/docs/wellarchitected_upgrade_review_template_lens_review/](https://www.paws-r-sdk.com/docs/wellarchitected_upgrade_review_template_lens_review/) for full documentation.
+#'
+#' @param TemplateArn &#91;required&#93; The ARN of the review template.
+#' @param LensAlias &#91;required&#93; 
+#' @param ClientRequestToken 
+#'
+#' @keywords internal
+#'
+#' @rdname wellarchitected_upgrade_review_template_lens_review
+wellarchitected_upgrade_review_template_lens_review <- function(TemplateArn, LensAlias, ClientRequestToken = NULL) {
+  op <- new_operation(
+    name = "UpgradeReviewTemplateLensReview",
+    http_method = "PUT",
+    http_path = "/reviewTemplates/{TemplateArn}/lensReviews/{LensAlias}/upgrade",
+    paginator = list()
+  )
+  input <- .wellarchitected$upgrade_review_template_lens_review_input(TemplateArn = TemplateArn, LensAlias = LensAlias, ClientRequestToken = ClientRequestToken)
+  output <- .wellarchitected$upgrade_review_template_lens_review_output()
+  config <- get_config()
+  svc <- .wellarchitected$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.wellarchitected$operations$upgrade_review_template_lens_review <- wellarchitected_upgrade_review_template_lens_review

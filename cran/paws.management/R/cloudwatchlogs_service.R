@@ -53,9 +53,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -126,11 +126,16 @@ NULL
 #' \tabular{ll}{
 #'  \link[=cloudwatchlogs_associate_kms_key]{associate_kms_key} \tab Associates the specified KMS key with either one log group in the account, or with all stored CloudWatch Logs query insights results in the account\cr
 #'  \link[=cloudwatchlogs_cancel_export_task]{cancel_export_task} \tab Cancels the specified export task\cr
+#'  \link[=cloudwatchlogs_create_delivery]{create_delivery} \tab Creates a delivery\cr
 #'  \link[=cloudwatchlogs_create_export_task]{create_export_task} \tab Creates an export task so that you can efficiently export data from a log group to an Amazon S3 bucket\cr
 #'  \link[=cloudwatchlogs_create_log_group]{create_log_group} \tab Creates a log group with the specified name\cr
 #'  \link[=cloudwatchlogs_create_log_stream]{create_log_stream} \tab Creates a log stream for the specified log group\cr
 #'  \link[=cloudwatchlogs_delete_account_policy]{delete_account_policy} \tab Deletes a CloudWatch Logs account policy\cr
 #'  \link[=cloudwatchlogs_delete_data_protection_policy]{delete_data_protection_policy} \tab Deletes the data protection policy from the specified log group\cr
+#'  \link[=cloudwatchlogs_delete_delivery]{delete_delivery} \tab Deletes s delivery\cr
+#'  \link[=cloudwatchlogs_delete_delivery_destination]{delete_delivery_destination} \tab Deletes a delivery destination\cr
+#'  \link[=cloudwatchlogs_delete_delivery_destination_policy]{delete_delivery_destination_policy} \tab Deletes a delivery destination policy\cr
+#'  \link[=cloudwatchlogs_delete_delivery_source]{delete_delivery_source} \tab Deletes a delivery source\cr
 #'  \link[=cloudwatchlogs_delete_destination]{delete_destination} \tab Deletes the specified destination, and eventually disables all the subscription filters that publish to it\cr
 #'  \link[=cloudwatchlogs_delete_log_group]{delete_log_group} \tab Deletes the specified log group and permanently deletes all the archived log events associated with the log group\cr
 #'  \link[=cloudwatchlogs_delete_log_stream]{delete_log_stream} \tab Deletes the specified log stream and permanently deletes all the archived log events associated with the log stream\cr
@@ -140,6 +145,9 @@ NULL
 #'  \link[=cloudwatchlogs_delete_retention_policy]{delete_retention_policy} \tab Deletes the specified retention policy\cr
 #'  \link[=cloudwatchlogs_delete_subscription_filter]{delete_subscription_filter} \tab Deletes the specified subscription filter\cr
 #'  \link[=cloudwatchlogs_describe_account_policies]{describe_account_policies} \tab Returns a list of all CloudWatch Logs account policies in the account\cr
+#'  \link[=cloudwatchlogs_describe_deliveries]{describe_deliveries} \tab Retrieves a list of the deliveries that have been created in the account\cr
+#'  \link[=cloudwatchlogs_describe_delivery_destinations]{describe_delivery_destinations} \tab Retrieves a list of the delivery destinations that have been created in the account\cr
+#'  \link[=cloudwatchlogs_describe_delivery_sources]{describe_delivery_sources} \tab Retrieves a list of the delivery sources that have been created in the account\cr
 #'  \link[=cloudwatchlogs_describe_destinations]{describe_destinations} \tab Lists all your destinations\cr
 #'  \link[=cloudwatchlogs_describe_export_tasks]{describe_export_tasks} \tab Lists the specified export tasks\cr
 #'  \link[=cloudwatchlogs_describe_log_groups]{describe_log_groups} \tab Lists the specified log groups\cr
@@ -152,6 +160,10 @@ NULL
 #'  \link[=cloudwatchlogs_disassociate_kms_key]{disassociate_kms_key} \tab Disassociates the specified KMS key from the specified log group or from all CloudWatch Logs Insights query results in the account\cr
 #'  \link[=cloudwatchlogs_filter_log_events]{filter_log_events} \tab Lists log events from the specified log group\cr
 #'  \link[=cloudwatchlogs_get_data_protection_policy]{get_data_protection_policy} \tab Returns information about a log group data protection policy\cr
+#'  \link[=cloudwatchlogs_get_delivery]{get_delivery} \tab Returns complete information about one delivery\cr
+#'  \link[=cloudwatchlogs_get_delivery_destination]{get_delivery_destination} \tab Retrieves complete information about one delivery destination\cr
+#'  \link[=cloudwatchlogs_get_delivery_destination_policy]{get_delivery_destination_policy} \tab Retrieves the delivery destination policy assigned to the delivery destination that you specify\cr
+#'  \link[=cloudwatchlogs_get_delivery_source]{get_delivery_source} \tab Retrieves complete information about one delivery source\cr
 #'  \link[=cloudwatchlogs_get_log_events]{get_log_events} \tab Lists log events from the specified log stream\cr
 #'  \link[=cloudwatchlogs_get_log_group_fields]{get_log_group_fields} \tab Returns a list of the fields that are included in log events in the specified log group\cr
 #'  \link[=cloudwatchlogs_get_log_record]{get_log_record} \tab Retrieves all of the fields and values of a single log event\cr
@@ -160,6 +172,9 @@ NULL
 #'  \link[=cloudwatchlogs_list_tags_log_group]{list_tags_log_group} \tab The ListTagsLogGroup operation is on the path to deprecation\cr
 #'  \link[=cloudwatchlogs_put_account_policy]{put_account_policy} \tab Creates an account-level data protection policy that applies to all log groups in the account\cr
 #'  \link[=cloudwatchlogs_put_data_protection_policy]{put_data_protection_policy} \tab Creates a data protection policy for the specified log group\cr
+#'  \link[=cloudwatchlogs_put_delivery_destination]{put_delivery_destination} \tab Creates or updates a logical delivery destination\cr
+#'  \link[=cloudwatchlogs_put_delivery_destination_policy]{put_delivery_destination_policy} \tab Creates and assigns an IAM policy that grants permissions to CloudWatch Logs to deliver logs cross-account to a specified destination in this account\cr
+#'  \link[=cloudwatchlogs_put_delivery_source]{put_delivery_source} \tab Creates or updates a logical delivery source\cr
 #'  \link[=cloudwatchlogs_put_destination]{put_destination} \tab Creates or updates a destination\cr
 #'  \link[=cloudwatchlogs_put_destination_policy]{put_destination_policy} \tab Creates or updates an access policy associated with an existing destination\cr
 #'  \link[=cloudwatchlogs_put_log_events]{put_log_events} \tab Uploads a batch of log events to the specified log stream\cr

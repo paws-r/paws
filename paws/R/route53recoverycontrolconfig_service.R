@@ -20,9 +20,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -103,6 +103,7 @@ NULL
 #'  \link[=route53recoverycontrolconfig_describe_control_panel]{describe_control_panel} \tab Displays details about a control panel\cr
 #'  \link[=route53recoverycontrolconfig_describe_routing_control]{describe_routing_control} \tab Displays details about a routing control\cr
 #'  \link[=route53recoverycontrolconfig_describe_safety_rule]{describe_safety_rule} \tab Returns information about a safety rule\cr
+#'  \link[=route53recoverycontrolconfig_get_resource_policy]{get_resource_policy} \tab Get information about the resource policy for a cluster\cr
 #'  \link[=route53recoverycontrolconfig_list_associated_route_53_health_checks]{list_associated_route_53_health_checks} \tab Returns an array of all Amazon Route 53 health checks associated with a specific routing control\cr
 #'  \link[=route53recoverycontrolconfig_list_clusters]{list_clusters} \tab Returns an array of all the clusters in an account\cr
 #'  \link[=route53recoverycontrolconfig_list_control_panels]{list_control_panels} \tab Returns an array of control panels in an account or in a cluster\cr

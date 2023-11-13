@@ -486,7 +486,7 @@ fsx_create_file_cache <- function(ClientRequestToken = NULL, FileCacheType, File
 #' @param LustreConfiguration 
 #' @param OntapConfiguration 
 #' @param FileSystemTypeVersion (Optional) For FSx for Lustre file systems, sets the Lustre version for
-#' the file system that you're creating. Valid values are `2.10`, `2.12`m
+#' the file system that you're creating. Valid values are `2.10`, `2.12`,
 #' and `2.15`:
 #' 
 #' -   2.10 is supported by the Scratch and Persistent_1 Lustre deployment
@@ -1469,6 +1469,38 @@ fsx_restore_volume_from_snapshot <- function(ClientRequestToken = NULL, VolumeId
   return(response)
 }
 .fsx$operations$restore_volume_from_snapshot <- fsx_restore_volume_from_snapshot
+
+#' After performing steps to repair the Active Directory configuration of
+#' an FSx for Windows File Server file system, use this action to initiate
+#' the process of Amazon FSx attempting to reconnect to the file system
+#'
+#' @description
+#' After performing steps to repair the Active Directory configuration of an FSx for Windows File Server file system, use this action to initiate the process of Amazon FSx attempting to reconnect to the file system.
+#'
+#' See [https://www.paws-r-sdk.com/docs/fsx_start_misconfigured_state_recovery/](https://www.paws-r-sdk.com/docs/fsx_start_misconfigured_state_recovery/) for full documentation.
+#'
+#' @param ClientRequestToken 
+#' @param FileSystemId &#91;required&#93; 
+#'
+#' @keywords internal
+#'
+#' @rdname fsx_start_misconfigured_state_recovery
+fsx_start_misconfigured_state_recovery <- function(ClientRequestToken = NULL, FileSystemId) {
+  op <- new_operation(
+    name = "StartMisconfiguredStateRecovery",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .fsx$start_misconfigured_state_recovery_input(ClientRequestToken = ClientRequestToken, FileSystemId = FileSystemId)
+  output <- .fsx$start_misconfigured_state_recovery_output()
+  config <- get_config()
+  svc <- .fsx$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.fsx$operations$start_misconfigured_state_recovery <- fsx_start_misconfigured_state_recovery
 
 #' Tags an Amazon FSx resource
 #'

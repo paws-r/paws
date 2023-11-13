@@ -940,7 +940,8 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' docdb_create_db_instance(DBInstanceIdentifier, DBInstanceClass, Engine,
 #'   AvailabilityZone, PreferredMaintenanceWindow, AutoMinorVersionUpgrade,
 #'   Tags, DBClusterIdentifier, CopyTagsToSnapshot, PromotionTier,
-#'   EnablePerformanceInsights, PerformanceInsightsKMSKeyId)
+#'   EnablePerformanceInsights, PerformanceInsightsKMSKeyId,
+#'   CACertificateIdentifier)
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The instance identifier. This parameter is stored as a lowercase string.
 #' 
@@ -1004,6 +1005,14 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' Amazon DocumentDB uses your default KMS key. There is a default KMS key
 #' for your Amazon Web Services account. Your Amazon Web Services account
 #' has a different default KMS key for each Amazon Web Services region.
+#' @param CACertificateIdentifier The CA certificate identifier to use for the DB instance's server
+#' certificate.
+#' 
+#' For more information, see [Updating Your Amazon DocumentDB TLS
+#' Certificates](https://docs.aws.amazon.com/documentdb/latest/developerguide/ca_cert_rotation.html)
+#' and [Encrypting Data in
+#' Transit](https://docs.aws.amazon.com/documentdb/latest/developerguide/security.encryption.ssl.html)
+#' in the *Amazon DocumentDB Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -1095,6 +1104,12 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #'     DBInstanceArn = "string",
 #'     EnabledCloudwatchLogsExports = list(
 #'       "string"
+#'     ),
+#'     CertificateDetails = list(
+#'       CAIdentifier = "string",
+#'       ValidTill = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -1119,7 +1134,8 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #'   CopyTagsToSnapshot = TRUE|FALSE,
 #'   PromotionTier = 123,
 #'   EnablePerformanceInsights = TRUE|FALSE,
-#'   PerformanceInsightsKMSKeyId = "string"
+#'   PerformanceInsightsKMSKeyId = "string",
+#'   CACertificateIdentifier = "string"
 #' )
 #' ```
 #'
@@ -1128,14 +1144,14 @@ docdb_create_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier, DBClus
 #' @rdname docdb_create_db_instance
 #'
 #' @aliases docdb_create_db_instance
-docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engine, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, Tags = NULL, DBClusterIdentifier, CopyTagsToSnapshot = NULL, PromotionTier = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL) {
+docdb_create_db_instance <- function(DBInstanceIdentifier, DBInstanceClass, Engine, AvailabilityZone = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, Tags = NULL, DBClusterIdentifier, CopyTagsToSnapshot = NULL, PromotionTier = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, CACertificateIdentifier = NULL) {
   op <- new_operation(
     name = "CreateDBInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$create_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, Engine = Engine, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, Tags = Tags, DBClusterIdentifier = DBClusterIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId)
+  input <- .docdb$create_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, Engine = Engine, AvailabilityZone = AvailabilityZone, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, Tags = Tags, DBClusterIdentifier = DBClusterIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, CACertificateIdentifier = CACertificateIdentifier)
   output <- .docdb$create_db_instance_output()
   config <- get_config()
   svc <- .docdb$service(config)
@@ -1838,6 +1854,12 @@ docdb_delete_db_cluster_snapshot <- function(DBClusterSnapshotIdentifier) {
 #'     DBInstanceArn = "string",
 #'     EnabledCloudwatchLogsExports = list(
 #'       "string"
+#'     ),
+#'     CertificateDetails = list(
+#'       CAIdentifier = "string",
+#'       ValidTill = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -2775,7 +2797,11 @@ docdb_describe_db_clusters <- function(DBClusterIdentifier = NULL, Filters = NUL
 #'       ExportableLogTypes = list(
 #'         "string"
 #'       ),
-#'       SupportsLogExportsToCloudwatchLogs = TRUE|FALSE
+#'       SupportsLogExportsToCloudwatchLogs = TRUE|FALSE,
+#'       SupportedCACertificateIdentifiers = list(
+#'         "string"
+#'       ),
+#'       SupportsCertificateRotationWithoutRestart = TRUE|FALSE
 #'     )
 #'   )
 #' )
@@ -2958,6 +2984,12 @@ docdb_describe_db_engine_versions <- function(Engine = NULL, EngineVersion = NUL
 #'       DBInstanceArn = "string",
 #'       EnabledCloudwatchLogsExports = list(
 #'         "string"
+#'       ),
+#'       CertificateDetails = list(
+#'         CAIdentifier = "string",
+#'         ValidTill = as.POSIXct(
+#'           "2015-01-01"
+#'         )
 #'       )
 #'     )
 #'   )
@@ -4401,7 +4433,8 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' docdb_modify_db_instance(DBInstanceIdentifier, DBInstanceClass,
 #'   ApplyImmediately, PreferredMaintenanceWindow, AutoMinorVersionUpgrade,
 #'   NewDBInstanceIdentifier, CACertificateIdentifier, CopyTagsToSnapshot,
-#'   PromotionTier, EnablePerformanceInsights, PerformanceInsightsKMSKeyId)
+#'   PromotionTier, EnablePerformanceInsights, PerformanceInsightsKMSKeyId,
+#'   CertificateRotationRestart)
 #'
 #' @param DBInstanceIdentifier &#91;required&#93; The instance identifier. This value is stored as a lowercase string.
 #' 
@@ -4482,6 +4515,22 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' Amazon DocumentDB uses your default KMS key. There is a default KMS key
 #' for your Amazon Web Services account. Your Amazon Web Services account
 #' has a different default KMS key for each Amazon Web Services region.
+#' @param CertificateRotationRestart Specifies whether the DB instance is restarted when you rotate your
+#' SSL/TLS certificate.
+#' 
+#' By default, the DB instance is restarted when you rotate your SSL/TLS
+#' certificate. The certificate is not updated until the DB instance is
+#' restarted.
+#' 
+#' Set this parameter only if you are *not* using SSL/TLS to connect to the
+#' DB instance.
+#' 
+#' If you are using SSL/TLS to connect to the DB instance, see [Updating
+#' Your Amazon DocumentDB TLS
+#' Certificates](https://docs.aws.amazon.com/documentdb/latest/developerguide/ca_cert_rotation.html)
+#' and [Encrypting Data in
+#' Transit](https://docs.aws.amazon.com/documentdb/latest/developerguide/security.encryption.ssl.html)
+#' in the *Amazon DocumentDB Developer Guide*.
 #'
 #' @return
 #' A list with the following syntax:
@@ -4573,6 +4622,12 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #'     DBInstanceArn = "string",
 #'     EnabledCloudwatchLogsExports = list(
 #'       "string"
+#'     ),
+#'     CertificateDetails = list(
+#'       CAIdentifier = "string",
+#'       ValidTill = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )
@@ -4591,7 +4646,8 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #'   CopyTagsToSnapshot = TRUE|FALSE,
 #'   PromotionTier = 123,
 #'   EnablePerformanceInsights = TRUE|FALSE,
-#'   PerformanceInsightsKMSKeyId = "string"
+#'   PerformanceInsightsKMSKeyId = "string",
+#'   CertificateRotationRestart = TRUE|FALSE
 #' )
 #' ```
 #'
@@ -4600,14 +4656,14 @@ docdb_modify_db_cluster_snapshot_attribute <- function(DBClusterSnapshotIdentifi
 #' @rdname docdb_modify_db_instance
 #'
 #' @aliases docdb_modify_db_instance
-docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NULL, ApplyImmediately = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, NewDBInstanceIdentifier = NULL, CACertificateIdentifier = NULL, CopyTagsToSnapshot = NULL, PromotionTier = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL) {
+docdb_modify_db_instance <- function(DBInstanceIdentifier, DBInstanceClass = NULL, ApplyImmediately = NULL, PreferredMaintenanceWindow = NULL, AutoMinorVersionUpgrade = NULL, NewDBInstanceIdentifier = NULL, CACertificateIdentifier = NULL, CopyTagsToSnapshot = NULL, PromotionTier = NULL, EnablePerformanceInsights = NULL, PerformanceInsightsKMSKeyId = NULL, CertificateRotationRestart = NULL) {
   op <- new_operation(
     name = "ModifyDBInstance",
     http_method = "POST",
     http_path = "/",
     paginator = list()
   )
-  input <- .docdb$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, ApplyImmediately = ApplyImmediately, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, NewDBInstanceIdentifier = NewDBInstanceIdentifier, CACertificateIdentifier = CACertificateIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId)
+  input <- .docdb$modify_db_instance_input(DBInstanceIdentifier = DBInstanceIdentifier, DBInstanceClass = DBInstanceClass, ApplyImmediately = ApplyImmediately, PreferredMaintenanceWindow = PreferredMaintenanceWindow, AutoMinorVersionUpgrade = AutoMinorVersionUpgrade, NewDBInstanceIdentifier = NewDBInstanceIdentifier, CACertificateIdentifier = CACertificateIdentifier, CopyTagsToSnapshot = CopyTagsToSnapshot, PromotionTier = PromotionTier, EnablePerformanceInsights = EnablePerformanceInsights, PerformanceInsightsKMSKeyId = PerformanceInsightsKMSKeyId, CertificateRotationRestart = CertificateRotationRestart)
   output <- .docdb$modify_db_instance_output()
   config <- get_config()
   svc <- .docdb$service(config)
@@ -4981,6 +5037,12 @@ docdb_modify_global_cluster <- function(GlobalClusterIdentifier, NewGlobalCluste
 #'     DBInstanceArn = "string",
 #'     EnabledCloudwatchLogsExports = list(
 #'       "string"
+#'     ),
+#'     CertificateDetails = list(
+#'       CAIdentifier = "string",
+#'       ValidTill = as.POSIXct(
+#'         "2015-01-01"
+#'       )
 #'     )
 #'   )
 #' )

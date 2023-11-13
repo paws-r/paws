@@ -3127,7 +3127,8 @@ securityhub_batch_get_standards_control_associations <- function(StandardsContro
 #'                   DbClusterParameterGroupStatus = "string"
 #'                 )
 #'               ),
-#'               IamDatabaseAuthenticationEnabled = TRUE|FALSE
+#'               IamDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'               AutoMinorVersionUpgrade = TRUE|FALSE
 #'             ),
 #'             AwsEcsCluster = list(
 #'               ClusterArn = "string",
@@ -3411,7 +3412,8 @@ securityhub_batch_get_standards_control_associations <- function(StandardsContro
 #'                   ),
 #'                   Name = "string"
 #'                 )
-#'               )
+#'               ),
+#'               Status = "string"
 #'             ),
 #'             Container = list(
 #'               ContainerRuntime = "string",
@@ -5006,6 +5008,149 @@ securityhub_batch_get_standards_control_associations <- function(StandardsContro
 #'                   EncryptionConfiguration = list(
 #'                     EncryptionOption = "string",
 #'                     KmsKey = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             AwsEventsEventbus = list(
+#'               Arn = "string",
+#'               Name = "string",
+#'               Policy = "string"
+#'             ),
+#'             AwsDmsEndpoint = list(
+#'               CertificateArn = "string",
+#'               DatabaseName = "string",
+#'               EndpointArn = "string",
+#'               EndpointIdentifier = "string",
+#'               EndpointType = "string",
+#'               EngineName = "string",
+#'               ExternalId = "string",
+#'               ExtraConnectionAttributes = "string",
+#'               KmsKeyId = "string",
+#'               Port = 123,
+#'               ServerName = "string",
+#'               SslMode = "string",
+#'               Username = "string"
+#'             ),
+#'             AwsEventsEndpoint = list(
+#'               Arn = "string",
+#'               Description = "string",
+#'               EndpointId = "string",
+#'               EndpointUrl = "string",
+#'               EventBuses = list(
+#'                 list(
+#'                   EventBusArn = "string"
+#'                 )
+#'               ),
+#'               Name = "string",
+#'               ReplicationConfig = list(
+#'                 State = "string"
+#'               ),
+#'               RoleArn = "string",
+#'               RoutingConfig = list(
+#'                 FailoverConfig = list(
+#'                   Primary = list(
+#'                     HealthCheck = "string"
+#'                   ),
+#'                   Secondary = list(
+#'                     Route = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               State = "string",
+#'               StateReason = "string"
+#'             ),
+#'             AwsDmsReplicationTask = list(
+#'               CdcStartPosition = "string",
+#'               CdcStartTime = "string",
+#'               CdcStopPosition = "string",
+#'               MigrationType = "string",
+#'               Id = "string",
+#'               ResourceIdentifier = "string",
+#'               ReplicationInstanceArn = "string",
+#'               ReplicationTaskIdentifier = "string",
+#'               ReplicationTaskSettings = "string",
+#'               SourceEndpointArn = "string",
+#'               TableMappings = "string",
+#'               TargetEndpointArn = "string",
+#'               TaskData = "string"
+#'             ),
+#'             AwsDmsReplicationInstance = list(
+#'               AllocatedStorage = 123,
+#'               AutoMinorVersionUpgrade = TRUE|FALSE,
+#'               AvailabilityZone = "string",
+#'               EngineVersion = "string",
+#'               KmsKeyId = "string",
+#'               MultiAZ = TRUE|FALSE,
+#'               PreferredMaintenanceWindow = "string",
+#'               PubliclyAccessible = TRUE|FALSE,
+#'               ReplicationInstanceClass = "string",
+#'               ReplicationInstanceIdentifier = "string",
+#'               ReplicationSubnetGroup = list(
+#'                 ReplicationSubnetGroupIdentifier = "string"
+#'               ),
+#'               VpcSecurityGroups = list(
+#'                 list(
+#'                   VpcSecurityGroupId = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsRoute53HostedZone = list(
+#'               HostedZone = list(
+#'                 Id = "string",
+#'                 Name = "string",
+#'                 Config = list(
+#'                   Comment = "string"
+#'                 )
+#'               ),
+#'               Vpcs = list(
+#'                 list(
+#'                   Id = "string",
+#'                   Region = "string"
+#'                 )
+#'               ),
+#'               NameServers = list(
+#'                 "string"
+#'               ),
+#'               QueryLoggingConfig = list(
+#'                 CloudWatchLogsLogGroupArn = list(
+#'                   CloudWatchLogsLogGroupArn = "string",
+#'                   HostedZoneId = "string",
+#'                   Id = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsMskCluster = list(
+#'               ClusterInfo = list(
+#'                 EncryptionInfo = list(
+#'                   EncryptionInTransit = list(
+#'                     InCluster = TRUE|FALSE,
+#'                     ClientBroker = "string"
+#'                   ),
+#'                   EncryptionAtRest = list(
+#'                     DataVolumeKMSKeyId = "string"
+#'                   )
+#'                 ),
+#'                 CurrentVersion = "string",
+#'                 NumberOfBrokerNodes = 123,
+#'                 ClusterName = "string",
+#'                 ClientAuthentication = list(
+#'                   Sasl = list(
+#'                     Iam = list(
+#'                       Enabled = TRUE|FALSE
+#'                     ),
+#'                     Scram = list(
+#'                       Enabled = TRUE|FALSE
+#'                     )
+#'                   ),
+#'                   Unauthenticated = list(
+#'                     Enabled = TRUE|FALSE
+#'                   ),
+#'                   Tls = list(
+#'                     CertificateAuthorityArnList = list(
+#'                       "string"
+#'                     ),
+#'                     Enabled = TRUE|FALSE
 #'                   )
 #'                 )
 #'               )
@@ -11370,7 +11515,8 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'                   DbClusterParameterGroupStatus = "string"
 #'                 )
 #'               ),
-#'               IamDatabaseAuthenticationEnabled = TRUE|FALSE
+#'               IamDatabaseAuthenticationEnabled = TRUE|FALSE,
+#'               AutoMinorVersionUpgrade = TRUE|FALSE
 #'             ),
 #'             AwsEcsCluster = list(
 #'               ClusterArn = "string",
@@ -11654,7 +11800,8 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'                   ),
 #'                   Name = "string"
 #'                 )
-#'               )
+#'               ),
+#'               Status = "string"
 #'             ),
 #'             Container = list(
 #'               ContainerRuntime = "string",
@@ -13249,6 +13396,149 @@ securityhub_get_finding_history <- function(FindingIdentifier, StartTime = NULL,
 #'                   EncryptionConfiguration = list(
 #'                     EncryptionOption = "string",
 #'                     KmsKey = "string"
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             AwsEventsEventbus = list(
+#'               Arn = "string",
+#'               Name = "string",
+#'               Policy = "string"
+#'             ),
+#'             AwsDmsEndpoint = list(
+#'               CertificateArn = "string",
+#'               DatabaseName = "string",
+#'               EndpointArn = "string",
+#'               EndpointIdentifier = "string",
+#'               EndpointType = "string",
+#'               EngineName = "string",
+#'               ExternalId = "string",
+#'               ExtraConnectionAttributes = "string",
+#'               KmsKeyId = "string",
+#'               Port = 123,
+#'               ServerName = "string",
+#'               SslMode = "string",
+#'               Username = "string"
+#'             ),
+#'             AwsEventsEndpoint = list(
+#'               Arn = "string",
+#'               Description = "string",
+#'               EndpointId = "string",
+#'               EndpointUrl = "string",
+#'               EventBuses = list(
+#'                 list(
+#'                   EventBusArn = "string"
+#'                 )
+#'               ),
+#'               Name = "string",
+#'               ReplicationConfig = list(
+#'                 State = "string"
+#'               ),
+#'               RoleArn = "string",
+#'               RoutingConfig = list(
+#'                 FailoverConfig = list(
+#'                   Primary = list(
+#'                     HealthCheck = "string"
+#'                   ),
+#'                   Secondary = list(
+#'                     Route = "string"
+#'                   )
+#'                 )
+#'               ),
+#'               State = "string",
+#'               StateReason = "string"
+#'             ),
+#'             AwsDmsReplicationTask = list(
+#'               CdcStartPosition = "string",
+#'               CdcStartTime = "string",
+#'               CdcStopPosition = "string",
+#'               MigrationType = "string",
+#'               Id = "string",
+#'               ResourceIdentifier = "string",
+#'               ReplicationInstanceArn = "string",
+#'               ReplicationTaskIdentifier = "string",
+#'               ReplicationTaskSettings = "string",
+#'               SourceEndpointArn = "string",
+#'               TableMappings = "string",
+#'               TargetEndpointArn = "string",
+#'               TaskData = "string"
+#'             ),
+#'             AwsDmsReplicationInstance = list(
+#'               AllocatedStorage = 123,
+#'               AutoMinorVersionUpgrade = TRUE|FALSE,
+#'               AvailabilityZone = "string",
+#'               EngineVersion = "string",
+#'               KmsKeyId = "string",
+#'               MultiAZ = TRUE|FALSE,
+#'               PreferredMaintenanceWindow = "string",
+#'               PubliclyAccessible = TRUE|FALSE,
+#'               ReplicationInstanceClass = "string",
+#'               ReplicationInstanceIdentifier = "string",
+#'               ReplicationSubnetGroup = list(
+#'                 ReplicationSubnetGroupIdentifier = "string"
+#'               ),
+#'               VpcSecurityGroups = list(
+#'                 list(
+#'                   VpcSecurityGroupId = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsRoute53HostedZone = list(
+#'               HostedZone = list(
+#'                 Id = "string",
+#'                 Name = "string",
+#'                 Config = list(
+#'                   Comment = "string"
+#'                 )
+#'               ),
+#'               Vpcs = list(
+#'                 list(
+#'                   Id = "string",
+#'                   Region = "string"
+#'                 )
+#'               ),
+#'               NameServers = list(
+#'                 "string"
+#'               ),
+#'               QueryLoggingConfig = list(
+#'                 CloudWatchLogsLogGroupArn = list(
+#'                   CloudWatchLogsLogGroupArn = "string",
+#'                   HostedZoneId = "string",
+#'                   Id = "string"
+#'                 )
+#'               )
+#'             ),
+#'             AwsMskCluster = list(
+#'               ClusterInfo = list(
+#'                 EncryptionInfo = list(
+#'                   EncryptionInTransit = list(
+#'                     InCluster = TRUE|FALSE,
+#'                     ClientBroker = "string"
+#'                   ),
+#'                   EncryptionAtRest = list(
+#'                     DataVolumeKMSKeyId = "string"
+#'                   )
+#'                 ),
+#'                 CurrentVersion = "string",
+#'                 NumberOfBrokerNodes = 123,
+#'                 ClusterName = "string",
+#'                 ClientAuthentication = list(
+#'                   Sasl = list(
+#'                     Iam = list(
+#'                       Enabled = TRUE|FALSE
+#'                     ),
+#'                     Scram = list(
+#'                       Enabled = TRUE|FALSE
+#'                     )
+#'                   ),
+#'                   Unauthenticated = list(
+#'                     Enabled = TRUE|FALSE
+#'                   ),
+#'                   Tls = list(
+#'                     CertificateAuthorityArnList = list(
+#'                       "string"
+#'                     ),
+#'                     Enabled = TRUE|FALSE
 #'                   )
 #'                 )
 #'               )

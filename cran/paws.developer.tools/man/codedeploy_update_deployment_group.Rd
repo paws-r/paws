@@ -50,9 +50,8 @@ deployment group, if you want to change them.
 this parameter.
 \item To remove Auto Scaling groups, specify a non-null empty list of Auto
 Scaling group names to detach all CodeDeploy-managed Auto Scaling
-lifecycle hooks. For examples, see Amazon EC2 instances in an Amazon
-EC2 Auto Scaling group fail to launch and receive the error
-"Heartbeat Timeout" in the \emph{CodeDeploy User Guide}.
+lifecycle hooks. For examples, see \href{https://docs.aws.amazon.com/codedeploy/latest/userguide/troubleshooting-auto-scaling.html#troubleshooting-auto-scaling-heartbeat}{Amazon EC2 instances in an Amazon EC2 Auto Scaling group fail to launch and receive the error "Heartbeat Timeout"}
+in the \emph{CodeDeploy User Guide}.
 }}
 
 \item{serviceRoleArn}{A replacement ARN for the service role, if you want to change it.}

@@ -17,9 +17,9 @@ workmail(config = list(), credentials = list(), endpoint = NULL, region = NULL)
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -143,6 +143,7 @@ access on a selective basis using the IAM model.
 \link[=workmail_deregister_from_work_mail]{deregister_from_work_mail} \tab Mark a user, group, or resource as no longer used in WorkMail\cr
 \link[=workmail_deregister_mail_domain]{deregister_mail_domain} \tab Removes a domain from WorkMail, stops email routing to WorkMail, and removes the authorization allowing WorkMail use\cr
 \link[=workmail_describe_email_monitoring_configuration]{describe_email_monitoring_configuration} \tab Describes the current email monitoring configuration for a specified organization\cr
+\link[=workmail_describe_entity]{describe_entity} \tab Returns basic details about an entity in WorkMail\cr
 \link[=workmail_describe_group]{describe_group} \tab Returns the data available for the group\cr
 \link[=workmail_describe_inbound_dmarc_settings]{describe_inbound_dmarc_settings} \tab Lists the settings in a DMARC policy for a specified organization\cr
 \link[=workmail_describe_mailbox_export_job]{describe_mailbox_export_job} \tab Describes the current status of a mailbox export job\cr
@@ -164,6 +165,7 @@ access on a selective basis using the IAM model.
 \link[=workmail_list_availability_configurations]{list_availability_configurations} \tab List all the AvailabilityConfiguration's for the given WorkMail organization\cr
 \link[=workmail_list_group_members]{list_group_members} \tab Returns an overview of the members of a group\cr
 \link[=workmail_list_groups]{list_groups} \tab Returns summaries of the organization's groups\cr
+\link[=workmail_list_groups_for_entity]{list_groups_for_entity} \tab Returns all the groups to which an entity belongs\cr
 \link[=workmail_list_impersonation_roles]{list_impersonation_roles} \tab Lists all the impersonation roles for the given WorkMail organization\cr
 \link[=workmail_list_mailbox_export_jobs]{list_mailbox_export_jobs} \tab Lists the mailbox export jobs started for the specified organization within the last seven days\cr
 \link[=workmail_list_mailbox_permissions]{list_mailbox_permissions} \tab Lists the mailbox permissions associated with a user, group, or resource mailbox\cr
@@ -190,11 +192,13 @@ access on a selective basis using the IAM model.
 \link[=workmail_untag_resource]{untag_resource} \tab Untags the specified tags from the specified WorkMail organization resource\cr
 \link[=workmail_update_availability_configuration]{update_availability_configuration} \tab Updates an existing AvailabilityConfiguration for the given WorkMail organization and domain\cr
 \link[=workmail_update_default_mail_domain]{update_default_mail_domain} \tab Updates the default mail domain for an organization\cr
+\link[=workmail_update_group]{update_group} \tab Updates attibutes in a group\cr
 \link[=workmail_update_impersonation_role]{update_impersonation_role} \tab Updates an impersonation role for the given WorkMail organization\cr
 \link[=workmail_update_mailbox_quota]{update_mailbox_quota} \tab Updates a user's current mailbox quota for a specified organization and user\cr
 \link[=workmail_update_mobile_device_access_rule]{update_mobile_device_access_rule} \tab Updates a mobile device access rule for the specified WorkMail organization\cr
 \link[=workmail_update_primary_email_address]{update_primary_email_address} \tab Updates the primary email for a user, group, or resource\cr
-\link[=workmail_update_resource]{update_resource} \tab Updates data for the resource
+\link[=workmail_update_resource]{update_resource} \tab Updates data for the resource\cr
+\link[=workmail_update_user]{update_user} \tab Updates data for the user
 }
 }
 

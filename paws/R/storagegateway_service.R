@@ -81,9 +81,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -195,7 +195,7 @@ NULL
 #'  \link[=storagegateway_describe_cachedi_scsi_volumes]{describe_cachedi_scsi_volumes} \tab Returns a description of the gateway volumes specified in the request\cr
 #'  \link[=storagegateway_describe_chap_credentials]{describe_chap_credentials} \tab Returns an array of Challenge-Handshake Authentication Protocol (CHAP) credentials information for a specified iSCSI target, one for each target-initiator pair\cr
 #'  \link[=storagegateway_describe_file_system_associations]{describe_file_system_associations} \tab Gets the file system association information\cr
-#'  \link[=storagegateway_describe_gateway_information]{describe_gateway_information} \tab Returns metadata about a gateway such as its name, network interfaces, configured time zone, and the state (whether the gateway is running or not)\cr
+#'  \link[=storagegateway_describe_gateway_information]{describe_gateway_information} \tab Returns metadata about a gateway such as its name, network interfaces, time zone, status, and software version\cr
 #'  \link[=storagegateway_describe_maintenance_start_time]{describe_maintenance_start_time} \tab Returns your gateway's weekly maintenance start time including the day and time of the week\cr
 #'  \link[=storagegateway_describe_nfs_file_shares]{describe_nfs_file_shares} \tab Gets a description for one or more Network File System (NFS) file shares from an S3 File Gateway\cr
 #'  \link[=storagegateway_describe_smb_file_shares]{describe_smb_file_shares} \tab Gets a description for one or more Server Message Block (SMB) file shares from a S3 File Gateway\cr
@@ -213,7 +213,7 @@ NULL
 #'  \link[=storagegateway_disassociate_file_system]{disassociate_file_system} \tab Disassociates an Amazon FSx file system from the specified gateway\cr
 #'  \link[=storagegateway_join_domain]{join_domain} \tab Adds a file gateway to an Active Directory domain\cr
 #'  \link[=storagegateway_list_automatic_tape_creation_policies]{list_automatic_tape_creation_policies} \tab Lists the automatic tape creation policies for a gateway\cr
-#'  \link[=storagegateway_list_file_shares]{list_file_shares} \tab Gets a list of the file shares for a specific S3 File Gateway, or the list of file shares that belong to the calling user account\cr
+#'  \link[=storagegateway_list_file_shares]{list_file_shares} \tab Gets a list of the file shares for a specific S3 File Gateway, or the list of file shares that belong to the calling Amazon Web Services account\cr
 #'  \link[=storagegateway_list_file_system_associations]{list_file_system_associations} \tab Gets a list of FileSystemAssociationSummary objects\cr
 #'  \link[=storagegateway_list_gateways]{list_gateways} \tab Lists gateways owned by an Amazon Web Services account in an Amazon Web Services Region specified in the request\cr
 #'  \link[=storagegateway_list_local_disks]{list_local_disks} \tab Returns a list of the gateway's local disks\cr

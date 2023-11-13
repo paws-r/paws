@@ -2,7 +2,8 @@
 % Please edit documentation in R/dynamodb_operations.R
 \name{dynamodb_list_backups}
 \alias{dynamodb_list_backups}
-\title{List backups associated with an Amazon Web Services account}
+\title{List DynamoDB backups that are associated with an Amazon Web Services
+account and weren't made with Amazon Web Services Backup}
 \usage{
 dynamodb_list_backups(
   TableName = NULL,
@@ -42,7 +43,7 @@ other backup types are specified.)
 }}
 }
 \description{
-List backups associated with an Amazon Web Services account. To list backups for a given table, specify \code{TableName}. \code{\link[=dynamodb_list_backups]{list_backups}} returns a paginated list of results with at most 1 MB worth of items in a page. You can also specify a maximum number of entries to be returned in a page.
+List DynamoDB backups that are associated with an Amazon Web Services account and weren't made with Amazon Web Services Backup. To list these backups for a given table, specify \code{TableName}. \code{\link[=dynamodb_list_backups]{list_backups}} returns a paginated list of results with at most 1 MB worth of items in a page. You can also specify a maximum number of entries to be returned in a page.
 
 See \url{https://www.paws-r-sdk.com/docs/dynamodb_list_backups/} for full documentation.
 }

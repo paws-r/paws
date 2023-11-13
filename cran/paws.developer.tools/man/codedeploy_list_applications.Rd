@@ -2,8 +2,8 @@
 % Please edit documentation in R/codedeploy_operations.R
 \name{codedeploy_list_applications}
 \alias{codedeploy_list_applications}
-\title{Lists the applications registered with the IAM user or Amazon Web
-Services account}
+\title{Lists the applications registered with the user or Amazon Web Services
+account}
 \usage{
 codedeploy_list_applications(nextToken = NULL)
 }
@@ -12,7 +12,7 @@ codedeploy_list_applications(nextToken = NULL)
 be used to return the next set of applications in the list.}
 }
 \description{
-Lists the applications registered with the IAM user or Amazon Web Services account.
+Lists the applications registered with the user or Amazon Web Services account.
 
 See \url{https://www.paws-r-sdk.com/docs/codedeploy_list_applications/} for full documentation.
 }

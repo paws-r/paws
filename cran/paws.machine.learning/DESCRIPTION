@@ -1,6 +1,6 @@
 Package: paws.machine.learning
 Title: 'Amazon Web Services' Machine Learning Services
-Version: 0.4.0
+Version: 0.4.0.9000
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
@@ -25,6 +25,12 @@ Collate:
     'augmentedairuntime_service.R'
     'augmentedairuntime_interfaces.R'
     'augmentedairuntime_operations.R'
+    'bedrock_service.R'
+    'bedrock_interfaces.R'
+    'bedrock_operations.R'
+    'bedrockruntime_service.R'
+    'bedrockruntime_interfaces.R'
+    'bedrockruntime_operations.R'
     'comprehend_service.R'
     'comprehend_interfaces.R'
     'comprehend_operations.R'
@@ -92,6 +98,12 @@ Collate:
     'sagemakerfeaturestoreruntime_service.R'
     'sagemakerfeaturestoreruntime_interfaces.R'
     'sagemakerfeaturestoreruntime_operations.R'
+    'sagemakergeospatialcapabilities_service.R'
+    'sagemakergeospatialcapabilities_interfaces.R'
+    'sagemakergeospatialcapabilities_operations.R'
+    'sagemakermetrics_service.R'
+    'sagemakermetrics_interfaces.R'
+    'sagemakermetrics_operations.R'
     'sagemakerruntime_service.R'
     'sagemakerruntime_interfaces.R'
     'sagemakerruntime_operations.R'

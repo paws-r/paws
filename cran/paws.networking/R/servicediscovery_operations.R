@@ -310,7 +310,7 @@ servicediscovery_deregister_instance <- function(ServiceId, InstanceId) {
 #' Discovers registered instances for a specified namespace and service
 #'
 #' @description
-#' Discovers registered instances for a specified namespace and service. You can use [`discover_instances`][servicediscovery_discover_instances] to discover instances for any type of namespace. For public and private DNS namespaces, you can also use DNS queries to discover instances.
+#' Discovers registered instances for a specified namespace and service. You can use [`discover_instances`][servicediscovery_discover_instances] to discover instances for any type of namespace. [`discover_instances`][servicediscovery_discover_instances] returns a randomized list of instances allowing customers to distribute traffic evenly across instances. For public and private DNS namespaces, you can also use DNS queries to discover instances.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_discover_instances/](https://www.paws-r-sdk.com/docs/servicediscovery_discover_instances/) for full documentation.
 #'
@@ -372,6 +372,38 @@ servicediscovery_discover_instances <- function(NamespaceName, ServiceName, MaxR
   return(response)
 }
 .servicediscovery$operations$discover_instances <- servicediscovery_discover_instances
+
+#' Discovers the increasing revision associated with an instance
+#'
+#' @description
+#' Discovers the increasing revision associated with an instance.
+#'
+#' See [https://www.paws-r-sdk.com/docs/servicediscovery_discover_instances_revision/](https://www.paws-r-sdk.com/docs/servicediscovery_discover_instances_revision/) for full documentation.
+#'
+#' @param NamespaceName &#91;required&#93; The `HttpName` name of the namespace. It's found in the `HttpProperties`
+#' member of the `Properties` member of the namespace.
+#' @param ServiceName &#91;required&#93; The name of the service that you specified when you registered the
+#' instance.
+#'
+#' @keywords internal
+#'
+#' @rdname servicediscovery_discover_instances_revision
+servicediscovery_discover_instances_revision <- function(NamespaceName, ServiceName) {
+  op <- new_operation(
+    name = "DiscoverInstancesRevision",
+    http_method = "POST",
+    http_path = "/",
+    paginator = list()
+  )
+  input <- .servicediscovery$discover_instances_revision_input(NamespaceName = NamespaceName, ServiceName = ServiceName)
+  output <- .servicediscovery$discover_instances_revision_output()
+  config <- get_config()
+  svc <- .servicediscovery$service(config)
+  request <- new_request(svc, op, input, output)
+  response <- send_request(request)
+  return(response)
+}
+.servicediscovery$operations$discover_instances_revision <- servicediscovery_discover_instances_revision
 
 #' Gets information about a specified instance
 #'
@@ -486,10 +518,10 @@ servicediscovery_get_namespace <- function(Id) {
 .servicediscovery$operations$get_namespace <- servicediscovery_get_namespace
 
 #' Gets information about any operation that returns an operation ID in the
-#' response, such as a CreateService request
+#' response, such as a CreateHttpNamespace request
 #'
 #' @description
-#' Gets information about any operation that returns an operation ID in the response, such as a [`create_service`][servicediscovery_create_service] request.
+#' Gets information about any operation that returns an operation ID in the response, such as a [`create_http_namespace`][servicediscovery_create_http_namespace] request.
 #'
 #' See [https://www.paws-r-sdk.com/docs/servicediscovery_get_operation/](https://www.paws-r-sdk.com/docs/servicediscovery_get_operation/) for full documentation.
 #'
@@ -847,7 +879,7 @@ servicediscovery_list_tags_for_resource <- function(ResourceARN) {
 #'     health check, but it doesn't associate the health check with the
 #'     alias record.
 #' 
-#' -   Auto naming currently doesn't support creating alias records that
+#' -   Cloud Map currently doesn't support creating alias records that
 #'     route traffic to Amazon Web Services resources other than Elastic
 #'     Load Balancing load balancers.
 #' 

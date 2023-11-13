@@ -36,15 +36,15 @@ marketplacecatalog_cancel_change_set <- function(Catalog, ChangeSetId) {
 }
 .marketplacecatalog$operations$cancel_change_set <- marketplacecatalog_cancel_change_set
 
-#' Deletes a resource-based policy on an Entity that is identified by its
+#' Deletes a resource-based policy on an entity that is identified by its
 #' resource ARN
 #'
 #' @description
-#' Deletes a resource-based policy on an Entity that is identified by its resource ARN.
+#' Deletes a resource-based policy on an entity that is identified by its resource ARN.
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_delete_resource_policy/](https://www.paws-r-sdk.com/docs/marketplacecatalog_delete_resource_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Entity resource that is associated
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the entity resource that is associated
 #' with the resource policy.
 #'
 #' @keywords internal
@@ -131,15 +131,15 @@ marketplacecatalog_describe_entity <- function(Catalog, EntityId) {
 }
 .marketplacecatalog$operations$describe_entity <- marketplacecatalog_describe_entity
 
-#' Gets a resource-based policy of an Entity that is identified by its
+#' Gets a resource-based policy of an entity that is identified by its
 #' resource ARN
 #'
 #' @description
-#' Gets a resource-based policy of an Entity that is identified by its resource ARN.
+#' Gets a resource-based policy of an entity that is identified by its resource ARN.
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_get_resource_policy/](https://www.paws-r-sdk.com/docs/marketplacecatalog_get_resource_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Entity resource that is associated
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the entity resource that is associated
 #' with the resource policy.
 #'
 #' @keywords internal
@@ -215,7 +215,12 @@ marketplacecatalog_list_change_sets <- function(Catalog, FilterList = NULL, Sort
 #' results.
 #' @param MaxResults Specifies the upper limit of the elements on a single page. If a value
 #' isn't provided, the default value is 20.
-#' @param OwnershipType 
+#' @param OwnershipType Filters the returned set of entities based on their owner. The default
+#' is `SELF`. To list entities shared with you through AWS Resource Access
+#' Manager (AWS RAM), set to `SHARED`. Entities shared through the AWS
+#' Marketplace Catalog API
+#' [`put_resource_policy`][marketplacecatalog_put_resource_policy]
+#' operation can't be discovered through the `SHARED` parameter.
 #'
 #' @keywords internal
 #'
@@ -268,14 +273,14 @@ marketplacecatalog_list_tags_for_resource <- function(ResourceArn) {
 }
 .marketplacecatalog$operations$list_tags_for_resource <- marketplacecatalog_list_tags_for_resource
 
-#' Attaches a resource-based policy to an Entity
+#' Attaches a resource-based policy to an entity
 #'
 #' @description
-#' Attaches a resource-based policy to an Entity. Examples of an entity include: `AmiProduct` and `ContainerProduct`.
+#' Attaches a resource-based policy to an entity. Examples of an entity include: `AmiProduct` and `ContainerProduct`.
 #'
 #' See [https://www.paws-r-sdk.com/docs/marketplacecatalog_put_resource_policy/](https://www.paws-r-sdk.com/docs/marketplacecatalog_put_resource_policy/) for full documentation.
 #'
-#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the Entity resource you want to
+#' @param ResourceArn &#91;required&#93; The Amazon Resource Name (ARN) of the entity resource you want to
 #' associate with a resource policy.
 #' @param Policy &#91;required&#93; The policy document to set; formatted in JSON.
 #'

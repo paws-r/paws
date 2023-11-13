@@ -397,6 +397,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.dnsRequestAction.domain
 #' 
+#' -   service.action.dnsRequestAction.domainWithSuffix
+#' 
 #' -   service.action.networkConnectionAction.blocked
 #' 
 #' -   service.action.networkConnectionAction.connectionDirection
@@ -421,7 +423,13 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV4
 #' 
+#' -   service.action.kubernetesApiCallAction.namespace
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.organization.asn
+#' 
 #' -   service.action.kubernetesApiCallAction.requestUri
+#' 
+#' -   service.action.kubernetesApiCallAction.statusCode
 #' 
 #' -   service.action.networkConnectionAction.localIpDetails.ipAddressV4
 #' 
@@ -1582,12 +1590,13 @@ guardduty_describe_publishing_destination <- function(DetectorId, DestinationId)
 }
 .guardduty$operations$describe_publishing_destination <- guardduty_describe_publishing_destination
 
-#' Disables an Amazon Web Services account within the Organization as the
-#' GuardDuty delegated administrator
+#' Removes the existing GuardDuty delegated administrator of the
+#' organization
 #'
 #' @description
-#' Disables an Amazon Web Services account within the Organization as the
-#' GuardDuty delegated administrator.
+#' Removes the existing GuardDuty delegated administrator of the
+#' organization. Only the organization's management account can run this
+#' API operation.
 #'
 #' @usage
 #' guardduty_disable_organization_admin_account(AdminAccountId)
@@ -1758,8 +1767,7 @@ guardduty_disassociate_from_master_account <- function(DetectorId) {
 #' 
 #' With `autoEnableOrganizationMembers` configuration for your organization
 #' set to `ALL`, you'll receive an error if you attempt to disassociate a
-#' member account before removing them from your Amazon Web Services
-#' organization.
+#' member account before removing them from your organization.
 #'
 #' @usage
 #' guardduty_disassociate_members(DetectorId, AccountIds)
@@ -1814,17 +1822,18 @@ guardduty_disassociate_members <- function(DetectorId, AccountIds) {
 }
 .guardduty$operations$disassociate_members <- guardduty_disassociate_members
 
-#' Enables an Amazon Web Services account within the organization as the
-#' GuardDuty delegated administrator
+#' Designates an Amazon Web Services account within the organization as
+#' your GuardDuty delegated administrator
 #'
 #' @description
-#' Enables an Amazon Web Services account within the organization as the
-#' GuardDuty delegated administrator.
+#' Designates an Amazon Web Services account within the organization as
+#' your GuardDuty delegated administrator. Only the organization's
+#' management account can run this API operation.
 #'
 #' @usage
 #' guardduty_enable_organization_admin_account(AdminAccountId)
 #'
-#' @param AdminAccountId &#91;required&#93; The Amazon Web Services Account ID for the organization account to be
+#' @param AdminAccountId &#91;required&#93; The Amazon Web Services account ID for the organization account to be
 #' enabled as a GuardDuty delegated administrator.
 #'
 #' @return
@@ -1859,12 +1868,15 @@ guardduty_enable_organization_admin_account <- function(AdminAccountId) {
 }
 .guardduty$operations$enable_organization_admin_account <- guardduty_enable_organization_admin_account
 
-#' Provides the details for the GuardDuty administrator account associated
+#' Provides the details of the GuardDuty administrator account associated
 #' with the current GuardDuty member account
 #'
 #' @description
-#' Provides the details for the GuardDuty administrator account associated
+#' Provides the details of the GuardDuty administrator account associated
 #' with the current GuardDuty member account.
+#' 
+#' If the organization's management account or a delegated administrator
+#' runs this API, it will return success (`HTTP 200`) but no content.
 #'
 #' @usage
 #' guardduty_get_administrator_account(DetectorId)
@@ -1953,7 +1965,7 @@ guardduty_get_administrator_account <- function(DetectorId) {
 #'   FilterCriteria = list(
 #'     FilterCriterion = list(
 #'       list(
-#'         CriterionKey = "ACCOUNT_ID"|"CLUSTER_NAME"|"RESOURCE_TYPE"|"COVERAGE_STATUS"|"ADDON_VERSION",
+#'         CriterionKey = "ACCOUNT_ID"|"CLUSTER_NAME"|"RESOURCE_TYPE"|"COVERAGE_STATUS"|"ADDON_VERSION"|"MANAGEMENT_TYPE"|"EKS_CLUSTER_NAME",
 #'         FilterCondition = list(
 #'           Equals = list(
 #'             "string"
@@ -2342,6 +2354,12 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'             ),
 #'             SessionName = list(
 #'               "string"
+#'             ),
+#'             ImpersonatedUser = list(
+#'               Username = "string",
+#'               Groups = list(
+#'                 "string"
+#'               )
 #'             )
 #'           ),
 #'           KubernetesWorkloadDetails = list(
@@ -2364,7 +2382,8 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                   )
 #'                 ),
 #'                 SecurityContext = list(
-#'                   Privileged = TRUE|FALSE
+#'                   Privileged = TRUE|FALSE,
+#'                   AllowPrivilegeEscalation = TRUE|FALSE
 #'                 )
 #'               )
 #'             ),
@@ -2375,7 +2394,10 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                   Path = "string"
 #'                 )
 #'               )
-#'             )
+#'             ),
+#'             ServiceAccountName = "string",
+#'             HostIPC = TRUE|FALSE,
+#'             HostPID = TRUE|FALSE
 #'           )
 #'         ),
 #'         ResourceType = "string",
@@ -2455,7 +2477,8 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                   )
 #'                 ),
 #'                 SecurityContext = list(
-#'                   Privileged = TRUE|FALSE
+#'                   Privileged = TRUE|FALSE,
+#'                   AllowPrivilegeEscalation = TRUE|FALSE
 #'                 )
 #'               )
 #'             ),
@@ -2475,7 +2498,8 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'             )
 #'           ),
 #'           SecurityContext = list(
-#'             Privileged = TRUE|FALSE
+#'             Privileged = TRUE|FALSE,
+#'             AllowPrivilegeEscalation = TRUE|FALSE
 #'           )
 #'         ),
 #'         RdsDbInstanceDetails = list(
@@ -2572,7 +2596,8 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'           DnsRequestAction = list(
 #'             Domain = "string",
 #'             Protocol = "string",
-#'             Blocked = TRUE|FALSE
+#'             Blocked = TRUE|FALSE,
+#'             DomainWithSuffix = "string"
 #'           ),
 #'           NetworkConnectionAction = list(
 #'             Blocked = TRUE|FALSE,
@@ -2672,7 +2697,11 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'               )
 #'             ),
 #'             StatusCode = 123,
-#'             Parameters = "string"
+#'             Parameters = "string",
+#'             Resource = "string",
+#'             Subresource = "string",
+#'             Namespace = "string",
+#'             ResourceName = "string"
 #'           ),
 #'           RdsLoginAttemptAction = list(
 #'             RemoteIpDetails = list(
@@ -2703,6 +2732,24 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'                 SuccessfulLoginAttempts = 123
 #'               )
 #'             )
+#'           ),
+#'           KubernetesPermissionCheckedDetails = list(
+#'             Verb = "string",
+#'             Resource = "string",
+#'             Namespace = "string",
+#'             Allowed = TRUE|FALSE
+#'           ),
+#'           KubernetesRoleBindingDetails = list(
+#'             Kind = "string",
+#'             Name = "string",
+#'             Uid = "string",
+#'             RoleRefName = "string",
+#'             RoleRefKind = "string"
+#'           ),
+#'           KubernetesRoleDetails = list(
+#'             Kind = "string",
+#'             Name = "string",
+#'             Uid = "string"
 #'           )
 #'         ),
 #'         Evidence = list(
@@ -2895,6 +2942,40 @@ guardduty_get_filter <- function(DetectorId, FilterName) {
 #'             IanaProtocolNumber = 123,
 #'             MemoryRegions = list(
 #'               "string"
+#'             )
+#'           )
+#'         ),
+#'         Detection = list(
+#'           Anomaly = list(
+#'             Profiles = list(
+#'               list(
+#'                 list(
+#'                   list(
+#'                     ProfileType = "FREQUENCY",
+#'                     ProfileSubtype = "FREQUENT"|"INFREQUENT"|"UNSEEN"|"RARE",
+#'                     Observations = list(
+#'                       Text = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
+#'             ),
+#'             Unusual = list(
+#'               Behavior = list(
+#'                 list(
+#'                   list(
+#'                     ProfileType = "FREQUENCY",
+#'                     ProfileSubtype = "FREQUENT"|"INFREQUENT"|"UNSEEN"|"RARE",
+#'                     Observations = list(
+#'                       Text = list(
+#'                         "string"
+#'                       )
+#'                     )
+#'                   )
+#'                 )
+#'               )
 #'             )
 #'           )
 #'         )
@@ -3730,9 +3811,9 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
 #' Invites Amazon Web Services accounts to become members of an
 #' organization administered by the Amazon Web Services account that
 #' invokes this API. If you are using Amazon Web Services Organizations to
-#' manager your GuardDuty environment, this step is not needed. For more
-#' information, see [Managing accounts with Amazon Web Services
-#' Organizations](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html).
+#' manage your GuardDuty environment, this step is not needed. For more
+#' information, see [Managing accounts with
+#' organizations](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html).
 #' 
 #' To invite Amazon Web Services accounts, the first step is to ensure that
 #' GuardDuty has been enabled in the potential member accounts. You can now
@@ -3856,7 +3937,8 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
 #'           AddonDetails = list(
 #'             AddonVersion = "string",
 #'             AddonStatus = "string"
-#'           )
+#'           ),
+#'           ManagementType = "AUTO_MANAGED"|"MANUAL"
 #'         ),
 #'         ResourceType = "EKS"
 #'       ),
@@ -3880,7 +3962,7 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
 #'   FilterCriteria = list(
 #'     FilterCriterion = list(
 #'       list(
-#'         CriterionKey = "ACCOUNT_ID"|"CLUSTER_NAME"|"RESOURCE_TYPE"|"COVERAGE_STATUS"|"ADDON_VERSION",
+#'         CriterionKey = "ACCOUNT_ID"|"CLUSTER_NAME"|"RESOURCE_TYPE"|"COVERAGE_STATUS"|"ADDON_VERSION"|"MANAGEMENT_TYPE"|"EKS_CLUSTER_NAME",
 #'         FilterCondition = list(
 #'           Equals = list(
 #'             "string"
@@ -3893,7 +3975,7 @@ guardduty_invite_members <- function(DetectorId, AccountIds, DisableEmailNotific
 #'     )
 #'   ),
 #'   SortCriteria = list(
-#'     AttributeName = "ACCOUNT_ID"|"CLUSTER_NAME"|"COVERAGE_STATUS"|"ISSUE"|"ADDON_VERSION"|"UPDATED_AT",
+#'     AttributeName = "ACCOUNT_ID"|"CLUSTER_NAME"|"COVERAGE_STATUS"|"ISSUE"|"ADDON_VERSION"|"UPDATED_AT"|"EKS_CLUSTER_NAME",
 #'     OrderBy = "ASC"|"DESC"
 #'   )
 #' )
@@ -4118,6 +4200,8 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' -   service.action.awsApiCallAction.serviceName
 #' 
 #' -   service.action.dnsRequestAction.domain
+#' 
+#' -   service.action.dnsRequestAction.domainWithSuffix
 #' 
 #' -   service.action.networkConnectionAction.blocked
 #' 
@@ -4436,10 +4520,11 @@ guardduty_list_members <- function(DetectorId, MaxResults = NULL, NextToken = NU
 }
 .guardduty$operations$list_members <- guardduty_list_members
 
-#' Lists the accounts configured as GuardDuty delegated administrators
+#' Lists the accounts designated as GuardDuty delegated administrators
 #'
 #' @description
-#' Lists the accounts configured as GuardDuty delegated administrators.
+#' Lists the accounts designated as GuardDuty delegated administrators.
+#' Only the organization's management account can run this API operation.
 #'
 #' @usage
 #' guardduty_list_organization_admin_accounts(MaxResults, NextToken)
@@ -4563,7 +4648,7 @@ guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL
 #' @description
 #' Lists tags for a resource. Tagging is currently supported for detectors,
 #' finding filters, IP sets, threat intel sets, and publishing destination,
-#' with a limit of 50 tags per each resource. When invoked, this operation
+#' with a limit of 50 tags per resource. When invoked, this operation
 #' returns all assigned tags for a given resource.
 #'
 #' @usage
@@ -5441,8 +5526,8 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 #'
 #' @description
 #' Configures the delegated administrator account with the provided values.
-#' You must provide the value for either `autoEnableOrganizationMembers` or
-#' `autoEnable`.
+#' You must provide a value for either `autoEnableOrganizationMembers` or
+#' `autoEnable`, but not both.
 #' 
 #' There might be regional differences because some data sources might not
 #' be available in all the Amazon Web Services Regions where GuardDuty is
@@ -5454,27 +5539,36 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 #'   DataSources, Features, AutoEnableOrganizationMembers)
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector that configures the delegated administrator.
-#' @param AutoEnable Indicates whether to automatically enable member accounts in the
+#' @param AutoEnable Represents whether or not to automatically enable member accounts in the
 #' organization.
 #' 
 #' Even though this is still supported, we recommend using
-#' `AutoEnableOrganizationMembers` to achieve the similar results.
+#' `AutoEnableOrganizationMembers` to achieve the similar results. You must
+#' provide a value for either `autoEnableOrganizationMembers` or
+#' `autoEnable`.
 #' @param DataSources Describes which data sources will be updated.
 #' @param Features A list of features that will be configured for the organization.
 #' @param AutoEnableOrganizationMembers Indicates the auto-enablement configuration of GuardDuty for the member
-#' accounts in the organization.
+#' accounts in the organization. You must provide a value for either
+#' `autoEnableOrganizationMembers` or `autoEnable`.
+#' 
+#' Use one of the following configuration values for
+#' `autoEnableOrganizationMembers`:
 #' 
 #' -   `NEW`: Indicates that when a new account joins the organization,
 #'     they will have GuardDuty enabled automatically.
 #' 
-#' -   `ALL`: Indicates that all accounts in the Amazon Web Services
-#'     Organization have GuardDuty enabled automatically. This includes
-#'     `NEW` accounts that join the organization and accounts that may have
-#'     been suspended or removed from the organization in GuardDuty.
+#' -   `ALL`: Indicates that all accounts in the organization have
+#'     GuardDuty enabled automatically. This includes `NEW` accounts that
+#'     join the organization and accounts that may have been suspended or
+#'     removed from the organization in GuardDuty.
+#' 
+#'     It may take up to 24 hours to update the configuration for all the
+#'     member accounts.
 #' 
 #' -   `NONE`: Indicates that GuardDuty will not be automatically enabled
-#'     for any accounts in the organization. GuardDuty must be managed for
-#'     each account individually by the administrator.
+#'     for any account in the organization. The administrator must manage
+#'     GuardDuty for each account in the organization individually.
 #'
 #' @return
 #' An empty list.

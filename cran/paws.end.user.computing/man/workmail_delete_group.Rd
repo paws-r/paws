@@ -9,7 +9,15 @@ workmail_delete_group(OrganizationId, GroupId)
 \arguments{
 \item{OrganizationId}{[required] The organization that contains the group.}
 
-\item{GroupId}{[required] The identifier of the group to be deleted.}
+\item{GroupId}{[required] The identifier of the group to be deleted.
+
+The identifier can be the \emph{GroupId}, or \emph{Groupname}. The following
+identity formats are available:
+\itemize{
+\item Group ID: 12345678-1234-1234-1234-123456789012 or
+S-1-1-12-1234567890-123456789-123456789-1234
+\item Group name: group
+}}
 }
 \description{
 Deletes a group from WorkMail.

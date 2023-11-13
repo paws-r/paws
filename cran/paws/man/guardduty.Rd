@@ -22,9 +22,9 @@ guardduty(
 }}
 \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 \item{\strong{anonymous}:} {Set anonymous credentials.}
+}}
 \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-}}
 \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 \item{\strong{s3_force_path_style}:} {Set this to \code{true} to force the request to use path-style addressing, i.e. \verb{http://s3.amazonaws.com/BUCKET/KEY}.}
@@ -137,12 +137,12 @@ see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guar
 \link[paws.security.identity:guardduty_describe_malware_scans]{describe_malware_scans} \tab Returns a list of malware scans\cr
 \link[paws.security.identity:guardduty_describe_organization_configuration]{describe_organization_configuration} \tab Returns information about the account selected as the delegated administrator for GuardDuty\cr
 \link[paws.security.identity:guardduty_describe_publishing_destination]{describe_publishing_destination} \tab Returns information about the publishing destination specified by the provided destinationId\cr
-\link[paws.security.identity:guardduty_disable_organization_admin_account]{disable_organization_admin_account} \tab Disables an Amazon Web Services account within the Organization as the GuardDuty delegated administrator\cr
+\link[paws.security.identity:guardduty_disable_organization_admin_account]{disable_organization_admin_account} \tab Removes the existing GuardDuty delegated administrator of the organization\cr
 \link[paws.security.identity:guardduty_disassociate_from_administrator_account]{disassociate_from_administrator_account} \tab Disassociates the current GuardDuty member account from its administrator account\cr
 \link[paws.security.identity:guardduty_disassociate_from_master_account]{disassociate_from_master_account} \tab Disassociates the current GuardDuty member account from its administrator account\cr
 \link[paws.security.identity:guardduty_disassociate_members]{disassociate_members} \tab Disassociates GuardDuty member accounts (from the current administrator account) specified by the account IDs\cr
-\link[paws.security.identity:guardduty_enable_organization_admin_account]{enable_organization_admin_account} \tab Enables an Amazon Web Services account within the organization as the GuardDuty delegated administrator\cr
-\link[paws.security.identity:guardduty_get_administrator_account]{get_administrator_account} \tab Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account\cr
+\link[paws.security.identity:guardduty_enable_organization_admin_account]{enable_organization_admin_account} \tab Designates an Amazon Web Services account within the organization as your GuardDuty delegated administrator\cr
+\link[paws.security.identity:guardduty_get_administrator_account]{get_administrator_account} \tab Provides the details of the GuardDuty administrator account associated with the current GuardDuty member account\cr
 \link[paws.security.identity:guardduty_get_coverage_statistics]{get_coverage_statistics} \tab Retrieves aggregated statistics for your account\cr
 \link[paws.security.identity:guardduty_get_detector]{get_detector} \tab Retrieves an Amazon GuardDuty detector specified by the detectorId\cr
 \link[paws.security.identity:guardduty_get_filter]{get_filter} \tab Returns the details of the filter specified by the filter name\cr
@@ -165,7 +165,7 @@ see the \emph{\href{https://docs.aws.amazon.com/guardduty/latest/ug/what-is-guar
 \link[paws.security.identity:guardduty_list_invitations]{list_invitations} \tab Lists all GuardDuty membership invitations that were sent to the current Amazon Web Services account\cr
 \link[paws.security.identity:guardduty_list_ip_sets]{list_ip_sets} \tab Lists the IPSets of the GuardDuty service specified by the detector ID\cr
 \link[paws.security.identity:guardduty_list_members]{list_members} \tab Lists details about all member accounts for the current GuardDuty administrator account\cr
-\link[paws.security.identity:guardduty_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Lists the accounts configured as GuardDuty delegated administrators\cr
+\link[paws.security.identity:guardduty_list_organization_admin_accounts]{list_organization_admin_accounts} \tab Lists the accounts designated as GuardDuty delegated administrators\cr
 \link[paws.security.identity:guardduty_list_publishing_destinations]{list_publishing_destinations} \tab Returns a list of publishing destinations associated with the specified detectorId\cr
 \link[paws.security.identity:guardduty_list_tags_for_resource]{list_tags_for_resource} \tab Lists tags for a resource\cr
 \link[paws.security.identity:guardduty_list_threat_intel_sets]{list_threat_intel_sets} \tab Lists the ThreatIntelSets of the GuardDuty service specified by the detector ID\cr

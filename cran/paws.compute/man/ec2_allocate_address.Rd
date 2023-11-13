@@ -30,11 +30,7 @@ parameter to limit the IP address to this location. IP addresses cannot
 move between network border groups.
 
 Use \code{\link[=ec2_describe_availability_zones]{describe_availability_zones}} to
-view the network border groups.
-
-You cannot use a network border group with EC2 Classic. If you attempt
-this operation on EC2 Classic, you receive an
-\code{InvalidParameterCombination} error.}
+view the network border groups.}
 
 \item{CustomerOwnedIpv4Pool}{The ID of a customer-owned address pool. Use this parameter to let
 Amazon EC2 select an address from the address pool. Alternatively,

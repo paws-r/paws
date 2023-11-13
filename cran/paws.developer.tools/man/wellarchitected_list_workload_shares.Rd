@@ -15,8 +15,8 @@ wellarchitected_list_workload_shares(
 \arguments{
 \item{WorkloadId}{[required]}
 
-\item{SharedWithPrefix}{The Amazon Web Services account ID, IAM role, organization ID, or
-organizational unit (OU) ID with which the workload is shared.}
+\item{SharedWithPrefix}{The Amazon Web Services account ID, organization ID, or organizational
+unit (OU) ID with which the workload is shared.}
 
 \item{NextToken}{}
 

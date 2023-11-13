@@ -60,6 +60,10 @@ test_that("describe_db_security_groups", {
   expect_error(svc$describe_db_security_groups(), NA)
 })
 
+test_that("describe_db_snapshot_tenant_databases", {
+  expect_error(svc$describe_db_snapshot_tenant_databases(), NA)
+})
+
 test_that("describe_db_snapshots", {
   expect_error(svc$describe_db_snapshots(), NA)
 })
@@ -88,6 +92,10 @@ test_that("describe_global_clusters", {
   expect_error(svc$describe_global_clusters(), NA)
 })
 
+test_that("describe_integrations", {
+  expect_error(svc$describe_integrations(), NA)
+})
+
 test_that("describe_option_groups", {
   expect_error(svc$describe_option_groups(), NA)
 })
@@ -106,4 +114,8 @@ test_that("describe_reserved_db_instances_offerings", {
 
 test_that("describe_source_regions", {
   expect_error(svc$describe_source_regions(), NA)
+})
+
+test_that("describe_tenant_databases", {
+  expect_error(svc$describe_tenant_databases(), NA)
 })

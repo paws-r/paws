@@ -219,6 +219,18 @@ NULL
   return(populate(args, shape))
 }
 
+.ssm$delete_ops_item_input <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(OpsItemId = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
+.ssm$delete_ops_item_output <- function(...) {
+  args <- c(as.list(environment()), list(...))
+  shape <- structure(list(), tags = list(type = "structure"))
+  return(populate(args, shape))
+}
+
 .ssm$delete_ops_metadata_input <- function(...) {
   args <- c(as.list(environment()), list(...))
   shape <- structure(list(OpsMetadataArn = structure(logical(0), tags = list(type = "string"))), tags = list(type = "structure"))

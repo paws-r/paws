@@ -112,8 +112,8 @@ parameter.
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each Amazon Region. To see the time blocks available,
-see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/}{Adjusting the Preferred Maintenance Window} in the
-\emph{Amazon Neptune User Guide.}
+see \href{https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-maintaining.html#manage-console-maintaining-window}{Neptune Maintenance Window}
+in the \emph{Amazon Neptune User Guide.}
 
 Constraints:
 \itemize{
@@ -130,8 +130,8 @@ Format: \code{ddd:hh24:mi-ddd:hh24:mi}
 
 The default is a 30-minute window selected at random from an 8-hour
 block of time for each Amazon Region, occurring on a random day of the
-week. To see the time blocks available, see \href{https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/}{Adjusting the Preferred Maintenance Window} in the
-\emph{Amazon Neptune User Guide.}
+week. To see the time blocks available, see \href{https://docs.aws.amazon.com/neptune/latest/userguide/manage-console-maintaining.html#manage-console-maintaining-window}{Neptune Maintenance Window}
+in the \emph{Amazon Neptune User Guide.}
 
 Valid Days: Mon, Tue, Wed, Thu, Fri, Sat, Sun.
 
@@ -187,7 +187,10 @@ CloudWatch Logs.}
 enabled. The database can't be deleted when deletion protection is
 enabled. By default, deletion protection is enabled.}
 
-\item{ServerlessV2ScalingConfiguration}{}
+\item{ServerlessV2ScalingConfiguration}{Contains the scaling configuration of a Neptune Serverless DB cluster.
+
+For more information, see \href{https://docs.aws.amazon.com/neptune/latest/userguide/neptune-serverless-using.html}{Using Amazon Neptune Serverless}
+in the \emph{Amazon Neptune User Guide}.}
 
 \item{GlobalClusterIdentifier}{The ID of the Neptune global database to which this new DB cluster
 should be added.}

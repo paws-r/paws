@@ -41,8 +41,7 @@ available offerings matching the specified offering type.
 
 Valid Values: \code{"Partial Upfront" | "All Upfront" | "No Upfront" }}
 
-\item{MultiAZ}{A value that indicates whether to show only those reservations that
-support Multi-AZ.}
+\item{MultiAZ}{Specifies whether to show only those reservations that support Multi-AZ.}
 
 \item{Filters}{This parameter isn't currently supported.}
 

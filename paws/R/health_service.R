@@ -24,7 +24,7 @@ NULL
 #' Temporary credentials include an access key ID, a secret access key, and
 #' a security token that indicates when the credentials expire. For more
 #' information, see [Best practices for managing Amazon Web Services access
-#' keys](https://docs.aws.amazon.com/accounts/latest/reference/best-practices.html)
+#' keys](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#securing_access-keys)
 #' in the *Amazon Web Services General Reference*.
 #' 
 #' You can use the Health endpoint health.us-east-1.amazonaws.com (HTTPS)
@@ -79,9 +79,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}

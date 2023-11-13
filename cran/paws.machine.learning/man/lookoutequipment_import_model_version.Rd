@@ -12,7 +12,8 @@ lookoutequipment_import_model_version(
   ClientToken,
   RoleArn = NULL,
   ServerSideKmsKeyId = NULL,
-  Tags = NULL
+  Tags = NULL,
+  InferenceDataImportStrategy = NULL
 )
 }
 \arguments{
@@ -37,6 +38,16 @@ data source being used to create the machine learning model.}
 Amazon Lookout for Equipment.}
 
 \item{Tags}{The tags associated with the machine learning model to be created.}
+
+\item{InferenceDataImportStrategy}{Indicates how to import the accumulated inference data when a model
+version is imported. The possible values are as follows:
+\itemize{
+\item NO_IMPORT – Don't import the data.
+\item ADD_WHEN_EMPTY – Only import the data from the source model if there
+is no existing data in the target model.
+\item OVERWRITE – Import the data from the source model and overwrite the
+existing data in the target model.
+}}
 }
 \description{
 Imports a model that has been trained successfully.

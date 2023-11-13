@@ -268,6 +268,8 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.dnsRequestAction.domain
 #' 
+#' -   service.action.dnsRequestAction.domainWithSuffix
+#' 
 #' -   service.action.networkConnectionAction.blocked
 #' 
 #' -   service.action.networkConnectionAction.connectionDirection
@@ -292,7 +294,13 @@ guardduty_create_detector <- function(Enable, ClientToken = NULL, FindingPublish
 #' 
 #' -   service.action.kubernetesApiCallAction.remoteIpDetails.ipAddressV4
 #' 
+#' -   service.action.kubernetesApiCallAction.namespace
+#' 
+#' -   service.action.kubernetesApiCallAction.remoteIpDetails.organization.asn
+#' 
 #' -   service.action.kubernetesApiCallAction.requestUri
+#' 
+#' -   service.action.kubernetesApiCallAction.statusCode
 #' 
 #' -   service.action.networkConnectionAction.localIpDetails.ipAddressV4
 #' 
@@ -921,11 +929,11 @@ guardduty_describe_publishing_destination <- function(DetectorId, DestinationId)
 }
 .guardduty$operations$describe_publishing_destination <- guardduty_describe_publishing_destination
 
-#' Disables an Amazon Web Services account within the Organization as the
-#' GuardDuty delegated administrator
+#' Removes the existing GuardDuty delegated administrator of the
+#' organization
 #'
 #' @description
-#' Disables an Amazon Web Services account within the Organization as the GuardDuty delegated administrator.
+#' Removes the existing GuardDuty delegated administrator of the organization. Only the organization's management account can run this API operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_disable_organization_admin_account/](https://www.paws-r-sdk.com/docs/guardduty_disable_organization_admin_account/) for full documentation.
 #'
@@ -1045,15 +1053,15 @@ guardduty_disassociate_members <- function(DetectorId, AccountIds) {
 }
 .guardduty$operations$disassociate_members <- guardduty_disassociate_members
 
-#' Enables an Amazon Web Services account within the organization as the
-#' GuardDuty delegated administrator
+#' Designates an Amazon Web Services account within the organization as
+#' your GuardDuty delegated administrator
 #'
 #' @description
-#' Enables an Amazon Web Services account within the organization as the GuardDuty delegated administrator.
+#' Designates an Amazon Web Services account within the organization as your GuardDuty delegated administrator. Only the organization's management account can run this API operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_enable_organization_admin_account/](https://www.paws-r-sdk.com/docs/guardduty_enable_organization_admin_account/) for full documentation.
 #'
-#' @param AdminAccountId &#91;required&#93; The Amazon Web Services Account ID for the organization account to be
+#' @param AdminAccountId &#91;required&#93; The Amazon Web Services account ID for the organization account to be
 #' enabled as a GuardDuty delegated administrator.
 #'
 #' @keywords internal
@@ -1076,11 +1084,11 @@ guardduty_enable_organization_admin_account <- function(AdminAccountId) {
 }
 .guardduty$operations$enable_organization_admin_account <- guardduty_enable_organization_admin_account
 
-#' Provides the details for the GuardDuty administrator account associated
+#' Provides the details of the GuardDuty administrator account associated
 #' with the current GuardDuty member account
 #'
 #' @description
-#' Provides the details for the GuardDuty administrator account associated with the current GuardDuty member account.
+#' Provides the details of the GuardDuty administrator account associated with the current GuardDuty member account.
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_get_administrator_account/](https://www.paws-r-sdk.com/docs/guardduty_get_administrator_account/) for full documentation.
 #'
@@ -1549,7 +1557,7 @@ guardduty_get_usage_statistics <- function(DetectorId, UsageStatisticType, Usage
 #' invokes this API
 #'
 #' @description
-#' Invites Amazon Web Services accounts to become members of an organization administered by the Amazon Web Services account that invokes this API. If you are using Amazon Web Services Organizations to manager your GuardDuty environment, this step is not needed. For more information, see [Managing accounts with Amazon Web Services Organizations](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html).
+#' Invites Amazon Web Services accounts to become members of an organization administered by the Amazon Web Services account that invokes this API. If you are using Amazon Web Services Organizations to manage your GuardDuty environment, this step is not needed. For more information, see [Managing accounts with organizations](https://docs.aws.amazon.com/guardduty/latest/ug/guardduty_organizations.html).
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_invite_members/](https://www.paws-r-sdk.com/docs/guardduty_invite_members/) for full documentation.
 #'
@@ -1770,6 +1778,8 @@ guardduty_list_filters <- function(DetectorId, MaxResults = NULL, NextToken = NU
 #' 
 #' -   service.action.dnsRequestAction.domain
 #' 
+#' -   service.action.dnsRequestAction.domainWithSuffix
+#' 
 #' -   service.action.networkConnectionAction.blocked
 #' 
 #' -   service.action.networkConnectionAction.connectionDirection
@@ -1947,10 +1957,10 @@ guardduty_list_members <- function(DetectorId, MaxResults = NULL, NextToken = NU
 }
 .guardduty$operations$list_members <- guardduty_list_members
 
-#' Lists the accounts configured as GuardDuty delegated administrators
+#' Lists the accounts designated as GuardDuty delegated administrators
 #'
 #' @description
-#' Lists the accounts configured as GuardDuty delegated administrators.
+#' Lists the accounts designated as GuardDuty delegated administrators. Only the organization's management account can run this API operation.
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_list_organization_admin_accounts/](https://www.paws-r-sdk.com/docs/guardduty_list_organization_admin_accounts/) for full documentation.
 #'
@@ -2018,7 +2028,7 @@ guardduty_list_publishing_destinations <- function(DetectorId, MaxResults = NULL
 #' Lists tags for a resource
 #'
 #' @description
-#' Lists tags for a resource. Tagging is currently supported for detectors, finding filters, IP sets, threat intel sets, and publishing destination, with a limit of 50 tags per each resource. When invoked, this operation returns all assigned tags for a given resource.
+#' Lists tags for a resource. Tagging is currently supported for detectors, finding filters, IP sets, threat intel sets, and publishing destination, with a limit of 50 tags per resource. When invoked, this operation returns all assigned tags for a given resource.
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_list_tags_for_resource/](https://www.paws-r-sdk.com/docs/guardduty_list_tags_for_resource/) for full documentation.
 #'
@@ -2485,32 +2495,41 @@ guardduty_update_member_detectors <- function(DetectorId, AccountIds, DataSource
 #' Configures the delegated administrator account with the provided values
 #'
 #' @description
-#' Configures the delegated administrator account with the provided values. You must provide the value for either `autoEnableOrganizationMembers` or `autoEnable`.
+#' Configures the delegated administrator account with the provided values. You must provide a value for either `autoEnableOrganizationMembers` or `autoEnable`, but not both.
 #'
 #' See [https://www.paws-r-sdk.com/docs/guardduty_update_organization_configuration/](https://www.paws-r-sdk.com/docs/guardduty_update_organization_configuration/) for full documentation.
 #'
 #' @param DetectorId &#91;required&#93; The ID of the detector that configures the delegated administrator.
-#' @param AutoEnable Indicates whether to automatically enable member accounts in the
+#' @param AutoEnable Represents whether or not to automatically enable member accounts in the
 #' organization.
 #' 
 #' Even though this is still supported, we recommend using
-#' `AutoEnableOrganizationMembers` to achieve the similar results.
+#' `AutoEnableOrganizationMembers` to achieve the similar results. You must
+#' provide a value for either `autoEnableOrganizationMembers` or
+#' `autoEnable`.
 #' @param DataSources Describes which data sources will be updated.
 #' @param Features A list of features that will be configured for the organization.
 #' @param AutoEnableOrganizationMembers Indicates the auto-enablement configuration of GuardDuty for the member
-#' accounts in the organization.
+#' accounts in the organization. You must provide a value for either
+#' `autoEnableOrganizationMembers` or `autoEnable`.
+#' 
+#' Use one of the following configuration values for
+#' `autoEnableOrganizationMembers`:
 #' 
 #' -   `NEW`: Indicates that when a new account joins the organization,
 #'     they will have GuardDuty enabled automatically.
 #' 
-#' -   `ALL`: Indicates that all accounts in the Amazon Web Services
-#'     Organization have GuardDuty enabled automatically. This includes
-#'     `NEW` accounts that join the organization and accounts that may have
-#'     been suspended or removed from the organization in GuardDuty.
+#' -   `ALL`: Indicates that all accounts in the organization have
+#'     GuardDuty enabled automatically. This includes `NEW` accounts that
+#'     join the organization and accounts that may have been suspended or
+#'     removed from the organization in GuardDuty.
+#' 
+#'     It may take up to 24 hours to update the configuration for all the
+#'     member accounts.
 #' 
 #' -   `NONE`: Indicates that GuardDuty will not be automatically enabled
-#'     for any accounts in the organization. GuardDuty must be managed for
-#'     each account individually by the administrator.
+#'     for any account in the organization. The administrator must manage
+#'     GuardDuty for each account in the organization individually.
 #'
 #' @keywords internal
 #'

@@ -174,7 +174,7 @@ A \code{FilterExpression} is applied after the items have already been read;
 the process of filtering does not consume any additional read capacity
 units.
 
-For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.FilterExpression}{Filter Expressions}
+For more information, see \href{https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.FilterExpression}{Filter Expressions}
 in the \emph{Amazon DynamoDB Developer Guide}.}
 
 \item{ExpressionAttributeNames}{One or more substitution tokens for attribute names in an expression.

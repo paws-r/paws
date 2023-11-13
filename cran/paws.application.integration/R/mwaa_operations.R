@@ -46,10 +46,12 @@ mwaa_create_cli_token <- function(Name) {
 #' see [Apache Airflow configuration
 #' options](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-env-variables.html).
 #' @param AirflowVersion The Apache Airflow version for your environment. If no value is
-#' specified, it defaults to the latest version. Valid values: `1.10.12`,
-#' `2.0.2`, `2.2.2`, `2.4.3`, and `2.5.1`. For more information, see
+#' specified, it defaults to the latest version. For more information, see
 #' [Apache Airflow versions on Amazon Managed Workflows for Apache Airflow
 #' (MWAA)](https://docs.aws.amazon.com/mwaa/latest/userguide/airflow-versions.html).
+#' 
+#' Valid values: `1.10.12`, `2.0.2`, `2.2.2`, `2.4.3`, `2.5.1`, `2.6.3`,
+#' `2.7.2`.
 #' @param DagS3Path &#91;required&#93; The relative path to the DAGs folder on your Amazon S3 bucket. For
 #' example, `dags`. For more information, see [Adding or updating
 #' DAGs](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html).
@@ -446,7 +448,8 @@ mwaa_untag_resource <- function(ResourceArn, tagKeys) {
 #' resources, see [Upgrading an Amazon MWAA
 #' environment](https://docs.aws.amazon.com/mwaa/latest/userguide/upgrading-environment.html).
 #' 
-#' Valid values: `1.10.12`, `2.0.2`, `2.2.2`, `2.4.3`, and `2.5.1`.
+#' Valid values: `1.10.12`, `2.0.2`, `2.2.2`, `2.4.3`, `2.5.1`, `2.6.3`,
+#' `2.7.2`.
 #' @param DagS3Path The relative path to the DAGs folder on your Amazon S3 bucket. For
 #' example, `dags`. For more information, see [Adding or updating
 #' DAGs](https://docs.aws.amazon.com/mwaa/latest/userguide/configuring-dag-folder.html).

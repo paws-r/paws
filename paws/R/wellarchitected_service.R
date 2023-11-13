@@ -26,9 +26,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -104,12 +104,16 @@ NULL
 #'  \link[=wellarchitected_create_milestone]{create_milestone} \tab Create a milestone for an existing workload\cr
 #'  \link[=wellarchitected_create_profile]{create_profile} \tab Create a profile\cr
 #'  \link[=wellarchitected_create_profile_share]{create_profile_share} \tab Create a profile share\cr
+#'  \link[=wellarchitected_create_review_template]{create_review_template} \tab Create a review template\cr
+#'  \link[=wellarchitected_create_template_share]{create_template_share} \tab Create a review template share\cr
 #'  \link[=wellarchitected_create_workload]{create_workload} \tab Create a new workload\cr
 #'  \link[=wellarchitected_create_workload_share]{create_workload_share} \tab Create a workload share\cr
 #'  \link[=wellarchitected_delete_lens]{delete_lens} \tab Delete an existing lens\cr
 #'  \link[=wellarchitected_delete_lens_share]{delete_lens_share} \tab Delete a lens share\cr
 #'  \link[=wellarchitected_delete_profile]{delete_profile} \tab Delete a profile\cr
 #'  \link[=wellarchitected_delete_profile_share]{delete_profile_share} \tab Delete a profile share\cr
+#'  \link[=wellarchitected_delete_review_template]{delete_review_template} \tab Delete a review template\cr
+#'  \link[=wellarchitected_delete_template_share]{delete_template_share} \tab Delete a review template share\cr
 #'  \link[=wellarchitected_delete_workload]{delete_workload} \tab Delete an existing workload\cr
 #'  \link[=wellarchitected_delete_workload_share]{delete_workload_share} \tab Delete a workload share\cr
 #'  \link[=wellarchitected_disassociate_lenses]{disassociate_lenses} \tab Disassociate a lens from a workload\cr
@@ -124,6 +128,9 @@ NULL
 #'  \link[=wellarchitected_get_milestone]{get_milestone} \tab Get a milestone for an existing workload\cr
 #'  \link[=wellarchitected_get_profile]{get_profile} \tab Get profile information\cr
 #'  \link[=wellarchitected_get_profile_template]{get_profile_template} \tab Get profile template\cr
+#'  \link[=wellarchitected_get_review_template]{get_review_template} \tab Get review template\cr
+#'  \link[=wellarchitected_get_review_template_answer]{get_review_template_answer} \tab Get review template answer\cr
+#'  \link[=wellarchitected_get_review_template_lens_review]{get_review_template_lens_review} \tab Get a lens review associated with a review template\cr
 #'  \link[=wellarchitected_get_workload]{get_workload} \tab Get an existing workload\cr
 #'  \link[=wellarchitected_import_lens]{import_lens} \tab Import a new custom lens or update an existing custom lens\cr
 #'  \link[=wellarchitected_list_answers]{list_answers} \tab List of answers for a particular workload and lens\cr
@@ -138,8 +145,11 @@ NULL
 #'  \link[=wellarchitected_list_profile_notifications]{list_profile_notifications} \tab List profile notifications\cr
 #'  \link[=wellarchitected_list_profiles]{list_profiles} \tab List profiles\cr
 #'  \link[=wellarchitected_list_profile_shares]{list_profile_shares} \tab List profile shares\cr
-#'  \link[=wellarchitected_list_share_invitations]{list_share_invitations} \tab List the workload invitations\cr
+#'  \link[=wellarchitected_list_review_template_answers]{list_review_template_answers} \tab List the answers of a review template\cr
+#'  \link[=wellarchitected_list_review_templates]{list_review_templates} \tab List review templates\cr
+#'  \link[=wellarchitected_list_share_invitations]{list_share_invitations} \tab List the share invitations\cr
 #'  \link[=wellarchitected_list_tags_for_resource]{list_tags_for_resource} \tab List the tags for a resource\cr
+#'  \link[=wellarchitected_list_template_shares]{list_template_shares} \tab List review template shares\cr
 #'  \link[=wellarchitected_list_workloads]{list_workloads} \tab Paginated list of workloads\cr
 #'  \link[=wellarchitected_list_workload_shares]{list_workload_shares} \tab List the workload shares associated with the workload\cr
 #'  \link[=wellarchitected_tag_resource]{tag_resource} \tab Adds one or more tags to the specified resource\cr
@@ -148,11 +158,15 @@ NULL
 #'  \link[=wellarchitected_update_global_settings]{update_global_settings} \tab Updates whether the Amazon Web Services account is opted into organization sharing and discovery integration features\cr
 #'  \link[=wellarchitected_update_lens_review]{update_lens_review} \tab Update lens review for a particular workload\cr
 #'  \link[=wellarchitected_update_profile]{update_profile} \tab Update a profile\cr
+#'  \link[=wellarchitected_update_review_template]{update_review_template} \tab Update a review template\cr
+#'  \link[=wellarchitected_update_review_template_answer]{update_review_template_answer} \tab Update a review template answer\cr
+#'  \link[=wellarchitected_update_review_template_lens_review]{update_review_template_lens_review} \tab Update a lens review associated with a review template\cr
 #'  \link[=wellarchitected_update_share_invitation]{update_share_invitation} \tab Update a workload or custom lens share invitation\cr
 #'  \link[=wellarchitected_update_workload]{update_workload} \tab Update an existing workload\cr
 #'  \link[=wellarchitected_update_workload_share]{update_workload_share} \tab Update a workload share\cr
 #'  \link[=wellarchitected_upgrade_lens_review]{upgrade_lens_review} \tab Upgrade lens review for a particular workload\cr
-#'  \link[=wellarchitected_upgrade_profile_version]{upgrade_profile_version} \tab Upgrade a profile
+#'  \link[=wellarchitected_upgrade_profile_version]{upgrade_profile_version} \tab Upgrade a profile\cr
+#'  \link[=wellarchitected_upgrade_review_template_lens_review]{upgrade_review_template_lens_review} \tab Upgrade the lens review of a review template
 #' }
 #'
 #' @return

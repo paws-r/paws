@@ -2,7 +2,8 @@
 % Please edit documentation in R/rekognition_operations.R
 \name{rekognition_create_project_version}
 \alias{rekognition_create_project_version}
-\title{Creates a new version of a model and begins training}
+\title{Creates a new version of Amazon Rekognition project (like a Custom
+Labels model or a custom adapter) and begins training}
 \usage{
 rekognition_create_project_version(
   ProjectArn,
@@ -11,36 +12,40 @@ rekognition_create_project_version(
   TrainingData = NULL,
   TestingData = NULL,
   Tags = NULL,
-  KmsKeyId = NULL
+  KmsKeyId = NULL,
+  VersionDescription = NULL,
+  FeatureConfig = NULL
 )
 }
 \arguments{
-\item{ProjectArn}{[required] The ARN of the Amazon Rekognition Custom Labels project that manages the
-model that you want to train.}
+\item{ProjectArn}{[required] The ARN of the Amazon Rekognition project that will manage the project
+version you want to train.}
 
-\item{VersionName}{[required] A name for the version of the model. This value must be unique.}
+\item{VersionName}{[required] A name for the version of the project version. This value must be
+unique.}
 
-\item{OutputConfig}{[required] The Amazon S3 bucket location to store the results of training. The S3
-bucket can be in any AWS account as long as the caller has
-\code{s3:PutObject} permissions on the S3 bucket.}
+\item{OutputConfig}{[required] The Amazon S3 bucket location to store the results of training. The
+bucket can be any S3 bucket in your AWS account. You need \code{s3:PutObject}
+permission on the bucket.}
 
 \item{TrainingData}{Specifies an external manifest that the services uses to train the
-model. If you specify \code{TrainingData} you must also specify
+project version. If you specify \code{TrainingData} you must also specify
 \code{TestingData}. The project must not have any associated datasets.}
 
-\item{TestingData}{Specifies an external manifest that the service uses to test the model.
-If you specify \code{TestingData} you must also specify \code{TrainingData}. The
-project must not have any associated datasets.}
+\item{TestingData}{Specifies an external manifest that the service uses to test the project
+version. If you specify \code{TestingData} you must also specify
+\code{TrainingData}. The project must not have any associated datasets.}
 
-\item{Tags}{A set of tags (key-value pairs) that you want to attach to the model.}
+\item{Tags}{A set of tags (key-value pairs) that you want to attach to the project
+version.}
 
 \item{KmsKeyId}{The identifier for your AWS Key Management Service key (AWS KMS key).
 You can supply the Amazon Resource Name (ARN) of your KMS key, the ID of
 your KMS key, an alias for your KMS key, or an alias ARN. The key is
-used to encrypt training and test images copied into the service for
-model training. Your source images are unaffected. The key is also used
-to encrypt training results and manifest files written to the output
-Amazon S3 bucket (\code{OutputConfig}).
+used to encrypt training images, test images, and manifest files copied
+into the service for the project version. Your source images are
+unaffected. The key is also used to encrypt training results and
+manifest files written to the output Amazon S3 bucket (\code{OutputConfig}).
 
 If you choose to use your own KMS key, you need the following
 permissions on the KMS key.
@@ -53,9 +58,15 @@ permissions on the KMS key.
 
 If you don't specify a value for \code{KmsKeyId}, images copied into the
 service are encrypted using a key that AWS owns and manages.}
+
+\item{VersionDescription}{A description applied to the project version being created.}
+
+\item{FeatureConfig}{Feature-specific configuration of the training job. If the job
+configuration does not match the feature type associated with the
+project, an InvalidParameterException is returned.}
 }
 \description{
-Creates a new version of a model and begins training. Models are managed as part of an Amazon Rekognition Custom Labels project. The response from \code{\link[=rekognition_create_project_version]{create_project_version}} is an Amazon Resource Name (ARN) for the version of the model.
+Creates a new version of Amazon Rekognition project (like a Custom Labels model or a custom adapter) and begins training. Models and adapters are managed as part of a Rekognition project. The response from \code{\link[=rekognition_create_project_version]{create_project_version}} is an Amazon Resource Name (ARN) for the project version.
 
 See \url{https://www.paws-r-sdk.com/docs/rekognition_create_project_version/} for full documentation.
 }

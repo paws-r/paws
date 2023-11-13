@@ -11,7 +11,8 @@ appstream_describe_sessions(
   UserId = NULL,
   NextToken = NULL,
   Limit = NULL,
-  AuthenticationType = NULL
+  AuthenticationType = NULL,
+  InstanceId = NULL
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ maximum value is 50.}
 \item{AuthenticationType}{The authentication method. Specify \code{API} for a user authenticated using
 a streaming URL or \code{SAML} for a SAML federated user. The default is to
 authenticate users using a streaming URL.}
+
+\item{InstanceId}{The identifier for the instance hosting the session.}
 }
 \description{
 Retrieves a list that describes the streaming sessions for a specified stack and fleet. If a UserId is provided for the stack and fleet, only streaming sessions for that user are described. If an authentication type is not provided, the default is to authenticate users using a streaming URL.

@@ -233,6 +233,7 @@ s3outposts_list_endpoints <- function(NextToken = NULL, MaxResults = NULL) {
 #'   Outposts = list(
 #'     list(
 #'       OutpostArn = "string",
+#'       S3OutpostArn = "string",
 #'       OutpostId = "string",
 #'       OwnerId = "string",
 #'       CapacityInBytes = 123

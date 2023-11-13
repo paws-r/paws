@@ -13,8 +13,8 @@ NULL
 #'
 #' @param IdentityStoreId &#91;required&#93; The globally unique identifier for the identity store.
 #' @param DisplayName A string containing the name of the group. This value is commonly
-#' displayed when the group is referenced. "Administrator" and
-#' "AWSAdministrators" are reserved names and can't be used for users or
+#' displayed when the group is referenced. `Administrator` and
+#' `AWSAdministrators` are reserved names and can't be used for users or
 #' groups.
 #' @param Description A string containing the description of the group.
 #'
@@ -132,7 +132,7 @@ identitystore_create_group_membership <- function(IdentityStoreId, GroupId, Memb
 #' characters. This value can consist of letters, accented characters,
 #' symbols, numbers, and punctuation. This value is specified at the time
 #' the user is created and stored as an attribute of the user object in the
-#' identity store. "Administrator" and "AWSAdministrators" are reserved
+#' identity store. `Administrator` and `AWSAdministrators` are reserved
 #' names and can't be used for users or groups.
 #' @param Name An object containing the name of the user.
 #' @param DisplayName A string containing the name of the user. This value is typically
@@ -374,6 +374,11 @@ identitystore_delete_user <- function(IdentityStoreId, UserId) {
 #' @description
 #' Retrieves the group metadata and attributes from `GroupId` in an
 #' identity store.
+#' 
+#' If you have administrator access to a member account, you can use this
+#' API from the member account. Read about [member
+#' accounts](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
+#' in the *Organizations User Guide*.
 #'
 #' @usage
 #' identitystore_describe_group(IdentityStoreId, GroupId)
@@ -438,6 +443,11 @@ identitystore_describe_group <- function(IdentityStoreId, GroupId) {
 #' @description
 #' Retrieves membership metadata and attributes from `MembershipId` in an
 #' identity store.
+#' 
+#' If you have administrator access to a member account, you can use this
+#' API from the member account. Read about [member
+#' accounts](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
+#' in the *Organizations User Guide*.
 #'
 #' @usage
 #' identitystore_describe_group_membership(IdentityStoreId, MembershipId)
@@ -494,6 +504,11 @@ identitystore_describe_group_membership <- function(IdentityStoreId, MembershipI
 #' @description
 #' Retrieves the user metadata and attributes from the `UserId` in an
 #' identity store.
+#' 
+#' If you have administrator access to a member account, you can use this
+#' API from the member account. Read about [member
+#' accounts](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
+#' in the *Organizations User Guide*.
 #'
 #' @usage
 #' identitystore_describe_user(IdentityStoreId, UserId)
@@ -597,6 +612,11 @@ identitystore_describe_user <- function(IdentityStoreId, UserId) {
 #'
 #' @description
 #' Retrieves `GroupId` in an identity store.
+#' 
+#' If you have administrator access to a member account, you can use this
+#' API from the member account. Read about [member
+#' accounts](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
+#' in the *Organizations User Guide*.
 #'
 #' @usage
 #' identitystore_get_group_id(IdentityStoreId, AlternateIdentifier)
@@ -660,6 +680,11 @@ identitystore_get_group_id <- function(IdentityStoreId, AlternateIdentifier) {
 #'
 #' @description
 #' Retrieves the `MembershipId` in an identity store.
+#' 
+#' If you have administrator access to a member account, you can use this
+#' API from the member account. Read about [member
+#' accounts](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
+#' in the *Organizations User Guide*.
 #'
 #' @usage
 #' identitystore_get_group_membership_id(IdentityStoreId, GroupId,
@@ -717,6 +742,11 @@ identitystore_get_group_membership_id <- function(IdentityStoreId, GroupId, Memb
 #'
 #' @description
 #' Retrieves the `UserId` in an identity store.
+#' 
+#' If you have administrator access to a member account, you can use this
+#' API from the member account. Read about [member
+#' accounts](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
+#' in the *Organizations User Guide*.
 #'
 #' @usage
 #' identitystore_get_user_id(IdentityStoreId, AlternateIdentifier)
@@ -782,6 +812,11 @@ identitystore_get_user_id <- function(IdentityStoreId, AlternateIdentifier) {
 #' @description
 #' Checks the user's membership in all requested groups and returns if the
 #' member exists in all queried groups.
+#' 
+#' If you have administrator access to a member account, you can use this
+#' API from the member account. Read about [member
+#' accounts](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
+#' in the *Organizations User Guide*.
 #'
 #' @usage
 #' identitystore_is_member_in_groups(IdentityStoreId, MemberId, GroupIds)
@@ -849,6 +884,11 @@ identitystore_is_member_in_groups <- function(IdentityStoreId, MemberId, GroupId
 #' For the specified group in the specified identity store, returns the
 #' list of all `GroupMembership` objects and returns results in paginated
 #' form.
+#' 
+#' If you have administrator access to a member account, you can use this
+#' API from the member account. Read about [member
+#' accounts](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
+#' in the *Organizations User Guide*.
 #'
 #' @usage
 #' identitystore_list_group_memberships(IdentityStoreId, GroupId,
@@ -926,6 +966,11 @@ identitystore_list_group_memberships <- function(IdentityStoreId, GroupId, MaxRe
 #' For the specified member in the specified identity store, returns the
 #' list of all `GroupMembership` objects and returns results in paginated
 #' form.
+#' 
+#' If you have administrator access to a member account, you can use this
+#' API from the member account. Read about [member
+#' accounts](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
+#' in the *Organizations User Guide*.
 #'
 #' @usage
 #' identitystore_list_group_memberships_for_member(IdentityStoreId,
@@ -1007,6 +1052,11 @@ identitystore_list_group_memberships_for_member <- function(IdentityStoreId, Mem
 #' complete `Group` objects. Filtering for a `Group` by the `DisplayName`
 #' attribute is deprecated. Instead, use the
 #' [`get_group_id`][identitystore_get_group_id] API action.
+#' 
+#' If you have administrator access to a member account, you can use this
+#' API from the member account. Read about [member
+#' accounts](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
+#' in the *Organizations User Guide*.
 #'
 #' @usage
 #' identitystore_list_groups(IdentityStoreId, MaxResults, NextToken,
@@ -1098,6 +1148,11 @@ identitystore_list_groups <- function(IdentityStoreId, MaxResults = NULL, NextTo
 #' complete `User` objects. Filtering for a `User` by the `UserName`
 #' attribute is deprecated. Instead, use the
 #' [`get_user_id`][identitystore_get_user_id] API action.
+#' 
+#' If you have administrator access to a member account, you can use this
+#' API from the member account. Read about [member
+#' accounts](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_accounts_access.html)
+#' in the *Organizations User Guide*.
 #'
 #' @usage
 #' identitystore_list_users(IdentityStoreId, MaxResults, NextToken,

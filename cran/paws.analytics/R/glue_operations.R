@@ -7082,8 +7082,11 @@ glue_update_job <- function(JobName, JobUpdate) {
 #'
 #' @param JobName The name of the Glue job to be synchronized to or from the remote
 #' repository.
-#' @param Provider The provider for the remote repository.
-#' @param RepositoryName The name of the remote repository that contains the job artifacts.
+#' @param Provider The provider for the remote repository. Possible values: GITHUB,
+#' AWS_CODE_COMMIT, GITLAB, BITBUCKET.
+#' @param RepositoryName The name of the remote repository that contains the job artifacts. For
+#' BitBucket providers, `RepositoryName` should include `WorkspaceName`.
+#' Use the format `<WorkspaceName>/<RepositoryName>`.
 #' @param RepositoryOwner The owner of the remote repository that contains the job artifacts.
 #' @param BranchName An optional branch in the remote repository.
 #' @param Folder An optional folder in the remote repository.
@@ -7301,8 +7304,11 @@ glue_update_schema <- function(SchemaId, SchemaVersionNumber = NULL, Compatibili
 #'
 #' @param JobName The name of the Glue job to be synchronized to or from the remote
 #' repository.
-#' @param Provider The provider for the remote repository.
-#' @param RepositoryName The name of the remote repository that contains the job artifacts.
+#' @param Provider The provider for the remote repository. Possible values: GITHUB,
+#' AWS_CODE_COMMIT, GITLAB, BITBUCKET.
+#' @param RepositoryName The name of the remote repository that contains the job artifacts. For
+#' BitBucket providers, `RepositoryName` should include `WorkspaceName`.
+#' Use the format `<WorkspaceName>/<RepositoryName>`.
 #' @param RepositoryOwner The owner of the remote repository that contains the job artifacts.
 #' @param BranchName An optional branch in the remote repository.
 #' @param Folder An optional folder in the remote repository.

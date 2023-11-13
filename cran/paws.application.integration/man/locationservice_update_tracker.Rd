@@ -7,6 +7,7 @@
 locationservice_update_tracker(
   Description = NULL,
   EventBridgeEnabled = NULL,
+  KmsKeyEnableGeospatialQueries = NULL,
   PositionFiltering = NULL,
   PricingPlan = NULL,
   PricingPlanDataSource = NULL,
@@ -22,6 +23,10 @@ to EventBridge.
 You do not need enable this feature to get \code{ENTER} and \code{EXIT} events for
 geofences with this tracker. Those events are always sent to
 EventBridge.}
+
+\item{KmsKeyEnableGeospatialQueries}{Enables \code{GeospatialQueries} for a tracker that uses a \href{https://docs.aws.amazon.com/kms/latest/developerguide/create-keys.html}{Amazon Web Services KMS customer managed key}.
+
+This parameter is only used if you are using a KMS customer managed key.}
 
 \item{PositionFiltering}{Updates the position filtering for the tracker resource.
 

@@ -8,6 +8,7 @@ applicationinsights_describe_component_configuration_recommendation(
   ResourceGroupName,
   ComponentName,
   Tier,
+  WorkloadName = NULL,
   RecommendationType = NULL
 )
 }
@@ -17,6 +18,8 @@ applicationinsights_describe_component_configuration_recommendation(
 \item{ComponentName}{[required] The name of the component.}
 
 \item{Tier}{[required] The tier of the application component.}
+
+\item{WorkloadName}{The name of the workload.}
 
 \item{RecommendationType}{The recommended configuration type.}
 }

@@ -97,13 +97,13 @@ If your stack template contains these resources, we recommend that
 you review all permissions associated with them and edit their
 permissions if necessary.
 \itemize{
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-accesskey.html}{AWS::IAM::AccessKey}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html}{AWS::IAM::Group}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-accesskey.html}{AWS::IAM::AccessKey}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-group.html}{AWS::IAM::Group}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-instanceprofile.html}{AWS::IAM::InstanceProfile}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html}{AWS::IAM::Policy}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/}{AWS::IAM::Policy}
 \item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-role.html}{AWS::IAM::Role}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-user.html}{AWS::IAM::User}
-\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-addusertogroup.html}{AWS::IAM::UserToGroupAddition}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-user.html}{AWS::IAM::User}
+\item \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-iam-usertogroupaddition.html}{AWS::IAM::UserToGroupAddition}
 }
 
 For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html#capabilities}{Acknowledging IAM Resources in CloudFormation Templates}.
@@ -137,7 +137,10 @@ can update the function operation without CloudFormation being
 notified.
 
 For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-macros.html}{Using CloudFormation macros to perform custom processing on templates}.
-}}
+}
+
+Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
+specified.}
 
 \item{ResourceTypes}{The template resource types that you have permissions to work with for
 this create stack action, such as \verb{AWS::EC2::Instance}, \verb{AWS::EC2::*},
@@ -153,7 +156,10 @@ If the list of resource types doesn't include a resource that you're
 creating, the stack creation fails. By default, CloudFormation grants
 permissions to all resource types. Identity and Access Management (IAM)
 uses this parameter for CloudFormation-specific condition keys in IAM
-policies. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html}{Controlling Access with Identity and Access Management}.}
+policies. For more information, see \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-template.html}{Controlling Access with Identity and Access Management}.
+
+Only one of the \code{Capabilities} and \code{ResourceType} parameters can be
+specified.}
 
 \item{RoleARN}{The Amazon Resource Name (ARN) of an Identity and Access Management
 (IAM) role that CloudFormation assumes to create the stack.
@@ -220,13 +226,11 @@ For \href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-c
 termination protection is set on the root stack and can't be changed
 directly on the nested stack.}
 
-\item{RetainExceptOnCreate}{This deletion policy deletes newly created resources, but retains
-existing resources, when a stack operation is rolled back. This ensures
-new, empty, and unused resources are deleted, while critical resources
-and their data are retained. \code{RetainExceptOnCreate} can be specified for
-any resource that supports the
-\href{https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html}{DeletionPolicy}
-attribute.}
+\item{RetainExceptOnCreate}{When set to \code{true}, newly created resources are deleted when the
+operation rolls back. This includes newly created resources marked with
+a deletion policy of \code{Retain}.
+
+Default: \code{false}}
 }
 \description{
 Creates a stack as specified in the template. After the call completes successfully, the stack creation starts. You can check the status of the stack through the \code{\link[=cloudformation_describe_stacks]{describe_stacks}} operation.

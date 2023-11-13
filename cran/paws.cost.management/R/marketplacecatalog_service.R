@@ -26,9 +26,9 @@ NULL
 #' }}
 #' \item{\strong{profile}:} {The name of a profile to use. If not given, then the default profile is used.}
 #' \item{\strong{anonymous}:} {Set anonymous credentials.}
+#' }}
 #' \item{\strong{endpoint}:} {The complete URL to use for the constructed client.}
 #' \item{\strong{region}:} {The AWS Region used in instantiating the client.}
-#' }}
 #' \item{\strong{close_connection}:} {Immediately close all HTTP connections.}
 #' \item{\strong{timeout}:} {The time in seconds till a timeout exception is thrown when attempting to make a connection. The default is 60 seconds.}
 #' \item{\strong{s3_force_path_style}:} {Set this to `true` to force the request to use path-style addressing, i.e. `http://s3.amazonaws.com/BUCKET/KEY`.}
@@ -98,14 +98,14 @@ NULL
 #' @section Operations:
 #' \tabular{ll}{
 #'  \link[=marketplacecatalog_cancel_change_set]{cancel_change_set} \tab Used to cancel an open change request\cr
-#'  \link[=marketplacecatalog_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource-based policy on an Entity that is identified by its resource ARN\cr
+#'  \link[=marketplacecatalog_delete_resource_policy]{delete_resource_policy} \tab Deletes a resource-based policy on an entity that is identified by its resource ARN\cr
 #'  \link[=marketplacecatalog_describe_change_set]{describe_change_set} \tab Provides information about a given change set\cr
 #'  \link[=marketplacecatalog_describe_entity]{describe_entity} \tab Returns the metadata and content of the entity\cr
-#'  \link[=marketplacecatalog_get_resource_policy]{get_resource_policy} \tab Gets a resource-based policy of an Entity that is identified by its resource ARN\cr
+#'  \link[=marketplacecatalog_get_resource_policy]{get_resource_policy} \tab Gets a resource-based policy of an entity that is identified by its resource ARN\cr
 #'  \link[=marketplacecatalog_list_change_sets]{list_change_sets} \tab Returns the list of change sets owned by the account being used to make the call\cr
 #'  \link[=marketplacecatalog_list_entities]{list_entities} \tab Provides the list of entities of a given type\cr
 #'  \link[=marketplacecatalog_list_tags_for_resource]{list_tags_for_resource} \tab Lists all tags that have been added to a resource (either an entity or change set)\cr
-#'  \link[=marketplacecatalog_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based policy to an Entity\cr
+#'  \link[=marketplacecatalog_put_resource_policy]{put_resource_policy} \tab Attaches a resource-based policy to an entity\cr
 #'  \link[=marketplacecatalog_start_change_set]{start_change_set} \tab Allows you to request changes for your entities\cr
 #'  \link[=marketplacecatalog_tag_resource]{tag_resource} \tab Tags a resource (either an entity or change set)\cr
 #'  \link[=marketplacecatalog_untag_resource]{untag_resource} \tab Removes a tag or list of tags from a resource (either an entity or change set)

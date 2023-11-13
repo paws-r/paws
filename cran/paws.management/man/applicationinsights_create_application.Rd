@@ -12,7 +12,8 @@ applicationinsights_create_application(
   Tags = NULL,
   AutoConfigEnabled = NULL,
   AutoCreate = NULL,
-  GroupingType = NULL
+  GroupingType = NULL,
+  AttachMissingPermission = NULL
 )
 }
 \arguments{
@@ -42,6 +43,9 @@ recommended configurations.}
 \item{GroupingType}{Application Insights can create applications based on a resource group
 or on an account. To create an account-based application using all of
 the resources in the account, set this parameter to \code{ACCOUNT_BASED}.}
+
+\item{AttachMissingPermission}{If set to true, the managed policies for SSM and CW will be attached to
+the instance roles if they are missing.}
 }
 \description{
 Adds an application that is created from a resource group.
