@@ -83,7 +83,7 @@ jobs:
 
   version:
     if: ${{ github.event.issue.pull_request && (github.event.comment.author_association == 'MEMBER' || github.event.comment.author_association == 'OWNER') && startsWith(github.event.comment.body, '/version') }}
-    name: style
+    name: version
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -122,7 +122,7 @@ jobs:
             }
           }
           
-          paws_update_version("cran", version = version)
+          paws_update_version("cran")
         shell: Rscript {0}
 
       - name: commit
