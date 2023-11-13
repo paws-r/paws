@@ -108,6 +108,7 @@ jobs:
             cat("pkg_version=", version, "\n", sep="", file = Sys.getenv("GITHUB_OUTPUT"))
             packages <- list.files(dir, full.names = T)
             descriptions <- file.path(packages, "DESCRIPTION")
+            if (length(version) == 0) return()
             for (desc in descriptions) {
               lines <- readLines(desc)
               found <- grepl("Version: [0-9\\.]+", lines, perl = T)
