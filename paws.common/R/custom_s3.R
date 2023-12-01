@@ -150,7 +150,7 @@ populate_location_constraint <- function(request) {
 # developed from boto3:
 # https://github.com/boto/botocore/blob/54a09c7d025181b8221d0046eb6dd6def9ace338/botocore/handlers.py#L287-L321
 
-sse_hander <- function(request) {
+sse_md5_build <- function(request) {
   request$params <- sse_md5(request$params)
   request$params <- copy_source_sse_md5(request$params)
   return(request)
@@ -187,8 +187,8 @@ copy_source_sse_md5 <- function(params) {
 
 .needs_s3_sse_customization <- function(params, sse_member_prefix) {
   return (
-    !is.null(params[[paste0(sse_member_prefix, 'Key')]]) &
-      !is.null(params[[paste0(sse_member_prefix, 'KeyMD5')]])
+    !is_empty(params[[paste0(sse_member_prefix, 'Key')]]) &
+    is_empty(params[[paste0(sse_member_prefix, 'KeyMD5')]])
   )
 }
 
@@ -488,7 +488,7 @@ customizations$s3 <- function(handlers) {
   )
   handlers$build <- handlers_add_front(
     handlers$build,
-    sse_hander
+    sse_md5_build
   )
   handlers$build <- handlers_add_back(
     handlers$build,
