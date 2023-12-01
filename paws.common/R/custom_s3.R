@@ -147,6 +147,52 @@ populate_location_constraint <- function(request) {
 }
 
 ################################################################################
+# developed from boto3:
+# https://github.com/boto/botocore/blob/54a09c7d025181b8221d0046eb6dd6def9ace338/botocore/handlers.py#L287-L321
+
+sse_md5_build <- function(request) {
+  request$params <- sse_md5(request$params)
+  request$params <- copy_source_sse_md5(request$params)
+  return(request)
+}
+
+# S3 server-side encryption requires the encryption key to be sent to the
+# server base64 encoded, as well as a base64-encoded MD5 hash of the
+# encryption key. This handler does both if the MD5 has not been set by
+# the caller.
+sse_md5 <- function(params) {
+  return(.sse_md5(params, 'SSECustomer'))
+}
+
+# S3 server-side encryption requires the encryption key to be sent to the
+# server base64 encoded, as well as a base64-encoded MD5 hash of the
+# encryption key. This handler does both if the MD5 has not been set by
+# the caller specifically if the parameter is for the copy-source sse-c key.
+copy_source_sse_md5 <- function(params) {
+  return(.sse_md5(params, 'CopySourceSSECustomer'))
+}
+
+.sse_md5 <- function(params, sse_member_prefix='SSECustomer') {
+  if (!.needs_s3_sse_customization(params, sse_member_prefix))
+    return(params)
+  sse_key_member <- paste0(sse_member_prefix, 'Key')
+  sse_md5_member <- paste0(sse_member_prefix, 'KeyMD5')
+  key_md5_str <- base64enc::base64encode(
+    digest::digest(params[[sse_key_member]], serialize = FALSE, raw = TRUE)
+  )
+  attributes(key_md5_str) <- attributes(params[[sse_md5_member]])
+  params[[sse_md5_member]] <- key_md5_str
+  return(params)
+}
+
+.needs_s3_sse_customization <- function(params, sse_member_prefix) {
+  return (
+    !is_empty(params[[paste0(sse_member_prefix, 'Key')]]) &
+    is_empty(params[[paste0(sse_member_prefix, 'KeyMD5')]])
+  )
+}
+
+################################################################################
 
 content_md5 <- function(request) {
   operation_name <- request$operation$name
@@ -439,6 +485,10 @@ customizations$s3 <- function(handlers) {
   handlers$build <- handlers_add_front(
     handlers$build,
     convert_file_to_raw
+  )
+  handlers$build <- handlers_add_front(
+    handlers$build,
+    sse_md5_build
   )
   handlers$build <- handlers_add_back(
     handlers$build,
