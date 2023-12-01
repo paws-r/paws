@@ -1,5 +1,5 @@
 # paws.common 0.6.4.9000
-
+* support sse md5 (#718)
 
 # paws.common 0.6.4
 * ensure xml build structure is correctly flattened (#597)
