@@ -62,16 +62,22 @@ paginate <- function(Operation,
     for (i in seq_along(new_tokens)) {
       fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]
     }
+
+    resp_len <- length(resp[[primary_result_key]])
+    if (resp_len == 0) {
+      break
+    }
+
     result[[length(result) + 1]] <- resp
 
     # exit if no more results
-    if (!is.null(paginator$more_results)) {
-      if (isFALSE(resp[[paginator$more_results]])) {
+    if (!is.null(paginator[["more_results"]])) {
+      if (isFALSE(resp[[paginator[["more_results"]]]])) {
         break
       }
     }
     if (!is.null(MaxItems)) {
-      no_items <- no_items + length(resp[[primary_result_key]])
+      no_items <- no_items + resp_len
       if (no_items >= MaxItems) {
         break
       }
@@ -244,16 +250,22 @@ paginate_xapply <- function(
     for (i in seq_along(new_tokens)) {
       fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]
     }
+
+    resp_len <- length(resp[[primary_result_key]])
+    if (resp_len == 0) {
+      break
+    }
+
     result[[length(result) + 1]] <- FUN(resp, ...)
 
     # exit if no more results
-    if (!is.null(paginator$more_results)) {
-      if (isFALSE(resp[[paginator$more_results]])) {
+    if (!is.null(paginator[["more_results"]])) {
+      if (isFALSE(resp[[paginator[["more_results"]]]])) {
         break
       }
     }
     if (!is.null(MaxItems)) {
-      no_items <- no_items + length(resp[[primary_result_key]])
+      no_items <- no_items + resp_len
       if (no_items >= MaxItems) {
         break
       }
