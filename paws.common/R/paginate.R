@@ -260,7 +260,6 @@ paginate_xapply <- function(
   while (!identical(fn[[paginator$input_token[[1]]]], character(0))) {
     resp <- eval(fn, envir = parent.frame(n = 2))
     new_tokens <- get_tokens(resp, paginator$output_token)
-    previous_token <- unlist(fn[[paginator$input_token]], use.names = F)
 
     # Exit paginator if previous token matches current token
     # https://github.com/aws/aws-sdk-js-v3/releases/tag/v3.78.0
