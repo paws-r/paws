@@ -19,6 +19,7 @@
 #' @param MaxItems Limits the maximum number of total returned items returned while paginating.
 #' @param StartingToken Can be used to modify the starting marker or token of a paginator.
 #' This argument if useful for resuming pagination from a previous token or starting pagination at a known position.
+#' @param StopOnSameToken Exist paginator if previous token matches current token.
 #' @param FUN the function to be applied to each response element of \code{operation}.
 #' @param simplify See \link[base:sapply]{base::sapply()}.
 #' @param ... optional arguments to \code{FUN}.
@@ -39,7 +40,8 @@
 paginate <- function(Operation,
                      PageSize = NULL,
                      MaxItems = NULL,
-                     StartingToken = NULL) {
+                     StartingToken = NULL,
+                     StopOnSameToken = FALSE) {
   fn <- substitute(Operation)
   # rebuild fn for do.call
   if (identical(fn[[1]], .do_call)) {
@@ -59,13 +61,19 @@ paginate <- function(Operation,
   while (!identical(fn[[paginator$input_token[[1]]]], character(0))) {
     resp <- eval(fn, envir = parent.frame())
     new_tokens <- get_tokens(resp, paginator$output_token)
-    for (i in seq_along(new_tokens)) {
-      fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]
+
+    # Exit paginator if previous token matches current token
+    # https://github.com/aws/aws-sdk-js-v3/releases/tag/v3.78.0
+    if (isTRUE(StopOnSameToken)) {
+      previous_token <- unlist(fn[[paginator$input_token]], use.names = F)
+      if (identical(previous_token, unlist(new_tokens, use.names = F))) {
+        break
+      }
     }
 
-    resp_len <- length(resp[[primary_result_key]])
-    if (resp_len == 0) {
-      break
+    # Update tokens
+    for (i in seq_along(new_tokens)) {
+      fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]
     }
 
     result[[length(result) + 1]] <- resp
@@ -77,7 +85,7 @@ paginate <- function(Operation,
       }
     }
     if (!is.null(MaxItems)) {
-      no_items <- no_items + resp_len
+      no_items <- no_items + length(resp[[primary_result_key]])
       if (no_items >= MaxItems) {
         break
       }
@@ -93,7 +101,8 @@ paginate_lapply <- function(Operation,
                             ...,
                             PageSize = NULL,
                             MaxItems = NULL,
-                            StartingToken = NULL) {
+                            StartingToken = NULL,
+                            StopOnSameToken = FALSE) {
   FUN <- match.fun(FUN)
   fn <- substitute(Operation)
 
@@ -112,7 +121,8 @@ paginate_lapply <- function(Operation,
     paginator = fn_update$paginator,
     FUN = FUN,
     ...,
-    MaxItems = MaxItems
+    MaxItems = MaxItems,
+    StopOnSameToken = StopOnSameToken
   )
   return(result)
 }
@@ -125,7 +135,8 @@ paginate_sapply <- function(Operation,
                             simplify = TRUE,
                             PageSize = NULL,
                             MaxItems = NULL,
-                            StartingToken = NULL) {
+                            StartingToken = NULL,
+                            StopOnSameToken = FALSE) {
   FUN <- match.fun(FUN)
   fn <- substitute(Operation)
 
@@ -144,7 +155,8 @@ paginate_sapply <- function(Operation,
     paginator = fn_update$paginator,
     FUN = FUN,
     ...,
-    MaxItems = MaxItems
+    MaxItems = MaxItems,
+    StopOnSameToken = StopOnSameToken
   )
 
   if (!isFALSE(simplify)) {
@@ -240,20 +252,28 @@ paginate_xapply <- function(
     paginator,
     FUN,
     ...,
-    MaxItems = NULL) {
+    MaxItems = NULL,
+    StopOnSameToken = FALSE) {
   primary_result_key <- paginator$result_key[[1]]
   no_items <- 0
   result <- list()
   while (!identical(fn[[paginator$input_token[[1]]]], character(0))) {
     resp <- eval(fn, envir = parent.frame(n = 2))
     new_tokens <- get_tokens(resp, paginator$output_token)
-    for (i in seq_along(new_tokens)) {
-      fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]
+    previous_token <- unlist(fn[[paginator$input_token]], use.names = F)
+
+    # Exit paginator if previous token matches current token
+    # https://github.com/aws/aws-sdk-js-v3/releases/tag/v3.78.0
+    if (isTRUE(StopOnSameToken)) {
+      previous_token <- unlist(fn[[paginator$input_token]], use.names = F)
+      if (identical(previous_token, unlist(new_tokens, use.names = F))) {
+        break
+      }
     }
 
-    resp_len <- length(resp[[primary_result_key]])
-    if (resp_len == 0) {
-      break
+    # Update tokens
+    for (i in seq_along(new_tokens)) {
+      fn[[paginator$input_token[[i]]]] <- new_tokens[[i]]
     }
 
     result[[length(result) + 1]] <- FUN(resp, ...)
@@ -265,7 +285,7 @@ paginate_xapply <- function(
       }
     }
     if (!is.null(MaxItems)) {
-      no_items <- no_items + resp_len
+      no_items <- no_items + length(resp[[primary_result_key]])
       if (no_items >= MaxItems) {
         break
       }
