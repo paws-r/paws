@@ -63,7 +63,7 @@ paginate <- function(Operation,
     new_tokens <- get_tokens(resp, paginator$output_token)
 
     # Exit paginator if previous token matches current token
-    # https://github.com/aws/aws-sdk-js-v3/releases/tag/v3.78.0
+    # https://github.com/smithy-lang/smithy-typescript/blob/main/packages/core/src/pagination/createPaginator.ts#L53
     if (isTRUE(StopOnSameToken)) {
       previous_token <- unlist(fn[[paginator$input_token]], use.names = F)
       if (identical(previous_token, unlist(new_tokens, use.names = F))) {
@@ -262,7 +262,7 @@ paginate_xapply <- function(
     new_tokens <- get_tokens(resp, paginator$output_token)
 
     # Exit paginator if previous token matches current token
-    # https://github.com/aws/aws-sdk-js-v3/releases/tag/v3.78.0
+    # https://github.com/smithy-lang/smithy-typescript/blob/main/packages/core/src/pagination/createPaginator.ts#L53
     if (isTRUE(StopOnSameToken)) {
       previous_token <- unlist(fn[[paginator$input_token]], use.names = F)
       if (identical(previous_token, unlist(new_tokens, use.names = F))) {
