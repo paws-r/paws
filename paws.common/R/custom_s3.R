@@ -161,7 +161,7 @@ sse_md5_build <- function(request) {
 # encryption key. This handler does both if the MD5 has not been set by
 # the caller.
 sse_md5 <- function(params) {
-  return(.sse_md5(params, 'SSECustomer'))
+  return(.sse_md5(params, "SSECustomer"))
 }
 
 # S3 server-side encryption requires the encryption key to be sent to the
@@ -169,14 +169,15 @@ sse_md5 <- function(params) {
 # encryption key. This handler does both if the MD5 has not been set by
 # the caller specifically if the parameter is for the copy-source sse-c key.
 copy_source_sse_md5 <- function(params) {
-  return(.sse_md5(params, 'CopySourceSSECustomer'))
+  return(.sse_md5(params, "CopySourceSSECustomer"))
 }
 
-.sse_md5 <- function(params, sse_member_prefix='SSECustomer') {
-  if (!.needs_s3_sse_customization(params, sse_member_prefix))
+.sse_md5 <- function(params, sse_member_prefix = "SSECustomer") {
+  if (!.needs_s3_sse_customization(params, sse_member_prefix)) {
     return(params)
-  sse_key_member <- paste0(sse_member_prefix, 'Key')
-  sse_md5_member <- paste0(sse_member_prefix, 'KeyMD5')
+  }
+  sse_key_member <- paste0(sse_member_prefix, "Key")
+  sse_md5_member <- paste0(sse_member_prefix, "KeyMD5")
   key_md5_str <- base64enc::base64encode(
     digest::digest(params[[sse_key_member]], serialize = FALSE, raw = TRUE)
   )
@@ -186,9 +187,9 @@ copy_source_sse_md5 <- function(params) {
 }
 
 .needs_s3_sse_customization <- function(params, sse_member_prefix) {
-  return (
-    !is_empty(params[[paste0(sse_member_prefix, 'Key')]]) &
-    is_empty(params[[paste0(sse_member_prefix, 'KeyMD5')]])
+  return(
+    !is_empty(params[[paste0(sse_member_prefix, "Key")]]) &
+      is_empty(params[[paste0(sse_member_prefix, "KeyMD5")]])
   )
 }
 
