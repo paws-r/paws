@@ -164,6 +164,57 @@ test_that("check paginate", {
   expect_equal(actual, expected)
 })
 
+test_that("check paginate stop on same token", {
+  dummy_internal <- function(paginator) {
+    paginator
+  }
+  dummy_op <- function(x, NextToken = NULL, MaxKey = NULL) {
+    op <- dummy_internal(paginator = list(
+      input_token = "NextToken",
+      output_token = "NextToken",
+      limit_key = "MaxKey",
+      result_key = "Contents"
+    ))
+    list(NextToken = NextToken, MaxKey = MaxKey)
+  }
+  mock_substitute <- mock2(substitute(dummy_op(x = "hi")))
+
+  mock_paginate_update_fn <- mock2(
+    list(
+      fn = substitute(dummy_op(x = "hi")),
+      paginator = list(
+        input_token = "NextToken",
+        output_token = "NextToken",
+        limit_key = "MaxKey",
+        result_key = "Contents"
+      )
+    )
+  )
+  mock_eval <- mock2(
+    list(Contents = list("foo"), NextToken = "token1"),
+    list(Contents = list("bar"), NextToken = "token2"),
+    list(Contents = list(), NextToken = "token2")
+  )
+
+  expected <- list(
+    list(Contents = list("foo"), NextToken = "token1"),
+    list(Contents = list("bar"), NextToken = "token2")
+  )
+
+  mockery::stub(paginate, "substitute", mock_substitute)
+  mockery::stub(paginate, "paginate_update_fn", mock_paginate_update_fn)
+  mockery::stub(paginate, "eval", mock_eval)
+
+  actual <- paginate("dummy", StopOnSameToken = TRUE)
+  actual_args <- mockery::mock_args(mock_eval)
+  expect_equal(lapply(actual_args, function(x) as.list(x[[1]][-1])), list(
+    list(x = "hi"),
+    list(x = "hi", NextToken = "token1"),
+    list(x = "hi", NextToken = "token2")
+  ))
+  expect_equal(actual, expected)
+})
+
 ########################################################################
 # paginate_xapply
 ########################################################################
@@ -267,6 +318,55 @@ test_that("check paginate_xapply restrict MaxItems", {
   expect_equal(actual, expected)
 })
 
+test_that("check paginate stop on same token", {
+  dummy_internal <- function(paginator) {
+    paginator
+  }
+  dummy_op <- function(x, NextToken = NULL, MaxKey = NULL) {
+    op <- dummy_internal(paginator = list(
+      input_token = "NextToken",
+      output_token = "NextToken",
+      limit_key = "MaxKey",
+      result_key = "Contents"
+    ))
+    list(NextToken = NextToken, MaxKey = MaxKey)
+  }
+
+  mock_eval <- mock2(
+    list(Contents = list("foo"), NextToken = "token1"),
+    list(Contents = list("bar"), NextToken = "token2"),
+    list(Contents = list(), NextToken = "token2")
+  )
+
+  expected <- list(
+    list(Contents = list("foo"), NextToken = "token1"),
+    list(Contents = list("bar"), NextToken = "token2")
+  )
+
+  mockery::stub(paginate_xapply, "eval", mock_eval)
+
+  actual <- paginate_xapply(
+    substitute(dummy_op(x = "hi")),
+    paginator = list(
+      input_token = "NextToken",
+      output_token = "NextToken",
+      limit_key = "MaxKey",
+      result_key = "Contents"
+    ),
+    FUN = function(resp) {
+      resp
+    },
+    MaxItems = NULL,
+    StopOnSameToken = TRUE
+  )
+  actual_args <- mockery::mock_args(mock_eval)
+  expect_equal(lapply(actual_args, function(x) as.list(x[[1]][-1])), list(
+    list(x = "hi"),
+    list(x = "hi", NextToken = "token1"),
+    list(x = "hi", NextToken = "token2")
+  ))
+  expect_equal(actual, expected)
+})
 
 ########################################################################
 # paginate_lapply

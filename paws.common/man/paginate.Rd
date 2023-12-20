@@ -6,7 +6,13 @@
 \alias{paginate_sapply}
 \title{Paginate over an operation.}
 \usage{
-paginate(Operation, PageSize = NULL, MaxItems = NULL, StartingToken = NULL)
+paginate(
+  Operation,
+  PageSize = NULL,
+  MaxItems = NULL,
+  StartingToken = NULL,
+  StopOnSameToken = FALSE
+)
 
 paginate_lapply(
   Operation,
@@ -14,7 +20,8 @@ paginate_lapply(
   ...,
   PageSize = NULL,
   MaxItems = NULL,
-  StartingToken = NULL
+  StartingToken = NULL,
+  StopOnSameToken = FALSE
 )
 
 paginate_sapply(
@@ -24,7 +31,8 @@ paginate_sapply(
   simplify = TRUE,
   PageSize = NULL,
   MaxItems = NULL,
-  StartingToken = NULL
+  StartingToken = NULL,
+  StopOnSameToken = FALSE
 )
 }
 \arguments{
@@ -36,6 +44,8 @@ paginate_sapply(
 
 \item{StartingToken}{Can be used to modify the starting marker or token of a paginator.
 This argument if useful for resuming pagination from a previous token or starting pagination at a known position.}
+
+\item{StopOnSameToken}{Exist paginator if previous token matches current token.}
 
 \item{FUN}{the function to be applied to each response element of \code{operation}.}
 
