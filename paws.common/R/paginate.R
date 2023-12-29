@@ -293,11 +293,10 @@ paginate_xapply <- function(
   return(result)
 }
 
+token_error_msg <- "attempt to select less than one element in integerOneIndex"
 # Get all output tokens
 get_tokens <- function(resp, token) {
-  last <- function(x) {
-    x[[length(x)]]
-  }
+  last <- function(x) x[[length(x)]]
   tokens <- list()
   for (tkn in token) {
     tokens[[tkn]] <- tryCatch(
@@ -306,11 +305,7 @@ get_tokens <- function(resp, token) {
       },
       error = function(err) {
         # Return default character(0) for empty lists
-        if (grepl(
-          "attempt to select less than one element in integerOneIndex",
-          err[["message"]],
-          perl = T
-        )) {
+        if (grepl(token_error_msg, err[["message"]], perl = T)) {
           character(0)
         } else {
           stop(err)
