@@ -345,11 +345,10 @@ jmespath_index <- function(token) {
 
   found <- grep("-", token_prts, fixed = T)
   if (length(found) > 0) {
-    position <- found - 1
     # Path.To[-1].Token
+    position <- found - 1
     last_index <- token_prts[seq_len(position)]
     last_index <- paste(last_index, collapse = "]][[")
-
     final_token <- sprintf("last(resp[[%s]])", last_index)
     if (found < length(token_prts)) {
       token_prts <- token_prts[(position + 2):length(token_prts)]
