@@ -300,9 +300,7 @@ get_tokens <- function(resp, token) {
   tokens <- list()
   for (tkn in token) {
     tokens[[tkn]] <- tryCatch(
-      {
-        eval(parse(text = jmespath_index(tkn)), envir = environment())
-      },
+      eval(parse(text = jmespath_index(tkn)), envir = environment()),
       error = function(err) {
         # Return default character(0) for empty lists
         if (grepl(token_error_msg, err[["message"]], perl = T)) {
