@@ -295,14 +295,14 @@ paginate_xapply <- function(
 
 # Get all output tokens
 get_tokens <- function(resp, token) {
-  last_element <- function(x) {
+  last <- function(x) {
     x[[length(x)]]
   }
   tokens <- list()
   for (tkn in token) {
     tokens[[tkn]] <- tryCatch(
       {
-        eval(jmespath_index(resp, tkn), envir = environment())
+        eval(parse(text = jmespath_index(tkn)), envir = environment())
       },
       error = function(err) {
         # Return default character(0) for empty lists
@@ -324,18 +324,18 @@ get_tokens <- function(resp, token) {
 split_token <- function(token) {
   token_prts <- unlist(strsplit(token, ".", fixed = T))
   token_prts <- unlist(strsplit(token_prts, "[", fixed = T))
-  return(gsub("]", "", token_prts, fixed = T))
+  return(unlist(strsplit(token_prts, "]", fixed = T)))
 }
 
 # This is a simple implementation of jmespath for R list: i.e.
-# Path.To[-1].Token
-# Path.To.Token
-jmespath_index <- function(resp, token) {
+# Path.To[-1].Token -> last(resp[["Path"]][["To"]])[["Token"]]
+# Path.To.Token -> resp[["Path"]][["To"]][["Token"]]
+jmespath_index <- function(token) {
   token_prts <- split_token(token)
-  pat <- "[[:alpha:]]+"
+  pattern <- "[[:alpha:]]+"
 
-  # reindex
-  found_alpha <- grep(pat, token_prts)
+  # re-index
+  found_alpha <- grep(pattern, token_prts)
   digits <- as.numeric(token_prts[-found_alpha])
   digits[digits >= 0] <- digits[digits >= 0] + 1
   token_prts[-found_alpha] <- digits
@@ -343,18 +343,23 @@ jmespath_index <- function(resp, token) {
   # Format character strings
   token_prts[found_alpha] <- paste0('"', token_prts[found_alpha], '"')
 
-  found <- grep("-", token_prts, fixed = T) - 1
+  found <- grep("-", token_prts, fixed = T)
   if (length(found) > 0) {
+    position <- found - 1
     # Path.To[-1].Token
-    last_index <- token_prts[seq_len(found)]
+    last_index <- token_prts[seq_len(position)]
     last_index <- paste(last_index, collapse = "]][[")
 
-    final_token <- sprintf("last_element(resp[[%s]])", last_index)
-    token_prts <- token_prts[(found + 2):length(token_prts)]
-    final_token <- sprintf("%s[[%s]]", final_token, paste0(token_prts, collapse = "]][["))
+    final_token <- sprintf("last(resp[[%s]])", last_index)
+    if (found < length(token_prts)) {
+      token_prts <- token_prts[(position + 2):length(token_prts)]
+      final_token <- sprintf(
+        "%s[[%s]]", final_token, paste0(token_prts, collapse = "]][[")
+      )
+    }
   } else {
     # Path.To.Token
     final_token <- sprintf("resp[[%s]]", paste0(token_prts, collapse = "]][["))
   }
-  return(parse(text = final_token))
+  return(final_token)
 }
