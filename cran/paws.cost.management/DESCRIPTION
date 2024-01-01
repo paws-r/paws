@@ -1,6 +1,6 @@
 Package: paws.cost.management
 Title: 'Amazon Web Services' Cost Management Services
-Version: 0.2.0
+Version: 0.5.0
 Authors@R: c(
     person("David", "Kretch", , "david.kretch@gmail.com", role = "aut"),
     person("Adam", "Banker", , "adam.banker39@gmail.com", role = "aut"),
